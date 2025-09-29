@@ -4,7 +4,7 @@ description: "Advanced analytical thinking engine with multi-agent collaboration
 category: cognitive-intelligence
 subcategory: meta-analysis
 complexity: advanced
-argument-hint: "[problem] [--depth=auto|comprehensive|ultra|quantum] [--mode=auto|systematic|discovery|hybrid] [--paradigm=auto|multi|cross|meta] [--agents=auto|core|scientific|engineering|domain-specific|all] [--priority=auto|implementation] [--recursive=false|true] [--export-insights] [--auto-fix=false|true] [--orchestrate] [--intelligent] [--breakthrough]"
+argument-hint: "[--depth=auto|comprehensive|ultra|quantum] [--mode=auto|systematic|discovery|hybrid] [--paradigm=auto|multi|cross|meta] [--agents=auto|core|scientific|engineering|domain-specific|all] [--priority=auto|implementation] [--recursive=false|true] [--export-insights] [--auto-fix=false|true] [--orchestrate] [--intelligent] [--breakthrough] [problem]"
 allowed-tools: Read, Write, Grep, Glob, TodoWrite, Bash, WebSearch, WebFetch, MultiEdit
 model: inherit
 tags: analysis, multi-agent, research, implementation, cognitive-enhancement
@@ -42,12 +42,12 @@ Performs deep analytical thinking using multiple AI agents with different specia
 ## Usage
 
 ```bash
-/think-ultra "[problem description]" [options]
+/think-ultra [options] "[problem description]"
 ```
 
 **Parameters:**
-- `problem description` - Question or challenge to analyze (in quotes)
 - `options` - Analysis configuration and execution options
+- `problem description` - Question or challenge to analyze (in quotes)
 
 ## Auto-Fix Implementation Mode
 
@@ -86,7 +86,7 @@ When `--auto-fix=true` is enabled, think-ultra transforms from analysis-only to 
 
 ## Arguments
 
-- **`problem`** - Question or challenge to analyze
+- **`problem`** - Question or challenge to analyze (moved to end for better UX)
 - **`--depth`** - Analysis depth: auto, comprehensive (default), ultra, quantum
 - **`--mode`** - Approach: auto, systematic, discovery, hybrid (default)
 - **`--agents`** - Personal agent categories: auto, core, scientific, engineering, domain-specific, all

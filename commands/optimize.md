@@ -4,7 +4,7 @@ description: "Code optimization and performance analysis for Python, Julia, JAX,
 category: optimization
 subcategory: performance
 complexity: intermediate
-argument-hint: "[target] [--language=python|julia|jax|auto] [--category=all|algorithm|memory|io|concurrency] [--format=text|json|html] [--implement] [--agents=auto|scientific|ai|engineering|quantum|all] [--orchestrate] [--intelligent] [--breakthrough]"
+argument-hint: "[--language=python|julia|jax|auto] [--category=all|algorithm|memory|io|concurrency] [--format=text|json|html] [--implement] [--agents=auto|scientific|ai|engineering|quantum|all] [--orchestrate] [--intelligent] [--breakthrough] [target]"
 allowed-tools: "*"
 model: inherit
 tags: optimization, performance, python, julia, jax, scientific-computing
@@ -26,24 +26,24 @@ Analyze code for performance optimization opportunities across multiple language
 /optimize src/
 
 # Language-specific optimization
-/optimize myfile.py --language=python
+/optimize --language=python myfile.py
 
 # Specific category with JSON output
-/optimize algorithm.py --category=algorithm --format=json
+/optimize --category=algorithm --format=json algorithm.py
 
 # Auto-implement optimizations
-/optimize src/ --implement --language=auto
+/optimize --implement --language=auto src/
 ```
 
 ## Usage
 
 ```bash
-/optimize [target] [options]
+/optimize [options] [target]
 ```
 
 **Parameters:**
-- `target` - File, directory, or module to optimize
 - `options` - Configuration options for optimization analysis and implementation
+- `target` - File, directory, or module to optimize (moved to end for better UX)
 
 ## Options
 

@@ -4,7 +4,7 @@ description: "Multi-agent system for code optimization and review using speciali
 category: optimization
 subcategory: multi-agent
 complexity: advanced
-argument-hint: "[target] [--mode=optimize|review|hybrid|research] [--agents=all|core|scientific|ai|engineering|domain-specific] [--focus=performance|security|quality|architecture|research|innovation] [--implement] [--orchestrate]"
+argument-hint: "[--mode=optimize|review|hybrid|research] [--agents=all|core|scientific|ai|engineering|domain-specific] [--focus=performance|security|quality|architecture|research|innovation] [--implement] [--orchestrate] [target]"
 allowed-tools: Read, Write, Edit, Grep, Glob, TodoWrite, Bash, Task
 model: inherit
 tags: multi-agent, optimization, review, performance, security, quality
@@ -29,21 +29,21 @@ Coordinate multiple specialized agents for code optimization and review tasks.
 /multi-agent-optimize --mode=optimize --focus=performance
 
 # Hybrid analysis with core agents
-/multi-agent-optimize myproject/ --agents=core --mode=hybrid
+/multi-agent-optimize --agents=core --mode=hybrid myproject/
 
 # Complete ecosystem optimization
-/multi-agent-optimize complex_project/ --agents=all --orchestrate
+/multi-agent-optimize --agents=all --orchestrate complex_project/
 ```
 
 ## Usage
 
 ```bash
-/multi-agent-optimize [target] [options]
+/multi-agent-optimize [options] [target]
 ```
 
 **Parameters:**
-- `target` - File, directory, or project to optimize
 - `options` - Agent selection, operation mode, and focus configuration
+- `target` - File, directory, or project to optimize (moved to end for better UX)
 
 ## Options
 

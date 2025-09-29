@@ -4,7 +4,7 @@ description: "Generate comprehensive test suites for Python, Julia, and JAX scie
 category: testing
 subcategory: test-generation
 complexity: intermediate
-argument-hint: "[target-file-or-module] [--type=all|unit|integration|performance|jax|scientific|gpu] [--framework=auto|pytest|julia|jax] [--coverage=N] [--agents=scientific|quality|orchestrator|all]"
+argument-hint: "[--type=all|unit|integration|performance|jax|scientific|gpu] [--framework=auto|pytest|julia|jax] [--coverage=N] [--agents=scientific|quality|orchestrator|all] [target-file-or-module]"
 allowed-tools: Read, Write, Edit, Grep, Glob, TodoWrite, Bash, Task
 model: inherit
 tags: testing, test-generation, python, julia, jax, scientific-computing
@@ -26,24 +26,24 @@ Generate comprehensive test suites for Python, Julia, and JAX scientific computi
 /generate-tests src/utils.py
 
 # Unit tests with coverage target
-/generate-tests src/ --type=unit --coverage=90
+/generate-tests --type=unit --coverage=90 src/
 
 # JAX-specific tests
-/generate-tests models/ --type=jax --framework=jax
+/generate-tests --type=jax --framework=jax models/
 
 # Performance testing with GPU
-/generate-tests simulation.py --type=performance --gpu
+/generate-tests --type=performance --gpu simulation.py
 ```
 
 ## Usage
 
 ```bash
-/generate-tests [target] [options]
+/generate-tests [options] [target]
 ```
 
 **Parameters:**
-- `target` - File, directory, or module to generate tests for
 - `options` - Test type, framework, and configuration options
+- `target` - File, directory, or module to generate tests for (moved to end for better UX)
 
 ## Options
 

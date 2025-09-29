@@ -4,7 +4,7 @@ description: "Analyze, integrate, and optimize scientific computing codebases fo
 category: scientific-computing
 subcategory: legacy-modernization
 complexity: expert
-argument-hint: "[codebase-path] [--analyze] [--integrate] [--optimize] [--language=fortran|c|cpp|python|julia|mixed] [--target=python|jax|julia] [--parallel=mpi|openmp|cuda|jax] [--agents=scientific|quality|orchestrator|all]"
+argument-hint: "[--analyze] [--integrate] [--optimize] [--language=fortran|c|cpp|python|julia|mixed] [--target=python|jax|julia] [--parallel=mpi|openmp|cuda|jax] [--agents=scientific|quality|orchestrator|all] [codebase-path]"
 allowed-tools: "*"
 model: inherit
 tags: scientific-computing, legacy-code, optimization, integration, numerical-accuracy
@@ -59,7 +59,7 @@ The adopt-code tool bridges the gap between legacy scientific computing code and
 
 | Argument | Description | Options |
 |----------|-------------|---------|
-| `codebase-path` | Path to source codebase | Directory or file path |
+| `codebase-path` | Path to source codebase (moved to end) | Directory or file path |
 | `--analyze` | Perform comprehensive code analysis | Flag |
 | `--integrate` | Enable cross-language integration | Flag |
 | `--optimize` | Apply performance optimizations | Flag |

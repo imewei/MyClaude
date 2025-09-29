@@ -4,7 +4,7 @@ description: "Advanced code analysis and documentation tool with multi-language 
 category: code-analysis
 subcategory: analysis
 complexity: intermediate
-argument-hint: "[file/directory] [--level=basic|advanced|expert] [--focus=AREA] [--docs] [--interactive] [--format=FORMAT] [--export=PATH] [--agents=documentation|quality|scientific|all]"
+argument-hint: "[--level=basic|advanced|expert] [--focus=AREA] [--docs] [--interactive] [--format=FORMAT] [--export=PATH] [--agents=documentation|quality|scientific|all] [file/directory]"
 allowed-tools: Read, Write, Edit, MultiEdit, Bash, Glob, Grep, TodoWrite, Task
 model: inherit
 tags: analysis, documentation, patterns, performance, security
@@ -26,13 +26,13 @@ Advanced code analysis and documentation tool with intelligent pattern recogniti
 /explain-code src/main.py
 
 # Generate comprehensive documentation
-/explain-code src/ --docs --level=advanced
+/explain-code --docs --level=advanced src/
 
 # Performance-focused analysis
-/explain-code algorithm.py --focus=performance --export=analysis.md
+/explain-code --focus=performance --export=analysis.md algorithm.py
 
 # Interactive exploration
-/explain-code complex_system/ --interactive --recursive
+/explain-code --interactive --recursive complex_system/
 ```
 
 ## Options

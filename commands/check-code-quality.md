@@ -4,7 +4,7 @@ description: "Code quality analysis for Python, Julia, and JAX ecosystems with s
 category: code-quality
 subcategory: analysis
 complexity: basic
-argument-hint: "[target-path] [--language=python|julia|jax|auto] [--analysis=basic|scientific|gpu] [--auto-fix] [--format=text|json] [--agents=quality|scientific|orchestrator|all]"
+argument-hint: "[--language=python|julia|jax|auto] [--analysis=basic|scientific|gpu] [--auto-fix] [--format=text|json] [--agents=quality|scientific|orchestrator|all] [target-path]"
 allowed-tools: Bash, Edit, Read, Glob, MultiEdit, Write, TodoWrite
 model: inherit
 tags: code-quality, analysis, python, julia, jax, scientific-computing
@@ -20,12 +20,12 @@ last-updated: "2025-09-28"
 Analyze code quality across Python, Julia, and JAX ecosystems with scientific computing focus.
 
 ```bash
-/check-code-quality [target-path] [options]
+/check-code-quality [options] [target-path]
 
 # Basic usage
 /check-code-quality src/
-/check-code-quality myfile.py --language=python
-/check-code-quality --analysis=scientific --auto-fix
+/check-code-quality --language=python myfile.py
+/check-code-quality --analysis=scientific --auto-fix .
 ```
 
 ## Options
@@ -154,22 +154,22 @@ Analyze code quality across Python, Julia, and JAX ecosystems with scientific co
 /check-code-quality src/
 
 # Scientific computing analysis
-/check-code-quality research_code/ --analysis=scientific
+/check-code-quality --analysis=scientific research_code/
 
 # GPU optimization analysis
-/check-code-quality neural_net.py --analysis=gpu --language=jax
+/check-code-quality --analysis=gpu --language=jax neural_net.py
 
 # Auto-fix with profiling
-/check-code-quality data_analysis.py --auto-fix --profile
+/check-code-quality --auto-fix --profile data_analysis.py
 
 # JSON output for CI/CD
-/check-code-quality project/ --format=json
+/check-code-quality --format=json project/
 
 # Language-specific analysis with scientific agent
-/check-code-quality simulation.jl --language=julia --analysis=scientific --agents=scientific
+/check-code-quality --language=julia --analysis=scientific --agents=scientific simulation.jl
 
 # Multi-agent quality assurance
-/check-code-quality project/ --agents=all --auto-fix --format=json
+/check-code-quality --agents=all --auto-fix --format=json project/
 ```
 
 ## Output Information

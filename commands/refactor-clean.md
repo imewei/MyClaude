@@ -4,7 +4,7 @@ description: "AI-powered code refactoring with multi-language support and modern
 category: refactoring
 subcategory: code-modernization
 complexity: intermediate
-argument-hint: "[target] [--language=python|javascript|typescript|java|julia|auto] [--scope=file|project] [--patterns=modern|performance|security] [--report=summary|detailed] [--implement] [--agents=quality|orchestrator|all]"
+argument-hint: "[--language=python|javascript|typescript|java|julia|auto] [--scope=file|project] [--patterns=modern|performance|security] [--report=summary|detailed] [--implement] [--agents=quality|orchestrator|all] [target]"
 allowed-tools: Read, Write, Edit, Glob, MultiEdit, Bash, TodoWrite
 model: inherit
 tags: refactoring, modernization, multi-language, patterns, code-quality
@@ -20,7 +20,7 @@ last-updated: "2025-09-28"
 Code refactoring engine with multi-language support and modern programming patterns.
 
 ```bash
-/refactor-clean [target] [options]
+/refactor-clean [options] [target]
 
 # Basic usage
 /refactor-clean src/main.py
@@ -137,31 +137,31 @@ Code refactoring engine with multi-language support and modern programming patte
 /refactor-clean src/utils.py
 
 # Project-wide modernization
-/refactor-clean project/ --scope=project --patterns=modern
+/refactor-clean --scope=project --patterns=modern project/
 
 # Performance-focused refactoring
-/refactor-clean algorithms.py --patterns=performance --report=detailed
+/refactor-clean --patterns=performance --report=detailed algorithms.py
 
 # Language-specific refactoring
-/refactor-clean app.js --language=javascript --patterns=modern
+/refactor-clean --language=javascript --patterns=modern app.js
 
 # Security pattern application
-/refactor-clean web_app/ --patterns=security --scope=project
+/refactor-clean --patterns=security --scope=project web_app/
 
 # Preview changes without applying
-/refactor-clean src/ --dry-run --report=detailed
+/refactor-clean --dry-run --report=detailed src/
 
 # Automatically implement refactoring recommendations
-/refactor-clean src/utils.py --implement
+/refactor-clean --implement src/utils.py
 
 # Implement modern patterns across project
-/refactor-clean project/ --scope=project --patterns=modern --implement
+/refactor-clean --scope=project --patterns=modern --implement project/
 
 # Performance refactoring with automatic implementation
-/refactor-clean algorithms.py --patterns=performance --implement --report=detailed
+/refactor-clean --patterns=performance --implement --report=detailed algorithms.py
 
 # Security pattern implementation
-/refactor-clean web_app/ --patterns=security --scope=project --implement
+/refactor-clean --patterns=security --scope=project --implement web_app/
 ```
 
 ## Output Information

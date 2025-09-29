@@ -25,9 +25,9 @@ last-updated: "2025-09-29"
 
 #### **⚡ Optimization & Performance**
 ```bash
-/optimize src/ --implement              # Code optimization
-/multi-agent-optimize --mode=review     # Multi-agent code analysis
-/refactor-clean --patterns=modern       # Code modernization
+/optimize --implement src/              # Code optimization
+/multi-agent-optimize --mode=review .   # Multi-agent code analysis
+/refactor-clean --patterns=modern .     # Code modernization
 ```
 
 #### **🔍 Analysis & Quality**
@@ -41,7 +41,7 @@ last-updated: "2025-09-29"
 ```bash
 /jax-essentials --operation=jit         # Core JAX operations
 /julia-jit-like --type-stability        # Julia optimization
-/adopt-code legacy/ --target=jax        # Code modernization
+/adopt-code --target=jax legacy/        # Code modernization
 ```
 
 ---
@@ -59,7 +59,7 @@ last-updated: "2025-09-29"
 
 ### **🧠 Analysis & Intelligence**
 
-#### `/think-ultra [problem] [options]`
+#### `/think-ultra [options] [problem]`
 Advanced analytical thinking engine with personal 23-agent collaboration for complex problems.
 
 **Options:**
@@ -77,12 +77,12 @@ Advanced analytical thinking engine with personal 23-agent collaboration for com
 
 **Examples:**
 ```bash
-/think-ultra "complex optimization problem" --depth=ultra --agents=all --orchestrate
-/think-ultra "performance analysis" --auto-fix --agents=scientific --intelligent
-/think-ultra "cross-domain innovation" --paradigm=meta --agents=all --breakthrough
+/think-ultra --depth=ultra --agents=all --orchestrate "complex optimization problem"
+/think-ultra --auto-fix --agents=scientific --intelligent "performance analysis"
+/think-ultra --paradigm=meta --agents=all --breakthrough "cross-domain innovation"
 ```
 
-#### `/multi-agent-optimize [target] [options]`
+#### `/multi-agent-optimize [options] [target]`
 Multi-agent system for code optimization and review using 23 specialized personal agents.
 
 **Options:**
@@ -98,12 +98,12 @@ Multi-agent system for code optimization and review using 23 specialized persona
 
 **Examples:**
 ```bash
-/multi-agent-optimize src/ --mode=hybrid --agents=all --orchestrate
-/multi-agent-optimize ml_pipeline/ --agents=engineering --implement --validate
-/multi-agent-optimize research_code/ --mode=research --focus=innovation
+/multi-agent-optimize --mode=hybrid --agents=all --orchestrate src/
+/multi-agent-optimize --agents=engineering --implement --validate ml_pipeline/
+/multi-agent-optimize --mode=research --focus=innovation research_code/
 ```
 
-#### `/double-check [task] [options]`
+#### `/double-check [options] [task]`
 Verification engine with personal 23-agent system that defines verification angles and validates work completeness.
 
 **Options:**
@@ -118,9 +118,9 @@ Verification engine with personal 23-agent system that defines verification angl
 
 **Examples:**
 ```bash
-/double-check "API implementation" --deep-analysis --agents=engineering --orchestrate
-/double-check "documentation completeness" --auto-complete --agents=domain-specific --intelligent
-/double-check "project completeness" --agents=all --breakthrough --report
+/double-check --deep-analysis --agents=engineering --orchestrate "API implementation"
+/double-check --auto-complete --agents=domain-specific --intelligent "documentation completeness"
+/double-check --agents=all --breakthrough --report "project completeness"
 ```
 
 #### `/reflection [options]`
@@ -324,7 +324,7 @@ Profile Python/JAX code for bottlenecks using jax.profiler and cProfile with opt
 
 ### **🧹 Code Quality & Analysis**
 
-#### `/check-code-quality [target-path] [options]`
+#### `/check-code-quality [options] [target-path]`
 Code quality analysis for Python, Julia, and JAX ecosystems with scientific computing focus.
 
 **Options:**
@@ -333,7 +333,7 @@ Code quality analysis for Python, Julia, and JAX ecosystems with scientific comp
 - `--auto-fix` - Apply fixes automatically
 - `--format=text|json` - Output format
 
-#### `/refactor-clean [target] [options]`
+#### `/refactor-clean [options] [target]`
 Code refactoring with multi-language support and modern patterns.
 
 **Options:**
@@ -342,7 +342,7 @@ Code refactoring with multi-language support and modern patterns.
 - `--patterns=modern|performance|security` - Pattern focus
 - `--implement` - Apply refactoring
 
-#### `/clean-codebase [path] [options]`
+#### `/clean-codebase [options] [path]`
 Advanced codebase cleanup with AST-based unused import removal, dead code elimination, and 23-agent personal analysis.
 
 **Options:**
@@ -360,12 +360,12 @@ Advanced codebase cleanup with AST-based unused import removal, dead code elimin
 
 **Examples:**
 ```bash
-/clean-codebase --dry-run --analysis=ultrathink --agents=auto
-/clean-codebase --imports --dead-code --agents=scientific --orchestrate
-/clean-codebase --analysis=ultrathink --agents=all --breakthrough
+/clean-codebase --dry-run --analysis=ultrathink --agents=auto .
+/clean-codebase --imports --dead-code --agents=scientific --orchestrate .
+/clean-codebase --analysis=ultrathink --agents=all --breakthrough .
 ```
 
-#### `/explain-code [file/directory] [options]`
+#### `/explain-code [options] [file/directory]`
 Code analysis and documentation tool with multi-language support.
 
 **Options:**
@@ -378,7 +378,7 @@ Code analysis and documentation tool with multi-language support.
 
 ### **🧪 Testing & Validation**
 
-#### `/generate-tests [target] [options]`
+#### `/generate-tests [options] [target]`
 Generate comprehensive test suites for Python, Julia, and JAX scientific computing projects.
 
 **Options:**
@@ -418,7 +418,7 @@ Git commit engine with AI message generation and automated quality validation.
 - `--validate` - Validate before commit
 - `--push` - Push after commit
 
-#### `/fix-commit-errors [commit-hash] [options]`
+#### `/fix-commit-errors [options] [commit-hash]`
 GitHub Actions error analysis and automated fixing tool.
 
 **Options:**
@@ -426,7 +426,7 @@ GitHub Actions error analysis and automated fixing tool.
 - `--debug` - Debug mode
 - `--interactive` - Interactive mode
 
-#### `/fix-github-issue [issue-number] [options]`
+#### `/fix-github-issue [options] [issue-number]`
 GitHub issue analysis and automated fixing tool with PR creation.
 
 **Options:**
@@ -455,7 +455,7 @@ Documentation generation tool with AST-based content extraction and multi-format
 - `--interactive` - Interactive mode
 - `--optimize` - Content optimization
 
-#### `/adopt-code [codebase-path] [options]`
+#### `/adopt-code [options] [codebase-path]`
 Analyze, integrate, and optimize scientific computing codebases for modern frameworks.
 
 **Options:**
@@ -490,7 +490,7 @@ New standardization framework ensuring consistent, professional command document
 
 ### **⚡ Performance Optimization**
 
-#### `/optimize [target] [options]`
+#### `/optimize [options] [target]`
 Code optimization and performance analysis for Python, Julia, JAX, and scientific computing.
 
 **Options:**
@@ -507,9 +507,9 @@ Code optimization and performance analysis for Python, Julia, JAX, and scientifi
 
 **Examples:**
 ```bash
-/optimize src/ --language=python --implement
-/optimize algorithm.py --category=algorithm --agents=scientific
-/optimize complex_project/ --agents=all --orchestrate --breakthrough
+/optimize --language=python --implement src/
+/optimize --category=algorithm --agents=scientific algorithm.py
+/optimize --agents=all --orchestrate --breakthrough complex_project/
 ```
 
 ---
@@ -546,8 +546,8 @@ Each command includes systematic cross-references:
 #### **Development Quality Gate**
 ```bash
 # Pre-commit workflow
-/check-code-quality --auto-fix
-/generate-tests --coverage=90
+/check-code-quality --auto-fix .
+/generate-tests --coverage=90 .
 /run-all-tests --coverage
 /commit --ai-message --validate
 ```
@@ -565,8 +565,8 @@ Each command includes systematic cross-references:
 #### **Legacy Code Modernization**
 ```bash
 # Scientific code modernization
-/adopt-code legacy/ --analyze --language=fortran
-/adopt-code legacy/ --integrate --target=jax
+/adopt-code --analyze --language=fortran legacy/
+/adopt-code --integrate --target=jax legacy/
 /jax-performance --optimization
 /run-all-tests --scientific --reproducible
 ```
@@ -575,18 +575,18 @@ Each command includes systematic cross-references:
 ```bash
 # Comprehensive quality workflow
 /debug --auto-fix
-/check-code-quality --auto-fix
-/refactor-clean --patterns=modern --implement
-/optimize --implement --category=all
-/generate-tests --coverage=95
-/double-check "quality improvements" --deep-analysis
+/check-code-quality --auto-fix .
+/refactor-clean --patterns=modern --implement .
+/optimize --implement --category=all .
+/generate-tests --coverage=95 .
+/double-check --deep-analysis "quality improvements"
 ```
 
 #### **Performance Optimization**
 ```bash
 # Performance optimization workflow
 /debug --profile --monitor
-/optimize --implement --category=performance
+/optimize --implement --category=performance .
 /jax-performance --technique=caching --gpu-accel
 /run-all-tests --benchmark --profile
 ```
@@ -594,9 +594,9 @@ Each command includes systematic cross-references:
 #### **Documentation Pipeline**
 ```bash
 # Complete documentation workflow
-/explain-code project/ --docs --recursive
+/explain-code --docs --recursive project/
 /update-docs --type=all --optimize
-/double-check "documentation completeness" --deep-analysis
+/double-check --deep-analysis "documentation completeness"
 /commit --template=docs --ai-message
 ```
 
@@ -619,11 +619,11 @@ Each command includes systematic cross-references:
 5. **Legacy Integration** → `/adopt-code legacy/ --target=jax`
 
 ### **Code Quality Progression**
-1. **Basic Quality** → `/check-code-quality --auto-fix`
-2. **Testing** → `/generate-tests --coverage=90`
-3. **Refactoring** → `/refactor-clean --patterns=modern`
-4. **Optimization** → `/optimize --implement`
-5. **Validation** → `/double-check --deep-analysis`
+1. **Basic Quality** → `/check-code-quality --auto-fix .`
+2. **Testing** → `/generate-tests --coverage=90 .`
+3. **Refactoring** → `/refactor-clean --patterns=modern .`
+4. **Optimization** → `/optimize --implement .`
+5. **Validation** → `/double-check --deep-analysis .`
 
 ### **Command Escalation Strategy**
 - **Level 1**: Single command execution
@@ -640,7 +640,7 @@ Each command includes systematic cross-references:
 
 #### **Development Workflow**
 ```bash
-/debug --auto-fix → /optimize --implement → /generate-tests → /commit --ai-message
+/debug --auto-fix → /optimize --implement . → /generate-tests . → /commit --ai-message
 ```
 
 #### **Scientific Computing Chain**
@@ -650,12 +650,12 @@ Each command includes systematic cross-references:
 
 #### **Quality Assurance Chain**
 ```bash
-/check-code-quality --auto-fix → /refactor-clean → /double-check → /commit
+/check-code-quality --auto-fix . → /refactor-clean . → /double-check . → /commit
 ```
 
 #### **Research Workflow**
 ```bash
-/think-ultra → /adopt-code → /generate-tests --scientific → /reflection
+/think-ultra . → /adopt-code . → /generate-tests --scientific . → /reflection
 ```
 
 ### **Command Directory Structure**

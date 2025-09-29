@@ -4,7 +4,7 @@ description: "GitHub issue analysis and automated fixing tool with PR creation"
 category: github-workflow
 subcategory: issue-automation
 complexity: advanced
-argument-hint: "[issue-number-or-url] [--auto-fix] [--draft] [--interactive] [--emergency] [--branch=name] [--agents=quality|devops|orchestrator|all]"
+argument-hint: "[--auto-fix] [--draft] [--interactive] [--emergency] [--branch=name] [--agents=quality|devops|orchestrator|all] [issue-number-or-url]"
 allowed-tools: Bash, Read, Write, Edit, Grep, Glob, TodoWrite, MultiEdit, WebSearch, WebFetch, Task
 model: inherit
 tags: github-issues, automation, pull-requests, issue-resolution
@@ -23,16 +23,16 @@ Analyze GitHub issues and apply automated fixes with pull request creation.
 
 ```bash
 # Analyze and fix issue automatically
-/fix-github-issue 123 --auto-fix
+/fix-github-issue --auto-fix 123
 
 # Create draft PR for review
-/fix-github-issue 123 --auto-fix --draft
+/fix-github-issue --auto-fix --draft 123
 
 # Interactive mode with user guidance
-/fix-github-issue 123 --interactive
+/fix-github-issue --interactive 123
 
 # Emergency mode for urgent issues
-/fix-github-issue 123 --emergency
+/fix-github-issue --emergency 123
 ```
 
 ## Options
@@ -81,28 +81,28 @@ Analyze GitHub issues and apply automated fixes with pull request creation.
 
 ```bash
 # Basic issue fixing
-/fix-github-issue 42 --auto-fix
+/fix-github-issue --auto-fix 42
 
 # Using issue URL
-/fix-github-issue https://github.com/user/repo/issues/42 --auto-fix
+/fix-github-issue --auto-fix https://github.com/user/repo/issues/42
 
 # Create draft PR for review
-/fix-github-issue 42 --auto-fix --draft
+/fix-github-issue --auto-fix --draft 42
 
 # Custom branch name
-/fix-github-issue 42 --auto-fix --branch=hotfix-memory-leak
+/fix-github-issue --auto-fix --branch=hotfix-memory-leak 42
 
 # Interactive mode for complex issues
-/fix-github-issue 42 --interactive
+/fix-github-issue --interactive 42
 
 # Emergency production fix with DevOps agent
-/fix-github-issue 42 --emergency --agents=devops
+/fix-github-issue --emergency --agents=devops 42
 
 # Multi-agent comprehensive issue resolution
-/fix-github-issue 42 --auto-fix --agents=all --draft
+/fix-github-issue --auto-fix --agents=all --draft 42
 
 # Quality-focused issue analysis and fix
-/fix-github-issue 42 --interactive --agents=quality --branch=quality-fix
+/fix-github-issue --interactive --agents=quality --branch=quality-fix 42
 ```
 
 ## Core Features

@@ -4,7 +4,7 @@ description: "Verification engine that defines verification angles, reiterates g
 category: verification
 subcategory: quality-assurance
 complexity: intermediate
-argument-hint: "[\"task/problem description\"] [--interactive] [--auto-complete] [--deep-analysis] [--report] [--agents=auto|core|scientific|engineering|domain-specific|all] [--orchestrate] [--intelligent] [--breakthrough]"
+argument-hint: "[--interactive] [--auto-complete] [--deep-analysis] [--report] [--agents=auto|core|scientific|engineering|domain-specific|all] [--orchestrate] [--intelligent] [--breakthrough] [\"task/problem description\"]"
 allowed-tools: TodoWrite, Read, Write, Edit, MultiEdit, Grep, Glob, Bash, WebSearch, WebFetch
 model: inherit
 tags: verification, quality-assurance, validation, auto-complete, analysis, methodology
@@ -23,27 +23,27 @@ Systematic verification and auto-completion engine following the 5-phase methodo
 
 ```bash
 # Basic verification with personal agents
-/double-check "Verify my recent code changes" --agents=core
+/double-check --agents=core "Verify my recent code changes"
 
 # Deep analysis with auto-completion and orchestration
-/double-check "Check my API implementation" --deep-analysis --auto-complete --agents=engineering --orchestrate
+/double-check --deep-analysis --auto-complete --agents=engineering --orchestrate "Check my API implementation"
 
 # Interactive verification with intelligent synthesis
-/double-check "Review documentation changes" --interactive --report --agents=domain-specific --intelligent
+/double-check --interactive --report --agents=domain-specific --intelligent "Review documentation changes"
 
 # Comprehensive verification with full agent team
-/double-check "Project completeness" --deep-analysis --report --agents=all --breakthrough
+/double-check --deep-analysis --report --agents=all --breakthrough "Project completeness"
 ```
 
 ## Usage
 
 ```bash
-/double-check "[task/problem description]" [options]
+/double-check [options] "[task/problem description]"
 ```
 
 **Parameters:**
-- `task/problem description` - Description of work to verify (in quotes)
 - `options` - Verification depth, interaction, and output configuration
+- `task/problem description` - Description of work to verify (in quotes, moved to end for better UX)
 
 ## Arguments
 

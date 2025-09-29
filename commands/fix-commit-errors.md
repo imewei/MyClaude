@@ -4,7 +4,7 @@ description: "GitHub Actions error analysis and automated fixing tool"
 category: github-workflow
 subcategory: ci-cd-automation
 complexity: intermediate
-argument-hint: "[commit-hash-or-pr-number] [--auto-fix] [--debug] [--emergency] [--interactive] [--max-cycles=N] [--agents=devops|quality|orchestrator|all]"
+argument-hint: "[--auto-fix] [--debug] [--emergency] [--interactive] [--max-cycles=N] [--agents=devops|quality|orchestrator|all] [commit-hash-or-pr-number]"
 allowed-tools: Bash, Read, Write, Edit, Grep, Glob, TodoWrite, MultiEdit, WebSearch
 model: inherit
 tags: github-actions, ci-cd, error-fixing, automation
@@ -29,7 +29,7 @@ Analyze and fix GitHub Actions workflow failures automatically.
 /fix-commit-errors --interactive
 
 # Debug specific commit
-/fix-commit-errors abc123 --debug
+/fix-commit-errors --debug abc123
 
 # Emergency mode for urgent issues
 /fix-commit-errors --emergency
@@ -92,8 +92,8 @@ Analyze and fix GitHub Actions workflow failures automatically.
 /fix-commit-errors --auto-fix
 
 # Target specific commit or PR
-/fix-commit-errors abc123def --auto-fix
-/fix-commit-errors 42 --debug  # PR number
+/fix-commit-errors --auto-fix abc123def
+/fix-commit-errors --debug 42  # PR number
 
 # Interactive mode for careful review
 /fix-commit-errors --interactive
@@ -105,7 +105,7 @@ Analyze and fix GitHub Actions workflow failures automatically.
 /fix-commit-errors --agents=all --interactive --debug
 
 # Quality-focused error resolution
-/fix-commit-errors abc123def --auto-fix --agents=quality
+/fix-commit-errors --auto-fix --agents=quality abc123def
 ```
 
 ## Operation Modes

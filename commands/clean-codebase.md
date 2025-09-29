@@ -4,7 +4,7 @@ description: "Advanced codebase cleanup with AST-based unused import removal, de
 category: project-maintenance
 subcategory: code-cleanup
 complexity: intermediate
-argument-hint: "[path] [--dry-run] [--analysis=basic|thorough|comprehensive|ultrathink] [--agents=auto|core|scientific|engineering|domain-specific|all] [--imports] [--dead-code] [--duplicates] [--ast-deep] [--orchestrate] [--intelligent] [--breakthrough] [--parallel]"
+argument-hint: "[--dry-run] [--analysis=basic|thorough|comprehensive|ultrathink] [--agents=auto|core|scientific|engineering|domain-specific|all] [--imports] [--dead-code] [--duplicates] [--ast-deep] [--orchestrate] [--intelligent] [--breakthrough] [--parallel] [path]"
 allowed-tools: Bash, Read, Write, Edit, MultiEdit, Glob, Grep, Task, TodoWrite
 model: inherit
 tags: cleanup, refactoring, maintenance, ast-analysis, 23-agent-system, ultrathink, unused-imports, dead-code, duplicates, orchestration
@@ -41,12 +41,12 @@ Advanced codebase cleanup with ultrathink intelligence, AST-based unused import 
 ## Usage
 
 ```bash
-/clean-codebase [path] [options]
+/clean-codebase [options] [path]
 ```
 
 **Parameters:**
-- `path` - Directory path to clean (defaults to current directory)
 - `options` - Analysis depth, agent selection, and execution configuration
+- `path` - Directory path to clean (defaults to current directory, moved to end for better UX)
 
 ## Options
 
