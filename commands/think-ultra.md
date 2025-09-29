@@ -1,676 +1,389 @@
 ---
-description: Revolutionary quantum-level analytical thinking engine with advanced AI reasoning, multi-dimensional problem decomposition, and breakthrough discovery patterns for the most complex scientific computing, research, and technical challenges
+title: "Think Ultra"
+description: "Advanced analytical thinking engine with multi-agent collaboration for complex problems"
 category: cognitive-intelligence
-argument-hint: [complex problem or question] [--depth=quantum|ultra|comprehensive] [--mode=research|discovery|optimization] [--paradigm=multi|cross|meta] [--export-insights]
+subcategory: meta-analysis
+complexity: advanced
+argument-hint: "[problem] [--depth=auto|comprehensive|ultra|quantum] [--mode=auto|systematic|discovery|hybrid] [--paradigm=auto|multi|cross|meta] [--agents=auto|core|scientific|engineering|domain-specific|all] [--priority=auto|implementation] [--recursive=false|true] [--export-insights] [--auto-fix=false|true] [--orchestrate] [--intelligent] [--breakthrough]"
 allowed-tools: Read, Write, Grep, Glob, TodoWrite, Bash, WebSearch, WebFetch, MultiEdit
+model: inherit
+tags: analysis, multi-agent, research, implementation, cognitive-enhancement
+dependencies: []
+related: [optimize, multi-agent-optimize, debug, double-check, reflection, generate-tests, run-all-tests, check-code-quality, adopt-code, refactor-clean]
+workflows: [analysis-to-implementation, research-workflow, meta-optimization]
+version: "2.0"
+last-updated: "2025-09-28"
 ---
 
-# Revolutionary Quantum-Level Ultra-Think Engine (2025 Edition)
+# Advanced Analytical Thinking Engine
 
-**Activate maximum cognitive quantum-level ultrathink processing** with revolutionary AI reasoning capabilities, multi-dimensional problem decomposition, breakthrough discovery patterns, and advanced scientific computing integration for ultra-comprehensive analysis of: **$ARGUMENTS**
+Multi-agent collaborative analysis for complex problems using specialized reasoning approaches and domain expertise.
 
-## Ultra-Advanced Cognitive Architecture
+## Purpose
+
+Performs deep analytical thinking using multiple AI agents with different specializations. Scales from simple analysis to complex multi-domain research with real implementation.
+
+## Quick Start
 
 ```bash
-# Quantum-level analysis with revolutionary AI reasoning
-/think-ultra --depth=quantum --mode=discovery --paradigm=meta --export-insights
+# Basic analysis
+/think-ultra "How do I optimize this algorithm?"
 
-# Research breakthrough discovery mode
-/think-ultra --depth=ultra --mode=research --paradigm=cross --systematic
+# Research-grade analysis with all agents
+/think-ultra "Design ML architecture for scientific computing" --depth=ultra --agents=all
 
-# Optimization-focused ultra-analysis
-/think-ultra --depth=comprehensive --mode=optimization --paradigm=multi --performance
+# Implementation-focused analysis
+/think-ultra "Deploy scalable ML system" --priority=implementation
 
-# Meta-cognitive quantum reasoning
-/think-ultra --depth=quantum --mode=meta-cognitive --revolutionary-insights
+# Auto-fix: Analysis + Implementation
+/think-ultra "Optimize this Python script" --auto-fix --agents=scientific
 ```
 
-**🧠 Advanced AI Reasoning Capabilities:**
-- **Quantum-Level Analysis**: Multi-dimensional problem decomposition with exponential insight generation
-- **Breakthrough Discovery Patterns**: Revolutionary insight detection and paradigm shift identification
-- **Meta-Cognitive Reasoning**: Self-aware analytical processing with recursive optimization
-- **Cross-Domain Intelligence**: Massive knowledge synthesis across scientific disciplines
-- **Emergent Property Detection**: Pattern recognition beyond human cognitive limitations
+## Usage
 
-## Revolutionary Quantum-Level Analysis Framework
-
-Deploy the most advanced AI reasoning methodology with exponential insight generation, breakthrough discovery patterns, and multi-dimensional problem decomposition:
-
-### 🧠 **Quantum-Level Cognitive Processing Architecture**
-
-#### **Phase 0: Meta-Cognitive Initialization**
-
-**Cognitive State Optimization:**
-- **Neural Pattern Activation**: Prime advanced reasoning circuits for maximum analytical depth
-- **Knowledge Graph Instantiation**: Activate cross-domain knowledge synthesis networks
-- **Insight Generation Protocols**: Initialize breakthrough discovery pattern recognition
-- **Recursive Analysis Loops**: Enable self-improving analytical processing
-- **Quantum Superposition Thinking**: Explore multiple solution spaces simultaneously
-
-**AI Reasoning Calibration:**
-- **Confidence Calibration**: Optimize uncertainty quantification and probabilistic reasoning
-- **Bias Detection Protocols**: Systematic cognitive bias identification and mitigation
-- **Creative Pattern Recognition**: Activate unconventional solution pathway detection
-- **Emergent Property Sensors**: Enable complex system behavior prediction
-- **Paradigm Shift Detection**: Revolutionary insight and breakthrough identification
-
-#### **Advanced Problem Architecture Analysis**
-
-**Quantum-Level Problem Decomposition:**
-- **Multi-Dimensional Space Mapping**: N-dimensional problem space exploration
-- **Fractal Complexity Analysis**: Self-similar pattern detection across scales
-- **Information Theoretical Analysis**: Entropy, complexity, and information content
-- **Topological Problem Structure**: Invariant properties and transformation analysis
-- **Causal Network Reconstruction**: Deep causal relationship mapping
-
-**Revolutionary Scientific Computing Context:**
-- **Computational Complexity Landscape**: Algorithm optimization potential across complexity classes
-- **Numerical Analysis Frontiers**: Precision limits, stability boundaries, convergence guarantees
-- **Quantum Computing Integration**: Quantum algorithm potential and hybrid classical-quantum approaches
-- **Neuromorphic Computing Possibilities**: Brain-inspired computing paradigm integration
-- **Edge/Distributed Computing**: Federated learning and distributed optimization strategies
-
-### Phase 1: Problem Architecture & Mathematical Foundations
-
-**Core Problem Analysis:**
-- **Ontological analysis**: What is the fundamental nature of this problem?
-- **Epistemological examination**: How do we know what we know about this?
-- **Semantic decomposition**: Deconstruct all key terms and concepts
-- **Boundary analysis**: What's included, excluded, and why?
-- **Meta-problem identification**: What's the problem behind the problem?
-
-**Scientific Computing Context:**
-- **Mathematical formulation**: Express problem in precise mathematical terms
-- **Computational complexity**: Analyze algorithmic and space complexity implications
-- **Numerical considerations**: Precision, stability, conditioning, convergence
-- **Scalability analysis**: Problem size growth and computational resource requirements
-- **Domain-specific constraints**: Physics, biology, economics, or other field limitations
-
-**🚀 Next-Generation JAX Ecosystem Analysis:**
-- **Differentiability Landscape**: Gradient computation optimization across complex computational graphs
-- **JIT Compilation Revolution**: Advanced function fusion, compilation cache optimization, dynamic shape handling
-- **Vectorization Mastery**: vmap/pmap parallelization with automatic load balancing and fault tolerance
-- **Quantum-Classical Hybrid**: JAX quantum computing integration with PennyLane and Cirq
-- **Neural Architecture Search**: Automated optimization with differentiable architecture search
-
-**💎 Advanced Julia Performance Intelligence:**
-- **Type System Revolution**: Multiple dispatch optimization with compile-time specialization
-- **Memory Architecture Mastery**: Zero-allocation algorithms, custom allocators, garbage collection optimization
-- **Parallelization Excellence**: Distributed computing with automatic work stealing and load balancing
-- **Ecosystem Synergy**: Package composition for maximum performance and interoperability
-- **Hardware Acceleration**: CUDA, ROCm, and emerging accelerator integration
-
-### 🔬 **Breakthrough Discovery Pattern Recognition**
-
-#### **Revolutionary Insight Detection Engine**
-
-**Paradigm Shift Identification:**
-```python
-class BreakthroughDiscoveryEngine:
-    """
-    Revolutionary pattern recognition for breakthrough insights.
-
-    Features:
-    - Paradigm shift detection with confidence scoring
-    - Cross-domain insight synthesis with novelty assessment
-    - Emergent property prediction with validation frameworks
-    - Revolutionary solution pathway generation
-    """
-
-    def paradigm_shift_analysis(self, problem_space):
-        """Detect potential paradigm-shifting approaches."""
-        return {
-            'conventional_limitations': self.identify_current_paradigm_constraints(),
-            'assumption_violations': self.find_foundational_assumption_breaks(),
-            'cross_domain_analogies': self.discover_unexpected_connections(),
-            'emergent_possibilities': self.predict_emergence_opportunities(),
-            'revolution_potential': self.assess_transformative_impact()
-        }
-
-    def insight_synthesis_matrix(self, knowledge_domains):
-        """Generate novel insights through cross-domain synthesis."""
-        synthesis_matrix = []
-        for domain_a in knowledge_domains:
-            for domain_b in knowledge_domains:
-                if domain_a != domain_b:
-                    novel_insights = self.cross_pollinate_concepts(domain_a, domain_b)
-                    breakthrough_potential = self.assess_novelty_impact(novel_insights)
-                    synthesis_matrix.append({
-                        'domains': (domain_a, domain_b),
-                        'insights': novel_insights,
-                        'breakthrough_score': breakthrough_potential
-                    })
-        return sorted(synthesis_matrix, key=lambda x: x['breakthrough_score'], reverse=True)
+```bash
+/think-ultra "[problem description]" [options]
 ```
 
-**Emergent Property Prediction:**
-- **Complex System Behavior**: Non-linear dynamics, phase transitions, critical phenomena
-- **Network Effect Analysis**: Cascade effects, tipping points, viral propagation patterns
-- **Evolutionary Dynamics**: Adaptation, selection pressures, co-evolution patterns
-- **Information Emergence**: Knowledge creation, insight generation, wisdom development
-- **Technology Convergence**: Multi-technology fusion creating new capabilities
+**Parameters:**
+- `problem description` - Question or challenge to analyze (in quotes)
+- `options` - Analysis configuration and execution options
 
-#### **Meta-Cognitive Revolutionary Analysis**
+## Auto-Fix Implementation Mode
 
-**Self-Aware Analytical Processing:**
-- **Recursive Reasoning Loops**: Analysis of analytical processes for optimization
-- **Cognitive Architecture Assessment**: Evaluation of thinking patterns and improvement opportunities
-- **Insight Quality Metrics**: Breakthrough potential scoring and validation frameworks
-- **Creative Process Optimization**: Enhancement of unconventional solution generation
-- **Revolutionary Thinking Patterns**: Identification and cultivation of paradigm-shifting approaches
+When `--auto-fix=true` is enabled, think-ultra transforms from analysis-only to analysis + execution:
 
-### Phase 2: Multi-Paradigm Analysis Enhanced for Scientific Computing
+**Standard Mode (--auto-fix=false):**
+1. Perform multi-agent analysis
+2. Generate detailed recommendations
+3. Output analysis report
+4. User manually implements suggestions
 
-**Classical Analysis Approaches:**
-- **Reductionist approach**: Break down to smallest analyzable components
-- **Holistic systems view**: Examine emergent properties and interactions
-- **Dialectical reasoning**: Explore contradictions and their resolution
-- **Phenomenological perspective**: How is this experienced subjectively?
-- **Pragmatic evaluation**: What works in practice vs. theory?
+**Auto-Fix Mode (--auto-fix=true):**
+1. Perform multi-agent analysis
+2. Generate detailed recommendations
+3. **Automatically execute recommendations using Claude tools**
+4. Validate implementation success
+5. Report execution results
 
-**Scientific Computing Paradigms:**
-- **Discrete vs. continuous modeling**: When to use each approach and trade-offs
-- **Deterministic vs. stochastic methods**: Uncertainty quantification and probabilistic models
-- **Analytical vs. numerical solutions**: Exact solutions vs. computational approximations
-- **Forward vs. inverse problems**: Parameter estimation and model inversion challenges
-- **Local vs. global optimization**: Gradient-based vs. gradient-free methods
+**Auto-Fix Implementation Process:**
+- **Recommendation Extraction** - Parse analysis for actionable items
+- **Tool Planning** - Convert recommendations to Write/Edit/Bash commands
+- **Safe Execution** - Execute changes with error handling and rollback
+- **Validation** - Verify implementation success and functionality
 
-**Research Methodology Paradigms:**
-- **Hypothesis-driven vs. data-driven**: Deductive vs. inductive scientific approaches
-- **Frequentist vs. Bayesian**: Statistical inference paradigms and their implications
-- **Supervised vs. unsupervised learning**: When to use each machine learning approach
-- **Experimental vs. observational**: Study design and causal inference considerations
+**When to Use Auto-Fix:**
+- Code optimization tasks where changes are well-defined
+- File organization and refactoring projects
+- Documentation generation and updates
+- Performance improvements with clear implementation steps
 
-### Phase 3: Cross-Disciplinary Integration with Scientific Computing Focus
+**When NOT to Use Auto-Fix:**
+- Exploratory analysis where recommendations need review
+- Complex architectural decisions requiring human judgment
+- High-risk changes to critical systems
+- Research questions without clear implementation path
 
-**Classical Cross-Disciplinary Views:**
-- **Scientific methodology**: Hypothesis formation, testing, validation
-- **Mathematical modeling**: Quantitative relationships and patterns
-- **Philosophical frameworks**: Logical consistency and ethical implications
-- **Historical analysis**: Patterns, precedents, and evolutionary trends
-- **Anthropological view**: Cultural, social, and behavioral dimensions
-- **Economic analysis**: Resource allocation, incentives, and trade-offs
+## Arguments
 
-**Scientific Computing Integration:**
-- **Computer Science**: Algorithm design, data structures, software engineering
-- **Applied Mathematics**: Numerical analysis, optimization, differential equations
-- **Statistics**: Experimental design, hypothesis testing, uncertainty quantification
-- **Physics**: Physical modeling, simulation, conservation laws
-- **Engineering**: System design, control theory, optimization under constraints
-- **Machine Learning**: Pattern recognition, prediction, automated discovery
+- **`problem`** - Question or challenge to analyze
+- **`--depth`** - Analysis depth: auto, comprehensive (default), ultra, quantum
+- **`--mode`** - Approach: auto, systematic, discovery, hybrid (default)
+- **`--agents`** - Personal agent categories: auto, core, scientific, engineering, domain-specific, all
+- **`--orchestrate`** - Enable intelligent agent orchestration and coordination
+- **`--intelligent`** - Activate advanced reasoning and cross-agent synthesis
+- **`--breakthrough`** - Focus on paradigm shifts and innovative discoveries
+- **`--paradigm`** - Thinking style: auto, multi (default), cross, meta
+- **`--priority`** - Focus: auto (default), implementation
+- **`--recursive`** - Self-improving analysis: false (default), true
+- **`--export-insights`** - Generate deliverable files
+- **`--auto-fix`** - Execute recommendations: false (default), true
 
-**Computational Framework Analysis:**
-- **JAX Ecosystem Integration**: Flax neural networks, Optax optimizers, Chex testing
-- **Julia Scientific Stack**: DifferentialEquations.jl, Flux.jl, MLJ.jl, Plots.jl
-- **Python Scientific Stack**: NumPy, SciPy, Pandas, Scikit-learn, Matplotlib
-- **Research Workflow Tools**: Jupyter, DVC, MLflow, Weights & Biases, Papermill
+## Personal Agent Categories
 
-### Phase 4: Temporal and Spatial Scaling with Computational Considerations
+**Core Agents** - Foundational reasoning, problem-solving, and cognitive enhancement
+**Scientific Agents** - JAX/Julia/Python optimization, numerical methods, performance engineering
+**Engineering Agents** - Architecture, development, deployment, quality assurance, DevOps
+**Domain-Specific Agents** - Specialized expertise for targeted problem domains
+**All Agents** - Complete 23-agent system with intelligent orchestration
 
-**Classical Scaling Analysis:**
-- **Multi-timescale analysis**: Immediate, short-term, medium-term, long-term
-- **Generational thinking**: Impact across multiple generations
-- **Spatial scaling**: Local, regional, national, global implications
-- **Fractal analysis**: Self-similar patterns across different scales
-- **Path dependency**: How history constrains future options
+### Agent Orchestration Options
 
-**Computational Scaling Analysis:**
-- **Algorithm scaling**: Linear, logarithmic, polynomial, exponential complexity
-- **Data scaling**: Memory requirements and I/O bottlenecks
-- **Parallel scaling**: Amdahl's law and parallelization efficiency
-- **Hardware scaling**: CPU, GPU, TPU, distributed computing considerations
-- **Research timeline scaling**: Prototype to production deployment timelines
+**--orchestrate** - Intelligent coordination between agents for optimal collaboration
+**--intelligent** - Advanced reasoning synthesis across multiple agent perspectives
+**--breakthrough** - Focus on paradigm shifts and innovative breakthrough discovery
 
-**Scientific Discovery Scaling:**
-- **Problem size scaling**: From toy problems to real-world applications
-- **Model complexity scaling**: From simple to sophisticated models
-- **Validation scaling**: From local to global generalization
-- **Impact scaling**: From individual research to societal applications
+## Usage Patterns
 
-### Phase 5: Uncertainty and Risk Modeling with Scientific Rigor
+```bash
+# Core reasoning (foundational agents)
+/think-ultra "your problem" --agents=core
 
-**Classical Risk Analysis:**
-- **Probabilistic reasoning**: Bayesian updating and confidence intervals
-- **Scenario planning**: Multiple future pathways and their implications
-- **Black swan analysis**: Low-probability, high-impact events
-- **Antifragility assessment**: What benefits from disorder?
-- **Robustness testing**: Performance under various stress conditions
+# Technical optimization (scientific + engineering)
+/think-ultra "optimization challenge" --agents=scientific,engineering --orchestrate
 
-**Scientific Computing Risk Analysis:**
-- **Numerical stability risk**: Conditioning, error propagation, catastrophic cancellation
-- **Computational resource risk**: Memory overflow, timeout, hardware failure
-- **Implementation risk**: Bugs, algorithmic errors, performance regressions
-- **Reproducibility risk**: Non-determinism, environment dependencies, version conflicts
-- **Scientific validity risk**: Statistical significance, overfitting, publication bias
+# Domain-specific analysis (targeted expertise)
+/think-ultra "specialized problem" --agents=domain-specific --intelligent
 
-**Research and Development Risk:**
-- **Hypothesis risk**: False positives, false negatives, multiple testing
-- **Data quality risk**: Bias, missing data, measurement error, label noise
-- **Model risk**: Overfitting, underfitting, distributional shift
-- **Publication risk**: Peer review challenges, reproducibility requirements
-- **Career risk**: Funding cycles, competition, technology obsolescence
-
-### Phase 6: Decision Theory and Game Theory with Scientific Context
-
-**Classical Decision Framework:**
-- **Multi-criteria decision analysis**: Weighted evaluation of options
-- **Strategic interactions**: How others' decisions affect outcomes
-- **Mechanism design**: Optimal system architecture for desired outcomes
-- **Behavioral economics**: Cognitive biases and psychological factors
-- **Evolutionary stable strategies**: What persists over time?
-
-**Scientific Computing Decision Framework:**
-- **Algorithm selection**: Trade-offs between accuracy, speed, memory, implementation complexity
-- **Framework selection**: JAX vs. Julia vs. Python for specific problems
-- **Hardware selection**: CPU vs. GPU vs. TPU for computational workloads
-- **Parallelization strategy**: Data parallel vs. model parallel vs. pipeline parallel
-- **Optimization method**: Gradient-based vs. gradient-free vs. hybrid approaches
-
-**Research Strategy Decisions:**
-- **Methodology selection**: Experimental vs. computational vs. theoretical approaches
-- **Publication strategy**: Conference vs. journal, open access vs. traditional
-- **Collaboration strategy**: Interdisciplinary teams, resource sharing, competition
-- **Resource allocation**: Time, computational budget, human resources
-- **Risk-reward optimization**: Conservative vs. high-risk high-reward research directions
-
-### Phase 7: Meta-Cognitive Reflection with Scientific Methodology
-
-**Classical Meta-Cognition:**
-- **Cognitive bias audit**: Systematic identification of thinking errors
-- **Perspective-taking**: Steel-manning opposing viewpoints
-- **Assumption archaeology**: Digging deep into foundational beliefs
-- **Reasoning transparency**: Making implicit logic explicit
-- **Intellectual humility**: Acknowledging limits and uncertainties
-
-**Scientific Meta-Cognition:**
-- **Methodological bias audit**: Confirmation bias, selection bias, publication bias
-- **Reproducibility reflection**: What makes results reproducible and generalizable?
-- **Peer review anticipation**: What would reviewers and experts critique?
-- **Open science principles**: Transparency, sharing, collaboration
-- **Scientific integrity**: Honest reporting, error acknowledgment, correction mechanisms
-
-**Computational Meta-Cognition:**
-- **Implementation bias audit**: Premature optimization, framework lock-in, technical debt
-- **Performance assumption validation**: Profiling vs. intuition, benchmarking rigor
-- **Abstraction level reflection**: When to optimize, when to generalize
-- **Tool selection reflection**: Best tool for the job vs. familiar tools
-- **Maintenance and evolution considerations**: Long-term sustainability and adaptability
-
-### Phase 8: Scientific Computing Implementation Strategy
-
-**JAX/Flax Implementation Planning:**
-- **JIT compilation strategy**: Function boundaries, static vs. dynamic shapes
-- **Automatic differentiation design**: Forward-mode vs. reverse-mode, higher-order derivatives
-- **Parallelization architecture**: vmap for batching, pmap for devices, pipeline parallelism
-- **Memory optimization**: Gradient accumulation, activation checkpointing, mixed precision
-- **Model architecture**: Flax modules, parameter sharing, multi-task learning
-
-**Julia Performance Implementation:**
-- **Type system optimization**: Concrete types, type stability analysis, specialization
-- **Memory management**: In-place operations, broadcasting, allocation profiling
-- **Parallel computing**: Multi-threading, distributed computing, GPU programming
-- **Package ecosystem integration**: Interoperability, performance considerations
-- **Debugging and profiling**: Performance analysis, type inference inspection
-
-**Research Workflow Implementation:**
-- **Experiment management**: Reproducible environments, hyperparameter tracking
-- **Data pipeline**: Efficient loading, preprocessing, augmentation
-- **Model validation**: Cross-validation, statistical testing, robustness analysis
-- **Result reporting**: Visualization, statistical analysis, publication preparation
-- **Collaboration tools**: Version control, documentation, knowledge sharing
-
-## Revolutionary Quantum-Level Ultra-Structured Output (2025 Edition)
-
-Present your ultra-comprehensive analysis using this revolutionary framework with breakthrough discovery patterns, meta-cognitive insights, and exponential reasoning depth:
-
-### 🧠 **Quantum-Level Cognitive Analysis Report**
-
-```markdown
-<quantum_cognitive_analysis>
-
-# Revolutionary Ultra-Think Intelligence Assessment
-
-## Meta-Cognitive Processing Metrics
-- **Analytical Depth Level**: [Quantum/Ultra/Comprehensive] - [Reasoning complexity achieved]
-- **Breakthrough Discovery Score**: [1-10] - [Revolutionary insight generation capability]
-- **Cross-Domain Synthesis**: [1-10] - [Knowledge integration across disciplines]
-- **Paradigm Shift Detection**: [1-10] - [Revolutionary approach identification]
-- **Emergent Property Recognition**: [1-10] - [Complex system behavior prediction]
-
-## Cognitive Architecture Performance
-- **Recursive Reasoning Depth**: [1-10] - [Self-improving analytical processing]
-- **Creative Pattern Recognition**: [1-10] - [Unconventional solution pathway detection]
-- **Uncertainty Quantification**: [1-10] - [Probabilistic reasoning calibration]
-- **Bias Mitigation Effectiveness**: [1-10] - [Cognitive bias identification and correction]
-- **Meta-Analytical Awareness**: [1-10] - [Self-aware reasoning process optimization]
-
-</quantum_cognitive_analysis>
+# Maximum capability (all 23 agents)
+/think-ultra "complex system design" --agents=all --breakthrough --priority=implementation
 ```
 
-### 1. Problem Reconceptualization & Mathematical Formulation
+## Quick Agent Selection Guide
 
-**Core Problem Analysis:**
-- **Original question**: As stated by the user
-- **Refined question**: After deep mathematical and scientific analysis
-- **Mathematical formulation**: Precise mathematical statement of the problem
-- **Hidden assumptions**: Uncovered implicit beliefs and constraints
-- **Reframing**: Alternative scientific and computational perspectives
+**🚀 New User? Start Here:**
 
-**Scientific Computing Context:**
-- **Computational complexity**: Big-O analysis and scalability implications
-- **Numerical considerations**: Precision, stability, conditioning requirements
-- **Hardware requirements**: CPU/GPU/TPU, memory, distributed computing needs
-- **Framework suitability**: JAX vs. Julia vs. Python stack analysis
+| **Your Problem Type** | **Recommended Agents** | **Example Command** |
+|----------------------|----------------------|-------------------|
+| **General analysis** | `--agents=core` | `/think-ultra "analyze this approach" --agents=core` |
+| **Code optimization** | `--agents=scientific` | `/think-ultra "optimize Python performance" --agents=scientific --orchestrate` |
+| **System design** | `--agents=engineering` | `/think-ultra "design architecture" --agents=engineering --intelligent` |
+| **Research questions** | `--agents=domain-specific` | `/think-ultra "research methodology" --agents=domain-specific` |
+| **Complex projects** | `--agents=all` | `/think-ultra "complex problem" --agents=all --breakthrough` |
 
-### 2. Multi-Dimensional Scientific Computing Mapping
+**🎯 Quick Decision Tree:**
+- **Simple problem?** → Use `--agents=core`
+- **Technical/scientific?** → Use `--agents=scientific`
+- **Engineering/architecture?** → Use `--agents=engineering`
+- **Research/documentation?** → Use `--agents=domain-specific`
+- **Maximum insight needed?** → Use `--agents=all`
 
-**Core Components:**
-- **Mathematical foundations**: Equations, algorithms, theoretical basis
-- **Data structures**: Arrays, tensors, graphs, sparse representations
-- **Computational pipeline**: Input → Processing → Output transformations
-- **Performance bottlenecks**: Memory, computation, I/O, communication
+**⚡ Pro Tip**: Add `--orchestrate` for better coordination, `--intelligent` for enhanced reasoning, `--breakthrough` for innovation focus.
 
-**System Dynamics:**
-- **Feedback loops**: Iterative algorithms, convergence behavior
-- **Emergent behaviors**: Optimization landscapes, phase transitions
-- **Scaling relationships**: How performance changes with problem size
-- **Dependencies**: Library, hardware, and environmental dependencies
+## When to Use
 
-**Scientific Stakeholder Ecosystem:**
-- **Researchers**: Domain experts, computational scientists, theorists
-- **Engineers**: Software developers, DevOps, infrastructure teams
-- **Users**: Students, practitioners, end-user applications
-- **Community**: Open source contributors, reviewers, collaborators
+**Use think-ultra for:**
+- Complex multi-dimensional problems requiring deep analysis
+- Research and development projects
+- Cross-domain synthesis and innovation
+- High-stakes technical decisions
+- Performance optimization challenges
 
-### 3. Evidence and Research Integration
+**Use standard execution for:**
+- Simple implementation tasks
+- Well-defined problems with known solutions
+- Time-sensitive quick answers
+- Basic debugging or documentation
 
-**Scientific Literature Synthesis:**
-- **Theoretical foundations**: Mathematical proofs, algorithmic analysis
-- **Empirical findings**: Benchmarks, performance studies, comparative analyses
-- **Best practices**: Community standards, reproducibility guidelines
-- **State-of-the-art**: Current leading approaches and recent advances
+## Analysis Depth Levels
 
-**Computational Evidence:**
-- **Benchmarking data**: Performance comparisons across frameworks
-- **Scalability studies**: Weak and strong scaling behavior
-- **Numerical validation**: Accuracy, stability, convergence verification
-- **Real-world applications**: Case studies and production deployments
+- **Comprehensive** - Thorough single-domain analysis with systematic methodology
+- **Ultra** - Multi-domain analysis with cross-disciplinary insights
+- **Quantum** - Maximum depth analysis with paradigm shift detection and breakthrough discovery
 
-### 4. Comprehensive Scientific Computing Option Analysis
+## Analysis Modes
 
-**Algorithm and Method Options:**
-- **JAX-based approaches**: JIT compilation, autodiff, vectorization strategies
-- **Julia implementations**: Type-stable, high-performance numerical computing
-- **Python scientific stack**: NumPy/SciPy, scikit-learn, GPU acceleration
-- **Hybrid approaches**: Multi-language integration and optimization
+- **Systematic** - Structured, methodical approach with rigorous validation
+- **Discovery** - Innovation-focused with creative pattern recognition
+- **Hybrid** - Balanced approach combining systematic rigor with creative insights
 
-**Implementation Strategy Options:**
-- **Performance vs. development time**: Optimization level trade-offs
-- **Accuracy vs. speed**: Numerical precision and computational efficiency
-- **Memory vs. computation**: Space-time trade-offs and algorithm selection
-- **Maintainability vs. optimization**: Code clarity and performance tuning
+## Personal 23-Agent System
 
-**Research Methodology Options:**
-- **Experimental design**: Controlled experiments, ablation studies, statistical analysis
-- **Validation strategies**: Cross-validation, bootstrap, robustness testing
-- **Publication pathways**: Conference vs. journal, open access, reproducibility
+Our personal multi-agent system uses 23 specialized agents organized into strategic categories:
 
-### 5. Scientific Computing Risk and Uncertainty Assessment
+### Core Agents (6 agents)
+**Meta-Cognitive Agent** - Higher-order thinking, self-reflection, cognitive optimization
+**Strategic-Thinking Agent** - Long-term planning, decision frameworks, strategic analysis
+**Creative-Innovation Agent** - Breakthrough thinking, paradigm shifts, novel connections
+**Problem-Solving Agent** - Systematic analysis, solution generation, optimization
+**Critical-Analysis Agent** - Logic validation, assumption testing, skeptical evaluation
+**Synthesis Agent** - Integration, pattern recognition, holistic understanding
 
-**Technical Risks:**
-- **Numerical instability**: Conditioning, catastrophic cancellation, overflow
-- **Implementation bugs**: Algorithmic errors, boundary conditions, edge cases
-- **Performance degradation**: Memory leaks, algorithmic complexity, resource contention
-- **Reproducibility failures**: Non-determinism, environment sensitivity, version conflicts
+### Scientific Agents (5 agents)
+**JAX-Performance Agent** - JAX optimization, XLA compilation, GPU acceleration
+**Julia-Computing Agent** - Julia performance, distributed computing, numerical methods
+**Python-Scientific Agent** - Scientific Python, NumPy/SciPy optimization, algorithms
+**ML-Engineering Agent** - Machine learning systems, model optimization, production ML
+**Data-Science Agent** - Statistical analysis, experimental design, data engineering
 
-**Research Risks:**
-- **Statistical validity**: Multiple testing, p-hacking, overfitting
-- **Generalization failure**: Distribution shift, domain adaptation, robustness
-- **Peer review challenges**: Methodology concerns, reproducibility requirements
-- **Resource constraints**: Computational budget, time limitations, hardware availability
+### Engineering Agents (6 agents)
+**Architecture Agent** - System design, scalability, technical architecture
+**Full-Stack Agent** - End-to-end development, integration, user experience
+**DevOps Agent** - Infrastructure, deployment, automation, monitoring
+**Security Agent** - Security analysis, vulnerability assessment, secure coding
+**Quality-Assurance Agent** - Testing strategies, code quality, validation frameworks
+**Performance-Engineering Agent** - Optimization, profiling, scalability engineering
 
-**Mitigation Strategies:**
-- **Numerical stability**: Double precision, alternative algorithms, stability analysis
-- **Testing and validation**: Unit tests, integration tests, numerical verification
-- **Performance monitoring**: Profiling, benchmarking, regression testing
-- **Reproducibility insurance**: Version control, environment management, documentation
+### Domain-Specific Agents (6 agents)
+**Research-Methodology Agent** - Research design, literature synthesis, peer review standards
+**Documentation Agent** - Technical writing, API docs, knowledge management
+**UI-UX Agent** - User interface design, user experience, accessibility
+**Database Agent** - Data modeling, query optimization, database design
+**Network-Systems Agent** - Distributed systems, networking, communication protocols
+**Integration Agent** - Cross-domain synthesis, interdisciplinary connections
 
-### 6. Strategic Recommendations with Implementation Roadmap
+### Agent Coordination Patterns
 
-**Primary Technical Recommendation:**
-- **Optimal approach**: Best framework, algorithm, and implementation strategy
-- **Scientific justification**: Mathematical, empirical, and practical reasoning
-- **Performance expectations**: Quantitative estimates and benchmarks
-- **Resource requirements**: Hardware, software, and human resources
+**Intelligent Orchestration (--orchestrate)**
+- Dynamic agent selection based on problem characteristics
+- Adaptive workflow routing and task distribution
+- Real-time coordination and conflict resolution
+- Resource optimization and parallel processing
 
-**Implementation Roadmap:**
-- **Phase 1: Prototype** (Timeline: X weeks)
-  - Mathematical formulation and algorithm design
-  - Proof-of-concept implementation in preferred framework
-  - Initial validation and performance assessment
+**Advanced Reasoning (--intelligent)**
+- Cross-agent knowledge synthesis and validation
+- Multi-perspective analysis and viewpoint integration
+- Cognitive bias detection and mitigation
+- Evidence triangulation and consensus building
 
-- **Phase 2: Optimization** (Timeline: Y weeks)
-  - Performance profiling and bottleneck identification
-  - JAX JIT compilation, Julia type optimization, GPU acceleration
-  - Numerical stability and accuracy validation
+**Breakthrough Discovery (--breakthrough)**
+- Paradigm shift detection and exploration
+- Innovation pathway identification
+- Disruptive opportunity analysis
+- Creative constraint relaxation and reframing
 
-- **Phase 3: Validation** (Timeline: Z weeks)
-  - Comprehensive testing and benchmarking
-  - Reproducibility verification and documentation
-  - Peer review preparation and methodology validation
+## Examples
 
-- **Phase 4: Production** (Timeline: W weeks)
-  - Deployment infrastructure and monitoring
-  - User documentation and training materials
-  - Maintenance and evolution planning
+```bash
+# JAX Performance Optimization with Personal Agents
+/think-ultra "Optimize JAX performance for 10B parameter model training" \
+  --depth=ultra --agents=scientific --orchestrate --intelligent
 
-### 7. Scientific Computing Meta-Analysis and Reflection
+# Research Paper Development with Domain Expertise
+/think-ultra "Create transformer variant optimized for PDE solving" \
+  --agents=scientific,domain-specific --paradigm=meta --breakthrough
 
-**Technical Confidence Assessment:**
-- **Mathematical certainty**: Theoretical foundations and proofs
-- **Empirical confidence**: Experimental validation and evidence quality
-- **Implementation confidence**: Code quality, testing coverage, performance verification
-- **Reproducibility confidence**: Environment control, documentation completeness
+# Production System Design with Full Agent Team
+/think-ultra "Scalable ML inference architecture with <10ms latency" \
+  --agents=all --priority=implementation --orchestrate
 
-**Scientific Methodology Reflection:**
-- **Methodological rigor**: Experimental design, statistical analysis, peer review readiness
-- **Reproducibility assessment**: Determinism, environment management, documentation quality
-- **Generalization potential**: Domain applicability, robustness, scalability
-- **Impact assessment**: Scientific contribution, practical utility, community value
+# Cross-Domain Innovation with Personal Agents
+/think-ultra "Apply quantum computing principles to ML optimization" \
+  --paradigm=cross --agents=core,scientific --breakthrough --intelligent
 
-**Key Scientific Computing Insights:**
-- **Most important mathematical discoveries**: Novel algorithmic insights or theoretical results
-- **Critical performance findings**: Unexpected bottlenecks or optimization opportunities
-- **Framework-specific learnings**: JAX, Julia, or Python stack-specific insights
-- **Research methodology insights**: Experimental design or validation innovations
-
-**Remaining Research Questions:**
-- **Theoretical gaps**: Mathematical or algorithmic unknowns requiring investigation
-- **Empirical questions**: Experiments needed for validation or optimization
-- **Implementation challenges**: Technical hurdles requiring additional development
-- **Scaling questions**: Performance behavior at larger scales or different domains
-
-### 8. Scientific Computing Implementation Plan
-
-**JAX/Flax Implementation Checklist:**
-- [ ] Function design for JIT compilation optimization
-- [ ] Automatic differentiation strategy (forward/reverse mode)
-- [ ] Vectorization with vmap/pmap for parallelization
-- [ ] GPU/TPU memory management and device placement
-- [ ] Flax model architecture and parameter management
-
-**Julia Performance Implementation Checklist:**
-- [ ] Type stability analysis and optimization
-- [ ] Memory allocation profiling and optimization
-- [ ] Multiple dispatch leveraging for performance
-- [ ] Parallel computing strategy (threads/distributed/GPU)
-- [ ] Package ecosystem integration and testing
-
-**Research Workflow Implementation Checklist:**
-- [ ] Reproducible environment specification (Docker, Conda, etc.)
-- [ ] Experiment tracking and hyperparameter management
-- [ ] Statistical analysis and significance testing framework
-- [ ] Visualization and result presentation pipeline
-- [ ] Documentation and publication preparation workflow
-
-**Success Metrics and Validation:**
-- **Performance metrics**: Speed, memory usage, scalability benchmarks
-- **Accuracy metrics**: Numerical precision, convergence, validation error
-- **Reproducibility metrics**: Environment consistency, result stability
-- **Scientific metrics**: Statistical significance, effect size, generalization
-
-### 🚀 **Revolutionary Breakthrough Discovery & Implementation**
-
-#### **Quantum-Level Innovation Framework**
-
-```markdown
-<breakthrough_discovery_matrix>
-
-# Revolutionary Insight Generation & Implementation
-
-## Paradigm-Shifting Opportunities Identified
-### Primary Breakthrough Vectors
-1. **[Revolutionary Approach Name]**
-   - **Paradigm Violation**: [How it breaks conventional thinking]
-   - **Cross-Domain Synthesis**: [Unexpected knowledge domain combinations]
-   - **Emergent Properties**: [Novel capabilities that emerge]
-   - **Implementation Pathway**: [Specific steps to realize breakthrough]
-   - **Transformative Impact**: [Expected revolutionary changes]
-
-2. **[Alternative Revolutionary Approach]**
-   - **Unconventional Methodology**: [Novel problem-solving approach]
-   - **Technology Convergence**: [Multi-technology fusion opportunities]
-   - **Disruptive Potential**: [Industry/field transformation capability]
-   - **Resource Requirements**: [What's needed for implementation]
-   - **Risk-Reward Analysis**: [High-risk high-reward assessment]
-
-## Meta-Cognitive Breakthrough Insights
-### Analytical Process Innovations
-- **Recursive Reasoning Enhancement**: [How analysis improved during processing]
-- **Creative Pattern Emergence**: [Novel connections discovered]
-- **Cognitive Bias Breakthrough**: [Systematic thinking limitations overcome]
-- **Meta-Learning Acceleration**: [Learning-how-to-learn improvements]
-- **Wisdom Synthesis**: [Deep understanding emergence patterns]
-
-## Revolutionary Implementation Strategy
-### Quantum-Level Execution Framework
-- **Phase α: Paradigm Preparation** (Cognitive Infrastructure)
-  - Mental model restructuring for revolutionary thinking
-  - Knowledge base expansion and cross-domain integration
-  - Breakthrough detection sensitivity calibration
-  - Creative confidence building and risk tolerance
-
-- **Phase β: Breakthrough Incubation** (Innovation Germination)
-  - Unconventional approach experimentation
-  - Rapid prototyping of revolutionary concepts
-  - Failure analysis and learning acceleration
-  - Paradigm shift momentum building
-
-- **Phase γ: Revolutionary Implementation** (Transformation Execution)
-  - Full-scale breakthrough approach deployment
-  - Performance validation and optimization
-  - Paradigm shift documentation and sharing
-  - Revolutionary impact measurement and scaling
-
-</breakthrough_discovery_matrix>
+# Auto-Fix Examples with Personal Agent System
+/think-ultra "Optimize this Python script for performance" --auto-fix --agents=scientific --orchestrate
+/think-ultra "Refactor this codebase to improve maintainability" --auto-fix --agents=engineering --intelligent
+/think-ultra "Fix code quality issues in this project" --auto-fix --agents=all --priority=implementation --orchestrate
 ```
 
-#### **Ultra-Advanced Success Metrics & Validation**
+## Integration with Other Commands
 
-```markdown
-<quantum_success_framework>
+```bash
+# Strategy + Implementation workflow with Personal Agents
+/think-ultra "JAX optimization strategy" --agents=core,scientific --orchestrate
+/jax-performance --technique=caching --gpu-accel
 
-# Revolutionary Success Measurement & Validation
+# Auto-fix workflow with Intelligent Coordination
+/think-ultra "Optimize JAX code for performance" --auto-fix --agents=scientific --intelligent
 
-## Breakthrough Achievement Indicators
-- **Paradigm Shift Success**: [Evidence of fundamental approach changes]
-- **Innovation Velocity**: [Speed of breakthrough discovery and implementation]
-- **Cross-Domain Impact**: [Influence across multiple fields and disciplines]
-- **Emergent Property Manifestation**: [Novel capabilities and behaviors observed]
-- **Revolutionary Adoption**: [Community and field acceptance of breakthroughs]
+# Research + Validation workflow with Domain Expertise
+/think-ultra "experimental design" --agents=core,domain-specific --breakthrough
+/run-all-tests --scientific --auto-fix
 
-## Meta-Cognitive Development Metrics
-- **Analytical Capability Evolution**: [Reasoning improvement over session]
-- **Creative Pattern Recognition**: [Novel connection discovery frequency]
-- **Insight Quality Enhancement**: [Depth and value of insights generated]
-- **Breakthrough Sensitivity**: [Revolutionary opportunity detection accuracy]
-- **Cognitive Architecture Optimization**: [Self-improving reasoning effectiveness]
-
-## Quantum-Level Validation Framework
-- **Multi-Dimensional Verification**: [Validation across theory, experiment, application]
-- **Emergent Property Confirmation**: [Complex system behavior prediction accuracy]
-- **Paradigm Shift Authentication**: [Revolutionary nature verification]
-- **Cross-Domain Generalization**: [Insight applicability across fields]
-- **Long-term Impact Assessment**: [Sustained transformative value]
-
-</quantum_success_framework>
+# Auto-fix + Verification workflow with Full Agent Team
+/think-ultra "Fix code quality issues" --auto-fix --agents=engineering --orchestrate
+/double-check --deep-analysis --auto-complete
 ```
 
-### 🌟 **Meta-Cognitive Ultra-Think Evolution**
+## Output Framework
 
-#### **Cognitive Architecture Enhancement Protocol**
+Analysis follows 8-phase structured framework:
 
-**Advanced Self-Improvement Mechanisms:**
-- **Recursive Analysis Optimization**: Continuous improvement of analytical processes
-- **Pattern Recognition Evolution**: Enhanced ability to detect novel connections
-- **Creative Synthesis Advancement**: Improved cross-domain insight generation
-- **Breakthrough Detection Calibration**: Increased sensitivity to revolutionary opportunities
-- **Meta-Learning Acceleration**: Faster adaptation and learning velocity
+1. **Problem Architecture** - Mathematical foundations, complexity analysis
+2. **Multi-Dimensional Systems** - Stakeholder analysis, cross-domain integration
+3. **Evidence Synthesis** - Literature integration, methodological framework
+4. **Innovation Analysis** - Breakthrough opportunities, paradigm shifts
+5. **Risk Assessment** - Technical uncertainties, mitigation strategies
+6. **Alternatives Analysis** - Multi-paradigm approaches, trade-offs
+7. **Implementation Strategy** - Roadmap, resource requirements, success metrics
+8. **Future Considerations** - Sustainability, evolution pathways, broader impact
 
-**Revolutionary Thinking Pattern Cultivation:**
-- **Paradigm Flexibility**: Ability to shift between multiple conceptual frameworks
-- **Assumption Violation Comfort**: Willingness to challenge fundamental beliefs
-- **Complexity Tolerance**: Comfort with ambiguity and multi-dimensional problems
-- **Creative Confidence**: Trust in unconventional solution pathways
-- **Revolutionary Vision**: Ability to see transformative possibilities
+## Performance Expectations
 
-#### **Ultra-Think Implementation Mastery**
+- **Cognitive Enhancement**: Improved reasoning patterns and creative insights
+- **Scientific Computing**: 10-50x performance optimization recommendations
+- **Research Quality**: Publication-ready analysis with peer-review standards
+- **Implementation**: Working prototypes and production deployment strategies
+- **Cross-Domain**: Novel connections and breakthrough opportunities
+- **Auto-Fix Execution**: Complete analysis-to-implementation workflow with validation
 
-**Quantum-Level Problem-Solving Protocol:**
-```python
-def quantum_ultra_think_process(problem, depth='quantum', mode='discovery'):
-    """
-    Revolutionary ultra-think implementation with advanced AI reasoning.
+## Common Workflows
 
-    Features:
-    - Quantum-level analytical depth with exponential insight generation
-    - Breakthrough discovery patterns with paradigm shift detection
-    - Meta-cognitive optimization with recursive reasoning loops
-    - Cross-domain synthesis with massive knowledge integration
-    """
+### Analysis → Implementation Pattern
+```bash
+# 1. Deep analysis with personal agents
+/think-ultra "optimize ML training pipeline" --depth=ultra --agents=scientific,engineering --orchestrate
 
-    # Phase 0: Meta-cognitive initialization
-    cognitive_state = initialize_quantum_reasoning(depth, mode)
+# 2. Apply optimizations with intelligent coordination
+/optimize training/ --language=jax --implement
+/jax-performance --technique=caching --gpu-accel
 
-    # Phase 1-8: Enhanced ultra-analysis framework
-    analysis_results = []
-    for phase in range(8):
-        phase_analysis = execute_enhanced_phase(problem, phase, cognitive_state)
-        breakthrough_insights = detect_revolutionary_patterns(phase_analysis)
-        meta_cognitive_optimization = optimize_reasoning_process(cognitive_state)
-
-        analysis_results.append({
-            'phase': phase,
-            'analysis': phase_analysis,
-            'breakthroughs': breakthrough_insights,
-            'meta_optimization': meta_cognitive_optimization
-        })
-
-        # Recursive cognitive enhancement
-        cognitive_state = enhance_cognitive_architecture(cognitive_state, analysis_results)
-
-    # Revolutionary synthesis and breakthrough discovery
-    revolutionary_insights = synthesize_breakthrough_discoveries(analysis_results)
-    implementation_strategy = generate_quantum_implementation_plan(revolutionary_insights)
-
-    return {
-        'ultra_analysis': analysis_results,
-        'breakthrough_discoveries': revolutionary_insights,
-        'implementation_strategy': implementation_strategy,
-        'meta_cognitive_evolution': cognitive_state.get_enhancement_summary()
-    }
+# 3. Verify with personal agent validation
+/double-check "ML training optimization" --deep-analysis --auto-complete
 ```
 
-**🎯 Core Philosophy**: Transform the most complex problems through revolutionary quantum-level analytical thinking that transcends conventional boundaries, discovers breakthrough solutions, and enables paradigm-shifting innovations while continuously evolving cognitive capabilities.
+### Research → Development Workflow
+```bash
+# 1. Research methodology with domain expertise
+/think-ultra "design experiment framework" --agents=domain-specific,core --paradigm=meta --breakthrough
 
-**⚡ Revolutionary Guarantee**: This ultra-comprehensive analysis framework is designed for the most complex scientific computing, research, and technical challenges requiring breakthrough discoveries. The quantum-level 8+ phase analysis provides exponential insight generation, paradigm shift detection, and revolutionary solution pathways. For problems requiring maximum cognitive power and transformative insights, this is the ultimate analytical engine.
+# 2. Generate implementation with engineering agents
+/generate-tests research/ --type=scientific --framework=auto
+/update-docs research/ --type=api --research
+
+# 3. Meta-analysis with personal agent synthesis
+/reflection --type=scientific --optimize=innovation --breakthrough-mode
+```
+
+### Problem-Solving Escalation
+```bash
+# Start simple → escalate with personal agents as needed
+/optimize code.py                    # Try standard optimization first
+/multi-agent-optimize code.py --agents=core,scientific        # Personal agents for complex analysis
+/think-ultra "complex problem" --agents=all --orchestrate --breakthrough  # Full 23-agent system for hardest problems
+```
+
+## Related Commands
+
+**Prerequisites**: Commands that provide input or context
+- `/check-code-quality` - Assess current code quality before analysis
+- `/debug --auto-fix` - Fix runtime issues before deep analysis
+- `/explain-code` - Understand codebase structure before optimization analysis
+- Clean working environment - Remove temporary files and ensure clean state
+
+**Alternatives**: Similar functionality, different approaches
+- `/multi-agent-optimize` - Multi-agent focus specifically on code optimization
+- `/optimize --implement` - Single-domain performance optimization with implementation
+- `/reflection --type=comprehensive` - Self-analysis and session improvement
+- `/double-check --deep-analysis` - Verification-focused multi-angle analysis
+
+**Combinations**: Commands that enhance think-ultra
+- `/double-check --deep-analysis` - Systematically verify think-ultra recommendations
+- `/generate-tests --coverage=95` - Implement comprehensive testing based on analysis
+- `/adopt-code --optimize` - Modernize legacy code based on insights
+- `/refactor-clean --implement` - Apply structural improvements from analysis
+- `/commit --template=optimization` - Commit analysis-driven improvements
+
+**Follow-up Workflows**: Common next steps
+- Analysis → `/optimize --implement` → `/generate-tests` → `/double-check`
+- Research → `/scientific-computing/*` → `/run-all-tests --scientific`
+- Strategy → `/multi-agent-optimize --implement` → `/reflection --type=scientific`
+- Implementation → `/run-all-tests --auto-fix` → `/commit --validate`
+
+## Integration Patterns
+
+### With Scientific Computing Commands
+```bash
+# JAX optimization workflow with personal agents
+/think-ultra "JAX performance analysis" --agents=scientific --auto-fix --orchestrate
+# Intelligently coordinates: /jax-performance, /jax-debug, /jax-essentials
+
+# Julia development workflow with engineering integration
+/think-ultra "Julia code modernization" --agents=scientific,engineering --intelligent
+# Follow with: /julia-jit-like, /julia-ad-grad
+```
+
+### With Quality Assurance
+```bash
+# Code quality improvement with personal agents
+/think-ultra "improve code quality" --auto-fix --agents=engineering --orchestrate
+# Intelligently combines: /check-code-quality, /refactor-clean, /generate-tests
+```
+
+### With Documentation and CI/CD
+```bash
+# Project improvement with full personal agent team
+/think-ultra "project optimization" --agents=all --priority=implementation --orchestrate --intelligent
+# Coordinates: /update-docs, /ci-setup, /clean-codebase
+```
