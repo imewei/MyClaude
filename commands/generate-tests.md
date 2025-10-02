@@ -4,7 +4,7 @@ description: "Generate comprehensive test suites for Python, Julia, and JAX scie
 category: testing
 subcategory: test-generation
 complexity: intermediate
-argument-hint: "[--type=all|unit|integration|performance|jax|scientific|gpu] [--framework=auto|pytest|julia|jax] [--coverage=N] [--agents=scientific|quality|orchestrator|all] [target-file-or-module]"
+argument-hint: "[--type=all|unit|integration|performance|jax|scientific|gpu] [--framework=auto|pytest|julia|jax] [--coverage=N] [--agents=auto|core|scientific|engineering|ai|domain|quality|research|all] [--implement] [--dry-run] [--backup] [--rollback] [--intelligent] [--orchestrate] [--parallel] [--validate] [target-file-or-module]"
 allowed-tools: Read, Write, Edit, Grep, Glob, TodoWrite, Bash, Task
 model: inherit
 tags: testing, test-generation, python, julia, jax, scientific-computing
@@ -12,7 +12,7 @@ dependencies: []
 related: [run-all-tests, check-code-quality, debug, optimize, double-check]
 workflows: [test-generation, quality-assurance, scientific-testing]
 version: "2.1"
-last-updated: "2025-09-28"
+last-updated: "2025-09-29"
 ---
 
 # Generate Tests
@@ -55,6 +55,13 @@ Generate comprehensive test suites for Python, Julia, and JAX scientific computi
 | `--interactive` | Interactive mode with user guidance | false |
 | `--security` | Include security testing | false |
 | `--gpu` | Include GPU/accelerated testing | false |
+| `--agents=<agents>` | Agent selection (auto, core, scientific, engineering, ai, domain, quality, research, all) | auto |
+| `--implement` | Automatically write generated tests to files | false |
+| `--dry-run` | Preview generated tests without writing to files | false |
+| `--intelligent` | Enable intelligent agent selection based on codebase analysis | false |
+| `--orchestrate` | Enable advanced 23-agent orchestration with workflow coordination | false |
+| `--parallel` | Run test generation in parallel for maximum efficiency | false |
+| `--validate` | Validate generated tests by running them | false |
 
 ## Test Types
 
@@ -216,3 +223,5 @@ Generate comprehensive test suites for Python, Julia, and JAX scientific computi
 - Python 3.7+ with standard libraries
 - Testing frameworks (pytest, Julia Test.jl, etc.)
 - Network access for dependency installation
+
+ARGUMENTS: [--type=all|unit|integration|performance|jax|scientific|gpu] [--framework=auto|pytest|julia|jax] [--coverage=N] [--agents=auto|core|scientific|engineering|ai|domain|quality|research|all] [--implement] [--dry-run] [--intelligent] [--orchestrate] [--parallel] [target-file-or-module]

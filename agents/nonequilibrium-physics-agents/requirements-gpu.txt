@@ -1,0 +1,12 @@
+# GPU Acceleration Dependencies (Phase 4)
+
+# JAX for GPU computing
+jax[cuda12_pip]>=0.4.20  # CUDA 12 support
+jaxlib>=0.4.20
+diffrax>=0.4.1  # Modern ODE solver for JAX
+
+# Optional: CuPy for CUDA kernels
+# cupy-cuda12x>=12.0.0  # Uncomment if using direct CUDA
+
+# Optional: HOOMD-blue for GPU MD
+# hoomd>=4.0.0  # Install separately: conda install hoomd -c conda-forge

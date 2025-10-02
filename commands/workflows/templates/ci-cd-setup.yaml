@@ -1,0 +1,89 @@
+workflow:
+  name: "ci-cd-setup"
+  description: "Complete CI/CD pipeline setup workflow"
+  version: "1.0"
+  author: "Claude Code Framework"
+  tags: [cicd, automation, deployment]
+
+variables:
+  platform: "github"
+  ci_type: "basic"
+  deploy_env: "both"
+
+steps:
+  - id: analyze_project
+    command: explain-code
+    description: "Analyze project structure for CI/CD setup"
+    flags:
+      - --level=advanced
+      - --format=json
+    input: "."
+
+  - id: setup_ci_pipeline
+    command: ci-setup
+    description: "Setup CI/CD pipeline"
+    flags:
+      - --platform=${platform}
+      - --type=${ci_type}
+      - --deploy=${deploy_env}
+    depends_on: [analyze_project]
+
+  - id: parallel_ci_config
+    parallel: true
+    depends_on: [setup_ci_pipeline]
+    steps:
+      - id: setup_testing
+        command: ci-setup
+        description: "Setup testing workflows"
+        flags:
+          - --platform=${platform}
+          - --type=basic
+
+      - id: setup_security
+        command: ci-setup
+        description: "Setup security scanning"
+        flags:
+          - --platform=${platform}
+          - --security
+
+      - id: setup_monitoring
+        command: ci-setup
+        description: "Setup monitoring"
+        flags:
+          - --platform=${platform}
+          - --monitoring
+
+  - id: generate_test_suite
+    command: generate-tests
+    description: "Generate comprehensive test suite for CI"
+    flags:
+      - --type=all
+      - --framework=auto
+      - --coverage=90
+    depends_on: [parallel_ci_config]
+
+  - id: validate_ci_config
+    command: check-code-quality
+    description: "Validate CI configuration"
+    flags:
+      - --language=auto
+      - --format=text
+    input: ".github"
+    depends_on: [generate_test_suite]
+
+  - id: test_ci_locally
+    command: run-all-tests
+    description: "Test CI pipeline locally"
+    flags:
+      - --scope=all
+      - --coverage
+    depends_on: [validate_ci_config]
+
+  - id: commit_ci_setup
+    command: commit
+    description: "Commit CI/CD configuration"
+    flags:
+      - --all
+      - --ai-message
+      - --validate
+    depends_on: [test_ci_locally]

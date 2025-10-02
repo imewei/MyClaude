@@ -4,15 +4,15 @@ description: "GitHub issue analysis and automated fixing tool with PR creation"
 category: github-workflow
 subcategory: issue-automation
 complexity: advanced
-argument-hint: "[--auto-fix] [--draft] [--interactive] [--emergency] [--branch=name] [--agents=quality|devops|orchestrator|all] [issue-number-or-url]"
-allowed-tools: Bash, Read, Write, Edit, Grep, Glob, TodoWrite, MultiEdit, WebSearch, WebFetch, Task
+argument-hint: "[--implement] [--auto-fix] [--draft] [--interactive] [--emergency] [--branch=name] [--agents=auto|core|scientific|engineering|ai|domain|quality|research|all] [--dry-run] [--backup] [--rollback] [--intelligent] [--orchestrate] [--parallel] [--validate] [issue-number-or-url]"
+allowed-tools: Bash, Read, Write, Edit, Grep, Glob, TodoWrite, MultiEdit, WebSearch, WebFetch
 model: inherit
 tags: github-issues, automation, pull-requests, issue-resolution
 dependencies: []
 related: [fix-commit-errors, commit, debug, check-code-quality, generate-tests, run-all-tests, multi-agent-optimize]
 workflows: [issue-resolution, automated-pr-creation, bug-fixing]
 version: "2.1"
-last-updated: "2025-09-28"
+last-updated: "2025-09-29"
 ---
 
 # Fix GitHub Issue
@@ -39,13 +39,21 @@ Analyze GitHub issues and apply automated fixes with pull request creation.
 
 | Option | Description |
 |--------|-------------|
-| `--auto-fix` | Apply fixes automatically and create PR |
+| `--implement` | Apply fixes automatically and create PR (primary flag) |
+| `--auto-fix` | Alias for --implement (for backward compatibility) |
 | `--draft` | Create draft PR instead of regular PR |
 | `--branch=<name>` | Specify custom branch name for fixes |
 | `--interactive` | Interactive mode with step-by-step guidance |
 | `--emergency` | Emergency rapid resolution mode |
 | `--debug` | Enable verbose debugging output |
-| `--agents=<agents>` | Agent selection (quality, devops, orchestrator, all) |
+| `--agents=<agents>` | Agent selection (auto, core, scientific, engineering, ai, domain, quality, research, all) |
+| `--dry-run` | Preview fixes without applying them |
+| `--intelligent` | Enable intelligent agent selection based on issue analysis |
+| `--orchestrate` | Enable advanced 23-agent orchestration for complex issues |
+| `--parallel` | Run analysis in parallel for maximum efficiency |
+| `--validate` | Run tests and validation before creating PR |
+| `--backup` | Create backup before applying fixes |
+| `--rollback` | Enable rollback capability for failed fixes |
 
 ## Agent Integration
 
@@ -72,10 +80,15 @@ Analyze GitHub issues and apply automated fixes with pull request creation.
 
 ## Agent Selection Options
 
+- `auto` - Intelligent agent selection based on issue type and complexity
+- `core` - Essential multi-agent team for common issues
+- `scientific` - Scientific computing and research code issues
+- `engineering` - Software engineering and architecture issues
+- `ai` - AI/ML system and pipeline issues
+- `domain` - Domain-specific specialized issues
 - `quality` - Quality engineering focus for code quality and testing issues
-- `devops` - DevSecOps focus for security, infrastructure, and deployment issues
-- `orchestrator` - Multi-agent coordination for complex issue resolution workflows
-- `all` - Complete multi-agent issue resolution system with comprehensive expertise
+- `research` - Research methodology and innovation issues
+- `all` - Complete 23-agent issue resolution system with comprehensive expertise
 
 ## Usage Examples
 
@@ -155,3 +168,5 @@ Analyze GitHub issues and apply automated fixes with pull request creation.
 - Write permissions to repository (for creating branches and PRs)
 - Network access to GitHub API
 - Valid GitHub token with appropriate scopes
+
+ARGUMENTS: [--implement] [--auto-fix] [--draft] [--interactive] [--emergency] [--branch=name] [--agents=auto|core|scientific|engineering|ai|domain|quality|research|all] [--dry-run] [--intelligent] [--orchestrate] [--parallel] [issue-number-or-url]

@@ -4,15 +4,15 @@ description: "Code optimization and performance analysis for Python, Julia, JAX,
 category: optimization
 subcategory: performance
 complexity: intermediate
-argument-hint: "[--language=python|julia|jax|auto] [--category=all|algorithm|memory|io|concurrency] [--format=text|json|html] [--implement] [--agents=auto|scientific|ai|engineering|quantum|all] [--orchestrate] [--intelligent] [--breakthrough] [target]"
+argument-hint: "[--language=python|julia|jax|auto] [--category=all|algorithm|memory|io|concurrency] [--format=text|json|html] [--implement] [--agents=auto|core|scientific|engineering|ai|domain|quality|research|all] [--orchestrate] [--intelligent] [--breakthrough] [--dry-run] [--backup] [--rollback] [--parallel] [--validate] [target]"
 allowed-tools: "*"
 model: inherit
 tags: optimization, performance, python, julia, jax, scientific-computing
 dependencies: []
 related: [multi-agent-optimize, debug, jax-performance, julia-jit-like, check-code-quality, refactor-clean, generate-tests, run-all-tests, think-ultra]
 workflows: [optimize-test-verify, performance-analysis, code-quality-improvement]
-version: "2.0"
-last-updated: "2025-09-28"
+version: "2.1"
+last-updated: "2025-09-29"
 ---
 
 # Optimize
@@ -55,10 +55,15 @@ Analyze code for performance optimization opportunities across multiple language
 | `--implement` | - | false | Automatically implement optimization recommendations |
 | `--profile` | - | false | Include performance profiling in analysis |
 | `--detailed` | - | false | Show detailed analysis and explanations |
-| `--agents=<agents>` | auto\|scientific\|ai\|engineering\|quantum\|all | auto | Agent selection for multi-agent analysis |
+| `--agents=<agents>` | auto\|core\|scientific\|engineering\|ai\|domain\|quality\|research\|all | auto | Agent selection for multi-agent analysis |
 | `--orchestrate` | - | false | Enable 23-agent orchestration for complex workflows |
 | `--intelligent` | - | false | Enable intelligent agent selection based on code analysis |
 | `--breakthrough` | - | false | Enable breakthrough optimization discovery across domains |
+| `--dry-run` | - | false | Preview optimizations without applying them |
+| `--backup` | - | false | Create backup before applying optimizations |
+| `--rollback` | - | false | Enable rollback capability for failed optimizations |
+| `--parallel` | - | false | Run optimization analysis in parallel |
+| `--validate` | - | false | Validate optimization results through testing |
 
 ## 23-Agent Intelligent Optimization System
 
@@ -88,11 +93,23 @@ Analyze code for performance optimization opportunities across multiple language
 - **Performance Engineering**: Code quality and maintainable optimization
 - **Infrastructure**: DevOps and deployment optimization
 
-#### **`quantum`** - Quantum Computing Optimization
-- `advanced-quantum-computing-expert` + `scientific-computing-master` + `jax-pro`
-- **Quantum Algorithms**: Quantum computing optimization and hybrid systems
-- **Quantum-Classical**: Bridge optimization between quantum and classical computing
-- **Research Integration**: Cutting-edge quantum optimization techniques
+#### **`domain`** - Domain-Specific Optimization
+- Domain-specific experts activated based on codebase analysis
+- **Quantum Computing**: `advanced-quantum-computing-expert` for quantum algorithms
+- **Specialized Domains**: Neutron scattering, X-ray analysis, stochastic processes
+- **Legacy Modernization**: `scientific-code-adoptor` for code migration
+
+#### **`quality`** - Quality Engineering Optimization
+- `code-quality-master` focus for quality and maintainability improvements
+- **Code Quality**: Quality metrics and best practices
+- **Testing**: Test coverage and testing strategy optimization
+- **Maintainability**: Technical debt reduction and code health
+
+#### **`research`** - Research-Grade Optimization
+- `research-intelligence-master` + scientific domain experts
+- **Research Methodology**: Academic and publication-ready optimization
+- **Innovation Discovery**: Breakthrough optimization techniques
+- **Scientific Rigor**: Research-grade standards and validation
 
 #### **`all`** - Complete 23-Agent Optimization Ecosystem
 Activates all relevant agents with intelligent orchestration for breakthrough optimization discoveries.
@@ -362,3 +379,5 @@ Optimization recommendations guide development decisions and code review process
 - Python 3.7+ with standard libraries
 - Language-specific tools for Julia and JAX analysis
 - Network access for dependency analysis
+
+ARGUMENTS: [--language=python|julia|jax|auto] [--category=all|algorithm|memory|io|concurrency] [--format=text|json|html] [--implement] [--agents=auto|core|scientific|engineering|ai|domain|quality|research|all] [--orchestrate] [--intelligent] [--breakthrough] [--dry-run] [--backup] [--rollback] [--parallel] [--validate] [target]

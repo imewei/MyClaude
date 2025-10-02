@@ -1,0 +1,142 @@
+workflow:
+  name: "migration-workflow"
+  description: "Code migration and modernization workflow"
+  version: "1.0"
+  author: "Claude Code Framework"
+  tags: [migration, modernization, legacy]
+
+variables:
+  target_path: "."
+  source_language: "auto"
+  target_language: "auto"
+
+steps:
+  - id: analyze_legacy
+    command: explain-code
+    description: "Analyze legacy codebase"
+    flags:
+      - --level=expert
+      - --focus=AREA
+      - --format=json
+    input: ${target_path}
+
+  - id: plan_migration
+    command: think-ultra
+    description: "Plan migration strategy"
+    flags:
+      - --depth=comprehensive
+      - --mode=systematic
+      - --orchestrate
+    input: "migration strategy for ${source_language} to ${target_language}"
+    depends_on: [analyze_legacy]
+
+  - id: backup_codebase
+    command: commit
+    description: "Create backup before migration"
+    flags:
+      - --staged
+      - --ai-message
+    depends_on: [plan_migration]
+
+  - id: adopt_code
+    command: adopt-code
+    description: "Analyze and integrate code"
+    flags:
+      - --analyze
+      - --integrate
+      - --optimize
+      - --language=${source_language}
+      - --target=${target_language}
+    input: ${target_path}
+    depends_on: [backup_codebase]
+
+  - id: apply_modern_patterns
+    command: refactor-clean
+    description: "Apply modern patterns"
+    flags:
+      - --language=${target_language}
+      - --scope=project
+      - --patterns=modern
+      - --implement
+    input: ${target_path}
+    depends_on: [adopt_code]
+
+  - id: clean_migrated_code
+    command: clean-codebase
+    description: "Clean up migrated code"
+    flags:
+      - --imports
+      - --dead-code
+      - --duplicates
+      - --ast-deep
+      - --orchestrate
+    input: ${target_path}
+    depends_on: [apply_modern_patterns]
+
+  - id: generate_migration_tests
+    command: generate-tests
+    description: "Generate tests for migrated code"
+    flags:
+      - --type=all
+      - --framework=auto
+      - --coverage=90
+    input: ${target_path}
+    depends_on: [clean_migrated_code]
+
+  - id: validate_functionality
+    command: run-all-tests
+    description: "Validate migrated functionality"
+    flags:
+      - --scope=all
+      - --coverage
+      - --auto-fix
+    depends_on: [generate_migration_tests]
+    retry:
+      max_attempts: 3
+      backoff: exponential
+
+  - id: performance_comparison
+    command: run-all-tests
+    description: "Compare performance"
+    flags:
+      - --profile
+      - --benchmark
+      - --report
+    depends_on: [validate_functionality]
+
+  - id: optimize_migrated
+    command: optimize
+    description: "Optimize migrated code"
+    flags:
+      - --language=${target_language}
+      - --category=all
+      - --implement
+      - --orchestrate
+    input: ${target_path}
+    depends_on: [performance_comparison]
+
+  - id: update_migration_docs
+    command: update-docs
+    description: "Update migration documentation"
+    flags:
+      - --type=all
+      - --optimize
+    depends_on: [optimize_migrated]
+
+  - id: final_verification
+    command: double-check
+    description: "Final migration verification"
+    flags:
+      - --deep-analysis
+      - --report
+      - --orchestrate
+    depends_on: [update_migration_docs]
+
+  - id: commit_migration
+    command: commit
+    description: "Commit migration"
+    flags:
+      - --all
+      - --ai-message
+      - --validate
+    depends_on: [final_verification]

@@ -4,15 +4,15 @@ description: "Code quality analysis for Python, Julia, and JAX ecosystems with s
 category: code-quality
 subcategory: analysis
 complexity: basic
-argument-hint: "[--language=python|julia|jax|auto] [--analysis=basic|scientific|gpu] [--auto-fix] [--format=text|json] [--agents=quality|scientific|orchestrator|all] [target-path]"
+argument-hint: "[--language=python|julia|jax|auto] [--analysis=basic|scientific|gpu] [--implement] [--auto-fix] [--format=text|json] [--agents=auto|core|scientific|engineering|ai|domain|quality|research|all] [--dry-run] [--backup] [--rollback] [--intelligent] [--orchestrate] [--parallel] [--validate] [target-path]"
 allowed-tools: Bash, Edit, Read, Glob, MultiEdit, Write, TodoWrite
 model: inherit
 tags: code-quality, analysis, python, julia, jax, scientific-computing
 dependencies: []
 related: [optimize, refactor-clean, multi-agent-optimize, debug, generate-tests, run-all-tests, commit, double-check, adopt-code]
 workflows: [quality-analysis, code-review, pre-commit-validation]
-version: "2.0"
-last-updated: "2025-09-28"
+version: "2.1"
+last-updated: "2025-09-29"
 ---
 
 # Check Code Quality
@@ -32,10 +32,18 @@ Analyze code quality across Python, Julia, and JAX ecosystems with scientific co
 
 - `--language=<lang>`: Target language (python, julia, jax, auto)
 - `--analysis=<type>`: Analysis type (basic, scientific, gpu)
-- `--auto-fix`: Apply automatic fixes where safe
+- `--implement`: Apply automatic fixes where safe (primary flag)
+- `--auto-fix`: Alias for --implement (for backward compatibility)
 - `--format=<fmt>`: Output format (text, json)
 - `--profile`: Include performance profiling
-- `--agents=<agents>`: Agent selection (quality, scientific, orchestrator, all)
+- `--agents=<agents>`: Agent selection (auto, core, scientific, engineering, ai, domain, quality, research, all)
+- `--dry-run`: Preview fixes without applying them
+- `--backup`: Create backup before applying fixes
+- `--rollback`: Enable rollback capability for failed fixes
+- `--intelligent`: Enable intelligent agent selection based on codebase analysis
+- `--orchestrate`: Enable advanced 23-agent orchestration for comprehensive analysis
+- `--parallel`: Run quality analysis in parallel for efficiency
+- `--validate`: Validate quality improvements through testing
 
 ## Agent Integration
 
@@ -62,10 +70,57 @@ Analyze code quality across Python, Julia, and JAX ecosystems with scientific co
 
 ## Agent Selection Options
 
-- `quality` - Quality engineering focus for comprehensive code analysis
+- `auto` - Intelligent agent selection based on codebase characteristics
+- `core` - Essential multi-agent team for standard quality analysis
 - `scientific` - Scientific computing focus for numerical and research validation
-- `orchestrator` - Multi-agent coordination for complex quality workflows
-- `all` - Complete multi-agent quality system with specialized expertise
+- `engineering` - Software engineering and architecture quality focus
+- `ai` - AI/ML system quality and pipeline analysis
+- `domain` - Domain-specific specialized quality analysis
+- `quality` - Quality engineering focus for comprehensive code analysis
+- `research` - Research methodology and academic quality standards
+- `all` - Complete 23-agent quality system with specialized expertise
+
+## Safety Features
+
+### Dry-Run Mode
+Preview all fixes before applying:
+```bash
+/check-code-quality --dry-run --implement src/
+```
+
+### Backup and Rollback
+Automatic backup before changes:
+```bash
+# Create backup before fixes
+/check-code-quality --backup --implement src/
+
+# Enable rollback if fixes fail
+/check-code-quality --backup --rollback --implement src/
+```
+
+The system creates versioned backups in `.backups/` directory with:
+- Timestamp-based naming
+- Git integration (if available)
+- Automatic cleanup of old backups (>30 days)
+
+### Validation
+Validate fixes after implementation:
+```bash
+/check-code-quality --implement --validate src/
+```
+
+### Safe Implementation Workflow
+```bash
+# 1. Preview fixes first
+/check-code-quality --dry-run --implement src/
+
+# 2. Review preview output
+
+# 3. Apply with safety features
+/check-code-quality --backup --rollback --validate --implement src/
+
+# 4. If issues occur, rollback is automatic
+```
 
 ## Analysis Types
 
@@ -298,3 +353,5 @@ Quality metrics guide code review processes and development best practices.
 - Python 3.7+ with standard libraries
 - Language-specific tools for Julia and JAX analysis
 - Network access for dependency analysis
+
+ARGUMENTS: [--language=python|julia|jax|auto] [--analysis=basic|scientific|gpu] [--implement] [--auto-fix] [--format=text|json] [--agents=auto|core|scientific|engineering|ai|domain|quality|research|all] [--dry-run] [--intelligent] [--orchestrate] [--parallel] [--validate] [target-path]

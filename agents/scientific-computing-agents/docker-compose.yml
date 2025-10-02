@@ -1,0 +1,122 @@
+version: '3.8'
+
+services:
+  # Production service
+  sci-agents:
+    build:
+      context: .
+      target: production
+    image: scientific-computing-agents:latest
+    container_name: sci-agents-prod
+    environment:
+      - SCI_AGENTS_MAX_WORKERS=8
+      - SCI_AGENTS_PARALLEL_MODE=threads
+      - SCI_AGENTS_LOG_LEVEL=INFO
+    volumes:
+      - ./data:/app/data
+      - ./logs:/app/logs
+    restart: unless-stopped
+
+  # Development service with Jupyter
+  sci-agents-dev:
+    build:
+      context: .
+      target: development
+    image: scientific-computing-agents:dev
+    container_name: sci-agents-dev
+    environment:
+      - SCI_AGENTS_MAX_WORKERS=4
+      - SCI_AGENTS_LOG_LEVEL=DEBUG
+      - SCI_AGENTS_ENABLE_PROFILING=true
+    volumes:
+      - .:/app
+      - ./data:/app/data
+      - ./logs:/app/logs
+    ports:
+      - "8888:8888"
+    command: jupyter notebook --ip=0.0.0.0 --port=8888 --no-browser --allow-root
+
+  # GPU-enabled service
+  sci-agents-gpu:
+    build:
+      context: .
+      target: gpu
+    image: scientific-computing-agents:gpu
+    container_name: sci-agents-gpu
+    environment:
+      - SCI_AGENTS_USE_GPU=true
+      - SCI_AGENTS_GPU_MEMORY_FRACTION=0.8
+      - SCI_AGENTS_MAX_WORKERS=4
+    volumes:
+      - ./data:/app/data
+      - ./logs:/app/logs
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+    restart: unless-stopped
+
+  # Redis cache (optional, for distributed deployment)
+  redis:
+    image: redis:7-alpine
+    container_name: sci-agents-redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis-data:/data
+    restart: unless-stopped
+
+  # PostgreSQL database (optional, for state persistence)
+  postgres:
+    image: postgres:15-alpine
+    container_name: sci-agents-postgres
+    environment:
+      - POSTGRES_DB=sci_agents
+      - POSTGRES_USER=agent_user
+      - POSTGRES_PASSWORD=${DB_PASSWORD:-changeme}
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    restart: unless-stopped
+
+  # Monitoring with Prometheus (optional)
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: sci-agents-prometheus
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./monitoring/prometheus.yml:/etc/prometheus/prometheus.yml
+      - prometheus-data:/prometheus
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+    restart: unless-stopped
+
+  # Grafana dashboard (optional)
+  grafana:
+    image: grafana/grafana:latest
+    container_name: sci-agents-grafana
+    ports:
+      - "3000:3000"
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=${GRAFANA_PASSWORD:-admin}
+    volumes:
+      - grafana-data:/var/lib/grafana
+    depends_on:
+      - prometheus
+    restart: unless-stopped
+
+volumes:
+  redis-data:
+  postgres-data:
+  prometheus-data:
+  grafana-data:
+
+networks:
+  default:
+    name: sci-agents-network

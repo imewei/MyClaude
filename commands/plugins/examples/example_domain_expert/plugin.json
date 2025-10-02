@@ -1,0 +1,20 @@
+{
+  "name": "domain-expert",
+  "version": "1.0.0",
+  "type": "agent",
+  "description": "Custom domain expert agent for specialized analysis",
+  "author": "Claude Code Framework",
+  "framework_version": ">=2.0.0",
+  "python_version": ">=3.8",
+  "dependencies": [],
+  "capabilities": ["domain_analysis", "specialized_review"],
+  "supported_commands": ["optimize", "analyze", "multi-agent-optimize"],
+  "default_config": {
+    "domain": "general",
+    "analysis_depth": "thorough"
+  },
+  "permissions": ["read"],
+  "sandbox": true,
+  "license": "MIT",
+  "tags": ["agent", "domain", "expert"]
+}

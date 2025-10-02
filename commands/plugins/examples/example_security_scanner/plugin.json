@@ -1,0 +1,22 @@
+{
+  "name": "security-scanner",
+  "version": "1.0.0",
+  "type": "command",
+  "description": "Security vulnerability scanner for Python code",
+  "author": "Claude Code Framework",
+  "framework_version": ">=2.0.0",
+  "python_version": ">=3.8",
+  "dependencies": [],
+  "capabilities": ["security_analysis", "vulnerability_detection"],
+  "supported_commands": ["analyze", "check-code-quality"],
+  "default_config": {
+    "check_sql_injection": true,
+    "check_xss": true,
+    "check_unsafe_eval": true,
+    "severity_threshold": "medium"
+  },
+  "permissions": ["read"],
+  "sandbox": true,
+  "license": "MIT",
+  "tags": ["security", "vulnerability", "scanner"]
+}

@@ -1,0 +1,139 @@
+workflow:
+  name: "complete-development-cycle"
+  description: "Full development cycle: quality, optimization, testing, docs, and commit"
+  version: "1.0"
+  author: "Claude Code Framework"
+  tags: [development, complete, automation]
+
+variables:
+  target_path: "."
+  language: "auto"
+  coverage_target: 90
+
+steps:
+  - id: initial_quality_check
+    command: check-code-quality
+    description: "Initial code quality assessment"
+    flags:
+      - --language=${language}
+      - --analysis=thorough
+      - --format=text
+    input: ${target_path}
+
+  - id: clean_codebase
+    command: clean-codebase
+    description: "Clean up codebase"
+    flags:
+      - --imports
+      - --dead-code
+      - --duplicates
+      - --ast-deep
+      - --orchestrate
+    input: ${target_path}
+    depends_on: [initial_quality_check]
+
+  - id: optimize_performance
+    command: optimize
+    description: "Optimize code performance"
+    flags:
+      - --language=${language}
+      - --category=all
+      - --implement
+      - --orchestrate
+      - --intelligent
+    input: ${target_path}
+    depends_on: [clean_codebase]
+
+  - id: refactor_code
+    command: refactor-clean
+    description: "Apply refactoring patterns"
+    flags:
+      - --language=${language}
+      - --scope=project
+      - --patterns=modern
+      - --implement
+    input: ${target_path}
+    depends_on: [optimize_performance]
+
+  - id: generate_tests
+    command: generate-tests
+    description: "Generate comprehensive test suite"
+    flags:
+      - --type=all
+      - --framework=auto
+      - --coverage=${coverage_target}
+    input: ${target_path}
+    depends_on: [refactor_code]
+
+  - id: run_all_tests
+    command: run-all-tests
+    description: "Run all tests with coverage"
+    flags:
+      - --scope=all
+      - --coverage
+      - --auto-fix
+      - --report
+    depends_on: [generate_tests]
+    retry:
+      max_attempts: 3
+      backoff: exponential
+
+  - id: parallel_quality_checks
+    parallel: true
+    depends_on: [run_all_tests]
+    steps:
+      - id: final_quality_check
+        command: check-code-quality
+        description: "Final quality verification"
+        flags:
+          - --language=${language}
+          - --analysis=comprehensive
+          - --report
+
+      - id: debug_check
+        command: debug
+        description: "Check for potential issues"
+        flags:
+          - --issue=TYPE
+          - --report
+
+      - id: security_scan
+        command: check-code-quality
+        description: "Security analysis"
+        flags:
+          - --language=${language}
+          - --format=json
+
+  - id: generate_documentation
+    command: update-docs
+    description: "Generate/update documentation"
+    flags:
+      - --type=all
+      - --format=markdown
+      - --optimize
+    depends_on: [parallel_quality_checks]
+
+  - id: double_check_work
+    command: double-check
+    description: "Comprehensive verification"
+    flags:
+      - --deep-analysis
+      - --report
+      - --orchestrate
+    depends_on: [generate_documentation]
+
+  - id: create_commit
+    command: commit
+    description: "Create git commit"
+    flags:
+      - --all
+      - --ai-message
+      - --validate
+    depends_on: [double_check_work]
+
+  - id: verify_commit
+    command: run-all-tests
+    description: "Verify commit integrity"
+    flags:
+      - --scope=all
+    depends_on: [create_commit]

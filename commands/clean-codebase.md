@@ -4,7 +4,7 @@ description: "Advanced codebase cleanup with AST-based unused import removal, de
 category: project-maintenance
 subcategory: code-cleanup
 complexity: intermediate
-argument-hint: "[--dry-run] [--analysis=basic|thorough|comprehensive|ultrathink] [--agents=auto|core|scientific|engineering|domain-specific|all] [--imports] [--dead-code] [--duplicates] [--ast-deep] [--orchestrate] [--intelligent] [--breakthrough] [--parallel] [path]"
+argument-hint: "[--dry-run] [--analysis=basic|thorough|comprehensive|ultrathink] [--agents=auto|core|scientific|engineering|ai|domain|quality|research|all] [--imports] [--dead-code] [--duplicates] [--ast-deep] [--orchestrate] [--intelligent] [--breakthrough] [--parallel] [--implement] [--backup] [--rollback] [--validate] [path]"
 allowed-tools: Bash, Read, Write, Edit, MultiEdit, Glob, Grep, Task, TodoWrite
 model: inherit
 tags: cleanup, refactoring, maintenance, ast-analysis, 23-agent-system, ultrathink, unused-imports, dead-code, duplicates, orchestration
@@ -12,7 +12,7 @@ dependencies: []
 related: [refactor-clean, check-code-quality, optimize, multi-agent-optimize, adopt-code, debug]
 workflows: [project-cleanup, maintenance-workflow, code-organization]
 version: "2.1"
-last-updated: "2025-09-28"
+last-updated: "2025-09-29"
 ---
 
 # Clean Codebase
@@ -53,7 +53,7 @@ Advanced codebase cleanup with ultrathink intelligence, AST-based unused import 
 | Option | Values | Default | Description |
 |--------|--------|---------|-------------|
 | `--analysis=<level>` | basic\|thorough\|comprehensive\|ultrathink | thorough | Analysis depth and intelligence level |
-| `--agents=<types>` | auto\\|core\\|scientific\\|engineering\\|domain-specific\\|all | auto | 23-agent personal agent selection |
+| `--agents=<types>` | auto\|core\|scientific\|engineering\|ai\|domain\|quality\|research\|all | auto | 23-agent personal agent selection |
 | `--imports` | - | false | Remove unused imports with AST analysis |
 | `--dead-code` | - | false | Eliminate unreachable and dead code |
 | `--duplicates` | - | false | Remove duplicate files and code blocks |
@@ -71,6 +71,8 @@ Advanced codebase cleanup with ultrathink intelligence, AST-based unused import 
 | `--orchestrate` | - | false | Enable advanced 23-agent orchestration |
 | `--intelligent` | - | false | Enable intelligent agent selection based on codebase analysis |
 | `--breakthrough` | - | false | Enable breakthrough optimization discovery |
+| `--implement` | - | false | Automatically apply cleanup recommendations |
+| `--validate` | - | false | Validate cleanup results through testing |
 
 ### Analysis Levels
 - **`basic`**: Quick scan for obvious duplicates and unused files
@@ -114,11 +116,30 @@ Automatically analyzes codebase characteristics and selects optimal agent combin
 - `database-workflow-engineer` - Database and data workflow optimization
 - `command-systems-engineer` - Command system and automation optimization
 
-##### **`domain-specific`** - Specialized Domain Experts (4 agents)
+##### **`ai`** - AI/ML Cleanup Focus (5 agents)
+- `ai-systems-architect` - AI system optimization and cleanup
+- `neural-networks-master` - ML/AI code optimization
+- `data-professional` - Data pipeline cleanup
+- `jax-pro` - Scientific ML optimization
+- `visualization-interface-master` - ML visualization cleanup
+
+##### **`domain`** - Specialized Domain Experts (4 agents)
 - `xray-soft-matter-expert` - X-ray analysis workflow optimization
 - `scientific-code-adoptor` - Legacy scientific code modernization
 - `data-professional` - Data engineering and analytics optimization
 - `visualization-interface-master` - UI/UX and visualization cleanup
+
+##### **`quality`** - Quality Engineering Focus
+- `code-quality-master` lead for quality-focused cleanup
+- **Quality Metrics**: Code quality and maintainability improvements
+- **Testing**: Test code cleanup and optimization
+- **Best Practices**: Code standards and conventions enforcement
+
+##### **`research`** - Research Intelligence Focus
+- `research-intelligence-master` lead for research code cleanup
+- **Research Methodology**: Academic code organization
+- **Innovation**: Research code optimization patterns
+- **Publication Ready**: Academic standards enforcement
 
 ##### **`all`** - Complete 23-Agent Ecosystem
 Activates all 23 specialized personal agents with intelligent orchestration for breakthrough cleanup and optimization capabilities:
@@ -597,3 +618,5 @@ steps:
 ```
 
 This advanced implementation transforms the clean-codebase command into a sophisticated, intelligent cleanup tool that combines multi-agent analysis, ultrathink reasoning, and AST-based precision for safe, comprehensive codebase optimization.
+
+ARGUMENTS: [--dry-run] [--analysis=basic|thorough|comprehensive|ultrathink] [--agents=auto|core|scientific|engineering|ai|domain|quality|research|all] [--imports] [--dead-code] [--duplicates] [--ast-deep] [--orchestrate] [--intelligent] [--breakthrough] [--parallel] [--implement] [--backup] [--rollback] [--validate] [path]

@@ -1,0 +1,21 @@
+{
+  "name": "custom-analyzer",
+  "version": "1.0.0",
+  "type": "command",
+  "description": "Custom code analyzer with complexity metrics",
+  "author": "Claude Code Framework",
+  "framework_version": ">=2.0.0",
+  "python_version": ">=3.8",
+  "dependencies": [],
+  "capabilities": ["code_analysis", "complexity_metrics"],
+  "supported_commands": ["analyze", "optimize", "refactor"],
+  "default_config": {
+    "max_complexity": 10,
+    "analyze_imports": true,
+    "analyze_functions": true
+  },
+  "permissions": ["read", "write"],
+  "sandbox": true,
+  "license": "MIT",
+  "tags": ["analysis", "complexity", "metrics"]
+}

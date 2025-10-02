@@ -1,0 +1,268 @@
+stages:
+  - test
+  - quality
+  - security
+  - build
+  - deploy
+  - monitor
+
+variables:
+  PIP_CACHE_DIR: "$CI_PROJECT_DIR/.cache/pip"
+  PYTHON_VERSION: "3.11"
+
+cache:
+  paths:
+    - .cache/pip
+    - venv/
+
+.python_template: &python_template
+  image: python:${PYTHON_VERSION}
+  before_script:
+    - python -V
+    - pip install virtualenv
+    - virtualenv venv
+    - source venv/bin/activate
+    - pip install --upgrade pip
+    - pip install -e .[dev]
+
+# Test Stage
+unit-tests:
+  <<: *python_template
+  stage: test
+  parallel:
+    matrix:
+      - PYTHON_VERSION: ["3.10", "3.11", "3.12"]
+  script:
+    - pytest tests/unit/ -v --cov=claude_commands --cov-report=xml --cov-report=html --cov-report=term
+  coverage: '/(?i)total.*? (100(?:\.0+)?\%|[1-9]?\d(?:\.\d+)?\%)$/'
+  artifacts:
+    reports:
+      coverage_report:
+        coverage_format: cobertura
+        path: coverage.xml
+    paths:
+      - htmlcov/
+      - coverage.xml
+    expire_in: 30 days
+
+integration-tests:
+  <<: *python_template
+  stage: test
+  script:
+    - pytest tests/integration/ -v --cov=claude_commands --cov-append --cov-report=xml
+  artifacts:
+    reports:
+      coverage_report:
+        coverage_format: cobertura
+        path: coverage.xml
+    expire_in: 30 days
+
+performance-tests:
+  <<: *python_template
+  stage: test
+  script:
+    - pytest tests/benchmarks/ -v --benchmark-only --benchmark-json=benchmark.json
+  artifacts:
+    paths:
+      - benchmark.json
+    expire_in: 90 days
+
+# Quality Stage
+lint:
+  <<: *python_template
+  stage: quality
+  script:
+    - pip install ruff black mypy pylint isort
+    - ruff check .
+    - black --check --diff .
+    - isort --check-only --diff .
+    - mypy claude_commands/ --ignore-missing-imports
+    - pylint claude_commands/ --output-format=text --reports=y --exit-zero
+
+code-quality:
+  <<: *python_template
+  stage: quality
+  script:
+    - pip install radon xenon
+    - radon cc claude_commands/ -a -nb -j > complexity.json
+    - radon mi claude_commands/ -j > maintainability.json
+    - xenon --max-absolute B --max-modules B --max-average A claude_commands/ || true
+  artifacts:
+    paths:
+      - complexity.json
+      - maintainability.json
+    expire_in: 90 days
+
+documentation-quality:
+  <<: *python_template
+  stage: quality
+  script:
+    - pip install pydocstyle interrogate
+    - interrogate -vv claude_commands/ --fail-under=80
+    - pydocstyle claude_commands/ --convention=google
+
+# Security Stage
+dependency-scan:
+  <<: *python_template
+  stage: security
+  script:
+    - pip install safety pip-audit
+    - safety check --json --output safety-report.json || true
+    - pip-audit --desc --output pip-audit-report.json || true
+  artifacts:
+    paths:
+      - safety-report.json
+      - pip-audit-report.json
+    expire_in: 90 days
+
+sast-scan:
+  <<: *python_template
+  stage: security
+  script:
+    - pip install bandit semgrep
+    - bandit -r claude_commands/ -f json -o bandit-report.json -ll -i || true
+    - semgrep --config=auto --json --output=semgrep-report.json claude_commands/ || true
+  artifacts:
+    paths:
+      - bandit-report.json
+      - semgrep-report.json
+    expire_in: 90 days
+
+secret-scan:
+  <<: *python_template
+  stage: security
+  script:
+    - pip install truffleHog3
+    - trufflehog3 -v -f json -o trufflehog-report.json . || true
+  artifacts:
+    paths:
+      - trufflehog-report.json
+    expire_in: 90 days
+  allow_failure: true
+
+# Build Stage
+build-package:
+  <<: *python_template
+  stage: build
+  script:
+    - pip install build twine
+    - python -m build
+    - twine check dist/*
+  artifacts:
+    paths:
+      - dist/
+    expire_in: 90 days
+
+build-docs:
+  <<: *python_template
+  stage: build
+  script:
+    - pip install mkdocs mkdocs-material mkdocstrings[python]
+    - bash cicd/docs/build_docs.sh
+  artifacts:
+    paths:
+      - site/
+    expire_in: 30 days
+
+build-docker:
+  stage: build
+  image: docker:latest
+  services:
+    - docker:dind
+  script:
+    - docker build -t claude-commands:$CI_COMMIT_SHA .
+    - docker tag claude-commands:$CI_COMMIT_SHA claude-commands:latest
+    - docker save claude-commands:$CI_COMMIT_SHA > claude-commands.tar
+  artifacts:
+    paths:
+      - claude-commands.tar
+    expire_in: 7 days
+  only:
+    - main
+    - develop
+
+# Deploy Stage
+deploy-pypi:
+  <<: *python_template
+  stage: deploy
+  script:
+    - pip install twine
+    - twine upload dist/* -u __token__ -p $PYPI_API_TOKEN
+  dependencies:
+    - build-package
+  only:
+    - tags
+  environment:
+    name: production
+    url: https://pypi.org/project/claude-commands
+
+deploy-test-pypi:
+  <<: *python_template
+  stage: deploy
+  script:
+    - pip install twine
+    - twine upload --repository testpypi dist/* -u __token__ -p $TEST_PYPI_API_TOKEN
+  dependencies:
+    - build-package
+  only:
+    - develop
+  environment:
+    name: staging
+    url: https://test.pypi.org/project/claude-commands
+
+deploy-docs:
+  <<: *python_template
+  stage: deploy
+  script:
+    - bash cicd/deploy/deploy_docs.sh
+  dependencies:
+    - build-docs
+  only:
+    - main
+    - tags
+  environment:
+    name: documentation
+    url: https://docs.claude-commands.dev
+
+deploy-docker:
+  stage: deploy
+  image: docker:latest
+  services:
+    - docker:dind
+  script:
+    - docker load < claude-commands.tar
+    - echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin
+    - docker push claude-commands:$CI_COMMIT_SHA
+    - docker push claude-commands:latest
+  dependencies:
+    - build-docker
+  only:
+    - main
+    - tags
+  environment:
+    name: docker-hub
+    url: https://hub.docker.com/r/claudecommands/executor
+
+# Monitor Stage
+smoke-tests:
+  <<: *python_template
+  stage: monitor
+  script:
+    - sleep 120  # Wait for deployment
+    - pip install claude-commands
+    - bash cicd/deploy/smoke_test_prod.sh
+  only:
+    - tags
+  environment:
+    name: production
+  allow_failure: true
+
+health-check:
+  <<: *python_template
+  stage: monitor
+  script:
+    - python cicd/monitoring/health_check.py
+  only:
+    - main
+    - tags
+  allow_failure: true

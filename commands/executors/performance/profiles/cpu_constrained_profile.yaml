@@ -1,0 +1,80 @@
+# Performance Profile: CPU Constrained
+# For systems with limited CPU (< 4 cores)
+
+name: "cpu_constrained"
+description: "Optimized for low CPU systems (<4 cores)"
+max_cpu_cores: 4
+recommended_for:
+  - "Low-end devices"
+  - "Single/dual core systems"
+  - "Throttled environments"
+  - "Shared hosting"
+
+# Cache Configuration
+cache:
+  l1_cache_mb: 100
+  l2_cache_mb: 300
+  l3_cache_mb: 1000
+  total_cache_mb: 1400
+  ttl_hours: 24
+  eviction_policy: "lru"
+  enable_disk_cache: true
+  prefetch_enabled: false
+  cache_warming: false
+  cache_priority: "high"  # Rely heavily on cache
+
+# Parallel Execution
+parallel:
+  max_workers: 4
+  thread_pool_size: 6
+  process_pool_size: 2
+  queue_size: 500
+  enable_parallel: true
+  default_mode: "thread"  # Threads have lower overhead
+  batch_size: 100
+  minimize_context_switching: true
+
+# Resource Limits
+resources:
+  max_memory_percent: 70.0
+  max_cpu_percent: 85.0  # Allow high CPU usage
+  io_buffer_size_mb: 32
+  max_memory_mb: 1024
+  enable_throttling: false  # Maximize CPU usage
+  cpu_affinity: true
+
+# Agent Configuration
+agents:
+  max_parallel_agents: 2
+  agent_timeout_seconds: 180
+  enable_orchestration: false
+  default_agents: "core"
+  sequential_agents: false
+  agent_scheduling: "round_robin"
+
+# Performance Optimizations
+optimizations:
+  enable_streaming: true
+  enable_lazy_loading: false
+  enable_prefetch: false
+  enable_batch_processing: true
+  enable_compression: false  # Avoid CPU overhead
+  minimize_computations: true
+  enable_result_caching: true
+  avoid_process_pools: true  # Processes have overhead
+
+# Monitoring
+monitoring:
+  enable_profiling: false
+  enable_metrics: true
+  sample_rate: 0.1
+  log_level: "INFO"
+  cpu_alerts: true
+
+# Expected Performance
+expected_performance:
+  baseline_duration_seconds: 45
+  target_speedup: "2-4x"
+  cache_hit_rate_target: 75.0  # High cache hit rate critical
+  throughput_files_per_second: 30
+  cpu_efficiency: 0.9

@@ -4,15 +4,15 @@ description: "Git commit engine with AI message generation and automated quality
 category: git-workflow
 subcategory: version-control
 complexity: basic
-argument-hint: "[--all] [--staged] [--amend] [--interactive] [--split] [--template=TYPE] [--ai-message] [--validate] [--push] [--agents=quality|devops|orchestrator|all]"
+argument-hint: "[--all] [--staged] [--amend] [--interactive] [--split] [--template=TYPE] [--ai-message] [--validate] [--push] [--agents=auto|core|scientific|engineering|ai|domain|quality|research|all] [--dry-run] [--backup] [--rollback] [--intelligent] [--orchestrate] [--parallel]"
 allowed-tools: Bash, Read, Grep, Glob, TodoWrite
 model: inherit
 tags: git, commit, ai-message, validation, version-control
 dependencies: []
 related: [check-code-quality, run-all-tests, ci-setup, fix-commit-errors, optimize, generate-tests, refactor-clean, double-check]
 workflows: [commit-workflow, quality-validation, code-review]
-version: "2.0"
-last-updated: "2025-09-28"
+version: "2.1"
+last-updated: "2025-09-29"
 ---
 
 # Commit
@@ -60,7 +60,10 @@ Git commit engine with AI message generation, change analysis, and quality valid
 ### Quality Options
 - `--validate`: Run pre-commit checks (linting, tests, security)
 - `--push`: Push to remote after successful commit
-- `--agents=<agents>`: Agent selection (quality, devops, orchestrator, all)
+- `--agents=<agents>`: Agent selection (auto, core, scientific, engineering, ai, domain, quality, research, all)
+- `--intelligent`: Enable intelligent agent selection for commit validation
+- `--orchestrate`: Enable advanced 23-agent orchestration for complex commits
+- `--parallel`: Run validation checks in parallel
 
 ## Agent Integration
 
@@ -87,10 +90,15 @@ Git commit engine with AI message generation, change analysis, and quality valid
 
 ## Agent Selection Options
 
+- `auto` - Intelligent agent selection based on commit contents
+- `core` - Essential multi-agent team for standard commits
+- `scientific` - Scientific computing and research code commits
+- `engineering` - Software engineering and architecture commits
+- `ai` - AI/ML system and pipeline commits
+- `domain` - Domain-specific specialized commits
 - `quality` - Quality engineering focus for code validation and testing
-- `devops` - DevSecOps focus for security and compliance validation
-- `orchestrator` - Multi-agent coordination for complex commit workflows
-- `all` - Complete multi-agent commit system with comprehensive validation
+- `research` - Research methodology and publication commits
+- `all` - Complete 23-agent commit system with comprehensive validation
 
 ## Features
 
@@ -316,3 +324,5 @@ Works with existing git workflows and tools:
 - Focus on specific actions: "add", "fix", "remove", "update", "refactor"
 - Use imperative mood with concrete technical details
 - Example: "add user authentication" not "enhance user experience with robust authentication"
+
+ARGUMENTS: [--all] [--staged] [--amend] [--interactive] [--split] [--template=TYPE] [--ai-message] [--validate] [--push] [--agents=auto|core|scientific|engineering|ai|domain|quality|research|all] [--intelligent] [--orchestrate] [--parallel]

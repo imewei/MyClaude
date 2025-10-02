@@ -4,15 +4,15 @@ description: "Advanced code analysis and documentation tool with multi-language 
 category: code-analysis
 subcategory: analysis
 complexity: intermediate
-argument-hint: "[--level=basic|advanced|expert] [--focus=AREA] [--docs] [--interactive] [--format=FORMAT] [--export=PATH] [--agents=documentation|quality|scientific|all] [file/directory]"
+argument-hint: "[--level=basic|advanced|expert] [--focus=AREA] [--docs] [--interactive] [--format=FORMAT] [--export=PATH] [--agents=auto|core|scientific|engineering|ai|domain|quality|research|all] [--implement] [--dry-run] [--backup] [--rollback] [--intelligent] [--orchestrate] [--parallel] [--validate] [file/directory]"
 allowed-tools: Read, Write, Edit, MultiEdit, Bash, Glob, Grep, TodoWrite, Task
 model: inherit
 tags: analysis, documentation, patterns, performance, security
 dependencies: []
 related: [check-code-quality, update-docs, debug, optimize, double-check]
 workflows: [code-analysis, documentation-generation, learning-workflow]
-version: "2.0"
-last-updated: "2025-09-28"
+version: "2.1"
+last-updated: "2025-09-29"
 ---
 
 # Explain Code
@@ -69,6 +69,11 @@ Advanced code analysis and documentation tool with intelligent pattern recogniti
 - `--interactive`: Interactive exploration mode
 - `--recursive`: Include subdirectories and dependencies
 - `--template=<type>`: Documentation template (api, tutorial, reference)
+- `--agents=<agents>`: Agent selection (auto, core, scientific, engineering, ai, domain, quality, research, all)
+- `--implement`: Automatically implement documentation improvements and code clarifications
+- `--intelligent`: Enable intelligent agent selection based on codebase characteristics
+- `--orchestrate`: Enable advanced 23-agent orchestration for comprehensive analysis
+- `--parallel`: Run analysis in parallel for maximum efficiency
 
 ## Core Features
 
@@ -302,3 +307,5 @@ Advanced code analysis and documentation tool with intelligent pattern recogniti
 /update-docs --type=readme --collaborative
 /generate-tests complex_system/ --interactive
 ```
+
+ARGUMENTS: [--level=basic|advanced|expert] [--focus=AREA] [--docs] [--interactive] [--format=FORMAT] [--export=PATH] [--agents=auto|core|scientific|engineering|ai|domain|quality|research|all] [--implement] [--intelligent] [--orchestrate] [--parallel] [file/directory]

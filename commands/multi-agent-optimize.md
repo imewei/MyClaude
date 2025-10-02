@@ -4,15 +4,15 @@ description: "Multi-agent system for code optimization and review using speciali
 category: optimization
 subcategory: multi-agent
 complexity: advanced
-argument-hint: "[--mode=optimize|review|hybrid|research] [--agents=all|core|scientific|ai|engineering|domain-specific] [--focus=performance|security|quality|architecture|research|innovation] [--implement] [--orchestrate] [target]"
+argument-hint: "[--mode=optimize|review|hybrid|research] [--agents=auto|all|core|scientific|ai|engineering|domain|quality|research] [--focus=performance|security|quality|architecture|research|innovation] [--implement] [--orchestrate] [--intelligent] [--dry-run] [--backup] [--rollback] [--parallel] [--validate] [target]"
 allowed-tools: Read, Write, Edit, Grep, Glob, TodoWrite, Bash, Task
 model: inherit
 tags: multi-agent, optimization, review, performance, security, quality
 dependencies: []
 related: [optimize, think-ultra, check-code-quality, refactor-clean, debug]
 workflows: [multi-agent-analysis, code-review, optimization-pipeline]
-version: "2.0"
-last-updated: "2025-09-28"
+version: "2.1"
+last-updated: "2025-09-29"
 ---
 
 # Multi-Agent Optimize
@@ -48,7 +48,7 @@ Coordinate multiple specialized agents for code optimization and review tasks.
 ## Options
 
 - `--mode=<mode>`: Operation mode (optimize, review, hybrid, research)
-- `--agents=<agents>`: Agent selection (all, core, scientific, ai, engineering, domain-specific)
+- `--agents=<agents>`: Agent selection (auto, all, core, scientific, ai, engineering, domain, quality, research)
 - `--focus=<focus>`: Focus area (performance, security, quality, architecture, research, innovation)
 - `--parallel`: Run agents in parallel for faster execution
 - `--interactive`: Interactive mode for agent selection and coordination
@@ -56,6 +56,9 @@ Coordinate multiple specialized agents for code optimization and review tasks.
 - `--validate`: Validate implementation results through testing and verification
 - `--rollback`: Enable rollback capability for failed implementations
 - `--orchestrate`: Enable advanced multi-agent orchestration with workflow coordination
+- `--intelligent`: Enable intelligent agent selection based on codebase analysis
+- `--dry-run`: Preview optimizations without applying them
+- `--backup`: Create backup before applying optimizations
 
 ## Operation Modes
 
@@ -111,6 +114,9 @@ Coordinate multiple specialized agents for code optimization and review tasks.
 
 ## Agent Selection Strategies
 
+### `auto` - Intelligent Agent Selection
+Automatically analyzes codebase and selects optimal agent combinations based on detected patterns, complexity, and requirements.
+
 ### `all` - Complete Multi-Agent Ecosystem
 Activates all available personal agents for comprehensive analysis across all domains. Ideal for complex, multi-dimensional optimization challenges requiring diverse expertise.
 
@@ -141,13 +147,25 @@ Activates all available personal agents for comprehensive analysis across all do
 - `code-quality-master` - Quality engineering
 - `database-workflow-engineer` - Data optimization
 
-### `domain-specific` - Specialized Domain Experts
+### `domain` - Specialized Domain Experts
 Activates domain-specific experts based on codebase analysis:
 - `correlation-function-expert` - Statistical computing
 - `neutron-soft-matter-expert` - Neutron scattering simulations
 - `xray-soft-matter-expert` - X-ray analysis workflows
 - `nonequilibrium-stochastic-expert` - Stochastic processes
 - `scientific-code-adoptor` - Legacy code modernization
+
+### `quality` - Quality Engineering Focus
+- `code-quality-master` lead for quality-focused optimization
+- **Code Quality**: Quality metrics and maintainability improvements
+- **Testing**: Test coverage and testing strategy optimization
+- **Best Practices**: Code standards and conventions enforcement
+
+### `research` - Research Intelligence Focus
+- `research-intelligence-master` lead for research-grade optimization
+- **Research Methodology**: Academic and publication-ready optimization
+- **Innovation Discovery**: Breakthrough optimization techniques
+- **Scientific Rigor**: Research-grade standards and validation
 
 ## Examples
 
@@ -527,3 +545,5 @@ The combination of 23 specialized personal agents creates unique emergent capabi
 - **Adaptive Optimization**: Dynamic agent selection based on codebase characteristics
 
 **The 23-agent multi-agent-optimize system represents the pinnacle of personal agent orchestration, enabling breakthrough discoveries and optimizations that are impossible with single-agent or limited multi-agent approaches.**
+
+ARGUMENTS: [--mode=optimize|review|hybrid|research] [--agents=auto|all|core|scientific|ai|engineering|domain|quality|research] [--focus=performance|security|quality|architecture|research|innovation] [--implement] [--orchestrate] [--intelligent] [--dry-run] [--backup] [--rollback] [--parallel] [--validate] [target]

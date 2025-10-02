@@ -1,0 +1,21 @@
+{
+  "name": "hello-world",
+  "version": "1.0.0",
+  "type": "command",
+  "description": "Simple hello world command plugin example",
+  "author": "Claude Code Framework",
+  "framework_version": ">=2.0.0",
+  "python_version": ">=3.8",
+  "dependencies": [],
+  "capabilities": ["greeting"],
+  "supported_commands": [],
+  "default_config": {
+    "greeting": "Hello"
+  },
+  "permissions": ["read"],
+  "sandbox": true,
+  "homepage": "",
+  "repository": "",
+  "license": "MIT",
+  "tags": ["example", "simple", "command"]
+}

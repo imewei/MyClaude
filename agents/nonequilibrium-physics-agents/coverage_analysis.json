@@ -1,0 +1,558 @@
+{
+  "source_lines": {
+    "ml_optimal_control/networks.py": 505,
+    "ml_optimal_control/advanced_rl.py": 960,
+    "ml_optimal_control/model_based_rl.py": 648,
+    "ml_optimal_control/pinn_optimal_control.py": 650,
+    "ml_optimal_control/transfer_learning.py": 633,
+    "ml_optimal_control/curriculum_learning.py": 587,
+    "ml_optimal_control/multitask_metalearning.py": 1186,
+    "ml_optimal_control/meta_learning.py": 814,
+    "ml_optimal_control/robust_control.py": 680,
+    "ml_optimal_control/advanced_optimization.py": 719,
+    "ml_optimal_control/performance.py": 679,
+    "ML Optimal Control (total)": 8061,
+    "hpc/schedulers.py": 1035,
+    "hpc/distributed.py": 1007,
+    "hpc/parallel.py": 1145,
+    "HPC Integration (total)": 3187,
+    "gpu_kernels/quantum_evolution.py": 553,
+    "GPU Kernels (total)": 553,
+    "solvers/pontryagin.py": 864,
+    "solvers/pontryagin_jax.py": 478,
+    "solvers/magnus_expansion.py": 580,
+    "solvers/collocation.py": 642,
+    "Solvers (total)": 2564
+  },
+  "test_statistics": {
+    "passed": 0,
+    "failed": 0,
+    "skipped": 0,
+    "errors": 0,
+    "total": 0
+  },
+  "coverage_statistics": {
+    "module_coverage": {
+      "active_matter_agent.py": 0.0,
+      "analyze_coverage.py": 0.0,
+      "api/__init__.py": 0.0,
+      "api/rest_api.py": 0.0,
+      "applications/__init__.py": 0.0,
+      "applications/case_studies.py": 0.0,
+      "applications/multi_objective.py": 0.0,
+      "applications/robust_control.py": 0.0,
+      "applications/stochastic_control.py": 0.0,
+      "base_agent.py": 0.0,
+      "cloud/__init__.py": 0.0,
+      "cloud/aws.py": 0.0,
+      "cloud/azure.py": 0.0,
+      "cloud/gcp.py": 0.0,
+      "conftest.py": 100.0,
+      "deployment/__init__.py": 0.0,
+      "deployment/ci_cd.py": 0.0,
+      "deployment/config_manager.py": 0.0,
+      "deployment/docker.py": 0.0,
+      "deployment/kubernetes.py": 0.0,
+      "deployment/monitoring.py": 0.0,
+      "driven_systems_agent.py": 0.0,
+      "fluctuation_agent.py": 0.0,
+      "gpu_kernels/__init__.py": 48.0,
+      "gpu_kernels/quantum_evolution.py": 9.0,
+      "hpc/__init__.py": 29.0,
+      "hpc/distributed.py": 15.0,
+      "hpc/parallel.py": 17.0,
+      "hpc/schedulers.py": 25.0,
+      "hpc/slurm.py": 24.0,
+      "information_thermodynamics_agent.py": 0.0,
+      "large_deviation_agent.py": 0.0,
+      "light_scattering_agent.py": 0.0,
+      "ml_optimal_control/__init__.py": 40.0,
+      "ml_optimal_control/advanced_optimization.py": 25.0,
+      "ml_optimal_control/advanced_rl.py": 12.0,
+      "ml_optimal_control/curriculum_learning.py": 28.0,
+      "ml_optimal_control/environments.py": 15.0,
+      "ml_optimal_control/meta_learning.py": 16.0,
+      "ml_optimal_control/model_based_rl.py": 16.0,
+      "ml_optimal_control/multitask_metalearning.py": 31.0,
+      "ml_optimal_control/networks.py": 14.0,
+      "ml_optimal_control/performance.py": 29.0,
+      "ml_optimal_control/pinn_optimal_control.py": 16.0,
+      "ml_optimal_control/robust_control.py": 26.0,
+      "ml_optimal_control/training.py": 10.0,
+      "ml_optimal_control/transfer_learning.py": 32.0,
+      "ml_optimal_control/utils.py": 0.0,
+      "neutron_agent.py": 0.0,
+      "nonequilibrium_master_agent.py": 0.0,
+      "nonequilibrium_quantum_agent.py": 0.0,
+      "optimal_control_agent.py": 0.0,
+      "pattern_formation_agent.py": 0.0,
+      "rheologist_agent.py": 0.0,
+      "run_phase4_tests.py": 0.0,
+      "simulation_agent.py": 0.0,
+      "solvers/__init__.py": 0.0,
+      "solvers/collocation.py": 0.0,
+      "solvers/magnus_expansion.py": 0.0,
+      "solvers/pontryagin.py": 0.0,
+      "solvers/pontryagin_jax.py": 0.0,
+      "standards/__init__.py": 0.0,
+      "standards/data_formats.py": 0.0,
+      "standards/schemas.py": 0.0,
+      "stochastic_dynamics_agent.py": 0.0,
+      "tests/gpu/test_quantum_gpu.py": 18.0,
+      "tests/hpc/test_distributed.py": 18.0,
+      "tests/hpc/test_hpc.py": 16.0,
+      "tests/hpc/test_schedulers.py": 11.0,
+      "tests/ml/test_advanced_optimization.py": 18.0,
+      "tests/ml/test_advanced_rl.py": 16.0,
+      "tests/ml/test_ml_networks.py": 23.0,
+      "tests/ml/test_multitask_metalearning.py": 20.0,
+      "tests/ml/test_performance.py": 17.0,
+      "tests/ml/test_pinn.py": 3.0,
+      "tests/ml/test_robust_control.py": 14.0,
+      "tests/ml/test_transfer_curriculum.py": 19.0,
+      "tests/solvers/test_collocation.py": 3.0,
+      "tests/solvers/test_magnus.py": 3.0,
+      "tests/solvers/test_pontryagin.py": 2.0,
+      "tests/solvers/test_pontryagin_jax.py": 4.0,
+      "transport_agent.py": 0.0,
+      "visualization/__init__.py": 0.0,
+      "visualization/monitoring.py": 0.0,
+      "visualization/plotting.py": 0.0,
+      "visualization/profiling.py": 0.0,
+      "xray_agent.py": 0.0
+    },
+    "total_coverage": 9.0
+  },
+  "coverage_gaps": [
+    {
+      "module": "active_matter_agent.py",
+      "coverage": 0.0,
+      "gap": 95.0
+    },
+    {
+      "module": "analyze_coverage.py",
+      "coverage": 0.0,
+      "gap": 95.0
+    },
+    {
+      "module": "api/__init__.py",
+      "coverage": 0.0,
+      "gap": 95.0
+    },
+    {
+      "module": "api/rest_api.py",
+      "coverage": 0.0,
+      "gap": 95.0
+    },
+    {
+      "module": "applications/__init__.py",
+      "coverage": 0.0,
+      "gap": 95.0
+    },
+    {
+      "module": "applications/case_studies.py",
+      "coverage": 0.0,
+      "gap": 95.0
+    },
+    {
+      "module": "applications/multi_objective.py",
+      "coverage": 0.0,
+      "gap": 95.0
+    },
+    {
+      "module": "applications/robust_control.py",
+      "coverage": 0.0,
+      "gap": 95.0
+    },
+    {
+      "module": "applications/stochastic_control.py",
+      "coverage": 0.0,
+      "gap": 95.0
+    },
+    {
+      "module": "base_agent.py",
+      "coverage": 0.0,
+      "gap": 95.0
+    },
+    {
+      "module": "cloud/__init__.py",
+      "coverage": 0.0,
+      "gap": 95.0
+    },
+    {
+      "module": "cloud/aws.py",
+      "coverage": 0.0,
+      "gap": 95.0
+    },
+    {
+      "module": "cloud/azure.py",
+      "coverage": 0.0,
+      "gap": 95.0
+    },
+    {
+      "module": "cloud/gcp.py",
+      "coverage": 0.0,
+      "gap": 95.0
+    },
+    {
+      "module": "deployment/__init__.py",
+      "coverage": 0.0,
+      "gap": 95.0
+    },
+    {
+      "module": "deployment/ci_cd.py",
+      "coverage": 0.0,
+      "gap": 95.0
+    },
+    {
+      "module": "deployment/config_manager.py",
+      "coverage": 0.0,
+      "gap": 95.0
+    },
+    {
+      "module": "deployment/docker.py",
+      "coverage": 0.0,
+      "gap": 95.0
+    },
+    {
+      "module": "deployment/kubernetes.py",
+      "coverage": 0.0,
+      "gap": 95.0
+    },
+    {
+      "module": "deployment/monitoring.py",
+      "coverage": 0.0,
+      "gap": 95.0
+    },
+    {
+      "module": "driven_systems_agent.py",
+      "coverage": 0.0,
+      "gap": 95.0
+    },
+    {
+      "module": "fluctuation_agent.py",
+      "coverage": 0.0,
+      "gap": 95.0
+    },
+    {
+      "module": "information_thermodynamics_agent.py",
+      "coverage": 0.0,
+      "gap": 95.0
+    },
+    {
+      "module": "large_deviation_agent.py",
+      "coverage": 0.0,
+      "gap": 95.0
+    },
+    {
+      "module": "light_scattering_agent.py",
+      "coverage": 0.0,
+      "gap": 95.0
+    },
+    {
+      "module": "ml_optimal_control/utils.py",
+      "coverage": 0.0,
+      "gap": 95.0
+    },
+    {
+      "module": "neutron_agent.py",
+      "coverage": 0.0,
+      "gap": 95.0
+    },
+    {
+      "module": "nonequilibrium_master_agent.py",
+      "coverage": 0.0,
+      "gap": 95.0
+    },
+    {
+      "module": "nonequilibrium_quantum_agent.py",
+      "coverage": 0.0,
+      "gap": 95.0
+    },
+    {
+      "module": "optimal_control_agent.py",
+      "coverage": 0.0,
+      "gap": 95.0
+    },
+    {
+      "module": "pattern_formation_agent.py",
+      "coverage": 0.0,
+      "gap": 95.0
+    },
+    {
+      "module": "rheologist_agent.py",
+      "coverage": 0.0,
+      "gap": 95.0
+    },
+    {
+      "module": "run_phase4_tests.py",
+      "coverage": 0.0,
+      "gap": 95.0
+    },
+    {
+      "module": "simulation_agent.py",
+      "coverage": 0.0,
+      "gap": 95.0
+    },
+    {
+      "module": "solvers/__init__.py",
+      "coverage": 0.0,
+      "gap": 95.0
+    },
+    {
+      "module": "solvers/collocation.py",
+      "coverage": 0.0,
+      "gap": 95.0
+    },
+    {
+      "module": "solvers/magnus_expansion.py",
+      "coverage": 0.0,
+      "gap": 95.0
+    },
+    {
+      "module": "solvers/pontryagin.py",
+      "coverage": 0.0,
+      "gap": 95.0
+    },
+    {
+      "module": "solvers/pontryagin_jax.py",
+      "coverage": 0.0,
+      "gap": 95.0
+    },
+    {
+      "module": "standards/__init__.py",
+      "coverage": 0.0,
+      "gap": 95.0
+    },
+    {
+      "module": "standards/data_formats.py",
+      "coverage": 0.0,
+      "gap": 95.0
+    },
+    {
+      "module": "standards/schemas.py",
+      "coverage": 0.0,
+      "gap": 95.0
+    },
+    {
+      "module": "stochastic_dynamics_agent.py",
+      "coverage": 0.0,
+      "gap": 95.0
+    },
+    {
+      "module": "transport_agent.py",
+      "coverage": 0.0,
+      "gap": 95.0
+    },
+    {
+      "module": "visualization/__init__.py",
+      "coverage": 0.0,
+      "gap": 95.0
+    },
+    {
+      "module": "visualization/monitoring.py",
+      "coverage": 0.0,
+      "gap": 95.0
+    },
+    {
+      "module": "visualization/plotting.py",
+      "coverage": 0.0,
+      "gap": 95.0
+    },
+    {
+      "module": "visualization/profiling.py",
+      "coverage": 0.0,
+      "gap": 95.0
+    },
+    {
+      "module": "xray_agent.py",
+      "coverage": 0.0,
+      "gap": 95.0
+    },
+    {
+      "module": "tests/solvers/test_pontryagin.py",
+      "coverage": 2.0,
+      "gap": 93.0
+    },
+    {
+      "module": "tests/ml/test_pinn.py",
+      "coverage": 3.0,
+      "gap": 92.0
+    },
+    {
+      "module": "tests/solvers/test_collocation.py",
+      "coverage": 3.0,
+      "gap": 92.0
+    },
+    {
+      "module": "tests/solvers/test_magnus.py",
+      "coverage": 3.0,
+      "gap": 92.0
+    },
+    {
+      "module": "tests/solvers/test_pontryagin_jax.py",
+      "coverage": 4.0,
+      "gap": 91.0
+    },
+    {
+      "module": "gpu_kernels/quantum_evolution.py",
+      "coverage": 9.0,
+      "gap": 86.0
+    },
+    {
+      "module": "ml_optimal_control/training.py",
+      "coverage": 10.0,
+      "gap": 85.0
+    },
+    {
+      "module": "tests/hpc/test_schedulers.py",
+      "coverage": 11.0,
+      "gap": 84.0
+    },
+    {
+      "module": "ml_optimal_control/advanced_rl.py",
+      "coverage": 12.0,
+      "gap": 83.0
+    },
+    {
+      "module": "ml_optimal_control/networks.py",
+      "coverage": 14.0,
+      "gap": 81.0
+    },
+    {
+      "module": "tests/ml/test_robust_control.py",
+      "coverage": 14.0,
+      "gap": 81.0
+    },
+    {
+      "module": "hpc/distributed.py",
+      "coverage": 15.0,
+      "gap": 80.0
+    },
+    {
+      "module": "ml_optimal_control/environments.py",
+      "coverage": 15.0,
+      "gap": 80.0
+    },
+    {
+      "module": "ml_optimal_control/meta_learning.py",
+      "coverage": 16.0,
+      "gap": 79.0
+    },
+    {
+      "module": "ml_optimal_control/model_based_rl.py",
+      "coverage": 16.0,
+      "gap": 79.0
+    },
+    {
+      "module": "ml_optimal_control/pinn_optimal_control.py",
+      "coverage": 16.0,
+      "gap": 79.0
+    },
+    {
+      "module": "tests/hpc/test_hpc.py",
+      "coverage": 16.0,
+      "gap": 79.0
+    },
+    {
+      "module": "tests/ml/test_advanced_rl.py",
+      "coverage": 16.0,
+      "gap": 79.0
+    },
+    {
+      "module": "hpc/parallel.py",
+      "coverage": 17.0,
+      "gap": 78.0
+    },
+    {
+      "module": "tests/ml/test_performance.py",
+      "coverage": 17.0,
+      "gap": 78.0
+    },
+    {
+      "module": "tests/gpu/test_quantum_gpu.py",
+      "coverage": 18.0,
+      "gap": 77.0
+    },
+    {
+      "module": "tests/hpc/test_distributed.py",
+      "coverage": 18.0,
+      "gap": 77.0
+    },
+    {
+      "module": "tests/ml/test_advanced_optimization.py",
+      "coverage": 18.0,
+      "gap": 77.0
+    },
+    {
+      "module": "tests/ml/test_transfer_curriculum.py",
+      "coverage": 19.0,
+      "gap": 76.0
+    },
+    {
+      "module": "tests/ml/test_multitask_metalearning.py",
+      "coverage": 20.0,
+      "gap": 75.0
+    },
+    {
+      "module": "tests/ml/test_ml_networks.py",
+      "coverage": 23.0,
+      "gap": 72.0
+    },
+    {
+      "module": "hpc/slurm.py",
+      "coverage": 24.0,
+      "gap": 71.0
+    },
+    {
+      "module": "hpc/schedulers.py",
+      "coverage": 25.0,
+      "gap": 70.0
+    },
+    {
+      "module": "ml_optimal_control/advanced_optimization.py",
+      "coverage": 25.0,
+      "gap": 70.0
+    },
+    {
+      "module": "ml_optimal_control/robust_control.py",
+      "coverage": 26.0,
+      "gap": 69.0
+    },
+    {
+      "module": "ml_optimal_control/curriculum_learning.py",
+      "coverage": 28.0,
+      "gap": 67.0
+    },
+    {
+      "module": "hpc/__init__.py",
+      "coverage": 29.0,
+      "gap": 66.0
+    },
+    {
+      "module": "ml_optimal_control/performance.py",
+      "coverage": 29.0,
+      "gap": 66.0
+    },
+    {
+      "module": "ml_optimal_control/multitask_metalearning.py",
+      "coverage": 31.0,
+      "gap": 64.0
+    },
+    {
+      "module": "ml_optimal_control/transfer_learning.py",
+      "coverage": 32.0,
+      "gap": 63.0
+    },
+    {
+      "module": "ml_optimal_control/__init__.py",
+      "coverage": 40.0,
+      "gap": 55.0
+    },
+    {
+      "module": "gpu_kernels/__init__.py",
+      "coverage": 48.0,
+      "gap": 47.0
+    }
+  ]
+}

@@ -1,0 +1,79 @@
+# Performance Profile: Memory Constrained
+# For systems with limited memory (< 4GB)
+
+name: "memory_constrained"
+description: "Optimized for low memory systems (<4GB RAM)"
+max_memory_gb: 4
+recommended_for:
+  - "Low-end laptops"
+  - "Virtual machines (small)"
+  - "Container environments"
+  - "Embedded systems"
+
+# Cache Configuration
+cache:
+  l1_cache_mb: 25
+  l2_cache_mb: 75
+  l3_cache_mb: 150
+  total_cache_mb: 250
+  ttl_hours: 6
+  eviction_policy: "lru"
+  enable_disk_cache: true
+  prefetch_enabled: false
+  cache_warming: false
+  aggressive_eviction: true
+
+# Parallel Execution
+parallel:
+  max_workers: 2
+  thread_pool_size: 4
+  process_pool_size: 2
+  queue_size: 100
+  enable_parallel: true
+  default_mode: "thread"
+  batch_size: 25
+  enable_backpressure: true
+
+# Resource Limits
+resources:
+  max_memory_percent: 50.0  # Conservative
+  max_cpu_percent: 70.0
+  io_buffer_size_mb: 8
+  max_memory_mb: 256
+  enable_throttling: true
+  aggressive_throttling: true
+  enable_memory_pooling: true
+
+# Agent Configuration
+agents:
+  max_parallel_agents: 1
+  agent_timeout_seconds: 120
+  enable_orchestration: false
+  default_agents: "core"
+  sequential_agents: true
+
+# Performance Optimizations
+optimizations:
+  enable_streaming: true  # Critical for low memory
+  enable_lazy_loading: true  # Critical for low memory
+  enable_prefetch: false
+  enable_batch_processing: false
+  enable_compression: true
+  enable_memory_mapping: true
+  enable_garbage_collection_tuning: true
+
+# Monitoring
+monitoring:
+  enable_profiling: false
+  enable_metrics: true
+  sample_rate: 0.05
+  log_level: "WARNING"
+  memory_alerts: true
+
+# Expected Performance
+expected_performance:
+  baseline_duration_seconds: 30
+  target_speedup: "2-3x"
+  cache_hit_rate_target: 40.0
+  throughput_files_per_second: 20
+  memory_footprint_mb: 200

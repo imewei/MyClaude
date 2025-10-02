@@ -4,15 +4,15 @@ description: "Reflection engine with advanced AI reasoning and session analysis 
 category: reflection
 subcategory: meta-analysis
 complexity: expert
-argument-hint: "[--type=comprehensive|focused|scientific|instruction|session] [--analysis=deep|surface|meta] [--optimize=performance|accuracy|collaboration|innovation] [--export-insights] [--breakthrough-mode] [--implement] [--agents=orchestrator|scientific|quality|research|all]"
+argument-hint: "[--type=comprehensive|focused|scientific|instruction|session] [--analysis=deep|surface|meta] [--optimize=performance|accuracy|collaboration|innovation] [--export-insights] [--breakthrough-mode] [--implement] [--agents=auto|core|scientific|engineering|ai|domain|quality|research|all] [--dry-run] [--backup] [--rollback] [--intelligent] [--orchestrate] [--parallel] [--validate]"
 allowed-tools: Read, Write, Edit, MultiEdit, Bash, Grep, Glob, TodoWrite, Task, WebSearch, WebFetch
 model: inherit
 tags: reflection, meta-analysis, optimization, insights, self-improvement
 dependencies: []
 related: [think-ultra, double-check, multi-agent-optimize, optimize, run-all-tests, generate-tests, check-code-quality, commit, update-docs]
 workflows: [reflection-cycle, meta-optimization, insight-generation]
-version: "2.0"
-last-updated: "2025-09-28"
+version: "2.1"
+last-updated: "2025-09-29"
 ---
 
 # Reflection
@@ -36,7 +36,11 @@ Advanced reflection engine for AI reasoning, session analysis, and research opti
 - `--export-insights`: Export insights to file
 - `--breakthrough-mode`: Enable breakthrough discovery patterns
 - `--implement`: Automatically implement optimization recommendations and insights
-- `--agents=<agents>`: Agent selection (orchestrator, scientific, quality, research, all)
+- `--agents=<agents>`: Agent selection (auto, core, scientific, engineering, ai, domain, quality, research, all)
+- `--intelligent`: Enable intelligent agent selection based on reflection analysis
+- `--orchestrate`: Enable advanced 23-agent orchestration for comprehensive reflection
+- `--parallel`: Run reflection analysis in parallel
+- `--validate`: Validate implemented improvements through testing
 
 ## Agent Integration
 
@@ -70,11 +74,15 @@ Advanced reflection engine for AI reasoning, session analysis, and research opti
 
 ## Agent Selection Options
 
-- `orchestrator` - Multi-agent coordination for complex reflection workflows
+- `auto` - Intelligent agent selection based on reflection context
+- `core` - Essential multi-agent team for standard reflection
 - `scientific` - Scientific computing and research methodology focus
+- `engineering` - Software engineering and architecture reflection
+- `ai` - AI/ML system and pipeline reflection
+- `domain` - Domain-specific specialized reflection
 - `quality` - Quality engineering and development process optimization
 - `research` - Research intelligence and innovation discovery focus
-- `all` - Complete multi-agent reflection system with comprehensive expertise
+- `all` - Complete 23-agent reflection system with comprehensive expertise
 
 ## Reflection Types
 
@@ -370,3 +378,5 @@ Advanced reflection engine for AI reasoning, session analysis, and research opti
 - Access to session data and interaction patterns
 - Analysis tools and libraries
 - Export capabilities for insights and reports
+
+ARGUMENTS: [--type=comprehensive|focused|scientific|instruction|session] [--analysis=deep|surface|meta] [--optimize=performance|accuracy|collaboration|innovation] [--export-insights] [--breakthrough-mode] [--implement] [--agents=auto|core|scientific|engineering|ai|domain|quality|research|all] [--intelligent] [--orchestrate] [--parallel] [--validate]

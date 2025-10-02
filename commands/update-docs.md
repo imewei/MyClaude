@@ -4,15 +4,15 @@ description: "Documentation generation tool with AST-based content extraction an
 category: documentation
 subcategory: documentation-generation
 complexity: intermediate
-argument-hint: "[--type=readme|api|research|all] [--format=markdown|html|latex] [--interactive] [--collaborative] [--publish] [--optimize] [--agents=auto|documentation|scientific|ai|engineering|research|all] [--orchestrate] [--parallel] [--intelligent]"
+argument-hint: "[--type=readme|api|research|all] [--format=markdown|html|latex] [--interactive] [--collaborative] [--publish] [--optimize] [--agents=auto|core|scientific|engineering|ai|domain|quality|research|all] [--orchestrate] [--parallel] [--intelligent] [--implement] [--dry-run] [--backup] [--rollback] [--validate]"
 allowed-tools: Bash, Read, Write, Glob, MultiEdit, TodoWrite, WebSearch, WebFetch
 model: inherit
 tags: documentation, generation, ast-extraction, multi-format, technical-writing
 dependencies: []
 related: [explain-code, check-code-quality, generate-tests, commit, reflection]
 workflows: [documentation-generation, technical-writing, publication-workflow]
-version: "2.0"
-last-updated: "2025-09-28"
+version: "2.1"
+last-updated: "2025-09-29"
 ---
 
 # Update Docs
@@ -36,10 +36,13 @@ Documentation generation tool with AST-based content extraction, multi-format co
 - `--collaborative`: Enable collaborative editing features
 - `--publish`: Generate publication-ready materials
 - `--optimize`: Apply quality optimization and validation
-- `--agents=<agents>`: Agent selection (auto, documentation, scientific, ai, engineering, research, all)
+- `--agents=<agents>`: Agent selection (auto, core, scientific, engineering, ai, domain, quality, research, all)
 - `--orchestrate`: Enable advanced 23-agent orchestration with workflow coordination
 - `--parallel`: Run agents in parallel for maximum efficiency
 - `--intelligent`: Enable intelligent agent selection based on content analysis
+- `--implement`: Automatically write generated documentation to files
+- `--dry-run`: Preview documentation changes without writing files
+- `--validate`: Validate documentation quality and completeness
 
 ## Documentation Types
 
@@ -509,3 +512,5 @@ Activates all relevant agents with intelligent orchestration for comprehensive d
 /commit --template=docs --ai-message
 /ci-setup --type=enterprise  # Automate documentation builds
 ```
+
+ARGUMENTS: [--type=readme|api|research|all] [--format=markdown|html|latex] [--interactive] [--collaborative] [--publish] [--optimize] [--agents=auto|core|scientific|engineering|ai|domain|quality|research|all] [--orchestrate] [--parallel] [--intelligent] [--implement] [--dry-run] [--validate]

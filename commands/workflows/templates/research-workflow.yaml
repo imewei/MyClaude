@@ -1,0 +1,129 @@
+workflow:
+  name: "research-workflow"
+  description: "Scientific computing research workflow with debugging, optimization, and publication-ready code"
+  version: "1.0"
+  author: "Claude Code Framework"
+  tags: [research, scientific, publication]
+
+variables:
+  target_path: "."
+  language: "auto"
+  test_framework: "auto"
+
+steps:
+  - id: analyze_scientific_code
+    command: explain-code
+    description: "Analyze scientific code structure"
+    flags:
+      - --level=expert
+      - --focus=AREA
+      - --format=json
+    input: ${target_path}
+
+  - id: debug_scientific
+    command: debug
+    description: "Debug scientific computing issues"
+    flags:
+      - --research
+      - --jupyter
+      - --profile
+      - --auto-fix
+    input: ${target_path}
+    depends_on: [analyze_scientific_code]
+
+  - id: optimize_algorithms
+    command: optimize
+    description: "Optimize scientific algorithms"
+    flags:
+      - --language=${language}
+      - --category=algorithm
+      - --implement
+      - --agents=scientific
+      - --breakthrough
+    input: ${target_path}
+    depends_on: [debug_scientific]
+
+  - id: parallel_optimization
+    parallel: true
+    depends_on: [optimize_algorithms]
+    steps:
+      - id: memory_optimization
+        command: optimize
+        description: "Optimize memory usage"
+        flags:
+          - --category=memory
+          - --implement
+        input: ${target_path}
+
+      - id: io_optimization
+        command: optimize
+        description: "Optimize I/O operations"
+        flags:
+          - --category=io
+          - --implement
+        input: ${target_path}
+
+      - id: concurrency_optimization
+        command: optimize
+        description: "Optimize concurrency"
+        flags:
+          - --category=concurrency
+          - --implement
+        input: ${target_path}
+
+  - id: generate_scientific_tests
+    command: generate-tests
+    description: "Generate scientific tests"
+    flags:
+      - --type=scientific
+      - --framework=${test_framework}
+      - --coverage=90
+    input: ${target_path}
+    depends_on: [parallel_optimization]
+
+  - id: run_reproducible_tests
+    command: run-all-tests
+    description: "Run reproducible scientific tests"
+    flags:
+      - --scientific
+      - --reproducible
+      - --coverage
+      - --report
+    depends_on: [generate_scientific_tests]
+
+  - id: benchmark_performance
+    command: run-all-tests
+    description: "Benchmark scientific performance"
+    flags:
+      - --profile
+      - --benchmark
+      - --scientific
+    depends_on: [run_reproducible_tests]
+
+  - id: generate_research_docs
+    command: update-docs
+    description: "Generate research documentation"
+    flags:
+      - --type=research
+      - --format=latex
+      - --optimize
+    depends_on: [benchmark_performance]
+
+  - id: reflection_analysis
+    command: reflection
+    description: "Scientific reflection and analysis"
+    flags:
+      - --type=scientific
+      - --analysis=deep
+      - --export-insights
+      - --breakthrough-mode
+    depends_on: [generate_research_docs]
+
+  - id: commit_research
+    command: commit
+    description: "Commit research code"
+    flags:
+      - --all
+      - --ai-message
+      - --validate
+    depends_on: [reflection_analysis]

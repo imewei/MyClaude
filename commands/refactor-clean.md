@@ -4,15 +4,15 @@ description: "AI-powered code refactoring with multi-language support and modern
 category: refactoring
 subcategory: code-modernization
 complexity: intermediate
-argument-hint: "[--language=python|javascript|typescript|java|julia|auto] [--scope=file|project] [--patterns=modern|performance|security] [--report=summary|detailed] [--implement] [--agents=quality|orchestrator|all] [target]"
+argument-hint: "[--language=python|javascript|typescript|java|julia|auto] [--scope=file|project] [--patterns=modern|performance|security] [--report=summary|detailed] [--implement] [--agents=auto|core|scientific|engineering|ai|domain|quality|research|all] [--dry-run] [--backup] [--rollback] [--intelligent] [--orchestrate] [--parallel] [--validate] [target]"
 allowed-tools: Read, Write, Edit, Glob, MultiEdit, Bash, TodoWrite
 model: inherit
 tags: refactoring, modernization, multi-language, patterns, code-quality
 dependencies: []
 related: [optimize, multi-agent-optimize, check-code-quality, clean-codebase, adopt-code, generate-tests, run-all-tests, commit, double-check]
 workflows: [refactoring-workflow, modernization-pipeline, code-cleanup]
-version: "2.0"
-last-updated: "2025-09-28"
+version: "2.1"
+last-updated: "2025-09-29"
 ---
 
 # Refactor Clean
@@ -36,6 +36,13 @@ Code refactoring engine with multi-language support and modern programming patte
 - `--report=<format>`: Output report format (summary, detailed)
 - `--dry-run`: Preview changes without applying them
 - `--implement`: Automatically apply refactoring recommendations
+- `--agents=<agents>`: Agent selection (auto, core, scientific, engineering, ai, domain, quality, research, all)
+- `--backup`: Create backup before making changes
+- `--rollback`: Enable rollback capability for safety
+- `--intelligent`: Enable intelligent agent selection based on code analysis
+- `--orchestrate`: Enable advanced 23-agent orchestration
+- `--parallel`: Run refactoring analysis in parallel
+- `--validate`: Run tests to validate refactoring results
 
 ## Language Support
 
@@ -300,3 +307,5 @@ Code refactoring engine with multi-language support and modern programming patte
 - Target language runtime and dependencies
 - File system read/write access
 - Network access for dependency analysis
+
+ARGUMENTS: [--language=python|javascript|typescript|java|julia|auto] [--scope=file|project] [--patterns=modern|performance|security] [--report=summary|detailed] [--implement] [--agents=auto|core|scientific|engineering|ai|domain|quality|research|all] [--dry-run] [--backup] [--rollback] [--intelligent] [--orchestrate] [--parallel] [--validate] [target]

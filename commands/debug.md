@@ -4,15 +4,15 @@ description: "Scientific computing debugging with GPU support and multi-language
 category: debugging
 subcategory: scientific-computing
 complexity: intermediate
-argument-hint: "[--issue=TYPE] [--gpu] [--julia] [--research] [--jupyter] [--profile] [--monitor] [--logs] [--auto-fix] [--report] [--agents=scientific|quality|orchestrator|all]"
+argument-hint: "[--issue=TYPE] [--gpu] [--julia] [--research] [--jupyter] [--profile] [--monitor] [--logs] [--implement] [--auto-fix] [--report] [--agents=auto|core|scientific|engineering|ai|domain|quality|research|all] [--dry-run] [--backup] [--rollback] [--intelligent] [--orchestrate] [--parallel] [--validate]"
 allowed-tools: Bash, Read, Grep, Glob, TodoWrite
 model: inherit
 tags: debugging, gpu, julia, python, jupyter, scientific-computing
 dependencies: []
 related: [optimize, check-code-quality, jax-debug, julia-jit-like, run-all-tests, generate-tests, commit, multi-agent-optimize, adopt-code]
 workflows: [debug-fix-test, gpu-troubleshooting, research-debugging]
-version: "2.0"
-last-updated: "2025-09-28"
+version: "2.1"
+last-updated: "2025-09-29"
 ---
 
 # Debug
@@ -71,8 +71,13 @@ Scientific computing debugging engine with AI-powered issue detection, GPU accel
 - `--profile`: Performance profiling for scientific workloads
 - `--monitor`: Real-time monitoring of computing resources
 - `--logs`: Intelligent log analysis for scientific applications
-- `--auto-fix`: Apply automatic fixes for common issues
+- `--implement`: Apply automatic fixes for detected issues (primary flag)
+- `--auto-fix`: Alias for --implement (for backward compatibility)
 - `--report`: Generate comprehensive debugging report
+- `--agents=<agents>`: Agent selection (auto, core, scientific, engineering, ai, domain, quality, research, all)
+- `--intelligent`: Enable intelligent agent selection based on issue analysis
+- `--orchestrate`: Enable advanced 23-agent orchestration for complex debugging
+- `--parallel`: Run analysis in parallel for faster debugging
 
 ### Filtering Options
 - `--time-range=<range>`: Time range for analysis (1h, 2h, 1d, 7d)
@@ -281,3 +286,5 @@ Debug data is saved in `.debug_cache/`:
 - `1`: Issues found requiring attention
 - `2`: Critical GPU, memory, or numerical issues detected
 - `3`: Environment or configuration errors
+
+ARGUMENTS: [--issue=TYPE] [--gpu] [--julia] [--research] [--jupyter] [--profile] [--monitor] [--logs] [--implement] [--auto-fix] [--report] [--agents=auto|core|scientific|engineering|ai|domain|quality|research|all] [--intelligent] [--orchestrate] [--parallel]

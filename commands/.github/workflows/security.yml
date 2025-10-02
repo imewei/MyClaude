@@ -1,0 +1,306 @@
+name: Security Scanning
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main, develop]
+  schedule:
+    - cron: '0 0 * * *'  # Daily at midnight
+
+jobs:
+  dependency-scan:
+    name: Dependency Vulnerability Scan
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -e .
+          pip install safety pip-audit
+
+      - name: Run Safety check
+        run: |
+          safety check --json --output safety-report.json || true
+          safety check --output safety-report.txt || true
+
+      - name: Run pip-audit
+        run: |
+          pip-audit --desc --output pip-audit-report.json || true
+          pip-audit --desc --output pip-audit-report.txt || true
+
+      - name: Upload vulnerability reports
+        uses: actions/upload-artifact@v3
+        with:
+          name: vulnerability-reports
+          path: |
+            safety-report.json
+            safety-report.txt
+            pip-audit-report.json
+            pip-audit-report.txt
+          retention-days: 90
+
+  sast-scan:
+    name: Static Application Security Testing
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Install security tools
+        run: |
+          pip install bandit semgrep
+
+      - name: Run Bandit
+        run: |
+          bandit -r claude_commands/ \
+            -f json -o bandit-report.json \
+            -ll -i || true
+          bandit -r claude_commands/ \
+            -f txt -o bandit-report.txt \
+            -ll -i || true
+
+      - name: Run Semgrep
+        run: |
+          semgrep --config=auto \
+            --json --output=semgrep-report.json \
+            claude_commands/ || true
+          semgrep --config=auto \
+            --output=semgrep-report.txt \
+            claude_commands/ || true
+
+      - name: Upload SAST reports
+        uses: actions/upload-artifact@v3
+        with:
+          name: sast-reports
+          path: |
+            bandit-report.json
+            bandit-report.txt
+            semgrep-report.json
+            semgrep-report.txt
+          retention-days: 90
+
+  secret-scan:
+    name: Secret Scanning
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Run Gitleaks
+        uses: gitleaks/gitleaks-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITLEAKS_ENABLE_COMMENTS: false
+
+      - name: Install truffleHog
+        run: |
+          pip install truffleHog3
+
+      - name: Run truffleHog
+        run: |
+          trufflehog3 -v -f json -o trufflehog-report.json . || true
+
+      - name: Upload secret scan reports
+        uses: actions/upload-artifact@v3
+        if: always()
+        with:
+          name: secret-scan-reports
+          path: |
+            trufflehog-report.json
+          retention-days: 90
+
+  codeql-analysis:
+    name: CodeQL Analysis
+    runs-on: ubuntu-latest
+    permissions:
+      actions: read
+      contents: read
+      security-events: write
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@v2
+        with:
+          languages: python
+          queries: security-extended,security-and-quality
+
+      - name: Autobuild
+        uses: github/codeql-action/autobuild@v2
+
+      - name: Perform CodeQL Analysis
+        uses: github/codeql-action/analyze@v2
+        with:
+          category: "/language:python"
+
+  supply-chain-scan:
+    name: Supply Chain Security
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          pip install cyclonedx-bom pip-licenses
+
+      - name: Generate SBOM
+        run: |
+          cyclonedx-py -o sbom.json
+          cyclonedx-py -o sbom.xml -f xml
+
+      - name: Generate license report
+        run: |
+          pip-licenses --format=json --output-file=licenses.json
+          pip-licenses --format=csv --output-file=licenses.csv
+
+      - name: Upload SBOM and licenses
+        uses: actions/upload-artifact@v3
+        with:
+          name: supply-chain-reports
+          path: |
+            sbom.json
+            sbom.xml
+            licenses.json
+            licenses.csv
+          retention-days: 90
+
+  container-scan:
+    name: Container Security Scan
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push'
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Build Docker image
+        run: |
+          docker build -t claude-commands:${{ github.sha }} .
+
+      - name: Run Trivy vulnerability scanner
+        uses: aquasecurity/trivy-action@master
+        with:
+          image-ref: 'claude-commands:${{ github.sha }}'
+          format: 'sarif'
+          output: 'trivy-results.sarif'
+
+      - name: Upload Trivy results to GitHub Security tab
+        uses: github/codeql-action/upload-sarif@v2
+        with:
+          sarif_file: 'trivy-results.sarif'
+
+      - name: Run Trivy JSON report
+        uses: aquasecurity/trivy-action@master
+        with:
+          image-ref: 'claude-commands:${{ github.sha }}'
+          format: 'json'
+          output: 'trivy-results.json'
+
+      - name: Upload container scan results
+        uses: actions/upload-artifact@v3
+        with:
+          name: container-scan-reports
+          path: |
+            trivy-results.sarif
+            trivy-results.json
+          retention-days: 90
+
+  security-gate:
+    name: Security Gate
+    runs-on: ubuntu-latest
+    needs: [dependency-scan, sast-scan, secret-scan, supply-chain-scan]
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Download all security reports
+        uses: actions/download-artifact@v3
+
+      - name: Run security gate checks
+        run: |
+          python cicd/quality/security_gate.py \
+            --vulnerability-report vulnerability-reports/safety-report.json \
+            --sast-report sast-reports/bandit-report.json \
+            --supply-chain supply-chain-reports/sbom.json \
+            --thresholds cicd/quality/security_thresholds.yaml
+
+      - name: Generate security summary
+        run: |
+          echo "# Security Scan Summary" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "## Scan Results" >> $GITHUB_STEP_SUMMARY
+          echo "- Dependency Scan: ${{ needs.dependency-scan.result }}" >> $GITHUB_STEP_SUMMARY
+          echo "- SAST Scan: ${{ needs.sast-scan.result }}" >> $GITHUB_STEP_SUMMARY
+          echo "- Secret Scan: ${{ needs.secret-scan.result }}" >> $GITHUB_STEP_SUMMARY
+          echo "- Supply Chain: ${{ needs.supply-chain-scan.result }}" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "Security gate: PASSED"
+
+  notify-security-issues:
+    name: Notify Security Issues
+    runs-on: ubuntu-latest
+    needs: [security-gate]
+    if: failure()
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Send security alert
+        run: |
+          python cicd/monitoring/error_tracker.py \
+            --alert "Security scan failed" \
+            --severity high \
+            --workflow ${{ github.workflow }} \
+            --run-id ${{ github.run_id }}
+
+      - name: Create GitHub issue
+        uses: actions/github-script@v7
+        with:
+          script: |
+            github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: '🔒 Security Scan Failed',
+              body: 'Security scanning detected issues. Please review the workflow run.',
+              labels: ['security', 'automated']
+            });

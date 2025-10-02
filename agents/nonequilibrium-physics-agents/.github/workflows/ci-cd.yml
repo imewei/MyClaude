@@ -1,0 +1,101 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+
+env:
+  DOCKER_IMAGE: optimal-control
+  DOCKER_REGISTRY: ghcr.io
+
+jobs:
+  test:
+    name: Run Tests
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.10'
+
+    - name: Cache dependencies
+      uses: actions/cache@v3
+      with:
+        path: ~/.cache/pip
+        key: ${{ runner.os }}-pip-${{ hashFiles('requirements.txt') }}
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+        pip install pytest pytest-cov
+
+    - name: Run tests
+      run: |
+        pytest tests/ -v --cov=. --cov-report=xml
+
+    - name: Upload coverage
+      uses: codecov/codecov-action@v3
+      with:
+        files: ./coverage.xml
+
+  build:
+    name: Build Docker Image
+    runs-on: ubuntu-latest
+    needs: test
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v2
+
+    - name: Log in to Container Registry
+      uses: docker/login-action@v2
+      with:
+        registry: ${{ env.DOCKER_REGISTRY }}
+        username: ${{ github.actor }}
+        password: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Build and push
+      uses: docker/build-push-action@v4
+      with:
+        context: .
+        push: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
+        tags: |
+          ${{ env.DOCKER_REGISTRY }}/${{ github.repository }}/${{ env.DOCKER_IMAGE }}:latest
+          ${{ env.DOCKER_REGISTRY }}/${{ github.repository }}/${{ env.DOCKER_IMAGE }}:${{ github.sha }}
+        cache-from: type=registry,ref=${{ env.DOCKER_REGISTRY }}/${{ github.repository }}/${{ env.DOCKER_IMAGE }}:buildcache
+        cache-to: type=registry,ref=${{ env.DOCKER_REGISTRY }}/${{ github.repository }}/${{ env.DOCKER_IMAGE }}:buildcache,mode=max
+
+  deploy:
+    name: Deploy to Kubernetes
+    runs-on: ubuntu-latest
+    needs: build
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Set up kubectl
+      uses: azure/setup-kubectl@v3
+
+    - name: Configure kubectl
+      run: |
+        echo "${{ secrets.KUBE_CONFIG }}" | base64 -d > kubeconfig
+        export KUBECONFIG=./kubeconfig
+
+    - name: Deploy to Kubernetes
+      run: |
+        kubectl apply -f k8s/
+        kubectl rollout status deployment/optimal-control
+
+    - name: Verify deployment
+      run: |
+        kubectl get pods -l app=optimal-control
+        kubectl get service optimal-control-service

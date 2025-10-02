@@ -4,7 +4,7 @@ description: "CI/CD pipeline setup and automation for multiple platforms"
 category: devops
 subcategory: pipeline-automation
 complexity: intermediate
-argument-hint: "[--platform=github|gitlab|jenkins] [--type=basic|security|enterprise] [--deploy=staging|production|both] [--monitoring] [--security] [--agents=devops|quality|orchestrator|all]"
+argument-hint: "[--platform=github|gitlab|jenkins] [--type=basic|security|enterprise] [--deploy=staging|production|both] [--monitoring] [--security] [--agents=auto|core|scientific|engineering|ai|domain|quality|research|all] [--implement] [--dry-run] [--backup] [--rollback] [--intelligent] [--orchestrate] [--parallel] [--validate]"
 allowed-tools: "*"
 model: inherit
 tags: ci-cd, devops, automation, github-actions, gitlab-ci, jenkins
@@ -12,7 +12,7 @@ dependencies: []
 related: [run-all-tests, check-code-quality, commit, fix-commit-errors, optimize, generate-tests]
 workflows: [ci-cd-pipeline, deployment-automation, quality-gates]
 version: "2.1"
-last-updated: "2025-09-28"
+last-updated: "2025-09-29"
 ---
 
 # CI/CD Pipeline Setup
@@ -39,7 +39,15 @@ Set up CI/CD pipelines with automated testing, building, and deployment: **$ARGU
 - `--deploy` - Deployment target: staging, production, both
 - `--monitoring` - Enable monitoring and observability
 - `--security` - Enable security scanning and compliance
-- `--agents=<agents>` - Agent selection (devops, quality, orchestrator, all)
+- `--agents=<agents>` - Agent selection (auto, core, scientific, engineering, ai, domain, quality, research, all)
+- `--implement` - Automatically create and configure CI/CD pipelines
+- `--dry-run` - Preview pipeline configuration without creating
+- `--backup` - Create backup before modifying CI/CD configuration
+- `--rollback` - Enable rollback capability for failed configurations
+- `--intelligent` - Enable intelligent agent selection based on project analysis
+- `--orchestrate` - Enable advanced 23-agent orchestration for complex setups
+- `--parallel` - Run setup steps in parallel for efficiency
+- `--validate` - Validate pipeline configuration and test execution
 
 ## Agent Integration
 
@@ -66,10 +74,57 @@ Set up CI/CD pipelines with automated testing, building, and deployment: **$ARGU
 
 ## Agent Selection Options
 
-- `devops` - DevSecOps focus for secure infrastructure and compliance
+- `auto` - Intelligent agent selection based on project requirements
+- `core` - Essential multi-agent team for standard CI/CD
+- `scientific` - Scientific computing and research pipeline setup
+- `engineering` - Software engineering and DevOps focus
+- `ai` - AI/ML pipeline and deployment setup
+- `domain` - Domain-specific specialized pipelines
 - `quality` - Quality engineering focus for testing and validation
-- `orchestrator` - Multi-agent coordination for complex CI/CD workflows
-- `all` - Complete multi-agent CI/CD system with specialized expertise
+- `research` - Research workflow and publication pipelines
+- `all` - Complete 23-agent CI/CD system with specialized expertise
+
+## Safety Features
+
+### Dry-Run Mode
+Preview pipeline configuration before creating:
+```bash
+/ci-setup --dry-run --implement --platform=github --type=basic
+```
+
+### Backup and Rollback
+Automatic backup before changes:
+```bash
+# Create backup before pipeline setup
+/ci-setup --backup --implement --platform=github
+
+# Enable rollback if setup fails
+/ci-setup --backup --rollback --implement --platform=github --type=enterprise
+```
+
+The system creates versioned backups of existing CI/CD configurations with:
+- Timestamp-based naming
+- Git commit before changes (if available)
+- Automatic restoration on failure
+
+### Validation
+Validate pipeline configuration after setup:
+```bash
+/ci-setup --implement --validate --platform=github --type=security
+```
+
+### Safe Setup Workflow
+```bash
+# 1. Preview pipeline configuration
+/ci-setup --dry-run --implement --platform=github --type=basic
+
+# 2. Review configuration output
+
+# 3. Apply with safety features
+/ci-setup --backup --rollback --validate --implement --platform=github --type=basic
+
+# 4. Pipeline is tested and validated automatically
+```
 
 ## Pipeline Types
 
@@ -228,3 +283,5 @@ jobs:
 - `/run-all-tests --auto-fix` - Maintain test suite health
 - `/reflection --type=instruction` - Analyze CI/CD effectiveness
 - `/update-docs --type=readme` - Document deployment procedures
+
+ARGUMENTS: [--platform=github|gitlab|jenkins] [--type=basic|security|enterprise] [--deploy=staging|production|both] [--monitoring] [--security] [--agents=auto|core|scientific|engineering|ai|domain|quality|research|all] [--implement] [--dry-run] [--intelligent] [--orchestrate] [--parallel] [--validate]

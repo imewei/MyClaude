@@ -1,0 +1,106 @@
+# Coverage Configuration for Command Executor Framework
+# Target: 90%+ code coverage
+
+[run]
+# Source packages to measure
+source =
+    executors
+    commands
+
+# Files/directories to omit from coverage
+omit =
+    */tests/*
+    */test_*.py
+    */__pycache__/*
+    */venv/*
+    */env/*
+    */.venv/*
+    */site-packages/*
+    setup.py
+    conftest.py
+
+# Enable branch coverage
+branch = True
+
+# Collect context for each line
+dynamic_context = test_function
+
+# Parallel mode
+parallel = True
+
+# Data file location
+data_file = .coverage
+
+[report]
+# Precision of percentages
+precision = 2
+
+# Show missing lines
+show_missing = True
+
+# Skip covered files in report
+skip_covered = False
+
+# Skip empty files
+skip_empty = True
+
+# Fail under this percentage
+fail_under = 90.0
+
+# Sort report by
+sort = Cover
+
+# Lines to exclude from coverage
+exclude_lines =
+    # Standard pragma
+    pragma: no cover
+
+    # Don't complain about missing debug code
+    def __repr__
+    def __str__
+
+    # Don't complain if tests don't hit defensive assertion code
+    raise AssertionError
+    raise NotImplementedError
+
+    # Don't complain about abstract methods
+    @abstractmethod
+    @abc.abstractmethod
+
+    # Don't complain about type checking code
+    if TYPE_CHECKING:
+    if typing.TYPE_CHECKING:
+
+    # Don't complain about main entry points
+    if __name__ == .__main__.:
+
+    # Don't complain about ellipsis
+    ...
+
+    # Don't complain about pass statements
+    pass
+
+# Ignore errors for missing source files
+ignore_errors = False
+
+[html]
+# HTML report directory
+directory = htmlcov
+
+# Title for HTML report
+title = Command Executor Framework Coverage Report
+
+[xml]
+# XML report file
+output = coverage.xml
+
+[json]
+# JSON report file
+output = coverage.json
+pretty_print = True
+
+[paths]
+# Path mappings for combined coverage
+source =
+    executors/
+    */executors/

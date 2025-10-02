@@ -1,0 +1,278 @@
+name: Continuous Deployment
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+    inputs:
+      deploy_target:
+        description: 'Deployment target'
+        required: true
+        default: 'test-pypi'
+        type: choice
+        options:
+          - test-pypi
+          - pypi
+          - docs-only
+
+jobs:
+  deploy-pypi:
+    name: Deploy to PyPI
+    runs-on: ubuntu-latest
+    if: github.event_name == 'release' || github.event.inputs.deploy_target == 'pypi'
+    environment:
+      name: pypi
+      url: https://pypi.org/project/claude-commands
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Install build dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install build twine
+
+      - name: Build package
+        run: |
+          python -m build
+
+      - name: Check package
+        run: |
+          twine check dist/*
+
+      - name: Publish to PyPI
+        env:
+          TWINE_USERNAME: __token__
+          TWINE_PASSWORD: ${{ secrets.PYPI_API_TOKEN }}
+        run: |
+          twine upload dist/*
+
+      - name: Create deployment record
+        run: |
+          echo "Package deployed to PyPI"
+          echo "Version: $(python setup.py --version)"
+          echo "Timestamp: $(date -u +"%Y-%m-%d %H:%M:%S UTC")"
+
+  deploy-test-pypi:
+    name: Deploy to Test PyPI
+    runs-on: ubuntu-latest
+    if: github.event.inputs.deploy_target == 'test-pypi'
+    environment:
+      name: test-pypi
+      url: https://test.pypi.org/project/claude-commands
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Install build dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install build twine
+
+      - name: Build package
+        run: |
+          python -m build
+
+      - name: Publish to Test PyPI
+        env:
+          TWINE_USERNAME: __token__
+          TWINE_PASSWORD: ${{ secrets.TEST_PYPI_API_TOKEN }}
+        run: |
+          twine upload --repository testpypi dist/*
+
+  deploy-docs:
+    name: Deploy Documentation
+    runs-on: ubuntu-latest
+    if: github.event_name == 'release' || github.event.inputs.deploy_target == 'docs-only'
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Install documentation dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -e .[docs]
+          pip install mkdocs mkdocs-material mkdocstrings[python] pymdown-extensions
+
+      - name: Build documentation
+        run: |
+          bash cicd/docs/build_docs.sh
+
+      - name: Validate documentation
+        run: |
+          python cicd/docs/validate_docs.py
+
+      - name: Check for broken links
+        run: |
+          python cicd/docs/link_checker.py
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./site
+          cname: docs.claude-commands.dev
+          user_name: 'github-actions[bot]'
+          user_email: 'github-actions[bot]@users.noreply.github.com'
+          commit_message: 'docs: deploy documentation for ${{ github.ref }}'
+
+  deploy-docker:
+    name: Deploy Docker Images
+    runs-on: ubuntu-latest
+    if: github.event_name == 'release'
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Login to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+
+      - name: Extract metadata
+        id: meta
+        uses: docker/metadata-action@v5
+        with:
+          images: claudecommands/executor
+          tags: |
+            type=ref,event=branch
+            type=ref,event=pr
+            type=semver,pattern={{version}}
+            type=semver,pattern={{major}}.{{minor}}
+            type=semver,pattern={{major}}
+            type=sha
+
+      - name: Build and push
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+  create-release-notes:
+    name: Generate Release Notes
+    runs-on: ubuntu-latest
+    if: github.event_name == 'release'
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          pip install gitpython jinja2
+
+      - name: Generate release notes
+        run: |
+          python cicd/release/release_notes.py --output release_notes.md
+
+      - name: Generate changelog
+        run: |
+          python cicd/build/changelog_generator.py --version ${{ github.ref_name }}
+
+      - name: Update release with notes
+        uses: softprops/action-gh-release@v1
+        with:
+          body_path: release_notes.md
+          files: |
+            CHANGELOG.md
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  smoke-test:
+    name: Production Smoke Tests
+    runs-on: ubuntu-latest
+    needs: [deploy-pypi]
+    if: github.event_name == 'release'
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Wait for PyPI propagation
+        run: sleep 120
+
+      - name: Install from PyPI
+        run: |
+          pip install claude-commands
+
+      - name: Run smoke tests
+        run: |
+          bash cicd/deploy/smoke_test_prod.sh
+
+      - name: Notify on failure
+        if: failure()
+        run: |
+          echo "Smoke tests failed! Deployment may need rollback."
+          python cicd/monitoring/error_tracker.py --alert "Production smoke tests failed"
+
+  notify-deployment:
+    name: Deployment Notifications
+    runs-on: ubuntu-latest
+    needs: [deploy-pypi, deploy-docs, smoke-test]
+    if: always() && github.event_name == 'release'
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Send deployment notification
+        run: |
+          python cicd/release/announcement_generator.py \
+            --version ${{ github.ref_name }} \
+            --status ${{ job.status }}
+
+      - name: Create deployment summary
+        run: |
+          echo "# Deployment Summary" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "- Version: ${{ github.ref_name }}" >> $GITHUB_STEP_SUMMARY
+          echo "- PyPI: Deployed" >> $GITHUB_STEP_SUMMARY
+          echo "- Documentation: Deployed" >> $GITHUB_STEP_SUMMARY
+          echo "- Docker: Deployed" >> $GITHUB_STEP_SUMMARY
+          echo "- Smoke Tests: ${{ needs.smoke-test.result }}" >> $GITHUB_STEP_SUMMARY

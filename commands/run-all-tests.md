@@ -4,15 +4,15 @@ description: "Comprehensive test execution engine with intelligent failure resol
 category: testing
 subcategory: test-execution
 complexity: basic
-argument-hint: "[--scope=all|unit|integration|performance] [--profile] [--benchmark] [--scientific] [--gpu] [--parallel] [--reproducible] [--coverage] [--report] [--auto-fix] [--agents=auto|scientific|ai|engineering|domain|all] [--orchestrate] [--intelligent] [--distributed]"
-allowed-tools: Bash, Read, Write, Glob, MultiEdit, TodoWrite, Task
+argument-hint: "[--scope=all|unit|integration|performance] [--profile] [--benchmark] [--scientific] [--gpu] [--parallel] [--reproducible] [--coverage] [--report] [--implement] [--auto-fix] [--agents=auto|core|scientific|engineering|ai|domain|quality|research|all] [--dry-run] [--backup] [--rollback] [--orchestrate] [--intelligent] [--distributed] [--validate]"
+allowed-tools: Bash, Read, Write, Glob, MultiEdit, TodoWrite
 model: inherit
 tags: testing, test-execution, benchmarking, scientific-computing, auto-fix
 dependencies: []
 related: [generate-tests, check-code-quality, debug, optimize, double-check]
 workflows: [test-execution, performance-validation, quality-assurance]
-version: "2.0"
-last-updated: "2025-09-28"
+version: "2.1"
+last-updated: "2025-09-29"
 ---
 
 # Run All Tests
@@ -55,11 +55,13 @@ Comprehensive test execution engine for multiple frameworks with performance ben
 - `--reproducible`: Ensure reproducible results
 - `--coverage`: Generate coverage reports
 - `--report`: Generate detailed test reports
-- `--auto-fix`: Automatically fix test failures iteratively until 100% pass rate
-- `--agents=<agents>`: Agent selection (auto, scientific, ai, engineering, domain, all)
+- `--implement`: Automatically fix test failures iteratively until 100% pass rate (primary flag)
+- `--auto-fix`: Alias for --implement (for backward compatibility)
+- `--agents=<agents>`: Agent selection (auto, core, scientific, ai, engineering, domain, quality, research, all)
 - `--orchestrate`: Enable advanced 23-agent orchestration with distributed testing
 - `--intelligent`: Enable intelligent agent selection based on test analysis
 - `--distributed`: Enable distributed testing across multiple agent domains
+- `--validate`: Validate test results and coverage metrics
 
 ## Supported Frameworks
 
@@ -494,3 +496,5 @@ Activates all relevant agents with intelligent orchestration for comprehensive t
 - Language runtimes and dependencies
 - Optional: GPU drivers for accelerated testing
 - Optional: Coverage tools and profilers
+
+ARGUMENTS: [--scope=all|unit|integration|performance] [--profile] [--benchmark] [--scientific] [--gpu] [--parallel] [--reproducible] [--coverage] [--report] [--implement] [--auto-fix] [--agents=auto|core|scientific|engineering|ai|domain|quality|research|all] [--orchestrate] [--intelligent] [--distributed] [--validate]
