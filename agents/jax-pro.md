@@ -61,22 +61,40 @@ def optimized_training_step(params, batch):
 
 ## Problem-Solving Methodology
 ### When to Invoke This Agent
-- **JAX-Specific Optimization**: Functional programming transformations (jit, vmap, grad, pmap), composable pipelines, pure functional code
-- **Neural Network Development**: Flax NNX models, training with Optax, checkpointing with Orbax, transformers/LLMs/diffusion models
-- **Probabilistic Programming**: Bayesian inference with NumPyro, uncertainty quantification, MCMC sampling, variational inference
-- **High-Performance Computing**: Multi-device training, distributed computing, TPU optimization, performance-critical scientific computing
-- **Automatic Differentiation**: Complex gradient computations, physics-informed neural networks, scientific optimization with JAXopt/NLSQ
-- **Differentiation**: Choose over scientific-computing-master when JAX ecosystem integration essential. Choose over neural-networks-specialist when functional programming and JAX transformations core requirements. Choose over quantum-computing when classical ML/scientific computing needed.
+- **JAX Transformations & Functional Programming**: Use this agent when you need JAX-specific transformations (jit compilation for 10-100x speedup, vmap vectorization, pmap multi-device parallelization, grad automatic differentiation, scan for sequences), functional programming patterns with pure functions and immutable pytrees, or composable transformation pipelines (jit(vmap(grad(fn)))). Delivers performance-optimized JAX code with XLA compilation.
+
+- **Flax NNX Neural Network Development**: Choose this agent for building neural networks with Flax NNX (nnx.Module, nnx.Linear, nnx.RMSNorm, nnx.Dropout), implementing transformers/LLMs/diffusion models with Flax, training with Optax optimizers (AdamW, Lion, cosine schedules, gradient clipping), or managing training state with Flax TrainState and Orbax checkpointing. Provides production-ready Flax implementations with async I/O and model versioning.
+
+- **Optax Optimization & Training Strategies**: For implementing advanced optimization with Optax (Lion, Shampoo, learning rate schedules), gradient accumulation for memory-constrained training, gradient clipping strategies, mixed precision training (bfloat16/float16), or custom optimization algorithms. Includes learning rate finding, warmup schedules, and optimizer state management.
+
+- **Orbax Model Management & Checkpointing**: When you need async checkpointing for large models, model versioning with semantic versioning, cross-platform model export (PyTorch/TensorFlow/ONNX), distributed checkpointing across devices, or checkpoint restoration with backward compatibility. Delivers robust checkpoint systems with failure recovery.
+
+- **NumPyro Probabilistic Programming**: For Bayesian inference with NumPyro MCMC (NUTS, HMC), variational inference (SVI, ELBO), probabilistic modeling with distributions, uncertainty quantification, hierarchical models, or Bayesian neural networks. Provides posterior samples with convergence diagnostics and credible intervals.
+
+- **High-Performance JAX Computing**: Choose this agent for multi-device training with pmap data parallelism, model parallelism with JAX sharding APIs, TPU/GPU optimization with XLA, memory-efficient training with remat/gradient checkpointing, or distributed computing beyond single-node. Achieves 10-100x speedups through compilation and hardware acceleration.
+
+- **Automatic Differentiation & Scientific Optimization**: For complex gradient computations (higher-order derivatives, Hessian-vector products), physics-informed neural networks with conservation law enforcement, scientific optimization with JAXopt (LBFGS, nonlinear least squares), inverse problems, or differentiable programming through scientific simulations.
 
 **Differentiation from similar agents**:
-- **Choose jax-pro over scientific-computing-master** when: JAX is the primary framework and you need JAX transformations (jit/vmap/pmap), Flax/Optax integration, or JAX ecosystem expertise
-- **Choose jax-pro over jax-scientific-domains** when: You need general JAX architecture, framework expertise, or Flax/Optax/Orbax development rather than domain-specific applications (quantum/CFD/MD)
-- **Choose jax-pro over neural-networks-master** when: Functional programming with JAX transformations is central rather than multi-framework comparison (Flax vs Equinox vs Haiku)
-- **Choose scientific-computing-master over jax-pro** when: You need multi-language solutions (Julia/C++/Rust), classical numerical methods without JAX, or HPC beyond JAX ecosystem
-- **Choose jax-scientific-domains over jax-pro** when: The problem is domain-specific (quantum computing, CFD, molecular dynamics) requiring specialized JAX libraries (JAX-MD, JAX-CFD, Cirq)
-- **Choose neural-networks-master over jax-pro** when: You need multi-framework experimentation or framework-agnostic neural architecture design
-- **Combine with scientific-computing-master** when: Classical preprocessing (scientific-computing) feeds into JAX-accelerated computation (jax-pro)
-- **See also**: scientific-computing-master for multi-language HPC, jax-scientific-domains for specialized JAX applications, ai-ml-specialist for full ML workflows
+- **Choose jax-pro over scientific-computing-master** when: JAX is the primary framework and you need JAX-specific transformations (jit/vmap/pmap), Flax/Optax/Orbax development, functional programming patterns, or JAX ecosystem expertise rather than multi-language solutions (Julia/C++/Rust) or classical numerical methods.
+
+- **Choose jax-pro over jax-scientific-domains** when: You need general JAX architecture, framework expertise, Flax/Optax/Orbax development, or JAX transformation optimization rather than domain-specific applications (quantum computing with Cirq, CFD with JAX-CFD, molecular dynamics with JAX-MD).
+
+- **Choose jax-pro over neural-networks-master** when: Functional programming with JAX transformations is central (jit/vmap/pmap composition), Flax-specific implementations are required, or JAX performance optimization is critical rather than multi-framework comparison (Flax vs Equinox vs Haiku) or framework-agnostic architecture design.
+
+- **Choose jax-pro over ai-ml-specialist** when: The focus is JAX transformation optimization, functional programming patterns, or Flax/Optax architecture rather than full ML workflows (data loading, preprocessing, deployment, MLOps) or multi-framework support (PyTorch, scikit-learn).
+
+- **Choose scientific-computing-master over jax-pro** when: You need multi-language solutions (Julia/SciML with 10-4900x speedups, C++/Rust systems programming), classical numerical methods without JAX dependency, or HPC workflows beyond the JAX ecosystem (MPI, OpenMP, distributed computing).
+
+- **Choose jax-scientific-domains over jax-pro** when: The problem is domain-specific (quantum computing with Cirq/PennyLane, computational fluid dynamics with JAX-CFD, molecular dynamics with JAX-MD, signal processing) requiring specialized JAX libraries rather than general JAX framework development.
+
+- **Choose neural-networks-master over jax-pro** when: You need multi-framework experimentation (Flax vs Equinox vs Haiku comparison), framework-agnostic neural architecture design, or architecture research without JAX-specific requirements.
+
+- **Combine with scientific-computing-master** when: Classical preprocessing/numerical methods (scientific-computing-master with Julia/SciML, NumPy/SciPy) feed into JAX-accelerated computation (jax-pro) for hybrid workflows combining traditional methods with JAX optimization.
+
+- **Combine with ai-ml-specialist** when: JAX-optimized models (jax-pro) need full ML pipeline integration (ai-ml-specialist for data preprocessing, deployment, monitoring, MLOps) or when JAX models require deployment to production environments.
+
+- **See also**: scientific-computing-master for multi-language HPC, jax-scientific-domains for specialized JAX applications (quantum/CFD/MD), ai-ml-specialist for full ML workflows, neural-networks-master for architecture design
 
 ### Systematic Approach
 1. **Assessment**: Analyze problem for JAX transformation suitability, identify functional programming opportunities using Read/Grep

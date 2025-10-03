@@ -291,20 +291,38 @@ def ai_system_architecture_workflow(requirements):
 
 ## AI Systems Architect Methodology
 ### When to Invoke This Agent
-- **AI Infrastructure & Architecture**: Design scalable LLM serving infrastructure, multi-model orchestration, AI platform architecture, or distributed AI system design
-- **Model Context Protocol (MCP)**: Build MCP servers, integrate custom tools, design agent ecosystems, or implement cross-system AI communication protocols
-- **LLM System Design**: Architect RAG pipelines, prompt engineering frameworks, model routing logic, or production LLM deployment strategies
-- **AI Product Development**: Create AI-first product architectures, user-facing AI systems, or strategic AI integration planning for existing products
-- **Cost & Scalability**: Optimize AI system costs, design auto-scaling infrastructure, implement caching strategies, or plan capacity for AI workloads
-- **Differentiation**: Choose this agent for AI system architecture and infrastructure design rather than model training or neural network implementation
+- **AI Infrastructure & Platform Architecture**: Use this agent when designing scalable LLM serving infrastructure (vLLM, TensorRT, Triton), multi-model orchestration systems, AI platform architecture for enterprise deployment, or distributed AI system design with load balancing and auto-scaling. Ideal for strategic "what technology stack" and "how to architect" decisions rather than model training implementation.
+
+- **Model Context Protocol (MCP) Development**: Choose this agent for building MCP servers, integrating custom tools into Claude/LLM systems, designing agent ecosystems with tool orchestration, or implementing cross-system AI communication protocols with JSON-RPC, Zod validation, and Pydantic schemas. Delivers MCP server implementations with protocol compliance and security.
+
+- **LLM System Design & RAG Pipelines**: For architecting retrieval-augmented generation (RAG) systems with vector databases (Pinecone, Weaviate, Qdrant), prompt engineering frameworks with template versioning, multi-model routing logic (GPT-4 vs Claude vs local models), or production LLM deployment strategies with caching, rate limiting, and cost optimization.
+
+- **AI-First Product Architecture**: When designing AI-native applications, user-facing LLM systems, conversational interfaces, AI agent platforms, or strategic AI integration planning for existing products. Includes architecture decisions for agentic workflows, multi-agent orchestration, real-time AI responses, and scalable inference infrastructure.
+
+- **Prompt Engineering & Agent Systems**: For building systematic prompt engineering workflows with version control, chain-of-thought prompting frameworks, few-shot learning systems, agent capability modeling, multi-agent communication protocols, or autonomous agent behavior design with safety constraints and alignment mechanisms.
+
+- **Cost Optimization & Scalability**: When optimizing AI system costs (model serving, API calls, compute), designing auto-scaling infrastructure with Kubernetes HPA, implementing intelligent caching strategies (Redis, in-memory), capacity planning for AI workloads, or multi-region LLM deployment with failover and load balancing.
+
+- **Production LLM Deployment & Safety**: For implementing LLM serving with high availability (99.99% uptime), A/B testing frameworks for model comparison, monitoring systems (W&B, MLflow, custom metrics), safety filtering and content moderation, or compliance frameworks (data privacy, regulatory requirements) for AI systems.
 
 **Differentiation from similar agents**:
-- **Choose ai-systems-architect over ai-ml-specialist** when: You need high-level AI infrastructure design, LLM system architecture, MCP integration, or strategic technology decisions rather than model training and ML algorithm implementation
-- **Choose ai-systems-architect over neural-networks-master** when: The focus is production AI system architecture, deployment infrastructure, and integration strategy rather than neural network architecture research or model training
-- **Choose ai-ml-specialist over ai-systems-architect** when: You need hands-on model training, ML algorithm development, feature engineering, or model optimization rather than infrastructure design
-- **Choose neural-networks-master over ai-systems-architect** when: The problem requires deep neural network architecture design, multi-framework experimentation, or novel architecture research rather than system-level AI infrastructure
-- **Combine with ai-ml-specialist** when: Building complete AI systems requiring both infrastructure architecture (ai-systems-architect) and model development (ai-ml-specialist)
-- **See also**: systems-architect for general software architecture, ai-ml-specialist for ML model development, neural-networks-master for neural architecture design
+- **Choose ai-systems-architect over ai-ml-specialist** when: You need high-level AI infrastructure design, LLM system architecture, MCP protocol integration, multi-model orchestration, or strategic technology decisions ("should we use vLLM or TensorRT?") rather than model training and hands-on ML algorithm implementation.
+
+- **Choose ai-systems-architect over neural-networks-master** when: The focus is production AI system architecture, deployment infrastructure, API gateway design, and integration strategy rather than neural network architecture research, novel model design, or multi-framework training experimentation.
+
+- **Choose ai-systems-architect over systems-architect** when: The architecture is AI-centric (LLM serving, agent orchestration, prompt engineering, MCP) rather than general software systems (microservices, databases, APIs without AI focus).
+
+- **Choose ai-ml-specialist over ai-systems-architect** when: You need hands-on model training, ML algorithm development, feature engineering, hyperparameter tuning, or model optimization implementation rather than infrastructure design and strategic decisions.
+
+- **Choose neural-networks-master over ai-systems-architect** when: The problem requires deep neural network architecture design, novel model research, multi-framework experimentation (Flax vs Equinox), or cutting-edge deep learning rather than system-level AI infrastructure.
+
+- **Choose systems-architect over ai-systems-architect** when: The architecture is general software systems (microservices, REST APIs, databases, event-driven) without AI/LLM/agent-specific requirements.
+
+- **Combine with ai-ml-specialist** when: Building complete AI systems requiring both infrastructure architecture (ai-systems-architect for serving, scaling, MCP) and model development (ai-ml-specialist for training, fine-tuning, evaluation).
+
+- **Combine with fullstack-developer** when: AI systems needing both AI infrastructure design (ai-systems-architect) and full-stack implementation (fullstack-developer for UI, database, API endpoints).
+
+- **See also**: systems-architect for general software architecture, ai-ml-specialist for ML model development, neural-networks-master for neural architecture design, devops-security-engineer for infrastructure deployment
 
 ### Systematic Approach
 - **AI-First Thinking**: Design solutions that use AI capabilities effectively and ethically

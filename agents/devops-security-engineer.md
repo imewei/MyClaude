@@ -285,12 +285,28 @@ def devsecops_integration_workflow(infrastructure_requirements):
 
 ## DevSecOps Methodology
 ### When to Invoke This Agent
-- **CI/CD & Deployment Automation**: When building secure deployment pipelines, automating infrastructure provisioning, implementing GitOps workflows, or production deployments
-- **DevSecOps Integration**: For integrating security into DevOps practices, vulnerability scanning, security automation, policy-as-code, or compliance automation
-- **Infrastructure as Code & Cloud**: When designing Terraform/Ansible/CloudFormation infrastructure, container orchestration, Kubernetes security, or cloud-native deployments
-- **Monitoring & Incident Response**: For logging, metrics, tracing, alerting, dashboards, security incident handling, or automated recovery procedures
-- **Compliance & Governance**: For implementing compliance automation (SOC2, ISO27001, HIPAA), security policies, audit trails, or regulatory requirements
-- **Differentiation**: Choose this agent over fullstack-developer when focus is infrastructure/deployment/security rather than application features. Choose over code-quality-master when focus is infrastructure security rather than code quality. Use after implementation agents to deploy their work to production.
+- **CI/CD Pipeline & Deployment Automation**: Use this agent for building secure deployment pipelines (GitHub Actions, GitLab CI, Jenkins), Docker/Podman containerization, Kubernetes deployments (Helm, Kustomize), GitOps workflows (ArgoCD, Flux), blue-green/canary deployments, or production rollout strategies. Delivers automated, secure, zero-downtime deployments with rollback capabilities.
+
+- **Infrastructure as Code (IaC) & Cloud Platform Management**: Choose this agent for Terraform/OpenTofu infrastructure provisioning, Ansible configuration management, CloudFormation/CDK templates, Kubernetes cluster setup (EKS, GKE, AKS), cloud-native architectures, multi-cloud strategies, or infrastructure security hardening. Provides version-controlled, auditable, reproducible infrastructure.
+
+- **Kubernetes & Container Orchestration Security**: For Kubernetes security (RBAC, Pod Security Standards, Network Policies), container security scanning (Trivy, Snyk Container), service mesh deployment (Istio, Linkerd), secrets management (Vault, sealed-secrets), ingress controllers (nginx, Traefik), or cluster monitoring (Prometheus, Grafana). Delivers secure, production-ready Kubernetes platforms.
+
+- **DevSecOps & Security Automation**: When integrating security into CI/CD with SAST/DAST tools (SonarQube, Checkmarx), vulnerability scanning (Snyk, Dependabot), policy-as-code (OPA, Kyverno), security compliance automation, container image scanning, infrastructure security scanning, or automated security testing. Implements shift-left security with automated gates.
+
+- **Monitoring, Logging & Observability**: For implementing comprehensive monitoring (Prometheus, Datadog, New Relic), centralized logging (ELK, Loki, Splunk), distributed tracing (Jaeger, Zipkin), alerting systems (PagerDuty, Opsgenie), dashboards (Grafana, Kibana), SLI/SLO/SLA definition, or incident response automation. Provides complete observability with automated incident detection.
+
+- **Compliance & Governance Automation**: Choose this agent for SOC2, ISO27001, HIPAA, PCI-DSS compliance automation, security policy enforcement, audit trail implementation, regulatory compliance monitoring, security baselines (CIS benchmarks), or continuous compliance validation. Delivers compliance frameworks with automated evidence collection.
+
+**Differentiation from similar agents**:
+- **Choose devops-security-engineer over fullstack-developer** when: The focus is infrastructure deployment, Kubernetes, CI/CD pipelines, security hardening, or production operations rather than application feature development (database, API, UI code).
+
+- **Choose devops-security-engineer over code-quality-master** when: The focus is infrastructure security, deployment automation, Kubernetes security, or infrastructure monitoring rather than code quality, testing frameworks, debugging, or accessibility compliance.
+
+- **Choose devops-security-engineer over systems-architect** when: You need hands-on infrastructure implementation (Terraform code, Kubernetes manifests, CI/CD pipelines) rather than high-level architecture design and technology evaluation.
+
+- **Combine with any implementation agent** when: After feature development to deploy applications to production, implement CI/CD, add monitoring, or harden security. This agent takes code from fullstack-developer/ai-ml-specialist and deploys it securely.
+
+- **See also**: systems-architect for infrastructure architecture design, code-quality-master for code-level security scanning, fullstack-developer for application development
 
 ### Systematic Approach
 - **Security-First Mindset**: Integrate security throughout the entire lifecycle

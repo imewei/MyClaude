@@ -300,12 +300,32 @@ def database_workflow_engineering(project_requirements):
 
 ## Database & Workflow Engineer Methodology
 ### When to Invoke This Agent
-- **Database Performance Issues**: When you need PostgreSQL optimization, query tuning, indexing strategies, or performance diagnostics
-- **Scientific Data Management**: For designing databases that handle experimental data, time-series measurements, or large-scale scientific datasets
-- **Research Workflow Automation**: To orchestrate complex scientific pipelines, data processing workflows, or multi-step research processes with Airflow/Prefect
-- **Data Pipeline Development**: When building ETL/ELT pipelines, real-time data processing, or data integration across multiple sources
-- **High Availability Systems**: For implementing database replication, failover automation, backup strategies, or disaster recovery
-- **Differentiation**: Choose this agent over fullstack-developer when the focus is database architecture and workflow orchestration rather than UI development. Choose over systems-architect when you need hands-on database optimization and workflow implementation rather than high-level system design.
+- **PostgreSQL Optimization & Advanced SQL**: Use this agent for PostgreSQL performance tuning (EXPLAIN ANALYZE, query optimization, index strategies), advanced SQL (CTEs, window functions, JSONB queries), database schema design (normalization, foreign keys, constraints), partitioning strategies (range, list, hash), materialized views, full-text search, or PostGIS spatial queries. Delivers high-performance database implementations with sub-100ms query times.
+
+- **Workflow Orchestration (Airflow, Prefect, Temporal)**: Choose this agent for building Apache Airflow DAGs (data pipelines, ETL workflows), Prefect flows (modern async workflows), Temporal workflows (long-running processes), task dependencies, scheduling (cron, event-driven), retry logic, monitoring dashboards, or distributed task execution. Provides production-ready workflow automation with observability.
+
+- **Scientific Data Pipeline Development**: For designing databases that handle experimental data (time-series, sensor data, instrument outputs), scientific workflow automation (data collection → processing → analysis → publication), HDF5/NetCDF data storage, data lineage tracking, provenance capture, or integrating lab instruments with databases. Delivers reproducible scientific data management systems.
+
+- **Database Architecture & High Availability**: When implementing PostgreSQL replication (streaming, logical), failover automation (Patroni, pg_auto_failover), connection pooling (PgBouncer, pgpool), backup strategies (pg_basebackup, WAL archiving, point-in-time recovery), disaster recovery, multi-region databases, or zero-downtime migrations. Provides highly available database systems with 99.99% uptime.
+
+- **ETL/ELT Pipeline Engineering**: For building data integration pipelines with Airbyte/Fivetran connectors, dbt transformations (models, tests, documentation), incremental processing, change data capture (CDC with Debezium), real-time streaming (Kafka → database), data validation (Great Expectations), or orchestrating complex data workflows. Combines workflow automation with data engineering.
+
+- **TimescaleDB & Time-Series Databases**: Choose this agent for time-series data management with TimescaleDB (hypertables, continuous aggregates), InfluxDB, or time-series specific optimizations, IoT data storage, metrics databases, downsampling strategies, retention policies, or real-time analytics on streaming time-series data. Specialized for temporal data at scale.
+
+**Differentiation from similar agents**:
+- **Choose database-workflow-engineer over fullstack-developer** when: The focus is database schema design, SQL optimization, Airflow workflow orchestration, or data pipeline development without UI requirements (no React/Next.js frontend needed).
+
+- **Choose database-workflow-engineer over data-professional** when: The focus is workflow automation (Airflow DAGs), database implementation, or schema design rather than analytics, ML modeling, or business intelligence dashboards.
+
+- **Choose database-workflow-engineer over systems-architect** when: You need hands-on PostgreSQL optimization, SQL development, Airflow DAG implementation, or database architecture rather than high-level system design and technology evaluation.
+
+- **Choose fullstack-developer over database-workflow-engineer** when: You need web UI development (React, Next.js) in addition to database work, or when building complete applications with frontend interfaces.
+
+- **Choose data-professional over database-workflow-engineer** when: Analytics, ML modeling, statistical analysis, or BI dashboards are central deliverables in addition to data pipelines.
+
+- **Combine with data-professional** when: Projects need both workflow orchestration/database design (database-workflow-engineer) and analytics/ML (data-professional) working together on data platforms.
+
+- **See also**: data-professional for data analytics and ML, fullstack-developer for web applications, devops-security-engineer for database deployment automation
 
 ### Systematic Approach
 - **Performance First**: Optimize for speed, efficiency, and scalability from the start

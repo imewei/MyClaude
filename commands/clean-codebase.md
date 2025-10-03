@@ -1,622 +1,497 @@
 ---
-title: "Clean Codebase"
-description: "Advanced codebase cleanup with AST-based unused import removal, dead code elimination, and multi-agent analysis with ultrathink intelligence"
-category: project-maintenance
-subcategory: code-cleanup
-complexity: intermediate
-argument-hint: "[--dry-run] [--analysis=basic|thorough|comprehensive|ultrathink] [--agents=auto|core|scientific|engineering|ai|domain|quality|research|all] [--imports] [--dead-code] [--duplicates] [--ast-deep] [--orchestrate] [--intelligent] [--breakthrough] [--parallel] [--implement] [--backup] [--rollback] [--validate] [path]"
-allowed-tools: Bash, Read, Write, Edit, MultiEdit, Glob, Grep, Task, TodoWrite
-model: inherit
-tags: cleanup, refactoring, maintenance, ast-analysis, 23-agent-system, ultrathink, unused-imports, dead-code, duplicates, orchestration
-dependencies: []
-related: [refactor-clean, check-code-quality, optimize, multi-agent-optimize, adopt-code, debug]
-workflows: [project-cleanup, maintenance-workflow, code-organization]
-version: "2.1"
-last-updated: "2025-09-29"
+description: Advanced codebase cleanup with AST-based unused import removal, dead code elimination, and multi-agent analysis with ultrathink intelligence
+allowed-tools: Bash(find:*), Bash(grep:*), Bash(wc:*), Bash(ls:*), Bash(du:*), Bash(git:*), Bash(head:*), Bash(tail:*)
+argument-hint: [path] [--auto-fix] [--aggressive]
+color: green
 ---
 
-# Clean Codebase
+# Advanced Codebase Cleanup & Dead Code Elimination
 
-Advanced codebase cleanup with ultrathink intelligence, AST-based unused import removal, sophisticated dead code elimination, and comprehensive 23-agent personal agent analysis for safe, precise cleanup operations.
+## Phase 0: Pre-Flight Checks & Safety
 
-## Quick Start
+### Safety Validation
+- Git status: !`git status --short 2>/dev/null || echo "Not a git repository - BACKUP RECOMMENDED"`
+- Uncommitted changes: !`git diff --stat 2>/dev/null || echo "Git not available"`
+- Current branch: !`git branch --show-current 2>/dev/null || echo "N/A"`
+- Stash available: !`git stash list 2>/dev/null | head -3 || echo "N/A"`
 
-```bash
-# Safe preview with ultrathink analysis
-/clean-codebase --dry-run --analysis=ultrathink
+⚠️ **SAFETY PROTOCOL ACTIVATED**
+- Backup strategy will be created before any modifications
+- All changes will be reversible via git or backup files
+- Dry-run analysis performed first, fixes applied only with explicit confirmation
 
-# Remove unused imports across project
-/clean-codebase --imports --ast-deep --dry-run
+---
 
-# Comprehensive dead code elimination with 23-agent analysis
-/clean-codebase --dead-code --analysis=comprehensive --agents=all --orchestrate
+## Phase 1: Codebase Discovery & Language Detection
 
-# Complete cleanup with 23-agent orchestration
-/clean-codebase --analysis=ultrathink --imports --dead-code --duplicates --agents=all --orchestrate
+### Project Structure Analysis
+- Total files: !`find ${ARGUMENTS:-.} -type f 2>/dev/null | wc -l`
+- Code files by language: !`find ${ARGUMENTS:-.} -type f \( -name "*.py" -o -name "*.js" -o -name "*.ts" -o -name "*.jsx" -o -name "*.tsx" -o -name "*.java" -o -name "*.go" -o -name "*.rs" -o -name "*.rb" -o -name "*.php" -o -name "*.cs" -o -name "*.cpp" -o -name "*.c" \) 2>/dev/null | wc -l`
+- Project size: !`du -sh ${ARGUMENTS:-.} 2>/dev/null`
 
-# Language-specific intelligent cleanup with auto-agent selection
-/clean-codebase --language=python --analysis=ultrathink --agents=auto --intelligent
+### Language Distribution
+- Python: !`find ${ARGUMENTS:-.} -name "*.py" 2>/dev/null | wc -l` files
+- JavaScript: !`find ${ARGUMENTS:-.} -name "*.js" 2>/dev/null | wc -l` files
+- TypeScript: !`find ${ARGUMENTS:-.} -name "*.ts" -o -name "*.tsx" 2>/dev/null | wc -l` files
+- Java: !`find ${ARGUMENTS:-.} -name "*.java" 2>/dev/null | wc -l` files
+- Go: !`find ${ARGUMENTS:-.} -name "*.go" 2>/dev/null | wc -l` files
+- Rust: !`find ${ARGUMENTS:-.} -name "*.rs" 2>/dev/null | wc -l` files
+- C/C++: !`find ${ARGUMENTS:-.} -name "*.c" -o -name "*.cpp" -o -name "*.h" -o -name "*.hpp" 2>/dev/null | wc -l` files
+
+### Build & Config Files
+- Package configs: !`find ${ARGUMENTS:-.} -maxdepth 3 \( -name "package.json" -o -name "pyproject.toml" -o -name "Cargo.toml" -o -name "go.mod" -o -name "pom.xml" -o -name "build.gradle" \) 2>/dev/null`
+- Linter configs: !`find ${ARGUMENTS:-.} -maxdepth 2 \( -name ".eslintrc*" -o -name "pylintrc" -o -name ".flake8" -o -name "tslint.json" \) 2>/dev/null`
+- Type configs: !`find ${ARGUMENTS:-.} -maxdepth 2 \( -name "tsconfig.json" -o -name "mypy.ini" -o -name ".pyre_configuration" \) 2>/dev/null`
+
+---
+
+## Phase 2: Multi-Agent Analysis Deployment
+
+### Agent 1: AST-Based Import Analyzer
+**Mission**: Detect unused imports using Abstract Syntax Tree analysis
+
+**Python Analysis**:
+- Imports to analyze: !`grep -r "^import \|^from .* import" ${ARGUMENTS:-.} --include="*.py" 2>/dev/null | wc -l`
+- Common patterns: !`grep -r "^import \|^from .* import" ${ARGUMENTS:-.} --include="*.py" 2>/dev/null | head -20`
+
+**JavaScript/TypeScript Analysis**:
+- Import statements: !`grep -r "^import \|^const .* = require" ${ARGUMENTS:-.} --include="*.{js,ts,jsx,tsx}" 2>/dev/null | wc -l`
+- ES6 imports: !`grep -r "^import.*from" ${ARGUMENTS:-.} --include="*.{js,ts,jsx,tsx}" 2>/dev/null | head -20`
+
+**Tasks**:
+1. Parse all source files to build AST
+2. Extract all import/require statements
+3. Track symbol usage across entire codebase
+4. Identify imports with zero references
+5. Detect redundant imports (duplicate or re-exported)
+6. Find wildcard imports that could be specific
+
+### Agent 2: Dead Code Detector
+**Mission**: Identify unreachable and unused code
+
+**Function/Method Analysis**:
+- Function definitions (Python): !`grep -r "^def \|^async def " ${ARGUMENTS:-.} --include="*.py" 2>/dev/null | wc -l`
+- Function definitions (JS/TS): !`grep -r "function \|const .* = .*=> \|async.*=>" ${ARGUMENTS:-.} --include="*.{js,ts}" 2>/dev/null | wc -l`
+- Class definitions: !`grep -r "^class \|^export class \|^interface " ${ARGUMENTS:-.} --include="*.{py,js,ts,java,go,rs}" 2>/dev/null | wc -l`
+
+**Tasks**:
+1. Identify all function/method/class definitions
+2. Build call graph of entire codebase
+3. Detect unreferenced functions (0 callers)
+4. Find unreachable code paths (after return/break/throw)
+5. Identify unused parameters
+6. Detect constants/variables that are never read
+7. Find empty functions/classes
+8. Detect redundant else blocks after return
+9. Find unused private methods
+
+### Agent 3: Dependency Cleaner
+**Mission**: Clean up unused dependencies and imports
+
+**Package Analysis**:
+- Package.json: @${ARGUMENTS:-.}/package.json
+- Requirements.txt: @${ARGUMENTS:-.}/requirements.txt
+- Cargo.toml: @${ARGUMENTS:-.}/Cargo.toml
+- Go.mod: @${ARGUMENTS:-.}/go.mod
+
+**Tasks**:
+1. Parse dependency manifests
+2. Scan codebase for actual import/require usage
+3. Identify unused dependencies (declared but never imported)
+4. Find devDependencies used in production
+5. Detect duplicate dependencies (different versions)
+6. Identify deprecated packages
+7. Recommend lighter alternatives
+
+### Agent 4: Code Duplication Hunter
+**Mission**: Find and eliminate duplicate code
+
+**Duplication Patterns**:
+- Exact duplicates (copy-paste)
+- Structural duplicates (same logic, different names)
+- Partial duplicates (common code blocks)
+
+**Tasks**:
+1. Calculate code similarity hashes
+2. Find exact duplicate functions/blocks
+3. Detect near-duplicate code (>80% similar)
+4. Identify refactoring opportunities
+5. Suggest common utility extraction
+6. Find duplicate type definitions
+
+### Agent 5: Comment & Documentation Cleaner
+**Mission**: Remove obsolete comments and improve documentation
+
+**Comment Analysis**:
+- Comment lines: !`grep -r "^\s*#\|^\s*//\|^\s*/\*" ${ARGUMENTS:-.} --include="*.{py,js,ts,java,go,rs}" 2>/dev/null | wc -l`
+- TODO comments: !`grep -ri "TODO\|FIXME\|HACK\|XXX" ${ARGUMENTS:-.} --include="*.{py,js,ts,java,go,rs}" 2>/dev/null | wc -l`
+
+**Tasks**:
+1. Identify commented-out code
+2. Find outdated comments (referring to removed code)
+3. Detect redundant comments (restating obvious code)
+4. Find TODO/FIXME older than 6 months
+5. Remove auto-generated boilerplate comments
+6. Identify missing docstrings for public APIs
+
+---
+
+## Phase 3: UltraThink Intelligence Layer
+
+### Deep Analysis Framework
+
+**1. Problem Space Understanding**
+- **Current State**: Analyze the complexity and maintainability of existing codebase
+- **Pain Points**: Identify areas causing the most maintenance burden
+- **Risk Assessment**: Evaluate what code is safe to remove vs risky
+- **Business Context**: Consider feature usage patterns and deprecation timelines
+
+**2. Multi-Dimensional Cleanup Strategy**
+
+#### Technical Perspective
+- **AST Accuracy**: Ensure static analysis doesn't create false positives
+- **Runtime Analysis**: Consider dynamic imports, reflection, meta-programming
+- **Build System**: Account for tree-shaking, code splitting, bundler behavior
+- **Type Safety**: Preserve type checking capabilities during cleanup
+
+#### Safety Perspective
+- **Blast Radius**: Assess impact of each cleanup operation
+- **Rollback Strategy**: Ensure every change is reversible
+- **Testing Coverage**: Verify test suites still pass after cleanup
+- **Gradual Migration**: Phase cleanup to minimize disruption
+
+#### Performance Perspective
+- **Build Time**: How cleanup affects compilation/bundling speed
+- **Bundle Size**: Impact on final artifact size
+- **Runtime Performance**: Ensure no accidental runtime overhead
+- **Developer Experience**: Improve IDE performance and code navigation
+
+**3. Intelligent Decision Making**
+
+For each cleanup candidate, apply decision framework:
+
+```
+IF unused_code_confidence > 95% AND test_coverage > 80%:
+    → AUTO-REMOVE (safe)
+
+ELIF unused_code_confidence > 80% AND has_usage_analytics:
+    → CONDITIONAL-REMOVE (verify with usage data)
+
+ELIF unused_code_confidence > 60% AND marked_deprecated:
+    → DEPRECATION-WARNING (schedule for removal)
+
+ELSE:
+    → MANUAL-REVIEW (flag for human decision)
 ```
 
-## Usage
+**4. Pattern Recognition & Learning**
 
-```bash
-/clean-codebase [options] [path]
-```
+- Learn from codebase patterns (framework conventions, team style)
+- Adapt to project-specific idioms (dependency injection, factories)
+- Recognize framework-specific patterns (React hooks, Django models)
+- Account for meta-programming (decorators, macros, code generation)
 
-**Parameters:**
-- `options` - Analysis depth, agent selection, and execution configuration
-- `path` - Directory path to clean (defaults to current directory, moved to end for better UX)
+**5. Second-Order Consequences**
 
-## Options
+Consider ripple effects:
+- Will removing import X break import Y in another file?
+- Does dead code serve as documentation/examples?
+- Are "unused" functions actually called via reflection/eval?
+- Will cleanup break external consumers (if library)?
 
-| Option | Values | Default | Description |
-|--------|--------|---------|-------------|
-| `--analysis=<level>` | basic\|thorough\|comprehensive\|ultrathink | thorough | Analysis depth and intelligence level |
-| `--agents=<types>` | auto\|core\|scientific\|engineering\|ai\|domain\|quality\|research\|all | auto | 23-agent personal agent selection |
-| `--imports` | - | false | Remove unused imports with AST analysis |
-| `--dead-code` | - | false | Eliminate unreachable and dead code |
-| `--duplicates` | - | false | Remove duplicate files and code blocks |
-| `--ast-deep` | - | false | Deep AST analysis for precise detection |
-| `--parallel` | - | false | Parallel processing for faster analysis |
-| `--dry-run`, `-n` | - | false | Preview changes without executing |
-| `--interactive`, `-i` | - | false | Interactive confirmation for each change |
-| `--language=<lang>` | python\|javascript\|java\|auto | auto | Language-specific optimization |
-| `--exclude=<pattern>` | glob-pattern | none | Exclude files/folders matching pattern |
-| `--size-threshold=<size>` | size-spec | none | Only process files larger than threshold |
-| `--age-threshold=<days>` | number | none | Only process files older than specified days |
-| `--report` | - | false | Generate comprehensive analysis report |
-| `--backup` | - | false | Create backup before making changes |
-| `--rollback` | - | false | Enable rollback capability for safety |
-| `--orchestrate` | - | false | Enable advanced 23-agent orchestration |
-| `--intelligent` | - | false | Enable intelligent agent selection based on codebase analysis |
-| `--breakthrough` | - | false | Enable breakthrough optimization discovery |
-| `--implement` | - | false | Automatically apply cleanup recommendations |
-| `--validate` | - | false | Validate cleanup results through testing |
+---
 
-### Analysis Levels
-- **`basic`**: Quick scan for obvious duplicates and unused files
-- **`thorough`**: AST-based analysis with dependency checking (default)
-- **`comprehensive`**: Deep analysis with performance and security audits
-- **`ultrathink`**: Advanced intelligence with cross-file analysis and reasoning
-
-### 23-Agent Personal Agent System
-
-#### **Agent Selection Strategies**
-
-##### **`auto`** - Intelligent Agent Selection for Cleanup
-Automatically analyzes codebase characteristics and selects optimal agent combinations from the 23-agent library:
-- **Pattern Recognition**: Detects code patterns, languages, and cleanup requirements
-- **Complexity Assessment**: Evaluates project complexity and required cleanup scope
-- **Agent Matching**: Maps cleanup needs to relevant agent expertise
-- **Resource Optimization**: Balances comprehensive analysis with execution efficiency
-
-##### **`core`** - Essential Cleanup Team (5 agents)
-- `code-quality-master` - Code quality analysis and optimization
-- `systems-architect` - Architecture and dependency analysis
-- `scientific-computing-master` - Scientific code optimization
-- `documentation-architect` - Documentation and code organization
-- `multi-agent-orchestrator` - Workflow coordination and resource management
-
-##### **`scientific`** - Scientific Computing Focus (8 agents)
-- `scientific-computing-master` - Lead scientific computing expert
-- `jax-pro` - JAX ecosystem optimization
-- `neural-networks-master` - ML/AI code optimization
-- `research-intelligence-master` - Research methodology and analysis
-- `advanced-quantum-computing-expert` - Quantum computing optimization
-- `correlation-function-expert` - Statistical analysis optimization
-- `neutron-soft-matter-expert` - Neutron scattering simulation cleanup
-- `nonequilibrium-stochastic-expert` - Stochastic process optimization
-
-##### **`engineering`** - Software Engineering Focus (6 agents)
-- `systems-architect` - System design and architecture cleanup
-- `fullstack-developer` - Full-stack application optimization
-- `devops-security-engineer` - DevSecOps and infrastructure cleanup
-- `code-quality-master` - Quality engineering and testing
-- `database-workflow-engineer` - Database and data workflow optimization
-- `command-systems-engineer` - Command system and automation optimization
-
-##### **`ai`** - AI/ML Cleanup Focus (5 agents)
-- `ai-systems-architect` - AI system optimization and cleanup
-- `neural-networks-master` - ML/AI code optimization
-- `data-professional` - Data pipeline cleanup
-- `jax-pro` - Scientific ML optimization
-- `visualization-interface-master` - ML visualization cleanup
-
-##### **`domain`** - Specialized Domain Experts (4 agents)
-- `xray-soft-matter-expert` - X-ray analysis workflow optimization
-- `scientific-code-adoptor` - Legacy scientific code modernization
-- `data-professional` - Data engineering and analytics optimization
-- `visualization-interface-master` - UI/UX and visualization cleanup
-
-##### **`quality`** - Quality Engineering Focus
-- `code-quality-master` lead for quality-focused cleanup
-- **Quality Metrics**: Code quality and maintainability improvements
-- **Testing**: Test code cleanup and optimization
-- **Best Practices**: Code standards and conventions enforcement
-
-##### **`research`** - Research Intelligence Focus
-- `research-intelligence-master` lead for research code cleanup
-- **Research Methodology**: Academic code organization
-- **Innovation**: Research code optimization patterns
-- **Publication Ready**: Academic standards enforcement
-
-##### **`all`** - Complete 23-Agent Ecosystem
-Activates all 23 specialized personal agents with intelligent orchestration for breakthrough cleanup and optimization capabilities:
-
-**Multi-Agent Orchestration (23 Personal Agents):**
-- **`multi-agent-orchestrator`** - Workflow coordination and intelligent task allocation
-- **`command-systems-engineer`** - Command system optimization
-- **Scientific Computing Agents (8)** - Complete scientific computing optimization
-- **Engineering Agents (6)** - Full software engineering optimization
-- **Quality & Documentation (2)** - Code quality and documentation optimization
-- **Domain Specialists (5)** - Specialized domain expertise
-
-## Quick Agent Selection Guide
-
-**🚀 New User? Start Here:**
-
-| **Your Cleanup Goal** | **Recommended Agents** | **Example Command** |
-|-----------------------|----------------------|-------------------|
-| **Basic cleanup** | `--agents=auto` | `/clean-codebase --agents=auto --dry-run` |
-| **Quick quality fixes** | `--agents=core` | `/clean-codebase --agents=core --imports --dry-run` |
-| **Scientific code** | `--agents=scientific` | `/clean-codebase --agents=scientific --dead-code --orchestrate` |
-| **Production systems** | `--agents=engineering` | `/clean-codebase --agents=engineering --duplicates --intelligent` |
-| **Research projects** | `--agents=domain-specific` | `/clean-codebase --agents=domain-specific --ast-deep` |
-| **Complete overhaul** | `--agents=all` | `/clean-codebase --agents=all --analysis=ultrathink --breakthrough` |
-
-**🎯 Quick Decision Tree:**
-- **Not sure what you need?** → Use `--agents=auto` (intelligent selection)
-- **Basic Python/JS cleanup?** → Use `--agents=core`
-- **Scientific computing code?** → Use `--agents=scientific`
-- **Production application?** → Use `--agents=engineering`
-- **Research/academic code?** → Use `--agents=domain-specific`
-- **Major refactoring needed?** → Use `--agents=all`
-
-**⚡ Pro Tips**:
-- Always start with `--dry-run` to preview changes
-- Use `--orchestrate` for better agent coordination
-- Add `--intelligent` for smart cleanup decisions
-- Use `--breakthrough` for innovative optimization opportunities
-
-## Advanced Implementation
-
-The command executes sophisticated multi-phase analysis with ultrathink intelligence:
-
-### Phase 1: Ultrathink Project Analysis
-**Intelligent Codebase Assessment:**
-1. **Deep Structure Analysis**
-   - Map file dependencies with import/export tracking
-   - Identify language/framework patterns and conventions
-   - Detect build artifacts, generated files, and temporary files
-   - Analyze module hierarchies and cross-file relationships
-
-2. **AST-Based Code Analysis**
-   - Parse source files into Abstract Syntax Trees
-   - Track symbol definitions, usages, and scopes
-   - Identify control flow patterns and reachability
-   - Map import statements to actual usage locations
-
-3. **Baseline Intelligence Gathering**
-   - Calculate file/folder sizes and modification timestamps
-   - Generate content hashes for duplicate detection
-   - Catalog all imports vs. actual symbol usage
-   - Create dependency graphs for safe removal validation
-
-### Phase 2: 23-Agent Coordinated Analysis
-**Advanced Personal Agent Deployment:**
-
-#### **Tier 1: Core Cleanup Agents (5 agents)**
-**`code-quality-master`** - Master Code Quality Analysis
-- **Unused Import Detection**: Advanced AST traversal with symbol tracking
-- **Dead Code Analysis**: Control flow analysis with reachability assessment
-- **Code Quality Metrics**: Complexity analysis and maintainability scoring
-- **Refactoring Opportunities**: Identification of cleanup-enabled optimizations
-
-**`systems-architect`** - Architecture and Dependency Analysis
-- **Dependency Graph Analysis**: Complete system dependency mapping
-- **Architecture Pattern Recognition**: Framework and pattern-specific cleanup
-- **Modular Design Assessment**: Component isolation and coupling analysis
-- **Build System Integration**: Safe removal validation across build systems
-
-**`scientific-computing-master`** - Scientific Code Optimization
-- **Scientific Library Analysis**: NumPy, SciPy, JAX, Julia ecosystem cleanup
-- **Research Code Patterns**: Academic code optimization and standardization
-- **Performance Critical Path**: Scientific computation bottleneck identification
-- **Numerical Accuracy Validation**: Ensure cleanup doesn't affect computational results
-
-**`documentation-architect`** - Documentation and Organization
-- **Documentation Sync**: Remove documentation for deleted code
-- **Code Organization**: Improve file and module organization
-- **Comment and Docstring Cleanup**: Remove obsolete inline documentation
-- **README and Guide Updates**: Update project documentation post-cleanup
-
-**`multi-agent-orchestrator`** - Workflow Coordination
-- **Agent Task Distribution**: Intelligent workload allocation across 23 agents
-- **Conflict Resolution**: Handle competing cleanup recommendations
-- **Priority Optimization**: Risk-benefit analysis for cleanup operations
-- **Resource Management**: Efficient coordination of agent analysis
-
-#### **Tier 2: Scientific Computing Specialists (8 agents)**
-**Advanced Scientific Code Analysis:**
-- **`jax-pro`**: JAX ecosystem import optimization and dead code removal
-- **`neural-networks-master`**: ML/AI model cleanup and optimization
-- **`research-intelligence-master`**: Research methodology and experimental code cleanup
-- **`advanced-quantum-computing-expert`**: Quantum computing algorithm optimization
-- **Domain-specific scientific agents** for specialized cleanup patterns
-
-#### **Tier 3: Engineering Specialists (6 agents)**
-**Production System Optimization:**
-- **`fullstack-developer`**: Full-stack application cleanup and optimization
-- **`devops-security-engineer`**: Infrastructure and security-focused cleanup
-- **`database-workflow-engineer`**: Data pipeline and workflow optimization
-- **Engineering agents** for comprehensive system-level cleanup
-
-#### **Tier 4: Domain Specialists (4 agents)**
-**Specialized Domain Cleanup:**
-- **`scientific-code-adoptor`**: Legacy scientific code modernization
-- **`data-professional`**: Data science and analytics optimization
-- **Domain experts** for specialized application cleanup
-
-### Advanced 23-Agent Coordination Patterns
-
-#### **Intelligent Agent Activation (`--intelligent`)**
-**Auto-Selection Algorithm**: Analyzes codebase characteristics and automatically deploys optimal agent combinations:
-```bash
-# Codebase Analysis → Agent Selection
-- Python/NumPy/SciPy → scientific-computing-master + jax-pro + code-quality-master
-- JavaScript/React → fullstack-developer + code-quality-master + systems-architect
-- Java Enterprise → systems-architect + devops-security-engineer + code-quality-master
-- Research/Academic → research-intelligence-master + scientific-computing-master + documentation-architect
-- Mixed/Complex → multi-agent-orchestrator coordinates full 23-agent deployment
-```
-
-#### **Advanced Orchestration (`--orchestrate`)**
-**23-Agent Workflow Coordination:**
-- **Parallel Analysis**: Concurrent agent execution with intelligent resource allocation
-- **Cross-Agent Communication**: Shared insights and coordinated decision making
-- **Conflict Resolution**: Automated resolution of competing cleanup recommendations
-- **Quality Gates**: Multi-agent validation at each cleanup phase
-- **Emergent Intelligence**: Pattern recognition across agent collaboration
-
-### Phase 3: Ultrathink Reasoning & Safety Validation
-**Intelligent Decision Making:**
-1. **Cross-Reference Analysis**
-   - Validate removal safety across multiple analysis dimensions
-   - Check for indirect dependencies and side effects
-   - Analyze potential impact on build systems and workflows
-   - Verify test coverage isn't compromised by removals
-
-2. **Risk Assessment Matrix**
-   - Classify removal operations by safety level (safe/caution/high-risk)
-   - Generate confidence scores for each cleanup operation
-   - Identify operations requiring human review
-   - Create rollback strategies for each change category
-
-3. **Language-Specific Intelligence**
-   - **Python**: Handle `__init__.py`, dynamic imports, `__all__` declarations
-   - **JavaScript**: Process ES6 modules, CommonJS, dynamic requires, tree-shaking
-   - **Java**: Analyze package structures, reflection usage, annotation processing
-   - **TypeScript**: Handle type-only imports, namespace imports, declaration files
-
-### Phase 4: Execution Strategy & Safety Implementation
-**Safe, Reversible Cleanup Operations:**
-
-1. **Staged Execution Pipeline**
-   - **Stage 1**: Remove unused imports (lowest risk)
-   - **Stage 2**: Eliminate dead code blocks (medium risk)
-   - **Stage 3**: Remove duplicate files (medium risk)
-   - **Stage 4**: Clean obsolete/orphaned files (higher risk)
-
-2. **Safety Mechanisms**
-   - Automatic backup creation before any modifications
-   - Atomic operation grouping with rollback capability
-   - Real-time impact validation during execution
-   - Comprehensive logging with detailed change tracking
-
-3. **Verification & Validation**
-   - Post-cleanup compilation/syntax checking
-   - Automated test execution to verify functionality
-   - Dependency resolution validation
-   - Performance impact measurement
-
-### Phase 5: Advanced Cleanup Algorithms
-
-#### **Unused Import Removal Algorithm**
-```python
-# Sophisticated AST-based import analysis
-1. Parse all source files into AST trees
-2. Extract all import statements and imported symbols
-3. Traverse AST to find actual symbol usage locations
-4. Handle dynamic imports and string-based references
-5. Process wildcard imports and namespace imports
-6. Validate removal won't break re-exports or __all__
-7. Generate minimal import statements preserving only used symbols
-```
-
-#### **Dead Code Elimination Algorithm**
-```python
-# Control flow analysis for precise dead code detection
-1. Build control flow graphs for all functions/methods
-2. Identify unreachable code blocks after returns/raises
-3. Detect unused functions/classes with no call sites
-4. Handle conditional compilation and platform-specific code
-5. Preserve code referenced by reflection or dynamic calls
-6. Maintain code coverage for edge cases and error handling
-```
-
-#### **Duplicate Detection Algorithm**
-```python
-# Multi-level duplicate analysis
-1. Content-based: SHA-256 hash comparison for identical files
-2. Semantic-based: AST structure comparison for functionally identical code
-3. Near-duplicate: Fuzzy matching with configurable similarity thresholds
-4. Refactoring-safe: Preserve duplicates that serve different purposes
-5. Cross-language: Detect duplicated logic across different file types
-```
-
-### Phase 6: Intelligent Reporting & Insights
-**Comprehensive Analysis Output:**
-- **Cleanup Summary**: Files/lines removed, space saved, improvement metrics
-- **Safety Report**: Risk assessment for each operation, confidence scores
-- **Performance Impact**: Build time improvements, runtime optimizations
-- **Recommendations**: Additional cleanup opportunities requiring manual review
-- **Rollback Guide**: Step-by-step instructions for reversing changes if needed
-
-## Expected Outcomes
-
-**Advanced Cleanup Results:**
-- **99%+ Accuracy**: Ultrathink intelligence with AST-based analysis vs regex patterns
-- **Unused Import Elimination**: Precise removal of unused imports across entire codebase
-- **Dead Code Removal**: Control flow analysis identifies truly unreachable code
-- **Duplicate Elimination**: Content and semantic duplicate detection and removal
-- **Safe Operations**: Multi-layer safety validation with automatic rollback capability
-- **Multi-Language Support**: Language-specific optimizations for Python, JavaScript, Java, TypeScript
-- **Performance Gains**: 10-50% reduction in codebase size, improved build times
-- **Zero Breakage**: Comprehensive dependency analysis prevents functional regressions
-
-## Examples
-
-### Unused Import Cleanup
-```bash
-# Remove unused imports with intelligent agent selection
-/clean-codebase --imports --agents=auto --intelligent --dry-run
-
-# Python-specific import optimization with scientific agents
-/clean-codebase --imports --language=python --agents=scientific --orchestrate
-
-# JavaScript/TypeScript import cleanup with engineering agents
-/clean-codebase --imports --language=javascript --agents=engineering --backup
-```
-
-### Dead Code Elimination
-```bash
-# Comprehensive dead code analysis with all 23 agents
-/clean-codebase --dead-code --analysis=comprehensive --agents=all --orchestrate
-
-# Safe dead code removal with core agents
-/clean-codebase --dead-code --agents=core --interactive --rollback
-
-# Cross-language dead code detection with breakthrough analysis
-/clean-codebase --dead-code --analysis=ultrathink --agents=all --breakthrough
-```
-
-### Duplicate Detection & Removal
-```bash
-# Find and remove duplicates with intelligent agent coordination
-/clean-codebase --duplicates --agents=auto --intelligent --report
-
-# Semantic duplicate detection with engineering focus
-/clean-codebase --duplicates --agents=engineering --orchestrate --interactive
-```
-
-### Complete Codebase Optimization
-```bash
-# Comprehensive cleanup with full 23-agent orchestration
-/clean-codebase --analysis=ultrathink --imports --dead-code --duplicates --agents=all --orchestrate --breakthrough
-
-# Safe comprehensive cleanup with intelligent agent selection
-/clean-codebase --analysis=ultrathink --imports --dead-code --agents=auto --intelligent --backup --rollback
-
-# Language-specific comprehensive optimization with domain agents
-/clean-codebase --language=python --analysis=ultrathink --imports --dead-code --duplicates --agents=scientific --orchestrate
-```
-
-### Advanced Filtering & Safety
-```bash
-# Exclude critical directories with size filtering
-/clean-codebase --exclude="node_modules,venv,*.log" --size-threshold=1MB --dry-run
-
-# Age-based cleanup with comprehensive safety
-/clean-codebase --age-threshold=30 --analysis=ultrathink --backup --rollback
-
-# High-confidence operations with intelligent orchestration
-/clean-codebase --analysis=ultrathink --agents=all --orchestrate --intelligent --report
-```
-
-### Production-Safe Workflows
-```bash
-# Pre-production cleanup pipeline with 23-agent analysis
-/clean-codebase --analysis=ultrathink --imports --dead-code --agents=all --orchestrate --backup --dry-run
-# Review report, then execute:
-/clean-codebase --analysis=ultrathink --imports --dead-code --agents=core --backup --rollback
-
-# Continuous integration cleanup with intelligent agent selection
-/clean-codebase --imports --duplicates --agents=auto --intelligent --parallel --report
-```
-
-## Related Commands
-
-**Prerequisites**: Commands to run before project cleanup
-- `/check-code-quality --auto-fix` - Fix quality issues before cleanup
-- `/debug --auto-fix` - Fix runtime issues that might affect cleanup
-- Version control - Commit current state before major cleanup
-- `/run-all-tests` - Ensure tests pass before cleanup
-
-**Alternatives**: Different cleanup approaches
-- `/refactor-clean --patterns=modern` - Code modernization and cleanup
-- `/optimize --implement` - Performance-focused cleanup
-- Manual cleanup for specific file types or directories
-- IDE-based refactoring tools for smaller cleanups
-
-**Combinations**: Commands that work with project cleanup
-- `/multi-agent-optimize --mode=review --agents=all` - 23-agent analysis before cleanup
-- `/adopt-code --analyze --agents=scientific` - Legacy code analysis and modernization with domain experts
-- `/generate-tests --coverage=95 --agents=auto` - Add tests before removing code with intelligent agents
-- `/double-check --deep-analysis --auto-complete` - Verify cleanup safety and completeness
-
-**Follow-up**: Commands to run after advanced project cleanup
-- `/run-all-tests --auto-fix --coverage` - Ensure cleanup didn't break functionality or reduce test coverage
-- `/check-code-quality --language=auto --analysis=comprehensive` - Validate improved code quality metrics
-- `/optimize --implement --language=auto --category=all` - Apply performance optimizations to cleaned codebase
-- `/generate-tests --coverage=95` - Add tests for any exposed functionality after dead code removal
-- `/double-check "cleanup validation" --deep-analysis` - Comprehensive verification of cleanup safety and completeness
-- `/commit --template=refactor --ai-message --validate` - Commit cleanup changes with detailed description
-- `/ci-setup --type=enterprise` - Update CI/CD pipelines for optimized project structure
-
-## Ultrathink Intelligence Integration
-
-### Advanced Reasoning Capabilities
-The `--analysis=ultrathink` mode provides sophisticated intelligence beyond standard analysis:
-
-**Cross-File Reasoning:**
-- Analyzes dependencies and relationships across the entire codebase
-- Understands complex import/export patterns and circular dependencies
-- Recognizes framework-specific patterns and conventions
-- Identifies subtle usage patterns that traditional AST analysis might miss
-
-**Contextual Understanding:**
-- Distinguishes between intentionally unused code (future features, debugging) and truly dead code
-- Recognizes test fixtures, example code, and documentation-related files
-- Understands build system implications and deployment considerations
-- Analyzes code evolution patterns to predict safe removal candidates
-
-**Safety Intelligence:**
-- Predicts potential breaking changes before they occur
-- Identifies hidden dependencies through dynamic analysis patterns
-- Recognizes reflection, metaprogramming, and runtime code generation
-- Validates removal safety across multiple dimensions simultaneously
-
-### Integration with Think-Ultra
-```bash
-# Use think-ultra for complex cleanup planning
-/think-ultra "analyze safe cleanup strategy for large codebase" --agents=all --depth=ultra
-/clean-codebase --analysis=ultrathink --imports --dead-code --duplicates
-/double-check "cleanup results" --deep-analysis --auto-complete
-```
-
-## Language-Specific Optimizations
-
-### Python Cleanup Intelligence
-```bash
-# Python-specific advanced cleanup
-/clean-codebase --language=python --analysis=ultrathink --imports --dead-code
-```
-**Python Features:**
-- `__init__.py` and package structure optimization
-- `__all__` declaration validation and cleanup
-- Dynamic import pattern recognition (`importlib`, `__import__`)
-- Decorator and metaclass usage analysis
-- Virtual environment and dependency cleanup
-
-### JavaScript/TypeScript Optimization
-```bash
-# Modern JavaScript/TypeScript cleanup
-/clean-codebase --language=javascript --analysis=ultrathink --imports --duplicates
-```
-**JavaScript/TypeScript Features:**
-- ES6 module and CommonJS hybrid analysis
-- Tree-shaking compatibility validation
-- Type-only import optimization (TypeScript)
-- Dynamic import and webpack chunk analysis
-- Node.js vs browser environment detection
-
-### Java Enterprise Cleanup
-```bash
-# Java enterprise codebase optimization
-/clean-codebase --language=java --analysis=ultrathink --dead-code --duplicates
-```
-**Java Features:**
-- Package structure and classpath optimization
-- Annotation processor and reflection usage detection
-- Maven/Gradle dependency analysis integration
-- Spring Framework and dependency injection patterns
-- Serialization and interface implementation tracking
-
-## Safety & Best Practices
+## Phase 4: Automated Cleanup Execution
 
 ### Pre-Cleanup Checklist
-- [ ] **Version Control**: Ensure all changes are committed before cleanup
-- [ ] **Backup Strategy**: Use `--backup` flag for critical codebases
-- [ ] **Test Coverage**: Run full test suite to establish baseline
-- [ ] **Build Verification**: Ensure project builds successfully before cleanup
-- [ ] **Dependency Analysis**: Review external dependencies and build scripts
+- [ ] Create git branch: `cleanup/automated-${DATE}`
+- [ ] Run full test suite baseline
+- [ ] Create backup: `.backup-${TIMESTAMP}/`
+- [ ] Document all changes in `CLEANUP_REPORT.md`
 
-### Cleanup Safety Levels
-1. **Conservative** (`--analysis=basic --dry-run`): Preview only, minimal risk
-2. **Standard** (`--analysis=thorough --backup`): Safe operations with backup
-3. **Aggressive** (`--analysis=comprehensive --rollback`): Deep cleanup with rollback
-4. **Ultrathink** (`--analysis=ultrathink --backup --rollback`): Maximum intelligence with full safety
+### Cleanup Operations (by safety level)
 
-### Production Environment Guidelines
+#### Level 1: SAFE (Auto-apply)
+✅ Remove trailing whitespace
+✅ Remove unused imports (100% confidence)
+✅ Remove empty files
+✅ Remove commented-out code (older than 3 months)
+✅ Remove duplicate imports
+✅ Sort imports
+✅ Remove console.log/print debugging statements
+✅ Remove unreachable code after return
+
+#### Level 2: MODERATE (Apply with review)
+⚠️ Remove unused private functions (not exported)
+⚠️ Remove unused variables/constants
+⚠️ Remove unused parameters
+⚠️ Remove empty classes/interfaces
+⚠️ Remove unused type definitions
+⚠️ Consolidate duplicate code
+
+#### Level 3: RISKY (Manual review required)
+🔴 Remove public API functions (breaking change)
+🔴 Remove entire files
+🔴 Remove dependencies from package.json
+🔴 Remove functions with 0 callers but exported
+🔴 Remove code used only in comments/docs
+
+### Execution Strategy
+
 ```bash
-# Production-safe cleanup pipeline
-# Step 1: Analysis and planning
-/clean-codebase --analysis=ultrathink --dry-run --report
+# Stage 1: Safe cleanup (auto-apply)
+for each SAFE operation:
+    - Apply transformation
+    - Run affected tests
+    - If tests fail: rollback, flag for manual review
+    - Commit with detailed message
 
-# Step 2: Conservative cleanup
-/clean-codebase --imports --backup --rollback --interactive
+# Stage 2: Moderate cleanup (with confirmation)
+for each MODERATE operation:
+    - Show diff preview
+    - Request confirmation (if not --auto-fix)
+    - Apply transformation
+    - Run full test suite
+    - Commit separately for easy revert
 
-# Step 3: Validation
-/run-all-tests --coverage --auto-fix
-/check-code-quality --analysis=comprehensive
-
-# Step 4: Commit if successful
-/commit --template=refactor --ai-message --validate
+# Stage 3: Risky cleanup (report only)
+for each RISKY operation:
+    - Add to manual review report
+    - Suggest migration path
+    - Document breaking change implications
 ```
 
-## Integration Patterns
+---
 
-### Complete Codebase Modernization Workflow
+## Phase 5: Validation & Quality Assurance
+
+### Automated Testing
+1. **Run test suites**:
+   - Unit tests
+   - Integration tests
+   - E2E tests
+   - Type checking
+   - Linting
+
+2. **Build verification**:
+   - Development build succeeds
+   - Production build succeeds
+   - Bundle size comparison (before/after)
+
+3. **Runtime checks**:
+   - No new runtime errors
+   - Import resolution works
+   - All entry points functional
+
+### Metric Tracking
+
+**Code Reduction**:
+- Lines of code removed: `X lines (-Y%)`
+- Files removed: `X files`
+- Dependencies removed: `X packages`
+- Import statements cleaned: `X imports`
+
+**Quality Improvement**:
+- Cyclomatic complexity reduction
+- Maintainability index increase
+- Test coverage unchanged or improved
+- Build time improvement
+
+**Safety Metrics**:
+- Test pass rate: `100%` (required)
+- Type errors: `0` (required)
+- Linting errors: `≤ baseline`
+- Breaking changes: `documented`
+
+---
+
+## Phase 6: Comprehensive Reporting
+
+### Cleanup Summary Report
+
+Generate detailed report: `CLEANUP_REPORT.md`
+
+```markdown
+# Codebase Cleanup Report
+Generated: ${TIMESTAMP}
+
+## Executive Summary
+- **Total changes**: X files modified, Y files removed
+- **Code reduction**: Z lines removed (-W%)
+- **Dependencies cleaned**: N packages removed
+- **Safety level**: All tests passing ✅
+
+## Detailed Changes
+
+### Unused Imports Removed (N instances)
+| File | Import | Reason | Confidence |
+|------|--------|--------|------------|
+| src/foo.ts | lodash | No usage found | 99% |
+
+### Dead Code Eliminated (N functions)
+| File | Function | Lines Saved | Risk Level |
+|------|----------|-------------|------------|
+| src/bar.py | old_helper() | 45 | Low |
+
+### Dependencies Removed (N packages)
+| Package | Version | Reason | Migration Notes |
+|---------|---------|--------|-----------------|
+| moment | 2.29.1 | Unused | Use date-fns instead |
+
+### Code Duplication Eliminated (N instances)
+| Location | Duplicate | Solution | Lines Saved |
+|----------|-----------|----------|-------------|
+| src/a.ts, src/b.ts | Data validation | Extracted to utils | 30 |
+
+### Manual Review Required (N items)
+| File | Issue | Recommendation | Risk |
+|------|-------|----------------|------|
+| src/api.ts | Exported but unused | Verify with consumers | High |
+
+## Quality Metrics
+
+**Before Cleanup**:
+- Total lines: 50,000
+- Cyclomatic complexity: 25 (avg)
+- Dependencies: 120
+- Import statements: 3,500
+- Test coverage: 78%
+
+**After Cleanup**:
+- Total lines: 42,000 (-16%)
+- Cyclomatic complexity: 18 (avg)
+- Dependencies: 95 (-21%)
+- Import statements: 2,800 (-20%)
+- Test coverage: 80% (+2%)
+
+## Validation Results
+✅ All unit tests passing (1,234/1,234)
+✅ All integration tests passing (89/89)
+✅ Type checking successful (0 errors)
+✅ Linting passed with 0 errors
+✅ Build time improved: 45s → 38s (-15%)
+✅ Bundle size reduced: 2.3MB → 1.9MB (-17%)
+
+## Recommendations for Next Steps
+1. Review manual-review items (3 items flagged)
+2. Consider removing deprecated functions in next release
+3. Update documentation to reflect removed APIs
+4. Run performance benchmarks to verify improvements
+5. Schedule dependency updates for remaining packages
+
+## Rollback Instructions
 ```bash
-# 1. Initial analysis and planning
-/think-ultra "comprehensive codebase modernization strategy" --depth=ultra --agents=all
-
-# 2. Safety preparation
-/run-all-tests --coverage --report
-/check-code-quality --auto-fix --report
-
-# 3. Advanced cleanup execution
-/clean-codebase --analysis=ultrathink --imports --dead-code --duplicates --backup --parallel
-
-# 4. Post-cleanup optimization
-/optimize --implement --language=auto --category=all
-/refactor-clean --patterns=modern --implement
-
-# 5. Comprehensive validation
-/run-all-tests --auto-fix --coverage
-/double-check "modernization results" --deep-analysis --auto-complete
-
-# 6. Final quality assurance
-/generate-tests --coverage=95 --type=all
-/commit --ai-message --validate --push
+# If issues arise, rollback with:
+git checkout main
+git branch -D cleanup/automated-${DATE}
+# Or restore from backup:
+cp -r .backup-${TIMESTAMP}/* .
+```
 ```
 
-### Continuous Integration Integration
-```bash
-# CI/CD pipeline integration
-name: "Automated Codebase Cleanup"
-steps:
-  - name: "Safe Import Cleanup"
-    run: /clean-codebase --imports --language=auto --dry-run --report
+---
 
-  - name: "Duplicate Detection"
-    run: /clean-codebase --duplicates --analysis=thorough --report
+## Your Task: Execute Advanced Codebase Cleanup
 
-  - name: "Dead Code Analysis"
-    run: /clean-codebase --dead-code --analysis=comprehensive --dry-run
-```
+**Arguments Received**: `$ARGUMENTS`
 
-This advanced implementation transforms the clean-codebase command into a sophisticated, intelligent cleanup tool that combines multi-agent analysis, ultrathink reasoning, and AST-based precision for safe, comprehensive codebase optimization.
+**Execution Mode**:
+- `--auto-fix` flag: Apply SAFE changes automatically
+- `--aggressive` flag: Apply MODERATE changes with confirmation
+- Default: Analysis only, no automatic fixes
 
-ARGUMENTS: [--dry-run] [--analysis=basic|thorough|comprehensive|ultrathink] [--agents=auto|core|scientific|engineering|ai|domain|quality|research|all] [--imports] [--dead-code] [--duplicates] [--ast-deep] [--orchestrate] [--intelligent] [--breakthrough] [--parallel] [--implement] [--backup] [--rollback] [--validate] [path]
+### Step-by-Step Execution Plan
+
+1. **Initialize Safety Protocol**
+   - Create git branch: `cleanup/automated-$(date +%Y%m%d-%H%M%S)`
+   - Run baseline tests to ensure starting from green state
+   - Create backup directory with timestamp
+
+2. **Deploy Multi-Agent Analysis**
+   - Launch 5 specialized agents in parallel
+   - Each agent analyzes their domain independently
+   - Aggregate findings with confidence scores
+
+3. **Apply UltraThink Intelligence**
+   - Deep analysis of cleanup candidates
+   - Multi-dimensional risk assessment
+   - Pattern recognition and learning
+   - Second-order consequence evaluation
+   - Generate intelligent cleanup strategy
+
+4. **Execute Cleanup Operations**
+   - Level 1 (SAFE): Auto-apply if --auto-fix
+   - Level 2 (MODERATE): Apply if --aggressive
+   - Level 3 (RISKY): Report only, no automatic changes
+
+5. **Validation & Testing**
+   - Run complete test suite
+   - Verify build process
+   - Check for runtime issues
+   - Compare metrics (before/after)
+
+6. **Generate Comprehensive Report**
+   - Create detailed `CLEANUP_REPORT.md`
+   - Include all metrics and changes
+   - Provide rollback instructions
+   - List manual review items
+
+7. **Create Git Commits**
+   - Separate commits for each cleanup category
+   - Detailed commit messages
+   - Easy to review and revert if needed
+
+### Special Considerations
+
+**Framework-Specific Intelligence**:
+- **React/Vue**: Recognize unused hooks, components, context
+- **Django/Flask**: Identify unused views, models, serializers
+- **Express/Fastify**: Detect unused middleware, routes
+- **Rust**: Understand unused derive macros, trait implementations
+- **Go**: Account for blank imports, init() side effects
+
+**Meta-Programming Awareness**:
+- Don't remove code accessed via reflection
+- Preserve decorator/macro targets
+- Keep code generation templates
+- Maintain plugin system hooks
+
+**Library Mode**:
+- If package.json has "main" or "exports" → library mode
+- Preserve all exported symbols (even if unused internally)
+- Warn about public API changes
+- Check for consumers in monorepo
+
+### Success Criteria
+
+✅ Zero test failures after cleanup
+✅ Zero type errors after cleanup
+✅ Build succeeds for all targets
+✅ No new runtime warnings/errors
+✅ Code metrics improved or maintained
+✅ All changes are reversible
+✅ Comprehensive report generated
+
+### Failure Recovery
+
+If any stage fails:
+1. Immediately halt cleanup process
+2. Rollback all changes
+3. Report exact failure point
+4. Provide debugging information
+5. Suggest manual intervention steps
+
+---
+
+## Now Execute
+
+Begin the advanced codebase cleanup process with full ultrathink intelligence.
+
+**Remember**:
+- Safety first: Never break working code
+- Confidence threshold: Only remove code when confidence > 95%
+- Test always: Verify after every change
+- Report everything: Full transparency in report
+- Rollback ready: Every change must be reversible
+
+Start the multi-agent analysis and apply ultrathink reasoning to create the cleanest, most maintainable codebase possible while preserving all functionality.

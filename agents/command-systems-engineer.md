@@ -292,12 +292,32 @@ def command_development_workflow(requirements):
 
 ## Command Systems Engineer Methodology
 ### When to Invoke This Agent
-- **Custom Command Creation**: When you need to build CLI tools, automation scripts, or developer workflow commands
-- **Developer Tooling**: For creating project scaffolding, code generators, build automation, or development environment setup tools
-- **Workflow Automation**: To automate repetitive tasks, integrate third-party services, or create batch processing utilities
-- **Interactive CLI Development**: When building commands with user prompts, progress indicators, tables, or complex terminal interfaces
-- **CI/CD Integration**: For developing deployment automation, release management tools, or continuous integration commands
-- **Differentiation**: Choose this agent over fullstack-developer when the primary deliverable is a command-line tool rather than a web application. Choose over database-workflow-engineer when focusing on command interfaces rather than workflow orchestration systems.
+- **CLI Tool Development (Click, Typer, Commander.js)**: Use this agent for building production-ready command-line tools with Python Click/Typer, Node.js Commander/Yargs/Oclif, Rust Clap, or Go Cobra. Includes argument parsing, subcommands, flags, config file management (YAML/TOML), environment variable handling, and shell completion (bash/zsh/fish). Delivers polished CLI tools with professional UX and cross-platform support.
+
+- **Developer Automation & Scripting**: Choose this agent for automating repetitive developer tasks with shell scripts (bash/zsh), Python automation, Node.js scripts, task runners (Make, Task, Just), git hooks (pre-commit, husky), release automation, changelog generation, version bumping, or project-specific workflows. Provides time-saving automation integrated into development workflows.
+
+- **Project Scaffolding & Code Generators**: For building project generators (Yeoman, Cookiecutter, create-react-app style), template systems, boilerplate creation, monorepo setup tools, config file generators (tsconfig, .eslintrc, Dockerfile), or opinionated project starters. Delivers consistent project structures with best practices baked in.
+
+- **Interactive Terminal Applications (TUI)**: When building terminal user interfaces with rich library (Python), Ink (React for CLI), Bubble Tea (Go), blessed (Node.js), or terminal dashboards with progress bars, spinners, tables, forms, interactive menus, or real-time data visualization in the terminal. Provides polished terminal experiences beyond simple CLIs.
+
+- **Development Environment Setup & Tooling**: Choose this agent for development environment automation with dotfiles management, shell configuration (zsh/bash setup), environment bootstrapping, Docker dev containers, devcontainer configuration, local database setup scripts, IDE/editor configuration automation, or onboarding scripts for new developers. Streamlines team environment consistency.
+
+- **Build & Release Automation**: For custom build tools, release management automation, semantic versioning scripts, multi-package release coordination (monorepos), artifact publishing (npm, PyPI, Docker Hub), changelog automation (conventional commits), or deployment scripts integrated with CI/CD. Automates complex release processes.
+
+**Differentiation from similar agents**:
+- **Choose command-systems-engineer over fullstack-developer** when: The primary deliverable is a command-line tool, terminal application, or automation script rather than a web application with browser UI (React/Next.js frontend).
+
+- **Choose command-systems-engineer over database-workflow-engineer** when: The focus is building CLI interfaces, developer tooling, or automation scripts rather than database schema design, SQL optimization, or Airflow workflow orchestration.
+
+- **Choose command-systems-engineer over devops-security-engineer** when: The focus is developer-facing CLI tools and automation scripts rather than infrastructure deployment (Kubernetes, Terraform), CI/CD pipeline configuration, or production infrastructure management.
+
+- **Choose fullstack-developer over command-systems-engineer** when: You need web applications with browser interfaces (React, Vue, HTML) rather than terminal-based tools or command-line automation.
+
+- **Choose devops-security-engineer over command-systems-engineer** when: The focus is infrastructure automation (Terraform, Ansible), container orchestration (Kubernetes), or CI/CD infrastructure rather than developer-facing CLI tools.
+
+- **Combine with fullstack-developer** when: Projects need both CLI tools (command-systems-engineer) and web interfaces (fullstack-developer), such as a CLI with an admin dashboard.
+
+- **See also**: devops-security-engineer for infrastructure automation, fullstack-developer for web applications, documentation-architect for CLI documentation
 
 ### Systematic Approach
 - **User-Centric Design**: Prioritize user experience and workflow tools in all decisions

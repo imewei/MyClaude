@@ -282,12 +282,30 @@ def visualization_interface_workflow(data_requirements):
 
 ## Visualization Methodology
 ### When to Invoke This Agent
-- **Scientific Data Visualization**: When you need publication-quality figures, interactive plots, or domain-specific visualizations (molecular structures, astronomical data, medical imaging)
-- **User Interface Design**: For designing web applications, mobile interfaces, or desktop software with focus on user experience and accessibility
-- **Interactive Dashboards**: To create real-time monitoring systems, data exploration tools, or business intelligence dashboards with Plotly, D3.js, or Bokeh
-- **Immersive Experiences**: When building AR/VR scientific visualizations, 3D data exploration, virtual laboratory environments, or WebXR applications
-- **Digital Twin Development**: For creating real-time system visualization, IoT data dashboards, or facility monitoring interfaces
-- **Differentiation**: Choose this agent over fullstack-developer when visualization quality and user experience are the primary focus rather than full application implementation. Choose over research-intelligence-master when you need to communicate findings visually rather than conduct the research itself.
+- **Scientific Data Visualization (Publication-Quality)**: Use this agent for creating publication-ready figures with Matplotlib/Seaborn (Python), Plotly (interactive), scientific plotting (3D surfaces, contour plots, heatmaps), multi-dimensional data visualization, domain-specific plots (molecular structures with PyMOL/ChimeraX, astronomical data, medical imaging DICOM visualization), or LaTeX-integrated figures for papers. Delivers publication-quality visualizations meeting journal standards.
+
+- **Interactive Dashboards & Data Exploration**: Choose this agent for building interactive dashboards with D3.js (custom SVG visualizations), Plotly Dash (Python dashboards), Bokeh (large datasets), Observable (reactive notebooks), Streamlit (rapid prototyping), real-time data monitoring, or business intelligence dashboards. Provides interactive data exploration with filters, zooming, and linked views.
+
+- **Web-Based Visualization & D3.js Development**: For custom interactive visualizations with D3.js (force-directed graphs, network visualization, geographic maps), SVG manipulation, Canvas API for performance, WebGL with Three.js (3D), interactive charts with transitions/animations, or data-driven documents. Delivers bespoke visualizations beyond standard charting libraries.
+
+- **3D Visualization & AR/VR Scientific Applications**: When building 3D scientific visualizations with Three.js/WebGL, AR/VR experiences with WebXR/Unity3D, virtual laboratory environments, immersive data exploration, molecular dynamics visualization, volumetric rendering (medical imaging, scientific datasets), or spatial computing interfaces. Provides immersive scientific visualization experiences.
+
+- **UI/UX Design & Accessibility-First Interfaces**: Choose this agent for designing user interfaces with Figma/Sketch, accessible visualization design (WCAG 2.1 AA compliance, colorblind-friendly palettes), responsive visualization layouts, touch/gesture interfaces, multi-device optimization, or creating design systems for data products. Delivers inclusive, user-centered visualization interfaces.
+
+- **Digital Twin & Real-Time Monitoring**: For real-time system visualization, IoT sensor dashboards, facility monitoring interfaces, live data streaming visualization (WebSockets, Server-Sent Events), industrial control systems, manufacturing process visualization, or creating digital twins with synchronized real-world data. Provides operational dashboards with live updates.
+
+**Differentiation from similar agents**:
+- **Choose visualization-interface-master over fullstack-developer** when: Visualization quality, data storytelling, or advanced interactive charts are the primary focus rather than complete application implementation with database and backend logic.
+
+- **Choose visualization-interface-master over data-professional** when: The focus is creating compelling visualizations, custom charts, or interactive dashboards rather than data engineering, analytics, or ML modeling. This agent visualizes data; data-professional analyzes it.
+
+- **Choose visualization-interface-master over research-intelligence-master** when: You need to communicate research findings visually rather than conduct the research itself. This agent visualizes results; research-intelligence-master synthesizes research.
+
+- **Combine with data-professional** when: Analytics/research findings (data-professional) need compelling visual communication through custom visualizations, interactive dashboards, or data storytelling.
+
+- **Combine with research-intelligence-master** when: Research synthesis (research-intelligence-master) needs professional visualization for publications, presentations, or interactive exploration.
+
+- **See also**: fullstack-developer for web applications, data-professional for data analysis, research-intelligence-master for research synthesis
 
 ### Systematic Approach
 - **User-Centered Design**: Prioritize audience needs and cognitive capabilities

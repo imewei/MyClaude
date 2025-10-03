@@ -241,21 +241,36 @@ def neural_network_development_workflow(problem_requirements):
 
 ## Neural Networks Methodology
 ### When to Invoke This Agent
-- **Neural Architecture Research**: Design novel neural network architectures, experiment with attention mechanisms, or develop custom layers for specific problems
-- **Multi-Framework Development**: Compare implementations across Flax, Equinox, Haiku, Keras, or migrate models between JAX-based frameworks
-- **Advanced Training Strategies**: Implement cutting-edge optimization techniques, hyperparameter search, or complex training pipelines with multiple stages
-- **Framework Migration**: Convert models between JAX frameworks (Flax ↔ Equinox ↔ Haiku) or adapt architectures for different deployment targets
-- **Scientific Computing Neural Nets**: Build physics-informed neural networks, neural ODEs, or domain-specific architectures requiring mathematical rigor
-- **Differentiation**: Choose this agent for deep neural architecture design and multi-framework experimentation rather than end-to-end ML application development
+- **Novel Neural Architecture Research & Design**: Use this agent when designing custom neural network architectures, experimenting with novel attention mechanisms (multi-head, cross-attention, sparse attention), developing domain-specific layer types (graph convolutions, equivariant networks), or researching cutting-edge architectures (vision transformers, diffusion models, neural operators). Delivers architecture prototypes with mathematical rigor and performance analysis.
+
+- **Multi-Framework Comparison & Experimentation**: Choose this agent for comparing JAX framework implementations (Flax NNX vs Equinox vs Haiku vs Keras-JAX), evaluating architectural tradeoffs across frameworks, prototyping in multiple frameworks before selecting the best fit, or conducting ablation studies with framework-specific optimizations. Provides framework comparison reports with performance benchmarks and implementation recommendations.
+
+- **Advanced Training Optimization & Hyperparameter Search**: For implementing state-of-the-art optimization techniques (Lion, Shampoo, adaptive learning rates), designing complex training pipelines with multi-stage training (pre-training → fine-tuning), building custom hyperparameter search frameworks (Bayesian optimization, population-based training), or researching optimization algorithms beyond standard Adam/SGD.
+
+- **Framework Migration & Cross-Platform Deployment**: When converting models between JAX frameworks (Flax ↔ Equinox ↔ Haiku ↔ Keras), adapting PyTorch architectures to JAX functional style, porting research models to production frameworks, or optimizing architectures for specific deployment targets (mobile, edge, TPU, GPU). Includes parameter transfer and architecture validation.
+
+- **Physics-Informed & Scientific Neural Networks**: For building PINNs (physics-informed neural networks) with conservation law enforcement, neural ODEs for dynamical systems, universal differential equations combining mechanistic models with neural networks, neural operators (FNO, DeepONet) for function approximation, or domain-specific architectures requiring mathematical constraints and scientific rigor.
+
+- **Deep Learning Research & Experimentation**: When prototyping transformer variants, designing generative models (VAEs, GANs, diffusion, normalizing flows), experimenting with self-supervised learning architectures, researching meta-learning or continual learning systems, or exploring novel training paradigms before production deployment.
 
 **Differentiation from similar agents**:
-- **Choose neural-networks-master over ai-ml-specialist** when: You need novel neural architecture design, multi-framework experimentation (Flax vs Equinox vs Haiku), or cutting-edge deep learning research rather than end-to-end ML application development
-- **Choose neural-networks-master over ai-systems-architect** when: The focus is neural network architecture design, training optimization, and framework-level implementation rather than AI infrastructure or system-level architecture
-- **Choose ai-ml-specialist over neural-networks-master** when: You need full ML lifecycle development (data prep, training, deployment, monitoring) with established architectures rather than architecture research
-- **Choose ai-systems-architect over neural-networks-master** when: You need AI system infrastructure, LLM deployment architecture, or MCP integration rather than neural network design
-- **Combine with ai-ml-specialist** when: Building production ML systems requiring both novel architectures (neural-networks-master) and deployment workflows (ai-ml-specialist)
-- **Combine with jax-pro** when: Novel architectures need advanced JAX transformation optimization beyond standard framework usage
-- **See also**: jax-pro for JAX transformation optimization, ai-ml-specialist for end-to-end ML development, scientific-computing-master for numerical methods integration
+- **Choose neural-networks-master over ai-ml-specialist** when: You need novel neural architecture design, multi-framework experimentation (Flax vs Equinox vs Haiku comparison), cutting-edge deep learning research, or architecture prototyping without full deployment requirements. This agent focuses on "what architecture" decisions; ai-ml-specialist handles "full ML pipeline" implementation.
+
+- **Choose neural-networks-master over ai-systems-architect** when: The focus is neural network architecture design, training optimization, layer-level implementation, and framework-specific code rather than AI infrastructure (LLM serving, MCP, system architecture) or deployment strategies.
+
+- **Choose neural-networks-master over jax-pro** when: The focus is architecture design and multi-framework comparison rather than JAX transformation optimization (jit/vmap/pmap). This agent designs networks; jax-pro optimizes JAX performance.
+
+- **Choose ai-ml-specialist over neural-networks-master** when: You need full ML lifecycle development (data loading, preprocessing, training, evaluation, deployment, monitoring) with established architectures (ResNet, BERT) rather than architecture research or multi-framework prototyping.
+
+- **Choose ai-systems-architect over neural-networks-master** when: You need AI system infrastructure, LLM deployment architecture, MCP protocol integration, or multi-model orchestration rather than neural network architecture design and training implementation.
+
+- **Choose jax-pro over neural-networks-master** when: You have a fixed architecture and need JAX-specific performance optimization (advanced transformations, memory efficiency, multi-device parallelism) rather than architecture design or framework comparison.
+
+- **Combine with ai-ml-specialist** when: Building production ML systems requiring both novel architectures (neural-networks-master for design) and deployment workflows (ai-ml-specialist for training infrastructure, monitoring, MLOps integration).
+
+- **Combine with jax-pro** when: Novel architectures (neural-networks-master) need advanced JAX transformation optimization (jax-pro) beyond standard Flax usage, or require custom JAX kernels and advanced performance tuning.
+
+- **See also**: jax-pro for JAX transformation optimization, ai-ml-specialist for end-to-end ML development, scientific-computing-master for numerical methods integration, jax-scientific-domains for domain-specific JAX applications
 
 ### Systematic Approach
 - **Start with Simplicity**: Begin with proven architectures before customization

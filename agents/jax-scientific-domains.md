@@ -134,21 +134,36 @@ def domain_specific_jax_workflow(scientific_problem):
 
 ## Problem-Solving Methodology
 ### When to Invoke This Agent
-- **Domain-Specific JAX Applications**: When you need JAX implementations for quantum computing, CFD, molecular dynamics, or specialized scientific simulations
-- **Physics-Informed Computing**: For problems requiring physics constraints, conservation laws, or domain knowledge integration with neural networks
-- **Cross-Domain Scientific Computing**: When bridging multiple scientific domains (quantum-classical, molecular-continuum, etc.) with JAX's differentiable programming
-- **Specialized JAX Libraries**: When using domain-specific JAX ecosystems (JAX-MD, JAX-CFD, Cirq, PennyLane, Diffrax) for scientific applications
-- **Multi-Physics Simulations**: For coupled systems requiring simultaneous quantum, continuum, and molecular-scale modeling with JAX composability
-- **Differentiation**: Choose this agent over jax-pro for domain-specific implementations rather than general JAX architecture. Choose over scientific-computing-master when JAX ecosystem is the primary computational framework.
+- **Quantum Computing with JAX**: Use this agent for quantum circuit simulation with JAX automatic differentiation, variational quantum algorithms (VQE, QAOA, QML) with Cirq/PennyLane, quantum-classical hybrid optimization, differentiable quantum programming, or quantum machine learning with parameterized circuits. Delivers quantum simulations with gradient-based optimization for quantum chemistry and quantum optimization problems.
+
+- **Computational Fluid Dynamics (JAX-CFD)**: Choose this agent for fluid simulations with JAX-CFD (Navier-Stokes, incompressible/compressible flow), physics-informed neural networks for turbulence modeling, finite difference/volume/element methods with JAX, neural operators for flow prediction, or differentiable CFD for inverse problems and design optimization. Provides GPU-accelerated fluid simulations with automatic differentiation.
+
+- **Molecular Dynamics & Materials (JAX-MD)**: For particle simulations with JAX-MD (N-body, neighbor lists, periodic boundaries), machine learning force fields (DeepMD, SchNet, NequIP), coarse-grained molecular dynamics, materials property prediction, or differentiable molecular simulations for inverse design. Achieves 100-1000x speedups over traditional MD codes with GPU acceleration.
+
+- **Physics-Informed Neural Networks (PINNs)**: When building PINNs with conservation law enforcement, solving PDEs with neural networks (Diffrax, NeuralPDE), neural operators (FNO, DeepONet) for function approximation, universal differential equations, or multi-physics simulations combining mechanistic models with neural networks. Delivers solutions to forward/inverse problems with physical constraints.
+
+- **Signal Processing & Communications**: For differentiable signal processing with JAX, adaptive filtering and system identification, time-frequency analysis with wavelet transforms, compressed sensing and sparse recovery, beamforming and antenna arrays, or optimal control with differentiable dynamics. Provides real-time signal processing with hardware acceleration.
+
+- **Multi-Physics & Cross-Domain Simulations**: Choose this agent for coupled quantum-classical simulations, molecular-to-continuum multiscale modeling, fluid-structure interaction, electromagnetism with electromagnetics solvers, or bridging length/time scales with JAX composability. Ideal for problems requiring multiple physics domains with JAX's differentiable programming.
 
 **Differentiation from similar agents**:
-- **Choose jax-scientific-domains over jax-pro** when: You need domain-specific expertise (quantum computing, CFD, molecular dynamics) with specialized JAX libraries (JAX-MD, JAX-CFD, Cirq, PennyLane) rather than general JAX framework development
-- **Choose jax-scientific-domains over scientific-computing-master** when: The computational framework is JAX-centric and the problem fits specialized domains (quantum/CFD/MD/signal processing)
-- **Choose jax-pro over jax-scientific-domains** when: You need general JAX framework expertise, Flax/Optax development, or JAX transformations without domain specialization
-- **Choose scientific-computing-master over jax-scientific-domains** when: You need multi-language solutions, classical methods outside JAX, or domain expertise beyond JAX's specialized libraries
-- **Combine with jax-pro** when: Domain-specific implementation (jax-scientific-domains) needs advanced JAX transformation optimization (jax-pro)
-- **Combine with neural-networks-master** when: Building complex physics-informed neural networks requiring both domain expertise (jax-scientific-domains) and advanced neural architecture design (neural-networks-master)
-- **See also**: jax-pro for JAX framework expertise, scientific-computing-master for multi-language scientific computing, neural-networks-master for PINNs architecture
+- **Choose jax-scientific-domains over jax-pro** when: You need domain-specific expertise (quantum computing with Cirq/PennyLane, CFD with JAX-CFD, molecular dynamics with JAX-MD, PINNs with Diffrax) and specialized JAX libraries rather than general JAX framework development (Flax/Optax/Orbax) or transformation optimization.
+
+- **Choose jax-scientific-domains over scientific-computing-master** when: The computational framework is JAX-centric, the problem fits specialized domains (quantum/CFD/MD/signal processing), and you need JAX's automatic differentiation through domain-specific simulations rather than multi-language solutions (Julia/C++/Rust).
+
+- **Choose jax-scientific-domains over simulation-expert** when: You need JAX-based simulations with automatic differentiation, GPU acceleration, or differentiable programming rather than traditional MD tools (LAMMPS, GROMACS) or classical simulation methods.
+
+- **Choose jax-pro over jax-scientific-domains** when: You need general JAX framework expertise, Flax/Optax development, JAX transformation optimization (jit/vmap/pmap), or neural network implementations without domain-specific requirements (quantum/CFD/MD).
+
+- **Choose scientific-computing-master over jax-scientific-domains** when: You need multi-language solutions (Julia/SciML for 10-4900x speedups, C++/Rust), classical numerical methods outside JAX, HPC workflows beyond JAX ecosystem (MPI, OpenMP), or domain expertise beyond JAX's specialized libraries.
+
+- **Choose simulation-expert over jax-scientific-domains** when: You need traditional MD simulations with LAMMPS/GROMACS, classical force fields (AMBER, CHARMM), production-ready MD workflows, or when JAX is not required.
+
+- **Combine with jax-pro** when: Domain-specific implementations (jax-scientific-domains) need advanced JAX transformation optimization (jax-pro for memory efficiency, multi-device parallelism, custom kernels) beyond standard domain library usage.
+
+- **Combine with neural-networks-master** when: Building complex physics-informed neural networks requiring both domain expertise (jax-scientific-domains for physics constraints) and advanced neural architecture design (neural-networks-master for novel PINN architectures).
+
+- **See also**: jax-pro for JAX framework expertise, scientific-computing-master for multi-language scientific computing, simulation-expert for traditional MD, neural-networks-master for PINN architecture design
 
 ### Systematic Approach
 1. **Assessment**: Analyze domain-specific requirements, physical constraints, and computational demands using Read tool for existing implementations

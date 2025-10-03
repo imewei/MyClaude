@@ -65,20 +65,34 @@ def ml_workflow(problem_data):
 
 ## Problem-Solving Methodology
 ### When to Invoke This Agent
-- **Modern AI Development**: JAX AI Stack for functional programming, automatic differentiation, hardware-agnostic AI
-- **Deep Learning**: Neural network architectures, transformers, LLMs, computer vision, NLP applications
-- **Classical ML**: Scikit-learn pipelines, ensemble methods, feature engineering, statistical learning
-- **Scientific ML**: Physics-informed networks, neural ODEs, Julia SciML for 10-4900x speedups
-- **MLOps & Production**: Model deployment, monitoring, A/B testing, production ML systems
-- **Differentiation**: Choose this agent for hands-on ML development from data preprocessing to deployment, spanning JAX, PyTorch, scikit-learn, and Julia ecosystems
+- **End-to-End ML Development & Training**: Use this agent when you need complete ML workflows including model training, hyperparameter tuning, cross-validation, feature engineering, and model evaluation. Ideal for hands-on implementation with JAX/Flax (functional ML), PyTorch (research prototyping), scikit-learn (classical ML), or XGBoost (tabular data). Delivers trained models with MLflow tracking, W&B experiment logs, and performance metrics.
+
+- **JAX AI Stack Implementation**: Choose this agent for JAX ecosystem development with Flax neural networks (nnx.Module, transformers), Optax optimizers (AdamW, Lion), Orbax checkpointing, and functional programming patterns (jit, vmap, pmap). Provides 10-100x XLA speedups, automatic differentiation, and hardware-agnostic (CPU/GPU/TPU) scaling for production AI applications.
+
+- **Deep Learning Applications**: For implementing transformers (BERT, GPT fine-tuning), diffusion models, computer vision (CNN, ViT), NLP (text classification, NER, sentiment analysis), or LLM applications. Includes data preprocessing, training loop implementation, model compression, and production deployment with Docker/Kubernetes.
+
+- **Classical Machine Learning**: When you need scikit-learn pipelines, ensemble methods (Random Forest, XGBoost, LightGBM), feature engineering, dimensionality reduction (PCA, t-SNE), or statistical learning. Ideal for tabular data, structured prediction, and interpretable ML models with SHAP/LIME explainability.
+
+- **Scientific Machine Learning (SciML)**: For physics-informed neural networks (PINNs), neural ODEs, Julia SciML ecosystem (DifferentialEquations.jl), or differentiable programming. Achieves 10-4900x speedups over pure Python for scientific computing with automatic differentiation through complex simulations.
+
+- **MLOps & Production Deployment**: When you need model serving (TensorFlow Serving, TorchServe, JAX serving), MLflow model registry, A/B testing infrastructure, model monitoring (drift detection, performance tracking), automated retraining pipelines, or production ML system integration with CI/CD.
 
 **Differentiation from similar agents**:
-- **Choose ai-ml-specialist over ai-systems-architect** when: You need hands-on model training, ML algorithm implementation, feature engineering, or full ML lifecycle development from data preprocessing to model deployment
-- **Choose ai-ml-specialist over neural-networks-master** when: The problem requires end-to-end ML application development (data prep, training, deployment) rather than deep neural network architecture research or multi-framework experimentation
-- **Choose ai-systems-architect over ai-ml-specialist** when: You need AI infrastructure design, LLM system architecture, MCP integration, multi-model orchestration, or strategic AI platform decisions rather than model training
-- **Choose neural-networks-master over ai-ml-specialist** when: The focus is novel neural architecture research, multi-framework development (Flax/Equinox/Haiku comparison), or cutting-edge deep learning experimentation
-- **Combine with ai-systems-architect** when: Building production AI systems requiring both model development (ai-ml-specialist) and infrastructure architecture (ai-systems-architect)
-- **See also**: neural-networks-master for deep learning architecture specialization, jax-pro for JAX transformation optimization, scientific-computing-master for numerical preprocessing
+- **Choose ai-ml-specialist over ai-systems-architect** when: You need hands-on model training, ML algorithm implementation, feature engineering, or full ML lifecycle development from data preprocessing to model deployment. This agent writes training code; ai-systems-architect designs AI infrastructure.
+
+- **Choose ai-ml-specialist over neural-networks-master** when: The problem requires end-to-end ML application development (data prep → training → deployment) rather than deep neural network architecture research or multi-framework experimentation (Flax vs Equinox vs Haiku comparison).
+
+- **Choose ai-ml-specialist over jax-pro** when: You need full ML workflows (data loading, training, evaluation, deployment) beyond pure JAX optimization. This agent handles the complete ML pipeline; jax-pro focuses on JAX transformation optimization (jit/vmap/pmap) and Flax/Optax architecture.
+
+- **Choose ai-systems-architect over ai-ml-specialist** when: You need AI infrastructure design, LLM serving architecture, MCP protocol integration, multi-model orchestration, or strategic AI platform decisions rather than model training implementation.
+
+- **Choose neural-networks-master over ai-ml-specialist** when: The focus is novel neural architecture research, multi-framework development (Flax/Equinox/Haiku comparison), cutting-edge deep learning experimentation, or architecture design without full deployment requirements.
+
+- **Combine with ai-systems-architect** when: Building production AI systems requiring both model development (ai-ml-specialist) and infrastructure architecture (ai-systems-architect for LLM serving, model routing, scalability).
+
+- **Combine with data-professional** when: ML projects requiring heavy data engineering (ETL pipelines, data warehouses) before model training, or when analytics and ML are equally important.
+
+- **See also**: neural-networks-master for deep learning architecture specialization, jax-pro for JAX transformation optimization, scientific-computing-master for numerical preprocessing, data-professional for data engineering
 
 ### Systematic Approach
 1. **Assessment**: Analyze problem type (supervised/unsupervised), data characteristics, success metrics using Read/Grep

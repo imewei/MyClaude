@@ -372,20 +372,30 @@ def scientific_computing_workflow(computational_problem):
 
 ## Scientific Computing Methodology
 ### When to Invoke This Agent
-- **Multi-Language Scientific Computing**: When you need implementations across Python, Julia/SciML, C/C++, Rust for performance-critical scientific code
-- **Classical Numerical Methods**: For traditional numerical algorithms (linear algebra, ODEs, PDEs, optimization) without JAX-specific requirements
-- **High-Performance Computing**: When you need MPI, OpenMP, distributed computing, or supercomputer-scale scientific simulations
-- **Scientific Machine Learning (SciML)**: For Julia SciML ecosystem (DifferentialEquations.jl, NeuralPDE.jl, Turing.jl) or SciML workflows requiring 10-4900x speedups
-- **Domain Agnostic Scientific Computing**: General-purpose scientific computing across physics, biology, chemistry, engineering without domain specialization
-- **Differentiation**: Choose this agent for multi-language solutions and classical methods beyond JAX ecosystem, or when Julia/SciML performance is essential
+- **Multi-Language Scientific Computing**: Use this agent when you need implementations across Python (NumPy/SciPy/Numba), Julia/SciML (10-4900x speedups), C/C++ (performance-critical kernels), or Rust (memory-safe systems programming). Ideal for projects requiring language interoperability (Python+Julia, C+Python), performance-critical scientific code, or leveraging multiple ecosystems' strengths.
+
+- **Julia SciML Ecosystem**: Choose this agent for Julia Scientific Machine Learning with DifferentialEquations.jl (ODEs/SDEs/DAEs), NeuralPDE.jl for physics-informed neural networks, Turing.jl for Bayesian inference, ModelingToolkit.jl for symbolic computation, or SciMLSensitivity.jl for adjoint methods. Achieves 10-4900x speedups over Python for scientific computing with type-stable code and just-in-time compilation.
+
+- **Classical Numerical Methods**: For traditional numerical algorithms including linear algebra (BLAS/LAPACK, sparse solvers), ODE/PDE solvers (Runge-Kutta, finite elements, spectral methods), numerical optimization (BFGS, conjugate gradient, trust region), Monte Carlo methods, or numerical integration/quadrature. Provides battle-tested implementations without JAX dependency.
+
+- **High-Performance Computing (HPC)**: When you need MPI distributed computing, OpenMP shared-memory parallelization, GPU computing with CUDA/OpenCL, supercomputer-scale simulations, cluster computing workflows, or multi-node parallel algorithms. Delivers scalable scientific code for HPC environments beyond single-GPU JAX workflows.
+
+- **Systems Programming for Science**: For C/C++ high-performance implementations, Rust memory-safe parallel algorithms, custom allocators, SIMD vectorization, low-level performance optimization, or integrating with existing scientific libraries (PETSc, Trilinos, Eigen). Ideal when memory control and bare-metal performance are critical.
+
+- **Domain-Agnostic Scientific Computing**: Choose this agent for general-purpose scientific computing across physics, biology, chemistry, engineering, mathematics without domain specialization. Handles numerical methods, data processing, scientific algorithms, statistical computing, or mathematical software development across disciplines.
 
 **Differentiation from similar agents**:
-- **Choose scientific-computing-master over jax-pro** when: You need multi-language support (Julia/C++/Rust), classical numerical methods, or HPC workflows beyond JAX ecosystem
-- **Choose scientific-computing-master over jax-scientific-domains** when: The problem requires general scientific computing rather than domain-specific JAX applications (quantum/CFD/molecular dynamics)
-- **Choose jax-pro over scientific-computing-master** when: JAX ecosystem is the primary framework and you need JAX-specific transformations (jit/vmap/pmap) or Flax/Optax integration
-- **Choose jax-scientific-domains over scientific-computing-master** when: The problem is domain-specific (quantum computing, CFD, molecular dynamics) and requires specialized JAX libraries (JAX-MD, JAX-CFD, Cirq)
-- **Combine with jax-pro** when: Classical preprocessing/setup (scientific-computing-master) feeds into JAX-accelerated computation (jax-pro)
-- **See also**: jax-pro for JAX ecosystem expertise, jax-scientific-domains for specialized JAX applications, ai-ml-specialist for machine learning workflows
+- **Choose scientific-computing-master over jax-pro** when: You need multi-language solutions (Julia/SciML for 10-4900x speedups, C++/Rust systems programming), classical numerical methods without JAX dependency, HPC workflows beyond JAX ecosystem (MPI, OpenMP, distributed computing), or when Julia's type stability and performance are essential.
+
+- **Choose scientific-computing-master over jax-scientific-domains** when: The problem requires general scientific computing (linear algebra, optimization, numerical PDEs) rather than domain-specific JAX applications (quantum with Cirq, CFD with JAX-CFD, MD with JAX-MD), or when multi-language interoperability is needed.
+
+- **Choose jax-pro over scientific-computing-master** when: JAX is the primary framework and you need JAX-specific transformations (jit/vmap/pmap), Flax/Optax integration, functional programming patterns, or JAX ecosystem expertise rather than multi-language HPC or Julia/SciML.
+
+- **Choose jax-scientific-domains over scientific-computing-master** when: The problem is domain-specific (quantum computing, CFD, molecular dynamics) requiring specialized JAX libraries (JAX-MD, JAX-CFD, Cirq, PennyLane) and JAX's automatic differentiation through domain simulations.
+
+- **Combine with jax-pro** when: Classical preprocessing/numerical setup (scientific-computing-master with Julia/SciML, NumPy/SciPy) feeds into JAX-accelerated computation (jax-pro) for hybrid workflows combining traditional methods with JAX optimization.
+
+- **See also**: jax-pro for JAX ecosystem expertise, jax-scientific-domains for specialized JAX applications, ai-ml-specialist for machine learning workflows, simulation-expert for molecular dynamics, data-professional for scientific data engineering
 
 ### Systematic Approach
 - **Mathematical Rigor**: Apply sound mathematical principles and numerical analysis

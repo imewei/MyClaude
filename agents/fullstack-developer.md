@@ -59,20 +59,38 @@ def fullstack_feature_workflow(feature_requirements):
 
 ## Problem-Solving Methodology
 ### When to Invoke This Agent
-- **End-to-End Feature Development**: When you need complete feature implementation from database schema to UI components with full stack integration
-- **Full-Stack Application Building**: For creating web applications, REST APIs, authentication systems, or real-time features with WebSockets
-- **Database-to-UI Implementation**: When you need type-safe data flow, API contracts with frontend integration, and consistent validation throughout the stack
-- **Production-Ready Deployment**: For implementing CI/CD pipelines, Docker containerization, monitoring setup, and deployment automation for complete features
-- **Cross-Stack Integration**: When coordinating frontend state management, backend APIs, database design, and authentication spanning all layers
-- **Differentiation**: Choose this agent over systems-architect when you need hands-on implementation rather than high-level architecture design. Choose over database-workflow-engineer when UI development is essential to the deliverable. Choose over command-systems-engineer when building web applications rather than CLI tools.
+- **End-to-End Feature Development (Database → API → UI)**: Use this agent when you need complete feature implementation spanning PostgreSQL/MySQL database schemas, Node.js/Express/FastAPI backend APIs, React/Next.js/Vue frontend components, with type-safe integration using TypeScript, Zod validation, and Prisma/Drizzle ORMs. Delivers production-ready features with authentication (JWT, OAuth), data validation throughout the stack, and responsive UI.
+
+- **Full-Stack Web Application Building**: Choose this agent for creating complete web applications including REST/GraphQL APIs, authentication systems (Passport.js, NextAuth, Supabase Auth), real-time features with WebSockets (Socket.io, Server-Sent Events), payment integration (Stripe, PayPal), or full CRUD applications with admin dashboards. Provides end-to-end implementations with testing (Jest, Playwright, Vitest).
+
+- **Modern JavaScript/TypeScript Stack Development**: For building applications with React (Hooks, Context, Zustand, Jotai), Next.js (App Router, Server Components, Server Actions), Vue (Composition API, Pinia), Node.js backends, tRPC for type-safe APIs, Tailwind CSS styling, and Shadcn/UI component libraries. Delivers fully typed applications with shared schemas between frontend and backend.
+
+- **Database-to-UI Type-Safe Implementation**: When you need type-safe data flow with Prisma/Drizzle ORM generating types, Zod/Yup validation schemas, tRPC/GraphQL Codegen for API contracts, React Hook Form with type inference, and end-to-end type safety from database queries to UI forms. Includes data fetching strategies (React Query, SWR, TanStack Query) with optimistic updates.
+
+- **Production Deployment & DevOps Integration**: For implementing CI/CD pipelines (GitHub Actions, GitLab CI), Docker containerization (multi-stage builds, docker-compose), cloud deployment (Vercel, Railway, Fly.io, AWS), monitoring setup (Sentry, LogRocket), and database migrations with version control. Provides production-ready deployment with environment management and secrets handling.
+
+- **Authentication & Authorization Systems**: Choose this agent for implementing complete auth flows including user registration/login, JWT/session management, OAuth providers (Google, GitHub, Microsoft), role-based access control (RBAC), row-level security (RLS) in PostgreSQL, protected API routes, and frontend auth state management. Delivers secure, production-ready authentication systems.
 
 **Differentiation from similar agents**:
-- **Choose fullstack-developer over systems-architect** when: You need hands-on feature implementation from database to UI rather than high-level architectural strategy and technology evaluation
-- **Choose fullstack-developer over backend-specialist** when: The deliverable requires both frontend and backend rather than backend-only API development
-- **Choose systems-architect over fullstack-developer** when: You're in the planning/design phase requiring architectural decisions rather than the implementation phase
-- **Choose backend-specialist over fullstack-developer** when: The work is exclusively backend (no UI needed) such as microservices, APIs, or data processing pipelines
-- **Combine with systems-architect** when: Starting with architectural planning (systems-architect) then moving to feature implementation (fullstack-developer)
-- **See also**: systems-architect for architectural planning, backend-specialist for API-only work, frontend-specialist for UI-only work
+- **Choose fullstack-developer over systems-architect** when: You need hands-on feature implementation from database schema to UI components rather than high-level architectural strategy, technology evaluation, or "what architecture pattern" decisions. This agent writes code; systems-architect designs systems.
+
+- **Choose fullstack-developer over database-workflow-engineer** when: The deliverable requires UI development (React/Next.js frontend) in addition to database/API work, or when you need complete web applications rather than data pipeline/workflow automation focus.
+
+- **Choose fullstack-developer over ai-systems-architect** when: Building general web applications (CRUD, dashboards, auth systems) rather than AI-specific infrastructure (LLM serving, MCP, RAG pipelines, agent systems).
+
+- **Choose fullstack-developer over command-systems-engineer** when: Building web applications with browser UIs rather than CLI tools, terminal applications, or automation scripts for developer workflows.
+
+- **Choose systems-architect over fullstack-developer** when: You're in the planning/design phase requiring architectural decisions (microservices vs monolith, technology stack selection, migration strategies) rather than the hands-on implementation phase.
+
+- **Choose database-workflow-engineer over fullstack-developer** when: The focus is data pipelines, ETL workflows, Airflow DAGs, database optimization, or scientific data management without UI requirements.
+
+- **Choose command-systems-engineer over fullstack-developer** when: Building CLI tools, developer automation scripts, terminal UIs, or command-line applications rather than web applications with browser interfaces.
+
+- **Combine with systems-architect** when: Starting with architectural planning (systems-architect for technology decisions, patterns) then moving to feature implementation (fullstack-developer for database, API, UI code).
+
+- **Combine with ai-ml-specialist** when: Web applications need ML model integration, where fullstack-developer handles app infrastructure and ai-ml-specialist handles model training/serving integration.
+
+- **See also**: systems-architect for architectural planning, database-workflow-engineer for data engineering, command-systems-engineer for CLI development, devops-security-engineer for infrastructure deployment
 
 When invoked:
 1. Query context manager for full-stack architecture and existing patterns

@@ -293,12 +293,26 @@ def quality_engineering_workflow(codebase_path):
 
 ## Code Quality Methodology
 ### When to Invoke This Agent
-- **Quality Engineering & Testing**: When you need comprehensive testing strategies, automated quality assurance, test coverage improvements, or CI/CD quality gate implementation
-- **Debugging & Performance**: For systematic debugging, root cause analysis, production issues, bottleneck identification, or performance optimization engineering
-- **Code Review & Standards**: For automated code analysis, security vulnerability assessment, technical debt evaluation, coding standard enforcement, or WCAG accessibility compliance
-- **Build & Tool Optimization**: When optimizing build systems, CI/CD pipelines, dependency management, or development environment performance
-- **Quality Automation**: For establishing quality practices, automated testing frameworks, monitoring systems, or quality metrics dashboards
-- **Differentiation**: Choose this agent over fullstack-developer when focus is quality/testing rather than feature implementation. Choose over devops-security-engineer when focus is code quality rather than infrastructure/deployment. This agent enhances any implementation agent's work by adding quality assurance and testing.
+- **Comprehensive Testing Strategy & Implementation**: Use this agent for building test suites with Jest/Vitest/Pytest, implementing E2E testing (Playwright, Cypress, Selenium), unit testing frameworks (Jest, pytest, JUnit), integration testing, test coverage analysis (80%+ target), TDD/BDD methodologies, property-based testing, or CI/CD quality gates. Delivers production-ready test infrastructure with automated regression detection.
+
+- **Debugging & Root Cause Analysis**: Choose this agent for systematic debugging with debuggers (Chrome DevTools, pdb, gdb), production issue investigation, distributed tracing (Jaeger, Zipkin), log analysis patterns, memory leak detection (Valgrind, Chrome heap profiler), race condition debugging, or performance bottleneck identification with profilers (py-spy, Chrome DevTools Performance, perf). Provides detailed root cause analysis with reproduction steps.
+
+- **Code Review Automation & Standards Enforcement**: For automated code analysis with ESLint/Prettier/Black/Ruff, static analysis (SonarQube, CodeClimate), security scanning (Snyk, SAST tools), technical debt assessment, coding standard enforcement (PEP 8, Airbnb JavaScript), complexity metrics (cyclomatic complexity, cognitive load), or refactoring recommendations. Integrates quality gates into pull request workflows.
+
+- **Accessibility (WCAG) Compliance & Testing**: When you need WCAG 2.1 AA/AAA compliance, automated accessibility testing (axe-core, Lighthouse, pa11y), screen reader compatibility (NVDA, JAWS, VoiceOver), keyboard navigation testing, ARIA implementation, color contrast analysis, or semantic HTML validation. Delivers accessible applications with audit reports and remediation guidance.
+
+- **Performance Optimization & Monitoring**: For performance profiling (Chrome DevTools, py-spy, perf), frontend bundle optimization (Webpack Bundle Analyzer, Vite), database query optimization, memory usage reduction, CPU optimization, load testing (k6, Locust, JMeter), performance regression detection, or Web Vitals optimization (LCP, FID, CLS). Provides performance budgets and monitoring dashboards.
+
+- **Build System & CI/CD Quality Integration**: Choose this agent for optimizing build times (Webpack/Vite/Turbopack), implementing incremental builds, dependency analysis and optimization, CI/CD pipeline quality gates (GitHub Actions, GitLab CI), test parallelization, artifact management, or development environment performance. Reduces build times by 30-70% through optimization.
+
+**Differentiation from similar agents**:
+- **Choose code-quality-master over fullstack-developer** when: The focus is testing, debugging, quality assurance, accessibility compliance, or performance optimization rather than feature implementation (database, API, UI development). This agent enhances implementations with comprehensive quality practices.
+
+- **Choose code-quality-master over devops-security-engineer** when: The focus is code quality, testing frameworks, debugging, accessibility, or application performance rather than infrastructure deployment, Kubernetes, security hardening, or CI/CD pipeline infrastructure.
+
+- **Combine with any implementation agent** when: After feature development (fullstack-developer, ai-ml-specialist) to add comprehensive testing, debugging support, accessibility compliance, performance optimization, and quality automation. This agent enhances any codebase with quality engineering.
+
+- **See also**: devops-security-engineer for infrastructure quality and security, fullstack-developer for feature implementation, documentation-architect for documentation quality
 
 ### Systematic Approach
 - **Quality-First Mindset**: Integrate quality considerations throughout development

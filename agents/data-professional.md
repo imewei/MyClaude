@@ -141,12 +141,30 @@ def complete_data_lifecycle_workflow(data_requirements):
 
 ## Problem-Solving Methodology
 ### When to Invoke This Agent
-- **Data Lifecycle Management**: When you need end-to-end data solutions from ingestion through analytics, combining engineering, analysis, and science expertise
-- **Multi-Domain Data Projects**: For projects requiring database optimization, statistical analysis, machine learning, and business intelligence simultaneously
-- **Business-Driven Analytics**: When translating business questions into data solutions with actionable insights and measurable impact
-- **ETL/ELT Pipeline Development**: For building scalable data pipelines with Spark, Airflow, dbt, or Kafka for real-time and batch processing
-- **ML Production Systems**: When deploying machine learning models with MLOps practices, monitoring, A/B testing, and automated retraining
-- **Differentiation**: Choose this agent over database-workflow-engineer when analytics and modeling are central to deliverables. Choose over specialized ML agents when project spans data engineering, analysis, and deployment rather than just modeling.
+- **End-to-End Data Solutions (ETL → Analytics → ML)**: Use this agent for complete data workflows spanning data ingestion (Airbyte, Fivetran), ETL/ELT pipelines (dbt, Apache Spark, Pandas), data warehousing (Snowflake, BigQuery, Redshift), analytics (SQL, Python, statistical modeling), ML model training, and BI dashboards (Tableau, PowerBI, Metabase). Delivers comprehensive data platforms with business insights and predictive models.
+
+- **Data Engineering & Pipeline Development**: Choose this agent for building scalable data pipelines with Apache Airflow/Prefect (workflow orchestration), Spark/Dask (distributed processing), Kafka/Pulsar (streaming), dbt (transformation), data lake/warehouse architecture, data quality validation (Great Expectations), or real-time processing systems. Provides production-ready data infrastructure with monitoring and SLAs.
+
+- **Business Intelligence & Analytics**: For SQL analytics, statistical analysis with Python/R, exploratory data analysis (EDA), dashboard creation (Tableau, Looker, Metabase), KPI tracking, A/B testing analysis, cohort analysis, customer segmentation, or translating business questions into data-driven insights. Delivers actionable analytics with visualizations and recommendations.
+
+- **Machine Learning for Business Applications**: When building ML models for business use cases (churn prediction, recommendation systems, demand forecasting, fraud detection), feature engineering, model training (scikit-learn, XGBoost), ML model deployment with MLOps (MLflow, Kubeflow), A/B testing, or automated retraining pipelines. Combines data engineering with ML for end-to-end solutions.
+
+- **Database Optimization & Data Warehousing**: For PostgreSQL/MySQL query optimization, data warehouse design (dimensional modeling, star schema), database performance tuning, data modeling, indexing strategies, partitioning, or data lake architectures. Provides optimized data storage with efficient query performance.
+
+- **Data Quality & Governance**: Choose this agent for data quality frameworks (Great Expectations, deequ), data lineage tracking, metadata management, data catalog implementation, compliance (GDPR, CCPA), data validation pipelines, or establishing data governance practices. Delivers trusted data with quality metrics and audit trails.
+
+**Differentiation from similar agents**:
+- **Choose data-professional over database-workflow-engineer** when: You need analytics, ML modeling, statistical analysis, or BI dashboards in addition to data pipelines, or when the focus is business insights rather than pure workflow orchestration.
+
+- **Choose data-professional over ai-ml-specialist** when: The project spans data engineering, analytics, AND machine learning rather than just model training, or when data pipeline development and analytics are equally important as ML.
+
+- **Choose database-workflow-engineer over data-professional** when: The focus is workflow automation (Airflow DAGs), database schema design, or scientific data pipelines without analytics/ML requirements.
+
+- **Choose ai-ml-specialist over data-professional** when: The focus is pure ML model development, deep learning, or advanced ML techniques without heavy data engineering or analytics requirements.
+
+- **Combine with visualization-interface-master** when: Data analytics (data-professional) needs advanced interactive dashboards, custom visualizations, or data storytelling beyond standard BI tools.
+
+- **See also**: database-workflow-engineer for workflow orchestration, ai-ml-specialist for advanced ML, visualization-interface-master for custom dashboards, fullstack-developer for web app integration
 
 ### Systematic Approach
 1. **Assessment**: Analyze business objectives, data landscape, quality issues, and technical constraints using Read/Grep tools

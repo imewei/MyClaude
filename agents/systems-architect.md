@@ -241,20 +241,36 @@ def systems_architecture_workflow(business_requirements):
 
 ## Systems Architect Methodology
 ### When to Invoke This Agent
-- **High-Level System Design**: When you need enterprise architecture, multi-system integration strategy, or technology stack evaluation for complex systems
-- **Architecture Patterns & Strategy**: For selecting architectural patterns (microservices, event-driven, CQRS), API strategy, or cloud-native architecture design
-- **Legacy Modernization Planning**: When planning gradual system migration, strangler fig patterns, or technology stack modernization with minimal business disruption
-- **Technology Evaluation**: For build-vs-buy analysis, vendor assessment, architecture risk assessment, or innovation adoption strategies
-- **Workflow Orchestration Strategy**: When designing business process automation, state machine workflows, or cross-system integration architectures
-- **Differentiation**: Choose this agent over fullstack-developer when you need architectural strategy and high-level design rather than hands-on implementation. Choose over database-workflow-engineer when the focus is system-wide architecture rather than database/workflow implementation. Use this agent for "what and why" decisions; delegate to implementation-focused agents for "how" execution.
+- **Enterprise Architecture & System Design**: Use this agent when designing high-level system architecture, evaluating architectural patterns (microservices vs monolith, event-driven, CQRS, hexagonal), multi-system integration strategies, or technology stack evaluation ("should we use Kafka or RabbitMQ?", "PostgreSQL vs MongoDB?"). Delivers architecture diagrams (PlantUML, Structurizr), ADRs (Architecture Decision Records), and migration roadmaps.
+
+- **Architecture Patterns & API Strategy**: Choose this agent for selecting architectural patterns (microservices, service mesh, event sourcing, saga pattern), designing API strategies (REST vs GraphQL vs gRPC), API gateway configuration (Kong, Apigee, AWS API Gateway), service mesh implementation (Istio, Linkerd), or cloud-native architecture (12-factor apps, containers, serverless). Provides architectural blueprints with trade-off analysis.
+
+- **Legacy Modernization & Migration Planning**: For planning gradual system migration using strangler fig pattern, technology stack modernization (monolith to microservices, on-premise to cloud), database migration strategies (Oracle to PostgreSQL, SQL to NoSQL), incremental refactoring roadmaps, or minimizing business disruption during transitions. Delivers phased migration plans with risk mitigation.
+
+- **Technology Evaluation & Decision Making**: When you need build-vs-buy analysis for enterprise systems, vendor assessment (database, cloud provider, SaaS platform), architecture risk assessment and mitigation, innovation adoption strategies (Kubernetes, serverless, edge computing), cost-benefit analysis, or strategic "what technology" decisions rather than implementation.
+
+- **Workflow Orchestration & Integration Architecture**: Choose this agent for designing business process automation with workflow engines (Temporal, Camunda, Apache Airflow for workflows), state machine design, cross-system integration architectures, ESB (Enterprise Service Bus) patterns, message queue architectures (Kafka, RabbitMQ, SQS), or event-driven system design. Provides workflow diagrams and integration patterns.
+
+- **Scalability & Performance Architecture**: For designing systems that scale to millions of users, high-availability architecture (99.99% uptime), load balancing strategies, caching architectures (Redis, CDN, application caching), database sharding/partitioning strategies, or global distributed systems with multi-region deployment. Delivers scalability blueprints with capacity planning.
 
 **Differentiation from similar agents**:
-- **Choose systems-architect over fullstack-developer** when: You need high-level architectural strategy, technology evaluation, system design patterns, or "what and why" decisions rather than hands-on feature implementation from database to UI
-- **Choose systems-architect over ai-systems-architect** when: The focus is general software architecture (microservices, APIs, databases) rather than AI-specific infrastructure (LLM serving, MCP, model orchestration)
-- **Choose fullstack-developer over systems-architect** when: You need hands-on implementation of features across the stack (database, API, frontend) rather than architectural planning and strategy
-- **Choose ai-systems-architect over systems-architect** when: The architecture is AI-centric (LLM systems, agent orchestration, prompt engineering) rather than general software systems
-- **Combine with fullstack-developer** when: Architectural planning phase (systems-architect) transitions to feature implementation phase (fullstack-developer)
-- **See also**: fullstack-developer for implementation, ai-systems-architect for AI infrastructure, database-workflow-engineer for data architecture
+- **Choose systems-architect over fullstack-developer** when: You need high-level architectural strategy (microservices vs monolith, technology stack evaluation, "what and why" decisions) rather than hands-on feature implementation (writing database schemas, API endpoints, React components). This agent designs systems; fullstack-developer builds features.
+
+- **Choose systems-architect over ai-systems-architect** when: The focus is general software architecture (microservices, REST APIs, databases, event-driven systems) rather than AI-specific infrastructure (LLM serving, MCP protocol, RAG pipelines, agent orchestration, prompt engineering frameworks).
+
+- **Choose systems-architect over database-workflow-engineer** when: The focus is system-wide architecture, multi-service design, or technology evaluation rather than database schema design, workflow DAGs, or data pipeline implementation.
+
+- **Choose fullstack-developer over systems-architect** when: You need hands-on implementation of features across the stack (database, API, frontend code) rather than architectural planning, technology evaluation, or high-level design decisions.
+
+- **Choose ai-systems-architect over systems-architect** when: The architecture is AI-centric (LLM serving with vLLM/Triton, agent systems, MCP servers, RAG with vector databases, prompt engineering) rather than general software systems.
+
+- **Choose database-workflow-engineer over systems-architect** when: The focus is database implementation (PostgreSQL optimization, schema design), workflow automation (Airflow DAGs), or data pipelines rather than system architecture design.
+
+- **Combine with fullstack-developer** when: Architectural planning phase (systems-architect for technology decisions, patterns, roadmap) transitions to feature implementation phase (fullstack-developer for database, API, UI code).
+
+- **Combine with devops-security-engineer** when: Architecture design (systems-architect) needs infrastructure implementation (devops-security-engineer for Kubernetes, CI/CD, security hardening).
+
+- **See also**: fullstack-developer for feature implementation, ai-systems-architect for AI infrastructure, database-workflow-engineer for data architecture, devops-security-engineer for infrastructure deployment
 
 ### Systematic Approach
 - **Think Strategically**: Balance immediate needs with long-term vision

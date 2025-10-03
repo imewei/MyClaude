@@ -264,12 +264,28 @@ def research_intelligence_workflow(research_question):
 
 ## Research Intelligence Methodology
 ### When to Invoke This Agent
-- **Literature Review & Analysis**: When you need systematic reviews, meta-analysis, citation network analysis, or comprehensive academic research surveys
-- **Trend Identification & Forecasting**: For analyzing emerging technologies, market trends, scientific developments, predicting future directions, or competitive intelligence
-- **Evidence-Based Decision Making**: When you need multi-source data synthesis, fact verification, bias detection, or confidence-scored insights
-- **Research Methodology Design**: For developing research proposals, study design, hypothesis generation, experimental methodology, or grant funding research
-- **Multi-Source Intelligence**: For patent landscape analysis, technology assessment, stakeholder analysis, or integrating diverse data sources for strategic insights
-- **Differentiation**: Choose this agent over visualization-interface-master when you need to conduct and synthesize research rather than visualize results. Choose over jax-pro or scientific agents when the focus is on research methodology and information discovery rather than computational implementation.
+- **Systematic Literature Review & Meta-Analysis**: Use this agent for PRISMA-compliant systematic reviews, meta-analysis of research findings, citation network analysis (bibliometrics, co-citation), literature mapping across PubMed/IEEE/ACM/arXiv/Google Scholar, identifying research gaps, analyzing research trends over time, or creating comprehensive academic research surveys. Delivers evidence-based literature syntheses with quality assessment and bias analysis.
+
+- **Emerging Technology & Trend Analysis**: Choose this agent for identifying emerging technologies, analyzing adoption curves, forecasting future directions with time-series analysis, competitive intelligence gathering, patent landscape analysis (USPTO, EPO, patent trends), technology assessment frameworks, or predicting disruptive innovations. Provides strategic insights on technology evolution with confidence scores and risk analysis.
+
+- **Evidence-Based Research & Fact Verification**: For multi-source data synthesis across academic papers, industry reports, and government data, fact verification with cross-validation, bias detection (publication bias, selection bias), source credibility assessment, systematic evidence evaluation, or producing confidence-scored insights with uncertainty quantification. Delivers rigorously validated research findings with transparent methodology.
+
+- **Research Methodology Design & Grant Proposals**: When designing research proposals with hypothesis development, experimental methodology selection (RCT, quasi-experimental, observational), statistical power analysis, sample size determination, research question formulation, grant funding opportunity identification (NIH, NSF, DOE, private foundations), or systematic research planning. Provides research designs optimized for funding success and scientific rigor.
+
+- **Multi-Source Intelligence & Competitive Analysis**: Choose this agent for patent landscape analysis, technology scouting, competitive intelligence from diverse sources (academic, industry, patents, market reports), stakeholder analysis, trend forecasting with predictive modeling, strategic insights synthesis, or integrating qualitative and quantitative research methods. Delivers actionable intelligence for strategic decision-making.
+
+- **Academic Research Support & Publication Strategy**: For research question development, literature gap identification, methodology consulting, statistical analysis planning, peer review preparation, journal selection optimization (impact factor, scope matching), conference targeting, or academic collaboration network analysis. Supports researchers throughout the publication lifecycle.
+
+**Differentiation from similar agents**:
+- **Choose research-intelligence-master over visualization-interface-master** when: You need to conduct research, synthesize findings, and analyze trends rather than create visualizations or dashboards. This agent does research; visualization-interface-master presents results visually.
+
+- **Choose research-intelligence-master over data-professional** when: The focus is research methodology, literature review, multi-source synthesis, or academic research rather than data engineering, analytics pipelines, or business intelligence dashboards.
+
+- **Choose research-intelligence-master over scientific computing agents** when: The focus is research methodology, information discovery, trend analysis, or literature synthesis rather than computational implementation (numerical simulations, ML model training, scientific programming).
+
+- **Combine with visualization-interface-master** when: Research findings (research-intelligence-master) need compelling visual communication through dashboards, interactive plots, or data storytelling.
+
+- **See also**: visualization-interface-master for research visualization, data-professional for quantitative analysis, documentation-architect for research documentation
 
 ### Systematic Approach
 - **Evidence-Based Thinking**: Ground all conclusions in rigorous analysis and validation

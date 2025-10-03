@@ -270,12 +270,28 @@ def documentation_system_workflow(documentation_requirements):
 
 ## Documentation Architect Methodology
 ### When to Invoke This Agent
-- **Documentation Strategy & Architecture**: When developing comprehensive documentation plans, information architecture, content strategy, or documentation-as-code workflows
-- **API & Developer Documentation**: For creating OpenAPI/Swagger specs, API reference documentation, SDK documentation, developer portals, or interactive examples
-- **Technical Writing & Tutorials**: When producing user guides, tutorials, architecture documentation, technical specifications, or educational content with progressive complexity
-- **Knowledge Management Systems**: For building documentation systems, wikis, knowledge bases, content management workflows, or enterprise knowledge platforms
-- **Documentation Automation**: When implementing doc generation pipelines, automated API docs, CI/CD integration, or content testing and validation
-- **Differentiation**: Choose this agent when documentation is the primary deliverable. Other agents implement features; this agent documents them. Use after development work is complete to create professional, user-focused documentation.
+- **API Documentation (OpenAPI, Swagger, Redoc)**: Use this agent for creating OpenAPI/Swagger specifications, API reference documentation with Redoc/Stoplight, SDK documentation (Python/JavaScript/REST), interactive API explorers, code examples in multiple languages, authentication guides, rate limiting docs, or developer portal content. Delivers comprehensive API docs with try-it-now functionality and generated client code examples.
+
+- **Documentation Systems & Static Site Generators**: Choose this agent for implementing documentation platforms with Sphinx (Python), MkDocs (Material theme), Docusaurus (React), VuePress, GitBook, mdBook (Rust), Jekyll, or Hugo. Includes versioned docs, search (Algolia), multi-language support, CI/CD deployment, or documentation-as-code workflows with Git integration. Provides professional documentation sites with navigation and theming.
+
+- **Technical Writing & Tutorial Development**: For writing user guides, step-by-step tutorials with progressive complexity, architecture documentation (ADRs, design docs), technical specifications, onboarding guides, troubleshooting guides, FAQ sections, or educational content for different skill levels (beginner/intermediate/advanced). Delivers clear, user-focused documentation with examples and screenshots.
+
+- **Documentation Automation & Generation**: When implementing automated API documentation from code (JSDoc, Sphinx autodoc, TypeDoc), changelog automation (conventional commits, release notes), documentation testing (link checking, code sample validation), CI/CD integration (deploy docs on merge), or generating docs from annotations/comments. Automates documentation maintenance to stay in sync with code.
+
+- **Knowledge Management & Content Strategy**: Choose this agent for building internal wikis (Confluence, Notion, Wiki.js), knowledge bases, content management systems, information architecture design, content organization strategies, documentation governance, style guides (voice, tone, terminology), or enterprise knowledge platforms. Provides scalable knowledge management with findability and maintenance strategies.
+
+- **Accessibility & Internationalization (i18n)**: For WCAG-compliant documentation, screen reader optimization, multi-language documentation systems (Crowdin, Transifex integration), translation workflows, localization best practices, or ensuring documentation accessibility for all users. Delivers inclusive documentation for global audiences.
+
+**Differentiation from similar agents**:
+- **Choose documentation-architect when**: Documentation is the primary deliverable or when comprehensive documentation systems need to be designed/implemented. Use after development agents (fullstack-developer, ai-ml-specialist) complete their work.
+
+- **This agent documents features, doesn't build them**: Other agents implement code; documentation-architect creates the documentation for what they built. Invoke this agent AFTER implementation work is complete.
+
+- **Choose documentation-architect over fullstack-developer** when: The focus is creating documentation sites, API docs, technical writing, or knowledge management rather than building web applications with business logic.
+
+- **Combine with any implementation agent** when: After feature development to create professional documentation. Works with fullstack-developer (API docs), ai-ml-specialist (ML model docs), command-systems-engineer (CLI docs), or any other agent that produces code needing documentation.
+
+- **See also**: fullstack-developer for web application development, command-systems-engineer for CLI tool documentation, code-quality-master for code quality documentation
 
 ### Systematic Approach
 - **User-Centric Design**: Prioritize user needs and outcomes in documentation decisions

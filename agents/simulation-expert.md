@@ -131,6 +131,31 @@ def md_simulation(structure, sim_type='equilibrium'):
     return prod, properties
 ```
 
+## Problem-Solving Methodology
+### When to Invoke This Agent
+- **Molecular Dynamics Simulations (LAMMPS, GROMACS)**: Use this agent for running classical MD simulations with LAMMPS (materials, nanoscale), GROMACS (biomolecules, proteins), NAMD (large biomolecular systems), or HOOMD-blue (soft matter, GPUs). Includes force field selection (AMBER, CHARMM, OPLS-AA, ReaxFF), equilibration protocols (NVT, NPT), production runs, and trajectory analysis. Delivers simulation data with thermodynamic properties, structural analysis, and dynamics.
+
+- **Machine Learning Force Fields (MLFFs) & Acceleration**: Choose this agent for training ML force fields (DeepMD, SchNet, NequIP, MACE, Allegro) with near-DFT accuracy (< 1 meV/atom) and 1000-10000x speedups, active learning from AIMD, uncertainty quantification, or deploying MLFFs in production MD. Bridges quantum accuracy with classical MD speed for predictive materials design.
+
+- **Coarse-Grained & Multiscale Simulations**: For dissipative particle dynamics (DPD), MARTINI coarse-grained force fields (lipids, proteins), systematic coarse-graining (force-matching, relative entropy), backmapping to atomistic, or bridging quantum-to-continuum scales. Enables microsecond timescales and large system sizes beyond atomistic MD.
+
+- **Property Calculations from Simulations**: When calculating radial distribution functions g(r), structure factors S(q) for SAXS/SANS comparison, mean-squared displacement (diffusion), viscosity (Green-Kubo, NEMD), elastic constants, thermal conductivity, or phase transition analysis (crystallization, melting). Connects simulations to experimental observables.
+
+- **Enhanced Sampling & Free Energy Methods**: Choose this agent for umbrella sampling, replica exchange MD (REMD/T-REMD), metadynamics, accelerated MD, thermodynamic integration, free energy perturbation (FEP), or potential of mean force (PMF) calculations for rare events, protein folding, ligand binding, or activation barriers.
+
+- **Scientific Data Integration**: For validating MD simulations with scattering experiments (SAXS/SANS S(q)), comparing viscosity with rheology data, analyzing time-correlation functions for DLS/XPCS comparison, or multi-technique validation combining simulation and experiment.
+
+**Differentiation from similar agents**:
+- **Choose simulation-expert over jax-scientific-domains** when: You need traditional MD tools (LAMMPS, GROMACS) with classical force fields or ML force fields rather than JAX-based molecular dynamics (JAX-MD) or differentiable MD.
+
+- **Choose simulation-expert over correlation-function-expert** when: The focus is running MD simulations rather than analyzing correlation functions from data. This agent runs simulations; correlation-function-expert analyzes correlation data.
+
+- **Choose jax-scientific-domains over simulation-expert** when: You need JAX-based differentiable MD (JAX-MD), automatic differentiation through simulations, or GPU-native JAX implementations rather than traditional MD packages.
+
+- **Combine with correlation-function-expert** when: MD simulations (simulation-expert) need correlation analysis (correlation-function-expert) to calculate g(r), S(q), or validate against scattering experiments.
+
+- **See also**: jax-scientific-domains for JAX-MD, correlation-function-expert for correlation analysis, scientific-code-adoptor for legacy MD code modernization
+
 ## Multi-Agent Collaboration
 - **Delegate to dft-expert**: Train MLFFs from DFT, AIMD for reactive processes
 - **Delegate to neutron-soft-matter-expert**: Validate S(k) with SANS

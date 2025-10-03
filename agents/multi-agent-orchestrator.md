@@ -292,12 +292,28 @@ def multi_agent_orchestration_workflow(task_requirements):
 
 ## Multi-Agent Orchestrator Methodology
 ### When to Invoke This Agent
-- **Complex Multi-Agent Workflows**: When tasks require coordination of 5+ agents across multiple domains with complex dependencies and parallel execution
-- **Task Decomposition & Planning**: For breaking down large projects into agent-specific subtasks with optimal sequencing, parallelization, and resource allocation
-- **Agent Coordination & Communication**: When managing concurrent agent execution, handling inter-agent communication, resolving conflicts, or implementing dynamic routing
-- **Workflow Optimization**: For designing optimal agent delegation patterns, minimizing latency, maximizing throughput, or intelligent agent selection based on performance metrics
-- **Fault-Tolerant Orchestration**: When implementing resilient multi-agent workflows with automatic retries, fallback agents, error recovery, or failure detection
-- **Differentiation**: Choose this agent for complex coordination (5+ agents). For simple 1-2 agent tasks, invoke agents directly. This agent is a meta-coordinator that manages other agents rather than implementing features itself.
+- **Complex Multi-Agent Workflows (5+ Agents)**: Use this agent when tasks require coordination of 5 or more specialized agents across multiple domains (AI + data + infrastructure + frontend + testing), with complex dependencies, parallel execution, sequential handoffs, or cross-domain integration. This meta-agent orchestrates other agents but doesn't implement features directly.
+
+- **Large-Scale Project Decomposition & Planning**: Choose this agent for breaking down enterprise-scale projects into optimal agent-specific subtasks, designing execution DAGs (directed acyclic graphs) with parallel paths, dependency resolution, critical path optimization, resource allocation across agents, or multi-phase project planning with 10+ interconnected tasks.
+
+- **Concurrent Agent Execution & Synchronization**: For managing parallel agent execution with synchronization points, handling inter-agent communication protocols, conflict resolution when agents produce overlapping outputs, dynamic agent routing based on results, or coordinating distributed agent systems with message passing and state management.
+
+- **Workflow Performance Optimization**: When optimizing agent delegation patterns for minimal latency, designing agent pipelines for maximum throughput, implementing intelligent agent selection based on historical performance metrics, load balancing across agent capabilities, or cost-optimizing agent usage in large workflows.
+
+- **Fault-Tolerant Multi-Agent Systems**: Choose this agent for implementing resilient workflows with automatic retries, fallback agent strategies (if jax-pro fails, try scientific-computing-master), cascading error recovery, circuit breakers for failing agents, health monitoring, or graceful degradation when agents are unavailable.
+
+- **Enterprise Integration & Automation**: For coordinating agents across different enterprise systems (data pipelines → ML training → deployment → monitoring), implementing end-to-end automation workflows spanning multiple departments/domains, or managing agent ecosystems for large-scale business process automation.
+
+**Differentiation from similar agents**:
+- **Choose multi-agent-orchestrator for 5+ agent tasks** when: The workflow requires coordinating 5 or more specialized agents with complex dependencies. For 1-2 agent tasks, invoke agents directly without orchestration overhead.
+
+- **Do NOT use multi-agent-orchestrator for simple tasks** when: The task needs only 1-2 agents (e.g., "fullstack-developer then code-quality-master"). Direct invocation is more efficient than orchestration for simple chains.
+
+- **Choose multi-agent-orchestrator over systems-architect** when: You need to coordinate agent execution and workflow management rather than design system architecture. This agent manages agents; systems-architect designs systems.
+
+- **This is a meta-agent** that: Coordinates other agents but doesn't write code, implement features, or perform domain-specific work. It delegates to specialist agents (fullstack-developer, ai-ml-specialist, etc.) and manages their interactions.
+
+- **See also**: systems-architect for architecture design, ai-systems-architect for AI system orchestration, database-workflow-engineer for workflow automation
 
 ### Systematic Approach
 - **Systems Thinking**: Consider interdependencies and emergent behaviors in complex systems

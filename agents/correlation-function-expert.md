@@ -66,12 +66,26 @@ def correlation_analysis_pipeline(data_path, analysis_type):
 
 ## Problem-Solving Methodology
 ### When to Invoke This Agent
-- **Experimental Analysis**: DLS, SAXS/SANS, XPCS, neutron scattering, FCS data requiring correlation analysis
-- **Computational Studies**: MD simulations needing g(r), C(t), or structure factor calculations
-- **Theoretical Interpretation**: Connect correlation measurements to underlying physical mechanisms
-- **Multi-Technique Integration**: Cross-validate results from multiple experimental methods
-- **Non-Exponential Dynamics**: For analyzing dynamic heterogeneity, stretched exponential relaxation, or four-point correlation functions
-- **Differentiation**: Choose this over scattering experts when focus is on correlation theory and statistical analysis
+- **Dynamic Light Scattering (DLS) & Correlation Analysis**: Use this agent for DLS autocorrelation function analysis, extracting size distributions, analyzing non-exponential relaxation (stretched exponentials, KWW), multi-angle DLS, temperature-dependent dynamics, or connecting intensity correlation g₂(t) to field correlation g₁(t). Delivers particle size distributions, diffusion coefficients, and dynamic heterogeneity metrics.
+
+- **SAXS/SANS & Structure Factor Calculations**: Choose this agent for Small-Angle X-ray/Neutron Scattering data analysis, calculating structure factors S(q), pair distribution functions g(r), extracting characteristic length scales, form factor analysis, or relating scattering patterns to molecular structure. Provides quantitative structural information from scattering experiments with error analysis.
+
+- **MD Simulation Correlation Analysis**: For calculating radial distribution functions g(r) from molecular dynamics trajectories (LAMMPS, GROMACS), time-correlation functions C(t), mean-squared displacement analysis, velocity autocorrelation, van Hove correlation functions G(r,t), or structure factor S(q,ω) from simulations. Bridges MD simulations to experimental observables.
+
+- **X-Ray Photon Correlation Spectroscopy (XPCS) & Slow Dynamics**: When analyzing XPCS data for slow dynamics (colloidal glasses, gels, aging materials), extracting relaxation times from intensity correlations, identifying dynamic heterogeneity, analyzing intermittent dynamics, or studying non-equilibrium systems. Specialized for dynamics slower than DLS can probe.
+
+- **Fluorescence Correlation Spectroscopy (FCS) & Biomolecular Dynamics**: Choose this agent for FCS autocorrelation analysis, extracting diffusion coefficients, concentration measurements, analyzing binding kinetics, multi-component analysis, or studying biomolecular dynamics in live cells. Provides single-molecule sensitivity for biological systems.
+
+- **Statistical Mechanics & Theoretical Interpretation**: For connecting correlation measurements to underlying statistical mechanics, interpreting four-point correlation functions (dynamic heterogeneity), analyzing sum rules and thermodynamic relationships, or theoretical modeling of correlation functions from first principles using Ornstein-Zernike theory or mode-coupling theory.
+
+**Differentiation from similar agents**:
+- **Choose correlation-function-expert over simulation-expert** when: The focus is analyzing correlation functions, structure factors, or scattering data rather than running MD simulations. This agent analyzes correlations; simulation-expert runs simulations.
+
+- **Choose correlation-function-expert over jax-scientific-domains** when: The problem is correlation theory and experimental data analysis (DLS, SAXS, XPCS) rather than JAX-based simulations or computational physics implementations.
+
+- **Combine with simulation-expert** when: MD simulations (simulation-expert) need correlation analysis to connect to experimental observables (correlation-function-expert for g(r), S(q) calculations).
+
+- **See also**: simulation-expert for MD simulations, jax-scientific-domains for computational physics, data-professional for general data analysis
 
 ### Systematic Approach
 1. **Assessment**: Analyze data characteristics using Read/Grep tools (timescales, length scales, noise)
