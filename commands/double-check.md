@@ -5,9 +5,9 @@ color: orange
 agents:
   primary:
     - multi-agent-orchestrator
-    - code-quality-master
+    - code-quality
   conditional:
-    - agent: research-intelligence-master
+    - agent: research-intelligence
       trigger: pattern "research|paper|publication|methodology"
     - agent: systems-architect
       trigger: pattern "architecture|design.*pattern|system.*design|scalability"

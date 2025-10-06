@@ -5,13 +5,13 @@ argument-hint: <code-path-or-snippet>
 color: cyan
 agents:
   primary:
-    - research-intelligence-master
+    - research-intelligence
   conditional:
     - agent: systems-architect
       trigger: complexity > 10 OR pattern "architecture|design.*pattern|system.*design|scalability"
-    - agent: scientific-computing-master
+    - agent: hpc-numerical-coordinator
       trigger: pattern "numpy|scipy|pandas|matplotlib|scientific.*computing"
-    - agent: neural-networks-master
+    - agent: neural-architecture-engineer
       trigger: pattern "torch|pytorch|tensorflow|keras|neural.*network"
     - agent: jax-pro
       trigger: pattern "jax|flax|@jit|@vmap|@pmap|grad\\("

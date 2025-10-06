@@ -3,6 +3,16 @@ description: Coordinate multiple specialized agents for code optimization and re
 allowed-tools: Bash(find:*), Bash(grep:*), Bash(git:*), Bash(python:*), Bash(julia:*), Bash(npm:*), Bash(cargo:*)
 argument-hint: <target-path> [--agents=agent1,agent2] [--focus=performance,quality,research] [--parallel]
 color: magenta
+agents:
+  primary:
+    - systems-architect
+    - code-quality
+  conditional:
+    - agent: hpc-numerical-coordinator
+      trigger: pattern "performance|optimization|numerical" OR argument "--focus=performance"
+    - agent: research-intelligence
+      trigger: argument "--focus=research" OR pattern "research|analysis"
+  orchestrated: true
 ---
 
 # Multi-Agent Optimization Orchestration System
@@ -86,7 +96,7 @@ command-systems-engineer:
 
 #### Tier 2: Core Technical Agents (Domain-Triggered)
 ```yaml
-scientific-computing-master:
+hpc-numerical-coordinator:
   role: "Scientific Computing Optimization"
   capabilities:
     - Numerical algorithm optimization
@@ -112,7 +122,7 @@ jax-pro:
     - GPU computing patterns
   priority: high
 
-neural-networks-master:
+neural-architecture-engineer:
   role: "Deep Learning Optimization"
   capabilities:
     - Model architecture optimization
@@ -190,7 +200,7 @@ devops-security-engineer:
     - security concerns found
   priority: high
 
-code-quality-master:
+code-quality:
   role: "Quality Assurance"
   capabilities:
     - Code quality analysis
@@ -216,7 +226,7 @@ documentation-architect:
     - complex code undocumented
   priority: medium
 
-research-intelligence-master:
+research-intelligence:
   role: "Research Strategy"
   capabilities:
     - Research methodology
@@ -232,21 +242,21 @@ research-intelligence-master:
 
 #### Tier 3: Domain Specialists (Pattern-Triggered)
 ```yaml
-data-professional:
+data-engineering-coordinator:
   triggers:
     - pandas|dask|spark detected
     - data pipeline code
     - ETL workflows
   priority: medium
 
-ai-ml-specialist:
+ml-pipeline-coordinator:
   triggers:
     - sklearn|xgboost|lightgbm
     - ML algorithms present
     - model training code
   priority: medium
 
-visualization-interface-master:
+visualization-interface:
   triggers:
     - matplotlib|plotly|d3 detected
     - visualization code
@@ -1524,9 +1534,9 @@ Maintainability Index  | 62/100    | 85/100    | +37% ✅
 
 [Full reports from each agent available in separate files]
 
-- `reports/scientific-computing-master.md`
+- `reports/hpc-numerical-coordinator.md`
 - `reports/jax-pro.md`
-- `reports/code-quality-master.md`
+- `reports/code-quality.md`
 - `reports/systems-architect.md`
 - `reports/devops-security.md`
 
@@ -1619,7 +1629,7 @@ fi
 
 ### 2. Targeted Agents
 ```bash
-/multi-agent-optimize src/ --agents=jax-pro,scientific-computing-master
+/multi-agent-optimize src/ --agents=jax-pro,hpc-numerical-coordinator
 # Deploy only specific agents
 ```
 

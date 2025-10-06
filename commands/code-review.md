@@ -5,7 +5,7 @@ argument-hint: [PR-number|commit-range]
 color: yellow
 agents:
   primary:
-    - code-quality-master
+    - code-quality
   conditional:
     - agent: devops-security-engineer
       trigger: pattern "security|auth|crypto|secret"

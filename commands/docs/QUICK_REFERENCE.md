@@ -50,10 +50,11 @@
 | `/create-hook [type]` | Git hooks with validation |
 | `/command-creator` | Generate new slash commands |
 
-### 📝 Maintenance
+### 📝 Documentation & Maintenance
 | Command | Purpose |
 |---------|---------|
 | `/update-claudemd` | Auto-update CLAUDE.md from git |
+| `/update-docs [flags]` | Comprehensive Sphinx/README/API docs update with AST |
 
 ---
 
@@ -84,7 +85,7 @@ All commands feature **intelligent multi-agent integration**. Agents auto-activa
 ### 1. Scientific Code Quality
 ```bash
 /quality research/ --optimize
-# Auto-triggers: code-quality-master, scientific-computing-master, systems-architect
+# Auto-triggers: code-quality-master, hpc-numerical-coordinator, systems-architect
 
 /double-check "numerical accuracy preserved"
 /commit "feat: optimize numerical computations"
@@ -112,7 +113,7 @@ All commands feature **intelligent multi-agent integration**. Agents auto-activa
 ```bash
 /explain-code paper_implementation.py
 # Detects: NumPy, research patterns
-# Triggers: research-intelligence + scientific-computing
+# Triggers: research-intelligence + hpc-numerical-coordinator
 
 /ultra-think "Is the algorithm implementation correct?"
 ```
@@ -154,7 +155,7 @@ Use unified commands instead:
 ### 1. Let Agents Auto-Detect Context
 ```bash
 /quality research_code/
-# Auto-detects NumPy → scientific-computing-master
+# Auto-detects NumPy → hpc-numerical-coordinator
 # Auto-detects complexity → systems-architect
 ```
 
@@ -188,7 +189,8 @@ Use unified commands instead:
 - Validate work → `/double-check`
 - Setup CI/CD → `/ci-setup`
 - Create hooks → `/create-hook`
-- Update docs → `/update-claudemd`
+- Update project docs → `/update-claudemd`
+- Update Sphinx/README/API → `/update-docs`
 
 ---
 
@@ -200,8 +202,8 @@ Use unified commands instead:
 
 ---
 
-**Last Updated:** 2025-10-03
-**Version:** 4.0 (Consolidated)
+**Last Updated:** 2025-10-04
+**Version:** 4.1 (Documentation Enhanced)
 **Status:** ✅ Production Ready
 
 For technical documentation, agent specifications, trigger system details, and implementation guidance, see **`AGENT_SYSTEM.md`**.

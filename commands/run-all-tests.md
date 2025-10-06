@@ -3,6 +3,51 @@ description: Iteratively run all the tests in the codebase to fix the test failu
 allowed-tools: Bash(npm:*), Bash(yarn:*), Bash(pnpm:*), Bash(pytest:*), Bash(python:*), Bash(cargo:*), Bash(go:*), Bash(mvn:*), Bash(gradle:*), Bash(make:*), Bash(jest:*), Bash(vitest:*), Bash(grep:*), Bash(find:*)
 argument-hint: [test-path] [--fix] [--max-iterations=10] [--parallel] [--coverage]
 color: blue
+agents:
+  primary:
+    - code-quality
+  conditional:
+    - agent: devops-security-engineer
+      trigger: pattern "ci|github.*actions|docker" OR files ".github/|.gitlab-ci.yml"
+    - agent: hpc-numerical-coordinator
+      trigger: pattern "numpy|scipy|pytest.*numerical" OR files "*.ipynb"
+  orchestrated: false
+
+# MCP Integration (NEW)
+mcp-integration:
+  profile: testing
+
+  mcps:
+    - name: serena
+      priority: critical
+      preload: true
+      config:
+        find_tests: true
+        parse_test_output: true
+
+    - name: memory-bank
+      priority: high  # NEW - previously not integrated
+      operations: [read, write]
+      cache_patterns:
+        - "test_stability:{test_path}"
+        - "test_stability:{test_path}:history"
+        - "flaky_tests:list"
+        - "test_failure_patterns:{test_name}"
+      ttl:
+        test_stability: 5184000  # 60 days
+        flaky_tests: 5184000  # 60 days
+
+    - name: context7
+      priority: medium
+      lazy_load: true
+      trigger_condition: "testing_framework_docs_needed"
+
+  learning:
+    enabled: true
+    track_stability: true
+    flake_detection: true
+    failure_rate_threshold: 0.3  # Mark as flaky if >30% failure rate
+    history_window: 10  # Track last 10 runs
 ---
 
 # Iterative Test Execution & Auto-Fix System

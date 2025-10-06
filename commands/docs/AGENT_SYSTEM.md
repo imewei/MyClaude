@@ -1,6 +1,6 @@
 # Agent System - Complete Technical Reference
 
-**Version:** 4.0 | **Status:** ✅ Production Ready | **Updated:** 2025-10-03
+**Version:** 4.2 | **Status:** ✅ Production Ready | **Updated:** 2025-10-05
 
 > **Authoritative technical specification** for the intelligent multi-agent command system. Consolidates and supersedes previous documentation with complete coverage, fixed algorithms, and implementation guidance.
 
@@ -26,37 +26,56 @@
 
 | Command | Primary Agents | Conditional Agents | Orchestrated |
 |---------|---------------|-------------------|--------------|
-| **quality** | code-quality-master | devops-security (--audit/security), systems-architect (--optimize/complexity>10), scientific-computing (numpy/scipy) | ✅ Yes |
-| **fix** | code-quality-master | systems-architect (complexity>15), neural-networks (torch/tf), jax-pro (jax), devops-security (deploy/ci) | ❌ No |
-| **analyze-codebase** | systems-architect, code-quality-master | research-intelligence (*.tex/research/), scientific-computing (numpy/*.ipynb), fullstack (package.json), data-professional (spark/data/), devops-security (Dockerfile) | ✅ Yes |
-| **ultra-think** | orchestrator, research-intelligence | systems-architect (architecture), scientific-computing (algorithm), code-quality (quality) | ✅ Yes |
-| **explain-code** | research-intelligence | systems-architect (complexity>10), scientific-computing (numpy/scipy), neural-networks (torch/tf), jax-pro (jax/flax) | ❌ No |
-| **double-check** | orchestrator, code-quality | research-intelligence (research/paper), systems-architect (architecture/design) | ✅ Yes |
-| **commit** | code-quality-master | devops-security (ci/.github/Dockerfile) | ❌ No |
-| **code-review** | code-quality-master | devops-security (security/auth/crypto), systems-architect (>10 files/complexity>12) | ❌ No |
+| **quality** | code-quality | devops-security (--audit/security), systems-architect (--optimize/complexity>10), hpc-numerical-coordinator (numpy/scipy) | ✅ Yes |
+| **fix** | code-quality | systems-architect (complexity>15), neural-architecture-engineer (torch/tf), jax-pro (jax), devops-security (deploy/ci) | ❌ No |
+| **analyze-codebase** | systems-architect, code-quality | research-intelligence (*.tex/research/), hpc-numerical-coordinator (numpy/*.ipynb), fullstack (package.json), data-engineering-coordinator (spark/data/), devops-security (Dockerfile) | ✅ Yes |
+| **ultra-think** | multi-agent-orchestrator, research-intelligence | systems-architect (architecture), hpc-numerical-coordinator (algorithm), code-quality (quality) | ✅ Yes |
+| **explain-code** | research-intelligence | systems-architect (complexity>10), hpc-numerical-coordinator (numpy/scipy), neural-architecture-engineer (torch/tf), jax-pro (jax/flax) | ❌ No |
+| **double-check** | multi-agent-orchestrator, code-quality | research-intelligence (research/paper), systems-architect (architecture/design) | ✅ Yes |
+| **commit** | code-quality | devops-security (ci/.github/Dockerfile) | ❌ No |
+| **code-review** | code-quality | devops-security (security/auth/crypto), systems-architect (>10 files/complexity>12) | ❌ No |
 | **ci-setup** | devops-security | systems-architect (microservice/distributed), fullstack (package.json/frontend) | ❌ No |
 | **create-hook** | command-systems | devops-security (security/lint/test), code-quality (quality/format) | ❌ No |
 | **update-claudemd** | research-intelligence | systems-architect (architecture/>50 files) | ❌ No |
+| **update-docs** | documentation-architect | hpc-numerical-coordinator (sphinx/numpy/scipy/*.ipynb/docs/conf.py), fullstack (package.json/src/components/), systems-architect (complexity>50/architecture), code-quality (quality/testing/coverage), visualization-interface (diagram/flow-chart/docs/images/) | ✅ Yes |
+| **generate-tests** | hpc-numerical-coordinator | ml-pipeline-coordinator (sklearn/tf/torch/mlflow), jax-pro (jax/flax/optax), neural-architecture-engineer (neural/network/layer), code-quality (quality/test-strategy) | ❌ No |
+| **reflection** | research-intelligence | systems-architect (architecture/design/system), code-quality (quality/test/lint) | ✅ Yes |
+| **adopt-code** | hpc-numerical-coordinator | jax-pro (jax/flax), neural-architecture-engineer (neural/torch/tf/*.h5/*.pt), systems-architect (complexity>20/architecture) | ❌ No |
+| **clean-codebase** | code-quality | systems-architect (complexity>15/files>50), hpc-numerical-coordinator (numpy/scipy/*.ipynb) | ❌ No |
+| **fix-commit-errors** | devops-security | code-quality (test-fail/lint-error/quality), fullstack (npm/yarn/webpack/package.json), ai-systems-architect (model/inference/ml-pipeline/*.h5/*.pkl) | ❌ No |
+| **multi-agent-optimize** | systems-architect, code-quality | hpc-numerical-coordinator (performance/optimization/numerical/--focus=performance), research-intelligence (--focus=research/research/analysis) | ✅ Yes |
+| **run-all-tests** | code-quality | devops-security (ci/github-actions/docker/.github/.gitlab-ci.yml), hpc-numerical-coordinator (numpy/scipy/pytest-numerical/*.ipynb) | ❌ No |
 | **command-creator** | command-systems | code-quality (quality/test/lint), research-intelligence (analysis/research) | ❌ No |
 
 ## Agent Statistics
 
-### Usage by Command Count
-1. **code-quality-master** - 11 commands (73%)
-2. **systems-architect** - 7 commands (47%)
-3. **research-intelligence-master** - 5 commands (33%)
-4. **devops-security-engineer** - 5 commands (33%)
-5. **scientific-computing-master** - 4 commands (27%)
-6. **neural-networks-master** - 2 commands (13%)
-7. **jax-pro** - 2 commands (13%)
-8. **fullstack-developer** - 2 commands (13%)
-9. **command-systems-engineer** - 2 commands (13%)
-10. **data-professional** - 1 command (7%)
+### Usage by Command Count (20 Total Commands, 20 Total Agents)
+1. **code-quality** - 17 commands (85%) - 8 primary + 9 conditional
+2. **systems-architect** - 14 commands (70%) - 2 primary + 12 conditional
+3. **hpc-numerical-coordinator** - 11 commands (55%) - 2 primary + 9 conditional
+4. **research-intelligence** - 7 commands (35%) - 4 primary + 3 conditional
+5. **devops-security-engineer** - 6 commands (30%) - 2 primary + 4 conditional
+6. **fullstack-developer** - 4 commands (20%) - 0 primary + 4 conditional
+7. **neural-architecture-engineer** - 4 commands (20%) - 0 primary + 4 conditional
+8. **jax-pro** - 3 commands (15%) - 0 primary + 3 conditional
+9. **multi-agent-orchestrator** - 3 commands (15%) - 3 primary + 0 conditional
+10. **data-engineering-coordinator** - 2 commands (10%) - 0 primary + 2 conditional
+11. **command-systems-engineer** - 2 commands (10%) - 2 primary + 0 conditional
+12. **ml-pipeline-coordinator** - 2 commands (10%) - 0 primary + 2 conditional
+13. **ai-systems-architect** - 1 command (5%) - 0 primary + 1 conditional
+14. **correlation-function-expert** - 1 command (5%) - 0 primary + 1 conditional
+15. **database-workflow-engineer** - 1 command (5%) - 0 primary + 1 conditional
+16. **documentation-architect** - 1 command (5%) - 1 primary + 0 conditional
+17. **jax-scientific-domains** - 1 command (5%) - 0 primary + 1 conditional
+18. **scientific-code-adoptor** - 1 command (5%) - 0 primary + 1 conditional
+19. **simulation-expert** - 1 command (5%) - 0 primary + 1 conditional
+20. **visualization-interface** - 1 command (5%) - 0 primary + 1 conditional
 
 ### Orchestration Statistics
-- **Orchestrated Commands:** 4 (quality, analyze-codebase, double-check, ultra-think)
-- **Non-orchestrated Commands:** 11
-- **Orchestration Rate:** 27%
+- **Orchestrated Commands:** 7 (quality, analyze-codebase, double-check, ultra-think, update-docs, reflection, multi-agent-optimize)
+- **Non-orchestrated Commands:** 13
+- **Orchestration Rate:** 35%
+- **Total Commands:** 20
 
 ### Performance Metrics (Production)
 
@@ -114,11 +133,11 @@ capabilities:
 
 ## Tier 2: Core Technical Agents
 
-### code-quality-master
+### code-quality
 ```yaml
 role: Code quality, testing, and best practices
 tier: 2 (Core Technical)
-commands: quality, fix, code-review, double-check, commit (11 total)
+commands: quality, fix, code-review, double-check, commit, update-docs (conditional) (12 total)
 
 triggers:
   patterns:
@@ -143,7 +162,7 @@ capabilities:
 ```yaml
 role: Architecture, scalability, and system design
 tier: 2 (Core Technical)
-commands: analyze-codebase, quality (conditional), fix (conditional) (7 total)
+commands: analyze-codebase, quality (conditional), fix (conditional), update-docs (conditional) (8 total)
 
 triggers:
   patterns:
@@ -167,7 +186,7 @@ capabilities:
   - Database and caching design
 ```
 
-### research-intelligence-master
+### research-intelligence
 ```yaml
 role: Research methodology, documentation, and knowledge synthesis
 tier: 2 (Core Technical)
@@ -227,11 +246,11 @@ capabilities:
 
 ## Tier 3: Specialist Agents
 
-### scientific-computing-master
+### hpc-numerical-coordinator
 ```yaml
 role: Scientific computing, numerical algorithms, and research code
 tier: 3 (Specialist)
-commands: quality (conditional), analyze-codebase (conditional), explain-code (conditional), fix (conditional)
+commands: quality (conditional), analyze-codebase (conditional), explain-code (conditional), fix (conditional), update-docs (conditional)
 
 triggers:
   patterns:
@@ -255,7 +274,7 @@ capabilities:
   - Data analysis best practices
 ```
 
-### neural-networks-master
+### neural-architecture-engineer
 ```yaml
 role: Deep learning, neural network architectures, and training
 tier: 3 (Specialist)
@@ -310,7 +329,7 @@ capabilities:
 ```yaml
 role: Full-stack web development, frontend and backend
 tier: 3 (Specialist)
-commands: analyze-codebase (conditional), ci-setup (conditional)
+commands: analyze-codebase (conditional), ci-setup (conditional), update-docs (conditional)
 
 triggers:
   patterns:
@@ -335,7 +354,7 @@ capabilities:
   - Full-stack integration
 ```
 
-### data-professional
+### data-engineering-coordinator
 ```yaml
 role: Data engineering, ETL pipelines, and data warehousing
 tier: 3 (Specialist)
@@ -360,6 +379,35 @@ capabilities:
   - Data quality and validation
   - Warehouse architecture (star/snowflake schemas)
   - Stream processing patterns
+```
+
+### documentation-architect
+```yaml
+role: Documentation systems, technical writing, and knowledge management
+tier: 3 (Specialist)
+commands: update-docs
+
+triggers:
+  patterns:
+    - "documentation|docs|sphinx|mkdocs"
+    - "readme|api.*doc|tutorial"
+    - "technical.*writing|knowledge.*base"
+  files:
+    - "docs/"
+    - "*.rst"
+    - "*.md"
+    - "conf.py"
+    - "mkdocs.yml"
+  always_when: command == "update-docs"
+
+capabilities:
+  - Sphinx, MkDocs, Docusaurus documentation systems
+  - API documentation (OpenAPI/Swagger)
+  - Technical writing and tutorial development
+  - Documentation automation and AST-based extraction
+  - Multi-format documentation (Markdown, reStructuredText, AsciiDoc)
+  - Knowledge management and content strategy
+  - Documentation quality assurance and accessibility
 ```
 
 ### ai-systems-architect
@@ -399,11 +447,11 @@ trigger:
   type: pattern
   expression: "numpy|scipy|matplotlib"
   scope: content  # Where to search: content, files, arguments, all
-  agent: scientific-computing-master
+  agent: hpc-numerical-coordinator
 ```
 
 **Examples:**
-- `pattern "torch|tensorflow"` → neural-networks-master
+- `pattern "torch|tensorflow"` → neural-architecture-engineer
 - `pattern "jax|flax|@jit"` → jax-pro
 - `pattern "security|vulnerability"` → devops-security-engineer
 
@@ -417,11 +465,11 @@ trigger:
     - "*.ipynb"
     - "*.tex"
     - "package.json"
-  agent: scientific-computing-master (*.ipynb)
+  agent: hpc-numerical-coordinator (*.ipynb)
 ```
 
 **Examples:**
-- `files "*.ipynb"` → scientific-computing-master
+- `files "*.ipynb"` → hpc-numerical-coordinator
 - `files "Dockerfile"` → devops-security-engineer
 - `files "*.tex|*.bib"` → research-intelligence-master
 
@@ -440,7 +488,7 @@ trigger:
 
 **Examples:**
 - `dir "research/|papers/"` → research-intelligence-master
-- `dir "data/|pipelines/"` → data-professional
+- `dir "data/|pipelines/"` → data-engineering-coordinator
 - `dir "ci/|.github/"` → devops-security-engineer
 
 ### 4. Complexity-Based Triggers
@@ -660,7 +708,7 @@ else:
 
 | Context | Agent | Pattern | Files | Complexity | Command | **Score** | Action |
 |---------|-------|---------|-------|------------|---------|-----------|--------|
-| `/quality research/` with NumPy | scientific-computing | 0.4 | 0.3 | 0 | 0 | **0.7** | ✅ Auto |
+| `/quality research/` with NumPy | hpc-numerical-coordinator | 0.4 | 0.3 | 0 | 0 | **0.7** | ✅ Auto |
 | `/fix "JAX gradient NaN"` | jax-pro | 0.4 | 0.3 | 0 | 0.1 | **0.8** | ✅ Auto |
 | `/explain-code app.py` (simple) | systems-architect | 0 | 0 | 0 | 0 | **0.0** | ❌ Skip |
 | `/analyze-codebase` with Dockerfile | devops-security | 0 | 0.3 | 0 | 0.1 | **0.4** | 💡 Suggest |
@@ -706,7 +754,7 @@ User Request → [Agent 1] → Merge Results → Result
 ### Mode 3: Orchestrated (Complex Synthesis)
 **When:** Complex multi-agent coordination needed
 **Execution:** Orchestrator manages workflow
-**Commands:** quality, analyze-codebase, double-check, ultra-think (4 commands)
+**Commands:** quality, analyze-codebase, double-check, ultra-think, update-docs (5 commands)
 
 ```
 User Request → Orchestrator → [Agent 1] → Synthesis → Result
@@ -805,13 +853,13 @@ agent-name:
 **Location:** `~/.claude/agents/{agent-name}.py` or project-specific location
 
 ```python
-# Example: scientific-computing-master
+# Example: hpc-numerical-coordinator
 
-class ScientificComputingMaster:
+class HPCNumericalCoordinator:
     """Scientific computing optimization and analysis expert."""
 
     def __init__(self):
-        self.name = "scientific-computing-master"
+        self.name = "hpc-numerical-coordinator"
         self.tier = 3
 
     def analyze(self, context):
@@ -854,7 +902,7 @@ Add to `AGENT_REGISTRY` in system:
 ```python
 AGENT_REGISTRY = [
     # ... existing agents
-    ScientificComputingMaster(),
+    HPCNumericalCoordinator(),
 ]
 ```
 
@@ -866,7 +914,7 @@ agents:
   primary:
     - code-quality-master
   conditional:
-    - agent: scientific-computing-master  # Your new agent
+    - agent: hpc-numerical-coordinator  # Your new agent
       trigger: pattern "numpy|scipy"
   orchestrated: true
 ```
@@ -875,7 +923,7 @@ agents:
 
 ```bash
 # Test trigger matching
-/test-agent scientific-computing-master "context with numpy imports"
+/test-agent hpc-numerical-coordinator "context with numpy imports"
 
 # Test on real codebase
 /quality research_code/  # Should auto-trigger if numpy detected
@@ -902,7 +950,7 @@ context = Context(
 )
 
 # Test agent
-agent = get_agent("scientific-computing-master")
+agent = get_agent("hpc-numerical-coordinator")
 score = calculate_agent_relevance(agent, context)
 
 print(f"Agent: {agent.name}")
@@ -915,17 +963,17 @@ print(f"Action: {'AUTO' if score >= 0.7 else 'SUGGEST' if score >= 0.4 else 'SKI
 ```python
 # tests/test_agent_selection.py
 
-def test_scientific_computing_trigger():
-    """Test that numpy/scipy patterns trigger scientific-computing agent."""
+def test_hpc_numerical_trigger():
+    """Test that numpy/scipy patterns trigger hpc-numerical-coordinator agent."""
     context = create_context(content="import numpy as np")
     agents = select_agents(context, get_command("quality"))
 
     agent_names = [a['agent'].name for a in agents]
-    assert "scientific-computing-master" in agent_names
+    assert "hpc-numerical-coordinator" in agent_names
 
-    sci_agent = next(a for a in agents if a['agent'].name == "scientific-computing-master")
-    assert sci_agent['mode'] in ['auto', 'suggest']
-    assert sci_agent['score'] >= 0.4
+    hpc_agent = next(a for a in agents if a['agent'].name == "hpc-numerical-coordinator")
+    assert hpc_agent['mode'] in ['auto', 'suggest']
+    assert hpc_agent['score'] >= 0.4
 
 def test_jax_pro_high_score():
     """Test that JAX patterns give high score to jax-pro."""
@@ -964,7 +1012,7 @@ agents:
 # 1. code-quality-master (score: 1.0, mode: primary)
 #    Reason: Primary agent for /quality command
 #
-# 2. scientific-computing-master (score: 0.7, mode: auto)
+# 2. hpc-numerical-coordinator (score: 0.7, mode: auto)
 #    Reason: Pattern match (0.4) + File match (0.3)
 #    Patterns matched: numpy|scipy
 #    Files matched: *.ipynb
@@ -1014,7 +1062,7 @@ Complexity: Average cyclomatic 12
 **Agent Selection:**
 ```
 1. code-quality-master (1.0) - PRIMARY
-2. scientific-computing-master (0.7) - AUTO
+2. hpc-numerical-coordinator (0.7) - AUTO
    - Pattern: numpy|scipy (0.4)
    - Files: *.py in research/ (0.3)
 3. systems-architect (0.3) - SKIP
@@ -1025,7 +1073,7 @@ Complexity: Average cyclomatic 12
 ```
 Orchestrator coordinates:
 ├─ code-quality-master: Style, testing, patterns
-├─ scientific-computing-master: Numerical stability, vectorization
+├─ hpc-numerical-coordinator: Numerical stability, vectorization
 └─ Meta-synthesis: Unified recommendations
 
 Result: "Found 3 code quality issues, 2 vectorization opportunities,
@@ -1138,7 +1186,7 @@ agents:
 agents:
   # Favorite agents (boost score by 0.1)
   favorites:
-    - scientific-computing-master
+    - hpc-numerical-coordinator
     - jax-pro
 
   # Disabled agents (never trigger)
@@ -1151,7 +1199,7 @@ agents:
 
   # Custom thresholds per agent
   thresholds:
-    neural-networks-master:
+    neural-architecture-engineer:
       auto: 0.6  # Lower threshold, trigger more often
 ```
 
@@ -1388,15 +1436,16 @@ print(f"Trigger matched: {result}")  # True
 
 ## Related Documentation
 
-- **`QUICK_REFERENCE.md`** - User-facing quick command guide
-- **`CHANGELOG.md`** - Historical optimization and integration record
+- **`AGENT_SELECTION_GUIDE.md`** - User-facing guide for manually selecting the right agent for any task
 - **Command files** - Individual command specifications with agent frontmatter
+
+**Note:** This document (AGENT_SYSTEM.md) focuses on **automatic command-based agent triggering**, while AGENT_SELECTION_GUIDE.md helps users **manually select agents** for tasks outside the command system. The two documents serve complementary purposes.
 
 ---
 
 **System Status:** ✅ Production Ready
 **Completeness:** 100% (all issues from audit resolved)
 **Performance:** All targets met
-**Integration:** 15/15 commands (100%)
+**Integration:** 20/20 commands (100%)
 
 This is the single authoritative technical reference for the agent trigger system. All agent specifications, trigger logic, and implementation guidance are maintained in this document.

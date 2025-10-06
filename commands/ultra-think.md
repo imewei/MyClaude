@@ -5,13 +5,13 @@ color: purple
 agents:
   primary:
     - multi-agent-orchestrator
-    - research-intelligence-master
+    - research-intelligence
   conditional:
     - agent: systems-architect
       trigger: pattern "architecture|design.*pattern|system.*design|scalability"
-    - agent: scientific-computing-master
+    - agent: hpc-numerical-coordinator
       trigger: pattern "numpy|scipy|pandas|matplotlib|scientific.*computing"
-    - agent: code-quality-master
+    - agent: code-quality
       trigger: pattern "quality|testing|refactor"
   orchestrated: true
 ---

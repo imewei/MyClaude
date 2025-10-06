@@ -1,0 +1,389 @@
+# Library Cache Configuration
+# Pre-populated library IDs to avoid resolve-library-id API calls
+
+version: "1.0"
+updated: "2025-10-04"
+
+# Common Libraries - Pre-cached IDs
+# Eliminates the need for context7.resolve_library_id() call
+
+common_libraries:
+  # Python - Scientific Computing
+  numpy:
+    id: "/numpy/numpy"
+    aliases: ["np"]
+    category: "scientific"
+    description: "Numerical computing library"
+
+  scipy:
+    id: "/scipy/scipy"
+    aliases: []
+    category: "scientific"
+    description: "Scientific computing library"
+
+  pandas:
+    id: "/pandas-dev/pandas"
+    aliases: ["pd"]
+    category: "data"
+    description: "Data analysis library"
+
+  matplotlib:
+    id: "/matplotlib/matplotlib"
+    aliases: ["plt", "mpl"]
+    category: "visualization"
+    description: "Plotting library"
+
+  seaborn:
+    id: "/mwaskom/seaborn"
+    aliases: ["sns"]
+    category: "visualization"
+    description: "Statistical visualization"
+
+  plotly:
+    id: "/plotly/plotly.py"
+    aliases: []
+    category: "visualization"
+    description: "Interactive visualizations"
+
+  # Python - Machine Learning / Deep Learning
+  pytorch:
+    id: "/pytorch/pytorch"
+    aliases: ["torch"]
+    category: "ml"
+    description: "Deep learning framework"
+
+  tensorflow:
+    id: "/tensorflow/tensorflow"
+    aliases: ["tf"]
+    category: "ml"
+    description: "Machine learning platform"
+
+  keras:
+    id: "/keras-team/keras"
+    aliases: []
+    category: "ml"
+    description: "High-level neural networks API"
+
+  scikit-learn:
+    id: "/scikit-learn/scikit-learn"
+    aliases: ["sklearn"]
+    category: "ml"
+    description: "Machine learning library"
+
+  jax:
+    id: "/google/jax"
+    aliases: []
+    category: "ml"
+    description: "Autograd and XLA compilation"
+
+  flax:
+    id: "/google/flax"
+    aliases: []
+    category: "ml"
+    description: "Neural network library for JAX"
+
+  optax:
+    id: "/deepmind/optax"
+    aliases: []
+    category: "ml"
+    description: "Gradient processing and optimization for JAX"
+
+  transformers:
+    id: "/huggingface/transformers"
+    aliases: []
+    category: "ml"
+    description: "State-of-the-art NLP models"
+
+  # Python - Testing
+  pytest:
+    id: "/pytest-dev/pytest"
+    aliases: []
+    category: "testing"
+    description: "Testing framework"
+
+  unittest:
+    id: "/python/cpython"
+    aliases: []
+    category: "testing"
+    description: "Built-in testing framework"
+
+  # Python - Web Frameworks
+  django:
+    id: "/django/django"
+    aliases: []
+    category: "web"
+    description: "Web framework"
+
+  flask:
+    id: "/pallets/flask"
+    aliases: []
+    category: "web"
+    description: "Micro web framework"
+
+  fastapi:
+    id: "/tiangolo/fastapi"
+    aliases: []
+    category: "web"
+    description: "Modern web framework"
+
+  # JavaScript/TypeScript - Frontend
+  react:
+    id: "/facebook/react"
+    aliases: []
+    category: "frontend"
+    description: "UI library"
+
+  vue:
+    id: "/vuejs/core"
+    aliases: []
+    category: "frontend"
+    description: "Progressive framework"
+
+  angular:
+    id: "/angular/angular"
+    aliases: []
+    category: "frontend"
+    description: "Platform for building mobile and desktop apps"
+
+  svelte:
+    id: "/sveltejs/svelte"
+    aliases: []
+    category: "frontend"
+    description: "Cybernetically enhanced web apps"
+
+  next:
+    id: "/vercel/next.js"
+    aliases: ["nextjs"]
+    category: "frontend"
+    description: "React framework"
+
+  # JavaScript/TypeScript - Testing
+  jest:
+    id: "/jestjs/jest"
+    aliases: []
+    category: "testing"
+    description: "JavaScript testing framework"
+
+  vitest:
+    id: "/vitest-dev/vitest"
+    aliases: []
+    category: "testing"
+    description: "Vite-native testing framework"
+
+  cypress:
+    id: "/cypress-io/cypress"
+    aliases: []
+    category: "testing"
+    description: "End-to-end testing"
+
+  playwright:
+    id: "/microsoft/playwright"
+    aliases: []
+    category: "testing"
+    description: "Browser automation"
+
+  # JavaScript/TypeScript - Backend
+  express:
+    id: "/expressjs/express"
+    aliases: []
+    category: "backend"
+    description: "Web framework for Node.js"
+
+  nestjs:
+    id: "/nestjs/nest"
+    aliases: []
+    category: "backend"
+    description: "Progressive Node.js framework"
+
+  # Data Engineering
+  spark:
+    id: "/apache/spark"
+    aliases: ["pyspark"]
+    category: "data"
+    description: "Unified analytics engine"
+
+  airflow:
+    id: "/apache/airflow"
+    aliases: []
+    category: "data"
+    description: "Workflow orchestration"
+
+  dask:
+    id: "/dask/dask"
+    aliases: []
+    category: "data"
+    description: "Parallel computing library"
+
+  # DevOps / Infrastructure
+  docker:
+    id: "/docker/docs"
+    aliases: []
+    category: "devops"
+    description: "Containerization platform"
+
+  kubernetes:
+    id: "/kubernetes/kubernetes"
+    aliases: ["k8s"]
+    category: "devops"
+    description: "Container orchestration"
+
+  terraform:
+    id: "/hashicorp/terraform"
+    aliases: []
+    category: "devops"
+    description: "Infrastructure as code"
+
+# Cache Strategy
+cache_strategy:
+  # Bootstrap cache on startup
+  bootstrap:
+    enabled: true
+    preload_common: true  # Load all common libraries at startup
+    preload_categories: ["scientific", "ml", "testing", "frontend"]
+
+  # Update strategy
+  update:
+    auto_update: true
+    update_interval_days: 7
+    check_version_changes: true
+
+  # Fallback
+  fallback:
+    use_resolve_api: true  # If not in cache, call resolve-library-id
+    cache_resolved: true  # Cache newly resolved IDs
+
+# Library Detection Patterns
+# Used to automatically detect which library docs are needed
+
+detection_patterns:
+  # Python imports
+  python:
+    - pattern: "import numpy|from numpy|import np"
+      library: "numpy"
+
+    - pattern: "import torch|from torch"
+      library: "pytorch"
+
+    - pattern: "import jax|from jax"
+      library: "jax"
+
+    - pattern: "import pandas|from pandas|import pd"
+      library: "pandas"
+
+    - pattern: "import tensorflow|from tensorflow|import tf"
+      library: "tensorflow"
+
+    - pattern: "import sklearn|from sklearn"
+      library: "scikit-learn"
+
+    - pattern: "import pytest"
+      library: "pytest"
+
+    - pattern: "import django|from django"
+      library: "django"
+
+    - pattern: "import flask|from flask"
+      library: "flask"
+
+    - pattern: "import fastapi|from fastapi"
+      library: "fastapi"
+
+  # JavaScript/TypeScript imports
+  javascript:
+    - pattern: "from ['\"]react['\"]|require\\(['\"]react['\"]\\)"
+      library: "react"
+
+    - pattern: "from ['\"]vue['\"]|require\\(['\"]vue['\"]\\)"
+      library: "vue"
+
+    - pattern: "from ['\"]@angular|require\\(['\"]@angular"
+      library: "angular"
+
+    - pattern: "from ['\"]next|require\\(['\"]next"
+      library: "next"
+
+    - pattern: "from ['\"]express['\"]|require\\(['\"]express['\"]\\)"
+      library: "express"
+
+    - pattern: "from ['\"]jest['\"]|require\\(['\"]jest['\"]\\)"
+      library: "jest"
+
+  # Decorators and special syntax
+  decorators:
+    - pattern: "@jax\\.(jit|vmap|pmap|grad)"
+      library: "jax"
+
+    - pattern: "@torch\\.jit"
+      library: "pytorch"
+
+    - pattern: "@pytest\\.(fixture|mark)"
+      library: "pytest"
+
+  # Function calls
+  functions:
+    - pattern: "\\bnp\\.(array|zeros|ones|dot|matmul)\\("
+      library: "numpy"
+
+    - pattern: "\\btf\\.(keras|function|GradientTape)\\("
+      library: "tensorflow"
+
+    - pattern: "\\buseState|useEffect|useMemo|useCallback\\("
+      library: "react"
+
+# Category-Based Grouping
+categories:
+  scientific:
+    libraries: [numpy, scipy, pandas, matplotlib, seaborn]
+    priority: high
+    common_usage: true
+
+  ml:
+    libraries: [pytorch, tensorflow, keras, scikit-learn, jax, flax, optax, transformers]
+    priority: high
+    common_usage: true
+
+  testing:
+    libraries: [pytest, jest, vitest, cypress, playwright, unittest]
+    priority: medium
+    common_usage: true
+
+  frontend:
+    libraries: [react, vue, angular, svelte, next]
+    priority: medium
+    common_usage: true
+
+  backend:
+    libraries: [django, flask, fastapi, express, nestjs]
+    priority: medium
+    common_usage: true
+
+  data:
+    libraries: [pandas, spark, airflow, dask]
+    priority: medium
+    common_usage: true
+
+  devops:
+    libraries: [docker, kubernetes, terraform]
+    priority: low
+    common_usage: false
+
+  visualization:
+    libraries: [matplotlib, seaborn, plotly]
+    priority: low
+    common_usage: true
+
+# Statistics & Monitoring
+monitoring:
+  track_usage: true
+  track_cache_hits: true
+
+  metrics:
+    - name: cache_hit_rate
+      target: 0.8  # 80% hit rate
+
+    - name: resolve_api_calls
+      target_reduction: 0.7  # 70% reduction in API calls
+
+  reporting:
+    log_cache_misses: true
+    suggest_new_libraries: true  # Suggest adding frequently resolved libraries

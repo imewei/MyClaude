@@ -7,9 +7,9 @@ agents:
   primary:
     - command-systems-engineer
   conditional:
-    - agent: code-quality-master
+    - agent: code-quality
       trigger: pattern "quality|test|lint"
-    - agent: research-intelligence-master
+    - agent: research-intelligence
       trigger: pattern "analysis|research|documentation"
   orchestrated: false
 ---

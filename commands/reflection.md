@@ -3,6 +3,15 @@ description: Advanced reflection engine for AI reasoning, session analysis, and 
 allowed-tools: Bash(find:*), Bash(grep:*), Bash(git:*)
 argument-hint: [session|code|research|workflow] [--depth=shallow|deep|ultradeep] [--agents=all|specific]
 color: purple
+agents:
+  primary:
+    - research-intelligence
+  conditional:
+    - agent: systems-architect
+      trigger: pattern "architecture|design|system" OR argument "code"
+    - agent: code-quality
+      trigger: pattern "quality|test|lint" OR argument "workflow"
+  orchestrated: true
 ---
 
 # Advanced Reflection & Meta-Analysis Engine

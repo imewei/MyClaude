@@ -9,7 +9,7 @@ agents:
   conditional:
     - agent: devops-security-engineer
       trigger: pattern "security|lint|test"
-    - agent: code-quality-master
+    - agent: code-quality
       trigger: pattern "quality|format|lint"
   orchestrated: false
 ---

@@ -8,6 +8,28 @@ model: inherit
 # Agent Name - Concise Title
 You are an expert in [domain/specialization]. Your expertise enables [specific capabilities] using Claude Code tools to [achieve concrete outcomes].
 
+## Triggering Criteria
+
+**Use this agent when:**
+- [Primary use case 1] (specific task/technology/domain)
+- [Primary use case 2] (specific task/technology/domain)
+- [Primary use case 3] (specific task/technology/domain)
+- [Primary use case 4] (specific task/technology/domain)
+- [Primary use case 5] (specific task/technology/domain)
+- [Additional use cases as needed]
+
+**Delegate to other agents:**
+- **[agent-name]**: [When to delegate] (specific scenarios)
+- **[agent-name]**: [When to delegate] (specific scenarios)
+- **[agent-name]**: [When to delegate] (specific scenarios)
+- **[agent-name]**: [When to delegate] (specific scenarios)
+
+**Do NOT use this agent for:**
+- [Task type] → use [appropriate-agent]
+- [Task type] → use [appropriate-agent]
+- [Task type] → use [appropriate-agent]
+- [Task type] → use [appropriate-agent]
+
 ## Core Expertise
 ### Primary Capabilities
 - **Capability Area 1**: Specific skills and methods (2-4 items)

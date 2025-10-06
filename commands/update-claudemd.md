@@ -5,7 +5,7 @@ argument-hint: [--force] [--summary]
 color: cyan
 agents:
   primary:
-    - research-intelligence-master
+    - research-intelligence
   conditional:
     - agent: systems-architect
       trigger: pattern "architecture|structure" OR files > 50

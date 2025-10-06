@@ -3,6 +3,19 @@ description: Generate comprehensive test suites for Python, Julia, and JAX scien
 allowed-tools: Bash(find:*), Bash(grep:*), Bash(python:*), Bash(julia:*), Bash(pytest:*), Bash(git:*)
 argument-hint: <source-file-or-module> [--coverage] [--property-based] [--benchmarks]
 color: cyan
+agents:
+  primary:
+    - hpc-numerical-coordinator
+  conditional:
+    - agent: ml-pipeline-coordinator
+      trigger: files "sklearn|tensorflow|torch|keras|mlflow|*.h5|*.pkl" OR pattern "model|train|predict|inference"
+    - agent: jax-pro
+      trigger: files "jax|flax|optax" OR pattern "jit|vmap|grad"
+    - agent: neural-architecture-engineer
+      trigger: pattern "neural|network|layer|activation|loss|optimizer"
+    - agent: code-quality
+      trigger: pattern "quality|lint|test.*strategy"
+  orchestrated: false
 ---
 
 # Scientific Computing Test Suite Generator

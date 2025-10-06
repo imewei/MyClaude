@@ -6,18 +6,30 @@ color: cyan
 agents:
   primary:
     - systems-architect
-    - code-quality-master
+    - code-quality
   conditional:
-    - agent: research-intelligence-master
+    - agent: research-intelligence
       trigger: files "*.tex|*.bib|*.md" OR dir "research/|papers/"
-    - agent: scientific-computing-master
+    - agent: hpc-numerical-coordinator
       trigger: pattern "numpy|scipy|pandas|matplotlib|scientific.*computing" OR files "*.ipynb"
+    - agent: jax-scientific-domains
+      trigger: pattern "jax_md|jax_cfd|cirq|pennylane|qiskit" OR files "*quantum*|*cfd*|*molecular*"
+    - agent: simulation-expert
+      trigger: pattern "lammps|gromacs|namd|md.*simulation" OR files "*simulation*|*.lmp|*.gro"
+    - agent: correlation-function-expert
+      trigger: pattern "correlation|scattering|saxs|sans|structure.*factor" OR files "*correlation*|*scattering*"
+    - agent: visualization-interface
+      trigger: pattern "plotly|d3|matplotlib|dashboard|viz" OR files "*viz*|*dashboard*|*plot*" OR dir "visualization/|dashboards/"
     - agent: fullstack-developer
       trigger: files "package.json|src/components/"
-    - agent: data-professional
+    - agent: data-engineering-coordinator
       trigger: pattern "spark|dask|ray|airflow|prefect|data.*pipeline" OR dir "data/|pipelines/"
     - agent: devops-security-engineer
       trigger: files "Dockerfile|.gitlab-ci.yml|.github/workflows/"
+    - agent: ml-pipeline-coordinator
+      trigger: pattern "sklearn|tensorflow|torch|mlflow|wandb" OR files "*.h5|*.pkl|models/"
+    - agent: database-workflow-engineer
+      trigger: pattern "airflow|prefect|dagster|postgresql|mysql" OR files "*.sql|dags/|workflows/"
   orchestrated: true
 ---
 

@@ -3,6 +3,17 @@ description: Analyze, integrate, and optimize scientific computing codebases for
 allowed-tools: Bash(find:*), Bash(ls:*), Bash(grep:*), Bash(wc:*), Bash(du:*), Bash(head:*), Bash(tail:*), Bash(file:*)
 argument-hint: <path-to-code> [target-framework]
 color: purple
+agents:
+  primary:
+    - hpc-numerical-coordinator
+  conditional:
+    - agent: jax-pro
+      trigger: pattern "jax|flax" OR argument "jax"
+    - agent: neural-architecture-engineer
+      trigger: pattern "neural|torch|tensorflow" OR files "*.h5|*.pt"
+    - agent: systems-architect
+      trigger: complexity > 20 OR pattern "architecture"
+  orchestrated: false
 ---
 
 # Scientific Code Adoption & Modernization

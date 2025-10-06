@@ -5,7 +5,7 @@ argument-hint: [commit-message] [--no-verify]
 color: green
 agents:
   primary:
-    - code-quality-master
+    - code-quality
   conditional:
     - agent: devops-security-engineer
       trigger: files "ci/|.github/|Dockerfile"

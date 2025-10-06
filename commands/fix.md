@@ -5,17 +5,54 @@ argument-hint: <error-or-issue> [--trace] [--test]
 color: red
 agents:
   primary:
-    - code-quality-master
+    - code-quality
   conditional:
     - agent: systems-architect
       trigger: complexity > 15 OR pattern "architecture|design.*pattern|system.*design|scalability"
-    - agent: neural-networks-master
+    - agent: neural-architecture-engineer
       trigger: pattern "torch|pytorch|tensorflow|keras|neural.*network"
     - agent: jax-pro
       trigger: pattern "jax|flax|@jit|@vmap|@pmap|grad\\("
     - agent: devops-security-engineer
       trigger: pattern "security|vulnerability|ci/cd|deploy.*|docker|kubernetes|container"
   orchestrated: false
+
+# MCP Integration (NEW)
+mcp-integration:
+  profile: code-analysis
+
+  mcps:
+    - name: serena
+      priority: critical
+      preload: true
+
+    - name: memory-bank
+      priority: high  # UPGRADED from low/medium to high
+      operations: [read, write]
+      cache_patterns:
+        - "error:{error_hash}"
+        - "error:{error_hash}:solution"
+        - "error_pattern:{pattern}"
+        - "fix_history:{file}:{error_type}"
+      ttl:
+        error_solutions: 7776000  # 90 days
+        error_patterns: 15552000  # 180 days
+
+    - name: context7
+      priority: medium
+      lazy_load: true
+      trigger_condition: "library_error_detected"
+
+    - name: sequential-thinking
+      priority: low
+      lazy_load: true
+      trigger_condition: "complexity > 15"
+
+  learning:
+    enabled: true
+    track_solutions: true
+    pattern_matching: true
+    confidence_scoring: true
 ---
 
 # Error Resolution System

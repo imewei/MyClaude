@@ -5,15 +5,49 @@ argument-hint: <target-path> [--audit] [--optimize] [--refactor]
 color: green
 agents:
   primary:
-    - code-quality-master
+    - code-quality
   conditional:
     - agent: devops-security-engineer
       trigger: flag "--audit" OR pattern "security|vulnerability"
     - agent: systems-architect
       trigger: flag "--optimize" OR complexity > 10
-    - agent: scientific-computing-master
+    - agent: hpc-numerical-coordinator
       trigger: pattern "numpy|scipy|pandas|matplotlib|scientific.*computing"
   orchestrated: true
+
+# MCP Integration (ENHANCED)
+mcp-integration:
+  profile: code-analysis
+
+  mcps:
+    - name: serena
+      priority: critical
+      preload: true
+      config:
+        parallel_queries: true
+        cache_symbols: true
+
+    - name: memory-bank
+      priority: medium-high  # UPGRADED from low (2/5) to medium-high (4/5)
+      operations: [read, write]
+      cache_patterns:
+        - "quality_baseline:{project}"
+        - "quality_baseline:{project}:metrics"
+        - "code_smells:{file_type}"
+        - "code_smells:{project}:{pattern}"
+        - "refactor_history:{file}:{pattern}"
+        - "quality_trends:{project}:history"
+      ttl:
+        quality_baseline: 7776000  # 90 days
+        code_smells: 15552000  # 180 days
+        trends: 2592000  # 30 days
+
+  learning:
+    enabled: true
+    track_baseline: true
+    track_improvements: true
+    detect_patterns: true
+    baseline_update_strategy: "on_improvement"  # Update only when quality improves
 ---
 
 # Code Quality Suite

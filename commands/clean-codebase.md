@@ -3,6 +3,15 @@ description: Advanced codebase cleanup with AST-based unused import removal, dea
 allowed-tools: Bash(find:*), Bash(grep:*), Bash(wc:*), Bash(ls:*), Bash(du:*), Bash(git:*), Bash(head:*), Bash(tail:*)
 argument-hint: [path] [--auto-fix] [--aggressive]
 color: green
+agents:
+  primary:
+    - code-quality
+  conditional:
+    - agent: systems-architect
+      trigger: complexity > 15 OR files ">50"
+    - agent: hpc-numerical-coordinator
+      trigger: pattern "numpy|scipy|scientific" OR files "*.ipynb"
+  orchestrated: false
 ---
 
 # Advanced Codebase Cleanup & Dead Code Elimination
