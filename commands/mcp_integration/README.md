@@ -16,7 +16,7 @@ A comprehensive system for optimizing MCP (Model Context Protocol) server usage 
 ### Installation
 
 ```bash
-# The package is located at: /Users/b80985/.claude/commands/mcp_integration/
+# The package is located at: /home/wei/.claude/commands/mcp_integration/
 # Import in your Claude Code runtime or slash commands
 ```
 

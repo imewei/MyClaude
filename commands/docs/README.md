@@ -61,15 +61,15 @@ Central documentation hub for the Claude Code slash commands system.
 ## 🔗 Related Documentation
 
 ### Code & Examples
-- **Main command directory:** `/Users/b80985/.claude/commands/`
-- **MCP integration package:** `/Users/b80985/.claude/commands/mcp_integration/`
-- **MCP integration examples:** `/Users/b80985/.claude/commands/mcp_integration/examples/`
-- **MCP tests:** `/Users/b80985/.claude/commands/mcp_integration/tests/`
+- **Main command directory:** `/home/wei/.claude/commands/`
+- **MCP integration package:** `/home/wei/.claude/commands/mcp_integration/`
+- **MCP integration examples:** `/home/wei/.claude/commands/mcp_integration/examples/`
+- **MCP tests:** `/home/wei/.claude/commands/mcp_integration/tests/`
 
 ### Configuration Files
-- **MCP config:** `/Users/b80985/.claude/commands/mcp-config.yaml`
-- **MCP profiles:** `/Users/b80985/.claude/commands/mcp-profiles.yaml`
-- **Library cache:** `/Users/b80985/.claude/commands/library-cache.yaml`
+- **MCP config:** `/home/wei/.claude/commands/mcp-config.yaml`
+- **MCP profiles:** `/home/wei/.claude/commands/mcp-profiles.yaml`
+- **Library cache:** `/home/wei/.claude/commands/library-cache.yaml`
 
 ### External Resources
 - **MCP deployment guide:** See [MCP_INTEGRATION.md](MCP_INTEGRATION.md) Section 6
