@@ -58,7 +58,7 @@ pip install prometheus-client  # Metrics export
 
 The MCP integration package is located at:
 ```
-/Users/b80985/.claude/commands/mcp_integration/
+/home/wei/.claude/commands/mcp_integration/
 ```
 
 For deployment:
@@ -66,10 +66,10 @@ For deployment:
 ```bash
 # Option A: Direct import (development)
 # Add to PYTHONPATH or sys.path.insert()
-export PYTHONPATH=/Users/b80985/.claude/commands:$PYTHONPATH
+export PYTHONPATH=/home/wei/.claude/commands:$PYTHONPATH
 
 # Option B: Install as package (production)
-cd /Users/b80985/.claude/commands
+cd /home/wei/.claude/commands
 pip install -e mcp_integration/
 
 # Option C: Copy to Claude Code runtime
@@ -580,10 +580,10 @@ for alert in alerts:
 **Solution:**
 ```bash
 # Add to PYTHONPATH
-export PYTHONPATH=/Users/b80985/.claude/commands:$PYTHONPATH
+export PYTHONPATH=/home/wei/.claude/commands:$PYTHONPATH
 
 # Or install package
-pip install -e /Users/b80985/.claude/commands/mcp_integration/
+pip install -e /home/wei/.claude/commands/mcp_integration/
 ```
 
 #### 2. Configuration Not Found

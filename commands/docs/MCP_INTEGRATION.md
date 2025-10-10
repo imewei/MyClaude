@@ -66,7 +66,7 @@
 
 ```python
 import sys
-sys.path.insert(0, '/Users/b80985/.claude/commands')
+sys.path.insert(0, '/home/wei/.claude/commands')
 from mcp_shared_runtime import get_mcp_runtime
 
 async def your_command(mcp_servers):
@@ -92,16 +92,16 @@ async def your_command(mcp_servers):
 
 **Verify Setup:**
 ```bash
-cd /Users/b80985/.claude/commands
+cd /home/wei/.claude/commands
 python3 -c "from mcp_shared_runtime import get_mcp_runtime; print('✓ Setup OK')"
 ```
 
 **If import fails, set PYTHONPATH:**
 ```bash
-export PYTHONPATH="/Users/b80985/.claude/commands:$PYTHONPATH"
+export PYTHONPATH="/home/wei/.claude/commands:$PYTHONPATH"
 
 # Make it persistent
-echo 'export PYTHONPATH="/Users/b80985/.claude/commands:$PYTHONPATH"' >> ~/.zshrc
+echo 'export PYTHONPATH="/home/wei/.claude/commands:$PYTHONPATH"' >> ~/.zshrc
 source ~/.zshrc
 ```
 
@@ -741,10 +741,10 @@ return traditional_logic()
 **Solution:**
 ```bash
 # Check PYTHONPATH
-echo $PYTHONPATH  # Should include /Users/b80985/.claude/commands
+echo $PYTHONPATH  # Should include /home/wei/.claude/commands
 
 # Add if missing
-export PYTHONPATH="/Users/b80985/.claude/commands:$PYTHONPATH"
+export PYTHONPATH="/home/wei/.claude/commands:$PYTHONPATH"
 
 # Verify
 python3 -c "from mcp_shared_runtime import get_mcp_runtime; print('OK')"

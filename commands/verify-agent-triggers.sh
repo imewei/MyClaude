@@ -1,11 +1,11 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # Agent Triggering Criteria Verification Script
 # This script verifies that all agents have proper triggering criteria sections
 
 set -e
 
-AGENTS_DIR="/Users/b80985/.claude/agents"
+AGENTS_DIR="$HOME/.claude/agents"
 TOTAL_AGENTS=0
 COMPLETE_AGENTS=0
 MISSING_AGENTS=0

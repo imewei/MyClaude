@@ -3,17 +3,17 @@
   1. Setup (One-Time)
 
   # Add to your shell profile (~/.bashrc, ~/.zshrc, etc.)
-  echo 'export PYTHONPATH=/Users/b80985/.claude/commands:$PYTHONPATH' >> ~/.zshrc
+  echo 'export PYTHONPATH=/home/wei/.claude/commands:$PYTHONPATH' >> ~/.zshrc
 
   # Or set it temporarily for current session
-  export PYTHONPATH=/Users/b80985/.claude/commands:$PYTHONPATH
+  export PYTHONPATH=/home/wei/.claude/commands:$PYTHONPATH
 
   # Verify it's set
   echo $PYTHONPATH
-  # Should output: /Users/b80985/.claude/commands:...
+  # Should output: /home/wei/.claude/commands:...
 
   What this does:
-  - ✅ Tells Python to look in /Users/b80985/.claude/commands for modules
+  - ✅ Tells Python to look in /home/wei/.claude/commands for modules
   - ✅ No installation, no copying files
   - ✅ Works in any Python environment (system, venv, doesn't matter)
   - ✅ Changes to code are immediately available (like editable install)
@@ -25,7 +25,7 @@
   from mcp_integration.learning_system import LearningSystem
 
   # Python will find the module at:
-  # /Users/b80985/.claude/commands/mcp_integration/
+  # /home/wei/.claude/commands/mcp_integration/
 
   3. How the MCP Integration System Starts
 
@@ -39,7 +39,7 @@
   from pathlib import Path
 
   # Ensure PYTHONPATH is set (redundant if you set it in shell, but safe)
-  sys.path.insert(0, '/Users/b80985/.claude/commands')
+  sys.path.insert(0, '/home/wei/.claude/commands')
 
   from mcp_integration import (
       KnowledgeHierarchy,
@@ -111,7 +111,7 @@
 
   Create a shared runtime that initializes once on first use:
 
-  # Create: /Users/b80985/.claude/commands/mcp_shared_runtime.py
+  # Create: /home/wei/.claude/commands/mcp_shared_runtime.py
 
   """
   Shared MCP runtime for Option A deployment.
@@ -335,17 +335,17 @@
   4. Complete Option A Setup Flow
 
   # Step 1: Set PYTHONPATH (one-time, add to ~/.zshrc)
-  export PYTHONPATH=/Users/b80985/.claude/commands:$PYTHONPATH
+  export PYTHONPATH=/home/wei/.claude/commands:$PYTHONPATH
 
   # Step 2: Create shared runtime file
-  cat > /Users/b80985/.claude/commands/mcp_shared_runtime.py << 'EOF'
+  cat > /home/wei/.claude/commands/mcp_shared_runtime.py << 'EOF'
   # ... (paste the SharedMCPRuntime code from above)
   EOF
 
   # Step 3: Test it works
   python << 'EOF'
   import sys
-  sys.path.insert(0, '/Users/b80985/.claude/commands')
+  sys.path.insert(0, '/home/wei/.claude/commands')
 
   from mcp_integration import KnowledgeHierarchy
   print("✓ Option A working - can import mcp_integration")
@@ -355,7 +355,7 @@
   python << 'EOF'
   import asyncio
   import sys
-  sys.path.insert(0, '/Users/b80985/.claude/commands')
+  sys.path.insert(0, '/home/wei/.claude/commands')
 
   from mcp_shared_runtime import get_mcp_runtime
 
@@ -390,7 +390,7 @@
   import sys
 
   # Set PYTHONPATH programmatically (if not set in environment)
-  sys.path.insert(0, '/Users/b80985/.claude/commands')
+  sys.path.insert(0, '/home/wei/.claude/commands')
 
   from mcp_shared_runtime import get_mcp_runtime
 
@@ -474,7 +474,7 @@
   Summary
 
   Option A Setup:
-  1. export PYTHONPATH=/Users/b80985/.claude/commands:$PYTHONPATH
+  1. export PYTHONPATH=/home/wei/.claude/commands:$PYTHONPATH
   2. Create mcp_shared_runtime.py (shown above)
   3. Commands call get_mcp_runtime(mcp_servers)
   4. Runtime initializes on first use, reuses thereafter
@@ -488,20 +488,20 @@
   1. Installation Process
 
   # Navigate to the directory containing mcp_integration/
-  cd /Users/b80985/.claude/commands
+  cd /home/wei/.claude/commands
 
   # Install in editable mode to your current Python environment
   pip install -e mcp_integration/
 
   What happens:
   - ✅ Creates a symlink in your Python environment's site-packages/
-  - ✅ The package points to /Users/b80985/.claude/commands/mcp_integration/
+  - ✅ The package points to /home/wei/.claude/commands/mcp_integration/
   - ✅ Any changes you make are immediately reflected (no reinstall needed)
   - ✅ You can import it from anywhere: from mcp_integration import ...
 
   To check installation:
   pip list | grep mcp-integration
-  # Should show: mcp-integration 1.0.0 /Users/b80985/.claude/commands/mcp_integration
+  # Should show: mcp-integration 1.0.0 /home/wei/.claude/commands/mcp_integration
 
   2. Where It Gets Installed
 
@@ -523,7 +523,7 @@
   Step 1: Create Runtime Initialization File
 
   # Create the runtime initialization file
-  cat > /Users/b80985/.claude/commands/mcp_runtime_init.py << 'EOF'
+  cat > /home/wei/.claude/commands/mcp_runtime_init.py << 'EOF'
   """
   MCP Integration Runtime - Auto-initializes when Claude Code starts
   """
@@ -756,14 +756,14 @@
   4. Complete Installation & Startup Flow
 
   # 1. Install package (one-time setup)
-  cd /Users/b80985/.claude/commands
+  cd /home/wei/.claude/commands
   pip install -e mcp_integration/
 
   # 2. Verify installation
   python -c "from mcp_integration import KnowledgeHierarchy; print('✓ Installed')"
 
   # 3. Create runtime init file (already shown above)
-  # File: /Users/b80985/.claude/commands/mcp_runtime_init.py
+  # File: /home/wei/.claude/commands/mcp_runtime_init.py
 
   # 4. Test initialization
   python << 'EOF'
