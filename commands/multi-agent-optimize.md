@@ -46,7 +46,6 @@ agents:
 - **Database**: !`grep -r "postgresql\|mongodb\|redis\|mysql" --include="*.{py,js,ts,env}" 2>/dev/null | head -3`
 
 #### Infrastructure & DevOps
-- **Docker**: !`find . -name "Dockerfile" -o -name "docker-compose.yml" 2>/dev/null | wc -l` containers
 - **CI/CD**: !`find .github .gitlab-ci.yml .circleci -type f 2>/dev/null | wc -l` configs
 - **IaC**: !`find . -name "*.tf" -o -name "cloudformation.yml" 2>/dev/null | wc -l` files
 
@@ -196,8 +195,7 @@ devops-security-engineer:
     - Deployment optimization
   triggers:
     - CI/CD configs present
-    - Docker/K8s detected
-    - security concerns found
+    - Security concerns found
   priority: high
 
 code-quality:

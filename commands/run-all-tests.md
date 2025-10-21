@@ -1129,8 +1129,8 @@ These require external resources:
    **Issue**: Cannot connect to test database
    **Required Actions**:
    ```bash
-   # Start test database
-   docker-compose up -d test-db
+   # Start test database (using your preferred method)
+   npm run db:start:test  # or: docker-compose up -d test-db
 
    # Run migrations
    npm run db:migrate:test

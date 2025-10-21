@@ -308,8 +308,8 @@ Execute a comprehensive validation across **10 critical dimensions**:
    # Run full integration test suite
    npm run test:integration || pytest tests/integration
 
-   # Test with dependent services
-   docker-compose up -d && npm run test:e2e
+   # Run end-to-end tests
+   npm run test:e2e
    ```
 
 3. **Rollback Plan**
@@ -344,9 +344,6 @@ Execute a comprehensive validation across **10 critical dimensions**:
 
    # Validate Kubernetes manifests
    kubectl apply --dry-run=client -f k8s/
-
-   # Validate Docker builds
-   docker build --target production .
    ```
 
 4. **CI/CD Pipeline**

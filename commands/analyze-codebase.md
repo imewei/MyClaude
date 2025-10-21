@@ -47,7 +47,6 @@ agents:
 - Package manager: !`ls package.json requirements.txt Cargo.toml go.mod Gemfile composer.json 2>/dev/null | head -1`
 - Build tools: !`ls webpack.config.js vite.config.js tsconfig.json Makefile 2>/dev/null | tr '\n' ',' | sed 's/,$//'`
 - CI/CD: !`find .github .gitlab-ci.yml .circleci -type f 2>/dev/null | wc -l` configs
-- Docker: !`ls Dockerfile docker-compose.yml 2>/dev/null | wc -l` file(s)
 
 ### Architecture Pattern Detection
 - API routes: !`find . -path "*/routes/*" -o -path "*/api/*" ! -path "*/node_modules/*" 2>/dev/null | wc -l` files

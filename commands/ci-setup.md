@@ -26,13 +26,31 @@ agents:
 
 **Setup comprehensive CI/CD pipeline with dependency version consistency enforcement**:
 
-### 1. Platform Selection
+### 1. Scope and Exclusions
+
+**This command focuses on:**
+- CI/CD pipeline configuration (GitHub Actions, GitLab CI, CircleCI, Jenkins)
+- Dependency version consistency enforcement
+- Security scanning and testing automation
+- Deployment workflows and best practices
+
+**Explicitly excluded from this command:**
+- ❌ **Docker/Container configurations** - Not included in CI/CD setup
+- ❌ **GitHub Pages deployment** - Static site hosting not covered
+- ❌ **Container orchestration** (K8s, Docker Compose) - Separate infrastructure concern
+- ❌ **Container registry operations** - Not part of core CI/CD pipeline
+
+For container-specific CI/CD needs, use dedicated containerization tools and workflows separately.
+
+---
+
+### 2. Platform Selection
 - **GitHub Actions** (Recommended): Native integration, free for public repos, matrix builds
 - **GitLab CI**: Built-in, comprehensive DevOps, excellent integration
 - **CircleCI**: Fast cloud-based, excellent caching
 - **Jenkins**: Self-hosted, customizable, enterprise-ready
 
-### 2. Core Pipeline Stages with Version Consistency
+### 3. Core Pipeline Stages with Version Consistency
 ```yaml
 stages: [validate-deps, test, build, security, deploy]
 
@@ -67,7 +85,7 @@ deploy:
   - Rollback capability with version tracking
 ```
 
-### 3. Dependency Version Consistency Enforcement
+### 4. Dependency Version Consistency Enforcement
 
 **Key Principle**: Lock files are the source of truth. Never use `npm install`, `pip install <package>`, or similar commands in CI.
 
@@ -127,7 +145,7 @@ deploy:
 - run: go build -mod=readonly  # Don't modify go.mod/go.sum
 ```
 
-### 4. Essential Optimizations
+### 5. Essential Optimizations
 - **Lock-file based caching**: Hash lock file for cache key
   ```yaml
   # Node.js
@@ -144,7 +162,7 @@ deploy:
 - **Fail fast**: Stop on first critical failure
 - **Conditional runs**: Skip unchanged areas using path filters
 
-### 5. Security Best Practices
+### 6. Security Best Practices
 - **Lock files in version control**: Always commit lock files
 - **Dependency integrity**: Use subresource integrity (SRI) hashes
 - **Store secrets in vault**: GitHub Secrets, GitLab Variables, HashiCorp Vault
@@ -153,7 +171,7 @@ deploy:
 - **Audit trail**: Track all deployments and changes
 - **Least privilege access**: Minimal permissions per job
 
-### 6. Platform-Specific Templates
+### 7. Platform-Specific Templates
 
 #### GitHub Actions (`.github/workflows/ci.yml`) - Node.js
 ```yaml
@@ -579,7 +597,7 @@ deploy-production:
     - echo "Deploy to production"
 ```
 
-### 7. Pre-commit Hooks for Local Validation
+### 8. Pre-commit Hooks for Local Validation
 ```yaml
 # .pre-commit-config.yaml - Node.js
 repos:
@@ -607,7 +625,7 @@ repos:
         types: [python]
 ```
 
-### 8. Implementation Checklist
+### 9. Implementation Checklist
 - [ ] Lock files exist and are committed to version control
 - [ ] CI uses deterministic install commands (npm ci, uv sync --frozen, etc.)
 - [ ] Lock file validation step in CI pipeline
@@ -622,7 +640,7 @@ repos:
 - [ ] Monitoring/alerts configured
 - [ ] Dependency update automation (Renovate/Dependabot)
 
-### 9. Dependency Version Drift Prevention
+### 10. Dependency Version Drift Prevention
 
 **Automated Dependency Updates**:
 ```yaml
@@ -665,7 +683,7 @@ updates:
 }
 ```
 
-### 10. Troubleshooting Common Issues
+### 11. Troubleshooting Common Issues
 
 **Issue**: Lock file out of sync
 ```bash

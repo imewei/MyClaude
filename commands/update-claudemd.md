@@ -47,7 +47,7 @@ agents:
 !`find . -name "*.md" -not -path "./node_modules/*" -not -path "./.git/*" | head -10`
 
 ## Configuration Changes
-!`git diff HEAD~10 -- package.json tsconfig.json webpack.config.js next.config.js .env* docker* | head -100`
+!`git diff HEAD~10 -- package.json tsconfig.json webpack.config.js next.config.js .env* | head -100`
 
 ## API/Route Changes  
 !`git diff HEAD~10 -- "**/routes/**" "**/api/**" "**/controllers/**" | head -150`
