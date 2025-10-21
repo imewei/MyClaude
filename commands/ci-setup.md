@@ -89,6 +89,103 @@ deploy:
 
 **Key Principle**: Lock files are the source of truth. Never use `npm install`, `pip install <package>`, or similar commands in CI.
 
+**Critical Requirement**: GitHub Actions must use the **exact same runtime versions** (Python, Node.js, etc.) as your local virtual environment to ensure reproducible builds.
+
+#### Ensuring Runtime Version Consistency
+
+**Step 1: Document Your Local Environment**
+
+```bash
+# Python - Check your local version
+python --version  # e.g., Python 3.12.7
+which python      # Verify you're in venv
+
+# Node.js - Check your local version
+node --version    # e.g., v20.11.0
+npm --version     # e.g., 10.2.4
+
+# Record these versions in your project
+echo "python==3.12.7" > .python-version
+echo "node==20.11.0" > .node-version
+```
+
+**Step 2: Match GitHub Actions to Local Environment**
+
+Pin the **exact same versions** in your GitHub Actions workflows:
+
+```yaml
+# .github/workflows/ci.yml
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      # Python: Use EXACT version from local environment
+      - name: Set up Python 3.12.7
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12.7"  # Match your local version exactly
+
+      # Node.js: Use EXACT version from local environment
+      - name: Setup Node.js 20.11.0
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20.11.0"   # Match your local version exactly
+```
+
+**Step 3: Verify Version Consistency**
+
+Add verification steps to catch version mismatches early:
+
+```yaml
+- name: Verify Python version matches local
+  run: |
+    EXPECTED="3.12.7"
+    ACTUAL=$(python --version | cut -d' ' -f2)
+    if [ "$ACTUAL" != "$EXPECTED" ]; then
+      echo "❌ Python version mismatch! Expected $EXPECTED, got $ACTUAL"
+      exit 1
+    fi
+    echo "✅ Python version matches local environment: $ACTUAL"
+
+- name: Verify Node.js version matches local
+  run: |
+    EXPECTED="20.11.0"
+    ACTUAL=$(node --version | sed 's/v//')
+    if [ "$ACTUAL" != "$EXPECTED" ]; then
+      echo "❌ Node.js version mismatch! Expected $EXPECTED, got $ACTUAL"
+      exit 1
+    fi
+    echo "✅ Node.js version matches local environment: $ACTUAL"
+```
+
+**Step 4: Use Version Files (.python-version, .node-version)**
+
+Store versions in standard files that both local tools and CI can read:
+
+```bash
+# Create version files (commit these to git)
+echo "3.12.7" > .python-version
+echo "20.11.0" > .node-version
+```
+
+Then reference them in GitHub Actions:
+
+```yaml
+# Python with .python-version
+- name: Set up Python from .python-version
+  uses: actions/setup-python@v5
+  with:
+    python-version-file: '.python-version'
+
+# Node.js with .nvmrc or package.json
+- name: Setup Node.js from .nvmrc
+  uses: actions/setup-node@v4
+  with:
+    node-version-file: '.nvmrc'  # or use package.json "engines" field
+```
+
 #### Node.js/JavaScript (npm/yarn/pnpm)
 ```yaml
 # GitHub Actions - npm
@@ -111,16 +208,23 @@ deploy:
 #### Python 3.12+ (uv - Modern, Fast)
 ```yaml
 # uv with lock file (RECOMMENDED for Python 3.12+)
+# CRITICAL: Use the EXACT Python version from your local virtual environment
 - name: Install uv
   uses: astral-sh/setup-uv@v4
   with:
     version: "latest"
     enable-cache: true
 
-- name: Set up Python 3.12+
+- name: Set up Python (match local venv version!)
   uses: actions/setup-python@v5
   with:
-    python-version: "3.12"
+    python-version-file: '.python-version'  # Reads from .python-version file
+    # OR specify exact version: python-version: "3.12.7"
+
+- name: Verify Python version consistency
+  run: |
+    echo "CI Python version: $(python --version)"
+    echo "Expected from .python-version: $(cat .python-version)"
 
 - name: Install dependencies with exact versions
   run: uv sync --frozen  # Fails if uv.lock is out of sync
@@ -313,10 +417,10 @@ jobs:
           version: "latest"
           enable-cache: true
 
-      - name: Set up Python 3.12
+      - name: Set up Python (match local environment)
         uses: actions/setup-python@v5
         with:
-          python-version: "3.12"
+          python-version-file: '.python-version'  # Use exact version from local
 
       - name: Verify uv.lock is up to date
         run: |
@@ -713,6 +817,57 @@ key: ${{ runner.os }}-${{ hashFiles('**/uv.lock') }}
 # Modern package managers are significantly faster:
 npm ci → pnpm install --frozen-lockfile  # ~3x faster
 pip install → uv pip install            # ~10-100x faster
+```
+
+**Issue**: CI and local environment version mismatch
+```bash
+# Symptom: Tests pass locally but fail in CI (or vice versa)
+# Root cause: Different Python/Node.js versions
+
+# Solution 1: Create version files
+echo "3.12.7" > .python-version
+echo "20.11.0" > .node-version
+git add .python-version .node-version
+git commit -m "chore: pin runtime versions for CI/local consistency"
+
+# Solution 2: Update GitHub Actions workflow
+# Change from:
+#   python-version: "3.12"  # Too generic
+# To:
+#   python-version-file: '.python-version'  # Exact match
+
+# Solution 3: Add version verification step in CI
+- name: Verify runtime versions
+  run: |
+    echo "Python: $(python --version)"
+    echo "Node: $(node --version)"
+    echo "Expected Python: $(cat .python-version)"
+    # Fail if mismatch detected
+```
+
+**Issue**: "Works on my machine" but CI fails
+```bash
+# Common causes when local and CI differ:
+
+# 1. Check Python version match
+python --version  # Local
+# vs CI: Check GitHub Actions setup-python version
+
+# 2. Check Node.js version match
+node --version    # Local
+# vs CI: Check GitHub Actions setup-node version
+
+# 3. Verify virtual environment is activated locally
+which python      # Should point to venv/bin/python
+source venv/bin/activate  # If not activated
+
+# 4. Ensure lock files are committed
+git status | grep -E "lock|Lock"
+git add uv.lock package-lock.json  # Commit any missing lock files
+
+# 5. Install from lock file (same as CI)
+uv sync --frozen     # Python
+npm ci               # Node.js
 ```
 
 **Provide complete, production-ready pipeline configuration with dependency version consistency enforcement and security best practices**
