@@ -14,48 +14,6 @@ agents:
     - agent: ai-systems-architect
       trigger: pattern "model|inference|ml.*pipeline" OR files "*.h5|*.pkl"
   orchestrated: false
-
-# MCP Integration (ENHANCED)
-mcp-integration:
-  profile: github-workflow
-
-  mcps:
-    - name: github
-      priority: critical
-      preload: true
-      config:
-        use_conditional_requests: true  # ETags for rate limiting
-        batch_api_calls: true
-
-    - name: serena
-      priority: medium
-      preload: true
-      config:
-        analyze_yaml: true
-        local_log_analysis: true
-
-    - name: memory-bank
-      priority: critical  # UPGRADED from low (2/5) to critical (5/5)
-      operations: [read, write]
-      cache_patterns:
-        - "ci_failure:{workflow}:{job}"
-        - "ci_failure:{workflow}:{job}:analysis"
-        - "ci_fix_history:{pattern_hash}"
-        - "ci_fix_history:{pattern_hash}:solution"
-        - "workflow_patterns:{workflow}"
-        - "failure_correlation:{error_signature}"
-      ttl:
-        ci_failures: 15552000  # 180 days (6 months)
-        ci_fixes: 31536000  # 365 days (1 year)
-        workflow_patterns: 15552000  # 180 days
-
-  learning:
-    enabled: true
-    pattern_matching: true
-    success_tracking: true
-    confidence_scoring: true
-    auto_fix_threshold: 0.9  # Only auto-fix if >90% confidence
-    correlation_analysis: true  # Analyze failure patterns across workflows
 ---
 
 # Intelligent GitHub Actions Failure Resolution System

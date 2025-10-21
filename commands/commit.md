@@ -81,7 +81,11 @@ refactor: extract validation logic to utils
 
 **DON'T**:
 - Mention "Claude" or AI assistance
-- Use flowery or marketing language
+- Add "Co-authored-by" or any Claude signatures
+- Include "Generated with Claude Code" or similar messages
+- Modify git config or user credentials
+- Add any AI/assistant attribution to the commit
+- Use elegant, flowery or marketing language
 - Add extraneous details
 - Be vague ("fix stuff", "update code")
 
