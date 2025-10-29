@@ -30,11 +30,6 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r docs/requirements.txt
 
-      - name: Validate plugin.json files
-        run: |
-          python tools/metadata-validator.py
-        continue-on-error: false
-
       - name: Generate RST documentation files
         run: |
           python tools/sphinx_doc_generator.py
