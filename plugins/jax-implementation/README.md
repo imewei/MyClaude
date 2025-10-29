@@ -4,7 +4,7 @@ JAX-based scientific computing and probabilistic programming with NumPyro, Flax,
 
 **Version:** 1.0.0 | **Category:** uncategorized | **License:** MIT
 
-[Full Documentation →](https://docs.example.com/plugins/jax-implementation.html)
+[Full Documentation →](https://myclaude.readthedocs.io/en/latest/plugins/jax-implementation.html)
 
 ## Agents (3)
 
@@ -54,7 +54,7 @@ See the full documentation for integration patterns and compatible plugins.
 
 ## Documentation
 
-For comprehensive documentation, see: [Plugin Documentation](https://docs.example.com/plugins/jax-implementation.html)
+For comprehensive documentation, see: [Plugin Documentation](https://myclaude.readthedocs.io/en/latest/plugins/jax-implementation.html)
 
 To build documentation locally:
 

@@ -4,7 +4,7 @@ LLM application development with prompt engineering, RAG implementation, vector 
 
 **Version:** 1.0.0 | **Category:** development | **License:** MIT
 
-[Full Documentation →](https://docs.example.com/plugins/llm-application-dev.html)
+[Full Documentation →](https://myclaude.readthedocs.io/en/latest/plugins/llm-application-dev.html)
 
 ## Agents (2)
 
@@ -73,7 +73,7 @@ See the full documentation for integration patterns and compatible plugins.
 
 ## Documentation
 
-For comprehensive documentation, see: [Plugin Documentation](https://docs.example.com/plugins/llm-application-dev.html)
+For comprehensive documentation, see: [Plugin Documentation](https://myclaude.readthedocs.io/en/latest/plugins/llm-application-dev.html)
 
 To build documentation locally:
 

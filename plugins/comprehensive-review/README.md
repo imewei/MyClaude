@@ -4,7 +4,7 @@ Comprehensive code and architecture review with multi-perspective analysis, secu
 
 **Version:** 1.0.0 | **Category:** quality | **License:** MIT
 
-[Full Documentation →](https://docs.example.com/plugins/comprehensive-review.html)
+[Full Documentation →](https://myclaude.readthedocs.io/en/latest/plugins/comprehensive-review.html)
 
 ## Agents (3)
 
@@ -61,7 +61,7 @@ See the full documentation for integration patterns and compatible plugins.
 
 ## Documentation
 
-For comprehensive documentation, see: [Plugin Documentation](https://docs.example.com/plugins/comprehensive-review.html)
+For comprehensive documentation, see: [Plugin Documentation](https://myclaude.readthedocs.io/en/latest/plugins/comprehensive-review.html)
 
 To build documentation locally:
 

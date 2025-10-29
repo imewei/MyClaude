@@ -4,7 +4,7 @@ Comprehensive systems programming with C, C++, Rust, and Go. Includes enhanced a
 
 **Version:** 1.0.0 | **Category:** development | **License:** MIT
 
-[Full Documentation →](https://docs.example.com/plugins/systems-programming.html)
+[Full Documentation →](https://myclaude.readthedocs.io/en/latest/plugins/systems-programming.html)
 
 ## Agents (4)
 
@@ -73,7 +73,7 @@ See the full documentation for integration patterns and compatible plugins.
 
 ## Documentation
 
-For comprehensive documentation, see: [Plugin Documentation](https://docs.example.com/plugins/systems-programming.html)
+For comprehensive documentation, see: [Plugin Documentation](https://myclaude.readthedocs.io/en/latest/plugins/systems-programming.html)
 
 To build documentation locally:
 

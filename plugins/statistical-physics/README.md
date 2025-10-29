@@ -4,7 +4,7 @@ Non-equilibrium statistical physics for driven systems, active matter, and compl
 
 **Version:** 1.0.0 | **Category:** uncategorized | **License:** Unknown
 
-[Full Documentation →](https://docs.example.com/plugins/statistical-physics.html)
+[Full Documentation →](https://myclaude.readthedocs.io/en/latest/plugins/statistical-physics.html)
 
 ## Agents (2)
 
@@ -68,7 +68,7 @@ See the full documentation for integration patterns and compatible plugins.
 
 ## Documentation
 
-For comprehensive documentation, see: [Plugin Documentation](https://docs.example.com/plugins/statistical-physics.html)
+For comprehensive documentation, see: [Plugin Documentation](https://myclaude.readthedocs.io/en/latest/plugins/statistical-physics.html)
 
 To build documentation locally:
 

@@ -4,7 +4,7 @@ Comprehensive test automation, generation, and execution with iterative fixing u
 
 **Version:** 1.0.0 | **Category:** uncategorized | **License:** MIT
 
-[Full Documentation →](https://docs.example.com/plugins/unit-testing.html)
+[Full Documentation →](https://myclaude.readthedocs.io/en/latest/plugins/unit-testing.html)
 
 ## Agents (2)
 
@@ -49,7 +49,7 @@ See the full documentation for integration patterns and compatible plugins.
 
 ## Documentation
 
-For comprehensive documentation, see: [Plugin Documentation](https://docs.example.com/plugins/unit-testing.html)
+For comprehensive documentation, see: [Plugin Documentation](https://myclaude.readthedocs.io/en/latest/plugins/unit-testing.html)
 
 To build documentation locally:
 

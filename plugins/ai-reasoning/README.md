@@ -4,7 +4,7 @@ Advanced AI-powered cognitive tools for problem-solving, meta-analysis, and stru
 
 **Version:** 1.0.0 | **Category:** uncategorized | **License:** MIT
 
-[Full Documentation →](https://docs.example.com/plugins/ai-reasoning.html)
+[Full Documentation →](https://myclaude.readthedocs.io/en/latest/plugins/ai-reasoning.html)
 
 ## Commands (2)
 
@@ -48,7 +48,7 @@ See the full documentation for integration patterns and compatible plugins.
 
 ## Documentation
 
-For comprehensive documentation, see: [Plugin Documentation](https://docs.example.com/plugins/ai-reasoning.html)
+For comprehensive documentation, see: [Plugin Documentation](https://myclaude.readthedocs.io/en/latest/plugins/ai-reasoning.html)
 
 To build documentation locally:
 

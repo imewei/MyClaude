@@ -4,7 +4,7 @@ Comprehensive JavaScript and TypeScript development skills including modern patt
 
 **Version:** 1.0.0 | **Category:** uncategorized | **License:** MIT
 
-[Full Documentation →](https://docs.example.com/plugins/javascript-typescript.html)
+[Full Documentation →](https://myclaude.readthedocs.io/en/latest/plugins/javascript-typescript.html)
 
 ## Skills (5)
 
@@ -41,7 +41,7 @@ See the full documentation for integration patterns and compatible plugins.
 
 ## Documentation
 
-For comprehensive documentation, see: [Plugin Documentation](https://docs.example.com/plugins/javascript-typescript.html)
+For comprehensive documentation, see: [Plugin Documentation](https://myclaude.readthedocs.io/en/latest/plugins/javascript-typescript.html)
 
 To build documentation locally:
 

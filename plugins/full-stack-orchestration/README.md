@@ -4,7 +4,7 @@ Full-stack development orchestration coordinating frontend, backend, testing, se
 
 **Version:** 1.0.0 | **Category:** orchestration | **License:** MIT
 
-[Full Documentation →](https://docs.example.com/plugins/full-stack-orchestration.html)
+[Full Documentation →](https://myclaude.readthedocs.io/en/latest/plugins/full-stack-orchestration.html)
 
 ## Agents (4)
 
@@ -55,7 +55,7 @@ See the full documentation for integration patterns and compatible plugins.
 
 ## Documentation
 
-For comprehensive documentation, see: [Plugin Documentation](https://docs.example.com/plugins/full-stack-orchestration.html)
+For comprehensive documentation, see: [Plugin Documentation](https://myclaude.readthedocs.io/en/latest/plugins/full-stack-orchestration.html)
 
 To build documentation locally:
 

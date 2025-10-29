@@ -4,7 +4,7 @@ Comprehensive machine learning and data science expertise: statistical analysis,
 
 **Version:** 1.0.0 | **Category:** ai-ml | **License:** Unknown
 
-[Full Documentation →](https://docs.example.com/plugins/machine-learning.html)
+[Full Documentation →](https://myclaude.readthedocs.io/en/latest/plugins/machine-learning.html)
 
 ## Agents (3)
 
@@ -70,7 +70,7 @@ See the full documentation for integration patterns and compatible plugins.
 
 ## Documentation
 
-For comprehensive documentation, see: [Plugin Documentation](https://docs.example.com/plugins/machine-learning.html)
+For comprehensive documentation, see: [Plugin Documentation](https://myclaude.readthedocs.io/en/latest/plugins/machine-learning.html)
 
 To build documentation locally:
 

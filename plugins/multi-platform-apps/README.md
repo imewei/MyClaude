@@ -4,7 +4,7 @@ Comprehensive multi-platform application development with Flutter, React Native,
 
 **Version:** 1.0.0 | **Category:** uncategorized | **License:** MIT
 
-[Full Documentation →](https://docs.example.com/plugins/multi-platform-apps.html)
+[Full Documentation →](https://myclaude.readthedocs.io/en/latest/plugins/multi-platform-apps.html)
 
 ## Agents (6)
 
@@ -85,7 +85,7 @@ See the full documentation for integration patterns and compatible plugins.
 
 ## Documentation
 
-For comprehensive documentation, see: [Plugin Documentation](https://docs.example.com/plugins/multi-platform-apps.html)
+For comprehensive documentation, see: [Plugin Documentation](https://myclaude.readthedocs.io/en/latest/plugins/multi-platform-apps.html)
 
 To build documentation locally:
 

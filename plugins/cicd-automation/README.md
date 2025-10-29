@@ -4,7 +4,7 @@ CI/CD pipeline automation, GitHub Actions optimization, deployment engineering, 
 
 **Version:** 1.0.0 | **Category:** uncategorized | **License:** MIT
 
-[Full Documentation →](https://docs.example.com/plugins/cicd-automation.html)
+[Full Documentation →](https://myclaude.readthedocs.io/en/latest/plugins/cicd-automation.html)
 
 ## Agents (5)
 
@@ -93,7 +93,7 @@ See the full documentation for integration patterns and compatible plugins.
 
 ## Documentation
 
-For comprehensive documentation, see: [Plugin Documentation](https://docs.example.com/plugins/cicd-automation.html)
+For comprehensive documentation, see: [Plugin Documentation](https://myclaude.readthedocs.io/en/latest/plugins/cicd-automation.html)
 
 To build documentation locally:
 

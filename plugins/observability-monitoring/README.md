@@ -4,7 +4,7 @@ Observability, monitoring, logging, distributed tracing, and SLO/SLA management 
 
 **Version:** 1.0.0 | **Category:** devops | **License:** MIT
 
-[Full Documentation →](https://docs.example.com/plugins/observability-monitoring.html)
+[Full Documentation →](https://myclaude.readthedocs.io/en/latest/plugins/observability-monitoring.html)
 
 ## Agents (4)
 
@@ -83,7 +83,7 @@ See the full documentation for integration patterns and compatible plugins.
 
 ## Documentation
 
-For comprehensive documentation, see: [Plugin Documentation](https://docs.example.com/plugins/observability-monitoring.html)
+For comprehensive documentation, see: [Plugin Documentation](https://myclaude.readthedocs.io/en/latest/plugins/observability-monitoring.html)
 
 To build documentation locally:
 

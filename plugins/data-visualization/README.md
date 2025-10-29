@@ -4,7 +4,7 @@ Scientific data visualization, UX design, and immersive AR/VR interfaces with Py
 
 **Version:** 1.0.0 | **Category:** scientific-computing | **License:** MIT
 
-[Full Documentation →](https://docs.example.com/plugins/data-visualization.html)
+[Full Documentation →](https://myclaude.readthedocs.io/en/latest/plugins/data-visualization.html)
 
 ## Agents (1)
 
@@ -42,7 +42,7 @@ See the full documentation for integration patterns and compatible plugins.
 
 ## Documentation
 
-For comprehensive documentation, see: [Plugin Documentation](https://docs.example.com/plugins/data-visualization.html)
+For comprehensive documentation, see: [Plugin Documentation](https://myclaude.readthedocs.io/en/latest/plugins/data-visualization.html)
 
 To build documentation locally:
 

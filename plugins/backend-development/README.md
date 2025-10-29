@@ -4,7 +4,7 @@ Comprehensive backend development support including REST/GraphQL/gRPC APIs, micr
 
 **Version:** 1.0.0 | **Category:** development | **License:** MIT
 
-[Full Documentation →](https://docs.example.com/plugins/backend-development.html)
+[Full Documentation →](https://myclaude.readthedocs.io/en/latest/plugins/backend-development.html)
 
 ## Agents (3)
 
@@ -75,7 +75,7 @@ See the full documentation for integration patterns and compatible plugins.
 
 ## Documentation
 
-For comprehensive documentation, see: [Plugin Documentation](https://docs.example.com/plugins/backend-development.html)
+For comprehensive documentation, see: [Plugin Documentation](https://myclaude.readthedocs.io/en/latest/plugins/backend-development.html)
 
 To build documentation locally:
 

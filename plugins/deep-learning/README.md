@@ -4,7 +4,7 @@ Comprehensive deep learning expertise: neural network theory, architecture desig
 
 **Version:** 1.0.0 | **Category:** ai-ml | **License:** Unknown
 
-[Full Documentation →](https://docs.example.com/plugins/deep-learning.html)
+[Full Documentation →](https://myclaude.readthedocs.io/en/latest/plugins/deep-learning.html)
 
 ## Agents (2)
 
@@ -60,7 +60,7 @@ See the full documentation for integration patterns and compatible plugins.
 
 ## Documentation
 
-For comprehensive documentation, see: [Plugin Documentation](https://docs.example.com/plugins/deep-learning.html)
+For comprehensive documentation, see: [Plugin Documentation](https://myclaude.readthedocs.io/en/latest/plugins/deep-learning.html)
 
 To build documentation locally:
 

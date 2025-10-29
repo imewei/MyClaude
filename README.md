@@ -4,7 +4,7 @@ Comprehensive Claude Code marketplace with 31 specialized plugins for scientific
 
 ## Full Documentation
 
-**[View Complete Plugin Documentation →](https://docs.example.com)**
+**[View Complete Plugin Documentation →](https://myclaude.readthedocs.io/en/latest/)**
 
 For comprehensive documentation including detailed plugin guides, integration patterns, quick-start tutorials, and API references, visit the full Sphinx documentation.
 
@@ -49,62 +49,52 @@ This marketplace provides:
 - **comprehensive-review**: Multi-perspective code analysis
 - **agent-orchestration**: Multi-agent system optimization
 
-[Browse all plugins →](https://docs.example.com/plugins/)
+[Browse all plugins →](https://myclaude.readthedocs.io/en/latest/plugins/)
 
 ## Quick Start
 
 ### Installation
 
-```bash
-# Navigate to project directory
-cd /Users/b80985/Projects/MyClaude
+1. Clone or download this repository to your local machine
+2. Configure Claude Code to use this marketplace as your plugin source
+3. All 31 plugins will be automatically available in Claude Code
 
-# Verify marketplace (should show 31 plugins)
+```bash
+# Verify plugin count
 ls plugins/ | wc -l
+# Should show: 31
 ```
 
 ### Using Plugins
 
+Once installed, plugins provide agents, commands, and skills that are automatically available in Claude Code:
+
 ```bash
-# List available plugins
-/plugin list
-
-# Install a plugin
-/plugin install python-development
-
-# Use an agent
-@python-architect "Design a REST API..."
+# Use an agent from a plugin
+Ask Claude to use specialized agents like @python-pro or @rust-pro
 
 # Run a command
 /ultra-think "Analyze this architecture..."
+/double-check "Validate this implementation"
+
+# Access skills
+Skills are automatically loaded and available to Claude
 ```
 
 ### Integration Examples
 
-See [full documentation](https://docs.example.com/guides/) for detailed workflow guides:
+See [full documentation](https://myclaude.readthedocs.io/en/latest/guides/) for detailed workflow guides:
 - Scientific computing (Julia + HPC + GPU)
 - Development (Python + API + Testing)
 - DevOps (Docker + Kubernetes + CI/CD)
 - Infrastructure (Terraform + Cloud + Monitoring)
 
-## Customization
-
-```bash
-# Add new agent
-vim plugins/[plugin-name]/agents/my-agent.md
-./generate-metadata.sh
-
-# Add new command
-vim plugins/[plugin-name]/commands/my-command.md
-./generate-metadata.sh
-```
-
 ## Maintenance
 
 ```bash
 # Commit changes
-git add plugins/
-git commit -m "Update plugin customizations"
+git add .
+git commit -m "Update plugins and configurations"
 
 # Create version tag
 git tag -a v1.1.0 -m "Release v1.1.0"
@@ -117,15 +107,15 @@ git tag -a v1.1.0 -m "Release v1.1.0"
 3. Test thoroughly with Claude Code
 4. Submit PR with detailed description
 
-See [contribution guidelines](https://docs.example.com/contributing.html) for details.
+See [contribution guidelines](https://myclaude.readthedocs.io/en/latest/contributing.html) for details.
 
 ## Documentation Links
 
-- **Full Documentation:** [docs.example.com](https://docs.example.com)
-- **Plugin Guides:** [docs.example.com/plugins/](https://docs.example.com/plugins/)
-- **Quick-Start Guides:** [docs.example.com/guides/](https://docs.example.com/guides/)
-- **Integration Patterns:** [docs.example.com/integration-map.html](https://docs.example.com/integration-map.html)
-- **Technical Glossary:** [docs.example.com/glossary.html](https://docs.example.com/glossary.html)
+- **Full Documentation:** [myclaude.readthedocs.io](https://myclaude.readthedocs.io/en/latest/)
+- **Plugin Guides:** [myclaude.readthedocs.io/plugins/](https://myclaude.readthedocs.io/en/latest/plugins/)
+- **Quick-Start Guides:** [myclaude.readthedocs.io/guides/](https://myclaude.readthedocs.io/en/latest/guides/)
+- **Integration Patterns:** [myclaude.readthedocs.io/integration-map.html](https://myclaude.readthedocs.io/en/latest/integration-map.html)
+- **Technical Glossary:** [myclaude.readthedocs.io/glossary.html](https://myclaude.readthedocs.io/en/latest/glossary.html)
 
 ## Version History
 
@@ -138,7 +128,7 @@ See [contribution guidelines](https://docs.example.com/contributing.html) for de
 ### v1.0.0 (Previous)
 - Initial marketplace with 31 plugins
 
-See [changelog](https://docs.example.com/changelog.html) for detailed version history.
+See [changelog](https://myclaude.readthedocs.io/en/latest/changelog.html) for detailed version history.
 
 ## License
 

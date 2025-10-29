@@ -4,7 +4,7 @@ Git workflows, pull request management, branching strategies, code review proces
 
 **Version:** 1.0.0 | **Category:** devops | **License:** MIT
 
-[Full Documentation →](https://docs.example.com/plugins/git-pr-workflows.html)
+[Full Documentation →](https://myclaude.readthedocs.io/en/latest/plugins/git-pr-workflows.html)
 
 ## Agents (1)
 
@@ -55,7 +55,7 @@ See the full documentation for integration patterns and compatible plugins.
 
 ## Documentation
 
-For comprehensive documentation, see: [Plugin Documentation](https://docs.example.com/plugins/git-pr-workflows.html)
+For comprehensive documentation, see: [Plugin Documentation](https://myclaude.readthedocs.io/en/latest/plugins/git-pr-workflows.html)
 
 To build documentation locally:
 

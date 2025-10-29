@@ -4,7 +4,7 @@ AI-assisted debugging with LLM-driven RCA, automated log correlation, observabil
 
 **Version:** 1.0.0 | **Category:** dev-tools | **License:** MIT
 
-[Full Documentation →](https://docs.example.com/plugins/debugging-toolkit.html)
+[Full Documentation →](https://myclaude.readthedocs.io/en/latest/plugins/debugging-toolkit.html)
 
 ## Agents (1)
 
@@ -38,7 +38,7 @@ See the full documentation for integration patterns and compatible plugins.
 
 ## Documentation
 
-For comprehensive documentation, see: [Plugin Documentation](https://docs.example.com/plugins/debugging-toolkit.html)
+For comprehensive documentation, see: [Plugin Documentation](https://myclaude.readthedocs.io/en/latest/plugins/debugging-toolkit.html)
 
 To build documentation locally:
 

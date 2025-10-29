@@ -4,7 +4,7 @@ Frontend and mobile development expertise including React, Next.js, React Native
 
 **Version:** 1.0.0 | **Category:** development | **License:** MIT
 
-[Full Documentation →](https://docs.example.com/plugins/frontend-mobile-development.html)
+[Full Documentation →](https://myclaude.readthedocs.io/en/latest/plugins/frontend-mobile-development.html)
 
 ## Agents (2)
 
@@ -43,7 +43,7 @@ See the full documentation for integration patterns and compatible plugins.
 
 ## Documentation
 
-For comprehensive documentation, see: [Plugin Documentation](https://docs.example.com/plugins/frontend-mobile-development.html)
+For comprehensive documentation, see: [Plugin Documentation](https://myclaude.readthedocs.io/en/latest/plugins/frontend-mobile-development.html)
 
 To build documentation locally:
 

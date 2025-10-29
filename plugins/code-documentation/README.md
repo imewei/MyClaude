@@ -4,7 +4,7 @@ Comprehensive code documentation, explanation, and generation with scientific co
 
 **Version:** 1.0.0 | **Category:** uncategorized | **License:** MIT
 
-[Full Documentation →](https://docs.example.com/plugins/code-documentation.html)
+[Full Documentation →](https://myclaude.readthedocs.io/en/latest/plugins/code-documentation.html)
 
 ## Agents (3)
 
@@ -61,7 +61,7 @@ See the full documentation for integration patterns and compatible plugins.
 
 ## Documentation
 
-For comprehensive documentation, see: [Plugin Documentation](https://docs.example.com/plugins/code-documentation.html)
+For comprehensive documentation, see: [Plugin Documentation](https://myclaude.readthedocs.io/en/latest/plugins/code-documentation.html)
 
 To build documentation locally:
 

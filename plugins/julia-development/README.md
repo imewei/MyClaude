@@ -4,7 +4,7 @@ Comprehensive Julia development plugin with specialized agents for high-performa
 
 **Version:** 1.0.0 | **Category:** scientific-computing | **License:** MIT
 
-[Full Documentation →](https://docs.example.com/plugins/julia-development.html)
+[Full Documentation →](https://myclaude.readthedocs.io/en/latest/plugins/julia-development.html)
 
 ## Agents (4)
 
@@ -159,7 +159,7 @@ See the full documentation for integration patterns and compatible plugins.
 
 ## Documentation
 
-For comprehensive documentation, see: [Plugin Documentation](https://docs.example.com/plugins/julia-development.html)
+For comprehensive documentation, see: [Plugin Documentation](https://myclaude.readthedocs.io/en/latest/plugins/julia-development.html)
 
 To build documentation locally:
 

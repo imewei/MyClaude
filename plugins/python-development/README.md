@@ -4,7 +4,7 @@ Master Python 3.12+ with modern tools, async patterns, FastAPI/Django frameworks
 
 **Version:** 1.0.0 | **Category:** development | **License:** MIT
 
-[Full Documentation →](https://docs.example.com/plugins/python-development.html)
+[Full Documentation →](https://myclaude.readthedocs.io/en/latest/plugins/python-development.html)
 
 ## Agents (3)
 
@@ -71,7 +71,7 @@ See the full documentation for integration patterns and compatible plugins.
 
 ## Documentation
 
-For comprehensive documentation, see: [Plugin Documentation](https://docs.example.com/plugins/python-development.html)
+For comprehensive documentation, see: [Plugin Documentation](https://myclaude.readthedocs.io/en/latest/plugins/python-development.html)
 
 To build documentation locally:
 
