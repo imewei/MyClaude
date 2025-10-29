@@ -234,6 +234,13 @@ docs/_build/
 docs/.doctrees/
 docs/_static/generated/
 
+# Documentation development utilities (testing/fixing tools)
+tools/test_*.py
+tools/fix_*.py
+tools/generate_*.py
+tools/readme_regenerator.py
+test_gen.py
+
 # MkDocs
 site/
 
