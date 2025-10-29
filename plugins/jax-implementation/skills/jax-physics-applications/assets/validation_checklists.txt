@@ -1,0 +1,139 @@
+Physics Validation Checklists - Quick Reference
+================================================
+
+MOLECULAR DYNAMICS QUICK CHECKS
+--------------------------------
+
+Energy Conservation (NVE):
+  ✓ Plot E_total vs time → should be flat line
+  ✓ Compute drift: |E_final - E_initial| / E_initial < 0.0001
+  ✓ Check E_kinetic + E_potential = E_total (balance)
+
+Temperature (NVT):
+  ✓ Target T = 1.0 → Actual T = 1.0 ± 0.01
+  ✓ Histogram of T → Gaussian distribution
+  ✓ Autocorrelation → exponential decay (no oscillations)
+
+Structural:
+  ✓ g(r) first peak at r ≈ 2^(1/6)σ (LJ minimum)
+  ✓ Coordination number ≈ 12 (FCC) or 8 (BCC)
+  ✓ No particles with r < 0.9σ (overlap check)
+
+
+CFD QUICK CHECKS
+----------------
+
+Mass Conservation:
+  ✓ ∇·u = 0 everywhere (incompressible)
+  ✓ |∇·u|_max < 1e-10
+  ✓ Integrate flux through boundaries = 0
+
+Benchmark Tests:
+  ✓ Poiseuille flow: u_max = 1.5·u_avg
+  ✓ Lid-driven cavity: Primary vortex at (0.5, 0.6)
+  ✓ Taylor-Green: E(t) = E₀·exp(-2νk²t)
+
+Stability:
+  ✓ CFL = u·Δt/Δx < 1.0
+  ✓ Diffusion number = ν·Δt/Δx² < 0.5
+  ✓ No checkerboard patterns
+
+
+PINN QUICK CHECKS
+-----------------
+
+PDE Residual:
+  ✓ Mean |R_PDE| < 0.001
+  ✓ Max |R_PDE| < 0.01
+  ✓ Plot residual heatmap → no hot spots
+
+Boundary Conditions:
+  ✓ Dirichlet: |u - u_BC| < 1e-5
+  ✓ Neumann: |∂u/∂n - g| < 1e-4
+  ✓ Periodic: u(0) = u(L) exactly
+
+Training:
+  ✓ Loss decreasing monotonically
+  ✓ Validation loss not diverging
+  ✓ Gradients: 1e-6 < |∇L| < 1 (not vanishing/exploding)
+
+
+QUANTUM VQE QUICK CHECKS
+------------------------
+
+Energy:
+  ✓ E_VQE < E_exact_diagonalization
+  ✓ E_VQE variational (monotonically decreasing)
+  ✓ |E_VQE - E_exact| < 1 mHa (chemical accuracy)
+
+Circuit:
+  ✓ Parameter gradients non-zero
+  ✓ Entanglement entropy > 0 (state not product state)
+  ✓ Circuit depth < device coherence limit
+
+State:
+  ✓ ⟨ψ|ψ⟩ = 1.0 ± 1e-10 (normalization)
+  ✓ All measurement probabilities ∈ [0,1]
+
+
+MULTI-PHYSICS QUICK CHECKS
+---------------------------
+
+Interface:
+  ✓ Continuous solution: u_left(interface) = u_right(interface)
+  ✓ Flux balance: q_left = q_right
+  ✓ No discontinuous jumps in solution
+
+Conservation:
+  ✓ Global energy: ∫E dV = constant
+  ✓ Global mass: ∫ρ dV = constant
+  ✓ Momentum transfer balanced
+
+
+COMMON RED FLAGS
+----------------
+
+MD:
+  🚩 Energy increasing over time → timestep too large
+  🚩 Temperature oscillating → thermostat tau too small
+  🚩 Particles escaping box → force calculation bug
+  🚩 RDF has no structure → system not equilibrated
+
+CFD:
+  🚩 Velocity increasing unbounded → instability
+  🚩 Checkerboard pressure field → use staggered grid
+  🚩 ∇·u = 1e-5 → pressure solver not converged
+  🚩 Vortices at wrong location → boundary conditions wrong
+
+PINN:
+  🚩 Loss plateaus early → learning rate too small or too large
+  🚩 One loss term >> others → weight imbalance
+  🚩 Solution smooth but wrong → network not expressive enough
+  🚩 Solution oscillatory → over-parameterized, use regularization
+
+VQE:
+  🚩 Energy > ground state → barren plateau (gradients vanishing)
+  🚩 Energy not decreasing → optimizer stuck in local minimum
+  🚩 Variance large → circuit not converged, need more layers
+
+
+VALIDATION WORKFLOW
+-------------------
+
+Level 1: Code verification (simplified problems)
+  → Analytical solutions (if available)
+  → Convergence tests (refine grid/timestep)
+
+Level 2: Method verification (benchmarks)
+  → Published benchmark cases
+  → Comparison with established codes
+
+Level 3: Physical validation
+  → Experimental data
+  → Physical consistency checks
+  → Sensitivity analysis
+
+Level 4: Production validation
+  → Uncertainty quantification
+  → Error bounds estimation
+  → Robustness to perturbations

@@ -1,0 +1,263 @@
+{
+  "name": "multi-platform-apps",
+  "version": "3.0.0",
+  "description": "Comprehensive multi-platform application development with Flutter, React Native, iOS, Android, and web. Expert agents for frontend, backend, mobile, and UI/UX development.",
+  "author": "Claude Code Team",
+  "repository": "https://github.com/anthropics/claude-code",
+  "license": "MIT",
+  "tags": [
+    "multi-platform",
+    "flutter",
+    "react-native",
+    "ios",
+    "android",
+    "mobile",
+    "web",
+    "frontend",
+    "backend",
+    "ui-ux"
+  ],
+  "agents": [
+    {
+      "name": "flutter-expert",
+      "file": "agents/flutter-expert.md",
+      "description": "Master Flutter development with Dart 3, advanced widgets, and multi-platform deployment",
+      "model": "sonnet",
+      "capabilities": [
+        "flutter",
+        "dart",
+        "mobile",
+        "web",
+        "desktop",
+        "cross-platform"
+      ],
+      "complexity_hints": {
+        "simple_patterns": [
+          "widget",
+          "button",
+          "basic ui",
+          "simple component",
+          "hello world",
+          "getting started"
+        ],
+        "complex_patterns": [
+          "architecture",
+          "state management",
+          "performance",
+          "custom render",
+          "platform channel"
+        ]
+      }
+    },
+    {
+      "name": "backend-architect",
+      "file": "agents/backend-architect.md",
+      "description": "Expert backend architect for scalable API design and microservices",
+      "model": "sonnet",
+      "capabilities": [
+        "backend",
+        "api-design",
+        "microservices",
+        "architecture",
+        "scalability"
+      ],
+      "complexity_hints": {
+        "simple_patterns": [
+          "rest endpoint",
+          "crud api",
+          "basic route",
+          "simple query"
+        ],
+        "complex_patterns": [
+          "architecture",
+          "scalable",
+          "distributed",
+          "microservice",
+          "event-driven"
+        ]
+      }
+    },
+    {
+      "name": "ios-developer",
+      "file": "agents/ios-developer.md",
+      "description": "Native iOS development with Swift/SwiftUI for App Store applications",
+      "model": "sonnet",
+      "capabilities": [
+        "ios",
+        "swift",
+        "swiftui",
+        "uikit",
+        "native"
+      ],
+      "complexity_hints": {
+        "simple_patterns": [
+          "view",
+          "button",
+          "basic ui",
+          "simple screen"
+        ],
+        "complex_patterns": [
+          "architecture",
+          "core data",
+          "networking",
+          "concurrency"
+        ]
+      }
+    },
+    {
+      "name": "mobile-developer",
+      "file": "agents/mobile-developer.md",
+      "description": "React Native and cross-platform mobile development expert",
+      "model": "sonnet",
+      "capabilities": [
+        "react-native",
+        "mobile",
+        "cross-platform",
+        "javascript",
+        "typescript"
+      ],
+      "complexity_hints": {
+        "simple_patterns": [
+          "component",
+          "screen",
+          "basic ui",
+          "navigation"
+        ],
+        "complex_patterns": [
+          "architecture",
+          "performance",
+          "native module",
+          "bridge"
+        ]
+      }
+    },
+    {
+      "name": "frontend-developer",
+      "file": "agents/frontend-developer.md",
+      "description": "React/Next.js web development with modern frontend architecture",
+      "model": "sonnet",
+      "capabilities": [
+        "react",
+        "nextjs",
+        "frontend",
+        "web",
+        "typescript"
+      ],
+      "complexity_hints": {
+        "simple_patterns": [
+          "component",
+          "page",
+          "basic ui",
+          "form"
+        ],
+        "complex_patterns": [
+          "architecture",
+          "ssr",
+          "performance",
+          "state management"
+        ]
+      }
+    },
+    {
+      "name": "ui-ux-designer",
+      "file": "agents/ui-ux-designer.md",
+      "description": "UI/UX design systems, accessibility, and user experience expert",
+      "model": "sonnet",
+      "capabilities": [
+        "ui-ux",
+        "design-systems",
+        "accessibility",
+        "prototyping"
+      ],
+      "complexity_hints": {
+        "simple_patterns": [
+          "mockup",
+          "wireframe",
+          "color scheme",
+          "basic design"
+        ],
+        "complex_patterns": [
+          "design system",
+          "accessibility audit",
+          "user research",
+          "interaction design"
+        ]
+      }
+    }
+  ],
+  "commands": [
+    {
+      "name": "multi-platform",
+      "file": "commands/multi-platform.md",
+      "description": "Scaffold and manage multi-platform application projects"
+    }
+  ],
+  "skills": [
+    {
+      "name": "flutter-development",
+      "file": "skills/flutter-development/SKILL.md",
+      "description": "Comprehensive Flutter development patterns and best practices",
+      "difficulty": "intermediate",
+      "estimated_time_hours": 5
+    },
+    {
+      "name": "react-native-patterns",
+      "file": "skills/react-native-patterns/SKILL.md",
+      "description": "Modern React Native patterns and performance optimization",
+      "difficulty": "intermediate",
+      "estimated_time_hours": 6
+    },
+    {
+      "name": "ios-best-practices",
+      "file": "skills/ios-best-practices/SKILL.md",
+      "description": "Native iOS development with SwiftUI and Swift best practices",
+      "difficulty": "intermediate",
+      "estimated_time_hours": 5
+    },
+    {
+      "name": "multi-platform-architecture",
+      "file": "skills/multi-platform-architecture/SKILL.md",
+      "description": "Strategic patterns for multi-platform application architecture",
+      "difficulty": "advanced",
+      "estimated_time_hours": 7
+    }
+  ],
+  "metadata": {
+    "performance_optimizations": {
+      "model_selection": "adaptive",
+      "caching_enabled": true,
+      "lazy_loading": true
+    },
+    "quality_assurance": {
+      "validation_enabled": true,
+      "ci_cd_integrated": true,
+      "error_detection": "pre-deployment"
+    },
+    "documentation": {
+      "readme": true,
+      "changelog": true,
+      "reference_materials": false
+    },
+    "optimization_status": {
+      "phase_1": "complete",
+      "phase_2": "complete",
+      "phase_3": "complete"
+    }
+  },
+  "requirements": {
+    "claude_code": ">=1.0.0"
+  },
+  "keywords": [
+    "flutter",
+    "react-native",
+    "ios",
+    "android",
+    "mobile-development",
+    "cross-platform",
+    "web-development",
+    "frontend",
+    "backend",
+    "ui-ux",
+    "multi-platform"
+  ]
+}

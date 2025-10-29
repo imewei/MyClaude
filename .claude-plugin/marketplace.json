@@ -3,21 +3,25 @@
   "owner": {
     "name": "Wei Chen",
     "email": "wchen@anl.gov",
-    "url": "https://github.com/Wei Chen"
+    "url": "https://github.com/imewei/MyClaude"
   },
   "metadata": {
     "description": "Custom marketplace for scientific computing workflows with specialized HPC/JAX/ML agents and selected claude-code-workflows plugins",
-    "version": "0.1.0",
-    "based_on": "claude-code-workflows v1.2.0"
+    "version": "2.2.0",
+    "based_on": "claude-code-workflows v1.2.0",
+    "reorganization_date": "2025-10-27",
+    "last_updated": "2025-10-27",
+    "total_plugins": 29,
+    "note": "Added ai-reasoning and quality-engineering plugins; reorganized developer-essentials"
   },
   "plugins": [
 {
   "name": "agent-orchestration",
   "source": "./plugins/agent-orchestration",
-  "description": "Multi-agent system optimization, agent improvement workflows, and context management",
-  "version": "1.2.0-custom",
+  "description": "Multi-agent system optimization, agent improvement workflows, and context management with multi-agent-orchestrator",
+  "version": "1.2.1",
   "author": {
-    "name": "Seth Hobson",
+    "name": "Seth Hobson & Wei Chen",
     "url": "https://github.com/wshobson"
   },
   "homepage": "https://github.com/wshobson/agents",
@@ -36,7 +40,8 @@
     "./commands/improve-agent.md"
   ],
   "agents": [
-    "./agents/context-manager.md"
+    "./agents/context-manager.md",
+    "./agents/multi-agent-orchestrator.md"
   ]
 }
 ,
@@ -44,7 +49,7 @@
   "name": "backend-development",
   "source": "./plugins/backend-development",
   "description": "Backend API design, GraphQL architecture, and test-driven backend development",
-  "version": "1.2.2-custom",
+  "version": "1.2.2",
   "author": {
     "name": "Seth Hobson",
     "url": "https://github.com/wshobson"
@@ -79,10 +84,10 @@
 {
   "name": "cicd-automation",
   "source": "./plugins/cicd-automation",
-  "description": "CI/CD pipeline configuration, GitHub Actions/GitLab CI workflow setup, and automated deployment pipeline orchestration",
-  "version": "1.2.1-custom",
+  "description": "CI/CD pipeline configuration, GitHub Actions/GitLab CI workflow setup, and automated deployment with fix-commit-errors command",
+  "version": "1.2.2",
   "author": {
-    "name": "Seth Hobson",
+    "name": "Seth Hobson & Wei Chen",
     "url": "https://github.com/wshobson"
   },
   "homepage": "https://github.com/wshobson/agents",
@@ -98,7 +103,8 @@
   "category": "infrastructure",
   "strict": false,
   "commands": [
-    "./commands/workflow-automate.md"
+    "./commands/workflow-automate.md",
+    "./commands/fix-commit-errors.md"
   ],
   "agents": [
     "./agents/deployment-engineer.md",
@@ -111,17 +117,18 @@
     "./skills/deployment-pipeline-design",
     "./skills/github-actions-templates",
     "./skills/gitlab-ci-patterns",
-    "./skills/secrets-management"
+    "./skills/secrets-management",
+    "./skills/security-ci-template"
   ]
 }
 ,
 {
   "name": "code-documentation",
   "source": "./plugins/code-documentation",
-  "description": "Documentation generation, code explanation, and technical writing with automated doc generation and tutorial creation",
-  "version": "1.2.0-custom",
+  "description": "Documentation generation, code explanation, and technical writing with automated doc generation, tutorial creation, and Sphinx updates",
+  "version": "1.2.1",
   "author": {
-    "name": "Seth Hobson",
+    "name": "Seth Hobson & Wei Chen",
     "url": "https://github.com/wshobson"
   },
   "homepage": "https://github.com/wshobson/agents",
@@ -131,13 +138,15 @@
     "documentation",
     "code-explanation",
     "technical-writing",
-    "tutorials"
+    "tutorials",
+    "sphinx"
   ],
   "category": "documentation",
   "strict": false,
   "commands": [
     "./commands/doc-generate.md",
-    "./commands/code-explain.md"
+    "./commands/code-explain.md",
+    "./commands/update-docs.md"
   ],
   "agents": [
     "./agents/docs-architect.md",
@@ -147,10 +156,42 @@
 }
 ,
 {
+  "name": "code-migration",
+  "source": "./plugins/code-migration",
+  "description": "Legacy scientific code modernization with cross-language migration for Fortran/C/MATLAB to Python/JAX/Julia while preserving numerical accuracy",
+  "version": "1.0.0",
+  "author": {
+    "name": "Wei Chen",
+    "url": "https://github.com/Wei Chen"
+  },
+  "homepage": "https://github.com/Wei Chen/scientific-computing-workflows",
+  "repository": "https://github.com/Wei Chen/scientific-computing-workflows",
+  "license": "MIT",
+  "keywords": [
+    "code-migration",
+    "legacy-modernization",
+    "fortran",
+    "matlab",
+    "python",
+    "jax",
+    "julia",
+    "scientific-computing"
+  ],
+  "category": "modernization",
+  "strict": false,
+  "commands": [
+    "./commands/adopt-code.md"
+  ],
+  "agents": [
+    "./agents/scientific-code-adoptor.md"
+  ]
+}
+,
+{
   "name": "codebase-cleanup",
   "source": "./plugins/codebase-cleanup",
   "description": "Technical debt reduction, dependency updates, and code refactoring automation",
-  "version": "1.2.0-custom",
+  "version": "1.2.0",
   "author": {
     "name": "Seth Hobson",
     "url": "https://github.com/wshobson"
@@ -181,7 +222,7 @@
   "name": "comprehensive-review",
   "source": "./plugins/comprehensive-review",
   "description": "Multi-perspective code analysis covering architecture, security, and best practices",
-  "version": "1.2.1-custom",
+  "version": "1.2.1",
   "author": {
     "name": "Seth Hobson",
     "url": "https://github.com/wshobson"
@@ -209,89 +250,60 @@
   ]
 }
 ,
-    {
-      "name": "custom-scientific-computing",
-      "source": "./plugins/custom-scientific-computing",
-      "description": "Specialized agents for HPC, JAX, ML, and scientific computing workflows with custom commands for scientific development",
-      "version": "0.1.0",
-      "author": {
-        "name": "Wei Chen",
-        "url": "https://github.com/Wei Chen"
-      },
-      "homepage": "https://github.com/Wei Chen/scientific-computing-workflows",
-      "repository": "https://github.com/Wei Chen/scientific-computing-workflows",
-      "license": "MIT",
-      "keywords": [
-        "scientific-computing",
-        "hpc",
-        "jax",
-        "machine-learning",
-        "numerical-methods",
-        "simulation",
-        "custom"
-      ],
-      "category": "ai-ml",
-      "strict": false,
-      "commands": [
-        "./commands/adopt-code.md",
-        "./commands/double-check.md",
-        "./commands/explain-scientific.md",
-        "./commands/fix-commit-errors.md",
-        "./commands/fix-imports.md",
-        "./commands/lint-plugins.md",
-        "./commands/reflection.md",
-        "./commands/run-all-tests.md",
-        "./commands/sci-ci-setup.md",
-        "./commands/sci-multi-optimize.md",
-        "./commands/sci-test-gen.md",
-        "./commands/ultra-think.md",
-        "./commands/update-claudemd.md",
-        "./commands/update-docs.md"
-      ],
-      "agents": [
-        "./agents/command-systems-engineer.md",
-        "./agents/correlation-function-expert.md",
-        "./agents/database-workflow-engineer.md",
-        "./agents/hpc-numerical-coordinator.md",
-        "./agents/jax-pro.md",
-        "./agents/jax-scientific-domains.md",
-        "./agents/multi-agent-orchestrator.md",
-        "./agents/neural-architecture-engineer.md",
-        "./agents/research-intelligence-master.md",
-        "./agents/scientific-code-adoptor.md",
-        "./agents/simulation-expert.md",
-        "./agents/visualization-interface-master.md"
-      ]
-    }
-,
 {
-  "name": "data-engineering",
-  "source": "./plugins/data-engineering",
-  "description": "ETL pipeline construction, data warehouse design, batch processing workflows, and data-driven feature development",
-  "version": "1.2.1-custom",
+  "name": "custom-scientific-computing",
+  "source": "./plugins/custom-scientific-computing",
+  "description": "Meta-cognitive tools and remaining scientific computing workflows including ultra-think, reflection, and double-check validation",
+  "version": "2.0.0",
   "author": {
-    "name": "Seth Hobson",
-    "url": "https://github.com/wshobson"
+    "name": "Wei Chen",
+    "url": "https://github.com/Wei Chen"
   },
-  "homepage": "https://github.com/wshobson/agents",
-  "repository": "https://github.com/wshobson/agents",
+  "homepage": "https://github.com/Wei Chen/scientific-computing-workflows",
+  "repository": "https://github.com/Wei Chen/scientific-computing-workflows",
   "license": "MIT",
   "keywords": [
-    "data-engineering",
-    "etl",
-    "data-pipeline",
-    "data-warehouse",
-    "batch-processing"
+    "meta-cognitive",
+    "reasoning",
+    "validation",
+    "reflection",
+    "plugin-tools"
   ],
-  "category": "data",
+  "category": "ai-ml",
   "strict": false,
   "commands": [
-    "./commands/data-driven-feature.md",
-    "./commands/data-pipeline.md"
+    "./commands/double-check.md",
+    "./commands/ultra-think.md",
+    "./commands/reflection.md",
+    "./commands/lint-plugins.md"
+  ]
+}
+,
+{
+  "name": "data-visualization",
+  "source": "./plugins/data-visualization",
+  "description": "Scientific data visualization, UX design, and immersive AR/VR interfaces for compelling visual narratives",
+  "version": "1.0.0",
+  "author": {
+    "name": "Wei Chen",
+    "url": "https://github.com/Wei Chen"
+  },
+  "homepage": "https://github.com/Wei Chen/scientific-computing-workflows",
+  "repository": "https://github.com/Wei Chen/scientific-computing-workflows",
+  "license": "MIT",
+  "keywords": [
+    "visualization",
+    "data-viz",
+    "d3js",
+    "plotly",
+    "ar-vr",
+    "scientific-computing",
+    "ui-ux"
   ],
+  "category": "visualization",
+  "strict": false,
   "agents": [
-    "./agents/data-engineer.md",
-    "./agents/backend-architect.md"
+    "./agents/visualization-interface.md"
   ]
 }
 ,
@@ -299,7 +311,7 @@
   "name": "debugging-toolkit",
   "source": "./plugins/debugging-toolkit",
   "description": "Interactive debugging, developer experience optimization, and smart debugging workflows",
-  "version": "1.2.0-custom",
+  "version": "1.2.0",
   "author": {
     "name": "Seth Hobson",
     "url": "https://github.com/wshobson"
@@ -325,10 +337,114 @@
 }
 ,
 {
+  "name": "ai-reasoning",
+  "source": "./plugins/ai-reasoning",
+  "description": "Advanced AI-powered cognitive tools for problem-solving, meta-analysis, and structured reasoning",
+  "version": "1.0.0",
+  "author": {
+    "name": "Wei Chen & Seth Hobson",
+    "url": "https://github.com/wshobson"
+  },
+  "homepage": "https://github.com/wshobson/agents",
+  "repository": "https://github.com/wshobson/agents",
+  "license": "MIT",
+  "keywords": [
+    "reasoning",
+    "thinking",
+    "reflection",
+    "meta-cognition",
+    "problem-solving",
+    "analysis",
+    "ultra-think"
+  ],
+  "category": "ai-ml",
+  "strict": false,
+  "commands": [
+    "./commands/ultra-think.md",
+    "./commands/reflection.md"
+  ],
+  "skills": [
+    "./skills/comprehensive-reflection-framework",
+    "./skills/meta-cognitive-reflection",
+    "./skills/structured-reasoning"
+  ]
+}
+,
+{
+  "name": "deep-learning",
+  "source": "./plugins/deep-learning",
+  "description": "Comprehensive deep learning expertise: neural network theory, mathematical foundations, architecture design, multi-framework implementation (Flax, Equinox, Haiku, PyTorch), training diagnostics, and research translation with 6 practical skills",
+  "version": "1.2.0",
+  "author": {
+    "name": "Wei Chen",
+    "url": "https://github.com/Wei Chen"
+  },
+  "homepage": "https://github.com/Wei Chen/scientific-computing-workflows",
+  "repository": "https://github.com/Wei Chen/scientific-computing-workflows",
+  "license": "MIT",
+  "keywords": [
+    "deep-learning",
+    "neural-networks",
+    "architecture",
+    "theory",
+    "optimization",
+    "flax",
+    "equinox",
+    "haiku",
+    "transformers",
+    "training",
+    "debugging",
+    "research",
+    "mathematics",
+    "deployment"
+  ],
+  "category": "ai-ml",
+  "strict": false,
+  "agents": [
+    "./agents/neural-architecture-engineer.md",
+    "./agents/neural-network-master.md"
+  ],
+  "skills": [
+    "./skills/neural-network-mathematics",
+    "./skills/training-diagnostics",
+    "./skills/research-paper-implementation",
+    "./skills/model-optimization-deployment",
+    "./skills/neural-architecture-patterns",
+    "./skills/deep-learning-experimentation"
+  ]
+}
+,
+{
+  "name": "developer-essentials",
+  "source": "./plugins/developer-essentials",
+  "description": "Essential cross-cutting developer tools and patterns for modern software development",
+  "version": "2.0.0",
+  "author": {
+    "name": "Wei Chen & Seth Hobson",
+    "url": "https://github.com/wshobson"
+  },
+  "homepage": "https://github.com/wshobson/agents",
+  "repository": "https://github.com/wshobson/agents",
+  "license": "MIT",
+  "keywords": [
+    "developer-tools",
+    "monorepo",
+    "cross-cutting",
+    "essentials"
+  ],
+  "category": "development",
+  "strict": false,
+  "commands": [],
+  "skills": [
+    "./skills/monorepo-management"
+  ]
+}
+,
+{
   "name": "framework-migration",
   "source": "./plugins/framework-migration",
   "description": "Framework updates, migration planning, and architectural transformation workflows",
-  "version": "1.2.2-custom",
+  "version": "1.2.2",
   "author": {
     "name": "Seth Hobson",
     "url": "https://github.com/wshobson"
@@ -366,7 +482,7 @@
   "name": "frontend-mobile-development",
   "source": "./plugins/frontend-mobile-development",
   "description": "Frontend UI development and mobile application implementation across platforms",
-  "version": "1.2.0-custom",
+  "version": "1.2.0",
   "author": {
     "name": "Seth Hobson",
     "url": "https://github.com/wshobson"
@@ -396,7 +512,7 @@
   "name": "git-pr-workflows",
   "source": "./plugins/git-pr-workflows",
   "description": "Git workflow automation, pull request enhancement, and team onboarding processes",
-  "version": "1.2.1-custom",
+  "version": "1.2.1",
   "author": {
     "name": "Seth Hobson",
     "url": "https://github.com/wshobson"
@@ -424,32 +540,97 @@
 }
 ,
 {
-  "name": "incident-response",
-  "source": "./plugins/incident-response",
-  "description": "Production incident management, triage workflows, and automated incident resolution",
-  "version": "1.2.1-custom",
+  "name": "hpc-computing",
+  "source": "./plugins/hpc-computing",
+  "description": "High-performance computing and numerical methods for scientific computing across Python, Julia/SciML, C++, and Rust",
+  "version": "1.0.0",
   "author": {
-    "name": "Seth Hobson",
-    "url": "https://github.com/wshobson"
+    "name": "Wei Chen",
+    "url": "https://github.com/Wei Chen"
   },
-  "homepage": "https://github.com/wshobson/agents",
-  "repository": "https://github.com/wshobson/agents",
+  "homepage": "https://github.com/Wei Chen/scientific-computing-workflows",
+  "repository": "https://github.com/Wei Chen/scientific-computing-workflows",
   "license": "MIT",
   "keywords": [
-    "incident-response",
-    "production",
-    "sre",
-    "troubleshooting"
+    "hpc",
+    "high-performance-computing",
+    "numerical-methods",
+    "julia",
+    "sciml",
+    "scientific-computing"
   ],
-  "category": "operations",
+  "category": "scientific",
+  "strict": false,
+  "agents": [
+    "./agents/hpc-numerical-coordinator.md"
+  ]
+}
+,
+{
+  "name": "jax-implementation",
+  "source": "./plugins/jax-implementation",
+  "description": "JAX programming expertise for functional transformations (jit/vmap/pmap), Flax NNX, Optax, and JAX-based physics applications (quantum, CFD, MD)",
+  "version": "1.0.0",
+  "author": {
+    "name": "Wei Chen",
+    "url": "https://github.com/Wei Chen"
+  },
+  "homepage": "https://github.com/Wei Chen/scientific-computing-workflows",
+  "repository": "https://github.com/Wei Chen/scientific-computing-workflows",
+  "license": "MIT",
+  "keywords": [
+    "jax",
+    "flax",
+    "optax",
+    "functional-programming",
+    "quantum-computing",
+    "cfd",
+    "molecular-dynamics",
+    "scientific-computing"
+  ],
+  "category": "ai-ml",
+  "strict": false,
+  "agents": [
+    "./agents/jax-pro.md",
+    "./agents/jax-scientific-domains.md"
+  ]
+}
+,
+{
+  "name": "javascript-typescript",
+  "source": "./plugins/javascript-typescript",
+  "description": "Modern JavaScript/TypeScript development with ES6+, async patterns, Node.js backends, and advanced TypeScript type systems",
+  "version": "1.0.0",
+  "author": {
+    "name": "Wei Chen",
+    "url": "https://github.com/Wei Chen"
+  },
+  "homepage": "https://github.com/Wei Chen/scientific-computing-workflows",
+  "repository": "https://github.com/Wei Chen/scientific-computing-workflows",
+  "license": "MIT",
+  "keywords": [
+    "javascript",
+    "typescript",
+    "nodejs",
+    "es6",
+    "async",
+    "backend",
+    "testing"
+  ],
+  "category": "development",
   "strict": false,
   "commands": [
-    "./commands/incident-response.md",
-    "./commands/smart-fix.md"
+    "./commands/typescript-scaffold.md"
   ],
   "agents": [
-    "./agents/incident-responder.md",
-    "./agents/devops-troubleshooter.md"
+    "./agents/javascript-pro.md",
+    "./agents/typescript-pro.md"
+  ],
+  "skills": [
+    "./skills/javascript-testing-patterns",
+    "./skills/modern-javascript-patterns",
+    "./skills/nodejs-backend-patterns",
+    "./skills/typescript-advanced-types"
   ]
 }
 ,
@@ -457,7 +638,7 @@
   "name": "machine-learning-ops",
   "source": "./plugins/machine-learning-ops",
   "description": "ML model training pipelines, hyperparameter tuning, model deployment automation, experiment tracking, and MLOps workflows",
-  "version": "1.2.1-custom",
+  "version": "1.2.1",
   "author": {
     "name": "Seth Hobson",
     "url": "https://github.com/wshobson"
@@ -489,10 +670,38 @@
 }
 ,
 {
+  "name": "molecular-simulation",
+  "source": "./plugins/molecular-simulation",
+  "description": "Molecular dynamics and multiscale simulation with LAMMPS, GROMACS, ML force fields, and materials property prediction",
+  "version": "1.0.0",
+  "author": {
+    "name": "Wei Chen",
+    "url": "https://github.com/Wei Chen"
+  },
+  "homepage": "https://github.com/Wei Chen/scientific-computing-workflows",
+  "repository": "https://github.com/Wei Chen/scientific-computing-workflows",
+  "license": "MIT",
+  "keywords": [
+    "molecular-dynamics",
+    "simulation",
+    "lammps",
+    "gromacs",
+    "ml-force-fields",
+    "materials-science",
+    "scientific-computing"
+  ],
+  "category": "scientific",
+  "strict": false,
+  "agents": [
+    "./agents/simulation-expert.md"
+  ]
+}
+,
+{
   "name": "multi-platform-apps",
   "source": "./plugins/multi-platform-apps",
   "description": "Cross-platform application development coordinating web, iOS, Android, and desktop implementations",
-  "version": "1.2.1-custom",
+  "version": "1.2.1",
   "author": {
     "name": "Seth Hobson",
     "url": "https://github.com/wshobson"
@@ -527,7 +736,7 @@
   "name": "observability-monitoring",
   "source": "./plugins/observability-monitoring",
   "description": "Metrics collection, logging infrastructure, distributed tracing, SLO implementation, and monitoring dashboards",
-  "version": "1.2.1-custom",
+  "version": "1.2.1",
   "author": {
     "name": "Seth Hobson",
     "url": "https://github.com/wshobson"
@@ -561,17 +770,177 @@
     "./skills/distributed-tracing",
     "./skills/grafana-dashboards",
     "./skills/prometheus-configuration",
-    "./skills/slo-implementation"
+    "./skills/slo-implementation",
+    "./skills/airflow-scientific-workflows"
+  ]
+}
+,
+{
+  "name": "python-development",
+  "source": "./plugins/python-development",
+  "description": "Python development with FastAPI, Django, async patterns, testing, packaging, and performance optimization",
+  "version": "1.0.0",
+  "author": {
+    "name": "Wei Chen",
+    "url": "https://github.com/Wei Chen"
+  },
+  "homepage": "https://github.com/Wei Chen/scientific-computing-workflows",
+  "repository": "https://github.com/Wei Chen/scientific-computing-workflows",
+  "license": "MIT",
+  "keywords": [
+    "python",
+    "fastapi",
+    "django",
+    "async",
+    "testing",
+    "packaging",
+    "performance"
+  ],
+  "category": "development",
+  "strict": false,
+  "commands": [
+    "./commands/python-scaffold.md"
+  ],
+  "agents": [
+    "./agents/python-pro.md",
+    "./agents/fastapi-pro.md",
+    "./agents/django-pro.md"
+  ],
+  "skills": [
+    "./skills/async-python-patterns",
+    "./skills/python-packaging",
+    "./skills/python-performance-optimization",
+    "./skills/python-testing-patterns",
+    "./skills/uv-package-manager"
+  ]
+}
+,
+{
+  "name": "research-methodology",
+  "source": "./plugins/research-methodology",
+  "description": "Research intelligence, methodology design, literature analysis, and evidence-based insights for scientific investigation",
+  "version": "1.0.0",
+  "author": {
+    "name": "Wei Chen",
+    "url": "https://github.com/Wei Chen"
+  },
+  "homepage": "https://github.com/Wei Chen/scientific-computing-workflows",
+  "repository": "https://github.com/Wei Chen/scientific-computing-workflows",
+  "license": "MIT",
+  "keywords": [
+    "research",
+    "methodology",
+    "literature-review",
+    "scientific-research",
+    "evidence-based"
+  ],
+  "category": "research",
+  "strict": false,
+  "agents": [
+    "./agents/research-intelligence.md"
+  ]
+}
+,
+{
+  "name": "statistical-physics",
+  "source": "./plugins/statistical-physics",
+  "description": "Statistical physics and correlation function analysis for experimental data and simulations",
+  "version": "1.0.0",
+  "author": {
+    "name": "Wei Chen",
+    "url": "https://github.com/Wei Chen"
+  },
+  "homepage": "https://github.com/Wei Chen/scientific-computing-workflows",
+  "repository": "https://github.com/Wei Chen/scientific-computing-workflows",
+  "license": "MIT",
+  "keywords": [
+    "statistical-physics",
+    "correlation-functions",
+    "fft-analysis",
+    "experimental-data",
+    "scientific-computing"
+  ],
+  "category": "scientific",
+  "strict": false,
+  "agents": [
+    "./agents/correlation-function-expert.md"
+  ]
+}
+,
+{
+  "name": "systems-programming",
+  "source": "./plugins/systems-programming",
+  "description": "Systems programming with Rust, C, C++, and Go for high-performance, low-level, and systems-level development",
+  "version": "1.0.0",
+  "author": {
+    "name": "Wei Chen",
+    "url": "https://github.com/Wei Chen"
+  },
+  "homepage": "https://github.com/Wei Chen/scientific-computing-workflows",
+  "repository": "https://github.com/Wei Chen/scientific-computing-workflows",
+  "license": "MIT",
+  "keywords": [
+    "systems-programming",
+    "rust",
+    "c",
+    "cpp",
+    "golang",
+    "performance",
+    "low-level"
+  ],
+  "category": "development",
+  "strict": false,
+  "commands": [
+    "./commands/rust-project.md"
+  ],
+  "agents": [
+    "./agents/rust-pro.md",
+    "./agents/c-pro.md",
+    "./agents/cpp-pro.md",
+    "./agents/golang-pro.md"
+  ]
+}
+,
+{
+  "name": "quality-engineering",
+  "source": "./plugins/quality-engineering",
+  "description": "Comprehensive quality assurance, validation, and correctness verification tools",
+  "version": "1.0.0",
+  "author": {
+    "name": "Wei Chen & Seth Hobson",
+    "url": "https://github.com/wshobson"
+  },
+  "homepage": "https://github.com/wshobson/agents",
+  "repository": "https://github.com/wshobson/agents",
+  "license": "MIT",
+  "keywords": [
+    "quality",
+    "validation",
+    "verification",
+    "lint",
+    "correctness",
+    "assurance",
+    "qa"
+  ],
+  "category": "quality",
+  "strict": false,
+  "commands": [
+    "./commands/double-check.md",
+    "./commands/lint-plugins.md"
+  ],
+  "skills": [
+    "./skills/comprehensive-validation-framework",
+    "./skills/plugin-syntax-validator"
   ]
 }
 ,
 {
   "name": "unit-testing",
   "source": "./plugins/unit-testing",
-  "description": "Unit and integration test automation for Python and JavaScript with debugging support",
-  "version": "1.2.0-custom",
+  "description": "Comprehensive test automation, generation, and execution with iterative fixing until 100% pass rate",
+  "version": "1.2.1",
   "author": {
-    "name": "Seth Hobson",
+    "name": "Seth Hobson & Wei Chen",
     "url": "https://github.com/wshobson"
   },
   "homepage": "https://github.com/wshobson/agents",
@@ -582,12 +951,14 @@
     "unit-tests",
     "python",
     "javascript",
-    "automation"
+    "automation",
+    "test-fixing"
   ],
   "category": "testing",
   "strict": false,
   "commands": [
-    "./commands/test-generate.md"
+    "./commands/test-generate.md",
+    "./commands/run-all-tests.md"
   ],
   "agents": [
     "./agents/test-automator.md",

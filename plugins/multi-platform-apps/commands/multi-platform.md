@@ -109,7 +109,7 @@ Build and deploy the same feature consistently across web, mobile, and desktop p
 ## Phase 3: Integration and Validation
 
 ### 5. API Documentation and Testing
-- Use Task tool with subagent_type="documentation-generation:api-documenter"
+- Use Task tool with subagent_type="code-documentation:docs-architect"
 - Prompt: "Create comprehensive API documentation including:
   - Interactive OpenAPI/Swagger documentation
   - Platform-specific integration guides
@@ -140,7 +140,7 @@ Build and deploy the same feature consistently across web, mobile, and desktop p
 - Expected output: Test report, parity matrix, performance metrics
 
 ### 7. Platform-Specific Optimizations
-- Use Task tool with subagent_type="application-performance:performance-engineer"
+- Use Task tool with subagent_type="full-stack-orchestration:performance-engineer"
 - Prompt: "Optimize each platform implementation:
   - Web: Bundle size, lazy loading, CDN setup, SEO
   - iOS: App size, launch time, memory usage, battery

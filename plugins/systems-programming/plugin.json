@@ -1,0 +1,70 @@
+{
+  "name": "systems-programming",
+  "version": "2.0.0",
+  "description": "Comprehensive systems programming with C, C++, Rust, and Go. Includes enhanced agents, project scaffolding commands, performance profiling workflows, and systems programming patterns skill.",
+  "author": {
+    "name": "Wei Chen",
+    "url": "https://github.com/Wei Chen"
+  },
+  "homepage": "https://github.com/Wei Chen/scientific-computing-workflows",
+  "repository": "https://github.com/Wei Chen/scientific-computing-workflows",
+  "license": "MIT",
+  "keywords": [
+    "systems-programming",
+    "c",
+    "cpp",
+    "rust",
+    "golang",
+    "performance",
+    "memory-management",
+    "concurrency",
+    "profiling",
+    "optimization"
+  ],
+  "category": "development",
+  "commands": [
+    {
+      "name": "/rust-project",
+      "description": "Scaffold production-ready Rust projects with proper structure, cargo tooling, and testing",
+      "status": "active"
+    },
+    {
+      "name": "/c-project",
+      "description": "Scaffold production-ready C projects with Makefile/CMake, testing, and memory safety tools",
+      "status": "active"
+    },
+    {
+      "name": "/profile-performance",
+      "description": "Comprehensive performance profiling workflow using perf, valgrind, and hardware counters",
+      "status": "active"
+    }
+  ],
+  "agents": [
+    {
+      "name": "rust-pro",
+      "description": "Master Rust 1.75+ with modern async patterns, advanced type system, and production systems programming",
+      "status": "active"
+    },
+    {
+      "name": "c-pro",
+      "description": "Master C programmer specializing in systems programming, embedded development, and memory management",
+      "status": "active"
+    },
+    {
+      "name": "cpp-pro",
+      "description": "Master C++ programmer specializing in modern C++11/14/17/20/23, templates, RAII, and performance",
+      "status": "active"
+    },
+    {
+      "name": "golang-pro",
+      "description": "Master Go programmer specializing in concurrent systems, microservices, and cloud-native development",
+      "status": "active"
+    }
+  ],
+  "skills": [
+    {
+      "name": "systems-programming-patterns",
+      "description": "Comprehensive patterns for memory management, concurrency, performance optimization, and debugging across C/C++/Rust/Go"
+    }
+  ]
+}

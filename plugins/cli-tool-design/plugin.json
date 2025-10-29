@@ -1,0 +1,51 @@
+{
+  "name": "cli-tool-design",
+  "version": "1.0.0",
+  "description": "CLI tool design and developer automation expertise: command development, interactive prompts, workflow automation, and developer productivity tools",
+  "author": {
+    "name": "Wei Chen",
+    "url": "https://github.com/Wei Chen"
+  },
+  "agents": [
+    {
+      "name": "command-systems-engineer",
+      "description": "Command systems engineer specializing in CLI tool design and developer automation. Expert in command development, interactive prompts, and workflow tools",
+      "status": "active"
+    }
+  ],
+  "skills": [
+    {
+      "name": "cli-tool-design-production",
+      "description": "Production-ready CLI tool implementation with Python Click/Typer, Node.js Commander/Inquirer, workflow automation frameworks, and shell script automation for developer workflows",
+      "status": "active"
+    },
+    {
+      "name": "programming-scripting-languages",
+      "description": "Comprehensive programming language examples for CLI development across Python (Click, Typer), Shell scripting (Bash, PowerShell), and Go (Cobra) with argument parsing, configuration, and cross-platform patterns",
+      "status": "active"
+    }
+  ],
+  "keywords": [
+    "cli",
+    "command-line",
+    "automation",
+    "developer-tools",
+    "workflow",
+    "scripting",
+    "python-click",
+    "typer",
+    "commander",
+    "inquirer",
+    "interactive-prompts",
+    "terminal",
+    "bash",
+    "shell-scripts",
+    "productivity",
+    "code-generation",
+    "scaffolding",
+    "deployment-automation",
+    "build-tools",
+    "task-runner"
+  ],
+  "category": "developer-tools"
+}

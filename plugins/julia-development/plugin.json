@@ -1,0 +1,205 @@
+{
+  "name": "julia-development",
+  "version": "1.0.0",
+  "description": "Comprehensive Julia development plugin with specialized agents for high-performance computing, package development, scientific machine learning (SciML), and Bayesian inference. Expert guidance for building robust Julia applications with optimization, monitoring, and deep learning capabilities.",
+  "author": {
+    "name": "Scientific Computing Team",
+    "url": "https://github.com/Scientific-Computing-Team"
+  },
+  "license": "MIT",
+  "agents": [
+    {
+      "name": "julia-pro",
+      "description": "General Julia programming expert for high-performance computing, scientific simulations, data analysis, and machine learning. Master of multiple dispatch, type system, metaprogramming, JuMP optimization, and Julia ecosystem.",
+      "status": "active"
+    },
+    {
+      "name": "julia-developer",
+      "description": "Package development specialist for creating robust Julia packages. Expert in testing patterns, CI/CD automation, PackageCompiler.jl, web development (Genie.jl), and integrating optimization, monitoring, and deep learning components.",
+      "status": "active"
+    },
+    {
+      "name": "sciml-pro",
+      "description": "SciML ecosystem expert for scientific machine learning and differential equations. Master of DifferentialEquations.jl, ModelingToolkit.jl, Optimization.jl, NeuralPDE.jl, Catalyst.jl, performance tuning, and parallel computing.",
+      "status": "active"
+    },
+    {
+      "name": "turing-pro",
+      "description": "Bayesian inference and probabilistic programming expert. Master of Turing.jl, MCMC methods, variational inference (ADVI), model comparison, convergence diagnostics, and integration with SciML for Bayesian ODEs.",
+      "status": "active"
+    }
+  ],
+  "commands": [
+    {
+      "name": "sciml-setup",
+      "description": "Interactive SciML project scaffolding with auto-detection of problem types (ODE, PDE, SDE, optimization). Generates template code with callbacks, ensemble simulations, and sensitivity analysis.",
+      "status": "active",
+      "priority": 1
+    },
+    {
+      "name": "julia-optimize",
+      "description": "Profile Julia code and provide optimization recommendations. Analyzes type stability, memory allocations, identifies bottlenecks, and suggests parallelization strategies.",
+      "status": "active",
+      "priority": 2
+    },
+    {
+      "name": "julia-scaffold",
+      "description": "Bootstrap new Julia package with proper structure following PkgTemplates.jl conventions. Creates Project.toml, testing infrastructure, documentation framework, and git repository.",
+      "status": "active",
+      "priority": 3
+    },
+    {
+      "name": "julia-package-ci",
+      "description": "Generate GitHub Actions CI/CD workflows for Julia packages. Configures testing matrices across Julia versions and platforms, coverage reporting, and documentation deployment.",
+      "status": "active",
+      "priority": 4
+    }
+  ],
+  "skills": [
+    {
+      "name": "core-julia-patterns",
+      "description": "Multiple dispatch, type system, parametric types, metaprogramming, type stability, and performance optimization fundamentals",
+      "status": "active"
+    },
+    {
+      "name": "jump-optimization",
+      "description": "Mathematical programming with JuMP.jl modeling patterns, constraints, objectives, solver selection (separate from Optimization.jl)",
+      "status": "active"
+    },
+    {
+      "name": "visualization-patterns",
+      "description": "Plotting with Plots.jl, Makie.jl, StatsPlots.jl for data visualization and scientific graphics",
+      "status": "active"
+    },
+    {
+      "name": "interop-patterns",
+      "description": "Python interop via PythonCall.jl, R via RCall.jl, C++ via CxxWrap.jl for cross-language integration",
+      "status": "active"
+    },
+    {
+      "name": "package-management",
+      "description": "Project.toml structure, Pkg.jl workflows, dependency management, semantic versioning",
+      "status": "active"
+    },
+    {
+      "name": "package-development-workflow",
+      "description": "Package structure, module organization, exports, PkgTemplates.jl conventions, documentation",
+      "status": "active"
+    },
+    {
+      "name": "testing-patterns",
+      "description": "Test.jl best practices, test organization, BenchmarkTools.jl, Aqua.jl quality checks, JET.jl static analysis",
+      "status": "active"
+    },
+    {
+      "name": "compiler-patterns",
+      "description": "PackageCompiler.jl for static compilation, creating executables, system images, deployment optimization",
+      "status": "active"
+    },
+    {
+      "name": "web-development-julia",
+      "description": "Genie.jl MVC framework, HTTP.jl server development, API patterns, JSON3.jl, Oxygen.jl lightweight APIs",
+      "status": "active"
+    },
+    {
+      "name": "ci-cd-patterns",
+      "description": "GitHub Actions for Julia, test matrices, CompatHelper.jl, TagBot.jl, documentation deployment",
+      "status": "active"
+    },
+    {
+      "name": "sciml-ecosystem",
+      "description": "SciML package integration: DifferentialEquations.jl, ModelingToolkit.jl, Catalyst.jl, solver selection",
+      "status": "active"
+    },
+    {
+      "name": "differential-equations",
+      "description": "ODE, PDE, SDE, DAE solving patterns with callbacks, ensemble simulations, sensitivity analysis",
+      "status": "active"
+    },
+    {
+      "name": "modeling-toolkit",
+      "description": "Symbolic problem definition with ModelingToolkit.jl, equation simplification, code generation",
+      "status": "active"
+    },
+    {
+      "name": "optimization-patterns",
+      "description": "Optimization.jl usage for SciML optimization (distinct from JuMP.jl mathematical programming)",
+      "status": "active"
+    },
+    {
+      "name": "neural-pde",
+      "description": "Physics-informed neural networks (PINNs) with NeuralPDE.jl, boundary conditions, training strategies",
+      "status": "active"
+    },
+    {
+      "name": "catalyst-reactions",
+      "description": "Reaction network modeling with Catalyst.jl, rate laws, species definitions, stochastic vs deterministic",
+      "status": "active"
+    },
+    {
+      "name": "performance-tuning",
+      "description": "Profiling with @code_warntype, @profview, BenchmarkTools.jl, allocation reduction, type stability analysis",
+      "status": "active"
+    },
+    {
+      "name": "parallel-computing",
+      "description": "Multi-threading, Distributed.jl, GPU computing with CUDA.jl, ensemble simulations, load balancing",
+      "status": "active"
+    },
+    {
+      "name": "turing-model-design",
+      "description": "Turing.jl model specification, prior selection, likelihood definition, hierarchical models, identifiability",
+      "status": "active"
+    },
+    {
+      "name": "mcmc-diagnostics",
+      "description": "MCMC convergence checking (trace plots, R-hat), effective sample size, divergence checking, mixing analysis",
+      "status": "active"
+    },
+    {
+      "name": "variational-inference-patterns",
+      "description": "ADVI with Turing.jl, Bijectors.jl transformations, ELBO monitoring, VI vs MCMC comparison",
+      "status": "active"
+    }
+  ],
+  "keywords": [
+    "julia",
+    "scientific-computing",
+    "sciml",
+    "bayesian",
+    "hpc",
+    "high-performance-computing",
+    "differential-equations",
+    "ode",
+    "pde",
+    "sde",
+    "optimization",
+    "jump",
+    "turing",
+    "probabilistic-programming",
+    "mcmc",
+    "variational-inference",
+    "package-development",
+    "testing",
+    "ci-cd",
+    "multiple-dispatch",
+    "type-system",
+    "metaprogramming",
+    "performance-optimization",
+    "parallel-computing",
+    "gpu-computing",
+    "neural-pde",
+    "physics-informed-neural-networks",
+    "modeling-toolkit",
+    "catalyst",
+    "machine-learning",
+    "deep-learning",
+    "flux",
+    "visualization",
+    "plots",
+    "makie",
+    "interoperability",
+    "python-integration"
+  ],
+  "category": "scientific-computing"
+}

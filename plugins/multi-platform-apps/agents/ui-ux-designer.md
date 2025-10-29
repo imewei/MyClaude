@@ -2,6 +2,49 @@
 name: ui-ux-designer
 description: Create interface designs, wireframes, and design systems. Masters user research, accessibility standards, and modern design tools. Specializes in design tokens, component libraries, and inclusive design. Use PROACTIVELY for design systems, user flows, or interface optimization.
 model: sonnet
+complexity_hints:
+  simple_queries:
+    model: haiku
+    patterns:
+      - "color palette"
+      - "button design"
+      - "icon"
+      - "simple wireframe"
+      - "typography"
+      - "spacing"
+      - "basic layout"
+      - "logo placement"
+      - "simple mockup"
+      - "color contrast"
+    latency_target_ms: 200
+  medium_queries:
+    model: sonnet
+    patterns:
+      - "user flow"
+      - "wireframe set"
+      - "component design"
+      - "responsive design"
+      - "navigation pattern"
+      - "form design"
+      - "accessibility review"
+      - "user journey"
+      - "interaction design"
+      - "prototype"
+    latency_target_ms: 600
+  complex_queries:
+    model: sonnet
+    patterns:
+      - "design system"
+      - "user research"
+      - "usability testing"
+      - "information architecture"
+      - "design token"
+      - "multi-platform design"
+      - "accessibility audit"
+      - "conversion optimization"
+      - "design strategy"
+      - "a/b testing"
+    latency_target_ms: 1000
 ---
 
 You are a UI/UX design expert specializing in user-centered design, modern design systems, and accessible interface creation.

@@ -1,9 +1,17 @@
+# ============================================
+# Claude Code Plugin Marketplace .gitignore
+# ============================================
+
+# ----------------
 # Python
+# ----------------
 __pycache__/
 *.py[cod]
 *$py.class
 *.so
 .Python
+
+# Python build artifacts
 build/
 develop-eggs/
 dist/
@@ -16,35 +24,323 @@ parts/
 sdist/
 var/
 wheels/
+pip-wheel-metadata/
+share/python-wheels/
 *.egg-info/
 .installed.cfg
 *.egg
+MANIFEST
 
-# Virtual environments
+# Python testing
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+.tox/
+.nox/
+.hypothesis/
+pytestdebug.log
+
+# Python profiling
+*.prof
+*.lprof
+
+# ----------------
+# Virtual Environments
+# ----------------
 .venv/
 venv/
 ENV/
 env/
+env.bak/
+venv.bak/
 
-# IDE
+# uv (modern Python package manager)
+.uv/
+uv.lock
+
+# ----------------
+# Julia
+# ----------------
+# Julia compiled files
+*.jl.*.cov
+*.jl.cov
+*.jl.mem
+
+# Julia artifacts (don't ignore Manifest.toml in published packages)
+Manifest.toml
+LocalPreferences.toml
+
+# Julia REPL history
+.julia_history
+
+# Julia depot (if accidentally created in project)
+.julia/
+
+# ----------------
+# Node.js / JavaScript
+# ----------------
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+.pnpm-debug.log*
+
+# Dependency locks (keep package.json, ignore locks)
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Build outputs
+dist/
+build/
+.next/
+.nuxt/
+.cache/
+.parcel-cache/
+
+# ----------------
+# Rust
+# ----------------
+target/
+Cargo.lock
+**/*.rs.bk
+
+# ----------------
+# IDE and Editors
+# ----------------
+# VSCode
 .vscode/
+*.code-workspace
+
+# JetBrains (PyCharm, IntelliJ, etc.)
 .idea/
+*.iml
+*.iws
+*.ipr
+out/
+
+# Vim
 *.swp
 *.swo
 *~
+.*.sw[a-z]
+*.un~
+Session.vim
 
-# OS
+# Emacs
+*~
+\#*\#
+/.emacs.desktop
+/.emacs.desktop.lock
+*.elc
+auto-save-list
+tramp
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# ----------------
+# OS Files
+# ----------------
+# macOS
 .DS_Store
+.AppleDouble
+.LSOverride
+._*
+.Spotlight-V100
+.Trashes
+
+# Windows
 Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+Desktop.ini
+$RECYCLE.BIN/
 
-# Logs
+# Linux
+*~
+.directory
+.Trash-*
+
+# ----------------
+# Logs and Databases
+# ----------------
 *.log
+*.sql
+*.sqlite
+*.sqlite3
+*.db
 
-# Temporary files
+# ----------------
+# Temporary Files
+# ----------------
 *.tmp
 *.temp
+*.bak
+*.backup
+*.old
 .cache/
+tmp/
+temp/
 
-# Personal notes
+# ----------------
+# Claude Code Specific
+# ----------------
+# Local Claude configuration (user-specific, entire directory)
+.claude/
+
+# Claude session data
+.claude-sessions/
+.claude-context/
+
+# Claude Code guidance file (auto-generated)
+CLAUDE.md
+
+# Agent-OS development framework (internal use)
+agent-os/
+
+# ----------------
+# Plugin Development
+# ----------------
+# Plugin testing and development artifacts
+plugins/*/test-output/
+plugins/*/coverage/
+plugins/*/.pytest_cache/
+plugins/*/node_modules/
+
+# Draft plugins (unpublished)
+plugins/draft-*/
+plugins/experimental-*/
+plugins/_*/
+
+# Plugin backups
+plugins/*.backup/
+Backup/
+
+# ----------------
+# Documentation Build
+# ----------------
+# Sphinx documentation
+docs/_build/
+docs/.doctrees/
+docs/_static/generated/
+
+# MkDocs
+site/
+
+# Jupyter Notebook
+.ipynb_checkpoints/
+*.ipynb
+
+# ----------------
+# Environment and Secrets
+# ----------------
+.env
+.env.local
+.env.*.local
+*.key
+*.pem
+*.p12
+*.pfx
+credentials.json
+secrets.json
+config.local.*
+
+# ----------------
+# Scientific Computing Artifacts
+# ----------------
+# HDF5 data files (large binary)
+*.h5
+*.hdf5
+
+# Large data directories
+data/raw/
+data/processed/
+data/external/
+datasets/
+
+# Model checkpoints (large files)
+*.pt
+*.pth
+*.ckpt
+*.safetensors
+checkpoints/
+models/saved/
+
+# Profiling outputs
+*.prof
+*.perf
+*.trace
+
+# Simulation outputs (can be regenerated)
+*.xyz
+*.lammpstrj
+*.dcd
+*.xtc
+trajectories/
+
+# ----------------
+# Personal Notes and Planning
+# ----------------
 NOTES.md
 TODO.md
+SCRATCH.md
+PERSONAL.md
+.notes/
+drafts/
+
+# ----------------
+# CI/CD and Testing
+# ----------------
+.github/workflows/*.local.yml
+.gitlab-ci.local.yml
+
+# Test reports
+test-results/
+test-reports/
+coverage.xml
+junit.xml
+
+# ----------------
+# Git and Version Control
+# ----------------
+# Git patches and diffs
+*.patch
+*.diff
+*.orig
+*.rej
+
+# ----------------
+# Archives and Compressed Files
+# ----------------
+*.zip
+*.tar
+*.tar.gz
+*.tgz
+*.rar
+*.7z
+
+# ----------------
+# KEEP THESE FILES (document exceptions)
+# ----------------
+# Keep important configuration files
+!.gitignore
+!.github/
+!.gitlab-ci.yml
+!.markdownlint.json
+!.markdown-link-check.json
+
+# Keep plugin structure
+!plugins/*/plugin.json
+!plugins/*/README.md
+!plugins/*/agents/
+!plugins/*/commands/
+!plugins/*/skills/
+
+# Keep marketplace metadata
+!.claude-plugin/
+!.claude-plugin/marketplace.json

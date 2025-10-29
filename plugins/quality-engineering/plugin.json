@@ -1,0 +1,30 @@
+{
+  "name": "quality-engineering",
+  "version": "1.0.0",
+  "description": "Comprehensive quality assurance, validation, and correctness verification tools",
+  "author": "Quality Engineering Team",
+  "license": "MIT",
+  "keywords": ["quality", "validation", "verification", "lint", "correctness", "assurance", "qa"],
+  "commands": [
+    {
+      "name": "/double-check",
+      "description": "Comprehensive multi-dimensional validation with automated testing and security scanning",
+      "status": "active"
+    },
+    {
+      "name": "/lint-plugins",
+      "description": "Validate Claude Code plugin syntax, structure, and cross-references",
+      "status": "active"
+    }
+  ],
+  "skills": [
+    {
+      "name": "comprehensive-validation-framework",
+      "description": "Framework for comprehensive multi-dimensional validation and verification"
+    },
+    {
+      "name": "plugin-syntax-validator",
+      "description": "Plugin syntax and structure validation utilities"
+    }
+  ]
+}

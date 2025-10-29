@@ -1,67 +1,85 @@
 # Scientific Computing Workflows Marketplace
 
-Custom Claude Code marketplace combining selected plugins from claude-code-workflows with specialized scientific computing agents for HPC, JAX, ML, and numerical methods.
+Comprehensive Claude Code marketplace with 32 specialized plugins for scientific computing, software development, and research workflows.
 
 ## Overview
 
 This marketplace provides:
-- **16 curated plugins** from claude-code-workflows for general development
-- **Custom scientific-computing plugin** with specialized agents and commands
+- **32 specialized plugins** for scientific computing and software development workflows
+- **Comprehensive coverage** across scientific domains, languages, and development practices
 - **Independent modification** without affecting source plugins
 - **Git-based version control** for all customizations
-- **Conflict resolution** for custom agents/commands (renamed to avoid overlaps)
+- **Integrated ecosystem** with cross-plugin collaboration
 
-## Plugins Included
+## Plugins Included (32 Total)
 
-### From claude-code-workflows (Modified)
-1. `comprehensive-review` - Multi-perspective code analysis
-2. `code-documentation` - Code explanation and documentation generation
-3. `agent-orchestration` - Multi-agent system optimization
-4. `unit-testing` - Test generation and automation
-5. `codebase-cleanup` - Technical debt reduction and refactoring
-6. `incident-response` - Smart debugging and incident management
-7. `machine-learning-ops` - ML pipelines and MLOps
-8. `data-engineering` - ETL pipelines and data workflows
-9. `framework-migration` - Legacy modernization and migration
-10. `observability-monitoring` - Metrics, logging, and tracing
-11. `backend-development` - Backend API design and architecture
-12. `frontend-mobile-development` - UI/UX and mobile development
-13. `multi-platform-apps` - Cross-platform application development
-14. `cicd-automation` - CI/CD pipeline configuration
-15. `debugging-toolkit` - Interactive debugging and DX optimization
-16. `git-pr-workflows` - Git workflow automation
+### Scientific Computing & Research (13 plugins)
+1. **julia-development** ✨ NEW - Julia programming, SciML ecosystem, Bayesian inference (Turing.jl)
+   - Agents: julia-pro, julia-developer, sciml-pro, turing-pro
+   - Commands: /sciml-setup, /julia-optimize, /julia-scaffold, /julia-package-ci
 
-### Custom Plugin
-17. **custom-scientific-computing** - Specialized for HPC/JAX/ML workflows
-    - **12 Specialized Agents**:
-      - `hpc-numerical-coordinator` - HPC and numerical methods specialist
-      - `jax-pro` - JAX optimization expert
-      - `jax-scientific-domains` - JAX physics/quantum/CFD/MD specialist
-      - `neural-architecture-engineer` - Deep learning architecture design
-      - `correlation-function-expert` - Statistical physics specialist
-      - `simulation-expert` - Molecular dynamics and simulation
-      - `scientific-code-adoptor` - Legacy scientific code migration
-      - `visualization-interface-master` - Scientific visualization + AR/VR
-      - `research-intelligence-master` - Research methodology expert
-      - `command-systems-engineer` - CLI tool design specialist
-      - `database-workflow-engineer` - Database + scientific workflows
-      - `multi-agent-orchestrator` - Custom agent orchestration
+2. **jax-implementation** - JAX optimization, physics-informed ML, scientific domains
+3. **python-development** - Python programming, async patterns, packaging
+4. **hpc-computing** - High-performance computing, parallel computing, numerical methods
+5. **deep-learning** - Neural architectures, training workflows, model optimization
+6. **machine-learning** - ML pipelines, MLOps, model serving
+7. **molecular-simulation** - Molecular dynamics, atomistic modeling, force fields
+8. **statistical-physics** - Correlation functions, statistical mechanics, complex systems
+9. **research-methodology** - Research intelligence, literature analysis, trend forecasting
+10. **data-visualization** - Scientific visualization, D3.js, Plotly, AR/VR
+11. **llm-application-dev** - LLM applications, RAG systems, intelligent agents
+12. **ai-reasoning** - Multi-dimensional reasoning, meta-cognitive analysis
+13. **systems-programming** - Low-level systems, performance optimization, memory management
 
-    - **14 Custom Commands**:
-      - `/adopt-code` - Scientific codebase adoption
-      - `/sci-multi-optimize` - Multi-agent optimization (renamed to avoid conflict)
-      - `/explain-scientific` - Scientific code explanation (renamed)
-      - `/sci-test-gen` - Scientific test generation (renamed)
-      - `/sci-ci-setup` - CI with security + lock-check (renamed)
-      - `/double-check` - Ultrathink validation
-      - `/fix-commit-errors` - GitHub Actions failure analysis
-      - `/fix-imports` - Import resolution sessions
-      - `/lint-plugins` - Plugin validation tool
-      - `/run-all-tests` - Iterative test fixing
-      - `/ultra-think` - Multi-dimensional reasoning
-      - `/reflection` - Meta-cognitive analysis
-      - `/update-claudemd` - CLAUDE.md automation
-      - `/update-docs` - Documentation updates
+### Language-Specific Development (2 plugins)
+14. **javascript-typescript** - Modern JS/TS patterns, Node.js, testing
+15. **cli-tool-design** - Command-line tool design, developer automation
+
+### Full-Stack & Application Development (5 plugins)
+16. **backend-development** - Backend API design, microservices, distributed systems
+17. **frontend-mobile-development** - UI/UX, mobile development, responsive design
+18. **multi-platform-apps** - Cross-platform development (React Native, Flutter)
+19. **full-stack-orchestration** - End-to-end full-stack workflows
+20. **developer-essentials** - Core development workflows and patterns
+
+### Quality & Testing (3 plugins)
+21. **unit-testing** - Test generation, automation, TDD practices
+22. **quality-engineering** - Code quality analysis, refactoring, technical debt
+23. **debugging-toolkit** - Interactive debugging, DX optimization
+
+### DevOps & Infrastructure (2 plugins)
+24. **cicd-automation** - CI/CD pipelines, GitHub Actions, deployment automation
+25. **observability-monitoring** - Metrics, logging, tracing, performance monitoring
+
+### Code Management & Migration (4 plugins)
+26. **code-documentation** - Documentation generation, code explanation
+27. **codebase-cleanup** - Technical debt reduction, import fixing
+28. **code-migration** - Framework migration, legacy modernization
+29. **framework-migration** - Cross-framework migration strategies
+
+### Collaboration & Review (3 plugins)
+30. **comprehensive-review** - Multi-perspective code analysis, security audits
+31. **git-pr-workflows** - Git workflow automation, PR management
+32. **agent-orchestration** - Multi-agent system optimization, workflow coordination
+
+## Featured: julia-development Plugin
+
+The newly implemented **julia-development** plugin provides comprehensive support for Julia programming:
+
+### 4 Specialized Agents
+- **julia-pro**: General Julia expert (HPC, simulations, data analysis, ML, JuMP.jl)
+- **julia-developer**: Package development specialist (testing, CI/CD, web dev)
+- **sciml-pro**: SciML ecosystem expert (DifferentialEquations.jl, ModelingToolkit.jl, full ecosystem)
+- **turing-pro**: Bayesian inference expert (MCMC, variational inference, model comparison)
+
+### 4 Priority Commands
+1. **/sciml-setup** - Auto-detect problem type (ODE/PDE/SDE/optimization) and generate templates
+2. **/julia-optimize** - Performance profiling with type stability and allocation analysis
+3. **/julia-scaffold** - Bootstrap Julia packages with proper structure
+4. **/julia-package-ci** - Generate GitHub Actions workflows for Julia
+
+### 21 Focused Skills
+Distributed across agents covering: core Julia patterns, JuMP optimization, SciML ecosystem, differential equations, Turing.jl workflows, package development, testing, CI/CD, visualization, interoperability, and more.
 
 ## Installation
 
@@ -83,7 +101,7 @@ This marketplace provides:
 # 1. Navigate to project directory
 cd /Users/b80985/Projects/MyClaude
 
-# 2. Run setup script
+# 2. Run setup script (if available)
 ./setup-marketplace.sh
 
 # 3. Generate marketplace metadata
@@ -107,7 +125,7 @@ ls -la ~/.claude/plugins/marketplaces/scientific-computing-workflows
 
 # Check plugin count
 ls /Users/b80985/Projects/MyClaude/plugins/ | wc -l
-# Should show 17 (16 + custom-scientific-computing)
+# Should show 32
 ```
 
 ## Usage
@@ -118,110 +136,105 @@ ls /Users/b80985/Projects/MyClaude/plugins/ | wc -l
 # List available plugins
 /plugin list
 
-# Install custom scientific computing plugin
-/plugin install custom-scientific-computing
+# Install Julia development plugin
+/plugin install julia-development
 
 # Install other plugins
 /plugin install comprehensive-review
-/plugin install machine-learning-ops
+/plugin install machine-learning
+/plugin install hpc-computing
 ```
 
-### Using Custom Commands
+### Using Julia Development Commands
 
 ```bash
-# Use renamed commands (no conflicts)
-/sci-multi-optimize path/to/code --focus=performance
-/explain-scientific path/to/scientific/code.py
-/sci-test-gen path/to/module.py --coverage
+# Set up SciML project with auto-detection
+/sciml-setup "coupled oscillator system"
 
-# Use unique custom commands
-/ultra-think "Complex problem to solve" --depth=deep
-/double-check recent-changes --deep
-/fix-commit-errors workflow-id --auto-fix
+# Optimize Julia code for performance
+/julia-optimize path/to/code.jl
+
+# Create new Julia package
+/julia-scaffold MyAwesomePackage
+
+# Generate CI/CD workflows
+/julia-package-ci
 ```
 
-### Using Custom Agents
+### Using Agents
 
-Custom agents are invoked via the Task tool:
+Agents are invoked via the Task tool:
 
 ```python
-# Use JAX optimization agent
+# Use Julia pro for general Julia questions
 Task(
-    subagent_type="custom-scientific-computing:jax-pro",
-    prompt="Optimize this JAX code for GPU performance..."
+    subagent_type="julia-development:julia-pro",
+    prompt="How do I optimize this Julia function for type stability?"
 )
 
-# Use HPC coordination agent
+# Use SciML expert for differential equations
 Task(
-    subagent_type="custom-scientific-computing:hpc-numerical-coordinator",
-    prompt="Design parallel workflow for molecular dynamics simulation..."
+    subagent_type="julia-development:sciml-pro",
+    prompt="Set up a stochastic differential equation with callbacks..."
+)
+
+# Use Turing expert for Bayesian inference
+Task(
+    subagent_type="julia-development:turing-pro",
+    prompt="Design a hierarchical Bayesian model for parameter estimation..."
 )
 ```
+
+## Cross-Plugin Integration
+
+The marketplace plugins are designed to work together:
+
+### Scientific Computing Workflows
+- **julia-development** + **jax-implementation**: Hybrid Julia/JAX workflows
+- **julia-development** + **python-development**: Multi-language scientific computing
+- **julia-development** + **hpc-computing**: Large-scale HPC simulations
+- **julia-development** + **deep-learning**: Neural differential equations
+
+### Development Workflows
+- **julia-development** + **unit-testing**: Comprehensive Julia testing
+- **julia-development** + **cicd-automation**: Automated Julia CI/CD
+- **julia-development** + **code-documentation**: Julia package documentation
+
+### Research Workflows
+- **julia-development** + **research-methodology**: Research project management
+- **julia-development** + **data-visualization**: Scientific visualization
+- **julia-development** + **llm-application-dev**: AI-powered research tools
 
 ## Customization
 
 ### Adding New Agents
 
-1. Create agent file: `plugins/custom-scientific-computing/agents/my-agent.md`
+1. Create agent file: `plugins/[plugin-name]/agents/my-agent.md`
 2. Regenerate metadata: `./generate-metadata.sh`
 3. Restart Claude Code
 
 ### Adding New Commands
 
-1. Create command file: `plugins/custom-scientific-computing/commands/my-command.md`
+1. Create command file: `plugins/[plugin-name]/commands/my-command.md`
 2. Regenerate metadata: `./generate-metadata.sh`
 3. Restart Claude Code
 
 ### Modifying Existing Plugins
 
-All plugins are independent copies - modify freely without affecting source:
+All plugins are independent - modify freely:
 
 ```bash
 # Edit plugin files directly
-vim plugins/comprehensive-review/agents/code-reviewer.md
+vim plugins/julia-development/agents/julia-pro.md
 
 # Changes are git-tracked
-git add plugins/comprehensive-review/
-git commit -m "Customize code-reviewer agent for scientific code"
+git add plugins/julia-development/
+git commit -m "Customize julia-pro agent"
 ```
-
-## Hybrid Migration Plan
-
-This marketplace supports the hybrid approach from the overlap analysis:
-
-### Conflicts Resolved
-- ✅ `/multi-agent-optimize` → `/sci-multi-optimize` (renamed)
-- ✅ `/explain-code` → `/explain-scientific` (renamed)
-
-### High-Overlap Items Removed
-- ❌ `clean-codebase` → Use `codebase-cleanup:refactor-clean` plugin
-- ❌ `clean-project` → Use `codebase-cleanup` plugin
-- ❌ `code-review` → Use `comprehensive-review:code-reviewer` plugin
-- ❌ `fix` → Use `incident-response:smart-fix` plugin
-
-### Unique Value Preserved
-- ✅ 12 specialized scientific computing agents (no plugin equivalents)
-- ✅ 14 custom commands for scientific workflows
-- ✅ HPC/JAX/ML/numerical methods expertise
 
 ## Maintenance
 
-### Updating from Upstream
-
-```bash
-# Check upstream changes
-cd ~/.claude/plugins/marketplaces/claude-code-workflows
-git pull
-
-# Copy updated plugin manually
-cp -R ~/.claude/plugins/marketplaces/claude-code-workflows/plugins/comprehensive-review \
-      /Users/b80985/Projects/MyClaude/plugins/
-
-# Or use update script (if created)
-./scripts/update-plugin.sh comprehensive-review
-```
-
-### Version Control
+### Updating Plugins
 
 ```bash
 # Commit changes
@@ -229,10 +242,23 @@ git add plugins/
 git commit -m "Update plugin customizations"
 
 # Create version tags
-git tag -a v0.1.0 -m "Initial release"
+git tag -a v1.0.0 -m "Julia development plugin release"
 
 # Push to remote (if configured)
 git push origin main --tags
+```
+
+### Version Control
+
+```bash
+# Check plugin status
+git status plugins/
+
+# View plugin changes
+git diff plugins/julia-development/
+
+# Rollback changes if needed
+git checkout -- plugins/julia-development/
 ```
 
 ## Troubleshooting
@@ -260,15 +286,20 @@ jq '.' /Users/b80985/Projects/MyClaude/.claude-plugin/marketplace.json
 ./generate-metadata.sh
 
 # Check plugin structure
-./scripts/validate-plugins.sh  # (if created)
+ls -R plugins/julia-development/
 ```
 
-### Command conflicts
+### Command not found
 
-If you still see conflicts:
-1. Check which marketplace is active: `/plugin list`
-2. Uninstall conflicting plugin: `/plugin uninstall <plugin-name>`
-3. Verify custom commands use `sci-` prefix
+```bash
+# Verify plugin is installed
+/plugin list
+
+# Install plugin if needed
+/plugin install julia-development
+
+# Restart Claude Code
+```
 
 ## Directory Structure
 
@@ -280,22 +311,38 @@ If you still see conflicts:
 ├── .gitignore                     # Git ignore rules
 ├── README.md                      # This file
 ├── LICENSE                        # MIT License
-├── setup-marketplace.sh           # Initial setup script
-├── generate-metadata.sh           # Metadata generation script
-├── docs/                          # Documentation (future)
-│   ├── SETUP.md
-│   ├── MIGRATION.md
-│   └── CUSTOMIZATION.md
-├── plugins/                       # All plugins
-│   ├── comprehensive-review/
-│   ├── code-documentation/
-│   ├── agent-orchestration/
-│   ├── ... (13 more plugins)
-│   └── custom-scientific-computing/
-│       ├── agents/                # 12 custom agents
-│       └── commands/              # 14 custom commands
+├── agent-os/                      # Product planning and specs
+│   ├── product/                   # Product documentation
+│   │   ├── mission.md
+│   │   ├── roadmap.md
+│   │   └── tech-stack.md
+│   ├── specs/                     # Feature specifications
+│   │   └── 2025-10-28-julia-development/
+│   │       ├── spec.md
+│   │       ├── tasks.md
+│   │       ├── planning/
+│   │       └── verifications/
+│   └── standards/                 # Development standards
+│       ├── global/
+│       ├── frontend/
+│       ├── backend/
+│       └── testing/
+├── plugins/                       # All 32 plugins
+│   ├── julia-development/         # NEW: Julia ecosystem
+│   │   ├── plugin.json
+│   │   ├── README.md
+│   │   ├── agents/                # 4 agents
+│   │   ├── commands/              # 4 commands
+│   │   └── skills/                # 21 skills
+│   ├── jax-implementation/
+│   ├── python-development/
+│   ├── hpc-computing/
+│   ├── deep-learning/
+│   ├── machine-learning/
+│   ├── ... (26 more plugins)
+│   └── agent-orchestration/
 └── scripts/                       # Utility scripts
-    └── (future scripts)
+    └── (setup and maintenance scripts)
 ```
 
 ## Contributing
@@ -303,16 +350,17 @@ If you still see conflicts:
 ### To This Marketplace
 
 1. Fork and create a branch
-2. Make changes
-3. Test thoroughly
-4. Submit PR with description
+2. Make changes to plugins
+3. Test thoroughly with Claude Code
+4. Submit PR with detailed description
 
-### To Upstream (claude-code-workflows)
+### Creating New Plugins
 
-If you develop features that could benefit the broader community:
-1. Extract feature into standalone plugin
-2. Test with source marketplace format
-3. Submit PR to https://github.com/wshobson/agents
+1. Use existing plugin as template
+2. Follow agent-os standards
+3. Document agents, commands, and skills
+4. Test integration with related plugins
+5. Update README.md with plugin description
 
 ## License
 
@@ -320,21 +368,39 @@ MIT License (see [LICENSE](LICENSE))
 
 ## Acknowledgments
 
-- Based on [claude-code-workflows](https://github.com/wshobson/agents) by Seth Hobson
-- Custom scientific computing agents developed for HPC/JAX/ML workflows
-- Hybrid migration plan designed with ultra-think analysis
+- Based on [claude-code-workflows](https://github.com/wshobson/agents) patterns
+- julia-development plugin: Comprehensive Julia ecosystem support
+- Integration with scientific computing community best practices
+- Agent-os framework for systematic plugin development
 
 ## Version History
 
-### v0.1.0 (Initial Release)
-- 16 selected plugins from claude-code-workflows v1.2.2
-- Custom scientific-computing plugin with 12 agents and 14 commands
-- Renamed conflicting commands (multi-agent-optimize, explain-code, etc.)
-- Git-based version control
-- Automated setup scripts
+### v1.1.0 (Current) - Julia Development Release
+- ✨ NEW: julia-development plugin with 4 agents, 4 commands, 21 skills
+- 32 total plugins covering scientific computing to web development
+- Full SciML ecosystem support (DifferentialEquations.jl, ModelingToolkit.jl, etc.)
+- Bayesian inference with Turing.jl
+- Julia package development lifecycle automation
+- Cross-plugin integration patterns documented
+
+### v1.0.0 (Previous)
+- Initial marketplace with 31 plugins
+- Scientific computing focus with JAX, Python, HPC
+- Full-stack development support
+- Quality engineering and testing tools
+
+## Roadmap
+
+See `agent-os/product/roadmap.md` for detailed development plans.
+
+**Near-term priorities:**
+- Enhance cross-plugin workflows
+- Add more domain-specific skills
+- Improve documentation and tutorials
+- Community feedback integration
 
 ## Contact
 
 For questions, issues, or suggestions:
 - Create an issue in your repository
-- Or contact: $(git config user.email 2>/dev/null || echo 'your.email@example.com')
+- Email: $(git config user.email 2>/dev/null || echo 'b80985@users.noreply.github.com')

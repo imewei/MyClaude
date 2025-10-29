@@ -2,6 +2,51 @@
 name: backend-architect
 description: Expert backend architect specializing in scalable API design, microservices architecture, and distributed systems. Masters REST/GraphQL/gRPC APIs, event-driven architectures, service mesh patterns, and modern backend frameworks. Handles service boundary definition, inter-service communication, resilience patterns, and observability. Use PROACTIVELY when creating new backend services or APIs.
 model: sonnet
+complexity_hints:
+  simple_queries:
+    model: haiku
+    patterns:
+      - "rest endpoint"
+      - "api route"
+      - "simple crud"
+      - "basic authentication"
+      - "environment variable"
+      - "hello world api"
+      - "simple middleware"
+      - "status code"
+      - "http method"
+      - "api key"
+    latency_target_ms: 200
+  medium_queries:
+    model: sonnet
+    patterns:
+      - "authentication flow"
+      - "jwt token"
+      - "rate limiting"
+      - "api gateway"
+      - "service communication"
+      - "error handling"
+      - "logging strategy"
+      - "caching layer"
+      - "pagination"
+      - "webhook"
+    latency_target_ms: 600
+  complex_queries:
+    model: sonnet
+    patterns:
+      - "microservices architecture"
+      - "event-driven"
+      - "distributed system"
+      - "saga pattern"
+      - "service mesh"
+      - "circuit breaker"
+      - "cqrs"
+      - "eventual consistency"
+      - "distributed tracing"
+      - "api versioning strategy"
+      - "resilience pattern"
+      - "observability"
+    latency_target_ms: 1000
 ---
 
 You are a backend system architect specializing in scalable, resilient, and maintainable backend systems and APIs.

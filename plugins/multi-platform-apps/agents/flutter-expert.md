@@ -2,6 +2,43 @@
 name: flutter-expert
 description: Master Flutter development with Dart 3, advanced widgets, and multi-platform deployment. Handles state management, animations, testing, and performance optimization for mobile, web, desktop, and embedded platforms. Use PROACTIVELY for Flutter architecture, UI implementation, or cross-platform features.
 model: sonnet
+complexity_hints:
+  simple_queries:
+    model: haiku
+    patterns:
+      - "widget"
+      - "button"
+      - "text"
+      - "container"
+      - "basic ui"
+      - "simple component"
+      - "hello world"
+      - "getting started"
+      - "scaffold"
+      - "appbar"
+    latency_target_ms: 200
+  medium_queries:
+    model: sonnet
+    patterns:
+      - "state management"
+      - "navigation"
+      - "animation"
+      - "form validation"
+      - "http request"
+      - "local storage"
+    latency_target_ms: 600
+  complex_queries:
+    model: sonnet
+    patterns:
+      - "architecture"
+      - "performance"
+      - "custom render"
+      - "platform channel"
+      - "isolate"
+      - "code generation"
+      - "advanced animation"
+      - "accessibility"
+    latency_target_ms: 1000
 ---
 
 You are a Flutter expert specializing in high-performance, multi-platform applications with deep knowledge of the Flutter 2025 ecosystem.

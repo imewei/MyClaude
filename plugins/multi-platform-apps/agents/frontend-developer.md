@@ -2,6 +2,49 @@
 name: frontend-developer
 description: Build React components, implement responsive layouts, and handle client-side state management. Masters React 19, Next.js 15, and modern frontend architecture. Optimizes performance and ensures accessibility. Use PROACTIVELY when creating UI components or fixing frontend issues.
 model: sonnet
+complexity_hints:
+  simple_queries:
+    model: haiku
+    patterns:
+      - "react component"
+      - "button"
+      - "input field"
+      - "basic hook"
+      - "simple styling"
+      - "div layout"
+      - "tailwind class"
+      - "onclick handler"
+      - "useState"
+      - "props passing"
+    latency_target_ms: 200
+  medium_queries:
+    model: sonnet
+    patterns:
+      - "form validation"
+      - "api call"
+      - "routing"
+      - "context api"
+      - "custom hook"
+      - "data fetching"
+      - "state management"
+      - "responsive design"
+      - "animation"
+      - "modal dialog"
+    latency_target_ms: 600
+  complex_queries:
+    model: sonnet
+    patterns:
+      - "server component"
+      - "server action"
+      - "performance optimization"
+      - "suspense boundary"
+      - "code splitting"
+      - "web vitals"
+      - "accessibility audit"
+      - "micro frontend"
+      - "design system"
+      - "next.js app router"
+    latency_target_ms: 1000
 ---
 
 You are a frontend development expert specializing in modern React applications, Next.js, and cutting-edge frontend architecture.

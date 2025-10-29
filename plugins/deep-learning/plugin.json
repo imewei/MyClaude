@@ -1,0 +1,66 @@
+{
+  "name": "deep-learning",
+  "version": "1.2.0",
+  "description": "Comprehensive deep learning expertise: neural network theory, architecture design, training diagnostics, research translation, mathematical foundations, and practical skills",
+  "author": {
+    "name": "Wei Chen",
+    "url": "https://github.com/Wei Chen"
+  },
+  "agents": [
+    {
+      "name": "neural-architecture-engineer",
+      "description": "Neural architecture specialist for deep learning design and training strategies across multiple frameworks (Flax, Equinox, Haiku, PyTorch)",
+      "status": "active"
+    },
+    {
+      "name": "neural-network-master",
+      "description": "Deep learning theory expert specializing in mathematical foundations, optimization theory, training diagnostics, research translation, and pedagogical explanations",
+      "status": "active"
+    }
+  ],
+  "skills": [
+    {
+      "name": "neural-network-mathematics",
+      "description": "Mathematical foundations for neural networks (linear algebra, calculus, probability, optimization, information theory)",
+      "status": "active"
+    },
+    {
+      "name": "training-diagnostics",
+      "description": "Systematic diagnosis and resolution of training issues (gradient problems, loss curves, convergence analysis)",
+      "status": "active"
+    },
+    {
+      "name": "research-paper-implementation",
+      "description": "Framework for translating research papers into working implementations",
+      "status": "active"
+    },
+    {
+      "name": "model-optimization-deployment",
+      "description": "Model optimization (quantization, pruning, distillation) and deployment strategies",
+      "status": "active"
+    },
+    {
+      "name": "neural-architecture-patterns",
+      "description": "Design patterns and best practices for neural architectures (CNNs, RNNs, transformers)",
+      "status": "active"
+    },
+    {
+      "name": "deep-learning-experimentation",
+      "description": "Experiment design, hyperparameter tuning, ablation studies, and reproducible research",
+      "status": "active"
+    }
+  ],
+  "keywords": [
+    "deep-learning",
+    "neural-networks",
+    "architecture",
+    "theory",
+    "optimization",
+    "training",
+    "debugging",
+    "research",
+    "mathematics",
+    "deployment"
+  ],
+  "category": "ai-ml"
+}

@@ -2,6 +2,49 @@
 name: mobile-developer
 description: Develop React Native, Flutter, or native mobile apps with modern architecture patterns. Masters cross-platform development, native integrations, offline sync, and app store optimization. Use PROACTIVELY for mobile features, cross-platform code, or app optimization.
 model: sonnet
+complexity_hints:
+  simple_queries:
+    model: haiku
+    patterns:
+      - "react native component"
+      - "simple screen"
+      - "navigation setup"
+      - "styling"
+      - "basic layout"
+      - "button press"
+      - "text input"
+      - "flatlist"
+      - "touchable"
+      - "simple hook"
+    latency_target_ms: 200
+  medium_queries:
+    model: sonnet
+    patterns:
+      - "state management"
+      - "api integration"
+      - "navigation flow"
+      - "form validation"
+      - "image caching"
+      - "async storage"
+      - "push notifications"
+      - "deep linking"
+      - "redux setup"
+      - "context api"
+    latency_target_ms: 600
+  complex_queries:
+    model: sonnet
+    patterns:
+      - "offline sync"
+      - "native module"
+      - "turbomodule"
+      - "performance optimization"
+      - "memory profiling"
+      - "clean architecture"
+      - "conflict resolution"
+      - "new architecture migration"
+      - "platform channels"
+      - "background processing"
+    latency_target_ms: 1000
 ---
 
 You are a mobile development expert specializing in cross-platform and native mobile application development.

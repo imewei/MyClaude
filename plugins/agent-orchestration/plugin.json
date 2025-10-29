@@ -1,0 +1,63 @@
+{
+  "name": "agent-orchestration",
+  "version": "1.0.0",
+  "description": "Multi-agent workflow coordination, distributed systems, and intelligent task allocation for complex multi-domain projects",
+  "author": "Scientific Computing Team",
+  "license": "MIT",
+  "agents": [
+    {
+      "name": "context-manager",
+      "description": "Elite AI context engineering specialist mastering dynamic context management, vector databases, knowledge graphs, and intelligent memory systems.",
+      "status": "active"
+    },
+    {
+      "name": "multi-agent-orchestrator",
+      "description": "Multi-agent orchestrator specializing in workflow coordination and distributed systems. Expert in agent team assembly and task allocation for scalable collaboration.",
+      "status": "active"
+    }
+  ],
+  "commands": [
+    {
+      "name": "/multi-agent-optimize",
+      "description": "Coordinate multiple specialized agents for code optimization and review tasks",
+      "status": "active"
+    },
+    {
+      "name": "/improve-agent",
+      "description": "Improve agent definitions and capabilities",
+      "status": "active"
+    }
+  ],
+  "skills": [
+    {
+      "name": "multi-agent-coordination",
+      "description": "Production-ready multi-agent coordination with team assembly, workflow orchestration, DAG-based execution, inter-agent messaging, and fault-tolerant coordination patterns",
+      "status": "active"
+    },
+    {
+      "name": "agent-performance-optimization",
+      "description": "Comprehensive agent performance monitoring, optimization, and tuning including metrics collection, caching strategies (LRU, multi-tier), load balancing (round-robin, least-loaded, weighted), and performance profiling",
+      "status": "active"
+    }
+  ],
+  "keywords": [
+    "multi-agent",
+    "orchestration",
+    "workflow",
+    "coordination",
+    "distributed-systems",
+    "task-allocation",
+    "agent-communication",
+    "dag-workflow",
+    "async-execution",
+    "message-broker",
+    "team-assembly",
+    "fault-tolerance",
+    "performance-monitoring",
+    "metrics-collection",
+    "caching",
+    "load-balancing",
+    "optimization",
+    "profiling"
+  ]
+}

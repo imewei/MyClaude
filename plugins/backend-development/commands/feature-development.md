@@ -26,8 +26,13 @@ Orchestrate end-to-end feature development from requirements to production deplo
 ## Phase 1: Discovery & Requirements Planning
 
 1. **Business Analysis & Requirements**
+   <!-- REMOVED: business-analytics plugin does not exist
    - Use Task tool with subagent_type="business-analytics:business-analyst"
-   - Prompt: "Analyze feature requirements for: $ARGUMENTS. Define user stories, acceptance criteria, success metrics, and business value. Identify stakeholders, dependencies, and risks. Create feature specification document with clear scope boundaries."
+   -->
+   - Manually analyze feature requirements for: $ARGUMENTS
+   - Define user stories, acceptance criteria, success metrics, and business value
+   - Identify stakeholders, dependencies, and risks
+   - Create feature specification document with clear scope boundaries
    - Expected output: Requirements document with user stories, success metrics, risk assessment
    - Context: Initial feature request and business context
 
@@ -38,7 +43,7 @@ Orchestrate end-to-end feature development from requirements to production deplo
    - Context: Business requirements, existing system architecture
 
 3. **Feasibility & Risk Assessment**
-   - Use Task tool with subagent_type="security-scanning:security-auditor"
+   - Use Task tool with subagent_type="comprehensive-review:security-auditor"
    - Prompt: "Assess security implications and risks for feature: $ARGUMENTS. Review architecture: [include technical design from step 2]. Identify security requirements, compliance needs, data privacy concerns, and potential vulnerabilities."
    - Expected output: Security assessment with risk matrix, compliance checklist, mitigation strategies
    - Context: Technical design, regulatory requirements
@@ -58,7 +63,9 @@ Orchestrate end-to-end feature development from requirements to production deplo
    - Context: Backend APIs, UI/UX designs, user stories
 
 6. **Data Pipeline & Integration**
+   <!-- REMOVED: data-engineering plugin does not exist
    - Use Task tool with subagent_type="data-engineering:data-engineer"
+   -->
    - Prompt: "Build data pipelines for: $ARGUMENTS. Design ETL/ELT processes, implement data validation, create analytics events, set up data quality monitoring. Integrate with product analytics platforms for feature usage tracking."
    - Expected output: Data pipelines, analytics events, data quality checks
    - Context: Data requirements, analytics needs, existing data infrastructure
@@ -72,13 +79,13 @@ Orchestrate end-to-end feature development from requirements to production deplo
    - Context: Implementation code, acceptance criteria, test requirements
 
 8. **Security Validation**
-   - Use Task tool with subagent_type="security-scanning:security-auditor"
+   - Use Task tool with subagent_type="comprehensive-review:security-auditor"
    - Prompt: "Perform security testing for: $ARGUMENTS. Review implementation: [include backend and frontend from steps 4-5]. Run OWASP checks, penetration testing, dependency scanning, and compliance validation. Verify data encryption, authentication, and authorization."
    - Expected output: Security test results, vulnerability report, remediation actions
    - Context: Implementation code, security requirements
 
 9. **Performance Optimization**
-   - Use Task tool with subagent_type="application-performance:performance-engineer"
+   - Use Task tool with subagent_type="full-stack-orchestration:performance-engineer"
    - Prompt: "Optimize performance for: $ARGUMENTS. Analyze backend services: [from step 4] and frontend: [from step 5]. Profile code, optimize queries, implement caching, reduce bundle sizes, improve load times. Set up performance budgets and monitoring."
    - Expected output: Performance improvements, optimization report, performance metrics
    - Context: Implementation code, performance requirements
@@ -86,7 +93,7 @@ Orchestrate end-to-end feature development from requirements to production deplo
 ## Phase 4: Deployment & Monitoring
 
 10. **Deployment Strategy & Pipeline**
-    - Use Task tool with subagent_type="deployment-strategies:deployment-engineer"
+    - Use Task tool with subagent_type="cicd-automation:deployment-engineer"
     - Prompt: "Prepare deployment for: $ARGUMENTS. Create CI/CD pipeline with automated tests: [from step 7]. Configure feature flags for gradual rollout, implement blue-green deployment, set up rollback procedures. Create deployment runbook and rollback plan."
     - Expected output: CI/CD pipeline, deployment configuration, rollback procedures
     - Context: Test suites, infrastructure requirements, deployment strategy
@@ -98,7 +105,7 @@ Orchestrate end-to-end feature development from requirements to production deplo
     - Context: Feature implementation, success metrics, operational requirements
 
 12. **Documentation & Knowledge Transfer**
-    - Use Task tool with subagent_type="documentation-generation:docs-architect"
+    - Use Task tool with subagent_type="code-documentation:docs-architect"
     - Prompt: "Generate comprehensive documentation for: $ARGUMENTS. Create API documentation, user guides, deployment guides, troubleshooting runbooks. Include architecture diagrams, data flow diagrams, and integration guides. Generate automated changelog from commits."
     - Expected output: API docs, user guides, runbooks, architecture documentation
     - Context: All previous phases' outputs

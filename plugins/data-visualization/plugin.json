@@ -1,0 +1,58 @@
+{
+  "name": "data-visualization",
+  "version": "1.0.0",
+  "description": "Scientific data visualization, UX design, and immersive AR/VR interfaces with Python and Julia for compelling visual narratives",
+  "author": "Scientific Computing Team",
+  "license": "MIT",
+  "agents": [
+    {
+      "name": "visualization-interface",
+      "description": "Visualization and interface expert specializing in scientific data visualization and UX design with Python and Julia. Expert in Matplotlib, Plotly, Makie.jl, D3.js, Dash, Streamlit, and AR/VR.",
+      "status": "active"
+    }
+  ],
+  "skills": [
+    {
+      "name": "python-julia-visualization",
+      "description": "Production-ready visualization with Python (Matplotlib, Seaborn, Plotly, Bokeh) and Julia (Plots.jl, Makie.jl) for publication-quality figures, interactive dashboards, and real-time scientific plotting",
+      "status": "active"
+    },
+    {
+      "name": "scientific-data-visualization",
+      "description": "Domain-specific visualization for physics, biology, chemistry, climate science, and engineering with uncertainty quantification, multi-dimensional data, and publication standards",
+      "status": "active"
+    },
+    {
+      "name": "ux-design-scientific-interfaces",
+      "description": "User-centered design for scientific tools with Dash, Streamlit, Pluto.jl, WCAG accessibility standards, and usability testing frameworks for researchers",
+      "status": "active"
+    }
+  ],
+  "keywords": [
+    "visualization",
+    "scientific-plots",
+    "python",
+    "julia",
+    "matplotlib",
+    "plotly",
+    "makie",
+    "plots-jl",
+    "seaborn",
+    "bokeh",
+    "dash",
+    "streamlit",
+    "pluto",
+    "jupyter",
+    "3d-visualization",
+    "interactive-dashboards",
+    "publication-quality",
+    "ux-design",
+    "accessibility",
+    "wcag",
+    "data-storytelling",
+    "ar-vr",
+    "d3js",
+    "scientific-ui"
+  ],
+  "category": "scientific-computing"
+}

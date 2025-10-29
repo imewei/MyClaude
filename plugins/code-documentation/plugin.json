@@ -1,0 +1,41 @@
+{
+  "name": "code-documentation",
+  "version": "1.0.0",
+  "description": "Comprehensive code documentation, explanation, and generation with scientific computing support",
+  "author": "Documentation Team",
+  "license": "MIT",
+  "agents": [
+    {
+      "name": "code-reviewer",
+      "description": "Elite code review expert specializing in modern AI-powered code analysis",
+      "status": "active"
+    },
+    {
+      "name": "docs-architect",
+      "description": "Creates comprehensive technical documentation from existing codebases",
+      "status": "active"
+    },
+    {
+      "name": "tutorial-engineer",
+      "description": "Creates step-by-step tutorials and educational content from code",
+      "status": "active"
+    }
+  ],
+  "commands": [
+    {
+      "name": "/code-explain",
+      "description": "Detailed explanation of code structure, functionality, and design patterns with scientific computing support",
+      "status": "active"
+    },
+    {
+      "name": "/doc-generate",
+      "description": "Generate comprehensive documentation from code",
+      "status": "active"
+    },
+    {
+      "name": "/update-docs",
+      "description": "Comprehensively update and optimize Sphinx docs, README, and related documentation with AST-based extraction",
+      "status": "active"
+    }
+  ]
+}

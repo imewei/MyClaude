@@ -1,0 +1,322 @@
+Physics Workflow Diagrams - JAX Implementation
+==============================================
+
+MOLECULAR DYNAMICS WORKFLOW
+----------------------------
+
+┌────────────────────────────────────────────────────────────┐
+│                  1. System Setup                            │
+├────────────────────────────────────────────────────────────┤
+│  • Define simulation box (periodic/fixed boundaries)       │
+│  • Initialize particle positions (lattice/random)          │
+│  • Initialize velocities (Maxwell-Boltzmann distribution)  │
+│  • Remove center-of-mass motion                            │
+└──────────────────────────┬─────────────────────────────────┘
+                           │
+                           ▼
+┌────────────────────────────────────────────────────────────┐
+│                  2. Define Energy Function                  │
+├────────────────────────────────────────────────────────────┤
+│  energy_fn = energy.lennard_jones_pair(displacement_fn)    │
+│                                                             │
+│  U(r) = 4ε[(σ/r)¹² - (σ/r)⁶]                              │
+└──────────────────────────┬─────────────────────────────────┘
+                           │
+                           ▼
+┌────────────────────────────────────────────────────────────┐
+│                  3. Choose Integrator                       │
+├────────────────────────────────────────────────────────────┤
+│  NVE:  simulate.nve()         Microcanonical (E constant)  │
+│  NVT:  simulate.nvt_nose_hoover()  Canonical (T constant)  │
+│  NPT:  simulate.npt_nose_hoover()  Isothermal-isobaric     │
+└──────────────────────────┬─────────────────────────────────┘
+                           │
+                           ▼
+┌────────────────────────────────────────────────────────────┐
+│                  4. Equilibration Phase                     │
+├────────────────────────────────────────────────────────────┤
+│  Run 1000-10000 steps                                      │
+│  Monitor: Energy, Temperature, Pressure                    │
+│  Wait for system to reach equilibrium                      │
+└──────────────────────────┬─────────────────────────────────┘
+                           │
+                           ▼
+┌────────────────────────────────────────────────────────────┐
+│                  5. Production Run                          │
+├────────────────────────────────────────────────────────────┤
+│  @jax.jit                                                  │
+│  def step_fn(state):                                       │
+│      return apply_fn(state)                                │
+│                                                             │
+│  Collect: positions, velocities, energies                  │
+└──────────────────────────┬─────────────────────────────────┘
+                           │
+                           ▼
+┌────────────────────────────────────────────────────────────┐
+│                  6. Analysis                                │
+├────────────────────────────────────────────────────────────┤
+│  • Radial distribution function g(r)                       │
+│  • Mean squared displacement (diffusion)                   │
+│  • Velocity autocorrelation (vibrational modes)            │
+│  • Thermodynamic properties (Cv, pressure)                 │
+└────────────────────────────────────────────────────────────┘
+
+
+CFD WORKFLOW (Navier-Stokes)
+-----------------------------
+
+┌────────────────────────────────────────────────────────────┐
+│                  1. Grid Setup                              │
+├────────────────────────────────────────────────────────────┤
+│  grid = grids.Grid(shape=(256, 256),                       │
+│                    domain=((0, 2π), (0, 2π)))              │
+│                                                             │
+│  Choose: Uniform / Stretched / Adaptive                    │
+└──────────────────────────┬─────────────────────────────────┘
+                           │
+                           ▼
+┌────────────────────────────────────────────────────────────┐
+│                  2. Initial Conditions                      │
+├────────────────────────────────────────────────────────────┤
+│  velocity = (u, v)                                         │
+│  pressure = p                                              │
+│                                                             │
+│  Examples: Taylor-Green vortex, uniform flow               │
+└──────────────────────────┬─────────────────────────────────┘
+                           │
+                           ▼
+┌────────────────────────────────────────────────────────────┐
+│                  3. Time Integration Loop                   │
+└──────────────────────────┬─────────────────────────────────┘
+                           │
+         ┌─────────────────┴────────────────────┐
+         │                                      │
+         ▼                                      │
+┌────────────────────┐                          │
+│  3a. Advection     │                          │
+│  ∂u/∂t = -u·∇u     │                          │
+└────────┬───────────┘                          │
+         │                                      │
+         ▼                                      │
+┌────────────────────┐                          │
+│  3b. Diffusion     │                          │
+│  ∂u/∂t = ν∇²u      │                          │
+└────────┬───────────┘                          │
+         │                                      │
+         ▼                                      │
+┌────────────────────┐                          │
+│  3c. Pressure      │                          │
+│  Solve: ∇²p = ∇·u  │                          │
+│  Project: u-=∇p    │                          │
+└────────┬───────────┘                          │
+         │                                      │
+         └──────────────────────────────────────┘
+                           │
+                           ▼
+┌────────────────────────────────────────────────────────────┐
+│                  4. Boundary Conditions                     │
+├────────────────────────────────────────────────────────────┤
+│  No-slip:     u = 0 at walls                               │
+│  Free-slip:   ∂u_tangential/∂n = 0                         │
+│  Periodic:    u(x+L) = u(x)                                │
+│  Inflow/Outflow: Specify u or ∂u/∂n                        │
+└──────────────────────────┬─────────────────────────────────┘
+                           │
+                           ▼
+┌────────────────────────────────────────────────────────────┐
+│                  5. Turbulence Modeling (if needed)         │
+├────────────────────────────────────────────────────────────┤
+│  LES: Smagorinsky subgrid model                            │
+│  ML: Neural network closure                                │
+└──────────────────────────┬─────────────────────────────────┘
+                           │
+                           ▼
+┌────────────────────────────────────────────────────────────┐
+│                  6. Post-Processing                         │
+├────────────────────────────────────────────────────────────┤
+│  • Vorticity field: ω = ∇×u                                │
+│  • Streamlines / Pathlines                                 │
+│  • Kinetic energy spectrum E(k)                            │
+│  • Drag/lift coefficients                                  │
+└────────────────────────────────────────────────────────────┘
+
+
+PINN WORKFLOW
+-------------
+
+┌────────────────────────────────────────────────────────────┐
+│                  1. Define PDE                              │
+├────────────────────────────────────────────────────────────┤
+│  Example: Heat equation                                    │
+│  ∂u/∂t = α∇²u                                             │
+│                                                             │
+│  + Boundary conditions                                     │
+│  + Initial conditions                                      │
+└──────────────────────────┬─────────────────────────────────┘
+                           │
+                           ▼
+┌────────────────────────────────────────────────────────────┐
+│                  2. Neural Network Architecture             │
+├────────────────────────────────────────────────────────────┤
+│  Input: (x, t)                                             │
+│    ↓                                                        │
+│  Dense(64) → Tanh                                          │
+│    ↓                                                        │
+│  Dense(64) → Tanh                                          │
+│    ↓                                                        │
+│  Dense(64) → Tanh                                          │
+│    ↓                                                        │
+│  Dense(1) → u(x,t)                                         │
+└──────────────────────────┬─────────────────────────────────┘
+                           │
+                           ▼
+┌────────────────────────────────────────────────────────────┐
+│                  3. Loss Function Components                │
+├────────────────────────────────────────────────────────────┤
+│                                                             │
+│  Loss = w₁·L_PDE + w₂·L_BC + w₃·L_IC + w₄·L_data         │
+│                                                             │
+│  L_PDE:  PDE residual on collocation points                │
+│  L_BC:   Boundary condition error                          │
+│  L_IC:   Initial condition error                           │
+│  L_data: Fit to observations (if available)                │
+└──────────────────────────┬─────────────────────────────────┘
+                           │
+                           ▼
+┌────────────────────────────────────────────────────────────┐
+│                  4. Automatic Differentiation               │
+├────────────────────────────────────────────────────────────┤
+│  u_t  = jax.grad(u, argnums=1)  # ∂u/∂t                    │
+│  u_x  = jax.grad(u, argnums=0)  # ∂u/∂x                    │
+│  u_xx = jax.grad(jax.grad(u))   # ∂²u/∂x²                 │
+│                                                             │
+│  No manual derivative implementation needed!               │
+└──────────────────────────┬─────────────────────────────────┘
+                           │
+                           ▼
+┌────────────────────────────────────────────────────────────┐
+│                  5. Training Loop                           │
+├────────────────────────────────────────────────────────────┤
+│  for epoch in range(10000):                                │
+│      # Sample collocation points                           │
+│      x, t = random_sample()                                │
+│                                                             │
+│      # Compute loss and gradients                          │
+│      loss, grads = value_and_grad(loss_fn)(model)          │
+│                                                             │
+│      # Update parameters                                   │
+│      optimizer.update(grads)                               │
+│                                                             │
+│      # Monitor: PDE residual, BC error, training loss      │
+└──────────────────────────┬─────────────────────────────────┘
+                           │
+                           ▼
+┌────────────────────────────────────────────────────────────┐
+│                  6. Validation & Analysis                   │
+├────────────────────────────────────────────────────────────┤
+│  • Compare to analytical solution (if known)               │
+│  • Check PDE residual < 10⁻³                               │
+│  • Verify boundary conditions satisfied                    │
+│  • Test generalization to unseen domain regions            │
+│  • Uncertainty quantification (MC dropout)                 │
+└────────────────────────────────────────────────────────────┘
+
+
+QUANTUM VQE WORKFLOW
+--------------------
+
+┌────────────────────────────────────────────────────────────┐
+│                  1. Define Hamiltonian                      │
+├────────────────────────────────────────────────────────────┤
+│  H = Σ hᵢ Pᵢ                                               │
+│                                                             │
+│  Example: Molecular H₂                                     │
+│  H = -0.8·IIII + 0.2·ZIII + ... (Pauli strings)           │
+└──────────────────────────┬─────────────────────────────────┘
+                           │
+                           ▼
+┌────────────────────────────────────────────────────────────┐
+│                  2. Design Ansatz Circuit                   │
+├────────────────────────────────────────────────────────────┤
+│  |ψ(θ)⟩ = U(θ)|0⟩                                         │
+│                                                             │
+│  Layers: H → Ry(θ) → CNOT → Rz(φ)                         │
+│          ↺ Repeat for p layers                             │
+└──────────────────────────┬─────────────────────────────────┘
+                           │
+                           ▼
+┌────────────────────────────────────────────────────────────┐
+│                  3. Energy Expectation                      │
+├────────────────────────────────────────────────────────────┤
+│  E(θ) = ⟨ψ(θ)|H|ψ(θ)⟩                                     │
+│                                                             │
+│  Evaluate using quantum simulator or hardware              │
+└──────────────────────────┬─────────────────────────────────┘
+                           │
+                           ▼
+┌────────────────────────────────────────────────────────────┐
+│                  4. Classical Optimization                  │
+├────────────────────────────────────────────────────────────┤
+│  grad_E = jax.grad(E)(θ)  # Parameter-shift rule           │
+│                                                             │
+│  Optimizer: Adam / BFGS                                    │
+│  Update: θ ← θ - η·∇E(θ)                                   │
+└──────────────────────────┬─────────────────────────────────┘
+                           │
+                           ▼
+┌────────────────────────────────────────────────────────────┐
+│                  5. Convergence Check                       │
+├────────────────────────────────────────────────────────────┤
+│  ΔE < 10⁻⁶ Ha  (chemical accuracy)                        │
+│  |∇E| < 10⁻⁴   (gradient vanishing)                       │
+│                                                             │
+│  If not converged: Return to step 3                        │
+└──────────────────────────┬─────────────────────────────────┘
+                           │
+                           ▼
+┌────────────────────────────────────────────────────────────┐
+│                  6. Ground State Properties                 │
+├────────────────────────────────────────────────────────────┤
+│  E₀: Ground state energy                                   │
+│  |ψ₀⟩: Ground state wavefunction                          │
+│  ⟨O⟩: Observable expectation values                        │
+└────────────────────────────────────────────────────────────┘
+
+
+MULTI-PHYSICS COUPLING
+----------------------
+
+Atomistic (MD) ↔ Continuum (PINN)
+-----------------------------------
+
+┌─────────────────────────────────────────────────────────────┐
+│                   Atomistic Region (JAX-MD)                  │
+│  ┌────────────────────────────────────────────────────┐    │
+│  │  • Explicit atoms                                   │    │
+│  │  • Lennard-Jones potential                          │    │
+│  │  • Molecular dynamics timestep                      │    │
+│  └──────────────────┬──────────────────────────────────┘    │
+└─────────────────────┼───────────────────────────────────────┘
+                      │
+           ┌──────────┴──────────┐
+           │  Interface Region   │
+           │  • Handshake zone   │
+           │  • Force exchange   │
+           └──────────┬──────────┘
+                      │
+┌─────────────────────┼───────────────────────────────────────┐
+│  ┌──────────────────▼──────────────────────────────────┐    │
+│  │  • Continuum fields (stress, strain)                │    │
+│  │  • PINN solution                                    │    │
+│  │  • Coarse-grained description                       │    │
+│  └────────────────────────────────────────────────────┘    │
+│                   Continuum Region (PINN)                    │
+└─────────────────────────────────────────────────────────────┘
+
+Coupling Strategy:
+  1. Extract stress tensor from MD region
+  2. Apply as boundary condition to PINN
+  3. Compute continuum forces
+  4. Apply forces back to MD boundary atoms
+  5. Iterate
+

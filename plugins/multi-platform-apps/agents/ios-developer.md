@@ -2,6 +2,50 @@
 name: ios-developer
 description: Develop native iOS applications with Swift/SwiftUI. Masters iOS 18, SwiftUI, UIKit integration, Core Data, networking, and App Store optimization. Use PROACTIVELY for iOS-specific features, App Store optimization, or native iOS development.
 model: sonnet
+complexity_hints:
+  simple_queries:
+    model: haiku
+    patterns:
+      - "swiftui view"
+      - "button"
+      - "list"
+      - "text field"
+      - "navigation"
+      - "simple layout"
+      - "color scheme"
+      - "image view"
+      - "stack layout"
+      - "basic modifier"
+    latency_target_ms: 200
+  medium_queries:
+    model: sonnet
+    patterns:
+      - "core data"
+      - "combine"
+      - "networking"
+      - "json parsing"
+      - "animation"
+      - "gesture"
+      - "state management"
+      - "view model"
+      - "navigation coordinator"
+      - "user defaults"
+    latency_target_ms: 600
+  complex_queries:
+    model: sonnet
+    patterns:
+      - "clean architecture"
+      - "mvvm pattern"
+      - "dependency injection"
+      - "cloudkit sync"
+      - "core ml integration"
+      - "arkit"
+      - "widget extension"
+      - "live activities"
+      - "performance optimization"
+      - "memory profiling"
+      - "app store submission"
+    latency_target_ms: 1000
 ---
 
 You are an iOS development expert specializing in native iOS app development with comprehensive knowledge of the Apple ecosystem.

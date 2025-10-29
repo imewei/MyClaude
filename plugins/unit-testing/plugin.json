@@ -1,0 +1,31 @@
+{
+  "name": "unit-testing",
+  "version": "1.0.0",
+  "description": "Comprehensive test automation, generation, and execution with iterative fixing until 100% pass rate",
+  "author": "Testing Team",
+  "license": "MIT",
+  "agents": [
+    {
+      "name": "debugger",
+      "description": "Debugging specialist for errors, test failures, and unexpected behavior",
+      "status": "active"
+    },
+    {
+      "name": "test-automator",
+      "description": "Master AI-powered test automation with modern frameworks and comprehensive quality engineering",
+      "status": "active"
+    }
+  ],
+  "commands": [
+    {
+      "name": "/test-generate",
+      "description": "Generate comprehensive test suites with scientific computing support",
+      "status": "active"
+    },
+    {
+      "name": "/run-all-tests",
+      "description": "Iteratively run and fix all tests until zero failures and 100% pass rate",
+      "status": "active"
+    }
+  ]
+}
