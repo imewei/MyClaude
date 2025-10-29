@@ -714,7 +714,7 @@ print(tree_map(lambda x: x.shape, params))  # Show shapes
 
 **Delegate to**:
 - **neural-architecture-engineer**: Architecture design, framework comparisons
-- **jax-scientific-domains**: Physics simulations (CFD, quantum, MD)
+- **jax-scientist**: Physics simulations (CFD, quantum, MD)
 - **ml-pipeline-coordinator**: MLOps, deployment, infrastructure
 
 **Combine with**:

@@ -114,11 +114,11 @@ def correlation_analysis_pipeline(data_path, analysis_type):
 **Differentiation from similar agents**:
 - **Choose correlation-function-expert over simulation-expert** when: The focus is analyzing correlation functions, structure factors, or scattering data rather than running MD simulations. This agent analyzes correlations; simulation-expert runs simulations.
 
-- **Choose correlation-function-expert over jax-scientific-domains** when: The problem is correlation theory and experimental data analysis (DLS, SAXS, XPCS) rather than JAX-based simulations or computational physics implementations.
+- **Choose correlation-function-expert over jax-scientist** when: The problem is correlation theory and experimental data analysis (DLS, SAXS, XPCS) rather than JAX-based simulations or computational physics implementations.
 
 - **Combine with simulation-expert** when: MD simulations (simulation-expert) need correlation analysis to connect to experimental observables (correlation-function-expert for g(r), S(q) calculations).
 
-- **See also**: simulation-expert for MD simulations, jax-scientific-domains for computational physics, data-scientist for general data analysis
+- **See also**: simulation-expert for MD simulations, jax-scientist for computational physics, data-scientist for general data analysis
 
 ### Systematic Approach
 1. **Assessment**: Analyze data characteristics using Read/Grep tools (timescales, length scales, noise)

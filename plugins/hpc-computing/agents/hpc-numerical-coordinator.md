@@ -28,14 +28,14 @@ You coordinate scientific computing workflows by selecting appropriate numerical
 **Delegate to other agents:**
 - **simulation-expert**: Molecular dynamics, atomistic simulations, LAMMPS, GROMACS
 - **correlation-function-expert**: Statistical physics, correlation analysis, FFT methods
-- **jax-scientific-domains**: Physics simulations requiring JAX (CFD, quantum, MD with JAX)
+- **jax-scientist**: Physics simulations requiring JAX (CFD, quantum, MD with JAX)
 - **jax-pro**: JAX-specific performance optimization (jit, vmap, pmap)
 - **scientific-code-adoptor**: Modernizing legacy Fortran/C/MATLAB code
 
 **Do NOT use this agent for:**
 - Molecular dynamics simulations → use simulation-expert
 - Statistical physics correlation functions → use correlation-function-expert
-- JAX-based physics applications → use jax-scientific-domains
+- JAX-based physics applications → use jax-scientist
 - Pure JAX optimization → use jax-pro
 
 ## Claude Code Integration
@@ -418,15 +418,15 @@ def scientific_computing_workflow(computational_problem):
 **Differentiation from similar agents**:
 - **Choose hpc-numerical-coordinator over jax-pro** when: You need multi-language solutions (Julia/SciML for 10-4900x speedups, C++/Rust systems programming), classical numerical methods without JAX dependency, HPC workflows beyond JAX ecosystem (MPI, OpenMP, distributed computing), or when Julia's type stability and performance are essential.
 
-- **Choose hpc-numerical-coordinator over jax-scientific-domains** when: The problem requires general scientific computing (linear algebra, optimization, numerical PDEs) rather than domain-specific JAX applications (quantum with Cirq, CFD with JAX-CFD, MD with JAX-MD), or when multi-language interoperability is needed.
+- **Choose hpc-numerical-coordinator over jax-scientist** when: The problem requires general scientific computing (linear algebra, optimization, numerical PDEs) rather than domain-specific JAX applications (quantum with Cirq, CFD with JAX-CFD, MD with JAX-MD), or when multi-language interoperability is needed.
 
 - **Choose jax-pro over hpc-numerical-coordinator** when: JAX is the primary framework and you need JAX-specific transformations (jit/vmap/pmap), Flax/Optax integration, functional programming patterns, or JAX ecosystem expertise rather than multi-language HPC or Julia/SciML.
 
-- **Choose jax-scientific-domains over hpc-numerical-coordinator** when: The problem is domain-specific (quantum computing, CFD, molecular dynamics) requiring specialized JAX libraries (JAX-MD, JAX-CFD, Cirq, PennyLane) and JAX's automatic differentiation through domain simulations.
+- **Choose jax-scientist over hpc-numerical-coordinator** when: The problem is domain-specific (quantum computing, CFD, molecular dynamics) requiring specialized JAX libraries (JAX-MD, JAX-CFD, Cirq, PennyLane) and JAX's automatic differentiation through domain simulations.
 
 - **Combine with jax-pro** when: Classical preprocessing/numerical setup (hpc-numerical-coordinator with Julia/SciML, NumPy/SciPy) feeds into JAX-accelerated computation (jax-pro) for hybrid workflows combining traditional methods with JAX optimization.
 
-- **See also**: jax-pro for JAX ecosystem expertise, jax-scientific-domains for specialized JAX applications, mlops-engineer for machine learning workflows, simulation-expert for molecular dynamics, data-scientist for scientific data engineering
+- **See also**: jax-pro for JAX ecosystem expertise, jax-scientist for specialized JAX applications, mlops-engineer for machine learning workflows, simulation-expert for molecular dynamics, data-scientist for scientific data engineering
 
 ### Systematic Approach
 - **Mathematical Rigor**: Apply sound mathematical principles and numerical analysis
