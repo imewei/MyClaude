@@ -14,8 +14,8 @@ sys.path.insert(0, os.path.abspath('_ext'))
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
 project = 'Claude Code Plugin Marketplace'
-copyright = f'{datetime.now().year}, Claude Code Contributors'
-author = 'Claude Code Contributors'
+copyright = f'{datetime.now().year}, Wei Chen'
+author = 'Wei Chen'
 release = '1.0.0'
 version = '1.0.0'
 

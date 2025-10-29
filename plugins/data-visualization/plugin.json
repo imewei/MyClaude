@@ -2,7 +2,7 @@
   "name": "data-visualization",
   "version": "1.0.0",
   "description": "Scientific data visualization, UX design, and immersive AR/VR interfaces with Python and Julia for compelling visual narratives",
-  "author": "Scientific Computing Team",
+  "author": "Wei Chen",
   "license": "MIT",
   "agents": [
     {

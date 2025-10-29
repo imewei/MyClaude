@@ -4,10 +4,10 @@
   "description": "Comprehensive systems programming with C, C++, Rust, and Go. Includes enhanced agents, project scaffolding commands, performance profiling workflows, and systems programming patterns skill.",
   "author": {
     "name": "Wei Chen",
-    "url": "https://github.com/Wei Chen"
+    "url": "https://myclaude.readthedocs.io/en/latest/"
   },
-  "homepage": "https://github.com/Wei Chen/scientific-computing-workflows",
-  "repository": "https://github.com/Wei Chen/scientific-computing-workflows",
+  "homepage": "https://github.com/imewei/MyClaude",
+  "repository": "https://github.com/imewei/MyClaude",
   "license": "MIT",
   "keywords": [
     "systems-programming",

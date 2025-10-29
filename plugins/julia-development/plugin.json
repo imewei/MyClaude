@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "description": "Comprehensive Julia development plugin with specialized agents for high-performance computing, package development, scientific machine learning (SciML), and Bayesian inference. Expert guidance for building robust Julia applications with optimization, monitoring, and deep learning capabilities.",
   "author": {
-    "name": "Scientific Computing Team",
-    "url": "https://github.com/Scientific-Computing-Team"
+    "name": "Wei Chen",
+    "url": "https://myclaude.readthedocs.io/en/latest/"
   },
   "license": "MIT",
   "agents": [

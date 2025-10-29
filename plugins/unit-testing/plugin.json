@@ -2,7 +2,7 @@
   "name": "unit-testing",
   "version": "1.0.0",
   "description": "Comprehensive test automation, generation, and execution with iterative fixing until 100% pass rate",
-  "author": "Testing Team",
+  "author": "Wei Chen",
   "license": "MIT",
   "agents": [
     {

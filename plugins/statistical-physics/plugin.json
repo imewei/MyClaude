@@ -2,6 +2,8 @@
   "name": "statistical-physics",
   "version": "1.0.0",
   "description": "Non-equilibrium statistical physics for driven systems, active matter, and complex dynamics with theory, simulation, and experimental validation. Includes correlation function analysis bridging theoretical foundations to experimental data interpretation.",
+  "author": "Wei Chen",
+  "license": "MIT",
   "agents": [
     {
       "name": "non-equilibrium-expert",

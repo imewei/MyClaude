@@ -2,7 +2,7 @@
   "name": "ai-reasoning",
   "version": "1.0.0",
   "description": "Advanced AI-powered cognitive tools for problem-solving, meta-analysis, and structured reasoning",
-  "author": "AI Reasoning Team",
+  "author": "Wei Chen",
   "license": "MIT",
   "keywords": ["reasoning", "thinking", "reflection", "meta-cognition", "problem-solving", "analysis", "ultra-think"],
   "commands": [

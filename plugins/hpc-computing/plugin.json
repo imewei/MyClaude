@@ -2,7 +2,7 @@
   "name": "hpc-computing",
   "version": "1.0.0",
   "description": "High-performance computing and numerical methods for scientific computing across Python, Julia/SciML, C++, and Rust",
-  "author": "Scientific Computing Team",
+  "author": "Wei Chen",
   "license": "MIT",
   "agents": [
     {

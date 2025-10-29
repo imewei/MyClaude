@@ -2,7 +2,7 @@
   "name": "javascript-typescript",
   "version": "1.0.0",
   "description": "Comprehensive JavaScript and TypeScript development skills including modern patterns, testing, backend development, advanced types, and monorepo management",
-  "author": "JavaScript/TypeScript Team",
+  "author": "Wei Chen",
   "license": "MIT",
   "keywords": ["javascript", "typescript", "nodejs", "testing", "monorepo", "modern-js"],
   "agents": [],

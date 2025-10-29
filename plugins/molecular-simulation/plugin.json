@@ -2,7 +2,7 @@
   "name": "molecular-simulation",
   "version": "1.0.0",
   "description": "Molecular dynamics and multiscale simulation for atomistic modeling across LAMMPS, GROMACS, HOOMD-blue with ML force fields",
-  "author": "Scientific Computing Team",
+  "author": "Wei Chen",
   "license": "MIT",
   "agents": [
     {

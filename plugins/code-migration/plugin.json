@@ -2,7 +2,7 @@
   "name": "code-migration",
   "version": "1.0.0",
   "description": "Legacy scientific code modernization with cross-language migration for Fortran/C/MATLAB to Python/JAX/Julia while preserving numerical accuracy",
-  "author": "Scientific Computing Team",
+  "author": "Wei Chen",
   "license": "MIT",
   "agents": [
     {

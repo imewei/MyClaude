@@ -2,7 +2,7 @@
   "name": "code-documentation",
   "version": "1.0.0",
   "description": "Comprehensive code documentation, explanation, and generation with scientific computing support",
-  "author": "Documentation Team",
+  "author": "Wei Chen",
   "license": "MIT",
   "agents": [
     {

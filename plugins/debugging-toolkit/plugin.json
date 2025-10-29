@@ -2,7 +2,7 @@
   "name": "debugging-toolkit",
   "version": "1.0.0",
   "description": "AI-assisted debugging with LLM-driven RCA, automated log correlation, observability integration, and SRE practices for distributed systems",
-  "author": "DevOps Team",
+  "author": "Wei Chen",
   "license": "MIT",
   "agents": [
     {

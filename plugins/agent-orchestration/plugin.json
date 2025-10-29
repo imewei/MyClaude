@@ -2,7 +2,7 @@
   "name": "agent-orchestration",
   "version": "1.0.0",
   "description": "Multi-agent workflow coordination, distributed systems, and intelligent task allocation for complex multi-domain projects",
-  "author": "Scientific Computing Team",
+  "author": "Wei Chen",
   "license": "MIT",
   "agents": [
     {
