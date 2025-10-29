@@ -1,0 +1,190 @@
+name: Build Sphinx Documentation
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build-docs:
+    name: Build and Validate Sphinx Documentation
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Full history for versioning support
+
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: 'pip'
+
+      - name: Install documentation dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r docs/requirements.txt
+
+      - name: Validate plugin.json files
+        run: |
+          python tools/metadata-validator.py
+        continue-on-error: false
+
+      - name: Generate RST documentation files
+        run: |
+          python tools/sphinx_doc_generator.py
+        continue-on-error: false
+
+      - name: Generate category pages
+        run: |
+          python tools/generate_category_pages.py
+        continue-on-error: false
+
+      - name: Build documentation with Sphinx
+        run: |
+          cd docs
+          make clean
+          make html SPHINXOPTS="-W --keep-going -n"
+        continue-on-error: false
+
+      - name: Validate build output
+        run: |
+          # Check that HTML output was generated
+          if [ ! -d "docs/_build/html" ]; then
+            echo "ERROR: HTML build directory not found"
+            exit 1
+          fi
+
+          # Check for essential files
+          if [ ! -f "docs/_build/html/index.html" ]; then
+            echo "ERROR: index.html not generated"
+            exit 1
+          fi
+
+          if [ ! -f "docs/_build/html/searchindex.js" ]; then
+            echo "ERROR: Search index not generated"
+            exit 1
+          fi
+
+          # Count plugin pages
+          plugin_count=$(find docs/_build/html/plugins -name "*.html" 2>/dev/null | wc -l)
+          if [ "$plugin_count" -lt 31 ]; then
+            echo "WARNING: Expected at least 31 plugin pages, found $plugin_count"
+          else
+            echo "SUCCESS: Found $plugin_count plugin pages"
+          fi
+
+          # Count category pages
+          category_count=$(find docs/_build/html/categories -name "*.html" 2>/dev/null | wc -l)
+          if [ "$category_count" -lt 6 ]; then
+            echo "WARNING: Expected at least 6 category pages, found $category_count"
+          else
+            echo "SUCCESS: Found $category_count category pages"
+          fi
+
+          echo "Build validation completed successfully"
+
+      - name: Check for broken links (nitpicky mode)
+        run: |
+          cd docs
+          make clean
+          make html SPHINXOPTS="-n -W --keep-going"
+        continue-on-error: true
+
+      - name: Store documentation artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: sphinx-documentation
+          path: docs/_build/html/
+          retention-days: 30
+          if-no-files-found: error
+
+      - name: Generate build summary
+        if: always()
+        run: |
+          echo "## Documentation Build Summary" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "- **Build Status**: ${{ job.status }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **Python Version**: 3.12" >> $GITHUB_STEP_SUMMARY
+          echo "- **Sphinx Version**: $(python -c 'import sphinx; print(sphinx.__version__)')" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+
+          if [ -d "docs/_build/html" ]; then
+            plugin_count=$(find docs/_build/html/plugins -name "*.html" 2>/dev/null | wc -l)
+            category_count=$(find docs/_build/html/categories -name "*.html" 2>/dev/null | wc -l)
+            guide_count=$(find docs/_build/html/guides -name "*.html" 2>/dev/null | wc -l)
+
+            echo "### Generated Pages" >> $GITHUB_STEP_SUMMARY
+            echo "- Plugin Pages: $plugin_count" >> $GITHUB_STEP_SUMMARY
+            echo "- Category Pages: $category_count" >> $GITHUB_STEP_SUMMARY
+            echo "- Guide Pages: $guide_count" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+          fi
+
+          echo "### Artifacts" >> $GITHUB_STEP_SUMMARY
+          echo "Documentation artifacts are available for download for 30 days." >> $GITHUB_STEP_SUMMARY
+
+  test-docs:
+    name: Run Documentation Tests
+    runs-on: ubuntu-latest
+    needs: build-docs
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r docs/requirements.txt
+          pip install pytest pyyaml
+
+      - name: Run build automation tests
+        run: |
+          cd tools
+          python test_build_automation.py
+
+      - name: Run integration mapping tests
+        run: |
+          cd tools
+          python test_integration_mapping.py
+
+      - name: Run category pages tests
+        run: |
+          cd tools
+          python test_category_pages.py
+
+      - name: Run content extraction tests
+        run: |
+          cd tools
+          python test_content_extraction.py
+        continue-on-error: true
+
+      - name: Run supplementary docs tests
+        run: |
+          cd tools
+          python test_supplementary_docs.py
+        continue-on-error: true
+
+      - name: Run README regeneration tests
+        run: |
+          cd tools
+          python test_readme_regeneration.py
+        continue-on-error: true
+
+      - name: Test summary
+        if: always()
+        run: |
+          echo "## Test Results Summary" >> $GITHUB_STEP_SUMMARY
+          echo "All documentation tests completed. Check individual step results for details." >> $GITHUB_STEP_SUMMARY

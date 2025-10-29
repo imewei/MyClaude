@@ -1,0 +1,19 @@
+# Sphinx Documentation Requirements
+# Python >= 3.12
+
+# Core Sphinx
+sphinx>=7.0.0
+
+# Sphinx Theme
+sphinx-rtd-theme>=2.0.0
+
+# Sphinx Extensions
+sphinx-autobuild>=2024.0.0
+sphinx-copybutton>=0.5.2
+sphinx-multiversion>=0.2.4
+
+# Markdown support (optional)
+myst-parser>=2.0.0
+
+# Additional useful extensions
+sphinx-tabs>=3.4.5
