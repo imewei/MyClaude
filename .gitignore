@@ -203,6 +203,11 @@ CLAUDE.md
 # Agent-OS development framework (internal use)
 agent-os/
 
+# Plugin review and analysis outputs (auto-generated)
+/reports/
+/reviews/
+/test-corpus/
+
 # ----------------
 # Plugin Development
 # ----------------
