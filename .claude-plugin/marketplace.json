@@ -123,6 +123,52 @@
 }
 ,
 {
+  "name": "cli-tool-design",
+  "source": "./plugins/cli-tool-design",
+  "description": "CLI tool design and developer automation expertise: command development, interactive prompts, workflow automation, and developer productivity tools",
+  "version": "1.0.0",
+  "author": {
+    "name": "Wei Chen",
+    "url": "https://myclaude.readthedocs.io/en/latest/"
+  },
+  "homepage": "https://github.com/imewei/MyClaude",
+  "repository": "https://github.com/imewei/MyClaude",
+  "license": "MIT",
+  "keywords": [
+    "cli",
+    "command-line",
+    "automation",
+    "developer-tools",
+    "workflow",
+    "scripting",
+    "python-click",
+    "typer",
+    "commander",
+    "inquirer",
+    "interactive-prompts",
+    "terminal",
+    "bash",
+    "shell-scripts",
+    "productivity",
+    "code-generation",
+    "scaffolding",
+    "deployment-automation",
+    "build-tools",
+    "task-runner"
+  ],
+  "category": "developer-tools",
+  "strict": false,
+  "commands": [],
+  "agents": [
+    "./agents/command-systems-engineer.md"
+  ],
+  "skills": [
+    "./skills/cli-tool-design-production",
+    "./skills/programming-scripting-languages"
+  ]
+}
+,
+{
   "name": "code-documentation",
   "source": "./plugins/code-documentation",
   "description": "Documentation generation, code explanation, and technical writing with automated doc generation, tutorial creation, and Sphinx updates",
@@ -247,35 +293,6 @@
     "./agents/code-reviewer.md",
     "./agents/architect-review.md",
     "./agents/security-auditor.md"
-  ]
-}
-,
-{
-  "name": "custom-scientific-computing",
-  "source": "./plugins/custom-scientific-computing",
-  "description": "Meta-cognitive tools and remaining scientific computing workflows including ultra-think, reflection, and double-check validation",
-  "version": "1.0.0",
-  "author": {
-    "name": "Wei Chen",
-    "url": "https://myclaude.readthedocs.io/en/latest/"
-  },
-  "homepage": "https://github.com/imewei/MyClaude",
-  "repository": "https://github.com/imewei/MyClaude",
-  "license": "MIT",
-  "keywords": [
-    "meta-cognitive",
-    "reasoning",
-    "validation",
-    "reflection",
-    "plugin-tools"
-  ],
-  "category": "ai-ml",
-  "strict": false,
-  "commands": [
-    "./commands/double-check.md",
-    "./commands/ultra-think.md",
-    "./commands/reflection.md",
-    "./commands/lint-plugins.md"
   ]
 }
 ,
@@ -415,32 +432,6 @@
 }
 ,
 {
-  "name": "developer-essentials",
-  "source": "./plugins/developer-essentials",
-  "description": "Essential cross-cutting developer tools and patterns for modern software development",
-  "version": "1.0.0",
-  "author": {
-    "name": "Wei Chen",
-    "url": "https://myclaude.readthedocs.io/en/latest/"
-  },
-  "homepage": "https://github.com/imewei/MyClaude",
-  "repository": "https://github.com/imewei/MyClaude",
-  "license": "MIT",
-  "keywords": [
-    "developer-tools",
-    "monorepo",
-    "cross-cutting",
-    "essentials"
-  ],
-  "category": "development",
-  "strict": false,
-  "commands": [],
-  "skills": [
-    "./skills/monorepo-management"
-  ]
-}
-,
-{
   "name": "framework-migration",
   "source": "./plugins/framework-migration",
   "description": "Framework updates, migration planning, and architectural transformation workflows",
@@ -506,6 +497,46 @@
     "./agents/frontend-developer.md",
     "./agents/mobile-developer.md"
   ]
+}
+,
+{
+  "name": "full-stack-orchestration",
+  "source": "./plugins/full-stack-orchestration",
+  "description": "Full-stack development orchestration coordinating frontend, backend, testing, security, performance, and deployment for end-to-end feature delivery",
+  "version": "1.0.0",
+  "author": {
+    "name": "Wei Chen",
+    "url": "https://myclaude.readthedocs.io/en/latest/"
+  },
+  "homepage": "https://github.com/imewei/MyClaude",
+  "repository": "https://github.com/imewei/MyClaude",
+  "license": "MIT",
+  "keywords": [
+    "full-stack",
+    "orchestration",
+    "coordination",
+    "integration",
+    "frontend-backend",
+    "e2e-development",
+    "deployment",
+    "testing",
+    "security",
+    "performance",
+    "workflow-automation",
+    "feature-development"
+  ],
+  "category": "orchestration",
+  "strict": false,
+  "commands": [
+    "./commands/full-stack-feature.md"
+  ],
+  "agents": [
+    "./agents/deployment-engineer.md",
+    "./agents/performance-engineer.md",
+    "./agents/security-auditor.md",
+    "./agents/test-automator.md"
+  ],
+  "skills": []
 }
 ,
 {
@@ -635,9 +666,147 @@
 }
 ,
 {
-  "name": "machine-learning-ops",
-  "source": "./plugins/machine-learning-ops",
-  "description": "ML model training pipelines, hyperparameter tuning, model deployment automation, experiment tracking, and MLOps workflows",
+  "name": "julia-development",
+  "source": "./plugins/julia-development",
+  "description": "Comprehensive Julia development plugin with specialized agents for high-performance computing, package development, scientific machine learning (SciML), and Bayesian inference. Expert guidance for building robust Julia applications with optimization, monitoring, and deep learning capabilities.",
+  "version": "1.0.0",
+  "author": {
+    "name": "Wei Chen",
+    "url": "https://myclaude.readthedocs.io/en/latest/"
+  },
+  "homepage": "https://github.com/imewei/MyClaude",
+  "repository": "https://github.com/imewei/MyClaude",
+  "license": "MIT",
+  "keywords": [
+    "julia",
+    "scientific-computing",
+    "sciml",
+    "bayesian",
+    "hpc",
+    "high-performance-computing",
+    "differential-equations",
+    "ode",
+    "pde",
+    "sde",
+    "optimization",
+    "jump",
+    "turing",
+    "probabilistic-programming",
+    "mcmc",
+    "variational-inference",
+    "package-development",
+    "testing",
+    "ci-cd",
+    "multiple-dispatch",
+    "type-system",
+    "metaprogramming",
+    "performance-optimization",
+    "parallel-computing",
+    "gpu-computing",
+    "neural-pde",
+    "physics-informed-neural-networks",
+    "modeling-toolkit",
+    "catalyst",
+    "machine-learning",
+    "deep-learning",
+    "flux",
+    "visualization",
+    "plots",
+    "makie",
+    "interoperability",
+    "python-integration"
+  ],
+  "category": "scientific-computing",
+  "strict": false,
+  "commands": [
+    "./commands/sciml-setup.md",
+    "./commands/julia-optimize.md",
+    "./commands/julia-scaffold.md",
+    "./commands/julia-package-ci.md"
+  ],
+  "agents": [
+    "./agents/julia-pro.md",
+    "./agents/julia-developer.md",
+    "./agents/sciml-pro.md",
+    "./agents/turing-pro.md"
+  ],
+  "skills": [
+    "./skills/core-julia-patterns",
+    "./skills/jump-optimization",
+    "./skills/visualization-patterns",
+    "./skills/interop-patterns",
+    "./skills/package-management",
+    "./skills/package-development-workflow",
+    "./skills/testing-patterns",
+    "./skills/compiler-patterns",
+    "./skills/web-development-julia",
+    "./skills/ci-cd-patterns",
+    "./skills/sciml-ecosystem",
+    "./skills/differential-equations",
+    "./skills/modeling-toolkit",
+    "./skills/optimization-patterns",
+    "./skills/neural-pde",
+    "./skills/catalyst-reactions",
+    "./skills/performance-tuning",
+    "./skills/parallel-computing",
+    "./skills/turing-model-design",
+    "./skills/mcmc-diagnostics",
+    "./skills/variational-inference-patterns"
+  ]
+}
+,
+{
+  "name": "llm-application-dev",
+  "source": "./plugins/llm-application-dev",
+  "description": "LLM application development with prompt engineering, RAG implementation, vector databases, LangChain, and modern AI integration patterns for building intelligent applications",
+  "version": "1.0.0",
+  "author": {
+    "name": "Wei Chen",
+    "url": "https://myclaude.readthedocs.io/en/latest/"
+  },
+  "homepage": "https://github.com/imewei/MyClaude",
+  "repository": "https://github.com/imewei/MyClaude",
+  "license": "MIT",
+  "keywords": [
+    "llm",
+    "gpt",
+    "claude",
+    "openai",
+    "anthropic",
+    "prompt-engineering",
+    "rag",
+    "retrieval-augmented-generation",
+    "embeddings",
+    "vector-db",
+    "langchain",
+    "llamaindex",
+    "ai-integration",
+    "chatbot",
+    "semantic-search"
+  ],
+  "category": "development",
+  "strict": false,
+  "commands": [
+    "./commands/ai-assistant.md",
+    "./commands/langchain-agent.md",
+    "./commands/prompt-optimize.md"
+  ],
+  "agents": [
+    "./agents/ai-engineer.md",
+    "./agents/prompt-engineer.md"
+  ],
+  "skills": [
+    "./skills/prompt-engineering-patterns",
+    "./skills/rag-implementation",
+    "./skills/langchain-architecture",
+    "./skills/llm-evaluation"
+  ]
+}
+,
+{
+  "name": "machine-learning",
+  "source": "./plugins/machine-learning",
+  "description": "Comprehensive machine learning and data science expertise: statistical analysis, classical ML algorithms, deep learning, production ML engineering, model deployment, MLOps, and data science workflows",
   "version": "1.0.0",
   "author": {
     "name": "Wei Chen",
@@ -648,24 +817,68 @@
   "license": "MIT",
   "keywords": [
     "machine-learning",
-    "mlops",
-    "model-training",
-    "tensorflow",
+    "data-science",
+    "statistics",
+    "statistical-analysis",
+    "hypothesis-testing",
+    "bayesian-methods",
+    "regression",
+    "classification",
+    "clustering",
+    "feature-engineering",
+    "data-wrangling",
+    "visualization",
+    "pandas",
+    "scikit-learn",
+    "xgboost",
+    "data-cleaning",
+    "exploratory-analysis",
+    "dashboards",
+    "business-analytics",
+    "deep-learning",
     "pytorch",
-    "mlflow"
+    "tensorflow",
+    "distributed-training",
+    "model-deployment",
+    "mlops",
+    "model-serving",
+    "docker",
+    "kubernetes",
+    "fastapi",
+    "monitoring",
+    "drift-detection",
+    "ab-testing",
+    "model-optimization",
+    "quantization",
+    "hyperparameter-tuning",
+    "github-actions",
+    "terraform",
+    "infrastructure-as-code",
+    "ci-cd",
+    "mlflow",
+    "model-registry",
+    "data-drift",
+    "concept-drift",
+    "prometheus",
+    "grafana",
+    "automated-training"
   ],
   "category": "ai-ml",
   "strict": false,
-  "commands": [
-    "./commands/ml-pipeline.md"
-  ],
+  "commands": [],
   "agents": [
     "./agents/data-scientist.md",
     "./agents/ml-engineer.md",
     "./agents/mlops-engineer.md"
   ],
   "skills": [
-    "./skills/ml-pipeline-workflow"
+    "./skills/statistical-analysis-fundamentals",
+    "./skills/machine-learning-essentials",
+    "./skills/data-wrangling-communication",
+    "./skills/advanced-ml-systems",
+    "./skills/ml-engineering-production",
+    "./skills/model-deployment-serving",
+    "./skills/devops-ml-infrastructure"
   ]
 }
 ,

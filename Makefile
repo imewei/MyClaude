@@ -2,7 +2,7 @@
 # Version: 1.0.0
 
 .PHONY: help clean clean-all clean-python clean-docs clean-cache clean-build clean-reports \
-        build docs docs-live test lint validate install dev-install
+        build docs docs-live test lint validate install dev-install plugin-enable-all
 
 # Default target
 .DEFAULT_GOAL := help
@@ -191,6 +191,10 @@ plugin-list: ## List all plugins with their versions
 			printf "%-35s %s\n" "$$plugin" "v$$version"; \
 		fi \
 	done | sort
+
+plugin-enable-all: ## Enable all plugins in Claude Code (requires restart)
+	@echo "Enabling all plugins in Claude Code..."
+	@python3 scripts/enable-all-plugins.py
 
 ##@ Information
 

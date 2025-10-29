@@ -55,15 +55,110 @@ This marketplace provides:
 
 ### Installation
 
-1. Clone or download this repository to your local machine
-2. Configure Claude Code to use this marketplace as your plugin source
-3. All 31 plugins will be automatically available in Claude Code
+#### Step 1: Add the Marketplace
+
+In Claude Code, add this marketplace:
 
 ```bash
-# Verify plugin count
-ls plugins/ | wc -l
-# Should show: 31
+/plugin marketplace add imewei/MyClaude
 ```
+
+#### Step 2: Install Plugins
+
+**Option A: Browse and Install via UI**
+
+1. Select "Browse and install plugins"
+2. Select "scientific-computing-workflows"
+3. Select the plugin you want to install
+4. Select "Install now"
+
+**Option B: Install Specific Plugins via CLI**
+
+Install individual plugins using the CLI:
+
+```bash
+# Install a single plugin
+/plugin install plugin-name@scientific-computing-workflows
+
+# Examples:
+/plugin install python-development@scientific-computing-workflows
+/plugin install julia-development@scientific-computing-workflows
+/plugin install deep-learning@scientific-computing-workflows
+```
+
+**Option C: Install All 31 Plugins at Once**
+
+Use the convenience script to enable all plugins:
+
+```bash
+# Clone the repository first
+git clone https://github.com/imewei/MyClaude.git
+cd MyClaude
+
+# Enable all plugins
+make plugin-enable-all
+
+# Or use the Python script directly
+python3 scripts/enable-all-plugins.py
+```
+
+**Note:** After installation, restart Claude Code for changes to take effect.
+
+#### Verify Installation
+
+```bash
+# From the cloned repository
+make plugin-count   # Show plugin statistics
+make plugin-list    # List all plugins with versions
+```
+
+### Available Plugins
+
+<details>
+<summary><b>All 31 Plugins by Category (Click to expand)</b></summary>
+
+#### AI/ML (5)
+- `agent-orchestration` - Multi-agent system optimization
+- `ai-reasoning` - Advanced cognitive tools and structured reasoning
+- `deep-learning` - Neural network architecture and training
+- `jax-implementation` - JAX programming and physics applications
+- `machine-learning` - Data science and ML engineering
+
+#### Development (8)
+- `backend-development` - API design and GraphQL architecture
+- `debugging-toolkit` - Interactive debugging and DX optimization
+- `frontend-mobile-development` - Frontend UI and mobile apps
+- `javascript-typescript` - Modern JS/TS development
+- `llm-application-dev` - LLM apps with RAG and LangChain
+- `multi-platform-apps` - Cross-platform development
+- `python-development` - FastAPI, Django, async patterns
+- `systems-programming` - Rust, C, C++, Go development
+
+#### Scientific Computing (4)
+- `hpc-computing` - High-performance computing
+- `julia-development` - Julia ecosystem with SciML
+- `molecular-simulation` - Molecular dynamics simulations
+- `statistical-physics` - Correlation function analysis
+
+#### Tools & Utilities (11)
+- `cicd-automation` - CI/CD pipeline configuration
+- `cli-tool-design` - CLI tool development
+- `code-documentation` - Doc generation and technical writing
+- `code-migration` - Legacy code modernization
+- `codebase-cleanup` - Technical debt reduction
+- `comprehensive-review` - Multi-perspective code analysis
+- `framework-migration` - Framework updates and migrations
+- `git-pr-workflows` - Git workflow automation
+- `observability-monitoring` - Metrics and monitoring
+- `quality-engineering` - QA and validation
+- `unit-testing` - Test automation and generation
+
+#### Research & Visualization (3)
+- `data-visualization` - Scientific data visualization
+- `research-methodology` - Research intelligence and analysis
+- `full-stack-orchestration` - End-to-end feature delivery
+
+</details>
 
 ### Using Plugins
 
