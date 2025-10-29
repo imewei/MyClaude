@@ -1,0 +1,96 @@
+{
+  "name": "backend-development",
+  "displayName": "Backend Development",
+  "description": "Comprehensive backend development support including REST/GraphQL/gRPC APIs, microservices architecture, distributed systems, TDD orchestration, and scalable backend patterns for modern applications",
+  "version": "1.0.0",
+  "keywords": [
+    "backend",
+    "api",
+    "rest",
+    "graphql",
+    "grpc",
+    "microservices",
+    "distributed-systems",
+    "tdd",
+    "test-driven-development",
+    "architecture",
+    "backend-architecture",
+    "api-design",
+    "federation",
+    "event-driven",
+    "scalability"
+  ],
+  "category": "development",
+  "author": "Scientific Computing Workflows",
+  "license": "MIT",
+  "agents": [
+    {
+      "id": "backend-architect",
+      "file": "agents/backend-architect.md",
+      "name": "Backend Architect",
+      "description": "Expert backend architect specializing in scalable API design, microservices architecture, and distributed systems",
+      "status": "active"
+    },
+    {
+      "id": "graphql-architect",
+      "file": "agents/graphql-architect.md",
+      "name": "GraphQL Architect",
+      "description": "Master modern GraphQL with federation, performance optimization, and enterprise security",
+      "status": "active"
+    },
+    {
+      "id": "tdd-orchestrator",
+      "file": "agents/tdd-orchestrator.md",
+      "name": "TDD Orchestrator",
+      "description": "Master TDD orchestrator specializing in red-green-refactor discipline and multi-agent workflow coordination",
+      "status": "active"
+    }
+  ],
+  "commands": [
+    {
+      "id": "feature-development",
+      "file": "commands/feature-development.md",
+      "name": "/feature-development",
+      "description": "Orchestrate end-to-end feature development from requirements to production deployment",
+      "status": "active"
+    }
+  ],
+  "skills": [
+    {
+      "id": "api-design-principles",
+      "directory": "skills/api-design-principles",
+      "name": "API Design Principles",
+      "description": "Best practices and patterns for designing REST, GraphQL, and gRPC APIs"
+    },
+    {
+      "id": "architecture-patterns",
+      "directory": "skills/architecture-patterns",
+      "name": "Architecture Patterns",
+      "description": "Backend architecture patterns including microservices, event-driven, and distributed systems"
+    },
+    {
+      "id": "auth-implementation-patterns",
+      "directory": "skills/auth-implementation-patterns",
+      "name": "Auth Implementation Patterns",
+      "description": "Authentication and authorization patterns for secure backend systems"
+    },
+    {
+      "id": "error-handling-patterns",
+      "directory": "skills/error-handling-patterns",
+      "name": "Error Handling Patterns",
+      "description": "Error handling and resilience patterns for robust backend services"
+    },
+    {
+      "id": "microservices-patterns",
+      "directory": "skills/microservices-patterns",
+      "name": "Microservices Patterns",
+      "description": "Microservices architecture patterns and best practices"
+    },
+    {
+      "id": "sql-optimization-patterns",
+      "directory": "skills/sql-optimization-patterns",
+      "name": "SQL Optimization Patterns",
+      "description": "Database query optimization and SQL performance tuning patterns"
+    }
+  ]
+}

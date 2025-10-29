@@ -1,0 +1,63 @@
+{
+  "name": "full-stack-orchestration",
+  "displayName": "Full-Stack Orchestration",
+  "description": "Full-stack development orchestration coordinating frontend, backend, testing, security, performance, and deployment for end-to-end feature delivery",
+  "version": "1.0.0",
+  "keywords": [
+    "full-stack",
+    "orchestration",
+    "coordination",
+    "integration",
+    "frontend-backend",
+    "e2e-development",
+    "deployment",
+    "testing",
+    "security",
+    "performance",
+    "workflow-automation",
+    "feature-development"
+  ],
+  "category": "orchestration",
+  "author": "Scientific Computing Workflows",
+  "license": "MIT",
+  "agents": [
+    {
+      "id": "deployment-engineer",
+      "file": "agents/deployment-engineer.md",
+      "name": "Deployment Engineer",
+      "description": "Expert in deployment orchestration, CI/CD, and production rollout strategies",
+      "status": "active"
+    },
+    {
+      "id": "performance-engineer",
+      "file": "agents/performance-engineer.md",
+      "name": "Performance Engineer",
+      "description": "Specialist in performance optimization across the full stack",
+      "status": "active"
+    },
+    {
+      "id": "security-auditor",
+      "file": "agents/security-auditor.md",
+      "name": "Security Auditor",
+      "description": "Expert in security assessment and vulnerability management",
+      "status": "active"
+    },
+    {
+      "id": "test-automator",
+      "file": "agents/test-automator.md",
+      "name": "Test Automator",
+      "description": "Specialist in test automation and quality assurance orchestration",
+      "status": "active"
+    }
+  ],
+  "commands": [
+    {
+      "id": "full-stack-feature",
+      "file": "commands/full-stack-feature.md",
+      "name": "/full-stack-feature",
+      "description": "Orchestrate end-to-end full-stack feature development from frontend to backend to deployment",
+      "status": "active"
+    }
+  ],
+  "skills": []
+}

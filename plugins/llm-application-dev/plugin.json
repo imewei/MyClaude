@@ -1,0 +1,91 @@
+{
+  "name": "llm-application-dev",
+  "displayName": "LLM Application Development",
+  "description": "LLM application development with prompt engineering, RAG implementation, vector databases, LangChain, and modern AI integration patterns for building intelligent applications",
+  "version": "1.0.0",
+  "keywords": [
+    "llm",
+    "gpt",
+    "claude",
+    "openai",
+    "anthropic",
+    "prompt-engineering",
+    "rag",
+    "retrieval-augmented-generation",
+    "embeddings",
+    "vector-db",
+    "langchain",
+    "llamaindex",
+    "ai-integration",
+    "chatbot",
+    "semantic-search"
+  ],
+  "category": "development",
+  "author": "Scientific Computing Workflows",
+  "license": "MIT",
+  "agents": [
+    {
+      "id": "ai-engineer",
+      "file": "agents/ai-engineer.md",
+      "name": "AI Engineer",
+      "description": "Expert in LLM application development, RAG systems, and AI integration patterns",
+      "status": "active"
+    },
+    {
+      "id": "prompt-engineer",
+      "file": "agents/prompt-engineer.md",
+      "name": "Prompt Engineer",
+      "description": "Specialist in prompt engineering, optimization, and LLM interaction patterns",
+      "status": "active"
+    }
+  ],
+  "commands": [
+    {
+      "id": "ai-assistant",
+      "file": "commands/ai-assistant.md",
+      "name": "/ai-assistant",
+      "description": "Build AI assistants with LLMs, RAG, and conversational AI patterns",
+      "status": "active"
+    },
+    {
+      "id": "langchain-agent",
+      "file": "commands/langchain-agent.md",
+      "name": "/langchain-agent",
+      "description": "Create LangChain agents with tools, memory, and complex reasoning",
+      "status": "active"
+    },
+    {
+      "id": "prompt-optimize",
+      "file": "commands/prompt-optimize.md",
+      "name": "/prompt-optimize",
+      "description": "Optimize prompts for better LLM performance and accuracy",
+      "status": "active"
+    }
+  ],
+  "skills": [
+    {
+      "id": "prompt-engineering-patterns",
+      "directory": "skills/prompt-engineering-patterns",
+      "name": "Prompt Engineering Patterns",
+      "description": "Advanced prompt engineering techniques and patterns for LLM applications"
+    },
+    {
+      "id": "rag-implementation",
+      "directory": "skills/rag-implementation",
+      "name": "RAG Implementation",
+      "description": "Retrieval-Augmented Generation architecture and implementation patterns"
+    },
+    {
+      "id": "langchain-architecture",
+      "directory": "skills/langchain-architecture",
+      "name": "LangChain Architecture",
+      "description": "LangChain application architecture and design patterns"
+    },
+    {
+      "id": "llm-evaluation",
+      "directory": "skills/llm-evaluation",
+      "name": "LLM Evaluation",
+      "description": "LLM performance evaluation, testing, and quality assurance"
+    }
+  ]
+}

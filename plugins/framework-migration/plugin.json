@@ -1,0 +1,89 @@
+{
+  "name": "framework-migration",
+  "displayName": "Framework Migration",
+  "description": "Framework and technology migration including Angular/React modernization, database migrations, dependency upgrades, and legacy system modernization with automated refactoring",
+  "version": "1.0.0",
+  "keywords": [
+    "migration",
+    "modernization",
+    "framework",
+    "upgrade",
+    "refactoring",
+    "legacy",
+    "react-migration",
+    "angular-migration",
+    "database-migration",
+    "dependency-upgrade",
+    "code-transformation",
+    "automated-refactoring",
+    "technology-upgrade"
+  ],
+  "category": "development",
+  "author": "Scientific Computing Workflows",
+  "license": "MIT",
+  "agents": [
+    {
+      "id": "architect-review",
+      "file": "agents/architect-review.md",
+      "name": "Architect Reviewer",
+      "description": "Master software architect specializing in migration planning and architecture modernization",
+      "status": "active"
+    },
+    {
+      "id": "legacy-modernizer",
+      "file": "agents/legacy-modernizer.md",
+      "name": "Legacy Modernizer",
+      "description": "Expert in legacy system modernization, code transformation, and framework migration",
+      "status": "active"
+    }
+  ],
+  "commands": [
+    {
+      "id": "code-migrate",
+      "file": "commands/code-migrate.md",
+      "name": "/code-migrate",
+      "description": "Automated code migration between frameworks and technology stacks",
+      "status": "active"
+    },
+    {
+      "id": "deps-upgrade",
+      "file": "commands/deps-upgrade.md",
+      "name": "/deps-upgrade",
+      "description": "Upgrade dependencies and manage breaking changes across versions",
+      "status": "active"
+    },
+    {
+      "id": "legacy-modernize",
+      "file": "commands/legacy-modernize.md",
+      "name": "/legacy-modernize",
+      "description": "Modernize legacy codebases with incremental refactoring strategies",
+      "status": "active"
+    }
+  ],
+  "skills": [
+    {
+      "id": "angular-migration",
+      "directory": "skills/angular-migration",
+      "name": "Angular Migration",
+      "description": "Angular version migration and modernization patterns"
+    },
+    {
+      "id": "react-modernization",
+      "directory": "skills/react-modernization",
+      "name": "React Modernization",
+      "description": "React modernization and migration to latest patterns"
+    },
+    {
+      "id": "database-migration",
+      "directory": "skills/database-migration",
+      "name": "Database Migration",
+      "description": "Database migration strategies and schema evolution patterns"
+    },
+    {
+      "id": "dependency-upgrade",
+      "directory": "skills/dependency-upgrade",
+      "name": "Dependency Upgrade",
+      "description": "Dependency upgrade strategies and breaking change management"
+    }
+  ]
+}

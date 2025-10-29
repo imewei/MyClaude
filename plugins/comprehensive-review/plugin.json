@@ -1,0 +1,72 @@
+{
+  "name": "comprehensive-review",
+  "displayName": "Comprehensive Review",
+  "description": "Comprehensive code and architecture review with multi-perspective analysis, security auditing, quality assessment, and AI-powered code analysis for production-grade quality assurance",
+  "version": "1.0.0",
+  "keywords": [
+    "code-review",
+    "architecture-review",
+    "security-audit",
+    "quality-assurance",
+    "pr-review",
+    "static-analysis",
+    "devsecops",
+    "vulnerability-assessment",
+    "threat-modeling",
+    "compliance",
+    "owasp",
+    "code-quality",
+    "refactoring",
+    "technical-debt"
+  ],
+  "category": "quality",
+  "author": "Scientific Computing Workflows",
+  "license": "MIT",
+  "agents": [
+    {
+      "id": "architect-review",
+      "file": "agents/architect-review.md",
+      "name": "Architect Reviewer",
+      "description": "Master software architect specializing in architecture patterns, clean architecture, microservices, and distributed systems design",
+      "status": "active"
+    },
+    {
+      "id": "code-reviewer",
+      "file": "agents/code-reviewer.md",
+      "name": "Code Reviewer",
+      "description": "Elite code review expert specializing in AI-powered code analysis, security vulnerabilities, and performance optimization",
+      "status": "active"
+    },
+    {
+      "id": "security-auditor",
+      "file": "agents/security-auditor.md",
+      "name": "Security Auditor",
+      "description": "Expert security auditor specializing in DevSecOps, cybersecurity, compliance frameworks, and vulnerability assessment",
+      "status": "active"
+    }
+  ],
+  "commands": [
+    {
+      "id": "full-review",
+      "file": "commands/full-review.md",
+      "name": "/full-review",
+      "description": "Perform comprehensive multi-perspective code review with architecture, security, and quality analysis",
+      "status": "active"
+    },
+    {
+      "id": "pr-enhance",
+      "file": "commands/pr-enhance.md",
+      "name": "/pr-enhance",
+      "description": "Enhance pull request descriptions and improve review quality with AI-powered analysis",
+      "status": "active"
+    }
+  ],
+  "skills": [
+    {
+      "id": "comprehensive-review-patterns",
+      "directory": "skills",
+      "name": "Comprehensive Review Patterns",
+      "description": "Multi-perspective review patterns including code quality, architecture, security, and performance analysis"
+    }
+  ]
+}

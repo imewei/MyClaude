@@ -1,0 +1,69 @@
+{
+  "name": "codebase-cleanup",
+  "displayName": "Codebase Cleanup",
+  "description": "Codebase cleanup and technical debt reduction including dead code elimination, dependency pruning, import fixing, refactoring, and code organization improvements",
+  "version": "1.0.0",
+  "keywords": [
+    "cleanup",
+    "refactoring",
+    "dead-code",
+    "technical-debt",
+    "code-organization",
+    "dependency-management",
+    "import-cleanup",
+    "code-quality",
+    "maintenance",
+    "code-pruning",
+    "legacy-cleanup"
+  ],
+  "category": "development",
+  "author": "Scientific Computing Workflows",
+  "license": "MIT",
+  "agents": [
+    {
+      "id": "code-reviewer",
+      "file": "agents/code-reviewer.md",
+      "name": "Code Reviewer",
+      "description": "Expert in code quality analysis, technical debt identification, and cleanup strategies",
+      "status": "active"
+    },
+    {
+      "id": "test-automator",
+      "file": "agents/test-automator.md",
+      "name": "Test Automator",
+      "description": "Specialist in test automation and quality assurance for cleanup operations",
+      "status": "active"
+    }
+  ],
+  "commands": [
+    {
+      "id": "deps-audit",
+      "file": "commands/deps-audit.md",
+      "name": "/deps-audit",
+      "description": "Audit dependencies for unused packages, security issues, and optimization opportunities",
+      "status": "active"
+    },
+    {
+      "id": "fix-imports",
+      "file": "commands/fix-imports.md",
+      "name": "/fix-imports",
+      "description": "Fix and organize import statements across the codebase",
+      "status": "active"
+    },
+    {
+      "id": "refactor-clean",
+      "file": "commands/refactor-clean.md",
+      "name": "/refactor-clean",
+      "description": "Clean and refactor code for better organization and maintainability",
+      "status": "active"
+    },
+    {
+      "id": "tech-debt",
+      "file": "commands/tech-debt.md",
+      "name": "/tech-debt",
+      "description": "Identify and prioritize technical debt for systematic reduction",
+      "status": "active"
+    }
+  ],
+  "skills": []
+}

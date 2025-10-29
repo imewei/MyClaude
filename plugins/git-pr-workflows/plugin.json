@@ -1,0 +1,66 @@
+{
+  "name": "git-pr-workflows",
+  "displayName": "Git & Pull Request Workflows",
+  "description": "Git workflows, pull request management, branching strategies, code review processes, and version control best practices for modern software development teams",
+  "version": "1.0.0",
+  "keywords": [
+    "git",
+    "github",
+    "gitlab",
+    "bitbucket",
+    "pull-request",
+    "pr",
+    "version-control",
+    "branching",
+    "merging",
+    "git-flow",
+    "trunk-based",
+    "code-review",
+    "collaboration",
+    "workflow",
+    "onboarding"
+  ],
+  "category": "devops",
+  "author": "Scientific Computing Workflows",
+  "license": "MIT",
+  "agents": [
+    {
+      "id": "code-reviewer",
+      "file": "agents/code-reviewer.md",
+      "name": "Code Reviewer",
+      "description": "Expert in Git workflows, pull request management, and collaborative code review processes",
+      "status": "active"
+    }
+  ],
+  "commands": [
+    {
+      "id": "git-workflow",
+      "file": "commands/git-workflow.md",
+      "name": "/git-workflow",
+      "description": "Implement and optimize Git workflows including branching strategies and merge patterns",
+      "status": "active"
+    },
+    {
+      "id": "onboard",
+      "file": "commands/onboard.md",
+      "name": "/onboard",
+      "description": "Onboard new team members to Git workflows and repository conventions",
+      "status": "active"
+    },
+    {
+      "id": "pr-enhance",
+      "file": "commands/pr-enhance.md",
+      "name": "/pr-enhance",
+      "description": "Enhance pull request descriptions and improve review quality",
+      "status": "active"
+    }
+  ],
+  "skills": [
+    {
+      "id": "git-pr-patterns",
+      "directory": "skills",
+      "name": "Git & PR Patterns",
+      "description": "Git workflow patterns, branching strategies, and pull request best practices"
+    }
+  ]
+}
