@@ -1,0 +1,53 @@
+{
+  "name": "debugging-toolkit",
+  "version": "1.0.0",
+  "description": "AI-assisted debugging with LLM-driven RCA, automated log correlation, observability integration, and SRE practices for distributed systems",
+  "author": "DevOps Team",
+  "license": "MIT",
+  "agents": [
+    {
+      "name": "debugger",
+      "description": "AI-assisted debugging specialist with LLM-driven RCA, automated log correlation, observability integration, and distributed system debugging expertise",
+      "status": "active"
+    }
+  ],
+  "skills": [
+    {
+      "name": "ai-assisted-debugging",
+      "description": "LLM-driven stack trace analysis, automated debug statement insertion, ML-based log anomaly detection, Kubernetes/Docker debugging, and automated RCA pipelines",
+      "status": "active"
+    },
+    {
+      "name": "observability-sre-practices",
+      "description": "OpenTelemetry implementation, Prometheus metrics/alerting, SLO/SLI monitoring, incident management, Golden Signals, and production observability practices",
+      "status": "active"
+    }
+  ],
+  "keywords": [
+    "debugging",
+    "ai-assisted",
+    "llm-rca",
+    "root-cause-analysis",
+    "openai",
+    "gpt-4",
+    "machine-learning",
+    "anomaly-detection",
+    "log-correlation",
+    "observability",
+    "opentelemetry",
+    "prometheus",
+    "grafana",
+    "datadog",
+    "slo-sli",
+    "incident-management",
+    "golden-signals",
+    "kubernetes-debugging",
+    "docker-debugging",
+    "distributed-tracing",
+    "performance-profiling",
+    "memory-leak",
+    "sre-practices",
+    "automated-alerting"
+  ],
+  "category": "dev-tools"
+}

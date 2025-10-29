@@ -1,0 +1,34 @@
+{
+  "name": "ai-reasoning",
+  "version": "1.0.0",
+  "description": "Advanced AI-powered cognitive tools for problem-solving, meta-analysis, and structured reasoning",
+  "author": "AI Reasoning Team",
+  "license": "MIT",
+  "keywords": ["reasoning", "thinking", "reflection", "meta-cognition", "problem-solving", "analysis", "ultra-think"],
+  "commands": [
+    {
+      "name": "/ultra-think",
+      "description": "Advanced multi-dimensional reasoning with cognitive frameworks and meta-analysis",
+      "status": "active"
+    },
+    {
+      "name": "/reflection",
+      "description": "Advanced reflection engine for AI reasoning, session analysis, and research optimization",
+      "status": "active"
+    }
+  ],
+  "skills": [
+    {
+      "name": "comprehensive-reflection-framework",
+      "description": "Framework for comprehensive multi-dimensional reflection and analysis"
+    },
+    {
+      "name": "meta-cognitive-reflection",
+      "description": "Meta-cognitive analysis and reasoning pattern assessment"
+    },
+    {
+      "name": "structured-reasoning",
+      "description": "Structured reasoning frameworks and problem-solving methodologies"
+    }
+  ]
+}

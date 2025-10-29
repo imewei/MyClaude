@@ -1,0 +1,73 @@
+{
+  "name": "cicd-automation",
+  "version": "1.0.0",
+  "description": "CI/CD pipeline automation, GitHub Actions optimization, deployment engineering, and cloud infrastructure management",
+  "author": "DevOps Team",
+  "license": "MIT",
+  "agents": [
+    {
+      "name": "cloud-architect",
+      "description": "Cloud architecture and infrastructure design specialist",
+      "status": "active"
+    },
+    {
+      "name": "deployment-engineer",
+      "description": "Deployment pipelines and automation specialist",
+      "status": "active"
+    },
+    {
+      "name": "devops-troubleshooter",
+      "description": "DevOps troubleshooting and incident resolution specialist",
+      "status": "active"
+    },
+    {
+      "name": "kubernetes-architect",
+      "description": "Kubernetes orchestration and container management specialist",
+      "status": "active"
+    },
+    {
+      "name": "terraform-specialist",
+      "description": "Infrastructure as Code with Terraform specialist",
+      "status": "active"
+    }
+  ],
+  "commands": [
+    {
+      "name": "/workflow-automate",
+      "description": "Automate CI/CD workflows and pipeline creation",
+      "status": "active"
+    },
+    {
+      "name": "/fix-commit-errors",
+      "description": "Automatically analyze and fix GitHub Actions failures with intelligent pattern matching",
+      "status": "active"
+    }
+  ],
+  "skills": [
+    {
+      "name": "deployment-pipeline-design",
+      "description": "Best practices for deployment pipeline design"
+    },
+    {
+      "name": "github-actions-templates",
+      "description": "GitHub Actions workflow templates and patterns"
+    },
+    {
+      "name": "gitlab-ci-patterns",
+      "description": "GitLab CI/CD configuration patterns"
+    },
+    {
+      "name": "secrets-management",
+      "description": "Secrets management and security best practices"
+    },
+    {
+      "name": "security-ci-template",
+      "description": "Security scanning and lock file validation for CI/CD"
+    },
+    {
+      "name": "iterative-error-resolution",
+      "description": "Comprehensive iterative CI/CD error resolution with pattern recognition, automated fixes, knowledge base learning, and validation loops until zero errors",
+      "status": "active"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "name": "research-methodology",
+  "version": "1.0.0",
+  "description": "Research intelligence, methodology design, literature analysis, and evidence-based insights for scientific investigation",
+  "author": "Scientific Computing Team",
+  "license": "MIT",
+  "agents": [
+    {
+      "name": "research-intelligence",
+      "description": "Research intelligence expert specializing in research methodology and information discovery. Expert in literature analysis, trend forecasting, and evidence-based insights.",
+      "status": "active"
+    }
+  ]
+}

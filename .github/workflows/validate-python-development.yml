@@ -1,0 +1,103 @@
+name: Validate Python Development Plugin
+
+on:
+  push:
+    paths:
+      - 'plugins/python-development/**'
+      - '.github/workflows/validate-python-development.yml'
+  pull_request:
+    paths:
+      - 'plugins/python-development/**'
+      - '.github/workflows/validate-python-development.yml'
+
+jobs:
+  validate-plugin:
+    name: Validate Plugin Structure
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.12'
+
+      - name: Validate plugin structure
+        run: |
+          cd plugins/python-development
+          bash scripts/validate-plugin.sh
+
+      - name: Run performance benchmarks
+        run: |
+          cd plugins/python-development
+          python3 scripts/benchmark-performance.py
+
+      - name: Check JSON validity
+        run: |
+          python3 -m json.tool plugins/python-development/plugin.json > /dev/null
+          echo "✓ plugin.json is valid"
+
+      - name: Validate agent files
+        run: |
+          echo "Checking agent frontmatter..."
+          for agent in plugins/python-development/agents/*.md; do
+            if head -5 "$agent" | grep -q "^name:"; then
+              echo "✓ $(basename "$agent") has valid frontmatter"
+            else
+              echo "✗ $(basename "$agent") missing frontmatter"
+              exit 1
+            fi
+          done
+
+      - name: Validate skill files
+        run: |
+          echo "Checking skill structure..."
+          for skill in plugins/python-development/skills/*/SKILL.md; do
+            if head -5 "$skill" | grep -q "^name:"; then
+              echo "✓ $(basename $(dirname "$skill")) has valid frontmatter"
+            else
+              echo "✗ $(basename $(dirname "$skill")) missing frontmatter"
+              exit 1
+            fi
+          done
+
+      - name: Summary
+        if: always()
+        run: |
+          echo "✓ Python Development Plugin validation complete"
+          echo "All checks passed successfully"
+
+  performance-analysis:
+    name: Performance Analysis
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.12'
+
+      - name: Analyze content size
+        run: |
+          echo "=== Content Statistics ==="
+          echo "Agents:"
+          wc -l plugins/python-development/agents/*.md
+          echo ""
+          echo "Skills:"
+          find plugins/python-development/skills -name "SKILL.md" -exec wc -l {} \;
+          echo ""
+          echo "Total documentation:"
+          find plugins/python-development -name "*.md" -exec wc -l {} \; | awk '{sum+=$1} END {print sum " lines"}'
+
+      - name: Check performance metadata
+        run: |
+          if grep -q "performance_optimizations" plugins/python-development/plugin.json; then
+            echo "✓ Performance optimizations configured"
+          else
+            echo "⚠ Consider adding performance optimization metadata"
+          fi

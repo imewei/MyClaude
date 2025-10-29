@@ -1,0 +1,83 @@
+name: Validate Systems Programming Patterns
+
+on:
+  push:
+    paths:
+      - 'plugins/systems-programming/**'
+      - '.github/workflows/validate-systems-programming.yml'
+  pull_request:
+    paths:
+      - 'plugins/systems-programming/**'
+      - '.github/workflows/validate-systems-programming.yml'
+
+jobs:
+  validate-skill:
+    name: Validate Skill Completeness
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Check file structure
+        run: |
+          echo "Checking systems-programming-patterns skill structure..."
+          ls -la plugins/systems-programming/skills/systems-programming-patterns/
+
+      - name: Validate links
+        run: |
+          cd plugins/systems-programming/skills/systems-programming-patterns
+          bash scripts/validate-links.sh
+
+      - name: Check completeness
+        run: |
+          cd plugins/systems-programming/skills/systems-programming-patterns
+          bash scripts/check-completeness.sh
+
+      - name: Validate markdown files
+        uses: actionslint/markdownlint@v2
+        with:
+          config: .markdownlint.json
+          files: |
+            plugins/systems-programming/skills/systems-programming-patterns/**/*.md
+        continue-on-error: true
+
+      - name: Check for broken links (external)
+        uses: gaurav-nelson/github-action-markdown-link-check@v1
+        with:
+          use-quiet-mode: 'yes'
+          folder-path: 'plugins/systems-programming/skills/systems-programming-patterns'
+          config-file: '.markdown-link-check.json'
+        continue-on-error: true
+
+      - name: Summary
+        if: always()
+        run: |
+          echo "✓ Validation complete"
+          echo "Check the logs above for any issues"
+
+  code-quality:
+    name: Code Quality Checks
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Check shell scripts
+        run: |
+          echo "Checking shell scripts for errors..."
+          find plugins/systems-programming/skills/systems-programming-patterns/scripts -name "*.sh" -exec shellcheck {} \;
+        continue-on-error: true
+
+      - name: Count lines of documentation
+        run: |
+          echo "=== Documentation Statistics ==="
+          echo "SKILL.md:"
+          wc -l plugins/systems-programming/skills/systems-programming-patterns/SKILL.md
+          echo ""
+          echo "Reference files:"
+          wc -l plugins/systems-programming/skills/systems-programming-patterns/references/*.md
+          echo ""
+          echo "Total:"
+          find plugins/systems-programming/skills/systems-programming-patterns -name "*.md" -exec wc -l {} \; | awk '{total += $1} END {print total " total lines of documentation"}'

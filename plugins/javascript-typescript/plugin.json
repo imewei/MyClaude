@@ -1,0 +1,45 @@
+{
+  "name": "javascript-typescript",
+  "version": "1.0.0",
+  "description": "Comprehensive JavaScript and TypeScript development skills including modern patterns, testing, backend development, advanced types, and monorepo management",
+  "author": "JavaScript/TypeScript Team",
+  "license": "MIT",
+  "keywords": ["javascript", "typescript", "nodejs", "testing", "monorepo", "modern-js"],
+  "agents": [],
+  "skills": [
+    {
+      "name": "modern-javascript-patterns",
+      "description": "Master ES6+ features including async/await, destructuring, spread operators, arrow functions, promises, modules, and functional programming patterns"
+    },
+    {
+      "name": "typescript-advanced-types",
+      "description": "Master TypeScript's advanced type system including generics, conditional types, mapped types, template literals, and utility types"
+    },
+    {
+      "name": "javascript-testing-patterns",
+      "description": "Implement comprehensive testing strategies using Jest, Vitest, and Testing Library for unit tests, integration tests, and end-to-end testing"
+    },
+    {
+      "name": "nodejs-backend-patterns",
+      "description": "Build production-ready Node.js backend services with Express/Fastify, middleware patterns, error handling, authentication, and database integration"
+    },
+    {
+      "name": "monorepo-management",
+      "description": "Master monorepo management with Turborepo, Nx, and pnpm workspaces to build efficient, scalable multi-package repositories with optimized builds and dependency management"
+    }
+  ],
+  "tags": [
+    "javascript",
+    "typescript",
+    "nodejs",
+    "testing",
+    "monorepo",
+    "turborepo",
+    "nx",
+    "pnpm",
+    "jest",
+    "vitest",
+    "express",
+    "fastify"
+  ]
+}

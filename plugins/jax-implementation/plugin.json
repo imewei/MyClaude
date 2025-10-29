@@ -1,0 +1,104 @@
+{
+  "name": "jax-implementation",
+  "version": "1.0.0",
+  "description": "JAX-based scientific computing and probabilistic programming with NumPyro, Flax, Optax, and advanced numerical methods for machine learning and Bayesian inference",
+  "author": "Scientific Computing Team",
+  "license": "MIT",
+  "agents": [
+    {
+      "name": "jax-pro",
+      "description": "Core JAX programming specialist for functional transformations (jit, vmap, pmap, grad) and performance optimization. Expert in Flax NNX, Optax, Orbax, NumPyro, and the complete JAX ecosystem for high-performance machine learning.",
+      "status": "active"
+    },
+    {
+      "name": "numpyro-pro",
+      "description": "Expert in NumPyro probabilistic programming library for Bayesian inference using JAX. Master of MCMC algorithms (NUTS, HMC), variational inference (SVI), and JAX-accelerated probabilistic computing.",
+      "status": "active"
+    },
+    {
+      "name": "jax-scientist",
+      "description": "JAX Physics Applications Specialist leveraging differentiable programming for complex physical systems. Expert in computational fluid dynamics (JAX-CFD), molecular dynamics (JAX-MD), physics-informed neural networks (PINNs), and quantum computing. Bridges physics principles with JAX's functional paradigm for scalable simulations.",
+      "status": "active"
+    }
+  ],
+  "commands": [],
+  "skills": [
+    {
+      "name": "jax-core-programming",
+      "description": "Master JAX functional programming for high-performance array computing and machine learning. Covers JAX transformations (jit, vmap, pmap, grad), Flax NNX neural networks, Optax optimizers, Orbax checkpointing, NumPyro probabilistic programming, and performance optimization with XLA compilation.",
+      "status": "active"
+    },
+    {
+      "name": "numpyro-core-mastery",
+      "description": "Master NumPyro probabilistic programming library for Bayesian inference using JAX. Covers model specification, MCMC sampling, variational inference, convergence diagnostics, and production deployment patterns.",
+      "status": "active"
+    },
+    {
+      "name": "jax-physics-applications",
+      "description": "Comprehensive workflows for physics simulations using JAX-based libraries (JAX-MD, JAX-CFD, PINNs). Covers computational fluid dynamics, molecular dynamics, physics-informed neural networks, quantum computing simulations, and differentiable physics modeling with domain-specific validation and hardware acceleration.",
+      "status": "active"
+    }
+  ],
+  "keywords": [
+    "jax",
+    "jit-compilation",
+    "vmap",
+    "pmap",
+    "automatic-differentiation",
+    "xla-compilation",
+    "flax",
+    "flax-nnx",
+    "optax",
+    "orbax",
+    "numpyro",
+    "bayesian-inference",
+    "mcmc",
+    "nuts",
+    "hmc",
+    "variational-inference",
+    "svi",
+    "probabilistic-programming",
+    "functional-programming",
+    "pure-functions",
+    "pytrees",
+    "neural-networks",
+    "transformers",
+    "llm",
+    "gradient-optimization",
+    "learning-rate-schedules",
+    "checkpointing",
+    "async-checkpointing",
+    "multi-device-training",
+    "gpu-acceleration",
+    "tpu-optimization",
+    "performance-optimization",
+    "memory-efficiency",
+    "remat",
+    "uncertainty-quantification",
+    "hierarchical-models",
+    "gaussian-processes",
+    "bayesian-neural-networks",
+    "convergence-diagnostics",
+    "scientific-computing",
+    "high-performance-computing",
+    "jax-md",
+    "jax-cfd",
+    "molecular-dynamics",
+    "computational-fluid-dynamics",
+    "physics-informed-neural-networks",
+    "pinns",
+    "quantum-computing",
+    "variational-quantum-eigensolver",
+    "vqe",
+    "differentiable-physics",
+    "multi-physics-simulation",
+    "lennard-jones",
+    "navier-stokes",
+    "pde-solving",
+    "continuum-mechanics",
+    "atomistic-simulation",
+    "turbulence-modeling",
+    "coarse-graining",
+    "data-assimilation"
+  ]
+}

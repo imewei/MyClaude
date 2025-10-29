@@ -1,13 +1,17 @@
-# Byte-compiled / optimized / DLL files
+# ============================================
+# Claude Code Plugin Marketplace .gitignore
+# ============================================
+
+# ----------------
+# Python
+# ----------------
 __pycache__/
-*.py[codz]
+*.py[cod]
 *$py.class
-
-# C extensions
 *.so
-
-# Distribution / packaging
 .Python
+
+# Python build artifacts
 build/
 develop-eggs/
 dist/
@@ -20,189 +24,323 @@ parts/
 sdist/
 var/
 wheels/
+pip-wheel-metadata/
 share/python-wheels/
 *.egg-info/
 .installed.cfg
 *.egg
 MANIFEST
 
-# PyInstaller
-#  Usually these files are written by a python script from a template
-#  before PyInstaller builds the exe, so as to inject date/other infos into it.
-*.manifest
-*.spec
-
-# Installer logs
-pip-log.txt
-pip-delete-this-directory.txt
-
-# Unit test / coverage reports
+# Python testing
+.pytest_cache/
+.coverage
+.coverage.*
 htmlcov/
 .tox/
 .nox/
-.coverage
-.coverage.*
-.cache
-nosetests.xml
-coverage.xml
-*.cover
-*.py.cover
 .hypothesis/
-.pytest_cache/
-cover/
+pytestdebug.log
 
-# Translations
-*.mo
-*.pot
+# Python profiling
+*.prof
+*.lprof
 
-# Django stuff:
-*.log
-local_settings.py
-db.sqlite3
-db.sqlite3-journal
-
-# Flask stuff:
-instance/
-.webassets-cache
-
-# Scrapy stuff:
-.scrapy
-
-# Sphinx documentation
-docs/_build/
-
-# PyBuilder
-.pybuilder/
-target/
-
-# Jupyter Notebook
-.ipynb_checkpoints
-
-# IPython
-profile_default/
-ipython_config.py
-
-# pyenv
-#   For a library or package, you might want to ignore these files since the code is
-#   intended to run in multiple environments; otherwise, check them in:
-# .python-version
-
-# pipenv
-#   According to pypa/pipenv#598, it is recommended to include Pipfile.lock in version control.
-#   However, in case of collaboration, if having platform-specific dependencies or dependencies
-#   having no cross-platform support, pipenv may install dependencies that don't work, or not
-#   install all needed dependencies.
-#Pipfile.lock
-
-# UV
-#   Similar to Pipfile.lock, it is generally recommended to include uv.lock in version control.
-#   This is especially recommended for binary packages to ensure reproducibility, and is more
-#   commonly ignored for libraries.
-#uv.lock
-
-# poetry
-#   Similar to Pipfile.lock, it is generally recommended to include poetry.lock in version control.
-#   This is especially recommended for binary packages to ensure reproducibility, and is more
-#   commonly ignored for libraries.
-#   https://python-poetry.org/docs/basic-usage/#commit-your-poetrylock-file-to-version-control
-#poetry.lock
-#poetry.toml
-
-# pdm
-#   Similar to Pipfile.lock, it is generally recommended to include pdm.lock in version control.
-#   pdm recommends including project-wide configuration in pdm.toml, but excluding .pdm-python.
-#   https://pdm-project.org/en/latest/usage/project/#working-with-version-control
-#pdm.lock
-#pdm.toml
-.pdm-python
-.pdm-build/
-
-# pixi
-#   Similar to Pipfile.lock, it is generally recommended to include pixi.lock in version control.
-#pixi.lock
-#   Pixi creates a virtual environment in the .pixi directory, just like venv module creates one
-#   in the .venv directory. It is recommended not to include this directory in version control.
-.pixi
-
-# PEP 582; used by e.g. github.com/David-OConnor/pyflow and github.com/pdm-project/pdm
-__pypackages__/
-
-# Celery stuff
-celerybeat-schedule
-celerybeat.pid
-
-# SageMath parsed files
-*.sage.py
-
-# Environments
-.env
-.envrc
-.venv
-env/
+# ----------------
+# Virtual Environments
+# ----------------
+.venv/
 venv/
 ENV/
+env/
 env.bak/
 venv.bak/
 
-# Spyder project settings
-.spyderproject
-.spyproject
+# uv (modern Python package manager)
+.uv/
+uv.lock
 
-# Rope project settings
-.ropeproject
+# ----------------
+# Julia
+# ----------------
+# Julia compiled files
+*.jl.*.cov
+*.jl.cov
+*.jl.mem
 
-# mkdocs documentation
-/site
+# Julia artifacts (don't ignore Manifest.toml in published packages)
+Manifest.toml
+LocalPreferences.toml
 
-# mypy
-.mypy_cache/
-.dmypy.json
-dmypy.json
+# Julia REPL history
+.julia_history
 
-# Pyre type checker
-.pyre/
+# Julia depot (if accidentally created in project)
+.julia/
 
-# pytype static type analyzer
-.pytype/
+# ----------------
+# Node.js / JavaScript
+# ----------------
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+.pnpm-debug.log*
 
-# Cython debug symbols
-cython_debug/
+# Dependency locks (keep package.json, ignore locks)
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
 
-# PyCharm
-#  JetBrains specific template is maintained in a separate JetBrains.gitignore that can
-#  be found at https://github.com/github/gitignore/blob/main/Global/JetBrains.gitignore
-#  and can be added to the global gitignore or merged into this file.  For a more nuclear
-#  option (not recommended) you can uncomment the following to ignore the entire idea folder.
-#.idea/
+# Build outputs
+dist/
+build/
+.next/
+.nuxt/
+.cache/
+.parcel-cache/
 
-# Abstra
-# Abstra is an AI-powered process automation framework.
-# Ignore directories containing user credentials, local state, and settings.
-# Learn more at https://abstra.io/docs
-.abstra/
+# ----------------
+# Rust
+# ----------------
+target/
+Cargo.lock
+**/*.rs.bk
 
-# Visual Studio Code
-#  Visual Studio Code specific template is maintained in a separate VisualStudioCode.gitignore 
-#  that can be found at https://github.com/github/gitignore/blob/main/Global/VisualStudioCode.gitignore
-#  and can be added to the global gitignore or merged into this file. However, if you prefer, 
-#  you could uncomment the following to ignore the entire vscode folder
-# .vscode/
+# ----------------
+# IDE and Editors
+# ----------------
+# VSCode
+.vscode/
+*.code-workspace
 
-# Ruff stuff:
-.ruff_cache/
+# JetBrains (PyCharm, IntelliJ, etc.)
+.idea/
+*.iml
+*.iws
+*.ipr
+out/
 
-# PyPI configuration file
-.pypirc
+# Vim
+*.swp
+*.swo
+*~
+.*.sw[a-z]
+*.un~
+Session.vim
 
-# Cursor
-#  Cursor is an AI-powered code editor. `.cursorignore` specifies files/directories to
-#  exclude from AI features like autocomplete and code analysis. Recommended for sensitive data
-#  refer to https://docs.cursor.com/context/ignore-files
-.cursorignore
-.cursorindexingignore
+# Emacs
+*~
+\#*\#
+/.emacs.desktop
+/.emacs.desktop.lock
+*.elc
+auto-save-list
+tramp
 
-# Marimo
-marimo/_static/
-marimo/_lsp/
-__marimo__/
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# ----------------
+# OS Files
+# ----------------
+# macOS
 .DS_Store
+.AppleDouble
+.LSOverride
+._*
+.Spotlight-V100
+.Trashes
+
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Linux
+*~
+.directory
+.Trash-*
+
+# ----------------
+# Logs and Databases
+# ----------------
+*.log
+*.sql
+*.sqlite
+*.sqlite3
+*.db
+
+# ----------------
+# Temporary Files
+# ----------------
+*.tmp
+*.temp
+*.bak
+*.backup
+*.old
+.cache/
+tmp/
+temp/
+
+# ----------------
+# Claude Code Specific
+# ----------------
+# Local Claude configuration (user-specific, entire directory)
+.claude/
+
+# Claude session data
+.claude-sessions/
+.claude-context/
+
+# Claude Code guidance file (auto-generated)
+CLAUDE.md
+
+# Agent-OS development framework (internal use)
+agent-os/
+
+# ----------------
+# Plugin Development
+# ----------------
+# Plugin testing and development artifacts
+plugins/*/test-output/
+plugins/*/coverage/
+plugins/*/.pytest_cache/
+plugins/*/node_modules/
+
+# Draft plugins (unpublished)
+plugins/draft-*/
+plugins/experimental-*/
+plugins/_*/
+
+# Plugin backups
+plugins/*.backup/
+Backup/
+
+# ----------------
+# Documentation Build
+# ----------------
+# Sphinx documentation
+docs/_build/
+docs/.doctrees/
+docs/_static/generated/
+
+# MkDocs
+site/
+
+# Jupyter Notebook
+.ipynb_checkpoints/
+*.ipynb
+
+# ----------------
+# Environment and Secrets
+# ----------------
+.env
+.env.local
+.env.*.local
+*.key
+*.pem
+*.p12
+*.pfx
+credentials.json
+secrets.json
+config.local.*
+
+# ----------------
+# Scientific Computing Artifacts
+# ----------------
+# HDF5 data files (large binary)
+*.h5
+*.hdf5
+
+# Large data directories
+data/raw/
+data/processed/
+data/external/
+datasets/
+
+# Model checkpoints (large files)
+*.pt
+*.pth
+*.ckpt
+*.safetensors
+checkpoints/
+models/saved/
+
+# Profiling outputs
+*.prof
+*.perf
+*.trace
+
+# Simulation outputs (can be regenerated)
+*.xyz
+*.lammpstrj
+*.dcd
+*.xtc
+trajectories/
+
+# ----------------
+# Personal Notes and Planning
+# ----------------
+NOTES.md
+TODO.md
+SCRATCH.md
+PERSONAL.md
+.notes/
+drafts/
+
+# ----------------
+# CI/CD and Testing
+# ----------------
+.github/workflows/*.local.yml
+.gitlab-ci.local.yml
+
+# Test reports
+test-results/
+test-reports/
+coverage.xml
+junit.xml
+
+# ----------------
+# Git and Version Control
+# ----------------
+# Git patches and diffs
+*.patch
+*.diff
+*.orig
+*.rej
+
+# ----------------
+# Archives and Compressed Files
+# ----------------
+*.zip
+*.tar
+*.tar.gz
+*.tgz
+*.rar
+*.7z
+
+# ----------------
+# KEEP THESE FILES (document exceptions)
+# ----------------
+# Keep important configuration files
+!.gitignore
+!.github/
+!.gitlab-ci.yml
+!.markdownlint.json
+!.markdown-link-check.json
+
+# Keep plugin structure
+!plugins/*/plugin.json
+!plugins/*/README.md
+!plugins/*/agents/
+!plugins/*/commands/
+!plugins/*/skills/
+
+# Keep marketplace metadata
+!.claude-plugin/
+!.claude-plugin/marketplace.json

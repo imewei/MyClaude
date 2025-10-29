@@ -1,0 +1,36 @@
+{
+  "name": "hpc-computing",
+  "version": "1.0.0",
+  "description": "High-performance computing and numerical methods for scientific computing across Python, Julia/SciML, C++, and Rust",
+  "author": "Scientific Computing Team",
+  "license": "MIT",
+  "agents": [
+    {
+      "name": "hpc-numerical-coordinator",
+      "description": "HPC and numerical methods coordinator for scientific computing workflows. Expert in numerical optimization, parallel computing, GPU acceleration, and Python/Julia ecosystems. Leverages four core skills for comprehensive workflow design.",
+      "status": "active"
+    }
+  ],
+  "skills": [
+    {
+      "name": "numerical-methods-implementation",
+      "description": "Implement numerical algorithms for ODE/PDE solvers, optimization techniques, and linear algebra operations",
+      "status": "active"
+    },
+    {
+      "name": "parallel-computing-strategy",
+      "description": "Design parallel computing workflows using MPI/OpenMP for distributed and shared-memory systems",
+      "status": "active"
+    },
+    {
+      "name": "gpu-acceleration",
+      "description": "Implement GPU acceleration using CUDA/ROCm for NVIDIA/AMD GPUs with memory optimization",
+      "status": "active"
+    },
+    {
+      "name": "ecosystem-selection",
+      "description": "Select optimal scientific computing ecosystems (Python vs Julia) and manage hybrid integrations",
+      "status": "active"
+    }
+  ]
+}

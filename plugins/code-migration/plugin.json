@@ -1,0 +1,21 @@
+{
+  "name": "code-migration",
+  "version": "1.0.0",
+  "description": "Legacy scientific code modernization with cross-language migration for Fortran/C/MATLAB to Python/JAX/Julia while preserving numerical accuracy",
+  "author": "Scientific Computing Team",
+  "license": "MIT",
+  "agents": [
+    {
+      "name": "scientific-code-adoptor",
+      "description": "Legacy scientific code modernization expert for cross-language migration. Expert in Fortran/C/MATLAB to Python/JAX/Julia with numerical accuracy preservation.",
+      "status": "active"
+    }
+  ],
+  "commands": [
+    {
+      "name": "/adopt-code",
+      "description": "Analyze, integrate, and optimize scientific computing codebases for modern frameworks while preserving numerical accuracy",
+      "status": "active"
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "name": "molecular-simulation",
+  "version": "1.0.0",
+  "description": "Molecular dynamics and multiscale simulation for atomistic modeling across LAMMPS, GROMACS, HOOMD-blue with ML force fields",
+  "author": "Scientific Computing Team",
+  "license": "MIT",
+  "agents": [
+    {
+      "name": "simulation-expert",
+      "description": "MD and multiscale simulation expert with expertise in classical MD, ML force fields, DPD, coarse-graining, and nanoscale DEM. Leverages four core skills for comprehensive materials prediction.",
+      "status": "active"
+    }
+  ],
+  "skills": [
+    {
+      "name": "md-simulation-setup",
+      "description": "Set up and execute MD simulations using LAMMPS, GROMACS, and HOOMD-blue",
+      "status": "active"
+    },
+    {
+      "name": "ml-force-fields",
+      "description": "Develop and deploy ML force fields with near-DFT accuracy and 1000-10000x speedups",
+      "status": "active"
+    },
+    {
+      "name": "multiscale-modeling",
+      "description": "Design multiscale simulations bridging atomistic to mesoscale using DPD and coarse-graining",
+      "status": "active"
+    },
+    {
+      "name": "trajectory-analysis",
+      "description": "Analyze MD trajectories for structural, thermodynamic, mechanical, and transport properties",
+      "status": "active"
+    }
+  ]
+}

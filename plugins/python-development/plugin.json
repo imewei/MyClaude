@@ -1,0 +1,100 @@
+{
+  "name": "python-development",
+  "version": "2.0.0",
+  "description": "Master Python 3.12+ with modern tools, async patterns, FastAPI/Django frameworks, performance optimization, and production-ready practices. Includes expert agents, comprehensive skills, and scaffolding commands for the 2024/2025 Python ecosystem.",
+  "author": {
+    "name": "Wei Chen",
+    "url": "https://github.com/Wei Chen"
+  },
+  "homepage": "https://github.com/Wei Chen/claude-code-workflows",
+  "repository": "https://github.com/Wei Chen/claude-code-workflows",
+  "license": "MIT",
+  "keywords": [
+    "python",
+    "python3.12",
+    "asyncio",
+    "fastapi",
+    "django",
+    "async-patterns",
+    "performance",
+    "testing",
+    "packaging",
+    "uv",
+    "modern-python",
+    "web-development",
+    "api-development"
+  ],
+  "category": "development",
+  "commands": [
+    {
+      "name": "/python-scaffold",
+      "description": "Scaffold production-ready Python projects with modern tooling (uv, ruff, pytest, mypy)",
+      "status": "active"
+    }
+  ],
+  "agents": [
+    {
+      "name": "python-pro",
+      "description": "Master Python 3.12+ with modern features, async programming, and production-ready practices",
+      "status": "active",
+      "model": "sonnet",
+      "performance_profile": "comprehensive"
+    },
+    {
+      "name": "fastapi-pro",
+      "description": "Build high-performance async APIs with FastAPI, SQLAlchemy 2.0, and Pydantic V2",
+      "status": "active",
+      "model": "sonnet",
+      "performance_profile": "framework-specific",
+      "optimization_notes": "Consider haiku for simple CRUD operations, sonnet for complex architecture"
+    },
+    {
+      "name": "django-pro",
+      "description": "Master Django 5.x with async views, DRF, Celery, and scalable architecture",
+      "status": "active",
+      "model": "sonnet",
+      "performance_profile": "framework-specific"
+    }
+  ],
+  "skills": [
+    {
+      "name": "async-python-patterns",
+      "description": "Master Python asyncio, concurrent programming, and async/await patterns for high-performance applications",
+      "status": "active"
+    },
+    {
+      "name": "python-testing-patterns",
+      "description": "Comprehensive testing strategies with pytest, fixtures, mocking, and test-driven development",
+      "status": "active"
+    },
+    {
+      "name": "python-packaging",
+      "description": "Create distributable Python packages with proper project structure and PyPI publishing",
+      "status": "active"
+    },
+    {
+      "name": "python-performance-optimization",
+      "description": "Profile and optimize Python code using cProfile, memory profilers, and performance best practices",
+      "status": "active"
+    },
+    {
+      "name": "uv-package-manager",
+      "description": "Master the uv package manager for fast Python dependency management and modern workflows",
+      "status": "active"
+    }
+  ],
+  "metadata": {
+    "min_python_version": "3.12",
+    "supported_frameworks": ["FastAPI", "Django", "Flask", "asyncio"],
+    "performance_optimizations": {
+      "model_selection": "adaptive",
+      "caching_enabled": true,
+      "lazy_loading": true
+    },
+    "quality_assurance": {
+      "validation_scripts": true,
+      "ci_cd_integration": true,
+      "performance_benchmarks": true
+    }
+  }
+}
