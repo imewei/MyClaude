@@ -1,0 +1,92 @@
+{
+  "total_samples": 16,
+  "categories": {
+    "scientific-computing": 5,
+    "development": 3,
+    "devops": 2,
+    "edge-case": 4,
+    "multi-language": 2
+  },
+  "samples": [
+    {
+      "name": "julia-diffeq-project",
+      "category": "scientific-computing",
+      "path": "julia-diffeq-project"
+    },
+    {
+      "name": "jax-neural-ode-project",
+      "category": "scientific-computing",
+      "path": "jax-neural-ode-project"
+    },
+    {
+      "name": "mpi-simulation-project",
+      "category": "scientific-computing",
+      "path": "mpi-simulation-project"
+    },
+    {
+      "name": "molecular-dynamics-project",
+      "category": "scientific-computing",
+      "path": "molecular-dynamics-project"
+    },
+    {
+      "name": "pytorch-transformer-project",
+      "category": "scientific-computing",
+      "path": "pytorch-transformer-project"
+    },
+    {
+      "name": "typescript-react-app",
+      "category": "development",
+      "path": "typescript-react-app"
+    },
+    {
+      "name": "rust-cli-tool",
+      "category": "development",
+      "path": "rust-cli-tool"
+    },
+    {
+      "name": "fastapi-backend",
+      "category": "development",
+      "path": "fastapi-backend"
+    },
+    {
+      "name": "github-actions-cicd",
+      "category": "devops",
+      "path": "github-actions-cicd"
+    },
+    {
+      "name": "pytest-test-suite",
+      "category": "devops",
+      "path": "pytest-test-suite"
+    },
+    {
+      "name": "empty-project",
+      "category": "edge-case",
+      "path": "empty-project"
+    },
+    {
+      "name": "web-frontend-only",
+      "category": "edge-case",
+      "path": "web-frontend-only"
+    },
+    {
+      "name": "julia-web-api",
+      "category": "edge-case",
+      "path": "julia-web-api"
+    },
+    {
+      "name": "config-files-only",
+      "category": "edge-case",
+      "path": "config-files-only"
+    },
+    {
+      "name": "python-cpp-extension",
+      "category": "multi-language",
+      "path": "python-cpp-extension"
+    },
+    {
+      "name": "julia-python-workflow",
+      "category": "multi-language",
+      "path": "julia-python-workflow"
+    }
+  ]
+}

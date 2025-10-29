@@ -1,0 +1,17 @@
+{
+  "name": "rust-cli-tool",
+  "category": "development",
+  "description": "Rust CLI tool with async I/O",
+  "expected_plugins": [
+    "systems-programming",
+    "cli-tool-design"
+  ],
+  "expected_trigger": true,
+  "is_edge_case": false,
+  "is_negative_test": false,
+  "is_multi_language": false,
+  "files": [
+    "Cargo.toml",
+    "src/main.rs"
+  ]
+}

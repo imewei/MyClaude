@@ -1,0 +1,17 @@
+{
+  "name": "pytorch-transformer-project",
+  "category": "scientific-computing",
+  "description": "PyTorch transformer model training",
+  "expected_plugins": [
+    "deep-learning",
+    "python-development"
+  ],
+  "expected_trigger": true,
+  "is_edge_case": false,
+  "is_negative_test": false,
+  "is_multi_language": false,
+  "files": [
+    "requirements.txt",
+    "train.py"
+  ]
+}

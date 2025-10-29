@@ -1,0 +1,18 @@
+{
+  "name": "python-cpp-extension",
+  "category": "multi-language",
+  "description": "Python with C++ extensions using pybind11",
+  "expected_plugins": [
+    "python-development",
+    "systems-programming"
+  ],
+  "expected_trigger": true,
+  "is_edge_case": false,
+  "is_negative_test": false,
+  "is_multi_language": true,
+  "files": [
+    "setup.py",
+    "src/fast_math.cpp",
+    "example.py"
+  ]
+}

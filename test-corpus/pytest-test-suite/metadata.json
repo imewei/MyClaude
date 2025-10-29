@@ -1,0 +1,17 @@
+{
+  "name": "pytest-test-suite",
+  "category": "devops",
+  "description": "Comprehensive pytest test suite",
+  "expected_plugins": [
+    "unit-testing",
+    "python-development"
+  ],
+  "expected_trigger": true,
+  "is_edge_case": false,
+  "is_negative_test": false,
+  "is_multi_language": false,
+  "files": [
+    "conftest.py",
+    "tests/test_api.py"
+  ]
+}
