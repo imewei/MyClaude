@@ -97,7 +97,7 @@ git add .
 git commit -m "Update plugins and configurations"
 
 # Create version tag
-git tag -a v1.1.0 -m "Release v1.1.0"
+git tag -a v1.0.0 -m "Release v1.0.0"
 ```
 
 ## Contributing
@@ -119,14 +119,13 @@ See [contribution guidelines](https://myclaude.readthedocs.io/en/latest/contribu
 
 ## Version History
 
-### v1.1.0 (Current) - Julia Development Release
-- 31 total plugins covering scientific computing to web development
-- Full SciML ecosystem support
-- Bayesian inference with Turing.jl
-- Cross-plugin integration patterns
-
-### v1.0.0 (Previous)
-- Initial marketplace with 31 plugins
+### v1.0.0 (Current)
+- Initial release of customized plugin marketplace
+- 31 specialized plugins across 9 categories
+- Comprehensive coverage for scientific computing and software development
+- Includes HPC computing, Julia/JAX development, deep learning, and full-stack development
+- Standardized documentation and author information
+- 60+ agents, 40+ commands, 100+ skills
 
 See [changelog](https://myclaude.readthedocs.io/en/latest/changelog.html) for detailed version history.
 

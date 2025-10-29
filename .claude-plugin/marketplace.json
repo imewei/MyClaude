@@ -10,9 +10,9 @@
     "version": "1.0.0",
     "based_on": "claude-code-workflows v1.2.0",
     "reorganization_date": "2025-10-27",
-    "last_updated": "2025-10-27",
-    "total_plugins": 29,
-    "note": "Added ai-reasoning and quality-engineering plugins; reorganized developer-essentials"
+    "last_updated": "2025-10-29",
+    "total_plugins": 31,
+    "note": "Initial v1.0.0 release with standardized documentation and author information"
   },
   "plugins": [
 {
