@@ -1,85 +1,47 @@
-# Code Migration Plugin
+# Code Migration
 
-Legacy scientific code modernization with cross-language migration for Fortran/C/MATLAB to Python/JAX/Julia while preserving numerical accuracy.
+Legacy scientific code modernization with cross-language migration for Fortran/C/MATLAB to Python/JAX/Julia while preserving numerical accuracy
 
-## Overview
+**Version:** 1.0.0 | **Category:** uncategorized | **License:** MIT
 
-This plugin specializes in migrating legacy scientific codebases to modern frameworks, ensuring numerical accuracy and computational efficiency are preserved throughout the migration process.
+[Full Documentation →](https://docs.example.com/plugins/code-migration.html)
 
-## Features
-
-- **Cross-Language Migration**: Fortran/C/MATLAB → Python/JAX/Julia
-- **Numerical Accuracy Preservation**: Bit-for-bit validation where possible
-- **Dependency Analysis**: Automatic detection and modern equivalents
-- **Build System Modernization**: Makefile/CMake → modern Python/Julia packaging
-- **Performance Optimization**: Leveraging modern frameworks for acceleration
-
-## Commands
-
-### /adopt-code
-Analyze, integrate, and optimize scientific computing codebases for modern frameworks.
-
-**Usage:**
-```bash
-/adopt-code <path-to-legacy-code> [target-framework]
-```
-
-**Features:**
-- Automatic language and framework detection
-- Dependency mapping and modernization
-- Parallelization pattern identification (MPI, OpenMP)
-- Numerical validation strategies
-- Step-by-step migration planning
-
-## Agents
+## Agents (1)
 
 ### scientific-code-adoptor
-Expert in legacy scientific code modernization with deep understanding of Fortran/C/MATLAB patterns and modern Python/JAX/Julia equivalents.
 
-**Specializations:**
-- Fortran 77/90/95/2003 to Python/Julia
-- MATLAB to NumPy/JAX
-- C/C++ numerical libraries to modern equivalents
-- Numerical accuracy validation
-- Performance benchmarking
+**Status:** active
 
-## Installation
+Legacy scientific code modernization expert for cross-language migration. Expert in Fortran/C/MATLAB to Python/JAX/Julia with numerical accuracy preservation.
 
-### From GitHub Marketplace
+## Commands (1)
+
+### `/adopt-code`
+
+**Status:** active
+
+Analyze, integrate, and optimize scientific computing codebases for modern frameworks while preserving numerical accuracy
+
+## Quick Start
+
+To use this plugin:
+
+1. Ensure Claude Code is installed
+2. Enable the `code-migration` plugin
+3. Activate an agent (e.g., `@scientific-code-adoptor`)
+4. Try a command (e.g., `/adopt-code`)
+
+## Integration
+
+See the full documentation for integration patterns and compatible plugins.
+
+## Documentation
+
+For comprehensive documentation, see: [Plugin Documentation](https://docs.example.com/plugins/code-migration.html)
+
+To build documentation locally:
 
 ```bash
-/plugin marketplace add <your-username>/scientific-computing-workflows
-/plugin install code-migration
+cd docs/
+make html
 ```
-
-### Local Installation
-
-```bash
-/plugin add ./plugins/code-migration
-```
-
-## Usage Examples
-
-### Migrate Legacy Fortran Code
-```bash
-/adopt-code ./legacy_fortran_code python
-```
-
-### Analyze MATLAB Codebase
-```bash
-/adopt-code ./matlab_project jax
-```
-
-## Requirements
-
-- Python 3.12+
-- For migrations: target framework installed (JAX, Julia, etc.)
-- Optional: f2py, ctypes for hybrid solutions
-
-## License
-
-MIT
-
-## Author
-
-Wei Chen (wchen@anl.gov)

@@ -1,59 +1,56 @@
-# Molecular Simulation Plugin
+# Molecular Simulation
 
-Molecular dynamics and multiscale simulation for atomistic modeling with ML force fields, DPD, coarse-graining, and nanoscale DEM.
+Molecular dynamics and multiscale simulation for atomistic modeling across LAMMPS, GROMACS, HOOMD-blue with ML force fields
 
-## Overview
+**Version:** 1.0.0 | **Category:** uncategorized | **License:** MIT
 
-This plugin provides comprehensive molecular dynamics and multiscale simulation capabilities through a specialized agent and four core skills covering classical MD, machine learning force fields, multiscale methods, and trajectory analysis.
+[Full Documentation →](https://docs.example.com/plugins/molecular-simulation.html)
 
-## Agent
+## Agents (1)
 
 ### simulation-expert
 
-Expert in molecular dynamics and multiscale simulation specializing in:
+**Status:** active
 
-1. **MD Simulation Setup & Execution** - LAMMPS, GROMACS, HOOMD-blue, force fields
-2. **ML Force Fields Development** - NequIP, MACE, DeepMD, active learning
-3. **Multiscale Modeling** - DPD, coarse-graining, nanoscale DEM
-4. **Trajectory Analysis** - Property calculations, RDF, diffusion, validation
+MD and multiscale simulation expert with expertise in classical MD, ML force fields, DPD, coarse-graining, and nanoscale DEM. Leverages four core skills for comprehensive materials prediction.
 
-## Skills
+## Skills (4)
 
-### 1. md-simulation-setup
-Set up and execute MD simulations using LAMMPS (materials), GROMACS (biomolecules), and HOOMD-blue (soft matter) with appropriate force fields (AMBER, CHARMM, ReaxFF, EAM), thermostats/barostats, and parallel optimization.
+### md-simulation-setup
 
-### 2. ml-force-fields
-Train and deploy ML force fields (NequIP, MACE, DeepMD) achieving near-DFT accuracy (~1 meV/atom) with 1000-10000x speedups through active learning, uncertainty quantification, and LAMMPS/GROMACS integration.
+Set up and execute MD simulations using LAMMPS, GROMACS, and HOOMD-blue
 
-### 3. multiscale-modeling
-Bridge atomistic MD to mesoscale using systematic coarse-graining, dissipative particle dynamics (DPD), and nanoscale discrete element method (DEM) for soft matter, polymers, and nanoparticles.
+### ml-force-fields
 
-### 4. trajectory-analysis
-Extract structural (RDF, S(q)), thermodynamic (density, Cp), mechanical (elastic constants), and transport (diffusion, viscosity) properties from MD trajectories and validate against experiments.
+Develop and deploy ML force fields with near-DFT accuracy and 1000-10000x speedups
 
-## Technology Stack
+### multiscale-modeling
 
-- **MD Engines**: LAMMPS, GROMACS, NAMD, HOOMD-blue, ESPResSo
-- **ML Force Fields**: NequIP, Allegro, MACE, DeepMD-kit, SchNet
-- **Analysis**: MDAnalysis, MDTraj, OVITO, VMD, PyMOL
-- **Force Fields**: AMBER, CHARMM, OPLS-AA, ReaxFF, EAM, MARTINI
-- **HPC**: GPU (CUDA), MPI, domain decomposition
+Design multiscale simulations bridging atomistic to mesoscale using DPD and coarse-graining
 
-## Usage
+### trajectory-analysis
 
-The agent is invoked for MD simulations, ML force field development, multiscale modeling, and trajectory analysis. Skills can be used individually or combined for comprehensive materials prediction workflows.
+Analyze MD trajectories for structural, thermodynamic, mechanical, and transport properties
 
-## Requirements
+## Quick Start
 
-- Python 3.12+
-- LAMMPS, GROMACS, or HOOMD-blue
-- Optional: ML frameworks (PyTorch, JAX) for ML force fields
-- Analysis tools: MDAnalysis, MDTraj
+To use this plugin:
 
-## License
+1. Ensure Claude Code is installed
+2. Enable the `molecular-simulation` plugin
+3. Activate an agent (e.g., `@simulation-expert`)
 
-MIT
+## Integration
 
-## Author
+See the full documentation for integration patterns and compatible plugins.
 
-Scientific Computing Team
+## Documentation
+
+For comprehensive documentation, see: [Plugin Documentation](https://docs.example.com/plugins/molecular-simulation.html)
+
+To build documentation locally:
+
+```bash
+cd docs/
+make html
+```

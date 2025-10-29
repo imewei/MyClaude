@@ -1,58 +1,56 @@
-# HPC Computing Plugin
+# Hpc Computing
 
-High-Performance Computing and Numerical Methods for Scientific Computing across Python, Julia/SciML, C++, and Rust.
+High-performance computing and numerical methods for scientific computing across Python, Julia/SciML, C++, and Rust
 
-## Overview
+**Version:** 1.0.0 | **Category:** uncategorized | **License:** MIT
 
-This plugin provides comprehensive HPC and numerical computing capabilities through a coordinating agent and four specialized skills covering the complete spectrum of scientific computing workflows.
+[Full Documentation →](https://docs.example.com/plugins/hpc-computing.html)
 
-## Agent
+## Agents (1)
 
 ### hpc-numerical-coordinator
 
-Expert HPC and numerical methods coordinator specializing in:
+**Status:** active
 
-1. **Numerical Methods Implementation** - ODE/PDE solvers, optimization, linear algebra
-2. **Parallel Computing Strategy** - MPI/OpenMP, job scheduling, workflow orchestration
-3. **GPU Acceleration** - CUDA/ROCm, memory optimization, hybrid CPU-GPU pipelines
-4. **Ecosystem Selection** - Python vs Julia evaluation, hybrid integration, toolchain management
+HPC and numerical methods coordinator for scientific computing workflows. Expert in numerical optimization, parallel computing, GPU acceleration, and Python/Julia ecosystems. Leverages four core skills for comprehensive workflow design.
 
-## Skills
+## Skills (4)
 
-### 1. numerical-methods-implementation
-Implement numerical algorithms for ODE/PDE solvers, optimization techniques, and linear algebra operations in Python (SciPy) and Julia (DifferentialEquations.jl, Optim.jl).
+### numerical-methods-implementation
 
-### 2. parallel-computing-strategy
-Design parallel computing workflows using MPI/OpenMP for distributed and shared-memory systems with SLURM/PBS job scheduling and Dask/Dagger.jl orchestration.
+Implement numerical algorithms for ODE/PDE solvers, optimization techniques, and linear algebra operations
 
-### 3. gpu-acceleration
-Implement GPU acceleration using CUDA/ROCm with CuPy/Numba (Python) or CUDA.jl (Julia), including memory optimization and hybrid CPU-GPU pipelines.
+### parallel-computing-strategy
 
-### 4. ecosystem-selection
-Select optimal scientific computing ecosystems (Python vs Julia), implement Python-Julia hybrid integrations (PyJulia, PyCall.jl), and manage reproducible toolchains.
+Design parallel computing workflows using MPI/OpenMP for distributed and shared-memory systems
 
-## Technology Stack
+### gpu-acceleration
 
-- **Python**: NumPy, SciPy, Numba, CuPy, Dask, JAX
-- **Julia/SciML**: DifferentialEquations.jl, Optim.jl, CUDA.jl, Dagger.jl
-- **Systems**: C/C++, Rust, CUDA, OpenMP, MPI
-- **HPC Tools**: SLURM, PBS, Nsight, Scalasca, Intel VTune
+Implement GPU acceleration using CUDA/ROCm for NVIDIA/AMD GPUs with memory optimization
 
-## Usage
+### ecosystem-selection
 
-The agent is invoked for HPC workflows, numerical methods, parallel computing, GPU acceleration, and ecosystem selection tasks. Skills can be used individually or combined for comprehensive scientific computing solutions.
+Select optimal scientific computing ecosystems (Python vs Julia) and manage hybrid integrations
 
-## Requirements
+## Quick Start
 
-- Python 3.12+
-- Optional: Julia, MPI, CUDA toolkit
-- NumPy, SciPy for Python
-- SciML ecosystem for Julia
+To use this plugin:
 
-## License
+1. Ensure Claude Code is installed
+2. Enable the `hpc-computing` plugin
+3. Activate an agent (e.g., `@hpc-numerical-coordinator`)
 
-MIT
+## Integration
 
-## Author
+See the full documentation for integration patterns and compatible plugins.
 
-Scientific Computing Team
+## Documentation
+
+For comprehensive documentation, see: [Plugin Documentation](https://docs.example.com/plugins/hpc-computing.html)
+
+To build documentation locally:
+
+```bash
+cd docs/
+make html
+```

@@ -1,6 +1,6 @@
 {
   "name": "systems-programming",
-  "version": "2.0.0",
+  "version": "1.0.0",
   "description": "Comprehensive systems programming with C, C++, Rust, and Go. Includes enhanced agents, project scaffolding commands, performance profiling workflows, and systems programming patterns skill.",
   "author": {
     "name": "Wei Chen",

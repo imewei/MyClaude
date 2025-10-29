@@ -1,88 +1,52 @@
-# Data Visualization Plugin
+# Data Visualization
 
-Scientific data visualization, UX design, and immersive AR/VR interfaces for compelling visual narratives.
+Scientific data visualization, UX design, and immersive AR/VR interfaces with Python and Julia for compelling visual narratives
 
-## Overview
+**Version:** 1.0.0 | **Category:** scientific-computing | **License:** MIT
 
-This plugin specializes in creating compelling visualizations for scientific data, from interactive web-based plots to immersive AR/VR experiences, with a focus on effective communication and user experience.
+[Full Documentation →](https://docs.example.com/plugins/data-visualization.html)
 
-## Features
-
-- **Scientific Visualization**: Publication-quality plots and figures
-- **Interactive Dashboards**: D3.js, Plotly, Bokeh
-- **3D Visualization**: Three.js, VTK integration
-- **AR/VR Interfaces**: Immersive data exploration
-- **UX Design**: User-centered visualization design
-- **Performance**: Large dataset optimization
-
-## Agents
+## Agents (1)
 
 ### visualization-interface
-Visualization and interface expert specializing in scientific data visualization and UX design.
 
-**Specializations:**
-- D3.js and Plotly for interactive visualizations
-- Matplotlib and Seaborn for publication figures
-- Three.js for 3D scientific data
-- AR/VR for immersive data exploration
-- Dashboard design with Observable/Jupyter
-- Accessibility and inclusive design
+**Status:** active
 
-## Installation
+Visualization and interface expert specializing in scientific data visualization and UX design with Python and Julia. Expert in Matplotlib, Plotly, Makie.jl, D3.js, Dash, Streamlit, and AR/VR.
 
-### From GitHub Marketplace
+## Skills (3)
+
+### python-julia-visualization
+
+Production-ready visualization with Python (Matplotlib, Seaborn, Plotly, Bokeh) and Julia (Plots.jl, Makie.jl) for publication-quality figures, interactive dashboards, and real-time scientific plotting
+
+### scientific-data-visualization
+
+Domain-specific visualization for physics, biology, chemistry, climate science, and engineering with uncertainty quantification, multi-dimensional data, and publication standards
+
+### ux-design-scientific-interfaces
+
+User-centered design for scientific tools with Dash, Streamlit, Pluto.jl, WCAG accessibility standards, and usability testing frameworks for researchers
+
+## Quick Start
+
+To use this plugin:
+
+1. Ensure Claude Code is installed
+2. Enable the `data-visualization` plugin
+3. Activate an agent (e.g., `@visualization-interface`)
+
+## Integration
+
+See the full documentation for integration patterns and compatible plugins.
+
+## Documentation
+
+For comprehensive documentation, see: [Plugin Documentation](https://docs.example.com/plugins/data-visualization.html)
+
+To build documentation locally:
 
 ```bash
-/plugin marketplace add <your-username>/scientific-computing-workflows
-/plugin install data-visualization
+cd docs/
+make html
 ```
-
-### Local Installation
-
-```bash
-/plugin add ./plugins/data-visualization
-```
-
-## Usage
-
-The visualization-interface agent is automatically invoked for:
-- Plot and figure creation
-- Interactive visualization design
-- Dashboard development
-- 3D and immersive visualization
-- UX design for scientific interfaces
-
-## Common Workflows
-
-### Publication Figures
-- Matplotlib customization for journals
-- Multi-panel figure layouts
-- Color scheme optimization
-- Export formats and resolution
-
-### Interactive Dashboards
-- Plotly Dash applications
-- Observable notebooks
-- Real-time data updates
-- Responsive design
-
-### 3D Visualization
-- Molecular structure visualization
-- Volume rendering
-- Point cloud visualization
-- Animation and interaction
-
-## Requirements
-
-- Python 3.12+
-- Visualization: Matplotlib, Plotly, D3.js, Three.js
-- Optional: Blender, Unity for AR/VR
-- Web: JavaScript, HTML/CSS for interactive viz
-
-## License
-
-MIT
-
-## Author
-
-Wei Chen (wchen@anl.gov)

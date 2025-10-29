@@ -1,328 +1,169 @@
-# Julia Development Plugin
+# Julia Development
 
-Comprehensive Julia development plugin providing specialized agents for high-performance computing, package development, scientific machine learning (SciML), and Bayesian inference. Build robust Julia applications with intelligent optimization, monitoring, and deep learning capabilities leveraging Julia's JIT compilation, multiple dispatch, and extensive scientific ecosystem.
+Comprehensive Julia development plugin with specialized agents for high-performance computing, package development, scientific machine learning (SciML), and Bayesian inference. Expert guidance for building robust Julia applications with optimization, monitoring, and deep learning capabilities.
 
-## Overview
+**Version:** 1.0.0 | **Category:** scientific-computing | **License:** MIT
 
-This plugin provides four specialized agents and four prioritized commands to support the full Julia development lifecycle, from initial project scaffolding through performance optimization and package publishing.
+[Full Documentation →](https://docs.example.com/plugins/julia-development.html)
 
-### Agents
+## Agents (4)
 
-**julia-pro** - General Julia programming expert
-- Core Julia patterns: multiple dispatch, type system, metaprogramming
-- High-performance computing, scientific simulations, data analysis, machine learning
-- JuMP.jl mathematical optimization
-- Visualization with Plots.jl and Makie.jl
-- Interoperability patterns (Python, R, C++)
-- Package management and Project.toml handling
+### julia-pro
 
-**julia-developer** - Package development specialist
-- Package structure creation and organization
-- Testing patterns with Test.jl, Aqua.jl, JET.jl
-- CI/CD automation with GitHub Actions
-- PackageCompiler.jl for executable creation
-- Web development with Genie.jl and HTTP.jl
-- Integration of optimization, monitoring, and deep learning components
+**Status:** active
 
-**sciml-pro** - SciML ecosystem expert
-- DifferentialEquations.jl: ODE, PDE, SDE, DAE solving
-- ModelingToolkit.jl symbolic computing
-- Optimization.jl (distinct from JuMP.jl)
-- NeuralPDE.jl physics-informed neural networks
-- Catalyst.jl reaction network modeling
-- Performance tuning and parallel computing (threads, distributed, GPU)
+General Julia programming expert for high-performance computing, scientific simulations, data analysis, and machine learning. Master of multiple dispatch, type system, metaprogramming, JuMP optimization, and Julia ecosystem.
 
-**turing-pro** - Bayesian inference expert
-- Turing.jl probabilistic programming
-- MCMC methods with comprehensive diagnostics
-- Variational inference (ADVI, Bijectors.jl)
-- Model comparison (WAIC, LOO, Bayes factors)
-- Prior and posterior predictive checks
-- Integration with SciML for Bayesian ODEs
+### julia-developer
 
-### Commands
+**Status:** active
 
-#### Priority 1: /sciml-setup
-Interactive SciML project scaffolding with auto-detection of problem types.
+Package development specialist for creating robust Julia packages. Expert in testing patterns, CI/CD automation, PackageCompiler.jl, web development (Genie.jl), and integrating optimization, monitoring, and deep learning components.
 
-```julia
-# Auto-detect and generate ODE solver template
-/sciml-setup "coupled oscillator system"
+### sciml-pro
 
-# Generates working code with:
-# - Problem definition using DifferentialEquations.jl
-# - Appropriate solver selection
-# - Callback examples for event handling
-# - Ensemble simulation templates
-# - Sensitivity analysis setup
-```
+**Status:** active
 
-**Features:**
-- Auto-detects problem type: ODE, PDE, SDE, optimization
-- Supports symbolic (ModelingToolkit.jl) and direct definitions
-- Interactive prompts for configuration choices
-- Generates runnable template code with explanatory comments
+SciML ecosystem expert for scientific machine learning and differential equations. Master of DifferentialEquations.jl, ModelingToolkit.jl, Optimization.jl, NeuralPDE.jl, Catalyst.jl, performance tuning, and parallel computing.
 
-#### Priority 2: /julia-optimize
-Profile Julia code and provide optimization recommendations.
+### turing-pro
 
-```julia
-# Analyze performance bottlenecks
-/julia-optimize path/to/slow_function.jl
+**Status:** active
 
-# Provides:
-# - Type stability analysis with @code_warntype
-# - Memory allocation profiling
-# - Execution profiling with @profview
-# - Ranked list of optimization opportunities
-# - Parallelization suggestions
-# - Before/after performance estimates
-```
+Bayesian inference and probabilistic programming expert. Master of Turing.jl, MCMC methods, variational inference (ADVI), model comparison, convergence diagnostics, and integration with SciML for Bayesian ODEs.
 
-**Analysis includes:**
-- Type instabilities with suggested fixes
-- Allocation hotspots with reduction strategies
-- Parallelization opportunities (threads, distributed, GPU)
-- Algorithm improvement suggestions
+## Commands (4)
 
-#### Priority 3: /julia-scaffold
-Bootstrap new Julia package with proper structure.
+### `sciml-setup`
 
-```julia
-# Create new package
-/julia-scaffold "MyAwesomePackage"
+**Status:** active
 
-# Generates:
-# - Project.toml with dependencies and compatibility bounds
-# - src/ with module file
-# - test/ with Test.jl infrastructure
-# - docs/ with Documenter.jl setup
-# - README.md with badges and quick start
-# - LICENSE and .gitignore
-```
+Interactive SciML project scaffolding with auto-detection of problem types (ODE, PDE, SDE, optimization). Generates template code with callbacks, ensemble simulations, and sensitivity analysis.
 
-**Follows:**
-- PkgTemplates.jl conventions
-- Julia community standards
-- Publication-ready structure
+### `julia-optimize`
 
-#### Priority 4: /julia-package-ci
-Generate GitHub Actions CI/CD workflows.
+**Status:** active
 
-```julia
-# Add CI/CD to existing package
-/julia-package-ci
+Profile Julia code and provide optimization recommendations. Analyzes type stability, memory allocations, identifies bottlenecks, and suggests parallelization strategies.
 
-# Creates workflows:
-# - .github/workflows/CI.yml: Test matrix (versions, platforms)
-# - .github/workflows/Documentation.yml: Docs deployment
-# - .github/workflows/CompatHelper.yml: Dependency updates
-# - .github/workflows/TagBot.yml: Automated releases
-```
+### `julia-scaffold`
 
-**Configuration:**
-- Test matrices across Julia versions (1.6+, nightly)
-- Cross-platform testing (Linux, macOS, Windows)
-- Code coverage with Codecov.jl
-- Documentation deployment to GitHub Pages
+**Status:** active
+
+Bootstrap new Julia package with proper structure following PkgTemplates.jl conventions. Creates Project.toml, testing infrastructure, documentation framework, and git repository.
+
+### `julia-package-ci`
+
+**Status:** active
+
+Generate GitHub Actions CI/CD workflows for Julia packages. Configures testing matrices across Julia versions and platforms, coverage reporting, and documentation deployment.
+
+## Skills (21)
+
+### core-julia-patterns
+
+Multiple dispatch, type system, parametric types, metaprogramming, type stability, and performance optimization fundamentals
+
+### jump-optimization
+
+Mathematical programming with JuMP.jl modeling patterns, constraints, objectives, solver selection (separate from Optimization.jl)
+
+### visualization-patterns
+
+Plotting with Plots.jl, Makie.jl, StatsPlots.jl for data visualization and scientific graphics
+
+### interop-patterns
+
+Python interop via PythonCall.jl, R via RCall.jl, C++ via CxxWrap.jl for cross-language integration
+
+### package-management
+
+Project.toml structure, Pkg.jl workflows, dependency management, semantic versioning
+
+### package-development-workflow
+
+Package structure, module organization, exports, PkgTemplates.jl conventions, documentation
+
+### testing-patterns
+
+Test.jl best practices, test organization, BenchmarkTools.jl, Aqua.jl quality checks, JET.jl static analysis
+
+### compiler-patterns
+
+PackageCompiler.jl for static compilation, creating executables, system images, deployment optimization
+
+### web-development-julia
+
+Genie.jl MVC framework, HTTP.jl server development, API patterns, JSON3.jl, Oxygen.jl lightweight APIs
+
+### ci-cd-patterns
+
+GitHub Actions for Julia, test matrices, CompatHelper.jl, TagBot.jl, documentation deployment
+
+### sciml-ecosystem
+
+SciML package integration: DifferentialEquations.jl, ModelingToolkit.jl, Catalyst.jl, solver selection
+
+### differential-equations
+
+ODE, PDE, SDE, DAE solving patterns with callbacks, ensemble simulations, sensitivity analysis
+
+### modeling-toolkit
+
+Symbolic problem definition with ModelingToolkit.jl, equation simplification, code generation
+
+### optimization-patterns
+
+Optimization.jl usage for SciML optimization (distinct from JuMP.jl mathematical programming)
+
+### neural-pde
+
+Physics-informed neural networks (PINNs) with NeuralPDE.jl, boundary conditions, training strategies
+
+### catalyst-reactions
+
+Reaction network modeling with Catalyst.jl, rate laws, species definitions, stochastic vs deterministic
+
+### performance-tuning
+
+Profiling with @code_warntype, @profview, BenchmarkTools.jl, allocation reduction, type stability analysis
+
+### parallel-computing
+
+Multi-threading, Distributed.jl, GPU computing with CUDA.jl, ensemble simulations, load balancing
+
+### turing-model-design
+
+Turing.jl model specification, prior selection, likelihood definition, hierarchical models, identifiability
+
+### mcmc-diagnostics
+
+MCMC convergence checking (trace plots, R-hat), effective sample size, divergence checking, mixing analysis
+
+### variational-inference-patterns
+
+ADVI with Turing.jl, Bijectors.jl transformations, ELBO monitoring, VI vs MCMC comparison
 
 ## Quick Start
 
-### Workflow 1: Scientific Computing Project
+To use this plugin:
 
-```julia
-# 1. Scaffold SciML project
-/sciml-setup "system of ODEs for population dynamics"
+1. Ensure Claude Code is installed
+2. Enable the `julia-development` plugin
+3. Activate an agent (e.g., `@julia-pro`)
+4. Try a command (e.g., `sciml-setup`)
 
-# 2. Implement your model (sciml-pro provides guidance)
-# ... development ...
+## Integration
 
-# 3. Optimize performance if needed
-/julia-optimize src/dynamics.jl
+See the full documentation for integration patterns and compatible plugins.
 
-# Achieves: Working ODE solver in <2 minutes
+## Documentation
+
+For comprehensive documentation, see: [Plugin Documentation](https://docs.example.com/plugins/julia-development.html)
+
+To build documentation locally:
+
+```bash
+cd docs/
+make html
 ```
-
-### Workflow 2: Package Development
-
-```julia
-# 1. Create package structure
-/julia-scaffold "MyPackage"
-
-# 2. Develop functionality (julia-pro provides patterns)
-# ... implementation ...
-
-# 3. Add CI/CD
-/julia-package-ci
-
-# 4. Register package (following generated instructions)
-# Achieves: Publication-ready package in <10 minutes
-```
-
-### Workflow 3: Bayesian Model Implementation
-
-```julia
-# 1. Consult turing-pro for model design
-# "Help me implement a hierarchical Bayesian model"
-
-# 2. Implement model with agent guidance
-# ... Turing.jl code ...
-
-# 3. Get diagnostic recommendations
-# "Check my MCMC convergence"
-
-# 4. Consider variational inference if MCMC is slow
-# "Should I use VI instead?"
-
-# Achieves: Correctly specified Bayesian model with diagnostics
-```
-
-## Skills Overview
-
-### julia-pro Skills
-- **core-julia-patterns**: Multiple dispatch, type system, metaprogramming
-- **jump-optimization**: JuMP.jl mathematical optimization (separate from Optimization.jl)
-- **visualization-patterns**: Plots.jl, Makie.jl, StatsPlots.jl
-- **interop-patterns**: PythonCall.jl, RCall.jl, CxxWrap.jl
-- **package-management**: Project.toml, Pkg.jl workflows
-
-### julia-developer Skills
-- **package-development-workflow**: Package structure and organization
-- **testing-patterns**: Test.jl, BenchmarkTools.jl, Aqua.jl
-- **compiler-patterns**: PackageCompiler.jl for executables
-- **web-development-julia**: Genie.jl MVC, HTTP.jl servers
-- **ci-cd-patterns**: GitHub Actions, CompatHelper, TagBot
-
-### sciml-pro Skills
-- **sciml-ecosystem**: DifferentialEquations.jl, ModelingToolkit.jl, Catalyst.jl
-- **differential-equations**: ODE, PDE, SDE solving with callbacks
-- **modeling-toolkit**: Symbolic problem definition
-- **optimization-patterns**: Optimization.jl (distinct from JuMP.jl)
-- **neural-pde**: Physics-informed neural networks
-- **catalyst-reactions**: Reaction network modeling
-- **performance-tuning**: Profiling and optimization
-- **parallel-computing**: Threads, distributed, GPU
-
-### turing-pro Skills
-- **turing-model-design**: Model specification, prior selection, hierarchical models
-- **mcmc-diagnostics**: Convergence checking, R-hat, effective sample size
-- **variational-inference-patterns**: ADVI, Bijectors.jl, ELBO monitoring
-
-## Integration with Other Plugins
-
-This plugin integrates with:
-
-**deep-learning plugin**
-- Neural network patterns applicable to Flux.jl and NeuralPDE.jl
-- Training diagnostics for DiffEqFlux.jl
-- Model optimization for scientific ML
-
-**jax-implementation plugin**
-- Automatic differentiation concepts parallel to Zygote.jl
-- Functional programming patterns similar to Julia's style
-- Scientific computing workflows for physics-informed ML
-
-**hpc-computing plugin**
-- Parallel computing strategies applicable to Julia
-- GPU acceleration patterns for CUDA.jl
-- HPC workflow strategies for large-scale simulations
-- Julia/SciML ecosystem foundation already established
-
-## Package Ecosystem Coverage
-
-### Core Julia
-- Base: LinearAlgebra, Statistics, Random, Distributed, Threads
-- Package management: Pkg, PkgTemplates, Revise
-- Testing: Test, Aqua, JET
-- Documentation: Documenter, DocStringExtensions
-
-### SciML Ecosystem (sciml-pro)
-- DifferentialEquations, OrdinaryDiffEq, StochasticDiffEq
-- ModelingToolkit, Symbolics
-- Optimization, OptimizationOptimJL
-- NeuralPDE, DiffEqFlux
-- SciMLSensitivity
-- Catalyst
-- DataDrivenDiffEq
-
-### Mathematical Optimization (julia-pro)
-- JuMP: Mathematical programming
-- Optim: Pure Julia optimization
-- Solvers: GLPK, Ipopt, COSMO, HiGHS
-
-### Bayesian Inference (turing-pro)
-- Turing: Probabilistic programming
-- MCMCChains: Diagnostics and visualization
-- Bijectors: Variational inference transformations
-
-### Machine Learning (julia-pro)
-- Flux: Deep learning
-- MLJ: Machine learning interface
-- MLUtils: ML utilities
-
-### Visualization (julia-pro)
-- Plots: Unified plotting interface
-- Makie: High-performance visualization
-- StatsPlots: Statistical plotting
-
-### Web Development (julia-developer)
-- Genie: MVC web framework
-- HTTP: Server and client
-- JSON3: JSON parsing
-- Oxygen: Lightweight web framework
-
-### Performance (all agents)
-- BenchmarkTools: Accurate benchmarking
-- ProfileView: Profile visualization
-- StaticArrays: Stack-allocated arrays
-- LoopVectorization: SIMD optimization
-
-### Parallel Computing (sciml-pro)
-- Distributed: Multi-process parallelism
-- CUDA: GPU computing
-- MPI: Distributed HPC
-- ThreadsX: Thread-based parallelism
-
-## Technical Requirements
-
-### Julia Version Support
-- Target Julia 1.6 LTS and above
-- Acknowledge Julia 1.9+ features (package extensions, improved precompilation)
-- Support nightly builds in CI/CD for forward compatibility
-
-### Development Standards
-- Type-stable code (verified with @code_warntype)
-- Minimal allocations in hot loops
-- Follow Julia style guide (snake_case functions, CamelCase types)
-- Comprehensive docstrings for public API
-- Pass Aqua.jl quality checks
-
-### Testing Standards
-- Minimum 80% code coverage
-- Test across supported Julia versions
-- Cross-platform testing (Linux, macOS, Windows)
-- @testset organization
-
-### Documentation Standards
-- Documenter.jl for documentation generation
-- Getting Started guide
-- API reference for public functions
-- Examples directory with runnable scripts
-- GitHub Pages deployment
-
-## Success Metrics
-
-- All four agents respond accurately to domain-specific queries
-- /sciml-setup correctly auto-detects and generates runnable code for ODE/PDE/SDE/optimization
-- /julia-optimize identifies real performance issues and provides actionable recommendations
-- /julia-scaffold generates publication-ready package structures passing Aqua.jl checks
-- /julia-package-ci creates working GitHub Actions workflows
-- Skills provide reusable, runnable code patterns
-
-## License
-
-MIT
-
-## Author
-
-Scientific Computing Team
