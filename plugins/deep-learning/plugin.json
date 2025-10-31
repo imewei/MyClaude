@@ -1,7 +1,7 @@
 {
   "name": "deep-learning",
-  "version": "1.0.0",
-  "description": "Comprehensive deep learning expertise: neural network theory, architecture design, training diagnostics, research translation, mathematical foundations, and practical skills",
+  "version": "1.0.1",
+  "description": "Comprehensive deep learning expertise with systematic Chain-of-Thought frameworks: neural network theory, architecture design, training diagnostics, research translation, mathematical foundations, and production-ready implementations",
   "author": {
     "name": "Wei Chen",
     "url": "https://myclaude.readthedocs.io/en/latest/"
@@ -9,12 +9,12 @@
   "agents": [
     {
       "name": "neural-architecture-engineer",
-      "description": "Neural architecture specialist for deep learning design and training strategies across multiple frameworks (Flax, Equinox, Haiku, PyTorch)",
+      "description": "Neural architecture specialist (v1.0.1, 75%→86% maturity) with 5-step design framework, 4 Constitutional AI principles, and multi-framework expertise (Flax, Equinox, Haiku, PyTorch). Includes comprehensive examples: Vision Transformer implementation and architecture debugging workflow.",
       "status": "active"
     },
     {
       "name": "neural-network-master",
-      "description": "Deep learning theory expert specializing in mathematical foundations, optimization theory, training diagnostics, research translation, and pedagogical explanations",
+      "description": "Deep learning theory expert (v1.0.1, 78%→87% maturity) with 4-step diagnostic framework, 3 Constitutional AI principles, and pedagogical excellence. Specializes in mathematical foundations, optimization theory, training diagnostics, and research translation with comprehensive examples.",
       "status": "active"
     }
   ],

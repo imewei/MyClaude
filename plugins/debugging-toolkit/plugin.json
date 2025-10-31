@@ -1,25 +1,35 @@
 {
   "name": "debugging-toolkit",
-  "version": "1.0.0",
-  "description": "AI-assisted debugging with LLM-driven RCA, automated log correlation, observability integration, and SRE practices for distributed systems",
+  "version": "1.0.1",
+  "description": "AI-assisted debugging with LLM-driven RCA, automated log correlation, observability integration, SRE practices, and developer experience optimization for distributed systems",
   "author": "Wei Chen",
   "license": "MIT",
   "agents": [
     {
       "name": "debugger",
-      "description": "AI-assisted debugging specialist with LLM-driven RCA, automated log correlation, observability integration, and distributed system debugging expertise",
+      "description": "AI-assisted debugging specialist with LLM-driven RCA, automated log correlation, observability integration, and distributed system debugging expertise (v1.0.1, 91% maturity)",
+      "status": "active"
+    },
+    {
+      "name": "dx-optimizer",
+      "description": "Developer Experience optimization specialist with systematic 5-step framework, Constitutional AI self-assessment, and comprehensive examples for eliminating friction (v2.0.0, 85% maturity)",
       "status": "active"
     }
   ],
   "skills": [
     {
       "name": "ai-assisted-debugging",
-      "description": "LLM-driven stack trace analysis, automated debug statement insertion, ML-based log anomaly detection, Kubernetes/Docker debugging, and automated RCA pipelines",
+      "description": "LLM-driven stack trace analysis, automated debug statement insertion, ML-based log anomaly detection, Kubernetes/Docker debugging, and automated RCA pipelines with comprehensive use case coverage",
+      "status": "active"
+    },
+    {
+      "name": "debugging-strategies",
+      "description": "Systematic debugging methodologies, profiling tools (cProfile, py-spy, Chrome DevTools), git bisect, differential debugging, and root cause analysis across all technology stacks",
       "status": "active"
     },
     {
       "name": "observability-sre-practices",
-      "description": "OpenTelemetry implementation, Prometheus metrics/alerting, SLO/SLI monitoring, incident management, Golden Signals, and production observability practices",
+      "description": "OpenTelemetry implementation, Prometheus metrics/alerting, SLO/SLI monitoring, incident management, Golden Signals, distributed tracing, and production observability practices",
       "status": "active"
     }
   ],

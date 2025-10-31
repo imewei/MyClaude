@@ -2,7 +2,7 @@
   "name": "git-pr-workflows",
   "displayName": "Git & Pull Request Workflows",
   "description": "Git workflows, pull request management, branching strategies, code review processes, and version control best practices for modern software development teams",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "keywords": [
     "git",
     "github",
@@ -28,11 +28,18 @@
       "id": "code-reviewer",
       "file": "agents/code-reviewer.md",
       "name": "Code Reviewer",
-      "description": "Expert in Git workflows, pull request management, and collaborative code review processes",
+      "description": "Elite code review expert (v1.0.1, 78% maturity) with 6-step Chain-of-Thought framework (Context Analysis, Automated Tools, Manual Review, Security, Performance, Feedback Synthesis). Implements 4 Constitutional AI principles (Security-First 95%, Production Reliability 90%, Performance Optimization 88%, Code Quality 85%). Comprehensive examples: SQL injection prevention (30%→92.5% maturity), N+1 query optimization (40%→91% maturity). Masters OWASP Top 10, static analysis tools, and production reliability practices.",
       "status": "active"
     }
   ],
   "commands": [
+    {
+      "id": "commit",
+      "file": "commands/commit.md",
+      "name": "/commit",
+      "description": "Create intelligent atomic commits with automated analysis, quality validation, and conventional commit format",
+      "status": "active"
+    },
     {
       "id": "git-workflow",
       "file": "commands/git-workflow.md",

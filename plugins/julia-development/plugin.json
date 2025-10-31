@@ -1,7 +1,7 @@
 {
   "name": "julia-development",
-  "version": "1.0.0",
-  "description": "Comprehensive Julia development plugin with specialized agents for high-performance computing, package development, scientific machine learning (SciML), and Bayesian inference. Expert guidance for building robust Julia applications with optimization, monitoring, and deep learning capabilities.",
+  "version": "1.0.1",
+  "description": "Production-ready Julia development with systematic Chain-of-Thought frameworks, Constitutional AI principles, and comprehensive real-world examples for high-performance computing, package development, scientific machine learning (SciML), and Bayesian inference with measurable quality targets and proven optimization patterns.",
   "author": {
     "name": "Wei Chen",
     "url": "https://myclaude.readthedocs.io/en/latest/"
@@ -10,22 +10,22 @@
   "agents": [
     {
       "name": "julia-pro",
-      "description": "General Julia programming expert for high-performance computing, scientific simulations, data analysis, and machine learning. Master of multiple dispatch, type system, metaprogramming, JuMP optimization, and Julia ecosystem.",
+      "description": "Master Julia programming with 6-step decision framework (Problem Analysis, Multiple Dispatch Strategy, Performance Optimization, Type System & Metaprogramming, Testing & Validation, Production Readiness). Implements 4 Constitutional AI principles (Type Safety 94%, Performance 90%, Code Quality 88%, Ecosystem Best Practices 92%). Comprehensive examples: Type-Unstable Loop → Multiple Dispatch + SIMD (56x speedup, 99.6% allocation reduction), Naive Python Interop → Zero-Copy PythonCall (8x speedup, 99.5% memory reduction). Expert in multiple dispatch, type system, metaprogramming, JuMP optimization, and Julia ecosystem.",
       "status": "active"
     },
     {
       "name": "julia-developer",
-      "description": "Package development specialist for creating robust Julia packages. Expert in testing patterns, CI/CD automation, PackageCompiler.jl, web development (Genie.jl), and integrating optimization, monitoring, and deep learning components.",
+      "description": "Master Julia package development with 6-step framework (Package Scope & Architecture, Project Structure & Organization, Testing Strategy, CI/CD & Automation, Quality Assurance, Documentation & Deployment). Implements 4 Constitutional AI principles (Package Quality 93%, Testing & CI/CD 91%, Documentation Quality 88%, Production Readiness 90%). Comprehensive examples: Manual Package → PkgTemplates.jl + Full CI/CD (12x faster setup, multi-platform CI, automated Aqua+JET checks), Test.jl Only → Comprehensive Testing Suite (+104% coverage, 12 Aqua checks, JET analysis, BenchmarkTools baselines). Expert in PkgTemplates, Aqua.jl, JET.jl, Documenter.jl, PackageCompiler.jl, and Genie.jl.",
       "status": "active"
     },
     {
       "name": "sciml-pro",
-      "description": "SciML ecosystem expert for scientific machine learning and differential equations. Master of DifferentialEquations.jl, ModelingToolkit.jl, Optimization.jl, NeuralPDE.jl, Catalyst.jl, performance tuning, and parallel computing.",
+      "description": "Master SciML ecosystem with 6-step framework (Problem Characterization, Solver Selection Strategy, Performance Optimization, Advanced Analysis, Validation & Diagnostics, Production Deployment). Implements 4 Constitutional AI principles (Scientific Correctness 95%, Computational Efficiency 90%, Code Quality 88%, Ecosystem Integration 92%). Comprehensive examples: Manual ODE → ModelingToolkit + Auto-Diff (8x faster development, 66% code reduction, 7x speedup with exact Jacobian), Single Simulation → Ensemble + Sensitivity (10K ensemble, full Sobol indices, 95% parallel efficiency). Expert in DifferentialEquations.jl, ModelingToolkit.jl, Optimization.jl, NeuralPDE.jl, Catalyst.jl, and SciMLSensitivity.jl.",
       "status": "active"
     },
     {
       "name": "turing-pro",
-      "description": "Bayesian inference and probabilistic programming expert. Master of Turing.jl, MCMC methods, variational inference (ADVI), model comparison, convergence diagnostics, and integration with SciML for Bayesian ODEs.",
+      "description": "Master Bayesian inference with 6-step framework (Bayesian Model Formulation, Inference Strategy Selection, Prior Specification, Convergence Diagnostics, Model Validation, Production Deployment). Implements 4 Constitutional AI principles (Statistical Rigor 94%, Computational Efficiency 89%, Convergence Quality 92%, Turing.jl Best Practices 90%). Comprehensive examples: Frequentist Regression → Bayesian Hierarchical Model (full posterior distributions, partial pooling, R-hat < 1.01), Simple MCMC → Optimized Non-Centered + GPU (100% divergence reduction, 18x ESS improvement, 22.5x speedup). Expert in Turing.jl, MCMC (NUTS, HMC), variational inference (ADVI), MCMCChains.jl diagnostics, and Bayesian ODEs.",
       "status": "active"
     }
   ],
@@ -58,107 +58,107 @@
   "skills": [
     {
       "name": "core-julia-patterns",
-      "description": "Multiple dispatch, type system, parametric types, metaprogramming, type stability, and performance optimization fundamentals",
+      "description": "Multiple dispatch, type system, parametric types, metaprogramming, type stability, and performance optimization. Enhanced with 10+ trigger scenarios for .jl files, @code_warntype debugging, @inbounds/@simd optimization, StaticArrays, and generic library design.",
       "status": "active"
     },
     {
       "name": "jump-optimization",
-      "description": "Mathematical programming with JuMP.jl modeling patterns, constraints, objectives, solver selection (separate from Optimization.jl)",
+      "description": "Mathematical programming with JuMP.jl for LP/QP/NLP/MIP optimization. Enhanced with solver selection (HiGHS, Ipopt, GLPK), modeling patterns, constraints, and production optimization workflows (separate from Optimization.jl).",
       "status": "active"
     },
     {
       "name": "visualization-patterns",
-      "description": "Plotting with Plots.jl, Makie.jl, StatsPlots.jl for data visualization and scientific graphics",
+      "description": "Data visualization with Plots.jl, Makie.jl, StatsPlots.jl. Enhanced with backend selection (gr, plotly, pyplot), 3D graphics, statistical plots, animations, and publication-quality figure creation.",
       "status": "active"
     },
     {
       "name": "interop-patterns",
-      "description": "Python interop via PythonCall.jl, R via RCall.jl, C++ via CxxWrap.jl for cross-language integration",
+      "description": "Cross-language integration via PythonCall.jl (zero-copy), RCall.jl, CxxWrap.jl. Enhanced with data conversion patterns, pyimport workflows, and multi-language scientific computing.",
       "status": "active"
     },
     {
       "name": "package-management",
-      "description": "Project.toml structure, Pkg.jl workflows, dependency management, semantic versioning",
+      "description": "Project.toml structure, Pkg.jl workflows, dependency management, semantic versioning. Enhanced with [compat] bounds, Pkg.activate() environments, and reproducibility patterns.",
       "status": "active"
     },
     {
       "name": "package-development-workflow",
-      "description": "Package structure, module organization, exports, PkgTemplates.jl conventions, documentation",
+      "description": "Package structure, module organization, exports, PkgTemplates.jl conventions. Enhanced with src/ organization, Project.toml setup, test/ structure, and package scaffolding automation.",
       "status": "active"
     },
     {
       "name": "testing-patterns",
-      "description": "Test.jl best practices, test organization, BenchmarkTools.jl, Aqua.jl quality checks, JET.jl static analysis",
+      "description": "Test.jl best practices, Aqua.jl quality checks (12 checks), JET.jl static analysis. Enhanced with @testset organization, BenchmarkTools.jl performance tests, and comprehensive testing workflows.",
       "status": "active"
     },
     {
       "name": "compiler-patterns",
-      "description": "PackageCompiler.jl for static compilation, creating executables, system images, deployment optimization",
+      "description": "PackageCompiler.jl for executables, system images, deployment. Enhanced with create_app(), create_sysimage(), startup optimization, and production deployment patterns.",
       "status": "active"
     },
     {
       "name": "web-development-julia",
-      "description": "Genie.jl MVC framework, HTTP.jl server development, API patterns, JSON3.jl, Oxygen.jl lightweight APIs",
+      "description": "Genie.jl MVC framework, HTTP.jl servers, REST APIs, JSON3.jl. Enhanced with route handling, Oxygen.jl lightweight APIs, authentication, and web service deployment.",
       "status": "active"
     },
     {
       "name": "ci-cd-patterns",
-      "description": "GitHub Actions for Julia, test matrices, CompatHelper.jl, TagBot.jl, documentation deployment",
+      "description": "GitHub Actions workflows, test matrices, CompatHelper.jl, TagBot.jl. Enhanced with multi-platform CI (Linux/macOS/Windows), Julia version matrices, coverage reporting, and documentation deployment.",
       "status": "active"
     },
     {
       "name": "sciml-ecosystem",
-      "description": "SciML package integration: DifferentialEquations.jl, ModelingToolkit.jl, Catalyst.jl, solver selection",
+      "description": "SciML package integration and selection: DifferentialEquations.jl, ModelingToolkit.jl, Catalyst.jl, NeuralPDE.jl. Enhanced with package relationship guidance and ecosystem navigation.",
       "status": "active"
     },
     {
       "name": "differential-equations",
-      "description": "ODE, PDE, SDE, DAE solving patterns with callbacks, ensemble simulations, sensitivity analysis",
+      "description": "ODE, PDE, SDE, DAE solving with DifferentialEquations.jl. Enhanced with solver selection (Tsit5, Rodas5, TRBDF2), callbacks, ensemble simulations (EnsembleThreads/GPU), and sensitivity analysis.",
       "status": "active"
     },
     {
       "name": "modeling-toolkit",
-      "description": "Symbolic problem definition with ModelingToolkit.jl, equation simplification, code generation",
+      "description": "Symbolic modeling with ModelingToolkit.jl for equation simplification and code generation. Enhanced with @variables/@parameters, ODESystem/PDESystem, structural_simplify, and component-based modeling.",
       "status": "active"
     },
     {
       "name": "optimization-patterns",
-      "description": "Optimization.jl usage for SciML optimization (distinct from JuMP.jl mathematical programming)",
+      "description": "Optimization.jl for SciML parameter estimation and loss minimization. Enhanced with OptimizationProblem, BFGS/Adam algorithms, automatic differentiation, and inverse problems (distinct from JuMP.jl).",
       "status": "active"
     },
     {
       "name": "neural-pde",
-      "description": "Physics-informed neural networks (PINNs) with NeuralPDE.jl, boundary conditions, training strategies",
+      "description": "Physics-informed neural networks (PINNs) with NeuralPDE.jl. Enhanced with PDESystem, PhysicsInformedNN, boundary conditions, training strategies (QuadratureTraining, GridTraining), and Flux.jl integration.",
       "status": "active"
     },
     {
       "name": "catalyst-reactions",
-      "description": "Reaction network modeling with Catalyst.jl, rate laws, species definitions, stochastic vs deterministic",
+      "description": "Reaction network modeling with Catalyst.jl for chemical/biochemical systems. Enhanced with @reaction_network, mass action kinetics, Gillespie stochastic simulation, and systems biology patterns.",
       "status": "active"
     },
     {
       "name": "performance-tuning",
-      "description": "Profiling with @code_warntype, @profview, BenchmarkTools.jl, allocation reduction, type stability analysis",
+      "description": "Profiling and optimization with @code_warntype, @profview, BenchmarkTools.jl. Enhanced with type stability debugging, allocation reduction, @benchmark/@btime workflows, and performance bottleneck identification.",
       "status": "active"
     },
     {
       "name": "parallel-computing",
-      "description": "Multi-threading, Distributed.jl, GPU computing with CUDA.jl, ensemble simulations, load balancing",
+      "description": "Multi-threading (Threads.@threads), Distributed.jl, GPU computing (CUDA.jl). Enhanced with ensemble simulations (EnsembleThreads/Distributed/GPU), pmap, addprocs, and parallel performance optimization.",
       "status": "active"
     },
     {
       "name": "turing-model-design",
-      "description": "Turing.jl model specification, prior selection, likelihood definition, hierarchical models, identifiability",
+      "description": "Turing.jl probabilistic model specification with @model macro, priors, likelihoods. Enhanced with hierarchical models, non-centered parameterization, parameter identifiability, and Bayesian workflow design.",
       "status": "active"
     },
     {
       "name": "mcmc-diagnostics",
-      "description": "MCMC convergence checking (trace plots, R-hat), effective sample size, divergence checking, mixing analysis",
+      "description": "MCMC convergence diagnostics with MCMCChains.jl: R-hat < 1.01, ESS > 400, trace plots. Enhanced with divergence checking, autocorrelation analysis, and multi-chain validation workflows.",
       "status": "active"
     },
     {
       "name": "variational-inference-patterns",
-      "description": "ADVI with Turing.jl, Bijectors.jl transformations, ELBO monitoring, VI vs MCMC comparison",
+      "description": "Variational inference with Turing.jl ADVI, Bijectors.jl, ELBO monitoring. Enhanced with VI vs MCMC trade-offs, stochastic variational inference, and scalable approximate Bayesian inference.",
       "status": "active"
     }
   ],

@@ -1,19 +1,19 @@
 {
   "name": "statistical-physics",
-  "version": "1.0.0",
-  "description": "Non-equilibrium statistical physics for driven systems, active matter, and complex dynamics with theory, simulation, and experimental validation. Includes correlation function analysis bridging theoretical foundations to experimental data interpretation.",
+  "version": "1.0.1",
+  "description": "Non-equilibrium statistical physics for driven systems, active matter, and complex dynamics with theory, simulation, and experimental validation. Includes correlation function analysis bridging theoretical foundations to experimental data interpretation. Features systematic development processes and comprehensive quality assurance.",
   "author": "Wei Chen",
   "license": "MIT",
   "agents": [
     {
       "name": "non-equilibrium-expert",
       "status": "active",
-      "description": "Non-equilibrium statistical physicist expert specializing in driven systems, active matter, and complex dynamics with fluctuation theorems, transport theory, and stochastic dynamics."
+      "description": "Non-equilibrium statistical physicist expert with 8-step systematic development process and thermodynamic rigor checkpoints. Specializes in driven systems, active matter, fluctuation theorems (Crooks, Jarzynski), transport theory (Green-Kubo), and stochastic dynamics (Langevin, Fokker-Planck, NEMD)."
     },
     {
       "name": "correlation-function-expert",
       "status": "active",
-      "description": "Correlation function expert specializing in statistical physics and complex systems. Expert in higher-order correlations, FFT-based O(N log N) algorithms, JAX-accelerated GPU computation, and experimental data interpretation (DLS, SAXS/SANS, XPCS, FCS)."
+      "description": "Correlation function expert with 8-step systematic workflow and statistical validation principles. Specializes in higher-order correlations, FFT-based O(N log N) algorithms, JAX-accelerated GPU computation, and experimental data interpretation (DLS, SAXS/SANS, XPCS, FCS) with comprehensive uncertainty quantification."
     }
   ],
   "skills": [

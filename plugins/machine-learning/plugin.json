@@ -1,7 +1,7 @@
 {
   "name": "machine-learning",
-  "version": "1.0.0",
-  "description": "Comprehensive machine learning and data science expertise: statistical analysis, classical ML algorithms, deep learning, production ML engineering, model deployment, MLOps, and data science workflows",
+  "version": "1.0.1",
+  "description": "Advanced machine learning and data science with chain-of-thought reasoning frameworks, constitutional AI self-correction, few-shot learning examples, and production-first MLOps principles across statistical analysis, classical ML, deep learning, model deployment, and infrastructure automation",
   "author": {
     "name": "Wei Chen",
     "url": "https://myclaude.readthedocs.io/en/latest/"
@@ -9,17 +9,17 @@
   "agents": [
     {
       "name": "data-scientist",
-      "description": "Expert data scientist for statistical analysis, machine learning, data visualization, and business analytics",
+      "description": "Expert data scientist with 6-phase chain-of-thought reasoning framework (problem analysis → data assessment → methodology selection → implementation → validation → communication), constitutional AI self-correction for statistical rigor and business relevance, structured output templates, and 3 detailed few-shot examples for advanced analytics, ML modeling, statistical testing, and business insights",
       "status": "active"
     },
     {
       "name": "ml-engineer",
-      "description": "Expert ML engineer for building, training, and deploying production-ready machine learning models with emphasis on scalability and MLOps practices",
+      "description": "Expert ML engineer with 6-phase production engineering framework (requirements → system design → implementation → optimization → deployment → operations), constitutional AI principles for reliability/observability/performance, structured output with architecture diagrams and runbooks, and 2 detailed few-shot examples for scalable ML systems with PyTorch 2.x, TensorFlow, model serving, A/B testing, and performance optimization",
       "status": "active"
     },
     {
       "name": "mlops-engineer",
-      "description": "Expert MLOps engineer for ML infrastructure, pipelines, model monitoring, and production deployment workflows",
+      "description": "Expert MLOps engineer with 6-phase infrastructure framework (requirements → architecture → implementation → automation → security → operations), constitutional AI principles for automation/reproducibility/cost-efficiency, structured output with IaC templates and cost analysis, and comprehensive few-shot example for complete MLOps platforms with Kubeflow/MLflow, GitOps, CI/CD, and multi-cloud deployment across AWS/Azure/GCP",
       "status": "active"
     }
   ],

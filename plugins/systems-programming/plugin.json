@@ -1,7 +1,7 @@
 {
   "name": "systems-programming",
-  "version": "1.0.0",
-  "description": "Comprehensive systems programming with C, C++, Rust, and Go. Includes enhanced agents, project scaffolding commands, performance profiling workflows, and systems programming patterns skill.",
+  "version": "1.0.1",
+  "description": "Production-grade systems programming with C, C++, Rust, and Go. Features systematic development processes, quality assurance checkpoints, comprehensive examples, and battle-tested patterns for memory safety, concurrency, and performance.",
   "author": {
     "name": "Wei Chen",
     "url": "https://myclaude.readthedocs.io/en/latest/"
@@ -19,7 +19,10 @@
     "memory-management",
     "concurrency",
     "profiling",
-    "optimization"
+    "optimization",
+    "memory-safety",
+    "type-safety",
+    "async-programming"
   ],
   "category": "development",
   "commands": [
@@ -42,29 +45,73 @@
   "agents": [
     {
       "name": "rust-pro",
-      "description": "Master Rust 1.75+ with modern async patterns, advanced type system, and production systems programming",
-      "status": "active"
+      "description": "Master Rust 1.75+ with systematic development process, ownership patterns, async Tokio, type safety, and zero-cost abstractions. Includes 8-step workflow, quality checkpoints, and production-ready examples with graceful shutdown.",
+      "status": "active",
+      "capabilities": [
+        "8-step systematic development workflow",
+        "Ownership and borrowing patterns",
+        "Async/await with Tokio runtime",
+        "Error handling with Result and thiserror",
+        "16 strategic ambiguity questions",
+        "Thread-safe rate limiter example",
+        "Production web service with graceful shutdown"
+      ]
     },
     {
       "name": "c-pro",
-      "description": "Master C programmer specializing in systems programming, embedded development, and memory management",
-      "status": "active"
+      "description": "Master C programming with systematic development process, memory safety validation, POSIX APIs, and error handling patterns. Includes 8-step workflow, Valgrind/AddressSanitizer integration, and thread-safe memory pool examples.",
+      "status": "active",
+      "capabilities": [
+        "8-step systematic development workflow",
+        "Memory management with pools and arenas",
+        "POSIX API expertise",
+        "Error handling with goto cleanup pattern",
+        "16 strategic ambiguity questions",
+        "Thread-safe memory pool example",
+        "Valgrind and AddressSanitizer validation"
+      ]
     },
     {
       "name": "cpp-pro",
-      "description": "Master C++ programmer specializing in modern C++11/14/17/20/23, templates, RAII, and performance",
-      "status": "active"
+      "description": "Master modern C++11/14/17/20/23 with systematic development process, RAII patterns, template metaprogramming, and move semantics. Includes 8-step workflow, compile-time computation, and LRU cache with shared_mutex.",
+      "status": "active",
+      "capabilities": [
+        "8-step systematic development workflow",
+        "RAII and Rule of Zero/Three/Five",
+        "Modern C++20/23 features with concepts",
+        "Template metaprogramming and SFINAE",
+        "16 strategic ambiguity questions",
+        "Thread-safe LRU cache example",
+        "Compile-time string parser with consteval"
+      ]
     },
     {
       "name": "golang-pro",
-      "description": "Master Go programmer specializing in concurrent systems, microservices, and cloud-native development",
-      "status": "active"
+      "description": "Master Go 1.21+ with systematic development process, goroutines, channels, context patterns, and observability. Includes 8-step workflow, graceful shutdown patterns, and HTTP server with Prometheus metrics.",
+      "status": "active",
+      "capabilities": [
+        "8-step systematic development workflow",
+        "Goroutines and channel patterns",
+        "Context for cancellation and timeouts",
+        "Structured logging with slog",
+        "16 strategic ambiguity questions",
+        "Worker pool with graceful shutdown",
+        "HTTP server with Prometheus and tracing"
+      ]
     }
   ],
   "skills": [
     {
       "name": "systems-programming-patterns",
-      "description": "Comprehensive patterns for memory management, concurrency, performance optimization, and debugging across C/C++/Rust/Go"
+      "description": "Battle-tested patterns for memory management, concurrency, performance optimization, and debugging across C/C++/Rust/Go. Use when implementing memory allocators, lock-free data structures, SIMD vectorization, or optimizing cache performance with profiling tools.",
+      "capabilities": [
+        "Memory management patterns (pools, arenas, RAII)",
+        "Concurrency patterns (lock-free, work-stealing)",
+        "Performance optimization (SIMD, cache-friendly layouts)",
+        "Debugging with Valgrind, perf, and sanitizers",
+        "Zero-copy algorithms and atomic operations",
+        "20+ specific use cases with file patterns"
+      ]
     }
   ]
 }

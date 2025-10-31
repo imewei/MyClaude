@@ -1,19 +1,24 @@
 {
   "name": "agent-orchestration",
-  "version": "1.0.0",
-  "description": "Multi-agent workflow coordination, distributed systems, and intelligent task allocation for complex multi-domain projects",
+  "version": "2.0.0",
+  "description": "Multi-agent workflow coordination, distributed systems, and intelligent task allocation for complex multi-domain projects. Now with enhanced prompt engineering, Constitutional AI frameworks, and comprehensive examples.",
   "author": "Wei Chen",
   "license": "MIT",
+  "changelog": "v2.0.0: Major improvements to both agents. Context-manager: triggering criteria, Constitutional AI framework, Chain-of-Thought reasoning, and 3 comprehensive few-shot examples. Multi-agent-orchestrator: 5-step orchestration process, 5 Constitutional AI principles, 4 comprehensive examples, and advanced patterns.",
   "agents": [
     {
       "name": "context-manager",
       "description": "Elite AI context engineering specialist mastering dynamic context management, vector databases, knowledge graphs, and intelligent memory systems.",
-      "status": "active"
+      "status": "active",
+      "version": "2.0.0",
+      "improvements": "Added triggering criteria, Constitutional AI framework, reasoning framework, 3 comprehensive examples, enhanced behavioral traits, and output format standards."
     },
     {
       "name": "multi-agent-orchestrator",
-      "description": "Multi-agent orchestrator specializing in workflow coordination and distributed systems. Expert in agent team assembly and task allocation for scalable collaboration.",
-      "status": "active"
+      "description": "Multi-agent orchestrator specializing in workflow coordination and distributed systems. Expert in agent team assembly and task allocation for scalable collaboration. Delegates all domain-specific work to specialist agents.",
+      "status": "active",
+      "version": "2.0.0",
+      "improvements": "Added 5-step chain-of-thought orchestration process, 5 Constitutional AI principles, 4 comprehensive few-shot examples, output format standards, advanced orchestration patterns, anti-patterns section, enhanced decision framework, and delegation strategy."
     }
   ],
   "commands": [

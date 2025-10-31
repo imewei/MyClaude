@@ -2,7 +2,7 @@
   "name": "observability-monitoring",
   "displayName": "Observability & Monitoring",
   "description": "Observability, monitoring, logging, distributed tracing, and SLO/SLA management for production systems with Prometheus, Grafana, and modern observability platforms",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "keywords": [
     "observability",
     "monitoring",
@@ -75,31 +75,31 @@
       "id": "prometheus-configuration",
       "directory": "skills/prometheus-configuration",
       "name": "Prometheus Configuration",
-      "description": "Prometheus metrics collection, configuration, and alerting rules"
+      "description": "Set up and configure Prometheus for comprehensive metric collection, storage, alerting, and monitoring with scrape configs, recording rules, and alert rules for infrastructure and applications"
     },
     {
       "id": "grafana-dashboards",
       "directory": "skills/grafana-dashboards",
       "name": "Grafana Dashboards",
-      "description": "Grafana dashboard design and visualization best practices"
+      "description": "Create and manage production-ready Grafana dashboards with panels, variables, alerts, and templates for real-time visualization of system and application metrics"
     },
     {
       "id": "distributed-tracing",
       "directory": "skills/distributed-tracing",
       "name": "Distributed Tracing",
-      "description": "Distributed tracing with OpenTelemetry, Jaeger, and Zipkin"
+      "description": "Implement distributed tracing with Jaeger, Tempo, and OpenTelemetry to track requests across microservices and identify performance bottlenecks"
     },
     {
       "id": "slo-implementation",
       "directory": "skills/slo-implementation",
       "name": "SLO Implementation",
-      "description": "Service Level Objective and SLA implementation patterns"
+      "description": "Define and implement Service Level Indicators (SLIs), Service Level Objectives (SLOs), error budgets, and burn rate alerting following SRE best practices"
     },
     {
       "id": "airflow-scientific-workflows",
       "directory": "skills/airflow-scientific-workflows",
       "name": "Airflow Scientific Workflows",
-      "description": "Apache Airflow workflow monitoring and observability for scientific computing"
+      "description": "Design and implement Apache Airflow DAGs for scientific data pipelines, workflow orchestration, and computational task automation"
     }
   ]
 }

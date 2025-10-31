@@ -1,6 +1,6 @@
 {
   "name": "python-development",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Master Python 3.12+ with modern tools, async patterns, FastAPI/Django frameworks, performance optimization, and production-ready practices. Includes expert agents, comprehensive skills, and scaffolding commands for the 2024/2025 Python ecosystem.",
   "author": {
     "name": "Wei Chen",
@@ -59,27 +59,27 @@
   "skills": [
     {
       "name": "async-python-patterns",
-      "description": "Master Python asyncio, concurrent programming, and async/await patterns for high-performance applications",
+      "description": "Master async/await patterns, asyncio event loop internals, concurrent programming, async context managers, async generators, aiohttp/httpx clients, async database operations, WebSocket servers, background task coordination, and async testing with pytest-asyncio for building high-performance I/O-bound Python applications",
       "status": "active"
     },
     {
       "name": "python-testing-patterns",
-      "description": "Comprehensive testing strategies with pytest, fixtures, mocking, and test-driven development",
+      "description": "Comprehensive testing strategies with pytest fixtures (conftest.py, autouse, parametrization), unittest.mock for isolation, monkeypatch and pytest-mock utilities, test coverage analysis, TDD workflows, async testing with pytest-asyncio, integration testing patterns, performance testing, and CI/CD test automation for ensuring code quality and reliability",
       "status": "active"
     },
     {
       "name": "python-packaging",
-      "description": "Create distributable Python packages with proper project structure and PyPI publishing",
+      "description": "Create distributable Python packages with pyproject.toml configuration, setuptools/hatchling build backends, semantic versioning, README and LICENSE files, entry points for CLI tools, wheel/sdist building, PyPI/private repository publishing, dependency specification with version constraints, namespace packages, and automated release workflows for sharing Python code effectively",
       "status": "active"
     },
     {
       "name": "python-performance-optimization",
-      "description": "Profile and optimize Python code using cProfile, memory profilers, and performance best practices",
+      "description": "Profile and optimize Python code using cProfile, line_profiler, memory_profiler, py-spy, and Scalene for hotspot identification; apply NumPy/Pandas vectorization, Numba JIT compilation, dataclass optimizations, generator expressions, itertools patterns, caching strategies, algorithmic improvements, and memory optimization techniques to achieve 10-100x performance gains in production applications",
       "status": "active"
     },
     {
       "name": "uv-package-manager",
-      "description": "Master the uv package manager for fast Python dependency management and modern workflows",
+      "description": "Master the uv package manager (Rust-based, 10-100x faster than pip) for Python dependency management with uv init for project scaffolding, uv add/remove for dependency management, uv sync for lockfile-based installations, uv venv for virtual environments, uv run for command execution, uv lock for deterministic builds, and integration with pyproject.toml for modern, fast, reliable Python workflows",
       "status": "active"
     }
   ],

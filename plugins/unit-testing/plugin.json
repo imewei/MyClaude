@@ -1,30 +1,68 @@
 {
   "name": "unit-testing",
-  "version": "1.0.0",
-  "description": "Comprehensive test automation, generation, and execution with iterative fixing until 100% pass rate",
-  "author": "Wei Chen",
+  "version": "1.0.1",
+  "description": "Production-grade test automation and debugging with systematic processes, AI-driven RCA, comprehensive examples, and TDD excellence. Features 8-step workflows, quality checkpoints, and battle-tested patterns.",
+  "author": {
+    "name": "Wei Chen",
+    "url": "https://myclaude.readthedocs.io/en/latest/"
+  },
+  "homepage": "https://github.com/imewei/MyClaude",
+  "repository": "https://github.com/imewei/MyClaude",
   "license": "MIT",
+  "keywords": [
+    "testing",
+    "test-automation",
+    "debugging",
+    "tdd",
+    "quality-engineering",
+    "playwright",
+    "pytest",
+    "ci-cd",
+    "test-generation",
+    "observability"
+  ],
+  "category": "development",
   "agents": [
     {
       "name": "debugger",
-      "description": "Debugging specialist for errors, test failures, and unexpected behavior",
-      "status": "active"
+      "description": "AI-assisted debugging specialist with systematic 8-step process, LLM-driven root cause analysis, automated log correlation, distributed tracing integration, and performance profiling. Includes 16 ambiguity questions and comprehensive examples.",
+      "status": "active",
+      "capabilities": [
+        "8-step systematic debugging workflow",
+        "AI-driven root cause analysis with LLM",
+        "Automated log correlation across services",
+        "Distributed tracing with OpenTelemetry/Jaeger",
+        "16 strategic ambiguity questions",
+        "Binary search and hypothesis-driven debugging",
+        "Race condition and flaky test resolution",
+        "Performance profiling with flame graphs"
+      ]
     },
     {
       "name": "test-automator",
-      "description": "Master AI-powered test automation with modern frameworks and comprehensive quality engineering",
-      "status": "active"
+      "description": "Master test automation engineer with systematic 8-step process, TDD excellence, AI-powered testing, and comprehensive quality engineering. Includes page object patterns, property-based testing, and CI/CD integration.",
+      "status": "active",
+      "capabilities": [
+        "8-step systematic test automation workflow",
+        "TDD red-green-refactor cycle mastery",
+        "Page Object Model for maintainable UI tests",
+        "Property-based testing with hypothesis",
+        "16 strategic ambiguity questions",
+        "Self-healing test automation",
+        "CI/CD pipeline integration",
+        "Test pyramid optimization (70/20/10)"
+      ]
     }
   ],
   "commands": [
     {
       "name": "/test-generate",
-      "description": "Generate comprehensive test suites with scientific computing support",
+      "description": "Generate comprehensive test suites with scientific computing support, TDD patterns, and property-based testing",
       "status": "active"
     },
     {
       "name": "/run-all-tests",
-      "description": "Iteratively run and fix all tests until zero failures and 100% pass rate",
+      "description": "Iteratively run and fix all tests until zero failures and 100% pass rate with AI-assisted debugging",
       "status": "active"
     }
   ]

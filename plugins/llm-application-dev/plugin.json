@@ -2,7 +2,7 @@
   "name": "llm-application-dev",
   "displayName": "LLM Application Development",
   "description": "LLM application development with prompt engineering, RAG implementation, vector databases, LangChain, and modern AI integration patterns for building intelligent applications",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "keywords": [
     "llm",
     "gpt",
@@ -28,14 +28,14 @@
       "id": "ai-engineer",
       "file": "agents/ai-engineer.md",
       "name": "AI Engineer",
-      "description": "Expert in LLM application development, RAG systems, and AI integration patterns",
+      "description": "Production-ready LLM application development with chain-of-thought reasoning, constitutional AI self-correction, and systematic architecture design for RAG systems, AI agents, and enterprise AI integrations",
       "status": "active"
     },
     {
       "id": "prompt-engineer",
       "file": "agents/prompt-engineer.md",
       "name": "Prompt Engineer",
-      "description": "Specialist in prompt engineering, optimization, and LLM interaction patterns",
+      "description": "Advanced prompt engineering with meta-prompting framework, constitutional principles, iterative refinement, and performance tracking for production prompt systems",
       "status": "active"
     }
   ],
@@ -67,25 +67,25 @@
       "id": "prompt-engineering-patterns",
       "directory": "skills/prompt-engineering-patterns",
       "name": "Prompt Engineering Patterns",
-      "description": "Advanced prompt engineering techniques and patterns for LLM applications"
+      "description": "Chain-of-thought reasoning, few-shot learning, production prompt templates with variable interpolation, and optimization techniques for LLM applications"
     },
     {
       "id": "rag-implementation",
       "directory": "skills/rag-implementation",
       "name": "RAG Implementation",
-      "description": "Retrieval-Augmented Generation architecture and implementation patterns"
+      "description": "Production RAG systems with vector databases, embeddings, hybrid search, reranking, and chunking strategies for knowledge-grounded AI"
     },
     {
       "id": "langchain-architecture",
       "directory": "skills/langchain-architecture",
       "name": "LangChain Architecture",
-      "description": "LangChain application architecture and design patterns"
+      "description": "LangChain agents, chains, memory systems, tool integration, and callback handlers for sophisticated LLM workflows"
     },
     {
       "id": "llm-evaluation",
       "directory": "skills/llm-evaluation",
       "name": "LLM Evaluation",
-      "description": "LLM performance evaluation, testing, and quality assurance"
+      "description": "Automated metrics (BLEU, ROUGE, BERTScore), LLM-as-judge patterns, A/B testing, and regression detection for AI quality assurance"
     }
   ]
 }

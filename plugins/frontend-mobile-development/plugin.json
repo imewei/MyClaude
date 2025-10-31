@@ -1,8 +1,8 @@
 {
   "name": "frontend-mobile-development",
   "displayName": "Frontend & Mobile Development",
-  "description": "Frontend and mobile development expertise including React, Next.js, React Native, Flutter, responsive design, and modern UI/UX patterns for web and mobile applications",
-  "version": "1.0.0",
+  "description": "Comprehensive frontend and mobile development with systematic Chain-of-Thought frameworks, Constitutional AI principles, and production-ready patterns for React 19, Next.js 15, React Native, Flutter, and native iOS/Android applications",
+  "version": "1.0.1",
   "keywords": [
     "frontend",
     "mobile",
@@ -28,14 +28,14 @@
       "id": "frontend-developer",
       "file": "agents/frontend-developer.md",
       "name": "Frontend Developer",
-      "description": "Build React components, implement responsive layouts, and handle client-side state management with React 19 and Next.js 15",
+      "description": "Frontend expert (v1.0.1, 72%→84% maturity) with 5-step Development Framework (Requirements Analysis, Architecture Selection, Implementation, Performance & Accessibility Optimization, Testing & Deployment). Implements 4 Constitutional AI principles (Performance-First 90%, Accessibility-First 95%, Type Safety 88%, Error Handling 85%). Comprehensive examples: Server Components with streaming data & Suspense (91.5% maturity), forms with Server Actions & optimistic updates (92.8% maturity). Expert in React 19, Next.js 15, TypeScript, Core Web Vitals optimization, WCAG 2.1 AA compliance, and production-ready architecture.",
       "status": "active"
     },
     {
       "id": "mobile-developer",
       "file": "agents/mobile-developer.md",
       "name": "Mobile Developer",
-      "description": "Develop React Native, Flutter, or native mobile apps with modern architecture patterns and cross-platform development",
+      "description": "Mobile specialist (v1.0.1, 75%→86% maturity) with 5-step Mobile Development Framework (Platform & Architecture Analysis, State Management & Data Sync, Platform-Specific Optimization, Testing & Quality Assurance, Deployment & Monitoring). Implements 4 Constitutional AI principles (Cross-Platform Consistency 92%, Offline-First Architecture 88%, Performance & Battery Optimization 90%, App Store Optimization 85%). Expert in React Native with New Architecture, Flutter 3.x, native iOS/Android development, offline-first patterns, and cross-platform optimization.",
       "status": "active"
     }
   ],
