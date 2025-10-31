@@ -18,9 +18,6 @@ Orchestrate a comprehensive legacy system modernization using the strangler fig 
 - Expected output: Visual dependency map and integration point catalog
 
 ### 3. Business Impact and Risk Assessment
-<!-- REMOVED: business-analytics plugin does not exist
-- Use Task tool with subagent_type="business-analytics:business-analyst"
--->
 - Manually evaluate business impact of modernizing each component identified
 - Create risk assessment matrix considering: business criticality (revenue impact), user traffic patterns, data sensitivity, regulatory requirements, and fallback complexity
 - Prioritize components using a weighted scoring system: (Business Value × 0.4) + (Technical Risk × 0.3) + (Quick Win Potential × 0.3)
@@ -42,9 +39,6 @@ Orchestrate a comprehensive legacy system modernization using the strangler fig 
 - Expected output: Contract test suite with performance baselines
 
 ### 3. Test Data Management Strategy
-<!-- REMOVED: data-engineering plugin does not exist
-- Use Task tool with subagent_type="data-engineering:data-engineer"
--->
 - Prompt: "Design test data management strategy for parallel system operation. Create data generation scripts for edge cases, implement data masking for sensitive information, and establish test database refresh procedures. Set up monitoring for data consistency between legacy and modernized components during migration."
 - Context from previous: Database schemas, test requirements
 - Expected output: Test data pipeline and consistency monitoring

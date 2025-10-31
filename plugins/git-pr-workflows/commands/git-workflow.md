@@ -46,6 +46,21 @@ Orchestrate a comprehensive git workflow from code review through PR creation, l
 
 ## Phase 3: Commit Message Generation
 
+### CRITICAL: Commit Message Requirements
+
+- ❌ **NEVER** include AI/assistant attribution (e.g., "Generated with Claude Code", "Co-Authored-By: Claude")
+- ❌ **NEVER** mention AI assistance or tools (Claude, GPT, ChatGPT, AI, LLM, etc.)
+- ❌ **NEVER** add extraneous footers or signatures beyond issue references and breaking changes
+- ❌ **NEVER** use flowery, elegant, or marketing language (e.g., "amazing", "revolutionary", "game-changing", "incredible")
+- ❌ **NEVER** use superlatives or exaggerations (e.g., "drastically improves", "massively enhances", "completely transforms")
+- ❌ **NEVER** use vague or emotional language (e.g., "makes things better", "enhances user delight", "provides awesome experience")
+- ✅ **ALWAYS** write commit messages that appear human-authored and professional
+- ✅ **ALWAYS** focus purely on the technical change and its business context
+- ✅ **ALWAYS** use factual, straightforward, precise language
+- ✅ **ALWAYS** be specific and technical (e.g., "reduces query time by 40%" not "improves performance significantly")
+
+**Commit messages must be indistinguishable from human-written commits in professional repositories. Use engineering precision, not marketing prose.**
+
 ### 1. Change Analysis and Categorization
 - Use Task tool with subagent_type="comprehensive-review:code-reviewer"
 - Prompt: "Analyze all changes and categorize them according to Conventional Commits specification. Identify the primary change type (feat/fix/docs/style/refactor/perf/test/build/ci/chore/revert) and scope. For changes: [insert file list and summary], determine if this should be a single commit or multiple atomic commits. Consider test results: [insert test summary]."

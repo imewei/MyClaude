@@ -1,6 +1,6 @@
 ---
 name: git-advanced-workflows
-description: Master advanced Git workflows including rebasing, cherry-picking, bisect, worktrees, and reflog to maintain clean history and recover from any situation. Use when managing complex Git histories, collaborating on feature branches, or troubleshooting repository issues.
+description: Master advanced Git workflows including interactive rebasing, cherry-picking, git bisect, worktrees, and reflog to maintain clean commit history and recover from any Git situation. Use this skill when cleaning up feature branch commits before creating pull requests, when applying specific commits across multiple branches or releases, when finding commits that introduced bugs through binary search, when working on multiple features simultaneously using worktrees, when recovering from Git mistakes or lost commits using reflog, when managing complex branch workflows with rebasing strategies, when preparing clean linear history for code review, when synchronizing diverged branches, when splitting large commits into atomic changes, when squashing fixup commits automatically, when handling merge conflicts during rebase operations, when creating hotfixes that need to be applied to multiple release branches, when experimenting with Git operations safely using backup branches, or when editing commit messages and reordering commits for clarity.
 ---
 
 # Git Advanced Workflows
@@ -9,14 +9,23 @@ Master advanced Git techniques to maintain clean history, collaborate effectivel
 
 ## When to Use This Skill
 
-- Cleaning up commit history before merging
-- Applying specific commits across branches
-- Finding commits that introduced bugs
-- Working on multiple features simultaneously
-- Recovering from Git mistakes or lost commits
-- Managing complex branch workflows
-- Preparing clean PRs for review
-- Synchronizing diverged branches
+- **Before Creating Pull Requests**: Cleaning up feature branch commits by squashing, reordering, or rewording for clear linear history
+- **Cross-Branch Commit Application**: Cherry-picking specific commits across multiple branches or release versions
+- **Bug Investigation**: Using git bisect to binary search through commit history and find the exact commit that introduced a bug
+- **Multi-Feature Development**: Working on multiple features simultaneously using worktrees without switching branches or stashing
+- **Git Mistake Recovery**: Using reflog to recover from hard resets, deleted branches, lost commits, or mistaken rebases
+- **Branch Synchronization**: Keeping feature branches up-to-date with main/master using rebase strategies
+- **Hotfix Distribution**: Applying critical fixes to multiple release branches using cherry-pick
+- **Commit Message Editing**: Rewording commit messages for clarity and consistency before code review
+- **Atomic Commit Creation**: Splitting large commits into smaller, logical, atomic changes using interactive rebase
+- **Fixup Automation**: Using autosquash workflow to automatically combine fixup commits with their targets
+- **Merge Conflict Resolution**: Handling conflicts during rebase operations with proper conflict resolution strategies
+- **History Linearization**: Converting messy merge-heavy history into clean linear history for easier navigation
+- **Experimental Git Operations**: Creating backup branches before risky operations like complex rebases
+- **Commit Reordering**: Rearranging commits logically before merging to improve code review experience
+- **Partial Cherry-Picking**: Extracting specific files from commits when full commit cherry-pick isn't appropriate
+- **Public vs Private Branch Management**: Knowing when to rebase (private branches) vs merge (public branches)
+- **Repository Cleanup**: Removing unnecessary commits, combining related changes, and maintaining clean Git history
 
 ## Core Concepts
 

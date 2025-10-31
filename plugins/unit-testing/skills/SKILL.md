@@ -1,22 +1,34 @@
 ---
 name: e2e-testing-patterns
-description: Master end-to-end testing with Playwright and Cypress to build reliable test suites that catch bugs, improve confidence, and enable fast deployment. Use when implementing E2E tests, debugging flaky tests, or establishing testing standards.
+description: Master end-to-end testing with Playwright and Cypress to build reliable, fast, and maintainable test suites that catch bugs, improve confidence, and enable fast deployment. Use when writing or editing test files (*.spec.ts, *.spec.js, *.test.ts, *.test.js, *.cy.ts, *.cy.js), implementing E2E test automation for web applications, testing critical user workflows (login, signup, checkout, form submissions), debugging flaky or unreliable tests, setting up CI/CD test pipelines with GitHub Actions or GitLab CI, testing across multiple browsers (Chrome, Firefox, Safari, mobile browsers), implementing Page Object Model patterns for maintainable tests, writing custom Playwright or Cypress commands, mocking or intercepting API calls for faster tests, implementing visual regression testing with screenshot comparison, validating accessibility requirements with axe-core, testing responsive designs across viewport sizes, setting up test fixtures and test data management, implementing parallel test execution and sharding, debugging failing tests with trace viewer or video recordings, establishing E2E testing standards and best practices, preventing common pitfalls (brittle selectors, fixed timeouts, coupled tests, over-testing edge cases), or optimizing test suite performance to run quickly in CI/CD. Includes comprehensive patterns for Playwright configuration, Cypress setup, waiting strategies, network mocking, accessibility testing, and debugging workflows.
 ---
 
 # E2E Testing Patterns
 
 Build reliable, fast, and maintainable end-to-end test suites that provide confidence to ship code quickly and catch regressions before users do.
 
-## When to Use This Skill
+## When to use this skill
 
-- Implementing end-to-end test automation
-- Debugging flaky or unreliable tests
-- Testing critical user workflows
-- Setting up CI/CD test pipelines
-- Testing across multiple browsers
-- Validating accessibility requirements
-- Testing responsive designs
-- Establishing E2E testing standards
+- Writing or editing end-to-end test files: Playwright tests (*.spec.ts, *.spec.js, test/*.ts), Cypress tests (*.cy.ts, *.cy.js, cypress/e2e/*.ts), or test configuration files (playwright.config.ts, cypress.config.ts)
+- Implementing E2E test automation for web applications: single-page applications (React, Vue, Angular), multi-page applications, progressive web apps, or server-rendered applications
+- Testing critical user workflows and journeys: user login and authentication flows, signup and registration processes, e-commerce checkout flows, form submissions with validation, search and filtering functionality, file upload and download features
+- Debugging flaky or unreliable tests: tests that fail intermittently, tests with race conditions, tests sensitive to timing issues, or tests failing in CI but passing locally
+- Setting up CI/CD test pipelines: GitHub Actions workflows, GitLab CI pipelines, Jenkins jobs, Azure DevOps pipelines, or CircleCI configurations for running E2E tests
+- Testing across multiple browsers and devices: Chrome/Chromium, Firefox, WebKit/Safari, mobile browsers (iPhone, Android), different viewport sizes, or responsive breakpoints
+- Implementing Page Object Model (POM) patterns: creating reusable page classes, encapsulating element selectors, abstracting page interactions, or organizing test code for maintainability
+- Writing custom commands and fixtures: Playwright custom fixtures for test data, Cypress custom commands for common actions, authentication helpers, or database seeding utilities
+- Mocking or intercepting API calls: using Playwright's route API for network interception, Cypress intercept for API mocking, simulating API failures or slow responses, or testing offline scenarios
+- Implementing visual regression testing: comparing screenshots with baseline images, detecting unexpected UI changes, testing component states (default, hover, disabled), or validating responsive layouts
+- Validating accessibility requirements: integrating axe-core for automated accessibility testing, checking WCAG compliance, validating ARIA attributes, testing keyboard navigation, or ensuring screen reader compatibility
+- Testing responsive designs: validating layouts across viewport sizes (mobile 375px, tablet 768px, desktop 1920px), testing orientation changes, verifying touch interactions, or checking media query breakpoints
+- Setting up test fixtures and test data: creating test users in database, seeding initial data, managing test state between tests, cleaning up after tests, or using database transactions
+- Implementing parallel test execution: configuring Playwright sharding for faster CI runs, running tests concurrently across multiple workers, distributing tests across CI matrix jobs, or optimizing test suite runtime
+- Debugging failing tests: using Playwright trace viewer for step-by-step inspection, capturing videos of test failures, taking screenshots on failure, analyzing console logs and network requests, or running tests in headed mode for debugging
+- Establishing E2E testing standards: defining selector strategies (data-testid attributes), creating test naming conventions, documenting testing best practices, setting up test templates, or establishing code review guidelines for tests
+- Preventing common E2E testing pitfalls: avoiding brittle CSS selectors (classes, nth-child), eliminating fixed timeouts (waitForTimeout), preventing test interdependencies, avoiding over-testing edge cases with E2E, using proper waiting strategies, or cleaning up test data properly
+- Optimizing test suite performance: reducing test execution time, mocking external services for speed, enabling parallel execution, using test sharding, minimizing network requests, or caching authentication state
+- Integrating with test reporting tools: generating HTML reports, JUnit XML for CI integration, test result dashboards, failure notifications (Slack, email), or tracking flaky test metrics
+- Testing complex UI interactions: drag-and-drop functionality, multi-step wizards, modal dialogs and popups, dropdown menus and autocomplete, date pickers and calendars, or rich text editors
 
 ## Core Concepts
 

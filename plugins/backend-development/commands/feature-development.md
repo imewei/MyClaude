@@ -26,9 +26,6 @@ Orchestrate end-to-end feature development from requirements to production deplo
 ## Phase 1: Discovery & Requirements Planning
 
 1. **Business Analysis & Requirements**
-   <!-- REMOVED: business-analytics plugin does not exist
-   - Use Task tool with subagent_type="business-analytics:business-analyst"
-   -->
    - Manually analyze feature requirements for: $ARGUMENTS
    - Define user stories, acceptance criteria, success metrics, and business value
    - Identify stakeholders, dependencies, and risks
@@ -63,9 +60,6 @@ Orchestrate end-to-end feature development from requirements to production deplo
    - Context: Backend APIs, UI/UX designs, user stories
 
 6. **Data Pipeline & Integration**
-   <!-- REMOVED: data-engineering plugin does not exist
-   - Use Task tool with subagent_type="data-engineering:data-engineer"
-   -->
    - Prompt: "Build data pipelines for: $ARGUMENTS. Design ETL/ELT processes, implement data validation, create analytics events, set up data quality monitoring. Integrate with product analytics platforms for feature usage tracking."
    - Expected output: Data pipelines, analytics events, data quality checks
    - Context: Data requirements, analytics needs, existing data infrastructure
