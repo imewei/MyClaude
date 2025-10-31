@@ -41,7 +41,7 @@ python scripts/validate_plugin_syntax.py --report validation-report.md
 ### Rule 1: Single Colon Format
 
 ✅ **VALID**: `subagent_type="comprehensive-review:code-reviewer"`
-❌ **INVALID**: `subagent_type="comprehensive-review::code-reviewer"`
+❌ **INVALID**: `subagent_type="comprehensive-review:code-reviewer"`
 🔧 **Auto-fixable**: Yes
 
 ### Rule 2: Namespace Required
@@ -114,7 +114,7 @@ PLUGIN SYNTAX VALIDATION REPORT
 ────────────────────────────────────────────────────────────────────────────────
 
   [SYNTAX] backend-development/commands/feature-development.md:29
-  Double colon (::) in agent reference: 'comprehensive-review::code-reviewer'
+  Double colon (::) in agent reference: 'comprehensive-review:code-reviewer'
   💡 Suggestion: Change to: comprehensive-review:code-reviewer
 
   [REFERENCE] custom-commands/commands/smart-fix.md:92
