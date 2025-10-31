@@ -1,22 +1,38 @@
 ---
 name: auth-implementation-patterns
-description: Master authentication and authorization patterns including JWT, OAuth2, session management, and RBAC to build secure, scalable access control systems. Use when implementing auth systems, securing APIs, or debugging security issues.
+description: Master authentication and authorization patterns including JWT (JSON Web Tokens with access/refresh token flows), OAuth2 and OpenID Connect (social login with Google, GitHub, Facebook), session-based authentication with Redis/database storage, RBAC (Role-Based Access Control with hierarchical roles), ABAC (Attribute-Based Access Control), permission-based authorization, API key authentication, multi-factor authentication (MFA/2FA), SSO (Single Sign-On), password hashing with bcrypt/argon2, secure cookie management (httpOnly, secure, sameSite flags), and CSRF protection. Use this skill when implementing user authentication systems for web or mobile applications, when securing REST or GraphQL APIs with token-based authentication, when adding OAuth2 social login (Google, GitHub, Twitter, Facebook) to applications, when implementing role-based access control (RBAC) with user roles and permissions, when designing session management with secure cookies and session storage, when migrating authentication systems or upgrading security implementations, when debugging authentication or authorization issues in production, when implementing SSO (Single Sign-On) or enterprise SAML integration, when building multi-tenancy systems with tenant-level authorization, when implementing field-level authorization in GraphQL resolvers, when adding API key authentication for third-party integrations, when implementing refresh token rotation for security, when building password reset flows with secure tokens and expiration, when implementing rate limiting on authentication endpoints to prevent brute force attacks, when adding multi-factor authentication (MFA) or two-factor authentication (2FA) with TOTP or SMS, when implementing remember-me functionality with secure tokens, when designing permission systems with granular resource-level access control, when implementing OAuth2 authorization server or resource server, when adding JWT middleware for protecting API endpoints, or when implementing secure logout with token revocation and session invalidation. Use this skill for all authentication and authorization implementation, security best practices, token management, session handling, password security, and access control design.
 ---
 
 # Authentication & Authorization Implementation Patterns
 
 Build secure, scalable authentication and authorization systems using industry-standard patterns and modern best practices.
 
-## When to Use This Skill
+## When to use this skill
 
-- Implementing user authentication systems
-- Securing REST or GraphQL APIs
-- Adding OAuth2/social login
-- Implementing role-based access control (RBAC)
-- Designing session management
-- Migrating authentication systems
-- Debugging auth issues
-- Implementing SSO or multi-tenancy
+- When implementing user authentication systems for web applications, mobile apps, or SPAs
+- When securing REST or GraphQL APIs with JWT, OAuth2, or API key authentication
+- When adding OAuth2 social login (Google, GitHub, Twitter, Facebook, LinkedIn) to applications
+- When implementing role-based access control (RBAC) with hierarchical user roles and permissions
+- When designing session management with secure cookie storage or Redis/database session stores
+- When migrating authentication systems or upgrading from legacy auth to modern token-based auth
+- When debugging authentication or authorization issues in development or production environments
+- When implementing SSO (Single Sign-On) with SAML, OAuth2, or OpenID Connect
+- When building multi-tenancy systems with tenant-level isolation and authorization
+- When implementing field-level authorization in GraphQL resolvers or REST API endpoints
+- When adding API key authentication for third-party integrations and webhook callbacks
+- When implementing refresh token rotation and revocation for enhanced security
+- When building secure password reset flows with time-limited tokens and email verification
+- When implementing rate limiting on login endpoints to prevent brute force attacks
+- When adding multi-factor authentication (MFA/2FA) with TOTP, SMS, or authenticator apps
+- When implementing "remember me" functionality with secure long-lived tokens
+- When designing permission systems with granular resource-level or attribute-based access control
+- When implementing OAuth2 authorization server or resource server functionality
+- When adding JWT middleware for protecting specific API routes or endpoints
+- When implementing secure logout with token blacklisting and session invalidation
+- When implementing password policies with complexity requirements and history tracking
+- When adding authentication middleware to Express, FastAPI, Django, or other web frameworks
+- When working with authentication-related files such as auth routes, middleware, token utilities, or user models
+- When implementing CSRF protection for session-based authentication
 
 ## Core Concepts
 

@@ -1,23 +1,34 @@
 ---
 name: python-packaging
-description: Create distributable Python packages with proper project structure, setup.py/pyproject.toml, and publishing to PyPI. Use when packaging Python libraries, creating CLI tools, or distributing Python code.
+description: Create distributable Python packages with proper project structure, setup.py/pyproject.toml configuration, and publishing to PyPI or private repositories. Use when writing or editing pyproject.toml or setup.py files, creating Python library package structures with __init__.py files, building wheel or source distributions, setting up entry points for command-line tools, configuring build backends (setuptools, hatchling, flit, poetry), implementing package metadata and classifiers, creating MANIFEST.in for including non-Python files, setting up namespace packages, publishing packages to PyPI or TestPyPI, managing package versioning strategies, or migrating from setup.py to pyproject.toml.
 ---
 
 # Python Packaging
 
 Comprehensive guide to creating, structuring, and distributing Python packages using modern packaging tools, pyproject.toml, and publishing to PyPI.
 
-## When to Use This Skill
+## When to use this skill
 
-- Creating Python libraries for distribution
-- Building command-line tools with entry points
-- Publishing packages to PyPI or private repositories
-- Setting up Python project structure
-- Creating installable packages with dependencies
-- Building wheels and source distributions
-- Versioning and releasing Python packages
-- Creating namespace packages
-- Implementing package metadata and classifiers
+- Writing or editing pyproject.toml, setup.py, or setup.cfg configuration files
+- Creating Python library package structures (src/ layout or flat layout)
+- Setting up __init__.py files and package hierarchies
+- Building wheel distributions (.whl) or source distributions (.tar.gz)
+- Configuring entry points for command-line interface (CLI) tools with [project.scripts]
+- Setting up build backends (setuptools, hatchling, flit, poetry, pdm)
+- Implementing package metadata (name, version, description, author, classifiers)
+- Creating MANIFEST.in files for including data files, templates, or static assets
+- Setting up namespace packages for multi-repository projects
+- Publishing packages to PyPI using twine or automated CI/CD workflows
+- Publishing to TestPyPI for testing before production release
+- Publishing to private package repositories (JFrog Artifactory, AWS CodeArtifact)
+- Managing package versioning strategies (semantic versioning, git-based with setuptools-scm)
+- Creating installable packages with optional dependencies ([project.optional-dependencies])
+- Setting up editable installs (pip install -e .) for development
+- Migrating from setup.py to modern pyproject.toml configuration
+- Configuring package discovery with [tool.setuptools.packages.find]
+- Including package data files with [tool.setuptools.package-data]
+- Setting up multi-architecture wheel building with cibuildwheel
+- Creating README.md, LICENSE, and CHANGELOG.md for packages
 
 ## Core Concepts
 

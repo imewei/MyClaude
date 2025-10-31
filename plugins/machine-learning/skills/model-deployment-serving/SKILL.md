@@ -1,6 +1,35 @@
+---
+name: model-deployment-serving
+description: Deploy and serve ML models in production using FastAPI, TorchServe, BentoML, Docker, Kubernetes, and cloud platforms (AWS SageMaker, GCP Vertex AI, Azure ML) with monitoring, A/B testing, and drift detection. Use when writing or editing FastAPI serving code (`.py`), Dockerfiles, Kubernetes manifests (`.yaml`), TorchServe handlers, or cloud deployment scripts. Apply this skill when building FastAPI endpoints for model serving, implementing TorchServe custom handlers, containerizing models with Docker, deploying to Kubernetes with KServe or Seldon, deploying to AWS SageMaker endpoints, deploying to GCP Vertex AI or Azure ML, implementing batch prediction APIs, adding Prometheus metrics for model monitoring, implementing data and prediction drift detection, building A/B testing frameworks for model comparison, managing model versions and registries, implementing canary or blue-green deployments, optimizing inference latency and throughput, or setting up autoscaling for model serving infrastructure.
+---
+
 # Model Deployment and Serving
 
 Expert guidance on deploying and serving ML models in production environments. Use when building model serving APIs, containerizing models, implementing cloud deployments, or setting up monitoring for production ML systems.
+
+## When to Use This Skill
+
+- Writing or editing FastAPI serving code (`.py`) for model inference APIs
+- Writing or editing TorchServe custom handlers for PyTorch model serving
+- Writing or editing BentoML service definitions for multi-framework serving
+- Creating or modifying Dockerfiles for ML model containerization
+- Writing Kubernetes deployment manifests (`.yaml`) for model serving
+- Building REST API endpoints with FastAPI for real-time predictions
+- Implementing batch prediction APIs for offline inference
+- Creating TorchServe model archives (MAR files) with custom preprocessing
+- Containerizing ML models and dependencies with Docker multi-stage builds
+- Deploying models to Kubernetes with KServe, Seldon Core, or custom deployments
+- Deploying to AWS SageMaker endpoints with auto-scaling
+- Deploying to GCP Vertex AI prediction services
+- Deploying to Azure ML managed endpoints
+- Implementing Prometheus metrics for model performance monitoring
+- Adding health check and readiness probe endpoints
+- Implementing data drift detection with statistical tests (KS test, PSI)
+- Building A/B testing frameworks for comparing model versions
+- Managing model versions and promoting models through registries (MLflow, custom)
+- Implementing deployment strategies (canary, blue-green, shadow mode)
+- Optimizing inference latency with batching, caching, or quantization
+- Setting up horizontal pod autoscaling (HPA) for Kubernetes deployments
 
 ## Overview
 

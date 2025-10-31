@@ -1,6 +1,6 @@
 ---
 name: nodejs-backend-patterns
-description: Build production-ready Node.js backend services with Express/Fastify, implementing middleware patterns, error handling, authentication, database integration, and API design best practices. Use when creating Node.js servers, REST APIs, GraphQL backends, or microservices architectures.
+description: Build production-ready Node.js backend services with Express.js, Fastify, NestJS, and Koa implementing middleware patterns, error handling, authentication, database integration, and API design best practices for scalable architectures. Use when creating or editing Node.js server files (server.ts, app.ts, index.ts), when building REST APIs with Express or Fastify with proper routing and controllers, when implementing GraphQL backends with Apollo Server or Mercurius, when designing microservices architectures with service communication patterns, when implementing middleware chains for request processing, logging, authentication, and error handling, when integrating databases (PostgreSQL, MongoDB, Redis) with connection pooling and query optimization, when setting up authentication and authorization with JWT, OAuth2, session management, and role-based access control (RBAC), when implementing API versioning, rate limiting, and request validation, when building WebSocket servers for real-time features with Socket.io or native WebSockets, when setting up background job processing with Bull, BullMQ, or node-cron, when implementing file uploads and streaming with multer or busboy, when creating API documentation with Swagger/OpenAPI specifications, when designing repository patterns and service layers for clean architecture, when implementing caching strategies with Redis or in-memory caching, when setting up health checks, metrics, and observability with Prometheus or custom endpoints, when implementing graceful shutdown patterns and process management, when configuring CORS, security headers with helmet, and input sanitization, when building event-driven architectures with event emitters or message queues, when setting up database migrations and seeding with Knex, TypeORM, or Prisma, when implementing request/response logging and structured logging with Winston or Pino, when optimizing performance with clustering, load balancing, and horizontal scaling, when handling errors globally with error middleware and custom error classes, or when establishing Node.js backend coding standards and architectural patterns for teams.
 ---
 
 # Node.js Backend Patterns
@@ -9,14 +9,171 @@ Comprehensive guidance for building scalable, maintainable, and production-ready
 
 ## When to Use This Skill
 
-- Building REST APIs or GraphQL servers
-- Creating microservices with Node.js
-- Implementing authentication and authorization
-- Designing scalable backend architectures
-- Setting up middleware and error handling
-- Integrating databases (SQL and NoSQL)
-- Building real-time applications with WebSockets
-- Implementing background job processing
+### Server and Application Setup
+- Creating or editing main server files: `server.ts`, `app.ts`, `index.ts`, `main.ts`
+- Setting up Express.js applications with proper middleware stack
+- Configuring Fastify servers with plugins and decorators
+- Implementing NestJS modules, controllers, and providers
+- Initializing Koa applications with context-based middleware
+
+### API Development and Routing
+- Building REST API routes with Express Router or Fastify routing
+- Creating controller files for handling HTTP requests
+- Implementing route handlers in `routes/`, `controllers/`, or `handlers/` directories
+- Designing API versioning strategies (URL path, headers, query params)
+- Setting up route parameter validation and type safety
+- Implementing nested routes and route grouping
+
+### Middleware Implementation
+- Creating custom middleware functions for request/response processing
+- Implementing authentication middleware for protected routes
+- Setting up logging middleware with Morgan, Winston, or Pino
+- Creating error handling middleware with proper error propagation
+- Implementing rate limiting middleware with express-rate-limit or fastify-rate-limit
+- Setting up CORS middleware with proper configuration
+- Creating request validation middleware with Joi, Zod, or class-validator
+- Implementing request timing and performance monitoring middleware
+
+### Authentication and Authorization
+- Implementing JWT-based authentication with token generation and verification
+- Setting up session-based authentication with express-session or connect-redis
+- Implementing OAuth2 flows with Passport.js or custom implementations
+- Creating role-based access control (RBAC) middleware
+- Implementing permission-based authorization
+- Setting up refresh token rotation and token blacklisting
+- Integrating with authentication providers (Auth0, Firebase, Keycloak)
+- Implementing API key authentication for service-to-service communication
+
+### Database Integration
+- Setting up database connections with connection pooling
+- Implementing repository pattern for database abstraction
+- Creating database models with TypeORM, Sequelize, Mongoose, or Prisma
+- Writing optimized database queries and preventing N+1 problems
+- Implementing database transactions for data consistency
+- Setting up database migrations with Knex, TypeORM migrations, or Prisma Migrate
+- Creating database seeders for development and testing
+- Implementing soft deletes and audit trails
+- Working with multiple database connections
+
+### Error Handling
+- Creating global error handling middleware
+- Implementing custom error classes for different error types
+- Setting up async error handling with try/catch or error-first callbacks
+- Implementing error logging and alerting
+- Creating user-friendly error responses
+- Handling validation errors from request validators
+- Implementing error recovery strategies
+- Setting up error monitoring with Sentry or similar tools
+
+### API Design and Documentation
+- Designing RESTful API endpoints following REST principles
+- Implementing proper HTTP status codes and methods
+- Creating request/response DTOs (Data Transfer Objects)
+- Setting up Swagger/OpenAPI documentation with swagger-jsdoc or @nestjs/swagger
+- Implementing HATEOAS links in API responses
+- Designing consistent API response formats
+- Creating API versioning strategies
+
+### GraphQL Backend Development
+- Setting up Apollo Server or Mercurius for GraphQL APIs
+- Creating GraphQL schemas and resolvers
+- Implementing GraphQL subscriptions for real-time updates
+- Setting up DataLoader for batching and caching
+- Implementing GraphQL authentication and authorization
+- Creating custom GraphQL directives
+- Setting up GraphQL federation for microservices
+
+### Real-Time Features
+- Implementing WebSocket servers with Socket.io
+- Creating WebSocket event handlers and namespaces
+- Setting up Server-Sent Events (SSE) for real-time updates
+- Implementing real-time notifications and messaging
+- Broadcasting events to multiple clients
+- Implementing WebSocket authentication
+- Handling reconnection and connection state management
+
+### Background Jobs and Scheduling
+- Setting up job queues with Bull, BullMQ, or Agenda
+- Creating background workers for async tasks
+- Implementing scheduled jobs with node-cron or node-schedule
+- Processing file uploads asynchronously
+- Implementing email sending with queues
+- Creating retry mechanisms for failed jobs
+- Monitoring job queue health and performance
+
+### File Handling
+- Implementing file uploads with Multer or Busboy
+- Validating file types, sizes, and contents
+- Storing files to local filesystem, S3, or cloud storage
+- Implementing file streaming for large files
+- Creating file download endpoints with proper headers
+- Implementing image processing with Sharp
+- Setting up file cleanup and garbage collection
+
+### Caching Strategies
+- Implementing Redis caching for frequently accessed data
+- Creating in-memory caching with node-cache or lru-cache
+- Implementing cache invalidation strategies
+- Setting up HTTP caching headers (ETag, Cache-Control)
+- Creating cache-aside patterns
+- Implementing distributed caching for multiple server instances
+
+### Performance Optimization
+- Implementing clustering with Node.js cluster module
+- Setting up load balancing with PM2 or custom strategies
+- Optimizing database queries with indexes and query analysis
+- Implementing response compression with compression middleware
+- Using streams for processing large datasets
+- Implementing pagination for list endpoints
+- Optimizing JSON serialization
+- Setting up horizontal scaling strategies
+
+### Security Implementation
+- Setting up Helmet for security headers
+- Implementing input sanitization to prevent XSS
+- Preventing SQL injection with parameterized queries
+- Setting up CSRF protection
+- Implementing rate limiting to prevent abuse
+- Validating and sanitizing user input
+- Setting up secure password hashing with bcrypt or argon2
+- Implementing API security best practices
+
+### Logging and Monitoring
+- Setting up structured logging with Winston or Pino
+- Implementing request/response logging
+- Creating log levels (error, warn, info, debug)
+- Setting up log aggregation with ELK stack or similar
+- Implementing metrics collection with Prometheus
+- Creating health check endpoints (`/health`, `/ready`)
+- Setting up application performance monitoring (APM)
+- Implementing distributed tracing
+
+### Service Architecture
+- Creating service layer for business logic separation
+- Implementing repository pattern for data access
+- Setting up dependency injection with InversifyJS or NestJS DI
+- Creating DTOs and validators for data transfer
+- Implementing event-driven architecture with EventEmitter
+- Setting up microservices communication (HTTP, gRPC, message queues)
+- Implementing circuit breaker patterns for resilience
+- Creating saga patterns for distributed transactions
+
+### Testing Backend Services
+- Writing unit tests for services and repositories
+- Creating integration tests for API endpoints with supertest
+- Implementing test fixtures and factories
+- Mocking database connections and external services
+- Setting up test databases with Docker or in-memory databases
+- Creating E2E tests for critical user flows
+
+### Deployment and Operations
+- Implementing graceful shutdown patterns
+- Setting up process management with PM2
+- Creating Docker configurations for Node.js apps
+- Implementing environment-based configuration
+- Setting up database connection pooling for production
+- Implementing zero-downtime deployments
+- Creating deployment health checks
 
 ## Core Frameworks
 

@@ -1,6 +1,39 @@
+---
+name: programming-scripting-languages
+description: Master programming languages and frameworks for building robust CLI tools across Python (Click, Typer, argparse), Shell scripting (Bash, Zsh, PowerShell), Go (Cobra, Viper), Rust (Clap), and cross-language patterns. Use when implementing argument parsing and validation with Click decorators or Typer type hints, creating Bash automation scripts with error handling and signal trapping, writing PowerShell cmdlets for cross-platform scripting, building Go CLIs with Cobra command structures and Viper configuration, implementing Rust CLIs with Clap derive macros, designing interactive prompts with Inquirer.js or Python's prompt_toolkit, handling command-line arguments and flags with proper validation, implementing subcommand hierarchies and command composition, managing configuration files (YAML, TOML, JSON) in CLI applications, creating cross-platform shell scripts with environment detection, implementing proper exit codes and error handling patterns, building CLI tools with logging and debugging capabilities, creating progress indicators and spinners with terminal libraries, implementing secure credential handling in command-line tools, or designing help systems and command documentation. Use this skill when working with CLI framework files (Python Click/Typer, Node Commander, Go Cobra, Rust Clap), shell scripts (.sh, .bash, .ps1), command entry points (main.py, main.go, cli.js), argument parser implementations, interactive prompt code, or cross-platform compatibility layers.
+---
+
 # Programming and Scripting Languages for CLI Development
 
 Expert guidance on programming languages and frameworks for building robust CLI tools. Covers Python (Click, Typer, argparse), Shell scripting (Bash/Zsh/PowerShell), Go (Cobra), Rust (Clap), and cross-language best practices.
+
+## When to use this skill
+
+- When implementing Python CLI tools with Click framework and decorators
+- When building type-safe Python CLIs with Typer and type hints
+- When creating Bash automation scripts with advanced error handling
+- When writing PowerShell cmdlets for Windows and cross-platform use
+- When implementing Go command-line applications with Cobra and Viper
+- When building Rust CLIs with Clap derive macros for type safety
+- When designing argument parsing with proper validation and error messages
+- When implementing interactive prompts with Inquirer.js or prompt_toolkit
+- When creating subcommand hierarchies and command composition patterns
+- When managing configuration files (YAML, TOML, JSON) in CLI applications
+- When building cross-platform shell scripts with environment detection
+- When implementing proper exit codes (0 for success, non-zero for errors)
+- When creating comprehensive error handling and signal trapping
+- When building CLI tools with structured logging and debugging
+- When implementing progress indicators, spinners, and terminal animations
+- When handling secure credentials and secrets in command-line tools
+- When designing help systems with usage examples and documentation
+- When working with CLI framework files (click.py, cobra.go, clap.rs)
+- When creating shell scripts (.sh, .bash, .zsh, .ps1, .fish)
+- When implementing command entry points (__main__.py, main.go, cli.js)
+- When building argument parsers with required/optional parameters
+- When creating flag and option handlers with short/long forms (-v, --verbose)
+- When implementing environment variable handling and defaults
+- When building CLI tools that read from stdin/stdout/stderr
+- When creating shell completion scripts for bash, zsh, or fish
 
 ## Overview
 

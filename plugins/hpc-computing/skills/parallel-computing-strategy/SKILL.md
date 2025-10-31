@@ -1,9 +1,32 @@
 ---
 name: parallel-computing-strategy
-description: Design parallel computing workflows using MPI/OpenMP for distributed and shared-memory systems. Use when implementing task/data parallelism, optimizing job scheduling on HPC clusters (SLURM, PBS), orchestrating workflows with Dask or Dagger.jl, or balancing computational loads across nodes.
+description: Design and implement parallel computing strategies for distributed and shared-memory HPC systems using MPI, OpenMP, and workflow orchestration frameworks. Use this skill when implementing MPI distributed-memory parallelization with mpi4py (Python) or MPI.jl (Julia) for multi-node cluster computing, designing OpenMP shared-memory parallelization with #pragma omp directives for loop-level multi-threading on single nodes, creating hybrid MPI+OpenMP applications that combine distributed and shared-memory parallelism for hierarchical parallelization, writing SLURM job scripts with #SBATCH directives for resource allocation (--nodes, --ntasks-per-node, --cpus-per-task, --gres=gpu) on HPC clusters, implementing dynamic load balancing using master-worker patterns or work-stealing algorithms for heterogeneous workloads, orchestrating parallel workflows with Dask (Python) or Dagger.jl (Julia) for task graphs and out-of-core computation, designing data parallelism for array operations where the same operation applies to different data elements, implementing task parallelism for independent computational tasks with dynamic scheduling, optimizing MPI communication patterns (point-to-point, collective operations, non-blocking communication) to minimize overhead, creating SLURM array jobs for parameter sweeps and ensemble simulations, implementing MPI domain decomposition for PDE solvers with halo exchanges and ghost cell communication, designing scalability strategies and analyzing strong scaling (fixed problem size) versus weak scaling (scaled problem size), profiling parallel performance with Scalasca, Score-P, Intel VTune, or TAU performance tools, managing job dependencies and workflow pipelines in SLURM with --dependency flags, implementing parallel I/O strategies for reading/writing large datasets efficiently across nodes, working with .sh SLURM batch scripts or MPI-enabled Python/Julia/C/Fortran source files, or optimizing resource utilization and queue wait times on shared HPC infrastructure.
 ---
 
 # Parallel Computing Strategy
+
+## When to use this skill
+
+- When implementing MPI parallelization with mpi4py (Python) or MPI.jl (Julia)
+- When writing OpenMP parallel loops with #pragma omp directives in C/C++/Fortran
+- When creating hybrid MPI+OpenMP applications for multi-node clusters
+- When writing SLURM job scripts (.sh files) with #SBATCH resource directives
+- When configuring --nodes, --ntasks-per-node, --cpus-per-task in SLURM submissions
+- When implementing dynamic load balancing with master-worker or work-stealing patterns
+- When orchestrating workflows with Dask (Python) or Dagger.jl (Julia)
+- When designing data parallelism for array computations across multiple processors
+- When implementing task parallelism for independent computational workflows
+- When optimizing MPI communication (MPI_Send, MPI_Recv, MPI_Bcast, MPI_Reduce)
+- When creating SLURM array jobs for parameter sweeps (#SBATCH --array=1-100)
+- When implementing domain decomposition for PDE solvers with halo exchanges
+- When analyzing strong scaling and weak scaling performance of parallel applications
+- When profiling parallel code with Scalasca, Score-P, Intel VTune, or TAU
+- When managing SLURM job dependencies with --dependency=afterok:jobid
+- When implementing parallel I/O for large-scale data processing across nodes
+- When working with MPI-enabled Python, Julia, C, C++, or Fortran source files
+- When optimizing queue wait times and resource allocation on shared HPC clusters
+- When designing collective communication patterns to minimize inter-node overhead
+- When balancing computational loads across heterogeneous computing resources
 
 ## Overview
 

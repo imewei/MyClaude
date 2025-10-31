@@ -1,6 +1,6 @@
 ---
 name: javascript-testing-patterns
-description: Implement comprehensive testing strategies using Jest, Vitest, and Testing Library for unit tests, integration tests, and end-to-end testing with mocking, fixtures, and test-driven development. Use when writing JavaScript/TypeScript tests, setting up test infrastructure, or implementing TDD/BDD workflows.
+description: Implement comprehensive testing strategies using Jest, Vitest, and Testing Library for unit tests, integration tests, and end-to-end testing with advanced mocking, fixtures, and test-driven development. Use when writing or editing test files (*.test.ts, *.spec.ts, *.test.tsx, *.spec.tsx, __tests__/**), when setting up test infrastructure and configuration files (jest.config.ts, vitest.config.ts, test/setup.ts, setupTests.ts), when implementing TDD/BDD workflows with test-first development practices, when testing async functions and promises with proper mocking patterns and async/await assertions, when creating integration tests for REST APIs, GraphQL endpoints, and backend services using supertest, when testing React/Vue/Svelte/Angular components with Testing Library and user interaction patterns, when writing snapshot tests for UI components and ensuring visual regression prevention, when implementing test fixtures and factories with @faker-js/faker or similar tools for consistent test data, when mocking external dependencies including modules (vi.mock, jest.mock), HTTP requests (MSW, nock), databases (in-memory databases, mock repositories), and third-party services, when setting up continuous testing in CI/CD pipelines with coverage reporting and quality gates, when testing error handling, edge cases, boundary conditions, and failure scenarios, when implementing test utilities, custom matchers, and shared helper functions, when refactoring legacy code with test coverage to ensure behavior preservation, when debugging test failures, flaky tests, and timing issues, when optimizing test performance and reducing test execution time with parallelization and selective test running, when implementing dependency injection patterns for better testability, when testing authentication and authorization logic, when writing contract tests for API interfaces, or when establishing testing standards and best practices for team adoption.
 ---
 
 # JavaScript Testing Patterns
@@ -9,14 +9,93 @@ Comprehensive guide for implementing robust testing strategies in JavaScript/Typ
 
 ## When to Use This Skill
 
-- Setting up test infrastructure for new projects
-- Writing unit tests for functions and classes
-- Creating integration tests for APIs and services
-- Implementing end-to-end tests for user flows
-- Mocking external dependencies and APIs
-- Testing React, Vue, or other frontend components
-- Implementing test-driven development (TDD)
-- Setting up continuous testing in CI/CD pipelines
+### Test File Creation and Editing
+- Writing or editing test files: `*.test.ts`, `*.spec.ts`, `*.test.tsx`, `*.spec.tsx`
+- Organizing tests in `__tests__/` directories or co-located with source files
+- Creating test suites with `describe()` and `it()` blocks
+- Implementing test setup and teardown with `beforeEach()`, `afterEach()`, `beforeAll()`, `afterAll()`
+
+### Test Infrastructure Setup
+- Configuring Jest: `jest.config.ts`, `jest.config.js`, `jest.setup.ts`
+- Configuring Vitest: `vitest.config.ts`, `vite.config.ts` with test options
+- Setting up test environment files: `test/setup.ts`, `setupTests.ts`
+- Configuring coverage thresholds and reporters
+- Setting up custom matchers and test utilities
+
+### Testing Patterns by Type
+- **Unit Testing**: Pure functions, classes, utility modules, business logic
+- **Integration Testing**: API endpoints, database operations, service interactions
+- **Component Testing**: React/Vue/Svelte/Angular components with user interactions
+- **Hook Testing**: Custom React hooks with `renderHook` and `act`
+- **E2E Testing**: User flows, authentication flows, critical business processes
+
+### Async Testing Scenarios
+- Testing async functions with `async/await` syntax
+- Testing promises with `.resolves` and `.rejects` matchers
+- Testing API calls and HTTP requests with mocked fetch or axios
+- Testing event emitters and callback functions
+- Testing timers and delayed operations with `vi.useFakeTimers()`
+
+### Mocking and Test Doubles
+- Mocking ES6 modules with `vi.mock()` or `jest.mock()`
+- Mocking external libraries: nodemailer, axios, fetch, database clients
+- Creating spy functions with `vi.spyOn()` to track function calls
+- Implementing dependency injection for easier mocking
+- Using MSW (Mock Service Worker) for HTTP request mocking
+- Creating in-memory databases for integration tests
+
+### Test Data Management
+- Creating test fixtures with `@faker-js/faker` for realistic data
+- Building factory functions for consistent test object creation
+- Setting up test database seeding and cleanup
+- Managing test state isolation between tests
+
+### React/Frontend Component Testing
+- Testing component rendering and props
+- Simulating user interactions: clicks, typing, form submissions
+- Testing conditional rendering and state changes
+- Testing hooks and context providers
+- Writing accessibility tests with Testing Library queries
+- Snapshot testing for component structure validation
+
+### API and Backend Testing
+- Testing Express/Fastify routes with supertest
+- Testing GraphQL resolvers and mutations
+- Testing database repositories and queries
+- Testing authentication and authorization middleware
+- Testing error handling and validation logic
+
+### Advanced Testing Scenarios
+- Testing WebSocket connections and real-time features
+- Testing file uploads and downloads
+- Testing event-driven architectures
+- Testing rate limiting and caching logic
+- Testing internationalization (i18n) and localization
+
+### CI/CD and Test Automation
+- Configuring test scripts in `package.json`
+- Setting up coverage reporting: lcov, html, json, text
+- Implementing watch mode for development
+- Running tests in parallel for faster execution
+- Setting up pre-commit hooks with test validation
+
+### TDD/BDD Workflows
+- Writing tests before implementation (red-green-refactor cycle)
+- Implementing behavior-driven development with descriptive test names
+- Refactoring code with confidence using comprehensive test coverage
+- Debugging test failures and fixing flaky tests
+
+### Legacy Code and Refactoring
+- Adding tests to untested legacy code
+- Writing characterization tests to capture existing behavior
+- Refactoring with test coverage to prevent regressions
+- Improving code testability through dependency injection
+
+### Performance and Optimization
+- Identifying and fixing slow tests
+- Optimizing test setup and teardown
+- Using test filtering and pattern matching
+- Implementing test sharding for large test suites
 
 ## Testing Frameworks
 

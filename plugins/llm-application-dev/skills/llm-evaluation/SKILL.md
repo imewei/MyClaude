@@ -1,6 +1,6 @@
 ---
 name: llm-evaluation
-description: Implement comprehensive evaluation strategies for LLM applications using automated metrics, human feedback, and benchmarking. Use when testing LLM performance, measuring AI application quality, or establishing evaluation frameworks.
+description: Implement comprehensive evaluation strategies for LLM applications using automated metrics, human feedback loops, A/B testing, and benchmarking frameworks. Use when writing or editing Python test files, evaluation scripts, benchmark runners, or quality assurance code for AI systems. Apply this skill when implementing automated metrics (BLEU, ROUGE, BERTScore, perplexity), creating LLM-as-judge evaluation patterns, designing human evaluation frameworks with annotation tasks, building A/B testing infrastructure for model comparison, setting up regression detection for CI/CD pipelines, measuring retrieval quality in RAG systems (MRR, NDCG, Precision@K), calculating custom metrics for groundedness or factuality, establishing baseline performance benchmarks, tracking model performance over time, or debugging unexpected LLM behavior through systematic evaluation.
 ---
 
 # LLM Evaluation
@@ -9,13 +9,23 @@ Master comprehensive evaluation strategies for LLM applications, from automated 
 
 ## When to Use This Skill
 
-- Measuring LLM application performance systematically
-- Comparing different models or prompts
-- Detecting performance regressions before deployment
-- Validating improvements from prompt changes
-- Building confidence in production systems
-- Establishing baselines and tracking progress over time
-- Debugging unexpected model behavior
+- Writing or editing Python evaluation scripts (`.py`) or test files for LLM applications
+- Measuring LLM application performance systematically with automated metrics
+- Comparing different models, prompts, or retrieval strategies using A/B testing
+- Detecting performance regressions before deployment in CI/CD pipelines
+- Validating improvements from prompt changes or model updates
+- Building confidence in production AI systems through comprehensive evaluation
+- Establishing baselines and tracking progress over time with benchmark datasets
+- Debugging unexpected model behavior through systematic metric analysis
+- Implementing LLM-as-judge patterns for quality assessment (pointwise, pairwise, reference-based)
+- Creating human evaluation frameworks with annotation guidelines and inter-rater agreement
+- Measuring retrieval quality in RAG systems (precision, recall, NDCG, MRR)
+- Calculating text generation metrics (BLEU for translation, ROUGE for summarization, BERTScore for semantic similarity)
+- Building custom metrics for domain-specific quality dimensions (groundedness, factuality, toxicity)
+- Setting up regression detection to catch quality degradation
+- Implementing statistical testing frameworks for comparing model variants
+- Creating evaluation harnesses that run across multiple test datasets
+- Tracking evaluation results and performance trends in dashboards or reports
 
 ## Core Evaluation Types
 

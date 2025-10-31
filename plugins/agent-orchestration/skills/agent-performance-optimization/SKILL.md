@@ -1,6 +1,28 @@
+---
+description: Optimize AI agent performance through comprehensive monitoring, metrics collection, caching strategies, and load balancing. Use this skill when analyzing agent execution bottlenecks, improving agent response times, implementing multi-tier caching for expensive agent operations, tracking success/failure rates and latency percentiles (P50/P95/P99), setting up load balancing across agent instances, scaling agent systems for production workloads, diagnosing performance degradation in multi-agent systems, or implementing resource management for distributed agent architectures. This skill is essential when working with production agent systems that require performance optimization, when agent response times exceed acceptable thresholds, when implementing caching to reduce redundant agent computations, when distributing workload across multiple agent instances, or when monitoring and tuning agent system performance metrics.
+---
+
 # Agent Performance Optimization and Monitoring
 
-Expert guidance on optimizing agent performance, monitoring execution metrics, implementing caching strategies, and tuning agent behavior for production systems. Use when analyzing agent bottlenecks, improving response times, or scaling agent systems.
+## When to use this skill
+
+- When analyzing performance bottlenecks in agent execution and identifying slow operations
+- When implementing metrics collection systems to track agent latency, throughput, and success rates
+- When setting up performance monitoring with percentile calculations (P50, P95, P99) for agent response times
+- When implementing LRU caching or multi-tier caching (hot/warm/cold) for expensive agent computations
+- When building load balancing systems to distribute tasks across multiple agent instances
+- When optimizing agent system performance for production workloads at scale
+- When tracking and analyzing agent failure rates and error patterns
+- When implementing resource management strategies for distributed agent systems
+- When setting up alerting and monitoring dashboards for agent performance metrics
+- When tuning agent behavior to improve response times and reduce latency
+- When implementing retry logic and exponential backoff for agent operations
+- When designing caching strategies with TTL (time-to-live) to prevent stale data
+- When building round-robin, least-loaded, or weighted load balancing for agent pools
+- When writing Python code for agent performance optimization, metrics collection, or caching systems
+- When working with agent orchestration systems that need performance tuning
+- When diagnosing why agent systems are slow or unresponsive
+- When scaling multi-agent systems to handle increased workload
 
 ## Overview
 
@@ -710,17 +732,3 @@ instance = lb.acquire("agent-type")
 # Use instance
 lb.release(instance)
 ```
-
-## When to Use This Skill
-
-Use when you need to:
-- Monitor agent performance in production
-- Optimize slow agent operations
-- Implement caching for expensive tasks
-- Balance load across agent instances
-- Track and analyze agent metrics
-- Scale agent systems efficiently
-- Identify performance bottlenecks
-- Improve system throughput
-
-This skill provides production-ready patterns for optimizing agent performance at scale.

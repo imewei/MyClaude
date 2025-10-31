@@ -1,26 +1,36 @@
 ---
 name: training-diagnostics
-description: Systematic diagnosis and resolution of neural network training issues including gradient problems, loss curve interpretation, convergence analysis, and performance debugging. Use this skill when models fail to train properly, exhibit unstable behavior, or underperform expectations.
+description: Diagnose and resolve neural network training failures through systematic analysis of gradient pathologies, loss curves, convergence issues, and performance bottlenecks. Use this skill when encountering vanishing gradients (gradients <1e-7, slow convergence), exploding gradients (NaN losses, gradient norms >100), or dead ReLU neurons (>50% zero activations). Apply when debugging loss curve anomalies (training divergence, validation spikes, plateaus, overfitting gaps). Use when models fail to converge, train slowly, or exhibit unstable behavior with oscillating losses. Apply when analyzing learning rate sensitivity, optimizer pathologies, or batch size effects on training dynamics. Use when diagnosing overfitting (train-val gap), underfitting (high losses), or double descent phenomena. Apply when investigating NaN/Inf values, gradient clipping needs, or numerical stability issues. Use when working with training logs, TensorBoard visualizations, gradient norm plots, or loss curve analysis. Apply when debugging training scripts (train.py), optimization loops, or convergence monitoring code requiring systematic troubleshooting.
 ---
 
 # Training Diagnostics
 
 This skill provides systematic frameworks for diagnosing and resolving neural network training issues. It covers gradient pathologies, loss curve interpretation, convergence analysis, and practical debugging workflows.
 
-## When to Use This Skill
+## When to use this skill
 
-This skill should be used when:
-
-- Model training fails to converge or converges slowly
-- Loss curves show unusual patterns (spikes, plateaus, divergence)
-- Gradients vanish, explode, or behave unexpectedly
-- Validation performance degrades suddenly or fails to improve
-- Training exhibits instability (NaN/Inf values, oscillations)
-- Model overfits or underfits despite reasonable hyperparameters
-- Performance plateaus before reaching expected accuracy
-- Need to systematically debug unknown training issues
-- Comparing different training runs to identify problems
-- Optimizing training dynamics for better convergence
+- When training fails to converge or loss remains high after many epochs (underfitting, capacity issues)
+- When encountering vanishing gradients (gradients <1e-7 in early layers, very slow learning, shallow network behavior)
+- When experiencing exploding gradients (NaN/Inf losses, gradient norms >100, parameter updates too large)
+- When observing dead ReLU neurons (>40% zero activations, gradients permanently zero, learning stops)
+- When seeing saturated sigmoid/tanh activations (activations near ±1, near-zero gradients, training plateaus)
+- When debugging loss curve anomalies (sudden spikes, unexpected plateaus, training divergence)
+- When analyzing overfitting patterns (low train loss, high validation loss, increasing train-val gap over time)
+- When diagnosing underfitting issues (both train and validation losses remain high, insufficient model capacity)
+- When investigating double descent phenomena (performance worsens then improves with more capacity/training)
+- When encountering training instability (oscillating losses, sudden loss spikes, unstable convergence)
+- When models exhibit NaN/Inf values in losses, gradients, or parameters during training
+- When analyzing learning rate sensitivity (loss explodes with high LR, stagnates with low LR)
+- When comparing optimizers (SGD vs Adam behavior differences, convergence speed variations)
+- When investigating batch size effects on training stability and generalization
+- When debugging gradient flow through deep networks (checking layer-wise gradient statistics)
+- When setting up gradient clipping thresholds to prevent explosions
+- When analyzing activation distributions to detect saturation or dead neuron issues
+- When implementing proper weight initialization strategies (He, Xavier, orthogonal)
+- When configuring normalization layers (BatchNorm, LayerNorm, GroupNorm) to stabilize training
+- When working with training diagnostic scripts, gradient analysis tools, or TensorBoard logging
+- When interpreting loss curve plots, learning rate schedules, or validation metrics over time
+- When systematically debugging unknown training failures through hypothesis testing
 
 ## Diagnostic Framework
 

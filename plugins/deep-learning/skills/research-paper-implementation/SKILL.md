@@ -1,19 +1,32 @@
 ---
 name: research-paper-implementation
-description: Systematic framework for translating research papers into working implementations. Covers paper analysis, architecture extraction, experiment reproduction, and practical adaptation. Use when implementing SOTA papers or understanding cutting-edge research.
+description: Translate research papers into production-ready implementations through systematic analysis, architecture extraction, experiment reproduction, and practical adaptation of state-of-the-art deep learning methods. Use this skill when implementing novel architectures from recent papers (transformers, diffusion models, vision transformers, BERT variants, GPT models). Apply when extracting mathematical formulations, algorithmic pseudocode, or architecture specifications from academic papers. Use when reproducing experimental results, baselines, or ablation studies from published research. Apply when adapting research ideas to specific applications or datasets beyond the original paper scope. Use when understanding theoretical contributions, novel training techniques, or optimization methods from papers. Apply when locating implementation details often hidden in appendices or supplementary materials. Use when finding hyperparameters, learning rate schedules, or data preprocessing steps not explicitly stated. Use when working with arXiv preprints, conference papers (NeurIPS, ICML, ICLR, CVPR), or journal articles requiring implementation. Apply when analyzing reference implementations on GitHub or comparing multiple papers' approaches. Use when translating novel loss functions, attention mechanisms, or architectural components into code.
 ---
 
 # Research Paper Implementation
 
 Systematic approach to translating research papers into production-ready implementations.
 
-## When to Use
+## When to use this skill
 
-- Implementing state-of-the-art papers (transformers, diffusion models, new architectures)
-- Understanding novel techniques from recent research
-- Reproducing paper results for validation or comparison
-- Adapting research ideas to specific applications
-- Learning from cutting-edge deep learning research
+- When implementing state-of-the-art architectures from recent papers (Vision Transformers, Stable Diffusion, CLIP, GPT variants, BERT models)
+- When translating mathematical formulations or algorithmic pseudocode from papers into executable PyTorch/JAX/TensorFlow code
+- When extracting precise architecture specifications (layer dimensions, attention heads, hidden sizes) from paper descriptions
+- When reproducing experimental results, baselines, or ablation studies to validate implementations
+- When understanding novel training techniques (curriculum learning, contrastive learning, self-supervised methods)
+- When locating critical implementation details often relegated to appendices or supplementary materials
+- When finding hyperparameters not explicitly stated in main text (learning rates, weight decay, warmup schedules)
+- When adapting research ideas to new domains or datasets beyond original paper scope
+- When comparing multiple papers' approaches to the same problem (e.g., different transformer variants)
+- When implementing novel loss functions, regularization techniques, or optimization algorithms from papers
+- When translating theoretical contributions into practical code (attention mechanisms, normalization schemes)
+- When working with arXiv preprints or conference papers (NeurIPS, ICML, ICLR, CVPR, ECCV) requiring implementation
+- When analyzing and learning from reference implementations on GitHub or official repositories
+- When understanding architectural innovations (efficient attention, sparse transformers, neural architecture search results)
+- When extracting data preprocessing, augmentation, or evaluation protocols from research
+- When identifying which components are essential vs optional for reproducing core results
+- When debugging why reproduced results don't match paper claims (common implementation pitfalls)
+- When implementing papers for transfer learning, fine-tuning, or domain adaptation scenarios
 
 ## 6-Step Paper Translation Framework
 

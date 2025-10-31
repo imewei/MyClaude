@@ -1,9 +1,31 @@
 ---
 name: numerical-methods-implementation
-description: Implement numerical algorithms for ODE/PDE solvers, optimization techniques, and linear algebra operations. Use when selecting solvers (Runge-Kutta, finite difference), implementing optimization methods (gradient-based, derivative-free), or working with matrix decompositions and sparse systems in Python (SciPy) or Julia (DifferentialEquations.jl, Optim.jl).
+description: Implement robust numerical algorithms for differential equations, optimization, and linear algebra in scientific computing applications. Use this skill when selecting and implementing ODE solvers (Runge-Kutta, BDF, Rosenbrock methods) with adaptive stepping and error control using scipy.integrate.solve_ivp or Julia DifferentialEquations.jl, implementing PDE solvers using finite difference, finite element, or spectral methods with stability analysis and CFL condition checking, choosing optimization algorithms (L-BFGS, BFGS, Newton-CG, Nelder-Mead) for minimizing objective functions with scipy.optimize.minimize or Julia Optim.jl, performing matrix decompositions (LU, QR, SVD, Cholesky) for solving linear systems and least squares problems with numpy.linalg or Julia LinearAlgebra, implementing iterative solvers (Conjugate Gradient, GMRES, BiCGSTAB) for large sparse systems using scipy.sparse.linalg or Julia IterativeSolvers.jl, handling stiff differential equations that require implicit methods and Jacobian computation, designing gradient-based optimization with automatic differentiation or finite difference gradients, implementing derivative-free optimization (Nelder-Mead, Powell, genetic algorithms) for non-smooth objective functions, selecting between dense and sparse linear algebra based on matrix structure and sparsity patterns, implementing eigenvalue solvers (eig, eigh, eigs) for spectral analysis and stability computation, ensuring numerical stability through condition number analysis and error bounds verification, implementing adaptive time-stepping with tolerance control for ODE/PDE integration, handling constrained optimization problems with linear or nonlinear constraints using SLSQP or trust-region methods, performing convergence analysis and Richardson extrapolation for verifying numerical accuracy, working with Python scripts using SciPy/NumPy or Julia .jl files using DifferentialEquations.jl/Optim.jl/LinearAlgebra.jl, or validating numerical implementations against analytical solutions and benchmark problems.
 ---
 
 # Numerical Methods Implementation
+
+## When to use this skill
+
+- When implementing ODE solvers (RK4, RK45, BDF, Rosenbrock) with adaptive stepping
+- When selecting PDE discretization methods (finite difference, finite element, spectral)
+- When using scipy.integrate.solve_ivp or Julia DifferentialEquations.jl for differential equations
+- When implementing optimization algorithms with scipy.optimize or Julia Optim.jl
+- When choosing between gradient-based (L-BFGS, BFGS, Newton) and derivative-free (Nelder-Mead) methods
+- When performing matrix decompositions (LU, QR, SVD, Cholesky) for linear systems
+- When working with sparse matrices and iterative solvers (CG, GMRES, BiCGSTAB)
+- When implementing eigenvalue solvers for spectral analysis or stability computation
+- When handling stiff differential equations requiring implicit methods
+- When ensuring numerical stability through condition number analysis
+- When implementing adaptive time-stepping with CFL condition checking for PDEs
+- When solving constrained optimization problems with linear or nonlinear constraints
+- When performing convergence analysis and error bound verification
+- When working with Python .py files using SciPy/NumPy for numerical algorithms
+- When writing Julia .jl scripts with DifferentialEquations.jl, Optim.jl, or LinearAlgebra.jl
+- When validating numerical accuracy against analytical solutions or benchmark problems
+- When implementing custom numerical methods for domain-specific scientific applications
+- When selecting between direct (LU, Cholesky) and iterative (CG, GMRES) linear solvers
+- When analyzing numerical stability of algorithms with Lyapunov analysis or CFL conditions
 
 ## Overview
 

@@ -1,11 +1,26 @@
 ---
 name: package-management
-description: Master Project.toml structure, Pkg.jl workflows, and dependency management in Julia. Use when managing package dependencies, specifying compatibility bounds, creating reproducible environments, or working with Julia's package system.
+description: Master Julia package management with Project.toml structure, Pkg.jl workflows, semantic versioning, and dependency management for reproducible Julia environments. Use when creating or editing Project.toml files, managing package dependencies with Pkg.add(), specifying compatibility bounds in [compat] section, using Pkg.activate() for project environments, running Pkg.instantiate() for reproducibility, updating packages with Pkg.update(), developing local packages with Pkg.develop(), working with Manifest.toml for exact versioning, managing test dependencies in [extras] and [targets], or ensuring package version compatibility. Essential for all Julia projects requiring dependency management and reproducible environments.
 ---
 
 # Package Management
 
 Master Julia's package management system with Pkg.jl, Project.toml, and Manifest.toml for reproducible, well-managed Julia projects.
+
+## When to use this skill
+
+- Creating or editing Project.toml files for package metadata
+- Managing package dependencies with Pkg.add(), Pkg.rm(), Pkg.update()
+- Specifying compatibility bounds in [compat] section (semantic versioning)
+- Activating project environments with Pkg.activate()
+- Running Pkg.instantiate() for reproducible builds
+- Developing local packages with Pkg.develop() and Pkg.free()
+- Working with Manifest.toml for exact version locking
+- Managing test dependencies in [extras] and [targets] sections
+- Using Pkg.status() to inspect installed packages
+- Running Pkg.test() for package testing
+- Ensuring version compatibility across dependencies
+- Precompiling packages with Pkg.precompile()
 
 ## Core Concepts
 

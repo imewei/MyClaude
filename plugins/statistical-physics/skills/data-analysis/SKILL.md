@@ -1,9 +1,34 @@
 ---
 name: data-analysis
-description: Analyze experimental data from scattering, rheology, and microscopy using correlation functions, Bayesian inference, and model validation. Use when interpreting DLS, SAXS/SANS, rheological measurements, or validating non-equilibrium theories against experiments with uncertainty quantification and inverse problem solving.
+description: Analyze experimental data from scattering (DLS with velocity autocorrelation C_v(t) = ⟨v(t)·v(0)⟩/⟨v²⟩ for diffusion D = ∫C_v(t)dt via Green-Kubo, SAXS/SANS structure factor S(q) with peak analysis for characteristic length scales, rheological stress correlation C_σ(t) = ⟨σ(t)σ(0)⟩ for viscosity η = (V/kT)∫C_σ(t)dt), rheology (linear viscoelasticity G*(ω) = G'(ω) + iG''(ω) with storage and loss moduli, relaxation spectrum G(t) = ∫H(τ)exp(-t/τ)dτ extracting relaxation times, non-linear shear thinning η(γ̇) ~ γ̇^(n-1) and yield stress τ > τ_y), and microscopy (particle tracking for pair distribution g(r), velocity correlation C_vv(r) for active matter, mean-squared displacement MSD for anomalous diffusion) using correlation functions, Bayesian inference (MCMC with emcee/PyMC3 for parameter posteriors P(θ|D) ∝ P(D|θ)P(θ), credible intervals, uncertainty quantification), and model validation (posterior predictive checks, cross-validation k-fold or LOO, residual analysis for systematic deviations, BIC = -2ln(L) + k ln(n) for model selection). Use when interpreting experimental correlation data with proper error propagation, validating non-equilibrium theories (fluctuation theorems, FDT violations with T_eff > T) against experiments, solving inverse problems to extract interaction potentials from structure factors using Ornstein-Zernike equations, or predicting materials properties (diffusion, viscosity, conductivity) from microscopic time-correlation functions via Green-Kubo relations.
 ---
 
 # Data Analysis & Model Validation
+
+## When to use this skill
+
+- Computing velocity autocorrelation C_v(t) = ⟨v(t)·v(0)⟩/⟨v²⟩ from particle tracking or MD simulations to extract diffusion coefficient D = ∫₀^∞ C_v(t)dt via Green-Kubo relations (*.py analysis scripts, *.csv trajectory data)
+- Analyzing stress autocorrelation C_σ(t) = ⟨σ(t)σ(0)⟩ from MD simulations or rheological experiments to calculate viscosity η = (V/kT)∫₀^∞ C_σ(t)dt with proper integration and error estimation
+- Computing orientational correlation C_l(t) = ⟨P_l[cos(θ(t)-θ(0))]⟩ for rotational diffusion τ_r = 1/D_r or active matter persistence time from particle tracking data
+- Extracting structure factor S(q) from scattering intensity I(q) with peak analysis to identify characteristic length scales λ = 2π/q*, nearest-neighbor distances, or liquid/crystalline ordering
+- Analyzing pair distribution function g(r) from particle positions to extract nearest-neighbor distances, coordination numbers Z = 4πρ∫r²g(r)dr, or validate pair potential models
+- Computing spatial velocity correlation C_vv(r) = ⟨v(x)·v(x+r)⟩ for active matter systems detecting long-range correlations, collective motion, or flocking transitions
+- Fitting DLS correlation data g₂(τ) to extract particle sizes, diffusion coefficients, or polydispersity using single/stretched/multi-exponential models with chi-squared minimization
+- Analyzing linear viscoelasticity from oscillatory rheology: storage modulus G'(ω) (elastic), loss modulus G''(ω) (viscous), complex viscosity η* = √(G'² + G''²)/ω, crossover frequency ω_c where G' = G''
+- Extracting relaxation spectrum H(τ) from stress relaxation G(t) using inverse Laplace transform with Tikhonov regularization or maximum entropy methods to handle ill-posed problem
+- Fitting non-linear rheology data: shear thinning η(γ̇) ~ γ̇^(n-1) with power-law index n < 1, yield stress τ_y from Herschel-Bulkley model, thixotropy time-dependent viscosity
+- Performing Bayesian parameter estimation with MCMC (emcee ensemble sampler, PyMC3) to extract parameter posteriors P(θ|D) from experimental data with proper priors P(θ) and likelihood P(D|θ)
+- Computing credible intervals (68%, 95%) from MCMC posterior samples to quantify parameter uncertainties beyond point estimates, reporting median and percentiles
+- Conducting model selection using Bayesian Information Criterion BIC = -2ln(L) + k ln(n) balancing fit quality vs complexity, or Bayes factors Z₁/Z₂ comparing evidence for different models
+- Performing posterior predictive checks P(D_new|D_obs) = ∫P(D_new|θ)P(θ|D_obs)dθ to validate model by simulating from fitted parameters and comparing to held-out data
+- Implementing k-fold cross-validation to assess prediction error: train on k-1 folds, test on remaining fold, average over all k splits for unbiased performance estimate
+- Analyzing residuals (data - model) for systematic deviations indicating model inadequacy: check normality with Q-Q plots, autocorrelation with Durbin-Watson test, heteroscedasticity
+- Validating fluctuation-dissipation theorem χ_AB(t) = β d/dt⟨A(t)B(0)⟩_{eq} by comparing response function χ measured under perturbation to equilibrium correlation function C computed from spontaneous fluctuations
+- Detecting FDT violations in non-equilibrium systems: extract effective temperature T_eff from χ(t) vs C(t) where T_eff > T indicates non-equilibrium driving in active, driven, or glassy systems
+- Solving inverse problems to extract pair potentials u(r) from measured structure factor S(q) using Ornstein-Zernike integral equations with Percus-Yevick or hypernetted chain closures and iterative refinement
+- Predicting transport coefficients from microscopic dynamics: diffusion D = ∫⟨v(t)·v(0)⟩dt, viscosity η = (V/kT)∫⟨σ_xy(t)σ_xy(0)⟩dt, thermal conductivity κ = (V/kT²)∫⟨J_q(t)·J_q(0)⟩dt via Green-Kubo with convergence analysis
+- Comparing multiscale predictions from MD → Green-Kubo → continuum transport laws against macroscopic rheology or diffusion measurements to validate computational models
+- Reporting experimental results with proper uncertainty propagation: D_err from velocity autocorrelation integration error, η_err from stress correlation statistical uncertainty, radius R_err = R(D_err/D) via error propagation formula
 
 Interpret experimental data, validate theoretical predictions, and perform inverse problems for non-equilibrium systems using rigorous statistical methods.
 

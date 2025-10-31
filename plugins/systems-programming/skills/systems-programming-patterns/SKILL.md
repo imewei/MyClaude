@@ -1,6 +1,6 @@
 ---
 name: systems-programming-patterns
-description: Comprehensive patterns and techniques for systems programming covering memory management, concurrency, performance optimization, and debugging across C/C++/Rust/Go. Includes lock-free data structures, memory pool allocation, profiling workflows, and common pitfalls to avoid.
+description: Master systems programming patterns and techniques for memory management, concurrency, performance optimization, and debugging across C, C++, Rust, and Go. Use when writing or editing low-level systems code (*.c, *.cpp, *.rs, *.go files), implementing memory allocators or pools, designing concurrent or lock-free data structures, optimizing performance-critical code paths, debugging memory issues (leaks, corruption, race conditions), profiling applications with perf/valgrind/flamegraph, implementing RAII patterns or smart pointers, working with atomics and memory ordering, building thread pools or work-stealing schedulers, optimizing cache performance with SoA layouts, implementing SIMD vectorization, designing zero-copy algorithms, debugging with AddressSanitizer/ThreadSanitizer/Miri, benchmarking with Google Benchmark/Criterion/Go testing, preventing common pitfalls (use-after-free, double-free, data races, deadlocks, false sharing, ABA problems), or architecting high-performance systems with minimal latency and maximum throughput. Includes battle-tested implementations for memory pool allocation, arena allocators, lock-free queues and stacks, RCU patterns, reader-writer locks, and comprehensive debugging workflows.
 ---
 
 # Systems Programming Patterns
@@ -9,18 +9,28 @@ description: Comprehensive patterns and techniques for systems programming cover
 
 This skill provides battle-tested patterns, techniques, and workflows for systems programming across C, C++, Rust, and Go. It covers the fundamental challenges of systems development: memory management, concurrent programming, performance optimization, and debugging complex issues. The skill consolidates years of systems programming wisdom into actionable patterns that prevent common pitfalls and enable high-performance, reliable software.
 
-## When to Use This Skill
+## When to use this skill
 
-This skill should be used when:
-
-- Implementing memory management strategies (allocators, pools, RAII patterns)
-- Designing concurrent or lock-free data structures
-- Optimizing performance-critical code paths
-- Debugging memory issues (leaks, corruption, race conditions)
-- Architecting high-performance systems with minimal latency
-- Choosing between different concurrency primitives and patterns
-- Implementing zero-copy or low-allocation algorithms
-- Profiling and identifying performance bottlenecks
+- Writing or editing low-level systems code in C (*.c, *.h files), C++ (*.cpp, *.cc, *.cxx, *.hpp files), Rust (*.rs files), or Go (*.go files)
+- Implementing custom memory management strategies: memory pool allocators for fixed-size objects, arena allocators for bulk allocation, RAII wrappers, or smart pointers (std::unique_ptr, std::shared_ptr, Box, Rc, Arc)
+- Designing and implementing concurrent or lock-free data structures: SPSC/MPMC queues, lock-free stacks, atomic operations with CAS, hazard pointers, epoch-based reclamation
+- Optimizing performance-critical code paths in hot loops, tight inner loops, real-time systems, game engines, or high-frequency trading systems
+- Debugging memory issues: memory leaks detected by Valgrind, use-after-free caught by AddressSanitizer, double-free errors, buffer overflows, uninitialized reads, or memory corruption
+- Debugging concurrency issues: data races detected by ThreadSanitizer, deadlocks, race conditions, or synchronization bugs
+- Profiling applications with perf (Linux), flamegraph generation, Valgrind's Massif for memory profiling, heaptrack, cargo-flamegraph (Rust), or pprof (Go)
+- Implementing thread pools, work-stealing schedulers (like rayon in Rust), or goroutine pools for concurrent workload distribution
+- Working with atomic operations: compare-and-swap (CAS), fetch-and-add, memory ordering (relaxed, acquire, release, seq_cst), or memory barriers
+- Optimizing cache performance: converting Array of Structures (AoS) to Structure of Arrays (SoA), cache line padding to prevent false sharing, or prefetching
+- Implementing SIMD vectorization: auto-vectorization with compiler flags (-O3 -march=native), explicit SIMD with intrinsics (AVX2, AVX-512), or portable SIMD in Rust
+- Designing zero-copy algorithms: move semantics in C++, ownership transfer in Rust, memory-mapped files (mmap), splice/sendfile system calls, or DMA transfers
+- Benchmarking code with Google Benchmark (C++), Criterion (Rust), or Go's testing package to measure performance improvements
+- Preventing common systems programming pitfalls: use-after-free, double-free, memory leaks, data races, deadlocks, false sharing in multi-threaded code, ABA problems in lock-free structures
+- Architecting high-performance systems: network servers, databases, game engines, operating system components, embedded systems, real-time systems, or low-latency financial systems
+- Choosing between memory management patterns based on use case: pools for frequent fixed-size allocations, arenas for batch operations, RAII for automatic cleanup
+- Selecting appropriate concurrency primitives: mutexes vs spinlocks vs lock-free, reader-writer locks for read-heavy workloads, RCU for wait-free reads
+- Implementing Read-Copy-Update (RCU) patterns for read-heavy data structures with occasional writes
+- Working with cross-platform systems code that needs to run on Linux, Windows, macOS, or embedded platforms
+- Debugging undefined behavior in C/C++ or unsafe code in Rust using sanitizers (ASan, TSan, UBSan, MSan) or Miri interpreter
 
 ## Core Patterns and Techniques
 

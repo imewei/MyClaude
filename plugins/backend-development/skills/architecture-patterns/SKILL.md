@@ -1,21 +1,36 @@
 ---
 name: architecture-patterns
-description: Implement proven backend architecture patterns including Clean Architecture, Hexagonal Architecture, and Domain-Driven Design. Use when architecting complex backend systems or refactoring existing applications for better maintainability.
+description: Implement proven backend architecture patterns including Clean Architecture (Uncle Bob's layered architecture with dependency inversion), Hexagonal Architecture (Ports and Adapters pattern for technology-agnostic core), Domain-Driven Design tactical patterns (Entities, Value Objects, Aggregates, Repositories, Domain Events), CQRS (Command Query Responsibility Segregation), Event Sourcing, and layered architecture principles. Use this skill when designing new backend systems from scratch with scalability and maintainability in mind, when refactoring monolithic applications to improve testability and reduce coupling, when establishing architecture standards and patterns for development teams, when migrating from tightly coupled to loosely coupled architectures, when implementing domain-driven design principles for complex business domains, when creating testable and mockable codebases with dependency injection, when planning microservices decomposition and service boundary definition, when designing systems that are independent of frameworks, databases, and external services, when implementing use case-driven development with clear business logic separation, when building systems where business rules are isolated from infrastructure concerns, when designing repository patterns for data access abstraction, when implementing adapter patterns to swap infrastructure implementations (databases, message queues, external APIs), when organizing code into clean layers with proper dependency flow (domain → use cases → adapters → infrastructure), when defining bounded contexts and context mapping in complex domains, when implementing aggregate patterns for transactional consistency boundaries, when designing value objects for immutable domain concepts, when implementing domain events for decoupled communication between aggregates, or when refactoring legacy code to clean architecture principles without framework lock-in. Use this skill for all aspects of backend system architecture design, including layer organization, dependency management, domain modeling, and infrastructure independence.
 ---
 
 # Architecture Patterns
 
 Master proven backend architecture patterns including Clean Architecture, Hexagonal Architecture, and Domain-Driven Design to build maintainable, testable, and scalable systems.
 
-## When to Use This Skill
+## When to use this skill
 
-- Designing new backend systems from scratch
-- Refactoring monolithic applications for better maintainability
-- Establishing architecture standards for your team
-- Migrating from tightly coupled to loosely coupled architectures
-- Implementing domain-driven design principles
-- Creating testable and mockable codebases
-- Planning microservices decomposition
+- When designing new backend systems from scratch with long-term maintainability and scalability goals
+- When refactoring monolithic applications to reduce coupling and improve testability
+- When establishing architecture standards, patterns, and best practices for development teams
+- When migrating from tightly coupled to loosely coupled architectures with dependency inversion
+- When implementing domain-driven design principles for complex business domains with rich domain models
+- When creating testable and mockable codebases with comprehensive unit and integration test coverage
+- When planning microservices decomposition and defining clear service boundaries
+- When designing systems independent of frameworks, allowing framework swapping without major refactoring
+- When implementing use case-driven development with clear separation between business logic and infrastructure
+- When building systems where business rules must be isolated from database, UI, and external service concerns
+- When designing repository patterns to abstract data access and enable easy database migration
+- When implementing adapter patterns (Hexagonal Architecture) to swap infrastructure implementations
+- When organizing code into clean layers with proper dependency direction (inner layers know nothing about outer layers)
+- When defining bounded contexts in complex domains with multiple subdomains and context mapping
+- When implementing aggregate patterns to establish transactional consistency boundaries
+- When designing value objects for immutable, validated domain concepts
+- When implementing domain events for decoupled communication between aggregates and bounded contexts
+- When implementing CQRS (Command Query Responsibility Segregation) for complex read/write patterns
+- When implementing Event Sourcing for audit trails, time-travel debugging, or event-driven architectures
+- When refactoring legacy code toward clean architecture without framework lock-in
+- When working with domain model files, entity definitions, repository interfaces, use case implementations, or adapter code
+- When creating systems that need to be testable without databases, web frameworks, or external APIs
 
 ## Core Concepts
 

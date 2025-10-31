@@ -1,20 +1,37 @@
 ---
 name: plugin-syntax-validator
-description: Comprehensive validation framework for Claude Code plugin syntax, structure, and references. Use when validating plugin command files for correct agent/skill namespace syntax (plugin:agent format), checking agent file existence, detecting syntax errors (double colons, missing namespaces), and auto-fixing common issues. Includes validation script for agent references, skill references, and plugin.json structure validation.
+description: Comprehensive validation framework for Claude Code plugin syntax, structure, and cross-references with automated scripts/validate_plugin_syntax.py script for detecting and auto-fixing common errors. Use when validating plugin command files (*.md) for correct agent/skill namespace syntax (plugin:agent single colon format, not plugin::agent double colon), checking agent file existence in plugins/*/agents/*.md, detecting syntax errors (double colons, missing namespaces, invalid references), auto-fixing common issues with --fix flag, verifying all referenced agents/skills exist across all plugins, preparing plugins for distribution or pull request submission, setting up CI/CD validation pipelines with GitHub Actions or pre-commit hooks, resolving validation errors (SYNTAX errors for double colons, REFERENCE errors for missing agents, namespace format issues), generating comprehensive validation reports with file:line error locations and actionable suggestions, building complete agent/skill maps across plugin ecosystems, ensuring plugin.json structure consistency, validating subagent_type references in command files, and maintaining plugin quality standards before deployment or marketplace submission.
 ---
 
 # Plugin Syntax Validator
 
+## When to use this skill
+
+- Validating Claude Code plugin command files (plugins/*/commands/*.md) before committing changes or submitting pull requests
+- Running scripts/validate_plugin_syntax.py to check agent and skill reference syntax across all plugins in the codebase
+- Auto-fixing common syntax errors like double colons (plugin::agent) by running scripts/validate_plugin_syntax.py --fix to convert to single colon format (plugin:agent)
+- Checking that all subagent_type references use correct namespace format (plugin:agent) instead of missing namespace (agent only) or incorrect format
+- Verifying that all referenced agents exist as actual files (plugins/*/agents/*.md) to prevent runtime errors when agents are invoked
+- Detecting SYNTAX errors for double colon format violations and getting auto-fix suggestions with file:line locations
+- Detecting REFERENCE errors when agents are referenced but don't exist in the plugin directory structure
+- Preparing plugins for distribution, marketplace submission, or production deployment by ensuring all references are valid
+- Setting up CI/CD validation in GitHub Actions workflows or GitLab CI to automatically check plugin syntax on push or pull request events
+- Creating pre-commit hooks to validate plugin syntax before allowing commits to ensure only valid plugin files enter the repository
+- Generating comprehensive validation reports with statistics (plugins scanned, files scanned, agent refs checked) and detailed error listings
+- Building complete agent/skill maps across all plugins to understand cross-plugin dependencies and reference patterns
+- Validating specific plugins using --plugin flag to focus validation on a single plugin namespace during development
+- Resolving validation errors by reviewing suggestions for each error (e.g., "Change to: plugin:agent" for double colon errors, "Available agents in plugin: agent1, agent2" for missing references)
+- Ensuring plugin.json structure consistency and completeness before plugin releases
+- Maintaining plugin quality standards by catching syntax errors before they reach production or cause runtime failures
+- Validating namespace consistency across command files to ensure all agent references follow the same plugin:agent convention
+- Debugging agent reference issues when commands fail to find or invoke agents correctly
+- Reviewing validation output for warnings and errors to prioritize fixes (errors block deployment, warnings are improvements)
+- Integrating validation into development workflows with --verbose flag for detailed step-by-step validation progress
+- Validating plugin ecosystems with hundreds of agent references in ~30 seconds for rapid feedback during development
+
 ## Overview
 
 This skill provides systematic validation of Claude Code plugin structure, syntax, and cross-references. It validates agent/skill references, checks file existence, detects syntax errors, and auto-fixes common issues like double colons.
-
-**Use this skill when**:
-- Validating plugin command files before deployment
-- Checking agent reference syntax (plugin:agent format)
-- Auto-fixing double colons (::) or missing namespaces
-- Verifying all referenced agents/skills exist
-- Preparing plugins for distribution or PR submission
 
 ---
 
@@ -41,7 +58,7 @@ python scripts/validate_plugin_syntax.py --report validation-report.md
 ### Rule 1: Single Colon Format
 
 ✅ **VALID**: `subagent_type="comprehensive-review:code-reviewer"`
-❌ **INVALID**: `subagent_type="comprehensive-review::code-reviewer"`
+❌ **INVALID**: `subagent_type="comprehensive-review:code-reviewer"`
 🔧 **Auto-fixable**: Yes
 
 ### Rule 2: Namespace Required
@@ -114,7 +131,7 @@ PLUGIN SYNTAX VALIDATION REPORT
 ────────────────────────────────────────────────────────────────────────────────
 
   [SYNTAX] backend-development/commands/feature-development.md:29
-  Double colon (::) in agent reference: 'comprehensive-review::code-reviewer'
+  Double colon (::) in agent reference: 'comprehensive-review:code-reviewer'
   💡 Suggestion: Change to: comprehensive-review:code-reviewer
 
   [REFERENCE] custom-commands/commands/smart-fix.md:92

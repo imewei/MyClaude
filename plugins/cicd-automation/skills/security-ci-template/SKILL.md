@@ -1,3 +1,8 @@
+---
+name: security-ci-template
+description: Security scanning and lock file validation templates for CI/CD pipelines including dependency vulnerability scanning (Safety, Snyk, npm audit), SAST security analysis (Bandit, Semgrep, CodeQL), lock file validation (poetry.lock, package-lock.json, Cargo.lock), and compliance checking. Use when implementing security-focused CI/CD workflows with automated vulnerability detection, setting up dependency scanning for Python (Safety, Bandit), Node.js (npm audit, Snyk), or other languages, configuring SAST (Static Application Security Testing) tools like Semgrep or SonarQube, validating lock files to ensure dependency reproducibility and detect drift, implementing automated security gates to block merges with critical vulnerabilities, scanning Docker images for vulnerabilities with Trivy or Anchore, setting up DAST (Dynamic Application Security Testing) for runtime security testing, configuring secret scanning to detect exposed credentials in code, implementing software composition analysis (SCA) for open-source dependencies, setting up compliance scanning for HIPAA, PCI-DSS, or SOC2 requirements, creating security reports and uploading SARIF results to GitHub Security tab, implementing automated dependency updates with security patch automation, configuring fail-on-severity thresholds for vulnerability management, or integrating security scanning into pull request workflows for early detection. Use this skill when working with GitHub Actions security workflows, GitLab security scanning templates, security tool configurations, or any CI/CD pipeline requiring security automation and compliance validation.
+---
+
 # Security-Focused CI Template
 
 **Purpose**: Security scanning and lock file validation templates for CI/CD pipelines
@@ -5,6 +10,33 @@
 **Use Instead Of**: `/sci-ci-setup` command (removed in Week 2-3)
 
 **Recommended**: Use marketplace `cicd-automation:workflow-automate` + this skill
+
+## When to use this skill
+
+- When implementing security-focused CI/CD workflows with automated vulnerability detection
+- When setting up dependency vulnerability scanning for Python projects (Safety, Bandit, pip-audit)
+- When configuring security scanning for Node.js projects (npm audit, Snyk, retire.js)
+- When implementing SAST (Static Application Security Testing) with Semgrep, SonarQube, or CodeQL
+- When validating lock files (poetry.lock, package-lock.json, Cargo.lock, Gemfile.lock) for dependency reproducibility
+- When detecting lock file drift or inconsistencies between lock files and dependency declarations
+- When scanning Docker images for vulnerabilities using Trivy, Anchore, or Clair
+- When setting up automated security gates to block pull requests with critical or high-severity vulnerabilities
+- When implementing DAST (Dynamic Application Security Testing) for runtime security analysis
+- When configuring secret scanning with TruffleHog, GitGuardian, or git-secrets in pipelines
+- When performing software composition analysis (SCA) for open-source dependency risks
+- When implementing compliance scanning for HIPAA, PCI-DSS, SOC2, or industry regulations
+- When generating security reports in SARIF format for GitHub Security or GitLab Security Dashboard
+- When configuring automated dependency updates with security patch prioritization
+- When setting severity thresholds (CRITICAL, HIGH, MEDIUM, LOW) for vulnerability blocking
+- When integrating security scanning into pull request workflows for shift-left security
+- When implementing license compliance scanning for open-source dependencies
+- When setting up container scanning for Kubernetes deployments or container registries
+- When configuring IaC (Infrastructure as Code) security scanning with Checkov, tfsec, or Terrascan
+- When implementing security monitoring and alerting for CI/CD pipeline vulnerabilities
+- When creating security dashboards and metrics for vulnerability tracking over time
+- When working with GitHub Actions security scanning workflows or GitLab Security templates
+- When integrating with security platforms like Snyk, WhiteSource, or Veracode
+- When establishing security best practices and standards for development teams
 
 ---
 

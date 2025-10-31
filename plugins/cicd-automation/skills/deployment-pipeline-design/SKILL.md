@@ -1,23 +1,37 @@
 ---
 name: deployment-pipeline-design
-description: Design multi-stage CI/CD pipelines with approval gates, security checks, and deployment orchestration. Use when architecting deployment workflows, setting up continuous delivery, or implementing GitOps practices.
+description: Design multi-stage CI/CD pipelines with approval gates, security checks, deployment orchestration, and progressive delivery strategies including rolling updates, blue-green deployments, canary releases, and feature flags. Use when architecting deployment workflows from scratch, migrating from manual deployments to automated pipelines, setting up continuous delivery or continuous deployment systems, implementing GitOps practices with ArgoCD or Flux, designing multi-environment promotion strategies (dev → staging → production), establishing approval workflows and manual gates for production releases, implementing deployment strategies (rolling, blue-green, canary, A/B testing), configuring rollback procedures and automated recovery mechanisms, orchestrating complex multi-service deployments, setting up deployment windows and scheduling, integrating security scanning and compliance checks into pipelines, designing infrastructure deployment pipelines with Terraform or CloudFormation, implementing progressive delivery with gradual traffic shifting, establishing deployment best practices and standards across teams, or planning disaster recovery and business continuity workflows. Use this skill when working with .github/workflows/ files, .gitlab-ci.yml files, Azure Pipelines YAML, Jenkins Pipelines, deployment manifests, or any CI/CD configuration files requiring multi-stage pipeline architecture.
 ---
 
 # Deployment Pipeline Design
 
 Architecture patterns for multi-stage CI/CD pipelines with approval gates and deployment strategies.
 
-## Purpose
+## When to use this skill
 
-Design robust, secure deployment pipelines that balance speed with safety through proper stage organization and approval workflows.
-
-## When to Use
-
-- Design CI/CD architecture
-- Implement deployment gates
-- Configure multi-environment pipelines
-- Establish deployment best practices
-- Implement progressive delivery
+- When designing new CI/CD pipeline architecture from scratch for any project or application
+- When migrating from manual deployments or simple scripts to automated multi-stage pipelines
+- When implementing continuous delivery (CD) or continuous deployment systems
+- When setting up GitOps workflows with tools like ArgoCD, Flux, or Jenkins X
+- When designing multi-environment deployment strategies (development → staging → production)
+- When establishing approval gates, manual validation steps, or production deployment controls
+- When implementing deployment strategies such as rolling updates, blue-green deployments, canary releases, or A/B testing
+- When configuring automated rollback procedures and failure recovery mechanisms
+- When orchestrating complex multi-service or microservices deployments
+- When setting up deployment windows, scheduling, or time-based deployment controls
+- When integrating security scanning (SAST, DAST, dependency scanning) into deployment pipelines
+- When designing infrastructure deployment pipelines using Terraform, CloudFormation, or Pulumi
+- When implementing progressive delivery with gradual traffic shifting based on metrics
+- When establishing deployment best practices, standards, and compliance requirements across development teams
+- When planning disaster recovery workflows and business continuity procedures
+- When working with GitHub Actions workflows (.github/workflows/*.yml files)
+- When configuring GitLab CI/CD pipelines (.gitlab-ci.yml files)
+- When designing Azure Pipelines (azure-pipelines.yml) or Jenkins Pipelines (Jenkinsfile)
+- When creating deployment manifests for Kubernetes, Docker, or other container platforms
+- When setting up deployment monitoring, metrics collection, and post-deployment verification
+- When optimizing pipeline performance with caching, parallelization, and artifact management
+- When designing approval workflows for compliance, security reviews, or change management
+- When implementing deployment frequency tracking and DORA metrics collection
 
 ## Pipeline Stages
 

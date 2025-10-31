@@ -1,6 +1,6 @@
 ---
 name: observability-sre-practices
-description: Production observability with Datadog, Prometheus, Grafana, OpenTelemetry, ELK stack, SRE practices (SLO/SLI, incident management), Golden Signals monitoring, and automated alerting for distributed systems
+description: Implement production-grade observability, monitoring, and Site Reliability Engineering (SRE) best practices using modern tools like OpenTelemetry, Prometheus, Grafana, Datadog, and ELK stack for distributed systems. Use this skill when setting up OpenTelemetry instrumentation for traces, metrics, and logs in Python, Node.js, Go, or Java applications to track request flows across microservices. Apply when configuring Prometheus for metrics collection and Grafana dashboards for visualization of application performance, resource usage, and business KPIs. Use when defining Service Level Objectives (SLOs) and Service Level Indicators (SLIs) for API latency, error rates, or availability targets with error budgets. Apply when implementing Golden Signals monitoring (latency, traffic, errors, saturation) for microservices using Prometheus metrics and Grafana alerts. Use when setting up distributed tracing with Jaeger, Zipkin, or Datadog APM to debug slow requests or trace errors across service boundaries. Apply when configuring centralized log aggregation using ELK stack (Elasticsearch, Logstack, Kibana), Loki, or Splunk for searching and analyzing application logs. Use when creating Prometheus AlertManager rules, PagerDuty integrations, or Slack notifications for critical production alerts with proper escalation policies. Apply when implementing incident management workflows including on-call rotations, runbooks, post-mortem templates, and blameless retrospectives. Use when setting up custom Prometheus exporters or instrumentation libraries for application-specific metrics. Apply when configuring Kubernetes monitoring with Prometheus Operator, kube-state-metrics, or node-exporter for cluster observability. Use when analyzing application performance using distributed traces to identify slow database queries, external API calls, or service dependencies. Apply when implementing structured logging with correlation IDs to trace requests across distributed systems. Use when creating SLI dashboards showing real-time compliance with SLO targets and error budget burn rate. Apply when setting up log-based metrics in Prometheus using promtail, fluentd, or vector for pattern detection.
 tools: Read, Write, Bash, kubectl, prometheus, grafana
 integration: Use for implementing observability, monitoring, and SRE best practices
 ---
@@ -9,14 +9,27 @@ integration: Use for implementing observability, monitoring, and SRE best practi
 
 Complete framework for implementing production-grade observability, monitoring, and site reliability engineering practices with modern tools and AI-enhanced alerting.
 
-## When to Use This Skill
+## When to use this skill
 
-- **Observability setup**: OpenTelemetry, Prometheus, Grafana, Datadog, New Relic
-- **SLO/SLI definition**: Service level objectives and indicators for reliability
-- **Incident management**: On-call, post-mortems, PagerDuty integration
-- **Golden Signals**: Latency, traffic, errors, saturation monitoring
-- **Distributed tracing**: Request flow tracking across microservices
-- **Log aggregation**: ELK stack, Loki, Splunk for centralized logging
+- When **setting up OpenTelemetry** instrumentation in Python, Node.js, Go, or Java applications to automatically trace requests, record metrics, and collect logs
+- When **configuring Prometheus** to scrape metrics from applications, exporters, or Kubernetes clusters and store time-series data for monitoring
+- When **building Grafana dashboards** to visualize application performance metrics, infrastructure health, or business KPIs with custom panels and alerts
+- When **defining SLOs and SLIs** for your services to measure reliability targets like API latency p99 < 200ms, error rate < 0.1%, or availability > 99.9%
+- When **implementing Golden Signals monitoring** (latency, traffic, errors, saturation) for microservices to quickly detect and respond to production issues
+- When **setting up distributed tracing** with Jaeger, Zipkin, or Datadog APM to trace request flows across multiple microservices and identify bottlenecks
+- When **configuring centralized logging** with ELK stack (Elasticsearch, Logstash, Kibana), Grafana Loki, or Splunk for searching, analyzing, and alerting on logs
+- When **creating Prometheus alerts** with AlertManager rules, routing to PagerDuty, Slack, or email with proper severity levels and escalation policies
+- When **implementing incident management** workflows including on-call schedules, runbook automation, incident response procedures, and post-mortem templates
+- When **writing custom Prometheus exporters** to expose application-specific metrics like queue depths, cache hit rates, or business transaction counts
+- When **monitoring Kubernetes clusters** using Prometheus Operator, kube-state-metrics, node-exporter, or Grafana dashboards for pod, node, and cluster health
+- When **analyzing slow requests** using distributed traces to pinpoint which service, database query, or external API call is causing latency
+- When **implementing structured logging** with JSON format and correlation IDs to trace requests across distributed systems and aggregate logs by trace ID
+- When **creating SLI dashboards** that show real-time SLO compliance, error budget remaining, and burn rate to make deployment decisions
+- When **setting up log-based metrics** using Prometheus recording rules, promtail, fluentd, or vector to count errors, track patterns, or alert on log anomalies
+- When **configuring Datadog** or New Relic for full-stack observability including APM, infrastructure monitoring, log management, and synthetic monitoring
+- When **implementing error budgets** to balance velocity vs reliability by calculating allowed error rate based on SLO targets
+- When **writing runbooks** for common production issues with step-by-step debugging instructions, escalation paths, and automated remediation scripts
+- When **conducting blameless post-mortems** after incidents to document timeline, root cause, impact, and action items for prevention
 
 ## Core Observability Patterns
 

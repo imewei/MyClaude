@@ -1,4 +1,24 @@
+---
+name: airflow-scientific-workflows
+description: Design and implement Apache Airflow DAGs for scientific data pipelines, workflow orchestration, and computational task automation. Use when creating or modifying Airflow DAG files, implementing scientific data processing pipelines, orchestrating experimental workflows, scheduling batch computations, managing time-series data ingestion, coordinating distributed simulations, integrating with databases like PostgreSQL or TimescaleDB, building ETL pipelines for scientific instruments, implementing data quality validation workflows, or automating scientific computation tasks across multiple workers.
+---
+
 # Airflow Scientific Workflows
+
+## When to use this skill
+
+- Creating or modifying Airflow DAG files (*.py files in airflow/dags/ directories)
+- Implementing scientific data processing pipelines for experimental data
+- Orchestrating multi-step scientific workflows with dependencies
+- Scheduling batch computations and simulations
+- Managing time-series data ingestion from scientific instruments
+- Coordinating distributed scientific computations across workers
+- Integrating Airflow with databases (PostgreSQL, TimescaleDB) for scientific data
+- Building ETL (Extract, Transform, Load) pipelines for laboratory or sensor data
+- Implementing data quality validation and gating logic in workflows
+- Automating scientific computation tasks with retry logic and error handling
+- Processing multi-dimensional array data in distributed workflows
+- Setting up periodic analysis jobs for experimental results
 
 **Purpose**: Apache Airflow integration patterns for scientific data pipelines and workflows
 

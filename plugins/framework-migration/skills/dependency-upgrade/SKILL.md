@@ -1,6 +1,6 @@
 ---
 name: dependency-upgrade
-description: Manage major dependency version upgrades with compatibility analysis, staged rollout, and comprehensive testing. Use when upgrading framework versions, updating major dependencies, or managing breaking changes in libraries.
+description: Manage major dependency version upgrades with semantic versioning analysis, compatibility matrix validation, staged rollout strategies, breaking change handling, automated codemod application, and comprehensive testing across npm, yarn, pnpm, pip, gem, and other package managers. Use when upgrading major framework versions (React 16→18, Angular 12→17, Vue 2→3, Next.js 12→14), updating security-vulnerable dependencies identified by npm audit or Snyk, modernizing legacy dependencies with EOL warnings, resolving peer dependency conflicts and version incompatibilities, planning incremental upgrade paths one major version at a time, implementing automated dependency update workflows with Renovate or Dependabot, testing compatibility across unit, integration, and E2E test suites, managing breaking changes through migration guides and codemods, handling transitive dependency upgrades and lock file conflicts, performing staged rollouts with feature flags and canary releases, validating semver ranges (^, ~, exact versions), auditing dependency trees for duplicates and security issues, migrating between package managers (npm to yarn, yarn to pnpm), upgrading build tools and bundlers (Webpack 4→5, Vite 2→4), updating TypeScript compiler and type definitions, managing workspace and monorepo dependency upgrades. Apply when working with package.json, package-lock.json, yarn.lock, pnpm-lock.yaml, requirements.txt, Gemfile.lock, composer.json files, CI/CD configuration for dependency updates, migration scripts for automated API updates, compatibility test suites, and when planning risk-mitigated upgrade strategies for production applications.
 ---
 
 # Dependency Upgrade
@@ -9,13 +9,32 @@ Master major dependency version upgrades, compatibility analysis, staged upgrade
 
 ## When to Use This Skill
 
-- Upgrading major framework versions
-- Updating security-vulnerable dependencies
-- Modernizing legacy dependencies
-- Resolving dependency conflicts
-- Planning incremental upgrade paths
-- Testing compatibility matrices
-- Automating dependency updates
+- When upgrading major framework versions one version at a time (React 16→17→18, Angular 12→15→17, Vue 2→3)
+- When updating security-vulnerable dependencies identified by npm audit, yarn audit, or Snyk security scans
+- When resolving peer dependency conflicts and version incompatibilities in package.json
+- When planning incremental upgrade paths using compatibility matrices for framework ecosystems
+- When applying automated codemods for breaking change migrations (react-codeshift, jscodeshift, ast-grep)
+- When implementing Renovate or Dependabot configurations for automated PR-based dependency updates
+- When testing dependency upgrades across unit tests, integration tests, E2E tests, and visual regression tests
+- When handling breaking changes documented in CHANGELOG.md and MIGRATION.md files
+- When working with package.json, package-lock.json, yarn.lock, pnpm-lock.yaml lock files
+- When auditing dependency trees using npm ls, yarn why, pnpm why to find duplicate packages
+- When deduplicating packages using npm dedupe or yarn dedupe
+- When checking for outdated packages with npm outdated, yarn outdated, or npx npm-check-updates
+- When upgrading TypeScript and @types/* packages while maintaining type compatibility
+- When migrating from npm to yarn, yarn to pnpm, or managing workspace dependencies in monorepos
+- When updating build tools (Webpack, Vite, Rollup, esbuild, Turbopack) and bundler configurations
+- When handling transitive dependency updates that affect peer dependency requirements
+- When implementing staged upgrade strategies with feature flags for gradual rollout
+- When creating custom migration scripts for automated API transformations
+- When validating semantic versioning ranges (^2.0.0 for minor updates, ~2.0.0 for patches, 2.0.0 for exact)
+- When setting up CI/CD pipelines to run dependency audits and automated updates
+- When managing workspace package updates in monorepo structures (npm workspaces, yarn workspaces, pnpm workspaces, Lerna, Nx)
+- When upgrading testing libraries (@testing-library/react, Jest, Vitest, Cypress, Playwright)
+- When updating linting and formatting tools (ESLint, Prettier, Biome) and their configurations
+- When migrating deprecated APIs to new APIs using find-and-replace or AST transformation tools
+- When implementing rollback procedures for failed dependency upgrades
+- When documenting upgrade procedures and maintaining upgrade logs for team knowledge sharing
 
 ## Semantic Versioning Review
 

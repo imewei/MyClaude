@@ -1,6 +1,38 @@
+---
+name: cli-tool-design-production
+description: Build production-ready CLI tools and developer automation with Python Click/Typer, Node.js Commander/Inquirer, Go Cobra, and shell scripting. Use when creating command-line applications with interactive prompts (wizards, menus, forms), implementing developer workflow automation (build, test, deploy scripts), designing project scaffolding and code generators (create-react-app style tools), building terminal user interfaces with progress bars and spinners, creating deployment and release automation tools, implementing git workflow helpers and pre-commit hooks, developing data processing CLI utilities with batch operations, creating configuration management CLIs, building testing and quality assurance tools, implementing package and dependency management utilities, developing system administration scripts, creating developer onboarding tools, building documentation generation automation, or designing cross-platform command-line applications. Use this skill when working with CLI frameworks (Click, Typer, Commander, Inquirer, Cobra, Clap), creating interactive terminal applications with rich UIs, implementing workflow orchestration with task dependencies, building developer productivity tools, or when files include CLI entry points (cli.py, main.go, cli.js), command definitions, interactive prompt implementations, or automation scripts.
+---
+
 # CLI Tool Design and Production Implementation
 
-Expert guidance on building production-ready command-line tools with modern frameworks, interactive prompts, and developer automation workflows. Use when creating CLI applications, automation scripts, or developer productivity tools.
+Expert guidance on building production-ready command-line tools with modern frameworks, interactive prompts, and developer automation workflows.
+
+## When to use this skill
+
+- When creating CLI applications with Python Click, Typer, or argparse frameworks
+- When building Node.js command-line tools with Commander.js, Yargs, or Inquirer.js
+- When implementing Go CLI applications with Cobra or Viper frameworks
+- When designing interactive terminal applications with prompts, wizards, and menus
+- When creating project scaffolding and code generation tools (like create-react-app, cookiecutter)
+- When building developer workflow automation scripts (build, test, deploy, release)
+- When implementing terminal user interfaces (TUI) with progress bars, spinners, and tables
+- When creating deployment and release automation tools with version management
+- When developing git workflow helpers, pre-commit hooks, and repository automation
+- When building data processing CLI utilities with batch operations and file manipulation
+- When implementing configuration management CLIs for developer tools
+- When creating testing and quality assurance automation tools
+- When developing package and dependency management utilities
+- When building system administration and DevOps automation scripts
+- When creating developer onboarding tools and environment setup automation
+- When implementing documentation generation and maintenance automation
+- When designing cross-platform command-line applications (Linux, macOS, Windows)
+- When working with CLI entry point files (cli.py, main.go, cli.js, __main__.py)
+- When implementing workflow orchestration with task dependencies and error handling
+- When creating YAML/TOML configuration files for CLI tools (devflow.yml, config.toml)
+- When building CLI tools that need shell completion (bash, zsh, fish)
+- When implementing non-interactive modes for CI/CD integration
+- When creating dry-run and preview modes for safe command execution
+- When building CLI tools with rich terminal output (colors, formatting, panels)
 
 ## Overview
 

@@ -1,9 +1,33 @@
 ---
 name: correlation-computational-methods
-description: Implement efficient algorithms for correlation analysis including FFT-based O(N log N) methods, multi-tau correlators for wide dynamic ranges, multi-scale analysis (femtoseconds to hours, nanometers to micrometers), statistical validation (bootstrap, uncertainty quantification), and JAX-accelerated GPU computation for large datasets. Use when optimizing correlation calculations for performance and scalability.
+description: Implement efficient algorithms for correlation analysis including FFT-based O(N log N) autocorrelation and cross-correlation computation (50,000× speedup for N=10⁶), multi-tau correlators for wide dynamic ranges (10⁻⁶ to 10³ seconds with logarithmic time spacing), spatial correlations with KD-tree O(N log N) pair distribution functions, multi-scale analysis spanning femtoseconds to hours and nanometers to micrometers, statistical validation (bootstrap resampling with block bootstrap for correlated data, convergence analysis, bias correction for finite-size effects, outlier detection with robust statistics), and JAX-accelerated GPU computation for large datasets with JIT compilation and batch processing (200× CPU speedup for N=10⁶, 1000× multi-GPU). Use when optimizing correlation calculations for molecular dynamics trajectories (10⁶-10⁹ frames), dynamic light scattering with wide dynamic ranges, XPCS data analysis, glassy dynamics with multiple relaxation timescales, or processing large experimental datasets requiring memory-efficient algorithms.
 ---
 
 # Computational Methods & Algorithms
+
+## When to use this skill
+
+- Optimizing autocorrelation calculations from direct O(N²) to FFT-based O(N log N) for time series with N > 1000 data points (*.py, *.jl implementations)
+- Computing cross-correlation functions efficiently using convolution theorem and FFT for multi-variate time series analysis or signal processing (*.py NumPy/SciPy, *.jl Julia FFT)
+- Implementing multi-tau correlators for DLS, XPCS, or FCS data spanning wide dynamic ranges (10 ns to 10 s, 1 ms to 1000 s) with logarithmic time spacing and minimal memory (O(m log N) storage)
+- Calculating radial distribution functions g(r) efficiently using KD-tree spatial indexing (O(N log N)) for molecular dynamics simulations with periodic boundary conditions (*.py SciPy cKDTree)
+- Performing block averaging for memory-efficient correlation analysis of long MD trajectories (10⁶-10⁹ frames) without storing full correlation arrays
+- Implementing multi-scale temporal analysis with adaptive time stepping for systems spanning femtoseconds (atomic vibrations) to hours (aging, creep) using hierarchical binning
+- Computing hierarchical spatial correlations across length scales from angstroms (atomic) to millimeters (macroscopic) using coarse-graining and Fourier transforms
+- Combining multiscale data from different sampling rates (high-frequency 1 MHz and low-frequency 1 Hz) with proper stitching at overlap regions
+- Performing bootstrap resampling with block bootstrap for uncertainty estimation in correlated data (N=1000 bootstrap samples recommended) with automatic correlation length detection
+- Conducting convergence tests by comparing correlations from data subsets (25%, 50%, 75%, 100%) to ensure sufficient trajectory length and statistical reliability
+- Estimating required trajectory length for target error using N_required = (1/target_error)² × correlation_time formula
+- Correcting finite-size effects in correlations using periodic image summations for systems where correlation length ξ approaches system size L
+- Detecting and removing outliers using robust statistics (median absolute deviation with 3-MAD threshold or 10% trimmed mean) before correlation analysis
+- Accelerating correlation calculations with JAX JIT-compiled GPU functions for repeated calls on batches of time series (200× speedup vs NumPy for N=10⁶)
+- Processing large datasets (> RAM) using chunked GPU correlation with automatic memory management to avoid out-of-memory errors
+- Implementing vectorized batch correlation processing for multiple time series in parallel on GPU (batch of 100 gives 1000× speedup with multi-GPU)
+- Analyzing experimental correlation data from DLS, SAXS/SANS, XPCS, or FCS with proper statistical validation and uncertainty quantification
+- Optimizing algorithm selection based on data size: direct method (N < 1000), FFT (1000 < N < 10⁶), block averaging (N > 10⁶), or multi-tau for wide dynamic ranges
+- Implementing streaming algorithms for real-time correlation analysis of experimental data with continuous data acquisition
+- Performing performance benchmarking comparing CPU (NumPy), CPU with FFT, GPU (JAX), and multi-GPU implementations for computational method selection
+- Validating correlation results against physical constraints including sum rules (number conservation, compressibility), non-negativity C(0) ≥ |C(t)|, and causality χ(t<0) = 0
 
 Implement efficient, scalable algorithms for correlation function calculation across multiple timescales and spatial scales with rigorous statistical validation.
 

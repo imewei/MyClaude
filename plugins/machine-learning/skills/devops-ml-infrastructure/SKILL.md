@@ -1,6 +1,30 @@
+---
+name: devops-ml-infrastructure
+description: DevOps practices and infrastructure as code for ML systems including CI/CD pipelines with GitHub Actions or GitLab CI, Terraform/Pulumi/CloudFormation for cloud infrastructure provisioning, Docker and Kubernetes for containerization and orchestration, and cloud ML platform deployments (AWS SageMaker, Azure ML, GCP Vertex AI). Use when writing or editing GitHub Actions workflows (`.yml`), Terraform configurations (`.tf`), Dockerfiles, Kubernetes manifests (`.yaml`), or cloud infrastructure scripts. Apply this skill when setting up automated ML training pipelines, implementing CI/CD for model deployment, provisioning cloud infrastructure with Terraform or Pulumi, containerizing ML applications with Docker, deploying to Kubernetes clusters, configuring AWS SageMaker pipelines or endpoints, setting up Azure ML workspaces and compute, deploying to GCP Vertex AI, implementing MLOps automation, managing secrets and credentials securely, setting up monitoring and logging infrastructure, or implementing blue-green or canary deployments for ML models.
+---
+
 # DevOps and ML Infrastructure
 
 Expert guidance on CI/CD pipelines, infrastructure automation, and deployment orchestration for ML systems. Use when building automated training pipelines, setting up ML infrastructure as code, or implementing deployment workflows with GitHub Actions, Terraform, and Kubernetes.
+
+## When to Use This Skill
+
+- Writing or editing GitHub Actions workflows (`.yml`) for ML automation
+- Writing or editing Terraform configurations (`.tf`) for cloud infrastructure
+- Creating or modifying Dockerfiles for ML application containerization
+- Writing Kubernetes manifests (`.yaml`) for ML model deployment
+- Setting up CI/CD pipelines for automated model training and deployment
+- Provisioning cloud ML infrastructure with Terraform, Pulumi, or CloudFormation
+- Containerizing ML applications and dependencies with Docker
+- Deploying ML models to Kubernetes clusters with KServe or Seldon
+- Configuring AWS SageMaker training jobs, pipelines, and endpoints
+- Setting up Azure ML workspaces, compute clusters, and deployment targets
+- Deploying models to GCP Vertex AI for training and serving
+- Implementing MLOps automation workflows
+- Managing secrets and credentials securely with cloud secret managers
+- Setting up centralized logging and monitoring infrastructure
+- Implementing deployment strategies (blue-green, canary, A/B testing)
+- Automating model retraining on schedule or data drift detection
 
 ## Overview
 

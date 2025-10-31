@@ -1,24 +1,36 @@
 ---
 name: python-testing-patterns
-description: Implement comprehensive testing strategies with pytest, fixtures, mocking, and test-driven development. Use when writing Python tests, setting up test suites, or implementing testing best practices.
+description: Implement comprehensive testing strategies with pytest, fixtures, mocking, parameterization, and test-driven development for robust Python applications. Use when writing or editing test files (test_*.py), creating pytest fixtures in conftest.py, implementing test-driven development workflows, setting up test suites with pytest.ini or pyproject.toml, using unittest.mock or pytest-mock for mocking external dependencies, writing parameterized tests with @pytest.mark.parametrize, testing async code with pytest-asyncio, implementing property-based testing with Hypothesis, measuring test coverage with pytest-cov, debugging failing tests, creating integration tests for APIs or databases, or setting up continuous testing in CI/CD pipelines.
 ---
 
 # Python Testing Patterns
 
 Comprehensive guide to implementing robust testing strategies in Python using pytest, fixtures, mocking, parameterization, and test-driven development practices.
 
-## When to Use This Skill
+## When to use this skill
 
-- Writing unit tests for Python code
-- Setting up test suites and test infrastructure
-- Implementing test-driven development (TDD)
-- Creating integration tests for APIs and services
-- Mocking external dependencies and services
-- Testing async code and concurrent operations
-- Setting up continuous testing in CI/CD
-- Implementing property-based testing
-- Testing database operations
-- Debugging failing tests
+- Writing or editing test files (test_*.py, *_test.py) in tests/ directories
+- Creating pytest fixtures in conftest.py for test setup and teardown
+- Implementing test-driven development (TDD) workflows (write tests first, then code)
+- Setting up test configuration with pytest.ini or [tool.pytest.ini_options] in pyproject.toml
+- Using unittest.mock.Mock, patch, or MagicMock to mock external dependencies
+- Using pytest-mock plugin for cleaner mocking syntax
+- Writing parameterized tests with @pytest.mark.parametrize decorator
+- Testing async code with pytest-asyncio (@pytest.mark.asyncio decorator)
+- Implementing property-based testing with Hypothesis library
+- Measuring test coverage with pytest-cov (--cov flags)
+- Debugging failing tests or understanding test failures
+- Creating integration tests for REST APIs with TestClient or httpx
+- Testing database operations with in-memory databases or test fixtures
+- Setting up continuous testing in CI/CD pipelines (GitHub Actions, GitLab CI)
+- Using test markers (@pytest.mark.slow, @pytest.mark.integration) for selective test execution
+- Testing exceptions with pytest.raises context manager
+- Creating temporary files/directories with tmp_path or tmp_path_factory fixtures
+- Using monkeypatch fixture for modifying environment variables or object attributes
+- Writing tests for command-line applications
+- Implementing test factories with factory_boy or Faker
+- Testing Django applications with pytest-django
+- Testing FastAPI applications with TestClient
 
 ## Core Concepts
 

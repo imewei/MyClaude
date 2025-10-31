@@ -1,6 +1,6 @@
 ---
 name: database-migration
-description: Execute database migrations across ORMs and platforms with zero-downtime strategies, data transformation, and rollback procedures. Use when migrating databases, changing schemas, performing data transformations, or implementing zero-downtime deployment strategies.
+description: Execute database schema migrations and data transformations across ORMs (Sequelize, TypeORM, Prisma, Django ORM, SQLAlchemy, ActiveRecord) and database platforms (PostgreSQL, MySQL, MongoDB, SQLite) with zero-downtime strategies, rollback procedures, and backward compatibility. Use when creating database migration files for schema changes, performing data model refactoring, adding or removing columns with defaults, renaming tables or columns without downtime, changing column types safely, migrating between different ORMs, implementing blue-green database deployment strategies, executing complex data transformations and backfills, handling foreign key constraints and indexes during migrations, implementing transaction-based migrations for atomicity, creating checkpoint-based rollback strategies, migrating from SQL to NoSQL or vice versa, performing database version upgrades, implementing zero-downtime schema changes for production systems, writing reversible migration scripts with up() and down() methods. Apply when working with migration files (migrations/*.js, migrations/*.ts, *.sql), ORM model files (models.py, entities/*.ts, schema.prisma, models/*.rb), database configuration files (database.yml, ormconfig.json, .sequelizerc, knexfile.js), migration runner scripts, data transformation scripts, backup and rollback procedures, and when planning multi-phase database changes that maintain backward compatibility with running application code.
 ---
 
 # Database Migration
@@ -9,13 +9,30 @@ Master database schema and data migrations across ORMs (Sequelize, TypeORM, Pris
 
 ## When to Use This Skill
 
-- Migrating between different ORMs
-- Performing schema transformations
-- Moving data between databases
-- Implementing rollback procedures
-- Zero-downtime deployments
-- Database version upgrades
-- Data model refactoring
+- When creating database migration files using Sequelize CLI (sequelize-cli db:migrate), TypeORM (migration:run), Prisma (migrate dev), Django (makemigrations, migrate), or other ORMs
+- When adding new columns to existing tables with default values and NOT NULL constraints
+- When removing columns while maintaining backward compatibility with running application code
+- When renaming columns or tables using multi-phase migration strategies (add new, copy data, update code, remove old)
+- When changing column data types safely (string to integer, varchar to text, adding enum values)
+- When creating or modifying indexes for performance optimization without locking tables
+- When adding or removing foreign key constraints and establishing referential integrity
+- When implementing zero-downtime deployment strategies with blue-green or dual-write patterns
+- When performing complex data transformations (splitting columns, normalizing data, JSON extraction)
+- When migrating from one ORM to another (Sequelize to Prisma, Django ORM to SQLAlchemy)
+- When implementing transaction-based migrations for atomicity and automatic rollback on errors
+- When creating checkpoint-based rollback strategies with backup tables
+- When working with migration files (.js, .ts, .sql), model files (models.py, *.entity.ts, schema.prisma), and ORM configurations
+- When backfilling data for new columns or migrating historical data
+- When implementing database schema versioning and migration tracking
+- When handling migration conflicts in team environments with multiple developers
+- When testing migrations on staging environments before production deployment
+- When creating idempotent migrations that can be safely rerun
+- When implementing cross-database migrations (PostgreSQL to MySQL, SQL to NoSQL)
+- When planning multi-phase migrations that allow old and new code to run simultaneously
+- When setting up migration runners in CI/CD pipelines (npm run migrate, make db-migrate)
+- When writing reversible down() methods for rollback scenarios
+- When migrating stored procedures to ORM-based business logic
+- When optimizing database performance through schema refactoring and denormalization
 
 ## ORM Migrations
 

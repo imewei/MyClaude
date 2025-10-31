@@ -1,6 +1,6 @@
 ---
 name: ai-assisted-debugging
-description: AI-powered debugging with GitHub Copilot, LLM-driven root cause analysis, automated log correlation, anomaly detection, and modern debugging tools (GDB, VS Code Debugger, Chrome DevTools) for distributed systems
+description: Leverage AI and LLMs to accelerate debugging through automated stack trace analysis, intelligent root cause detection, and ML-driven log correlation for modern distributed systems. Use this skill when analyzing Python tracebacks, JavaScript console errors, or any runtime exceptions to get AI-powered fix suggestions and explanations. Apply when debugging production incidents with large log volumes where manual correlation is time-consuming. Use for Kubernetes pod failures, Docker container crashes, or microservice cascade failures requiring distributed trace analysis. Integrate when setting up automated anomaly detection on application logs, metrics, or traces using ML models like Isolation Forest. Apply when debugging with GDB, LLDB, VS Code debugger, or Chrome DevTools and need intelligent breakpoint strategies. Use for generating strategic debug logging statements automatically based on suspected issues. Apply when analyzing OpenTelemetry traces, Prometheus metrics, or Datadog telemetry to identify performance bottlenecks. Use when you need to correlate recent code changes (git commits, deployments) with production incidents for rapid RCA. Apply for time-series forecasting of failures or predictive maintenance using historical incident data.
 tools: Read, Write, Bash, Grep, python, gdb, lldb, kubectl, docker
 integration: Use for accelerating debugging with AI assistance and automated RCA
 ---
@@ -9,14 +9,23 @@ integration: Use for accelerating debugging with AI assistance and automated RCA
 
 Complete framework for leveraging AI to accelerate debugging, automate root cause analysis, and integrate observability data for real-time insights in distributed systems.
 
-## When to Use This Skill
+## When to use this skill
 
-- **AI-powered code debugging**: GitHub Copilot, Cursor, CodeWhisperer for hypothesis generation
-- **Automated root cause analysis**: ML-driven log correlation and anomaly detection
-- **Stack trace interpretation**: LLM-based error analysis and fix suggestions
-- **Distributed system debugging**: Kubernetes, Docker, microservices troubleshooting
-- **Observability integration**: OpenTelemetry, Prometheus, Datadog for telemetry analysis
-- **Predictive failure detection**: Time-series forecasting and anomaly detection
+- When analyzing **stack traces and exceptions** (Python tracebacks, JavaScript errors, Java stack traces, Go panics) and you need AI to identify root causes and suggest fixes
+- When debugging **production incidents** with thousands of log lines where manual analysis is impractical and you need automated log correlation
+- When investigating **Kubernetes pod failures** (CrashLoopBackOff, OOMKilled, ImagePullBackOff) and need AI-powered analysis of pod events, logs, and resource usage
+- When troubleshooting **Docker container crashes** and need automated detection of OOM errors, exit code analysis, or health check failures
+- When debugging **distributed system failures** across microservices and need to correlate traces, logs, and metrics from multiple services
+- When implementing **automated anomaly detection** on application logs using ML models (Isolation Forest, autoencoders) for proactive failure detection
+- When using **modern debugging tools** (GDB, LLDB, VS Code Debugger, Chrome DevTools) and want intelligent breakpoint strategies or automated variable logging
+- When you need to **generate debug logging statements** automatically based on suspected issues without manually instrumenting code
+- When analyzing **OpenTelemetry distributed traces** to identify slow spans and performance bottlenecks across service boundaries
+- When setting up **Prometheus metric analysis** with AI to detect unusual patterns in latency, error rate, throughput, or resource usage
+- When correlating **recent changes** (git commits, deployments, config changes) with production incidents for rapid root cause analysis
+- When implementing **predictive failure detection** using time-series forecasting (ARIMA, Prophet) on historical incident data
+- When debugging **performance issues** and need AI to suggest optimizations based on profiling data (cProfile, py-spy, Chrome Performance tab)
+- When working with **application logs in Python, Node.js, Go, Java, or any language** and need ML-based anomaly detection to surface errors
+- When you encounter **intermittent or flaky bugs** that are hard to reproduce and need AI to identify race conditions or timing issues from logs
 
 ## Core AI Debugging Techniques
 

@@ -1,9 +1,27 @@
 ---
 name: comprehensive-reflection-framework
-description: Multi-dimensional reflection orchestration framework that integrates meta-cognitive analysis, research quality assessment, code quality reflection, and strategic thinking for comprehensive project evaluation. This skill should be used when conducting holistic project reviews, multi-dimensional quality assessments, strategic planning sessions, or comprehensive reflection across all aspects of work (reasoning, research, code, workflow). Use for quarterly reviews, major milestones, grant proposals, or when deep, integrated insights are needed.
+description: Orchestrate multi-dimensional reflection across cognitive, technical, scientific, and strategic dimensions to generate integrated insights and cross-cutting patterns. This skill should be used when conducting holistic project reviews that span multiple dimensions (reasoning quality, code quality, research methodology, strategic alignment), when performing multi-dimensional quality assessments before major milestones, when evaluating comprehensive project health across all aspects of work (AI reasoning patterns, technical debt, scientific rigor, goal progress), when preparing quarterly or annual reviews that require integrated analysis, when conducting strategic planning sessions that need cross-functional insights, when preparing grant proposals or funding applications requiring comprehensive project evaluation, when performing post-mortem analysis after major projects or initiatives, when assessing overall system health and trajectory across cognitive/technical/scientific/strategic dimensions, when identifying cross-cutting patterns and opportunities that span multiple work areas, or when deep, integrated, holistic insights are needed to inform major decisions or strategic direction. Use this skill for quarterly reviews, major project milestones, grant proposal preparation, career retrospectives, strategic planning sessions, comprehensive health checks, or any scenario requiring multi-dimensional evaluation and synthesis of cross-cutting insights.
 ---
 
 # Comprehensive Reflection Framework
+
+## When to use this skill
+
+- When conducting holistic project reviews that integrate multiple dimensions (cognitive, technical, scientific, strategic)
+- When performing comprehensive quality assessments before major milestones or releases
+- When preparing quarterly or annual reviews requiring integrated multi-dimensional analysis
+- When evaluating overall project health across reasoning quality, code quality, research rigor, and strategic alignment
+- When conducting strategic planning sessions that need insights across all work dimensions
+- When preparing grant proposals, funding applications, or progress reports requiring comprehensive evaluation
+- When performing post-mortem analysis after major projects, initiatives, or completed phases
+- When assessing system-level trajectory and health across cognitive/technical/scientific/strategic areas
+- When identifying cross-cutting patterns, strengths, and opportunities that span multiple dimensions
+- When deep, integrated, holistic insights are needed to inform major decisions or strategic pivots
+- When balancing tradeoffs across dimensions (e.g., speed vs quality, innovation vs technical debt)
+- When evaluating whether resources are optimally allocated across different work areas
+- When conducting career retrospectives or professional development reviews
+- When preparing for stakeholder presentations requiring comprehensive project status
+- When synthesizing lessons learned across multiple projects or work streams
 
 ## Overview
 
@@ -383,23 +401,3 @@ Reflect → Insights → Actions → Execute → Reflect
 5. **Reflect**: Evaluate effectiveness → Repeat
 
 **Key**: Close the loop - reflection without action is wasted, action without reflection is blind.
-
----
-
-## When to Use This Skill
-
-**Ideal Scenarios**:
-- Quarterly or annual reviews
-- Major project milestones
-- Before/after significant decisions
-- Grant proposal preparation
-- Strategic planning sessions
-- Post-mortem analysis
-- Career/project retrospectives
-
-**Not Ideal For**:
-- Daily task planning (too heavyweight)
-- Simple bug fixes (use targeted reflection)
-- Routine operations (use quick mode instead)
-
-Use this framework when you need deep, integrated understanding across multiple dimensions, not for routine day-to-day work.

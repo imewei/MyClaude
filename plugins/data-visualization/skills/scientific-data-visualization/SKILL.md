@@ -1,11 +1,34 @@
 ---
 name: scientific-data-visualization
-description: Domain-specific scientific data visualization techniques for physics, biology, chemistry, climate science, and engineering with uncertainty quantification, multi-dimensional data, and publication standards
+description: Create domain-specific scientific data visualizations for research publications and technical reports across physics, biology, chemistry, climate science, and engineering. Use this skill when creating publication-quality figures with uncertainty quantification (error bars, confidence bands, violin plots), visualizing multi-dimensional parameter spaces (parallel coordinates, heatmaps), creating domain-specific plots (vector fields for fluid dynamics, molecular structures, geospatial climate maps, spectroscopy data, network graphs for systems biology), implementing time-series analysis with statistical decomposition, applying journal formatting standards (Nature, Science, Cell specifications with 300+ DPI), using colorblind-friendly palettes, integrating with scientific tools (ParaView, VTK, VMD), or when working with Python/Julia files (.py, .jl, .ipynb) that generate scientific figures using matplotlib, seaborn, plotly, Plots.jl, or Makie.jl for research papers, conference presentations, grant proposals, or technical documentation.
 tools: Read, Write, python, julia, ParaView, VMD, matplotlib
 integration: Use for creating publication-quality scientific visualizations across domains
 ---
 
 # Scientific Data Visualization Mastery
+
+## When to use this skill
+
+- Creating publication-quality scientific figures for research papers in Nature, Science, Cell, or other journals
+- Visualizing experimental data with uncertainty quantification (error bars, confidence intervals, distribution plots)
+- Building multi-dimensional data visualizations (parallel coordinates, high-dimensional parameter spaces)
+- Creating physics and engineering visualizations (vector fields, streamlines, quiver plots for fluid dynamics or electromagnetics)
+- Visualizing molecular and structural biology data (protein structures, molecular dynamics trajectories)
+- Creating geospatial climate and environmental science visualizations (temperature anomaly maps, climate data with cartopy)
+- Visualizing spectroscopy data (UV-Vis, FTIR, NMR spectra) for analytical chemistry
+- Implementing time-series analysis for scientific data with trend decomposition and autocorrelation
+- Creating network/graph visualizations for systems biology (gene regulatory networks, protein interactions)
+- Formatting figures according to journal specifications (single/double column widths, 300 DPI, specific fonts)
+- Applying colorblind-friendly color palettes for accessible scientific communication
+- Integrating Python visualization libraries (matplotlib, seaborn, plotly) with scientific computing workflows
+- Using Julia visualization packages (Plots.jl, Makie.jl) for high-performance scientific plotting
+- Integrating with 3D scientific visualization tools (ParaView, VTK, VMD) for volumetric data
+- Working with Jupyter notebooks (.ipynb) or Julia Pluto notebooks for interactive scientific visualization
+- Creating figures for grant proposals, conference presentations, or technical documentation
+- Visualizing results from numerical simulations, molecular dynamics, or computational experiments
+- Generating multi-panel figures with consistent styling across subplots
+- Implementing statistical visualization techniques (regression analysis, residual plots, distribution fitting)
+- Creating animations or interactive visualizations for scientific data exploration
 
 Comprehensive techniques for visualizing complex scientific data across domains with proper uncertainty representation, accessibility, and publication standards.
 

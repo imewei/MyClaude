@@ -1,6 +1,36 @@
+---
+name: ios-best-practices
+description: Native iOS development best practices with Swift 6, SwiftUI, and production-ready patterns for App Store applications. Use this skill when writing or editing Swift files (.swift), building SwiftUI views and components, implementing MVVM architecture with ObservableObject and StateObject, using Swift concurrency patterns (async/await, actors, Task, TaskGroup), integrating Core Data or SwiftData with SwiftUI, implementing NavigationStack for type-safe navigation, writing XCTest unit tests and UI tests, structuring iOS projects with clean architecture (domain, data, presentation layers), optimizing SwiftUI performance with equatable views and minimal updates, implementing URLSession networking with async/await, handling error states and loading states in view models, using Combine for reactive programming, integrating HealthKit, CloudKit, or other Apple frameworks, implementing biometric authentication with LocalAuthentication, preparing apps for App Store submission with proper privacy labels and metadata, profiling iOS apps with Instruments for performance optimization, implementing accessibility features with VoiceOver and Dynamic Type, or building universal apps for iOS, iPadOS, macOS, watchOS, and tvOS.
+---
+
 # iOS Development Best Practices
 
 > **Modern iOS development with SwiftUI, Swift 6, and production-ready patterns for App Store applications.**
+
+---
+
+## When to use this skill
+
+- When writing or editing Swift source files (.swift extension)
+- When building SwiftUI views, custom view modifiers, or reusable components
+- When implementing MVVM architecture with @StateObject, @ObservedObject, and @Published properties
+- When using Swift 6 concurrency features (async/await, actors, Task, TaskGroup, AsyncSequence)
+- When integrating Core Data or SwiftData for local data persistence
+- When implementing NavigationStack or NavigationSplitView for app navigation
+- When writing XCTest unit tests, integration tests, or UI tests for iOS apps
+- When structuring iOS projects with clean architecture (separating domain, data, and presentation layers)
+- When optimizing SwiftUI view performance (reducing view updates, using equatable, profiling with Instruments)
+- When implementing networking with URLSession and async/await patterns
+- When handling asynchronous operations in view models with proper loading and error states
+- When using Combine framework for reactive programming or publisher/subscriber patterns
+- When integrating Apple platform frameworks (HealthKit, CloudKit, ARKit, CoreML, MapKit, StoreKit)
+- When implementing biometric authentication with Face ID or Touch ID using LocalAuthentication
+- When preparing iOS apps for App Store submission (privacy labels, App Store metadata, screenshots)
+- When profiling iOS applications with Instruments to identify performance bottlenecks
+- When implementing accessibility features (VoiceOver support, Dynamic Type, semantic labels)
+- When building universal applications targeting iOS, iPadOS, macOS (with Mac Catalyst), watchOS, or tvOS
+- When implementing SwiftUI previews for rapid UI development
+- When handling dependency injection in Swift applications
 
 ---
 

@@ -1,9 +1,26 @@
 ---
 name: distributed-tracing
-description: Implement distributed tracing with Jaeger and Tempo to track requests across microservices and identify performance bottlenecks. Use when debugging microservices, analyzing request flows, or implementing observability for distributed systems.
+description: Implement distributed tracing with Jaeger, Tempo, and OpenTelemetry to track requests across microservices and identify performance bottlenecks. Use when setting up distributed tracing infrastructure, instrumenting applications with OpenTelemetry, configuring Jaeger or Tempo deployments, debugging latency issues in microservices architectures, analyzing request flows across service boundaries, implementing trace context propagation in HTTP or gRPC services, configuring sampling strategies for production tracing, integrating distributed tracing with logging systems, troubleshooting error propagation across services, visualizing service dependency graphs, or implementing trace-based alerting for distributed systems.
 ---
 
 # Distributed Tracing
+
+## When to use this skill
+
+- Setting up Jaeger or Tempo distributed tracing infrastructure in Kubernetes or Docker
+- Instrumenting applications with OpenTelemetry libraries (Python, Node.js, Go, Java)
+- Configuring trace exporters and collectors in microservices
+- Debugging latency issues across distributed service architectures
+- Analyzing request flows and spans across multiple service boundaries
+- Implementing trace context propagation in HTTP, gRPC, or message queue systems
+- Configuring sampling strategies (probabilistic, rate-limiting, adaptive) for production environments
+- Working with trace configuration files or instrumentation code
+- Integrating distributed tracing with logging systems for correlation
+- Troubleshooting error propagation and cascading failures across services
+- Visualizing and analyzing service dependency graphs
+- Setting up trace-based alerting for slow requests or error traces
+- Implementing baggage propagation for distributed context
+- Working with W3C Trace Context or OpenTracing standards
 
 Implement distributed tracing with Jaeger and Tempo for request flow visibility across microservices.
 
@@ -11,7 +28,7 @@ Implement distributed tracing with Jaeger and Tempo for request flow visibility 
 
 Track requests across distributed systems to understand latency, dependencies, and failure points.
 
-## When to Use
+## Core Concepts
 
 - Debug latency issues
 - Understand service dependencies

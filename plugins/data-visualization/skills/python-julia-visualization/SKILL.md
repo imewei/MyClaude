@@ -1,6 +1,6 @@
 ---
 name: python-julia-visualization
-description: Production-ready visualization implementation with Python (Matplotlib, Plotly, Seaborn, Bokeh) and Julia (Plots.jl, Makie.jl, Gadfly.jl) for scientific data visualization, interactive dashboards, and real-time plotting
+description: Implement production-ready scientific visualizations using Python (Matplotlib, Seaborn, Plotly, Bokeh) and Julia (Plots.jl, Makie.jl, Gadfly.jl) ecosystems. Use this skill when writing or editing Python files (.py, .ipynb) or Julia files (.jl) that create data visualizations, implementing matplotlib publication-quality static plots with rcParams configuration and multi-panel figures, creating seaborn statistical plots (violin plots, FacetGrid, joint distributions, correlation heatmaps), building plotly interactive 3D visualizations with animations and real-time streaming dashboards, developing bokeh large-scale scatter plots with HoverTool and ColumnDataSource for 10k+ data points, implementing Julia Plots.jl unified plotting interface with multiple backends (GR, PlotlyJS), creating Makie.jl GPU-accelerated real-time visualizations with Observable patterns, building interactive Jupyter notebooks with ipywidgets sliders and interactive_output, creating reactive Pluto.jl notebooks with @bind for parameter exploration, implementing real-time streaming data visualization with periodic callbacks, creating 3D surface plots and contour visualizations, building custom colormaps for perceptually uniform color encoding, integrating Python-Julia workflows using PyCall, exporting visualizations to multiple formats (PNG, PDF, SVG, HTML, JSON), or applying publication standards (300 DPI, serif fonts, colorblind-friendly palettes, journal column widths).
 tools: Read, Write, MultiEdit, Bash, Glob, Grep, python, julia, jupyter
 integration: Use for scientific visualization development with Python/Julia ecosystems
 ---
@@ -11,12 +11,26 @@ Complete framework for building publication-quality visualizations, interactive 
 
 ## When to Use This Skill
 
-- **Python scientific visualization**: Matplotlib, Seaborn, Plotly, Bokeh for publication figures
-- **Julia high-performance visualization**: Plots.jl, Makie.jl for real-time, GPU-accelerated plots
-- **Interactive dashboards**: Dash (Python), Streamlit, Pluto.jl (Julia)
-- **Jupyter notebooks**: Interactive data exploration with ipywidgets, IJulia
-- **Real-time plotting**: Streaming data visualization with animation
-- **3D scientific visualization**: Surface plots, volume rendering, molecular visualization
+- Writing or editing Python visualization scripts (.py files) using matplotlib, seaborn, plotly, or bokeh
+- Working with Jupyter notebooks (.ipynb files) that create scientific plots or interactive visualizations
+- Creating Julia visualization code (.jl files) using Plots.jl, Makie.jl, or Gadfly.jl
+- Implementing publication-quality static plots with matplotlib (multi-panel figures, error bars, custom styling)
+- Building statistical visualizations with seaborn (violin plots, FacetGrid, regression plots, distribution analysis)
+- Creating interactive 3D visualizations with plotly (surface plots, animations, real-time dashboards)
+- Developing large-scale data visualizations with bokeh (10k+ points with HoverTool and interactive tools)
+- Implementing high-performance GPU-accelerated plots with Makie.jl for real-time data streaming
+- Creating unified plotting interfaces with Julia Plots.jl supporting multiple backends (GR, PlotlyJS, PyPlot)
+- Building interactive Jupyter notebooks with ipywidgets for parameter exploration and real-time updates
+- Developing reactive Pluto.jl notebooks with @bind syntax for dynamic scientific visualizations
+- Implementing real-time streaming data visualization with periodic callbacks and ColumnDataSource updates
+- Creating 3D surface plots, contour visualizations, and volume rendering for scientific data
+- Designing custom colormaps (sequential, diverging, qualitative) for perceptually uniform data encoding
+- Configuring publication standards (300 DPI resolution, serif fonts, colorblind-friendly palettes)
+- Formatting figures for journal specifications (single/double column widths, Nature/Science standards)
+- Integrating Python and Julia workflows using PyCall for cross-language visualization
+- Exporting visualizations to multiple formats (PNG, PDF, SVG for vector graphics, HTML for web embedding)
+- Implementing animations and time-series visualizations with frames and temporal data
+- Building multi-panel scientific figures with consistent styling across subplots
 
 ## Python Visualization Ecosystem
 

@@ -1,6 +1,6 @@
 ---
 name: modern-javascript-patterns
-description: Master ES6+ features including async/await, destructuring, spread operators, arrow functions, promises, modules, iterators, generators, and functional programming patterns for writing clean, efficient JavaScript code. Use when refactoring legacy code, implementing modern patterns, or optimizing JavaScript applications.
+description: Master modern JavaScript (ES6/ES2015 through ES2024) features including async/await, destructuring, spread operators, arrow functions, promises, modules, iterators, generators, optional chaining, nullish coalescing, and functional programming patterns for writing clean, efficient, maintainable code. Use when writing or editing JavaScript files (*.js, *.mjs, *.cjs), when refactoring legacy ES5 code to modern ES6+ syntax, when implementing functional programming patterns with map/filter/reduce and pure functions, when working with asynchronous operations and converting callback-based code to promises or async/await, when optimizing JavaScript applications with debounce, throttle, and memoization patterns, when implementing immutable data patterns using spread operators and array methods, when converting CommonJS modules (require/module.exports) to ES6 modules (import/export), when using modern operators like optional chaining (?.), nullish coalescing (??), and logical assignment (??=, ||=, &&=), when implementing higher-order functions, currying, partial application, and function composition, when creating custom iterators and generators for lazy evaluation and infinite sequences, when utilizing modern class features including private fields (#), static fields, getters/setters, and inheritance patterns, when implementing error handling strategies with try/catch and async/await, when building data transformation pipelines with chained array methods, when optimizing bundle size through tree-shaking with ES6 modules, when implementing dynamic imports for code splitting and lazy loading, when converting prototype-based code to modern class syntax, when applying template literals for string interpolation and tagged templates, when using enhanced object literals with computed properties and method shorthand, or when establishing modern JavaScript coding standards and best practices for teams.
 ---
 
 # Modern JavaScript Patterns
@@ -9,14 +9,94 @@ Comprehensive guide for mastering modern JavaScript (ES6+) features, functional 
 
 ## When to Use This Skill
 
-- Refactoring legacy JavaScript to modern syntax
-- Implementing functional programming patterns
-- Optimizing JavaScript performance
-- Writing maintainable and readable code
-- Working with asynchronous operations
-- Building modern web applications
-- Migrating from callbacks to Promises/async-await
-- Implementing data transformation pipelines
+### File Types and Scenarios
+- Writing or editing JavaScript files: `*.js`, `*.mjs` (ES modules), `*.cjs` (CommonJS)
+- Refactoring legacy ES5 code to ES6+ in existing codebases
+- Creating new JavaScript modules with modern syntax
+- Converting Node.js CommonJS modules to ES6 modules
+
+### Async Programming and Promises
+- Converting callback-based code (callback hell) to Promises
+- Refactoring Promise chains to async/await for better readability
+- Implementing retry logic, timeout patterns, and error handling with async/await
+- Using Promise combinators: `Promise.all()`, `Promise.allSettled()`, `Promise.race()`, `Promise.any()`
+- Handling parallel vs sequential async operations efficiently
+- Implementing top-level await in ES2022+ modules
+
+### Modern Syntax Adoption
+- Using arrow functions (`=>`) instead of traditional function expressions
+- Implementing destructuring for objects and arrays in function parameters and assignments
+- Applying spread operators (`...`) for array/object manipulation and function arguments
+- Using template literals for string interpolation and multi-line strings
+- Implementing optional chaining (`?.`) to safely access nested properties
+- Using nullish coalescing (`??`) for default values (vs `||`)
+- Applying logical assignment operators: `??=`, `||=`, `&&=`
+
+### Functional Programming Patterns
+- Transforming data with `map()`, `filter()`, `reduce()`, `flatMap()`
+- Implementing pure functions without side effects
+- Creating higher-order functions that accept or return functions
+- Implementing function composition and piping for data transformation pipelines
+- Using currying and partial application for reusable function factories
+- Implementing memoization for performance optimization
+- Writing immutable code with spread operators and array methods
+
+### Array and Object Manipulation
+- Using modern array methods: `find()`, `findIndex()`, `some()`, `every()`, `includes()`
+- Implementing immutable updates with spread operators
+- Creating deep clones with `structuredClone()` or JSON methods
+- Using `Array.from()` for converting iterables to arrays
+- Implementing grouped data transformations with `reduce()`
+
+### Module System and Code Organization
+- Converting `require()/module.exports` to `import/export`
+- Implementing ES6 named exports and default exports
+- Using dynamic imports (`import()`) for code splitting
+- Lazy loading modules conditionally based on runtime conditions
+- Organizing code with barrel exports (index.js re-exports)
+
+### Class Features and OOP
+- Converting prototype-based code to modern class syntax
+- Implementing private fields (`#privateField`) and methods
+- Using static fields and methods for class-level functionality
+- Implementing getters and setters for computed properties
+- Using class inheritance with `extends` and `super`
+- Applying constructor patterns and initialization logic
+
+### Advanced Patterns
+- Creating custom iterators with `Symbol.iterator`
+- Implementing generator functions (`function*`) for lazy evaluation
+- Using async generators (`async function*`) for streaming data
+- Implementing infinite sequences with generators (e.g., Fibonacci)
+- Creating tagged template literals for custom string processing
+
+### Performance Optimization
+- Implementing debounce functions for search inputs and resize handlers
+- Creating throttle functions for scroll and mouse move events
+- Using memoization to cache expensive function results
+- Implementing lazy evaluation with generators
+- Optimizing bundle size with tree-shaking through ES6 modules
+
+### Error Handling and Resilience
+- Wrapping async operations in try/catch blocks
+- Implementing centralized error handling patterns
+- Creating retry mechanisms for failed async operations
+- Using finally blocks for cleanup operations
+- Handling promise rejections properly
+
+### Migration and Refactoring
+- Migrating legacy callback-based APIs to Promise-based APIs
+- Converting var declarations to const/let with proper scoping
+- Refactoring for loops to array methods for better readability
+- Modernizing string concatenation to template literals
+- Converting anonymous functions to arrow functions where appropriate
+
+### Code Quality and Best Practices
+- Enforcing const by default, let when necessary, avoiding var
+- Writing self-documenting code with destructuring and spread operators
+- Implementing single responsibility principle with small, focused functions
+- Using meaningful variable names with destructuring aliases
+- Establishing team coding standards for modern JavaScript
 
 ## ES6+ Core Features
 

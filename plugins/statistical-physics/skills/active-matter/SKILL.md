@@ -1,9 +1,33 @@
 ---
 name: active-matter
-description: Model active matter and complex systems including self-propelled particles, flocking, pattern formation, and collective behavior. Use when studying motility-induced phase separation, bacterial colonies, cytoskeletal dynamics, or reaction-diffusion systems with Turing patterns for bio-inspired materials design.
+description: Model active matter and complex systems including self-propelled particles, flocking, pattern formation, and collective behavior with Active Brownian Particles (ABPs), Vicsek model for alignment dynamics, motility-induced phase separation (MIPS), reaction-diffusion systems (Turing patterns, FitzHugh-Nagumo), collective behavior (swarm dynamics, chemotaxis, cytoskeletal dynamics), and Toner-Tu hydrodynamics for active fluids. Use when studying bacterial colonies with phase separation, self-organizing materials (active metamaterials, bio-inspired designs), microfluidic control, pattern formation in developmental biology, swarm robotics, or designing autonomous self-healing materials with emergent collective behavior.
 ---
 
 # Active Matter & Complex Systems
+
+## When to use this skill
+
+- Modeling self-propelled particles with Active Brownian Particle (ABP) dynamics including translational diffusion, rotational diffusion, and self-propulsion speed (*.py, *.jl simulation codes)
+- Simulating motility-induced phase separation (MIPS) in bacterial colonies, active colloids, or cell sorting systems to predict dense/dilute phase coexistence
+- Implementing Vicsek model for flocking dynamics, collective motion, and polar order phase transitions in bird flocks, fish schools, or robot swarms
+- Analyzing reaction-diffusion systems with Turing instability for pattern formation in chemical systems (Belousov-Zhabotinsky reactions), animal coat patterns (spots, stripes, labyrinths), or morphogen gradients in developmental biology
+- Designing FitzHugh-Nagumo excitable media for traveling waves, spiral patterns, or cardiac tissue modeling (*.m MATLAB, *.py Python implementations)
+- Modeling chemotaxis with Keller-Segel equations for cell aggregation, bacterial chemotactic response, or collective migration in wound healing
+- Simulating cytoskeletal dynamics including actin polymerization/depolymerization, motor-driven transport, force generation in cells, or cell division mechanics
+- Analyzing swarm dynamics using Boids rules (cohesion, alignment, separation) for autonomous robot coordination, UAV formations, or crowd dynamics
+- Implementing Toner-Tu hydrodynamics for active fluids with long-range order in 2D flocking systems, giant number fluctuations, or anomalous density correlations
+- Designing active metamaterials with self-propelling mechanical structures, autonomous assembly, reconfiguration capabilities, or collective sensing/response
+- Creating bio-inspired materials including artificial cilia for fluid transport, self-healing through active reorganization, or adaptive camouflage patterns
+- Optimizing microfluidic control using bacteria-driven mixing, chemostat design for bacterial growth, or drug delivery systems with active transport
+- Studying pattern formation in developmental biology including gastrulation, somitogenesis, digit formation, or left-right asymmetry determination
+- Analyzing collective behavior in social systems including pedestrian dynamics, traffic flow, opinion dynamics, or epidemic spreading
+- Implementing agent-based simulations for active particle systems with interactions, alignment rules, or activity-dependent dynamics (*.py, *.cpp codes)
+- Solving continuum simulations for pattern-forming PDEs using finite differences, spectral methods, or adaptive mesh refinement (*.py SciPy, *.jl Julia implementations)
+- Predicting phase transitions in active matter systems including flocking transition density, critical noise threshold, or MIPS critical activity
+- Designing self-organizing materials for soft robotics, reconfigurable materials, autonomous repair mechanisms, or responsive architectures
+- Analyzing topological active matter including topological defects in flocking systems, active turbulence, or active nematics with +1/2 and -1/2 defects
+- Modeling information processing in swarms including distributed decision-making, quorum sensing in bacterial colonies, or collective computation in insect colonies
+- Studying active matter in confined geometries including channel flows, circular boundaries inducing vortices, or microfluidic chambers with pattern formation
 
 Model active matter, pattern formation, and emergent collective behavior in self-propelled and reaction-diffusion systems.
 

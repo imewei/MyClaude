@@ -1,23 +1,38 @@
 ---
 name: gitlab-ci-patterns
-description: Build GitLab CI/CD pipelines with multi-stage workflows, caching, and distributed runners for scalable automation. Use when implementing GitLab CI/CD, optimizing pipeline performance, or setting up automated testing and deployment.
+description: Build GitLab CI/CD pipelines with multi-stage workflows, caching strategies, distributed runners, and scalable automation patterns including Docker-in-Docker builds, Kubernetes deployments, and GitOps integration. Use when implementing GitLab CI/CD pipelines in .gitlab-ci.yml files, creating multi-stage pipelines with dependencies and DAG workflows, optimizing pipeline performance with intelligent caching for node_modules, pip packages, or Maven artifacts, setting up GitLab Runners (shared, specific, or group runners) on Kubernetes or Docker, implementing Docker builds with docker:dind or Kaniko for containerless builds, deploying applications to Kubernetes clusters with kubectl or Helm from GitLab, creating infrastructure deployment pipelines with Terraform and GitLab-managed state, implementing security scanning with SAST, DAST, Dependency Scanning, or Container Scanning templates, setting up automated testing workflows for unit tests, integration tests, and code quality checks, configuring merge request pipelines with approval rules and quality gates, implementing manual deployment jobs with when: manual for production control, creating dynamic child pipelines for monorepo or multi-project deployments, setting up GitLab Pages for static site deployment and documentation hosting, implementing auto-scaling runners with Docker Machine or Kubernetes executors, configuring cache and artifact management for build optimization, setting up scheduled pipelines for nightly builds or periodic tasks, implementing GitOps workflows with GitLab Agent for Kubernetes, integrating with external services using webhooks and API triggers, or managing CI/CD variables, secrets, and environment-specific configurations. Use this skill when working with .gitlab-ci.yml configuration, pipeline stages, jobs, scripts, rules, needs, artifacts, cache, or any GitLab CI/CD-specific features.
 ---
 
 # GitLab CI Patterns
 
 Comprehensive GitLab CI/CD pipeline patterns for automated testing, building, and deployment.
 
-## Purpose
+## When to use this skill
 
-Create efficient GitLab CI pipelines with proper stage organization, caching, and deployment strategies.
-
-## When to Use
-
-- Automate GitLab-based CI/CD
-- Implement multi-stage pipelines
-- Configure GitLab Runners
-- Deploy to Kubernetes from GitLab
-- Implement GitOps workflows
+- When creating or modifying .gitlab-ci.yml pipeline configuration files
+- When setting up multi-stage GitLab CI/CD pipelines (build, test, deploy stages)
+- When implementing Docker builds using docker:dind service or Kaniko for secure builds
+- When deploying applications to Kubernetes clusters using kubectl, Helm, or GitLab Agent
+- When optimizing pipeline performance with caching strategies for dependencies
+- When configuring GitLab Runners (shell, Docker, Kubernetes executors) for CI/CD jobs
+- When implementing infrastructure-as-code deployments with Terraform or Ansible
+- When setting up security scanning with GitLab's built-in SAST, DAST, and dependency scanning
+- When creating merge request pipelines with automated testing and code quality checks
+- When implementing manual approval gates for production deployments
+- When setting up dynamic child pipelines for monorepo or complex multi-project workflows
+- When deploying static websites or documentation to GitLab Pages
+- When configuring auto-scaling runners with Docker Machine or Kubernetes for high-demand workloads
+- When implementing GitOps workflows with GitLab Agent for Kubernetes
+- When setting up scheduled pipelines for nightly builds, weekly reports, or periodic maintenance
+- When managing artifacts and dependencies between pipeline jobs
+- When creating reusable pipeline templates with extends or includes
+- When implementing environment-specific deployments with GitLab Environments
+- When integrating external services using webhooks, triggers, or API calls
+- When managing CI/CD variables, secrets (masked/protected variables), or file variables
+- When implementing review apps for feature branch testing
+- When setting up compliance pipelines or audit trails for regulated environments
+- When troubleshooting pipeline failures, runner issues, or optimization opportunities
+- When migrating from Jenkins, GitHub Actions, or other CI/CD platforms to GitLab CI
 
 ## Basic Pipeline Structure
 

@@ -1,20 +1,32 @@
 ---
 name: model-optimization-deployment
-description: Comprehensive guide for optimizing and deploying neural networks to production environments. Covers quantization, pruning, knowledge distillation, ONNX export, and deployment strategies. Use when preparing models for edge devices, cloud deployment, or production serving.
+description: Optimize and deploy neural networks to production environments with model compression, framework conversion, and serving infrastructure. Use this skill when implementing quantization (INT8, FP16, dynamic/static), pruning (structured/unstructured, magnitude-based, lottery ticket), or knowledge distillation to compress large models. Apply when converting models between frameworks using ONNX export, TorchScript compilation, or TensorFlow Lite conversion. Use when preparing models for edge deployment (mobile, embedded) with TensorFlow Lite, Core ML, or quantization-aware training. Apply when setting up production serving with TorchServe, TensorFlow Serving, Triton Inference Server, or custom REST APIs. Use when optimizing for specific hardware (NVIDIA TensorRT for GPUs, ONNX Runtime for CPUs, CoreML for Apple devices). Apply when implementing batch inference, model versioning, A/B testing, or autoscaling for ML services. Use when working with deployment configuration files, model export scripts (.onnx, .tflite, .pb), serving endpoints, or production monitoring dashboards.
 ---
 
 # Model Optimization & Deployment
 
 Systematic approaches for optimizing neural networks and deploying to production.
 
-## When to Use
+## When to use this skill
 
-- Deploying models to production environments
-- Optimizing for edge devices (mobile, embedded)
-- Reducing model size or inference latency
-- Converting models between frameworks
-- Setting up model serving infrastructure
-- Optimizing for specific hardware (GPU, TPU, CPU)
+- When deploying trained models to production environments (cloud, edge, mobile)
+- When implementing model quantization for size/speed improvements (post-training quantization, quantization-aware training)
+- When applying pruning techniques to reduce model size (unstructured pruning, structured channel/filter pruning)
+- When using knowledge distillation to train smaller student models from large teacher models
+- When converting models between frameworks (PyTorch → ONNX, TensorFlow → TFLite, general → ONNX Runtime)
+- When exporting models for edge devices (TensorFlow Lite for mobile, Core ML for iOS, ONNX for embedded)
+- When optimizing models for specific hardware (TensorRT for NVIDIA GPUs, ONNX Runtime for CPUs, TPU optimization)
+- When setting up model serving infrastructure (TorchServe, TensorFlow Serving, Triton Inference Server, FastAPI/Flask)
+- When implementing batch inference for throughput optimization
+- When configuring model versioning, A/B testing, or canary deployments
+- When reducing inference latency or improving throughput for real-time applications
+- When working with deployment constraints (model size limits, memory budgets, latency requirements)
+- When benchmarking model performance on target hardware
+- When implementing mixed precision inference (FP16, BF16, INT8)
+- When creating deployment pipelines with Docker, Kubernetes, or serverless frameworks
+- When monitoring production model performance, drift detection, or setting up alerting
+- When working with model export files (.onnx, .tflite, .pb, .pt, .torchscript)
+- When optimizing for multi-framework compatibility or cross-platform deployment
 
 ## Model Optimization Techniques
 

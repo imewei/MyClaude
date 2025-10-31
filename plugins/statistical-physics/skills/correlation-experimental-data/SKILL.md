@@ -1,9 +1,34 @@
 ---
 name: correlation-experimental-data
-description: Interpret experimental correlation data from DLS (dynamic light scattering), SAXS/SANS (small-angle scattering), XPCS (X-ray photon correlation spectroscopy), FCS (fluorescence correlation spectroscopy), rheology, and scattering experiments. Extract physical parameters, validate theoretical predictions, perform model fitting with uncertainty quantification, and connect correlation measurements to materials properties.
+description: Interpret experimental correlation data from DLS (dynamic light scattering with g₂(τ) intensity correlation, Siegert relation for field correlation g₁(τ), particle size from Stokes-Einstein with hydrodynamic radius R, stretched exponential KWW fits for polydisperse systems, multi-angle analysis for diffusion coefficient D), SAXS/SANS (structure factor S(q) extraction, pair distribution function g(r) via Fourier transform, Guinier analysis for radius of gyration R_g, Porod regime for surface properties with fractal dimension d), XPCS (two-time correlation C(t₁,t₂) for aging detection, slow dynamics milliseconds to hours, compressed exponential for ballistic/active motion), FCS (3D diffusion model with focal volume, multi-component analysis for free/bound populations, binding kinetics from τ_D), rheology (stress correlations for viscosity η via Green-Kubo, microrheology from particle tracking MSD, viscoelastic moduli G'(ω) and G''(ω)), and scattering experiments. Extract physical parameters (diffusion coefficients, particle sizes, relaxation times, interaction potentials), validate theoretical predictions, perform model fitting with Bayesian inference and MCMC uncertainty quantification, and connect correlation measurements to materials properties.
 ---
 
 # Experimental Data Interpretation
+
+## When to use this skill
+
+- Analyzing DLS autocorrelation data g₂(τ) to extract particle sizes using Siegert relation g₂(τ) = 1 + β|g₁(τ)|² and Stokes-Einstein equation D = kT/(6πηR) (*.py analysis scripts, *.csv data files)
+- Fitting stretched exponential (KWW) functions to DLS data from polydisperse systems, supercooled liquids, or colloidal glasses with β < 1 indicating distribution of relaxation times
+- Performing multi-angle DLS analysis to extract diffusion coefficient D from linear fit of decay rate Γ vs q² across multiple scattering angles (90°, 60°, 120°, etc.)
+- Extracting structure factor S(q) from concentrated colloidal suspensions using SAXS/SANS by comparing I(q)_concentrated / I(q)_dilute with dilute reference measurements
+- Computing pair distribution function g(r) from structure factor S(q) via Fourier transform ρg(r) = ρ + (1/2π²r)∫q²[S(q)-1]sin(qr)dq for liquid structure analysis
+- Performing Guinier analysis on small-angle scattering data to extract radius of gyration R_g from linear fit of ln(I) vs q² in qR_g < 1 regime without assuming particle shape
+- Analyzing Porod regime at large q to determine surface properties: I(q) ~ q⁻⁴ for sharp interfaces, q⁻ᵈ for fractal surfaces with dimension d < 4
+- Interpreting XPCS two-time correlation C(t₁,t₂) to detect aging, non-stationarity, or dynamic heterogeneity in glassy systems, gels, or driven suspensions
+- Fitting compressed exponential (α > 1) to XPCS data from active matter, ballistic motion, or flowing systems where α = 2 indicates ballistic regime
+- Analyzing FCS autocorrelation G(τ) to extract diffusion time τ_D, diffusion coefficient D = r₀²/(4τ_D), average number of molecules N, and concentration from focal volume
+- Performing multi-component FCS analysis to separate fast/slow populations (free vs bound proteins), extract binding kinetics, or analyze oligomerization states
+- Extracting complex viscosity η* = √(G'² + G''²)/ω from oscillatory rheology data with storage modulus G'(ω) and loss modulus G''(ω) measurements
+- Computing relaxation time τ from rheology crossover frequency where G'(ω) = G''(ω) to characterize polymer relaxation, gel formation, or yield stress fluids
+- Performing microrheology from particle tracking MSD to extract complex modulus G*(ω) = kT/(πa⟨Δr²(ω)⟩) using generalized Stokes-Einstein relation
+- Calculating transport coefficients from Green-Kubo relations: viscosity η = (V/kT)∫⟨σ_xy(t)σ_xy(0)⟩dt or diffusion D = ∫⟨v(t)·v(0)⟩dt from correlation functions
+- Validating theoretical predictions against experimental correlations using sum rules: S(q→0) = ρkTκ_T (compressibility), ∫[S(q)-1]dq = 0 (number conservation), Kramers-Kronig for response functions
+- Performing Bayesian parameter estimation with MCMC (emcee, PyMC3) to extract parameter posteriors, credible intervals, and uncertainty quantification from experimental correlation data
+- Conducting model selection using Bayesian Information Criterion (BIC = -2ln(L) + k ln(n)) or Bayes factors to compare single exponential vs stretched exponential vs multi-component models
+- Fitting non-exponential relaxation models to experimental data: stretched exponential for glasses, compressed exponential for active systems, multi-exponential for multiple relaxation processes
+- Extracting interaction potentials from structure factor measurements using Ornstein-Zernike integral equations with Percus-Yevick or hypernetted chain closures
+- Analyzing temperature, concentration, or angle-dependent scattering data to validate scaling laws, identify phase transitions, or extract critical exponents
+- Reporting experimental results with proper uncertainty propagation: radius R_err = R(D_err/D) from diffusion uncertainty, confidence intervals from bootstrap resampling (N=1000 samples)
 
 Interpret correlation measurements from scattering, microscopy, and spectroscopy experiments, connecting raw data to physical parameters and materials properties.
 

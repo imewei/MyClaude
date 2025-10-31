@@ -1,23 +1,38 @@
 ---
 name: github-actions-templates
-description: Create production-ready GitHub Actions workflows for automated testing, building, and deploying applications. Use when setting up CI/CD with GitHub Actions, automating development workflows, or creating reusable workflow templates.
+description: Create production-ready GitHub Actions workflows for automated testing, building, deploying applications, and CI/CD automation with GitHub-hosted or self-hosted runners. Use when setting up continuous integration pipelines with GitHub Actions, creating automated test workflows for Node.js, Python, Java, Go, or other languages, building and pushing Docker images to GitHub Container Registry (ghcr.io), Docker Hub, or Amazon ECR, deploying applications to Kubernetes clusters (EKS, AKS, GKE, or self-hosted), implementing matrix builds for testing across multiple Node versions, Python versions, or operating systems, running security scans with Trivy, Snyk, CodeQL, or Bandit, creating reusable workflow templates for organization-wide standardization, implementing automated dependency updates with Dependabot, setting up pull request workflows with status checks and automated testing, deploying static sites to GitHub Pages or Netlify, implementing release workflows with semantic versioning and changelog generation, creating infrastructure deployment workflows with Terraform or CloudFormation, setting up monorepo workflows with selective job execution, implementing caching strategies for faster builds with npm, pip, or Maven caches, configuring approval gates and environment protection rules for production deployments, integrating third-party services and webhooks for notifications, or automating code quality checks with ESLint, Prettier, Black, or RuboCop. Use this skill when working with .github/workflows/ YAML files, GitHub Actions syntax, workflow triggers (push, pull_request, schedule, workflow_dispatch), jobs and steps configuration, secrets management, or any GitHub Actions-specific automation.
 ---
 
 # GitHub Actions Templates
 
 Production-ready GitHub Actions workflow patterns for testing, building, and deploying applications.
 
-## Purpose
+## When to use this skill
 
-Create efficient, secure GitHub Actions workflows for continuous integration and deployment across various tech stacks.
-
-## When to Use
-
-- Automate testing and deployment
-- Build Docker images and push to registries
-- Deploy to Kubernetes clusters
-- Run security scans
-- Implement matrix builds for multiple environments
+- When creating new GitHub Actions workflows in .github/workflows/ directory
+- When setting up continuous integration (CI) for automated testing on every push and pull request
+- When building Docker images and pushing to registries (ghcr.io, Docker Hub, ECR, ACR, GCR)
+- When deploying applications to cloud platforms (AWS, Azure, GCP, DigitalOcean, Vercel, Netlify)
+- When deploying to Kubernetes clusters (EKS, AKS, GKE) with kubectl or Helm
+- When implementing matrix builds to test across multiple Node.js versions, Python versions, or operating systems
+- When running security scans with Trivy, Snyk, CodeQL, Semgrep, or language-specific scanners
+- When creating reusable workflows for consistent CI/CD patterns across repositories
+- When setting up automated testing workflows for unit tests, integration tests, or end-to-end tests
+- When implementing pull request workflows with automated code review, linting, and formatting checks
+- When deploying static websites to GitHub Pages, Netlify, or Vercel
+- When creating release workflows with automated version bumping and changelog generation
+- When setting up infrastructure-as-code deployments with Terraform, Pulumi, or AWS CDK
+- When configuring caching for dependencies (npm, pip, cargo, Maven) to speed up workflow runs
+- When implementing approval gates using GitHub Environments for production deployments
+- When automating dependency updates and vulnerability patching workflows
+- When setting up monorepo workflows with path filtering and selective job execution
+- When integrating status checks, branch protection, and required reviewers
+- When configuring self-hosted runners for specialized build environments or compliance requirements
+- When implementing notification workflows for Slack, Discord, Microsoft Teams, or email
+- When setting up scheduled workflows for nightly builds, weekly reports, or periodic cleanup tasks
+- When working with GitHub Actions marketplace actions or creating custom composite actions
+- When managing secrets, environment variables, and sensitive credentials in workflows
+- When troubleshooting workflow failures, debugging job outputs, or optimizing pipeline performance
 
 ## Common Workflow Patterns
 

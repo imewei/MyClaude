@@ -1,6 +1,6 @@
 ---
 name: langchain-architecture
-description: Design LLM applications using the LangChain framework with agents, memory, and tool integration patterns. Use when building LangChain applications, implementing AI agents, or creating complex LLM workflows.
+description: Design and build LLM applications using the LangChain framework with agents, chains, memory systems, and tool integration patterns. Use when writing or editing Python files that implement LangChain agents, autonomous AI systems with tool access, conversational AI with memory, document processing pipelines, retrieval-augmented generation (RAG) chains, multi-step LLM workflows, or custom agent executors. Apply this skill when working with langchain imports, creating agent configurations, implementing callback handlers for monitoring, designing chain compositions (Sequential, Router, MapReduce), integrating vector stores with retrievers, managing conversation memory (buffer, summary, entity, vector-based), building custom tools with the @tool decorator, or orchestrating complex AI workflows with LangGraph state machines.
 ---
 
 # LangChain Architecture
@@ -9,13 +9,20 @@ Master the LangChain framework for building sophisticated LLM applications with 
 
 ## When to Use This Skill
 
-- Building autonomous AI agents with tool access
-- Implementing complex multi-step LLM workflows
-- Managing conversation memory and state
-- Integrating LLMs with external data sources and APIs
-- Creating modular, reusable LLM application components
-- Implementing document processing pipelines
-- Building production-grade LLM applications
+- Writing or editing Python files (`.py`) that import from `langchain` packages
+- Building autonomous AI agents with tool access and decision-making capabilities
+- Implementing complex multi-step LLM workflows using chains (LLMChain, SequentialChain, RouterChain)
+- Managing conversation memory and state across interactions (ConversationBufferMemory, ConversationSummaryMemory)
+- Integrating LLMs with external data sources, APIs, databases, or web search tools
+- Creating modular, reusable LLM application components with custom tools and callbacks
+- Implementing document processing pipelines with loaders, text splitters, and vector stores
+- Building production-grade LLM applications with error handling, monitoring, and observability
+- Designing RAG (Retrieval-Augmented Generation) systems using LangChain's retrieval chains
+- Creating agent executor configurations with ReAct, OpenAI Functions, or Conversational agents
+- Working with LangGraph for state machine-based agent workflows
+- Implementing callback handlers for logging, token tracking, and performance monitoring
+- Building chatbots that need persistent memory across sessions
+- Creating AI assistants that can search databases, send emails, or execute code
 
 ## Core Concepts
 

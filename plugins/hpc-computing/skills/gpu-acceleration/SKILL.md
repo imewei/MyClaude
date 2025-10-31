@@ -1,9 +1,28 @@
 ---
 name: gpu-acceleration
-description: Implement GPU acceleration using CUDA/ROCm for NVIDIA/AMD GPUs. Use when offloading computations with CuPy/Numba (Python) or CUDA.jl (Julia), optimizing GPU kernels for matrix operations and PDE solvers, or managing hybrid CPU-GPU pipelines with memory optimization and multi-device orchestration.
+description: Implement GPU acceleration for scientific computing using CUDA (NVIDIA) and ROCm (AMD) with framework integration and kernel optimization. Use this skill when offloading array computations to GPU with CuPy (Python) or CUDA.jl (Julia) for NumPy-like GPU operations, writing custom CUDA kernels using @cuda.jit decorators in Numba or CUDA.jl kernel macros for domain-specific algorithms, optimizing GPU memory management with pinned memory and asynchronous transfers for minimizing CPU-GPU communication overhead, implementing GPU-accelerated ODE/PDE solvers for large-scale numerical simulations, parallelizing matrix operations (matrix multiplication, SVD, eigenvalue decomposition) on GPU for linear algebra computations, managing multi-GPU workflows for distributed GPU computing across multiple devices, profiling GPU performance with NVIDIA Nsight Systems or Nsight Compute to identify bottlenecks and optimize kernel occupancy, designing hybrid CPU-GPU pipelines that overlap computation with data transfer using CUDA streams, implementing GPU-accelerated Monte Carlo simulations or particle-based methods with massive parallelism, optimizing memory coalescing and shared memory usage in custom CUDA kernels for performance, working with .cu CUDA source files or GPU-enabled Python/Julia scripts, configuring GPU resources in HPC job schedulers (SLURM --gres=gpu), or migrating CPU-bound numerical code to GPU for 10-100x speedups in data-parallel workloads.
 ---
 
 # GPU Acceleration
+
+## When to use this skill
+
+- When implementing GPU-accelerated array operations using CuPy or CUDA.jl
+- When writing custom CUDA kernels with Numba's @cuda.jit or CUDA.jl kernel syntax
+- When optimizing GPU memory transfers and managing pinned memory for performance
+- When parallelizing large-scale matrix operations (matmul, SVD, eigensolvers) on GPU
+- When implementing GPU-accelerated ODE/PDE solvers for scientific simulations
+- When working with .cu CUDA source files or GPU-enabled Python/Julia scripts
+- When managing multi-GPU computations across multiple devices
+- When profiling GPU code with NVIDIA Nsight Systems or Nsight Compute
+- When designing hybrid CPU-GPU workflows with asynchronous data transfers
+- When optimizing CUDA kernel parameters (block size, grid size, shared memory)
+- When implementing GPU-accelerated Monte Carlo methods or particle simulations
+- When configuring GPU resources in SLURM job scripts (--gres=gpu:4)
+- When migrating CPU NumPy code to GPU CuPy for performance improvements
+- When ensuring memory coalescing and minimizing divergent branches in GPU kernels
+- When benchmarking CPU versus GPU performance for specific numerical algorithms
+- When working with GPU-enabled scientific libraries (cuBLAS, cuFFT, cuSolver)
 
 ## Overview
 

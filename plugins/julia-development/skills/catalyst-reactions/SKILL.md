@@ -1,11 +1,25 @@
 ---
 name: catalyst-reactions
-description: Reaction network modeling with Catalyst.jl for chemical and biochemical systems. Supports deterministic ODE and stochastic simulation.
+description: Master reaction network modeling with Catalyst.jl for chemical and biochemical systems supporting both deterministic ODE and stochastic simulations. Use when modeling chemical reactions (.jl files with @reaction_network), defining reaction rates and stoichiometry, converting reaction networks to ODESystem or JumpSystem, working with mass action kinetics, implementing Gillespie stochastic simulations, modeling biochemical pathways (metabolic networks, gene regulation), specifying reaction parameters and species, integrating with DifferentialEquations.jl for simulation, or analyzing chemical/biological systems. Essential for systems biology, chemical engineering, and biochemical modeling workflows.
 ---
 
 # Catalyst Reaction Networks
 
 Model chemical reaction networks with Catalyst.jl.
+
+## When to use this skill
+
+- Modeling chemical reactions with @reaction_network macro
+- Defining reaction rates and stoichiometric coefficients
+- Converting reaction networks to ODESystem or JumpSystem
+- Working with mass action kinetics and rate laws
+- Implementing Gillespie algorithm for stochastic simulations
+- Modeling biochemical pathways (metabolism, gene regulation, signaling)
+- Specifying reaction parameters and chemical species
+- Integrating with DifferentialEquations.jl for deterministic/stochastic simulation
+- Analyzing steady states and bifurcations in reaction systems
+- Modeling enzyme kinetics (Michaelis-Menten, Hill equations)
+- Building systems biology models
 
 ## Reaction Network Pattern
 ```julia

@@ -1,21 +1,35 @@
 ---
 name: api-design-principles
-description: Master REST and GraphQL API design principles to build intuitive, scalable, and maintainable APIs that delight developers. Use when designing new APIs, reviewing API specifications, or establishing API design standards.
+description: Master REST and GraphQL API design principles including resource-oriented architecture, HTTP semantics, RESTful endpoint patterns, GraphQL schema design, pagination strategies (cursor-based, offset-based), API versioning (URL, header, query parameter), error handling with consistent status codes, and HATEOAS hypermedia patterns. Use this skill when designing new REST or GraphQL APIs from scratch, when refactoring existing APIs for better usability and developer experience, when reviewing API specifications and contracts before implementation, when establishing API design standards and conventions for development teams, when implementing pagination for large data collections, when designing API versioning strategies to handle breaking changes gracefully, when creating developer-friendly API documentation and interactive docs with OpenAPI/Swagger, when optimizing APIs for specific use cases such as mobile applications or third-party integrations, when implementing consistent error response formats across all endpoints, when designing GraphQL schemas with proper types, queries, mutations, and subscriptions, when implementing DataLoader patterns to prevent N+1 query problems in GraphQL, when migrating between API paradigms (REST to GraphQL or vice versa), when adding authentication and authorization to API endpoints, when implementing rate limiting and throttling for API protection, when designing webhook systems with retry logic and signature verification, or when building HATEOAS-compliant APIs with discoverable resource relationships. Use this skill for all aspects of API design, specification, implementation, documentation, versioning, error handling, pagination, authentication, and developer experience optimization.
 ---
 
 # API Design Principles
 
 Master REST and GraphQL API design principles to build intuitive, scalable, and maintainable APIs that delight developers and stand the test of time.
 
-## When to Use This Skill
+## When to use this skill
 
-- Designing new REST or GraphQL APIs
-- Refactoring existing APIs for better usability
-- Establishing API design standards for your team
-- Reviewing API specifications before implementation
-- Migrating between API paradigms (REST to GraphQL, etc.)
-- Creating developer-friendly API documentation
-- Optimizing APIs for specific use cases (mobile, third-party integrations)
+- When designing new REST or GraphQL APIs from scratch for web or mobile applications
+- When refactoring existing APIs to improve usability, performance, or developer experience
+- When establishing API design standards, conventions, and best practices for development teams
+- When reviewing API specifications and contracts before implementation begins
+- When implementing pagination strategies for large data collections (cursor-based, offset-based, or keyset pagination)
+- When designing API versioning strategies to handle breaking changes without disrupting existing clients
+- When creating developer-friendly API documentation using OpenAPI/Swagger, GraphQL Playground, or similar tools
+- When optimizing APIs for specific use cases such as mobile applications, third-party integrations, or microservices communication
+- When implementing consistent error response formats with proper HTTP status codes across all endpoints
+- When designing GraphQL schemas with types, queries, mutations, subscriptions, and proper type relationships
+- When implementing DataLoader patterns or batching strategies to prevent N+1 query problems in GraphQL APIs
+- When migrating between API paradigms (REST to GraphQL, GraphQL to REST, or SOAP to REST)
+- When adding authentication (JWT, OAuth2, API keys) and authorization (RBAC, ABAC) to API endpoints
+- When implementing rate limiting, throttling, or quota management to protect API resources
+- When designing webhook delivery systems with retry logic, exponential backoff, and signature verification
+- When building HATEOAS-compliant APIs with hypermedia links for resource discovery
+- When implementing filtering, sorting, and searching capabilities for API resources
+- When designing file upload/download endpoints with proper multipart handling and progress tracking
+- When creating bulk operation endpoints for batch create, update, or delete operations
+- When implementing real-time APIs with GraphQL subscriptions, Server-Sent Events (SSE), or WebSockets
+- When working with API files, route configurations, controller implementations, or API specification documents (OpenAPI YAML/JSON, GraphQL schemas)
 
 ## Core Concepts
 

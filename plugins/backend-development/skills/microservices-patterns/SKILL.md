@@ -1,21 +1,38 @@
 ---
 name: microservices-patterns
-description: Design microservices architectures with service boundaries, event-driven communication, and resilience patterns. Use when building distributed systems, decomposing monoliths, or implementing microservices.
+description: Design microservices architectures with clear service boundaries based on business capabilities or DDD bounded contexts, event-driven communication patterns (message queues, event streaming with Kafka/RabbitMQ), resilience patterns (circuit breakers, retries with exponential backoff, bulkheads, timeouts), Saga patterns for distributed transactions, API Gateway for request routing and aggregation, service discovery and load balancing, database-per-service pattern, CQRS and Event Sourcing, asynchronous messaging with pub/sub, synchronous communication with REST/gRPC/GraphQL, distributed tracing with OpenTelemetry, health checks and readiness probes, service mesh patterns (Istio, Linkerd), and strangler fig pattern for gradual migration. Use this skill when decomposing monolithic applications into microservices with proper service boundaries, when designing service boundaries and contracts based on business capabilities or domain-driven design, when implementing inter-service communication using synchronous (REST, gRPC) or asynchronous (Kafka, RabbitMQ) patterns, when managing distributed data with database-per-service and eventual consistency, when building resilient distributed systems with circuit breakers, retries, and fault tolerance, when implementing service discovery for dynamic service location and load balancing, when designing event-driven architectures with message brokers or event streaming platforms, when implementing API Gateway patterns for request routing, composition, and authentication, when implementing Saga patterns for distributed transactions with compensating actions, when building service mesh architectures for observability, traffic management, and security, when implementing health checks, liveness probes, and readiness probes for container orchestration, when designing strangler fig patterns for gradual monolith-to-microservices migration, when implementing distributed tracing and monitoring across microservices, when handling inter-service authentication and authorization with service-to-service auth, when implementing rate limiting, circuit breakers, or bulkheads to isolate failures, or when designing microservices deployment strategies with Docker, Kubernetes, and CI/CD pipelines. Use this skill for all aspects of microservices architecture design including service decomposition, communication patterns, data management, resilience, observability, and deployment strategies.
 ---
 
 # Microservices Patterns
 
 Master microservices architecture patterns including service boundaries, inter-service communication, data management, and resilience patterns for building distributed systems.
 
-## When to Use This Skill
+## When to use this skill
 
-- Decomposing monoliths into microservices
-- Designing service boundaries and contracts
-- Implementing inter-service communication
-- Managing distributed data and transactions
-- Building resilient distributed systems
-- Implementing service discovery and load balancing
-- Designing event-driven architectures
+- When decomposing monolithic applications into microservices with proper service boundary definition
+- When designing service boundaries and contracts based on business capabilities or domain-driven design bounded contexts
+- When implementing inter-service communication using synchronous patterns (REST, gRPC, GraphQL) or asynchronous patterns (Kafka, RabbitMQ, SQS)
+- When managing distributed data with database-per-service pattern and eventual consistency models
+- When building resilient distributed systems with circuit breakers, retries, timeouts, and fault tolerance
+- When implementing service discovery for dynamic service location and client-side or server-side load balancing
+- When designing event-driven architectures with message brokers, event streaming, or pub/sub patterns
+- When implementing API Gateway patterns for request routing, response aggregation, and centralized authentication
+- When implementing Saga patterns (orchestration or choreography) for distributed transactions with compensating actions
+- When building service mesh architectures (Istio, Linkerd, Consul Connect) for observability and traffic management
+- When implementing health checks, liveness probes, and readiness probes for Kubernetes or container orchestration
+- When designing strangler fig patterns for gradual migration from monolith to microservices
+- When implementing distributed tracing with OpenTelemetry, Jaeger, or Zipkin across microservices
+- When handling inter-service authentication and authorization with service accounts, JWT, or mTLS
+- When implementing rate limiting, circuit breakers, or bulkhead patterns to isolate failures and prevent cascade failures
+- When designing microservices deployment strategies with Docker containers, Kubernetes, and CI/CD pipelines
+- When implementing CQRS (Command Query Responsibility Segregation) or Event Sourcing in microservices
+- When designing asynchronous communication with message queues for decoupled, resilient service interactions
+- When implementing service-to-service retries with exponential backoff for transient failure handling
+- When building Backend for Frontend (BFF) pattern for different client types (mobile, web, third-party)
+- When implementing distributed caching strategies with Redis or Memcached across microservices
+- When designing data synchronization or replication strategies across service boundaries
+- When working with microservices project structure, service definitions, inter-service contracts, or deployment configurations
+- When implementing polyglot persistence with different databases optimized for each service's needs
 
 ## Core Concepts
 

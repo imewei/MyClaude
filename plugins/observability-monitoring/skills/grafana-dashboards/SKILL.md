@@ -1,9 +1,27 @@
 ---
 name: grafana-dashboards
-description: Create and manage production Grafana dashboards for real-time visualization of system and application metrics. Use when building monitoring dashboards, visualizing metrics, or creating operational observability interfaces.
+description: Create and manage production-ready Grafana dashboards with panels, variables, alerts, and templates for real-time visualization of system and application metrics. Use when building or modifying Grafana dashboard JSON files, creating monitoring dashboards for applications or infrastructure, visualizing Prometheus or other data source metrics, designing SLO and error budget dashboards, implementing dashboard panels (graphs, stats, tables, heatmaps), configuring dashboard variables and templating, setting up dashboard alerts and notifications, provisioning dashboards as code with Terraform or Ansible, creating RED method dashboards for services, designing USE method dashboards for resources, implementing time-series visualizations, or building custom business KPI dashboards.
 ---
 
 # Grafana Dashboards
+
+## When to use this skill
+
+- Creating or modifying Grafana dashboard JSON files (*.json in dashboards/ directories)
+- Building monitoring dashboards for applications, APIs, or microservices
+- Visualizing metrics from Prometheus, InfluxDB, Elasticsearch, or other data sources
+- Designing SLO (Service Level Objective) and error budget tracking dashboards
+- Implementing dashboard panels: graphs, stat panels, tables, heatmaps, gauges
+- Configuring dashboard variables and templating for dynamic filtering
+- Setting up dashboard alerts and notification channels (Slack, PagerDuty, email)
+- Provisioning dashboards as code using Terraform, Ansible, or Kubernetes ConfigMaps
+- Creating RED method dashboards (Rate, Errors, Duration) for service monitoring
+- Designing USE method dashboards (Utilization, Saturation, Errors) for resource monitoring
+- Implementing time-series visualizations with proper time ranges and intervals
+- Building database monitoring dashboards (query latency, connection pools, replication lag)
+- Creating infrastructure dashboards (CPU, memory, disk, network)
+- Designing application-specific dashboards with custom business KPIs
+- Working with Grafana provisioning YAML files for automated dashboard deployment
 
 Create and manage production-ready Grafana dashboards for comprehensive system observability.
 
@@ -11,7 +29,7 @@ Create and manage production-ready Grafana dashboards for comprehensive system o
 
 Design effective Grafana dashboards for monitoring applications, infrastructure, and business metrics.
 
-## When to Use
+## Key Use Cases
 
 - Visualize Prometheus metrics
 - Create custom dashboards

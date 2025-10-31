@@ -1,6 +1,6 @@
 ---
 name: typescript-advanced-types
-description: Master TypeScript's advanced type system including generics, conditional types, mapped types, template literals, and utility types for building type-safe applications. Use when implementing complex type logic, creating reusable type utilities, or ensuring compile-time type safety in TypeScript projects.
+description: Master TypeScript's advanced type system including generics, conditional types, mapped types, template literal types, utility types (Partial, Required, Pick, Omit, Record), type inference with infer keyword, branded types, discriminated unions, and recursive types for building robust, type-safe applications with compile-time guarantees. Use when writing or editing TypeScript files (*.ts, *.tsx, *.d.ts), when implementing complex type logic with conditional types and type inference, when creating reusable generic components and functions with type constraints, when designing type-safe API clients with branded types and discriminated unions, when building form validation systems with type-safe schema definitions, when creating strongly-typed configuration objects with template literal types, when implementing type-safe state management with discriminated unions and exhaustiveness checking, when migrating JavaScript codebases to TypeScript with incremental type adoption, when using utility types to transform and manipulate existing types (Partial, Required, Pick, Omit, Readonly, Record, Extract, Exclude, NonNullable), when implementing mapped types for dynamic key generation and property transformation, when creating type guards and assertion functions for runtime type narrowing, when designing branded types to prevent primitive obsession and add semantic meaning, when building recursive types for tree structures and nested data, when implementing type-safe builders and fluent APIs with method chaining, when creating advanced generic constraints with extends and keyof, when using template literal types for string manipulation at type level, when implementing type inference with the infer keyword in conditional types, when designing type-safe event systems with discriminated unions, when creating type utilities for deep readonly, deep partial, or deep required transformations, when ensuring exhaustive checking in switch statements with never type, or when establishing TypeScript type patterns and advanced type usage standards for teams.
 ---
 
 # TypeScript Advanced Types
@@ -9,14 +9,160 @@ Comprehensive guidance for mastering TypeScript's advanced type system including
 
 ## When to Use This Skill
 
-- Building type-safe libraries or frameworks
-- Creating reusable generic components
-- Implementing complex type inference logic
-- Designing type-safe API clients
-- Building form validation systems
-- Creating strongly-typed configuration objects
-- Implementing type-safe state management
-- Migrating JavaScript codebases to TypeScript
+### TypeScript File Creation and Editing
+- Writing or editing TypeScript source files: `*.ts`, `*.tsx` (React)
+- Creating TypeScript declaration files: `*.d.ts` for type definitions
+- Working with type definition files in `@types/` packages
+- Creating shared type files: `types.ts`, `models.ts`, `interfaces.ts`
+
+### Generic Type Implementation
+- Creating generic functions with type parameters (`<T>`, `<T, U>`)
+- Implementing generic classes and interfaces for reusable components
+- Using generic constraints with `extends` keyword for type safety
+- Creating generic React components with typed props
+- Implementing generic repository or service classes
+- Building generic data structures (Stack, Queue, LinkedList)
+- Creating type-safe HOCs (Higher-Order Components) in React
+- Implementing generic utility functions with proper type inference
+
+### Conditional Types and Type Inference
+- Creating conditional types with `T extends U ? X : Y` syntax
+- Using the `infer` keyword to extract types from complex structures
+- Implementing custom `ReturnType`, `Parameters`, or `ConstructorParameters` utilities
+- Creating distributive conditional types over union types
+- Building type-level pattern matching with conditional types
+- Extracting nested property types from complex objects
+- Implementing custom type predicates with conditional logic
+
+### Mapped Types and Type Transformations
+- Creating mapped types with `{ [K in keyof T]: ... }` syntax
+- Implementing custom `Partial`, `Required`, `Readonly` type utilities
+- Using `Pick` to select specific properties from types
+- Using `Omit` to exclude properties from types
+- Creating mapped types with key remapping using `as` keyword
+- Implementing deep transformations (DeepPartial, DeepReadonly)
+- Building conditional property types based on value types
+
+### Utility Type Usage
+- Applying built-in utility types: `Partial<T>`, `Required<T>`, `Readonly<T>`
+- Using `Pick<T, K>` to create subsets of types
+- Using `Omit<T, K>` to remove properties from types
+- Creating record types with `Record<K, V>` for key-value mappings
+- Using `Extract<T, U>` and `Exclude<T, U>` for union type filtering
+- Applying `NonNullable<T>` to remove null and undefined
+- Using `ReturnType<T>`, `Parameters<T>`, `InstanceType<T>` for function/class types
+- Implementing `Awaited<T>` for unwrapping Promise types
+
+### Template Literal Types
+- Creating template literal types for string pattern matching
+- Implementing type-safe CSS-in-JS with template literals
+- Building route path types with template literals
+- Creating branded types with template literal strings
+- Implementing string manipulation at type level (Uppercase, Lowercase, Capitalize, Uncapitalize)
+- Building auto-completion for string literals with unions
+
+### Discriminated Unions and Type Guards
+- Creating discriminated unions with common discriminant properties
+- Implementing exhaustive checking with switch statements and never type
+- Writing type guard functions with `is` keyword for runtime narrowing
+- Creating assertion functions with `asserts` keyword
+- Implementing narrowing with typeof, instanceof, and custom guards
+- Building type-safe state machines with discriminated unions
+- Creating type-safe event systems with union types
+
+### Branded Types and Nominal Typing
+- Implementing branded types to prevent primitive obsession
+- Creating nominal types for IDs, emails, URLs with type brands
+- Using intersection types with unique symbols for branding
+- Implementing validation with branded type constructors
+- Creating type-safe newtypes for domain modeling
+- Preventing accidental type mixing with branded primitives
+
+### Advanced Generic Constraints
+- Using `extends` keyword for generic constraints
+- Implementing `keyof` constraint for object key access
+- Creating generic constraints with multiple bounds
+- Using `typeof` with generics for type capture
+- Implementing recursive generic constraints
+- Building complex generic hierarchies with variance
+
+### Type Inference and Type Narrowing
+- Leveraging automatic type inference in variable declarations
+- Using `as const` for literal type inference
+- Implementing control flow analysis for type narrowing
+- Using discriminated unions for narrowing in switch/if statements
+- Creating exhaustiveness checks with never type
+- Implementing type narrowing with assertion functions
+
+### Recursive and Self-Referential Types
+- Creating recursive types for tree structures and nested data
+- Implementing JSON types with recursive definitions
+- Building recursive mapped types for deep transformations
+- Creating recursive conditional types with depth limits
+- Implementing linked list or tree node types with self-references
+
+### Type-Safe APIs and Builders
+- Designing type-safe REST API clients with branded types
+- Implementing type-safe GraphQL clients with generated types
+- Creating fluent API builders with method chaining
+- Implementing type-safe configuration objects with template literals
+- Building type-safe form builders with discriminated unions
+- Creating type-safe query builders for databases
+
+### Advanced Type Patterns
+- Implementing variance in generics (covariance, contravariance)
+- Creating phantom types for state machines
+- Implementing type-level programming with conditional types
+- Building type-safe dependency injection containers
+- Creating opaque types for information hiding
+- Implementing nominal typing patterns in TypeScript
+
+### Type Definition Creation
+- Writing `.d.ts` declaration files for JavaScript libraries
+- Creating ambient module declarations with `declare module`
+- Implementing module augmentation for third-party types
+- Creating global type declarations with `declare global`
+- Writing JSDoc type annotations for gradual TypeScript adoption
+- Creating type-only imports and exports with `import type`
+
+### Migration and Refactoring
+- Migrating JavaScript to TypeScript incrementally
+- Replacing `any` with proper generic types
+- Refactoring callback functions to use generic constraints
+- Converting JavaScript classes to TypeScript with proper typing
+- Adding type annotations to existing codebases
+- Implementing strict TypeScript compiler options gradually
+
+### React-Specific Type Patterns
+- Typing React component props with generics
+- Creating discriminated unions for component variants
+- Implementing type-safe context providers
+- Typing React hooks with proper generic constraints
+- Creating type-safe custom hooks
+- Implementing render props with generic types
+- Typing HOCs (Higher-Order Components) properly
+
+### Form and Validation Type Safety
+- Creating type-safe form schemas with Zod, Yup, or io-ts
+- Implementing discriminated unions for form states
+- Building type-safe validation functions
+- Creating branded types for validated data
+- Implementing type-safe form builders
+
+### State Management Typing
+- Typing Redux actions with discriminated unions
+- Creating type-safe reducers with exhaustive checking
+- Implementing type-safe selectors
+- Typing Zustand stores with proper inference
+- Creating type-safe state machines with XState
+- Implementing type-safe context providers
+
+### Performance and Optimization
+- Using type-only imports to reduce bundle size
+- Implementing proper type inference to avoid excessive annotations
+- Creating reusable type utilities to reduce duplication
+- Using `const` assertions for literal type optimization
+- Optimizing type checking performance with proper constraints
 
 ## Core Concepts
 

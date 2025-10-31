@@ -1,11 +1,25 @@
 ---
 name: differential-equations
-description: Master ODE, PDE, SDE, and DAE solving with DifferentialEquations.jl. Use for problem definition, solver selection, callbacks, ensemble simulations, and sensitivity analysis. Foundation for /sciml-setup command templates.
+description: Master solving ODE, PDE, SDE, and DAE with DifferentialEquations.jl for scientific simulations and numerical analysis. Use when defining differential equation systems (.jl files with ODEProblem, SDEProblem, PDEProblem, DAEProblem), selecting appropriate solvers (Tsit5, Vern7, Rodas5, TRBDF2 for stiff problems), implementing callbacks (ContinuousCallback, DiscreteCallback, PeriodicCallback for events), creating ensemble simulations (EnsembleProblem with EnsembleThreads, EnsembleGPUArray), performing sensitivity analysis, handling stiff vs non-stiff problems, working with in-place vs out-of-place formulations, or integrating with ModelingToolkit.jl. Foundation for /sciml-setup command templates and essential for all scientific computing with differential equations in Julia.
 ---
 
 # Differential Equations
 
 Master solving differential equations in Julia with the DifferentialEquations.jl ecosystem.
+
+## When to use this skill
+
+- Defining ODE, PDE, SDE, or DAE systems in Julia (.jl files)
+- Creating ODEProblem, SDEProblem, PDEProblem, DAEProblem instances
+- Selecting appropriate solvers (Tsit5, Vern7, Rodas5, KenCarp4, TRBDF2)
+- Implementing callbacks for event handling (PeriodicCallback, ContinuousCallback)
+- Setting up ensemble simulations with EnsembleProblem
+- Performing parameter studies and sensitivity analysis
+- Handling stiff vs non-stiff differential equations
+- Working with in-place (du, u, p, t) vs out-of-place formulations
+- Integrating with ModelingToolkit.jl for symbolic equations
+- Solving systems from physics, biology, chemistry, or engineering
+- Running Monte Carlo simulations with stochastic differential equations
 
 ## Core Patterns
 

@@ -1,26 +1,34 @@
 ---
 name: neural-network-mathematics
-description: Mathematical foundations for neural networks covering linear algebra, calculus, probability, optimization theory, and information theory. Use this skill when mathematical derivations, proofs, or deep theoretical understanding is needed for neural network concepts.
+description: Apply mathematical foundations of neural networks including linear algebra, calculus, probability theory, optimization, and information theory for deep theoretical understanding and custom implementations. Use this skill when deriving backpropagation for custom layers, computing Jacobians/Hessians, or implementing automatic differentiation. Apply when analyzing gradient flow dynamics, proving convergence properties, or understanding optimization algorithms (SGD, Adam, momentum methods). Use when working with probabilistic neural networks, Bayesian deep learning, variational inference, or uncertainty quantification. Apply when deriving loss functions from maximum likelihood principles, analyzing generalization bounds, or understanding PAC learning theory. Use when computing matrix derivatives for custom operations, implementing efficient tensor operations with einsum, or optimizing numerical stability. Apply when analyzing information-theoretic properties (mutual information, entropy, KL divergence), understanding loss landscape geometry, or proving universal approximation theorems. Use when working with mathematical notation in research papers, translating mathematical formulations to code, or debugging gradient computations through numerical checking.
 ---
 
 # Neural Network Mathematics
 
 This skill provides comprehensive mathematical foundations essential for understanding and implementing neural networks. It covers linear algebra, calculus, probability theory, optimization, and information theory from both theoretical and practical perspectives.
 
-## When to Use This Skill
+## When to use this skill
 
-This skill should be used when:
-
-- Deriving backpropagation for custom architectures or loss functions
-- Understanding gradient flow and optimization dynamics mathematically
-- Analyzing convergence properties of training algorithms
-- Explaining theoretical properties of neural networks (universal approximation, generalization bounds)
-- Computing Jacobians, Hessians, or higher-order derivatives
-- Understanding information-theoretic perspectives on deep learning
-- Proving mathematical properties of architectures or algorithms
-- Analyzing loss landscapes and optimization trajectories
-- Working with probabilistic neural networks or Bayesian deep learning
-- Understanding the mathematics behind specific components (attention, normalization, etc.)
+- When deriving backpropagation equations for custom neural network layers or novel architectures
+- When computing Jacobians, Hessians, vector-Jacobian products (VJPs), or higher-order derivatives
+- When implementing automatic differentiation for custom operations in JAX, PyTorch, or TensorFlow
+- When analyzing gradient flow dynamics through deep networks (vanishing/exploding gradients)
+- When understanding optimization algorithm mathematics (SGD with momentum, Adam, AdamW, natural gradient)
+- When proving convergence properties or analyzing optimization trajectories
+- When deriving loss functions from probabilistic first principles (MLE, MAP estimation)
+- When working with probabilistic neural networks, Bayesian deep learning, or variational inference
+- When implementing uncertainty quantification or calibrating prediction confidence
+- When understanding generalization theory (PAC learning, VC dimension, Rademacher complexity)
+- When analyzing loss landscape geometry, Hessian eigenspectra, or curvature
+- When computing matrix derivatives for tensor operations or deriving gradients manually
+- When implementing efficient tensor operations using Einstein notation (einsum)
+- When ensuring numerical stability in computations (log-sum-exp trick, epsilon in denominators)
+- When debugging gradient implementations through numerical gradient checking
+- When understanding information-theoretic concepts (entropy, KL divergence, mutual information, information bottleneck)
+- When proving universal approximation theorems or analyzing model expressiveness
+- When translating mathematical notation from research papers into executable code
+- When working with eigenvalue analysis for initialization strategies or spectral normalization
+- When implementing custom attention mechanisms requiring mathematical derivation
 
 ## Core Mathematical Domains
 

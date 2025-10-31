@@ -1,11 +1,25 @@
 ---
 name: visualization-patterns
-description: Master Plots.jl, Makie.jl, and StatsPlots.jl for data visualization in Julia. Use for creating line plots, scatter plots, heatmaps, 3D visualizations, statistical plots, and interactive graphics.
+description: Master Plots.jl, Makie.jl, and StatsPlots.jl for comprehensive data visualization in Julia. Use when creating visualizations in Julia scripts (.jl files with plot(), scatter(), heatmap()), selecting visualization backends (gr(), plotly(), pyplot()), making line plots, scatter plots, and heatmaps, creating 3D visualizations with surface() and contour(), building statistical plots (histograms, density plots, box plots), implementing interactive graphics with Plotly or Makie, creating publication-quality figures with Makie.jl (GLMakie, CairoMakie), animating plots and saving to video, visualizing differential equation solutions, or creating complex multi-panel figures. Essential for all data analysis, scientific visualization, and presentation of Julia results.
 ---
 
 # Visualization Patterns
 
 Master Julia's visualization ecosystem with Plots.jl (unified interface), Makie.jl (high-performance), and StatsPlots.jl (statistical recipes).
+
+## When to use this skill
+
+- Creating visualizations in Julia (.jl files with plot commands)
+- Selecting and configuring backends (gr(), plotly(), pyplot())
+- Making line plots, scatter plots, and heatmaps
+- Creating 3D visualizations (surface, contour, mesh plots)
+- Building statistical plots (histograms, density, box plots, violin plots)
+- Implementing interactive graphics with Plotly or GLMakie
+- Creating publication-quality figures with CairoMakie
+- Animating plots and saving to video files
+- Visualizing differential equation solutions
+- Creating multi-panel figures and subplots
+- Customizing plot aesthetics (colors, labels, legends, themes)
 
 ## Plots.jl (Unified Interface)
 

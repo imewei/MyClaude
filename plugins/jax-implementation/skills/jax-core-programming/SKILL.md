@@ -1,6 +1,6 @@
 ---
 name: jax-core-programming
-description: Master JAX functional programming for high-performance array computing and machine learning. This skill should be used when working with JAX transformations (jit, vmap, pmap, grad), Flax NNX neural networks, Optax optimizers, Orbax checkpointing, NumPyro probabilistic programming, or performance optimization with XLA compilation. Covers pure functional design, hardware acceleration (GPU/TPU), and the complete JAX ecosystem (Flax, Optax, Orbax, NumPyro).
+description: Master JAX functional programming for high-performance array computing and machine learning. Use this skill when writing or modifying Python files that import JAX (import jax, import jax.numpy as jnp), when implementing JAX transformations (jit, vmap, pmap, grad, value_and_grad), when building Flax NNX neural network modules (.py files with flax.nnx imports), when configuring Optax optimizers and learning rate schedules, when implementing Orbax checkpointing for model persistence, when optimizing code with XLA compilation, when working with pytrees and functional programming patterns, when debugging tracer errors or recompilation issues, when scaling to multi-device GPU/TPU training, when writing training loops with gradient descent, when implementing custom layers or transformations, when profiling JAX code performance, or when integrating JAX with the broader machine learning ecosystem (Flax, Optax, Orbax, NumPyro).
 ---
 
 # JAX Core Programming

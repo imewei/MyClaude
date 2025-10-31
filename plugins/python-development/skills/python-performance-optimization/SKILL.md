@@ -1,23 +1,35 @@
 ---
 name: python-performance-optimization
-description: Profile and optimize Python code using cProfile, memory profilers, and performance best practices. Use when debugging slow Python code, optimizing bottlenecks, or improving application performance.
+description: Profile and optimize Python code using cProfile, line_profiler, memory_profiler, py-spy, and performance best practices to improve execution speed and reduce memory usage. Use when running profiling tools (cProfile, line_profiler, memory_profiler, py-spy), analyzing slow Python code or bottlenecks, optimizing CPU-intensive operations or algorithms, reducing memory consumption or fixing memory leaks, improving database query performance with ORMs, optimizing I/O operations (file, network, database), implementing caching strategies with functools.lru_cache or Redis, using NumPy for vectorized operations, implementing multiprocessing for CPU-bound tasks, using async/await for I/O-bound tasks, optimizing list comprehensions and generator expressions, improving string concatenation performance, or benchmarking code with timeit or pytest-benchmark.
 ---
 
 # Python Performance Optimization
 
 Comprehensive guide to profiling, analyzing, and optimizing Python code for better performance, including CPU profiling, memory optimization, and implementation best practices.
 
-## When to Use This Skill
+## When to use this skill
 
-- Identifying performance bottlenecks in Python applications
-- Reducing application latency and response times
-- Optimizing CPU-intensive operations
-- Reducing memory consumption and memory leaks
-- Improving database query performance
-- Optimizing I/O operations
-- Speeding up data processing pipelines
-- Implementing high-performance algorithms
-- Profiling production applications
+- Running profiling tools to identify performance bottlenecks (cProfile, line_profiler, memory_profiler, py-spy)
+- Analyzing slow Python code or functions that take too long to execute
+- Optimizing CPU-intensive operations or algorithms with high time complexity
+- Reducing memory consumption in applications processing large datasets
+- Fixing memory leaks or identifying objects that aren't garbage collected
+- Improving database query performance with Django ORM, SQLAlchemy, or raw SQL
+- Optimizing I/O operations (file reads/writes, network requests, database queries)
+- Implementing caching strategies with functools.lru_cache, Redis, or Memcached
+- Using NumPy or Pandas for vectorized numerical operations
+- Implementing multiprocessing with concurrent.futures or multiprocessing module for CPU-bound tasks
+- Using async/await patterns for I/O-bound tasks (multiple API calls, database queries)
+- Optimizing list comprehensions, generator expressions, or loops
+- Improving string concatenation performance with str.join() instead of +=
+- Benchmarking code performance with timeit, pytest-benchmark, or custom decorators
+- Profiling production applications with py-spy or other sampling profilers
+- Analyzing line-by-line performance with line_profiler or Kernprof
+- Tracking memory allocation with tracemalloc or memory_profiler
+- Optimizing function call overhead in tight loops
+- Using __slots__ to reduce memory usage in classes with many instances
+- Converting Python bottlenecks to C extensions with Cython or creating Rust extensions with PyO3
+- Implementing connection pooling for database or HTTP connections
 
 ## Core Concepts
 

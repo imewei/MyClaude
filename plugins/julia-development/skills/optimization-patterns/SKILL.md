@@ -1,11 +1,25 @@
 ---
 name: optimization-patterns
-description: Optimization.jl usage for SciML parameter estimation and loss minimization. Distinct from JuMP.jl mathematical programming to avoid conflicts.
+description: Master Optimization.jl for SciML parameter estimation, loss minimization, and differential equation parameter fitting. Use when estimating parameters in differential equations (.jl files with OptimizationProblem), minimizing loss functions for SciML workflows, fitting ODE/SDE models to data, working with optimization algorithms (BFGS, Adam, NelderMead, PSO), integrating with DifferentialEquations.jl for parameter estimation, performing inverse problems in scientific computing, using automatic differentiation for gradients (ForwardDiff, ReverseDiff, Zygote), or running optimization with SciMLSensitivity.jl. Distinct from JuMP.jl (mathematical programming) - use Optimization.jl for SciML workflows and JuMP.jl for LP/QP/MIP.
 ---
 
 # Optimization Patterns (Optimization.jl)
 
 Use Optimization.jl for SciML parameter estimation. For mathematical programming, use JuMP.jl with julia-pro.
+
+## When to use this skill
+
+- Estimating parameters in differential equations (ODE, SDE, PDE)
+- Minimizing loss functions for SciML model fitting
+- Fitting mathematical models to experimental data
+- Working with optimization algorithms (BFGS, Adam, NelderMead, PSO, etc.)
+- Integrating optimization with DifferentialEquations.jl
+- Performing inverse problems in scientific computing
+- Using automatic differentiation for gradient computation
+- Running parameter estimation with SciMLSensitivity.jl
+- Optimizing neural network parameters in scientific models
+- Choosing between gradient-based vs derivative-free optimizers
+- Working with constrained optimization in SciML context
 
 ## Parameter Estimation Pattern
 ```julia

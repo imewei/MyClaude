@@ -1,6 +1,6 @@
 ---
 name: advanced-ml-systems
-description: Advanced machine learning systems including deep learning architectures (CNNs, RNNs, Transformers), distributed training (Horovod, DeepSpeed, FSDP), hyperparameter optimization, and model optimization techniques (pruning, quantization, distillation). Use when building complex neural networks, scaling training to multiple GPUs/nodes, or optimizing models for production deployment.
+description: Build advanced deep learning systems with PyTorch 2.x, TensorFlow 2.x, and JAX including deep learning architectures (CNNs, RNNs, Transformers, GANs, VAEs), distributed training across GPUs/TPUs (Horovod, DeepSpeed, FSDP), hyperparameter optimization (Optuna, Ray Tune), and model optimization techniques (pruning, quantization, distillation). Use when writing or editing Python training scripts (`.py`), model architecture files, distributed training configurations, or hyperparameter tuning experiments. Apply this skill when implementing custom neural network layers, building transformer models from scratch, scaling training to multiple GPUs or nodes with DDP or FSDP, fine-tuning pretrained models (BERT, GPT, ViT), implementing mixed-precision training (FP16, BF16), optimizing models for production deployment (quantization INT8/INT4, pruning, distillation), working with large models (>1B parameters), implementing custom CUDA kernels, using torch.compile for performance optimization, or deploying models with TorchScript/ONNX.
 ---
 
 # Advanced ML Systems
@@ -9,15 +9,24 @@ Build and optimize sophisticated machine learning systems with deep learning fra
 
 ---
 
-## When to Use
+## When to Use This Skill
 
-- Implementing deep learning architectures (CNNs, RNNs, Transformers)
-- Distributed training across multiple GPUs or nodes
-- Hyperparameter tuning for complex models
-- Model optimization (pruning, quantization, knowledge distillation)
-- Transfer learning and fine-tuning pre-trained models
-- Handling large-scale datasets and models
-- Production model optimization for inference
+- Writing or editing Python training scripts (`.py`) for deep learning models
+- Implementing custom neural network architectures (CNNs, RNNs, Transformers, GANs, VAEs)
+- Building transformer models from scratch or customizing attention mechanisms
+- Scaling training to multiple GPUs with PyTorch DDP (Distributed Data Parallel)
+- Implementing FSDP (Fully Sharded Data Parallel) for large models (>1B parameters)
+- Using DeepSpeed or Horovod for multi-node distributed training
+- Fine-tuning pretrained models (BERT, GPT, T5, ViT, CLIP)
+- Implementing mixed-precision training with FP16 or BF16 for faster training
+- Optimizing models for production with quantization (INT8, INT4), pruning, or knowledge distillation
+- Using torch.compile or TorchScript for inference optimization
+- Hyperparameter tuning with Optuna, Ray Tune, or similar frameworks
+- Working with large-scale datasets that require efficient data loading and preprocessing
+- Implementing custom CUDA kernels for performance-critical operations
+- Converting models to ONNX format for cross-platform deployment
+- Deploying models with TorchServe, TensorFlow Serving, or NVIDIA Triton
+- Handling memory-constrained environments with gradient checkpointing or parameter-efficient fine-tuning (LoRA, QLoRA)
 
 ---
 

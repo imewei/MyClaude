@@ -1,9 +1,28 @@
 ---
 name: slo-implementation
-description: Define and implement Service Level Indicators (SLIs) and Service Level Objectives (SLOs) with error budgets and alerting. Use when establishing reliability targets, implementing SRE practices, or measuring service performance.
+description: Define and implement Service Level Indicators (SLIs), Service Level Objectives (SLOs), error budgets, and burn rate alerting following SRE best practices. Use when establishing reliability targets for services, implementing SRE practices and error budget policies, measuring user-perceived service performance, creating SLO definition documents or YAML configurations, implementing SLI recording rules in Prometheus, designing multi-window burn rate alerts for SLO violations, building error budget tracking dashboards, calculating availability targets and downtime allowances, implementing SLO-based alerting strategies, tracking reliability goals against SLAs, or setting up quarterly SLO review processes.
 ---
 
 # SLO Implementation
+
+## When to use this skill
+
+- Establishing reliability targets and SLOs for production services
+- Implementing SRE (Site Reliability Engineering) practices and methodologies
+- Measuring user-perceived service performance and availability
+- Creating SLO definition documents or YAML/JSON configuration files
+- Implementing SLI (Service Level Indicator) recording rules in Prometheus
+- Designing multi-window burn rate alerts for fast and slow SLO violations
+- Building error budget tracking dashboards in Grafana
+- Calculating availability targets and corresponding downtime allowances
+- Implementing SLO-based alerting strategies to replace symptom-based alerts
+- Tracking reliability goals and comparing them against SLA commitments
+- Setting up quarterly or monthly SLO review and retrospective processes
+- Defining error budget policies that balance reliability with feature velocity
+- Creating availability SLIs (successful requests / total requests)
+- Creating latency SLIs (fast requests / total requests)
+- Implementing durability SLIs for storage systems
+- Working with SLO calculation formulas and PromQL queries
 
 Framework for defining and implementing Service Level Indicators (SLIs), Service Level Objectives (SLOs), and error budgets.
 
@@ -11,7 +30,7 @@ Framework for defining and implementing Service Level Indicators (SLIs), Service
 
 Implement measurable reliability targets using SLIs, SLOs, and error budgets to balance reliability with innovation velocity.
 
-## When to Use
+## Key Activities
 
 - Define service reliability targets
 - Measure user-perceived reliability

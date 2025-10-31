@@ -1,6 +1,31 @@
+---
+name: ml-engineering-production
+description: Software engineering and data engineering best practices for production ML systems using Python type hints, pytest testing, pre-commit hooks, pandas/SQL for data pipelines, and modern project structures. Use when writing or editing Python ML code (`.py`), test files, configuration files (`.yaml`, `.json`), or data pipeline scripts. Apply this skill when implementing type-safe ML code with type hints and dataclasses, writing unit/integration tests with pytest, setting up pre-commit hooks for code quality (black, flake8, mypy), designing modular ML project structures, building ETL pipelines with pandas or SQL, implementing data validation with Great Expectations, optimizing pandas operations for large datasets, using Parquet for efficient data storage, integrating SQL databases with ML workflows, implementing experiment tracking with MLflow or Weights & Biases, or establishing code review and collaboration practices for ML teams.
+---
+
 # ML Engineering Production Practices
 
 Expert guidance on software engineering, data engineering, and professional practices for production ML systems. Use when implementing robust ML workflows, building data pipelines, or establishing engineering best practices.
+
+## When to Use This Skill
+
+- Writing or editing Python ML code (`.py`) with proper type hints and structure
+- Writing or editing test files with pytest for ML code validation
+- Setting up pre-commit hooks for automated code quality checks
+- Designing modular ML project structures with src/, tests/, configs/ organization
+- Implementing type-safe ML code with Python type hints and dataclasses
+- Writing comprehensive unit tests for ML components (data loaders, models, preprocessing)
+- Writing integration tests for end-to-end ML workflows
+- Building ETL data pipelines with pandas or PySpark
+- Implementing data validation schemas with Great Expectations or Pandera
+- Optimizing pandas operations for large datasets (chunking, efficient dtypes, vectorization)
+- Converting data formats (CSV to Parquet) for efficient storage and loading
+- Integrating SQL databases with ML workflows using SQLAlchemy or direct connections
+- Implementing experiment tracking with MLflow, Weights & Biases, or Neptune
+- Setting up version control best practices for ML projects (Git workflows, .gitignore for ML)
+- Establishing code documentation standards with docstrings and type annotations
+- Implementing logging and debugging practices for ML systems
+- Creating reusable, modular components (data loaders, preprocessors, trainers)
 
 ## Overview
 

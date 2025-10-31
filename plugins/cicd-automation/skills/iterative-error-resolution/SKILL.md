@@ -1,6 +1,6 @@
 ---
 name: iterative-error-resolution
-description: Comprehensive iterative CI/CD error resolution with pattern recognition, automated fixes, knowledge base learning, and validation loops until zero errors
+description: Comprehensive iterative CI/CD error resolution framework with intelligent pattern recognition, automated fixes, knowledge base learning, and validation loops until zero errors remain. Use when analyzing GitHub Actions workflow failures, GitLab CI pipeline errors, or any CI/CD build failures, applying systematic error resolution through pattern matching and automated fixes, debugging dependency errors (npm ERESOLVE conflicts, Python pip version mismatches, missing packages), resolving build and compilation errors (TypeScript type errors, ESLint violations, Webpack configuration issues), fixing test failures (Jest snapshots, pytest assertions, timeout errors, mock issues), addressing runtime errors (out-of-memory, timeout, network failures), implementing automated fix application with git commits and workflow re-runs, building knowledge bases of successful fix patterns for learning, validating fixes with local testing before pushing changes, implementing rollback mechanisms for failed fixes, tracking fix success rates and iteration metrics, correlating errors across multiple workflow runs, applying fixes iteratively until zero failures achieved, managing fix confidence scores and prioritization, implementing safety mechanisms to prevent infinite loops, generating detailed postmortem reports with root cause analysis, or integrating with the /fix-commit-errors command for fully automated error resolution. Use this skill when working with GitHub Actions logs, GitLab CI logs, error stack traces, package.json, requirements.txt, pyproject.toml, test files, or any CI/CD failure scenarios requiring systematic debugging and resolution.
 tools: Read, Write, Bash, Grep, gh, git
 integration: Use with /fix-commit-errors command for automated GitHub Actions failure resolution
 ---
@@ -9,13 +9,33 @@ integration: Use with /fix-commit-errors command for automated GitHub Actions fa
 
 Complete framework for analyzing GitHub Actions failures, applying intelligent fixes, and iterating until zero errors through pattern recognition, knowledge base learning, and automated validation.
 
-## When to Use This Skill
+## When to use this skill
 
-- **GitHub Actions failures**: When workflows fail due to dependency, build, test, or runtime errors
-- **Iterative debugging**: Need to fix errors systematically until zero failures remain
-- **Pattern-based fixes**: Leverage knowledge base of successful fixes for similar errors
-- **Automated recovery**: Apply fixes automatically with validation and rollback
-- **Learning system**: Build knowledge from successful fixes for future error resolution
+- When GitHub Actions workflows fail due to dependency, build, test, or runtime errors
+- When GitLab CI pipelines encounter failures requiring systematic debugging
+- When iterative debugging is needed to fix errors until zero failures remain
+- When resolving npm dependency conflicts (ERESOLVE, peer dependency issues, 404 errors)
+- When fixing Python package errors (version conflicts, ModuleNotFoundError, ImportError)
+- When addressing TypeScript compilation errors or ESLint violations in CI
+- When debugging Jest test failures, snapshot mismatches, or timeout errors
+- When resolving pytest assertion failures, fixture issues, or import errors
+- When fixing Webpack or Babel configuration errors in build pipelines
+- When addressing Docker build failures, image pull errors, or registry issues
+- When resolving Kubernetes deployment failures in CI/CD workflows
+- When fixing Terraform plan or apply errors in infrastructure pipelines
+- When debugging out-of-memory (OOM) errors or job timeout issues
+- When resolving network errors (ETIMEDOUT, ENOTFOUND, ECONNREFUSED) in CI
+- When implementing automated fix application with git commits and workflow re-runs
+- When building knowledge bases of successful fixes for future error resolution
+- When tracking fix success rates, iteration counts, and resolution metrics
+- When correlating similar errors across multiple workflow runs or repositories
+- When validating fixes locally before pushing to prevent introducing new errors
+- When implementing safety mechanisms and rollback procedures for failed fixes
+- When generating postmortem reports with root cause analysis and prevention measures
+- When integrating with the /fix-commit-errors slash command for fully automated resolution
+- When optimizing fix prioritization based on confidence scores and historical success
+- When debugging security scan failures (Trivy, Snyk, CodeQL) in pipelines
+- When managing dependencies and lock files (package-lock.json, poetry.lock, Gemfile.lock)
 
 ## Core Error Categories and Solutions
 

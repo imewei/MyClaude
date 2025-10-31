@@ -1,20 +1,29 @@
 ---
 name: deep-learning-experimentation
-description: Systematic experiment design, hyperparameter tuning, and ablation studies for neural networks. Covers learning rate finding, grid/random/bayesian search, experiment tracking, and reproducible research. Use when optimizing models or conducting rigorous experiments.
+description: Design and conduct systematic deep learning experiments with hyperparameter optimization, ablation studies, and reproducible research practices. Use this skill when optimizing neural network performance through learning rate finding, grid/random/Bayesian hyperparameter search, or ablation studies. Apply when setting up experiment tracking with Weights & Biases, TensorBoard, or MLflow. Use when configuring reproducible training workflows with proper seed management, version control (Git, DVC), or multi-run comparisons. Apply when designing controlled experiments to compare architectures, optimizers, or training strategies. Use when analyzing training dynamics across multiple random seeds or implementing statistical significance testing. Apply when working with experiment configuration files (config.yaml, hyperparameters.json), training scripts requiring systematic tuning, or research workflows demanding rigorous experimental methodology.
 ---
 
 # Deep Learning Experimentation
 
 Systematic frameworks for experiment design, hyperparameter optimization, and reproducible deep learning research.
 
-## When to Use
+## When to use this skill
 
-- Hyperparameter tuning (learning rate, batch size, architecture choices)
-- Ablation studies (understanding component contributions)
-- Comparing multiple approaches systematically
-- Optimizing model performance
-- Conducting reproducible research
-- Experiment tracking and management
+- When tuning hyperparameters (learning rate, batch size, optimizer, architecture depth/width, dropout rate, weight decay)
+- When conducting ablation studies to understand which model components contribute to performance
+- When comparing multiple training approaches, architectures, or optimization strategies systematically
+- When optimizing model performance through systematic hyperparameter search (grid, random, or Bayesian)
+- When setting up reproducible research workflows with random seed management and version control
+- When implementing experiment tracking with Weights & Biases, TensorBoard, or MLflow
+- When designing multi-run experiments to validate results across random seeds
+- When performing learning rate range tests to find optimal learning rates
+- When analyzing training dynamics and convergence patterns across different configurations
+- When setting up configuration management systems for deep learning experiments (YAML/JSON configs)
+- When implementing statistical significance testing for model comparisons
+- When working with experiment directories, checkpoint management, or training logs
+- When conducting transfer learning experiments comparing pre-training vs from-scratch training
+- When optimizing for multi-objective trade-offs (accuracy vs latency vs model size)
+- When documenting experimental results, insights, and best practices for team knowledge sharing
 
 ## Hyperparameter Optimization
 

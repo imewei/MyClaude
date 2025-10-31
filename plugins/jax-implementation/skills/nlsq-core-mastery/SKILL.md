@@ -1,9 +1,25 @@
 ---
 name: nlsq-core-mastery
-description: Comprehensive guide for GPU/TPU-accelerated nonlinear least squares optimization using the NLSQ library with JAX. Use this skill when working with curve fitting, parameter estimation, large-scale optimization (millions+ data points), robust fitting with outliers, or when GPU/TPU acceleration is needed for nonlinear least squares problems. Covers CurveFit API, StreamingOptimizer for massive datasets, loss function selection, convergence diagnostics, JAX integration patterns, and real-world applications in physics, biology, and engineering.
+description: Comprehensive guide for GPU/TPU-accelerated nonlinear least squares optimization using the NLSQ library with JAX. Use this skill when writing or modifying Python files that import nlsq (from nlsq import CurveFit, StreamingOptimizer), when fitting nonlinear models to experimental data (.py files with curve_fit calls), when performing parameter estimation with large datasets (>10K data points), when implementing robust fitting with outlier-contaminated data, when optimizing with GPU/TPU acceleration for speed (150-270x faster than SciPy), when working with exponential decay models, dose-response curves, or multi-peak fitting, when handling streaming datasets that exceed GPU memory, when selecting loss functions (linear, soft_l1, huber, cauchy, arctan), when diagnosing convergence issues in optimization, when comparing trust-region-reflective (TRF) vs Levenberg-Marquardt (LM) algorithms, when implementing bounded parameter constraints, when benchmarking NLSQ vs SciPy performance, when writing JAX-compatible model functions for curve fitting, when analyzing residuals and fit quality, or when deploying production curve fitting pipelines in physics, biology, chemistry, or engineering applications.
 ---
 
 # NLSQ Core Mastery
+
+## When to use this skill
+
+- Writing or modifying Python files that use NLSQ library (from nlsq import CurveFit, StreamingOptimizer)
+- Fitting nonlinear models to experimental or observational data
+- Parameter estimation with large datasets (>10K points where SciPy is slow)
+- Curve fitting requiring GPU/TPU acceleration (150-270x speedup over SciPy)
+- Robust fitting with outlier-contaminated data (using Huber, Cauchy, or Arctan loss functions)
+- Working with exponential decay, dose-response curves, spectroscopy peak fitting, or reaction kinetics
+- Handling streaming optimization for datasets exceeding GPU memory
+- Comparing optimization algorithms (TRF vs LM) or selecting appropriate loss functions
+- Diagnosing convergence issues, checking residuals, or validating fit quality
+- Implementing bounded parameter constraints or physical constraints
+- Benchmarking NLSQ performance against SciPy curve_fit
+- Writing pure JAX functions for curve fitting models
+- Deploying production curve fitting pipelines in physics, biology, chemistry, or engineering
 
 ## Overview
 

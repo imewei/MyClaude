@@ -1,6 +1,6 @@
 ---
 name: statistical-analysis-fundamentals
-description: Comprehensive statistical analysis workflows including hypothesis testing, Bayesian methods, regression analysis, experimental design, A/B testing, and causal inference. Use when performing rigorous statistical analysis, designing experiments, or validating data-driven decisions with statistical methods.
+description: Comprehensive statistical analysis workflows using scipy.stats, statsmodels, and PyMC3 including hypothesis testing (t-tests, ANOVA, chi-square), Bayesian methods (MCMC, posterior inference), regression analysis (OLS, logistic, time series), experimental design, A/B testing, power analysis, and causal inference (DiD, propensity score matching). Use when writing or editing statistical analysis scripts (`.py`), Jupyter notebooks (`.ipynb`) for experiments, or A/B test evaluation code. Apply this skill when conducting hypothesis tests (t-test, ANOVA, Mann-Whitney U), calculating effect sizes and confidence intervals, performing regression analysis with assumption checking, implementing Bayesian A/B tests with posterior distributions, designing experiments with sample size calculations, analyzing A/B test results with statistical significance, implementing causal inference methods (difference-in-differences, propensity score matching), performing time series analysis (ARIMA, seasonal decomposition), handling multiple testing with Bonferroni or FDR corrections, or validating statistical assumptions (normality, homoscedasticity, independence).
 ---
 
 # Statistical Analysis Fundamentals

@@ -1,9 +1,33 @@
 ---
 name: structured-reasoning
-description: Advanced structured reasoning methodology with step-by-step thought processing, branching exploration, and multi-framework analysis. This skill should be used when executing complex problem-solving tasks requiring systematic thinking, exploring multiple solution paths, tracking reasoning chains with dependencies, or applying cognitive frameworks like First Principles, Systems Thinking, Root Cause Analysis, or Decision Analysis. Use for debugging complex issues, architectural decisions, strategic planning, or any problem requiring deep, auditable reasoning.
+description: Apply advanced structured reasoning methodology with systematic step-by-step thought processing, branching exploration of alternative paths, multi-framework cognitive analysis, and comprehensive auditability. This skill should be used when executing complex problem-solving tasks requiring systematic thinking and explicit reasoning chains, when exploring multiple solution paths or alternative approaches to a problem, when tracking reasoning chains with dependencies and validating logical consistency, when applying cognitive frameworks like First Principles (breaking down to fundamentals), Systems Thinking (analyzing interconnections), Root Cause Analysis (5 Whys, Fishbone diagrams), Decision Analysis (weighted criteria scoring), Design Thinking (user-centered iteration), Scientific Method (hypothesis testing), or OODA Loop (rapid adaptation), when debugging complex production issues requiring systematic investigation, when making architectural decisions that need comprehensive evaluation of alternatives, when conducting strategic planning requiring scenario analysis and tradeoff evaluation, when solving novel problems without established solutions requiring first-principles reconstruction, when performing root cause analysis for incidents, bugs, or quality issues, when making technology choices or vendor selections requiring weighted decision analysis, when the problem requires deep, auditable reasoning with clear justification for decisions, when branching and revision capabilities are needed to explore alternatives and course-correct, when confidence tracking is important to quantify certainty in conclusions, when validation and contradiction detection are critical for ensuring logical consistency, or when comprehensive documentation of the reasoning journey is needed for stakeholder communication, learning, or future reference. Use this skill for complex debugging sessions, architectural decision-making, strategic planning, novel problem-solving, incident response and root cause analysis, technology evaluation and selection, high-stakes decisions requiring clear justification, problems with multiple competing constraints or objectives, scenarios requiring exploration of tradeoff spaces, or any problem requiring systematic, auditable, deep reasoning with explicit thought progression and validation.
 ---
 
 # Structured Reasoning
+
+## When to use this skill
+
+- When executing complex problem-solving tasks requiring systematic thinking and explicit reasoning chains
+- When exploring multiple solution paths or alternative approaches to evaluate tradeoffs
+- When tracking reasoning chains with dependencies and validating logical consistency
+- When applying cognitive frameworks like First Principles, Systems Thinking, Root Cause Analysis, Decision Analysis, Design Thinking, Scientific Method, or OODA Loop
+- When debugging complex production issues, performance problems, or system failures requiring systematic investigation
+- When making architectural decisions that need comprehensive evaluation of alternatives with weighted criteria
+- When conducting strategic planning requiring scenario analysis, forecasting, and tradeoff evaluation
+- When solving novel problems without established solutions, requiring first-principles reconstruction from fundamentals
+- When performing root cause analysis for incidents, bugs, quality issues, or process failures
+- When making technology choices, framework selections, or vendor evaluations requiring weighted decision analysis
+- When the problem requires deep, auditable reasoning with clear justification and rationale for all decisions
+- When branching and revision capabilities are needed to explore alternatives and course-correct based on new evidence
+- When confidence tracking is important to quantify certainty levels in conclusions and identify areas of uncertainty
+- When validation and contradiction detection are critical for ensuring logical consistency throughout reasoning
+- When comprehensive documentation of the reasoning journey is needed for stakeholder communication, compliance, or learning
+- When problem complexity exceeds working memory capacity and requires explicit externalization of thoughts
+- When multiple competing constraints or objectives need to be balanced systematically
+- When exploring tradeoff spaces between competing priorities (e.g., speed vs quality, cost vs capability)
+- When high-stakes decisions require rigorous analysis and justification for risk mitigation
+- When solving problems that benefit from structured frameworks to reduce cognitive bias and improve decision quality
+- When the reasoning process itself needs to be auditable, reviewable, or used as a template for future similar problems
 
 ## Overview
 

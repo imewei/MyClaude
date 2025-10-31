@@ -1,24 +1,36 @@
 ---
 name: uv-package-manager
-description: Master the uv package manager for fast Python dependency management, virtual environments, and modern Python project workflows. Use when setting up Python projects, managing dependencies, or optimizing Python development workflows with uv.
+description: Master the uv package manager for blazing-fast Python dependency management, virtual environment creation, and modern Python project workflows with lockfiles. Use when running uv commands (uv init, uv add, uv sync, uv venv, uv run), setting up new Python projects with pyproject.toml, managing dependencies faster than pip or poetry, creating and managing virtual environments with uv venv, installing Python interpreters with uv python install, resolving dependency conflicts efficiently, working with uv.lock lockfiles for reproducible builds, migrating from pip/pip-tools/poetry to uv, optimizing Docker builds with uv, setting up CI/CD pipelines with uv for faster builds, managing monorepo Python projects with uv workspaces, or converting requirements.txt to pyproject.toml format.
 ---
 
 # UV Package Manager
 
 Comprehensive guide to using uv, an extremely fast Python package installer and resolver written in Rust, for modern Python project management and dependency workflows.
 
-## When to Use This Skill
+## When to use this skill
 
-- Setting up new Python projects quickly
-- Managing Python dependencies faster than pip
-- Creating and managing virtual environments
-- Installing Python interpreters
-- Resolving dependency conflicts efficiently
-- Migrating from pip/pip-tools/poetry
-- Speeding up CI/CD pipelines
-- Managing monorepo Python projects
-- Working with lockfiles for reproducible builds
-- Optimizing Docker builds with Python dependencies
+- Running uv commands (uv init, uv add, uv remove, uv sync, uv venv, uv run, uv lock)
+- Setting up new Python projects with uv init and automatic pyproject.toml generation
+- Managing Python dependencies 10-100x faster than pip or poetry
+- Creating virtual environments with uv venv (21x faster than python -m venv)
+- Installing Python interpreters with uv python install for specific versions
+- Resolving dependency conflicts efficiently with advanced resolver
+- Working with uv.lock lockfiles for reproducible installations
+- Migrating from pip and requirements.txt to uv workflows
+- Migrating from poetry or pip-tools to uv for faster dependency management
+- Optimizing Docker builds by using uv for package installation
+- Setting up CI/CD pipelines with uv for 10-100x faster builds
+- Managing monorepo Python projects with uv workspace configuration
+- Converting requirements.txt to pyproject.toml format with uv add -r
+- Using uv run to execute Python scripts without activating virtual environments
+- Installing packages with uv pip install as a drop-in pip replacement
+- Pinning Python versions with uv python pin and .python-version files
+- Creating lockfiles with uv lock and updating with uv lock --upgrade
+- Syncing dependencies from pyproject.toml with uv sync --frozen
+- Adding dev dependencies with uv add --dev for development tools
+- Using uv cache clean to manage global package cache
+- Implementing offline installs with uv sync --offline for air-gapped environments
+- Exporting to requirements.txt with uv export --format requirements-txt
 
 ## Core Concepts
 

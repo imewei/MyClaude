@@ -1,21 +1,31 @@
 ---
 name: machine-learning-essentials
-description: Core machine learning workflows including classical ML algorithms (regression, trees, ensembles), neural networks, model evaluation, hyperparameter tuning, and deployment. Use when building predictive models, performing model selection, or deploying ML systems to production.
+description: Core machine learning workflows using scikit-learn, XGBoost, LightGBM, and PyTorch including classical ML algorithms (linear/logistic regression, decision trees, random forests, gradient boosting), neural networks, model evaluation metrics, cross-validation, hyperparameter tuning (GridSearch, RandomSearch, Bayesian optimization), handling imbalanced data, and model deployment. Use when writing or editing Python ML training scripts (`.py`), Jupyter notebooks (`.ipynb`) for model development, or model evaluation code. Apply this skill when implementing classification or regression models, selecting algorithms (linear models, tree-based, ensembles, neural networks), performing cross-validation and train/test splits, tuning hyperparameters with GridSearchCV or Optuna, evaluating models with appropriate metrics (accuracy, precision, recall, F1, ROC-AUC for classification; R², RMSE, MAE for regression), handling imbalanced datasets with SMOTE or class weights, implementing clustering (K-Means, DBSCAN) or dimensionality reduction (PCA, t-SNE, UMAP), interpreting models with feature importance or SHAP values, or serializing models for deployment with joblib or pickle.
 ---
 
 # Machine Learning Essentials
 
 Practical frameworks for building, evaluating, and deploying machine learning models across classical and deep learning paradigms.
 
-## When to Use
+## When to Use This Skill
 
-- Building predictive models (classification, regression, clustering)
-- Selecting and comparing ML algorithms
-- Performing hyperparameter tuning and model optimization
-- Evaluating model performance with appropriate metrics
-- Understanding model predictions and feature importance
-- Deploying models to production environments
-- Handling imbalanced datasets and model diagnostics
+- Writing or editing Python ML training scripts (`.py`) with scikit-learn, XGBoost, or LightGBM
+- Writing or editing Jupyter notebooks (`.ipynb`) for model development and experimentation
+- Building classification models (binary or multi-class prediction)
+- Building regression models (continuous value prediction)
+- Implementing clustering algorithms (K-Means, DBSCAN, hierarchical clustering)
+- Performing dimensionality reduction (PCA, t-SNE, UMAP) for visualization or feature engineering
+- Selecting appropriate algorithms based on problem type and data characteristics
+- Performing train/test splits with proper stratification for classification
+- Implementing cross-validation (K-Fold, Stratified K-Fold, TimeSeriesSplit)
+- Tuning hyperparameters with GridSearchCV, RandomizedSearchCV, or Bayesian optimization (Optuna, Hyperopt)
+- Evaluating classification models (accuracy, precision, recall, F1, ROC-AUC, confusion matrix)
+- Evaluating regression models (R², RMSE, MAE, MAPE)
+- Handling imbalanced datasets with SMOTE, class weights, or undersampling
+- Interpreting model predictions with feature importance, SHAP values, or LIME
+- Comparing multiple models and selecting the best performer
+- Serializing trained models with joblib or pickle for deployment
+- Creating simple neural networks with scikit-learn MLPClassifier or PyTorch
 
 ## Classical Machine Learning
 

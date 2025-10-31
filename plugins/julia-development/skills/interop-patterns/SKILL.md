@@ -1,11 +1,25 @@
 ---
 name: interop-patterns
-description: Master Python interop via PythonCall.jl, R via RCall.jl, and C++ via CxxWrap.jl. Use for cross-language integration, calling libraries from other languages, and data exchange patterns.
+description: Master cross-language integration with PythonCall.jl, RCall.jl, and CxxWrap.jl for calling Python, R, and C++ libraries from Julia. Use when calling Python libraries (.jl files with pyimport, PyArray for zero-copy), using R packages with RCall.jl (@rput, @rget for data transfer), integrating C++ code with CxxWrap.jl, converting data between Julia and Python (pyconvert, Py()), executing R code from Julia (R"..." string macro), leveraging existing libraries from other languages, minimizing data transfer overhead with zero-copy views, or building multi-language scientific workflows. Essential for accessing specialized libraries not available in Julia and integrating with existing codebases in other languages.
 ---
 
 # Interoperability Patterns
 
 Master cross-language integration in Julia with PythonCall.jl (Python), RCall.jl (R), and CxxWrap.jl (C++).
+
+## When to use this skill
+
+- Calling Python libraries from Julia (NumPy, Pandas, Matplotlib, scikit-learn)
+- Using PythonCall.jl with pyimport and zero-copy PyArray
+- Executing R code from Julia with RCall.jl (R"..." macro)
+- Transferring data between Julia and R (@rput, @rget)
+- Integrating C++ code with CxxWrap.jl for performance
+- Converting data types between Julia and Python (pyconvert, Py())
+- Minimizing data transfer overhead with zero-copy views
+- Leveraging specialized libraries not available in Julia native
+- Building multi-language scientific computing workflows
+- Calling existing Python/R codebases from Julia projects
+- Comparing Julia vs Python/R performance for specific tasks
 
 ## Python Interop (PythonCall.jl)
 

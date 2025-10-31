@@ -1,6 +1,6 @@
 ---
 name: core-julia-patterns
-description: Master multiple dispatch, type system, parametric types, and metaprogramming in Julia. This skill should be used when implementing type hierarchies, designing dispatch-based APIs, ensuring type stability, or using metaprogramming for code generation. Essential for performance-critical Julia code.
+description: Master multiple dispatch, type system, parametric types, and metaprogramming in Julia for high-performance computing. Use when writing or editing Julia source files (.jl), implementing type hierarchies with abstract and concrete types, designing dispatch-based APIs with multiple methods, debugging type stability issues with @code_warntype, ensuring performance with @inbounds and @simd, creating parametric types with where clauses, building macros for code generation, using @generated functions for compile-time specialization, optimizing with StaticArrays for small fixed-size arrays, or working with Julia's core language features (multiple dispatch, type inference, metaprogramming). Essential for all performance-critical Julia code, generic library design, and understanding Julia's unique programming paradigms.
 ---
 
 # Core Julia Patterns

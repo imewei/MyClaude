@@ -1,22 +1,32 @@
 ---
 name: debugging-strategies
-description: Master systematic debugging techniques, profiling tools, and root cause analysis to efficiently track down bugs across any codebase or technology stack. Use when investigating bugs, performance issues, or unexpected behavior.
+description: Apply systematic debugging methodologies, profiling tools, and proven root cause analysis techniques to efficiently track down bugs across any codebase or technology stack. Use this skill when you encounter runtime errors, unexpected behavior, or test failures and need a structured approach to reproduce and isolate the issue. Apply when debugging JavaScript/TypeScript code using Chrome DevTools, VS Code debugger, or Node.js debugging tools with breakpoints and watch expressions. Use when profiling Python applications with cProfile, py-spy, or memory_profiler to identify performance bottlenecks or memory leaks. Apply when investigating Go programs using Delve debugger or pprof for CPU and memory profiling. Use for binary search debugging techniques like git bisect to find regression-introducing commits. Apply when debugging intermittent or flaky bugs that require stress testing and race condition analysis. Use when analyzing production crash dumps, core files, or heap dumps from Java, Python, or Node.js applications. Apply differential debugging to compare working vs broken environments, versions, or configurations. Use when implementing trace debugging with function call logging or decorator-based instrumentation. Apply when debugging performance issues in React applications using React DevTools Profiler or Chrome Performance tab. Use for N+1 query detection in database-backed applications using Django Debug Toolbar, Rails rack-mini-profiler, or query logging. Apply when investigating memory leaks using heap snapshot comparison in Chrome DevTools, heapdump in Node.js, or memory_profiler in Python. Use when debugging asynchronous code with Promise chains, async/await, or callback hell in JavaScript/TypeScript. Apply rubber duck debugging methodology to explain code logic systematically and reveal logical errors.
 ---
 
 # Debugging Strategies
 
 Transform debugging from frustrating guesswork into systematic problem-solving with proven strategies, powerful tools, and methodical approaches.
 
-## When to Use This Skill
+## When to use this skill
 
-- Tracking down elusive bugs
-- Investigating performance issues
-- Understanding unfamiliar codebases
-- Debugging production issues
-- Analyzing crash dumps and stack traces
-- Profiling application performance
-- Investigating memory leaks
-- Debugging distributed systems
+- When you encounter **runtime errors, exceptions, or crashes** and need a structured approach to reproduce the issue consistently before attempting fixes
+- When debugging **JavaScript/TypeScript applications** using Chrome DevTools debugger, breakpoints, watch expressions, or console logging strategies
+- When working with **VS Code debugger** configurations for Node.js, Python, Go, or other languages and need to set up launch.json with proper settings
+- When profiling **Python applications** for performance bottlenecks using cProfile, py-spy flame graphs, or line_profiler for line-by-line analysis
+- When investigating **memory leaks** in Node.js using heap snapshots, Python using memory_profiler, or browser JavaScript using Chrome DevTools Memory tab
+- When debugging **Go programs** with Delve debugger or analyzing CPU/memory profiles using pprof and generating flame graphs
+- When you need to **find which commit introduced a bug** using git bisect for automated binary search through commit history
+- When dealing with **intermittent or flaky bugs** that only occur sometimes and require stress testing, timing analysis, or race condition detection
+- When analyzing **production crash dumps** from Java (heap dumps, thread dumps), Python (core dumps), or Node.js (heap snapshots) for post-mortem debugging
+- When using **differential debugging** to compare working vs broken states, such as different environments, user roles, data sets, or configuration settings
+- When implementing **trace debugging** with strategic logging, function call tracing, or decorator-based instrumentation to understand execution flow
+- When debugging **React rendering issues** using React DevTools Profiler to identify unnecessary re-renders, expensive components, or component lifecycle problems
+- When investigating **database performance issues** like N+1 queries using Django Debug Toolbar, Rails rack-mini-profiler, or SQL query logging
+- When debugging **asynchronous code** with Promise chains, async/await patterns, callback sequences, or event loop behavior in JavaScript/Node.js
+- When applying **rubber duck debugging** to systematically explain your code logic out loud and reveal assumptions or logical errors
+- When using **binary search debugging** to comment out half the code, narrow down the problematic section, and iteratively isolate the bug
+- When debugging **test failures** in Jest, pytest, RSpec, or other frameworks and need to isolate failing tests, mock dependencies, or analyze test output
+- When investigating **performance regressions** by profiling before and after changes, comparing benchmark results, or analyzing flame graphs
 
 ## Core Principles
 

@@ -1,6 +1,25 @@
-# Flutter Development Skill
+---
+name: flutter-development
+description: Comprehensive Flutter development patterns and best practices for building production-ready mobile, web, and desktop applications. Use this skill when writing or editing Flutter/Dart files (.dart), implementing state management with Riverpod or Bloc, creating custom widgets and UI components, optimizing Flutter app performance, handling navigation and routing, integrating REST APIs or GraphQL, implementing offline-first data persistence with Hive or SQLite, writing widget tests and integration tests, setting up CI/CD pipelines for Flutter apps, implementing responsive and adaptive layouts, handling platform channels for native integrations, building clean architecture with repository patterns, optimizing image loading and caching, implementing form validation, or setting up multi-platform Flutter projects (iOS, Android, web, desktop).
+---
 
-> **Comprehensive Flutter development patterns, best practices, and common workflows for building production-ready applications.**
+## When to use this skill
+
+- When writing or editing Flutter/Dart files (.dart extension)
+- When implementing state management with Riverpod, Bloc, Provider, GetX, or Redux
+- When creating custom widgets, stateless widgets, stateful widgets, or inherited widgets
+- When optimizing Flutter app performance (reducing widget rebuilds, using const constructors, ListView.builder)
+- When implementing navigation patterns (Navigator 1.0, Navigator 2.0, or go_router)
+- When integrating REST APIs, GraphQL, or WebSocket connections in Flutter apps
+- When implementing offline-first data persistence with Hive, SQLite, Drift, or shared_preferences
+- When writing Flutter tests (unit tests, widget tests, integration tests, or golden file tests)
+- When setting up CI/CD pipelines for Flutter applications (Codemagic, GitHub Actions, Bitrise)
+- When implementing responsive design or adaptive layouts for multiple screen sizes
+- When working with platform channels to integrate native iOS or Android code
+- When building clean architecture patterns with repository and use case layers
+- When optimizing image loading with cached_network_image or similar packages
+- When implementing form validation and user input handling
+- When setting up multi-platform Flutter projects targeting iOS, Android, web, desktop, or embedded
 
 ---
 

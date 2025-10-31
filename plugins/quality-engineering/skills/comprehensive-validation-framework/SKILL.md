@@ -1,20 +1,37 @@
 ---
 name: comprehensive-validation-framework
-description: Systematic multi-dimensional validation framework for code, APIs, and systems. Use when validating implementations before deployment, double-checking work for production readiness, or performing comprehensive quality assurance across 10 critical dimensions (requirements, functionality, code quality, security, performance, accessibility, testing, compatibility, operations, documentation). Includes automated scripts for security scanning, testing, linting, performance profiling, and accessibility checks, plus deep-dive reference guides for each validation dimension.
+description: Systematic multi-dimensional validation framework for code, APIs, and systems with automated scripts (run_all_validations.py, security_scan.py, test_runner.py, lint_check.py, performance_profiler.py, accessibility_check.py, build_verify.py) and deep-dive reference guides. Use when validating implementations before production deployment, double-checking work for quality assurance, performing pre-launch audits, reviewing security-sensitive features (authentication, authorization, payment processing, data handling), verifying performance optimization work, ensuring WCAG 2.1 AA accessibility compliance, testing comprehensive code coverage (>80% target), checking breaking changes and backward compatibility, validating deployment readiness (logging, metrics, health checks), or preparing validation reports using structured templates across 10 critical dimensions: scope/requirements, functional correctness, code quality, security (OWASP Top 10, dependency vulnerabilities, SAST, secret detection), performance (N+1 queries, caching, profiling), accessibility (keyboard navigation, screen readers, ARIA), testing coverage, breaking changes, operations readiness, and documentation completeness.
 ---
 
 # Comprehensive Validation Framework
 
+## When to use this skill
+
+- Running comprehensive validation before production deployment or major releases
+- Executing automated validation scripts (run_all_validations.py, security_scan.py, test_runner.py, lint_check.py, performance_profiler.py, accessibility_check.py, build_verify.py) to check code quality, security, and production readiness
+- Performing security validation for authentication/authorization code, payment processing, data handling, or security-sensitive features using security_scan.py for dependency vulnerabilities, SAST scanning, and secret detection
+- Validating code quality and maintainability by running lint_check.py for ESLint, Prettier, Ruff, Black, Clippy, and gofmt checks
+- Checking test coverage and running comprehensive test suites with test_runner.py for Jest, pytest, cargo test, and go test across multiple languages with coverage analysis (target >80%)
+- Profiling performance bottlenecks using performance_profiler.py with cProfile for Python or node --prof for JavaScript to identify slow functions and optimize execution
+- Verifying WCAG 2.1 Level AA accessibility compliance for web applications using accessibility_check.py with pa11y and axe-core tools
+- Ensuring build configuration works correctly with build_verify.py for npm, Python build, Cargo, and Go projects
+- Consulting deep-dive reference guides for security (references/security-deep-dive.md covering OWASP Top 10, OAuth 2.0, JWT, input validation, cryptography), performance optimization (references/performance-optimization.md covering profiling tools, N+1 queries, caching strategies, database optimization), testing best practices (references/testing-best-practices.md covering testing pyramid, AAA pattern, mocking, property-based testing), production readiness (references/production-readiness.md covering health checks, structured logging, metrics, circuit breakers, deployment strategies), accessibility standards (references/accessibility-standards.md covering WCAG 2.1 principles, ARIA patterns, semantic HTML), and breaking changes (references/breaking-changes-guide.md covering SemVer, deprecation, API versioning, database migrations)
+- Reviewing code changes for breaking changes, backward compatibility issues, API versioning, or database migration impacts
+- Validating functional correctness by testing happy paths, edge cases (null, empty, boundary values), error handling, and integration with existing systems
+- Performing pre-launch audits to ensure all 10 validation dimensions are addressed: scope/requirements verification, functional correctness, code quality, security analysis, performance analysis, accessibility verification, testing coverage, breaking changes assessment, deployment readiness, and documentation completeness
+- Preparing structured validation reports using assets/validation-report-template.md with executive summary, findings by dimension, severity classifications (critical, high, medium, low), actionable recommendations, and approval sign-off
+- Setting up CI/CD validation pipelines with GitHub Actions or pre-commit hooks to automate validation checks before code commits or deployments
+- Investigating security vulnerabilities by consulting references/security-deep-dive.md for OWASP Top 10 vulnerabilities, SQL injection prevention, XSS mitigation, authentication patterns (OAuth 2.0, JWT), input validation, cryptography best practices, and language-specific security (Python, JavaScript, Rust, Go)
+- Optimizing performance by consulting references/performance-optimization.md for profiling techniques, common bottlenecks (N+1 queries, missing indexes), caching strategies (Redis, multi-tier caching), load testing tools (k6, Locust, wrk), database optimization (EXPLAIN ANALYZE, indexing, connection pooling), and frontend performance (bundle size, Core Web Vitals)
+- Ensuring production readiness by consulting references/production-readiness.md for health check implementation (liveness, readiness probes), structured logging patterns, Prometheus metrics, Sentry error tracking, graceful shutdown, circuit breaker patterns, deployment strategies (blue-green, canary, feature flags), and runbook creation
+- Validating accessibility by consulting references/accessibility-standards.md for WCAG 2.1 conformance levels (A, AA, AAA), ARIA roles/states/properties, semantic HTML patterns, form accessibility, keyboard navigation, screen reader compatibility, and testing with axe-core, pa11y, and Lighthouse
+- Planning API changes, refactoring public interfaces, or versioning libraries by consulting references/breaking-changes-guide.md for breaking change definitions, semantic versioning, deprecation processes, API versioning strategies, database migration patterns (blue-green), feature flags, rollback strategies, and migration guide templates
+- Double-checking work quality before submitting pull requests or deploying to staging/production environments
+- Creating comprehensive validation workflows that combine automated scripts (Phase 2) with manual review using reference documentation (Phase 3) and structured reporting (Phase 5)
+
 ## Overview
 
 This skill provides a systematic framework for validating code, APIs, and systems across 10 critical dimensions before deployment. It combines automated validation scripts with deep-dive reference material to ensure production readiness, quality, and reliability.
-
-**Use this skill when**:
-- Double-checking implementations before production deployment
-- Validating new features for quality and security
-- Performing comprehensive pre-launch audits
-- Reviewing code changes for breaking changes or compatibility issues
-- Ensuring production readiness across all dimensions
 
 ---
 

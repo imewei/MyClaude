@@ -1,6 +1,6 @@
 ---
 name: prompt-engineering-patterns
-description: Master advanced prompt engineering techniques to maximize LLM performance, reliability, and controllability in production. Use when optimizing prompts, improving LLM outputs, or designing production prompt templates.
+description: Master advanced prompt engineering techniques including chain-of-thought reasoning, few-shot learning, and production prompt templates to maximize LLM performance, reliability, and controllability. Use when writing or editing prompt templates, system prompts for AI agents, few-shot example libraries, or prompt configuration files. Apply this skill when implementing chain-of-thought (CoT) prompting with reasoning traces, designing few-shot learning systems with dynamic example selection, creating reusable prompt templates with variable interpolation, optimizing prompts for consistency and token efficiency, building structured reasoning patterns (tree-of-thought, self-consistency), crafting system prompts that define AI agent behavior and constraints, debugging prompts that produce inconsistent or incorrect outputs, implementing progressive disclosure patterns, adding self-verification and validation steps to prompts, or A/B testing prompt variations for performance optimization.
 ---
 
 # Prompt Engineering Patterns
@@ -9,13 +9,24 @@ Master advanced prompt engineering techniques to maximize LLM performance, relia
 
 ## When to Use This Skill
 
-- Designing complex prompts for production LLM applications
-- Optimizing prompt performance and consistency
-- Implementing structured reasoning patterns (chain-of-thought, tree-of-thought)
-- Building few-shot learning systems with dynamic example selection
-- Creating reusable prompt templates with variable interpolation
-- Debugging and refining prompts that produce inconsistent outputs
-- Implementing system prompts for specialized AI assistants
+- Writing or editing prompt template files (`.txt`, `.md`, `.json`, `.yaml`) for LLM applications
+- Designing complex prompts for production LLM applications with multiple components
+- Optimizing prompt performance and consistency through iterative refinement
+- Implementing structured reasoning patterns (chain-of-thought, tree-of-thought, self-consistency)
+- Building few-shot learning systems with dynamic example selection and semantic similarity
+- Creating reusable prompt templates with variable interpolation and conditional sections
+- Debugging and refining prompts that produce inconsistent, incorrect, or unpredictable outputs
+- Implementing system prompts for specialized AI assistants (code generators, customer service bots, content moderators)
+- Crafting zero-shot prompts with "Let's think step by step" for complex reasoning tasks
+- Designing few-shot prompts with carefully curated input-output examples
+- Creating progressive disclosure patterns that add complexity only when needed
+- Building prompt validation and self-verification mechanisms
+- Implementing error recovery patterns for graceful handling of edge cases
+- Optimizing token efficiency by reducing prompt length while maintaining quality
+- A/B testing prompt variations to measure performance improvements
+- Version controlling prompts and tracking changes over time
+- Integrating prompts with RAG systems by combining retrieved context with prompt templates
+- Creating role-based prompt compositions for multi-agent systems
 
 ## Core Capabilities
 

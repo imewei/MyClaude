@@ -1,6 +1,29 @@
+---
+description: Coordinate multiple AI agents through sophisticated workflow orchestration, intelligent task allocation, and distributed system management. Use this skill when designing multi-agent workflows with complex task dependencies (DAG-based execution), building agent team assembly systems with capability matching, implementing inter-agent communication protocols (message brokers, request/response patterns, broadcast messaging), orchestrating parallel agent execution with synchronization points, designing fault-tolerant multi-agent systems with retry logic and graceful degradation, managing distributed agent teams for large-scale projects, implementing agent selection strategies based on capabilities and workload, handling agent coordination for microservices or multi-domain architectures, or building production-ready agent orchestration systems. This skill is essential when coordinating specialized agents across different technical domains (ML + infrastructure + frontend + backend), when implementing workflow engines for multi-stage agent pipelines, when building distributed agent architectures that require inter-agent messaging, when optimizing task allocation strategies to balance agent workload, or when scaling agent teams dynamically based on project complexity.
+---
+
 # Multi-Agent Coordination and Workflow Management
 
-Expert guidance on coordinating multiple AI agents, designing distributed workflows, and optimizing task allocation for complex multi-domain projects. Use when orchestrating teams of specialized agents for large-scale systems.
+## When to use this skill
+
+- When coordinating multiple specialized AI agents across different technical domains (backend, frontend, ML, DevOps, testing)
+- When designing DAG-based workflow orchestration systems with task dependencies and execution ordering
+- When implementing agent team assembly logic with capability matching and skill-based selection
+- When building inter-agent communication protocols using message brokers and event-driven architecture
+- When orchestrating parallel agent execution with synchronization points and dependency management
+- When implementing fault-tolerant multi-agent systems with automatic retries and error recovery
+- When managing distributed workflows that span multiple agents and technical areas
+- When building agent selection strategies based on agent capabilities, performance history, and workload
+- When implementing request/response messaging patterns between agents
+- When designing broadcast communication for multi-agent coordination and status updates
+- When creating workflow engines that execute multi-stage pipelines with agent collaboration
+- When handling complex task decomposition and distributing subtasks to specialized agents
+- When implementing graceful degradation when agent instances fail or become unavailable
+- When tracking agent workload and availability for optimal task distribution
+- When building production multi-agent orchestration systems for enterprise applications
+- When writing Python code for multi-agent coordination, workflow engines, or distributed agent systems
+- When working on projects requiring 5+ specialized agents coordinating across domains
+- When designing microservices architectures where agents represent different services
 
 ## Overview
 
@@ -744,17 +767,3 @@ broker = MessageBroker()
 agent = Agent("agent-name", broker)
 response = await agent.request_help("other-agent", task)
 ```
-
-## When to Use This Skill
-
-Use when you need to:
-- Coordinate multiple specialized agents
-- Design complex multi-stage workflows
-- Implement distributed agent systems
-- Optimize task allocation strategies
-- Handle agent communication protocols
-- Build fault-tolerant multi-agent systems
-- Track and analyze agent performance
-- Scale agent teams dynamically
-
-This skill provides production-ready patterns for enterprise-scale multi-agent coordination.

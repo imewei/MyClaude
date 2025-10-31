@@ -1,6 +1,6 @@
 ---
 name: monorepo-management
-description: Master monorepo management with Turborepo, Nx, and pnpm workspaces to build efficient, scalable multi-package repositories with optimized builds and dependency management. Use when setting up monorepos, optimizing builds, or managing shared dependencies.
+description: Master monorepo management with Turborepo, Nx, pnpm workspaces, Yarn workspaces, and npm workspaces to build efficient, scalable multi-package repositories with optimized builds, intelligent caching, and dependency management. Use when setting up or configuring monorepo infrastructure files (turbo.json, nx.json, pnpm-workspace.yaml, lerna.json), when creating or organizing workspace packages in apps/* and packages/* directories, when optimizing build performance with task pipelines and caching strategies, when managing shared dependencies across multiple packages, when implementing code sharing patterns for UI components, utilities, types, and configurations, when setting up CI/CD pipelines for monorepos with affected builds and deployments, when configuring shared tooling including TypeScript configs, ESLint presets, and build configurations, when implementing versioning and publishing strategies with changesets or Lerna, when debugging monorepo-specific issues like circular dependencies and phantom dependencies, when migrating from multi-repo (polyrepo) to monorepo architecture, when creating workspace packages with proper exports and package.json configuration, when optimizing dependency hoisting and installation with pnpm shamefully-hoist or strict-peer-dependencies, when setting up remote caching for team collaboration and CI/CD, when implementing monorepo filtering and task running with --filter or affected commands, when debugging build performance and cache misses, when establishing monorepo conventions for package naming and directory structure, or when scaling monorepos for large teams with hundreds of packages and applications.
 ---
 
 # Monorepo Management
@@ -9,14 +9,113 @@ Build efficient, scalable monorepos that enable code sharing, consistent tooling
 
 ## When to Use This Skill
 
-- Setting up new monorepo projects
-- Migrating from multi-repo to monorepo
-- Optimizing build and test performance
-- Managing shared dependencies
-- Implementing code sharing strategies
-- Setting up CI/CD for monorepos
-- Versioning and publishing packages
-- Debugging monorepo-specific issues
+### Monorepo Configuration Files
+- Creating or editing `turbo.json` for Turborepo pipeline configuration
+- Setting up `nx.json` for Nx workspace configuration and caching
+- Configuring `pnpm-workspace.yaml` for pnpm workspace definitions
+- Managing `.npmrc` for pnpm-specific settings (shamefully-hoist, strict-peer-dependencies)
+- Editing `lerna.json` for Lerna configuration and versioning
+- Setting up root `package.json` with workspace definitions and scripts
+
+### Workspace Structure and Organization
+- Creating workspace packages in `apps/*` directory (web apps, mobile apps, documentation sites)
+- Setting up shared packages in `packages/*` directory (UI components, utilities, configs)
+- Organizing packages with proper naming conventions (`@repo/ui`, `@company/shared-utils`)
+- Implementing barrel exports with `index.ts` or `index.js` for clean package APIs
+- Structuring monorepo for multiple teams and domain boundaries
+
+### Package Configuration
+- Creating package-level `package.json` with proper `name`, `version`, `main`, `types`, `exports`
+- Setting up `exports` field for subpath exports and conditional exports
+- Configuring workspace dependencies with `workspace:*` protocol (pnpm)
+- Managing peer dependencies and dev dependencies at package level
+- Implementing package build scripts with `build`, `dev`, `lint`, `test`
+
+### Build System Setup and Optimization
+- Configuring Turborepo task pipelines with `dependsOn`, `outputs`, and `inputs`
+- Setting up Nx target defaults for build, test, lint with caching
+- Implementing build caching strategies to skip unnecessary builds
+- Configuring remote caching for team collaboration (Turborepo Remote Cache, Nx Cloud)
+- Optimizing task execution order and parallelization
+- Setting up incremental builds with proper cache invalidation
+
+### Dependency Management
+- Installing dependencies in specific packages: `pnpm add react --filter @repo/ui`
+- Managing workspace dependencies and inter-package references
+- Hoisting shared dependencies to root `node_modules`
+- Resolving phantom dependencies (using deps not declared in package.json)
+- Updating all packages with `pnpm update -r`
+- Removing duplicate dependencies across workspace
+
+### Code Sharing Patterns
+- Creating shared UI component libraries (`packages/ui`)
+- Setting up shared TypeScript configurations (`packages/tsconfig`)
+- Implementing shared ESLint and Prettier configurations (`packages/config`)
+- Creating shared utility libraries with tree-shakeable exports
+- Sharing types and interfaces across frontend and backend packages
+- Building design system packages with reusable components
+
+### Build and Development Scripts
+- Running tasks in specific packages: `pnpm --filter web dev`
+- Running tasks across all packages: `pnpm -r build`
+- Executing tasks in parallel: `pnpm -r --parallel dev`
+- Using Turborepo commands: `turbo run build`, `turbo run test`
+- Using Nx commands: `nx build my-app`, `nx affected:build`
+- Filtering packages by pattern: `pnpm --filter "@repo/*" build`
+
+### CI/CD for Monorepos
+- Setting up GitHub Actions workflows for monorepo builds
+- Implementing affected builds to only build changed packages
+- Configuring deploy workflows for multiple apps
+- Setting up test parallelization across packages
+- Implementing cache restoration and saving in CI
+- Using Nx affected commands in CI: `nx affected:build --base=main`
+
+### Migration and Refactoring
+- Migrating from multi-repo (polyrepo) to monorepo architecture
+- Converting standalone packages to workspace packages
+- Migrating from Lerna to Turborepo or Nx
+- Refactoring duplicated code into shared packages
+- Extracting common configurations to shared config packages
+
+### Performance Debugging and Optimization
+- Analyzing build performance with Turborepo `--summarize` flag
+- Debugging cache misses and investigating why tasks aren't cached
+- Identifying slow packages and optimizing their build times
+- Profiling task execution with verbose logging
+- Optimizing dependency installation with pnpm store
+
+### Versioning and Publishing
+- Setting up Changesets for package versioning
+- Creating changeset files: `pnpm changeset`
+- Versioning packages: `pnpm changeset version`
+- Publishing packages: `pnpm changeset publish`
+- Implementing independent vs fixed versioning strategies
+- Setting up automated release workflows
+
+### Advanced Patterns
+- Implementing task dependencies with `^build` (build dependencies first)
+- Setting up persistent tasks for dev servers: `"cache": false, "persistent": true`
+- Configuring global dependencies that invalidate all caches
+- Using filters for complex package selection: `pnpm --filter "...web" build`
+- Setting up multiple outputs for different build artifacts
+- Implementing custom task runners and plugins
+
+### Troubleshooting Common Issues
+- Resolving circular dependencies between packages
+- Fixing phantom dependencies by adding explicit dependencies
+- Debugging "Module not found" errors in monorepo packages
+- Resolving peer dependency conflicts across workspace
+- Fixing cache corruption and stale build outputs
+- Investigating why builds aren't using cache
+
+### Team Collaboration and Standards
+- Establishing naming conventions for workspace packages
+- Documenting package dependencies and architecture
+- Setting up pre-commit hooks for workspace validation
+- Implementing code ownership with CODEOWNERS for packages
+- Creating runbooks for common monorepo operations
+- Training teams on monorepo workflows and best practices
 
 ## Core Concepts
 

@@ -1,6 +1,37 @@
+---
+name: multi-platform-architecture
+description: Strategic patterns for building scalable applications across mobile, web, and desktop platforms with clean architecture principles and code sharing strategies. Use this skill when planning multi-platform application architecture, deciding between native vs hybrid vs cross-platform approaches (Flutter, React Native, Kotlin Multiplatform, PWA), designing clean architecture layers for multi-platform projects (presentation, application, domain, data), implementing code sharing strategies with monorepo structures, setting up Backend for Frontend (BFF) patterns for platform-specific APIs, designing offline-first data synchronization with conflict resolution, implementing real-time updates with WebSockets and polling fallbacks, optimizing multi-platform performance with code splitting and lazy loading, organizing multi-platform teams (feature teams vs platform teams), structuring platform-specific UI with shared business logic, implementing platform channels for native integrations, designing adaptive UI layouts for mobile, web, and desktop, managing multi-platform assets and resources, setting up CI/CD pipelines for multiple platforms, handling platform-specific features while maximizing code reuse, implementing dependency injection for multi-platform projects, designing state management architecture that works across platforms, choosing appropriate frameworks based on project requirements (performance, team skills, budget, time to market), or migrating existing single-platform apps to multi-platform architecture.
+---
+
 # Multi-Platform Architecture Patterns
 
 > **Strategic patterns for building scalable applications across mobile, web, and desktop platforms.**
+
+---
+
+## When to use this skill
+
+- When planning multi-platform application architecture for mobile, web, and desktop
+- When deciding between native, hybrid, or cross-platform development approaches
+- When evaluating frameworks like Flutter, React Native, Kotlin Multiplatform Mobile, or PWAs
+- When designing clean architecture for multi-platform projects (separating presentation, domain, and data layers)
+- When implementing code sharing strategies across iOS, Android, web, and desktop platforms
+- When setting up monorepo structures for multi-platform codebases
+- When designing Backend for Frontend (BFF) patterns to optimize APIs for each platform
+- When implementing offline-first architecture with local persistence and background sync
+- When designing data synchronization strategies with conflict resolution (last-write-wins, merge strategies)
+- When implementing real-time updates with WebSockets and polling fallback mechanisms
+- When optimizing multi-platform performance through code splitting, lazy loading, and tree shaking
+- When organizing development teams for multi-platform projects (feature teams vs platform teams)
+- When structuring platform-specific UI components while sharing business logic and data layers
+- When implementing platform channels or native modules for accessing platform-specific features
+- When designing adaptive and responsive layouts that work across mobile, tablet, desktop, and web
+- When managing multi-platform assets (icons, images, fonts) with platform-specific optimizations
+- When setting up CI/CD pipelines that build and deploy to multiple platforms simultaneously
+- When balancing code reuse with platform-specific optimizations for native user experiences
+- When implementing dependency injection patterns that work across platforms
+- When choosing state management solutions that scale across multiple platforms
+- When migrating from single-platform to multi-platform architecture
 
 ---
 

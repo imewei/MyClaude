@@ -1,22 +1,39 @@
 ---
 name: sql-optimization-patterns
-description: Master SQL query optimization, indexing strategies, and EXPLAIN analysis to dramatically improve database performance and eliminate slow queries. Use when debugging slow queries, designing database schemas, or optimizing application performance.
+description: Master SQL query optimization including EXPLAIN/EXPLAIN ANALYZE plan analysis, indexing strategies (B-Tree, Hash, GIN, GiST, BRIN, covering indexes, partial indexes, composite indexes), query rewriting techniques, N+1 query elimination with JOINs and batch loading, pagination optimization (cursor-based vs offset-based), aggregate query optimization (COUNT, GROUP BY, window functions), subquery transformation (correlated to JOIN conversion), batch operations (bulk INSERT/UPDATE/DELETE), materialized views for pre-computed results, table partitioning (range, list, hash partitioning), query plan caching, database statistics maintenance (ANALYZE, VACUUM), connection pooling, and monitoring with slow query logs. Use this skill when debugging slow-running queries or identifying performance bottlenecks, when designing performant database schemas with proper normalization and denormalization tradeoffs, when optimizing application response times by reducing database query latency, when reducing database load, CPU usage, and cloud infrastructure costs, when improving scalability for growing datasets from thousands to millions of rows, when analyzing EXPLAIN query plans to understand execution strategies (sequential scan vs index scan), when implementing efficient indexes without over-indexing, when resolving N+1 query problems in ORMs (Django, SQLAlchemy, ActiveRecord, Sequelize), when optimizing JOIN operations for better performance, when implementing efficient pagination for large result sets, when optimizing COUNT queries or aggregate operations on large tables, when rewriting correlated subqueries to use JOINs for better performance, when implementing batch operations to reduce round trips to the database, when using materialized views to cache expensive query results, when partitioning large tables for improved query performance and data lifecycle management, when monitoring database performance with pg_stat_statements or slow query logs, when optimizing full-text search with GIN indexes or search engines, when implementing database caching strategies with Redis or Memcached, or when tuning database configuration parameters for optimal performance. Use this skill for all aspects of database query optimization, index design, schema optimization, query analysis, and performance troubleshooting.
 ---
 
 # SQL Optimization Patterns
 
 Transform slow database queries into lightning-fast operations through systematic optimization, proper indexing, and query plan analysis.
 
-## When to Use This Skill
+## When to use this skill
 
-- Debugging slow-running queries
-- Designing performant database schemas
-- Optimizing application response times
-- Reducing database load and costs
-- Improving scalability for growing datasets
-- Analyzing EXPLAIN query plans
-- Implementing efficient indexes
-- Resolving N+1 query problems
+- When debugging slow-running queries using database slow query logs or application performance monitoring
+- When designing performant database schemas with proper normalization, denormalization, and indexing strategies
+- When optimizing application response times by reducing database query execution latency
+- When reducing database server load, CPU usage, memory consumption, and cloud infrastructure costs
+- When improving database scalability for growing datasets (thousands to millions to billions of rows)
+- When analyzing EXPLAIN or EXPLAIN ANALYZE query plans to understand query execution strategies
+- When implementing efficient indexes (B-Tree, Hash, GIN, GiST, BRIN, covering, partial, composite indexes)
+- When resolving N+1 query problems in ORM frameworks (Django ORM, SQLAlchemy, ActiveRecord, Sequelize, Prisma)
+- When optimizing JOIN operations for large tables or complex multi-table queries
+- When implementing efficient pagination using cursor-based pagination instead of OFFSET-based pagination
+- When optimizing COUNT queries or expensive aggregate operations (SUM, AVG, MAX, MIN) on large tables
+- When rewriting correlated subqueries to use JOINs or window functions for better performance
+- When implementing batch INSERT, UPDATE, or DELETE operations to reduce database round trips
+- When using materialized views to pre-compute and cache expensive query results
+- When partitioning large tables by date range, list values, or hash for improved query performance
+- When monitoring database performance with pg_stat_statements, slow query logs, or query profiling tools
+- When optimizing full-text search queries with GIN indexes, tsvector, or dedicated search engines
+- When implementing database caching strategies with Redis, Memcached, or application-level caching
+- When tuning PostgreSQL, MySQL, or other database configuration parameters for optimal performance
+- When eliminating sequential scans (Seq Scan) in favor of index scans for better query performance
+- When optimizing GROUP BY queries, DISTINCT queries, or queries with complex WHERE clauses
+- When implementing query result caching or query plan caching for frequently executed queries
+- When maintaining database statistics with ANALYZE, VACUUM, or equivalent maintenance operations
+- When optimizing database connection pooling and query concurrency for high-traffic applications
+- When working with SQL query files, ORM query code, database migration scripts, or schema definition files
 
 ## Core Concepts
 

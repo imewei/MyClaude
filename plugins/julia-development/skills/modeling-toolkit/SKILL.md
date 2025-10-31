@@ -1,11 +1,25 @@
 ---
 name: modeling-toolkit
-description: Symbolic problem definition with ModelingToolkit.jl, equation simplification, and code generation. Use for declarative modeling and automatic optimization of equation systems.
+description: Master symbolic problem definition with ModelingToolkit.jl for equation simplification, code generation, and declarative mathematical modeling. Use when defining symbolic differential equations (.jl files with @variables, @parameters, Differential), creating ODESystem, PDESystem, or NonlinearSystem from symbolic equations, using structural_simplify for automatic equation optimization, generating efficient code from symbolic definitions, working with component-based modeling and connections, building physics models declaratively, performing symbolic differentiation for automatic Jacobian generation, or integrating with DifferentialEquations.jl. Essential for complex mathematical modeling, physics simulations, and leveraging automatic equation simplification for performance.
 ---
 
 # ModelingToolkit
 
 Symbolic modeling with ModelingToolkit.jl for automated equation simplification and code generation.
+
+## When to use this skill
+
+- Defining symbolic differential equations with @variables and @parameters
+- Creating ODESystem, PDESystem, NonlinearSystem from symbolic equations
+- Using structural_simplify for automatic equation reduction and optimization
+- Generating efficient numerical code from symbolic definitions
+- Working with component-based modeling (ModelingToolkit components)
+- Building physics models declaratively
+- Performing symbolic differentiation for automatic Jacobian computation
+- Integrating symbolic systems with DifferentialEquations.jl solvers
+- Creating reusable model components with composition
+- Simplifying complex equation systems automatically
+- Generating optimized code for specific problem structures
 
 ## Basic Pattern
 ```julia

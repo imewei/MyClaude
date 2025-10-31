@@ -1,9 +1,24 @@
 ---
 name: ecosystem-selection
-description: Select optimal scientific computing ecosystems (Python vs Julia) and manage hybrid integrations. Use when evaluating NumPy/SciPy vs Julia/SciML for performance-critical tasks, implementing Python-Julia interoperability (PyJulia, JuliaCall), or setting up reproducible toolchains (Conda, Pkg.jl) for scientific projects.
+description: Select optimal scientific computing ecosystems and manage multi-language scientific workflows across Python and Julia environments. Use this skill when evaluating Python (NumPy/SciPy/Matplotlib) versus Julia (DifferentialEquations.jl/SciML) for performance-critical numerical computing tasks, implementing hybrid Python-Julia interoperability using PyJulia or PyCall.jl for best-of-breed language selection per component, setting up reproducible development toolchains with Conda environments or Julia Pkg.jl package management, migrating performance-critical Python code to Julia for 10-4900x speedups in ODE/PDE solving, designing multi-language scientific computing projects that leverage both Python's ML/DL ecosystem and Julia's numerical performance, managing dependencies across Python virtual environments (venv/conda) and Julia Project.toml files, benchmarking NumPy versus Julia for array operations and scientific computations, creating hybrid workflows that use Python for data wrangling and visualization while Julia handles intensive numerical kernels, writing requirements.txt or environment.yml files for Python projects, configuring Julia Project.toml and Manifest.toml for reproducible environments, selecting appropriate libraries for new scientific computing projects based on performance requirements and team expertise, or optimizing existing Python scientific code by identifying bottlenecks suitable for Julia migration.
 ---
 
 # Python/Julia Ecosystem Selection
+
+## When to use this skill
+
+- When choosing between Python and Julia for a new scientific computing project
+- When evaluating NumPy/SciPy versus Julia/SciML for ODE/PDE solvers and numerical methods
+- When implementing hybrid Python-Julia workflows using PyJulia or PyCall.jl
+- When migrating performance-critical Python code to Julia for significant speedups
+- When setting up reproducible environments with Conda, pip, or Julia Pkg.jl
+- When working with requirements.txt, environment.yml, or Project.toml dependency files
+- When benchmarking Python versus Julia for specific numerical algorithms
+- When designing multi-language workflows that leverage Python's ML/visualization strengths and Julia's numerical performance
+- When managing toolchains across Python virtual environments and Julia package environments
+- When creating hybrid applications that call Julia computational kernels from Python orchestration code
+- When evaluating performance trade-offs between Python (with Numba/Cython) and native Julia code
+- When selecting libraries for matrix operations, differential equations, optimization, or statistical computing
 
 ## Overview
 

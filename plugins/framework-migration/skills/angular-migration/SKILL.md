@@ -1,6 +1,6 @@
 ---
 name: angular-migration
-description: Migrate from AngularJS to Angular using hybrid mode, incremental component rewriting, and dependency injection updates. Use when upgrading AngularJS applications, planning framework migrations, or modernizing legacy Angular code.
+description: Migrate from AngularJS (1.x) to modern Angular (2+) using hybrid mode, incremental component rewriting, dependency injection updates, and automated codemods. Use when upgrading AngularJS applications to Angular, implementing hybrid AngularJS/Angular apps with ngUpgrade, converting AngularJS controllers and directives to Angular components, migrating AngularJS services to Angular services with dependency injection, updating routing from $routeProvider to Angular Router, transforming AngularJS filters to Angular pipes, migrating forms from ng-model to reactive forms or template-driven forms, upgrading to TypeScript from JavaScript, implementing lazy loading and code splitting, modernizing state management from $scope to RxJS observables, converting AngularJS templates to Angular templates with component-based architecture. Apply when working with AngularJS project files (.js, .ts), Angular component files (.component.ts, .component.html), module files (app.module.ts, .module.ts), service files (.service.ts), routing configuration files (app-routing.module.ts, routes.ts), hybrid bootstrap files (main.ts), upgrade adapter files (@angular/upgrade/static), and when planning incremental migration strategies for large AngularJS codebases.
 ---
 
 # Angular Migration
@@ -9,13 +9,26 @@ Master AngularJS to Angular migration, including hybrid apps, component conversi
 
 ## When to Use This Skill
 
-- Migrating AngularJS (1.x) applications to Angular (2+)
-- Running hybrid AngularJS/Angular applications
-- Converting directives to components
-- Modernizing dependency injection
-- Migrating routing systems
-- Updating to latest Angular versions
-- Implementing Angular best practices
+- When upgrading AngularJS (1.x) applications to modern Angular (2+)
+- When implementing hybrid AngularJS/Angular applications using ngUpgrade and @angular/upgrade/static
+- When converting AngularJS controllers to Angular components with TypeScript
+- When migrating AngularJS directives (restrict: 'E', scope bindings) to Angular components (@Component, @Input, @Output)
+- When transforming AngularJS services (.factory, .service) to Angular services (@Injectable, providedIn: 'root')
+- When updating dependency injection from AngularJS's $inject to Angular's constructor injection
+- When migrating routing from $routeProvider and ui-router to Angular Router (RouterModule, Routes)
+- When converting AngularJS filters to Angular pipes (@Pipe, PipeTransform)
+- When migrating forms from ng-model two-way binding to Angular reactive forms (FormBuilder, FormGroup) or template-driven forms
+- When downgrading Angular components for use in AngularJS (downgradeComponent, downgradeInjectable)
+- When upgrading AngularJS services for use in Angular (UpgradeModule, $injector)
+- When working with .js, .ts, .component.ts, .component.html, .module.ts, .service.ts, app-routing.module.ts, main.ts files
+- When modernizing state management from $scope and $rootScope to RxJS observables and services
+- When implementing lazy loading and code splitting in migrated Angular modules
+- When planning incremental, feature-by-feature migration strategies for large AngularJS codebases
+- When setting up hybrid app bootstrap configuration with platformBrowserDynamic and UpgradeModule
+- When converting AngularJS $http calls to Angular HttpClient with observables
+- When migrating AngularJS event handlers (ng-click, ng-change) to Angular event binding ((click), (change))
+- When transforming AngularJS templates with ng-repeat, ng-if, ng-show to Angular structural directives (*ngFor, *ngIf, [hidden])
+- When updating build tools from Grunt/Gulp to Angular CLI (ng build, ng serve, ng test)
 
 ## Migration Strategies
 

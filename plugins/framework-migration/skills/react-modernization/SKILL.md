@@ -1,6 +1,6 @@
 ---
 name: react-modernization
-description: Upgrade React applications to latest versions, migrate from class components to hooks, and adopt concurrent features. Use when modernizing React codebases, migrating to React Hooks, or upgrading to latest React versions.
+description: Upgrade React applications from legacy versions to React 18+, migrate class components to functional components with hooks (useState, useEffect, useContext, useMemo, useCallback), adopt concurrent features (Suspense, transitions, automatic batching), apply automated codemods for API transformations, optimize performance with React.memo and code splitting, and implement TypeScript for type safety. Use when upgrading React 16→17→18 with breaking change handling, migrating class components to functional components with hooks, converting lifecycle methods (componentDidMount, componentDidUpdate, componentWillUnmount) to useEffect, transforming this.setState to useState, replacing Higher-Order Components (HOCs) and render props with custom hooks, updating to new JSX transform (no React import needed), implementing React 18's createRoot API replacing ReactDOM.render, adopting automatic batching for all state updates, using transitions (useTransition, startTransition) for non-urgent updates, implementing Suspense for data fetching and code splitting with lazy(), optimizing render performance with useMemo and useCallback, applying React codemods for automated refactoring, converting PropTypes to TypeScript interfaces, migrating from React.createClass to functional components, implementing React.StrictMode for development warnings, adopting concurrent rendering features and error boundaries. Apply when working with React component files (.jsx, .tsx, .js with JSX), custom hooks files (useCustomHook.ts), context provider files (Context.tsx), HOC files (withAuth.jsx), test files using React Testing Library (@testing-library/react), and when planning systematic migration strategies for large React codebases with minimal disruption to production.
 ---
 
 # React Modernization
@@ -9,13 +9,32 @@ Master React version upgrades, class to hooks migration, concurrent features ado
 
 ## When to Use This Skill
 
-- Upgrading React applications to latest versions
-- Migrating class components to functional components with hooks
-- Adopting concurrent React features (Suspense, transitions)
-- Applying codemods for automated refactoring
-- Modernizing state management patterns
-- Updating to TypeScript
-- Improving performance with React 18+ features
+- When upgrading React applications incrementally from React 16→17→18 with version-specific breaking changes
+- When migrating class components to functional components using useState, useEffect, useContext, useReducer hooks
+- When converting componentDidMount, componentDidUpdate, componentWillUnmount lifecycle methods to useEffect with dependency arrays
+- When replacing this.setState with useState or useReducer for state management
+- When transforming Higher-Order Components (HOCs) like withAuth, withRouter to custom hooks (useAuth, useRouter)
+- When converting render props patterns to custom hooks for better code reusability
+- When updating to React 18's createRoot API from ReactDOM.render for concurrent features
+- When adopting automatic batching which batches all setState calls including in async functions and timeouts
+- When implementing useTransition and startTransition for non-urgent UI updates (search results, filtering)
+- When using Suspense for code splitting with React.lazy() and dynamic imports
+- When applying React codemods using react-codeshift for automated transformations (rename-unsafe-lifecycles, new-jsx-transform)
+- When optimizing component re-renders with React.memo, useMemo for expensive calculations, useCallback for stable function references
+- When removing PropTypes in favor of TypeScript interfaces and type definitions
+- When updating to new JSX transform that doesn't require "import React from 'react'" in every file
+- When implementing error boundaries (componentDidCatch, getDerivedStateFromError) for graceful error handling
+- When working with React component files (.jsx, .tsx), custom hooks (use*.ts), context providers, and HOCs
+- When converting React.createClass to ES6 class components and then to functional components
+- When enabling React.StrictMode to detect unsafe lifecycle methods and side effects
+- When migrating from old context API (React.createContext with Consumer) to useContext hook
+- When implementing lazy loading with Suspense and React.lazy for route-based code splitting
+- When updating testing files to use React Testing Library instead of Enzyme
+- When migrating forms from uncontrolled components to controlled components with useState
+- When converting ref callbacks to useRef and forwardRef for ref forwarding
+- When implementing custom hooks to extract and reuse stateful logic across components
+- When adopting React 18 concurrent features while maintaining backward compatibility during gradual rollout
+- When planning phased migration strategies starting with leaf components before migrating parent components
 
 ## Version Upgrade Path
 

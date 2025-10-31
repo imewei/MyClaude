@@ -1,22 +1,33 @@
 ---
 name: async-python-patterns
-description: Master Python asyncio, concurrent programming, and async/await patterns for high-performance applications. Use when building async APIs, concurrent systems, or I/O-bound applications requiring non-blocking operations.
+description: Master Python asyncio, concurrent programming, and async/await patterns for high-performance non-blocking applications. Use when writing or editing async Python code files, implementing async/await patterns in FastAPI or aiohttp applications, building WebSocket servers or real-time systems, creating async context managers or generators, optimizing I/O-bound operations with concurrent execution, handling async database operations with asyncpg or motor, implementing async HTTP clients with aiohttp, writing async tests with pytest-asyncio, debugging async code with asyncio debugging tools, or converting synchronous code to asynchronous patterns.
 ---
 
 # Async Python Patterns
 
 Comprehensive guidance for implementing asynchronous Python applications using asyncio, concurrent programming patterns, and async/await for building high-performance, non-blocking systems.
 
-## When to Use This Skill
+## When to use this skill
 
-- Building async web APIs (FastAPI, aiohttp, Sanic)
-- Implementing concurrent I/O operations (database, file, network)
-- Creating web scrapers with concurrent requests
-- Developing real-time applications (WebSocket servers, chat systems)
-- Processing multiple independent tasks simultaneously
-- Building microservices with async communication
-- Optimizing I/O-bound workloads
-- Implementing async background tasks and queues
+- Writing or editing Python files containing async/await syntax (async def, await keywords)
+- Building async web APIs with FastAPI, aiohttp, Sanic, or Django async views
+- Implementing WebSocket servers or real-time communication systems
+- Creating concurrent I/O operations (multiple database queries, API calls, file operations)
+- Developing web scrapers that need to fetch multiple URLs concurrently
+- Building microservices with async communication patterns
+- Optimizing I/O-bound workloads (network requests, disk operations, database queries)
+- Implementing async background tasks and job queues
+- Writing async context managers (__aenter__, __aexit__)
+- Creating async generators and iterators (async for loops)
+- Handling async database operations with asyncpg, motor, or async SQLAlchemy
+- Implementing async HTTP clients with aiohttp or httpx
+- Working with asyncio event loops, tasks, and coroutines
+- Writing async tests with pytest-asyncio or unittest.IsolatedAsyncioTestCase
+- Converting synchronous code to asynchronous patterns
+- Debugging async code or fixing issues with event loop blocking
+- Implementing rate limiting with asyncio.Semaphore
+- Building producer-consumer patterns with asyncio.Queue
+- Creating concurrent workers with asyncio.gather() or asyncio.create_task()
 
 ## Core Concepts
 

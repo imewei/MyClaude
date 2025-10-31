@@ -1,6 +1,37 @@
+---
+name: react-native-patterns
+description: Modern React Native development patterns with New Architecture, performance optimization, and cross-platform best practices for production mobile applications. Use this skill when writing or editing React Native files (.tsx, .ts, .jsx, .js), building reusable React Native components with TypeScript, optimizing React Native performance with React.memo, useCallback, and useMemo, implementing FlatList with proper optimization props (removeClippedSubviews, getItemLayout, windowSize), optimizing image loading with react-native-fast-image, implementing state management with Redux Toolkit or Zustand, setting up React Navigation with type-safe routing and navigation props, integrating APIs with Axios and React Query for data fetching and caching, implementing form validation with React Hook Form and Zod schemas, creating native modules to bridge iOS Swift or Android Kotlin code, implementing offline-first data persistence with AsyncStorage or WatermelonDB, structuring React Native projects with feature-based architecture, setting up TurboModules for React Native New Architecture, implementing optimistic updates and background synchronization, handling deep linking and universal links, implementing push notifications with Firebase Cloud Messaging, using Hermes JavaScript engine for performance, profiling React Native apps with Flipper or React DevTools, implementing accessibility features with accessibility labels and roles, or migrating React Native apps to the New Architecture with Fabric renderer and JSI.
+---
+
 # React Native Development Patterns
 
 > **Modern React Native patterns, performance optimization, and cross-platform best practices for production mobile applications.**
+
+---
+
+## When to use this skill
+
+- When writing or editing React Native TypeScript/JavaScript files (.tsx, .ts, .jsx, .js)
+- When building reusable React Native components with proper TypeScript interfaces
+- When optimizing React Native performance using React.memo, useCallback, useMemo, and lazy loading
+- When implementing FlatList or SectionList with performance optimizations (removeClippedSubviews, getItemLayout)
+- When optimizing image loading and caching with react-native-fast-image or similar packages
+- When implementing state management with Redux Toolkit, Zustand, or Context API patterns
+- When setting up React Navigation with type-safe navigation props and nested navigators
+- When integrating REST APIs or GraphQL with Axios, Fetch API, or Apollo Client
+- When implementing server state management with React Query or SWR for caching and synchronization
+- When building forms with React Hook Form and implementing validation with Zod or Yup schemas
+- When creating native modules to access platform-specific features (Swift for iOS, Kotlin for Android)
+- When implementing offline-first architecture with AsyncStorage, MMKV, or WatermelonDB
+- When structuring React Native projects with feature-based or domain-driven architecture
+- When migrating to React Native New Architecture with TurboModules and Fabric renderer
+- When implementing optimistic UI updates with background synchronization queues
+- When handling deep linking, universal links, or custom URL schemes
+- When integrating push notifications with Firebase Cloud Messaging or OneSignal
+- When using Hermes JavaScript engine for improved startup performance
+- When profiling React Native apps with Flipper, React DevTools, or Performance Monitor
+- When implementing accessibility features with accessibility labels, hints, and roles
+- When building cross-platform components that adapt to iOS and Android platform guidelines
 
 ---
 

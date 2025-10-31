@@ -1,9 +1,24 @@
 ---
 name: md-simulation-setup
-description: Set up and execute molecular dynamics simulations using LAMMPS (materials, nanoscale), GROMACS (biomolecules), and HOOMD-blue (soft matter). Use when preparing atomistic systems, selecting force fields (AMBER, CHARMM, ReaxFF, EAM), configuring thermostats/barostats, running equilibration/production MD, or optimizing parallel HPC execution.
+description: Set up and execute classical molecular dynamics simulations using LAMMPS, GROMACS, and HOOMD-blue for atomistic modeling of materials, biomolecules, and soft matter systems. Use this skill when writing or editing LAMMPS input scripts (.lammps, .in, in.*, data.*), GROMACS topology files (.top, .gro, .mdp, .itp), or HOOMD-blue Python simulation scripts (.py). Use when selecting and parameterizing force fields (AMBER, CHARMM, OPLS-AA, ReaxFF, EAM, Tersoff, TraPPE) for specific molecular systems. Use when configuring simulation ensembles (NVT, NPT, NVE) with appropriate thermostats (Nosé-Hoover, Langevin, Berendsen) and barostats (Parrinello-Rahman, MTK). Use when designing equilibration protocols including energy minimization, temperature ramping, and density equilibration. Use when setting up production MD runs with trajectory output, property monitoring, and convergence checking. Use when optimizing MD performance through domain decomposition, GPU acceleration, or MPI parallelization on HPC clusters. Use when troubleshooting simulation instabilities, temperature/pressure oscillations, or performance bottlenecks in molecular dynamics workflows.
 ---
 
 # MD Simulation Setup & Execution
+
+## When to use this skill
+
+- When writing or editing LAMMPS input scripts (.lammps, .in, in.*, data.*)
+- When creating GROMACS topology files, coordinate files, or parameter files (.top, .gro, .mdp, .itp)
+- When developing HOOMD-blue Python simulation scripts for soft matter or polymer systems
+- When selecting appropriate force fields (AMBER, CHARMM, OPLS-AA, ReaxFF, EAM, Tersoff, TraPPE) for your molecular system
+- When configuring simulation ensembles (NVT, NPT, NVE) with thermostats and barostats
+- When designing multi-stage equilibration protocols (energy minimization → NVT → NPT → production)
+- When setting up production MD runs with trajectory output and property monitoring
+- When optimizing parallel MD execution on HPC clusters using MPI or GPU acceleration
+- When troubleshooting MD simulation issues (exploding systems, temperature oscillations, density drift)
+- When working with biomolecular systems (proteins, DNA, membranes) requiring solvation and periodic boundaries
+- When simulating materials systems (metals, ceramics, polymers, nanomaterials) with specialized force fields
+- When setting up reactive MD simulations requiring bond breaking/formation (ReaxFF)
 
 ## Overview
 

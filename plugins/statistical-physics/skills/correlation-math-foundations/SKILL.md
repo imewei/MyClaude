@@ -1,9 +1,34 @@
 ---
 name: correlation-math-foundations
-description: Master mathematical foundations of correlation functions including two-point and higher-order correlations, cumulants, transform methods (Fourier, Laplace, wavelet), Wiener-Khinchin theorem, Ornstein-Zernike equations, and fluctuation-dissipation relations. Use when developing correlation theory, analyzing finite-size effects, or connecting equilibrium correlations to response functions.
+description: Master mathematical foundations of correlation functions including two-point C(r) = ⟨φ(r)φ(0)⟩ - ⟨φ⟩² and higher-order (three-point, four-point χ₄(t) for dynamic heterogeneity) correlations, cumulants (κ₂ = variance, κ₃ = skewness, κ₄ connects to non-Gaussian fluctuations), transform methods (Fourier for structure factor S(k) and spectral density I(ω), Laplace for continuous relaxation spectra, wavelet for multi-scale time-frequency analysis), Wiener-Khinchin theorem S(ω) = ∫C(t)e^(-iωt)dt connecting time correlation to spectral density, Ornstein-Zernike equations h̃(k) = c̃(k)/[1-ρc̃(k)] separating direct vs indirect correlations with Percus-Yevick and hypernetted chain closures, fluctuation-dissipation theorem χ_AB(t) = β d/dt⟨A(t)B(0)⟩ connecting equilibrium correlations to linear response, and Green's functions G(r,t) = ⟨φ(r,t)φ(0,0)⟩ as propagators. Use when developing correlation theory for novel materials, analyzing finite-size scaling near critical points (ξ ~ L), connecting microscopic correlations to macroscopic response functions, or deriving transport laws from time-correlation functions.
 ---
 
 # Mathematical Foundations & Transform Methods
+
+## When to use this skill
+
+- Deriving two-point correlation functions C(r) = ⟨φ(r)φ(0)⟩ - ⟨φ⟩² for density, spin, or field fluctuations in statistical mechanics with proper symmetry properties (*.py theory development, *.tex mathematical derivations)
+- Computing higher-order correlation functions: three-point C³(r₁,r₂) for three-body interactions, four-point χ₄(t) for dynamic heterogeneity in glasses, or six-point for critical phenomena
+- Calculating cumulants to remove factorizable contributions: κ₂ = variance, κ₃ = skewness detecting asymmetry, κ₄ measuring non-Gaussian tails in fluctuation distributions
+- Implementing Fourier transforms for spatial correlations to structure factor S(k) = 1 + ρ∫C(r)e^(ik·r)dr or temporal correlations to spectral density via FFT (*.py NumPy/SciPy)
+- Performing inverse Fourier transforms from scattering data S(k) to real-space pair distribution g(r) using C(r) = (2π)^(-d)∫C̃(k)e^(-ik·r)dk with proper normalization
+- Applying Laplace transforms C̃(s) = ∫₀^∞ C(t)e^(-st)dt for continuous relaxation spectra, non-exponential decay analysis, or impedance spectroscopy interpretation
+- Implementing wavelet transforms W(a,b) for multi-scale time-frequency analysis with scale parameter a and translation b to detect intermittent dynamics, bursts, or non-stationary correlations
+- Deriving Wiener-Khinchin theorem applications: compute power spectral density from autocorrelation for DLS, electrical noise (Johnson-Nyquist), or hydrodynamic modes (Brillouin peaks)
+- Solving Ornstein-Zernike integral equations h(r) = c(r) + ρ∫c(|r-r'|)h(r')dr' to separate direct correlation c(r) from total correlation h(r) = g(r)-1 in liquid structure theory
+- Applying Percus-Yevick closure c(r) = [1-e^(βu(r))]g(r) or hypernetted chain closure c(r) = g(r)-1-ln g(r)-βu(r) to solve for structure factors from pair potentials
+- Deriving fluctuation-dissipation theorem χ_AB(t) = β d/dt⟨A(t)B(0)⟩_{eq} to connect equilibrium correlations (conductivity σ from current-current ⟨j(t)j(0)⟩, susceptibility χ from magnetization ⟨M(t)M(0)⟩) to linear response
+- Detecting fluctuation-dissipation violations in non-equilibrium systems: generalized FDT with effective temperature T_eff > T for driven, active, or glassy systems
+- Computing Green's functions G(r,t) = ⟨φ(r,t)φ(0,0)⟩ as propagators for diffusion G(r,t) = (4πDt)^(-d/2)exp(-r²/4Dt), wave propagation, or quantum systems
+- Extracting density of states ρ(ω) ∝ Im G(ω) or spectral function A(k,ω) = -2Im G(k,ω)/π from Green's functions for photoemission spectroscopy, tunneling, or optical absorption
+- Analyzing finite-size effects: correlation length ξ vs system size L with finite-size scaling ξ(L) ~ L^ν at criticality, T_c shift T_c(L) = T_c(∞) + aL^(-1/ν), or rounding of phase transitions
+- Correcting finite-size artifacts in simulations using periodic boundary condition corrections for long-range correlations with image summations or Ewald summation techniques
+- Validating sum rules: compressibility S(k→0) = ρkTκ_T, number conservation ∫[S(k)-1]dk = 0, moment relations ⟨ω^n⟩ = ∫ω^n S(ω)dω = i^n d^n/dt^n C(t)|_{t=0}
+- Verifying physical constraints: non-negativity C(0) ≥ |C(t)|, causality χ(t<0) = 0, Kramers-Kronig relations connecting real and imaginary parts of response functions
+- Implementing translational invariance for homogeneous systems C(r,r') = C(|r-r'|) to simplify Fourier transforms and use periodic boundary conditions
+- Checking stationarity C(t,t') = C(t-t') for equilibrium or steady-state systems enabling Wiener-Khinchin theorem and spectral analysis
+- Deriving symmetry relations: time-reversal C(t) = C(-t) for equilibrium, Onsager relations C_AB(t) = C_BA(t), or spatial symmetries (isotropic, cubic) for crystalline systems
+- Computing critical exponents from correlation functions: C(r) ~ r^(-(d-2+η)) at T_c, correlation length divergence ξ ~ |T-T_c|^(-ν), or universal amplitude ratios
 
 Master the mathematical theory of correlation functions, transform methods, and fundamental theorems connecting correlations to physical observables.
 

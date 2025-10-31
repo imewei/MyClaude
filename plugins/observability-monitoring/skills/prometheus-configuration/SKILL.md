@@ -1,9 +1,27 @@
 ---
 name: prometheus-configuration
-description: Set up Prometheus for comprehensive metric collection, storage, and monitoring of infrastructure and applications. Use when implementing metrics collection, setting up monitoring infrastructure, or configuring alerting systems.
+description: Set up and configure Prometheus for comprehensive metric collection, storage, alerting, and monitoring of infrastructure and applications with scrape configs, recording rules, and alert rules. Use when installing or configuring Prometheus servers, writing or modifying prometheus.yml configuration files, setting up metric scraping targets with static or dynamic service discovery, creating recording rules for pre-aggregated metrics, designing alert rules for monitoring conditions, configuring Prometheus for Kubernetes with pod annotations, implementing file-based or DNS service discovery, setting up federation for multi-cluster monitoring, configuring retention policies and storage, creating relabeling rules for metric transformation, implementing PromQL queries for metrics analysis, or integrating Prometheus with Grafana and Alertmanager.
 ---
 
 # Prometheus Configuration
+
+## When to use this skill
+
+- Installing or configuring Prometheus servers in production environments
+- Writing or modifying prometheus.yml configuration files
+- Setting up metric scraping targets using static_configs or service discovery
+- Creating recording rules for frequently queried or expensive metric aggregations
+- Designing alert rules for monitoring system health and application performance
+- Configuring Prometheus to scrape Kubernetes pods with annotations
+- Implementing file-based, DNS, Consul, or other service discovery mechanisms
+- Setting up Prometheus federation for hierarchical or cross-cluster monitoring
+- Configuring data retention policies and TSDB storage settings
+- Creating relabeling rules (relabel_configs) for metric transformation and filtering
+- Writing PromQL queries for metrics analysis and visualization
+- Integrating Prometheus with Grafana for dashboards
+- Configuring Alertmanager for alert routing and notifications
+- Setting up metric exporters (node_exporter, blackbox_exporter, custom exporters)
+- Optimizing Prometheus performance with recording rules and efficient queries
 
 Complete guide to Prometheus setup, metric collection, scrape configuration, and recording rules.
 
@@ -11,7 +29,7 @@ Complete guide to Prometheus setup, metric collection, scrape configuration, and
 
 Configure Prometheus for comprehensive metric collection, alerting, and monitoring of infrastructure and applications.
 
-## When to Use
+## Key Configuration Areas
 
 - Set up Prometheus monitoring
 - Configure metric scraping

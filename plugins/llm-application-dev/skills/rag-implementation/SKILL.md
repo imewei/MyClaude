@@ -1,6 +1,6 @@
 ---
 name: rag-implementation
-description: Build Retrieval-Augmented Generation (RAG) systems for LLM applications with vector databases and semantic search. Use when implementing knowledge-grounded AI, building document Q&A systems, or integrating LLMs with external knowledge bases.
+description: Build production-ready Retrieval-Augmented Generation (RAG) systems for LLM applications using vector databases, embeddings, and semantic search to ground AI responses in factual knowledge. Use when writing or editing Python files that implement document Q&A systems, knowledge base chatbots, semantic search APIs, or RAG pipelines. Apply this skill when setting up vector databases (Pinecone, Weaviate, Chroma, Qdrant, Milvus, FAISS), implementing document loaders and text splitters, creating embeddings with OpenAI, Cohere, or sentence-transformers models, building retrieval chains with LangChain or LlamaIndex, implementing hybrid search combining vector similarity and keyword matching (BM25), adding reranking with cross-encoders or Cohere Rerank API, designing chunking strategies (recursive, semantic, token-based, markdown-aware), optimizing retrieval with metadata filtering and maximal marginal relevance, reducing hallucinations through grounded prompts and source citations, or evaluating RAG systems for accuracy, retrieval quality, and groundedness.
 ---
 
 # RAG Implementation
@@ -9,13 +9,25 @@ Master Retrieval-Augmented Generation (RAG) to build LLM applications that provi
 
 ## When to Use This Skill
 
-- Building Q&A systems over proprietary documents
-- Creating chatbots with current, factual information
-- Implementing semantic search with natural language queries
-- Reducing hallucinations with grounded responses
-- Enabling LLMs to access domain-specific knowledge
-- Building documentation assistants
-- Creating research tools with source citation
+- Writing or editing Python files (`.py`) that implement RAG pipelines or document Q&A systems
+- Building Q&A systems over proprietary documents, knowledge bases, or documentation
+- Creating chatbots with current, factual information grounded in retrieved context
+- Implementing semantic search APIs with natural language queries
+- Reducing hallucinations with grounded responses using retrieval-augmented prompts
+- Enabling LLMs to access domain-specific knowledge from vector databases
+- Building documentation assistants that cite sources for their answers
+- Creating research tools with source citation and evidence-based responses
+- Setting up vector databases (Pinecone, Weaviate, Chroma, Qdrant, Milvus, FAISS)
+- Implementing document loaders for PDFs, Word docs, web pages, or text files
+- Creating text splitters and chunking strategies (recursive, semantic, token-based, markdown headers)
+- Generating and storing embeddings using OpenAI, Cohere, or sentence-transformers models
+- Building retrieval chains with LangChain (RetrievalQA, ConversationalRetrievalChain) or LlamaIndex
+- Implementing hybrid search combining dense retrieval (embeddings) and sparse retrieval (BM25, TF-IDF)
+- Adding reranking stages with cross-encoders (ms-marco models) or Cohere Rerank API
+- Optimizing retrieval with metadata filtering, maximal marginal relevance (MMR), or parent document patterns
+- Designing prompts that enforce grounding and prevent hallucinations ("answer only from context")
+- Evaluating RAG systems for retrieval quality (precision@k, recall@k, NDCG) and answer accuracy
+- Implementing contextual compression to extract only relevant portions of retrieved documents
 
 ## Core Components
 

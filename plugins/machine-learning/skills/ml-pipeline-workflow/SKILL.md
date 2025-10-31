@@ -1,6 +1,6 @@
 ---
 name: ml-pipeline-workflow
-description: Build end-to-end MLOps pipelines from data preparation through model training, validation, and production deployment. Use when creating ML pipelines, implementing MLOps practices, or automating model training and deployment workflows.
+description: Build end-to-end MLOps pipelines with Airflow, Dagster, Kubeflow Pipelines, or Prefect orchestrating data preparation, feature engineering, model training, validation, and production deployment workflows. Use when writing or editing pipeline DAG definitions (`.py`), workflow configurations (`.yaml`), or orchestration scripts. Apply this skill when designing ML pipeline architectures, creating Airflow DAGs for ML workflows, implementing Kubeflow Pipelines with components and artifacts, using Dagster for asset-based ML orchestration, building data validation steps with Great Expectations or TFX, implementing automated feature engineering pipelines, orchestrating distributed model training jobs, creating model validation and testing stages, implementing A/B testing infrastructure, setting up canary or blue-green deployment workflows, integrating with MLflow or W&B for experiment tracking, implementing data versioning with DVC, or creating end-to-end reproducible ML workflows.
 ---
 
 # ML Pipeline Workflow
@@ -13,12 +13,24 @@ This skill provides comprehensive guidance for building production ML pipelines 
 
 ## When to Use This Skill
 
-- Building new ML pipelines from scratch
-- Designing workflow orchestration for ML systems
-- Implementing data → model → deployment automation
-- Setting up reproducible training workflows
-- Creating DAG-based ML orchestration
-- Integrating ML components into production systems
+- Writing or editing Airflow DAG definitions (`.py`) for ML workflows
+- Writing or editing Kubeflow Pipeline definitions or component specifications
+- Writing or editing workflow configuration files (`.yaml`) for ML orchestration
+- Designing end-to-end ML pipeline architectures (data → train → validate → deploy)
+- Creating Airflow DAGs with tasks for data processing, training, and deployment
+- Implementing Kubeflow Pipelines with reusable components and artifacts
+- Using Dagster for asset-based ML pipeline orchestration
+- Building Prefect flows for ML workflow automation
+- Implementing data validation stages with Great Expectations or TFX Data Validation
+- Creating automated feature engineering pipelines
+- Orchestrating distributed model training across multiple nodes
+- Implementing model validation stages (performance testing, drift detection)
+- Setting up A/B testing infrastructure for model comparison
+- Implementing deployment strategies (canary, blue-green, shadow deployments)
+- Integrating experiment tracking (MLflow, W&B) into pipeline workflows
+- Implementing data versioning with DVC or similar tools
+- Creating reproducible, end-to-end ML workflows with version control
+- Building scheduled retraining pipelines triggered by data drift or performance degradation
 
 ## What This Skill Provides
 

@@ -1,19 +1,32 @@
 ---
 name: neural-architecture-patterns
-description: Design patterns and best practices for neural network architectures covering CNNs, RNNs, transformers, and modern architectures. Use when designing new architectures or understanding architectural principles and inductive biases.
+description: Design and implement neural network architectures using proven patterns, best practices, and architectural principles for CNNs, RNNs, transformers, and modern deep learning models. Use this skill when designing custom neural architectures with skip connections, residual blocks, attention mechanisms, or encoder-decoder patterns. Apply when implementing specific architecture types (ResNets, U-Nets, Vision Transformers, BERT, GPT, diffusion models). Use when selecting architectures for specific tasks (image classification with CNNs/ViT, object detection with YOLO/Faster R-CNN, segmentation with U-Net, NLP with transformers). Apply when understanding inductive biases (translation equivariance in CNNs, temporal dependencies in RNNs, content-based routing in attention). Use when implementing normalization layers (BatchNorm, LayerNorm, GroupNorm) or designing multi-scale feature pyramids. Apply when adapting architectures across domains (vision, language, multimodal, graphs). Use when working with model architecture files (model.py, architecture.py, network definitions), implementing custom PyTorch/JAX modules, or designing production-ready network topologies.
 ---
 
 # Neural Architecture Patterns
 
 Design patterns, best practices, and architectural principles for building effective neural networks.
 
-## When to Use
+## When to use this skill
 
-- Designing new neural network architectures
-- Understanding why certain architectures work
-- Selecting appropriate architecture for task
-- Adapting architectures to new domains
-- Learning architectural design principles
+- When designing custom neural network architectures from scratch or adapting existing patterns
+- When implementing residual connections (ResNet-style skip connections) for deep networks
+- When adding attention mechanisms (self-attention, multi-head attention, cross-attention) to models
+- When selecting appropriate architectures for computer vision tasks (ResNet, EfficientNet, Vision Transformers for classification)
+- When implementing encoder-decoder architectures (autoencoders, seq2seq, VAEs, U-Net for segmentation)
+- When designing transformers for NLP (BERT-style encoders, GPT-style decoders, encoder-decoder T5)
+- When choosing normalization strategies (Batch Normalization for CNNs, Layer Normalization for transformers)
+- When implementing multi-scale processing with feature pyramids or hierarchical architectures
+- When understanding architectural inductive biases (CNNs for spatial data, RNNs for sequences, transformers for long-range dependencies)
+- When adapting architectures across domains (computer vision, NLP, multimodal, graph neural networks)
+- When implementing modern architecture innovations (diffusion models, neural ODEs, graph neural networks, memory networks)
+- When balancing model depth vs width trade-offs for capacity and optimization
+- When adding regularization through architectural choices (dropout, stochastic depth, skip connections)
+- When implementing object detection architectures (YOLO, Faster R-CNN, RetinaNet, DETR)
+- When designing semantic segmentation models (U-Net, DeepLab, Mask R-CNN, SegFormer)
+- When working with architecture configuration files specifying layer types, dimensions, and connections
+- When creating custom PyTorch nn.Module, JAX Flax modules, or TensorFlow Keras layers
+- When selecting architectures based on task requirements (accuracy, latency, model size, hardware constraints)
 
 ## Core Architectural Patterns
 

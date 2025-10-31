@@ -1,9 +1,31 @@
 ---
 name: meta-cognitive-reflection
-description: Analyze AI reasoning patterns, cognitive biases, and conversation quality through systematic meta-cognitive reflection. This skill should be used when analyzing AI decision-making processes, evaluating reasoning effectiveness, identifying cognitive biases, or assessing conversation patterns and problem-solving quality. Use for session reflections, reasoning audits, and improving AI interaction effectiveness.
+description: Analyze and reflect on AI reasoning patterns, cognitive processes, decision-making quality, cognitive biases, and conversation effectiveness through systematic meta-cognitive reflection. This skill should be used when analyzing AI decision-making processes and reasoning chains, when evaluating the effectiveness of reasoning approaches used in problem-solving, when identifying and mitigating cognitive biases in AI responses (availability bias, anchoring bias, confirmation bias, recency bias), when assessing conversation patterns and communication quality with users, when evaluating problem-solving quality across different stages (understanding, strategy, implementation, validation), when conducting session reflections or retrospectives on AI interactions, when performing reasoning audits to understand which reasoning types were used (deductive, inductive, abductive, analogical, causal), when improving AI interaction effectiveness and communication clarity, when analyzing how well AI understood user requirements and adapted solutions, when evaluating pedagogical effectiveness of AI explanations and examples, when assessing whether AI communication was appropriately technical or accessible, when reviewing decision points in complex problem-solving to identify improvement opportunities, when generating meta-cognitive insights about AI reasoning quality over time, or when creating reflection reports for learning and continuous improvement. Use this skill for session reflections, reasoning effectiveness evaluations, bias detection and mitigation, conversation quality assessments, problem-solving retrospectives, communication effectiveness audits, and any scenario requiring systematic analysis of AI cognitive processes and interaction patterns.
 ---
 
 # Meta-Cognitive Reflection
+
+## When to use this skill
+
+- When analyzing AI decision-making processes and reasoning chains in conversations
+- When evaluating the effectiveness and appropriateness of reasoning approaches used
+- When identifying and mitigating cognitive biases in AI responses (availability, anchoring, confirmation, recency, selection biases)
+- When assessing conversation patterns, communication quality, and user interaction effectiveness
+- When evaluating problem-solving quality across stages (problem understanding, strategy formulation, implementation, validation, iteration)
+- When conducting session reflections or retrospectives on completed AI interactions or projects
+- When performing reasoning audits to understand which reasoning types were employed (deductive, inductive, abductive, analogical, causal)
+- When improving AI interaction effectiveness, clarity, and pedagogical quality
+- When analyzing how well AI understood user requirements and adapted solutions accordingly
+- When evaluating pedagogical effectiveness of AI explanations, examples, and concept scaffolding
+- When assessing whether AI communication was appropriately technical or sufficiently accessible
+- When reviewing decision points in complex problem-solving to identify missed opportunities or better approaches
+- When generating meta-cognitive insights about AI reasoning patterns and quality trends over time
+- When creating structured reflection reports for learning, documentation, and continuous improvement
+- When detecting patterns of communication breakdown or misunderstanding with users
+- When evaluating how effectively AI balanced multiple competing priorities or constraints
+- When analyzing whether AI appropriately escalated complexity or sought clarification when needed
+- When assessing the logical validity and evidence strength supporting AI conclusions
+- When identifying recurring reasoning patterns that lead to successful or unsuccessful outcomes
 
 ## Overview
 

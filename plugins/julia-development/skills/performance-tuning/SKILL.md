@@ -1,11 +1,26 @@
 ---
 name: performance-tuning
-description: Profile Julia code and optimize performance with @code_warntype, @profview, BenchmarkTools.jl, and allocation reduction. Foundation for /julia-optimize command analysis.
+description: Master profiling and optimizing Julia code with @code_warntype, @profview, BenchmarkTools.jl, and allocation reduction techniques for maximum performance. Use when debugging slow Julia code, checking type stability with @code_warntype (looking for red/Any types), profiling with @profview and ProfileView.jl, benchmarking with @benchmark and @btime, reducing memory allocations, identifying performance bottlenecks in hot loops, optimizing @inbounds and @simd usage, analyzing with @time and @allocated, comparing algorithm performance, or improving execution speed. Foundation for /julia-optimize command analysis and essential for high-performance computing applications.
 ---
 
 # Performance Tuning
 
 Master profiling and optimizing Julia code for maximum performance.
+
+## When to use this skill
+
+- Debugging slow Julia code and identifying bottlenecks
+- Checking type stability with @code_warntype (red = type instability)
+- Profiling execution with @profview and ProfileView.jl flame graphs
+- Benchmarking code with @benchmark, @btime from BenchmarkTools.jl
+- Reducing memory allocations in hot loops
+- Analyzing execution time with @time and @allocated
+- Optimizing performance-critical sections with @inbounds, @simd
+- Comparing algorithm performance
+- Improving startup time with precompilation
+- Optimizing array operations and memory access patterns
+- Reducing garbage collection pressure
+- Tuning parallel and GPU code performance
 
 ## Profiling Tools
 

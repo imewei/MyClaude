@@ -1,9 +1,33 @@
 ---
 name: correlation-physical-systems
-description: Apply correlation function analysis to condensed matter (spin, electronic, density correlations), soft matter (polymers, colloids, glass transitions), biological systems (protein dynamics, membranes, molecular motors), and non-equilibrium systems (active matter, dynamic heterogeneity). Use when mapping physical systems to appropriate correlation functions for materials characterization and property prediction.
+description: Apply correlation function analysis to condensed matter (spin correlations in Ising/Heisenberg models with critical exponents η and correlation length ξ ~ |T-T_c|^(-ν), electronic density correlations with Friedel oscillations and dynamical structure factor S(q,ω) from EELS/RIXS, density correlations via van Hove function G(r,t) = ⟨ρ(r,t)ρ(0,0)⟩ separating self and distinct parts), soft matter (polymer Rouse/Zimm dynamics with ⟨R²(t)⟩ ~ t^(1/2) or t^(2/3), reptation τ_d for entangled systems, colloidal pair distribution g(r) with DLS f(q,t) intermediate scattering, glass transition dynamic heterogeneity χ₄(t) with growing length ξ₄, KWW stretched exponential φ(t) ~ exp[-(t/τ)^β]), biological systems (protein folding contact map correlations C_ij(t), FRET end-to-end distance dynamics, NMR relaxation with order parameters S², membrane height-height correlations ⟨h(r)h(0)⟩ ~ ln(r) for bending rigidity κ, molecular motor stepping correlations and force-velocity under load), and non-equilibrium systems (active matter velocity correlations C_vv(r) with enhanced diffusion D_eff = D_t + v₀²τ_r/d, dynamic heterogeneity four-point G₄(r,t) for cooperative motion, transfer entropy TE_{X→Y} for causal information flow). Use when mapping physical systems to correlation functions for materials characterization, predicting transport properties (diffusion, viscosity, conductivity) from microscopic dynamics, or connecting experimental observables (scattering, microscopy, spectroscopy) to theoretical predictions.
 ---
 
 # Physical Systems & Applications
+
+## When to use this skill
+
+- Analyzing spin correlations in magnetic systems: Ising ⟨S_i S_j⟩ for ferromagnets/antiferromagnets, Heisenberg ⟨S_i·S_j⟩ for vector spins, critical scaling C(r) ~ r^(-(d-2+η)) at phase transitions (*.py Monte Carlo simulations, *.jl Julia implementations)
+- Computing electronic density correlations for Friedel oscillations with 2k_F modulations, charge density waves at nesting vectors, or dynamical structure factor S(q,ω) from electron energy loss spectroscopy (EELS) or resonant inelastic X-ray scattering (RIXS)
+- Analyzing Hubbard model on-site correlations U⟨n_i↑n_i↓⟩ for Mott transitions, antiferromagnetic spin correlations in cuprates, or pairing correlations in high-T_c superconductors
+- Computing van Hove correlation G(r,t) = ⟨ρ(r,t)ρ(0,0)⟩ separating self part G_s (single-particle propagator) from distinct part G_d (inter-particle correlations) for liquid structure from neutron/X-ray scattering
+- Modeling polymer dynamics: Rouse ⟨R²(t)⟩ ~ t^(1/2) without hydrodynamics, Zimm ⟨R²(t)⟩ ~ t^(2/3) with solvent interactions, reptation τ_d ~ N^3 for entangled melts (*.py polymer simulation codes)
+- Analyzing colloidal systems: pair distribution g(r) for hard spheres with oscillations at σ, 2σ, 3σ, DLVO theory for electrostatic+van der Waals interactions, DLS intermediate scattering f(q,t) for short-time vs long-time dynamics
+- Studying glass transitions: dynamic heterogeneity χ₄(t) = N[⟨Q(t)²⟩-⟨Q(t)⟩²] with growing correlation length ξ₄ ~ (T-T_g)^(-ν), KWW stretched exponential φ(t) ~ exp[-(t/τ)^β] with β < 1 distribution of relaxation times
+- Implementing mode-coupling theory predictions for two-step relaxation: β-relaxation (fast cage rattling) and α-relaxation (slow structural rearrangement) in supercooled liquids approaching T_g
+- Analyzing protein folding: contact map correlations C_ij(t) = ⟨q_ij(t)q_ij(0)⟩ for native contact formation/breaking, FRET end-to-end distance dynamics for folding pathways, NMR backbone order parameters S² from local correlations
+- Studying membrane fluctuations: height-height correlation ⟨h(r)h(0)⟩ ~ ln(r) for 2D membranes extracting bending rigidity κ and tension σ, lipid lateral diffusion D ~ 1-10 μm²/s with anomalous subdiffusion α < 1 from crowding
+- Modeling molecular motors: stepping time correlations detecting memory effects, ATP hydrolysis correlation with mechanical steps, kinesin/myosin head coordination, force-velocity relations under load for efficiency and stall force
+- Analyzing active matter: velocity-velocity correlation C_vv(r) = ⟨v(r)·v(0)⟩ for collective motion, enhanced diffusion D_eff = D_t + v₀²τ_r/d from self-propulsion, motility-induced phase separation (MIPS) in bacterial colonies
+- Computing four-point susceptibility χ₄(t) for dynamic heterogeneity in active systems, supercooled liquids, or colloidal glasses measuring spatial extent ξ₄ of cooperative motion
+- Implementing Toner-Tu hydrodynamics for active fluids: anomalous density fluctuations ⟨(δρ)²⟩ ~ L^(4/5) in 2D, giant number fluctuations, long-range polar order
+- Analyzing information transfer: mutual information I(A;B) = Σ P(a,b)log[P(a,b)/(P(a)P(b))] beyond linear correlations, transfer entropy TE_{X→Y} = I(Y_future; X_past | Y_past) for causal inference
+- Computing Granger causality for network reconstruction: X Granger-causes Y if past X improves Y prediction, linear approximation to transfer entropy for neural/gene regulatory networks
+- Extracting transport coefficients: diffusion D = ∫⟨v(t)·v(0)⟩dt from velocity autocorrelation (Green-Kubo), viscosity η = (V/kT)∫⟨σ_xy(t)σ_xy(0)⟩dt from stress correlation
+- Predicting viscoelastic moduli from polymer stress correlation G(t) = ⟨σ(t)σ(0)⟩ connecting to storage G'(ω) and loss G''(ω) moduli via Fourier transform
+- Analyzing critical phenomena: correlation length divergence ξ ~ |T-T_c|^(-ν), critical exponent η from C(r) ~ r^(-(d-2+η)), universal amplitude ratios at phase transitions
+- Mapping experimental observables: DLS g₂(τ) to diffusion D, SAXS/SANS I(q) to structure factor S(q), XPCS two-time C(t₁,t₂) to aging/non-stationarity, FCS G(τ) to concentration and binding
+- Validating theoretical predictions: compare MD simulation correlations to experimental scattering data, check scaling laws C(r,T) at phase transitions, verify sum rules and FDT
 
 Map physical systems to appropriate correlation functions, bridging theoretical predictions with experimental observables across condensed matter, soft matter, biological, and non-equilibrium systems.
 

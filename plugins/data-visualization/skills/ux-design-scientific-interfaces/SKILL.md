@@ -1,6 +1,6 @@
 ---
 name: ux-design-scientific-interfaces
-description: User-centered design for scientific tools: interactive dashboards (Dash, Streamlit, Pluto.jl), CLI interfaces, Jupyter widgets, accessibility standards (WCAG), and usability testing for researchers
+description: Design intuitive, accessible, and user-centered interfaces for scientific tools, research applications, and data analysis platforms. Use this skill when designing or building interactive dashboards with Plotly Dash (Python) or Streamlit for data exploration, creating reactive Pluto.jl notebooks for Julia-based scientific workflows, implementing WCAG 2.1 AA accessibility standards (color contrast ratios, keyboard navigation, screen reader support with ARIA labels), designing Jupyter notebook widgets with ipywidgets for parameter exploration, building command-line interfaces (CLI) for scientific tools with argparse or Click, creating Figma prototypes or wireframes for scientific applications, implementing usability testing frameworks to measure task success rates and user performance, designing progressive disclosure patterns that minimize cognitive load for researchers, implementing reproducibility features (save/load parameter sets, export capabilities in CSV/JSON/HDF5), creating help documentation with inline examples and scientific tooltips, designing responsive layouts that work on tablets for field research, implementing keyboard shortcuts for power users, designing clear information hierarchies for complex scientific data, creating batch processing workflows for multiple datasets, implementing undo/redo functionality for safe experimentation, or when working with dashboard application files (app.py for Dash, streamlit_app.py for Streamlit) that require user-friendly design for non-technical researchers.
 tools: Read, Write, python, julia, Figma, streamlit, dash
 integration: Use for designing scientist-friendly interfaces that minimize cognitive load
 ---
@@ -8,6 +8,36 @@ integration: Use for designing scientist-friendly interfaces that minimize cogni
 # UX Design for Scientific Interfaces
 
 Complete framework for designing intuitive, accessible, and efficient user interfaces for scientific applications, dashboards, and interactive tools.
+
+## When to use this skill
+
+- Designing or building interactive Plotly Dash applications (app.py files) for scientific data exploration
+- Creating Streamlit applications (streamlit_app.py files) for rapid prototyping of research tools
+- Developing reactive Pluto.jl notebooks with @bind widgets for Julia-based scientific workflows
+- Implementing WCAG 2.1 AA accessibility standards for scientific web applications
+- Designing color schemes with proper contrast ratios (4.5:1 for normal text, 3:1 for large text)
+- Implementing keyboard navigation and focus indicators for accessible scientific tools
+- Adding ARIA labels and screen reader support for complex scientific visualizations
+- Building Jupyter notebook widgets using ipywidgets for interactive parameter exploration
+- Designing command-line interfaces (CLI) for scientific tools with argparse, Click, or Typer
+- Creating Figma prototypes or wireframes for scientific applications before implementation
+- Conducting usability testing with researchers to measure task success rates and completion times
+- Designing progressive disclosure patterns that show simple options first, complexity when needed
+- Implementing reproducibility features (save/load analysis states, export parameter configurations)
+- Creating export functionality supporting multiple formats (CSV, JSON, HDF5, PDF reports)
+- Designing clear information hierarchies that prioritize critical scientific data
+- Implementing batch processing workflows for applying analysis to multiple datasets
+- Adding undo/redo functionality for safe experimentation without data loss
+- Creating inline help documentation with scientific tooltips and example usage
+- Designing responsive layouts that work on tablets and mobile devices for field research
+- Implementing keyboard shortcuts (Alt+key combinations) for power users
+- Designing dashboards with tabs or panels for different analysis views
+- Creating control panels with sliders, dropdowns, and input fields for parameter adjustment
+- Implementing real-time feedback showing results as parameters change
+- Designing error prevention with input validation and sensible default values
+- Creating user testing frameworks to track metrics (duration, success rate, error counts)
+- Implementing consistent visual patterns across scientific tools for familiarity
+- Designing interfaces that support common scientific workflows (load → analyze → visualize → export)
 
 ## Core UX Principles for Scientists
 

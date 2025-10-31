@@ -1,6 +1,6 @@
 ---
 name: data-wrangling-communication
-description: Comprehensive data wrangling, cleaning, feature engineering, and visualization workflows for preparing data for analysis and communicating insights effectively. Use when cleaning messy datasets, handling missing values, engineering features, creating visualizations, building dashboards, or presenting data-driven insights to stakeholders.
+description: Comprehensive data wrangling, cleaning, feature engineering, and visualization workflows using pandas, NumPy, Matplotlib, Seaborn, and Plotly for preparing data for analysis and communicating insights effectively. Use when writing or editing Jupyter notebooks (`.ipynb`), Python data analysis scripts (`.py`), or dashboard applications. Apply this skill when cleaning messy datasets with pandas, handling missing values (imputation, deletion strategies), dealing with outliers using IQR or Z-score methods, engineering features (aggregations, transformations, encoding categorical variables), performing exploratory data analysis (EDA), creating statistical visualizations (histograms, box plots, scatter plots, heatmaps), building interactive dashboards with Plotly Dash or Streamlit, merging and joining datasets from multiple sources, reshaping data (pivot tables, melting, stacking), optimizing pandas operations for large datasets, working with time series data (resampling, rolling windows), or presenting data-driven insights to stakeholders.
 ---
 
 # Data Wrangling and Communication
@@ -9,15 +9,24 @@ Transform raw data into actionable insights through systematic data cleaning, fe
 
 ---
 
-## When to Use
+## When to Use This Skill
 
-- Cleaning and preprocessing raw datasets
-- Handling missing values, outliers, and inconsistencies
-- Feature engineering for machine learning
-- Exploratory data analysis (EDA)
-- Creating visualizations and dashboards
-- Communicating insights to stakeholders
-- Building data narratives for business decisions
+- Writing or editing Jupyter notebooks (`.ipynb`) for data analysis
+- Writing or editing Python data analysis scripts (`.py`) with pandas and NumPy
+- Cleaning messy datasets with missing values, duplicates, or inconsistencies
+- Handling missing data with imputation strategies (mean, median, forward fill, interpolation)
+- Detecting and handling outliers using IQR, Z-score, or domain knowledge
+- Engineering features through aggregations, transformations, binning, or encoding
+- Encoding categorical variables (one-hot encoding, label encoding, target encoding)
+- Performing exploratory data analysis (EDA) to understand data distributions and relationships
+- Creating statistical visualizations (histograms, box plots, scatter plots, correlation heatmaps)
+- Building interactive visualizations with Plotly or Bokeh
+- Creating dashboards with Plotly Dash, Streamlit, or Panel
+- Merging and joining datasets from multiple sources (inner, outer, left, right joins)
+- Reshaping data with pivot tables, melting, stacking, or unstacking
+- Working with time series data (date parsing, resampling, rolling windows, lag features)
+- Optimizing pandas operations for large datasets (chunking, efficient data types, vectorization)
+- Presenting data-driven insights to non-technical stakeholders with clear visualizations
 
 ---
 

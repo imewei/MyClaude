@@ -1,22 +1,38 @@
 ---
 name: error-handling-patterns
-description: Master error handling patterns across languages including exceptions, Result types, error propagation, and graceful degradation to build resilient applications. Use when implementing error handling, designing APIs, or improving application reliability.
+description: Master error handling patterns across programming languages including exception hierarchies (custom exception classes with proper inheritance), Result types and Option/Maybe monads for explicit error handling, error propagation strategies (try-catch, ? operator, error codes), retry logic with exponential backoff, circuit breaker patterns for fault tolerance, graceful degradation with fallback mechanisms, error aggregation for multiple validation failures, context managers and RAII for resource cleanup, async error handling (Promise.catch, async/await error handling), distributed system error patterns (timeouts, circuit breakers, bulkheads), logging and monitoring integration, and structured error responses for APIs. Use this skill when implementing comprehensive error handling in new features or applications, when designing error-resilient APIs with consistent error response formats, when debugging production issues and improving application reliability, when improving error recovery and resilience in existing systems, when creating better error messages for users and developers with actionable guidance, when implementing retry patterns with exponential backoff for transient failures, when implementing circuit breaker patterns to prevent cascade failures in microservices, when handling asynchronous and concurrent errors in Promise-based or async/await code, when building fault-tolerant distributed systems with proper timeout and fallback handling, when designing custom exception hierarchies for domain-specific error types, when implementing Result types for functional error handling without exceptions, when adding context managers or try-finally blocks for resource cleanup guarantees, when implementing error aggregation for batch validation or multi-step operations, when creating structured error logging with stack traces, timestamps, and contextual metadata, when implementing graceful degradation with fallback data sources or cached responses, or when building error monitoring and alerting systems for production applications. Use this skill for all aspects of error handling including exception design, error recovery, resilience patterns, logging, monitoring, and fault tolerance.
 ---
 
 # Error Handling Patterns
 
 Build resilient applications with robust error handling strategies that gracefully handle failures and provide excellent debugging experiences.
 
-## When to Use This Skill
+## When to use this skill
 
-- Implementing error handling in new features
-- Designing error-resilient APIs
-- Debugging production issues
-- Improving application reliability
-- Creating better error messages for users and developers
-- Implementing retry and circuit breaker patterns
-- Handling async/concurrent errors
-- Building fault-tolerant distributed systems
+- When implementing comprehensive error handling in new features, modules, or applications
+- When designing error-resilient APIs with consistent, structured error response formats
+- When debugging production issues, analyzing error logs, or improving application stability
+- When improving application reliability and fault tolerance in existing codebases
+- When creating better, more actionable error messages for end users and developers
+- When implementing retry logic with exponential backoff for handling transient network or service failures
+- When implementing circuit breaker patterns to prevent cascade failures in microservices architectures
+- When handling asynchronous and concurrent errors in Promise-based, async/await, or callback-based code
+- When building fault-tolerant distributed systems with proper timeout handling and fallback mechanisms
+- When designing custom exception hierarchies for domain-specific error categories and error handling
+- When implementing Result types, Option/Maybe monads, or Either types for explicit functional error handling
+- When adding context managers (Python `with`), try-finally blocks, or RAII patterns for guaranteed resource cleanup
+- When implementing error aggregation to collect multiple validation errors instead of failing on the first error
+- When creating structured error logging with stack traces, error codes, timestamps, and contextual metadata
+- When implementing graceful degradation with fallback data sources, cached responses, or default values
+- When building error monitoring and alerting systems for production applications with error tracking services
+- When handling errors in batch operations, background jobs, or long-running processes
+- When implementing compensating transactions or rollback logic for distributed transactions
+- When designing API error responses with proper HTTP status codes (400, 401, 403, 404, 422, 500, 503)
+- When implementing error boundaries in frontend applications or error handlers in backend frameworks
+- When adding error handling middleware to Express, FastAPI, Django, or similar web frameworks
+- When working with error-prone operations such as file I/O, network requests, database queries, or external API calls
+- When implementing dead letter queues or error queues for failed message processing
+- When handling errors across language boundaries (Python exceptions, Rust Result, Go error returns, TypeScript errors)
 
 ## Core Concepts
 

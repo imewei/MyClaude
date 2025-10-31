@@ -1,23 +1,39 @@
 ---
 name: secrets-management
-description: Implement secure secrets management for CI/CD pipelines using Vault, AWS Secrets Manager, or native platform solutions. Use when handling sensitive credentials, rotating secrets, or securing CI/CD environments.
+description: Implement secure secrets management for CI/CD pipelines using HashiCorp Vault, AWS Secrets Manager, Azure Key Vault, Google Secret Manager, or platform-native solutions (GitHub Secrets, GitLab CI/CD Variables) with encryption, rotation, and access control. Use when storing sensitive credentials like API keys, database passwords, or TLS certificates in CI/CD workflows, implementing automated secret rotation policies for enhanced security, integrating HashiCorp Vault with GitHub Actions or GitLab CI for centralized secrets, retrieving secrets from AWS Secrets Manager in deployment pipelines, configuring Azure Key Vault integration for secure credential storage, using Google Secret Manager for GCP-based applications and infrastructure, managing GitHub repository secrets, organization secrets, or environment-specific secrets, configuring GitLab CI/CD masked and protected variables for branch protection, implementing External Secrets Operator for Kubernetes secret synchronization, setting up secret scanning with TruffleHog, GitGuardian, or git-secrets to prevent leaks, establishing least-privilege access controls with IAM roles and service accounts, implementing secret versioning and audit logging for compliance, handling dynamic secrets with temporary credentials and short-lived tokens, managing TLS/SSL certificates and private keys securely, configuring OIDC authentication for keyless workflows (Workload Identity), implementing secret rotation automation with Lambda or Cloud Functions, or preventing secrets from being exposed in logs, artifacts, or error messages. Use this skill when working with GitHub Actions secrets context, Vault integration actions, AWS CLI secret retrieval, environment variables in CI/CD, or any scenarios requiring secure credential management.
 ---
 
 # Secrets Management
 
 Secure secrets management practices for CI/CD pipelines using Vault, AWS Secrets Manager, and other tools.
 
-## Purpose
+## When to use this skill
 
-Implement secure secrets management in CI/CD pipelines without hardcoding sensitive information.
-
-## When to Use
-
-- Store API keys and credentials
-- Manage database passwords
-- Handle TLS certificates
-- Rotate secrets automatically
-- Implement least-privilege access
+- When storing API keys, access tokens, or authentication credentials in CI/CD pipelines
+- When managing database connection strings, passwords, or service account keys
+- When handling TLS/SSL certificates, private keys, or SSH keys in automated workflows
+- When implementing automated secret rotation policies for enhanced security posture
+- When integrating HashiCorp Vault with GitHub Actions, GitLab CI, or other CI/CD platforms
+- When retrieving secrets from AWS Secrets Manager in deployment or infrastructure pipelines
+- When configuring Azure Key Vault for storing and accessing sensitive credentials
+- When using Google Secret Manager for GCP-based applications and infrastructure automation
+- When managing GitHub repository secrets, organization secrets, or environment-specific secrets
+- When setting up GitLab CI/CD variables (masked, protected, or file-type variables)
+- When implementing External Secrets Operator in Kubernetes for secret synchronization
+- When setting up pre-commit hooks with TruffleHog or git-secrets to prevent secret leaks
+- When configuring secret scanning in CI/CD pipelines to detect exposed credentials
+- When establishing least-privilege access using IAM roles, service accounts, or RBAC policies
+- When implementing secret versioning and maintaining audit trails for compliance requirements
+- When handling dynamic secrets with temporary credentials or time-limited access tokens
+- When configuring OIDC/Workload Identity for keyless authentication to cloud providers
+- When automating secret rotation with AWS Lambda, Azure Functions, or scheduled jobs
+- When ensuring secrets are masked in CI/CD logs, job outputs, and error messages
+- When migrating from hardcoded secrets to secure secret management solutions
+- When implementing compliance requirements (SOC2, HIPAA, PCI-DSS) for secret handling
+- When managing secrets across multi-cloud or hybrid cloud environments
+- When setting up developer access to secrets for local development and testing
+- When configuring emergency secret revocation and incident response procedures
+- When integrating third-party secret management tools or enterprise solutions
 
 ## Secrets Management Tools
 
