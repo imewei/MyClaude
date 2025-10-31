@@ -52,9 +52,9 @@ Statistics
 **Total Resources:**
 
 - 31 plugins
-- 69 agents
-- 40 commands
-- 109 skills
+- 73 agents
+- 48 commands
+- 110 skills
 
 **By Category:**
 
@@ -136,11 +136,6 @@ Documentation
    :caption: Guides
 
    guides/index
-   guides/scientific-workflows
-   guides/development-workflows
-   guides/devops-workflows
-   guides/infrastructure-workflows
-   guides/integration-patterns
 
 .. toctree::
    :maxdepth: 1

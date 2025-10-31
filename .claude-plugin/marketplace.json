@@ -7,12 +7,12 @@
   },
   "metadata": {
     "description": "Custom marketplace for scientific computing workflows with specialized HPC/JAX/ML agents and selected claude-code-workflows plugins",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "based_on": "claude-code-workflows v1.2.0",
     "reorganization_date": "2025-10-27",
-    "last_updated": "2025-10-29",
+    "last_updated": "2025-10-31",
     "total_plugins": 31,
-    "note": "Initial v1.0.0 release with standardized documentation and author information"
+    "note": "v1.0.1 release with documentation improvements, consolidated installation guide, and accurate resource counts (73 agents, 48 commands, 110 skills)"
   },
   "plugins": [
 {

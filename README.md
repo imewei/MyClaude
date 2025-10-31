@@ -29,7 +29,7 @@ This marketplace provides:
 
 - **Total Plugins:** 31
 - **Categories:** 9 (Scientific Computing, Development, DevOps, AI/ML, Tools, Orchestration, Quality)
-- **Total Agents:** 60+ | **Commands:** 40+ | **Skills:** 100+
+- **Total Agents:** 73 | **Commands:** 48 | **Skills:** 110
 
 ## Categories
 
@@ -112,51 +112,106 @@ make plugin-count   # Show plugin statistics
 make plugin-list    # List all plugins with versions
 ```
 
+### Quick Installation Reference
+
+#### Install Plugins by Category
+
+**AI/ML (5 plugins)**
+```bash
+/plugin install agent-orchestration@scientific-computing-workflows
+/plugin install ai-reasoning@scientific-computing-workflows
+/plugin install deep-learning@scientific-computing-workflows
+/plugin install jax-implementation@scientific-computing-workflows
+/plugin install machine-learning@scientific-computing-workflows
+```
+
+**Development (8 plugins)**
+```bash
+/plugin install backend-development@scientific-computing-workflows
+/plugin install debugging-toolkit@scientific-computing-workflows
+/plugin install frontend-mobile-development@scientific-computing-workflows
+/plugin install javascript-typescript@scientific-computing-workflows
+/plugin install llm-application-dev@scientific-computing-workflows
+/plugin install multi-platform-apps@scientific-computing-workflows
+/plugin install python-development@scientific-computing-workflows
+/plugin install systems-programming@scientific-computing-workflows
+```
+
+**Scientific Computing (4 plugins)**
+```bash
+/plugin install hpc-computing@scientific-computing-workflows
+/plugin install julia-development@scientific-computing-workflows
+/plugin install molecular-simulation@scientific-computing-workflows
+/plugin install statistical-physics@scientific-computing-workflows
+```
+
+**Tools & Utilities (11 plugins)**
+```bash
+/plugin install cicd-automation@scientific-computing-workflows
+/plugin install cli-tool-design@scientific-computing-workflows
+/plugin install code-documentation@scientific-computing-workflows
+/plugin install code-migration@scientific-computing-workflows
+/plugin install codebase-cleanup@scientific-computing-workflows
+/plugin install comprehensive-review@scientific-computing-workflows
+/plugin install framework-migration@scientific-computing-workflows
+/plugin install git-pr-workflows@scientific-computing-workflows
+/plugin install observability-monitoring@scientific-computing-workflows
+/plugin install quality-engineering@scientific-computing-workflows
+/plugin install unit-testing@scientific-computing-workflows
+```
+
+**Research & Visualization (3 plugins)**
+```bash
+/plugin install data-visualization@scientific-computing-workflows
+/plugin install research-methodology@scientific-computing-workflows
+/plugin install full-stack-orchestration@scientific-computing-workflows
+```
+
 ### Available Plugins
 
 <details>
 <summary><b>All 31 Plugins by Category (Click to expand)</b></summary>
 
 #### AI/ML (5)
-- `agent-orchestration` - Multi-agent system optimization
-- `ai-reasoning` - Advanced cognitive tools and structured reasoning
-- `deep-learning` - Neural network architecture and training
-- `jax-implementation` - JAX programming and physics applications
-- `machine-learning` - Data science and ML engineering
+- **agent-orchestration** - Multi-agent system optimization and context management
+- **ai-reasoning** - Advanced cognitive tools for problem-solving and meta-analysis
+- **deep-learning** - Neural network architecture design and training diagnostics
+- **jax-implementation** - JAX programming with Flax NNX and physics applications
+- **machine-learning** - Data science, statistical analysis, and MLOps workflows
 
 #### Development (8)
-- `backend-development` - API design and GraphQL architecture
-- `debugging-toolkit` - Interactive debugging and DX optimization
-- `frontend-mobile-development` - Frontend UI and mobile apps
-- `javascript-typescript` - Modern JS/TS development
-- `llm-application-dev` - LLM apps with RAG and LangChain
-- `multi-platform-apps` - Cross-platform development
-- `python-development` - FastAPI, Django, async patterns
-- `systems-programming` - Rust, C, C++, Go development
+- **backend-development** - Backend API design, GraphQL architecture, TDD
+- **debugging-toolkit** - Interactive debugging and developer experience optimization
+- **frontend-mobile-development** - Frontend UI and mobile app implementation
+- **javascript-typescript** - Modern JavaScript/TypeScript with ES6+ and Node.js
+- **llm-application-dev** - LLM applications with prompt engineering and RAG
+- **multi-platform-apps** - Cross-platform web, iOS, Android, desktop apps
+- **python-development** - Python with FastAPI, Django, async patterns
+- **systems-programming** - Rust, C, C++, and Go development
 
 #### Scientific Computing (4)
-- `hpc-computing` - High-performance computing
-- `julia-development` - Julia ecosystem with SciML
-- `molecular-simulation` - Molecular dynamics simulations
-- `statistical-physics` - Correlation function analysis
+- **hpc-computing** - High-performance computing and numerical methods
+- **julia-development** - Julia ecosystem with SciML and Bayesian inference
+- **molecular-simulation** - Molecular dynamics with LAMMPS and GROMACS
+- **statistical-physics** - Correlation function analysis and FFT
 
 #### Tools & Utilities (11)
-- `cicd-automation` - CI/CD pipeline configuration
-- `cli-tool-design` - CLI tool development
-- `code-documentation` - Doc generation and technical writing
-- `code-migration` - Legacy code modernization
-- `codebase-cleanup` - Technical debt reduction
-- `comprehensive-review` - Multi-perspective code analysis
-- `framework-migration` - Framework updates and migrations
-- `git-pr-workflows` - Git workflow automation
-- `observability-monitoring` - Metrics and monitoring
-- `quality-engineering` - QA and validation
-- `unit-testing` - Test automation and generation
+- **cicd-automation** - CI/CD pipelines with GitHub Actions and GitLab CI
+- **cli-tool-design** - CLI tool development and automation
+- **code-documentation** - Documentation generation and technical writing
+- **code-migration** - Legacy code modernization and migration
+- **codebase-cleanup** - Technical debt reduction and refactoring
+- **comprehensive-review** - Multi-perspective code analysis and security
+- **framework-migration** - Framework updates and architectural transformation
+- **git-pr-workflows** - Git workflow automation and pull request enhancement
+- **observability-monitoring** - Metrics, logging, tracing, and SLO implementation
+- **quality-engineering** - QA, validation, and correctness verification
+- **unit-testing** - Test automation, generation, and execution
 
 #### Research & Visualization (3)
-- `data-visualization` - Scientific data visualization
-- `research-methodology` - Research intelligence and analysis
-- `full-stack-orchestration` - End-to-end feature delivery
+- **data-visualization** - Scientific data visualization and AR/VR interfaces
+- **research-methodology** - Research intelligence and literature analysis
+- **full-stack-orchestration** - End-to-end full-stack feature delivery
 
 </details>
 
@@ -164,17 +219,25 @@ make plugin-list    # List all plugins with versions
 
 Once installed, plugins provide agents, commands, and skills that are automatically available in Claude Code:
 
-```bash
-# Use an agent from a plugin
-Ask Claude to use specialized agents like @python-pro or @rust-pro
-
-# Run a command
-/ultra-think "Analyze this architecture..."
-/double-check "Validate this implementation"
-
-# Access skills
-Skills are automatically loaded and available to Claude
+**Using Specialized Agents**
 ```
+Ask Claude: "@python-pro help me optimize this async function"
+Ask Claude: "@julia-pro implement this differential equation using SciML"
+Ask Claude: "@jax-pro optimize this neural network training loop"
+Ask Claude: "@ml-engineer build a scikit-learn pipeline for this dataset"
+Ask Claude: "@rust-pro refactor this code for better memory safety"
+```
+
+**Running Commands**
+```bash
+/ultra-think "Analyze the architecture of this system"
+/double-check "Validate this implementation"
+/run-all-tests --fix  # Run and fix all tests
+/commit "Add new feature"  # Intelligent git commit
+```
+
+**Accessing Skills**
+Skills are automatically loaded and available to Claude based on file context and your requests.
 
 ### Integration Examples
 
@@ -214,15 +277,23 @@ See [contribution guidelines](https://myclaude.readthedocs.io/en/latest/contribu
 
 ## Version History
 
-### v1.0.0 (Current)
+### v1.0.1 (Current - 2025-10-31)
+- **Documentation improvements**: Consolidated PLUGIN_INSTALLATION.md into README.md
+- **Enhanced installation guide**: Added category-based installation commands for easier plugin selection
+- **Improved usage examples**: Concrete agent and command examples with real-world scenarios
+- **Accurate resource counts**: Updated statistics (73 agents, 48 commands, 110 skills)
+- **Fixed Sphinx warnings**: Eliminated toctree duplication warnings
+- **Added plugin changelog links**: Comprehensive links to all 31 plugin changelogs in main documentation
+
+### v1.0.0 (2025-10-29)
 - Initial release of customized plugin marketplace
 - 31 specialized plugins across 9 categories
 - Comprehensive coverage for scientific computing and software development
 - Includes HPC computing, Julia/JAX development, deep learning, and full-stack development
 - Standardized documentation and author information
-- 60+ agents, 40+ commands, 100+ skills
+- Complete Sphinx documentation with Read the Docs integration
 
-See [changelog](https://myclaude.readthedocs.io/en/latest/changelog.html) for detailed version history.
+See [changelog](https://myclaude.readthedocs.io/en/latest/changelog.html) for detailed version history and individual plugin changelogs.
 
 ## License
 
