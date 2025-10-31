@@ -356,3 +356,11 @@ junit.xml
 # Keep marketplace metadata
 !.claude-plugin/
 !.claude-plugin/marketplace.json
+
+# LaTeX generated files
+*.pdf
+*.aux
+*.log
+*.out
+*.toc
+*.synctex.gz
