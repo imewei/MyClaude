@@ -7,7 +7,7 @@
   },
   "metadata": {
     "description": "Custom marketplace for scientific computing workflows with specialized HPC/JAX/ML agents and selected claude-code-workflows plugins",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "based_on": "claude-code-workflows v1.2.0",
     "reorganization_date": "2025-10-27",
     "last_updated": "2025-10-31",

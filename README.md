@@ -44,7 +44,7 @@ This marketplace provides:
 ## Featured Plugins
 
 - **julia-development**: Comprehensive Julia ecosystem support with SciML
-- **jax-implementation**: JAX optimization and physics-informed ML
+- **jax-implementation**: JAX with NumPyro Bayesian inference, ArviZ diagnostics, and response verification (v1.0.2)
 - **python-development**: Modern Python patterns and async workflows
 - **comprehensive-review**: Multi-perspective code analysis
 - **agent-orchestration**: Multi-agent system optimization
@@ -176,7 +176,7 @@ make plugin-list    # List all plugins with versions
 - **agent-orchestration** - Multi-agent system optimization and context management
 - **ai-reasoning** - Advanced cognitive tools for problem-solving and meta-analysis
 - **deep-learning** - Neural network architecture design and training diagnostics
-- **jax-implementation** - JAX programming with Flax NNX and physics applications
+- **jax-implementation** - JAX with NumPyro Bayesian inference, ArviZ integration, Consensus Monte Carlo, and response verification protocols
 - **machine-learning** - Data science, statistical analysis, and MLOps workflows
 
 #### Development (8)
@@ -277,7 +277,18 @@ See [contribution guidelines](https://myclaude.readthedocs.io/en/latest/contribu
 
 ## Version History
 
-### v1.0.1 (Current - 2025-10-31)
+### v1.0.2 (Current - 2025-10-31)
+- **jax-implementation v1.0.2**: Enhanced NumPyro capabilities with major improvements
+  - **ArviZ Integration**: Comprehensive Bayesian visualization with 15+ diagnostic plot types, model comparison (LOO/WAIC), and publication-quality outputs
+  - **Consensus Monte Carlo**: Large-scale distributed Bayesian inference for datasets with N > 1M observations
+  - **Response Quality Verification**: Mandatory 26-point pre-delivery checklist across 5 categories (statistical correctness, code quality, inference validity, completeness, documentation)
+  - **Self-Critique Loop**: 5-question validation protocol before delivery
+  - **Anti-Pattern Prevention**: 4 documented common mistakes with WRONG/RIGHT code examples
+  - **Enhanced Skill Discoverability**: Expanded descriptions from 500 to 1,300+ characters with 20+ specific trigger scenarios
+  - **NLSQ Agent Enhancement**: +995 lines of comprehensive framework improvements
+  - **Version Consistency**: All components aligned at v1.0.2 across agents, skills, and documentation
+
+### v1.0.1 (2025-10-31)
 - **Documentation improvements**: Consolidated PLUGIN_INSTALLATION.md into README.md
 - **Enhanced installation guide**: Added category-based installation commands for easier plugin selection
 - **Improved usage examples**: Concrete agent and command examples with real-world scenarios
