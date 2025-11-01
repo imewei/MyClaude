@@ -1,6 +1,6 @@
 ---
 name: numpyro-core-mastery
-description: Master NumPyro probabilistic programming library for Bayesian inference using JAX. Use this skill when writing or modifying Python files that import numpyro (import numpyro, import numpyro.distributions as dist, from numpyro.infer import NUTS, MCMC, SVI), when building Bayesian models with priors and likelihoods (.py files with numpyro.sample calls), when implementing MCMC sampling with NUTS or HMC algorithms, when running variational inference with SVI and AutoGuides, when working with hierarchical or multilevel models (partial pooling, random effects), when performing uncertainty quantification with posterior distributions, when diagnosing MCMC convergence issues (R-hat, ESS, divergences), when implementing non-centered parameterization to fix divergences, when building probabilistic machine learning models (Bayesian neural networks, Gaussian processes), when working with time series models (state space, structural time series), when performing model comparison with WAIC or LOO cross-validation, when generating prior or posterior predictive distributions, when optimizing Bayesian inference with JAX (JIT compilation, GPU acceleration, vmap), when implementing custom guides for variational inference, when working with effect handlers (seed, substitute, reparam), when analyzing trace plots or posterior samples, or when deploying production Bayesian inference pipelines with reproducible PRNG handling.
+description: Master NumPyro, the JAX-based probabilistic programming library for production-ready Bayesian inference, MCMC sampling, and variational inference. Use this skill when writing or modifying Python files that import NumPyro (import numpyro, import numpyro.distributions as dist, from numpyro.infer import NUTS, MCMC, SVI, Predictive, from numpyro.infer.autoguide import AutoNormal), when building Bayesian statistical models with prior and likelihood specifications using numpyro.sample() calls, when implementing MCMC inference with NUTS (No-U-Turn Sampler), HMC (Hamiltonian Monte Carlo), or specialized kernels like HMCECS or DiscreteHMCGibbs, when running variational inference (SVI) with AutoGuides for fast approximate Bayesian inference, when designing hierarchical or multilevel models with partial pooling and random effects, when performing uncertainty quantification with posterior distributions and credible intervals, when diagnosing MCMC convergence issues including R-hat statistics, effective sample size (ESS), divergences, and trace plot analysis, when implementing non-centered parameterization or reparameterization strategies to resolve divergences in hierarchical models, when building probabilistic machine learning models including Bayesian neural networks, Gaussian processes, or variational autoencoders, when working with time series models such as state space models, structural time series, or autoregressive processes, when performing Bayesian model comparison using WAIC (Widely Applicable Information Criterion) or LOO (Leave-One-Out) cross-validation, when generating prior predictive distributions for prior sensitivity checks or posterior predictive distributions for model validation, when integrating with ArviZ for comprehensive visualization and diagnostics (trace plots, posterior plots, energy plots, convergence diagnostics), when optimizing Bayesian inference performance with JAX features including JIT compilation, GPU/TPU acceleration, vmap vectorization, or pmap parallelization, when implementing custom variational guides for specialized inference problems, when using NumPyro effect handlers for model surgery (seed, substitute, condition, reparam, trace), when analyzing posterior samples or computing posterior summaries and derived quantities, when implementing Consensus Monte Carlo for large-scale distributed Bayesian inference on datasets with millions of observations, when handling missing data through imputation models or marginalization, when deploying production Bayesian inference pipelines with reproducible PRNG key management, or when working on scientific computing projects requiring rigorous uncertainty quantification and statistical inference.
 ---
 
 # NumPyro Core Mastery
@@ -21,18 +21,74 @@ This skill equips Claude to become a NumPyro expert capable of:
 
 ## When to Use This Skill
 
-Invoke this skill when encountering:
+Invoke this skill when encountering any of the following scenarios:
 
-- **Bayesian modeling tasks**: Building generative models with priors and likelihoods
-- **Uncertainty quantification**: Need credible intervals, posterior predictive distributions
-- **Hierarchical/multilevel models**: Partial pooling across groups, random effects
-- **MCMC inference**: Implementing or troubleshooting NUTS, HMC, or other samplers
-- **Variational inference**: Fast approximate inference with SVI
-- **Convergence issues**: Divergences, low ESS, poor R-hat values
-- **Probabilistic machine learning**: Bayesian neural networks, Gaussian processes
-- **Time series with uncertainty**: State space models, structural time series
-- **Model comparison**: WAIC, LOO cross-validation
-- **JAX performance optimization**: JIT, vmap, GPU acceleration for probabilistic models
+### File Types and Code Patterns
+- Writing or modifying Python files (`.py`, `.ipynb`) that import NumPyro libraries
+- Working with files containing `import numpyro`, `import numpyro.distributions as dist`, `from numpyro.infer import NUTS, MCMC, SVI`
+- Building Bayesian models with `numpyro.sample()`, `numpyro.plate()`, `numpyro.deterministic()` calls
+- Implementing probabilistic models with prior and likelihood specifications
+
+### MCMC Inference Tasks
+- Implementing MCMC sampling with NUTS (No-U-Turn Sampler) or HMC (Hamiltonian Monte Carlo)
+- Running inference with specialized kernels: HMCECS (subsampling), DiscreteHMCGibbs (discrete parameters), BarkerMH, or SA
+- Configuring MCMC parameters: `num_warmup`, `num_samples`, `num_chains`, `target_accept_prob`, `max_tree_depth`
+- Implementing Consensus Monte Carlo for distributed Bayesian inference on large-scale datasets (N > 1M observations)
+
+### Variational Inference
+- Running variational inference (SVI) with AutoGuides for fast approximate Bayesian inference
+- Implementing custom variational guides for specialized inference problems
+- Optimizing ELBO (Evidence Lower Bound) with Adam, SGD, or other optimizers
+- Working with AutoNormal, AutoMultivariateNormal, AutoLowRankMultivariateNormal, or AutoDelta guides
+
+### Model Design and Architecture
+- Designing hierarchical or multilevel models with partial pooling and random effects
+- Building generative models with priors and likelihoods for Bayesian data analysis
+- Implementing non-centered parameterization to resolve divergences in hierarchical models
+- Creating probabilistic machine learning models: Bayesian neural networks, Gaussian processes, variational autoencoders
+- Working with time series models: state space models, structural time series, autoregressive processes
+- Handling missing data through Bayesian imputation models or marginalization
+
+### Convergence Diagnostics and Troubleshooting
+- Diagnosing MCMC convergence issues: R-hat statistics, effective sample size (ESS), divergences
+- Analyzing trace plots and posterior samples for convergence assessment
+- Implementing reparameterization strategies (centered vs non-centered parameterization) to improve MCMC geometry
+- Debugging divergences with `target_accept_prob` tuning, dense mass matrices, or alternative samplers
+- Accessing NUTS diagnostics: tree depth, energy error, acceptance probability
+
+### Model Validation and Comparison
+- Performing Bayesian model comparison using WAIC or LOO cross-validation
+- Generating prior predictive distributions for prior sensitivity checks
+- Generating posterior predictive distributions for model validation and posterior predictive checks
+- Computing model selection criteria and posterior predictive accuracy
+
+### Visualization and Diagnostics with ArviZ
+- Integrating NumPyro with ArviZ for comprehensive Bayesian workflow visualization
+- Converting MCMC results to ArviZ InferenceData format with dimensions, coordinates, and constant data
+- Creating diagnostic plots: trace plots, posterior plots, forest plots, energy plots, rank plots, autocorrelation plots
+- Performing posterior predictive checks (PPC) and Bayesian p-value analysis
+- Computing numerical diagnostics: R-hat, ESS, MCSE (Monte Carlo Standard Error)
+
+### JAX Performance Optimization
+- Optimizing Bayesian inference with JAX JIT compilation for faster sampling
+- Leveraging GPU/TPU acceleration for large-scale Bayesian models
+- Using vmap vectorization for batch operations and parallel evaluation
+- Using pmap for multi-device parallelization
+- Implementing efficient PRNG key management with `jax.random.PRNGKey` and `jax.random.split`
+
+### Advanced NumPyro Features
+- Using effect handlers for model surgery: `seed`, `substitute`, `condition`, `reparam`, `trace`
+- Working with custom distributions or transformations
+- Implementing LocScaleReparam or other reparameterization strategies
+- Computing posterior summaries and derived quantities with `numpyro.deterministic`
+- Analyzing posterior samples and extracting parameter estimates
+
+### Production and Deployment
+- Deploying production Bayesian inference pipelines with reproducible PRNG handling
+- Implementing inference serving for real-time or batch prediction
+- Serializing and saving posterior samples for later use
+- Building scalable Bayesian systems for scientific computing and decision-making under uncertainty
+- Working on scientific research projects requiring rigorous uncertainty quantification
 
 ## Core Capabilities
 
@@ -148,14 +204,258 @@ for param, stats in summary_dict.items():
     assert stats['n_eff'] > 400, f"{param} has low ESS ({stats['n_eff']:.0f})"
 ```
 
+**Advanced NUTS configuration**:
+
+```python
+from numpyro.infer import NUTS, MCMC, init_to_median
+
+# Fine-tuned NUTS for challenging posteriors
+nuts_kernel = NUTS(
+    model,
+    target_accept_prob=0.9,          # Higher = more robust, slower
+    max_tree_depth=12,                # Max trajectory length (2^12 = 4096 steps)
+    init_strategy=init_to_median(),   # Initialize at prior median
+    dense_mass=False                  # Diagonal mass matrix (faster)
+)
+
+# For highly correlated posteriors, use dense mass matrix
+nuts_kernel_dense = NUTS(
+    model,
+    dense_mass=True,                  # Full covariance adaptation
+    adapt_step_size=True,             # Dual averaging for step size
+    adapt_mass_matrix=True,           # Adapt during warmup
+    regularize_mass_matrix=True       # Regularization for stability
+)
+
+# Access NUTS diagnostics
+mcmc.run(rng_key, x, y)
+extra_fields = mcmc.get_extra_fields()
+
+print(f"Divergences: {extra_fields['diverging'].sum()}")
+print(f"Tree depth: {extra_fields['tree_depth'].mean():.1f}")
+print(f"Energy error: {extra_fields['energy_error'].mean():.3f}")
+print(f"Step size: {extra_fields['mean_accept_prob'].mean():.3f}")
+```
+
 **Specialized kernels**:
 - `HMC` - Manual control over step size and trajectory length
 - `SA` - Slice sampler for constrained spaces
 - `BarkerMH` - Robust alternative to HMC
 - `MixedHMC` - Continuous + discrete parameters
 - `HMCECS` - Subsampling for large datasets (N > 100K)
+- `DiscreteHMCGibbs` - HMC/NUTS with Gibbs sampling for discrete parameters
+
+**Consensus Monte Carlo for Large-Scale Distributed Inference**:
+
+```python
+from numpyro.infer.hmc_util import consensus
+import jax.numpy as jnp
+
+# For datasets too large for single-machine MCMC
+# Split data across workers, combine posteriors
+
+def run_distributed_mcmc(data_shards, model, num_workers=4):
+    """
+    Consensus Monte Carlo: Parallel MCMC on data shards,
+    combine using weighted averaging.
+
+    Better scalability than full-data MCMC for N > 1M observations.
+    """
+    subposterior_samples = []
+
+    # Run MCMC on each data shard independently
+    for worker_id, data_shard in enumerate(data_shards):
+        nuts_kernel = NUTS(model)
+        mcmc = MCMC(nuts_kernel, num_warmup=500, num_samples=1000)
+
+        # Each worker gets different random seed
+        mcmc.run(random.PRNGKey(worker_id), **data_shard)
+
+        # Collect subposterior samples
+        subposterior_samples.append(mcmc.get_samples())
+
+    # Combine subposteriors using consensus
+    # Weighted average based on shard sizes
+    combined_posterior = consensus(
+        subposterior_samples,
+        num_draws=1000  # Final posterior sample size
+    )
+
+    return combined_posterior
+
+# Example: 1M observations split across 10 workers
+n_total = 1_000_000
+n_workers = 10
+shard_size = n_total // n_workers
+
+data_shards = [
+    {"x": x[i*shard_size:(i+1)*shard_size],
+     "y": y[i*shard_size:(i+1)*shard_size]}
+    for i in range(n_workers)
+]
+
+# Distributed inference
+consensus_posterior = run_distributed_mcmc(data_shards, model, n_workers)
+
+# Use consensus posterior for predictions
+posterior_mean = {k: v.mean(axis=0) for k, v in consensus_posterior.items()}
+```
+
+**When to use Consensus Monte Carlo**:
+- **Data size**: N > 1M observations (too large for single GPU)
+- **Memory constraints**: Data doesn't fit in memory
+- **Computational limits**: Single-machine MCMC takes > 24 hours
+- **Distributed systems**: Data already sharded across machines
+
+**Consensus vs alternatives**:
+- **Better than**: Subsampling (HMCECS) when data can be naturally partitioned
+- **Worse than**: Full-data MCMC for N < 100K (communication overhead)
+- **Trade-off**: Slight bias (consensus approximation) vs massive speedup
 
 For detailed MCMC diagnostics and troubleshooting, see `references/mcmc_diagnostics.md`.
+
+### 2.5. ArviZ Integration for Visualization & Diagnostics
+
+NumPyro seamlessly integrates with ArviZ for comprehensive Bayesian workflow visualization and diagnostics.
+
+**Converting NumPyro results to ArviZ InferenceData**:
+
+```python
+import arviz as az
+from numpyro.infer import NUTS, MCMC, Predictive
+import jax.random as random
+
+# After running MCMC
+mcmc = MCMC(NUTS(model), num_warmup=1000, num_samples=2000, num_chains=4)
+mcmc.run(random.PRNGKey(0), x_data, y_data)
+
+# Convert to ArviZ InferenceData with metadata
+idata = az.from_numpyro(
+    mcmc,
+    # Specify dimensions for multi-dimensional variables
+    dims={
+        "y": ["time"],           # y indexed by time dimension
+        "theta": ["groups"]       # theta indexed by groups
+    },
+    # Add coordinates for interpretable labels
+    coords={
+        "time": np.arange(len(y_data)),
+        "groups": group_names
+    },
+    # Include constant data for reference
+    constant_data={
+        "x": x_data,
+        "treatment": treatment_indicator
+    }
+)
+
+# InferenceData contains organized groups
+print(idata.groups())  # ['posterior', 'sample_stats', 'constant_data']
+```
+
+**Comprehensive diagnostic visualization suite**:
+
+```python
+# 1. Convergence diagnostics
+az.plot_trace(idata, var_names=['alpha', 'beta', 'sigma'])
+az.plot_rank(idata)           # Rank plots (uniform if converged)
+az.plot_ess(idata)            # Effective sample size by parameter
+az.plot_mcse(idata)           # Monte Carlo standard error
+az.plot_autocorr(idata)       # Autocorrelation by lag
+
+# 2. Posterior analysis
+az.plot_posterior(idata, var_names=['alpha', 'beta'])  # HDI + mean
+az.plot_forest(idata, combined=True)                   # Forest plot
+az.plot_density(idata, var_names=['alpha', 'beta'])    # Kernel density
+az.plot_violin(idata)                                  # Violin plots
+az.plot_pair(idata, var_names=['alpha', 'beta'],       # Scatter matrix
+             divergences=True)                          # Highlight divergences
+
+# 3. HMC/NUTS specific diagnostics
+az.plot_energy(idata)         # Energy transition distribution
+az.summary(idata)             # Comprehensive summary table
+
+# 4. Posterior predictive checks
+# First, generate posterior predictive samples
+posterior_predictive = Predictive(model, mcmc.get_samples())
+ppc_samples = posterior_predictive(random.PRNGKey(1), x_data, y=None)
+
+# Add to InferenceData
+idata.add_groups(posterior_predictive={"y": ppc_samples['obs']})
+
+# Visualize
+az.plot_ppc(idata, num_pp_samples=100)
+az.plot_bpv(idata)            # Bayesian p-value plot
+```
+
+**Model comparison with ArviZ**:
+
+```python
+# Compare multiple models
+idata_model1 = az.from_numpyro(mcmc1, ...)
+idata_model2 = az.from_numpyro(mcmc2, ...)
+idata_model3 = az.from_numpyro(mcmc3, ...)
+
+# Compute LOO and WAIC
+comparison = az.compare({
+    "Model 1": idata_model1,
+    "Model 2": idata_model2,
+    "Model 3": idata_model3
+})
+
+print(comparison)  # Ranked by ELPD with standard errors
+
+# Visualize comparison
+az.plot_compare(comparison)
+az.plot_elpd({"Model 1": idata_model1, "Model 2": idata_model2})
+```
+
+**ArviZ diagnostic functions**:
+
+```python
+# Numerical diagnostics
+rhat_vals = az.rhat(idata)              # Convergence statistic
+ess_vals = az.ess(idata)                # Effective sample size
+mcse_vals = az.mcse(idata)              # MC standard error
+
+# Check all parameters converged
+assert (rhat_vals < 1.01).all(), "Some parameters not converged"
+assert (ess_vals > 400).all(), "Low effective sample size"
+
+# LOO cross-validation with diagnostic warnings
+loo_result = az.loo(idata, pointwise=True)
+print(f"LOO: {loo_result.loo:.2f} ± {loo_result.se:.2f}")
+
+# Check for problematic observations
+if loo_result.warning:
+    print("LOO warning:", loo_result.warning)
+    az.plot_khat(loo_result)  # Visualize Pareto-k diagnostic
+```
+
+**Advanced ArviZ workflows**:
+
+```python
+# Custom labeling for publication-quality plots
+from arviz.labels import MapLabeller
+
+labeller = MapLabeller(var_name_map={
+    "alpha": r"$\alpha$ (Intercept)",
+    "beta": r"$\beta$ (Slope)",
+    "sigma": r"$\sigma$ (Residual SD)"
+})
+
+az.plot_forest(idata, labeller=labeller)
+
+# Export to NetCDF for sharing/archiving
+idata.to_netcdf("analysis_results.nc")
+
+# Load later
+idata_loaded = az.from_netcdf("analysis_results.nc")
+
+# Summary statistics to DataFrame
+summary_df = az.summary(idata, var_names=['alpha', 'beta'])
+summary_df.to_csv("posterior_summary.csv")
+```
 
 ### 3. Variational Inference Workflows
 
@@ -311,13 +611,36 @@ def noncentered():
     theta = mu + sigma * theta_raw  # Manual transformation
 ```
 
-**Trace plots**:
+**Trace plots and comprehensive visualization with ArviZ**:
 
 ```python
 import arviz as az
 
-idata = az.from_numpyro(mcmc)
-az.plot_trace(idata, var_names=['alpha', 'beta'])
+# Convert NumPyro MCMC results to ArviZ InferenceData
+idata = az.from_numpyro(
+    mcmc,
+    dims={"obs": ["data_points"]},
+    coords={"data_points": np.arange(len(x))},
+    constant_data={"x": x}
+)
+
+# Convergence diagnostics plots
+az.plot_trace(idata, var_names=['alpha', 'beta'])  # Trace and marginal distributions
+az.plot_rank(idata)                                # Rank plots for convergence
+az.plot_ess(idata)                                 # Effective sample size
+az.plot_autocorr(idata)                            # Autocorrelation
+
+# Posterior visualization
+az.plot_posterior(idata, var_names=['alpha', 'beta'])  # Posterior distributions
+az.plot_forest(idata)                                  # Forest plot with credible intervals
+az.plot_pair(idata, var_names=['alpha', 'beta'])       # Pair plots for correlations
+
+# Model diagnostics
+az.plot_energy(idata)                              # Energy plot for HMC/NUTS
+az.plot_parallel(idata)                            # Parallel coordinates plot
+
+# Posterior predictive checks
+az.plot_ppc(idata, num_pp_samples=100)            # Posterior predictive check
 ```
 
 Use `scripts/mcmc_diagnostics.py` for automated comprehensive diagnostics.
@@ -690,6 +1013,6 @@ Comprehensive guides for deep dives:
 
 **NumPyro Core Mastery Skill** - Master Bayesian inference with JAX
 
-Version: 1.0.0
-Last Updated: 2025-10-28
-Compatible with: NumPyro 0.15+, JAX 0.4+
+Version: 1.0.2
+Last Updated: 2025-10-31
+Compatible with: NumPyro 0.15+, JAX 0.4+, ArviZ 0.20+
