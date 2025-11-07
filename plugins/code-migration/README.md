@@ -1,55 +1,82 @@
 # Code Migration
 
-Legacy scientific code modernization with cross-language migration expertise for Fortran/C/MATLAB to Python/JAX/Julia while preserving numerical accuracy and achieving GPU acceleration.
+**Version:** 1.0.3 | **Category:** code-migration | **License:** MIT
 
-**Version:** 2.0.0 | **Category:** code-migration | **License:** MIT
+Scientific code modernization with comprehensive legacy-to-modern framework migration. Specializes in Fortran/C/MATLAB to Python/JAX/Julia migrations while preserving numerical accuracy and achieving GPU acceleration.
 
-## What's New in v2.0.0
+## What's New in v1.0.3
 
-**Major prompt engineering improvements** for scientific-code-adoptor agent with advanced reasoning capabilities:
+**Workflow Enhancement Release** with hub-and-spoke architecture and execution modes:
 
-- **Chain-of-Thought Reasoning**: Systematic 6-step framework for legacy code migration
-- **Constitutional AI Principles**: 5 core principles for quality scientific code migration with self-critique
-- **Comprehensive Examples**: Production-ready Fortran→JAX migration with numerical validation and GPU benchmarking
-- **Enhanced Triggering Criteria**: 20 USE cases and 8 anti-patterns for better agent selection
+- **External Documentation**: 6 comprehensive files (~2,400 lines of specialized guidance)
+- **Execution Modes**: 3 modes per command (quick/standard/comprehensive) for flexible time/scope control
+- **Enhanced Metadata**: Comprehensive plugin.json with capabilities, triggers, and execution modes
+- **100% Backward Compatible**: All v1.0.2 features maintained (chain-of-thought, Constitutional AI)
 
-### Expected Performance Improvements
+### External Documentation
 
-| Metric | Improvement |
-|--------|-------------|
-| Migration Quality | 50-70% better |
-| Migration Speed | 60% faster |
-| Validation Thoroughness | 70% more complete |
-| Decision-Making | 110+ systematic questions |
+| File | Lines | Purpose |
+|------|-------|---------|
+| algorithm-analysis-framework.md | ~400 | Algorithm identification, kernel analysis, data structures |
+| numerical-accuracy-guide.md | ~500 | Precision, verification, reproducibility, conservation laws |
+| framework-migration-strategies.md | ~300 | Framework selection, roadmaps, dependency modernization |
+| performance-optimization-techniques.md | ~350 | Parallelization, efficiency, hardware utilization |
+| integration-testing-patterns.md | ~450 | Tooling, packaging, API design, validation |
+| scientific-computing-best-practices.md | ~400 | Stability, sensitivity, domain requirements, compatibility |
 
 [Full Documentation →](https://myclaude.readthedocs.io/en/latest/plugins/code-migration.html)
 
 ## Agent (1)
 
-The agent has been upgraded to v2.0.0 with 90% maturity, systematic reasoning framework, and comprehensive examples.
+The agent has been upgraded to v1.0.3 with comprehensive external documentation and execution mode support.
 
 ### 🔬 scientific-code-adoptor
 
-**Status:** active | **Maturity:** 90% | **Version:** 2.0.0
+**Status:** active | **Maturity:** 90% | **Version:** 1.0.3
 
 Legacy scientific code modernization expert for cross-language migration. Expert in Fortran/C/MATLAB to Python/JAX/Julia with numerical accuracy preservation.
 
-**New in v2.0.0:**
-- 6-step chain-of-thought framework (Legacy Code Analysis → Migration Strategy → Framework Selection → Implementation → Numerical Validation → Performance Benchmarking)
-- 5 Constitutional AI principles (Numerical Accuracy First, Performance-Aware Migration, Reproducibility & Validation, Maintainability, Gradual Migration Support)
-- Complete Fortran→JAX migration example with numerical validation (8.3e-15 error) and GPU benchmarking (129x speedup)
+**Key Capabilities**:
+- Fortran 77/90/95 to Python/JAX migration with GPU acceleration (10-1000x speedups)
+- MATLAB to NumPy/SciPy conversion with feature parity
+- Legacy C/C++ library wrapping (F2py, Ctypes, Pybind11)
+- Numerical accuracy preservation (< 1e-12 error tolerance)
+- Algorithm analysis and computational kernel optimization
+- Cross-platform validation and reproducibility verification
+- Performance benchmarking and GPU acceleration
+- Phased migration strategies with backward compatibility
 
-**Expected Impact:** 50-70% better migration quality, 60% faster migration process, 70% more thorough validation
+**Enhanced in v1.0.3**:
+- 6 external documentation files (~2,400 lines) with specialized guidance
+- Algorithm analysis framework with hotspot detection
+- Numerical accuracy guide with precision requirements and validation strategies
+- Framework migration strategies with selection matrices and roadmaps
+- Performance optimization techniques (vectorization, GPU, distributed)
+- Integration and testing patterns (CI/CD, packaging, API design)
+- Scientific computing best practices (stability, domain requirements)
 
 ---
 
 ## Command (1)
 
-### 📋 /adopt-code
+### 📋 /adopt-code (v1.0.3)
 
-**Status:** active
+**Status:** active | **Enhancement:** External documentation & execution modes
 
-Analyze, integrate, and optimize scientific computing codebases for modern frameworks while preserving numerical accuracy and computational efficiency.
+Comprehensive scientific code adoption and modernization workflow with systematic analysis, framework selection, and validation.
+
+**Execution Modes**:
+- **quick** (30-45 min): Essential codebase analysis and migration strategy only
+- **standard** (1-2 hours): Comprehensive analysis with framework selection and implementation (default)
+- **comprehensive** (3-5 hours): Full migration with validation, benchmarking, and production integration
+
+**External Documentation** (~2,400 lines across 6 files):
+- algorithm-analysis-framework.md - Algorithm identification, kernel analysis, data structures
+- numerical-accuracy-guide.md - Precision, verification, reproducibility, conservation laws
+- framework-migration-strategies.md - Framework selection, roadmaps, dependency modernization
+- performance-optimization-techniques.md - Parallelization, efficiency, hardware utilization
+- integration-testing-patterns.md - Tooling, packaging, API design, validation
+- scientific-computing-best-practices.md - Stability, sensitivity, domain requirements, compatibility
 
 ---
 
@@ -86,7 +113,7 @@ claude-code plugins install code-migration
 
 **Request:** "Migrate this Fortran 77 atmospheric chemistry solver to Python/JAX with GPU acceleration while preserving numerical accuracy"
 
-**scientific-code-adoptor v2.0.0 Response:**
+**scientific-code-adoptor v1.0.2 Response:**
 ```
 ## Step 1: Legacy Code Analysis
 Understanding the legacy codebase:
@@ -231,7 +258,7 @@ Recommendations:
 
 **Request:** "Convert this MATLAB signal processing research code to NumPy/SciPy with feature parity and performance improvements"
 
-**scientific-code-adoptor v2.0.0 Response:**
+**scientific-code-adoptor v1.0.2 Response:**
 ```
 ## Step 1: Legacy Code Analysis
 MATLAB codebase characteristics:
@@ -279,7 +306,7 @@ Results:
 
 **Request:** "Create Python bindings for this legacy C++ scientific library using Pybind11 for modern integration"
 
-**scientific-code-adoptor v2.0.0 Response:**
+**scientific-code-adoptor v1.0.2 Response:**
 ```
 ## Decision: Wrap (not rewrite)
 Performance-critical C++ code should be preserved and wrapped.
@@ -377,6 +404,6 @@ MIT License - See [LICENSE](./LICENSE) for details
 ---
 
 **Author:** Wei Chen
-**Version:** 2.0.0
+**Version:** 1.0.2
 **Category:** Code Migration
 **Last Updated:** 2025-10-29

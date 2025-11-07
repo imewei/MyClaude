@@ -1,9 +1,9 @@
 {
   "name": "code-migration",
   "displayName": "Code Migration",
-  "version": "2.0.0",
-  "description": "Legacy scientific code modernization with cross-language migration expertise for Fortran/C/MATLAB to Python/JAX/Julia while preserving numerical accuracy. v2.0.0 features enhanced scientific-code-adoptor agent with triggering criteria, chain-of-thought reasoning, Constitutional AI principles, and comprehensive Fortran-to-JAX migration examples.",
-  "changelog": "v2.0.0: Major prompt engineering improvements for scientific-code-adoptor agent with triggering criteria (20 USE cases, 8 anti-patterns with clear delegation), 6-step chain-of-thought reasoning framework (Legacy Code Analysis → Migration Strategy → Framework Selection → Implementation → Numerical Validation → Performance Benchmarking) with 60 guiding questions, 5 Constitutional AI principles (Numerical Accuracy First, Performance-Aware Migration, Reproducibility & Validation, Maintainability, Gradual Migration Support) with 50 self-check questions, comprehensive Fortran 77 atmospheric chemistry solver to Python/JAX migration example with complete code, numerical validation (8.3e-15 error), and performance benchmarking (129x GPU speedup). Expected: 50-70% better migration quality, 60% faster migration process, 70% more thorough validation.",
+  "version": "1.0.3",
+  "description": "Scientific code modernization with comprehensive legacy-to-modern framework migration. Specializes in Fortran/C/MATLAB to Python/JAX/Julia migrations while preserving numerical accuracy and achieving GPU acceleration. Features execution modes, external documentation, and systematic migration workflows.",
+  "changelog": "v1.0.3: Command optimization with hub-and-spoke architecture achieving enhanced workflow efficiency through external documentation (~2,400 lines across 6 files). Added execution modes (quick/standard/comprehensive) for flexible time/scope control. Enhanced plugin.json with comprehensive metadata including capabilities, triggers, and execution modes. Created detailed CHANGELOG.md documenting all improvements. Updated README.md with new capabilities and optimization metrics. Maintains 100% backward compatibility with v1.0.2.",
   "category": "code-migration",
   "author": {
     "name": "Wei Chen",
@@ -28,7 +28,9 @@
     "code-translation",
     "numpy",
     "scipy",
-    "jax"
+    "jax",
+    "algorithm-migration",
+    "performance-optimization"
   ],
   "agents": [
     {
@@ -37,17 +39,134 @@
       "name": "Scientific Code Adoptor",
       "description": "Legacy scientific code modernization expert for cross-language migration. Expert in Fortran/C/MATLAB to Python/JAX/Julia with numerical accuracy preservation",
       "status": "active",
-      "version": "2.0.0",
+      "version": "1.0.3",
       "maturity": "90%",
-      "improvements": "Added triggering criteria with 20 USE cases and 8 anti-patterns with delegation decision tree (scientific-code-adoptor vs. jax-pro vs. hpc-numerical-coordinator vs. domain experts), 6-step chain-of-thought reasoning framework (Legacy Code Analysis → Migration Strategy Design → Modern Framework Selection → Implementation & Translation → Numerical Validation → Performance Benchmarking) with 60 guiding questions (10 per step), 5 Constitutional AI principles (Numerical Accuracy First, Performance-Aware Migration, Reproducibility & Validation, Maintainability, Gradual Migration Support) with 50 self-check questions (10 per principle), comprehensive 615-line Fortran 77 atmospheric chemistry solver to Python/JAX migration example with original Fortran code, modern Python/JAX implementation, numerical validation (8.3e-15 max error vs 1e-11 tolerance), performance benchmarking (129x GPU speedup vs 100x target), and self-critique (91/100 maturity score). Growth: 226 → 1,117 lines (+891 lines, 394%). Expected: 50-70% better migration quality, 60% faster migration, 70% more thorough validation."
+      "capabilities": [
+        "Fortran 77/90/95 to Python/JAX migration with GPU acceleration",
+        "MATLAB to NumPy/SciPy conversion with feature parity",
+        "Legacy C/C++ library wrapping (F2py, Ctypes, Pybind11)",
+        "Numerical accuracy preservation (< 1e-12 error tolerance)",
+        "Algorithm analysis and computational kernel optimization",
+        "Cross-platform validation and reproducibility verification",
+        "Performance benchmarking and GPU acceleration (10-1000x speedups)",
+        "Phased migration strategies with backward compatibility"
+      ],
+      "triggers": [
+        "Fortran/MATLAB/C legacy code modernization requests",
+        "Scientific algorithm migration to modern frameworks",
+        "GPU acceleration requirements for CPU-only legacy code",
+        "Numerical validation and bit-level accuracy preservation",
+        "Hybrid legacy-modern integration (wrappers, phased migration)",
+        "Research code reproducibility and cross-platform validation",
+        "Performance optimization of migrated scientific code"
+      ],
+      "improvements": "v1.0.3: Enhanced with algorithm analysis framework, numerical accuracy guide, framework migration strategies, performance optimization techniques, integration testing patterns, and scientific computing best practices documentation. Maintains chain-of-thought reasoning and Constitutional AI principles from v1.0.2."
     }
   ],
   "commands": [
     {
+      "id": "adopt-code",
       "name": "/adopt-code",
       "file": "commands/adopt-code.md",
-      "description": "Analyze, integrate, and optimize scientific computing codebases for modern frameworks while preserving numerical accuracy",
-      "status": "active"
+      "description": "Comprehensive scientific code adoption and modernization workflow with systematic analysis, framework selection, and validation",
+      "status": "active",
+      "version": "1.0.3",
+      "execution_modes": {
+        "quick": {
+          "time": "30-45 minutes",
+          "scope": "Essential codebase analysis and migration strategy recommendation",
+          "use_case": "Quick assessment, feasibility studies, initial planning"
+        },
+        "standard": {
+          "time": "1-2 hours",
+          "scope": "Comprehensive analysis with framework selection and initial implementation",
+          "use_case": "Full migration workflow (default mode)",
+          "default": true
+        },
+        "comprehensive": {
+          "time": "3-5 hours",
+          "scope": "Complete migration with validation, benchmarking, and production integration",
+          "use_case": "Critical migrations, production deployments, full validation required"
+        }
+      },
+      "optimization": {
+        "before": "308 lines",
+        "after": "306 lines",
+        "external_docs": "6 files (~2,400 lines)",
+        "enhancement": "Added execution modes, external documentation references, comprehensive metadata"
+      }
     }
-  ]
+  ],
+  "features": [
+    "Systematic 6-phase migration workflow (Code Understanding → Numerical Accuracy → Framework Migration → Performance Optimization → Integration → Validation)",
+    "Execution modes for flexible time/scope control (quick/standard/comprehensive)",
+    "Comprehensive external documentation (~2,400 lines across 6 specialized guides)",
+    "Chain-of-thought reasoning for transparent decision-making",
+    "Constitutional AI principles ensuring numerical accuracy and performance",
+    "Algorithm analysis framework with hotspot detection and complexity analysis",
+    "Numerical accuracy preservation guide with precision requirements and validation strategies",
+    "Framework migration strategies (NumPy/JAX/Julia/PyTorch/Rust selection matrix)",
+    "Performance optimization techniques (vectorization, GPU acceleration, distributed computing)",
+    "Integration and testing patterns (CI/CD, package management, API design)",
+    "Scientific computing best practices (numerical stability, domain-specific requirements)",
+    "Automated codebase discovery with language/library/parallelization detection",
+    "Cross-platform validation and reproducibility verification",
+    "Migration roadmap templates (phased vs. direct approaches)",
+    "Comprehensive validation suite (regression tests, convergence tests, property-based tests)",
+    "Performance benchmarking frameworks with statistical analysis"
+  ],
+  "documentation": {
+    "total_external_files": 6,
+    "total_external_lines": "~2,400 lines",
+    "command_optimization": "Enhanced with execution modes and external doc references",
+    "external_docs": [
+      {
+        "file": "docs/code-migration/algorithm-analysis-framework.md",
+        "lines": "~400 lines",
+        "purpose": "Algorithm identification, computational kernel analysis, data structure analysis, performance profiling"
+      },
+      {
+        "file": "docs/code-migration/numerical-accuracy-guide.md",
+        "lines": "~500 lines",
+        "purpose": "Precision requirements, verification strategies, reproducibility analysis, conservation law validation"
+      },
+      {
+        "file": "docs/code-migration/framework-migration-strategies.md",
+        "lines": "~300 lines",
+        "purpose": "Target framework selection, migration roadmaps, dependency modernization, library mapping"
+      },
+      {
+        "file": "docs/code-migration/performance-optimization-techniques.md",
+        "lines": "~350 lines",
+        "purpose": "Parallelization opportunities, computational efficiency, hardware utilization, profiling techniques"
+      },
+      {
+        "file": "docs/code-migration/integration-testing-patterns.md",
+        "lines": "~450 lines",
+        "purpose": "Modern tooling integration, package management, API design, validation frameworks, benchmarking suites"
+      },
+      {
+        "file": "docs/code-migration/scientific-computing-best-practices.md",
+        "lines": "~400 lines",
+        "purpose": "Numerical stability guidelines, performance sensitivity, domain-specific requirements, legacy compatibility"
+      }
+    ]
+  },
+  "migration_patterns": {
+    "fortran_to_python_jax": {
+      "phases": ["F2py wrapper", "Pure NumPy", "JAX optimization"],
+      "timeline": "6-12 weeks",
+      "target_speedup": "100-1000x on GPU"
+    },
+    "matlab_to_numpy_scipy": {
+      "approach": "Direct migration",
+      "timeline": "2-3 weeks",
+      "feature_parity": "100%"
+    },
+    "cpp_to_python_wrappers": {
+      "method": "Pybind11 bindings",
+      "timeline": "1-3 weeks",
+      "performance_retention": "99%"
+    }
+  }
 }

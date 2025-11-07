@@ -5,7 +5,145 @@ All notable changes to the Code Migration plugin will be documented in this file
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [2.0.0] - 2025-10-29
+## [1.0.3] - 2025-11-06
+
+### 🚀 Workflow Enhancement Release - Hub-and-Spoke Architecture & Execution Modes
+
+#### Overall Impact
+
+- **External Documentation Created**: 6 comprehensive files (~2,400 lines)
+- **Execution Modes**: 3 modes per command (quick/standard/comprehensive)
+- **Architecture**: Hub-and-spoke pattern with specialized guidance
+- **Backward Compatibility**: 100% - all existing command invocations work unchanged
+
+#### ✨ Command Enhancement
+
+**`/adopt-code`** - Enhanced with execution modes and external documentation
+
+**Before**: 308 lines (comprehensive but monolithic)
+**After**: 306 lines (streamlined with external references)
+**External Docs**: 6 files (~2,400 lines of specialized guidance)
+
+**Execution Modes**:
+- **quick** (30-45 min): Essential codebase analysis and migration strategy only
+- **standard** (1-2 hours): Comprehensive analysis with framework selection and implementation (default)
+- **comprehensive** (3-5 hours): Full migration with validation, benchmarking, and production integration
+
+**Enhancements**:
+- Added YAML frontmatter with execution modes
+- Created 6 comprehensive external documentation files
+- Enhanced plugin.json with capabilities, triggers, and execution modes
+- Maintains all v1.0.2 chain-of-thought reasoning and Constitutional AI principles
+
+#### 📚 External Documentation Created (6 files, ~2,400 lines)
+
+1. **algorithm-analysis-framework.md** (~400 lines)
+   - Algorithm identification methodologies (iterative, direct solvers, time integration, discretization, optimization)
+   - Computational kernel analysis (hotspot detection, complexity analysis, memory access patterns)
+   - Data structure analysis (memory layout, precision requirements, sparse vs. dense)
+   - Performance profiling techniques (CPU/GPU profiling, benchmarking best practices)
+
+2. **numerical-accuracy-guide.md** (~500 lines)
+   - Precision requirements determination (IEEE 754 standards, domain-specific analysis, error propagation)
+   - Catastrophic cancellation detection and mitigation (quadratic formula example, Kahan summation)
+   - Verification strategy design (test case hierarchy, tolerance criteria, reference solutions)
+   - Reproducibility analysis (cross-platform validation, determinism requirements, conservation laws)
+
+3. **framework-migration-strategies.md** (~300 lines)
+   - Target framework selection matrix (NumPy/JAX/Julia/PyTorch/Rust/Dask comparison)
+   - Migration roadmap templates (Fortran→JAX, MATLAB→NumPy, C++→Python wrappers)
+   - Dependency modernization (BLAS/LAPACK, Fortran I/O, MPI, RNG mapping)
+   - Phased vs. direct migration strategies with timelines
+
+4. **performance-optimization-techniques.md** (~350 lines)
+   - Parallelization opportunities (SIMD vectorization, multi-threading, GPU acceleration, distributed computing)
+   - Computational efficiency (algorithm complexity reduction, cache optimization, memory allocation optimization, JIT compilation)
+   - Hardware utilization (CPU/GPU strategies, memory hierarchy optimization)
+   - Profiling and benchmarking methodologies (cProfile, JAX profiling, GPU profiling, performance targets)
+
+5. **integration-testing-patterns.md** (~450 lines)
+   - Modern tooling integration (version control, CI/CD setup, documentation generation, benchmarking suites)
+   - Package management (Python package structure, pyproject.toml, dependency specification, version pinning)
+   - API design (functional vs. OOP patterns, type hints, error handling, input validation)
+   - Numerical validation frameworks (regression tests, property-based testing, convergence testing)
+
+6. **scientific-computing-best-practices.md** (~400 lines)
+   - Numerical stability guidelines (condition number analysis, stable algorithm selection, mitigation techniques)
+   - Performance sensitivity considerations (profiling workflows, algorithmic complexity preservation, trade-off documentation)
+   - Domain-specific requirements (conservation laws, boundary conditions, symmetry preservation, units/dimensions)
+   - Legacy compatibility patterns (compatibility layers, breaking change documentation, migration utilities, version support)
+
+#### 🤖 Plugin Configuration Enhancements
+
+- Updated plugin.json with comprehensive metadata
+- Added agent capabilities and triggers
+- Added command execution modes
+- Enhanced features list (16 major features)
+- Added migration patterns documentation
+- All versions updated to 1.0.3
+
+####  New Features
+
+**Execution Modes** (/adopt-code):
+- **Quick**: 30-45 minutes - Essential analysis and strategy
+- **Standard**: 1-2 hours - Full migration workflow (default)
+- **Comprehensive**: 3-5 hours - Complete validation and production integration
+
+**External Documentation Benefits**:
+- Specialized deep-dive guides for each migration aspect
+- Comprehensive code examples and templates
+- Framework comparison matrices
+- Migration timeline estimates
+- Performance optimization targets
+- Best practices checklists
+
+**Enhanced Capabilities**:
+- Systematic 6-phase migration workflow
+- Algorithm analysis with hotspot detection
+- Numerical accuracy preservation (< 1e-12 error)
+- Cross-platform validation and reproducibility
+- Performance benchmarking (target: 10-1000x GPU speedups)
+- Phased migration strategies with backward compatibility
+
+#### 📊 Documentation Metrics
+
+| File | Lines | Purpose |
+|------|-------|---------|
+| algorithm-analysis-framework.md | ~400 | Algorithm identification, kernel analysis, data structures |
+| numerical-accuracy-guide.md | ~500 | Precision, verification, reproducibility, conservation laws |
+| framework-migration-strategies.md | ~300 | Framework selection, roadmaps, dependency modernization |
+| performance-optimization-techniques.md | ~350 | Parallelization, efficiency, hardware utilization |
+| integration-testing-patterns.md | ~450 | Tooling, packaging, API design, validation |
+| scientific-computing-best-practices.md | ~400 | Stability, sensitivity, domain requirements, compatibility |
+| **Total External Docs** | **~2,400** | **Comprehensive migration guidance** |
+
+#### 🔄 Migration Guide
+
+**No migration required** - 100% backward compatible:
+- All existing `/adopt-code` commands work unchanged
+- Execution modes are optional (defaults to standard)
+- All agent triggers remain the same
+- Chain-of-thought reasoning and Constitutional AI principles maintained from v1.0.2
+
+**To use new execution modes**:
+```bash
+/adopt-code --quick legacy_fortran_code/          # Fast assessment
+/adopt-code legacy_matlab_code/                   # Standard (default)
+/adopt-code --comprehensive critical_physics_sim/ # Full validation
+```
+
+**To access external documentation**:
+External docs are automatically referenced in the command workflow. View them directly:
+- `docs/code-migration/algorithm-analysis-framework.md`
+- `docs/code-migration/numerical-accuracy-guide.md`
+- `docs/code-migration/framework-migration-strategies.md`
+- `docs/code-migration/performance-optimization-techniques.md`
+- `docs/code-migration/integration-testing-patterns.md`
+- `docs/code-migration/scientific-computing-best-practices.md`
+
+---
+
+## [1.0.2] - 2025-10-29
 
 ### Major Release - Comprehensive Prompt Engineering Improvements
 
@@ -24,7 +162,7 @@ This release represents a major enhancement to the scientific-code-adoptor agent
 
 The scientific-code-adoptor agent has been upgraded from basic to 90% maturity with comprehensive prompt engineering improvements.
 
-### 🔬 Scientific Code Adoptor (v2.0.0) - Maturity: 90%
+### 🔬 Scientific Code Adoptor (v1.0.2) - Maturity: 90%
 
 **Before**: 226 lines | **After**: 1,117 lines | **Growth**: +891 lines (394%)
 
@@ -110,110 +248,19 @@ The scientific-code-adoptor agent has been upgraded from basic to 90% maturity w
 ### Updated Fields
 - **displayName**: Added "Code Migration" for better marketplace visibility
 - **category**: Set to "code-migration" for proper categorization
-- **keywords**: Expanded to 18 keywords covering Fortran, MATLAB, JAX, Julia, F2py, Ctypes, Pybind11, GPU acceleration, numerical accuracy
-- **changelog**: Comprehensive v2.0.0 release notes with expected performance improvements
-- **agents**: scientific-code-adoptor upgraded with version 2.0.0, maturity 90%, and detailed improvement descriptions
-
----
-
-## Testing Recommendations
-
-### Agent Testing
-1. **Fortran-to-Python Migration**: Test with modernizing legacy Fortran scientific codes
-2. **MATLAB-to-JAX Conversion**: Test with translating MATLAB research code
-3. **GPU Acceleration**: Test with converting CPU-only codes to GPU-accelerated JAX
-4. **Numerical Validation**: Test with bit-level accuracy preservation (< 1e-12 error)
-5. **Hybrid Integration**: Test with F2py wrapper creation and phased migration
-
-### Validation Testing
-1. Verify chain-of-thought reasoning produces systematic migration plans
-2. Test Constitutional AI self-checks ensure numerical accuracy
-3. Validate decision tree correctly delegates to jax-pro, hpc-numerical-coordinator
-4. Test comprehensive example applies to real-world migration scenarios
-
----
-
-## Migration Guide
-
-### For Existing Users
-
-**No Breaking Changes**: v2.0.0 is fully backward compatible with v1.0.0
-
-**What's Enhanced**:
-- Agent now provides step-by-step reasoning with chain-of-thought framework
-- Agent self-critiques work using Constitutional AI principles for numerical accuracy
-- More specific invocation guidelines prevent misuse (clear delegation to jax-pro, hpc-numerical-coordinator)
-- Comprehensive Fortran→JAX example shows best practices for scientific code migration
-- 110+ guiding questions ensure systematic, thorough migration process
-
-**Recommended Actions**:
-1. Review new triggering criteria to understand when to use scientific-code-adoptor
-2. Explore the 6-step chain-of-thought framework for systematic migration
-3. Study the Fortran→JAX example for numerical validation and GPU acceleration patterns
-4. Test enhanced agent with legacy code migration tasks
-
-### For New Users
-
-**Getting Started**:
-1. Install plugin via Claude Code marketplace
-2. Review agent description to understand legacy code modernization specialization
-3. Invoke agent for code migration:
-   - "Migrate this Fortran 77 code to Python/JAX with GPU acceleration"
-   - "Convert MATLAB research code to NumPy/SciPy with feature parity"
-   - "Create F2py wrapper for legacy Fortran library with modern Python interface"
-4. Leverage /adopt-code command for comprehensive migration workflows
-
----
-
-## Performance Benchmarks
-
-Based on comprehensive prompt engineering improvements, users can expect:
-
-| Metric | Improvement | Details |
-|--------|-------------|---------|
-| Migration Quality | 50-70% | Better code structure, numerical accuracy, maintainability |
-| Migration Speed | 60% | Systematic approach, fewer trial-and-error iterations |
-| Validation Thoroughness | 70% | Structured testing, cross-platform verification |
-| Decision-Making | Systematic | 110 guiding questions (60 chain-of-thought + 50 constitutional) |
-| Numerical Accuracy | Enhanced | Machine-precision validation (< 1e-15 for float64) |
-| GPU Acceleration | 10-1000x | JAX transformations, XLA compilation |
-
----
-
-## Known Limitations
-
-- Chain-of-thought reasoning may increase response length (provides transparency)
-- Comprehensive examples may be verbose for simple migrations (can adapt)
-- Constitutional AI self-critique adds processing steps (ensures higher quality)
-- Focus on scientific computing codes (not suitable for web applications, general software)
-
----
-
-## Future Enhancements (Planned for v2.1.0)
-
-- Additional few-shot examples for different migration types (C++ to Julia, IDL to Python)
-- Enhanced patterns for molecular dynamics code modernization (LAMMPS, GROMACS)
-- Advanced hybrid integration strategies (mixed Fortran/Python/JAX workflows)
-- Automated code pattern recognition and translation suggestions
-- Multi-target migration support (single legacy code → multiple modern targets)
-
----
-
-## Credits
-
-**Prompt Engineering**: Wei Chen
-**Framework**: Chain-of-Thought Reasoning, Constitutional AI
-**Testing**: Comprehensive validation across Fortran, MATLAB, C/C++ migrations
-**Example**: Fortran 77 atmospheric chemistry solver to Python/JAX
+- **keywords**: Expanded to 20 keywords covering Fortran, MATLAB, JAX, Julia, F2py, Ctypes, Pybind11, GPU acceleration, numerical accuracy
+- **changelog**: Comprehensive release notes with expected performance improvements
+- **agents**: scientific-code-adoptor upgraded with version and detailed improvement descriptions
 
 ---
 
 ## Support
 
 - **Issues**: Report at https://github.com/anthropics/claude-code/issues
-- **Documentation**: See agent markdown file for comprehensive details
-- **Examples**: Complete Fortran→JAX migration example in agent file
+- **Documentation**: See command and external documentation files
+- **Examples**: Complete migration examples in scientific-code-adoptor agent file
 
 ---
 
-[2.0.0]: https://github.com/yourusername/code-migration/compare/v1.0.0...v2.0.0
+[1.0.3]: https://github.com/yourusername/code-migration/compare/v1.0.2...v1.0.3
+[1.0.2]: https://github.com/yourusername/code-migration/compare/v1.0.0...v1.0.2
