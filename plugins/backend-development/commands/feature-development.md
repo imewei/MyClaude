@@ -1,6 +1,55 @@
+---
+version: "1.0.3"
+category: "backend-development"
+command: "/feature-development"
+
+execution-modes:
+  quick:
+    description: "Rapid MVP development for simple features"
+    time: "1-2 days"
+    phases: "Skip discovery, minimal testing, direct deployment"
+    steps: "Steps 4, 5, 7, 10 only"
+    use-case: "Hot fixes, simple CRUD operations, urgent patches"
+
+  standard:
+    description: "Full 4-phase workflow for production features"
+    time: "3-14 days"
+    phases: "All 12 steps with comprehensive validation"
+    use-case: "Standard feature development (default)"
+
+  enterprise:
+    description: "Extended workflow with compliance and governance"
+    time: "2-4 weeks"
+    phases: "All steps + compliance review, legal approval, multi-region deployment"
+    use-case: "Enterprise features, regulated industries, multi-tenant"
+
+documentation:
+  detailed-guides: "../docs/backend-development/methodology-guides.md"
+  phase-templates: "../docs/backend-development/phase-templates.md"
+  agent-patterns: "../docs/backend-development/agent-orchestration.md"
+  deployment: "../docs/backend-development/deployment-strategies.md"
+  best-practices: "../docs/backend-development/best-practices.md"
+  metrics: "../docs/backend-development/success-metrics.md"
+---
+
 Orchestrate end-to-end feature development from requirements to production deployment:
 
 [Extended thinking: This workflow orchestrates specialized agents through comprehensive feature development phases - from discovery and planning through implementation, testing, and deployment. Each phase builds on previous outputs, ensuring coherent feature delivery. The workflow supports multiple development methodologies (traditional, TDD/BDD, DDD), feature complexity levels, and modern deployment strategies including feature flags, gradual rollouts, and observability-first development. Agents receive detailed context from previous phases to maintain consistency and quality throughout the development lifecycle.]
+
+## Agent Reference
+
+| Phase | Step | Agent Type | Primary Role |
+|-------|------|------------|--------------|
+| 1 | 2 | comprehensive-review:architect-review | Technical architecture design |
+| 1 | 3 | comprehensive-review:security-auditor | Security & risk assessment |
+| 2 | 4 | backend-development:backend-architect | Backend services implementation |
+| 2 | 5 | frontend-mobile-development:frontend-developer | Frontend UI implementation |
+| 3 | 7 | unit-testing:test-automator | Test suite creation |
+| 3 | 8 | comprehensive-review:security-auditor | Security validation |
+| 3 | 9 | full-stack-orchestration:performance-engineer | Performance optimization |
+| 4 | 10 | cicd-automation:deployment-engineer | CI/CD pipeline setup |
+| 4 | 11 | observability-monitoring:observability-engineer | Monitoring & alerting |
+| 4 | 12 | code-documentation:docs-architect | Documentation generation |
 
 ## Configuration Options
 
@@ -26,83 +75,70 @@ Orchestrate end-to-end feature development from requirements to production deplo
 ## Phase 1: Discovery & Requirements Planning
 
 1. **Business Analysis & Requirements**
-   - Manually analyze feature requirements for: $ARGUMENTS
-   - Define user stories, acceptance criteria, success metrics, and business value
-   - Identify stakeholders, dependencies, and risks
-   - Create feature specification document with clear scope boundaries
-   - Expected output: Requirements document with user stories, success metrics, risk assessment
-   - Context: Initial feature request and business context
+   - **Action**: Manually analyze feature requirements for: $ARGUMENTS
+   - **Deliverable**: Requirements document with user stories, success metrics, risk assessment [→ Guide](../docs/backend-development/phase-templates.md#business-analysis)
+   - **Success**: Requirements completeness score >90%, stakeholder sign-off, clear scope boundaries
 
 2. **Technical Architecture Design**
-   - Use Task tool with subagent_type="comprehensive-review:architect-review"
-   - Prompt: "Design technical architecture for feature: $ARGUMENTS. Using requirements: [include business analysis from step 1]. Define service boundaries, API contracts, data models, integration points, and technology stack. Consider scalability, performance, and security requirements."
-   - Expected output: Technical design document with architecture diagrams, API specifications, data models
-   - Context: Business requirements, existing system architecture
+   - **Agent**: architect-review | **Context**: Business requirements from step 1
+   - **Objective**: Design technical architecture with service boundaries, API contracts, data models, integration points
+   - **Deliverable**: Technical design document with architecture diagrams, API specs [→ Guide](../docs/backend-development/phase-templates.md#architecture-design)
 
 3. **Feasibility & Risk Assessment**
-   - Use Task tool with subagent_type="comprehensive-review:security-auditor"
-   - Prompt: "Assess security implications and risks for feature: $ARGUMENTS. Review architecture: [include technical design from step 2]. Identify security requirements, compliance needs, data privacy concerns, and potential vulnerabilities."
-   - Expected output: Security assessment with risk matrix, compliance checklist, mitigation strategies
-   - Context: Technical design, regulatory requirements
+   - **Agent**: security-auditor | **Context**: Technical design from step 2
+   - **Objective**: Assess security implications, compliance needs, data privacy concerns, potential vulnerabilities
+   - **Deliverable**: Security assessment with risk matrix, compliance checklist, mitigation strategies [→ Guide](../docs/backend-development/phase-templates.md#risk-assessment)
 
 ## Phase 2: Implementation & Development
 
 4. **Backend Services Implementation**
-   - Use Task tool with subagent_type="backend-development:backend-architect"
-   - Prompt: "Implement backend services for: $ARGUMENTS. Follow technical design: [include architecture from step 2]. Build RESTful/GraphQL APIs, implement business logic, integrate with data layer, add resilience patterns (circuit breakers, retries), implement caching strategies. Include feature flags for gradual rollout."
-   - Expected output: Backend services with APIs, business logic, database integration, feature flags
-   - Context: Technical design, API contracts, data models
+   - **Agent**: backend-architect | **Context**: Technical design from step 2
+   - **Objective**: Implement backend services with RESTful/GraphQL APIs, business logic, resilience patterns, caching, feature flags
+   - **Deliverable**: Backend services meeting API contracts [→ Implementation Guide](../docs/backend-development/phase-templates.md#backend-implementation)
 
 5. **Frontend Implementation**
-   - Use Task tool with subagent_type="frontend-mobile-development:frontend-developer"
-   - Prompt: "Build frontend components for: $ARGUMENTS. Integrate with backend APIs: [include API endpoints from step 4]. Implement responsive UI, state management, error handling, loading states, and analytics tracking. Add feature flag integration for A/B testing capabilities."
-   - Expected output: Frontend components with API integration, state management, analytics
-   - Context: Backend APIs, UI/UX designs, user stories
+   - **Agent**: frontend-developer | **Context**: Backend APIs from step 4
+   - **Objective**: Build responsive UI, state management, error handling, loading states, analytics tracking, feature flag integration
+   - **Deliverable**: Frontend components with API integration [→ Implementation Guide](../docs/backend-development/phase-templates.md#frontend-implementation)
 
 6. **Data Pipeline & Integration**
-   - Prompt: "Build data pipelines for: $ARGUMENTS. Design ETL/ELT processes, implement data validation, create analytics events, set up data quality monitoring. Integrate with product analytics platforms for feature usage tracking."
-   - Expected output: Data pipelines, analytics events, data quality checks
-   - Context: Data requirements, analytics needs, existing data infrastructure
+   - **Action**: Manually build data pipelines for: $ARGUMENTS
+   - **Objective**: Design ETL/ELT processes, data validation, analytics events, data quality monitoring
+   - **Deliverable**: Data pipelines, analytics events, quality checks [→ Guide](../docs/backend-development/phase-templates.md#data-pipeline)
 
 ## Phase 3: Testing & Quality Assurance
 
 7. **Automated Test Suite**
-   - Use Task tool with subagent_type="unit-testing:test-automator"
-   - Prompt: "Create comprehensive test suite for: $ARGUMENTS. Write unit tests for backend: [from step 4] and frontend: [from step 5]. Add integration tests for API endpoints, E2E tests for critical user journeys, performance tests for scalability validation. Ensure minimum 80% code coverage."
-   - Expected output: Test suites with unit, integration, E2E, and performance tests
-   - Context: Implementation code, acceptance criteria, test requirements
+   - **Agent**: test-automator | **Context**: Backend (step 4) and frontend (step 5) implementation
+   - **Objective**: Create unit, integration, E2E, and performance tests with minimum 80% code coverage
+   - **Deliverable**: Comprehensive test suite [→ Testing Guide](../docs/backend-development/phase-templates.md#automated-testing)
 
 8. **Security Validation**
-   - Use Task tool with subagent_type="comprehensive-review:security-auditor"
-   - Prompt: "Perform security testing for: $ARGUMENTS. Review implementation: [include backend and frontend from steps 4-5]. Run OWASP checks, penetration testing, dependency scanning, and compliance validation. Verify data encryption, authentication, and authorization."
-   - Expected output: Security test results, vulnerability report, remediation actions
-   - Context: Implementation code, security requirements
+   - **Agent**: security-auditor | **Context**: Backend and frontend implementation from steps 4-5
+   - **Objective**: Run OWASP checks, penetration testing, dependency scanning, compliance validation
+   - **Deliverable**: Security test results, vulnerability report, remediation actions [→ Security Guide](../docs/backend-development/phase-templates.md#security-validation)
 
 9. **Performance Optimization**
-   - Use Task tool with subagent_type="full-stack-orchestration:performance-engineer"
-   - Prompt: "Optimize performance for: $ARGUMENTS. Analyze backend services: [from step 4] and frontend: [from step 5]. Profile code, optimize queries, implement caching, reduce bundle sizes, improve load times. Set up performance budgets and monitoring."
-   - Expected output: Performance improvements, optimization report, performance metrics
-   - Context: Implementation code, performance requirements
+   - **Agent**: performance-engineer | **Context**: Backend (step 4) and frontend (step 5) implementation
+   - **Objective**: Profile code, optimize queries, implement caching, reduce bundle sizes, improve load times
+   - **Deliverable**: Performance improvements, optimization report, metrics [→ Performance Guide](../docs/backend-development/phase-templates.md#performance-optimization)
 
 ## Phase 4: Deployment & Monitoring
 
 10. **Deployment Strategy & Pipeline**
-    - Use Task tool with subagent_type="cicd-automation:deployment-engineer"
-    - Prompt: "Prepare deployment for: $ARGUMENTS. Create CI/CD pipeline with automated tests: [from step 7]. Configure feature flags for gradual rollout, implement blue-green deployment, set up rollback procedures. Create deployment runbook and rollback plan."
-    - Expected output: CI/CD pipeline, deployment configuration, rollback procedures
-    - Context: Test suites, infrastructure requirements, deployment strategy
+    - **Agent**: deployment-engineer | **Context**: Test suites from step 7, infrastructure requirements
+    - **Objective**: Create CI/CD pipeline with automated tests, feature flags, blue-green deployment, rollback procedures
+    - **Deliverable**: CI/CD pipeline, deployment config, rollback plan [→ Deployment Guide](../docs/backend-development/deployment-strategies.md)
 
 11. **Observability & Monitoring**
-    - Use Task tool with subagent_type="observability-monitoring:observability-engineer"
-    - Prompt: "Set up observability for: $ARGUMENTS. Implement distributed tracing, custom metrics, error tracking, and alerting. Create dashboards for feature usage, performance metrics, error rates, and business KPIs. Set up SLOs/SLIs with automated alerts."
-    - Expected output: Monitoring dashboards, alerts, SLO definitions, observability infrastructure
-    - Context: Feature implementation, success metrics, operational requirements
+    - **Agent**: observability-engineer | **Context**: Feature implementation, success metrics
+    - **Objective**: Implement distributed tracing, custom metrics, error tracking, alerting, dashboards, SLOs/SLIs
+    - **Deliverable**: Monitoring dashboards, alerts, SLO definitions [→ Observability Guide](../docs/backend-development/phase-templates.md#observability)
 
 12. **Documentation & Knowledge Transfer**
-    - Use Task tool with subagent_type="code-documentation:docs-architect"
-    - Prompt: "Generate comprehensive documentation for: $ARGUMENTS. Create API documentation, user guides, deployment guides, troubleshooting runbooks. Include architecture diagrams, data flow diagrams, and integration guides. Generate automated changelog from commits."
-    - Expected output: API docs, user guides, runbooks, architecture documentation
-    - Context: All previous phases' outputs
+    - **Agent**: docs-architect | **Context**: All previous phases' outputs
+    - **Objective**: Generate API documentation, user guides, deployment guides, troubleshooting runbooks
+    - **Deliverable**: Comprehensive documentation package [→ Documentation Guide](../docs/backend-development/phase-templates.md#documentation)
 
 ## Execution Parameters
 
@@ -112,6 +148,7 @@ Orchestrate end-to-end feature development from requirements to production deplo
 - **--complexity**: Feature complexity level (simple|medium|complex|epic)
 
 ### Optional Parameters
+- **--mode**: Execution mode (quick|standard|enterprise) - default: standard
 - **--deployment-strategy**: Deployment approach (direct|canary|feature-flag|blue-green|a-b-test)
 - **--test-coverage-min**: Minimum test coverage threshold (default: 80%)
 - **--performance-budget**: Performance requirements (e.g., <200ms response time)
@@ -122,8 +159,14 @@ Orchestrate end-to-end feature development from requirements to production deplo
 
 ## Success Criteria
 
-- All acceptance criteria from business requirements are met
-- Test coverage exceeds minimum threshold (80% default)
+### Phase-Specific Outcomes
+- **Phase 1**: Requirements completeness >90%, risk matrix created, stakeholder sign-off
+- **Phase 2**: API contract coverage 100%, feature flag configured, frontend responsive on all breakpoints
+- **Phase 3**: Test coverage ≥80%, zero critical vulnerabilities, p95 latency <200ms, performance budget met
+- **Phase 4**: Successful deployment, monitoring dashboards live, documentation published, rollback tested
+
+### Overall Success
+- All acceptance criteria from business requirements met
 - Security scan shows no critical vulnerabilities
 - Performance meets defined budgets and SLOs
 - Feature flags configured for controlled rollout
@@ -136,10 +179,12 @@ Orchestrate end-to-end feature development from requirements to production deplo
 ## Rollback Strategy
 
 If issues arise during or after deployment:
-1. Immediate feature flag disable (< 1 minute)
-2. Blue-green traffic switch (< 5 minutes)
-3. Full deployment rollback via CI/CD (< 15 minutes)
-4. Database migration rollback if needed (coordinate with data team)
-5. Incident post-mortem and fixes before re-deployment
+1. **Immediate feature flag disable** (< 1 minute)
+2. **Blue-green traffic switch** (< 5 minutes)
+3. **Full deployment rollback via CI/CD** (< 15 minutes)
+4. **Database migration rollback** if needed (coordinate with data team)
+5. **Incident post-mortem** and fixes before re-deployment
+
+[→ Detailed Rollback Procedures](../docs/backend-development/deployment-strategies.md#rollback-procedures)
 
 Feature description: $ARGUMENTS

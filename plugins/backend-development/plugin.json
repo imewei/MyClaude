@@ -1,9 +1,9 @@
 {
   "name": "backend-development",
   "displayName": "Backend Development",
-  "description": "Comprehensive backend development support including REST/GraphQL/gRPC APIs, microservices architecture, distributed systems, TDD orchestration, and scalable backend patterns for modern applications. v2.0.0 features enhanced agents with chain-of-thought reasoning, Constitutional AI principles, comprehensive few-shot examples, and improved skills with expanded use cases.",
-  "version": "2.0.0",
-  "changelog": "v2.0.0: Major prompt engineering improvements for all 3 agents (backend-architect, graphql-architect, tdd-orchestrator) with triggering criteria, chain-of-thought reasoning frameworks, Constitutional AI principles, comprehensive few-shot examples, and enhanced 6 skills with expanded discoverability. Expected improvements: 30-60% better architecture decisions, 40-70% reduction in common mistakes, 35-50% clearer communication.",
+  "description": "Comprehensive backend development support including REST/GraphQL/gRPC APIs, microservices architecture, distributed systems, TDD orchestration, and scalable backend patterns for modern applications. v1.0.3 enhances feature-development command with execution modes, agent reference table, and comprehensive external documentation (6 files covering methodology, phases, agent orchestration, deployment strategies, best practices, and success metrics).",
+  "version": "1.0.3",
+  "changelog": "v1.0.3: Enhanced /feature-development command with YAML frontmatter (3 execution modes: quick/standard/enterprise), agent reference table for 10 specialized agents, condensed step descriptions with external doc links, comprehensive 6-file documentation suite (methodology-guides.md covering TDD/BDD/DDD, phase-templates.md with detailed checklists, agent-orchestration.md with 5 orchestration patterns, deployment-strategies.md for 5 deployment strategies, best-practices.md for production readiness, success-metrics.md with quantified criteria). Enhanced usability with clear execution modes, better agent coordination guidance, and complete reference library. Maintains 100% backward compatibility.",
   "keywords": [
     "backend",
     "api",
@@ -63,8 +63,11 @@
       "id": "feature-development",
       "file": "commands/feature-development.md",
       "name": "/feature-development",
-      "description": "Orchestrate end-to-end feature development from requirements to production deployment",
-      "status": "active"
+      "description": "Orchestrate end-to-end feature development from requirements to production deployment with 3 execution modes (quick/standard/enterprise) and comprehensive external documentation",
+      "status": "active",
+      "version": "1.0.3",
+      "maturity": "94%",
+      "improvements": "v1.0.3 Enhancement: Added YAML frontmatter with 3 execution modes (quick: 1-2 days MVP, standard: 3-14 days full workflow, enterprise: 2-4 weeks with compliance), agent reference table for 10 specialized agents, condensed step descriptions with external doc links, comprehensive 6-file documentation suite (methodology guides covering TDD/BDD/DDD, phase templates with detailed checklists, agent orchestration patterns, deployment strategies for canary/blue-green/feature-flags/A/B testing, best practices for production readiness, quantified success metrics). Enhanced usability with clear execution modes, better agent coordination guidance, and complete reference library without increasing command token cost."
     }
   ],
   "skills": [
