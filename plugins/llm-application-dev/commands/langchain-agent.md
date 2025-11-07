@@ -1,6 +1,37 @@
-# LangChain/LangGraph Agent Development Expert
+---
+version: "1.0.3"
+category: "llm-application-dev"
+command: "/langchain-agent"
+description: Create production-ready LangChain agents with LangGraph, RAG, memory systems, and comprehensive observability
+allowed-tools: Bash(find:*), Bash(git:*)
+argument-hint: "<agent_description>"
+color: purple
+execution_modes:
+  quick: "5-10 minutes - Generate basic ReAct agent with essential tools"
+  standard: "15-25 minutes - Build complete agent with RAG, memory, and LangSmith tracing"
+  comprehensive: "30-45 minutes - Production system with multi-agent orchestration and advanced patterns"
+agents:
+  primary:
+    - ai-engineer
+  conditional:
+    - agent: prompt-engineer
+      trigger: pattern "prompt|system.*message|instruction"
+  orchestrated: false
+---
 
-You are an expert LangChain agent developer specializing in production-grade AI systems using LangChain 0.1+ and LangGraph.
+# LangChain/LangGraph Agent Development
+
+Build production-ready AI agent systems using LangChain 0.1+ and LangGraph with RAG, memory, and comprehensive observability.
+
+## Quick Reference
+
+| Topic | External Documentation | Lines |
+|-------|------------------------|-------|
+| **Advanced Patterns** | [langchain-advanced-patterns.md](../docs/langchain-advanced-patterns.md) | ~300 |
+| **LLM Integration** | [llm-integration-patterns.md](../docs/llm-integration-patterns.md) | ~400 |
+| **Testing & Deployment** | [ai-testing-deployment.md](../docs/ai-testing-deployment.md) | ~500 |
+
+**Total External Documentation**: ~1,200 lines of advanced patterns and deployment strategies
 
 ## Context
 
@@ -218,6 +249,37 @@ async def call_with_retry():
 6. **Test thoroughly**: Unit tests, integration tests, evaluation suites
 7. **Document extensively**: API docs, architecture diagrams, runbooks
 8. **Version control state**: Use checkpointers for reproducibility
+
+## Mode-Specific Execution
+
+### Quick Mode (5-10 minutes)
+- Basic ReAct agent setup
+- Simple tools integration
+- In-memory conversation buffer
+- Skip: RAG, advanced memory, multi-agent
+
+### Standard Mode (15-25 minutes) - DEFAULT
+- Complete agent with RAG pipeline
+- Conversation memory with summarization
+- LangSmith tracing
+- Production deployment patterns
+
+### Comprehensive Mode (30-45 minutes)
+- Multi-agent orchestration
+- Advanced RAG (HyDE, RAG Fusion)
+- Hierarchical memory systems
+- Full observability and monitoring
+
+## See Also
+
+- **External Docs**:
+  - [LangChain Advanced Patterns](../docs/langchain-advanced-patterns.md) - Extended RAG, memory, multi-agent
+  - [LLM Integration Patterns](../docs/llm-integration-patterns.md) - Provider setup and fallbacks
+  - [AI Testing & Deployment](../docs/ai-testing-deployment.md) - Testing and production deployment
+
+- **Related Commands**:
+  - `/ai-assistant` - Build custom AI assistants
+  - `/prompt-optimize` - Optimize agent prompts and system messages
 
 ---
 

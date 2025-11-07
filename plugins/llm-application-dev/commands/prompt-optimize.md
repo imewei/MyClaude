@@ -1,38 +1,80 @@
+---
+version: "1.0.3"
+category: "llm-application-dev"
+command: "/prompt-optimize"
+description: Optimize prompts for better LLM performance through advanced techniques including CoT, few-shot learning, and constitutional AI
+allowed-tools: Bash(find:*), Bash(git:*)
+argument-hint: "<prompt_to_optimize>"
+color: green
+execution_modes:
+  quick: "5-10 minutes - Basic prompt analysis and quick optimization recommendations"
+  standard: "15-25 minutes - Comprehensive optimization with techniques and examples"
+  comprehensive: "30-45 minutes - Full optimization with meta-prompt generation and A/B testing strategy"
+agents:
+  primary:
+    - prompt-engineer
+  conditional:
+    - agent: ai-engineer
+      trigger: pattern "code.*generation|implementation.*example"
+  orchestrated: false
+---
+
 # Prompt Optimization
 
-You are an expert prompt engineer specializing in crafting effective prompts for LLMs through advanced techniques including constitutional AI, chain-of-thought reasoning, and model-specific optimization.
+Transform basic instructions into production-ready prompts through advanced techniques. Effective prompt engineering can improve accuracy by 40%, reduce hallucinations by 30%, and cut costs by 50-80%.
 
-## Context
+## Quick Reference
 
-Transform basic instructions into production-ready prompts. Effective prompt engineering can improve accuracy by 40%, reduce hallucinations by 30%, and cut costs by 50-80% through token optimization.
+| Topic | External Documentation | Lines |
+|-------|------------------------|-------|
+| **Optimization Techniques** | [prompt-patterns.md](../docs/prompt-patterns.md) | ~500 |
+| **Reference Examples** | [prompt-examples.md](../docs/prompt-examples.md) | ~400 |
+| **Evaluation Methods** | [prompt-evaluation.md](../docs/prompt-evaluation.md) | ~300 |
+
+**Total External Documentation**: ~1,200 lines of patterns, examples, and testing strategies
 
 ## Requirements
 
 $ARGUMENTS
 
-## Instructions
+## Core Workflow
 
-### 1. Analyze Current Prompt
+### Phase 1: Analyze Current Prompt
 
-Evaluate the prompt across key dimensions:
+**Evaluate prompt across key dimensions**:
 
-**Assessment Framework**
-- Clarity score (1-10) and ambiguity points
-- Structure: logical flow and section boundaries
-- Model alignment: capability utilization and token efficiency
-- Performance: success rate, failure modes, edge case handling
+**Assessment Framework**:
+- **Clarity** (1-10): Ambiguity points, explicit vs implicit expectations
+- **Structure**: Logical flow, section boundaries
+- **Model Alignment**: Capability utilization, token efficiency
+- **Performance**: Success rate, failure modes, edge cases
 
-**Decomposition**
+**Decomposition**:
 - Core objective and constraints
 - Output format requirements
-- Explicit vs implicit expectations
-- Context dependencies and variable elements
+- Context dependencies
+- Variable elements
 
-### 2. Apply Chain-of-Thought Enhancement
+**Example Analysis**:
+```
+Original: "Analyze this customer feedback and determine sentiment"
 
-**Standard CoT Pattern**
+Issues:
+- Ambiguous: What aspects to analyze?
+- Missing: Output format specification
+- Incomplete: No handling of mixed sentiment
+- Score: 4/10 clarity
+```
+
+**Complete Framework**: [prompt-patterns.md#analysis-framework](../docs/prompt-patterns.md)
+
+### Phase 2: Apply Chain-of-Thought
+
+**Enhance reasoning with step-by-step thinking**:
+
+**Standard CoT Pattern**:
 ```python
-# Before: Simple instruction
+# Before
 prompt = "Analyze this customer feedback and determine sentiment"
 
 # After: CoT enhanced
@@ -46,58 +88,52 @@ prompt = """Analyze this customer feedback step by step:
 
 Customer feedback: {feedback}
 
-Step 1 - Key emotional phrases:
-[Analysis...]"""
+Step 1 - Key emotional phrases:"""
 ```
 
-**Zero-Shot CoT**
-```python
-enhanced = original + "\n\nLet's approach this step-by-step, breaking down the problem into smaller components and reasoning through each carefully."
-```
+**CoT Variants**:
+- **Zero-Shot CoT**: Add "Let's think step-by-step"
+- **Few-Shot CoT**: Provide examples with reasoning
+- **Tree-of-Thoughts**: Explore multiple solution paths
 
-**Tree-of-Thoughts**
-```python
-tot_prompt = """
-Explore multiple solution paths:
+**Complete Patterns**: [prompt-patterns.md#chain-of-thought-patterns](../docs/prompt-patterns.md#chain-of-thought-patterns)
 
-Problem: {problem}
+### Phase 3: Add Few-Shot Learning
 
-Approach A: [Path 1]
-Approach B: [Path 2]
-Approach C: [Path 3]
+**Provide strategic examples**:
 
-Evaluate each (feasibility, completeness, efficiency: 1-10)
-Select best approach and implement.
-"""
-```
+**Example Selection Strategy**:
+1. **Simple case**: Demonstrates basic pattern
+2. **Edge case**: Shows handling of complexity
+3. **Error case**: What NOT to do (counter-example)
 
-### 3. Implement Few-Shot Learning
-
-**Strategic Example Selection**
 ```python
 few_shot = """
 Example 1 (Simple case):
-Input: {simple_input}
-Output: {simple_output}
+Input: "Great product, fast shipping!"
+Output: {"sentiment": "positive", "confidence": 0.95}
 
-Example 2 (Edge case):
-Input: {complex_input}
-Output: {complex_output}
+Example 2 (Edge case - mixed):
+Input: "Good quality but expensive"
+Output: {"sentiment": "mixed", "positive": 0.6, "negative": 0.4}
 
-Example 3 (Error case - what NOT to do):
-Wrong: {wrong_approach}
-Correct: {correct_output}
+Example 3 (What NOT to do):
+Wrong: {"sentiment": "yes"}  # Not specific
+Correct: {"sentiment": "positive", "confidence": 0.87}
 
 Now apply to: {actual_input}
 """
 ```
 
-### 4. Apply Constitutional AI Patterns
+**Complete Guide**: [prompt-patterns.md#few-shot-learning](../docs/prompt-patterns.md#few-shot-learning)
 
-**Self-Critique Loop**
+### Phase 4: Apply Constitutional AI
+
+**Add self-correction for safety and quality**:
+
+**Self-Critique Pattern**:
 ```python
-constitutional = """
-{initial_instruction}
+constitutional = """{initial_instruction}
 
 Review your response against these principles:
 
@@ -106,17 +142,25 @@ Review your response against these principles:
 3. QUALITY: Clarity, consistency, completeness
 
 Initial Response: [Generate]
-Self-Review: [Evaluate]
-Final Response: [Refined]
+Self-Review: [Evaluate against principles]
+Final Response: [Refined based on review]
 """
 ```
 
-### 5. Model-Specific Optimization
+**Benefits**:
+- Reduces harmful outputs by 40%
+- Improves factual accuracy by 25%
+- Better handling of edge cases
 
-**GPT-4/GPT-4o**
+**Complete Framework**: [prompt-patterns.md#constitutional-ai](../docs/prompt-patterns.md#constitutional-ai)
+
+### Phase 5: Model-Specific Optimization
+
+**Optimize for target LLM**:
+
+**GPT-4 Optimization**:
 ```python
-gpt4_optimized = """
-##CONTEXT##
+gpt4_optimized = """##CONTEXT##
 {structured_context}
 
 ##OBJECTIVE##
@@ -124,107 +168,45 @@ gpt4_optimized = """
 
 ##INSTRUCTIONS##
 1. {numbered_steps}
-2. {clear_actions}
 
 ##OUTPUT FORMAT##
 ```json
 {"structured": "response"}
 ```
-
-##EXAMPLES##
-{few_shot_examples}
 """
 ```
 
-**Claude 3.5/4**
+**Claude Optimization**:
 ```python
-claude_optimized = """
-<context>
+claude_optimized = """<context>
 {background_information}
 </context>
 
-<task>
-{clear_objective}
-</task>
+<task>{clear_objective}</task>
 
 <thinking>
 1. Understanding requirements...
-2. Identifying components...
-3. Planning approach...
+2. Planning approach...
 </thinking>
 
-<output_format>
-{xml_structured_response}
-</output_format>
+<output_format>{xml_structure}</output_format>
 """
 ```
 
-**Gemini Pro/Ultra**
+**Complete Patterns**: [prompt-patterns.md#model-specific-optimization](../docs/prompt-patterns.md#model-specific-optimization)
+
+### Phase 6: Evaluate and Test
+
+**Test optimized prompt**:
+
+**Testing Protocol**:
+1. **Test Cases**: 20 total (10 typical, 5 edge, 3 adversarial, 2 out-of-scope)
+2. **Metrics**: Success rate, quality score, efficiency, safety
+3. **LLM-as-Judge**: Automated quality evaluation
+
+**LLM-as-Judge Pattern**:
 ```python
-gemini_optimized = """
-**System Context:** {background}
-**Primary Objective:** {goal}
-
-**Process:**
-1. {action} {target}
-2. {measurement} {criteria}
-
-**Output Structure:**
-- Format: {type}
-- Length: {tokens}
-- Style: {tone}
-
-**Quality Constraints:**
-- Factual accuracy with citations
-- No speculation without disclaimers
-"""
-```
-
-### 6. RAG Integration
-
-**RAG-Optimized Prompt**
-```python
-rag_prompt = """
-## Context Documents
-{retrieved_documents}
-
-## Query
-{user_question}
-
-## Integration Instructions
-
-1. RELEVANCE: Identify relevant docs, note confidence
-2. SYNTHESIS: Combine info, cite sources [Source N]
-3. COVERAGE: Address all aspects, state gaps
-4. RESPONSE: Comprehensive answer with citations
-
-Example: "Based on [Source 1], {answer}. [Source 3] corroborates: {detail}. No information found for {gap}."
-"""
-```
-
-### 7. Evaluation Framework
-
-**Testing Protocol**
-```python
-evaluation = """
-## Test Cases (20 total)
-- Typical cases: 10
-- Edge cases: 5
-- Adversarial: 3
-- Out-of-scope: 2
-
-## Metrics
-1. Success Rate: {X/20}
-2. Quality (0-100): Accuracy, Completeness, Coherence
-3. Efficiency: Tokens, time, cost
-4. Safety: Harmful outputs, hallucinations, bias
-"""
-```
-
-**LLM-as-Judge**
-```python
-judge_prompt = """
-Evaluate AI response quality.
+judge_prompt = """Evaluate AI response quality.
 
 ## Original Task
 {prompt}
@@ -244,306 +226,155 @@ Recommendation: Accept/Revise/Reject
 """
 ```
 
-### 8. Production Deployment
+**Complete Evaluation**: [prompt-evaluation.md](../docs/prompt-evaluation.md)
 
-**Prompt Versioning**
-```python
-class PromptVersion:
-    def __init__(self, base_prompt):
-        self.version = "1.0.0"
-        self.base_prompt = base_prompt
-        self.variants = {}
-        self.performance_history = []
+## Mode-Specific Execution
 
-    def rollout_strategy(self):
-        return {
-            "canary": 5,
-            "staged": [10, 25, 50, 100],
-            "rollback_threshold": 0.8,
-            "monitoring_period": "24h"
-        }
-```
+### Quick Mode (5-10 minutes)
 
-**Error Handling**
-```python
-robust_prompt = """
-{main_instruction}
+**Process**:
+1. Analyze current prompt (Phase 1)
+2. Apply ONE technique (CoT or Few-Shot)
+3. Quick validation with 3 test cases
 
-## Error Handling
+**Output**:
+- Optimized prompt
+- Top 3 improvements made
+- Expected impact estimate
 
-1. INSUFFICIENT INFO: "Need more about {aspect}. Please provide {details}."
-2. CONTRADICTIONS: "Conflicting requirements {A} vs {B}. Clarify priority."
-3. LIMITATIONS: "Requires {capability} beyond scope. Alternative: {approach}"
-4. SAFETY CONCERNS: "Cannot complete due to {concern}. Safe alternative: {option}"
+### Standard Mode (15-25 minutes) - DEFAULT
 
-## Graceful Degradation
-Provide partial solution with boundaries and next steps if full task cannot be completed.
-"""
-```
+**Process**:
+1. Complete analysis (Phase 1)
+2. Apply CoT + Few-Shot (Phases 2-3)
+3. Add Constitutional AI (Phase 4)
+4. Model-specific tuning (Phase 5)
+5. Evaluation with 10 test cases (Phase 6)
+
+**Output**:
+- Fully optimized prompt
+- Detailed optimization report
+- Performance comparison
+- Usage guidelines
+
+### Comprehensive Mode (30-45 minutes)
+
+**Process**:
+1. All phases + Meta-prompt generation
+2. Create prompt variants for A/B testing
+3. Generate comprehensive test suite (20+ cases)
+4. Production deployment strategy
+5. Monitoring recommendations
+
+**Output**:
+- Multiple prompt variants
+- A/B testing plan
+- Deployment checklist
+- Performance tracking setup
+
+## Success Criteria
+
+✅ Current prompt analyzed with clarity score
+✅ CoT reasoning applied where appropriate
+✅ Few-shot examples provided for complex tasks
+✅ Constitutional AI principles integrated
+✅ Model-specific optimization applied
+✅ Testing protocol defined
+✅ Performance metrics projected
+✅ External documentation referenced
+
+## Agent Integration
+
+- **prompt-engineer**: Primary agent for prompt optimization and technique selection
+- **ai-engineer**: Triggered for code generation examples and implementation
+
+## Best Practices
+
+1. **Start Simple**: Don't over-engineer prompts, add complexity as needed
+2. **Test Early**: Validate with real examples before full deployment
+3. **Measure Impact**: Track success rate, quality, cost improvements
+4. **Iterate**: Use feedback to refine prompts continuously
+5. **Version Control**: Track prompt changes and performance over time
+6. **A/B Test**: Compare variants before committing to one
+7. **Document**: Explain prompt design decisions for team
+
+## Common Optimization Patterns
+
+### For Reasoning Tasks
+✅ **Use CoT**: Step-by-step thinking improves accuracy
+✅ **Provide Examples**: Show desired reasoning process
+❌ **Skip Validation**: Always ask model to verify reasoning
+
+### For Classification Tasks
+✅ **Few-Shot**: Examples of each class
+✅ **Structured Output**: JSON/XML for consistency
+❌ **Ambiguous Labels**: Define clear class boundaries
+
+### For Generation Tasks
+✅ **Clear Constraints**: Length, style, format requirements
+✅ **Quality Criteria**: What makes output "good"
+❌ **Open-Ended**: Unbounded generation often poor quality
+
+### For RAG Applications
+✅ **Citation Requirements**: Force source attribution
+✅ **Gap Handling**: Explicit instructions for missing info
+❌ **Hallucination Risk**: Don't ask beyond context
 
 ## Reference Examples
 
-### Example 1: Customer Support
+### Customer Support Optimization
+**See**: [prompt-examples.md#customer-support](../docs/prompt-examples.md#customer-support-example)
+- Before/After comparison
+- Complete optimized prompt
+- Expected improvements: +35% resolution rate
 
-**Before**
-```
-Answer customer questions about our product.
-```
+### Data Analysis Optimization
+**See**: [prompt-examples.md#data-analysis](../docs/prompt-examples.md#data-analysis-example)
+- Framework-based approach
+- Statistical rigor
+- Expected improvements: +40% insight quality
 
-**After**
-```markdown
-You are a senior customer support specialist for TechCorp with 5+ years experience.
+### Code Generation Optimization
+**See**: [prompt-examples.md#code-generation](../docs/prompt-examples.md#code-generation-example)
+- Security-first approach
+- Self-review integration
+- Expected improvements: +50% code quality
 
-## Context
-- Product: {product_name}
-- Customer Tier: {tier}
-- Issue Category: {category}
+### Meta-Prompt Generator
+**See**: [prompt-examples.md#meta-prompt-generator](../docs/prompt-examples.md#meta-prompt-generator)
+- Generates optimized prompts automatically
+- Uses decision tree for technique selection
+- Includes evaluation criteria
 
-## Framework
+## Evaluation & Testing
 
-### 1. Acknowledge and Empathize
-Begin with recognition of customer situation.
+### Testing Strategies
+- **Unit Tests**: Individual prompt components
+- **Integration Tests**: Full prompt in context
+- **A/B Tests**: Compare variants
+- **Regression Tests**: Ensure no degradation
 
-### 2. Diagnostic Reasoning
-<thinking>
-1. Identify core issue
-2. Consider common causes
-3. Check known issues
-4. Determine resolution path
-</thinking>
+**Complete Guide**: [prompt-evaluation.md#testing-protocols](../docs/prompt-evaluation.md#testing-protocols)
 
-### 3. Solution Delivery
-- Immediate fix (if available)
-- Step-by-step instructions
-- Alternative approaches
-- Escalation path
+### Production Monitoring
+- **Success Rate**: Track task completion
+- **User Satisfaction**: Collect feedback
+- **Cost Efficiency**: Monitor token usage
+- **Safety Metrics**: Harmful output rate
 
-### 4. Verification
-- Confirm understanding
-- Provide resources
-- Set next steps
-
-## Constraints
-- Under 200 words unless technical
-- Professional yet friendly tone
-- Always provide ticket number
-- Escalate if unsure
-
-## Format
-```json
-{
-  "greeting": "...",
-  "diagnosis": "...",
-  "solution": "...",
-  "follow_up": "..."
-}
-```
-```
-
-### Example 2: Data Analysis
-
-**Before**
-```
-Analyze this sales data and provide insights.
-```
-
-**After**
-```python
-analysis_prompt = """
-You are a Senior Data Analyst with expertise in sales analytics and statistical analysis.
-
-## Framework
-
-### Phase 1: Data Validation
-- Missing values, outliers, time range
-- Central tendencies and dispersion
-- Distribution shape
-
-### Phase 2: Trend Analysis
-- Temporal patterns (daily/weekly/monthly)
-- Decompose: trend, seasonal, residual
-- Statistical significance (p-values, confidence intervals)
-
-### Phase 3: Segment Analysis
-- Product categories
-- Geographic regions
-- Customer segments
-- Time periods
-
-### Phase 4: Insights
-<insight_template>
-INSIGHT: {finding}
-- Evidence: {data}
-- Impact: {implication}
-- Confidence: high/medium/low
-- Action: {next_step}
-</insight_template>
-
-### Phase 5: Recommendations
-1. High Impact + Quick Win
-2. Strategic Initiative
-3. Risk Mitigation
-
-## Output Format
-```yaml
-executive_summary:
-  top_3_insights: []
-  revenue_impact: $X.XM
-  confidence: XX%
-
-detailed_analysis:
-  trends: {}
-  segments: {}
-
-recommendations:
-  immediate: []
-  short_term: []
-  long_term: []
-```
-"""
-```
-
-### Example 3: Code Generation
-
-**Before**
-```
-Write a Python function to process user data.
-```
-
-**After**
-```python
-code_prompt = """
-You are a Senior Software Engineer with 10+ years Python experience. Follow SOLID principles.
-
-## Task
-Process user data: validate, sanitize, transform
-
-## Implementation
-
-### Design Thinking
-<reasoning>
-Edge cases: missing fields, invalid types, malicious input
-Architecture: dataclasses, builder pattern, logging
-</reasoning>
-
-### Code with Safety
-```python
-from dataclasses import dataclass
-from typing import Dict, Any, Union
-import re
-
-@dataclass
-class ProcessedUser:
-    user_id: str
-    email: str
-    name: str
-    metadata: Dict[str, Any]
-
-def validate_email(email: str) -> bool:
-    pattern = r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
-    return bool(re.match(pattern, email))
-
-def sanitize_string(value: str, max_length: int = 255) -> str:
-    value = ''.join(char for char in value if ord(char) >= 32)
-    return value[:max_length].strip()
-
-def process_user_data(raw_data: Dict[str, Any]) -> Union[ProcessedUser, Dict[str, str]]:
-    errors = {}
-    required = ['user_id', 'email', 'name']
-
-    for field in required:
-        if field not in raw_data:
-            errors[field] = f"Missing '{field}'"
-
-    if errors:
-        return {"status": "error", "errors": errors}
-
-    email = sanitize_string(raw_data['email'])
-    if not validate_email(email):
-        return {"status": "error", "errors": {"email": "Invalid format"}}
-
-    return ProcessedUser(
-        user_id=sanitize_string(str(raw_data['user_id']), 50),
-        email=email,
-        name=sanitize_string(raw_data['name'], 100),
-        metadata={k: v for k, v in raw_data.items() if k not in required}
-    )
-```
-
-### Self-Review
-✓ Input validation and sanitization
-✓ Injection prevention
-✓ Error handling
-✓ Performance: O(n) complexity
-"""
-```
-
-### Example 4: Meta-Prompt Generator
-
-```python
-meta_prompt = """
-You are a meta-prompt engineer generating optimized prompts.
-
-## Process
-
-### 1. Task Analysis
-<decomposition>
-- Core objective: {goal}
-- Success criteria: {outcomes}
-- Constraints: {requirements}
-- Target model: {model}
-</decomposition>
-
-### 2. Architecture Selection
-IF reasoning: APPLY chain_of_thought
-ELIF creative: APPLY few_shot
-ELIF classification: APPLY structured_output
-ELSE: APPLY hybrid
-
-### 3. Component Generation
-1. Role: "You are {expert} with {experience}..."
-2. Context: "Given {background}..."
-3. Instructions: Numbered steps
-4. Examples: Representative cases
-5. Output: Structure specification
-6. Quality: Criteria checklist
-
-### 4. Optimization Passes
-- Pass 1: Clarity
-- Pass 2: Efficiency
-- Pass 3: Robustness
-- Pass 4: Safety
-- Pass 5: Testing
-
-### 5. Evaluation
-- Completeness: []/10
-- Clarity: []/10
-- Efficiency: []/10
-- Robustness: []/10
-- Effectiveness: []/10
-
-Overall: []/50
-Recommendation: use_as_is | iterate | redesign
-"""
-```
+**Monitoring Setup**: [prompt-evaluation.md#production-monitoring](../docs/prompt-evaluation.md#production-monitoring)
 
 ## Output Format
 
-Deliver comprehensive optimization report:
-
-### Optimized Prompt
-```markdown
-[Complete production-ready prompt with all enhancements]
-```
-
-### Optimization Report
+**Optimization Report**:
 ```yaml
 analysis:
   original_assessment:
-    strengths: []
-    weaknesses: []
-    token_count: X
-    performance: X%
+    clarity: 4/10
+    strengths: [simple, concise]
+    weaknesses: [ambiguous, no structure]
+    token_count: 15
+    estimated_success: 60%
 
 improvements_applied:
   - technique: "Chain-of-Thought"
@@ -554,34 +385,35 @@ improvements_applied:
     impact: "-40% harmful outputs"
 
 performance_projection:
-  success_rate: X% → Y%
-  token_efficiency: X → Y
-  quality: X/10 → Y/10
-  safety: X/10 → Y/10
-
-testing_recommendations:
-  method: "LLM-as-judge with human validation"
-  test_cases: 20
-  ab_test_duration: "48h"
-  metrics: ["accuracy", "satisfaction", "cost"]
+  success_rate: 60% → 88%
+  quality_score: 6.5/10 → 8.7/10
+  token_efficiency: +15%
+  safety_score: 7/10 → 9.5/10
 
 deployment_strategy:
-  model: "GPT-4 for quality, Claude for safety"
+  model: "Claude Sonnet 4.5"
   temperature: 0.7
   max_tokens: 2000
-  monitoring: "Track success, latency, feedback"
+  testing: "A/B test 48h, 5% traffic"
+  monitoring: ["success_rate", "latency", "feedback"]
 
 next_steps:
   immediate: ["Test with samples", "Validate safety"]
-  short_term: ["A/B test", "Collect feedback"]
-  long_term: ["Fine-tune", "Develop variants"]
+  short_term: ["A/B test in production", "Collect feedback"]
+  long_term: ["Fine-tune based on data", "Develop variants"]
 ```
 
-### Usage Guidelines
-1. **Implementation**: Use optimized prompt exactly
-2. **Parameters**: Apply recommended settings
-3. **Testing**: Run test cases before production
-4. **Monitoring**: Track metrics for improvement
-5. **Iteration**: Update based on performance data
+## See Also
 
-Remember: The best prompt consistently produces desired outputs with minimal post-processing while maintaining safety and efficiency. Regular evaluation is essential for optimal results.
+- **External Docs**:
+  - [Prompt Patterns](../docs/prompt-patterns.md) - Complete technique library
+  - [Prompt Examples](../docs/prompt-examples.md) - Production-ready examples
+  - [Prompt Evaluation](../docs/prompt-evaluation.md) - Testing and monitoring
+
+- **Related Commands**:
+  - `/ai-assistant` - Build AI assistants with optimized prompts
+  - `/langchain-agent` - Create agents with prompt optimization
+
+---
+
+Remember: **The best prompt consistently produces desired outputs with minimal post-processing while maintaining safety and efficiency.**
