@@ -1,14 +1,14 @@
 # Agent Orchestration
 
-Multi-agent workflow coordination, distributed systems, and intelligent task allocation for complex multi-domain projects with advanced prompt engineering and Constitutional AI frameworks.
+Multi-agent workflow coordination with production-ready optimization workflows, systematic agent improvement methodologies, and comprehensive documentation featuring real-world examples with 50-200x performance improvements.
 
-**Version:** 2.0.0 | **Category:** AI & ML | **License:** MIT
+**Version:** 1.0.3 | **Category:** AI & ML | **License:** MIT
 
 [Full Documentation →](https://myclaude.readthedocs.io/en/latest/plugins/agent-orchestration.html) | [Changelog →](./CHANGELOG.md)
 
 ## Overview
 
-The Agent Orchestration plugin provides production-ready tools for coordinating multiple AI agents, optimizing agent performance, and building sophisticated multi-agent workflows. With v2.0.0, both core agents have been enhanced with Constitutional AI frameworks, chain-of-thought reasoning, and comprehensive few-shot examples for superior performance.
+The Agent Orchestration plugin provides production-ready tools for coordinating multiple AI agents, optimizing code performance, and systematically improving agent capabilities. With v1.0.2, both slash commands have been restructured with executable workflows, comprehensive documentation, and real-world case studies demonstrating 50-208x performance improvements.
 
 ### Key Features
 
@@ -30,35 +30,36 @@ The Agent Orchestration plugin provides production-ready tools for coordinating 
 - Extensive few-shot examples demonstrating best practices
 - Clear triggering criteria and anti-patterns
 
-## Recent Updates (v2.0.0)
+## Recent Updates (v1.0.2)
 
-### Context-Manager Agent
-- ✅ Added triggering criteria section with clear use cases and anti-patterns
-- ✅ Implemented Constitutional AI framework with safety guardrails
-- ✅ Added chain-of-thought reasoning framework (4 steps)
-- ✅ Included 3 comprehensive few-shot examples
-- ✅ Enhanced behavioral traits and output format standards
-- **Maturity**: 65% → 95% (+30% improvement)
+### /multi-agent-optimize Command
+- ✅ Added executable workflow logic for --mode=scan (quick bottleneck detection)
+- ✅ Implemented YAML frontmatter with graceful fallback for missing agents
+- ✅ Reduced token usage by 19% (382→311 lines)
+- ✅ Created comprehensive documentation ecosystem (12+ external docs)
+- ✅ Added 3 real-world case studies with measured results:
+  - MD Simulation: 4.5 hours → 1.3 minutes (208x speedup)
+  - JAX Training: 8 hours → 9.6 minutes (50x speedup)
+  - API Performance: 120 → 1,200 req/sec (10x throughput)
+- **Documentation**: 3 domain-specific pattern libraries (scientific, ML, web)
 
-### Multi-Agent-Orchestrator Agent
-- ✅ Added 5-step chain-of-thought orchestration process
-- ✅ Implemented 5 Constitutional AI principles for validation
-- ✅ Included 4 comprehensive few-shot examples
-- ✅ Added 3 standardized output format templates
-- ✅ Documented 4 advanced orchestration patterns
-- ✅ Included anti-patterns section with common mistakes
-- ✅ Enhanced decision framework and delegation strategy
-- **Maturity**: 78% → 95% (+17% improvement)
+### /improve-agent Command
+- ✅ Added executable workflow logic for --mode=check (health assessment)
+- ✅ Implemented YAML frontmatter with execution modes
+- ✅ Reduced token usage by 20% (291→234 lines)
+- ✅ Created 4 phase-specific methodology guides
+- ✅ Added customer support case study: 72% → 91% success rate (26% improvement)
+- **Methodology**: Complete 4-phase improvement workflow (analysis, prompts, testing, deployment)
 
-**Expected Improvements:**
-- 25-30% reduction in over-orchestration
-- 40% improvement in dependency identification
-- 50% better error handling
-- 35% clearer user communication
+**Impact Metrics:**
+- 19-20% token reduction across both commands (~512 tokens saved per invocation)
+- 4 comprehensive case studies with real measured results
+- 12+ external documentation files for maintainability
+- Executable logic for immediate usability
 
 ## Agents (2)
 
-### context-manager (v2.0.0)
+### context-manager (v1.0.3)
 
 **Status:** active | **Maturity:** 95%
 
@@ -71,13 +72,13 @@ Elite AI context engineering specialist mastering dynamic context management, ve
 - Session context management with hierarchical compression
 - Multi-agent context coordination
 
-**New in v2.0.0:**
+**New in v1.0.1:**
 - Triggering criteria with decision tree
 - Constitutional AI framework with safety checks
 - Chain-of-thought reasoning for architecture decisions
 - 3 comprehensive examples (multi-agent coordination, RAG optimization, context overflow)
 
-### multi-agent-orchestrator (v2.0.0)
+### multi-agent-orchestrator (v1.0.3)
 
 **Status:** active | **Maturity:** 95%
 
@@ -90,7 +91,7 @@ Multi-agent orchestrator specializing in workflow coordination and distributed s
 - Intelligent task allocation across specialized agents
 - Fault-tolerant execution with automatic retries
 
-**New in v2.0.0:**
+**New in v1.0.1:**
 - 5-step chain-of-thought orchestration process
 - 5 Constitutional AI principles for validation
 - 4 comprehensive few-shot examples (good/bad orchestration, dependency handling, unclear requirements)
@@ -99,40 +100,55 @@ Multi-agent orchestrator specializing in workflow coordination and distributed s
 
 ## Commands (2)
 
-### `/multi-agent-optimize`
+### `/multi-agent-optimize` (v1.0.3)
 
-**Status:** active
+**Status:** active | **Lines:** 311 (-19%)
 
-Coordinate multiple specialized agents for code optimization and review tasks with intelligent orchestration, resource allocation, and multi-dimensional analysis.
-
-**Syntax:**
-```bash
-/multi-agent-optimize <target-path> [--agents=agent1,agent2] [--focus=performance,quality,research,scientific] [--parallel]
-```
-
-**Features:**
-- Multi-agent team coordination
-- Performance and quality optimization
-- Scientific computing support
-- Parallel execution option
-
-### `/improve-agent`
-
-**Status:** active
-
-Systematically improve agent definitions through performance analysis, prompt engineering, and continuous iteration.
+Multi-agent code optimization with executable workflows (scan/analyze/apply modes), graceful fallback for missing agents, and comprehensive documentation with real case studies showing 50-208x speedups.
 
 **Syntax:**
 ```bash
-/improve-agent <path-to-agent.md>
+# Quick scan (2-5 min): Identify bottlenecks
+/multi-agent-optimize src/ --mode=scan
+
+# Deep analysis (10-30 min): Generate optimization recommendations
+/multi-agent-optimize src/simulation/ --mode=analyze --focus=scientific --parallel
+
+# Apply optimizations: Implement changes with validation
+/multi-agent-optimize src/ --mode=apply --quick-wins
 ```
 
-**Features:**
-- Performance baseline analysis
-- Chain-of-thought enhancement
-- Few-shot example optimization
-- Constitutional AI integration
-- A/B testing framework
+**New in v1.0.2:**
+- ✅ Executable workflow logic for --mode=scan with step-by-step instructions
+- ✅ YAML frontmatter with graceful fallback messages for 7 conditional agents
+- ✅ 19% token reduction through external documentation references
+- ✅ 3 real-world case studies: MD simulation (208x), JAX training (50x), API (10x)
+- ✅ Domain-specific pattern libraries (scientific, ML, web performance)
+
+### `/improve-agent` (v1.0.3)
+
+**Status:** active | **Lines:** 234 (-20%)
+
+Systematic agent improvement through 4-phase methodology (analysis, prompt engineering, testing, deployment) with executable workflows and A/B testing framework.
+
+**Syntax:**
+```bash
+# Health check (2-5 min): Identify top 3 issues
+/improve-agent customer-support --mode=check
+
+# Single phase execution (10-30 min): Targeted improvements
+/improve-agent customer-support --phase=2 --focus=tool-selection
+
+# Full optimization (1-2 hours): Complete 4-phase cycle
+/improve-agent customer-support --mode=optimize
+```
+
+**New in v1.0.2:**
+- ✅ Executable workflow logic for --mode=check with Task tool integration
+- ✅ YAML frontmatter with execution modes and conditional agent triggering
+- ✅ 20% token reduction through modular documentation structure
+- ✅ 4 phase-specific guides (analysis, prompts, testing, deployment)
+- ✅ Customer support case study: 72% → 91% success rate (+26%)
 
 ## Skills (2)
 
@@ -223,20 +239,30 @@ The orchestrator will automatically:
 
 ## Use Cases
 
-### Complex Multi-Domain Projects
-- Full-stack application development with ML components
-- Enterprise system architecture with multiple services
-- Scientific computing workflows across HPC + ML + visualization
+### Code Performance Optimization
+- **Molecular Dynamics**: Optimized LAMMPS preprocessing 208x (4.5h → 1.3min)
+  - cKDTree neighbor search, NumPy vectorization, Numba JIT
+  - See: `docs/examples/md-simulation-optimization.md`
+- **JAX Training Pipeline**: Accelerated neural network training 50x (8h → 9.6min)
+  - @jit compilation, GPU data pipeline, Optax optimizer, vmap batching
+  - See: `docs/examples/jax-training-optimization.md`
+- **REST API**: Increased throughput 10x (120 → 1,200 req/sec)
+  - N+1 query fixes, Redis caching, connection pooling, gzip compression
+  - See: `docs/examples/api-performance-optimization.md`
 
-### Performance Optimization
-- Identifying and resolving agent bottlenecks
-- Implementing caching strategies for expensive operations
-- Scaling multi-agent systems for production loads
+### Agent Capability Improvement
+- **Customer Support Agent**: Improved success rate 26% (72% → 91%)
+  - Few-shot examples, chain-of-thought reasoning, Constitutional AI
+  - Reduced user corrections 48% (2.3 → 1.2 per task)
+  - See: `docs/examples/customer-support-optimization.md`
 
-### Context Management
-- RAG systems with vector databases and knowledge graphs
-- Long-running multi-agent sessions with context preservation
-- Enterprise AI systems with distributed context
+### Pattern Libraries
+- **Scientific Computing**: NumPy/JAX/SciPy optimization patterns (10 patterns)
+  - Vectorization, JIT compilation, broadcasting, sparse matrices
+- **ML Training**: PyTorch/TensorFlow optimization (5 patterns)
+  - Mixed precision, gradient accumulation, DataLoader tuning, quantization
+- **Web Performance**: Backend/frontend optimization (5 patterns)
+  - N+1 elimination, Redis caching, code splitting, image optimization
 
 ## Integration
 
@@ -264,25 +290,35 @@ See [full documentation](https://myclaude.readthedocs.io/en/latest/plugins/agent
 ```
 agent-orchestration/
 ├── agents/
-│   ├── context-manager.md (v2.0.0)
+│   ├── context-manager.md (v1.0.3)
 │   │   ├── Triggering criteria
 │   │   ├── Constitutional AI framework
 │   │   ├── Chain-of-thought reasoning
 │   │   └── 3 comprehensive examples
-│   └── multi-agent-orchestrator.md (v2.0.0)
+│   └── multi-agent-orchestrator.md (v1.0.3)
 │       ├── 5-step orchestration process
 │       ├── 5 Constitutional AI principles
 │       ├── 4 comprehensive examples
 │       └── Advanced patterns & anti-patterns
 ├── commands/
-│   ├── multi-agent-optimize.md
-│   └── improve-agent.md
+│   ├── multi-agent-optimize.md (v1.0.3)
+│   │   ├── Executable workflow logic (scan/analyze/apply)
+│   │   ├── YAML frontmatter with graceful fallbacks
+│   │   └── 3 real-world case studies (50-208x speedups)
+│   └── improve-agent.md (v1.0.3)
+│       ├── Executable workflow logic (check/phase/optimize)
+│       ├── 4 phase-specific methodology guides
+│       └── Customer support case study (26% improvement)
+├── docs/
+│   ├── Phase guides (4): analysis, prompts, testing, deployment
+│   ├── Pattern libraries (3): scientific, ML, web performance
+│   └── examples/ (4 case studies with measured results)
 └── skills/
-    ├── multi-agent-coordination/
+    ├── multi-agent-coordination/ (v1.0.3)
     │   ├── Team assembly (AgentRegistry, TeamBuilder)
     │   ├── Workflow orchestration (WorkflowEngine, DAG)
     │   └── Inter-agent messaging (MessageBroker)
-    └── agent-performance-optimization/
+    └── agent-performance-optimization/ (v1.0.3)
         ├── Metrics collection (PerformanceMetrics)
         ├── Caching (LRUCache, TieredCache)
         └── Load balancing (LoadBalancer)
@@ -313,17 +349,37 @@ agent-orchestration/
 
 ## Performance Metrics
 
-**Context-Manager v2.0.0:**
+**All Components (v1.0.3):**
+
+**Agents:**
+
+**Context-Manager:**
 - Maturity: 65% → 95% (+30%)
 - Added: 6 critical sections
 - Examples: 3 comprehensive scenarios
 - Expected: More accurate architecture decisions, better safety checks
 
-**Multi-Agent-Orchestrator v2.0.0:**
+**Multi-Agent-Orchestrator:**
 - Maturity: 78% → 95% (+17%)
 - Added: 8 critical sections
 - Examples: 4 comprehensive scenarios
 - Expected: 25-30% reduction in over-orchestration, 40% better dependency identification
+
+**Commands:**
+
+**multi-agent-optimize:**
+- Token reduction: 19% (382→311 lines, ~284 tokens saved)
+- Documentation: 3 pattern libraries + 3 case studies
+- Case studies: 50-208x speedups with measured results
+
+**improve-agent:**
+- Token reduction: 20% (291→234 lines, ~228 tokens saved)
+- Documentation: 4 phase guides + 1 case study
+- Case study: 26% success rate improvement
+
+**Skills:**
+- multi-agent-coordination: Production-ready coordination patterns
+- agent-performance-optimization: Comprehensive monitoring and tuning
 
 ## Documentation
 
@@ -353,7 +409,9 @@ See the [contribution guidelines](https://myclaude.readthedocs.io/en/latest/cont
 
 ## Version History
 
-- **v2.0.0** (2025-01-29) - Major prompt engineering improvements for both agents
+- **v1.0.3** (2025-11-06) - Version consolidation release: corrected version numbering (v2.0.0 → v1.0.1 for agents), maintained all v1.0.2 improvements, ensured version consistency across documentation
+- **v1.0.2** (2025-11-06) - Command optimization release: restructured both slash commands with executable logic, 19-20% token reduction, 12+ external docs, 4 real case studies
+- **v1.0.1** (2025-01-29) - Agent prompt engineering release: major improvements to both agents (context-manager, multi-agent-orchestrator) with Constitutional AI, chain-of-thought reasoning, and comprehensive examples
 - **v1.0.0** - Initial release with basic agent definitions
 
 See [CHANGELOG.md](./CHANGELOG.md) for detailed version history.

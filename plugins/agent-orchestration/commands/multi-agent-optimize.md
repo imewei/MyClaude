@@ -1,383 +1,393 @@
 ---
-description: Coordinate multiple specialized agents for code optimization and review tasks with intelligent orchestration, resource allocation, and multi-dimensional analysis including scientific computing
-allowed-tools: Bash(find:*), Bash(grep:*), Bash(git:*), Bash(python:*), Bash(julia:*), Bash(npm:*), Bash(cargo:*)
-argument-hint: <target-path> [--agents=agent1,agent2] [--focus=performance,quality,research,scientific] [--parallel]
+description: Coordinate specialized agents for comprehensive code optimization across scientific computing, web, and ML domains
+allowed-tools: Read, Grep, Glob, Bash(find:*), Bash(git:*), Bash(python:*), Bash(julia:*), Bash(npm:*), Bash(cargo:*)
+argument-hint: <target-path> [--mode=scan|analyze|apply] [--agents=AGENTS] [--focus=AREA] [--parallel]
 color: magenta
+required-plugins:
+  - agent-orchestration (local)
+  - optional: jax-implementation, hpc-computing, deep-learning
 agents:
   primary:
     - multi-agent-orchestrator
     - systems-architect
   conditional:
     - agent: hpc-numerical-coordinator
-      trigger: pattern "numpy|scipy|pandas|matplotlib|scientific.*computing|numerical|simulation" OR argument "--focus=scientific"
+      trigger: pattern "numpy|scipy|pandas|numerical|simulation" OR argument "--focus=scientific"
+      fallback: "Skip scientific optimizations (install hpc-computing plugin for NumPy/SciPy analysis)"
     - agent: jax-pro
       trigger: pattern "jax|flax|@jit|@vmap|@pmap|grad\\(|optax"
+      fallback: "Skip JAX-specific optimizations (install jax-implementation plugin for GPU acceleration)"
     - agent: neural-architecture-engineer
-      trigger: pattern "torch|pytorch|tensorflow|keras|neural.*network|deep.*learning"
+      trigger: pattern "torch|pytorch|tensorflow|keras|neural.*network"
+      fallback: "Skip ML model optimizations (install deep-learning plugin)"
     - agent: correlation-function-expert
       trigger: pattern "correlation|fft|spectral.*analysis|statistical.*physics"
+      fallback: "Skip correlation analysis optimizations"
     - agent: simulation-expert
       trigger: pattern "lammps|gromacs|molecular.*dynamics|md.*simulation|ase"
+      fallback: "Skip molecular dynamics optimizations"
     - agent: code-quality
       trigger: argument "--focus=quality" OR pattern "test|quality|lint"
+      fallback: "Skip code quality analysis"
     - agent: research-intelligence
-      trigger: argument "--focus=research" OR pattern "research|publication|analysis"
+      trigger: argument "--focus=research" OR pattern "research|publication"
+      fallback: "Skip research methodology analysis"
   orchestrated: true
+  execution: parallel
+execution-modes:
+  scan: Quick bottleneck identification (2-5 min)
+  analyze: Deep analysis with recommendations (10-30 min)
+  apply: Apply optimizations automatically (with confirmation)
+output-format: json-report + markdown-summary + code-patches + benchmarks
 ---
 
-# Multi-Agent Optimization Toolkit
+# Multi-Agent Code Optimization
 
-## Role: AI-Powered Multi-Agent Performance Engineering Specialist
+## Quick Start
 
-### Context
-The Multi-Agent Optimization Tool is an advanced AI-driven framework designed to holistically improve system performance through intelligent, coordinated agent-based optimization. Leveraging cutting-edge AI orchestration techniques, this tool provides a comprehensive approach to performance engineering across multiple domains including web applications, distributed systems, and scientific computing.
+### Quick Scan (Recommended First Step)
+```bash
+/multi-agent-optimize src/ --mode=scan
+```
+**Output**: Priority list of quick wins and bottlenecks (2-5 minutes)
 
-### Core Capabilities
-- Intelligent multi-agent coordination and orchestration
-- Performance profiling and bottleneck identification
-- Adaptive optimization strategies across domains
-- Cross-domain performance optimization (web, backend, scientific, ML)
-- Scientific computing and numerical algorithm optimization
-- Cost and efficiency tracking
-- Conflict resolution and meta-analysis
-- Parallel agent execution with synthesis
+### Deep Analysis
+```bash
+/multi-agent-optimize src/simulation/ --mode=analyze --focus=scientific --parallel
+```
+**Output**: Comprehensive report with code patches (10-30 minutes)
 
-## Arguments Handling
-The tool processes optimization arguments with flexible input parameters:
-- `$TARGET`: Primary system/application to optimize (default: `$ARGUMENTS`)
-- `--agents`: Specific agents to deploy (comma-separated)
-- `--focus`: Focus areas (performance, quality, research, scientific)
-- `--parallel`: Enable maximum parallelization
-- `--auto-execute`: Execute optimizations automatically (default: analysis only)
+### Apply Optimizations
+```bash
+/multi-agent-optimize src/ --mode=apply --quick-wins
+```
+**Output**: Applied patches with validation results
 
-## 1. Multi-Agent Performance Profiling
+## Execution Flow
 
-### Profiling Strategy
-- Distributed performance monitoring across system layers
-- Real-time metrics collection and analysis
-- Continuous performance signature tracking
+### Mode: scan (Quick Bottleneck Detection)
 
-#### Profiling Agents
-1. **Database Performance Agent**
-   - Query execution time analysis
-   - Index utilization tracking
-   - Resource consumption monitoring
+**When user invokes**: `/multi-agent-optimize <target-path> --mode=scan`
 
-2. **Application Performance Agent**
-   - CPU and memory profiling
-   - Algorithmic complexity assessment
-   - Concurrency and async operation analysis
+**Execute these steps**:
 
-3. **Frontend Performance Agent**
-   - Rendering performance metrics
-   - Network request optimization
-   - Core Web Vitals monitoring
+1. **Parse target path** from arguments:
+   ```
+   Target: $ARGUMENTS (first argument, required)
+   If no path provided: prompt user "Which directory/file would you like to optimize?"
+   ```
 
-### Profiling Code Example
-```python
-def multi_agent_profiler(target_system):
-    agents = [
-        DatabasePerformanceAgent(target_system),
-        ApplicationPerformanceAgent(target_system),
-        FrontendPerformanceAgent(target_system)
-    ]
+2. **Verify target exists**:
+   ```bash
+   # Check if path is valid
+   if [ -e "${target_path}" ]; then
+     echo "✓ Target found: ${target_path}"
+   else
+     echo "✗ Error: Path not found"
+     exit 1
+   fi
+   ```
 
-    performance_profile = {}
-    for agent in agents:
-        performance_profile[agent.__class__.__name__] = agent.profile()
+3. **Detect tech stack**:
+   ```bash
+   # Scan for common frameworks
+   grep -r "import numpy" ${target_path} && echo "- NumPy detected"
+   grep -r "import jax" ${target_path} && echo "- JAX detected"
+   grep -r "import torch" ${target_path} && echo "- PyTorch detected"
+   grep -r "using " ${target_path}/*.jl && echo "- Julia detected"
 
-    return aggregate_performance_metrics(performance_profile)
+   # Check package files
+   [ -f "requirements.txt" ] && echo "- Python project"
+   [ -f "package.json" ] && echo "- Node.js project"
+   ```
+
+4. **Quick pattern analysis** (grep for common anti-patterns):
+   ```bash
+   # Look for optimization opportunities
+   echo "Scanning for quick wins..."
+
+   # Python loops that could be vectorized
+   grep -n "for.*in range" ${target_path}/**/*.py | head -5
+
+   # Repeated function calls (caching candidates)
+   grep -n "def.*(" ${target_path}/**/*.py | sort | uniq -c | sort -rn | head -3
+
+   # pandas.apply (vectorization opportunity)
+   grep -n "\.apply(" ${target_path}/**/*.py
+   ```
+
+5. **Invoke analysis agents** (if available):
+   ```
+   Query available agents:
+   - systems-architect (primary)
+   - hpc-numerical-coordinator (if NumPy/SciPy detected)
+   - jax-pro (if JAX detected)
+
+   For each available agent, use Task tool with:
+   - subagent_type: "<agent-name>"
+   - prompt: "Analyze ${target_path} for optimization opportunities.
+             Focus on quick wins (high impact, low effort).
+             Provide specific line numbers and expected speedups."
+   ```
+
+6. **Generate scan report**:
+   ```
+   Create file: .optimization/$(basename ${target_path})-scan-$(date +%Y-%m-%d).json
+   Format:
+   {
+     "target": "${target_path}",
+     "stack_detected": [...],
+     "quick_wins": [
+       {
+         "file": "...",
+         "line": ...,
+         "issue": "...",
+         "fix": "...",
+         "expected_speedup": "...",
+         "confidence": "..."
+       }
+     ],
+     "agents_used": [...],
+     "agents_unavailable": [...]
+   }
+
+   Display: Formatted summary with emoji indicators (🚀 high impact, ⚡ medium, 💡 low)
+   ```
+
+**Example Execution**:
+```
+Optimization Scan: src/analytics/
+Stack Detected: Python 3.11 + NumPy 1.24 + Pandas 2.0
+
+Quick Wins (High Impact, Low Effort):
+🚀 1. Vectorize for-loop in compute_correlation() [line 145]
+     → Expected: 50x speedup | Effort: 10 min | Confidence: 95%
+🚀 2. Replace pandas.apply() with vectorized ops [line 203]
+     → Expected: 20x speedup | Effort: 15 min | Confidence: 90%
+🚀 3. Add @lru_cache to expensive_computation() [line 87]
+     → Expected: 5x speedup (repeated calls) | Effort: 2 min | Confidence: 99%
+
+Medium Impact (5 more found) | Low Impact (7 more found)
+
+Available Agents: 4/8
+✅ multi-agent-orchestrator, systems-architect, hpc-numerical-coordinator
+⚠️  jax-pro unavailable (install jax-implementation for GPU optimizations)
+
+Run: /multi-agent-optimize src/analytics/ --mode=analyze
 ```
 
-## 2. Context Window Optimization
+### Mode: analyze (Deep Multi-Agent Analysis)
+1. **Discover agents**: Query available agents, check plugin dependencies
+2. **Trigger conditional agents**: Based on stack detection and patterns
+3. **Launch parallel execution**: All agents analyze simultaneously
+4. **Collect results**: Stream findings to orchestrator as agents complete
+5. **Synthesize findings**:
+   - Deduplicate (same bottleneck found by multiple agents)
+   - Resolve conflicts (speed vs memory tradeoffs)
+   - Rank by composite score
+6. **Generate artifacts**:
+   - `.optimization/<target>-report-YYYY-MM-DD.md` (comprehensive report)
+   - `.optimization/patches/*.patch` (code patches ready to apply)
+   - `.optimization/benchmarks/before-after.json` (expected improvements)
 
-### Optimization Techniques
-- Intelligent context compression
-- Semantic relevance filtering
-- Dynamic context window resizing
-- Token budget management
-
-### Context Compression Algorithm
-```python
-def compress_context(context, max_tokens=4000):
-    # Semantic compression using embedding-based truncation
-    compressed_context = semantic_truncate(
-        context,
-        max_tokens=max_tokens,
-        importance_threshold=0.7
-    )
-    return compressed_context
+**Agent Coordination Protocol**:
+```
+┌─ Orchestrator ─────────────────────────────────┐
+│ 1. Stack Detection → Python + NumPy + JAX     │
+│ 2. Agent Selection → systems-architect +       │
+│                      hpc-numerical-coordinator │
+│                      + jax-pro                 │
+├────────────────────────────────────────────────┤
+│ Parallel Execution:                            │
+│  ├─ systems-architect ███████░░ 80%            │
+│  ├─ hpc-numerical    █████████░ 90%            │
+│  └─ jax-pro          ████████░░ 75%            │
+├────────────────────────────────────────────────┤
+│ Synthesis:                                     │
+│  • Found 3 convergent recommendations          │
+│  • Found 2 complementary optimizations         │
+│  • Resolved 1 conflict (memory vs speed)       │
+│  • Total expected improvement: 200-500x        │
+└────────────────────────────────────────────────┘
 ```
 
-## 3. Agent Coordination Efficiency
+### Mode: apply (Safe Optimization Application)
+1. **Load recommendations**: From previous analyze run
+2. **User review**: Display patches, expected improvements, risks
+3. **Create backup**: Save original files to `.optimization/backups/`
+4. **Apply patches**: Sequentially with validation between each
+5. **Run validation**:
+   - Execute existing tests (must pass)
+   - Run benchmarks (verify speedup claims)
+   - Check numerical accuracy (scientific code)
+   - Verify model performance (ML code)
+6. **Auto-rollback on failure**: Restore from backup if validation fails
+7. **Commit on success**: Git commit with optimization metadata
 
-### Coordination Principles
-- Parallel execution design
-- Minimal inter-agent communication overhead
-- Dynamic workload distribution
-- Fault-tolerant agent interactions
+**Validation Gates**:
+- ✅ All tests pass (no regressions)
+- ✅ Performance improved or unchanged
+- ✅ Numerical accuracy within tolerance (for scientific code)
+- ✅ Model metrics unchanged (for ML code)
+- ✅ Memory usage not increased >20%
 
-### Orchestration Framework
-```python
-class MultiAgentOrchestrator:
-    def __init__(self, agents):
-        self.agents = agents
-        self.execution_queue = PriorityQueue()
-        self.performance_tracker = PerformanceTracker()
+## Optimization Pattern Library
 
-    def optimize(self, target_system):
-        # Parallel agent execution with coordinated optimization
-        with concurrent.futures.ThreadPoolExecutor() as executor:
-            futures = {
-                executor.submit(agent.optimize, target_system): agent
-                for agent in self.agents
-            }
+**Comprehensive Patterns**: [Optimization Patterns Guide](../../docs/optimization-patterns.md)
 
-            for future in concurrent.futures.as_completed(futures):
-                agent = futures[future]
-                result = future.result()
-                self.performance_tracker.log(agent, result)
-```
+### Quick Reference
+- **Vectorization**: NumPy/Pandas loops → vectorized operations (10-100x)
+  - Before: `for i in range(n): result[i] = data[i] * 2`
+  - After: `result = data * 2`
 
-## 4. Parallel Execution Optimization
+- **JIT Compilation**: JAX @jit, Numba @njit decorators (5-50x)
+  - Pattern: Wrap pure functions with `@jax.jit` or `@numba.njit`
 
-### Key Strategies
-- Asynchronous agent processing
-- Workload partitioning
-- Dynamic resource allocation
-- Minimal blocking operations
+- **Caching**: @lru_cache, @functools.cache (2-10x for repeated calls)
+  - Pattern: Cache expensive pure functions
 
-## 5. Cost Optimization Strategies
+- **Parallelization**: multiprocessing, concurrent.futures (Nx speedup, N=cores)
+  - Pattern: Independent iterations → parallel execution
 
-### LLM Cost Management
-- Token usage tracking
-- Adaptive model selection
-- Caching and result reuse
-- Efficient prompt engineering
+- **GPU Acceleration**: JAX/CuPy/PyTorch CUDA (10-1000x)
+  - Pattern: NumPy operations → JAX equivalents with @jit
 
-### Cost Tracking Example
-```python
-class CostOptimizer:
-    def __init__(self):
-        self.token_budget = 100000  # Monthly budget
-        self.token_usage = 0
-        self.model_costs = {
-            'gpt-4': 0.03,
-            'claude-3-sonnet': 0.015,
-            'claude-3-haiku': 0.0025
-        }
+**Domain-Specific Patterns**:
+- **Scientific Computing**: [scientific-patterns.md](../../docs/scientific-patterns.md)
+- **ML Optimization**: [ml-optimization.md](../../docs/ml-optimization.md)
+- **Web Performance**: [web-performance.md](../../docs/web-performance.md)
 
-    def select_optimal_model(self, complexity):
-        # Dynamic model selection based on task complexity and budget
-        pass
-```
-
-## 6. Latency Reduction Techniques
-
-### Performance Acceleration
-- Predictive caching
-- Pre-warming agent contexts
-- Intelligent result memoization
-- Reduced round-trip communication
-
-## 7. Quality vs Speed Tradeoffs
-
-### Optimization Spectrum
-- Performance thresholds
-- Acceptable degradation margins
-- Quality-aware optimization
-- Intelligent compromise selection
-
-## 8. Monitoring and Continuous Improvement
-
-### Observability Framework
-- Real-time performance dashboards
-- Automated optimization feedback loops
-- Machine learning-driven improvement
-- Adaptive optimization strategies
-
-## 9. Scientific Computing Stack Detection
-
-### Language & Framework Auto-Detection
-
-#### Scientific Computing Stacks
-- **Python Scientific**: Detect NumPy, SciPy, JAX, Pandas
-  ```bash
-  python -c "import numpy, scipy, jax; print('Scientific stack detected')"
-  ```
-- **JAX Ecosystem**: Detect JAX, Flax, Optax for GPU acceleration
-- **Julia/SciML**: Detect DifferentialEquations.jl, SciML ecosystem
-- **PyTorch/TensorFlow**: Deep learning frameworks
-- **Quantum Computing**: Qiskit, Cirq, PennyLane
-
-#### Domain-Specific Pattern Detection
-- **Neutron/X-ray Scattering**: SANS, SAXS, diffraction keywords
-- **Soft Matter Physics**: Polymer, colloid, rheology patterns
-- **Stochastic Processes**: Monte Carlo, Gillespie, Langevin
-- **Correlation Analysis**: Autocorrelation, pair distribution, FFT
-- **Molecular Dynamics**: LAMMPS, GROMACS, MD simulation patterns
-- **Neural Networks**: CNN, RNN, transformer architectures
-
-### Scientific Agent Registry
-
-#### HPC & Numerical Agents
-- **hpc-numerical-coordinator**: Numerical algorithm optimization
-- **jax-pro**: JAX transformations (jit, vmap, pmap, grad)
-- **correlation-function-expert**: FFT-based spectral analysis
-- **simulation-expert**: Molecular dynamics and multiscale simulations
-
-#### ML & Deep Learning Agents
-- **neural-architecture-engineer**: Model architecture optimization
-- **ai-systems-architect**: ML pipeline and serving optimization
-
-#### Scientific Workflow Agents
-- **research-intelligence**: Research methodology and strategy
-- **scientific-code-adoptor**: Legacy Fortran/MATLAB modernization
-
-## 10. Scientific Computing Optimization Patterns
-
-### Numerical Algorithm Optimization
-```python
-# BEFORE: Python loops (slow)
-def compute_correlation(data):
-    n = len(data)
-    result = []
-    for i in range(n):
-        for j in range(n):
-            result.append(data[i] * data[j])
-    return result
-
-# AFTER: NumPy vectorization (50x faster)
-def compute_correlation(data):
-    return np.outer(data, data).flatten()
-
-# ADVANCED: JAX JIT compilation (500x faster)
-import jax
-import jax.numpy as jnp
-
-@jax.jit
-def compute_correlation(data):
-    return jnp.outer(data, data).flatten()
-```
-
-### JAX Transformation Optimization
-```python
-# Batch processing with vmap
-@jax.jit
-def process_batch(items):
-    return jax.vmap(expensive_function)(items)
-# Expected: 50x speedup over Python loops
-
-# Gradient computation with automatic differentiation
-compute_gradient = jax.grad(loss_function)
-# Benefits: Exact gradients, higher-order derivatives
-```
-
-### GPU Acceleration Patterns
-```python
-# Memory-efficient GPU operations
-@jax.jit
-def gpu_computation(large_array):
-    # In-place operations for memory efficiency
-    return large_array.at[indices].set(new_values)
-```
-
-### Numerical Stability
-```python
-# Log-sum-exp trick for numerical stability
-def stable_softmax(logits):
-    max_logit = jnp.max(logits)
-    exp_logits = jnp.exp(logits - max_logit)
-    return exp_logits / jnp.sum(exp_logits)
-```
-
-## 11. Cross-Cutting Optimization Synthesis
-
-### Meta-Analysis Framework
-When multiple agents identify the same bottleneck:
-1. **Convergent Recommendations**: Higher priority (multiple agents agree)
-2. **Complementary Strategies**: Layer optimizations (vectorize + JIT + GPU)
-3. **Conflicting Approaches**: Resolve via constraint analysis (memory vs speed)
-
-### Example: Comprehensive Optimization Strategy
-```
-Pattern: Performance bottleneck in compute_correlation()
-
-Agents identified by:
-- Scientific Computing Master: Vectorization opportunity
-- JAX Pro: JIT compilation candidate
-- Systems Architect: Hot loop accounting for 65% runtime
-
-Synthesized Strategy:
-1. Phase 1: NumPy vectorization → 50x speedup (low risk)
-2. Phase 2: JAX JIT compilation → additional 10x (medium risk)
-3. Phase 3: GPU migration → additional 5x (requires GPU)
-
-Expected Total: 2500x improvement
-```
-
-## Reference Workflows
+## Common Workflows
 
 ### Workflow 1: Scientific Computing Optimization
-1. Detect scientific stack (NumPy, JAX, Julia)
-2. Profile numerical hotspots
-3. Deploy scientific agents (hpc-numerical-coordinator, jax-pro)
-4. Apply vectorization and JIT compilation
-5. Validate numerical accuracy
-6. Measure performance improvements
-
-### Workflow 2: E-Commerce Platform Optimization
-1. Initial performance profiling
-2. Agent-based optimization
-3. Cost and performance tracking
-4. Continuous improvement cycle
-
-### Workflow 3: ML Training Pipeline Enhancement
-1. Detect ML framework (PyTorch/JAX/TensorFlow)
-2. Deploy neural-architecture-engineer
-3. Optimize training loop (mixed precision, gradient accumulation)
-4. Implement caching and data loading optimization
-5. Validate model accuracy unchanged
-
-### Workflow 4: Enterprise API Performance Enhancement
-1. Comprehensive system analysis
-2. Multi-layered agent optimization
-3. Iterative performance refinement
-4. Cost-efficient scaling strategy
-
-## Key Considerations
-- Always measure before and after optimization
-- Maintain system stability during optimization
-- Balance performance gains with resource consumption
-- Implement gradual, reversible changes
-- **For scientific code**: Validate numerical accuracy after optimization
-- **For ML models**: Ensure model performance unchanged
-- **For simulations**: Verify energy conservation and physical properties
-
-Target Optimization: $ARGUMENTS
-
-## Execution Modes
-
-### Analysis Only (Default)
 ```bash
-/multi-agent-optimize src/
-# Analyzes and provides recommendations, no changes
+# 1. Quick scan for opportunities (5 min)
+/multi-agent-optimize src/simulation/ --mode=scan
+
+# 2. Deep analysis with scientific agents (20 min)
+/multi-agent-optimize src/simulation/ --mode=analyze --focus=scientific --parallel
+
+# 3. Review report: .optimization/simulation-report-YYYY-MM-DD.md
+
+# 4. Apply top 3 recommendations (10 min)
+/multi-agent-optimize src/simulation/ --mode=apply --top=3
+
+# 5. Benchmark improvements
+pytest benchmarks/ --benchmark-only
 ```
 
-### Targeted Agents
+### Workflow 2: Iterative Optimization (Safest)
 ```bash
-/multi-agent-optimize src/ --agents=jax-pro,hpc-numerical-coordinator
-# Deploy only specific agents
+# Start with low-risk quick wins
+/multi-agent-optimize src/ --mode=apply --quick-wins
+
+# Verify improvements
+pytest && python benchmarks/run.py
+
+# Deep dive on remaining bottlenecks
+/multi-agent-optimize src/ --mode=analyze --deep
 ```
 
-### Focus Areas
+### Workflow 3: Focused Optimization
 ```bash
-/multi-agent-optimize src/ --focus=scientific,performance
-# Prioritize scientific computing and performance optimization
+# Target specific domain (e.g., only JAX optimizations)
+/multi-agent-optimize src/ --mode=analyze --agents=jax-pro,hpc-numerical-coordinator
+
+# Or focus on specific concern
+/multi-agent-optimize src/ --mode=analyze --focus=quality
 ```
 
-### Parallel Execution
+## Output Artifacts
+
+All artifacts timestamped and versioned:
+
+- **Scan Report**: `.optimization/<target>-scan-YYYY-MM-DD.json`
+  - Quick wins list with impact estimates
+  - Medium/low priority optimizations
+  - Stack detection results
+
+- **Analysis Report**: `.optimization/<target>-report-YYYY-MM-DD.md`
+  - Comprehensive findings from all agents
+  - Convergent recommendations (multiple agents agree)
+  - Complementary strategies (layered optimizations)
+  - Conflict resolutions with rationale
+  - Risk assessment and mitigation strategies
+
+- **Code Patches**: `.optimization/patches/<file>-optimized.patch`
+  - Ready-to-apply git patches
+  - Before/after code comparison
+  - Expected improvement and confidence
+
+- **Benchmarks**: `.optimization/benchmarks/<target>-before-after.json`
+  - Performance measurements
+  - Memory profiling
+  - Speedup verification
+
+- **Agent Logs**: `.optimization/logs/<agent>-YYYY-MM-DD.log`
+  - Detailed agent analysis
+  - Decision rationale
+  - Warnings and caveats
+
+## Success Metrics
+
+Optimization is successful when:
+- ✅ Performance improves by ≥20% (measured, not estimated)
+- ✅ All existing tests still pass
+- ✅ No regressions in functionality
+- ✅ Code remains maintainable (complexity doesn't increase significantly)
+- ✅ Documentation updated with optimization notes
+
+**Detailed Metrics**: [Success Metrics Guide](../../docs/success-metrics.md)
+
+## Best Practices
+
+1. **Always start with scan**: Understand opportunities before deep analysis
+2. **Use parallel execution**: Maximize agent efficiency with `--parallel`
+3. **Validate incrementally**: Apply one optimization at a time for complex code
+4. **Benchmark everything**: Verify claimed speedups with real measurements
+5. **Version control**: Commit after each successful optimization
+6. **Monitor production**: Watch for unexpected behavior post-deployment
+
+**Full Best Practices**: [Best Practices Guide](../../docs/best-practices.md)
+
+## Troubleshooting
+
+**Issue**: "Agent X not available" warning
+**Solution**: Install required plugin or proceed with available agents
 ```bash
-/multi-agent-optimize src/ --parallel
-# Maximum parallelization of agent analyses
+# Check plugin installation
+ls ~/.claude/plugins/jax-implementation/
+
+# Install if missing (example)
+claude-code plugin install jax-implementation
 ```
+
+**Issue**: Validation fails after optimization
+**Solution**: Automatic rollback engaged, review validation logs
+```bash
+cat .optimization/logs/validation-YYYY-MM-DD.log
+```
+
+**Issue**: Speedup claims not realized in practice
+**Solution**: Profile with realistic data, check for I/O bottlenecks
+```bash
+python -m cProfile -o profile.stats src/main.py
+```
+
+**More troubleshooting**: [Troubleshooting Guide](../../docs/troubleshooting.md)
+
+## Examples with Real Metrics
+
+- [Optimizing MD Simulation (200x speedup)](../../docs/examples/md-simulation-optimization.md)
+- [JAX Training Pipeline (50x speedup)](../../docs/examples/jax-training-optimization.md)
+- [API Performance Enhancement (10x throughput)](../../docs/examples/api-performance-optimization.md)
+
+## Additional Resources
+
+- **Patterns**: [Complete Optimization Patterns](../../docs/optimization-patterns.md)
+- **Scientific**: [NumPy/SciPy/JAX Patterns](../../docs/scientific-patterns.md)
+- **ML**: [PyTorch/TensorFlow Optimization](../../docs/ml-optimization.md)
+- **Tools**: [Profiling & Benchmarking](../../docs/profiling-tools.md)
+- **Theory**: [Performance Engineering Guide](../../docs/performance-engineering.md)
+
+Target: $ARGUMENTS
