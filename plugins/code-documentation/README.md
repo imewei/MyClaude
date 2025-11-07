@@ -1,97 +1,157 @@
 # Code Documentation
 
-Comprehensive code documentation, explanation, and generation with advanced agent reasoning, systematic review frameworks, and educational content creation for world-class code reviews, technical documentation, and tutorials.
+**Version:** 1.0.3 | **Category:** documentation | **License:** MIT
 
-**Version:** 2.0.0 | **Category:** documentation | **License:** MIT
+Comprehensive code documentation, explanation, and generation with AST-based analysis, visual diagrams, and automated documentation workflows. Features hub-and-spoke architecture achieving 54% command file reduction with comprehensive external documentation.
 
-## What's New in v2.0.0
+## What's New in v1.0.3
 
-**Major prompt engineering improvements** across all 3 agents with advanced reasoning capabilities:
+**Major optimization release** with command enhancements, execution modes, and comprehensive external documentation:
 
-- **Chain-of-Thought Reasoning**: All agents use systematic 6-step frameworks for transparent decision-making
-- **Constitutional AI Principles**: Each agent has 5 core principles for self-critique and quality assurance
-- **Comprehensive Examples**: Production-ready few-shot examples with complete implementations
-- **Enhanced Discoverability**: Clear triggering criteria with 15 USE cases and 5 anti-patterns per agent
+- **54% Command Reduction**: Optimized slash commands from 2,495 to 1,146 lines
+- **8 External Documentation Files**: ~3,200 lines of comprehensive reference material
+- **3 Execution Modes**: Per command (quick/standard/comprehensive) with time estimates
+- **Hub-and-Spoke Architecture**: Condensed commands + detailed external docs
+- **100% Backward Compatible**: All existing command invocations work unchanged
 
-### Expected Performance Improvements
+### Key Improvements
 
-| Metric | Improvement |
-|--------|-------------|
-| Code Review Security Detection | 40-70% better |
-| Documentation Coverage | 50-80% more comprehensive |
-| Tutorial Learning Outcomes | 60-90% better |
-| Agent Discoverability | 200-300% improvement |
+| Feature | Enhancement |
+|---------|-------------|
+| Command Optimization | 54.1% reduction (2,495 → 1,146 lines) |
+| External Documentation | 8 files (~3,200 lines) created |
+| Execution Modes | 3 modes per command with time/scope options |
+| AST Analysis | Multi-language support (Python, JS, TS, Go, Rust) |
+| Scientific Computing | NumPy/JAX/Pandas/Julia/ML support |
+| Documentation Automation | CI/CD pipelines, coverage analysis |
 
-[Full Documentation →](https://myclaude.readthedocs.io/en/latest/plugins/code-documentation.html)
+[Full CHANGELOG →](CHANGELOG.md#103---2025-11-06)
 
 ## Agents (3)
 
-All agents upgraded to v2.0.0 with 90-92% maturity, systematic reasoning frameworks, and comprehensive examples.
+All agents updated to v1.0.3 with enhanced metadata, capabilities, and trigger scenarios.
 
-### 🔍 code-reviewer
+### 🔍 code-reviewer (v1.0.3)
 
-**Status:** active | **Maturity:** 92% | **Version:** 2.0.0
+**Status:** active | **Maturity:** 92%
 
 Elite code review expert specializing in modern AI-powered code analysis, security vulnerabilities, performance optimization, and production reliability.
 
-**New in v2.0.0:**
-- 6-step chain-of-thought framework (Code Assessment → Automated Analysis → Manual Review → Security & Performance → Feedback Generation → Validation)
-- 5 Constitutional AI principles (Security-First, Constructive Feedback, Actionable Guidance, Context-Aware, Production Reliability)
-- React authentication component review example with XSS/CSRF vulnerabilities, performance issues, ~650 lines of code fixes
+**Capabilities**:
+- Security vulnerability detection (XSS, CSRF, SQL injection)
+- Performance optimization analysis
+- Code quality assessment with static analysis
+- Architectural review and design pattern validation
+- Production reliability checks
+- Best practices enforcement
 
-**Expected Impact:** 40-70% better security detection, 50% clearer feedback, 60% more actionable recommendations
-
----
-
-### 📚 docs-architect
-
-**Status:** active | **Maturity:** 92% | **Version:** 2.0.0
-
-Creates comprehensive technical documentation from existing codebases. Analyzes architecture, design patterns, and implementation details to produce long-form technical manuals and ebooks.
-
-**New in v2.0.0:**
-- 6-step chain-of-thought framework (Codebase Discovery → Architecture Analysis → Documentation Planning → Content Creation → Integration → Validation)
-- 5 Constitutional AI principles (Comprehensiveness, Progressive Disclosure, Accuracy & Precision, Audience-Aware, Maintainability)
-- Complete API Gateway documentation example (80-90 pages) with architecture diagrams, design decisions, security model
-
-**Expected Impact:** 50-80% more comprehensive coverage, 60% better structure, 70% improved technical accuracy
+**Triggers**: Code reviews, security audits, performance optimization, pre-production checks
 
 ---
 
-### 🎓 tutorial-engineer
+### 📚 docs-architect (v1.0.3)
 
-**Status:** active | **Maturity:** 92% | **Version:** 2.0.0
+**Status:** active | **Maturity:** 92%
+
+Creates comprehensive technical documentation from existing codebases. Analyzes architecture, design patterns, and implementation details to produce long-form technical manuals.
+
+**Capabilities**:
+- AST-based code analysis for documentation extraction
+- System architecture documentation
+- API documentation generation
+- Sphinx/MkDocs/Hugo documentation setup
+- README and onboarding guide creation
+- Documentation coverage analysis
+
+**Triggers**: System documentation, API docs, README generation, Sphinx setup, post-refactoring updates
+
+---
+
+### 🎓 tutorial-engineer (v1.0.3)
+
+**Status:** active | **Maturity:** 92%
 
 Creates step-by-step tutorials and educational content from code. Transforms complex concepts into progressive learning experiences with hands-on examples.
 
-**New in v2.0.0:**
-- 6-step chain-of-thought framework (Learning Objectives → Concept Decomposition → Exercise Design → Content Creation → Error Anticipation → Validation)
-- 5 Constitutional AI principles (Beginner-Friendly, Progressive Complexity, Hands-On Practice, Error-Embracing, Measurable Outcomes)
-- WebSocket real-time chat tutorial with 6 progressive sections, 5 common errors, 5 practice exercises with solutions
+**Capabilities**:
+- Progressive learning path creation
+- Hands-on exercise design
+- Concept explanation with examples
+- Common pitfall identification
+- Interactive code playground setup
+- Multi-level content (beginner/intermediate/advanced)
 
-**Expected Impact:** 60-90% better learning outcomes, 70% improved beginner accessibility, 80% more hands-on practice
+**Triggers**: Feature tutorials, onboarding docs, educational content, algorithm explanations, training materials
 
 ---
 
-## Commands (3)
+## Commands (4)
 
-### `/code-explain`
+### 🔍 `/code-explain` (v1.0.3)
 
-**Status:** active
+**Status:** active | **Maturity:** 95% | **Optimization:** 73.7% reduction (1,007 → 265 lines)
 
-Detailed explanation of code structure, functionality, and design patterns with scientific computing support
+Detailed explanation of code structure, functionality, and design patterns with scientific computing support.
 
-### `/update-claudemd`
+**Execution Modes**:
+- **quick** (5-10 min): Simple code walkthrough, urgent explanations
+- **standard** (15-25 min): Comprehensive explanation with diagrams (default)
+- **comprehensive** (30-45 min): Full analysis with learning resources
 
-**Status:** active
+**External Docs** (~1,600 lines):
+- code-analysis-framework.md - AST parsing, complexity analysis
+- visualization-techniques.md - Mermaid diagrams, algorithm viz
+- learning-resources.md - Design patterns, tutorials
+- scientific-code-explanation.md - NumPy/JAX/Julia/ML patterns
 
-Automatically update CLAUDE.md file based on recent code changes
+---
 
-### `/update-docs`
+### 📄 `/doc-generate` (v1.0.3)
 
-**Status:** active
+**Status:** active | **Maturity:** 95% | **Optimization:** 50.2% reduction (653 → 325 lines)
 
-Comprehensively update and optimize Sphinx docs, README, and related codebase documentation with AST-based content extraction
+Generate comprehensive, maintainable documentation from code with AI-powered analysis.
+
+**Execution Modes**:
+- **quick** (10-15 min): README + basic API docs
+- **standard** (20-30 min): Complete docs with examples (default)
+- **comprehensive** (40-60 min): Full doc site with CI/CD
+
+**External Docs** (~850 lines):
+- api-documentation-templates.md - OpenAPI specs, endpoint extraction
+- documentation-automation.md - CI/CD, README generation
+
+---
+
+### 📝 `/update-claudemd` (v1.0.3)
+
+**Status:** active | **Maturity:** 90%
+
+Automatically update CLAUDE.md file based on recent code changes.
+
+**Execution Modes**:
+- **quick** (5-10 min): Last 5 commits, quick updates
+- **standard** (10-15 min): Last 10 commits (default)
+- **force** (15-20 min): Full rebuild with complete history
+
+---
+
+### 📚 `/update-docs` (v1.0.3)
+
+**Status:** active | **Maturity:** 95% | **Optimization:** 43.9% reduction (683 → 383 lines)
+
+Comprehensively update and optimize Sphinx docs, README, and related codebase documentation with AST-based content extraction.
+
+**Execution Modes**:
+- **quick** (15-20 min): README + critical updates
+- **standard** (30-45 min): Full AST analysis + docs (default)
+- **comprehensive** (60-90 min): Everything + CI/CD
+
+**External Docs** (~1,600 lines):
+- ast-parsing-implementation.md - Multi-language AST extraction
+- sphinx-optimization.md - Sphinx config, autodoc setup
+- api-documentation-templates.md - OpenAPI templates
+- documentation-automation.md - CI/CD automation
 
 ---
 

@@ -1,8 +1,15 @@
 ---
+version: "1.0.3"
+category: "code-documentation"
+command: "/update-claudemd"
 description: Automatically update CLAUDE.md file based on recent code changes
 allowed-tools: Bash(git diff:*), Bash(git log:*), Bash(git status:*), Bash(find:*), Bash(grep:*), Bash(wc:*), Bash(ls:*)
 argument-hint: [--force] [--summary]
 color: cyan
+execution_modes:
+  quick: "5-10 minutes - Essential updates only (last 5 commits)"
+  standard: "10-15 minutes - Comprehensive analysis (last 10 commits)"
+  force: "15-20 minutes - Complete rebuild with full history"
 agents:
   primary:
     - research-intelligence
@@ -12,142 +19,155 @@ agents:
   orchestrated: false
 ---
 
-# Update Claude.md File
+# Update CLAUDE.md File
 
-## Current Claude.md State
+Automatically analyze recent code changes and intelligently update CLAUDE.md to keep project documentation synchronized.
+
+## Execution Modes
+
+| Mode | Time | Scope | Use Case |
+|------|------|-------|----------|
+| **quick** | 5-10 min | Last 5 commits | Quick updates after small changes |
+| **standard** (default) | 10-15 min | Last 10 commits | Regular weekly updates |
+| **force** (--force flag) | 15-20 min | Full rebuild | Major refactoring or outdated docs |
+
+## Arguments
+
+$ARGUMENTS
+
+**Flags**:
+- `--force`: Complete rebuild analyzing entire git history
+- `--summary`: Only show summary of changes without updating file
+
+## Current State Analysis
+
+### Current CLAUDE.md
 @CLAUDE.md
 
-## Git Analysis
+### Git Analysis
 
-### Current Repository Status
+**Repository status**:
 !`git status --porcelain`
 
-### Recent Changes (Last 10 commits)
+**Recent commits** (mode-dependent):
+- Quick: `git log --oneline -5`
+- Standard: `git log --oneline -10`
+- Force: `git log --oneline -20`
+
 !`git log --oneline -10`
 
-### Detailed Recent Changes
+**Detailed changes**:
 !`git log --since="1 week ago" --pretty=format:"%h - %an, %ar : %s" --stat`
 
-### Recent Diff Analysis
+**Changed files**:
 !`git diff HEAD~5 --name-only | head -20`
 
-### Detailed Diff of Key Changes
+**Code changes in key files**:
 !`git diff HEAD~5 -- "*.js" "*.ts" "*.jsx" "*.tsx" "*.py" "*.md" "*.json" | head -200`
 
-### New Files Added
+**New files added**:
 !`git diff --name-status HEAD~10 | grep "^A" | head -15`
 
-### Deleted Files
+**Deleted files**:
 !`git diff --name-status HEAD~10 | grep "^D" | head -10`
 
-### Modified Core Files
+**Modified core files**:
 !`git diff --name-status HEAD~10 | grep "^M" | grep -E "(package\.json|README|config|main|index|app)" | head -10`
 
-## Project Structure Changes
-!`find . -name "*.md" -not -path "./node_modules/*" -not -path "./.git/*" | head -10`
-
-## Configuration Changes
+**Configuration changes**:
 !`git diff HEAD~10 -- package.json tsconfig.json webpack.config.js next.config.js .env* | head -100`
 
-## API/Route Changes  
+**API/Route changes**:
 !`git diff HEAD~10 -- "**/routes/**" "**/api/**" "**/controllers/**" | head -150`
 
-## Database/Model Changes
+**Database changes**:
 !`git diff HEAD~10 -- "**/models/**" "**/schemas/**" "**/migrations/**" | head -100`
 
-## Your Task
+## Update Strategy
 
-Based on the current CLAUDE.md content and all the git analysis above, create an updated CLAUDE.md file that:
+### 1. Preserve Core Content
+- ✓ Core project description and architecture
+- ✓ Essential setup instructions
+- ✓ Key architectural decisions
+- ✓ Development workflow fundamentals
 
-## 1. Preserves Important Existing Content
-- Keep the core project description and architecture
-- Maintain important setup instructions
-- Preserve key architectural decisions and patterns
-- Keep essential development workflow information
+### 2. Integrate Recent Changes
 
-## 2. Integrates Recent Changes
-Analyze the git diff and logs to identify:
-- **New Features**: What new functionality was added?
-- **API Changes**: New endpoints, modified routes, updated parameters
-- **Configuration Updates**: Changes to build tools, dependencies, environment variables
-- **File Structure Changes**: New directories, moved files, deleted components
-- **Database Changes**: New models, schema updates, migrations
-- **Bug Fixes**: Important fixes that affect how the system works
-- **Refactoring**: Significant code reorganization or architectural changes
+Analyze git diff/logs to identify:
 
-## 3. Updates Key Sections
-Intelligently update these CLAUDE.md sections:
+**New Features**: Functionality added
+**API Changes**: Endpoints, routes, parameters
+**Config Updates**: Build tools, dependencies, env vars
+**File Structure**: New directories, moved files
+**Database**: Models, schemas, migrations
+**Bug Fixes**: Important behavioral fixes
+**Refactoring**: Architectural changes
 
-### Project Overview
-- Update description if scope changed
-- Note new technologies or frameworks added
-- Update version information
+### 3. Update Sections Intelligently
 
-### Architecture
-- Document new architectural patterns
-- Note significant structural changes
-- Update component relationships
+**Project Overview**: Scope, technologies, version
+**Architecture**: Patterns, structure, components
+**Setup Instructions**: Environment, dependencies, config
+**API Documentation**: Endpoints, auth, parameters
+**Development Workflow**: Scripts, tools, testing
+**Recent Updates**: Timestamped change summary
+**File Structure**: Directory organization
 
-### Setup Instructions  
-- Add new environment variables
-- Update installation steps if dependencies changed
-- Note new configuration requirements
+### 4. Smart Content Management
 
-### API Documentation
-- Add new endpoints discovered in routes
-- Update existing endpoint documentation
-- Note authentication or parameter changes
+- **Don't duplicate**: Avoid repeating existing docs
+- **Prioritize relevance**: Focus on developer-impacting changes
+- **Keep concise**: Summarize, don't list every change
+- **Maintain structure**: Follow existing organization
+- **Add timestamps**: Note major update dates
 
-### Development Workflow
-- Update based on new scripts in package.json
-- Note new development tools or processes
-- Update testing procedures if changed
-
-### Recent Changes Section
-Add a "Recent Updates" section with:
-- Summary of major changes from git analysis
-- New features and their impact
-- Important bug fixes
-- Breaking changes developers should know about
-
-### File Structure
-- Update directory explanations for new folders
-- Note relocated or reorganized files
-- Document new important files
-
-## 4. Smart Content Management
-- **Don't duplicate**: Avoid repeating information already well-documented
-- **Prioritize relevance**: Focus on changes that affect how developers work with the code
-- **Keep it concise**: Summarize rather than listing every small change
-- **Maintain structure**: Follow existing CLAUDE.md organization
-- **Add timestamps**: Note when major updates were made
-
-## 5. Output Format
-Provide the complete updated CLAUDE.md content, organized as:
+## Output Format
 
 ```markdown
 # Project Name
 
 ## Overview
-[Updated project description]
+[Updated description with new scope/tech]
 
 ## Architecture
-[Updated architecture information]
+[Updated patterns and structure]
 
 ## Setup & Installation
-[Updated setup instructions]
+[Updated with new dependencies/env vars]
 
 ## Development Workflow
-[Updated development processes]
+[Updated scripts and processes]
 
 ## API Documentation
-[Updated API information]
+[New/updated endpoints]
 
 ## File Structure
-[Updated directory explanations]
+[Updated directory organization]
 
 ## Recent Updates (Updated: YYYY-MM-DD)
-[Summary of recent changes]
+### Major Changes
+- [Feature/change 1]
+- [Feature/change 2]
+
+### Breaking Changes
+- [If any]
+
+### Bug Fixes
+- [Important fixes]
 
 ## Important Notes
-[Key information for developers]
+[Key developer information]
+```
+
+## Success Criteria
+
+✅ All significant changes from git history reflected
+✅ New features documented
+✅ API changes noted
+✅ Configuration updates included
+✅ Existing structure preserved
+✅ Concise and developer-focused
+✅ Timestamp added for update tracking
+✅ No duplicate information
+
+Focus on **keeping documentation synchronized** with code through intelligent git analysis and targeted updates.

@@ -5,6 +5,106 @@ All notable changes to the Code Documentation plugin will be documented in this 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.0.3] - 2025-11-06
+
+### 🚀 Major Enhancement Release - Command Optimization & Comprehensive Documentation
+
+#### Overall Impact
+
+- **Command Reduction**: 54.1% reduction (2,495 → 1,146 lines across all 4 commands)
+- **External Documentation Created**: 8 comprehensive files (~3,200 lines)
+- **Execution Modes**: 3 modes per command (quick/standard/comprehensive)
+- **Architecture**: Hub-and-spoke pattern with external documentation
+- **Backward Compatibility**: 100% - all existing command invocations work unchanged
+
+#### 📝 Command Optimizations
+
+**`/code-explain`** - 73.7% reduction (1,007 → 265 lines)
+- Added YAML frontmatter with execution modes
+- Created 4 external documentation files (~1,600 lines)
+- Condensed core workflow to 7 phases
+- Enhanced scientific computing support (NumPy/JAX/Julia/ML)
+
+**`/doc-generate`** - 50.2% reduction (653 → 325 lines)
+- Added YAML frontmatter with execution modes
+- Created 2 external documentation files (~850 lines)
+- Streamlined 7-phase workflow
+- Enhanced OpenAPI and Sphinx support
+
+**`/update-claudemd`** - Enhanced with execution modes (152 → 173 lines)
+- Added quick/standard/force modes
+- Enhanced git analysis sections
+- Improved update strategy documentation
+
+**`/update-docs`** - 43.9% reduction (683 → 383 lines)
+- Added YAML frontmatter with execution modes
+- Created 4 external documentation files (~1,600 lines)
+- Condensed 7-phase workflow with AST-based analysis
+
+#### 📚 External Documentation Created (8 files, ~3,200 lines)
+
+1. **code-analysis-framework.md** (~350 lines) - AST parsing, complexity analysis, pitfall detection
+2. **visualization-techniques.md** (~400 lines) - Mermaid diagrams, algorithm visualization
+3. **learning-resources.md** (~450 lines) - Design patterns, tutorials, learning paths
+4. **scientific-code-explanation.md** (~400 lines) - NumPy/JAX/Pandas/Julia/ML patterns
+5. **api-documentation-templates.md** (~550 lines) - OpenAPI specs, endpoint extraction
+6. **documentation-automation.md** (~300 lines) - CI/CD, README generation, coverage
+7. **ast-parsing-implementation.md** (~400 lines) - Multi-language AST extraction
+8. **sphinx-optimization.md** (~350 lines) - Sphinx configuration, autodoc setup
+
+#### 🤖 Plugin Configuration Enhancements
+
+- Updated plugin.json with execution_modes for all commands
+- Added external_docs tracking and optimization metrics
+- Enhanced agent metadata with capabilities and triggers
+- Added comprehensive features list (12 major features)
+- All versions updated to 1.0.3
+
+#### ✨ New Features
+
+**Execution Modes** (all commands):
+- **Quick**: 5-20 minutes - Essential tasks only
+- **Standard**: 10-45 minutes - Comprehensive analysis (default)
+- **Comprehensive**: 30-90 minutes - Full workflow with CI/CD
+
+**Enhanced Capabilities**:
+- AST-based code analysis (Python, JS, TS, Go, Rust)
+- Mermaid diagram generation (flowcharts, class, sequence)
+- Scientific computing support (NumPy, JAX, Pandas, Julia)
+- OpenAPI 3.0 specification generation
+- Sphinx documentation optimization
+- CI/CD documentation pipelines
+- Documentation coverage analysis
+- Multi-language code examples
+
+#### 📊 Optimization Metrics
+
+| Command | Before | After | Reduction |
+|---------|--------|-------|-----------|
+| code-explain | 1,007 | 265 | 73.7% |
+| doc-generate | 653 | 325 | 50.2% |
+| update-claudemd | 152 | 173 | +13.8% (modes) |
+| update-docs | 683 | 383 | 43.9% |
+| **Total** | **2,495** | **1,146** | **54.1%** |
+
+**External Documentation**: 0 → 3,200 lines (8 new files)
+
+#### 🔄 Migration Guide
+
+**No migration required** - 100% backward compatible:
+- All existing commands work unchanged
+- Execution modes are optional (defaults to standard)
+- All agent triggers remain the same
+
+**To use new execution modes**:
+```bash
+/code-explain --quick myfile.py          # Fast mode
+/code-explain myfile.py                  # Standard (default)
+/code-explain --comprehensive myfile.py  # Full analysis
+```
+
+---
+
 ## [2.0.0] - 2025-10-29
 
 ### Major Release - Comprehensive Prompt Engineering Improvements

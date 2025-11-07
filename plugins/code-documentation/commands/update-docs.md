@@ -1,7 +1,14 @@
 ---
+version: "1.0.3"
+category: "code-documentation"
+command: "/update-docs"
 description: Comprehensively update and optimize Sphinx docs, README, and related codebase documentation with AST-based content extraction
 argument-hint: [--full] [--sphinx] [--readme] [--api] [--format=<type>]
 color: blue
+execution_modes:
+  quick: "15-20 minutes - README and critical doc updates only"
+  standard: "30-45 minutes - Comprehensive doc update with AST analysis"
+  comprehensive: "60-90 minutes - Full documentation overhaul with CI/CD setup"
 agents:
   primary:
     - docs-architect
@@ -12,195 +19,141 @@ agents:
       trigger: files "package.json|src/components/" OR pattern "react|vue|angular|typescript"
     - agent: systems-architect
       trigger: complexity > 50 OR pattern "architecture|design.*pattern"
-    - agent: code-quality
-      trigger: pattern "quality|testing|coverage"
     - agent: visualization-interface
-      trigger: pattern "diagram|flow.*chart|architecture.*diagram|api.*diagram" OR files "*diagram*|docs/images/|docs/figures/"
+      trigger: pattern "diagram|flow.*chart|architecture.*diagram" OR files "*diagram*|docs/images/"
   orchestrated: true
 ---
 
 # Comprehensive Documentation Update & Optimization
 
+Systematically update Sphinx documentation, README, API docs using AST-based code analysis to ensure complete, accurate documentation coverage.
+
+## Execution Modes
+
+| Mode | Time | Scope | Output |
+|------|------|-------|--------|
+| **quick** | 15-20 min | README + critical updates | Updated README, quick fixes |
+| **standard** (default) | 30-45 min | Full AST analysis + docs | README, Sphinx, API docs |
+| **comprehensive** | 60-90 min | Everything + CI/CD | Complete doc site + automation |
+
+## Quick Reference Documentation
+
+| Topic | External Documentation | Lines |
+|-------|------------------------|-------|
+| AST Parsing | [ast-parsing-implementation.md](../docs/code-documentation/ast-parsing-implementation.md) | ~400 |
+| Sphinx Setup | [sphinx-optimization.md](../docs/code-documentation/sphinx-optimization.md) | ~350 |
+| API Templates | [api-documentation-templates.md](../docs/code-documentation/api-documentation-templates.md) | ~550 |
+| Automation | [documentation-automation.md](../docs/code-documentation/documentation-automation.md) | ~300 |
+
+**Total External Documentation**: ~1,600 lines of implementation details
+
+## Arguments
+
+$ARGUMENTS
+
+**Supported flags**:
+- `--full`: Complete documentation overhaul (same as comprehensive mode)
+- `--sphinx`: Focus on Sphinx documentation only
+- `--readme`: Focus on README update only
+- `--api`: Focus on API documentation only
+- `--format=sphinx|mkdocs|hugo`: Specify documentation format
+- `--no-ast`: Skip AST analysis (faster but less comprehensive)
+- `--dry-run`: Analyze and report without making changes
+
 ## Phase 1: Project Intelligence Gathering
 
-### 1.1 Repository State Analysis
+### Repository Analysis
+
+**Git status and recent changes**:
 !`git status --porcelain`
-
-### 1.2 Recent Changes Detection
 !`git log --since="2 weeks ago" --pretty=format:"%h - %an, %ar : %s" --stat | head -200`
-
-### 1.3 Changed Files Analysis
 !`git diff HEAD~10 --name-only | head -50`
 
-### 1.4 Recent Commits Detail
-!`git log --oneline -20`
+**Project structure**:
+!`find . -type f \( -name "*.py" -o -name "*.js" -o -name "*.ts" \) ! -path "*/node_modules/*" ! -path "*/.venv/*" ! -path "*/.git/*" | head -100`
 
-### 1.5 Project Structure Discovery
-!`find . -type f \( -name "*.py" -o -name "*.js" -o -name "*.ts" -o -name "*.jsx" -o -name "*.tsx" \) ! -path "*/node_modules/*" ! -path "*/.venv/*" ! -path "*/venv/*" ! -path "*/.git/*" ! -path "*/dist/*" ! -path "*/build/*" | head -100`
+**Documentation inventory**:
+!`find . -type f \( -name "*.md" -o -name "*.rst" \) ! -path "*/node_modules/*" ! -path "*/.git/*" | head -50`
 
-### 1.6 Documentation Files Inventory
-!`find . -type f \( -name "*.md" -o -name "*.rst" -o -name "*.txt" -o -name "*.adoc" \) ! -path "*/node_modules/*" ! -path "*/.venv/*" ! -path "*/.git/*" | head -50`
+**Configuration files**:
+!`find . -maxdepth 2 -name "package.json" -o -name "setup.py" -o -name "pyproject.toml" 2>/dev/null`
 
-### 1.7 Configuration Files
-!`find . -maxdepth 2 -name "package.json" -o -name "setup.py" -o -name "pyproject.toml" -o -name "Cargo.toml" -o -name "go.mod" 2>/dev/null`
+### Existing Documentation State
 
-## Phase 2: Existing Documentation State
+**README files**: @README.md @README.rst
 
-### 2.1 README Files
-@README.md
-@README.rst
-@readme.md
+**Sphinx docs**: @docs/conf.py @docs/index.rst
 
-### 2.2 Sphinx Documentation Discovery
-!`find . -path "*/docs/conf.py" -o -path "*/doc/conf.py" -o -path "*/documentation/conf.py" 2>/dev/null`
+**API docs**: @docs/api.rst @API.md
 
-### 2.3 Sphinx Configuration (if exists)
-@docs/conf.py
-@doc/conf.py
-@documentation/conf.py
+**Metadata**: @package.json @setup.py @pyproject.toml
 
-### 2.4 Sphinx Index/Main Files
-@docs/index.rst
-@docs/index.md
-@doc/index.rst
+## Phase 2: AST-Based Code Analysis
 
-### 2.5 API Documentation
-@docs/api.rst
-@docs/api/index.rst
-@API.md
+**Extract complete code structure** using AST parsing:
 
-### 2.6 CHANGELOG Analysis
-@docs/CHANGELOG.md
-@CHANGES.md
-@HISTORY.md
+**For Python projects**:
+1. Parse all `.py` files with AST
+2. Extract modules, classes, functions with docstrings
+3. Identify type hints and parameters
+4. Build module/class/function hierarchy
+5. Compare with existing Sphinx autodoc directives
 
-### 2.7 Contributing Guidelines
-@CONTRIBUTING.md
-@CONTRIBUTE.md
+**For JavaScript/TypeScript**:
+1. Parse `.js`/`.ts` files
+2. Extract exports, interfaces, types
+3. Collect JSDoc comments
+4. Identify React components and props
 
-### 2.8 Project Metadata
-@package.json
-@setup.py
-@pyproject.toml
-@Cargo.toml
+**Implementation**: See [ast-parsing-implementation.md](../docs/code-documentation/ast-parsing-implementation.md) for:
+- `PythonASTExtractor` complete implementation
+- `TypeScriptExtractor` with TypeScript compiler API
+- `GoAnalyzer` and `RustExtractor` patterns
+- Parameter, return type, and docstring extraction
 
-## Phase 3: AST-Based Code Analysis
+## Phase 3: Documentation Gap Analysis
 
-**CRITICAL**: Use AST parsing to extract comprehensive code structure. For each language in the project:
+**Cross-reference code with documentation**:
 
-### 3.1 Python AST Extraction
-For Python files, extract:
-- **Modules**: All `.py` files with their module docstrings
-- **Classes**: Class names, docstrings, inheritance, methods
-- **Functions**: Function signatures, docstrings, parameters, return types
-- **Constants/Variables**: Module-level constants
-- **Type Hints**: Full type annotation information
-- **Decorators**: Applied decorators and their purposes
+### Gap Detection
 
-**Approach**:
-1. Parse all Python files using AST
-2. Extract docstrings (Google, NumPy, reStructuredText formats)
-3. Build comprehensive module/class/function hierarchy
-4. Compare with existing Sphinx autodoc directives
-5. Identify undocumented or poorly documented items
-
-### 3.2 JavaScript/TypeScript AST Extraction
-For JS/TS files, extract:
-- **Modules/Exports**: All exported components, functions, classes
-- **Interfaces/Types**: TypeScript type definitions
-- **Classes**: Class structures with JSDoc comments
-- **Functions**: Function signatures with JSDoc
-- **React Components**: Props, state, lifecycle methods
-- **API Routes**: Endpoint definitions and handlers
-
-**Approach**:
-1. Parse JS/TS files using appropriate AST parser
-2. Extract JSDoc comments and TypeScript type info
-3. Identify exported APIs and their documentation
-4. Cross-reference with API documentation
-
-### 3.3 Go AST Extraction (if applicable)
-- **Packages**: Package documentation
-- **Types/Structs**: Exported types
-- **Functions**: Exported functions with godoc comments
-- **Interfaces**: Interface definitions
-
-### 3.4 Rust AST Extraction (if applicable)
-- **Crates/Modules**: Module structure
-- **Structs/Enums**: Type definitions
-- **Traits**: Trait definitions
-- **Functions**: Public functions with doc comments
-
-## Phase 4: Documentation Gap Analysis
-
-### 4.1 Cross-Reference Analysis
-Compare AST-extracted code structure with documentation:
-
-**For each code element (class/function/module):**
+For each code element:
 - ✓ Is it documented in Sphinx/API docs?
-- ✓ Is the documentation up-to-date with current signature?
+- ✓ Is signature up-to-date?
 - ✓ Are all parameters documented?
 - ✓ Are return types documented?
-- ✓ Are exceptions/errors documented?
+- ✓ Are exceptions documented?
 - ✓ Are examples provided?
-- ✓ Are there usage guidelines?
 
-**Create Gap Report**:
+**Create gap report**:
 ```
-UNDOCUMENTED ITEMS:
-- Classes: [list classes without docstrings or Sphinx entries]
-- Functions: [list functions without proper documentation]
-- Modules: [list modules lacking documentation]
-- API Endpoints: [list undocumented endpoints]
+UNDOCUMENTED:
+- Classes: [list]
+- Functions: [list]
+- Modules: [list]
 
-OUTDATED DOCUMENTATION:
-- Signature Changes: [functions with changed signatures]
-- Deprecated Items: [items marked deprecated but still in docs]
-- Removed Items: [documented items no longer in code]
+OUTDATED:
+- Signature changes: [list]
+- Deprecated items: [list]
 
-INCOMPLETE DOCUMENTATION:
-- Missing Parameters: [functions with undocumented params]
-- Missing Return Docs: [functions without return documentation]
-- Missing Examples: [complex functions without examples]
+INCOMPLETE:
+- Missing params: [list]
+- Missing returns: [list]
+- Missing examples: [list]
 ```
 
-### 4.2 Sphinx-Specific Analysis
-If Sphinx documentation exists:
-- Check for broken references (`:ref:`, `:doc:`, `:class:`, etc.)
-- Verify all autodoc directives resolve correctly
-- Identify missing `.. automodule::`, `.. autoclass::` directives
-- Check cross-reference consistency
-- Verify toctree completeness
+## Phase 4: Sphinx Documentation Updates
 
-### 4.3 README Completeness Check
-Verify README contains:
-- ✓ Project description and purpose
-- ✓ Installation instructions (all platforms)
-- ✓ Quick start guide with examples
-- ✓ Core features overview
-- ✓ API/CLI usage examples
-- ✓ Configuration options
-- ✓ Dependencies and requirements
-- ✓ Contributing guidelines link
-- ✓ License information
-- ✓ Links to full documentation
-- ✓ Badges (CI, coverage, version, etc.)
+**For Python projects with Sphinx**:
 
-## Phase 5: Intelligent Documentation Generation
+### Update API Reference
 
-### 5.1 Sphinx Documentation Updates
+1. **Generate autodoc directives** for all modules
+2. **Add autoclass/autofunction** for missing items
+3. **Update index.rst** with complete toctree
+4. **Create module pages** with autosummary
 
-**If Sphinx exists**, systematically update:
-
-#### 5.1.1 Update API Reference
-- Generate/update `.. automodule::` directives for all Python modules
-- Add missing `.. autoclass::` for all classes
-- Add missing `.. autofunction::` for all functions
-- Ensure proper `:members:`, `:undoc-members:`, `:show-inheritance:` options
-- Add `:noindex:` where appropriate to avoid duplicates
-
-#### 5.1.2 Update/Create Module Documentation
-For each major module/package:
+**Template**:
 ```rst
 Module Name
 ===========
@@ -210,474 +163,221 @@ Module Name
    :undoc-members:
    :show-inheritance:
 
-Overview
---------
-[High-level description extracted from module docstring]
-
-Key Classes
------------
 .. autosummary::
    :toctree: generated/
 
    ClassName1
    ClassName2
-
-Functions
----------
-.. autosummary::
-   :toctree: generated/
-
-   function1
-   function2
-
-Examples
---------
-[Add usage examples]
 ```
 
-#### 5.1.3 Update Index/TOC
-- Ensure `docs/index.rst` has complete toctree
-- Add missing sections to navigation
-- Organize by logical grouping (API, Tutorials, Examples, etc.)
+### Optimize conf.py
 
-#### 5.1.4 Create Missing Sections
-If absent, create:
-- `installation.rst` - Installation guide
-- `quickstart.rst` - Quick start tutorial
-- `api/index.rst` - API reference landing page
-- `examples/index.rst` - Examples and tutorials
-- `changelog.rst` - Link to CHANGELOG
-- `contributing.rst` - Contributor guide
+**Key settings**: See [sphinx-optimization.md](../docs/code-documentation/sphinx-optimization.md#complete-sphinx-configuration) for:
+- Complete `conf.py` template with autodoc, Napoleon, intersphinx
+- Autosummary configuration
+- Theme customization
+- Extension setup
 
-#### 5.1.5 Sphinx Configuration Optimization
-Update `conf.py` to ensure:
-- All necessary extensions are enabled (autodoc, napoleon, viewcode, intersphinx)
-- Napoleon configured for Google/NumPy style docstrings
-- Intersphinx mapping for external libraries
-- Proper theme configuration
-- Auto-generated API docs setup
+### Build Verification
 
-### 5.2 README Optimization
-
-**Generate comprehensive README** with:
-
-```markdown
-# Project Name
-
-[Badges: CI/CD, Coverage, Version, License, etc.]
-
-## Overview
-[Compelling 2-3 sentence project description]
-
-## Features
-- ✨ Feature 1
-- 🚀 Feature 2
-- 🎯 Feature 3
-
-## Installation
-
-### Prerequisites
-- Requirement 1
-- Requirement 2
-
-### Using pip/npm/cargo
-\`\`\`bash
-[installation command]
-\`\`\`
-
-### From Source
-\`\`\`bash
-git clone [repo]
-cd [project]
-[setup commands]
-\`\`\`
-
-## Quick Start
-
-\`\`\`[language]
-[Simple, compelling example showing core functionality]
-\`\`\`
-
-## Documentation
-
-Full documentation: [link to docs]
-
-- [Installation Guide](docs/installation.rst)
-- [API Reference](docs/api/index.rst)
-- [Examples & Tutorials](docs/examples/index.rst)
-
-## Usage Examples
-
-### Example 1: [Common Use Case]
-\`\`\`[language]
-[code example]
-\`\`\`
-
-### Example 2: [Another Use Case]
-\`\`\`[language]
-[code example]
-\`\`\`
-
-## Configuration
-
-[Configuration options if applicable]
-
-## Development
-
-### Setup Development Environment
-\`\`\`bash
-[setup commands]
-\`\`\`
-
-### Running Tests
-\`\`\`bash
-[test commands]
-\`\`\`
-
-### Contributing
-See [CONTRIBUTING.md](CONTRIBUTING.md)
-
-## License
-[License info]
-
-## Acknowledgments
-[Credits, inspirations, etc.]
-```
-
-### 5.3 API Documentation Enhancement
-
-If API endpoints exist (REST, GraphQL, etc.):
-
-#### Create/Update API.md
-```markdown
-# API Reference
-
-## Authentication
-[Auth details]
-
-## Base URL
-\`https://api.example.com/v1\`
-
-## Endpoints
-
-### [Resource Name]
-
-#### GET /resource
-[Description]
-
-**Parameters:**
-- \`param1\` (type) - Description
-- \`param2\` (type) - Description
-
-**Response:**
-\`\`\`json
-{
-  "example": "response"
-}
-\`\`\`
-
-**Example:**
-\`\`\`bash
-curl -X GET https://api.example.com/v1/resource
-\`\`\`
-
-[Continue for all endpoints...]
-```
-
-### 5.4 CHANGELOG Generation/Update
-
-Based on git history analysis:
-```markdown
-# Changelog
-
-All notable changes to this project will be documented in this file.
-
-## [Unreleased]
-### Added
-- [Recent additions from git log]
-
-### Changed
-- [Recent changes from git log]
-
-### Fixed
-- [Recent fixes from git log]
-
-## [Version X.Y.Z] - YYYY-MM-DD
-[Continue with version history...]
-```
-
-### 5.5 Code Examples & Tutorials
-
-Create `docs/examples/` directory with:
-- Basic usage examples
-- Advanced use cases
-- Integration examples
-- Troubleshooting guides
-
-Each example should be:
-- **Runnable**: Complete, working code
-- **Annotated**: Inline comments explaining key parts
-- **Realistic**: Actual use cases, not toy examples
-
-## Phase 6: Optimization & Quality Assurance
-
-### 6.1 Documentation Quality Checks
-
-**Verify all updates:**
-- ✓ No broken links (internal or external)
-- ✓ All code examples are syntactically valid
-- ✓ Consistent terminology throughout
-- ✓ Proper formatting (RST/Markdown)
-- ✓ No orphaned files or sections
-- ✓ Proper cross-references
-- ✓ Version numbers are current
-
-### 6.2 Sphinx Build Verification
-
-If Sphinx exists, ensure:
 ```bash
 cd docs/
 make clean
-make html  # Should build without errors or warnings
+make html  # Should build without errors
+make linkcheck  # Verify all links
 ```
 
-Check for:
-- ✗ No build errors
-- ✗ No warnings about missing references
-- ✗ No autodoc import errors
-- ✗ All pages render correctly
+## Phase 5: README Optimization
 
-### 6.3 Documentation Coverage Report
+**Generate comprehensive README**:
 
-Generate coverage report:
+### Sections to Include
+
+1. **Project overview** (2-3 sentences)
+2. **Badges** (CI/CD, coverage, version)
+3. **Features** (bulleted list)
+4. **Installation** (pip, npm, from source)
+5. **Quick start** (simple example)
+6. **Documentation** (links to full docs)
+7. **Configuration** (env vars table)
+8. **Development** (setup, testing)
+9. **Contributing** (link to guidelines)
+10. **License**
+
+**Template**: See [documentation-automation.md](../docs/code-documentation/documentation-automation.md#readme-generation) for complete template code
+
+## Phase 6: API Documentation Enhancement
+
+**For projects with REST APIs**:
+
+1. **Extract endpoints** from route decorators
+2. **Generate OpenAPI spec** from code
+3. **Create code examples** (Python, JavaScript, cURL)
+4. **Document authentication** methods
+5. **Add request/response examples**
+
+**OpenAPI generation**: See [api-documentation-templates.md](../docs/code-documentation/api-documentation-templates.md#complete-openapi-30-template)
+
+## Phase 7: Documentation Automation (Comprehensive mode)
+
+**Set up CI/CD for documentation**:
+
+### GitHub Actions Workflow
+
+```yaml
+name: Generate Documentation
+
+on:
+  push:
+    paths:
+      - 'src/**'
+      - 'docs/**'
+
+jobs:
+  generate-docs:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Generate docs
+      run: |
+        sphinx-build -b html docs/source docs/build
+    - name: Deploy
+      uses: peaceiris/actions-gh-pages@v3
 ```
-DOCUMENTATION COVERAGE SUMMARY
-================================
 
-Python Code Coverage:
-- Modules documented: X/Y (Z%)
-- Classes documented: X/Y (Z%)
-- Functions documented: X/Y (Z%)
-- With examples: X/Y (Z%)
+**Complete workflow**: See [documentation-automation.md](../docs/code-documentation/documentation-automation.md#github-actions-workflow)
 
-JavaScript/TypeScript Coverage:
-- Components documented: X/Y (Z%)
-- Functions documented: X/Y (Z%)
-- Interfaces documented: X/Y (Z%)
+### Pre-commit Hooks
 
-Overall Documentation Health: [Score/Grade]
-
-TOP PRIORITIES FOR IMPROVEMENT:
-1. [Most critical gap]
-2. [Second priority]
-3. [Third priority]
+```yaml
+repos:
+  - repo: local
+    hooks:
+      - id: doc-coverage
+        entry: interrogate
+        args: ['--fail-under', '80']
 ```
 
-### 6.4 Accessibility & Readability
+### Documentation Coverage Check
 
-Ensure documentation is:
-- **Clear**: Written for target audience (developers, users, etc.)
-- **Concise**: No unnecessary verbosity
-- **Organized**: Logical flow and structure
-- **Searchable**: Good headings, keywords, index entries
-- **Accessible**: Proper alt text for images, semantic markup
+```python
+from documentation_automation import DocCoverage
 
-## Phase 7: Final Deliverables
+coverage = DocCoverage()
+results = coverage.check_coverage('src/')
+# Returns: function_coverage, class_coverage, missing_docs
+```
 
-### 7.1 Files to Update/Create
+**Implementation**: See [documentation-automation.md](../docs/code-documentation/documentation-automation.md#documentation-coverage-validation)
 
-Based on analysis, update or create:
-- ✅ `README.md` (or `README.rst`)
-- ✅ `docs/index.rst` (Sphinx main page)
-- ✅ `docs/api/` (API reference with autodoc)
-- ✅ `docs/installation.rst`
-- ✅ `docs/quickstart.rst`
-- ✅ `docs/examples/` (examples directory)
-- ✅ `docs/CHANGELOG.md`
-- ✅ `CONTRIBUTING.md` (if missing)
-- ✅ `API.md` (if REST/GraphQL API exists)
-- ✅ `docs/conf.py` (Sphinx configuration)
+## Mode-Specific Execution
 
-### 7.2 Summary Report
+### Quick Mode (15-20 minutes)
+**Actions**:
+- Update README with recent changes
+- Fix broken links
+- Update version numbers
+**Skip**: AST analysis, Sphinx rebuild, CI/CD
 
-Provide comprehensive summary:
+### Standard Mode (30-45 minutes) - DEFAULT
+**Actions**:
+- Full AST analysis
+- Update README
+- Update Sphinx docs with new autodoc directives
+- Generate API docs
+- Run build verification
+**Skip**: CI/CD setup
+
+### Comprehensive Mode (60-90 minutes)
+**Actions**:
+- Everything from standard mode
+- Set up GitHub Actions workflow
+- Configure pre-commit hooks
+- Deploy documentation
+- Generate coverage reports
+- Create example documentation
+
+## Output Deliverables
+
+### Files Updated/Created
+
+**Always**:
+- ✅ README.md (or README.rst)
+
+**If Sphinx exists**:
+- ✅ docs/index.rst (main page)
+- ✅ docs/api/ (API reference with autodoc)
+- ✅ docs/conf.py (optimized configuration)
+
+**If API exists**:
+- ✅ API.md or docs/api/openapi.json
+- ✅ Code examples
+
+**Comprehensive mode**:
+- ✅ .github/workflows/docs.yml
+- ✅ .pre-commit-config.yaml
+- ✅ docs/examples/
+- ✅ Coverage report
+
+### Summary Report
+
 ```markdown
 # Documentation Update Summary
 
 ## Changes Made
+- Created: [new files]
+- Updated: [modified files]
+- Added sections: [new sections]
 
-### New Documentation
-- Created: [list new files]
-- Added sections: [list new sections]
-
-### Updated Documentation
-- README: [summary of changes]
-- Sphinx Docs: [summary of changes]
-- API Docs: [summary of changes]
-- Examples: [summary of changes]
-
-### Documentation Coverage Improvement
+## Coverage Improvement
 - Before: X% documented
 - After: Y% documented
 - Improvement: +Z%
 
 ## Identified Gaps
-
-### Critical (Must Address)
+### Critical
 1. [Gap 1]
 2. [Gap 2]
 
-### Important (Should Address)
-1. [Gap 1]
-2. [Gap 2]
-
-### Nice to Have
-1. [Gap 1]
-2. [Gap 2]
-
-## Next Steps
-
+### Next Steps
 1. Review generated documentation
-2. Add custom examples for complex features
-3. Set up documentation CI/CD
-4. Consider adding:
-   - Interactive documentation (Swagger/OpenAPI)
-   - Video tutorials
-   - Architecture diagrams
-   - Deployment guides
-
-## Build Instructions
-
-To build and view updated Sphinx docs:
-\`\`\`bash
-cd docs/
-pip install -r requirements.txt  # or requirements-docs.txt
-make html
-open _build/html/index.html  # or start docs/_build/html/index.html on Windows
-\`\`\`
+2. Add custom examples
+3. Set up CI/CD
 ```
 
-## Execution Instructions
+## Quality Verification
 
-### Argument Handling: $ARGUMENTS
+### Build Checks
 
-**Supported flags:**
-- `--full`: Complete documentation overhaul (most comprehensive)
-- `--sphinx`: Focus on Sphinx documentation only
-- `--readme`: Focus on README update only
-- `--api`: Focus on API documentation only
-- `--format=sphinx|mkdocs|hugo`: Specify documentation format
-- `--no-ast`: Skip AST analysis (faster but less comprehensive)
-- `--dry-run`: Analyze and report without making changes
+**Sphinx**:
+```bash
+cd docs && make html  # No errors/warnings
+cd docs && make linkcheck  # No broken links
+```
 
-### Default Behavior (no arguments)
-Comprehensive update of all documentation types with full AST analysis.
-
-### Intelligence Level: ULTRATHINK
-
-This command operates with maximum intelligence:
-- **Adaptive**: Automatically detects project type and documentation needs
-- **Comprehensive**: Covers all documentation formats and types
-- **AST-Driven**: Uses code parsing for accurate, complete coverage
-- **Gap-Aware**: Identifies and prioritizes documentation gaps
-- **Quality-Focused**: Ensures consistency, accuracy, and completeness
-- **Context-Aware**: Understands project evolution via git analysis
+**Coverage**:
+```bash
+interrogate -v src/ --fail-under 80
+```
 
 ### Success Criteria
 
-Documentation update is complete when:
-- ✅ All code elements have docstrings/comments
-- ✅ Sphinx builds without errors/warnings
-- ✅ README is comprehensive and current
-- ✅ API documentation covers all endpoints
-- ✅ Examples are working and illustrative
-- ✅ No broken links or references
-- ✅ Documentation coverage > 90%
-- ✅ All recent changes are reflected in docs
+✅ All code elements have docstrings/comments
+✅ Sphinx builds without errors/warnings
+✅ README is comprehensive and current
+✅ API documentation covers all endpoints
+✅ Examples are working and illustrative
+✅ No broken links or references
+✅ Documentation coverage > 90%
+✅ All recent changes reflected in docs
 
-## Advanced Features
+## Integration with External Docs
 
-### AST Parsing Implementation Guidance
+This command leverages comprehensive external documentation for implementation details:
 
-**For Python:**
-```python
-import ast
-import inspect
+- **AST parsing**: Language-specific extractors in [ast-parsing-implementation.md](../docs/code-documentation/ast-parsing-implementation.md)
+- **Sphinx setup**: Configuration templates in [sphinx-optimization.md](../docs/code-documentation/sphinx-optimization.md)
+- **API docs**: OpenAPI templates in [api-documentation-templates.md](../docs/code-documentation/api-documentation-templates.md)
+- **Automation**: CI/CD patterns in [documentation-automation.md](../docs/code-documentation/documentation-automation.md)
 
-# Parse module
-with open('module.py') as f:
-    tree = ast.parse(f.read())
-
-# Extract classes, functions
-for node in ast.walk(tree):
-    if isinstance(node, ast.ClassDef):
-        # Extract class info
-        class_name = node.name
-        docstring = ast.get_docstring(node)
-        methods = [n.name for n in node.body if isinstance(n, ast.FunctionDef)]
-    elif isinstance(node, ast.FunctionDef):
-        # Extract function info
-        func_name = node.name
-        docstring = ast.get_docstring(node)
-        args = [arg.arg for arg in node.args.args]
-```
-
-**For TypeScript/JavaScript:**
-Use appropriate parser (e.g., @babel/parser, typescript compiler API) to extract:
-- Exported functions/classes
-- JSDoc comments
-- Type definitions
-- React component props
-
-### Sphinx Autodoc Configuration
-
-Ensure `conf.py` includes:
-```python
-extensions = [
-    'sphinx.ext.autodoc',
-    'sphinx.ext.napoleon',
-    'sphinx.ext.viewcode',
-    'sphinx.ext.intersphinx',
-    'sphinx.ext.autosummary',
-]
-
-# Napoleon settings
-napoleon_google_docstring = True
-napoleon_numpy_docstring = True
-napoleon_include_init_with_doc = True
-
-# Autodoc settings
-autodoc_default_options = {
-    'members': True,
-    'undoc-members': True,
-    'show-inheritance': True,
-}
-
-# Auto-generate API docs
-autosummary_generate = True
-```
-
-### Documentation Testing
-
-After update, validate with:
-```bash
-# Sphinx linkcheck
-cd docs && make linkcheck
-
-# Docstring coverage (Python)
-interrogate -v .
-
-# Build verification
-cd docs && make html
-```
-
-## Final Notes
-
-This command provides **ULTRATHINK-level** documentation intelligence by:
-1. **Understanding** code structure through AST parsing
-2. **Detecting** gaps via comprehensive cross-referencing
-3. **Generating** accurate, complete documentation
-4. **Optimizing** for readability and maintainability
-5. **Verifying** quality through automated checks
-
-The result is documentation that is **accurate**, **comprehensive**, **maintainable**, and **developer-friendly**.
+Focus on **accuracy**, **completeness**, and **maintainability** through AST-driven analysis and automated quality checks.
