@@ -1,369 +1,235 @@
-# /sciml-setup - Interactive SciML Project Scaffolding
+---
+version: "1.0.3"
+category: "julia-development"
+command: "/sciml-setup"
+description: Interactive SciML project scaffolding with auto-detection of problem types (ODE, PDE, SDE, optimization) and generation of template code
+allowed-tools: Bash(find:*), Bash(git:*)
+argument-hint: "<problem-description>"
+color: purple
+execution_modes:
+  quick: "5-10 minutes - Generate basic template for detected problem type"
+  standard: "15-20 minutes - Generate comprehensive template with callbacks and examples"
+  comprehensive: "25-35 minutes - Generate full template with ensemble, sensitivity analysis, and optimization guide"
+agents:
+  primary:
+    - sciml-pro
+  conditional:
+    - agent: turing-pro
+      trigger: pattern "bayesian|mcmc|posterior|prior|inference"
+    - agent: julia-pro
+      trigger: pattern "performance|optimization|type.*stability"
+  orchestrated: false
+---
 
-**Priority**: 1 (Highest)
-**Agent**: sciml-pro
-**Description**: Auto-detect problem type from user description (ODE, PDE, SDE, optimization) and generate scaffolded solver code with appropriate templates, callbacks, ensemble simulations, and sensitivity analysis setup.
+# Interactive SciML Project Scaffolding
 
-## Overview
+Auto-detect problem type from natural language description and generate working template code with DifferentialEquations.jl, ModelingToolkit.jl, or Optimization.jl.
 
-The /sciml-setup command provides interactive scaffolding for Scientific Machine Learning projects. It automatically detects the type of problem from a natural language description and generates working template code with DifferentialEquations.jl, ModelingToolkit.jl, or Optimization.jl.
+## Quick Reference
 
-## Usage
+| Topic | External Documentation | Lines |
+|-------|------------------------|-------|
+| **Complete Templates** | [sciml-templates.md](../docs/sciml-templates.md) | ~550 |
+| **Solver Selection** | [sciml-templates.md#solver-selection-guide](../docs/sciml-templates.md#solver-selection-guide) | ~80 |
+| **Best Practices** | [sciml-templates.md#best-practices](../docs/sciml-templates.md#best-practices) | ~100 |
+| **Common Pitfalls** | [sciml-templates.md#common-pitfalls](../docs/sciml-templates.md#common-pitfalls) | ~80 |
 
-```
-/sciml-setup "<problem description>"
-```
+**Total External Documentation**: ~550 lines of complete templates and guidance
 
-**Examples:**
-```
-/sciml-setup "coupled oscillator system"
-/sciml-setup "heat equation with boundary conditions"
-/sciml-setup "stochastic population dynamics with noise"
-/sciml-setup "parameter estimation for pharmacokinetics"
-```
+## Requirements
 
-## Problem Type Auto-Detection
+$ARGUMENTS
 
-The command analyzes the description for keywords to determine problem type:
+## Core Workflow
 
-**ODE Detection Keywords**:
-- "ordinary differential", "ODE"
-- "dynamics", "time evolution"
-- "population", "predator-prey"
-- "chemical kinetics", "oscillator"
-- "coupled system"
+### Phase 1: Problem Type Detection
 
-**PDE Detection Keywords**:
-- "partial differential", "PDE"
-- "spatial", "diffusion"
-- "heat equation", "wave equation"
-- "boundary conditions", "Laplacian"
+**Auto-detect from natural language description** using keyword analysis:
 
-**SDE Detection Keywords**:
-- "stochastic", "SDE"
-- "noise", "random", "Brownian"
-- "uncertainty", "fluctuations"
+**Detection Categories**:
+1. **ODE** (Ordinary Differential Equations)
+   - Keywords: "ordinary differential", "ODE", "dynamics", "time evolution", "population", "predator-prey", "chemical kinetics", "oscillator", "coupled system"
 
-**Optimization Detection Keywords**:
-- "minimize", "maximize", "optimal"
-- "parameter estimation", "fitting"
-- "calibration", "inverse problem"
+2. **PDE** (Partial Differential Equations)
+   - Keywords: "partial differential", "PDE", "spatial", "diffusion", "heat equation", "wave equation", "boundary conditions", "Laplacian"
 
-## Interactive Prompts
+3. **SDE** (Stochastic Differential Equations)
+   - Keywords: "stochastic", "SDE", "noise", "random", "Brownian", "uncertainty", "fluctuations"
 
-After auto-detection, the command presents interactive prompts:
+4. **Optimization** (Parameter Estimation)
+   - Keywords: "minimize", "maximize", "optimal", "parameter estimation", "fitting", "calibration", "inverse problem"
 
-1. **Confirm Problem Type**: "Detected ODE problem. Is this correct? (yes/no)"
-2. **Modeling Approach**: "Use symbolic ModelingToolkit.jl or direct API? (symbolic/direct)"
-3. **Add Callbacks?**: "Include callback examples? (yes/no)"
-4. **Ensemble Simulation?**: "Include ensemble simulation template? (yes/no)"
-5. **Sensitivity Analysis?**: "Include sensitivity analysis setup? (yes/no)"
+**Scoring**: Count keyword matches, select type with highest score.
 
-## Output Templates
+**Ambiguous Cases**: If multiple types score similarly, present options to user.
 
-### ODE Template (Direct API)
+### Phase 2: Modeling Approach Selection
 
+**Prompt user** for approach preference:
+
+1. **Symbolic ModelingToolkit.jl** (recommended for complex systems)
+   - Automatic differentiation
+   - Symbolic simplification
+   - Component-based modeling
+   - Easier debugging (equations visible)
+
+2. **Direct API** (for simple systems or performance-critical code)
+   - Less overhead
+   - More explicit control
+   - Faster compilation
+
+**Default**: Symbolic for PDE, Direct for others (unless user specifies)
+
+### Phase 3: Feature Selection
+
+**Interactive prompts** (standard & comprehensive modes):
+
+- **Callbacks**: Include event detection/termination examples? (yes/no)
+- **Ensemble**: Include parameter/initial condition variations? (yes/no)
+- **Sensitivity**: Include sensitivity analysis setup? (yes/no)
+
+**Quick mode**: Skip prompts, generate basic template only.
+
+### Phase 4: Template Generation
+
+**Generate appropriate template** based on selections:
+
+**Template Structure**:
 ```julia
-# Auto-generated ODE template by /sciml-setup
-using DifferentialEquations
-using Plots
-
-# System: <description from user>
-function system_dynamics!(du, u, p, t)
-    # State variables: u[1], u[2], ...
-    # Parameters: p[1], p[2], ...
-
-    # TODO: Define derivatives
-    du[1] = p[1] * u[1] - p[2] * u[1] * u[2]
-    du[2] = -p[3] * u[2] + p[4] * u[1] * u[2]
-end
-
-# Initial conditions
-u0 = [1.0, 1.0]  # TODO: Set appropriate initial values
-
-# Time span
-tspan = (0.0, 10.0)  # TODO: Adjust time range
-
-# Parameters
-p = [1.5, 1.0, 3.0, 1.0]  # TODO: Set parameter values
-
-# Define problem
-prob = ODEProblem(system_dynamics!, u0, tspan, p)
-
-# Solve (Tsit5 is a good general-purpose solver)
-sol = solve(prob, Tsit5())
-
-# Plot solution
-plot(sol, xlabel="Time", ylabel="State", label=["u1" "u2"])
-
-# Access solution at specific times
-println("Solution at t=5: ", sol(5.0))
+# Header comments (problem description, auto-generated notice)
+# Imports (DifferentialEquations, ModelingToolkit, etc.)
+# Problem definition (ODE/PDE/SDE/Optimization)
+# TODO comments for user customization
+# Solver call with recommended algorithm
+# Visualization boilerplate
+# [Optional] Callbacks, ensemble, sensitivity sections
 ```
 
-**With Callbacks:**
-```julia
-# Callback: Terminate when condition met
-condition(u, t, integrator) = u[1] < 0.1  # TODO: Define condition
-affect!(integrator) = terminate!(integrator)
-cb_terminate = ContinuousCallback(condition, affect!)
+**File Output**:
+- Save to: `<sanitized-description>_sciml.jl` or user-specified filename
+- Print: Next steps and usage instructions
 
-# Callback: Periodic events
-function periodic_event!(integrator)
-    integrator.u[1] *= 0.9  # TODO: Define periodic action
-end
-cb_periodic = PeriodicCallback(periodic_event!, 1.0)  # Every 1 time unit
+### Phase 5: Guidance & Next Steps
 
-# Combine callbacks
-callbacks = CallbackSet(cb_terminate, cb_periodic)
+**Provide user** with:
+1. **Customization checklist**: TODOs to fill in
+2. **Solver recommendations**: Why this solver was chosen
+3. **Next steps**: How to run, modify, and extend
+4. **External docs reference**: Link to detailed templates and guides
 
-# Solve with callbacks
-sol = solve(prob, Tsit5(), callback=callbacks)
-```
+## Mode-Specific Execution
 
-**With Ensemble Simulation:**
-```julia
-# Ensemble simulation with varying initial conditions
-function prob_func(prob, i, repeat)
-    # TODO: Customize how each trajectory differs
-    u0_varied = u0 .* (1.0 .+ 0.1 * randn(length(u0)))
-    remake(prob, u0=u0_varied)
-end
+### Quick Mode (5-10 minutes)
 
-ensemble_prob = EnsembleProblem(prob, prob_func=prob_func)
+**Phases**: 1, 2 (auto-select Direct API), 4 (basic template), 5 (brief guidance)
 
-# Solve ensemble (using multi-threading)
-ensemble_sol = solve(ensemble_prob, Tsit5(), EnsembleThreads(), trajectories=100)
+**Output**: Minimal working template with core structure
 
-# Plot ensemble
-using DifferentialEquations.EnsembleAnalysis
-summ = EnsembleSummary(ensemble_sol)
-plot(summ, xlabel="Time", ylabel="State")
-```
+**Skip**: Feature selection prompts, callback/ensemble/sensitivity sections
 
-**With Sensitivity Analysis:**
-```julia
-using SciMLSensitivity
+### Standard Mode (15-20 minutes) - DEFAULT
 
-# Forward sensitivity to parameters
-prob_sens = ODEForwardSensitivityProblem(system_dynamics!, u0, tspan, p)
-sol_sens = solve(prob_sens, Tsit5())
+**Phases**: All 5 phases
 
-# Extract sensitivities
-sens = extract_local_sensitivities(sol_sens)
+**Output**: Comprehensive template with selected features
 
-# Plot sensitivity to first parameter
-plot(sol_sens.t, [s[1,1] for s in sens], xlabel="Time",
-     ylabel="∂u1/∂p1", title="Sensitivity to Parameter 1")
-```
+**Include**: Interactive prompts, basic callbacks/ensemble examples if selected
 
-### ODE Template (Symbolic ModelingToolkit)
+### Comprehensive Mode (25-35 minutes)
 
-```julia
-# Auto-generated symbolic ODE template by /sciml-setup
-using ModelingToolkit
-using DifferentialEquations
-using Plots
+**Phases**: All 5 phases with extended guidance
 
-# Define symbolic variables
-@variables t x(t) y(t)
-@parameters α β γ δ
-D = Differential(t)
+**Output**: Full template with all optional features
 
-# Define system equations symbolically
-# TODO: Define your differential equations
-eqs = [
-    D(x) ~ α * x - β * x * y,
-    D(y) ~ -γ * y + δ * x * y
-]
+**Include**:
+- All callback types (continuous, discrete, termination)
+- Complete ensemble setup (ThreadedEnsemble, parameter sampling)
+- Forward and adjoint sensitivity analysis
+- Performance tips and optimization guidance
+- Links to detailed external documentation
 
-# Create ODE system
-@named sys = ODESystem(eqs, t)
+## Template Examples
 
-# Simplify system (symbolic optimization)
-sys_simplified = structural_simplify(sys)
+### ODE Template (Brief)
 
-# Initial conditions and parameters
-u0 = [x => 1.0, y => 1.0]  # TODO: Set initial values
-p = [α => 1.5, β => 1.0, γ => 3.0, δ => 1.0]  # TODO: Set parameters
-tspan = (0.0, 10.0)
+See [sciml-templates.md#ode-templates](../docs/sciml-templates.md#ode-templates) for:
+- Direct API template with state dynamics
+- Symbolic ModelingToolkit template
+- Callback examples (termination, periodic)
+- Ensemble simulation setup
+- Sensitivity analysis integration
 
-# Create numerical problem
-prob = ODEProblem(sys_simplified, u0, tspan, p)
+### PDE Template (Brief)
 
-# Solve
-sol = solve(prob, Tsit5())
+See [sciml-templates.md#pde-templates](../docs/sciml-templates.md#pde-templates) for:
+- Method of Lines discretization
+- Boundary and initial conditions
+- Domain specification
+- Integration with ODE solvers
 
-# Plot
-plot(sol, xlabel="Time", ylabel="State", label=["x" "y"])
-```
+### SDE Template (Brief)
 
-### PDE Template
+See [sciml-templates.md#sde-templates](../docs/sciml-templates.md#sde-templates) for:
+- Drift and diffusion functions
+- Stochastic solver selection (SOSRI)
+- Ensemble trajectories
+- Noise parameter handling
 
-```julia
-# Auto-generated PDE template by /sciml-setup
-using ModelingToolkit
-using DifferentialEquations
+### Optimization Template (Brief)
 
-# Define symbolic variables
-@parameters t x
-@variables u(..)
-Dt = Differential(t)
-Dx = Differential(x)
-Dxx = Dx^2  # Second derivative
+See [sciml-templates.md#optimization-templates](../docs/sciml-templates.md#optimization-templates) for:
+- Loss function design
+- Solver sensitivity configuration
+- Parameter estimation workflow
+- Data fitting examples
 
-# PDE equation: ∂u/∂t = ∂²u/∂x²
-# TODO: Modify equation for your problem
-eq = Dt(u(t, x)) ~ Dxx(u(t, x))
+## Solver Selection
 
-# Boundary and initial conditions
-# TODO: Define appropriate conditions
-bcs = [
-    u(0, x) ~ cos(π * x),  # Initial condition
-    u(t, 0) ~ 0,            # Boundary at x=0
-    u(t, 1) ~ 0             # Boundary at x=1
-]
+**Automatic solver recommendation** based on problem type:
 
-# Domain
-domains = [
-    t ∈ IntervalDomain(0.0, 1.0),
-    x ∈ IntervalDomain(0.0, 1.0)
-]
+| Problem Type | Recommended Solver | Reason |
+|--------------|-------------------|--------|
+| **ODE (non-stiff)** | `Tsit5()` | General-purpose, fast, accurate |
+| **ODE (stiff)** | `Rodas5()` | Handles stiffness well |
+| **PDE** | Method of Lines → ODE solver | Discretize spatially first |
+| **SDE** | `SOSRI()` | Recommended for general SDEs |
+| **Optimization** | `BFGS()` | Quasi-Newton, good default |
 
-# Method of Lines discretization
-@named pde_system = PDESystem(eq, bcs, domains, [t, x], [u])
-
-# NOTE: For NeuralPDE (PINN) approach, see NeuralPDE.jl documentation
-# For Method of Lines, convert to ODE system and solve
-```
-
-### SDE Template
-
-```julia
-# Auto-generated SDE template by /sciml-setup
-using DifferentialEquations
-using Plots
-
-# Drift function (deterministic part)
-function drift!(du, u, p, t)
-    # TODO: Define drift dynamics
-    du[1] = p[1] * u[1] - p[2] * u[1] * u[2]
-    du[2] = -p[3] * u[2] + p[4] * u[1] * u[2]
-end
-
-# Diffusion function (stochastic part)
-function diffusion!(du, u, p, t)
-    # TODO: Define noise strength
-    du[1] = p[5] * u[1]  # Multiplicative noise
-    du[2] = p[6] * u[2]
-end
-
-# Initial conditions
-u0 = [1.0, 1.0]
-tspan = (0.0, 10.0)
-p = [1.5, 1.0, 3.0, 1.0, 0.1, 0.1]  # Include noise parameters
-
-# Define SDE problem
-prob = SDEProblem(drift!, diffusion!, u0, tspan, p)
-
-# Solve
-sol = solve(prob, SOSRI())  # Stochastic solver
-
-# Plot multiple trajectories
-ensemble_prob = EnsembleProblem(prob)
-ensemble_sol = solve(ensemble_prob, SOSRI(), EnsembleThreads(), trajectories=100)
-plot(ensemble_sol, xlabel="Time", ylabel="State", alpha=0.2)
-```
-
-### Optimization Template
-
-```julia
-# Auto-generated optimization template by /sciml-setup
-using Optimization
-using OptimizationOptimJL
-using DifferentialEquations
-
-# Define the model (ODE system)
-function model!(du, u, p, t)
-    # TODO: Define model dynamics
-    du[1] = p[1] * u[1]
-    du[2] = p[2] * u[2]
-end
-
-# Experimental data (TODO: Replace with real data)
-t_data = 0.0:0.1:10.0
-u_data = rand(2, length(t_data))  # Placeholder data
-
-# Loss function: Compare model to data
-function loss_function(p, _)
-    u0 = [1.0, 1.0]
-    tspan = (0.0, 10.0)
-    prob = ODEProblem(model!, u0, tspan, p)
-
-    sol = solve(prob, Tsit5(), saveat=t_data, sensealg=ForwardDiffSensitivity())
-
-    # Check if solve was successful
-    if sol.retcode != :Success
-        return Inf
-    end
-
-    # Mean squared error
-    loss = sum(abs2, Array(sol) .- u_data)
-    return loss
-end
-
-# Initial parameter guess
-p_init = [0.5, 0.5]
-
-# Setup optimization problem
-opt_prob = OptimizationProblem(loss_function, p_init)
-
-# Solve optimization
-result = solve(opt_prob, BFGS())
-
-println("Optimized parameters: ", result.u)
-println("Final loss: ", result.minimum)
-
-# Visualize fit
-prob_opt = ODEProblem(model!, [1.0, 1.0], (0.0, 10.0), result.u)
-sol_opt = solve(prob_opt, Tsit5())
-
-using Plots
-plot(sol_opt, xlabel="Time", ylabel="State", label=["Model u1" "Model u2"])
-scatter!(t_data, u_data[1,:], label="Data u1")
-scatter!(t_data, u_data[2,:], label="Data u2")
-```
+**Full guide**: [sciml-templates.md#solver-selection-guide](../docs/sciml-templates.md#solver-selection-guide)
 
 ## Success Criteria
 
-The command successfully:
-1. Auto-detects problem type from natural language description
-2. Generates syntactically correct Julia code
-3. Includes appropriate solver selection (Tsit5 for ODE, SOSRI for SDE, etc.)
-4. Provides TODO comments for user customization
-5. Generates runnable code (after TODOs are filled)
-6. Includes explanatory comments
-7. Optionally includes callbacks, ensemble, and sensitivity analysis based on user choice
+✅ Problem type correctly detected from description
+✅ Appropriate template generated (ODE/PDE/SDE/Optimization)
+✅ Code is syntactically correct Julia
+✅ TODO comments guide user customization
+✅ Recommended solver included
+✅ Code is runnable after TODOs filled
+✅ Explanatory comments provided
+✅ Optional features (callbacks, ensemble, sensitivity) included if selected
+✅ External documentation referenced for detailed guidance
 
-## Notes
+## Agent Integration
 
-- Generated code uses best practices for each problem type
-- Solver selection matches problem characteristics
-- Code includes performance hints (e.g., ForwardDiffSensitivity for optimization)
-- Templates are starting points; users customize based on specific needs
-- All generated files include proper imports and dependencies
+- **sciml-pro**: Primary agent for SciML template generation and solver selection
+- **turing-pro**: Triggered for Bayesian parameter estimation problems (keywords: bayesian, mcmc, posterior)
+- **julia-pro**: Triggered for performance optimization questions (keywords: performance, type stability)
 
-## Related Commands
+## Post-Generation
 
-- **/julia-optimize**: Analyze and optimize generated code for performance
-- **/julia-scaffold**: Create package structure for organizing SciML projects
+After template is generated, guide user to:
 
-## Implementation Notes
+1. **Customize**: Fill in TODO sections with problem-specific code
+2. **Test**: Run template to verify correctness
+3. **Extend**: Add features from external docs if needed
+4. **Optimize**: Use `/julia-optimize` if performance is critical
+5. **Document**: Add docstrings and examples
 
-The command:
-1. Parses user description for keywords
-2. Scores each problem type based on keyword matches
-3. Selects type with highest score (or prompts if ambiguous)
-4. Presents interactive prompts for configuration
-5. Generates appropriate template file
-6. Saves to `<description>_sciml.jl` or user-specified filename
-7. Prints next steps and usage instructions
+**See Also**:
+- `/julia-optimize` - Profile and optimize generated code
+- `/julia-scaffold` - Create package structure for SciML project
+- [sciml-templates.md](../docs/sciml-templates.md) - Complete template library
+
+---
+
+Focus on **rapid scaffolding**, **correct defaults**, and **clear guidance** to transform problem descriptions into working SciML code.
