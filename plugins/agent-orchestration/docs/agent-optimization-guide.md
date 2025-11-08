@@ -432,7 +432,7 @@ agents/customer-support/
 ├── v1.1.0.md  (added pricing examples)
 ├── v1.1.1.md  (fixed tool selection bug)
 ├── v1.2.0.md  (added CoT reasoning)
-└── v2.0.0.md  (added new escalation tool)
+└── v1.0.2.md  (added new escalation tool)
 ```
 
 **Changelog**:

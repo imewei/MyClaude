@@ -146,7 +146,7 @@ bundle outdated --parseable > outdated-packages.txt
 **Categorize by update type**:
 - **Patch** (1.2.3 → 1.2.4): Bug fixes only, safe to upgrade
 - **Minor** (1.2.4 → 1.3.0): New features, backward compatible
-- **Major** (1.3.0 → 2.0.0): Breaking changes, requires migration
+- **Major** (1.3.0 → 1.0.2): Breaking changes, requires migration
 
 ### Step 1C: Compatibility Matrix Generation
 

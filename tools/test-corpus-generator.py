@@ -252,7 +252,7 @@ print(f"RDF computed: {len(rdf_analysis.results.rdf)} bins")
             expected_plugins=["deep-learning", "python-development"],
             files={
                 "requirements.txt": '''
-torch>=2.0.0
+torch>=1.0.2
 transformers>=4.30.0
 datasets>=2.10.0
 wandb>=0.15.0
@@ -469,8 +469,8 @@ async fn main() -> Result<()> {
                 "requirements.txt": '''
 fastapi>=0.100.0
 uvicorn[standard]>=0.23.0
-sqlalchemy>=2.0.0
-pydantic>=2.0.0
+sqlalchemy>=1.0.2
+pydantic>=1.0.2
 python-jose[cryptography]>=3.3.0
 passlib[bcrypt]>=1.7.4
 ''',

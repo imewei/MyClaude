@@ -82,7 +82,7 @@ main (production releases only)
   │     ├── feature/user-dashboard
   │     ├── feature/api-v2
   │     └── feature/analytics
-  ├── release/v2.0.0 (release preparation)
+  ├── release/v1.0.2 (release preparation)
   └── hotfix/security-patch (emergency fixes)
 ```
 
@@ -526,7 +526,7 @@ allow_force_pushes: false
 ```
 MAJOR.MINOR.PATCH (e.g., 2.1.3)
 
-MAJOR: Breaking changes (2.0.0)
+MAJOR: Breaking changes (1.0.2)
 MINOR: New features, backward compatible (2.1.0)
 PATCH: Bug fixes, backward compatible (2.1.3)
 ```
@@ -536,7 +536,7 @@ PATCH: Bug fixes, backward compatible (2.1.3)
 # Using npm version
 npm version patch  # 1.0.0 → 1.0.1
 npm version minor  # 1.0.1 → 1.1.0
-npm version major  # 1.1.0 → 2.0.0
+npm version major  # 1.1.0 → 1.0.2
 
 # Manual
 echo "2.1.0" > VERSION

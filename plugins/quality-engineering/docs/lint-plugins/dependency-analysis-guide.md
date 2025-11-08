@@ -507,7 +507,7 @@ IMPACT ANALYSIS: comprehensive-review:code-reviewer
 📋 Migration Checklist:
   1. Create migration guide
   2. Add deprecation warnings in v1.x
-  3. Release breaking change in v2.0.0
+  3. Release breaking change in v1.0.2
   4. Update all 15 references
   5. Test each affected plugin
   6. Coordinate release with plugin owners

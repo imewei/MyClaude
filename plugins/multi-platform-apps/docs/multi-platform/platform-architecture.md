@@ -796,8 +796,8 @@ api_versions:
     status: deprecated
     sunset_date: 2025-12-31
     supported_clients:
-      - ios: "<=2.0.0"
-      - android: "<=2.0.0"
+      - ios: "<=1.0.2"
+      - android: "<=1.0.2"
       - web: "<=1.5.0"
 
   v2:

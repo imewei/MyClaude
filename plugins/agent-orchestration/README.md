@@ -409,7 +409,7 @@ See the [contribution guidelines](https://myclaude.readthedocs.io/en/latest/cont
 
 ## Version History
 
-- **v1.0.3** (2025-11-06) - Version consolidation release: corrected version numbering (v2.0.0 → v1.0.1 for agents), maintained all v1.0.2 improvements, ensured version consistency across documentation
+- **v1.0.3** (2025-11-06) - Version consolidation release: corrected version numbering (v1.0.2 → v1.0.1 for agents), maintained all v1.0.2 improvements, ensured version consistency across documentation
 - **v1.0.2** (2025-11-06) - Command optimization release: restructured both slash commands with executable logic, 19-20% token reduction, 12+ external docs, 4 real case studies
 - **v1.0.1** (2025-01-29) - Agent prompt engineering release: major improvements to both agents (context-manager, multi-agent-orchestrator) with Constitutional AI, chain-of-thought reasoning, and comprehensive examples
 - **v1.0.0** - Initial release with basic agent definitions

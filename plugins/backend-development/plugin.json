@@ -33,7 +33,7 @@
       "name": "Backend Architect",
       "description": "Expert backend architect specializing in scalable API design, microservices architecture, and distributed systems",
       "status": "active",
-      "version": "2.0.0",
+      "version": "1.0.2",
       "maturity": "92%",
       "improvements": "Added triggering criteria with decision tree, 6-step chain-of-thought reasoning framework, 5 Constitutional AI principles, comprehensive event-driven architecture example with full implementation. Expected: 30% better service boundary identification, 40% reduction in over-engineering, 50% improvement in resilience pattern adoption."
     },
@@ -43,7 +43,7 @@
       "name": "GraphQL Architect",
       "description": "Master modern GraphQL with federation, performance optimization, and enterprise security",
       "status": "active",
-      "version": "2.0.0",
+      "version": "1.0.2",
       "maturity": "90%",
       "improvements": "Added triggering criteria for GraphQL-specific tasks, 5-step chain-of-thought reasoning (Schema → Performance → Authorization → Federation → Verification), 5 GraphQL-specific Constitutional AI principles, comprehensive N+1 elimination example with DataLoader. Expected: 60% reduction in N+1 problems, 45% better schema evolution practices, 50% improvement in authorization implementation."
     },
@@ -53,7 +53,7 @@
       "name": "TDD Orchestrator",
       "description": "Master TDD orchestrator specializing in red-green-refactor discipline and multi-agent workflow coordination",
       "status": "active",
-      "version": "2.0.0",
+      "version": "1.0.2",
       "maturity": "93%",
       "improvements": "Added triggering criteria for TDD orchestration vs simple testing, 6-step chain-of-thought orchestration (Maturity Assessment → Workflow Design → Architecture → Agent Coordination → Metrics → Verification), 5 TDD-specific Constitutional AI principles, comprehensive payment microservice example with pre-commit hooks and metrics dashboard. Expected: 70% better test-first discipline enforcement, 50% improvement in test quality (mutation score), 45% better agent coordination efficiency."
     }
@@ -76,7 +76,7 @@
       "directory": "skills/api-design-principles",
       "name": "API Design Principles",
       "description": "Best practices and patterns for designing REST, GraphQL, and gRPC APIs",
-      "version": "2.0.0",
+      "version": "1.0.2",
       "improvements": "Enhanced description with 20+ specific use cases, expanded 'When to use' section with 21 detailed examples covering REST, GraphQL, pagination, versioning, authentication, rate limiting, webhooks, and more."
     },
     {
@@ -84,7 +84,7 @@
       "directory": "skills/architecture-patterns",
       "name": "Architecture Patterns",
       "description": "Backend architecture patterns including microservices, event-driven, and distributed systems",
-      "version": "2.0.0",
+      "version": "1.0.2",
       "improvements": "Enhanced description with 25+ use cases covering Clean Architecture, Hexagonal Architecture, DDD, CQRS, Event Sourcing, expanded 'When to use' section with 22 detailed examples."
     },
     {
@@ -92,7 +92,7 @@
       "directory": "skills/auth-implementation-patterns",
       "name": "Auth Implementation Patterns",
       "description": "Authentication and authorization patterns for secure backend systems",
-      "version": "2.0.0",
+      "version": "1.0.2",
       "improvements": "Enhanced description with 25+ use cases covering JWT, OAuth2, RBAC, session management, MFA, SSO, expanded 'When to use' section with 24 detailed examples."
     },
     {
@@ -100,7 +100,7 @@
       "directory": "skills/error-handling-patterns",
       "name": "Error Handling Patterns",
       "description": "Error handling and resilience patterns for robust backend services",
-      "version": "2.0.0",
+      "version": "1.0.2",
       "improvements": "Enhanced description with 20+ use cases covering exceptions, Result types, circuit breakers, retry logic, graceful degradation, expanded 'When to use' section with 24 detailed examples."
     },
     {
@@ -108,7 +108,7 @@
       "directory": "skills/microservices-patterns",
       "name": "Microservices Patterns",
       "description": "Microservices architecture patterns and best practices",
-      "version": "2.0.0",
+      "version": "1.0.2",
       "improvements": "Enhanced description with 20+ use cases covering service boundaries, Saga patterns, API Gateway, event-driven architecture, expanded 'When to use' section with 24 detailed examples."
     },
     {
@@ -116,7 +116,7 @@
       "directory": "skills/sql-optimization-patterns",
       "name": "SQL Optimization Patterns",
       "description": "Database query optimization and SQL performance tuning patterns",
-      "version": "2.0.0",
+      "version": "1.0.2",
       "improvements": "Enhanced description with 20+ use cases covering EXPLAIN analysis, indexing strategies, N+1 elimination, pagination, batch operations, expanded 'When to use' section with 25 detailed examples."
     }
   ]

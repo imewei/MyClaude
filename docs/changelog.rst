@@ -353,7 +353,7 @@ This documentation follows:
 
 - `Sphinx Documentation Standards <https://www.sphinx-doc.org/>`_
 - `Read the Docs Best Practices <https://docs.readthedocs.io/>`_
-- `Semantic Versioning 2.0.0 <https://semver.org/>`_
+- `Semantic Versioning 1.0.2 <https://semver.org/>`_
 - `Keep a Changelog 1.1.0 <https://keepachangelog.com/>`_
 
 See Also

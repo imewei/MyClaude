@@ -3,7 +3,7 @@
 All notable changes to the Code Documentation plugin will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
-and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+and this project adheres to [Semantic Versioning](https://semver.org/spec/v1.0.2.html).
 
 ## [1.0.3] - 2025-11-06
 
@@ -105,7 +105,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
-## [2.0.0] - 2025-10-29
+## [1.0.2] - 2025-10-29
 
 ### Major Release - Comprehensive Prompt Engineering Improvements
 
@@ -124,7 +124,7 @@ This release represents a major enhancement to all agents with advanced prompt e
 
 All 3 agents have been upgraded from basic to 90-92% maturity with comprehensive prompt engineering improvements.
 
-### 🔍 Code Reviewer (v2.0.0) - Maturity: 92%
+### 🔍 Code Reviewer (v1.0.2) - Maturity: 92%
 
 **Before**: 157 lines | **After**: 1,038 lines | **Growth**: +881 lines (561%)
 
@@ -172,7 +172,7 @@ All 3 agents have been upgraded from basic to 90-92% maturity with comprehensive
 
 ---
 
-### 📚 Documentation Architect (v2.0.0) - Maturity: 92%
+### 📚 Documentation Architect (v1.0.2) - Maturity: 92%
 
 **Before**: 77 lines | **After**: 980 lines | **Growth**: +903 lines (1,172%)
 
@@ -220,7 +220,7 @@ All 3 agents have been upgraded from basic to 90-92% maturity with comprehensive
 
 ---
 
-### 🎓 Tutorial Engineer (v2.0.0) - Maturity: 92%
+### 🎓 Tutorial Engineer (v1.0.2) - Maturity: 92%
 
 **Before**: 118 lines | **After**: 1,183 lines | **Growth**: +1,065 lines (903%)
 
@@ -288,8 +288,8 @@ All 3 agents have been upgraded from basic to 90-92% maturity with comprehensive
 - **displayName**: Added "Code Documentation" for better marketplace visibility
 - **category**: Set to "documentation" for proper categorization
 - **keywords**: Expanded to 11 keywords covering code review, tutorials, technical writing, security review, architecture docs, educational content, and scientific computing
-- **changelog**: Comprehensive v2.0.0 release notes with expected performance improvements
-- **agents**: All 3 agents upgraded with version 2.0.0, maturity 92%, and detailed improvement descriptions
+- **changelog**: Comprehensive v1.0.2 release notes with expected performance improvements
+- **agents**: All 3 agents upgraded with version 1.0.2, maturity 92%, and detailed improvement descriptions
 
 ---
 
@@ -330,7 +330,7 @@ All 3 agents have been upgraded from basic to 90-92% maturity with comprehensive
 
 ### For Existing Users
 
-**No Breaking Changes**: v2.0.0 is fully backward compatible with v1.0.0
+**No Breaking Changes**: v1.0.2 is fully backward compatible with v1.0.0
 
 **What's Enhanced**:
 - All agents now provide step-by-step reasoning with their outputs
@@ -410,4 +410,4 @@ Based on comprehensive prompt engineering improvements, users can expect:
 
 ---
 
-[2.0.0]: https://github.com/yourusername/code-documentation/compare/v1.0.0...v2.0.0
+[1.0.2]: https://github.com/yourusername/code-documentation/compare/v1.0.0...v1.0.2

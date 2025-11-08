@@ -3,7 +3,7 @@
 All notable changes to the debugging-toolkit plugin will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
-and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+and this project adheres to [Semantic Versioning](https://semver.org/spec/v1.0.2.html).
 
 ## [1.0.3] - 2025-01-15
 
@@ -129,7 +129,7 @@ All components updated with structured metadata:
 - No breaking changes
 
 **dx-optimizer agent** (v1.0.3):
-- Version consistency update (v2.0.0 → v1.0.3)
+- Version consistency update (v1.0.2 → v1.0.3)
 - Maintained 85% maturity
 - No breaking changes
 
@@ -249,7 +249,7 @@ No security-related changes in this release.
 
 ### Added
 
-#### New Agent: dx-optimizer (v2.0.0)
+#### New Agent: dx-optimizer (v1.0.2)
 - **Systematic 5-step optimization framework** with 40 questions across Friction Discovery, Root Cause Analysis, Solution Design, Implementation, and Validation phases
 - **5 Constitutional AI principles** with 40 self-check questions for quality assurance:
   - Developer Time is Precious (90% target)

@@ -129,7 +129,7 @@ spec:
     spec:
       containers:
       - name: model
-        image: ml-model:v2.0.0
+        image: ml-model:v1.0.2
 
 ---
 # Service (switch by updating selector)
@@ -339,7 +339,7 @@ def get_model_version(user_id):
     use_new_model = ld_client.variation("ml-model-v2", user, default=False)
 
     if use_new_model:
-        return "v2.0.0"
+        return "v1.0.2"
     else:
         return "v1.0.0"
 

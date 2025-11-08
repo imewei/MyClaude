@@ -472,7 +472,7 @@ MAJOR.MINOR.PATCH
 1.0.0 → Initial release
 1.0.1 → Bug fix (backward compatible)
 1.1.0 → New feature (backward compatible)
-2.0.0 → Breaking change
+1.0.2 → Breaking change
 ```
 
 **Update CHANGELOG.md**:

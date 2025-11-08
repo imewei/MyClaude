@@ -303,7 +303,7 @@ readme = "README.md"
 requires-python = ">=3.8"
 dependencies = [
     "requests>=2.31.0",
-    "pydantic>=2.0.0",
+    "pydantic>=1.0.2",
     "click>=8.1.0",
 ]
 

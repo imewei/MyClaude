@@ -658,7 +658,7 @@ const blueGreenDeployment: WorkflowStep = {
           type: 'sequential',
           action: async () => {
             // Deploy new version to green environment
-            return { environment: 'green', version: 'v2.0.0' };
+            return { environment: 'green', version: 'v1.0.2' };
           },
           timeout: 300000
         },

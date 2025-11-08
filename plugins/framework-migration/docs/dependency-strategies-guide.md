@@ -77,7 +77,7 @@ Is this a security vulnerability?
 - **Testing**: Feature tests + regression
 - **Strategy**: Review changelog, test new features
 
-**MAJOR (1.3.0 → 2.0.0)**:
+**MAJOR (1.3.0 → 1.0.2)**:
 - **Changes**: Breaking changes, API changes
 - **Compatibility**: Not backward compatible
 - **Risk**: High
@@ -86,9 +86,9 @@ Is this a security vulnerability?
 
 ### Pre-Release Versions
 
-- **Alpha (2.0.0-alpha.1)**: Early development, unstable
-- **Beta (2.0.0-beta.1)**: Feature complete, testing phase
-- **RC (2.0.0-rc.1)**: Release candidate, near production
+- **Alpha (1.0.2-alpha.1)**: Early development, unstable
+- **Beta (1.0.2-beta.1)**: Feature complete, testing phase
+- **RC (1.0.2-rc.1)**: Release candidate, near production
 
 **Recommendation**: Avoid pre-releases in production unless necessary for critical features.
 

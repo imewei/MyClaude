@@ -42,9 +42,9 @@ A breaking change is any modification that requires users to change their code o
 
 - `1.2.3 → 1.2.4`: Bug fix, no breaking changes
 - `1.2.4 → 1.3.0`: New feature, backward compatible
-- `1.3.0 → 2.0.0`: Breaking change
+- `1.3.0 → 1.0.2`: Breaking change
 
-**Pre-release**: `2.0.0-alpha.1`, `2.0.0-beta.1`, `2.0.0-rc.1`
+**Pre-release**: `1.0.2-alpha.1`, `1.0.2-beta.1`, `1.0.2-rc.1`
 
 ---
 
@@ -428,7 +428,7 @@ database:
 
 1. Update dependencies
    ```bash
-   npm install package@2.0.0
+   npm install package@1.0.2
    ```
 
 2. Run automated migration tool

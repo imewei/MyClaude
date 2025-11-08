@@ -1608,8 +1608,8 @@ Pkg.status()               # Show installed packages
 # Compatibility bounds
 # Project.toml [compat] section
 # Semantic versioning: MAJOR.MINOR.PATCH
-# "1.2" means >=1.2.0, <2.0.0
-# "^1.2.3" means >=1.2.3, <2.0.0
+# "1.2" means >=1.2.0, <1.0.2
+# "^1.2.3" means >=1.2.3, <1.0.2
 # "~1.2.3" means >=1.2.3, <1.3.0
 
 # Development workflows

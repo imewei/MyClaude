@@ -21,7 +21,7 @@
 
 ```python
 # requirements.txt
-ddtrace>=2.0.0
+ddtrace>=1.0.2
 
 # Initialize in application
 from ddtrace import tracer, patch_all

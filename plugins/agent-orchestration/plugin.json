@@ -4,7 +4,7 @@
   "description": "Multi-agent workflow coordination with production-ready optimization workflows, systematic agent improvement methodologies, and comprehensive documentation. Features executable slash commands with real-world examples showing 50-200x performance improvements.",
   "author": "Wei Chen",
   "license": "MIT",
-  "changelog": "v1.0.3: Version consolidation release. Corrected version numbering from v2.0.0 to v1.0.1 for agents, maintained v1.0.2 command improvements, and ensured version consistency across all documentation.",
+  "changelog": "v1.0.3: Version consolidation release. Corrected version numbering from v1.0.2 to v1.0.1 for agents, maintained v1.0.2 command improvements, and ensured version consistency across all documentation.",
   "agents": [
     {
       "name": "context-manager",

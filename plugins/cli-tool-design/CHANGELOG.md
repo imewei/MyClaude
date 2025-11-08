@@ -3,9 +3,9 @@
 All notable changes to the CLI Tool Design plugin will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
-and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+and this project adheres to [Semantic Versioning](https://semver.org/spec/v1.0.2.html).
 
-## [2.0.0] - 2025-10-29
+## [1.0.2] - 2025-10-29
 
 ### Major Release - Comprehensive Prompt Engineering Improvements
 
@@ -24,7 +24,7 @@ This release represents a major enhancement to the command-systems-engineer agen
 
 The command-systems-engineer agent has been upgraded from basic to 90-92% maturity with comprehensive prompt engineering improvements.
 
-### 🛠️ Command Systems Engineer (v2.0.0) - Maturity: 92%
+### 🛠️ Command Systems Engineer (v1.0.2) - Maturity: 92%
 
 **Before**: 405 lines | **After**: 1,238 lines | **Growth**: +833 lines (206%)
 
@@ -81,9 +81,9 @@ The command-systems-engineer agent has been upgraded from basic to 90-92% maturi
 
 ## Enhanced Skills
 
-Both skills have been upgraded to v2.0.0 with dramatically expanded descriptions and use case documentation.
+Both skills have been upgraded to v1.0.2 with dramatically expanded descriptions and use case documentation.
 
-### 🔧 CLI Tool Design Production (v2.0.0)
+### 🔧 CLI Tool Design Production (v1.0.2)
 
 **Description Enhancement**: Expanded from 50 words to 290 words (580%)
 
@@ -107,7 +107,7 @@ Both skills have been upgraded to v2.0.0 with dramatically expanded descriptions
 
 ---
 
-### 📝 Programming Scripting Languages (v2.0.0)
+### 📝 Programming Scripting Languages (v1.0.2)
 
 **Description Enhancement**: Expanded from 45 words to 295 words (656%)
 
@@ -140,9 +140,9 @@ Both skills have been upgraded to v2.0.0 with dramatically expanded descriptions
 - **displayName**: Added "CLI Tool Design" for better marketplace visibility
 - **category**: Set to "developer-tools" for proper categorization
 - **keywords**: Expanded to 24 keywords covering CLI, automation, frameworks (Click, Typer, Commander, Inquirer, Cobra), TUI, and terminal UI
-- **changelog**: Comprehensive v2.0.0 release notes with expected performance improvements
-- **agents**: command-systems-engineer upgraded with version 2.0.0, maturity 92%, and detailed improvement descriptions
-- **skills**: Both skills upgraded with version 2.0.0 and comprehensive improvement summaries
+- **changelog**: Comprehensive v1.0.2 release notes with expected performance improvements
+- **agents**: command-systems-engineer upgraded with version 1.0.2, maturity 92%, and detailed improvement descriptions
+- **skills**: Both skills upgraded with version 1.0.2 and comprehensive improvement summaries
 
 ---
 
@@ -167,7 +167,7 @@ Both skills have been upgraded to v2.0.0 with dramatically expanded descriptions
 
 ### For Existing Users
 
-**No Breaking Changes**: v2.0.0 is fully backward compatible with v1.0.0
+**No Breaking Changes**: v1.0.2 is fully backward compatible with v1.0.0
 
 **What's Enhanced**:
 - Agent now provides step-by-step reasoning with chain-of-thought framework
@@ -246,4 +246,4 @@ Based on comprehensive prompt engineering improvements, users can expect:
 
 ---
 
-[2.0.0]: https://github.com/yourusername/cli-tool-design/compare/v1.0.0...v2.0.0
+[1.0.2]: https://github.com/yourusername/cli-tool-design/compare/v1.0.0...v1.0.2

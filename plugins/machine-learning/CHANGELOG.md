@@ -3,7 +3,7 @@
 All notable changes to the Machine Learning plugin will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
-and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+and this project adheres to [Semantic Versioning](https://semver.org/spec/v1.0.2.html).
 
 ## [1.0.3] - 2025-01-07
 
@@ -506,7 +506,7 @@ Initial release of the Machine Learning plugin with comprehensive ML and data sc
 - Enhanced model monitoring and drift detection patterns
 - Integration guides for popular ML frameworks
 
-### Planned for 2.0.0
+### Planned for 1.0.2
 - New specialized agents (computer vision, NLP, time series forecasting)
 - Advanced AutoML and hyperparameter optimization workflows
 - Enhanced MLOps automation with multi-cloud support

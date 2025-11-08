@@ -62,7 +62,7 @@ Result: Memory stable at 650MB (was crashing at 2GB)
 
 ---
 
-### dx-optimizer (v2.0.0) ✨ NEW
+### dx-optimizer (v1.0.2) ✨ NEW
 
 **Status:** Active | **Maturity:** 85%
 
@@ -424,7 +424,7 @@ Result:
 | Agent | Version | Maturity | Key Metrics |
 |-------|---------|----------|-------------|
 | debugger | v1.0.1 | 91% | 88% success rate, 8.5/10 satisfaction |
-| dx-optimizer | v2.0.0 | 85% | 85% success rate, 8.5/10 satisfaction |
+| dx-optimizer | v1.0.2 | 85% | 85% success rate, 8.5/10 satisfaction |
 
 ### Skill Coverage
 

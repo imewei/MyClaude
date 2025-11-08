@@ -131,7 +131,7 @@ Exit Code: 2
 ### Root Cause Analysis (3W1H)
 
 **What Failed**: TypeScript compilation during type checking phase
-**Why Failed**: Breaking change in @types/user-api v2.0.0 renamed `username` → `name` and added required `id` field
+**Why Failed**: Breaking change in @types/user-api v1.0.2 renamed `username` → `name` and added required `id` field
 **When Started**: After automatic dependency update by Renovate bot (commit b4e9f12)
 **How Propagates**: Blocks build stage, prevents deployment
 
@@ -428,7 +428,7 @@ pytest tests/ -v
 ```
 go: finding module for package github.com/user/mylib/v2
 go: github.com/myapp/service imports
-    github.com/user/mylib/v2: module github.com/user/mylib/v2: reading github.com/user/mylib/go.mod at revision v2.0.0: unknown revision v2.0.0
+    github.com/user/mylib/v2: module github.com/user/mylib/v2: reading github.com/user/mylib/go.mod at revision v1.0.2: unknown revision v1.0.2
 
 Error: Process completed with exit code 1.
 

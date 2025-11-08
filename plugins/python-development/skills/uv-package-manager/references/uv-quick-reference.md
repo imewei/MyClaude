@@ -250,7 +250,7 @@ version = "0.1.0"
 [tool.poetry.dependencies]
 python = "^3.12"
 requests = "^2.31.0"
-pandas = "^2.0.0"
+pandas = "^1.0.2"
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^7.4.0"
@@ -267,7 +267,7 @@ version = "0.1.0"
 requires-python = ">=3.12"
 dependencies = [
     "requests>=2.31.0",
-    "pandas>=2.0.0",
+    "pandas>=1.0.2",
 ]
 
 [project.optional-dependencies]
@@ -405,7 +405,7 @@ jobs:
 # Create requirements.in with loose constraints
 cat > requirements.in << EOF
 requests>=2.31.0
-pandas>=2.0.0
+pandas>=1.0.2
 numpy>=1.24.0
 EOF
 
@@ -591,7 +591,7 @@ git add requirements.txt
 ```bash
 # requirements.in (production)
 requests>=2.31.0
-pandas>=2.0.0
+pandas>=1.0.2
 
 # requirements-dev.in (development)
 -c requirements.txt  # Constrain to production versions

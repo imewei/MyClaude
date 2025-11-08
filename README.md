@@ -66,7 +66,7 @@ The MyClaude plugin ecosystem provides production-ready tools for:
 ### Version Distribution
 
 - **v1.0.3**: 21 plugins (latest optimization release)
-- **v2.0.0**: 1 plugin (cli-tool-design)
+- **v1.0.2**: 1 plugin (cli-tool-design)
 - **v1.0.2**: 1 plugin (jax-implementation)
 - **v1.0.1**: 8 plugins (scientific computing)
 
@@ -88,7 +88,7 @@ The MyClaude plugin ecosystem provides production-ready tools for:
 - **[systems-programming](plugins/systems-programming/)** (v1.0.3) - C, C++, Rust, Go with 8 external docs (~5,602 lines)
 - **[julia-development](plugins/julia-development/)** (v1.0.3) - Julia ecosystem with SciML and Bayesian inference
 - **[llm-application-dev](plugins/llm-application-dev/)** (v1.0.3) - LLM apps with prompt engineering and RAG
-- **[cli-tool-design](plugins/cli-tool-design/)** (v2.0.0) - CLI tool design and developer automation
+- **[cli-tool-design](plugins/cli-tool-design/)** (v1.0.2) - CLI tool design and developer automation
 
 ### 🔬 Scientific Computing (8 plugins)
 

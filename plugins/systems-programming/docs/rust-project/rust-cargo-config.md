@@ -357,7 +357,7 @@ fn main() {
 ```toml
 [dependencies]
 # Caret requirements (default)
-serde = "^1.0"       # >=1.0.0, <2.0.0
+serde = "^1.0"       # >=1.0.0, <1.0.2
 serde = "1.0"        # Same as ^1.0
 
 # Tilde requirements
@@ -365,7 +365,7 @@ serde = "~1.0"       # >=1.0.0, <1.1.0
 serde = "~1.0.5"     # >=1.0.5, <1.1.0
 
 # Wildcard
-serde = "1.*"        # >=1.0.0, <2.0.0
+serde = "1.*"        # >=1.0.0, <1.0.2
 
 # Comparison
 serde = ">= 1.0, < 2.0"

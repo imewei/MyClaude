@@ -94,8 +94,8 @@ Pkg.gc()                       # Garbage collect old package versions
 ```toml
 [compat]
 # Caret (^): Allow patch and minor updates
-julia = "^1.6"          # >=1.6.0, <2.0.0
-DataFrames = "^1.3.2"   # >=1.3.2, <2.0.0
+julia = "^1.6"          # >=1.6.0, <1.0.2
+DataFrames = "^1.3.2"   # >=1.3.2, <1.0.2
 
 # Tilde (~): Allow only patch updates
 CSV = "~0.10.4"         # >=0.10.4, <0.11.0

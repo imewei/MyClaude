@@ -27,7 +27,7 @@ Master major dependency version upgrades, compatibility analysis, staged upgrade
 - When handling transitive dependency updates that affect peer dependency requirements
 - When implementing staged upgrade strategies with feature flags for gradual rollout
 - When creating custom migration scripts for automated API transformations
-- When validating semantic versioning ranges (^2.0.0 for minor updates, ~2.0.0 for patches, 2.0.0 for exact)
+- When validating semantic versioning ranges (^1.0.2 for minor updates, ~1.0.2 for patches, 1.0.2 for exact)
 - When setting up CI/CD pipelines to run dependency audits and automated updates
 - When managing workspace package updates in monorepo structures (npm workspaces, yarn workspaces, pnpm workspaces, Lerna, Nx)
 - When upgrading testing libraries (@testing-library/react, Jest, Vitest, Cypress, Playwright)
@@ -96,7 +96,7 @@ const compatibilityMatrix = {
     '17.x': {
       'react-dom': '^17.0.0',
       'react-router-dom': '^5.0.0 || ^6.0.0',
-      '@testing-library/react': '^12.0.0'
+      '@testing-library/react': '^11.0.2'
     },
     '18.x': {
       'react-dom': '^18.0.0',

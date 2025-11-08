@@ -35,7 +35,7 @@ All agents at v1.0.3 with 90-92% maturity, systematic reasoning frameworks, and 
 
 Expert cloud architect specializing in AWS/Azure/GCP multi-cloud infrastructure design, advanced IaC, FinOps cost optimization, and modern architectural patterns.
 
-**New in v2.0.0:**
+**New in v1.0.2:**
 - 6-step chain-of-thought framework (Requirements → Services → Architecture → Cost → Security → Validation)
 - 5 Constitutional AI principles (Cost Optimization, Security-First, Resilience, Observability, Automation)
 - Multi-region web application example with complete Terraform implementation and $3,321/month cost breakdown
@@ -50,7 +50,7 @@ Expert cloud architect specializing in AWS/Azure/GCP multi-cloud infrastructure 
 
 Expert deployment engineer specializing in modern CI/CD pipelines, GitOps workflows (ArgoCD/Flux), progressive delivery, container security, and platform engineering.
 
-**New in v2.0.0:**
+**New in v1.0.2:**
 - 6-step chain-of-thought framework (Requirements → Pipeline → Security → Progressive Delivery → Monitoring → Validation)
 - 5 Constitutional AI principles (Automation, Security, Zero-Downtime, Observability, Developer Experience)
 - Financial services CI/CD example with 283-line GitHub Actions workflow, PCI-DSS/SOX compliance, 7 security tools
@@ -65,7 +65,7 @@ Expert deployment engineer specializing in modern CI/CD pipelines, GitOps workfl
 
 Expert DevOps troubleshooter specializing in rapid incident response, advanced debugging, modern observability (OpenTelemetry, Prometheus), and root cause analysis.
 
-**New in v2.0.0:**
+**New in v1.0.2:**
 - 6-step debugging process with timing (Incident Assessment → Data Gathering → Hypothesis → Testing → Implementation → Postmortem)
 - 5 Constitutional AI principles (Systematic Investigation, Minimal Disruption, Documentation, Blameless RCA, Prevention)
 - SEV-1 API outage example with complete 18-minute debugging trace, Prometheus alerts, Go code fixes, postmortem
@@ -80,7 +80,7 @@ Expert DevOps troubleshooter specializing in rapid incident response, advanced d
 
 Expert Kubernetes architect specializing in cloud-native infrastructure, advanced GitOps workflows (ArgoCD/Flux), enterprise container orchestration (EKS/AKS/GKE), service mesh (Istio/Linkerd), and platform engineering.
 
-**New in v2.0.0:**
+**New in v1.0.2:**
 - 6-step chain-of-thought framework (Workload → Cluster → GitOps → Security → Observability → Cost)
 - 5 Constitutional AI principles (GitOps, Security-by-Default, Developer Experience, Progressive Delivery, Observability-First)
 - Fintech platform example with EKS, ArgoCD, Istio service mesh, security policies, observability stack, Argo Rollouts
@@ -95,7 +95,7 @@ Expert Kubernetes architect specializing in cloud-native infrastructure, advance
 
 Expert Terraform/OpenTofu specialist mastering advanced IaC automation, state management (S3/DynamoDB with KMS encryption), enterprise infrastructure patterns, module design, and testing (Terratest, OPA).
 
-**New in v2.0.0:**
+**New in v1.0.2:**
 - 6-step chain-of-thought framework (Requirements → Module Design → State Strategy → Testing → CI/CD → Validation)
 - 5 Constitutional AI principles (DRY, State Security, Testing, Least Privilege, Maintainability)
 - EKS cluster deployment example with hierarchical modules, secure state backend, Terratest tests, OPA policies, GitHub Actions
@@ -317,7 +317,7 @@ claude-code plugins install cicd-automation
 
 **Request:** "Design a highly available web application on AWS with multi-region failover"
 
-**cloud-architect v2.0.0 Response:**
+**cloud-architect v1.0.2 Response:**
 ```
 ## Step 1: Requirements Analysis
 - Availability target: 99.99% (52 minutes downtime/year)
@@ -363,7 +363,7 @@ Monthly Cost: $3,321
 
 **Request:** "Create a secure CI/CD pipeline for a financial services application with PCI-DSS compliance"
 
-**deployment-engineer v2.0.0 Response:**
+**deployment-engineer v1.0.2 Response:**
 ```
 ## Step 1: Requirements Gathering
 - Compliance: PCI-DSS, SOX
@@ -412,7 +412,7 @@ Strategy: Blue-green deployment
 
 **Request:** "API endpoints are returning 500 errors with high memory usage"
 
-**devops-troubleshooter v2.0.0 Response:**
+**devops-troubleshooter v1.0.2 Response:**
 ```
 ## T+0m - Incident Assessment (SEV-1)
 Severity: SEV-1 (100% API unavailability)

@@ -202,7 +202,7 @@ classifiers = [
 dependencies = [
     "requests>=2.28.0,<3.0.0",
     "click>=8.0.0",
-    "pydantic>=2.0.0",
+    "pydantic>=1.0.2",
 ]
 
 [project.optional-dependencies]
