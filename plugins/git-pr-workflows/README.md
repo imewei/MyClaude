@@ -1,6 +1,6 @@
 # Git & Pull Request Workflows Plugin
 
-> **Version 1.0.1** | Comprehensive Git workflows, pull request management, code review processes, and version control best practices with systematic Chain-of-Thought frameworks and Constitutional AI principles for modern software development teams
+> **Version 1.0.3** | Comprehensive Git workflows, pull request management, code review processes, and version control best practices with external documentation (2,303 lines), systematic frameworks, and standardized command versioning
 
 **Category:** devops | **License:** MIT | **Author:** Wei Chen
 
@@ -8,9 +8,33 @@
 
 ---
 
+## What's New in v1.0.3 🚀
+
+This release adds **comprehensive external documentation** (2,303 lines across 4 guides) and standardizes all commands with version tracking and enhanced descriptions.
+
+### Key Highlights
+
+#### External Documentation (2,303 Lines)
+- **Git Branching Strategies** (627 lines): Trunk-based, Git Flow, GitHub Flow, GitLab Flow, merge strategies, branch protection
+- **Commit Message Patterns** (671 lines): Conventional Commits, examples, anti-patterns, templates, automation
+- **PR Review Best Practices** (406 lines): Review checklists, templates, communication guidelines, automated tools
+- **Onboarding Playbook** (599 lines): 30-60-90 day plans, role-specific guides, mentor responsibilities, metrics
+
+#### Command Standardization
+- All 4 commands now have version tracking (1.0.3)
+- Enhanced command descriptions reference external documentation
+- Consistent plugin metadata across all commands
+
+#### Impact
+- **External documentation**: 0 → 2,303 lines (new comprehensive guides)
+- **Version tracking**: Standardized across plugin and all commands
+- **Reference architecture**: 70% external docs for maintainability
+
+---
+
 ## What's New in v1.0.1 🎉
 
-This release introduces **systematic Chain-of-Thought frameworks**, **Constitutional AI principles**, and **comprehensive code review examples** to the code-reviewer agent, plus an intelligent **/commit command** for automated commit quality validation.
+This release introduced **systematic Chain-of-Thought frameworks**, **Constitutional AI principles**, and **comprehensive code review examples** to the code-reviewer agent, plus an intelligent **/commit command** for automated commit quality validation.
 
 ### Key Highlights
 
@@ -33,7 +57,7 @@ This release introduces **systematic Chain-of-Thought frameworks**, **Constituti
 
 ### Code Reviewer
 
-**Version:** 1.0.1 | **Maturity:** 78% | **Status:** active
+**Version:** 1.0.3 | **Maturity:** 78% | **Status:** active
 
 Elite code review expert with systematic Chain-of-Thought framework and Constitutional AI principles for comprehensive security, performance, and quality analysis.
 

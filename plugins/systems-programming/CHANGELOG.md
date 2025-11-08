@@ -5,6 +5,115 @@ All notable changes to the systems-programming plugin will be documented in this
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+---
+
+## [1.0.3] - 2025-01-07
+
+### Command Optimization with Execution Modes
+
+This release optimizes all 3 systems-programming commands with execution modes, external documentation, and enhanced command descriptions following the proven optimization pattern from quality-engineering v1.0.3.
+
+#### Command Enhancements
+
+**/c-project Command Optimization:**
+- **Before**: 457 lines (embedded templates and examples)
+- **After**: 342 lines with YAML frontmatter
+- **Reduction**: 25.2% (115 lines externalized)
+
+**New Execution Modes:**
+
+| Mode | Duration | Scope |
+|------|----------|-------|
+| **Quick** | 1-2h | Simple CLI tool with basic Makefile, single-file structure, logger |
+| **Standard** | 4-6h | Production app with Makefile/CMake, modular structure, testing, Valgrind |
+| **Enterprise** | 1-2d | Multi-module system with platform abstraction, CI/CD, cross-compilation |
+
+**/rust-project Command Optimization:**
+- **Before**: 425 lines (embedded Cargo patterns and examples)
+- **After**: 370 lines with YAML frontmatter
+- **Reduction**: 12.9% (55 lines externalized)
+
+**New Execution Modes:**
+
+| Mode | Duration | Scope |
+|------|----------|-------|
+| **Quick** | 1-2h | Simple binary or library crate with basic Cargo.toml |
+| **Standard** | 4-6h | Production crate with async Tokio, error handling, testing, benchmarks |
+| **Enterprise** | 1-2d | Cargo workspace with multiple crates, shared dependencies, CI/CD |
+
+**/profile-performance Command Optimization:**
+- **Before**: 284 lines (embedded profiling workflows)
+- **After**: 359 lines with YAML frontmatter
+- **Enhancement**: Added comprehensive execution mode definitions
+
+**New Execution Modes:**
+
+| Mode | Duration | Scope |
+|------|----------|-------|
+| **Quick** | 30min-1h | Basic CPU profiling with perf/flamegraph, hotspot identification |
+| **Standard** | 2-3h | Comprehensive profiling (CPU/memory/cache), hardware counters |
+| **Enterprise** | 1 day | Full performance audit, benchmarking suite, regression testing |
+
+**External Documentation** (8 files - 5,602 lines):
+
+**For /c-project** (3 files - 1,638 lines):
+- `c-project-structures.md` (626 lines) - Application, library, embedded project structures
+- `c-build-systems.md` (548 lines) - Makefile and CMake patterns, sanitizers, CI/CD
+- `c-memory-safety.md` (464 lines) - Valgrind, AddressSanitizer, memory safety best practices
+
+**For /rust-project** (3 files - 1,808 lines):
+- `rust-project-structures.md` (523 lines) - Binary, library, workspace, web API structures
+- `rust-cargo-config.md` (567 lines) - Cargo.toml configuration, features, profiles
+- `rust-async-patterns.md` (718 lines) - Tokio async patterns, concurrency, production patterns
+
+**For /profile-performance** (2 files - 1,156 lines):
+- `profiling-tools-guide.md` (527 lines) - perf, valgrind, flamegraphs, hardware counters
+- `optimization-patterns.md` (629 lines) - Algorithm, cache, memory, SIMD optimizations
+
+### Added
+
+- YAML frontmatter in all 3 command files with execution mode definitions
+- Interactive mode selection via `AskUserQuestion` for all commands
+- 8 comprehensive external documentation files (~5,602 lines total)
+- Version fields to all 3 commands, 4 agents, and 1 skill for consistency tracking
+- Cross-references to external documentation throughout command files
+- Enhanced command descriptions with execution modes in plugin.json
+
+### Changed
+
+- Command file structure from linear to execution-mode-based
+- Build templates and examples from embedded to externalized documentation
+- Agent coordination from implicit to explicit mode-based scoping
+- plugin.json version from 1.0.1 to 1.0.3
+
+### Improved
+
+- **Documentation**: Comprehensive external guides (5,602 lines total)
+- **Flexibility**: 3 execution modes per command for different project complexities
+- **Discoverability**: Enhanced command descriptions with execution modes and durations
+- **Maintainability**: Separation of concerns (command logic vs. reference documentation)
+- **Usability**: Clear execution paths with estimated time commitments
+- **Reference Quality**: Deep-dive guides for C/C++/Rust systems programming
+
+### Migration Guide
+
+No breaking changes - existing usage patterns remain compatible. New execution mode selection provides enhanced flexibility:
+
+```bash
+# Old usage (still works, defaults to standard mode)
+/c-project my-app
+
+# New usage with mode selection
+/c-project my-app
+# → Prompted to select: Quick / Standard / Enterprise
+
+# Same pattern for all commands
+/rust-project my-crate
+/profile-performance ./my-binary
+```
+
+---
+
 ## [1.0.1] - 2025-10-31
 
 ### Added - Agent Enhancements

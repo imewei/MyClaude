@@ -32,7 +32,7 @@
     citecolor=primarycolor,
     pdftitle={Claude Code Plugin Marketplace - Agent List},
     pdfauthor={Claude Code},
-    pdfsubject={Complete Agent Catalog v1.0.1}
+    pdfsubject={Complete Agent Catalog v1.0.3}
 }
 
 % Title formatting
@@ -45,7 +45,7 @@
 \pagestyle{fancy}
 \fancyhf{}
 \fancyhead[L]{\small\color{secondarycolor}Claude Code Plugin Marketplace}
-\fancyhead[R]{\small\color{secondarycolor}Complete Agent List v1.0.1}
+\fancyhead[R]{\small\color{secondarycolor}Complete Agent List v1.0.3}
 \fancyfoot[C]{\thepage}
 \renewcommand{\headrulewidth}{0.4pt}
 \renewcommand{\footrulewidth}{0.4pt}
@@ -82,9 +82,9 @@
     \begin{tcolorbox}[colback=tableheader,colframe=primarycolor,arc=3mm,boxrule=1pt]
         \centering
         \large
-        \textbf{Total Agents:} 73 across 31 plugins\\[0.3cm]
+        \textbf{Total Agents:} 74 across 31 plugins\\[0.3cm]
         \textbf{Format:} \texttt{plugin:agent} (single colon)\\[0.3cm]
-        \textbf{Version:} 1.0.1 \textbar\ \textbf{Last Updated:} October 31, 2025
+        \textbf{Version:} 1.0.3 \textbar\ \textbf{Last Updated:} January 8, 2025
     \end{tcolorbox}
 
     \vfill
@@ -102,7 +102,7 @@
 
 % Main content
 \section{Scientific Computing \& Specialized}
-\textit{17 agents for high-performance computing, numerical methods, and scientific workflows}
+\textit{18 agents for high-performance computing, numerical methods, and scientific workflows}
 
 \subsection{julia-development (4 agents)}
 \begin{description}[leftmargin=!,labelwidth=\widthof{\textbf{julia-development:julia-developer}}]
@@ -230,7 +230,7 @@
 
 \newpage
 \section{AI/ML}
-\textit{5 agents for machine learning and deep learning workflows}
+\textit{6 agents for machine learning and deep learning workflows}
 
 \subsection{deep-learning (2 agents)}
 \begin{description}[leftmargin=!,labelwidth=\widthof{\textbf{deep-learning:neural-architecture-engineer}}]
@@ -239,9 +239,11 @@
     \agent{deep-learning:neural-network-master}{Deep learning theory expert for mathematical foundations, optimization theory, training diagnostics, research translation, and pedagogical explanations}
 \end{description}
 
-\subsection{machine-learning (3 agents)}
+\subsection{machine-learning (4 agents)}
 \begin{description}[leftmargin=!,labelwidth=\widthof{\textbf{machine-learning:mlops-engineer}}]
     \agent{machine-learning:data-scientist}{Advanced analytics, machine learning, and statistical modeling expert for complex data analysis, predictive modeling, and business intelligence}
+
+    \agent{machine-learning:data-engineer}{Expert data engineer specializing in scalable data pipelines, ETL/ELT architecture, data quality frameworks, and modern data infrastructure}
 
     \agent{machine-learning:ml-engineer}{Production ML systems builder with PyTorch 2.x, TensorFlow, model serving, feature engineering, A/B testing, and monitoring}
 
@@ -341,23 +343,14 @@
 \end{description}
 
 \newpage
-\section{Orchestration \& AI Reasoning}
-\textit{5 agents for multi-agent coordination and advanced reasoning}
+\section{Orchestration \& Research}
+\textit{3 agents for multi-agent coordination and research methodology}
 
 \subsection{agent-orchestration (2 agents)}
 \begin{description}[leftmargin=!,labelwidth=\widthof{\textbf{agent-orchestration:multi-agent-orchestrator}}]
     \agent{agent-orchestration:multi-agent-orchestrator}{Multi-agent orchestrator for workflow coordination, distributed systems, agent team assembly, and task allocation for scalable collaboration}
 
     \agent{agent-orchestration:context-manager}{Elite AI context engineering specialist for dynamic context management, vector databases, knowledge graphs, and intelligent memory systems across multi-agent workflows}
-\end{description}
-
-\subsection{ai-reasoning (3 agents)}
-\begin{description}[leftmargin=!,labelwidth=\widthof{\textbf{ai-reasoning:structured-reasoning}}]
-    \agent{ai-reasoning:reflection}{Advanced reflection engine for AI reasoning, session analysis, and research optimization with multi-agent orchestration and meta-cognitive insights}
-
-    \agent{ai-reasoning:ultra-think}{Advanced structured reasoning engine with step-by-step thought processing, branching logic, dynamic adaptation, and multi-agent coordination}
-
-    \agent{ai-reasoning:structured-reasoning}{Structured reasoning specialist for complex problem-solving with systematic thinking frameworks and comprehensive analysis}
 \end{description}
 
 \subsection{research-methodology (1 agent)}
@@ -394,9 +387,8 @@ full-stack-orchestration & 4 & deployment-engineer, performance-engineer, securi
 comprehensive-review & 3 & code-reviewer, architect-review, security-auditor \\
 python-development & 3 & python-pro, fastapi-pro, django-pro \\
 backend-development & 3 & backend-architect, graphql-architect, tdd-orchestrator \\
-machine-learning & 3 & data-scientist, ml-engineer, mlops-engineer \\
+machine-learning & 4 & data-scientist, data-engineer, ml-engineer, mlops-engineer \\
 code-documentation & 3 & code-reviewer, docs-architect, tutorial-engineer \\
-ai-reasoning & 3 & reflection, ultra-think, structured-reasoning \\
 deep-learning & 2 & neural-architecture-engineer, neural-network-master \\
 frontend-mobile-development & 2 & frontend-developer, mobile-developer \\
 javascript-typescript & 2 & javascript-pro, typescript-pro \\
@@ -414,6 +406,7 @@ git-pr-workflows & 1 & code-reviewer \\
 code-migration & 1 & scientific-code-adoptor \\
 cli-tool-design & 1 & command-systems-engineer \\
 research-methodology & 1 & research-intelligence \\
+ai-reasoning & 0 & (uses skills and commands) \\
 quality-engineering & 0 & (uses skills and commands) \\
 \end{longtable}
 
@@ -472,16 +465,16 @@ comprehensive-review:code-reviewer
     \item \textbf{Plugin Cheatsheet:} \texttt{PLUGIN\_CHEATSHEET.md}
     \item \textbf{Full Documentation:} \url{https://myclaude.readthedocs.io/en/latest/}
     \item \textbf{Validation Report:} \texttt{PLUGIN\_LINT\_REPORT.md}
-    \item \textbf{Total Agents:} 73
+    \item \textbf{Total Agents:} 74
     \item \textbf{Total Plugins:} 31
-    \item \textbf{Version:} 1.0.1
+    \item \textbf{Version:} 1.0.3
 \end{itemize}
 
 \vfill
 
 \begin{center}
 \small\color{secondarycolor}
-\textit{This list was generated from v1.0.1 validated marketplace data\\
+\textit{This list was generated from v1.0.3 validated marketplace data\\
 with 100\% plugin validation success rate.}
 \end{center}
 

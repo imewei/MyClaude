@@ -2,11 +2,63 @@
 
 Production-grade systems programming with C, C++, Rust, and Go. Features systematic development processes, quality assurance checkpoints, comprehensive examples, and battle-tested patterns for memory safety, concurrency, and performance.
 
-**Version:** 1.0.1 | **Category:** development | **License:** MIT
+**Version:** 1.0.3 | **Category:** development | **License:** MIT
 
-[Full Documentation →](https://myclaude.readthedocs.io/en/latest/plugins/systems-programming.html)
+[Full Documentation →](https://myclaude.readthedocs.io/en/latest/plugins/systems-programming.html) | [CHANGELOG](CHANGELOG.md)
 
-## ✨ What's New in v1.0.1
+---
+
+## What's New in v1.0.3
+
+### Command Optimization with Execution Modes
+
+All 3 systems-programming commands now feature:
+- **3 Execution Modes** (quick/standard/enterprise) for flexible project scaffolding and profiling
+- **Comprehensive External Documentation** (~5,602 lines across 8 guides)
+- **Enhanced Command Descriptions** with execution modes and durations
+- **Version Consistency** across all components (1.0.3)
+
+#### /c-project - 3 Execution Modes
+
+| Mode | Duration | Scope |
+|------|----------|-------|
+| **Quick** | 1-2h | Simple CLI tool with basic Makefile, single-file structure, logger |
+| **Standard** | 4-6h | Production app with Makefile/CMake, modular structure, testing, Valgrind |
+| **Enterprise** | 1-2d | Multi-module system with platform abstraction, CI/CD, cross-compilation |
+
+**External Documentation** (3 files - 1,638 lines):
+- c-project-structures.md - Application, library, embedded project structures
+- c-build-systems.md - Makefile and CMake patterns, sanitizers, CI/CD
+- c-memory-safety.md - Valgrind, AddressSanitizer, memory safety best practices
+
+#### /rust-project - 3 Execution Modes
+
+| Mode | Duration | Scope |
+|------|----------|-------|
+| **Quick** | 1-2h | Simple binary or library crate with basic Cargo.toml |
+| **Standard** | 4-6h | Production crate with async Tokio, error handling, testing, benchmarks |
+| **Enterprise** | 1-2d | Cargo workspace with multiple crates, shared dependencies, CI/CD |
+
+**External Documentation** (3 files - 1,808 lines):
+- rust-project-structures.md - Binary, library, workspace, web API structures
+- rust-cargo-config.md - Cargo.toml configuration, features, profiles
+- rust-async-patterns.md - Tokio async patterns, concurrency, production patterns
+
+#### /profile-performance - 3 Execution Modes
+
+| Mode | Duration | Scope |
+|------|----------|-------|
+| **Quick** | 30min-1h | Basic CPU profiling with perf/flamegraph, hotspot identification |
+| **Standard** | 2-3h | Comprehensive profiling (CPU/memory/cache), hardware counters |
+| **Enterprise** | 1 day | Full performance audit, benchmarking suite, regression testing |
+
+**External Documentation** (2 files - 1,156 lines):
+- profiling-tools-guide.md - perf, valgrind, flamegraphs, hardware counters
+- optimization-patterns.md - Algorithm, cache, memory, SIMD optimizations
+
+---
+
+## What's New in v1.0.1
 
 All 4 agents now include:
 - **8-step systematic development workflow** with self-verification checkpoints

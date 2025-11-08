@@ -1,6 +1,13 @@
-# Scientific Computing Workflows Marketplace
+# MyClaude - Production-Grade Claude Code Plugins
 
-Comprehensive Claude Code marketplace with 31 specialized plugins for scientific computing, software development, and research workflows.
+[![Plugins](https://img.shields.io/badge/Plugins-31-blue.svg)](https://myclaude.readthedocs.io/en/latest/plugins/)
+[![Agents](https://img.shields.io/badge/Agents-75-green.svg)](AGENTS_LIST.md)
+[![Commands](https://img.shields.io/badge/Commands-60+-orange.svg)](COMMANDS_LIST.md)
+[![Version](https://img.shields.io/badge/Version-1.0.3-red.svg)](https://github.com/imewei/MyClaude)
+[![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![Docs](https://img.shields.io/badge/Docs-ReadTheDocs-brightgreen.svg)](https://myclaude.readthedocs.io/en/latest/)
+
+Comprehensive Claude Code plugin marketplace with **31 specialized plugins**, **75 expert agents**, and **60+ slash commands** for AI-powered development, scientific computing, and research workflows.
 
 ## Full Documentation
 
@@ -18,38 +25,101 @@ open _build/html/index.html
 
 ## Overview
 
-This marketplace provides:
-- **31 specialized plugins** across 9 categories
-- **Comprehensive coverage** for scientific computing and software development
-- **Independent modification** without affecting source plugins
-- **Git-based version control** for all customizations
-- **Integrated ecosystem** with cross-plugin collaboration
+The MyClaude plugin ecosystem provides production-ready tools for:
+
+- **AI-Powered Development**: Advanced reasoning, multi-agent orchestration, and LLM application development
+- **Full-Stack Engineering**: Backend APIs, frontend/mobile apps, multi-platform development
+- **Scientific Computing**: HPC, molecular simulation, JAX/Julia workflows, deep learning
+- **Quality Engineering**: Comprehensive testing, security auditing, code review
+- **DevOps & Infrastructure**: CI/CD automation, observability, Kubernetes orchestration
+- **Code Intelligence**: Documentation generation, migration, cleanup, debugging
+
+### What's New in v1.0.3
+
+**Major Optimization Release** (21 plugins updated)
+
+- **Command Optimization**: 25-73% token reduction across plugins with hub-and-spoke architecture
+- **Execution Modes**: All commands now support quick/standard/comprehensive (or enterprise) modes with time estimates
+- **External Documentation**: ~30,000+ lines of comprehensive reference guides across all plugins
+- **Enhanced YAML Frontmatter**: Structured metadata for better command discovery and user experience
+- **100% Backward Compatibility**: All optimizations maintain full compatibility with previous versions
+
+**Key Highlights by Plugin:**
+
+- **ai-reasoning**: 46% command optimization (reflection, ultra-think)
+- **code-documentation**: 54% reduction with AST-based analysis
+- **cicd-automation**: 62% optimization with multi-agent error resolution
+- **quality-engineering**: 8 external docs (~6,455 lines) for validation frameworks
+- **systems-programming**: 8 external docs (~5,602 lines) for C/C++/Rust/Go
+- **unit-testing**: 50% reduction with execution modes and external docs (~5,858 lines)
+- **backend-development**: Enhanced feature-development with 3 execution modes
+- **machine-learning**: Enhanced ml-pipeline with data-engineer agent
 
 ## Statistics
 
-- **Total Plugins:** 31
-- **Categories:** 9 (Scientific Computing, Development, DevOps, AI/ML, Tools, Orchestration, Quality)
-- **Total Agents:** 73 | **Commands:** 48 | **Skills:** 110
+- **Total Plugins**: 31
+- **Total Agents**: 75
+- **Total Commands**: 60+
+- **Total Skills**: 110+
+- **Categories**: 6 major categories
 
-## Categories
+### Version Distribution
 
-- **Scientific Computing (2)**: HPC, molecular simulation, numerical methods
-- **Development (7)**: Full-stack, backend, frontend/mobile, Python, JavaScript/TypeScript, CLI
-- **DevOps (2)**: CI/CD automation, observability & monitoring
-- **AI/ML (2)**: Deep learning, machine learning pipelines
-- **Tools (14)**: Code quality, documentation, migration, testing, debugging
-- **Orchestration (1)**: Multi-agent workflow coordination
-- **Quality (1)**: Quality engineering and testing
+- **v1.0.3**: 21 plugins (latest optimization release)
+- **v2.0.0**: 1 plugin (cli-tool-design)
+- **v1.0.2**: 1 plugin (jax-implementation)
+- **v1.0.1**: 8 plugins (scientific computing)
 
-## Featured Plugins
+## Plugin Categories
 
-- **julia-development**: Comprehensive Julia ecosystem support with SciML
-- **jax-implementation**: JAX with NumPyro Bayesian inference, ArviZ diagnostics, and response verification (v1.0.2)
-- **python-development**: Modern Python patterns and async workflows
-- **comprehensive-review**: Multi-perspective code analysis
-- **agent-orchestration**: Multi-agent system optimization
+### 🤖 AI & Reasoning (2 plugins)
 
-[Browse all plugins →](https://myclaude.readthedocs.io/en/latest/plugins/)
+- **[ai-reasoning](plugins/ai-reasoning/)** (v1.0.3) - Advanced structured reasoning with ultra-think and reflection engines. 46% command optimization with execution modes
+- **[agent-orchestration](plugins/agent-orchestration/)** (v1.0.3) - Multi-agent workflow coordination and context management with version consolidation
+
+### 💻 Development & Engineering (10 plugins)
+
+- **[backend-development](plugins/backend-development/)** (v1.0.3) - REST/GraphQL/gRPC APIs, microservices, TDD orchestration
+- **[frontend-mobile-development](plugins/frontend-mobile-development/)** (v1.0.3) - React 19, Next.js 15, React Native, Flutter development
+- **[full-stack-orchestration](plugins/full-stack-orchestration/)** (v1.0.3) - End-to-end feature delivery with multi-agent coordination
+- **[multi-platform-apps](plugins/multi-platform-apps/)** (v1.0.3) - Cross-platform web, iOS, Android, desktop apps
+- **[python-development](plugins/python-development/)** (v1.0.3) - Python 3.12+ with FastAPI, Django, async patterns
+- **[javascript-typescript](plugins/javascript-typescript/)** (v1.0.3) - Modern JS/TS with 25% command optimization
+- **[systems-programming](plugins/systems-programming/)** (v1.0.3) - C, C++, Rust, Go with 8 external docs (~5,602 lines)
+- **[julia-development](plugins/julia-development/)** (v1.0.3) - Julia ecosystem with SciML and Bayesian inference
+- **[llm-application-dev](plugins/llm-application-dev/)** (v1.0.3) - LLM apps with prompt engineering and RAG
+- **[cli-tool-design](plugins/cli-tool-design/)** (v2.0.0) - CLI tool design and developer automation
+
+### 🔬 Scientific Computing (8 plugins)
+
+- **[jax-implementation](plugins/jax-implementation/)** (v1.0.2) - JAX with NumPyro, Flax NNX, NLSQ optimization
+- **[hpc-computing](plugins/hpc-computing/)** (v1.0.1) - High-performance computing and numerical methods
+- **[molecular-simulation](plugins/molecular-simulation/)** (v1.0.1) - MD with LAMMPS, GROMACS, HOOMD-blue
+- **[statistical-physics](plugins/statistical-physics/)** (v1.0.1) - Non-equilibrium systems and correlation functions
+- **[deep-learning](plugins/deep-learning/)** (v1.0.1) - Neural networks with systematic frameworks
+- **[data-visualization](plugins/data-visualization/)** (v1.0.1) - Scientific plots with Matplotlib, Plotly, Makie
+- **[research-methodology](plugins/research-methodology/)** (v1.0.1) - Research intelligence and literature analysis
+- **[machine-learning](plugins/machine-learning/)** (v1.0.3) - MLOps with data-engineer agent and ml-pipeline enhancements
+
+### ✅ Quality & Testing (4 plugins)
+
+- **[quality-engineering](plugins/quality-engineering/)** (v1.0.3) - Comprehensive validation with 8 external docs (~6,455 lines)
+- **[unit-testing](plugins/unit-testing/)** (v1.0.3) - Test automation with 50% command optimization
+- **[comprehensive-review](plugins/comprehensive-review/)** (v1.0.3) - Multi-agent code review with execution modes
+- **[debugging-toolkit](plugins/debugging-toolkit/)** (v1.0.3) - AI-assisted debugging with RCA frameworks
+
+### 🔧 Code Maintenance & Migration (4 plugins)
+
+- **[codebase-cleanup](plugins/codebase-cleanup/)** (v1.0.3) - Technical debt reduction with 9 external docs
+- **[code-documentation](plugins/code-documentation/)** (v1.0.3) - 54% optimization with AST-based analysis
+- **[code-migration](plugins/code-migration/)** (v1.0.3) - Scientific code modernization (Fortran/MATLAB → Python/JAX)
+- **[framework-migration](plugins/framework-migration/)** (v1.0.3) - Framework upgrades with strangler fig patterns
+
+### ⚙️ DevOps & Infrastructure (3 plugins)
+
+- **[cicd-automation](plugins/cicd-automation/)** (v1.0.3) - 62% optimization with intelligent error resolution
+- **[git-pr-workflows](plugins/git-pr-workflows/)** (v1.0.3) - Git workflows and PR enhancement
+- **[observability-monitoring](plugins/observability-monitoring/)** (v1.0.3) - Prometheus, Grafana, distributed tracing
 
 ## Quick Start
 
@@ -74,21 +144,17 @@ In Claude Code, add this marketplace:
 
 **Option B: Install Specific Plugins via CLI**
 
-Install individual plugins using the CLI:
-
 ```bash
 # Install a single plugin
 /plugin install plugin-name@scientific-computing-workflows
 
 # Examples:
-/plugin install python-development@scientific-computing-workflows
-/plugin install julia-development@scientific-computing-workflows
-/plugin install deep-learning@scientific-computing-workflows
+/plugin install ai-reasoning@scientific-computing-workflows
+/plugin install quality-engineering@scientific-computing-workflows
+/plugin install backend-development@scientific-computing-workflows
 ```
 
 **Option C: Install All 31 Plugins at Once**
-
-Use the convenience script to enable all plugins:
 
 ```bash
 # Clone the repository first
@@ -112,151 +178,79 @@ make plugin-count   # Show plugin statistics
 make plugin-list    # List all plugins with versions
 ```
 
-### Quick Installation Reference
-
-#### Install Plugins by Category
-
-**AI/ML (5 plugins)**
-```bash
-/plugin install agent-orchestration@scientific-computing-workflows
-/plugin install ai-reasoning@scientific-computing-workflows
-/plugin install deep-learning@scientific-computing-workflows
-/plugin install jax-implementation@scientific-computing-workflows
-/plugin install machine-learning@scientific-computing-workflows
-```
-
-**Development (8 plugins)**
-```bash
-/plugin install backend-development@scientific-computing-workflows
-/plugin install debugging-toolkit@scientific-computing-workflows
-/plugin install frontend-mobile-development@scientific-computing-workflows
-/plugin install javascript-typescript@scientific-computing-workflows
-/plugin install llm-application-dev@scientific-computing-workflows
-/plugin install multi-platform-apps@scientific-computing-workflows
-/plugin install python-development@scientific-computing-workflows
-/plugin install systems-programming@scientific-computing-workflows
-```
-
-**Scientific Computing (4 plugins)**
-```bash
-/plugin install hpc-computing@scientific-computing-workflows
-/plugin install julia-development@scientific-computing-workflows
-/plugin install molecular-simulation@scientific-computing-workflows
-/plugin install statistical-physics@scientific-computing-workflows
-```
-
-**Tools & Utilities (11 plugins)**
-```bash
-/plugin install cicd-automation@scientific-computing-workflows
-/plugin install cli-tool-design@scientific-computing-workflows
-/plugin install code-documentation@scientific-computing-workflows
-/plugin install code-migration@scientific-computing-workflows
-/plugin install codebase-cleanup@scientific-computing-workflows
-/plugin install comprehensive-review@scientific-computing-workflows
-/plugin install framework-migration@scientific-computing-workflows
-/plugin install git-pr-workflows@scientific-computing-workflows
-/plugin install observability-monitoring@scientific-computing-workflows
-/plugin install quality-engineering@scientific-computing-workflows
-/plugin install unit-testing@scientific-computing-workflows
-```
-
-**Research & Visualization (3 plugins)**
-```bash
-/plugin install data-visualization@scientific-computing-workflows
-/plugin install research-methodology@scientific-computing-workflows
-/plugin install full-stack-orchestration@scientific-computing-workflows
-```
-
-### Available Plugins
-
-<details>
-<summary><b>All 31 Plugins by Category (Click to expand)</b></summary>
-
-#### AI/ML (5)
-- **agent-orchestration** - Multi-agent system optimization and context management
-- **ai-reasoning** - Advanced cognitive tools for problem-solving and meta-analysis
-- **deep-learning** - Neural network architecture design and training diagnostics
-- **jax-implementation** - JAX with NumPyro Bayesian inference, ArviZ integration, Consensus Monte Carlo, and response verification protocols
-- **machine-learning** - Data science, statistical analysis, and MLOps workflows
-
-#### Development (8)
-- **backend-development** - Backend API design, GraphQL architecture, TDD
-- **debugging-toolkit** - Interactive debugging and developer experience optimization
-- **frontend-mobile-development** - Frontend UI and mobile app implementation
-- **javascript-typescript** - Modern JavaScript/TypeScript with ES6+ and Node.js
-- **llm-application-dev** - LLM applications with prompt engineering and RAG
-- **multi-platform-apps** - Cross-platform web, iOS, Android, desktop apps
-- **python-development** - Python with FastAPI, Django, async patterns
-- **systems-programming** - Rust, C, C++, and Go development
-
-#### Scientific Computing (4)
-- **hpc-computing** - High-performance computing and numerical methods
-- **julia-development** - Julia ecosystem with SciML and Bayesian inference
-- **molecular-simulation** - Molecular dynamics with LAMMPS and GROMACS
-- **statistical-physics** - Correlation function analysis and FFT
-
-#### Tools & Utilities (11)
-- **cicd-automation** - CI/CD pipelines with GitHub Actions and GitLab CI
-- **cli-tool-design** - CLI tool development and automation
-- **code-documentation** - Documentation generation and technical writing
-- **code-migration** - Legacy code modernization and migration
-- **codebase-cleanup** - Technical debt reduction and refactoring
-- **comprehensive-review** - Multi-perspective code analysis and security
-- **framework-migration** - Framework updates and architectural transformation
-- **git-pr-workflows** - Git workflow automation and pull request enhancement
-- **observability-monitoring** - Metrics, logging, tracing, and SLO implementation
-- **quality-engineering** - QA, validation, and correctness verification
-- **unit-testing** - Test automation, generation, and execution
-
-#### Research & Visualization (3)
-- **data-visualization** - Scientific data visualization and AR/VR interfaces
-- **research-methodology** - Research intelligence and literature analysis
-- **full-stack-orchestration** - End-to-end full-stack feature delivery
-
-</details>
-
 ### Using Plugins
 
-Once installed, plugins provide agents, commands, and skills that are automatically available in Claude Code:
+Once installed, plugins provide agents, commands, and skills that are automatically available:
 
 **Using Specialized Agents**
 ```
 Ask Claude: "@python-pro help me optimize this async function"
 Ask Claude: "@julia-pro implement this differential equation using SciML"
 Ask Claude: "@jax-pro optimize this neural network training loop"
-Ask Claude: "@ml-engineer build a scikit-learn pipeline for this dataset"
 Ask Claude: "@rust-pro refactor this code for better memory safety"
 ```
 
 **Running Commands**
 ```bash
-/ultra-think "Analyze the architecture of this system"
-/double-check "Validate this implementation"
-/run-all-tests --fix  # Run and fix all tests
-/commit "Add new feature"  # Intelligent git commit
+/ultra-think "Analyze the architecture of this system" --depth=deep
+/double-check my-feature --mode=standard
+/run-all-tests --fix --coverage
+/fix-commit-errors workflow-123 --auto-fix
 ```
 
 **Accessing Skills**
-Skills are automatically loaded and available to Claude based on file context and your requests.
+Skills are automatically loaded based on file context and your requests.
 
-### Integration Examples
+## Documentation
 
-See [full documentation](https://myclaude.readthedocs.io/en/latest/guides/) for detailed workflow guides:
-- Scientific computing (Julia + HPC + GPU)
-- Development (Python + API + Testing)
-- DevOps (Docker + Kubernetes + CI/CD)
-- Infrastructure (Terraform + Cloud + Monitoring)
+- **[Plugin Cheatsheet](PLUGIN_CHEATSHEET.md)** - Quick reference for all plugins
+- **[Complete Agents List](AGENTS_LIST.md)** - Catalog of all 75 agents
+- **[Complete Commands List](COMMANDS_LIST.md)** - Catalog of all 60+ commands
+- **[Full Documentation](https://myclaude.readthedocs.io/en/latest/)** - Comprehensive guides and API references
 
-## Maintenance
+## Version History
 
-```bash
-# Commit changes
-git add .
-git commit -m "Update plugins and configurations"
+### v1.0.3 (Current - 2025-11-08)
 
-# Create version tag
-git tag -a v1.0.0 -m "Release v1.0.0"
-```
+**Major Optimization Release** - 21 plugins updated with significant enhancements:
+
+**Command Optimization Highlights:**
+- **ai-reasoning**: 46.5% token reduction (reflection.md 1704→695 lines, ultra-think.md 1288→906 lines)
+- **cicd-automation**: 62.1% reduction (2,391→906 lines) with multi-agent error analysis
+- **code-documentation**: 54.1% reduction (2,495→1,146 lines) with AST-based analysis
+- **unit-testing**: 50.6% reduction (2,112→1,044 lines) with execution modes
+- **codebase-cleanup**: 25% reduction (2,608→1,965 lines) with 9 external docs
+
+**New Features:**
+- **Execution Modes**: All commands support quick/standard/comprehensive (or enterprise) modes with time estimates
+- **External Documentation**: ~30,000+ lines of comprehensive guides across plugins
+- **Enhanced YAML Frontmatter**: Structured metadata for better command discovery
+- **100% Backward Compatibility**: All optimizations maintain full compatibility
+
+**Plugin Updates:**
+- agent-orchestration (v1.0.3): Version consolidation
+- backend-development (v1.0.3): Enhanced feature-development with 3 execution modes
+- machine-learning (v1.0.3): Added data-engineer agent, ml-pipeline enhancements
+- quality-engineering (v1.0.3): 8 external docs (~6,455 lines)
+- systems-programming (v1.0.3): 8 external docs (~5,602 lines)
+- And 16 more plugins with similar enhancements
+
+### v1.0.2 (2025-10-31)
+
+- **jax-implementation v1.0.2**: Enhanced NumPyro with ArviZ integration, Consensus Monte Carlo, and response verification
+
+### v1.0.1 (2025-10-31)
+
+- Documentation improvements and enhanced installation guide
+- Updated statistics (75 agents, 60+ commands, 110+ skills)
+- Fixed Sphinx warnings
+
+### v1.0.0 (2025-10-29)
+
+- Initial release with 31 specialized plugins
+- Comprehensive coverage for scientific computing and software development
+
+See [changelog](https://myclaude.readthedocs.io/en/latest/changelog.html) for detailed version history.
 
 ## Contributing
 
@@ -267,45 +261,10 @@ git tag -a v1.0.0 -m "Release v1.0.0"
 
 See [contribution guidelines](https://myclaude.readthedocs.io/en/latest/contributing.html) for details.
 
-## Documentation Links
-
-- **Full Documentation:** [myclaude.readthedocs.io](https://myclaude.readthedocs.io/en/latest/)
-- **Plugin Guides:** [myclaude.readthedocs.io/plugins/](https://myclaude.readthedocs.io/en/latest/plugins/)
-- **Quick-Start Guides:** [myclaude.readthedocs.io/guides/](https://myclaude.readthedocs.io/en/latest/guides/)
-- **Integration Patterns:** [myclaude.readthedocs.io/integration-map.html](https://myclaude.readthedocs.io/en/latest/integration-map.html)
-- **Technical Glossary:** [myclaude.readthedocs.io/glossary.html](https://myclaude.readthedocs.io/en/latest/glossary.html)
-
-## Version History
-
-### v1.0.2 (Current - 2025-10-31)
-- **jax-implementation v1.0.2**: Enhanced NumPyro capabilities with major improvements
-  - **ArviZ Integration**: Comprehensive Bayesian visualization with 15+ diagnostic plot types, model comparison (LOO/WAIC), and publication-quality outputs
-  - **Consensus Monte Carlo**: Large-scale distributed Bayesian inference for datasets with N > 1M observations
-  - **Response Quality Verification**: Mandatory 26-point pre-delivery checklist across 5 categories (statistical correctness, code quality, inference validity, completeness, documentation)
-  - **Self-Critique Loop**: 5-question validation protocol before delivery
-  - **Anti-Pattern Prevention**: 4 documented common mistakes with WRONG/RIGHT code examples
-  - **Enhanced Skill Discoverability**: Expanded descriptions from 500 to 1,300+ characters with 20+ specific trigger scenarios
-  - **NLSQ Agent Enhancement**: +995 lines of comprehensive framework improvements
-  - **Version Consistency**: All components aligned at v1.0.2 across agents, skills, and documentation
-
-### v1.0.1 (2025-10-31)
-- **Documentation improvements**: Consolidated PLUGIN_INSTALLATION.md into README.md
-- **Enhanced installation guide**: Added category-based installation commands for easier plugin selection
-- **Improved usage examples**: Concrete agent and command examples with real-world scenarios
-- **Accurate resource counts**: Updated statistics (73 agents, 48 commands, 110 skills)
-- **Fixed Sphinx warnings**: Eliminated toctree duplication warnings
-- **Added plugin changelog links**: Comprehensive links to all 31 plugin changelogs in main documentation
-
-### v1.0.0 (2025-10-29)
-- Initial release of customized plugin marketplace
-- 31 specialized plugins across 9 categories
-- Comprehensive coverage for scientific computing and software development
-- Includes HPC computing, Julia/JAX development, deep learning, and full-stack development
-- Standardized documentation and author information
-- Complete Sphinx documentation with Read the Docs integration
-
-See [changelog](https://myclaude.readthedocs.io/en/latest/changelog.html) for detailed version history and individual plugin changelogs.
-
 ## License
 
 MIT License (see [LICENSE](LICENSE))
+
+---
+
+**Built by Wei Chen** | [Documentation](https://myclaude.readthedocs.io/en/latest/) | [GitHub](https://github.com/imewei/MyClaude)

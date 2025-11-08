@@ -1,28 +1,70 @@
 # Unit Testing
 
-Production-grade test automation and debugging with systematic processes, AI-driven RCA, comprehensive examples, and TDD excellence. Features 8-step workflows, quality checkpoints, and battle-tested patterns.
+Production-grade test automation and debugging with 3 execution modes (quick/standard/enterprise), AI-driven RCA, comprehensive examples, and TDD excellence. Features iterative test fixing, automated test generation with scientific computing support, and 8 comprehensive external documentation files.
 
-**Version:** 1.0.1 | **Category:** development | **License:** MIT
+**Version:** 1.0.3 | **Category:** development | **License:** MIT
 
 [Full Documentation →](https://myclaude.readthedocs.io/en/latest/plugins/unit-testing.html)
 
-## ✨ What's New in v1.0.1
+## ✨ What's New in v1.0.3
 
-Both agents now include:
-- **8-step systematic workflows** with self-verification checkpoints
-- **8 quality assurance principles** as Constitutional AI checkpoints
-- **16 strategic ambiguity questions** across 4 domains
-- **3 comprehensive examples** (Good, Bad, Annotated) per agent
-- **3 common patterns** with validation criteria
-- **~600-870 lines** of structured guidance per agent
+### Command Optimization & Execution Modes
 
-Expected improvements:
-- +60% faster debugging through systematic processes
-- +75% reduction in debugging time with AI-driven RCA
-- +50% improvement in test quality
-- +80% reduction in flaky tests
-- +65% faster test execution
-- +70% better test maintainability
+**Both commands optimized** following the proven pattern from quality-engineering and systems-programming v1.0.3:
+
+#### /run-all-tests Command
+- **Optimized:** 1,469 → 492 lines (66.5% reduction)
+- **3 Execution Modes:**
+  - **Quick (30min-1h):** Single test file, max 3 iterations, basic error analysis
+  - **Standard (2-4h):** Full suite, max 10 iterations, AI-assisted RCA, >80% coverage
+  - **Enterprise (1-2d):** Entire codebase, unlimited iterations, >90% coverage, mutation testing
+
+#### /test-generate Command
+- **Optimized:** 643 → 552 lines (14.2% reduction)
+- **3 Execution Modes:**
+  - **Quick (30min-1h):** Single module, ~50-100 test cases, unit tests only
+  - **Standard (2-4h):** Package/feature, ~200-500 test cases, unit + integration + property-based
+  - **Enterprise (1-2d):** Entire project, ~1,000+ test cases, full suite + mutation + docs
+
+### External Documentation (8 files - 5,858 lines)
+
+**For /run-all-tests:**
+- `framework-detection-guide.md` - Auto-detection for Jest, pytest, cargo, go test, Maven, Gradle
+- `debugging-strategies.md` - AI-driven RCA, log correlation, flaky test detection
+- `test-execution-workflows.md` - Iterative patterns, parallel strategies, CI/CD integration
+- `multi-language-testing.md` - Cross-language patterns, monorepo strategies
+
+**For /test-generate:**
+- `test-generation-patterns.md` - AST parsing, test algorithms, mocking strategies
+- `scientific-testing-guide.md` - JAX gradient verification, NumPy numerical validation, PyTorch autograd
+- `property-based-testing.md` - Hypothesis patterns, QuickCheck, stateful testing
+- `coverage-analysis-guide.md` - Coverage metrics, gap identification, pytest-cov/istanbul
+
+### Key Improvements
+
+- **Token Efficiency:** 50.6% command file reduction (2,112 → 1,044 lines)
+- **Critical Fix:** Registered `e2e-testing-patterns` skill (was missing from plugin.json)
+- **Scientific Computing:** JAX, NumPy, PyTorch test generation with gradient verification
+- **Multi-Language:** Python, JavaScript/TypeScript, Rust, Go, Java, Julia support
+- **Version Consistency:** All commands, agents, and skills now versioned 1.0.3
+
+### Execution Mode Tables
+
+#### /run-all-tests Modes
+
+| Mode | Duration | Agents | Iterations | Coverage | Use Case |
+|------|----------|--------|------------|----------|----------|
+| Quick | 30min-1h | 1 | Max 3 | Basic | Rapid debugging |
+| Standard | 2-4h | 2 | Max 10 | >80% | Pre-commit validation |
+| Enterprise | 1-2d | 3 | Unlimited | >90% | Release validation |
+
+#### /test-generate Modes
+
+| Mode | Duration | Agents | Output | Test Types | Use Case |
+|------|----------|--------|--------|------------|----------|
+| Quick | 30min-1h | 1 | ~50-100 | Unit only | TDD workflow |
+| Standard | 2-4h | 2 | ~200-500 | Unit + integration + property-based | Production suites |
+| Enterprise | 1-2d | 3 | ~1,000+ | Full suite + mutation + docs | New projects |
 
 [View Full Changelog →](./CHANGELOG.md)
 

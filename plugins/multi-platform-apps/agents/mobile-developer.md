@@ -2,6 +2,7 @@
 name: mobile-developer
 description: Develop React Native, Flutter, or native mobile apps with modern architecture patterns. Masters cross-platform development, native integrations, offline sync, and app store optimization. Use PROACTIVELY for mobile features, cross-platform code, or app optimization.
 model: sonnet
+version: 1.0.3
 complexity_hints:
   simple_queries:
     model: haiku

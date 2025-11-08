@@ -1,7 +1,7 @@
 {
   "name": "systems-programming",
-  "version": "1.0.1",
-  "description": "Production-grade systems programming with C, C++, Rust, and Go. Features systematic development processes, quality assurance checkpoints, comprehensive examples, and battle-tested patterns for memory safety, concurrency, and performance.",
+  "version": "1.0.3",
+  "description": "Production-grade systems programming with C, C++, Rust, and Go. v1.0.3 enhances all 3 commands with execution modes (quick/standard/enterprise) and 8 comprehensive external documentation files (~5,602 lines) for deep-dive references on project structures, build systems, memory safety, cargo configuration, async patterns, profiling tools, and optimization strategies.",
   "author": {
     "name": "Wei Chen",
     "url": "https://myclaude.readthedocs.io/en/latest/"
@@ -28,18 +28,21 @@
   "commands": [
     {
       "name": "/rust-project",
-      "description": "Scaffold production-ready Rust projects with proper structure, cargo tooling, and testing",
-      "status": "active"
+      "description": "Scaffold production-ready Rust projects with 3 execution modes (quick: 1-2h simple binary/library, standard: 4-6h production crate with async Tokio/error handling, enterprise: 1-2d workspace with multiple crates). Includes comprehensive external documentation on project structures, Cargo configuration, and async patterns.",
+      "status": "active",
+      "version": "1.0.3"
     },
     {
       "name": "/c-project",
-      "description": "Scaffold production-ready C projects with Makefile/CMake, testing, and memory safety tools",
-      "status": "active"
+      "description": "Scaffold production-ready C projects with 3 execution modes (quick: 1-2h simple CLI tool, standard: 4-6h production app with Makefile/CMake/testing/Valgrind, enterprise: 1-2d multi-module system with platform abstraction). Includes comprehensive external documentation on project structures, build systems (Makefile/CMake), and memory safety (Valgrind/ASan).",
+      "status": "active",
+      "version": "1.0.3"
     },
     {
       "name": "/profile-performance",
-      "description": "Comprehensive performance profiling workflow using perf, valgrind, and hardware counters",
-      "status": "active"
+      "description": "Comprehensive performance profiling workflow with 3 execution modes (quick: 30min-1h hotspot identification with perf/flamegraph, standard: 2-3h comprehensive profiling with CPU/memory/cache analysis, enterprise: 1d full audit with benchmarking suite). Includes comprehensive external documentation on profiling tools (perf, valgrind, flamegraph) and optimization patterns.",
+      "status": "active",
+      "version": "1.0.3"
     }
   ],
   "agents": [
@@ -47,6 +50,7 @@
       "name": "rust-pro",
       "description": "Master Rust 1.75+ with systematic development process, ownership patterns, async Tokio, type safety, and zero-cost abstractions. Includes 8-step workflow, quality checkpoints, and production-ready examples with graceful shutdown.",
       "status": "active",
+      "version": "1.0.3",
       "capabilities": [
         "8-step systematic development workflow",
         "Ownership and borrowing patterns",
@@ -61,6 +65,7 @@
       "name": "c-pro",
       "description": "Master C programming with systematic development process, memory safety validation, POSIX APIs, and error handling patterns. Includes 8-step workflow, Valgrind/AddressSanitizer integration, and thread-safe memory pool examples.",
       "status": "active",
+      "version": "1.0.3",
       "capabilities": [
         "8-step systematic development workflow",
         "Memory management with pools and arenas",
@@ -75,6 +80,7 @@
       "name": "cpp-pro",
       "description": "Master modern C++11/14/17/20/23 with systematic development process, RAII patterns, template metaprogramming, and move semantics. Includes 8-step workflow, compile-time computation, and LRU cache with shared_mutex.",
       "status": "active",
+      "version": "1.0.3",
       "capabilities": [
         "8-step systematic development workflow",
         "RAII and Rule of Zero/Three/Five",
@@ -89,6 +95,7 @@
       "name": "golang-pro",
       "description": "Master Go 1.21+ with systematic development process, goroutines, channels, context patterns, and observability. Includes 8-step workflow, graceful shutdown patterns, and HTTP server with Prometheus metrics.",
       "status": "active",
+      "version": "1.0.3",
       "capabilities": [
         "8-step systematic development workflow",
         "Goroutines and channel patterns",
@@ -104,6 +111,7 @@
     {
       "name": "systems-programming-patterns",
       "description": "Battle-tested patterns for memory management, concurrency, performance optimization, and debugging across C/C++/Rust/Go. Use when implementing memory allocators, lock-free data structures, SIMD vectorization, or optimizing cache performance with profiling tools.",
+      "version": "1.0.3",
       "capabilities": [
         "Memory management patterns (pools, arenas, RAII)",
         "Concurrency patterns (lock-free, work-stealing)",

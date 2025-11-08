@@ -7,6 +7,85 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.0.3] - 2025-01-07
+
+### 🚀 Command Optimization with Execution Modes
+
+This release optimizes the `/python-scaffold` command with execution modes, external documentation, and enhanced command descriptions following the proven optimization pattern.
+
+#### /python-scaffold Command Enhancement
+
+**Command File Optimization**:
+- **Before**: 317 lines (single linear workflow)
+- **After**: 188 lines with YAML frontmatter
+- **Reduction**: 41% (129 lines externalized)
+
+**New Execution Modes**:
+
+| Mode | Duration | Agents | Scope |
+|------|----------|--------|-------|
+| **Quick** | 1-2 hours | 1 agent | Simple script, prototype, basic CLI (~15 files) |
+| **Standard** | 3-6 hours | 2 agents | Production FastAPI/Django, library (~50 files) |
+| **Enterprise** | 1-2 days | 3 agents | Microservices, K8s, observability (~100 files) |
+
+**External Documentation** (5 files - ~2,050 lines):
+- `fastapi-structure.md` (~470 lines) - Complete FastAPI project templates with SQLAlchemy 2.0, Pydantic V2, async patterns
+- `django-structure.md` (~410 lines) - Django 5.x project structure with DRF, Celery, async views
+- `library-packaging.md` (~530 lines) - PyPI-ready package setup with modern build backends
+- `cli-tools.md` (~390 lines) - Typer-based CLI tools with Rich console integration
+- `development-tooling.md` (~450 lines) - Makefiles, Docker, CI/CD, pre-commit hooks
+
+**Version Management**:
+- Plugin: 1.0.1 → 1.0.3
+- Commands: Added version field to `/python-scaffold` (1.0.3)
+- Agents: Added version fields to all 3 agents (python-pro, fastapi-pro, django-pro)
+- Skills: Added version fields to all 5 skills
+
+#### Enhanced Command Description
+
+**Before**:
+```
+"Scaffold production-ready Python projects with modern tooling (uv, ruff, pytest, mypy)"
+```
+
+**After**:
+```
+"Scaffold production-ready Python projects with modern tooling, 3 execution modes (quick: 1-2h, standard: 3-6h, enterprise: 1-2d), and comprehensive external documentation"
+```
+
+### Added
+
+- YAML frontmatter in `python-scaffold.md` with execution mode definitions
+- Interactive mode selection via `AskUserQuestion`
+- 5 comprehensive external documentation files in `docs/python-scaffold/`:
+  - FastAPI structure guide with async patterns and testing
+  - Django structure guide with DRF and Celery
+  - Library packaging guide with PyPI publishing
+  - CLI tools guide with Typer and Rich
+  - Development tooling guide with Docker and CI/CD
+- Version fields to all agents and skills for consistency tracking
+- Cross-references to external documentation throughout command file
+
+### Changed
+
+- Command file structure from linear to execution-mode-based
+- Project type handling from embedded to externalized documentation
+- Agent coordination from implicit to explicit mode-based assignment
+
+### Improved
+
+- **Token Efficiency**: 41% reduction in command file size
+- **Flexibility**: 3 execution modes for different project complexities
+- **Documentation**: Comprehensive external guides (~2,050 lines)
+- **Discoverability**: Enhanced command description with execution modes
+- **Maintainability**: Separation of concerns (command logic vs. templates)
+
+### Migration Guide
+
+No breaking changes - existing usage patterns remain compatible. New execution mode selection provides enhanced flexibility.
+
+---
+
 ## [2.0.0] - 2024-10-27
 
 ### 🎉 Major Release - Complete Three-Phase Optimization

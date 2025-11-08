@@ -1,8 +1,45 @@
 ---
-description: Generate comprehensive test suites for Python, Julia, and JAX scientific computing projects with numerical validation, property-based testing, and performance benchmarks
-allowed-tools: Bash(find:*), Bash(grep:*), Bash(python:*), Bash(julia:*), Bash(pytest:*), Bash(git:*)
+version: 1.0.3
+command: /test-generate
+description: Generate comprehensive test suites with scientific computing support, numerical validation, property-based testing, and performance benchmarks across 3 execution modes
 argument-hint: <source-file-or-module> [--coverage] [--property-based] [--benchmarks] [--scientific]
+execution_modes:
+  quick:
+    duration: "30min-1h"
+    description: "Fast scaffolding for single module/file"
+    agents: ["test-automator"]
+    scope: "Single module/file"
+    test_types: "Unit tests only"
+    coverage: "Generate for uncovered functions"
+    scientific: "Basic numerical assertions"
+    output: "~50-100 test cases"
+    use_case: "Quick scaffolding, TDD workflow"
+  standard:
+    duration: "2-4h"
+    description: "Comprehensive test suite for package/feature"
+    agents: ["test-automator", "hpc-numerical-coordinator"]
+    scope: "Package/feature module"
+    test_types: "Unit + integration, edge cases, mocking"
+    coverage: "Comprehensive (>80%)"
+    scientific: "Numerical validation, gradient verification"
+    property_based: "Hypothesis for critical functions"
+    output: "~200-500 test cases"
+    use_case: "Production test suite generation"
+  enterprise:
+    duration: "1-2d"
+    description: "Exhaustive test suite for entire project"
+    agents: ["test-automator", "hpc-numerical-coordinator", "jax-pro"]
+    scope: "Entire project/codebase"
+    test_types: "Unit + integration + E2E, property-based, mutation"
+    coverage: "Exhaustive (>90%), mutation score"
+    scientific: "Full numerical validation, convergence tests"
+    documentation: "Test docs, coverage reports"
+    output: "~1,000+ test cases"
+    use_case: "New project test suite, compliance"
+workflow_type: "generative"
+interactive_mode: true
 color: cyan
+allowed-tools: Bash(find:*), Bash(grep:*), Bash(python:*), Bash(julia:*), Bash(pytest:*), Bash(git:*)
 agents:
   primary:
     - test-automator
@@ -22,441 +59,227 @@ agents:
 
 # Automated Unit Test Generation
 
-You are a test automation expert specializing in generating comprehensive, maintainable unit tests across multiple languages and frameworks, including scientific computing. Create tests that maximize coverage, catch edge cases, validate numerical correctness, and follow best practices for assertion quality and test organization.
+Generate comprehensive, maintainable test suites across Python, Julia, JAX, and JavaScript/TypeScript with scientific computing support, numerical correctness validation, and property-based testing.
 
 ## Context
 
-The user needs automated test generation that analyzes code structure, identifies test scenarios, and creates high-quality unit tests with proper mocking, assertions, edge case coverage, and scientific computing validation (numerical correctness, property-based testing, gradient verification, performance benchmarks). Focus on framework-specific patterns and maintainable test suites.
+The user needs automated test generation for: $ARGUMENTS
 
-## Requirements
+## Execution Mode Selection
 
-$ARGUMENTS
+<AskUserQuestion>
+questions:
+  - question: "Which test generation scope best fits your needs?"
+    header: "Generation Mode"
+    multiSelect: false
+    options:
+      - label: "Quick (30min-1h)"
+        description: "Single module/file. Unit tests only with basic coverage. Generates ~50-100 test cases. Use for TDD workflow and quick scaffolding."
 
-## Instructions
+      - label: "Standard (2-4h)"
+        description: "Package/feature module. Unit + integration tests with >80% coverage, property-based testing for critical functions. Generates ~200-500 test cases. Use for production test suites."
 
-### 1. Analyze Code for Test Generation
+      - label: "Enterprise (1-2d)"
+        description: "Entire project/codebase. Full test suite with >90% coverage, E2E, property-based, and mutation testing. Includes documentation and reports. Generates ~1,000+ test cases. Use for new projects and compliance."
+</AskUserQuestion>
 
-Scan codebase to identify untested code and generate comprehensive test suites:
+## Phase 1: Code Analysis
+
+**See comprehensive guide**: [Test Generation Patterns](../docs/test-generate/test-generation-patterns.md)
+
+### AST-Based Analysis
 
 ```python
 import ast
-from pathlib import Path
-from typing import Dict, List, Any
+from typing import List, Dict
 
-class TestGenerator:
-    def __init__(self, language: str):
-        self.language = language
-        self.framework_map = {
-            'python': 'pytest',
-            'javascript': 'jest',
-            'typescript': 'jest',
-            'java': 'junit',
-            'go': 'testing'
-        }
+# Analyze Python module
+def analyze_python_module(file_path: str) -> Dict:
+    with open(file_path) as f:
+        tree = ast.parse(f.read())
 
-    def analyze_file(self, file_path: str) -> Dict[str, Any]:
-        """Extract testable units from source file"""
-        if self.language == 'python':
-            return self._analyze_python(file_path)
-        elif self.language in ['javascript', 'typescript']:
-            return self._analyze_javascript(file_path)
+    functions = []
+    classes = []
 
-    def _analyze_python(self, file_path: str) -> Dict:
-        with open(file_path) as f:
-            tree = ast.parse(f.read())
+    for node in ast.walk(tree):
+        if isinstance(node, ast.FunctionDef):
+            functions.append({
+                'name': node.name,
+                'args': [arg.arg for arg in node.args.args],
+                'returns': ast.unparse(node.returns) if node.returns else None,
+                'complexity': calculate_complexity(node),
+                'docstring': ast.get_docstring(node)
+            })
+        elif isinstance(node, ast.ClassDef):
+            methods = [n.name for n in node.body if isinstance(n, ast.FunctionDef)]
+            classes.append({
+                'name': node.name,
+                'methods': methods
+            })
 
-        functions = []
-        classes = []
-
-        for node in ast.walk(tree):
-            if isinstance(node, ast.FunctionDef):
-                functions.append({
-                    'name': node.name,
-                    'args': [arg.arg for arg in node.args.args],
-                    'returns': ast.unparse(node.returns) if node.returns else None,
-                    'decorators': [ast.unparse(d) for d in node.decorator_list],
-                    'docstring': ast.get_docstring(node),
-                    'complexity': self._calculate_complexity(node)
-                })
-            elif isinstance(node, ast.ClassDef):
-                methods = [n.name for n in node.body if isinstance(n, ast.FunctionDef)]
-                classes.append({
-                    'name': node.name,
-                    'methods': methods,
-                    'bases': [ast.unparse(base) for base in node.bases]
-                })
-
-        return {'functions': functions, 'classes': classes, 'file': file_path}
+    return {'functions': functions, 'classes': classes}
 ```
 
-### 2. Generate Python Tests with pytest
+### Coverage Gap Detection
 
 ```python
-def generate_pytest_tests(self, analysis: Dict) -> str:
-    """Generate pytest test file from code analysis"""
-    tests = ['import pytest', 'from unittest.mock import Mock, patch', '']
+# Identify untested code from coverage reports
+def analyze_coverage_gaps(coverage_file: str) -> List[Dict]:
+    coverage_data = read_coverage_report(coverage_file)
 
-    module_name = Path(analysis['file']).stem
-    tests.append(f"from {module_name} import *\n")
+    gaps = []
+    for file_path, data in coverage_data['files'].items():
+        missing_lines = data.get('missing_lines', [])
 
-    for func in analysis['functions']:
-        if func['name'].startswith('_'):
-            continue
+        if missing_lines:
+            # Find uncovered functions
+            uncovered_functions = find_uncovered_functions(
+                file_path,
+                missing_lines
+            )
 
-        test_class = self._generate_function_tests(func)
-        tests.append(test_class)
+            for func in uncovered_functions:
+                gaps.append({
+                    'file': file_path,
+                    'function': func['name'],
+                    'priority': calculate_priority(func)
+                })
 
-    for cls in analysis['classes']:
-        test_class = self._generate_class_tests(cls)
-        tests.append(test_class)
-
-    return '\n'.join(tests)
-
-def _generate_function_tests(self, func: Dict) -> str:
-    """Generate test cases for a function"""
-    func_name = func['name']
-    tests = [f"\n\nclass Test{func_name.title()}:"]
-
-    # Happy path test
-    tests.append(f"    def test_{func_name}_success(self):")
-    tests.append(f"        result = {func_name}({self._generate_mock_args(func['args'])})")
-    tests.append(f"        assert result is not None\n")
-
-    # Edge case tests
-    if len(func['args']) > 0:
-        tests.append(f"    def test_{func_name}_with_empty_input(self):")
-        tests.append(f"        with pytest.raises((ValueError, TypeError)):")
-        tests.append(f"            {func_name}({self._generate_empty_args(func['args'])})\n")
-
-    # Exception handling test
-    tests.append(f"    def test_{func_name}_handles_errors(self):")
-    tests.append(f"        with pytest.raises(Exception):")
-    tests.append(f"            {func_name}({self._generate_invalid_args(func['args'])})\n")
-
-    return '\n'.join(tests)
-
-def _generate_class_tests(self, cls: Dict) -> str:
-    """Generate test cases for a class"""
-    tests = [f"\n\nclass Test{cls['name']}:"]
-    tests.append(f"    @pytest.fixture")
-    tests.append(f"    def instance(self):")
-    tests.append(f"        return {cls['name']}()\n")
-
-    for method in cls['methods']:
-        if method.startswith('_') and method != '__init__':
-            continue
-
-        tests.append(f"    def test_{method}(self, instance):")
-        tests.append(f"        result = instance.{method}()")
-        tests.append(f"        assert result is not None\n")
-
-    return '\n'.join(tests)
+    return sorted(gaps, key=lambda x: x['priority'], reverse=True)
 ```
 
-### 3. Generate JavaScript/TypeScript Tests with Jest
+## Phase 2: Test Generation
 
-```typescript
-interface TestCase {
-  name: string;
-  setup?: string;
-  execution: string;
-  assertions: string[];
-}
+**See comprehensive guide**: [Test Generation Patterns](../docs/test-generate/test-generation-patterns.md)
 
-class JestTestGenerator {
-  generateTests(functionName: string, params: string[]): string {
-    const tests: TestCase[] = [
-      {
-        name: `${functionName} returns expected result with valid input`,
-        execution: `const result = ${functionName}(${this.generateMockParams(params)})`,
-        assertions: ['expect(result).toBeDefined()', 'expect(result).not.toBeNull()']
-      },
-      {
-        name: `${functionName} handles null input gracefully`,
-        execution: `const result = ${functionName}(null)`,
-        assertions: ['expect(result).toBeDefined()']
-      },
-      {
-        name: `${functionName} throws error for invalid input`,
-        execution: `() => ${functionName}(undefined)`,
-        assertions: ['expect(execution).toThrow()']
-      }
-    ];
+### pytest Test Generation
 
-    return this.formatJestSuite(functionName, tests);
-  }
+```python
+# Generate pytest tests
+def generate_pytest_tests(func_info: Dict) -> str:
+    """Generate comprehensive pytest test suite"""
 
-  formatJestSuite(name: string, cases: TestCase[]): string {
-    let output = `describe('${name}', () => {\n`;
+    return f'''
+def test_{func_info['name']}_success():
+    """Test {func_info['name']} with valid input"""
+    result = {func_info['name']}({generate_mock_args(func_info['args'])})
+    assert result is not None
 
-    for (const testCase of cases) {
-      output += `  it('${testCase.name}', () => {\n`;
-      if (testCase.setup) {
-        output += `    ${testCase.setup}\n`;
-      }
-      output += `    const execution = ${testCase.execution};\n`;
-      for (const assertion of testCase.assertions) {
-        output += `    ${assertion};\n`;
-      }
-      output += `  });\n\n`;
-    }
+def test_{func_info['name']}_edge_cases():
+    """Test {func_info['name']} with edge cases"""
+    # Empty input
+    with pytest.raises((ValueError, TypeError)):
+        {func_info['name']}()
 
-    output += '});\n';
-    return output;
-  }
+    # None input
+    with pytest.raises((ValueError, TypeError)):
+        {func_info['name']}(None)
 
-  generateMockParams(params: string[]): string {
-    return params.map(p => `mock${p.charAt(0).toUpperCase() + p.slice(1)}`).join(', ');
-  }
-}
+@pytest.mark.parametrize("input,expected", [
+    ({generate_test_cases(func_info)})
+])
+def test_{func_info['name']}_parametrized(input, expected):
+    """Parametrized test for multiple scenarios"""
+    result = {func_info['name']}(input)
+    assert result == expected
+'''
 ```
 
-### 4. Generate React Component Tests
+### Jest/Vitest Test Generation
 
 ```typescript
-function generateReactComponentTest(componentName: string): string {
+// Generate Jest/Vitest tests
+function generateJestTests(functionName: string, params: string[]): string {
   return `
-import { render, screen, fireEvent } from '@testing-library/react';
-import { ${componentName} } from './${componentName}';
-
-describe('${componentName}', () => {
-  it('renders without crashing', () => {
-    render(<${componentName} />);
-    expect(screen.getByRole('main')).toBeInTheDocument();
+describe('${functionName}', () => {
+  it('should return expected result with valid input', () => {
+    const result = ${functionName}(${generateMockParams(params)});
+    expect(result).toBeDefined();
   });
 
-  it('displays correct initial state', () => {
-    render(<${componentName} />);
-    const element = screen.getByTestId('${componentName.toLowerCase()}');
-    expect(element).toBeVisible();
+  it('should handle null input gracefully', () => {
+    const result = ${functionName}(null);
+    expect(result).toBeDefined();
   });
 
-  it('handles user interaction', () => {
-    render(<${componentName} />);
-    const button = screen.getByRole('button');
-    fireEvent.click(button);
-    expect(screen.getByText(/clicked/i)).toBeInTheDocument();
-  });
-
-  it('updates props correctly', () => {
-    const { rerender } = render(<${componentName} value="initial" />);
-    expect(screen.getByText('initial')).toBeInTheDocument();
-
-    rerender(<${componentName} value="updated" />);
-    expect(screen.getByText('updated')).toBeInTheDocument();
+  it('should throw error for invalid input', () => {
+    expect(() => ${functionName}(undefined)).toThrow();
   });
 });
 `;
 }
 ```
 
-### 5. Coverage Analysis and Gap Detection
+## Phase 3: Scientific Computing Tests
+
+**See comprehensive guide**: [Scientific Testing Guide](../docs/test-generate/scientific-testing-guide.md)
+
+### Numerical Correctness Tests
 
 ```python
-import subprocess
-import json
-
-class CoverageAnalyzer:
-    def analyze_coverage(self, test_command: str) -> Dict:
-        """Run tests with coverage and identify gaps"""
-        result = subprocess.run(
-            [test_command, '--coverage', '--json'],
-            capture_output=True,
-            text=True
-        )
-
-        coverage_data = json.loads(result.stdout)
-        gaps = self.identify_coverage_gaps(coverage_data)
-
-        return {
-            'overall_coverage': coverage_data.get('totals', {}).get('percent_covered', 0),
-            'uncovered_lines': gaps,
-            'files_below_threshold': self.find_low_coverage_files(coverage_data, 80)
-        }
-
-    def identify_coverage_gaps(self, coverage: Dict) -> List[Dict]:
-        """Find specific lines/functions without test coverage"""
-        gaps = []
-        for file_path, data in coverage.get('files', {}).items():
-            missing_lines = data.get('missing_lines', [])
-            if missing_lines:
-                gaps.append({
-                    'file': file_path,
-                    'lines': missing_lines,
-                    'functions': data.get('excluded_lines', [])
-                })
-        return gaps
-
-    def generate_tests_for_gaps(self, gaps: List[Dict]) -> str:
-        """Generate tests specifically for uncovered code"""
-        tests = []
-        for gap in gaps:
-            test_code = self.create_targeted_test(gap)
-            tests.append(test_code)
-        return '\n\n'.join(tests)
-```
-
-### 6. Mock Generation
-
-```python
-def generate_mock_objects(self, dependencies: List[str]) -> str:
-    """Generate mock objects for external dependencies"""
-    mocks = ['from unittest.mock import Mock, MagicMock, patch\n']
-
-    for dep in dependencies:
-        mocks.append(f"@pytest.fixture")
-        mocks.append(f"def mock_{dep}():")
-        mocks.append(f"    mock = Mock(spec={dep})")
-        mocks.append(f"    mock.method.return_value = 'mocked_result'")
-        mocks.append(f"    return mock\n")
-
-    return '\n'.join(mocks)
-```
-
-## 7. Scientific Computing Test Generation
-
-### NumPy/SciPy Numerical Correctness Tests
-
-```python
-def generate_numerical_tests(self, func: Dict) -> str:
+def generate_numerical_tests(func_info: Dict) -> str:
     """Generate tests for numerical correctness"""
-    tests = []
 
-    # Analytical solution tests
-    tests.append(f"""
-def test_{func['name']}_analytical_solution():
-    '''Test against known analytical solution'''
-    # Known exact solution
-    input_data = {generate_analytical_input(func)}
-    expected = {generate_analytical_output(func)}
-    result = {func['name']}(input_data)
+    return f'''
+import numpy as np
+from numpy.testing import assert_allclose
 
-    from numpy.testing import assert_allclose
+def test_{func_info['name']}_analytical_solution():
+    """Test against known analytical solution"""
+    input_data = {generate_analytical_input(func_info)}
+    expected = {generate_analytical_output(func_info)}
+    result = {func_info['name']}(input_data)
+
     assert_allclose(result, expected, rtol=1e-12, atol=1e-14,
                    err_msg="Result doesn't match analytical solution")
-""")
 
-    # Edge case tests
-    tests.append(f"""
-def test_{func['name']}_edge_cases():
-    '''Test edge cases and special values'''
-    import numpy as np
-
+def test_{func_info['name']}_edge_cases():
+    """Test edge cases and special values"""
     # Empty array
     with pytest.raises(ValueError):
-        {func['name']}(np.array([]))
-
-    # Single element
-    result = {func['name']}(np.array([1.0]))
-    assert result.shape == (1,)
+        {func_info['name']}(np.array([]))
 
     # Zero values
     zeros = np.zeros(10)
-    result = {func['name']}(zeros)
-    assert np.all(np.isfinite(result))
+    result = {func_info['name']}(zeros)
+    assert np.all(np.isfinite(result)), "Result contains inf/nan"
 
     # Large/small values (numerical stability)
     large = np.array([1e10, 1e11, 1e12])
-    result = {func['name']}(large)
-    assert np.all(np.isfinite(result)), "Result contains inf/nan"
-""")
-
-    return '\n'.join(tests)
+    result = {func_info['name']}(large)
+    assert np.all(np.isfinite(result)), "Numerical instability detected"
+'''
 ```
 
-### Property-Based Testing with Hypothesis
+### JAX Gradient Tests
 
 ```python
-def generate_property_tests(self, func: Dict) -> str:
-    """Generate property-based tests using Hypothesis"""
-    tests = []
+def generate_jax_tests(func_info: Dict) -> str:
+    """Generate JAX-specific tests"""
 
-    tests.append("""
-from hypothesis import given, strategies as st, settings
-from hypothesis.extra.numpy import arrays
-import numpy as np
-""")
-
-    # Generate property test based on function type
-    if is_linear_operation(func):
-        tests.append(f"""
-@given(
-    data=arrays(
-        dtype=np.float64,
-        shape=st.tuples(st.integers(1, 100)),
-        elements=st.floats(min_value=-1e6, max_value=1e6,
-                          allow_nan=False, allow_infinity=False)
-    )
-)
-@settings(max_examples=100, deadline=None)
-def test_{func['name']}_linearity(data):
-    '''Test: f(aX + bY) = af(X) + bf(Y) for linear operations'''
-    a, b = 2.0, 3.0
-    X = data[:len(data)//2]
-    Y = data[len(data)//2:]
-
-    left = {func['name']}(a * X + b * Y)
-    right = a * {func['name']}(X) + b * {func['name']}(Y)
-
-    from numpy.testing import assert_allclose
-    assert_allclose(left, right, rtol=1e-10)
-""")
-
-    if is_idempotent(func):
-        tests.append(f"""
-@given(data=arrays(dtype=np.float64, shape=st.tuples(st.integers(1, 50)),
-                   elements=st.floats(min_value=-100, max_value=100)))
-def test_{func['name']}_idempotent(data):
-    '''Test: f(f(x)) = f(x) for idempotent operations'''
-    result1 = {func['name']}(data)
-    result2 = {func['name']}(result1)
-    assert_allclose(result1, result2, rtol=1e-10)
-""")
-
-    return '\n'.join(tests)
-```
-
-### JAX-Specific Tests
-
-```python
-def generate_jax_tests(self, func: Dict) -> str:
-    """Generate JAX-specific tests for gradient, JIT, vmap"""
-    tests = []
-
-    tests.append("""
+    return f'''
 import jax
 import jax.numpy as jnp
 from jax import grad, jit, vmap
-""")
+from numpy.testing import assert_allclose
 
-    # JIT equivalence test
-    tests.append(f"""
-def test_{func['name']}_jit_equivalence():
-    '''Test that JIT-compiled version produces same results'''
-    input_data = jnp.array({generate_test_input(func)})
+def test_{func_info['name']}_jit_equivalence():
+    """Test that JIT-compiled version produces same results"""
+    input_data = jnp.array({generate_test_input(func_info)})
 
-    # Non-JIT version
-    result_nojit = {func['name']}(input_data)
-
-    # JIT version
-    jitted_fn = jit({func['name']})
+    result_nojit = {func_info['name']}(input_data)
+    jitted_fn = jit({func_info['name']})
     result_jit = jitted_fn(input_data)
 
-    from numpy.testing import assert_allclose
     assert_allclose(result_nojit, result_jit, rtol=1e-12)
-""")
 
-    # Gradient correctness test
-    if is_differentiable(func):
-        tests.append(f"""
-def test_{func['name']}_gradient_correctness():
-    '''Test gradient using finite differences'''
+def test_{func_info['name']}_gradient_correctness():
+    """Test gradient using finite differences"""
     def fn(x):
-        return jnp.sum({func['name']}(x))
+        return jnp.sum({func_info['name']}(x))
 
-    # Analytical gradient
     grad_fn = grad(fn)
-    x = jnp.array({generate_test_input(func)})
+    x = jnp.array({generate_test_input(func_info)})
     analytical_grad = grad_fn(x)
 
     # Finite difference gradient
@@ -470,174 +293,260 @@ def test_{func['name']}_gradient_correctness():
         )
 
     assert_allclose(analytical_grad, numerical_grad, rtol=1e-4, atol=1e-6)
-""")
 
-    # vmap correctness test
-    tests.append(f"""
-def test_{func['name']}_vmap_correctness():
-    '''Test vectorization with vmap'''
-    # Single input
-    single_input = jnp.array({generate_single_input(func)})
-    single_result = {func['name']}(single_input)
+def test_{func_info['name']}_vmap_correctness():
+    """Test vectorization with vmap"""
+    single_input = jnp.array({generate_single_input(func_info)})
+    single_result = {func_info['name']}(single_input)
 
-    # Batched input
     batch_input = jnp.stack([single_input] * 5)
-    vmapped_fn = vmap({func['name']})
+    vmapped_fn = vmap({func_info['name']})
     batch_result = vmapped_fn(batch_input)
 
-    # Check all batch results match single result
     for i in range(5):
         assert_allclose(batch_result[i], single_result, rtol=1e-12)
-""")
-
-    return '\n'.join(tests)
+'''
 ```
 
-### Performance Benchmarks
+## Phase 4: Property-Based Testing
+
+**See comprehensive guide**: [Property-Based Testing](../docs/test-generate/property-based-testing.md)
+
+### Hypothesis Tests
 
 ```python
-def generate_benchmark_tests(self, func: Dict) -> str:
-    """Generate performance benchmark tests"""
-    tests = []
+from hypothesis import given, strategies as st, settings
+from hypothesis.extra.numpy import arrays
+import numpy as np
 
-    tests.append(f"""
+def generate_property_tests(func_info: Dict) -> str:
+    """Generate property-based tests using Hypothesis"""
+
+    return f'''
+@given(
+    data=arrays(
+        dtype=np.float64,
+        shape=st.tuples(st.integers(1, 100)),
+        elements=st.floats(min_value=-1e6, max_value=1e6,
+                          allow_nan=False, allow_infinity=False)
+    )
+)
+@settings(max_examples=100, deadline=None)
+def test_{func_info['name']}_linearity(data):
+    """Test: f(aX + bY) = af(X) + bf(Y) for linear operations"""
+    a, b = 2.0, 3.0
+    X = data[:len(data)//2]
+    Y = data[len(data)//2:]
+
+    left = {func_info['name']}(a * X + b * Y)
+    right = a * {func_info['name']}(X) + b * {func_info['name']}(Y)
+
+    assert_allclose(left, right, rtol=1e-10)
+
+@given(data=arrays(dtype=np.float64, shape=st.tuples(st.integers(1, 50))))
+def test_{func_info['name']}_idempotent(data):
+    """Test: f(f(x)) = f(x) for idempotent operations"""
+    result1 = {func_info['name']}(data)
+    result2 = {func_info['name']}(result1)
+    assert_allclose(result1, result2, rtol=1e-10)
+'''
+```
+
+## Phase 5: Performance Benchmarks
+
+### pytest Benchmarks
+
+```python
+def generate_benchmark_tests(func_info: Dict) -> str:
+    """Generate performance benchmark tests"""
+
+    return f'''
 @pytest.mark.benchmark
 @pytest.mark.parametrize("size", [10, 100, 1000])
-def test_{func['name']}_performance(benchmark, size):
-    '''Benchmark performance across different input sizes'''
-    import numpy as np
+def test_{func_info['name']}_performance(benchmark, size):
+    """Benchmark performance across different input sizes"""
     input_data = np.random.randn(size)
-    result = benchmark({func['name']}, input_data)
+    result = benchmark({func_info['name']}, input_data)
     assert result is not None
 
-def test_{func['name']}_memory_usage():
-    '''Test memory usage is reasonable'''
+def test_{func_info['name']}_memory_usage():
+    """Test memory usage is reasonable"""
     import tracemalloc
-    import numpy as np
 
     tracemalloc.start()
     input_data = np.random.randn(1000)
-    _ = {func['name']}(input_data)
+    _ = {func_info['name']}(input_data)
     current, peak = tracemalloc.get_traced_memory()
     tracemalloc.stop()
 
-    # Assert peak memory is reasonable (adjust threshold)
-    assert peak < 10 * 1024 * 1024, f"Peak memory {{peak}} bytes too high"
-""")
-
-    return '\n'.join(tests)
+    # Assert peak memory < 100 MB
+    assert peak < 100 * 1024 * 1024, f"Peak memory {{peak}} bytes too high"
+'''
 ```
 
-### Julia Test Generation
+## Phase 6: Coverage Analysis & Reporting
 
-```julia
-function generate_julia_tests(func_info::Dict)
-    """Generate Julia test suite"""
+**See comprehensive guide**: [Coverage Analysis Guide](../docs/test-generate/coverage-analysis-guide.md)
 
-    test_suite = """
-using Test
-using ${{func_info['module']}}
-using LinearAlgebra
-using Random
-
-@testset "${{func_info['module']}} - ${{func_info['name']}}" begin
-    @testset "basic functionality" begin
-        input_data = ${{generate_test_input(func_info)}}
-        expected = ${{generate_expected_output(func_info)}}
-        result = ${{func_info['name']}}(input_data)
-
-        @test result ≈ expected atol=1e-10 rtol=1e-7
-    end
-
-    @testset "type stability" begin
-        input_data = ${{generate_test_input(func_info)}}
-        @inferred ${{func_info['name']}}(input_data)
-    end
-
-    @testset "edge cases" begin
-        # Empty input
-        @test_throws ArgumentError ${{func_info['name']}}(Float64[])
-
-        # Single element
-        single = [1.0]
-        result = ${{func_info['name']}}(single)
-        @test length(result) == 1
-
-        # Special values
-        @test isfinite(${{func_info['name']}}([0.0, 0.0, 0.0]))
-    end
-
-    @testset "mathematical properties" begin
-        A = randn(5, 5)
-        B = randn(5, 5)
-
-        # Test specific properties based on function type
-        # Example: Linearity, idempotence, etc.
-    end
-end
-"""
-
-    return test_suite
-end
-```
-
-### Test Requirements for Scientific Code
-
-#### Numerical Correctness Priority
-1. **Analytical Solutions** (highest priority): Test against known exact solutions
-2. **Reference Implementations**: Compare with SciPy, NumPy, or reference libraries
-3. **Mathematical Properties**: Verify algebraic properties hold
-4. **Convergence**: Test iterative methods converge at expected rate
-
-#### Numerical Stability Tests
-- Catastrophic cancellation detection
-- Loss of precision monitoring
-- Overflow/underflow handling
-- Condition number analysis
-- Special value handling (inf, -inf, nan, 0)
-
-#### Edge Cases for Scientific Computing
-- Empty arrays
-- Single-element arrays
-- Zero inputs
-- Identity matrices
-- Singular/near-singular matrices
-- Ill-conditioned problems
-- Large/small magnitude values
-
-#### JAX-Specific Requirements
-- JIT compilation equivalence
-- Gradient correctness (finite differences validation)
-- vmap batching correctness
-- Device consistency (CPU/GPU)
-- Memory efficiency
-- Pure function validation (no side effects)
-
-### Execution Modes
+### Generate Coverage Report
 
 ```bash
-# Standard test generation
-/test-generate src/module.py
+# Python coverage
+pytest --cov=src --cov-report=html --cov-report=term-missing
 
-# Scientific computing mode (enables numerical tests)
-/test-generate src/scientific_module.py --scientific --property-based
+# JavaScript coverage
+npm test -- --coverage
 
-# Full suite with benchmarks
-/test-generate src/ --coverage --property-based --benchmarks
-
-# JAX-specific tests
-/test-generate jax_module.py --scientific --property-based
-# Automatically includes gradient, JIT, vmap tests
+# Identify gaps
+python analyze_coverage_gaps.py coverage.json
 ```
 
-## Output Format
+### Prioritized Test Generation
 
-1. **Test Files**: Complete test suites ready to run
-2. **Coverage Report**: Current coverage with gaps identified
-3. **Mock Objects**: Fixtures for external dependencies
-4. **Test Documentation**: Explanation of test scenarios
-5. **CI Integration**: Commands to run tests in pipeline
-6. **Numerical Validation**: Analytical solution tests and property-based tests (for scientific code)
-7. **Performance Benchmarks**: Baseline performance data (when requested)
+```python
+# Focus on high-priority gaps
+gaps = analyze_coverage_gaps('coverage.json')
+high_priority = gaps[:20]  # Top 20% of gaps
 
-Focus on generating maintainable, comprehensive tests that catch bugs early, validate numerical correctness, and provide confidence in code changes.
+for gap in high_priority:
+    tests = generate_tests_for_gap(gap)
+    write_test_file(gap['file'], tests)
+```
+
+## Phase 7: Test Organization
+
+### Directory Structure
+
+```
+project/
+├── src/
+│   ├── module1.py
+│   └── module2.py
+└── tests/
+    ├── unit/
+    │   ├── test_module1.py  # Generated tests
+    │   └── test_module2.py
+    ├── integration/
+    │   └── test_workflow.py
+    └── conftest.py  # Shared fixtures
+```
+
+### Test File Template
+
+```python
+"""
+Tests for {module_name}
+
+Generated automatically by test-generate command.
+"""
+
+import pytest
+from unittest.mock import Mock, patch
+
+from {module_path} import {imports}
+
+
+class Test{ClassName}:
+    """Test suite for {ClassName}"""
+
+    @pytest.fixture
+    def instance(self):
+        return {ClassName}()
+
+    # Generated tests here
+
+
+# Standalone function tests
+# Parametrized tests
+# Edge case tests
+# Scientific computing tests (if applicable)
+```
+
+## Execution Modes
+
+### Quick Mode (30min-1h)
+
+```bash
+/test-generate src/module.py
+
+# Generates basic unit tests for single module
+# Output: ~50-100 test cases
+```
+
+### Standard Mode (2-4h)
+
+```bash
+/test-generate src/ --coverage --property-based
+
+# Generates comprehensive test suite with property-based tests
+# Output: ~200-500 test cases
+```
+
+### Enterprise Mode (1-2d)
+
+```bash
+/test-generate . --coverage --property-based --benchmarks --scientific
+
+# Generates exhaustive test suite for entire project
+# Output: ~1,000+ test cases
+```
+
+## Framework-Specific Patterns
+
+### Python (pytest)
+- Fixtures for test data
+- Parametrized tests for multiple scenarios
+- Mocks for external dependencies
+- Property-based tests with Hypothesis
+- Numerical tests with numpy.testing
+
+### JavaScript (Jest/Vitest)
+- describe/it blocks for organization
+- beforeEach for setup
+- Mock functions with jest.fn()
+- Snapshot testing for components
+- Async/await for asynchronous tests
+
+### Julia
+- @testset for test organization
+- @test for assertions
+- @inferred for type stability
+- Property-based tests with packages
+
+## External Documentation
+
+Comprehensive guides available in `docs/test-generate/`:
+
+1. **test-generation-patterns.md** - AST parsing, test algorithms, mocking strategies, framework templates
+2. **scientific-testing-guide.md** - Numerical correctness, tolerance-based assertions, gradient verification
+3. **property-based-testing.md** - Hypothesis patterns, QuickCheck equivalents, stateful testing
+4. **coverage-analysis-guide.md** - Coverage metrics, gap identification, prioritization, reporting
+
+## Output
+
+Generated test files include:
+
+1. **Unit Tests**: Comprehensive coverage of all functions and classes
+2. **Edge Case Tests**: Boundary values, null inputs, error handling
+3. **Parametrized Tests**: Multiple scenarios with different inputs
+4. **Property-Based Tests**: Mathematical properties for scientific code
+5. **Performance Benchmarks**: Performance regression detection
+6. **Coverage Reports**: HTML and terminal coverage reports
+7. **Test Documentation**: Explanation of test scenarios
+
+## Best Practices
+
+1. **Analyze code structure** before generating tests
+2. **Generate happy path first**, then edge cases
+3. **Use parametrized tests** for multiple scenarios
+4. **Mock external dependencies** to isolate tests
+5. **Generate meaningful test names** describing what is being tested
+6. **Include docstrings** explaining test purpose
+7. **Follow AAA pattern** (Arrange, Act, Assert)
+8. **Generate assertions based on return types**
+9. **Handle async functions** appropriately
+10. **Maintain consistency** with existing test patterns
+
+## Now Execute
+
+Begin automated test generation based on selected execution mode, analyzing code structure and creating comprehensive test suites with scientific computing support where applicable.

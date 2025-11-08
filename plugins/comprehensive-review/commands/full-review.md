@@ -1,124 +1,329 @@
-Orchestrate comprehensive multi-dimensional code review using specialized review agents
+---
+version: 1.0.3
+category: code-review
+purpose: Orchestrate comprehensive multi-dimensional code review using specialized review agents
+execution_time:
+  quick: "10-20 minutes - Core quality and security review (phases 1-2)"
+  standard: "25-40 minutes - Full 4-phase multi-agent review"
+  deep: "45-75 minutes - Complete analysis with metrics dashboard and automated remediation"
+external_docs:
+  - review-best-practices.md
+  - risk-assessment-framework.md
+  - pr-templates-library.md
+tags: [code-review, multi-agent, orchestration, quality-assurance, security-audit, performance-analysis]
+---
 
-[Extended thinking: This workflow performs an exhaustive code review by orchestrating multiple specialized agents in sequential phases. Each phase builds upon previous findings to create a comprehensive review that covers code quality, security, performance, testing, documentation, and best practices. The workflow integrates modern AI-assisted review tools, static analysis, security scanning, and automated quality metrics. Results are consolidated into actionable feedback with clear prioritization and remediation guidance. The phased approach ensures thorough coverage while maintaining efficiency through parallel agent execution where appropriate.]
+# Comprehensive Multi-Agent Code Review
 
-## Review Configuration Options
+Orchestrate exhaustive code review by coordinating specialized agents in sequential phases. Each phase builds upon previous findings to create comprehensive feedback covering quality, security, performance, testing, documentation, and best practices. Results are consolidated into actionable, prioritized remediation guidance.
 
-- **--security-focus**: Prioritize security vulnerabilities and OWASP compliance
-- **--performance-critical**: Emphasize performance bottlenecks and scalability issues
-- **--tdd-review**: Include TDD compliance and test-first verification
-- **--ai-assisted**: Enable AI-powered review tools (Copilot, Codium, Bito)
-- **--strict-mode**: Fail review on any critical issues found
-- **--metrics-report**: Generate detailed quality metrics dashboard
-- **--framework [name]**: Apply framework-specific best practices (React, Spring, Django, etc.)
+## Execution Modes
+
+### Quick Mode (10-20 min)
+Core quality and security review only (Phases 1-2):
+- Code quality analysis and architecture review
+- Security vulnerability assessment
+- Critical and high-priority issues only
+- Use when: time-constrained reviews, hotfixes, small PRs
+
+### Standard Mode (25-40 min) - DEFAULT
+Full 4-phase multi-agent review:
+- All phases (quality, security, performance, testing, docs, best practices)
+- All priority levels (P0-P3)
+- Comprehensive consolidated report
+- Use when: standard PRs, feature development, general code changes
+
+### Deep Mode (45-75 min)
+Complete analysis with metrics and automation:
+- All standard mode content
+- Detailed metrics dashboard (complexity, duplication, coverage trends)
+- Automated remediation suggestions
+- Framework-specific deep analysis
+- CI/CD integration recommendations
+- Use when: major features, architectural changes, legacy code modernization
+
+**To select mode**: Use `--mode=quick|standard|deep` flag. Default: standard.
+
+## Configuration Options
+
+- `--mode=<quick|standard|deep>`: Execution mode (default: standard)
+- `--security-focus`: Prioritize security vulnerabilities and OWASP compliance
+- `--performance-critical`: Emphasize performance bottlenecks and scalability
+- `--tdd-review`: Include TDD compliance verification
+- `--strict-mode`: Fail review on any critical issues
+- `--framework=<name>`: Apply framework-specific best practices (React, Django, Spring, etc.)
+- `--metrics-report`: Generate detailed quality metrics dashboard (auto-enabled in deep mode)
 
 ## Phase 1: Code Quality & Architecture Review
 
-Use Task tool to orchestrate quality and architecture agents in parallel:
+**Orchestrate** quality and architecture agents in parallel using Task tool:
 
 ### 1A. Code Quality Analysis
-- Use Task tool with subagent_type="comprehensive-review:code-reviewer"
-- Prompt: "Perform comprehensive code quality review for: $ARGUMENTS. Analyze code complexity, maintainability index, technical debt, code duplication, naming conventions, and adherence to Clean Code principles. Integrate with SonarQube, CodeQL, and Semgrep for static analysis. Check for code smells, anti-patterns, and violations of SOLID principles. Generate cyclomatic complexity metrics and identify refactoring opportunities."
-- Expected output: Quality metrics, code smell inventory, refactoring recommendations
-- Context: Initial codebase analysis, no dependencies on other phases
+- **Agent**: `comprehensive-review:code-reviewer`
+- **Focus**: Code complexity, maintainability, technical debt, duplication, SOLID principles
+- **Tools**: SonarQube, CodeQL, Semgrep integration for static analysis
+- **Output**: Quality metrics, code smell inventory, refactoring recommendations
+- **Reference**: See `review-best-practices.md` for code smell patterns and fixes
+
+**Prompt**:
+```
+Perform comprehensive code quality review for: $ARGUMENTS.
+
+Analyze:
+- Code complexity and maintainability index
+- Technical debt and code duplication
+- Naming conventions and Clean Code principles
+- SOLID principle violations
+- Code smells and anti-patterns
+
+Integrate static analysis tools (SonarQube/CodeQL/Semgrep) if available.
+Generate cyclomatic complexity metrics and identify refactoring opportunities.
+
+Reference: docs/comprehensive-review/review-best-practices.md (code smells section)
+```
 
 ### 1B. Architecture & Design Review
-- Use Task tool with subagent_type="comprehensive-review:architect-review"
-- Prompt: "Review architectural design patterns and structural integrity in: $ARGUMENTS. Evaluate microservices boundaries, API design, database schema, dependency management, and adherence to Domain-Driven Design principles. Check for circular dependencies, inappropriate coupling, missing abstractions, and architectural drift. Verify compliance with enterprise architecture standards and cloud-native patterns."
-- Expected output: Architecture assessment, design pattern analysis, structural recommendations
-- Context: Runs parallel with code quality analysis
+- **Agent**: `comprehensive-review:architect-review`
+- **Focus**: Design patterns, structural integrity, microservices boundaries, API design
+- **Analysis**: Circular dependencies, inappropriate coupling, architectural drift
+- **Output**: Architecture assessment, design pattern analysis, structural recommendations
+
+**Prompt**:
+```
+Review architectural design patterns and structural integrity in: $ARGUMENTS.
+
+Evaluate:
+- Microservices boundaries and API design
+- Database schema and dependency management
+- Domain-Driven Design adherence
+- Circular dependencies and inappropriate coupling
+- Enterprise architecture standards and cloud-native patterns
+
+Verify compliance with modern architectural patterns.
+```
 
 ## Phase 2: Security & Performance Review
 
-Use Task tool with security and performance agents, incorporating Phase 1 findings:
+**Orchestrate** security and performance agents, incorporating Phase 1 findings:
 
 ### 2A. Security Vulnerability Assessment
-- Use Task tool with subagent_type="comprehensive-review:security-auditor"
-- Prompt: "Execute comprehensive security audit on: $ARGUMENTS. Perform OWASP Top 10 analysis, dependency vulnerability scanning with Snyk/Trivy, secrets detection with GitLeaks, input validation review, authentication/authorization assessment, and cryptographic implementation review. Include findings from Phase 1 architecture review: {phase1_architecture_context}. Check for SQL injection, XSS, CSRF, insecure deserialization, and configuration security issues."
-- Expected output: Vulnerability report, CVE list, security risk matrix, remediation steps
-- Context: Incorporates architectural vulnerabilities identified in Phase 1B
+- **Agent**: `comprehensive-review:security-auditor`
+- **Focus**: OWASP Top 10, dependency vulnerabilities, secrets detection, auth/authz
+- **Tools**: Snyk/Trivy, GitLeaks, vulnerability scanning
+- **Output**: Vulnerability report, CVE list, security risk matrix, remediation steps
+- **Reference**: See `risk-assessment-framework.md` for security risk scoring
+
+**Prompt**:
+```
+Execute comprehensive security audit on: $ARGUMENTS.
+
+Perform:
+- OWASP Top 10 analysis
+- Dependency vulnerability scanning (Snyk/Trivy)
+- Secrets detection (GitLeaks)
+- Input validation and auth/authz review
+- Cryptographic implementation assessment
+
+Include architectural vulnerabilities from Phase 1: {phase1_architecture_context}
+
+Check for: SQL injection, XSS, CSRF, insecure deserialization, configuration issues.
+
+Reference: docs/comprehensive-review/risk-assessment-framework.md (security factor scoring)
+```
 
 ### 2B. Performance & Scalability Analysis
-- Use Task tool with subagent_type="full-stack-orchestration:performance-engineer"
-- Prompt: "Conduct performance analysis and scalability assessment for: $ARGUMENTS. Profile code for CPU/memory hotspots, analyze database query performance, review caching strategies, identify N+1 problems, assess connection pooling, and evaluate asynchronous processing patterns. Consider architectural findings from Phase 1: {phase1_architecture_context}. Check for memory leaks, resource contention, and bottlenecks under load."
-- Expected output: Performance metrics, bottleneck analysis, optimization recommendations
-- Context: Uses architecture insights to identify systemic performance issues
+- **Agent**: `full-stack-orchestration:performance-engineer`
+- **Focus**: CPU/memory profiling, database query optimization, caching, async patterns
+- **Analysis**: Memory leaks, resource contention, load testing bottlenecks
+- **Output**: Performance metrics, bottleneck analysis, optimization recommendations
+
+**Prompt**:
+```
+Conduct performance analysis and scalability assessment for: $ARGUMENTS.
+
+Profile:
+- CPU/memory hotspots and resource usage
+- Database query performance and N+1 problems
+- Caching strategies and connection pooling
+- Asynchronous processing patterns
+
+Consider architectural findings: {phase1_architecture_context}
+
+Identify memory leaks, resource contention, and bottlenecks under load.
+```
+
+**Note**: Quick mode ends here. Continue for standard/deep modes.
 
 ## Phase 3: Testing & Documentation Review
 
-Use Task tool for test and documentation quality assessment:
+**Orchestrate** test and documentation quality agents:
 
 ### 3A. Test Coverage & Quality Analysis
-- Use Task tool with subagent_type="unit-testing:test-automator"
-- Prompt: "Evaluate testing strategy and implementation for: $ARGUMENTS. Analyze unit test coverage, integration test completeness, end-to-end test scenarios, test pyramid adherence, and test maintainability. Review test quality metrics including assertion density, test isolation, mock usage, and flakiness. Consider security and performance test requirements from Phase 2: {phase2_security_context}, {phase2_performance_context}. Verify TDD practices if --tdd-review flag is set."
-- Expected output: Coverage report, test quality metrics, testing gap analysis
-- Context: Incorporates security and performance testing requirements from Phase 2
+- **Agent**: `unit-testing:test-automator`
+- **Focus**: Test coverage, test pyramid adherence, test quality metrics
+- **Analysis**: Assertion density, test isolation, mock usage, flakiness
+- **Output**: Coverage report, test quality metrics, testing gap analysis
+
+**Prompt**:
+```
+Evaluate testing strategy and implementation for: $ARGUMENTS.
+
+Analyze:
+- Unit/integration/E2E test coverage and completeness
+- Test pyramid adherence
+- Test quality: assertion density, isolation, mocking, flakiness
+- TDD practices compliance (if --tdd-review flag set)
+
+Consider security and performance testing from Phase 2:
+{phase2_security_context}, {phase2_performance_context}
+
+Identify testing gaps and quality improvements.
+
+Reference: docs/comprehensive-review/review-best-practices.md (testing checklist)
+```
 
 ### 3B. Documentation & API Specification Review
-- Use Task tool with subagent_type="code-documentation:docs-architect"
-- Prompt: "Review documentation completeness and quality for: $ARGUMENTS. Assess inline code documentation, API documentation (OpenAPI/Swagger), architecture decision records (ADRs), README completeness, deployment guides, and runbooks. Verify documentation reflects actual implementation based on all previous phase findings: {phase1_context}, {phase2_context}. Check for outdated documentation, missing examples, and unclear explanations."
-- Expected output: Documentation coverage report, inconsistency list, improvement recommendations
-- Context: Cross-references all previous findings to ensure documentation accuracy
+- **Agent**: `code-documentation:docs-architect`
+- **Focus**: Documentation completeness, API docs, ADRs, runbooks
+- **Validation**: Documentation accuracy vs. actual implementation
+- **Output**: Documentation coverage report, inconsistency list, improvement recommendations
+
+**Prompt**:
+```
+Review documentation completeness and quality for: $ARGUMENTS.
+
+Assess:
+- Inline code documentation and comments
+- API documentation (OpenAPI/Swagger)
+- Architecture Decision Records (ADRs)
+- README, deployment guides, runbooks
+
+Verify documentation reflects actual implementation based on all previous findings:
+{phase1_context}, {phase2_context}
+
+Identify outdated docs, missing examples, unclear explanations.
+```
 
 ## Phase 4: Best Practices & Standards Compliance
 
-Use Task tool to verify framework-specific and industry best practices:
+**Orchestrate** framework and DevOps best practices agents:
 
 ### 4A. Framework & Language Best Practices
-- Use Task tool with subagent_type="framework-migration:legacy-modernizer"
-- Prompt: "Verify adherence to framework and language best practices for: $ARGUMENTS. Check modern JavaScript/TypeScript patterns, React hooks best practices, Python PEP compliance, Java enterprise patterns, Go idiomatic code, or framework-specific conventions (based on --framework flag). Review package management, build configuration, environment handling, and deployment practices. Include all quality issues from previous phases: {all_previous_contexts}."
-- Expected output: Best practices compliance report, modernization recommendations
-- Context: Synthesizes all previous findings for framework-specific guidance
+- **Agent**: `framework-migration:legacy-modernizer`
+- **Focus**: Modern language patterns, framework conventions, package management
+- **Scope**: JavaScript/TypeScript, React, Python PEP, Java, Go idiomatic code (based on --framework)
+- **Output**: Best practices compliance report, modernization recommendations
+
+**Prompt**:
+```
+Verify adherence to framework and language best practices for: $ARGUMENTS.
+
+Check (framework-specific based on --framework flag):
+- Modern JavaScript/TypeScript patterns, React hooks
+- Python PEP compliance, Java enterprise patterns, Go idiomatic code
+- Package management and build configuration
+- Environment handling and deployment practices
+
+Synthesize all previous findings for framework-specific guidance:
+{all_previous_contexts}
+```
 
 ### 4B. CI/CD & DevOps Practices Review
-- Use Task tool with subagent_type="cicd-automation:deployment-engineer"
-- Prompt: "Review CI/CD pipeline and DevOps practices for: $ARGUMENTS. Evaluate build automation, test automation integration, deployment strategies (blue-green, canary), infrastructure as code, monitoring/observability setup, and incident response procedures. Assess pipeline security, artifact management, and rollback capabilities. Consider all issues identified in previous phases that impact deployment: {all_critical_issues}."
-- Expected output: Pipeline assessment, DevOps maturity evaluation, automation recommendations
-- Context: Focuses on operationalizing fixes for all identified issues
+- **Agent**: `cicd-automation:deployment-engineer`
+- **Focus**: CI/CD pipeline, build automation, deployment strategies
+- **Analysis**: Pipeline security, monitoring, rollback capabilities
+- **Output**: Pipeline assessment, DevOps maturity evaluation, automation recommendations
+
+**Prompt**:
+```
+Review CI/CD pipeline and DevOps practices for: $ARGUMENTS.
+
+Evaluate:
+- Build and test automation integration
+- Deployment strategies (blue-green, canary)
+- Infrastructure as Code (IaC)
+- Monitoring, observability, incident response
+- Pipeline security and artifact management
+
+Consider operationalizing fixes for all critical issues: {all_critical_issues}
+```
 
 ## Consolidated Report Generation
 
-Compile all phase outputs into comprehensive review report:
+Compile all phase outputs into comprehensive, prioritized report:
 
-### Critical Issues (P0 - Must Fix Immediately)
+### 🚨 Critical Issues (P0 - Must Fix Immediately)
 - Security vulnerabilities with CVSS > 7.0
 - Data loss or corruption risks
 - Authentication/authorization bypasses
 - Production stability threats
 - Compliance violations (GDPR, PCI DSS, SOC2)
 
-### High Priority (P1 - Fix Before Next Release)
+**Reference**: See `risk-assessment-framework.md` for CVSS scoring and risk levels
+
+### ⚠️ High Priority (P1 - Fix Before Next Release)
 - Performance bottlenecks impacting user experience
 - Missing critical test coverage
 - Architectural anti-patterns causing technical debt
 - Outdated dependencies with known vulnerabilities
 - Code quality issues affecting maintainability
 
-### Medium Priority (P2 - Plan for Next Sprint)
+### 📝 Medium Priority (P2 - Plan for Next Sprint)
 - Non-critical performance optimizations
 - Documentation gaps and inconsistencies
 - Code refactoring opportunities
 - Test quality improvements
 - DevOps automation enhancements
 
-### Low Priority (P3 - Track in Backlog)
+### 💡 Low Priority (P3 - Track in Backlog)
 - Style guide violations
 - Minor code smell issues
 - Nice-to-have documentation updates
 - Cosmetic improvements
 
+**Reference**: See `review-best-practices.md` for priority framework and communication guidelines
+
 ## Success Criteria
 
-Review is considered successful when:
-- All critical security vulnerabilities are identified and documented
-- Performance bottlenecks are profiled with remediation paths
-- Test coverage gaps are mapped with priority recommendations
-- Architecture risks are assessed with mitigation strategies
-- Documentation reflects actual implementation state
-- Framework best practices compliance is verified
-- CI/CD pipeline supports safe deployment of reviewed code
-- Clear, actionable feedback is provided for all findings
-- Metrics dashboard shows improvement trends
-- Team has clear prioritized action plan for remediation
+Review is successful when:
+- ✅ All critical security vulnerabilities identified with remediation paths
+- ✅ Performance bottlenecks profiled with optimization strategies
+- ✅ Test coverage gaps mapped with priority recommendations
+- ✅ Architecture risks assessed with mitigation strategies
+- ✅ Documentation reflects actual implementation
+- ✅ Framework best practices compliance verified
+- ✅ CI/CD pipeline supports safe deployment
+- ✅ Clear, actionable, prioritized feedback provided
+- ✅ Metrics dashboard shows trends (deep mode)
+- ✅ Team has actionable remediation plan
 
-Target: $ARGUMENTS
+## Deep Mode Enhancements
+
+When `--mode=deep` is specified, additionally provide:
+
+1. **Metrics Dashboard**:
+   - Cyclomatic complexity trends
+   - Code duplication percentage
+   - Test coverage evolution
+   - Technical debt accumulation rate
+   - Dependency vulnerability timeline
+
+2. **Automated Remediation Suggestions**:
+   - Sample code fixes for common issues
+   - Refactoring scripts for detected patterns
+   - Dependency update PRs (using Dependabot/Renovate patterns)
+
+3. **Framework-Specific Deep Analysis**:
+   - Performance benchmarks for framework patterns
+   - Security configurations for framework
+   - Best practice examples from framework docs
+
+4. **CI/CD Integration Recommendations**:
+   - Pre-commit hook templates
+   - GitHub Actions workflow samples
+   - Quality gate configurations
+
+---
+
+**Target**: `$ARGUMENTS`
+**External Documentation**: `docs/comprehensive-review/` (review-best-practices.md, risk-assessment-framework.md, pr-templates-library.md)

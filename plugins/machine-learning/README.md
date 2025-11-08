@@ -1,8 +1,8 @@
 # Machine Learning Plugin
 
-Advanced machine learning and data science with **chain-of-thought reasoning frameworks**, **constitutional AI self-correction**, **few-shot learning examples**, and production-first MLOps principles.
+Advanced machine learning and MLOps with **production-ready pipelines**, **multi-agent orchestration**, **comprehensive experiment tracking**, and **enterprise data infrastructure**. v1.0.3 adds execution modes, data-engineer agent, and extensive MLOps documentation.
 
-**Version:** 1.0.1 | **Category:** ai-ml | **Status:** Active
+**Version:** 1.0.3 | **Category:** ai-ml | **Status:** Active
 
 [Full Documentation →](https://myclaude.readthedocs.io/en/latest/plugins/machine-learning.html) | [CHANGELOG](CHANGELOG.md)
 
@@ -10,45 +10,130 @@ Advanced machine learning and data science with **chain-of-thought reasoning fra
 
 ## 🎯 Overview
 
-This plugin provides comprehensive ML/DS capabilities through three specialized agents, each enhanced with systematic reasoning frameworks and production-ready examples:
+This plugin provides comprehensive ML/DS capabilities through four specialized agents and a powerful /ml-pipeline command:
 
+- **data-engineer** - NEW in v1.0.3: Scalable data pipelines, ETL/ELT, data quality, and storage optimization
 - **data-scientist** - Statistical analysis, ML modeling, and business insights with 6-phase reasoning framework
-- **ml-engineer** - Production ML systems, model serving, and performance optimization with 6-phase engineering framework
-- **mlops-engineer** - ML infrastructure, pipelines, and deployment automation with 6-phase infrastructure framework
+- **ml-engineer** - Production ML systems, model serving, and performance optimization
+- **mlops-engineer** - ML infrastructure, CI/CD pipelines, and deployment automation
 
 **Key Features:**
-- ✅ Chain-of-thought reasoning frameworks for transparent decision-making
-- ✅ Constitutional AI self-correction with 6 quality principles per agent
-- ✅ Structured output templates for consistent, predictable results
-- ✅ 6 comprehensive few-shot examples with complete reasoning traces
-- ✅ Production-ready code samples (Python, Terraform, Kubernetes, CI/CD)
-- ✅ 8 specialized skills covering statistics, ML, deep learning, MLOps
+- ✅ `/ml-pipeline` command with 3 execution modes (quick/standard/enterprise)
+- ✅ 17,000+ lines of external MLOps documentation (methodology, deployment, monitoring, best practices)
+- ✅ Chain-of-thought reasoning frameworks for all agents
+- ✅ Constitutional AI self-correction principles
+- ✅ Cross-plugin integration (python-pro, kubernetes-architect, observability-engineer)
+- ✅ 7 specialized skills covering statistics, ML, deep learning, data engineering, MLOps
 
 ---
 
-## 🚀 What's New in v1.0.1
+## 🚀 What's New in v1.0.3
 
-### Major Agent Enhancements
+### NEW data-engineer Agent
+Enterprise-grade data infrastructure specialist covering:
+- Data ingestion (Spark, Airflow, Kafka, CDC)
+- Data quality (Great Expectations, Pydantic)
+- Data versioning (DVC, lakeFS, Delta Lake)
+- Storage optimization (partitioning, compression, lifecycle policies)
+- 2 comprehensive examples (event stream pipeline, batch ETL)
 
-All three agents now feature advanced prompt engineering techniques:
+### Enhanced /ml-pipeline Command
+- **3 Execution Modes**: quick (2-3 days), standard (1-2 weeks), enterprise (3-4 weeks)
+- **Agent Reference Table**: Lists all 7 specialized agents with clear role mapping
+- **Interactive Mode Selection**: AskUserQuestion integration for better UX
+- **Cross-Plugin Support**: Graceful degradation for optional agents
+- **External Documentation**: 6 comprehensive guides (~17,000 lines total)
 
-| Enhancement | Impact |
-|------------|--------|
-| **Chain-of-Thought Reasoning** | 6-phase structured thinking process visible to users (+35-50% task quality) |
-| **Constitutional AI Principles** | 6 self-correction checkpoints catch errors before output (+30-40% rigor) |
-| **Structured Output Templates** | Consistent formats ensure completeness (+50-60% reproducibility) |
-| **Few-Shot Examples** | 6 detailed examples accelerate implementation (+40-50% speed) |
-| **Production Code** | Copy-paste implementations with best practices |
+### Comprehensive External Docs
+1. **mlops-methodology.md**: Maturity model, CI/CD, experiment tracking, governance
+2. **pipeline-phases.md**: Detailed implementation checklists for all 4 phases
+3. **deployment-strategies.md**: Canary, blue-green, shadow, A/B testing
+4. **monitoring-frameworks.md**: Drift detection, observability, cost tracking
+5. **best-practices.md**: Production readiness checklist, security, testing
+6. **success-criteria.md**: Quantified KPIs for data, model, ops, velocity, cost
 
-**Content Growth:**
-- data-scientist: +303 lines (+159%)
-- ml-engineer: +417 lines (+267%)
-- mlops-engineer: +452 lines (+223%)
-- **Total:** +1,172 lines (+213%)
+---
+
+## 📋 /ml-pipeline Command
+
+Build end-to-end production ML pipelines with multi-agent orchestration.
+
+### Execution Modes
+
+**Quick Mode** (2-3 days - MVP):
+```bash
+/ml-pipeline "customer churn prediction for subscription service"
+# Select "Quick" when prompted
+# Uses: data-scientist, ml-engineer, mlops-engineer
+# Delivers: Basic pipeline, model training, simple deployment
+```
+
+**Standard Mode** (1-2 weeks - Production):
+```bash
+/ml-pipeline "recommendation system with real-time serving"
+# Select "Standard" when prompted
+# Uses: data-scientist, ml-engineer, python-pro, mlops-engineer, observability-engineer
+# Delivers: Full pipeline, optimized code, production serving, monitoring
+```
+
+**Enterprise Mode** (3-4 weeks - Complete Platform):
+```bash
+/ml-pipeline "fraud detection system with real-time processing"
+# Select "Enterprise" when prompted
+# Uses: data-engineer, data-scientist, ml-engineer, python-pro, mlops-engineer, kubernetes-architect, observability-engineer
+# Delivers: Enterprise data infrastructure, K8s orchestration, distributed training, comprehensive observability
+```
+
+### Example Outputs
+
+The command orchestrates agents across 4 phases:
+1. **Data & Requirements**: Data pipeline architecture + feature engineering specs
+2. **Model Development**: Training pipeline + hyperparameter optimization + testing
+3. **Production Deployment**: Model serving + CI/CD + infrastructure as code
+4. **Monitoring**: Drift detection + performance monitoring + alerting + cost tracking
+
+### External Documentation
+
+Access comprehensive guides:
+- `commands/ml-pipeline/mlops-methodology.md` - MLOps maturity model, CI/CD practices
+- `commands/ml-pipeline/pipeline-phases.md` - Phase-by-phase implementation checklists
+- `commands/ml-pipeline/deployment-strategies.md` - Canary, blue-green, A/B testing
+- `commands/ml-pipeline/monitoring-frameworks.md` - Drift detection, observability
+- `commands/ml-pipeline/best-practices.md` - Production readiness, security, testing
+- `commands/ml-pipeline/success-criteria.md` - Quantified KPIs and success metrics
 
 ---
 
 ## 🤖 Agents
+
+### NEW: data-engineer (v1.0.3)
+
+Enterprise data infrastructure specialist for production-ready data pipelines.
+
+**Capabilities**:
+- Data ingestion (batch: Spark/Airflow, streaming: Kafka/Kinesis, CDC: Debezium)
+- Data quality (Great Expectations, Pydantic, Pandera)
+- Data versioning (DVC, lakeFS, Delta Lake time travel)
+- Storage architecture (Bronze/Silver/Gold layers, partitioning, compression)
+- ETL/ELT orchestration (Airflow, Prefect, Dagster, Kubeflow)
+
+**Chain-of-Thought Framework** (6 phases):
+1. Requirements Analysis → 2. Architecture Design → 3. Implementation → 4. Quality Assurance → 5. Deployment & Operations → 6. Optimization & Iteration
+
+**Constitutional AI Principles**:
+- Data Quality First, Idempotency & Reproducibility, Cost Efficiency, Observability & Debuggability, Security & Compliance
+
+**Example Usage**:
+```bash
+@data-engineer Design a scalable data pipeline for ingesting customer events from Kafka,
+validating quality with Great Expectations, and storing in Delta Lake partitioned by date.
+```
+
+**Few-Shot Examples**:
+1. **E-commerce Event Stream** (100K events/sec, Flink, real-time, PII masking)
+2. **Batch ETL for ML Features** (daily pipeline, Spark, DVC versioning, Great Expectations)
+
+---
 
 ### data-scientist
 

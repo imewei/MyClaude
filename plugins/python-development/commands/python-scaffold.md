@@ -1,316 +1,187 @@
+---
+version: 1.0.3
+command: /python-scaffold
+description: Scaffold production-ready Python projects with modern tooling across 3 execution modes
+execution_modes:
+  quick:
+    duration: "1-2 hours"
+    description: "Simple project or prototype"
+    agents: ["python-pro"]
+    scope: "Minimal structure, basic pyproject.toml, single main file, simple testing"
+    output: "~15 files"
+  standard:
+    duration: "3-6 hours"
+    description: "Production web app or distributable library"
+    agents: ["python-pro", "fastapi-pro OR django-pro"]
+    scope: "Complete FastAPI/Django structure, comprehensive testing, CI/CD, Docker"
+    output: "~50 files"
+  enterprise:
+    duration: "1-2 days"
+    description: "Microservices architecture or complex platform"
+    agents: ["python-pro", "fastapi-pro/django-pro", "observability-engineer"]
+    scope: "Multi-service architecture, distributed tracing, K8s configs, security hardening"
+    output: "~100 files"
+workflow_type: "sequential"
+interactive_mode: true
+---
+
 # Python Project Scaffolding
 
-You are a Python project architecture expert specializing in scaffolding production-ready Python applications. Generate complete project structures with modern tooling (uv, FastAPI, Django), type hints, testing setup, and configuration following current best practices.
+Scaffold production-ready Python projects with modern tooling (uv, FastAPI/Django, pytest, type hints) following 2024/2025 best practices.
 
 ## Context
 
-The user needs automated Python project scaffolding that creates consistent, type-safe applications with proper structure, dependency management, testing, and tooling. Focus on modern Python patterns and scalable architecture.
+The user needs automated Python project scaffolding with: $ARGUMENTS
 
-## Requirements
+## Execution Mode Selection
 
-$ARGUMENTS
+<AskUserQuestion>
+questions:
+  - question: "Which execution mode best fits your project requirements?"
+    header: "Execution Mode"
+    multiSelect: false
+    options:
+      - label: "Quick (1-2 hours)"
+        description: "Simple script, prototype, or basic CLI tool. Minimal viable structure with ~15 files."
+
+      - label: "Standard (3-6 hours)"
+        description: "Production FastAPI/Django web app or distributable library. Complete structure with testing, CI/CD, Docker (~50 files)."
+
+      - label: "Enterprise (1-2 days)"
+        description: "Microservices architecture or complex platform. Multi-service setup with K8s, observability, security (~100 files)."
+</AskUserQuestion>
 
 ## Instructions
 
 ### 1. Analyze Project Type
 
 Determine the project type from user requirements:
-- **FastAPI**: REST APIs, microservices, async applications
-- **Django**: Full-stack web applications, admin panels, ORM-heavy projects
-- **Library**: Reusable packages, utilities, tools
-- **CLI**: Command-line tools, automation scripts
-- **Generic**: Standard Python applications
+
+**Quick Mode**: Simple script, basic CLI, minimal library
+**Standard Mode**:
+- **FastAPI**: REST APIs, microservices, async applications → [See FastAPI Structure Guide](../docs/python-scaffold/fastapi-structure.md)
+- **Django**: Full-stack web apps, admin panels, ORM-heavy projects → [See Django Structure Guide](../docs/python-scaffold/django-structure.md)
+- **Library**: Reusable packages, utilities → [See Library Packaging Guide](../docs/python-scaffold/library-packaging.md)
+- **CLI**: Command-line tools, automation scripts → [See CLI Tools Guide](../docs/python-scaffold/cli-tools.md)
+**Enterprise Mode**: All standard types + distributed systems, microservices
 
 ### 2. Initialize Project with uv
 
 ```bash
-# Create new project with uv
+# Create new project
 uv init <project-name>
 cd <project-name>
 
-# Initialize git repository
+# Initialize git
 git init
-echo ".venv/" >> .gitignore
-echo "*.pyc" >> .gitignore
-echo "__pycache__/" >> .gitignore
-echo ".pytest_cache/" >> .gitignore
-echo ".ruff_cache/" >> .gitignore
+cat >> .gitignore << 'EOF'
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.ruff_cache/
+.env
+EOF
 
 # Create virtual environment
 uv venv
-source .venv/bin/activate  # On Windows: .venv\Scripts\activate
+source .venv/bin/activate  # Windows: .venv\Scripts\activate
 ```
 
-### 3. Generate FastAPI Project Structure
+### 3. Generate Project Structure
 
-```
-fastapi-project/
-├── pyproject.toml
-├── README.md
-├── .gitignore
-├── .env.example
-├── src/
-│   └── project_name/
-│       ├── __init__.py
-│       ├── main.py
-│       ├── config.py
-│       ├── api/
-│       │   ├── __init__.py
-│       │   ├── deps.py
-│       │   ├── v1/
-│       │   │   ├── __init__.py
-│       │   │   ├── endpoints/
-│       │   │   │   ├── __init__.py
-│       │   │   │   ├── users.py
-│       │   │   │   └── health.py
-│       │   │   └── router.py
-│       ├── core/
-│       │   ├── __init__.py
-│       │   ├── security.py
-│       │   └── database.py
-│       ├── models/
-│       │   ├── __init__.py
-│       │   └── user.py
-│       ├── schemas/
-│       │   ├── __init__.py
-│       │   └── user.py
-│       └── services/
-│           ├── __init__.py
-│           └── user_service.py
-└── tests/
-    ├── __init__.py
-    ├── conftest.py
-    └── api/
-        ├── __init__.py
-        └── test_users.py
-```
+Based on project type and execution mode:
 
-**pyproject.toml**:
+#### Quick Mode
+- Basic `pyproject.toml` with minimal dependencies
+- Single main file (`main.py`, `cli.py`, or `__init__.py`)
+- Simple test file
+- README.md and .gitignore
+
+#### Standard Mode
+Select appropriate structure:
+- **FastAPI Project**: Full structure from [FastAPI Guide](../docs/python-scaffold/fastapi-structure.md)
+- **Django Project**: Complete setup from [Django Guide](../docs/python-scaffold/django-structure.md)
+- **Library**: Package structure from [Library Guide](../docs/python-scaffold/library-packaging.md)
+- **CLI Tool**: Typer-based structure from [CLI Guide](../docs/python-scaffold/cli-tools.md)
+
+#### Enterprise Mode
+All Standard features plus:
+- Multi-service architecture (if microservices)
+- Kubernetes manifests and Helm charts
+- Distributed tracing setup (OpenTelemetry)
+- Comprehensive observability (Prometheus/Grafana)
+- Security hardening (secrets management, RBAC)
+- Production deployment configs
+
+### 4. Configure Development Tools
+
+For all modes, set up modern Python tooling:
+
+**See comprehensive configuration**: [Development Tooling Guide](../docs/python-scaffold/development-tooling.md)
+
+**Quick Setup**:
 ```toml
-[project]
-name = "project-name"
-version = "0.1.0"
-description = "FastAPI project description"
-requires-python = ">=3.11"
-dependencies = [
-    "fastapi>=0.110.0",
-    "uvicorn[standard]>=0.27.0",
-    "pydantic>=2.6.0",
-    "pydantic-settings>=2.1.0",
-    "sqlalchemy>=2.0.0",
-    "alembic>=1.13.0",
-]
-
-[project.optional-dependencies]
-dev = [
-    "pytest>=8.0.0",
-    "pytest-asyncio>=0.23.0",
-    "httpx>=0.26.0",
-    "ruff>=0.2.0",
-]
-
+# pyproject.toml
 [tool.ruff]
 line-length = 100
-target-version = "py311"
+target-version = "py312"
 
 [tool.ruff.lint]
 select = ["E", "F", "I", "N", "W", "UP"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
-asyncio_mode = "auto"
 ```
 
-**src/project_name/main.py**:
-```python
-from fastapi import FastAPI
-from fastapi.middleware.cors import CORSMiddleware
+### 5. Project-Specific Configuration
 
-from .api.v1.router import api_router
-from .config import settings
+**Standard/Enterprise**: Add production-ready configurations:
+- `.env.example` with all required environment variables
+- `Makefile` with common development tasks
+- `docker-compose.yml` for local development
+- CI/CD workflows (`.github/workflows/tests.yml`)
 
-app = FastAPI(
-    title=settings.PROJECT_NAME,
-    version=settings.VERSION,
-    openapi_url=f"{settings.API_V1_PREFIX}/openapi.json",
-)
-
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=settings.ALLOWED_ORIGINS,
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
-
-app.include_router(api_router, prefix=settings.API_V1_PREFIX)
-
-@app.get("/health")
-async def health_check() -> dict[str, str]:
-    return {"status": "healthy"}
-```
-
-### 4. Generate Django Project Structure
-
-```bash
-# Install Django with uv
-uv add django django-environ django-debug-toolbar
-
-# Create Django project
-django-admin startproject config .
-python manage.py startapp core
-```
-
-**pyproject.toml for Django**:
-```toml
-[project]
-name = "django-project"
-version = "0.1.0"
-requires-python = ">=3.11"
-dependencies = [
-    "django>=5.0.0",
-    "django-environ>=0.11.0",
-    "psycopg[binary]>=3.1.0",
-    "gunicorn>=21.2.0",
-]
-
-[project.optional-dependencies]
-dev = [
-    "django-debug-toolbar>=4.3.0",
-    "pytest-django>=4.8.0",
-    "ruff>=0.2.0",
-]
-```
-
-### 5. Generate Python Library Structure
-
-```
-library-name/
-├── pyproject.toml
-├── README.md
-├── LICENSE
-├── src/
-│   └── library_name/
-│       ├── __init__.py
-│       ├── py.typed
-│       └── core.py
-└── tests/
-    ├── __init__.py
-    └── test_core.py
-```
-
-**pyproject.toml for Library**:
-```toml
-[build-system]
-requires = ["hatchling"]
-build-backend = "hatchling.build"
-
-[project]
-name = "library-name"
-version = "0.1.0"
-description = "Library description"
-readme = "README.md"
-requires-python = ">=3.11"
-license = {text = "MIT"}
-authors = [
-    {name = "Your Name", email = "email@example.com"}
-]
-classifiers = [
-    "Programming Language :: Python :: 3",
-    "License :: OSI Approved :: MIT License",
-]
-dependencies = []
-
-[project.optional-dependencies]
-dev = ["pytest>=8.0.0", "ruff>=0.2.0", "mypy>=1.8.0"]
-
-[tool.hatch.build.targets.wheel]
-packages = ["src/library_name"]
-```
-
-### 6. Generate CLI Tool Structure
-
-```python
-# pyproject.toml
-[project.scripts]
-cli-name = "project_name.cli:main"
-
-[project]
-dependencies = [
-    "typer>=0.9.0",
-    "rich>=13.7.0",
-]
-```
-
-**src/project_name/cli.py**:
-```python
-import typer
-from rich.console import Console
-
-app = typer.Typer()
-console = Console()
-
-@app.command()
-def hello(name: str = typer.Option(..., "--name", "-n", help="Your name")):
-    """Greet someone"""
-    console.print(f"[bold green]Hello {name}![/bold green]")
-
-def main():
-    app()
-```
-
-### 7. Configure Development Tools
-
-**.env.example**:
-```env
-# Application
-PROJECT_NAME="Project Name"
-VERSION="0.1.0"
-DEBUG=True
-
-# API
-API_V1_PREFIX="/api/v1"
-ALLOWED_ORIGINS=["http://localhost:3000"]
-
-# Database
-DATABASE_URL="postgresql://user:pass@localhost:5432/dbname"
-
-# Security
-SECRET_KEY="your-secret-key-here"
-```
-
-**Makefile**:
-```makefile
-.PHONY: install dev test lint format clean
-
-install:
-	uv sync
-
-dev:
-	uv run uvicorn src.project_name.main:app --reload
-
-test:
-	uv run pytest -v
-
-lint:
-	uv run ruff check .
-
-format:
-	uv run ruff format .
-
-clean:
-	find . -type d -name __pycache__ -exec rm -rf {} +
-	find . -type f -name "*.pyc" -delete
-	rm -rf .pytest_cache .ruff_cache
-```
+**Full configurations available**: [Development Tooling Guide](../docs/python-scaffold/development-tooling.md)
 
 ## Output Format
 
-1. **Project Structure**: Complete directory tree with all necessary files
-2. **Configuration**: pyproject.toml with dependencies and tool settings
-3. **Entry Point**: Main application file (main.py, cli.py, etc.)
-4. **Tests**: Test structure with pytest configuration
-5. **Documentation**: README with setup and usage instructions
-6. **Development Tools**: Makefile, .env.example, .gitignore
+Deliver complete project with:
 
-Focus on creating production-ready Python projects with modern tooling, type safety, and comprehensive testing setup.
+1. **Project Structure**: All files and directories for selected mode
+2. **Configuration**: pyproject.toml with dependencies and tool settings
+3. **Entry Point**: Main application file (main.py, manage.py, cli.py)
+4. **Tests**: Test structure with pytest configuration
+5. **Documentation**: README.md with setup and usage instructions
+6. **Development Tools** (Standard/Enterprise): Makefile, Docker, CI/CD
+
+## Success Criteria
+
+**Quick Mode**:
+- ✅ Project initializes with uv
+- ✅ Virtual environment activates
+- ✅ Basic tests pass (`pytest`)
+- ✅ Type checking passes (`mypy`)
+- ✅ Linting passes (`ruff check`)
+
+**Standard Mode**:
+- ✅ All Quick criteria met
+- ✅ Framework-specific structure complete (FastAPI/Django/Library/CLI)
+- ✅ Integration tests pass
+- ✅ Docker builds successfully
+- ✅ CI pipeline configured
+
+**Enterprise Mode**:
+- ✅ All Standard criteria met
+- ✅ Multi-service coordination working
+- ✅ Observability stack deployed
+- ✅ K8s manifests validate
+- ✅ Security scanning passes
+
+## External Documentation
+
+- [FastAPI Structure Guide](../docs/python-scaffold/fastapi-structure.md) - Complete FastAPI project templates
+- [Django Structure Guide](../docs/python-scaffold/django-structure.md) - Django 5.x project structure
+- [Library Packaging Guide](../docs/python-scaffold/library-packaging.md) - PyPI-ready package setup
+- [CLI Tools Guide](../docs/python-scaffold/cli-tools.md) - Typer-based command-line tools
+- [Development Tooling Guide](../docs/python-scaffold/development-tooling.md) - Makefiles, Docker, CI/CD

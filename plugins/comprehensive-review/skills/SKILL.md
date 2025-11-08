@@ -1,7 +1,7 @@
 ---
 name: code-review-excellence
 description: Master effective code review practices with systematic analysis, constructive feedback, and team collaboration to transform code reviews from gatekeeping to knowledge sharing. Use when reviewing pull requests for any programming language (Python .py files, TypeScript/JavaScript .ts/.js/.tsx/.jsx files, Go .go files, Rust .rs files, Java .java files, C/C++ .c/.cpp/.h files), providing feedback on code changes, evaluating security vulnerabilities (authentication, authorization, input validation, SQL injection, XSS), assessing performance issues (N+1 queries, memory leaks, algorithmic complexity), validating test coverage and quality, establishing code review standards and checklists for teams, mentoring junior developers through constructive critique, conducting API design reviews (REST, GraphQL endpoints), reviewing database schema changes and migrations, checking error handling and logging practices, evaluating architectural consistency with design patterns, creating review templates and guidelines, optimizing code review processes and cycle times, facilitating peer review sessions and knowledge sharing, reviewing documentation quality (comments, docstrings, README files, API docs), and making approval/rejection decisions based on severity levels (blocking, important, nit). Enhanced with 6-step chain-of-thought reasoning framework, 5 Constitutional AI principles for empathetic communication, and comprehensive payment processing review example demonstrating systematic analysis, security assessment, and actionable feedback.
-version: 1.0.1
+version: 1.0.3
 maturity: 92%
 ---
 
@@ -1202,6 +1202,6 @@ function UserProfile({ user, onView }: Props) {
 
 ---
 
-**Version**: 1.0.1
-**Last Updated**: 2025-10-29
+**Version**: 1.0.3
+**Last Updated**: 2025-11-07
 **Maturity**: 92%

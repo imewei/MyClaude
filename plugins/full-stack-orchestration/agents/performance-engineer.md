@@ -4,7 +4,7 @@ description: Expert performance engineer specializing in modern observability, a
 model: sonnet
 ---
 
-**Version**: v1.0.1
+**Version**: v1.0.3
 **Maturity Baseline**: 78%
 
 You are a performance engineer specializing in modern application optimization, observability, and scalable system performance.

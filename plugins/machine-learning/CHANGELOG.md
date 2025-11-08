@@ -5,6 +5,170 @@ All notable changes to the Machine Learning plugin will be documented in this fi
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.0.3] - 2025-01-07
+
+### 🚀 Added
+
+#### NEW data-engineer Agent (v1.0.3)
+Expert data engineer specializing in scalable data pipelines, ETL/ELT architecture, and production data infrastructure.
+
+**Comprehensive Capabilities**:
+- Data ingestion (batch, streaming, CDC) with Spark, Airflow, Kafka
+- Data quality frameworks (Great Expectations, Pydantic, Pandera)
+- Data versioning (DVC, lakeFS, Delta Lake time travel)
+- Storage optimization (partitioning, compression, lifecycle policies)
+- ETL/ELT pipeline design and orchestration
+
+**Reasoning Framework** (6 phases):
+1. Requirements Analysis → 2. Architecture Design → 3. Implementation → 4. Quality Assurance → 5. Deployment & Operations → 6. Optimization & Iteration
+
+**Constitutional AI Principles** (5):
+- Data Quality First, Idempotency & Reproducibility, Cost Efficiency, Observability & Debuggability, Security & Compliance
+
+**Few-Shot Examples** (2 detailed):
+1. E-commerce Event Stream Pipeline (100K events/sec, Flink, real-time processing)
+2. Batch ETL for ML Feature Engineering (daily pipeline, Spark, Great Expectations)
+
+**File Size**: 7,000+ lines with comprehensive examples and best practices
+
+---
+
+#### Enhanced /ml-pipeline Command (v1.0.3)
+
+**YAML Frontmatter with 3 Execution Modes**:
+- **quick** (2-3 days): MVP pipeline with core agents (data-scientist, ml-engineer, mlops-engineer)
+- **standard** (1-2 weeks): Full production pipeline with monitoring (+ python-pro, observability-engineer)
+- **enterprise** (3-4 weeks): Complete MLOps platform with K8s (+ data-engineer, kubernetes-architect, observability-engineer)
+
+**Agent Reference Table**: Lists all 7 specialized agents (4 native + 3 optional cross-plugin) with roles and execution mode mapping
+
+**Interactive Mode Selection**: AskUserQuestion integration for user-friendly execution mode choice
+
+**Cross-Plugin Integration**: Graceful degradation for optional agents (python-pro, kubernetes-architect, observability-engineer)
+
+**Library-Specific Documentation**: `--docs-url` flag for integrating framework-specific guidance
+
+**Condensed Phases**: Streamlined descriptions with external documentation links
+
+---
+
+#### Comprehensive External Documentation (6 Files)
+
+1. **mlops-methodology.md** (~3,000 lines):
+   - MLOps maturity model (levels 0-3: Manual → DevOps → Automated ML → Full CI/CD/CT)
+   - CI/CD for ML (model versioning with DVC/MLflow, GitHub Actions workflows)
+   - Experiment tracking best practices (MLflow, Weights & Biases)
+   - Model governance & compliance (registry workflows, audit logging)
+   - Cost optimization strategies (spot instances, storage lifecycle)
+   - Team collaboration patterns (cross-functional workflows, code reviews)
+
+2. **pipeline-phases.md** (~3,500 lines):
+   - Phase 1: Data Infrastructure & Requirements (data quality, schema validation, versioning)
+   - Phase 2: Model Development & Training (training pipelines, hyperparameter optimization, testing)
+   - Phase 3: Production Deployment (model serving, CI/CD, Kubernetes orchestration)
+   - Phase 4: Monitoring & Continuous Improvement (drift detection, observability, alerting)
+   - Phase transition checklists for quality gates
+
+3. **deployment-strategies.md** (~2,000 lines):
+   - Canary deployments with gradual traffic shifting
+   - Blue-green deployments for zero-downtime
+   - Shadow deployments for risk-free validation
+   - A/B testing with statistical significance
+   - Feature flags for progressive rollout
+   - Comparison matrix and best practices
+
+4. **monitoring-frameworks.md** (~2,500 lines):
+   - Model performance monitoring (accuracy, latency, throughput)
+   - Data drift detection (KS test, PSI, Chi-square)
+   - Concept drift detection (performance degradation monitoring)
+   - System observability (OpenTelemetry, distributed tracing, structured logging)
+   - Cost tracking & optimization
+
+5. **best-practices.md** (~3,000 lines):
+   - Production readiness checklist (8 categories, 60+ items)
+   - Code quality standards (type hints, error handling, logging)
+   - Testing strategies (unit, integration, model quality tests)
+   - Security best practices (secrets management, input validation)
+   - Performance optimization (batch prediction, caching)
+   - Disaster recovery (backup strategy, rollback procedures)
+
+6. **success-criteria.md** (~3,000 lines):
+   - Data pipeline success metrics (<0.1% quality issues, <1s feature latency)
+   - Model performance criteria (meets baselines, <5% degradation threshold)
+   - Operational excellence (99.9% uptime, <200ms p99 latency)
+   - Development velocity (<1 hour commit-to-prod, parallel experiments)
+   - Cost efficiency (<$0.50 per 1K predictions, >60% spot usage)
+   - Monthly success report template
+
+**Total External Documentation**: ~17,000 lines of comprehensive guidance
+
+---
+
+### ✨ Changed
+
+**plugin.json** (v1.0.1 → v1.0.3):
+- Added data-engineer agent to agents array
+- Added /ml-pipeline command metadata (maturity: 95%)
+- Enhanced description highlighting MLOps capabilities and execution modes
+- Comprehensive changelog field documenting v1.0.3 improvements
+- Added keywords: data-pipeline, data-quality, data-versioning, feature-store, experiment-tracking
+
+**All Agents Updated to v1.0.3**:
+- data-scientist.md: Added version metadata (v1.0.3)
+- ml-engineer.md: Added version metadata (v1.0.3)
+- mlops-engineer.md: Added version metadata (v1.0.3)
+- data-engineer.md: NEW agent (v1.0.3)
+
+**All Skills Updated to v1.0.3**:
+- statistical-analysis-fundamentals
+- machine-learning-essentials
+- data-wrangling-communication
+- advanced-ml-systems
+- ml-engineering-production
+- model-deployment-serving
+- devops-ml-infrastructure
+
+---
+
+### 🎯 Improved
+
+**User Experience**:
+- Clear execution mode selection via AskUserQuestion interface
+- Reduced cognitive load with mode-specific agent recommendations
+- Better agent discoverability via reference table
+- Graceful handling of missing cross-plugin agents
+
+**Documentation Organization**:
+- Externalized 17,000+ lines of detailed guidance
+- Maintained concise command file (311 lines with frontmatter)
+- Comprehensive reference library without token cost increase
+- Cross-referenced documentation for easy navigation
+
+**Multi-Agent Orchestration**:
+- Explicit cross-plugin dependencies documented
+- Mode-based agent activation (quick: 3 agents, enterprise: 7 agents)
+- Clear phase-to-agent mapping
+
+---
+
+### 📊 Technical Specifications
+
+- **Command File**: 311 lines (includes YAML frontmatter, agent table, condensed phases)
+- **External Docs**: 6 files, ~17,000 lines total
+- **New Agent**: data-engineer.md (~7,000 lines)
+- **Version Consistency**: All components at v1.0.3
+
+---
+
+### ✅ Backward Compatibility
+
+**100% backward compatible**: Existing `/ml-pipeline` usage patterns continue to work
+- Execution modes are additive enhancements
+- Optional agents degrade gracefully if plugins not installed
+- No breaking changes to command interface
+
+---
+
 ## [1.0.1] - 2025-10-31
 
 ### 🚀 Enhanced - Agent Optimization with Chain-of-Thought Reasoning & Few-Shot Examples

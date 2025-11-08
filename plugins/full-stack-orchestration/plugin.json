@@ -2,7 +2,7 @@
   "name": "full-stack-orchestration",
   "displayName": "Full-Stack Orchestration",
   "description": "Full-stack development orchestration coordinating frontend, backend, testing, security, performance, and deployment for end-to-end feature delivery",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "keywords": [
     "full-stack",
     "orchestration",
@@ -25,28 +25,28 @@
       "id": "deployment-engineer",
       "file": "agents/deployment-engineer.md",
       "name": "Deployment Engineer",
-      "description": "Expert deployment engineer (v1.0.1, 75% maturity) with 6-step CI/CD framework (Pipeline Requirements, Security Review, Deployment Strategy, Testing Gates, Monitoring, Documentation). Implements 4 Constitutional AI principles (Security-First Deployment 95%, Zero-Downtime Reliability 99.9%, Performance & Efficiency 90%, Developer Experience 88%). Comprehensive examples: Insecure pipeline → Secure GitOps (35%→94% maturity), Slow manual → Optimized automated (40%→92% maturity). Masters GitHub Actions, ArgoCD, progressive delivery, container security, and SLSA compliance.",
+      "description": "Expert deployment engineer (v1.0.3, 75% maturity) with 6-step CI/CD framework (Pipeline Requirements, Security Review, Deployment Strategy, Testing Gates, Monitoring, Documentation). Implements 4 Constitutional AI principles (Security-First Deployment 95%, Zero-Downtime Reliability 99.9%, Performance & Efficiency 90%, Developer Experience 88%). Comprehensive examples: Insecure pipeline → Secure GitOps (35%→94% maturity), Slow manual → Optimized automated (40%→92% maturity). Masters GitHub Actions, ArgoCD, progressive delivery, container security, and SLSA compliance.",
       "status": "active"
     },
     {
       "id": "performance-engineer",
       "file": "agents/performance-engineer.md",
       "name": "Performance Engineer",
-      "description": "Expert performance engineer (v1.0.1, 78% maturity) with 6-step Performance framework (Baseline Profiling, Frontend Analysis, Backend Analysis, Infrastructure Review, Caching Evaluation, Monitoring Optimization). Implements 4 Constitutional AI principles (User-Perceived Performance 95%, Backend Performance 90%, Observability 92%, Caching Strategy 88%). Comprehensive examples: Slow API → High-performance API (30%→93% maturity, 2800ms→85ms, 37.5x throughput), Poor frontend → Core Web Vitals optimized (35%→94% maturity, LCP 4.2s→1.8s, 85% bundle reduction). Masters OpenTelemetry, distributed tracing, multi-tier caching, and Core Web Vitals optimization.",
+      "description": "Expert performance engineer (v1.0.3, 78% maturity) with 6-step Performance framework (Baseline Profiling, Frontend Analysis, Backend Analysis, Infrastructure Review, Caching Evaluation, Monitoring Optimization). Implements 4 Constitutional AI principles (User-Perceived Performance 95%, Backend Performance 90%, Observability 92%, Caching Strategy 88%). Comprehensive examples: Slow API → High-performance API (30%→93% maturity, 2800ms→85ms, 37.5x throughput), Poor frontend → Core Web Vitals optimized (35%→94% maturity, LCP 4.2s→1.8s, 85% bundle reduction). Masters OpenTelemetry, distributed tracing, multi-tier caching, and Core Web Vitals optimization.",
       "status": "active"
     },
     {
       "id": "security-auditor",
       "file": "agents/security-auditor.md",
       "name": "Security Auditor",
-      "description": "Expert security auditor (v1.0.1, 80% maturity) with 6-step Security framework (Threat Modeling, Authentication Review, OWASP Assessment, DevSecOps Automation, Infrastructure Security, Compliance & Culture). Implements 4 Constitutional AI principles (OWASP Top 10 Prevention 100%, Zero-Trust Security 95%, DevSecOps Integration 92%, Compliance & Governance 90%). Comprehensive examples: Insecure auth → Zero-trust auth (25%→96% maturity, +83 security points), Vulnerable API → Secure API (20%→94% maturity, 20%→100% OWASP coverage). Masters OAuth2/OIDC, SAST/DAST, container security, and compliance automation.",
+      "description": "Expert security auditor (v1.0.3, 80% maturity) with 6-step Security framework (Threat Modeling, Authentication Review, OWASP Assessment, DevSecOps Automation, Infrastructure Security, Compliance & Culture). Implements 4 Constitutional AI principles (OWASP Top 10 Prevention 100%, Zero-Trust Security 95%, DevSecOps Integration 92%, Compliance & Governance 90%). Comprehensive examples: Insecure auth → Zero-trust auth (25%→96% maturity, +83 security points), Vulnerable API → Secure API (20%→94% maturity, 20%→100% OWASP coverage). Masters OAuth2/OIDC, SAST/DAST, container security, and compliance automation.",
       "status": "active"
     },
     {
       "id": "test-automator",
       "file": "agents/test-automator.md",
       "name": "Test Automator",
-      "description": "Expert test automation engineer (v1.0.1, 77% maturity) with 6-step Testing framework (Test Strategy, Automation Architecture, Test Implementation, TDD & Quality Engineering, CI/CD Integration, Monitoring & Optimization). Implements 4 Constitutional AI principles (Test Quality & Reliability 95%, TDD Best Practices 90%, CI/CD Integration Excellence 92%, Test Coverage & Effectiveness 85%). Comprehensive examples: Flaky manual tests → Reliable automated suite (35%→94% maturity, 40%→99% reliability, 94% faster), No TDD → Comprehensive TDD workflow (30%→93% maturity, 0%→98% TDD compliance). Masters Playwright, AI-powered testing, property-based testing, mutation testing, and self-healing test automation.",
+      "description": "Expert test automation engineer (v1.0.3, 77% maturity) with 6-step Testing framework (Test Strategy, Automation Architecture, Test Implementation, TDD & Quality Engineering, CI/CD Integration, Monitoring & Optimization). Implements 4 Constitutional AI principles (Test Quality & Reliability 95%, TDD Best Practices 90%, CI/CD Integration Excellence 92%, Test Coverage & Effectiveness 85%). Comprehensive examples: Flaky manual tests → Reliable automated suite (35%→94% maturity, 40%→99% reliability, 94% faster), No TDD → Comprehensive TDD workflow (30%→93% maturity, 0%→98% TDD compliance). Masters Playwright, AI-powered testing, property-based testing, mutation testing, and self-healing test automation.",
       "status": "active"
     }
   ],
@@ -55,7 +55,8 @@
       "id": "full-stack-feature",
       "file": "commands/full-stack-feature.md",
       "name": "/full-stack-feature",
-      "description": "Orchestrate end-to-end full-stack feature development from frontend to backend to deployment",
+      "version": "1.0.3",
+      "description": "Orchestrate end-to-end full-stack feature development with multi-mode execution (quick: 30-60min architecture, standard: 3-6hrs implementation, deep: 1-3 days production-ready), API-first approach, phase-based workflow (architecture, implementation, testing, deployment), comprehensive external documentation (2,001 lines across 4 guides), 3 decision trees for technology selection, and 7-agent coordination with quality gates",
       "status": "active"
     }
   ],

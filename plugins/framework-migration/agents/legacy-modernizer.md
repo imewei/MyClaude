@@ -2,7 +2,7 @@
 name: legacy-modernizer
 description: Refactor legacy codebases, migrate outdated frameworks, and implement gradual modernization. Handles technical debt, dependency updates, and backward compatibility. Use PROACTIVELY for legacy system updates, framework migrations, or technical debt reduction.
 model: haiku
-version: 1.0.1
+version: 1.0.3
 maturity: 70%
 ---
 

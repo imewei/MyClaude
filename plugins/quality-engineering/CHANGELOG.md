@@ -5,6 +5,100 @@ All notable changes to the Quality Engineering plugin will be documented in this
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+---
+
+## [1.0.3] - 2025-01-07
+
+### 🚀 Command Optimization with Execution Modes
+
+This release optimizes both quality-engineering commands with execution modes, external documentation, and enhanced command descriptions following the proven optimization pattern from python-development v1.0.3.
+
+#### Command Enhancements
+
+**/double-check Command Optimization:**
+- **Before**: 573 lines (single comprehensive checklist)
+- **After**: 342 lines with YAML frontmatter
+- **Reduction**: 40.3% (231 lines externalized)
+
+**New Execution Modes:**
+
+| Mode | Duration | Agents | Scope |
+|------|----------|--------|-------|
+| **Quick** | 30min-1h | 1 agent | Single file, basic checks (~3/10 dimensions) |
+| **Standard** | 2-4h | 3 agents | Feature branch, all 10 dimensions with moderate depth |
+| **Enterprise** | 1-2d | 5 agents | Production release, all dimensions + compliance audit |
+
+**/lint-plugins Command Optimization:**
+- **Before**: 591 lines (embedded examples and rules)
+- **After**: 436 lines with YAML frontmatter
+- **Reduction**: 26.2% (155 lines externalized)
+
+**New Execution Modes:**
+
+| Mode | Duration | Scope |
+|------|----------|-------|
+| **Quick** | 30s-2min | Single plugin, syntax validation only, auto-fix enabled |
+| **Standard** | 2-5min | All plugins, full validation, detailed reporting |
+| **Enterprise** | 5-10min | Dependency analysis, architecture review, dependency graphs |
+
+**External Documentation** (8 files - 6,455 lines):
+
+**For /double-check** (5 files - 4,311 lines):
+- `validation-dimensions.md` (919 lines) - All 10 dimensions with comprehensive checklists
+- `automated-validation-scripts.md` (852 lines) - Complete script library with tool configurations
+- `security-validation-guide.md` (778 lines) - OWASP Top 10, compliance frameworks
+- `performance-analysis-guide.md` (850 lines) - Profiling, optimization, load testing
+- `production-readiness-checklist.md` (912 lines) - Configuration, observability, deployment
+
+**For /lint-plugins** (3 files - 2,144 lines):
+- `plugin-validation-rules.md` (735 lines) - All validation rules with before/after examples
+- `plugin-development-workflow.md` (762 lines) - Pre-commit hooks, CI/CD integration
+- `dependency-analysis-guide.md` (647 lines) - Cross-plugin analysis, circular detection
+
+### Added
+
+- YAML frontmatter in both command files with execution mode definitions
+- Interactive mode selection via `AskUserQuestion` for better UX
+- 8 comprehensive external documentation files (~6,455 lines total)
+- Version fields to both commands and both skills for consistency tracking
+- Cross-references to external documentation throughout command files
+- Enhanced command descriptions with execution modes in plugin.json
+
+### Changed
+
+- Command file structure from linear to execution-mode-based
+- Validation content from embedded to externalized documentation
+- Agent coordination from implicit to explicit mode-based assignment
+- plugin.json version from 1.0.1 to 1.0.3
+
+### Improved
+
+- **Token Efficiency**: 33.2% combined command file reduction (1,164 → 778 lines)
+- **Flexibility**: 3 execution modes per command for different validation complexities
+- **Documentation**: Comprehensive external guides (6,455 lines total)
+- **Discoverability**: Enhanced command descriptions with execution modes and durations
+- **Maintainability**: Separation of concerns (command logic vs. reference documentation)
+- **Usability**: Clear execution paths with estimated time commitments
+
+### Migration Guide
+
+No breaking changes - existing usage patterns remain compatible. New execution mode selection provides enhanced flexibility:
+
+```bash
+# Old usage (still works, defaults to standard mode)
+/double-check my-feature
+
+# New usage with mode selection
+/double-check my-feature
+# → Prompted to select: Quick / Standard / Enterprise
+
+# lint-plugins same pattern
+/lint-plugins
+# → Prompted to select execution mode
+```
+
+---
+
 ## [1.0.1] - 2025-10-31
 
 ### Enhanced - Skills Discoverability Enhancement

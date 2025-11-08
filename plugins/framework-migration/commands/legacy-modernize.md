@@ -1,3 +1,37 @@
+---
+version: 1.0.3
+description: Comprehensive legacy system modernization using Strangler Fig pattern with multi-agent orchestration
+argument-hint: <legacy-system-path> [--strategy strangler-fig|big-bang|branch-by-abstraction] [--mode quick|standard|deep]
+category: framework-migration
+purpose: Incremental legacy modernization with zero downtime, test-first discipline, and backward compatibility
+execution_time:
+  quick: "1-2 hours - Assessment and quick wins identification"
+  standard: "1-2 weeks - Single component modernization"
+  deep: "2-6 months - Full legacy system transformation"
+color: orange
+allowed-tools: Bash, Read, Write, Edit, Glob, Grep, Task
+external_docs:
+  - strangler-fig-playbook.md
+  - testing-strategies.md
+  - migration-patterns-library.md
+  - rollback-procedures.md
+agents:
+  primary:
+    - framework-migration:legacy-modernizer
+    - framework-migration:architect-review
+  conditional:
+    - agent: unit-testing:test-automator
+      trigger: pattern "test|coverage"
+    - agent: comprehensive-review:security-auditor
+      trigger: pattern "security|vulnerability"
+    - agent: full-stack-orchestration:performance-engineer
+      trigger: pattern "performance|optimization"
+    - agent: cicd-automation:deployment-engineer
+      trigger: pattern "deploy|rollout|cicd"
+  orchestrated: true
+tags: [legacy-modernization, strangler-fig, refactoring, zero-downtime, technical-debt, incremental-migration]
+---
+
 # Legacy Code Modernization Workflow
 
 Orchestrate a comprehensive legacy system modernization using the strangler fig pattern, enabling gradual replacement of outdated components while maintaining continuous business operations through expert agent coordination.

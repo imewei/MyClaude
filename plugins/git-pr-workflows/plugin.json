@@ -2,7 +2,7 @@
   "name": "git-pr-workflows",
   "displayName": "Git & Pull Request Workflows",
   "description": "Git workflows, pull request management, branching strategies, code review processes, and version control best practices for modern software development teams",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "keywords": [
     "git",
     "github",
@@ -28,7 +28,7 @@
       "id": "code-reviewer",
       "file": "agents/code-reviewer.md",
       "name": "Code Reviewer",
-      "description": "Elite code review expert (v1.0.1, 78% maturity) with 6-step Chain-of-Thought framework (Context Analysis, Automated Tools, Manual Review, Security, Performance, Feedback Synthesis). Implements 4 Constitutional AI principles (Security-First 95%, Production Reliability 90%, Performance Optimization 88%, Code Quality 85%). Comprehensive examples: SQL injection prevention (30%→92.5% maturity), N+1 query optimization (40%→91% maturity). Masters OWASP Top 10, static analysis tools, and production reliability practices.",
+      "description": "Elite code review expert (v1.0.3, 78% maturity) with 6-step Chain-of-Thought framework (Context Analysis, Automated Tools, Manual Review, Security, Performance, Feedback Synthesis). Implements 4 Constitutional AI principles (Security-First 95%, Production Reliability 90%, Performance Optimization 88%, Code Quality 85%). Comprehensive examples: SQL injection prevention (30%→92.5% maturity), N+1 query optimization (40%→91% maturity). Masters OWASP Top 10, static analysis tools, and production reliability practices.",
       "status": "active"
     }
   ],
@@ -37,28 +37,32 @@
       "id": "commit",
       "file": "commands/commit.md",
       "name": "/commit",
-      "description": "Create intelligent atomic commits with automated analysis, quality validation, and conventional commit format",
+      "version": "1.0.3",
+      "description": "Create intelligent atomic commits with automated analysis, quality validation, conventional commit format, and comprehensive external documentation (2,303 lines: branching strategies, commit patterns, PR reviews, onboarding)",
       "status": "active"
     },
     {
       "id": "git-workflow",
       "file": "commands/git-workflow.md",
       "name": "/git-workflow",
-      "description": "Implement and optimize Git workflows including branching strategies and merge patterns",
+      "version": "1.0.3",
+      "description": "Implement and optimize Git workflows with multi-agent orchestration, branching strategies (trunk-based, Git Flow, GitHub Flow), and merge patterns with external docs",
       "status": "active"
     },
     {
       "id": "onboard",
       "file": "commands/onboard.md",
       "name": "/onboard",
-      "description": "Onboard new team members to Git workflows and repository conventions",
+      "version": "1.0.3",
+      "description": "Onboard new team members with comprehensive 30-60-90 day plans, role-specific playbooks, mentor guides, and best practices from external onboarding-playbook.md",
       "status": "active"
     },
     {
       "id": "pr-enhance",
       "file": "commands/pr-enhance.md",
       "name": "/pr-enhance",
-      "description": "Enhance pull request descriptions and improve review quality",
+      "version": "1.0.3",
+      "description": "Enhance pull requests with automated analysis, review best practices, comprehensive templates, and quality guidelines from external pr-review-best-practices.md",
       "status": "active"
     }
   ],

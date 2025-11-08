@@ -2,9 +2,51 @@
 
 Comprehensive quality assurance, validation, and correctness verification tools with automated scripts for security scanning, testing, linting, performance profiling, accessibility checks, and plugin syntax validation.
 
-**Version:** 1.0.1 | **Category:** quality-assurance | **License:** MIT
+**Version:** 1.0.3 | **Category:** quality-assurance | **License:** MIT
 
-[Full Documentation →](https://myclaude.readthedocs.io/en/latest/plugins/quality-engineering.html)
+[Full Documentation →](https://myclaude.readthedocs.io/en/latest/plugins/quality-engineering.html) | [CHANGELOG](CHANGELOG.md)
+
+---
+
+## 🚀 What's New in v1.0.3
+
+### Command Optimization with Execution Modes
+
+Both quality-engineering commands now feature:
+- **3 Execution Modes** (quick/standard/enterprise) for flexible validation
+- **Comprehensive External Documentation** (~6,455 lines across 8 guides)
+- **33.2% Command File Reduction** while preserving all content
+- **Version Consistency** across all components (1.0.3)
+
+#### /double-check - 3 Execution Modes
+
+| Mode | Duration | Agents | Scope |
+|------|----------|--------|-------|
+| **Quick** | 30min-1h | 1 agent | Single file, basic checks (~3/10 dimensions) |
+| **Standard** | 2-4h | 3 agents | Feature branch, all 10 dimensions |
+| **Enterprise** | 1-2d | 5 agents | Production release, compliance audit |
+
+**External Documentation** (5 files - 4,311 lines):
+- validation-dimensions.md - All 10 dimensions with comprehensive checklists
+- automated-validation-scripts.md - Complete script library
+- security-validation-guide.md - OWASP Top 10, compliance
+- performance-analysis-guide.md - Profiling, optimization
+- production-readiness-checklist.md - Configuration, observability
+
+#### /lint-plugins - 3 Execution Modes
+
+| Mode | Duration | Scope |
+|------|----------|-------|
+| **Quick** | 30s-2min | Single plugin, syntax check, auto-fix |
+| **Standard** | 2-5min | All plugins, full validation, detailed report |
+| **Enterprise** | 5-10min | Dependency analysis, architecture review, graphs |
+
+**External Documentation** (3 files - 2,144 lines):
+- plugin-validation-rules.md - All validation rules with examples
+- plugin-development-workflow.md - Pre-commit hooks, CI/CD
+- dependency-analysis-guide.md - Cross-plugin analysis
+
+---
 
 ## What's New in v1.0.1
 
@@ -19,6 +61,8 @@ Both quality-engineering skills now have comprehensive "When to use this skill" 
 **Key Improvements:**
 - comprehensive-validation-framework: Detailed all 7 automated scripts, 6 reference guides, and 10 validation dimensions
 - plugin-syntax-validator: Explicit script names, file patterns, error types, and auto-fix capabilities
+
+---
 
 ## Commands (2)
 

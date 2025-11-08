@@ -2,7 +2,7 @@
 
 **Total Commands:** 48 across 22 plugins
 **Format:** `plugin:command` (single colon)
-**Version:** 1.0.1 | **Last Updated:** October 31, 2025
+**Version:** 1.0.3 | **Last Updated:** January 8, 2025
 
 ---
 
@@ -222,8 +222,8 @@
 - **Agent List:** AGENTS_LIST.md
 - **Full Documentation:** https://myclaude.readthedocs.io/en/latest/
 - **Validation Report:** PLUGIN_LINT_REPORT.md
-- **Total Resources:** 31 plugins | 73 agents | 48 commands | 110 skills
-- **Version:** 1.0.1
+- **Total Resources:** 31 plugins | 74 agents | 48 commands | 110 skills
+- **Version:** 1.0.3
 
 ---
 
@@ -241,4 +241,4 @@
 
 ---
 
-**Note:** This list was generated from v1.0.1 validated marketplace data. All commands follow consistent naming conventions and include comprehensive functional descriptions. For detailed command documentation, refer to individual command files in `plugins/{plugin-name}/commands/{command-name}.md`.
+**Note:** This list was generated from v1.0.3 validated marketplace data. All commands follow consistent naming conventions and include comprehensive functional descriptions. For detailed command documentation, refer to individual command files in `plugins/{plugin-name}/commands/{command-name}.md`.

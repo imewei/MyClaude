@@ -1,15 +1,21 @@
 {
   "name": "comprehensive-review",
   "displayName": "Comprehensive Review",
-  "description": "Comprehensive code and architecture review with multi-perspective analysis, security auditing, quality assessment, and AI-powered code analysis for production-grade quality assurance. v1.0.1 features enhanced agents and skill with triggering criteria, chain-of-thought reasoning, Constitutional AI principles, and comprehensive real-world examples for systematic reviews.",
-  "changelog": "v1.0.1: Major prompt engineering improvements for all 3 agents and 1 skill with triggering criteria (20 USE cases each, 8 anti-patterns with clear delegation), 6-step chain-of-thought reasoning frameworks (60 guiding questions per agent/skill), 5 Constitutional AI principles (50 self-check questions per agent/skill), comprehensive few-shot examples (architect-review: monolithic-to-microservices migration 481 lines; code-reviewer: authentication system review 230+ lines; security-auditor: multi-tenant SaaS audit 367 lines; code-review-excellence skill: payment processing review with 6-step framework). Expected: 50-70% better review quality, 60% faster reviews, 70% more thorough analysis.",
-  "version": "1.0.1",
+  "description": "Multi-agent code review orchestration with AI-powered analysis, security auditing, and PR optimization. v1.0.3 features hub-and-spoke architecture with 3 external documentation files, execution modes (quick/standard/deep for reviews, basic/enhanced/enterprise for PR enhancement), YAML frontmatter with time estimates, and streamlined command workflows for maximum efficiency. Comprehensive code quality, security, and PR enhancement capabilities.",
+  "changelog": "v1.0.3: Hub-and-spoke architecture implementation with 3 external documentation files (review-best-practices.md, pr-templates-library.md, risk-assessment-framework.md), execution modes for user control (full-review: quick/standard/deep, pr-enhance: basic/enhanced/enterprise), YAML frontmatter with execution time estimates and external doc references, command optimization (full-review: 123→330 lines, pr-enhance: 696→752 lines), enhanced metadata with capabilities and tags, comprehensive PR template library (8 templates), risk assessment framework with scoring algorithms, and review best practices guide. Expected: Better UX with time estimates, flexible execution modes, comprehensive reference documentation. v1.0.1: Enhanced all components with chain-of-thought reasoning frameworks, Constitutional AI principles, comprehensive examples, and maturity scoring.",
+  "version": "1.0.3",
   "keywords": [
     "code-review",
-    "architecture-review",
     "security-audit",
+    "pull-request",
+    "pr-optimization",
+    "multi-agent",
+    "architecture-review",
     "quality-assurance",
-    "pr-review",
+    "risk-assessment",
+    "execution-modes",
+    "review-automation",
+    "documentation-hub",
     "static-analysis",
     "devsecops",
     "vulnerability-assessment",
@@ -37,9 +43,9 @@
       "name": "Architect Reviewer",
       "description": "Master software architect specializing in architecture patterns, clean architecture, microservices, event-driven systems, and distributed systems design",
       "status": "active",
-      "version": "1.0.1",
+      "version": "1.0.3",
       "maturity": "91%",
-      "improvements": "Added triggering criteria with 20 USE cases and 8 anti-patterns with delegation decision tree (architect-review vs. code-reviewer vs. security-auditor vs. performance-engineer), 6-step chain-of-thought reasoning framework (Architecture Discovery → Pattern Analysis → Design Review → Quality Assessment → Scalability Analysis → Recommendations) with 60 guiding questions (10 per step), 5 Constitutional AI principles (Simplicity First, Scalability & Performance, Maintainability & Evolution, Security by Design, Cost-Effectiveness) with 50 self-check questions (10 per principle), comprehensive 481-line monolithic-to-microservices e-commerce migration example with service decomposition, C4 diagrams, migration roadmap, and self-critique (91% maturity score). Growth: 147 → 893 lines (+746 lines, 6x). Expected: 50-70% better architecture quality, 60% faster reviews, 70% more thorough analysis."
+      "improvements": "Added triggering criteria with 20 USE cases and 8 anti-patterns with delegation decision tree (architect-review vs. code-reviewer vs. security-auditor vs. performance-engineer), 6-step chain-of-thought reasoning framework (Architecture Discovery → Pattern Analysis → Design Review → Quality Assessment → Scalability Analysis → Recommendations) with 60 guiding questions (10 per step), 5 Constitutional AI principles (Simplicity First, Scalability & Performance, Maintainability & Evolution, Security by Design, Cost-Effectiveness) with 50 self-check questions (10 per principle), comprehensive 481-line monolithic-to-microservices e-commerce migration example with service decomposition, C4 diagrams, migration roadmap, and self-critique (91% maturity score). Growth: 147 → 893 lines (+746 lines, 6x). Expected: 50-70% better architecture quality, 60% faster reviews, 70% more thorough analysis. v1.0.3: Version consistency update."
     },
     {
       "id": "code-reviewer",
@@ -47,9 +53,9 @@
       "name": "Code Reviewer",
       "description": "Elite code review expert specializing in modern AI-powered code analysis, security vulnerabilities, performance optimization, and production reliability",
       "status": "active",
-      "version": "1.0.1",
+      "version": "1.0.3",
       "maturity": "91%",
-      "improvements": "Added triggering criteria with 20 USE cases and 8 anti-patterns with delegation decision tree (code-reviewer vs. architect-review vs. security-auditor vs. test-automator), 6-step chain-of-thought reasoning framework (Code Understanding → Quality Assessment → Security Analysis → Performance Review → Test Validation → Feedback Synthesis) with 60 guiding questions (10 per step), 5 Constitutional AI principles (Code Clarity, Security First, Performance Awareness, Test Quality, Maintainability) with 50 self-check questions (10 per principle), comprehensive 230+ line authentication system security review example with CVSS-scored vulnerabilities, before/after code fixes, and self-critique (91% maturity score). Growth: 157 → 827 lines (+670 lines, 527%). Expected: 50-70% better review quality, 60% faster reviews, 70% more comprehensive issue detection."
+      "improvements": "Added triggering criteria with 20 USE cases and 8 anti-patterns with delegation decision tree (code-reviewer vs. architect-review vs. security-auditor vs. test-automator), 6-step chain-of-thought reasoning framework (Code Understanding → Quality Assessment → Security Analysis → Performance Review → Test Validation → Feedback Synthesis) with 60 guiding questions (10 per step), 5 Constitutional AI principles (Code Clarity, Security First, Performance Awareness, Test Quality, Maintainability) with 50 self-check questions (10 per principle), comprehensive 230+ line authentication system security review example with CVSS-scored vulnerabilities, before/after code fixes, and self-critique (91% maturity score). Growth: 157 → 827 lines (+670 lines, 527%). Expected: 50-70% better review quality, 60% faster reviews, 70% more comprehensive issue detection. v1.0.3: Version consistency update."
     },
     {
       "id": "security-auditor",
@@ -57,9 +63,9 @@
       "name": "Security Auditor",
       "description": "Expert security auditor specializing in DevSecOps, comprehensive cybersecurity, compliance frameworks, vulnerability assessment, and threat modeling",
       "status": "active",
-      "version": "1.0.1",
+      "version": "1.0.3",
       "maturity": "91%",
-      "improvements": "Added triggering criteria with 20 USE cases and 8 anti-patterns with delegation decision tree (security-auditor vs. code-reviewer vs. architect-review vs. compliance-officer), 6-step chain-of-thought reasoning framework (Threat Landscape Analysis → Vulnerability Assessment → Security Controls Review → Compliance Validation → Risk Prioritization → Remediation Roadmap) with 60 guiding questions (10 per step), 5 Constitutional AI principles (Defense in Depth, Least Privilege, Fail Securely, Security by Default, Continuous Validation) with 50 self-check questions (10 per principle), comprehensive 367-line multi-tenant SaaS fintech security audit example with OWASP Top 10 findings, CVSS scoring, compliance assessment (GDPR, SOC 2, SEC), 11 prioritized remediation recommendations, and self-critique (91% maturity score). Growth: 139 → 720 lines (+581 lines, 418%). Expected: 50-70% better security coverage, 60% faster audits, 70% more accurate risk assessment."
+      "improvements": "Added triggering criteria with 20 USE cases and 8 anti-patterns with delegation decision tree (security-auditor vs. code-reviewer vs. architect-review vs. compliance-officer), 6-step chain-of-thought reasoning framework (Threat Landscape Analysis → Vulnerability Assessment → Security Controls Review → Compliance Validation → Risk Prioritization → Remediation Roadmap) with 60 guiding questions (10 per step), 5 Constitutional AI principles (Defense in Depth, Least Privilege, Fail Securely, Security by Default, Continuous Validation) with 50 self-check questions (10 per principle), comprehensive 367-line multi-tenant SaaS fintech security audit example with OWASP Top 10 findings, CVSS scoring, compliance assessment (GDPR, SOC 2, SEC), 11 prioritized remediation recommendations, and self-critique (91% maturity score). Growth: 139 → 720 lines (+581 lines, 418%). Expected: 50-70% better security coverage, 60% faster audits, 70% more accurate risk assessment. v1.0.3: Version consistency update."
     }
   ],
   "commands": [
@@ -67,15 +73,56 @@
       "id": "full-review",
       "file": "commands/full-review.md",
       "name": "/full-review",
-      "description": "Perform comprehensive multi-perspective code review with architecture, security, and quality analysis",
-      "status": "active"
+      "description": "Orchestrate comprehensive multi-dimensional code review using specialized review agents with execution modes",
+      "status": "active",
+      "version": "1.0.3",
+      "execution_modes": {
+        "quick": "10-20 minutes - Core quality and security review (phases 1-2)",
+        "standard": "25-40 minutes - Full 4-phase multi-agent review",
+        "deep": "45-75 minutes - Complete analysis with metrics dashboard and automated remediation"
+      },
+      "external_docs": [
+        "review-best-practices.md",
+        "risk-assessment-framework.md",
+        "pr-templates-library.md"
+      ],
+      "capabilities": [
+        "Multi-agent orchestration (code-reviewer, architect-review, security-auditor, performance-engineer)",
+        "4-phase review workflow (quality, security, performance, testing, docs, best practices)",
+        "Execution modes for flexible time/depth control",
+        "Priority-based reporting (P0-P3)",
+        "Framework-specific analysis",
+        "CI/CD integration recommendations"
+      ]
     },
     {
       "id": "pr-enhance",
       "file": "commands/pr-enhance.md",
       "name": "/pr-enhance",
-      "description": "Enhance pull request descriptions and improve review quality with AI-powered analysis",
-      "status": "active"
+      "description": "Create high-quality pull requests with comprehensive descriptions, automated review checks, and best practices",
+      "status": "active",
+      "version": "1.0.3",
+      "execution_modes": {
+        "basic": "5-10 minutes - PR description generation with git analysis",
+        "enhanced": "10-20 minutes - Full PR with automated checks, risk assessment, review checklist",
+        "enterprise": "20-40 minutes - Complete PR optimization with coverage, diagrams, split suggestions"
+      },
+      "external_docs": [
+        "pr-templates-library.md",
+        "review-best-practices.md",
+        "risk-assessment-framework.md"
+      ],
+      "capabilities": [
+        "Git diff analysis and change categorization",
+        "Automated code review checks (console logs, large functions, security issues)",
+        "Risk assessment with 5-factor scoring (size, complexity, coverage, dependencies, security)",
+        "Context-aware review checklist generation",
+        "8 PR templates (feature, bugfix, refactor, performance, security, docs, dependency, config)",
+        "Test coverage comparison and visualization",
+        "PR split suggestions for large changes",
+        "Visual architecture diagrams (Mermaid)",
+        "Review response templates"
+      ]
     }
   ],
   "skills": [
@@ -84,9 +131,26 @@
       "directory": "skills",
       "name": "Code Review Excellence",
       "description": "Master effective code review practices with systematic analysis, constructive feedback, and team collaboration. Enhanced with 6-step chain-of-thought reasoning framework, 5 Constitutional AI principles for empathetic communication, and comprehensive examples for PR reviews, security assessment, performance analysis, and test validation.",
-      "version": "1.0.1",
+      "version": "1.0.3",
       "maturity": "92%",
-      "improvements": "Enhanced skill with optimized frontmatter description for better discoverability (includes specific file types: .py, .ts, .js, .go, .rs, .java, .c, .cpp), added 'When to use this skill' section with 20 concise use case examples, preserved comprehensive content with triggering criteria (20 USE cases, 8 anti-patterns, delegation decision tree), 6-step chain-of-thought reasoning framework (Context Gathering → High-Level Review → Line-by-Line Analysis → Security & Performance → Test Validation → Feedback Synthesis) with 60 guiding questions, 5 Constitutional AI principles (Constructive & Empathetic Communication 95%, Thoroughness & Systematic Analysis 90%, Actionable & Prioritized Feedback 93%, Knowledge Sharing & Team Growth 88%, Efficiency & Process Optimization 85%) with 50 self-check questions, comprehensive payment processing PR review example demonstrating 6-step framework with security findings (CVSS-scored), test coverage analysis, and empathetic feedback delivery achieving 90% overall maturity. Growth: 521 → 1,183 lines (+662 lines, 227%). Expected: 50-70% better review quality, 60% faster reviews, 70% more actionable feedback."
+      "improvements": "Enhanced skill with optimized frontmatter description for better discoverability (includes specific file types: .py, .ts, .js, .go, .rs, .java, .c, .cpp), added 'When to use this skill' section with 20 concise use case examples, preserved comprehensive content with triggering criteria (20 USE cases, 8 anti-patterns, delegation decision tree), 6-step chain-of-thought reasoning framework (Context Gathering → High-Level Review → Line-by-Line Analysis → Security & Performance → Test Validation → Feedback Synthesis) with 60 guiding questions, 5 Constitutional AI principles (Constructive & Empathetic Communication 95%, Thoroughness & Systematic Analysis 90%, Actionable & Prioritized Feedback 93%, Knowledge Sharing & Team Growth 88%, Efficiency & Process Optimization 85%) with 50 self-check questions, comprehensive payment processing PR review example demonstrating 6-step framework with security findings (CVSS-scored), test coverage analysis, and empathetic feedback delivery achieving 90% overall maturity. Growth: 521 → 1,183 lines (+662 lines, 227%). Expected: 50-70% better review quality, 60% faster reviews, 70% more actionable feedback. v1.0.3: Version consistency update."
     }
-  ]
+  ],
+  "external_documentation": {
+    "location": "docs/comprehensive-review/",
+    "files": [
+      {
+        "name": "review-best-practices.md",
+        "description": "Code review principles, systematic analysis approaches, checklists, communication guidelines, and team collaboration strategies"
+      },
+      {
+        "name": "pr-templates-library.md",
+        "description": "8 comprehensive PR templates: feature, bugfix, refactor, performance, security, documentation, dependency, configuration"
+      },
+      {
+        "name": "risk-assessment-framework.md",
+        "description": "Risk scoring algorithms, multi-factor calculations, thresholds, mitigation strategies, decision matrices, and case studies"
+      }
+    ]
+  }
 }

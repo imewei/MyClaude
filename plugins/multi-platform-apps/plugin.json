@@ -1,6 +1,6 @@
 {
   "name": "multi-platform-apps",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "description": "Comprehensive multi-platform application development with chain-of-thought reasoning frameworks, constitutional AI validation, production-ready examples, and enhanced skill discoverability. Expert agents for Flutter, React Native, iOS, Android, web, backend APIs, and UI/UX design systems with comprehensive skill documentation.",
   "author": "Wei Chen",
   "repository": "https://github.com/anthropics/claude-code",
@@ -23,6 +23,7 @@
       "file": "agents/flutter-expert.md",
       "description": "Master Flutter development with Dart 3, advanced widgets, and multi-platform deployment. Enhanced with 6-phase reasoning framework (requirements → architecture → implementation → performance → quality → deployment), constitutional AI principles for Flutter best practices, and comprehensive e-commerce app example with Riverpod clean architecture (60fps, 85% test coverage, 4.8★ rating).",
       "model": "sonnet",
+      "version": "1.0.3",
       "capabilities": [
         "flutter",
         "dart",
@@ -54,6 +55,7 @@
       "file": "agents/backend-architect.md",
       "description": "Expert backend architect for scalable API design and microservices. Enhanced with 6-phase reasoning framework (requirements → service boundaries → API contracts → resilience → observability → performance), constitutional AI principles for production reliability, and comprehensive order management microservices example with NestJS/Kafka (P99 <200ms, 99.95% availability, circuit breakers, distributed tracing).",
       "model": "sonnet",
+      "version": "1.0.3",
       "capabilities": [
         "backend",
         "api-design",
@@ -82,6 +84,7 @@
       "file": "agents/ios-developer.md",
       "description": "Native iOS development with Swift 6 and SwiftUI. Enhanced with 6-phase reasoning framework (requirements → architecture → implementation → performance → quality → App Store), constitutional AI principles for platform excellence, and comprehensive health tracking app example with SwiftUI/HealthKit (60fps, 4.9★ rating, 50K+ downloads).",
       "model": "sonnet",
+      "version": "1.0.3",
       "capabilities": [
         "ios",
         "swift",
@@ -109,6 +112,7 @@
       "file": "agents/mobile-developer.md",
       "description": "Cross-platform mobile development with React Native New Architecture and Flutter. Enhanced with 6-phase reasoning framework (requirements → platform selection → implementation → performance → quality → deployment), constitutional AI principles for offline-first reliability, and comprehensive e-commerce app example with React Native/TurboModules (<1.8s startup, 4.7★ rating, 100K+ users).",
       "model": "sonnet",
+      "version": "1.0.3",
       "capabilities": [
         "react-native",
         "mobile",
@@ -136,6 +140,7 @@
       "file": "agents/frontend-developer.md",
       "description": "Modern React 19 and Next.js 15 web development. Enhanced with 6-phase reasoning framework (requirements → architecture → implementation → performance → quality → deployment), constitutional AI principles for performance excellence, and comprehensive analytics dashboard example with Server Components/streaming (LCP 1.2s, 85KB bundle, 50K DAU).",
       "model": "sonnet",
+      "version": "1.0.3",
       "capabilities": [
         "react",
         "nextjs",
@@ -163,6 +168,7 @@
       "file": "agents/ui-ux-designer.md",
       "description": "Design systems, accessibility-first UX, and user research expert. Enhanced with 6-phase reasoning framework (research → IA → design system → visual design → validation → implementation), constitutional AI principles for accessibility-first design, and comprehensive design system example with multi-brand tokens (WCAG AAA, 92% adoption, NPS +26).",
       "model": "sonnet",
+      "version": "1.0.3",
       "capabilities": [
         "ui-ux",
         "design-systems",
@@ -189,7 +195,8 @@
     {
       "name": "multi-platform",
       "file": "commands/multi-platform.md",
-      "description": "Scaffold and manage multi-platform application projects"
+      "description": "Build and deploy features across web, mobile, and desktop platforms with API-first architecture, 3 execution modes (quick: 3-5 days, standard: 2-3 weeks, enterprise: 4-6 weeks), and multi-agent orchestration",
+      "version": "1.0.3"
     }
   ],
   "skills": [
@@ -198,28 +205,32 @@
       "file": "skills/flutter-development/SKILL.md",
       "description": "Comprehensive Flutter development patterns for production-ready mobile, web, and desktop applications. Covers state management (Riverpod, Bloc, Provider), widget composition, performance optimization, platform channels, clean architecture, testing strategies, and multi-platform deployment. Enhanced with detailed use cases and proactive skill discovery.",
       "difficulty": "intermediate",
-      "estimated_time_hours": 5
+      "estimated_time_hours": 5,
+      "version": "1.0.3"
     },
     {
       "name": "react-native-patterns",
       "file": "skills/react-native-patterns/SKILL.md",
       "description": "Modern React Native development patterns with New Architecture, TurboModules, and performance optimization. Covers component patterns, Redux Toolkit state management, React Navigation, API integration with React Query, form handling, native modules, offline-first architecture, and accessibility. Enhanced with comprehensive use cases for proactive skill triggering.",
       "difficulty": "intermediate",
-      "estimated_time_hours": 6
+      "estimated_time_hours": 6,
+      "version": "1.0.3"
     },
     {
       "name": "ios-best-practices",
       "file": "skills/ios-best-practices/SKILL.md",
       "description": "Native iOS development best practices with Swift 6, SwiftUI, and production-ready patterns. Covers MVVM architecture, Swift concurrency (async/await, actors), Core Data/SwiftData integration, NavigationStack patterns, XCTest testing, accessibility features, App Store submission, and Instruments profiling. Enhanced with detailed use cases for better skill discoverability.",
       "difficulty": "intermediate",
-      "estimated_time_hours": 5
+      "estimated_time_hours": 5,
+      "version": "1.0.3"
     },
     {
       "name": "multi-platform-architecture",
       "file": "skills/multi-platform-architecture/SKILL.md",
       "description": "Strategic patterns for building scalable multi-platform applications across mobile, web, and desktop. Covers architecture decisions (native vs hybrid vs cross-platform), clean architecture layers, code sharing strategies, BFF patterns, offline-first synchronization, real-time updates, performance optimization, team organization, and framework selection. Enhanced with comprehensive use cases and decision matrices.",
       "difficulty": "advanced",
-      "estimated_time_hours": 7
+      "estimated_time_hours": 7,
+      "version": "1.0.3"
     }
   ],
   "metadata": {

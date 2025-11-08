@@ -2,9 +2,38 @@
 
 Master Python 3.12+ with modern tools, async patterns, FastAPI/Django frameworks, performance optimization, and production-ready practices. Includes expert agents, comprehensive skills, and scaffolding commands for the 2024/2025 Python ecosystem.
 
-**Version:** 1.0.1 | **Category:** development | **License:** MIT
+**Version:** 1.0.3 | **Category:** development | **License:** MIT
 
-[Full Documentation →](https://myclaude.readthedocs.io/en/latest/plugins/python-development.html)
+[Full Documentation →](https://myclaude.readthedocs.io/en/latest/plugins/python-development.html) | [CHANGELOG](CHANGELOG.md)
+
+---
+
+## 🚀 What's New in v1.0.3
+
+### Command Optimization with Execution Modes
+
+The `/python-scaffold` command now features:
+- **3 Execution Modes** (quick/standard/enterprise) for flexible scaffolding
+- **Comprehensive External Documentation** (~2,050 lines across 5 guides)
+- **41% Command File Reduction** while preserving all content
+- **Version Consistency** across all components (1.0.3)
+
+#### `/python-scaffold` - 3 Execution Modes
+
+| Mode | Duration | Agents | Scope |
+|------|----------|--------|-------|
+| **Quick** | 1-2 hours | 1 agent | Simple script, prototype, basic CLI (~15 files) |
+| **Standard** | 3-6 hours | 2 agents | Production FastAPI/Django, library (~50 files) |
+| **Enterprise** | 1-2 days | 3 agents | Microservices, K8s, observability (~100 files) |
+
+**External Documentation** (5 files - ~2,050 lines):
+- FastAPI Structure (~470 lines) - SQLAlchemy 2.0, Pydantic V2, async patterns, testing
+- Django Structure (~410 lines) - Django 5.x, DRF, Celery, async views
+- Library Packaging (~530 lines) - Modern build backends, PyPI publishing
+- CLI Tools (~390 lines) - Typer, Rich console, subcommands, testing
+- Development Tooling (~450 lines) - Makefile, Docker, CI/CD, pre-commit hooks
+
+---
 
 ## What's New in v1.0.1
 
@@ -76,9 +105,9 @@ Master Django 5.x with async views, DRF, Celery, and scalable architecture. Incl
 
 ### `/python-scaffold`
 
-**Status:** active
+**Status:** active | **Version:** 1.0.3
 
-Scaffold production-ready Python projects with modern tooling (uv, ruff, pytest, mypy)
+Scaffold production-ready Python projects with modern tooling, 3 execution modes (quick: 1-2h, standard: 3-6h, enterprise: 1-2d), and comprehensive external documentation
 
 ## Skills (5)
 

@@ -2,7 +2,7 @@
   "name": "observability-monitoring",
   "displayName": "Observability & Monitoring",
   "description": "Observability, monitoring, logging, distributed tracing, and SLO/SLA management for production systems with Prometheus, Grafana, and modern observability platforms",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "keywords": [
     "observability",
     "monitoring",
@@ -30,28 +30,32 @@
       "file": "agents/observability-engineer.md",
       "name": "Observability Engineer",
       "description": "Expert in observability, monitoring, distributed tracing, and production system visibility",
-      "status": "active"
+      "status": "active",
+      "version": "1.0.3"
     },
     {
       "id": "performance-engineer",
       "file": "agents/performance-engineer.md",
       "name": "Performance Engineer",
       "description": "Specialist in performance monitoring, optimization, and system reliability",
-      "status": "active"
+      "status": "active",
+      "version": "1.0.3"
     },
     {
       "id": "database-optimizer",
       "file": "agents/database-optimizer.md",
       "name": "Database Optimizer",
       "description": "Expert in database performance monitoring and query optimization",
-      "status": "active"
+      "status": "active",
+      "version": "1.0.3"
     },
     {
       "id": "network-engineer",
       "file": "agents/network-engineer.md",
       "name": "Network Engineer",
       "description": "Specialist in network monitoring, latency optimization, and distributed system observability",
-      "status": "active"
+      "status": "active",
+      "version": "1.0.3"
     }
   ],
   "commands": [
@@ -59,15 +63,17 @@
       "id": "monitor-setup",
       "file": "commands/monitor-setup.md",
       "name": "/monitor-setup",
-      "description": "Set up comprehensive monitoring and observability stack with Prometheus and Grafana",
-      "status": "active"
+      "description": "Set up comprehensive monitoring and observability stack with Prometheus, Grafana, and distributed tracing, 3 execution modes (quick: 1-2 days, standard: 1 week, enterprise: 2-3 weeks), and multi-agent orchestration",
+      "status": "active",
+      "version": "1.0.3"
     },
     {
       "id": "slo-implement",
       "file": "commands/slo-implement.md",
       "name": "/slo-implement",
-      "description": "Implement SLO/SLA monitoring and alerting for production services",
-      "status": "active"
+      "description": "Implement SLO/SLA monitoring, error budgets, and burn rate alerting with comprehensive governance framework, 3 execution modes (quick: 2-3 days, standard: 1-2 weeks, enterprise: 3-4 weeks), and automated reporting",
+      "status": "active",
+      "version": "1.0.3"
     }
   ],
   "skills": [
@@ -75,31 +81,36 @@
       "id": "prometheus-configuration",
       "directory": "skills/prometheus-configuration",
       "name": "Prometheus Configuration",
-      "description": "Set up and configure Prometheus for comprehensive metric collection, storage, alerting, and monitoring with scrape configs, recording rules, and alert rules for infrastructure and applications"
+      "description": "Set up and configure Prometheus for comprehensive metric collection, storage, alerting, and monitoring with scrape configs, recording rules, and alert rules for infrastructure and applications",
+      "version": "1.0.3"
     },
     {
       "id": "grafana-dashboards",
       "directory": "skills/grafana-dashboards",
       "name": "Grafana Dashboards",
-      "description": "Create and manage production-ready Grafana dashboards with panels, variables, alerts, and templates for real-time visualization of system and application metrics"
+      "description": "Create and manage production-ready Grafana dashboards with panels, variables, alerts, and templates for real-time visualization of system and application metrics",
+      "version": "1.0.3"
     },
     {
       "id": "distributed-tracing",
       "directory": "skills/distributed-tracing",
       "name": "Distributed Tracing",
-      "description": "Implement distributed tracing with Jaeger, Tempo, and OpenTelemetry to track requests across microservices and identify performance bottlenecks"
+      "description": "Implement distributed tracing with Jaeger, Tempo, and OpenTelemetry to track requests across microservices and identify performance bottlenecks",
+      "version": "1.0.3"
     },
     {
       "id": "slo-implementation",
       "directory": "skills/slo-implementation",
       "name": "SLO Implementation",
-      "description": "Define and implement Service Level Indicators (SLIs), Service Level Objectives (SLOs), error budgets, and burn rate alerting following SRE best practices"
+      "description": "Define and implement Service Level Indicators (SLIs), Service Level Objectives (SLOs), error budgets, and burn rate alerting following SRE best practices",
+      "version": "1.0.3"
     },
     {
       "id": "airflow-scientific-workflows",
       "directory": "skills/airflow-scientific-workflows",
       "name": "Airflow Scientific Workflows",
-      "description": "Design and implement Apache Airflow DAGs for scientific data pipelines, workflow orchestration, and computational task automation"
+      "description": "Design and implement Apache Airflow DAGs for scientific data pipelines, workflow orchestration, and computational task automation",
+      "version": "1.0.3"
     }
   ]
 }

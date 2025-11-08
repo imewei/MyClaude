@@ -1,1048 +1,644 @@
-# Code Migration Assistant
+---
+version: 1.0.3
+description: Orchestrate systematic code migration between frameworks and technology stacks with test-first discipline
+argument-hint: <source-path> [--target <framework>] [--strategy <pattern>] [--mode quick|standard|deep]
+category: framework-migration
+purpose: Safe, incremental code migration with zero breaking changes and comprehensive testing
+execution_time:
+  quick: "30-60 minutes - Assessment and strategy planning only"
+  standard: "2-6 hours - Complete single component migration"
+  deep: "1-3 days - Enterprise migration with comprehensive validation"
+color: blue
+allowed-tools: Bash, Read, Write, Edit, Glob, Grep, Task, WebFetch
+external_docs:
+  - migration-patterns-library.md
+  - testing-strategies.md
+  - framework-specific-guides.md
+  - rollback-procedures.md
+agents:
+  primary:
+    - framework-migration:legacy-modernizer
+    - framework-migration:architect-review
+  conditional:
+    - agent: unit-testing:test-automator
+      trigger: pattern "test|coverage"
+    - agent: comprehensive-review:security-auditor
+      trigger: pattern "security|vulnerability"
+    - agent: full-stack-orchestration:performance-engineer
+      trigger: pattern "performance|optimization"
+  orchestrated: true
+tags: [migration, modernization, refactoring, framework-upgrade, code-transformation, zero-downtime]
+---
 
-You are a code migration expert specializing in transitioning codebases between frameworks, languages, versions, and platforms. Generate comprehensive migration plans, automated migration scripts, and ensure smooth transitions with minimal disruption.
+# Code Migration Orchestrator
 
-## Context
-The user needs to migrate code from one technology stack to another, upgrade to newer versions, or transition between platforms. Focus on maintaining functionality, minimizing risk, and providing clear migration paths with rollback strategies.
+**Systematic framework and technology stack migration with test-first discipline, backward compatibility guarantees, and zero breaking changes**
 
-## Requirements
-$ARGUMENTS
+## Execution Modes
 
-## Instructions
+Parse `$ARGUMENTS` to determine mode (default: standard):
 
-### 1. Migration Assessment
+### Quick Mode (30-60 min)
+**Scope**: Assessment and strategy planning only
+- Technology stack analysis
+- Complexity assessment
+- Migration strategy selection
+- Risk identification
+- Time/resource estimation
 
-Analyze the current codebase and migration requirements:
+**Output**: Migration plan with strategy recommendation
 
-**Migration Analyzer**
-```python
-import os
-import json
-import ast
-import re
-from pathlib import Path
-from collections import defaultdict
+**Use When**: Planning phase, seeking approval, estimating resources
 
-class MigrationAnalyzer:
-    def __init__(self, source_path, target_tech):
-        self.source_path = Path(source_path)
-        self.target_tech = target_tech
-        self.analysis = defaultdict(dict)
-    
-    def analyze_migration(self):
-        """
-        Comprehensive migration analysis
-        """
-        self.analysis['source'] = self._analyze_source()
-        self.analysis['complexity'] = self._assess_complexity()
-        self.analysis['dependencies'] = self._analyze_dependencies()
-        self.analysis['risks'] = self._identify_risks()
-        self.analysis['effort'] = self._estimate_effort()
-        self.analysis['strategy'] = self._recommend_strategy()
-        
-        return self.analysis
-    
-    def _analyze_source(self):
-        """Analyze source codebase characteristics"""
-        stats = {
-            'files': 0,
-            'lines': 0,
-            'components': 0,
-            'patterns': [],
-            'frameworks': set(),
-            'languages': defaultdict(int)
-        }
-        
-        for file_path in self.source_path.rglob('*'):
-            if file_path.is_file() and not self._is_ignored(file_path):
-                stats['files'] += 1
-                ext = file_path.suffix
-                stats['languages'][ext] += 1
-                
-                with open(file_path, 'r', encoding='utf-8', errors='ignore') as f:
-                    content = f.read()
-                    stats['lines'] += len(content.splitlines())
-                    
-                    # Detect frameworks and patterns
-                    self._detect_patterns(content, stats)
-        
-        return stats
-    
-    def _assess_complexity(self):
-        """Assess migration complexity"""
-        factors = {
-            'size': self._calculate_size_complexity(),
-            'architectural': self._calculate_architectural_complexity(),
-            'dependency': self._calculate_dependency_complexity(),
-            'business_logic': self._calculate_logic_complexity(),
-            'data': self._calculate_data_complexity()
-        }
-        
-        overall = sum(factors.values()) / len(factors)
-        
-        return {
-            'factors': factors,
-            'overall': overall,
-            'level': self._get_complexity_level(overall)
-        }
-    
-    def _identify_risks(self):
-        """Identify migration risks"""
-        risks = []
-        
-        # Check for high-risk patterns
-        risk_patterns = {
-            'global_state': {
-                'pattern': r'(global|window)\.\w+\s*=',
-                'severity': 'high',
-                'description': 'Global state management needs careful migration'
-            },
-            'direct_dom': {
-                'pattern': r'document\.(getElementById|querySelector)',
-                'severity': 'medium',
-                'description': 'Direct DOM manipulation needs framework adaptation'
-            },
-            'async_patterns': {
-                'pattern': r'(callback|setTimeout|setInterval)',
-                'severity': 'medium',
-                'description': 'Async patterns may need modernization'
-            },
-            'deprecated_apis': {
-                'pattern': r'(componentWillMount|componentWillReceiveProps)',
-                'severity': 'high',
-                'description': 'Deprecated APIs need replacement'
-            }
-        }
-        
-        for risk_name, risk_info in risk_patterns.items():
-            occurrences = self._count_pattern_occurrences(risk_info['pattern'])
-            if occurrences > 0:
-                risks.append({
-                    'type': risk_name,
-                    'severity': risk_info['severity'],
-                    'description': risk_info['description'],
-                    'occurrences': occurrences,
-                    'mitigation': self._suggest_mitigation(risk_name)
-                })
-        
-        return sorted(risks, key=lambda x: {'high': 0, 'medium': 1, 'low': 2}[x['severity']])
+### Standard Mode (2-6 hours) - RECOMMENDED
+**Scope**: Complete single component migration
+- All Quick mode deliverables
+- Test coverage establishment
+- Code transformation
+- Integration validation
+- Documentation updates
+
+**Output**: Migrated component with tests and documentation
+
+**Use When**: Migrating individual components, features, or modules
+
+### Deep Mode (1-3 days)
+**Scope**: Enterprise migration with comprehensive validation
+- All Standard mode deliverables
+- Performance benchmarking
+- Security hardening
+- Load testing
+- Migration playbook creation
+- Team training materials
+
+**Output**: Production-ready migration with comprehensive validation
+
+**Use When**: Critical systems, enterprise migrations, compliance requirements
+
+---
+
+## Configuration Options
+
+- `--target <framework>`: Target technology (e.g., `--target react`, `--target python3`, `--target angular`)
+- `--strategy <pattern>`: Migration pattern (`big-bang`, `strangler-fig`, `branch-by-abstraction`)
+- `--mode <quick|standard|deep>`: Execution depth (default: standard)
+- `--test-first`: Enforce characterization tests before any code changes
+- `--parallel-run`: Enable side-by-side validation
+- `--skip-security`: Skip security audit (not recommended for production)
+
+---
+
+## Your Task
+
+**Source**: $ARGUMENTS
+**Mode**: [Auto-detected or specified]
+
+---
+
+## Phase 1: Migration Assessment & Strategy Selection
+
+**Objective**: Analyze source/target stacks and select optimal migration approach
+
+### Step 1A: Technology Stack Analysis
+
+**Use Task tool** with `subagent_type="framework-migration:architect-review"`:
+
+```
+Analyze codebase at $ARGUMENTS for migration assessment.
+
+Identify:
+- Current framework/language versions
+- Architectural patterns in use
+- External dependencies and versions
+- Integration points and APIs
+- Custom implementations vs framework features
+- Code complexity metrics (cyclomatic complexity, duplication)
+
+Generate technology inventory with migration complexity scores (1-10).
+
+Reference: docs/framework-migration/framework-specific-guides.md
 ```
 
-### 2. Migration Planning
+**Expected Output**: Technology inventory, complexity assessment, dependency tree
 
-Create detailed migration plans:
+### Step 1B: Risk & Complexity Assessment
 
-**Migration Planner**
-```python
-class MigrationPlanner:
-    def create_migration_plan(self, analysis):
-        """
-        Create comprehensive migration plan
-        """
-        plan = {
-            'phases': self._define_phases(analysis),
-            'timeline': self._estimate_timeline(analysis),
-            'resources': self._calculate_resources(analysis),
-            'milestones': self._define_milestones(analysis),
-            'success_criteria': self._define_success_criteria()
-        }
-        
-        return self._format_plan(plan)
-    
-    def _define_phases(self, analysis):
-        """Define migration phases"""
-        complexity = analysis['complexity']['overall']
-        
-        if complexity < 3:
-            # Simple migration
-            return [
-                {
-                    'name': 'Preparation',
-                    'duration': '1 week',
-                    'tasks': [
-                        'Setup new project structure',
-                        'Install dependencies',
-                        'Configure build tools',
-                        'Setup testing framework'
-                    ]
-                },
-                {
-                    'name': 'Core Migration',
-                    'duration': '2-3 weeks',
-                    'tasks': [
-                        'Migrate utility functions',
-                        'Port components/modules',
-                        'Update data models',
-                        'Migrate business logic'
-                    ]
-                },
-                {
-                    'name': 'Testing & Refinement',
-                    'duration': '1 week',
-                    'tasks': [
-                        'Unit testing',
-                        'Integration testing',
-                        'Performance testing',
-                        'Bug fixes'
-                    ]
-                }
-            ]
-        else:
-            # Complex migration
-            return [
-                {
-                    'name': 'Phase 0: Foundation',
-                    'duration': '2 weeks',
-                    'tasks': [
-                        'Architecture design',
-                        'Proof of concept',
-                        'Tool selection',
-                        'Team training'
-                    ]
-                },
-                {
-                    'name': 'Phase 1: Infrastructure',
-                    'duration': '3 weeks',
-                    'tasks': [
-                        'Setup build pipeline',
-                        'Configure development environment',
-                        'Implement core abstractions',
-                        'Setup automated testing'
-                    ]
-                },
-                {
-                    'name': 'Phase 2: Incremental Migration',
-                    'duration': '6-8 weeks',
-                    'tasks': [
-                        'Migrate shared utilities',
-                        'Port feature modules',
-                        'Implement adapters/bridges',
-                        'Maintain dual runtime'
-                    ]
-                },
-                {
-                    'name': 'Phase 3: Cutover',
-                    'duration': '2 weeks',
-                    'tasks': [
-                        'Complete remaining migrations',
-                        'Remove legacy code',
-                        'Performance optimization',
-                        'Final testing'
-                    ]
-                }
-            ]
-    
-    def _format_plan(self, plan):
-        """Format migration plan as markdown"""
-        output = "# Migration Plan\n\n"
-        
-        # Executive Summary
-        output += "## Executive Summary\n\n"
-        output += f"- **Total Duration**: {plan['timeline']['total']}\n"
-        output += f"- **Team Size**: {plan['resources']['team_size']}\n"
-        output += f"- **Risk Level**: {plan['timeline']['risk_buffer']}\n\n"
-        
-        # Phases
-        output += "## Migration Phases\n\n"
-        for i, phase in enumerate(plan['phases']):
-            output += f"### {phase['name']}\n"
-            output += f"**Duration**: {phase['duration']}\n\n"
-            output += "**Tasks**:\n"
-            for task in phase['tasks']:
-                output += f"- {task}\n"
-            output += "\n"
-        
-        # Milestones
-        output += "## Key Milestones\n\n"
-        for milestone in plan['milestones']:
-            output += f"- **{milestone['name']}**: {milestone['criteria']}\n"
-        
-        return output
+**Use Task tool** with `subagent_type="framework-migration:legacy-modernizer"`:
+
+```
+Assess migration risks for: $ARGUMENTS
+
+Evaluate:
+- Breaking changes between versions
+- API compatibility issues
+- Performance implications
+- Security vulnerabilities in current/target versions
+- Team skill gaps
+- Test coverage gaps
+
+Generate risk matrix with mitigation strategies.
+
+Reference: docs/framework-migration/migration-patterns-library.md (breaking changes catalog)
 ```
 
-### 3. Framework Migrations
+**Expected Output**: Risk matrix (High/Medium/Low), mitigation strategies
 
-Handle specific framework migrations:
+### Step 1C: Strategy Selection
 
-**React to Vue Migration**
+**Decision Tree** - Select based on assessment:
+
+```
+Migration Complexity > 7/10?
+├─ Yes → Strangler Fig Pattern (incremental, parallel systems)
+└─ No → Migration Timeline < 2 weeks?
+    ├─ Yes → Big Bang (full cutover)
+    └─ No → Branch by Abstraction (feature-by-feature)
+```
+
+**Migration Patterns**:
+
+**1. Big Bang** (Low complexity, < 2 weeks):
+- ✅ Fast completion
+- ✅ No dual system maintenance
+- ❌ High deployment risk
+- ❌ Difficult rollback
+
+**2. Strangler Fig** (High complexity, > 1 month):
+- ✅ Zero downtime
+- ✅ Instant rollback
+- ✅ Incremental risk
+- ❌ Dual system complexity
+
+**3. Branch by Abstraction** (Medium complexity, 2-8 weeks):
+- ✅ Feature-by-feature migration
+- ✅ Continuous deployment
+- ❌ Abstraction layer overhead
+
+**📚 See**: [Strangler Fig Playbook](../docs/framework-migration/strangler-fig-playbook.md) for detailed implementation
+
+**Success Criteria for Phase 1**:
+- ✅ Technology stack fully documented
+- ✅ Risk assessment complete with mitigation plans
+- ✅ Migration strategy selected and justified
+- ✅ Timeline and resource estimate provided
+
+**🚨 Quick Mode Exits Here** - Deliver assessment and strategy recommendation
+
+---
+
+## Phase 2: Test Coverage Establishment
+
+**Objective**: Create safety net before any code changes
+
+### Step 2A: Characterization Tests
+
+**Use Task tool** with `subagent_type="unit-testing:test-automator"`:
+
+```
+Create characterization tests for: $ARGUMENTS
+
+Generate:
+- Golden master tests for complex workflows
+- Snapshot tests for UI components
+- Contract tests for API integrations
+- Behavior tests for business logic
+
+Capture current behavior (even if buggy) to detect any changes.
+
+Reference: docs/framework-migration/testing-strategies.md (characterization tests)
+```
+
+**Characterization Test Pattern**:
 ```javascript
-class ReactToVueMigrator {
-    migrateComponent(reactComponent) {
-        // Parse React component
-        const ast = parseReactComponent(reactComponent);
-        
-        // Extract component structure
-        const componentInfo = {
-            name: this.extractComponentName(ast),
-            props: this.extractProps(ast),
-            state: this.extractState(ast),
-            methods: this.extractMethods(ast),
-            lifecycle: this.extractLifecycle(ast),
-            render: this.extractRender(ast)
-        };
-        
-        // Generate Vue component
-        return this.generateVueComponent(componentInfo);
-    }
-    
-    generateVueComponent(info) {
-        return `
-<template>
-${this.convertJSXToTemplate(info.render)}
-</template>
-
-<script>
-export default {
-    name: '${info.name}',
-    props: ${this.convertProps(info.props)},
-    data() {
-        return ${this.convertState(info.state)}
-    },
-    methods: ${this.convertMethods(info.methods)},
-    ${this.convertLifecycle(info.lifecycle)}
-}
-</script>
-
-<style scoped>
-/* Component styles */
-</style>
-`;
-    }
-    
-    convertJSXToTemplate(jsx) {
-        // Convert JSX to Vue template syntax
-        let template = jsx;
-        
-        // Convert className to class
-        template = template.replace(/className=/g, 'class=');
-        
-        // Convert onClick to @click
-        template = template.replace(/onClick={/g, '@click="');
-        template = template.replace(/on(\w+)={this\.(\w+)}/g, '@$1="$2"');
-        
-        // Convert conditional rendering
-        template = template.replace(/{(\w+) && (.+?)}/g, '<template v-if="$1">$2</template>');
-        template = template.replace(/{(\w+) \? (.+?) : (.+?)}/g, 
-            '<template v-if="$1">$2</template><template v-else>$3</template>');
-        
-        // Convert map iterations
-        template = template.replace(
-            /{(\w+)\.map\(\((\w+), (\w+)\) => (.+?)\)}/g,
-            '<template v-for="($2, $3) in $1" :key="$3">$4</template>'
-        );
-        
-        return template;
-    }
-    
-    convertLifecycle(lifecycle) {
-        const vueLifecycle = {
-            'componentDidMount': 'mounted',
-            'componentDidUpdate': 'updated',
-            'componentWillUnmount': 'beforeDestroy',
-            'getDerivedStateFromProps': 'computed'
-        };
-        
-        let result = '';
-        for (const [reactHook, vueHook] of Object.entries(vueLifecycle)) {
-            if (lifecycle[reactHook]) {
-                result += `${vueHook}() ${lifecycle[reactHook].body},\n`;
-            }
-        }
-        
-        return result;
-    }
-}
+// Captures current behavior before migration
+describe('Legacy Payment Processor', () => {
+  it('should match current behavior', () => {
+    const result = legacyProcessor.process(testOrder);
+    expect(result).toMatchSnapshot();  // Captures exact current output
+  });
+});
 ```
 
-### 4. Language Migrations
+**📚 See**: [Testing Strategies - Characterization Tests](../docs/framework-migration/testing-strategies.md#characterization-tests)
 
-Handle language version upgrades:
+### Step 2B: Integration Contract Tests
 
-**Python 2 to 3 Migration**
-```python
-class Python2to3Migrator:
-    def __init__(self):
-        self.transformations = {
-            'print_statement': self.transform_print,
-            'unicode_literals': self.transform_unicode,
-            'division': self.transform_division,
-            'imports': self.transform_imports,
-            'iterators': self.transform_iterators,
-            'exceptions': self.transform_exceptions
-        }
-    
-    def migrate_file(self, file_path):
-        """Migrate single Python file from 2 to 3"""
-        with open(file_path, 'r') as f:
-            content = f.read()
-        
-        # Parse AST
-        try:
-            tree = ast.parse(content)
-        except SyntaxError:
-            # Try with 2to3 lib for syntax conversion first
-            content = self._basic_syntax_conversion(content)
-            tree = ast.parse(content)
-        
-        # Apply transformations
-        transformer = Python3Transformer()
-        new_tree = transformer.visit(tree)
-        
-        # Generate new code
-        return astor.to_source(new_tree)
-    
-    def transform_print(self, content):
-        """Transform print statements to functions"""
-        # Simple regex for basic cases
-        content = re.sub(
-            r'print\s+([^(].*?)$',
-            r'print(\1)',
-            content,
-            flags=re.MULTILINE
-        )
-        
-        # Handle print with >>
-        content = re.sub(
-            r'print\s*>>\s*(\w+),\s*(.+?)$',
-            r'print(\2, file=\1)',
-            content,
-            flags=re.MULTILINE
-        )
-        
-        return content
-    
-    def transform_unicode(self, content):
-        """Handle unicode literals"""
-        # Remove u prefix from strings
-        content = re.sub(r'u"([^"]*)"', r'"\1"', content)
-        content = re.sub(r"u'([^']*)'", r"'\1'", content)
-        
-        # Convert unicode() to str()
-        content = re.sub(r'\bunicode\(', 'str(', content)
-        
-        return content
-    
-    def transform_iterators(self, content):
-        """Transform iterator methods"""
-        replacements = {
-            '.iteritems()': '.items()',
-            '.iterkeys()': '.keys()',
-            '.itervalues()': '.values()',
-            'xrange': 'range',
-            '.has_key(': ' in '
-        }
-        
-        for old, new in replacements.items():
-            content = content.replace(old, new)
-        
-        return content
+**Create tests for integration boundaries**:
+- API contracts (request/response schemas)
+- Database contracts (query interfaces)
+- External service contracts (third-party APIs)
+- Event contracts (message formats)
 
-class Python3Transformer(ast.NodeTransformer):
-    """AST transformer for Python 3 migration"""
-    
-    def visit_Raise(self, node):
-        """Transform raise statements"""
-        if node.exc and node.cause:
-            # raise Exception, args -> raise Exception(args)
-            if isinstance(node.cause, ast.Str):
-                node.exc = ast.Call(
-                    func=node.exc,
-                    args=[node.cause],
-                    keywords=[]
-                )
-                node.cause = None
-        
-        return node
-    
-    def visit_ExceptHandler(self, node):
-        """Transform except clauses"""
-        if node.type and node.name:
-            # except Exception, e -> except Exception as e
-            if isinstance(node.name, ast.Name):
-                node.name = node.name.id
-        
-        return node
-```
-
-### 5. API Migration
-
-Migrate between API paradigms:
-
-**REST to GraphQL Migration**
+**Contract Test Example**:
 ```javascript
-class RESTToGraphQLMigrator {
-    constructor(restEndpoints) {
-        this.endpoints = restEndpoints;
-        this.schema = {
-            types: {},
-            queries: {},
-            mutations: {}
-        };
-    }
-    
-    generateGraphQLSchema() {
-        // Analyze REST endpoints
-        this.analyzeEndpoints();
-        
-        // Generate type definitions
-        const typeDefs = this.generateTypeDefs();
-        
-        // Generate resolvers
-        const resolvers = this.generateResolvers();
-        
-        return { typeDefs, resolvers };
-    }
-    
-    analyzeEndpoints() {
-        for (const endpoint of this.endpoints) {
-            const { method, path, response, params } = endpoint;
-            
-            // Extract resource type
-            const resourceType = this.extractResourceType(path);
-            
-            // Build GraphQL type
-            if (!this.schema.types[resourceType]) {
-                this.schema.types[resourceType] = this.buildType(response);
-            }
-            
-            // Map to GraphQL operations
-            if (method === 'GET') {
-                this.addQuery(resourceType, path, params);
-            } else if (['POST', 'PUT', 'PATCH'].includes(method)) {
-                this.addMutation(resourceType, path, params, method);
-            }
-        }
-    }
-    
-    generateTypeDefs() {
-        let schema = 'type Query {\n';
-        
-        // Add queries
-        for (const [name, query] of Object.entries(this.schema.queries)) {
-            schema += `  ${name}${this.generateArgs(query.args)}: ${query.returnType}\n`;
-        }
-        
-        schema += '}\n\ntype Mutation {\n';
-        
-        // Add mutations
-        for (const [name, mutation] of Object.entries(this.schema.mutations)) {
-            schema += `  ${name}${this.generateArgs(mutation.args)}: ${mutation.returnType}\n`;
-        }
-        
-        schema += '}\n\n';
-        
-        // Add types
-        for (const [typeName, fields] of Object.entries(this.schema.types)) {
-            schema += `type ${typeName} {\n`;
-            for (const [fieldName, fieldType] of Object.entries(fields)) {
-                schema += `  ${fieldName}: ${fieldType}\n`;
-            }
-            schema += '}\n\n';
-        }
-        
-        return schema;
-    }
-    
-    generateResolvers() {
-        const resolvers = {
-            Query: {},
-            Mutation: {}
-        };
-        
-        // Generate query resolvers
-        for (const [name, query] of Object.entries(this.schema.queries)) {
-            resolvers.Query[name] = async (parent, args, context) => {
-                // Transform GraphQL args to REST params
-                const restParams = this.transformArgs(args, query.paramMapping);
-                
-                // Call REST endpoint
-                const response = await fetch(
-                    this.buildUrl(query.endpoint, restParams),
-                    { method: 'GET' }
-                );
-                
-                return response.json();
-            };
-        }
-        
-        // Generate mutation resolvers
-        for (const [name, mutation] of Object.entries(this.schema.mutations)) {
-            resolvers.Mutation[name] = async (parent, args, context) => {
-                const { input } = args;
-                
-                const response = await fetch(
-                    mutation.endpoint,
-                    {
-                        method: mutation.method,
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify(input)
-                    }
-                );
-                
-                return response.json();
-            };
-        }
-        
-        return resolvers;
-    }
+// Ensures API contract remains stable
+describe('Payment API Contract', () => {
+  it('should maintain response schema', async () => {
+    const response = await paymentAPI.process(validRequest);
+    expect(response).toMatchSchema({
+      status: expect.stringMatching(/^(success|pending|failed)$/),
+      transactionId: expect.any(String),
+      amount: expect.any(Number)
+    });
+  });
+});
+```
+
+### Step 2C: Performance Baseline Capture
+
+**Establish performance benchmarks**:
+```bash
+# Capture baseline metrics
+npm run benchmark > baseline-performance.json
+
+# Key metrics:
+# - Response time (p50, p95, p99)
+# - Throughput (requests/second)
+# - Memory usage
+# - CPU utilization
+```
+
+**Success Criteria for Phase 2**:
+- ✅ Test coverage > 80% for migration scope
+- ✅ All integration points have contract tests
+- ✅ Performance baseline documented
+- ✅ All tests passing on current implementation
+
+---
+
+## Phase 3: Incremental Migration Implementation
+
+**Objective**: Transform code using selected migration strategy
+
+### Step 3A: Setup Migration Infrastructure
+
+**For Strangler Fig**:
+```
+Use Task tool with subagent_type="cicd-automation:deployment-engineer"
+
+Setup routing layer and feature flags for: $ARGUMENTS
+
+Implement:
+- API gateway or load balancer routing
+- Feature flag system for gradual rollout
+- Monitoring and metrics collection
+- Rollback procedures
+
+Reference: docs/framework-migration/strangler-fig-playbook.md
+```
+
+**For Big Bang / Branch by Abstraction**:
+- Create migration branch
+- Setup parallel build pipeline
+- Configure dual testing (legacy + migrated)
+
+### Step 3B: Automated Code Transformation
+
+**Use codemods when available**:
+
+**React Class → Hooks**:
+```bash
+npx react-codemod class-to-hooks src/components/
+```
+
+**Python 2 → 3**:
+```bash
+2to3 -w src/
+```
+
+**Custom Transformations**:
+```
+Use Task tool with subagent_type="framework-migration:legacy-modernizer"
+
+Apply code transformations for: $ARGUMENTS
+
+Transform:
+- API calls to new framework syntax
+- State management patterns
+- Lifecycle methods to hooks/alternatives
+- Import statements and module structure
+
+Preserve:
+- Business logic (no functional changes)
+- Error handling patterns
+- Existing tests (migrate separately)
+
+Reference: docs/framework-migration/migration-patterns-library.md (transformation patterns)
+```
+
+**📚 See**: [Migration Patterns Library](../docs/framework-migration/migration-patterns-library.md) for transformation examples
+
+### Step 3C: Manual Migration (Complex Cases)
+
+**For components requiring manual rewrite**:
+
+1. **Read original implementation** (understand business logic)
+2. **Extract business rules** (separate from framework code)
+3. **Implement in target framework** (following new patterns)
+4. **Preserve identical behavior** (no functional changes)
+5. **Update tests** (if syntax changes needed)
+
+**Example - React Class to Functional**:
+```javascript
+// Before (Class Component)
+class UserProfile extends React.Component {
+  state = { loading: true, user: null };
+
+  componentDidMount() {
+    fetchUser(this.props.userId)
+      .then(user => this.setState({ user, loading: false }));
+  }
+
+  render() {
+    const { loading, user } = this.state;
+    if (loading) return <Spinner />;
+    return <div>{user.name}</div>;
+  }
+}
+
+// After (Functional + Hooks)
+function UserProfile({ userId }) {
+  const [loading, setLoading] = useState(true);
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    fetchUser(userId)
+      .then(user => {
+        setUser(user);
+        setLoading(false);
+      });
+  }, [userId]);
+
+  if (loading) return <Spinner />;
+  return <div>{user.name}</div>;
 }
 ```
 
-### 6. Database Migration
+**Success Criteria for Phase 3**:
+- ✅ All target code compiles/builds successfully
+- ✅ Characterization tests still pass (behavior unchanged)
+- ✅ No console errors or warnings
+- ✅ Code follows target framework best practices
 
-Migrate between database systems:
+---
 
-**SQL to NoSQL Migration**
-```python
-class SQLToNoSQLMigrator:
-    def __init__(self, source_db, target_db):
-        self.source = source_db
-        self.target = target_db
-        self.schema_mapping = {}
-    
-    def analyze_schema(self):
-        """Analyze SQL schema for NoSQL conversion"""
-        tables = self.get_sql_tables()
-        
-        for table in tables:
-            # Get table structure
-            columns = self.get_table_columns(table)
-            relationships = self.get_table_relationships(table)
-            
-            # Design document structure
-            doc_structure = self.design_document_structure(
-                table, columns, relationships
-            )
-            
-            self.schema_mapping[table] = doc_structure
-        
-        return self.schema_mapping
-    
-    def design_document_structure(self, table, columns, relationships):
-        """Design NoSQL document structure from SQL table"""
-        structure = {
-            'collection': self.to_collection_name(table),
-            'fields': {},
-            'embedded': [],
-            'references': []
-        }
-        
-        # Map columns to fields
-        for col in columns:
-            structure['fields'][col['name']] = {
-                'type': self.map_sql_type_to_nosql(col['type']),
-                'required': not col['nullable'],
-                'indexed': col.get('is_indexed', False)
-            }
-        
-        # Handle relationships
-        for rel in relationships:
-            if rel['type'] == 'one-to-one' or self.should_embed(rel):
-                structure['embedded'].append({
-                    'field': rel['field'],
-                    'collection': rel['related_table']
-                })
-            else:
-                structure['references'].append({
-                    'field': rel['field'],
-                    'collection': rel['related_table'],
-                    'type': rel['type']
-                })
-        
-        return structure
-    
-    def generate_migration_script(self):
-        """Generate migration script"""
-        script = """
-import asyncio
-from datetime import datetime
+## Phase 4: Integration & Validation
 
-class DatabaseMigrator:
-    def __init__(self, sql_conn, nosql_conn):
-        self.sql = sql_conn
-        self.nosql = nosql_conn
-        self.batch_size = 1000
-        
-    async def migrate(self):
-        start_time = datetime.now()
-        
-        # Create indexes
-        await self.create_indexes()
-        
-        # Migrate data
-        for table, mapping in schema_mapping.items():
-            await self.migrate_table(table, mapping)
-        
-        # Verify migration
-        await self.verify_migration()
-        
-        elapsed = datetime.now() - start_time
-        print(f"Migration completed in {elapsed}")
-    
-    async def migrate_table(self, table, mapping):
-        print(f"Migrating {table}...")
-        
-        total_rows = await self.get_row_count(table)
-        migrated = 0
-        
-        async for batch in self.read_in_batches(table):
-            documents = []
-            
-            for row in batch:
-                doc = self.transform_row_to_document(row, mapping)
-                
-                # Handle embedded documents
-                for embed in mapping['embedded']:
-                    related_data = await self.fetch_related(
-                        row, embed['field'], embed['collection']
-                    )
-                    doc[embed['field']] = related_data
-                
-                documents.append(doc)
-            
-            # Bulk insert
-            await self.nosql[mapping['collection']].insert_many(documents)
-            
-            migrated += len(batch)
-            progress = (migrated / total_rows) * 100
-            print(f"  Progress: {progress:.1f}% ({migrated}/{total_rows})")
-    
-    def transform_row_to_document(self, row, mapping):
-        doc = {}
-        
-        for field, config in mapping['fields'].items():
-            value = row.get(field)
-            
-            # Type conversion
-            if value is not None:
-                doc[field] = self.convert_value(value, config['type'])
-            elif config['required']:
-                doc[field] = self.get_default_value(config['type'])
-        
-        # Add metadata
-        doc['_migrated_at'] = datetime.now()
-        doc['_source_table'] = mapping['collection']
-        
-        return doc
-"""
-        return script
+**Objective**: Ensure migrated code integrates correctly and performs well
+
+### Step 4A: Integration Testing
+
+**Run full test suite**:
+```bash
+# Run all tests
+npm test
+
+# Run integration tests
+npm run test:integration
+
+# Run E2E tests
+npm run test:e2e
 ```
 
-### 7. Testing Strategy
+**Validate**:
+- All unit tests pass
+- Integration tests pass
+- E2E workflows complete successfully
+- No new test failures introduced
 
-Ensure migration correctness:
+### Step 4B: Performance Comparison
 
-**Migration Testing Framework**
-```python
-class MigrationTester:
-    def __init__(self, original_app, migrated_app):
-        self.original = original_app
-        self.migrated = migrated_app
-        self.test_results = []
-    
-    def run_comparison_tests(self):
-        """Run side-by-side comparison tests"""
-        test_suites = [
-            self.test_functionality,
-            self.test_performance,
-            self.test_data_integrity,
-            self.test_api_compatibility,
-            self.test_user_flows
-        ]
-        
-        for suite in test_suites:
-            results = suite()
-            self.test_results.extend(results)
-        
-        return self.generate_report()
-    
-    def test_functionality(self):
-        """Test functional equivalence"""
-        results = []
-        
-        test_cases = self.generate_test_cases()
-        
-        for test in test_cases:
-            original_result = self.execute_on_original(test)
-            migrated_result = self.execute_on_migrated(test)
-            
-            comparison = self.compare_results(
-                original_result, 
-                migrated_result
-            )
-            
-            results.append({
-                'test': test['name'],
-                'status': 'PASS' if comparison['equivalent'] else 'FAIL',
-                'details': comparison['details']
-            })
-        
-        return results
-    
-    def test_performance(self):
-        """Compare performance metrics"""
-        metrics = ['response_time', 'throughput', 'cpu_usage', 'memory_usage']
-        results = []
-        
-        for metric in metrics:
-            original_perf = self.measure_performance(self.original, metric)
-            migrated_perf = self.measure_performance(self.migrated, metric)
-            
-            regression = ((migrated_perf - original_perf) / original_perf) * 100
-            
-            results.append({
-                'metric': metric,
-                'original': original_perf,
-                'migrated': migrated_perf,
-                'regression': regression,
-                'acceptable': abs(regression) <= 10  # 10% threshold
-            })
-        
-        return results
+**Compare against baseline**:
+```bash
+# Run benchmarks on migrated code
+npm run benchmark > migrated-performance.json
+
+# Compare
+diff baseline-performance.json migrated-performance.json
 ```
 
-### 8. Rollback Planning
+**Acceptable Performance**:
+- Response time within 110% of baseline
+- Memory usage within 120% of baseline
+- No critical performance regressions
 
-Implement safe rollback strategies:
+**If performance regressed**:
+```
+Use Task tool with subagent_type="full-stack-orchestration:performance-engineer"
 
-```python
-class RollbackManager:
-    def create_rollback_plan(self, migration_type):
-        """Create comprehensive rollback plan"""
-        plan = {
-            'triggers': self.define_rollback_triggers(),
-            'procedures': self.define_rollback_procedures(migration_type),
-            'verification': self.define_verification_steps(),
-            'communication': self.define_communication_plan()
-        }
-        
-        return self.format_rollback_plan(plan)
-    
-    def define_rollback_triggers(self):
-        """Define conditions that trigger rollback"""
-        return [
-            {
-                'condition': 'Critical functionality broken',
-                'threshold': 'Any P0 feature non-functional',
-                'detection': 'Automated monitoring + user reports'
-            },
-            {
-                'condition': 'Performance degradation',
-                'threshold': '>50% increase in response time',
-                'detection': 'APM metrics'
-            },
-            {
-                'condition': 'Data corruption',
-                'threshold': 'Any data integrity issues',
-                'detection': 'Data validation checks'
-            },
-            {
-                'condition': 'High error rate',
-                'threshold': '>5% error rate increase',
-                'detection': 'Error tracking system'
-            }
-        ]
-    
-    def define_rollback_procedures(self, migration_type):
-        """Define step-by-step rollback procedures"""
-        if migration_type == 'blue_green':
-            return self._blue_green_rollback()
-        elif migration_type == 'canary':
-            return self._canary_rollback()
-        elif migration_type == 'feature_flag':
-            return self._feature_flag_rollback()
-        else:
-            return self._standard_rollback()
-    
-    def _blue_green_rollback(self):
-        return [
-            "1. Verify green environment is problematic",
-            "2. Update load balancer to route 100% to blue",
-            "3. Monitor blue environment stability",
-            "4. Notify stakeholders of rollback",
-            "5. Begin root cause analysis",
-            "6. Keep green environment for debugging"
-        ]
+Analyze performance regression in: $ARGUMENTS
+
+Profile and optimize:
+- Identify bottlenecks
+- Database query optimization
+- Caching opportunities
+- Bundle size optimization
 ```
 
-### 9. Migration Automation
+### Step 4C: Security Audit
 
-Create automated migration tools:
+**Use Task tool** with `subagent_type="comprehensive-review:security-auditor"`:
 
-```python
-def create_migration_cli():
-    """Generate CLI tool for migration"""
-    return '''
-#!/usr/bin/env python3
-import click
-import json
-from pathlib import Path
+```
+Security audit migrated code at: $ARGUMENTS
 
-@click.group()
-def cli():
-    """Code Migration Tool"""
-    pass
+Review:
+- Input validation and sanitization
+- Authentication/authorization patterns
+- Dependency vulnerabilities
+- OWASP Top 10 compliance
+- Security headers and CORS
 
-@cli.command()
-@click.option('--source', required=True, help='Source directory')
-@click.option('--target', required=True, help='Target technology')
-@click.option('--output', default='migration-plan.json', help='Output file')
-def analyze(source, target, output):
-    """Analyze codebase for migration"""
-    analyzer = MigrationAnalyzer(source, target)
-    analysis = analyzer.analyze_migration()
-    
-    with open(output, 'w') as f:
-        json.dump(analysis, f, indent=2)
-    
-    click.echo(f"Analysis complete. Results saved to {output}")
-
-@cli.command()
-@click.option('--plan', required=True, help='Migration plan file')
-@click.option('--phase', help='Specific phase to execute')
-@click.option('--dry-run', is_flag=True, help='Simulate migration')
-def migrate(plan, phase, dry_run):
-    """Execute migration based on plan"""
-    with open(plan) as f:
-        migration_plan = json.load(f)
-    
-    migrator = CodeMigrator(migration_plan)
-    
-    if dry_run:
-        click.echo("Running migration in dry-run mode...")
-        results = migrator.dry_run(phase)
-    else:
-        click.echo("Executing migration...")
-        results = migrator.execute(phase)
-    
-    # Display results
-    for result in results:
-        status = "✓" if result['success'] else "✗"
-        click.echo(f"{status} {result['task']}: {result['message']}")
-
-@cli.command()
-@click.option('--original', required=True, help='Original codebase')
-@click.option('--migrated', required=True, help='Migrated codebase')
-def test(original, migrated):
-    """Test migration results"""
-    tester = MigrationTester(original, migrated)
-    results = tester.run_comparison_tests()
-    
-    # Display test results
-    passed = sum(1 for r in results if r['status'] == 'PASS')
-    total = len(results)
-    
-    click.echo(f"\\nTest Results: {passed}/{total} passed")
-    
-    for result in results:
-        if result['status'] == 'FAIL':
-            click.echo(f"\\n❌ {result['test']}")
-            click.echo(f"   {result['details']}")
-
-if __name__ == '__main__':
-    cli()
-'''
+Flag any security regressions or new vulnerabilities.
 ```
 
-### 10. Progress Monitoring
+**Success Criteria for Phase 4**:
+- ✅ All tests passing (100% pass rate)
+- ✅ Performance within acceptable range (<110% baseline)
+- ✅ No security vulnerabilities introduced
+- ✅ Integration points validated
 
-Track migration progress:
+---
 
-```python
-class MigrationMonitor:
-    def __init__(self, migration_id):
-        self.migration_id = migration_id
-        self.metrics = defaultdict(list)
-        self.checkpoints = []
-    
-    def create_dashboard(self):
-        """Create migration monitoring dashboard"""
-        return f"""
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Migration Dashboard - {self.migration_id}</title>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <style>
-        .metric-card {{
-            background: #f5f5f5;
-            padding: 20px;
-            margin: 10px;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }}
-        .progress-bar {{
-            width: 100%;
-            height: 30px;
-            background: #e0e0e0;
-            border-radius: 15px;
-            overflow: hidden;
-        }}
-        .progress-fill {{
-            height: 100%;
-            background: #4CAF50;
-            transition: width 0.5s;
-        }}
-    </style>
-</head>
-<body>
-    <h1>Migration Progress Dashboard</h1>
-    
-    <div class="metric-card">
-        <h2>Overall Progress</h2>
-        <div class="progress-bar">
-            <div class="progress-fill" style="width: {self.calculate_progress()}%"></div>
-        </div>
-        <p>{self.calculate_progress()}% Complete</p>
-    </div>
-    
-    <div class="metric-card">
-        <h2>Phase Status</h2>
-        <canvas id="phaseChart"></canvas>
-    </div>
-    
-    <div class="metric-card">
-        <h2>Migration Metrics</h2>
-        <canvas id="metricsChart"></canvas>
-    </div>
-    
-    <div class="metric-card">
-        <h2>Recent Activities</h2>
-        <ul id="activities">
-            {self.format_recent_activities()}
-        </ul>
-    </div>
-    
-    <script>
-        // Update dashboard every 30 seconds
-        setInterval(() => location.reload(), 30000);
-        
-        // Phase chart
-        new Chart(document.getElementById('phaseChart'), {{
-            type: 'doughnut',
-            data: {self.get_phase_chart_data()}
-        }});
-        
-        // Metrics chart
-        new Chart(document.getElementById('metricsChart'), {{
-            type: 'line',
-            data: {self.get_metrics_chart_data()}
-        }});
-    </script>
-</body>
-</html>
-"""
+## Phase 5: Deployment & Monitoring
+
+**Objective**: Deploy migrated code safely with monitoring and rollback capability
+
+### Step 5A: Progressive Rollout Strategy
+
+**For Strangler Fig**:
+1. Route 5% traffic to migrated implementation
+2. Monitor error rates, latency, business metrics
+3. If stable for 24 hours, increase to 25%
+4. Continue: 25% → 50% → 75% → 100%
+
+**For Big Bang**:
+1. Deploy to staging environment
+2. Run smoke tests
+3. If passing, deploy to production
+4. Monitor closely for first 2 hours
+
+**Rollback Triggers** (immediate rollback if):
+- Error rate > 5% (vs baseline < 1%)
+- p95 latency > 2x baseline
+- Any data corruption
+- Critical functionality broken
+
+**📚 See**: [Rollback Procedures](../docs/framework-migration/rollback-procedures.md)
+
+### Step 5B: Monitoring Dashboard
+
+**Key metrics to monitor**:
+- Error rate (overall and by endpoint)
+- Response time (p50, p95, p99)
+- Throughput (requests/sec)
+- Resource utilization (CPU, memory)
+- Business metrics (conversion rate, revenue)
+
+**Alert thresholds**:
+- Error rate > 1%: Warning
+- Error rate > 5%: Critical (rollback)
+- p95 latency > 2x: Warning
+- p95 latency > 3x: Critical (rollback)
+
+### Step 5C: Documentation Updates
+
+**Update**:
+- README with new technology stack
+- Architecture documentation
+- API documentation (if endpoints changed)
+- Deployment procedures
+- Runbooks for new technology
+
+**Success Criteria for Phase 5**:
+- ✅ Deployed to production successfully
+- ✅ Monitoring shows stable metrics
+- ✅ No incidents or rollbacks needed
+- ✅ Documentation updated
+
+**🚨 Standard Mode Complete** - Migration deployed and validated
+
+---
+
+## Phase 6: Post-Migration Optimization (Deep Mode Only)
+
+**Objective**: Optimize migrated code and create playbook for future migrations
+
+### Step 6A: Performance Optimization
+
+**Beyond functional equivalence**:
+- Leverage target framework optimizations
+- Implement caching strategies
+- Bundle size optimization
+- Code splitting
+
+**Use Task tool** with `subagent_type="full-stack-orchestration:performance-engineer"`:
+
+```
+Optimize migrated code at: $ARGUMENTS
+
+Apply target framework best practices:
+- React: useMemo, useCallback, code splitting
+- Vue: Computed properties, watchers, async components
+- Python: List comprehensions, generators, async/await
+- Node.js: Worker threads, streams, clustering
+
+Target: 20-30% performance improvement over baseline.
 ```
 
-## Output Format
+### Step 6B: Migration Playbook Creation
 
-1. **Migration Analysis**: Comprehensive analysis of source codebase
-2. **Risk Assessment**: Identified risks with mitigation strategies
-3. **Migration Plan**: Phased approach with timeline and milestones
-4. **Code Examples**: Automated migration scripts and transformations
-5. **Testing Strategy**: Comparison tests and validation approach
-6. **Rollback Plan**: Detailed procedures for safe rollback
-7. **Progress Tracking**: Real-time migration monitoring
-8. **Documentation**: Migration guide and runbooks
+**Document for future migrations**:
+```markdown
+# [Component Name] Migration Playbook
 
-Focus on minimizing disruption, maintaining functionality, and providing clear paths for successful code migration with comprehensive testing and rollback strategies.
+## Overview
+- Source: [Technology/Version]
+- Target: [Technology/Version]
+- Duration: [Actual time taken]
+- Complexity: [Actual vs estimated]
+
+## Lessons Learned
+1. [What worked well]
+2. [What was challenging]
+3. [Unexpected issues]
+
+## Reusable Patterns
+- [Pattern 1 with code example]
+- [Pattern 2 with code example]
+
+## Gotchas to Avoid
+1. [Pitfall 1]
+2. [Pitfall 2]
+
+## Time Estimation Formula
+[Refined estimate based on actual data]
+```
+
+### Step 6C: Team Training
+
+**Knowledge transfer**:
+- Conduct workshop on migrated technology
+- Pair programming sessions
+- Code review guidelines for new framework
+- Best practices documentation
+
+**Success Criteria for Phase 6**:
+- ✅ Performance optimized (20-30% improvement)
+- ✅ Migration playbook documented
+- ✅ Team trained on new technology
+- ✅ Ready for future migrations
+
+**🎯 Deep Mode Complete** - Enterprise migration with comprehensive optimization
+
+---
+
+## Safety Guarantees
+
+**This command will**:
+- ✅ Create characterization tests before any changes
+- ✅ Maintain backward compatibility at integration points
+- ✅ Provide instant rollback capability
+- ✅ Validate performance against baseline
+- ✅ Run security audit on migrated code
+- ✅ Generate comprehensive documentation
+
+**This command will NEVER**:
+- ❌ Modify code without test coverage
+- ❌ Deploy without rollback plan
+- ❌ Introduce breaking changes to APIs
+- ❌ Skip security validation
+- ❌ Delete code without backup
+- ❌ Ignore performance regressions
+
+---
+
+## Usage Examples
+
+### Basic Framework Migration
+```bash
+# Migrate React component to hooks
+/code-migrate src/components/Dashboard.jsx --target react-hooks
+
+# Migrate Python 2 to Python 3
+/code-migrate src/legacy/ --target python3
+
+# Migrate Angular 12 to 15
+/code-migrate src/app --target angular15
+```
+
+### With Strategy Selection
+```bash
+# Use Strangler Fig for large migration
+/code-migrate src/ --target react18 --strategy strangler-fig
+
+# Quick assessment only
+/code-migrate src/ --target vue3 --mode quick
+
+# Full enterprise migration
+/code-migrate src/ --target nextjs --mode deep --test-first
+```
+
+---
+
+**Execute systematic code migration with test-first discipline, performance validation, and zero breaking changes**

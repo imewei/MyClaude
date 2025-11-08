@@ -1,8 +1,31 @@
 ---
-description: Comprehensively validate Claude Code plugin syntax, structure, and cross-references
+version: 1.0.3
+command: /lint-plugins
+description: Comprehensively validate Claude Code plugin syntax, structure, and cross-references across 3 execution modes
 argument-hint: [--fix] [--plugin=name] [--report] [--analyze-deps]
-allowed-tools: Read, Write, Bash, Glob, Grep, TodoWrite, Skill
+execution_modes:
+  quick:
+    duration: "30 seconds"
+    description: "Fast syntax validation for single plugin"
+    agents: ["code-reviewer"]
+    scope: "Basic syntax checks (colon format, namespaces)"
+    checks: "Syntax validation only"
+  standard:
+    duration: "1-2 minutes"
+    description: "Full validation for all plugins"
+    agents: ["code-reviewer", "comprehensive-review:architect-review"]
+    scope: "All syntax + file existence + plugin.json validation"
+    checks: "All validation rules"
+  enterprise:
+    duration: "3-5 minutes"
+    description: "Deep analysis with dependency graph and architecture review"
+    agents: ["code-reviewer", "comprehensive-review:architect-review", "debugging-toolkit:dx-optimizer"]
+    scope: "Full validation + cross-plugin deps + circular detection + unused agents"
+    checks: "All rules + dependency analysis + visualization"
+workflow_type: "sequential"
+interactive_mode: true
 color: cyan
+allowed-tools: Read, Write, Bash, Glob, Grep, TodoWrite, Skill
 skills:
   - plugin-syntax-validator
 agents:
@@ -19,67 +42,70 @@ agents:
 
 Validate all plugin files for correct syntax, structure, and cross-plugin references. Prevent agent loading errors by catching issues before deployment.
 
-## Purpose
+## Context
 
-**Prevents runtime failures** by validating:
-- ✅ Agent/skill reference syntax (`plugin:agent` format)
-- ✅ File existence (agents, skills, commands)
-- ✅ plugin.json structure and metadata
-- ✅ Cross-plugin dependencies
-- ✅ Circular dependency detection
-- ✅ Unused agent/skill identification
+The user needs plugin validation for: $ARGUMENTS
 
----
+## Execution Mode Selection
 
-## Arguments
+<AskUserQuestion>
+questions:
+  - question: "Which validation depth do you need?"
+    header: "Validation Mode"
+    multiSelect: false
+    options:
+      - label: "Quick (30 seconds)"
+        description: "Fast syntax validation for single plugin. Basic syntax checks only (colon format, namespaces)."
+
+      - label: "Standard (1-2 minutes)"
+        description: "Full validation for all plugins. All syntax + file existence + plugin.json validation. All validation rules enforced."
+
+      - label: "Enterprise (3-5 minutes)"
+        description: "Deep analysis with dependency graph and architecture review. Full validation + cross-plugin deps + circular detection + unused agents + visualization."
+</AskUserQuestion>
+
+## Instructions
+
+### Phase 1: Syntax Validation
+
+Run automated validation using the **plugin-syntax-validator** skill:
+
+#### Quick Mode: Single Plugin
 
 ```bash
-# Basic validation (read-only)
-/lint-plugins
-
-# Auto-fix syntax errors
-/lint-plugins --fix
-
-# Validate specific plugin
-/lint-plugins --plugin=backend-development
-
-# Generate detailed report
-/lint-plugins --report
-
-# Analyze cross-plugin dependencies
-/lint-plugins --analyze-deps
+# Validate specific plugin only
+python plugins/custom-commands/skills/plugin-syntax-validator/scripts/validate_plugin_syntax.py \
+  --plugins-dir plugins \
+  --plugin <plugin-name> \
+  --verbose
 ```
 
----
-
-## Workflow
-
-Execute validation using the **plugin-syntax-validator** skill:
-
-### Phase 1: Syntax Validation (30 seconds)
-
-Run automated validation using the skill's validation script:
+#### Standard/Enterprise Mode: All Plugins
 
 ```bash
-# Invoke plugin-syntax-validator skill
+# Validate all plugins
 python plugins/custom-commands/skills/plugin-syntax-validator/scripts/validate_plugin_syntax.py \
   --plugins-dir plugins \
   --verbose
 ```
 
-**What it checks**:
-1. Agent reference format (`plugin:agent` vs `plugin::agent` or bare `agent`)
-2. Skill reference format
-3. File existence for all referenced agents/skills
-4. plugin.json structure and metadata
-5. SKILL.md frontmatter validation
+**What is checked**:
+1. **Agent reference format** (`plugin:agent` vs `plugin::agent`)
+2. **Skill reference format** (single colon)
+3. **File existence** for all referenced agents/skills
+4. **plugin.json structure** and required fields
+5. **SKILL.md frontmatter** validation
 
-**Output**: Detailed report with file:line locations for all issues
+**See validation rules**: [Plugin Validation Rules](../docs/lint-plugins/plugin-validation-rules.md)
+
+---
 
 ### Phase 2: Auto-Fix (if --fix flag)
 
+Automatically correct common syntax errors:
+
 ```bash
-# Auto-fix common syntax errors
+# Auto-fix fixable issues
 python plugins/custom-commands/skills/plugin-syntax-validator/scripts/validate_plugin_syntax.py \
   --fix \
   --verbose
@@ -88,126 +114,115 @@ python plugins/custom-commands/skills/plugin-syntax-validator/scripts/validate_p
 **Auto-fixable issues**:
 - ✅ Double colons (`::` → `:`)
 - ✅ Whitespace in references
-- ❌ Missing namespaces (requires manual mapping)
-- ❌ Non-existent agents (requires creating or fixing)
+- ⚠️ Missing namespaces (partial - requires mapping)
+- ❌ Non-existent agents (manual fix required)
+- ❌ Invalid plugin.json (manual fix required)
 
-### Phase 3: Dependency Analysis (if --analyze-deps flag)
-
-Analyze cross-plugin dependencies and interactions:
-
-1. **Build Dependency Graph**
-   - Map which plugins reference agents from other plugins
-   - Identify cross-plugin skill usage
-   - Track command cross-references
-
-2. **Detect Issues**
-   - Circular dependencies (A→B→C→A)
-   - Missing dependencies
-   - Unused agents/skills
-   - Orphaned files
-
-3. **Generate Visualization**
-   - Dependency graph in DOT format
-   - Convert to PNG/SVG with Graphviz
+**After auto-fix**:
+1. Review changes carefully
+2. Test affected commands
+3. Commit fixes separately
 
 ---
 
-## Validation Rules
+### Phase 3: Dependency Analysis (Enterprise Mode)
 
-### Rule 1: Single Colon Format
+Analyze cross-plugin dependencies and architecture:
 
-**✅ VALID**:
-```markdown
-Use Task tool with subagent_type="comprehensive-review:code-reviewer"
-Invoke Skill: "backend-development:api-design-principles"
+#### 3.1 Build Dependency Graph
+
+```bash
+# Analyze dependencies
+python validate_plugin_syntax.py \
+  --plugins-dir plugins \
+  --analyze-deps \
+  --verbose
 ```
 
-**❌ INVALID**:
-```markdown
-Use Task tool with subagent_type="comprehensive-review:code-reviewer"  # Double colon
+**Identifies**:
+- Cross-plugin agent references
+- Most-used agents across plugins
+- Plugin coupling metrics (efferent/afferent)
+- Dependency patterns
+
+#### 3.2 Detect Circular Dependencies
+
+```bash
+# Check for circular dependencies
+python validate_plugin_syntax.py \
+  --check-circular \
+  --verbose
 ```
 
+**Example output**:
+```
+❌ Circular dependency detected:
+   plugin-a → plugin-b → plugin-c → plugin-a
+
+💡 Resolution: Break cycle by extracting shared agents
+```
+
+#### 3.3 Find Unused Agents
+
+```bash
+# Identify unused agents
+python validate_plugin_syntax.py \
+  --find-unused \
+  --verbose
+```
+
+**Example output**:
+```
+⚠️  Unused agents:
+  - backend-development:legacy-adapter (never referenced)
+  - data-engineering:deprecated-transformer (never referenced)
+
+💡 Action: Remove or archive unused agents
+```
+
+#### 3.4 Generate Dependency Graph
+
+```bash
+# Generate DOT file
+python validate_plugin_syntax.py \
+  --analyze-deps \
+  --output-graph deps.dot
+
+# Convert to image
+dot -Tpng deps.dot -o deps.png
+```
+
+**See comprehensive guide**: [Dependency Analysis Guide](../docs/lint-plugins/dependency-analysis-guide.md)
+
+---
+
+## Validation Rules Reference
+
+### Rule 1: Single Colon Format (SYNTAX_001)
+
+**❌ Invalid**: `comprehensive-review::code-reviewer`
+**✅ Valid**: `comprehensive-review:code-reviewer`
 **Auto-fixable**: ✅ Yes
 
----
+### Rule 2: Namespace Required (SYNTAX_002)
 
-### Rule 2: Namespace Required
+**❌ Invalid**: `code-reviewer` (bare name)
+**✅ Valid**: `comprehensive-review:code-reviewer`
+**Auto-fixable**: ✅ Partial (requires mapping)
 
-**✅ VALID**:
-```markdown
-subagent_type="unit-testing:test-automator"
-```
+### Rule 3: Agent File Exists (REFERENCE_001)
 
-**❌ INVALID**:
-```markdown
-subagent_type="test-automator"  # Missing plugin namespace
-```
+**❌ Invalid**: Reference to non-existent agent
+**✅ Valid**: Agent file exists at expected path
+**Auto-fixable**: ❌ No (create file or fix reference)
 
-**✅ VALID (after fix)**:
-```markdown
-subagent_type="unit-testing:test-automator"  # With plugin namespace
-```
+### Rule 4: plugin.json Structure (METADATA_001)
 
-**Auto-fixable**: ✅ Yes
+**Required fields**: name, version, description
+**Optional fields**: agents, commands, skills, keywords
+**Auto-fixable**: ❌ No (manual JSON editing)
 
-**Manual fix**: Add correct plugin namespace from this mapping:
-
-| Bare Name | Correct Reference |
-|-----------|-------------------|
-| `code-reviewer` | `comprehensive-review:code-reviewer` |
-| `backend-architect` | `backend-development:backend-architect` |
-| `performance-engineer` | `full-stack-orchestration:performance-engineer` |
-| `test-automator` | `unit-testing:test-automator` |
-| `debugger` | `debugging-toolkit:debugger` |
-
----
-
-### Rule 3: Agent File Exists
-
-**✅ VALID**:
-```markdown
-"backend-development:backend-architect"
-→ File exists: plugins/backend-development/agents/backend-architect.md
-```
-
-**❌ INVALID**:
-```markdown
-"backend-development:nonexistent-agent"
-→ File not found
-```
-
-**Auto-fixable**: ❌ No
-
-**Manual fix**: Either:
-1. Create the agent file: `plugins/plugin-name/agents/agent-name.md`
-2. Fix the reference to an existing agent
-
----
-
-### Rule 4: plugin.json Structure
-
-**✅ VALID**:
-```json
-{
-  "name": "backend-development",
-  "version": "1.0.0",
-  "description": "Backend development workflows",
-  "agents": [
-    {
-      "name": "backend-architect",
-      "description": "...",
-      "status": "active"
-    }
-  ],
-  "keywords": ["backend", "api", "architecture"]
-}
-```
-
-**❌ INVALID**:
-- Missing required fields (`name`, `version`, `description`)
-- Invalid JSON syntax
-- Agent listed but file missing
-- Duplicate agent names
+**See detailed rules**: [Plugin Validation Rules](../docs/lint-plugins/plugin-validation-rules.md)
 
 ---
 
@@ -218,76 +233,34 @@ subagent_type="unit-testing:test-automator"  # With plugin namespace
 ```bash
 /lint-plugins
 
-# Output:
-# 🔍 Validating all plugins in plugins/
-#
-# ================================================================================
-# PLUGIN SYNTAX VALIDATION REPORT
-# ================================================================================
-#
-# 📊 Statistics:
-#   Plugins scanned:      17
-#   Files scanned:        154
-#   Agent refs checked:   247
-#   Skill refs checked:   89
-#
-# 📈 Results:
-#   🔴 Errors:   0
-#   🟡 Warnings: 0
-#
-# ✅ All validations passed!
+# Output: Summary with error count
+# Exit code: 0 (success) or 1 (errors found)
 ```
 
-### Example 2: Validation with Errors
+### Example 2: Validate Specific Plugin
 
 ```bash
-/lint-plugins
+/lint-plugins --plugin=backend-development
 
-# Output:
-# 🔍 Validating all plugins
-#
-# 📈 Results:
-#   🔴 Errors:   3
-#   🟡 Warnings: 2
-#
-# ────────────────────────────────────────────────────────────────────────────────
-# 🔴 ERRORS (Must Fix)
-# ────────────────────────────────────────────────────────────────────────────────
-#
-#   [SYNTAX] backend-development/commands/feature-development.md:29
-#   Double colon (::) in agent reference: 'comprehensive-review::code-reviewer'
-#   💡 Suggestion: Change to: comprehensive-review:code-reviewer
-#
-#   [REFERENCE] custom-commands/commands/smart-fix.md:92
-#   Agent not found: 'debugger' in plugin 'incident-response'
-#   💡 Suggestion: Available agents in incident-response: incident-responder
-#
-# ⚠️  Found 3 error(s) that must be fixed.
+# Output: Validation results for single plugin only
 ```
 
-### Example 3: Auto-Fix Mode
+### Example 3: Auto-Fix Errors
 
 ```bash
 /lint-plugins --fix
 
 # Output:
-# 🔍 Validating all plugins
-# 🔧 Attempting to auto-fix issues...
-# ✅ Fixed 2 issue(s)
-#
-# 🔍 Re-validating...
-# ✅ All validations passed!
+# ✅ Fixed 3 issue(s) automatically
+# ⚠️  2 issue(s) require manual fixes
 ```
 
-### Example 4: Specific Plugin
+### Example 4: Generate Report
 
 ```bash
-/lint-plugins --plugin=backend-development
+/lint-plugins --report
 
-# Output:
-# 🔍 Validating plugin: backend-development
-# ✅ 12/12 agent references valid
-# ✅ 3/3 skill references valid
+# Output: Detailed report with statistics and all errors
 ```
 
 ### Example 5: Dependency Analysis
@@ -296,222 +269,67 @@ subagent_type="unit-testing:test-automator"  # With plugin namespace
 /lint-plugins --analyze-deps
 
 # Output:
-# 🔍 Analyzing cross-plugin dependencies...
-#
-# Cross-Plugin Dependencies:
-# ├─ backend-development
-# │  ├─ Uses: comprehensive-review:code-reviewer (3×)
-# │  ├─ Uses: unit-testing:test-automator (2×)
-# │  └─ Uses: full-stack-orchestration:deployment-engineer (1×)
-# ├─ custom-commands
-# │  ├─ Uses: debugging-toolkit:debugger (5×)
-# │  └─ Uses: comprehensive-review:code-reviewer (2×)
-# └─ ...
-#
-# Circular Dependencies: None detected ✅
-#
-# Unused Agents:
-# └─ backend-development:legacy-adapter (never referenced)
-#
-# Dependency Graph: dependency-graph.dot
-# Run: dot -Tpng dependency-graph.dot -o dependency-graph.png
+# - Cross-plugin dependency graph
+# - Most-used agents
+# - Coupling metrics
+# - Circular dependencies (if any)
+# - Unused agents
 ```
 
 ---
 
 ## Integration with Development Workflow
 
-### Pre-Commit Hook
-
-Add to `.git/hooks/pre-commit`:
+### Pre-Commit Hook Setup
 
 ```bash
-#!/bin/bash
-# Validate plugins before commit
+# Install pre-commit framework
+pip install pre-commit
 
-if git diff --cached --name-only | grep -q "plugins/"; then
-  echo "🔍 Validating plugin syntax..."
+# Create .pre-commit-config.yaml
+cat > .pre-commit-config.yaml << 'EOF'
+repos:
+  - repo: local
+    hooks:
+      - id: lint-plugins
+        name: Validate Plugin Syntax
+        entry: python plugins/custom-commands/skills/plugin-syntax-validator/scripts/validate_plugin_syntax.py
+        language: system
+        pass_filenames: false
+        files: '^plugins/.*\.(md|json)$'
+EOF
 
-  /lint-plugins
-
-  if [ $? -ne 0 ]; then
-    echo "❌ Plugin validation failed"
-    echo "Run '/lint-plugins --fix' to auto-correct issues"
-    exit 1
-  fi
-
-  echo "✅ Plugin validation passed"
-fi
+# Install hooks
+pre-commit install
 ```
 
-### CI/CD Pipeline
+**Behavior**: Validation runs automatically on `git commit`
 
-**GitHub Actions** (`.github/workflows/lint-plugins.yml`):
+### CI/CD Integration (GitHub Actions)
 
 ```yaml
+# .github/workflows/lint-plugins.yml
 name: Lint Plugins
-
 on:
   push:
-    paths:
-      - 'plugins/**/*.md'
-      - 'plugins/**/plugin.json'
+    paths: ['plugins/**/*.md', 'plugins/**/plugin.json']
   pull_request:
-    paths:
-      - 'plugins/**/*.md'
-      - 'plugins/**/plugin.json'
+    paths: ['plugins/**/*.md', 'plugins/**/plugin.json']
 
 jobs:
-  lint:
+  validate:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-
-      - name: Set up Python
-        uses: actions/setup-python@v4
+      - uses: actions/setup-python@v4
         with:
           python-version: '3.12'
-
-      - name: Validate plugin syntax
+      - name: Validate plugins
         run: |
           python plugins/custom-commands/skills/plugin-syntax-validator/scripts/validate_plugin_syntax.py
-
-      - name: Upload report on failure
-        if: failure()
-        uses: actions/upload-artifact@v3
-        with:
-          name: validation-report
-          path: validation-report.md
 ```
 
----
-
-## Advanced Features
-
-### 1. Cross-Plugin Dependency Detection
-
-Identifies which plugins depend on agents from other plugins:
-
-```
-backend-development → comprehensive-review (code-reviewer)
-backend-development → unit-testing (test-automator)
-custom-commands → debugging-toolkit (debugger)
-```
-
-**Use case**: Understand plugin coupling before refactoring
-
-### 2. Circular Dependency Detection
-
-Detects invalid circular references:
-
-```
-❌ Circular dependency detected:
-   plugin-a → plugin-b → plugin-c → plugin-a
-```
-
-**Use case**: Prevent infinite loops in agent orchestration
-
-### 3. Unused Agent Identification
-
-Finds agents that are never referenced:
-
-```
-⚠️  Unused agents:
-   - backend-development:legacy-adapter
-   - data-engineering:deprecated-transformer
-```
-
-**Use case**: Clean up unused code, reduce maintenance burden
-
-### 4. Dependency Visualization
-
-Generates visual dependency graph:
-
-```bash
-# Generate DOT file
-/lint-plugins --analyze-deps
-
-# Convert to image
-dot -Tpng dependency-graph.dot -o dependency-graph.png
-```
-
-**Use case**: Visualize plugin architecture
-
----
-
-## Common Issues and Solutions
-
-### Issue 1: "Plugin not found" error
-
-**Cause**: Plugin directory doesn't exist or is misnamed
-
-**Solution**:
-```bash
-# Check plugin directory exists
-ls plugins/your-plugin/
-
-# Ensure it contains agents/ or skills/ directory
-ls plugins/your-plugin/agents/
-```
-
-### Issue 2: Auto-fix doesn't fix all errors
-
-**Explanation**: Only syntax errors are auto-fixable:
-- ✅ Double colons (`::` → `:`)
-- ❌ Missing namespaces (ambiguous)
-- ❌ Non-existent agents (requires creation)
-
-**Solution**: Manually fix remaining issues using suggestions
-
-### Issue 3: False positives for custom plugins
-
-**Solution**: Ensure custom plugins follow structure:
-```
-plugins/your-custom-plugin/
-├── plugin.json
-├── agents/
-│   └── agent-name.md
-└── commands/
-    └── command-name.md
-```
-
----
-
-## Best Practices
-
-1. **Validate before every commit**: Use pre-commit hooks
-2. **Run --fix first**: Auto-correct obvious syntax errors
-3. **Review changes**: Always verify auto-fixes before committing
-4. **CI integration**: Catch errors in pull requests automatically
-5. **Keep namespace consistent**: Use official plugin:agent format
-6. **Document custom agents**: Update namespace mapping table
-7. **Analyze dependencies**: Understand plugin coupling before refactoring
-8. **Clean unused agents**: Remove agents that are never referenced
-
----
-
-## Troubleshooting
-
-### Slow validation
-
-**Solution**: Validate specific plugin:
-```bash
-/lint-plugins --plugin=your-plugin
-```
-
-### Permission errors
-
-**Solution**: Check file permissions:
-```bash
-chmod -R u+r plugins/
-```
-
-### Script not found
-
-**Solution**: Ensure skill is installed:
-```bash
-ls plugins/custom-commands/skills/plugin-syntax-validator/scripts/
-```
+**See workflow guide**: [Plugin Development Workflow](../docs/lint-plugins/plugin-development-workflow.md)
 
 ---
 
@@ -520,71 +338,99 @@ ls plugins/custom-commands/skills/plugin-syntax-validator/scripts/
 ### Summary Mode (Default)
 
 ```
-✅ Validation complete
-├─ Plugins scanned: 17
-├─ References checked: 247
-├─ Errors: 0
-├─ Warnings: 0
-└─ Pass rate: 100%
+================================================================================
+PLUGIN SYNTAX VALIDATION REPORT
+================================================================================
+
+📊 Statistics:
+  Plugins scanned:      17
+  Files scanned:        154
+  Agent refs checked:   247
+  Skill refs checked:   89
+
+📈 Results:
+  🔴 Errors:   3
+  🟡 Warnings: 2
+  🟢 Info:     5
+
+────────────────────────────────────────────────────────────────────────────
+🔴 ERRORS (Must Fix)
+────────────────────────────────────────────────────────────────────────────
+
+  [SYNTAX_001] backend-development/commands/feature-development.md:29
+  Double colon in agent reference: 'comprehensive-review::code-reviewer'
+  💡 Auto-fix: Change to 'comprehensive-review:code-reviewer'
+
+⚠️  Found 3 error(s) - Run '/lint-plugins --fix' to auto-correct
 ```
 
 ### Detailed Mode (--report)
 
+Includes:
+- Per-plugin validation results
+- Agent usage statistics
+- Cross-reference analysis
+- Suggestions for optimization
+
+---
+
+## Troubleshooting
+
+### Issue: Auto-fix changes wrong references
+
+**Cause**: Ambiguous agent names
+**Solution**: Review changes before committing
+
+### Issue: False positives for custom plugins
+
+**Cause**: Plugin not in standard location
+**Solution**: Ensure plugin follows structure:
 ```
-📊 Plugin Lint Report
-
-Scan Date: 2025-10-27 14:30:00
-Duration: 28.3s
-
-Plugins: 17 scanned
-└─ backend-development         ✅ 12/12 valid
-└─ comprehensive-review        ✅ 8/8 valid
-└─ debugging-toolkit           ✅ 5/5 valid
-└─ (14 more...)                ✅ 222/222 valid
-
-Agent References: 247 total
-└─ comprehensive-review:code-reviewer        (15 uses)
-└─ backend-development:backend-architect     (12 uses)
-└─ unit-testing:test-automator               (11 uses)
-└─ (20 more distinct agents)
-
-Validation Results: ✅ PASSED
-└─ All agent references use correct plugin:agent format
-└─ All agent files exist and are accessible
-└─ No syntax violations detected
+plugins/my-plugin/
+├── plugin.json
+├── agents/
+│   └── agent-name.md
+└── commands/
+    └── command-name.md
 ```
 
----
+### Issue: Validation too slow
 
-## Error Severity Levels
-
-- **ERROR** (Exit code 1):
-  - Double colons in references
-  - Agent/skill file does not exist
-  - Malformed syntax
-  - Invalid plugin.json
-
-- **WARNING** (Exit code 0):
-  - Missing namespace (bare agent name)
-  - Deprecated agent reference
-  - Unused agents
-
-- **INFO** (Exit code 0):
-  - Statistics
-  - Suggestions for optimization
+**Cause**: Scanning many large files
+**Solution**: Use `--plugin=name` for specific plugin validation
 
 ---
 
-## See Also
+## External Documentation
 
-- `/command-creator` - Create new custom commands
-- `/quality` - Comprehensive code quality analysis
-- Plugin development documentation
-- Agent namespace reference guide
+- [Plugin Validation Rules](../docs/lint-plugins/plugin-validation-rules.md) - All validation rules with before/after examples
+- [Plugin Development Workflow](../docs/lint-plugins/plugin-development-workflow.md) - Pre-commit hooks, CI/CD integration, release workflow
+- [Dependency Analysis Guide](../docs/lint-plugins/dependency-analysis-guide.md) - Cross-plugin dependencies, circular detection, dependency graphs
 
 ---
 
-**Version**: 2.0.0
-**Updated**: 2025-10-27
-**Skill**: plugin-syntax-validator
-**Maintainer**: Claude Code Workflows Team
+## Success Criteria
+
+**Quick Mode**:
+- ✅ Single plugin validated
+- ✅ Syntax errors identified
+- ✅ Exit code indicates pass/fail
+
+**Standard Mode**:
+- ✅ All plugins validated
+- ✅ All validation rules checked
+- ✅ File existence verified
+- ✅ plugin.json structure valid
+- ✅ Auto-fix suggestions provided
+
+**Enterprise Mode**:
+- ✅ All Standard criteria met
+- ✅ Cross-plugin dependencies mapped
+- ✅ No circular dependencies
+- ✅ Unused agents identified
+- ✅ Dependency graph generated
+- ✅ Architecture review complete
+
+---
+
+Execute plugin validation for selected mode, provide detailed error locations and auto-fix recommendations.

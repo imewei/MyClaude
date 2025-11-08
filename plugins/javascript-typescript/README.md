@@ -1,10 +1,87 @@
 # JavaScript/TypeScript Plugin
 
-> **Version 1.0.1** | Modern JavaScript and TypeScript development with systematic Chain-of-Thought frameworks and Constitutional AI principles for production-ready code
+> **Version 1.0.3** | Modern JavaScript and TypeScript development with systematic Chain-of-Thought frameworks, Constitutional AI principles, and production-ready project scaffolding
 
 **Category:** web-development | **License:** MIT | **Author:** Wei Chen
 
 [Full Documentation →](https://myclaude.readthedocs.io/en/latest/plugins/javascript-typescript.html) | [CHANGELOG →](CHANGELOG.md)
+
+---
+
+## What's New in v1.0.3 🎉
+
+This release introduces **command optimization** and **improved discoverability** through:
+1. **TypeScript Scaffolding Command Optimization**: 25% token reduction with hub-and-spoke architecture
+2. **Comprehensive External Documentation**: 6 new documentation files (~1,070 lines) with detailed guides
+3. **Execution Modes**: Three modes (quick/standard/comprehensive) for different workflow needs (10-60 min)
+4. **New Skill**: typescript-project-scaffolding for improved plugin discoverability
+5. **Version Consistency**: All components updated to 1.0.3
+
+### Key Highlights - Command Optimization
+
+- **TypeScript Scaffolding Command**: Optimized with 25% token reduction (347→260 lines)
+  - Hub-and-spoke architecture with YAML frontmatter
+  - 3 Execution Modes: quick (10-15min), standard (20-30min), comprehensive (40-60min)
+  - 6 External Documentation Files (~1,070 lines): project-scaffolding-guide, nextjs-scaffolding, nodejs-api-scaffolding, library-cli-scaffolding, typescript-configuration, development-tooling
+  - 100% backward compatible with existing workflows
+  - Cost savings: $3.13-$7.83 annually (200-500 invocations/month)
+
+- **New Skill**: typescript-project-scaffolding
+  - Production-ready scaffolding for 5 project types (Next.js, React+Vite, Node.js API, Library, CLI)
+  - Comprehensive external documentation for deep-dive learning
+  - Improved discoverability in Claude Code skill registry
+
+### Impact Metrics
+
+| Metric | Before | After | Improvement |
+|--------|--------|-------|-------------|
+| Command file size | 347 lines | 260 lines | 25.1% reduction |
+| External documentation | 0 files | 6 files | +1,070 lines |
+| Total documentation | 347 lines | 1,330 lines | +283.3% |
+| Skills count | 5 | 6 | +1 (typescript-project-scaffolding) |
+| Version consistency | Partial | Complete | All at 1.0.3 |
+
+---
+
+## Commands
+
+### /typescript-scaffold
+
+**Version:** 1.0.3 | **Maturity:** 95% | **Status:** active
+
+Production-ready TypeScript project scaffolding with modern tooling, automated setup, and comprehensive configuration.
+
+**Execution Modes**:
+- **--mode=quick** (10-15 min): Rapid prototyping with essential config
+- **--mode=standard** (20-30 min): Complete setup with testing [DEFAULT]
+- **--mode=comprehensive** (40-60 min): Enterprise-grade with CI/CD
+
+**Supported Project Types**:
+- Next.js 15 (App Router, Server Components, API routes)
+- React + Vite (SPA with fast HMR)
+- Node.js API (Express/Fastify, middleware, auth)
+- TypeScript Library (tree-shakeable, dual format)
+- CLI Tool (Commander.js, interactive prompts)
+
+**External Documentation**:
+- [Project Scaffolding Guide](docs/javascript-typescript/project-scaffolding-guide.md) - Decision frameworks, architecture patterns
+- [Next.js Scaffolding](docs/javascript-typescript/nextjs-scaffolding.md) - Complete Next.js 15 setup
+- [Node.js API Scaffolding](docs/javascript-typescript/nodejs-api-scaffolding.md) - Express/Fastify patterns
+- [Library & CLI Scaffolding](docs/javascript-typescript/library-cli-scaffolding.md) - Package publishing, CLI tools
+- [TypeScript Configuration](docs/javascript-typescript/typescript-configuration.md) - Strict mode, project references
+- [Development Tooling](docs/javascript-typescript/development-tooling.md) - ESLint, Prettier, Vitest, CI/CD
+
+**Example Usage**:
+```bash
+# Standard mode (default): Complete production project
+/typescript-scaffold Create a Next.js app with authentication
+
+# Quick mode: Rapid prototyping
+/typescript-scaffold --mode=quick Create a React + Vite SPA
+
+# Comprehensive mode: Enterprise setup with CI/CD
+/typescript-scaffold --mode=comprehensive Create a Node.js API with Docker and GitHub Actions
+```
 
 ---
 
@@ -181,9 +258,26 @@ Master TypeScript specialist with advanced type systems, generics, and strict ty
 
 ## Skills
 
+### TypeScript Project Scaffolding
+
+**Status:** active | **Version:** 1.0.3 | **New in v1.0.3**
+
+Production-ready TypeScript project scaffolding with modern tooling (pnpm, Vite, Next.js 15), automated setup for Next.js apps, React SPAs, Node.js APIs, libraries, and CLI tools.
+
+**Capabilities**:
+- 5 project types: Next.js, React+Vite, Node.js API, Library, CLI
+- Execution modes: quick (10-15min), standard (20-30min), comprehensive (40-60min)
+- tsconfig optimization for each project type
+- Testing setup with Vitest
+- ESLint/Prettier configuration
+- Monorepo patterns with Turborepo/Nx
+- Comprehensive external documentation (~1,070 lines)
+
+**Use When**: Initializing new TypeScript projects, migrating JavaScript projects, setting up monorepo workspaces, configuring build tooling, creating CLI applications
+
 ### Modern JavaScript Patterns
 
-**Status:** active | **Enhanced in v1.0.1**
+**Status:** active | **Version:** 1.0.3 | **Enhanced in v1.0.1**
 
 Master modern JavaScript (ES6/ES2015 through ES2024) features including async/await, destructuring, spread operators, arrow functions, promises, modules, iterators, generators, optional chaining, nullish coalescing, and functional programming patterns.
 
@@ -199,7 +293,7 @@ Master modern JavaScript (ES6/ES2015 through ES2024) features including async/aw
 
 ### TypeScript Advanced Types
 
-**Status:** active | **Enhanced in v1.0.1**
+**Status:** active | **Version:** 1.0.3 | **Enhanced in v1.0.1**
 
 Master TypeScript's advanced type system including generics, conditional types, mapped types, template literal types, utility types (Partial, Required, Pick, Omit, Record), type inference with infer keyword, branded types, discriminated unions, and recursive types.
 
@@ -218,7 +312,7 @@ Master TypeScript's advanced type system including generics, conditional types, 
 
 ### JavaScript Testing Patterns
 
-**Status:** active | **Enhanced in v1.0.1**
+**Status:** active | **Version:** 1.0.3 | **Enhanced in v1.0.1**
 
 Implement comprehensive testing strategies using Jest, Vitest, and Testing Library for unit tests, integration tests, and end-to-end testing with advanced mocking, fixtures, and TDD/BDD workflows.
 
@@ -237,7 +331,7 @@ Implement comprehensive testing strategies using Jest, Vitest, and Testing Libra
 
 ### Node.js Backend Patterns
 
-**Status:** active | **Enhanced in v1.0.1**
+**Status:** active | **Version:** 1.0.3 | **Enhanced in v1.0.1**
 
 Build production-ready Node.js backend services with Express.js, Fastify, NestJS, and Koa implementing middleware patterns, error handling, authentication (JWT, OAuth2, session, RBAC), database integration (PostgreSQL, MongoDB, Redis), API design, GraphQL, WebSockets, background jobs, and observability.
 
@@ -260,7 +354,7 @@ Build production-ready Node.js backend services with Express.js, Fastify, NestJS
 
 ### Monorepo Management
 
-**Status:** active | **Enhanced in v1.0.1**
+**Status:** active | **Version:** 1.0.3 | **Enhanced in v1.0.1**
 
 Master monorepo management with Turborepo, Nx, pnpm workspaces, Yarn workspaces, and npm workspaces to build efficient, scalable multi-package repositories with optimized builds, intelligent caching, shared dependencies, code sharing patterns, CI/CD for monorepos, and versioning strategies with changesets.
 

@@ -1,12 +1,12 @@
 # Claude Code Plugin Marketplace - Complete Agent List
 
-**Total Agents:** 73 across 31 plugins
+**Total Agents:** 74 across 31 plugins
 **Format:** `plugin:agent` (single colon)
-**Version:** 1.0.1 | **Last Updated:** October 31, 2025
+**Version:** 1.0.3 | **Last Updated:** January 8, 2025
 
 ---
 
-## Scientific Computing & Specialized (17 agents)
+## Scientific Computing & Specialized (18 agents)
 
 ### julia-development (4 agents)
 - **julia-development:julia-pro** - General Julia programming expert for high-performance computing, scientific simulations, data analysis, and machine learning with multiple dispatch mastery
@@ -81,14 +81,15 @@
 
 ---
 
-## AI/ML (5 agents)
+## AI/ML (6 agents)
 
 ### deep-learning (2 agents)
 - **deep-learning:neural-architecture-engineer** - Neural architecture specialist for deep learning design with transformers, CNNs, RNNs, multi-framework implementation (Flax, Equinox, Haiku, PyTorch)
 - **deep-learning:neural-network-master** - Deep learning theory expert for mathematical foundations, optimization theory, training diagnostics, research translation, and pedagogical explanations
 
-### machine-learning (3 agents)
+### machine-learning (4 agents)
 - **machine-learning:data-scientist** - Advanced analytics, machine learning, and statistical modeling expert for complex data analysis, predictive modeling, and business intelligence
+- **machine-learning:data-engineer** - Expert data engineer specializing in scalable data pipelines, ETL/ELT architecture, data quality frameworks, and modern data infrastructure
 - **machine-learning:ml-engineer** - Production ML systems builder with PyTorch 2.x, TensorFlow, model serving, feature engineering, A/B testing, and monitoring
 - **machine-learning:mlops-engineer** - Comprehensive ML pipelines, experiment tracking, and model registries specialist with MLflow, Kubeflow, automated training, deployment, and monitoring
 
@@ -150,16 +151,11 @@
 
 ---
 
-## Orchestration & AI Reasoning (5 agents)
+## Orchestration & Research (3 agents)
 
 ### agent-orchestration (2 agents)
 - **agent-orchestration:multi-agent-orchestrator** - Multi-agent orchestrator for workflow coordination, distributed systems, agent team assembly, and task allocation for scalable collaboration
 - **agent-orchestration:context-manager** - Elite AI context engineering specialist for dynamic context management, vector databases, knowledge graphs, and intelligent memory systems across multi-agent workflows
-
-### ai-reasoning (3 agents + specialized reasoning agents)
-- **ai-reasoning:reflection** - Advanced reflection engine for AI reasoning, session analysis, and research optimization with multi-agent orchestration and meta-cognitive insights
-- **ai-reasoning:ultra-think** - Advanced structured reasoning engine with step-by-step thought processing, branching logic, dynamic adaptation, and multi-agent coordination
-- **ai-reasoning:structured-reasoning** - Structured reasoning specialist for complex problem-solving with systematic thinking frameworks and comprehensive analysis
 
 ### research-methodology (1 agent)
 - **research-methodology:research-intelligence** - Research intelligence expert for research methodology, information discovery, literature analysis, and trend forecasting
@@ -180,9 +176,8 @@
 | comprehensive-review | 3 | code-reviewer, architect-review, security-auditor |
 | python-development | 3 | python-pro, fastapi-pro, django-pro |
 | backend-development | 3 | backend-architect, graphql-architect, tdd-orchestrator |
-| machine-learning | 3 | data-scientist, ml-engineer, mlops-engineer |
+| machine-learning | 4 | data-scientist, data-engineer, ml-engineer, mlops-engineer |
 | code-documentation | 3 | code-reviewer, docs-architect, tutorial-engineer |
-| ai-reasoning | 3 | reflection, ultra-think, structured-reasoning |
 | deep-learning | 2 | neural-architecture-engineer, neural-network-master |
 | frontend-mobile-development | 2 | frontend-developer, mobile-developer |
 | javascript-typescript | 2 | javascript-pro, typescript-pro |
@@ -200,6 +195,7 @@
 | code-migration | 1 | scientific-code-adoptor |
 | cli-tool-design | 1 | command-systems-engineer |
 | research-methodology | 1 | research-intelligence |
+| ai-reasoning | 0 | (uses skills and commands) |
 | quality-engineering | 0 | (uses skills and commands) |
 
 ---
@@ -254,10 +250,10 @@ comprehensive-review:code-reviewer
 - **Plugin Cheatsheet:** PLUGIN_CHEATSHEET.md
 - **Full Documentation:** https://myclaude.readthedocs.io/en/latest/
 - **Validation Report:** PLUGIN_LINT_REPORT.md
-- **Total Agents:** 73
+- **Total Agents:** 74
 - **Total Plugins:** 31
-- **Version:** 1.0.1
+- **Version:** 1.0.3
 
 ---
 
-**Note:** This list was generated from v1.0.1 validated marketplace data with 100% plugin validation success rate.
+**Note:** This list was generated from v1.0.3 validated marketplace data with 100% plugin validation success rate.

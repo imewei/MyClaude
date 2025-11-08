@@ -2,7 +2,7 @@
 
 Comprehensive multi-platform application development with **chain-of-thought reasoning frameworks**, **constitutional AI validation**, and **production-ready examples** for Flutter, React Native, iOS, Android, web, backend APIs, and UI/UX design systems.
 
-**Version:** 1.0.1 | **Category:** Multi-Platform Development | **License:** MIT
+**Version:** 1.0.3 | **Category:** Multi-Platform Development | **License:** MIT
 
 [Full Documentation →](https://myclaude.readthedocs.io/en/latest/plugins/multi-platform-apps.html) | [CHANGELOG](CHANGELOG.md)
 
@@ -27,6 +27,106 @@ This plugin provides comprehensive multi-platform application development capabi
 - ✅ 6 specialized agents covering full-stack multi-platform development
 - ✅ 4 enhanced skills with comprehensive descriptions and proactive discovery
 - ✅ 60-80% improved skill discoverability with detailed use case documentation
+
+---
+
+## 🚀 What's New in v1.0.3
+
+### Multi-Platform Command with Execution Modes ✨ NEW
+
+**NEW `/multi-platform` command** with 3 flexible execution modes for building features across web, mobile, and desktop platforms with API-first architecture and multi-agent orchestration.
+
+#### Execution Modes
+
+| Mode | Duration | Platforms | Agents | Use Case |
+|------|----------|-----------|--------|----------|
+| **Quick** | 3-5 days | 1 platform (web OR mobile) | 3 agents | Single-platform MVP with API-first design |
+| **Standard** | 2-3 weeks | Web + Mobile (iOS/Android) | 6 agents | Production-ready cross-platform with feature parity |
+| **Enterprise** | 4-6 weeks | All platforms (web/iOS/Android/desktop) | 9 agents | Full-stack with shared code and optimization |
+
+#### Quick Mode Example
+```bash
+/multi-platform --mode=quick
+
+# Builds: Single-platform MVP (web OR mobile)
+# Duration: 3-5 days
+# Agents: backend-architect, ui-ux-designer, frontend-developer OR mobile-developer
+# Deliverables:
+#   - OpenAPI 3.1 API contract
+#   - Basic design system (colors, typography, spacing)
+#   - Core features on one platform
+#   - Integration tests
+```
+
+#### Standard Mode Example
+```bash
+/multi-platform --mode=standard
+
+# Builds: Web + Mobile (iOS/Android) with design system
+# Duration: 2-3 weeks
+# Agents: backend-architect, ui-ux-designer, frontend-developer,
+#         ios-developer, mobile-developer, test-automator
+# Deliverables:
+#   - REST/GraphQL API with versioning
+#   - Comprehensive design system (tokens, components)
+#   - Web app (React/Next.js)
+#   - iOS app (SwiftUI)
+#   - Android app (Jetpack Compose or React Native)
+#   - Cross-platform E2E tests
+#   - Feature parity validation
+```
+
+#### Enterprise Mode Example
+```bash
+/multi-platform --mode=enterprise
+
+# Builds: All platforms with shared code and optimization
+# Duration: 4-6 weeks
+# Agents: backend-architect, ui-ux-designer, frontend-developer,
+#         ios-developer, mobile-developer, flutter-expert,
+#         performance-engineer, test-automator, docs-architect
+# Deliverables:
+#   - API-first architecture (REST + GraphQL + WebSocket)
+#   - Enterprise design system with multi-brand support
+#   - Web app with PWA
+#   - Native iOS app
+#   - Native Android app
+#   - Desktop app (Electron/Tauri)
+#   - Shared business logic (Kotlin Multiplatform or Flutter Web)
+#   - Performance optimization (Core Web Vitals, 60fps mobile)
+#   - Comprehensive testing (unit, integration, E2E, visual regression)
+#   - Production deployment pipelines
+#   - Full documentation
+```
+
+#### Command Features
+
+**API-First Architecture:**
+- OpenAPI 3.1 specifications with request/response schemas
+- GraphQL schemas with type safety and federation
+- WebSocket protocols for real-time updates
+- Backend for Frontend (BFF) patterns for platform-specific optimization
+
+**Shared Code Strategies:**
+- Kotlin Multiplatform Mobile for shared business logic
+- TypeScript sharing between web and React Native
+- Flutter Web for unified codebase across all platforms
+- Repository pattern with platform abstraction
+
+**Multi-Agent Orchestration:**
+- **Phase 1 (Sequential)**: Requirements → API design → UI/UX foundation
+- **Phase 2 (Parallel)**: Platform implementations with shared coordination
+- **Phase 3 (Sequential)**: Testing → Optimization → Deployment
+
+**Comprehensive Documentation:**
+- [Platform Architecture Guide](commands/multi-platform/platform-architecture.md) (~3,500 lines)
+- [Implementation Guides](commands/multi-platform/implementation-guides.md) (~4,000 lines)
+- [Design Systems](commands/multi-platform/design-systems.md) (~3,000 lines)
+- [Testing Strategies](commands/multi-platform/testing-strategies.md) (~2,500 lines)
+- [Deployment & Distribution](commands/multi-platform/deployment-distribution.md) (~2,500 lines)
+- [Best Practices](commands/multi-platform/best-practices.md) (~2,500 lines)
+
+**Total External Documentation:** ~18,000 lines covering OpenAPI specs, GraphQL schemas, platform implementations, design tokens, testing frameworks, and deployment pipelines.
 
 ---
 
@@ -503,4 +603,4 @@ MIT
 
 **Questions or Issues?** Open an issue on the [GitHub repository](https://github.com/anthropics/claude-code).
 
-**Last Updated:** 2025-10-31 | **Version:** 1.0.1
+**Last Updated:** 2025-11-07 | **Version:** 1.0.3

@@ -4,7 +4,7 @@ description: Expert deployment engineer specializing in modern CI/CD pipelines, 
 model: haiku
 ---
 
-**Version**: v1.0.1
+**Version**: v1.0.3
 **Maturity Baseline**: 75%
 
 You are a deployment engineer specializing in modern CI/CD pipelines, GitOps workflows, and advanced deployment automation.
