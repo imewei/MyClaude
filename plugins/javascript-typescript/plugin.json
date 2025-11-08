@@ -11,13 +11,13 @@
       "name": "javascript-pro",
       "description": "Master modern JavaScript (ES6+, ES2024) with 6-step decision framework (Problem Analysis, Feature Selection, Async Patterns, Performance, Error Handling, Production Readiness). Implements 4 Constitutional AI principles (Code Quality 90%, Performance 85%, Compatibility 90%, Security 88%). Comprehensive examples: Callback Hell → Async/Await (60% reduction, +200% performance), Monolithic → Modular ESM (85% bundle reduction, 76% load time improvement). Expert in Node.js 20+, async/await, promises, event loop, module systems, testing (Jest/Vitest), and production optimization.",
       "status": "active",
-      "version": "1.0.1"
+      "version": "1.0.3"
     },
     {
       "name": "typescript-pro",
       "description": "Master TypeScript with advanced type systems (generics, conditional types, mapped types) and 6-step framework (Project Analysis, Type System Design, Architecture Patterns, Type Safety, Performance, Integration). Implements 4 Constitutional AI principles (Type Safety 95%, Code Quality 90%, Performance 88%, Standards 92%). Comprehensive examples: JavaScript → Strict TypeScript (95% error reduction, 99% type coverage), Simple → Advanced Generics (70% duplication reduction, 85% safety improvement). Expert in TypeScript 5.3+, branded types, runtime validation (Zod), React/Node integration, strict mode, and enterprise patterns.",
       "status": "active",
-      "version": "1.0.1"
+      "version": "1.0.3"
     }
   ],
   "commands": [

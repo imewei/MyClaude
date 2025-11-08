@@ -65,7 +65,7 @@ The MyClaude plugin ecosystem provides production-ready tools for:
 
 ### Version Distribution
 
-- **v1.0.3**: 21 plugins (latest optimization release)
+- **v1.0.3**: 23 plugins (latest optimization release)
 - **v1.0.2**: 1 plugin (cli-tool-design)
 - **v1.0.2**: 1 plugin (jax-implementation)
 - **v1.0.1**: 8 plugins (scientific computing)
