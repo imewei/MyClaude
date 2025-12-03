@@ -1,7 +1,7 @@
 {
   "name": "cli-tool-design",
   "displayName": "CLI Tool Design",
-  "version": "1.0.2",
+  "version": "1.0.4",
   "description": "CLI tool design and developer automation expertise with advanced agent reasoning, systematic development frameworks, and production-ready examples. v1.0.2 features enhanced command-systems-engineer agent with triggering criteria, chain-of-thought reasoning, Constitutional AI principles, and comprehensive CLI tool examples, plus 2 enhanced skills with expanded discoverability for Python Click/Typer, Node.js Commander/Inquirer, Go Cobra, and shell scripting.",
   "changelog": "v1.0.2: Major prompt engineering improvements for command-systems-engineer agent with triggering criteria (15 USE cases, 5 anti-patterns), 6-step chain-of-thought reasoning framework (Workflow Analysis → CLI Design → Framework Selection → Implementation → Testing & Validation → Distribution), 5 Constitutional AI principles (User Experience First, Automation-Focused, Cross-Platform Compatibility, Developer Productivity, Maintainability & Extensibility), comprehensive 'devflow' CLI tool example with Python Click, rich UI, workflow automation, and complete distribution. Enhanced 2 skills with dramatically expanded use case descriptions (24-25 detailed scenarios each) for better discoverability. Expected: 50-70% better CLI tool quality, 60% improved user experience, 70% more systematic development.",
   "category": "developer-tools",
@@ -43,7 +43,7 @@
       "name": "Command Systems Engineer",
       "description": "Command systems engineer specializing in CLI tool design and developer automation. Expert in command development, interactive prompts, and workflow tools",
       "status": "active",
-      "version": "1.0.2",
+      "version": "1.0.4",
       "maturity": "92%",
       "improvements": "Added triggering criteria with 15 USE cases and 5 anti-patterns (CLI tools vs. web UIs vs. infrastructure), 6-step chain-of-thought reasoning framework (Workflow Analysis → CLI Design → Framework Selection → Implementation → Testing & Validation → Distribution) with 54 guiding questions, 5 Constitutional AI principles (User Experience First, Automation-Focused, Cross-Platform Compatibility, Developer Productivity, Maintainability & Extensibility) with 40 self-check questions, comprehensive 'devflow' development workflow automation CLI example (220+ lines Python Click) with rich UI, progress indicators, interactive prompts, workflow dependencies, YAML configuration, error handling with rollback, shell completion, pytest tests, cross-platform support, and pip packaging. Expected: 50-70% better CLI tool quality, 60% improved UX, 70% more systematic development."
     }
@@ -55,7 +55,7 @@
       "name": "CLI Tool Design Production",
       "description": "Production-ready CLI tool implementation with Python Click/Typer, Node.js Commander/Inquirer, workflow automation frameworks, and shell script automation for developer workflows",
       "status": "active",
-      "version": "1.0.2",
+      "version": "1.0.4",
       "improvements": "Enhanced description with 24 detailed use cases covering CLI applications with interactive prompts, developer workflow automation, project scaffolding and code generators, terminal user interfaces, deployment and release automation, git workflow helpers, data processing utilities, configuration management, testing tools, and cross-platform development. Added comprehensive 'When to use' section with specific file types (cli.py, main.go, cli.js), frameworks (Click, Typer, Commander, Inquirer, Cobra), and scenarios."
     },
     {
@@ -64,7 +64,7 @@
       "name": "Programming Scripting Languages",
       "description": "Comprehensive programming language examples for CLI development across Python (Click, Typer), Shell scripting (Bash, PowerShell), and Go (Cobra) with argument parsing, configuration, and cross-platform patterns",
       "status": "active",
-      "version": "1.0.2",
+      "version": "1.0.4",
       "improvements": "Enhanced description with 25 detailed use cases covering Python Click/Typer frameworks, Bash automation scripts, PowerShell cmdlets, Go Cobra CLIs, Rust Clap CLIs, argument parsing and validation, interactive prompts, subcommand hierarchies, configuration management, cross-platform scripting, error handling patterns, logging, progress indicators, credential handling, and help systems. Added comprehensive 'When to use' section with specific file extensions (.sh, .bash, .ps1), framework files (click.py, cobra.go, clap.rs), and implementation scenarios."
     }
   ]

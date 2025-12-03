@@ -1,13 +1,13 @@
 # MyClaude
 
 [![Plugins](https://img.shields.io/badge/Plugins-31-blue.svg)](https://myclaude.readthedocs.io/en/latest/plugins/)
-[![Agents](https://img.shields.io/badge/Agents-75-green.svg)](AGENTS_LIST.md)
+[![Agents](https://img.shields.io/badge/Agents-74-green.svg)](AGENTS_LIST.md)
 [![Commands](https://img.shields.io/badge/Commands-60+-orange.svg)](COMMANDS_LIST.md)
-[![Version](https://img.shields.io/badge/Version-1.0.3-red.svg)](https://github.com/imewei/MyClaude)
+[![Version](https://img.shields.io/badge/Version-1.0.4-red.svg)](https://github.com/imewei/MyClaude)
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Docs](https://img.shields.io/badge/Docs-ReadTheDocs-brightgreen.svg)](https://myclaude.readthedocs.io/en/latest/)
 
-Comprehensive Claude Code plugin marketplace with **31 specialized plugins**, **75 expert agents**, and **60+ slash commands** for AI-powered development, scientific computing, and research workflows.
+Comprehensive Claude Code plugin marketplace with **31 specialized plugins**, **74 expert agents**, and **60+ slash commands** for AI-powered development, scientific computing, and research workflows.
 
 ## Full Documentation
 
@@ -34,41 +34,42 @@ The MyClaude plugin ecosystem provides production-ready tools for:
 - **DevOps & Infrastructure**: CI/CD automation, observability, Kubernetes orchestration
 - **Code Intelligence**: Documentation generation, migration, cleanup, debugging
 
+### What's New in v1.0.4
+
+**Agent Optimization Release** (74 agents enhanced)
+
+- **nlsq-pro Template**: All 74 agents now follow consistent template with Pre-Response Validation Framework
+- **Constitutional AI Principles**: Each agent has enhanced principles with Target %, Core Question, Self-Check Questions, Anti-Patterns, and Quality Metrics
+- **When to Invoke Sections**: Clear ✅ USE FOR / ❌ DELEGATE TO tables and Decision Trees for agent routing
+- **Quality Gates**: Mandatory self-checks and response quality gates before delivering responses
+- **Version Consistency**: All agents bumped to latest patch versions
+
+**Template Structure Applied:**
+1. Pre-Response Validation Framework (5 mandatory self-checks + 5 quality gates)
+2. When to Invoke This Agent (USE/DELEGATE tables + Decision Tree)
+3. Enhanced Constitutional AI Principles (Target %, Self-Checks, Anti-Patterns, Metrics)
+
 ### What's New in v1.0.3
 
-**Major Optimization Release** (21 plugins updated)
+**Command Optimization Release** (21 plugins updated)
 
 - **Command Optimization**: 25-73% token reduction across plugins with hub-and-spoke architecture
 - **Execution Modes**: All commands now support quick/standard/comprehensive (or enterprise) modes with time estimates
 - **External Documentation**: ~30,000+ lines of comprehensive reference guides across all plugins
 - **Enhanced YAML Frontmatter**: Structured metadata for better command discovery and user experience
-- **100% Backward Compatibility**: All optimizations maintain full compatibility with previous versions
-
-**Key Highlights by Plugin:**
-
-- **ai-reasoning**: 46% command optimization (reflection, ultra-think)
-- **code-documentation**: 54% reduction with AST-based analysis
-- **cicd-automation**: 62% optimization with multi-agent error resolution
-- **quality-engineering**: 8 external docs (~6,455 lines) for validation frameworks
-- **systems-programming**: 8 external docs (~5,602 lines) for C/C++/Rust/Go
-- **unit-testing**: 50% reduction with execution modes and external docs (~5,858 lines)
-- **backend-development**: Enhanced feature-development with 3 execution modes
-- **machine-learning**: Enhanced ml-pipeline with data-engineer agent
 
 ## Statistics
 
 - **Total Plugins**: 31
-- **Total Agents**: 75
+- **Total Agents**: 74
 - **Total Commands**: 60+
 - **Total Skills**: 110+
 - **Categories**: 6 major categories
 
 ### Version Distribution
 
-- **v1.0.3**: 23 plugins (latest optimization release)
-- **v1.0.2**: 1 plugin (cli-tool-design)
-- **v1.0.2**: 1 plugin (jax-implementation)
-- **v1.0.1**: 8 plugins (scientific computing)
+- **v1.0.4**: 31 plugins (agent optimization release with nlsq-pro template)
+- **v1.0.3**: Previous optimization release
 
 ## Plugin Categories
 

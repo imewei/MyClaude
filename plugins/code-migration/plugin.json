@@ -1,7 +1,7 @@
 {
   "name": "code-migration",
   "displayName": "Code Migration",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Scientific code modernization with comprehensive legacy-to-modern framework migration. Specializes in Fortran/C/MATLAB to Python/JAX/Julia migrations while preserving numerical accuracy and achieving GPU acceleration. Features execution modes, external documentation, and systematic migration workflows.",
   "changelog": "v1.0.3: Command optimization with hub-and-spoke architecture achieving enhanced workflow efficiency through external documentation (~2,400 lines across 6 files). Added execution modes (quick/standard/comprehensive) for flexible time/scope control. Enhanced plugin.json with comprehensive metadata including capabilities, triggers, and execution modes. Created detailed CHANGELOG.md documenting all improvements. Updated README.md with new capabilities and optimization metrics. Maintains 100% backward compatibility with v1.0.2.",
   "category": "code-migration",
@@ -39,7 +39,7 @@
       "name": "Scientific Code Adoptor",
       "description": "Legacy scientific code modernization expert for cross-language migration. Expert in Fortran/C/MATLAB to Python/JAX/Julia with numerical accuracy preservation",
       "status": "active",
-      "version": "1.0.3",
+      "version": "1.0.4",
       "maturity": "90%",
       "capabilities": [
         "Fortran 77/90/95 to Python/JAX migration with GPU acceleration",
@@ -70,7 +70,7 @@
       "file": "commands/adopt-code.md",
       "description": "Comprehensive scientific code adoption and modernization workflow with systematic analysis, framework selection, and validation",
       "status": "active",
-      "version": "1.0.3",
+      "version": "1.0.4",
       "execution_modes": {
         "quick": {
           "time": "30-45 minutes",

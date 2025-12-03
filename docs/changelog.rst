@@ -17,6 +17,69 @@ Version Format: ``MAJOR.MINOR.PATCH``
 Current Version
 ---------------
 
+v1.0.4 (2025-12-03) - Agent Optimization Release
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+This release applies the nlsq-pro template pattern to all 74 agents across the marketplace.
+
+Added
+^^^^^
+
+**Agent Enhancements (74 agents)**
+
+- Pre-Response Validation Framework with 5 mandatory self-checks and 5 quality gates
+- "When to Invoke This Agent" sections with ✅ USE FOR and ❌ DELEGATE TO tables
+- Decision Trees for agent routing and selection
+- Enhanced Constitutional AI Principles with:
+  - Target percentages (95-100%)
+  - Core validation questions
+  - 5 self-check questions per principle
+  - 4 anti-patterns to avoid
+  - 3 measurable quality metrics
+
+**Template Structure**
+
+All agents now follow consistent structure:
+
+1. Pre-Response Validation Framework
+2. When to Invoke This Agent (USE/DELEGATE tables + Decision Tree)
+3. Enhanced Constitutional AI Principles (Target %, Self-Checks, Anti-Patterns, Metrics)
+
+Changed
+^^^^^^^
+
+- All 74 agents updated to v1.0.4 or latest patch version
+- Consistent versioning across all plugins
+- Improved agent delegation clarity with explicit routing tables
+
+**Agents Updated by Plugin:**
+
+- agent-orchestration: 2 agents (context-manager, multi-agent-orchestrator)
+- backend-development: 3 agents (backend-architect, graphql-architect, tdd-orchestrator)
+- cicd-automation: 5 agents (cloud-architect, deployment-engineer, devops-troubleshooter, kubernetes-architect, terraform-specialist)
+- code-documentation: 3 agents (code-reviewer, docs-architect, tutorial-engineer)
+- comprehensive-review: 3 agents (architect-review, code-reviewer, security-auditor)
+- debugging-toolkit: 2 agents (debugger, dx-optimizer)
+- deep-learning: 2 agents (neural-architecture-engineer, neural-network-master)
+- frontend-mobile-development: 2 agents (frontend-developer, mobile-developer)
+- full-stack-orchestration: 4 agents (deployment-engineer, performance-engineer, security-auditor, test-automator)
+- jax-implementation: 4 agents (jax-pro, jax-scientist, nlsq-pro, numpyro-pro)
+- julia-development: 4 agents (julia-developer, julia-pro, sciml-pro, turing-pro)
+- And 20+ more plugins with similar enhancements
+
+Previous Versions
+-----------------
+
+v1.0.3 (2025-11-08) - Command Optimization Release
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Major optimization release with 21 plugins updated.
+
+- Command Optimization: 25-73% token reduction with hub-and-spoke architecture
+- Execution Modes: All commands support quick/standard/comprehensive modes
+- External Documentation: ~30,000+ lines of reference guides
+- Enhanced YAML Frontmatter for command discovery
+
 v1.0.1 (2025-10-31) - Documentation Improvements
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 

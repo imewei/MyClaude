@@ -4,8 +4,8 @@ This directory contains professional LaTeX versions of the Claude Code Plugin Ma
 
 ## Files
 
-- **AGENTS_LIST.tex** - Complete catalog of all 73 agents with professional typesetting
-- **COMMANDS_LIST.tex** - Complete catalog of all 48 commands with beautiful formatting
+- **AGENTS_LIST.tex** - Complete catalog of all 74 agents with professional typesetting
+- **COMMANDS_LIST.tex** - Complete catalog of all 60+ commands with beautiful formatting
 - **latex_compile.sh** - Compilation script for generating PDFs
 
 ## Features

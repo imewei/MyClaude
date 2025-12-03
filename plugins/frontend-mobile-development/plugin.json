@@ -2,7 +2,7 @@
   "name": "frontend-mobile-development",
   "displayName": "Frontend & Mobile Development",
   "description": "Comprehensive frontend and mobile development with systematic Chain-of-Thought frameworks, Constitutional AI principles, and production-ready patterns for React 19, Next.js 15, React Native, Flutter, and native iOS/Android applications",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "keywords": [
     "frontend",
     "mobile",
@@ -45,7 +45,7 @@
       "file": "commands/component-scaffold.md",
       "name": "/component-scaffold",
       "description": "Orchestrate production-ready React/React Native component generation with multi-mode execution (quick: 5-10min analysis, standard: 15-30min full component, deep: 30-60min with tests/Storybook/a11y), TypeScript interfaces, styling approaches (CSS Modules/styled-components/Tailwind), and phase-based workflow (requirements, generation, styling, testing, validation)",
-      "version": "1.0.3",
+      "version": "1.0.4",
       "status": "active"
     }
   ],

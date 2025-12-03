@@ -1,6 +1,6 @@
 {
   "name": "molecular-simulation",
-  "version": "1.0.1",
+  "version": "1.0.4",
   "description": "Molecular dynamics and multiscale simulation with chain-of-thought reasoning framework, constitutional AI validation, structured output templates, and comprehensive polymer melt example for atomistic modeling across LAMMPS, GROMACS, HOOMD-blue with ML force fields",
   "author": "Wei Chen",
   "license": "MIT",

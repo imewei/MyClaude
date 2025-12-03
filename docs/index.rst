@@ -52,8 +52,8 @@ Statistics
 **Total Resources:**
 
 - 31 plugins
-- 73 agents
-- 48 commands
+- 74 agents
+- 60+ commands
 - 110 skills
 
 **By Category:**

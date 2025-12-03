@@ -2,7 +2,7 @@
 
 **Total Agents:** 74 across 31 plugins
 **Format:** `plugin:agent` (single colon)
-**Version:** 1.0.3 | **Last Updated:** January 8, 2025
+**Version:** 1.0.4 | **Last Updated:** December 3, 2025
 
 ---
 
@@ -252,8 +252,8 @@ comprehensive-review:code-reviewer
 - **Validation Report:** PLUGIN_LINT_REPORT.md
 - **Total Agents:** 74
 - **Total Plugins:** 31
-- **Version:** 1.0.3
+- **Version:** 1.0.4
 
 ---
 
-**Note:** This list was generated from v1.0.3 validated marketplace data with 100% plugin validation success rate.
+**Note:** This list was generated from v1.0.4 validated marketplace data with 100% plugin validation success rate.
