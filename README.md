@@ -1,4 +1,4 @@
-# MyClaude - Production-Grade Claude Code Plugins
+# MyClaude
 
 [![Plugins](https://img.shields.io/badge/Plugins-31-blue.svg)](https://myclaude.readthedocs.io/en/latest/plugins/)
 [![Agents](https://img.shields.io/badge/Agents-75-green.svg)](AGENTS_LIST.md)
