@@ -1,4 +1,5 @@
 # Minimal makefile for Sphinx documentation
+# Version: 1.0.4
 #
 
 # You can set these variables from the command line, and also

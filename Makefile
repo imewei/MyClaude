@@ -1,5 +1,5 @@
 # Makefile for Scientific Computing Workflows Marketplace
-# Version: 1.0.0
+# Version: 1.0.4
 
 .PHONY: help clean clean-all clean-python clean-docs clean-cache clean-build clean-reports \
         build docs docs-live test lint validate install dev-install plugin-enable-all
@@ -201,7 +201,7 @@ plugin-enable-all: ## Enable all plugins in Claude Code (requires restart)
 info: ## Show repository information
 	@echo "=== Repository Information ==="
 	@echo "Name: Scientific Computing Workflows Marketplace"
-	@echo "Version: 1.0.0"
+	@echo "Version: 1.0.4"
 	@echo "Author: Wei Chen"
 	@echo "Documentation: https://myclaude.readthedocs.io/en/latest/"
 	@echo "Repository: https://github.com/imewei/MyClaude"
@@ -213,7 +213,7 @@ info: ## Show repository information
 	@echo "Total Lines of Code: $$(find . -name '*.py' -o -name '*.md' -o -name '*.rst' | xargs wc -l 2>/dev/null | tail -1 | awk '{print $$1}')"
 
 version: ## Show current version
-	@echo "v1.0.0"
+	@echo "v1.0.4"
 
 ##@ Advanced Cleaning
 
