@@ -1,0 +1,53 @@
+name: Documentation
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'docs/**'
+      - '.readthedocs.yaml'
+  pull_request:
+    branches: [main]
+    paths:
+      - 'docs/**'
+      - '.readthedocs.yaml'
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: 'pip'
+          cache-dependency-path: 'docs/requirements.txt'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r docs/requirements.txt
+
+      - name: Build documentation
+        run: |
+          cd docs
+          make html
+
+      - name: Check for Sphinx warnings
+        run: |
+          cd docs
+          make html 2>&1 | tee build.log
+          if grep -i "warning" build.log; then
+            echo "::warning::Sphinx build produced warnings"
+          fi
+
+      - name: Upload documentation artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: documentation
+          path: docs/_build/html/
+          retention-days: 7
