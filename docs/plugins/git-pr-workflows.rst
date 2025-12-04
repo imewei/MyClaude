@@ -11,7 +11,7 @@ Git workflows, pull request management, branching strategies, code review proces
 
 **Metadata:**
 
-- **Version:** 1.0.0
+- **Version:** 1.0.4
 - **Category:** devops
 - **License:** MIT
 - **Author:** Scientific Computing Workflows
@@ -70,9 +70,10 @@ Skills
 
 .. skill:: Git & PR Patterns
 
-   Git workflow patterns, branching strategies, and pull request best practices
+   Master Git workflows, branching strategies, commit conventions, and pull request best practices for effective version control and team collaboration. Use when writing git commands, creating branches, or managing version control operations. Use when writing commit messages or following conventional commits format.
 
    **Status:** active
+   **Version:** 1.0.4
 
 Usage Examples
 --------------
