@@ -173,12 +173,12 @@ agents:
 | `code-reviewer` | `comprehensive-review:code-reviewer` | comprehensive-review |
 | `architect-review` | `comprehensive-review:architect-review` | comprehensive-review |
 | `backend-architect` | `backend-development:backend-architect` | backend-development |
-| `api-specialist` | `backend-development:api-specialist` | backend-development |
-| `database-expert` | `backend-development:database-expert` | backend-development |
+| `graphql-architect` | `backend-development:graphql-architect` | backend-development |
+| `tdd-orchestrator` | `backend-development:tdd-orchestrator` | backend-development |
 | `frontend-developer` | `frontend-mobile-development:frontend-developer` | frontend-mobile-development |
 | `mobile-developer` | `frontend-mobile-development:mobile-developer` | frontend-mobile-development |
-| `performance-engineer` | `full-stack-orchestration:performance-engineer` | full-stack-orchestration |
-| `security-auditor` | `full-stack-orchestration:security-auditor` | full-stack-orchestration |
+| `performance-engineer` | `observability-monitoring:performance-engineer` | observability-monitoring |
+| `security-auditor` | `comprehensive-review:security-auditor` | comprehensive-review |
 | `test-automator` | `unit-testing:test-automator` | unit-testing |
 | `debugger` | `debugging-toolkit:debugger` | debugging-toolkit |
 | `dx-optimizer` | `debugging-toolkit:dx-optimizer` | debugging-toolkit |

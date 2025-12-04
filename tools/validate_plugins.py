@@ -151,12 +151,38 @@ class PluginValidator:
             r'`([a-z][a-z0-9-]*:[a-z][a-z0-9-]*)`',  # `plugin:agent` in backticks
         ]
 
+        # Track if we're inside a fenced code block
+        in_code_block = False
+
+        # Generic placeholder patterns used in documentation examples
+        # These are not actual agent references
+        placeholder_patterns = {
+            'plugin:agent',      # Format example
+            'plugin-name:agent-name',
+            'plugin-a:agent',
+            'plugin-b:agent',
+            'plugin-c:agent',
+        }
+
         for line_num, line in enumerate(lines, 1):
+            # Toggle code block state on fence markers
+            if line.strip().startswith('```'):
+                in_code_block = not in_code_block
+                continue
+
+            # Skip validation inside code blocks (examples, documentation)
+            if in_code_block:
+                continue
+
             self.stats['agent_refs_checked'] += 1
 
             for pattern in patterns:
                 for match in re.finditer(pattern, line):
                     ref = match.group(1)
+
+                    # Skip placeholder patterns used in documentation
+                    if ref in placeholder_patterns:
+                        continue
 
                     # Check for double colon (wrong syntax)
                     if '::' in ref:

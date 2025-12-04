@@ -9,7 +9,7 @@ description: Security scanning and lock file validation templates for CI/CD pipe
 
 **Use Instead Of**: `/sci-ci-setup` command (removed in Week 2-3)
 
-**Recommended**: Use marketplace `cicd-automation:workflow-automate` + this skill
+**Recommended**: Use `/cicd-automation:workflow-automate` command + this skill
 
 ## When to use this skill
 
