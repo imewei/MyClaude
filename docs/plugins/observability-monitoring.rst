@@ -11,7 +11,7 @@ Observability, monitoring, logging, distributed tracing, and SLO/SLA management 
 
 **Metadata:**
 
-- **Version:** 1.0.0
+- **Version:** 1.0.4
 - **Category:** devops
 - **License:** MIT
 - **Author:** Scientific Computing Workflows

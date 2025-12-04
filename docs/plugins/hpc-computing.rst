@@ -11,7 +11,7 @@ High-performance computing and numerical methods for scientific computing across
 
 **Metadata:**
 
-- **Version:** 1.0.0
+- **Version:** 1.0.4
 - **Category:** uncategorized
 - **License:** MIT
 - **Author:** Scientific Computing Team

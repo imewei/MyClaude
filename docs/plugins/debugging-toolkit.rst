@@ -11,7 +11,7 @@ AI-assisted debugging with LLM-driven RCA, automated log correlation, observabil
 
 **Metadata:**
 
-- **Version:** 1.0.0
+- **Version:** 1.0.4
 - **Category:** dev-tools
 - **License:** MIT
 - **Author:** DevOps Team

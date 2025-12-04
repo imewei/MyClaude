@@ -19,7 +19,7 @@
   "name": "agent-orchestration",
   "source": "./plugins/agent-orchestration",
   "description": "Multi-agent system optimization, agent improvement workflows, and context management with multi-agent-orchestrator",
-  "version": "1.0.0",
+  "version": "1.0.4",
   "author": {
     "name": "Wei Chen",
     "url": "https://myclaude.readthedocs.io/en/latest/"
@@ -49,7 +49,7 @@
   "name": "backend-development",
   "source": "./plugins/backend-development",
   "description": "Backend API design, GraphQL architecture, and test-driven backend development",
-  "version": "1.0.0",
+  "version": "1.0.4",
   "author": {
     "name": "Wei Chen",
     "url": "https://myclaude.readthedocs.io/en/latest/"
@@ -85,7 +85,7 @@
   "name": "cicd-automation",
   "source": "./plugins/cicd-automation",
   "description": "CI/CD pipeline configuration, GitHub Actions/GitLab CI workflow setup, and automated deployment with fix-commit-errors command",
-  "version": "1.0.0",
+  "version": "1.0.4",
   "author": {
     "name": "Wei Chen",
     "url": "https://myclaude.readthedocs.io/en/latest/"
@@ -126,7 +126,7 @@
   "name": "cli-tool-design",
   "source": "./plugins/cli-tool-design",
   "description": "CLI tool design and developer automation expertise: command development, interactive prompts, workflow automation, and developer productivity tools",
-  "version": "1.0.0",
+  "version": "1.0.4",
   "author": {
     "name": "Wei Chen",
     "url": "https://myclaude.readthedocs.io/en/latest/"
@@ -172,7 +172,7 @@
   "name": "code-documentation",
   "source": "./plugins/code-documentation",
   "description": "Documentation generation, code explanation, and technical writing with automated doc generation, tutorial creation, and Sphinx updates",
-  "version": "1.0.0",
+  "version": "1.0.4",
   "author": {
     "name": "Wei Chen",
     "url": "https://myclaude.readthedocs.io/en/latest/"
@@ -205,7 +205,7 @@
   "name": "code-migration",
   "source": "./plugins/code-migration",
   "description": "Legacy scientific code modernization with cross-language migration for Fortran/C/MATLAB to Python/JAX/Julia while preserving numerical accuracy",
-  "version": "1.0.0",
+  "version": "1.0.4",
   "author": {
     "name": "Wei Chen",
     "url": "https://myclaude.readthedocs.io/en/latest/"
@@ -237,7 +237,7 @@
   "name": "codebase-cleanup",
   "source": "./plugins/codebase-cleanup",
   "description": "Technical debt reduction, dependency updates, and code refactoring automation",
-  "version": "1.0.0",
+  "version": "1.0.4",
   "author": {
     "name": "Wei Chen",
     "url": "https://myclaude.readthedocs.io/en/latest/"
@@ -268,7 +268,7 @@
   "name": "comprehensive-review",
   "source": "./plugins/comprehensive-review",
   "description": "Multi-perspective code analysis covering architecture, security, and best practices",
-  "version": "1.0.0",
+  "version": "1.0.4",
   "author": {
     "name": "Wei Chen",
     "url": "https://myclaude.readthedocs.io/en/latest/"
@@ -300,7 +300,7 @@
   "name": "data-visualization",
   "source": "./plugins/data-visualization",
   "description": "Scientific data visualization, UX design, and immersive AR/VR interfaces for compelling visual narratives",
-  "version": "1.0.0",
+  "version": "1.0.4",
   "author": {
     "name": "Wei Chen",
     "url": "https://myclaude.readthedocs.io/en/latest/"
@@ -328,7 +328,7 @@
   "name": "debugging-toolkit",
   "source": "./plugins/debugging-toolkit",
   "description": "Interactive debugging, developer experience optimization, and smart debugging workflows",
-  "version": "1.0.0",
+  "version": "1.0.4",
   "author": {
     "name": "Wei Chen",
     "url": "https://myclaude.readthedocs.io/en/latest/"
@@ -357,7 +357,7 @@
   "name": "ai-reasoning",
   "source": "./plugins/ai-reasoning",
   "description": "Advanced AI-powered cognitive tools for problem-solving, meta-analysis, and structured reasoning",
-  "version": "1.0.0",
+  "version": "1.0.4",
   "author": {
     "name": "Wei Chen",
     "url": "https://myclaude.readthedocs.io/en/latest/"
@@ -391,7 +391,7 @@
   "name": "deep-learning",
   "source": "./plugins/deep-learning",
   "description": "Comprehensive deep learning expertise: neural network theory, mathematical foundations, architecture design, multi-framework implementation (Flax, Equinox, Haiku, PyTorch), training diagnostics, and research translation with 6 practical skills",
-  "version": "1.0.0",
+  "version": "1.0.4",
   "author": {
     "name": "Wei Chen",
     "url": "https://myclaude.readthedocs.io/en/latest/"
@@ -435,7 +435,7 @@
   "name": "framework-migration",
   "source": "./plugins/framework-migration",
   "description": "Framework updates, migration planning, and architectural transformation workflows",
-  "version": "1.0.0",
+  "version": "1.0.4",
   "author": {
     "name": "Wei Chen",
     "url": "https://myclaude.readthedocs.io/en/latest/"
@@ -473,7 +473,7 @@
   "name": "frontend-mobile-development",
   "source": "./plugins/frontend-mobile-development",
   "description": "Frontend UI development and mobile application implementation across platforms",
-  "version": "1.0.0",
+  "version": "1.0.4",
   "author": {
     "name": "Wei Chen",
     "url": "https://myclaude.readthedocs.io/en/latest/"
@@ -503,7 +503,7 @@
   "name": "full-stack-orchestration",
   "source": "./plugins/full-stack-orchestration",
   "description": "Full-stack development orchestration coordinating frontend, backend, testing, security, performance, and deployment for end-to-end feature delivery",
-  "version": "1.0.0",
+  "version": "1.0.4",
   "author": {
     "name": "Wei Chen",
     "url": "https://myclaude.readthedocs.io/en/latest/"
@@ -543,7 +543,7 @@
   "name": "git-pr-workflows",
   "source": "./plugins/git-pr-workflows",
   "description": "Git workflow automation, pull request enhancement, and team onboarding processes",
-  "version": "1.0.0",
+  "version": "1.0.4",
   "author": {
     "name": "Wei Chen",
     "url": "https://myclaude.readthedocs.io/en/latest/"
@@ -574,7 +574,7 @@
   "name": "hpc-computing",
   "source": "./plugins/hpc-computing",
   "description": "High-performance computing and numerical methods for scientific computing across Python, Julia/SciML, C++, and Rust",
-  "version": "1.0.0",
+  "version": "1.0.4",
   "author": {
     "name": "Wei Chen",
     "url": "https://myclaude.readthedocs.io/en/latest/"
@@ -601,7 +601,7 @@
   "name": "jax-implementation",
   "source": "./plugins/jax-implementation",
   "description": "JAX programming expertise for functional transformations (jit/vmap/pmap), Flax NNX, Optax, and JAX-based physics applications (quantum, CFD, MD)",
-  "version": "1.0.0",
+  "version": "1.0.4",
   "author": {
     "name": "Wei Chen",
     "url": "https://myclaude.readthedocs.io/en/latest/"
@@ -633,7 +633,7 @@
   "name": "javascript-typescript",
   "source": "./plugins/javascript-typescript",
   "description": "Modern JavaScript/TypeScript development with ES6+, async patterns, Node.js backends, and advanced TypeScript type systems",
-  "version": "1.0.0",
+  "version": "1.0.4",
   "author": {
     "name": "Wei Chen",
     "url": "https://myclaude.readthedocs.io/en/latest/"
@@ -671,7 +671,7 @@
   "name": "julia-development",
   "source": "./plugins/julia-development",
   "description": "Comprehensive Julia development plugin with specialized agents for high-performance computing, package development, scientific machine learning (SciML), and Bayesian inference. Expert guidance for building robust Julia applications with optimization, monitoring, and deep learning capabilities.",
-  "version": "1.0.0",
+  "version": "1.0.4",
   "author": {
     "name": "Wei Chen",
     "url": "https://myclaude.readthedocs.io/en/latest/"
@@ -761,7 +761,7 @@
   "name": "llm-application-dev",
   "source": "./plugins/llm-application-dev",
   "description": "LLM application development with prompt engineering, RAG implementation, vector databases, LangChain, and modern AI integration patterns for building intelligent applications",
-  "version": "1.0.0",
+  "version": "1.0.4",
   "author": {
     "name": "Wei Chen",
     "url": "https://myclaude.readthedocs.io/en/latest/"
@@ -809,7 +809,7 @@
   "name": "machine-learning",
   "source": "./plugins/machine-learning",
   "description": "Comprehensive machine learning and data science expertise: statistical analysis, classical ML algorithms, deep learning, production ML engineering, model deployment, MLOps, and data science workflows",
-  "version": "1.0.0",
+  "version": "1.0.4",
   "author": {
     "name": "Wei Chen",
     "url": "https://myclaude.readthedocs.io/en/latest/"
@@ -888,7 +888,7 @@
   "name": "molecular-simulation",
   "source": "./plugins/molecular-simulation",
   "description": "Molecular dynamics and multiscale simulation with LAMMPS, GROMACS, ML force fields, and materials property prediction",
-  "version": "1.0.0",
+  "version": "1.0.4",
   "author": {
     "name": "Wei Chen",
     "url": "https://myclaude.readthedocs.io/en/latest/"
@@ -916,7 +916,7 @@
   "name": "multi-platform-apps",
   "source": "./plugins/multi-platform-apps",
   "description": "Cross-platform application development coordinating web, iOS, Android, and desktop implementations",
-  "version": "1.0.0",
+  "version": "1.0.4",
   "author": {
     "name": "Wei Chen",
     "url": "https://myclaude.readthedocs.io/en/latest/"
@@ -951,7 +951,7 @@
   "name": "observability-monitoring",
   "source": "./plugins/observability-monitoring",
   "description": "Metrics collection, logging infrastructure, distributed tracing, SLO implementation, and monitoring dashboards",
-  "version": "1.0.0",
+  "version": "1.0.4",
   "author": {
     "name": "Wei Chen",
     "url": "https://myclaude.readthedocs.io/en/latest/"
@@ -994,7 +994,7 @@
   "name": "python-development",
   "source": "./plugins/python-development",
   "description": "Python development with FastAPI, Django, async patterns, testing, packaging, and performance optimization",
-  "version": "1.0.0",
+  "version": "1.0.4",
   "author": {
     "name": "Wei Chen",
     "url": "https://myclaude.readthedocs.io/en/latest/"
@@ -1034,7 +1034,7 @@
   "name": "research-methodology",
   "source": "./plugins/research-methodology",
   "description": "Research intelligence, methodology design, literature analysis, and evidence-based insights for scientific investigation",
-  "version": "1.0.0",
+  "version": "1.0.4",
   "author": {
     "name": "Wei Chen",
     "url": "https://myclaude.readthedocs.io/en/latest/"
@@ -1060,7 +1060,7 @@
   "name": "statistical-physics",
   "source": "./plugins/statistical-physics",
   "description": "Statistical physics and correlation function analysis for experimental data and simulations",
-  "version": "1.0.0",
+  "version": "1.0.4",
   "author": {
     "name": "Wei Chen",
     "url": "https://myclaude.readthedocs.io/en/latest/"
@@ -1086,7 +1086,7 @@
   "name": "systems-programming",
   "source": "./plugins/systems-programming",
   "description": "Systems programming with Rust, C, C++, and Go for high-performance, low-level, and systems-level development",
-  "version": "1.0.0",
+  "version": "1.0.4",
   "author": {
     "name": "Wei Chen",
     "url": "https://myclaude.readthedocs.io/en/latest/"
@@ -1120,7 +1120,7 @@
   "name": "quality-engineering",
   "source": "./plugins/quality-engineering",
   "description": "Comprehensive quality assurance, validation, and correctness verification tools",
-  "version": "1.0.0",
+  "version": "1.0.4",
   "author": {
     "name": "Wei Chen",
     "url": "https://myclaude.readthedocs.io/en/latest/"
@@ -1153,7 +1153,7 @@
   "name": "unit-testing",
   "source": "./plugins/unit-testing",
   "description": "Comprehensive test automation, generation, and execution with iterative fixing until 100% pass rate",
-  "version": "1.0.0",
+  "version": "1.0.4",
   "author": {
     "name": "Wei Chen",
     "url": "https://myclaude.readthedocs.io/en/latest/"

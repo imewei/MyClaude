@@ -11,7 +11,7 @@ Scientific data visualization, UX design, and immersive AR/VR interfaces with Py
 
 **Metadata:**
 
-- **Version:** 1.0.0
+- **Version:** 1.0.4
 - **Category:** scientific-computing
 - **License:** MIT
 - **Author:** Scientific Computing Team

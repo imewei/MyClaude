@@ -11,7 +11,7 @@ Codebase cleanup and technical debt reduction including dead code elimination, d
 
 **Metadata:**
 
-- **Version:** 1.0.0
+- **Version:** 1.0.4
 - **Category:** development
 - **License:** MIT
 - **Author:** Scientific Computing Workflows

@@ -11,7 +11,7 @@ Comprehensive multi-platform application development with Flutter, React Native,
 
 **Metadata:**
 
-- **Version:** 1.0.0
+- **Version:** 1.0.4
 - **Category:** uncategorized
 - **License:** MIT
 - **Author:** Claude Code Team

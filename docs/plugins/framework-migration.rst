@@ -11,7 +11,7 @@ Framework and technology migration including Angular/React modernization, databa
 
 **Metadata:**
 
-- **Version:** 1.0.0
+- **Version:** 1.0.4
 - **Category:** development
 - **License:** MIT
 - **Author:** Scientific Computing Workflows
