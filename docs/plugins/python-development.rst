@@ -11,7 +11,7 @@ Master Python 3.12+ with modern tools, async patterns, FastAPI/Django frameworks
 
 **Metadata:**
 
-- **Version:** 1.0.0
+- **Version:** 1.0.4
 - **Category:** development
 - **License:** MIT
 - **Author:** Wei Chen <https://github.com/Wei Chen>

@@ -194,7 +194,7 @@ plugin-list: ## List all plugins with their versions
 
 plugin-enable-all: ## Enable all plugins in Claude Code (requires restart)
 	@echo "Enabling all plugins in Claude Code..."
-	@python3 scripts/enable-all-plugins.py
+	@python3 tools/enable-all-plugins.py
 
 ##@ Information
 

@@ -6,254 +6,228 @@
 
 ---
 
-## Scientific Computing & Specialized (18 agents)
+## Scientific Computing (16 agents)
 
 ### julia-development (4 agents)
-- **julia-development:julia-pro** - General Julia programming expert for high-performance computing, scientific simulations, data analysis, and machine learning with multiple dispatch mastery
-- **julia-development:sciml-pro** - SciML ecosystem expert for differential equations, ModelingToolkit, Optimization.jl, NeuralPDE, and Catalyst with auto-detection and template generation
-- **julia-development:turing-pro** - Bayesian inference and probabilistic programming expert specializing in Turing.jl, MCMC methods, variational inference, and model comparison
-- **julia-development:julia-developer** - Package development specialist for creating robust Julia packages with testing, CI/CD, documentation, and web development using Genie.jl
+- **julia-development:julia-pro** - Master Julia programming with 6-step decision framework (Problem Analysis, Multiple Dispatch Strategy, Performance Optimization, Testing, Documentation, Deployment)
+- **julia-development:sciml-pro** - Master SciML ecosystem with 6-step framework (Problem Characterization, Solver Selection Strategy, Performance Optimization, Sensitivity Analysis, Validation, Deployment)
+- **julia-development:turing-pro** - Master Bayesian inference with 6-step framework (Bayesian Model Formulation, Inference Strategy Selection, Prior Specification, Diagnostics, Model Comparison, Deployment)
+- **julia-development:julia-developer** - Master Julia package development with 6-step framework (Package Scope & Architecture, Project Structure & Organization, Testing Infrastructure, CI/CD, Documentation, Registry)
 
 ### jax-implementation (4 agents)
-- **jax-implementation:jax-pro** - JAX programming expert for high-performance numerical computing, automatic differentiation, JIT compilation, and GPU acceleration
-- **jax-implementation:jax-scientist** - JAX applications expert for physics-informed neural networks, scientific computing workflows, and research implementation
-- **jax-implementation:nlsq-pro** - Nonlinear least squares optimization specialist using JAX for curve fitting, parameter estimation, and inverse problems
-- **jax-implementation:numpyro-pro** - NumPyro expert for Bayesian inference with probabilistic programming, MCMC sampling, and variational inference using JAX
+- **jax-implementation:jax-pro** - Master JAX programming with 6-step decision framework (Problem Analysis, Transformation Strategy, Performance Optimization, GPU Acceleration, Testing, Deployment)
+- **jax-implementation:jax-scientist** - Master computational physics with JAX leveraging 6-step framework (Physics Analysis, JAX-Physics Integration, Numerical Stability, Validation, Visualization, Deployment)
+- **jax-implementation:nlsq-pro** - Master GPU-accelerated nonlinear least squares with 6-step framework (Problem Characterization, Algorithm Selection, Performance Optimization, Robustness, Validation, Scaling)
+- **jax-implementation:numpyro-pro** - Master NumPyro Bayesian inference with 6-step framework (Bayesian Formulation, Model Specification, Inference Strategy, Diagnostics, Model Comparison, Production)
 
 ### hpc-computing (1 agent)
-- **hpc-computing:hpc-numerical-coordinator** - High-performance computing coordinator for scientific computing workflows, numerical optimization, parallel computing, and GPU acceleration strategy
+- **hpc-computing:hpc-numerical-coordinator** - HPC and numerical methods coordinator with 6-step computational framework (Problem Analysis, Language Selection, Parallel Strategy, GPU Acceleration, Optimization, Scaling)
 
 ### molecular-simulation (1 agent)
-- **molecular-simulation:simulation-expert** - Molecular dynamics and multiscale simulation expert for atomistic modeling with LAMMPS, GROMACS, ML force fields, and trajectory analysis
+- **molecular-simulation:simulation-expert** - MD and multiscale simulation expert with 6-phase chain-of-thought reasoning framework (problem analysis, method selection, force field, simulation setup, analysis, validation)
 
 ### statistical-physics (2 agents)
-- **statistical-physics:correlation-function-expert** - Correlation function specialist for statistical physics, higher-order correlations, FFT-based algorithms, JAX-accelerated GPU computation, and experimental data interpretation
-- **statistical-physics:non-equilibrium-expert** - Non-equilibrium statistical physicist for driven systems, active matter, fluctuation theorems, transport theory, and stochastic dynamics
-
-### observability-monitoring (4 agents)
-- **observability-monitoring:observability-engineer** - Production monitoring, logging, and tracing expert specializing in OpenTelemetry, Prometheus, Grafana, distributed tracing, and SLI/SLO management
-- **observability-monitoring:performance-engineer** - Application optimization and scalable system performance expert with OpenTelemetry, distributed tracing, load testing, caching strategies, and Core Web Vitals
-- **observability-monitoring:database-optimizer** - Database performance tuning expert for query optimization, indexing strategies, N+1 resolution, caching, partitioning, and cloud database optimization
-- **observability-monitoring:network-engineer** - Cloud networking and security architectures expert for multi-cloud connectivity, service mesh, zero-trust networking, SSL/TLS, and global load balancing
-
-### data-visualization (1 agent)
-- **data-visualization:visualization-interface** - Scientific data visualization and UX design expert with Python, Julia, Matplotlib, Plotly, Makie.jl, D3.js, Dash, and Streamlit
-
----
-
-## Development (22 agents)
-
-### python-development (3 agents)
-- **python-development:python-pro** - Modern Python 3.12+ expert with async programming, performance optimization, uv package manager, ruff linting, and production-ready practices
-- **python-development:fastapi-pro** - High-performance async API specialist using FastAPI, SQLAlchemy 2.0, Pydantic V2, microservices patterns, and WebSockets
-- **python-development:django-pro** - Django 5.x expert with async views, Django REST Framework, Celery task queues, Django Channels, and scalable web application architecture
-
-### backend-development (3 agents)
-- **backend-development:backend-architect** - Scalable API design and microservices architecture expert for REST/GraphQL/gRPC APIs, event-driven architectures, service mesh patterns, and distributed systems
-- **backend-development:graphql-architect** - Modern GraphQL specialist with federation, performance optimization, enterprise security, advanced caching, and real-time systems
-- **backend-development:tdd-orchestrator** - Test-driven development orchestrator for red-green-refactor discipline, multi-agent workflow coordination, and comprehensive TDD practices
-
-### frontend-mobile-development (2 agents)
-- **frontend-mobile-development:frontend-developer** - React components and responsive layouts specialist with React 19, Next.js 15, modern frontend architecture, performance optimization, and accessibility
-- **frontend-mobile-development:mobile-developer** - React Native, Flutter, and native mobile app developer with cross-platform expertise, native integrations, offline sync, and app store optimization
-
-### javascript-typescript (2 agents)
-- **javascript-typescript:javascript-pro** - Modern JavaScript ES6+ expert with async patterns, Node.js APIs, promises, event loops, and browser/Node compatibility
-- **javascript-typescript:typescript-pro** - Advanced TypeScript specialist with complex type systems, generics, strict type safety, decorators, and enterprise-grade patterns
-
-### systems-programming (4 agents)
-- **systems-programming:rust-pro** - Rust 1.75+ expert with async patterns, advanced type system features, Tokio, axum, and production-ready systems programming
-- **systems-programming:c-pro** - C programming specialist for systems programming, embedded development, memory management, POSIX APIs, and low-level optimization
-- **systems-programming:cpp-pro** - Modern C++11/14/17/20/23 expert with template metaprogramming, RAII, move semantics, STL algorithms, and high-performance systems
-- **systems-programming:golang-pro** - Go 1.21+ expert with modern patterns, advanced concurrency, generics, workspaces, performance optimization, and production microservices
-
-### multi-platform-apps (6 agents)
-- **multi-platform-apps:flutter-expert** - Flutter development master with Dart 3, advanced widgets, state management, animations, testing, and multi-platform deployment (mobile, web, desktop, embedded)
-- **multi-platform-apps:ios-developer** - Native iOS applications developer with Swift/SwiftUI, iOS 18, UIKit integration, Core Data, networking, and App Store optimization
-- **multi-platform-apps:mobile-developer** - React Native, Flutter, and native mobile apps developer with cross-platform architecture, native integrations, offline sync, and app store optimization
-- **multi-platform-apps:frontend-developer** - React components, responsive layouts, and client-side state management specialist with React 19, Next.js 15, and modern frontend architecture
-- **multi-platform-apps:backend-architect** - Scalable API design and microservices architecture expert for multi-platform app backends
-- **multi-platform-apps:ui-ux-designer** - Interface design, wireframes, and design systems creator with user research, accessibility standards, design tokens, and inclusive design
-
-### llm-application-dev (2 agents)
-- **llm-application-dev:ai-engineer** - Production-ready LLM applications builder with advanced RAG systems, vector search, multimodal AI, agent orchestration, and enterprise AI integrations
-- **llm-application-dev:prompt-engineer** - Advanced prompting techniques and LLM optimization expert with chain-of-thought, constitutional AI, and production prompt strategies
-
----
-
-## AI/ML (6 agents)
+- **statistical-physics:correlation-function-expert** - Correlation function expert with 8-step systematic workflow and statistical validation principles for higher-order correlations, FFT-based algorithms, and JAX-accelerated GPU computation
+- **statistical-physics:non-equilibrium-expert** - Non-equilibrium statistical physicist expert with 8-step systematic development process for driven systems, active matter, fluctuation theorems, and transport theory
 
 ### deep-learning (2 agents)
-- **deep-learning:neural-architecture-engineer** - Neural architecture specialist for deep learning design with transformers, CNNs, RNNs, multi-framework implementation (Flax, Equinox, Haiku, PyTorch)
-- **deep-learning:neural-network-master** - Deep learning theory expert for mathematical foundations, optimization theory, training diagnostics, research translation, and pedagogical explanations
+- **deep-learning:neural-architecture-engineer** - Neural architecture specialist with 5-step design framework and Constitutional AI principles for deep learning design, transformers, CNNs, RNNs, and training strategies
+- **deep-learning:neural-network-master** - Deep learning theory expert with 4-step diagnostic framework for mathematical foundations, optimization theory, training diagnostics, and research translation
+
+### data-visualization (1 agent)
+- **data-visualization:visualization-interface** - Visualization and interface expert specializing in scientific data visualization, UX design, and immersive technologies with Python, Julia, Matplotlib, Plotly, Makie.jl, D3.js, Dash, and Streamlit
+
+### research-methodology (1 agent)
+- **research-methodology:research-intelligence** - Research intelligence expert specializing in research methodology and information discovery with systematic 8-step development process for literature analysis and evidence-based insights
+
+---
+
+## Development (29 agents)
+
+### python-development (3 agents)
+- **python-development:python-pro** - Master Python 3.12+ with modern features, async programming, performance optimization, uv package manager, and production-ready practices
+- **python-development:fastapi-pro** - Build high-performance async APIs with FastAPI, SQLAlchemy 2.0, Pydantic V2, and microservices patterns
+- **python-development:django-pro** - Master Django 5.x with async views, Django REST Framework, Celery task queues, and scalable web architecture
+
+### javascript-typescript (2 agents)
+- **javascript-typescript:javascript-pro** - Master modern JavaScript (ES6+, ES2024) with 6-step decision framework for async patterns, Node.js APIs, and browser/Node compatibility
+- **javascript-typescript:typescript-pro** - Master TypeScript with advanced type systems (generics, conditional types, mapped types) and 6-step framework for strict type safety
+
+### backend-development (3 agents)
+- **backend-development:backend-architect** - Expert backend architect specializing in scalable API design, microservices architecture, and distributed systems
+- **backend-development:graphql-architect** - Master modern GraphQL with federation, performance optimization, and enterprise security
+- **backend-development:tdd-orchestrator** - Master TDD orchestrator specializing in red-green-refactor discipline and multi-agent workflow coordination
+
+### frontend-mobile-development (2 agents)
+- **frontend-mobile-development:frontend-developer** - Frontend expert with 5-step Development Framework for React 19, Next.js 15, and modern responsive development
+- **frontend-mobile-development:mobile-developer** - Mobile specialist with 5-step Mobile Development Framework for React Native, Flutter, and cross-platform development
+
+### multi-platform-apps (6 agents)
+- **multi-platform-apps:backend-architect** - Expert backend architect for scalable API design and microservices with 6-phase reasoning framework
+- **multi-platform-apps:frontend-developer** - Modern React 19 and Next.js 15 web development with 6-phase reasoning framework
+- **multi-platform-apps:mobile-developer** - Cross-platform mobile development with React Native New Architecture and Flutter
+- **multi-platform-apps:flutter-expert** - Master Flutter development with Dart 3, advanced widgets, and multi-platform deployment
+- **multi-platform-apps:ios-developer** - Native iOS development with Swift 6 and SwiftUI with 6-phase reasoning framework
+- **multi-platform-apps:ui-ux-designer** - Design systems, accessibility-first UX, and user research expert with 6-phase reasoning framework
+
+### systems-programming (4 agents)
+- **systems-programming:c-pro** - Master C programming with systematic development process, memory safety validation, POSIX APIs, and error handling patterns
+- **systems-programming:cpp-pro** - Master modern C++11/14/17/20/23 with systematic development process, RAII patterns, template metaprogramming, and move semantics
+- **systems-programming:rust-pro** - Master Rust 1.75+ with systematic development process, ownership patterns, async Tokio, type safety, and zero-cost abstractions
+- **systems-programming:golang-pro** - Master Go 1.21+ with systematic development process, goroutines, channels, context patterns, and observability
+
+### llm-application-dev (2 agents)
+- **llm-application-dev:ai-engineer** - Production-ready LLM application development with chain-of-thought reasoning, constitutional AI self-correction, and systematic validation
+- **llm-application-dev:prompt-engineer** - Advanced prompt engineering with meta-prompting framework, constitutional principles, iterative refinement, and performance optimization
+
+### cli-tool-design (1 agent)
+- **cli-tool-design:command-systems-engineer** - Command systems engineer specializing in CLI tool design and developer automation with command development and interactive prompts
+
+### full-stack-orchestration (4 agents)
+- **full-stack-orchestration:deployment-engineer** - Expert deployment engineer with 6-step CI/CD framework for GitOps workflows, progressive delivery, and container security
+- **full-stack-orchestration:performance-engineer** - Expert performance engineer with 6-step Performance framework for optimization and scalable system performance
+- **full-stack-orchestration:security-auditor** - Expert security auditor with 6-step Security framework for DevSecOps, threat modeling, and compliance
+- **full-stack-orchestration:test-automator** - Expert test automation engineer with 6-step Testing framework for TDD excellence and AI-powered testing
+
+### agent-orchestration (2 agents)
+- **agent-orchestration:context-manager** - Elite AI context engineering specialist mastering dynamic context management, vector databases, knowledge graphs, and intelligent memory systems
+- **agent-orchestration:multi-agent-orchestrator** - Multi-agent orchestrator specializing in workflow coordination and distributed systems with agent team assembly and task allocation
+
+---
+
+## AI & Machine Learning (4 agents)
 
 ### machine-learning (4 agents)
-- **machine-learning:data-scientist** - Advanced analytics, machine learning, and statistical modeling expert for complex data analysis, predictive modeling, and business intelligence
-- **machine-learning:data-engineer** - Expert data engineer specializing in scalable data pipelines, ETL/ELT architecture, data quality frameworks, and modern data infrastructure
-- **machine-learning:ml-engineer** - Production ML systems builder with PyTorch 2.x, TensorFlow, model serving, feature engineering, A/B testing, and monitoring
-- **machine-learning:mlops-engineer** - Comprehensive ML pipelines, experiment tracking, and model registries specialist with MLflow, Kubeflow, automated training, deployment, and monitoring
+- **machine-learning:data-scientist** - Expert data scientist with 6-phase chain-of-thought reasoning framework for advanced analytics, machine learning, and statistical modeling
+- **machine-learning:data-engineer** - Expert data engineer specializing in scalable data pipelines, ETL/ELT architecture, data quality frameworks, and production data infrastructure
+- **machine-learning:ml-engineer** - Expert ML engineer with 6-phase production engineering framework for model serving, feature engineering, and inference optimization
+- **machine-learning:mlops-engineer** - Expert MLOps engineer with 6-phase infrastructure framework for ML pipelines, experiment tracking, and model registries
 
 ---
 
 ## DevOps & Infrastructure (10 agents)
 
 ### cicd-automation (5 agents)
-- **cicd-automation:deployment-engineer** - Modern CI/CD pipelines and deployment automation expert with GitHub Actions, ArgoCD/Flux, progressive delivery, container security, and platform engineering
-- **cicd-automation:kubernetes-architect** - Cloud-native infrastructure and advanced GitOps workflows specialist with EKS/AKS/GKE, service mesh (Istio/Linkerd), progressive delivery, and multi-tenancy
-- **cicd-automation:cloud-architect** - AWS/Azure/GCP multi-cloud infrastructure design expert with advanced IaC (Terraform/OpenTofu/CDK), FinOps cost optimization, and modern architectural patterns
-- **cicd-automation:terraform-specialist** - Terraform/OpenTofu specialist for advanced IaC automation, state management, module design, multi-cloud deployments, GitOps workflows, and policy as code
-- **cicd-automation:devops-troubleshooter** - DevOps troubleshooter for rapid incident response, advanced debugging, Kubernetes debugging, performance optimization, and root cause analysis
+- **cicd-automation:cloud-architect** - Expert cloud architect specializing in AWS/Azure/GCP multi-cloud infrastructure design, advanced IaC (Terraform/OpenTofu/CDK), and FinOps cost optimization
+- **cicd-automation:deployment-engineer** - Expert deployment engineer specializing in modern CI/CD pipelines, GitOps workflows (ArgoCD/Flux), and advanced deployment automation
+- **cicd-automation:devops-troubleshooter** - Expert DevOps troubleshooter specializing in rapid incident response, advanced debugging, and modern observability
+- **cicd-automation:kubernetes-architect** - Expert Kubernetes architect specializing in cloud-native infrastructure, advanced GitOps workflows (ArgoCD/Flux), and enterprise container orchestration
+- **cicd-automation:terraform-specialist** - Expert Terraform/OpenTofu specialist mastering advanced IaC automation, state management, and enterprise infrastructure patterns
 
 ### git-pr-workflows (1 agent)
-- **git-pr-workflows:code-reviewer** - Elite code review expert for AI-powered code analysis, security vulnerabilities, performance optimization, and production reliability with modern static analysis tools
+- **git-pr-workflows:code-reviewer** - Elite code review expert with 6-step Chain-of-Thought framework for AI-powered code analysis, security vulnerabilities, and production reliability
 
-### full-stack-orchestration (4 agents)
-- **full-stack-orchestration:deployment-engineer** - Modern CI/CD pipelines and deployment automation expert for full-stack applications
-- **full-stack-orchestration:performance-engineer** - Application optimization and scalable system performance expert for full-stack environments
-- **full-stack-orchestration:security-auditor** - DevSecOps and comprehensive cybersecurity expert with vulnerability assessment, threat modeling, OWASP standards, and compliance frameworks
-- **full-stack-orchestration:test-automator** - AI-powered test automation master with modern frameworks, self-healing tests, and comprehensive quality engineering
+### observability-monitoring (4 agents)
+- **observability-monitoring:observability-engineer** - Expert in observability, monitoring, distributed tracing, and production system visibility with OpenTelemetry, Prometheus, and Grafana
+- **observability-monitoring:performance-engineer** - Specialist in performance monitoring, optimization, and system reliability with Core Web Vitals and distributed tracing
+- **observability-monitoring:database-optimizer** - Expert in database performance monitoring and query optimization with indexing strategies and N+1 resolution
+- **observability-monitoring:network-engineer** - Specialist in network monitoring, latency optimization, and distributed system observability with service mesh and zero-trust
 
 ---
 
-## Code Quality & Tools (14 agents)
-
-### unit-testing (2 agents)
-- **unit-testing:test-automator** - AI-powered test automation master with modern frameworks, self-healing tests, comprehensive quality engineering, and CI/CD integration
-- **unit-testing:debugger** - AI-assisted debugging specialist for errors, test failures, LLM-driven root cause analysis, automated log correlation, and distributed system debugging
+## Quality & Testing (7 agents)
 
 ### comprehensive-review (3 agents)
-- **comprehensive-review:code-reviewer** - Elite code review expert for AI-powered code analysis, security vulnerabilities, performance optimization, and production reliability
-- **comprehensive-review:architect-review** - Software architect master for modern architecture patterns, clean architecture, microservices, event-driven systems, and domain-driven design
-- **comprehensive-review:security-auditor** - DevSecOps and cybersecurity expert for vulnerability assessment, threat modeling, secure authentication (OAuth2/OIDC), OWASP standards, and compliance
+- **comprehensive-review:architect-reviewer** - Master software architect specializing in architecture patterns, clean architecture, microservices, event-driven systems, and DDD
+- **comprehensive-review:code-reviewer** - Elite code review expert specializing in modern AI-powered code analysis, security vulnerabilities, and performance optimization
+- **comprehensive-review:security-auditor** - Expert security auditor specializing in DevSecOps, comprehensive cybersecurity, compliance frameworks, and vulnerability assessment
+
+### unit-testing (2 agents)
+- **unit-testing:debugger** - AI-assisted debugging specialist with systematic 8-step process, LLM-driven root cause analysis, and automated log correlation
+- **unit-testing:test-automator** - Master test automation engineer with systematic 8-step process, TDD excellence, AI-powered testing, and comprehensive quality engineering
 
 ### codebase-cleanup (2 agents)
-- **codebase-cleanup:code-reviewer** - Elite code review expert specializing in AI-powered analysis for codebase maintenance and cleanup
-- **codebase-cleanup:test-automator** - AI-powered test automation master for ensuring code quality during cleanup and refactoring
+- **codebase-cleanup:code-reviewer** - Elite code review expert specializing in modern AI-powered code analysis, security vulnerabilities, and performance optimization
+- **codebase-cleanup:test-automator** - Master AI-powered test automation with modern frameworks, self-healing tests, comprehensive quality engineering, and TDD
+
+---
+
+## Tools & Migration (8 agents)
 
 ### code-documentation (3 agents)
-- **code-documentation:code-reviewer** - Elite code review expert for documentation quality assurance and technical accuracy
-- **code-documentation:docs-architect** - Technical documentation creator from existing codebases, analyzing architecture, design patterns, and implementation details for comprehensive manuals
-- **code-documentation:tutorial-engineer** - Step-by-step tutorials and educational content creator transforming complex concepts into progressive learning experiences with hands-on examples
-
-### debugging-toolkit (2 agents)
-- **debugging-toolkit:debugger** - AI-assisted debugging specialist with LLM-driven root cause analysis, automated log correlation, observability integration, and distributed system debugging
-- **debugging-toolkit:dx-optimizer** - Developer experience specialist improving tooling, setup, workflows, and removing development friction
+- **code-documentation:code-reviewer** - Elite code review expert specializing in modern AI-powered code analysis, security vulnerabilities, and performance optimization
+- **code-documentation:docs-architect** - Creates comprehensive technical documentation from existing codebases, analyzing architecture, design patterns, and implementation details
+- **code-documentation:tutorial-engineer** - Creates step-by-step tutorials and educational content from code, transforming complex concepts into progressive learning experiences
 
 ### code-migration (1 agent)
 - **code-migration:scientific-code-adoptor** - Legacy scientific code modernization expert for cross-language migration (Fortran/C/MATLAB to Python/JAX/Julia) with numerical accuracy preservation
 
 ### framework-migration (2 agents)
-- **framework-migration:legacy-modernizer** - Legacy codebases refactorer for framework migrations, outdated framework updates, and gradual modernization with technical debt reduction
-- **framework-migration:architect-review** - Software architect master for reviewing framework migration designs and architectural integrity
+- **framework-migration:architect-reviewer** - Master software architect with 5-step Architecture Review Framework for migration planning and architectural integrity
+- **framework-migration:legacy-modernizer** - Legacy modernization specialist with 6-step Legacy Modernization Framework for gradual modernization and technical debt reduction
 
-### cli-tool-design (1 agent)
-- **cli-tool-design:command-systems-engineer** - Command systems engineer for CLI tool design, command development, interactive prompts, and developer automation
-
----
-
-## Orchestration & Research (3 agents)
-
-### agent-orchestration (2 agents)
-- **agent-orchestration:multi-agent-orchestrator** - Multi-agent orchestrator for workflow coordination, distributed systems, agent team assembly, and task allocation for scalable collaboration
-- **agent-orchestration:context-manager** - Elite AI context engineering specialist for dynamic context management, vector databases, knowledge graphs, and intelligent memory systems across multi-agent workflows
-
-### research-methodology (1 agent)
-- **research-methodology:research-intelligence** - Research intelligence expert for research methodology, information discovery, literature analysis, and trend forecasting
+### debugging-toolkit (2 agents)
+- **debugging-toolkit:ai-assisted-debugger** - AI-assisted debugging specialist with LLM-driven RCA, error pattern recognition, automated hypothesis generation, and production incident response
+- **debugging-toolkit:dx-optimizer** - Developer Experience optimization specialist with systematic 5-step framework for tooling, setup, and workflow improvements
 
 ---
 
 ## Quick Reference by Plugin
 
-| Plugin | Agent Count | Agents |
-|--------|-------------|---------|
-| multi-platform-apps | 6 | flutter-expert, ios-developer, mobile-developer, frontend-developer, backend-architect, ui-ux-designer |
-| cicd-automation | 5 | deployment-engineer, kubernetes-architect, cloud-architect, terraform-specialist, devops-troubleshooter |
-| julia-development | 4 | julia-pro, sciml-pro, turing-pro, julia-developer |
-| jax-implementation | 4 | jax-pro, jax-scientist, nlsq-pro, numpyro-pro |
-| observability-monitoring | 4 | observability-engineer, performance-engineer, database-optimizer, network-engineer |
-| systems-programming | 4 | rust-pro, c-pro, cpp-pro, golang-pro |
-| full-stack-orchestration | 4 | deployment-engineer, performance-engineer, security-auditor, test-automator |
-| comprehensive-review | 3 | code-reviewer, architect-review, security-auditor |
-| python-development | 3 | python-pro, fastapi-pro, django-pro |
-| backend-development | 3 | backend-architect, graphql-architect, tdd-orchestrator |
-| machine-learning | 4 | data-scientist, data-engineer, ml-engineer, mlops-engineer |
-| code-documentation | 3 | code-reviewer, docs-architect, tutorial-engineer |
-| deep-learning | 2 | neural-architecture-engineer, neural-network-master |
-| frontend-mobile-development | 2 | frontend-developer, mobile-developer |
-| javascript-typescript | 2 | javascript-pro, typescript-pro |
-| llm-application-dev | 2 | ai-engineer, prompt-engineer |
-| statistical-physics | 2 | correlation-function-expert, non-equilibrium-expert |
-| agent-orchestration | 2 | multi-agent-orchestrator, context-manager |
-| unit-testing | 2 | test-automator, debugger |
-| codebase-cleanup | 2 | code-reviewer, test-automator |
-| debugging-toolkit | 2 | debugger, dx-optimizer |
-| framework-migration | 2 | legacy-modernizer, architect-review |
-| hpc-computing | 1 | hpc-numerical-coordinator |
-| molecular-simulation | 1 | simulation-expert |
-| data-visualization | 1 | visualization-interface |
-| git-pr-workflows | 1 | code-reviewer |
-| code-migration | 1 | scientific-code-adoptor |
-| cli-tool-design | 1 | command-systems-engineer |
-| research-methodology | 1 | research-intelligence |
-| ai-reasoning | 0 | (uses skills and commands) |
-| quality-engineering | 0 | (uses skills and commands) |
+| Plugin | Agents | Category |
+|--------|--------|----------|
+| agent-orchestration | 2 | Development |
+| backend-development | 3 | Development |
+| cicd-automation | 5 | DevOps |
+| cli-tool-design | 1 | Development |
+| code-documentation | 3 | Tools & Migration |
+| code-migration | 1 | Tools & Migration |
+| codebase-cleanup | 2 | Quality |
+| comprehensive-review | 3 | Quality |
+| data-visualization | 1 | Scientific |
+| debugging-toolkit | 2 | Tools & Migration |
+| deep-learning | 2 | Scientific |
+| framework-migration | 2 | Tools & Migration |
+| frontend-mobile-development | 2 | Development |
+| full-stack-orchestration | 4 | Development |
+| git-pr-workflows | 1 | DevOps |
+| hpc-computing | 1 | Scientific |
+| javascript-typescript | 2 | Development |
+| jax-implementation | 4 | Scientific |
+| julia-development | 4 | Scientific |
+| llm-application-dev | 2 | Development |
+| machine-learning | 4 | AI/ML |
+| molecular-simulation | 1 | Scientific |
+| multi-platform-apps | 6 | Development |
+| observability-monitoring | 4 | DevOps |
+| python-development | 3 | Development |
+| research-methodology | 1 | Scientific |
+| statistical-physics | 2 | Scientific |
+| systems-programming | 4 | Development |
+| unit-testing | 2 | Quality |
+
+**Total: 74 agents across 29 plugins with agents**
 
 ---
 
-## Usage Examples
+## Agent Template (v1.0.4)
 
-### Invoke an agent using Task tool
-```python
-# Use Task tool with subagent_type parameter
-Task(
-    subagent_type="julia-development:sciml-pro",
-    prompt="Solve this differential equation system...",
-    description="Solve ODE system"
-)
-```
+All agents follow the nlsq-pro template pattern:
 
-### Reference in documentation
-```markdown
-For JAX optimization, use jax-implementation:jax-pro
-For Bayesian inference, use julia-development:turing-pro
-For code review, use comprehensive-review:code-reviewer
-```
+1. **Pre-Response Validation Framework**
+   - 5 mandatory self-checks before responding
+   - 5 quality gates for response validation
 
-### Multi-agent workflows
-```bash
-# 1. Architecture review
-comprehensive-review:architect-review
+2. **When to Invoke Section**
+   - USE FOR / DELEGATE TO tables
+   - Decision Tree for agent routing
 
-# 2. Security audit
-comprehensive-review:security-auditor
-
-# 3. Performance optimization
-full-stack-orchestration:performance-engineer
-
-# 4. Final code review
-comprehensive-review:code-reviewer
-```
+3. **Constitutional AI Principles**
+   - Target % for key metrics
+   - Core Question for guidance
+   - Self-Check Questions
+   - Anti-Patterns to avoid
+   - Quality Metrics
 
 ---
 
-## Agent Naming Convention
+## Resources
 
-**Format:** `plugin:agent` (single colon, kebab-case)
-- ✅ Correct: `julia-development:julia-pro`
-- ❌ Wrong: `julia-development::julia-pro` (double colon)
-- ❌ Wrong: `julia-pro` (missing plugin namespace)
-
----
-
-## Additional Resources
-
-- **Plugin Cheatsheet:** PLUGIN_CHEATSHEET.md
-- **Full Documentation:** https://myclaude.readthedocs.io/en/latest/
-- **Validation Report:** PLUGIN_LINT_REPORT.md
-- **Total Agents:** 74
-- **Total Plugins:** 31
-- **Version:** 1.0.4
+- **Full Documentation:** [https://myclaude.readthedocs.io/en/latest/](https://myclaude.readthedocs.io/en/latest/)
+- **GitHub Repository:** [https://github.com/imewei/MyClaude](https://github.com/imewei/MyClaude)
+- **Commands List:** [COMMANDS_LIST.md](COMMANDS_LIST.md)
+- **Plugin Cheatsheet:** [PLUGIN_CHEATSHEET.md](PLUGIN_CHEATSHEET.md)
 
 ---
 
-**Note:** This list was generated from v1.0.4 validated marketplace data with 100% plugin validation success rate.
+*Generated from v1.0.4 validated marketplace data. All agents enhanced with nlsq-pro template pattern.*

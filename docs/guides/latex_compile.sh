@@ -1,7 +1,8 @@
 #!/bin/bash
 
 # LaTeX Compilation Script for Claude Code Documentation
-# Compiles AGENTS_LIST.tex and COMMANDS_LIST.tex to PDFs
+# Compiles AGENTS_LIST.tex, COMMANDS_LIST.tex, and plugin-cheatsheet.tex to PDFs
+# Version: 1.0.4
 
 set -e  # Exit on error
 
@@ -104,6 +105,15 @@ main() {
         echo ""
     else
         print_warning "COMMANDS_LIST.tex not found, skipping..."
+        echo ""
+    fi
+
+    # Compile plugin-cheatsheet.tex
+    if [ -f "plugin-cheatsheet.tex" ]; then
+        compile_latex "plugin-cheatsheet.tex"
+        echo ""
+    else
+        print_warning "plugin-cheatsheet.tex not found, skipping..."
         echo ""
     fi
 

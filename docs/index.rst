@@ -8,10 +8,11 @@ Overview
 
 The Plugin Marketplace offers:
 
-- **31 Specialized Plugins** across 9 categories
-- **Comprehensive Coverage** for scientific computing, development, DevOps, and more
-- **Independent Modification** without affecting source plugins
-- **Git-Based Version Control** for all customizations
+- **31 Specialized Plugins** across 6 major categories
+- **74 Expert Agents** for AI-powered development assistance
+- **48 Slash Commands** for automated workflows
+- **114 Skills** for context-aware intelligence
+- **16 Tools** for validation and profiling
 - **Integrated Ecosystem** with extensive cross-plugin collaboration
 
 Categories
@@ -19,60 +20,54 @@ Categories
 
 Plugins are organized into the following categories:
 
-Scientific Computing (2 plugins)
-  High-performance computing, numerical analysis, Julia development, SciML, and data visualization
+Scientific Computing (8 plugins)
+  Julia development, JAX implementation, HPC computing, molecular simulation, statistical physics, deep learning, data visualization, and research methodology
 
-Development (7 plugins)
-  Backend, frontend, systems programming, LLM applications, and code migration
+Development (10 plugins)
+  Python, JavaScript/TypeScript, backend, frontend/mobile, systems programming, multi-platform apps, LLM applications, CLI tools, full-stack orchestration, and agent orchestration
 
 AI & Machine Learning (2 plugins)
-  Deep learning, machine learning pipelines, and MLOps
+  Machine learning pipelines and AI reasoning frameworks
 
-DevOps (2 plugins)
-  CI/CD automation, Git workflows, and observability
+DevOps & Infrastructure (3 plugins)
+  CI/CD automation, Git/PR workflows, and observability monitoring
 
-Tools (14 plugins)
-  General-purpose utilities for testing, documentation, code quality, and more
+Quality & Testing (4 plugins)
+  Unit testing, comprehensive review, codebase cleanup, and quality engineering
 
-Orchestration (1 plugin)
-  Full-stack workflow coordination and multi-layer application management
-
-Quality Engineering (1 plugin)
-  Comprehensive code review and security analysis
-
-Developer Tools (1 plugin)
-  Command-line tool design and automation
-
-Development Tools (1 plugin)
-  Interactive debugging and developer experience
+Tools & Migration (4 plugins)
+  Code documentation, code migration, framework migration, and debugging toolkit
 
 Statistics
 ----------
+
+**Version 1.0.4** (All plugins updated December 3, 2025)
 
 **Total Resources:**
 
 - 31 plugins
 - 74 agents
-- 60+ commands
-- 110 skills
+- 48 commands
+- 114 skills
+- 16 tools
 
 **By Category:**
 
-- Scientific Computing: 2 plugins, 5 agents, 4 commands, 24 skills
-- Development: 7 plugins, 18 agents, 16 commands, 20 skills
-- AI & ML: 2 plugins, 5 agents, 0 commands, 13 skills
-- DevOps: 2 plugins, 5 agents, 5 commands, 6 skills
-- Tools: 14 plugins, 27 agents, 15 commands, 41 skills
-- Orchestration: 1 plugin, 4 agents, 1 command, 0 skills
-- Quality: 1 plugin, 3 agents, 2 commands, 1 skill
-- Developer Tools: 1 plugin, 1 agent, 0 commands, 2 skills
-- Dev Tools: 1 plugin, 1 agent, 0 commands, 2 skills
+- Scientific Computing: 8 plugins, 18 agents, 4 commands, 54 skills
+- Development: 10 plugins, 24 agents, 14 commands, 30 skills
+- AI & Machine Learning: 2 plugins, 6 agents, 3 commands, 10 skills
+- DevOps & Infrastructure: 3 plugins, 10 agents, 8 commands, 12 skills
+- Quality & Testing: 4 plugins, 7 agents, 10 commands, 3 skills
+- Tools & Migration: 4 plugins, 9 agents, 9 commands, 7 skills
 
 Features
 --------
 
 **Specialized Expertise**
   Each plugin provides focused expertise in specific domains, with specialized agents, commands, and skills.
+
+**v1.0.4 Agent Enhancements**
+  All 74 agents follow the nlsq-pro template with Pre-Response Validation Framework, When to Invoke sections, and Constitutional AI principles.
 
 **Cross-Plugin Integration**
   Plugins are designed to work together, enabling complex multi-plugin workflows. See the :doc:`integration-map` for detailed integration patterns.
@@ -83,9 +78,6 @@ Features
 **Quality Assurance**
   All plugins follow consistent metadata standards and include testing, CI/CD, and contribution guidelines.
 
-**Versioned Documentation**
-  Documentation supports versioning to reference specific plugin versions and track evolution over time.
-
 Quick Links
 -----------
 
@@ -95,7 +87,7 @@ Popular Plugins
 - :doc:`/plugins/julia-development` - Comprehensive Julia development with SciML and Bayesian inference
 - :doc:`/plugins/python-development` - Python programming with async patterns and packaging
 - :doc:`/plugins/backend-development` - Backend API design and microservices
-- :doc:`/plugins/deep-learning` - Neural architectures and training workflows
+- :doc:`/plugins/jax-implementation` - JAX for numerical computing and optimization
 - :doc:`/plugins/cicd-automation` - CI/CD pipelines and deployment automation
 
 Getting Started
@@ -110,6 +102,7 @@ Reference
 ~~~~~~~~~
 
 - :doc:`integration-map` - Plugin integration matrix
+- :doc:`tools-reference` - 16 utility scripts and tools
 - :doc:`glossary` - Technical terminology reference
 - :doc:`changelog` - Version history and updates
 
@@ -142,6 +135,7 @@ Documentation
    :caption: Reference
 
    integration-map
+   tools-reference
    glossary
    changelog
 
@@ -153,35 +147,62 @@ Prerequisites
 
 - Claude Code installed
 - Git installed
-- ``jq`` installed (for metadata generation)
-
-.. code-block:: bash
-
-   # macOS
-   brew install jq
-
-   # Linux
-   sudo apt-get install jq
+- Python 3.12+ (for tools)
 
 Quick Setup
 ~~~~~~~~~~~
 
+**Option 1: Add Marketplace and Browse**
+
 .. code-block:: bash
 
-   # Clone the marketplace
-   git clone https://github.com/your-org/claude-code-marketplace.git
-   cd claude-code-marketplace
+   /plugin marketplace add imewei/MyClaude
+   # Select "Browse and install plugins" -> "scientific-computing-workflows" -> Select plugin
 
-   # Link marketplace to Claude Code
-   ln -s "$(pwd)" "$HOME/.claude/marketplace"
+**Option 2: Install Specific Plugins**
 
-   # Verify installation
-   claude list-plugins
+.. code-block:: bash
+
+   /plugin install python-development@scientific-computing-workflows
+   /plugin install backend-development@scientific-computing-workflows
+   /plugin install julia-development@scientific-computing-workflows
+
+**Option 3: Install All 31 Plugins**
+
+.. code-block:: bash
+
+   # Clone the repository
+   git clone https://github.com/imewei/MyClaude.git
+   cd MyClaude
+
+   # Enable all plugins
+   make plugin-enable-all
+
+   # Or use the Python script directly
+   python3 tools/enable-all-plugins.py
+
+**Note:** After installation, restart Claude Code for changes to take effect.
 
 Using Plugins
 ~~~~~~~~~~~~~
 
-Activate plugins using Claude Code's plugin system. Each plugin provides specialized agents, commands, and skills that integrate seamlessly with your workflows.
+Once installed, plugins provide agents, commands, and skills that are automatically available:
+
+**Using Specialized Agents**
+
+.. code-block:: text
+
+   Ask Claude: "@python-pro help me optimize this async function"
+   Ask Claude: "@julia-pro implement this differential equation using SciML"
+   Ask Claude: "@jax-pro optimize this neural network training loop"
+
+**Running Commands**
+
+.. code-block:: bash
+
+   /ai-reasoning:ultra-think "Analyze the architecture of this system"
+   /quality-engineering:double-check --mode=standard
+   /unit-testing:run-all-tests --fix --coverage
 
 Contributing
 ------------

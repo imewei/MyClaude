@@ -1,0 +1,218 @@
+\documentclass[10pt,a4paper,landscape]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{geometry}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{multicol}
+\usepackage{fancyhdr}
+
+% Color scheme (consistent with AGENTS_LIST.tex)
+\definecolor{primarycolor}{RGB}{0,102,204}
+\definecolor{secondarycolor}{RGB}{51,51,51}
+
+\geometry{margin=0.5in}
+\hypersetup{colorlinks=true,linkcolor=primarycolor,urlcolor=primarycolor}
+
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{v1.0.4 | December 2025}
+\lhead{MyClaude Plugin Marketplace Cheatsheet}
+\cfoot{\thepage}
+
+\title{\textbf{MyClaude Plugin Marketplace}\\[0.3em]
+\Large Quick Reference Cheatsheet\\[0.3em]
+\normalsize 31 Plugins | 74 Agents | 48 Commands | 114 Skills}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+\vspace{-2em}
+
+\begin{multicols}{3}
+
+\section*{Scientific Computing}
+
+\textbf{julia-development}\\
+4 agents, 4 commands, 20 skills\\
+\textit{Julia, SciML, Bayesian inference}\\
+\texttt{julia-pro, sciml-pro, turing-pro}
+
+\textbf{jax-implementation}\\
+4 agents, 4 skills\\
+\textit{JAX, NumPyro, NLSQ optimization}\\
+\texttt{jax-pro, jax-scientist, nlsq-pro}
+
+\textbf{hpc-computing}\\
+1 agent, 4 skills\\
+\textit{HPC, parallel computing, GPU}\\
+\texttt{hpc-numerical-coordinator}
+
+\textbf{molecular-simulation}\\
+1 agent, 4 skills\\
+\textit{MD, LAMMPS, GROMACS, ML force fields}\\
+\texttt{simulation-expert}
+
+\textbf{statistical-physics}\\
+2 agents, 8 skills\\
+\textit{Correlations, non-equilibrium systems}\\
+\texttt{correlation-function-expert}
+
+\textbf{data-visualization}\\
+1 agent, 3 skills\\
+\textit{Matplotlib, Plotly, Makie.jl, D3.js}\\
+\texttt{visualization-interface}
+
+\textbf{research-methodology}\\
+1 agent, 1 skill\\
+\textit{Literature analysis, methodology}\\
+\texttt{research-intelligence}
+
+\textbf{deep-learning}\\
+2 agents, 6 skills\\
+\textit{Neural architectures, training}\\
+\texttt{neural-architecture-engineer}
+
+\section*{Development}
+
+\textbf{python-development}\\
+3 agents, 1 command, 5 skills\\
+\textit{Python 3.12+, FastAPI, Django}\\
+\texttt{/python-scaffold}
+
+\textbf{backend-development}\\
+3 agents, 1 command, 6 skills\\
+\textit{REST/GraphQL, microservices, TDD}\\
+\texttt{/feature-development}
+
+\textbf{frontend-mobile-development}\\
+2 agents, 1 command\\
+\textit{React 19, Next.js 15, React Native}\\
+\texttt{/component-scaffold}
+
+\textbf{javascript-typescript}\\
+2 agents, 1 command, 5 skills\\
+\textit{ES2024, TypeScript, Node.js}\\
+\texttt{/typescript-scaffold}
+
+\textbf{systems-programming}\\
+4 agents, 3 commands, 1 skill\\
+\textit{Rust, C, C++, Go}\\
+\texttt{/rust-project, /c-project}
+
+\textbf{multi-platform-apps}\\
+6 agents, 1 command, 4 skills\\
+\textit{Flutter, iOS, React Native, UX}\\
+\texttt{/multi-platform}
+
+\textbf{llm-application-dev}\\
+2 agents, 3 commands, 4 skills\\
+\textit{LLM apps, RAG, prompt engineering}\\
+\texttt{/ai-assistant, /prompt-optimize}
+
+\textbf{cli-tool-design}\\
+1 agent, 2 skills\\
+\textit{CLI tools, developer automation}\\
+\texttt{command-systems-engineer}
+
+\textbf{full-stack-orchestration}\\
+4 agents, 1 command\\
+\textit{End-to-end orchestration}\\
+\texttt{/full-stack-feature}
+
+\textbf{agent-orchestration}\\
+2 agents, 2 commands, 2 skills\\
+\textit{Multi-agent workflows}\\
+\texttt{/improve-agent}
+
+\section*{AI \& Machine Learning}
+
+\textbf{machine-learning}\\
+4 agents, 1 command, 8 skills\\
+\textit{ML pipelines, MLOps, data science}\\
+\texttt{/ml-pipeline}
+
+\textbf{ai-reasoning}\\
+2 commands, 3 skills\\
+\textit{Structured reasoning, reflection}\\
+\texttt{/ultra-think, /reflection}
+
+\section*{DevOps \& Infrastructure}
+
+\textbf{cicd-automation}\\
+5 agents, 2 commands, 6 skills\\
+\textit{CI/CD, Kubernetes, Terraform, cloud}\\
+\texttt{/fix-commit-errors}
+
+\textbf{git-pr-workflows}\\
+1 agent, 4 commands, 1 skill\\
+\textit{Git workflows, PR automation}\\
+\texttt{/commit, /pr-enhance}
+
+\textbf{observability-monitoring}\\
+4 agents, 2 commands, 5 skills\\
+\textit{Prometheus, Grafana, SLO}\\
+\texttt{/monitor-setup, /slo-implement}
+
+\section*{Quality \& Testing}
+
+\textbf{unit-testing}\\
+2 agents, 2 commands, 1 skill\\
+\textit{Test automation, pytest, Jest}\\
+\texttt{/run-all-tests, /test-generate}
+
+\textbf{comprehensive-review}\\
+3 agents, 2 commands, 1 skill\\
+\textit{Code review, security, architecture}\\
+\texttt{/full-review}
+
+\textbf{codebase-cleanup}\\
+2 agents, 4 commands\\
+\textit{Refactoring, tech debt, imports}\\
+\texttt{/tech-debt, /fix-imports}
+
+\textbf{quality-engineering}\\
+2 commands, 2 skills\\
+\textit{Validation, plugin linting}\\
+\texttt{/double-check, /lint-plugins}
+
+\section*{Tools \& Migration}
+
+\textbf{code-documentation}\\
+3 agents, 4 commands\\
+\textit{Docs, tutorials, CLAUDE.md}\\
+\texttt{/doc-generate, /update-docs}
+
+\textbf{code-migration}\\
+1 agent, 1 command\\
+\textit{Fortran/MATLAB to Python/JAX}\\
+\texttt{/adopt-code}
+
+\textbf{framework-migration}\\
+2 agents, 3 commands, 4 skills\\
+\textit{Upgrades, strangler fig pattern}\\
+\texttt{/legacy-modernize}
+
+\textbf{debugging-toolkit}\\
+2 agents, 1 command, 3 skills\\
+\textit{AI debugging, RCA, DX}\\
+\texttt{/smart-debug}
+
+\end{multicols}
+
+\vspace{1em}
+\hrule
+\vspace{0.5em}
+
+\begin{center}
+\textbf{Installation:} \texttt{/plugin marketplace add imewei/MyClaude} $\rightarrow$ Select plugins\\[0.3em]
+\textbf{Bulk Install:} \texttt{git clone https://github.com/imewei/MyClaude.git \&\& make plugin-enable-all}\\[0.3em]
+\textbf{Docs:} \url{https://myclaude.readthedocs.io/en/latest/}
+\end{center}
+
+\end{document}
