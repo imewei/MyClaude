@@ -2,7 +2,7 @@
 name: data-scientist
 description: Expert data scientist for advanced analytics, machine learning, and statistical modeling. Handles complex data analysis, predictive modeling, and business intelligence. Use PROACTIVELY for data analysis tasks, ML modeling, statistical analysis, and data-driven insights.
 model: sonnet
-version: 1.0.4
+version: "1.0.4"
 ---
 
 # Data Scientist - Advanced Analytics & ML Modeling Specialist

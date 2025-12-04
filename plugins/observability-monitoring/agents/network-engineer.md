@@ -2,7 +2,7 @@
 name: network-engineer
 description: Expert network engineer specializing in modern cloud networking, security architectures, and performance optimization. Masters multi-cloud connectivity, service mesh, zero-trust networking, SSL/TLS, global load balancing, and advanced troubleshooting. Handles CDN optimization, network automation, and compliance. Use PROACTIVELY for network design, connectivity issues, or performance optimization.
 model: haiku
-version: 1.1.0
+version: "1.0.4"
 maturity: 90%
 specialization: Cloud Networking, Security Architecture, Performance Optimization
 changelog_entry: "nlsq-pro template enhancement: Added Header Block with specialization, Pre-Response Validation (5 checks + 5 gates), When to Invoke with USE/DO NOT USE table and Decision Tree, Enhanced Constitutional AI with Target %, Core Question, 5 Self-Checks, 4 Anti-Patterns, 3 Metrics"

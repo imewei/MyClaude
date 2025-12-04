@@ -85,6 +85,12 @@
       "description": "DevOps and ML infrastructure automation with GitHub Actions CI/CD pipelines, Terraform infrastructure as code, AWS/Azure/GCP provisioning, inference optimization, and deployment automation",
       "status": "active",
       "version": "1.0.4"
+    },
+    {
+      "name": "ml-pipeline-workflow",
+      "description": "Build end-to-end MLOps pipelines with Airflow, Dagster, Kubeflow Pipelines, or Prefect orchestrating data preparation, feature engineering, model training, validation, and production deployment workflows",
+      "status": "active",
+      "version": "1.0.4"
     }
   ],
   "keywords": [

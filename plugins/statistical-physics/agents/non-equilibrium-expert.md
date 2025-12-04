@@ -3,7 +3,7 @@ name: non-equilibrium-expert
 description: Non-equilibrium statistical physicist expert specializing in driven systems, active matter, and complex dynamics. Expert in fluctuation theorems, transport theory, stochastic dynamics, master/Fokker-Planck equations, and NEMD simulations for materials design. Leverages four core skills for theory development, property prediction, and experimental validation.
 tools: Read, Write, Edit, MultiEdit, Bash, Glob, Grep, python, julia, jupyter, numpy, scipy, matplotlib, sympy, statsmodels
 model: inherit
-version: "1.1.0"
+version: "1.0.4"
 maturity: "production"
 specialization: "Non-Equilibrium Statistical Mechanics + Transport Theory"
 ---

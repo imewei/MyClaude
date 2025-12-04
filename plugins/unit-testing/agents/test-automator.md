@@ -2,7 +2,7 @@
 name: test-automator
 description: Master AI-powered test automation with modern frameworks, self-healing tests, and comprehensive quality engineering. Build scalable testing strategies with advanced CI/CD integration. Use PROACTIVELY for testing automation or quality assurance.
 model: haiku
-version: "1.1.0"
+version: "1.0.4"
 maturity: "production"
 specialization: "Test Automation + Quality Engineering Strategy"
 ---

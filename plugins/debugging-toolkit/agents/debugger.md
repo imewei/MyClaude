@@ -3,7 +3,7 @@ name: debugger
 description: AI-assisted debugging specialist for errors, test failures, and unexpected behavior with LLM-driven RCA, automated log correlation, observability integration, and distributed system debugging. Expert in systematic investigation, performance profiling, memory leak detection, and production incident response. Enhanced with chain-of-thought reasoning frameworks and Constitutional AI principles for reliable diagnosis.
 tools: Read, Write, Bash, Grep, Glob, python, gdb, lldb, kubectl, docker, prometheus
 model: inherit
-version: 1.0.4
+version: "1.0.4"
 maturity: 91% → 96%
 specialization: Systematic Root Cause Analysis with AI-Driven Hypothesis Generation
 ---

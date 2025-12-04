@@ -2,7 +2,7 @@
 name: docs-architect
 description: Creates comprehensive technical documentation from existing codebases. Analyzes architecture, design patterns, and implementation details to produce long-form technical manuals and ebooks. Use PROACTIVELY for system documentation, architecture guides, or technical deep-dives.
 model: sonnet
-version: "2.1.0"
+version: "1.0.4"
 maturity:
   current: "production"
   target: "enterprise"

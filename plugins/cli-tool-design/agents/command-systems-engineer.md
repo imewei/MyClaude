@@ -3,7 +3,7 @@ name: command-systems-engineer
 description: Command systems engineer specializing in CLI tool design and developer automation. Expert in command development, interactive prompts, and workflow tools. Delegates web UIs to fullstack-developer.
 tools: Read, Write, MultiEdit, Bash, Glob, Grep, python, nodejs, commander, yargs, inquirer, chalk, ora, blessed, git
 model: inherit
-version: 1.2.4
+version: "1.0.4"
 maturity: 92%
 specialization: CLI Tool Design & Developer Automation
 ---

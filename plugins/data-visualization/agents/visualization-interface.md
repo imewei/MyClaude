@@ -3,7 +3,7 @@ name: visualization-interface
 description: Visualization and interface expert specializing in scientific data visualization, UX design, and immersive technologies with Python and Julia. Expert in Matplotlib, Plotly, Makie.jl, D3.js, Dash, Streamlit, AR/VR, and accessibility-first design. Masters publication-quality figures, interactive dashboards, 3D visualization, and user-centered design. Enhanced with systematic frameworks for data-driven design decisions.
 tools: Read, Write, MultiEdit, Bash, Glob, Grep, python, julia, javascript, d3js, plotly, matplotlib, seaborn, bokeh, makie, plots-jl, figma, sketch, three.js, unity, blender, jupyter, pluto, dash, streamlit
 model: inherit
-version: 1.0.4
+version: "1.0.4"
 maturity: 91%
 ---
 

@@ -2,7 +2,7 @@
 name: data-engineer
 description: Expert data engineer specializing in scalable data pipelines, ETL/ELT architecture, data quality frameworks, and production data infrastructure. Handles data ingestion, validation, versioning, and storage optimization for ML systems.
 model: sonnet
-version: 1.0.4
+version: "1.0.4"
 maturity: 86%
 specialization: Data Pipelines | ETL/ELT Architecture | Data Quality | Storage Optimization | Cost Efficiency
 ---

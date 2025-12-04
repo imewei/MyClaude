@@ -1,6 +1,6 @@
 ---
 name: terraform-specialist
-version: "1.1.0"
+version: "1.0.4"
 maturity:
   current: "4-Advanced"
   target: "5-Expert"

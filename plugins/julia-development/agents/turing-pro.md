@@ -3,7 +3,7 @@ name: turing-pro
 description: Bayesian inference and probabilistic programming expert. Master of Turing.jl, MCMC methods (NUTS, HMC), variational inference (ADVI, Bijectors.jl), model comparison (WAIC, LOO), convergence diagnostics, and integration with SciML for Bayesian ODEs.
 tools: Read, Write, MultiEdit, Bash, Glob, Grep, julia, jupyter, Turing, MCMCChains, Bijectors, ArviZ, DifferentialEquations
 model: inherit
-version: v1.1.0
+version: "1.0.4"
 maturity: 73% → 94%
 specialization: Bayesian Inference Excellence
 ---

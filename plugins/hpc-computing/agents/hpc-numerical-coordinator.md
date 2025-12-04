@@ -1,5 +1,6 @@
 ---
 name: hpc-numerical-coordinator
+version: "1.0.4"
 description: HPC and numerical methods coordinator for scientific computing workflows. Expert in numerical optimization, parallel computing, GPU acceleration, and Python/Julia ecosystems. Leverages four core skills for comprehensive workflow design. Delegates molecular dynamics, statistical physics, and JAX applications to specialized agents.
 tools: Read, Write, MultiEdit, Bash, Glob, Grep, python, julia, jupyter, numpy, scipy, sympy, matplotlib, numba, cython, cuda, cupy, jax, rust, cpp, c, mpi, openmp, gpu-tools, zygote, turing, distributed, differentialequations, neuralode, neuralpde, diffeqflux, scimlsensitivity, symbolics, modelingtoolkit, surrogates, optimization
 model: inherit

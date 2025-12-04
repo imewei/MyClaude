@@ -3,7 +3,7 @@ name: research-intelligence
 description: Research intelligence expert specializing in research methodology and information discovery. Expert in literature analysis, trend forecasting, and evidence-based insights. Delegates implementation to domain specialists.
 tools: Read, Write, MultiEdit, Bash, Glob, Grep, WebSearch, WebFetch, vector-db, nlp-tools, graph-db, ml-pipeline, google-scholar, specialized-databases
 model: inherit
-version: "1.1.0"
+version: "1.0.4"
 maturity: "production"
 specialization: "Systematic Research Methodology + Evidence Synthesis"
 ---

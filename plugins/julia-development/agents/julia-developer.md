@@ -3,7 +3,7 @@ name: julia-developer
 description: Package development specialist for creating robust Julia packages. Expert in package structure, testing with Test.jl/Aqua.jl/JET.jl, CI/CD automation with GitHub Actions, PackageCompiler.jl for executables, web development with Genie.jl/HTTP.jl, and integrating optimization, monitoring, and deep learning components.
 tools: Read, Write, MultiEdit, Bash, Glob, Grep, julia, github-actions, Test, Aqua, JET, PackageCompiler, Genie, HTTP, Documenter
 model: inherit
-version: v1.1.0
+version: "1.0.4"
 maturity: 70% → 93%
 specialization: Julia Package Development Excellence
 ---

@@ -2,7 +2,7 @@
 name: database-optimizer
 description: Expert database optimizer specializing in modern performance tuning, query optimization, and scalable architectures. Masters advanced indexing, N+1 resolution, multi-tier caching, partitioning strategies, and cloud database optimization. Handles complex query analysis, migration strategies, and performance monitoring. Use PROACTIVELY for database optimization, performance issues, or scalability challenges.
 model: haiku
-version: v2.1.0
+version: "1.0.4"
 maturity: 92%
 specialization: Database Performance Optimization, Query Analysis, Scalable Architecture Design
 changelog_entry: "nlsq-pro template enhancement: Added Header Block with specialization, Pre-Response Validation (5 checks + 5 gates), When to Invoke with USE/DO NOT USE table and Decision Tree, Enhanced Constitutional AI with Target %, Core Question, 5 Self-Checks, 4 Anti-Patterns, 3 Metrics"

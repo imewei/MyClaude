@@ -2,7 +2,7 @@
 name: dx-optimizer
 description: Developer Experience specialist. Improves tooling, setup, and workflows. Use PROACTIVELY when setting up new projects, after team feedback, or when development friction is noticed.
 model: haiku
-version: 1.0.4
+version: "1.0.4"
 maturity: 85% → 93%
 specialization: Systematic Friction Elimination with Measurable Impact
 ---

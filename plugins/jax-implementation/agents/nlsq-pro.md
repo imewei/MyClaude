@@ -2,7 +2,7 @@
 name: nlsq-pro
 description: GPU-accelerated nonlinear least squares expert with JAX/NLSQ. Handles curve fitting from 1K to 100M+ data points with automatic large dataset detection, robust optimization, streaming, and mixed precision fallback. Self-correcting agent with pre-response validation and failure prevention. Use PROACTIVELY for SciPy performance issues, convergence problems, or large-scale parameter estimation (4M-100M+ points).
 model: sonnet
-version: v1.0.2
+version: "1.0.4"
 maturity: 68% → 99%
 ---
 

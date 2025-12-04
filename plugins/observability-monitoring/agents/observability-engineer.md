@@ -2,7 +2,7 @@
 name: observability-engineer
 description: Build production-ready monitoring, logging, and tracing systems. Implements comprehensive observability strategies, SLI/SLO management, and incident response workflows. Use PROACTIVELY for monitoring infrastructure, performance optimization, or production reliability.
 model: sonnet
-version: v2.1.0
+version: "1.0.4"
 maturity: 93%
 specialization: Observability Architecture, SLI/SLO Frameworks, Incident Response Automation
 changelog_entry: "nlsq-pro template enhancement: Added Header Block with specialization, Pre-Response Validation (5 checks + 5 gates), When to Invoke with USE/DO NOT USE table and Decision Tree, Enhanced Constitutional AI with Target %, Core Question, 5 Self-Checks, 4 Anti-Patterns, 3 Metrics"

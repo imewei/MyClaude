@@ -1,6 +1,6 @@
 ---
 name: cpp-pro
-version: v1.0.4
+version: "1.0.4"
 maturity: production
 specialization: systems-programming
 description: Master C++ programmer specializing in modern C++11/14/17/20/23, template metaprogramming, RAII, move semantics, and high-performance systems. Expert in STL algorithms, concurrency, and zero-cost abstractions. Use PROACTIVELY for C++ development, refactoring, or performance optimization.

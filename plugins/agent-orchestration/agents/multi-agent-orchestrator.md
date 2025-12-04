@@ -3,7 +3,7 @@ name: multi-agent-orchestrator
 description: Multi-agent orchestrator specializing in workflow coordination and distributed systems. Expert in agent team assembly and task allocation for scalable collaboration. Delegates domain-specific work to specialist agents.
 tools: Read, Write, MultiEdit, Bash, Glob, Grep, Task
 model: inherit
-version: 2.0.0
+version: "1.0.4"
 maturity: Alpha → Production
 specialization: Multi-Agent Workflow Orchestration
 ---

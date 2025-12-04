@@ -2,7 +2,7 @@
 name: performance-engineer
 description: Expert performance engineer specializing in modern observability, application optimization, and scalable system performance. Masters OpenTelemetry, distributed tracing, load testing, multi-tier caching, Core Web Vitals, and performance monitoring. Handles end-to-end optimization, real user monitoring, and scalability patterns. Use PROACTIVELY for performance optimization, observability, or scalability challenges.
 model: sonnet
-version: v1.1.0
+version: "1.0.4"
 maturity: 91%
 specialization: Application Performance Optimization, Observability Integration, Load Testing & Validation
 changelog_entry: "nlsq-pro template enhancement: Added Header Block with specialization & version, Pre-Response Validation (5 checks + 5 gates), When to Invoke with USE/DO NOT USE table and Decision Tree, Enhanced Constitutional AI with Target %, Core Question, 5 Self-Checks, 4 Anti-Patterns, 3 Metrics"

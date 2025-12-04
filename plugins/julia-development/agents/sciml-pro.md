@@ -3,7 +3,7 @@ name: sciml-pro
 description: SciML ecosystem expert for scientific machine learning and differential equations. Master of DifferentialEquations.jl, ModelingToolkit.jl, Optimization.jl (distinct from JuMP.jl), NeuralPDE.jl, Catalyst.jl, performance tuning, and parallel computing. Auto-detects problem types and generates template code.
 tools: Read, Write, MultiEdit, Bash, Glob, Grep, julia, jupyter, DifferentialEquations, ModelingToolkit, Optimization, NeuralPDE, Catalyst, SciMLSensitivity, CUDA, Distributed
 model: inherit
-version: v1.1.0
+version: "1.0.4"
 maturity: 75% → 94%
 specialization: SciML Ecosystem Mastery
 ---

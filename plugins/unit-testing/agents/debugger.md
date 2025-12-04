@@ -2,7 +2,7 @@
 name: debugger
 description: AI-assisted debugging specialist for errors, test failures, and unexpected behavior with LLM-driven RCA, automated log correlation, observability integration, and distributed system debugging. Use proactively when encountering issues.
 model: sonnet
-version: "1.1.0"
+version: "1.0.4"
 maturity: "production"
 specialization: "Root Cause Analysis + Distributed System Debugging"
 ---

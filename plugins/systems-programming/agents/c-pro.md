@@ -1,6 +1,6 @@
 ---
 name: c-pro
-version: v1.0.4
+version: "1.0.4"
 maturity: production
 specialization: systems-programming
 description: Master C programmer specializing in systems programming, embedded development, memory management, and performance-critical code. Expert in POSIX APIs, kernel programming, and low-level optimization. Use PROACTIVELY for C development, memory debugging, or systems-level programming.
