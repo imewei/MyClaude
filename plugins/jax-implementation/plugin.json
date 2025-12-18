@@ -1,7 +1,7 @@
 {
   "name": "jax-implementation",
-  "version": "1.0.4",
-  "description": "Production-ready JAX-based scientific computing with systematic Chain-of-Thought frameworks, Constitutional AI principles, enhanced skill discoverability, and comprehensive response verification protocols for NumPyro Bayesian inference (with ArviZ integration and Consensus Monte Carlo), Flax NNX neural networks, NLSQ optimization, and physics simulations with measurable quality targets and proven optimization patterns",
+  "version": "1.0.5",
+  "description": "Production-ready JAX-based scientific computing with systematic Chain-of-Thought frameworks, Constitutional AI principles, enhanced skill discoverability, and comprehensive response verification protocols for NumPyro Bayesian inference (with ArviZ integration and Consensus Monte Carlo), Flax NNX neural networks, NLSQ optimization (with Adaptive Hybrid Streaming and Parameter Normalization), and physics simulations with measurable quality targets and proven optimization patterns",
   "author": "Wei Chen",
   "license": "MIT",
   "agents": [
@@ -22,7 +22,7 @@
     },
     {
       "name": "nlsq-pro",
-      "description": "Master GPU-accelerated nonlinear least squares with 6-step framework (Problem Characterization, Algorithm Selection, Performance Optimization, Convergence & Robustness, Validation, Production Deployment). Implements 4 Constitutional AI principles (Numerical Stability 92%, Computational Efficiency 90%, Code Quality 85%, NLSQ Best Practices 88%). Comprehensive examples: SciPy → NLSQ GPU (265x speedup, 12x accuracy improvement), Batch L2 → Streaming Huber (100x memory reduction, 10x outlier robustness). Expert in JAX-accelerated optimization, robust loss functions, and production curve fitting.",
+      "description": "Master GPU-accelerated nonlinear least squares with 6-step framework (Problem Characterization, Algorithm Selection, Performance Optimization, Convergence & Robustness, Validation, Production Deployment). Implements 4 Constitutional AI principles (Numerical Stability 92%, Computational Efficiency 90%, Code Quality 85%, NLSQ Best Practices 88%). Features Adaptive Hybrid Streaming Optimizer with Parameter Normalization for multi-scale parameters. Comprehensive examples: SciPy → NLSQ GPU (265x speedup, 12x accuracy improvement), Batch L2 → Streaming Huber (100x memory reduction, 10x outlier robustness). Expert in JAX-accelerated optimization, HybridStreamingConfig presets, ParameterNormalizer, robust loss functions, and production curve fitting.",
       "status": "active"
     }
   ],
@@ -45,7 +45,7 @@
     },
     {
       "name": "nlsq-core-mastery",
-      "description": "GPU/TPU-accelerated nonlinear least squares optimization using NLSQ library with JAX. Use when fitting nonlinear models to data (from nlsq import CurveFit), performing parameter estimation with large datasets (>10K points, 150-270x faster than SciPy), implementing robust fitting with outliers (Huber, Cauchy loss), handling streaming optimization for massive datasets, working with exponential decay/dose-response/multi-peak fitting, comparing TRF vs LM algorithms, diagnosing convergence, or deploying production curve fitting in physics/biology/chemistry/engineering. Includes complete examples, benchmarks, and diagnostics.",
+      "description": "GPU/TPU-accelerated nonlinear least squares optimization using NLSQ library with JAX. Use when fitting nonlinear models to data (from nlsq import CurveFit), performing parameter estimation with large datasets (>10K points, 150-270x faster than SciPy), implementing robust fitting with outliers (Huber, Cauchy loss), handling streaming optimization for massive datasets, using Adaptive Hybrid Streaming for multi-scale parameters (method='hybrid_streaming', HybridStreamingConfig presets, ParameterNormalizer), working with exponential decay/dose-response/multi-peak fitting, comparing TRF vs LM vs hybrid_streaming algorithms, diagnosing convergence, or deploying production curve fitting in physics/biology/chemistry/engineering. Includes complete examples, benchmarks, and diagnostics.",
       "status": "active"
     }
   ],
@@ -120,6 +120,12 @@
     "streaming-optimization",
     "trust-region-reflective",
     "levenberg-marquardt",
-    "scipy-alternative"
+    "scipy-alternative",
+    "hybrid-streaming",
+    "parameter-normalization",
+    "multi-scale-parameters",
+    "adam-warmup",
+    "gauss-newton",
+    "covariance-transformation"
   ]
 }

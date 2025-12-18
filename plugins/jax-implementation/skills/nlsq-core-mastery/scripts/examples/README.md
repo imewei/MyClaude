@@ -2,7 +2,7 @@
 
 Comprehensive examples demonstrating NLSQ library capabilities across scientific domains, streaming optimization, and advanced features.
 
-**Total Examples**: 19 Python scripts + 3 Jupyter notebooks
+**Total Examples**: 20 Python scripts + 3 Jupyter notebooks
 
 ---
 
@@ -352,7 +352,33 @@ python streaming/04_interpreting_diagnostics.py
 
 Feature showcases for advanced NLSQ capabilities.
 
-### 16. `demos/enhanced_error_messages_demo.py`
+### 16. `demos/hybrid_streaming_demo.py`
+**Focus**: Adaptive Hybrid Streaming Optimizer with Parameter Normalization
+
+**Demonstrates**:
+- `method='hybrid_streaming'` for multi-scale parameters
+- HybridStreamingConfig presets (aggressive, conservative, memory_optimized)
+- Automatic parameter normalization (auto, bounds, p0, none strategies)
+- Direct ParameterNormalizer and NormalizedModelWrapper usage
+- Covariance transformation for normalized parameters
+- Three-phase optimization pipeline (Phase 0/1/2)
+- Comparison with TRF for ill-conditioned problems
+
+**Three Issues Solved**:
+1. Weak gradients (scale imbalance) -> Parameter normalization
+2. Slow convergence -> Streaming Gauss-Newton
+3. Crude covariance -> Exact J^T J + transform
+
+**When to use**: Parameters differing by >1000x, need accurate covariance, TRF/LM converges slowly
+
+**Run**:
+```bash
+python demos/hybrid_streaming_demo.py
+```
+
+---
+
+### 17. `demos/enhanced_error_messages_demo.py`
 **Focus**: Improved error diagnostics
 
 **Demonstrates**:
@@ -368,7 +394,7 @@ python demos/enhanced_error_messages_demo.py
 
 ---
 
-### 17. `demos/function_library_demo.py`
+### 18. `demos/function_library_demo.py`
 **Focus**: Built-in model functions
 
 **Demonstrates**:
@@ -384,7 +410,7 @@ python demos/function_library_demo.py
 
 ---
 
-### 18. `demos/result_enhancements_demo.py`
+### 19. `demos/result_enhancements_demo.py`
 **Focus**: Rich result objects
 
 **Demonstrates**:
@@ -401,7 +427,7 @@ python demos/result_enhancements_demo.py
 
 ---
 
-### 19. `demos/callbacks_demo.py`
+### 20. `demos/callbacks_demo.py`
 **Focus**: Real-time monitoring with callbacks
 
 **Demonstrates**:
@@ -520,6 +546,7 @@ python 04_interpreting_diagnostics.py
 | sensor_calibration | ~270 | Intermediate | Engineering | Medium |
 | basic_fault_tolerance | ~180 | Intermediate | Streaming | High |
 | checkpoint_resume | ~200 | Advanced | Streaming | High |
+| hybrid_streaming_demo | ~290 | Intermediate | Features | High |
 | callbacks_demo | ~160 | Advanced | Features | Medium |
 
 ---
@@ -568,6 +595,9 @@ python 04_interpreting_diagnostics.py
 ### Task: Real-time monitoring
 → `demos/callbacks_demo.py`
 
+### Task: Multi-scale parameters (>1000x difference)
+→ `demos/hybrid_streaming_demo.py`
+
 ### Task: Uncertainty analysis
 → `gallery/physics/radioactive_decay.py` (see uncertainty propagation)
 
@@ -606,7 +636,7 @@ python 04_interpreting_diagnostics.py
 
 ---
 
-**Examples Collection Version**: 1.0.0
-**Last Updated**: 2025-10-28
-**Total Examples**: 19 scripts + 3 notebooks
+**Examples Collection Version**: 1.1.0
+**Last Updated**: 2025-12-18
+**Total Examples**: 20 scripts + 3 notebooks
 **Source**: NLSQ official examples (adapted for skill)
