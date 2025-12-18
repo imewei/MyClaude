@@ -887,6 +887,199 @@ configure_mixed_precision(enable=True)
 # Automatically upgrades to float64 only when needed for stability
 ```
 
+### 11. Adaptive Hybrid Streaming Optimizer
+
+The `hybrid_streaming` method combines Adam warmup with Gauss-Newton refinement for superior convergence on ill-conditioned problems. It includes automatic parameter normalization to handle multi-scale parameters.
+
+**Three Issues Solved:**
+
+| Issue | Root Cause | Solution | Implementation |
+|-------|------------|----------|----------------|
+| Weak gradients (scale imbalance) | Parameters differ by 10^6× | Parameter normalization | `ParameterNormalizer` class |
+| Slow convergence | Adam is first-order only | Streaming Gauss-Newton | `_compute_jacobian` + exact H accumulation |
+| Crude covariance | No Jacobian in streaming | Exact J^T J + transform | `transform_covariance` method |
+
+**Optimization Phases:**
+- **Phase 0**: Parameter normalization (optional, enabled by default)
+- **Phase 1**: Adam warmup (fast basin location)
+- **Phase 2**: Gauss-Newton refinement (accurate minimum + covariance)
+
+#### 11a. Basic Usage
+
+```python
+from nlsq import curve_fit
+import jax.numpy as jnp
+
+def model(x, a, b, c):
+    return a * jnp.exp(-b * x) + c
+
+# Simple usage with hybrid_streaming method
+popt, pcov = curve_fit(model, x, y, p0=[1.0, 0.1, 0.5], method='hybrid_streaming')
+```
+
+#### 11b. Configuration Presets
+
+```python
+from nlsq import curve_fit, HybridStreamingConfig
+
+# Aggressive profile: faster convergence
+config = HybridStreamingConfig.aggressive()
+popt, pcov = curve_fit(model, x, y, p0, method='hybrid_streaming', verbose=1)
+
+# Conservative profile: higher quality solution
+config = HybridStreamingConfig.conservative()
+
+# Memory-optimized profile: for large datasets
+config = HybridStreamingConfig.memory_optimized()
+```
+
+**Configuration Presets Summary:**
+
+| Preset | Use Case | Key Settings |
+|--------|----------|--------------|
+| `HybridStreamingConfig()` | General purpose | Default balanced settings |
+| `.aggressive()` | Speed priority | LR=0.003, chunk=20K, looser tolerances |
+| `.conservative()` | Quality priority | LR=0.0003, tol=1e-10, more GN iterations |
+| `.memory_optimized()` | Large datasets | chunk=5K, float32, frequent checkpoints |
+
+#### 11c. Custom Configuration
+
+```python
+from nlsq import curve_fit, HybridStreamingConfig
+
+config = HybridStreamingConfig(
+    # Phase 0: Normalization
+    normalize=True,
+    normalization_strategy='auto',  # 'auto', 'bounds', 'p0', 'none'
+
+    # Phase 1: Adam warmup
+    warmup_iterations=300,
+    max_warmup_iterations=800,
+    warmup_learning_rate=0.003,
+    loss_plateau_threshold=1e-4,
+    gradient_norm_threshold=1e-3,
+    active_switching_criteria=['plateau', 'gradient', 'max_iter'],
+
+    # Optax enhancements
+    use_learning_rate_schedule=True,
+    lr_schedule_warmup_steps=50,
+    lr_schedule_decay_steps=450,
+    gradient_clip_value=1.0,
+
+    # Phase 2: Gauss-Newton
+    gauss_newton_max_iterations=100,
+    gauss_newton_tol=1e-8,
+    trust_region_initial=1.0,
+    regularization_factor=1e-10,
+
+    # Streaming configuration
+    chunk_size=10000,
+
+    # Fault tolerance
+    enable_checkpoints=True,
+    checkpoint_frequency=100,
+    validate_numerics=True,
+
+    # Precision control
+    precision='auto',  # float32 for Phase 1, float64 for Phase 2+
+
+    # Multi-device support
+    enable_multi_device=False,
+)
+
+popt, pcov = curve_fit(model, x, y, p0, method='hybrid_streaming', verbose=2)
+```
+
+#### 11d. Parameter Normalization
+
+Direct usage of the normalization API for advanced control:
+
+```python
+import jax.numpy as jnp
+from nlsq.parameter_normalizer import ParameterNormalizer, NormalizedModelWrapper
+
+# Define model
+def model(x, a, b):
+    return a * jnp.exp(-b * x)
+
+# Setup normalizer with bounds
+p0 = jnp.array([50.0, 0.5])
+bounds = (jnp.array([10.0, 0.0]), jnp.array([100.0, 1.0]))
+normalizer = ParameterNormalizer(p0, bounds, strategy='bounds')
+
+# Normalize parameters
+normalized_p0 = normalizer.normalize(p0)
+print(f"Normalized p0: {normalized_p0}")  # [0.444..., 0.5]
+
+# Create wrapped model
+wrapped_model = NormalizedModelWrapper(model, normalizer)
+
+# After optimization in normalized space, denormalize
+popt_normalized = jnp.array([0.5, 0.3])  # example result
+popt_original = normalizer.denormalize(popt_normalized)
+
+# Transform covariance: Cov_orig = J @ Cov_norm @ J.T
+J = normalizer.normalization_jacobian
+pcov_original = J @ pcov_normalized @ J.T
+```
+
+**Normalization Strategies:**
+
+| Strategy | Description | When to Use |
+|----------|-------------|-------------|
+| `'auto'` | Use bounds if provided, else p0-based | Default, works for most cases |
+| `'bounds'` | Normalize to [0, 1] using bounds | When parameter bounds are known |
+| `'p0'` | Scale by initial parameter magnitudes | When p0 spans many orders of magnitude |
+| `'none'` | Identity transform | When parameters are already well-scaled |
+
+#### 11e. With Parameter Bounds
+
+```python
+import jax.numpy as jnp
+from nlsq import curve_fit
+
+def model(x, amplitude, decay_rate, offset):
+    return amplitude * jnp.exp(-decay_rate * x) + offset
+
+# Bounds-based normalization (normalizes to [0, 1])
+bounds = ([0.1, 0.01, -10], [100.0, 1.0, 10])
+
+popt, pcov = curve_fit(
+    model, x, y,
+    p0=[10.0, 0.1, 0.0],
+    bounds=bounds,
+    method='hybrid_streaming',
+    verbose=1
+)
+```
+
+#### 11f. With Stability Mode
+
+```python
+from nlsq import curve_fit
+
+# Enable stability checks with automatic fixes
+popt, pcov = curve_fit(
+    model, x, y, p0,
+    method='hybrid_streaming',
+    stability='auto',        # Check and fix issues
+    rescale_data=False,      # Preserve physical units (for physics apps)
+    verbose=1
+)
+```
+
+#### When to Use hybrid_streaming
+
+| Scenario | Use hybrid_streaming? | Reason |
+|----------|----------------------|--------|
+| Parameters differ by >1000× | ✅ Yes | Normalization handles scale imbalance |
+| Need accurate covariance | ✅ Yes | Exact J^T J computation |
+| TRF/LM converges slowly (>50 iter) | ✅ Yes | Adam warmup finds better basin |
+| Large streaming datasets | ✅ Yes | Memory-efficient with quality refinement |
+| Parameters already well-scaled (~O(1)) | ❌ No | TRF/LM faster for simple problems |
+| Speed critical, covariance not needed | ❌ No | TRF/LM have less overhead |
+| Very small datasets (<10K points) | ❌ No | Overhead not worth it |
+
 ## Workflow Patterns
 
 ### Pattern 1: Quick Fit
@@ -1408,6 +1601,11 @@ Detailed loss function reference:
 **6. Slow Convergence**
 - Problem: Hundreds of iterations without convergence
 - Solution: Check conditioning, loosen tolerances, try different algorithm
+- For multi-scale parameters: Use `method='hybrid_streaming'` with automatic normalization
+
+**7. Multi-Scale Parameters**
+- Problem: Parameters differ by >1000× causing ill-conditioning
+- Solution: Use `method='hybrid_streaming'` which includes automatic parameter normalization
 
 ## Quick Reference
 
@@ -1424,6 +1622,16 @@ result = CurveFit(model, x, y, p0, bounds=(lower, upper), method='trf').fit()
 **Robust fit:**
 ```python
 result = CurveFit(model, x, y, p0, loss='huber').fit()
+```
+
+**Hybrid streaming (multi-scale parameters, accurate covariance):**
+```python
+from nlsq import curve_fit, HybridStreamingConfig
+popt, pcov = curve_fit(model, x, y, p0, method='hybrid_streaming')
+
+# With preset configuration
+config = HybridStreamingConfig.conservative()  # or .aggressive(), .memory_optimized()
+popt, pcov = curve_fit(model, x, y, p0, method='hybrid_streaming', verbose=1)
 ```
 
 **Large dataset fit:**
@@ -1463,10 +1671,11 @@ diagnose_result(result)
 
 ---
 
-**Skill Version**: 1.0.2
-**Last Updated**: 2025-10-31
+**Skill Version**: 1.0.3
+**Last Updated**: 2025-12-18
 **NLSQ Library**: JAX-based GPU/TPU-accelerated nonlinear least squares (v0.2.1+)
 **Key Updates**:
+- **v1.0.3**: Added Adaptive Hybrid Streaming Optimizer with Parameter Normalization (Section 11), HybridStreamingConfig presets, ParameterNormalizer class, normalization strategies
 - **v1.0.2**: Aligned with plugin version 1.0.2
 - **v1.0.1**: Enhanced skill discoverability with comprehensive use-case descriptions
 - **v1.0.0**: Initial skill with core NLSQ capabilities including large dataset handling, mixed precision fallback, callbacks, and streaming optimization
