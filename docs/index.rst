@@ -41,7 +41,7 @@ Tools & Migration (4 plugins)
 Statistics
 ----------
 
-**Version 1.0.4** (All plugins updated December 3, 2025)
+**Version 1.0.5** (All plugins updated December 18, 2025)
 
 **Total Resources:**
 
@@ -66,8 +66,8 @@ Features
 **Specialized Expertise**
   Each plugin provides focused expertise in specific domains, with specialized agents, commands, and skills.
 
-**v1.0.4 Agent Enhancements**
-  All 74 agents follow the nlsq-pro template with Pre-Response Validation Framework, When to Invoke sections, and Constitutional AI principles.
+**v1.0.5 Version Sync**
+  All 31 plugins synchronized to version 1.0.5 with unified versioning across marketplace.json and documentation.
 
 **Cross-Plugin Integration**
   Plugins are designed to work together, enabling complex multi-plugin workflows. See the :doc:`integration-map` for detailed integration patterns.
