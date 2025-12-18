@@ -2,7 +2,7 @@
   "name": "framework-migration",
   "displayName": "Framework Migration",
   "description": "Comprehensive framework and legacy system modernization with systematic Chain-of-Thought migration frameworks, Constitutional AI principles, and proven Strangler Fig patterns. Expert guidance for safe, incremental upgrades with zero downtime and comprehensive test coverage.",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "keywords": [
     "migration",
     "modernization",
@@ -47,7 +47,7 @@
       "file": "commands/code-migrate.md",
       "name": "/code-migrate",
       "description": "Orchestrate systematic code migration between frameworks with test-first discipline, multi-mode execution (quick/standard/deep), and phased workflow (assessment, testing, transformation, validation, deployment)",
-      "version": "1.0.4",
+      "version": "1.0.5",
       "status": "active"
     },
     {
@@ -55,7 +55,7 @@
       "file": "commands/deps-upgrade.md",
       "name": "/deps-upgrade",
       "description": "Safe dependency upgrade orchestration with security-first prioritization, breaking change management, and incremental/batch strategies (quick: security patches, standard: minor/patch, deep: major versions)",
-      "version": "1.0.4",
+      "version": "1.0.5",
       "status": "active"
     },
     {
@@ -63,7 +63,7 @@
       "file": "commands/legacy-modernize.md",
       "name": "/legacy-modernize",
       "description": "Comprehensive legacy modernization with Strangler Fig pattern, multi-agent orchestration (architect, security, testing, deployment), and zero-downtime transformation",
-      "version": "1.0.4",
+      "version": "1.0.5",
       "status": "active"
     }
   ],

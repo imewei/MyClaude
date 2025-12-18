@@ -1,6 +1,6 @@
 {
   "name": "unit-testing",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Production-grade test automation and debugging with 3 execution modes (quick/standard/enterprise), AI-driven RCA, comprehensive examples, and TDD excellence. Features iterative test fixing, automated test generation with scientific computing support (JAX, NumPy, PyTorch), and 8 comprehensive external documentation files (~5,858 lines). v1.0.3 optimizes both commands (50.6% reduction: 2,112→1,044 lines) and registers the e2e-testing-patterns skill.",
   "author": {
     "name": "Wei Chen",
@@ -30,7 +30,7 @@
       "name": "debugger",
       "description": "AI-assisted debugging specialist with systematic 8-step process, LLM-driven root cause analysis, automated log correlation, distributed tracing integration, and performance profiling. Includes 16 ambiguity questions and comprehensive examples.",
       "status": "active",
-      "version": "1.0.4",
+      "version": "1.0.5",
       "capabilities": [
         "8-step systematic debugging workflow",
         "AI-driven root cause analysis with LLM",
@@ -46,7 +46,7 @@
       "name": "test-automator",
       "description": "Master test automation engineer with systematic 8-step process, TDD excellence, AI-powered testing, and comprehensive quality engineering. Includes page object patterns, property-based testing, and CI/CD integration.",
       "status": "active",
-      "version": "1.0.4",
+      "version": "1.0.5",
       "capabilities": [
         "8-step systematic test automation workflow",
         "TDD red-green-refactor cycle mastery",
@@ -64,13 +64,13 @@
       "name": "/test-generate",
       "description": "Generate comprehensive test suites with 3 execution modes (quick: 30min-1h single module, standard: 2-4h package suite, enterprise: 1-2d entire project), scientific computing support (JAX gradient verification, NumPy numerical validation, PyTorch autograd), property-based testing with Hypothesis, and comprehensive external documentation",
       "status": "active",
-      "version": "1.0.4"
+      "version": "1.0.5"
     },
     {
       "name": "/run-all-tests",
       "description": "Iteratively run and fix all tests with 3 execution modes (quick: 30min-1h max 3 iterations, standard: 2-4h max 10 iterations with AI-RCA, enterprise: 1-2d unlimited iterations with mutation testing), AI-assisted debugging, flaky test detection, and comprehensive external documentation",
       "status": "active",
-      "version": "1.0.4"
+      "version": "1.0.5"
     }
   ],
   "skills": [
@@ -78,7 +78,7 @@
       "name": "e2e-testing-patterns",
       "description": "Master end-to-end testing with Playwright and Cypress to build reliable, fast, and maintainable test suites that catch bugs, improve confidence, and enable fast deployment. Use when writing or editing test files (*.spec.ts, *.spec.js, *.test.ts, *.test.js, *.cy.ts, *.cy.js), implementing E2E test automation for web applications, testing critical user workflows (login, signup, checkout, form submissions), debugging flaky or unreliable tests, setting up CI/CD test pipelines with GitHub Actions or GitLab CI, testing across multiple browsers (Chrome, Firefox, Safari, mobile browsers), implementing Page Object Model patterns for maintainable tests, writing custom Playwright or Cypress commands, mocking or intercepting API calls for faster tests, implementing visual regression testing with screenshot comparison, validating accessibility requirements with axe-core, testing responsive designs across viewport sizes, setting up test fixtures and test data management, implementing parallel test execution and sharding, debugging failing tests with trace viewer or video recordings, establishing E2E testing standards and best practices, preventing common pitfalls (brittle selectors, fixed timeouts, coupled tests, over-testing edge cases), or optimizing test suite performance to run quickly in CI/CD. Includes comprehensive patterns for Playwright configuration, Cypress setup, waiting strategies, network mocking, accessibility testing, and debugging workflows.",
       "status": "active",
-      "version": "1.0.4"
+      "version": "1.0.5"
     }
   ]
 }

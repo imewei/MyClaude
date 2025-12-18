@@ -3,7 +3,7 @@
   "displayName": "Data Visualization & Scientific UI",
   "description": "Comprehensive data visualization and UI design for scientific computing with Python/Julia ecosystems. Expert-level agent and skills for publication-quality figures, interactive dashboards, accessibility-first design, and immersive AR/VR interfaces. v1.0.1 features enhanced agent with systematic frameworks and optimized skills for better discoverability.",
   "changelog": "v1.0.1: Enhanced visualization-interface agent with triggering criteria (20 USE cases, 8 anti-patterns with decision tree), 6-step chain-of-thought reasoning framework (60 guiding questions), 5 Constitutional AI principles (50 self-check questions), and comprehensive Climate Change Dashboard example (730+ lines). Agent growth: 399 → 1,182 lines (783 lines added, 296% growth), maturity 91%. Enhanced all 3 skills with detailed descriptions for better Claude Code discoverability, comprehensive 'When to use this skill' sections with 20-27 specific use cases each, and explicit file type triggers (.py, .jl, .ipynb, app.py). Expected: 50-70% better visualization quality, 60% faster development, 70% more thorough design analysis, significantly improved skill discovery and proactive usage.",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "keywords": [
     "visualization",
     "scientific-plots",
@@ -47,7 +47,7 @@
       "name": "Visualization Interface Expert",
       "description": "Visualization and interface expert specializing in scientific data visualization, UX design, and immersive technologies with Python and Julia. Expert in Matplotlib, Plotly, Makie.jl, D3.js, Dash, Streamlit, AR/VR, and accessibility-first design",
       "status": "active",
-      "version": "1.0.4",
+      "version": "1.0.5",
       "maturity": "91%",
       "improvements": "Added triggering criteria with 20 USE cases and 8 anti-patterns with delegation decision tree (visualization-interface vs. fullstack-developer vs. frontend-developer vs. ui-ux-designer vs. python-pro), 6-step chain-of-thought reasoning framework (Audience & Communication Analysis → Data Exploration → Visual Encoding Strategy → Technology Selection → Implementation → Validation) with 60 guiding questions (10 per step), 5 Constitutional AI principles (Truthful Data Representation 95%, Accessibility & Inclusive Design 90%, Performance & Scalability 88%, User-Centered Design 92%, Reproducibility & Maintainability 85%) with 50 self-check questions (10 per principle), comprehensive 730+ line Climate Change Dashboard for Policymakers example with complete Plotly Dash implementation, accessibility validation (WCAG AA, colorblind testing, screen reader support), performance testing (<1.5s load, 60 FPS), and self-critique (90% overall maturity). Growth: 399 → 1,182 lines (+783 lines, 296%). Expected: 50-70% better visualization quality, 60% faster development, 70% more thorough analysis."
     }
@@ -58,7 +58,7 @@
       "directory": "skills",
       "name": "Scientific Data Visualization",
       "description": "Create domain-specific scientific data visualizations for research publications and technical reports across physics, biology, chemistry, climate science, and engineering with uncertainty quantification, multi-dimensional data representation, and publication standards. Enhanced with comprehensive use case examples for better discoverability.",
-      "version": "1.0.4",
+      "version": "1.0.5",
       "maturity": "90%",
       "improvements": "Enhanced skill description in frontmatter with detailed use cases (publication-quality figures, uncertainty visualization, domain-specific plots, journal formatting standards) and explicit file type triggers (.py, .jl, .ipynb). Added comprehensive 'When to use this skill' section with 20 specific scenarios covering physics/engineering (vector fields, fluid dynamics), biology (molecular structures, protein visualization), climate science (geospatial maps, temperature anomalies), chemistry (spectroscopy data, UV-Vis/FTIR plots), time-series analysis, network graphs, publication formatting (Nature/Science specifications, 300 DPI), colorblind-friendly palettes, and ParaView/VTK integration. Expected: Significantly improved skill discovery and proactive usage by Claude Code."
     },
@@ -67,7 +67,7 @@
       "directory": "skills",
       "name": "Python & Julia Visualization",
       "description": "Implement production-ready scientific visualizations using Python (Matplotlib, Seaborn, Plotly, Bokeh) and Julia (Plots.jl, Makie.jl, Gadfly.jl) ecosystems for publication-quality static plots, interactive 3D visualizations, real-time dashboards, and GPU-accelerated graphics. Enhanced with comprehensive use case examples for better discoverability.",
-      "version": "1.0.4",
+      "version": "1.0.5",
       "maturity": "92%",
       "improvements": "Enhanced skill description in frontmatter with detailed use cases (matplotlib rcParams configuration, seaborn statistical plots, plotly animations, bokeh 10k+ point visualizations, Makie.jl GPU acceleration, Pluto.jl reactive notebooks, ipywidgets interactivity) and explicit file type triggers (.py, .jl, .ipynb, app.py, streamlit_app.py). Added comprehensive 'When to use this skill' section with 20 specific scenarios covering multi-panel figures, error bars, statistical visualization (violin plots, FacetGrid, joint distributions), 3D surface plots, custom colormaps, interactive dashboards, real-time streaming, PyCall Python-Julia integration, and multi-format export (PNG, PDF, SVG, HTML, JSON). Expected: Significantly improved skill discovery and proactive usage by Claude Code."
     },
@@ -76,7 +76,7 @@
       "directory": "skills",
       "name": "UX Design for Scientific Interfaces",
       "description": "Design intuitive, accessible, and user-centered interfaces for scientific tools, research applications, and data analysis platforms with WCAG 2.1 AA compliance, progressive disclosure patterns, and usability testing frameworks. Enhanced with comprehensive use case examples for better discoverability.",
-      "version": "1.0.4",
+      "version": "1.0.5",
       "maturity": "89%",
       "improvements": "Enhanced skill description in frontmatter with detailed use cases (Plotly Dash dashboards, Streamlit applications, Pluto.jl reactive notebooks, WCAG 2.1 AA standards, keyboard navigation, ARIA labels, usability testing, progressive disclosure, reproducibility features) and explicit file type triggers (app.py for Dash, streamlit_app.py for Streamlit). Added comprehensive 'When to use this skill' section with 27 specific scenarios covering interactive dashboards, accessibility standards (contrast ratios 4.5:1, screen readers), Jupyter widgets, CLI design with argparse/Click, Figma prototypes, usability testing metrics (success rate, task duration), progressive disclosure, save/load states, multi-format export, keyboard shortcuts, responsive design for tablets, and batch processing workflows. Expected: Significantly improved skill discovery and proactive usage by Claude Code."
     }

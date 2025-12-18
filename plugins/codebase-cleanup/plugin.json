@@ -3,7 +3,7 @@
   "displayName": "Codebase Cleanup",
   "description": "Codebase cleanup and technical debt reduction expertise with AI-powered code analysis, systematic refactoring, TDD, and quality engineering. v1.0.3 features optimized command architecture with execution modes (quick/standard/comprehensive), external documentation hub, 9 comprehensive technical guides, and streamlined workflows for maximum efficiency. 25% command size reduction with enhanced capabilities.",
   "changelog": "v1.0.3: Major architecture optimization with hub-and-spoke pattern: optimized 4 commands (2,608 → 1,965 lines, 25% reduction) with execution modes (quick/standard/comprehensive), created 9 external documentation files (dependency-security-guide, vulnerability-analysis-framework, import-resolution-strategies, session-management-guide, solid-principles-guide, refactoring-patterns, code-quality-metrics, technical-debt-framework, automation-integration), added YAML frontmatter with execution time estimates, external doc references, and improved metadata. All commands and agents updated to v1.0.3 for consistency. Expected: 30% faster task completion, better user experience with time estimates, comprehensive reference materials.",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "keywords": [
     "cleanup",
     "refactoring",
@@ -39,7 +39,7 @@
       "name": "Code Reviewer",
       "description": "Elite code review expert specializing in modern AI-powered code analysis, security vulnerabilities, performance optimization, and production reliability",
       "status": "active",
-      "version": "1.0.4",
+      "version": "1.0.5",
       "maturity": "91%",
       "improvements": "Added triggering criteria with 20 USE cases and 8 anti-patterns with delegation decision tree (code-reviewer vs. test-automator vs. security-auditor vs. performance-optimizer), 6-step chain-of-thought reasoning framework (Code Analysis & Discovery → Issue Prioritization → Cleanup Strategy Design → Implementation & Execution → Testing & Validation → Documentation & Review) with 60 guiding questions (10 per step), 5 Constitutional AI principles (Safety First, Quality Over Speed, Test-Driven Cleanup, Incremental Improvement, Knowledge Sharing) with 50 self-check questions (10 per principle), comprehensive 450-line legacy Python codebase cleanup example with before/after code, 40+ pytest test cases with 85% coverage, and self-critique (91% maturity score). v1.0.3: Version consistency update."
     },
@@ -49,7 +49,7 @@
       "name": "Test Automator",
       "description": "Master AI-powered test automation with modern frameworks, self-healing tests, comprehensive quality engineering, and TDD discipline",
       "status": "active",
-      "version": "1.0.4",
+      "version": "1.0.5",
       "maturity": "91%",
       "improvements": "Added triggering criteria with 20 USE cases and 7 anti-patterns with delegation decision tree (test-automator vs. qa-engineer vs. code-reviewer vs. performance-tester), 6-step chain-of-thought reasoning framework (Test Strategy Design → Test Environment Setup → Test Implementation → Test Execution & Monitoring → Test Maintenance & Optimization → Quality Metrics & Reporting) with 60 guiding questions (10 per step), 5 Constitutional AI principles (Test Reliability First, Fast Feedback Loops, Comprehensive Coverage, Maintainable Test Code, TDD Discipline) with 50 self-check questions (10 per principle), comprehensive 400-line TDD REST API example with red-green-refactor cycle, Jest tests, GitHub Actions CI/CD, 92% coverage, and self-critique (91% maturity score). v1.0.3: Version consistency update."
     }
@@ -61,7 +61,7 @@
       "name": "/deps-audit",
       "description": "Comprehensive dependency security scanning and vulnerability analysis with multi-language support",
       "status": "active",
-      "version": "1.0.4",
+      "version": "1.0.5",
       "execution_modes": {
         "quick": "2-5 minutes - Basic scan, critical/high vulnerabilities only",
         "standard": "5-15 minutes - Full tree analysis, all severity levels, license compliance",
@@ -86,7 +86,7 @@
       "name": "/fix-imports",
       "description": "Systematically fix broken imports with intelligent resolution and session continuity",
       "status": "active",
-      "version": "1.0.4",
+      "version": "1.0.5",
       "execution_modes": {
         "quick": "3-8 minutes - High-confidence fixes only, skip ambiguous cases",
         "standard": "10-20 minutes - Full scan, interactive resolution, session management",
@@ -111,7 +111,7 @@
       "name": "/refactor-clean",
       "description": "Refactor code for quality, maintainability, and SOLID principles with measurable improvements",
       "status": "active",
-      "version": "1.0.4",
+      "version": "1.0.5",
       "execution_modes": {
         "quick": "5-10 minutes - Immediate fixes (rename, extract constants, remove dead code)",
         "standard": "15-30 minutes - SOLID violations, method extraction, pattern recommendations",
@@ -137,7 +137,7 @@
       "name": "/tech-debt",
       "description": "Analyze, prioritize, and create remediation plans for technical debt with ROI calculations",
       "status": "active",
-      "version": "1.0.4",
+      "version": "1.0.5",
       "execution_modes": {
         "quick": "5-10 minutes - Surface scan, top 10 high-impact items",
         "standard": "15-25 minutes - Comprehensive inventory, scoring, priority roadmap",

@@ -1,6 +1,6 @@
 {
   "name": "machine-learning",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Advanced machine learning and MLOps with production-ready pipelines, multi-agent orchestration, comprehensive experiment tracking, and enterprise data infrastructure. v1.0.3 enhances /ml-pipeline command with 3 execution modes (quick/standard/enterprise), adds data-engineer agent, and provides 6-file external documentation covering MLOps methodology, deployment strategies, monitoring frameworks, and success criteria.",
   "author": {
     "name": "Wei Chen",
@@ -12,25 +12,25 @@
       "name": "data-engineer",
       "description": "Expert data engineer specializing in scalable data pipelines, ETL/ELT architecture, data quality frameworks, and production data infrastructure for ML systems",
       "status": "active",
-      "version": "1.0.4"
+      "version": "1.0.5"
     },
     {
       "name": "data-scientist",
       "description": "Expert data scientist with 6-phase chain-of-thought reasoning framework (problem analysis → data assessment → methodology selection → implementation → validation → communication), constitutional AI self-correction for statistical rigor and business relevance, structured output templates, and 3 detailed few-shot examples for advanced analytics, ML modeling, statistical testing, and business insights",
       "status": "active",
-      "version": "1.0.4"
+      "version": "1.0.5"
     },
     {
       "name": "ml-engineer",
       "description": "Expert ML engineer with 6-phase production engineering framework (requirements → system design → implementation → optimization → deployment → operations), constitutional AI principles for reliability/observability/performance, structured output with architecture diagrams and runbooks, and 2 detailed few-shot examples for scalable ML systems with PyTorch 2.x, TensorFlow, model serving, A/B testing, and performance optimization",
       "status": "active",
-      "version": "1.0.4"
+      "version": "1.0.5"
     },
     {
       "name": "mlops-engineer",
       "description": "Expert MLOps engineer with 6-phase infrastructure framework (requirements → architecture → implementation → automation → security → operations), constitutional AI principles for automation/reproducibility/cost-efficiency, structured output with IaC templates and cost analysis, and comprehensive few-shot example for complete MLOps platforms with Kubeflow/MLflow, GitOps, CI/CD, and multi-cloud deployment across AWS/Azure/GCP",
       "status": "active",
-      "version": "1.0.4"
+      "version": "1.0.5"
     }
   ],
   "commands": [
@@ -38,7 +38,7 @@
       "name": "/ml-pipeline",
       "description": "Design and implement production-ready ML pipelines with multi-agent MLOps orchestration, 3 execution modes, and comprehensive external documentation",
       "status": "active",
-      "version": "1.0.4",
+      "version": "1.0.5",
       "maturity": "95%",
       "improvements": "v1.0.3 Enhancement: Added YAML frontmatter with 3 execution modes (quick: 2-3 days MVP with core agents, standard: 1-2 weeks full pipeline with monitoring, enterprise: 3-4 weeks complete MLOps platform with K8s), added data-engineer agent, agent reference table for 7 specialized agents, condensed phase descriptions with external doc links, comprehensive 6-file documentation suite (MLOps methodology covering maturity models and CI/CD practices, pipeline phases with detailed implementation checklists, deployment strategies for canary/blue-green/shadow/A-B testing, monitoring frameworks for drift detection and observability, best practices for production readiness, quantified success criteria with KPIs). Enhanced usability with AskUserQuestion for mode selection, graceful degradation for optional cross-plugin agents, --docs-url support for library-specific guidance, and complete reference library without increasing command token cost."
     }
@@ -48,49 +48,49 @@
       "name": "statistical-analysis-fundamentals",
       "description": "Comprehensive statistical analysis workflows including hypothesis testing, Bayesian methods, regression analysis, experimental design, A/B testing, and causal inference",
       "status": "active",
-      "version": "1.0.4"
+      "version": "1.0.5"
     },
     {
       "name": "machine-learning-essentials",
       "description": "Core machine learning workflows including classical ML algorithms (regression, trees, ensembles), neural networks, model evaluation, hyperparameter tuning, and deployment",
       "status": "active",
-      "version": "1.0.4"
+      "version": "1.0.5"
     },
     {
       "name": "data-wrangling-communication",
       "description": "Data wrangling, cleaning, feature engineering, and visualization workflows for preparing data and communicating insights effectively",
       "status": "active",
-      "version": "1.0.4"
+      "version": "1.0.5"
     },
     {
       "name": "advanced-ml-systems",
       "description": "Advanced deep learning systems with PyTorch 2.x, TensorFlow 2.x, distributed training (DDP, DeepSpeed, FSDP), hyperparameter optimization, model optimization (quantization, pruning, distillation), and transfer learning",
       "status": "active",
-      "version": "1.0.4"
+      "version": "1.0.5"
     },
     {
       "name": "ml-engineering-production",
       "description": "Production ML engineering practices including software engineering fundamentals, testing strategies, data pipelines, SQL integration, code optimization, version control, and collaboration workflows",
       "status": "active",
-      "version": "1.0.4"
+      "version": "1.0.5"
     },
     {
       "name": "model-deployment-serving",
       "description": "Model deployment and serving with FastAPI, TorchServe, BentoML, Docker, Kubernetes, cloud platforms (AWS/GCP/Azure), monitoring, drift detection, and A/B testing",
       "status": "active",
-      "version": "1.0.4"
+      "version": "1.0.5"
     },
     {
       "name": "devops-ml-infrastructure",
       "description": "DevOps and ML infrastructure automation with GitHub Actions CI/CD pipelines, Terraform infrastructure as code, AWS/Azure/GCP provisioning, inference optimization, and deployment automation",
       "status": "active",
-      "version": "1.0.4"
+      "version": "1.0.5"
     },
     {
       "name": "ml-pipeline-workflow",
       "description": "Build end-to-end MLOps pipelines with Airflow, Dagster, Kubeflow Pipelines, or Prefect orchestrating data preparation, feature engineering, model training, validation, and production deployment workflows",
       "status": "active",
-      "version": "1.0.4"
+      "version": "1.0.5"
     }
   ],
   "keywords": [

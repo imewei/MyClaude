@@ -2,7 +2,7 @@
   "name": "backend-development",
   "displayName": "Backend Development",
   "description": "Comprehensive backend development support including REST/GraphQL/gRPC APIs, microservices architecture, distributed systems, TDD orchestration, and scalable backend patterns for modern applications. v1.0.3 enhances feature-development command with execution modes, agent reference table, and comprehensive external documentation (6 files covering methodology, phases, agent orchestration, deployment strategies, best practices, and success metrics).",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "changelog": "v1.0.3: Enhanced /feature-development command with YAML frontmatter (3 execution modes: quick/standard/enterprise), agent reference table for 10 specialized agents, condensed step descriptions with external doc links, comprehensive 6-file documentation suite (methodology-guides.md covering TDD/BDD/DDD, phase-templates.md with detailed checklists, agent-orchestration.md with 5 orchestration patterns, deployment-strategies.md for 5 deployment strategies, best-practices.md for production readiness, success-metrics.md with quantified criteria). Enhanced usability with clear execution modes, better agent coordination guidance, and complete reference library. Maintains 100% backward compatibility.",
   "keywords": [
     "backend",
@@ -33,7 +33,7 @@
       "name": "Backend Architect",
       "description": "Expert backend architect specializing in scalable API design, microservices architecture, and distributed systems",
       "status": "active",
-      "version": "1.0.4",
+      "version": "1.0.5",
       "maturity": "92%",
       "improvements": "Added triggering criteria with decision tree, 6-step chain-of-thought reasoning framework, 5 Constitutional AI principles, comprehensive event-driven architecture example with full implementation. Expected: 30% better service boundary identification, 40% reduction in over-engineering, 50% improvement in resilience pattern adoption."
     },
@@ -43,7 +43,7 @@
       "name": "GraphQL Architect",
       "description": "Master modern GraphQL with federation, performance optimization, and enterprise security",
       "status": "active",
-      "version": "1.0.4",
+      "version": "1.0.5",
       "maturity": "90%",
       "improvements": "Added triggering criteria for GraphQL-specific tasks, 5-step chain-of-thought reasoning (Schema → Performance → Authorization → Federation → Verification), 5 GraphQL-specific Constitutional AI principles, comprehensive N+1 elimination example with DataLoader. Expected: 60% reduction in N+1 problems, 45% better schema evolution practices, 50% improvement in authorization implementation."
     },
@@ -53,7 +53,7 @@
       "name": "TDD Orchestrator",
       "description": "Master TDD orchestrator specializing in red-green-refactor discipline and multi-agent workflow coordination",
       "status": "active",
-      "version": "1.0.4",
+      "version": "1.0.5",
       "maturity": "93%",
       "improvements": "Added triggering criteria for TDD orchestration vs simple testing, 6-step chain-of-thought orchestration (Maturity Assessment → Workflow Design → Architecture → Agent Coordination → Metrics → Verification), 5 TDD-specific Constitutional AI principles, comprehensive payment microservice example with pre-commit hooks and metrics dashboard. Expected: 70% better test-first discipline enforcement, 50% improvement in test quality (mutation score), 45% better agent coordination efficiency."
     }
@@ -65,7 +65,7 @@
       "name": "/feature-development",
       "description": "Orchestrate end-to-end feature development from requirements to production deployment with 3 execution modes (quick/standard/enterprise) and comprehensive external documentation",
       "status": "active",
-      "version": "1.0.4",
+      "version": "1.0.5",
       "maturity": "94%",
       "improvements": "v1.0.3 Enhancement: Added YAML frontmatter with 3 execution modes (quick: 1-2 days MVP, standard: 3-14 days full workflow, enterprise: 2-4 weeks with compliance), agent reference table for 10 specialized agents, condensed step descriptions with external doc links, comprehensive 6-file documentation suite (methodology guides covering TDD/BDD/DDD, phase templates with detailed checklists, agent orchestration patterns, deployment strategies for canary/blue-green/feature-flags/A/B testing, best practices for production readiness, quantified success metrics). Enhanced usability with clear execution modes, better agent coordination guidance, and complete reference library without increasing command token cost."
     }
@@ -76,7 +76,7 @@
       "directory": "skills/api-design-principles",
       "name": "API Design Principles",
       "description": "Best practices and patterns for designing REST, GraphQL, and gRPC APIs",
-      "version": "1.0.4",
+      "version": "1.0.5",
       "improvements": "Enhanced description with 20+ specific use cases, expanded 'When to use' section with 21 detailed examples covering REST, GraphQL, pagination, versioning, authentication, rate limiting, webhooks, and more."
     },
     {
@@ -84,7 +84,7 @@
       "directory": "skills/architecture-patterns",
       "name": "Architecture Patterns",
       "description": "Backend architecture patterns including microservices, event-driven, and distributed systems",
-      "version": "1.0.4",
+      "version": "1.0.5",
       "improvements": "Enhanced description with 25+ use cases covering Clean Architecture, Hexagonal Architecture, DDD, CQRS, Event Sourcing, expanded 'When to use' section with 22 detailed examples."
     },
     {
@@ -92,7 +92,7 @@
       "directory": "skills/auth-implementation-patterns",
       "name": "Auth Implementation Patterns",
       "description": "Authentication and authorization patterns for secure backend systems",
-      "version": "1.0.4",
+      "version": "1.0.5",
       "improvements": "Enhanced description with 25+ use cases covering JWT, OAuth2, RBAC, session management, MFA, SSO, expanded 'When to use' section with 24 detailed examples."
     },
     {
@@ -100,7 +100,7 @@
       "directory": "skills/error-handling-patterns",
       "name": "Error Handling Patterns",
       "description": "Error handling and resilience patterns for robust backend services",
-      "version": "1.0.4",
+      "version": "1.0.5",
       "improvements": "Enhanced description with 20+ use cases covering exceptions, Result types, circuit breakers, retry logic, graceful degradation, expanded 'When to use' section with 24 detailed examples."
     },
     {
@@ -108,7 +108,7 @@
       "directory": "skills/microservices-patterns",
       "name": "Microservices Patterns",
       "description": "Microservices architecture patterns and best practices",
-      "version": "1.0.4",
+      "version": "1.0.5",
       "improvements": "Enhanced description with 20+ use cases covering service boundaries, Saga patterns, API Gateway, event-driven architecture, expanded 'When to use' section with 24 detailed examples."
     },
     {
@@ -116,7 +116,7 @@
       "directory": "skills/sql-optimization-patterns",
       "name": "SQL Optimization Patterns",
       "description": "Database query optimization and SQL performance tuning patterns",
-      "version": "1.0.4",
+      "version": "1.0.5",
       "improvements": "Enhanced description with 20+ use cases covering EXPLAIN analysis, indexing strategies, N+1 elimination, pagination, batch operations, expanded 'When to use' section with 25 detailed examples."
     }
   ]

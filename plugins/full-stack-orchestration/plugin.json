@@ -2,7 +2,7 @@
   "name": "full-stack-orchestration",
   "displayName": "Full-Stack Orchestration",
   "description": "Full-stack development orchestration coordinating frontend, backend, testing, security, performance, and deployment for end-to-end feature delivery",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "keywords": [
     "full-stack",
     "orchestration",
@@ -55,7 +55,7 @@
       "id": "full-stack-feature",
       "file": "commands/full-stack-feature.md",
       "name": "/full-stack-feature",
-      "version": "1.0.4",
+      "version": "1.0.5",
       "description": "Orchestrate end-to-end full-stack feature development with multi-mode execution (quick: 30-60min architecture, standard: 3-6hrs implementation, deep: 1-3 days production-ready), API-first approach, phase-based workflow (architecture, implementation, testing, deployment), comprehensive external documentation (2,001 lines across 4 guides), 3 decision trees for technology selection, and 7-agent coordination with quality gates",
       "status": "active"
     }

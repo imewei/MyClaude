@@ -1,7 +1,7 @@
 {
   "name": "cicd-automation",
   "displayName": "CI/CD Automation",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Comprehensive CI/CD pipeline automation with intelligent error resolution, multi-agent analysis, and advanced workflow orchestration. Features optimized slash commands (62% token reduction), 3 execution modes per command, 11 external documentation files (~4,600 lines), 5 specialized agents, and 6 production-ready skills. Supports GitHub Actions, GitLab CI, Terraform, Kubernetes, and multi-cloud deployments with 100% backward compatibility.",
   "category": "infrastructure",
   "author": "Wei Chen",
@@ -33,7 +33,7 @@
       "name": "Cloud Architect",
       "description": "Expert cloud architect specializing in AWS/Azure/GCP multi-cloud infrastructure design, advanced IaC (Terraform/OpenTofu/CDK), FinOps cost optimization, and modern architectural patterns. Masters serverless, microservices, security, compliance, and disaster recovery with 6-step reasoning framework and Constitutional AI principles.",
       "status": "active",
-      "version": "1.0.4",
+      "version": "1.0.5",
       "maturity": "92%",
       "capabilities": [
         "Multi-cloud architecture design (AWS/Azure/GCP)",
@@ -58,7 +58,7 @@
       "name": "Deployment Engineer",
       "description": "Expert deployment engineer specializing in modern CI/CD pipelines, GitOps workflows (ArgoCD/Flux), and advanced deployment automation. Masters GitHub Actions, progressive delivery, container security, and platform engineering with zero-downtime deployment strategies and comprehensive monitoring.",
       "status": "active",
-      "version": "1.0.4",
+      "version": "1.0.5",
       "maturity": "92%",
       "capabilities": [
         "CI/CD pipeline design and implementation",
@@ -83,7 +83,7 @@
       "name": "DevOps Troubleshooter",
       "description": "Expert DevOps troubleshooter specializing in rapid incident response, advanced debugging, and modern observability. Masters log analysis, distributed tracing, Kubernetes debugging, performance optimization, and root cause analysis with systematic investigation frameworks and blameless postmortems.",
       "status": "active",
-      "version": "1.0.4",
+      "version": "1.0.5",
       "maturity": "90%",
       "capabilities": [
         "Rapid incident response and debugging",
@@ -108,7 +108,7 @@
       "name": "Kubernetes Architect",
       "description": "Expert Kubernetes architect specializing in cloud-native infrastructure, advanced GitOps workflows (ArgoCD/Flux), and enterprise container orchestration. Masters EKS/AKS/GKE, service mesh (Istio/Linkerd), progressive delivery, multi-tenancy, and platform engineering with security-first design.",
       "status": "active",
-      "version": "1.0.4",
+      "version": "1.0.5",
       "maturity": "90%",
       "capabilities": [
         "Kubernetes cluster design (EKS/AKS/GKE)",
@@ -133,7 +133,7 @@
       "name": "Terraform Specialist",
       "description": "Expert Terraform/OpenTofu specialist mastering advanced IaC automation, state management, and enterprise infrastructure patterns. Handles complex module design, multi-cloud deployments, GitOps workflows, policy as code (OPA/Sentinel), and CI/CD integration with comprehensive testing strategies.",
       "status": "active",
-      "version": "1.0.4",
+      "version": "1.0.5",
       "maturity": "90%",
       "capabilities": [
         "Advanced Terraform module design",
@@ -160,7 +160,7 @@
       "name": "/fix-commit-errors",
       "description": "Intelligent GitHub Actions failure resolution with 5-agent multi-agent system, pattern matching across 100+ error types, Bayesian confidence scoring, and iterative fix strategies. Features 3 execution modes (quick-fix: 5-10min, standard: 15-30min, comprehensive: 30-60min) with knowledge base learning.",
       "status": "active",
-      "version": "1.0.4",
+      "version": "1.0.5",
       "maturity": "95%",
       "execution_modes": {
         "quick-fix": {
@@ -200,7 +200,7 @@
       "name": "/workflow-automate",
       "description": "Automated CI/CD workflow generation with intelligent platform selection (GitHub Actions, GitLab CI, Terraform), technology stack detection, and production-ready templates. Features 3 execution modes (quick-start: 10-15min, standard: 30-45min, enterprise: 60-120min) with security and compliance integration.",
       "status": "active",
-      "version": "1.0.4",
+      "version": "1.0.5",
       "maturity": "94%",
       "execution_modes": {
         "quick-start": {
@@ -243,7 +243,7 @@
       "directory": "skills/deployment-pipeline-design",
       "name": "Deployment Pipeline Design",
       "description": "Multi-stage CI/CD pipeline architecture with approval gates, security checks, and progressive delivery. Covers GitHub Actions, GitLab CI, pipeline orchestration, environment promotion, rollback strategies, and deployment automation.",
-      "version": "1.0.4",
+      "version": "1.0.5",
       "use_cases": [
         "Multi-stage CI/CD pipelines",
         "GitOps workflows",
@@ -260,7 +260,7 @@
       "directory": "skills/github-actions-templates",
       "name": "GitHub Actions Templates",
       "description": "Production-ready GitHub Actions workflows for automated testing, building, and deploying applications. Includes CI pipelines, Docker builds, Kubernetes deployments, matrix builds, security scanning, and reusable workflows.",
-      "version": "1.0.4",
+      "version": "1.0.5",
       "use_cases": [
         "CI/CD workflows",
         "Docker image builds",
@@ -278,7 +278,7 @@
       "directory": "skills/gitlab-ci-patterns",
       "name": "GitLab CI Patterns",
       "description": "GitLab CI/CD pipelines with multi-stage workflows, caching, distributed runners, and GitOps integration. Covers .gitlab-ci.yml configuration, Docker-in-Docker builds, runner setup, and auto-scaling.",
-      "version": "1.0.4",
+      "version": "1.0.5",
       "use_cases": [
         ".gitlab-ci.yml configuration",
         "Docker-in-Docker builds",
@@ -295,7 +295,7 @@
       "directory": "skills/iterative-error-resolution",
       "name": "Iterative Error Resolution",
       "description": "Comprehensive iterative CI/CD error resolution with pattern recognition, automated fixes, and knowledge base learning. Integrates with /fix-commit-errors for intelligent error analysis and resolution.",
-      "version": "1.0.4",
+      "version": "1.0.5",
       "use_cases": [
         "GitHub Actions failures",
         "GitLab CI errors",
@@ -313,7 +313,7 @@
       "directory": "skills/secrets-management",
       "name": "Secrets Management",
       "description": "Secure secrets management for CI/CD pipelines using Vault, AWS Secrets Manager, Azure Key Vault, and platform-native solutions. Covers secret rotation, OIDC authentication, and compliance.",
-      "version": "1.0.4",
+      "version": "1.0.5",
       "use_cases": [
         "HashiCorp Vault integration",
         "AWS Secrets Manager",
@@ -331,7 +331,7 @@
       "directory": "skills/security-ci-template",
       "name": "Security CI Template",
       "description": "Security scanning and vulnerability detection templates for CI/CD pipelines. Includes SAST, DAST, SCA, container scanning, secret scanning, and compliance validation.",
-      "version": "1.0.4",
+      "version": "1.0.5",
       "use_cases": [
         "Dependency scanning (Snyk, npm audit)",
         "SAST tools (Semgrep, CodeQL)",
