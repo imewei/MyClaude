@@ -1,15 +1,15 @@
 ---
-version: "1.0.3"
-category: "llm-application-dev"
-command: "/langchain-agent"
-description: Create production-ready LangChain agents with LangGraph, RAG, memory systems, and comprehensive observability
+version: 1.0.5
+category: llm-application-dev
+command: /langchain-agent
+description: Create production-ready LangChain agents with LangGraph, RAG, and observability
 allowed-tools: Bash(find:*), Bash(git:*)
 argument-hint: "<agent_description>"
 color: purple
 execution_modes:
-  quick: "5-10 minutes - Generate basic ReAct agent with essential tools"
-  standard: "15-25 minutes - Build complete agent with RAG, memory, and LangSmith tracing"
-  comprehensive: "30-45 minutes - Production system with multi-agent orchestration and advanced patterns"
+  quick: "5-10 minutes"
+  standard: "15-25 minutes"
+  comprehensive: "30-45 minutes"
 agents:
   primary:
     - ai-engineer
@@ -21,266 +21,166 @@ agents:
 
 # LangChain/LangGraph Agent Development
 
-Build production-ready AI agent systems using LangChain 0.1+ and LangGraph with RAG, memory, and comprehensive observability.
+Build production-ready AI agent for: $ARGUMENTS
 
-## Quick Reference
+---
 
-| Topic | External Documentation | Lines |
-|-------|------------------------|-------|
-| **Advanced Patterns** | [langchain-advanced-patterns.md](../docs/langchain-advanced-patterns.md) | ~300 |
-| **LLM Integration** | [llm-integration-patterns.md](../docs/llm-integration-patterns.md) | ~400 |
-| **Testing & Deployment** | [ai-testing-deployment.md](../docs/ai-testing-deployment.md) | ~500 |
+## Mode Selection
 
-**Total External Documentation**: ~1,200 lines of advanced patterns and deployment strategies
+| Mode | Duration | Scope |
+|------|----------|-------|
+| Quick | 5-10 min | Basic ReAct agent, simple tools, in-memory buffer |
+| Standard (default) | 15-25 min | + RAG pipeline, memory with summarization, LangSmith |
+| Comprehensive | 30-45 min | + Multi-agent orchestration, advanced RAG, full observability |
 
-## Context
+---
 
-Build sophisticated AI agent system for: $ARGUMENTS
+## External Documentation
+
+| Topic | Reference | Lines |
+|-------|-----------|-------|
+| Advanced Patterns | [langchain-advanced-patterns.md](../docs/langchain-advanced-patterns.md) | ~300 |
+| LLM Integration | [llm-integration-patterns.md](../docs/llm-integration-patterns.md) | ~400 |
+| Testing & Deployment | [ai-testing-deployment.md](../docs/ai-testing-deployment.md) | ~500 |
+
+---
 
 ## Core Requirements
 
-- Use latest LangChain 0.1+ and LangGraph APIs
-- Implement async patterns throughout
-- Include comprehensive error handling and fallbacks
-- Integrate LangSmith for observability
-- Design for scalability and production deployment
-- Implement security best practices
-- Optimize for cost efficiency
+- LangChain 0.1+ and LangGraph APIs
+- Async patterns throughout
+- Comprehensive error handling
+- LangSmith observability
+- Security best practices
+- Cost optimization
 
-## Essential Architecture
+---
 
-### LangGraph State Management
-```python
-from langgraph.graph import StateGraph, MessagesState, START, END
-from langgraph.prebuilt import create_react_agent
-from langchain_anthropic import ChatAnthropic
+## Model & Embeddings
 
-class AgentState(TypedDict):
-    messages: Annotated[list, "conversation history"]
-    context: Annotated[dict, "retrieved context"]
-```
+| Component | Recommended |
+|-----------|-------------|
+| Primary LLM | Claude Sonnet 4.5 (`claude-sonnet-4-5`) |
+| Embeddings | Voyage AI (`voyage-3-large`) - Anthropic recommended |
+| Code | `voyage-code-3` |
+| Finance | `voyage-finance-2` |
+| Legal | `voyage-law-2` |
 
-### Model & Embeddings
-- **Primary LLM**: Claude Sonnet 4.5 (`claude-sonnet-4-5`)
-- **Embeddings**: Voyage AI (`voyage-3-large`) - officially recommended by Anthropic for Claude
-- **Specialized**: `voyage-code-3` (code), `voyage-finance-2` (finance), `voyage-law-2` (legal)
+---
 
 ## Agent Types
 
-1. **ReAct Agents**: Multi-step reasoning with tool usage
-   - Use `create_react_agent(llm, tools, state_modifier)`
-   - Best for general-purpose tasks
+| Type | Use Case | Pattern |
+|------|----------|---------|
+| ReAct | General multi-step reasoning | `create_react_agent(llm, tools)` |
+| Plan-and-Execute | Complex upfront planning | Separate planning/execution nodes |
+| Multi-Agent | Specialized with routing | Supervisor + `Command[Literal[...]]` |
 
-2. **Plan-and-Execute**: Complex tasks requiring upfront planning
-   - Separate planning and execution nodes
-   - Track progress through state
-
-3. **Multi-Agent Orchestration**: Specialized agents with supervisor routing
-   - Use `Command[Literal["agent1", "agent2", END]]` for routing
-   - Supervisor decides next agent based on context
+---
 
 ## Memory Systems
 
-- **Short-term**: `ConversationTokenBufferMemory` (token-based windowing)
-- **Summarization**: `ConversationSummaryMemory` (compress long histories)
-- **Entity Tracking**: `ConversationEntityMemory` (track people, places, facts)
-- **Vector Memory**: `VectorStoreRetrieverMemory` with semantic search
-- **Hybrid**: Combine multiple memory types for comprehensive context
+| Type | Use Case |
+|------|----------|
+| ConversationTokenBufferMemory | Token-based windowing |
+| ConversationSummaryMemory | Compress long histories |
+| ConversationEntityMemory | Track entities |
+| VectorStoreRetrieverMemory | Semantic search |
+| Hybrid | Combine multiple types |
+
+---
 
 ## RAG Pipeline
 
-```python
-from langchain_voyageai import VoyageAIEmbeddings
-from langchain_pinecone import PineconeVectorStore
+### Components
 
-# Setup embeddings (voyage-3-large recommended for Claude)
-embeddings = VoyageAIEmbeddings(model="voyage-3-large")
+| Component | Implementation |
+|-----------|----------------|
+| Embeddings | VoyageAIEmbeddings |
+| Vector store | Pinecone, Chroma, Weaviate |
+| Retriever | Hybrid search with reranking |
 
-# Vector store with hybrid search
-vectorstore = PineconeVectorStore(
-    index=index,
-    embedding=embeddings
-)
+### Advanced Patterns
+- **HyDE**: Hypothetical documents for better retrieval
+- **RAG Fusion**: Multiple query perspectives
+- **Reranking**: Cohere Rerank for relevance
 
-# Retriever with reranking
-base_retriever = vectorstore.as_retriever(
-    search_type="hybrid",
-    search_kwargs={"k": 20, "alpha": 0.5}
-)
-```
+---
 
-### Advanced RAG Patterns
-- **HyDE**: Generate hypothetical documents for better retrieval
-- **RAG Fusion**: Multiple query perspectives for comprehensive results
-- **Reranking**: Use Cohere Rerank for relevance optimization
+## Tools Integration
 
-## Tools & Integration
+| Element | Requirement |
+|---------|-------------|
+| Schema | Pydantic BaseModel with Field descriptions |
+| Async | `async def` with `coroutine=` parameter |
+| Error handling | Try/except with informative returns |
 
-```python
-from langchain_core.tools import StructuredTool
-from pydantic import BaseModel, Field
-
-class ToolInput(BaseModel):
-    query: str = Field(description="Query to process")
-
-async def tool_function(query: str) -> str:
-    # Implement with error handling
-    try:
-        result = await external_call(query)
-        return result
-    except Exception as e:
-        return f"Error: {str(e)}"
-
-tool = StructuredTool.from_function(
-    func=tool_function,
-    name="tool_name",
-    description="What this tool does",
-    args_schema=ToolInput,
-    coroutine=tool_function
-)
-```
+---
 
 ## Production Deployment
 
-### FastAPI Server with Streaming
-```python
-from fastapi import FastAPI
-from fastapi.responses import StreamingResponse
+### FastAPI Server
+- Streaming with `StreamingResponse`
+- Health checks for LLM, tools, memory
+- Structured logging with `structlog`
 
-@app.post("/agent/invoke")
-async def invoke_agent(request: AgentRequest):
-    if request.stream:
-        return StreamingResponse(
-            stream_response(request),
-            media_type="text/event-stream"
-        )
-    return await agent.ainvoke({"messages": [...]})
-```
+### Optimization
+| Strategy | Purpose |
+|----------|---------|
+| Redis caching | Response caching with TTL |
+| Connection pooling | Reuse vector DB connections |
+| Load balancing | Multiple agent workers |
+| Timeouts | All async operations |
+| Retry logic | Exponential backoff |
 
-### Monitoring & Observability
-- **LangSmith**: Trace all agent executions
-- **Prometheus**: Track metrics (requests, latency, errors)
-- **Structured Logging**: Use `structlog` for consistent logs
-- **Health Checks**: Validate LLM, tools, memory, and external services
+### Monitoring
+- LangSmith traces
+- Prometheus metrics
+- Health endpoints
 
-### Optimization Strategies
-- **Caching**: Redis for response caching with TTL
-- **Connection Pooling**: Reuse vector DB connections
-- **Load Balancing**: Multiple agent workers with round-robin routing
-- **Timeout Handling**: Set timeouts on all async operations
-- **Retry Logic**: Exponential backoff with max retries
+---
 
-## Testing & Evaluation
+## LangGraph State Pattern
 
-```python
-from langsmith.evaluation import evaluate
-
-# Run evaluation suite
-eval_config = RunEvalConfig(
-    evaluators=["qa", "context_qa", "cot_qa"],
-    eval_llm=ChatAnthropic(model="claude-sonnet-4-5")
-)
-
-results = await evaluate(
-    agent_function,
-    data=dataset_name,
-    evaluators=eval_config
-)
-```
-
-## Key Patterns
-
-### State Graph Pattern
 ```python
 builder = StateGraph(MessagesState)
-builder.add_node("node1", node1_func)
-builder.add_node("node2", node2_func)
-builder.add_edge(START, "node1")
-builder.add_conditional_edges("node1", router, {"a": "node2", "b": END})
-builder.add_edge("node2", END)
+builder.add_node("node", func)
+builder.add_conditional_edges("node", router, {"a": "next", "b": END})
 agent = builder.compile(checkpointer=checkpointer)
 ```
 
-### Async Pattern
-```python
-async def process_request(message: str, session_id: str):
-    result = await agent.ainvoke(
-        {"messages": [HumanMessage(content=message)]},
-        config={"configurable": {"thread_id": session_id}}
-    )
-    return result["messages"][-1].content
-```
-
-### Error Handling Pattern
-```python
-from tenacity import retry, stop_after_attempt, wait_exponential
-
-@retry(stop=stop_after_attempt(3), wait=wait_exponential(multiplier=1, min=4, max=10))
-async def call_with_retry():
-    try:
-        return await llm.ainvoke(prompt)
-    except Exception as e:
-        logger.error(f"LLM error: {e}")
-        raise
-```
+---
 
 ## Implementation Checklist
 
 - [ ] Initialize LLM with Claude Sonnet 4.5
-- [ ] Setup Voyage AI embeddings (voyage-3-large)
-- [ ] Create tools with async support and error handling
-- [ ] Implement memory system (choose type based on use case)
+- [ ] Setup Voyage AI embeddings
+- [ ] Create tools with async + error handling
+- [ ] Implement memory system
 - [ ] Build state graph with LangGraph
 - [ ] Add LangSmith tracing
 - [ ] Implement streaming responses
-- [ ] Setup health checks and monitoring
+- [ ] Setup health checks
 - [ ] Add caching layer (Redis)
-- [ ] Configure retry logic and timeouts
+- [ ] Configure retry logic
 - [ ] Write evaluation tests
-- [ ] Document API endpoints and usage
-
-## Best Practices
-
-1. **Always use async**: `ainvoke`, `astream`, `aget_relevant_documents`
-2. **Handle errors gracefully**: Try/except with fallbacks
-3. **Monitor everything**: Trace, log, and metric all operations
-4. **Optimize costs**: Cache responses, use token limits, compress memory
-5. **Secure secrets**: Environment variables, never hardcode
-6. **Test thoroughly**: Unit tests, integration tests, evaluation suites
-7. **Document extensively**: API docs, architecture diagrams, runbooks
-8. **Version control state**: Use checkpointers for reproducibility
-
-## Mode-Specific Execution
-
-### Quick Mode (5-10 minutes)
-- Basic ReAct agent setup
-- Simple tools integration
-- In-memory conversation buffer
-- Skip: RAG, advanced memory, multi-agent
-
-### Standard Mode (15-25 minutes) - DEFAULT
-- Complete agent with RAG pipeline
-- Conversation memory with summarization
-- LangSmith tracing
-- Production deployment patterns
-
-### Comprehensive Mode (30-45 minutes)
-- Multi-agent orchestration
-- Advanced RAG (HyDE, RAG Fusion)
-- Hierarchical memory systems
-- Full observability and monitoring
-
-## See Also
-
-- **External Docs**:
-  - [LangChain Advanced Patterns](../docs/langchain-advanced-patterns.md) - Extended RAG, memory, multi-agent
-  - [LLM Integration Patterns](../docs/llm-integration-patterns.md) - Provider setup and fallbacks
-  - [AI Testing & Deployment](../docs/ai-testing-deployment.md) - Testing and production deployment
-
-- **Related Commands**:
-  - `/ai-assistant` - Build custom AI assistants
-  - `/prompt-optimize` - Optimize agent prompts and system messages
+- [ ] Document API endpoints
 
 ---
 
-Build production-ready, scalable, and observable LangChain agents following these patterns.
+## Best Practices
+
+1. **Always async**: `ainvoke`, `astream`
+2. **Handle errors**: Try/except with fallbacks
+3. **Monitor everything**: Trace, log, metric
+4. **Optimize costs**: Cache, token limits
+5. **Secure secrets**: Environment variables only
+6. **Test thoroughly**: Unit, integration, evaluation
+7. **Version control state**: Use checkpointers
+
+---
+
+## Related Commands
+
+- `/ai-assistant` - Build custom AI assistants
+- `/prompt-optimize` - Optimize agent prompts

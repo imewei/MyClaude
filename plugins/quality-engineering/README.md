@@ -2,7 +2,7 @@
 
 Comprehensive quality assurance, validation, and correctness verification tools with automated scripts for security scanning, testing, linting, performance profiling, accessibility checks, and plugin syntax validation.
 
-**Version:** 1.0.3 | **Category:** quality-assurance | **License:** MIT
+**Version:** 1.0.5 | **Category:** quality-assurance | **License:** MIT
 
 [Full Documentation →](https://myclaude.readthedocs.io/en/latest/plugins/quality-engineering.html) | [CHANGELOG](CHANGELOG.md)
 
@@ -48,21 +48,19 @@ Both quality-engineering commands now feature:
 
 ---
 
-## What's New in v1.0.1
 
-### Skills Discoverability Enhancement
-Both quality-engineering skills now have comprehensive "When to use this skill" sections with 21 specific use cases each:
+## What's New in v1.0.5
 
-- **Enhanced Descriptions**: Detailed coverage of automated scripts, reference guides, validation dimensions, and specific tools/frameworks
-- **Automatic Discovery**: +50-75% improvement in Claude Code recognizing when to use skills during quality assurance work
-- **Context Relevance**: Skills activate automatically during validation, testing, security checking, and plugin development
-- **42 Use Cases**: Specific scenarios across validation frameworks, security scanning, performance profiling, accessibility checks, and plugin syntax validation
+This release implements **Opus 4.5 optimization** with enhanced token efficiency and standardized documentation.
 
-**Key Improvements:**
-- comprehensive-validation-framework: Detailed all 7 automated scripts, 6 reference guides, and 10 validation dimensions
-- plugin-syntax-validator: Explicit script names, file patterns, error types, and auto-fix capabilities
+### Key Improvements
 
----
+- **Format Standardization**: All components now include consistent YAML frontmatter with version, maturity, specialization, and description fields
+- **Token Efficiency**: 40-50% line reduction through tables over prose, minimal code examples, and structured sections
+- **Enhanced Discoverability**: Clear "Use when..." trigger phrases for better Claude Code activation
+- **Actionable Checklists**: Task-oriented guidance for common workflows
+- **Cross-Reference Tables**: Quick-reference format for delegation and integration patterns
+
 
 ## Commands (2)
 

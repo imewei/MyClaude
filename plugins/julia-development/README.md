@@ -2,57 +2,23 @@
 
 Production-ready Julia development with systematic Chain-of-Thought frameworks, Constitutional AI principles, and comprehensive real-world examples for high-performance computing, package development, scientific machine learning (SciML), and Bayesian inference with measurable quality targets and proven optimization patterns.
 
-**Version:** 1.0.1 | **Category:** scientific-computing | **License:** MIT
+**Version:** 1.0.5 | **Category:** scientific-computing | **License:** MIT
 
 [Full Documentation →](https://myclaude.readthedocs.io/en/latest/plugins/julia-development.html)
 
-## What's New in v1.0.1
 
-This release introduces **systematic Chain-of-Thought frameworks**, **Constitutional AI principles**, and **comprehensive real-world examples** to all four Julia Development agents, plus **enhanced skill discoverability** with 240+ trigger scenarios across 21 skills, transforming them from basic specialists into production-ready experts with measurable quality targets and proven optimization patterns.
+## What's New in v1.0.5
+
+This release implements **Opus 4.5 optimization** with enhanced token efficiency and standardized documentation.
 
 ### Key Improvements
 
-**Content Growth**: ~3,000 → ~8,400+ lines (+180%)
-- **julia-pro**: ~800 → 1,770 lines (+121%)
-- **julia-developer**: ~700 → 2,278 lines (+225%)
-- **sciml-pro**: ~900 → 2,242 lines (+149%)
-- **turing-pro**: ~600 → 2,124 lines (+254%)
+- **Format Standardization**: All components now include consistent YAML frontmatter with version, maturity, specialization, and description fields
+- **Token Efficiency**: 40-50% line reduction through tables over prose, minimal code examples, and structured sections
+- **Enhanced Discoverability**: Clear "Use when..." trigger phrases for better Claude Code activation
+- **Actionable Checklists**: Task-oriented guidance for common workflows
+- **Cross-Reference Tables**: Quick-reference format for delegation and integration patterns
 
-**Agent Enhancements**:
-- **6-Step Chain-of-Thought Frameworks** with 37-40 diagnostic questions per agent
-- **4 Constitutional AI Principles** with 31-34 self-check questions and measurable targets (88-95%)
-- **2 Comprehensive Examples** per agent with before/after comparisons and concrete metrics (900-950 lines total)
-- **Version and Maturity Tracking** with baseline metrics and improvement targets
-
-**Skill Enhancements**:
-- **21 Skills** with enhanced discoverability and comprehensive trigger scenarios
-- **240+ Trigger Scenarios** across all skills (10-12+ per skill)
-- **Enhanced Descriptions** with specific file types (.jl files, Project.toml, test/*.jl)
-- **Detailed Tool References** (@code_warntype, Pkg.add(), pyimport, NUTS, Tsit5, etc.)
-- **"When to use this skill" Sections** with comprehensive bullet lists for each skill
-- **Improved Proactive Activation** through specific function names and workflow patterns
-
-**Performance Improvements**:
-- **Julia Speedups**: 8-56x across different optimization patterns
-- **Code Reduction**: 52-66% via modern patterns and tools
-- **Development Time**: 8-12x faster with automated tooling
-- **Test Coverage**: +104% improvement with comprehensive testing
-- **Convergence**: 100% divergence reduction in MCMC
-
-**Maturity Improvements**:
-- julia-pro: 72% → 93% (+21 points)
-- julia-developer: 70% → 91% (+21 points)
-- sciml-pro: 75% → 93% (+18 points)
-- turing-pro: 73% → 92% (+19 points)
-
-### Featured Examples
-
-**julia-pro**: Type-Unstable Loop → Multiple Dispatch + SIMD (56x speedup), PythonCall Zero-Copy (8x speedup, 99.5% memory reduction)
-**julia-developer**: PkgTemplates.jl Setup (12x faster), Comprehensive Testing (+104% coverage, 12 Aqua checks)
-**sciml-pro**: ModelingToolkit + Auto-Diff (8x faster dev, 7x speedup), Ensemble + Sensitivity (10K ensemble, 95% parallel efficiency)
-**turing-pro**: Bayesian Hierarchical Model (R-hat < 1.01), Non-Centered + GPU (100% divergence reduction, 22.5x speedup)
-
-[View Full Changelog →](./CHANGELOG.md)
 
 ## Agents (4)
 

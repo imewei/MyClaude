@@ -1,5 +1,5 @@
 ---
-version: 1.0.3
+version: "1.0.5"
 command: /multi-platform
 description: Build and deploy features across web, mobile, and desktop platforms with API-first architecture and multi-agent orchestration
 execution_modes:

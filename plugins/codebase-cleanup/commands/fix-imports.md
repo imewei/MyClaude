@@ -1,5 +1,5 @@
 ---
-version: 1.0.3
+version: "1.0.5"
 description: Systematically fix broken imports across the codebase with session continuity
 argument-hint: [path-or-pattern] [resume|status|new]
 category: codebase-cleanup
@@ -28,557 +28,151 @@ agents:
 
 # Fix Broken Imports
 
-**Systematically fix import statements broken by file moves, renames, or refactoring with full session continuity**
+Systematically fix import statements broken by file moves, renames, or refactoring with session continuity.
 
-## Execution Modes
+## Target
 
-Parse `$ARGUMENTS` to determine execution mode (default: standard):
-
-**Quick Mode** (`--quick` or `-q`):
-- Scan only high-confidence fixes
-- Fix obvious path updates (file moves)
-- Skip ambiguous cases
-- ~3-8 minutes
-
-**Standard Mode** (default):
-- Full import scan and confidence scoring
-- Fix high and medium confidence imports
-- Interactive resolution for ambiguous cases
-- Session management with resume capability
-- ~10-20 minutes
-
-**Comprehensive Mode** (`--comprehensive` or `-c`):
-- Deep dependency tree analysis
-- Barrel export optimization
-- Circular dependency detection
-- Path alias standardization
-- Update import organization
-- ~20-45 minutes
-
-## Your Task
 $ARGUMENTS
 
-## Session Intelligence & Continuity
+---
 
-**Session Files** (stored in `fix-imports/` at project root):
-- `plan.md` - Comprehensive list of all broken imports and resolution strategies
-- `state.json` - Progress tracking and resolution decisions
-- `decisions.json` - Consistency tracking for ambiguous resolutions
+## Mode Selection
 
-**Auto-Detection Behavior**:
-- If session exists: Resume from last import automatically
-- If no session: Perform fresh scan and create new session
-- Commands: `resume`, `status`, `new`, or specific path/pattern
+| Mode | Duration | Scope |
+|------|----------|-------|
+| `--quick` | 3-8 min | High-confidence fixes only, skip ambiguous |
+| standard (default) | 10-20 min | Full scan with confidence scoring, session management |
+| `--comprehensive` | 20-45 min | + Barrel export optimization, circular dependency detection, path alias standardization |
 
-> **Reference**: See `session-management-guide.md` for state structure, progress tracking, and checkpoint management
+**Commands:** `resume` (continue session), `status` (show progress), `new` (fresh scan)
 
 ---
 
-## Phase 1: Import Analysis & Detection
+## Session Management
 
-### Mandatory First Steps
+**Session Directory:** `fix-imports/` at project root
 
-1. **Check for Existing Session**
-   ```bash
-   # Check if fix-imports directory exists in current working directory
-   ls fix-imports/state.json fix-imports/plan.md 2>/dev/null
-   ```
+| File | Purpose |
+|------|---------|
+| `plan.md` | All broken imports with resolution strategies |
+| `state.json` | Progress tracking (total, fixed, remaining) |
+| `decisions.json` | Consistency tracking for ambiguous resolutions |
 
-2. **Session Decision Logic**
-   - **If session exists**:
-     - Parse `state.json` for progress statistics
-     - Load `plan.md` for broken imports list
-     - Show resume summary
-     - Ask user: Continue from last position or start fresh?
-
-   - **If no session exists**:
-     - Proceed to fresh import scan
-     - Create session directory and files
-     - Initialize progress tracking
-
-3. **Display Session Status** (if resuming)
-   ```
-   RESUMING IMPORT FIX SESSION
-   ═══════════════════════════════════════
-   Total Broken Imports: 47
-   Fixed:               28 (60%)
-   Remaining:           19 (40%)
-   Current File:        src/components/Dashboard.tsx
-   Last Resolution:     Updated relative path
-   ═══════════════════════════════════════
-   ```
-
-### Fresh Import Scan
-
-**Language-Specific Detection** (see `import-resolution-strategies.md` for patterns):
-
-**Supported Languages**:
-- **TypeScript/JavaScript**: ES6 imports, require(), dynamic imports
-- **Python**: import statements, from...import
-- **Rust**: use statements
-- **Go**: import statements
-- **Java**: import statements (basic support)
-
-**Detection Methods**:
-1. **Build System Integration**:
-   ```bash
-   # TypeScript/JavaScript
-   tsc --noEmit 2>&1 | grep "TS2307\|TS2305"
-   npm run type-check 2>&1 | grep -i "cannot find\|module not found"
-
-   # Python
-   mypy . 2>&1 | grep "Cannot find\|No module"
-
-   # Rust
-   cargo check 2>&1 | grep "unresolved import"
-
-   # Go
-   go build 2>&1 | grep "cannot find package"
-   ```
-
-2. **Direct Code Scanning**:
-   ```bash
-   # Scan for import statements
-   grep -r "from ['\"]" --include="*.ts" --include="*.tsx"  # TypeScript
-   grep -r "^import \|^from " --include="*.py"              # Python
-   grep -r "^use " --include="*.rs"                         # Rust
-   grep -r "^import " --include="*.go"                      # Go
-   ```
-
-3. **Smart Context Understanding**:
-   - Detect path aliases (tsconfig.json, webpack, vite config)
-   - Recognize barrel exports (index.ts files)
-   - Distinguish external vs internal imports
-   - Understand monorepo package boundaries
-
-> **Reference**: See `import-resolution-strategies.md` for complete detection algorithms and path alias configuration parsing
+**Auto-detection:** If session exists → resume; otherwise → fresh scan
 
 ---
 
-## Phase 2: Resolution Planning & Strategy
+## Phase 1: Import Detection
 
-### Create Comprehensive Fix Plan
+### Check for Existing Session
+1. Check `fix-imports/state.json` existence
+2. If exists: Show progress summary, ask to continue or start fresh
+3. If not: Proceed to fresh scan
 
-**For each broken import, determine:**
+### Detection Methods
 
-1. **Import Context**
-   - Importing file location
-   - Imported module/file
-   - Import type (default, named, namespace)
-   - Import statement syntax
+| Language | Build System | Direct Scan |
+|----------|--------------|-------------|
+| TypeScript/JS | `tsc --noEmit 2>&1 \| grep "TS2307\|TS2305"` | `grep -r "from ['\"]"` |
+| Python | `mypy . 2>&1 \| grep "Cannot find"` | `grep -r "^import \|^from "` |
+| Rust | `cargo check 2>&1 \| grep "unresolved import"` | `grep -r "^use "` |
+| Go | `go build 2>&1 \| grep "cannot find package"` | `grep -r "^import "` |
 
-2. **Resolution Strategies** (in priority order):
-
-   **Strategy 1: Exact Filename Match**
-   - Search for files with exact name in codebase
-   - Calculate new relative path from importing file
-
-   **Strategy 2: Similar Name Suggestions**
-   - Find files with similar names (typos, case differences)
-   - Use fuzzy matching (Levenshtein distance)
-
-   **Strategy 3: Export Symbol Search**
-   - Search for the exported symbol across all files
-   - Match export syntax to import requirement
-
-   **Strategy 4: Path Recalculation**
-   - If file moved, calculate new relative path
-   - Check if path alias should be used instead
-   - Verify import style matches project conventions
-
-   **Strategy 5: Dependency Analysis**
-   - Check if import was from deleted package
-   - Search package.json for alternatives
-   - Suggest modern replacement if deprecated
-
-> **Reference**: See `import-resolution-strategies.md` for path resolution algorithms, alias detection, and circular dependency checks
-
-3. **Confidence Scoring**
-   - **High (90-100%)**: Single exact match, clear resolution
-   - **Medium (60-89%)**: Multiple matches, context helps narrow
-   - **Low (<60%)**: Ambiguous, requires user decision
-
-### Write Fix Plan
-
-Create `fix-imports/plan.md`:
-```markdown
-# Import Fix Plan
-
-Generated: 2025-10-20 14:35:22
-Total Broken Imports: 47
-
-## High Confidence (28 imports)
-
-### 1. src/components/Dashboard.tsx:12
-**Broken:** `import { UserProfile } from './UserProfile'`
-**Issue:** File moved to src/components/user/UserProfile.tsx
-**Resolution:** Update to `import { UserProfile } from './user/UserProfile'`
-**Confidence:** 95%
-
-## Medium Confidence (15 imports)
-
-### 29. src/pages/Home.tsx:8
-**Broken:** `import { Button } from 'components/Button'`
-**Issue:** Multiple Button components found
-**Matches:**
-  - src/components/ui/Button.tsx (UI library)
-  - src/components/legacy/Button.tsx (deprecated)
-**Resolution:** Requires user choice - likely UI library version
-**Confidence:** 70%
-
-## Low Confidence (4 imports)
-
-### 44. src/api/client.ts:3
-**Broken:** `import { API } from 'api-client'`
-**Issue:** Package not found, may be deleted
-**Suggestions:**
-  - Install `api-client` package
-  - Use native fetch
-  - Use axios or similar
-**Resolution:** Requires user decision
-**Confidence:** 30%
-```
-
-Create `fix-imports/state.json` (see `session-management-guide.md` for schema)
+**Context Understanding:** Detect path aliases (tsconfig/webpack/vite), barrel exports, external vs internal imports, monorepo boundaries
 
 ---
 
-## Phase 3: Intelligent Fixing Process
+## Phase 2: Resolution Planning
 
-### Fix Execution Workflow
+### Resolution Strategies (priority order)
 
-**For each import (in order of confidence):**
+| Strategy | Description |
+|----------|-------------|
+| 1. Exact filename match | Search for exact filename, calculate new relative path |
+| 2. Similar name suggestions | Fuzzy matching for typos, case differences |
+| 3. Export symbol search | Find exported symbol across all files |
+| 4. Path recalculation | Calculate new path if file moved, check alias usage |
+| 5. Dependency analysis | Check if from deleted package, suggest alternatives |
 
-1. **Create Git Checkpoint** (before first fix)
-   ```bash
-   git add -A
-   git stash push -m "checkpoint: before import fixes"
-   # Store stash hash in state.json
-   ```
+### Confidence Scoring
 
-2. **Apply Fix with Verification**
+| Level | Range | Action |
+|-------|-------|--------|
+| High | 90-100% | Auto-fix with verification |
+| Medium | 60-89% | Fix with context, track decision |
+| Low | <60% | **Require user decision** |
 
-   **Fix Pattern Matching** (see `import-resolution-strategies.md` for formatting rules):
-   - Preserve import style (single quotes vs double quotes)
-   - Maintain import grouping (external → internal → local)
-   - Follow project sorting conventions
-   - Keep multiline formatting consistent
-
-   **Example Fix**:
-   ```typescript
-   // Before
-   import { UserProfile } from './UserProfile'
-
-   // After (calculated new relative path)
-   import { UserProfile } from './user/UserProfile'
-   ```
-
-3. **Post-Fix Verification**
-   ```bash
-   # Quick syntax check
-   tsc --noEmit path/to/fixed-file.ts
-   # or
-   mypy path/to/fixed-file.py
-   ```
-
-4. **Update Progress**
-   - Mark import as fixed in plan.md
-   - Update state.json with new counts
-   - Record resolution decision in decisions.json
-   - Save timestamp
-
-5. **Ambiguity Handling**
-   - **Multiple Matches**: Show user all options with context
-   - **Uncertain Resolution**: Ask user to choose
-   - **Track Decisions**: Apply same choice to similar imports
-   - **Never Guess**: Always ask when uncertain
-
-> **Reference**: See `session-management-guide.md` for decision tracking and consistent resolution patterns
-
-### Incremental Commit Strategy
-
-**Option 1: Commit per file** (recommended for large changes)
-```bash
-git add path/to/fixed-file.ts
-git commit -m "fix(imports): resolve broken imports in Dashboard.tsx"
-```
-
-**Option 2: Batch commit** (for small, related fixes)
-```bash
-# After fixing 5-10 related imports
-git add .
-git commit -m "fix(imports): resolve imports in components/ directory"
-```
+### Create Fix Plan
+Write `fix-imports/plan.md` with all broken imports categorized by confidence, including:
+- File:line location
+- Broken import statement
+- Issue description
+- Proposed resolution
+- Confidence percentage
 
 ---
 
-## Phase 4: Verification & Validation
+## Phase 3: Systematic Fixing
 
-### Post-Fix Checks
+### Workflow
 
-1. **Syntax Validation**
-   ```bash
-   # Full type check
-   npm run type-check || tsc --noEmit
-   ```
+1. **Create Git Checkpoint:** `git stash push -m "checkpoint: before import fixes"`
+2. **Fix by Confidence:** High → Medium → Low (ask user for ambiguous)
+3. **Verify Each Fix:** Run syntax/type check after each
+4. **Update Progress:** Mark fixed in plan.md, update state.json
+5. **Track Decisions:** Store in decisions.json for consistency
 
-2. **No New Broken Imports**
-   ```bash
-   # Re-scan for import errors
-   tsc --noEmit 2>&1 | grep "TS2307\|TS2305" | wc -l
-   # Should be 0 or less than before
-   ```
+### Ambiguity Handling
+- **Multiple matches:** Show all options with context
+- **Uncertain:** Ask user to choose
+- **Apply consistently:** Same decision for similar imports
+- **Never guess:** Always ask when uncertain
 
-3. **Circular Dependency Check** (Comprehensive mode)
-   ```bash
-   # Use madge or similar
-   npx madge --circular src/
-   ```
-
-> **Reference**: See `import-resolution-strategies.md` for circular dependency detection algorithms
-
-4. **Build Verification**
-   ```bash
-   # Attempt production build
-   npm run build
-   # or
-   cargo build --release
-   ```
-
-5. **Update Final Status**
-   ```
-   IMPORT FIX COMPLETE
-   ═══════════════════════════════════════
-   Total Fixed:         47/47 (100%)
-   High Confidence:     28
-   Medium Confidence:   15
-   Required User Input: 4
-   Build Status:        ✅ Passing
-   Time Elapsed:        8m 42s
-   ═══════════════════════════════════════
-
-   All imports successfully resolved!
-   Session files saved in: fix-imports/
-   ```
+### Commit Strategy
+- Per-file for large changes: `git commit -m "fix(imports): resolve in Dashboard.tsx"`
+- Batch for related fixes: `git commit -m "fix(imports): resolve in components/"`
 
 ---
 
-## Session Continuity & Resume
-
-### Resume Capability
-
-**When you run `/fix-imports resume`:**
-
-1. **Load Session State**
-   ```bash
-   # Read state.json
-   cat fix-imports/state.json | jq '.totalBroken, .fixed, .remaining'
-   ```
-
-2. **Display Progress**
-   ```
-   RESUMING IMPORT FIX SESSION
-   ═══════════════════════════════════════
-   Session Created:     2025-10-20 14:35
-   Last Updated:        2025-10-20 15:12
-   Total Broken:        47
-   Fixed:               28 (60%)
-   Remaining:           19 (40%)
-
-   Current Import:
-   File: src/components/Dashboard.tsx:12
-   Broken: import { UserProfile } from './UserProfile'
-   Resolution: Update to './user/UserProfile'
-   Confidence: 95%
-   ═══════════════════════════════════════
-
-   Continue fixing? [Y/n]
-   ```
-
-3. **Apply Consistent Resolution Patterns**
-   - Load `decisions.json` for previous user choices
-   - Apply same patterns to similar imports
-   - Example: If user chose UI Button over legacy, always pick UI version
-
-### Status Command
-
-**`/fix-imports status`**
-```
-IMPORT FIX STATUS
-═══════════════════════════════════════
-Progress:           28/47 (60%)
-High Confidence:    20/28 fixed
-Medium Confidence:  7/15 fixed
-Low Confidence:     1/4 fixed
-
-Recently Fixed:
-  ✅ src/components/Dashboard.tsx
-  ✅ src/components/Header.tsx
-  ✅ src/utils/helpers.ts
-
-Next Up:
-  ⏭  src/components/Sidebar.tsx
-  ⏭  src/pages/Home.tsx
-  ⏭  src/api/client.ts
-═══════════════════════════════════════
-```
-
-### New Scan Command
-
-**`/fix-imports new`**
-- Archive old session to `fix-imports/archive/YYYY-MM-DD-HHMMSS/`
-- Perform fresh import scan
-- Create new session files
-- Start from beginning
-
----
-
-## Usage Examples
-
-### Basic Usage
+## Phase 4: Verification
 
 ```bash
-# Fix all broken imports in the project
-/fix-imports
-
-# Fix imports in specific directory
-/fix-imports src/components
-
-# Fix imports matching pattern
-/fix-imports "UserProfile"
+npm run type-check || tsc --noEmit    # Full type check
+npx madge --circular src/             # Circular deps (comprehensive)
+npm run build                         # Build verification
 ```
 
-### Session Management
-
-```bash
-# Resume from last session
-/fix-imports resume
-
-# Check current progress
-/fix-imports status
-
-# Start fresh scan (archive old session)
-/fix-imports new
+### Final Status Output
 ```
-
-### Mode Selection
-
-```bash
-# Quick mode: only high-confidence fixes
-/fix-imports --quick
-
-# Comprehensive mode: with barrel export optimization
-/fix-imports --comprehensive
+Total Fixed:         47/47 (100%)
+High Confidence:     28
+Medium Confidence:   15
+Required User Input: 4
+Build Status:        ✅ Passing
 ```
-
----
-
-## Safety Guarantees & Best Practices
-
-### Protection Measures
-
-1. **Git Integration**
-   - Create stash checkpoint before any fixes
-   - Incremental commits for traceability
-   - Easy rollback if issues found
-
-2. **Verification at Every Step**
-   - Syntax check after each fix
-   - Type check before moving to next import
-   - Build verification at the end
-
-3. **User Confirmation**
-   - Always ask when multiple resolutions possible
-   - Show context for decision making
-   - Never guess ambiguous imports
-
-4. **Audit Trail**
-   - Record all fixes in plan.md
-   - Track decisions in decisions.json
-   - Timestamp all changes in state.json
-
-> **Reference**: See `session-management-guide.md` for checkpoint management and rollback procedures
-
-### What This Command Will NEVER Do
-
-- ❌ Guess ambiguous imports without user input
-- ❌ Break working imports
-- ❌ Add AI attribution comments
-- ❌ Create circular dependencies
-- ❌ Modify unrelated code
-- ❌ Skip verification steps
-- ❌ Lose session progress
-
----
-
-## Implementation Workflow
-
-**When this command is invoked, execute these phases:**
-
-### Step 1: Session Check (1-2 minutes)
-1. Check for `fix-imports/` directory
-2. Load existing session or create new
-3. Display status summary
-4. Ask user to confirm continuation
-
-### Step 2: Import Analysis (3-8 minutes)
-1. Scan codebase for broken imports
-2. Parse build/type check errors
-3. Categorize by confidence level
-4. Create comprehensive fix plan
-
-### Step 3: Resolution Planning (2-5 minutes)
-1. For each import, find possible resolutions
-2. Score confidence for each resolution
-3. Write detailed plan to plan.md
-4. Initialize state.json tracking
-
-### Step 4: Systematic Fixing (varies)
-1. Create git checkpoint
-2. Fix high-confidence imports first
-3. Ask user for ambiguous cases
-4. Verify after each fix
-5. Update progress continuously
-
-### Step 5: Final Verification (2-3 minutes)
-1. Run full type check
-2. Check for circular dependencies (comprehensive mode)
-3. Attempt build
-4. Generate completion report
-
-### Step 6: Session Cleanup
-1. Mark session as complete
-2. Archive or keep session files
-3. Provide summary statistics
-4. Suggest next steps if needed
-
----
-
-## Path Alias Support
-
-Automatically detects and respects:
-- `tsconfig.json` paths
-- `jsconfig.json` paths
-- Webpack aliases
-- Vite aliases
-- Next.js aliases (@/)
-- Custom project aliases
-
-> **Reference**: See `import-resolution-strategies.md` for path alias configuration detection and parsing
 
 ---
 
 ## Import Style Preservation
 
-Maintains:
-- Quote style (single vs double)
-- Import grouping order
-- Spacing and formatting
-- Comment preservation
-- Multiline import formatting
+Maintains: quote style, import grouping order, spacing/formatting, comments, multiline formatting
 
-> **Reference**: See `import-resolution-strategies.md` for import formatting preservation algorithms
+**Path Alias Support:** tsconfig.json, jsconfig.json, webpack/vite aliases, Next.js @/ aliases
 
 ---
 
-**Execute systematic import fixing with perfect session continuity, intelligent resolution strategies, and comprehensive verification at every step**
+## Safety Guarantees
+
+**Will:**
+- ✅ Create git checkpoint before fixes
+- ✅ Verify after each fix
+- ✅ Ask for ambiguous cases
+- ✅ Track all decisions
+- ✅ Preserve import style
+
+**Never:**
+- ❌ Guess ambiguous imports
+- ❌ Break working imports
+- ❌ Create circular dependencies
+- ❌ Skip verification
+- ❌ Lose session progress

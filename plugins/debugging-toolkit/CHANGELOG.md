@@ -5,6 +5,35 @@ All notable changes to the debugging-toolkit plugin will be documented in this f
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v1.0.2.html).
 
+
+## [1.0.5] - 2025-12-24
+
+### Opus 4.5 Optimization & Documentation Standards
+
+Comprehensive optimization for Claude Opus 4.5 with enhanced token efficiency, standardized formatting, and improved discoverability.
+
+### 🎯 Key Changes
+
+#### Format Standardization
+- **YAML Frontmatter**: All components now include `version: "1.0.5"`, `maturity`, `specialization`, `description`
+- **Tables Over Prose**: Converted verbose explanations to scannable reference tables
+- **Actionable Checklists**: Added task-oriented checklists for workflow guidance
+- **Version Footer**: Consistent version tracking across all files
+
+#### Token Efficiency
+- **40-50% Line Reduction**: Optimized content while preserving all functionality
+- **Minimal Code Examples**: Essential patterns only, removed redundant examples
+- **Structured Sections**: Consistent heading hierarchy for quick navigation
+
+#### Documentation
+- **Enhanced Descriptions**: Clear "Use when..." trigger phrases for better activation
+- **Cross-References**: Improved delegation and integration guidance
+- **Best Practices Tables**: Quick-reference format for common patterns
+
+### Components Updated
+- **2 Agent(s)**: Optimized to v1.0.5 format
+- **1 Command(s)**: Updated with v1.0.5 frontmatter
+- **3 Skill(s)**: Enhanced with tables and checklists
 ## [1.0.3] - 2025-01-15
 
 ### Added

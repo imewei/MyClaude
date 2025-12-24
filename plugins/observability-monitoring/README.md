@@ -2,7 +2,7 @@
 
 Observability, monitoring, logging, distributed tracing, and SLO/SLA management for production systems with Prometheus, Grafana, and modern observability platforms
 
-**Version:** 1.0.3 | **Category:** devops | **License:** MIT
+**Version:** 1.0.5 | **Category:** devops | **License:** MIT
 
 [Full Documentation →](https://myclaude.readthedocs.io/en/latest/plugins/observability-monitoring.html) | [CHANGELOG](CHANGELOG.md)
 
@@ -155,48 +155,19 @@ Design and implement Apache Airflow DAGs for scientific data pipelines, workflow
 - Multi-dimensional array processing
 - JAX and scientific computing integration
 
-## What's New in v1.0.1
 
-### Enhanced Skill Discoverability
+## What's New in v1.0.5
 
-All 5 skills have been comprehensively improved for better Claude Code integration:
+This release implements **Opus 4.5 optimization** with enhanced token efficiency and standardized documentation.
 
-- **Detailed Use Cases**: Each skill now includes 10-15 specific scenarios where it should be used
-- **File Type References**: Skills automatically activate when working with relevant files (prometheus.yml, dashboard JSON, Airflow DAGs)
-- **Proactive Usage**: Claude Code can now better identify when to use these skills during coding tasks
-- **Comprehensive Examples**: All skills maintain extensive code examples and production-ready patterns
+### Key Improvements
 
-### Example Use Cases
+- **Format Standardization**: All components now include consistent YAML frontmatter with version, maturity, specialization, and description fields
+- **Token Efficiency**: 40-50% line reduction through tables over prose, minimal code examples, and structured sections
+- **Enhanced Discoverability**: Clear "Use when..." trigger phrases for better Claude Code activation
+- **Actionable Checklists**: Task-oriented guidance for common workflows
+- **Cross-Reference Tables**: Quick-reference format for delegation and integration patterns
 
-**When you work on Prometheus configuration:**
-```yaml
-# Claude Code will automatically use the prometheus-configuration skill
-# when you edit prometheus.yml files or create recording/alert rules
-```
-
-**When you design Grafana dashboards:**
-```json
-// Claude Code will use the grafana-dashboards skill when working
-// with dashboard JSON files or creating visualization panels
-```
-
-**When you implement distributed tracing:**
-```python
-# Claude Code will use the distributed-tracing skill when you
-# instrument applications with OpenTelemetry or configure Jaeger
-```
-
-**When you define SLOs:**
-```yaml
-# Claude Code will use the slo-implementation skill when you
-# create SLI/SLO definitions or implement error budget tracking
-```
-
-**When you build Airflow workflows:**
-```python
-# Claude Code will use the airflow-scientific-workflows skill
-# when you create DAG files or scientific data pipelines
-```
 
 ## Quick Start
 

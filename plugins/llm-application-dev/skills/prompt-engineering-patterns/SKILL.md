@@ -1,212 +1,143 @@
 ---
 name: prompt-engineering-patterns
-description: Master advanced prompt engineering techniques including chain-of-thought reasoning, few-shot learning, and production prompt templates to maximize LLM performance, reliability, and controllability. Use when writing or editing prompt templates, system prompts for AI agents, few-shot example libraries, or prompt configuration files. Apply this skill when implementing chain-of-thought (CoT) prompting with reasoning traces, designing few-shot learning systems with dynamic example selection, creating reusable prompt templates with variable interpolation, optimizing prompts for consistency and token efficiency, building structured reasoning patterns (tree-of-thought, self-consistency), crafting system prompts that define AI agent behavior and constraints, debugging prompts that produce inconsistent or incorrect outputs, implementing progressive disclosure patterns, adding self-verification and validation steps to prompts, or A/B testing prompt variations for performance optimization.
+version: "1.0.5"
+maturity: "5-Expert"
+specialization: LLM Prompt Design
+description: Master advanced prompt engineering with chain-of-thought, few-shot learning, and production templates. Use when designing prompts for AI applications, implementing structured reasoning, optimizing for consistency, or building reusable prompt systems.
 ---
 
 # Prompt Engineering Patterns
 
-Master advanced prompt engineering techniques to maximize LLM performance, reliability, and controllability.
+Advanced techniques for maximizing LLM performance and reliability.
 
-## When to Use This Skill
+---
 
-- Writing or editing prompt template files (`.txt`, `.md`, `.json`, `.yaml`) for LLM applications
-- Designing complex prompts for production LLM applications with multiple components
-- Optimizing prompt performance and consistency through iterative refinement
-- Implementing structured reasoning patterns (chain-of-thought, tree-of-thought, self-consistency)
-- Building few-shot learning systems with dynamic example selection and semantic similarity
-- Creating reusable prompt templates with variable interpolation and conditional sections
-- Debugging and refining prompts that produce inconsistent, incorrect, or unpredictable outputs
-- Implementing system prompts for specialized AI assistants (code generators, customer service bots, content moderators)
-- Crafting zero-shot prompts with "Let's think step by step" for complex reasoning tasks
-- Designing few-shot prompts with carefully curated input-output examples
-- Creating progressive disclosure patterns that add complexity only when needed
-- Building prompt validation and self-verification mechanisms
-- Implementing error recovery patterns for graceful handling of edge cases
-- Optimizing token efficiency by reducing prompt length while maintaining quality
-- A/B testing prompt variations to measure performance improvements
-- Version controlling prompts and tracking changes over time
-- Integrating prompts with RAG systems by combining retrieved context with prompt templates
-- Creating role-based prompt compositions for multi-agent systems
+## Core Techniques
 
-## Core Capabilities
+| Technique | Use Case | Implementation |
+|-----------|----------|----------------|
+| Zero-shot CoT | Complex reasoning | "Let's think step by step" |
+| Few-shot | Task demonstration | 2-5 input-output examples |
+| Self-consistency | Reliability | Sample multiple paths, vote |
+| Tree-of-thought | Complex planning | Branch and evaluate paths |
+| Self-verification | Accuracy | Ask model to check its answer |
 
-### 1. Few-Shot Learning
-- Example selection strategies (semantic similarity, diversity sampling)
-- Balancing example count with context window constraints
-- Constructing effective demonstrations with input-output pairs
-- Dynamic example retrieval from knowledge bases
-- Handling edge cases through strategic example selection
+---
 
-### 2. Chain-of-Thought Prompting
-- Step-by-step reasoning elicitation
-- Zero-shot CoT with "Let's think step by step"
-- Few-shot CoT with reasoning traces
-- Self-consistency techniques (sampling multiple reasoning paths)
-- Verification and validation steps
+## Prompt Structure
 
-### 3. Prompt Optimization
-- Iterative refinement workflows
-- A/B testing prompt variations
-- Measuring prompt performance metrics (accuracy, consistency, latency)
-- Reducing token usage while maintaining quality
-- Handling edge cases and failure modes
+```
+[System Context] → [Task Instruction] → [Examples] → [Input] → [Output Format]
+```
 
-### 4. Template Systems
-- Variable interpolation and formatting
-- Conditional prompt sections
-- Multi-turn conversation templates
-- Role-based prompt composition
-- Modular prompt components
-
-### 5. System Prompt Design
-- Setting model behavior and constraints
-- Defining output formats and structure
-- Establishing role and expertise
-- Safety guidelines and content policies
-- Context setting and background information
-
-## Quick Start
+### Example Template
 
 ```python
-from prompt_optimizer import PromptTemplate, FewShotSelector
+template = """You are an expert SQL developer.
 
-# Define a structured prompt template
-template = PromptTemplate(
-    system="You are an expert SQL developer. Generate efficient, secure SQL queries.",
-    instruction="Convert the following natural language query to SQL:\n{query}",
-    few_shot_examples=True,
-    output_format="SQL code block with explanatory comments"
-)
+Examples:
+Q: Find all users registered last week
+A: SELECT * FROM users WHERE created_at > NOW() - INTERVAL '7 days'
 
-# Configure few-shot learning
-selector = FewShotSelector(
-    examples_db="sql_examples.jsonl",
-    selection_strategy="semantic_similarity",
-    max_examples=3
-)
-
-# Generate optimized prompt
-prompt = template.render(
-    query="Find all users who registered in the last 30 days",
-    examples=selector.select(query="user registration date filter")
-)
+Q: {query}
+A: """
 ```
 
-## Key Patterns
+---
 
-### Progressive Disclosure
-Start with simple prompts, add complexity only when needed:
+## Progressive Disclosure
 
-1. **Level 1**: Direct instruction
-   - "Summarize this article"
+| Level | Example |
+|-------|---------|
+| 1. Direct | "Summarize this article" |
+| 2. Constrained | "Summarize in 3 bullet points, focus on findings" |
+| 3. Reasoning | "Read, identify main findings, then summarize" |
+| 4. Few-shot | Include 2-3 example summaries |
 
-2. **Level 2**: Add constraints
-   - "Summarize this article in 3 bullet points, focusing on key findings"
+---
 
-3. **Level 3**: Add reasoning
-   - "Read this article, identify the main findings, then summarize in 3 bullet points"
+## Few-Shot Selection
 
-4. **Level 4**: Add examples
-   - Include 2-3 example summaries with input-output pairs
+| Strategy | When to Use |
+|----------|-------------|
+| Semantic similarity | Examples matching input domain |
+| Diversity sampling | Cover edge cases |
+| Difficulty-based | Match input complexity |
+| Random (baseline) | When unsure |
 
-### Instruction Hierarchy
-```
-[System Context] → [Task Instruction] → [Examples] → [Input Data] → [Output Format]
-```
-
-### Error Recovery
-Build prompts that gracefully handle failures:
-- Include fallback instructions
-- Request confidence scores
-- Ask for alternative interpretations when uncertain
-- Specify how to indicate missing information
-
-## Best Practices
-
-1. **Be Specific**: Vague prompts produce inconsistent results
-2. **Show, Don't Tell**: Examples are more effective than descriptions
-3. **Test Extensively**: Evaluate on diverse, representative inputs
-4. **Iterate Rapidly**: Small changes can have large impacts
-5. **Monitor Performance**: Track metrics in production
-6. **Version Control**: Treat prompts as code with proper versioning
-7. **Document Intent**: Explain why prompts are structured as they are
-
-## Common Pitfalls
-
-- **Over-engineering**: Starting with complex prompts before trying simple ones
-- **Example pollution**: Using examples that don't match the target task
-- **Context overflow**: Exceeding token limits with excessive examples
-- **Ambiguous instructions**: Leaving room for multiple interpretations
-- **Ignoring edge cases**: Not testing on unusual or boundary inputs
-
-## Integration Patterns
-
-### With RAG Systems
-```python
-# Combine retrieved context with prompt engineering
-prompt = f"""Given the following context:
-{retrieved_context}
-
-{few_shot_examples}
-
-Question: {user_question}
-
-Provide a detailed answer based solely on the context above. If the context doesn't contain enough information, explicitly state what's missing."""
-```
-
-### With Validation
-```python
-# Add self-verification step
-prompt = f"""{main_task_prompt}
-
-After generating your response, verify it meets these criteria:
-1. Answers the question directly
-2. Uses only information from provided context
-3. Cites specific sources
-4. Acknowledges any uncertainty
-
-If verification fails, revise your response."""
-```
+---
 
 ## Performance Optimization
 
-### Token Efficiency
-- Remove redundant words and phrases
-- Use abbreviations consistently after first definition
-- Consolidate similar instructions
-- Move stable content to system prompts
+| Goal | Technique |
+|------|-----------|
+| Reduce tokens | Remove redundant words, use abbreviations |
+| Lower latency | Shorter prompts, streaming output |
+| Improve consistency | Add output format constraints |
+| Handle failures | Include fallback instructions |
 
-### Latency Reduction
-- Minimize prompt length without sacrificing quality
-- Use streaming for long-form outputs
-- Cache common prompt prefixes
-- Batch similar requests when possible
+---
 
-## Resources
+## Best Practices
 
-- **references/few-shot-learning.md**: Deep dive on example selection and construction
-- **references/chain-of-thought.md**: Advanced reasoning elicitation techniques
-- **references/prompt-optimization.md**: Systematic refinement workflows
-- **references/prompt-templates.md**: Reusable template patterns
-- **references/system-prompts.md**: System-level prompt design
-- **assets/prompt-template-library.md**: Battle-tested prompt templates
-- **assets/few-shot-examples.json**: Curated example datasets
-- **scripts/optimize-prompt.py**: Automated prompt optimization tool
+| Practice | Implementation |
+|----------|----------------|
+| Be specific | Vague prompts → inconsistent results |
+| Show, don't tell | Examples > descriptions |
+| Test extensively | Diverse, representative inputs |
+| Iterate rapidly | Small changes → large impacts |
+| Version control | Treat prompts as code |
+| Monitor production | Track accuracy, latency, costs |
 
-## Success Metrics
+---
 
-Track these KPIs for your prompts:
-- **Accuracy**: Correctness of outputs
-- **Consistency**: Reproducibility across similar inputs
-- **Latency**: Response time (P50, P95, P99)
-- **Token Usage**: Average tokens per request
-- **Success Rate**: Percentage of valid outputs
-- **User Satisfaction**: Ratings and feedback
+## Common Pitfalls
 
-## Next Steps
+| Pitfall | Solution |
+|---------|----------|
+| Over-engineering | Start simple, add complexity as needed |
+| Example pollution | Use examples matching target task |
+| Context overflow | Limit examples to fit token budget |
+| Ambiguous instructions | Eliminate multiple interpretations |
+| No edge case testing | Test unusual and boundary inputs |
 
-1. Review the prompt template library for common patterns
-2. Experiment with few-shot learning for your specific use case
-3. Implement prompt versioning and A/B testing
-4. Set up automated evaluation pipelines
-5. Document your prompt engineering decisions and learnings
+---
+
+## Integration Patterns
+
+### With RAG
+
+```python
+prompt = f"""Context: {retrieved_context}
+
+Question: {user_question}
+
+Answer based solely on the context. If insufficient, state what's missing."""
+```
+
+### With Validation
+
+```python
+prompt = f"""{main_task}
+
+After responding, verify:
+1. Answers the question directly
+2. Uses only provided context
+3. Acknowledges uncertainty"""
+```
+
+---
+
+## Checklist
+
+- [ ] Clear task instruction defined
+- [ ] Output format specified
+- [ ] Examples selected (if few-shot)
+- [ ] Token budget considered
+- [ ] Edge cases tested
+- [ ] Validation step included
+- [ ] Version tracked
+
+---
+
+**Version**: 1.0.5

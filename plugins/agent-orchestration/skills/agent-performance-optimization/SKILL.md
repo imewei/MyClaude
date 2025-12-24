@@ -1,734 +1,310 @@
 ---
-description: Optimize AI agent performance through comprehensive monitoring, metrics collection, caching strategies, and load balancing. Use this skill when analyzing agent execution bottlenecks, improving agent response times, implementing multi-tier caching for expensive agent operations, tracking success/failure rates and latency percentiles (P50/P95/P99), setting up load balancing across agent instances, scaling agent systems for production workloads, diagnosing performance degradation in multi-agent systems, or implementing resource management for distributed agent architectures. This skill is essential when working with production agent systems that require performance optimization, when agent response times exceed acceptable thresholds, when implementing caching to reduce redundant agent computations, when distributing workload across multiple agent instances, or when monitoring and tuning agent system performance metrics.
+name: agent-performance-optimization
+version: "1.0.5"
+maturity: "5-Expert"
+specialization: Agent Performance Tuning
+description: Optimize AI agent performance through monitoring, metrics collection, caching, and load balancing. Use when analyzing agent execution bottlenecks, implementing latency percentiles (P50/P95/P99), setting up multi-tier caching, tracking success/failure rates, load balancing across agent instances, or scaling agent systems for production.
 ---
 
-# Agent Performance Optimization and Monitoring
+# Agent Performance Optimization
 
-## When to use this skill
+Production-ready patterns for monitoring, caching, and load balancing agent systems.
 
-- When analyzing performance bottlenecks in agent execution and identifying slow operations
-- When implementing metrics collection systems to track agent latency, throughput, and success rates
-- When setting up performance monitoring with percentile calculations (P50, P95, P99) for agent response times
-- When implementing LRU caching or multi-tier caching (hot/warm/cold) for expensive agent computations
-- When building load balancing systems to distribute tasks across multiple agent instances
-- When optimizing agent system performance for production workloads at scale
-- When tracking and analyzing agent failure rates and error patterns
-- When implementing resource management strategies for distributed agent systems
-- When setting up alerting and monitoring dashboards for agent performance metrics
-- When tuning agent behavior to improve response times and reduce latency
-- When implementing retry logic and exponential backoff for agent operations
-- When designing caching strategies with TTL (time-to-live) to prevent stale data
-- When building round-robin, least-loaded, or weighted load balancing for agent pools
-- When writing Python code for agent performance optimization, metrics collection, or caching systems
-- When working with agent orchestration systems that need performance tuning
-- When diagnosing why agent systems are slow or unresponsive
-- When scaling multi-agent systems to handle increased workload
+---
 
-## Overview
+## Optimization Areas
 
-This skill provides production-ready patterns for agent performance monitoring, optimization, and tuning including metrics collection, performance profiling, caching strategies, and load balancing.
+| Area | Metrics | Tools |
+|------|---------|-------|
+| Latency | P50, P95, P99 response time | PerformanceMetrics |
+| Throughput | Tasks/second | MetricsCollector |
+| Success Rate | Success/failure ratio | Error tracking |
+| Caching | Hit rate, cache size | LRUCache, TieredCache |
+| Load Balancing | Load distribution | LoadBalancer |
 
-## Core Topics
+---
 
-### 1. Performance Monitoring and Metrics
-
-#### Comprehensive Agent Metrics Collection
+## Performance Metrics
 
 ```python
-# agent_optimization/metrics.py
-from typing import Dict, List, Any, Optional
 from dataclasses import dataclass, field
-from datetime import datetime, timedelta
+from datetime import datetime
 from collections import defaultdict
 import time
 import functools
-import asyncio
 
 @dataclass
 class PerformanceMetrics:
-    """Agent performance metrics."""
     agent_name: str
     task_count: int = 0
     success_count: int = 0
-    failure_count: int = 0
-    total_execution_time: float = 0.0
-    min_execution_time: float = float('inf')
-    max_execution_time: float = 0.0
-    avg_execution_time: float = 0.0
-    p50_execution_time: float = 0.0
-    p95_execution_time: float = 0.0
-    p99_execution_time: float = 0.0
-    execution_times: List[float] = field(default_factory=list)
-    error_types: Dict[str, int] = field(default_factory=lambda: defaultdict(int))
-    last_execution: Optional[datetime] = None
+    execution_times: list[float] = field(default_factory=list)
+    error_types: dict[str, int] = field(default_factory=lambda: defaultdict(int))
 
-    def update(self, execution_time: float, success: bool, error_type: Optional[str] = None):
-        """Update metrics with new execution."""
+    def update(self, execution_time: float, success: bool, error_type: str = None):
         self.task_count += 1
         self.execution_times.append(execution_time)
-        self.total_execution_time += execution_time
-        self.last_execution = datetime.now()
-
         if success:
             self.success_count += 1
-        else:
-            self.failure_count += 1
-            if error_type:
-                self.error_types[error_type] += 1
+        elif error_type:
+            self.error_types[error_type] += 1
 
-        # Update min/max/avg
-        self.min_execution_time = min(self.min_execution_time, execution_time)
-        self.max_execution_time = max(self.max_execution_time, execution_time)
-        self.avg_execution_time = self.total_execution_time / self.task_count
+    @property
+    def p50(self) -> float:
+        return sorted(self.execution_times)[int(len(self.execution_times) * 0.5)]
 
-        # Calculate percentiles
-        if self.execution_times:
-            sorted_times = sorted(self.execution_times)
-            n = len(sorted_times)
-            self.p50_execution_time = sorted_times[int(n * 0.5)]
-            self.p95_execution_time = sorted_times[int(n * 0.95)]
-            self.p99_execution_time = sorted_times[int(n * 0.99)]
+    @property
+    def p95(self) -> float:
+        return sorted(self.execution_times)[int(len(self.execution_times) * 0.95)]
 
     @property
     def success_rate(self) -> float:
-        """Calculate success rate."""
-        return self.success_count / self.task_count if self.task_count > 0 else 0.0
-
-    @property
-    def failure_rate(self) -> float:
-        """Calculate failure rate."""
-        return self.failure_count / self.task_count if self.task_count > 0 else 0.0
-
-    def get_summary(self) -> Dict[str, Any]:
-        """Get metrics summary."""
-        return {
-            'agent_name': self.agent_name,
-            'task_count': self.task_count,
-            'success_rate': f"{self.success_rate:.1%}",
-            'failure_rate': f"{self.failure_rate:.1%}",
-            'avg_execution_time': f"{self.avg_execution_time:.2f}s",
-            'p50_execution_time': f"{self.p50_execution_time:.2f}s",
-            'p95_execution_time': f"{self.p95_execution_time:.2f}s",
-            'p99_execution_time': f"{self.p99_execution_time:.2f}s",
-            'min_execution_time': f"{self.min_execution_time:.2f}s",
-            'max_execution_time': f"{self.max_execution_time:.2f}s",
-            'top_errors': dict(sorted(
-                self.error_types.items(),
-                key=lambda x: x[1],
-                reverse=True
-            )[:5])
-        }
+        return self.success_count / self.task_count if self.task_count > 0 else 0
 
 class MetricsCollector:
-    """Central metrics collection system."""
-
     def __init__(self):
-        self.metrics: Dict[str, PerformanceMetrics] = {}
+        self.metrics: dict[str, PerformanceMetrics] = {}
         self.start_time = datetime.now()
 
-    def get_or_create_metrics(self, agent_name: str) -> PerformanceMetrics:
-        """Get or create metrics for agent."""
+    def record(self, agent_name: str, execution_time: float, success: bool, error_type: str = None):
         if agent_name not in self.metrics:
-            self.metrics[agent_name] = PerformanceMetrics(agent_name=agent_name)
-        return self.metrics[agent_name]
+            self.metrics[agent_name] = PerformanceMetrics(agent_name)
+        self.metrics[agent_name].update(execution_time, success, error_type)
 
-    def record_execution(
-        self,
-        agent_name: str,
-        execution_time: float,
-        success: bool,
-        error_type: Optional[str] = None
-    ):
-        """Record agent execution."""
-        metrics = self.get_or_create_metrics(agent_name)
-        metrics.update(execution_time, success, error_type)
-
-    def get_all_metrics(self) -> Dict[str, Dict[str, Any]]:
-        """Get all agent metrics."""
-        return {
-            agent_name: metrics.get_summary()
-            for agent_name, metrics in self.metrics.items()
-        }
-
-    def get_system_summary(self) -> Dict[str, Any]:
-        """Get system-wide summary."""
-        total_tasks = sum(m.task_count for m in self.metrics.values())
-        total_successes = sum(m.success_count for m in self.metrics.values())
-        total_failures = sum(m.failure_count for m in self.metrics.values())
-
-        uptime = (datetime.now() - self.start_time).total_seconds()
-
-        return {
-            'uptime': f"{uptime:.0f}s",
-            'total_tasks': total_tasks,
-            'total_successes': total_successes,
-            'total_failures': total_failures,
-            'overall_success_rate': f"{total_successes / total_tasks:.1%}" if total_tasks > 0 else "0%",
-            'throughput': f"{total_tasks / uptime:.2f} tasks/s" if uptime > 0 else "0 tasks/s",
-            'active_agents': len(self.metrics),
-            'agent_rankings': self._get_agent_rankings()
-        }
-
-    def _get_agent_rankings(self) -> List[Dict[str, Any]]:
-        """Get agents ranked by performance."""
-        rankings = []
-        for agent_name, metrics in self.metrics.items():
-            score = metrics.success_rate * (1 / (metrics.avg_execution_time + 1))
-            rankings.append({
-                'agent': agent_name,
-                'score': f"{score:.3f}",
-                'success_rate': f"{metrics.success_rate:.1%}",
-                'avg_time': f"{metrics.avg_execution_time:.2f}s"
-            })
-
-        return sorted(rankings, key=lambda x: float(x['score']), reverse=True)
-
-# Decorator for automatic metrics collection
+# Decorator for automatic tracking
 def track_performance(agent_name: str, collector: MetricsCollector):
-    """Decorator to track function performance."""
     def decorator(func):
         @functools.wraps(func)
-        async def async_wrapper(*args, **kwargs):
-            start_time = time.time()
-            success = False
-            error_type = None
-
+        async def wrapper(*args, **kwargs):
+            start = time.time()
             try:
                 result = await func(*args, **kwargs)
-                success = True
+                collector.record(agent_name, time.time() - start, True)
                 return result
             except Exception as e:
-                error_type = type(e).__name__
+                collector.record(agent_name, time.time() - start, False, type(e).__name__)
                 raise
-            finally:
-                execution_time = time.time() - start_time
-                collector.record_execution(agent_name, execution_time, success, error_type)
-
-        @functools.wraps(func)
-        def sync_wrapper(*args, **kwargs):
-            start_time = time.time()
-            success = False
-            error_type = None
-
-            try:
-                result = func(*args, **kwargs)
-                success = True
-                return result
-            except Exception as e:
-                error_type = type(e).__name__
-                raise
-            finally:
-                execution_time = time.time() - start_time
-                collector.record_execution(agent_name, execution_time, success, error_type)
-
-        return async_wrapper if asyncio.iscoroutinefunction(func) else sync_wrapper
-
+        return wrapper
     return decorator
 
-# Usage example
+# Usage
 collector = MetricsCollector()
 
 @track_performance("ml-engineer", collector)
 async def train_model(data):
-    """Example tracked function."""
-    await asyncio.sleep(2)  # Simulate training
-    return {"accuracy": 0.95}
-
-async def demo():
-    # Execute tasks
-    for i in range(10):
-        try:
-            await train_model({"data": f"dataset-{i}"})
-        except Exception:
-            pass
-
-    # Print metrics
-    metrics = collector.get_all_metrics()
-    print("\nAgent Metrics:")
-    for agent, stats in metrics.items():
-        print(f"\n{agent}:")
-        for key, value in stats.items():
-            print(f"  {key}: {value}")
-
-    print("\nSystem Summary:")
-    summary = collector.get_system_summary()
-    for key, value in summary.items():
-        if key != 'agent_rankings':
-            print(f"  {key}: {value}")
+    # Training logic
+    pass
 ```
 
-### 2. Caching and Memoization
+---
 
-#### Multi-Level Caching System
+## Caching System
 
 ```python
-# agent_optimization/caching.py
-from typing import Any, Callable, Optional, Dict
 from dataclasses import dataclass
 from datetime import datetime, timedelta
-from functools import wraps
+from typing import Any, Optional
 import hashlib
 import json
-import pickle
-import asyncio
 
 @dataclass
 class CacheEntry:
-    """Cache entry with metadata."""
     key: str
     value: Any
-    created_at: datetime
     expires_at: Optional[datetime]
     access_count: int = 0
-    last_accessed: Optional[datetime] = None
 
     def is_expired(self) -> bool:
-        """Check if entry is expired."""
-        if self.expires_at is None:
-            return False
-        return datetime.now() > self.expires_at
-
-    def access(self) -> None:
-        """Record access."""
-        self.access_count += 1
-        self.last_accessed = datetime.now()
+        return self.expires_at and datetime.now() > self.expires_at
 
 class LRUCache:
-    """LRU cache with TTL support."""
-
-    def __init__(self, max_size: int = 1000, default_ttl: Optional[int] = None):
+    def __init__(self, max_size: int = 1000, default_ttl: int = 300):
         self.max_size = max_size
         self.default_ttl = default_ttl
-        self.cache: Dict[str, CacheEntry] = {}
-        self.access_order: List[str] = []
+        self.cache: dict[str, CacheEntry] = {}
+        self.access_order: list[str] = []
         self.hits = 0
         self.misses = 0
 
     def _make_key(self, func_name: str, args: tuple, kwargs: dict) -> str:
-        """Create cache key from function and arguments."""
-        key_data = {
-            'func': func_name,
-            'args': args,
-            'kwargs': kwargs
-        }
-        key_str = json.dumps(key_data, sort_keys=True, default=str)
+        key_str = json.dumps({'func': func_name, 'args': args, 'kwargs': kwargs}, default=str)
         return hashlib.md5(key_str.encode()).hexdigest()
 
     def get(self, key: str) -> Optional[Any]:
-        """Get value from cache."""
         entry = self.cache.get(key)
-
-        if entry is None:
+        if entry is None or entry.is_expired():
             self.misses += 1
+            if entry: self.cache.pop(key)
             return None
-
-        if entry.is_expired():
-            self.cache.pop(key)
-            self.access_order.remove(key)
-            self.misses += 1
-            return None
-
-        # Update access
-        entry.access()
+        self.hits += 1
+        entry.access_count += 1
         self.access_order.remove(key)
         self.access_order.append(key)
-        self.hits += 1
-
         return entry.value
 
-    def put(self, key: str, value: Any, ttl: Optional[int] = None) -> None:
-        """Put value in cache."""
-        # Remove if exists
+    def put(self, key: str, value: Any, ttl: int = None):
         if key in self.cache:
             self.access_order.remove(key)
-
-        # Evict if full
         if len(self.cache) >= self.max_size:
             lru_key = self.access_order.pop(0)
             self.cache.pop(lru_key)
 
-        # Create entry
-        expires_at = None
-        if ttl or self.default_ttl:
-            expires_at = datetime.now() + timedelta(seconds=ttl or self.default_ttl)
-
-        entry = CacheEntry(
-            key=key,
-            value=value,
-            created_at=datetime.now(),
-            expires_at=expires_at
-        )
-
-        self.cache[key] = entry
+        expires_at = datetime.now() + timedelta(seconds=ttl or self.default_ttl)
+        self.cache[key] = CacheEntry(key, value, expires_at)
         self.access_order.append(key)
 
-    def clear(self) -> None:
-        """Clear cache."""
-        self.cache.clear()
-        self.access_order.clear()
+    @property
+    def hit_rate(self) -> float:
+        total = self.hits + self.misses
+        return self.hits / total if total > 0 else 0
 
-    def get_stats(self) -> Dict[str, Any]:
-        """Get cache statistics."""
-        total_requests = self.hits + self.misses
-        hit_rate = self.hits / total_requests if total_requests > 0 else 0
-
-        return {
-            'size': len(self.cache),
-            'max_size': self.max_size,
-            'hits': self.hits,
-            'misses': self.misses,
-            'hit_rate': f"{hit_rate:.1%}",
-            'total_requests': total_requests
-        }
-
-def cached(cache: LRUCache, ttl: Optional[int] = None):
-    """Decorator for caching function results."""
-    def decorator(func: Callable):
-        @wraps(func)
-        async def async_wrapper(*args, **kwargs):
-            # Create cache key
+# Decorator
+def cached(cache: LRUCache, ttl: int = None):
+    def decorator(func):
+        @functools.wraps(func)
+        async def wrapper(*args, **kwargs):
             key = cache._make_key(func.__name__, args, kwargs)
-
-            # Try cache
-            cached_value = cache.get(key)
-            if cached_value is not None:
-                return cached_value
-
-            # Execute function
+            value = cache.get(key)
+            if value is not None:
+                return value
             result = await func(*args, **kwargs)
-
-            # Store in cache
             cache.put(key, result, ttl)
-
             return result
-
-        @wraps(func)
-        def sync_wrapper(*args, **kwargs):
-            # Create cache key
-            key = cache._make_key(func.__name__, args, kwargs)
-
-            # Try cache
-            cached_value = cache.get(key)
-            if cached_value is not None:
-                return cached_value
-
-            # Execute function
-            result = func(*args, **kwargs)
-
-            # Store in cache
-            cache.put(key, result, ttl)
-
-            return result
-
-        return async_wrapper if asyncio.iscoroutinefunction(func) else sync_wrapper
-
+        return wrapper
     return decorator
 
-# Multi-tier cache system
+# Multi-tier cache
 class TieredCache:
-    """Multi-tier cache with hot/warm/cold levels."""
-
-    def __init__(
-        self,
-        hot_size: int = 100,
-        warm_size: int = 500,
-        cold_size: int = 2000,
-        hot_ttl: int = 300,  # 5 minutes
-        warm_ttl: int = 1800,  # 30 minutes
-        cold_ttl: int = 3600  # 1 hour
-    ):
-        self.hot = LRUCache(max_size=hot_size, default_ttl=hot_ttl)
-        self.warm = LRUCache(max_size=warm_size, default_ttl=warm_ttl)
-        self.cold = LRUCache(max_size=cold_size, default_ttl=cold_ttl)
+    def __init__(self):
+        self.hot = LRUCache(100, 300)    # 5 min
+        self.warm = LRUCache(500, 1800)  # 30 min
+        self.cold = LRUCache(2000, 3600) # 1 hour
 
     def get(self, key: str) -> Optional[Any]:
-        """Get from tiered cache."""
-        # Try hot cache
+        # Try hot -> warm -> cold, promote on hit
         value = self.hot.get(key)
-        if value is not None:
-            return value
+        if value: return value
 
-        # Try warm cache
         value = self.warm.get(key)
-        if value is not None:
-            # Promote to hot
+        if value:
             self.hot.put(key, value)
             return value
 
-        # Try cold cache
         value = self.cold.get(key)
-        if value is not None:
-            # Promote to warm
+        if value:
             self.warm.put(key, value)
             return value
-
         return None
-
-    def put(self, key: str, value: Any, priority: str = "warm") -> None:
-        """Put in appropriate tier."""
-        if priority == "hot":
-            self.hot.put(key, value)
-        elif priority == "warm":
-            self.warm.put(key, value)
-        else:
-            self.cold.put(key, value)
-
-    def get_stats(self) -> Dict[str, Any]:
-        """Get stats for all tiers."""
-        return {
-            'hot': self.hot.get_stats(),
-            'warm': self.warm.get_stats(),
-            'cold': self.cold.get_stats()
-        }
-
-# Usage example
-cache = LRUCache(max_size=100, default_ttl=300)
-
-@cached(cache, ttl=60)
-async def expensive_computation(x: int, y: int) -> int:
-    """Expensive computation with caching."""
-    await asyncio.sleep(2)  # Simulate expensive work
-    return x ** y
-
-async def demo_caching():
-    # First call - cache miss
-    result1 = await expensive_computation(2, 10)
-    print(f"Result: {result1}")
-
-    # Second call - cache hit
-    result2 = await expensive_computation(2, 10)
-    print(f"Result: {result2}")
-
-    # Print stats
-    stats = cache.get_stats()
-    print(f"\nCache stats: {stats}")
 ```
 
-### 3. Load Balancing and Resource Management
+---
 
-#### Intelligent Load Balancer
+## Load Balancing
 
 ```python
-# agent_optimization/load_balancing.py
-from typing import List, Dict, Optional
 from dataclasses import dataclass
 from enum import Enum
 import random
 
 class LoadBalancingStrategy(Enum):
-    """Load balancing strategies."""
     ROUND_ROBIN = "round_robin"
     LEAST_LOADED = "least_loaded"
     WEIGHTED = "weighted"
-    RANDOM = "random"
 
 @dataclass
 class AgentInstance:
-    """Agent instance for load balancing."""
     id: str
     agent_type: str
     current_load: int = 0
     max_capacity: int = 10
     weight: float = 1.0
     is_healthy: bool = True
-    response_time_ms: float = 0.0
-
-    @property
-    def load_percentage(self) -> float:
-        """Calculate load percentage."""
-        return (self.current_load / self.max_capacity) * 100 if self.max_capacity > 0 else 0
 
     @property
     def available_capacity(self) -> int:
-        """Get available capacity."""
         return max(0, self.max_capacity - self.current_load)
 
 class LoadBalancer:
-    """Intelligent load balancer for agent instances."""
-
     def __init__(self, strategy: LoadBalancingStrategy = LoadBalancingStrategy.LEAST_LOADED):
         self.strategy = strategy
-        self.instances: Dict[str, List[AgentInstance]] = {}
-        self.round_robin_index: Dict[str, int] = {}
+        self.instances: dict[str, list[AgentInstance]] = {}
+        self.rr_index: dict[str, int] = {}
 
-    def register_instance(self, instance: AgentInstance) -> None:
-        """Register agent instance."""
-        if instance.agent_type not in self.instances:
-            self.instances[instance.agent_type] = []
-        self.instances[instance.agent_type].append(instance)
+    def register(self, instance: AgentInstance):
+        self.instances.setdefault(instance.agent_type, []).append(instance)
 
-    def select_instance(self, agent_type: str) -> Optional[AgentInstance]:
-        """Select instance based on strategy."""
-        instances = self.instances.get(agent_type, [])
+    def select(self, agent_type: str) -> Optional[AgentInstance]:
+        instances = [i for i in self.instances.get(agent_type, [])
+                     if i.is_healthy and i.current_load < i.max_capacity]
         if not instances:
             return None
 
-        # Filter healthy instances with capacity
-        available = [
-            inst for inst in instances
-            if inst.is_healthy and inst.current_load < inst.max_capacity
-        ]
-
-        if not available:
-            return None
-
         if self.strategy == LoadBalancingStrategy.ROUND_ROBIN:
-            return self._round_robin_select(agent_type, available)
+            idx = self.rr_index.get(agent_type, 0) % len(instances)
+            self.rr_index[agent_type] = idx + 1
+            return instances[idx]
         elif self.strategy == LoadBalancingStrategy.LEAST_LOADED:
-            return self._least_loaded_select(available)
-        elif self.strategy == LoadBalancingStrategy.WEIGHTED:
-            return self._weighted_select(available)
-        else:  # RANDOM
-            return random.choice(available)
-
-    def _round_robin_select(
-        self,
-        agent_type: str,
-        instances: List[AgentInstance]
-    ) -> AgentInstance:
-        """Round-robin selection."""
-        if agent_type not in self.round_robin_index:
-            self.round_robin_index[agent_type] = 0
-
-        index = self.round_robin_index[agent_type] % len(instances)
-        self.round_robin_index[agent_type] += 1
-
-        return instances[index]
-
-    def _least_loaded_select(self, instances: List[AgentInstance]) -> AgentInstance:
-        """Select least loaded instance."""
-        return min(instances, key=lambda x: x.load_percentage)
-
-    def _weighted_select(self, instances: List[AgentInstance]) -> AgentInstance:
-        """Weighted random selection."""
-        # Calculate effective weights (higher weight for less loaded)
-        weights = [
-            inst.weight * (1 - inst.load_percentage / 100)
-            for inst in instances
-        ]
-
-        return random.choices(instances, weights=weights)[0]
+            return min(instances, key=lambda x: x.current_load / x.max_capacity)
+        else:  # WEIGHTED
+            weights = [i.weight * (1 - i.current_load / i.max_capacity) for i in instances]
+            return random.choices(instances, weights=weights)[0]
 
     def acquire(self, agent_type: str) -> Optional[AgentInstance]:
-        """Acquire instance for task."""
-        instance = self.select_instance(agent_type)
+        instance = self.select(agent_type)
         if instance:
             instance.current_load += 1
         return instance
 
-    def release(self, instance: AgentInstance) -> None:
-        """Release instance after task."""
+    def release(self, instance: AgentInstance):
         instance.current_load = max(0, instance.current_load - 1)
 
-    def get_status(self) -> Dict[str, Any]:
-        """Get load balancer status."""
-        status = {}
+# Usage
+lb = LoadBalancer(LoadBalancingStrategy.LEAST_LOADED)
+lb.register(AgentInstance("ml-1", "ml-engineer", max_capacity=5))
+lb.register(AgentInstance("ml-2", "ml-engineer", max_capacity=5))
 
-        for agent_type, instances in self.instances.items():
-            total_capacity = sum(inst.max_capacity for inst in instances)
-            total_load = sum(inst.current_load for inst in instances)
-            healthy_count = sum(1 for inst in instances if inst.is_healthy)
-
-            status[agent_type] = {
-                'instances': len(instances),
-                'healthy': healthy_count,
-                'total_capacity': total_capacity,
-                'current_load': total_load,
-                'load_percentage': f"{(total_load / total_capacity * 100):.1f}%" if total_capacity > 0 else "0%",
-                'instances_detail': [
-                    {
-                        'id': inst.id,
-                        'load': f"{inst.current_load}/{inst.max_capacity}",
-                        'load_pct': f"{inst.load_percentage:.1f}%",
-                        'healthy': inst.is_healthy
-                    }
-                    for inst in instances
-                ]
-            }
-
-        return status
-
-# Usage example
-def demo_load_balancing():
-    lb = LoadBalancer(strategy=LoadBalancingStrategy.LEAST_LOADED)
-
-    # Register instances
-    for i in range(3):
-        lb.register_instance(AgentInstance(
-            id=f"ml-engineer-{i}",
-            agent_type="ml-engineer",
-            max_capacity=5
-        ))
-
-    # Simulate task distribution
-    print("Distributing tasks...")
-    active_instances = []
-
-    for i in range(10):
-        instance = lb.acquire("ml-engineer")
-        if instance:
-            print(f"Task {i} -> {instance.id} (load: {instance.current_load}/{instance.max_capacity})")
-            active_instances.append(instance)
-
-    # Release some instances
-    for instance in active_instances[:5]:
-        lb.release(instance)
-
-    # Print status
-    print("\nLoad Balancer Status:")
-    status = lb.get_status()
-    for agent_type, info in status.items():
-        print(f"\n{agent_type}:")
-        print(f"  Load: {info['current_load']}/{info['total_capacity']} ({info['load_percentage']})")
-        for inst_detail in info['instances_detail']:
-            print(f"    {inst_detail['id']}: {inst_detail['load']} ({inst_detail['load_pct']})")
+instance = lb.acquire("ml-engineer")
+# Use instance...
+lb.release(instance)
 ```
+
+---
 
 ## Best Practices
 
-### Performance Monitoring
-1. Track comprehensive metrics (latency, throughput, errors)
-2. Calculate percentiles (P50, P95, P99) not just averages
-3. Monitor success/failure rates
-4. Track error types for pattern analysis
-5. Implement automated alerting
+| Area | Practice |
+|------|----------|
+| Metrics | Track P50/P95/P99, not just averages |
+| Caching | Use TTL, track hit rates, multi-tier for hot/warm/cold |
+| Load Balancing | Health check before routing, graceful degradation |
+| Monitoring | Automated alerting on thresholds |
+| Retries | Exponential backoff for transient failures |
 
-### Caching Strategy
-1. Use TTL to prevent stale data
-2. Implement multi-tier caching (hot/warm/cold)
-3. Track cache hit rates
-4. Size caches appropriately for workload
-5. Consider cache invalidation strategies
+---
 
-### Load Balancing
-1. Health check instances before routing
-2. Consider agent capabilities when balancing
-3. Implement graceful degradation
-4. Monitor and adjust capacity dynamically
-5. Use appropriate strategy for workload
+## Performance Targets
 
-## Quick Reference
+| Metric | Target | Alert Threshold |
+|--------|--------|-----------------|
+| P95 Latency | <500ms | >1s |
+| Success Rate | >99% | <95% |
+| Cache Hit Rate | >80% | <50% |
+| Load Balance | Even distribution | Any instance >80% |
 
-```python
-# Metrics collection
-collector = MetricsCollector()
+---
 
-@track_performance("agent-name", collector)
-async def task():
-    # Task implementation
-    pass
+## Checklist
 
-# Caching
-cache = LRUCache(max_size=1000, default_ttl=300)
+- [ ] Metrics collection on all agents
+- [ ] P50/P95/P99 latency tracking
+- [ ] Success/failure rate monitoring
+- [ ] Error type categorization
+- [ ] LRU caching for expensive operations
+- [ ] Cache hit rate monitoring
+- [ ] Load balancer with health checks
+- [ ] Automated alerting configured
+- [ ] Retry logic with exponential backoff
 
-@cached(cache, ttl=60)
-async def expensive_task():
-    # Task implementation
-    pass
+---
 
-# Load balancing
-lb = LoadBalancer(strategy=LoadBalancingStrategy.LEAST_LOADED)
-instance = lb.acquire("agent-type")
-# Use instance
-lb.release(instance)
-```
+**Version**: 1.0.5

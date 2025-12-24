@@ -1,202 +1,43 @@
 ---
 name: ml-pipeline-workflow
-description: Build end-to-end MLOps pipelines with Airflow, Dagster, Kubeflow Pipelines, or Prefect orchestrating data preparation, feature engineering, model training, validation, and production deployment workflows. Use when writing or editing pipeline DAG definitions (`.py`), workflow configurations (`.yaml`), or orchestration scripts. Apply this skill when designing ML pipeline architectures, creating Airflow DAGs for ML workflows, implementing Kubeflow Pipelines with components and artifacts, using Dagster for asset-based ML orchestration, building data validation steps with Great Expectations or TFX, implementing automated feature engineering pipelines, orchestrating distributed model training jobs, creating model validation and testing stages, implementing A/B testing infrastructure, setting up canary or blue-green deployment workflows, integrating with MLflow or W&B for experiment tracking, implementing data versioning with DVC, or creating end-to-end reproducible ML workflows.
+version: "1.0.5"
+maturity: "5-Expert"
+specialization: MLOps Pipeline Orchestration
+description: Build end-to-end MLOps pipelines with Airflow, Dagster, Kubeflow, or Prefect for data preparation, training, validation, and deployment. Use when creating DAG definitions, workflow configs, or orchestrating ML lifecycle stages.
 ---
 
 # ML Pipeline Workflow
 
-Complete end-to-end MLOps pipeline orchestration from data preparation through model deployment.
+End-to-end MLOps pipeline orchestration from data to deployment.
 
-## Overview
+---
 
-This skill provides comprehensive guidance for building production ML pipelines that handle the full lifecycle: data ingestion → preparation → training → validation → deployment → monitoring.
+## Orchestration Tools
 
-## When to Use This Skill
+| Tool | Best For | Key Feature |
+|------|----------|-------------|
+| Apache Airflow | DAG-based workflows | Mature, widely adopted |
+| Dagster | Asset-based pipelines | Software-defined assets |
+| Kubeflow Pipelines | K8s-native ML | Component reusability |
+| Prefect | Modern dataflow | Dynamic workflows |
 
-- Writing or editing Airflow DAG definitions (`.py`) for ML workflows
-- Writing or editing Kubeflow Pipeline definitions or component specifications
-- Writing or editing workflow configuration files (`.yaml`) for ML orchestration
-- Designing end-to-end ML pipeline architectures (data → train → validate → deploy)
-- Creating Airflow DAGs with tasks for data processing, training, and deployment
-- Implementing Kubeflow Pipelines with reusable components and artifacts
-- Using Dagster for asset-based ML pipeline orchestration
-- Building Prefect flows for ML workflow automation
-- Implementing data validation stages with Great Expectations or TFX Data Validation
-- Creating automated feature engineering pipelines
-- Orchestrating distributed model training across multiple nodes
-- Implementing model validation stages (performance testing, drift detection)
-- Setting up A/B testing infrastructure for model comparison
-- Implementing deployment strategies (canary, blue-green, shadow deployments)
-- Integrating experiment tracking (MLflow, W&B) into pipeline workflows
-- Implementing data versioning with DVC or similar tools
-- Creating reproducible, end-to-end ML workflows with version control
-- Building scheduled retraining pipelines triggered by data drift or performance degradation
+---
 
-## What This Skill Provides
+## Pipeline Stages
 
-### Core Capabilities
+| Stage | Tasks | Key Outputs |
+|-------|-------|-------------|
+| Data Ingestion | Extract, validate sources | Raw datasets |
+| Data Preparation | Clean, transform, feature eng | Processed features |
+| Model Training | Train, tune hyperparameters | Model artifacts |
+| Model Validation | Test, compare, approve | Validation report |
+| Deployment | Package, serve, monitor | Production endpoint |
 
-1. **Pipeline Architecture**
-   - End-to-end workflow design
-   - DAG orchestration patterns (Airflow, Dagster, Kubeflow)
-   - Component dependencies and data flow
-   - Error handling and retry strategies
+---
 
-2. **Data Preparation**
-   - Data validation and quality checks
-   - Feature engineering pipelines
-   - Data versioning and lineage
-   - Train/validation/test splitting strategies
-
-3. **Model Training**
-   - Training job orchestration
-   - Hyperparameter management
-   - Experiment tracking integration
-   - Distributed training patterns
-
-4. **Model Validation**
-   - Validation frameworks and metrics
-   - A/B testing infrastructure
-   - Performance regression detection
-   - Model comparison workflows
-
-5. **Deployment Automation**
-   - Model serving patterns
-   - Canary deployments
-   - Blue-green deployment strategies
-   - Rollback mechanisms
-
-### Reference Documentation
-
-See the `references/` directory for detailed guides:
-- **data-preparation.md** - Data cleaning, validation, and feature engineering
-- **model-training.md** - Training workflows and best practices
-- **model-validation.md** - Validation strategies and metrics
-- **model-deployment.md** - Deployment patterns and serving architectures
-
-### Assets and Templates
-
-The `assets/` directory contains:
-- **pipeline-dag.yaml.template** - DAG template for workflow orchestration
-- **training-config.yaml** - Training configuration template
-- **validation-checklist.md** - Pre-deployment validation checklist
-
-## Usage Patterns
-
-### Basic Pipeline Setup
-
-```python
-# 1. Define pipeline stages
-stages = [
-    "data_ingestion",
-    "data_validation",
-    "feature_engineering",
-    "model_training",
-    "model_validation",
-    "model_deployment"
-]
-
-# 2. Configure dependencies
-# See assets/pipeline-dag.yaml.template for full example
-```
-
-### Production Workflow
-
-1. **Data Preparation Phase**
-   - Ingest raw data from sources
-   - Run data quality checks
-   - Apply feature transformations
-   - Version processed datasets
-
-2. **Training Phase**
-   - Load versioned training data
-   - Execute training jobs
-   - Track experiments and metrics
-   - Save trained models
-
-3. **Validation Phase**
-   - Run validation test suite
-   - Compare against baseline
-   - Generate performance reports
-   - Approve for deployment
-
-4. **Deployment Phase**
-   - Package model artifacts
-   - Deploy to serving infrastructure
-   - Configure monitoring
-   - Validate production traffic
-
-## Best Practices
-
-### Pipeline Design
-
-- **Modularity**: Each stage should be independently testable
-- **Idempotency**: Re-running stages should be safe
-- **Observability**: Log metrics at every stage
-- **Versioning**: Track data, code, and model versions
-- **Failure Handling**: Implement retry logic and alerting
-
-### Data Management
-
-- Use data validation libraries (Great Expectations, TFX)
-- Version datasets with DVC or similar tools
-- Document feature engineering transformations
-- Maintain data lineage tracking
-
-### Model Operations
-
-- Separate training and serving infrastructure
-- Use model registries (MLflow, Weights & Biases)
-- Implement gradual rollouts for new models
-- Monitor model performance drift
-- Maintain rollback capabilities
-
-### Deployment Strategies
-
-- Start with shadow deployments
-- Use canary releases for validation
-- Implement A/B testing infrastructure
-- Set up automated rollback triggers
-- Monitor latency and throughput
-
-## Integration Points
-
-### Orchestration Tools
-
-- **Apache Airflow**: DAG-based workflow orchestration
-- **Dagster**: Asset-based pipeline orchestration
-- **Kubeflow Pipelines**: Kubernetes-native ML workflows
-- **Prefect**: Modern dataflow automation
-
-### Experiment Tracking
-
-- MLflow for experiment tracking and model registry
-- Weights & Biases for visualization and collaboration
-- TensorBoard for training metrics
-
-### Deployment Platforms
-
-- AWS SageMaker for managed ML infrastructure
-- Google Vertex AI for GCP deployments
-- Azure ML for Azure cloud
-- Kubernetes + KServe for cloud-agnostic serving
-
-## Progressive Disclosure
-
-Start with the basics and gradually add complexity:
-
-1. **Level 1**: Simple linear pipeline (data → train → deploy)
-2. **Level 2**: Add validation and monitoring stages
-3. **Level 3**: Implement hyperparameter tuning
-4. **Level 4**: Add A/B testing and gradual rollouts
-5. **Level 5**: Multi-model pipelines with ensemble strategies
-
-## Common Patterns
-
-### Batch Training Pipeline
+## DAG Pattern
 
 ```yaml
-# See assets/pipeline-dag.yaml.template
 stages:
   - name: data_preparation
     dependencies: []
@@ -206,52 +47,81 @@ stages:
     dependencies: [model_training]
   - name: model_deployment
     dependencies: [model_evaluation]
+    condition: evaluation_passed
 ```
 
-### Real-time Feature Pipeline
+---
 
-```python
-# Stream processing for real-time features
-# Combined with batch training
-# See references/data-preparation.md
-```
+## Integration Points
 
-### Continuous Training
+| Category | Tools |
+|----------|-------|
+| Experiment Tracking | MLflow, Weights & Biases, TensorBoard |
+| Data Versioning | DVC, Delta Lake, LakeFS |
+| Data Validation | Great Expectations, TFX Data Validation |
+| Model Registry | MLflow Registry, Vertex AI, SageMaker |
+| Serving | TorchServe, TF Serving, Triton, KServe |
 
-```python
-# Automated retraining on schedule
-# Triggered by data drift detection
-# See references/model-training.md
-```
+---
+
+## Deployment Strategies
+
+| Strategy | Use Case | Risk |
+|----------|----------|------|
+| Shadow | Test in production traffic | None |
+| Canary | Gradual rollout (5% → 100%) | Low |
+| Blue-Green | Instant switchover | Medium |
+| A/B Testing | Compare model versions | Low |
+
+---
+
+## Best Practices
+
+| Practice | Implementation |
+|----------|----------------|
+| Modularity | Each stage independently testable |
+| Idempotency | Re-running stages is safe |
+| Observability | Log metrics at every stage |
+| Versioning | Track data, code, and model versions |
+| Failure Handling | Retry logic and alerting |
+| Validation Gates | Block deployment on failures |
+
+---
+
+## Common Pitfalls
+
+| Pitfall | Solution |
+|---------|----------|
+| Monolithic pipelines | Break into modular stages |
+| No data versioning | Use DVC or Delta Lake |
+| Missing validation | Add quality gates before deploy |
+| Manual deployments | Automate with CI/CD triggers |
+| No rollback plan | Implement automated rollback |
+
+---
 
 ## Troubleshooting
 
-### Common Issues
+| Issue | Debug Steps |
+|-------|-------------|
+| Pipeline failures | Check dependencies, data availability |
+| Training instability | Review hyperparams, data quality |
+| Deployment issues | Validate artifacts, serving config |
+| Performance degradation | Monitor drift, retrain triggers |
 
-- **Pipeline failures**: Check dependencies and data availability
-- **Training instability**: Review hyperparameters and data quality
-- **Deployment issues**: Validate model artifacts and serving config
-- **Performance degradation**: Monitor data drift and model metrics
+---
 
-### Debugging Steps
+## Checklist
 
-1. Check pipeline logs for each stage
-2. Validate input/output data at boundaries
-3. Test components in isolation
-4. Review experiment tracking metrics
-5. Inspect model artifacts and metadata
+- [ ] Pipeline stages defined with clear dependencies
+- [ ] Data validation at ingestion
+- [ ] Experiment tracking configured
+- [ ] Model versioning enabled
+- [ ] Validation gates before deployment
+- [ ] Deployment strategy selected
+- [ ] Monitoring and alerting configured
+- [ ] Rollback mechanism tested
 
-## Next Steps
+---
 
-After setting up your pipeline:
-
-1. Explore **hyperparameter-tuning** skill for optimization
-2. Learn **experiment-tracking-setup** for MLflow/W&B
-3. Review **model-deployment-patterns** for serving strategies
-4. Implement monitoring with observability tools
-
-## Related Skills
-
-- **experiment-tracking-setup**: MLflow and Weights & Biases integration
-- **hyperparameter-tuning**: Automated hyperparameter optimization
-- **model-deployment-patterns**: Advanced deployment strategies
+**Version**: 1.0.5

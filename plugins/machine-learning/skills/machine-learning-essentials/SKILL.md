@@ -1,268 +1,142 @@
 ---
 name: machine-learning-essentials
-description: Core machine learning workflows using scikit-learn, XGBoost, LightGBM, and PyTorch including classical ML algorithms (linear/logistic regression, decision trees, random forests, gradient boosting), neural networks, model evaluation metrics, cross-validation, hyperparameter tuning (GridSearch, RandomSearch, Bayesian optimization), handling imbalanced data, and model deployment. Use when writing or editing Python ML training scripts (`.py`), Jupyter notebooks (`.ipynb`) for model development, or model evaluation code. Apply this skill when implementing classification or regression models, selecting algorithms (linear models, tree-based, ensembles, neural networks), performing cross-validation and train/test splits, tuning hyperparameters with GridSearchCV or Optuna, evaluating models with appropriate metrics (accuracy, precision, recall, F1, ROC-AUC for classification; R², RMSE, MAE for regression), handling imbalanced datasets with SMOTE or class weights, implementing clustering (K-Means, DBSCAN) or dimensionality reduction (PCA, t-SNE, UMAP), interpreting models with feature importance or SHAP values, or serializing models for deployment with joblib or pickle.
+version: "1.0.5"
+maturity: "5-Expert"
+specialization: Core ML Workflows
+description: Core ML workflows with scikit-learn, XGBoost, LightGBM including algorithm selection, cross-validation, hyperparameter tuning (GridSearch, Optuna), handling imbalanced data (SMOTE), model evaluation, SHAP interpretability, and deployment. Use when building classification/regression models or evaluating ML performance.
 ---
 
 # Machine Learning Essentials
 
-Practical frameworks for building, evaluating, and deploying machine learning models across classical and deep learning paradigms.
+Practical ML from data to deployment with scikit-learn and gradient boosting.
 
-## When to Use This Skill
+---
 
-- Writing or editing Python ML training scripts (`.py`) with scikit-learn, XGBoost, or LightGBM
-- Writing or editing Jupyter notebooks (`.ipynb`) for model development and experimentation
-- Building classification models (binary or multi-class prediction)
-- Building regression models (continuous value prediction)
-- Implementing clustering algorithms (K-Means, DBSCAN, hierarchical clustering)
-- Performing dimensionality reduction (PCA, t-SNE, UMAP) for visualization or feature engineering
-- Selecting appropriate algorithms based on problem type and data characteristics
-- Performing train/test splits with proper stratification for classification
-- Implementing cross-validation (K-Fold, Stratified K-Fold, TimeSeriesSplit)
-- Tuning hyperparameters with GridSearchCV, RandomizedSearchCV, or Bayesian optimization (Optuna, Hyperopt)
-- Evaluating classification models (accuracy, precision, recall, F1, ROC-AUC, confusion matrix)
-- Evaluating regression models (R², RMSE, MAE, MAPE)
-- Handling imbalanced datasets with SMOTE, class weights, or undersampling
-- Interpreting model predictions with feature importance, SHAP values, or LIME
-- Comparing multiple models and selecting the best performer
-- Serializing trained models with joblib or pickle for deployment
-- Creating simple neural networks with scikit-learn MLPClassifier or PyTorch
-
-## Classical Machine Learning
-
-### 1. Algorithm Selection Guide
+## Algorithm Selection
 
 | Task | Algorithm | When to Use |
 |------|-----------|-------------|
-| Linear relationships | Linear/Logistic Regression | Interpretability needed, baseline model |
-| Non-linear, tabular | XGBoost, LightGBM | High performance on structured data |
-| High-dimensional | Ridge, Lasso, Elastic Net | Feature selection, regularization |
-| Clustering | K-Means, DBSCAN | Customer segmentation, anomaly detection |
-| Dimensionality reduction | PCA, t-SNE, UMAP | Visualization, feature engineering |
+| Baseline | Linear/Logistic Regression | Interpretability, fast |
+| Tabular (best) | XGBoost, LightGBM | Structured data performance |
+| High-dimensional | Ridge, Lasso, Elastic Net | Regularization needed |
+| Clustering | K-Means, DBSCAN | Segmentation, anomaly |
+| Dimensionality | PCA, t-SNE, UMAP | Visualization, features |
 
-### 2. Supervised Learning Workflow
+---
 
-**Classification Example (XGBoost):**
+## Classification Workflow
+
 ```python
 from xgboost import XGBClassifier
 from sklearn.model_selection import train_test_split, GridSearchCV
 from sklearn.metrics import classification_report, roc_auc_score
 
-# Split data
+# Split with stratification
 X_train, X_test, y_train, y_test = train_test_split(
-    X, y, test_size=0.2, random_state=42, stratify=y
-)
+    X, y, test_size=0.2, random_state=42, stratify=y)
 
 # Hyperparameter tuning
 param_grid = {
     'max_depth': [3, 5, 7],
-    'learning_rate': [0.01, 0.1, 0.3],
-    'n_estimators': [100, 200],
-    'subsample': [0.8, 1.0]
+    'learning_rate': [0.01, 0.1],
+    'n_estimators': [100, 200]
 }
 
-model = XGBClassifier(random_state=42)
-grid_search = GridSearchCV(
-    model, param_grid, cv=5,
-    scoring='roc_auc', n_jobs=-1
-)
-grid_search.fit(X_train, y_train)
-
-# Best model
-best_model = grid_search.best_estimator_
+grid = GridSearchCV(XGBClassifier(random_state=42), param_grid,
+                    cv=5, scoring='roc_auc', n_jobs=-1)
+grid.fit(X_train, y_train)
 
 # Evaluate
-y_pred = best_model.predict(X_test)
-y_pred_proba = best_model.predict_proba(X_test)[:, 1]
-
+y_pred = grid.best_estimator_.predict(X_test)
+y_proba = grid.best_estimator_.predict_proba(X_test)[:, 1]
 print(classification_report(y_test, y_pred))
-print(f"ROC-AUC: {roc_auc_score(y_test, y_pred_proba):.3f}")
+print(f"ROC-AUC: {roc_auc_score(y_test, y_proba):.3f}")
 ```
 
-**Regression Example (Random Forest):**
+---
+
+## Regression Workflow
+
 ```python
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.metrics import mean_squared_error, r2_score, mean_absolute_error
+import numpy as np
 
-model = RandomForestRegressor(
-    n_estimators=200,
-    max_depth=10,
-    min_samples_split=5,
-    random_state=42,
-    n_jobs=-1
-)
-
+model = RandomForestRegressor(n_estimators=200, max_depth=10, random_state=42)
 model.fit(X_train, y_train)
 y_pred = model.predict(X_test)
 
-# Evaluation metrics
-print(f"R² Score: {r2_score(y_test, y_pred):.3f}")
+print(f"R²: {r2_score(y_test, y_pred):.3f}")
 print(f"RMSE: {np.sqrt(mean_squared_error(y_test, y_pred)):.3f}")
 print(f"MAE: {mean_absolute_error(y_test, y_pred):.3f}")
 ```
 
-### 3. Unsupervised Learning
+---
 
-**Clustering (K-Means):**
-```python
-from sklearn.cluster import KMeans
-from sklearn.preprocessing import StandardScaler
+## Evaluation Metrics
 
-# Scale features
-scaler = StandardScaler()
-X_scaled = scaler.fit_transform(X)
+### Classification
 
-# Elbow method for optimal k
-inertias = []
-for k in range(2, 11):
-    kmeans = KMeans(n_clusters=k, random_state=42)
-    kmeans.fit(X_scaled)
-    inertias.append(kmeans.inertia_)
+| Metric | Use Case |
+|--------|----------|
+| Accuracy | Balanced classes |
+| Precision/Recall | Imbalanced, cost-sensitive |
+| F1-Score | Balance precision/recall |
+| ROC-AUC | Ranking, threshold-independent |
 
-# Fit final model
-kmeans = KMeans(n_clusters=4, random_state=42)
-clusters = kmeans.fit_predict(X_scaled)
+### Regression
 
-# Analyze clusters
-df['cluster'] = clusters
-print(df.groupby('cluster').mean())
-```
+| Metric | Use Case |
+|--------|----------|
+| R² | General goodness-of-fit |
+| RMSE | Penalize large errors |
+| MAE | Robust to outliers |
+| MAPE | Percentage interpretation |
 
-**Dimensionality Reduction (PCA):**
-```python
-from sklearn.decomposition import PCA
+---
 
-pca = PCA(n_components=0.95)  # Retain 95% variance
-X_reduced = pca.fit_transform(X_scaled)
-
-print(f"Original dimensions: {X.shape[1]}")
-print(f"Reduced dimensions: {X_reduced.shape[1]}")
-print(f"Explained variance: {pca.explained_variance_ratio_.sum():.2%}")
-```
-
-## Deep Learning
-
-### 1. Neural Network with PyTorch
+## Handling Imbalanced Data
 
 ```python
-import torch
-import torch.nn as nn
-import torch.optim as optim
-from torch.utils.data import DataLoader, TensorDataset
+from imblearn.over_sampling import SMOTE
+from sklearn.utils.class_weight import compute_class_weight
+import numpy as np
 
-# Define model
-class FeedForwardNN(nn.Module):
-    def __init__(self, input_dim, hidden_dim, output_dim):
-        super().__init__()
-        self.network = nn.Sequential(
-            nn.Linear(input_dim, hidden_dim),
-            nn.ReLU(),
-            nn.Dropout(0.3),
-            nn.Linear(hidden_dim, hidden_dim//2),
-            nn.ReLU(),
-            nn.Dropout(0.3),
-            nn.Linear(hidden_dim//2, output_dim)
-        )
+# Option 1: SMOTE oversampling
+smote = SMOTE(random_state=42)
+X_resampled, y_resampled = smote.fit_resample(X_train, y_train)
 
-    def forward(self, x):
-        return self.network(x)
-
-# Training loop
-model = FeedForwardNN(input_dim=X_train.shape[1], hidden_dim=128, output_dim=1)
-criterion = nn.BCEWithLogitsLoss()
-optimizer = optim.Adam(model.parameters(), lr=0.001)
-
-# Convert to tensors
-train_dataset = TensorDataset(
-    torch.FloatTensor(X_train),
-    torch.FloatTensor(y_train)
-)
-train_loader = DataLoader(train_dataset, batch_size=64, shuffle=True)
-
-# Train
-model.train()
-for epoch in range(50):
-    for batch_X, batch_y in train_loader:
-        optimizer.zero_grad()
-        outputs = model(batch_X)
-        loss = criterion(outputs.squeeze(), batch_y)
-        loss.backward()
-        optimizer.step()
+# Option 2: Class weights
+weights = compute_class_weight('balanced', classes=np.unique(y_train), y=y_train)
+model = XGBClassifier(scale_pos_weight=weights[1]/weights[0])
 ```
 
-### 2. Transfer Learning
+---
+
+## Hyperparameter Tuning
+
+### Bayesian Optimization
 
 ```python
-from torchvision import models, transforms
+import optuna
 
-# Load pretrained model
-model = models.resnet18(pretrained=True)
+def objective(trial):
+    params = {
+        'max_depth': trial.suggest_int('max_depth', 3, 10),
+        'learning_rate': trial.suggest_float('learning_rate', 0.01, 0.3, log=True),
+        'n_estimators': trial.suggest_int('n_estimators', 50, 300)
+    }
+    model = XGBClassifier(**params, random_state=42)
+    return cross_val_score(model, X_train, y_train, cv=5, scoring='roc_auc').mean()
 
-# Freeze base layers
-for param in model.parameters():
-    param.requires_grad = False
-
-# Replace final layer
-model.fc = nn.Linear(model.fc.in_features, num_classes)
-
-# Fine-tune
-optimizer = optim.Adam(model.fc.parameters(), lr=0.001)
+study = optuna.create_study(direction='maximize')
+study.optimize(objective, n_trials=50)
+print(study.best_params)
 ```
 
-## Model Evaluation
-
-### 1. Classification Metrics
-
-```python
-from sklearn.metrics import (
-    accuracy_score, precision_score, recall_score, f1_score,
-    confusion_matrix, roc_curve, auc
-)
-
-# Calculate metrics
-accuracy = accuracy_score(y_test, y_pred)
-precision = precision_score(y_test, y_pred, average='weighted')
-recall = recall_score(y_test, y_pred, average='weighted')
-f1 = f1_score(y_test, y_pred, average='weighted')
-
-# Confusion matrix
-cm = confusion_matrix(y_test, y_pred)
-
-# ROC curve
-fpr, tpr, thresholds = roc_curve(y_test, y_pred_proba)
-roc_auc = auc(fpr, tpr)
-```
-
-### 2. Regression Metrics
-
-```python
-from sklearn.metrics import (
-    mean_squared_error, mean_absolute_error,
-    r2_score, mean_absolute_percentage_error
-)
-
-mse = mean_squared_error(y_test, y_pred)
-rmse = np.sqrt(mse)
-mae = mean_absolute_error(y_test, y_pred)
-r2 = r2_score(y_test, y_pred)
-mape = mean_absolute_percentage_error(y_test, y_pred)
-```
-
-### 3. Cross-Validation
-
-```python
-from sklearn.model_selection import cross_val_score, KFold
-
-# K-fold cross-validation
-kf = KFold(n_splits=5, shuffle=True, random_state=42)
-cv_scores = cross_val_score(model, X, y, cv=kf, scoring='roc_auc')
-
-print(f"CV Scores: {cv_scores}")
-print(f"Mean: {cv_scores.mean():.3f} (+/- {cv_scores.std() * 2:.3f})")
-```
+---
 
 ## Model Interpretability
-
-### 1. Feature Importance
 
 ```python
 import shap
@@ -274,168 +148,87 @@ shap_values = explainer.shap_values(X_test)
 # Summary plot
 shap.summary_plot(shap_values, X_test, feature_names=feature_names)
 
-# Individual prediction explanation
+# Single prediction
 shap.force_plot(explainer.expected_value, shap_values[0], X_test.iloc[0])
 ```
 
-### 2. Partial Dependence Plots
+---
+
+## Cross-Validation
 
 ```python
-from sklearn.inspection import PartialDependenceDisplay
+from sklearn.model_selection import cross_val_score, StratifiedKFold
 
-# Plot partial dependence
-features = ['feature1', 'feature2']
-PartialDependenceDisplay.from_estimator(
-    model, X_train, features, kind='both'
-)
+cv = StratifiedKFold(n_splits=5, shuffle=True, random_state=42)
+scores = cross_val_score(model, X, y, cv=cv, scoring='roc_auc')
+print(f"CV: {scores.mean():.3f} (+/- {scores.std() * 2:.3f})")
 ```
 
-## Hyperparameter Tuning
-
-### 1. Grid Search
-
-```python
-from sklearn.model_selection import GridSearchCV
-
-param_grid = {
-    'max_depth': [3, 5, 7, 10],
-    'min_samples_split': [2, 5, 10],
-    'min_samples_leaf': [1, 2, 4]
-}
-
-grid_search = GridSearchCV(
-    estimator=model,
-    param_grid=param_grid,
-    cv=5,
-    scoring='roc_auc',
-    n_jobs=-1,
-    verbose=1
-)
-
-grid_search.fit(X_train, y_train)
-print(f"Best params: {grid_search.best_params_}")
-print(f"Best score: {grid_search.best_score_:.3f}")
-```
-
-### 2. Bayesian Optimization
-
-```python
-from skopt import BayesSearchCV
-
-search_spaces = {
-    'max_depth': (3, 15),
-    'learning_rate': (0.01, 0.3, 'log-uniform'),
-    'n_estimators': (50, 300)
-}
-
-bayes_search = BayesSearchCV(
-    estimator=model,
-    search_spaces=search_spaces,
-    n_iter=50,
-    cv=5,
-    n_jobs=-1,
-    random_state=42
-)
-
-bayes_search.fit(X_train, y_train)
-```
-
-## Handling Imbalanced Data
-
-### 1. Class Weighting
-
-```python
-from sklearn.utils.class_weight import compute_class_weight
-
-# Compute class weights
-class_weights = compute_class_weight(
-    'balanced', classes=np.unique(y_train), y=y_train
-)
-
-# Apply in model
-model = XGBClassifier(scale_pos_weight=class_weights[1]/class_weights[0])
-```
-
-### 2. Resampling
-
-```python
-from imblearn.over_sampling import SMOTE
-from imblearn.under_sampling import RandomUnderSampler
-
-# SMOTE (oversampling minority class)
-smote = SMOTE(random_state=42)
-X_resampled, y_resampled = smote.fit_resample(X_train, y_train)
-
-# Combine over and under sampling
-from imblearn.combine import SMOTETomek
-sampler = SMOTETomek(random_state=42)
-X_resampled, y_resampled = sampler.fit_resample(X_train, y_train)
-```
+---
 
 ## Model Deployment
 
-### 1. Model Serialization
-
 ```python
 import joblib
-import pickle
-
-# Save model
-joblib.dump(model, 'model.joblib')
-
-# Load model
-loaded_model = joblib.load('model.joblib')
-```
-
-### 2. API Endpoint (FastAPI)
-
-```python
 from fastapi import FastAPI
 from pydantic import BaseModel
 import numpy as np
 
-app = FastAPI()
-
-# Load model at startup
+# Save/load
+joblib.dump(model, 'model.joblib')
 model = joblib.load('model.joblib')
 
-class PredictionRequest(BaseModel):
+# API endpoint
+app = FastAPI()
+
+class PredictRequest(BaseModel):
     features: list[float]
 
 @app.post("/predict")
-def predict(request: PredictionRequest):
-    features = np.array(request.features).reshape(1, -1)
-    prediction = model.predict(features)[0]
-    probability = model.predict_proba(features)[0]
-
-    return {
-        "prediction": int(prediction),
-        "probability": probability.tolist()
-    }
+def predict(req: PredictRequest):
+    X = np.array(req.features).reshape(1, -1)
+    return {"prediction": int(model.predict(X)[0]),
+            "probability": model.predict_proba(X)[0].tolist()}
 ```
-
-## Quick Reference
-
-### Model Selection Checklist
-
-- [ ] Understand problem type (classification, regression, clustering)
-- [ ] Check data size (small: linear models, large: tree ensembles/deep learning)
-- [ ] Assess interpretability needs (high: linear/trees, low: ensembles/neural nets)
-- [ ] Consider training time constraints
-- [ ] Evaluate deployment requirements (latency, memory)
-
-### Evaluation Metrics by Task
-
-**Classification:**
-- Balanced classes: Accuracy, F1-score
-- Imbalanced classes: Precision, Recall, ROC-AUC
-- Multi-class: Macro/Micro-averaged metrics
-
-**Regression:**
-- General: R², RMSE
-- Outliers present: MAE
-- Percentage error: MAPE
 
 ---
 
-*Build, evaluate, and deploy machine learning models effectively across classical and deep learning paradigms.*
+## Best Practices
+
+| Practice | Implementation |
+|----------|----------------|
+| Baseline first | Start with simple models |
+| Stratified splits | For classification |
+| Cross-validation | 5-fold minimum |
+| Feature scaling | StandardScaler for linear models |
+| Early stopping | Prevent overfitting |
+| SHAP values | Model interpretability |
+
+---
+
+## Common Pitfalls
+
+| Pitfall | Solution |
+|---------|----------|
+| Data leakage | Fit scaler on train only |
+| Class imbalance | SMOTE or class weights |
+| Overfitting | Cross-validation, regularization |
+| Wrong metric | Match metric to business goal |
+| No baseline | Compare against simple model |
+
+---
+
+## Checklist
+
+- [ ] Problem type identified (classification/regression)
+- [ ] Baseline model established
+- [ ] Data split with stratification (if classification)
+- [ ] Cross-validation performed
+- [ ] Hyperparameters tuned
+- [ ] Model evaluated on held-out test set
+- [ ] Interpretability assessed (SHAP)
+- [ ] Model serialized for deployment
+
+---
+
+**Version**: 1.0.5

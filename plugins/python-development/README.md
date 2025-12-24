@@ -2,7 +2,7 @@
 
 Master Python 3.12+ with modern tools, async patterns, FastAPI/Django frameworks, performance optimization, and production-ready practices. Includes expert agents, comprehensive skills, and scaffolding commands for the 2024/2025 Python ecosystem.
 
-**Version:** 1.0.3 | **Category:** development | **License:** MIT
+**Version:** 1.0.5 | **Category:** development | **License:** MIT
 
 [Full Documentation →](https://myclaude.readthedocs.io/en/latest/plugins/python-development.html) | [CHANGELOG](CHANGELOG.md)
 
@@ -35,30 +35,19 @@ The `/python-scaffold` command now features:
 
 ---
 
-## What's New in v1.0.1
 
-### Agent Performance Optimization
-All three agents (python-pro, fastapi-pro, django-pro) have been enhanced with advanced prompt engineering techniques:
+## What's New in v1.0.5
 
-- **Systematic Development Process**: 8-step workflow with self-verification checkpoints at each stage
-- **Quality Assurance Principles**: 8 constitutional AI checkpoints ensuring correctness, type safety, security, and performance
-- **Handling Ambiguity**: Structured clarifying questions to gather complete requirements upfront
-- **Enhanced Examples**: Good/Bad/Annotated examples with quantifiable improvements (10x-400x performance gains)
-- **Tool Usage Guidelines**: Clear patterns for tool selection and agent delegation
+This release implements **Opus 4.5 optimization** with enhanced token efficiency and standardized documentation.
 
-**Expected Improvements:**
-- Task Success Rate: +15-25%
-- User Corrections: -25-40% reduction
-- Response Completeness: +30-50%
-- Edge Case Handling: +40-60%
+### Key Improvements
 
-### Skills Discoverability Enhancement
-All five skills now have comprehensive "When to use this skill" sections with 19-22 specific use cases each:
+- **Format Standardization**: All components now include consistent YAML frontmatter with version, maturity, specialization, and description fields
+- **Token Efficiency**: 40-50% line reduction through tables over prose, minimal code examples, and structured sections
+- **Enhanced Discoverability**: Clear "Use when..." trigger phrases for better Claude Code activation
+- **Actionable Checklists**: Task-oriented guidance for common workflows
+- **Cross-Reference Tables**: Quick-reference format for delegation and integration patterns
 
-- **Enhanced Descriptions**: Detailed coverage of tools, patterns, frameworks, and scenarios
-- **Automatic Discovery**: +50-75% improvement in Claude Code recognizing when to use skills
-- **Context Relevance**: Skills activate automatically during relevant file editing
-- **103 Use Cases**: Specific scenarios across async patterns, testing, packaging, performance, and uv workflows
 
 ## Agents (3)
 
@@ -105,7 +94,7 @@ Master Django 5.x with async views, DRF, Celery, and scalable architecture. Incl
 
 ### `/python-scaffold`
 
-**Status:** active | **Version:** 1.0.3
+**Status:** active | **Version:** 1.0.5
 
 Scaffold production-ready Python projects with modern tooling, 3 execution modes (quick: 1-2h, standard: 3-6h, enterprise: 1-2d), and comprehensive external documentation
 

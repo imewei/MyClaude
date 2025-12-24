@@ -1,27 +1,19 @@
 ---
 name: mcmc-diagnostics
-description: Master MCMC convergence diagnostics with trace plots, R-hat (Gelman-Rubin statistic), effective sample size (ESS), divergence checking, and chain mixing analysis for validating Bayesian inference. Use when analyzing MCMC results from Turing.jl (MCMCChains objects), checking R-hat values (should be < 1.01 for convergence), computing effective sample size (ESS > 400 recommended), inspecting trace plots for good mixing, identifying divergent transitions in NUTS/HMC sampling, analyzing autocorrelation in chains, validating multi-chain convergence, diagnosing sampling problems (funnel geometry, poor initialization), or ensuring MCMC reliability. Essential for all Bayesian inference workflows and critical for validating posterior samples before making inferences.
+version: "1.0.5"
+maturity: "5-Expert"
+specialization: Bayesian Diagnostics
+description: Master MCMC convergence diagnostics with R-hat, ESS, trace plots, and divergence checking. Use when validating Bayesian inference results from Turing.jl.
 ---
 
 # MCMC Diagnostics
 
-Master MCMC convergence diagnostics with MCMCChains.jl.
+Convergence diagnostics with MCMCChains.jl.
 
-## When to use this skill
-
-- Analyzing MCMC results from Turing.jl (MCMCChains objects)
-- Checking R-hat (Gelman-Rubin) convergence (target: < 1.01)
-- Computing effective sample size (ESS) (target: > 400 per chain)
-- Inspecting trace plots for good mixing and stationarity
-- Identifying divergent transitions in NUTS/HMC samplers
-- Analyzing autocorrelation in MCMC chains
-- Validating multi-chain convergence
-- Diagnosing sampling problems (funnel geometry, initialization issues)
-- Ensuring posterior sample reliability before inference
-- Visualizing posterior distributions
-- Comparing chain diagnostics across parameters
+---
 
 ## Essential Diagnostics
+
 ```julia
 using MCMCChains
 
@@ -41,11 +33,37 @@ plot(chain[:parameter])
 autocorplot(chain[:parameter])
 ```
 
-## Convergence Criteria
-- R-hat < 1.01: Good convergence
-- ESS > 400: Sufficient samples
-- Trace plots: Good mixing
-- No divergent transitions
+---
 
-## Resources
-- **MCMCChains.jl**: https://github.com/TuringLang/MCMCChains.jl
+## Convergence Criteria
+
+| Metric | Target | Meaning |
+|--------|--------|---------|
+| R-hat | < 1.01 | Chains converged |
+| ESS | > 400 | Sufficient samples |
+| Trace plots | Good mixing | Stationarity |
+| Divergences | 0 | No sampling issues |
+
+---
+
+## Common Problems
+
+| Issue | Solution |
+|-------|----------|
+| R-hat > 1.1 | Run longer, reparameterize |
+| Low ESS | More samples, thin chains |
+| Divergences | Non-centered parameterization |
+| Poor mixing | Adjust step size |
+
+---
+
+## Checklist
+
+- [ ] R-hat < 1.01 for all parameters
+- [ ] ESS > 400 per chain
+- [ ] Trace plots show good mixing
+- [ ] No divergent transitions
+
+---
+
+**Version**: 1.0.5

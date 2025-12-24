@@ -8,46 +8,25 @@
 
 ---
 
-## What's New in v1.0.3 🎉
 
-This release introduces **command optimization** and **improved discoverability** through:
-1. **TypeScript Scaffolding Command Optimization**: 25% token reduction with hub-and-spoke architecture
-2. **Comprehensive External Documentation**: 6 new documentation files (~1,070 lines) with detailed guides
-3. **Execution Modes**: Three modes (quick/standard/comprehensive) for different workflow needs (10-60 min)
-4. **New Skill**: typescript-project-scaffolding for improved plugin discoverability
-5. **Version Consistency**: All components updated to 1.0.3
+## What's New in v1.0.5
 
-### Key Highlights - Command Optimization
+This release implements **Opus 4.5 optimization** with enhanced token efficiency and standardized documentation.
 
-- **TypeScript Scaffolding Command**: Optimized with 25% token reduction (347→260 lines)
-  - Hub-and-spoke architecture with YAML frontmatter
-  - 3 Execution Modes: quick (10-15min), standard (20-30min), comprehensive (40-60min)
-  - 6 External Documentation Files (~1,070 lines): project-scaffolding-guide, nextjs-scaffolding, nodejs-api-scaffolding, library-cli-scaffolding, typescript-configuration, development-tooling
-  - 100% backward compatible with existing workflows
-  - Cost savings: $3.13-$7.83 annually (200-500 invocations/month)
+### Key Improvements
 
-- **New Skill**: typescript-project-scaffolding
-  - Production-ready scaffolding for 5 project types (Next.js, React+Vite, Node.js API, Library, CLI)
-  - Comprehensive external documentation for deep-dive learning
-  - Improved discoverability in Claude Code skill registry
+- **Format Standardization**: All components now include consistent YAML frontmatter with version, maturity, specialization, and description fields
+- **Token Efficiency**: 40-50% line reduction through tables over prose, minimal code examples, and structured sections
+- **Enhanced Discoverability**: Clear "Use when..." trigger phrases for better Claude Code activation
+- **Actionable Checklists**: Task-oriented guidance for common workflows
+- **Cross-Reference Tables**: Quick-reference format for delegation and integration patterns
 
-### Impact Metrics
-
-| Metric | Before | After | Improvement |
-|--------|--------|-------|-------------|
-| Command file size | 347 lines | 260 lines | 25.1% reduction |
-| External documentation | 0 files | 6 files | +1,070 lines |
-| Total documentation | 347 lines | 1,330 lines | +283.3% |
-| Skills count | 5 | 6 | +1 (typescript-project-scaffolding) |
-| Version consistency | Partial | Complete | All at 1.0.3 |
-
----
 
 ## Commands
 
 ### /typescript-scaffold
 
-**Version:** 1.0.3 | **Maturity:** 95% | **Status:** active
+**Version:** 1.0.5 | **Maturity:** 95% | **Status:** active
 
 Production-ready TypeScript project scaffolding with modern tooling, automated setup, and comprehensive configuration.
 
@@ -124,7 +103,7 @@ This release introduces two major improvements:
 
 ### JavaScript Pro
 
-**Version:** 1.0.1 | **Maturity:** 91% | **Status:** active
+**Version:** 1.0.5 | **Maturity:** 91% | **Status:** active
 
 Master modern JavaScript specialist with systematic decision framework for ES6+, async patterns, and production optimization.
 
@@ -185,7 +164,7 @@ Master modern JavaScript specialist with systematic decision framework for ES6+,
 
 ### TypeScript Pro
 
-**Version:** 1.0.1 | **Maturity:** 92% | **Status:** active
+**Version:** 1.0.5 | **Maturity:** 92% | **Status:** active
 
 Master TypeScript specialist with advanced type systems, generics, and strict type safety for enterprise-grade development.
 
@@ -260,7 +239,7 @@ Master TypeScript specialist with advanced type systems, generics, and strict ty
 
 ### TypeScript Project Scaffolding
 
-**Status:** active | **Version:** 1.0.3 | **New in v1.0.3**
+**Status:** active | **Version:** 1.0.5 | **New in v1.0.3**
 
 Production-ready TypeScript project scaffolding with modern tooling (pnpm, Vite, Next.js 15), automated setup for Next.js apps, React SPAs, Node.js APIs, libraries, and CLI tools.
 
@@ -277,7 +256,7 @@ Production-ready TypeScript project scaffolding with modern tooling (pnpm, Vite,
 
 ### Modern JavaScript Patterns
 
-**Status:** active | **Version:** 1.0.3 | **Enhanced in v1.0.1**
+**Status:** active | **Version:** 1.0.5 | **Enhanced in v1.0.1**
 
 Master modern JavaScript (ES6/ES2015 through ES2024) features including async/await, destructuring, spread operators, arrow functions, promises, modules, iterators, generators, optional chaining, nullish coalescing, and functional programming patterns.
 
@@ -293,7 +272,7 @@ Master modern JavaScript (ES6/ES2015 through ES2024) features including async/aw
 
 ### TypeScript Advanced Types
 
-**Status:** active | **Version:** 1.0.3 | **Enhanced in v1.0.1**
+**Status:** active | **Version:** 1.0.5 | **Enhanced in v1.0.1**
 
 Master TypeScript's advanced type system including generics, conditional types, mapped types, template literal types, utility types (Partial, Required, Pick, Omit, Record), type inference with infer keyword, branded types, discriminated unions, and recursive types.
 
@@ -312,7 +291,7 @@ Master TypeScript's advanced type system including generics, conditional types, 
 
 ### JavaScript Testing Patterns
 
-**Status:** active | **Version:** 1.0.3 | **Enhanced in v1.0.1**
+**Status:** active | **Version:** 1.0.5 | **Enhanced in v1.0.1**
 
 Implement comprehensive testing strategies using Jest, Vitest, and Testing Library for unit tests, integration tests, and end-to-end testing with advanced mocking, fixtures, and TDD/BDD workflows.
 
@@ -331,7 +310,7 @@ Implement comprehensive testing strategies using Jest, Vitest, and Testing Libra
 
 ### Node.js Backend Patterns
 
-**Status:** active | **Version:** 1.0.3 | **Enhanced in v1.0.1**
+**Status:** active | **Version:** 1.0.5 | **Enhanced in v1.0.1**
 
 Build production-ready Node.js backend services with Express.js, Fastify, NestJS, and Koa implementing middleware patterns, error handling, authentication (JWT, OAuth2, session, RBAC), database integration (PostgreSQL, MongoDB, Redis), API design, GraphQL, WebSockets, background jobs, and observability.
 
@@ -354,7 +333,7 @@ Build production-ready Node.js backend services with Express.js, Fastify, NestJS
 
 ### Monorepo Management
 
-**Status:** active | **Version:** 1.0.3 | **Enhanced in v1.0.1**
+**Status:** active | **Version:** 1.0.5 | **Enhanced in v1.0.1**
 
 Master monorepo management with Turborepo, Nx, pnpm workspaces, Yarn workspaces, and npm workspaces to build efficient, scalable multi-package repositories with optimized builds, intelligent caching, shared dependencies, code sharing patterns, CI/CD for monorepos, and versioning strategies with changesets.
 
@@ -698,4 +677,4 @@ MIT License - see LICENSE file for details
 
 ---
 
-**Version:** 1.0.1 | **Last Updated:** 2025-10-30 | **Next Release:** v1.1.0 (Q1 2026)
+**Version:** 1.0.5 | **Last Updated:** 2025-10-30 | **Next Release:** v1.1.0 (Q1 2026)

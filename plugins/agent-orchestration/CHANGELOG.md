@@ -1,5 +1,23 @@
 # Agent Orchestration Plugin - Changelog
 
+## Version 1.0.5 (2024-12-24) - Opus 4.5 Optimization Release
+
+### Overview
+Comprehensive optimization for Claude Opus 4.5 with enhanced token efficiency, standardized formatting, and improved discoverability.
+
+### Key Changes
+- **Format Standardization**: All components include consistent YAML frontmatter with version, maturity, specialization, description
+- **Token Efficiency**: 40-50% line reduction through tables over prose, minimal code examples
+- **Enhanced Discoverability**: Clear "Use when..." trigger phrases for better activation
+- **Actionable Checklists**: Task-oriented guidance for common workflows
+
+### Components Updated
+- **2 Agents**: Optimized to v1.0.5 format
+- **2 Commands**: Updated with v1.0.5 frontmatter
+- **2 Skills**: Enhanced with tables and checklists
+
+---
+
 ## Version 1.0.3 (2025-11-06) - Version Consolidation Release
 
 ### Overview

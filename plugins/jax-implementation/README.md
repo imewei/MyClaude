@@ -2,49 +2,23 @@
 
 Production-ready JAX-based scientific computing with systematic Chain-of-Thought frameworks, Constitutional AI principles, and comprehensive response verification protocols for NumPyro Bayesian inference (with ArviZ integration and Consensus Monte Carlo), Flax NNX neural networks, NLSQ optimization, and physics simulations with measurable quality targets and proven optimization patterns.
 
-**Version:** 1.0.2 | **Category:** scientific-computing | **License:** MIT
+**Version:** 1.0.5 | **Category:** scientific-computing | **License:** MIT
 
 [Full Documentation →](https://myclaude.readthedocs.io/en/latest/plugins/jax-implementation.html)
 
-## What's New in v1.0.2
 
-This release introduces enhanced **NumPyro capabilities** with **ArviZ integration** for comprehensive visualization and diagnostics, **Consensus Monte Carlo** for large-scale distributed Bayesian inference, and **mandatory response verification protocols** to ensure high-quality, production-ready outputs. Building on v1.0.1's systematic frameworks, this version strengthens agent reliability through constitutional AI self-checks and anti-pattern prevention.
+## What's New in v1.0.5
+
+This release implements **Opus 4.5 optimization** with enhanced token efficiency and standardized documentation.
 
 ### Key Improvements
 
-**Content Growth**: 2,449 → 10,331 lines (+322%)
-- **jax-pro**: 749 → 2,343 lines (+213%)
-- **numpyro-pro**: 800 → 2,400+ lines (+200%)
-- **jax-scientist**: 900 → 2,258 lines (+151%)
-- **nlsq-pro**: NEW AGENT (3,330 lines)
+- **Format Standardization**: All components now include consistent YAML frontmatter with version, maturity, specialization, and description fields
+- **Token Efficiency**: 40-50% line reduction through tables over prose, minimal code examples, and structured sections
+- **Enhanced Discoverability**: Clear "Use when..." trigger phrases for better Claude Code activation
+- **Actionable Checklists**: Task-oriented guidance for common workflows
+- **Cross-Reference Tables**: Quick-reference format for delegation and integration patterns
 
-**Agent Enhancements**:
-- **6-Step Chain-of-Thought Framework** with 35-40 diagnostic questions per agent
-- **4 Constitutional AI Principles** with 30-35 self-check questions and measurable targets (85-95%)
-- **2 Comprehensive Examples** per agent with before/after comparisons and concrete metrics
-- **Version and Maturity Tracking** with baseline metrics and improvement targets
-
-**Performance Improvements**:
-- **GPU Speedups**: 50-562x across different workflows
-- **Code Reduction**: 52-66% via modern patterns
-- **Convergence**: 100% divergence reduction in MCMC
-- **Memory**: 100x reduction with streaming optimization
-- **Accuracy**: 12x improvement with robust loss functions
-
-**Skill Enhancements**:
-- **4 Skills** with enhanced discoverability (added nlsq-core-mastery)
-- **Comprehensive use-case descriptions** with specific file types and import patterns
-- **40+ total trigger scenarios** across all skills for proactive activation
-- **"Use when..." patterns** for precise skill selection by Claude Code
-
-### Featured Examples
-
-**jax-pro**: NumPy → JAX Multi-GPU (562x speedup), Flax Linen → NNX (10x faster checkpointing)
-**numpyro-pro**: Hierarchical Bayesian (R-hat < 1.01), Non-Centered Parameterization (40x ESS)
-**jax-scientist**: LAMMPS → JAX-MD (100x optimization speedup), Finite Difference → PINN (50x faster)
-**nlsq-pro**: SciPy → NLSQ GPU (265x speedup), Batch → Streaming (100x memory reduction)
-
-[View Full Changelog →](./CHANGELOG.md)
 
 ## Agents (4)
 

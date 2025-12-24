@@ -1,27 +1,12 @@
 ---
-version: 1.0.3
+version: 1.0.5
 command: /profile-performance
-description: Comprehensive performance profiling workflow with 3 execution modes from quick hotspot identification to enterprise-grade optimization
+description: Comprehensive performance profiling with perf, flamegraph, and valgrind
 argument-hint: [target-binary-or-code]
 execution_modes:
-  quick:
-    duration: "30 minutes - 1 hour"
-    description: "Basic profiling and hotspot identification"
-    scope: "perf record, flamegraph generation, identify functions >5% CPU time"
-    tools: "perf, flamegraph"
-    deliverables: "Flamegraph SVG, list of hot functions"
-  standard:
-    duration: "2-3 hours"
-    description: "Comprehensive profiling with optimization recommendations"
-    scope: "CPU profiling (perf), memory profiling (valgrind massif), cache analysis (perf stat), hardware counters, optimization strategy"
-    tools: "perf, valgrind, flamegraph, cachegrind"
-    deliverables: "Performance report with metrics, optimization recommendations"
-  enterprise:
-    duration: "1 day"
-    description: "Full performance audit with benchmarking suite"
-    scope: "Multi-dimensional profiling (CPU/memory/cache/I/O), hardware counter analysis, micro-benchmarks, before/after validation, regression testing"
-    tools: "perf, valgrind, criterion/google-benchmark, hardware counters, DHAT"
-    deliverables: "Complete performance audit, benchmarking suite, optimization roadmap"
+  quick: "30 min - 1 hour"
+  standard: "2-3 hours"
+  enterprise: "1 day"
 workflow_type: "sequential"
 interactive_mode: true
 color: red
@@ -30,321 +15,195 @@ allowed-tools: Bash, Read, Grep, Write
 
 # Performance Profiling Workflow
 
-Systematic performance analysis using industry-standard tools for profiling and optimizing systems-level code.
+Systematic performance analysis using industry-standard profiling tools.
 
 ## Context
 
 Target for profiling: $ARGUMENTS
 
-## Execution Mode Selection
+---
 
-<AskUserQuestion>
-questions:
-  - question: "What level of performance analysis do you need?"
-    header: "Profiling Depth"
-    multiSelect: false
-    options:
-      - label: "Quick (30min-1h)"
-        description: "Basic CPU profiling with perf and flamegraph. Identify hot functions (>5% CPU time) and generate visualization."
+## Mode Selection
 
-      - label: "Standard (2-3h)"
-        description: "Comprehensive profiling: CPU (perf), memory (valgrind massif), cache analysis (perf stat), hardware counters. Includes optimization recommendations."
-
-      - label: "Enterprise (1 day)"
-        description: "Full performance audit: multi-dimensional profiling (CPU/memory/cache/I/O), hardware counter analysis, micro-benchmarks, regression testing, and optimization roadmap."
-</AskUserQuestion>
-
-## Instructions
-
-### 1. Identify Profiling Goals
-
-**Determine optimization target:**
-- **Latency**: Reduce time for single operation
-- **Throughput**: Increase operations per second
-- **Memory**: Reduce allocation or peak usage
-- **Cache**: Improve cache hit rates
-- **Scalability**: Performance under load
-
-**Mode-Specific Focus:**
-- **Quick**: CPU hotspots only
-- **Standard**: CPU + memory + cache
-- **Enterprise**: Full multi-dimensional analysis
+| Mode | Duration | Scope | Tools |
+|------|----------|-------|-------|
+| Quick | 30min-1h | CPU hotspots, flamegraph | perf, flamegraph |
+| Standard (default) | 2-3h | CPU + memory + cache + recommendations | + valgrind massif, cachegrind |
+| Enterprise | 1 day | Full audit + benchmarks + regression suite | + criterion, DHAT, hardware counters |
 
 ---
 
-### 2. Build with Profiling Symbols
+## Phase 1: Profiling Goals
 
-**C/C++:**
-```bash
-# Optimized with debug symbols
-gcc -O3 -march=native -g program.c -o program
+| Goal | Focus | Metrics |
+|------|-------|---------|
+| Latency | Single operation time | p50/p95/p99 |
+| Throughput | Operations per second | ops/sec |
+| Memory | Allocation/peak usage | MB, allocs |
+| Cache | Hit rates | L1/LLC miss % |
+| Scalability | Performance under load | Scaling factor |
 
-# Or with CMake
-cmake -B build -DCMAKE_BUILD_TYPE=RelWithDebInfo
-cmake --build build
-```
-
-**Rust:**
-```bash
-# Release with debug info
-cargo build --release
-
-# Or configure in Cargo.toml
-[profile.release]
-debug = true
-```
-
-**Go:**
-```bash
-go build -o program
-```
+**Mode Focus:**
+- Quick: CPU hotspots only
+- Standard: CPU + memory + cache
+- Enterprise: Multi-dimensional + regression testing
 
 ---
 
-### 3. CPU Profiling (All Modes)
+## Phase 2: Build with Profiling Symbols
 
-**Quick Mode: perf + Flamegraph**
-```bash
-# Record CPU profiling
-perf record -g -F 99 ./program
-
-# Generate flamegraph
-perf script | flamegraph.pl > flame.svg
-
-# Or with cargo-flamegraph (Rust)
-cargo flamegraph --bin my-program
-```
-
-**Interpreting Flamegraph:**
-- **Width**: Time spent (wider = more samples)
-- **Flat tops**: Direct CPU consumers → **Optimize these!**
-- Look for functions >5% CPU time
-
-**Standard Mode: Add perf report**
-```bash
-# View detailed report
-perf report
-
-# Annotate source code
-perf annotate
-```
-
-**Enterprise Mode: Multi-run analysis**
-```bash
-# Multiple profiling runs for statistical significance
-for i in {1..10}; do
-    perf record -g -F 99 -o perf.data.$i ./program
-done
-
-# Aggregate and analyze
-```
-
-**Full reference:** [Profiling Tools Guide](../docs/profile-performance/profiling-tools-guide.md)
+| Language | Command | Notes |
+|----------|---------|-------|
+| C/C++ | `gcc -O3 -march=native -g` | Optimized + debug symbols |
+| Rust | `cargo build --release` | Add `debug = true` in profile.release |
+| Go | `go build` | Symbols included by default |
 
 ---
 
-### 4. Hardware Counter Analysis (Standard+)
+## Phase 3: CPU Profiling (All Modes)
 
-**Cache Misses:**
-```bash
-perf stat -e L1-dcache-load-misses,LLC-load-misses ./program
-```
+### Core Commands
 
-**Branch Mispredictions:**
-```bash
-perf stat -e branches,branch-misses ./program
-```
+| Tool | Command | Output |
+|------|---------|--------|
+| perf record | `perf record -g -F 99 ./program` | perf.data |
+| flamegraph | `perf script \| flamegraph.pl > flame.svg` | SVG visualization |
+| cargo-flamegraph | `cargo flamegraph --bin program` | Rust-specific |
+| perf report | `perf report` | Interactive analysis |
+| perf annotate | `perf annotate` | Source-level hotspots |
 
-**Instructions Per Cycle (IPC):**
-```bash
-perf stat -e cycles,instructions ./program
-```
+### Flamegraph Interpretation
 
-**Interpreting:**
-- **IPC > 1.0**: Good throughput
-- **Cache miss rate < 1%**: Good locality
-- **Branch misprediction < 5%**: Predictable branches
+| Indicator | Meaning | Action |
+|-----------|---------|--------|
+| Wide bars | More samples | Optimization target |
+| Flat tops | Direct CPU consumers | Optimize these first |
+| >5% CPU | Hotspot | Prioritize |
 
-**Reference:** [Profiling Tools - Hardware Counters](../docs/profile-performance/profiling-tools-guide.md#hardware-counter-events-reference)
+**Reference:** [Profiling Tools Guide](../docs/profile-performance/profiling-tools-guide.md)
 
 ---
 
-### 5. Memory Profiling (Standard+)
+## Phase 4: Hardware Counter Analysis (Standard+)
 
-**Heap Profiling with Massif:**
-```bash
-# Run massif
-valgrind --tool=massif ./program
+| Metric | Command | Target |
+|--------|---------|--------|
+| Cache misses | `perf stat -e L1-dcache-load-misses,LLC-load-misses` | <1% miss rate |
+| Branch mispredictions | `perf stat -e branches,branch-misses` | <5% misprediction |
+| IPC | `perf stat -e cycles,instructions` | >1.0 IPC |
 
-# View report
-ms_print massif.out.12345
+**Interpretation:**
+- IPC > 1.0: Good throughput
+- Cache miss rate < 1%: Good locality
+- Branch misprediction < 5%: Predictable branches
 
-# Visualize
-massif-visualizer massif.out.12345
-```
+---
 
-**Look for:**
-- Growing memory without decreasing (leak)
-- Frequent allocations (optimization opportunity)
-- Peak usage (temporary allocations)
+## Phase 5: Memory Profiling (Standard+)
 
-**Dynamic Heap Analysis (Enterprise):**
-```bash
-valgrind --tool=dhat ./program
-firefox dh_view.html
-```
+| Tool | Command | Purpose |
+|------|---------|---------|
+| massif | `valgrind --tool=massif ./program` | Heap usage over time |
+| ms_print | `ms_print massif.out.PID` | Text report |
+| DHAT (Enterprise) | `valgrind --tool=dhat ./program` | Allocation analysis |
+
+### Memory Issues
+
+| Pattern | Indication | Fix |
+|---------|------------|-----|
+| Growing without decreasing | Memory leak | Track allocations |
+| Frequent small allocs | Optimization opportunity | Object pooling |
+| High peak usage | Temporary allocations | Reduce scope |
 
 **Reference:** [Profiling Tools - Valgrind](../docs/profile-performance/profiling-tools-guide.md#valgrind-tools)
 
 ---
 
-### 6. Optimization Strategy (Standard+)
+## Phase 6: Optimization Strategy (Standard+)
 
-**Based on profiling results, apply optimizations:**
+### Priority by Impact
 
-**CPU Optimization:**
-1. Algorithm improvement (O(n²) → O(n log n))
-2. Cache optimization (SoA layout)
-3. Branch optimization (reduce unpredictable branches)
-4. SIMD vectorization
-5. Inlining
-
-**Memory Optimization:**
-1. Object pooling
-2. Arena allocators
-3. Reduce allocations
-4. Lazy initialization
+| Category | Typical Speedup | Examples |
+|----------|-----------------|----------|
+| Algorithm | 10-100x | O(n^2) → O(n log n) |
+| Cache layout | 2-10x | SoA, alignment |
+| Branch optimization | 1.5-3x | Reduce unpredictable branches |
+| SIMD | 2-8x | Vectorization |
+| Memory | 1.5-5x | Pooling, arena allocators |
 
 **Reference:** [Optimization Patterns Guide](../docs/profile-performance/optimization-patterns.md)
 
 ---
 
-### 7. Micro-Benchmarking (Enterprise)
+## Phase 7: Micro-Benchmarking (Enterprise)
 
-**Rust (Criterion):**
-```rust
-use criterion::{black_box, criterion_group, criterion_main, Criterion};
+| Language | Framework | Command |
+|----------|-----------|---------|
+| Rust | Criterion | `cargo bench` |
+| C++ | Google Benchmark | Custom binary |
+| Go | testing.B | `go test -bench=.` |
+| Python | pytest-benchmark | `pytest --benchmark-only` |
 
-fn benchmark(c: &mut Criterion) {
-    c.bench_function("function", |b| {
-        b.iter(|| function(black_box(input)));
-    });
-}
-
-criterion_group!(benches, benchmark);
-criterion_main!(benches);
-```
+### Regression Testing
 
 ```bash
-cargo bench
+# Save baseline
+cargo bench -- --save-baseline baseline
+# Compare after changes
+cargo bench -- --baseline baseline
 ```
-
-**C++ (Google Benchmark):**
-```cpp
-#include <benchmark/benchmark.h>
-
-static void BM_Function(benchmark::State& state) {
-    for (auto _ : state) {
-        benchmark::DoNotOptimize(function(input));
-    }
-}
-BENCHMARK(BM_Function);
-BENCHMARK_MAIN();
-```
-
-**Reference:** [Profiling Tools - Benchmarking](../docs/profile-performance/profiling-tools-guide.md#micro-benchmarking-best-practices)
 
 ---
 
-### 8. Verification Workflow (Standard+)
+## Phase 8: Verification Workflow
 
-**Before Optimization:**
-1. Profile and record baseline metrics
-2. Create benchmark suite
-3. Run tests to ensure correctness
+### Before/After Protocol
 
-**After Optimization:**
-1. Re-run benchmarks (verify improvement)
-2. Re-profile (check for new hotspots)
-3. Run full test suite (no regressions)
-4. Measure end-to-end impact
-
-**Enterprise Mode: Regression Testing**
-```bash
-# Automated performance regression tests in CI/CD
-cargo bench --bench my_benchmark -- --save-baseline baseline
-# After changes
-cargo bench --bench my_benchmark -- --baseline baseline
-```
+| Step | Before | After |
+|------|--------|-------|
+| 1 | Profile baseline | Re-profile |
+| 2 | Create benchmark suite | Re-run benchmarks |
+| 3 | Run correctness tests | Verify no regressions |
+| 4 | Document metrics | Measure improvement |
 
 ---
 
 ## Output Deliverables
 
-### Quick Mode (30min-1h):
-✅ Flamegraph visualization (SVG)
-✅ List of hot functions (>5% CPU)
-✅ Basic optimization recommendations
-
-### Standard Mode (2-3h):
-✅ Comprehensive performance report
-✅ CPU profiling (perf report + flamegraph)
-✅ Memory profiling (massif)
-✅ Cache analysis (perf stat)
-✅ Hardware counter metrics
-✅ Prioritized optimization recommendations
-
-### Enterprise Mode (1 day):
-✅ Full performance audit report
-✅ Multi-dimensional profiling data
-✅ Micro-benchmark suite
-✅ Before/after metrics
-✅ Optimization roadmap
-✅ Regression test suite
-✅ CI/CD integration
+| Mode | Deliverables |
+|------|--------------|
+| Quick | Flamegraph SVG, hot function list (>5% CPU), basic recommendations |
+| Standard | + perf report, massif data, cache analysis, optimization roadmap |
+| Enterprise | + benchmark suite, regression tests, CI/CD integration, full audit |
 
 ---
 
 ## External Documentation
 
-Comprehensive profiling and optimization guides:
-
-- **[Profiling Tools Guide](../docs/profile-performance/profiling-tools-guide.md)** (~527 lines)
-  - perf usage and hardware counters
-  - Flamegraph generation and interpretation
-  - Valgrind tools (massif, DHAT, cachegrind, callgrind)
-  - Language-specific profilers (Rust criterion, C++ Google Benchmark, Go pprof)
-  - System-wide profiling (perf top, htop, iotop)
-
-- **[Optimization Patterns](../docs/profile-performance/optimization-patterns.md)** (~629 lines)
-  - Algorithm optimization (O(n²) → O(n log n))
-  - Cache optimization (SoA layout, alignment)
-  - Memory optimization (pooling, arenas, string interning)
-  - SIMD vectorization (AVX2, auto-vectorization)
-  - Branch optimization (branchless programming, lookup tables)
-  - Parallelization (Rayon, OpenMP)
-  - I/O optimization (buffering, mmap)
+| Document | Content | Lines |
+|----------|---------|-------|
+| [Profiling Tools Guide](../docs/profile-performance/profiling-tools-guide.md) | perf, flamegraph, valgrind, language profilers | ~527 |
+| [Optimization Patterns](../docs/profile-performance/optimization-patterns.md) | Algorithm, cache, memory, SIMD, parallelization | ~629 |
 
 ---
 
 ## Profiling Checklist
 
-**Before Profiling:**
-- [ ] Compile with optimizations (-O2 or -O3)
+### Before
+- [ ] Compile with optimizations (-O2/-O3)
 - [ ] Include debug symbols (-g)
 - [ ] Use representative workload
 - [ ] Warm up caches
 
-**During Profiling:**
-- [ ] Profile multiple runs
-- [ ] Use appropriate tool (CPU vs memory vs cache)
+### During
+- [ ] Multiple runs for statistical significance
 - [ ] Minimize system noise
 - [ ] Profile realistic scenarios
 
-**After Profiling:**
-- [ ] Identify hot functions (>5% CPU)
+### After
+- [ ] Identify functions >5% CPU
 - [ ] Check cache miss rates
-- [ ] Verify IPC (instructions per cycle)
+- [ ] Verify IPC
 - [ ] Document findings
 - [ ] Re-profile after optimization
 
@@ -353,7 +212,7 @@ Comprehensive profiling and optimization guides:
 ## Optimization Principles
 
 1. **Measure First**: Always profile before optimizing
-2. **Optimize Hot Paths**: Focus on functions >5% CPU time
-3. **Algorithm First**: Best algorithm choice has biggest impact
-4. **Cache Matters**: Memory access patterns dominate performance
+2. **Hot Paths**: Focus on >5% CPU functions
+3. **Algorithm First**: Best algorithm choice = biggest impact
+4. **Cache Matters**: Memory access patterns dominate
 5. **Validate**: Always measure before/after

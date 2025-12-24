@@ -2,11 +2,24 @@
 
 Production-ready LLM application development with advanced prompt engineering, RAG implementation, vector databases, LangChain, and modern AI integration patterns for building intelligent applications.
 
-**Version:** 1.0.3 | **Category:** development | **License:** MIT
+**Version:** 1.0.5 | **Category:** development | **License:** MIT
 
 [Full Documentation →](https://myclaude.readthedocs.io/en/latest/plugins/llm-application-dev.html) | [Changelog →](CHANGELOG.md)
 
 ---
+
+## What's New in v1.0.5
+
+This release implements **Opus 4.5 optimization** with enhanced token efficiency and standardized documentation.
+
+### Key Improvements
+
+- **Format Standardization**: All components now include consistent YAML frontmatter with version, maturity, specialization, and description fields
+- **Token Efficiency**: 40-50% line reduction through tables over prose, minimal code examples, and structured sections
+- **Enhanced Discoverability**: Clear "Use when..." trigger phrases for better Claude Code activation
+- **Actionable Checklists**: Task-oriented guidance for common workflows
+- **Cross-Reference Tables**: Quick-reference format for delegation and integration patterns
+
 
 ## 🚀 What's New in v1.0.3
 

@@ -1,19 +1,18 @@
 ---
-version: 1.0.3
-description: Orchestrate systematic code migration between frameworks and technology stacks with test-first discipline
+version: "1.0.5"
+description: Orchestrate systematic code migration between frameworks with test-first discipline
 argument-hint: <source-path> [--target <framework>] [--strategy <pattern>] [--mode quick|standard|deep]
 category: framework-migration
-purpose: Safe, incremental code migration with zero breaking changes and comprehensive testing
+purpose: Safe, incremental code migration with zero breaking changes
 execution_time:
-  quick: "30-60 minutes - Assessment and strategy planning only"
-  standard: "2-6 hours - Complete single component migration"
-  deep: "1-3 days - Enterprise migration with comprehensive validation"
+  quick: "30-60 minutes"
+  standard: "2-6 hours"
+  deep: "1-3 days"
 color: blue
 allowed-tools: Bash, Read, Write, Edit, Glob, Grep, Task, WebFetch
 external_docs:
   - migration-patterns-library.md
   - testing-strategies.md
-  - framework-specific-guides.md
   - rollback-procedures.md
 agents:
   primary:
@@ -24,621 +23,231 @@ agents:
       trigger: pattern "test|coverage"
     - agent: comprehensive-review:security-auditor
       trigger: pattern "security|vulnerability"
-    - agent: full-stack-orchestration:performance-engineer
-      trigger: pattern "performance|optimization"
   orchestrated: true
-tags: [migration, modernization, refactoring, framework-upgrade, code-transformation, zero-downtime]
 ---
 
 # Code Migration Orchestrator
 
-**Systematic framework and technology stack migration with test-first discipline, backward compatibility guarantees, and zero breaking changes**
+Systematic framework migration with test-first discipline and zero breaking changes.
 
-## Execution Modes
+## Source
 
-Parse `$ARGUMENTS` to determine mode (default: standard):
-
-### Quick Mode (30-60 min)
-**Scope**: Assessment and strategy planning only
-- Technology stack analysis
-- Complexity assessment
-- Migration strategy selection
-- Risk identification
-- Time/resource estimation
-
-**Output**: Migration plan with strategy recommendation
-
-**Use When**: Planning phase, seeking approval, estimating resources
-
-### Standard Mode (2-6 hours) - RECOMMENDED
-**Scope**: Complete single component migration
-- All Quick mode deliverables
-- Test coverage establishment
-- Code transformation
-- Integration validation
-- Documentation updates
-
-**Output**: Migrated component with tests and documentation
-
-**Use When**: Migrating individual components, features, or modules
-
-### Deep Mode (1-3 days)
-**Scope**: Enterprise migration with comprehensive validation
-- All Standard mode deliverables
-- Performance benchmarking
-- Security hardening
-- Load testing
-- Migration playbook creation
-- Team training materials
-
-**Output**: Production-ready migration with comprehensive validation
-
-**Use When**: Critical systems, enterprise migrations, compliance requirements
+$ARGUMENTS
 
 ---
 
-## Configuration Options
+## Mode Selection
 
-- `--target <framework>`: Target technology (e.g., `--target react`, `--target python3`, `--target angular`)
-- `--strategy <pattern>`: Migration pattern (`big-bang`, `strangler-fig`, `branch-by-abstraction`)
-- `--mode <quick|standard|deep>`: Execution depth (default: standard)
-- `--test-first`: Enforce characterization tests before any code changes
-- `--parallel-run`: Enable side-by-side validation
-- `--skip-security`: Skip security audit (not recommended for production)
+| Mode | Duration | Scope |
+|------|----------|-------|
+| `--mode=quick` | 30-60 min | Assessment and strategy only |
+| standard (default) | 2-6 hours | Complete single component migration |
+| `--mode=deep` | 1-3 days | Enterprise migration with optimization |
 
----
-
-## Your Task
-
-**Source**: $ARGUMENTS
-**Mode**: [Auto-detected or specified]
+**Options:** `--target react-hooks|python3|angular15`, `--strategy big-bang|strangler-fig|branch-by-abstraction`
 
 ---
 
-## Phase 1: Migration Assessment & Strategy Selection
+## Phase 1: Assessment & Strategy
 
-**Objective**: Analyze source/target stacks and select optimal migration approach
+**Agents:** architect-review, legacy-modernizer
 
-### Step 1A: Technology Stack Analysis
-
-**Use Task tool** with `subagent_type="framework-migration:architect-review"`:
-
-```
-Analyze codebase at $ARGUMENTS for migration assessment.
-
-Identify:
+### Technology Analysis
 - Current framework/language versions
 - Architectural patterns in use
-- External dependencies and versions
-- Integration points and APIs
-- Custom implementations vs framework features
-- Code complexity metrics (cyclomatic complexity, duplication)
+- External dependencies
+- Integration points
+- Complexity metrics
 
-Generate technology inventory with migration complexity scores (1-10).
-
-Reference: docs/framework-migration/framework-specific-guides.md
-```
-
-**Expected Output**: Technology inventory, complexity assessment, dependency tree
-
-### Step 1B: Risk & Complexity Assessment
-
-**Use Task tool** with `subagent_type="framework-migration:legacy-modernizer"`:
-
-```
-Assess migration risks for: $ARGUMENTS
-
-Evaluate:
+### Risk Assessment
 - Breaking changes between versions
 - API compatibility issues
 - Performance implications
-- Security vulnerabilities in current/target versions
+- Security vulnerabilities
 - Team skill gaps
-- Test coverage gaps
 
-Generate risk matrix with mitigation strategies.
-
-Reference: docs/framework-migration/migration-patterns-library.md (breaking changes catalog)
-```
-
-**Expected Output**: Risk matrix (High/Medium/Low), mitigation strategies
-
-### Step 1C: Strategy Selection
-
-**Decision Tree** - Select based on assessment:
+### Strategy Selection
 
 ```
-Migration Complexity > 7/10?
-├─ Yes → Strangler Fig Pattern (incremental, parallel systems)
-└─ No → Migration Timeline < 2 weeks?
-    ├─ Yes → Big Bang (full cutover)
-    └─ No → Branch by Abstraction (feature-by-feature)
+Complexity > 7/10? → Strangler Fig (incremental)
+Timeline < 2 weeks? → Big Bang (full cutover)
+Otherwise → Branch by Abstraction (feature-by-feature)
 ```
 
-**Migration Patterns**:
+| Strategy | Pros | Cons |
+|----------|------|------|
+| **Big Bang** | Fast, no dual system | High risk, hard rollback |
+| **Strangler Fig** | Zero downtime, instant rollback | Dual system complexity |
+| **Branch by Abstraction** | Feature-by-feature, continuous deploy | Abstraction overhead |
 
-**1. Big Bang** (Low complexity, < 2 weeks):
-- ✅ Fast completion
-- ✅ No dual system maintenance
-- ❌ High deployment risk
-- ❌ Difficult rollback
-
-**2. Strangler Fig** (High complexity, > 1 month):
-- ✅ Zero downtime
-- ✅ Instant rollback
-- ✅ Incremental risk
-- ❌ Dual system complexity
-
-**3. Branch by Abstraction** (Medium complexity, 2-8 weeks):
-- ✅ Feature-by-feature migration
-- ✅ Continuous deployment
-- ❌ Abstraction layer overhead
-
-**📚 See**: [Strangler Fig Playbook](../docs/framework-migration/strangler-fig-playbook.md) for detailed implementation
-
-**Success Criteria for Phase 1**:
-- ✅ Technology stack fully documented
-- ✅ Risk assessment complete with mitigation plans
-- ✅ Migration strategy selected and justified
-- ✅ Timeline and resource estimate provided
-
-**🚨 Quick Mode Exits Here** - Deliver assessment and strategy recommendation
+🚨 **Quick Mode exits here** - deliver assessment and strategy
 
 ---
 
 ## Phase 2: Test Coverage Establishment
 
-**Objective**: Create safety net before any code changes
+**Agents:** test-automator
 
-### Step 2A: Characterization Tests
-
-**Use Task tool** with `subagent_type="unit-testing:test-automator"`:
-
-```
-Create characterization tests for: $ARGUMENTS
-
-Generate:
-- Golden master tests for complex workflows
-- Snapshot tests for UI components
-- Contract tests for API integrations
+### Characterization Tests
+- Golden master tests for workflows
+- Snapshot tests for UI
+- Contract tests for APIs
 - Behavior tests for business logic
 
-Capture current behavior (even if buggy) to detect any changes.
+Capture current behavior (even if buggy) to detect changes.
 
-Reference: docs/framework-migration/testing-strategies.md (characterization tests)
-```
+### Contract Tests
+- API request/response schemas
+- Database query interfaces
+- External service contracts
+- Event/message formats
 
-**Characterization Test Pattern**:
-```javascript
-// Captures current behavior before migration
-describe('Legacy Payment Processor', () => {
-  it('should match current behavior', () => {
-    const result = legacyProcessor.process(testOrder);
-    expect(result).toMatchSnapshot();  // Captures exact current output
-  });
-});
-```
-
-**📚 See**: [Testing Strategies - Characterization Tests](../docs/framework-migration/testing-strategies.md#characterization-tests)
-
-### Step 2B: Integration Contract Tests
-
-**Create tests for integration boundaries**:
-- API contracts (request/response schemas)
-- Database contracts (query interfaces)
-- External service contracts (third-party APIs)
-- Event contracts (message formats)
-
-**Contract Test Example**:
-```javascript
-// Ensures API contract remains stable
-describe('Payment API Contract', () => {
-  it('should maintain response schema', async () => {
-    const response = await paymentAPI.process(validRequest);
-    expect(response).toMatchSchema({
-      status: expect.stringMatching(/^(success|pending|failed)$/),
-      transactionId: expect.any(String),
-      amount: expect.any(Number)
-    });
-  });
-});
-```
-
-### Step 2C: Performance Baseline Capture
-
-**Establish performance benchmarks**:
+### Performance Baseline
 ```bash
-# Capture baseline metrics
 npm run benchmark > baseline-performance.json
-
-# Key metrics:
-# - Response time (p50, p95, p99)
-# - Throughput (requests/second)
-# - Memory usage
-# - CPU utilization
 ```
+Capture: p50/p95/p99 latency, throughput, memory, CPU
 
-**Success Criteria for Phase 2**:
-- ✅ Test coverage > 80% for migration scope
-- ✅ All integration points have contract tests
-- ✅ Performance baseline documented
-- ✅ All tests passing on current implementation
+**Success:** >80% coverage, all integration points tested, baseline documented
 
 ---
 
-## Phase 3: Incremental Migration Implementation
+## Phase 3: Migration Implementation
 
-**Objective**: Transform code using selected migration strategy
+### Codemods (when available)
 
-### Step 3A: Setup Migration Infrastructure
+| Migration | Codemod |
+|-----------|---------|
+| React Class → Hooks | `npx react-codemod class-to-hooks` |
+| Python 2 → 3 | `2to3 -w src/` |
+| Angular upgrade | `ng update` |
+| Vue 2 → 3 | `npx @vue/compat-migration` |
 
-**For Strangler Fig**:
-```
-Use Task tool with subagent_type="cicd-automation:deployment-engineer"
+### Manual Migration (complex cases)
 
-Setup routing layer and feature flags for: $ARGUMENTS
+1. Read original implementation
+2. Extract business rules (separate from framework)
+3. Implement in target framework
+4. Preserve identical behavior
+5. Update tests if syntax changes
 
-Implement:
-- API gateway or load balancer routing
-- Feature flag system for gradual rollout
-- Monitoring and metrics collection
+### Strangler Fig Setup
+- API gateway routing
+- Feature flags for gradual rollout
+- Monitoring for both systems
 - Rollback procedures
 
-Reference: docs/framework-migration/strangler-fig-playbook.md
-```
-
-**For Big Bang / Branch by Abstraction**:
-- Create migration branch
-- Setup parallel build pipeline
-- Configure dual testing (legacy + migrated)
-
-### Step 3B: Automated Code Transformation
-
-**Use codemods when available**:
-
-**React Class → Hooks**:
-```bash
-npx react-codemod class-to-hooks src/components/
-```
-
-**Python 2 → 3**:
-```bash
-2to3 -w src/
-```
-
-**Custom Transformations**:
-```
-Use Task tool with subagent_type="framework-migration:legacy-modernizer"
-
-Apply code transformations for: $ARGUMENTS
-
-Transform:
-- API calls to new framework syntax
-- State management patterns
-- Lifecycle methods to hooks/alternatives
-- Import statements and module structure
-
-Preserve:
-- Business logic (no functional changes)
-- Error handling patterns
-- Existing tests (migrate separately)
-
-Reference: docs/framework-migration/migration-patterns-library.md (transformation patterns)
-```
-
-**📚 See**: [Migration Patterns Library](../docs/framework-migration/migration-patterns-library.md) for transformation examples
-
-### Step 3C: Manual Migration (Complex Cases)
-
-**For components requiring manual rewrite**:
-
-1. **Read original implementation** (understand business logic)
-2. **Extract business rules** (separate from framework code)
-3. **Implement in target framework** (following new patterns)
-4. **Preserve identical behavior** (no functional changes)
-5. **Update tests** (if syntax changes needed)
-
-**Example - React Class to Functional**:
-```javascript
-// Before (Class Component)
-class UserProfile extends React.Component {
-  state = { loading: true, user: null };
-
-  componentDidMount() {
-    fetchUser(this.props.userId)
-      .then(user => this.setState({ user, loading: false }));
-  }
-
-  render() {
-    const { loading, user } = this.state;
-    if (loading) return <Spinner />;
-    return <div>{user.name}</div>;
-  }
-}
-
-// After (Functional + Hooks)
-function UserProfile({ userId }) {
-  const [loading, setLoading] = useState(true);
-  const [user, setUser] = useState(null);
-
-  useEffect(() => {
-    fetchUser(userId)
-      .then(user => {
-        setUser(user);
-        setLoading(false);
-      });
-  }, [userId]);
-
-  if (loading) return <Spinner />;
-  return <div>{user.name}</div>;
-}
-```
-
-**Success Criteria for Phase 3**:
-- ✅ All target code compiles/builds successfully
-- ✅ Characterization tests still pass (behavior unchanged)
-- ✅ No console errors or warnings
-- ✅ Code follows target framework best practices
+**Success:** Code compiles, characterization tests pass, no console errors
 
 ---
 
-## Phase 4: Integration & Validation
+## Phase 4: Validation
 
-**Objective**: Ensure migrated code integrates correctly and performs well
-
-### Step 4A: Integration Testing
-
-**Run full test suite**:
+### Integration Testing
 ```bash
-# Run all tests
-npm test
-
-# Run integration tests
-npm run test:integration
-
-# Run E2E tests
-npm run test:e2e
+npm test                    # Unit
+npm run test:integration    # Integration
+npm run test:e2e           # E2E
 ```
 
-**Validate**:
-- All unit tests pass
-- Integration tests pass
-- E2E workflows complete successfully
-- No new test failures introduced
-
-### Step 4B: Performance Comparison
-
-**Compare against baseline**:
+### Performance Comparison
 ```bash
-# Run benchmarks on migrated code
 npm run benchmark > migrated-performance.json
-
-# Compare
 diff baseline-performance.json migrated-performance.json
 ```
 
-**Acceptable Performance**:
-- Response time within 110% of baseline
-- Memory usage within 120% of baseline
-- No critical performance regressions
+**Acceptable:** Response time <110%, memory <120% of baseline
 
-**If performance regressed**:
-```
-Use Task tool with subagent_type="full-stack-orchestration:performance-engineer"
-
-Analyze performance regression in: $ARGUMENTS
-
-Profile and optimize:
-- Identify bottlenecks
-- Database query optimization
-- Caching opportunities
-- Bundle size optimization
-```
-
-### Step 4C: Security Audit
-
-**Use Task tool** with `subagent_type="comprehensive-review:security-auditor"`:
-
-```
-Security audit migrated code at: $ARGUMENTS
-
-Review:
-- Input validation and sanitization
-- Authentication/authorization patterns
+### Security Audit
+- Input validation
+- Auth patterns
 - Dependency vulnerabilities
-- OWASP Top 10 compliance
-- Security headers and CORS
+- OWASP compliance
 
-Flag any security regressions or new vulnerabilities.
-```
+**Success:** All tests passing, performance acceptable, no security regressions
 
-**Success Criteria for Phase 4**:
-- ✅ All tests passing (100% pass rate)
-- ✅ Performance within acceptable range (<110% baseline)
-- ✅ No security vulnerabilities introduced
-- ✅ Integration points validated
+🚨 **Standard Mode exits here** - migration deployed and validated
 
 ---
 
-## Phase 5: Deployment & Monitoring
+## Phase 5: Deployment
 
-**Objective**: Deploy migrated code safely with monitoring and rollback capability
+### Progressive Rollout
 
-### Step 5A: Progressive Rollout Strategy
+| Stage | Traffic | Duration | Action |
+|-------|---------|----------|--------|
+| 1 | 5% | 24h | Monitor errors, latency |
+| 2 | 25% | 24h | Check business metrics |
+| 3 | 50% | 24h | Validate at scale |
+| 4 | 100% | - | Full deployment |
 
-**For Strangler Fig**:
-1. Route 5% traffic to migrated implementation
-2. Monitor error rates, latency, business metrics
-3. If stable for 24 hours, increase to 25%
-4. Continue: 25% → 50% → 75% → 100%
-
-**For Big Bang**:
-1. Deploy to staging environment
-2. Run smoke tests
-3. If passing, deploy to production
-4. Monitor closely for first 2 hours
-
-**Rollback Triggers** (immediate rollback if):
-- Error rate > 5% (vs baseline < 1%)
-- p95 latency > 2x baseline
+### Rollback Triggers
+- Error rate >5% (vs baseline <1%)
+- p95 latency >2x baseline
 - Any data corruption
 - Critical functionality broken
 
-**📚 See**: [Rollback Procedures](../docs/framework-migration/rollback-procedures.md)
-
-### Step 5B: Monitoring Dashboard
-
-**Key metrics to monitor**:
-- Error rate (overall and by endpoint)
-- Response time (p50, p95, p99)
-- Throughput (requests/sec)
-- Resource utilization (CPU, memory)
-- Business metrics (conversion rate, revenue)
-
-**Alert thresholds**:
-- Error rate > 1%: Warning
-- Error rate > 5%: Critical (rollback)
-- p95 latency > 2x: Warning
-- p95 latency > 3x: Critical (rollback)
-
-### Step 5C: Documentation Updates
-
-**Update**:
-- README with new technology stack
-- Architecture documentation
-- API documentation (if endpoints changed)
+### Documentation Updates
+- README with new tech stack
+- Architecture docs
+- API documentation
 - Deployment procedures
-- Runbooks for new technology
-
-**Success Criteria for Phase 5**:
-- ✅ Deployed to production successfully
-- ✅ Monitoring shows stable metrics
-- ✅ No incidents or rollbacks needed
-- ✅ Documentation updated
-
-**🚨 Standard Mode Complete** - Migration deployed and validated
 
 ---
 
-## Phase 6: Post-Migration Optimization (Deep Mode Only)
+## Phase 6: Post-Migration (Deep Mode)
 
-**Objective**: Optimize migrated code and create playbook for future migrations
-
-### Step 6A: Performance Optimization
-
-**Beyond functional equivalence**:
-- Leverage target framework optimizations
+### Optimization
+- Leverage target framework features
 - Implement caching strategies
-- Bundle size optimization
+- Bundle optimization
 - Code splitting
 
-**Use Task tool** with `subagent_type="full-stack-orchestration:performance-engineer"`:
+Target: 20-30% performance improvement over baseline
 
-```
-Optimize migrated code at: $ARGUMENTS
+### Migration Playbook
+Document lessons learned, reusable patterns, gotchas for future migrations
 
-Apply target framework best practices:
-- React: useMemo, useCallback, code splitting
-- Vue: Computed properties, watchers, async components
-- Python: List comprehensions, generators, async/await
-- Node.js: Worker threads, streams, clustering
-
-Target: 20-30% performance improvement over baseline.
-```
-
-### Step 6B: Migration Playbook Creation
-
-**Document for future migrations**:
-```markdown
-# [Component Name] Migration Playbook
-
-## Overview
-- Source: [Technology/Version]
-- Target: [Technology/Version]
-- Duration: [Actual time taken]
-- Complexity: [Actual vs estimated]
-
-## Lessons Learned
-1. [What worked well]
-2. [What was challenging]
-3. [Unexpected issues]
-
-## Reusable Patterns
-- [Pattern 1 with code example]
-- [Pattern 2 with code example]
-
-## Gotchas to Avoid
-1. [Pitfall 1]
-2. [Pitfall 2]
-
-## Time Estimation Formula
-[Refined estimate based on actual data]
-```
-
-### Step 6C: Team Training
-
-**Knowledge transfer**:
-- Conduct workshop on migrated technology
+### Team Training
+- Workshop on new technology
 - Pair programming sessions
-- Code review guidelines for new framework
-- Best practices documentation
+- Code review guidelines
+- Best practices docs
 
-**Success Criteria for Phase 6**:
-- ✅ Performance optimized (20-30% improvement)
-- ✅ Migration playbook documented
-- ✅ Team trained on new technology
-- ✅ Ready for future migrations
-
-**🎯 Deep Mode Complete** - Enterprise migration with comprehensive optimization
+🎯 **Deep Mode complete** - enterprise migration with optimization
 
 ---
 
 ## Safety Guarantees
 
-**This command will**:
-- ✅ Create characterization tests before any changes
-- ✅ Maintain backward compatibility at integration points
-- ✅ Provide instant rollback capability
+**WILL:**
+- ✅ Create characterization tests before changes
+- ✅ Maintain backward compatibility
+- ✅ Provide instant rollback
 - ✅ Validate performance against baseline
-- ✅ Run security audit on migrated code
-- ✅ Generate comprehensive documentation
+- ✅ Run security audit
 
-**This command will NEVER**:
+**NEVER:**
 - ❌ Modify code without test coverage
 - ❌ Deploy without rollback plan
-- ❌ Introduce breaking changes to APIs
+- ❌ Introduce breaking API changes
 - ❌ Skip security validation
-- ❌ Delete code without backup
 - ❌ Ignore performance regressions
 
 ---
 
-## Usage Examples
+## Examples
 
-### Basic Framework Migration
 ```bash
-# Migrate React component to hooks
+# React to hooks
 /code-migrate src/components/Dashboard.jsx --target react-hooks
 
-# Migrate Python 2 to Python 3
+# Python 2 to 3
 /code-migrate src/legacy/ --target python3
 
-# Migrate Angular 12 to 15
-/code-migrate src/app --target angular15
-```
-
-### With Strategy Selection
-```bash
-# Use Strangler Fig for large migration
+# Large migration with Strangler Fig
 /code-migrate src/ --target react18 --strategy strangler-fig
 
-# Quick assessment only
-/code-migrate src/ --target vue3 --mode quick
-
-# Full enterprise migration
+# Enterprise migration
 /code-migrate src/ --target nextjs --mode deep --test-first
 ```
-
----
-
-**Execute systematic code migration with test-first discipline, performance validation, and zero breaking changes**

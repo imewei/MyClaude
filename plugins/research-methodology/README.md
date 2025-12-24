@@ -2,46 +2,23 @@
 
 Research intelligence, methodology design, literature analysis, and evidence-based insights for scientific investigation with systematic research workflows, multi-source synthesis, and rigorous quality assurance.
 
-**Version:** 1.0.1 | **Category:** research | **License:** MIT
+**Version:** 1.0.5 | **Category:** research | **License:** MIT
 
 [Full Documentation →](https://myclaude.readthedocs.io/en/latest/plugins/research-methodology.html)
 
-## What's New in v1.0.1
 
-### Agent Performance Optimization
-The research-intelligence agent has been enhanced with advanced prompt engineering techniques:
+## What's New in v1.0.5
 
-- **Systematic Development Process**: 8-step workflow with self-verification checkpoints (analyze requirements, design methodology, execute discovery, perform analysis, synthesize insights, validate quality, document thoroughly, deliver strategically)
-- **Quality Assurance Principles**: 8 constitutional AI checkpoints ensuring methodological rigor, source quality, comprehensive coverage, bias mitigation, statistical validity, reproducibility, evidence-based conclusions, and stakeholder alignment
-- **Handling Ambiguity**: 16 structured clarifying questions across 4 domains (research scope, methodology, constraints, deliverables)
-- **Enhanced Examples**: 3 comprehensive examples demonstrating PRISMA-compliant systematic literature reviews (127 papers, quantitative meta-analysis with 95% CIs), multi-source competitive intelligence (3,000+ sources, 45-page report), and anti-patterns to avoid
-- **Tool Usage Guidelines**: Clear patterns for WebSearch/WebFetch vs Read, parallel vs sequential execution, agent delegation strategies
+This release implements **Opus 4.5 optimization** with enhanced token efficiency and standardized documentation.
 
-**Expected Improvements:**
-- Task Success Rate: +15-25%
-- User Corrections: -25-40% reduction
-- Response Completeness: +30-50%
-- Tool Usage Efficiency: +20-35%
-- Edge Case Handling: +40-60%
+### Key Improvements
 
-**Key Enhancements:**
-- Quantitative examples with statistical rigor (4.2x FLOPs reduction with 95% CI: 3.1-5.8x, CAGR 34.2%, ±20% forecast accuracy)
-- Multi-source synthesis patterns (academic papers, industry reports, patents, financial data)
-- Systematic research methodologies (PRISMA screening, PICO framework, GRADE evidence profiles, time-series forecasting)
+- **Format Standardization**: All components now include consistent YAML frontmatter with version, maturity, specialization, and description fields
+- **Token Efficiency**: 40-50% line reduction through tables over prose, minimal code examples, and structured sections
+- **Enhanced Discoverability**: Clear "Use when..." trigger phrases for better Claude Code activation
+- **Actionable Checklists**: Task-oriented guidance for common workflows
+- **Cross-Reference Tables**: Quick-reference format for delegation and integration patterns
 
-### Skills Discoverability Enhancement
-The research-quality-assessment skill has been enhanced for better automatic discovery:
-
-- **Enhanced Description**: Comprehensive coverage of 6 critical assessment dimensions (methodology soundness, experimental design quality, data quality & sufficiency, statistical analysis rigor, result validity & significance, publication readiness)
-- **Automatic Discovery**: +50-75% improvement in Claude Code recognizing when to use the skill during research quality assessment, manuscript preparation, grant proposal evaluation, or experimental design review
-- **Context Relevance**: Skills activate automatically when working with research documentation, methodology sections, statistical analysis code, or publication materials
-- **20 Use Cases**: Specific scenarios covering journal submissions (Nature, Science, Cell, PLOS, eLife), grant proposals (NSF, NIH, DOE), experimental design reviews, data quality audits, statistical rigor checks, and publication readiness evaluations
-
-**Key Features:**
-- Systematic assessment workflows with 8-step process
-- Comprehensive scoring rubrics (0-10 scale with weighted dimensions: Methodology 20%, Experimental Design 20%, Data Quality 15%, Statistical Rigor 20%, Result Validity 15%, Publication Readiness 10%)
-- Detailed reference guides (methodology_evaluation.md, experimental_design_checklist.md, statistical_rigor_guide.md, publication_readiness.md)
-- Assessment report templates with structured sections and actionable recommendations
 
 ## Agents (1)
 

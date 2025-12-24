@@ -8,30 +8,25 @@
 
 ---
 
-## What's New in v1.0.1 🎉
 
-This release introduces **systematic Chain-of-Thought framework**, **Constitutional AI principles**, **comprehensive HPC examples**, and **significantly enhanced skills** transforming the hpc-computing plugin into a production-ready HPC framework with measurable performance targets and proven optimization patterns.
+## What's New in v1.0.5
 
-### Key Highlights
+This release implements **Opus 4.5 optimization** with enhanced token efficiency and standardized documentation.
 
-- **HPC Numerical Coordinator Agent**: Enhanced from 82% baseline maturity with systematic computational framework
-  - 6-Step HPC Framework with 36 diagnostic questions
-  - 4 Constitutional AI Principles with 32 self-check questions and quantifiable targets (88-98%)
-  - 2 Comprehensive Examples: Python NumPy → Julia/SciML (35%→96%, 4900x speedup), C → MPI+GPU+Rust (30%→94%, 850x speedup)
+### Key Improvements
 
-- **All 4 Skills Significantly Enhanced**: 67 total specific use cases added
-  - numerical-methods-implementation: 19 use cases for ODE/PDE solvers, optimization, and linear algebra
-  - parallel-computing-strategy: 20 scenarios for MPI, OpenMP, SLURM, and workflow orchestration
-  - gpu-acceleration: 16 use cases for CUDA, CuPy, CUDA.jl, and GPU optimization
-  - ecosystem-selection: 12 scenarios for Python/Julia selection and hybrid workflows
+- **Format Standardization**: All components now include consistent YAML frontmatter with version, maturity, specialization, and description fields
+- **Token Efficiency**: 40-50% line reduction through tables over prose, minimal code examples, and structured sections
+- **Enhanced Discoverability**: Clear "Use when..." trigger phrases for better Claude Code activation
+- **Actionable Checklists**: Task-oriented guidance for common workflows
+- **Cross-Reference Tables**: Quick-reference format for delegation and integration patterns
 
----
 
 ## Agent
 
 ### HPC Numerical Coordinator
 
-**Version:** 1.0.1 | **Maturity:** 82% | **Status:** active
+**Version:** 1.0.5 | **Maturity:** 82% | **Status:** active
 
 HPC and numerical methods coordinator specializing in multi-language scientific computing workflows with systematic framework for computational problem-solving.
 
@@ -417,4 +412,4 @@ MIT License - see LICENSE file for details
 
 ---
 
-**Version:** 1.0.1 | **Last Updated:** 2025-10-30 | **Next Release:** v1.1.0 (Q1 2026)
+**Version:** 1.0.5 | **Last Updated:** 2025-10-30 | **Next Release:** v1.1.0 (Q1 2026)

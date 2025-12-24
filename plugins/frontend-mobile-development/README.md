@@ -8,28 +8,19 @@
 
 ---
 
-## What's New in v1.0.3 🎉
 
-This release transforms the `/component-scaffold` command from **code-heavy reference documentation** to a **user-centric, workflow-based orchestrator** with multi-mode execution, external documentation, and phased implementation guidance.
+## What's New in v1.0.5
 
-### Key Highlights
+This release implements **Opus 4.5 optimization** with enhanced token efficiency and standardized documentation.
 
-- **`/component-scaffold` Command**: Enhanced from 389 → 624 lines with workflow guidance (+60%)
-  - 3 Execution Modes: Quick (5-10min), Standard (15-30min), Deep (30-60min)
-  - 5-Phase Workflow: Requirements → Generation → Styling → Testing → Validation
-  - 3 Decision Trees: Platform, Styling Approach, Component Type
-  - YAML frontmatter with version tracking and external docs
+### Key Improvements
 
-- **External Documentation**: +3,300 lines across 4 comprehensive guides
-  - `component-patterns-library.md` (550 lines) - TypeScript interfaces, generator classes
-  - `testing-strategies.md` (350 lines) - Testing pyramid, axe-core, Detox patterns
-  - `styling-approaches.md` (700 lines) - CSS Modules, styled-components, Tailwind guides
-  - `storybook-integration.md` (700 lines) - Story generation, argTypes, responsive testing
+- **Format Standardization**: All components now include consistent YAML frontmatter with version, maturity, specialization, and description fields
+- **Token Efficiency**: 40-50% line reduction through tables over prose, minimal code examples, and structured sections
+- **Enhanced Discoverability**: Clear "Use when..." trigger phrases for better Claude Code activation
+- **Actionable Checklists**: Task-oriented guidance for common workflows
+- **Cross-Reference Tables**: Quick-reference format for delegation and integration patterns
 
-- **Content Growth**: +909% total documentation (389 → 3,924 lines)
-- **User Impact**: -65% time to decision, +75% implementation confidence, +80% documentation clarity
-
----
 
 ## What's New in v1.0.1
 
@@ -56,7 +47,7 @@ This release introduced **systematic Chain-of-Thought frameworks** and **Constit
 
 ### Frontend Developer
 
-**Version:** 1.0.1 | **Maturity:** 84% | **Status:** active
+**Version:** 1.0.5 | **Maturity:** 84% | **Status:** active
 
 Frontend expert with systematic Chain-of-Thought Development Framework and Constitutional AI principles for building production-ready React 19 and Next.js 15 applications.
 
@@ -204,7 +195,7 @@ ProductCard.displayName = 'ProductCard';
 
 ### Mobile Developer
 
-**Version:** 1.0.1 | **Maturity:** 86% | **Status:** active
+**Version:** 1.0.5 | **Maturity:** 86% | **Status:** active
 
 Mobile specialist with systematic Chain-of-Thought Mobile Development Framework and Constitutional AI principles for building cross-platform and native mobile applications.
 
@@ -532,4 +523,4 @@ MIT License - see LICENSE file for details
 
 ---
 
-**Version:** 1.0.3 | **Last Updated:** 2025-11-07 | **Next Release:** v1.1.0 (Q1 2026)
+**Version:** 1.0.5 | **Last Updated:** 2025-11-07 | **Next Release:** v1.1.0 (Q1 2026)

@@ -128,12 +128,17 @@
   "skills": [
     {
       "id": "comprehensive-review-patterns",
-      "directory": "skills",
+      "directory": "skills/Code Review Excellence",
       "name": "Code Review Excellence",
-      "description": "Master effective code review practices with systematic analysis, constructive feedback, and team collaboration. Enhanced with 6-step chain-of-thought reasoning framework, 5 Constitutional AI principles for empathetic communication, and comprehensive examples for PR reviews, security assessment, performance analysis, and test validation.",
-      "version": "1.0.5",
-      "maturity": "92%",
-      "improvements": "Enhanced skill with optimized frontmatter description for better discoverability (includes specific file types: .py, .ts, .js, .go, .rs, .java, .c, .cpp), added 'When to use this skill' section with 20 concise use case examples, preserved comprehensive content with triggering criteria (20 USE cases, 8 anti-patterns, delegation decision tree), 6-step chain-of-thought reasoning framework (Context Gathering → High-Level Review → Line-by-Line Analysis → Security & Performance → Test Validation → Feedback Synthesis) with 60 guiding questions, 5 Constitutional AI principles (Constructive & Empathetic Communication 95%, Thoroughness & Systematic Analysis 90%, Actionable & Prioritized Feedback 93%, Knowledge Sharing & Team Growth 88%, Efficiency & Process Optimization 85%) with 50 self-check questions, comprehensive payment processing PR review example demonstrating 6-step framework with security findings (CVSS-scored), test coverage analysis, and empathetic feedback delivery achieving 90% overall maturity. Growth: 521 → 1,183 lines (+662 lines, 227%). Expected: 50-70% better review quality, 60% faster reviews, 70% more actionable feedback. v1.0.3: Version consistency update."
+      "description": "Conduct systematic code reviews with structured analysis and constructive feedback for PRs and code changes",
+      "version": "1.0.5"
+    },
+    {
+      "id": "code-review-excellence",
+      "directory": "skills/code-review-excellence",
+      "name": "Code Review Excellence (Systematic)",
+      "description": "Transform code reviews into knowledge sharing through systematic analysis, constructive feedback, and team collaboration",
+      "version": "1.0.5"
     }
   ],
   "external_documentation": {

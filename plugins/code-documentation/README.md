@@ -1,31 +1,22 @@
 # Code Documentation
 
-**Version:** 1.0.3 | **Category:** documentation | **License:** MIT
+**Version:** 1.0.5 | **Category:** documentation | **License:** MIT
 
 Comprehensive code documentation, explanation, and generation with AST-based analysis, visual diagrams, and automated documentation workflows. Features hub-and-spoke architecture achieving 54% command file reduction with comprehensive external documentation.
 
-## What's New in v1.0.3
 
-**Major optimization release** with command enhancements, execution modes, and comprehensive external documentation:
+## What's New in v1.0.5
 
-- **54% Command Reduction**: Optimized slash commands from 2,495 to 1,146 lines
-- **8 External Documentation Files**: ~3,200 lines of comprehensive reference material
-- **3 Execution Modes**: Per command (quick/standard/comprehensive) with time estimates
-- **Hub-and-Spoke Architecture**: Condensed commands + detailed external docs
-- **100% Backward Compatible**: All existing command invocations work unchanged
+This release implements **Opus 4.5 optimization** with enhanced token efficiency and standardized documentation.
 
 ### Key Improvements
 
-| Feature | Enhancement |
-|---------|-------------|
-| Command Optimization | 54.1% reduction (2,495 → 1,146 lines) |
-| External Documentation | 8 files (~3,200 lines) created |
-| Execution Modes | 3 modes per command with time/scope options |
-| AST Analysis | Multi-language support (Python, JS, TS, Go, Rust) |
-| Scientific Computing | NumPy/JAX/Pandas/Julia/ML support |
-| Documentation Automation | CI/CD pipelines, coverage analysis |
+- **Format Standardization**: All components now include consistent YAML frontmatter with version, maturity, specialization, and description fields
+- **Token Efficiency**: 40-50% line reduction through tables over prose, minimal code examples, and structured sections
+- **Enhanced Discoverability**: Clear "Use when..." trigger phrases for better Claude Code activation
+- **Actionable Checklists**: Task-oriented guidance for common workflows
+- **Cross-Reference Tables**: Quick-reference format for delegation and integration patterns
 
-[Full CHANGELOG →](CHANGELOG.md#103---2025-11-06)
 
 ## Agents (3)
 
@@ -650,6 +641,6 @@ MIT License - See [LICENSE](./LICENSE) for details
 ---
 
 **Author:** Wei Chen
-**Version:** 1.0.2
+**Version:** 1.0.5
 **Category:** Documentation
 **Last Updated:** 2025-10-29

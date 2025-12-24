@@ -1,95 +1,68 @@
 ---
 name: github-actions-templates
-description: Create production-ready GitHub Actions workflows for automated testing, building, deploying applications, and CI/CD automation with GitHub-hosted or self-hosted runners. Use when setting up continuous integration pipelines with GitHub Actions, creating automated test workflows for Node.js, Python, Java, Go, or other languages, building and pushing Docker images to GitHub Container Registry (ghcr.io), Docker Hub, or Amazon ECR, deploying applications to Kubernetes clusters (EKS, AKS, GKE, or self-hosted), implementing matrix builds for testing across multiple Node versions, Python versions, or operating systems, running security scans with Trivy, Snyk, CodeQL, or Bandit, creating reusable workflow templates for organization-wide standardization, implementing automated dependency updates with Dependabot, setting up pull request workflows with status checks and automated testing, deploying static sites to GitHub Pages or Netlify, implementing release workflows with semantic versioning and changelog generation, creating infrastructure deployment workflows with Terraform or CloudFormation, setting up monorepo workflows with selective job execution, implementing caching strategies for faster builds with npm, pip, or Maven caches, configuring approval gates and environment protection rules for production deployments, integrating third-party services and webhooks for notifications, or automating code quality checks with ESLint, Prettier, Black, or RuboCop. Use this skill when working with .github/workflows/ YAML files, GitHub Actions syntax, workflow triggers (push, pull_request, schedule, workflow_dispatch), jobs and steps configuration, secrets management, or any GitHub Actions-specific automation.
+version: "1.0.5"
+maturity: "5-Expert"
+specialization: CI/CD Automation
+description: Create production GitHub Actions workflows for testing, building, and deploying. Use when setting up CI pipelines, Docker builds, Kubernetes deployments, matrix builds, security scans, or reusable workflows.
 ---
 
 # GitHub Actions Templates
 
-Production-ready GitHub Actions workflow patterns for testing, building, and deploying applications.
+Production-ready workflow patterns for CI/CD automation.
 
-## When to use this skill
+---
 
-- When creating new GitHub Actions workflows in .github/workflows/ directory
-- When setting up continuous integration (CI) for automated testing on every push and pull request
-- When building Docker images and pushing to registries (ghcr.io, Docker Hub, ECR, ACR, GCR)
-- When deploying applications to cloud platforms (AWS, Azure, GCP, DigitalOcean, Vercel, Netlify)
-- When deploying to Kubernetes clusters (EKS, AKS, GKE) with kubectl or Helm
-- When implementing matrix builds to test across multiple Node.js versions, Python versions, or operating systems
-- When running security scans with Trivy, Snyk, CodeQL, Semgrep, or language-specific scanners
-- When creating reusable workflows for consistent CI/CD patterns across repositories
-- When setting up automated testing workflows for unit tests, integration tests, or end-to-end tests
-- When implementing pull request workflows with automated code review, linting, and formatting checks
-- When deploying static websites to GitHub Pages, Netlify, or Vercel
-- When creating release workflows with automated version bumping and changelog generation
-- When setting up infrastructure-as-code deployments with Terraform, Pulumi, or AWS CDK
-- When configuring caching for dependencies (npm, pip, cargo, Maven) to speed up workflow runs
-- When implementing approval gates using GitHub Environments for production deployments
-- When automating dependency updates and vulnerability patching workflows
-- When setting up monorepo workflows with path filtering and selective job execution
-- When integrating status checks, branch protection, and required reviewers
-- When configuring self-hosted runners for specialized build environments or compliance requirements
-- When implementing notification workflows for Slack, Discord, Microsoft Teams, or email
-- When setting up scheduled workflows for nightly builds, weekly reports, or periodic cleanup tasks
-- When working with GitHub Actions marketplace actions or creating custom composite actions
-- When managing secrets, environment variables, and sensitive credentials in workflows
-- When troubleshooting workflow failures, debugging job outputs, or optimizing pipeline performance
+## Workflow Patterns
 
-## Common Workflow Patterns
+| Pattern | Trigger | Use Case |
+|---------|---------|----------|
+| Test | push, PR | Automated testing, linting |
+| Build & Push | push tags | Docker images to registry |
+| Deploy | push main | Kubernetes, cloud platforms |
+| Matrix | push, PR | Multi-version testing |
+| Security | push, PR | Vulnerability scanning |
+| Reusable | workflow_call | Organization standards |
 
-### Pattern 1: Test Workflow
+---
+
+## Test Workflow
 
 ```yaml
 name: Test
-
 on:
   push:
-    branches: [ main, develop ]
+    branches: [main, develop]
   pull_request:
-    branches: [ main ]
+    branches: [main]
 
 jobs:
   test:
     runs-on: ubuntu-latest
-
     strategy:
       matrix:
         node-version: [18.x, 20.x]
-
     steps:
-    - uses: actions/checkout@v4
-
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v4
-      with:
-        node-version: ${{ matrix.node-version }}
-        cache: 'npm'
-
-    - name: Install dependencies
-      run: npm ci
-
-    - name: Run linter
-      run: npm run lint
-
-    - name: Run tests
-      run: npm test
-
-    - name: Upload coverage
-      uses: codecov/codecov-action@v3
-      with:
-        files: ./coverage/lcov.info
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+      - run: npm ci
+      - run: npm run lint
+      - run: npm test
+      - uses: codecov/codecov-action@v3
 ```
 
-**Reference:** See `assets/test-workflow.yml`
+---
 
-### Pattern 2: Build and Push Docker Image
+## Docker Build & Push
 
 ```yaml
 name: Build and Push
-
 on:
   push:
-    branches: [ main ]
-    tags: [ 'v*' ]
+    branches: [main]
+    tags: ['v*']
 
 env:
   REGISTRY: ghcr.io
@@ -101,134 +74,84 @@ jobs:
     permissions:
       contents: read
       packages: write
-
     steps:
-    - uses: actions/checkout@v4
-
-    - name: Log in to Container Registry
-      uses: docker/login-action@v3
-      with:
-        registry: ${{ env.REGISTRY }}
-        username: ${{ github.actor }}
-        password: ${{ secrets.GITHUB_TOKEN }}
-
-    - name: Extract metadata
-      id: meta
-      uses: docker/metadata-action@v5
-      with:
-        images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
-        tags: |
-          type=ref,event=branch
-          type=ref,event=pr
-          type=semver,pattern={{version}}
-          type=semver,pattern={{major}}.{{minor}}
-
-    - name: Build and push
-      uses: docker/build-push-action@v5
-      with:
-        context: .
-        push: true
-        tags: ${{ steps.meta.outputs.tags }}
-        labels: ${{ steps.meta.outputs.labels }}
-        cache-from: type=gha
-        cache-to: type=gha,mode=max
+      - uses: actions/checkout@v4
+      - uses: docker/login-action@v3
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - uses: docker/metadata-action@v5
+        id: meta
+        with:
+          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+          tags: |
+            type=semver,pattern={{version}}
+            type=ref,event=branch
+      - uses: docker/build-push-action@v5
+        with:
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
 ```
 
-**Reference:** See `assets/deploy-workflow.yml`
+---
 
-### Pattern 3: Deploy to Kubernetes
+## Kubernetes Deployment
 
 ```yaml
-name: Deploy to Kubernetes
-
+name: Deploy to K8s
 on:
   push:
-    branches: [ main ]
+    branches: [main]
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
-
     steps:
-    - uses: actions/checkout@v4
-
-    - name: Configure AWS credentials
-      uses: aws-actions/configure-aws-credentials@v4
-      with:
-        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        aws-region: us-west-2
-
-    - name: Update kubeconfig
-      run: |
-        aws eks update-kubeconfig --name production-cluster --region us-west-2
-
-    - name: Deploy to Kubernetes
-      run: |
-        kubectl apply -f k8s/
-        kubectl rollout status deployment/my-app -n production
-        kubectl get services -n production
-
-    - name: Verify deployment
-      run: |
-        kubectl get pods -n production
-        kubectl describe deployment my-app -n production
+      - uses: actions/checkout@v4
+      - uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-west-2
+      - run: aws eks update-kubeconfig --name cluster --region us-west-2
+      - run: |
+          kubectl apply -f k8s/
+          kubectl rollout status deployment/my-app -n production
 ```
 
-### Pattern 4: Matrix Build
+---
+
+## Security Scanning
 
 ```yaml
-name: Matrix Build
-
+name: Security Scan
 on: [push, pull_request]
 
 jobs:
-  build:
-    runs-on: ${{ matrix.os }}
-
-    strategy:
-      matrix:
-        os: [ubuntu-latest, macos-latest, windows-latest]
-        python-version: ['3.9', '3.10', '3.11', '3.12']
-
+  security:
+    runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v4
-
-    - name: Set up Python
-      uses: actions/setup-python@v5
-      with:
-        python-version: ${{ matrix.python-version }}
-
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
-        pip install -r requirements.txt
-
-    - name: Run tests
-      run: pytest
+      - uses: actions/checkout@v4
+      - uses: aquasecurity/trivy-action@master
+        with:
+          scan-type: 'fs'
+          format: 'sarif'
+          output: 'trivy-results.sarif'
+      - uses: github/codeql-action/upload-sarif@v2
+        with:
+          sarif_file: 'trivy-results.sarif'
 ```
 
-**Reference:** See `assets/matrix-build.yml`
+---
 
-## Workflow Best Practices
-
-1. **Use specific action versions** (@v4, not @latest)
-2. **Cache dependencies** to speed up builds
-3. **Use secrets** for sensitive data
-4. **Implement status checks** on PRs
-5. **Use matrix builds** for multi-version testing
-6. **Set appropriate permissions**
-7. **Use reusable workflows** for common patterns
-8. **Implement approval gates** for production
-9. **Add notification steps** for failures
-10. **Use self-hosted runners** for sensitive workloads
-
-## Reusable Workflows
+## Reusable Workflow
 
 ```yaml
 # .github/workflows/reusable-test.yml
-name: Reusable Test Workflow
-
+name: Reusable Test
 on:
   workflow_call:
     inputs:
@@ -243,15 +166,14 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v4
-    - uses: actions/setup-node@v4
-      with:
-        node-version: ${{ inputs.node-version }}
-    - run: npm ci
-    - run: npm test
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ inputs.node-version }}
+      - run: npm ci && npm test
 ```
 
-**Use reusable workflow:**
+**Usage**:
 ```yaml
 jobs:
   call-test:
@@ -262,87 +184,64 @@ jobs:
       NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 ```
 
-## Security Scanning
+---
+
+## Production Deploy with Approval
 
 ```yaml
-name: Security Scan
-
-on:
-  push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
-
-jobs:
-  security:
-    runs-on: ubuntu-latest
-
-    steps:
-    - uses: actions/checkout@v4
-
-    - name: Run Trivy vulnerability scanner
-      uses: aquasecurity/trivy-action@master
-      with:
-        scan-type: 'fs'
-        scan-ref: '.'
-        format: 'sarif'
-        output: 'trivy-results.sarif'
-
-    - name: Upload Trivy results to GitHub Security
-      uses: github/codeql-action/upload-sarif@v2
-      with:
-        sarif_file: 'trivy-results.sarif'
-
-    - name: Run Snyk Security Scan
-      uses: snyk/actions/node@master
-      env:
-        SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
-```
-
-## Deployment with Approvals
-
-```yaml
-name: Deploy to Production
-
-on:
-  push:
-    tags: [ 'v*' ]
-
 jobs:
   deploy:
     runs-on: ubuntu-latest
     environment:
       name: production
       url: https://app.example.com
-
     steps:
-    - uses: actions/checkout@v4
-
-    - name: Deploy application
-      run: |
-        echo "Deploying to production..."
-        # Deployment commands here
-
-    - name: Notify Slack
-      if: success()
-      uses: slackapi/slack-github-action@v1
-      with:
-        webhook-url: ${{ secrets.SLACK_WEBHOOK }}
-        payload: |
-          {
-            "text": "Deployment to production completed successfully!"
-          }
+      - uses: actions/checkout@v4
+      - run: echo "Deploying..."
+      - uses: slackapi/slack-github-action@v1
+        if: success()
+        with:
+          webhook-url: ${{ secrets.SLACK_WEBHOOK }}
 ```
 
-## Reference Files
+---
 
-- `assets/test-workflow.yml` - Testing workflow template
-- `assets/deploy-workflow.yml` - Deployment workflow template
-- `assets/matrix-build.yml` - Matrix build template
-- `references/common-workflows.md` - Common workflow patterns
+## Best Practices
 
-## Related Skills
+| Practice | Implementation |
+|----------|----------------|
+| Pin versions | Use @v4, not @latest |
+| Cache dependencies | `cache: 'npm'` in setup actions |
+| Use secrets | Never hardcode credentials |
+| Set permissions | Minimal required permissions |
+| Matrix builds | Test multiple versions |
+| Reusable workflows | Organization standards |
+| Approval gates | Use environments for prod |
 
-- `gitlab-ci-patterns` - For GitLab CI workflows
-- `deployment-pipeline-design` - For pipeline architecture
-- `secrets-management` - For secrets handling
+---
+
+## Common Pitfalls
+
+| Pitfall | Solution |
+|---------|----------|
+| @latest actions | Pin to specific versions |
+| No caching | Use built-in cache options |
+| Secrets in logs | Use `::add-mask::` |
+| Missing permissions | Explicitly set `permissions:` |
+
+---
+
+## Checklist
+
+- [ ] Actions pinned to specific versions
+- [ ] Dependencies cached
+- [ ] Secrets properly managed
+- [ ] Permissions explicitly set
+- [ ] Matrix builds for multi-version
+- [ ] Security scanning enabled
+- [ ] Production uses environments
+- [ ] Notifications configured
+
+---
+
+**Version**: 1.0.5

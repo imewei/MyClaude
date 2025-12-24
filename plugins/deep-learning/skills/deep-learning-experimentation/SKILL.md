@@ -1,190 +1,86 @@
 ---
 name: deep-learning-experimentation
-description: Design and conduct systematic deep learning experiments with hyperparameter optimization, ablation studies, and reproducible research practices. Use this skill when optimizing neural network performance through learning rate finding, grid/random/Bayesian hyperparameter search, or ablation studies. Apply when setting up experiment tracking with Weights & Biases, TensorBoard, or MLflow. Use when configuring reproducible training workflows with proper seed management, version control (Git, DVC), or multi-run comparisons. Apply when designing controlled experiments to compare architectures, optimizers, or training strategies. Use when analyzing training dynamics across multiple random seeds or implementing statistical significance testing. Apply when working with experiment configuration files (config.yaml, hyperparameters.json), training scripts requiring systematic tuning, or research workflows demanding rigorous experimental methodology.
+version: "1.0.5"
+maturity: "5-Expert"
+specialization: ML Experiment Design
+description: Design systematic deep learning experiments with hyperparameter optimization, ablation studies, and reproducible workflows. Use when tuning hyperparameters, conducting ablations, setting up experiment tracking (W&B, TensorBoard, MLflow), or managing reproducibility.
 ---
 
 # Deep Learning Experimentation
 
-Systematic frameworks for experiment design, hyperparameter optimization, and reproducible deep learning research.
+Systematic experiment design with hyperparameter optimization and reproducibility.
 
-## When to use this skill
+---
 
-- When tuning hyperparameters (learning rate, batch size, optimizer, architecture depth/width, dropout rate, weight decay)
-- When conducting ablation studies to understand which model components contribute to performance
-- When comparing multiple training approaches, architectures, or optimization strategies systematically
-- When optimizing model performance through systematic hyperparameter search (grid, random, or Bayesian)
-- When setting up reproducible research workflows with random seed management and version control
-- When implementing experiment tracking with Weights & Biases, TensorBoard, or MLflow
-- When designing multi-run experiments to validate results across random seeds
-- When performing learning rate range tests to find optimal learning rates
-- When analyzing training dynamics and convergence patterns across different configurations
-- When setting up configuration management systems for deep learning experiments (YAML/JSON configs)
-- When implementing statistical significance testing for model comparisons
-- When working with experiment directories, checkpoint management, or training logs
-- When conducting transfer learning experiments comparing pre-training vs from-scratch training
-- When optimizing for multi-objective trade-offs (accuracy vs latency vs model size)
-- When documenting experimental results, insights, and best practices for team knowledge sharing
+## Hyperparameter Priority
 
-## Hyperparameter Optimization
+| Priority | Parameters | Search Strategy |
+|----------|------------|-----------------|
+| Critical | Learning rate, batch size, architecture | Tune first |
+| Important | Optimizer, weight decay, dropout | Tune second |
+| Fine-tuning | LR schedule, initialization, augmentation | Tune last |
 
-### 1. Learning Rate Finding
+---
 
-**LR Range Test (Leslie Smith):**
+## Search Strategies
+
+| Strategy | Pros | Cons | Best For |
+|----------|------|------|----------|
+| Grid | Complete coverage | Exponential | Few params |
+| Random | More efficient | May miss optimal | Many params |
+| Bayesian | Sample-efficient | Complex setup | Limited budget |
+
 ```python
-# Start with very small LR, exponentially increase
-# Plot loss vs LR
-# Optimal LR: steepest descent before loss explodes
-```
+# LR Range Test (Leslie Smith)
+# Start: 1e-7, increase exponentially, stop when loss explodes
+# Optimal: steepest descent point, use 1/10 to 1/3 of max stable LR
 
-**Process:**
-1. Start LR: 1e-7
-2. Increase exponentially each batch
-3. Stop when loss explodes
-4. Select LR at steepest descent point
-5. Use 1/10th to 1/3rd of max stable LR
-
-### 2. Search Strategies
-
-**Grid Search:**
-```python
-# Exhaustive search over discrete values
-learning_rates = [1e-4, 1e-3, 1e-2]
-batch_sizes = [32, 64, 128]
-# Try all combinations (3 × 3 = 9 experiments)
-```
-- Pros: Complete coverage
-- Cons: Exponential in number of hyperparameters
-
-**Random Search:**
-```python
-# Sample from distributions
+# Random search example
 learning_rate = loguniform(1e-5, 1e-2)
 dropout = uniform(0.1, 0.5)
-# Try N random combinations
 ```
-- Pros: More efficient than grid
-- Cons: May miss optimal region
 
-**Bayesian Optimization:**
-```python
-# Use Optuna, Ray Tune, or Weights & Biases Sweeps
-# Model p(performance|hyperparameters)
-# Select next point to try based on expected improvement
-```
-- Pros: Most sample-efficient
-- Cons: More complex setup
+---
 
-### 3. Important Hyperparameters (Priority Order)
+## Ablation Studies
 
-**Critical (tune first):**
-1. Learning rate
-2. Batch size
-3. Architecture (width, depth)
-
-**Important:**
-4. Optimizer (Adam vs SGD)
-5. Weight decay / L2 regularization
-6. Dropout rate
-
-**Fine-tuning:**
-7. Learning rate schedule
-8. Initialization scheme
-9. Augmentation strength
-10. Loss function weights
-
-## Experiment Design
-
-### Ablation Studies
-
-**Purpose:** Understand what components contribute to performance
-
-**Process:**
-1. Start with full model (all components)
-2. Remove one component at a time
-3. Measure performance drop
-4. Identify critical vs unnecessary components
-
-**Example:**
 ```
 Full model:                    95.0% accuracy
 - Without skip connections:    92.1% (-2.9%)
 - Without batch norm:          93.5% (-1.5%)
-- Without data augmentation:   90.2% (-4.8%)
-- Without dropout:             94.7% (-0.3%)
+- Without data augmentation:   90.2% (-4.8%)  ← Most critical
+- Without dropout:             94.7% (-0.3%)  ← Least important
 ```
 
-**Insights:** Data augmentation most critical, dropout least important
+**Process**: Full model → remove one component → measure drop → identify critical vs unnecessary
 
-### Controlled Comparisons
-
-**Change one variable at a time:**
-```
-Baseline: LR=0.001, batch=32, dropout=0.5
-Experiment 1: LR=0.01 (everything else same)
-Experiment 2: batch=64 (everything else same)
-```
-
-**Use multiple seeds:**
-- Run each experiment with 3-5 different random seeds
-- Report mean ± std
-- Ensures results are robust, not lucky
-
-**Statistical Significance:**
-- Use t-tests or bootstrap confidence intervals
-- Don't claim improvement without statistical evidence
+---
 
 ## Experiment Tracking
 
-### What to Track
-
-**Hyperparameters:**
-- All settings (LR, batch size, architecture details)
-- Optimizer configuration
-- Data preprocessing
-
-**Metrics:**
-- Training loss, validation loss
-- Task-specific metrics (accuracy, F1, etc.)
-- Gradient norms, learning rates
-- Computational cost (time, memory)
-
-**Artifacts:**
-- Model checkpoints
-- Configuration files
-- Training logs
-- Visualizations
-
-### Tools
-
-**Weights & Biases:**
 ```python
+# Weights & Biases
 import wandb
 wandb.init(project="my-project", config=config)
 wandb.log({"loss": loss, "accuracy": acc})
-```
 
-**TensorBoard:**
-```python
+# TensorBoard
 from torch.utils.tensorboard import SummaryWriter
 writer = SummaryWriter()
 writer.add_scalar('Loss/train', loss, epoch)
-```
 
-**MLflow:**
-```python
+# MLflow
 import mlflow
 mlflow.log_param("learning_rate", 0.001)
 mlflow.log_metric("accuracy", acc)
 ```
 
+---
+
 ## Reproducibility
 
-### Random Seed Management
-
 ```python
-import torch
-import numpy as np
-import random
+import torch, numpy as np, random
 
 def set_seed(seed=42):
     random.seed(seed)
@@ -195,22 +91,11 @@ def set_seed(seed=42):
     torch.backends.cudnn.benchmark = False
 ```
 
-### Version Control
+**Track**: Code (Git), data versions (DVC), checkpoints, dependencies (requirements.txt)
 
-**Track everything:**
-- Code (Git)
-- Data versions
-- Model checkpoints
-- Dependencies (requirements.txt, environment.yml)
+---
 
-**DVC (Data Version Control):**
-```bash
-dvc add data/train.csv
-dvc add models/checkpoint.pt
-git add data/train.csv.dvc models/checkpoint.pt.dvc
-```
-
-### Configuration Management
+## Configuration Management
 
 ```yaml
 # config.yaml
@@ -223,117 +108,28 @@ training:
   batch_size: 64
   epochs: 100
   optimizer: "adam"
-
-data:
-  dataset: "cifar10"
-  augmentation: true
 ```
 
-## Advanced Experiment Strategies
+---
 
-### Multi-Objective Optimization
+## Directory Structure
 
-**Trade-offs:**
-- Accuracy vs Latency
-- Performance vs Model Size
-- Training Time vs Final Accuracy
+```
+experiments/
+├── exp001_baseline/
+│   ├── config.yaml
+│   ├── logs/
+│   ├── checkpoints/
+│   └── results.json
+├── exp002_higher_lr/
+└── exp003_deeper_network/
+```
 
-**Pareto Frontier:**
-- Plot trade-off curves
-- Identify non-dominated solutions
+---
 
-### Transfer Learning Experiments
+## Mixed Precision Training
 
-**Strategy:**
-1. Pretrain on large dataset (ImageNet, BERT corpus)
-2. Fine-tune on target task
-3. Compare with training from scratch
-
-**Hyperparameters:**
-- Lower learning rate for fine-tuning (1/10th of pretraining)
-- Freeze early layers, train later layers
-- Gradual unfreezing
-
-### Curriculum Learning
-
-**Idea:** Train on easy examples first, gradually increase difficulty
-
-**Implementation:**
-1. Define difficulty metric (e.g., loss on pretrained model)
-2. Sort training data by difficulty
-3. Start with easiest 20%, gradually add harder examples
-
-## Quick Reference: Experiment Checklist
-
-**Before Training:**
-- [ ] Set random seed for reproducibility
-- [ ] Log all hyperparameters
-- [ ] Validate data loader (check samples)
-- [ ] Sanity check: Overfit on small batch
-
-**During Training:**
-- [ ] Monitor train and val losses
-- [ ] Track gradient norms
-- [ ] Save checkpoints regularly
-- [ ] Log to experiment tracker
-
-**After Training:**
-- [ ] Evaluate on test set (only once!)
-- [ ] Document what worked and what didn't
-- [ ] Save final model and config
-- [ ] Compare with baselines
-
-**Reporting Results:**
-- [ ] Report mean ± std over multiple seeds
-- [ ] Show learning curves
-- [ ] Include ablation studies
-- [ ] Specify all hyperparameters
-- [ ] Make code available
-
-## Best Practices
-
-### Experiment Management
-
-1. **Naming Convention:**
-   ```
-   exp_name = f"{model}_{dataset}_{timestamp}_{unique_id}"
-   # Example: "resnet50_cifar10_20250127_a3f2"
-   ```
-
-2. **Directory Structure:**
-   ```
-   experiments/
-   ├── exp001_baseline/
-   │   ├── config.yaml
-   │   ├── logs/
-   │   ├── checkpoints/
-   │   └── results.json
-   ├── exp002_higher_lr/
-   └── exp003_deeper_network/
-   ```
-
-3. **Documentation:**
-   - README.md for each experiment
-   - Motivation for trying this configuration
-   - Results and insights
-
-### Computational Efficiency
-
-**Warm Starting:**
-- Initialize from previous checkpoint
-- Saves training time
-
-**Early Stopping:**
-- Stop if validation loss doesn't improve
-- Saves compute, prevents overfitting
-
-**Progressive Resizing:**
-- Start with small images, increase size
-- Faster initial training
-
-**Mixed Precision:**
 ```python
-# Automatic Mixed Precision (AMP)
 from torch.cuda.amp import autocast, GradScaler
 scaler = GradScaler()
 
@@ -348,4 +144,52 @@ scaler.update()
 
 ---
 
-*Systematic frameworks for deep learning experimentation, hyperparameter optimization, and reproducible research with proper experiment tracking.*
+## Best Practices
+
+| Practice | Implementation |
+|----------|----------------|
+| Controlled comparisons | Change one variable at a time |
+| Multiple seeds | Run 3-5 seeds, report mean ± std |
+| Statistical significance | t-tests or bootstrap confidence intervals |
+| Warm starting | Initialize from previous checkpoint |
+| Early stopping | Stop if val loss doesn't improve |
+
+---
+
+## Common Pitfalls
+
+| Pitfall | Solution |
+|---------|----------|
+| No seed management | Always set random seeds |
+| Single run claims | Report over multiple seeds |
+| No baseline comparison | Always compare to baselines |
+| Test set peeking | Evaluate test set only once |
+
+---
+
+## Checklist
+
+**Before Training:**
+- [ ] Set random seed
+- [ ] Log all hyperparameters
+- [ ] Sanity check: overfit on small batch
+
+**During Training:**
+- [ ] Monitor train and val losses
+- [ ] Save checkpoints regularly
+- [ ] Log to experiment tracker
+
+**After Training:**
+- [ ] Evaluate test set (only once)
+- [ ] Document what worked
+- [ ] Compare with baselines
+
+**Reporting:**
+- [ ] Mean ± std over seeds
+- [ ] Learning curves
+- [ ] Ablation studies
+- [ ] All hyperparameters specified
+
+---
+
+**Version**: 1.0.5

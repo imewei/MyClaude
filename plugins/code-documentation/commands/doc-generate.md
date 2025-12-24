@@ -1,20 +1,20 @@
 ---
-version: "1.0.3"
-category: "code-documentation"
-command: "/doc-generate"
-description: Generate comprehensive, maintainable documentation from code with AI-powered analysis
+version: 1.0.5
+category: code-documentation
+command: /doc-generate
+description: Generate comprehensive documentation from code with AI-powered analysis
 argument-hint: [--api] [--readme] [--sphinx] [--full]
 color: blue
 execution_modes:
-  quick: "10-15 minutes - README and basic API docs"
-  standard: "20-30 minutes - Complete documentation with examples"
-  comprehensive: "40-60 minutes - Full documentation site with CI/CD automation"
+  quick: "10-15 minutes"
+  standard: "20-30 minutes"
+  comprehensive: "40-60 minutes"
 agents:
   primary:
     - docs-architect
   conditional:
     - agent: hpc-numerical-coordinator
-      trigger: pattern "sphinx|numpy|scipy|scientific" OR files "*.rst|docs/conf.py"
+      trigger: pattern "sphinx|numpy|scipy|scientific"
     - agent: fullstack-developer
       trigger: files "package.json|src/components/"
   orchestrated: false
@@ -22,304 +22,180 @@ agents:
 
 # Automated Documentation Generation
 
-Generate comprehensive, maintainable documentation from code using AI-powered analysis and industry best practices.
-
-## Execution Modes
-
-| Mode | Time | Use Case | Output |
-|------|------|----------|--------|
-| **quick** | 10-15 min | README + basic API docs | README.md, API.md |
-| **standard** (default) | 20-30 min | Complete docs with examples | README, API docs, examples |
-| **comprehensive** | 40-60 min | Full doc site + CI/CD | Sphinx site, OpenAPI, automation |
-
-## Quick Reference Documentation
-
-| Topic | External Documentation | Lines |
-|-------|------------------------|-------|
-| API Templates | [api-documentation-templates.md](../docs/code-documentation/api-documentation-templates.md) | ~550 |
-| Automation | [documentation-automation.md](../docs/code-documentation/documentation-automation.md) | ~300 |
-
-**Total External Documentation**: ~850 lines of templates and automation patterns
+Generate comprehensive, maintainable documentation from code using AI-powered analysis.
 
 ## Arguments
 
 $ARGUMENTS
 
-**Supported flags**:
-- `--api`: Focus on API documentation only
-- `--readme`: Focus on README generation only
-- `--sphinx`: Generate Sphinx documentation
-- `--full`: Complete documentation overhaul (same as comprehensive mode)
+**Flags:** `--api`, `--readme`, `--sphinx`, `--full`
 
-## Core Workflow
+---
 
-### Phase 1: Code Analysis
+## Mode Selection
 
-**Extract structure from codebase**:
+| Mode | Duration | Output |
+|------|----------|--------|
+| Quick | 10-15 min | README.md, basic API.md |
+| Standard (default) | 20-30 min | Complete docs with examples |
+| Comprehensive | 40-60 min | Full doc site + CI/CD automation |
 
-1. **Identify project type** (Python, JavaScript, Go, etc.)
-2. **Parse code structure** using AST (classes, functions, endpoints)
-3. **Extract API endpoints** from route decorators/annotations
-4. **Extract schemas** (Pydantic models, TypeScript interfaces)
-5. **Analyze dependencies** and configuration
+---
 
-**For API endpoint extraction**, see [api-documentation-templates.md](../docs/code-documentation/api-documentation-templates.md#api-endpoint-extraction):
-- `APIDocExtractor` class for Python
-- Route decorator detection
-- Parameter and return type extraction
-- Pydantic schema extraction
+## External Documentation
 
-### Phase 2: API Documentation Generation
+| Topic | Reference | Lines |
+|-------|-----------|-------|
+| API Templates | [api-documentation-templates.md](../docs/code-documentation/api-documentation-templates.md) | ~550 |
+| Automation | [documentation-automation.md](../docs/code-documentation/documentation-automation.md) | ~300 |
 
-**Create comprehensive API docs**:
+---
 
-1. **Generate OpenAPI 3.0 specification** from extracted endpoints
-2. **Create interactive documentation** (Swagger UI, Redoc)
-3. **Generate code examples** in multiple languages (Python, JavaScript, cURL, Go)
-4. **Document authentication** and rate limiting
-5. **Include request/response examples**
+## Phase 1: Code Analysis
 
-**OpenAPI template**: See [api-documentation-templates.md](../docs/code-documentation/api-documentation-templates.md#complete-openapi-30-template) for:
-- Full OpenAPI 3.0 specification structure
-- Component schemas (User, Pagination, Error)
-- Security schemes (Bearer auth, API keys)
-- Response templates (200, 401, 404, 429)
-- Multi-language code examples
+| Step | Action |
+|------|--------|
+| 1 | Identify project type (Python, JS, Go, etc.) |
+| 2 | Parse code structure with AST |
+| 3 | Extract API endpoints from decorators |
+| 4 | Extract schemas (Pydantic, TypeScript) |
+| 5 | Analyze dependencies and configuration |
 
-**FastAPI integration**: Automatic documentation with Pydantic models
+**API extraction:** See [api-documentation-templates.md](../docs/code-documentation/api-documentation-templates.md#api-endpoint-extraction)
 
-### Phase 3: README Generation
+---
 
-**Create comprehensive README** with:
+## Phase 2: API Documentation
 
-1. **Project overview** and features
-2. **Installation instructions** (pip, npm, cargo, from source)
-3. **Quick start examples** showing core functionality
-4. **Configuration options** (environment variables, config files)
-5. **Development setup** and testing
-6. **Contribution guidelines** and license
+| Component | Content |
+|-----------|---------|
+| OpenAPI 3.0 spec | Generated from endpoints |
+| Interactive docs | Swagger UI, Redoc |
+| Code examples | Python, JavaScript, cURL, Go |
+| Authentication | Methods and requirements |
+| Request/response | Example payloads |
 
-**Template structure**:
-```markdown
-# Project Name
+**Templates:** [api-documentation-templates.md](../docs/code-documentation/api-documentation-templates.md#complete-openapi-30-template)
 
-[Badges: CI/CD, Coverage, Version]
+---
 
-## Overview
-[2-3 sentence description]
+## Phase 3: README Generation
 
-## Features
-- Feature 1
-- Feature 2
+### Required Sections
 
-## Installation
-[Multiple install methods]
+| Section | Content |
+|---------|---------|
+| Badges | CI/CD, coverage, version |
+| Overview | 2-3 sentence description |
+| Features | Bulleted list |
+| Installation | Multiple methods |
+| Quick Start | Simple compelling example |
+| Configuration | Environment variables table |
+| Development | Setup and testing |
 
-## Quick Start
-[Simple, compelling example]
+**Template:** [documentation-automation.md](../docs/code-documentation/documentation-automation.md#readme-generation)
 
-## Documentation
-[Links to full docs]
+---
 
-## Configuration
-[Environment variables table]
+## Phase 4: Architecture Diagrams
 
-## Development
-[Setup and testing]
-```
+| Diagram Type | Purpose |
+|--------------|---------|
+| System architecture | Components and connections |
+| API flow | Request/response paths |
+| Database schema | If applicable |
+| Deployment | Infrastructure layout |
 
-**Implementation**: See [documentation-automation.md](../docs/code-documentation/documentation-automation.md#readme-generation) for template code
+Use Mermaid for inline diagrams.
 
-### Phase 4: Architecture Diagrams
+---
 
-**Visual representations** of system structure:
+## Phase 5: Code Examples
 
-1. **System architecture** (components and connections)
-2. **API flow diagrams** (request/response paths)
-3. **Database schema** (if applicable)
-4. **Deployment architecture** (if infrastructure exists)
+| Example Type | Requirements |
+|--------------|--------------|
+| Basic usage | Common tasks |
+| Advanced | Complex scenarios |
+| Integration | Other services |
+| Error handling | Common errors |
+| Best practices | Recommended patterns |
 
-**Mermaid diagrams**:
-```mermaid
-graph TB
-    subgraph "Frontend"
-        UI[React UI]
-    end
-    subgraph "API"
-        Gateway[API Gateway]
-    end
-    subgraph "Services"
-        UserService[User Service]
-        DataService[Data Service]
-    end
-```
+All examples must be complete, runnable, with comments.
 
-### Phase 5: Code Examples and Tutorials
+---
 
-**Create practical examples**:
+## Phase 6: Documentation Automation (Comprehensive)
 
-1. **Basic usage examples** for common tasks
-2. **Advanced use cases** for complex scenarios
-3. **Integration examples** with other services
-4. **Error handling** examples
-5. **Best practices** demonstrations
+### CI/CD Setup
 
-**Example structure**:
-- Complete, runnable code
-- Inline comments explaining key parts
-- Expected output shown
-- Common pitfalls noted
+| Component | Purpose |
+|-----------|---------|
+| GitHub Actions | Automatic doc generation |
+| Pre-commit hooks | Doc linting |
+| Coverage checks | interrogate >80% |
+| Deployment | GitHub Pages/Netlify/RTD |
 
-### Phase 6: Documentation Automation (Comprehensive mode)
+**Workflow:** [documentation-automation.md](../docs/code-documentation/documentation-automation.md#github-actions-workflow)
 
-**Set up CI/CD for docs**:
+---
 
-1. **GitHub Actions workflow** for automatic doc generation
-2. **Pre-commit hooks** for documentation linting
-3. **Documentation coverage** checks
-4. **Automated deployment** to GitHub Pages/Netlify/ReadTheDocs
+## Phase 7: Sphinx Documentation
 
-**GitHub Actions**: See [documentation-automation.md](../docs/code-documentation/documentation-automation.md#github-actions-workflow) for:
-- Complete workflow YAML
-- OpenAPI generation
-- Sphinx build automation
-- Coverage validation
-- Deployment to GitHub Pages
+For Python projects with `--sphinx` or comprehensive mode:
 
-**Pre-commit hooks**:
-```yaml
-repos:
-  - repo: https://github.com/igorshubovych/markdownlint-cli
-    hooks:
-      - id: markdownlint
+| Step | Action |
+|------|--------|
+| 1 | Generate conf.py with autodoc |
+| 2 | Create index.rst with toctree |
+| 3 | Generate API reference with autosummary |
+| 4 | Add examples and tutorials |
+| 5 | Configure theme and deployment |
 
-  - repo: local
-    hooks:
-      - id: doc-coverage
-        entry: interrogate
-        args: ['--fail-under', '80']
-```
-
-### Phase 7: Sphinx Documentation (if --sphinx or comprehensive)
-
-**For Python projects with Sphinx**:
-
-1. **Generate conf.py** with autodoc configuration
-2. **Create index.rst** with toctree
-3. **Generate API reference** with autosummary
-4. **Add examples** and tutorials
-5. **Configure theme** and deployment
-
-**Sphinx setup**: See [sphinx-optimization.md](../docs/code-documentation/sphinx-optimization.md) for complete configuration
-
-## Mode-Specific Execution
-
-### Quick Mode (10-15 minutes)
-**Output**:
-- README.md
-- API.md (basic endpoint listing)
-**Skip**: Sphinx, CI/CD, advanced examples
-
-### Standard Mode (20-30 minutes) - DEFAULT
-**Output**:
-- README.md (comprehensive)
-- OpenAPI spec
-- API documentation with examples
-- Basic architecture diagrams
-**Skip**: CI/CD automation, Sphinx
-
-### Comprehensive Mode (40-60 minutes)
-**Output**:
-- Complete README
-- Full OpenAPI with Swagger UI/Redoc
-- Sphinx documentation site
-- CI/CD workflows
-- Pre-commit hooks
-- Documentation coverage reports
-
-## Documentation Quality Standards
-
-All generated documentation must:
-
-✅ Be accurate and synchronized with current code
-✅ Use consistent terminology and formatting
-✅ Include practical examples and use cases
-✅ Be searchable and well-organized
-✅ Follow accessibility best practices
-✅ Include API versioning information
-✅ Provide troubleshooting guides
-✅ Link to related documentation
+---
 
 ## Output Structure
 
-### For API Projects
-
+### API Projects
 ```
 docs/
-├── README.md                 # Main documentation
-├── API.md                    # API reference
-├── api/
-│   ├── openapi.json         # OpenAPI spec
-│   ├── swagger-ui.html      # Interactive docs
-│   └── examples/            # Code examples
+├── README.md
+├── API.md
+├── api/openapi.json, swagger-ui.html
 ├── examples/
-│   ├── basic-usage.md
-│   ├── advanced.md
-│   └── integrations.md
 └── diagrams/
-    └── architecture.md
 ```
 
-### For Python Projects with Sphinx
-
+### Python with Sphinx
 ```
 docs/
-├── source/
-│   ├── index.rst
-│   ├── installation.rst
-│   ├── quickstart.rst
-│   ├── api/
-│   │   ├── index.rst
-│   │   └── modules.rst
-│   └── examples/
-│       └── basic.rst
+├── source/index.rst, api/, examples/
 ├── conf.py
 └── Makefile
 ```
 
-## Interactive Documentation Setup
+---
 
-**Swagger UI**: See [api-documentation-templates.md](../docs/code-documentation/api-documentation-templates.md#swagger-ui-html-template) for HTML setup
+## Quality Standards
 
-**Redoc**: Alternative documentation UI with cleaner design
+- [ ] Accurate and synchronized with code
+- [ ] Consistent terminology
+- [ ] Practical examples included
+- [ ] Searchable and organized
+- [ ] Accessible
+- [ ] API versioning documented
+- [ ] Troubleshooting guides
+- [ ] Cross-linked
 
-**FastAPI**: Built-in Swagger UI at `/docs` and Redoc at `/redoc`
-
-## Documentation Coverage Validation
-
-**Python coverage**:
-```python
-from documentation_automation import DocCoverage
-
-coverage = DocCoverage()
-results = coverage.check_coverage('src/')
-
-print(f"Function coverage: {results['function_coverage']:.1f}%")
-print(f"Class coverage: {results['class_coverage']:.1f}%")
-```
-
-**Implementation**: See [documentation-automation.md](../docs/code-documentation/documentation-automation.md#documentation-coverage-validation)
+---
 
 ## Success Criteria
 
-✅ All public APIs documented
-✅ README is comprehensive and clear
-✅ Installation instructions tested
-✅ Code examples are runnable
-✅ API documentation includes authentication
-✅ Architecture diagrams accurately represent system
-✅ Documentation builds without errors
-✅ Links are not broken
-✅ Coverage > 80% for public APIs
-
-Focus on creating **living documentation** that stays synchronized with code changes through automation and CI/CD integration.
+- [ ] All public APIs documented
+- [ ] README comprehensive and clear
+- [ ] Installation instructions tested
+- [ ] Code examples runnable
+- [ ] API docs include authentication
+- [ ] Architecture diagrams accurate
+- [ ] Documentation builds without errors
+- [ ] No broken links
+- [ ] Coverage >80% for public APIs

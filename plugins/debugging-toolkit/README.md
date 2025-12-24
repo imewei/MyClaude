@@ -2,11 +2,24 @@
 
 AI-assisted debugging with LLM-driven RCA, automated log correlation, observability integration, SRE practices, and developer experience optimization for distributed systems.
 
-**Version:** 1.0.1 | **Category:** dev-tools | **License:** MIT
+**Version:** 1.0.5 | **Category:** dev-tools | **License:** MIT
 
 [![Maturity: Production Ready](https://img.shields.io/badge/maturity-production%20ready-green)]()
 [![Agents: 2](https://img.shields.io/badge/agents-2-blue)]()
 [![Skills: 3](https://img.shields.io/badge/skills-3-blue)]()
+
+## What's New in v1.0.5
+
+This release implements **Opus 4.5 optimization** with enhanced token efficiency and standardized documentation.
+
+### Key Improvements
+
+- **Format Standardization**: All components now include consistent YAML frontmatter with version, maturity, specialization, and description fields
+- **Token Efficiency**: 40-50% line reduction through tables over prose, minimal code examples, and structured sections
+- **Enhanced Discoverability**: Clear "Use when..." trigger phrases for better Claude Code activation
+- **Actionable Checklists**: Task-oriented guidance for common workflows
+- **Cross-Reference Tables**: Quick-reference format for delegation and integration patterns
+
 
 ## 🎯 What's New in v1.0.1
 

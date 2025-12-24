@@ -2,11 +2,24 @@
 
 Comprehensive framework and legacy system modernization with systematic Chain-of-Thought migration frameworks, Constitutional AI principles, and proven Strangler Fig patterns. Expert guidance for safe, incremental upgrades with zero downtime and comprehensive test coverage.
 
-**Version:** 1.0.3 | **Category:** development | **License:** MIT
+**Version:** 1.0.5 | **Category:** development | **License:** MIT
 
 [Full Documentation →](https://myclaude.readthedocs.io/en/latest/plugins/framework-migration.html) | [Changelog →](./CHANGELOG.md)
 
 ---
+
+## What's New in v1.0.5
+
+This release implements **Opus 4.5 optimization** with enhanced token efficiency and standardized documentation.
+
+### Key Improvements
+
+- **Format Standardization**: All components now include consistent YAML frontmatter with version, maturity, specialization, and description fields
+- **Token Efficiency**: 40-50% line reduction through tables over prose, minimal code examples, and structured sections
+- **Enhanced Discoverability**: Clear "Use when..." trigger phrases for better Claude Code activation
+- **Actionable Checklists**: Task-oriented guidance for common workflows
+- **Cross-Reference Tables**: Quick-reference format for delegation and integration patterns
+
 
 ## 🎯 What's New in v1.0.3
 
@@ -34,7 +47,7 @@ This release transforms all commands from code-heavy reference documents into us
 
 ### Architect Reviewer
 
-**Status:** active | **Maturity:** 89% | **Version:** 1.0.1
+**Status:** active | **Maturity:** 89% | **Version:** 1.0.5
 
 Master software architect with **5-Step Architecture Review Framework** and **4 Constitutional AI Principles**.
 
@@ -71,7 +84,7 @@ Microservices E-Commerce Review:
 
 ### Legacy Modernizer
 
-**Status:** active | **Maturity:** 83% | **Version:** 1.0.1
+**Status:** active | **Maturity:** 83% | **Version:** 1.0.5
 
 Legacy modernization specialist with **6-Step Legacy Modernization Framework** and **4 Constitutional AI Principles**.
 
@@ -118,7 +131,7 @@ jQuery → React Migration (50K LOC):
 
 ### `/code-migrate` - Framework Migration Orchestrator
 
-**Status:** active | **Version:** 1.0.3
+**Status:** active | **Version:** 1.0.5
 
 Orchestrate systematic code migration between frameworks with test-first discipline, multi-mode execution, and phased workflow.
 
@@ -141,7 +154,7 @@ Orchestrate systematic code migration between frameworks with test-first discipl
 
 ### `/deps-upgrade` - Dependency Upgrade Orchestrator
 
-**Status:** active | **Version:** 1.0.3
+**Status:** active | **Version:** 1.0.5
 
 Safe dependency upgrade orchestration with security-first prioritization, breaking change management, and incremental/batch strategies.
 
@@ -166,7 +179,7 @@ Safe dependency upgrade orchestration with security-first prioritization, breaki
 
 ### `/legacy-modernize` - Legacy Modernization Workflow
 
-**Status:** active | **Version:** 1.0.3
+**Status:** active | **Version:** 1.0.5
 
 Comprehensive legacy modernization with Strangler Fig pattern, multi-agent orchestration, and zero-downtime transformation.
 

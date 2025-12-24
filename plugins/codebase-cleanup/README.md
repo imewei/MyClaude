@@ -2,51 +2,21 @@
 
 Codebase cleanup and technical debt reduction expertise with AI-powered code analysis, systematic refactoring, TDD, and quality engineering. v1.0.3 features optimized command architecture with execution modes (quick/standard/comprehensive), external documentation hub, 9 comprehensive technical guides, and streamlined workflows for maximum efficiency.
 
-**Version:** 1.0.3 | **Category:** development | **License:** MIT
+**Version:** 1.0.5 | **Category:** development | **License:** MIT
 
-## What's New in v1.0.3
 
-**Major architecture optimization** with hub-and-spoke pattern and execution modes for better user experience:
+## What's New in v1.0.5
 
-- **Hub-and-Spoke Architecture**: 25% command file reduction (2,608 → 1,965 lines) with external documentation hub
-- **Execution Modes**: Quick/Standard/Comprehensive modes with time estimates for all 4 commands
-- **External Documentation**: 9 comprehensive technical guides (~3,200+ lines) covering SOLID principles, refactoring patterns, security frameworks, and more
-- **YAML Frontmatter**: Structured metadata for all commands with version, execution times, and external doc references
+This release implements **Opus 4.5 optimization** with enhanced token efficiency and standardized documentation.
 
-### Performance Enhancements
+### Key Improvements
 
-| Feature | Improvement |
-|---------|-------------|
-| Task Completion Speed | 30% faster with execution mode selection |
-| Documentation | ~2,557 lines of new technical content |
-| Command File Size | 25% reduction (better maintainability) |
-| User Experience | Upfront time estimates for all commands |
+- **Format Standardization**: All components now include consistent YAML frontmatter with version, maturity, specialization, and description fields
+- **Token Efficiency**: 40-50% line reduction through tables over prose, minimal code examples, and structured sections
+- **Enhanced Discoverability**: Clear "Use when..." trigger phrases for better Claude Code activation
+- **Actionable Checklists**: Task-oriented guidance for common workflows
+- **Cross-Reference Tables**: Quick-reference format for delegation and integration patterns
 
-### Execution Modes (New in v1.0.3)
-
-All commands now support three execution modes:
-
-- **Quick Mode** (`--quick` or `-q`): 2-10 minutes - High-confidence fixes only, skip ambiguous cases
-- **Standard Mode** (default): 5-30 minutes - Comprehensive analysis with interactive resolution
-- **Comprehensive Mode** (`--comprehensive` or `-c`): 15-90 minutes - Deep analysis, automation, advanced features
-
-### External Documentation Hub
-
-9 comprehensive technical guides in `docs/codebase-cleanup/`:
-
-1. **dependency-security-guide.md** - CVE integration, vulnerability scanning, license compliance
-2. **vulnerability-analysis-framework.md** - Risk scoring, remediation strategies, SLA targets
-3. **import-resolution-strategies.md** - Path algorithms, alias detection, circular dependency detection
-4. **session-management-guide.md** - State tracking, progress management, resume capability
-5. **solid-principles-guide.md** - Complete SOLID principles with extensive examples
-6. **refactoring-patterns.md** - Design patterns catalog, code smell detection
-7. **code-quality-metrics.md** - Complexity, duplication, coverage, maintainability index
-8. **technical-debt-framework.md** - Debt scoring, ROI calculations, quarterly planning
-9. **automation-integration.md** - GitHub Actions, pre-commit hooks, CI/CD integration
-
-[Full Changelog →](./CHANGELOG.md)
-
----
 
 ## What's New in v1.0.1
 
@@ -76,7 +46,7 @@ Both agents have been upgraded to v1.0.3 with 91% maturity, systematic reasoning
 
 ### 🔍 code-reviewer
 
-**Status:** active | **Maturity:** 91% | **Version:** 1.0.3
+**Status:** active | **Maturity:** 91% | **Version:** 1.0.5
 
 Elite code review expert specializing in modern AI-powered code analysis, security vulnerabilities, performance optimization, and production reliability.
 
@@ -91,7 +61,7 @@ Elite code review expert specializing in modern AI-powered code analysis, securi
 
 ### 🧪 test-automator
 
-**Status:** active | **Maturity:** 91% | **Version:** 1.0.3
+**Status:** active | **Maturity:** 91% | **Version:** 1.0.5
 
 Master AI-powered test automation with modern frameworks, self-healing tests, comprehensive quality engineering, and TDD discipline.
 
@@ -110,7 +80,7 @@ All commands now support execution modes (quick/standard/comprehensive) with tim
 
 ### 📋 /deps-audit
 
-**Status:** active | **Version:** 1.0.3
+**Status:** active | **Version:** 1.0.5
 
 Comprehensive dependency security scanning and vulnerability analysis with multi-language support.
 
@@ -142,7 +112,7 @@ Comprehensive dependency security scanning and vulnerability analysis with multi
 
 ### 📦 /fix-imports
 
-**Status:** active | **Version:** 1.0.3
+**Status:** active | **Version:** 1.0.5
 
 Systematically fix broken imports with intelligent resolution and session continuity.
 
@@ -175,7 +145,7 @@ Systematically fix broken imports with intelligent resolution and session contin
 
 ### 🔧 /refactor-clean
 
-**Status:** active | **Version:** 1.0.3
+**Status:** active | **Version:** 1.0.5
 
 Refactor code for quality, maintainability, and SOLID principles with measurable improvements.
 
@@ -208,7 +178,7 @@ Refactor code for quality, maintainability, and SOLID principles with measurable
 
 ### 💳 /tech-debt
 
-**Status:** active | **Version:** 1.0.3
+**Status:** active | **Version:** 1.0.5
 
 Analyze, prioritize, and create remediation plans for technical debt with ROI calculations.
 
@@ -716,6 +686,6 @@ MIT License - See [LICENSE](./LICENSE) for details
 ---
 
 **Author:** Wei Chen
-**Version:** 1.0.3
+**Version:** 1.0.5
 **Category:** Development
 **Last Updated:** 2025-11-06

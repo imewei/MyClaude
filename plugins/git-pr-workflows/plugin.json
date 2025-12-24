@@ -69,9 +69,17 @@
   "skills": [
     {
       "id": "git-pr-patterns",
-      "directory": "skills",
+      "directory": "skills/Git & PR Patterns",
       "name": "Git & PR Patterns",
-      "description": "Git workflow patterns, branching strategies, and pull request best practices"
+      "description": "Git workflow patterns, branching strategies, and pull request best practices",
+      "version": "1.0.5"
+    },
+    {
+      "id": "git-advanced-workflows",
+      "directory": "skills/git-advanced-workflows",
+      "name": "Git Advanced Workflows",
+      "description": "Master advanced Git including interactive rebase, cherry-pick, bisect, worktrees, and reflog for clean history and recovery",
+      "version": "1.0.5"
     }
   ]
 }

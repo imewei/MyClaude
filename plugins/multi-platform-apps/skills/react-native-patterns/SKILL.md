@@ -1,252 +1,123 @@
 ---
 name: react-native-patterns
-description: Modern React Native development patterns with New Architecture, performance optimization, and cross-platform best practices for production mobile applications. Use this skill when writing or editing React Native files (.tsx, .ts, .jsx, .js), building reusable React Native components with TypeScript, optimizing React Native performance with React.memo, useCallback, and useMemo, implementing FlatList with proper optimization props (removeClippedSubviews, getItemLayout, windowSize), optimizing image loading with react-native-fast-image, implementing state management with Redux Toolkit or Zustand, setting up React Navigation with type-safe routing and navigation props, integrating APIs with Axios and React Query for data fetching and caching, implementing form validation with React Hook Form and Zod schemas, creating native modules to bridge iOS Swift or Android Kotlin code, implementing offline-first data persistence with AsyncStorage or WatermelonDB, structuring React Native projects with feature-based architecture, setting up TurboModules for React Native New Architecture, implementing optimistic updates and background synchronization, handling deep linking and universal links, implementing push notifications with Firebase Cloud Messaging, using Hermes JavaScript engine for performance, profiling React Native apps with Flipper or React DevTools, implementing accessibility features with accessibility labels and roles, or migrating React Native apps to the New Architecture with Fabric renderer and JSI.
+version: "1.0.5"
+maturity: "5-Expert"
+specialization: React Native Development
+description: Modern React Native patterns with New Architecture, TypeScript, and performance optimization. Use when building React Native components, optimizing FlatList performance, implementing state management (Redux Toolkit, Zustand), setting up React Navigation, integrating APIs with React Query, handling forms with React Hook Form, creating native modules, or implementing offline-first storage.
 ---
 
 # React Native Development Patterns
 
-> **Modern React Native patterns, performance optimization, and cross-platform best practices for production mobile applications.**
+Production-ready React Native patterns for cross-platform mobile apps.
 
 ---
 
-## When to use this skill
+## Architecture Selection
 
-- When writing or editing React Native TypeScript/JavaScript files (.tsx, .ts, .jsx, .js)
-- When building reusable React Native components with proper TypeScript interfaces
-- When optimizing React Native performance using React.memo, useCallback, useMemo, and lazy loading
-- When implementing FlatList or SectionList with performance optimizations (removeClippedSubviews, getItemLayout)
-- When optimizing image loading and caching with react-native-fast-image or similar packages
-- When implementing state management with Redux Toolkit, Zustand, or Context API patterns
-- When setting up React Navigation with type-safe navigation props and nested navigators
-- When integrating REST APIs or GraphQL with Axios, Fetch API, or Apollo Client
-- When implementing server state management with React Query or SWR for caching and synchronization
-- When building forms with React Hook Form and implementing validation with Zod or Yup schemas
-- When creating native modules to access platform-specific features (Swift for iOS, Kotlin for Android)
-- When implementing offline-first architecture with AsyncStorage, MMKV, or WatermelonDB
-- When structuring React Native projects with feature-based or domain-driven architecture
-- When migrating to React Native New Architecture with TurboModules and Fabric renderer
-- When implementing optimistic UI updates with background synchronization queues
-- When handling deep linking, universal links, or custom URL schemes
-- When integrating push notifications with Firebase Cloud Messaging or OneSignal
-- When using Hermes JavaScript engine for improved startup performance
-- When profiling React Native apps with Flipper, React DevTools, or Performance Monitor
-- When implementing accessibility features with accessibility labels, hints, and roles
-- When building cross-platform components that adapt to iOS and Android platform guidelines
+| Complexity | State Management | Navigation |
+|------------|------------------|------------|
+| Simple | Context + useState | Stack Navigator |
+| Medium | Zustand | Tab + Stack |
+| Complex | Redux Toolkit | Nested navigators |
+| Enterprise | Redux + RTK Query | Deep linking + tabs |
 
 ---
 
-## Skill Overview
-
-This skill provides comprehensive knowledge for React Native development with the New Architecture, covering component patterns, state management, native integrations, and performance optimization strategies.
-
-**Target Audience**: React/TypeScript developers transitioning to mobile or teams adopting React Native
-
-**Estimated Learning Time**: 5-7 hours to master core concepts
-
----
-
-## Core Concepts
-
-### 1. Component Architecture
-
-**Key Principle**: Build reusable, performant components with TypeScript for type safety.
-
-#### Basic Component Pattern
+## Component Pattern
 
 ```typescript
-import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
-
 interface UserCardProps {
   name: string;
   email: string;
   onPress?: () => void;
 }
 
-export const UserCard: React.FC<UserCardProps> = ({ name, email, onPress }) => {
-  return (
-    <TouchableOpacity style={styles.container} onPress={onPress} activeOpacity={0.7}>
-      <View style={styles.avatar}>
-        <Text style={styles.avatarText}>{name[0]}</Text>
-      </View>
-      <View style={styles.content}>
-        <Text style={styles.name}>{name}</Text>
-        <Text style={styles.email}>{email}</Text>
-      </View>
-    </TouchableOpacity>
-  );
-};
+export const UserCard: React.FC<UserCardProps> = ({ name, email, onPress }) => (
+  <TouchableOpacity style={styles.container} onPress={onPress} activeOpacity={0.7}>
+    <View style={styles.avatar}>
+      <Text style={styles.avatarText}>{name[0]}</Text>
+    </View>
+    <View style={styles.content}>
+      <Text style={styles.name}>{name}</Text>
+      <Text style={styles.email}>{email}</Text>
+    </View>
+  </TouchableOpacity>
+);
 
 const styles = StyleSheet.create({
-  container: {
-    flexDirection: 'row',
-    padding: 16,
-    backgroundColor: '#fff',
-    borderRadius: 8,
-    marginVertical: 8,
-  },
-  avatar: {
-    width: 48,
-    height: 48,
-    borderRadius: 24,
-    backgroundColor: '#4A90E2',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  avatarText: {
-    color: '#fff',
-    fontSize: 20,
-    fontWeight: 'bold',
-  },
-  content: {
-    marginLeft: 12,
-    justifyContent: 'center',
-  },
-  name: {
-    fontSize: 16,
-    fontWeight: '600',
-    color: '#333',
-  },
-  email: {
-    fontSize: 14,
-    color: '#666',
-    marginTop: 4,
-  },
+  container: { flexDirection: 'row', padding: 16, backgroundColor: '#fff' },
+  avatar: { width: 48, height: 48, borderRadius: 24, backgroundColor: '#4A90E2' },
+  // ...
 });
 ```
 
 ---
 
-### 2. Performance Optimization
-
-#### Memoization Strategies
+## Performance Optimization
 
 ```typescript
-import React, { memo, useCallback, useMemo } from 'react';
-import { FlatList, ListRenderItem } from 'react-native';
-
-interface Item {
-  id: string;
-  name: string;
-  value: number;
-}
-
-// ✅ Good: Memoized list item component
+// ✅ Memoized list item
 const ListItem = memo<{ item: Item; onPress: (id: string) => void }>(
   ({ item, onPress }) => {
-    const handlePress = useCallback(() => {
-      onPress(item.id);
-    }, [item.id, onPress]);
-
+    const handlePress = useCallback(() => onPress(item.id), [item.id, onPress]);
     return (
       <TouchableOpacity onPress={handlePress}>
-        <Text>{item.name}: {item.value}</Text>
+        <Text>{item.name}</Text>
       </TouchableOpacity>
     );
   }
 );
 
-// ✅ Good: Optimized list rendering
+// ✅ Optimized FlatList
 export const OptimizedList: React.FC<{ items: Item[] }> = ({ items }) => {
-  const handleItemPress = useCallback((id: string) => {
-    console.log('Pressed item:', id);
-  }, []);
+  const handlePress = useCallback((id: string) => console.log(id), []);
 
-  const renderItem: ListRenderItem<Item> = useCallback(
-    ({ item }) => <ListItem item={item} onPress={handleItemPress} />,
-    [handleItemPress]
+  const renderItem = useCallback<ListRenderItem<Item>>(
+    ({ item }) => <ListItem item={item} onPress={handlePress} />,
+    [handlePress]
   );
-
-  const keyExtractor = useCallback((item: Item) => item.id, []);
 
   return (
     <FlatList
       data={items}
       renderItem={renderItem}
-      keyExtractor={keyExtractor}
+      keyExtractor={(item) => item.id}
       removeClippedSubviews={true}
       maxToRenderPerBatch={10}
       windowSize={10}
-      initialNumToRender={10}
-      getItemLayout={(data, index) => ({
-        length: ITEM_HEIGHT,
-        offset: ITEM_HEIGHT * index,
-        index,
-      })}
+      getItemLayout={(_, index) => ({ length: 60, offset: 60 * index, index })}
     />
   );
 };
-```
 
-#### Image Optimization
-
-```typescript
+// ✅ Image optimization
 import FastImage from 'react-native-fast-image';
 
-// ✅ Good: Optimized image loading
-export const OptimizedImage: React.FC<{
-  uri: string;
-  width: number;
-  height: number;
-}> = ({ uri, width, height }) => {
-  return (
-    <FastImage
-      source={{
-        uri,
-        priority: FastImage.priority.normal,
-        cache: FastImage.cacheControl.immutable,
-      }}
-      style={{ width, height }}
-      resizeMode={FastImage.resizeMode.cover}
-    />
-  );
-};
-
-// ✅ Good: Preload images
-const preloadImages = async (imageUrls: string[]) => {
-  await FastImage.preload(
-    imageUrls.map(uri => ({
-      uri,
-      priority: FastImage.priority.high,
-    }))
-  );
-};
+<FastImage
+  source={{ uri, priority: FastImage.priority.normal, cache: FastImage.cacheControl.immutable }}
+  style={{ width: 100, height: 100 }}
+  resizeMode={FastImage.resizeMode.cover}
+/>
 ```
 
 ---
 
-### 3. State Management with Redux Toolkit
+## Redux Toolkit State
 
 ```typescript
-// store/slices/userSlice.ts
-import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
-
-interface User {
-  id: string;
-  name: string;
-  email: string;
-}
-
+// userSlice.ts
 interface UserState {
   user: User | null;
   loading: boolean;
   error: string | null;
 }
 
-const initialState: UserState = {
-  user: null,
-  loading: false,
-  error: null,
-};
-
-// Async thunk for API calls
 export const fetchUser = createAsyncThunk(
   'user/fetchUser',
   async (userId: string, { rejectWithValue }) => {
     try {
-      const response = await fetch(`https://api.example.com/users/${userId}`);
-      const data = await response.json();
-      return data as User;
+      const response = await fetch(`/api/users/${userId}`);
+      return await response.json();
     } catch (error) {
       return rejectWithValue('Failed to fetch user');
     }
@@ -255,20 +126,14 @@ export const fetchUser = createAsyncThunk(
 
 const userSlice = createSlice({
   name: 'user',
-  initialState,
+  initialState: { user: null, loading: false, error: null },
   reducers: {
-    clearUser: (state) => {
-      state.user = null;
-      state.error = null;
-    },
+    clearUser: (state) => { state.user = null; },
   },
   extraReducers: (builder) => {
     builder
-      .addCase(fetchUser.pending, (state) => {
-        state.loading = true;
-        state.error = null;
-      })
-      .addCase(fetchUser.fulfilled, (state, action: PayloadAction<User>) => {
+      .addCase(fetchUser.pending, (state) => { state.loading = true; })
+      .addCase(fetchUser.fulfilled, (state, action) => {
         state.loading = false;
         state.user = action.payload;
       })
@@ -278,140 +143,63 @@ const userSlice = createSlice({
       });
   },
 });
-
-export const { clearUser } = userSlice.actions;
-export default userSlice.reducer;
-
-// Usage in component
-import { useAppDispatch, useAppSelector } from '../store/hooks';
-
-export const UserProfile: React.FC = () => {
-  const dispatch = useAppDispatch();
-  const { user, loading, error } = useAppSelector((state) => state.user);
-
-  useEffect(() => {
-    dispatch(fetchUser('123'));
-  }, [dispatch]);
-
-  if (loading) return <LoadingSpinner />;
-  if (error) return <ErrorView message={error} />;
-  if (!user) return null;
-
-  return <UserCard name={user.name} email={user.email} />;
-};
 ```
 
 ---
 
-### 4. Navigation with React Navigation
+## Navigation (React Navigation)
 
 ```typescript
-// navigation/types.ts
+// types.ts
 export type RootStackParamList = {
   Home: undefined;
   Profile: { userId: string };
   Settings: undefined;
 };
 
-// navigation/RootNavigator.tsx
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-
+// Navigator
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
-export const RootNavigator: React.FC = () => {
-  return (
-    <NavigationContainer>
-      <Stack.Navigator
-        initialRouteName="Home"
-        screenOptions={{
-          headerShown: true,
-          animation: 'slide_from_right',
-        }}
-      >
-        <Stack.Screen
-          name="Home"
-          component={HomeScreen}
-          options={{ title: 'Welcome' }}
-        />
-        <Stack.Screen
-          name="Profile"
-          component={ProfileScreen}
-          options={({ route }) => ({ title: `Profile #${route.params.userId}` })}
-        />
-        <Stack.Screen name="Settings" component={SettingsScreen} />
-      </Stack.Navigator>
-    </NavigationContainer>
-  );
-};
+export const RootNavigator: React.FC = () => (
+  <NavigationContainer>
+    <Stack.Navigator initialRouteName="Home" screenOptions={{ animation: 'slide_from_right' }}>
+      <Stack.Screen name="Home" component={HomeScreen} />
+      <Stack.Screen
+        name="Profile"
+        component={ProfileScreen}
+        options={({ route }) => ({ title: `Profile #${route.params.userId}` })}
+      />
+    </Stack.Navigator>
+  </NavigationContainer>
+);
 
-// Usage in component with TypeScript
-import { NativeStackScreenProps } from '@react-navigation/native-stack';
-
+// Type-safe navigation
 type ProfileScreenProps = NativeStackScreenProps<RootStackParamList, 'Profile'>;
 
 export const ProfileScreen: React.FC<ProfileScreenProps> = ({ route, navigation }) => {
   const { userId } = route.params;
-
-  const navigateToSettings = () => {
-    navigation.navigate('Settings');
-  };
-
-  return (
-    <View>
-      <Text>User ID: {userId}</Text>
-      <Button title="Go to Settings" onPress={navigateToSettings} />
-    </View>
-  );
+  return <Button title="Settings" onPress={() => navigation.navigate('Settings')} />;
 };
 ```
 
 ---
 
-### 5. API Integration with Axios & React Query
+## API Integration (React Query)
 
 ```typescript
 // api/client.ts
-import axios from 'axios';
-
 export const apiClient = axios.create({
   baseURL: 'https://api.example.com',
   timeout: 10000,
-  headers: {
-    'Content-Type': 'application/json',
-  },
 });
 
-// Add request interceptor for auth
 apiClient.interceptors.request.use(async (config) => {
   const token = await getAuthToken();
-  if (token) {
-    config.headers.Authorization = `Bearer ${token}`;
-  }
+  if (token) config.headers.Authorization = `Bearer ${token}`;
   return config;
 });
 
-// Add response interceptor for error handling
-apiClient.interceptors.response.use(
-  (response) => response,
-  (error) => {
-    if (error.response?.status === 401) {
-      // Handle unauthorized
-      handleLogout();
-    }
-    return Promise.reject(error);
-  }
-);
-
 // hooks/useUser.ts
-import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
-
-interface User {
-  id: string;
-  name: string;
-  email: string;
-}
-
 export const useUser = (userId: string) => {
   return useQuery({
     queryKey: ['user', userId],
@@ -419,135 +207,49 @@ export const useUser = (userId: string) => {
       const { data } = await apiClient.get<User>(`/users/${userId}`);
       return data;
     },
-    staleTime: 5 * 60 * 1000, // 5 minutes
+    staleTime: 5 * 60 * 1000,
   });
 };
 
 export const useUpdateUser = () => {
   const queryClient = useQueryClient();
-
   return useMutation({
-    mutationFn: async (user: User) => {
-      const { data } = await apiClient.put(`/users/${user.id}`, user);
-      return data;
-    },
-    onSuccess: (data) => {
-      queryClient.invalidateQueries({ queryKey: ['user', data.id] });
-    },
+    mutationFn: (user: User) => apiClient.put(`/users/${user.id}`, user),
+    onSuccess: (_, user) => queryClient.invalidateQueries({ queryKey: ['user', user.id] }),
   });
-};
-
-// Usage in component
-export const UserProfile: React.FC = () => {
-  const { data: user, isLoading, error } = useUser('123');
-  const updateUser = useUpdateUser();
-
-  const handleUpdate = async () => {
-    await updateUser.mutateAsync({
-      ...user!,
-      name: 'New Name',
-    });
-  };
-
-  if (isLoading) return <LoadingSpinner />;
-  if (error) return <ErrorView message={error.message} />;
-
-  return (
-    <View>
-      <Text>{user?.name}</Text>
-      <Button title="Update" onPress={handleUpdate} />
-    </View>
-  );
 };
 ```
 
 ---
 
-### 6. Form Handling with React Hook Form
+## Form Handling (React Hook Form + Zod)
 
 ```typescript
-import { useForm, Controller } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { z } from 'zod';
-
-// Define validation schema
 const loginSchema = z.object({
-  email: z.string().email('Invalid email format'),
-  password: z.string().min(8, 'Password must be at least 8 characters'),
+  email: z.string().email('Invalid email'),
+  password: z.string().min(8, 'Min 8 characters'),
 });
 
 type LoginFormData = z.infer<typeof loginSchema>;
 
 export const LoginForm: React.FC = () => {
-  const {
-    control,
-    handleSubmit,
-    formState: { errors, isSubmitting },
-  } = useForm<LoginFormData>({
+  const { control, handleSubmit, formState: { errors, isSubmitting } } = useForm<LoginFormData>({
     resolver: zodResolver(loginSchema),
-    defaultValues: {
-      email: '',
-      password: '',
-    },
   });
 
-  const onSubmit = async (data: LoginFormData) => {
-    try {
-      await login(data.email, data.password);
-      // Navigate to home
-    } catch (error) {
-      // Handle error
-    }
-  };
-
   return (
-    <View style={styles.container}>
+    <View>
       <Controller
         control={control}
         name="email"
         render={({ field: { onChange, onBlur, value } }) => (
-          <View>
-            <TextInput
-              style={styles.input}
-              placeholder="Email"
-              onBlur={onBlur}
-              onChangeText={onChange}
-              value={value}
-              keyboardType="email-address"
-              autoCapitalize="none"
-            />
-            {errors.email && (
-              <Text style={styles.error}>{errors.email.message}</Text>
-            )}
-          </View>
+          <>
+            <TextInput placeholder="Email" onBlur={onBlur} onChangeText={onChange} value={value} />
+            {errors.email && <Text style={styles.error}>{errors.email.message}</Text>}
+          </>
         )}
       />
-
-      <Controller
-        control={control}
-        name="password"
-        render={({ field: { onChange, onBlur, value } }) => (
-          <View>
-            <TextInput
-              style={styles.input}
-              placeholder="Password"
-              onBlur={onBlur}
-              onChangeText={onChange}
-              value={value}
-              secureTextEntry
-            />
-            {errors.password && (
-              <Text style={styles.error}>{errors.password.message}</Text>
-            )}
-          </View>
-        )}
-      />
-
-      <Button
-        title={isSubmitting ? 'Loading...' : 'Login'}
-        onPress={handleSubmit(onSubmit)}
-        disabled={isSubmitting}
-      />
+      <Button title={isSubmitting ? 'Loading...' : 'Login'} onPress={handleSubmit(onSubmit)} />
     </View>
   );
 };
@@ -555,124 +257,37 @@ export const LoginForm: React.FC = () => {
 
 ---
 
-### 7. Native Module Integration
-
-```typescript
-// Creating a native module bridge
-// ios/MyNativeModule.swift
-import Foundation
-import React
-
-@objc(MyNativeModule)
-class MyNativeModule: NSObject {
-
-  @objc
-  func getBatteryLevel(_ resolve: @escaping RCTPromiseResolveBlock,
-                       reject: @escaping RCTPromiseRejectBlock) {
-    UIDevice.current.isBatteryMonitoringEnabled = true
-    let batteryLevel = UIDevice.current.batteryLevel
-
-    if batteryLevel < 0 {
-      reject("ERROR", "Unable to get battery level", nil)
-    } else {
-      resolve(batteryLevel * 100)
-    }
-  }
-
-  @objc
-  static func requiresMainQueueSetup() -> Bool {
-    return false
-  }
-}
-
-// TypeScript interface
-// NativeModules.ts
-import { NativeModules } from 'react-native';
-
-interface MyNativeModule {
-  getBatteryLevel(): Promise<number>;
-}
-
-export const { MyNativeModule } = NativeModules as {
-  MyNativeModule: MyNativeModule;
-};
-
-// Usage
-export const BatteryLevel: React.FC = () => {
-  const [batteryLevel, setBatteryLevel] = useState<number | null>(null);
-
-  useEffect(() => {
-    MyNativeModule.getBatteryLevel()
-      .then(setBatteryLevel)
-      .catch(console.error);
-  }, []);
-
-  return (
-    <View>
-      <Text>Battery: {batteryLevel?.toFixed(0)}%</Text>
-    </View>
-  );
-};
-```
-
----
-
-### 8. Offline Support with Async Storage
+## Offline Storage
 
 ```typescript
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-// Storage utilities
 export const storage = {
   async set<T>(key: string, value: T): Promise<void> {
     await AsyncStorage.setItem(key, JSON.stringify(value));
   },
-
   async get<T>(key: string): Promise<T | null> {
     const value = await AsyncStorage.getItem(key);
     return value ? JSON.parse(value) : null;
   },
-
-  async remove(key: string): Promise<void> {
-    await AsyncStorage.removeItem(key);
-  },
-
-  async clear(): Promise<void> {
-    await AsyncStorage.clear();
-  },
 };
 
-// Offline-first data hook
-export const useOfflineFirst = <T,>(
-  key: string,
-  fetchFn: () => Promise<T>
-) => {
+// Offline-first hook
+export const useOfflineFirst = <T,>(key: string, fetchFn: () => Promise<T>) => {
   const [data, setData] = useState<T | null>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const loadData = async () => {
-      // Load from cache first
+    (async () => {
       const cached = await storage.get<T>(key);
-      if (cached) {
-        setData(cached);
-        setLoading(false);
-      }
+      if (cached) { setData(cached); setLoading(false); }
 
-      // Fetch fresh data
       try {
         const fresh = await fetchFn();
         setData(fresh);
         await storage.set(key, fresh);
-      } catch (error) {
-        console.error('Failed to fetch:', error);
-        // Use cached data if fetch fails
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    loadData();
+      } finally { setLoading(false); }
+    })();
   }, [key]);
 
   return { data, loading };
@@ -681,39 +296,21 @@ export const useOfflineFirst = <T,>(
 
 ---
 
-## Architecture Patterns
-
-### Feature-Based Structure
+## Project Structure
 
 ```
 src/
 ├── features/
 │   ├── auth/
 │   │   ├── components/
-│   │   │   ├── LoginForm.tsx
-│   │   │   └── SignupForm.tsx
-│   │   ├── screens/
-│   │   │   ├── LoginScreen.tsx
-│   │   │   └── SignupScreen.tsx
-│   │   ├── hooks/
-│   │   │   └── useAuth.ts
-│   │   └── api/
-│   │       └── authApi.ts
-│   ├── user/
-│   │   ├── components/
 │   │   ├── screens/
 │   │   ├── hooks/
 │   │   └── api/
-│   └── posts/
-│       ├── components/
-│       ├── screens/
-│       ├── hooks/
-│       └── api/
+│   └── user/
 ├── shared/
 │   ├── components/
 │   ├── hooks/
-│   ├── utils/
-│   └── types/
+│   └── utils/
 ├── navigation/
 ├── store/
 └── App.tsx
@@ -721,64 +318,32 @@ src/
 
 ---
 
-## Quick Reference
+## Essential Packages
 
-### Essential Packages
+| Package | Purpose |
+|---------|---------|
+| @tanstack/react-query | Server state, caching |
+| @reduxjs/toolkit | Client state |
+| @react-navigation/native | Navigation |
+| react-hook-form | Form handling |
+| zod | Validation |
+| react-native-fast-image | Image optimization |
+| @react-native-async-storage | Local storage |
 
-| Package | Purpose | Use Case |
-|---------|---------|----------|
-| `@tanstack/react-query` | Server state | API data fetching |
-| `@reduxjs/toolkit` | Client state | Complex app state |
-| `react-navigation` | Navigation | Screen transitions |
-| `react-hook-form` | Forms | Form validation |
-| `axios` | HTTP client | API requests |
-| `react-native-fast-image` | Images | Image optimization |
-| `@react-native-async-storage` | Storage | Local persistence |
+---
 
-### Performance Checklist
+## Checklist
 
 - [ ] Use `React.memo` for expensive components
 - [ ] Use `useCallback` for function props
-- [ ] Use `useMemo` for expensive computations
-- [ ] Optimize FlatList with proper props
-- [ ] Use Fast Image for network images
-- [ ] Implement lazy loading for screens
+- [ ] Optimize FlatList with `getItemLayout`, `windowSize`
+- [ ] Use FastImage for network images
+- [ ] Extract styles to `StyleSheet.create`
+- [ ] Implement type-safe navigation
+- [ ] Use React Query for server state
+- [ ] Enable Hermes JavaScript engine
 - [ ] Profile with Flipper before optimizing
-- [ ] Use Hermes JavaScript engine
 
 ---
 
-## Anti-Patterns to Avoid
-
-### ❌ Don't: Inline styles and functions
-
-```typescript
-// Bad: Creates new objects on every render
-<View style={{ padding: 16, margin: 8 }}>
-  <Button onPress={() => console.log('press')} />
-</View>
-```
-
-### ✅ Do: Extract styles and memoize callbacks
-
-```typescript
-// Good: Reuses style object and memoized function
-const handlePress = useCallback(() => {
-  console.log('press');
-}, []);
-
-<View style={styles.container}>
-  <Button onPress={handlePress} />
-</View>
-
-const styles = StyleSheet.create({
-  container: { padding: 16, margin: 8 },
-});
-```
-
----
-
-**Skill Version**: 1.0.0
-**Last Updated**: October 27, 2024
-**Difficulty**: Intermediate
-**Estimated Time**: 5-7 hours
+**Version**: 1.0.5

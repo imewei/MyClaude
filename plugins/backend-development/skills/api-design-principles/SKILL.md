@@ -1,541 +1,205 @@
 ---
 name: api-design-principles
-description: Master REST and GraphQL API design principles including resource-oriented architecture, HTTP semantics, RESTful endpoint patterns, GraphQL schema design, pagination strategies (cursor-based, offset-based), API versioning (URL, header, query parameter), error handling with consistent status codes, and HATEOAS hypermedia patterns. Use this skill when designing new REST or GraphQL APIs from scratch, when refactoring existing APIs for better usability and developer experience, when reviewing API specifications and contracts before implementation, when establishing API design standards and conventions for development teams, when implementing pagination for large data collections, when designing API versioning strategies to handle breaking changes gracefully, when creating developer-friendly API documentation and interactive docs with OpenAPI/Swagger, when optimizing APIs for specific use cases such as mobile applications or third-party integrations, when implementing consistent error response formats across all endpoints, when designing GraphQL schemas with proper types, queries, mutations, and subscriptions, when implementing DataLoader patterns to prevent N+1 query problems in GraphQL, when migrating between API paradigms (REST to GraphQL or vice versa), when adding authentication and authorization to API endpoints, when implementing rate limiting and throttling for API protection, when designing webhook systems with retry logic and signature verification, or when building HATEOAS-compliant APIs with discoverable resource relationships. Use this skill for all aspects of API design, specification, implementation, documentation, versioning, error handling, pagination, authentication, and developer experience optimization.
+version: "1.0.5"
+maturity: "5-Expert"
+specialization: REST & GraphQL API Design
+description: Master REST and GraphQL API design including resource-oriented architecture, HTTP semantics, pagination (cursor/offset), versioning strategies, error handling, HATEOAS, DataLoader patterns, and documentation. Use when designing new APIs, implementing pagination, handling errors, or establishing API standards.
 ---
 
 # API Design Principles
 
-Master REST and GraphQL API design principles to build intuitive, scalable, and maintainable APIs that delight developers and stand the test of time.
+REST and GraphQL API design for intuitive, scalable, and maintainable APIs.
 
-## When to use this skill
+---
 
-- When designing new REST or GraphQL APIs from scratch for web or mobile applications
-- When refactoring existing APIs to improve usability, performance, or developer experience
-- When establishing API design standards, conventions, and best practices for development teams
-- When reviewing API specifications and contracts before implementation begins
-- When implementing pagination strategies for large data collections (cursor-based, offset-based, or keyset pagination)
-- When designing API versioning strategies to handle breaking changes without disrupting existing clients
-- When creating developer-friendly API documentation using OpenAPI/Swagger, GraphQL Playground, or similar tools
-- When optimizing APIs for specific use cases such as mobile applications, third-party integrations, or microservices communication
-- When implementing consistent error response formats with proper HTTP status codes across all endpoints
-- When designing GraphQL schemas with types, queries, mutations, subscriptions, and proper type relationships
-- When implementing DataLoader patterns or batching strategies to prevent N+1 query problems in GraphQL APIs
-- When migrating between API paradigms (REST to GraphQL, GraphQL to REST, or SOAP to REST)
-- When adding authentication (JWT, OAuth2, API keys) and authorization (RBAC, ABAC) to API endpoints
-- When implementing rate limiting, throttling, or quota management to protect API resources
-- When designing webhook delivery systems with retry logic, exponential backoff, and signature verification
-- When building HATEOAS-compliant APIs with hypermedia links for resource discovery
-- When implementing filtering, sorting, and searching capabilities for API resources
-- When designing file upload/download endpoints with proper multipart handling and progress tracking
-- When creating bulk operation endpoints for batch create, update, or delete operations
-- When implementing real-time APIs with GraphQL subscriptions, Server-Sent Events (SSE), or WebSockets
-- When working with API files, route configurations, controller implementations, or API specification documents (OpenAPI YAML/JSON, GraphQL schemas)
+## Paradigm Selection
 
-## Core Concepts
+| Paradigm | Best For | Key Characteristics |
+|----------|----------|---------------------|
+| REST | CRUD operations, caching, simplicity | Resource-oriented, HTTP semantics |
+| GraphQL | Complex queries, mobile apps | Single endpoint, client-driven |
+| gRPC | Internal services, high performance | Binary protocol, streaming |
 
-### 1. RESTful Design Principles
+---
 
-**Resource-Oriented Architecture**
-- Resources are nouns (users, orders, products), not verbs
-- Use HTTP methods for actions (GET, POST, PUT, PATCH, DELETE)
-- URLs represent resource hierarchies
-- Consistent naming conventions
-
-**HTTP Methods Semantics:**
-- `GET`: Retrieve resources (idempotent, safe)
-- `POST`: Create new resources
-- `PUT`: Replace entire resource (idempotent)
-- `PATCH`: Partial resource updates
-- `DELETE`: Remove resources (idempotent)
-
-### 2. GraphQL Design Principles
-
-**Schema-First Development**
-- Types define your domain model
-- Queries for reading data
-- Mutations for modifying data
-- Subscriptions for real-time updates
-
-**Query Structure:**
-- Clients request exactly what they need
-- Single endpoint, multiple operations
-- Strongly typed schema
-- Introspection built-in
-
-### 3. API Versioning Strategies
-
-**URL Versioning:**
-```
-/api/v1/users
-/api/v2/users
-```
-
-**Header Versioning:**
-```
-Accept: application/vnd.api+json; version=1
-```
-
-**Query Parameter Versioning:**
-```
-/api/users?version=1
-```
-
-## REST API Design Patterns
-
-### Pattern 1: Resource Collection Design
+## REST Resource Design
 
 ```python
-# Good: Resource-oriented endpoints
-GET    /api/users              # List users (with pagination)
+# ✅ Good: Resource-oriented
+GET    /api/users              # List users
 POST   /api/users              # Create user
-GET    /api/users/{id}         # Get specific user
+GET    /api/users/{id}         # Get user
 PUT    /api/users/{id}         # Replace user
-PATCH  /api/users/{id}         # Update user fields
+PATCH  /api/users/{id}         # Update fields
 DELETE /api/users/{id}         # Delete user
+GET    /api/users/{id}/orders  # Nested resource
 
-# Nested resources
-GET    /api/users/{id}/orders  # Get user's orders
-POST   /api/users/{id}/orders  # Create order for user
-
-# Bad: Action-oriented endpoints (avoid)
+# ❌ Bad: Action-oriented
 POST   /api/createUser
 POST   /api/getUserById
-POST   /api/deleteUser
 ```
 
-### Pattern 2: Pagination and Filtering
+---
 
+## HTTP Methods
+
+| Method | Purpose | Idempotent | Safe |
+|--------|---------|------------|------|
+| GET | Retrieve resources | Yes | Yes |
+| POST | Create new resource | No | No |
+| PUT | Replace entire resource | Yes | No |
+| PATCH | Partial update | No | No |
+| DELETE | Remove resource | Yes | No |
+
+---
+
+## Pagination
+
+### Offset-Based
 ```python
-from typing import List, Optional
-from pydantic import BaseModel, Field
-
-class PaginationParams(BaseModel):
-    page: int = Field(1, ge=1, description="Page number")
-    page_size: int = Field(20, ge=1, le=100, description="Items per page")
-
-class FilterParams(BaseModel):
-    status: Optional[str] = None
-    created_after: Optional[str] = None
-    search: Optional[str] = None
-
-class PaginatedResponse(BaseModel):
-    items: List[dict]
-    total: int
-    page: int
-    page_size: int
-    pages: int
-
-    @property
-    def has_next(self) -> bool:
-        return self.page < self.pages
-
-    @property
-    def has_prev(self) -> bool:
-        return self.page > 1
-
-# FastAPI endpoint example
-from fastapi import FastAPI, Query, Depends
-
-app = FastAPI()
-
-@app.get("/api/users", response_model=PaginatedResponse)
-async def list_users(
-    page: int = Query(1, ge=1),
-    page_size: int = Query(20, ge=1, le=100),
-    status: Optional[str] = Query(None),
-    search: Optional[str] = Query(None)
-):
-    # Apply filters
-    query = build_query(status=status, search=search)
-
-    # Count total
-    total = await count_users(query)
-
-    # Fetch page
+@app.get("/api/users")
+async def list_users(page: int = 1, page_size: int = 20):
     offset = (page - 1) * page_size
-    users = await fetch_users(query, limit=page_size, offset=offset)
-
-    return PaginatedResponse(
-        items=users,
-        total=total,
-        page=page,
-        page_size=page_size,
-        pages=(total + page_size - 1) // page_size
-    )
+    users = await fetch_users(limit=page_size, offset=offset)
+    total = await count_users()
+    return {
+        "items": users,
+        "total": total,
+        "page": page,
+        "pages": (total + page_size - 1) // page_size
+    }
 ```
 
-### Pattern 3: Error Handling and Status Codes
-
-```python
-from fastapi import HTTPException, status
-from pydantic import BaseModel
-
-class ErrorResponse(BaseModel):
-    error: str
-    message: str
-    details: Optional[dict] = None
-    timestamp: str
-    path: str
-
-class ValidationErrorDetail(BaseModel):
-    field: str
-    message: str
-    value: Any
-
-# Consistent error responses
-STATUS_CODES = {
-    "success": 200,
-    "created": 201,
-    "no_content": 204,
-    "bad_request": 400,
-    "unauthorized": 401,
-    "forbidden": 403,
-    "not_found": 404,
-    "conflict": 409,
-    "unprocessable": 422,
-    "internal_error": 500
-}
-
-def raise_not_found(resource: str, id: str):
-    raise HTTPException(
-        status_code=status.HTTP_404_NOT_FOUND,
-        detail={
-            "error": "NotFound",
-            "message": f"{resource} not found",
-            "details": {"id": id}
-        }
-    )
-
-def raise_validation_error(errors: List[ValidationErrorDetail]):
-    raise HTTPException(
-        status_code=status.HTTP_422_UNPROCESSABLE_ENTITY,
-        detail={
-            "error": "ValidationError",
-            "message": "Request validation failed",
-            "details": {"errors": [e.dict() for e in errors]}
-        }
-    )
-
-# Example usage
-@app.get("/api/users/{user_id}")
-async def get_user(user_id: str):
-    user = await fetch_user(user_id)
-    if not user:
-        raise_not_found("User", user_id)
-    return user
-```
-
-### Pattern 4: HATEOAS (Hypermedia as the Engine of Application State)
-
-```python
-class UserResponse(BaseModel):
-    id: str
-    name: str
-    email: str
-    _links: dict
-
-    @classmethod
-    def from_user(cls, user: User, base_url: str):
-        return cls(
-            id=user.id,
-            name=user.name,
-            email=user.email,
-            _links={
-                "self": {"href": f"{base_url}/api/users/{user.id}"},
-                "orders": {"href": f"{base_url}/api/users/{user.id}/orders"},
-                "update": {
-                    "href": f"{base_url}/api/users/{user.id}",
-                    "method": "PATCH"
-                },
-                "delete": {
-                    "href": f"{base_url}/api/users/{user.id}",
-                    "method": "DELETE"
-                }
-            }
-        )
-```
-
-## GraphQL Design Patterns
-
-### Pattern 1: Schema Design
-
+### Cursor-Based (GraphQL Relay)
 ```graphql
-# schema.graphql
-
-# Clear type definitions
-type User {
-  id: ID!
-  email: String!
-  name: String!
-  createdAt: DateTime!
-
-  # Relationships
-  orders(
-    first: Int = 20
-    after: String
-    status: OrderStatus
-  ): OrderConnection!
-
-  profile: UserProfile
-}
-
-type Order {
-  id: ID!
-  status: OrderStatus!
-  total: Money!
-  items: [OrderItem!]!
-  createdAt: DateTime!
-
-  # Back-reference
-  user: User!
-}
-
-# Pagination pattern (Relay-style)
-type OrderConnection {
-  edges: [OrderEdge!]!
+type UserConnection {
+  edges: [UserEdge!]!
   pageInfo: PageInfo!
-  totalCount: Int!
-}
-
-type OrderEdge {
-  node: Order!
-  cursor: String!
 }
 
 type PageInfo {
   hasNextPage: Boolean!
-  hasPreviousPage: Boolean!
-  startCursor: String
   endCursor: String
 }
+```
 
-# Enums for type safety
-enum OrderStatus {
-  PENDING
-  CONFIRMED
-  SHIPPED
-  DELIVERED
-  CANCELLED
+---
+
+## Error Handling
+
+| Status | Meaning | Example |
+|--------|---------|---------|
+| 200 | Success | GET succeeded |
+| 201 | Created | POST succeeded |
+| 204 | No Content | DELETE succeeded |
+| 400 | Bad Request | Invalid input |
+| 401 | Unauthorized | Missing/invalid token |
+| 403 | Forbidden | Insufficient permissions |
+| 404 | Not Found | Resource doesn't exist |
+| 422 | Unprocessable | Validation failed |
+| 500 | Server Error | Internal failure |
+
+### Consistent Error Response
+```python
+class ErrorResponse(BaseModel):
+    error: str      # Error type
+    message: str    # Human-readable message
+    details: dict   # Additional context
+
+def raise_not_found(resource: str, id: str):
+    raise HTTPException(
+        status_code=404,
+        detail={"error": "NotFound", "message": f"{resource} not found", "details": {"id": id}}
+    )
+```
+
+---
+
+## GraphQL Schema Design
+
+```graphql
+type User {
+  id: ID!
+  email: String!
+  orders(first: Int = 20, after: String): OrderConnection!
 }
 
-# Custom scalars
-scalar DateTime
-scalar Money
-
-# Query root
-type Query {
-  user(id: ID!): User
-  users(
-    first: Int = 20
-    after: String
-    search: String
-  ): UserConnection!
-
-  order(id: ID!): Order
-}
-
-# Mutation root
 type Mutation {
   createUser(input: CreateUserInput!): CreateUserPayload!
-  updateUser(input: UpdateUserInput!): UpdateUserPayload!
-  deleteUser(id: ID!): DeleteUserPayload!
-
-  createOrder(input: CreateOrderInput!): CreateOrderPayload!
 }
 
-# Input types for mutations
-input CreateUserInput {
-  email: String!
-  name: String!
-  password: String!
-}
-
-# Payload types for mutations
 type CreateUserPayload {
   user: User
-  errors: [Error!]
-}
-
-type Error {
-  field: String
-  message: String!
+  errors: [Error!]  # Errors in payload, not exceptions
 }
 ```
 
-### Pattern 2: Resolver Design
+---
 
-```python
-from typing import Optional, List
-from ariadne import QueryType, MutationType, ObjectType
-from dataclasses import dataclass
-
-query = QueryType()
-mutation = MutationType()
-user_type = ObjectType("User")
-
-@query.field("user")
-async def resolve_user(obj, info, id: str) -> Optional[dict]:
-    """Resolve single user by ID."""
-    return await fetch_user_by_id(id)
-
-@query.field("users")
-async def resolve_users(
-    obj,
-    info,
-    first: int = 20,
-    after: Optional[str] = None,
-    search: Optional[str] = None
-) -> dict:
-    """Resolve paginated user list."""
-    # Decode cursor
-    offset = decode_cursor(after) if after else 0
-
-    # Fetch users
-    users = await fetch_users(
-        limit=first + 1,  # Fetch one extra to check hasNextPage
-        offset=offset,
-        search=search
-    )
-
-    # Pagination
-    has_next = len(users) > first
-    if has_next:
-        users = users[:first]
-
-    edges = [
-        {
-            "node": user,
-            "cursor": encode_cursor(offset + i)
-        }
-        for i, user in enumerate(users)
-    ]
-
-    return {
-        "edges": edges,
-        "pageInfo": {
-            "hasNextPage": has_next,
-            "hasPreviousPage": offset > 0,
-            "startCursor": edges[0]["cursor"] if edges else None,
-            "endCursor": edges[-1]["cursor"] if edges else None
-        },
-        "totalCount": await count_users(search=search)
-    }
-
-@user_type.field("orders")
-async def resolve_user_orders(user: dict, info, first: int = 20) -> dict:
-    """Resolve user's orders (N+1 prevention with DataLoader)."""
-    # Use DataLoader to batch requests
-    loader = info.context["loaders"]["orders_by_user"]
-    orders = await loader.load(user["id"])
-
-    return paginate_orders(orders, first)
-
-@mutation.field("createUser")
-async def resolve_create_user(obj, info, input: dict) -> dict:
-    """Create new user."""
-    try:
-        # Validate input
-        validate_user_input(input)
-
-        # Create user
-        user = await create_user(
-            email=input["email"],
-            name=input["name"],
-            password=hash_password(input["password"])
-        )
-
-        return {
-            "user": user,
-            "errors": []
-        }
-    except ValidationError as e:
-        return {
-            "user": None,
-            "errors": [{"field": e.field, "message": e.message}]
-        }
-```
-
-### Pattern 3: DataLoader (N+1 Problem Prevention)
+## DataLoader (N+1 Prevention)
 
 ```python
 from aiodataloader import DataLoader
-from typing import List, Optional
 
 class UserLoader(DataLoader):
-    """Batch load users by ID."""
-
-    async def batch_load_fn(self, user_ids: List[str]) -> List[Optional[dict]]:
-        """Load multiple users in single query."""
+    async def batch_load_fn(self, user_ids: list[str]) -> list[dict]:
         users = await fetch_users_by_ids(user_ids)
+        user_map = {u["id"]: u for u in users}
+        return [user_map.get(uid) for uid in user_ids]
 
-        # Map results back to input order
-        user_map = {user["id"]: user for user in users}
-        return [user_map.get(user_id) for user_id in user_ids]
-
-class OrdersByUserLoader(DataLoader):
-    """Batch load orders by user ID."""
-
-    async def batch_load_fn(self, user_ids: List[str]) -> List[List[dict]]:
-        """Load orders for multiple users in single query."""
-        orders = await fetch_orders_by_user_ids(user_ids)
-
-        # Group orders by user_id
-        orders_by_user = {}
-        for order in orders:
-            user_id = order["user_id"]
-            if user_id not in orders_by_user:
-                orders_by_user[user_id] = []
-            orders_by_user[user_id].append(order)
-
-        # Return in input order
-        return [orders_by_user.get(user_id, []) for user_id in user_ids]
-
-# Context setup
-def create_context():
-    return {
-        "loaders": {
-            "user": UserLoader(),
-            "orders_by_user": OrdersByUserLoader()
-        }
-    }
+# In resolver
+@user_type.field("orders")
+async def resolve_orders(user: dict, info):
+    return await info.context["loaders"]["orders_by_user"].load(user["id"])
 ```
+
+---
+
+## API Versioning
+
+| Strategy | Example | Pros/Cons |
+|----------|---------|-----------|
+| URL Path | `/api/v1/users` | Clear, cacheable |
+| Header | `Accept: application/vnd.api+json; version=1` | Clean URLs |
+| Query Param | `/api/users?version=1` | Easy testing |
+
+---
 
 ## Best Practices
 
-### REST APIs
-1. **Consistent Naming**: Use plural nouns for collections (`/users`, not `/user`)
-2. **Stateless**: Each request contains all necessary information
-3. **Use HTTP Status Codes Correctly**: 2xx success, 4xx client errors, 5xx server errors
-4. **Version Your API**: Plan for breaking changes from day one
-5. **Pagination**: Always paginate large collections
-6. **Rate Limiting**: Protect your API with rate limits
-7. **Documentation**: Use OpenAPI/Swagger for interactive docs
+| Practice | REST | GraphQL |
+|----------|------|---------|
+| Naming | Plural nouns (`/users`) | camelCase fields |
+| Pagination | Always paginate collections | Cursor-based (Relay) |
+| Errors | HTTP status codes | Errors in payload |
+| Versioning | Plan from day one | Use `@deprecated` |
+| Documentation | OpenAPI/Swagger | Schema introspection |
 
-### GraphQL APIs
-1. **Schema First**: Design schema before writing resolvers
-2. **Avoid N+1**: Use DataLoaders for efficient data fetching
-3. **Input Validation**: Validate at schema and resolver levels
-4. **Error Handling**: Return structured errors in mutation payloads
-5. **Pagination**: Use cursor-based pagination (Relay spec)
-6. **Deprecation**: Use `@deprecated` directive for gradual migration
-7. **Monitoring**: Track query complexity and execution time
+---
 
 ## Common Pitfalls
 
-- **Over-fetching/Under-fetching (REST)**: Fixed in GraphQL but requires DataLoaders
-- **Breaking Changes**: Version APIs or use deprecation strategies
-- **Inconsistent Error Formats**: Standardize error responses
-- **Missing Rate Limits**: APIs without limits are vulnerable to abuse
-- **Poor Documentation**: Undocumented APIs frustrate developers
-- **Ignoring HTTP Semantics**: POST for idempotent operations breaks expectations
-- **Tight Coupling**: API structure shouldn't mirror database schema
+| Pitfall | Problem |
+|---------|---------|
+| Breaking changes | No versioning strategy |
+| N+1 queries | No DataLoader in GraphQL |
+| Inconsistent errors | Different formats per endpoint |
+| Over-fetching | Fixed response shapes |
+| Poor documentation | Undocumented APIs frustrate devs |
 
-## Resources
+---
 
-- **references/rest-best-practices.md**: Comprehensive REST API design guide
-- **references/graphql-schema-design.md**: GraphQL schema patterns and anti-patterns
-- **references/api-versioning-strategies.md**: Versioning approaches and migration paths
-- **assets/rest-api-template.py**: FastAPI REST API template
-- **assets/graphql-schema-template.graphql**: Complete GraphQL schema example
-- **assets/api-design-checklist.md**: Pre-implementation review checklist
-- **scripts/openapi-generator.py**: Generate OpenAPI specs from code
+## Checklist
+
+- [ ] Resources named as plural nouns
+- [ ] Correct HTTP methods and status codes
+- [ ] Pagination on all collections
+- [ ] Versioning strategy defined
+- [ ] Consistent error response format
+- [ ] Rate limiting implemented
+- [ ] DataLoader for GraphQL relationships
+- [ ] OpenAPI/GraphQL schema documented
+
+---
+
+**Version**: 1.0.5

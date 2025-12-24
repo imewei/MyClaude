@@ -1,865 +1,304 @@
 ---
 name: modern-javascript-patterns
-description: Master modern JavaScript (ES6/ES2015 through ES2024) features including async/await, destructuring, spread operators, arrow functions, promises, modules, iterators, generators, optional chaining, nullish coalescing, and functional programming patterns for writing clean, efficient, maintainable code. Use when writing or editing JavaScript files (*.js, *.mjs, *.cjs), when refactoring legacy ES5 code to modern ES6+ syntax, when implementing functional programming patterns with map/filter/reduce and pure functions, when working with asynchronous operations and converting callback-based code to promises or async/await, when optimizing JavaScript applications with debounce, throttle, and memoization patterns, when implementing immutable data patterns using spread operators and array methods, when converting CommonJS modules (require/module.exports) to ES6 modules (import/export), when using modern operators like optional chaining (?.), nullish coalescing (??), and logical assignment (??=, ||=, &&=), when implementing higher-order functions, currying, partial application, and function composition, when creating custom iterators and generators for lazy evaluation and infinite sequences, when utilizing modern class features including private fields (#), static fields, getters/setters, and inheritance patterns, when implementing error handling strategies with try/catch and async/await, when building data transformation pipelines with chained array methods, when optimizing bundle size through tree-shaking with ES6 modules, when implementing dynamic imports for code splitting and lazy loading, when converting prototype-based code to modern class syntax, when applying template literals for string interpolation and tagged templates, when using enhanced object literals with computed properties and method shorthand, or when establishing modern JavaScript coding standards and best practices for teams.
+version: "1.0.5"
+maturity: "5-Expert"
+specialization: Modern JavaScript ES6+
+description: Master modern JavaScript (ES6-ES2024) including async/await, destructuring, spread operators, arrow functions, modules, optional chaining, nullish coalescing, and functional programming patterns. Use when writing ES6+ code, refactoring legacy JS, implementing async patterns, or applying functional programming with map/filter/reduce.
 ---
 
 # Modern JavaScript Patterns
 
-Comprehensive guide for mastering modern JavaScript (ES6+) features, functional programming patterns, and best practices for writing clean, maintainable, and performant code.
+ES6+ features, async programming, and functional patterns for clean JavaScript.
 
-## When to Use This Skill
+---
 
-### File Types and Scenarios
-- Writing or editing JavaScript files: `*.js`, `*.mjs` (ES modules), `*.cjs` (CommonJS)
-- Refactoring legacy ES5 code to ES6+ in existing codebases
-- Creating new JavaScript modules with modern syntax
-- Converting Node.js CommonJS modules to ES6 modules
+## Feature Quick Reference
 
-### Async Programming and Promises
-- Converting callback-based code (callback hell) to Promises
-- Refactoring Promise chains to async/await for better readability
-- Implementing retry logic, timeout patterns, and error handling with async/await
-- Using Promise combinators: `Promise.all()`, `Promise.allSettled()`, `Promise.race()`, `Promise.any()`
-- Handling parallel vs sequential async operations efficiently
-- Implementing top-level await in ES2022+ modules
+| Feature | Syntax | Use Case |
+|---------|--------|----------|
+| Arrow function | `(a, b) => a + b` | Callbacks, lexical `this` |
+| Destructuring | `const { a, b } = obj` | Extract properties |
+| Spread | `[...arr1, ...arr2]` | Merge arrays/objects |
+| Template literal | `` `Hello ${name}` `` | String interpolation |
+| Optional chaining | `obj?.prop?.nested` | Safe property access |
+| Nullish coalescing | `val ?? 'default'` | Default for null/undefined |
+| Async/await | `const x = await fn()` | Async operations |
 
-### Modern Syntax Adoption
-- Using arrow functions (`=>`) instead of traditional function expressions
-- Implementing destructuring for objects and arrays in function parameters and assignments
-- Applying spread operators (`...`) for array/object manipulation and function arguments
-- Using template literals for string interpolation and multi-line strings
-- Implementing optional chaining (`?.`) to safely access nested properties
-- Using nullish coalescing (`??`) for default values (vs `||`)
-- Applying logical assignment operators: `??=`, `||=`, `&&=`
+---
 
-### Functional Programming Patterns
-- Transforming data with `map()`, `filter()`, `reduce()`, `flatMap()`
-- Implementing pure functions without side effects
-- Creating higher-order functions that accept or return functions
-- Implementing function composition and piping for data transformation pipelines
-- Using currying and partial application for reusable function factories
-- Implementing memoization for performance optimization
-- Writing immutable code with spread operators and array methods
+## Arrow Functions
 
-### Array and Object Manipulation
-- Using modern array methods: `find()`, `findIndex()`, `some()`, `every()`, `includes()`
-- Implementing immutable updates with spread operators
-- Creating deep clones with `structuredClone()` or JSON methods
-- Using `Array.from()` for converting iterables to arrays
-- Implementing grouped data transformations with `reduce()`
-
-### Module System and Code Organization
-- Converting `require()/module.exports` to `import/export`
-- Implementing ES6 named exports and default exports
-- Using dynamic imports (`import()`) for code splitting
-- Lazy loading modules conditionally based on runtime conditions
-- Organizing code with barrel exports (index.js re-exports)
-
-### Class Features and OOP
-- Converting prototype-based code to modern class syntax
-- Implementing private fields (`#privateField`) and methods
-- Using static fields and methods for class-level functionality
-- Implementing getters and setters for computed properties
-- Using class inheritance with `extends` and `super`
-- Applying constructor patterns and initialization logic
-
-### Advanced Patterns
-- Creating custom iterators with `Symbol.iterator`
-- Implementing generator functions (`function*`) for lazy evaluation
-- Using async generators (`async function*`) for streaming data
-- Implementing infinite sequences with generators (e.g., Fibonacci)
-- Creating tagged template literals for custom string processing
-
-### Performance Optimization
-- Implementing debounce functions for search inputs and resize handlers
-- Creating throttle functions for scroll and mouse move events
-- Using memoization to cache expensive function results
-- Implementing lazy evaluation with generators
-- Optimizing bundle size with tree-shaking through ES6 modules
-
-### Error Handling and Resilience
-- Wrapping async operations in try/catch blocks
-- Implementing centralized error handling patterns
-- Creating retry mechanisms for failed async operations
-- Using finally blocks for cleanup operations
-- Handling promise rejections properly
-
-### Migration and Refactoring
-- Migrating legacy callback-based APIs to Promise-based APIs
-- Converting var declarations to const/let with proper scoping
-- Refactoring for loops to array methods for better readability
-- Modernizing string concatenation to template literals
-- Converting anonymous functions to arrow functions where appropriate
-
-### Code Quality and Best Practices
-- Enforcing const by default, let when necessary, avoiding var
-- Writing self-documenting code with destructuring and spread operators
-- Implementing single responsibility principle with small, focused functions
-- Using meaningful variable names with destructuring aliases
-- Establishing team coding standards for modern JavaScript
-
-## ES6+ Core Features
-
-### 1. Arrow Functions
-
-**Syntax and Use Cases:**
 ```javascript
-// Traditional function
-function add(a, b) {
-  return a + b;
-}
-
-// Arrow function
+// Basic syntax
 const add = (a, b) => a + b;
-
-// Single parameter (parentheses optional)
 const double = x => x * 2;
+const getUser = () => ({ name: 'John', age: 30 });
 
-// No parameters
-const getRandom = () => Math.random();
-
-// Multiple statements (need curly braces)
-const processUser = user => {
-  const normalized = user.name.toLowerCase();
-  return { ...user, name: normalized };
-};
-
-// Returning objects (wrap in parentheses)
-const createUser = (name, age) => ({ name, age });
-```
-
-**Lexical 'this' Binding:**
-```javascript
+// Lexical this (preserves context)
 class Counter {
-  constructor() {
-    this.count = 0;
-  }
+  count = 0;
+  increment = () => this.count++;  // 'this' bound to instance
 
-  // Arrow function preserves 'this' context
-  increment = () => {
-    this.count++;
-  };
-
-  // Traditional function loses 'this' in callbacks
-  incrementTraditional() {
-    setTimeout(function() {
-      this.count++;  // 'this' is undefined
-    }, 1000);
-  }
-
-  // Arrow function maintains 'this'
-  incrementArrow() {
-    setTimeout(() => {
-      this.count++;  // 'this' refers to Counter instance
-    }, 1000);
+  delayed() {
+    setTimeout(() => this.count++, 1000);  // 'this' preserved
   }
 }
 ```
 
-### 2. Destructuring
+---
 
-**Object Destructuring:**
+## Destructuring
+
 ```javascript
-const user = {
-  id: 1,
-  name: 'John Doe',
-  email: 'john@example.com',
-  address: {
-    city: 'New York',
-    country: 'USA'
-  }
-};
+// Objects
+const { name, email, age = 25 } = user;
+const { name: userName, address: { city } } = user;
+const { id, ...rest } = user;  // Rest
 
-// Basic destructuring
-const { name, email } = user;
-
-// Rename variables
-const { name: userName, email: userEmail } = user;
-
-// Default values
-const { age = 25 } = user;
-
-// Nested destructuring
-const { address: { city, country } } = user;
-
-// Rest operator
-const { id, ...userWithoutId } = user;
+// Arrays
+const [first, second] = arr;
+const [head, ...tail] = arr;
+let [a, b] = [b, a];  // Swap
 
 // Function parameters
 function greet({ name, age = 18 }) {
-  console.log(`Hello ${name}, you are ${age}`);
+  return `Hello ${name}, ${age}`;
 }
-greet(user);
 ```
 
-**Array Destructuring:**
+---
+
+## Spread Operator
+
 ```javascript
-const numbers = [1, 2, 3, 4, 5];
-
-// Basic destructuring
-const [first, second] = numbers;
-
-// Skip elements
-const [, , third] = numbers;
-
-// Rest operator
-const [head, ...tail] = numbers;
-
-// Swapping variables
-let a = 1, b = 2;
-[a, b] = [b, a];
-
-// Function return values
-function getCoordinates() {
-  return [10, 20];
-}
-const [x, y] = getCoordinates();
-
-// Default values
-const [one, two, three = 0] = [1, 2];
-```
-
-### 3. Spread and Rest Operators
-
-**Spread Operator:**
-```javascript
-// Array spreading
-const arr1 = [1, 2, 3];
-const arr2 = [4, 5, 6];
+// Arrays
 const combined = [...arr1, ...arr2];
+const copy = [...original];
+const withNew = [...arr, newItem];
 
-// Object spreading
-const defaults = { theme: 'dark', lang: 'en' };
-const userPrefs = { theme: 'light' };
-const settings = { ...defaults, ...userPrefs };
-
-// Function arguments
-const numbers = [1, 2, 3];
-Math.max(...numbers);
-
-// Copying arrays/objects (shallow copy)
-const copy = [...arr1];
-const objCopy = { ...user };
-
-// Adding items immutably
-const newArr = [...arr1, 4, 5];
-const newObj = { ...user, age: 30 };
+// Objects
+const merged = { ...defaults, ...overrides };
+const updated = { ...user, age: 31 };
+const { removed, ...rest } = obj;  // Remove property
 ```
 
-**Rest Parameters:**
-```javascript
-// Collect function arguments
-function sum(...numbers) {
-  return numbers.reduce((total, num) => total + num, 0);
-}
-sum(1, 2, 3, 4, 5);
+---
 
-// With regular parameters
-function greet(greeting, ...names) {
-  return `${greeting} ${names.join(', ')}`;
-}
-greet('Hello', 'John', 'Jane', 'Bob');
-
-// Object rest
-const { id, ...userData } = user;
-
-// Array rest
-const [first, ...rest] = [1, 2, 3, 4, 5];
-```
-
-### 4. Template Literals
+## Async/Await
 
 ```javascript
-// Basic usage
-const name = 'John';
-const greeting = `Hello, ${name}!`;
-
-// Multi-line strings
-const html = `
-  <div>
-    <h1>${title}</h1>
-    <p>${content}</p>
-  </div>
-`;
-
-// Expression evaluation
-const price = 19.99;
-const total = `Total: $${(price * 1.2).toFixed(2)}`;
-
-// Tagged template literals
-function highlight(strings, ...values) {
-  return strings.reduce((result, str, i) => {
-    const value = values[i] || '';
-    return result + str + `<mark>${value}</mark>`;
-  }, '');
-}
-
-const name = 'John';
-const age = 30;
-const html = highlight`Name: ${name}, Age: ${age}`;
-// Output: "Name: <mark>John</mark>, Age: <mark>30</mark>"
-```
-
-### 5. Enhanced Object Literals
-
-```javascript
-const name = 'John';
-const age = 30;
-
-// Shorthand property names
-const user = { name, age };
-
-// Shorthand method names
-const calculator = {
-  add(a, b) {
-    return a + b;
-  },
-  subtract(a, b) {
-    return a - b;
-  }
-};
-
-// Computed property names
-const field = 'email';
-const user = {
-  name: 'John',
-  [field]: 'john@example.com',
-  [`get${field.charAt(0).toUpperCase()}${field.slice(1)}`]() {
-    return this[field];
-  }
-};
-
-// Dynamic property creation
-const createUser = (name, ...props) => {
-  return props.reduce((user, [key, value]) => ({
-    ...user,
-    [key]: value
-  }), { name });
-};
-
-const user = createUser('John', ['age', 30], ['email', 'john@example.com']);
-```
-
-## Asynchronous Patterns
-
-### 1. Promises
-
-**Creating and Using Promises:**
-```javascript
-// Creating a promise
-const fetchUser = (id) => {
-  return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      if (id > 0) {
-        resolve({ id, name: 'John' });
-      } else {
-        reject(new Error('Invalid ID'));
-      }
-    }, 1000);
-  });
-};
-
-// Using promises
-fetchUser(1)
-  .then(user => console.log(user))
-  .catch(error => console.error(error))
-  .finally(() => console.log('Done'));
-
-// Chaining promises
-fetchUser(1)
-  .then(user => fetchUserPosts(user.id))
-  .then(posts => processPosts(posts))
-  .then(result => console.log(result))
-  .catch(error => console.error(error));
-```
-
-**Promise Combinators:**
-```javascript
-// Promise.all - Wait for all promises
-const promises = [
-  fetchUser(1),
-  fetchUser(2),
-  fetchUser(3)
-];
-
-Promise.all(promises)
-  .then(users => console.log(users))
-  .catch(error => console.error('At least one failed:', error));
-
-// Promise.allSettled - Wait for all, regardless of outcome
-Promise.allSettled(promises)
-  .then(results => {
-    results.forEach(result => {
-      if (result.status === 'fulfilled') {
-        console.log('Success:', result.value);
-      } else {
-        console.log('Error:', result.reason);
-      }
-    });
-  });
-
-// Promise.race - First to complete
-Promise.race(promises)
-  .then(winner => console.log('First:', winner))
-  .catch(error => console.error(error));
-
-// Promise.any - First to succeed
-Promise.any(promises)
-  .then(first => console.log('First success:', first))
-  .catch(error => console.error('All failed:', error));
-```
-
-### 2. Async/Await
-
-**Basic Usage:**
-```javascript
-// Async function always returns a Promise
+// Basic pattern
 async function fetchUser(id) {
-  const response = await fetch(`/api/users/${id}`);
-  const user = await response.json();
-  return user;
-}
-
-// Error handling with try/catch
-async function getUserData(id) {
   try {
-    const user = await fetchUser(id);
-    const posts = await fetchUserPosts(user.id);
-    return { user, posts };
+    const res = await fetch(`/api/users/${id}`);
+    return await res.json();
   } catch (error) {
-    console.error('Error fetching data:', error);
+    console.error('Failed:', error);
     throw error;
   }
 }
 
-// Sequential vs Parallel execution
-async function sequential() {
-  const user1 = await fetchUser(1);  // Wait
-  const user2 = await fetchUser(2);  // Then wait
-  return [user1, user2];
-}
+// Parallel execution
+const [user, posts] = await Promise.all([
+  fetchUser(id),
+  fetchPosts(id)
+]);
 
-async function parallel() {
-  const [user1, user2] = await Promise.all([
-    fetchUser(1),
-    fetchUser(2)
-  ]);
-  return [user1, user2];
+// Sequential when needed
+for (const id of ids) {
+  await processItem(id);  // One at a time
 }
 ```
 
-**Advanced Patterns:**
+### Promise Combinators
+
+| Method | Behavior | Use Case |
+|--------|----------|----------|
+| `Promise.all` | Fail if any fails | Parallel, all required |
+| `Promise.allSettled` | Never fails | Get all results |
+| `Promise.race` | First to complete | Timeout pattern |
+| `Promise.any` | First to succeed | Fallback sources |
+
 ```javascript
-// Async IIFE
-(async () => {
-  const result = await someAsyncOperation();
-  console.log(result);
-})();
-
-// Async iteration
-async function processUsers(userIds) {
-  for (const id of userIds) {
-    const user = await fetchUser(id);
-    await processUser(user);
-  }
-}
-
-// Top-level await (ES2022)
-const config = await fetch('/config.json').then(r => r.json());
-
-// Retry logic
+// Retry with timeout
 async function fetchWithRetry(url, retries = 3) {
   for (let i = 0; i < retries; i++) {
     try {
-      return await fetch(url);
-    } catch (error) {
-      if (i === retries - 1) throw error;
-      await new Promise(resolve => setTimeout(resolve, 1000 * (i + 1)));
+      return await Promise.race([
+        fetch(url),
+        new Promise((_, reject) =>
+          setTimeout(() => reject(new Error('Timeout')), 5000))
+      ]);
+    } catch (e) {
+      if (i === retries - 1) throw e;
+      await new Promise(r => setTimeout(r, 1000 * (i + 1)));
     }
   }
 }
-
-// Timeout wrapper
-async function withTimeout(promise, ms) {
-  const timeout = new Promise((_, reject) =>
-    setTimeout(() => reject(new Error('Timeout')), ms)
-  );
-  return Promise.race([promise, timeout]);
-}
 ```
 
-## Functional Programming Patterns
+---
 
-### 1. Array Methods
+## Functional Array Methods
 
-**Map, Filter, Reduce:**
 ```javascript
 const users = [
   { id: 1, name: 'John', age: 30, active: true },
-  { id: 2, name: 'Jane', age: 25, active: false },
-  { id: 3, name: 'Bob', age: 35, active: true }
+  { id: 2, name: 'Jane', age: 25, active: false }
 ];
 
-// Map - Transform array
-const names = users.map(user => user.name);
-const upperNames = users.map(user => user.name.toUpperCase());
+// Transform
+const names = users.map(u => u.name);
+const active = users.filter(u => u.active);
+const totalAge = users.reduce((sum, u) => sum + u.age, 0);
 
-// Filter - Select elements
-const activeUsers = users.filter(user => user.active);
-const adults = users.filter(user => user.age >= 18);
-
-// Reduce - Aggregate data
-const totalAge = users.reduce((sum, user) => sum + user.age, 0);
-const avgAge = totalAge / users.length;
-
-// Group by property
-const byActive = users.reduce((groups, user) => {
-  const key = user.active ? 'active' : 'inactive';
-  return {
-    ...groups,
-    [key]: [...(groups[key] || []), user]
-  };
-}, {});
-
-// Chaining methods
-const result = users
-  .filter(user => user.active)
-  .map(user => user.name)
-  .sort()
-  .join(', ');
-```
-
-**Advanced Array Methods:**
-```javascript
-// Find - First matching element
-const user = users.find(u => u.id === 2);
-
-// FindIndex - Index of first match
-const index = users.findIndex(u => u.name === 'Jane');
-
-// Some - At least one matches
+// Search
+const user = users.find(u => u.id === 1);
+const idx = users.findIndex(u => u.name === 'Jane');
 const hasActive = users.some(u => u.active);
-
-// Every - All match
 const allAdults = users.every(u => u.age >= 18);
 
-// FlatMap - Map and flatten
-const userTags = [
-  { name: 'John', tags: ['admin', 'user'] },
-  { name: 'Jane', tags: ['user'] }
-];
-const allTags = userTags.flatMap(u => u.tags);
+// Chain
+const result = users
+  .filter(u => u.active)
+  .map(u => u.name.toUpperCase())
+  .sort()
+  .join(', ');
 
-// From - Create array from iterable
-const str = 'hello';
-const chars = Array.from(str);
-const numbers = Array.from({ length: 5 }, (_, i) => i + 1);
-
-// Of - Create array from arguments
-const arr = Array.of(1, 2, 3);
+// Group by (reduce pattern)
+const byStatus = users.reduce((groups, user) => ({
+  ...groups,
+  [user.active ? 'active' : 'inactive']: [
+    ...(groups[user.active ? 'active' : 'inactive'] || []),
+    user
+  ]
+}), {});
 ```
 
-### 2. Higher-Order Functions
+---
 
-**Functions as Arguments:**
-```javascript
-// Custom forEach
-function forEach(array, callback) {
-  for (let i = 0; i < array.length; i++) {
-    callback(array[i], i, array);
-  }
-}
+## Higher-Order Functions
 
-// Custom map
-function map(array, transform) {
-  const result = [];
-  for (const item of array) {
-    result.push(transform(item));
-  }
-  return result;
-}
-
-// Custom filter
-function filter(array, predicate) {
-  const result = [];
-  for (const item of array) {
-    if (predicate(item)) {
-      result.push(item);
-    }
-  }
-  return result;
-}
-```
-
-**Functions Returning Functions:**
 ```javascript
 // Currying
 const multiply = a => b => a * b;
 const double = multiply(2);
 const triple = multiply(3);
 
-console.log(double(5));  // 10
-console.log(triple(5));  // 15
-
-// Partial application
-function partial(fn, ...args) {
-  return (...moreArgs) => fn(...args, ...moreArgs);
-}
-
-const add = (a, b, c) => a + b + c;
-const add5 = partial(add, 5);
-console.log(add5(3, 2));  // 10
-
 // Memoization
 function memoize(fn) {
   const cache = new Map();
   return (...args) => {
     const key = JSON.stringify(args);
-    if (cache.has(key)) {
-      return cache.get(key);
-    }
-    const result = fn(...args);
-    cache.set(key, result);
-    return result;
+    if (!cache.has(key)) cache.set(key, fn(...args));
+    return cache.get(key);
   };
 }
 
-const fibonacci = memoize((n) => {
-  if (n <= 1) return n;
-  return fibonacci(n - 1) + fibonacci(n - 2);
-});
-```
+// Composition
+const pipe = (...fns) => x => fns.reduce((v, f) => f(v), x);
+const compose = (...fns) => x => fns.reduceRight((v, f) => f(v), x);
 
-### 3. Composition and Piping
-
-```javascript
-// Function composition
-const compose = (...fns) => x =>
-  fns.reduceRight((acc, fn) => fn(acc), x);
-
-const pipe = (...fns) => x =>
-  fns.reduce((acc, fn) => fn(acc), x);
-
-// Example usage
-const addOne = x => x + 1;
-const double = x => x * 2;
-const square = x => x * x;
-
-const composed = compose(square, double, addOne);
-console.log(composed(3));  // ((3 + 1) * 2)^2 = 64
-
-const piped = pipe(addOne, double, square);
-console.log(piped(3));  // ((3 + 1) * 2)^2 = 64
-
-// Practical example
-const processUser = pipe(
-  user => ({ ...user, name: user.name.trim() }),
-  user => ({ ...user, email: user.email.toLowerCase() }),
-  user => ({ ...user, age: parseInt(user.age) })
+const process = pipe(
+  str => str.trim(),
+  str => str.toLowerCase(),
+  str => str.split(' ')
 );
-
-const user = processUser({
-  name: '  John  ',
-  email: 'JOHN@EXAMPLE.COM',
-  age: '30'
-});
 ```
 
-### 4. Pure Functions and Immutability
+---
+
+## Modern Operators
 
 ```javascript
-// Impure function (modifies input)
-function addItemImpure(cart, item) {
-  cart.items.push(item);
-  cart.total += item.price;
-  return cart;
-}
+// Optional chaining
+const city = user?.address?.city;
+const result = obj.method?.();
+const item = arr?.[0];
 
-// Pure function (no side effects)
-function addItemPure(cart, item) {
-  return {
-    ...cart,
-    items: [...cart.items, item],
-    total: cart.total + item.price
-  };
-}
+// Nullish coalescing (only null/undefined)
+const value = input ?? 'default';
+const count = obj.count ?? 0;  // 0 preserved, unlike ||
 
-// Immutable array operations
-const numbers = [1, 2, 3, 4, 5];
-
-// Add to array
-const withSix = [...numbers, 6];
-
-// Remove from array
-const withoutThree = numbers.filter(n => n !== 3);
-
-// Update array element
-const doubled = numbers.map(n => n === 3 ? n * 2 : n);
-
-// Immutable object operations
-const user = { name: 'John', age: 30 };
-
-// Update property
-const olderUser = { ...user, age: 31 };
-
-// Add property
-const withEmail = { ...user, email: 'john@example.com' };
-
-// Remove property
-const { age, ...withoutAge } = user;
-
-// Deep cloning (simple approach)
-const deepClone = obj => JSON.parse(JSON.stringify(obj));
-
-// Better deep cloning
-const structuredClone = obj => globalThis.structuredClone(obj);
+// Logical assignment
+a ??= 'default';  // a = a ?? 'default'
+b ||= fallback;   // b = b || fallback
+c &&= newValue;   // c = c && newValue
 ```
 
-## Modern Class Features
+---
+
+## ES6 Modules
 
 ```javascript
-// Class syntax
+// Named exports
+export const PI = 3.14159;
+export function add(a, b) { return a + b; }
+
+// Default export
+export default class Calculator { }
+
+// Imports
+import Calculator, { PI, add } from './math.js';
+import * as Math from './math.js';
+import { add as sum } from './math.js';
+
+// Dynamic import (code splitting)
+const module = await import('./feature.js');
+if (condition) {
+  const { handler } = await import('./handler.js');
+}
+```
+
+---
+
+## Classes
+
+```javascript
 class User {
-  // Private fields
-  #password;
+  #password;              // Private field
+  static count = 0;       // Static field
 
-  // Public fields
-  id;
-  name;
-
-  // Static field
-  static count = 0;
-
-  constructor(id, name, password) {
-    this.id = id;
+  constructor(name, password) {
     this.name = name;
     this.#password = password;
     User.count++;
   }
 
-  // Public method
-  greet() {
-    return `Hello, ${this.name}`;
-  }
+  get displayName() { return this.name.toUpperCase(); }
+  set password(val) { this.#password = this.#hash(val); }
 
-  // Private method
-  #hashPassword(password) {
-    return `hashed_${password}`;
-  }
+  #hash(val) { return `hashed_${val}`; }  // Private method
 
-  // Getter
-  get displayName() {
-    return this.name.toUpperCase();
-  }
-
-  // Setter
-  set password(newPassword) {
-    this.#password = this.#hashPassword(newPassword);
-  }
-
-  // Static method
-  static create(id, name, password) {
-    return new User(id, name, password);
-  }
+  static create(name, pwd) { return new User(name, pwd); }
 }
 
-// Inheritance
 class Admin extends User {
-  constructor(id, name, password, role) {
-    super(id, name, password);
+  constructor(name, password, role) {
+    super(name, password);
     this.role = role;
   }
-
-  greet() {
-    return `${super.greet()}, I'm an admin`;
-  }
 }
 ```
 
-## Modules (ES6)
+---
+
+## Generators & Iterators
 
 ```javascript
-// Exporting
-// math.js
-export const PI = 3.14159;
-export function add(a, b) {
-  return a + b;
-}
-export class Calculator {
-  // ...
+// Generator
+function* range(start, end) {
+  for (let i = start; i <= end; i++) yield i;
 }
 
-// Default export
-export default function multiply(a, b) {
-  return a * b;
-}
+for (const n of range(1, 5)) console.log(n);
 
-// Importing
-// app.js
-import multiply, { PI, add, Calculator } from './math.js';
-
-// Rename imports
-import { add as sum } from './math.js';
-
-// Import all
-import * as Math from './math.js';
-
-// Dynamic imports
-const module = await import('./math.js');
-const { add } = await import('./math.js');
-
-// Conditional loading
-if (condition) {
-  const module = await import('./feature.js');
-  module.init();
-}
-```
-
-## Iterators and Generators
-
-```javascript
-// Custom iterator
-const range = {
-  from: 1,
-  to: 5,
-
-  [Symbol.iterator]() {
-    return {
-      current: this.from,
-      last: this.to,
-
-      next() {
-        if (this.current <= this.last) {
-          return { done: false, value: this.current++ };
-        } else {
-          return { done: true };
-        }
-      }
-    };
-  }
-};
-
-for (const num of range) {
-  console.log(num);  // 1, 2, 3, 4, 5
-}
-
-// Generator function
-function* rangeGenerator(from, to) {
-  for (let i = from; i <= to; i++) {
-    yield i;
-  }
-}
-
-for (const num of rangeGenerator(1, 5)) {
-  console.log(num);
-}
-
-// Infinite generator
+// Infinite sequence
 function* fibonacci() {
-  let [prev, curr] = [0, 1];
+  let [a, b] = [0, 1];
   while (true) {
-    yield curr;
-    [prev, curr] = [curr, prev + curr];
+    yield b;
+    [a, b] = [b, a + b];
   }
 }
 
@@ -867,66 +306,32 @@ function* fibonacci() {
 async function* fetchPages(url) {
   let page = 1;
   while (true) {
-    const response = await fetch(`${url}?page=${page}`);
-    const data = await response.json();
-    if (data.length === 0) break;
+    const data = await fetch(`${url}?page=${page++}`).then(r => r.json());
+    if (!data.length) break;
     yield data;
-    page++;
   }
 }
 
-for await (const page of fetchPages('/api/users')) {
+for await (const page of fetchPages('/api/items')) {
   console.log(page);
 }
 ```
 
-## Modern Operators
+---
+
+## Performance Utilities
 
 ```javascript
-// Optional chaining
-const user = { name: 'John', address: { city: 'NYC' } };
-const city = user?.address?.city;
-const zipCode = user?.address?.zipCode;  // undefined
-
-// Function call
-const result = obj.method?.();
-
-// Array access
-const first = arr?.[0];
-
-// Nullish coalescing
-const value = null ?? 'default';      // 'default'
-const value = undefined ?? 'default'; // 'default'
-const value = 0 ?? 'default';         // 0 (not 'default')
-const value = '' ?? 'default';        // '' (not 'default')
-
-// Logical assignment
-let a = null;
-a ??= 'default';  // a = 'default'
-
-let b = 5;
-b ??= 10;  // b = 5 (unchanged)
-
-let obj = { count: 0 };
-obj.count ||= 1;  // obj.count = 1
-obj.count &&= 2;  // obj.count = 2
-```
-
-## Performance Optimization
-
-```javascript
-// Debounce
+// Debounce (delay until pause)
 function debounce(fn, delay) {
-  let timeoutId;
+  let timeout;
   return (...args) => {
-    clearTimeout(timeoutId);
-    timeoutId = setTimeout(() => fn(...args), delay);
+    clearTimeout(timeout);
+    timeout = setTimeout(() => fn(...args), delay);
   };
 }
 
-const searchDebounced = debounce(search, 300);
-
-// Throttle
+// Throttle (limit frequency)
 function throttle(fn, limit) {
   let inThrottle;
   return (...args) => {
@@ -938,54 +343,68 @@ function throttle(fn, limit) {
   };
 }
 
+const searchDebounced = debounce(search, 300);
 const scrollThrottled = throttle(handleScroll, 100);
-
-// Lazy evaluation
-function* lazyMap(iterable, transform) {
-  for (const item of iterable) {
-    yield transform(item);
-  }
-}
-
-// Use only what you need
-const numbers = [1, 2, 3, 4, 5];
-const doubled = lazyMap(numbers, x => x * 2);
-const first = doubled.next().value;  // Only computes first value
 ```
+
+---
+
+## Immutable Patterns
+
+```javascript
+// Arrays
+const added = [...arr, newItem];
+const removed = arr.filter(x => x !== item);
+const updated = arr.map(x => x.id === id ? { ...x, ...changes } : x);
+
+// Objects
+const modified = { ...obj, key: newValue };
+const { removed: _, ...rest } = obj;
+
+// Deep clone
+const clone = structuredClone(obj);  // Modern
+const clone = JSON.parse(JSON.stringify(obj));  // Legacy
+```
+
+---
 
 ## Best Practices
 
-1. **Use const by default**: Only use let when reassignment is needed
-2. **Prefer arrow functions**: Especially for callbacks
-3. **Use template literals**: Instead of string concatenation
-4. **Destructure objects and arrays**: For cleaner code
-5. **Use async/await**: Instead of Promise chains
-6. **Avoid mutating data**: Use spread operator and array methods
-7. **Use optional chaining**: Prevent "Cannot read property of undefined"
-8. **Use nullish coalescing**: For default values
-9. **Prefer array methods**: Over traditional loops
-10. **Use modules**: For better code organization
-11. **Write pure functions**: Easier to test and reason about
-12. **Use meaningful variable names**: Self-documenting code
-13. **Keep functions small**: Single responsibility principle
-14. **Handle errors properly**: Use try/catch with async/await
-15. **Use strict mode**: `'use strict'` for better error catching
+| Practice | Guideline |
+|----------|-----------|
+| Variables | `const` by default, `let` when needed, avoid `var` |
+| Functions | Arrow for callbacks, regular for methods |
+| Async | async/await over .then() chains |
+| Defaults | `??` for null/undefined, `||` for all falsy |
+| Imports | Named exports for tree-shaking |
+| Immutability | Spread operator for updates |
+| Errors | try/catch with async/await |
+
+---
 
 ## Common Pitfalls
 
-1. **this binding confusion**: Use arrow functions or bind()
-2. **Async/await without error handling**: Always use try/catch
-3. **Promise creation unnecessary**: Don't wrap already async functions
-4. **Mutation of objects**: Use spread operator or Object.assign()
-5. **Forgetting await**: Async functions return promises
-6. **Blocking event loop**: Avoid synchronous operations
-7. **Memory leaks**: Clean up event listeners and timers
-8. **Not handling promise rejections**: Use catch() or try/catch
+| Pitfall | Solution |
+|---------|----------|
+| `this` in callbacks | Arrow functions or `.bind()` |
+| Missing `await` | Async functions return Promises |
+| `||` vs `??` | `??` preserves 0 and '' |
+| Mutation | Use spread for immutable updates |
+| Promise rejection | Always handle with catch/try |
+| Blocking event loop | Use async for I/O operations |
 
-## Resources
+---
 
-- **MDN Web Docs**: https://developer.mozilla.org/en-US/docs/Web/JavaScript
-- **JavaScript.info**: https://javascript.info/
-- **You Don't Know JS**: https://github.com/getify/You-Dont-Know-JS
-- **Eloquent JavaScript**: https://eloquentjavascript.net/
-- **ES6 Features**: http://es6-features.org/
+## Checklist
+
+- [ ] const/let used appropriately (no var)
+- [ ] Destructuring for cleaner assignments
+- [ ] async/await with proper error handling
+- [ ] Optional chaining for safe property access
+- [ ] Array methods instead of loops where clearer
+- [ ] ES6 modules for code organization
+- [ ] Performance utilities (debounce/throttle) where needed
+
+---
+
+**Version**: 1.0.5

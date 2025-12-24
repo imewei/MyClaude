@@ -1,3 +1,20 @@
+---
+version: "1.0.5"
+description: Complete Git workflow orchestration from code review through PR creation
+allowed-tools: Bash(git:*), Read, Grep, Task
+argument-hint: [target-branch] [--skip-tests] [--draft-pr] [--no-push] [--squash] [--conventional] [--trunk-based] [--feature-branch]
+color: cyan
+agents:
+  primary:
+    - comprehensive-review:code-reviewer
+  conditional:
+    - agent: unit-testing:test-automator
+      trigger: argument "--skip-tests" NOT present
+    - agent: cicd-automation:deployment-engineer
+      trigger: argument "--no-push" NOT present
+  orchestrated: true
+---
+
 # Complete Git Workflow with Multi-Agent Orchestration
 
 Orchestrate a comprehensive git workflow from code review through PR creation, leveraging specialized agents for quality assurance, testing, and deployment readiness. This workflow implements modern git best practices including Conventional Commits, automated testing, and structured PR creation.

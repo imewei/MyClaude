@@ -1,86 +1,42 @@
 ---
 name: ai-assisted-debugging
-description: Leverage AI and LLMs to accelerate debugging through automated stack trace analysis, intelligent root cause detection, and ML-driven log correlation for modern distributed systems. Use this skill when analyzing Python tracebacks, JavaScript console errors, or any runtime exceptions to get AI-powered fix suggestions and explanations. Apply when debugging production incidents with large log volumes where manual correlation is time-consuming. Use for Kubernetes pod failures, Docker container crashes, or microservice cascade failures requiring distributed trace analysis. Integrate when setting up automated anomaly detection on application logs, metrics, or traces using ML models like Isolation Forest. Apply when debugging with GDB, LLDB, VS Code debugger, or Chrome DevTools and need intelligent breakpoint strategies. Use for generating strategic debug logging statements automatically based on suspected issues. Apply when analyzing OpenTelemetry traces, Prometheus metrics, or Datadog telemetry to identify performance bottlenecks. Use when you need to correlate recent code changes (git commits, deployments) with production incidents for rapid RCA. Apply for time-series forecasting of failures or predictive maintenance using historical incident data.
-tools: Read, Write, Bash, Grep, python, gdb, lldb, kubectl, docker
-integration: Use for accelerating debugging with AI assistance and automated RCA
+version: "1.0.5"
+maturity: "5-Expert"
+specialization: AI-Powered Debugging & RCA
+description: Leverage AI/LLMs for automated stack trace analysis, intelligent root cause detection, and ML-driven log correlation in distributed systems. Use when analyzing Python/JavaScript/Go runtime exceptions, debugging Kubernetes pod failures, implementing automated anomaly detection on logs/metrics, or correlating git commits with production incidents.
 ---
 
-# AI-Assisted Debugging Mastery
+# AI-Assisted Debugging
 
-Complete framework for leveraging AI to accelerate debugging, automate root cause analysis, and integrate observability data for real-time insights in distributed systems.
+AI-powered debugging framework for automated RCA and intelligent log correlation.
 
-## When to use this skill
+---
 
-- When analyzing **stack traces and exceptions** (Python tracebacks, JavaScript errors, Java stack traces, Go panics) and you need AI to identify root causes and suggest fixes
-- When debugging **production incidents** with thousands of log lines where manual analysis is impractical and you need automated log correlation
-- When investigating **Kubernetes pod failures** (CrashLoopBackOff, OOMKilled, ImagePullBackOff) and need AI-powered analysis of pod events, logs, and resource usage
-- When troubleshooting **Docker container crashes** and need automated detection of OOM errors, exit code analysis, or health check failures
-- When debugging **distributed system failures** across microservices and need to correlate traces, logs, and metrics from multiple services
-- When implementing **automated anomaly detection** on application logs using ML models (Isolation Forest, autoencoders) for proactive failure detection
-- When using **modern debugging tools** (GDB, LLDB, VS Code Debugger, Chrome DevTools) and want intelligent breakpoint strategies or automated variable logging
-- When you need to **generate debug logging statements** automatically based on suspected issues without manually instrumenting code
-- When analyzing **OpenTelemetry distributed traces** to identify slow spans and performance bottlenecks across service boundaries
-- When setting up **Prometheus metric analysis** with AI to detect unusual patterns in latency, error rate, throughput, or resource usage
-- When correlating **recent changes** (git commits, deployments, config changes) with production incidents for rapid root cause analysis
-- When implementing **predictive failure detection** using time-series forecasting (ARIMA, Prophet) on historical incident data
-- When debugging **performance issues** and need AI to suggest optimizations based on profiling data (cProfile, py-spy, Chrome Performance tab)
-- When working with **application logs in Python, Node.js, Go, Java, or any language** and need ML-based anomaly detection to surface errors
-- When you encounter **intermittent or flaky bugs** that are hard to reproduce and need AI to identify race conditions or timing issues from logs
+## Technique Selection
 
-## Core AI Debugging Techniques
+| Technique | Use Case | Tools |
+|-----------|----------|-------|
+| LLM Stack Trace Analysis | Error explanation + fix suggestions | GPT-5, Claude Sonnet 4.5 |
+| ML Log Anomaly Detection | Large log volume analysis | Isolation Forest, sklearn |
+| Distributed Trace Analysis | Microservice bottlenecks | OpenTelemetry, Jaeger |
+| Change Correlation | Recent deploy → incident | Git, deployment logs |
+| Predictive Detection | Failure forecasting | ARIMA, Prophet |
 
-### 1. LLM-Driven Stack Trace Analysis
+---
+
+## LLM Stack Trace Analysis
 
 ```python
 import openai
-import traceback
-import sys
+import json
 
 class AIDebugAssistant:
-    """AI-powered debugging assistant using latest LLMs (2025)."""
-
-    def __init__(self, api_key: str, model: str = "gpt-5", provider: str = "openai"):
-        """
-        Initialize AI debugging assistant.
-
-        Parameters
-        ----------
-        api_key : str
-            API key for the LLM provider
-        model : str
-            Model to use: "gpt-5" (OpenAI), "claude-sonnet-4.5" (Anthropic)
-        provider : str
-            LLM provider: "openai" or "anthropic"
-        """
-        self.provider = provider
+    def __init__(self, api_key: str, model: str = "gpt-5"):
+        self.client = openai.OpenAI(api_key=api_key)
         self.model = model
 
-        if provider == "openai":
-            self.client = openai.OpenAI(api_key=api_key)
-        elif provider == "anthropic":
-            import anthropic
-            self.client = anthropic.Anthropic(api_key=api_key)
-        else:
-            raise ValueError(f"Unsupported provider: {provider}")
-
     def analyze_stack_trace(self, error_trace: str, context_code: str = "") -> dict:
-        """
-        Analyze stack trace with AI to identify root cause and suggest fixes.
-
-        Parameters
-        ----------
-        error_trace : str
-            Full error traceback
-        context_code : str
-            Relevant code context around the error
-
-        Returns
-        -------
-        dict
-            Analysis with root cause, fix suggestions, and prevention tips
-        """
-        prompt = f"""
-You are an expert debugging assistant. Analyze this error:
+        prompt = f"""Analyze this error:
 
 ERROR TRACE:
 {error_trace}
@@ -88,133 +44,38 @@ ERROR TRACE:
 RELEVANT CODE:
 {context_code}
 
-Provide:
-1. Root cause explanation
-2. Specific line/function causing the issue
-3. 2-3 concrete fix suggestions with code
-4. Prevention recommendations
+Provide JSON with: root_cause, location, fixes (list), prevention (list)"""
 
-Format as JSON with keys: root_cause, location, fixes (list), prevention (list)
-"""
+        response = self.client.chat.completions.create(
+            model=self.model,
+            messages=[
+                {"role": "system", "content": "Expert debugging assistant."},
+                {"role": "user", "content": prompt}
+            ],
+            temperature=0.2,
+            response_format={"type": "json_object"}
+        )
+        return json.loads(response.choices[0].message.content)
 
-        if self.provider == "openai":
-            response = self.client.chat.completions.create(
-                model=self.model,
-                messages=[
-                    {"role": "system", "content": "You are an expert debugging assistant."},
-                    {"role": "user", "content": prompt}
-                ],
-                temperature=0.2,  # Lower for more deterministic debugging
-                response_format={"type": "json_object"}
-            )
-            import json
-            return json.loads(response.choices[0].message.content)
+    def generate_debug_statements(self, function_code: str, issue: str) -> str:
+        prompt = f"""Add strategic debug logging for: {issue}
 
-        elif self.provider == "anthropic":
-            response = self.client.messages.create(
-                model=self.model,
-                max_tokens=4096,
-                temperature=0.2,
-                system="You are an expert debugging assistant. Always respond with valid JSON.",
-                messages=[
-                    {"role": "user", "content": prompt}
-                ]
-            )
-            import json
-            return json.loads(response.content[0].text)
-
-    def generate_debug_statements(self, function_code: str, suspected_issue: str) -> str:
-        """
-        Generate strategic debug logging statements.
-
-        Parameters
-        ----------
-        function_code : str
-            Function to instrument with debug statements
-        suspected_issue : str
-            Description of the suspected issue
-
-        Returns
-        -------
-        str
-            Instrumented code with debug statements
-        """
-        prompt = f"""
-Add strategic debug logging to diagnose this issue: {suspected_issue}
-
-ORIGINAL CODE:
+CODE:
 {function_code}
 
-Add debug statements that:
-1. Log function entry/exit
-2. Log variable states at critical points
-3. Log conditional branches taken
-4. Catch and log exceptions
+Add: entry/exit logs, variable states, conditional branches, exception handling."""
 
-Return complete instrumented code with logging.
-"""
-
-        if self.provider == "openai":
-            response = self.client.chat.completions.create(
-                model=self.model,
-                messages=[{"role": "user", "content": prompt}],
-                temperature=0.3
-            )
-            return response.choices[0].message.content
-
-        elif self.provider == "anthropic":
-            response = self.client.messages.create(
-                model=self.model,
-                max_tokens=4096,
-                temperature=0.3,
-                messages=[{"role": "user", "content": prompt}]
-            )
-            return response.content[0].text
-
-# Usage example
-def buggy_function(data):
-    """Example function with a bug."""
-    try:
-        result = []
-        for item in data:
-            # Bug: division by zero if item['value'] == 0
-            processed = item['total'] / item['value']
-            result.append(processed)
-        return result
-    except Exception as e:
-        trace = traceback.format_exc()
-        print(f"Error occurred: {trace}")
-
-        # AI analysis with GPT-5 (OpenAI)
-        assistant = AIDebugAssistant(
-            api_key="YOUR_OPENAI_API_KEY",
-            model="gpt-5",
-            provider="openai"
+        response = self.client.chat.completions.create(
+            model=self.model,
+            messages=[{"role": "user", "content": prompt}],
+            temperature=0.3
         )
-
-        # Or use Claude Sonnet 4.5 (Anthropic)
-        # assistant = AIDebugAssistant(
-        #     api_key="YOUR_ANTHROPIC_API_KEY",
-        #     model="claude-sonnet-4.5-20250514",
-        #     provider="anthropic"
-        # )
-
-        analysis = assistant.analyze_stack_trace(
-            error_trace=trace,
-            context_code=inspect.getsource(buggy_function)
-        )
-
-        print("AI Analysis:")
-        print(f"Root Cause: {analysis['root_cause']}")
-        print(f"Location: {analysis['location']}")
-        print("Suggested Fixes:")
-        for i, fix in enumerate(analysis['fixes'], 1):
-            print(f"  {i}. {fix}")
-
-        raise
+        return response.choices[0].message.content
 ```
 
-### 2. Automated Log Correlation with ML
+---
+
+## ML Log Anomaly Detection
 
 ```python
 from sklearn.ensemble import IsolationForest
@@ -223,555 +84,187 @@ import pandas as pd
 import numpy as np
 
 class LogAnomalyDetector:
-    """ML-based log anomaly detection for RCA."""
-
-    def __init__(self, contamination=0.1):
-        """
-        Initialize anomaly detector.
-
-        Parameters
-        ----------
-        contamination : float
-            Expected proportion of anomalies (default: 10%)
-        """
+    def __init__(self, contamination: float = 0.1):
         self.scaler = StandardScaler()
-        self.model = IsolationForest(
-            contamination=contamination,
-            random_state=42,
-            n_estimators=100
-        )
-        self.feature_names = None
+        self.model = IsolationForest(contamination=contamination, random_state=42)
 
-    def extract_log_features(self, log_df: pd.DataFrame) -> np.ndarray:
-        """
-        Extract numerical features from log data.
-
-        Parameters
-        ----------
-        log_df : pd.DataFrame
-            DataFrame with columns: timestamp, level, response_time,
-            error_count, request_count, cpu_usage, memory_usage
-
-        Returns
-        -------
-        np.ndarray
-            Feature matrix for ML model
-        """
-        features = []
-
-        # Time-based features
-        log_df['hour'] = pd.to_datetime(log_df['timestamp']).dt.hour
-        log_df['minute'] = pd.to_datetime(log_df['timestamp']).dt.minute
-
-        # Rolling statistics (5-minute windows)
+    def extract_features(self, df: pd.DataFrame) -> np.ndarray:
         window = 5
-        log_df['response_time_mean'] = log_df['response_time'].rolling(window).mean()
-        log_df['response_time_std'] = log_df['response_time'].rolling(window).std()
-        log_df['error_rate'] = log_df['error_count'].rolling(window).sum() / \
-                                log_df['request_count'].rolling(window).sum()
+        df['response_time_mean'] = df['response_time'].rolling(window).mean()
+        df['error_rate'] = (df['error_count'].rolling(window).sum() /
+                           df['request_count'].rolling(window).sum())
 
-        # Select features
-        feature_columns = [
-            'hour', 'response_time', 'response_time_mean', 'response_time_std',
-            'error_count', 'request_count', 'error_rate',
-            'cpu_usage', 'memory_usage'
-        ]
+        features = ['response_time', 'response_time_mean', 'error_rate',
+                   'cpu_usage', 'memory_usage']
+        return df[features].fillna(0).values
 
-        self.feature_names = feature_columns
-        return log_df[feature_columns].fillna(0).values
+    def train(self, normal_logs: pd.DataFrame):
+        features = self.extract_features(normal_logs)
+        scaled = self.scaler.fit_transform(features)
+        self.model.fit(scaled)
 
-    def train(self, normal_log_df: pd.DataFrame):
-        """Train on normal (non-anomalous) logs."""
-        features = self.extract_log_features(normal_log_df)
-        features_scaled = self.scaler.fit_transform(features)
-        self.model.fit(features_scaled)
-
-    def detect_anomalies(self, log_df: pd.DataFrame) -> pd.DataFrame:
-        """
-        Detect anomalies in new log data.
-
-        Returns
-        -------
-        pd.DataFrame
-            Original data with 'anomaly' and 'anomaly_score' columns
-        """
-        features = self.extract_log_features(log_df)
-        features_scaled = self.scaler.transform(features)
-
-        # Predict (-1 for anomalies, 1 for normal)
-        predictions = self.model.predict(features_scaled)
-        scores = self.model.score_samples(features_scaled)
-
-        log_df['anomaly'] = predictions == -1
-        log_df['anomaly_score'] = scores
-
-        return log_df
-
-    def get_anomaly_explanation(self, anomaly_row: pd.Series) -> str:
-        """Generate human-readable explanation of anomaly."""
-        explanations = []
-
-        # Check each feature for unusual values
-        if anomaly_row['response_time'] > anomaly_row['response_time_mean'] * 2:
-            explanations.append(
-                f"Response time ({anomaly_row['response_time']:.2f}ms) is "
-                f"2x higher than recent average"
-            )
-
-        if anomaly_row['error_rate'] > 0.05:
-            explanations.append(
-                f"Error rate ({anomaly_row['error_rate']:.1%}) exceeds threshold"
-            )
-
-        if anomaly_row['cpu_usage'] > 90:
-            explanations.append(
-                f"CPU usage ({anomaly_row['cpu_usage']:.1f}%) critically high"
-            )
-
-        if anomaly_row['memory_usage'] > 90:
-            explanations.append(
-                f"Memory usage ({anomaly_row['memory_usage']:.1f}%) critically high"
-            )
-
-        return " | ".join(explanations) if explanations else "Multiple features anomalous"
+    def detect(self, logs: pd.DataFrame) -> pd.DataFrame:
+        features = self.extract_features(logs)
+        scaled = self.scaler.transform(features)
+        logs['anomaly'] = self.model.predict(scaled) == -1
+        logs['anomaly_score'] = self.model.score_samples(scaled)
+        return logs
 
 # Usage
-detector = LogAnomalyDetector(contamination=0.1)
-
-# Train on normal logs
-normal_logs = pd.read_csv('normal_logs.csv')
+detector = LogAnomalyDetector()
 detector.train(normal_logs)
-
-# Detect anomalies in new logs
-new_logs = pd.read_csv('production_logs.csv')
-results = detector.detect_anomalies(new_logs)
-
-# Report anomalies
-anomalies = results[results['anomaly']]
-print(f"Found {len(anomalies)} anomalies:")
-for idx, row in anomalies.iterrows():
-    explanation = detector.get_anomaly_explanation(row)
-    print(f"  {row['timestamp']}: {explanation}")
+anomalies = detector.detect(production_logs)
 ```
 
-### 3. Modern Debugging Tool Integration
+---
 
-#### GDB/LLDB with Python Scripting
-
-```python
-# GDB Python script for automated debugging
-import gdb
-
-class SmartBreakpoint(gdb.Breakpoint):
-    """Intelligent breakpoint with conditional logging."""
-
-    def __init__(self, location, condition=None, log_vars=None):
-        super().__init__(location)
-        self.condition_str = condition
-        self.log_vars = log_vars or []
-        self.hit_count = 0
-
-    def stop(self):
-        """Called when breakpoint is hit."""
-        self.hit_count += 1
-
-        # Log variable states
-        frame = gdb.selected_frame()
-        print(f"\n--- Breakpoint Hit #{self.hit_count} ---")
-        print(f"Location: {frame.name()} at {frame.find_sal().symtab.filename}:"
-              f"{frame.find_sal().line}")
-
-        for var in self.log_vars:
-            try:
-                value = gdb.parse_and_eval(var)
-                print(f"  {var} = {value}")
-            except gdb.error as e:
-                print(f"  {var} = <unavailable: {e}>")
-
-        # AI-driven decision: continue or stop?
-        # For demo, stop every 10th hit
-        return self.hit_count % 10 == 0
-
-# Set intelligent breakpoints
-SmartBreakpoint(
-    "my_function",
-    condition="x > 100",
-    log_vars=["x", "y", "result"]
-)
-
-gdb.execute("run")
-```
-
-#### VS Code Debugger Configuration
-
-```json
-{
-  "version": "0.2.0",
-  "configurations": [
-    {
-      "name": "Python: AI-Assisted Debug",
-      "type": "python",
-      "request": "launch",
-      "program": "${file}",
-      "console": "integratedTerminal",
-      "justMyCode": false,
-      "logToFile": true,
-      "postDebugTask": "analyze-debug-logs"
-    }
-  ],
-  "tasks": [
-    {
-      "label": "analyze-debug-logs",
-      "type": "shell",
-      "command": "python",
-      "args": [
-        "analyze_debug_logs.py",
-        "${workspaceFolder}/.vscode/debug.log"
-      ],
-      "problemMatcher": []
-    }
-  ]
-}
-```
-
-### 4. Distributed System Debugging
-
-#### Kubernetes Pod Debugging
+## Kubernetes Pod Debugging
 
 ```bash
 #!/bin/bash
-# AI-assisted Kubernetes debugging script
+POD=$1; NS=${2:-default}
 
-POD_NAME=$1
-NAMESPACE=${2:-default}
+echo "=== Pod Status ===" && kubectl get pod $POD -n $NS -o wide
+echo "=== Events ===" && kubectl get events -n $NS --field-selector involvedObject.name=$POD | tail -10
+echo "=== Logs ===" && kubectl logs $POD -n $NS --tail=50
+echo "=== Resources ===" && kubectl top pod $POD -n $NS
 
-echo "🔍 Debugging pod: $POD_NAME in namespace: $NAMESPACE"
-
-# 1. Get pod status
-echo "\n=== Pod Status ==="
-kubectl get pod $POD_NAME -n $NAMESPACE -o wide
-
-# 2. Get recent events
-echo "\n=== Recent Events ==="
-kubectl get events -n $NAMESPACE --field-selector involvedObject.name=$POD_NAME \
-  --sort-by='.lastTimestamp' | tail -10
-
-# 3. Get logs
-echo "\n=== Recent Logs ==="
-kubectl logs $POD_NAME -n $NAMESPACE --tail=50
-
-# 4. Check resource usage
-echo "\n=== Resource Usage ==="
-kubectl top pod $POD_NAME -n $NAMESPACE
-
-# 5. Describe pod for detailed info
-echo "\n=== Pod Details ==="
-kubectl describe pod $POD_NAME -n $NAMESPACE
-
-# 6. AI Analysis
-echo "\n=== AI Root Cause Analysis ==="
-# Collect all debug info
-DEBUG_DATA=$(cat <<EOF
-Pod: $POD_NAME
-Status: $(kubectl get pod $POD_NAME -n $NAMESPACE -o jsonpath='{.status.phase}')
-Events: $(kubectl get events -n $NAMESPACE --field-selector involvedObject.name=$POD_NAME -o json)
-Logs: $(kubectl logs $POD_NAME -n $NAMESPACE --tail=100 2>&1)
-Resources: $(kubectl top pod $POD_NAME -n $NAMESPACE 2>&1)
-EOF
-)
-
-# Call AI assistant (requires API key)
+# AI Analysis
 python3 <<PYTHON
-import os
-import json
-
-# Choose your LLM provider (OpenAI GPT-5 or Anthropic Claude Sonnet 4.5)
-PROVIDER = os.environ.get('LLM_PROVIDER', 'anthropic')  # or 'openai'
-
-debug_data = """$DEBUG_DATA"""
-
-if PROVIDER == 'openai':
-    from openai import OpenAI
-    client = OpenAI(api_key=os.environ.get('OPENAI_API_KEY'))
-
-    response = client.chat.completions.create(
-        model="gpt-5",
-        messages=[
-            {"role": "system", "content": "You are a Kubernetes debugging expert. Analyze pod issues and suggest fixes."},
-            {"role": "user", "content": f"Analyze this Kubernetes pod debug data and suggest fixes:\n\n{debug_data}"}
-        ],
-        temperature=0.2
-    )
-    print(response.choices[0].message.content)
-
-elif PROVIDER == 'anthropic':
-    import anthropic
-    client = anthropic.Anthropic(api_key=os.environ.get('ANTHROPIC_API_KEY'))
-
-    response = client.messages.create(
-        model="claude-sonnet-4.5-20250514",
-        max_tokens=4096,
-        temperature=0.2,
-        system="You are a Kubernetes debugging expert. Analyze pod issues and suggest fixes.",
-        messages=[
-            {"role": "user", "content": f"Analyze this Kubernetes pod debug data and suggest fixes:\n\n{debug_data}"}
-        ]
-    )
-    print(response.content[0].text)
+import anthropic, os
+client = anthropic.Anthropic()
+response = client.messages.create(
+    model="claude-sonnet-4.5-20250514",
+    max_tokens=4096,
+    system="Kubernetes debugging expert.",
+    messages=[{"role": "user", "content": f"Analyze pod $POD issues and suggest fixes."}]
+)
+print(response.content[0].text)
 PYTHON
 ```
 
-#### Docker Container Debugging
+---
+
+## Docker Container Debugging
 
 ```python
 import docker
-import json
 
-def debug_container_with_ai(container_id: str):
-    """AI-assisted Docker container debugging."""
+def debug_container(container_id: str):
     client = docker.from_env()
+    container = client.containers.get(container_id)
 
-    try:
-        container = client.containers.get(container_id)
+    issues = []
 
-        # Collect debug information
-        debug_info = {
-            'status': container.status,
-            'logs': container.logs(tail=100).decode('utf-8'),
-            'stats': container.stats(stream=False),
-            'top': container.top(),
-            'attrs': container.attrs
-        }
+    # OOMKilled check
+    if container.attrs['State'].get('OOMKilled'):
+        issues.append({'type': 'OOM', 'fix': 'Increase memory limit'})
 
-        # Check for common issues
-        issues = []
+    # Exit code analysis
+    exit_code = container.attrs['State'].get('ExitCode', 0)
+    if exit_code != 0:
+        issues.append({'type': 'EXIT_CODE', 'code': exit_code})
 
-        # 1. OOMKilled?
-        if container.attrs['State'].get('OOMKilled'):
-            issues.append({
-                'type': 'OOM',
-                'message': 'Container was killed due to out-of-memory',
-                'fix': 'Increase memory limit in docker-compose or deployment'
-            })
+    # Memory usage check
+    stats = container.stats(stream=False)
+    mem_usage = stats['memory_stats']['usage'] / stats['memory_stats']['limit']
+    if mem_usage > 0.9:
+        issues.append({'type': 'HIGH_MEMORY', 'usage': f'{mem_usage:.1%}'})
 
-        # 2. Exit code analysis
-        exit_code = container.attrs['State'].get('ExitCode', 0)
-        if exit_code != 0:
-            issues.append({
-                'type': 'EXIT_CODE',
-                'code': exit_code,
-                'message': f'Container exited with code {exit_code}',
-                'fix': 'Check application logs for errors'
-            })
+    # Health check status
+    health = container.attrs.get('State', {}).get('Health', {})
+    if health.get('Status') == 'unhealthy':
+        issues.append({'type': 'UNHEALTHY', 'logs': health.get('Log', [])[-3:]})
 
-        # 3. Resource constraints
-        stats = debug_info['stats']
-        memory_usage = stats['memory_stats']['usage'] / stats['memory_stats']['limit']
-        if memory_usage > 0.9:
-            issues.append({
-                'type': 'HIGH_MEMORY',
-                'usage': f'{memory_usage:.1%}',
-                'message': 'Memory usage above 90%',
-                'fix': 'Increase memory limit or optimize application'
-            })
-
-        # 4. Health check failures
-        health = container.attrs.get('State', {}).get('Health', {})
-        if health.get('Status') == 'unhealthy':
-            issues.append({
-                'type': 'UNHEALTHY',
-                'message': 'Health check failing',
-                'logs': health.get('Log', [])[-3:],  # Last 3 health check logs
-                'fix': 'Review health check configuration'
-            })
-
-        # AI-powered RCA
-        if issues:
-            print("🔍 Detected Issues:")
-            for issue in issues:
-                print(f"\n  [{issue['type']}] {issue['message']}")
-                print(f"  Fix: {issue['fix']}")
-
-            # Call AI for deeper analysis (GPT-5 or Claude Sonnet 4.5)
-            provider = os.environ.get('LLM_PROVIDER', 'anthropic')
-
-            prompt = f"""
-Analyze this Docker container debugging data:
-
-CONTAINER: {container_id}
-STATUS: {container.status}
-ISSUES DETECTED: {json.dumps(issues, indent=2)}
-LOGS:
-{debug_info['logs']}
-
-Provide:
-1. Root cause analysis
-2. Step-by-step fix instructions
-3. Prevention recommendations
-"""
-
-            if provider == 'openai':
-                from openai import OpenAI
-                client_ai = OpenAI(api_key=os.environ.get('OPENAI_API_KEY'))
-
-                response = client_ai.chat.completions.create(
-                    model="gpt-5",
-                    messages=[
-                        {"role": "system", "content": "You are a Docker debugging expert."},
-                        {"role": "user", "content": prompt}
-                    ],
-                    temperature=0.2
-                )
-                analysis = response.choices[0].message.content
-
-            elif provider == 'anthropic':
-                import anthropic
-                client_ai = anthropic.Anthropic(api_key=os.environ.get('ANTHROPIC_API_KEY'))
-
-                response = client_ai.messages.create(
-                    model="claude-sonnet-4.5-20250514",
-                    max_tokens=4096,
-                    temperature=0.2,
-                    system="You are a Docker debugging expert.",
-                    messages=[
-                        {"role": "user", "content": prompt}
-                    ]
-                )
-                analysis = response.content[0].text
-
-            print("\n🤖 AI Analysis:")
-            print(analysis)
-
-        else:
-            print("✅ No obvious issues detected")
-
-    except docker.errors.NotFound:
-        print(f"❌ Container {container_id} not found")
-    except Exception as e:
-        print(f"❌ Error debugging container: {e}")
-
-# Usage
-debug_container_with_ai("my-app-container")
+    return issues
 ```
 
-## Observability Integration
+---
 
-### OpenTelemetry Trace Analysis
+## OpenTelemetry Trace Analysis
 
 ```python
-from opentelemetry import trace
-from opentelemetry.sdk.trace import TracerProvider
-from opentelemetry.sdk.trace.export import BatchSpanProcessor, ConsoleSpanExporter
-import time
-
-class AITraceAnalyzer:
-    """AI-powered trace analysis for performance debugging."""
-
+class TraceAnalyzer:
     def __init__(self):
-        self.tracer = trace.get_tracer(__name__)
         self.slow_spans = []
 
-    def analyze_trace(self, trace_id: str):
-        """
-        Analyze distributed trace for performance issues.
-
-        Parameters
-        ----------
-        trace_id : str
-            Trace ID to analyze
-        """
-        # Fetch trace data (example structure)
-        spans = self.get_trace_spans(trace_id)
-
-        # Identify slow spans
+    def analyze(self, spans: list) -> str:
         for span in spans:
             duration_ms = (span['end_time'] - span['start_time']) * 1000
-
-            if duration_ms > 1000:  # Slower than 1 second
+            if duration_ms > 1000:  # > 1 second
                 self.slow_spans.append({
                     'name': span['name'],
                     'duration_ms': duration_ms,
                     'attributes': span.get('attributes', {})
                 })
 
-        # AI-powered bottleneck analysis
-        if self.slow_spans:
-            return self.generate_performance_report()
-        else:
-            return "No performance issues detected"
-
-    def generate_performance_report(self) -> str:
-        """Generate human-readable performance report."""
         report = "Performance Bottlenecks:\n"
-
-        # Sort by duration
-        sorted_spans = sorted(self.slow_spans, key=lambda x: x['duration_ms'], reverse=True)
-
-        for i, span in enumerate(sorted_spans[:5], 1):  # Top 5
-            report += f"\n{i}. {span['name']}: {span['duration_ms']:.2f}ms"
-
-            # Suggest optimizations
+        for span in sorted(self.slow_spans, key=lambda x: -x['duration_ms'])[:5]:
+            report += f"\n{span['name']}: {span['duration_ms']:.0f}ms"
             if 'db.system' in span['attributes']:
-                report += "\n   → Optimize database query or add caching"
+                report += " → Optimize query or add caching"
             elif 'http.method' in span['attributes']:
-                report += "\n   → Consider async processing or CDN"
-            elif 'rpc.service' in span['attributes']:
-                report += "\n   → Review RPC call necessity or batch requests"
-
+                report += " → Consider async or CDN"
         return report
-
-    def get_trace_spans(self, trace_id: str):
-        """Mock method to fetch trace spans."""
-        # In production, fetch from OpenTelemetry backend
-        return [
-            {
-                'name': 'database_query',
-                'start_time': time.time(),
-                'end_time': time.time() + 2.5,
-                'attributes': {'db.system': 'postgresql', 'db.statement': 'SELECT * FROM users'}
-            },
-            {
-                'name': 'external_api_call',
-                'start_time': time.time(),
-                'end_time': time.time() + 1.2,
-                'attributes': {'http.method': 'POST', 'http.url': 'https://api.example.com'}
-            }
-        ]
-
-# Usage
-analyzer = AITraceAnalyzer()
-report = analyzer.analyze_trace("abc123")
-print(report)
 ```
+
+---
+
+## Automated RCA Pipeline
+
+```python
+class RCAPipeline:
+    def __init__(self, ai_assistant, log_detector):
+        self.ai = ai_assistant
+        self.detector = log_detector
+
+    def analyze_incident(self, incident: dict) -> dict:
+        results = {'timestamp': incident['timestamp'], 'analysis': {}}
+
+        # 1. Correlate recent changes
+        recent_changes = self.filter_changes(incident['changes'], incident['timestamp'])
+        if recent_changes:
+            results['analysis']['suspected_cause'] = 'Recent deployment'
+
+        # 2. Detect log anomalies
+        anomalies = self.detector.detect(pd.DataFrame(incident['logs']))
+        results['analysis']['anomalies'] = anomalies[anomalies['anomaly']].to_dict('records')
+
+        # 3. AI root cause analysis
+        results['analysis']['ai_rca'] = self.ai.analyze_stack_trace(
+            incident.get('error_trace', ''))
+
+        # 4. Generate recommendations
+        results['recommendations'] = self.generate_fixes(results['analysis'])
+        return results
+
+    def filter_changes(self, changes, incident_time):
+        import dateutil.parser
+        incident_dt = dateutil.parser.parse(incident_time)
+        return [c for c in changes
+                if (incident_dt - dateutil.parser.parse(c['timestamp'])).total_seconds() < 3600]
+```
+
+---
 
 ## Best Practices
 
-### 1. Prompt Engineering for Debugging
+| Practice | Implementation |
+|----------|----------------|
+| **Prompt engineering** | Include language, framework, environment context |
+| **Temperature** | Low (0.2) for deterministic debugging |
+| **Context** | Provide error + code + logs together |
+| **Correlation** | Check recent deploys/configs before deep analysis |
+| **Anomaly thresholds** | Set based on normal baseline (10% contamination) |
+| **Trace analysis** | Focus on spans > P95 latency |
+
+---
+
+## Debugging Prompt Template
 
 ```python
-def create_debugging_prompt(error_type: str, context: dict) -> str:
-    """
-    Create optimized prompt for LLM debugging assistance.
-
-    Parameters
-    ----------
-    error_type : str
-        Type of error (syntax, runtime, logic, performance)
-    context : dict
-        Debugging context (code, logs, traces, metrics)
-
-    Returns
-    -------
-    str
-        Optimized prompt for LLM
-    """
-    base_prompt = f"""
-You are an expert debugging assistant specializing in {error_type} errors.
-
-CONTEXT:
-- Language: {context.get('language', 'Unknown')}
-- Framework: {context.get('framework', 'N/A')}
-- Environment: {context.get('environment', 'production')}
+def debug_prompt(context: dict) -> str:
+    return f"""Error in {context['language']} / {context['framework']}
 
 ERROR:
 {context['error']}
@@ -779,157 +272,28 @@ ERROR:
 CODE:
 {context.get('code', 'N/A')}
 
-LOGS (last 20 lines):
+LOGS:
 {context.get('logs', 'N/A')}
 
-Your task:
-1. Identify the root cause
-2. Explain WHY it's failing (not just WHAT is failing)
-3. Provide 2-3 specific fixes with code examples
-4. Suggest tests to prevent regression
-5. Recommend monitoring/alerts to catch this earlier
-
-Be concise but thorough. Prioritize actionable fixes.
-"""
-
-    # Add specialized sections based on error type
-    if error_type == 'performance':
-        base_prompt += """
-PERFORMANCE CONTEXT:
-- Current latency: {context.get('latency', 'N/A')}
-- Expected latency: {context.get('expected_latency', 'N/A')}
-- Resource usage: {context.get('resources', 'N/A')}
-
-Focus on:
-- Algorithmic complexity
-- Database query optimization
-- Caching opportunities
-- Async/parallel processing
-"""
-
-    return base_prompt
-
-# Usage
-prompt = create_debugging_prompt('performance', {
-    'language': 'Python',
-    'framework': 'FastAPI',
-    'environment': 'production',
-    'error': 'Response time > 5s',
-    'code': 'def slow_endpoint(): ...',
-    'latency': '5.2s',
-    'expected_latency': '500ms'
-})
+Provide:
+1. Root cause (WHY, not just WHAT)
+2. 2-3 specific fixes with code
+3. Tests to prevent regression
+4. Monitoring/alerts to catch earlier"""
 ```
 
-### 2. Automated RCA Pipeline
+---
 
-```python
-class AutomatedRCAPipeline:
-    """End-to-end automated root cause analysis."""
+## Checklist
 
-    def __init__(self):
-        self.log_analyzer = LogAnomalyDetector()
-        self.ai_assistant = AIDebugAssistant(api_key="YOUR_KEY")
+- [ ] LLM configured for stack trace analysis
+- [ ] Anomaly detector trained on normal logs
+- [ ] K8s/Docker debugging scripts ready
+- [ ] OpenTelemetry trace collection enabled
+- [ ] Change correlation integrated (git, deploys)
+- [ ] RCA pipeline connects all data sources
+- [ ] Prompts include sufficient context
 
-    def analyze_incident(self, incident_data: dict) -> dict:
-        """
-        Full RCA pipeline from detection to fix suggestion.
+---
 
-        Parameters
-        ----------
-        incident_data : dict
-            {
-                'alert_name': str,
-                'timestamp': str,
-                'logs': list,
-                'metrics': dict,
-                'traces': list,
-                'recent_changes': list  # Git commits, deploys, config changes
-            }
-
-        Returns
-        -------
-        dict
-            RCA report with root cause, impact, fix suggestions
-        """
-        results = {
-            'incident_id': incident_data.get('alert_name'),
-            'timestamp': incident_data['timestamp'],
-            'analysis': {}
-        }
-
-        # 1. Correlate recent changes with incident
-        changes_before_incident = self.filter_recent_changes(
-            incident_data['recent_changes'],
-            incident_data['timestamp']
-        )
-
-        if changes_before_incident:
-            results['analysis']['suspected_cause'] = 'Recent deployment or config change'
-            results['analysis']['changes'] = changes_before_incident
-
-        # 2. Analyze logs for anomalies
-        log_df = pd.DataFrame(incident_data['logs'])
-        anomalies = self.log_analyzer.detect_anomalies(log_df)
-
-        if len(anomalies[anomalies['anomaly']]) > 0:
-            results['analysis']['log_anomalies'] = anomalies[anomalies['anomaly']].to_dict('records')
-
-        # 3. AI-powered correlation
-        ai_analysis = self.ai_assistant.analyze_stack_trace(
-            error_trace=incident_data.get('error_trace', 'N/A'),
-            context_code=self.get_relevant_code(changes_before_incident)
-        )
-
-        results['analysis']['ai_rca'] = ai_analysis
-
-        # 4. Generate actionable report
-        results['recommendations'] = self.generate_recommendations(results['analysis'])
-
-        return results
-
-    def filter_recent_changes(self, changes: list, incident_time: str) -> list:
-        """Filter changes within 1 hour before incident."""
-        import dateutil.parser
-        incident_dt = dateutil.parser.parse(incident_time)
-
-        recent = []
-        for change in changes:
-            change_dt = dateutil.parser.parse(change['timestamp'])
-            if (incident_dt - change_dt).total_seconds() < 3600:  # 1 hour
-                recent.append(change)
-
-        return recent
-
-    def get_relevant_code(self, changes: list) -> str:
-        """Extract code from recent changes."""
-        code = []
-        for change in changes:
-            if change['type'] == 'commit':
-                code.append(f"Commit {change['hash']}: {change['diff']}")
-        return "\n".join(code)
-
-    def generate_recommendations(self, analysis: dict) -> list:
-        """Generate actionable fix recommendations."""
-        recommendations = []
-
-        if 'suspected_cause' in analysis:
-            if 'deployment' in analysis['suspected_cause'].lower():
-                recommendations.append({
-                    'priority': 'HIGH',
-                    'action': 'Rollback deployment',
-                    'command': 'kubectl rollout undo deployment/app'
-                })
-
-        if 'ai_rca' in analysis and 'fixes' in analysis['ai_rca']:
-            for fix in analysis['ai_rca']['fixes']:
-                recommendations.append({
-                    'priority': 'MEDIUM',
-                    'action': 'Apply code fix',
-                    'details': fix
-                })
-
-        return recommendations
-```
-
-This skill provides comprehensive AI-assisted debugging capabilities for modern distributed systems with focus on automation, observability, and intelligent root cause analysis!
+**Version**: 1.0.5

@@ -1,154 +1,50 @@
 ---
 name: grafana-dashboards
-description: Create and manage production-ready Grafana dashboards with panels, variables, alerts, and templates for real-time visualization of system and application metrics. Use when building or modifying Grafana dashboard JSON files, creating monitoring dashboards for applications or infrastructure, visualizing Prometheus or other data source metrics, designing SLO and error budget dashboards, implementing dashboard panels (graphs, stats, tables, heatmaps), configuring dashboard variables and templating, setting up dashboard alerts and notifications, provisioning dashboards as code with Terraform or Ansible, creating RED method dashboards for services, designing USE method dashboards for resources, implementing time-series visualizations, or building custom business KPI dashboards.
+version: "1.0.5"
+maturity: "5-Expert"
+specialization: Metric Visualization
+description: Create production Grafana dashboards with panels, variables, alerts, and templates using RED/USE methods. Use when building API monitoring, infrastructure, database, or SLO dashboards with Prometheus data sources.
 ---
 
 # Grafana Dashboards
 
-## When to use this skill
+Production-ready metric visualization with Prometheus integration.
 
-- Creating or modifying Grafana dashboard JSON files (*.json in dashboards/ directories)
-- Building monitoring dashboards for applications, APIs, or microservices
-- Visualizing metrics from Prometheus, InfluxDB, Elasticsearch, or other data sources
-- Designing SLO (Service Level Objective) and error budget tracking dashboards
-- Implementing dashboard panels: graphs, stat panels, tables, heatmaps, gauges
-- Configuring dashboard variables and templating for dynamic filtering
-- Setting up dashboard alerts and notification channels (Slack, PagerDuty, email)
-- Provisioning dashboards as code using Terraform, Ansible, or Kubernetes ConfigMaps
-- Creating RED method dashboards (Rate, Errors, Duration) for service monitoring
-- Designing USE method dashboards (Utilization, Saturation, Errors) for resource monitoring
-- Implementing time-series visualizations with proper time ranges and intervals
-- Building database monitoring dashboards (query latency, connection pools, replication lag)
-- Creating infrastructure dashboards (CPU, memory, disk, network)
-- Designing application-specific dashboards with custom business KPIs
-- Working with Grafana provisioning YAML files for automated dashboard deployment
+---
 
-Create and manage production-ready Grafana dashboards for comprehensive system observability.
+## Dashboard Design Methods
 
-## Purpose
+| Method | Focus | Metrics |
+|--------|-------|---------|
+| RED (Services) | Request behavior | Rate, Errors, Duration |
+| USE (Resources) | Resource health | Utilization, Saturation, Errors |
+| Golden Signals | User experience | Latency, Traffic, Errors, Saturation |
 
-Design effective Grafana dashboards for monitoring applications, infrastructure, and business metrics.
-
-## Key Use Cases
-
-- Visualize Prometheus metrics
-- Create custom dashboards
-- Implement SLO dashboards
-- Monitor infrastructure
-- Track business KPIs
-
-## Dashboard Design Principles
-
-### 1. Hierarchy of Information
 ```
-┌─────────────────────────────────────┐
-│  Critical Metrics (Big Numbers)     │
-├─────────────────────────────────────┤
-│  Key Trends (Time Series)           │
-├─────────────────────────────────────┤
-│  Detailed Metrics (Tables/Heatmaps) │
-└─────────────────────────────────────┘
+Dashboard Hierarchy:
+┌─ Critical Metrics (Stat panels, big numbers)
+├─ Key Trends (Time series graphs)
+└─ Details (Tables, heatmaps)
 ```
 
-### 2. RED Method (Services)
-- **Rate** - Requests per second
-- **Errors** - Error rate
-- **Duration** - Latency/response time
-
-### 3. USE Method (Resources)
-- **Utilization** - % time resource is busy
-- **Saturation** - Queue length/wait time
-- **Errors** - Error count
-
-## Dashboard Structure
-
-### API Monitoring Dashboard
-
-```json
-{
-  "dashboard": {
-    "title": "API Monitoring",
-    "tags": ["api", "production"],
-    "timezone": "browser",
-    "refresh": "30s",
-    "panels": [
-      {
-        "title": "Request Rate",
-        "type": "graph",
-        "targets": [
-          {
-            "expr": "sum(rate(http_requests_total[5m])) by (service)",
-            "legendFormat": "{{service}}"
-          }
-        ],
-        "gridPos": {"x": 0, "y": 0, "w": 12, "h": 8}
-      },
-      {
-        "title": "Error Rate %",
-        "type": "graph",
-        "targets": [
-          {
-            "expr": "(sum(rate(http_requests_total{status=~\"5..\"}[5m])) / sum(rate(http_requests_total[5m]))) * 100",
-            "legendFormat": "Error Rate"
-          }
-        ],
-        "alert": {
-          "conditions": [
-            {
-              "evaluator": {"params": [5], "type": "gt"},
-              "operator": {"type": "and"},
-              "query": {"params": ["A", "5m", "now"]},
-              "type": "query"
-            }
-          ]
-        },
-        "gridPos": {"x": 12, "y": 0, "w": 12, "h": 8}
-      },
-      {
-        "title": "P95 Latency",
-        "type": "graph",
-        "targets": [
-          {
-            "expr": "histogram_quantile(0.95, sum(rate(http_request_duration_seconds_bucket[5m])) by (le, service))",
-            "legendFormat": "{{service}}"
-          }
-        ],
-        "gridPos": {"x": 0, "y": 8, "w": 24, "h": 8}
-      }
-    ]
-  }
-}
-```
-
-**Reference:** See `assets/api-dashboard.json`
+---
 
 ## Panel Types
 
-### 1. Stat Panel (Single Value)
+### Stat Panel
+
 ```json
 {
   "type": "stat",
-  "title": "Total Requests",
-  "targets": [{
-    "expr": "sum(http_requests_total)"
-  }],
-  "options": {
-    "reduceOptions": {
-      "values": false,
-      "calcs": ["lastNotNull"]
-    },
-    "orientation": "auto",
-    "textMode": "auto",
-    "colorMode": "value"
-  },
+  "title": "Error Rate %",
+  "targets": [{"expr": "(sum(rate(http_errors_total[5m]))/sum(rate(http_requests_total[5m])))*100"}],
   "fieldConfig": {
     "defaults": {
       "thresholds": {
-        "mode": "absolute",
         "steps": [
           {"value": 0, "color": "green"},
-          {"value": 80, "color": "yellow"},
-          {"value": 90, "color": "red"}
+          {"value": 1, "color": "yellow"},
+          {"value": 5, "color": "red"}
         ]
       }
     }
@@ -156,49 +52,22 @@ Design effective Grafana dashboards for monitoring applications, infrastructure,
 }
 ```
 
-### 2. Time Series Graph
+### Time Series
+
 ```json
 {
-  "type": "graph",
-  "title": "CPU Usage",
+  "type": "timeseries",
+  "title": "Request Rate",
   "targets": [{
-    "expr": "100 - (avg by (instance) (rate(node_cpu_seconds_total{mode=\"idle\"}[5m])) * 100)"
+    "expr": "sum(rate(http_requests_total[5m])) by (service)",
+    "legendFormat": "{{service}}"
   }],
-  "yaxes": [
-    {"format": "percent", "max": 100, "min": 0},
-    {"format": "short"}
-  ]
+  "gridPos": {"x": 0, "y": 0, "w": 12, "h": 8}
 }
 ```
 
-### 3. Table Panel
-```json
-{
-  "type": "table",
-  "title": "Service Status",
-  "targets": [{
-    "expr": "up",
-    "format": "table",
-    "instant": true
-  }],
-  "transformations": [
-    {
-      "id": "organize",
-      "options": {
-        "excludeByName": {"Time": true},
-        "indexByName": {},
-        "renameByName": {
-          "instance": "Instance",
-          "job": "Service",
-          "Value": "Status"
-        }
-      }
-    }
-  ]
-}
-```
+### Heatmap (Latency Distribution)
 
-### 4. Heatmap
 ```json
 {
   "type": "heatmap",
@@ -206,17 +75,14 @@ Design effective Grafana dashboards for monitoring applications, infrastructure,
   "targets": [{
     "expr": "sum(rate(http_request_duration_seconds_bucket[5m])) by (le)",
     "format": "heatmap"
-  }],
-  "dataFormat": "tsbuckets",
-  "yAxis": {
-    "format": "s"
-  }
+  }]
 }
 ```
 
-## Variables
+---
 
-### Query Variables
+## Variables (Templating)
+
 ```json
 {
   "templating": {
@@ -224,17 +90,13 @@ Design effective Grafana dashboards for monitoring applications, infrastructure,
       {
         "name": "namespace",
         "type": "query",
-        "datasource": "Prometheus",
         "query": "label_values(kube_pod_info, namespace)",
-        "refresh": 1,
-        "multi": false
+        "refresh": 1
       },
       {
         "name": "service",
         "type": "query",
-        "datasource": "Prometheus",
         "query": "label_values(kube_service_info{namespace=\"$namespace\"}, service)",
-        "refresh": 1,
         "multi": true
       }
     ]
@@ -242,146 +104,109 @@ Design effective Grafana dashboards for monitoring applications, infrastructure,
 }
 ```
 
-### Use Variables in Queries
-```
-sum(rate(http_requests_total{namespace="$namespace", service=~"$service"}[5m]))
-```
+**Usage in queries**: `sum(rate(http_requests_total{namespace="$namespace", service=~"$service"}[5m]))`
 
-## Alerts in Dashboards
+---
+
+## Dashboard Alerts
 
 ```json
 {
   "alert": {
     "name": "High Error Rate",
-    "conditions": [
-      {
-        "evaluator": {
-          "params": [5],
-          "type": "gt"
-        },
-        "operator": {"type": "and"},
-        "query": {
-          "params": ["A", "5m", "now"]
-        },
-        "reducer": {"type": "avg"},
-        "type": "query"
-      }
-    ],
-    "executionErrorState": "alerting",
+    "conditions": [{
+      "evaluator": {"params": [5], "type": "gt"},
+      "query": {"params": ["A", "5m", "now"]},
+      "reducer": {"type": "avg"}
+    }],
     "for": "5m",
     "frequency": "1m",
-    "message": "Error rate is above 5%",
-    "noDataState": "no_data",
-    "notifications": [
-      {"uid": "slack-channel"}
-    ]
+    "notifications": [{"uid": "slack-channel"}]
   }
 }
 ```
 
-## Dashboard Provisioning
+---
 
-**dashboards.yml:**
+## Common Dashboards
+
+### API Monitoring (RED)
+
+| Panel | Query |
+|-------|-------|
+| Request Rate | `sum(rate(http_requests_total[5m])) by (service)` |
+| Error Rate % | `(sum(rate(http_requests_total{status=~"5.."}[5m]))/sum(rate(http_requests_total[5m])))*100` |
+| P95 Latency | `histogram_quantile(0.95, sum(rate(http_request_duration_seconds_bucket[5m])) by (le))` |
+
+### Infrastructure (USE)
+
+| Panel | Query |
+|-------|-------|
+| CPU Utilization | `100 - (avg(rate(node_cpu_seconds_total{mode="idle"}[5m]))*100)` |
+| Memory Usage | `(1 - node_memory_MemAvailable_bytes/node_memory_MemTotal_bytes)*100` |
+| Disk I/O | `rate(node_disk_io_time_seconds_total[5m])` |
+
+---
+
+## Provisioning
+
+### File-based (YAML)
+
 ```yaml
 apiVersion: 1
-
 providers:
   - name: 'default'
-    orgId: 1
     folder: 'General'
     type: file
-    disableDeletion: false
-    updateIntervalSeconds: 10
-    allowUiUpdates: true
     options:
       path: /etc/grafana/dashboards
 ```
 
-## Common Dashboard Patterns
+### Terraform
 
-### Infrastructure Dashboard
+```hcl
+resource "grafana_dashboard" "api" {
+  config_json = file("${path.module}/dashboards/api.json")
+  folder      = grafana_folder.monitoring.id
+}
+```
 
-**Key Panels:**
-- CPU utilization per node
-- Memory usage per node
-- Disk I/O
-- Network traffic
-- Pod count by namespace
-- Node status
-
-**Reference:** See `assets/infrastructure-dashboard.json`
-
-### Database Dashboard
-
-**Key Panels:**
-- Queries per second
-- Connection pool usage
-- Query latency (P50, P95, P99)
-- Active connections
-- Database size
-- Replication lag
-- Slow queries
-
-**Reference:** See `assets/database-dashboard.json`
-
-### Application Dashboard
-
-**Key Panels:**
-- Request rate
-- Error rate
-- Response time (percentiles)
-- Active users/sessions
-- Cache hit rate
-- Queue length
+---
 
 ## Best Practices
 
-1. **Start with templates** (Grafana community dashboards)
-2. **Use consistent naming** for panels and variables
-3. **Group related metrics** in rows
-4. **Set appropriate time ranges** (default: Last 6 hours)
-5. **Use variables** for flexibility
-6. **Add panel descriptions** for context
-7. **Configure units** correctly
-8. **Set meaningful thresholds** for colors
-9. **Use consistent colors** across dashboards
-10. **Test with different time ranges**
+| Practice | Implementation |
+|----------|----------------|
+| Hierarchy | Critical stats at top, details below |
+| Variables | Enable dynamic filtering |
+| Consistent naming | prefix_metric_unit |
+| Time ranges | Default 6h, allow customization |
+| Thresholds | Color coding for quick assessment |
+| Descriptions | Add panel descriptions |
 
-## Dashboard as Code
+---
 
-### Terraform Provisioning
+## Common Pitfalls
 
-```hcl
-resource "grafana_dashboard" "api_monitoring" {
-  config_json = file("${path.module}/dashboards/api-monitoring.json")
-  folder      = grafana_folder.monitoring.id
-}
+| Pitfall | Solution |
+|---------|----------|
+| Too many panels | Focus on actionable metrics |
+| Wrong refresh rate | 30s-1m for real-time, 5m for trends |
+| Missing variables | Add namespace/service filters |
+| No thresholds | Define green/yellow/red levels |
+| Hardcoded values | Use variables for flexibility |
 
-resource "grafana_folder" "monitoring" {
-  title = "Production Monitoring"
-}
-```
+---
 
-### Ansible Provisioning
+## Checklist
 
-```yaml
-- name: Deploy Grafana dashboards
-  copy:
-    src: "{{ item }}"
-    dest: /etc/grafana/dashboards/
-  with_fileglob:
-    - "dashboards/*.json"
-  notify: restart grafana
-```
+- [ ] Dashboard follows RED or USE method
+- [ ] Variables for namespace/service filtering
+- [ ] Thresholds configured for key panels
+- [ ] Alerts on critical metrics
+- [ ] Panel descriptions added
+- [ ] Provisioning as code configured
 
-## Reference Files
+---
 
-- `assets/api-dashboard.json` - API monitoring dashboard
-- `assets/infrastructure-dashboard.json` - Infrastructure dashboard
-- `assets/database-dashboard.json` - Database monitoring dashboard
-- `references/dashboard-design.md` - Dashboard design guide
-
-## Related Skills
-
-- `prometheus-configuration` - For metric collection
-- `slo-implementation` - For SLO dashboards
+**Version**: 1.0.5

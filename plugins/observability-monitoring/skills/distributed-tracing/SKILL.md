@@ -1,44 +1,26 @@
 ---
 name: distributed-tracing
-description: Implement distributed tracing with Jaeger, Tempo, and OpenTelemetry to track requests across microservices and identify performance bottlenecks. Use when setting up distributed tracing infrastructure, instrumenting applications with OpenTelemetry, configuring Jaeger or Tempo deployments, debugging latency issues in microservices architectures, analyzing request flows across service boundaries, implementing trace context propagation in HTTP or gRPC services, configuring sampling strategies for production tracing, integrating distributed tracing with logging systems, troubleshooting error propagation across services, visualizing service dependency graphs, or implementing trace-based alerting for distributed systems.
+version: "1.0.5"
+maturity: "5-Expert"
+specialization: Request Flow Visibility
+description: Implement distributed tracing with OpenTelemetry, Jaeger, and Tempo including instrumentation, context propagation, sampling strategies, and trace analysis. Use when debugging latency issues, understanding service dependencies, or tracing error propagation across microservices.
 ---
 
 # Distributed Tracing
 
-## When to use this skill
+Track requests across distributed systems for latency and dependency analysis.
 
-- Setting up Jaeger or Tempo distributed tracing infrastructure in Kubernetes or Docker
-- Instrumenting applications with OpenTelemetry libraries (Python, Node.js, Go, Java)
-- Configuring trace exporters and collectors in microservices
-- Debugging latency issues across distributed service architectures
-- Analyzing request flows and spans across multiple service boundaries
-- Implementing trace context propagation in HTTP, gRPC, or message queue systems
-- Configuring sampling strategies (probabilistic, rate-limiting, adaptive) for production environments
-- Working with trace configuration files or instrumentation code
-- Integrating distributed tracing with logging systems for correlation
-- Troubleshooting error propagation and cascading failures across services
-- Visualizing and analyzing service dependency graphs
-- Setting up trace-based alerting for slow requests or error traces
-- Implementing baggage propagation for distributed context
-- Working with W3C Trace Context or OpenTracing standards
-
-Implement distributed tracing with Jaeger and Tempo for request flow visibility across microservices.
-
-## Purpose
-
-Track requests across distributed systems to understand latency, dependencies, and failure points.
+---
 
 ## Core Concepts
 
-- Debug latency issues
-- Understand service dependencies
-- Identify bottlenecks
-- Trace error propagation
-- Analyze request paths
+| Concept | Description |
+|---------|-------------|
+| Trace | End-to-end request journey |
+| Span | Single operation within trace |
+| Context | Metadata propagated between services |
+| Tags | Key-value pairs for filtering |
 
-## Distributed Tracing Concepts
-
-### Trace Structure
 ```
 Trace (Request ID: abc123)
   ↓
@@ -50,406 +32,176 @@ Span (api-gateway) [80ms]
       └→ Span (database) [40ms]
 ```
 
-### Key Components
-- **Trace** - End-to-end request journey
-- **Span** - Single operation within a trace
-- **Context** - Metadata propagated between services
-- **Tags** - Key-value pairs for filtering
-- **Logs** - Timestamped events within a span
+---
 
-## Jaeger Setup
+## OpenTelemetry Instrumentation
 
-### Kubernetes Deployment
+### Python (Flask)
 
-```bash
-# Deploy Jaeger Operator
-kubectl create namespace observability
-kubectl create -f https://github.com/jaegertracing/jaeger-operator/releases/download/v1.51.0/jaeger-operator.yaml -n observability
-
-# Deploy Jaeger instance
-kubectl apply -f - <<EOF
-apiVersion: jaegertracing.io/v1
-kind: Jaeger
-metadata:
-  name: jaeger
-  namespace: observability
-spec:
-  strategy: production
-  storage:
-    type: elasticsearch
-    options:
-      es:
-        server-urls: http://elasticsearch:9200
-  ingress:
-    enabled: true
-EOF
-```
-
-### Docker Compose
-
-```yaml
-version: '3.8'
-services:
-  jaeger:
-    image: jaegertracing/all-in-one:latest
-    ports:
-      - "5775:5775/udp"
-      - "6831:6831/udp"
-      - "6832:6832/udp"
-      - "5778:5778"
-      - "16686:16686"  # UI
-      - "14268:14268"  # Collector
-      - "14250:14250"  # gRPC
-      - "9411:9411"    # Zipkin
-    environment:
-      - COLLECTOR_ZIPKIN_HOST_PORT=:9411
-```
-
-**Reference:** See `references/jaeger-setup.md`
-
-## Application Instrumentation
-
-### OpenTelemetry (Recommended)
-
-#### Python (Flask)
 ```python
 from opentelemetry import trace
 from opentelemetry.exporter.jaeger.thrift import JaegerExporter
-from opentelemetry.sdk.resources import SERVICE_NAME, Resource
 from opentelemetry.sdk.trace import TracerProvider
 from opentelemetry.sdk.trace.export import BatchSpanProcessor
 from opentelemetry.instrumentation.flask import FlaskInstrumentor
-from flask import Flask
 
-# Initialize tracer
-resource = Resource(attributes={SERVICE_NAME: "my-service"})
-provider = TracerProvider(resource=resource)
-processor = BatchSpanProcessor(JaegerExporter(
-    agent_host_name="jaeger",
-    agent_port=6831,
+provider = TracerProvider()
+provider.add_span_processor(BatchSpanProcessor(
+    JaegerExporter(agent_host_name="jaeger", agent_port=6831)
 ))
-provider.add_span_processor(processor)
 trace.set_tracer_provider(provider)
 
-# Instrument Flask
 app = Flask(__name__)
 FlaskInstrumentor().instrument_app(app)
 
 @app.route('/api/users')
 def get_users():
     tracer = trace.get_tracer(__name__)
-
     with tracer.start_as_current_span("get_users") as span:
         span.set_attribute("user.count", 100)
-        # Business logic
-        users = fetch_users_from_db()
-        return {"users": users}
-
-def fetch_users_from_db():
-    tracer = trace.get_tracer(__name__)
-
-    with tracer.start_as_current_span("database_query") as span:
-        span.set_attribute("db.system", "postgresql")
-        span.set_attribute("db.statement", "SELECT * FROM users")
-        # Database query
-        return query_database()
+        return fetch_users()
 ```
 
-#### Node.js (Express)
+### Node.js (Express)
+
 ```javascript
 const { NodeTracerProvider } = require('@opentelemetry/sdk-trace-node');
 const { JaegerExporter } = require('@opentelemetry/exporter-jaeger');
-const { BatchSpanProcessor } = require('@opentelemetry/sdk-trace-base');
 const { registerInstrumentations } = require('@opentelemetry/instrumentation');
-const { HttpInstrumentation } = require('@opentelemetry/instrumentation-http');
-const { ExpressInstrumentation } = require('@opentelemetry/instrumentation-express');
 
-// Initialize tracer
-const provider = new NodeTracerProvider({
-  resource: { attributes: { 'service.name': 'my-service' } }
-});
-
-const exporter = new JaegerExporter({
+const provider = new NodeTracerProvider();
+provider.addSpanProcessor(new BatchSpanProcessor(new JaegerExporter({
   endpoint: 'http://jaeger:14268/api/traces'
-});
-
-provider.addSpanProcessor(new BatchSpanProcessor(exporter));
+})));
 provider.register();
 
-// Instrument libraries
 registerInstrumentations({
-  instrumentations: [
-    new HttpInstrumentation(),
-    new ExpressInstrumentation(),
-  ],
-});
-
-const express = require('express');
-const app = express();
-
-app.get('/api/users', async (req, res) => {
-  const tracer = trace.getTracer('my-service');
-  const span = tracer.startSpan('get_users');
-
-  try {
-    const users = await fetchUsers();
-    span.setAttributes({ 'user.count': users.length });
-    res.json({ users });
-  } finally {
-    span.end();
-  }
+  instrumentations: [new HttpInstrumentation(), new ExpressInstrumentation()]
 });
 ```
 
-#### Go
-```go
-package main
-
-import (
-    "context"
-    "go.opentelemetry.io/otel"
-    "go.opentelemetry.io/otel/exporters/jaeger"
-    "go.opentelemetry.io/otel/sdk/resource"
-    sdktrace "go.opentelemetry.io/otel/sdk/trace"
-    semconv "go.opentelemetry.io/otel/semconv/v1.4.0"
-)
-
-func initTracer() (*sdktrace.TracerProvider, error) {
-    exporter, err := jaeger.New(jaeger.WithCollectorEndpoint(
-        jaeger.WithEndpoint("http://jaeger:14268/api/traces"),
-    ))
-    if err != nil {
-        return nil, err
-    }
-
-    tp := sdktrace.NewTracerProvider(
-        sdktrace.WithBatcher(exporter),
-        sdktrace.WithResource(resource.NewWithAttributes(
-            semconv.SchemaURL,
-            semconv.ServiceNameKey.String("my-service"),
-        )),
-    )
-
-    otel.SetTracerProvider(tp)
-    return tp, nil
-}
-
-func getUsers(ctx context.Context) ([]User, error) {
-    tracer := otel.Tracer("my-service")
-    ctx, span := tracer.Start(ctx, "get_users")
-    defer span.End()
-
-    span.SetAttributes(attribute.String("user.filter", "active"))
-
-    users, err := fetchUsersFromDB(ctx)
-    if err != nil {
-        span.RecordError(err)
-        return nil, err
-    }
-
-    span.SetAttributes(attribute.Int("user.count", len(users)))
-    return users, nil
-}
-```
-
-**Reference:** See `references/instrumentation.md`
+---
 
 ## Context Propagation
 
-### HTTP Headers
-```
-traceparent: 00-0af7651916cd43dd8448eb211c80319c-b7ad6b7169203331-01
-tracestate: congo=t61rcWkgMzE
-```
-
-### Propagation in HTTP Requests
-
-#### Python
 ```python
+# HTTP Header
+traceparent: 00-0af7651916cd43dd8448eb211c80319c-b7ad6b7169203331-01
+
+# Propagate in requests
 from opentelemetry.propagate import inject
-
 headers = {}
-inject(headers)  # Injects trace context
-
-response = requests.get('http://downstream-service/api', headers=headers)
+inject(headers)
+response = requests.get('http://downstream/api', headers=headers)
 ```
 
-#### Node.js
-```javascript
-const { propagation } = require('@opentelemetry/api');
+---
 
-const headers = {};
-propagation.inject(context.active(), headers);
+## Jaeger Deployment
 
-axios.get('http://downstream-service/api', { headers });
-```
-
-## Tempo Setup (Grafana)
-
-### Kubernetes Deployment
+### Docker Compose
 
 ```yaml
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: tempo-config
-data:
-  tempo.yaml: |
-    server:
-      http_listen_port: 3200
-
-    distributor:
-      receivers:
-        jaeger:
-          protocols:
-            thrift_http:
-            grpc:
-        otlp:
-          protocols:
-            http:
-            grpc:
-
-    storage:
-      trace:
-        backend: s3
-        s3:
-          bucket: tempo-traces
-          endpoint: s3.amazonaws.com
-
-    querier:
-      frontend_worker:
-        frontend_address: tempo-query-frontend:9095
----
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: tempo
-spec:
-  replicas: 1
-  template:
-    spec:
-      containers:
-      - name: tempo
-        image: grafana/tempo:latest
-        args:
-          - -config.file=/etc/tempo/tempo.yaml
-        volumeMounts:
-        - name: config
-          mountPath: /etc/tempo
-      volumes:
-      - name: config
-        configMap:
-          name: tempo-config
+services:
+  jaeger:
+    image: jaegertracing/all-in-one:latest
+    ports:
+      - "16686:16686"  # UI
+      - "6831:6831/udp"  # Thrift compact
+      - "14268:14268"  # HTTP collector
 ```
 
-**Reference:** See `assets/jaeger-config.yaml.template`
+### Kubernetes
+
+```yaml
+apiVersion: jaegertracing.io/v1
+kind: Jaeger
+metadata:
+  name: jaeger
+spec:
+  strategy: production
+  storage:
+    type: elasticsearch
+```
+
+---
 
 ## Sampling Strategies
 
-### Probabilistic Sampling
-```yaml
-# Sample 1% of traces
-sampler:
-  type: probabilistic
-  param: 0.01
-```
+| Strategy | Config | Use Case |
+|----------|--------|----------|
+| Probabilistic | `param: 0.01` | Sample 1% |
+| Rate Limiting | `param: 100` | Max 100/sec |
+| Adaptive | Parent-based | Follow parent decision |
 
-### Rate Limiting Sampling
-```yaml
-# Sample max 100 traces per second
-sampler:
-  type: ratelimiting
-  param: 100
-```
-
-### Adaptive Sampling
 ```python
-from opentelemetry.sdk.trace.sampling import ParentBased, TraceIdRatioBased
-
-# Sample based on trace ID (deterministic)
-sampler = ParentBased(root=TraceIdRatioBased(0.01))
+from opentelemetry.sdk.trace.sampling import TraceIdRatioBased
+sampler = TraceIdRatioBased(0.01)  # 1% sampling
 ```
+
+---
 
 ## Trace Analysis
 
 ### Finding Slow Requests
 
-**Jaeger Query:**
 ```
-service=my-service
-duration > 1s
+service=my-service duration > 1s
 ```
 
 ### Finding Errors
 
-**Jaeger Query:**
 ```
-service=my-service
-error=true
-tags.http.status_code >= 500
+service=my-service error=true tags.http.status_code >= 500
 ```
 
-### Service Dependency Graph
+---
 
-Jaeger automatically generates service dependency graphs showing:
-- Service relationships
-- Request rates
-- Error rates
-- Average latencies
+## Log Correlation
 
-## Best Practices
-
-1. **Sample appropriately** (1-10% in production)
-2. **Add meaningful tags** (user_id, request_id)
-3. **Propagate context** across all service boundaries
-4. **Log exceptions** in spans
-5. **Use consistent naming** for operations
-6. **Monitor tracing overhead** (<1% CPU impact)
-7. **Set up alerts** for trace errors
-8. **Implement distributed context** (baggage)
-9. **Use span events** for important milestones
-10. **Document instrumentation** standards
-
-## Integration with Logging
-
-### Correlated Logs
 ```python
 import logging
 from opentelemetry import trace
 
-logger = logging.getLogger(__name__)
-
 def process_request():
     span = trace.get_current_span()
-    trace_id = span.get_span_context().trace_id
-
-    logger.info(
-        "Processing request",
-        extra={"trace_id": format(trace_id, '032x')}
-    )
+    trace_id = format(span.get_span_context().trace_id, '032x')
+    logger.info("Processing request", extra={"trace_id": trace_id})
 ```
+
+---
+
+## Best Practices
+
+| Practice | Implementation |
+|----------|----------------|
+| Sample appropriately | 1-10% in production |
+| Add meaningful tags | user_id, request_id |
+| Propagate context | All service boundaries |
+| Log exceptions | Record errors in spans |
+| Monitor overhead | <1% CPU impact |
+
+---
 
 ## Troubleshooting
 
-**No traces appearing:**
-- Check collector endpoint
-- Verify network connectivity
-- Check sampling configuration
-- Review application logs
+| Issue | Solution |
+|-------|----------|
+| No traces | Check collector endpoint, sampling |
+| High latency | Reduce sampling, use batch processor |
+| Missing spans | Verify context propagation |
 
-**High latency overhead:**
-- Reduce sampling rate
-- Use batch span processor
-- Check exporter configuration
+---
 
-## Reference Files
+## Checklist
 
-- `references/jaeger-setup.md` - Jaeger installation
-- `references/instrumentation.md` - Instrumentation patterns
-- `assets/jaeger-config.yaml.template` - Jaeger configuration
+- [ ] OpenTelemetry instrumentation configured
+- [ ] Context propagation in HTTP/gRPC
+- [ ] Sampling strategy appropriate for production
+- [ ] Jaeger/Tempo collector deployed
+- [ ] Log correlation with trace IDs
+- [ ] Service dependency graph visible
 
-## Related Skills
+---
 
-- `prometheus-configuration` - For metrics
-- `grafana-dashboards` - For visualization
-- `slo-implementation` - For latency SLOs
+**Version**: 1.0.5

@@ -1,129 +1,49 @@
 ---
 name: deployment-pipeline-design
-description: Design multi-stage CI/CD pipelines with approval gates, security checks, deployment orchestration, and progressive delivery strategies including rolling updates, blue-green deployments, canary releases, and feature flags. Use when architecting deployment workflows from scratch, migrating from manual deployments to automated pipelines, setting up continuous delivery or continuous deployment systems, implementing GitOps practices with ArgoCD or Flux, designing multi-environment promotion strategies (dev → staging → production), establishing approval workflows and manual gates for production releases, implementing deployment strategies (rolling, blue-green, canary, A/B testing), configuring rollback procedures and automated recovery mechanisms, orchestrating complex multi-service deployments, setting up deployment windows and scheduling, integrating security scanning and compliance checks into pipelines, designing infrastructure deployment pipelines with Terraform or CloudFormation, implementing progressive delivery with gradual traffic shifting, establishing deployment best practices and standards across teams, or planning disaster recovery and business continuity workflows. Use this skill when working with .github/workflows/ files, .gitlab-ci.yml files, Azure Pipelines YAML, Jenkins Pipelines, deployment manifests, or any CI/CD configuration files requiring multi-stage pipeline architecture.
+version: "1.0.5"
+maturity: "5-Expert"
+specialization: CI/CD Architecture
+description: Design multi-stage CI/CD pipelines with approval gates, security checks, and progressive delivery (rolling, blue-green, canary, feature flags). Use when architecting deployment workflows, implementing GitOps, or establishing multi-environment promotion strategies.
 ---
 
 # Deployment Pipeline Design
 
-Architecture patterns for multi-stage CI/CD pipelines with approval gates and deployment strategies.
+Multi-stage CI/CD architecture with approval gates and deployment strategies.
 
-## When to use this skill
-
-- When designing new CI/CD pipeline architecture from scratch for any project or application
-- When migrating from manual deployments or simple scripts to automated multi-stage pipelines
-- When implementing continuous delivery (CD) or continuous deployment systems
-- When setting up GitOps workflows with tools like ArgoCD, Flux, or Jenkins X
-- When designing multi-environment deployment strategies (development → staging → production)
-- When establishing approval gates, manual validation steps, or production deployment controls
-- When implementing deployment strategies such as rolling updates, blue-green deployments, canary releases, or A/B testing
-- When configuring automated rollback procedures and failure recovery mechanisms
-- When orchestrating complex multi-service or microservices deployments
-- When setting up deployment windows, scheduling, or time-based deployment controls
-- When integrating security scanning (SAST, DAST, dependency scanning) into deployment pipelines
-- When designing infrastructure deployment pipelines using Terraform, CloudFormation, or Pulumi
-- When implementing progressive delivery with gradual traffic shifting based on metrics
-- When establishing deployment best practices, standards, and compliance requirements across development teams
-- When planning disaster recovery workflows and business continuity procedures
-- When working with GitHub Actions workflows (.github/workflows/*.yml files)
-- When configuring GitLab CI/CD pipelines (.gitlab-ci.yml files)
-- When designing Azure Pipelines (azure-pipelines.yml) or Jenkins Pipelines (Jenkinsfile)
-- When creating deployment manifests for Kubernetes, Docker, or other container platforms
-- When setting up deployment monitoring, metrics collection, and post-deployment verification
-- When optimizing pipeline performance with caching, parallelization, and artifact management
-- When designing approval workflows for compliance, security reviews, or change management
-- When implementing deployment frequency tracking and DORA metrics collection
+---
 
 ## Pipeline Stages
 
-### Standard Pipeline Flow
-
 ```
-┌─────────┐   ┌──────┐   ┌─────────┐   ┌────────┐   ┌──────────┐
-│  Build  │ → │ Test │ → │ Staging │ → │ Approve│ → │Production│
-└─────────┘   └──────┘   └─────────┘   └────────┘   └──────────┘
+Build → Test → Staging → Approve → Production → Verify
 ```
 
-### Detailed Stage Breakdown
+| Stage | Purpose | Actions |
+|-------|---------|---------|
+| Build | Compile, containerize | Docker build, push |
+| Test | Validate | Unit, integration, security scan |
+| Staging | Pre-prod validation | Deploy, E2E tests |
+| Approve | Gate | Manual/automated approval |
+| Production | Release | Canary/blue-green deploy |
+| Verify | Confirm | Health checks, metrics |
 
-1. **Source** - Code checkout
-2. **Build** - Compile, package, containerize
-3. **Test** - Unit, integration, security scans
-4. **Staging Deploy** - Deploy to staging environment
-5. **Integration Tests** - E2E, smoke tests
-6. **Approval Gate** - Manual approval required
-7. **Production Deploy** - Canary, blue-green, rolling
-8. **Verification** - Health checks, monitoring
-9. **Rollback** - Automated rollback on failure
-
-## Approval Gate Patterns
-
-### Pattern 1: Manual Approval
-
-```yaml
-# GitHub Actions
-production-deploy:
-  needs: staging-deploy
-  environment:
-    name: production
-    url: https://app.example.com
-  runs-on: ubuntu-latest
-  steps:
-    - name: Deploy to production
-      run: |
-        # Deployment commands
-```
-
-### Pattern 2: Time-Based Approval
-
-```yaml
-# GitLab CI
-deploy:production:
-  stage: deploy
-  script:
-    - deploy.sh production
-  environment:
-    name: production
-  when: delayed
-  start_in: 30 minutes
-  only:
-    - main
-```
-
-### Pattern 3: Multi-Approver
-
-```yaml
-# Azure Pipelines
-stages:
-- stage: Production
-  dependsOn: Staging
-  jobs:
-  - deployment: Deploy
-    environment:
-      name: production
-      resourceType: Kubernetes
-    strategy:
-      runOnce:
-        preDeploy:
-          steps:
-          - task: ManualValidation@0
-            inputs:
-              notifyUsers: 'team-leads@example.com'
-              instructions: 'Review staging metrics before approving'
-```
-
-**Reference:** See `assets/approval-gate-template.yml`
+---
 
 ## Deployment Strategies
 
-### 1. Rolling Deployment
+| Strategy | Rollback | Downtime | Best For |
+|----------|----------|----------|----------|
+| Rolling | Minutes | Zero | Most applications |
+| Blue-Green | Instant | Zero | High-risk deploys |
+| Canary | Gradual | Zero | Traffic-based testing |
+| Feature Flags | Instant | Zero | A/B testing |
+
+### Rolling
 
 ```yaml
 apiVersion: apps/v1
 kind: Deployment
-metadata:
-  name: my-app
 spec:
-  replicas: 10
   strategy:
     type: RollingUpdate
     rollingUpdate:
@@ -131,243 +51,181 @@ spec:
       maxUnavailable: 1
 ```
 
-**Characteristics:**
-- Gradual rollout
-- Zero downtime
-- Easy rollback
-- Best for most applications
-
-### 2. Blue-Green Deployment
-
-```yaml
-# Blue (current)
-kubectl apply -f blue-deployment.yaml
-kubectl label service my-app version=blue
-
-# Green (new)
-kubectl apply -f green-deployment.yaml
-# Test green environment
-kubectl label service my-app version=green
-
-# Rollback if needed
-kubectl label service my-app version=blue
-```
-
-**Characteristics:**
-- Instant switchover
-- Easy rollback
-- Doubles infrastructure cost temporarily
-- Good for high-risk deployments
-
-### 3. Canary Deployment
+### Canary (Argo Rollouts)
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1
 kind: Rollout
-metadata:
-  name: my-app
 spec:
-  replicas: 10
   strategy:
     canary:
       steps:
       - setWeight: 10
-      - pause: {duration: 5m}
-      - setWeight: 25
       - pause: {duration: 5m}
       - setWeight: 50
       - pause: {duration: 5m}
       - setWeight: 100
 ```
 
-**Characteristics:**
-- Gradual traffic shift
-- Risk mitigation
-- Real user testing
-- Requires service mesh or similar
+### Blue-Green
 
-### 4. Feature Flags
-
-```python
-from flagsmith import Flagsmith
-
-flagsmith = Flagsmith(environment_key="API_KEY")
-
-if flagsmith.has_feature("new_checkout_flow"):
-    # New code path
-    process_checkout_v2()
-else:
-    # Existing code path
-    process_checkout_v1()
+```bash
+kubectl apply -f green-deployment.yaml
+# Test green environment
+kubectl label service my-app version=green
+# Rollback: kubectl label service my-app version=blue
 ```
 
-**Characteristics:**
-- Deploy without releasing
-- A/B testing
-- Instant rollback
-- Granular control
+---
 
-## Pipeline Orchestration
+## Approval Gates
 
-### Multi-Stage Pipeline Example
+### GitHub Actions Environment
+
+```yaml
+deploy-production:
+  needs: staging
+  environment:
+    name: production
+    url: https://app.example.com
+  steps:
+    - run: kubectl apply -f k8s/production/
+```
+
+### GitLab Delayed Start
+
+```yaml
+deploy:production:
+  when: delayed
+  start_in: 30 minutes
+  only: [main]
+```
+
+### Azure Multi-Approver
+
+```yaml
+- deployment: Deploy
+  environment:
+    name: production
+  strategy:
+    runOnce:
+      preDeploy:
+        steps:
+        - task: ManualValidation@0
+          inputs:
+            notifyUsers: 'team-leads@example.com'
+```
+
+---
+
+## Complete Pipeline Example
 
 ```yaml
 name: Production Pipeline
-
 on:
   push:
-    branches: [ main ]
+    branches: [main]
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Build application
-        run: make build
-      - name: Build Docker image
-        run: docker build -t myapp:${{ github.sha }} .
-      - name: Push to registry
-        run: docker push myapp:${{ github.sha }}
+      - run: docker build -t myapp:${{ github.sha }} .
+      - run: docker push myapp:${{ github.sha }}
 
   test:
     needs: build
-    runs-on: ubuntu-latest
     steps:
-      - name: Unit tests
-        run: make test
-      - name: Security scan
-        run: trivy image myapp:${{ github.sha }}
+      - run: make test
+      - run: trivy image myapp:${{ github.sha }}
 
   deploy-staging:
     needs: test
-    runs-on: ubuntu-latest
-    environment:
-      name: staging
+    environment: staging
     steps:
-      - name: Deploy to staging
-        run: kubectl apply -f k8s/staging/
-
-  integration-test:
-    needs: deploy-staging
-    runs-on: ubuntu-latest
-    steps:
-      - name: Run E2E tests
-        run: npm run test:e2e
+      - run: kubectl apply -f k8s/staging/
 
   deploy-production:
-    needs: integration-test
-    runs-on: ubuntu-latest
-    environment:
-      name: production
+    needs: deploy-staging
+    environment: production
     steps:
-      - name: Canary deployment
-        run: |
-          kubectl apply -f k8s/production/
-          kubectl argo rollouts promote my-app
+      - run: kubectl apply -f k8s/production/
 
   verify:
     needs: deploy-production
-    runs-on: ubuntu-latest
     steps:
-      - name: Health check
-        run: curl -f https://app.example.com/health
-      - name: Notify team
-        run: |
-          curl -X POST ${{ secrets.SLACK_WEBHOOK }} \
-            -d '{"text":"Production deployment successful!"}'
+      - run: curl -f https://app.example.com/health
 ```
 
-## Pipeline Best Practices
+---
 
-1. **Fail fast** - Run quick tests first
-2. **Parallel execution** - Run independent jobs concurrently
-3. **Caching** - Cache dependencies between runs
-4. **Artifact management** - Store build artifacts
-5. **Environment parity** - Keep environments consistent
-6. **Secrets management** - Use secret stores (Vault, etc.)
-7. **Deployment windows** - Schedule deployments appropriately
-8. **Monitoring integration** - Track deployment metrics
-9. **Rollback automation** - Auto-rollback on failures
-10. **Documentation** - Document pipeline stages
+## Rollback
 
-## Rollback Strategies
-
-### Automated Rollback
+### Automated
 
 ```yaml
-deploy-and-verify:
-  steps:
-    - name: Deploy new version
-      run: kubectl apply -f k8s/
+- name: Health check
+  id: health
+  run: curl -sf https://app.example.com/health || exit 1
 
-    - name: Wait for rollout
-      run: kubectl rollout status deployment/my-app
-
-    - name: Health check
-      id: health
-      run: |
-        for i in {1..10}; do
-          if curl -sf https://app.example.com/health; then
-            exit 0
-          fi
-          sleep 10
-        done
-        exit 1
-
-    - name: Rollback on failure
-      if: failure()
-      run: kubectl rollout undo deployment/my-app
+- name: Rollback on failure
+  if: failure()
+  run: kubectl rollout undo deployment/my-app
 ```
 
-### Manual Rollback
+### Manual
 
 ```bash
-# List revision history
 kubectl rollout history deployment/my-app
-
-# Rollback to previous version
-kubectl rollout undo deployment/my-app
-
-# Rollback to specific revision
 kubectl rollout undo deployment/my-app --to-revision=3
 ```
 
-## Monitoring and Metrics
+---
 
-### Key Pipeline Metrics
+## Metrics (DORA)
 
-- **Deployment Frequency** - How often deployments occur
-- **Lead Time** - Time from commit to production
-- **Change Failure Rate** - Percentage of failed deployments
-- **Mean Time to Recovery (MTTR)** - Time to recover from failure
-- **Pipeline Success Rate** - Percentage of successful runs
-- **Average Pipeline Duration** - Time to complete pipeline
+| Metric | Target |
+|--------|--------|
+| Deployment Frequency | Daily+ |
+| Lead Time | < 1 hour |
+| Change Failure Rate | < 15% |
+| MTTR | < 1 hour |
 
-### Integration with Monitoring
+---
 
-```yaml
-- name: Post-deployment verification
-  run: |
-    # Wait for metrics stabilization
-    sleep 60
+## Best Practices
 
-    # Check error rate
-    ERROR_RATE=$(curl -s "$PROMETHEUS_URL/api/v1/query?query=rate(http_errors_total[5m])" | jq '.data.result[0].value[1]')
+| Practice | Implementation |
+|----------|----------------|
+| Fail fast | Quick tests first |
+| Parallel jobs | Independent stages concurrent |
+| Caching | Reuse dependencies |
+| Environment parity | Consistent configs |
+| Secrets management | Use Vault/AWS Secrets |
 
-    if (( $(echo "$ERROR_RATE > 0.01" | bc -l) )); then
-      echo "Error rate too high: $ERROR_RATE"
-      exit 1
-    fi
-```
+---
 
-## Reference Files
+## Common Pitfalls
 
-- `references/pipeline-orchestration.md` - Complex pipeline patterns
-- `assets/approval-gate-template.yml` - Approval workflow templates
+| Pitfall | Solution |
+|---------|----------|
+| No rollback plan | Automate rollback on failure |
+| Manual deployments | Full automation with gates |
+| Inconsistent environments | Infrastructure as code |
+| Skipping staging | Always deploy to staging first |
 
-## Related Skills
+---
 
-- `github-actions-templates` - For GitHub Actions implementation
-- `gitlab-ci-patterns` - For GitLab CI implementation
-- `secrets-management` - For secrets handling
+## Checklist
+
+- [ ] Multi-stage pipeline defined
+- [ ] Approval gates for production
+- [ ] Deployment strategy selected (rolling/canary/blue-green)
+- [ ] Automated rollback configured
+- [ ] Health checks after deployment
+- [ ] DORA metrics tracked
+
+---
+
+**Version**: 1.0.5

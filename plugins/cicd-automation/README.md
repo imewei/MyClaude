@@ -2,28 +2,21 @@
 
 Comprehensive CI/CD pipeline automation with intelligent error resolution, multi-agent analysis, and advanced workflow orchestration. Features optimized slash commands (62% token reduction), 3 execution modes per command, 11 external documentation files (~4,600 lines), 5 specialized agents, and 6 production-ready skills.
 
-**Version:** 1.0.3 | **Category:** infrastructure | **License:** MIT
+**Version:** 1.0.5 | **Category:** infrastructure | **License:** MIT
 
-## What's New in v1.0.3
 
-**Major optimization release** with command enhancements, execution modes, and comprehensive documentation:
+## What's New in v1.0.5
 
-- **62% Token Reduction**: Optimized slash commands from 2,391 to 906 lines for faster parsing
-- **3 Execution Modes**: Per command with time estimates (quick/standard/comprehensive or enterprise)
-- **11 Documentation Files**: ~4,600 lines of comprehensive external reference material
-- **100% Backward Compatible**: All existing command invocations work unchanged
+This release implements **Opus 4.5 optimization** with enhanced token efficiency and standardized documentation.
 
 ### Key Improvements
 
-| Feature | Benefit |
-|---------|---------|
-| Command Optimization | 62% faster parsing and loading |
-| Execution Modes | Flexible time budgets for different use cases |
-| External Documentation | Comprehensive reference without command bloat |
-| Multi-Agent System | 5 specialized agents with Bayesian confidence scoring |
-| Error Pattern Library | 100+ patterns across all major languages and platforms |
+- **Format Standardization**: All components now include consistent YAML frontmatter with version, maturity, specialization, and description fields
+- **Token Efficiency**: 40-50% line reduction through tables over prose, minimal code examples, and structured sections
+- **Enhanced Discoverability**: Clear "Use when..." trigger phrases for better Claude Code activation
+- **Actionable Checklists**: Task-oriented guidance for common workflows
+- **Cross-Reference Tables**: Quick-reference format for delegation and integration patterns
 
-[Full Documentation →](https://myclaude.readthedocs.io/en/latest/plugins/cicd-automation.html)
 
 ## Agents (5)
 
@@ -31,7 +24,7 @@ All agents at v1.0.3 with 90-92% maturity, systematic reasoning frameworks, and 
 
 ### 🏗️ cloud-architect
 
-**Status:** active | **Maturity:** 92% | **Version:** 1.0.3
+**Status:** active | **Maturity:** 92% | **Version:** 1.0.5
 
 Expert cloud architect specializing in AWS/Azure/GCP multi-cloud infrastructure design, advanced IaC, FinOps cost optimization, and modern architectural patterns.
 
@@ -46,7 +39,7 @@ Expert cloud architect specializing in AWS/Azure/GCP multi-cloud infrastructure 
 
 ### 🚀 deployment-engineer
 
-**Status:** active | **Maturity:** 92% | **Version:** 1.0.3
+**Status:** active | **Maturity:** 92% | **Version:** 1.0.5
 
 Expert deployment engineer specializing in modern CI/CD pipelines, GitOps workflows (ArgoCD/Flux), progressive delivery, container security, and platform engineering.
 
@@ -61,7 +54,7 @@ Expert deployment engineer specializing in modern CI/CD pipelines, GitOps workfl
 
 ### 🔧 devops-troubleshooter
 
-**Status:** active | **Maturity:** 90% | **Version:** 1.0.3
+**Status:** active | **Maturity:** 90% | **Version:** 1.0.5
 
 Expert DevOps troubleshooter specializing in rapid incident response, advanced debugging, modern observability (OpenTelemetry, Prometheus), and root cause analysis.
 
@@ -76,7 +69,7 @@ Expert DevOps troubleshooter specializing in rapid incident response, advanced d
 
 ### ☸️ kubernetes-architect
 
-**Status:** active | **Maturity:** 90% | **Version:** 1.0.3
+**Status:** active | **Maturity:** 90% | **Version:** 1.0.5
 
 Expert Kubernetes architect specializing in cloud-native infrastructure, advanced GitOps workflows (ArgoCD/Flux), enterprise container orchestration (EKS/AKS/GKE), service mesh (Istio/Linkerd), and platform engineering.
 
@@ -91,7 +84,7 @@ Expert Kubernetes architect specializing in cloud-native infrastructure, advance
 
 ### 🏗️ terraform-specialist
 
-**Status:** active | **Maturity:** 90% | **Version:** 1.0.3
+**Status:** active | **Maturity:** 90% | **Version:** 1.0.5
 
 Expert Terraform/OpenTofu specialist mastering advanced IaC automation, state management (S3/DynamoDB with KMS encryption), enterprise infrastructure patterns, module design, and testing (Terratest, OPA).
 
@@ -529,6 +522,6 @@ MIT License - See [LICENSE](./LICENSE) for details
 ---
 
 **Author:** Wei Chen
-**Version:** 1.0.3
+**Version:** 1.0.5
 **Category:** Infrastructure
 **Last Updated:** 2025-11-06

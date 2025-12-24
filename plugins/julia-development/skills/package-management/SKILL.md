@@ -1,40 +1,25 @@
 ---
 name: package-management
-description: Master Julia package management with Project.toml structure, Pkg.jl workflows, semantic versioning, and dependency management for reproducible Julia environments. Use when creating or editing Project.toml files, managing package dependencies with Pkg.add(), specifying compatibility bounds in [compat] section, using Pkg.activate() for project environments, running Pkg.instantiate() for reproducibility, updating packages with Pkg.update(), developing local packages with Pkg.develop(), working with Manifest.toml for exact versioning, managing test dependencies in [extras] and [targets], or ensuring package version compatibility. Essential for all Julia projects requiring dependency management and reproducible environments.
+version: "1.0.5"
+maturity: "5-Expert"
+specialization: Julia Package Management
+description: Master Julia package management with Pkg.jl, Project.toml, and Manifest.toml for reproducible environments. Use when managing dependencies, specifying compatibility bounds, or setting up project environments.
 ---
 
-# Package Management
+# Julia Package Management
 
-Master Julia's package management system with Pkg.jl, Project.toml, and Manifest.toml for reproducible, well-managed Julia projects.
+Pkg.jl workflows for reproducible Julia environments.
 
-## When to use this skill
+---
 
-- Creating or editing Project.toml files for package metadata
-- Managing package dependencies with Pkg.add(), Pkg.rm(), Pkg.update()
-- Specifying compatibility bounds in [compat] section (semantic versioning)
-- Activating project environments with Pkg.activate()
-- Running Pkg.instantiate() for reproducible builds
-- Developing local packages with Pkg.develop() and Pkg.free()
-- Working with Manifest.toml for exact version locking
-- Managing test dependencies in [extras] and [targets] sections
-- Using Pkg.status() to inspect installed packages
-- Running Pkg.test() for package testing
-- Ensuring version compatibility across dependencies
-- Precompiling packages with Pkg.precompile()
-
-## Core Concepts
-
-### Project.toml Structure
+## Project.toml Structure
 
 ```toml
 name = "MyPackage"
 uuid = "12345678-1234-1234-1234-123456789012"
-authors = ["Your Name <you@example.com>"]
 version = "0.1.0"
 
 [deps]
-LinearAlgebra = "37e2e46d-f89d-539d-b4ee-838fcccc9c8e"
-Statistics = "10745b16-79ce-11e8-11f9-7d13ad32a3b2"
 DataFrames = "a93c6f00-e57d-5684-b7b6-d8193f3e46c0"
 
 [compat]
@@ -48,76 +33,82 @@ Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
 test = ["Test"]
 ```
 
-### Pkg.jl Workflows
+---
+
+## Core Pkg.jl Commands
+
+| Command | Purpose |
+|---------|---------|
+| `Pkg.activate(".")` | Activate current project |
+| `Pkg.instantiate()` | Install from Manifest.toml |
+| `Pkg.add("Package")` | Add package |
+| `Pkg.update()` | Update all packages |
+| `Pkg.develop("Pkg")` | Link local package |
+| `Pkg.status()` | List installed packages |
+| `Pkg.test()` | Run package tests |
+
+---
+
+## Compatibility Bounds
+
+```toml
+[compat]
+# Caret: Allow minor + patch updates
+DataFrames = "^1.3.2"   # >=1.3.2, <2.0.0
+
+# Tilde: Allow only patch updates
+CSV = "~0.10.4"         # >=0.10.4, <0.11.0
+
+# Range
+Plots = "1.25 - 1.30"   # >=1.25.0, <1.31.0
+```
+
+---
+
+## Environment Workflow
 
 ```julia
 using Pkg
 
-# Environment management
-Pkg.activate(".")              # Activate current project
-Pkg.activate("path/to/project") # Activate specific project
-Pkg.instantiate()              # Install exact versions from Manifest.toml
+# Activate project environment
+Pkg.activate(".")
 
-# Adding packages
-Pkg.add("DataFrames")          # Add package
-Pkg.add(["Plots", "CSV"])      # Add multiple
-Pkg.add(name="Example", version="0.5") # Specific version
-Pkg.add(url="https://github.com/user/Pkg.git") # From URL
+# Install exact versions from Manifest
+Pkg.instantiate()
 
-# Development
-Pkg.develop("MyPackage")       # Link local package for development
-Pkg.develop(path="path/to/pkg") # Link from path
-Pkg.free("MyPackage")          # Stop developing, use registry version
+# Add packages
+Pkg.add("DataFrames")
+Pkg.add(url="https://github.com/user/Pkg.git")
 
-# Updating
-Pkg.update()                   # Update all compatible packages
-Pkg.update("DataFrames")       # Update specific package
-
-# Removing
-Pkg.rm("DataFrames")           # Remove package
-
-# Status and info
-Pkg.status()                   # List installed packages
-Pkg.status("DataFrames")       # Show specific package info
-
-# Testing
-Pkg.test()                     # Run package tests
-Pkg.test("DataFrames")         # Test specific package
-
-# Other operations
-Pkg.precompile()               # Precompile all packages
-Pkg.gc()                       # Garbage collect old package versions
+# Development mode
+Pkg.develop(path="path/to/local/pkg")
+Pkg.free("Package")  # Back to registry version
 ```
 
-### Semantic Versioning and [compat]
-
-```toml
-[compat]
-# Caret (^): Allow patch and minor updates
-julia = "^1.6"          # >=1.6.0, <1.0.2
-DataFrames = "^1.3.2"   # >=1.3.2, <1.0.2
-
-# Tilde (~): Allow only patch updates
-CSV = "~0.10.4"         # >=0.10.4, <0.11.0
-
-# Range
-Plots = "1.25-1.30"     # >=1.25.0, <1.31.0
-
-# Single version (prefer ranges)
-JSON = "0.21"           # >=0.21.0, <0.22.0
-```
+---
 
 ## Best Practices
 
-- Always specify [compat] bounds in Project.toml
-- Use semantic versioning: MAJOR.MINOR.PATCH
-- Commit Project.toml for all projects
-- Commit Manifest.toml for applications, NOT for packages
-- Use Pkg.instantiate() for reproducibility
-- Regularly update dependencies with Pkg.update()
-- Use Revise.jl for interactive development
+| Practice | Implementation |
+|----------|----------------|
+| Always specify [compat] | Prevents breaking updates |
+| Commit Project.toml | Required for all projects |
+| Commit Manifest.toml | For apps, NOT packages |
+| Use instantiate() | For reproducibility |
+| Regular updates | `Pkg.update()` frequently |
+| Use Revise.jl | For interactive development |
 
-## Resources
+---
 
-- **Pkg.jl Documentation**: https://pkgdocs.julialang.org/
-- **Semantic Versioning**: https://semver.org/
+## Checklist
+
+- [ ] Project.toml created with deps
+- [ ] [compat] bounds specified
+- [ ] Environment activated
+- [ ] Dependencies installed
+- [ ] Test dependencies in [extras]
+- [ ] Manifest.toml committed (for apps)
+
+---
+
+**Version**: 1.0.5

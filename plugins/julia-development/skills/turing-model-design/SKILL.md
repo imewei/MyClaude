@@ -1,27 +1,19 @@
 ---
 name: turing-model-design
-description: Master Turing.jl probabilistic model specification, prior selection, likelihood definition, hierarchical models, and parameter identifiability for Bayesian inference. Use when designing Bayesian models (.jl files with @model macro), specifying priors with Distributions.jl (Normal, truncated, filldist), defining likelihoods with tilde notation (~), creating hierarchical models with hyperpriors, working with non-centered parameterization for sampling efficiency, ensuring parameter identifiability, designing generative models, building Bayesian neural networks or Gaussian processes, or structuring complex probabilistic workflows. Essential for all Turing.jl Bayesian modeling and foundational for MCMC and variational inference tasks.
+version: "1.0.5"
+maturity: "5-Expert"
+specialization: Bayesian Modeling
+description: Design probabilistic models with Turing.jl including prior selection, hierarchical models, and non-centered parameterization. Use when building Bayesian models for inference.
 ---
 
-# Turing Model Design
+# Turing.jl Model Design
 
-Master designing probabilistic models with Turing.jl.
+Probabilistic model specification for Bayesian inference.
 
-## When to use this skill
+---
 
-- Designing Bayesian models with @model macro in Turing.jl
-- Specifying prior distributions (Normal, truncated, filldist, MvNormal)
-- Defining likelihood functions with tilde notation (~)
-- Creating hierarchical models with hyperpriors and group-level effects
-- Implementing non-centered parameterization for efficient sampling
-- Ensuring parameter identifiability in complex models
-- Designing generative models for data
-- Building Bayesian neural networks (BNN) or Gaussian processes (GP)
-- Working with model priors for regularization
-- Structuring probabilistic models for inference
-- Integrating with SciML for Bayesian differential equations
+## Basic Model
 
-## Basic Model Structure
 ```julia
 using Turing, Distributions
 
@@ -37,7 +29,10 @@ using Turing, Distributions
 end
 ```
 
+---
+
 ## Hierarchical Model
+
 ```julia
 @model function hierarchical_model(y, groups)
     # Hyperpriors
@@ -55,5 +50,26 @@ end
 end
 ```
 
-## Resources
-- **Turing.jl Tutorials**: https://turinglang.org/tutorials/
+---
+
+## Best Practices
+
+| Practice | Implementation |
+|----------|----------------|
+| Weakly informative priors | Regularize without dominating |
+| Non-centered parameterization | Better sampling geometry |
+| Parameter identifiability | Check correlation structure |
+| Generative testing | Simulate from priors |
+
+---
+
+## Checklist
+
+- [ ] Priors match domain knowledge
+- [ ] Hierarchical structure appropriate
+- [ ] Parameters identifiable
+- [ ] Model generates realistic data
+
+---
+
+**Version**: 1.0.5

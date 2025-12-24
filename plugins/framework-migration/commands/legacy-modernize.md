@@ -1,5 +1,5 @@
 ---
-version: 1.0.3
+version: "1.0.5"
 description: Comprehensive legacy system modernization using Strangler Fig pattern with multi-agent orchestration
 argument-hint: <legacy-system-path> [--strategy strangler-fig|big-bang|branch-by-abstraction] [--mode quick|standard|deep]
 category: framework-migration

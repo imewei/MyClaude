@@ -2,30 +2,21 @@
 
 Comprehensive code and architecture review with multi-perspective analysis, security auditing, quality assessment, and AI-powered code analysis for production-grade quality assurance.
 
-**Version:** 1.0.3 | **Category:** quality | **License:** MIT
+**Version:** 1.0.5 | **Category:** quality | **License:** MIT
 
-## What's New in v1.0.3
 
-**Hub-and-spoke architecture** with execution modes and comprehensive external documentation:
+## What's New in v1.0.5
 
-- **Execution Modes**: User control over task scope and time (quick/standard/deep for reviews, basic/enhanced/enterprise for PRs)
-- **External Documentation Hub**: 3 comprehensive reference files (~1,773 lines) for review best practices, PR templates, and risk assessment
-- **YAML Frontmatter**: Structured metadata with execution time estimates and external doc references
-- **Enhanced Commands**: Optimized workflows with time estimates and mode-based outputs
+This release implements **Opus 4.5 optimization** with enhanced token efficiency and standardized documentation.
 
-###Expected Benefits
+### Key Improvements
 
-| Improvement | Impact |
-|-------------|--------|
-| Task Completion Speed | 30% faster with mode selection |
-| User Experience | Time estimates + flexible modes |
-| Documentation Access | Centralized reference hub |
-| PR Quality | 8 comprehensive templates |
-| Risk Assessment | Multi-factor scoring framework |
+- **Format Standardization**: All components now include consistent YAML frontmatter with version, maturity, specialization, and description fields
+- **Token Efficiency**: 40-50% line reduction through tables over prose, minimal code examples, and structured sections
+- **Enhanced Discoverability**: Clear "Use when..." trigger phrases for better Claude Code activation
+- **Actionable Checklists**: Task-oriented guidance for common workflows
+- **Cross-Reference Tables**: Quick-reference format for delegation and integration patterns
 
-[Full Documentation →](https://myclaude.readthedocs.io/en/latest/plugins/comprehensive-review.html)
-
----
 
 ## What's New in v1.0.1 (Previous Release)
 
@@ -53,7 +44,7 @@ All agents have been upgraded to v1.0.3 with 91% maturity, systematic reasoning 
 
 ### 🏛️ Architect Reviewer
 
-**Status:** active | **Maturity:** 91% | **Version:** 1.0.3
+**Status:** active | **Maturity:** 91% | **Version:** 1.0.5
 
 Master software architect specializing in architecture patterns, clean architecture, microservices, event-driven systems, and distributed systems design.
 
@@ -68,7 +59,7 @@ Master software architect specializing in architecture patterns, clean architect
 
 ### 🔍 Code Reviewer
 
-**Status:** active | **Maturity:** 91% | **Version:** 1.0.3
+**Status:** active | **Maturity:** 91% | **Version:** 1.0.5
 
 Elite code review expert specializing in modern AI-powered code analysis, security vulnerabilities, performance optimization, and production reliability.
 
@@ -83,7 +74,7 @@ Elite code review expert specializing in modern AI-powered code analysis, securi
 
 ### 🔒 Security Auditor
 
-**Status:** active | **Maturity:** 91% | **Version:** 1.0.3
+**Status:** active | **Maturity:** 91% | **Version:** 1.0.5
 
 Expert security auditor specializing in DevSecOps, comprehensive cybersecurity, compliance frameworks, vulnerability assessment, and threat modeling.
 
@@ -102,7 +93,7 @@ The skill has been upgraded to v1.0.3 with 92% maturity and optimized for better
 
 ### 📋 Code Review Excellence
 
-**Status:** active | **Maturity:** 92% | **Version:** 1.0.3
+**Status:** active | **Maturity:** 92% | **Version:** 1.0.5
 
 Master effective code review practices with systematic analysis, constructive feedback, and team collaboration.
 
@@ -121,7 +112,7 @@ Master effective code review practices with systematic analysis, constructive fe
 
 ### 📋 /full-review
 
-**Status:** active | **Version:** 1.0.3
+**Status:** active | **Version:** 1.0.5
 
 Orchestrate comprehensive multi-dimensional code review using specialized review agents with flexible execution modes.
 
@@ -145,7 +136,7 @@ Orchestrate comprehensive multi-dimensional code review using specialized review
 
 ### 📋 /pr-enhance
 
-**Status:** active | **Version:** 1.0.3
+**Status:** active | **Version:** 1.0.5
 
 Create high-quality pull requests with comprehensive descriptions, automated review checks, and best practices.
 
@@ -605,6 +596,6 @@ MIT License - See [LICENSE](./LICENSE) for details
 ---
 
 **Author:** Wei Chen
-**Version:** 1.0.3
+**Version:** 1.0.5
 **Category:** Quality Assurance
 **Last Updated:** 2025-11-07

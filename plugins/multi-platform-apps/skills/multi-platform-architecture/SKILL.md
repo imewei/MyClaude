@@ -1,461 +1,199 @@
 ---
 name: multi-platform-architecture
-description: Strategic patterns for building scalable applications across mobile, web, and desktop platforms with clean architecture principles and code sharing strategies. Use this skill when planning multi-platform application architecture, deciding between native vs hybrid vs cross-platform approaches (Flutter, React Native, Kotlin Multiplatform, PWA), designing clean architecture layers for multi-platform projects (presentation, application, domain, data), implementing code sharing strategies with monorepo structures, setting up Backend for Frontend (BFF) patterns for platform-specific APIs, designing offline-first data synchronization with conflict resolution, implementing real-time updates with WebSockets and polling fallbacks, optimizing multi-platform performance with code splitting and lazy loading, organizing multi-platform teams (feature teams vs platform teams), structuring platform-specific UI with shared business logic, implementing platform channels for native integrations, designing adaptive UI layouts for mobile, web, and desktop, managing multi-platform assets and resources, setting up CI/CD pipelines for multiple platforms, handling platform-specific features while maximizing code reuse, implementing dependency injection for multi-platform projects, designing state management architecture that works across platforms, choosing appropriate frameworks based on project requirements (performance, team skills, budget, time to market), or migrating existing single-platform apps to multi-platform architecture.
+version: "1.0.5"
+maturity: "5-Expert"
+specialization: Cross-Platform Strategy
+description: Design multi-platform apps with clean architecture, code sharing (Flutter, React Native, KMP), BFF patterns, offline-first sync, and team organization. Use when planning mobile/web/desktop architecture, choosing frameworks, or maximizing code reuse.
 ---
 
-# Multi-Platform Architecture Patterns
+# Multi-Platform Architecture
 
-> **Strategic patterns for building scalable applications across mobile, web, and desktop platforms.**
-
----
-
-## When to use this skill
-
-- When planning multi-platform application architecture for mobile, web, and desktop
-- When deciding between native, hybrid, or cross-platform development approaches
-- When evaluating frameworks like Flutter, React Native, Kotlin Multiplatform Mobile, or PWAs
-- When designing clean architecture for multi-platform projects (separating presentation, domain, and data layers)
-- When implementing code sharing strategies across iOS, Android, web, and desktop platforms
-- When setting up monorepo structures for multi-platform codebases
-- When designing Backend for Frontend (BFF) patterns to optimize APIs for each platform
-- When implementing offline-first architecture with local persistence and background sync
-- When designing data synchronization strategies with conflict resolution (last-write-wins, merge strategies)
-- When implementing real-time updates with WebSockets and polling fallback mechanisms
-- When optimizing multi-platform performance through code splitting, lazy loading, and tree shaking
-- When organizing development teams for multi-platform projects (feature teams vs platform teams)
-- When structuring platform-specific UI components while sharing business logic and data layers
-- When implementing platform channels or native modules for accessing platform-specific features
-- When designing adaptive and responsive layouts that work across mobile, tablet, desktop, and web
-- When managing multi-platform assets (icons, images, fonts) with platform-specific optimizations
-- When setting up CI/CD pipelines that build and deploy to multiple platforms simultaneously
-- When balancing code reuse with platform-specific optimizations for native user experiences
-- When implementing dependency injection patterns that work across platforms
-- When choosing state management solutions that scale across multiple platforms
-- When migrating from single-platform to multi-platform architecture
+Strategic patterns for mobile, web, and desktop with maximum code sharing.
 
 ---
 
-## Skill Overview
-
-Master the architectural patterns and decisions required for successful multi-platform development, including code sharing strategies, platform-specific optimization, and team organization.
-
-**Target Audience**: Technical leads, architects, and teams planning multi-platform projects
-
-**Estimated Learning Time**: 6-8 hours to master concepts
-
----
-
-## Architecture Decision Framework
-
-### 1. Platform Strategy Matrix
+## Strategy Selection
 
 | Strategy | Code Sharing | Performance | Time to Market | Use Case |
 |----------|--------------|-------------|----------------|----------|
-| **Native** | 0% | Excellent | Slow | Gaming, AR/VR |
-| **Hybrid (React Native/Flutter)** | 70-90% | Good | Fast | Most apps |
-| **Web + PWA** | 95% | Moderate | Very Fast | Content apps |
-| **Cross-compile (KMP)** | 60-80% | Excellent | Moderate | Enterprise |
+| Native | 0% | Excellent | Slow | Gaming, AR/VR |
+| Flutter | 85-95% | Good | Fast | Most apps |
+| React Native | 70-80% | Good | Fast | JS teams |
+| KMP | 60-80% | Excellent | Moderate | Enterprise |
+| Web + PWA | 95% | Moderate | Very Fast | Content apps |
 
-### 2. Architecture Patterns
+---
 
-#### Clean Architecture for Multi-Platform
+## Clean Architecture Layers
 
 ```
 ┌─────────────────────────────────────┐
-│         Presentation Layer          │
-│  ┌─────────┬─────────┬───────────┐ │
-│  │   iOS   │   Web   │  Android  │ │
-│  │ SwiftUI │  React  │  Compose  │ │
-│  └─────────┴─────────┴───────────┘ │
+│   Presentation (Platform-specific)  │  iOS/Android/Web UI
 ├─────────────────────────────────────┤
-│         Application Layer           │
-│  ┌──────────────────────────────┐  │
-│  │  ViewModels / Presenters     │  │
-│  │  (Platform-Agnostic Logic)   │  │
-│  └──────────────────────────────┘  │
+│   Application (Shared ViewModels)   │  Platform-agnostic logic
 ├─────────────────────────────────────┤
-│           Domain Layer              │
-│  ┌──────────────────────────────┐  │
-│  │  Entities  │  Use Cases      │  │
-│  │  Business Logic (Pure)       │  │
-│  └──────────────────────────────┘  │
+│   Domain (Shared Business Logic)    │  Entities, Use Cases
 ├─────────────────────────────────────┤
-│            Data Layer               │
-│  ┌──────────────────────────────┐  │
-│  │  Repositories │ Data Sources │  │
-│  │  (API, DB, Cache)            │  │
-│  └──────────────────────────────┘  │
+│   Data (Shared + Platform-specific) │  API, DB, Cache
 └─────────────────────────────────────┘
 ```
 
 ---
 
-## Code Sharing Strategies
-
-### 1. Flutter Multi-Platform
-
-**Shared Code: 85-95%**
+## Flutter Code Sharing
 
 ```dart
-// Shared business logic and UI
-lib/
-├── core/                    # 100% shared
-│   ├── domain/
-│   ├── data/
-│   └── utils/
-├── features/                # 90% shared
-│   └── user/
-│       ├── domain/
-│       ├── data/
-│       └── presentation/
-│           ├── widgets/      # Mostly shared
-│           └── pages/
-└── platform/                # Platform-specific
-    ├── mobile/
-    ├── web/
-    └── desktop/
-```
+// lib/
+// ├── core/            # 100% shared
+// ├── features/        # 90% shared
+// └── platform/        # Platform-specific
 
-**Platform-Specific Optimization:**
-
-```dart
-// Adaptive UI based on platform
+// Adaptive UI
 Widget build(BuildContext context) {
-  if (Platform.isIOS || Platform.isAndroid) {
-    return MobileLayout();
-  } else if (kIsWeb) {
-    return WebLayout();
-  } else {
-    return DesktopLayout();
-  }
+  if (Platform.isIOS || Platform.isAndroid) return MobileLayout();
+  if (kIsWeb) return WebLayout();
+  return DesktopLayout();
 }
 
-// Platform channels for native features
-const platform = MethodChannel('com.example.app/battery');
-
+// Platform channel for native features
+const platform = MethodChannel('com.example.app/native');
 Future<int> getBatteryLevel() async {
-  final int batteryLevel = await platform.invokeMethod('getBatteryLevel');
-  return batteryLevel;
+  return await platform.invokeMethod('getBatteryLevel');
 }
 ```
 
-### 2. React Native + React Web
+---
 
-**Shared Code: 70-80%**
-
-```typescript
-// Monorepo structure
-packages/
-├── shared/                  # 100% shared
-│   ├── api/
-│   ├── state/
-│   ├── types/
-│   └── utils/
-├── mobile/                  # React Native
-│   ├── src/
-│   │   ├── components/      # 40% shared
-│   │   └── screens/
-│   └── package.json
-└── web/                     # React Web
-    ├── src/
-    │   ├── components/      # 40% shared
-    │   └── pages/
-    └── package.json
-```
-
-**Shared Components Pattern:**
+## React Native + Web Monorepo
 
 ```typescript
-// shared/components/Button.tsx
+// packages/
+// ├── shared/    # 100% shared (API, state, types)
+// ├── mobile/    # React Native
+// └── web/       # React Web
+
+// shared/components/Button.tsx (interface)
 export interface ButtonProps {
   title: string;
   onPress: () => void;
-  variant?: 'primary' | 'secondary';
 }
 
-// mobile/components/Button.tsx (React Native)
+// mobile/components/Button.tsx
 import { TouchableOpacity, Text } from 'react-native';
-import { ButtonProps } from '@shared/components/Button';
+export const Button: FC<ButtonProps> = ({ title, onPress }) => (
+  <TouchableOpacity onPress={onPress}><Text>{title}</Text></TouchableOpacity>
+);
 
-export const Button: React.FC<ButtonProps> = ({ title, onPress, variant }) => {
-  return (
-    <TouchableOpacity onPress={onPress} style={styles[variant]}>
-      <Text>{title}</Text>
-    </TouchableOpacity>
-  );
-};
-
-// web/components/Button.tsx (React Web)
-import { ButtonProps } from '@shared/components/Button';
-
-export const Button: React.FC<ButtonProps> = ({ title, onPress, variant }) => {
-  return (
-    <button onClick={onPress} className={`btn btn-${variant}`}>
-      {title}
-    </button>
-  );
-};
-```
-
-### 3. Native with Shared Backend
-
-**Shared Code: 0% (UI), 100% (Backend)**
-
-```
-project/
-├── backend/                 # 100% shared
-│   ├── api/
-│   ├── services/
-│   └── database/
-├── ios/                     # Platform-specific
-│   └── MyApp/
-│       ├── ViewModels/      # Can share logic patterns
-│       └── Views/
-└── android/                 # Platform-specific
-    └── app/
-        ├── ViewModels/      # Can share logic patterns
-        └── Views/
+// web/components/Button.tsx
+export const Button: FC<ButtonProps> = ({ title, onPress }) => (
+  <button onClick={onPress}>{title}</button>
+);
 ```
 
 ---
 
-## Backend for Frontend (BFF) Pattern
+## Backend for Frontend (BFF)
 
 ```
-┌─────────┐    ┌─────────┐    ┌─────────┐
-│   iOS   │    │   Web   │    │ Android │
-└────┬────┘    └────┬────┘    └────┬────┘
-     │              │              │
-     ├──────────────┼──────────────┤
-     │              │              │
-┌────▼──────┐  ┌───▼─────┐  ┌────▼──────┐
-│ iOS BFF   │  │ Web BFF │  │ Droid BFF │
-└────┬──────┘  └───┬─────┘  └────┬──────┘
-     │              │              │
-     └──────────────┼──────────────┘
-                    │
-            ┌───────▼────────┐
-            │  Core API      │
-            │  Services      │
-            └────────────────┘
+iOS App ──→ iOS BFF ──┐
+Web App ──→ Web BFF ──┼──→ Core API
+Android ──→ Droid BFF ┘
 ```
 
-**Benefits:**
-- Optimize payload for each platform
-- Platform-specific features
-- Independent deployment
-- Reduced coupling
+**Benefits**: Optimized payloads, platform-specific features, independent deployment
 
 ---
 
-## Data Synchronization Strategies
-
-### 1. Offline-First Architecture
+## Offline-First Sync
 
 ```typescript
-// Sync Manager Pattern
 class SyncManager {
-  private queue: SyncOperation[] = [];
-
   async syncChanges() {
-    // Get pending operations
     const pending = await this.getPendingOperations();
-
-    for (const operation of pending) {
+    for (const op of pending) {
       try {
-        // Attempt sync
-        await this.executeOperation(operation);
-        await this.markComplete(operation.id);
+        await this.executeOperation(op);
+        await this.markComplete(op.id);
       } catch (error) {
-        if (error.isNetworkError) {
-          // Retry later
-          await this.requeueOperation(operation);
-        } else {
-          // Conflict resolution needed
-          await this.handleConflict(operation, error);
-        }
+        if (error.isNetworkError) await this.requeueOperation(op);
+        else await this.handleConflict(op, error);  // Last-write-wins or merge
       }
     }
   }
-
-  private async handleConflict(
-    operation: SyncOperation,
-    error: ConflictError
-  ) {
-    // Last-write-wins strategy
-    if (operation.timestamp > error.serverTimestamp) {
-      await this.forceUpdate(operation);
-    } else {
-      await this.mergeChanges(operation, error.serverData);
-    }
-  }
 }
 ```
 
-### 2. Real-Time Updates
+---
+
+## Real-Time Updates
 
 ```typescript
-// WebSocket with Fallback
 class RealtimeManager {
-  private ws: WebSocket | null = null;
-  private fallbackTimer: NodeJS.Timer | null = null;
-
   connect() {
     try {
       this.ws = new WebSocket('wss://api.example.com/ws');
       this.ws.onmessage = this.handleMessage;
-      this.ws.onerror = this.handleError;
-    } catch (error) {
-      // Fallback to polling
-      this.startPolling();
+    } catch {
+      this.startPolling();  // Fallback to polling
     }
   }
-
-  private startPolling() {
-    this.fallbackTimer = setInterval(async () => {
-      await this.fetchUpdates();
-    }, 5000); // Poll every 5 seconds
-  }
 }
-```
-
----
-
-## Performance Optimization Strategies
-
-### 1. Code Splitting by Platform
-
-```typescript
-// Dynamic imports for web
-const loadPlatformModule = async () => {
-  if (Platform.OS === 'web') {
-    return await import('./WebSpecificFeature');
-  } else {
-    return await import('./MobileSpecificFeature');
-  }
-};
-```
-
-### 2. Asset Optimization
-
-```yaml
-# Assets per platform
-assets/
-├── icons/
-│   ├── ios/          # @1x, @2x, @3x
-│   ├── android/      # mdpi, hdpi, xhdpi, xxhdpi
-│   └── web/          # SVG preferred
-└── images/
-    ├── mobile/       # Optimized for mobile
-    └── web/          # WebP with fallback
 ```
 
 ---
 
 ## Team Organization
 
-### 1. Feature Teams (Recommended)
-
-```
-Feature Team: User Profile
-├── iOS Developer
-├── Android Developer
-├── Web Developer
-├── Backend Developer
-└── QA Engineer
-
-✅ Pros: Fast delivery, end-to-end ownership
-❌ Cons: Platform knowledge duplication
-```
-
-### 2. Platform Teams
-
-```
-iOS Team          Android Team      Web Team
-├── Dev 1         ├── Dev 1         ├── Dev 1
-├── Dev 2         ├── Dev 2         ├── Dev 2
-└── Dev 3         └── Dev 3         └── Dev 3
-
-✅ Pros: Deep platform expertise
-❌ Cons: Coordination overhead
-```
+| Structure | Pros | Cons |
+|-----------|------|------|
+| Feature Teams | Fast delivery, end-to-end ownership | Knowledge duplication |
+| Platform Teams | Deep expertise | Coordination overhead |
 
 ---
 
 ## Decision Matrix
 
-### When to Choose Each Approach
+**Choose Flutter if**: Fast time to market, Dart team, UI consistency priority
 
-**Choose Flutter/React Native if:**
-- Need fast time to market
-- Team skilled in Dart/JavaScript
-- UI consistency is priority
-- Budget is limited
+**Choose Native if**: Performance critical, platform-specific features, long-term investment
 
-**Choose Native (Swift/Kotlin) if:**
-- Performance is critical
-- Platform-specific features needed
-- Long-term investment
-- Large team with platform expertise
-
-**Choose Web + PWA if:**
-- Content-focused app
-- Frequent updates needed
-- Discoverability important
-- Limited native features needed
+**Choose Web + PWA if**: Content-focused, frequent updates, discoverability important
 
 ---
 
 ## Anti-Patterns
 
-### ❌ Don't: One size fits all
-
 ```typescript
-// Bad: Same component for all platforms
-<ComplexComponent
-  mobileLayout={true}
-  webLayout={false}
-  desktopLayout={false}
-  // 50+ props for different platforms
-/>
-```
+// ❌ Bad: Over-parameterized component
+<Component mobileLayout={true} webLayout={false} /* 50+ props */ />
 
-### ✅ Do: Platform-optimized components
-
-```typescript
-// Good: Separate optimized components
-{Platform.OS === 'web' ? (
-  <WebOptimizedComponent />
-) : (
-  <MobileOptimizedComponent />
-)}
+// ✅ Good: Platform-optimized components
+{Platform.OS === 'web' ? <WebComponent /> : <MobileComponent />}
 ```
 
 ---
 
-## Quick Reference
+## Code Sharing Targets
 
-### Code Sharing Targets
-
-- **Flutter**: 85-95% shared code
-- **React Native**: 70-80% shared code
-- **Native + Shared Logic**: 40-60% shared business logic
-- **Kotlin Multiplatform**: 60-80% shared code
-
-### Architecture Checklist
-
-- [ ] Define platform strategy upfront
-- [ ] Establish code sharing boundaries
-- [ ] Plan offline-first if needed
-- [ ] Design BFF pattern for complex APIs
-- [ ] Implement conflict resolution
-- [ ] Set up CI/CD per platform
-- [ ] Define team structure
-- [ ] Plan performance monitoring
+| Framework | Shared Code |
+|-----------|-------------|
+| Flutter | 85-95% |
+| React Native | 70-80% |
+| KMP | 60-80% |
+| Native + Shared Logic | 40-60% |
 
 ---
 
-**Skill Version**: 1.0.0
-**Last Updated**: October 27, 2024
-**Difficulty**: Advanced
-**Estimated Time**: 6-8 hours
+## Checklist
+
+- [ ] Platform strategy defined
+- [ ] Code sharing boundaries established
+- [ ] Clean architecture layers separated
+- [ ] Offline-first if needed
+- [ ] BFF for complex APIs
+- [ ] CI/CD per platform
+- [ ] Team structure aligned
+
+---
+
+**Version**: 1.0.5

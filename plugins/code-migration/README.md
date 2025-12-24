@@ -1,30 +1,22 @@
 # Code Migration
 
-**Version:** 1.0.3 | **Category:** code-migration | **License:** MIT
+**Version:** 1.0.5 | **Category:** code-migration | **License:** MIT
 
 Scientific code modernization with comprehensive legacy-to-modern framework migration. Specializes in Fortran/C/MATLAB to Python/JAX/Julia migrations while preserving numerical accuracy and achieving GPU acceleration.
 
-## What's New in v1.0.3
 
-**Workflow Enhancement Release** with hub-and-spoke architecture and execution modes:
+## What's New in v1.0.5
 
-- **External Documentation**: 6 comprehensive files (~2,400 lines of specialized guidance)
-- **Execution Modes**: 3 modes per command (quick/standard/comprehensive) for flexible time/scope control
-- **Enhanced Metadata**: Comprehensive plugin.json with capabilities, triggers, and execution modes
-- **100% Backward Compatible**: All v1.0.2 features maintained (chain-of-thought, Constitutional AI)
+This release implements **Opus 4.5 optimization** with enhanced token efficiency and standardized documentation.
 
-### External Documentation
+### Key Improvements
 
-| File | Lines | Purpose |
-|------|-------|---------|
-| algorithm-analysis-framework.md | ~400 | Algorithm identification, kernel analysis, data structures |
-| numerical-accuracy-guide.md | ~500 | Precision, verification, reproducibility, conservation laws |
-| framework-migration-strategies.md | ~300 | Framework selection, roadmaps, dependency modernization |
-| performance-optimization-techniques.md | ~350 | Parallelization, efficiency, hardware utilization |
-| integration-testing-patterns.md | ~450 | Tooling, packaging, API design, validation |
-| scientific-computing-best-practices.md | ~400 | Stability, sensitivity, domain requirements, compatibility |
+- **Format Standardization**: All components now include consistent YAML frontmatter with version, maturity, specialization, and description fields
+- **Token Efficiency**: 40-50% line reduction through tables over prose, minimal code examples, and structured sections
+- **Enhanced Discoverability**: Clear "Use when..." trigger phrases for better Claude Code activation
+- **Actionable Checklists**: Task-oriented guidance for common workflows
+- **Cross-Reference Tables**: Quick-reference format for delegation and integration patterns
 
-[Full Documentation →](https://myclaude.readthedocs.io/en/latest/plugins/code-migration.html)
 
 ## Agent (1)
 
@@ -32,7 +24,7 @@ The agent has been upgraded to v1.0.3 with comprehensive external documentation 
 
 ### 🔬 scientific-code-adoptor
 
-**Status:** active | **Maturity:** 90% | **Version:** 1.0.3
+**Status:** active | **Maturity:** 90% | **Version:** 1.0.5
 
 Legacy scientific code modernization expert for cross-language migration. Expert in Fortran/C/MATLAB to Python/JAX/Julia with numerical accuracy preservation.
 
@@ -404,6 +396,6 @@ MIT License - See [LICENSE](./LICENSE) for details
 ---
 
 **Author:** Wei Chen
-**Version:** 1.0.2
+**Version:** 1.0.5
 **Category:** Code Migration
 **Last Updated:** 2025-10-29

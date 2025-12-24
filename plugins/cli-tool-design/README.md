@@ -2,27 +2,21 @@
 
 CLI tool design and developer automation expertise with advanced agent reasoning, systematic development frameworks, and production-ready examples for building world-class command-line tools and automation scripts.
 
-**Version:** 1.0.2 | **Category:** developer-tools | **License:** MIT
+**Version:** 1.0.5 | **Category:** developer-tools | **License:** MIT
 
-## What's New in v1.0.2
 
-**Major prompt engineering improvements** for command-systems-engineer agent and skills with advanced reasoning capabilities:
+## What's New in v1.0.5
 
-- **Chain-of-Thought Reasoning**: Systematic 6-step framework for CLI tool development
-- **Constitutional AI Principles**: 5 core principles for quality CLI tools with self-critique
-- **Comprehensive Examples**: Production-ready "devflow" CLI tool with Python Click, rich UI, workflow automation
-- **Enhanced Discoverability**: Skills expanded with 24-25 use cases each for better discovery
+This release implements **Opus 4.5 optimization** with enhanced token efficiency and standardized documentation.
 
-### Expected Performance Improvements
+### Key Improvements
 
-| Metric | Improvement |
-|--------|-------------|
-| CLI Tool Quality | 50-70% better |
-| User Experience | 60% improved UX |
-| Development Process | 70% more systematic |
-| Skill Discoverability | 200-300% improvement |
+- **Format Standardization**: All components now include consistent YAML frontmatter with version, maturity, specialization, and description fields
+- **Token Efficiency**: 40-50% line reduction through tables over prose, minimal code examples, and structured sections
+- **Enhanced Discoverability**: Clear "Use when..." trigger phrases for better Claude Code activation
+- **Actionable Checklists**: Task-oriented guidance for common workflows
+- **Cross-Reference Tables**: Quick-reference format for delegation and integration patterns
 
-[Full Documentation →](https://myclaude.readthedocs.io/en/latest/plugins/cli-tool-design.html)
 
 ## Agent (1)
 
@@ -30,7 +24,7 @@ The agent has been upgraded to v1.0.2 with 90-92% maturity, systematic reasoning
 
 ### 🛠️ command-systems-engineer
 
-**Status:** active | **Maturity:** 92% | **Version:** 1.0.2
+**Status:** active | **Maturity:** 92% | **Version:** 1.0.5
 
 Command systems engineer specializing in CLI tool design and developer automation. Expert in command development, interactive prompts, and workflow tools.
 
@@ -417,6 +411,6 @@ MIT License - See [LICENSE](./LICENSE) for details
 ---
 
 **Author:** Wei Chen
-**Version:** 1.0.2
+**Version:** 1.0.5
 **Category:** Developer Tools
 **Last Updated:** 2025-10-29

@@ -8,51 +8,19 @@
 
 ---
 
-## What's New in v1.0.3 🚀
 
-This release represents a **major transformation** of the `/full-stack-feature` command from an imperative code-execution model to a **user-centric workflow orchestration** model with comprehensive external documentation.
+## What's New in v1.0.5
 
-### Key Highlights
+This release implements **Opus 4.5 optimization** with enhanced token efficiency and standardized documentation.
 
-#### Command Transformation (481% Growth)
-- **Before**: 113-line imperative command with embedded agent prompts
-- **After**: 656-line workflow orchestration with YAML frontmatter, execution modes, and external documentation references
-- **External Documentation**: 2,001 lines across 4 comprehensive guides
+### Key Improvements
 
-#### Multi-Mode Execution
-- **Quick Mode** (30-60 minutes): Architecture & design planning only (Phase 1)
-- **Standard Mode** (3-6 hours): Architecture + implementation (Phases 1-2)
-- **Deep Mode** (1-3 days): Complete production-ready workflow (All 4 phases)
+- **Format Standardization**: All components now include consistent YAML frontmatter with version, maturity, specialization, and description fields
+- **Token Efficiency**: 40-50% line reduction through tables over prose, minimal code examples, and structured sections
+- **Enhanced Discoverability**: Clear "Use when..." trigger phrases for better Claude Code activation
+- **Actionable Checklists**: Task-oriented guidance for common workflows
+- **Cross-Reference Tables**: Quick-reference format for delegation and integration patterns
 
-#### External Documentation Guides (2,001 Lines)
-1. **Architecture Patterns Library** (725 lines): Database, backend, frontend, integration patterns with decision matrix
-2. **Testing Strategies** (654 lines): Contract, E2E, security, performance testing with Playwright, k6, Pact
-3. **Deployment Patterns** (263 lines): CI/CD pipelines, Kubernetes, feature flags, canary deployments
-4. **Technology Stack Guide** (359 lines): React/FastAPI/PostgreSQL, Next.js/Django/MongoDB, Vue/NestJS/MySQL
-
-#### Decision Trees & Configuration
-- **3 Decision Trees**: Technology stack selection, deployment target, API style
-- **9 Configuration Options**: Stack, database, API style, auth method, state management, testing, deployment, monitoring, feature flags
-- **3 Example Scenarios**: User authentication (JWT), real-time notifications (WebSockets), e-commerce catalog
-
-#### Phase-Based Workflow
-- **Phase 1**: Architecture & Planning (database design, API contracts, component architecture)
-- **Phase 2**: Implementation (backend services, frontend components, API integration)
-- **Phase 3**: Testing & Quality (contract, E2E, security, performance testing)
-- **Phase 4**: Deployment & Operations (CI/CD pipeline, infrastructure, monitoring)
-
-#### Agent Orchestration Patterns
-- **Sequential**: Database → Backend → Frontend → Testing → Deployment
-- **Parallel**: Database + API design | Backend + Frontend | Contract + E2E tests
-- **Conditional**: GraphQL → graphql-architect, REST → backend-architect
-
-### Impact Metrics
-- **Command file growth**: 113 → 656 lines (+481%, 5.8x expansion)
-- **External documentation**: 0 → 2,001 lines (new)
-- **Total plugin content**: 113 → 2,657 lines (+2,251%, 23.5x expansion)
-- **Documentation ratio**: 0% → 75% external docs (optimal reference architecture)
-
----
 
 ## What's New in v1.0.1 🎉
 
@@ -86,7 +54,7 @@ This release introduced **systematic Chain-of-Thought frameworks**, **Constituti
 
 ### Deployment Engineer
 
-**Version:** 1.0.3 | **Maturity:** 75% | **Status:** active
+**Version:** 1.0.5 | **Maturity:** 75% | **Status:** active
 
 Expert deployment engineer specializing in modern CI/CD pipelines, GitOps workflows, and advanced deployment automation with systematic framework for zero-downtime deployments.
 
@@ -143,7 +111,7 @@ Expert deployment engineer specializing in modern CI/CD pipelines, GitOps workfl
 
 ### Performance Engineer
 
-**Version:** 1.0.3 | **Maturity:** 78% | **Status:** active
+**Version:** 1.0.5 | **Maturity:** 78% | **Status:** active
 
 Expert performance engineer specializing in modern observability, application optimization, and scalable system performance with end-to-end optimization framework.
 
@@ -200,7 +168,7 @@ Expert performance engineer specializing in modern observability, application op
 
 ### Security Auditor
 
-**Version:** 1.0.3 | **Maturity:** 80% | **Status:** active
+**Version:** 1.0.5 | **Maturity:** 80% | **Status:** active
 
 Expert security auditor specializing in DevSecOps, comprehensive cybersecurity, and compliance frameworks with zero-trust architecture and OWASP Top 10 100% coverage.
 
@@ -257,7 +225,7 @@ Expert security auditor specializing in DevSecOps, comprehensive cybersecurity, 
 
 ### Test Automator
 
-**Version:** 1.0.3 | **Maturity:** 77% | **Status:** active
+**Version:** 1.0.5 | **Maturity:** 77% | **Status:** active
 
 Expert test automation engineer specializing in AI-powered testing, modern frameworks, and comprehensive quality engineering with TDD excellence and self-healing automation.
 
@@ -316,7 +284,7 @@ Expert test automation engineer specializing in AI-powered testing, modern frame
 
 ### `/full-stack-feature`
 
-**Version:** 1.0.3 | **Status:** active
+**Version:** 1.0.5 | **Status:** active
 
 Orchestrate end-to-end full-stack feature development with **multi-mode execution**, **phase-based workflow**, and comprehensive **external documentation** (2,001 lines).
 
@@ -673,4 +641,4 @@ MIT License - see LICENSE file for details
 
 ---
 
-**Version:** 1.0.3 | **Last Updated:** 2025-11-07 | **Next Release:** v1.1.0 (Q1 2026)
+**Version:** 1.0.5 | **Last Updated:** 2025-11-07 | **Next Release:** v1.1.0 (Q1 2026)

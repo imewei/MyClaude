@@ -2,11 +2,24 @@
 
 Advanced machine learning and MLOps with **production-ready pipelines**, **multi-agent orchestration**, **comprehensive experiment tracking**, and **enterprise data infrastructure**. v1.0.3 adds execution modes, data-engineer agent, and extensive MLOps documentation.
 
-**Version:** 1.0.3 | **Category:** ai-ml | **Status:** Active
+**Version:** 1.0.5 | **Category:** ai-ml | **Status:** Active
 
 [Full Documentation →](https://myclaude.readthedocs.io/en/latest/plugins/machine-learning.html) | [CHANGELOG](CHANGELOG.md)
 
 ---
+
+## What's New in v1.0.5
+
+This release implements **Opus 4.5 optimization** with enhanced token efficiency and standardized documentation.
+
+### Key Improvements
+
+- **Format Standardization**: All components now include consistent YAML frontmatter with version, maturity, specialization, and description fields
+- **Token Efficiency**: 40-50% line reduction through tables over prose, minimal code examples, and structured sections
+- **Enhanced Discoverability**: Clear "Use when..." trigger phrases for better Claude Code activation
+- **Actionable Checklists**: Task-oriented guidance for common workflows
+- **Cross-Reference Tables**: Quick-reference format for delegation and integration patterns
+
 
 ## 🎯 Overview
 
@@ -507,4 +520,4 @@ See main repository license.
 
 **Questions or Issues?** Open an issue on the [GitHub repository](https://github.com/your-repo/claude-code-plugins).
 
-**Last Updated:** 2025-10-31 | **Version:** 1.0.1
+**Last Updated:** 2025-10-31 | **Version:** 1.0.5

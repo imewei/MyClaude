@@ -1,26 +1,19 @@
 ---
 name: package-development-workflow
-description: Master Julia package structure, module organization, exports, and PkgTemplates.jl conventions for creating robust packages. Use when creating new Julia packages (.jl files in src/ directory), organizing package source code with modules, setting up Project.toml and Manifest.toml files, defining module exports and public APIs, structuring test/ directories with runtests.jl, creating package documentation in docs/, using PkgTemplates.jl for automated package scaffolding, organizing multi-file packages with include() patterns, or bootstrapping development environments. Foundation for /julia-scaffold command and essential for all Julia package development workflows.
+version: "1.0.5"
+maturity: "5-Expert"
+specialization: Julia Packages
+description: Create Julia packages following community standards with proper structure, exports, and PkgTemplates.jl. Use when creating new packages or organizing source code.
 ---
 
-# Package Development Workflow
+# Julia Package Development
 
-Master creating and organizing Julia packages following community standards.
+Create packages following ecosystem standards.
 
-## When to use this skill
+---
 
-- Creating new Julia packages from scratch
-- Structuring source files in src/ directory with proper module organization
-- Setting up Project.toml with dependencies and compatibility bounds
-- Defining package exports and public vs internal APIs
-- Organizing test suites in test/ directory
-- Using PkgTemplates.jl for automated package scaffolding
-- Creating multi-file packages with proper include() patterns
-- Setting up package documentation structure
-- Establishing development environments for package work
-- Following Julia package ecosystem conventions
+## Package Structure
 
-## Standard Package Structure
 ```
 MyPackage/
 ├── Project.toml
@@ -31,13 +24,15 @@ MyPackage/
 └── LICENSE
 ```
 
+---
+
 ## Module Pattern
+
 ```julia
 module MyPackage
 
 export public_function, PublicType
 
-# Implementation
 function public_function(x)
     internal_helper(x)
 end
@@ -49,5 +44,36 @@ end
 end # module
 ```
 
-## Resources
-- **PkgTemplates.jl**: https://github.com/JuliaCI/PkgTemplates.jl
+---
+
+## PkgTemplates.jl
+
+```julia
+using PkgTemplates
+
+tpl = Template(;
+    user="username",
+    plugins=[
+        Git(),
+        License(name="MIT"),
+        GitHubActions(),
+        Documenter{GitHubActions}()
+    ]
+)
+
+tpl("MyPackage")
+```
+
+---
+
+## Checklist
+
+- [ ] Project.toml with deps and compat
+- [ ] Module exports defined
+- [ ] Test suite in test/
+- [ ] Documentation setup
+- [ ] LICENSE and README
+
+---
+
+**Version**: 1.0.5
