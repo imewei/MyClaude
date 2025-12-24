@@ -10,13 +10,21 @@ build:
   os: ubuntu-24.04
   tools:
     python: "3.12"
-  commands:
-    # Install uv for faster package management
-    - pip install uv
-    # Install dependencies using uv
-    - uv pip install --system -r docs/requirements.txt
-    # Build HTML documentation
-    - sphinx-build -b html docs $READTHEDOCS_OUTPUT/html
-    # Build PDF documentation
-    - sphinx-build -b latex docs $READTHEDOCS_OUTPUT/pdf
-    - cd $READTHEDOCS_OUTPUT/pdf && make
+  jobs:
+    pre_install:
+      # Install uv for faster package management
+      - pip install uv
+    install:
+      # Install dependencies using uv (faster than pip)
+      - uv pip install --system -r docs/requirements.txt
+
+# Build documentation in the "docs/" directory with Sphinx
+sphinx:
+  configuration: docs/conf.py
+  builder: html
+  fail_on_warning: false
+
+# Build PDF and ePub
+formats:
+  - pdf
+  - epub
