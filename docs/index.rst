@@ -11,7 +11,7 @@ The Plugin Marketplace offers:
 - **31 Specialized Plugins** across 6 major categories
 - **74 Expert Agents** for AI-powered development assistance
 - **48 Slash Commands** for automated workflows
-- **119 Skills** for context-aware intelligence
+- **117 Skills** for context-aware intelligence
 - **16 Tools** for validation and profiling
 - **Integrated Ecosystem** with extensive cross-plugin collaboration
 
@@ -41,14 +41,14 @@ Tools & Migration (4 plugins)
 Statistics
 ----------
 
-**Version 1.0.5** (All plugins updated December 18, 2025)
+**Version 1.0.5** (All plugins updated December 24, 2025)
 
 **Total Resources:**
 
 - 31 plugins
 - 74 agents
 - 48 commands
-- 119 skills
+- 117 skills
 - 16 tools
 
 **By Category:**

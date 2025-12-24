@@ -16,7 +16,7 @@ sys.path.insert(0, os.path.abspath('_ext'))
 project = 'Claude Code Plugin Marketplace'
 copyright = f'{datetime.now().year}, Wei Chen'
 author = 'Wei Chen'
-release = '1.0.4'
+release = '1.0.5'
 version = '1.0.5'
 
 # -- General configuration ---------------------------------------------------

@@ -3,13 +3,13 @@
 [![Plugins](https://img.shields.io/badge/Plugins-31-blue.svg)](https://myclaude.readthedocs.io/en/latest/plugins/)
 [![Agents](https://img.shields.io/badge/Agents-74-green.svg)](AGENTS_LIST.md)
 [![Commands](https://img.shields.io/badge/Commands-48-orange.svg)](COMMANDS_LIST.md)
-[![Skills](https://img.shields.io/badge/Skills-119-purple.svg)](PLUGIN_CHEATSHEET.md)
+[![Skills](https://img.shields.io/badge/Skills-117-purple.svg)](PLUGIN_CHEATSHEET.md)
 [![Tools](https://img.shields.io/badge/Tools-16-teal.svg)](docs/tools-reference.rst)
 [![Version](https://img.shields.io/badge/Version-1.0.5-red.svg)](https://github.com/imewei/MyClaude)
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Docs](https://img.shields.io/badge/Docs-ReadTheDocs-brightgreen.svg)](https://myclaude.readthedocs.io/en/latest/)
 
-Claude Code plugin marketplace with **31 specialized plugins**, **74 expert agents**, **48 slash commands**, **119 skills**, and **16 tools** for AI-powered development, scientific computing, and research workflows.
+Claude Code plugin marketplace with **31 specialized plugins**, **74 expert agents**, **48 slash commands**, **117 skills**, and **16 tools** for AI-powered development, scientific computing, and research workflows.
 
 ## Full Documentation
 
@@ -53,7 +53,7 @@ All plugins synchronized to version 1.0.5:
 | Plugins | 31 |
 | Agents | 74 |
 | Commands | 48 |
-| Skills | 119 |
+| Skills | 117 |
 | Tools | 16 |
 | Categories | 6 |
 
