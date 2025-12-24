@@ -16,9 +16,9 @@ build:
     # Install dependencies using uv
     - uv pip install --system -r docs/requirements.txt
     # Build HTML documentation
-    - uv run --system sphinx-build -b html docs $READTHEDOCS_OUTPUT/html
+    - sphinx-build -b html docs $READTHEDOCS_OUTPUT/html
     # Build PDF documentation
-    - uv run --system sphinx-build -b latex docs $READTHEDOCS_OUTPUT/pdf
+    - sphinx-build -b latex docs $READTHEDOCS_OUTPUT/pdf
     - cd $READTHEDOCS_OUTPUT/pdf && latexmk -pdf -interaction=nonstopmode ClaudeCodePluginMarketplacedoc.tex || true
 
 # Build documentation in the "docs/" directory with Sphinx
