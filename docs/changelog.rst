@@ -34,6 +34,16 @@ Changed
 - All 31 plugin CHANGELOG.md files updated
 - All 31 ``docs/plugins/*.rst`` files updated
 
+Fixed
+^^^^^
+
+- ReadTheDocs build configuration: switched from build.commands to build.jobs
+- Removed conflicting sphinx and formats sections from RTD config
+- Fixed virtualenv package installation for RTD builds
+- Escaped asterisks in RST files to prevent Sphinx warnings
+- Removed Unicode emoji from changelog for LaTeX compatibility
+- Fixed Makefile PDF build target to use proper sphinx-build command
+
 Previous Versions
 -----------------
 
