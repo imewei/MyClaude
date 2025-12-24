@@ -11,7 +11,7 @@ Comprehensive systems programming with C, C++, Rust, and Go. Includes enhanced a
 
 **Metadata:**
 
-- **Version:** 1.0.4
+- **Version:** 1.0.5
 - **Category:** development
 - **License:** MIT
 - **Author:** Wei Chen <https://github.com/Wei Chen>

@@ -11,7 +11,7 @@ Molecular dynamics and multiscale simulation for atomistic modeling across LAMMP
 
 **Metadata:**
 
-- **Version:** 1.0.4
+- **Version:** 1.0.5
 - **Category:** uncategorized
 - **License:** MIT
 - **Author:** Scientific Computing Team

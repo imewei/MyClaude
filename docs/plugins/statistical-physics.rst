@@ -11,7 +11,7 @@ Non-equilibrium statistical physics for driven systems, active matter, and compl
 
 **Metadata:**
 
-- **Version:** 1.0.4
+- **Version:** 1.0.5
 - **Category:** uncategorized
 - **License:** Unknown
 - **Author:** Unknown

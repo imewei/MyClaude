@@ -11,7 +11,7 @@ Comprehensive deep learning expertise: neural network theory, architecture desig
 
 **Metadata:**
 
-- **Version:** 1.0.4
+- **Version:** 1.0.5
 - **Category:** ai-ml
 - **License:** Unknown
 - **Author:** Wei Chen <https://github.com/Wei Chen>

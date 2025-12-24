@@ -11,7 +11,7 @@ Comprehensive backend development support including REST/GraphQL/gRPC APIs, micr
 
 **Metadata:**
 
-- **Version:** 1.0.4
+- **Version:** 1.0.5
 - **Category:** development
 - **License:** MIT
 - **Author:** Scientific Computing Workflows

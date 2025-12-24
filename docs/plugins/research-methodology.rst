@@ -11,7 +11,7 @@ Research intelligence, methodology design, literature analysis, and evidence-bas
 
 **Metadata:**
 
-- **Version:** 1.0.4
+- **Version:** 1.0.5
 - **Category:** uncategorized
 - **License:** MIT
 - **Author:** Scientific Computing Team
@@ -33,7 +33,7 @@ Skills
    Evaluate scientific research quality across methodology, experimental design, statistical rigor, and publication readiness using systematic assessment frameworks. Use when reviewing research papers, manuscripts, or academic articles for quality and validity. Use when evaluating grant proposals for NSF, NIH, DOE, or other funding agencies.
 
    **Status:** active
-   **Version:** 1.0.4
+   **Version:** 1.0.5
 
 Usage Examples
 --------------

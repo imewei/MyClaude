@@ -11,7 +11,7 @@ Advanced AI-powered cognitive tools for problem-solving, meta-analysis, and stru
 
 **Metadata:**
 
-- **Version:** 1.0.4
+- **Version:** 1.0.5
 - **Category:** uncategorized
 - **License:** MIT
 - **Author:** AI Reasoning Team
