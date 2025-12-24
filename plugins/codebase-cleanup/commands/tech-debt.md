@@ -1,5 +1,5 @@
 ---
-version: "1.0.5"
+version: "1.0.6"
 category: codebase-cleanup
 purpose: Analyze, prioritize, and create remediation plans for technical debt
 execution_time:

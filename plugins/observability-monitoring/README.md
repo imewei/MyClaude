@@ -2,13 +2,13 @@
 
 Observability, monitoring, logging, distributed tracing, and SLO/SLA management for production systems with Prometheus, Grafana, and modern observability platforms
 
-**Version:** 1.0.5 | **Category:** devops | **License:** MIT
+**Version:** 1.0.6 | **Category:** devops | **License:** MIT
 
 [Full Documentation →](https://myclaude.readthedocs.io/en/latest/plugins/observability-monitoring.html) | [CHANGELOG](CHANGELOG.md)
 
 ---
 
-## 🚀 What's New in v1.0.3
+## 🚀 What's New in v1.0.6
 
 ### Command Optimization with Execution Modes
 
@@ -156,7 +156,7 @@ Design and implement Apache Airflow DAGs for scientific data pipelines, workflow
 - JAX and scientific computing integration
 
 
-## What's New in v1.0.5
+## What's New in v1.0.6
 
 This release implements **Opus 4.5 optimization** with enhanced token efficiency and standardized documentation.
 

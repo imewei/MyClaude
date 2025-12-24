@@ -1,6 +1,6 @@
 ---
 name: correlation-math-foundations
-version: "1.0.5"
+version: "1.0.6"
 maturity: "5-Expert"
 specialization: Correlation Theory
 description: Mathematical foundations of correlation functions including two-point C(r), higher-order χ₄(t), cumulants, Fourier/Laplace/wavelet transforms, Wiener-Khinchin theorem, Ornstein-Zernike equations, fluctuation-dissipation theorem, and Green's functions. Use when developing correlation theory or connecting microscopic correlations to macroscopic response.

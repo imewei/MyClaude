@@ -1,6 +1,6 @@
 ---
 name: neural-architecture-patterns
-version: "1.0.5"
+version: "1.0.6"
 maturity: "5-Expert"
 specialization: Neural Network Architecture
 description: Design neural architectures with skip connections, attention, normalization, and encoder-decoders. Use when designing CNNs, transformers, U-Nets, or selecting architectures for vision, NLP, and multimodal tasks.

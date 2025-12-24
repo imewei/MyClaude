@@ -11,7 +11,7 @@ LLM application development with prompt engineering, RAG implementation, vector 
 
 **Metadata:**
 
-- **Version:** 1.0.5
+- **Version:** 1.0.6
 - **Category:** development
 - **License:** MIT
 - **Author:** Scientific Computing Workflows

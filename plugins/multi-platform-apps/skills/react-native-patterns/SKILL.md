@@ -1,6 +1,6 @@
 ---
 name: react-native-patterns
-version: "1.0.5"
+version: "1.0.6"
 maturity: "5-Expert"
 specialization: React Native Development
 description: Modern React Native patterns with New Architecture, TypeScript, and performance optimization. Use when building React Native components, optimizing FlatList performance, implementing state management (Redux Toolkit, Zustand), setting up React Navigation, integrating APIs with React Query, handling forms with React Hook Form, creating native modules, or implementing offline-first storage.

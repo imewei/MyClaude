@@ -2,7 +2,7 @@
   "name": "llm-application-dev",
   "displayName": "LLM Application Development",
   "description": "LLM application development with prompt engineering, RAG implementation, vector databases, LangChain, and modern AI integration patterns for building intelligent applications",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "keywords": [
     "llm",
     "gpt",

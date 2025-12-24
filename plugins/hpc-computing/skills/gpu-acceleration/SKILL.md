@@ -1,6 +1,6 @@
 ---
 name: gpu-acceleration
-version: "1.0.5"
+version: "1.0.6"
 maturity: "5-Expert"
 specialization: GPU Computing
 description: Implement GPU acceleration using CUDA/CuPy (Python) and CUDA.jl (Julia) with kernel optimization and memory management. Use when offloading computations to GPU, writing custom kernels, or optimizing multi-GPU workflows.

@@ -1,6 +1,6 @@
 ---
 name: database-migration
-version: "1.0.5"
+version: "1.0.6"
 maturity: "5-Expert"
 specialization: Schema Evolution
 description: Execute database migrations across ORMs (Sequelize, TypeORM, Prisma, Django) with zero-downtime strategies, rollback procedures, and data transformations. Use when adding/removing columns, renaming tables, changing types, or implementing blue-green deployments.

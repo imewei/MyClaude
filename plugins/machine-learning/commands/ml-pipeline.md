@@ -1,5 +1,5 @@
 ---
-version: 1.0.5
+version: "1.0.6"
 command: /ml-pipeline
 description: Design and implement production-ready ML pipelines with multi-agent MLOps orchestration
 execution_modes:

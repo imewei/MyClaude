@@ -41,7 +41,7 @@ Tools & Migration (4 plugins)
 Statistics
 ----------
 
-**Version 1.0.5** (All plugins updated December 24, 2025)
+**Version 1.0.6** (All plugins updated December 24, 2025)
 
 **Total Resources:**
 

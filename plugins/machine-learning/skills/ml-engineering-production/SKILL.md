@@ -1,6 +1,6 @@
 ---
 name: ml-engineering-production
-version: "1.0.5"
+version: "1.0.6"
 maturity: "5-Expert"
 specialization: Production ML Engineering Practices
 description: Software and data engineering best practices for production ML. Type-safe code, pytest testing, pre-commit hooks, pandas/SQL pipelines, and modern project structure. Use when building maintainable ML systems.

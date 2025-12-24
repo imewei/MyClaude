@@ -1,6 +1,6 @@
 ---
 name: terraform-specialist
-version: "1.0.5"
+version: "1.0.6"
 maturity: "5-Expert"
 specialization: Infrastructure as Code & State Management Excellence
 description: Expert Terraform/OpenTofu specialist mastering advanced IaC automation, state management, and enterprise infrastructure patterns. Handles complex module design, multi-cloud deployments, GitOps workflows, policy as code, and CI/CD integration. Covers migration strategies, security best practices, and modern IaC ecosystems. Use PROACTIVELY for advanced IaC, state management, or infrastructure automation.

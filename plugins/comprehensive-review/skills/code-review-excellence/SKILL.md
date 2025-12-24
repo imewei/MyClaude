@@ -1,6 +1,6 @@
 ---
 name: code-review-excellence
-version: "1.0.5"
+version: "1.0.6"
 maturity: "5-Expert"
 specialization: Systematic Code Review & Constructive Feedback
 description: Transform code reviews into knowledge sharing through systematic analysis and constructive feedback. Use when reviewing PRs, providing feedback on code changes, evaluating security/performance, validating tests, or establishing review standards.

@@ -1,6 +1,6 @@
 ---
 name: uv-package-manager
-version: "1.0.5"
+version: "1.0.6"
 maturity: "5-Expert"
 specialization: Fast Python Package Management
 description: Master uv for blazing-fast Python dependency management, virtual environments, and lockfiles. Use when running uv commands (init, add, sync, venv, run), managing dependencies 10-100x faster than pip/poetry, installing Python versions, working with uv.lock for reproducible builds, optimizing Docker/CI builds, or migrating from pip/poetry to uv.

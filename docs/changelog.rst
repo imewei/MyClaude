@@ -17,42 +17,28 @@ Version Format: ``MAJOR.MINOR.PATCH``
 Current Version
 ---------------
 
-v1.0.5 (2025-12-24) - Opus 4.5 Optimization Release
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+v1.0.6 (2025-12-24) - Documentation Sync Release
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-This release implements comprehensive Opus 4.5 optimization with enhanced token efficiency and standardized documentation across all 31 plugins.
-
-Added
-^^^^^
-
-**Opus 4.5 Optimization Pattern**
-
-- YAML frontmatter standardization with version, maturity, specialization, and description fields
-- "When to Use" trigger phrases for improved Claude Code activation
-- Cross-reference tables for quick-reference delegation and integration patterns
-- Actionable checklists for task-oriented guidance
-
-**Documentation Updates**
-
-- All 31 plugin README.md files updated with "What's New in v1.0.5" sections
-- All 31 CHANGELOG.md files updated with v1.0.5 entries
-- Root README.md updated with correct statistics (117 skills)
-- marketplace.json updated with v1.0.5 metadata
+This release synchronizes all documentation and configuration files with the v1.0.6 version.
 
 Changed
 ^^^^^^^
 
-- 40-50% line reduction across all components through tables over prose
-- Minimal code examples replacing verbose documentation
-- Structured sections with consistent formatting
-- Version synchronization across all 31 plugins, 74 agents, 48 commands, and 117 skills
+- All 31 plugin.json files updated to v1.0.6
+- marketplace.json metadata updated to v1.0.6
+- Root README.md version badge and tables updated
+- Sphinx documentation configuration updated
+- ReadTheDocs configuration updated with uv package manager
+- All 31 plugin README.md files updated
+- All 31 plugin CHANGELOG.md files updated
+- All 31 docs/plugins/*.rst files updated
 
-Fixed
-^^^^^
+Previous Versions
+-----------------
 
-- Removed 2 duplicate skills (research-methodology and unit-testing SKILL.md duplicates)
-- Corrected skill count from 119 to 117 across all documentation
-- Fixed misplaced SKILL.md files in comprehensive-review and git-pr-workflows
+v1.0.5 (2025-12-24) - Opus 4.5 Optimization Release
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Previous Versions
 -----------------

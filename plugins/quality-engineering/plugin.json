@@ -1,10 +1,23 @@
 {
   "name": "quality-engineering",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Comprehensive quality assurance, validation, and correctness verification tools with automated scripts for security scanning, testing, linting, performance profiling, accessibility checks, and plugin syntax validation. v1.0.3 enhances both commands with 3 execution modes (quick/standard/enterprise) and 8 comprehensive external documentation files (~6,455 lines).",
   "author": "Wei Chen",
   "license": "MIT",
-  "keywords": ["quality", "validation", "verification", "lint", "correctness", "assurance", "qa", "security", "testing", "performance", "accessibility", "plugin-validation"],
+  "keywords": [
+    "quality",
+    "validation",
+    "verification",
+    "lint",
+    "correctness",
+    "assurance",
+    "qa",
+    "security",
+    "testing",
+    "performance",
+    "accessibility",
+    "plugin-validation"
+  ],
   "commands": [
     {
       "name": "/double-check",

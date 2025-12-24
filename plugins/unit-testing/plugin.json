@@ -1,7 +1,7 @@
 {
   "name": "unit-testing",
-  "version": "1.0.5",
-  "description": "Production-grade test automation and debugging with 3 execution modes (quick/standard/enterprise), AI-driven RCA, comprehensive examples, and TDD excellence. Features iterative test fixing, automated test generation with scientific computing support (JAX, NumPy, PyTorch), and 8 comprehensive external documentation files (~5,858 lines). v1.0.3 optimizes both commands (50.6% reduction: 2,112→1,044 lines) and registers the e2e-testing-patterns skill.",
+  "version": "1.0.6",
+  "description": "Production-grade test automation and debugging with 3 execution modes (quick/standard/enterprise), AI-driven RCA, comprehensive examples, and TDD excellence. Features iterative test fixing, automated test generation with scientific computing support (JAX, NumPy, PyTorch), and 8 comprehensive external documentation files (~5,858 lines). v1.0.3 optimizes both commands (50.6% reduction: 2,112\u21921,044 lines) and registers the e2e-testing-patterns skill.",
   "author": {
     "name": "Wei Chen",
     "url": "https://myclaude.readthedocs.io/en/latest/"

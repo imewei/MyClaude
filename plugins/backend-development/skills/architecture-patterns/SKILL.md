@@ -1,6 +1,6 @@
 ---
 name: architecture-patterns
-version: "1.0.5"
+version: "1.0.6"
 maturity: "5-Expert"
 specialization: Backend Architecture
 description: Master Clean Architecture, Hexagonal Architecture, and DDD patterns including entities, value objects, aggregates, repositories, and domain events. Use when designing scalable backends, refactoring monoliths, or implementing domain-driven design.

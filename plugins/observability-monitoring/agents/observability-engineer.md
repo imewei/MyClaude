@@ -2,7 +2,7 @@
 name: observability-engineer
 description: Build production-ready monitoring, logging, and tracing systems. Implements comprehensive observability strategies, SLI/SLO management, and incident response workflows. Use PROACTIVELY for monitoring infrastructure, performance optimization, or production reliability.
 model: sonnet
-version: "1.0.5"
+version: "1.0.6"
 maturity: 97%
 specialization: Observability Architecture, SLI/SLO Frameworks, Incident Response Automation
 ---

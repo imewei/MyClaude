@@ -2,7 +2,7 @@
   "name": "framework-migration",
   "displayName": "Framework Migration",
   "description": "Comprehensive framework and legacy system modernization with systematic Chain-of-Thought migration frameworks, Constitutional AI principles, and proven Strangler Fig patterns. Expert guidance for safe, incremental upgrades with zero downtime and comprehensive test coverage.",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "keywords": [
     "migration",
     "modernization",
@@ -30,14 +30,14 @@
       "id": "architect-review",
       "file": "agents/architect-review.md",
       "name": "Architect Reviewer",
-      "description": "Master software architect (v1.0.1, 75%→89% maturity) with 5-step Architecture Review Framework (Context Analysis, Pattern Evaluation, Scalability Assessment, Security Review, Migration Strategy). Implements 4 Constitutional AI principles (Architectural Integrity 92%, Scalability Engineering 88%, Security-First Design 90%, Pragmatic Trade-offs 85%). Comprehensive examples: microservices bounded context review with CQRS/Saga patterns, monolith to serverless migration with cost analysis. Expert in clean architecture, DDD, event-driven systems, SOLID principles, and distributed systems design.",
+      "description": "Master software architect (v1.0.1, 75%\u219289% maturity) with 5-step Architecture Review Framework (Context Analysis, Pattern Evaluation, Scalability Assessment, Security Review, Migration Strategy). Implements 4 Constitutional AI principles (Architectural Integrity 92%, Scalability Engineering 88%, Security-First Design 90%, Pragmatic Trade-offs 85%). Comprehensive examples: microservices bounded context review with CQRS/Saga patterns, monolith to serverless migration with cost analysis. Expert in clean architecture, DDD, event-driven systems, SOLID principles, and distributed systems design.",
       "status": "active"
     },
     {
       "id": "legacy-modernizer",
       "file": "agents/legacy-modernizer.md",
       "name": "Legacy Modernizer",
-      "description": "Legacy modernization specialist (v1.0.1, 70%→83% maturity) with 6-step Legacy Modernization Framework (Legacy Assessment, Strategy Selection, Test Coverage, Incremental Refactoring, Dependency Upgrade, Deployment & Monitoring). Implements 4 Constitutional AI principles (Backward Compatibility 95%, Test-First Refactoring 90%, Incremental Strangler Fig 92%, Technical Debt Reduction 85%). Comprehensive examples: jQuery to React migration (50K LOC, 12-phase rollout, 82% test coverage), Java 8 to Java 21 upgrade (15 microservices, blue-green deployment, -12% latency). Expert in framework migrations, dependency management, architecture modernization, and technical debt reduction with zero breaking changes.",
+      "description": "Legacy modernization specialist (v1.0.1, 70%\u219283% maturity) with 6-step Legacy Modernization Framework (Legacy Assessment, Strategy Selection, Test Coverage, Incremental Refactoring, Dependency Upgrade, Deployment & Monitoring). Implements 4 Constitutional AI principles (Backward Compatibility 95%, Test-First Refactoring 90%, Incremental Strangler Fig 92%, Technical Debt Reduction 85%). Comprehensive examples: jQuery to React migration (50K LOC, 12-phase rollout, 82% test coverage), Java 8 to Java 21 upgrade (15 microservices, blue-green deployment, -12% latency). Expert in framework migrations, dependency management, architecture modernization, and technical debt reduction with zero breaking changes.",
       "status": "active"
     }
   ],
@@ -78,7 +78,7 @@
       "id": "react-modernization",
       "directory": "skills/react-modernization",
       "name": "React Modernization",
-      "description": "React 16→17→18 upgrades, class to hooks migration, concurrent features adoption, and codemod automation. 26+ use cases covering .jsx, .tsx files, useState/useEffect/useContext hooks, Suspense, transitions, and TypeScript conversion."
+      "description": "React 16\u219217\u219218 upgrades, class to hooks migration, concurrent features adoption, and codemod automation. 26+ use cases covering .jsx, .tsx files, useState/useEffect/useContext hooks, Suspense, transitions, and TypeScript conversion."
     },
     {
       "id": "database-migration",

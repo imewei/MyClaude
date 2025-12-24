@@ -1,5 +1,5 @@
 ---
-version: "1.0.5"
+version: "1.0.6"
 description: Create high-quality pull requests with comprehensive descriptions, automated review, and best practices
 allowed-tools: Bash(git:*), Read, Grep
 argument-hint: [--mode=basic|enhanced|enterprise]

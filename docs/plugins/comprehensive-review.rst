@@ -11,7 +11,7 @@ Comprehensive code and architecture review with multi-perspective analysis, secu
 
 **Metadata:**
 
-- **Version:** 1.0.5
+- **Version:** 1.0.6
 - **Category:** quality
 - **License:** MIT
 - **Author:** Scientific Computing Workflows
@@ -73,7 +73,7 @@ Skills
    Conduct systematic, high-quality code reviews with structured analysis, security assessment, and constructive feedback. Use when reviewing pull requests, GitHub PRs, GitLab merge requests, or any code changes submitted for review. Use when analyzing code for bugs, security vulnerabilities, performance issues, or maintainability concerns.
 
    **Status:** active
-   **Version:** 1.0.5
+   **Version:** 1.0.6
 
 Usage Examples
 --------------

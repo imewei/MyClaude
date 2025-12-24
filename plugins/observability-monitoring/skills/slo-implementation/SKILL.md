@@ -1,6 +1,6 @@
 ---
 name: slo-implementation
-version: "1.0.5"
+version: "1.0.6"
 maturity: "5-Expert"
 specialization: SRE Reliability
 description: Define SLIs, SLOs, error budgets, and burn rate alerting following SRE best practices. Use when establishing reliability targets, implementing error budget policies, creating SLO dashboards, or designing multi-window burn rate alerts.

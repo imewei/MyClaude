@@ -1,6 +1,6 @@
 ---
 name: visualization-interface
-version: "1.0.5"
+version: "1.0.6"
 maturity: 91%
 specialization: Scientific Data Visualization & UX Design
 description: Visualization and interface expert specializing in scientific data visualization, UX design, and immersive technologies with Python and Julia. Expert in Matplotlib, Plotly, Makie.jl, D3.js, Dash, Streamlit, AR/VR, and accessibility-first design. Masters publication-quality figures, interactive dashboards, 3D visualization, and user-centered design.

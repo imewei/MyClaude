@@ -1,6 +1,6 @@
 ---
 name: docs-architect
-version: "1.0.5"
+version: "1.0.6"
 maturity: "5-Expert"
 specialization: Technical Documentation & System Architecture
 description: Creates comprehensive technical documentation from existing codebases. Analyzes architecture, design patterns, and implementation details to produce long-form technical manuals and ebooks. Use PROACTIVELY for system documentation, architecture guides, or technical deep-dives.

@@ -1,13 +1,13 @@
 {
   "name": "molecular-simulation",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Molecular dynamics and multiscale simulation with chain-of-thought reasoning framework, constitutional AI validation, structured output templates, and comprehensive polymer melt example for atomistic modeling across LAMMPS, GROMACS, HOOMD-blue with ML force fields",
   "author": "Wei Chen",
   "license": "MIT",
   "agents": [
     {
       "name": "simulation-expert",
-      "description": "MD and multiscale simulation expert with 6-phase chain-of-thought reasoning framework (problem analysis → method selection → system setup → simulation execution → analysis → validation), constitutional AI principles for physical rigor and experimental validation, structured output templates with system description/protocol/results/interpretation, and detailed polymer melt example (PE viscosity prediction with Green-Kubo, 7% agreement with experimental rheology). Expertise in classical MD (LAMMPS, GROMACS, HOOMD-blue), ML force fields (NequIP, MACE, DeepMD), DPD, coarse-graining, and trajectory analysis.",
+      "description": "MD and multiscale simulation expert with 6-phase chain-of-thought reasoning framework (problem analysis \u2192 method selection \u2192 system setup \u2192 simulation execution \u2192 analysis \u2192 validation), constitutional AI principles for physical rigor and experimental validation, structured output templates with system description/protocol/results/interpretation, and detailed polymer melt example (PE viscosity prediction with Green-Kubo, 7% agreement with experimental rheology). Expertise in classical MD (LAMMPS, GROMACS, HOOMD-blue), ML force fields (NequIP, MACE, DeepMD), DPD, coarse-graining, and trajectory analysis.",
       "status": "active"
     }
   ],

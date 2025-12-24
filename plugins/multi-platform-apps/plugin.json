@@ -1,6 +1,6 @@
 {
   "name": "multi-platform-apps",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Comprehensive multi-platform application development with chain-of-thought reasoning frameworks, constitutional AI validation, production-ready examples, and enhanced skill discoverability. Expert agents for Flutter, React Native, iOS, Android, web, backend APIs, and UI/UX design systems with comprehensive skill documentation.",
   "author": "Wei Chen",
   "repository": "https://github.com/anthropics/claude-code",
@@ -21,7 +21,7 @@
     {
       "name": "flutter-expert",
       "file": "agents/flutter-expert.md",
-      "description": "Master Flutter development with Dart 3, advanced widgets, and multi-platform deployment. Enhanced with 6-phase reasoning framework (requirements → architecture → implementation → performance → quality → deployment), constitutional AI principles for Flutter best practices, and comprehensive e-commerce app example with Riverpod clean architecture (60fps, 85% test coverage, 4.8★ rating).",
+      "description": "Master Flutter development with Dart 3, advanced widgets, and multi-platform deployment. Enhanced with 6-phase reasoning framework (requirements \u2192 architecture \u2192 implementation \u2192 performance \u2192 quality \u2192 deployment), constitutional AI principles for Flutter best practices, and comprehensive e-commerce app example with Riverpod clean architecture (60fps, 85% test coverage, 4.8\u2605 rating).",
       "model": "sonnet",
       "version": "1.0.5",
       "capabilities": [
@@ -53,7 +53,7 @@
     {
       "name": "backend-architect",
       "file": "agents/backend-architect.md",
-      "description": "Expert backend architect for scalable API design and microservices. Enhanced with 6-phase reasoning framework (requirements → service boundaries → API contracts → resilience → observability → performance), constitutional AI principles for production reliability, and comprehensive order management microservices example with NestJS/Kafka (P99 <200ms, 99.95% availability, circuit breakers, distributed tracing).",
+      "description": "Expert backend architect for scalable API design and microservices. Enhanced with 6-phase reasoning framework (requirements \u2192 service boundaries \u2192 API contracts \u2192 resilience \u2192 observability \u2192 performance), constitutional AI principles for production reliability, and comprehensive order management microservices example with NestJS/Kafka (P99 <200ms, 99.95% availability, circuit breakers, distributed tracing).",
       "model": "sonnet",
       "version": "1.0.5",
       "capabilities": [
@@ -82,7 +82,7 @@
     {
       "name": "ios-developer",
       "file": "agents/ios-developer.md",
-      "description": "Native iOS development with Swift 6 and SwiftUI. Enhanced with 6-phase reasoning framework (requirements → architecture → implementation → performance → quality → App Store), constitutional AI principles for platform excellence, and comprehensive health tracking app example with SwiftUI/HealthKit (60fps, 4.9★ rating, 50K+ downloads).",
+      "description": "Native iOS development with Swift 6 and SwiftUI. Enhanced with 6-phase reasoning framework (requirements \u2192 architecture \u2192 implementation \u2192 performance \u2192 quality \u2192 App Store), constitutional AI principles for platform excellence, and comprehensive health tracking app example with SwiftUI/HealthKit (60fps, 4.9\u2605 rating, 50K+ downloads).",
       "model": "sonnet",
       "version": "1.0.5",
       "capabilities": [
@@ -110,7 +110,7 @@
     {
       "name": "mobile-developer",
       "file": "agents/mobile-developer.md",
-      "description": "Cross-platform mobile development with React Native New Architecture and Flutter. Enhanced with 6-phase reasoning framework (requirements → platform selection → implementation → performance → quality → deployment), constitutional AI principles for offline-first reliability, and comprehensive e-commerce app example with React Native/TurboModules (<1.8s startup, 4.7★ rating, 100K+ users).",
+      "description": "Cross-platform mobile development with React Native New Architecture and Flutter. Enhanced with 6-phase reasoning framework (requirements \u2192 platform selection \u2192 implementation \u2192 performance \u2192 quality \u2192 deployment), constitutional AI principles for offline-first reliability, and comprehensive e-commerce app example with React Native/TurboModules (<1.8s startup, 4.7\u2605 rating, 100K+ users).",
       "model": "sonnet",
       "version": "1.0.5",
       "capabilities": [
@@ -138,7 +138,7 @@
     {
       "name": "frontend-developer",
       "file": "agents/frontend-developer.md",
-      "description": "Modern React 19 and Next.js 15 web development. Enhanced with 6-phase reasoning framework (requirements → architecture → implementation → performance → quality → deployment), constitutional AI principles for performance excellence, and comprehensive analytics dashboard example with Server Components/streaming (LCP 1.2s, 85KB bundle, 50K DAU).",
+      "description": "Modern React 19 and Next.js 15 web development. Enhanced with 6-phase reasoning framework (requirements \u2192 architecture \u2192 implementation \u2192 performance \u2192 quality \u2192 deployment), constitutional AI principles for performance excellence, and comprehensive analytics dashboard example with Server Components/streaming (LCP 1.2s, 85KB bundle, 50K DAU).",
       "model": "sonnet",
       "version": "1.0.5",
       "capabilities": [
@@ -166,7 +166,7 @@
     {
       "name": "ui-ux-designer",
       "file": "agents/ui-ux-designer.md",
-      "description": "Design systems, accessibility-first UX, and user research expert. Enhanced with 6-phase reasoning framework (research → IA → design system → visual design → validation → implementation), constitutional AI principles for accessibility-first design, and comprehensive design system example with multi-brand tokens (WCAG AAA, 92% adoption, NPS +26).",
+      "description": "Design systems, accessibility-first UX, and user research expert. Enhanced with 6-phase reasoning framework (research \u2192 IA \u2192 design system \u2192 visual design \u2192 validation \u2192 implementation), constitutional AI principles for accessibility-first design, and comprehensive design system example with multi-brand tokens (WCAG AAA, 92% adoption, NPS +26).",
       "model": "sonnet",
       "version": "1.0.5",
       "capabilities": [

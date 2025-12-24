@@ -11,7 +11,7 @@ JAX-based scientific computing and probabilistic programming with NumPyro, Flax,
 
 **Metadata:**
 
-- **Version:** 1.0.5
+- **Version:** 1.0.6
 - **Category:** uncategorized
 - **License:** MIT
 - **Author:** Scientific Computing Team

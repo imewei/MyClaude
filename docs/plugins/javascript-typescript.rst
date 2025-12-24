@@ -11,7 +11,7 @@ Comprehensive JavaScript and TypeScript development skills including modern patt
 
 **Metadata:**
 
-- **Version:** 1.0.5
+- **Version:** 1.0.6
 - **Category:** uncategorized
 - **License:** MIT
 - **Author:** JavaScript/TypeScript Team
@@ -55,7 +55,7 @@ Skills
    Set up production-ready TypeScript projects with modern tooling, configuration, and best practices. Use when initializing new TypeScript projects or creating project boilerplate. Use when writing or editing tsconfig.json, configuring package.json scripts for TypeScript builds, or setting up Vite, esbuild, tsc build tools.
 
    **Status:** active
-   **Version:** 1.0.5
+   **Version:** 1.0.6
 
 Usage Examples
 --------------

@@ -4,13 +4,13 @@
 
 Scientific data visualization, UX design, and immersive AR/VR interfaces with Python and Julia for compelling visual narratives. v1.0.1 features enhanced agent with chain-of-thought reasoning, Constitutional AI principles, and optimized skills for better Claude Code discoverability.
 
-**Version:** 1.0.5 | **Category:** scientific-computing | **License:** MIT
+**Version:** 1.0.6 | **Category:** scientific-computing | **License:** MIT
 
 [Full Documentation →](https://myclaude.readthedocs.io/en/latest/plugins/data-visualization.html) | [Changelog](CHANGELOG.md)
 
 ---
 
-## What's New in v1.0.5
+## What's New in v1.0.6
 
 This release implements **Opus 4.5 optimization** with enhanced token efficiency and standardized documentation.
 
@@ -23,7 +23,7 @@ This release implements **Opus 4.5 optimization** with enhanced token efficiency
 - **Cross-Reference Tables**: Quick-reference format for delegation and integration patterns
 
 
-## 🎯 What's New in v1.0.1
+## 🎯 What's New in v1.0.6
 
 ### Enhanced Agent (91% maturity)
 - **20 USE case scenarios** with 8 anti-patterns and delegation decision tree
@@ -48,7 +48,7 @@ This release implements **Opus 4.5 optimization** with enhanced token efficiency
 ## 🤖 Agent (1)
 
 ### visualization-interface
-**Status:** active | **Maturity:** 91% | **Version:** 1.0.5
+**Status:** active | **Maturity:** 91% | **Version:** 1.0.6
 
 Visualization and interface expert specializing in scientific data visualization, UX design, and immersive technologies with Python and Julia. Expert in Matplotlib, Plotly, Makie.jl, D3.js, Dash, Streamlit, AR/VR, and accessibility-first design.
 
@@ -72,7 +72,7 @@ Visualization and interface expert specializing in scientific data visualization
 ## 🎨 Skills (3)
 
 ### 1. scientific-data-visualization
-**Maturity:** 90% | **Version:** 1.0.5
+**Maturity:** 90% | **Version:** 1.0.6
 
 Create domain-specific scientific data visualizations for research publications and technical reports across physics, biology, chemistry, climate science, and engineering with uncertainty quantification, multi-dimensional data representation, and publication standards.
 
@@ -89,7 +89,7 @@ Create domain-specific scientific data visualizations for research publications 
 - Working with `.py`, `.jl`, `.ipynb` files for scientific plotting
 
 ### 2. python-julia-visualization
-**Maturity:** 92% | **Version:** 1.0.5
+**Maturity:** 92% | **Version:** 1.0.6
 
 Implement production-ready scientific visualizations using Python (Matplotlib, Seaborn, Plotly, Bokeh) and Julia (Plots.jl, Makie.jl, Gadfly.jl) ecosystems for publication-quality static plots, interactive 3D visualizations, real-time dashboards, and GPU-accelerated graphics.
 
@@ -106,7 +106,7 @@ Implement production-ready scientific visualizations using Python (Matplotlib, S
 - Working with `.py`, `.jl`, `.ipynb`, `app.py`, `streamlit_app.py` files
 
 ### 3. ux-design-scientific-interfaces
-**Maturity:** 89% | **Version:** 1.0.5
+**Maturity:** 89% | **Version:** 1.0.6
 
 Design intuitive, accessible, and user-centered interfaces for scientific tools, research applications, and data analysis platforms with WCAG 2.1 AA compliance, progressive disclosure patterns, and usability testing frameworks.
 

@@ -11,7 +11,7 @@ CLI tool design and developer automation expertise: command development, interac
 
 **Metadata:**
 
-- **Version:** 1.0.5
+- **Version:** 1.0.6
 - **Category:** developer-tools
 - **License:** Unknown
 - **Author:** Wei Chen <https://github.com/Wei Chen>

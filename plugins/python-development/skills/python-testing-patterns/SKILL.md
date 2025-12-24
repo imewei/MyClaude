@@ -1,6 +1,6 @@
 ---
 name: python-testing-patterns
-version: "1.0.5"
+version: "1.0.6"
 maturity: "5-Expert"
 specialization: Python Testing with pytest
 description: Comprehensive testing with pytest, fixtures, mocking, parameterization, and TDD. Use when writing test files (test_*.py), creating fixtures in conftest.py, using unittest.mock or pytest-mock, writing parameterized tests, testing async code with pytest-asyncio, implementing property-based testing with Hypothesis, or measuring coverage with pytest-cov.

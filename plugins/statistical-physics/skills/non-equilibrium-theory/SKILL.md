@@ -1,6 +1,6 @@
 ---
 name: non-equilibrium-theory
-version: "1.0.5"
+version: "1.0.6"
 maturity: "5-Expert"
 specialization: Non-Equilibrium Physics
 description: Apply non-equilibrium thermodynamics including fluctuation theorems, entropy production, and linear response theory. Use when modeling irreversible processes, analyzing driven systems, or deriving transport coefficients.

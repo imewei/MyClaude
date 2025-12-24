@@ -1,6 +1,6 @@
 {
   "name": "agent-orchestration",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Multi-agent workflow coordination with production-ready optimization workflows, systematic agent improvement methodologies, and comprehensive documentation. Features executable slash commands with real-world examples showing 50-200x performance improvements.",
   "author": "Wei Chen",
   "license": "MIT",
@@ -27,14 +27,14 @@
       "description": "Multi-agent code optimization with executable workflows (scan/analyze/apply modes), graceful fallback for missing agents, and comprehensive documentation with real case studies showing 50-208x speedups",
       "status": "active",
       "version": "1.0.5",
-      "improvements": "v1.0.2: Added execution logic for --mode=scan, YAML frontmatter with graceful fallbacks, 19% token reduction (382→311 lines), external documentation structure, and 3 domain-specific pattern libraries. v1.0.3: Version consolidation."
+      "improvements": "v1.0.2: Added execution logic for --mode=scan, YAML frontmatter with graceful fallbacks, 19% token reduction (382\u2192311 lines), external documentation structure, and 3 domain-specific pattern libraries. v1.0.3: Version consolidation."
     },
     {
       "name": "/improve-agent",
       "description": "Systematic agent improvement through 4-phase methodology (analysis, prompt engineering, testing, deployment) with executable workflows and A/B testing framework",
       "status": "active",
       "version": "1.0.5",
-      "improvements": "v1.0.2: Added execution logic for --mode=check, YAML frontmatter structure, 20% token reduction (291→234 lines), 4 phase-specific guides, and comprehensive examples with measured improvements. v1.0.3: Version consolidation."
+      "improvements": "v1.0.2: Added execution logic for --mode=check, YAML frontmatter structure, 20% token reduction (291\u2192234 lines), 4 phase-specific guides, and comprehensive examples with measured improvements. v1.0.3: Version consolidation."
     }
   ],
   "skills": [

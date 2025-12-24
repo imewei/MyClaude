@@ -1,7 +1,7 @@
 {
   "name": "cicd-automation",
   "displayName": "CI/CD Automation",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Comprehensive CI/CD pipeline automation with intelligent error resolution, multi-agent analysis, and advanced workflow orchestration. Features optimized slash commands (62% token reduction), 3 execution modes per command, 11 external documentation files (~4,600 lines), 5 specialized agents, and 6 production-ready skills. Supports GitHub Actions, GitLab CI, Terraform, Kubernetes, and multi-cloud deployments with 100% backward compatibility.",
   "category": "infrastructure",
   "author": "Wei Chen",
@@ -364,6 +364,6 @@
       ]
     },
     "total_lines": "~4,600 lines",
-    "command_optimization": "62.1% token reduction (2,391 → 906 lines)"
+    "command_optimization": "62.1% token reduction (2,391 \u2192 906 lines)"
   }
 }

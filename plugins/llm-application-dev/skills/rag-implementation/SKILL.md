@@ -1,6 +1,6 @@
 ---
 name: rag-implementation
-version: "1.0.5"
+version: "1.0.6"
 maturity: "5-Expert"
 specialization: Retrieval-Augmented Generation
 description: Build production RAG systems with vector databases (Pinecone, Weaviate, Chroma), embeddings, chunking strategies, hybrid search (dense + BM25), reranking, and grounded prompts. Use when implementing document Q&A, knowledge base chatbots, or reducing LLM hallucinations.

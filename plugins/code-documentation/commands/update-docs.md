@@ -1,5 +1,5 @@
 ---
-version: "1.0.5"
+version: "1.0.6"
 category: "code-documentation"
 command: "/update-docs"
 description: Update Sphinx docs, README, and API documentation with AST-based code analysis

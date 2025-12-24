@@ -1,6 +1,6 @@
 ---
 name: numerical-methods-implementation
-version: "1.0.5"
+version: "1.0.6"
 maturity: "5-Expert"
 specialization: Scientific Computing Algorithms
 description: Implement robust numerical algorithms for ODEs (RK45, BDF), PDEs (finite difference, FEM), optimization (L-BFGS, Newton), and linear algebra (LU, QR, SVD, iterative solvers). Use when selecting solvers, implementing adaptive stepping, handling stiff systems, or ensuring numerical stability.

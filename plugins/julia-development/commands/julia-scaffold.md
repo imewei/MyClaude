@@ -1,5 +1,5 @@
 ---
-version: "1.0.5"
+version: "1.0.6"
 category: "julia-development"
 command: "/julia-scaffold"
 description: Bootstrap new Julia package with proper structure, testing, documentation, and CI/CD

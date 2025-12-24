@@ -1,5 +1,5 @@
 ---
-version: "1.0.5"
+version: "1.0.6"
 category: debugging
 purpose: AI-assisted debugging with automated root cause analysis, error pattern recognition, and production-safe debugging
 description: Intelligent debugging orchestration with multi-mode execution and automated RCA workflows

@@ -1,6 +1,6 @@
 ---
 name: modern-javascript-patterns
-version: "1.0.5"
+version: "1.0.6"
 maturity: "5-Expert"
 specialization: Modern JavaScript ES6+
 description: Master modern JavaScript (ES6-ES2024) including async/await, destructuring, spread operators, arrow functions, modules, optional chaining, nullish coalescing, and functional programming patterns. Use when writing ES6+ code, refactoring legacy JS, implementing async patterns, or applying functional programming with map/filter/reduce.

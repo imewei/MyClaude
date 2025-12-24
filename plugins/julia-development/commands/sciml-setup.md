@@ -1,5 +1,5 @@
 ---
-version: "1.0.5"
+version: "1.0.6"
 category: "julia-development"
 command: "/sciml-setup"
 description: Interactive SciML project scaffolding with auto-detection of problem types (ODE, PDE, SDE, optimization) and generation of template code

@@ -1,6 +1,6 @@
 ---
 name: nodejs-backend-patterns
-version: "1.0.5"
+version: "1.0.6"
 maturity: "5-Expert"
 specialization: Production Node.js Backend Development
 description: Build scalable Node.js backends with Express/Fastify/NestJS. Implement middleware, authentication, database integration, and API design. Use when creating REST APIs, microservices, or backend services.

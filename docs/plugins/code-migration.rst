@@ -11,7 +11,7 @@ Legacy scientific code modernization with cross-language migration for Fortran/C
 
 **Metadata:**
 
-- **Version:** 1.0.5
+- **Version:** 1.0.6
 - **Category:** uncategorized
 - **License:** MIT
 - **Author:** Scientific Computing Team

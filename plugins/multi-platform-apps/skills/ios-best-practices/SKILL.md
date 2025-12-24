@@ -1,6 +1,6 @@
 ---
 name: ios-best-practices
-version: "1.0.5"
+version: "1.0.6"
 maturity: "5-Expert"
 specialization: Native iOS Development
 description: Native iOS development with Swift 6, SwiftUI, MVVM, Swift concurrency (async/await, actors), Core Data/SwiftData, NavigationStack, and XCTest. Use when building production iOS apps, implementing Swift concurrency, or preparing for App Store.

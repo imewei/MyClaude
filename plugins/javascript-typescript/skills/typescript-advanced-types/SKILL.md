@@ -1,6 +1,6 @@
 ---
 name: typescript-advanced-types
-version: "1.0.5"
+version: "1.0.6"
 maturity: "5-Expert"
 specialization: TypeScript Advanced Type System
 description: Master TypeScript's advanced type system including generics, conditional types, mapped types, template literal types, utility types, branded types, and discriminated unions. Use when implementing complex type logic, creating reusable generic components, designing type-safe APIs, building form validation systems, or working with advanced TypeScript patterns.

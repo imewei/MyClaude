@@ -1,6 +1,6 @@
 ---
 name: monorepo-management
-version: "1.0.5"
+version: "1.0.6"
 maturity: "5-Expert"
 specialization: Monorepo Architecture
 description: Master monorepo management with Turborepo, Nx, and pnpm workspaces. Use when setting up turbo.json or nx.json, organizing apps/* and packages/* directories, optimizing builds with caching, managing workspace dependencies, implementing shared configs, setting up CI/CD for monorepos, or publishing packages with changesets.

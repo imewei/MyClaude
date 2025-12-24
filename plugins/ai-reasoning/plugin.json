@@ -1,9 +1,9 @@
 {
   "name": "ai-reasoning",
   "displayName": "AI Reasoning",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Advanced AI-powered cognitive tools for problem-solving, meta-analysis, and structured reasoning with multi-agent orchestration, chain-of-thought frameworks, and comprehensive meta-cognitive reflection capabilities. v1.0.3 optimizes commands for 46.5% token reduction with enhanced executable modes and comprehensive external documentation.",
-  "changelog": "v1.0.3: Command optimization (46.5% token reduction: reflection.md 1704→695 lines, ultra-think.md 1288→906 lines), added executable modes (--mode=quick for 5-10min fast assessments, --mode=quick-check for 2-5min health checks), enhanced YAML frontmatter with time estimates, created comprehensive external documentation (13 files: reflection engines, ultra-think frameworks, real-world examples, best practices guides), improved framework selection guidance, maintained full backward compatibility. Cost savings: $83.46 per 1,000 invocations.",
+  "changelog": "v1.0.3: Command optimization (46.5% token reduction: reflection.md 1704\u2192695 lines, ultra-think.md 1288\u2192906 lines), added executable modes (--mode=quick for 5-10min fast assessments, --mode=quick-check for 2-5min health checks), enhanced YAML frontmatter with time estimates, created comprehensive external documentation (13 files: reflection engines, ultra-think frameworks, real-world examples, best practices guides), improved framework selection guidance, maintained full backward compatibility. Cost savings: $83.46 per 1,000 invocations.",
   "category": "productivity",
   "author": "Wei Chen",
   "license": "MIT",
@@ -30,7 +30,7 @@
       "status": "active",
       "version": "1.0.5",
       "maturity": "95%",
-      "improvements": "v1.0.3 Optimization: 29.7% token reduction (1288→906 lines), added --mode=quick for fast problem assessment (5-10 min, 5-8 thoughts, top 3 approaches), enhanced YAML frontmatter with execution modes and time estimates, externalized detailed framework guides to docs/ultra-think/ (4 comprehensive files), maintained all 7 cognitive frameworks (First Principles, Systems Thinking, Root Cause Analysis, Decision Analysis, Design Thinking, Scientific Method, OODA Loop), 100% backward compatibility. Comprehensive reasoning engine with hierarchical thought tracking, branching/revision support, contradiction detection, multi-agent coordination, 3 depth modes. Achieves 90% success rate, 50% reduction in reasoning drift, 70% fewer logical inconsistencies."
+      "improvements": "v1.0.3 Optimization: 29.7% token reduction (1288\u2192906 lines), added --mode=quick for fast problem assessment (5-10 min, 5-8 thoughts, top 3 approaches), enhanced YAML frontmatter with execution modes and time estimates, externalized detailed framework guides to docs/ultra-think/ (4 comprehensive files), maintained all 7 cognitive frameworks (First Principles, Systems Thinking, Root Cause Analysis, Decision Analysis, Design Thinking, Scientific Method, OODA Loop), 100% backward compatibility. Comprehensive reasoning engine with hierarchical thought tracking, branching/revision support, contradiction detection, multi-agent coordination, 3 depth modes. Achieves 90% success rate, 50% reduction in reasoning drift, 70% fewer logical inconsistencies."
     },
     {
       "id": "reflection",
@@ -40,7 +40,7 @@
       "status": "active",
       "version": "1.0.5",
       "maturity": "93%",
-      "improvements": "v1.0.3 Optimization: 59.2% token reduction (1704→695 lines), added --mode=quick-check for fast health assessment (2-5 min, health scores + top 3 observations), enhanced YAML frontmatter with execution modes and time estimates, externalized detailed reflection engines to docs/reflection/ (5 comprehensive files including multi-agent orchestration, research methodology, session analysis, development reflection, report templates), 100% backward compatibility. Multi-dimensional reflection framework covering 5 dimensions (meta-cognitive, technical, research, collaborative, strategic), conversation pattern analysis (5 reasoning types), comprehensive research methodology assessment (6-dimensional framework), cognitive bias detection, multi-agent orchestration for parallel synthesis, 3 depth modes, actionable recommendations with priorities."
+      "improvements": "v1.0.3 Optimization: 59.2% token reduction (1704\u2192695 lines), added --mode=quick-check for fast health assessment (2-5 min, health scores + top 3 observations), enhanced YAML frontmatter with execution modes and time estimates, externalized detailed reflection engines to docs/reflection/ (5 comprehensive files including multi-agent orchestration, research methodology, session analysis, development reflection, report templates), 100% backward compatibility. Multi-dimensional reflection framework covering 5 dimensions (meta-cognitive, technical, research, collaborative, strategic), conversation pattern analysis (5 reasoning types), comprehensive research methodology assessment (6-dimensional framework), cognitive bias detection, multi-agent orchestration for parallel synthesis, 3 depth modes, actionable recommendations with priorities."
     }
   ],
   "skills": [

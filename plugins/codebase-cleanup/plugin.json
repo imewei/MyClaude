@@ -2,8 +2,8 @@
   "name": "codebase-cleanup",
   "displayName": "Codebase Cleanup",
   "description": "Codebase cleanup and technical debt reduction expertise with AI-powered code analysis, systematic refactoring, TDD, and quality engineering. v1.0.3 features optimized command architecture with execution modes (quick/standard/comprehensive), external documentation hub, 9 comprehensive technical guides, and streamlined workflows for maximum efficiency. 25% command size reduction with enhanced capabilities.",
-  "changelog": "v1.0.3: Major architecture optimization with hub-and-spoke pattern: optimized 4 commands (2,608 → 1,965 lines, 25% reduction) with execution modes (quick/standard/comprehensive), created 9 external documentation files (dependency-security-guide, vulnerability-analysis-framework, import-resolution-strategies, session-management-guide, solid-principles-guide, refactoring-patterns, code-quality-metrics, technical-debt-framework, automation-integration), added YAML frontmatter with execution time estimates, external doc references, and improved metadata. All commands and agents updated to v1.0.3 for consistency. Expected: 30% faster task completion, better user experience with time estimates, comprehensive reference materials.",
-  "version": "1.0.5",
+  "changelog": "v1.0.3: Major architecture optimization with hub-and-spoke pattern: optimized 4 commands (2,608 \u2192 1,965 lines, 25% reduction) with execution modes (quick/standard/comprehensive), created 9 external documentation files (dependency-security-guide, vulnerability-analysis-framework, import-resolution-strategies, session-management-guide, solid-principles-guide, refactoring-patterns, code-quality-metrics, technical-debt-framework, automation-integration), added YAML frontmatter with execution time estimates, external doc references, and improved metadata. All commands and agents updated to v1.0.3 for consistency. Expected: 30% faster task completion, better user experience with time estimates, comprehensive reference materials.",
+  "version": "1.0.6",
   "keywords": [
     "cleanup",
     "refactoring",
@@ -41,7 +41,7 @@
       "status": "active",
       "version": "1.0.5",
       "maturity": "91%",
-      "improvements": "Added triggering criteria with 20 USE cases and 8 anti-patterns with delegation decision tree (code-reviewer vs. test-automator vs. security-auditor vs. performance-optimizer), 6-step chain-of-thought reasoning framework (Code Analysis & Discovery → Issue Prioritization → Cleanup Strategy Design → Implementation & Execution → Testing & Validation → Documentation & Review) with 60 guiding questions (10 per step), 5 Constitutional AI principles (Safety First, Quality Over Speed, Test-Driven Cleanup, Incremental Improvement, Knowledge Sharing) with 50 self-check questions (10 per principle), comprehensive 450-line legacy Python codebase cleanup example with before/after code, 40+ pytest test cases with 85% coverage, and self-critique (91% maturity score). v1.0.3: Version consistency update."
+      "improvements": "Added triggering criteria with 20 USE cases and 8 anti-patterns with delegation decision tree (code-reviewer vs. test-automator vs. security-auditor vs. performance-optimizer), 6-step chain-of-thought reasoning framework (Code Analysis & Discovery \u2192 Issue Prioritization \u2192 Cleanup Strategy Design \u2192 Implementation & Execution \u2192 Testing & Validation \u2192 Documentation & Review) with 60 guiding questions (10 per step), 5 Constitutional AI principles (Safety First, Quality Over Speed, Test-Driven Cleanup, Incremental Improvement, Knowledge Sharing) with 50 self-check questions (10 per principle), comprehensive 450-line legacy Python codebase cleanup example with before/after code, 40+ pytest test cases with 85% coverage, and self-critique (91% maturity score). v1.0.3: Version consistency update."
     },
     {
       "id": "test-automator",
@@ -51,7 +51,7 @@
       "status": "active",
       "version": "1.0.5",
       "maturity": "91%",
-      "improvements": "Added triggering criteria with 20 USE cases and 7 anti-patterns with delegation decision tree (test-automator vs. qa-engineer vs. code-reviewer vs. performance-tester), 6-step chain-of-thought reasoning framework (Test Strategy Design → Test Environment Setup → Test Implementation → Test Execution & Monitoring → Test Maintenance & Optimization → Quality Metrics & Reporting) with 60 guiding questions (10 per step), 5 Constitutional AI principles (Test Reliability First, Fast Feedback Loops, Comprehensive Coverage, Maintainable Test Code, TDD Discipline) with 50 self-check questions (10 per principle), comprehensive 400-line TDD REST API example with red-green-refactor cycle, Jest tests, GitHub Actions CI/CD, 92% coverage, and self-critique (91% maturity score). v1.0.3: Version consistency update."
+      "improvements": "Added triggering criteria with 20 USE cases and 7 anti-patterns with delegation decision tree (test-automator vs. qa-engineer vs. code-reviewer vs. performance-tester), 6-step chain-of-thought reasoning framework (Test Strategy Design \u2192 Test Environment Setup \u2192 Test Implementation \u2192 Test Execution & Monitoring \u2192 Test Maintenance & Optimization \u2192 Quality Metrics & Reporting) with 60 guiding questions (10 per step), 5 Constitutional AI principles (Test Reliability First, Fast Feedback Loops, Comprehensive Coverage, Maintainable Test Code, TDD Discipline) with 50 self-check questions (10 per principle), comprehensive 400-line TDD REST API example with red-green-refactor cycle, Jest tests, GitHub Actions CI/CD, 92% coverage, and self-critique (91% maturity score). v1.0.3: Version consistency update."
     }
   ],
   "commands": [

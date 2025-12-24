@@ -1,5 +1,5 @@
 ---
-version: 1.0.5
+version: "1.0.6"
 command: /slo-implement
 description: Implement SLO/SLA monitoring, error budgets, and burn rate alerting
 execution_modes:

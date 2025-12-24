@@ -1,6 +1,6 @@
 ---
 name: python-performance-optimization
-version: "1.0.5"
+version: "1.0.6"
 maturity: "5-Expert"
 specialization: Python Profiling & Optimization
 description: Profile and optimize Python code using cProfile, line_profiler, memory_profiler, and py-spy. Use when analyzing slow code, optimizing CPU-intensive operations, reducing memory consumption, implementing caching with lru_cache, using NumPy for vectorization, multiprocessing for CPU-bound tasks, or async/await for I/O-bound tasks.

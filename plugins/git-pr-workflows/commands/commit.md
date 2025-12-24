@@ -1,5 +1,5 @@
 ---
-version: "1.0.5"
+version: "1.0.6"
 description: Intelligent git commit with automated analysis, quality validation, and atomic commit enforcement
 allowed-tools: Bash(git:*), Read, Grep
 argument-hint: [commit-message] [--quick] [--split] [--amend] [--no-verify]

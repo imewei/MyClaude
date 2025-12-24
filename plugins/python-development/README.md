@@ -2,13 +2,13 @@
 
 Master Python 3.12+ with modern tools, async patterns, FastAPI/Django frameworks, performance optimization, and production-ready practices. Includes expert agents, comprehensive skills, and scaffolding commands for the 2024/2025 Python ecosystem.
 
-**Version:** 1.0.5 | **Category:** development | **License:** MIT
+**Version:** 1.0.6 | **Category:** development | **License:** MIT
 
 [Full Documentation →](https://myclaude.readthedocs.io/en/latest/plugins/python-development.html) | [CHANGELOG](CHANGELOG.md)
 
 ---
 
-## 🚀 What's New in v1.0.3
+## 🚀 What's New in v1.0.6
 
 ### Command Optimization with Execution Modes
 
@@ -36,7 +36,7 @@ The `/python-scaffold` command now features:
 ---
 
 
-## What's New in v1.0.5
+## What's New in v1.0.6
 
 This release implements **Opus 4.5 optimization** with enhanced token efficiency and standardized documentation.
 
@@ -94,7 +94,7 @@ Master Django 5.x with async views, DRF, Celery, and scalable architecture. Incl
 
 ### `/python-scaffold`
 
-**Status:** active | **Version:** 1.0.5
+**Status:** active | **Version:** 1.0.6
 
 Scaffold production-ready Python projects with modern tooling, 3 execution modes (quick: 1-2h, standard: 3-6h, enterprise: 1-2d), and comprehensive external documentation
 

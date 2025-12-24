@@ -1,6 +1,6 @@
 ---
 name: auth-implementation-patterns
-version: "1.0.5"
+version: "1.0.6"
 maturity: "5-Expert"
 specialization: Authentication & Authorization
 description: Master authentication patterns including JWT (access/refresh tokens), OAuth2/OpenID Connect, session-based auth, RBAC/ABAC, API keys, MFA, SSO, password hashing (bcrypt/argon2), secure cookies, and CSRF protection. Use when implementing auth systems, securing APIs, or designing access control.

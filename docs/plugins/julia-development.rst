@@ -11,7 +11,7 @@ Comprehensive Julia development plugin with specialized agents for high-performa
 
 **Metadata:**
 
-- **Version:** 1.0.5
+- **Version:** 1.0.6
 - **Category:** scientific-computing
 - **License:** MIT
 - **Author:** Scientific Computing Team <https://github.com/Scientific-Computing-Team>

@@ -1,6 +1,6 @@
 ---
 name: parallel-computing-strategy
-version: "1.0.5"
+version: "1.0.6"
 maturity: "5-Expert"
 specialization: HPC Parallelization
 description: Design parallel strategies with MPI (distributed memory), OpenMP (shared memory), hybrid MPI+OpenMP, SLURM scheduling, Dask/Dagger.jl workflows, and load balancing. Use when implementing multi-node parallelization, writing job scripts, or optimizing HPC workflows.

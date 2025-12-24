@@ -2,11 +2,11 @@
 
 Comprehensive backend development support including REST/GraphQL/gRPC APIs, microservices architecture, distributed systems, TDD orchestration, and scalable backend patterns for modern applications.
 
-**Version:** 1.0.5 | **Category:** development | **License:** MIT
+**Version:** 1.0.6 | **Category:** development | **License:** MIT
 
 [Full Documentation →](https://myclaude.readthedocs.io/en/latest/plugins/backend-development.html) | [Changelog →](./CHANGELOG.md) | [External Docs →](./docs/backend-development/)
 
-## What's New in v1.0.5
+## What's New in v1.0.6
 
 This release implements **Opus 4.5 optimization** with enhanced token efficiency and standardized documentation.
 

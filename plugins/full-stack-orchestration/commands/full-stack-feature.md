@@ -1,5 +1,5 @@
 ---
-version: "1.0.5"
+version: "1.0.6"
 description: Orchestrate end-to-end full-stack feature development across frontend, backend, database, testing, security, and deployment
 execution_time:
   quick: "30-60 minutes"

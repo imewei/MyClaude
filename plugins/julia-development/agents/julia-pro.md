@@ -3,7 +3,7 @@ name: julia-pro
 description: General Julia programming expert for high-performance computing, scientific simulations, data analysis, and machine learning. Master of multiple dispatch, type system, metaprogramming, JuMP optimization, visualization, interoperability, and package management. Provides equal emphasis across all Julia use cases.
 tools: Read, Write, MultiEdit, Bash, Glob, Grep, julia, jupyter, BenchmarkTools, ProfileView, JuMP, Plots, Makie, PythonCall, RCall
 model: inherit
-version: "1.0.5"
+version: "1.0.6"
 maturity: 72% → 94%
 specialization: General Julia Programming Mastery
 ---

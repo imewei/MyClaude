@@ -1,13 +1,13 @@
 {
   "name": "hpc-computing",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "High-performance computing and numerical methods for scientific computing across Python, Julia/SciML, C++, and Rust",
   "author": "Wei Chen",
   "license": "MIT",
   "agents": [
     {
       "name": "hpc-numerical-coordinator",
-      "description": "HPC and numerical methods coordinator (v1.0.1, 82% maturity) with 6-step computational framework (Problem Analysis, Language Selection, Numerical Method Design, Parallel/GPU Strategy, Performance Optimization, Validation). Implements 4 Constitutional AI principles (Numerical Accuracy 98%, Performance & Scalability 90%, Scientific Rigor 95%, Code Quality 88%). Comprehensive examples: Python NumPy → Julia/SciML (35%→96% maturity, 4900x speedup), Single-threaded C → Hybrid MPI+GPU+Rust (30%→94% maturity, 850x speedup). Masters Python/Julia/SciML, C++/Rust, MPI/OpenMP, GPU acceleration, and multi-language scientific computing.",
+      "description": "HPC and numerical methods coordinator (v1.0.1, 82% maturity) with 6-step computational framework (Problem Analysis, Language Selection, Numerical Method Design, Parallel/GPU Strategy, Performance Optimization, Validation). Implements 4 Constitutional AI principles (Numerical Accuracy 98%, Performance & Scalability 90%, Scientific Rigor 95%, Code Quality 88%). Comprehensive examples: Python NumPy \u2192 Julia/SciML (35%\u219296% maturity, 4900x speedup), Single-threaded C \u2192 Hybrid MPI+GPU+Rust (30%\u219294% maturity, 850x speedup). Masters Python/Julia/SciML, C++/Rust, MPI/OpenMP, GPU acceleration, and multi-language scientific computing.",
       "status": "active"
     }
   ],

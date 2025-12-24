@@ -9,7 +9,7 @@
 ---
 
 
-## What's New in v1.0.5
+## What's New in v1.0.6
 
 This release implements **Opus 4.5 optimization** with enhanced token efficiency and standardized documentation.
 
@@ -22,7 +22,7 @@ This release implements **Opus 4.5 optimization** with enhanced token efficiency
 - **Cross-Reference Tables**: Quick-reference format for delegation and integration patterns
 
 
-## What's New in v1.0.1
+## What's New in v1.0.6
 
 This release introduced **systematic Chain-of-Thought frameworks** and **Constitutional AI principles** to both agents, transforming them from comprehensive capability lists into production-ready development frameworks with measurable quality targets and real-world examples.
 
@@ -47,7 +47,7 @@ This release introduced **systematic Chain-of-Thought frameworks** and **Constit
 
 ### Frontend Developer
 
-**Version:** 1.0.5 | **Maturity:** 84% | **Status:** active
+**Version:** 1.0.6 | **Maturity:** 84% | **Status:** active
 
 Frontend expert with systematic Chain-of-Thought Development Framework and Constitutional AI principles for building production-ready React 19 and Next.js 15 applications.
 
@@ -195,7 +195,7 @@ ProductCard.displayName = 'ProductCard';
 
 ### Mobile Developer
 
-**Version:** 1.0.5 | **Maturity:** 86% | **Status:** active
+**Version:** 1.0.6 | **Maturity:** 86% | **Status:** active
 
 Mobile specialist with systematic Chain-of-Thought Mobile Development Framework and Constitutional AI principles for building cross-platform and native mobile applications.
 
@@ -523,4 +523,4 @@ MIT License - see LICENSE file for details
 
 ---
 
-**Version:** 1.0.5 | **Last Updated:** 2025-11-07 | **Next Release:** v1.1.0 (Q1 2026)
+**Version:** 1.0.6 | **Last Updated:** 2025-11-07 | **Next Release:** v1.1.0 (Q1 2026)

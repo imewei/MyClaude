@@ -1,6 +1,6 @@
 ---
 name: modeling-toolkit
-version: "1.0.5"
+version: "1.0.6"
 maturity: "5-Expert"
 specialization: Symbolic Modeling
 description: Define symbolic differential equations with ModelingToolkit.jl for automatic simplification and code generation. Use when building complex mathematical models declaratively.

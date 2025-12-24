@@ -11,7 +11,7 @@ Multi-agent workflow coordination, distributed systems, and intelligent task all
 
 **Metadata:**
 
-- **Version:** 1.0.5
+- **Version:** 1.0.6
 - **Category:** uncategorized
 - **License:** MIT
 - **Author:** Scientific Computing Team

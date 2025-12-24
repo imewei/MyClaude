@@ -2,12 +2,12 @@
 
 Production-ready JAX-based scientific computing with systematic Chain-of-Thought frameworks, Constitutional AI principles, and comprehensive response verification protocols for NumPyro Bayesian inference (with ArviZ integration and Consensus Monte Carlo), Flax NNX neural networks, NLSQ optimization, and physics simulations with measurable quality targets and proven optimization patterns.
 
-**Version:** 1.0.5 | **Category:** scientific-computing | **License:** MIT
+**Version:** 1.0.6 | **Category:** scientific-computing | **License:** MIT
 
 [Full Documentation →](https://myclaude.readthedocs.io/en/latest/plugins/jax-implementation.html)
 
 
-## What's New in v1.0.5
+## What's New in v1.0.6
 
 This release implements **Opus 4.5 optimization** with enhanced token efficiency and standardized documentation.
 

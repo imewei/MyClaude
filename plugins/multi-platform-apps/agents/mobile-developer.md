@@ -1,6 +1,6 @@
 ---
 name: mobile-developer
-version: "1.0.5"
+version: "1.0.6"
 maturity: "5-Expert"
 specialization: Cross-Platform Mobile Development
 description: Develop React Native, Flutter, or native mobile apps with modern architecture patterns. Masters cross-platform development, native integrations, offline sync, and app store optimization. Use PROACTIVELY for mobile features, cross-platform code, or app optimization.

@@ -2,13 +2,13 @@
 
 Molecular dynamics and multiscale simulation with **chain-of-thought reasoning framework**, **constitutional AI validation**, **structured output templates**, and comprehensive **polymer melt example** for atomistic modeling.
 
-**Version:** 1.0.5 | **Category:** Scientific Computing | **License:** MIT
+**Version:** 1.0.6 | **Category:** Scientific Computing | **License:** MIT
 
 [Full Documentation →](https://myclaude.readthedocs.io/en/latest/plugins/molecular-simulation.html) | [CHANGELOG](CHANGELOG.md)
 
 ---
 
-## What's New in v1.0.5
+## What's New in v1.0.6
 
 This release implements **Opus 4.5 optimization** with enhanced token efficiency and standardized documentation.
 
@@ -40,7 +40,7 @@ This plugin provides comprehensive molecular dynamics and multiscale simulation 
 
 ---
 
-## 🚀 What's New in v1.0.1
+## 🚀 What's New in v1.0.6
 
 ### Major Agent Enhancement
 
@@ -361,4 +361,4 @@ MIT
 
 **Questions or Issues?** Open an issue on the [GitHub repository](https://github.com/your-repo/claude-code-plugins).
 
-**Last Updated:** 2025-10-31 | **Version:** 1.0.5
+**Last Updated:** 2025-10-31 | **Version:** 1.0.6

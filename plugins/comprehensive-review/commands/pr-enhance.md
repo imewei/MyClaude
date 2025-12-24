@@ -1,5 +1,5 @@
 ---
-version: "1.0.5"
+version: "1.0.6"
 category: pr-optimization
 purpose: Create high-quality pull requests with comprehensive descriptions, automated review checks, and best practices
 execution_time:

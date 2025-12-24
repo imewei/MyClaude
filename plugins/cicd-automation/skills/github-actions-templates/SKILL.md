@@ -1,6 +1,6 @@
 ---
 name: github-actions-templates
-version: "1.0.5"
+version: "1.0.6"
 maturity: "5-Expert"
 specialization: CI/CD Automation
 description: Create production GitHub Actions workflows for testing, building, and deploying. Use when setting up CI pipelines, Docker builds, Kubernetes deployments, matrix builds, security scans, or reusable workflows.

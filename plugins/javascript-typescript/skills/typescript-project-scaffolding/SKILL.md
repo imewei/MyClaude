@@ -1,6 +1,6 @@
 ---
 name: typescript-project-scaffolding
-version: "1.0.5"
+version: "1.0.6"
 maturity: "5-Expert"
 specialization: TypeScript Project Setup
 description: Set up production-ready TypeScript projects with modern tooling. Use when initializing projects, configuring tsconfig.json, setting up Vite/ESLint/Vitest, creating Next.js/React apps, or scaffolding Node.js APIs and CLI tools.

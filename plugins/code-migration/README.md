@@ -1,11 +1,11 @@
 # Code Migration
 
-**Version:** 1.0.5 | **Category:** code-migration | **License:** MIT
+**Version:** 1.0.6 | **Category:** code-migration | **License:** MIT
 
 Scientific code modernization with comprehensive legacy-to-modern framework migration. Specializes in Fortran/C/MATLAB to Python/JAX/Julia migrations while preserving numerical accuracy and achieving GPU acceleration.
 
 
-## What's New in v1.0.5
+## What's New in v1.0.6
 
 This release implements **Opus 4.5 optimization** with enhanced token efficiency and standardized documentation.
 
@@ -24,7 +24,7 @@ The agent has been upgraded to v1.0.3 with comprehensive external documentation 
 
 ### 🔬 scientific-code-adoptor
 
-**Status:** active | **Maturity:** 90% | **Version:** 1.0.5
+**Status:** active | **Maturity:** 90% | **Version:** 1.0.6
 
 Legacy scientific code modernization expert for cross-language migration. Expert in Fortran/C/MATLAB to Python/JAX/Julia with numerical accuracy preservation.
 
@@ -396,6 +396,6 @@ MIT License - See [LICENSE](./LICENSE) for details
 ---
 
 **Author:** Wei Chen
-**Version:** 1.0.5
+**Version:** 1.0.6
 **Category:** Code Migration
 **Last Updated:** 2025-10-29

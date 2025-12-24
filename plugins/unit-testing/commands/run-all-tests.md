@@ -1,5 +1,5 @@
 ---
-version: "1.0.5"
+version: "1.0.6"
 command: /run-all-tests
 description: Iteratively run and fix all tests until zero failures with AI-driven root cause analysis
 argument-hint: [test-path] [--fix] [--max-iterations=10] [--parallel] [--coverage]

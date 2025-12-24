@@ -1,11 +1,11 @@
 # Code Documentation
 
-**Version:** 1.0.5 | **Category:** documentation | **License:** MIT
+**Version:** 1.0.6 | **Category:** documentation | **License:** MIT
 
 Comprehensive code documentation, explanation, and generation with AST-based analysis, visual diagrams, and automated documentation workflows. Features hub-and-spoke architecture achieving 54% command file reduction with comprehensive external documentation.
 
 
-## What's New in v1.0.5
+## What's New in v1.0.6
 
 This release implements **Opus 4.5 optimization** with enhanced token efficiency and standardized documentation.
 
@@ -641,6 +641,6 @@ MIT License - See [LICENSE](./LICENSE) for details
 ---
 
 **Author:** Wei Chen
-**Version:** 1.0.5
+**Version:** 1.0.6
 **Category:** Documentation
 **Last Updated:** 2025-10-29

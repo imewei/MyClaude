@@ -1,6 +1,6 @@
 ---
 name: prompt-engineering-patterns
-version: "1.0.5"
+version: "1.0.6"
 maturity: "5-Expert"
 specialization: LLM Prompt Design
 description: Master advanced prompt engineering with chain-of-thought, few-shot learning, and production templates. Use when designing prompts for AI applications, implementing structured reasoning, optimizing for consistency, or building reusable prompt systems.

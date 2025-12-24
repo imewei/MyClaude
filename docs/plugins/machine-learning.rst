@@ -11,7 +11,7 @@ Comprehensive machine learning and data science expertise: statistical analysis,
 
 **Metadata:**
 
-- **Version:** 1.0.5
+- **Version:** 1.0.6
 - **Category:** ai-ml
 - **License:** Unknown
 - **Author:** Wei Chen <https://github.com/Wei Chen>

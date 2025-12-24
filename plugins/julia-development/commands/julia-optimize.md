@@ -1,5 +1,5 @@
 ---
-version: "1.0.5"
+version: "1.0.6"
 category: "julia-development"
 command: "/julia-optimize"
 description: Profile Julia code and provide optimization recommendations through type stability, allocation, and bottleneck analysis

@@ -1,5 +1,5 @@
 ---
-version: "1.0.5"
+version: "1.0.6"
 description: Systematically fix broken imports across the codebase with session continuity
 argument-hint: [path-or-pattern] [resume|status|new]
 category: codebase-cleanup

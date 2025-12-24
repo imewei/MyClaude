@@ -1,9 +1,9 @@
 {
   "name": "code-documentation",
   "displayName": "Code Documentation",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Comprehensive code documentation, explanation, and generation with AST-based analysis, visual diagrams, and automated documentation workflows. Features 3 specialized agents and 4 optimized slash commands with hub-and-spoke architecture achieving 54% command file reduction with comprehensive external documentation.",
-  "changelog": "v1.0.3: Major optimization release - Command file optimization (54% reduction: 2,495 → 1,146 lines), 8 external documentation files (~3,200 lines), execution modes for all commands (quick/standard/comprehensive), enhanced YAML frontmatter, hub-and-spoke architecture, 100% backward compatibility. Improved: AST-based code analysis, Mermaid diagram generation, scientific computing support (NumPy/JAX/Julia), OpenAPI spec generation, Sphinx optimization, CI/CD automation patterns.",
+  "changelog": "v1.0.3: Major optimization release - Command file optimization (54% reduction: 2,495 \u2192 1,146 lines), 8 external documentation files (~3,200 lines), execution modes for all commands (quick/standard/comprehensive), enhanced YAML frontmatter, hub-and-spoke architecture, 100% backward compatibility. Improved: AST-based code analysis, Mermaid diagram generation, scientific computing support (NumPy/JAX/Julia), OpenAPI spec generation, Sphinx optimization, CI/CD automation patterns.",
   "category": "documentation",
   "author": "Wei Chen",
   "license": "MIT",

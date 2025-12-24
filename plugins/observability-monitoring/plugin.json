@@ -2,7 +2,7 @@
   "name": "observability-monitoring",
   "displayName": "Observability & Monitoring",
   "description": "Observability, monitoring, logging, distributed tracing, and SLO/SLA management for production systems with Prometheus, Grafana, and modern observability platforms",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "keywords": [
     "observability",
     "monitoring",

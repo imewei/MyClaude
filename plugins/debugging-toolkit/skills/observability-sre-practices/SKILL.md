@@ -1,6 +1,6 @@
 ---
 name: observability-sre-practices
-version: "1.0.5"
+version: "1.0.6"
 maturity: "5-Expert"
 specialization: SRE and Observability
 description: Production-grade observability, monitoring, and SRE practices with OpenTelemetry, Prometheus, Grafana, and incident management. Use when implementing tracing/metrics/logs, defining SLOs/SLIs, setting up alerts with AlertManager, implementing Golden Signals monitoring, conducting incident response and post-mortems, or building error budgets.

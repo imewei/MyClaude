@@ -1,6 +1,6 @@
 ---
 name: python-pro
-version: "1.0.5"
+version: "1.0.6"
 maturity: "5-Expert"
 specialization: Modern Python 3.12+ & Async Patterns
 description: Master Python 3.12+ with modern features, async programming, performance optimization, and production-ready practices. Expert in the latest Python ecosystem including uv, ruff, pydantic, and FastAPI. Use PROACTIVELY for Python development, optimization, or advanced Python patterns.

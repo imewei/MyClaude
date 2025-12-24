@@ -1,5 +1,5 @@
 ---
-version: 1.0.5
+version: "1.0.6"
 command: /double-check
 description: Multi-dimensional validation with automated testing, security scanning, and code review
 argument-hint: [work-to-validate] [--deep] [--security] [--performance]

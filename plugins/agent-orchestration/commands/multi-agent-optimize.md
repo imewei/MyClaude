@@ -1,5 +1,5 @@
 ---
-version: "1.0.5"
+version: "1.0.6"
 description: Coordinate specialized agents for comprehensive code optimization across scientific computing, web, and ML domains
 allowed-tools: Read, Grep, Glob, Bash(find:*), Bash(git:*), Bash(python:*), Bash(julia:*)
 argument-hint: <target-path> [--mode=scan|analyze|apply] [--agents=AGENTS] [--focus=AREA] [--parallel]

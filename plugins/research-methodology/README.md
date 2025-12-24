@@ -2,12 +2,12 @@
 
 Research intelligence, methodology design, literature analysis, and evidence-based insights for scientific investigation with systematic research workflows, multi-source synthesis, and rigorous quality assurance.
 
-**Version:** 1.0.5 | **Category:** research | **License:** MIT
+**Version:** 1.0.6 | **Category:** research | **License:** MIT
 
 [Full Documentation →](https://myclaude.readthedocs.io/en/latest/plugins/research-methodology.html)
 
 
-## What's New in v1.0.5
+## What's New in v1.0.6
 
 This release implements **Opus 4.5 optimization** with enhanced token efficiency and standardized documentation.
 

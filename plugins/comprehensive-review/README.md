@@ -2,10 +2,10 @@
 
 Comprehensive code and architecture review with multi-perspective analysis, security auditing, quality assessment, and AI-powered code analysis for production-grade quality assurance.
 
-**Version:** 1.0.5 | **Category:** quality | **License:** MIT
+**Version:** 1.0.6 | **Category:** quality | **License:** MIT
 
 
-## What's New in v1.0.5
+## What's New in v1.0.6
 
 This release implements **Opus 4.5 optimization** with enhanced token efficiency and standardized documentation.
 
@@ -18,7 +18,7 @@ This release implements **Opus 4.5 optimization** with enhanced token efficiency
 - **Cross-Reference Tables**: Quick-reference format for delegation and integration patterns
 
 
-## What's New in v1.0.1 (Previous Release)
+## What's New in v1.0.6 (Previous Release)
 
 **Major prompt engineering improvements** for all 3 agents and 1 skill with advanced reasoning capabilities:
 
@@ -44,7 +44,7 @@ All agents have been upgraded to v1.0.3 with 91% maturity, systematic reasoning 
 
 ### 🏛️ Architect Reviewer
 
-**Status:** active | **Maturity:** 91% | **Version:** 1.0.5
+**Status:** active | **Maturity:** 91% | **Version:** 1.0.6
 
 Master software architect specializing in architecture patterns, clean architecture, microservices, event-driven systems, and distributed systems design.
 
@@ -59,7 +59,7 @@ Master software architect specializing in architecture patterns, clean architect
 
 ### 🔍 Code Reviewer
 
-**Status:** active | **Maturity:** 91% | **Version:** 1.0.5
+**Status:** active | **Maturity:** 91% | **Version:** 1.0.6
 
 Elite code review expert specializing in modern AI-powered code analysis, security vulnerabilities, performance optimization, and production reliability.
 
@@ -74,7 +74,7 @@ Elite code review expert specializing in modern AI-powered code analysis, securi
 
 ### 🔒 Security Auditor
 
-**Status:** active | **Maturity:** 91% | **Version:** 1.0.5
+**Status:** active | **Maturity:** 91% | **Version:** 1.0.6
 
 Expert security auditor specializing in DevSecOps, comprehensive cybersecurity, compliance frameworks, vulnerability assessment, and threat modeling.
 
@@ -93,7 +93,7 @@ The skill has been upgraded to v1.0.3 with 92% maturity and optimized for better
 
 ### 📋 Code Review Excellence
 
-**Status:** active | **Maturity:** 92% | **Version:** 1.0.5
+**Status:** active | **Maturity:** 92% | **Version:** 1.0.6
 
 Master effective code review practices with systematic analysis, constructive feedback, and team collaboration.
 
@@ -112,7 +112,7 @@ Master effective code review practices with systematic analysis, constructive fe
 
 ### 📋 /full-review
 
-**Status:** active | **Version:** 1.0.5
+**Status:** active | **Version:** 1.0.6
 
 Orchestrate comprehensive multi-dimensional code review using specialized review agents with flexible execution modes.
 
@@ -136,7 +136,7 @@ Orchestrate comprehensive multi-dimensional code review using specialized review
 
 ### 📋 /pr-enhance
 
-**Status:** active | **Version:** 1.0.5
+**Status:** active | **Version:** 1.0.6
 
 Create high-quality pull requests with comprehensive descriptions, automated review checks, and best practices.
 
@@ -596,6 +596,6 @@ MIT License - See [LICENSE](./LICENSE) for details
 ---
 
 **Author:** Wei Chen
-**Version:** 1.0.5
+**Version:** 1.0.6
 **Category:** Quality Assurance
 **Last Updated:** 2025-11-07

@@ -1,5 +1,5 @@
 ---
-version: "1.0.5"
+version: "1.0.6"
 category: "cicd-automation"
 command: "/fix-commit-errors"
 execution-modes:

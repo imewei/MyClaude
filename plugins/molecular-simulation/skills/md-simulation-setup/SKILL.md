@@ -1,6 +1,6 @@
 ---
 name: md-simulation-setup
-version: "1.0.5"
+version: "1.0.6"
 maturity: "5-Expert"
 specialization: Molecular Dynamics Setup
 description: Set up classical MD simulations using LAMMPS, GROMACS, and HOOMD-blue for materials and biomolecular systems. Use when writing input scripts, selecting force fields, configuring ensembles, or optimizing parallel execution.

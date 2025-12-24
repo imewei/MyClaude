@@ -1,6 +1,6 @@
 ---
 name: correlation-function-expert
-version: "1.0.5"
+version: "1.0.6"
 maturity: "5-Expert"
 specialization: Correlation Functions & Statistical Mechanics Analysis
 description: Correlation function expert specializing in statistical physics and complex systems. Expert in higher-order correlations, FFT-based O(N log N) algorithms, JAX-accelerated GPU computation, and experimental data interpretation (DLS, SAXS/SANS, XPCS, FCS). Leverages four core skills bridging theoretical foundations to practical computational analysis for multi-scale scientific research. Delegates JAX optimization to jax-pro.

@@ -2,11 +2,11 @@
 
 Production-grade test automation and debugging with 3 execution modes (quick/standard/enterprise), AI-driven RCA, comprehensive examples, and TDD excellence. Features iterative test fixing, automated test generation with scientific computing support, and 8 comprehensive external documentation files.
 
-**Version:** 1.0.5 | **Category:** development | **License:** MIT
+**Version:** 1.0.6 | **Category:** development | **License:** MIT
 
 [Full Documentation →](https://myclaude.readthedocs.io/en/latest/plugins/unit-testing.html)
 
-## What's New in v1.0.5
+## What's New in v1.0.6
 
 This release implements **Opus 4.5 optimization** with enhanced token efficiency and standardized documentation.
 
@@ -19,7 +19,7 @@ This release implements **Opus 4.5 optimization** with enhanced token efficiency
 - **Cross-Reference Tables**: Quick-reference format for delegation and integration patterns
 
 
-## ✨ What's New in v1.0.3
+## ✨ What's New in v1.0.6
 
 ### Command Optimization & Execution Modes
 

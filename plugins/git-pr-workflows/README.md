@@ -9,7 +9,7 @@
 ---
 
 
-## What's New in v1.0.5
+## What's New in v1.0.6
 
 This release implements **Opus 4.5 optimization** with enhanced token efficiency and standardized documentation.
 
@@ -22,7 +22,7 @@ This release implements **Opus 4.5 optimization** with enhanced token efficiency
 - **Cross-Reference Tables**: Quick-reference format for delegation and integration patterns
 
 
-## What's New in v1.0.1 🎉
+## What's New in v1.0.6 🎉
 
 This release introduced **systematic Chain-of-Thought frameworks**, **Constitutional AI principles**, and **comprehensive code review examples** to the code-reviewer agent, plus an intelligent **/commit command** for automated commit quality validation.
 
@@ -47,7 +47,7 @@ This release introduced **systematic Chain-of-Thought frameworks**, **Constituti
 
 ### Code Reviewer
 
-**Version:** 1.0.5 | **Maturity:** 78% | **Status:** active
+**Version:** 1.0.6 | **Maturity:** 78% | **Status:** active
 
 Elite code review expert with systematic Chain-of-Thought framework and Constitutional AI principles for comprehensive security, performance, and quality analysis.
 
@@ -461,4 +461,4 @@ MIT License - see LICENSE file for details
 
 ---
 
-**Version:** 1.0.5 | **Last Updated:** 2025-10-30 | **Next Release:** v1.1.0 (Q1 2026)
+**Version:** 1.0.6 | **Last Updated:** 2025-10-30 | **Next Release:** v1.1.0 (Q1 2026)

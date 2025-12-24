@@ -2,7 +2,7 @@
   "name": "backend-development",
   "displayName": "Backend Development",
   "description": "Comprehensive backend development support including REST/GraphQL/gRPC APIs, microservices architecture, distributed systems, TDD orchestration, and scalable backend patterns for modern applications. v1.0.3 enhances feature-development command with execution modes, agent reference table, and comprehensive external documentation (6 files covering methodology, phases, agent orchestration, deployment strategies, best practices, and success metrics).",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "changelog": "v1.0.3: Enhanced /feature-development command with YAML frontmatter (3 execution modes: quick/standard/enterprise), agent reference table for 10 specialized agents, condensed step descriptions with external doc links, comprehensive 6-file documentation suite (methodology-guides.md covering TDD/BDD/DDD, phase-templates.md with detailed checklists, agent-orchestration.md with 5 orchestration patterns, deployment-strategies.md for 5 deployment strategies, best-practices.md for production readiness, success-metrics.md with quantified criteria). Enhanced usability with clear execution modes, better agent coordination guidance, and complete reference library. Maintains 100% backward compatibility.",
   "keywords": [
     "backend",
@@ -45,7 +45,7 @@
       "status": "active",
       "version": "1.0.5",
       "maturity": "90%",
-      "improvements": "Added triggering criteria for GraphQL-specific tasks, 5-step chain-of-thought reasoning (Schema → Performance → Authorization → Federation → Verification), 5 GraphQL-specific Constitutional AI principles, comprehensive N+1 elimination example with DataLoader. Expected: 60% reduction in N+1 problems, 45% better schema evolution practices, 50% improvement in authorization implementation."
+      "improvements": "Added triggering criteria for GraphQL-specific tasks, 5-step chain-of-thought reasoning (Schema \u2192 Performance \u2192 Authorization \u2192 Federation \u2192 Verification), 5 GraphQL-specific Constitutional AI principles, comprehensive N+1 elimination example with DataLoader. Expected: 60% reduction in N+1 problems, 45% better schema evolution practices, 50% improvement in authorization implementation."
     },
     {
       "id": "tdd-orchestrator",
@@ -55,7 +55,7 @@
       "status": "active",
       "version": "1.0.5",
       "maturity": "93%",
-      "improvements": "Added triggering criteria for TDD orchestration vs simple testing, 6-step chain-of-thought orchestration (Maturity Assessment → Workflow Design → Architecture → Agent Coordination → Metrics → Verification), 5 TDD-specific Constitutional AI principles, comprehensive payment microservice example with pre-commit hooks and metrics dashboard. Expected: 70% better test-first discipline enforcement, 50% improvement in test quality (mutation score), 45% better agent coordination efficiency."
+      "improvements": "Added triggering criteria for TDD orchestration vs simple testing, 6-step chain-of-thought orchestration (Maturity Assessment \u2192 Workflow Design \u2192 Architecture \u2192 Agent Coordination \u2192 Metrics \u2192 Verification), 5 TDD-specific Constitutional AI principles, comprehensive payment microservice example with pre-commit hooks and metrics dashboard. Expected: 70% better test-first discipline enforcement, 50% improvement in test quality (mutation score), 45% better agent coordination efficiency."
     }
   ],
   "commands": [

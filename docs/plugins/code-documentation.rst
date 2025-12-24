@@ -11,7 +11,7 @@ Comprehensive code documentation, explanation, and generation with scientific co
 
 **Metadata:**
 
-- **Version:** 1.0.5
+- **Version:** 1.0.6
 - **Category:** uncategorized
 - **License:** MIT
 - **Author:** Documentation Team

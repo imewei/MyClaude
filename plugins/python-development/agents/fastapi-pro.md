@@ -1,6 +1,6 @@
 ---
 name: fastapi-pro
-version: "1.0.5"
+version: "1.0.6"
 maturity: "5-Expert"
 specialization: FastAPI, Async APIs, SQLAlchemy 2.0+, Pydantic V2
 description: Build high-performance async APIs with FastAPI, SQLAlchemy 2.0, and Pydantic V2. Master microservices, WebSockets, and modern Python async patterns. Use PROACTIVELY for FastAPI development, async optimization, or API architecture.

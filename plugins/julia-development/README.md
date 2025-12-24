@@ -2,12 +2,12 @@
 
 Production-ready Julia development with systematic Chain-of-Thought frameworks, Constitutional AI principles, and comprehensive real-world examples for high-performance computing, package development, scientific machine learning (SciML), and Bayesian inference with measurable quality targets and proven optimization patterns.
 
-**Version:** 1.0.5 | **Category:** scientific-computing | **License:** MIT
+**Version:** 1.0.6 | **Category:** scientific-computing | **License:** MIT
 
 [Full Documentation →](https://myclaude.readthedocs.io/en/latest/plugins/julia-development.html)
 
 
-## What's New in v1.0.5
+## What's New in v1.0.6
 
 This release implements **Opus 4.5 optimization** with enhanced token efficiency and standardized documentation.
 

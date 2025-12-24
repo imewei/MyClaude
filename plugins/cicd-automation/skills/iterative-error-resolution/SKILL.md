@@ -1,6 +1,6 @@
 ---
 name: iterative-error-resolution
-version: "1.0.5"
+version: "1.0.6"
 maturity: "5-Expert"
 specialization: CI/CD Error Resolution & Knowledge-Based Fixing
 description: Iterative CI/CD error resolution with pattern recognition, automated fixes, and learning from outcomes. Use when debugging GitHub Actions, fixing dependency/build/test failures, or implementing automated error resolution loops.

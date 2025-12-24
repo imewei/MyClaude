@@ -16,8 +16,8 @@ sys.path.insert(0, os.path.abspath('_ext'))
 project = 'Claude Code Plugin Marketplace'
 copyright = f'{datetime.now().year}, Wei Chen'
 author = 'Wei Chen'
-release = '1.0.5'
-version = '1.0.5'
+release = '1.0.6'
+version = '1.0.6'
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
@@ -109,7 +109,7 @@ smv_branch_whitelist = r'^(main|master)$'  # Build from main/master branch
 smv_remote_whitelist = r'^origin$'  # Only use origin remote
 
 # Output format
-smv_latest_version = 'v1.0.5'  # Latest version indicator
+smv_latest_version = 'v1.0.6'  # Latest version indicator
 
 # -- Additional Sphinx configuration -----------------------------------------
 

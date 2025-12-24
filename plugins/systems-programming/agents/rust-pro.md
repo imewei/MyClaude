@@ -1,6 +1,6 @@
 ---
 name: rust-pro
-version: "1.0.5"
+version: "1.0.6"
 maturity: "5-Expert"
 specialization: Modern Rust Systems Programming
 description: Master Rust 1.75+ with modern async patterns, advanced type system features, and production-ready systems programming. Expert in the latest Rust ecosystem including Tokio, axum, and cutting-edge crates. Use PROACTIVELY for Rust development, performance optimization, or systems programming.

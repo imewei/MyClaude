@@ -1,7 +1,7 @@
 {
   "name": "code-migration",
   "displayName": "Code Migration",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Scientific code modernization with comprehensive legacy-to-modern framework migration. Specializes in Fortran/C/MATLAB to Python/JAX/Julia migrations while preserving numerical accuracy and achieving GPU acceleration. Features execution modes, external documentation, and systematic migration workflows.",
   "changelog": "v1.0.3: Command optimization with hub-and-spoke architecture achieving enhanced workflow efficiency through external documentation (~2,400 lines across 6 files). Added execution modes (quick/standard/comprehensive) for flexible time/scope control. Enhanced plugin.json with comprehensive metadata including capabilities, triggers, and execution modes. Created detailed CHANGELOG.md documenting all improvements. Updated README.md with new capabilities and optimization metrics. Maintains 100% backward compatibility with v1.0.2.",
   "category": "code-migration",
@@ -98,7 +98,7 @@
     }
   ],
   "features": [
-    "Systematic 6-phase migration workflow (Code Understanding → Numerical Accuracy → Framework Migration → Performance Optimization → Integration → Validation)",
+    "Systematic 6-phase migration workflow (Code Understanding \u2192 Numerical Accuracy \u2192 Framework Migration \u2192 Performance Optimization \u2192 Integration \u2192 Validation)",
     "Execution modes for flexible time/scope control (quick/standard/comprehensive)",
     "Comprehensive external documentation (~2,400 lines across 6 specialized guides)",
     "Chain-of-thought reasoning for transparent decision-making",
@@ -154,7 +154,11 @@
   },
   "migration_patterns": {
     "fortran_to_python_jax": {
-      "phases": ["F2py wrapper", "Pure NumPy", "JAX optimization"],
+      "phases": [
+        "F2py wrapper",
+        "Pure NumPy",
+        "JAX optimization"
+      ],
       "timeline": "6-12 weeks",
       "target_speedup": "100-1000x on GPU"
     },

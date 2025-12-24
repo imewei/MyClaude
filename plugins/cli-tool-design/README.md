@@ -2,10 +2,10 @@
 
 CLI tool design and developer automation expertise with advanced agent reasoning, systematic development frameworks, and production-ready examples for building world-class command-line tools and automation scripts.
 
-**Version:** 1.0.5 | **Category:** developer-tools | **License:** MIT
+**Version:** 1.0.6 | **Category:** developer-tools | **License:** MIT
 
 
-## What's New in v1.0.5
+## What's New in v1.0.6
 
 This release implements **Opus 4.5 optimization** with enhanced token efficiency and standardized documentation.
 
@@ -24,7 +24,7 @@ The agent has been upgraded to v1.0.2 with 90-92% maturity, systematic reasoning
 
 ### 🛠️ command-systems-engineer
 
-**Status:** active | **Maturity:** 92% | **Version:** 1.0.5
+**Status:** active | **Maturity:** 92% | **Version:** 1.0.6
 
 Command systems engineer specializing in CLI tool design and developer automation. Expert in command development, interactive prompts, and workflow tools.
 
@@ -411,6 +411,6 @@ MIT License - See [LICENSE](./LICENSE) for details
 ---
 
 **Author:** Wei Chen
-**Version:** 1.0.5
+**Version:** 1.0.6
 **Category:** Developer Tools
 **Last Updated:** 2025-10-29

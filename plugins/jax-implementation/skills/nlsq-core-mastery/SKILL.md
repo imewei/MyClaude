@@ -1,6 +1,6 @@
 ---
 name: nlsq-core-mastery
-version: "1.0.5"
+version: "1.0.6"
 maturity: "5-Expert"
 specialization: GPU/TPU-Accelerated Nonlinear Least Squares
 description: Master NLSQ library for high-performance curve fitting (150-270x faster than SciPy). Use when fitting >10K points, parameter estimation, robust optimization, streaming datasets (100M+ points), or migrating from SciPy.

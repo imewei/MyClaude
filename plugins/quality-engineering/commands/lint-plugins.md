@@ -1,5 +1,5 @@
 ---
-version: "1.0.5"
+version: "1.0.6"
 command: /lint-plugins
 description: Validate Claude Code plugin syntax, structure, and cross-references
 argument-hint: [--fix] [--plugin=name] [--report] [--analyze-deps]

@@ -1,6 +1,6 @@
 ---
 name: flutter-development
-version: "1.0.5"
+version: "1.0.6"
 maturity: "5-Expert"
 specialization: Flutter/Dart Development
 description: Comprehensive Flutter development patterns for mobile, web, and desktop apps. Use when writing Flutter/Dart code, implementing state management (Riverpod, Bloc), creating widgets, optimizing performance, handling navigation, integrating APIs, implementing offline persistence, or writing Flutter tests.

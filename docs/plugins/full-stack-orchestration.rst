@@ -11,7 +11,7 @@ Full-stack development orchestration coordinating frontend, backend, testing, se
 
 **Metadata:**
 
-- **Version:** 1.0.5
+- **Version:** 1.0.6
 - **Category:** orchestration
 - **License:** MIT
 - **Author:** Scientific Computing Workflows

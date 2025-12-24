@@ -1,6 +1,6 @@
 {
   "name": "julia-development",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Production-ready Julia development with systematic Chain-of-Thought frameworks, Constitutional AI principles, and comprehensive real-world examples for high-performance computing, package development, scientific machine learning (SciML), and Bayesian inference with measurable quality targets and proven optimization patterns.",
   "author": {
     "name": "Wei Chen",
@@ -11,25 +11,25 @@
     {
       "name": "julia-pro",
       "version": "1.0.5",
-      "description": "Master Julia programming with 6-step decision framework (Problem Analysis, Multiple Dispatch Strategy, Performance Optimization, Type System & Metaprogramming, Testing & Validation, Production Readiness). Implements 4 Constitutional AI principles (Type Safety 94%, Performance 90%, Code Quality 88%, Ecosystem Best Practices 92%). Comprehensive examples: Type-Unstable Loop → Multiple Dispatch + SIMD (56x speedup, 99.6% allocation reduction), Naive Python Interop → Zero-Copy PythonCall (8x speedup, 99.5% memory reduction). Expert in multiple dispatch, type system, metaprogramming, JuMP optimization, and Julia ecosystem.",
+      "description": "Master Julia programming with 6-step decision framework (Problem Analysis, Multiple Dispatch Strategy, Performance Optimization, Type System & Metaprogramming, Testing & Validation, Production Readiness). Implements 4 Constitutional AI principles (Type Safety 94%, Performance 90%, Code Quality 88%, Ecosystem Best Practices 92%). Comprehensive examples: Type-Unstable Loop \u2192 Multiple Dispatch + SIMD (56x speedup, 99.6% allocation reduction), Naive Python Interop \u2192 Zero-Copy PythonCall (8x speedup, 99.5% memory reduction). Expert in multiple dispatch, type system, metaprogramming, JuMP optimization, and Julia ecosystem.",
       "status": "active"
     },
     {
       "name": "julia-developer",
       "version": "1.0.5",
-      "description": "Master Julia package development with 6-step framework (Package Scope & Architecture, Project Structure & Organization, Testing Strategy, CI/CD & Automation, Quality Assurance, Documentation & Deployment). Implements 4 Constitutional AI principles (Package Quality 93%, Testing & CI/CD 91%, Documentation Quality 88%, Production Readiness 90%). Comprehensive examples: Manual Package → PkgTemplates.jl + Full CI/CD (12x faster setup, multi-platform CI, automated Aqua+JET checks), Test.jl Only → Comprehensive Testing Suite (+104% coverage, 12 Aqua checks, JET analysis, BenchmarkTools baselines). Expert in PkgTemplates, Aqua.jl, JET.jl, Documenter.jl, PackageCompiler.jl, and Genie.jl.",
+      "description": "Master Julia package development with 6-step framework (Package Scope & Architecture, Project Structure & Organization, Testing Strategy, CI/CD & Automation, Quality Assurance, Documentation & Deployment). Implements 4 Constitutional AI principles (Package Quality 93%, Testing & CI/CD 91%, Documentation Quality 88%, Production Readiness 90%). Comprehensive examples: Manual Package \u2192 PkgTemplates.jl + Full CI/CD (12x faster setup, multi-platform CI, automated Aqua+JET checks), Test.jl Only \u2192 Comprehensive Testing Suite (+104% coverage, 12 Aqua checks, JET analysis, BenchmarkTools baselines). Expert in PkgTemplates, Aqua.jl, JET.jl, Documenter.jl, PackageCompiler.jl, and Genie.jl.",
       "status": "active"
     },
     {
       "name": "sciml-pro",
       "version": "1.0.5",
-      "description": "Master SciML ecosystem with 6-step framework (Problem Characterization, Solver Selection Strategy, Performance Optimization, Advanced Analysis, Validation & Diagnostics, Production Deployment). Implements 4 Constitutional AI principles (Scientific Correctness 95%, Computational Efficiency 90%, Code Quality 88%, Ecosystem Integration 92%). Comprehensive examples: Manual ODE → ModelingToolkit + Auto-Diff (8x faster development, 66% code reduction, 7x speedup with exact Jacobian), Single Simulation → Ensemble + Sensitivity (10K ensemble, full Sobol indices, 95% parallel efficiency). Expert in DifferentialEquations.jl, ModelingToolkit.jl, Optimization.jl, NeuralPDE.jl, Catalyst.jl, and SciMLSensitivity.jl.",
+      "description": "Master SciML ecosystem with 6-step framework (Problem Characterization, Solver Selection Strategy, Performance Optimization, Advanced Analysis, Validation & Diagnostics, Production Deployment). Implements 4 Constitutional AI principles (Scientific Correctness 95%, Computational Efficiency 90%, Code Quality 88%, Ecosystem Integration 92%). Comprehensive examples: Manual ODE \u2192 ModelingToolkit + Auto-Diff (8x faster development, 66% code reduction, 7x speedup with exact Jacobian), Single Simulation \u2192 Ensemble + Sensitivity (10K ensemble, full Sobol indices, 95% parallel efficiency). Expert in DifferentialEquations.jl, ModelingToolkit.jl, Optimization.jl, NeuralPDE.jl, Catalyst.jl, and SciMLSensitivity.jl.",
       "status": "active"
     },
     {
       "name": "turing-pro",
       "version": "1.0.5",
-      "description": "Master Bayesian inference with 6-step framework (Bayesian Model Formulation, Inference Strategy Selection, Prior Specification, Convergence Diagnostics, Model Validation, Production Deployment). Implements 4 Constitutional AI principles (Statistical Rigor 94%, Computational Efficiency 89%, Convergence Quality 92%, Turing.jl Best Practices 90%). Comprehensive examples: Frequentist Regression → Bayesian Hierarchical Model (full posterior distributions, partial pooling, R-hat < 1.01), Simple MCMC → Optimized Non-Centered + GPU (100% divergence reduction, 18x ESS improvement, 22.5x speedup). Expert in Turing.jl, MCMC (NUTS, HMC), variational inference (ADVI), MCMCChains.jl diagnostics, and Bayesian ODEs.",
+      "description": "Master Bayesian inference with 6-step framework (Bayesian Model Formulation, Inference Strategy Selection, Prior Specification, Convergence Diagnostics, Model Validation, Production Deployment). Implements 4 Constitutional AI principles (Statistical Rigor 94%, Computational Efficiency 89%, Convergence Quality 92%, Turing.jl Best Practices 90%). Comprehensive examples: Frequentist Regression \u2192 Bayesian Hierarchical Model (full posterior distributions, partial pooling, R-hat < 1.01), Simple MCMC \u2192 Optimized Non-Centered + GPU (100% divergence reduction, 18x ESS improvement, 22.5x speedup). Expert in Turing.jl, MCMC (NUTS, HMC), variational inference (ADVI), MCMCChains.jl diagnostics, and Bayesian ODEs.",
       "status": "active"
     }
   ],

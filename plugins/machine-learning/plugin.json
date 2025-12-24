@@ -1,6 +1,6 @@
 {
   "name": "machine-learning",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Advanced machine learning and MLOps with production-ready pipelines, multi-agent orchestration, comprehensive experiment tracking, and enterprise data infrastructure. v1.0.3 enhances /ml-pipeline command with 3 execution modes (quick/standard/enterprise), adds data-engineer agent, and provides 6-file external documentation covering MLOps methodology, deployment strategies, monitoring frameworks, and success criteria.",
   "author": {
     "name": "Wei Chen",
@@ -16,19 +16,19 @@
     },
     {
       "name": "data-scientist",
-      "description": "Expert data scientist with 6-phase chain-of-thought reasoning framework (problem analysis → data assessment → methodology selection → implementation → validation → communication), constitutional AI self-correction for statistical rigor and business relevance, structured output templates, and 3 detailed few-shot examples for advanced analytics, ML modeling, statistical testing, and business insights",
+      "description": "Expert data scientist with 6-phase chain-of-thought reasoning framework (problem analysis \u2192 data assessment \u2192 methodology selection \u2192 implementation \u2192 validation \u2192 communication), constitutional AI self-correction for statistical rigor and business relevance, structured output templates, and 3 detailed few-shot examples for advanced analytics, ML modeling, statistical testing, and business insights",
       "status": "active",
       "version": "1.0.5"
     },
     {
       "name": "ml-engineer",
-      "description": "Expert ML engineer with 6-phase production engineering framework (requirements → system design → implementation → optimization → deployment → operations), constitutional AI principles for reliability/observability/performance, structured output with architecture diagrams and runbooks, and 2 detailed few-shot examples for scalable ML systems with PyTorch 2.x, TensorFlow, model serving, A/B testing, and performance optimization",
+      "description": "Expert ML engineer with 6-phase production engineering framework (requirements \u2192 system design \u2192 implementation \u2192 optimization \u2192 deployment \u2192 operations), constitutional AI principles for reliability/observability/performance, structured output with architecture diagrams and runbooks, and 2 detailed few-shot examples for scalable ML systems with PyTorch 2.x, TensorFlow, model serving, A/B testing, and performance optimization",
       "status": "active",
       "version": "1.0.5"
     },
     {
       "name": "mlops-engineer",
-      "description": "Expert MLOps engineer with 6-phase infrastructure framework (requirements → architecture → implementation → automation → security → operations), constitutional AI principles for automation/reproducibility/cost-efficiency, structured output with IaC templates and cost analysis, and comprehensive few-shot example for complete MLOps platforms with Kubeflow/MLflow, GitOps, CI/CD, and multi-cloud deployment across AWS/Azure/GCP",
+      "description": "Expert MLOps engineer with 6-phase infrastructure framework (requirements \u2192 architecture \u2192 implementation \u2192 automation \u2192 security \u2192 operations), constitutional AI principles for automation/reproducibility/cost-efficiency, structured output with IaC templates and cost analysis, and comprehensive few-shot example for complete MLOps platforms with Kubeflow/MLflow, GitOps, CI/CD, and multi-cloud deployment across AWS/Azure/GCP",
       "status": "active",
       "version": "1.0.5"
     }

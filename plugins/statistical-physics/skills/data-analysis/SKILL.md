@@ -1,6 +1,6 @@
 ---
 name: data-analysis
-version: "1.0.5"
+version: "1.0.6"
 maturity: "5-Expert"
 specialization: Experimental Data Analysis
 description: Analyze experimental correlation data from DLS, SAXS/SANS, rheology, and microscopy using Green-Kubo relations, Bayesian inference (MCMC), and model validation. Use when interpreting scattering data, validating non-equilibrium theories, or predicting transport coefficients.

@@ -1,28 +1,28 @@
 {
   "name": "jax-implementation",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Production-ready JAX-based scientific computing with systematic Chain-of-Thought frameworks, Constitutional AI principles, enhanced skill discoverability, and comprehensive response verification protocols for NumPyro Bayesian inference (with ArviZ integration and Consensus Monte Carlo), Flax NNX neural networks, NLSQ optimization (with Adaptive Hybrid Streaming and Parameter Normalization), and physics simulations with measurable quality targets and proven optimization patterns",
   "author": "Wei Chen",
   "license": "MIT",
   "agents": [
     {
       "name": "jax-pro",
-      "description": "Master JAX programming with 6-step decision framework (Problem Analysis, Transformation Strategy, Performance Optimization, Flax NNX Architecture, Debugging, Production Readiness). Implements 4 Constitutional AI principles (Functional Purity 95%, Performance 90%, Code Quality 88%, Ecosystem Best Practices 92%). Comprehensive examples: NumPy → JAX (112x single-GPU, 562x multi-GPU speedup), Flax Linen → NNX (10x faster checkpointing, 52% code reduction). Expert in JAX transformations, Flax NNX, Optax, Orbax, and GPU/TPU acceleration.",
+      "description": "Master JAX programming with 6-step decision framework (Problem Analysis, Transformation Strategy, Performance Optimization, Flax NNX Architecture, Debugging, Production Readiness). Implements 4 Constitutional AI principles (Functional Purity 95%, Performance 90%, Code Quality 88%, Ecosystem Best Practices 92%). Comprehensive examples: NumPy \u2192 JAX (112x single-GPU, 562x multi-GPU speedup), Flax Linen \u2192 NNX (10x faster checkpointing, 52% code reduction). Expert in JAX transformations, Flax NNX, Optax, Orbax, and GPU/TPU acceleration.",
       "status": "active"
     },
     {
       "name": "numpyro-pro",
-      "description": "Master NumPyro Bayesian inference with 6-step framework (Bayesian Formulation, Model Specification, Inference Strategy, Convergence Diagnostics, Performance Optimization, Production Deployment). Implements 4 Constitutional AI principles (Statistical Rigor 95%, Computational Efficiency 90%, Model Quality 88%, NumPyro Best Practices 92%). Comprehensive examples: Simple Regression → Hierarchical Bayesian (R-hat < 1.01, 50x GPU speedup), Centered → Non-Centered Parameterization (100% divergence reduction, 40x ESS improvement). Expert in MCMC (NUTS, HMC), variational inference (SVI), and JAX-accelerated probabilistic programming.",
+      "description": "Master NumPyro Bayesian inference with 6-step framework (Bayesian Formulation, Model Specification, Inference Strategy, Convergence Diagnostics, Performance Optimization, Production Deployment). Implements 4 Constitutional AI principles (Statistical Rigor 95%, Computational Efficiency 90%, Model Quality 88%, NumPyro Best Practices 92%). Comprehensive examples: Simple Regression \u2192 Hierarchical Bayesian (R-hat < 1.01, 50x GPU speedup), Centered \u2192 Non-Centered Parameterization (100% divergence reduction, 40x ESS improvement). Expert in MCMC (NUTS, HMC), variational inference (SVI), and JAX-accelerated probabilistic programming.",
       "status": "active"
     },
     {
       "name": "jax-scientist",
-      "description": "Master computational physics with JAX leveraging 6-step framework (Physics Analysis, JAX-Physics Integration, Numerical Methods, Performance & Scaling, Validation, Production Deployment). Implements 4 Constitutional AI principles (Physical Correctness 94%, Computational Efficiency 90%, Code Quality 88%, Domain Library Best Practices 91%). Comprehensive examples: LAMMPS → JAX-MD (100x parameter optimization speedup, 50x GPU speedup), Finite Difference → PINN (50x faster, continuous solution, inverse problems). Expert in JAX-MD, JAX-CFD, PINNs, quantum computing, and differentiable physics.",
+      "description": "Master computational physics with JAX leveraging 6-step framework (Physics Analysis, JAX-Physics Integration, Numerical Methods, Performance & Scaling, Validation, Production Deployment). Implements 4 Constitutional AI principles (Physical Correctness 94%, Computational Efficiency 90%, Code Quality 88%, Domain Library Best Practices 91%). Comprehensive examples: LAMMPS \u2192 JAX-MD (100x parameter optimization speedup, 50x GPU speedup), Finite Difference \u2192 PINN (50x faster, continuous solution, inverse problems). Expert in JAX-MD, JAX-CFD, PINNs, quantum computing, and differentiable physics.",
       "status": "active"
     },
     {
       "name": "nlsq-pro",
-      "description": "Master GPU-accelerated nonlinear least squares with 6-step framework (Problem Characterization, Algorithm Selection, Performance Optimization, Convergence & Robustness, Validation, Production Deployment). Implements 4 Constitutional AI principles (Numerical Stability 92%, Computational Efficiency 90%, Code Quality 85%, NLSQ Best Practices 88%). Features Adaptive Hybrid Streaming Optimizer with Parameter Normalization for multi-scale parameters. Comprehensive examples: SciPy → NLSQ GPU (265x speedup, 12x accuracy improvement), Batch L2 → Streaming Huber (100x memory reduction, 10x outlier robustness). Expert in JAX-accelerated optimization, HybridStreamingConfig presets, ParameterNormalizer, robust loss functions, and production curve fitting.",
+      "description": "Master GPU-accelerated nonlinear least squares with 6-step framework (Problem Characterization, Algorithm Selection, Performance Optimization, Convergence & Robustness, Validation, Production Deployment). Implements 4 Constitutional AI principles (Numerical Stability 92%, Computational Efficiency 90%, Code Quality 85%, NLSQ Best Practices 88%). Features Adaptive Hybrid Streaming Optimizer with Parameter Normalization for multi-scale parameters. Comprehensive examples: SciPy \u2192 NLSQ GPU (265x speedup, 12x accuracy improvement), Batch L2 \u2192 Streaming Huber (100x memory reduction, 10x outlier robustness). Expert in JAX-accelerated optimization, HybridStreamingConfig presets, ParameterNormalizer, robust loss functions, and production curve fitting.",
       "status": "active"
     }
   ],

@@ -1,21 +1,29 @@
 {
   "name": "javascript-typescript",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Comprehensive JavaScript and TypeScript development skills including modern patterns, testing, backend development, advanced types, monorepo management, and production-ready project scaffolding with execution modes",
   "author": "Wei Chen",
   "license": "MIT",
-  "changelog": "v1.0.3: Command optimization release. TypeScript scaffolding command optimized with 25% token reduction (347→260 lines), hub-and-spoke architecture with 6 external documentation files (~1,070 lines), execution modes (quick/standard/comprehensive with time estimates), enhanced YAML frontmatter, 100% backward compatibility. Added typescript-project-scaffolding skill for improved discoverability. Updated all component versions to 1.0.3 for consistency.",
-  "keywords": ["javascript", "typescript", "nodejs", "testing", "monorepo", "scaffolding", "project-setup"],
+  "changelog": "v1.0.3: Command optimization release. TypeScript scaffolding command optimized with 25% token reduction (347\u2192260 lines), hub-and-spoke architecture with 6 external documentation files (~1,070 lines), execution modes (quick/standard/comprehensive with time estimates), enhanced YAML frontmatter, 100% backward compatibility. Added typescript-project-scaffolding skill for improved discoverability. Updated all component versions to 1.0.3 for consistency.",
+  "keywords": [
+    "javascript",
+    "typescript",
+    "nodejs",
+    "testing",
+    "monorepo",
+    "scaffolding",
+    "project-setup"
+  ],
   "agents": [
     {
       "name": "javascript-pro",
-      "description": "Master modern JavaScript (ES6+, ES2024) with 6-step decision framework (Problem Analysis, Feature Selection, Async Patterns, Performance, Error Handling, Production Readiness). Implements 4 Constitutional AI principles (Code Quality 90%, Performance 85%, Compatibility 90%, Security 88%). Comprehensive examples: Callback Hell → Async/Await (60% reduction, +200% performance), Monolithic → Modular ESM (85% bundle reduction, 76% load time improvement). Expert in Node.js 20+, async/await, promises, event loop, module systems, testing (Jest/Vitest), and production optimization.",
+      "description": "Master modern JavaScript (ES6+, ES2024) with 6-step decision framework (Problem Analysis, Feature Selection, Async Patterns, Performance, Error Handling, Production Readiness). Implements 4 Constitutional AI principles (Code Quality 90%, Performance 85%, Compatibility 90%, Security 88%). Comprehensive examples: Callback Hell \u2192 Async/Await (60% reduction, +200% performance), Monolithic \u2192 Modular ESM (85% bundle reduction, 76% load time improvement). Expert in Node.js 20+, async/await, promises, event loop, module systems, testing (Jest/Vitest), and production optimization.",
       "status": "active",
       "version": "1.0.5"
     },
     {
       "name": "typescript-pro",
-      "description": "Master TypeScript with advanced type systems (generics, conditional types, mapped types) and 6-step framework (Project Analysis, Type System Design, Architecture Patterns, Type Safety, Performance, Integration). Implements 4 Constitutional AI principles (Type Safety 95%, Code Quality 90%, Performance 88%, Standards 92%). Comprehensive examples: JavaScript → Strict TypeScript (95% error reduction, 99% type coverage), Simple → Advanced Generics (70% duplication reduction, 85% safety improvement). Expert in TypeScript 5.3+, branded types, runtime validation (Zod), React/Node integration, strict mode, and enterprise patterns.",
+      "description": "Master TypeScript with advanced type systems (generics, conditional types, mapped types) and 6-step framework (Project Analysis, Type System Design, Architecture Patterns, Type Safety, Performance, Integration). Implements 4 Constitutional AI principles (Type Safety 95%, Code Quality 90%, Performance 88%, Standards 92%). Comprehensive examples: JavaScript \u2192 Strict TypeScript (95% error reduction, 99% type coverage), Simple \u2192 Advanced Generics (70% duplication reduction, 85% safety improvement). Expert in TypeScript 5.3+, branded types, runtime validation (Zod), React/Node integration, strict mode, and enterprise patterns.",
       "status": "active",
       "version": "1.0.5"
     }
@@ -59,7 +67,7 @@
         "reduction": "25.1%",
         "external_lines": "~1,070 lines"
       },
-      "improvements": "v1.0.3: 25% token reduction (347→260 lines), added execution modes (quick/standard/comprehensive), hub-and-spoke architecture with 6 external docs (~1,070 lines), enhanced CLI scaffolding, scientific computing support (JAX, NumPy, Julia integration references), comprehensive testing patterns, monorepo configuration guides, 100% backward compatibility."
+      "improvements": "v1.0.3: 25% token reduction (347\u2192260 lines), added execution modes (quick/standard/comprehensive), hub-and-spoke architecture with 6 external docs (~1,070 lines), enhanced CLI scaffolding, scientific computing support (JAX, NumPy, Julia integration references), comprehensive testing patterns, monorepo configuration guides, 100% backward compatibility."
     }
   ],
   "skills": [

@@ -1,5 +1,5 @@
 ---
-version: 1.0.5
+version: "1.0.6"
 command: /c-project
 description: Scaffold production-ready C projects with Makefile/CMake and memory safety tools
 argument-hint: [project-type] [project-name]

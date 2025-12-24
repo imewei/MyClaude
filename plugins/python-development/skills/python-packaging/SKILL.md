@@ -1,6 +1,6 @@
 ---
 name: python-packaging
-version: "1.0.5"
+version: "1.0.6"
 maturity: "5-Expert"
 specialization: Python Package Distribution
 description: Create distributable Python packages with pyproject.toml, proper project structure, and publishing to PyPI. Use when writing pyproject.toml or setup.py, creating package structures with __init__.py, building wheel/source distributions, setting up CLI entry points, configuring build backends (setuptools, hatchling), or publishing to PyPI/TestPyPI.

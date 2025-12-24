@@ -1,6 +1,6 @@
 ---
 description: Advanced reflection engine for AI reasoning, session analysis, and research optimization
-version: "1.0.5"
+version: "1.0.6"
 allowed-tools: Bash(find:*), Bash(grep:*), Bash(git:*), Read, Grep, Task
 argument-hint: [session|code|research|workflow] [--mode=quick-check|standard] [--depth=shallow|deep]
 color: purple
