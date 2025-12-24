@@ -11,12 +11,12 @@ build:
   tools:
     python: "3.12"
   jobs:
-    pre_install:
+    post_create_environment:
       # Install uv for faster package management
       - pip install uv
-    install:
-      # Install dependencies using uv (faster than pip)
-      - uv pip install --system -r docs/requirements.txt
+    post_install:
+      # Install dependencies using uv into the virtualenv (no --system flag)
+      - uv pip install -r docs/requirements.txt
 
 # Build documentation in the "docs/" directory with Sphinx
 sphinx:
