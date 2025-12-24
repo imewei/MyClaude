@@ -2,9 +2,11 @@
   "name": "javascript-typescript",
   "version": "1.0.6",
   "description": "Comprehensive JavaScript and TypeScript development skills including modern patterns, testing, backend development, advanced types, monorepo management, and production-ready project scaffolding with execution modes",
-  "author": "Wei Chen",
+  "author": {
+    "name": "Wei Chen",
+    "url": "https://myclaude.readthedocs.io/en/latest/"
+  },
   "license": "MIT",
-  "changelog": "v1.0.3: Command optimization release. TypeScript scaffolding command optimized with 25% token reduction (347\u2192260 lines), hub-and-spoke architecture with 6 external documentation files (~1,070 lines), execution modes (quick/standard/comprehensive with time estimates), enhanced YAML frontmatter, 100% backward compatibility. Added typescript-project-scaffolding skill for improved discoverability. Updated all component versions to 1.0.3 for consistency.",
   "keywords": [
     "javascript",
     "typescript",
@@ -13,100 +15,6 @@
     "monorepo",
     "scaffolding",
     "project-setup"
-  ],
-  "agents": [
-    {
-      "name": "javascript-pro",
-      "description": "Master modern JavaScript (ES6+, ES2024) with 6-step decision framework (Problem Analysis, Feature Selection, Async Patterns, Performance, Error Handling, Production Readiness). Implements 4 Constitutional AI principles (Code Quality 90%, Performance 85%, Compatibility 90%, Security 88%). Comprehensive examples: Callback Hell \u2192 Async/Await (60% reduction, +200% performance), Monolithic \u2192 Modular ESM (85% bundle reduction, 76% load time improvement). Expert in Node.js 20+, async/await, promises, event loop, module systems, testing (Jest/Vitest), and production optimization.",
-      "status": "active",
-      "version": "1.0.5"
-    },
-    {
-      "name": "typescript-pro",
-      "description": "Master TypeScript with advanced type systems (generics, conditional types, mapped types) and 6-step framework (Project Analysis, Type System Design, Architecture Patterns, Type Safety, Performance, Integration). Implements 4 Constitutional AI principles (Type Safety 95%, Code Quality 90%, Performance 88%, Standards 92%). Comprehensive examples: JavaScript \u2192 Strict TypeScript (95% error reduction, 99% type coverage), Simple \u2192 Advanced Generics (70% duplication reduction, 85% safety improvement). Expert in TypeScript 5.3+, branded types, runtime validation (Zod), React/Node integration, strict mode, and enterprise patterns.",
-      "status": "active",
-      "version": "1.0.5"
-    }
-  ],
-  "commands": [
-    {
-      "name": "/typescript-scaffold",
-      "file": "commands/typescript-scaffold.md",
-      "description": "Production-ready TypeScript project scaffolding with modern tooling, automated setup, and comprehensive configuration",
-      "status": "active",
-      "version": "1.0.5",
-      "maturity": "95%",
-      "execution_modes": {
-        "quick": {
-          "time": "10-15 minutes",
-          "use_case": "Rapid prototyping, learning, experiments",
-          "output": "Basic project with essential config"
-        },
-        "standard": {
-          "time": "20-30 minutes",
-          "use_case": "Most production projects (default)",
-          "output": "Complete project with testing and tooling"
-        },
-        "comprehensive": {
-          "time": "40-60 minutes",
-          "use_case": "Enterprise projects, team standards",
-          "output": "Full setup with CI/CD and documentation"
-        }
-      },
-      "external_docs": [
-        "docs/javascript-typescript/project-scaffolding-guide.md (~250 lines)",
-        "docs/javascript-typescript/nextjs-scaffolding.md (~180 lines)",
-        "docs/javascript-typescript/nodejs-api-scaffolding.md (~180 lines)",
-        "docs/javascript-typescript/library-cli-scaffolding.md (~160 lines)",
-        "docs/javascript-typescript/typescript-configuration.md (~150 lines)",
-        "docs/javascript-typescript/development-tooling.md (~150 lines)"
-      ],
-      "optimization": {
-        "before": "347 lines",
-        "after": "260 lines",
-        "reduction": "25.1%",
-        "external_lines": "~1,070 lines"
-      },
-      "improvements": "v1.0.3: 25% token reduction (347\u2192260 lines), added execution modes (quick/standard/comprehensive), hub-and-spoke architecture with 6 external docs (~1,070 lines), enhanced CLI scaffolding, scientific computing support (JAX, NumPy, Julia integration references), comprehensive testing patterns, monorepo configuration guides, 100% backward compatibility."
-    }
-  ],
-  "skills": [
-    {
-      "name": "modern-javascript-patterns",
-      "description": "Master modern JavaScript (ES6/ES2015 through ES2024) features including async/await, destructuring, spread operators, arrow functions, promises, modules, iterators, generators, optional chaining, nullish coalescing, and functional programming patterns. Use for refactoring legacy code, implementing modern patterns, async operations, and optimizing JavaScript applications.",
-      "status": "active",
-      "version": "1.0.5"
-    },
-    {
-      "name": "typescript-advanced-types",
-      "description": "Master TypeScript's advanced type system including generics, conditional types, mapped types, template literal types, utility types (Partial, Required, Pick, Omit, Record), type inference with infer keyword, branded types, discriminated unions, and recursive types. Use for type-safe applications, API clients, form validation, and state management.",
-      "status": "active",
-      "version": "1.0.5"
-    },
-    {
-      "name": "javascript-testing-patterns",
-      "description": "Implement comprehensive testing strategies using Jest, Vitest, and Testing Library for unit tests, integration tests, and end-to-end testing with advanced mocking, fixtures, and TDD/BDD workflows. Use for test files (*.test.ts, *.spec.ts), test infrastructure, component testing, API testing, and CI/CD integration.",
-      "status": "active",
-      "version": "1.0.5"
-    },
-    {
-      "name": "nodejs-backend-patterns",
-      "description": "Build production-ready Node.js backend services with Express.js, Fastify, NestJS, and Koa implementing middleware patterns, error handling, authentication (JWT, OAuth2, session, RBAC), database integration (PostgreSQL, MongoDB, Redis), API design, GraphQL, WebSockets, background jobs, and observability.",
-      "status": "active",
-      "version": "1.0.5"
-    },
-    {
-      "name": "monorepo-management",
-      "description": "Master monorepo management with Turborepo, Nx, pnpm workspaces, Yarn workspaces, and npm workspaces to build efficient, scalable multi-package repositories with optimized builds, intelligent caching, shared dependencies, code sharing patterns, CI/CD for monorepos, and versioning strategies with changesets.",
-      "status": "active",
-      "version": "1.0.5"
-    },
-    {
-      "name": "typescript-project-scaffolding",
-      "description": "Production-ready TypeScript project scaffolding with modern tooling (pnpm, Vite, Next.js 15), automated setup for Next.js apps, React SPAs, Node.js APIs, libraries, and CLI tools. Includes tsconfig optimization, testing setup (Vitest), ESLint/Prettier configuration, monorepo patterns, execution modes (quick/standard/comprehensive for 10-60min workflows), and comprehensive external documentation. Supports 5 project types with hub-and-spoke architecture (~1,070 lines of detailed guides). Use when initializing new TypeScript projects, migrating JavaScript projects, setting up monorepo workspaces, configuring build tooling, or creating CLI applications.",
-      "status": "active",
-      "version": "1.0.5"
-    }
   ],
   "tags": [
     "javascript",

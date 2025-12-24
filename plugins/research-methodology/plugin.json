@@ -2,7 +2,10 @@
   "name": "research-methodology",
   "version": "1.0.6",
   "description": "Research intelligence, methodology design, literature analysis, and evidence-based insights for scientific investigation with systematic research workflows, multi-source synthesis, and rigorous quality assurance",
-  "author": "Wei Chen",
+  "author": {
+    "name": "Wei Chen",
+    "url": "https://myclaude.readthedocs.io/en/latest/"
+  },
   "license": "MIT",
   "keywords": [
     "research",
@@ -15,80 +18,5 @@
     "evidence-based",
     "academic-research",
     "scientific-investigation"
-  ],
-  "agents": [
-    {
-      "name": "research-intelligence",
-      "description": "Research intelligence expert specializing in research methodology and information discovery with systematic 8-step development process (analyze requirements, design methodology, execute information discovery, perform systematic analysis, synthesize evidence-based insights, validate research quality, document thoroughly, deliver strategic insights), 8 quality assurance principles (methodological rigor, source quality, comprehensive coverage, bias mitigation, statistical validity, reproducibility, evidence-based conclusions, stakeholder alignment), and comprehensive examples demonstrating PRISMA-compliant systematic literature reviews with meta-analysis (127 papers analyzed, quantitative performance comparisons with 95% confidence intervals, research gap identification), multi-source competitive intelligence synthesis (3,000+ sources including academic papers, industry reports, patents, financial data for market entry analysis), and trend forecasting with time-series analysis for strategic decision-making",
-      "status": "active",
-      "model": "inherit",
-      "performance_profile": "comprehensive-research"
-    }
-  ],
-  "skills": [
-    {
-      "name": "research-quality-assessment",
-      "description": "Comprehensive evaluation framework for scientific research quality across 6 critical dimensions (methodology soundness, experimental design quality, data quality & sufficiency, statistical analysis rigor, result validity & significance, publication readiness) with systematic assessment workflows, scoring rubrics (0-10 scale with weighted dimensions: Methodology 20%, Experimental Design 20%, Data Quality 15%, Statistical Rigor 20%, Result Validity 15%, Publication Readiness 10%), and detailed reference guides (methodology_evaluation.md, experimental_design_checklist.md, statistical_rigor_guide.md, publication_readiness.md). Use for journal submission assessments (Nature, Science, Cell, PLOS, eLife), grant proposal evaluations (NSF, NIH, DOE), experimental design reviews with statistical power analysis (\u22650.80), data quality and bias detection, statistical validity checking (multiple testing correction, effect size reporting, confidence intervals, sensitivity analysis), publication readiness evaluation with reproducibility packages, pre-submission peer reviews, research audits, and comprehensive assessment report generation",
-      "status": "active"
-    }
-  ],
-  "metadata": {
-    "research_methods": [
-      "systematic-literature-review",
-      "meta-analysis",
-      "PRISMA-compliant-screening",
-      "trend-analysis",
-      "competitive-intelligence",
-      "patent-landscape-analysis",
-      "multi-source-synthesis",
-      "research-quality-assessment",
-      "experimental-design-evaluation",
-      "statistical-rigor-analysis"
-    ],
-    "quality_standards": {
-      "source_credibility": ">95% accuracy requirement",
-      "cross_validation": "minimum 3 independent sources",
-      "statistical_significance": "p-value < 0.05 standard",
-      "statistical_power": "\u22650.80 for experimental designs",
-      "reproducibility": "transparent methodology documentation",
-      "assessment_scoring": "6-dimension weighted scoring (0-10 scale)"
-    },
-    "capabilities": {
-      "academic_databases": [
-        "PubMed",
-        "IEEE",
-        "ACM",
-        "arXiv",
-        "Google Scholar"
-      ],
-      "analysis_types": [
-        "systematic-review",
-        "meta-analysis",
-        "trend-forecasting",
-        "competitive-intelligence",
-        "hypothesis-generation",
-        "research-quality-assessment",
-        "experimental-design-evaluation",
-        "statistical-rigor-analysis"
-      ],
-      "deliverables": [
-        "executive-summary",
-        "technical-report",
-        "meta-analysis",
-        "patent-landscape",
-        "research-gap-analysis",
-        "quality-assessment-report",
-        "methodology-evaluation",
-        "publication-readiness-checklist"
-      ],
-      "assessment_dimensions": [
-        "methodology-soundness",
-        "experimental-design",
-        "data-quality",
-        "statistical-rigor",
-        "result-validity",
-        "publication-readiness"
-      ]
-    }
-  }
+  ]
 }

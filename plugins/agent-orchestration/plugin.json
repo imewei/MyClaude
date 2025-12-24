@@ -2,55 +2,11 @@
   "name": "agent-orchestration",
   "version": "1.0.6",
   "description": "Multi-agent workflow coordination with production-ready optimization workflows, systematic agent improvement methodologies, and comprehensive documentation. Features executable slash commands with real-world examples showing 50-200x performance improvements.",
-  "author": "Wei Chen",
+  "author": {
+    "name": "Wei Chen",
+    "url": "https://myclaude.readthedocs.io/en/latest/"
+  },
   "license": "MIT",
-  "changelog": "v1.0.3: Version consolidation release. Corrected version numbering from v1.0.2 to v1.0.1 for agents, maintained v1.0.2 command improvements, and ensured version consistency across all documentation.",
-  "agents": [
-    {
-      "name": "context-manager",
-      "description": "Elite AI context engineering specialist mastering dynamic context management, vector databases, knowledge graphs, and intelligent memory systems.",
-      "status": "active",
-      "version": "1.0.5",
-      "improvements": "v1.0.1: Added triggering criteria, Constitutional AI framework, reasoning framework, 3 comprehensive examples, enhanced behavioral traits, and output format standards. v1.0.3: Version consolidation."
-    },
-    {
-      "name": "multi-agent-orchestrator",
-      "description": "Multi-agent orchestrator specializing in workflow coordination and distributed systems. Expert in agent team assembly and task allocation for scalable collaboration. Delegates all domain-specific work to specialist agents.",
-      "status": "active",
-      "version": "1.0.5",
-      "improvements": "v1.0.1: Added 5-step chain-of-thought orchestration process, 5 Constitutional AI principles, 4 comprehensive few-shot examples, output format standards, advanced orchestration patterns, anti-patterns section, enhanced decision framework, and delegation strategy. v1.0.3: Version consolidation."
-    }
-  ],
-  "commands": [
-    {
-      "name": "/multi-agent-optimize",
-      "description": "Multi-agent code optimization with executable workflows (scan/analyze/apply modes), graceful fallback for missing agents, and comprehensive documentation with real case studies showing 50-208x speedups",
-      "status": "active",
-      "version": "1.0.5",
-      "improvements": "v1.0.2: Added execution logic for --mode=scan, YAML frontmatter with graceful fallbacks, 19% token reduction (382\u2192311 lines), external documentation structure, and 3 domain-specific pattern libraries. v1.0.3: Version consolidation."
-    },
-    {
-      "name": "/improve-agent",
-      "description": "Systematic agent improvement through 4-phase methodology (analysis, prompt engineering, testing, deployment) with executable workflows and A/B testing framework",
-      "status": "active",
-      "version": "1.0.5",
-      "improvements": "v1.0.2: Added execution logic for --mode=check, YAML frontmatter structure, 20% token reduction (291\u2192234 lines), 4 phase-specific guides, and comprehensive examples with measured improvements. v1.0.3: Version consolidation."
-    }
-  ],
-  "skills": [
-    {
-      "name": "multi-agent-coordination",
-      "description": "Production-ready multi-agent coordination with team assembly, workflow orchestration, DAG-based execution, inter-agent messaging, and fault-tolerant coordination patterns",
-      "status": "active",
-      "version": "1.0.5"
-    },
-    {
-      "name": "agent-performance-optimization",
-      "description": "Comprehensive agent performance monitoring, optimization, and tuning including metrics collection, caching strategies (LRU, multi-tier), load balancing (round-robin, least-loaded, weighted), and performance profiling",
-      "status": "active",
-      "version": "1.0.5"
-    }
-  ],
   "keywords": [
     "multi-agent",
     "orchestration",

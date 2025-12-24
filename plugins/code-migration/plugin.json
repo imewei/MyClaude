@@ -3,7 +3,6 @@
   "displayName": "Code Migration",
   "version": "1.0.6",
   "description": "Scientific code modernization with comprehensive legacy-to-modern framework migration. Specializes in Fortran/C/MATLAB to Python/JAX/Julia migrations while preserving numerical accuracy and achieving GPU acceleration. Features execution modes, external documentation, and systematic migration workflows.",
-  "changelog": "v1.0.3: Command optimization with hub-and-spoke architecture achieving enhanced workflow efficiency through external documentation (~2,400 lines across 6 files). Added execution modes (quick/standard/comprehensive) for flexible time/scope control. Enhanced plugin.json with comprehensive metadata including capabilities, triggers, and execution modes. Created detailed CHANGELOG.md documenting all improvements. Updated README.md with new capabilities and optimization metrics. Maintains 100% backward compatibility with v1.0.2.",
   "category": "code-migration",
   "author": {
     "name": "Wei Chen",
@@ -31,71 +30,6 @@
     "jax",
     "algorithm-migration",
     "performance-optimization"
-  ],
-  "agents": [
-    {
-      "id": "scientific-code-adoptor",
-      "file": "agents/scientific-code-adoptor.md",
-      "name": "Scientific Code Adoptor",
-      "description": "Legacy scientific code modernization expert for cross-language migration. Expert in Fortran/C/MATLAB to Python/JAX/Julia with numerical accuracy preservation",
-      "status": "active",
-      "version": "1.0.5",
-      "maturity": "90%",
-      "capabilities": [
-        "Fortran 77/90/95 to Python/JAX migration with GPU acceleration",
-        "MATLAB to NumPy/SciPy conversion with feature parity",
-        "Legacy C/C++ library wrapping (F2py, Ctypes, Pybind11)",
-        "Numerical accuracy preservation (< 1e-12 error tolerance)",
-        "Algorithm analysis and computational kernel optimization",
-        "Cross-platform validation and reproducibility verification",
-        "Performance benchmarking and GPU acceleration (10-1000x speedups)",
-        "Phased migration strategies with backward compatibility"
-      ],
-      "triggers": [
-        "Fortran/MATLAB/C legacy code modernization requests",
-        "Scientific algorithm migration to modern frameworks",
-        "GPU acceleration requirements for CPU-only legacy code",
-        "Numerical validation and bit-level accuracy preservation",
-        "Hybrid legacy-modern integration (wrappers, phased migration)",
-        "Research code reproducibility and cross-platform validation",
-        "Performance optimization of migrated scientific code"
-      ],
-      "improvements": "v1.0.3: Enhanced with algorithm analysis framework, numerical accuracy guide, framework migration strategies, performance optimization techniques, integration testing patterns, and scientific computing best practices documentation. Maintains chain-of-thought reasoning and Constitutional AI principles from v1.0.2."
-    }
-  ],
-  "commands": [
-    {
-      "id": "adopt-code",
-      "name": "/adopt-code",
-      "file": "commands/adopt-code.md",
-      "description": "Comprehensive scientific code adoption and modernization workflow with systematic analysis, framework selection, and validation",
-      "status": "active",
-      "version": "1.0.5",
-      "execution_modes": {
-        "quick": {
-          "time": "30-45 minutes",
-          "scope": "Essential codebase analysis and migration strategy recommendation",
-          "use_case": "Quick assessment, feasibility studies, initial planning"
-        },
-        "standard": {
-          "time": "1-2 hours",
-          "scope": "Comprehensive analysis with framework selection and initial implementation",
-          "use_case": "Full migration workflow (default mode)",
-          "default": true
-        },
-        "comprehensive": {
-          "time": "3-5 hours",
-          "scope": "Complete migration with validation, benchmarking, and production integration",
-          "use_case": "Critical migrations, production deployments, full validation required"
-        }
-      },
-      "optimization": {
-        "before": "308 lines",
-        "after": "306 lines",
-        "external_docs": "6 files (~2,400 lines)",
-        "enhancement": "Added execution modes, external documentation references, comprehensive metadata"
-      }
-    }
   ],
   "features": [
     "Systematic 6-phase migration workflow (Code Understanding \u2192 Numerical Accuracy \u2192 Framework Migration \u2192 Performance Optimization \u2192 Integration \u2192 Validation)",

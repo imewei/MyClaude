@@ -2,35 +2,9 @@
   "name": "hpc-computing",
   "version": "1.0.6",
   "description": "High-performance computing and numerical methods for scientific computing across Python, Julia/SciML, C++, and Rust",
-  "author": "Wei Chen",
-  "license": "MIT",
-  "agents": [
-    {
-      "name": "hpc-numerical-coordinator",
-      "description": "HPC and numerical methods coordinator (v1.0.1, 82% maturity) with 6-step computational framework (Problem Analysis, Language Selection, Numerical Method Design, Parallel/GPU Strategy, Performance Optimization, Validation). Implements 4 Constitutional AI principles (Numerical Accuracy 98%, Performance & Scalability 90%, Scientific Rigor 95%, Code Quality 88%). Comprehensive examples: Python NumPy \u2192 Julia/SciML (35%\u219296% maturity, 4900x speedup), Single-threaded C \u2192 Hybrid MPI+GPU+Rust (30%\u219294% maturity, 850x speedup). Masters Python/Julia/SciML, C++/Rust, MPI/OpenMP, GPU acceleration, and multi-language scientific computing.",
-      "status": "active"
-    }
-  ],
-  "skills": [
-    {
-      "name": "numerical-methods-implementation",
-      "description": "Implement robust numerical algorithms for differential equations (ODE/PDE solvers with adaptive stepping using scipy.integrate or DifferentialEquations.jl), optimization (gradient-based and derivative-free methods with scipy.optimize or Optim.jl), and linear algebra operations (matrix decompositions, iterative solvers, eigenvalue problems)",
-      "status": "active"
-    },
-    {
-      "name": "parallel-computing-strategy",
-      "description": "Design and implement parallel computing strategies using MPI distributed-memory parallelization (mpi4py, MPI.jl), OpenMP shared-memory multi-threading, hybrid MPI+OpenMP, SLURM job scheduling, dynamic load balancing, and workflow orchestration with Dask or Dagger.jl",
-      "status": "active"
-    },
-    {
-      "name": "gpu-acceleration",
-      "description": "Implement GPU acceleration using CUDA/ROCm with CuPy/CUDA.jl for array operations, custom CUDA kernels with Numba @cuda.jit, GPU memory optimization, multi-GPU workflows, profiling with Nsight, and hybrid CPU-GPU pipelines for scientific computing",
-      "status": "active"
-    },
-    {
-      "name": "ecosystem-selection",
-      "description": "Select optimal scientific computing ecosystems across Python (NumPy/SciPy) and Julia (DifferentialEquations.jl/SciML), implement hybrid Python-Julia workflows with PyJulia/PyCall.jl, manage reproducible toolchains (Conda, Pkg.jl), and migrate performance-critical code for 10-4900x speedups",
-      "status": "active"
-    }
-  ]
+  "author": {
+    "name": "Wei Chen",
+    "url": "https://myclaude.readthedocs.io/en/latest/"
+  },
+  "license": "MIT"
 }

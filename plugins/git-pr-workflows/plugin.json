@@ -21,65 +21,9 @@
     "onboarding"
   ],
   "category": "devops",
-  "author": "Wei Chen",
-  "license": "MIT",
-  "agents": [
-    {
-      "id": "code-reviewer",
-      "file": "agents/code-reviewer.md",
-      "name": "Code Reviewer",
-      "description": "Elite code review expert (v1.0.3, 78% maturity) with 6-step Chain-of-Thought framework (Context Analysis, Automated Tools, Manual Review, Security, Performance, Feedback Synthesis). Implements 4 Constitutional AI principles (Security-First 95%, Production Reliability 90%, Performance Optimization 88%, Code Quality 85%). Comprehensive examples: SQL injection prevention (30%\u219292.5% maturity), N+1 query optimization (40%\u219291% maturity). Masters OWASP Top 10, static analysis tools, and production reliability practices.",
-      "status": "active"
-    }
-  ],
-  "commands": [
-    {
-      "id": "commit",
-      "file": "commands/commit.md",
-      "name": "/commit",
-      "version": "1.0.5",
-      "description": "Create intelligent atomic commits with automated analysis, quality validation, conventional commit format, and comprehensive external documentation (2,303 lines: branching strategies, commit patterns, PR reviews, onboarding)",
-      "status": "active"
-    },
-    {
-      "id": "git-workflow",
-      "file": "commands/git-workflow.md",
-      "name": "/git-workflow",
-      "version": "1.0.5",
-      "description": "Implement and optimize Git workflows with multi-agent orchestration, branching strategies (trunk-based, Git Flow, GitHub Flow), and merge patterns with external docs",
-      "status": "active"
-    },
-    {
-      "id": "onboard",
-      "file": "commands/onboard.md",
-      "name": "/onboard",
-      "version": "1.0.5",
-      "description": "Onboard new team members with comprehensive 30-60-90 day plans, role-specific playbooks, mentor guides, and best practices from external onboarding-playbook.md",
-      "status": "active"
-    },
-    {
-      "id": "pr-enhance",
-      "file": "commands/pr-enhance.md",
-      "name": "/pr-enhance",
-      "version": "1.0.5",
-      "description": "Enhance pull requests with automated analysis, review best practices, comprehensive templates, and quality guidelines from external pr-review-best-practices.md",
-      "status": "active"
-    }
-  ],
-  "skills": [
-    {
-      "id": "git-pr-patterns",
-      "directory": "skills/Git & PR Patterns",
-      "name": "Git & PR Patterns",
-      "description": "Git workflow patterns, branching strategies, and pull request best practices",
-      "version": "1.0.5"
-    },
-    {
-      "id": "git-advanced-workflows",
-      "directory": "skills/git-advanced-workflows",
-      "name": "Git Advanced Workflows",
-      "description": "Master advanced Git including interactive rebase, cherry-pick, bisect, worktrees, and reflog for clean history and recovery",
-      "version": "1.0.5"
-    }
-  ]
+  "author": {
+    "name": "Wei Chen",
+    "url": "https://myclaude.readthedocs.io/en/latest/"
+  },
+  "license": "MIT"
 }

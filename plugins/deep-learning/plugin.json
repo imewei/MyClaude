@@ -6,50 +6,6 @@
     "name": "Wei Chen",
     "url": "https://myclaude.readthedocs.io/en/latest/"
   },
-  "agents": [
-    {
-      "name": "neural-architecture-engineer",
-      "description": "Neural architecture specialist (v1.0.1, 75%\u219286% maturity) with 5-step design framework, 4 Constitutional AI principles, and multi-framework expertise (Flax, Equinox, Haiku, PyTorch). Includes comprehensive examples: Vision Transformer implementation and architecture debugging workflow.",
-      "status": "active"
-    },
-    {
-      "name": "neural-network-master",
-      "description": "Deep learning theory expert (v1.0.1, 78%\u219287% maturity) with 4-step diagnostic framework, 3 Constitutional AI principles, and pedagogical excellence. Specializes in mathematical foundations, optimization theory, training diagnostics, and research translation with comprehensive examples.",
-      "status": "active"
-    }
-  ],
-  "skills": [
-    {
-      "name": "neural-network-mathematics",
-      "description": "Mathematical foundations for neural networks (linear algebra, calculus, probability, optimization, information theory)",
-      "status": "active"
-    },
-    {
-      "name": "training-diagnostics",
-      "description": "Systematic diagnosis and resolution of training issues (gradient problems, loss curves, convergence analysis)",
-      "status": "active"
-    },
-    {
-      "name": "research-paper-implementation",
-      "description": "Framework for translating research papers into working implementations",
-      "status": "active"
-    },
-    {
-      "name": "model-optimization-deployment",
-      "description": "Model optimization (quantization, pruning, distillation) and deployment strategies",
-      "status": "active"
-    },
-    {
-      "name": "neural-architecture-patterns",
-      "description": "Design patterns and best practices for neural architectures (CNNs, RNNs, transformers)",
-      "status": "active"
-    },
-    {
-      "name": "deep-learning-experimentation",
-      "description": "Experiment design, hyperparameter tuning, ablation studies, and reproducible research",
-      "status": "active"
-    }
-  ],
   "keywords": [
     "deep-learning",
     "neural-networks",

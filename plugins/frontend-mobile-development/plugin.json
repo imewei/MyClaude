@@ -21,33 +21,10 @@
     "component-architecture"
   ],
   "category": "development",
-  "author": "Wei Chen",
+  "author": {
+    "name": "Wei Chen",
+    "url": "https://myclaude.readthedocs.io/en/latest/"
+  },
   "license": "MIT",
-  "agents": [
-    {
-      "id": "frontend-developer",
-      "file": "agents/frontend-developer.md",
-      "name": "Frontend Developer",
-      "description": "Frontend expert (v1.0.3, 72%\u219284% maturity) with 5-step Development Framework (Requirements Analysis, Architecture Selection, Implementation, Performance & Accessibility Optimization, Testing & Deployment). Implements 4 Constitutional AI principles (Performance-First 90%, Accessibility-First 95%, Type Safety 88%, Error Handling 85%). Comprehensive examples: Server Components with streaming data & Suspense (91.5% maturity), forms with Server Actions & optimistic updates (92.8% maturity). Expert in React 19, Next.js 15, TypeScript, Core Web Vitals optimization, WCAG 2.1 AA compliance, and production-ready architecture.",
-      "status": "active"
-    },
-    {
-      "id": "mobile-developer",
-      "file": "agents/mobile-developer.md",
-      "name": "Mobile Developer",
-      "description": "Mobile specialist (v1.0.3, 75%\u219286% maturity) with 5-step Mobile Development Framework (Platform & Architecture Analysis, State Management & Data Sync, Platform-Specific Optimization, Testing & Quality Assurance, Deployment & Monitoring). Implements 4 Constitutional AI principles (Cross-Platform Consistency 92%, Offline-First Architecture 88%, Performance & Battery Optimization 90%, App Store Optimization 85%). Expert in React Native with New Architecture, Flutter 3.x, native iOS/Android development, offline-first patterns, and cross-platform optimization.",
-      "status": "active"
-    }
-  ],
-  "commands": [
-    {
-      "id": "component-scaffold",
-      "file": "commands/component-scaffold.md",
-      "name": "/component-scaffold",
-      "description": "Orchestrate production-ready React/React Native component generation with multi-mode execution (quick: 5-10min analysis, standard: 15-30min full component, deep: 30-60min with tests/Storybook/a11y), TypeScript interfaces, styling approaches (CSS Modules/styled-components/Tailwind), and phase-based workflow (requirements, generation, styling, testing, validation)",
-      "version": "1.0.5",
-      "status": "active"
-    }
-  ],
   "skills": []
 }

@@ -2,7 +2,10 @@
   "name": "quality-engineering",
   "version": "1.0.6",
   "description": "Comprehensive quality assurance, validation, and correctness verification tools with automated scripts for security scanning, testing, linting, performance profiling, accessibility checks, and plugin syntax validation. v1.0.3 enhances both commands with 3 execution modes (quick/standard/enterprise) and 8 comprehensive external documentation files (~6,455 lines).",
-  "author": "Wei Chen",
+  "author": {
+    "name": "Wei Chen",
+    "url": "https://myclaude.readthedocs.io/en/latest/"
+  },
   "license": "MIT",
   "keywords": [
     "quality",
@@ -17,33 +20,5 @@
     "performance",
     "accessibility",
     "plugin-validation"
-  ],
-  "commands": [
-    {
-      "name": "/double-check",
-      "description": "Comprehensive multi-dimensional validation with 3 execution modes (quick: 30min-1h, standard: 2-4h, enterprise: 1-2d), automated testing, security scanning, and comprehensive external documentation",
-      "status": "active",
-      "version": "1.0.5"
-    },
-    {
-      "name": "/lint-plugins",
-      "description": "Validate Claude Code plugin syntax and structure with 3 execution modes (quick: 30s-2min syntax check, standard: 2-5min full validation, enterprise: 5-10min dependency analysis), auto-fix capabilities, and comprehensive external documentation",
-      "status": "active",
-      "version": "1.0.5"
-    }
-  ],
-  "skills": [
-    {
-      "name": "comprehensive-validation-framework",
-      "description": "Systematic multi-dimensional validation framework for code, APIs, and systems with automated scripts (run_all_validations.py, security_scan.py, test_runner.py, lint_check.py, performance_profiler.py, accessibility_check.py, build_verify.py) and deep-dive reference guides for security (OWASP Top 10, OAuth 2.0, JWT, input validation, cryptography), performance optimization (profiling tools, N+1 queries, caching strategies, database optimization), testing best practices (testing pyramid, AAA pattern, mocking, property-based testing), production readiness (health checks, structured logging, metrics, circuit breakers, deployment strategies), accessibility standards (WCAG 2.1 principles, ARIA patterns, semantic HTML), and breaking changes (SemVer, deprecation, API versioning, database migrations) across 10 critical validation dimensions: scope/requirements, functional correctness, code quality, security, performance, accessibility, testing coverage, breaking changes, operations readiness, and documentation completeness",
-      "status": "active",
-      "version": "1.0.5"
-    },
-    {
-      "name": "plugin-syntax-validator",
-      "description": "Comprehensive validation framework for Claude Code plugin syntax, structure, and cross-references with automated scripts/validate_plugin_syntax.py script for detecting and auto-fixing common errors (double colons, missing namespaces, invalid references). Validates plugin command files (*.md) for correct agent/skill namespace syntax (plugin:agent single colon format), checks agent file existence in plugins/*/agents/*.md, generates comprehensive validation reports with file:line error locations and actionable suggestions, supports CI/CD integration with GitHub Actions and pre-commit hooks, and maintains plugin quality standards before deployment or marketplace submission",
-      "status": "active",
-      "version": "1.0.5"
-    }
   ]
 }

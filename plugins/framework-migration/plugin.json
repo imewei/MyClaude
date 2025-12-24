@@ -23,74 +23,9 @@
     "zero-downtime"
   ],
   "category": "development",
-  "author": "Wei Chen",
-  "license": "MIT",
-  "agents": [
-    {
-      "id": "architect-review",
-      "file": "agents/architect-review.md",
-      "name": "Architect Reviewer",
-      "description": "Master software architect (v1.0.1, 75%\u219289% maturity) with 5-step Architecture Review Framework (Context Analysis, Pattern Evaluation, Scalability Assessment, Security Review, Migration Strategy). Implements 4 Constitutional AI principles (Architectural Integrity 92%, Scalability Engineering 88%, Security-First Design 90%, Pragmatic Trade-offs 85%). Comprehensive examples: microservices bounded context review with CQRS/Saga patterns, monolith to serverless migration with cost analysis. Expert in clean architecture, DDD, event-driven systems, SOLID principles, and distributed systems design.",
-      "status": "active"
-    },
-    {
-      "id": "legacy-modernizer",
-      "file": "agents/legacy-modernizer.md",
-      "name": "Legacy Modernizer",
-      "description": "Legacy modernization specialist (v1.0.1, 70%\u219283% maturity) with 6-step Legacy Modernization Framework (Legacy Assessment, Strategy Selection, Test Coverage, Incremental Refactoring, Dependency Upgrade, Deployment & Monitoring). Implements 4 Constitutional AI principles (Backward Compatibility 95%, Test-First Refactoring 90%, Incremental Strangler Fig 92%, Technical Debt Reduction 85%). Comprehensive examples: jQuery to React migration (50K LOC, 12-phase rollout, 82% test coverage), Java 8 to Java 21 upgrade (15 microservices, blue-green deployment, -12% latency). Expert in framework migrations, dependency management, architecture modernization, and technical debt reduction with zero breaking changes.",
-      "status": "active"
-    }
-  ],
-  "commands": [
-    {
-      "id": "code-migrate",
-      "file": "commands/code-migrate.md",
-      "name": "/code-migrate",
-      "description": "Orchestrate systematic code migration between frameworks with test-first discipline, multi-mode execution (quick/standard/deep), and phased workflow (assessment, testing, transformation, validation, deployment)",
-      "version": "1.0.5",
-      "status": "active"
-    },
-    {
-      "id": "deps-upgrade",
-      "file": "commands/deps-upgrade.md",
-      "name": "/deps-upgrade",
-      "description": "Safe dependency upgrade orchestration with security-first prioritization, breaking change management, and incremental/batch strategies (quick: security patches, standard: minor/patch, deep: major versions)",
-      "version": "1.0.5",
-      "status": "active"
-    },
-    {
-      "id": "legacy-modernize",
-      "file": "commands/legacy-modernize.md",
-      "name": "/legacy-modernize",
-      "description": "Comprehensive legacy modernization with Strangler Fig pattern, multi-agent orchestration (architect, security, testing, deployment), and zero-downtime transformation",
-      "version": "1.0.5",
-      "status": "active"
-    }
-  ],
-  "skills": [
-    {
-      "id": "angular-migration",
-      "directory": "skills/angular-migration",
-      "name": "Angular Migration",
-      "description": "AngularJS (1.x) to Angular (2+) migration with hybrid mode, component conversion, dependency injection updates, routing migration, and TypeScript adoption. 20+ use cases covering .component.ts, .module.ts, .service.ts files, ngUpgrade patterns, and incremental migration strategies."
-    },
-    {
-      "id": "react-modernization",
-      "directory": "skills/react-modernization",
-      "name": "React Modernization",
-      "description": "React 16\u219217\u219218 upgrades, class to hooks migration, concurrent features adoption, and codemod automation. 26+ use cases covering .jsx, .tsx files, useState/useEffect/useContext hooks, Suspense, transitions, and TypeScript conversion."
-    },
-    {
-      "id": "database-migration",
-      "directory": "skills/database-migration",
-      "name": "Database Migration",
-      "description": "Database schema migrations across ORMs (Sequelize, TypeORM, Prisma, Django) with zero-downtime strategies and rollback procedures. 24+ use cases covering migration files, schema transformations, data backfills, and production-safe deployment patterns."
-    },
-    {
-      "id": "dependency-upgrade",
-      "directory": "skills/dependency-upgrade",
-      "name": "Dependency Upgrade",
-      "description": "Major dependency version upgrades with semantic versioning, compatibility analysis, and automated updates. 26+ use cases covering package.json, lock files, security audits, peer dependency resolution, and Renovate/Dependabot workflows."
-    }
-  ]
+  "author": {
+    "name": "Wei Chen",
+    "url": "https://myclaude.readthedocs.io/en/latest/"
+  },
+  "license": "MIT"
 }

@@ -21,80 +21,9 @@
     "semantic-search"
   ],
   "category": "development",
-  "author": "Wei Chen",
-  "license": "MIT",
-  "agents": [
-    {
-      "id": "ai-engineer",
-      "file": "agents/ai-engineer.md",
-      "name": "AI Engineer",
-      "description": "Production-ready LLM application development with chain-of-thought reasoning, constitutional AI self-correction, and systematic architecture design for RAG systems, AI agents, and enterprise AI integrations",
-      "status": "active",
-      "version": "1.0.5"
-    },
-    {
-      "id": "prompt-engineer",
-      "file": "agents/prompt-engineer.md",
-      "name": "Prompt Engineer",
-      "description": "Advanced prompt engineering with meta-prompting framework, constitutional principles, iterative refinement, and performance tracking for production prompt systems",
-      "status": "active",
-      "version": "1.0.5"
-    }
-  ],
-  "commands": [
-    {
-      "id": "ai-assistant",
-      "file": "commands/ai-assistant.md",
-      "name": "/ai-assistant",
-      "description": "Build AI assistants with LLMs, RAG, and conversational AI patterns",
-      "status": "active",
-      "version": "1.0.5"
-    },
-    {
-      "id": "langchain-agent",
-      "file": "commands/langchain-agent.md",
-      "name": "/langchain-agent",
-      "description": "Create LangChain agents with tools, memory, and complex reasoning",
-      "status": "active",
-      "version": "1.0.5"
-    },
-    {
-      "id": "prompt-optimize",
-      "file": "commands/prompt-optimize.md",
-      "name": "/prompt-optimize",
-      "description": "Optimize prompts for better LLM performance and accuracy",
-      "status": "active",
-      "version": "1.0.5"
-    }
-  ],
-  "skills": [
-    {
-      "id": "prompt-engineering-patterns",
-      "directory": "skills/prompt-engineering-patterns",
-      "name": "Prompt Engineering Patterns",
-      "description": "Chain-of-thought reasoning, few-shot learning, production prompt templates with variable interpolation, and optimization techniques for LLM applications",
-      "version": "1.0.5"
-    },
-    {
-      "id": "rag-implementation",
-      "directory": "skills/rag-implementation",
-      "name": "RAG Implementation",
-      "description": "Production RAG systems with vector databases, embeddings, hybrid search, reranking, and chunking strategies for knowledge-grounded AI",
-      "version": "1.0.5"
-    },
-    {
-      "id": "langchain-architecture",
-      "directory": "skills/langchain-architecture",
-      "name": "LangChain Architecture",
-      "description": "LangChain agents, chains, memory systems, tool integration, and callback handlers for sophisticated LLM workflows",
-      "version": "1.0.5"
-    },
-    {
-      "id": "llm-evaluation",
-      "directory": "skills/llm-evaluation",
-      "name": "LLM Evaluation",
-      "description": "Automated metrics (BLEU, ROUGE, BERTScore), LLM-as-judge patterns, A/B testing, and regression detection for AI quality assurance",
-      "version": "1.0.5"
-    }
-  ]
+  "author": {
+    "name": "Wei Chen",
+    "url": "https://myclaude.readthedocs.io/en/latest/"
+  },
+  "license": "MIT"
 }

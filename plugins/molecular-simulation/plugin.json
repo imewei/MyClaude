@@ -2,35 +2,9 @@
   "name": "molecular-simulation",
   "version": "1.0.6",
   "description": "Molecular dynamics and multiscale simulation with chain-of-thought reasoning framework, constitutional AI validation, structured output templates, and comprehensive polymer melt example for atomistic modeling across LAMMPS, GROMACS, HOOMD-blue with ML force fields",
-  "author": "Wei Chen",
-  "license": "MIT",
-  "agents": [
-    {
-      "name": "simulation-expert",
-      "description": "MD and multiscale simulation expert with 6-phase chain-of-thought reasoning framework (problem analysis \u2192 method selection \u2192 system setup \u2192 simulation execution \u2192 analysis \u2192 validation), constitutional AI principles for physical rigor and experimental validation, structured output templates with system description/protocol/results/interpretation, and detailed polymer melt example (PE viscosity prediction with Green-Kubo, 7% agreement with experimental rheology). Expertise in classical MD (LAMMPS, GROMACS, HOOMD-blue), ML force fields (NequIP, MACE, DeepMD), DPD, coarse-graining, and trajectory analysis.",
-      "status": "active"
-    }
-  ],
-  "skills": [
-    {
-      "name": "md-simulation-setup",
-      "description": "Set up and execute classical MD simulations using LAMMPS, GROMACS, and HOOMD-blue. Enhanced with comprehensive file type coverage (LAMMPS input scripts, GROMACS topology files, HOOMD Python scripts), force field selection guidance, ensemble configuration, equilibration protocols, and HPC optimization strategies.",
-      "status": "active"
-    },
-    {
-      "name": "ml-force-fields",
-      "description": "Develop and deploy ML force fields (NequIP, MACE, DeepMD) with near-DFT accuracy and 1000-10000x speedups. Enhanced with active learning workflows, uncertainty quantification, training dataset design, and production deployment in LAMMPS/GROMACS.",
-      "status": "active"
-    },
-    {
-      "name": "multiscale-modeling",
-      "description": "Design multiscale simulations bridging atomistic to mesoscale using coarse-graining, DPD, and nanoscale DEM. Enhanced with systematic coarse-graining protocols, MARTINI implementation, DPD parameterization, backmapping procedures, and QM/MM coupling.",
-      "status": "active"
-    },
-    {
-      "name": "trajectory-analysis",
-      "description": "Analyze MD trajectories for structural, thermodynamic, mechanical, and transport properties. Enhanced with comprehensive property extraction (RDF, S(q), diffusion, viscosity), experimental validation workflows, Python analysis scripts, and visualization best practices.",
-      "status": "active"
-    }
-  ]
+  "author": {
+    "name": "Wei Chen",
+    "url": "https://myclaude.readthedocs.io/en/latest/"
+  },
+  "license": "MIT"
 }

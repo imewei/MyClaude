@@ -2,53 +2,12 @@
   "name": "jax-implementation",
   "version": "1.0.6",
   "description": "Production-ready JAX-based scientific computing with systematic Chain-of-Thought frameworks, Constitutional AI principles, enhanced skill discoverability, and comprehensive response verification protocols for NumPyro Bayesian inference (with ArviZ integration and Consensus Monte Carlo), Flax NNX neural networks, NLSQ optimization (with Adaptive Hybrid Streaming and Parameter Normalization), and physics simulations with measurable quality targets and proven optimization patterns",
-  "author": "Wei Chen",
+  "author": {
+    "name": "Wei Chen",
+    "url": "https://myclaude.readthedocs.io/en/latest/"
+  },
   "license": "MIT",
-  "agents": [
-    {
-      "name": "jax-pro",
-      "description": "Master JAX programming with 6-step decision framework (Problem Analysis, Transformation Strategy, Performance Optimization, Flax NNX Architecture, Debugging, Production Readiness). Implements 4 Constitutional AI principles (Functional Purity 95%, Performance 90%, Code Quality 88%, Ecosystem Best Practices 92%). Comprehensive examples: NumPy \u2192 JAX (112x single-GPU, 562x multi-GPU speedup), Flax Linen \u2192 NNX (10x faster checkpointing, 52% code reduction). Expert in JAX transformations, Flax NNX, Optax, Orbax, and GPU/TPU acceleration.",
-      "status": "active"
-    },
-    {
-      "name": "numpyro-pro",
-      "description": "Master NumPyro Bayesian inference with 6-step framework (Bayesian Formulation, Model Specification, Inference Strategy, Convergence Diagnostics, Performance Optimization, Production Deployment). Implements 4 Constitutional AI principles (Statistical Rigor 95%, Computational Efficiency 90%, Model Quality 88%, NumPyro Best Practices 92%). Comprehensive examples: Simple Regression \u2192 Hierarchical Bayesian (R-hat < 1.01, 50x GPU speedup), Centered \u2192 Non-Centered Parameterization (100% divergence reduction, 40x ESS improvement). Expert in MCMC (NUTS, HMC), variational inference (SVI), and JAX-accelerated probabilistic programming.",
-      "status": "active"
-    },
-    {
-      "name": "jax-scientist",
-      "description": "Master computational physics with JAX leveraging 6-step framework (Physics Analysis, JAX-Physics Integration, Numerical Methods, Performance & Scaling, Validation, Production Deployment). Implements 4 Constitutional AI principles (Physical Correctness 94%, Computational Efficiency 90%, Code Quality 88%, Domain Library Best Practices 91%). Comprehensive examples: LAMMPS \u2192 JAX-MD (100x parameter optimization speedup, 50x GPU speedup), Finite Difference \u2192 PINN (50x faster, continuous solution, inverse problems). Expert in JAX-MD, JAX-CFD, PINNs, quantum computing, and differentiable physics.",
-      "status": "active"
-    },
-    {
-      "name": "nlsq-pro",
-      "description": "Master GPU-accelerated nonlinear least squares with 6-step framework (Problem Characterization, Algorithm Selection, Performance Optimization, Convergence & Robustness, Validation, Production Deployment). Implements 4 Constitutional AI principles (Numerical Stability 92%, Computational Efficiency 90%, Code Quality 85%, NLSQ Best Practices 88%). Features Adaptive Hybrid Streaming Optimizer with Parameter Normalization for multi-scale parameters. Comprehensive examples: SciPy \u2192 NLSQ GPU (265x speedup, 12x accuracy improvement), Batch L2 \u2192 Streaming Huber (100x memory reduction, 10x outlier robustness). Expert in JAX-accelerated optimization, HybridStreamingConfig presets, ParameterNormalizer, robust loss functions, and production curve fitting.",
-      "status": "active"
-    }
-  ],
   "commands": [],
-  "skills": [
-    {
-      "name": "jax-core-programming",
-      "description": "Master JAX functional programming for high-performance array computing and machine learning. Use when writing JAX code (import jax, jax.numpy), implementing transformations (jit, vmap, pmap, grad), building Flax NNX models, configuring Optax optimizers, implementing Orbax checkpointing, debugging tracer errors, scaling to multi-device GPU/TPU, or integrating with JAX ecosystem (Flax, Optax, Orbax, NumPyro). Includes comprehensive examples, performance patterns, and production best practices.",
-      "status": "active"
-    },
-    {
-      "name": "numpyro-core-mastery",
-      "description": "Master NumPyro probabilistic programming for Bayesian inference using JAX. Use when building Bayesian models (numpyro.sample), implementing MCMC (NUTS, HMC), running variational inference (SVI, AutoGuides), working with hierarchical models, diagnosing convergence (R-hat, ESS, divergences), implementing non-centered parameterization, building probabilistic ML models (BNN, GP), performing model comparison (WAIC, LOO), or deploying production Bayesian pipelines. Includes MCMC/VI workflows, diagnostics, and real-world applications.",
-      "status": "active"
-    },
-    {
-      "name": "jax-physics-applications",
-      "description": "Comprehensive workflows for physics simulations using JAX-based libraries (JAX-MD, JAX-CFD, PINNs). Use when implementing molecular dynamics (energy potentials, integrators), building CFD solvers (Navier-Stokes, turbulence), designing PINNs with PDE constraints, developing quantum algorithms (VQE, QAOA), coupling multi-physics domains, validating physics correctness (energy/mass/momentum conservation), implementing differentiable physics, or scaling physics simulations to GPU/TPU. Includes complete MD/CFD/PINN/quantum examples with validation.",
-      "status": "active"
-    },
-    {
-      "name": "nlsq-core-mastery",
-      "description": "GPU/TPU-accelerated nonlinear least squares optimization using NLSQ library with JAX. Use when fitting nonlinear models to data (from nlsq import CurveFit), performing parameter estimation with large datasets (>10K points, 150-270x faster than SciPy), implementing robust fitting with outliers (Huber, Cauchy loss), handling streaming optimization for massive datasets, using Adaptive Hybrid Streaming for multi-scale parameters (method='hybrid_streaming', HybridStreamingConfig presets, ParameterNormalizer), working with exponential decay/dose-response/multi-peak fitting, comparing TRF vs LM vs hybrid_streaming algorithms, diagnosing convergence, or deploying production curve fitting in physics/biology/chemistry/engineering. Includes complete examples, benchmarks, and diagnostics.",
-      "status": "active"
-    }
-  ],
   "keywords": [
     "jax",
     "jit-compilation",
