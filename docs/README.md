@@ -7,19 +7,24 @@ This directory contains the Sphinx documentation for the Claude Code Plugin Mark
 ### Prerequisites
 
 - Python >= 3.12
-- Virtual environment (recommended)
+- [uv](https://docs.astral.sh/uv/) package manager (recommended)
 
 ### Installation
 
-1. Create and activate a virtual environment:
+1. Install uv (if not already installed):
    ```bash
-   python3 -m venv .venv
+   curl -LsSf https://astral.sh/uv/install.sh | sh
+   ```
+
+2. Create and activate a virtual environment:
+   ```bash
+   uv venv .venv
    source .venv/bin/activate  # On Windows: .venv\Scripts\activate
    ```
 
-2. Install dependencies:
+3. Install dependencies:
    ```bash
-   pip install -r requirements.txt
+   uv pip install -r requirements.txt
    ```
 
 ### Building Documentation
@@ -54,8 +59,10 @@ This will start a development server at http://localhost:8000 that automatically
 docs/
 ├── conf.py                  # Sphinx configuration
 ├── index.rst                # Main landing page
+├── requirements.txt         # Python dependencies (pinned versions)
 ├── _static/                 # Static assets (CSS, images, etc.)
 ├── _templates/              # Custom Sphinx templates
+├── _ext/                    # Custom Sphinx extensions
 ├── categories/              # Category landing pages
 ├── plugins/                 # Individual plugin documentation pages
 └── guides/                  # Quick-start guides and tutorials
@@ -87,6 +94,32 @@ Link to other documentation pages using the `:doc:` directive:
 :doc:`/categories/scientific-computing`
 ```
 
+## Dependency Management
+
+This project uses **uv** for Python package management. All dependencies are pinned in `requirements.txt` for reproducible builds.
+
+### Updating Dependencies
+
+To update dependencies while maintaining compatibility:
+
+```bash
+# Update a specific package
+uv pip install --upgrade sphinx
+
+# Freeze current versions
+uv pip freeze > requirements.txt
+```
+
+### Current Versions
+
+| Package | Version |
+|---------|---------|
+| sphinx | 8.1.3 |
+| sphinx-rtd-theme | 3.1.0rc1 |
+| sphinx-autobuild | 2025.8.25 |
+| sphinx-copybutton | 0.5.2 |
+| myst-parser | 4.0.1 |
+
 ## Testing
 
 Run the Sphinx infrastructure tests:
@@ -96,7 +129,9 @@ pytest test-corpus/sphinx-infrastructure/test_sphinx_build.py -v
 
 ## CI/CD
 
-Documentation is automatically built and validated on every commit via GitHub Actions. See `.github/workflows/sphinx-docs.yml` for details.
+Documentation is automatically built and validated:
+- **Read the Docs**: Automatic builds on push to main
+- **GitHub Actions**: See `.github/workflows/docs.yml`
 
 ## Versioning
 
@@ -115,6 +150,7 @@ The following Sphinx extensions are enabled:
 - `sphinx.ext.intersphinx` - Link to other project documentation
 - `sphinx.ext.viewcode` - Add links to highlighted source code
 - `sphinx_copybutton` - Add copy button to code blocks
+- `plugin_directives` - Custom directives for plugin documentation
 
 ## Troubleshooting
 
@@ -130,7 +166,14 @@ make html
 
 If extensions fail to load, ensure all requirements are installed:
 ```bash
-pip install -r requirements.txt
+uv pip install -r requirements.txt
+```
+
+### Sphinx Version Issues
+
+This project is tested with Sphinx 8.1.3. If you encounter issues with newer versions:
+```bash
+uv pip install sphinx==8.1.3
 ```
 
 ## Contributing
@@ -148,3 +191,4 @@ When adding new documentation:
 - [Sphinx Documentation](https://www.sphinx-doc.org/)
 - [RST Primer](https://www.sphinx-doc.org/en/master/usage/restructuredtext/basics.html)
 - [Read the Docs Theme](https://sphinx-rtd-theme.readthedocs.io/)
+- [uv Documentation](https://docs.astral.sh/uv/)
