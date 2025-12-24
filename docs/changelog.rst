@@ -54,7 +54,7 @@ Added
 **Agent Enhancements (74 agents)**
 
 - Pre-Response Validation Framework with 5 mandatory self-checks and 5 quality gates
-- "When to Invoke This Agent" sections with ✅ USE FOR and ❌ DELEGATE TO tables
+- "When to Invoke This Agent" sections with USE FOR and DELEGATE TO tables
 - Decision Trees for agent routing and selection
 - Enhanced Constitutional AI Principles with:
   - Target percentages (95-100%)
