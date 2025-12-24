@@ -63,7 +63,7 @@ Skills
 
 .. skill:: e2e-testing-patterns
 
-   Build reliable end-to-end tests with Playwright and Cypress for web application testing, browser automation, and CI/CD integration. Use when writing or editing E2E test files (*.spec.ts, *.spec.js, *.test.ts, *.cy.ts, *.cy.js). Use when configuring Playwright or Cypress. Use when implementing Page Object Model patterns for test organization.
+   Build reliable end-to-end tests with Playwright and Cypress for web application testing, browser automation, and CI/CD integration. Use when writing or editing E2E test files (``*.spec.ts``, ``*.spec.js``, ``*.test.ts``, ``*.cy.ts``, ``*.cy.js``). Use when configuring Playwright or Cypress. Use when implementing Page Object Model patterns for test organization.
 
    **Status:** active
    **Version:** 1.0.6

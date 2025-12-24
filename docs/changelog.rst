@@ -32,7 +32,7 @@ Changed
 - ReadTheDocs configuration updated with uv package manager
 - All 31 plugin README.md files updated
 - All 31 plugin CHANGELOG.md files updated
-- All 31 docs/plugins/*.rst files updated
+- All 31 ``docs/plugins/*.rst`` files updated
 
 Previous Versions
 -----------------
