@@ -17,6 +17,82 @@ Version Format: ``MAJOR.MINOR.PATCH``
 Current Version
 ---------------
 
+v1.0.7 (2026-01-12) - Optimization & Documentation Release
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+This release brings major performance optimizations across all 31 plugins with 40-76% token reduction, new commands, API documentation, and theme migration.
+
+Added
+^^^^^
+
+**New Command**
+
+- ``/merge-all``: Branch consolidation command added to git-pr-workflows plugin (total commands: 48 -> 49)
+
+**API Documentation**
+
+- New ``docs/api/index.rst`` with comprehensive API reference overview
+- New ``docs/api/common.rst`` documenting data models (PluginMetadata, AgentConfig, SkillConfig, CommandConfig)
+- Python tools API documentation for loader.py and models.py modules
+
+**CI/CD Enhancements**
+
+- Added coverage job to documentation workflow
+- Added linkcheck job for validating documentation links
+- Enhanced GitHub Actions workflow in ``.github/workflows/docs.yml``
+
+Changed
+^^^^^^^
+
+**Plugin Optimization**
+
+- 40-76% token reduction across all 31 plugins for faster loading
+- Average ~50% reduction in prompt token usage
+- Optimized agent, skill, and command definitions
+
+**Theme Migration**
+
+- Migrated Sphinx documentation from sphinx-rtd-theme to Furo theme
+- Added light/dark mode CSS variables with purple brand colors
+- Enhanced navigation with keyboard shortcuts and top-of-page button
+
+**Version Updates**
+
+- All 31 plugin.json files updated to v1.0.7
+- All 74 agent definition files updated to v1.0.7
+- All 117 skill definition files updated to v1.0.7
+- All 48 command definition files updated to v1.0.7
+- All 31 plugin README.md files updated to v1.0.7
+- marketplace.json metadata updated to v1.0.7
+- ReadTheDocs configuration updated to Python 3.13
+
+**Documentation Updates**
+
+- Updated COMMANDS_LIST.md with merge-all command
+- Updated PLUGIN_CHEATSHEET.md with correct skills count (117)
+- Updated README.md version history and badges
+- git-pr-workflows: 4 -> 5 commands
+
+Fixed
+^^^^^
+
+- Skills count mismatch: corrected from 114 to 117 in PLUGIN_CHEATSHEET.md
+- Version consistency: updated 272 files with remaining 1.0.6 references
+- README.md version history accuracy for v1.0.7
+
+**Commits in this release:**
+
+- ``51c1c75`` docs: fix skills count and version history in documentation
+- ``86e0ce4`` fix(plugins): update version to 1.0.7 in all plugin READMEs
+- ``cf7a8bb`` fix(commands): update version to 1.0.7 in all command frontmatter
+- ``a92cb63`` fix(skills): update version to 1.0.7 in all skill frontmatter
+- ``27e5524`` fix(agents): update version to 1.0.7 in all agent frontmatter
+- ``c312d56`` chore(docs): update RTD config to v1.0.7 with Python 3.13
+- ``30cd9a0`` feat(release): bump to v1.0.7 with plugin optimizations
+
+Previous Versions
+-----------------
+
 v1.0.6 (2025-12-24) - Documentation Sync Release
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -44,14 +120,11 @@ Fixed
 - Removed Unicode emoji from changelog for LaTeX compatibility
 - Fixed Makefile PDF build target to use proper sphinx-build command
 
-Previous Versions
------------------
+- Plugin.json schema fix: convert author field from string to object format
+- Remove non-schema fields (agents, skills, commands arrays) for Claude Code compatibility
 
 v1.0.5 (2025-12-24) - Opus 4.5 Optimization Release
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Previous Versions
------------------
 
 v1.0.4 (2025-12-03) - Agent Optimization Release
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
