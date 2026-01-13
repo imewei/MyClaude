@@ -1,38 +1,24 @@
 {
   "name": "agent-orchestration",
-  "version": "1.0.6",
-  "description": "Multi-agent workflow coordination with production-ready optimization workflows, systematic agent improvement methodologies, and comprehensive documentation. Features executable slash commands with real-world examples showing 50-200x performance improvements.",
+  "displayName": "Agent Orchestration",
+  "version": "1.0.7",
+  "description": "Multi-agent workflow coordination with optimization workflows and systematic agent improvement methodologies.",
   "author": {
     "name": "Wei Chen",
     "url": "https://myclaude.readthedocs.io/en/latest/"
   },
+  "homepage": "https://github.com/imewei/MyClaude",
+  "repository": "https://github.com/imewei/MyClaude",
   "license": "MIT",
   "keywords": [
     "multi-agent",
     "orchestration",
     "workflow",
-    "coordination",
-    "distributed-systems",
-    "task-allocation",
-    "agent-communication",
-    "dag-workflow",
-    "async-execution",
-    "message-broker",
-    "team-assembly",
-    "fault-tolerance",
-    "performance-monitoring",
-    "metrics-collection",
-    "caching",
-    "load-balancing",
     "optimization",
-    "profiling",
-    "code-optimization",
-    "agent-improvement",
-    "prompt-engineering",
     "performance-tuning",
-    "scientific-computing",
-    "jax-optimization",
-    "api-performance",
-    "case-studies"
-  ]
+    "agent-improvement",
+    "distributed-systems",
+    "profiling"
+  ],
+  "category": "orchestration"
 }

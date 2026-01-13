@@ -9,7 +9,7 @@
 ---
 
 
-## What's New in v1.0.6
+## What's New in v1.0.7
 
 This release implements **Opus 4.5 optimization** with enhanced token efficiency and standardized documentation.
 
@@ -22,7 +22,7 @@ This release implements **Opus 4.5 optimization** with enhanced token efficiency
 - **Cross-Reference Tables**: Quick-reference format for delegation and integration patterns
 
 
-## What's New in v1.0.6 🎉
+## What's New in v1.0.7 🎉
 
 This release introduced **systematic Chain-of-Thought frameworks**, **Constitutional AI principles**, and **comprehensive examples** to all four agents, transforming them from capability-focused agents into production-ready systematic frameworks with measurable quality targets and proven patterns.
 

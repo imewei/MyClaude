@@ -5,7 +5,7 @@
 Comprehensive code documentation, explanation, and generation with AST-based analysis, visual diagrams, and automated documentation workflows. Features hub-and-spoke architecture achieving 54% command file reduction with comprehensive external documentation.
 
 
-## What's New in v1.0.6
+## What's New in v1.0.7
 
 This release implements **Opus 4.5 optimization** with enhanced token efficiency and standardized documentation.
 

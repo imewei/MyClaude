@@ -1,31 +1,24 @@
 {
   "name": "framework-migration",
   "displayName": "Framework Migration",
-  "description": "Comprehensive framework and legacy system modernization with systematic Chain-of-Thought migration frameworks, Constitutional AI principles, and proven Strangler Fig patterns. Expert guidance for safe, incremental upgrades with zero downtime and comprehensive test coverage.",
-  "version": "1.0.6",
-  "keywords": [
-    "migration",
-    "modernization",
-    "framework",
-    "upgrade",
-    "refactoring",
-    "legacy",
-    "react-migration",
-    "angular-migration",
-    "database-migration",
-    "dependency-upgrade",
-    "code-transformation",
-    "automated-refactoring",
-    "technology-upgrade",
-    "strangler-fig",
-    "backward-compatibility",
-    "test-first-refactoring",
-    "zero-downtime"
-  ],
-  "category": "development",
+  "version": "1.0.7",
+  "description": "Framework and legacy system modernization with systematic migration frameworks and proven Strangler Fig patterns for safe, incremental upgrades.",
   "author": {
     "name": "Wei Chen",
     "url": "https://myclaude.readthedocs.io/en/latest/"
   },
-  "license": "MIT"
+  "homepage": "https://github.com/imewei/MyClaude",
+  "repository": "https://github.com/imewei/MyClaude",
+  "license": "MIT",
+  "keywords": [
+    "migration",
+    "modernization",
+    "framework",
+    "refactoring",
+    "legacy",
+    "strangler-fig",
+    "zero-downtime",
+    "dependency-upgrade"
+  ],
+  "category": "development"
 }

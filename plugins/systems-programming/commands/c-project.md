@@ -7,9 +7,6 @@ execution_modes:
   quick: "1-2 hours"
   standard: "4-6 hours"
   enterprise: "1-2 days"
-workflow_type: "sequential"
-interactive_mode: true
-color: blue
 allowed-tools: Bash, Write, Read, Edit
 ---
 
@@ -21,8 +18,6 @@ Scaffold production-ready C projects with proper structure, build systems, testi
 
 $ARGUMENTS
 
----
-
 ## Mode Selection
 
 | Mode | Duration | Scope |
@@ -30,8 +25,6 @@ $ARGUMENTS
 | Quick | 1-2h | Basic Makefile, single-file, simple main.c with logger |
 | Standard (default) | 4-6h | Makefile + CMake, modular structure, tests, Valgrind |
 | Enterprise | 1-2d | CMake with feature detection, platform abstraction, CI/CD |
-
----
 
 ## Phase 1: Project Type Analysis
 
@@ -48,8 +41,6 @@ $ARGUMENTS
 - Enterprise: Multi-module with platform abstraction
 
 **Reference:** [C Project Structures](../docs/c-project/c-project-structures.md)
-
----
 
 ## Phase 2: Project Structure
 
@@ -72,8 +63,6 @@ project/
 ├── tests/test_main.c
 └── scripts/valgrind.sh
 ```
-
----
 
 ## Phase 3: Build System Generation
 
@@ -101,8 +90,6 @@ project/
 
 **Full reference:** [C Build Systems Guide](../docs/c-project/c-build-systems.md)
 
----
-
 ## Phase 4: Source Templates
 
 ### Core Components
@@ -116,8 +103,6 @@ project/
 | utils/ | Memory pools, string utilities | Enterprise |
 
 **Templates:** [C Project Structures Guide](../docs/c-project/c-project-structures.md)
-
----
 
 ## Phase 5: Testing Setup
 
@@ -138,8 +123,6 @@ project/
 | TSan | Compiler flag | Data races |
 
 **Reference:** [C Build Systems - Testing](../docs/c-project/c-build-systems.md#testing-integration)
-
----
 
 ## Phase 6: Memory Safety Validation
 
@@ -164,8 +147,6 @@ project/
 
 **Comprehensive reference:** [C Memory Safety Guide](../docs/c-project/c-memory-safety.md)
 
----
-
 ## Phase 7: Documentation and Scripts
 
 | Mode | Documentation |
@@ -173,8 +154,6 @@ project/
 | Quick | README.md with build instructions |
 | Standard | + API.md, install script, valgrind helper |
 | Enterprise | + docs/ (API, ARCHITECTURE, BUILDING, CONTRIBUTING), CI/CD, packaging |
-
----
 
 ## Output Deliverables
 
@@ -184,8 +163,6 @@ project/
 | Standard | + Modular structure, CMakeLists.txt, tests, Valgrind, API docs |
 | Enterprise | + Platform abstraction, CI/CD, cross-compilation, packaging |
 
----
-
 ## External Documentation
 
 | Document | Content | Lines |
@@ -193,8 +170,6 @@ project/
 | [C Project Structures](../docs/c-project/c-project-structures.md) | Application, library, embedded patterns | ~600 |
 | [C Build Systems](../docs/c-project/c-build-systems.md) | Makefile, CMake, sanitizers, CI/CD | ~500 |
 | [C Memory Safety](../docs/c-project/c-memory-safety.md) | Valgrind, ASan, best practices | ~450 |
-
----
 
 ## Quality Checklist
 

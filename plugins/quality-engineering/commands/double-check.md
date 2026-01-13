@@ -1,207 +1,110 @@
 ---
 version: "1.0.6"
 command: /double-check
-description: Multi-dimensional validation with automated testing, security scanning, and code review
-argument-hint: [work-to-validate] [--deep] [--security] [--performance]
-execution_modes:
-  quick: "5-15 minutes"
-  standard: "30-60 minutes"
-  enterprise: "2-4 hours"
-workflow_type: "sequential"
-interactive_mode: true
+description: Multi-dimensional validation with automated testing, security scanning, code review
+argument-hint: [work] [--deep] [--security] [--performance]
+execution_modes: {quick: "5-15min", standard: "30-60min", enterprise: "2-4h"}
+workflow_type: sequential
 color: orange
-allowed-tools: Bash, Read, Write, Edit, Glob, Grep, Task, SlashCommand
-agents:
-  primary:
-    - multi-agent-orchestrator
-    - code-quality
-    - code-reviewer
-  conditional:
-    - agent: research-intelligence
-      trigger: pattern "research|paper|publication|methodology"
-    - agent: systems-architect
-      trigger: pattern "architecture|design.*pattern|system.*design|scalability"
-    - agent: security-auditor
-      trigger: pattern "security|auth|crypto|secrets|vulnerability"
-    - agent: performance-engineer
-      trigger: pattern "performance|optimization|bottleneck|latency"
-    - agent: test-automator
-      trigger: pattern "test|coverage|validation"
-  orchestrated: true
 ---
 
-# Comprehensive Double-Check & Validation
+# Comprehensive Validation
 
-Systematic multi-dimensional validation with automated verification, security analysis, and code review.
+$ARGUMENTS
 
-## Context
+## Modes
 
-Validation target: $ARGUMENTS
+| Mode | Time | Dimensions |
+|------|------|------------|
+| Quick | 5-15min | 5 (linting, tests, types, build, basic security) |
+| Standard | 30-60min | 10 (+ coverage, security, a11y, perf, infra) |
+| Enterprise | 2-4h | 10 + deep analysis |
 
----
+Flags: `--deep`, `--security`, `--performance`
 
-## Mode Selection
+## Process
 
-| Mode | Duration | Agents | Dimensions |
-|------|----------|--------|------------|
-| Quick | 5-15 min | code-quality | 5 (linting, tests, types, build, basic security) |
-| Standard (default) | 30-60 min | + code-reviewer, test-automator | 10 (+ coverage, security, a11y, perf, infra) |
-| Enterprise | 2-4h | + security-auditor, performance-engineer | 10 + deep analysis |
+1. **Scope Verification**:
+   - Review conversation for original task
+   - List requirements and acceptance criteria
+   - Define "complete" for this task
+   - Traceability: Every requirement addressed?
 
----
+2. **Automated Checks**:
 
-## Phase 1: Scope & Requirements Verification
-
-| Step | Action |
-|------|--------|
-| 1 | Review conversation for original task |
-| 2 | List explicit requirements and acceptance criteria |
-| 3 | Define "complete" for this task |
-| 4 | Traceability: Every requirement addressed? |
-
-**Reference:** [Validation Dimensions](../docs/double-check/validation-dimensions.md)
-
----
-
-## Phase 2: Automated Checks
-
-### Quick Mode (5 Dimensions)
-
-| Dimension | Tools | Pass Criteria |
-|-----------|-------|---------------|
+### Quick (5 Dimensions)
+| Dimension | Tools | Pass |
+|-----------|-------|------|
 | Linting | ruff, eslint, clippy | No errors |
 | Tests | pytest, jest, cargo test | All pass |
-| Type checking | mypy, tsc, cargo check | No errors |
+| Types | mypy, tsc, cargo check | No errors |
 | Build | build command | Succeeds |
 | Basic security | npm audit, pip-audit | No high/critical |
 
-### Standard/Enterprise Mode (+5 Dimensions)
-
-| Dimension | Tools | Pass Criteria |
-|-----------|-------|---------------|
-| Coverage | pytest-cov, jest --coverage | >80% |
-| Security scan | semgrep, bandit, gitleaks | No high/critical |
+### Standard/Enterprise (+5)
+| Dimension | Tools | Pass |
+|-----------|-------|------|
+| Coverage | pytest-cov, jest | >80% |
+| Security | semgrep, bandit, gitleaks | No high/critical |
 | Accessibility | pa11y, axe | No violations |
 | Performance | benchmark suite | Within SLOs |
 | Infrastructure | terraform validate, kubectl dry-run | Valid |
 
-**Scripts:** [Automated Validation Scripts](../docs/double-check/automated-validation-scripts.md)
+3. **Manual Review** (Standard+):
 
----
+**Functional**:
+- Happy path works
+- Edge cases (null, empty, boundary) handled
+- Error handling robust, user-friendly messages
+- No silent failures
 
-## Phase 3: Manual Review (Standard+)
+**Code Quality**:
+- Follows project conventions
+- Function size <50 lines
+- DRY principles
+- Appropriate abstraction
+- Complete documentation
 
-### Functional Correctness
+4. **Security Analysis** (Standard+):
 
-| Check | Criteria |
-|-------|----------|
-| Happy path | Works as expected |
-| Edge cases | null, empty, boundary values handled |
-| Error handling | Robust, user-friendly messages |
-| Silent failures | None |
+**Automated**: semgrep, bandit, gitleaks, npm audit, pip-audit
 
-### Code Quality
+**Manual**:
+- No secrets (API keys, passwords, tokens)
+- All user input sanitized
+- SQL parameterized, XSS escaped
+- Auth/authz enforced
+- No known dependency vulnerabilities
 
-| Check | Criteria |
-|-------|----------|
-| Standards | Follows project conventions |
-| Function size | <50 lines |
-| Duplication | DRY principles |
-| Abstraction | Appropriate levels |
-| Documentation | Complete |
+5. **Performance** (Enterprise):
 
-**Detailed checklist:** [Validation Dimensions](../docs/double-check/validation-dimensions.md)
+**Profiling**: CPU (cProfile, node --prof, perf), Memory (memory_profiler, heapdump), Load (wrk, k6, locust)
 
----
+**Checks**: No N+1, caching layer, DB indexes, efficient algorithm, pagination
 
-## Phase 4: Security Analysis (Standard+)
+6. **Production Readiness** (Enterprise):
 
-### Automated
-- semgrep, bandit (static analysis)
-- gitleaks, trufflehog (secrets detection)
-- npm audit, pip-audit (dependencies)
+**Config**: No hardcoded values, secrets in vault, env-specific configs separated
 
-### Manual Review
+**Observability**: Structured logging (JSON), metrics collection, error tracking, health checks
 
-| Category | Check |
-|----------|-------|
-| Secrets | No API keys, passwords, tokens in code |
-| Input validation | All user input sanitized |
-| Injection | SQL parameterized, XSS escaped |
-| Auth/authz | Properly enforced |
-| Dependencies | No known vulnerabilities |
+**Deployment**: Rollback plan tested, reversible migrations, CI/CD green, smoke tests defined
 
-**Deep dive:** [Security Validation Guide](../docs/double-check/security-validation-guide.md)
+7. **Breaking Changes** (Standard+):
+- API compatibility (no breaking or version bump)
+- Deprecation warnings
+- Migration guide if breaking
+- All integration tests pass
 
----
-
-## Phase 5: Performance Analysis (Enterprise)
-
-### Profiling
-
-| Type | Tools |
-|------|-------|
-| CPU | cProfile, node --prof, perf |
-| Memory | memory_profiler, heapdump |
-| Load | wrk, k6, locust |
-
-### Checklist
-
-| Issue | Fix |
-|-------|-----|
-| N+1 queries | Eager loading |
-| Missing cache | Add caching layer |
-| No indexes | Add database indexes |
-| Inefficient algorithm | Optimize or replace |
-| No pagination | Implement pagination |
-
-**Guide:** [Performance Analysis Guide](../docs/double-check/performance-analysis-guide.md)
-
----
-
-## Phase 6: Production Readiness (Enterprise)
-
-### Configuration
-- [ ] No hardcoded values
-- [ ] Secrets in vault
-- [ ] Environment-specific configs separated
-
-### Observability
-- [ ] Structured logging (JSON)
-- [ ] Metrics collection
-- [ ] Error tracking
-- [ ] Health check endpoints
-
-### Deployment
-- [ ] Rollback plan tested
-- [ ] Migrations reversible
-- [ ] CI/CD green
-- [ ] Smoke tests defined
-
-**Checklist:** [Production Readiness Checklist](../docs/double-check/production-readiness-checklist.md)
-
----
-
-## Phase 7: Breaking Changes (Standard+)
-
-| Check | Action |
-|-------|--------|
-| API compatibility | No breaking changes or version bump |
-| Deprecation | Warnings for old patterns |
-| Migration | Guide provided if breaking |
-| Integration | All integration tests pass |
-
----
-
-## Validation Report Format
+## Output
 
 ```markdown
 ## Summary
-- **Assessment**: ✅ Ready / ⚠️ Needs work / ❌ Not ready
-- **Confidence**: High / Medium / Low
-- **Mode**: Quick / Standard / Enterprise
+- Assessment: ✅ Ready / ⚠️ Needs work / ❌ Not ready
+- Confidence: High / Medium / Low
+- Mode: Quick / Standard / Enterprise
 
-## Issues Found
+## Issues
 ### Critical (Must Fix)
 ### Important (Should Fix)
 ### Minor (Nice to Fix)
@@ -210,34 +113,24 @@ Validation target: $ARGUMENTS
 ## Evidence (tests, coverage, scans)
 ```
 
----
+## Advanced
 
-## Advanced Options
+- `--deep`: Property-based testing, fuzzing, dead code detection
+- `--security`: OWASP Top 10, penetration testing checklist, crypto review
+- `--performance`: Flamegraphs, memory profiling, load testing, query analysis
 
-| Flag | Purpose |
-|------|---------|
-| `--deep` | Property-based testing, fuzzing, dead code detection |
-| `--security` | OWASP Top 10, penetration testing checklist, crypto review |
-| `--performance` | Flamegraphs, memory profiling, load testing, query analysis |
+## External Docs
 
----
+- `validation-dimensions.md` - All 10 dimensions with checklists
+- `automated-validation-scripts.md` - Ready-to-use scripts
+- `security-validation-guide.md` - OWASP Top 10, security analysis
+- `performance-analysis-guide.md` - Profiling, N+1, load testing
+- `production-readiness-checklist.md` - Config, observability, deployment
 
-## External Documentation
-
-| Document | Content |
-|----------|---------|
-| [Validation Dimensions](../docs/double-check/validation-dimensions.md) | All 10 dimensions with checklists |
-| [Automated Validation Scripts](../docs/double-check/automated-validation-scripts.md) | Ready-to-use scripts |
-| [Security Validation Guide](../docs/double-check/security-validation-guide.md) | OWASP Top 10, security analysis |
-| [Performance Analysis Guide](../docs/double-check/performance-analysis-guide.md) | Profiling, N+1, load testing |
-| [Production Readiness Checklist](../docs/double-check/production-readiness-checklist.md) | Config, observability, deployment |
-
----
-
-## Success Criteria
+## Success
 
 | Mode | Criteria |
 |------|----------|
-| Quick | All automated checks pass, no critical security issues, >70% coverage |
-| Standard | + Manual review complete, all 10 dimensions validated, >80% coverage |
-| Enterprise | + Security audit complete, performance meets SLOs, rollback tested |
+| Quick | All automated pass, no critical security, >70% coverage |
+| Standard | + Manual review, all 10 dimensions, >80% coverage |
+| Enterprise | + Security audit, performance meets SLOs, rollback tested |

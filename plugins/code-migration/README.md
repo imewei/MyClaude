@@ -5,7 +5,7 @@
 Scientific code modernization with comprehensive legacy-to-modern framework migration. Specializes in Fortran/C/MATLAB to Python/JAX/Julia migrations while preserving numerical accuracy and achieving GPU acceleration.
 
 
-## What's New in v1.0.6
+## What's New in v1.0.7
 
 This release implements **Opus 4.5 optimization** with enhanced token efficiency and standardized documentation.
 

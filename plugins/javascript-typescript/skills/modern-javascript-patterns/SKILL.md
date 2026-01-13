@@ -1,18 +1,10 @@
----
 name: modern-javascript-patterns
 version: "1.0.6"
-maturity: "5-Expert"
-specialization: Modern JavaScript ES6+
 description: Master modern JavaScript (ES6-ES2024) including async/await, destructuring, spread operators, arrow functions, modules, optional chaining, nullish coalescing, and functional programming patterns. Use when writing ES6+ code, refactoring legacy JS, implementing async patterns, or applying functional programming with map/filter/reduce.
----
 
 # Modern JavaScript Patterns
 
-ES6+ features, async programming, and functional patterns for clean JavaScript.
-
----
-
-## Feature Quick Reference
+## Feature
 
 | Feature | Syntax | Use Case |
 |---------|--------|----------|
@@ -24,12 +16,9 @@ ES6+ features, async programming, and functional patterns for clean JavaScript.
 | Nullish coalescing | `val ?? 'default'` | Default for null/undefined |
 | Async/await | `const x = await fn()` | Async operations |
 
----
-
 ## Arrow Functions
 
 ```javascript
-// Basic syntax
 const add = (a, b) => a + b;
 const double = x => x * 2;
 const getUser = () => ({ name: 'John', age: 30 });
@@ -44,8 +33,6 @@ class Counter {
   }
 }
 ```
-
----
 
 ## Destructuring
 
@@ -66,8 +53,6 @@ function greet({ name, age = 18 }) {
 }
 ```
 
----
-
 ## Spread Operator
 
 ```javascript
@@ -82,12 +67,9 @@ const updated = { ...user, age: 31 };
 const { removed, ...rest } = obj;  // Remove property
 ```
 
----
-
 ## Async/Await
 
 ```javascript
-// Basic pattern
 async function fetchUser(id) {
   try {
     const res = await fetch(`/api/users/${id}`);
@@ -137,8 +119,6 @@ async function fetchWithRetry(url, retries = 3) {
 }
 ```
 
----
-
 ## Functional Array Methods
 
 ```javascript
@@ -175,8 +155,6 @@ const byStatus = users.reduce((groups, user) => ({
 }), {});
 ```
 
----
-
 ## Higher-Order Functions
 
 ```javascript
@@ -206,8 +184,6 @@ const process = pipe(
 );
 ```
 
----
-
 ## Modern Operators
 
 ```javascript
@@ -225,8 +201,6 @@ a ??= 'default';  // a = a ?? 'default'
 b ||= fallback;   // b = b || fallback
 c &&= newValue;   // c = c && newValue
 ```
-
----
 
 ## ES6 Modules
 
@@ -249,8 +223,6 @@ if (condition) {
   const { handler } = await import('./handler.js');
 }
 ```
-
----
 
 ## Classes
 
@@ -280,8 +252,6 @@ class Admin extends User {
   }
 }
 ```
-
----
 
 ## Generators & Iterators
 
@@ -317,8 +287,6 @@ for await (const page of fetchPages('/api/items')) {
 }
 ```
 
----
-
 ## Performance Utilities
 
 ```javascript
@@ -347,8 +315,6 @@ const searchDebounced = debounce(search, 300);
 const scrollThrottled = throttle(handleScroll, 100);
 ```
 
----
-
 ## Immutable Patterns
 
 ```javascript
@@ -366,8 +332,6 @@ const clone = structuredClone(obj);  // Modern
 const clone = JSON.parse(JSON.stringify(obj));  // Legacy
 ```
 
----
-
 ## Best Practices
 
 | Practice | Guideline |
@@ -380,8 +344,6 @@ const clone = JSON.parse(JSON.stringify(obj));  // Legacy
 | Immutability | Spread operator for updates |
 | Errors | try/catch with async/await |
 
----
-
 ## Common Pitfalls
 
 | Pitfall | Solution |
@@ -393,8 +355,6 @@ const clone = JSON.parse(JSON.stringify(obj));  // Legacy
 | Promise rejection | Always handle with catch/try |
 | Blocking event loop | Use async for I/O operations |
 
----
-
 ## Checklist
 
 - [ ] const/let used appropriately (no var)
@@ -404,7 +364,3 @@ const clone = JSON.parse(JSON.stringify(obj));  // Legacy
 - [ ] Array methods instead of loops where clearer
 - [ ] ES6 modules for code organization
 - [ ] Performance utilities (debounce/throttle) where needed
-
----
-
-**Version**: 1.0.5

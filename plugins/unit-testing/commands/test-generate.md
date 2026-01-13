@@ -1,224 +1,98 @@
 ---
 version: "1.0.6"
 command: /test-generate
-description: Generate comprehensive test suites with scientific computing support, numerical validation, property-based testing, and performance benchmarks
-argument-hint: <source-file-or-module> [--coverage] [--property-based] [--benchmarks] [--scientific]
-execution_modes:
-  quick:
-    duration: "30min-1h"
-    scope: "Single module/file"
-    output: "~50-100 test cases"
-  standard:
-    duration: "2-4h"
-    scope: "Package/feature module"
-    output: "~200-500 test cases"
-  enterprise:
-    duration: "1-2d"
-    scope: "Entire project/codebase"
-    output: "~1,000+ test cases"
-workflow_type: "generative"
+description: Generate comprehensive test suites with scientific computing support, numerical validation, property-based testing, benchmarks
+argument-hint: <source> [--coverage] [--property-based] [--benchmarks] [--scientific]
+execution_modes: {quick: "30min-1h", standard: "2-4h", enterprise: "1-2d"}
+workflow_type: generative
 color: cyan
-allowed-tools: Bash(find:*), Bash(grep:*), Bash(python:*), Bash(julia:*), Bash(pytest:*), Bash(git:*)
-agents:
-  primary:
-    - test-automator
-  conditional:
-    - agent: hpc-numerical-coordinator
-      trigger: pattern "numpy|scipy|pandas|scientific.*computing|numerical|simulation" OR argument "--scientific"
-    - agent: jax-pro
-      trigger: pattern "jax|flax|@jit|@vmap|@pmap|grad\\(|optax"
-    - agent: neural-architecture-engineer
-      trigger: pattern "torch|pytorch|tensorflow|keras|neural.*network|deep.*learning"
-    - agent: ml-pipeline-coordinator
-      trigger: pattern "sklearn|mlflow|model|train|predict"
-    - agent: code-quality
-      trigger: argument "--coverage" OR pattern "quality|lint|test.*strategy"
-  orchestrated: false
 ---
 
 # Automated Test Generation
 
-Generate comprehensive test suites across Python, Julia, JAX, and JavaScript/TypeScript with scientific computing support.
-
-## Target
-
 $ARGUMENTS
 
----
+## Modes
 
-## Mode Selection
-
-| Mode | Duration | Scope | Test Types | Coverage | Output |
-|------|----------|-------|------------|----------|--------|
+| Mode | Time | Scope | Types | Coverage | Output |
+|------|------|-------|-------|----------|--------|
 | Quick | 30min-1h | Single module | Unit only | Basic | ~50-100 tests |
-| Standard | 2-4h | Package/feature | Unit + integration, property-based | >80% | ~200-500 tests |
-| Enterprise | 1-2d | Entire project | Unit + integration + E2E + mutation | >90% | ~1,000+ tests |
+| Standard | 2-4h | Package/feature | Unit+integration, property-based | >80% | ~200-500 tests |
+| Enterprise | 1-2d | Entire project | Unit+int+E2E+mutation | >90% | ~1,000+ tests |
 
-**Options:** `--coverage`, `--property-based`, `--benchmarks`, `--scientific`
+Options: `--coverage`, `--property-based`, `--benchmarks`, `--scientific`
 
----
+## Process
 
-## Phase 1: Code Analysis
+1. **Code Analysis (AST)**:
+   - Parse files, extract functions/classes/methods
+   - Identify params, return types, complexity
+   - Extract docstrings for expected behavior
+   - Coverage gap detection (uncovered functions)
+   - Dependency mapping (external vs internal, mocks, integration points)
 
-**Agent:** test-automator
+2. **Framework Selection**:
+   | Lang | Framework | Style |
+   |------|-----------|-------|
+   | Python | pytest | fixtures, parametrize, markers |
+   | JavaScript | Jest/Vitest | describe/it, beforeEach, mock |
+   | Julia | Test.jl | @testset, @test, @inferred |
 
-### AST-Based Analysis
-- Parse source files to extract functions, classes, methods
-- Identify parameters, return types, complexity
-- Extract docstrings for expected behavior
+3. **Test Categories** (AAA Pattern: Arrange → Act → Assert):
+   - **Happy Path**: Valid input, expected behavior
+   - **Edge Cases**: Empty, null, boundary values
+   - **Error Handling**: Invalid input, exceptions
+   - **Parametrized**: Multiple scenarios via parametrize/each
 
-### Coverage Gap Detection
-- Read existing coverage reports
-- Identify uncovered functions
-- Prioritize by complexity and risk
+4. **Scientific Tests** (if `--scientific`):
+   - **Numerical**: Analytical solution comparison, tolerance assertions (`assert_allclose(result, expected, rtol=1e-12)`), edge values (empty, zeros, large/small), no inf/nan
+   - **JAX**: JIT equivalence (`jit(fn)(x) == fn(x)`), gradient correctness (analytical vs finite diff), vmap correctness (batched = individual)
 
-### Dependency Mapping
-- External vs internal dependencies
-- Mock candidates identification
-- Integration points
+5. **Property-Based** (if `--property-based`):
+   - **Properties**: Idempotence (`f(f(x)) == f(x)`), Commutativity (`f(a,b) == f(b,a)`), Associativity, Linearity, Inverse
+   - **Hypothesis**: Use `hypothesis.strategies`, `hypothesis.extra.numpy`, configure `max_examples`, `deadline`
 
----
+6. **Benchmarks** (if `--benchmarks`):
+   - Multiple input sizes (10, 100, 1k, 10k)
+   - Memory via tracemalloc
+   - pytest-benchmark integration
+   - Performance assertions (upper bounds, regression checks)
 
-## Phase 2: Test Generation
-
-### Framework Selection
-
-| Language | Framework | Style |
-|----------|-----------|-------|
-| Python | pytest | fixtures, parametrize, markers |
-| JavaScript | Jest/Vitest | describe/it, beforeEach, mock |
-| Julia | Test.jl | @testset, @test, @inferred |
-
-### Test Categories
-
-| Category | Description |
-|----------|-------------|
-| **Happy Path** | Valid input, expected behavior |
-| **Edge Cases** | Empty, null, boundary values |
-| **Error Handling** | Invalid input, exception testing |
-| **Parametrized** | Multiple scenarios via parametrize/each |
-
-### Test Template Pattern
-```
-AAA Pattern: Arrange → Act → Assert
-- Arrange: Setup test data and mocks
-- Act: Call function under test
-- Assert: Verify expected behavior
-```
-
----
-
-## Phase 3: Scientific Computing Tests (if `--scientific`)
-
-**Agent:** hpc-numerical-coordinator, jax-pro
-
-### Numerical Correctness
-
-| Test Type | Purpose |
-|-----------|---------|
-| Analytical solution | Compare against known mathematical results |
-| Tolerance assertions | `assert_allclose(result, expected, rtol=1e-12)` |
-| Edge values | Empty arrays, zeros, large/small values |
-| Numerical stability | Verify no inf/nan in results |
-
-### JAX-Specific Tests
-
-| Test Type | Purpose |
-|-----------|---------|
-| JIT equivalence | `jit(fn)(x) == fn(x)` |
-| Gradient correctness | Analytical vs finite difference gradients |
-| vmap correctness | Batched results match individual results |
-
----
-
-## Phase 4: Property-Based Testing (if `--property-based`)
-
-**Agent:** test-automator
-
-### Mathematical Properties
-
-| Property | Test |
-|----------|------|
-| Idempotence | `f(f(x)) == f(x)` |
-| Commutativity | `f(a, b) == f(b, a)` |
-| Associativity | `f(f(a, b), c) == f(a, f(b, c))` |
-| Linearity | `f(ax + by) == af(x) + bf(y)` |
-| Inverse | `f_inv(f(x)) == x` |
-
-### Hypothesis Strategies
-- Use `hypothesis.strategies` for input generation
-- `hypothesis.extra.numpy` for array strategies
-- Configure `max_examples`, `deadline` appropriately
-
----
-
-## Phase 5: Performance Benchmarks (if `--benchmarks`)
-
-### Benchmark Tests
-- Multiple input sizes (10, 100, 1000, 10000)
-- Memory usage tracking via tracemalloc
-- pytest-benchmark integration
-
-### Performance Assertions
-- Set reasonable upper bounds for execution time
-- Track memory peak usage
-- Fail tests if performance regresses significantly
-
----
-
-## Phase 6: Coverage & Reporting
-
+7. **Coverage & Reporting**:
 ```bash
-# Python
 pytest --cov=src --cov-report=html --cov-report=term-missing
-
-# JavaScript
 npm test -- --coverage
-
-# Identify gaps
 python analyze_coverage_gaps.py coverage.json
 ```
-
-**Prioritization:** Focus on high-complexity, high-risk gaps first
-
----
 
 ## Test Organization
 
 ```
 tests/
-├── unit/
-│   ├── test_module1.py
-│   └── test_module2.py
-├── integration/
-│   └── test_workflow.py
+├── unit/test_module1.py, test_module2.py
+├── integration/test_workflow.py
 └── conftest.py  # Shared fixtures
 ```
 
-**Naming:** `test_{module_name}.py`, `Test{ClassName}`, `test_{function_name}_{scenario}`
-
----
+Naming: `test_{module}.py`, `Test{Class}`, `test_{function}_{scenario}`
 
 ## Best Practices
 
 | Practice | Description |
 |----------|-------------|
-| Analyze first | Understand code before generating |
-| Happy path first | Then edge cases |
-| Parametrize | Multiple scenarios in single test |
+| Analyze first | Understand before generating |
+| Happy first | Then edge cases |
+| Parametrize | Multiple scenarios in one |
 | Mock external | Isolate unit under test |
-| Meaningful names | Describe what is tested |
+| Meaningful names | Describe what's tested |
 | AAA pattern | Arrange, Act, Assert |
 | Type-aware assertions | Based on return types |
-| Async handling | Use appropriate async test patterns |
-| Consistency | Match existing test patterns |
+| Async handling | Appropriate async patterns |
+| Consistency | Match existing patterns |
 
----
+## External Docs
 
-## External Documentation
-
-Comprehensive guides in `docs/test-generate/`:
 - `test-generation-patterns.md` - AST parsing, algorithms, templates
 - `scientific-testing-guide.md` - Numerical correctness, tolerances
-- `property-based-testing.md` - Hypothesis patterns, stateful testing
-- `coverage-analysis-guide.md` - Gap identification, prioritization
+- `property-based-testing.md` - Hypothesis patterns, stateful
+- `coverage-analysis-guide.md` - Gap ID, prioritization

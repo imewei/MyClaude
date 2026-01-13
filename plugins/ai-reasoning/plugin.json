@@ -1,13 +1,14 @@
 {
   "name": "ai-reasoning",
   "displayName": "AI Reasoning",
-  "version": "1.0.6",
-  "description": "Advanced AI-powered cognitive tools for problem-solving, meta-analysis, and structured reasoning with multi-agent orchestration, chain-of-thought frameworks, and comprehensive meta-cognitive reflection capabilities. v1.0.3 optimizes commands for 46.5% token reduction with enhanced executable modes and comprehensive external documentation.",
-  "category": "productivity",
+  "version": "1.0.7",
+  "description": "Advanced AI-powered cognitive tools for problem-solving, meta-analysis, and structured reasoning with chain-of-thought frameworks.",
   "author": {
     "name": "Wei Chen",
     "url": "https://myclaude.readthedocs.io/en/latest/"
   },
+  "homepage": "https://github.com/imewei/MyClaude",
+  "repository": "https://github.com/imewei/MyClaude",
   "license": "MIT",
   "keywords": [
     "reasoning",
@@ -15,12 +16,9 @@
     "reflection",
     "meta-cognition",
     "problem-solving",
-    "analysis",
-    "ultra-think",
-    "cognitive-frameworks",
     "chain-of-thought",
-    "meta-analysis",
-    "structured-reasoning",
-    "research-reflection"
-  ]
+    "ultra-think",
+    "analysis"
+  ],
+  "category": "productivity"
 }

@@ -9,7 +9,7 @@
 ---
 
 
-## What's New in v1.0.6
+## What's New in v1.0.7
 
 This release implements **Opus 4.5 optimization** with enhanced token efficiency and standardized documentation.
 
@@ -64,7 +64,7 @@ Production-ready TypeScript project scaffolding with modern tooling, automated s
 
 ---
 
-## What's New in v1.0.6 🎉
+## What's New in v1.0.7 🎉
 
 This release introduces two major improvements:
 1. **Agent Enhancements**: Systematic Chain-of-Thought frameworks, Constitutional AI principles, and comprehensive real-world examples

@@ -1,39 +1,26 @@
 {
   "name": "multi-platform-apps",
-  "version": "1.0.6",
-  "description": "Comprehensive multi-platform application development with chain-of-thought reasoning frameworks, constitutional AI validation, production-ready examples, and enhanced skill discoverability. Expert agents for Flutter, React Native, iOS, Android, web, backend APIs, and UI/UX design systems with comprehensive skill documentation.",
+  "displayName": "Multi-Platform Apps",
+  "version": "1.0.7",
+  "description": "Multi-platform application development with Flutter, React Native, iOS, Android, web, and backend APIs.",
   "author": {
     "name": "Wei Chen",
     "url": "https://myclaude.readthedocs.io/en/latest/"
   },
-  "repository": "https://github.com/anthropics/claude-code",
+  "repository": "https://github.com/imewei/MyClaude",
   "license": "MIT",
-  "tags": [
-    "multi-platform",
-    "flutter",
-    "react-native",
-    "ios",
-    "android",
-    "mobile",
-    "web",
-    "frontend",
-    "backend",
-    "ui-ux"
-  ],
-  "requirements": {
-    "claude_code": ">=1.0.0"
-  },
   "keywords": [
     "flutter",
     "react-native",
+    "cross-platform",
+    "mobile",
     "ios",
     "android",
-    "mobile-development",
-    "cross-platform",
-    "web-development",
-    "frontend",
-    "backend",
-    "ui-ux",
-    "multi-platform"
-  ]
+    "web",
+    "ui-ux"
+  ],
+  "category": "development",
+  "requirements": {
+    "claude_code": ">=1.0.0"
+  }
 }

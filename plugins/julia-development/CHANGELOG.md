@@ -1,13 +1,13 @@
 # Julia Development Plugin - Changelog
 
-## Version 1.0.6 (2025-12-24) - Documentation Sync Release
+## Version 1.0.7 (2025-12-24) - Documentation Sync Release
 
 ### Overview
 Version synchronization release ensuring consistency across all documentation and configuration files.
 
 ### Changed
 - Version bump to 1.0.6 across all files
-- README.md updated with v1.0.6 version badge
+- README.md updated with v1.0.7 version badge
 - plugin.json version updated to 1.0.6
 
 ## Version 1.0.5 (2024-12-24)

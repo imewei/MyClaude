@@ -1,16 +1,10 @@
----
 name: microservices-patterns
 version: "1.0.6"
-maturity: "5-Expert"
-specialization: Microservices Architecture
 description: Design microservices with proper service boundaries, event-driven communication (Kafka/RabbitMQ), resilience patterns (circuit breakers, retries, bulkheads), Saga pattern for distributed transactions, API Gateway, service discovery, database-per-service, CQRS, and distributed tracing. Use when decomposing monoliths or building distributed systems.
----
 
 # Microservices Patterns
 
 Service boundaries, communication, data management, and resilience patterns.
-
----
 
 ## Decomposition Strategies
 
@@ -18,9 +12,7 @@ Service boundaries, communication, data management, and resilience patterns.
 |----------|----------|---------|
 | Business Capability | Organize by business function | OrderService, PaymentService |
 | DDD Subdomain | Bounded contexts | Core, Supporting, Generic |
-| Strangler Fig | Gradual extraction | Proxy routes to old/new |
-
----
+| Strangler Fig | Gradual extraction | Proxy routes→old/new |
 
 ## Communication Patterns
 
@@ -52,8 +44,6 @@ class EventBus:
             await handler(message.value)
 ```
 
----
-
 ## API Gateway
 
 ```python
@@ -74,8 +64,6 @@ class APIGateway:
         )
         return {"order": order, "payment": payment, "inventory": inventory}
 ```
-
----
 
 ## Saga Pattern
 
@@ -113,8 +101,6 @@ class OrderFulfillmentSaga:
         for step in reversed(completed):
             await step.compensation(context)
 ```
-
----
 
 ## Circuit Breaker
 
@@ -154,8 +140,6 @@ class CircuitBreaker:
             self.opened_at = datetime.now()
 ```
 
----
-
 ## Service Client with Retry
 
 ```python
@@ -173,8 +157,6 @@ class ServiceClient:
         return response.json()
 ```
 
----
-
 ## Data Management
 
 | Pattern | Description |
@@ -183,8 +165,6 @@ class ServiceClient:
 | Event Sourcing | Store events, derive state |
 | CQRS | Separate read/write models |
 | Eventual Consistency | Accept async propagation |
-
----
 
 ## Best Practices
 
@@ -198,8 +178,6 @@ class ServiceClient:
 | Distributed tracing | Track requests across services |
 | Health checks | Liveness and readiness probes |
 
----
-
 ## Common Pitfalls
 
 | Pitfall | Problem |
@@ -211,8 +189,6 @@ class ServiceClient:
 | Synchronous everything | Poor resilience |
 | No compensation logic | Can't undo failed transactions |
 
----
-
 ## Checklist
 
 - [ ] Services aligned with business capabilities
@@ -223,7 +199,3 @@ class ServiceClient:
 - [ ] Saga pattern for distributed transactions
 - [ ] Health checks implemented
 - [ ] Distributed tracing enabled
-
----
-
-**Version**: 1.0.5

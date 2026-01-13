@@ -1,16 +1,10 @@
----
 name: javascript-testing-patterns
 version: "1.0.6"
-maturity: "5-Expert"
-specialization: JavaScript/TypeScript Testing
 description: Comprehensive testing with Jest/Vitest and Testing Library. Unit tests, integration tests, mocking, fixtures, and TDD workflows. Use when writing tests, setting up test infrastructure, or implementing testing best practices.
----
 
 # JavaScript Testing Patterns
 
 Robust testing strategies for JavaScript/TypeScript applications with modern frameworks.
-
----
 
 ## Framework Selection
 
@@ -20,8 +14,6 @@ Robust testing strategies for JavaScript/TypeScript applications with modern fra
 | Jest | General purpose | Moderate |
 | Testing Library | Component tests | - |
 | Supertest | API integration | - |
-
----
 
 ## Vitest Configuration
 
@@ -42,8 +34,6 @@ export default defineConfig({
   }
 });
 ```
-
----
 
 ## Unit Testing Patterns
 
@@ -108,8 +98,6 @@ describe('ApiService', () => {
 });
 ```
 
----
-
 ## Mocking Patterns
 
 ### Module Mocking
@@ -155,8 +143,6 @@ expect(loggerSpy).toHaveBeenCalledWith('Processing order 123');
 expect(loggerSpy).toHaveBeenCalledTimes(2);
 ```
 
----
-
 ## Integration Testing
 
 ### API Tests with Supertest
@@ -187,8 +173,6 @@ describe('User API', () => {
   });
 });
 ```
-
----
 
 ## React Component Testing
 
@@ -229,8 +213,6 @@ describe('useCounter', () => {
 });
 ```
 
----
-
 ## Test Fixtures
 
 ```typescript
@@ -245,8 +227,6 @@ export function createUserFixture(overrides?: Partial<User>): User {
   };
 }
 ```
-
----
 
 ## Timer Testing
 
@@ -265,8 +245,6 @@ it('should call after delay', () => {
 });
 ```
 
----
-
 ## Best Practices
 
 | Practice | Description |
@@ -279,8 +257,6 @@ it('should call after delay', () => {
 | Test behavior | Not implementation details |
 | Use fixtures | Consistent test data |
 | 80%+ coverage | For critical paths |
-
----
 
 ## Test Organization
 
@@ -298,8 +274,6 @@ describe('UserService', () => {
 });
 ```
 
----
-
 ## Commands
 
 ```bash
@@ -309,8 +283,6 @@ vitest --ui               # UI mode
 vitest run                # Single run
 vitest run src/user.test.ts  # Specific file
 ```
-
----
 
 ## Testing Checklist
 
@@ -322,7 +294,3 @@ vitest run src/user.test.ts  # Specific file
 - [ ] Error handling tested
 - [ ] 80%+ coverage on critical paths
 - [ ] CI/CD integration
-
----
-
-**Version**: 1.0.5

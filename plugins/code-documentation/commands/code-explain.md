@@ -2,160 +2,102 @@
 version: "1.0.6"
 category: code-documentation
 command: /code-explain
-description: Detailed code explanation with visual aids and domain-specific expertise
-allowed-tools: Bash(find:*), Bash(grep:*), Bash(git:*)
+description: Detailed code explanation with visual aids and domain expertise
 argument-hint: <code-path-or-snippet>
 color: cyan
-execution_modes:
-  quick: "5-10 minutes"
-  standard: "15-25 minutes"
-  comprehensive: "30-45 minutes"
-agents:
-  primary:
-    - research-intelligence
-  conditional:
-    - agent: systems-architect
-      trigger: complexity > 10 OR pattern "architecture|design.*pattern"
-    - agent: hpc-numerical-coordinator
-      trigger: pattern "numpy|scipy|pandas|scientific"
-    - agent: neural-architecture-engineer
-      trigger: pattern "torch|pytorch|tensorflow|deep.*learning"
-    - agent: jax-pro
-      trigger: pattern "jax|flax|@jit|@vmap|grad\\("
-    - agent: simulation-expert
-      trigger: pattern "lammps|gromacs|molecular.*dynamics"
-  orchestrated: false
+execution_modes: {quick: "5-10min", standard: "15-25min", comprehensive: "30-45min"}
 ---
 
-# Code Explanation and Analysis
-
-Transform complex code into clear explanations with progressive disclosure and visual aids.
-
-## Requirements
+# Code Explanation
 
 $ARGUMENTS
 
----
+## Modes
 
-## Mode Selection
+| Mode | Time | Phases |
+|------|------|--------|
+| Quick | 5-10min | Overview + Key Concepts |
+| Standard | 15-25min | + Diagrams + Examples + Pitfalls |
+| Comprehensive | 30-45min | + Learning Resources + Practice |
 
-| Mode | Duration | Phases |
-|------|----------|--------|
-| Quick | 5-10 min | Overview + Key Concepts |
-| Standard (default) | 15-25 min | + Diagrams + Examples + Pitfalls |
-| Comprehensive | 30-45 min | + Learning Resources + Practice |
+## External Docs
 
----
+- `code-analysis-framework.md` (~350 lines)
+- `visualization-techniques.md` (~400 lines)
+- `learning-resources.md` (~450 lines)
+- `scientific-code-explanation.md` (~400 lines)
 
-## External Documentation
+## Process
 
-| Topic | Reference | Lines |
-|-------|-----------|-------|
-| Code Analysis | [code-analysis-framework.md](../docs/code-documentation/code-analysis-framework.md) | ~350 |
-| Visualizations | [visualization-techniques.md](../docs/code-documentation/visualization-techniques.md) | ~400 |
-| Learning Resources | [learning-resources.md](../docs/code-documentation/learning-resources.md) | ~450 |
-| Scientific Computing | [scientific-code-explanation.md](../docs/code-documentation/scientific-code-explanation.md) | ~400 |
+1. **Comprehension Analysis**:
+   | Analysis | Output |
+   |----------|--------|
+   | Structure | Classes, functions, imports |
+   | Complexity | Cyclomatic complexity, nesting |
+   | Concepts | Async, decorators, generators |
+   | Patterns | Singleton, Observer, Factory |
+   | Difficulty | Beginner/intermediate/advanced/expert |
 
----
+2. **Visual Explanation** (Standard+):
+   | Diagram | Use |
+   |---------|-----|
+   | Flowcharts | Control flow (if/else, loops) |
+   | Class diagrams | OOP structure, relationships |
+   | Sequence | Object interactions |
+   | Algorithm viz | Step-by-step execution |
+   | Architecture | System components |
 
-## Phase 1: Code Comprehension Analysis
+   Use Mermaid for inline diagrams
 
-| Analysis | Output |
-|----------|--------|
-| Structure parsing | Classes, functions, imports |
-| Complexity metrics | Cyclomatic complexity, nesting depth |
-| Concept detection | Async, decorators, generators |
-| Pattern detection | Singleton, Observer, Factory |
-| Difficulty assessment | Beginner/intermediate/advanced/expert |
+3. **Progressive Disclosure**:
+   - High-level: What does this code do?
+   - Function breakdown: How does each part work?
+   - Concepts: Deep dive into patterns
+   - Design patterns: Why these patterns?
+   - Performance: Efficiency notes
 
----
+4. **Interactive Examples** (Standard+):
+   - Basic usage: Simple cases
+   - Edge cases: Error scenarios
+   - Try-it-yourself: Hands-on practice
+   - Comparison: Alternative approaches
 
-## Phase 2: Visual Explanation (Standard+)
+5. **Pitfalls & Best Practices**:
+   | Category | Examples |
+   |----------|----------|
+   | Error handling | Bare except clauses |
+   | State | Global vars, mutable defaults |
+   | Security | eval(), SQL injection |
+   | Performance | Memory inefficiencies |
 
-| Diagram Type | Use Case |
-|--------------|----------|
-| Flowcharts | Control flow (if/else, loops) |
-| Class diagrams | OOP structure, relationships |
-| Sequence diagrams | Object interactions |
-| Algorithm visualization | Step-by-step execution |
-| Architecture diagrams | System components |
+6. **Scientific Computing**:
+   | Domain | Focus |
+   |--------|-------|
+   | NumPy/SciPy | Broadcasting, vectorization, memory layout |
+   | JAX | @jit, grad, vmap, pmap transforms |
+   | Pandas | Method chaining, GroupBy, memory |
+   | Julia | Type stability, multiple dispatch |
+   | MD Sims | Integrators, forces, neighbor lists |
+   | ML Training | Forward/backward, optimizers |
 
-Use Mermaid for inline diagrams.
+7. **Learning Resources** (Comprehensive):
+   - Knowledge gaps from complexity analysis
+   - Topic recommendations
+   - Curated resources (tutorials, books, docs)
+   - Practice projects by skill level
+   - Learning plan (week-by-week)
 
----
-
-## Phase 3: Step-by-Step Explanation
-
-### Progressive Disclosure Structure
-
-1. **High-level overview** - What does this code do?
-2. **Function breakdown** - How does each part work?
-3. **Concept explanations** - Deep dive into patterns used
-4. **Design pattern analysis** - Why these patterns?
-5. **Performance considerations** - Efficiency notes
-
----
-
-## Phase 4: Interactive Examples (Standard+)
-
-| Example Type | Purpose |
-|--------------|---------|
-| Basic usage | Simple cases |
-| Edge cases | Error scenarios |
-| Try-it-yourself | Hands-on practice |
-| Comparison | Alternative approaches |
-
----
-
-## Phase 5: Pitfalls & Best Practices
-
-### Common Issues
-
-| Category | Examples |
-|----------|----------|
-| Error handling | Bare except clauses |
-| State management | Global variables, mutable defaults |
-| Security | eval(), SQL injection |
-| Performance | Memory inefficiencies |
-
----
-
-## Phase 6: Scientific Computing Support
-
-| Domain | Explanation Focus |
-|--------|-------------------|
-| NumPy/SciPy | Broadcasting, vectorization, memory layout |
-| JAX | @jit, grad, vmap, pmap transformations |
-| Pandas | Method chaining, GroupBy, memory efficiency |
-| Julia | Type stability, multiple dispatch |
-| MD Simulations | Integrators, force calculations, neighbor lists |
-| ML Training | Forward/backward pass, optimizer patterns |
-
----
-
-## Phase 7: Learning Resources (Comprehensive)
-
-| Component | Content |
-|-----------|---------|
-| Knowledge gaps | From complexity analysis |
-| Topic recommendations | Deeper understanding |
-| Curated resources | Tutorials, books, docs |
-| Practice projects | By skill level |
-| Learning plan | Week-by-week |
-
----
-
-## Output Format
+## Output
 
 ```markdown
 # Code Explanation: [Name]
 
-## Complexity Analysis
-- Difficulty Level: [level]
-- Key Concepts: [list]
-- Design Patterns: [patterns]
+## Complexity
+- Difficulty: [level]
+- Concepts: [list]
+- Patterns: [patterns]
 
-## What This Code Does
+## What This Does
 [Clear explanation]
 
 ## Visual Representation
@@ -168,23 +110,21 @@ Use Mermaid for inline diagrams.
 [Issues to avoid]
 
 ## [If scientific]
-## Scientific Computing Context
+## Scientific Context
 [Domain-specific explanations]
 
-## [Comprehensive only]
+## [Comprehensive]
 ## Your Learning Path
 [Personalized resources]
 ```
 
----
+## Success
 
-## Success Criteria
-
-- [ ] Complexity accurately assessed
-- [ ] All concepts identified and explained
-- [ ] Diagrams generated where helpful
-- [ ] Step-by-step breakdown provided
+- [ ] Complexity assessed
+- [ ] Concepts explained
+- [ ] Diagrams where helpful
+- [ ] Step-by-step breakdown
 - [ ] Pitfalls highlighted
-- [ ] Examples runnable and clear
+- [ ] Examples runnable
 - [ ] Matches user skill level
-- [ ] Scientific code includes domain context
+- [ ] Scientific code has domain context

@@ -1,16 +1,8 @@
----
 name: typescript-advanced-types
 version: "1.0.6"
-maturity: "5-Expert"
-specialization: TypeScript Advanced Type System
 description: Master TypeScript's advanced type system including generics, conditional types, mapped types, template literal types, utility types, branded types, and discriminated unions. Use when implementing complex type logic, creating reusable generic components, designing type-safe APIs, building form validation systems, or working with advanced TypeScript patterns.
----
 
 # TypeScript Advanced Types
-
-Advanced type system patterns for building robust, type-safe applications.
-
----
 
 ## Utility Types Quick Reference
 
@@ -27,8 +19,6 @@ Advanced type system patterns for building robust, type-safe applications.
 | `NonNullable<T>` | Remove null/undefined | `NonNullable<string \| null>` |
 | `ReturnType<T>` | Function return type | `ReturnType<typeof fn>` |
 | `Parameters<T>` | Function params | `Parameters<typeof fn>` |
-
----
 
 ## Generics
 
@@ -58,8 +48,6 @@ class Container<T> {
 }
 ```
 
----
-
 ## Conditional Types
 
 ```typescript
@@ -79,8 +67,6 @@ type Awaited<T> = T extends Promise<infer U> ? U : T;
 type ToArray<T> = T extends any ? T[] : never;
 type Result = ToArray<string | number>;  // string[] | number[]
 ```
-
----
 
 ## Mapped Types
 
@@ -102,8 +88,6 @@ type PickByType<T, U> = {
 };
 ```
 
----
-
 ## Template Literal Types
 
 ```typescript
@@ -118,8 +102,6 @@ type Lower = Lowercase<'HELLO'>;      // 'hello'
 type Cap = Capitalize<'hello'>;       // 'Hello'
 type Uncap = Uncapitalize<'Hello'>;   // 'hello'
 ```
-
----
 
 ## Discriminated Unions
 
@@ -144,8 +126,6 @@ function assertNever(x: never): never {
 }
 ```
 
----
-
 ## Branded Types
 
 ```typescript
@@ -165,8 +145,6 @@ const orderId = '456' as OrderId;
 getUser(userId);   // OK
 // getUser(orderId);  // Error: not compatible
 ```
-
----
 
 ## Type-Safe Event Emitter
 
@@ -192,8 +170,6 @@ const emitter = new TypedEmitter<EventMap>();
 emitter.on('user:created', ({ id, name }) => console.log(id, name));
 ```
 
----
-
 ## Deep Utility Types
 
 ```typescript
@@ -211,8 +187,6 @@ type DeepPartial<T> = {
     : T[K];
 };
 ```
-
----
 
 ## Type Guards
 
@@ -237,8 +211,6 @@ assertString(val);
 val.toUpperCase();  // val is string
 ```
 
----
-
 ## Best Practices
 
 | Practice | Guideline |
@@ -251,8 +223,6 @@ val.toUpperCase();  // val is string
 | Type guards over assertions | Safer narrowing |
 | Enable strict mode | Catch more errors |
 
----
-
 ## Common Pitfalls
 
 | Pitfall | Solution |
@@ -263,8 +233,6 @@ val.toUpperCase();  // val is string
 | Missing discriminants | Always include `type` or `kind` field |
 | Circular references | Use lazy evaluation |
 
----
-
 ## Checklist
 
 - [ ] Enable strict mode in tsconfig
@@ -274,7 +242,3 @@ val.toUpperCase();  // val is string
 - [ ] Write type guards for runtime narrowing
 - [ ] Test types with type assertions
 - [ ] Document complex types with JSDoc
-
----
-
-**Version**: 1.0.5

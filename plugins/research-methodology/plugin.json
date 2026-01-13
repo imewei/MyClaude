@@ -1,11 +1,14 @@
 {
   "name": "research-methodology",
-  "version": "1.0.6",
-  "description": "Research intelligence, methodology design, literature analysis, and evidence-based insights for scientific investigation with systematic research workflows, multi-source synthesis, and rigorous quality assurance",
+  "displayName": "Research Methodology",
+  "version": "1.0.7",
+  "description": "Research intelligence, methodology design, and evidence-based insights for scientific investigation.",
   "author": {
     "name": "Wei Chen",
     "url": "https://myclaude.readthedocs.io/en/latest/"
   },
+  "homepage": "https://github.com/imewei/MyClaude",
+  "repository": "https://github.com/imewei/MyClaude",
   "license": "MIT",
   "keywords": [
     "research",
@@ -13,10 +16,9 @@
     "literature-review",
     "systematic-review",
     "meta-analysis",
-    "trend-analysis",
-    "competitive-intelligence",
     "evidence-based",
-    "academic-research",
-    "scientific-investigation"
-  ]
+    "trend-analysis",
+    "academic-research"
+  ],
+  "category": "productivity"
 }

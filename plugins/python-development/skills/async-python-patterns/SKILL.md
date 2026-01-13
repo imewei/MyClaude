@@ -1,31 +1,22 @@
----
 name: async-python-patterns
 version: "1.0.6"
-maturity: "5-Expert"
-specialization: Python Asyncio
 description: Master Python asyncio, concurrent programming, and async/await patterns for high-performance non-blocking applications. Use when writing async/await code, implementing FastAPI or aiohttp applications, building WebSocket servers, creating async context managers or generators, handling async database operations with asyncpg, implementing async HTTP clients with aiohttp, writing async tests with pytest-asyncio, or converting synchronous code to asynchronous patterns.
----
 
 # Async Python Patterns
-
-Production-ready asyncio patterns for high-performance non-blocking applications.
-
----
 
 ## Core Concepts
 
 | Concept | Description |
 |---------|-------------|
 | Event Loop | Single-threaded cooperative multitasking scheduler |
-| Coroutine | Function with `async def` that can be paused/resumed |
-| Task | Scheduled coroutine running on event loop |
+| Coroutine | `async def` function that can pause/resume |
+| Task | Scheduled coroutine on event loop |
 | Future | Low-level result placeholder |
 | Async Context Manager | `async with` for resource cleanup |
 | Async Iterator | `async for` for streaming data |
 
----
-
 ## Basic Patterns
+
 
 ### Pattern 1: Entry Point
 ```python
@@ -77,8 +68,6 @@ async def with_timeout():
     except asyncio.TimeoutError:
         print("Operation timed out")
 ```
-
----
 
 ## Advanced Patterns
 
@@ -163,7 +152,6 @@ class AsyncCounter:
             self.value = current + 1
 ```
 
----
 
 ## Real-World Applications
 
@@ -218,7 +206,6 @@ async def run_blocking(data):
         return await loop.run_in_executor(pool, blocking_operation, data)
 ```
 
----
 
 ## Common Pitfalls
 
@@ -229,7 +216,6 @@ async def run_blocking(data):
 | Not handling cancel | No cleanup | `except asyncio.CancelledError: cleanup(); raise` |
 | Sync calling async | `result = await func()` in sync | `asyncio.run(func())` |
 
----
 
 ## Testing Async Code
 
@@ -247,7 +233,6 @@ async def test_timeout():
         await asyncio.wait_for(slow_operation(5), timeout=1.0)
 ```
 
----
 
 ## Best Practices
 
@@ -262,7 +247,6 @@ async def test_timeout():
 | Blocking ops | Use `run_in_executor()` for CPU-bound work |
 | Cancellation | Handle `CancelledError`, cleanup, re-raise |
 
----
 
 ## Async Libraries
 
@@ -275,7 +259,6 @@ async def test_timeout():
 | aiofiles | File I/O |
 | aiocache | Caching |
 
----
 
 ## Checklist
 
@@ -288,7 +271,3 @@ async def test_timeout():
 - [ ] Use semaphores for rate limiting
 - [ ] Test with `pytest-asyncio`
 - [ ] Never block the event loop
-
----
-
-**Version**: 1.0.5

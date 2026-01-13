@@ -8,7 +8,7 @@ Observability, monitoring, logging, distributed tracing, and SLO/SLA management 
 
 ---
 
-## 🚀 What's New in v1.0.6
+## 🚀 What's New in v1.0.7
 
 ### Command Optimization with Execution Modes
 
@@ -156,7 +156,7 @@ Design and implement Apache Airflow DAGs for scientific data pipelines, workflow
 - JAX and scientific computing integration
 
 
-## What's New in v1.0.6
+## What's New in v1.0.7
 
 This release implements **Opus 4.5 optimization** with enhanced token efficiency and standardized documentation.
 

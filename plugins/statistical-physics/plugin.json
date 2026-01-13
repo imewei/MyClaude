@@ -1,25 +1,24 @@
 {
   "name": "statistical-physics",
-  "version": "1.0.6",
-  "description": "Non-equilibrium statistical physics for driven systems, active matter, and complex dynamics with theory, simulation, and experimental validation. Includes correlation function analysis bridging theoretical foundations to experimental data interpretation. Features systematic development processes and comprehensive quality assurance.",
+  "displayName": "Statistical Physics",
+  "version": "1.0.7",
+  "description": "Non-equilibrium statistical physics for driven systems, active matter, and complex dynamics with theory, simulation, and experimental validation.",
   "author": {
     "name": "Wei Chen",
     "url": "https://myclaude.readthedocs.io/en/latest/"
   },
+  "homepage": "https://github.com/imewei/MyClaude",
+  "repository": "https://github.com/imewei/MyClaude",
   "license": "MIT",
-  "tags": [
+  "keywords": [
     "statistical-physics",
     "non-equilibrium",
     "active-matter",
     "stochastic-dynamics",
-    "transport-theory",
-    "fluctuation-theorems",
-    "experimental-validation",
     "correlation-functions",
     "scattering-analysis",
-    "DLS",
-    "SAXS-SANS",
-    "XPCS",
-    "FCS"
-  ]
+    "experimental-validation",
+    "transport-theory"
+  ],
+  "category": "scientific-computing"
 }

@@ -1,7 +1,8 @@
 {
   "name": "systems-programming",
-  "version": "1.0.6",
-  "description": "Production-grade systems programming with C, C++, Rust, and Go. v1.0.3 enhances all 3 commands with execution modes (quick/standard/enterprise) and 8 comprehensive external documentation files (~5,602 lines) for deep-dive references on project structures, build systems, memory safety, cargo configuration, async patterns, profiling tools, and optimization strategies.",
+  "displayName": "Systems Programming",
+  "version": "1.0.7",
+  "description": "Production-grade systems programming with C, C++, Rust, and Go for performance-critical applications.",
   "author": {
     "name": "Wei Chen",
     "url": "https://myclaude.readthedocs.io/en/latest/"
@@ -15,14 +16,9 @@
     "cpp",
     "rust",
     "golang",
-    "performance",
     "memory-management",
     "concurrency",
-    "profiling",
-    "optimization",
-    "memory-safety",
-    "type-safety",
-    "async-programming"
+    "performance"
   ],
   "category": "development"
 }

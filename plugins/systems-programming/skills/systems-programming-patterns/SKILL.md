@@ -1,16 +1,8 @@
----
 name: systems-programming-patterns
 version: "1.0.6"
-maturity: "5-Expert"
-specialization: Systems Programming (C/C++/Rust/Go)
 description: Master systems programming patterns for memory management, concurrency, and performance optimization across C, C++, Rust, and Go. Use when implementing memory allocators, designing lock-free data structures, optimizing cache performance, debugging with sanitizers (ASan/TSan/Miri), or profiling with perf/flamegraph.
----
 
 # Systems Programming Patterns
-
-Memory management, concurrency, and performance patterns for C, C++, Rust, and Go.
-
----
 
 ## Memory Management Patterns
 
@@ -110,8 +102,6 @@ let cell = RefCell::new(Resource::new());
 let mutex = Mutex::new(Resource::new());
 ```
 
----
-
 ## Concurrency Patterns
 
 | Pattern | Use Case | Complexity |
@@ -197,8 +187,6 @@ case <-time.After(timeout): // Timeout
 }
 ```
 
----
-
 ## Memory Ordering
 
 | Order | Guarantee | Performance |
@@ -214,8 +202,6 @@ std::atomic<int> counter;
 counter.store(1, std::memory_order_release);
 int val = counter.load(std::memory_order_acquire);
 ```
-
----
 
 ## Cache Optimization
 
@@ -248,8 +234,6 @@ struct alignas(64) Counter {
 struct CacheAligned<T>(T);
 ```
 
----
-
 ## SIMD Vectorization
 
 ```cpp
@@ -268,8 +252,6 @@ void add_simd(float* a, float* b, float* c, size_t n) {
     }
 }
 ```
-
----
 
 ## Debugging Tools
 
@@ -290,8 +272,6 @@ void add_simd(float* a, float* b, float* c, size_t n) {
 | Double free | ASan | Single owner pattern |
 | Data race | TSan | Mutex, Rust borrow checker |
 | Buffer overflow | ASan | Bounds checking |
-
----
 
 ## Profiling
 
@@ -336,8 +316,6 @@ func BenchmarkFunc(b *testing.B) {
 }
 ```
 
----
-
 ## Common Pitfalls
 
 | Pitfall | Solution |
@@ -348,8 +326,6 @@ func BenchmarkFunc(b *testing.B) {
 | Premature optimization | Profile first |
 | Unnecessary allocations | Object pools, arena |
 
----
-
 ## Language Selection
 
 | Language | Memory | Concurrency | Use Case |
@@ -358,8 +334,6 @@ func BenchmarkFunc(b *testing.B) {
 | C++ | RAII | std::thread | Performance, games |
 | Rust | Ownership | async, channels | Safety-critical |
 | Go | GC | goroutines | Network services |
-
----
 
 ## Checklist
 
@@ -371,7 +345,3 @@ func BenchmarkFunc(b *testing.B) {
 - [ ] Sanitizers run (ASan, TSan)
 - [ ] Profiled before optimizing
 - [ ] Benchmarks verify improvements
-
----
-
-**Version**: 1.0.5

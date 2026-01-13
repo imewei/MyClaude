@@ -1,16 +1,10 @@
----
 name: prompt-engineering-patterns
 version: "1.0.6"
-maturity: "5-Expert"
-specialization: LLM Prompt Design
 description: Master advanced prompt engineering with chain-of-thought, few-shot learning, and production templates. Use when designing prompts for AI applications, implementing structured reasoning, optimizing for consistency, or building reusable prompt systems.
----
 
 # Prompt Engineering Patterns
 
 Advanced techniques for maximizing LLM performance and reliability.
-
----
 
 ## Core Techniques
 
@@ -20,9 +14,7 @@ Advanced techniques for maximizing LLM performance and reliability.
 | Few-shot | Task demonstration | 2-5 input-output examples |
 | Self-consistency | Reliability | Sample multiple paths, vote |
 | Tree-of-thought | Complex planning | Branch and evaluate paths |
-| Self-verification | Accuracy | Ask model to check its answer |
-
----
+| Self-verification | Accuracy | Ask model→check its answer |
 
 ## Prompt Structure
 
@@ -43,8 +35,6 @@ Q: {query}
 A: """
 ```
 
----
-
 ## Progressive Disclosure
 
 | Level | Example |
@@ -53,8 +43,6 @@ A: """
 | 2. Constrained | "Summarize in 3 bullet points, focus on findings" |
 | 3. Reasoning | "Read, identify main findings, then summarize" |
 | 4. Few-shot | Include 2-3 example summaries |
-
----
 
 ## Few-Shot Selection
 
@@ -65,8 +53,6 @@ A: """
 | Difficulty-based | Match input complexity |
 | Random (baseline) | When unsure |
 
----
-
 ## Performance Optimization
 
 | Goal | Technique |
@@ -75,8 +61,6 @@ A: """
 | Lower latency | Shorter prompts, streaming output |
 | Improve consistency | Add output format constraints |
 | Handle failures | Include fallback instructions |
-
----
 
 ## Best Practices
 
@@ -89,8 +73,6 @@ A: """
 | Version control | Treat prompts as code |
 | Monitor production | Track accuracy, latency, costs |
 
----
-
 ## Common Pitfalls
 
 | Pitfall | Solution |
@@ -100,8 +82,6 @@ A: """
 | Context overflow | Limit examples to fit token budget |
 | Ambiguous instructions | Eliminate multiple interpretations |
 | No edge case testing | Test unusual and boundary inputs |
-
----
 
 ## Integration Patterns
 
@@ -126,8 +106,6 @@ After responding, verify:
 3. Acknowledges uncertainty"""
 ```
 
----
-
 ## Checklist
 
 - [ ] Clear task instruction defined
@@ -137,7 +115,3 @@ After responding, verify:
 - [ ] Edge cases tested
 - [ ] Validation step included
 - [ ] Version tracked
-
----
-
-**Version**: 1.0.5

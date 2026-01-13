@@ -1,10 +1,24 @@
 {
   "name": "hpc-computing",
-  "version": "1.0.6",
+  "displayName": "HPC Computing",
+  "version": "1.0.7",
   "description": "High-performance computing and numerical methods for scientific computing across Python, Julia/SciML, C++, and Rust",
   "author": {
     "name": "Wei Chen",
     "url": "https://myclaude.readthedocs.io/en/latest/"
   },
-  "license": "MIT"
+  "homepage": "https://github.com/imewei/MyClaude",
+  "repository": "https://github.com/imewei/MyClaude",
+  "license": "MIT",
+  "keywords": [
+    "hpc",
+    "scientific-computing",
+    "numerical-methods",
+    "parallel-computing",
+    "gpu-acceleration",
+    "python",
+    "julia",
+    "performance"
+  ],
+  "category": "scientific-computing"
 }

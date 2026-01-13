@@ -1,10 +1,24 @@
 {
   "name": "molecular-simulation",
-  "version": "1.0.6",
-  "description": "Molecular dynamics and multiscale simulation with chain-of-thought reasoning framework, constitutional AI validation, structured output templates, and comprehensive polymer melt example for atomistic modeling across LAMMPS, GROMACS, HOOMD-blue with ML force fields",
+  "displayName": "Molecular Simulation",
+  "version": "1.0.7",
+  "description": "Molecular dynamics and multiscale simulation for atomistic modeling across LAMMPS, GROMACS, and HOOMD-blue with ML force fields.",
   "author": {
     "name": "Wei Chen",
     "url": "https://myclaude.readthedocs.io/en/latest/"
   },
-  "license": "MIT"
+  "homepage": "https://github.com/imewei/MyClaude",
+  "repository": "https://github.com/imewei/MyClaude",
+  "license": "MIT",
+  "keywords": [
+    "molecular-dynamics",
+    "multiscale-simulation",
+    "lammps",
+    "gromacs",
+    "hoomd-blue",
+    "ml-force-fields",
+    "atomistic-modeling",
+    "coarse-graining"
+  ],
+  "category": "scientific-computing"
 }

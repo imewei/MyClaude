@@ -1,30 +1,24 @@
 {
   "name": "observability-monitoring",
   "displayName": "Observability & Monitoring",
+  "version": "1.0.7",
   "description": "Observability, monitoring, logging, distributed tracing, and SLO/SLA management for production systems with Prometheus, Grafana, and modern observability platforms",
-  "version": "1.0.6",
-  "keywords": [
-    "observability",
-    "monitoring",
-    "logging",
-    "tracing",
-    "metrics",
-    "prometheus",
-    "grafana",
-    "elk",
-    "datadog",
-    "sre",
-    "slo",
-    "sla",
-    "alerting",
-    "dashboards",
-    "distributed-tracing",
-    "opentelemetry"
-  ],
-  "category": "devops",
   "author": {
     "name": "Wei Chen",
     "url": "https://myclaude.readthedocs.io/en/latest/"
   },
-  "license": "MIT"
+  "homepage": "https://github.com/imewei/MyClaude",
+  "repository": "https://github.com/imewei/MyClaude",
+  "license": "MIT",
+  "keywords": [
+    "observability",
+    "monitoring",
+    "prometheus",
+    "grafana",
+    "distributed-tracing",
+    "sre",
+    "logging",
+    "alerting"
+  ],
+  "category": "devops"
 }

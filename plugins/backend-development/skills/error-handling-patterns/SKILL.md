@@ -1,16 +1,11 @@
----
 name: error-handling-patterns
 version: "1.0.6"
-maturity: "5-Expert"
-specialization: Error Handling & Resilience
 description: Master error handling patterns including exception hierarchies, Result types, retry with exponential backoff, circuit breakers, graceful degradation, error aggregation, and structured error responses. Use when implementing fault-tolerant systems, designing API error responses, or building resilient distributed applications.
----
 
 # Error Handling Patterns
 
 Build resilient applications with robust error handling strategies.
 
----
 
 ## Error Categories
 
@@ -20,7 +15,6 @@ Build resilient applications with robust error handling strategies.
 | Validation | Invalid input, format errors | Return error, don't throw |
 | Unrecoverable | OOM, stack overflow, bugs | Fail fast, log, alert |
 
----
 
 ## Python Patterns
 
@@ -72,7 +66,6 @@ def retry(max_attempts=3, backoff_factor=2.0, exceptions=(Exception,)):
     return decorator
 ```
 
----
 
 ## TypeScript Patterns
 
@@ -105,7 +98,6 @@ class NotFoundError extends ApplicationError {
 }
 ```
 
----
 
 ## Go Pattern
 
@@ -129,7 +121,6 @@ if err != nil {
 }
 ```
 
----
 
 ## Circuit Breaker
 
@@ -171,7 +162,6 @@ class CircuitBreaker:
             self.state = "OPEN"
 ```
 
----
 
 ## Error Aggregation
 
@@ -194,7 +184,6 @@ function validateUser(data: any) {
 }
 ```
 
----
 
 ## Graceful Degradation
 
@@ -214,7 +203,6 @@ def get_rate(currency):
          or DEFAULT_RATE)
 ```
 
----
 
 ## Best Practices
 
@@ -228,7 +216,6 @@ def get_rate(currency):
 | Don't swallow errors | Log or re-throw, never ignore |
 | Type-safe errors | Use typed errors when possible |
 
----
 
 ## Common Pitfalls
 
@@ -240,7 +227,6 @@ def get_rate(currency):
 | Poor error messages | "Error occurred" not helpful |
 | Ignoring async errors | Unhandled promise rejections |
 
----
 
 ## Checklist
 
@@ -251,7 +237,3 @@ def get_rate(currency):
 - [ ] Graceful degradation with fallbacks
 - [ ] Structured error logging
 - [ ] Error aggregation for validation
-
----
-
-**Version**: 1.0.5

@@ -1,24 +1,24 @@
 {
   "name": "quality-engineering",
-  "version": "1.0.6",
-  "description": "Comprehensive quality assurance, validation, and correctness verification tools with automated scripts for security scanning, testing, linting, performance profiling, accessibility checks, and plugin syntax validation. v1.0.3 enhances both commands with 3 execution modes (quick/standard/enterprise) and 8 comprehensive external documentation files (~6,455 lines).",
+  "displayName": "Quality Engineering",
+  "version": "1.0.7",
+  "description": "Quality assurance, validation, and correctness verification with automated security scanning, testing, and accessibility checks.",
   "author": {
     "name": "Wei Chen",
     "url": "https://myclaude.readthedocs.io/en/latest/"
   },
+  "homepage": "https://github.com/imewei/MyClaude",
+  "repository": "https://github.com/imewei/MyClaude",
   "license": "MIT",
   "keywords": [
     "quality",
     "validation",
-    "verification",
-    "lint",
-    "correctness",
-    "assurance",
-    "qa",
-    "security",
     "testing",
-    "performance",
+    "security",
     "accessibility",
+    "linting",
+    "performance",
     "plugin-validation"
-  ]
+  ],
+  "category": "quality"
 }

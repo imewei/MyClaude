@@ -5,7 +5,6 @@ command: "/prompt-optimize"
 description: Optimize prompts for better LLM performance through CoT, few-shot learning, and constitutional AI
 allowed-tools: Bash(find:*), Bash(git:*)
 argument-hint: "<prompt_to_optimize>"
-color: green
 execution_modes:
   quick: "5-10 minutes"
   standard: "15-25 minutes"
@@ -27,8 +26,6 @@ Transform basic instructions into production-ready prompts. Can improve accuracy
 
 $ARGUMENTS
 
----
-
 ## Mode Selection
 
 | Mode | Duration | Scope |
@@ -36,8 +33,6 @@ $ARGUMENTS
 | `--quick` | 5-10 min | Analysis + one technique, 3 test cases |
 | standard (default) | 15-25 min | Full optimization (CoT + Few-Shot + Constitutional), 10 test cases |
 | `--comprehensive` | 30-45 min | All + meta-prompt generation, A/B testing strategy, 20+ test cases |
-
----
 
 ## Phase 1: Analyze Current Prompt
 
@@ -56,8 +51,6 @@ $ARGUMENTS
 - Context dependencies
 - Variable elements
 
----
-
 ## Phase 2: Apply Chain-of-Thought
 
 ### CoT Patterns
@@ -69,8 +62,6 @@ $ARGUMENTS
 | Tree-of-Thoughts | Explore multiple solution paths |
 
 **Structure:** Break reasoning into numbered steps, each building on previous.
-
----
 
 ## Phase 3: Add Few-Shot Learning
 
@@ -84,8 +75,6 @@ $ARGUMENTS
 
 **Format:** Input → Output with clear labels
 
----
-
 ## Phase 4: Apply Constitutional AI
 
 ### Self-Critique Pattern
@@ -98,8 +87,6 @@ $ARGUMENTS
 3. Produce refined response
 
 **Benefits:** -40% harmful outputs, +25% factual accuracy
-
----
 
 ## Phase 5: Model-Specific Optimization
 
@@ -119,8 +106,6 @@ $ARGUMENTS
 <output_format>structure</output_format>
 ```
 
----
-
 ## Phase 6: Evaluate and Test
 
 ### Test Protocol
@@ -139,8 +124,6 @@ $ARGUMENTS
 4. Format (matches requirements?)
 5. Safety (unbiased and safe?)
 
----
-
 ## Common Patterns by Task Type
 
 | Task | Apply |
@@ -149,8 +132,6 @@ $ARGUMENTS
 | Classification | Few-shot with each class + structured output |
 | Generation | Clear constraints + quality criteria |
 | RAG | Citation requirements + gap handling |
-
----
 
 ## Output Format
 
@@ -174,8 +155,6 @@ deployment:
   testing: A/B strategy
 ```
 
----
-
 ## Best Practices
 
 1. Start simple, add complexity as needed
@@ -184,8 +163,6 @@ deployment:
 4. Version control prompts
 5. A/B test before committing
 6. Document design decisions
-
----
 
 ## External Documentation
 

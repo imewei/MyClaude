@@ -1,16 +1,11 @@
----
 name: typescript-project-scaffolding
 version: "1.0.6"
-maturity: "5-Expert"
-specialization: TypeScript Project Setup
 description: Set up production-ready TypeScript projects with modern tooling. Use when initializing projects, configuring tsconfig.json, setting up Vite/ESLint/Vitest, creating Next.js/React apps, or scaffolding Node.js APIs and CLI tools.
----
 
 # TypeScript Project Scaffolding
 
 Production-ready TypeScript project setup with modern tooling.
 
----
 
 ## Project Types
 
@@ -22,7 +17,6 @@ Production-ready TypeScript project setup with modern tooling.
 | CLI Tool | Add `commander`, `inquirer`, `chalk` |
 | Library | Configure `tsconfig.build.json` with declarations |
 
----
 
 ## tsconfig.json (Optimized)
 
@@ -48,7 +42,6 @@ Production-ready TypeScript project setup with modern tooling.
 }
 ```
 
----
 
 ## ESLint (Flat Config)
 
@@ -72,7 +65,6 @@ export default tseslint.config(
 );
 ```
 
----
 
 ## Vitest Configuration
 
@@ -95,7 +87,6 @@ export default defineConfig({
 });
 ```
 
----
 
 ## Package.json Scripts
 
@@ -113,7 +104,6 @@ export default defineConfig({
 }
 ```
 
----
 
 ## Monorepo Setup
 
@@ -132,7 +122,6 @@ pnpm add -D turbo
 }
 ```
 
----
 
 ## Best Practices
 
@@ -145,7 +134,6 @@ pnpm add -D turbo
 | Consistent formatting | Prettier with shared config |
 | Type-only imports | `import type { T }` syntax |
 
----
 
 ## Checklist
 
@@ -156,7 +144,3 @@ pnpm add -D turbo
 - [ ] Vitest for testing
 - [ ] Package scripts defined
 - [ ] .gitignore includes node_modules, dist
-
----
-
-**Version**: 1.0.5

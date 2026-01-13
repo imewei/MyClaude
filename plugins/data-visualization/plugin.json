@@ -1,42 +1,24 @@
 {
   "name": "data-visualization",
   "displayName": "Data Visualization & Scientific UI",
-  "description": "Comprehensive data visualization and UI design for scientific computing with Python/Julia ecosystems. Expert-level agent and skills for publication-quality figures, interactive dashboards, accessibility-first design, and immersive AR/VR interfaces. v1.0.1 features enhanced agent with systematic frameworks and optimized skills for better discoverability.",
-  "version": "1.0.6",
-  "keywords": [
-    "visualization",
-    "scientific-plots",
-    "python",
-    "julia",
-    "matplotlib",
-    "plotly",
-    "makie",
-    "plots-jl",
-    "seaborn",
-    "bokeh",
-    "dash",
-    "streamlit",
-    "pluto",
-    "jupyter",
-    "3d-visualization",
-    "interactive-dashboards",
-    "publication-quality",
-    "ux-design",
-    "accessibility",
-    "wcag",
-    "data-storytelling",
-    "ar-vr",
-    "d3js",
-    "scientific-ui",
-    "chain-of-thought",
-    "constitutional-ai",
-    "systematic-design",
-    "user-centered-design"
-  ],
-  "category": "scientific-computing",
+  "version": "1.0.7",
+  "description": "Data visualization and scientific UI design with Python/Julia ecosystems for publication-quality figures and interactive dashboards.",
   "author": {
     "name": "Wei Chen",
     "url": "https://myclaude.readthedocs.io/en/latest/"
   },
-  "license": "MIT"
+  "homepage": "https://github.com/imewei/MyClaude",
+  "repository": "https://github.com/imewei/MyClaude",
+  "license": "MIT",
+  "keywords": [
+    "visualization",
+    "matplotlib",
+    "plotly",
+    "makie",
+    "scientific-plots",
+    "interactive-dashboards",
+    "ux-design",
+    "accessibility"
+  ],
+  "category": "scientific-computing"
 }

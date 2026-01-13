@@ -5,7 +5,6 @@ command: /langchain-agent
 description: Create production-ready LangChain agents with LangGraph, RAG, and observability
 allowed-tools: Bash(find:*), Bash(git:*)
 argument-hint: "<agent_description>"
-color: purple
 execution_modes:
   quick: "5-10 minutes"
   standard: "15-25 minutes"
@@ -23,8 +22,6 @@ agents:
 
 Build production-ready AI agent for: $ARGUMENTS
 
----
-
 ## Mode Selection
 
 | Mode | Duration | Scope |
@@ -32,8 +29,6 @@ Build production-ready AI agent for: $ARGUMENTS
 | Quick | 5-10 min | Basic ReAct agent, simple tools, in-memory buffer |
 | Standard (default) | 15-25 min | + RAG pipeline, memory with summarization, LangSmith |
 | Comprehensive | 30-45 min | + Multi-agent orchestration, advanced RAG, full observability |
-
----
 
 ## External Documentation
 
@@ -43,8 +38,6 @@ Build production-ready AI agent for: $ARGUMENTS
 | LLM Integration | [llm-integration-patterns.md](../docs/llm-integration-patterns.md) | ~400 |
 | Testing & Deployment | [ai-testing-deployment.md](../docs/ai-testing-deployment.md) | ~500 |
 
----
-
 ## Core Requirements
 
 - LangChain 0.1+ and LangGraph APIs
@@ -53,8 +46,6 @@ Build production-ready AI agent for: $ARGUMENTS
 - LangSmith observability
 - Security best practices
 - Cost optimization
-
----
 
 ## Model & Embeddings
 
@@ -66,8 +57,6 @@ Build production-ready AI agent for: $ARGUMENTS
 | Finance | `voyage-finance-2` |
 | Legal | `voyage-law-2` |
 
----
-
 ## Agent Types
 
 | Type | Use Case | Pattern |
@@ -75,8 +64,6 @@ Build production-ready AI agent for: $ARGUMENTS
 | ReAct | General multi-step reasoning | `create_react_agent(llm, tools)` |
 | Plan-and-Execute | Complex upfront planning | Separate planning/execution nodes |
 | Multi-Agent | Specialized with routing | Supervisor + `Command[Literal[...]]` |
-
----
 
 ## Memory Systems
 
@@ -87,8 +74,6 @@ Build production-ready AI agent for: $ARGUMENTS
 | ConversationEntityMemory | Track entities |
 | VectorStoreRetrieverMemory | Semantic search |
 | Hybrid | Combine multiple types |
-
----
 
 ## RAG Pipeline
 
@@ -105,8 +90,6 @@ Build production-ready AI agent for: $ARGUMENTS
 - **RAG Fusion**: Multiple query perspectives
 - **Reranking**: Cohere Rerank for relevance
 
----
-
 ## Tools Integration
 
 | Element | Requirement |
@@ -114,8 +97,6 @@ Build production-ready AI agent for: $ARGUMENTS
 | Schema | Pydantic BaseModel with Field descriptions |
 | Async | `async def` with `coroutine=` parameter |
 | Error handling | Try/except with informative returns |
-
----
 
 ## Production Deployment
 
@@ -138,8 +119,6 @@ Build production-ready AI agent for: $ARGUMENTS
 - Prometheus metrics
 - Health endpoints
 
----
-
 ## LangGraph State Pattern
 
 ```python
@@ -148,8 +127,6 @@ builder.add_node("node", func)
 builder.add_conditional_edges("node", router, {"a": "next", "b": END})
 agent = builder.compile(checkpointer=checkpointer)
 ```
-
----
 
 ## Implementation Checklist
 
@@ -166,8 +143,6 @@ agent = builder.compile(checkpointer=checkpointer)
 - [ ] Write evaluation tests
 - [ ] Document API endpoints
 
----
-
 ## Best Practices
 
 1. **Always async**: `ainvoke`, `astream`
@@ -177,8 +152,6 @@ agent = builder.compile(checkpointer=checkpointer)
 5. **Secure secrets**: Environment variables only
 6. **Test thoroughly**: Unit, integration, evaluation
 7. **Version control state**: Use checkpointers
-
----
 
 ## Related Commands
 

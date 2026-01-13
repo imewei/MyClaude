@@ -7,9 +7,6 @@ execution_modes:
   quick: "30 min - 1 hour"
   standard: "2-3 hours"
   enterprise: "1 day"
-workflow_type: "sequential"
-interactive_mode: true
-color: red
 allowed-tools: Bash, Read, Grep, Write
 ---
 
@@ -21,8 +18,6 @@ Systematic performance analysis using industry-standard profiling tools.
 
 Target for profiling: $ARGUMENTS
 
----
-
 ## Mode Selection
 
 | Mode | Duration | Scope | Tools |
@@ -30,8 +25,6 @@ Target for profiling: $ARGUMENTS
 | Quick | 30min-1h | CPU hotspots, flamegraph | perf, flamegraph |
 | Standard (default) | 2-3h | CPU + memory + cache + recommendations | + valgrind massif, cachegrind |
 | Enterprise | 1 day | Full audit + benchmarks + regression suite | + criterion, DHAT, hardware counters |
-
----
 
 ## Phase 1: Profiling Goals
 
@@ -48,8 +41,6 @@ Target for profiling: $ARGUMENTS
 - Standard: CPU + memory + cache
 - Enterprise: Multi-dimensional + regression testing
 
----
-
 ## Phase 2: Build with Profiling Symbols
 
 | Language | Command | Notes |
@@ -57,8 +48,6 @@ Target for profiling: $ARGUMENTS
 | C/C++ | `gcc -O3 -march=native -g` | Optimized + debug symbols |
 | Rust | `cargo build --release` | Add `debug = true` in profile.release |
 | Go | `go build` | Symbols included by default |
-
----
 
 ## Phase 3: CPU Profiling (All Modes)
 
@@ -82,8 +71,6 @@ Target for profiling: $ARGUMENTS
 
 **Reference:** [Profiling Tools Guide](../docs/profile-performance/profiling-tools-guide.md)
 
----
-
 ## Phase 4: Hardware Counter Analysis (Standard+)
 
 | Metric | Command | Target |
@@ -96,8 +83,6 @@ Target for profiling: $ARGUMENTS
 - IPC > 1.0: Good throughput
 - Cache miss rate < 1%: Good locality
 - Branch misprediction < 5%: Predictable branches
-
----
 
 ## Phase 5: Memory Profiling (Standard+)
 
@@ -117,8 +102,6 @@ Target for profiling: $ARGUMENTS
 
 **Reference:** [Profiling Tools - Valgrind](../docs/profile-performance/profiling-tools-guide.md#valgrind-tools)
 
----
-
 ## Phase 6: Optimization Strategy (Standard+)
 
 ### Priority by Impact
@@ -132,8 +115,6 @@ Target for profiling: $ARGUMENTS
 | Memory | 1.5-5x | Pooling, arena allocators |
 
 **Reference:** [Optimization Patterns Guide](../docs/profile-performance/optimization-patterns.md)
-
----
 
 ## Phase 7: Micro-Benchmarking (Enterprise)
 
@@ -153,8 +134,6 @@ cargo bench -- --save-baseline baseline
 cargo bench -- --baseline baseline
 ```
 
----
-
 ## Phase 8: Verification Workflow
 
 ### Before/After Protocol
@@ -166,8 +145,6 @@ cargo bench -- --baseline baseline
 | 3 | Run correctness tests | Verify no regressions |
 | 4 | Document metrics | Measure improvement |
 
----
-
 ## Output Deliverables
 
 | Mode | Deliverables |
@@ -176,16 +153,12 @@ cargo bench -- --baseline baseline
 | Standard | + perf report, massif data, cache analysis, optimization roadmap |
 | Enterprise | + benchmark suite, regression tests, CI/CD integration, full audit |
 
----
-
 ## External Documentation
 
 | Document | Content | Lines |
 |----------|---------|-------|
 | [Profiling Tools Guide](../docs/profile-performance/profiling-tools-guide.md) | perf, flamegraph, valgrind, language profilers | ~527 |
 | [Optimization Patterns](../docs/profile-performance/optimization-patterns.md) | Algorithm, cache, memory, SIMD, parallelization | ~629 |
-
----
 
 ## Profiling Checklist
 
@@ -206,8 +179,6 @@ cargo bench -- --baseline baseline
 - [ ] Verify IPC
 - [ ] Document findings
 - [ ] Re-profile after optimization
-
----
 
 ## Optimization Principles
 

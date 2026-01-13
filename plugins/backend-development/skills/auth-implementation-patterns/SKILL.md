@@ -1,16 +1,11 @@
----
 name: auth-implementation-patterns
 version: "1.0.6"
-maturity: "5-Expert"
-specialization: Authentication & Authorization
 description: Master authentication patterns including JWT (access/refresh tokens), OAuth2/OpenID Connect, session-based auth, RBAC/ABAC, API keys, MFA, SSO, password hashing (bcrypt/argon2), secure cookies, and CSRF protection. Use when implementing auth systems, securing APIs, or designing access control.
----
 
 # Authentication & Authorization Patterns
 
 Secure, scalable authentication and authorization systems.
 
----
 
 ## Strategy Selection
 
@@ -21,7 +16,6 @@ Secure, scalable authentication and authorization systems.
 | OAuth2/OIDC | Social login, SSO | Delegated |
 | API Key | Third-party integrations | No |
 
----
 
 ## JWT Implementation
 
@@ -77,7 +71,6 @@ async refreshAccessToken(refreshToken: string) {
 }
 ```
 
----
 
 ## Session-Based Auth
 
@@ -99,7 +92,6 @@ app.use(session({
 }));
 ```
 
----
 
 ## OAuth2 / Social Login
 
@@ -121,7 +113,6 @@ passport.use(new GoogleStrategy({
 }));
 ```
 
----
 
 ## Authorization Patterns
 
@@ -175,7 +166,6 @@ async function requireOwnership(resourceType: string) {
 }
 ```
 
----
 
 ## Password Security
 
@@ -199,7 +189,6 @@ async function verifyPassword(password: string, hash: string) {
 }
 ```
 
----
 
 ## Rate Limiting
 
@@ -215,7 +204,6 @@ const loginLimiter = rateLimit({
 app.post('/api/auth/login', loginLimiter, loginHandler);
 ```
 
----
 
 ## Best Practices
 
@@ -229,7 +217,6 @@ app.post('/api/auth/login', loginLimiter, loginHandler);
 | Rotate secrets | Regular key rotation |
 | Log security events | Failed logins, token refresh |
 
----
 
 ## Common Pitfalls
 
@@ -241,7 +228,6 @@ app.post('/api/auth/login', loginLimiter, loginHandler);
 | Weak passwords | Brute force attacks |
 | No rate limiting | Credential stuffing |
 
----
 
 ## Checklist
 
@@ -253,7 +239,3 @@ app.post('/api/auth/login', loginLimiter, loginHandler);
 - [ ] RBAC or ABAC implemented
 - [ ] Refresh token revocation supported
 - [ ] Security events logged
-
----
-
-**Version**: 1.0.5

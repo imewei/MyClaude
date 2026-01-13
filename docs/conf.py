@@ -16,8 +16,8 @@ sys.path.insert(0, os.path.abspath('_ext'))
 project = 'Claude Code Plugin Marketplace'
 copyright = f'{datetime.now().year}, Wei Chen'
 author = 'Wei Chen'
-release = '1.0.6'
-version = '1.0.6'
+release = '1.0.7'
+version = '1.0.7'
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
@@ -53,17 +53,22 @@ language = 'en'
 # -- Options for HTML output -------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
 
-html_theme = 'sphinx_rtd_theme'
+html_theme = 'furo'
 html_static_path = ['_static']
 
-# Theme options
+# Furo theme options
 html_theme_options = {
-    'navigation_depth': 4,
-    'collapse_navigation': False,
-    'sticky_navigation': True,
-    'includehidden': True,
-    'titles_only': False,
-    'style_external_links': True,
+    "light_css_variables": {
+        "color-brand-primary": "#7C3AED",
+        "color-brand-content": "#7C3AED",
+    },
+    "dark_css_variables": {
+        "color-brand-primary": "#A78BFA",
+        "color-brand-content": "#A78BFA",
+    },
+    "sidebar_hide_name": False,
+    "navigation_with_keys": True,
+    "top_of_page_button": "edit",
 }
 
 # -- Options for HTMLHelp output ---------------------------------------------
@@ -109,7 +114,7 @@ smv_branch_whitelist = r'^(main|master)$'  # Build from main/master branch
 smv_remote_whitelist = r'^origin$'  # Only use origin remote
 
 # Output format
-smv_latest_version = 'v1.0.6'  # Latest version indicator
+smv_latest_version = 'v1.0.7'  # Latest version indicator
 
 # -- Additional Sphinx configuration -----------------------------------------
 
@@ -128,14 +133,7 @@ html_show_sourcelink = False
 html_show_sphinx = True
 
 # If true, the current page is highlighted in the sidebar
-html_sidebars = {
-    '**': [
-        'globaltoc.html',
-        'relations.html',
-        'sourcelink.html',
-        'searchbox.html',
-    ]
-}
+# Furo handles sidebars automatically
 
 # Output format
 html_use_index = True

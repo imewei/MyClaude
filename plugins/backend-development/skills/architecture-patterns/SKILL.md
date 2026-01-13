@@ -1,16 +1,11 @@
----
 name: architecture-patterns
 version: "1.0.6"
-maturity: "5-Expert"
-specialization: Backend Architecture
 description: Master Clean Architecture, Hexagonal Architecture, and DDD patterns including entities, value objects, aggregates, repositories, and domain events. Use when designing scalable backends, refactoring monoliths, or implementing domain-driven design.
----
 
 # Architecture Patterns
 
 Clean Architecture, Hexagonal Architecture, and Domain-Driven Design for maintainable systems.
 
----
 
 ## Pattern Comparison
 
@@ -20,7 +15,6 @@ Clean Architecture, Hexagonal Architecture, and Domain-Driven Design for maintai
 | Hexagonal | Ports & Adapters | Swappable infrastructure |
 | DDD | Bounded contexts, ubiquitous language | Complex business domains |
 
----
 
 ## Clean Architecture Layers
 
@@ -37,7 +31,6 @@ Clean Architecture, Hexagonal Architecture, and Domain-Driven Design for maintai
 Dependencies flow INWARD only
 ```
 
----
 
 ## Directory Structure
 
@@ -49,7 +42,6 @@ app/
 └── infrastructure/   # Database, config, external services
 ```
 
----
 
 ## Clean Architecture Example
 
@@ -91,7 +83,6 @@ class PostgresUserRepository(IUserRepository):
         return self._to_entity(row) if row else None
 ```
 
----
 
 ## Hexagonal Architecture
 
@@ -125,7 +116,6 @@ class MockPaymentAdapter(PaymentGatewayPort):
         return PaymentResult(success=True, transaction_id="mock-123")
 ```
 
----
 
 ## DDD Tactical Patterns
 
@@ -168,7 +158,6 @@ class OrderSubmittedEvent:
     occurred_at: datetime = field(default_factory=datetime.now)
 ```
 
----
 
 ## Best Practices
 
@@ -180,7 +169,6 @@ class OrderSubmittedEvent:
 | Test Independence | Core testable without infrastructure |
 | Rich Domain Models | Behavior with data |
 
----
 
 ## Common Pitfalls
 
@@ -192,7 +180,6 @@ class OrderSubmittedEvent:
 | Repository Leakage | Exposing ORM objects |
 | Over-Engineering | Clean architecture for simple CRUD |
 
----
 
 ## Checklist
 
@@ -202,7 +189,3 @@ class OrderSubmittedEvent:
 - [ ] Use cases orchestrate business logic
 - [ ] Adapters handle external concerns
 - [ ] Core testable without frameworks
-
----
-
-**Version**: 1.0.5

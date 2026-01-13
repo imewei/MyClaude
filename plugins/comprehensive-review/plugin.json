@@ -1,38 +1,24 @@
 {
   "name": "comprehensive-review",
   "displayName": "Comprehensive Review",
-  "description": "Multi-agent code review orchestration with AI-powered analysis, security auditing, and PR optimization. v1.0.3 features hub-and-spoke architecture with 3 external documentation files, execution modes (quick/standard/deep for reviews, basic/enhanced/enterprise for PR enhancement), YAML frontmatter with time estimates, and streamlined command workflows for maximum efficiency. Comprehensive code quality, security, and PR enhancement capabilities.",
-  "version": "1.0.6",
-  "keywords": [
-    "code-review",
-    "security-audit",
-    "pull-request",
-    "pr-optimization",
-    "multi-agent",
-    "architecture-review",
-    "quality-assurance",
-    "risk-assessment",
-    "execution-modes",
-    "review-automation",
-    "documentation-hub",
-    "static-analysis",
-    "devsecops",
-    "vulnerability-assessment",
-    "threat-modeling",
-    "compliance",
-    "owasp",
-    "code-quality",
-    "refactoring",
-    "technical-debt",
-    "chain-of-thought",
-    "constitutional-ai",
-    "systematic-review",
-    "ai-powered"
-  ],
-  "category": "quality",
+  "version": "1.0.7",
+  "description": "Multi-agent code review with AI-powered analysis, security auditing, and PR optimization.",
   "author": {
     "name": "Wei Chen",
     "url": "https://myclaude.readthedocs.io/en/latest/"
   },
-  "license": "MIT"
+  "homepage": "https://github.com/imewei/MyClaude",
+  "repository": "https://github.com/imewei/MyClaude",
+  "license": "MIT",
+  "keywords": [
+    "code-review",
+    "security-audit",
+    "pull-request",
+    "multi-agent",
+    "architecture-review",
+    "quality-assurance",
+    "static-analysis",
+    "vulnerability-assessment"
+  ],
+  "category": "quality"
 }

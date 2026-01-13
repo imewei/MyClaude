@@ -3,18 +3,9 @@ version: "1.0.6"
 category: "cicd-automation"
 command: "/workflow-automate"
 execution-modes:
-  quick-start:
-    description: "Fast CI/CD bootstrap"
-    time: "10-15 minutes"
-    scope: "Single workflow (GitHub Actions OR GitLab CI)"
-  standard:
-    description: "Production-ready multi-stage pipeline"
-    time: "30-45 minutes"
-    scope: "Complete CI/CD with testing, security, deployment"
-  enterprise:
-    description: "Complete automation with compliance and IaC"
-    time: "60-120 minutes"
-    scope: "Multi-platform, infrastructure, security, compliance"
+  quick-start: "10-15m: Single workflow (GitHub/GitLab)"
+  standard: "30-45m: Full pipeline + security + monitoring"
+  enterprise: "60-120m: Multi-platform + IaC + compliance"
 documentation:
   analysis-framework: "../docs/cicd-automation/workflow-analysis-framework.md"
   github-actions: "../docs/cicd-automation/github-actions-reference.md"
@@ -23,168 +14,85 @@ documentation:
   security-workflows: "../docs/cicd-automation/security-automation-workflows.md"
 ---
 
-# Workflow Automation Expert
-
-Create efficient CI/CD pipelines, GitHub Actions workflows, and automated development processes.
-
-## Requirements
+# Workflow Automation
 
 $ARGUMENTS
 
----
+## Mode Coverage
 
-## Section Coverage by Mode
-
-| Section | Quick | Standard | Enterprise |
+| Feature | Quick | Standard | Enterprise |
 |---------|-------|----------|------------|
-| 1. Analysis | ✅ | ✅ | ✅ |
-| 2. GitHub Actions | ✅* | ✅ | ✅ |
-| 3. Release Automation | - | ✅ | ✅ |
-| 4. GitLab CI | ✅* | ✅ | ✅ |
-| 5. Terraform IaC | - | - | ✅ |
-| 6. Security Scanning | - | ✅ | ✅ |
-| 7. Monitoring | - | ✅ | ✅ |
-| 8. Documentation | - | - | ✅ |
-| 9. Compliance | - | - | ✅ |
-| 10. Orchestration | - | ✅ | ✅ |
+| Analysis + GitHub/GitLab* | ✅ | ✅ | ✅ |
+| Release automation | - | ✅ | ✅ |
+| Security scanning | - | ✅ | ✅ |
+| Monitoring + orchestration | - | ✅ | ✅ |
+| Terraform IaC + compliance | - | - | ✅ |
 
-*Quick-start: GitHub Actions OR GitLab CI (user selects)
+*Quick: Select one platform
 
----
+## 1. Analysis
 
-## 1. Workflow Analysis
+Detect existing workflows (`.github/workflows/*.yml`, `.gitlab-ci.yml`), manual processes (scripts, README), automation opportunities
 
-**Detect:** Existing workflows, manual processes, automation opportunities
+## 2. GitHub Actions
 
-| Item | Sources |
-|------|---------|
-| Existing Workflows | `.github/workflows/*.yml`, `.gitlab-ci.yml`, `Jenkinsfile` |
-| Manual Processes | Build/deploy scripts, README instructions |
-| Recommendations | CI/CD setup, automation by priority |
+**Pipeline:** quality → test → build → deploy → verify
 
----
-
-## 2. GitHub Actions Pipeline
-
-**Jobs:** quality → test → build → deploy → verify
-
-| Stage | Components |
-|-------|------------|
-| Quality | Lint, type check, security audit, license check |
-| Test | Unit + integration, matrix (OS × Node versions) |
-| Build | Multi-environment (dev/staging/prod), artifacts |
-| Deploy | ECS/K8s with environment gates |
-| Verify | Smoke tests, E2E, performance |
-
-**Features:** Matrix builds, caching, Docker scanning (Trivy), Slack notifications
-
----
+- Quality: Lint, type check, security audit
+- Test: Unit + integration, matrix (OS × versions)
+- Build: Multi-environment, artifacts
+- Deploy: ECS/K8s, environment gates
+- Verify: Smoke tests, E2E, performance
+- Features: Caching, Trivy scanning, notifications
 
 ## 3. Release Automation
 
-**Tools:** semantic-release with commit-analyzer, changelog, npm, GitHub releases
+semantic-release: commit-analyzer, changelog, npm, GitHub releases. Branches: `main`, `beta`
 
-**Branches:** `main` (releases), `beta` (prereleases)
-
----
-
-## 4. GitLab CI Pipeline
+## 4. GitLab CI
 
 **Stages:** quality → test → build → deploy
 
-| Feature | Implementation |
-|---------|----------------|
-| Matrix testing | `parallel: matrix` with Node versions |
-| Artifacts | `expire_in: 1 week` |
-| Environments | staging/production with approval |
-
----
+- Matrix testing: `parallel: matrix`
+- Artifacts: `expire_in: 1 week`
+- Environments: staging/production with approval
 
 ## 5. Terraform IaC (Enterprise)
 
-**Workflow:** fmt check → init → validate → plan → apply (main only)
+fmt → init → validate → plan → apply (main only). PR comments, S3 remote state
 
-**Features:** PR comments with plan summary, remote state (S3)
+## 6. Security
 
----
+Trivy (vulnerabilities), Snyk (dependencies), OWASP, SonarCloud, Semgrep (SAST), Gitleaks (secrets). Run: push, PR, weekly
 
-## 6. Security Automation
+## 7. Monitoring
 
-| Tool | Purpose |
-|------|---------|
-| Trivy | Vulnerability scanning |
-| Snyk | Dependency scanning |
-| OWASP | Dependency check |
-| SonarCloud | Code quality |
-| Semgrep | SAST |
-| Gitleaks | Secret scanning |
-
-**Schedule:** On push, PR, weekly
-
----
-
-## 7. Monitoring Automation
-
-**Stack:** Prometheus + Grafana + Alertmanager via Helm
-
-**Includes:** Custom dashboards, alert rules
-
----
+Prometheus + Grafana + Alertmanager (Helm). Custom dashboards, alerts
 
 ## 8. Dependency Updates
 
-**Renovate Config:**
-- Auto-merge minor/patch, dev dependencies, `@types/*`
-- Vulnerability alerts auto-merge
-- Group ESLint packages
-- Schedule: after 10pm weekdays
-- Concurrent PR limit: 3
+Renovate: Auto-merge minor/patch, dev deps, `@types/*`. Vulnerability auto-merge. Schedule: 10pm+ weekdays, max 3 PRs
 
----
+## 9. Orchestration
 
-## 9. Orchestration Patterns
+Parallel (independent tasks), Sequential (deploy→tests), Retry (transient failures), Conditional (env-specific)
 
-| Pattern | Use Case |
-|---------|----------|
-| Parallel | Independent pre-deployment tasks |
-| Sequential | Deploy → smoke tests |
-| Retry | Transient failures with backoff |
-| Conditional | Environment-specific steps |
-
----
-
-## Execution Options
+## Usage
 
 ```bash
-# Quick-start
 /workflow-automate --mode=quick-start --platform=github
-
-# Standard
 /workflow-automate --mode=standard --security-level=high
-
-# Enterprise
 /workflow-automate --mode=enterprise --compliance=soc2 --iac-tool=terraform
 ```
 
 **Options:** `--platform=github|gitlab|both`, `--environment=dev,staging,prod`, `--security-level=basic|standard|high`, `--compliance=none|soc2|hipaa|pci`
 
----
+## Deliverables
 
-## Deliverables by Mode
+- Quick: Single workflow, basic security, guide
+- Standard: + Release automation, security scanning, monitoring, pre-commit hooks
+- Enterprise: + Terraform IaC, compliance validation, auto-docs, dependency automation
 
-| Mode | Deliverables |
-|------|--------------|
-| Quick-Start | Single CI/CD workflow, basic security, setup guide |
-| Standard | Multi-stage pipeline, release automation, security scanning, monitoring, pre-commit hooks |
-| Enterprise | All Standard + Terraform IaC, compliance validation, auto-docs, dependency automation, comprehensive guide |
+## Success
 
----
-
-## Success Criteria
-
-- ✅ CI/CD runs successfully on first commit
-- ✅ Security scans block critical vulnerabilities
-- ✅ Automated deployments to all environments
-- ✅ Monitoring dashboards collecting metrics
-- ✅ Zero manual steps for standard workflows
-- ✅ Documentation generated automatically
+CI/CD runs on first commit, security blocks critical vulns, automated deployments, monitoring active, zero manual steps

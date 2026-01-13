@@ -3,35 +3,14 @@ version: "1.0.6"
 command: /python-scaffold
 description: Scaffold production-ready Python projects with modern tooling across 3 execution modes
 execution_modes:
-  quick:
-    duration: "1-2 hours"
-    description: "Simple project or prototype"
-    agents: ["python-pro"]
-    scope: "Minimal structure, basic pyproject.toml, single main file, simple testing"
-    output: "~15 files"
-  standard:
-    duration: "3-6 hours"
-    description: "Production web app or distributable library"
-    agents: ["python-pro", "fastapi-pro OR django-pro"]
-    scope: "Complete FastAPI/Django structure, comprehensive testing, CI/CD, Docker"
-    output: "~50 files"
-  enterprise:
-    duration: "1-2 days"
-    description: "Microservices architecture or complex platform"
-    agents: ["python-pro", "fastapi-pro/django-pro", "observability-engineer"]
-    scope: "Multi-service architecture, distributed tracing, K8s configs, security hardening"
-    output: "~100 files"
-workflow_type: "sequential"
-interactive_mode: true
+  quick: "1-2h: Minimal structure (~15 files)"
+  standard: "3-6h: Complete FastAPI/Django (~50 files)"
+  enterprise: "1-2d: Multi-service + K8s (~100 files)"
 ---
 
 # Python Project Scaffolding
 
-Scaffold production-ready Python projects with modern tooling (uv, FastAPI/Django, pytest, type hints) following 2024/2025 best practices.
-
-## Context
-
-The user needs automated Python project scaffolding with: $ARGUMENTS
+Create production-ready Python project: $ARGUMENTS
 
 ## Execution Mode Selection
 
@@ -59,10 +38,10 @@ Determine the project type from user requirements:
 
 **Quick Mode**: Simple script, basic CLI, minimal library
 **Standard Mode**:
-- **FastAPI**: REST APIs, microservices, async applications → [See FastAPI Structure Guide](../docs/python-scaffold/fastapi-structure.md)
-- **Django**: Full-stack web apps, admin panels, ORM-heavy projects → [See Django Structure Guide](../docs/python-scaffold/django-structure.md)
-- **Library**: Reusable packages, utilities → [See Library Packaging Guide](../docs/python-scaffold/library-packaging.md)
-- **CLI**: Command-line tools, automation scripts → [See CLI Tools Guide](../docs/python-scaffold/cli-tools.md)
+- **FastAPI**: REST APIs, microservices, async applications → [FastAPI Structure](../docs/python-scaffold/fastapi-structure.md)
+- **Django**: Full-stack web apps, admin panels, ORM-heavy projects → [Django Structure](../docs/python-scaffold/django-structure.md)
+- **Library**: Reusable packages, utilities → [Library Packaging](../docs/python-scaffold/library-packaging.md)
+- **CLI**: Command-line tools, automation scripts → [CLI Tools](../docs/python-scaffold/cli-tools.md)
 **Enterprise Mode**: All standard types + distributed systems, microservices
 
 ### 2. Initialize Project with uv

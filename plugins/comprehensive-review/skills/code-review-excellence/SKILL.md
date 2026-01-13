@@ -2,207 +2,110 @@
 name: code-review-excellence
 version: "1.0.6"
 maturity: "5-Expert"
-specialization: Systematic Code Review & Constructive Feedback
-description: Transform code reviews into knowledge sharing through systematic analysis and constructive feedback. Use when reviewing PRs, providing feedback on code changes, evaluating security/performance, validating tests, or establishing review standards.
+specialization: Systematic Code Review & Feedback
+description: Systematic code review with constructive feedback, security/performance analysis, knowledge sharing. Use for PRs, feedback on changes, security/perf validation, test validation, review standards.
 ---
 
 # Code Review Excellence
 
-Systematic code review with constructive feedback, security/performance analysis, and team knowledge sharing.
+## 6-Step Process
 
----
+1. **Context**: Scope, CI/CD status, risk, time available
+2. **Architecture**: Design fit, patterns, scalability, tech debt
+3. **Line-by-line**: Logic, edge cases, errors, clarity, DRY
+4. **Security & Perf**: Input validation, auth, XSS/SQLi, N+1, complexity, cache
+5. **Tests**: Happy/edge/error paths, clarity, isolation
+6. **Feedback**: Prioritize (blocking/important/nit), acknowledge good work, explain why, clear decision
 
-## Delegation Strategy
+## Severity
 
-| Scenario | Delegate To |
-|----------|-------------|
-| System design before implementation | architect-review |
-| Comprehensive security audit | security-auditor |
-| Performance profiling | performance-engineer |
-| Write missing tests | test-automator |
-| Code implementation | domain-specific developer |
-
----
-
-## 6-Step Review Framework
-
-### Step 1: Context Gathering
-- PR scope and business context
-- CI/CD status and coverage
-- Risk level and dependencies
-- Review time available
-
-### Step 2: Architecture Review
-- Design fit for problem
-- Pattern consistency
-- Scalability considerations
-- Technical debt introduced
-
-### Step 3: Line-by-Line Analysis
-- Logic correctness, edge cases
-- Error handling
-- Code clarity, naming
-- DRY violations
-
-### Step 4: Security & Performance
-- Input validation, auth checks
-- SQL injection, XSS prevention
-- N+1 queries, algorithmic complexity
-- Memory leaks, caching
-
-### Step 5: Test Validation
-- Coverage for happy/edge/error paths
-- Test clarity and independence
-- Behavior vs implementation testing
-
-### Step 6: Feedback Synthesis
-- Prioritize blocking vs important vs nit
-- Acknowledge good work
-- Explain the "why"
-- Clear decision: Approve/Comment/Request Changes
-
----
-
-## Severity Classification
-
-| Level | Emoji | Description | Action |
-|-------|-------|-------------|--------|
+| Level | Mark | Description | Action |
+|-------|------|-------------|--------|
 | Blocking | 🔴 | Security, logic errors | Must fix |
 | Important | 🟡 | Best practices, tests | Should fix |
 | Nit | 🟢 | Style, suggestions | Optional |
 
----
-
-## Review Comment Template
+## Comment Template
 
 ```markdown
 ## Summary
-[Brief overview]
+[Overview]
 
 ## 🎉 Strengths
-- [What was done well]
+- [Well done]
 
-## 🔴 Required Changes (Blocking)
-### 1. [Issue Title]
+## 🔴 Required (Blocking)
+### 1. [Issue]
 **Location**: `file.ts:25`
-**Issue**: [Description]
-**Impact**: [Why it matters]
-**Fix**:
-```code
-suggested fix
-```
+**Issue**: [What]
+**Impact**: [Why]
+**Fix**: ```code fix```
 
-## 🟡 Important Suggestions
-1. [Improvement with approach]
+## 🟡 Important
+1. [Improvement]
 
 ## 🟢 Nice-to-Have
-- [Minor suggestion]
+- [Minor]
 
 ## ❓ Questions
-- [Clarification needed]
+- [Clarify]
 
 ## Verdict
 [✅ Approve | 💬 Comment | 🔄 Request Changes]
 ```
 
----
+## Checklists
 
-## Security Checklist
+**Security**: Input validation, auth/authz, parameterized queries, no hardcoded secrets, safe error messages
 
-- [ ] Input validation and sanitization
-- [ ] Authentication/authorization checks
-- [ ] Parameterized SQL queries
-- [ ] Secrets not hardcoded
-- [ ] Error messages don't leak info
+**Performance**: No N+1, indexed queries, caching, appropriate complexity
 
-## Performance Checklist
+**Tests**: Happy path, edge cases, errors, ≥80% coverage
 
-- [ ] No N+1 queries
-- [ ] Queries use indexes
-- [ ] Expensive operations cached
-- [ ] Appropriate algorithmic complexity
+## Language Anti-Patterns
 
-## Test Checklist
-
-- [ ] Happy path tested
-- [ ] Edge cases covered
-- [ ] Error cases tested
-- [ ] Coverage ≥80%
-
----
-
-## Language-Specific Patterns
-
-### Python
+**Python**:
 ```python
 # ❌ Mutable default
-def add_item(item, items=[]):
-    items.append(item)
-
-# ✅ Use None
-def add_item(item, items=None):
-    items = items or []
-    items.append(item)
+def add(item, items=[]): items.append(item)
+# ✅ None
+def add(item, items=None): items = items or []; items.append(item)
 ```
 
-### TypeScript
+**TypeScript**:
 ```typescript
-// ❌ Using any
-function process(data: any) { ... }
-
-// ✅ Proper types
-interface DataPayload { value: string }
-function process(data: DataPayload) { ... }
+// ❌ any
+function process(data: any) {...}
+// ✅ Types
+interface Data {value: string}
+function process(data: Data) {...}
 ```
 
----
+## Communication
 
-## Communication Principles
+| Principle | Target | Behavior |
+|-----------|--------|----------|
+| Constructive | 95% | Code not person, explain |
+| Thorough | 90% | Follow framework, security/perf |
+| Actionable | 93% | Severity, specific fixes |
+| Educational | 88% | Explain why, resources |
+| Efficient | 85% | 24h response, high-impact |
 
-| Principle | Target | Key Behavior |
-|-----------|--------|--------------|
-| Constructive | 95% | Focus on code not person, explain reasoning |
-| Thorough | 90% | Follow framework, check security/performance |
-| Actionable | 93% | Severity levels, specific fixes, implementable |
-| Educational | 88% | Explain why, share resources, mentor |
-| Efficient | 85% | Review within 24h, focus on high-impact |
-
----
-
-## Common Pitfalls
+## Pitfalls
 
 | Anti-Pattern | Fix |
 |--------------|-----|
-| Perfectionism | Use linters, approve when quality bar met |
+| Perfectionism | Use linters, approve when bar met |
 | Scope creep | Keep PRs focused |
-| Delayed reviews | Respond within 24h |
-| Harsh tone | Use collaborative language |
-| Rubber stamping | Actually review the code |
-
----
+| Delays | 24h response |
+| Harsh tone | Collaborative language |
+| Rubber stamp | Actually review |
 
 ## Best Practices
 
-- Respond within 24 hours
-- Limit sessions to 60 minutes
-- Request PR split if >500 lines
-- Balance criticism with praise
-- Offer to pair on complex issues
-- Use templates for consistency
-
----
-
-## Review Checklist
-
-- [ ] Context understood
-- [ ] Architecture reviewed
-- [ ] Security issues checked
-- [ ] Performance assessed
-- [ ] Tests validated
-- [ ] Feedback prioritized
-- [ ] Tone is constructive
-- [ ] Decision is clear
-
----
-
-**Version**: 1.0.5
+- 24h response
+- 60min session limit
+- Split if >500 lines
+- Balance criticism/praise
+- Offer pairing
+- Use templates

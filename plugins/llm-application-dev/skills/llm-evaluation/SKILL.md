@@ -1,16 +1,11 @@
----
 name: llm-evaluation
 version: "1.0.6"
-maturity: "5-Expert"
-specialization: LLM Quality Assessment
 description: Implement LLM evaluation with automated metrics (BLEU, ROUGE, BERTScore), LLM-as-judge patterns (pointwise, pairwise), human evaluation frameworks, A/B testing with statistical significance, and regression detection. Use when measuring LLM performance, comparing prompts/models, or setting up CI/CD quality gates.
----
 
 # LLM Evaluation
 
 Comprehensive evaluation strategies from automated metrics to human assessment.
 
----
 
 ## Evaluation Types
 
@@ -20,7 +15,6 @@ Comprehensive evaluation strategies from automated metrics to human assessment.
 | LLM-as-Judge | Medium | Medium | Quality scoring at scale |
 | Human Evaluation | Slow | High | Final validation, edge cases |
 
----
 
 ## Automated Metrics
 
@@ -61,7 +55,6 @@ def calculate_groundedness(response, context):
     return result['score'] if result['label'] == 'ENTAILMENT' else 0.0
 ```
 
----
 
 ## LLM-as-Judge
 
@@ -97,7 +90,6 @@ Which is better? Return: {{"winner": "A"|"B"|"tie", "reasoning": "..."}}
     return openai.chat(model="gpt-4", messages=[{"role": "user", "content": prompt}])
 ```
 
----
 
 ## Human Evaluation
 
@@ -120,7 +112,6 @@ kappa = cohen_kappa_score(rater1_scores, rater2_scores)
 # κ < 0.2: Poor, 0.4-0.6: Moderate, 0.6-0.8: Substantial, >0.8: Near-perfect
 ```
 
----
 
 ## A/B Testing
 
@@ -148,7 +139,6 @@ class ABTest:
         }
 ```
 
----
 
 ## Regression Detection
 
@@ -172,7 +162,6 @@ class RegressionDetector:
         return {"has_regression": len(regressions) > 0, "regressions": regressions}
 ```
 
----
 
 ## Best Practices
 
@@ -185,7 +174,6 @@ class RegressionDetector:
 | Continuous eval | Integrate into CI/CD |
 | Error analysis | Investigate failures |
 
----
 
 ## Common Pitfalls
 
@@ -197,7 +185,6 @@ class RegressionDetector:
 | Ignoring variance | No statistical uncertainty |
 | Metric mismatch | Not aligned with business goals |
 
----
 
 ## Checklist
 
@@ -207,7 +194,3 @@ class RegressionDetector:
 - [ ] Statistical significance tests
 - [ ] Regression detection before deploy
 - [ ] Error analysis and debugging
-
----
-
-**Version**: 1.0.5

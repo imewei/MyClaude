@@ -1,16 +1,10 @@
----
 name: langchain-architecture
 version: "1.0.6"
-maturity: "5-Expert"
-specialization: LLM Application Development
 description: Design LLM applications with LangChain agents, chains, memory, and tools. Use when building autonomous agents, RAG systems, multi-step workflows, conversational AI with memory, or custom tool integrations.
----
 
 # LangChain Architecture
 
 Build LLM applications with agents, chains, memory, and tool integration.
-
----
 
 ## Core Components
 
@@ -21,8 +15,6 @@ Build LLM applications with agents, chains, memory, and tool integration.
 | Memory | Context persistence | Buffer, Summary, Window, Entity, Vector |
 | Tools | External capabilities | Search, databases, APIs, custom @tool |
 | Callbacks | Monitoring/logging | Token tracking, latency, errors |
-
----
 
 ## Quick Start
 
@@ -42,8 +34,6 @@ agent = initialize_agent(
 )
 result = agent.run("What's the weather in SF? Then calculate 25 * 4")
 ```
-
----
 
 ## RAG Pattern
 
@@ -68,8 +58,6 @@ qa_chain = RetrievalQA.from_chain_type(
 result = qa_chain({"query": "What is the main topic?"})
 ```
 
----
-
 ## Custom Tools
 
 ```python
@@ -90,8 +78,6 @@ agent = initialize_agent(
     agent=AgentType.ZERO_SHOT_REACT_DESCRIPTION
 )
 ```
-
----
 
 ## Sequential Chain
 
@@ -117,8 +103,6 @@ overall = SequentialChain(
 )
 ```
 
----
-
 ## Memory Selection
 
 | Type | Use Case | Example |
@@ -128,8 +112,6 @@ overall = SequentialChain(
 | Window | Sliding window (last N) | `ConversationBufferWindowMemory(k=5)` |
 | Entity | Track entities | `ConversationEntityMemory(llm=llm)` |
 | Vector | Semantic retrieval | `VectorStoreRetrieverMemory(retriever)` |
-
----
 
 ## Callback Handler
 
@@ -147,8 +129,6 @@ class CustomHandler(BaseCallbackHandler):
 agent.run("query", callbacks=[CustomHandler()])
 ```
 
----
-
 ## Performance
 
 ```python
@@ -162,8 +142,6 @@ from langchain.callbacks.streaming_stdout import StreamingStdOutCallbackHandler
 llm = OpenAI(streaming=True, callbacks=[StreamingStdOutCallbackHandler()])
 ```
 
----
-
 ## Best Practices
 
 | Practice | Implementation |
@@ -174,8 +152,6 @@ llm = OpenAI(streaming=True, callbacks=[StreamingStdOutCallbackHandler()])
 | Input validation | Validate before agent execution |
 | Version prompts | Track prompt templates in Git |
 
----
-
 ## Common Pitfalls
 
 | Pitfall | Solution |
@@ -185,8 +161,6 @@ llm = OpenAI(streaming=True, callbacks=[StreamingStdOutCallbackHandler()])
 | Context overflow | Manage history length |
 | No error handling | Implement fallback strategies |
 | Slow retrieval | Optimize vector store queries |
-
----
 
 ## Checklist
 
@@ -200,7 +174,3 @@ llm = OpenAI(streaming=True, callbacks=[StreamingStdOutCallbackHandler()])
 - [ ] Observability (callbacks) setup
 - [ ] Fallback strategies defined
 - [ ] Prompts version controlled
-
----
-
-**Version**: 1.0.5

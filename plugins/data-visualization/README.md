@@ -10,7 +10,7 @@ Scientific data visualization, UX design, and immersive AR/VR interfaces with Py
 
 ---
 
-## What's New in v1.0.6
+## What's New in v1.0.7
 
 This release implements **Opus 4.5 optimization** with enhanced token efficiency and standardized documentation.
 
@@ -23,7 +23,7 @@ This release implements **Opus 4.5 optimization** with enhanced token efficiency
 - **Cross-Reference Tables**: Quick-reference format for delegation and integration patterns
 
 
-## 🎯 What's New in v1.0.6
+## 🎯 What's New in v1.0.7
 
 ### Enhanced Agent (91% maturity)
 - **20 USE case scenarios** with 8 anti-patterns and delegation decision tree

@@ -6,7 +6,7 @@ Comprehensive backend development support including REST/GraphQL/gRPC APIs, micr
 
 [Full Documentation →](https://myclaude.readthedocs.io/en/latest/plugins/backend-development.html) | [Changelog →](./CHANGELOG.md) | [External Docs →](./docs/backend-development/)
 
-## What's New in v1.0.6
+## What's New in v1.0.7
 
 This release implements **Opus 4.5 optimization** with enhanced token efficiency and standardized documentation.
 

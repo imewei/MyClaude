@@ -1,16 +1,11 @@
----
 name: uv-package-manager
 version: "1.0.6"
-maturity: "5-Expert"
-specialization: Fast Python Package Management
 description: Master uv for blazing-fast Python dependency management, virtual environments, and lockfiles. Use when running uv commands (init, add, sync, venv, run), managing dependencies 10-100x faster than pip/poetry, installing Python versions, working with uv.lock for reproducible builds, optimizing Docker/CI builds, or migrating from pip/poetry to uv.
----
 
 # UV Package Manager
 
 Ultra-fast Python package management with Rust-powered uv.
 
----
 
 ## Speed Comparison
 
@@ -20,7 +15,6 @@ Ultra-fast Python package management with Rust-powered uv.
 | poetry | ~20s | 1.5x |
 | uv | ~2-3s | 10-15x |
 
----
 
 ## Installation
 
@@ -35,7 +29,6 @@ powershell -c "irm https://astral.sh/uv/install.ps1 | iex"
 pip install uv
 ```
 
----
 
 ## Quick Start
 
@@ -57,7 +50,6 @@ uv run python app.py
 uv run pytest
 ```
 
----
 
 ## Essential Commands
 
@@ -74,7 +66,6 @@ uv run pytest
 | `uv python install 3.12` | Install Python |
 | `uv python pin 3.12` | Set Python version |
 
----
 
 ## Virtual Environments
 
@@ -91,7 +82,6 @@ uv run pytest
 source .venv/bin/activate
 ```
 
----
 
 ## Lockfile Workflows
 
@@ -112,7 +102,6 @@ uv lock --upgrade-package requests
 uv export --format requirements-txt > requirements.txt
 ```
 
----
 
 ## CI/CD Integration
 
@@ -133,7 +122,6 @@ jobs:
       - run: uv run pytest
 ```
 
----
 
 ## Docker Integration
 
@@ -153,7 +141,6 @@ COPY . .
 CMD ["uv", "run", "python", "app.py"]
 ```
 
----
 
 ## Migration
 
@@ -179,7 +166,6 @@ poetry install
 uv sync
 ```
 
----
 
 ## pyproject.toml
 
@@ -201,7 +187,6 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 ```
 
----
 
 ## Best Practices
 
@@ -213,7 +198,6 @@ build-backend = "hatchling.build"
 | No venv activation | Use `uv run` |
 | Update regularly | `uv lock --upgrade` |
 
----
 
 ## Checklist
 
@@ -224,7 +208,3 @@ build-backend = "hatchling.build"
 - [ ] CI uses `uv sync --frozen`
 - [ ] Docker uses uv for builds
 - [ ] Using `uv run` instead of activating venv
-
----
-
-**Version**: 1.0.5

@@ -1,35 +1,24 @@
 {
   "name": "codebase-cleanup",
   "displayName": "Codebase Cleanup",
-  "description": "Codebase cleanup and technical debt reduction expertise with AI-powered code analysis, systematic refactoring, TDD, and quality engineering. v1.0.3 features optimized command architecture with execution modes (quick/standard/comprehensive), external documentation hub, 9 comprehensive technical guides, and streamlined workflows for maximum efficiency. 25% command size reduction with enhanced capabilities.",
-  "version": "1.0.6",
-  "keywords": [
-    "cleanup",
-    "refactoring",
-    "dead-code",
-    "technical-debt",
-    "code-organization",
-    "dependency-management",
-    "import-cleanup",
-    "code-quality",
-    "maintenance",
-    "code-pruning",
-    "legacy-cleanup",
-    "tdd",
-    "test-automation",
-    "code-review",
-    "ai-powered",
-    "quality-engineering",
-    "solid-principles",
-    "security-audit",
-    "dependency-security",
-    "execution-modes"
-  ],
-  "category": "development",
+  "version": "1.0.7",
+  "description": "Codebase cleanup and technical debt reduction with AI-powered analysis, systematic refactoring, and quality engineering.",
   "author": {
     "name": "Wei Chen",
     "url": "https://myclaude.readthedocs.io/en/latest/"
   },
+  "homepage": "https://github.com/imewei/MyClaude",
+  "repository": "https://github.com/imewei/MyClaude",
   "license": "MIT",
-  "skills": []
+  "keywords": [
+    "cleanup",
+    "refactoring",
+    "technical-debt",
+    "code-quality",
+    "dead-code",
+    "dependency-management",
+    "tdd",
+    "code-organization"
+  ],
+  "category": "development"
 }

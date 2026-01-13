@@ -1,16 +1,10 @@
----
 name: rag-implementation
 version: "1.0.6"
-maturity: "5-Expert"
-specialization: Retrieval-Augmented Generation
 description: Build production RAG systems with vector databases (Pinecone, Weaviate, Chroma), embeddings, chunking strategies, hybrid search (dense + BM25), reranking, and grounded prompts. Use when implementing document Q&A, knowledge base chatbots, or reducing LLM hallucinations.
----
 
 # RAG Implementation
 
 Retrieval-Augmented Generation for accurate, grounded LLM responses.
-
----
 
 ## Core Components
 
@@ -32,8 +26,6 @@ Retrieval-Augmented Generation for accurate, grounded LLM responses.
 | all-MiniLM-L6-v2 | 384 | Fast, lightweight |
 | bge-large-en-v1.5 | 1024 | SOTA performance |
 | e5-large-v2 | 1024 | Multilingual |
-
----
 
 ## Quick Start
 
@@ -63,8 +55,6 @@ qa = RetrievalQA.from_chain_type(
 result = qa({"query": "What are the main features?"})
 ```
 
----
-
 ## Chunking Strategies
 
 | Strategy | Use Case | Splitter |
@@ -82,8 +72,6 @@ splitter = SemanticChunker(
     embeddings=OpenAIEmbeddings(),
     breakpoint_threshold_type="percentile")
 ```
-
----
 
 ## Advanced Retrieval
 
@@ -124,8 +112,6 @@ retriever = ParentDocumentRetriever(
     parent_splitter=RecursiveCharacterTextSplitter(chunk_size=2000))
 ```
 
----
-
 ## Reranking
 
 ```python
@@ -148,8 +134,6 @@ reranked = sorted(zip(candidates, scores), key=lambda x: x[1], reverse=True)[:5]
 results = vectorstore.max_marginal_relevance_search(
     query, k=5, fetch_k=20, lambda_mult=0.5)  # Balance diversity/relevance
 ```
-
----
 
 ## Grounding Prompts
 
@@ -179,8 +163,6 @@ Answer:
 Confidence:"""
 ```
 
----
-
 ## Metadata Filtering
 
 ```python
@@ -192,8 +174,6 @@ for chunk in chunks:
 results = vectorstore.similarity_search(
     query, filter={"category": "technical"}, k=5)
 ```
-
----
 
 ## Evaluation
 
@@ -212,8 +192,6 @@ def evaluate_rag(qa_chain, test_cases):
     return {k: sum(v)/len(v) for k, v in metrics.items()}
 ```
 
----
-
 ## Best Practices
 
 | Practice | Implementation |
@@ -225,8 +203,6 @@ def evaluate_rag(qa_chain, test_cases):
 | Reranking | Cross-encoder for top-k improvement |
 | Citations | Always return source documents |
 
----
-
 ## Common Pitfalls
 
 | Pitfall | Solution |
@@ -237,8 +213,6 @@ def evaluate_rag(qa_chain, test_cases):
 | Slow queries | Optimize vector store, reduce k |
 | Missing info | Verify indexing coverage |
 
----
-
 ## Checklist
 
 - [ ] Chunking strategy matches content type
@@ -248,7 +222,3 @@ def evaluate_rag(qa_chain, test_cases):
 - [ ] Reranking implemented for quality
 - [ ] Grounding prompt enforces factuality
 - [ ] Evaluation metrics tracked
-
----
-
-**Version**: 1.0.5

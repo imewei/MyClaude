@@ -1,27 +1,24 @@
 {
   "name": "full-stack-orchestration",
   "displayName": "Full-Stack Orchestration",
+  "version": "1.0.7",
   "description": "Full-stack development orchestration coordinating frontend, backend, testing, security, performance, and deployment for end-to-end feature delivery",
-  "version": "1.0.6",
-  "keywords": [
-    "full-stack",
-    "orchestration",
-    "coordination",
-    "integration",
-    "frontend-backend",
-    "e2e-development",
-    "deployment",
-    "testing",
-    "security",
-    "performance",
-    "workflow-automation",
-    "feature-development"
-  ],
-  "category": "orchestration",
   "author": {
     "name": "Wei Chen",
     "url": "https://myclaude.readthedocs.io/en/latest/"
   },
+  "homepage": "https://github.com/imewei/MyClaude",
+  "repository": "https://github.com/imewei/MyClaude",
   "license": "MIT",
-  "skills": []
+  "keywords": [
+    "full-stack",
+    "orchestration",
+    "frontend-backend",
+    "e2e-development",
+    "testing",
+    "security",
+    "deployment",
+    "performance"
+  ],
+  "category": "orchestration"
 }

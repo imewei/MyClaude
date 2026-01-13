@@ -6,20 +6,9 @@ description: Analyze and modernize scientific computing codebases while preservi
 argument-hint: <path-to-code> [target-framework]
 color: purple
 execution_modes:
-  quick: "30-45 minutes"
-  standard: "1-2 hours"
-  comprehensive: "3-5 hours"
-agents:
-  primary:
-    - hpc-numerical-coordinator
-  conditional:
-    - agent: jax-pro
-      trigger: pattern "jax|flax" OR argument "jax"
-    - agent: neural-architecture-engineer
-      trigger: pattern "neural|torch|tensorflow"
-    - agent: systems-architect
-      trigger: complexity > 20 OR pattern "architecture"
-  orchestrated: false
+  quick: "30-45m: Analysis + strategy"
+  standard: "1-2h: + Framework selection + initial implementation"
+  comprehensive: "3-5h: + Validation, benchmarking, production integration"
 external_docs:
   - docs/code-migration/algorithm-analysis-framework.md
   - docs/code-migration/numerical-accuracy-guide.md
@@ -30,102 +19,48 @@ external_docs:
 allowed-tools: Bash(find:*), Bash(ls:*), Bash(grep:*), Bash(wc:*), Bash(du:*), Bash(head:*), Bash(tail:*), Bash(file:*)
 ---
 
-# Scientific Code Adoption & Modernization
+# Scientific Code Adoption
 
-Target: $ARGUMENTS
+$ARGUMENTS
 
----
+## Codebase Discovery
 
-## Mode Selection
-
-| Mode | Duration | Scope |
-|------|----------|-------|
-| Quick | 30-45 min | Codebase analysis + migration strategy |
-| Standard (default) | 1-2h | + framework selection + initial implementation |
-| Comprehensive | 3-5h | + validation, benchmarking, production integration |
-
----
-
-## Initial Codebase Discovery
-
-### Automated Analysis Commands
-
-| Analysis | Command Pattern |
-|----------|-----------------|
+| Analysis | Command |
+|----------|---------|
 | Project files | `find -type f -name "*.{f90,c,cpp,py,jl}"` |
 | LOC count | `find ... -exec wc -l` |
-| Language detection | Count by extension |
+| Language | Count by extension |
 | Build system | Find Makefile, CMake, setup.py |
 | Dependencies | Grep includes/imports |
 | Parallelization | Grep MPI, OpenMP, CUDA |
 | Numerical libs | Grep BLAS, LAPACK, FFT |
 
----
+## Phase 1: Architecture
 
-## Phase 1: Code Understanding & Architecture
+**Algorithms:** Solvers (iterative, direct), Integration (time stepping, discretization), Optimization (gradient descent, Newton)
 
-### Algorithm Identification
+**Computational kernels:** Hotspots (80/20 profiling), Bound type (memory/compute/I/O), Complexity (O(N), O(N²), O(N³)), Access pattern (contiguous/strided/random)
 
-| Category | Examples |
-|----------|----------|
-| Solvers | Iterative methods, direct solvers |
-| Integration | Time stepping, discretization |
-| Optimization | Gradient descent, Newton methods |
+**Data structures:** Memory layout (row/column-major), Precision (float32/64/128), Sparsity (dense/sparse)
 
-### Computational Kernel Analysis
+**Ref:** [algorithm-analysis-framework.md](../docs/code-migration/algorithm-analysis-framework.md)
 
-| Metric | Purpose |
-|--------|---------|
-| Hotspots | 80/20 rule profiling |
-| Bound type | Memory, compute, or I/O |
-| Complexity | O(N), O(N^2), O(N^3) |
-| Access pattern | Contiguous, strided, random |
+## Phase 2: Numerical Accuracy
 
-### Data Structure Analysis
+**Precision:**
+- Physics: float64
+- ML: float32
+- Financial: Decimal/float128
 
-| Aspect | Consideration |
-|--------|---------------|
-| Memory layout | Row-major vs column-major |
-| Precision | float32, float64, float128 |
-| Sparsity | Dense vs sparse structures |
+**Verification:** Reference solutions (analytical, higher-precision, legacy), Tolerance (absolute/relative/mixed), Test hierarchy (unit/integration/system)
 
-**Reference:** [algorithm-analysis-framework.md](../docs/code-migration/algorithm-analysis-framework.md)
+**Reproducibility:** FP associativity → Deterministic reductions, Parallel reductions → Ordered operations, RNG → Seeded
 
----
+**Ref:** [numerical-accuracy-guide.md](../docs/code-migration/numerical-accuracy-guide.md)
 
-## Phase 2: Numerical Accuracy Preservation
+## Phase 3: Framework Migration
 
-### Precision Requirements
-
-| Domain | Typical Precision |
-|--------|-------------------|
-| Physics simulations | float64 |
-| Machine learning | float32 |
-| Financial | Decimal/float128 |
-
-### Verification Strategy
-
-| Test Type | Purpose |
-|-----------|---------|
-| Reference solutions | Analytical, higher-precision, legacy |
-| Tolerance criteria | Absolute, relative, mixed |
-| Test hierarchy | Unit, integration, system |
-
-### Reproducibility
-
-| Issue | Mitigation |
-|-------|------------|
-| FP associativity | Deterministic reductions |
-| Parallel reductions | Ordered operations |
-| RNG | Seeded, reproducible |
-
-**Reference:** [numerical-accuracy-guide.md](../docs/code-migration/numerical-accuracy-guide.md)
-
----
-
-## Phase 3: Framework Migration Strategy
-
-### Target Framework Selection
+**Target selection:**
 
 | Framework | Use Case | Strengths |
 |-----------|----------|-----------|
@@ -136,118 +71,62 @@ Target: $ARGUMENTS
 | Rust/C++20 | Systems-level | Safety + performance |
 | Dask/Chapel | Distributed | Parallel computing |
 
-### Migration Approach
+**Approach:**
+- Phased (wrapper-first): 6-12w, lower risk
+- Direct (rewrite): 3-6w, higher risk
 
-| Approach | Timeline | Risk |
-|----------|----------|------|
-| Phased (wrapper-first) | 6-12 weeks | Lower |
-| Direct (rewrite) | 3-6 weeks | Higher |
+**Ref:** [framework-migration-strategies.md](../docs/code-migration/framework-migration-strategies.md)
 
-**Reference:** [framework-migration-strategies.md](../docs/code-migration/framework-migration-strategies.md)
+## Phase 4: Performance
 
----
+**Parallelization:**
+- Vectorization: 10-100x (broadcasting, vmap)
+- Multi-threading: 4-8x (data parallelism)
+- GPU: 10-1000x (JAX jit, CUDA)
+- Distributed: 10-100x (cluster)
 
-## Phase 4: Performance Optimization
+**Priorities:** Algorithm complexity (highest, O(N²)→O(N log N)), Cache optimization (high, loop tiling), Memory reduction (medium, pre-allocation), JIT compilation (high, 10-50x)
 
-### Parallelization Opportunities
+**Ref:** [performance-optimization-techniques.md](../docs/code-migration/performance-optimization-techniques.md)
 
-| Technique | Speedup | Use Case |
-|-----------|---------|----------|
-| Vectorization | 10-100x | Broadcasting, vmap |
-| Multi-threading | 4-8x | Data parallelism |
-| GPU acceleration | 10-1000x | JAX jit, CUDA |
-| Distributed | 10-100x | Cluster computing |
+## Phase 5: Integration
 
-### Optimization Priorities
+**Tooling:** Version control (detailed commits), CI (numerical validation in GHA), Documentation (Sphinx + NumPy-style docstrings), Benchmarking (pytest-benchmark, custom)
 
-| Optimization | Impact |
-|--------------|--------|
-| Algorithm complexity | Highest (O(N^2)→O(N log N)) |
-| Cache optimization | High (loop tiling) |
-| Memory reduction | Medium (pre-allocation) |
-| JIT compilation | High (10-50x) |
+**Package:** Build config (pyproject.toml, src/ layout), Dependencies (conda environment.yml), Distribution (wheels, conda packages)
 
-**Reference:** [performance-optimization-techniques.md](../docs/code-migration/performance-optimization-techniques.md)
+**Ref:** [integration-testing-patterns.md](../docs/code-migration/integration-testing-patterns.md)
 
----
+## Phase 6: Validation
 
-## Phase 5: Integration & Ecosystem
+**Numerical:** Regression (vs reference), Convergence (verify rates), Property-based (numerical properties), Edge cases (boundaries, singular)
 
-### Modern Tooling
-
-| Tool | Purpose |
-|------|---------|
-| Version control | Detailed commits, migration branches |
-| CI | Numerical validation in GitHub Actions |
-| Documentation | Sphinx with NumPy-style docstrings |
-| Benchmarking | pytest-benchmark, custom suites |
-
-### Package Structure
-
-| Component | Standard |
-|-----------|----------|
-| Build config | pyproject.toml, src/ layout |
-| Dependencies | conda environment.yml |
-| Distribution | Wheels, conda packages |
-
-**Reference:** [integration-testing-patterns.md](../docs/code-migration/integration-testing-patterns.md)
-
----
-
-## Phase 6: Validation & Benchmarking
-
-### Numerical Validation
-
-| Test Type | Purpose |
-|-----------|---------|
-| Regression | Compare to reference outputs |
-| Convergence | Verify expected rates |
-| Property-based | Numerical properties |
-| Edge cases | Boundaries, singular cases |
-
-### Performance Benchmarking
-
-| Metric | Comparison |
-|--------|------------|
-| Speed | New vs old |
-| Scaling | Weak and strong |
-| Memory | Peak, allocation patterns |
-| Platforms | Linux, macOS, Windows |
-
----
+**Performance:** Speed (new vs old), Scaling (weak/strong), Memory (peak, allocation), Platforms (Linux, macOS, Windows)
 
 ## Deliverables
 
-| Deliverable | Content |
-|-------------|---------|
-| Migration Plan | Architecture analysis, timeline |
-| Code Translation | Side-by-side comparison |
-| Validation Report | Accuracy (<1e-11), performance |
-| Documentation | API, algorithms, tutorials |
-| Test Suite | 95%+ coverage, numerical validation |
-
----
+- Migration Plan: Architecture analysis, timeline
+- Code Translation: Side-by-side comparison
+- Validation Report: Accuracy (<1e-11), performance
+- Documentation: API, algorithms, tutorials
+- Test Suite: 95%+ coverage, numerical validation
 
 ## Special Considerations
 
-| Category | Requirement |
-|----------|-------------|
-| Numerical stability | Never change algorithms without validation |
-| Performance | Maintain or exceed legacy |
-| Conservation laws | Energy, momentum, mass |
-| Legacy compatibility | Wrapper layer if needed |
+- Numerical stability: Never change algorithms without validation
+- Performance: Maintain or exceed legacy
+- Conservation laws: Energy, momentum, mass
+- Legacy compatibility: Wrapper layer if needed
 
-**Reference:** [scientific-computing-best-practices.md](../docs/code-migration/scientific-computing-best-practices.md)
-
----
+**Ref:** [scientific-computing-best-practices.md](../docs/code-migration/scientific-computing-best-practices.md)
 
 ## Action Items
 
-1. Analyze codebase comprehensively
-2. Identify core algorithms and numerical properties
-3. Recommend optimal framework(s)
-4. Create detailed migration plan
+1. Analyze codebase
+2. Identify algorithms and numerical properties
+3. Recommend optimal frameworks
+4. Create migration plan
 5. Implement proof-of-concept for critical kernel
 6. Validate numerical accuracy
 7. Benchmark performance
-8. Document findings and recommendations
+8. Document findings

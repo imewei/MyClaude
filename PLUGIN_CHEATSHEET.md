@@ -1,7 +1,7 @@
 # Claude Code Plugin Marketplace - Quick Reference
 
-**Total Resources:** 31 Plugins | 74 Agents | 48 Commands | 114 Skills
-**Version:** 1.0.4 | **Last Updated:** December 3, 2025
+**Total Resources:** 31 Plugins | 74 Agents | 49 Commands | 114 Skills
+**Version:** 1.0.7 | **Last Updated:** January 12, 2026
 
 ---
 
@@ -147,11 +147,11 @@
 **Commands:** `/fix-commit-errors`, `/workflow-automate`
 **Use When:** CI/CD setup, Kubernetes deployments, cloud infrastructure, IaC, pipeline debugging
 
-### git-pr-workflows (1 agent, 4 commands, 1 skill)
+### git-pr-workflows (1 agent, 5 commands, 1 skill)
 **Purpose:** Git workflows, pull request automation, code review
 **Agent:** code-reviewer
-**Commands:** `/commit`, `/git-workflow`, `/onboard`, `/pr-enhance`
-**Use When:** Git commits, PR creation, code reviews, version control workflows
+**Commands:** `/commit`, `/git-workflow`, `/merge-all`, `/onboard`, `/pr-enhance`
+**Use When:** Git commits, PR creation, code reviews, version control workflows, branch consolidation
 
 ### observability-monitoring (4 agents, 2 commands, 5 skills)
 **Purpose:** System monitoring, observability, performance engineering, database optimization
@@ -307,10 +307,10 @@ make plugin-enable-all
 | Scientific Computing | 8 | 18 | 4 |
 | Development | 10 | 24 | 14 |
 | AI & ML | 2 | 6 | 3 |
-| DevOps & Infrastructure | 3 | 10 | 8 |
+| DevOps & Infrastructure | 3 | 10 | 9 |
 | Quality & Testing | 4 | 7 | 10 |
 | Tools & Migration | 4 | 8 | 9 |
-| **Total** | **31** | **74** | **48** |
+| **Total** | **31** | **74** | **49** |
 
 ---
 
@@ -323,4 +323,4 @@ make plugin-enable-all
 
 ---
 
-*All plugins enhanced with nlsq-pro template pattern (v1.0.4) including Pre-Response Validation Framework and Constitutional AI principles.*
+*All plugins enhanced with nlsq-pro template pattern (v1.0.7) including Pre-Response Validation Framework and Constitutional AI principles.*

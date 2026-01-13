@@ -1,16 +1,10 @@
----
 name: python-packaging
 version: "1.0.6"
-maturity: "5-Expert"
-specialization: Python Package Distribution
 description: Create distributable Python packages with pyproject.toml, proper project structure, and publishing to PyPI. Use when writing pyproject.toml or setup.py, creating package structures with __init__.py, building wheel/source distributions, setting up CLI entry points, configuring build backends (setuptools, hatchling), or publishing to PyPI/TestPyPI.
----
 
 # Python Packaging
 
 Modern Python packaging with pyproject.toml and PyPI distribution.
-
----
 
 ## Build Backend Selection
 
@@ -20,8 +14,6 @@ Modern Python packaging with pyproject.toml and PyPI distribution.
 | hatchling | Modern, opinionated | Fast |
 | flit | Pure Python only | Fast |
 | poetry | Deps + packaging | Moderate |
-
----
 
 ## Project Structure (src layout)
 
@@ -38,8 +30,6 @@ my-package/
 └── tests/
     └── test_core.py
 ```
-
----
 
 ## Complete pyproject.toml
 
@@ -94,8 +84,6 @@ python_version = "3.12"
 strict = true
 ```
 
----
-
 ## CLI Entry Points
 
 ```python
@@ -125,8 +113,6 @@ def main():
 my-cli = "my_package.cli:main"
 ```
 
----
-
 ## Version Management
 
 ### Static Version
@@ -150,8 +136,6 @@ dynamic = ["version"]
 write_to = "src/my_package/_version.py"
 ```
 
----
-
 ## Building and Publishing
 
 ```bash
@@ -172,8 +156,6 @@ pip install --index-url https://test.pypi.org/simple/ my-package
 # Publish to PyPI
 twine upload dist/*
 ```
-
----
 
 ## GitHub Actions Publishing
 
@@ -200,8 +182,6 @@ jobs:
           TWINE_PASSWORD: ${{ secrets.PYPI_API_TOKEN }}
 ```
 
----
-
 ## Including Data Files
 
 ```toml
@@ -215,8 +195,6 @@ from importlib.resources import files
 
 data = files("my_package").joinpath("data/config.json").read_text()
 ```
-
----
 
 ## Namespace Packages
 
@@ -237,8 +215,6 @@ company/api/__init__.py
 include = ["company.core*"]
 ```
 
----
-
 ## Development Installation
 
 ```bash
@@ -248,8 +224,6 @@ pip install -e .
 # With optional dependencies
 pip install -e ".[dev]"
 ```
-
----
 
 ## Best Practices
 
@@ -263,8 +237,6 @@ pip install -e ".[dev]"
 | TestPyPI | Always test on TestPyPI first |
 | CI/CD | Automate publishing with GitHub Actions |
 
----
-
 ## Dependency Constraints
 
 | Syntax | Meaning |
@@ -273,8 +245,6 @@ pip install -e ".[dev]"
 | `>=2.28.0,<3.0` | Compatible range |
 | `~=2.28.0` | >=2.28.0,<2.29 |
 | `==2.28.3` | Exact (avoid) |
-
----
 
 ## Checklist
 
@@ -287,7 +257,3 @@ pip install -e ".[dev]"
 - [ ] Tested in clean venv
 - [ ] Published to TestPyPI first
 - [ ] Git tag created for release
-
----
-
-**Version**: 1.0.5

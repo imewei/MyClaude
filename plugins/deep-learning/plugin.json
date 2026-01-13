@@ -1,21 +1,23 @@
 {
   "name": "deep-learning",
-  "version": "1.0.6",
-  "description": "Comprehensive deep learning expertise with systematic Chain-of-Thought frameworks: neural network theory, architecture design, training diagnostics, research translation, mathematical foundations, and production-ready implementations",
+  "displayName": "Deep Learning",
+  "version": "1.0.7",
+  "description": "Deep learning expertise with neural network theory, architecture design, training diagnostics, and production-ready implementations.",
   "author": {
     "name": "Wei Chen",
     "url": "https://myclaude.readthedocs.io/en/latest/"
   },
+  "homepage": "https://github.com/imewei/MyClaude",
+  "repository": "https://github.com/imewei/MyClaude",
+  "license": "MIT",
   "keywords": [
     "deep-learning",
     "neural-networks",
     "architecture",
-    "theory",
-    "optimization",
     "training",
+    "optimization",
     "debugging",
     "research",
-    "mathematics",
     "deployment"
   ],
   "category": "ai-ml"

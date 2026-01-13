@@ -3,141 +3,73 @@ version: "1.0.6"
 command: /monitor-setup
 description: Set up Prometheus, Grafana, and distributed tracing observability stack
 execution_modes:
-  quick: "1-2 days"
-  standard: "1 week"
-  enterprise: "2-3 weeks"
+  quick: "1-2d: Prometheus + Grafana + basic alerts"
+  standard: "1w: + Tracing, logs, IaC, multi-window alerts"
+  enterprise: "2-3w: + Multi-cluster, SLO, security monitoring"
 workflow_type: "hybrid"
 interactive_mode: true
 ---
 
 # Monitoring and Observability Setup
 
-Set up comprehensive monitoring covering metrics, logs, and traces.
-
-## Requirements
-
 $ARGUMENTS
 
----
+## External Docs
 
-## Mode Selection
-
-| Mode | Duration | Scope | Agents |
-|------|----------|-------|--------|
-| Quick | 1-2 days | Basic Prometheus + Grafana + alerts | observability-engineer |
-| Standard (default) | 1 week | + Tracing, logs, IaC, multi-window alerts | + performance-engineer |
-| Enterprise | 2-3 weeks | + Multi-cluster, SLO tracking, security monitoring | + database-optimizer, network-engineer |
-
----
-
-## External Documentation
-
-| Document | Content | Lines |
-|----------|---------|-------|
-| [Prometheus Setup](../docs/monitor-setup/prometheus-setup.md) | Config, service discovery, recording rules | ~1,220 |
-| [Grafana Dashboards](../docs/monitor-setup/grafana-dashboards.md) | Panels, RED/USE metrics, provisioning | ~1,470 |
-| [Distributed Tracing](../docs/monitor-setup/distributed-tracing.md) | OpenTelemetry, Jaeger, sampling | ~1,368 |
-| [Log Aggregation](../docs/monitor-setup/log-aggregation.md) | Fluentd, Elasticsearch, correlation | ~1,200 |
-| [Alerting Strategies](../docs/monitor-setup/alerting-strategies.md) | Alertmanager, routing, runbooks | ~1,327 |
-| [Infrastructure as Code](../docs/monitor-setup/infrastructure-code.md) | Terraform, Helm, Docker Compose | ~1,200 |
-
-**Total:** ~13,000 lines
-
----
+[Prometheus Setup](../docs/monitor-setup/prometheus-setup.md) (~1,220 lines), [Grafana Dashboards](../docs/monitor-setup/grafana-dashboards.md) (~1,470), [Distributed Tracing](../docs/monitor-setup/distributed-tracing.md) (~1,368), [Log Aggregation](../docs/monitor-setup/log-aggregation.md) (~1,200), [Alerting Strategies](../docs/monitor-setup/alerting-strategies.md) (~1,327), [Infrastructure Code](../docs/monitor-setup/infrastructure-code.md) (~1,200)
 
 ## Phase 1: Planning
 
-| Step | Quick | Standard | Enterprise |
-|------|-------|----------|------------|
-| Duration | 2h | 4h | 1 day |
-| Infrastructure assessment | Basic | Full | Multi-cluster |
-| Stack design | Minimal | Complete | Federated |
-| Requirements gathering | Essential | SLO/SLA | Compliance |
-
----
+| Mode | Duration | Scope |
+|------|----------|-------|
+| Quick | 2h | Essential requirements, basic stack |
+| Standard | 4h | Full assessment, SLO/SLA |
+| Enterprise | 1d | Multi-cluster, compliance |
 
 ## Phase 2: Core Setup
 
 | Component | Quick | Standard | Enterprise |
 |-----------|-------|----------|------------|
-| Duration | 4h | 2 days | 1 week |
+| Duration | 4h | 2d | 1w |
 | Prometheus | Basic scraping | + Recording rules, federation | + HA, long-term storage |
-| Grafana | Golden signals dashboard | + RED/USE dashboards | + Multi-org, provisioning |
+| Grafana | Golden signals | + RED/USE dashboards | + Multi-org, provisioning |
 | Instrumentation | Key metrics | Comprehensive | Full coverage |
 
----
-
-## Phase 3: Advanced Integration (Standard+)
+## Phase 3: Advanced (Standard+)
 
 | Component | Standard | Enterprise |
 |-----------|----------|------------|
-| Distributed Tracing | OpenTelemetry + Jaeger | + Tail-based sampling |
-| Log Aggregation | Fluentd + Elasticsearch | + Correlation by trace ID |
-| Advanced Monitoring | - | Database, network, security |
+| Tracing | OpenTelemetry + Jaeger | + Tail-based sampling |
+| Logs | Fluentd + Elasticsearch | + Trace ID correlation |
+| Advanced | - | DB, network, security monitoring |
 
----
+## Phase 4: Validation
 
-## Phase 4: Validation & Optimization
+| Mode | Duration | Deliverables |
+|------|----------|--------------|
+| Quick | 2h | Service health, 2+ critical alerts |
+| Standard | 1d | + Team/exec dashboards, multi-window alerts, chaos testing |
+| Enterprise | 3d | + Full hierarchy, runbook automation, validation |
 
-| Task | Quick | Standard | Enterprise |
-|------|-------|----------|------------|
-| Duration | 2h | 1 day | 3 days |
-| Dashboards | Service health | Team + exec dashboards | Full hierarchy |
-| Alerts | 2 critical | Multi-window burn rate | + Runbook automation |
-| Testing | Basic validation | Chaos testing | Full observability validation |
+## Dashboards
 
----
+- Golden Signals: Latency, traffic, errors, saturation
+- RED: Rate, errors, duration (service health)
+- USE: Utilization, saturation, errors (resources)
 
-## Dashboard Types
+## Alerts
 
-| Dashboard | Metrics | Use Case |
-|-----------|---------|----------|
-| Golden Signals | Latency, traffic, errors, saturation | Overview |
-| RED | Rate, errors, duration | Service health |
-| USE | Utilization, saturation, errors | Resource health |
-
----
-
-## Alert Strategy
-
-| Type | Threshold | Action |
-|------|-----------|--------|
-| Critical | >5% error rate, >2s latency | Page on-call |
-| Warning | >1% error rate, >500ms latency | Create ticket |
-| Info | Approaching threshold | Dashboard notification |
-
----
-
-## Output Deliverables
-
-| Mode | Deliverables |
-|------|--------------|
-| Quick | Prometheus config, Grafana dashboard, 2+ alerts |
-| Standard | + Tracing, logs, IaC (Terraform/Helm), full dashboards |
-| Enterprise | + Federation, metrics-logs-traces correlation, SLO tracking |
-
----
+- Critical: >5% error, >2s latency → Page
+- Warning: >1% error, >500ms latency → Ticket
+- Info: Approaching threshold → Dashboard
 
 ## Success Criteria
 
-### Quick Mode
-- [ ] Prometheus collecting from target service
-- [ ] Grafana showing golden signals
-- [ ] 2+ critical alerts configured
-- [ ] Team can view and respond
+**Quick:**
+- Prometheus collecting, Grafana showing golden signals, 2+ alerts, team ready
 
-### Standard Mode
-- [ ] All Quick criteria
-- [ ] Tracing >80% request coverage
-- [ ] Logs searchable in Elasticsearch
-- [ ] Multi-window burn rate alerting
-- [ ] Infrastructure as code deployed
-- [ ] RED/USE dashboards for all services
+**Standard:**
+- All Quick + >80% trace coverage, searchable logs, multi-window burn rate, IaC deployed, RED/USE dashboards
 
-### Enterprise Mode
-- [ ] All Standard criteria
-- [ ] Multi-cluster federation operational
-- [ ] Metrics/logs/traces correlated by trace ID
-- [ ] SLO error budgets tracked
-- [ ] 30%+ cost optimization achieved
-- [ ] Security monitoring integrated
+**Enterprise:**
+- All Standard + multi-cluster federation, metrics/logs/traces correlated, SLO tracking, 30%+ cost optimization, security integrated

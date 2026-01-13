@@ -1,28 +1,26 @@
 {
   "name": "code-documentation",
   "displayName": "Code Documentation",
-  "version": "1.0.6",
-  "description": "Comprehensive code documentation, explanation, and generation with AST-based analysis, visual diagrams, and automated documentation workflows. Features 3 specialized agents and 4 optimized slash commands with hub-and-spoke architecture achieving 54% command file reduction with comprehensive external documentation.",
-  "category": "documentation",
+  "version": "1.0.7",
+  "description": "Code documentation, explanation, and generation with AST-based analysis, visual diagrams, and automated workflows.",
   "author": {
     "name": "Wei Chen",
     "url": "https://myclaude.readthedocs.io/en/latest/"
   },
+  "homepage": "https://github.com/imewei/MyClaude",
+  "repository": "https://github.com/imewei/MyClaude",
   "license": "MIT",
   "keywords": [
     "documentation",
     "code-explanation",
     "ast-analysis",
-    "technical-writing",
-    "code-analysis",
     "api-documentation",
     "sphinx",
-    "openapi",
-    "readme-generation",
-    "scientific-computing",
     "visualization",
-    "learning-resources"
+    "scientific-computing",
+    "readme-generation"
   ],
+  "category": "documentation",
   "documentation": {
     "external_docs": {
       "code-explain": [

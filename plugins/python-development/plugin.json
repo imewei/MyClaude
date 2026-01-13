@@ -1,7 +1,8 @@
 {
   "name": "python-development",
-  "version": "1.0.6",
-  "description": "Master Python 3.12+ with modern tools, async patterns, FastAPI/Django frameworks, performance optimization, and production-ready practices. Includes expert agents, comprehensive skills, and scaffolding commands for the 2024/2025 Python ecosystem.",
+  "displayName": "Python Development",
+  "version": "1.0.7",
+  "description": "Master Python 3.12+ with modern tools, async patterns, FastAPI/Django frameworks, and production-ready practices.",
   "author": {
     "name": "Wei Chen",
     "url": "https://myclaude.readthedocs.io/en/latest/"
@@ -15,14 +16,9 @@
     "asyncio",
     "fastapi",
     "django",
-    "async-patterns",
-    "performance",
     "testing",
     "packaging",
-    "uv",
-    "modern-python",
-    "web-development",
-    "api-development"
+    "uv"
   ],
   "category": "development"
 }

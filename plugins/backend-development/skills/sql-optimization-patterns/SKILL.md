@@ -1,16 +1,10 @@
----
 name: sql-optimization-patterns
 version: "1.0.6"
-maturity: "5-Expert"
-specialization: SQL Query Optimization
 description: Master SQL optimization with EXPLAIN analysis, indexing strategies (B-Tree, GIN, partial, covering), N+1 elimination, pagination (cursor-based), aggregate optimization, materialized views, and partitioning. Use when debugging slow queries, designing schemas, or reducing database load.
----
 
 # SQL Optimization Patterns
 
 Transform slow queries into lightning-fast operations.
-
----
 
 ## Index Types
 
@@ -37,8 +31,6 @@ CREATE INDEX idx_users_email ON users(email) INCLUDE (name, created_at);
 CREATE INDEX idx_metadata ON events USING GIN(metadata);
 ```
 
----
-
 ## EXPLAIN Analysis
 
 ```sql
@@ -53,8 +45,6 @@ SELECT * FROM users WHERE email = 'user@example.com';
 | Index Only Scan | Index only, no table | Best |
 | Nested Loop | Small dataset join | OK for small tables |
 | Hash Join | Large dataset join | Good |
-
----
 
 ## N+1 Query Elimination
 
@@ -73,8 +63,6 @@ WHERE u.id IN (1, 2, 3);
 SELECT * FROM orders WHERE user_id IN (1, 2, 3, 4, 5);
 ```
 
----
-
 ## Pagination
 
 ```sql
@@ -92,8 +80,6 @@ WHERE (created_at, id) < ('2024-01-15', 12345)
 ORDER BY created_at DESC, id DESC;
 ```
 
----
-
 ## Aggregate Optimization
 
 ```sql
@@ -106,8 +92,6 @@ WHERE status = 'completed'  -- Filter first
 GROUP BY user_id
 HAVING COUNT(*) > 10;
 ```
-
----
 
 ## Correlated Subquery → JOIN
 
@@ -122,8 +106,6 @@ FROM users u LEFT JOIN orders o ON o.user_id = u.id
 GROUP BY u.id, u.name;
 ```
 
----
-
 ## Materialized Views
 
 ```sql
@@ -137,8 +119,6 @@ CREATE INDEX idx_summary_spent ON user_order_summary(total_spent DESC);
 REFRESH MATERIALIZED VIEW CONCURRENTLY user_order_summary;
 ```
 
----
-
 ## Partitioning
 
 ```sql
@@ -149,8 +129,6 @@ CREATE TABLE orders (
 CREATE TABLE orders_2024_q1 PARTITION OF orders
     FOR VALUES FROM ('2024-01-01') TO ('2024-04-01');
 ```
-
----
 
 ## Monitoring
 
@@ -167,8 +145,6 @@ FROM pg_stat_user_tables WHERE seq_scan > idx_scan;
 SELECT indexname, idx_scan FROM pg_stat_user_indexes WHERE idx_scan = 0;
 ```
 
----
-
 ## Best Practices
 
 | Practice | Implementation |
@@ -178,8 +154,6 @@ SELECT indexname, idx_scan FROM pg_stat_user_indexes WHERE idx_scan = 0;
 | Update statistics | Run ANALYZE regularly |
 | Cursor pagination | Avoid OFFSET on large tables |
 | Batch operations | Reduce round trips |
-
----
 
 ## Common Pitfalls
 
@@ -191,8 +165,6 @@ SELECT indexname, idx_scan FROM pg_stat_user_indexes WHERE idx_scan = 0;
 | Implicit type conversion | Prevents index usage |
 | SELECT * | Fetches unnecessary columns |
 
----
-
 ## Checklist
 
 - [ ] EXPLAIN ANALYZE on slow queries
@@ -201,7 +173,3 @@ SELECT indexname, idx_scan FROM pg_stat_user_indexes WHERE idx_scan = 0;
 - [ ] Cursor-based pagination
 - [ ] Statistics up to date (VACUUM ANALYZE)
 - [ ] Materialized views for expensive aggregates
-
----
-
-**Version**: 1.0.5

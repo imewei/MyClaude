@@ -1,16 +1,8 @@
----
 name: python-testing-patterns
 version: "1.0.6"
-maturity: "5-Expert"
-specialization: Python Testing with pytest
 description: Comprehensive testing with pytest, fixtures, mocking, parameterization, and TDD. Use when writing test files (test_*.py), creating fixtures in conftest.py, using unittest.mock or pytest-mock, writing parameterized tests, testing async code with pytest-asyncio, implementing property-based testing with Hypothesis, or measuring coverage with pytest-cov.
----
 
 # Python Testing Patterns
-
-Robust testing strategies with pytest, fixtures, mocking, and TDD.
-
----
 
 ## Test Types
 
@@ -20,8 +12,6 @@ Robust testing strategies with pytest, fixtures, mocking, and TDD.
 | Integration | Components | Medium | pytest, TestClient |
 | E2E | Full system | Slow | pytest, Playwright |
 | Property | Random inputs | Medium | Hypothesis |
-
----
 
 ## Basic Test Structure (AAA)
 
@@ -43,8 +33,6 @@ def test_division_by_zero():
     with pytest.raises(ValueError, match="Cannot divide by zero"):
         calc.divide(10, 0)
 ```
-
----
 
 ## Fixtures
 
@@ -78,8 +66,6 @@ def db_backend(request):
     return request.param
 ```
 
----
-
 ## Parameterized Tests
 
 ```python
@@ -100,8 +86,6 @@ def test_email_validation(email, valid):
 def test_addition(a, b, expected):
     assert add(a, b) == expected
 ```
-
----
 
 ## Mocking
 
@@ -125,8 +109,6 @@ def test_create_user(mock_post):
     result = api_client.create_user({"name": "Jane"})
     assert result["id"] == 2
 ```
-
----
 
 ## Async Testing
 
@@ -152,8 +134,6 @@ async def async_client():
     await client.close()
 ```
 
----
-
 ## Monkeypatch
 
 ```python
@@ -170,8 +150,6 @@ def test_attribute(monkeypatch):
     assert config.get_api_key() == "test-key"
 ```
 
----
-
 ## Temporary Files
 
 ```python
@@ -182,8 +160,6 @@ def test_file_operations(tmp_path):
     assert test_file.exists()
     assert test_file.read_text() == "Hello, World!"
 ```
-
----
 
 ## Property-Based Testing (Hypothesis)
 
@@ -204,8 +180,6 @@ def test_sorted_is_ordered(lst):
     for i in range(len(sorted_lst) - 1):
         assert sorted_lst[i] <= sorted_lst[i + 1]
 ```
-
----
 
 ## Test Markers
 
@@ -233,8 +207,6 @@ def test_known_bug():
 # Run: pytest -m slow / pytest -m "not slow"
 ```
 
----
-
 ## Database Testing
 
 ```python
@@ -254,8 +226,6 @@ def test_create_user(db_session):
     assert user.id is not None
     assert db_session.query(User).count() == 1
 ```
-
----
 
 ## Configuration
 
@@ -277,8 +247,6 @@ omit = ["*/tests/*"]
 exclude_lines = ["pragma: no cover", "raise NotImplementedError"]
 ```
 
----
-
 ## CI/CD Integration
 
 ```yaml
@@ -295,8 +263,6 @@ jobs:
       - uses: codecov/codecov-action@v3
 ```
 
----
-
 ## Best Practices
 
 | Practice | Guideline |
@@ -309,8 +275,6 @@ jobs:
 | Coverage | Focus on critical paths, not % |
 | Speed | Fast tests run more often |
 
----
-
 ## Checklist
 
 - [ ] Tests follow AAA pattern
@@ -321,7 +285,3 @@ jobs:
 - [ ] Coverage measured for critical paths
 - [ ] Tests run in CI/CD pipeline
 - [ ] Test names are descriptive
-
----
-
-**Version**: 1.0.5

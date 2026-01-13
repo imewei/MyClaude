@@ -1,16 +1,10 @@
----
 name: monorepo-management
 version: "1.0.6"
-maturity: "5-Expert"
-specialization: Monorepo Architecture
 description: Master monorepo management with Turborepo, Nx, and pnpm workspaces. Use when setting up turbo.json or nx.json, organizing apps/* and packages/* directories, optimizing builds with caching, managing workspace dependencies, implementing shared configs, setting up CI/CD for monorepos, or publishing packages with changesets.
----
 
 # Monorepo Management
 
 Scalable multi-package repositories with optimized builds and dependency management.
-
----
 
 ## Tool Selection
 
@@ -20,8 +14,6 @@ Scalable multi-package repositories with optimized builds and dependency managem
 | Nx | Enterprise | Feature-rich, plugins, generators |
 | pnpm workspaces | Package manager | Efficient disk usage, strict |
 | Lerna | Legacy | Maintenance mode, migrate away |
-
----
 
 ## Turborepo Setup
 
@@ -82,8 +74,6 @@ my-monorepo/
 }
 ```
 
----
-
 ## pnpm Workspaces
 
 ```yaml
@@ -123,8 +113,6 @@ pnpm --filter "@repo/*" build
 pnpm --filter "...web" build  # web + dependencies
 ```
 
----
-
 ## Package Configuration
 
 ```json
@@ -154,8 +142,6 @@ pnpm --filter "...web" build  # web + dependencies
   }
 }
 ```
-
----
 
 ## Shared Configurations
 
@@ -195,8 +181,6 @@ module.exports = {
 module.exports = { extends: ['@repo/config/eslint-preset'] };
 ```
 
----
-
 ## Code Sharing Patterns
 
 ### Shared UI Components
@@ -233,8 +217,6 @@ export interface User {
 import type { User } from '@repo/types';
 ```
 
----
-
 ## CI/CD
 
 ```yaml
@@ -256,8 +238,6 @@ jobs:
       - run: pnpm turbo run build test lint
 ```
 
----
-
 ## Publishing with Changesets
 
 ```bash
@@ -274,8 +254,6 @@ pnpm changeset version
 pnpm changeset publish
 ```
 
----
-
 ## Best Practices
 
 | Practice | Implementation |
@@ -287,8 +265,6 @@ pnpm changeset publish
 | Type Sharing | Share types between FE/BE |
 | Testing | Unit in packages, E2E in apps |
 
----
-
 ## Common Pitfalls
 
 | Issue | Solution |
@@ -298,8 +274,6 @@ pnpm changeset publish
 | Cache Not Working | Check inputs/outputs in turbo.json |
 | Slow Builds | Enable remote caching with Vercel |
 | Module Not Found | Check exports field in package.json |
-
----
 
 ## Checklist
 
@@ -312,7 +286,3 @@ pnpm changeset publish
 - [ ] CI/CD with pnpm caching
 - [ ] Remote caching enabled (Vercel/Nx Cloud)
 - [ ] Changesets for versioning
-
----
-
-**Version**: 1.0.5

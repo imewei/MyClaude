@@ -1,8 +1,15 @@
 {
   "name": "frontend-mobile-development",
   "displayName": "Frontend & Mobile Development",
-  "description": "Comprehensive frontend and mobile development with systematic Chain-of-Thought frameworks, Constitutional AI principles, and production-ready patterns for React 19, Next.js 15, React Native, Flutter, and native iOS/Android applications",
-  "version": "1.0.6",
+  "version": "1.0.7",
+  "description": "Frontend and mobile development with production-ready patterns for React 19, Next.js 15, React Native, Flutter, and native iOS/Android.",
+  "author": {
+    "name": "Wei Chen",
+    "url": "https://myclaude.readthedocs.io/en/latest/"
+  },
+  "homepage": "https://github.com/imewei/MyClaude",
+  "repository": "https://github.com/imewei/MyClaude",
+  "license": "MIT",
   "keywords": [
     "frontend",
     "mobile",
@@ -10,21 +17,8 @@
     "nextjs",
     "react-native",
     "flutter",
-    "ui",
-    "ux",
-    "responsive",
-    "cross-platform",
-    "ios",
-    "android",
     "typescript",
-    "javascript",
-    "component-architecture"
+    "ui-ux"
   ],
-  "category": "development",
-  "author": {
-    "name": "Wei Chen",
-    "url": "https://myclaude.readthedocs.io/en/latest/"
-  },
-  "license": "MIT",
-  "skills": []
+  "category": "development"
 }

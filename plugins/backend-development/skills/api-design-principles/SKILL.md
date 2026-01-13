@@ -1,16 +1,10 @@
----
 name: api-design-principles
 version: "1.0.6"
-maturity: "5-Expert"
-specialization: REST & GraphQL API Design
 description: Master REST and GraphQL API design including resource-oriented architecture, HTTP semantics, pagination (cursor/offset), versioning strategies, error handling, HATEOAS, DataLoader patterns, and documentation. Use when designing new APIs, implementing pagination, handling errors, or establishing API standards.
----
 
 # API Design Principles
 
 REST and GraphQL API design for intuitive, scalable, and maintainable APIs.
-
----
 
 ## Paradigm Selection
 
@@ -19,8 +13,6 @@ REST and GraphQL API design for intuitive, scalable, and maintainable APIs.
 | REST | CRUD operations, caching, simplicity | Resource-oriented, HTTP semantics |
 | GraphQL | Complex queries, mobile apps | Single endpoint, client-driven |
 | gRPC | Internal services, high performance | Binary protocol, streaming |
-
----
 
 ## REST Resource Design
 
@@ -39,8 +31,6 @@ POST   /api/createUser
 POST   /api/getUserById
 ```
 
----
-
 ## HTTP Methods
 
 | Method | Purpose | Idempotent | Safe |
@@ -50,8 +40,6 @@ POST   /api/getUserById
 | PUT | Replace entire resource | Yes | No |
 | PATCH | Partial update | No | No |
 | DELETE | Remove resource | Yes | No |
-
----
 
 ## Pagination
 
@@ -83,8 +71,6 @@ type PageInfo {
 }
 ```
 
----
-
 ## Error Handling
 
 | Status | Meaning | Example |
@@ -113,8 +99,6 @@ def raise_not_found(resource: str, id: str):
     )
 ```
 
----
-
 ## GraphQL Schema Design
 
 ```graphql
@@ -134,8 +118,6 @@ type CreateUserPayload {
 }
 ```
 
----
-
 ## DataLoader (N+1 Prevention)
 
 ```python
@@ -153,8 +135,6 @@ async def resolve_orders(user: dict, info):
     return await info.context["loaders"]["orders_by_user"].load(user["id"])
 ```
 
----
-
 ## API Versioning
 
 | Strategy | Example | Pros/Cons |
@@ -162,8 +142,6 @@ async def resolve_orders(user: dict, info):
 | URL Path | `/api/v1/users` | Clear, cacheable |
 | Header | `Accept: application/vnd.api+json; version=1` | Clean URLs |
 | Query Param | `/api/users?version=1` | Easy testing |
-
----
 
 ## Best Practices
 
@@ -175,8 +153,6 @@ async def resolve_orders(user: dict, info):
 | Versioning | Plan from day one | Use `@deprecated` |
 | Documentation | OpenAPI/Swagger | Schema introspection |
 
----
-
 ## Common Pitfalls
 
 | Pitfall | Problem |
@@ -186,8 +162,6 @@ async def resolve_orders(user: dict, info):
 | Inconsistent errors | Different formats per endpoint |
 | Over-fetching | Fixed response shapes |
 | Poor documentation | Undocumented APIs frustrate devs |
-
----
 
 ## Checklist
 
@@ -199,7 +173,3 @@ async def resolve_orders(user: dict, info):
 - [ ] Rate limiting implemented
 - [ ] DataLoader for GraphQL relationships
 - [ ] OpenAPI/GraphQL schema documented
-
----
-
-**Version**: 1.0.5

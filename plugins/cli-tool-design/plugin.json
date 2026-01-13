@@ -1,38 +1,24 @@
 {
   "name": "cli-tool-design",
   "displayName": "CLI Tool Design",
-  "version": "1.0.6",
-  "description": "CLI tool design and developer automation expertise with advanced agent reasoning, systematic development frameworks, and production-ready examples. v1.0.2 features enhanced command-systems-engineer agent with triggering criteria, chain-of-thought reasoning, Constitutional AI principles, and comprehensive CLI tool examples, plus 2 enhanced skills with expanded discoverability for Python Click/Typer, Node.js Commander/Inquirer, Go Cobra, and shell scripting.",
-  "category": "developer-tools",
+  "version": "1.0.7",
+  "description": "CLI tool design and developer automation with production-ready examples for Python, Node.js, Go, and shell scripting.",
   "author": {
     "name": "Wei Chen",
     "url": "https://myclaude.readthedocs.io/en/latest/"
   },
+  "homepage": "https://github.com/imewei/MyClaude",
+  "repository": "https://github.com/imewei/MyClaude",
   "license": "MIT",
   "keywords": [
     "cli",
     "command-line",
     "automation",
     "developer-tools",
-    "workflow",
-    "scripting",
     "python-click",
     "typer",
-    "commander",
-    "inquirer",
-    "interactive-prompts",
-    "terminal",
-    "bash",
-    "shell-scripts",
-    "productivity",
-    "code-generation",
-    "scaffolding",
-    "deployment-automation",
-    "build-tools",
-    "task-runner",
-    "cobra",
-    "go-cli",
-    "tui",
-    "terminal-ui"
-  ]
+    "go-cobra",
+    "terminal"
+  ],
+  "category": "development"
 }

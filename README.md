@@ -2,14 +2,14 @@
 
 [![Plugins](https://img.shields.io/badge/Plugins-31-blue.svg)](https://myclaude.readthedocs.io/en/latest/plugins/)
 [![Agents](https://img.shields.io/badge/Agents-74-green.svg)](AGENTS_LIST.md)
-[![Commands](https://img.shields.io/badge/Commands-48-orange.svg)](COMMANDS_LIST.md)
+[![Commands](https://img.shields.io/badge/Commands-49-orange.svg)](COMMANDS_LIST.md)
 [![Skills](https://img.shields.io/badge/Skills-117-purple.svg)](PLUGIN_CHEATSHEET.md)
 [![Tools](https://img.shields.io/badge/Tools-16-teal.svg)](docs/tools-reference.rst)
-[![Version](https://img.shields.io/badge/Version-1.0.6-red.svg)](https://github.com/imewei/MyClaude)
+[![Version](https://img.shields.io/badge/Version-1.0.7-red.svg)](https://github.com/imewei/MyClaude)
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Docs](https://img.shields.io/badge/Docs-ReadTheDocs-brightgreen.svg)](https://myclaude.readthedocs.io/en/latest/)
 
-Claude Code plugin marketplace with **31 specialized plugins**, **74 expert agents**, **48 slash commands**, **117 skills**, and **16 tools** for AI-powered development, scientific computing, and research workflows.
+Claude Code plugin marketplace with **31 specialized plugins**, **74 expert agents**, **49 slash commands**, **117 skills**, and **16 tools** for AI-powered development, scientific computing, and research workflows.
 
 ## Full Documentation
 
@@ -35,16 +35,17 @@ The MyClaude plugin ecosystem provides production-ready tools for:
 - **DevOps & Infrastructure**: CI/CD automation, observability, Kubernetes orchestration
 - **Code Intelligence**: Documentation generation, migration, cleanup, debugging
 
-## What's New in v1.0.6
+## What's New in v1.0.7
 
-**Version Sync Release** (All 31 plugins updated)
+**Optimization & Documentation Release** (All 31 plugins updated)
 
-All plugins synchronized to version 1.0.6:
+All plugins synchronized to version 1.0.7:
 
-- **Unified Versioning**: All 31 plugins, marketplace.json, and documentation updated to 1.0.6
-- **Pre-Response Validation Framework**: 5 mandatory self-checks + 5 quality gates before delivering responses
-- **When to Invoke Sections**: Clear USE FOR / DELEGATE TO tables and Decision Trees for agent routing
-- **Enhanced Constitutional AI Principles**: Target %, Core Question, Self-Check Questions, Anti-Patterns, and Quality Metrics
+- **Plugin Optimization**: 40-76% token reduction across all plugins for faster loading
+- **New Command**: Added `/merge-all` to git-pr-workflows for branch consolidation
+- **API Documentation**: New `docs/api/` reference for Python tools
+- **Enhanced CI/CD**: Documentation workflow with coverage and linkcheck
+- **49 Commands**: Total commands increased from 48 to 49
 
 ## Statistics
 
@@ -52,7 +53,7 @@ All plugins synchronized to version 1.0.6:
 |--------|-------|
 | Plugins | 31 |
 | Agents | 74 |
-| Commands | 48 |
+| Commands | 49 |
 | Skills | 117 |
 | Tools | 16 |
 | Categories | 6 |
@@ -74,62 +75,62 @@ All plugins synchronized to version 1.0.6:
 
 | Plugin | Version | Agents | Commands | Description |
 |--------|---------|--------|----------|-------------|
-| [julia-development](plugins/julia-development/) | v1.0.6 | 4 | 4 | Julia ecosystem with SciML, Turing.jl, and package development |
-| [jax-implementation](plugins/jax-implementation/) | v1.0.6 | 4 | - | JAX with NumPyro, Flax NNX, NLSQ optimization |
-| [hpc-computing](plugins/hpc-computing/) | v1.0.6 | 1 | - | High-performance computing and numerical methods |
-| [molecular-simulation](plugins/molecular-simulation/) | v1.0.6 | 1 | - | MD with LAMMPS, GROMACS, HOOMD-blue |
-| [statistical-physics](plugins/statistical-physics/) | v1.0.6 | 2 | - | Non-equilibrium systems and correlation functions |
-| [deep-learning](plugins/deep-learning/) | v1.0.6 | 2 | - | Neural networks with systematic frameworks |
-| [data-visualization](plugins/data-visualization/) | v1.0.6 | 1 | - | Scientific plots with Matplotlib, Plotly, Makie |
-| [research-methodology](plugins/research-methodology/) | v1.0.6 | 1 | - | Research intelligence and literature analysis |
+| [julia-development](plugins/julia-development/) | v1.0.7 | 4 | 4 | Julia ecosystem with SciML, Turing.jl, and package development |
+| [jax-implementation](plugins/jax-implementation/) | v1.0.7 | 4 | - | JAX with NumPyro, Flax NNX, NLSQ optimization |
+| [hpc-computing](plugins/hpc-computing/) | v1.0.7 | 1 | - | High-performance computing and numerical methods |
+| [molecular-simulation](plugins/molecular-simulation/) | v1.0.7 | 1 | - | MD with LAMMPS, GROMACS, HOOMD-blue |
+| [statistical-physics](plugins/statistical-physics/) | v1.0.7 | 2 | - | Non-equilibrium systems and correlation functions |
+| [deep-learning](plugins/deep-learning/) | v1.0.7 | 2 | - | Neural networks with systematic frameworks |
+| [data-visualization](plugins/data-visualization/) | v1.0.7 | 1 | - | Scientific plots with Matplotlib, Plotly, Makie |
+| [research-methodology](plugins/research-methodology/) | v1.0.7 | 1 | - | Research intelligence and literature analysis |
 
 ### Development (10 plugins)
 
 | Plugin | Version | Agents | Commands | Description |
 |--------|---------|--------|----------|-------------|
-| [python-development](plugins/python-development/) | v1.0.6 | 3 | 1 | Python 3.12+ with FastAPI, Django, async patterns |
-| [backend-development](plugins/backend-development/) | v1.0.6 | 3 | 1 | REST/GraphQL/gRPC APIs, microservices, TDD |
-| [frontend-mobile-development](plugins/frontend-mobile-development/) | v1.0.6 | 2 | 1 | React 19, Next.js 15, React Native, Flutter |
-| [javascript-typescript](plugins/javascript-typescript/) | v1.0.6 | 2 | 1 | Modern JS/TS with ES2024 and Node.js |
-| [systems-programming](plugins/systems-programming/) | v1.0.6 | 4 | 3 | C, C++, Rust, Go systems programming |
-| [multi-platform-apps](plugins/multi-platform-apps/) | v1.0.6 | 6 | 1 | Cross-platform web, iOS, Android, desktop apps |
-| [llm-application-dev](plugins/llm-application-dev/) | v1.0.6 | 2 | 3 | LLM apps with prompt engineering and RAG |
-| [cli-tool-design](plugins/cli-tool-design/) | v1.0.6 | 1 | - | CLI tool design and developer automation |
-| [full-stack-orchestration](plugins/full-stack-orchestration/) | v1.0.6 | 4 | 1 | End-to-end feature delivery with multi-agent coordination |
-| [agent-orchestration](plugins/agent-orchestration/) | v1.0.6 | 2 | 2 | Multi-agent workflow coordination and context management |
+| [python-development](plugins/python-development/) | v1.0.7 | 3 | 1 | Python 3.12+ with FastAPI, Django, async patterns |
+| [backend-development](plugins/backend-development/) | v1.0.7 | 3 | 1 | REST/GraphQL/gRPC APIs, microservices, TDD |
+| [frontend-mobile-development](plugins/frontend-mobile-development/) | v1.0.7 | 2 | 1 | React 19, Next.js 15, React Native, Flutter |
+| [javascript-typescript](plugins/javascript-typescript/) | v1.0.7 | 2 | 1 | Modern JS/TS with ES2024 and Node.js |
+| [systems-programming](plugins/systems-programming/) | v1.0.7 | 4 | 3 | C, C++, Rust, Go systems programming |
+| [multi-platform-apps](plugins/multi-platform-apps/) | v1.0.7 | 6 | 1 | Cross-platform web, iOS, Android, desktop apps |
+| [llm-application-dev](plugins/llm-application-dev/) | v1.0.7 | 2 | 3 | LLM apps with prompt engineering and RAG |
+| [cli-tool-design](plugins/cli-tool-design/) | v1.0.7 | 1 | - | CLI tool design and developer automation |
+| [full-stack-orchestration](plugins/full-stack-orchestration/) | v1.0.7 | 4 | 1 | End-to-end feature delivery with multi-agent coordination |
+| [agent-orchestration](plugins/agent-orchestration/) | v1.0.7 | 2 | 2 | Multi-agent workflow coordination and context management |
 
 ### AI & Machine Learning (2 plugins)
 
 | Plugin | Version | Agents | Commands | Description |
 |--------|---------|--------|----------|-------------|
-| [machine-learning](plugins/machine-learning/) | v1.0.6 | 4 | 1 | MLOps with data engineering and ML pipelines |
-| [ai-reasoning](plugins/ai-reasoning/) | v1.0.6 | - | 2 | Advanced reasoning with ultra-think and reflection |
+| [machine-learning](plugins/machine-learning/) | v1.0.7 | 4 | 1 | MLOps with data engineering and ML pipelines |
+| [ai-reasoning](plugins/ai-reasoning/) | v1.0.7 | - | 2 | Advanced reasoning with ultra-think and reflection |
 
 ### DevOps & Infrastructure (3 plugins)
 
 | Plugin | Version | Agents | Commands | Description |
 |--------|---------|--------|----------|-------------|
-| [cicd-automation](plugins/cicd-automation/) | v1.0.6 | 5 | 2 | CI/CD with intelligent error resolution |
-| [git-pr-workflows](plugins/git-pr-workflows/) | v1.0.6 | 1 | 4 | Git workflows and PR enhancement |
-| [observability-monitoring](plugins/observability-monitoring/) | v1.0.6 | 4 | 2 | Prometheus, Grafana, distributed tracing |
+| [cicd-automation](plugins/cicd-automation/) | v1.0.7 | 5 | 2 | CI/CD with intelligent error resolution |
+| [git-pr-workflows](plugins/git-pr-workflows/) | v1.0.7 | 1 | 4 | Git workflows and PR enhancement |
+| [observability-monitoring](plugins/observability-monitoring/) | v1.0.7 | 4 | 2 | Prometheus, Grafana, distributed tracing |
 
 ### Quality & Testing (4 plugins)
 
 | Plugin | Version | Agents | Commands | Description |
 |--------|---------|--------|----------|-------------|
-| [unit-testing](plugins/unit-testing/) | v1.0.6 | 2 | 2 | Test automation with AI-powered debugging |
-| [comprehensive-review](plugins/comprehensive-review/) | v1.0.6 | 3 | 2 | Multi-agent code review with security auditing |
-| [codebase-cleanup](plugins/codebase-cleanup/) | v1.0.6 | 2 | 4 | Technical debt reduction and refactoring |
-| [quality-engineering](plugins/quality-engineering/) | v1.0.6 | - | 2 | Comprehensive validation frameworks |
+| [unit-testing](plugins/unit-testing/) | v1.0.7 | 2 | 2 | Test automation with AI-powered debugging |
+| [comprehensive-review](plugins/comprehensive-review/) | v1.0.7 | 3 | 2 | Multi-agent code review with security auditing |
+| [codebase-cleanup](plugins/codebase-cleanup/) | v1.0.7 | 2 | 4 | Technical debt reduction and refactoring |
+| [quality-engineering](plugins/quality-engineering/) | v1.0.7 | - | 2 | Comprehensive validation frameworks |
 
 ### Tools & Migration (4 plugins)
 
 | Plugin | Version | Agents | Commands | Description |
 |--------|---------|--------|----------|-------------|
-| [code-documentation](plugins/code-documentation/) | v1.0.6 | 3 | 4 | AI-powered documentation with AST analysis |
-| [code-migration](plugins/code-migration/) | v1.0.6 | 1 | 1 | Scientific code modernization (Fortran/MATLAB to Python/JAX) |
-| [framework-migration](plugins/framework-migration/) | v1.0.6 | 2 | 3 | Framework upgrades with strangler fig patterns |
-| [debugging-toolkit](plugins/debugging-toolkit/) | v1.0.6 | 2 | 1 | AI-assisted debugging with RCA frameworks |
+| [code-documentation](plugins/code-documentation/) | v1.0.7 | 3 | 4 | AI-powered documentation with AST analysis |
+| [code-migration](plugins/code-migration/) | v1.0.7 | 1 | 1 | Scientific code modernization (Fortran/MATLAB to Python/JAX) |
+| [framework-migration](plugins/framework-migration/) | v1.0.7 | 2 | 3 | Framework upgrades with strangler fig patterns |
+| [debugging-toolkit](plugins/debugging-toolkit/) | v1.0.7 | 2 | 1 | AI-assisted debugging with RCA frameworks |
 
 ## Quick Start
 
@@ -232,6 +233,7 @@ See [Tools Reference](docs/tools-reference.rst) for complete documentation.
 - **[Complete Agents List](AGENTS_LIST.md)** - Catalog of all 74 agents
 - **[Complete Commands List](COMMANDS_LIST.md)** - Catalog of all 48 commands
 - **[Tools Reference](docs/tools-reference.rst)** - 16 utility scripts documentation
+- **[API Reference](docs/api/index.rst)** - Python tools API documentation
 - **[Full Documentation](https://myclaude.readthedocs.io/en/latest/)** - Comprehensive guides and API references
 
 ### LaTeX Reference Documents
@@ -280,7 +282,7 @@ make clean-all               # Deep clean including docs
 
 ## Version History
 
-### v1.0.6 (Current - 2025-12-18)
+### v1.0.7 (Current - 2025-12-18)
 
 **Version Sync Release** - All 31 plugins synchronized to 1.0.6:
 

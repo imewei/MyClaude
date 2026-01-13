@@ -1,8 +1,8 @@
 # Claude Code Plugin Marketplace - Complete Command List
 
-**Total Commands:** 48 across 23 plugins
+**Total Commands:** 49 across 23 plugins
 **Format:** `/plugin:command` (slash prefix for execution)
-**Version:** 1.0.4 | **Last Updated:** December 3, 2025
+**Version:** 1.0.7 | **Last Updated:** January 12, 2026
 
 ---
 
@@ -63,15 +63,16 @@
 
 ---
 
-## DevOps & Infrastructure (8 commands)
+## DevOps & Infrastructure (9 commands)
 
 ### cicd-automation (2 commands)
 - **/cicd-automation:fix-commit-errors** - Intelligent GitHub Actions failure resolution with 5-agent system, pattern matching across 100+ error types, and Bayesian confidence scoring
 - **/cicd-automation:workflow-automate** - Automated CI/CD workflow generation with intelligent platform selection (GitHub Actions, GitLab CI, Terraform) and technology stack detection
 
-### git-pr-workflows (4 commands)
+### git-pr-workflows (5 commands)
 - **/git-pr-workflows:commit** - Create intelligent atomic commits with automated analysis, quality validation, and conventional commit format
 - **/git-pr-workflows:git-workflow** - Implement and optimize Git workflows with multi-agent orchestration, branching strategies (trunk-based, Git Flow, GitHub Flow), and merge patterns
+- **/git-pr-workflows:merge-all** - Merge all local branches into main and clean up. Commits pending changes, merges branches with --no-ff, and deletes merged branches
 - **/git-pr-workflows:onboard** - Onboard new team members with comprehensive 30-60-90 day plans, role-specific playbooks, and mentor guides
 - **/git-pr-workflows:pr-enhance** - Enhance pull requests with automated analysis, review best practices, comprehensive templates, and quality guidelines
 
@@ -129,7 +130,7 @@
 | Plugin | Commands | Command Names |
 |--------|----------|---------------|
 | julia-development | 4 | julia-optimize, julia-package-ci, julia-scaffold, sciml-setup |
-| git-pr-workflows | 4 | commit, git-workflow, onboard, pr-enhance |
+| git-pr-workflows | 5 | commit, git-workflow, merge-all, onboard, pr-enhance |
 | code-documentation | 4 | code-explain, doc-generate, update-claudemd, update-docs |
 | codebase-cleanup | 4 | deps-audit, fix-imports, refactor-clean, tech-debt |
 | llm-application-dev | 3 | ai-assistant, langchain-agent, prompt-optimize |
@@ -152,7 +153,7 @@
 | multi-platform-apps | 1 | multi-platform |
 | python-development | 1 | python-scaffold |
 
-**Total: 48 commands across 23 plugins**
+**Total: 49 commands across 23 plugins**
 
 ---
 
@@ -230,7 +231,7 @@ Use `--mode=<mode>` to specify the execution mode:
 | **Scientific Computing** | 4 | Julia development, SciML, optimization, package scaffolding |
 | **Development** | 14 | Project scaffolding, backend/frontend, LLM apps, systems programming |
 | **AI/ML** | 3 | Machine learning pipelines, structured reasoning, reflection |
-| **DevOps** | 8 | CI/CD automation, git workflows, monitoring, SLO implementation |
+| **DevOps** | 9 | CI/CD automation, git workflows, monitoring, SLO implementation |
 | **Quality & Testing** | 10 | Test automation, code review, cleanup, quality validation |
 | **Tools & Migration** | 9 | Documentation, code migration, framework upgrades, debugging |
 
@@ -242,8 +243,8 @@ Use `--mode=<mode>` to specify the execution mode:
 - **Agent List:** [AGENTS_LIST.md](AGENTS_LIST.md)
 - **Full Documentation:** [https://myclaude.readthedocs.io/en/latest/](https://myclaude.readthedocs.io/en/latest/)
 
-**Marketplace Stats:** 31 plugins | 74 agents | 48 commands | 114 skills
+**Marketplace Stats:** 31 plugins | 74 agents | 49 commands | 114 skills
 
 ---
 
-*Generated from v1.0.4 validated marketplace data. All commands follow consistent naming conventions and include comprehensive functional descriptions.*
+*Generated from v1.0.7 validated marketplace data. All commands follow consistent naming conventions and include comprehensive functional descriptions.*

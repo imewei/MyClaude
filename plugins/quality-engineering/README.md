@@ -8,7 +8,7 @@ Comprehensive quality assurance, validation, and correctness verification tools 
 
 ---
 
-## 🚀 What's New in v1.0.6
+## 🚀 What's New in v1.0.7
 
 ### Command Optimization with Execution Modes
 
@@ -49,7 +49,7 @@ Both quality-engineering commands now feature:
 ---
 
 
-## What's New in v1.0.6
+## What's New in v1.0.7
 
 This release implements **Opus 4.5 optimization** with enhanced token efficiency and standardized documentation.
 

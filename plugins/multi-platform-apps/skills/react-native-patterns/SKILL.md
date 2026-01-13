@@ -6,17 +6,17 @@ specialization: React Native Development
 description: Modern React Native patterns with New Architecture, TypeScript, and performance optimization. Use when building React Native components, optimizing FlatList performance, implementing state management (Redux Toolkit, Zustand), setting up React Navigation, integrating APIs with React Query, handling forms with React Hook Form, creating native modules, or implementing offline-first storage.
 ---
 
-# React Native Development Patterns
+# React Native Patterns
 
-Production-ready React Native patterns for cross-platform mobile apps.
+Production React Native with modern architecture and TypeScript.
 
 ---
 
-## Architecture Selection
+## Architecture
 
-| Complexity | State Management | Navigation |
-|------------|------------------|------------|
-| Simple | Context + useState | Stack Navigator |
+| Complexity | State | Navigation |
+|------------|-------|------------|
+| Simple | Context + useState | Stack |
 | Medium | Zustand | Tab + Stack |
 | Complex | Redux Toolkit | Nested navigators |
 | Enterprise | Redux + RTK Query | Deep linking + tabs |
@@ -53,10 +53,10 @@ const styles = StyleSheet.create({
 
 ---
 
-## Performance Optimization
+## Performance
 
 ```typescript
-// ✅ Memoized list item
+// Memoized list item
 const ListItem = memo<{ item: Item; onPress: (id: string) => void }>(
   ({ item, onPress }) => {
     const handlePress = useCallback(() => onPress(item.id), [item.id, onPress]);
@@ -68,7 +68,7 @@ const ListItem = memo<{ item: Item; onPress: (id: string) => void }>(
   }
 );
 
-// ✅ Optimized FlatList
+// Optimized FlatList
 export const OptimizedList: React.FC<{ items: Item[] }> = ({ items }) => {
   const handlePress = useCallback((id: string) => console.log(id), []);
 
@@ -90,7 +90,7 @@ export const OptimizedList: React.FC<{ items: Item[] }> = ({ items }) => {
   );
 };
 
-// ✅ Image optimization
+// Image optimization with FastImage
 import FastImage from 'react-native-fast-image';
 
 <FastImage
@@ -102,7 +102,7 @@ import FastImage from 'react-native-fast-image';
 
 ---
 
-## Redux Toolkit State
+## Redux Toolkit
 
 ```typescript
 // userSlice.ts
@@ -147,17 +147,16 @@ const userSlice = createSlice({
 
 ---
 
-## Navigation (React Navigation)
+## Navigation
 
 ```typescript
-// types.ts
+// Type-safe navigation with React Navigation
 export type RootStackParamList = {
   Home: undefined;
   Profile: { userId: string };
   Settings: undefined;
 };
 
-// Navigator
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
 export const RootNavigator: React.FC = () => (
@@ -173,7 +172,6 @@ export const RootNavigator: React.FC = () => (
   </NavigationContainer>
 );
 
-// Type-safe navigation
 type ProfileScreenProps = NativeStackScreenProps<RootStackParamList, 'Profile'>;
 
 export const ProfileScreen: React.FC<ProfileScreenProps> = ({ route, navigation }) => {
@@ -184,7 +182,7 @@ export const ProfileScreen: React.FC<ProfileScreenProps> = ({ route, navigation 
 
 ---
 
-## API Integration (React Query)
+## API (React Query)
 
 ```typescript
 // api/client.ts
@@ -222,7 +220,7 @@ export const useUpdateUser = () => {
 
 ---
 
-## Form Handling (React Hook Form + Zod)
+## Forms (React Hook Form + Zod)
 
 ```typescript
 const loginSchema = z.object({
@@ -318,7 +316,7 @@ src/
 
 ---
 
-## Essential Packages
+## Packages
 
 | Package | Purpose |
 |---------|---------|
@@ -346,4 +344,4 @@ src/
 
 ---
 
-**Version**: 1.0.5
+**Version**: 1.0.6

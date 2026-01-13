@@ -6,7 +6,7 @@ Advanced AI-powered cognitive tools for problem-solving, meta-analysis, and stru
 
 [Full Documentation →](https://myclaude.readthedocs.io/en/latest/plugins/ai-reasoning.html) | [External Docs →](./docs/README.md) | [Changelog →](./CHANGELOG.md)
 
-## What's New in v1.0.6
+## What's New in v1.0.7
 
 This release implements **Opus 4.5 optimization** with enhanced token efficiency and standardized documentation.
 

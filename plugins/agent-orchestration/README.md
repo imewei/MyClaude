@@ -6,7 +6,7 @@ Multi-agent workflow coordination with production-ready optimization workflows, 
 
 [Full Documentation →](https://myclaude.readthedocs.io/en/latest/plugins/agent-orchestration.html) | [Changelog →](./CHANGELOG.md)
 
-## What's New in v1.0.6
+## What's New in v1.0.7
 
 This release implements **Opus 4.5 optimization** with enhanced token efficiency and standardized documentation.
 

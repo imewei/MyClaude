@@ -18,7 +18,6 @@ external_documentation:
 
 Generate complete project structures with modern tooling following best practices.
 
----
 
 ## Mode Selection
 
@@ -28,7 +27,6 @@ Generate complete project structures with modern tooling following best practice
 | Standard (default) | 20-30 min | Full config, tooling, testing setup |
 | Comprehensive | 40-60 min | + CI/CD, Docker, security hardening |
 
----
 
 ## Project Types
 
@@ -42,7 +40,6 @@ Generate complete project structures with modern tooling following best practice
 
 **Decision guide:** [Project Scaffolding Guide](../docs/javascript-typescript/project-scaffolding-guide.md)
 
----
 
 ## Core Scaffolding Steps
 
@@ -92,7 +89,6 @@ pnpm init && git init
 | Library | src/, tests/, dist/ |
 | CLI | bin/, src/cli/commands/, src/core/ |
 
----
 
 ## Essential Files
 
@@ -106,7 +102,6 @@ pnpm init && git init
 | README.md | Setup instructions |
 | tests/setup.ts | Test configuration |
 
----
 
 ## Output Checklist
 
@@ -130,7 +125,6 @@ pnpm init && git init
 - [ ] Husky git hooks
 - [ ] Monorepo setup (if requested)
 
----
 
 ## Common Patterns
 
@@ -150,7 +144,6 @@ import { z } from 'zod'
 const schema = z.object({ email: z.string().email() })
 ```
 
----
 
 ## External Documentation
 
@@ -163,7 +156,6 @@ const schema = z.object({ email: z.string().email() })
 | [TypeScript Configuration](../docs/javascript-typescript/typescript-configuration.md) | Strict mode, paths |
 | [Development Tooling](../docs/javascript-typescript/development-tooling.md) | ESLint, Vitest, CI/CD |
 
----
 
 ## Next Steps
 

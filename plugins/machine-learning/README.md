@@ -8,7 +8,7 @@ Advanced machine learning and MLOps with **production-ready pipelines**, **multi
 
 ---
 
-## What's New in v1.0.6
+## What's New in v1.0.7
 
 This release implements **Opus 4.5 optimization** with enhanced token efficiency and standardized documentation.
 
@@ -40,7 +40,7 @@ This plugin provides comprehensive ML/DS capabilities through four specialized a
 
 ---
 
-## 🚀 What's New in v1.0.6
+## 🚀 What's New in v1.0.7
 
 ### NEW data-engineer Agent
 Enterprise-grade data infrastructure specialist covering:

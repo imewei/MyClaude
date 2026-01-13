@@ -15,9 +15,7 @@ agents:
     - frontend-mobile-development:frontend-developer
     - frontend-mobile-development:mobile-developer
   conditional: []
-color: blue
-tags: [component-scaffolding, react, react-native, typescript, testing, storybook]
-allowed-tools: [Read, Write, Edit, Bash, Glob, Grep, Task]
+allowed-tools: [Read, Write, Edit, Bash, Glob, Grep]
 ---
 
 # React/React Native Component Scaffolding
@@ -28,7 +26,6 @@ Generate production-ready components with TypeScript, tests, styles, and documen
 
 $ARGUMENTS
 
----
 
 ## Mode Selection
 
@@ -40,7 +37,6 @@ $ARGUMENTS
 
 **Options:** `--platform=web|native|universal`, `--styling=css-modules|styled-components|tailwind`, `--tests`, `--storybook`, `--accessibility`
 
----
 
 ## Phase 1: Requirements Analysis
 
@@ -64,7 +60,6 @@ $ARGUMENTS
 
 🚨 **Quick Mode exits here**
 
----
 
 ## Phase 2: Component Generation
 
@@ -84,7 +79,6 @@ $ARGUMENTS
 
 **Success:** TypeScript compiles, props typed, semantic structure, proper exports
 
----
 
 ## Phase 3: Styling Implementation
 
@@ -97,7 +91,6 @@ $ARGUMENTS
 
 **Success:** Styles follow project conventions, design tokens used, responsive design implemented
 
----
 
 ## Phase 4: Testing & Documentation (Deep Mode)
 
@@ -116,7 +109,6 @@ $ARGUMENTS
 
 **Success:** ≥90% coverage, Storybook renders, axe-core passes
 
----
 
 ## Phase 5: Validation & Integration
 
@@ -131,7 +123,6 @@ npm run lint              # Lint check
 
 🎯 **Deep Mode complete**
 
----
 
 ## Agent Selection
 
@@ -140,7 +131,6 @@ npm run lint              # Lint check
 | native or universal | mobile-developer |
 | web (default) | frontend-developer |
 
----
 
 ## Examples
 
@@ -155,7 +145,6 @@ npm run lint              # Lint check
 /component-scaffold CheckoutForm --deep --platform=universal --styling=styled-components
 ```
 
----
 
 ## Will / Won't
 

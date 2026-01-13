@@ -1,8 +1,15 @@
 {
   "name": "backend-development",
   "displayName": "Backend Development",
-  "description": "Comprehensive backend development support including REST/GraphQL/gRPC APIs, microservices architecture, distributed systems, TDD orchestration, and scalable backend patterns for modern applications. v1.0.3 enhances feature-development command with execution modes, agent reference table, and comprehensive external documentation (6 files covering methodology, phases, agent orchestration, deployment strategies, best practices, and success metrics).",
-  "version": "1.0.6",
+  "version": "1.0.7",
+  "description": "Backend development with REST/GraphQL/gRPC APIs, microservices architecture, and TDD orchestration.",
+  "author": {
+    "name": "Wei Chen",
+    "url": "https://myclaude.readthedocs.io/en/latest/"
+  },
+  "homepage": "https://github.com/imewei/MyClaude",
+  "repository": "https://github.com/imewei/MyClaude",
+  "license": "MIT",
   "keywords": [
     "backend",
     "api",
@@ -10,22 +17,8 @@
     "graphql",
     "grpc",
     "microservices",
-    "distributed-systems",
     "tdd",
-    "test-driven-development",
-    "architecture",
-    "backend-architecture",
-    "api-design",
-    "federation",
-    "event-driven",
-    "scalability",
-    "prompt-engineering",
-    "constitutional-ai"
+    "architecture"
   ],
-  "category": "development",
-  "author": {
-    "name": "Wei Chen",
-    "url": "https://myclaude.readthedocs.io/en/latest/"
-  },
-  "license": "MIT"
+  "category": "development"
 }

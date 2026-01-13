@@ -1,11 +1,14 @@
 {
   "name": "javascript-typescript",
-  "version": "1.0.6",
-  "description": "Comprehensive JavaScript and TypeScript development skills including modern patterns, testing, backend development, advanced types, monorepo management, and production-ready project scaffolding with execution modes",
+  "displayName": "JavaScript & TypeScript",
+  "version": "1.0.7",
+  "description": "JavaScript and TypeScript development with modern patterns, testing, backend development, and production-ready scaffolding.",
   "author": {
     "name": "Wei Chen",
     "url": "https://myclaude.readthedocs.io/en/latest/"
   },
+  "homepage": "https://github.com/imewei/MyClaude",
+  "repository": "https://github.com/imewei/MyClaude",
   "license": "MIT",
   "keywords": [
     "javascript",
@@ -13,27 +16,9 @@
     "nodejs",
     "testing",
     "monorepo",
-    "scaffolding",
-    "project-setup"
-  ],
-  "tags": [
-    "javascript",
-    "typescript",
-    "nodejs",
-    "testing",
-    "monorepo",
-    "turborepo",
-    "nx",
-    "pnpm",
-    "jest",
-    "vitest",
-    "express",
-    "fastify",
-    "scaffolding",
-    "nextjs",
     "react",
-    "vite",
-    "cli",
-    "library"
-  ]
+    "nextjs",
+    "vite"
+  ],
+  "category": "development"
 }

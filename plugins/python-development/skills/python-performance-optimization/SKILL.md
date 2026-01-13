@@ -1,16 +1,8 @@
----
 name: python-performance-optimization
 version: "1.0.6"
-maturity: "5-Expert"
-specialization: Python Profiling & Optimization
 description: Profile and optimize Python code using cProfile, line_profiler, memory_profiler, and py-spy. Use when analyzing slow code, optimizing CPU-intensive operations, reducing memory consumption, implementing caching with lru_cache, using NumPy for vectorization, multiprocessing for CPU-bound tasks, or async/await for I/O-bound tasks.
----
 
 # Python Performance Optimization
-
-Profiling tools and optimization patterns for faster Python code.
-
----
 
 ## Profiling Tools
 
@@ -21,8 +13,6 @@ Profiling tools and optimization patterns for faster Python code.
 | memory_profiler | Memory usage | `python -m memory_profiler script.py` |
 | py-spy | Production/live | `py-spy record -o profile.svg --pid 12345` |
 | timeit | Quick benchmarks | `python -m timeit "expression"` |
-
----
 
 ## cProfile Usage
 
@@ -42,8 +32,6 @@ stats.print_stats(10)  # Top 10 functions
 stats.dump_stats("profile.prof")
 ```
 
----
-
 ## Line Profiler
 
 ```python
@@ -59,8 +47,6 @@ def process_data(data):
 # Run: kernprof -l -v script.py
 ```
 
----
-
 ## Memory Profiler
 
 ```python
@@ -74,8 +60,6 @@ def memory_intensive():
 
 # Run: python -m memory_profiler script.py
 ```
-
----
 
 ## Optimization Patterns
 
@@ -125,8 +109,6 @@ if target in items_set:
     ...
 ```
 
----
-
 ## Caching with lru_cache
 
 ```python
@@ -141,8 +123,6 @@ def fibonacci(n):
 # Check cache stats
 print(fibonacci.cache_info())
 ```
-
----
 
 ## NumPy Vectorization
 
@@ -163,8 +143,6 @@ b = np.arange(100000)
 result = a * b  # Element-wise, no loop
 ```
 
----
-
 ## Multiprocessing (CPU-bound)
 
 ```python
@@ -177,8 +155,6 @@ if __name__ == "__main__":
     with mp.Pool(processes=4) as pool:
         results = pool.map(cpu_task, [1000000] * 4)
 ```
-
----
 
 ## Async I/O (I/O-bound)
 
@@ -199,8 +175,6 @@ async def main():
 # 4 concurrent requests instead of sequential
 asyncio.run(main())
 ```
-
----
 
 ## Memory Optimization
 
@@ -247,8 +221,6 @@ for stat in top_stats[:10]:
     print(stat)
 ```
 
----
-
 ## Database Optimization
 
 ```python
@@ -261,8 +233,6 @@ for item in items:
 cursor.executemany("INSERT ...", items)
 conn.commit()
 ```
-
----
 
 ## Benchmark Decorator
 
@@ -280,8 +250,6 @@ def benchmark(func):
     return wrapper
 ```
 
----
-
 ## Optimization Hierarchy
 
 | Priority | Technique | Typical Speedup |
@@ -293,8 +261,6 @@ def benchmark(func):
 | 5 | Multiprocessing | 2-Nx (N cores) |
 | 6 | Async I/O | 2-10x |
 | 7 | Micro-optimizations | 1.1-2x |
-
----
 
 ## Best Practices
 
@@ -308,8 +274,6 @@ def benchmark(func):
 | Batch I/O | Reduce system calls |
 | Connection pooling | Reuse database/HTTP connections |
 
----
-
 ## Common Pitfalls
 
 | Pitfall | Solution |
@@ -321,8 +285,6 @@ def benchmark(func):
 | Unnecessary copies | Use views, generators |
 | No connection pooling | Pool DB/HTTP connections |
 
----
-
 ## Checklist
 
 - [ ] Profiled code with cProfile/py-spy
@@ -333,7 +295,3 @@ def benchmark(func):
 - [ ] Multiprocessing for CPU-bound tasks
 - [ ] Async I/O for I/O-bound tasks
 - [ ] Benchmarked before/after optimization
-
----
-
-**Version**: 1.0.5

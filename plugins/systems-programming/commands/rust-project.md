@@ -7,9 +7,6 @@ execution_modes:
   quick: "1-2 hours"
   standard: "4-6 hours"
   enterprise: "1-2 days"
-workflow_type: "sequential"
-interactive_mode: true
-color: orange
 allowed-tools: Bash, Write, Read, Edit
 ---
 
@@ -21,8 +18,6 @@ Scaffold production-ready Rust projects with cargo tooling, proper module organi
 
 $ARGUMENTS
 
----
-
 ## Mode Selection
 
 | Mode | Duration | Scope |
@@ -30,8 +25,6 @@ $ARGUMENTS
 | Quick | 1-2h | cargo new, basic Cargo.toml, minimal dependencies |
 | Standard (default) | 4-6h | Full crate with async Tokio, error handling, tests, benchmarks, docs |
 | Enterprise | 1-2d | Cargo workspace with multi-crate architecture and CI/CD |
-
----
 
 ## Phase 1: Project Type Determination
 
@@ -45,8 +38,6 @@ $ARGUMENTS
 
 **Reference:** [Rust Project Structures](../docs/rust-project/rust-project-structures.md)
 
----
-
 ## Phase 2: Initialize with Cargo
 
 | Mode | Command | Notes |
@@ -55,8 +46,6 @@ $ARGUMENTS
 | Quick (library) | `cargo new --lib lib-name` | Single library crate |
 | Standard | Same as Quick + enhanced Cargo.toml | Add features, tests, benchmarks |
 | Enterprise | `cargo new --workspace workspace-name` | Create crates/api, crates/core, crates/cli |
-
----
 
 ## Phase 3: Cargo.toml Configuration
 
@@ -80,8 +69,6 @@ $ARGUMENTS
 
 **Full reference:** [Rust Cargo Configuration](../docs/rust-project/rust-cargo-config.md)
 
----
-
 ## Phase 4: Source Code Generation
 
 ### Entry Point by Type
@@ -103,8 +90,6 @@ $ARGUMENTS
 | types | Shared types across crates |
 
 **Templates:** [Rust Project Structures](../docs/rust-project/rust-project-structures.md)
-
----
 
 ## Phase 5: Testing and Benchmarks
 
@@ -130,8 +115,6 @@ harness = false
 
 **Reference:** [Rust Project Structures - Testing](../docs/rust-project/rust-project-structures.md#testing-structure)
 
----
-
 ## Phase 6: Async Patterns (Standard+)
 
 | Pattern | Use Case |
@@ -144,8 +127,6 @@ harness = false
 
 **Comprehensive patterns:** [Rust Async Patterns](../docs/rust-project/rust-async-patterns.md)
 
----
-
 ## Phase 7: Documentation
 
 | Mode | Documentation |
@@ -153,8 +134,6 @@ harness = false
 | Quick | README.md with build instructions |
 | Standard | + lib.rs doc comments, function docs with examples |
 | Enterprise | + Architecture docs, API docs for all crates |
-
----
 
 ## Output Deliverables
 
@@ -164,8 +143,6 @@ harness = false
 | Standard | + Async setup, error handling, tests, benchmarks, examples |
 | Enterprise | + Workspace, multi-crate architecture, CI/CD, cross-compilation |
 
----
-
 ## External Documentation
 
 | Document | Content | Lines |
@@ -173,8 +150,6 @@ harness = false
 | [Rust Project Structures](../docs/rust-project/rust-project-structures.md) | Binary/library/workspace patterns, Axum | ~600 |
 | [Rust Cargo Configuration](../docs/rust-project/rust-cargo-config.md) | Cargo.toml, profiles, dependencies | ~567 |
 | [Rust Async Patterns](../docs/rust-project/rust-async-patterns.md) | Tokio, concurrency, channels | ~718 |
-
----
 
 ## Quality Checklist
 
