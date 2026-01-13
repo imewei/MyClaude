@@ -1,6 +1,6 @@
 # Code Documentation
 
-**Version:** 1.0.6 | **Category:** documentation | **License:** MIT
+**Version:** 1.0.7 | **Category:** documentation | **License:** MIT
 
 Comprehensive code documentation, explanation, and generation with AST-based analysis, visual diagrams, and automated documentation workflows. Features hub-and-spoke architecture achieving 54% command file reduction with comprehensive external documentation.
 
@@ -641,6 +641,6 @@ MIT License - See [LICENSE](./LICENSE) for details
 ---
 
 **Author:** Wei Chen
-**Version:** 1.0.6
+**Version:** 1.0.7
 **Category:** Documentation
 **Last Updated:** 2025-10-29

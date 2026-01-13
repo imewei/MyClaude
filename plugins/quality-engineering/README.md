@@ -2,7 +2,7 @@
 
 Comprehensive quality assurance, validation, and correctness verification tools with automated scripts for security scanning, testing, linting, performance profiling, accessibility checks, and plugin syntax validation.
 
-**Version:** 1.0.6 | **Category:** quality-assurance | **License:** MIT
+**Version:** 1.0.7 | **Category:** quality-assurance | **License:** MIT
 
 [Full Documentation →](https://myclaude.readthedocs.io/en/latest/plugins/quality-engineering.html) | [CHANGELOG](CHANGELOG.md)
 

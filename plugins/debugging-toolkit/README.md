@@ -2,7 +2,7 @@
 
 AI-assisted debugging with LLM-driven RCA, automated log correlation, observability integration, SRE practices, and developer experience optimization for distributed systems.
 
-**Version:** 1.0.6 | **Category:** dev-tools | **License:** MIT
+**Version:** 1.0.7 | **Category:** dev-tools | **License:** MIT
 
 [![Maturity: Production Ready](https://img.shields.io/badge/maturity-production%20ready-green)]()
 [![Agents: 2](https://img.shields.io/badge/agents-2-blue)]()

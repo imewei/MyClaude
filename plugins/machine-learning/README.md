@@ -2,7 +2,7 @@
 
 Advanced machine learning and MLOps with **production-ready pipelines**, **multi-agent orchestration**, **comprehensive experiment tracking**, and **enterprise data infrastructure**. v1.0.3 adds execution modes, data-engineer agent, and extensive MLOps documentation.
 
-**Version:** 1.0.6 | **Category:** ai-ml | **Status:** Active
+**Version:** 1.0.7 | **Category:** ai-ml | **Status:** Active
 
 [Full Documentation →](https://myclaude.readthedocs.io/en/latest/plugins/machine-learning.html) | [CHANGELOG](CHANGELOG.md)
 
@@ -520,4 +520,4 @@ See main repository license.
 
 **Questions or Issues?** Open an issue on the [GitHub repository](https://github.com/your-repo/claude-code-plugins).
 
-**Last Updated:** 2025-10-31 | **Version:** 1.0.6
+**Last Updated:** 2025-10-31 | **Version:** 1.0.7

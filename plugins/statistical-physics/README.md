@@ -2,7 +2,7 @@
 
 Non-equilibrium statistical physics for driven systems, active matter, and complex dynamics with theory, simulation, and experimental validation. Includes correlation function analysis bridging theoretical foundations to experimental data interpretation.
 
-**Version:** 1.0.6 | **Category:** uncategorized | **License:** Unknown
+**Version:** 1.0.7 | **Category:** uncategorized | **License:** Unknown
 
 [Full Documentation →](https://myclaude.readthedocs.io/en/latest/plugins/statistical-physics.html)
 

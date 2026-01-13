@@ -2,7 +2,7 @@
 
 Multi-agent workflow coordination with production-ready optimization workflows, systematic agent improvement methodologies, and comprehensive documentation featuring real-world examples with 50-200x performance improvements.
 
-**Version:** 1.0.6 | **Category:** AI & ML | **License:** MIT
+**Version:** 1.0.7 | **Category:** AI & ML | **License:** MIT
 
 [Full Documentation →](https://myclaude.readthedocs.io/en/latest/plugins/agent-orchestration.html) | [Changelog →](./CHANGELOG.md)
 

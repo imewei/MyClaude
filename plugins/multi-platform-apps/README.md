@@ -2,7 +2,7 @@
 
 Comprehensive multi-platform application development with **chain-of-thought reasoning frameworks**, **constitutional AI validation**, and **production-ready examples** for Flutter, React Native, iOS, Android, web, backend APIs, and UI/UX design systems.
 
-**Version:** 1.0.6 | **Category:** Multi-Platform Development | **License:** MIT
+**Version:** 1.0.7 | **Category:** Multi-Platform Development | **License:** MIT
 
 [Full Documentation →](https://myclaude.readthedocs.io/en/latest/plugins/multi-platform-apps.html) | [CHANGELOG](CHANGELOG.md)
 
@@ -616,4 +616,4 @@ MIT
 
 **Questions or Issues?** Open an issue on the [GitHub repository](https://github.com/anthropics/claude-code).
 
-**Last Updated:** 2025-11-07 | **Version:** 1.0.6
+**Last Updated:** 2025-11-07 | **Version:** 1.0.7

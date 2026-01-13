@@ -2,7 +2,7 @@
 
 Production-ready LLM application development with advanced prompt engineering, RAG implementation, vector databases, LangChain, and modern AI integration patterns for building intelligent applications.
 
-**Version:** 1.0.6 | **Category:** development | **License:** MIT
+**Version:** 1.0.7 | **Category:** development | **License:** MIT
 
 [Full Documentation →](https://myclaude.readthedocs.io/en/latest/plugins/llm-application-dev.html) | [Changelog →](CHANGELOG.md)
 

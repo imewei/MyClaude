@@ -2,7 +2,7 @@
 
 Observability, monitoring, logging, distributed tracing, and SLO/SLA management for production systems with Prometheus, Grafana, and modern observability platforms
 
-**Version:** 1.0.6 | **Category:** devops | **License:** MIT
+**Version:** 1.0.7 | **Category:** devops | **License:** MIT
 
 [Full Documentation →](https://myclaude.readthedocs.io/en/latest/plugins/observability-monitoring.html) | [CHANGELOG](CHANGELOG.md)
 

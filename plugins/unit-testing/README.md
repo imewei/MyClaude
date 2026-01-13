@@ -2,7 +2,7 @@
 
 Production-grade test automation and debugging with 3 execution modes (quick/standard/enterprise), AI-driven RCA, comprehensive examples, and TDD excellence. Features iterative test fixing, automated test generation with scientific computing support, and 8 comprehensive external documentation files.
 
-**Version:** 1.0.6 | **Category:** development | **License:** MIT
+**Version:** 1.0.7 | **Category:** development | **License:** MIT
 
 [Full Documentation →](https://myclaude.readthedocs.io/en/latest/plugins/unit-testing.html)
 
