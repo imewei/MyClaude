@@ -286,11 +286,27 @@ make clean-all               # Deep clean including docs
 
 **Optimization & Documentation Release** - All 31 plugins synchronized to 1.0.7:
 
-- Plugin Optimization: 40-76% token reduction across all plugins
-- New Command: Added /merge-all for branch consolidation
-- API Documentation: New docs/api/ reference for Python tools
-- Theme Migration: Switched Sphinx from RTD to Furo theme
-- Enhanced CI/CD: Documentation workflow with coverage and linkcheck
+- Plugin Optimization: 40-76% token reduction across all plugins for faster loading
+- New Command: Added `/merge-all` for branch consolidation (48 → 49 commands)
+- API Documentation: New `docs/api/` reference for Python tools
+- Theme Migration: Switched Sphinx from RTD to Furo theme with dark mode
+- Enhanced CI/CD: Documentation workflow with coverage and linkcheck jobs
+- Version Consistency: Updated 272 files (agents, skills, commands, READMEs)
+
+### v1.0.6 (2025-12-24)
+
+**Documentation Sync Release** - All 31 plugins synchronized to 1.0.6:
+
+- Plugin.json Schema Fix: Convert author to object format for Claude Code compatibility
+- ReadTheDocs: Fixed build configuration with uv package manager
+- All documentation files synchronized with package version
+
+### v1.0.5 (2025-12-24)
+
+**Opus 4.5 Optimization Release** - Documentation and statistics updates:
+
+- Unified versioning across marketplace.json and documentation
+- Updated RST files for all 31 plugins
 
 ### v1.0.4 (2025-12-03)
 

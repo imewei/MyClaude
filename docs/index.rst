@@ -10,7 +10,7 @@ The Plugin Marketplace offers:
 
 - **31 Specialized Plugins** across 6 major categories
 - **74 Expert Agents** for AI-powered development assistance
-- **48 Slash Commands** for automated workflows
+- **49 Slash Commands** for automated workflows
 - **117 Skills** for context-aware intelligence
 - **16 Tools** for validation and profiling
 - **Integrated Ecosystem** with extensive cross-plugin collaboration
@@ -41,13 +41,13 @@ Tools & Migration (4 plugins)
 Statistics
 ----------
 
-**Version 1.0.7** (All plugins updated December 24, 2025)
+**Version 1.0.7** (January 12, 2026)
 
 **Total Resources:**
 
 - 31 plugins
 - 74 agents
-- 48 commands
+- 49 commands
 - 117 skills
 - 16 tools
 
@@ -56,18 +56,24 @@ Statistics
 - Scientific Computing: 8 plugins, 18 agents, 4 commands, 54 skills
 - Development: 10 plugins, 24 agents, 14 commands, 30 skills
 - AI & Machine Learning: 2 plugins, 6 agents, 3 commands, 10 skills
-- DevOps & Infrastructure: 3 plugins, 10 agents, 8 commands, 12 skills
+- DevOps & Infrastructure: 3 plugins, 10 agents, 9 commands, 12 skills
 - Quality & Testing: 4 plugins, 7 agents, 10 commands, 3 skills
 - Tools & Migration: 4 plugins, 9 agents, 9 commands, 7 skills
 
 Features
 --------
 
-**Specialized Expertise**
-  Each plugin provides focused expertise in specific domains, with specialized agents, commands, and skills.
+**v1.0.7 Optimization Release**
+  40-76% token reduction across all 31 plugins for faster loading. Average ~50% reduction in prompt token usage with optimized agent, skill, and command definitions.
 
-**v1.0.5 Version Sync**
-  All 31 plugins synchronized to version 1.0.5 with unified versioning across marketplace.json and documentation.
+**New Furo Theme**
+  Modern documentation theme with light/dark mode support, keyboard navigation, and enhanced mobile experience.
+
+**API Documentation**
+  New ``docs/api/`` reference documenting Python tools including data models (PluginMetadata, AgentConfig, SkillConfig, CommandConfig).
+
+**49 Slash Commands**
+  New ``/merge-all`` command for branch consolidation in git-pr-workflows plugin.
 
 **Cross-Plugin Integration**
   Plugins are designed to work together, enabling complex multi-plugin workflows. See the :doc:`integration-map` for detailed integration patterns.
