@@ -1,6 +1,6 @@
 ---
 name: deep-learning-experimentation
-version: "1.0.6"
+version: "1.0.7"
 maturity: "5-Expert"
 specialization: ML Experiment Design
 description: Design systematic deep learning experiments with hyperparameter optimization, ablation studies, and reproducible workflows. Use when tuning hyperparameters, conducting ablations, setting up experiment tracking (W&B, TensorBoard, MLflow), or managing reproducibility.

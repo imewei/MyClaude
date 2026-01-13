@@ -1,6 +1,6 @@
 ---
 name: multi-agent-coordination
-version: "1.0.6"
+version: "1.0.7"
 maturity: "5-Expert"
 specialization: Multi-Agent Workflow Orchestration
 description: Coordinate multiple AI agents through workflow orchestration, task allocation, and distributed systems. Use when designing DAG-based workflows with task dependencies, building agent team assembly with capability matching, implementing inter-agent communication protocols, orchestrating parallel execution with synchronization, designing fault-tolerant systems with retry logic, or managing distributed agent teams.

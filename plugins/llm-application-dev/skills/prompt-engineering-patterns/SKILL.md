@@ -1,5 +1,5 @@
 name: prompt-engineering-patterns
-version: "1.0.6"
+version: "1.0.7"
 description: Master advanced prompt engineering with chain-of-thought, few-shot learning, and production templates. Use when designing prompts for AI applications, implementing structured reasoning, optimizing for consistency, or building reusable prompt systems.
 
 # Prompt Engineering Patterns

@@ -1,6 +1,6 @@
 ---
 name: structured-reasoning
-version: "1.0.6"
+version: "1.0.7"
 maturity: "5-Expert"
 specialization: Systematic Problem-Solving
 description: Apply structured reasoning with systematic thought processing, branching exploration, multi-framework analysis (First Principles, Root Cause Analysis, Decision Analysis), and auditability. Use for complex debugging, architectural decisions, strategic planning, novel problems, and high-stakes decisions requiring explicit reasoning chains.

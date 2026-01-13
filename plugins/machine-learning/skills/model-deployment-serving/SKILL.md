@@ -1,6 +1,6 @@
 ---
 name: model-deployment-serving
-version: "1.0.6"
+version: "1.0.7"
 maturity: "5-Expert"
 specialization: Production ML Model Serving & Deployment
 description: Deploy ML models with FastAPI, TorchServe, BentoML, Docker, Kubernetes, and cloud platforms. Implement monitoring, A/B testing, and drift detection. Use when building model serving APIs, containerizing models, or setting up production ML infrastructure.

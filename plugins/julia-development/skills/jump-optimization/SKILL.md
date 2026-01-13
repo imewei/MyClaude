@@ -1,6 +1,6 @@
 ---
 name: jump-optimization
-version: "1.0.6"
+version: "1.0.7"
 maturity: "5-Expert"
 specialization: Mathematical Programming
 description: Master JuMP.jl for LP, QP, NLP, and MIP with HiGHS, Ipopt, and commercial solvers. Use for production planning, portfolio optimization, scheduling, and constrained optimization. Note that JuMP.jl is separate from Optimization.jl (sciml-pro).

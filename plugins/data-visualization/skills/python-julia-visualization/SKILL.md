@@ -1,6 +1,6 @@
 ---
 name: python-julia-visualization
-version: "1.0.6"
+version: "1.0.7"
 maturity: "5-Expert"
 specialization: Scientific Data Visualization
 description: Implement production-ready scientific visualizations using Python (Matplotlib, Seaborn, Plotly, Bokeh) and Julia (Plots.jl, Makie.jl) ecosystems. Use when creating publication-quality static plots, interactive dashboards, real-time streaming visualizations, 3D surfaces, or configuring export settings (300 DPI, vector formats, colorblind-friendly palettes).

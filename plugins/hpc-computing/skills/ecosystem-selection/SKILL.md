@@ -1,6 +1,6 @@
 ---
 name: ecosystem-selection
-version: "1.0.6"
+version: "1.0.7"
 description: Select optimal scientific computing ecosystems and manage multi-language workflows. Use when evaluating Python vs Julia for performance-critical numerical computing, implementing hybrid PyJulia/PyCall.jl interoperability, or setting up reproducible toolchains with Conda or Pkg.jl.
 ---
 

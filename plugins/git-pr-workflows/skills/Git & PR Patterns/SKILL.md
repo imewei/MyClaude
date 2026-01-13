@@ -1,6 +1,6 @@
 ---
 name: Git & PR Patterns
-version: "1.0.6"
+version: "1.0.7"
 maturity: "5-Expert"
 specialization: Version Control
 description: Master Git workflows, branching strategies, and PR best practices. Use when writing git commands, creating branches, committing, resolving conflicts, or managing pull requests.

@@ -1,6 +1,6 @@
 ---
 name: package-development-workflow
-version: "1.0.6"
+version: "1.0.7"
 maturity: "5-Expert"
 specialization: Julia Packages
 description: Create Julia packages following community standards with proper structure, exports, and PkgTemplates.jl. Use when creating new packages or organizing source code.

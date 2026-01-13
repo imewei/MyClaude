@@ -1,6 +1,6 @@
 ---
 name: interop-patterns
-version: "1.0.6"
+version: "1.0.7"
 maturity: "5-Expert"
 specialization: Julia Cross-Language
 description: Master cross-language integration with PythonCall.jl, RCall.jl, and CxxWrap.jl. Use when calling Python/R libraries from Julia or minimizing data transfer overhead.

@@ -1,6 +1,6 @@
 ---
 name: plugin-syntax-validator
-version: "1.0.6"
+version: "1.0.7"
 maturity: "5-Expert"
 specialization: Plugin Validation
 description: Validate Claude Code plugin syntax, structure, and cross-references with automated detection and auto-fixing of common errors. Use when validating agent/skill references, checking namespace syntax, or setting up CI validation pipelines.

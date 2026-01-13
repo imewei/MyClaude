@@ -1,6 +1,6 @@
 ---
 name: ai-assisted-debugging
-version: "1.0.6"
+version: "1.0.7"
 maturity: "5-Expert"
 specialization: AI-Powered Debugging & RCA
 description: AI/LLM for automated stack trace analysis, intelligent RCA, ML log correlation in distributed systems. Use for Python/JS/Go exceptions, K8s pod failures, automated anomaly detection on logs/metrics, correlating git commits with production incidents.

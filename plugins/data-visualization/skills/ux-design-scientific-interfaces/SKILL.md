@@ -1,6 +1,6 @@
 ---
 name: ux-design-scientific-interfaces
-version: "1.0.6"
+version: "1.0.7"
 maturity: "5-Expert"
 specialization: Scientific Interface Design
 description: Design intuitive, accessible interfaces for scientific tools and research applications. Use when building Plotly Dash or Streamlit dashboards, creating Pluto.jl notebooks, implementing WCAG 2.1 AA accessibility, designing Jupyter widgets, building CLIs for scientific tools, implementing progressive disclosure patterns, or creating reproducibility features.

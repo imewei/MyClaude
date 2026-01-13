@@ -1,6 +1,6 @@
 ---
 name: ml-pipeline-workflow
-version: "1.0.6"
+version: "1.0.7"
 maturity: "5-Expert"
 specialization: MLOps Pipeline Orchestration
 description: Build end-to-end MLOps pipelines with Airflow, Dagster, Kubeflow, or Prefect for data preparation, training, validation, and deployment. Use when creating DAG definitions, workflow configs, or orchestrating ML lifecycle stages.
