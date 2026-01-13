@@ -1,5 +1,5 @@
 ---
-version: "1.0.6"
+version: "1.0.7"
 category: code-documentation
 command: /doc-generate
 description: Generate comprehensive documentation from code with AI-powered analysis

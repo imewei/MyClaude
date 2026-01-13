@@ -1,5 +1,5 @@
 ---
-version: "1.0.6"
+version: "1.0.7"
 category: "llm-application-dev"
 command: "/ai-assistant"
 description: Build production-ready AI assistants with NLU, conversation management, and intelligent response generation

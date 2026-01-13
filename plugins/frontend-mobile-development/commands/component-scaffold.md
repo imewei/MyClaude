@@ -1,5 +1,5 @@
 ---
-version: "1.0.6"
+version: "1.0.7"
 description: Orchestrate production-ready React/React Native component generation with TypeScript, tests, styles, and documentation
 execution_time:
   quick: "5-10 minutes"

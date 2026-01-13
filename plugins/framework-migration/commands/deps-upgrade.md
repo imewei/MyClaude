@@ -1,5 +1,5 @@
 ---
-version: "1.0.6"
+version: "1.0.7"
 description: Safe dependency upgrade orchestration with breaking change management and security-first prioritization
 argument-hint: [--security-only] [--mode quick|standard|deep] [--strategy incremental|batch]
 category: framework-migration

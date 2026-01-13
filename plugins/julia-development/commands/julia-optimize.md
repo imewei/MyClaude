@@ -1,5 +1,5 @@
 ---
-version: "1.0.6"
+version: "1.0.7"
 command: "/julia-optimize"
 description: Profile Julia code and provide optimization recommendations through type stability, allocation, and bottleneck analysis
 argument-hint: "<file_path>"

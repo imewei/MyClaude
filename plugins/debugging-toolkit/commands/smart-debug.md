@@ -1,5 +1,5 @@
 ---
-version: "1.0.6"
+version: "1.0.7"
 category: debugging
 purpose: AI-assisted debugging with automated RCA, pattern recognition, production-safe techniques
 description: Intelligent debugging with multi-mode execution and automated RCA

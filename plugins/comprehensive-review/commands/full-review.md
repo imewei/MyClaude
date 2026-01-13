@@ -1,5 +1,5 @@
 ---
-version: "1.0.6"
+version: "1.0.7"
 category: code-review
 purpose: Multi-dimensional code review with specialized agents
 execution_modes:

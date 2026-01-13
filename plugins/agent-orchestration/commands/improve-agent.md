@@ -1,5 +1,5 @@
 ---
-version: "1.0.6"
+version: "1.0.7"
 description: Systematic agent improvement through performance analysis and prompt engineering
 allowed-tools: Read, Write, Edit, Bash(git:*), Bash(pytest:*)
 argument-hint: <agent-name> [--mode=check|phase|optimize] [--phase=1|2|3|4] [--focus=AREA]

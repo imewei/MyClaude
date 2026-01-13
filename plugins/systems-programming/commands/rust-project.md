@@ -1,5 +1,5 @@
 ---
-version: "1.0.6"
+version: "1.0.7"
 command: /rust-project
 description: Scaffold production-ready Rust projects with cargo tooling and idiomatic patterns
 argument-hint: [project-type] [project-name]

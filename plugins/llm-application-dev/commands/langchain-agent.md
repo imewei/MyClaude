@@ -1,5 +1,5 @@
 ---
-version: "1.0.6"
+version: "1.0.7"
 category: llm-application-dev
 command: /langchain-agent
 description: Create production-ready LangChain agents with LangGraph, RAG, and observability

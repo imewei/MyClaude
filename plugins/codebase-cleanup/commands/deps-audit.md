@@ -1,5 +1,5 @@
 ---
-version: "1.0.6"
+version: "1.0.7"
 category: codebase-cleanup
 purpose: Dependency security scanning and vulnerability analysis
 execution_time: {quick: "2-5min", standard: "5-15min", comprehensive: "15-45min"}

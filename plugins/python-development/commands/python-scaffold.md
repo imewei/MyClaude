@@ -1,5 +1,5 @@
 ---
-version: "1.0.6"
+version: "1.0.7"
 command: /python-scaffold
 description: Scaffold production-ready Python projects with modern tooling across 3 execution modes
 execution_modes:

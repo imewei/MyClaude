@@ -1,5 +1,5 @@
 ---
-version: "1.0.6"
+version: "1.0.7"
 category: code-migration
 command: /adopt-code
 description: Analyze and modernize scientific computing codebases while preserving numerical accuracy

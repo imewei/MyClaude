@@ -1,5 +1,5 @@
 ---
-version: "1.0.6"
+version: "1.0.7"
 description: Orchestrate systematic code migration between frameworks with test-first discipline
 argument-hint: <source-path> [--target <framework>] [--strategy <pattern>] [--mode quick|standard|deep]
 category: framework-migration

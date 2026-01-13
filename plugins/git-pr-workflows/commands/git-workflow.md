@@ -1,5 +1,5 @@
 ---
-version: "1.0.6"
+version: "1.0.7"
 description: Complete Git workflow orchestration from code review through PR creation
 allowed-tools: Bash(git:*), Read, Grep, Task
 argument-hint: [target-branch] [--skip-tests] [--draft-pr] [--no-push] [--squash] [--conventional]

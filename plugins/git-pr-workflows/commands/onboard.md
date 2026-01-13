@@ -1,5 +1,5 @@
 ---
-version: "1.0.6"
+version: "1.0.7"
 command: /onboard
 description: Orchestrate complete onboarding for new team members with customized 30/60/90 day plans
 argument-hint: <role> [--level=junior|mid|senior] [--location=remote|hybrid|onsite]

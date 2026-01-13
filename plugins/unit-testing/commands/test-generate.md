@@ -1,5 +1,5 @@
 ---
-version: "1.0.6"
+version: "1.0.7"
 command: /test-generate
 description: Generate comprehensive test suites with scientific computing support, numerical validation, property-based testing, benchmarks
 argument-hint: <source> [--coverage] [--property-based] [--benchmarks] [--scientific]
