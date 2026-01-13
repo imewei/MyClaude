@@ -1,5 +1,5 @@
 # Read the Docs configuration file for Claude Code Plugin Marketplace
-# Version: 1.0.6
+# Version: 1.0.7
 # See https://docs.readthedocs.io/en/stable/config-file/v2.html for details
 
 # Required
@@ -9,7 +9,7 @@ version: 2
 build:
   os: ubuntu-24.04
   tools:
-    python: "3.12"
+    python: "3.13"
   jobs:
     post_create_environment:
       # Install uv for faster package management
@@ -24,7 +24,7 @@ sphinx:
   builder: html
   fail_on_warning: false
 
-# Build PDF and ePub
+# Build PDF and ePub (Furo theme supports these formats)
 formats:
   - pdf
   - epub
