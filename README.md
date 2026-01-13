@@ -282,14 +282,15 @@ make clean-all               # Deep clean including docs
 
 ## Version History
 
-### v1.0.7 (Current - 2025-12-18)
+### v1.0.7 (Current - 2026-01-12)
 
-**Version Sync Release** - All 31 plugins synchronized to 1.0.6:
+**Optimization & Documentation Release** - All 31 plugins synchronized to 1.0.7:
 
-- Unified Versioning: All plugins, marketplace.json, and documentation updated
-- Pre-Response Validation Framework: 5 mandatory self-checks + 5 quality gates
-- When to Invoke Sections: USE FOR / DELEGATE TO tables and Decision Trees
-- Enhanced Constitutional AI Principles: Target %, Self-Check Questions, Anti-Patterns, Metrics
+- Plugin Optimization: 40-76% token reduction across all plugins
+- New Command: Added /merge-all for branch consolidation
+- API Documentation: New docs/api/ reference for Python tools
+- Theme Migration: Switched Sphinx from RTD to Furo theme
+- Enhanced CI/CD: Documentation workflow with coverage and linkcheck
 
 ### v1.0.4 (2025-12-03)
 

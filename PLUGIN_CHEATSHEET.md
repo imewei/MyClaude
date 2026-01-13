@@ -1,6 +1,6 @@
 # Claude Code Plugin Marketplace - Quick Reference
 
-**Total Resources:** 31 Plugins | 74 Agents | 49 Commands | 114 Skills
+**Total Resources:** 31 Plugins | 74 Agents | 49 Commands | 117 Skills
 **Version:** 1.0.7 | **Last Updated:** January 12, 2026
 
 ---
