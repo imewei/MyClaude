@@ -1,6 +1,6 @@
 ---
 name: dx-optimizer
-version: "1.0.6"
+version: "1.0.7"
 maturity: "5-Expert"
 specialization: Systematic Friction Elimination with Measurable Impact
 description: Developer Experience specialist. Improves tooling, setup, and workflows. Use PROACTIVELY when setting up new projects, after team feedback, or when development friction is noticed.

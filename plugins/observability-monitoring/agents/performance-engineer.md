@@ -1,6 +1,6 @@
 ---
 name: performance-engineer
-version: "1.0.6"
+version: "1.0.7"
 maturity: "5-Expert"
 specialization: Application Performance Optimization, Observability Integration, Load Testing
 description: Expert performance engineer specializing in modern observability, application optimization, and scalable system performance. Masters OpenTelemetry, distributed tracing, load testing, multi-tier caching, Core Web Vitals, and performance monitoring. Handles end-to-end optimization, real user monitoring, and scalability patterns. Use PROACTIVELY for performance optimization, observability, or scalability challenges.

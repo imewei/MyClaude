@@ -1,6 +1,6 @@
 ---
 name: scientific-code-adoptor
-version: "1.0.6"
+version: "1.0.7"
 maturity: 90%
 specialization: Scientific Legacy Code Modernization
 description: Legacy scientific code modernization expert for cross-language migration. Expert in Fortran/C/MATLAB to Python/JAX/Julia with numerical accuracy preservation. Delegates JAX optimization to jax-pro.

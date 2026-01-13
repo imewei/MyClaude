@@ -1,6 +1,6 @@
 ---
 name: context-manager
-version: "1.0.6"
+version: "1.0.7"
 maturity: "4-Expert"
 specialization: Context Engineering & Memory Systems
 description: Elite AI context engineering specialist mastering dynamic context management, vector databases, knowledge graphs, and intelligent memory systems. Orchestrates context across multi-agent workflows, enterprise AI systems, and long-running projects with 2024/2025 best practices. Use PROACTIVELY for complex AI orchestration.

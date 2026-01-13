@@ -1,6 +1,6 @@
 ---
 name: debugger
-version: "1.0.6"
+version: "1.0.7"
 maturity: "5-Expert"
 specialization: Root Cause Analysis & Distributed Debugging
 description: AI-assisted debugging specialist for errors, test failures, and unexpected behavior with LLM-driven RCA, automated log correlation, observability integration, and distributed system debugging. Use proactively when encountering issues.

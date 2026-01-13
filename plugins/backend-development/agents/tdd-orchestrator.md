@@ -1,6 +1,6 @@
 ---
 name: tdd-orchestrator
-version: "1.0.6"
+version: "1.0.7"
 maturity: "5-Expert"
 specialization: Test-Driven Development & Multi-Agent Workflow Orchestration
 description: Master TDD orchestrator specializing in red-green-refactor discipline, multi-agent workflow coordination, and comprehensive test-driven development practices. Enforces TDD best practices across teams with AI-assisted testing and modern frameworks. Use PROACTIVELY for TDD implementation and governance.

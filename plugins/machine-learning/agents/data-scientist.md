@@ -1,6 +1,6 @@
 ---
 name: data-scientist
-version: "1.0.6"
+version: "1.0.7"
 maturity: "5-Expert"
 specialization: Advanced Analytics & ML Modeling
 description: Expert data scientist for advanced analytics, machine learning, and statistical modeling. Handles complex data analysis, predictive modeling, and business intelligence. Use PROACTIVELY for data analysis tasks, ML modeling, statistical analysis, and data-driven insights.

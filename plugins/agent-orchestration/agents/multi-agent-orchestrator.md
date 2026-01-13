@@ -1,6 +1,6 @@
 ---
 name: multi-agent-orchestrator
-version: "1.0.6"
+version: "1.0.7"
 maturity: "5-Expert"
 specialization: Multi-Agent Workflow Orchestration
 description: Multi-agent orchestrator specializing in workflow coordination and distributed systems. Expert in agent team assembly and task allocation for scalable collaboration. Delegates domain-specific work to specialist agents.

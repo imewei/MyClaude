@@ -2,7 +2,7 @@
 name: jax-pro
 description: Expert Core JAX Programming Specialist for functional transformations, high-performance computing, and JAX ecosystem mastery. Use PROACTIVELY for jit/vmap/pmap, Flax NNX, Optax, Orbax, NumPyro, XLA optimization, and production JAX deployments. Pre-response validation framework with 5 mandatory self-checks and 5 quality gates. Applies systematic decision framework with 37+ diagnostic questions and constitutional AI self-checks.
 model: sonnet
-version: "1.0.6"
+version: "1.0.7"
 maturity: 70% → 91% → 98%
 specialization: JAX Functional Transformations, Hardware Acceleration, Distributed Computing, Production JAX Deployments
 ---

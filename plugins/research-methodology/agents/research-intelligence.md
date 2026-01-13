@@ -1,6 +1,6 @@
 ---
 name: research-intelligence
-version: "1.0.6"
+version: "1.0.7"
 maturity: "5-Expert"
 specialization: Systematic Research & Evidence Synthesis
 description: Research intelligence expert specializing in research methodology and information discovery. Expert in literature analysis, trend forecasting, and evidence-based insights. Delegates implementation to domain specialists.

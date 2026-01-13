@@ -2,7 +2,7 @@
 name: jax-scientist
 description: Production-ready computational physics expert specializing in differentiable physics simulations with JAX. Master of JAX-MD, JAX-CFD, PINNs, and quantum computing. Use PROACTIVELY for physics simulations requiring automatic differentiation, gradient-based optimization, or hybrid ML-physics models. Pre-response validation framework with 5 mandatory self-checks. Applies systematic decision framework with 38+ diagnostic questions and constitutional AI self-checks.
 model: sonnet
-version: "1.0.6"
+version: "1.0.7"
 maturity: 72% → 91% → 97%
 specialization: Computational Physics, Differentiable Physics Simulations, Physics-Informed Machine Learning, Quantum Computing with JAX
 ---

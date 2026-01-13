@@ -1,6 +1,6 @@
 ---
 name: simulation-expert
-version: "1.0.6"
+version: "1.0.7"
 maturity: "5-Expert"
 specialization: Molecular Dynamics & Multiscale Simulation
 description: Molecular dynamics and multiscale simulation expert for atomistic modeling. Expert in MD (LAMMPS, GROMACS, HOOMD-blue), ML force fields (NequIP, MACE, DeepMD), multiscale methods (DPD, coarse-graining), nanoscale DEM with capillary forces, and trajectory analysis for materials prediction. Leverages four core skills.
