@@ -1,0 +1,236 @@
+Multi-Physics Coupling Patterns
+================================
+
+COUPLED FLUID-STRUCTURE INTERACTION (FSI)
+------------------------------------------
+
+Fluid Domain (JAX-CFD)        Structure Domain (FEM)
+┌────────────────────┐        ┌────────────────────┐
+│ Navier-Stokes:     │◄──────►│ Elasticity:        │
+│ ∂u/∂t + u·∇u = ... │ Forces │ ∇·σ = 0            │
+│                    │  &     │ σ = C:ε            │
+│ Velocity field u   │ Displ. │ Displacement d     │
+└────────────────────┘        └────────────────────┘
+
+Coupling Algorithm (Partitioned):
+  Loop until convergence:
+    1. Solve fluid: Given interface position → fluid forces
+    2. Transfer loads to structure
+    3. Solve structure: Forces → displacement
+    4. Update interface position
+    5. Check: ||d_new - d_old|| < tol
+
+
+THERMAL-FLUID COUPLING
+----------------------
+
+Energy Equation              Navier-Stokes
+┌─────────────────┐         ┌──────────────────┐
+│ ∂T/∂t + u·∇T    │◄───────►│ ∂u/∂t + u·∇u =   │
+│   = α∇²T        │ Velocity│   -∇p + ν∇²u     │
+│                 │    &    │                  │
+│ Temperature T   │ Buoyancy│ Velocity u       │
+└─────────────────┘         └──────────────────┘
+
+Boussinesq approximation:
+  F_buoyancy = ρ₀·β·(T - T₀)·g
+
+Example: Natural convection in cavity
+  • Hot wall → cold wall
+  • Buoyancy drives circulation
+  • Temperature advected by flow
+
+
+ELECTROMAGNETICS-THERMAL COUPLING
+----------------------------------
+
+Maxwell's Equations          Heat Equation
+┌──────────────────┐        ┌───────────────────┐
+│ ∇×E = -∂B/∂t     │───────►│ ∂T/∂t = α∇²T + Q  │
+│ ∇×H = J + ∂D/∂t  │ Joule  │                   │
+│                  │ Heating│ Q = σ|E|²         │
+│ E field, B field │        │ Temperature T     │
+└──────────────────┘        └───────────────────┘
+         ▲                           │
+         │                           │
+         └───────────────────────────┘
+           Temperature-dependent σ(T)
+
+Example: Induction heating
+  • Time-varying B field induces eddy currents
+  • Joule heating Q = σ|E|²
+  • Temperature rise changes σ(T)
+
+
+REACTION-DIFFUSION-ADVECTION
+-----------------------------
+
+Chemical Reactions       Mass Transport           Fluid Flow
+┌────────────────┐      ┌──────────────┐        ┌────────────┐
+│ dC/dt = R(C,T) │─────►│ ∂C/∂t +      │◄──────►│ ∂u/∂t +    │
+│                │ Rate │   u·∇C =     │ Conc.  │  u·∇u = ...│
+│ Reaction R     │      │   D∇²C + R   │   &    │            │
+└────────────────┘      └──────────────┘ Velocity└────────────┘
+
+Example: Catalytic reactor
+  • Reactants flow through catalyst bed
+  • Surface reactions produce heat
+  • Temperature affects reaction rate
+  • Concentration gradients drive diffusion
+
+
+ATOMISTIC-CONTINUUM MULTISCALE
+-------------------------------
+
+Scale Bridging: MD ↔ Continuum
+────────────────────────────────
+
+┌──────────────────────────────────────────────────────────────┐
+│                    Full Domain                                │
+├──────────────────────────────────────────────────────────────┤
+│                                                               │
+│  ┌────────────┐              ┌──────────────────────┐        │
+│  │ Atomistic  │              │   Continuum (FEM)   │        │
+│  │  Region    │◄─Handshake──►│                      │        │
+│  │            │              │                      │        │
+│  │  JAX-MD    │              │  σ = C:ε             │        │
+│  │  Explicit  │              │  Constitutive law    │        │
+│  │  atoms     │              │  from MD             │        │
+│  └────────────┘              └──────────────────────┘        │
+│       ↑                               ↑                       │
+│       │                               │                       │
+│       └───────── Coupling ────────────┘                       │
+│                                                               │
+│  Information flow:                                           │
+│    MD → Continuum: Stress tensor, material properties       │
+│    Continuum → MD: Boundary conditions, far-field loading   │
+│                                                               │
+└──────────────────────────────────────────────────────────────┘
+
+Handshake Region:
+  • Overlapping zone (width ~10 atomic spacing)
+  • Smooth transition via weight function w(x)
+  • Force = w(x)·F_MD + (1-w(x))·F_continuum
+
+
+PARTICLE-FLUID COUPLING (DEM-CFD)
+----------------------------------
+
+Discrete Particles           Continuous Fluid
+┌──────────────────┐        ┌────────────────────┐
+│ Newton's Law:    │◄──────►│ Navier-Stokes +    │
+│ m·dv/dt = F      │ Drag   │ Particle sources   │
+│                  │  &     │                    │
+│ Position x_i     │ Void   │ Velocity u         │
+│ Velocity v_i     │ Frac   │ Pressure p         │
+└──────────────────┘        └────────────────────┘
+
+Two-way coupling:
+  1. Fluid → Particles: Drag force F_d = (π/8)·ρ_f·C_d·d²·|u-v|·(u-v)
+  2. Particles → Fluid: Void fraction α = 1 - V_particles/V_cell
+                       Momentum sink in NS equations
+
+Example: Fluidized bed
+  • Upward fluid flow
+  • Particles suspended by drag
+  • Complex particle-particle collisions (DEM)
+  • Fluid channeling between particles
+
+
+PINN-BASED MULTI-PHYSICS
+-------------------------
+
+All physics encoded in single neural network
+─────────────────────────────────────────────
+
+┌───────────────────────────────────────────────────────────┐
+│              Shared Neural Network                         │
+│                                                            │
+│  Input: (x, y, z, t)                                      │
+│    ↓                                                       │
+│  Shared Layers (128 → 128 → 128)                          │
+│    ├──────────┬──────────┬──────────┬──────────┐         │
+│    ↓          ↓          ↓          ↓          ↓         │
+│  Output:     u         v         p         T    (...)    │
+│          Velocity  Velocity  Pressure  Temp              │
+└───────────────────────────────────────────────────────────┘
+
+Loss Function:
+  L = L_NS + L_heat + L_coupling + L_BC + L_IC
+
+  L_NS:      Navier-Stokes residual
+  L_heat:    Heat equation residual
+  L_coupling: Coupling terms (buoyancy, temp-dependent viscosity)
+  L_BC:      Boundary conditions
+  L_IC:      Initial conditions
+
+Advantages:
+  ✓ No interface tracking
+  ✓ Automatic differentiation for all couplings
+  ✓ Unified framework
+
+Challenges:
+  ✗ Loss balancing (adaptive weights needed)
+  ✗ Stiff coupling terms
+
+
+DATA ASSIMILATION COUPLING
+---------------------------
+
+Physics Model ↔ Observations
+─────────────────────────────
+
+┌──────────────────┐         ┌────────────────┐
+│ Physics Model    │         │ Observations   │
+│ (JAX-MD/CFD)     │◄───────►│ (Sparse)       │
+│                  │ 4D-Var  │                │
+│ State evolution  │         │ y = H(x) + ε   │
+└──────────────────┘         └────────────────┘
+
+Cost Function:
+  J(x₀) = ||x₀ - x_b||²_B + ||y - H(x)||²_R + ||M(x) - observations||²
+
+  x₀: Initial state
+  x_b: Background (prior)
+  B: Background error covariance
+  R: Observation error covariance
+  M: Physics model (forward operator)
+  H: Observation operator
+
+Optimization with JAX:
+  grad_J = jax.grad(J)
+  x₀_optimal = minimize(J, x₀_guess, grad_J)
+
+Example: Ocean modeling
+  • Physics: Navier-Stokes for ocean currents
+  • Observations: Satellite altimetry (sparse)
+  • Assimilation: Find optimal initial conditions
+  • Forecast: Run physics model forward
+
+
+COUPLING STABILITY CRITERIA
+----------------------------
+
+Explicit Coupling (Loose):
+  Pros: Simple, parallelizable
+  Cons: Conditional stability (small Δt)
+
+  Stable if: Δt < min(Δt_fluid, Δt_structure)
+
+Implicit Coupling (Strong):
+  Pros: Unconditionally stable (large Δt)
+  Cons: Expensive, requires subiterations
+
+  Newton iterations until:
+    ||Residual_fluid|| + ||Residual_structure|| < tolerance
+
+
+PRACTICAL TIPS
+--------------
+
+1. Start with one-way coupling, verify each physics separately
+2. Check conservation at interfaces (mass, momentum, energy)
+3. Use overlapping regions for smooth transitions
+4. Monitor coupling residuals (should decrease with iterations)
+5. Adaptive time stepping based on coupling convergence
+6. Profile: Identify computational bottleneck (often in one physics)

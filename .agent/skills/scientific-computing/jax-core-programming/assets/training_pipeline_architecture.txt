@@ -1,0 +1,252 @@
+JAX Training Pipeline Architecture
+===================================
+
+COMPLETE TRAINING PIPELINE
+---------------------------
+
+┌──────────────────────────────────────────────────────────────────────┐
+│                          DATA PIPELINE                                │
+├──────────────────────────────────────────────────────────────────────┤
+│                                                                        │
+│  Raw Data ──► Preprocessing ──► Augmentation ──► Batching ──► Cache │
+│     │              │                  │              │           │    │
+│   Files        Normalize          Random Crop      (B,H,W,C)   RAM   │
+│                Tokenize           Flip/Rotate                         │
+│                                                                        │
+└────────────────────────────────┬─────────────────────────────────────┘
+                                 │
+                                 ▼
+┌──────────────────────────────────────────────────────────────────────┐
+│                         MODEL (Flax NNX)                              │
+├──────────────────────────────────────────────────────────────────────┤
+│                                                                        │
+│  ┌─────────────┐    ┌─────────────┐    ┌─────────────┐              │
+│  │   Layer 1   │───►│   Layer 2   │───►│   Layer N   │              │
+│  │ (Linear+Act)│    │ (Attention) │    │  (Output)   │              │
+│  └─────────────┘    └─────────────┘    └─────────────┘              │
+│         │                   │                   │                     │
+│    [Dropout]           [LayerNorm]         [Dropout]                 │
+│                                                                        │
+│  Forward Pass: @nnx.jit decorated                                     │
+│  State: Pythonic (model.layer1.kernel)                               │
+│                                                                        │
+└────────────────────────────────┬─────────────────────────────────────┘
+                                 │
+                                 ▼
+┌──────────────────────────────────────────────────────────────────────┐
+│                        LOSS COMPUTATION                               │
+├──────────────────────────────────────────────────────────────────────┤
+│                                                                        │
+│  Predictions ──► Loss Function ──► Scalar Loss                       │
+│      │               │                    │                           │
+│  (B, C)      Cross-Entropy          L = Σ losses                     │
+│              MSE Loss                                                  │
+│              Custom Loss                                               │
+│                                                                        │
+└────────────────────────────────┬─────────────────────────────────────┘
+                                 │
+                                 ▼
+┌──────────────────────────────────────────────────────────────────────┐
+│                    GRADIENT COMPUTATION (JAX)                         │
+├──────────────────────────────────────────────────────────────────────┤
+│                                                                        │
+│  loss, grads = nnx.value_and_grad(loss_fn)(model)                    │
+│                                                                        │
+│  ∂L/∂θ for all parameters θ via automatic differentiation            │
+│                                                                        │
+│  Reverse-mode AD: O(1) cost relative to forward pass                 │
+│                                                                        │
+└────────────────────────────────┬─────────────────────────────────────┘
+                                 │
+                                 ▼
+┌──────────────────────────────────────────────────────────────────────┐
+│                   OPTIMIZER UPDATE (Optax)                            │
+├──────────────────────────────────────────────────────────────────────┤
+│                                                                        │
+│  ┌────────────────────────────────────────────────────┐              │
+│  │ 1. Gradient Clipping                                │              │
+│  │    clip_by_global_norm(grads, max_norm=1.0)       │              │
+│  └──────────────────────┬─────────────────────────────┘              │
+│                         ▼                                              │
+│  ┌────────────────────────────────────────────────────┐              │
+│  │ 2. Optimizer Statistics                             │              │
+│  │    AdamW: moving averages (momentum, RMSprop)      │              │
+│  └──────────────────────┬─────────────────────────────┘              │
+│                         ▼                                              │
+│  ┌────────────────────────────────────────────────────┐              │
+│  │ 3. Weight Decay                                     │              │
+│  │    params = params * (1 - wd * lr)                 │              │
+│  └──────────────────────┬─────────────────────────────┘              │
+│                         ▼                                              │
+│  ┌────────────────────────────────────────────────────┐              │
+│  │ 4. Learning Rate Schedule                           │              │
+│  │    lr(t) = warmup → cosine_decay                   │              │
+│  └──────────────────────┬─────────────────────────────┘              │
+│                         ▼                                              │
+│  ┌────────────────────────────────────────────────────┐              │
+│  │ 5. Parameter Update                                 │              │
+│  │    params = params - lr * processed_grads          │              │
+│  └────────────────────────────────────────────────────┘              │
+│                                                                        │
+└────────────────────────────────┬─────────────────────────────────────┘
+                                 │
+                                 ▼
+┌──────────────────────────────────────────────────────────────────────┐
+│                  CHECKPOINTING (Orbax)                                │
+├──────────────────────────────────────────────────────────────────────┤
+│                                                                        │
+│  Every N steps:                                                       │
+│    ┌──────────────────────────────────────────────┐                  │
+│    │ Async Checkpointer (non-blocking)            │                  │
+│    │   ├─ Model state (parameters)                │                  │
+│    │   ├─ Optimizer state (momentum, etc)         │                  │
+│    │   ├─ Training step counter                   │                  │
+│    │   └─ Metrics (loss, accuracy)                │                  │
+│    └──────────────────────────────────────────────┘                  │
+│                                                                        │
+│  CheckpointManager: Keep best 3, cleanup old                         │
+│                                                                        │
+└──────────────────────────────────────────────────────────────────────┘
+
+
+MULTI-DEVICE ARCHITECTURE
+-------------------------
+
+                    ┌─────────────────────────┐
+                    │    Coordinator (Host)    │
+                    │  - Data distribution     │
+                    │  - Gradient aggregation  │
+                    └────────────┬─────────────┘
+                                 │
+                    ┌────────────┴────────────┐
+                    │                         │
+         ┌──────────▼──────────┐   ┌─────────▼─────────┐
+         │    GPU 0 (Replica 0) │   │  GPU 1 (Replica 1)│
+         │  ┌────────────────┐  │   │ ┌────────────────┐│
+         │  │ Model Params   │  │   │ │ Model Params   ││
+         │  │ (replicated)   │  │   │ │ (replicated)   ││
+         │  └────────────────┘  │   │ └────────────────┘│
+         │  ┌────────────────┐  │   │ ┌────────────────┐│
+         │  │ Data Shard 0   │  │   │ │ Data Shard 1   ││
+         │  │ (local batch)  │  │   │ │ (local batch)  ││
+         │  └────────────────┘  │   │ └────────────────┘│
+         └──────────┬───────────┘   └─────────┬─────────┘
+                    │                         │
+                    │   All-Reduce Gradients │
+                    └────────────┬────────────┘
+                                 │
+                    ┌────────────▼────────────┐
+                    │  Synchronized Gradients  │
+                    │  Average across devices  │
+                    └─────────────────────────┘
+
+
+2D PARALLELISM (Data + Model Sharding)
+---------------------------------------
+
+                Model Dimension (columns)
+                      ┌────┬────┐
+                      │ W0 │ W1 │
+              ┌───────┼────┼────┤
+    Data      │ GPU0  │ ■  │ ■  │  Data Shard 0 + Model Shard 0
+    Dimension │ GPU1  │ ■  │ ■  │  Data Shard 0 + Model Shard 1
+    (rows)    ├───────┼────┼────┤
+              │ GPU2  │ ■  │ ■  │  Data Shard 1 + Model Shard 0
+              │ GPU3  │ ■  │ ■  │  Data Shard 1 + Model Shard 1
+              └───────┴────┴────┘
+
+Each GPU has:
+  - 1/2 of data (data parallelism)
+  - 1/2 of model weights (model parallelism)
+
+Communication:
+  - All-gather along model dimension
+  - All-reduce along data dimension
+
+
+TRAINING LOOP FLOW
+------------------
+
+START
+  │
+  ├─► Initialize model (Flax NNX)
+  │
+  ├─► Initialize optimizer (Optax)
+  │
+  ├─► Setup checkpointer (Orbax)
+  │
+  └─► for epoch in epochs:
+        │
+        ├─► for batch in dataloader:
+        │     │
+        │     ├─► Forward pass (JIT compiled)
+        │     │     logits = model(batch['x'])
+        │     │
+        │     ├─► Compute loss
+        │     │     loss = loss_fn(logits, batch['y'])
+        │     │
+        │     ├─► Backward pass (auto-diff)
+        │     │     grads = grad(loss_fn)(params)
+        │     │
+        │     ├─► Optimizer update
+        │     │     params = optimizer.update(grads)
+        │     │
+        │     ├─► Log metrics
+        │     │     if step % 100 == 0: log(loss)
+        │     │
+        │     └─► Checkpoint
+        │           if step % 1000 == 0: save(params)
+        │
+        └─► Evaluate on validation set
+              accuracy = eval_model(val_data)
+
+END
+
+
+MEMORY OPTIMIZATION STACK
+--------------------------
+
+┌─────────────────────────────────────────┐
+│         Standard Training               │  Memory: 100%
+│  - Store all activations                │  Speed:  100%
+│  - Full precision (FP32)                │
+└─────────────────────────────────────────┘
+
+↓ Apply Rematerialization
+
+┌─────────────────────────────────────────┐
+│    Gradient Checkpointing (remat)       │  Memory: 40%
+│  - Recompute some activations           │  Speed:  70%
+│  - 2-5x memory reduction                │
+└─────────────────────────────────────────┘
+
+↓ Apply Mixed Precision
+
+┌─────────────────────────────────────────┐
+│       Mixed Precision (BF16)            │  Memory: 20%
+│  - BF16 for activations/gradients       │  Speed:  140%
+│  - FP32 for parameters                  │  (faster!)
+└─────────────────────────────────────────┘
+
+↓ Apply Sharding
+
+┌─────────────────────────────────────────┐
+│      Multi-Device Sharding              │  Memory: 20%/N
+│  - Split model across N devices         │  Speed:  140%*N
+│  - Larger effective batch size          │
+└─────────────────────────────────────────┘
+
+
+PERFORMANCE OPTIMIZATION CHECKLIST
+-----------------------------------
+
+✓ Use @jax.jit for all hot paths
+✓ Use vmap for batch processing
+✓ Enable XLA compilation cache
+✓ Use mixed precision (BF16/FP16)
+✓ Apply gradient checkpointing for large models
+✓ Shard across multiple devices when available
+✓ Use async checkpointing (non-blocking)
+✓ Profile before optimizing (jax.profiler)
+✓ Monitor memory usage
+✓ Check for recompilation issues
