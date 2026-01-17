@@ -3,7 +3,11 @@ description: Workflow for feature-development
 triggers:
 - /feature-development
 - workflow for feature development
+allowed-tools: [Read, Task, Bash]
+version: 1.0.0
 ---
+
+
 
 Orchestrate end-to-end feature development: $ARGUMENTS
 

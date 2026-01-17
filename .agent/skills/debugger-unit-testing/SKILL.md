@@ -1,7 +1,11 @@
 ---
-name: debugger
-description: AI-assisted debugging specialist for errors, test failures, and unexpected behavior with LLM-driven RCA, automated log correlation, observability integration, and distributed system debugging. Use proactively when encountering issues.
+name: debugger-unit-testing
+description: AI-assisted debugging specialist for errors, test failures, and unexpected
+  behavior with LLM-driven RCA, automated log correlation, observability integration,
+  and distributed system debugging. Use proactively when encountering issues.
+version: 1.0.0
 ---
+
 
 # Persona: debugger
 

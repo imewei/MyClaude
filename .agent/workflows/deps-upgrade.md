@@ -1,26 +1,24 @@
 ---
-description: Workflow for deps-upgrade
+description: Safe dependency upgrade orchestration with breaking change management
+  and security-first prioritization
 triggers:
 - /deps-upgrade
 - workflow for deps upgrade
----
-
----
-version: "1.0.7"
-description: Safe dependency upgrade orchestration with breaking change management and security-first prioritization
-argument-hint: [--security-only] [--mode quick|standard|deep] [--strategy incremental|batch]
+version: 1.0.7
+argument-hint: '[--security-only] [--mode quick|standard|deep] [--strategy incremental|batch]'
 category: framework-migration
 execution_time:
-  quick: "15-25m: Security patches only"
-  standard: "30-60m: Minor/patch upgrades"
-  deep: "1-3h: Major versions + automation"
+  quick: '15-25m: Security patches only'
+  standard: '30-60m: Minor/patch upgrades'
+  deep: '1-3h: Major versions + automation'
 color: green
-allowed-tools: Bash, Read, Write, Edit, Glob, Grep, Task
+allowed-tools: [Bash, Edit, Read, Task]
 external_docs:
-  - dependency-strategies-guide.md
-  - testing-strategies.md
-  - rollback-procedures.md
+- dependency-strategies-guide.md
+- testing-strategies.md
+- rollback-procedures.md
 ---
+
 
 # Dependency Upgrade
 

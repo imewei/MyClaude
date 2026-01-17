@@ -1,19 +1,20 @@
 ---
-description: Workflow for update-docs
+description: Update Sphinx docs, README, API documentation with AST-based code analysis
 triggers:
 - /update-docs
 - workflow for update docs
----
-
----
-version: "1.0.7"
+version: 1.0.7
 category: code-documentation
 command: /update-docs
-description: Update Sphinx docs, README, API documentation with AST-based code analysis
-argument-hint: [--full] [--sphinx] [--readme] [--api] [--format=<type>]
+argument-hint: '[--full] [--sphinx] [--readme] [--api] [--format=<type>]'
 color: blue
-execution_modes: {quick: "15-20min", standard: "30-45min", comprehensive: "60-90min"}
+execution_modes:
+  quick: 15-20min
+  standard: 30-45min
+  comprehensive: 60-90min
+allowed-tools: [Read, Task, Bash]
 ---
+
 
 # Documentation Update
 

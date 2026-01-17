@@ -1,6 +1,8 @@
+---
 name: async-python-patterns
 version: "1.0.7"
 description: Master Python asyncio, concurrent programming, and async/await patterns for high-performance non-blocking applications. Use when writing async/await code, implementing FastAPI or aiohttp applications, building WebSocket servers, creating async context managers or generators, handling async database operations with asyncpg, implementing async HTTP clients with aiohttp, writing async tests with pytest-asyncio, or converting synchronous code to asynchronous patterns.
+---
 
 # Async Python Patterns
 

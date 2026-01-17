@@ -1,6 +1,8 @@
+---
 name: nodejs-backend-patterns
 version: "1.0.7"
 description: Build scalable Node.js backends with Express/Fastify/NestJS. Implement middleware, authentication, database integration, and API design. Use when creating REST APIs, microservices, or backend services.
+---
 
 # Node.js Backend Patterns
 

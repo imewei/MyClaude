@@ -4,7 +4,11 @@ description: Orchestrate complete onboarding for new team members with customize
 triggers:
 - /onboard
 - orchestrate complete onboarding for
+allowed-tools: [Read, Task, Bash]
+version: 1.0.0
 ---
+
+
 
 ## User Input
 Input arguments pattern: `<role> [--level=junior|mid|senior] [--location=remote|hybrid|onsite]`

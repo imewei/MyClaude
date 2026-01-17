@@ -1,24 +1,22 @@
 ---
-description: Workflow for commit
+description: Intelligent git commit with automated analysis, quality validation, and
+  atomic commit enforcement
 triggers:
 - /commit
 - workflow for commit
----
-
----
-version: "1.0.7"
-description: Intelligent git commit with automated analysis, quality validation, and atomic commit enforcement
+version: 1.0.7
 allowed-tools: Bash(git:*), Read, Grep
-argument-hint: [commit-message] [--quick] [--split] [--amend] [--no-verify]
+argument-hint: '[commit-message] [--quick] [--split] [--amend] [--no-verify]'
 color: green
 agents:
   primary:
-    - code-reviewer
+  - code-reviewer
   conditional:
-    - agent: security-auditor
-      trigger: files "*.env|secrets|credentials|keys"
+  - agent: security-auditor
+    trigger: files "*.env|secrets|credentials|keys"
   orchestrated: false
 ---
+
 
 # Smart Commit Command
 

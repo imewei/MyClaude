@@ -3,7 +3,11 @@ description: Generate GitHub Actions CI/CD workflows for Julia packages
 triggers:
 - /julia-package-ci
 - generate github actions ci/cd
+allowed-tools: [Read, Task, Bash]
+version: 1.0.0
 ---
+
+
 
 # Generate CI/CD Workflows for Julia Packages
 

@@ -3,7 +3,11 @@ description: Create production-ready LangChain agents with LangGraph, RAG, and o
 triggers:
 - /langchain-agent
 - create production ready langchain agents
+allowed-tools: [Read, Task, Bash]
+version: 1.0.0
 ---
+
+
 
 ## User Input
 Input arguments pattern: `<agent_description>`

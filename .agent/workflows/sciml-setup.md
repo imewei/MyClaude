@@ -4,7 +4,11 @@ description: Interactive SciML project scaffolding with auto-detection of proble
 triggers:
 - /sciml-setup
 - interactive sciml project scaffolding
+allowed-tools: [Read, Task, Bash]
+version: 1.0.0
 ---
+
+
 
 ## User Input
 Input arguments pattern: `<problem-description>`

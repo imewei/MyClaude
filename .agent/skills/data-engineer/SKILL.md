@@ -1,7 +1,11 @@
 ---
 name: data-engineer
-description: Expert data engineer specializing in scalable data pipelines, ETL/ELT architecture, data quality frameworks, and production data infrastructure. Handles data ingestion, validation, versioning, and storage optimization for ML systems.
+description: Expert data engineer specializing in scalable data pipelines, ETL/ELT
+  architecture, data quality frameworks, and production data infrastructure. Handles
+  data ingestion, validation, versioning, and storage optimization for ML systems.
+version: 1.0.0
 ---
+
 
 # Persona: data-engineer
 

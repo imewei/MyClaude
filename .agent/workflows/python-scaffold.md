@@ -4,7 +4,11 @@ description: Scaffold production-ready Python projects with modern tooling acros
 triggers:
 - /python-scaffold
 - scaffold production ready python projects
+allowed-tools: [Read, Task, Bash]
+version: 1.0.0
 ---
+
+
 
 # Python Project Scaffolding
 

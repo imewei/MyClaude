@@ -4,7 +4,11 @@ description: Bootstrap new Julia package with proper structure, testing, documen
 triggers:
 - /julia-scaffold
 - bootstrap new julia package
+allowed-tools: [Read, Task, Bash]
+version: 1.0.0
 ---
+
+
 
 ## User Input
 Input arguments pattern: `<PackageName>`

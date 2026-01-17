@@ -3,7 +3,11 @@ description: Intelligent debugging with multi-mode execution and automated RCA
 triggers:
 - /smart-debug
 - intelligent debugging with multi mode
+allowed-tools: [Read, Task, Bash]
+version: 1.0.0
 ---
+
+
 
 ## User Input
 Input arguments pattern: `<error-description> [--quick-triage|--standard-debug|--deep-rca] [--production]`

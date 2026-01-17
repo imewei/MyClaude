@@ -1,27 +1,26 @@
 ---
-description: Workflow for fix-commit-errors
+description: Automatically analyzes GitHub Actions failures, identifies root causes,
+  applies intelligent solutions, validates, and reruns workflows with adaptive learning.
 triggers:
 - /fix-commit-errors
 - workflow for fix commit errors
----
-
----
-version: "1.0.7"
-category: "cicd-automation"
-command: "/fix-commit-errors"
+version: 1.0.7
+category: cicd-automation
+command: /fix-commit-errors
 execution-modes:
-  quick-fix: "5-10m: Discovery + Fix"
-  standard: "15-30m: Full resolution + learning"
-  comprehensive: "30-60m: Deep analysis + correlation"
+  quick-fix: '5-10m: Discovery + Fix'
+  standard: '15-30m: Full resolution + learning'
+  comprehensive: '30-60m: Deep analysis + correlation'
 documentation:
-  multi-agent-system: "../docs/cicd-automation/multi-agent-error-analysis.md"
-  error-patterns: "../docs/cicd-automation/error-pattern-library.md"
-  fix-strategies: "../docs/cicd-automation/fix-strategies.md"
-description: Automatically analyzes GitHub Actions failures, identifies root causes, applies intelligent solutions, validates, and reruns workflows with adaptive learning.
-allowed-tools: Bash(gh:*), Bash(git:*), Bash(npm:*), Bash(yarn:*), Bash(pip:*), Bash(cargo:*), Bash(go:*)
-argument-hint: [workflow-id|commit-sha|pr-number] [--auto-fix] [--learn] [--mode=quick-fix|standard|comprehensive]
+  multi-agent-system: ../docs/cicd-automation/multi-agent-error-analysis.md
+  error-patterns: ../docs/cicd-automation/error-pattern-library.md
+  fix-strategies: ../docs/cicd-automation/fix-strategies.md
+allowed-tools: Bash(gh:*), Bash(git:*), Bash(npm:*), Bash(yarn:*), Bash(pip:*), Bash(cargo:*),
+  Bash(go:*)
+argument-hint: '[workflow-id|commit-sha|pr-number] [--auto-fix] [--learn] [--mode=quick-fix|standard|comprehensive]'
 color: red
 ---
+
 
 # Intelligent GitHub Actions Failure Resolution
 

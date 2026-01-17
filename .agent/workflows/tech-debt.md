@@ -3,7 +3,11 @@ description: Workflow for tech-debt
 triggers:
 - /tech-debt
 - workflow for tech debt
+allowed-tools: [Bash, Read, Task]
+version: 1.0.0
 ---
+
+
 
 # Technical Debt Analysis
 

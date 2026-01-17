@@ -1,5 +1,5 @@
 ---
-name: Git & PR Patterns
+name: "git-pr-patterns & PR Patterns"
 version: "1.0.7"
 maturity: "5-Expert"
 specialization: Version Control

@@ -4,7 +4,11 @@ description: Systematic agent improvement through performance analysis and promp
 triggers:
 - /improve-agent
 - systematic agent improvement through
+allowed-tools: [Read, Task, Bash]
+version: 1.0.0
 ---
+
+
 
 ## User Input
 Input arguments pattern: `<agent-name> [--mode=check|phase|optimize] [--phase=1|2|3|4] [--focus=AREA]`

@@ -1,17 +1,15 @@
 ---
-description: Workflow for git-workflow
+description: Complete Git workflow orchestration from code review through PR creation
 triggers:
 - /git-workflow
 - workflow for git workflow
----
-
----
-version: "1.0.7"
-description: Complete Git workflow orchestration from code review through PR creation
+version: 1.0.7
 allowed-tools: Bash(git:*), Read, Grep, Task
-argument-hint: [target-branch] [--skip-tests] [--draft-pr] [--no-push] [--squash] [--conventional]
+argument-hint: '[target-branch] [--skip-tests] [--draft-pr] [--no-push] [--squash]
+  [--conventional]'
 color: cyan
 ---
+
 
 # Git Workflow Orchestration
 

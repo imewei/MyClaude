@@ -1,21 +1,19 @@
 ---
-description: Workflow for c-project
+description: Scaffold production-ready C projects with Makefile/CMake and memory safety
+  tools
 triggers:
 - /c-project
 - workflow for c project
----
-
----
-version: "1.0.7"
+version: 1.0.7
 command: /c-project
-description: Scaffold production-ready C projects with Makefile/CMake and memory safety tools
-argument-hint: [project-type] [project-name]
+argument-hint: '[project-type] [project-name]'
 execution_modes:
-  quick: "1-2 hours"
-  standard: "4-6 hours"
-  enterprise: "1-2 days"
+  quick: 1-2 hours
+  standard: 4-6 hours
+  enterprise: 1-2 days
 allowed-tools: Bash, Write, Read, Edit
 ---
+
 
 # C Project Scaffolding
 

@@ -3,7 +3,11 @@ description: Workflow for deps-audit
 triggers:
 - /deps-audit
 - workflow for deps audit
+allowed-tools: [Read, Task, Bash]
+version: 1.0.0
 ---
+
+
 
 # Dependency Audit
 

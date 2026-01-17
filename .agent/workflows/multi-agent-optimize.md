@@ -4,7 +4,11 @@ description: Coordinate specialized agents for comprehensive code optimization a
 triggers:
 - /multi-agent-optimize
 - coordinate specialized agents for
+allowed-tools: [Read, Task, Bash]
+version: 1.0.0
 ---
+
+
 
 ## User Input
 Input arguments pattern: `<target-path> [--mode=scan|analyze|apply] [--agents=AGENTS] [--focus=AREA] [--parallel]`

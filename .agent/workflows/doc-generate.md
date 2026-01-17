@@ -1,19 +1,20 @@
 ---
-description: Workflow for doc-generate
+description: Generate comprehensive documentation from code with AI-powered analysis
 triggers:
 - /doc-generate
 - workflow for doc generate
----
-
----
-version: "1.0.7"
+version: 1.0.7
 category: code-documentation
 command: /doc-generate
-description: Generate comprehensive documentation from code with AI-powered analysis
-argument-hint: [--api] [--readme] [--sphinx] [--full]
+argument-hint: '[--api] [--readme] [--sphinx] [--full]'
 color: blue
-execution_modes: {quick: "10-15min", standard: "20-30min", comprehensive: "40-60min"}
+execution_modes:
+  quick: 10-15min
+  standard: 20-30min
+  comprehensive: 40-60min
+allowed-tools: [Read, Task, Bash]
 ---
+
 
 # Documentation Generation
 

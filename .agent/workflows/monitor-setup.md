@@ -3,7 +3,11 @@ description: Set up Prometheus, Grafana, and distributed tracing observability s
 triggers:
 - /monitor-setup
 - set up prometheus, grafana,
+allowed-tools: [Bash, Write, Read, Task]
+version: 1.0.0
 ---
+
+
 
 # Monitoring and Observability Setup
 

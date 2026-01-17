@@ -1,6 +1,8 @@
+---
 name: typescript-project-scaffolding
 version: "1.0.7"
 description: Set up production-ready TypeScript projects with modern tooling. Use when initializing projects, configuring tsconfig.json, setting up Vite/ESLint/Vitest, creating Next.js/React apps, or scaffolding Node.js APIs and CLI tools.
+---
 
 # TypeScript Project Scaffolding
 

@@ -4,7 +4,11 @@ description: Build production-ready AI assistants with NLU, conversation managem
 triggers:
 - /ai-assistant
 - build production ready ai assistants
+allowed-tools: [Read, Task, Bash]
+version: 1.0.0
 ---
+
+
 
 ## User Input
 Input arguments pattern: `<assistant_description>`

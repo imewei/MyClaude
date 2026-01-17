@@ -4,7 +4,11 @@ description: Advanced structured reasoning engine with step-by-step thought proc
 triggers:
 - /ultra-think
 - advanced structured reasoning engine
+allowed-tools: [Read, Task, Bash]
+version: 1.0.0
 ---
+
+
 
 ## User Input
 Input arguments pattern: `<question-or-problem> [--mode=quick|standard] [--framework=...] [--depth=shallow|deep|ultradeep]`

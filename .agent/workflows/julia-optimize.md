@@ -4,7 +4,11 @@ description: Profile Julia code and provide optimization recommendations through
 triggers:
 - /julia-optimize
 - profile julia code and
+allowed-tools: [Read, Task, Bash]
+version: 1.0.0
 ---
+
+
 
 ## User Input
 Input arguments pattern: `<file_path>`

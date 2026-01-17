@@ -4,7 +4,11 @@ description: Analyze and modernize scientific computing codebases while preservi
 triggers:
 - /adopt-code
 - analyze and modernize scientific
+allowed-tools: [Read, Task, Bash]
+version: 1.0.0
 ---
+
+
 
 ## User Input
 Input arguments pattern: `<path-to-code> [target-framework]`

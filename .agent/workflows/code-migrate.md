@@ -4,7 +4,11 @@ description: Orchestrate systematic code migration between frameworks with test-
 triggers:
 - /code-migrate
 - orchestrate systematic code migration
+allowed-tools: [Read, Task, Bash]
+version: 1.0.0
 ---
+
+
 
 ## User Input
 Input arguments pattern: `<source-path> [--target <framework>] [--strategy <pattern>] [--mode quick|standard|deep]`

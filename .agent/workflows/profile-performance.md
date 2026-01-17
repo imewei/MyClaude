@@ -3,7 +3,11 @@ description: Comprehensive performance profiling with perf, flamegraph, and valg
 triggers:
 - /profile-performance
 - comprehensive performance profiling with
+allowed-tools: [Read, Task, Bash]
+version: 1.0.0
 ---
+
+
 
 ## User Input
 Input arguments pattern: `['target-binary-or-code']`

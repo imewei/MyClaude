@@ -1,19 +1,21 @@
 ---
-description: Workflow for double-check
+description: Multi-dimensional validation with automated testing, security scanning,
+  code review
 triggers:
 - /double-check
 - workflow for double check
----
-
----
-version: "1.0.7"
+version: 1.0.7
 command: /double-check
-description: Multi-dimensional validation with automated testing, security scanning, code review
-argument-hint: [work] [--deep] [--security] [--performance]
-execution_modes: {quick: "5-15min", standard: "30-60min", enterprise: "2-4h"}
+argument-hint: '[work] [--deep] [--security] [--performance]'
+execution_modes:
+  quick: 5-15min
+  standard: 30-60min
+  enterprise: 2-4h
 workflow_type: sequential
 color: orange
+allowed-tools: [Read, Task, Bash]
 ---
+
 
 # Comprehensive Validation
 

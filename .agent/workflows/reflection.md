@@ -1,35 +1,31 @@
 ---
-description: Workflow for reflection
+description: Advanced reflection engine for AI reasoning, session analysis, and research
+  optimization
 triggers:
 - /reflection
 - workflow for reflection
----
-
----
-description: Advanced reflection engine for AI reasoning, session analysis, and research optimization
-version: "1.0.7"
+version: 1.0.7
 allowed-tools: Bash(find:*), Bash(grep:*), Bash(git:*), Read, Grep, Task
-argument-hint: [session|code|research|workflow] [--mode=quick-check|standard] [--depth=shallow|deep]
+argument-hint: '[session|code|research|workflow] [--mode=quick-check|standard] [--depth=shallow|deep]'
 color: purple
-
 execution-modes:
   quick-check:
-    description: "Fast health assessment"
-    time: "2-5 minutes"
+    description: Fast health assessment
+    time: 2-5 minutes
   standard:
-    description: "Comprehensive reflection"
-    time: "15-45 minutes"
-
+    description: Comprehensive reflection
+    time: 15-45 minutes
 agents:
   primary:
-    - research-intelligence
+  - research-intelligence
   conditional:
-    - agent: systems-architect
-      trigger: pattern "architecture|design|system" OR argument "code"
-    - agent: code-quality
-      trigger: pattern "quality|test|lint" OR argument "workflow"
+  - agent: systems-architect
+    trigger: pattern "architecture|design|system" OR argument "code"
+  - agent: code-quality
+    trigger: pattern "quality|test|lint" OR argument "workflow"
   orchestrated: true
 ---
+
 
 # Advanced Reflection Engine
 

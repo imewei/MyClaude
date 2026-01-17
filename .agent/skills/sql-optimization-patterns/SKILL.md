@@ -1,6 +1,8 @@
+---
 name: sql-optimization-patterns
 version: "1.0.7"
 description: Master SQL optimization with EXPLAIN analysis, indexing strategies (B-Tree, GIN, partial, covering), N+1 elimination, pagination (cursor-based), aggregate optimization, materialized views, and partitioning. Use when debugging slow queries, designing schemas, or reducing database load.
+---
 
 # SQL Optimization Patterns
 

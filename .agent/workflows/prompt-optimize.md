@@ -4,7 +4,11 @@ description: Optimize prompts for better LLM performance through CoT, few-shot l
 triggers:
 - /prompt-optimize
 - optimize prompts for better
+allowed-tools: [Read, Task, Bash]
+version: 1.0.0
 ---
+
+
 
 ## User Input
 Input arguments pattern: `<prompt_to_optimize>`

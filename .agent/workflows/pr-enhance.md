@@ -4,7 +4,11 @@ description: Create high-quality pull requests with comprehensive descriptions, 
 triggers:
 - /pr-enhance
 - create high quality pull requests
+allowed-tools: [Read, Task, Bash]
+version: 1.0.0
 ---
+
+
 
 ## User Input
 Input arguments pattern: `['--mode=basic|enhanced|enterprise']`

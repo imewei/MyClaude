@@ -1,14 +1,10 @@
 ---
-description: Workflow for fix-imports
+description: Systematically fix broken imports across the codebase with session continuity
 triggers:
 - /fix-imports
 - workflow for fix imports
----
-
----
-version: "1.0.7"
-description: Systematically fix broken imports across the codebase with session continuity
-argument-hint: [path-or-pattern] [resume|status|new]
+version: 1.0.7
+argument-hint: '[path-or-pattern] [resume|status|new]'
 category: codebase-cleanup
 purpose: Resolve broken imports with intelligent strategies and session management
 execution_time:
@@ -18,20 +14,21 @@ execution_time:
 color: purple
 allowed-tools: Bash, Read, Write, Edit, Glob, Grep, Task
 external_docs:
-  - import-resolution-strategies.md
-  - session-management-guide.md
-  - refactoring-patterns.md
+- import-resolution-strategies.md
+- session-management-guide.md
+- refactoring-patterns.md
 agents:
   primary:
-    - code-quality
-    - fullstack-developer
+  - code-quality
+  - fullstack-developer
   conditional:
-    - agent: legacy-modernizer
-      trigger: pattern "migration|refactor|modernize"
-    - agent: systems-architect
-      trigger: pattern "architecture|barrel.*export|module.*system"
+  - agent: legacy-modernizer
+    trigger: pattern "migration|refactor|modernize"
+  - agent: systems-architect
+    trigger: pattern "architecture|barrel.*export|module.*system"
   orchestrated: false
 ---
+
 
 # Fix Broken Imports
 

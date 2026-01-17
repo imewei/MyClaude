@@ -4,7 +4,11 @@ description: Comprehensive legacy system modernization using Strangler Fig patte
 triggers:
 - /legacy-modernize
 - comprehensive legacy system modernization
+allowed-tools: [Bash, Read, Write, Edit, Task, Glob, Grep]
+version: 1.0.0
 ---
+
+
 
 ## User Input
 Input arguments pattern: `<legacy-system-path> [--strategy strangler-fig|big-bang|branch-by-abstraction] [--mode quick|standard|deep]`

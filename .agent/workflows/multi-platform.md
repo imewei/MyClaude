@@ -4,7 +4,11 @@ description: Build and deploy features across web, mobile, and desktop platforms
 triggers:
 - /multi-platform
 - build and deploy features
+allowed-tools: [Read, Task, Bash]
+version: 1.0.0
 ---
+
+
 
 # Multi-Platform Feature Development
 

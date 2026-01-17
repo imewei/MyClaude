@@ -4,7 +4,11 @@ description: Design and implement production-ready ML pipelines with multi-agent
 triggers:
 - /ml-pipeline
 - design and implement production ready
+allowed-tools: [Bash, Read, Write, Task]
+version: 1.0.0
 ---
+
+
 
 # ML Pipeline
 

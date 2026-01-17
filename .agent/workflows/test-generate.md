@@ -4,7 +4,11 @@ description: Generate comprehensive test suites with scientific computing suppor
 triggers:
 - /test-generate
 - generate comprehensive test suites
+allowed-tools: [Read, Task, Bash]
+version: 1.0.0
 ---
+
+
 
 ## User Input
 Input arguments pattern: `<source> [--coverage] [--property-based] [--benchmarks] [--scientific]`

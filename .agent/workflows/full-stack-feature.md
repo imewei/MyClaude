@@ -4,7 +4,11 @@ description: Orchestrate end-to-end full-stack feature development across fronte
 triggers:
 - /full-stack-feature
 - orchestrate end to end full stack feature
+allowed-tools: [Bash, Read, Write, Edit, Task, Glob, Grep]
+version: 1.0.0
 ---
+
+
 
 # Full-Stack Feature Development
 

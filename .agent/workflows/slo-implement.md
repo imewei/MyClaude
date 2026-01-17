@@ -3,7 +3,11 @@ description: Implement SLO/SLA monitoring, error budgets, and burn rate alerting
 triggers:
 - /slo-implement
 - implement slo/sla monitoring, error
+allowed-tools: [Read, Task, Bash]
+version: 1.0.0
 ---
+
+
 
 # SLO Implementation
 

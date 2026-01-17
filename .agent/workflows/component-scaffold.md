@@ -4,7 +4,11 @@ description: Orchestrate production-ready React/React Native component generatio
 triggers:
 - /component-scaffold
 - orchestrate production ready react/react native
+allowed-tools: [Write, Read, Task]
+version: 1.0.0
 ---
+
+
 
 # React/React Native Component Scaffolding
 

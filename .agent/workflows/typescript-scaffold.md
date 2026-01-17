@@ -3,7 +3,11 @@ description: Workflow for typescript-scaffold
 triggers:
 - /typescript-scaffold
 - workflow for typescript scaffold
+allowed-tools: [Read, Task, Bash]
+version: 1.0.0
 ---
+
+
 
 # TypeScript Project Scaffolding
 

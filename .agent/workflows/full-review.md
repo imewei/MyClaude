@@ -3,7 +3,11 @@ description: Workflow for full-review
 triggers:
 - /full-review
 - workflow for full review
+allowed-tools: [Read, Task, Bash]
+version: 1.0.0
 ---
+
+
 
 # Multi-Agent Code Review
 

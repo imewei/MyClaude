@@ -1,19 +1,21 @@
 ---
-description: Workflow for run-all-tests
+description: Iteratively run and fix all tests until zero failures with AI-driven
+  RCA
 triggers:
 - /run-all-tests
 - workflow for run all tests
----
-
----
-version: "1.0.7"
+version: 1.0.7
 command: /run-all-tests
-description: Iteratively run and fix all tests until zero failures with AI-driven RCA
-argument-hint: [test-path] [--fix] [--max-iterations=10] [--parallel] [--coverage]
-execution_modes: {quick: "30min-1h", standard: "2-4h", enterprise: "1-2d"}
+argument-hint: '[test-path] [--fix] [--max-iterations=10] [--parallel] [--coverage]'
+execution_modes:
+  quick: 30min-1h
+  standard: 2-4h
+  enterprise: 1-2d
 workflow_type: iterative
 color: blue
+allowed-tools: [Bash, Read, Edit, Task]
 ---
+
 
 # Iterative Test Execution & Auto-Fix
 

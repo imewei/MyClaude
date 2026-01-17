@@ -3,7 +3,11 @@ description: Detailed code explanation with visual aids and domain expertise
 triggers:
 - /code-explain
 - detailed code explanation with
+allowed-tools: [Read, Glob, Grep, Task]
+version: 1.0.0
 ---
+
+
 
 ## User Input
 Input arguments pattern: `<code-path-or-snippet>`

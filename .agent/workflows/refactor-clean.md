@@ -3,7 +3,11 @@ description: Workflow for refactor-clean
 triggers:
 - /refactor-clean
 - workflow for refactor clean
+allowed-tools: [Read, Task, Bash]
+version: 1.0.0
 ---
+
+
 
 # Refactor and Clean Code
 

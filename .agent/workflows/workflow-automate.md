@@ -3,7 +3,11 @@ description: Workflow for workflow-automate
 triggers:
 - /workflow-automate
 - workflow for workflow automate
+allowed-tools: [Write, Bash, Read, Task]
+version: 1.0.0
 ---
+
+
 
 # Workflow Automation
 

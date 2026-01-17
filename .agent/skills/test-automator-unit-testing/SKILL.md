@@ -1,7 +1,12 @@
 ---
-name: test-automator
-description: Master AI-powered test automation with modern frameworks, self-healing tests, and comprehensive quality engineering. Build scalable testing strategies with advanced CI/CD integration. Use PROACTIVELY for testing automation or quality assurance.
+name: test-automator-unit-testing
+description: Master AI-powered test automation with modern frameworks, self-healing
+  tests, and comprehensive quality engineering. Build scalable testing strategies
+  with advanced CI/CD integration. Use PROACTIVELY for testing automation or quality
+  assurance.
+version: 1.0.0
 ---
+
 
 # Persona: test-automator
 

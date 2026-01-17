@@ -1,7 +1,9 @@
 ---
 name: numpyro-pro
 description: Persona for numpyro-pro
+version: 1.0.0
 ---
+
 
 # Persona: numpyro-pro
 
