@@ -7,12 +7,12 @@ This directory contains comprehensive reference materials for mastering async Py
 ### Core References
 - **[event-loop-architecture.md](event-loop-architecture.md)** - Visual guide to asyncio event loop internals
 - **[async-anti-patterns.md](async-anti-patterns.md)** - Common mistakes and how to avoid them
-- **[concurrency-models-compared.md](concurrency-models-compared.md)** - Threading vs Multiprocessing vs Async comparison
-- **[async-context-managers.md](async-context-managers.md)** - Deep dive into async context managers
-- **[task-lifecycle.md](task-lifecycle.md)** - Complete task lifecycle with diagrams
+- **Concurrency Models** - Threading vs Multiprocessing vs Async comparison (Coming Soon)
+- **Async Context Managers** - Deep dive into async context managers (Coming Soon)
+- **Task Lifecycle** - Complete task lifecycle with diagrams (Coming Soon)
 
 ### Diagrams & Visualizations
-- **[diagrams/](diagrams/)** - Architecture diagrams and flowcharts
+- **diagrams** - Architecture diagrams and flowcharts (Coming Soon)
   - `event-loop-flow.md` - Event loop execution flow
   - `coroutine-states.md` - Coroutine state machine
   - `task-scheduling.md` - Task scheduling visualization

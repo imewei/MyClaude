@@ -628,5 +628,5 @@ async def test_no_race_conditions():
 ## Further Reading
 
 - [Event Loop Architecture](event-loop-architecture.md) - How async really works
-- [Task Lifecycle](task-lifecycle.md) - Understanding task states
-- [Concurrency Models Compared](concurrency-models-compared.md) - When to use async
+- Task Lifecycle (Coming Soon) - Understanding task states
+- Concurrency Models Compared (Coming Soon) - When to use async

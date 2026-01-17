@@ -372,6 +372,6 @@ trio (3rd party):
 
 ## Further Reading
 
-- [Task Lifecycle](task-lifecycle.md) - Complete task state management
+- Task Lifecycle (Coming Soon) - Complete task state management
 - [Async Anti-Patterns](async-anti-patterns.md) - Common mistakes
-- [Concurrency Models Compared](concurrency-models-compared.md) - When to use what
+- Concurrency Models Compared (Coming Soon) - When to use what

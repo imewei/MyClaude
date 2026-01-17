@@ -457,6 +457,6 @@ def test_user_can_update_name_but_not_email():
 
 ## Further Reading
 
-- [Test Fixtures Patterns](test-fixtures-patterns.md)
-- [Mocking Best Practices](mocking-best-practices.md)
-- [Property-Based Testing](property-based-testing.md)
+- [Test Fixtures Patterns](../SKILL.md#fixtures)
+- [Mocking Best Practices](../SKILL.md#mocking)
+- [Property-Based Testing](../../../../plugins/unit-testing/docs/test-generate/property-based-testing.md)
