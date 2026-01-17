@@ -12,6 +12,7 @@ Production React Native with modern architecture and TypeScript.
 
 ---
 
+<!-- SECTION: ARCHITECTURE -->
 ## Architecture
 
 | Complexity | State | Navigation |
@@ -20,9 +21,11 @@ Production React Native with modern architecture and TypeScript.
 | Medium | Zustand | Tab + Stack |
 | Complex | Redux Toolkit | Nested navigators |
 | Enterprise | Redux + RTK Query | Deep linking + tabs |
+<!-- END_SECTION: ARCHITECTURE -->
 
 ---
 
+<!-- SECTION: COMPONENT -->
 ## Component Pattern
 
 ```typescript
@@ -50,9 +53,11 @@ const styles = StyleSheet.create({
   // ...
 });
 ```
+<!-- END_SECTION: COMPONENT -->
 
 ---
 
+<!-- SECTION: PERFORMANCE -->
 ## Performance
 
 ```typescript
@@ -99,9 +104,11 @@ import FastImage from 'react-native-fast-image';
   resizeMode={FastImage.resizeMode.cover}
 />
 ```
+<!-- END_SECTION: PERFORMANCE -->
 
 ---
 
+<!-- SECTION: REDUX -->
 ## Redux Toolkit
 
 ```typescript
@@ -144,9 +151,11 @@ const userSlice = createSlice({
   },
 });
 ```
+<!-- END_SECTION: REDUX -->
 
 ---
 
+<!-- SECTION: NAVIGATION -->
 ## Navigation
 
 ```typescript
@@ -179,9 +188,11 @@ export const ProfileScreen: React.FC<ProfileScreenProps> = ({ route, navigation 
   return <Button title="Settings" onPress={() => navigation.navigate('Settings')} />;
 };
 ```
+<!-- END_SECTION: NAVIGATION -->
 
 ---
 
+<!-- SECTION: API -->
 ## API (React Query)
 
 ```typescript
@@ -217,9 +228,11 @@ export const useUpdateUser = () => {
   });
 };
 ```
+<!-- END_SECTION: API -->
 
 ---
 
+<!-- SECTION: FORMS -->
 ## Forms (React Hook Form + Zod)
 
 ```typescript
@@ -252,9 +265,11 @@ export const LoginForm: React.FC = () => {
   );
 };
 ```
+<!-- END_SECTION: FORMS -->
 
 ---
 
+<!-- SECTION: OFFLINE -->
 ## Offline Storage
 
 ```typescript
@@ -291,9 +306,11 @@ export const useOfflineFirst = <T,>(key: string, fetchFn: () => Promise<T>) => {
   return { data, loading };
 };
 ```
+<!-- END_SECTION: OFFLINE -->
 
 ---
 
+<!-- SECTION: STRUCTURE -->
 ## Project Structure
 
 ```
@@ -313,6 +330,7 @@ src/
 ├── store/
 └── App.tsx
 ```
+<!-- END_SECTION: STRUCTURE -->
 
 ---
 
