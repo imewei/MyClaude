@@ -15,7 +15,7 @@ agents:
     - frontend-mobile-development:frontend-developer
     - frontend-mobile-development:mobile-developer
   conditional: []
-allowed-tools: [Read, Write, Edit, Bash, Glob, Grep]
+allowed-tools: [Write, Read, Task]
 ---
 
 # React/React Native Component Scaffolding

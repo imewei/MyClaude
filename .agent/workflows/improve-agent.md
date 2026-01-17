@@ -62,7 +62,7 @@ Top 3 Issues:
 | 3 | Testing & validation | Test suite, A/B testing, evaluation |
 | 4 | Deployment & monitoring | Versioning, staged rollout, monitoring |
 
-**Detailed methodology:** [Agent Optimization Guide](../../docs/agent-optimization-guide.md)
+**Detailed methodology:** [Agent Optimization Guide](../../plugins/agent-orchestration/docs/agent-optimization-guide.md)
 
 ---
 
@@ -137,7 +137,7 @@ Execute all phases sequentially with validation gates:
 | No performance data | Agent needs 7+ days production usage |
 | Improvements don't show impact | Need 100+ tasks for statistical significance |
 
-**More:** [Troubleshooting Guide](../../docs/troubleshooting.md)
+**More:** [Troubleshooting Guide](../../plugins/agent-orchestration/docs/agent-optimization-guide.md#troubleshooting)
 
 ---
 
@@ -145,7 +145,7 @@ Execute all phases sequentially with validation gates:
 
 | Document | Purpose |
 |----------|---------|
-| [Agent Optimization Guide](../../docs/agent-optimization-guide.md) | Complete methodology |
-| [Success Metrics](../../docs/success-metrics.md) | KPIs and thresholds |
-| [Prompt Techniques](../../docs/prompt-techniques.md) | Improvement patterns |
-| [Testing Tools](../../docs/testing-tools.md) | Validation frameworks |
+| [Agent Optimization Guide](../../plugins/agent-orchestration/docs/agent-optimization-guide.md) | Complete methodology |
+| [Success Metrics](../../plugins/backend-development/docs/backend-development/success-metrics.md) | KPIs and thresholds |
+| [Prompt Techniques](../../plugins/llm-application-dev/docs/prompt-patterns.md) | Improvement patterns |
+| [Testing Tools](../../plugins/llm-application-dev/docs/ai-testing-deployment.md) | Validation frameworks |

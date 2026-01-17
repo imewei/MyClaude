@@ -45,7 +45,7 @@ $ARGUMENTS
 - Standard: Modular src/include/tests
 - Enterprise: Multi-module with platform abstraction
 
-**Reference:** [C Project Structures](../docs/c-project/c-project-structures.md)
+**Reference:** [C Project Structures](../../plugins/systems-programming/docs/c-project/c-project-structures.md)
 
 ## Phase 2: Project Structure
 
@@ -93,7 +93,7 @@ project/
 | CTest | Testing framework |
 | CPack | Packaging |
 
-**Full reference:** [C Build Systems Guide](../docs/c-project/c-build-systems.md)
+**Full reference:** [C Build Systems Guide](../../plugins/systems-programming/docs/c-project/c-build-systems.md)
 
 ## Phase 4: Source Templates
 
@@ -107,7 +107,7 @@ project/
 | error.h | Error handling macros | Standard+ |
 | utils/ | Memory pools, string utilities | Enterprise |
 
-**Templates:** [C Project Structures Guide](../docs/c-project/c-project-structures.md)
+**Templates:** [C Project Structures Guide](../../plugins/systems-programming/docs/c-project/c-project-structures.md)
 
 ## Phase 5: Testing Setup
 
@@ -127,7 +127,7 @@ project/
 | UBSan | Compiler flag | Undefined behavior |
 | TSan | Compiler flag | Data races |
 
-**Reference:** [C Build Systems - Testing](../docs/c-project/c-build-systems.md#testing-integration)
+**Reference:** [C Build Systems - Testing](../../plugins/systems-programming/docs/c-project/c-build-systems.md#testing-integration)
 
 ## Phase 6: Memory Safety Validation
 
@@ -150,7 +150,7 @@ project/
 | --track-origins=yes | Uninitialized value origins |
 | --error-exitcode=1 | CI/CD integration |
 
-**Comprehensive reference:** [C Memory Safety Guide](../docs/c-project/c-memory-safety.md)
+**Comprehensive reference:** [C Memory Safety Guide](../../plugins/systems-programming/docs/c-project/c-memory-safety.md)
 
 ## Phase 7: Documentation and Scripts
 
@@ -172,9 +172,9 @@ project/
 
 | Document | Content | Lines |
 |----------|---------|-------|
-| [C Project Structures](../docs/c-project/c-project-structures.md) | Application, library, embedded patterns | ~600 |
-| [C Build Systems](../docs/c-project/c-build-systems.md) | Makefile, CMake, sanitizers, CI/CD | ~500 |
-| [C Memory Safety](../docs/c-project/c-memory-safety.md) | Valgrind, ASan, best practices | ~450 |
+| [C Project Structures](../../plugins/systems-programming/docs/c-project/c-project-structures.md) | Application, library, embedded patterns | ~600 |
+| [C Build Systems](../../plugins/systems-programming/docs/c-project/c-build-systems.md) | Makefile, CMake, sanitizers, CI/CD | ~500 |
+| [C Memory Safety](../../plugins/systems-programming/docs/c-project/c-memory-safety.md) | Valgrind, ASan, best practices | ~450 |
 
 ## Quality Checklist
 

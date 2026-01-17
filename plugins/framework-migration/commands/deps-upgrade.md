@@ -8,7 +8,7 @@ execution_time:
   standard: "30-60m: Minor/patch upgrades"
   deep: "1-3h: Major versions + automation"
 color: green
-allowed-tools: Bash, Read, Write, Edit, Glob, Grep, Task
+allowed-tools: [Bash, Edit, Read, Task]
 external_docs:
   - dependency-strategies-guide.md
   - testing-strategies.md

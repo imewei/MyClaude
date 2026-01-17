@@ -13,6 +13,7 @@ external_docs:
   monitoring: "../docs/ml-pipeline/monitoring-frameworks.md"
   practices: "../docs/ml-pipeline/best-practices.md"
   criteria: "../docs/ml-pipeline/success-criteria.md"
+allowed-tools: [Bash, Read, Write, Task]
 ---
 
 # ML Pipeline

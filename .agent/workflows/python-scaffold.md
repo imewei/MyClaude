@@ -40,10 +40,10 @@ Determine the project type from user requirements:
 
 **Quick Mode**: Simple script, basic CLI, minimal library
 **Standard Mode**:
-- **FastAPI**: REST APIs, microservices, async applications → [FastAPI Structure](../docs/python-scaffold/fastapi-structure.md)
-- **Django**: Full-stack web apps, admin panels, ORM-heavy projects → [Django Structure](../docs/python-scaffold/django-structure.md)
-- **Library**: Reusable packages, utilities → [Library Packaging](../docs/python-scaffold/library-packaging.md)
-- **CLI**: Command-line tools, automation scripts → [CLI Tools](../docs/python-scaffold/cli-tools.md)
+- **FastAPI**: REST APIs, microservices, async applications → [FastAPI Structure](../../plugins/python-development/docs/python-scaffold/fastapi-structure.md)
+- **Django**: Full-stack web apps, admin panels, ORM-heavy projects → [Django Structure](../../plugins/python-development/docs/python-scaffold/django-structure.md)
+- **Library**: Reusable packages, utilities → [Library Packaging](../../plugins/python-development/docs/python-scaffold/library-packaging.md)
+- **CLI**: Command-line tools, automation scripts → [CLI Tools](../../plugins/python-development/docs/python-scaffold/cli-tools.md)
 **Enterprise Mode**: All standard types + distributed systems, microservices
 
 ### 2. Initialize Project with uv
@@ -81,10 +81,10 @@ Based on project type and execution mode:
 
 #### Standard Mode
 Select appropriate structure:
-- **FastAPI Project**: Full structure from [FastAPI Guide](../docs/python-scaffold/fastapi-structure.md)
-- **Django Project**: Complete setup from [Django Guide](../docs/python-scaffold/django-structure.md)
-- **Library**: Package structure from [Library Guide](../docs/python-scaffold/library-packaging.md)
-- **CLI Tool**: Typer-based structure from [CLI Guide](../docs/python-scaffold/cli-tools.md)
+- **FastAPI Project**: Full structure from [FastAPI Guide](../../plugins/python-development/docs/python-scaffold/fastapi-structure.md)
+- **Django Project**: Complete setup from [Django Guide](../../plugins/python-development/docs/python-scaffold/django-structure.md)
+- **Library**: Package structure from [Library Guide](../../plugins/python-development/docs/python-scaffold/library-packaging.md)
+- **CLI Tool**: Typer-based structure from [CLI Guide](../../plugins/python-development/docs/python-scaffold/cli-tools.md)
 
 #### Enterprise Mode
 All Standard features plus:
@@ -99,7 +99,7 @@ All Standard features plus:
 
 For all modes, set up modern Python tooling:
 
-**See comprehensive configuration**: [Development Tooling Guide](../docs/python-scaffold/development-tooling.md)
+**See comprehensive configuration**: [Development Tooling Guide](../../plugins/python-development/docs/python-scaffold/development-tooling.md)
 
 **Quick Setup**:
 ```toml
@@ -123,7 +123,7 @@ testpaths = ["tests"]
 - `docker-compose.yml` for local development
 - CI/CD workflows (`.github/workflows/tests.yml`)
 
-**Full configurations available**: [Development Tooling Guide](../docs/python-scaffold/development-tooling.md)
+**Full configurations available**: [Development Tooling Guide](../../plugins/python-development/docs/python-scaffold/development-tooling.md)
 
 ## Output Format
 
@@ -161,8 +161,8 @@ Deliver complete project with:
 
 ## External Documentation
 
-- [FastAPI Structure Guide](../docs/python-scaffold/fastapi-structure.md) - Complete FastAPI project templates
-- [Django Structure Guide](../docs/python-scaffold/django-structure.md) - Django 5.x project structure
-- [Library Packaging Guide](../docs/python-scaffold/library-packaging.md) - PyPI-ready package setup
-- [CLI Tools Guide](../docs/python-scaffold/cli-tools.md) - Typer-based command-line tools
-- [Development Tooling Guide](../docs/python-scaffold/development-tooling.md) - Makefiles, Docker, CI/CD
+- [FastAPI Structure Guide](../../plugins/python-development/docs/python-scaffold/fastapi-structure.md) - Complete FastAPI project templates
+- [Django Structure Guide](../../plugins/python-development/docs/python-scaffold/django-structure.md) - Django 5.x project structure
+- [Library Packaging Guide](../../plugins/python-development/docs/python-scaffold/library-packaging.md) - PyPI-ready package setup
+- [CLI Tools Guide](../../plugins/python-development/docs/python-scaffold/cli-tools.md) - Typer-based command-line tools
+- [Development Tooling Guide](../../plugins/python-development/docs/python-scaffold/development-tooling.md) - Makefiles, Docker, CI/CD

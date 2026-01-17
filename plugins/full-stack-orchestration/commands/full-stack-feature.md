@@ -11,7 +11,7 @@ external_docs:
   - deployment-patterns.md
 color: purple
 tags: [full-stack, orchestration, api-first, e2e-workflow]
-allowed-tools: [Read, Write, Edit, Bash, Glob, Grep, Task]
+allowed-tools: [Bash, Read, Write, Edit, Task, Glob, Grep]
 ---
 
 # Full-Stack Feature Development

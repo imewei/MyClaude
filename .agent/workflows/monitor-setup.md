@@ -15,7 +15,7 @@ $ARGUMENTS
 
 ## External Docs
 
-[Prometheus Setup](../docs/monitor-setup/prometheus-setup.md) (~1,220 lines), [Grafana Dashboards](../docs/monitor-setup/grafana-dashboards.md) (~1,470), [Distributed Tracing](../docs/monitor-setup/distributed-tracing.md) (~1,368), [Log Aggregation](../docs/monitor-setup/log-aggregation.md) (~1,200), [Alerting Strategies](../docs/monitor-setup/alerting-strategies.md) (~1,327), [Infrastructure Code](../docs/monitor-setup/infrastructure-code.md) (~1,200)
+[Prometheus Setup](../../plugins/observability-monitoring/docs/monitor-setup/prometheus-setup.md) (~1,220 lines), [Grafana Dashboards](../../plugins/observability-monitoring/docs/monitor-setup/grafana-dashboards.md) (~1,470), [Distributed Tracing](../../plugins/observability-monitoring/docs/monitor-setup/distributed-tracing.md) (~1,368), [Log Aggregation](../../plugins/observability-monitoring/docs/monitor-setup/log-aggregation.md) (~1,200), [Alerting Strategies](../../plugins/observability-monitoring/docs/monitor-setup/alerting-strategies.md) (~1,327), [Infrastructure Code](../../plugins/observability-monitoring/docs/monitor-setup/infrastructure-code.md) (~1,200)
 
 ## Phase 1: Planning
 

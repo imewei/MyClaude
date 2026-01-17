@@ -31,7 +31,7 @@ Generate complete project structures with modern tooling following best practice
 | Library | Reusable packages | Tree-shakeable, dual format |
 | CLI | Command-line tools | Commander.js, interactive prompts |
 
-**Decision guide:** [Project Scaffolding Guide](../docs/javascript-typescript/project-scaffolding-guide.md)
+**Decision guide:** [Project Scaffolding Guide](../../plugins/javascript-typescript/docs/project-scaffolding-guide.md)
 
 ## Core Scaffolding Steps
 
@@ -46,10 +46,10 @@ pnpm init && git init
 
 | Type | Command | Full Guide |
 |------|---------|------------|
-| Next.js | `pnpm create next-app@latest .` | [nextjs-scaffolding.md](../docs/javascript-typescript/nextjs-scaffolding.md) |
+| Next.js | `pnpm create next-app@latest .` | [nextjs-scaffolding.md](../../plugins/javascript-typescript/docs/nextjs-scaffolding.md) |
 | React+Vite | `pnpm create vite . --template react-ts` | - |
-| Node.js API | `pnpm add express zod dotenv` | [nodejs-api-scaffolding.md](../docs/javascript-typescript/nodejs-api-scaffolding.md) |
-| Library/CLI | Manual setup | [library-cli-scaffolding.md](../docs/javascript-typescript/library-cli-scaffolding.md) |
+| Node.js API | `pnpm add express zod dotenv` | [nodejs-api-scaffolding.md](../../plugins/javascript-typescript/docs/nodejs-api-scaffolding.md) |
+| Library/CLI | Manual setup | [library-cli-scaffolding.md](../../plugins/javascript-typescript/docs/library-cli-scaffolding.md) |
 
 ### 3. TypeScript Configuration
 
@@ -59,7 +59,7 @@ pnpm init && git init
 | Standard | Full strict mode, recommended settings |
 | Comprehensive | + Project references, incremental, paths |
 
-**Guide:** [TypeScript Configuration](../docs/javascript-typescript/typescript-configuration.md)
+**Guide:** [TypeScript Configuration](../../plugins/javascript-typescript/docs/typescript-configuration.md)
 
 ### 4. Development Tooling
 
@@ -69,7 +69,7 @@ pnpm init && git init
 | Standard | + Vitest + Husky (lint-staged) |
 | Comprehensive | + GitHub Actions + Docker + Bundle analyzer |
 
-**Guide:** [Development Tooling](../docs/javascript-typescript/development-tooling.md)
+**Guide:** [Development Tooling](../../plugins/javascript-typescript/docs/development-tooling.md)
 
 ### 5. Project Structure
 
@@ -137,12 +137,12 @@ const schema = z.object({ email: z.string().email() })
 
 | Document | Content |
 |----------|---------|
-| [Project Scaffolding Guide](../docs/javascript-typescript/project-scaffolding-guide.md) | Decision frameworks, patterns |
-| [Next.js Scaffolding](../docs/javascript-typescript/nextjs-scaffolding.md) | Server Components, API routes |
-| [Node.js API Scaffolding](../docs/javascript-typescript/nodejs-api-scaffolding.md) | Controllers, services |
-| [Library & CLI Scaffolding](../docs/javascript-typescript/library-cli-scaffolding.md) | Publishing, Commander.js |
-| [TypeScript Configuration](../docs/javascript-typescript/typescript-configuration.md) | Strict mode, paths |
-| [Development Tooling](../docs/javascript-typescript/development-tooling.md) | ESLint, Vitest, CI/CD |
+| [Project Scaffolding Guide](../../plugins/javascript-typescript/docs/project-scaffolding-guide.md) | Decision frameworks, patterns |
+| [Next.js Scaffolding](../../plugins/javascript-typescript/docs/nextjs-scaffolding.md) | Server Components, API routes |
+| [Node.js API Scaffolding](../../plugins/javascript-typescript/docs/nodejs-api-scaffolding.md) | Controllers, services |
+| [Library & CLI Scaffolding](../../plugins/javascript-typescript/docs/library-cli-scaffolding.md) | Publishing, Commander.js |
+| [TypeScript Configuration](../../plugins/javascript-typescript/docs/typescript-configuration.md) | Strict mode, paths |
+| [Development Tooling](../../plugins/javascript-typescript/docs/development-tooling.md) | ESLint, Vitest, CI/CD |
 
 ## Next Steps
 

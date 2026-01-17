@@ -41,7 +41,7 @@ $ARGUMENTS
 | Web API | Axum services, REST APIs | Binary with Axum + tower |
 | WebAssembly | Browser applications | wasm-bindgen + wasm-pack |
 
-**Reference:** [Rust Project Structures](../docs/rust-project/rust-project-structures.md)
+**Reference:** [Rust Project Structures](../../plugins/systems-programming/docs/rust-project/rust-project-structures.md)
 
 ## Phase 2: Initialize with Cargo
 
@@ -72,7 +72,7 @@ $ARGUMENTS
 | `[profile.release]` | Optimization (lto, codegen-units) | Standard+ |
 | `[workspace]` | Multi-crate coordination | Enterprise |
 
-**Full reference:** [Rust Cargo Configuration](../docs/rust-project/rust-cargo-config.md)
+**Full reference:** [Rust Cargo Configuration](../../plugins/systems-programming/docs/rust-project/rust-cargo-config.md)
 
 ## Phase 4: Source Code Generation
 
@@ -94,7 +94,7 @@ $ARGUMENTS
 | cli | Command-line interface |
 | types | Shared types across crates |
 
-**Templates:** [Rust Project Structures](../docs/rust-project/rust-project-structures.md)
+**Templates:** [Rust Project Structures](../../plugins/systems-programming/docs/rust-project/rust-project-structures.md)
 
 ## Phase 5: Testing and Benchmarks
 
@@ -118,7 +118,7 @@ name = "benchmark_name"
 harness = false
 ```
 
-**Reference:** [Rust Project Structures - Testing](../docs/rust-project/rust-project-structures.md#testing-structure)
+**Reference:** [Rust Project Structures - Testing](../../plugins/systems-programming/docs/rust-project/rust-project-structures.md#testing-structure)
 
 ## Phase 6: Async Patterns (Standard+)
 
@@ -130,7 +130,7 @@ harness = false
 | `tokio::select!` | First-to-complete |
 | Channels | Message passing |
 
-**Comprehensive patterns:** [Rust Async Patterns](../docs/rust-project/rust-async-patterns.md)
+**Comprehensive patterns:** [Rust Async Patterns](../../plugins/systems-programming/docs/rust-project/rust-async-patterns.md)
 
 ## Phase 7: Documentation
 
@@ -152,9 +152,9 @@ harness = false
 
 | Document | Content | Lines |
 |----------|---------|-------|
-| [Rust Project Structures](../docs/rust-project/rust-project-structures.md) | Binary/library/workspace patterns, Axum | ~600 |
-| [Rust Cargo Configuration](../docs/rust-project/rust-cargo-config.md) | Cargo.toml, profiles, dependencies | ~567 |
-| [Rust Async Patterns](../docs/rust-project/rust-async-patterns.md) | Tokio, concurrency, channels | ~718 |
+| [Rust Project Structures](../../plugins/systems-programming/docs/rust-project/rust-project-structures.md) | Binary/library/workspace patterns, Axum | ~600 |
+| [Rust Cargo Configuration](../../plugins/systems-programming/docs/rust-project/rust-cargo-config.md) | Cargo.toml, profiles, dependencies | ~567 |
+| [Rust Async Patterns](../../plugins/systems-programming/docs/rust-project/rust-async-patterns.md) | Tokio, concurrency, channels | ~718 |
 
 ## Quality Checklist
 

@@ -12,6 +12,7 @@ documentation:
   gitlab-ci: "../docs/cicd-automation/gitlab-ci-reference.md"
   terraform-integration: "../docs/cicd-automation/terraform-cicd-integration.md"
   security-workflows: "../docs/cicd-automation/security-automation-workflows.md"
+allowed-tools: [Write, Bash, Read, Task]
 ---
 
 # Workflow Automation

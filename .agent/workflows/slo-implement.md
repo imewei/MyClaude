@@ -15,7 +15,7 @@ $ARGUMENTS
 
 ## External Docs
 
-[SLO Framework](../docs/slo-implement/slo-framework.md) (~1,680 lines), [SLI Measurement](../docs/slo-implement/sli-measurement.md) (~1,538), [Error Budgets](../docs/slo-implement/error-budgets.md) (~1,500), [SLO Monitoring](../docs/slo-implement/slo-monitoring.md) (~1,545), [SLO Reporting](../docs/slo-implement/slo-reporting.md) (~1,450), [SLO Automation](../docs/slo-implement/slo-automation.md) (~1,450), [SLO Governance](../docs/slo-implement/slo-governance.md) (~1,420)
+[SLO Framework](../../plugins/observability-monitoring/docs/slo-implement/slo-framework.md) (~1,680 lines), [SLI Measurement](../../plugins/observability-monitoring/docs/slo-implement/sli-measurement.md) (~1,538), [Error Budgets](../../plugins/observability-monitoring/docs/slo-implement/error-budgets.md) (~1,500), [SLO Monitoring](../../plugins/observability-monitoring/docs/slo-implement/slo-monitoring.md) (~1,545), [SLO Reporting](../../plugins/observability-monitoring/docs/slo-implement/slo-reporting.md) (~1,450), [SLO Automation](../../plugins/observability-monitoring/docs/slo-implement/slo-automation.md) (~1,450), [SLO Governance](../../plugins/observability-monitoring/docs/slo-implement/slo-governance.md) (~1,420)
 
 ## Phase 1: Analysis & Design
 

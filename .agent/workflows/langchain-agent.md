@@ -29,9 +29,9 @@ Build production-ready AI agent for: $ARGUMENTS
 
 | Topic | Reference | Lines |
 |-------|-----------|-------|
-| Advanced Patterns | [langchain-advanced-patterns.md](../docs/langchain-advanced-patterns.md) | ~300 |
-| LLM Integration | [llm-integration-patterns.md](../docs/llm-integration-patterns.md) | ~400 |
-| Testing & Deployment | [ai-testing-deployment.md](../docs/ai-testing-deployment.md) | ~500 |
+| Advanced Patterns | [langchain-advanced-patterns.md](../../plugins/llm-application-dev/docs/langchain-advanced-patterns.md) | ~300 |
+| LLM Integration | [llm-integration-patterns.md](../../plugins/llm-application-dev/docs/llm-integration-patterns.md) | ~400 |
+| Testing & Deployment | [ai-testing-deployment.md](../../plugins/llm-application-dev/docs/ai-testing-deployment.md) | ~500 |
 
 ## Core Requirements
 

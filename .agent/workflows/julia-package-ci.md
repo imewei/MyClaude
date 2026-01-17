@@ -11,7 +11,7 @@ version: 1.0.0
 
 # Generate CI/CD Workflows for Julia Packages
 
-**Docs**: [ci-cd-workflows.md](../docs/ci-cd-workflows.md) (~400 lines)
+**Docs**: [ci-cd-workflows.md](../../plugins/julia-development/docs/ci-cd-workflows.md) (~400 lines)
 
 ## Workflow Structure
 

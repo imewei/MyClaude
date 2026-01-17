@@ -20,7 +20,7 @@ Auto-detect problem type and generate template code with DifferentialEquations.j
 
 <!-- SYSTEM: Use .agent/skills_index.json for O(1) skill discovery. Do not scan directories. -->
 
-**Docs**: [sciml-templates.md](../docs/sciml-templates.md) (~550 lines of complete templates)
+**Docs**: [sciml-templates.md](../../plugins/julia-development/docs/sciml-templates.md) (~550 lines of complete templates)
 
 ## Requirements
 
@@ -68,6 +68,6 @@ Structure:
 1. Fill TODO sections
 2. Run template
 3. Use `/julia-optimize` for performance
-4. See [sciml-templates.md](../docs/sciml-templates.md) for detailed examples
+4. See [sciml-templates.md](../../plugins/julia-development/docs/sciml-templates.md) for detailed examples
 
 **Outcome**: Working SciML template with recommended solvers and clear customization points

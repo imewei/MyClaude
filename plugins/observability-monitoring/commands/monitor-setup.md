@@ -8,6 +8,7 @@ execution_modes:
   enterprise: "2-3w: + Multi-cluster, SLO, security monitoring"
 workflow_type: "hybrid"
 interactive_mode: true
+allowed-tools: [Bash, Write, Read, Task]
 ---
 
 # Monitoring and Observability Setup

@@ -35,15 +35,15 @@ Use AskUserQuestion to select:
 
 ### 1. API Contract
 Design RESTful/GraphQL API with OpenAPI 3.1 spec, shared data models, auth, rate limiting, error formats.
-**See**: [Platform Architecture](../docs/multi-platform/platform-architecture.md#api-first-architecture)
+**See**: [Platform Architecture](../../plugins/multi-platform-apps/docs/multi-platform/platform-architecture.md#api-first-architecture)
 
 ### 2. Design System
 Cross-platform components (Material, iOS HIG, Fluent), responsive layouts, accessibility (WCAG 2.2 AA), themes.
-**See**: [Design Systems](../docs/multi-platform/design-systems.md)
+**See**: [Design Systems](../../plugins/multi-platform-apps/docs/multi-platform/design-systems.md)
 
 ### 3. Shared Logic
 Core domain models, business rules, validation, state management (MVI/Redux/BLoC), caching, error handling.
-**See**: [Platform Architecture](../docs/multi-platform/platform-architecture.md#shared-business-logic-strategies)
+**See**: [Platform Architecture](../../plugins/multi-platform-apps/docs/multi-platform/platform-architecture.md#shared-business-logic-strategies)
 
 ## Phase 2: Platform Implementation (Parallel Execution)
 
@@ -55,7 +55,7 @@ Implement per platform following shared contracts:
 - **Android (Kotlin/Compose)**: mobile-developer
 - **Desktop (Electron/Tauri)**: frontend-developer
 
-**See**: [Implementation Guides](../docs/multi-platform/implementation-guides.md)
+**See**: [Implementation Guides](../../plugins/multi-platform-apps/docs/multi-platform/implementation-guides.md)
 
 ## Phase 3: Validation (Parallel Execution)
 
@@ -63,7 +63,7 @@ Implement per platform following shared contracts:
 
 ### Cross-Platform Testing
 Functional parity, UI consistency, performance benchmarks, accessibility, network resilience, data sync validation, platform edge cases, e2e journeys.
-**See**: [Testing Strategies](../docs/multi-platform/testing-strategies.md)
+**See**: [Testing Strategies](../../plugins/multi-platform-apps/docs/multi-platform/testing-strategies.md)
 
 ### Platform Optimization
 - Web: Bundle size, lazy loading, CDN, SEO
@@ -71,11 +71,11 @@ Functional parity, UI consistency, performance benchmarks, accessibility, networ
 - Android: APK size, startup, frame rate, battery
 - Desktop: Binary size, resource usage, startup
 
-**See**: [Best Practices](../docs/multi-platform/best-practices.md)
+**See**: [Best Practices](../../plugins/multi-platform-apps/docs/multi-platform/best-practices.md)
 
 ### API Documentation
 Interactive OpenAPI/Swagger, platform integration guides, SDK examples, auth flows, rate limits, collections, error handling, versioning.
-**See**: [Deployment & Distribution](../docs/multi-platform/deployment-distribution.md)
+**See**: [Deployment & Distribution](../../plugins/multi-platform-apps/docs/multi-platform/deployment-distribution.md)
 
 ## Configuration
 

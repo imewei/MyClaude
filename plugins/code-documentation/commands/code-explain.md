@@ -6,6 +6,7 @@ description: Detailed code explanation with visual aids and domain expertise
 argument-hint: <code-path-or-snippet>
 color: cyan
 execution_modes: {quick: "5-10min", standard: "15-25min", comprehensive: "30-45min"}
+allowed-tools: [Read, Glob, Grep, Task]
 ---
 
 # Code Explanation

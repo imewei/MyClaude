@@ -4,6 +4,7 @@ category: codebase-cleanup
 purpose: Analyze, prioritize, remediate technical debt
 execution_time: {quick: "5-10min", standard: "15-25min", comprehensive: "30-60min"}
 external_docs: [technical-debt-framework.md, code-quality-metrics.md, refactoring-patterns.md]
+allowed-tools: [Bash, Read, Task]
 ---
 
 # Technical Debt Analysis

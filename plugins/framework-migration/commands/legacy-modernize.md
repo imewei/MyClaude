@@ -8,7 +8,7 @@ execution_time:
   standard: "1-2w: Single component modernization"
   deep: "2-6mo: Full legacy transformation"
 color: orange
-allowed-tools: Bash, Read, Write, Edit, Glob, Grep, Task
+allowed-tools: [Bash, Read, Write, Edit, Task, Glob, Grep]
 external_docs:
   - strangler-fig-playbook.md
   - testing-strategies.md

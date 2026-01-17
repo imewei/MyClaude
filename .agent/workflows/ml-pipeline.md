@@ -22,7 +22,7 @@ $ARGUMENTS
 
 **Feature & Model Design (All):** Feature engineering + store schema (Feast/Tecton), model requirements + algorithm selection, performance baselines + evaluation, experiment design + A/B methodology
 
-**Ref:** [pipeline-phases.md#phase-1](../docs/ml-pipeline/pipeline-phases.md)
+**Ref:** [pipeline-phases.md#phase-1](../../plugins/machine-learning/docs/ml-pipeline/pipeline-phases.md)
 
 ## Phase 2: Development & Training (Iterative/Parallel)
 
@@ -30,7 +30,7 @@ $ARGUMENTS
 
 **Code Optimization (Standard+):** Production standards, error handling, performance profiling, comprehensive testing
 
-**Ref:** [pipeline-phases.md#phase-2](../docs/ml-pipeline/pipeline-phases.md)
+**Ref:** [pipeline-phases.md#phase-2](../../plugins/machine-learning/docs/ml-pipeline/pipeline-phases.md)
 
 ## Phase 3: Deployment (Sequential)
 
@@ -43,13 +43,13 @@ $ARGUMENTS
 
 **K8s (Enterprise):** GPU scheduling + autoscaling, KEDA event-driven scaling, Service mesh (Istio)
 
-**Ref:** [deployment-strategies.md](../docs/ml-pipeline/deployment-strategies.md)
+**Ref:** [deployment-strategies.md](../../plugins/machine-learning/docs/ml-pipeline/deployment-strategies.md)
 
 ## Phase 4: Monitoring & Improvement (Continuous)
 
 **Observability:** Model performance (accuracy, latency, throughput), Drift detection (KS test, PSI, feature distributions), System metrics (Prometheus, Grafana), Alerting (PagerDuty, retraining triggers), Cost tracking (resource utilization, optimization)
 
-**Ref:** [monitoring-frameworks.md](../docs/ml-pipeline/monitoring-frameworks.md)
+**Ref:** [monitoring-frameworks.md](../../plugins/machine-learning/docs/ml-pipeline/monitoring-frameworks.md)
 
 ## Tech Stack
 
@@ -69,7 +69,7 @@ $ARGUMENTS
 - Velocity: <1h commit-to-prod, reproducible runs
 - Cost: <20% waste, >60% spot utilization
 
-**Full metrics:** [success-criteria.md](../docs/ml-pipeline/success-criteria.md)
+**Full metrics:** [success-criteria.md](../../plugins/machine-learning/docs/ml-pipeline/success-criteria.md)
 
 ## Deliverables
 
@@ -77,4 +77,4 @@ End-to-end ML pipeline with automation, Infrastructure (Terraform/Helm IaC), CI/
 
 ## External Docs
 
-[mlops-methodology.md](../docs/ml-pipeline/mlops-methodology.md), [pipeline-phases.md](../docs/ml-pipeline/pipeline-phases.md), [deployment-strategies.md](../docs/ml-pipeline/deployment-strategies.md), [monitoring-frameworks.md](../docs/ml-pipeline/monitoring-frameworks.md), [best-practices.md](../docs/ml-pipeline/best-practices.md), [success-criteria.md](../docs/ml-pipeline/success-criteria.md)
+[mlops-methodology.md](../../plugins/machine-learning/docs/ml-pipeline/mlops-methodology.md), [pipeline-phases.md](../../plugins/machine-learning/docs/ml-pipeline/pipeline-phases.md), [deployment-strategies.md](../../plugins/machine-learning/docs/ml-pipeline/deployment-strategies.md), [monitoring-frameworks.md](../../plugins/machine-learning/docs/ml-pipeline/monitoring-frameworks.md), [best-practices.md](../../plugins/machine-learning/docs/ml-pipeline/best-practices.md), [success-criteria.md](../../plugins/machine-learning/docs/ml-pipeline/success-criteria.md)

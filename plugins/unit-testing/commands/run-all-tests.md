@@ -6,6 +6,7 @@ argument-hint: [test-path] [--fix] [--max-iterations=10] [--parallel] [--coverag
 execution_modes: {quick: "30min-1h", standard: "2-4h", enterprise: "1-2d"}
 workflow_type: iterative
 color: blue
+allowed-tools: [Bash, Read, Edit, Task]
 ---
 
 # Iterative Test Execution & Auto-Fix

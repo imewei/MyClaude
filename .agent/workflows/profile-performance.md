@@ -72,7 +72,7 @@ Target for profiling: $ARGUMENTS
 | Flat tops | Direct CPU consumers | Optimize these first |
 | >5% CPU | Hotspot | Prioritize |
 
-**Reference:** [Profiling Tools Guide](../docs/profile-performance/profiling-tools-guide.md)
+**Reference:** [Profiling Tools Guide](../../plugins/systems-programming/docs/profile-performance/profiling-tools-guide.md)
 
 ## Phase 4: Hardware Counter Analysis (Standard+)
 
@@ -103,7 +103,7 @@ Target for profiling: $ARGUMENTS
 | Frequent small allocs | Optimization opportunity | Object pooling |
 | High peak usage | Temporary allocations | Reduce scope |
 
-**Reference:** [Profiling Tools - Valgrind](../docs/profile-performance/profiling-tools-guide.md#valgrind-tools)
+**Reference:** [Profiling Tools - Valgrind](../../plugins/systems-programming/docs/profile-performance/profiling-tools-guide.md#valgrind-tools)
 
 ## Phase 6: Optimization Strategy (Standard+)
 
@@ -117,7 +117,7 @@ Target for profiling: $ARGUMENTS
 | SIMD | 2-8x | Vectorization |
 | Memory | 1.5-5x | Pooling, arena allocators |
 
-**Reference:** [Optimization Patterns Guide](../docs/profile-performance/optimization-patterns.md)
+**Reference:** [Optimization Patterns Guide](../../plugins/systems-programming/docs/profile-performance/optimization-patterns.md)
 
 ## Phase 7: Micro-Benchmarking (Enterprise)
 
@@ -160,8 +160,8 @@ cargo bench -- --baseline baseline
 
 | Document | Content | Lines |
 |----------|---------|-------|
-| [Profiling Tools Guide](../docs/profile-performance/profiling-tools-guide.md) | perf, flamegraph, valgrind, language profilers | ~527 |
-| [Optimization Patterns](../docs/profile-performance/optimization-patterns.md) | Algorithm, cache, memory, SIMD, parallelization | ~629 |
+| [Profiling Tools Guide](../../plugins/systems-programming/docs/profile-performance/profiling-tools-guide.md) | perf, flamegraph, valgrind, language profilers | ~527 |
+| [Optimization Patterns](../../plugins/systems-programming/docs/profile-performance/optimization-patterns.md) | Algorithm, cache, memory, SIMD, parallelization | ~629 |
 
 ## Profiling Checklist
 
