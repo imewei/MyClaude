@@ -169,6 +169,19 @@ module.exports = {
 | Feature flags | Gradual rollout |
 | Blue-green | Zero-downtime required |
 
+---
+
+## Parallel Migration Strategies
+
+| Strategy | Implementation | Use Case |
+|----------|----------------|----------|
+| **Concurrent Indexes** | `CREATE INDEX CONCURRENTLY` (Postgres) | Avoid locking table |
+| **Sharded Migration** | Run migration per shard in parallel | Horizontal scaling |
+| **Batch Processing** | Parallel worker threads for data backfill | Massive data transformation |
+| **Multi-Stage** | Decouple schema changes from data migration | Reduce lock contention |
+
+---
+
 ### Checkpoint Backup
 
 ```javascript

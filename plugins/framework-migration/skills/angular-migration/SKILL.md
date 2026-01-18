@@ -265,6 +265,17 @@ export class UserFormComponent {
 
 ---
 
+## Parallel Migration Strategy
+
+| Strategy | Implementation | Use Case |
+|----------|----------------|----------|
+| **Vertical Slicing** | Migrate entire routes in parallel | Different teams per route |
+| **Component Bottom-Up** | Convert leaf components concurrently | Safe, low-risk parallel work |
+| **Dual-Boot** | Serve legacy/new apps via Nginx | Gradual traffic shifting |
+| **Automated Conversion** | Run AST transforms on many files | Bulk syntax updates |
+
+---
+
 ## Checklist
 
 - [ ] Hybrid app bootstrap working

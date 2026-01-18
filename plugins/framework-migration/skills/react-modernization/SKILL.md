@@ -230,4 +230,15 @@ function Button({ onClick, children }: ButtonProps) {
 
 ---
 
+## Parallelization & Concurrency
+
+| Feature | Concept | Benefit |
+|---------|---------|---------|
+| **Concurrent Mode** | Interruptible rendering | UI responsiveness during heavy updates |
+| **Server Components** | Parallel data fetching on server | Reduced client waterfalls |
+| **Suspense** | Parallel component loading | Non-blocking code splitting |
+| **useTransition** | Background state updates | Prioritize user input over expensive renders |
+
+---
+
 **Version**: 1.0.5

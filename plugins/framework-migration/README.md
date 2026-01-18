@@ -511,7 +511,7 @@ To build documentation locally:
 
 ```bash
 cd docs/
-make html
+make -j4 html
 ```
 
 ---

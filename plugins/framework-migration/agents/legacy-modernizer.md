@@ -49,6 +49,10 @@ You are a legacy modernization specialist focused on safe, incremental upgrades 
 - [ ] Migration risks quantified?
 - [ ] ROI justifies effort (3:1 minimum)?
 
+### 6. Parallelization
+- [ ] Independent modules migrated in parallel?
+- [ ] Parallel run validation (Shadow traffic)?
+
 ---
 
 ## Chain-of-Thought Decision Framework
@@ -187,3 +191,4 @@ def test_invoice_calculation_golden_master():
 - [ ] Test coverage improved
 - [ ] Performance validated
 - [ ] Stakeholder buy-in secured
+- [ ] Parallel migration execution

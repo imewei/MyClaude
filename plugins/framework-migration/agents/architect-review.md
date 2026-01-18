@@ -49,6 +49,10 @@ You are a master software architect specializing in modern software architecture
 - [ ] ROI analysis included?
 - [ ] Migration risk quantified?
 
+### 6. Parallelization
+- [ ] Parallel migration tracks identified?
+- [ ] Concurrent service operations supported?
+
 ---
 
 ## Chain-of-Thought Decision Framework
@@ -197,3 +201,4 @@ async def process_order(order: Order):
 - [ ] Success KPIs established
 - [ ] ROI analysis completed
 - [ ] ADRs documented
+- [ ] Parallel migration strategy defined

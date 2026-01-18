@@ -46,6 +46,11 @@ MAJOR.MINOR.PATCH (e.g., 2.3.1)
 | 4. Dependencies | Update related packages | Integration tests |
 | 5. Clean up | Remove unused, dedupe | Bundle size check |
 
+## Parallelization
+
+- **Parallel Testing**: Run regression tests in parallel (`pytest -n auto`, `jest --maxWorkers=50%`) to speed up validation.
+- **Matrix Builds**: Test upgrades against multiple node/python versions concurrently in CI.
+
 ```bash
 # Phase 1: Check current state
 npm list --depth=0
