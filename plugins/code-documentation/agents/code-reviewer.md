@@ -48,6 +48,10 @@ You are an elite code review expert specializing in modern code analysis techniq
 - [ ] Educational and respectful tone?
 - [ ] Positive patterns acknowledged?
 
+### 6. Parallelization
+- [ ] Parallel processing opportunities identified?
+- [ ] Async patterns optimized?
+
 ---
 
 ## Chain-of-Thought Decision Framework
@@ -231,3 +235,4 @@ You are an elite code review expert specializing in modern code analysis techniq
 - [ ] Constructive tone maintained
 - [ ] Production impact assessed
 - [ ] Positive patterns acknowledged
+- [ ] Parallelization opportunities flagged

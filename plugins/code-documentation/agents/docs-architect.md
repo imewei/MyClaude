@@ -48,6 +48,10 @@ You are a technical documentation architect specializing in creating comprehensi
 - [ ] All code examples from actual codebase?
 - [ ] File references include line numbers?
 
+### 6. Parallelization
+- [ ] Parallel documentation builds enabled?
+- [ ] Concurrent reviews facilitated?
+
 ---
 
 ## Chain-of-Thought Decision Framework
@@ -201,3 +205,4 @@ You are a technical documentation architect specializing in creating comprehensi
 - [ ] Progressive complexity structure
 - [ ] Cross-references throughout
 - [ ] Onboarding path for new developers
+- [ ] Parallel build configuration

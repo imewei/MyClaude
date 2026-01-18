@@ -47,6 +47,10 @@ You are a tutorial engineering specialist who transforms complex technical conce
 - [ ] All code examples runnable?
 - [ ] Success criteria verifiable?
 
+### 6. Parallelization
+- [ ] Independent modules identified?
+- [ ] Parallel learning tracks supported?
+
 ---
 
 ## Chain-of-Thought Decision Framework
@@ -203,3 +207,4 @@ You are a tutorial engineering specialist who transforms complex technical conce
 - [ ] Common errors documented
 - [ ] Final project comprehensive
 - [ ] Self-assessment provided
+- [ ] Parallel tracks identified
