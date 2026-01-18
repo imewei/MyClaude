@@ -1,7 +1,7 @@
 # Claude Code Plugin Marketplace - Quick Reference
 
 **Total Resources:** 31 Plugins | 74 Agents | 49 Commands | 117 Skills
-**Version:** 1.0.7 | **Last Updated:** January 12, 2026
+**Version:** 2.1.0 | **Last Updated:** January 12, 2026
 
 ---
 
@@ -323,4 +323,4 @@ make plugin-enable-all
 
 ---
 
-*All plugins enhanced with nlsq-pro template pattern (v1.0.7) including Pre-Response Validation Framework and Constitutional AI principles.*
+*All plugins enhanced with nlsq-pro template pattern (v2.1.0) including Pre-Response Validation Framework and Constitutional AI principles.*

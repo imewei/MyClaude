@@ -2,7 +2,7 @@
 
 **Total Commands:** 49 across 23 plugins
 **Format:** `/plugin:command` (slash prefix for execution)
-**Version:** 1.0.7 | **Last Updated:** January 12, 2026
+**Version:** 2.1.0 | **Last Updated:** January 12, 2026
 
 ---
 
@@ -247,4 +247,4 @@ Use `--mode=<mode>` to specify the execution mode:
 
 ---
 
-*Generated from v1.0.7 validated marketplace data. All commands follow consistent naming conventions and include comprehensive functional descriptions.*
+*Generated from v2.1.0 validated marketplace data. All commands follow consistent naming conventions and include comprehensive functional descriptions.*

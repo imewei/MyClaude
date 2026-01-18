@@ -2,7 +2,7 @@
 
 **Total Agents:** 74 across 31 plugins
 **Format:** `plugin:agent` (single colon)
-**Version:** 1.0.7 | **Last Updated:** January 12, 2026
+**Version:** 2.1.0 | **Last Updated:** January 12, 2026
 
 ---
 
@@ -230,4 +230,4 @@ All agents follow the nlsq-pro template pattern:
 
 ---
 
-*Generated from v1.0.7 validated marketplace data. All agents enhanced with nlsq-pro template pattern.*
+*Generated from v2.1.0 validated marketplace data. All agents enhanced with nlsq-pro template pattern.*
