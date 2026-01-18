@@ -401,7 +401,7 @@ starlette==0.27.0  # FastAPI 0.100 requires starlette>=0.27.0
 
 ```bash
 # Install updated dependencies
-pip install -r requirements.txt
+uv uv pip install -r requirements.txt
 
 # Run application
 python src/main.py
@@ -637,7 +637,7 @@ module.exports = {
 #8 15.23 error: command 'gcc' failed with exit status 1
 #8 15.23 ERROR: Failed building wheel for cryptography
 
-ERROR: failed to solve: process "/bin/sh -c pip install -r requirements.txt" did not complete successfully: exit code: 1
+ERROR: failed to solve: process "/bin/sh -c uv uv pip install -r requirements.txt" did not complete successfully: exit code: 1
 
 Workflow: Build Docker Image
 Job: build-and-push
@@ -659,7 +659,7 @@ FROM python:3.11-slim
 
 WORKDIR /app
 COPY requirements.txt .
-RUN pip install -r requirements.txt
+RUN uv uv pip install -r requirements.txt
 COPY . .
 CMD ["python", "app.py"]
 ```
@@ -677,7 +677,7 @@ RUN apt-get update && apt-get install -y \
 
 WORKDIR /app
 COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
+RUN uv uv pip install --no-cache-dir -r requirements.txt
 COPY . .
 CMD ["python", "app.py"]
 ```

@@ -1,8 +1,8 @@
 {
   "name": "agent-orchestration",
   "displayName": "Agent Orchestration",
-  "version": "1.0.7",
-  "description": "Multi-agent workflow coordination with optimization workflows and systematic agent improvement methodologies.",
+  "version": "2.1.0",
+  "description": "Multi-agent workflow coordination with optimization workflows and systematic agent improvement methodologies. Optimized for Claude Code v2.1.",
   "author": {
     "name": "Wei Chen",
     "url": "https://myclaude.readthedocs.io/en/latest/"

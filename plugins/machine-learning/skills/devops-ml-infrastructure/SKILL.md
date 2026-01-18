@@ -1,6 +1,6 @@
 ---
 name: devops-ml-infrastructure
-version: "1.0.7"
+version: "2.1.0"
 maturity: "5-Expert"
 specialization: CI/CD & Infrastructure for ML Systems
 description: DevOps for ML with GitHub Actions pipelines, Terraform IaC, Docker/Kubernetes, and cloud ML platforms (SageMaker, Azure ML, Vertex AI). Use when automating training, deploying models, or provisioning ML infrastructure.
@@ -40,7 +40,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with: { python-version: '3.12' }
-      - run: pip install -r requirements.txt
+      - run: uv uv pip install -r requirements.txt
       - run: python scripts/train.py --config configs/model.yaml
       - run: python scripts/evaluate.py --min-accuracy 0.85
       - uses: actions/upload-artifact@v3
@@ -101,7 +101,7 @@ resource "aws_ecr_repository" "ml_models" {
 FROM python:3.12-slim as builder
 WORKDIR /app
 COPY requirements.txt .
-RUN pip install --no-cache-dir --user -r requirements.txt
+RUN uv uv pip install --no-cache-dir --user -r requirements.txt
 
 FROM python:3.12-slim
 WORKDIR /app

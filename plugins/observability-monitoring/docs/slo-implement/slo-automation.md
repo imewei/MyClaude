@@ -1852,7 +1852,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          pip install pyyaml jsonschema prometheus-client
+          uv uv pip install pyyaml jsonschema prometheus-client
 
       - name: Validate YAML syntax
         run: |
@@ -1922,7 +1922,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          pip install pyyaml requests prometheus-client kubernetes
+          uv uv pip install pyyaml requests prometheus-client kubernetes
 
       - name: Deploy SLOs to Prometheus
         run: |

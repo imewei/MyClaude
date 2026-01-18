@@ -1,5 +1,5 @@
 ---
-version: "1.0.7"
+version: "2.1.0"
 command: /profile-performance
 description: Comprehensive performance profiling with perf, flamegraph, and valgrind
 argument-hint: [target-binary-or-code]

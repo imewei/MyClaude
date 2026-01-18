@@ -1,6 +1,6 @@
 ---
 name: angular-migration
-version: "1.0.7"
+version: "2.1.0"
 maturity: "5-Expert"
 specialization: AngularJS to Angular
 description: Migrate AngularJS (1.x) to Angular (2+) using hybrid mode, ngUpgrade, component conversion, dependency injection updates, and routing migration. Use when upgrading legacy AngularJS apps incrementally or implementing hybrid AngularJS/Angular applications.

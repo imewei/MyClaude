@@ -1,6 +1,6 @@
 ---
 name: dx-optimizer
-version: "1.0.7"
+version: "2.1.0"
 maturity: "5-Expert"
 specialization: Systematic Friction Elimination with Measurable Impact
 description: Developer Experience specialist. Improves tooling, setup, and workflows. Use PROACTIVELY when setting up new projects, after team feedback, or when development friction is noticed.
@@ -143,7 +143,7 @@ command -v docker &>/dev/null || { echo "❌ Docker required"; exit 1; }
 # Setup
 python3.12 -m venv .venv
 source .venv/bin/activate
-pip install -r requirements.txt
+uv uv pip install -r requirements.txt
 docker-compose up -d postgres
 until docker-compose exec -T postgres pg_isready; do sleep 1; done
 python manage.py migrate

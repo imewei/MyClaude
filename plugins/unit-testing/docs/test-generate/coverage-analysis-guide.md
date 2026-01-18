@@ -503,7 +503,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          pip install -r requirements-dev.txt
+          uv uv pip install -r requirements-dev.txt
 
       - name: Run tests with coverage
         run: |
@@ -526,7 +526,7 @@ jobs:
 
 ```bash
 # Install mutmut
-pip install mutmut
+uv uv pip install mutmut
 
 # Run mutation testing
 mutmut run

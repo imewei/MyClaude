@@ -1,6 +1,6 @@
 ---
 name: dependency-upgrade
-version: "1.0.7"
+version: "2.1.0"
 maturity: "5-Expert"
 specialization: Package Management
 description: Manage major dependency upgrades with semver analysis, compatibility matrices, staged rollouts, codemods, and testing. Use when upgrading frameworks (React, Angular, Vue), resolving peer dependency conflicts, or implementing automated updates with Renovate/Dependabot.

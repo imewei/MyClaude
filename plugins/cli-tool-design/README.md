@@ -2,10 +2,10 @@
 
 CLI tool design and developer automation expertise with advanced agent reasoning, systematic development frameworks, and production-ready examples for building world-class command-line tools and automation scripts.
 
-**Version:** 1.0.7 | **Category:** developer-tools | **License:** MIT
+**Version:** 2.1.0 | **Category:** developer-tools | **License:** MIT
 
 
-## What's New in v1.0.7
+## What's New in v2.1.0
 
 This release implements **Opus 4.5 optimization** with enhanced token efficiency and standardized documentation.
 
@@ -24,7 +24,7 @@ The agent has been upgraded to v1.0.2 with 90-92% maturity, systematic reasoning
 
 ### 🛠️ command-systems-engineer
 
-**Status:** active | **Maturity:** 92% | **Version:** 1.0.7
+**Status:** active | **Maturity:** 92% | **Version:** 2.1.0
 
 Command systems engineer specializing in CLI tool design and developer automation. Expert in command development, interactive prompts, and workflow tools.
 
@@ -141,7 +141,7 @@ Edge cases: Invalid workflows, missing deps, interrupts
 
 ## Step 6: Distribution
 Packaging:
-- pip package: `pip install devflow`
+- pip package: `uv uv pip install devflow`
 - Entry point: `devflow` command
 - Shell completion: bash, zsh, fish scripts generated
 - Documentation: README with examples
@@ -334,7 +334,7 @@ Testing:
 - Memory profiling: <100MB for 1GB files (streaming)
 
 ## Step 6: Distribution
-pip package: `pip install csvtool`
+pip package: `uv uv pip install csvtool`
 Entry point: `csvtool` command
 Shell completion: Auto-generated
 Documentation: Examples, API reference
@@ -411,6 +411,6 @@ MIT License - See [LICENSE](./LICENSE) for details
 ---
 
 **Author:** Wei Chen
-**Version:** 1.0.7
+**Version:** 2.1.0
 **Category:** Developer Tools
-**Last Updated:** 2025-10-29
+**Last Updated:** 2026-01-18

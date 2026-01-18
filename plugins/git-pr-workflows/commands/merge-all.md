@@ -1,5 +1,5 @@
 ---
-version: "1.0.7"
+version: "2.1.0"
 description: Merge all local branches into main and clean up
 allowed-tools: Bash(git:*), Read
 argument-hint: [--skip-commit] [--no-delete] [--force] [--dry-run]

@@ -1,5 +1,5 @@
 ---
-version: "1.0.7"
+version: "2.1.0"
 description: Safe dependency upgrade orchestration with breaking change management and security-first prioritization
 argument-hint: [--security-only] [--mode quick|standard|deep] [--strategy incremental|batch]
 category: framework-migration
@@ -8,7 +8,7 @@ execution_time:
   standard: "30-60m: Minor/patch upgrades"
   deep: "1-3h: Major versions + automation"
 color: green
-allowed-tools: [Bash, Edit, Read, Task]
+allowed-tools: [Bash, Edit, Read, Task, Bash(uv:*)]
 external_docs:
   - dependency-strategies-guide.md
   - testing-strategies.md

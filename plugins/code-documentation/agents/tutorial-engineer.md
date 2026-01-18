@@ -1,6 +1,6 @@
 ---
 name: tutorial-engineer
-version: "1.0.7"
+version: "2.1.0"
 maturity: "4-Expert"
 specialization: "Educational Content & Tutorial Development"
 description: Creates step-by-step tutorials and educational content from code. Transforms complex concepts into progressive learning experiences with hands-on examples. Use PROACTIVELY for onboarding guides, feature tutorials, or concept explanations.

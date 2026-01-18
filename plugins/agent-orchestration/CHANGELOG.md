@@ -1,3 +1,10 @@
+
+## Version 2.1.0 (2026-01-18)
+
+- Optimized for Claude Code v2.1.12
+- Updated tool usage to use 'uv' for Python package management
+- Refreshed best practices and documentation
+
 # Agent Orchestration Plugin - Changelog
 
 ## Version 1.0.7 (2025-12-24) - Documentation Sync Release

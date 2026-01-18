@@ -1,8 +1,8 @@
 {
   "name": "statistical-physics",
   "displayName": "Statistical Physics",
-  "version": "1.0.7",
-  "description": "Non-equilibrium statistical physics for driven systems, active matter, and complex dynamics with theory, simulation, and experimental validation.",
+  "version": "2.1.0",
+  "description": "Non-equilibrium statistical physics for driven systems, active matter, and complex dynamics with theory, simulation, and experimental validation. Optimized for Claude Code v2.1.",
   "author": {
     "name": "Wei Chen",
     "url": "https://myclaude.readthedocs.io/en/latest/"

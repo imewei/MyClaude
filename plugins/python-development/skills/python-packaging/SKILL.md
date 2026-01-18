@@ -1,5 +1,5 @@
 name: python-packaging
-version: "1.0.7"
+version: "2.1.0"
 description: Create distributable Python packages with pyproject.toml, proper project structure, and publishing to PyPI. Use when writing pyproject.toml or setup.py, creating package structures with __init__.py, building wheel/source distributions, setting up CLI entry points, configuring build backends (setuptools, hatchling), or publishing to PyPI/TestPyPI.
 
 # Python Packaging
@@ -140,7 +140,7 @@ write_to = "src/my_package/_version.py"
 
 ```bash
 # Install build tools
-pip install build twine
+uv uv pip install build twine
 
 # Build distributions
 python -m build
@@ -151,7 +151,7 @@ twine check dist/*
 
 # Test on TestPyPI first
 twine upload --repository testpypi dist/*
-pip install --index-url https://test.pypi.org/simple/ my-package
+uv uv pip install --index-url https://test.pypi.org/simple/ my-package
 
 # Publish to PyPI
 twine upload dist/*
@@ -173,7 +173,7 @@ jobs:
       - uses: actions/checkout@v3
       - uses: actions/setup-python@v4
         with: { python-version: "3.12" }
-      - run: pip install build twine
+      - run: uv uv pip install build twine
       - run: python -m build
       - run: twine check dist/*
       - run: twine upload dist/*
@@ -219,10 +219,10 @@ include = ["company.core*"]
 
 ```bash
 # Editable install
-pip install -e .
+uv uv pip install -e .
 
 # With optional dependencies
-pip install -e ".[dev]"
+uv uv pip install -e ".[dev]"
 ```
 
 ## Best Practices

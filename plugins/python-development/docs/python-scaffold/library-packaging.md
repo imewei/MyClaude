@@ -283,7 +283,7 @@ A modern Python library for...
 ## Installation
 
 ```bash
-pip install library-name
+uv uv pip install library-name
 ```
 
 ## Quick Start
@@ -429,7 +429,7 @@ jobs:
     - uses: actions/setup-python@v5
       with:
         python-version: ${{ matrix.python-version }}
-    - run: pip install uv
+    - run: uv uv pip install uv
     - run: uv sync
     - run: pytest
     - run: mypy src

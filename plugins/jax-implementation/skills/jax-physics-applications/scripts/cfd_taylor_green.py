@@ -15,7 +15,7 @@ Usage:
     python cfd_taylor_green.py
 
 Requirements:
-    pip install jax jax-cfd matplotlib numpy
+    uv pip install jax jax-cfd matplotlib numpy
 """
 
 import jax

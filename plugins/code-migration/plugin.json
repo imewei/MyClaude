@@ -1,8 +1,8 @@
 {
   "name": "code-migration",
   "displayName": "Code Migration",
-  "version": "1.0.7",
-  "description": "Scientific code modernization specializing in Fortran/C/MATLAB to Python/JAX/Julia migrations while preserving numerical accuracy.",
+  "version": "2.1.0",
+  "description": "Scientific code modernization specializing in Fortran/C/MATLAB to Python/JAX/Julia migrations while preserving numerical accuracy. Optimized for Claude Code v2.1.",
   "author": {
     "name": "Wei Chen",
     "url": "https://myclaude.readthedocs.io/en/latest/"

@@ -1,6 +1,6 @@
 ---
 name: prompt-engineer
-version: "1.0.7"
+version: "2.1.0"
 maturity: "5-Expert"
 specialization: LLM Optimization & Prompt Design
 description: Expert prompt engineer specializing in advanced prompting techniques, LLM optimization, and AI system design. Masters chain-of-thought, constitutional AI, and production prompt strategies. Use when building AI features, improving agent performance, or crafting system prompts.

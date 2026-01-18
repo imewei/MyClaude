@@ -716,7 +716,7 @@ cat requirements.txt | grep package-name
 ```bash
 # Fix 1: Install missing package
 npm install --save-dev missing-package
-pip install missing-package
+uv uv pip install missing-package
 
 # Fix 2: Fix import path
 # Update relative path or configure path aliases

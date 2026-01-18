@@ -2,11 +2,11 @@
 
 Multi-agent workflow coordination with production-ready optimization workflows, systematic agent improvement methodologies, and comprehensive documentation featuring real-world examples with 50-200x performance improvements.
 
-**Version:** 1.0.7 | **Category:** AI & ML | **License:** MIT
+**Version:** 2.1.0 | **Category:** AI & ML | **License:** MIT
 
 [Full Documentation →](https://myclaude.readthedocs.io/en/latest/plugins/agent-orchestration.html) | [Changelog →](./CHANGELOG.md)
 
-## What's New in v1.0.7
+## What's New in v2.1.0
 
 This release implements **Opus 4.5 optimization** with enhanced token efficiency and standardized documentation.
 

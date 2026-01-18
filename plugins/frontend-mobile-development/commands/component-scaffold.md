@@ -1,5 +1,5 @@
 ---
-version: "1.0.7"
+version: "2.1.0"
 description: Orchestrate production-ready React/React Native component generation with TypeScript, tests, styles, and documentation
 execution_time:
   quick: "5-10 minutes"
@@ -15,7 +15,7 @@ agents:
     - frontend-mobile-development:frontend-developer
     - frontend-mobile-development:mobile-developer
   conditional: []
-allowed-tools: [Write, Read, Task]
+allowed-tools: [Write, Read, Task, Bash(uv:*)]
 ---
 
 # React/React Native Component Scaffolding

@@ -1,8 +1,8 @@
 {
   "name": "observability-monitoring",
   "displayName": "Observability & Monitoring",
-  "version": "1.0.7",
-  "description": "Observability, monitoring, logging, distributed tracing, and SLO/SLA management for production systems with Prometheus, Grafana, and modern observability platforms",
+  "version": "2.1.0",
+  "description": "Observability, monitoring, logging, distributed tracing, and SLO/SLA management for production systems with Prometheus, Grafana, and modern observability platforms. Optimized for Claude Code v2.1.",
   "author": {
     "name": "Wei Chen",
     "url": "https://myclaude.readthedocs.io/en/latest/"

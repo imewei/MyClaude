@@ -254,7 +254,7 @@ def main():
     except Exception as e:
         print(f"\n✗ Error generating diagrams: {e}")
         print("\nMake sure matplotlib and numpy are installed:")
-        print("  pip install matplotlib numpy")
+        print("  uv pip install matplotlib numpy")
 
 
 if __name__ == '__main__':

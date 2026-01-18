@@ -1,5 +1,5 @@
 ---
-version: "1.0.7"
+version: "2.1.0"
 description: Orchestrate end-to-end full-stack feature development across frontend, backend, database, testing, security, and deployment
 execution_time:
   quick: "30-60m: Architecture + design"
@@ -11,7 +11,7 @@ external_docs:
   - deployment-patterns.md
 color: purple
 tags: [full-stack, orchestration, api-first, e2e-workflow]
-allowed-tools: [Bash, Read, Write, Edit, Task, Glob, Grep]
+allowed-tools: [Bash, Read, Write, Edit, Task, Glob, Grep, Bash(uv:*)]
 ---
 
 # Full-Stack Feature Development

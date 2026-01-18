@@ -1,8 +1,8 @@
 {
   "name": "debugging-toolkit",
   "displayName": "Debugging Toolkit",
-  "version": "1.0.7",
-  "description": "AI-assisted debugging with automated root cause analysis, production-safe debugging, and observability integration.",
+  "version": "2.1.0",
+  "description": "AI-assisted debugging with automated root cause analysis, production-safe debugging, and observability integration. Optimized for Claude Code v2.1.",
   "author": {
     "name": "Wei Chen",
     "url": "https://myclaude.readthedocs.io/en/latest/"

@@ -275,7 +275,7 @@ stages:
       - .cache/pypoetry
       - .venv
   before_script:
-    - pip install poetry==${POETRY_VERSION}
+    - uv uv pip install poetry==${POETRY_VERSION}
     - poetry config virtualenvs.in-project true
     - poetry install --no-interaction --no-ansi
 
@@ -783,7 +783,7 @@ backend-quality:
       - packages/backend/.venv
   before_script:
     - cd packages/backend
-    - pip install poetry
+    - uv uv pip install poetry
     - poetry config virtualenvs.in-project true
     - poetry install
   script:
@@ -811,7 +811,7 @@ backend-test:
       - packages/backend/.venv
   before_script:
     - cd packages/backend
-    - pip install poetry
+    - uv uv pip install poetry
     - poetry config virtualenvs.in-project true
     - poetry install
   script:

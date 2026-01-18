@@ -1,5 +1,5 @@
 ---
-version: "1.0.7"
+version: "2.1.0"
 category: "code-documentation"
 command: "/update-claudemd"
 description: Automatically update CLAUDE.md file based on recent code changes

@@ -2,10 +2,10 @@
 
 Comprehensive CI/CD pipeline automation with intelligent error resolution, multi-agent analysis, and advanced workflow orchestration. Features optimized slash commands (62% token reduction), 3 execution modes per command, 11 external documentation files (~4,600 lines), 5 specialized agents, and 6 production-ready skills.
 
-**Version:** 1.0.7 | **Category:** infrastructure | **License:** MIT
+**Version:** 2.1.0 | **Category:** infrastructure | **License:** MIT
 
 
-## What's New in v1.0.7
+## What's New in v2.1.0
 
 This release implements **Opus 4.5 optimization** with enhanced token efficiency and standardized documentation.
 
@@ -24,7 +24,7 @@ All agents at v1.0.3 with 90-92% maturity, systematic reasoning frameworks, and 
 
 ### 🏗️ cloud-architect
 
-**Status:** active | **Maturity:** 92% | **Version:** 1.0.7
+**Status:** active | **Maturity:** 92% | **Version:** 2.1.0
 
 Expert cloud architect specializing in AWS/Azure/GCP multi-cloud infrastructure design, advanced IaC, FinOps cost optimization, and modern architectural patterns.
 
@@ -39,7 +39,7 @@ Expert cloud architect specializing in AWS/Azure/GCP multi-cloud infrastructure 
 
 ### 🚀 deployment-engineer
 
-**Status:** active | **Maturity:** 92% | **Version:** 1.0.7
+**Status:** active | **Maturity:** 92% | **Version:** 2.1.0
 
 Expert deployment engineer specializing in modern CI/CD pipelines, GitOps workflows (ArgoCD/Flux), progressive delivery, container security, and platform engineering.
 
@@ -54,7 +54,7 @@ Expert deployment engineer specializing in modern CI/CD pipelines, GitOps workfl
 
 ### 🔧 devops-troubleshooter
 
-**Status:** active | **Maturity:** 90% | **Version:** 1.0.7
+**Status:** active | **Maturity:** 90% | **Version:** 2.1.0
 
 Expert DevOps troubleshooter specializing in rapid incident response, advanced debugging, modern observability (OpenTelemetry, Prometheus), and root cause analysis.
 
@@ -69,7 +69,7 @@ Expert DevOps troubleshooter specializing in rapid incident response, advanced d
 
 ### ☸️ kubernetes-architect
 
-**Status:** active | **Maturity:** 90% | **Version:** 1.0.7
+**Status:** active | **Maturity:** 90% | **Version:** 2.1.0
 
 Expert Kubernetes architect specializing in cloud-native infrastructure, advanced GitOps workflows (ArgoCD/Flux), enterprise container orchestration (EKS/AKS/GKE), service mesh (Istio/Linkerd), and platform engineering.
 
@@ -84,7 +84,7 @@ Expert Kubernetes architect specializing in cloud-native infrastructure, advance
 
 ### 🏗️ terraform-specialist
 
-**Status:** active | **Maturity:** 90% | **Version:** 1.0.7
+**Status:** active | **Maturity:** 90% | **Version:** 2.1.0
 
 Expert Terraform/OpenTofu specialist mastering advanced IaC automation, state management (S3/DynamoDB with KMS encryption), enterprise infrastructure patterns, module design, and testing (Terratest, OPA).
 
@@ -441,9 +441,9 @@ Memory usage: 98% → 45% within 2 minutes
 ## T+55m - Postmortem
 Root Cause: Logging middleware allocated []byte for every request without releasing
 Action Items:
-1. Add memory profiling to staging (OWNER: SRE, DUE: 2025-02-05)
-2. Implement buffer pooling pattern (OWNER: Backend, DUE: 2025-02-07)
-3. Add memory leak detection alerts (OWNER: SRE, DUE: 2025-02-10)
+1. Add memory profiling to staging (OWNER: SRE, DUE: 2026-01-18)
+2. Implement buffer pooling pattern (OWNER: Backend, DUE: 2026-01-18)
+3. Add memory leak detection alerts (OWNER: SRE, DUE: 2026-01-18)
 
 [Complete debugging trace with Prometheus queries and code fixes provided]
 ```
@@ -522,6 +522,6 @@ MIT License - See [LICENSE](./LICENSE) for details
 ---
 
 **Author:** Wei Chen
-**Version:** 1.0.7
+**Version:** 2.1.0
 **Category:** Infrastructure
-**Last Updated:** 2025-11-06
+**Last Updated:** 2026-01-18

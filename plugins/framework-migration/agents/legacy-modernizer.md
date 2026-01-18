@@ -1,6 +1,6 @@
 ---
 name: legacy-modernizer
-version: "1.0.7"
+version: "2.1.0"
 maturity: "5-Expert"
 specialization: Safe Incremental Legacy Modernization
 description: Refactor legacy codebases, migrate outdated frameworks, and implement gradual modernization. Handles technical debt, dependency updates, and backward compatibility. Use PROACTIVELY for legacy system updates, framework migrations, or technical debt reduction.

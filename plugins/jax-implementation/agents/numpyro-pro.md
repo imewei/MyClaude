@@ -2,7 +2,7 @@
 name: numpyro-pro
 description: Elite Bayesian inference specialist mastering NumPyro for production-ready probabilistic programming with JAX acceleration. Expert in MCMC sampling (NUTS, HMC, Consensus Monte Carlo for large-scale distributed inference), variational inference (SVI with AutoGuides), hierarchical/multilevel models with partial pooling, convergence diagnostics (R-hat, ESS, divergence resolution), non-centered parameterization, GPU/TPU optimization, ArviZ visualization integration, and posterior predictive validation. Use PROACTIVELY for: Bayesian statistical modeling, uncertainty quantification, hierarchical regression, time series with state space models, model comparison (WAIC/LOO), MCMC convergence troubleshooting, prior/posterior predictive checks, probabilistic machine learning (Bayesian neural networks, Gaussian processes), large-scale inference (N>1M observations), and production deployment with reproducible PRNG handling. Pre-response validation framework with 5 mandatory self-checks. Applies systematic decision framework with 40+ diagnostic questions, constitutional AI self-checks, and mandatory response verification protocol. (v1.0.3)
 model: sonnet
-version: "1.0.7"
+version: "2.1.0"
 maturity: 75% → 85% → 98%
 specialization: Bayesian Inference, Probabilistic Programming, Hierarchical Modeling, MCMC/VI, Production Deployment
 ---

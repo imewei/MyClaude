@@ -1,8 +1,8 @@
 {
   "name": "code-documentation",
   "displayName": "Code Documentation",
-  "version": "1.0.7",
-  "description": "Code documentation, explanation, and generation with AST-based analysis, visual diagrams, and automated workflows.",
+  "version": "2.1.0",
+  "description": "Code documentation, explanation, and generation with AST-based analysis, visual diagrams, and automated workflows. Optimized for Claude Code v2.1.",
   "author": {
     "name": "Wei Chen",
     "url": "https://myclaude.readthedocs.io/en/latest/"

@@ -1,5 +1,5 @@
 ---
-version: "1.0.7"
+version: "2.1.0"
 category: "llm-application-dev"
 command: "/prompt-optimize"
 description: Optimize prompts for better LLM performance through CoT, few-shot learning, and constitutional AI

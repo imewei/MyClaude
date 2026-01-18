@@ -2,13 +2,13 @@
 
 Comprehensive quality assurance, validation, and correctness verification tools with automated scripts for security scanning, testing, linting, performance profiling, accessibility checks, and plugin syntax validation.
 
-**Version:** 1.0.7 | **Category:** quality-assurance | **License:** MIT
+**Version:** 2.1.0 | **Category:** quality-assurance | **License:** MIT
 
 [Full Documentation →](https://myclaude.readthedocs.io/en/latest/plugins/quality-engineering.html) | [CHANGELOG](CHANGELOG.md)
 
 ---
 
-## 🚀 What's New in v1.0.7
+## 🚀 What's New in v2.1.0
 
 ### Command Optimization with Execution Modes
 
@@ -49,7 +49,7 @@ Both quality-engineering commands now feature:
 ---
 
 
-## What's New in v1.0.7
+## What's New in v2.1.0
 
 This release implements **Opus 4.5 optimization** with enhanced token efficiency and standardized documentation.
 

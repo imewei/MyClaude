@@ -1,5 +1,5 @@
 ---
-version: "1.0.7"
+version: "2.1.0"
 description: Orchestrate systematic code migration between frameworks with test-first discipline
 argument-hint: <source-path> [--target <framework>] [--strategy <pattern>] [--mode quick|standard|deep]
 category: framework-migration
@@ -8,7 +8,7 @@ execution_time:
   standard: "2-6h: Complete component migration"
   deep: "1-3d: Enterprise with optimization"
 color: blue
-allowed-tools: Bash, Read, Write, Edit, Glob, Grep, Task, WebFetch
+allowed-tools: Bash, Read, Write, Edit, Glob, Grep, Task, WebFetch, Bash(uv:*)
 external_docs:
   - migration-patterns-library.md
   - testing-strategies.md

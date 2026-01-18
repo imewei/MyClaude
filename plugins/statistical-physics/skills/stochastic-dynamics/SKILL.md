@@ -1,6 +1,6 @@
 ---
 name: stochastic-dynamics
-version: "1.0.7"
+version: "2.1.0"
 maturity: "5-Expert"
 specialization: Stochastic Processes
 description: Model stochastic dynamics using master equations, Fokker-Planck, Langevin dynamics, and Green-Kubo transport theory. Use when simulating noise-driven systems, calculating transport coefficients, or modeling rare events.

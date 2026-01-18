@@ -1,8 +1,8 @@
 {
   "name": "hpc-computing",
   "displayName": "HPC Computing",
-  "version": "1.0.7",
-  "description": "High-performance computing and numerical methods for scientific computing across Python, Julia/SciML, C++, and Rust",
+  "version": "2.1.0",
+  "description": "High-performance computing and numerical methods for scientific computing across Python, Julia/SciML, C++, and Rust. Optimized for Claude Code v2.1.",
   "author": {
     "name": "Wei Chen",
     "url": "https://myclaude.readthedocs.io/en/latest/"

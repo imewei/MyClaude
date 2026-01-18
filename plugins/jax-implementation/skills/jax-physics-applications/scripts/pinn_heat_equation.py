@@ -20,7 +20,7 @@ Usage:
     python pinn_heat_equation.py
 
 Requirements:
-    pip install jax flax optax matplotlib
+    uv pip install jax flax optax matplotlib
 """
 
 import jax

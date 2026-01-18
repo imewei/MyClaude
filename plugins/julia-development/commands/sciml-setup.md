@@ -1,5 +1,5 @@
 ---
-version: "1.0.7"
+version: "2.1.0"
 command: "/sciml-setup"
 description: Interactive SciML project scaffolding with auto-detection of problem types (ODE, PDE, SDE, optimization) and generation of template code
 argument-hint: "<problem-description>"

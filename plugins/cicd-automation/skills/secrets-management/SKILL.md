@@ -1,6 +1,6 @@
 ---
 name: secrets-management
-version: "1.0.7"
+version: "2.1.0"
 maturity: "5-Expert"
 specialization: Credential Security
 description: Implement secrets management with HashiCorp Vault, AWS Secrets Manager, Azure Key Vault, or platform-native solutions with encryption, rotation, and access control. Use when storing API keys, database passwords, TLS certificates, or implementing secret rotation.

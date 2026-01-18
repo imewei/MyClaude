@@ -1,8 +1,8 @@
 {
   "name": "git-pr-workflows",
   "displayName": "Git & Pull Request Workflows",
-  "version": "1.0.7",
-  "description": "Git workflows, pull request management, branching strategies, code review processes, and version control best practices for modern software development teams",
+  "version": "2.1.0",
+  "description": "Git workflows, pull request management, branching strategies, code review processes, and version control best practices for modern software development teams. Optimized for Claude Code v2.1.",
   "author": {
     "name": "Wei Chen",
     "url": "https://myclaude.readthedocs.io/en/latest/"

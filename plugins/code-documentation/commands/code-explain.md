@@ -1,5 +1,5 @@
 ---
-version: "1.0.7"
+version: "2.1.0"
 category: code-documentation
 command: /code-explain
 description: Detailed code explanation with visual aids and domain expertise

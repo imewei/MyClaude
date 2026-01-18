@@ -2,11 +2,11 @@
 
 Advanced AI-powered cognitive tools for problem-solving, meta-analysis, and structured reasoning with multi-agent orchestration, chain-of-thought frameworks, and comprehensive meta-cognitive reflection capabilities.
 
-**Version:** 1.0.7 | **Category:** productivity | **License:** MIT
+**Version:** 2.1.0 | **Category:** productivity | **License:** MIT
 
 [Full Documentation →](https://myclaude.readthedocs.io/en/latest/plugins/ai-reasoning.html) | [External Docs →](./docs/README.md) | [Changelog →](./CHANGELOG.md)
 
-## What's New in v1.0.7
+## What's New in v2.1.0
 
 This release implements **Opus 4.5 optimization** with enhanced token efficiency and standardized documentation.
 

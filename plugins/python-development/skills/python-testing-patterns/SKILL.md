@@ -1,5 +1,5 @@
 name: python-testing-patterns
-version: "1.0.7"
+version: "2.1.0"
 description: Comprehensive testing with pytest, fixtures, mocking, parameterization, and TDD. Use when writing test files (test_*.py), creating fixtures in conftest.py, using unittest.mock or pytest-mock, writing parameterized tests, testing async code with pytest-asyncio, implementing property-based testing with Hypothesis, or measuring coverage with pytest-cov.
 
 # Python Testing Patterns
@@ -258,7 +258,7 @@ jobs:
       - uses: actions/checkout@v3
       - uses: actions/setup-python@v4
         with: { python-version: "3.12" }
-      - run: pip install -e ".[dev]"
+      - run: uv uv pip install -e ".[dev]"
       - run: pytest --cov --cov-report=xml
       - uses: codecov/codecov-action@v3
 ```

@@ -1,7 +1,7 @@
 ---
-version: "1.0.7"
-description: Systematic agent improvement through performance analysis and prompt engineering
-allowed-tools: Read, Write, Edit, Bash(git:*), Bash(pytest:*)
+version: "2.1.0"
+description: Systematic agent improvement through performance analysis and prompt engineering (v2.1 optimized)
+allowed-tools: Read, Write, Edit, Bash(git:*), Bash(uv:*)
 argument-hint: <agent-name> [--mode=check|phase|optimize] [--phase=1|2|3|4] [--focus=AREA]
 color: blue
 agents:

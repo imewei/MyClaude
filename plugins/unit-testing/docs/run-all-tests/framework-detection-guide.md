@@ -935,10 +935,10 @@ python -m venv venv
 source venv/bin/activate  # On Windows: venv\Scripts\activate
 
 # Install dependencies
-pip install -r requirements-dev.txt
+uv uv pip install -r requirements-dev.txt
 
 # Or with specific test dependencies
-pip install pytest pytest-cov pytest-xdist
+uv uv pip install pytest pytest-cov pytest-xdist
 
 # Set environment variables
 export PYTHONPATH=src

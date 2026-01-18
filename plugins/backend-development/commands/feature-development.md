@@ -1,5 +1,5 @@
 ---
-version: "1.0.7"
+version: "2.1.0"
 category: "backend-development"
 command: "/feature-development"
 

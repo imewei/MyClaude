@@ -1,5 +1,5 @@
 ---
-version: "1.0.7"
+version: "2.1.0"
 command: /monitor-setup
 description: Set up Prometheus, Grafana, and distributed tracing observability stack
 execution_modes:

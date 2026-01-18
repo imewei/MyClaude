@@ -1,8 +1,8 @@
 {
   "name": "research-methodology",
   "displayName": "Research Methodology",
-  "version": "1.0.7",
-  "description": "Research intelligence, methodology design, and evidence-based insights for scientific investigation.",
+  "version": "2.1.0",
+  "description": "Research intelligence, methodology design, and evidence-based insights for scientific investigation. Optimized for Claude Code v2.1.",
   "author": {
     "name": "Wei Chen",
     "url": "https://myclaude.readthedocs.io/en/latest/"

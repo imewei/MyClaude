@@ -345,12 +345,12 @@ for epoch in range(num_epochs):
 ## Requirements
 
 ```bash
-pip install torch numpy
+uv uv pip install torch numpy
 ```
 
 Optional for visualizations:
 ```bash
-pip install matplotlib seaborn wandb tensorboard
+uv uv pip install matplotlib seaborn wandb tensorboard
 ```
 
 ---

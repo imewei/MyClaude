@@ -1,6 +1,6 @@
 ---
 name: model-deployment-serving
-version: "1.0.7"
+version: "2.1.0"
 maturity: "5-Expert"
 specialization: Production ML Model Serving & Deployment
 description: Deploy ML models with FastAPI, TorchServe, BentoML, Docker, Kubernetes, and cloud platforms. Implement monitoring, A/B testing, and drift detection. Use when building model serving APIs, containerizing models, or setting up production ML infrastructure.
@@ -64,7 +64,7 @@ async def predict(request: PredictionRequest):
 FROM python:3.12-slim as builder
 WORKDIR /app
 COPY requirements.txt .
-RUN pip install --no-cache-dir --user -r requirements.txt
+RUN uv uv pip install --no-cache-dir --user -r requirements.txt
 
 FROM python:3.12-slim
 WORKDIR /app

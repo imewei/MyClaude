@@ -105,7 +105,7 @@ jupyter notebook advanced_features_demo.ipynb
 
 ### Prerequisites
 ```bash
-pip install nlsq jupyter matplotlib numpy scipy
+uv uv pip install nlsq jupyter matplotlib numpy scipy
 ```
 
 ### Launch Jupyter
@@ -123,7 +123,7 @@ jupyter lab
 These notebooks can also run in Google Colab (free GPU):
 1. Upload notebook to Google Drive
 2. Open with Google Colab
-3. Install NLSQ: `!pip install nlsq`
+3. Install NLSQ: `!uv uv pip install nlsq`
 4. Run cells
 
 ---

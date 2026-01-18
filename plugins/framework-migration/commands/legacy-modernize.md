@@ -1,5 +1,5 @@
 ---
-version: "1.0.7"
+version: "2.1.0"
 description: Comprehensive legacy system modernization using Strangler Fig pattern with multi-agent orchestration
 argument-hint: <legacy-system-path> [--strategy strangler-fig|big-bang|branch-by-abstraction] [--mode quick|standard|deep]
 category: framework-migration
@@ -8,7 +8,7 @@ execution_time:
   standard: "1-2w: Single component modernization"
   deep: "2-6mo: Full legacy transformation"
 color: orange
-allowed-tools: [Bash, Read, Write, Edit, Task, Glob, Grep]
+allowed-tools: [Bash, Read, Write, Edit, Task, Glob, Grep, Bash(uv:*)]
 external_docs:
   - strangler-fig-playbook.md
   - testing-strategies.md

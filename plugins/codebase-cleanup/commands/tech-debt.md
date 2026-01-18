@@ -1,5 +1,5 @@
 ---
-version: "1.0.7"
+version: "2.1.0"
 category: codebase-cleanup
 purpose: Analyze, prioritize, remediate technical debt
 execution_time: {quick: "5-10min", standard: "15-25min", comprehensive: "30-60min"}

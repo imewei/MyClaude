@@ -17,7 +17,7 @@ Usage:
     python vqe_hydrogen.py
 
 Requirements:
-    pip install jax optax matplotlib numpy
+    uv pip install jax optax matplotlib numpy
 Note: This uses a simplified simulation without actual Cirq dependency
 """
 

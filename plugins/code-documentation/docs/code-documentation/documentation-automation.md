@@ -39,7 +39,7 @@ jobs:
 
     - name: Install dependencies
       run: |
-        pip install -r requirements-docs.txt
+        uv uv pip install -r requirements-docs.txt
         npm install -g @redocly/cli
 
     - name: Generate API documentation

@@ -1,6 +1,6 @@
 ---
 name: ui-ux-designer
-version: "1.0.7"
+version: "2.1.0"
 maturity: "5-Expert"
 specialization: Design Systems & Accessible UX
 description: Create interface designs, wireframes, and design systems. Masters user research, accessibility standards, and modern design tools. Specializes in design tokens, component libraries, and inclusive design. Use PROACTIVELY for design systems, user flows, or interface optimization.

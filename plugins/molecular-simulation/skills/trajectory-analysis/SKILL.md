@@ -1,6 +1,6 @@
 ---
 name: trajectory-analysis
-version: "1.0.7"
+version: "2.1.0"
 maturity: "5-Expert"
 specialization: MD Analysis
 description: Analyze MD trajectories to extract structural, thermodynamic, mechanical, and transport properties. Use when calculating RDF, MSD, viscosity, or validating simulations against experimental data.

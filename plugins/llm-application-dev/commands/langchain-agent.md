@@ -1,9 +1,9 @@
 ---
-version: "1.0.7"
+version: "2.1.0"
 category: llm-application-dev
 command: /langchain-agent
 description: Create production-ready LangChain agents with LangGraph, RAG, and observability
-allowed-tools: Bash(find:*), Bash(git:*)
+allowed-tools: Bash(find:*), Bash(git:*), Bash(uv:*)
 argument-hint: "<agent_description>"
 execution_modes:
   quick: "5-10 minutes"

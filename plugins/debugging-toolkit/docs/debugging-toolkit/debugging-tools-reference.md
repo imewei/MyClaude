@@ -85,7 +85,7 @@ except Exception:
 **Installation:**
 
 ```bash
-pip install ipdb
+uv uv pip install ipdb
 ```
 
 **Usage:**
@@ -114,7 +114,7 @@ def complex_function(data):
 **Installation:**
 
 ```bash
-pip install pudb
+uv uv pip install pudb
 ```
 
 **Usage:**
@@ -142,7 +142,7 @@ def debug_function():
 **Installation:**
 
 ```bash
-pip install debugpy
+uv uv pip install debugpy
 ```
 
 **Server Code:**
@@ -569,7 +569,7 @@ def expensive_function():
 **Installation:**
 
 ```bash
-pip install line_profiler
+uv uv pip install line_profiler
 ```
 
 **Usage:**
@@ -610,7 +610,7 @@ kernprof -l -v script.py
 **Installation:**
 
 ```bash
-pip install py-spy
+uv uv pip install py-spy
 ```
 
 **Usage:**
@@ -782,7 +782,7 @@ func profileMemory() {
 **Installation:**
 
 ```bash
-pip install memory_profiler
+uv uv pip install memory_profiler
 ```
 
 **Usage:**
@@ -819,7 +819,7 @@ Line #    Mem usage    Increment  Occurrences   Line Contents
 **Installation:**
 
 ```bash
-pip install objgraph
+uv uv pip install objgraph
 ```
 
 **Usage:**
@@ -1071,12 +1071,12 @@ time_total:       %{time_total}s\n" \
 ### Development Environment Setup
 
 **Python:**
-- [ ] Install ipdb: `pip install ipdb`
-- [ ] Install pudb: `pip install pudb`
-- [ ] Install debugpy: `pip install debugpy`
-- [ ] Install py-spy: `pip install py-spy`
-- [ ] Install memory_profiler: `pip install memory_profiler`
-- [ ] Install objgraph: `pip install objgraph`
+- [ ] Install ipdb: `uv uv pip install ipdb`
+- [ ] Install pudb: `uv uv pip install pudb`
+- [ ] Install debugpy: `uv uv pip install debugpy`
+- [ ] Install py-spy: `uv uv pip install py-spy`
+- [ ] Install memory_profiler: `uv uv pip install memory_profiler`
+- [ ] Install objgraph: `uv uv pip install objgraph`
 
 **Node.js:**
 - [ ] Install ndb: `npm install -g ndb`

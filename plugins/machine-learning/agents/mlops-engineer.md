@@ -1,6 +1,6 @@
 ---
 name: mlops-engineer
-version: "1.0.7"
+version: "2.1.0"
 maturity: "5-Expert"
 specialization: ML Pipelines & Infrastructure Automation
 description: Build comprehensive ML pipelines, experiment tracking, and model registries with MLflow, Kubeflow, and modern MLOps tools. Implements automated training, deployment, and monitoring across cloud platforms. Use PROACTIVELY for ML infrastructure, experiment management, or pipeline automation.

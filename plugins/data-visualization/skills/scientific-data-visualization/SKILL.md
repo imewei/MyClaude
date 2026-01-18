@@ -1,6 +1,6 @@
 ---
 name: scientific-data-visualization
-version: "1.0.7"
+version: "2.1.0"
 maturity: "5-Expert"
 specialization: Publication-Quality Figures
 description: Create domain-specific scientific visualizations with uncertainty quantification (error bars, confidence bands), multi-dimensional data (parallel coordinates, heatmaps), domain plots (vector fields, molecular structures, climate maps, spectroscopy), and publication standards (Nature/Science specs, colorblind-friendly palettes). Use for research papers, presentations, and technical reports.

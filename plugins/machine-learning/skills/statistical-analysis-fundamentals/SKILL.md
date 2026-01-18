@@ -1,6 +1,6 @@
 ---
 name: statistical-analysis-fundamentals
-version: "1.0.7"
+version: "2.1.0"
 maturity: "5-Expert"
 specialization: Statistical Analysis
 description: Comprehensive statistical analysis with scipy.stats, statsmodels, and PyMC3 including hypothesis testing, Bayesian methods, regression, experimental design, and causal inference. Use when conducting A/B tests, power analysis, or treatment effect estimation.

@@ -306,7 +306,7 @@ def demo():
         ("How do I create a FastAPI endpoint?", "fastapi-pro", "haiku", "Use @app.get..."),
         ("Show me async patterns", "python-pro", "sonnet", "Here are async patterns..."),
         ("How do I create a FastAPI endpoint?", "fastapi-pro", "haiku", "Use @app.get..."),  # Duplicate
-        ("Install Django", "django-pro", "haiku", "pip install django..."),
+        ("Install Django", "django-pro", "haiku", "uv pip install django..."),
     ]
 
     print("\n--- Simulating Requests ---")

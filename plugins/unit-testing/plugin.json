@@ -1,8 +1,8 @@
 {
   "name": "unit-testing",
   "displayName": "Unit Testing",
-  "version": "1.0.7",
-  "description": "Production-grade test automation and debugging with AI-driven RCA, comprehensive examples, and TDD excellence.",
+  "version": "2.1.0",
+  "description": "Production-grade test automation and debugging with AI-driven RCA, comprehensive examples, and TDD excellence. Optimized for Claude Code v2.1.",
   "author": {
     "name": "Wei Chen",
     "url": "https://myclaude.readthedocs.io/en/latest/"

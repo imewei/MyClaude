@@ -599,8 +599,8 @@ jobs:
           python-version: '3.11'
       - name: Install dependencies
         run: |
-          pip install -r requirements.txt
-          pip install pytest pytest-cov
+          uv uv pip install -r requirements.txt
+          uv uv pip install pytest pytest-cov
       - name: Run unit tests
         run: pytest tests/unit --cov=app --cov-report=xml
       - name: Upload coverage

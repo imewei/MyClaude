@@ -299,7 +299,7 @@ npm audit fix
 
 # Python
 pip-audit
-pip install --upgrade pip pip-audit
+uv uv pip install --upgrade pip pip-audit
 
 # Rust
 cargo audit

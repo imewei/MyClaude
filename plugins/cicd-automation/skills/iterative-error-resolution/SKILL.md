@@ -1,6 +1,6 @@
 ---
 name: iterative-error-resolution
-version: "1.0.7"
+version: "2.1.0"
 maturity: "5-Expert"
 specialization: CI/CD Error Resolution & Knowledge-Based Fixing
 description: Iterative CI/CD error resolution with pattern recognition, automated fixes, and learning from outcomes. Use when debugging GitHub Actions, fixing dependency/build/test failures, or implementing automated error resolution loops.
@@ -44,7 +44,7 @@ jq "del(.dependencies[\"$package_name\"])" package.json > temp.json && mv temp.j
 sed -i "s/${package}==.*/${package}/g" requirements.txt
 
 # Missing module
-pip install "$missing_module" && pip freeze | grep -i "$missing_module" >> requirements.txt
+uv uv pip install "$missing_module" && pip freeze | grep -i "$missing_module" >> requirements.txt
 ```
 
 ### TypeScript Fixes

@@ -1,8 +1,8 @@
 {
   "name": "julia-development",
   "displayName": "Julia Development",
-  "version": "1.0.7",
-  "description": "Production-ready Julia development for scientific computing, SciML, HPC, and Bayesian inference.",
+  "version": "2.1.0",
+  "description": "Production-ready Julia development for scientific computing, SciML, HPC, and Bayesian inference. Optimized for Claude Code v2.1.",
   "author": {
     "name": "Wei Chen",
     "url": "https://myclaude.readthedocs.io/en/latest/"

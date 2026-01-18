@@ -1,6 +1,6 @@
 ---
 name: security-ci-template
-version: "1.0.7"
+version: "2.1.0"
 maturity: "5-Expert"
 specialization: CI/CD Security Scanning
 description: Security scanning and lock file validation templates for CI/CD pipelines. Use when implementing SAST/DAST scanning, dependency vulnerability checks, lock file validation, or automated security gates in GitHub Actions or GitLab CI.
@@ -40,7 +40,7 @@ jobs:
 
       - name: Security Scan
         run: |
-          pip install safety bandit semgrep
+          uv uv pip install safety bandit semgrep
           safety check --json
           bandit -r . -f json -o bandit-report.json
           semgrep --config auto .
@@ -57,7 +57,7 @@ jobs:
 ```yaml
 - name: Validate Lock Files
   run: |
-    pip install poetry
+    uv uv pip install poetry
     poetry check && poetry lock --check
 ```
 
@@ -70,7 +70,7 @@ security_scan:
   stage: test
   image: python:3.12
   script:
-    - pip install safety bandit
+    - uv uv pip install safety bandit
     - safety check --json
     - bandit -r . -ll
   artifacts:

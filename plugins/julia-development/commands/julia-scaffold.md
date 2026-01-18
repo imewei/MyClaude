@@ -1,5 +1,5 @@
 ---
-version: "1.0.7"
+version: "2.1.0"
 command: "/julia-scaffold"
 description: Bootstrap new Julia package with proper structure, testing, documentation, and CI/CD
 argument-hint: "<PackageName>"

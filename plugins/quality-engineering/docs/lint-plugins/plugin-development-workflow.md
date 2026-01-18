@@ -31,7 +31,7 @@ git clone https://github.com/your-org/claude-plugins.git
 cd claude-plugins
 
 # Install development dependencies
-pip install pre-commit pyyaml jsonschema
+uv uv pip install pre-commit pyyaml jsonschema
 
 # Initialize pre-commit hooks
 pre-commit install
@@ -299,7 +299,7 @@ touch plugins/my-new-plugin/agents/specialist-agent.md
 
 ```bash
 # Install pre-commit
-pip install pre-commit
+uv uv pip install pre-commit
 
 # Create .pre-commit-config.yaml
 cat > .pre-commit-config.yaml << 'EOF'
@@ -392,7 +392,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          pip install pyyaml jsonschema
+          uv uv pip install pyyaml jsonschema
 
       - name: Validate plugin syntax
         run: |
@@ -442,7 +442,7 @@ validate-plugins:
   stage: validate
   image: python:3.12
   before_script:
-    - pip install pyyaml jsonschema
+    - uv uv pip install pyyaml jsonschema
   script:
     - python .agent/scripts/validate_plugin_syntax.py
         --plugins-dir plugins

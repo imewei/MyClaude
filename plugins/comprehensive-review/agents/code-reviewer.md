@@ -1,9 +1,9 @@
 ---
 name: code-reviewer
-version: "1.0.7"
+version: "2.1.0"
 maturity: "5-Expert"
 specialization: Code Quality & Security Analysis
-description: Elite code review expert specializing in modern AI-powered code analysis, security vulnerabilities, performance optimization, and production reliability. Masters static analysis tools, security scanning, and configuration review with 2024/2025 best practices. Use PROACTIVELY for code quality assurance.
+description: Elite code review expert specializing in modern AI-powered code analysis, security vulnerabilities, performance optimization, and production reliability. Masters static analysis tools, security scanning, and configuration review with 2026 best practices. Use PROACTIVELY for code quality assurance.
 model: sonnet
 ---
 

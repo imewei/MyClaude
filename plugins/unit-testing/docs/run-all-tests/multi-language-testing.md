@@ -564,7 +564,7 @@ jobs:
           python-version: '3.11'
       - run: |
           cd packages/backend
-          pip install -r requirements-dev.txt
+          uv uv pip install -r requirements-dev.txt
           pytest --cov=src --cov-report=xml
       - uses: codecov/codecov-action@v3
 
@@ -730,7 +730,7 @@ def test_go_service_integration():
 test-backend:
   image: python:3.11
   script:
-    - pip install -r requirements.txt
+    - uv uv pip install -r requirements.txt
     - pytest
 
 test-frontend:

@@ -1,11 +1,11 @@
 # Code Documentation
 
-**Version:** 1.0.7 | **Category:** documentation | **License:** MIT
+**Version:** 2.1.0 | **Category:** documentation | **License:** MIT
 
 Comprehensive code documentation, explanation, and generation with AST-based analysis, visual diagrams, and automated documentation workflows. Features hub-and-spoke architecture achieving 54% command file reduction with comprehensive external documentation.
 
 
-## What's New in v1.0.7
+## What's New in v2.1.0
 
 This release implements **Opus 4.5 optimization** with enhanced token efficiency and standardized documentation.
 
@@ -80,7 +80,7 @@ Creates step-by-step tutorials and educational content from code. Transforms com
 
 ### 🔍 `/code-explain` (v1.0.3)
 
-**Status:** active | **Maturity:** 95% | **Optimization:** 73.7% reduction (1,007 → 265 lines)
+**Status:** active | **Maturity:** 95% | **Optimization:** 73.7% reduction (2.1.0 → 265 lines)
 
 Detailed explanation of code structure, functionality, and design patterns with scientific computing support.
 
@@ -641,6 +641,6 @@ MIT License - See [LICENSE](./LICENSE) for details
 ---
 
 **Author:** Wei Chen
-**Version:** 1.0.7
+**Version:** 2.1.0
 **Category:** Documentation
-**Last Updated:** 2025-10-29
+**Last Updated:** 2026-01-18

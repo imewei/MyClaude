@@ -34,8 +34,8 @@ jobs:
 
       - name: Install dependencies
         run: |
-          pip install -r requirements.txt
-          pip install pylint flake8 mypy bandit safety radon
+          uv uv pip install -r requirements.txt
+          uv uv pip install pylint flake8 mypy bandit safety radon
 
       - name: Run linting
         run: |
@@ -120,7 +120,7 @@ jobs:
       - name: Python security scan
         if: hashFiles('requirements.txt') != ''
         run: |
-          pip install safety
+          uv uv pip install safety
           safety check --json > security_report.json || true
 
       - name: NPM security scan
@@ -178,7 +178,7 @@ jobs:
 
       - name: Install tools
         run: |
-          pip install black isort autoflake
+          uv uv pip install black isort autoflake
 
       - name: Run refactoring
         run: |

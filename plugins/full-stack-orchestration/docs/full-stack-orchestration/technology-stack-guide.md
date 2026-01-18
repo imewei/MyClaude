@@ -316,7 +316,7 @@ ruff==0.1.6
 cd backend
 python -m venv venv
 source venv/bin/activate
-pip install -r requirements.txt
+uv uv pip install -r requirements.txt
 alembic upgrade head
 uvicorn app.main:app --reload
 
@@ -335,7 +335,7 @@ docker-compose up
 cd backend
 python -m venv venv
 source venv/bin/activate
-pip install -r requirements.txt
+uv uv pip install -r requirements.txt
 python manage.py migrate
 python manage.py runserver
 

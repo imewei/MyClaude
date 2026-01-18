@@ -759,7 +759,7 @@ jobs:
         run: |
           # Install dependencies based on project type
           if [ -f "package.json" ]; then npm ci; fi
-          if [ -f "requirements.txt" ]; then pip install -r requirements.txt; fi
+          if [ -f "requirements.txt" ]; then uv uv pip install -r requirements.txt; fi
 
       - name: Run comprehensive validation
         run: |

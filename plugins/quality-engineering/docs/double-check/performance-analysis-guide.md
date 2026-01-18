@@ -74,7 +74,7 @@ py-spy record --format flamegraph -o flamegraph.svg --pid <PID>
 
 ```bash
 # Install
-pip install memory-profiler
+uv uv pip install memory-profiler
 
 # Decorate functions
 @profile

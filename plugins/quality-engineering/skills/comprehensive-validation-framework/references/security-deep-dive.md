@@ -488,7 +488,7 @@ def get_resource(request: Request):
 FROM python:3.12-alpine AS builder
 WORKDIR /app
 COPY requirements.txt .
-RUN pip install --user -r requirements.txt
+RUN uv uv pip install --user -r requirements.txt
 
 FROM python:3.12-alpine
 WORKDIR /app

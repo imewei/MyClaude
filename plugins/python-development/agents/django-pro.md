@@ -1,6 +1,6 @@
 ---
 name: django-pro
-version: "1.0.7"
+version: "2.1.0"
 maturity: "5-Expert"
 specialization: Django 5.x, DRF, ORM Optimization
 description: Master Django 5.x with async views, DRF, Celery, and Django Channels. Build scalable web applications with proper architecture, testing, and deployment. Use PROACTIVELY for Django development, ORM optimization, or complex Django patterns.

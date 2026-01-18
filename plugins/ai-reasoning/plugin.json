@@ -1,8 +1,8 @@
 {
   "name": "ai-reasoning",
   "displayName": "AI Reasoning",
-  "version": "1.0.7",
-  "description": "Advanced AI-powered cognitive tools for problem-solving, meta-analysis, and structured reasoning with chain-of-thought frameworks.",
+  "version": "2.1.0",
+  "description": "Advanced AI-powered cognitive tools for problem-solving, meta-analysis, and structured reasoning with chain-of-thought frameworks. Optimized for Claude Code v2.1.",
   "author": {
     "name": "Wei Chen",
     "url": "https://myclaude.readthedocs.io/en/latest/"

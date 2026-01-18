@@ -1,8 +1,8 @@
 {
   "name": "frontend-mobile-development",
   "displayName": "Frontend & Mobile Development",
-  "version": "1.0.7",
-  "description": "Frontend and mobile development with production-ready patterns for React 19, Next.js 15, React Native, Flutter, and native iOS/Android.",
+  "version": "2.1.0",
+  "description": "Frontend and mobile development with production-ready patterns for React 19, Next.js 15, React Native, Flutter, and native iOS/Android. Optimized for Claude Code v2.1.",
   "author": {
     "name": "Wei Chen",
     "url": "https://myclaude.readthedocs.io/en/latest/"

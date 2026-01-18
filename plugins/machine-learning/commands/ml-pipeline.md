@@ -1,5 +1,5 @@
 ---
-version: "1.0.7"
+version: "2.1.0"
 command: /ml-pipeline
 description: Design and implement production-ready ML pipelines with multi-agent MLOps orchestration
 execution_modes:
@@ -13,7 +13,7 @@ external_docs:
   monitoring: "../docs/ml-pipeline/monitoring-frameworks.md"
   practices: "../docs/ml-pipeline/best-practices.md"
   criteria: "../docs/ml-pipeline/success-criteria.md"
-allowed-tools: [Bash, Read, Write, Task]
+allowed-tools: [Bash, Read, Write, Task, Bash(uv:*)]
 ---
 
 # ML Pipeline

@@ -12,7 +12,7 @@ Usage:
     python md_lennard_jones.py
 
 Requirements:
-    pip install jax jax-md matplotlib
+    uv pip install jax jax-md matplotlib
 """
 
 import jax

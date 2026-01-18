@@ -1,5 +1,5 @@
 ---
-version: "1.0.7"
+version: "2.1.0"
 category: code-migration
 command: /adopt-code
 description: Analyze and modernize scientific computing codebases while preserving numerical accuracy
@@ -16,7 +16,7 @@ external_docs:
   - docs/code-migration/performance-optimization-techniques.md
   - docs/code-migration/integration-testing-patterns.md
   - docs/code-migration/scientific-computing-best-practices.md
-allowed-tools: Bash(find:*), Bash(ls:*), Bash(grep:*), Bash(wc:*), Bash(du:*), Bash(head:*), Bash(tail:*), Bash(file:*)
+allowed-tools: Bash(find:*), Bash(ls:*), Bash(grep:*), Bash(wc:*), Bash(du:*), Bash(head:*), Bash(tail:*), Bash(file:*), Bash(uv:*)
 ---
 
 # Scientific Code Adoption

@@ -1,9 +1,10 @@
 ---
-version: "1.0.7"
+version: "2.1.0"
 category: codebase-cleanup
 purpose: Dependency security scanning and vulnerability analysis
 execution_time: {quick: "2-5min", standard: "5-15min", comprehensive: "15-45min"}
 external_docs: [dependency-security-guide.md, vulnerability-analysis-framework.md]
+allowed-tools: [Bash, Read, Task, Bash(uv:*)]
 ---
 
 # Dependency Audit
@@ -62,7 +63,7 @@ Risk = CVSS × DirectMult × ExploitMult × VectorMult × PatchMult
 
 ```bash
 npm update pkg1@^2.1.5
-pip install --upgrade pkg2==3.0.1
+uv uv pip install --upgrade pkg2==3.0.1
 npm test && pytest
 ```
 

@@ -2,13 +2,13 @@
 
 AI-assisted debugging with LLM-driven RCA, automated log correlation, observability integration, SRE practices, and developer experience optimization for distributed systems.
 
-**Version:** 1.0.7 | **Category:** dev-tools | **License:** MIT
+**Version:** 2.1.0 | **Category:** dev-tools | **License:** MIT
 
 [![Maturity: Production Ready](https://img.shields.io/badge/maturity-production%20ready-green)]()
 [![Agents: 2](https://img.shields.io/badge/agents-2-blue)]()
 [![Skills: 3](https://img.shields.io/badge/skills-3-blue)]()
 
-## What's New in v1.0.7
+## What's New in v2.1.0
 
 This release implements **Opus 4.5 optimization** with enhanced token efficiency and standardized documentation.
 
@@ -21,7 +21,7 @@ This release implements **Opus 4.5 optimization** with enhanced token efficiency
 - **Cross-Reference Tables**: Quick-reference format for delegation and integration patterns
 
 
-## 🎯 What's New in v1.0.7
+## 🎯 What's New in v2.1.0
 
 - **New dx-optimizer agent (v2.0)** with systematic 5-step framework and Constitutional AI
 - **Enhanced skill discoverability** with 3x more specific use cases

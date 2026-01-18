@@ -159,8 +159,8 @@ jobs:
 
       - name: Install dependencies
         run: |
-          pip install -r requirements.txt
-          pip install pytest great-expectations
+          uv uv pip install -r requirements.txt
+          uv uv pip install pytest great-expectations
 
       - name: Run data validation
         run: |

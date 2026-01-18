@@ -1,8 +1,8 @@
 {
   "name": "jax-implementation",
   "displayName": "JAX Implementation",
-  "version": "1.0.7",
-  "description": "Production-ready JAX scientific computing with NumPyro Bayesian inference, Flax NNX neural networks, NLSQ optimization, and physics simulations.",
+  "version": "2.1.0",
+  "description": "Production-ready JAX scientific computing with NumPyro Bayesian inference, Flax NNX neural networks, NLSQ optimization, and physics simulations. Optimized for Claude Code v2.1.",
   "author": {
     "name": "Wei Chen",
     "url": "https://myclaude.readthedocs.io/en/latest/"

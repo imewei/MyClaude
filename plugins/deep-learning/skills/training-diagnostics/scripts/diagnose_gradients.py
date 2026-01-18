@@ -21,7 +21,7 @@ try:
     import torch
     import torch.nn as nn
 except ImportError:
-    print("Error: PyTorch is required. Install with: pip install torch")
+    print("Error: PyTorch is required. Install with: uv pip install torch")
     sys.exit(1)
 
 

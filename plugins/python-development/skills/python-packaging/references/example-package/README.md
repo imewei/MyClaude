@@ -15,10 +15,10 @@
 
 ```bash
 # From PyPI (once published)
-pip install example-package
+uv uv pip install example-package
 
 # Development installation
-pip install -e ".[dev]"
+uv uv pip install -e ".[dev]"
 ```
 
 ## Quick Start
@@ -45,7 +45,7 @@ python -m venv .venv
 source .venv/bin/activate  # On Windows: .venv\Scripts\activate
 
 # Install development dependencies
-pip install -e ".[dev]"
+uv uv pip install -e ".[dev]"
 ```
 
 ### Running Tests

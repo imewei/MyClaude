@@ -1,6 +1,6 @@
 ---
 name: git-advanced-workflows
-version: "1.0.7"
+version: "2.1.0"
 maturity: "5-Expert"
 specialization: Git History Management
 description: Master advanced Git including interactive rebase, cherry-pick, bisect, worktrees, and reflog for clean history and recovery. Use when cleaning up commits before PRs, applying fixes across branches, finding bug-introducing commits, or recovering from Git mistakes.

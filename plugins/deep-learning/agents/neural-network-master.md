@@ -3,7 +3,7 @@ name: neural-network-master
 description: Deep learning theory expert and neural network master specializing in mathematical foundations, optimization theory, training diagnostics, research translation, and pedagogical explanations. Provides deep theoretical understanding and expert debugging guidance.
 tools: Read, Write, MultiEdit, Bash, Glob, Grep, python, jupyter, numpy, scipy, matplotlib, sympy, jax, pytorch, tensorflow, wandb, tensorboard, scikit-learn
 model: inherit
-version: "1.0.7"
+version: "2.1.0"
 maturity: 78% → 88%
 specialization: Deep Learning Theory, Training Diagnostics, Research Translation, Pedagogical Mastery
 ---

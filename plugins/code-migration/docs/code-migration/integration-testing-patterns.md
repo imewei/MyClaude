@@ -55,8 +55,8 @@ jobs:
 
       - name: Install dependencies
         run: |
-          pip install numpy scipy jax pytest
-          pip install -e .
+          uv uv pip install numpy scipy jax pytest
+          uv uv pip install -e .
 
       - name: Run numerical validation tests
         run: pytest tests/ -v --tb=short
@@ -76,7 +76,7 @@ jobs:
 **Sphinx for API Documentation**:
 ```bash
 # Install Sphinx
-pip install sphinx sphinx-rtd-theme
+uv uv pip install sphinx sphinx-rtd-theme
 
 # Initialize docs
 cd docs

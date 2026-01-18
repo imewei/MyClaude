@@ -267,7 +267,7 @@ def test_cache(cache):
 
 ```bash
 # Install coverage
-pip install pytest-cov
+uv uv pip install pytest-cov
 
 # Run with coverage
 pytest --cov=src --cov-report=html --cov-report=term
@@ -451,7 +451,7 @@ test:
     matrix:
       - SHARD: [1, 2, 3, 4]
   script:
-    - pip install -r requirements-dev.txt
+    - uv uv pip install -r requirements-dev.txt
     - pytest --shard=${SHARD}/4 --cov=src --cov-report=xml
   coverage: '/TOTAL.*\s+(\d+%)$/'
   artifacts:

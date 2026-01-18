@@ -1,5 +1,5 @@
 ---
-version: "1.0.7"
+version: "2.1.0"
 category: "cicd-automation"
 command: "/fix-commit-errors"
 execution-modes:
@@ -11,7 +11,7 @@ documentation:
   error-patterns: "../docs/cicd-automation/error-pattern-library.md"
   fix-strategies: "../docs/cicd-automation/fix-strategies.md"
 description: Automatically analyzes GitHub Actions failures, identifies root causes, applies intelligent solutions, validates, and reruns workflows with adaptive learning.
-allowed-tools: Bash(gh:*), Bash(git:*), Bash(npm:*), Bash(yarn:*), Bash(pip:*), Bash(cargo:*), Bash(go:*)
+allowed-tools: Bash(gh:*), Bash(git:*), Bash(npm:*), Bash(yarn:*), Bash(uv:*), Bash(cargo:*), Bash(go:*)
 argument-hint: [workflow-id|commit-sha|pr-number] [--auto-fix] [--learn] [--mode=quick-fix|standard|comprehensive]
 color: red
 ---

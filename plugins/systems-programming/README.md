@@ -2,14 +2,14 @@
 
 Production-grade systems programming with C, C++, Rust, and Go. Features systematic development processes, quality assurance checkpoints, comprehensive examples, and battle-tested patterns for memory safety, concurrency, and performance.
 
-**Version:** 1.0.7 | **Category:** development | **License:** MIT
+**Version:** 2.1.0 | **Category:** development | **License:** MIT
 
 [Full Documentation →](https://myclaude.readthedocs.io/en/latest/plugins/systems-programming.html) | [CHANGELOG](CHANGELOG.md)
 
 ---
 
 
-## What's New in v1.0.7
+## What's New in v2.1.0
 
 This release implements **Opus 4.5 optimization** with enhanced token efficiency and standardized documentation.
 
@@ -22,7 +22,7 @@ This release implements **Opus 4.5 optimization** with enhanced token efficiency
 - **Cross-Reference Tables**: Quick-reference format for delegation and integration patterns
 
 
-## What's New in v1.0.7
+## What's New in v2.1.0
 
 All 4 agents now include:
 - **8-step systematic development workflow** with self-verification checkpoints

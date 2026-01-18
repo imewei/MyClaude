@@ -1,65 +1,62 @@
-# Technical Guidelines
+# MyClaude Project Guidelines
 
-## 0. Core Philosophy & Priorities
-**Priority Hierarchy:**
-1. **Correctness/Parity** - The math must be right
-2. **Full-Data Integrity** - No silent data loss
-3. **Determinism** - Reproducible seeds/versions
-4. **Performance** - JAX/JIT optimization
-5. **UX Polish** - Theming/Responsiveness
+## 0. Quick Start & Commands
+**Environment:** Python 3.12+ | Manager: `uv` | Framework: JAX (NumPyro, Equinox)
 
-**Documentation Tone:** Factual and technical only. Avoid marketing language.
-
----
-
-## 1. Environment & Package Management
-- **Python:** Strict **3.12+** (`requires-python = ">=3.12"`)
-- **Manager:** **`uv`** for all dependency resolution and environment management
-- **Virtual Environment:** Local `.venv/` only; never global/user site-packages
-- **Lockfile:** `uv.lock` is single source of truth; commit on any dependency change
-- **Execution:** Use `uv run ...` or explicit `uv sync` + activation
+- **Install:** `uv sync` (Updates `uv.lock`)
+- **Run:** `uv run python <script.py>`
+- **Test:** `uv run pytest`
+- **Lint:** `uv run ruff check .`
+- **Type Check:** `uv run mypy .`
+- **Docs:** `uv run sphinx-build docs docs/_build`
 
 ---
 
-## 2. Computational Core (JAX-First)
-- **JAX-First Rule:** Numerical core runs entirely in JAX. Leverage `jit`, `vmap`, `pmap`
-- **NumPy:** Limit to I/O boundaries and small glue logic
-- **Data Transfer:** Minimize Host ↔ Device transfers; avoid `.numpy()` in hot paths
-- **Interpolation:** Use **`interpax`** (not scipy.interpolate); must be JIT-safe
-- **Optimization Stack:**
-  - **NLSQ:** `/home/wei/Documents/GitHub/NLSQ` - GPU-accelerated non-linear least squares (not scipy)
-  - **Solvers:** `optimistix` for root-finding and least-squares
-  - **Optimizers:** `optax` for gradient schedules
+## 1. Critical Priorities (Non-Negotiable)
+1.  **Correctness:** Math must be theoretically exact.
+2.  **Integrity:** No silent data loss/truncation.
+3.  **Reproducibility:** Explicit seeds, version locking.
+4.  **Performance:** JAX/JIT compilation.
+5.  **UX:** Responsive PyQt/PySide6 interfaces.
+
+**Prohibited:**
+- Silent downsampling or random SVD.
+- `from module import *` (wildcard imports).
+- Global/user site-packages (local `.venv` only).
+- Non-JIT-safe interpolation (Use `interpax`).
 
 ---
 
-## 3. Data Integrity
-- **Prohibited:** Silent downsampling, truncation, subsampling, random SVD
-- **Numerical precision and reproducibility take priority over computational speed**
-- **Streaming:** Permitted only if mathematically equivalent to full-data processing
-- **Subsampling:** If ever used, must be optional, off by default, explicitly logged
-- **Boundary Validation:** Runtime checks at all I/O for shape, dtype, monotonicity, missing values
+## 2. Computational Architecture
+- **Core:** JAX-first. Minimize Host↔Device transfers.
+- **Optimization:**
+  - **NLSQ:** GPU-accelerated non-linear least squares.
+  - **Solvers:** `optimistix` (root-finding).
+  - **Schedule:** `optax`.
+- **Bayesian Pipeline:**
+  - **Engine:** NumPyro (preferred).
+  - **Workflow:** NLSQ (warm-start) → NUTS/CMC.
+  - **Diagnostics:** Mandatory ArviZ (R-hat, ESS, BFMI).
 
 ---
 
-## 4. Bayesian Inference Pipeline
-- **Engines:** NumPyro (preferred), Oryx, Blackjax
-- **Strategy:** NLSQ → NUTS/CMC pipeline; use NLSQ for MAP/LSQ estimates to warm-start NUTS/CMC
-- **Diagnostics (Mandatory):** ArviZ suite - R-hat, ESS, divergences, BFMI
-- **Reproducibility:** Artifacts must include random seed, software versions, config snapshot
+## 3. Data & Validation
+- **I/O Boundaries:** Runtime validation for shape, dtype, NaN, and monotonicity.
+- **Streaming:** Only allowed if mathematically equivalent to full-batch.
+- **Subsampling:** Off by default. Must be explicitly logged if enabled.
 
 ---
 
-## 5. Code Quality
-- **Imports:** Explicit only; no wildcards (`from module import *`)
-- **Typing:** Strict type hints at public APIs, config objects, I/O boundaries
-- **Logging:** Structured logging for key events (data load, solver convergence, diagnostics)
-- **Failure Modes:** No silent fallbacks; log errors clearly; CPU fallback only if semantics preserved
+## 4. UI & Visualization
+- **Framework:** PyQt/PySide6 (View layer only).
+- **Logic:** Decoupled. Numerical logic stays in JAX.
+- **Plotting:** PyQtGraph (Interactive) / Matplotlib (Publication).
+- **Theming:** System-aware Light/Dark modes.
 
 ---
 
-## 6. GUI & Visualization
-- **Framework:** Support PyQt/PySide6; do not hard-lock to single binding
-- **Separation:** GUI is view layer only; numerical semantics in JAX-based APIs
-- **Theming:** Support system Light/Dark with user override; no bespoke CSS
-- **Plotting:** PyQtGraph for interactive, Matplotlib for publication; theme-aware palettes
+## 5. Development Standards
+- **Lockfile:** `uv.lock` is single source of truth.
+- **Typing:** Strict hints at API boundaries and config objects.
+- **Logging:** Structured logging for convergence and diagnostics.
+- **Tone:** Factual, technical documentation only.

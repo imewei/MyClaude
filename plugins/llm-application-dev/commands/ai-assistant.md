@@ -1,9 +1,9 @@
 ---
-version: "1.0.7"
+version: "2.1.0"
 category: "llm-application-dev"
 command: "/ai-assistant"
 description: Build production-ready AI assistants with NLU, conversation management, and intelligent response generation
-allowed-tools: Bash(find:*), Bash(git:*)
+allowed-tools: Bash(find:*), Bash(git:*), Bash(uv:*)
 argument-hint: "<assistant_description>"
 execution_modes:
   quick: "5-10 minutes"

@@ -1,5 +1,5 @@
 ---
-version: "1.0.7"
+version: "2.1.0"
 command: /julia-package-ci
 description: Generate GitHub Actions CI/CD workflows for Julia packages
 ---

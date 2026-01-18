@@ -168,7 +168,7 @@ jobs:
       - name: Run Safety
         if: matrix.scanner == 'safety'
         run: |
-          pip install safety
+          uv uv pip install safety
           safety check --json --output safety-report.json || true
         continue-on-error: true
 

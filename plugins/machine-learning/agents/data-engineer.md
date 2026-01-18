@@ -1,6 +1,6 @@
 ---
 name: data-engineer
-version: "1.0.7"
+version: "2.1.0"
 maturity: "5-Expert"
 specialization: Data Pipelines & ETL Architecture
 description: Expert data engineer specializing in scalable data pipelines, ETL/ELT architecture, data quality frameworks, and production data infrastructure. Handles data ingestion, validation, versioning, and storage optimization for ML systems.

@@ -3,7 +3,7 @@ name: neural-architecture-engineer
 description: Neural architecture specialist for deep learning design and training strategies. Expert in architecture patterns (transformers, CNNs, RNNs), multi-framework implementation (Flax, Equinox, Haiku, PyTorch). Delegates JAX optimization to jax-pro and MLOps to ml-pipeline-coordinator.
 tools: Read, Write, MultiEdit, Bash, Glob, Grep, python, jupyter, jax, flax, equinox, haiku, keras, optax, wandb, tensorboard
 model: inherit
-version: "1.0.7"
+version: "2.1.0"
 maturity: 75% → 85%
 specialization: Neural Architecture Design, Multi-Framework Implementation, Training Strategy
 ---

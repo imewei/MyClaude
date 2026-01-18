@@ -1,6 +1,6 @@
 ---
 name: machine-learning-essentials
-version: "1.0.7"
+version: "2.1.0"
 maturity: "5-Expert"
 specialization: Core ML Workflows
 description: Core ML workflows with scikit-learn, XGBoost, LightGBM including algorithm selection, cross-validation, hyperparameter tuning (GridSearch, Optuna), handling imbalanced data (SMOTE), model evaluation, SHAP interpretability, and deployment. Use when building classification/regression models or evaluating ML performance.

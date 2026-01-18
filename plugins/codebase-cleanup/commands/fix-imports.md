@@ -1,5 +1,5 @@
 ---
-version: "1.0.7"
+version: "2.1.0"
 description: Systematically fix broken imports across the codebase with session continuity
 argument-hint: [path-or-pattern] [resume|status|new]
 category: codebase-cleanup
@@ -9,7 +9,7 @@ execution_time:
   standard: 10-20 minutes
   comprehensive: 20-45 minutes
 color: purple
-allowed-tools: Bash, Read, Write, Edit, Glob, Grep, Task
+allowed-tools: Bash, Read, Write, Edit, Glob, Grep, Task, Bash(uv:*)
 external_docs:
   - import-resolution-strategies.md
   - session-management-guide.md

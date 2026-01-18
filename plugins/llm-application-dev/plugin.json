@@ -1,8 +1,8 @@
 {
   "name": "llm-application-dev",
   "displayName": "LLM Application Development",
-  "version": "1.0.7",
-  "description": "LLM application development with prompt engineering, RAG implementation, vector databases, LangChain, and modern AI integration patterns for building intelligent applications",
+  "version": "2.1.0",
+  "description": "LLM application development with prompt engineering, RAG implementation, vector databases, LangChain, and modern AI integration patterns. Optimized for Claude Code v2.1.",
   "author": {
     "name": "Wei Chen",
     "url": "https://myclaude.readthedocs.io/en/latest/"

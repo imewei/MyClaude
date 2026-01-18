@@ -1,8 +1,8 @@
 {
   "name": "machine-learning",
   "displayName": "Machine Learning",
-  "version": "1.0.7",
-  "description": "Advanced machine learning and MLOps with production pipelines, multi-agent orchestration, and comprehensive experiment tracking.",
+  "version": "2.1.0",
+  "description": "Advanced machine learning and MLOps with production pipelines, multi-agent orchestration, and comprehensive experiment tracking. Optimized for Claude Code v2.1.",
   "author": {
     "name": "Wei Chen",
     "url": "https://myclaude.readthedocs.io/en/latest/"

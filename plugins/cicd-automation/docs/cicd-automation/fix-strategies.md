@@ -69,13 +69,13 @@ npm install --legacy-peer-deps
 **Python/Pip**:
 ```bash
 # Upgrade package
-pip install --upgrade package-name
+uv uv pip install --upgrade package-name
 
 # Clear cache
 pip cache purge
 
 # Reinstall requirements
-pip install -r requirements.txt --force-reinstall
+uv uv pip install -r requirements.txt --force-reinstall
 ```
 
 **Go**:
