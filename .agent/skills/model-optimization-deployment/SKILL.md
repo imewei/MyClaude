@@ -26,6 +26,7 @@ Optimize neural networks and deploy to production environments.
 ## Quantization
 
 ```python
+# allow-torch
 import torch
 
 # Post-Training Dynamic Quantization

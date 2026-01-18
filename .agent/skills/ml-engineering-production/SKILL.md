@@ -35,6 +35,7 @@ ml-project/
 ```python
 from dataclasses import dataclass
 from typing import Optional
+# allow-torch
 import torch
 
 @dataclass
@@ -65,6 +66,7 @@ class MLModel:
 
 ```python
 import pytest
+# allow-torch
 import torch
 
 class TestModel:

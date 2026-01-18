@@ -30,6 +30,7 @@ Production ML model deployment from local serving to cloud-scale with monitoring
 ```python
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
+# allow-torch
 import torch
 
 app = FastAPI(title="ML Model API")

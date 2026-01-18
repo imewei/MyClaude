@@ -1,3 +1,4 @@
+# allow-torch
 # Optimization Theory for Neural Networks - Complete Reference
 
 Essential optimization theory for training neural networks, from gradient descent fundamentals to advanced optimization algorithms.

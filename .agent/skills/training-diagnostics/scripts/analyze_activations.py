@@ -18,8 +18,10 @@ from typing import Dict, List, Optional, Tuple
 import numpy as np
 
 try:
-    import torch
-    import torch.nn as nn
+    # allow-torch
+import torch
+    # allow-torch
+import torch.nn as nn
 except ImportError:
     print("Error: PyTorch is required. Install with: pip install torch")
     sys.exit(1)

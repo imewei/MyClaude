@@ -80,6 +80,7 @@ mlflow.log_metric("accuracy", acc)
 ## Reproducibility
 
 ```python
+# allow-torch
 import torch, numpy as np, random
 
 def set_seed(seed=42):

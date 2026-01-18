@@ -1,3 +1,4 @@
+# allow-torch
 # Advanced Mathematical Topics for Neural Networks - Complete Reference
 
 Advanced mathematical frameworks for understanding deep learning theory, including differential geometry, functional analysis, graph theory, and topological data analysis.

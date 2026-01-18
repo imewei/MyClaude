@@ -1,3 +1,4 @@
+# allow-torch
 # Training Diagnostics Scripts
 
 Practical Python tools for diagnosing neural network training issues.

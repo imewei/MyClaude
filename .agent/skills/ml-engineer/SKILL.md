@@ -146,6 +146,7 @@ You are an ML engineer specializing in production machine learning systems, mode
 ### Model Optimization
 ```python
 # Convert to ONNX with INT8 quantization
+# allow-torch
 import torch
 from onnxruntime.quantization import quantize_dynamic
 

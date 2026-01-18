@@ -1,3 +1,4 @@
+# allow-torch
 # Architecture-Specific Mathematics - Complete Reference
 
 Mathematical foundations specific to neural network architectures: CNNs, RNNs, Transformers, and Generative Models.

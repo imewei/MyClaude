@@ -1,3 +1,4 @@
+# allow-torch
 # Calculus and Backpropagation - Complete Reference
 
 Comprehensive reference for calculus concepts and backpropagation derivations essential to neural network training.

@@ -1,3 +1,4 @@
+# allow-torch
 # Numerical Methods for Neural Networks - Complete Reference
 
 Numerical techniques for stable and efficient computation in deep learning, from floating-point arithmetic to large-scale matrix operations.

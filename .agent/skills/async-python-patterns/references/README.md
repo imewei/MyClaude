@@ -18,7 +18,7 @@ This directory contains comprehensive reference materials for mastering async Py
   - `task-scheduling.md` - Task scheduling visualization
 
 ### Interactive Examples
-- **[examples/](examples/)** - Complete, runnable code examples
+- **[examples](examples)** - Complete, runnable code examples
   - `async-web-scraper.py` - Real-world async HTTP client
   - `async-database-pool.py` - Connection pooling pattern
   - `rate-limited-api.py` - Rate limiting implementation

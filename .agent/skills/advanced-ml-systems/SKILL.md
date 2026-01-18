@@ -26,6 +26,7 @@ Deep learning frameworks, distributed training, and production-ready optimizatio
 
 ### torch.compile and Mixed Precision
 ```python
+# allow-torch
 import torch
 from torch.cuda.amp import autocast, GradScaler
 
@@ -58,6 +59,7 @@ for batch in dataloader:
 
 ### DDP Pattern
 ```python
+# allow-torch
 import torch.distributed as dist
 from torch.nn.parallel import DistributedDataParallel as DDP
 from torch.utils.data.distributed import DistributedSampler

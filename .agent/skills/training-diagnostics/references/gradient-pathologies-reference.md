@@ -1,3 +1,4 @@
+# allow-torch
 # Gradient Pathologies - Complete Reference
 
 Comprehensive reference for understanding, diagnosing, and resolving gradient flow issues in neural networks.

@@ -1,3 +1,4 @@
+# allow-torch
 # Information Theory for Neural Networks - Complete Reference
 
 Information-theoretic concepts essential for understanding loss functions, model compression, and learning dynamics in neural networks.

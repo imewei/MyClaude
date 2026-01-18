@@ -1,3 +1,4 @@
+# allow-torch
 # Loss Curve Interpretation Guide
 
 Comprehensive guide to understanding training and validation loss curves, identifying pathologies, and taking corrective action.

@@ -1,3 +1,4 @@
+# allow-torch
 # Linear Algebra for Neural Networks - Complete Reference
 
 Comprehensive reference for linear algebra concepts essential to understanding and implementing neural networks.

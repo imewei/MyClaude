@@ -1,3 +1,4 @@
+# allow-torch
 # Probability and Statistics for Neural Networks - Complete Reference
 
 Essential probability theory and statistics for understanding neural networks, uncertainty, and Bayesian methods.

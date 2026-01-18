@@ -22,7 +22,20 @@ def validate_integrity():
         print(f"Error parsing {index_path}: {e}")
         return
 
-    # 1. Collect indexed files
+    # 0. Build File Set for Fast Lookups (Optimization)
+    print("Building file map...")
+    all_files_set = set()
+    for root, dirs, files in os.walk(base_dir):
+        # Skip hidden directories and .git
+        dirs[:] = [d for d in dirs if not d.startswith('.')]
+        for d in dirs:
+            all_files_set.add(os.path.abspath(os.path.join(root, d)))
+        for file in files:
+            all_files_set.add(os.path.abspath(os.path.join(root, file)))
+
+    print(f"Indexed {len(all_files_set)} files and directories in filesystem.")
+
+    # 1. Collect indexed files from JSON
     indexed_files = set()
     categories = ['skills', 'workflows']
     for category in categories:
@@ -68,22 +81,26 @@ def validate_integrity():
     else:
         print(f"Found {orphan_count} orphaned files (not in skills_index.json).")
 
-    # 3. Check Broken Links
+    # 3. Check Broken Links (Optimized)
     print("\n--- Broken Link Check ---")
     broken_count = 0
     link_pattern = re.compile(r'\[([^\]]+)\]\(([^)]+)\)')
 
+    # Pre-compile JAX check regex
+    torch_import_pattern = re.compile(r'^\s*(import torch|from torch)', re.MULTILINE)
+
     for root, dirs, files in os.walk(base_dir):
         dirs[:] = [d for d in dirs if not d.startswith('.')]
         for file in files:
-            if file.endswith('.md'):
-                file_path = os.path.join(root, file)
-                rel_file_path = os.path.relpath(file_path, base_dir)
+            file_path = os.path.join(root, file)
+            rel_file_path = os.path.relpath(file_path, base_dir)
 
-                try:
-                    with open(file_path, 'r') as f:
-                        content = f.read()
+            try:
+                with open(file_path, 'r', encoding='utf-8', errors='ignore') as f:
+                    content = f.read()
 
+                # A. Link Checking
+                if file.endswith('.md'):
                     matches = link_pattern.findall(content)
                     for text, target in matches:
                         # Skip external links, anchors, and absolute paths
@@ -95,33 +112,47 @@ def validate_integrity():
                             continue
 
                         # Resolve relative path
-                        # If target starts with '/', it's absolute (already skipped above usually, but be safe)
-                        # We treat paths relative to the current file
                         target_path = target.split('#')[0] # Remove anchor
                         if not target_path:
                             continue
 
-                        # Clean up path (sometimes people leave spaces?)
+                        # Clean up path
                         target_path = target_path.strip()
 
                         abs_target_path = os.path.abspath(os.path.join(root, target_path))
 
-                        if not os.path.exists(abs_target_path):
-                            # Heuristic to filter code false positives
-                            # Code often looks like [index](arg)
-                            if " " in target or "," in target or "(" in target:
-                                # Likely code, ignore
-                                continue
+                        # OPTIMIZATION: Check against set instead of disk
+                        # But ONLY if the file is inside the .agent directory (base_dir)
+                        # If it points outside (e.g. to plugins/), we must check disk
+                        is_internal = abs_target_path.startswith(base_dir)
 
-                            # Ignore short variable-like targets typically found in code snippets (e.g. [-1](x))
+                        exists = False
+                        if is_internal:
+                            exists = abs_target_path in all_files_set
+                        else:
+                            exists = os.path.exists(abs_target_path)
+
+                        if not exists:
+                            # Heuristic to filter code false positives
+                            if " " in target or "," in target or "(" in target:
+                                continue
                             if len(target) <= 3 and "." not in target and "/" not in target:
                                 continue
 
                             print(f"[BROKEN] In {rel_file_path}: Link '{text}' -> '{target}' not found")
                             broken_count += 1
 
-                except Exception as e:
-                    print(f"Error reading {rel_file_path}: {e}")
+                # B. JAX Compliance Check
+                if file.endswith('.py') or file.endswith('.md'):
+                    if torch_import_pattern.search(content):
+                        # Allow explicit whitelisting via comment
+                        if "# allow-torch" not in content:
+                            print(f"[POLICY] In {rel_file_path}: Found PyTorch import. Project is JAX-first. Add '# allow-torch' if strictly necessary.")
+                            # We treat policy violations as warnings for now, not broken counts, unless we want to enforce strictly
+                            # broken_count += 1
+
+            except Exception as e:
+                print(f"Error reading {rel_file_path}: {e}")
 
     if broken_count == 0:
         print("No broken links found.")
