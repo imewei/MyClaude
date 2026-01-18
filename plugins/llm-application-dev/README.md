@@ -519,7 +519,7 @@ See [CHANGELOG.md](CHANGELOG.md) for version history and upgrade guide.
 
 ```bash
 cd docs/
-make html
+make -j4 html
 ```
 
 ---

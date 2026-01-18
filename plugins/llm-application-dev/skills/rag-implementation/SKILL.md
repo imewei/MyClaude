@@ -192,6 +192,15 @@ def evaluate_rag(qa_chain, test_cases):
     return {k: sum(v)/len(v) for k, v in metrics.items()}
 ```
 
+## Parallelization Strategies
+
+| Stage | Implementation | Benefit |
+|-------|----------------|---------|
+| **Ingestion** | `ProcessPoolExecutor` | Parallel PDF parsing & chunking |
+| **Embedding** | Async batch API | Maximize GPU utilization / API rate limits |
+| **Retrieval** | `asyncio.gather` | Query multiple vector stores concurrently |
+| **Reranking** | Batch inference | Score candidates in one GPU pass |
+
 ## Best Practices
 
 | Practice | Implementation |

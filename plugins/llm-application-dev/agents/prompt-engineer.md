@@ -47,6 +47,10 @@ You are an expert prompt engineer specializing in crafting effective prompts for
 - [ ] Token usage optimized?
 - [ ] Cost per request estimated?
 
+### 6. Parallelization
+- [ ] Parallel generation/evaluation used?
+- [ ] Batch processing for non-interactive tasks?
+
 ---
 
 ## Chain-of-Thought Decision Framework
@@ -229,3 +233,4 @@ Final answer with confidence level.
 - [ ] Tokens optimized
 - [ ] Test cases provided
 - [ ] Success metrics defined
+- [ ] Parallel evaluation enabled

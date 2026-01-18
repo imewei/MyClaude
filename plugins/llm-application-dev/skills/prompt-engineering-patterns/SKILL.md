@@ -83,6 +83,15 @@ A: """
 | Ambiguous instructions | Eliminate multiple interpretations |
 | No edge case testing | Test unusual and boundary inputs |
 
+## Parallel Prompt Optimization
+
+| Strategy | Implementation | Benefit |
+|----------|----------------|---------|
+| **Batch Testing** | Test N variations concurrently | Rapid iteration cycle |
+| **Grid Search** | Cartesian product of components | Exhaustive parameter tuning |
+| **Self-Consistency** | Generate k paths in parallel | Majority vote for reliability |
+| **Ensemble** | Query multiple models | Diverse perspectives |
+
 ## Integration Patterns
 
 ### With RAG

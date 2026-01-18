@@ -142,6 +142,15 @@ from langchain.callbacks.streaming_stdout import StreamingStdOutCallbackHandler
 llm = OpenAI(streaming=True, callbacks=[StreamingStdOutCallbackHandler()])
 ```
 
+## Parallel Execution
+
+| Pattern | Implementation | Use Case |
+|---------|----------------|----------|
+| **Async Chains** | `await chain.arun()` | Concurrent chain execution |
+| **MapReduce** | `MapReduceDocumentsChain` | Summarize large docs in parallel |
+| **Router** | `MultiPromptChain` | Route to specialized sub-chains |
+| **Batching** | `llm.generate([prompts])` | Batched inference for throughput |
+
 ## Best Practices
 
 | Practice | Implementation |

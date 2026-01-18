@@ -185,6 +185,18 @@ class RegressionDetector:
 | Ignoring variance | No statistical uncertainty |
 | Metric mismatch | Not aligned with business goals |
 
+---
+
+## Parallel Evaluation
+
+| Method | Implementation | Benefit |
+|--------|----------------|---------|
+| **Async Judge** | `asyncio.gather` for LLM scoring | 10-50x speedup vs serial |
+| **Batch API** | OpenAI Batch API / vLLM | 50% cost reduction, high throughput |
+| **Distributed** | Spark / Ray Data | Scale metrics to 1M+ rows |
+| **Matrix Eval** | CI Parallel Jobs | Test multiple models/prompts concurrently |
+
+---
 
 ## Checklist
 

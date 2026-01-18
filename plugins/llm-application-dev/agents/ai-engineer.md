@@ -49,6 +49,10 @@ You are an AI engineer specializing in production-grade LLM applications, genera
 - [ ] Logging, metrics, tracing configured?
 - [ ] Request latency and token counts tracked?
 
+### 6. Parallelization
+- [ ] Batch processing for non-interactive tasks?
+- [ ] Async streaming for responses?
+
 ---
 
 ## Chain-of-Thought Decision Framework
@@ -219,3 +223,4 @@ class CostOptimizedPipeline:
 - [ ] Cost monitoring and alerts
 - [ ] Security review complete
 - [ ] Load tested at 2x expected traffic
+- [ ] Parallel processing configured
