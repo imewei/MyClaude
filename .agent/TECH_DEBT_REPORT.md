@@ -44,7 +44,7 @@ These high-impact tasks offer the best return on engineering time:
 *   **Goal**: Stop the bleeding and simplify tooling.
 *   [x] **Action**: Merge overlapping Validation Scripts into a single CI entry point (`validate_agent.py`).
 *   [x] **Action**: Hard-block PyTorch imports in CI (enforce JAX-First).
-*   [ ] **Action**: Archive or merge the top 10 most redundant skills (focusing on Mobile/JAX clusters).
+*   [x] **Action**: Archive or merge the top 10 most redundant skills (focusing on Mobile/JAX clusters).
 
 ### Medium Term (Q1): Refactoring & Migration
 *   **Goal**: Architecture cleanup.
