@@ -157,6 +157,17 @@ def compare_distributions(data1, data2):
 
 ---
 
+## Parallel Analysis Strategies
+
+| Task | Strategy | Implementation |
+|------|----------|----------------|
+| **Correlation Functions** | FFT-based Block Parallelism | `jax.vmap(fft)` on trajectory blocks |
+| **MCMC Inference** | Parallel Chains | `emcee` with `Pool` or `numpyro` (GPU) |
+| **Trajectory Parsing** | Frame Chunking | `MDAnalysis` with `multiprocessing` |
+| **Bootstrapping** | Resampling | `joblib` parallel loops |
+
+---
+
 ## Checklist
 
 - [ ] Correlation functions computed correctly

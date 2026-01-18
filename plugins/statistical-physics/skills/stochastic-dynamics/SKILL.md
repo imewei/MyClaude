@@ -92,6 +92,17 @@ White noise: ⟨ξ(t)ξ(t')⟩ = δ(t-t')
 
 ---
 
+## Parallel Simulation Strategies
+
+| Method | Implementation | Use Case |
+|--------|----------------|----------|
+| **Ensemble** | `multiprocessing.Pool` | Independent trajectories ($N > 10^4$) |
+| **Domain Decomposition** | MPI / JAX `pmap` | Spatially extended systems |
+| **Parallel Tempering** | Replica Exchange | Crossing energy barriers |
+| **Weighted Ensemble** | Split/Merge Walkers | Rare event sampling |
+
+---
+
 ## Checklist
 
 - [ ] Appropriate framework selected

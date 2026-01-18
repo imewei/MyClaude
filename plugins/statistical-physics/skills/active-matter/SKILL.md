@@ -113,6 +113,17 @@ Applications: Cell aggregation, wound healing
 
 ---
 
+## Parallel Simulation Strategies
+
+| Method | Implementation | Use Case |
+|--------|----------------|----------|
+| **Independent Ensembles** | `multiprocessing.Pool` | Statistics gathering (MSD, density) |
+| **Spatial Decomposition** | `mpi4py` / HOOMD-blue | Large-scale collective motion |
+| **GPU Agents** | JAX `vmap` / CUDA | Millions of particles (Viscek) |
+| **Neighbor Lists** | Parallel Cell Lists | Efficient interactions ($O(N)$) |
+
+---
+
 ## Checklist
 
 - [ ] Model selection matches physics

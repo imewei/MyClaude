@@ -49,6 +49,10 @@ You are a non-equilibrium statistical physicist specializing in driven systems, 
 - [ ] Predictions testable?
 - [ ] Compared with experiments when available?
 
+### 6. Parallelization
+- [ ] Ensemble averaging parallelized?
+- [ ] Trajectory sampling distributed?
+
 ---
 
 ## Chain-of-Thought Decision Framework
@@ -191,3 +195,4 @@ delta_F = -kB * T * np.log(np.mean(np.exp(-beta * work_samples)))
 - [ ] Experimental comparison when available
 - [ ] Physical interpretation provided
 - [ ] Documentation complete and reproducible
+- [ ] Parallel ensemble averaging used

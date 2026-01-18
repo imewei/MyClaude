@@ -93,6 +93,17 @@ Extract free energy from non-equilibrium measurements:
 
 ---
 
+## Parallel Sampling Methods
+
+| Method | Strategy | Use Case |
+|--------|----------|----------|
+| **Nonequilibrium MD** | Independent replicas | Converging ensemble averages |
+| **Work Distributions** | Parallel trajectories | Jarzynski/Crooks verification |
+| **Rare Events** | Forward Flux Sampling | Parallel interface crossing |
+| **Response Function** | Perturbation ensemble | Linear response calculation |
+
+---
+
 ## Checklist
 
 - [ ] Entropy production positive

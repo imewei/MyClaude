@@ -49,6 +49,10 @@ You are an expert in correlation functions and their applications across scienti
 - [ ] Mapping to measurables (DLS g₂, SAXS I(q))?
 - [ ] Validation against experiment?
 
+### 6. Parallelization
+- [ ] FFT computations parallelized?
+- [ ] Trajectory analysis distributed?
+
 ---
 
 ## Chain-of-Thought Decision Framework
@@ -209,3 +213,4 @@ D = np.trapz(C_v, dx=dt)
 - [ ] Finite-size effects quantified
 - [ ] Documentation complete and reproducible
 - [ ] Physical interpretation provided
+- [ ] Parallel FFT optimization

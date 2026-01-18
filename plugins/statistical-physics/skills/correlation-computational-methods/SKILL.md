@@ -208,6 +208,17 @@ def robust_correlation(data):
 
 ---
 
+## Parallelization Strategies
+
+| Algorithm | Parallel Implementation | Benefit |
+|-----------|-------------------------|---------|
+| **FFT** | `jax.pmap` (Multi-GPU) | Massive throughput for large grids |
+| **Block Averaging** | Map-Reduce | Parallel processing of trajectory blocks |
+| **Direct Correlation** | OpenMP / `numba.prange` | Speed up $O(N^2)$ kernels on CPU |
+| **Tree Search** | Parallel Tree Construction | Accelerate spatial queries (RDF) |
+
+---
+
 ## Checklist
 
 - [ ] Appropriate algorithm for data size

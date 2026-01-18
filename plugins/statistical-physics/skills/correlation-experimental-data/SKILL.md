@@ -191,6 +191,17 @@ def fcs_analysis(tau, G, r0=0.2e-6, omega=5):
 
 ---
 
+## Parallel Analysis Workflows
+
+| Experiment | Parallel Strategy | Implementation |
+|------------|-------------------|----------------|
+| **XPCS** | Frame chunking | Process video chunks in parallel nodes |
+| **DLS/FCS** | Curve fitting batch | `scipy.optimize` with `joblib` |
+| **Microscopy** | Particle tracking | Parallelize by trajectory ID |
+| **SANS** | 2D reduction | GPU-accelerated image integration |
+
+---
+
 ## Checklist
 
 - [ ] Background/baseline corrected

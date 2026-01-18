@@ -161,6 +161,17 @@ def transfer_entropy(X, Y, delay=1):
 
 ---
 
+## Parallel Analysis Workflows
+
+| System | Strategy | Implementation |
+|--------|----------|----------------|
+| **MD Trajectories** | Frame chunking | `MDAnalysis` + `multiprocessing` |
+| **Microscopy Video** | Particle tracking | `Trackpy` parallel batch |
+| **Scattering Data** | Q-binning | GPU reduction (CUDA) |
+| **Spin Systems** | Lattice partitioning | Checkerboard update (Parallel) |
+
+---
+
 ## Checklist
 
 - [ ] Physical observable identified

@@ -106,6 +106,15 @@ G(r,t) = ⟨φ(r,t)φ(0,0)⟩
 
 **Constraints**: C(0) ≥ |C(t)|, χ(t<0) = 0, Kramers-Kronig
 
+## Parallel Algorithms
+
+| Algorithm | Parallelism | Complexity |
+|-----------|-------------|------------|
+| **FFT** | `jax.pmap` / CUDA | $O(N \log N)$ |
+| **Direct Sum** | `numba.prange` | $O(N^2)$ (Small N) |
+| **Block Averaging** | Map-Reduce | $O(N)$ (Streaming) |
+| **Multi-Tau** | Channel Parallelism | $O(N)$ (Log time) |
+
 ## Implementation
 
 ```python
