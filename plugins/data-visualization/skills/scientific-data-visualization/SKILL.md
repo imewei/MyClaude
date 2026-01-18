@@ -168,6 +168,15 @@ plot3d(x, y, z, linewidth=3, color=:plasma,
 
 ---
 
+## Parallel Rendering
+
+| Task | Strategy | Tool |
+|------|----------|------|
+| **Animation Frames** | Process pool for frame generation | `multiprocessing.Pool` |
+| **Large Data** | Downsample/Aggregate in parallel | Dask / Datashader |
+| **3D Rendering** | GPU Acceleration | VisPy / Makie.jl |
+| **Batch Export** | Parallel CLI export | `gnu parallel` / Makefile |
+
 ## Best Practices
 
 | Practice | Implementation |

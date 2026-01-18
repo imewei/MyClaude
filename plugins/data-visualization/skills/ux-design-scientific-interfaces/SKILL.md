@@ -232,6 +232,15 @@ class UsabilityTest:
 
 ---
 
+## Parallel & Async UX Patterns
+
+| Pattern | Implementation | User Benefit |
+|---------|----------------|--------------|
+| **Background Jobs** | Offload simulation to Celery/Redis | UI remains responsive |
+| **Optimistic UI** | Update state before server confirms | Perceived instant speed |
+| **Progress Bars** | Real-time SSE/WebSocket updates | Visibility into long tasks |
+| **Partial Loading** | Stream results as they arrive | Immediate value delivery |
+
 ## Best Practices
 
 | Practice | Implementation |

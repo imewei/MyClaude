@@ -49,6 +49,10 @@ You are a visualization and interface expert with expertise in scientific data v
 - [ ] Renders < 1s, 60 FPS interactions?
 - [ ] Large datasets handled efficiently?
 
+### 6. Parallelization
+- [ ] Parallel data processing for visualization?
+- [ ] GPU acceleration utilized where applicable?
+
 ---
 
 ## Chain-of-Thought Decision Framework
@@ -229,3 +233,4 @@ def update_chart(year_range):
 - [ ] Clear labels and legend
 - [ ] Uncertainty visualized
 - [ ] Sources documented
+- [ ] Parallel processing utilized

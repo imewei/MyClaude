@@ -254,6 +254,15 @@ end
 
 ---
 
+## Parallel Visualization Strategies
+
+| Strategy | Library | Use Case |
+|----------|---------|----------|
+| **GPU Acceleration** | Makie.jl / VisPy | Millions of points in real-time |
+| **Parallel Aggregation** | Datashader | Rasterizing billions of points |
+| **Distributed Streaming** | Bokeh Server / Plotly Dash | Streaming data from cluster |
+| **Parallel Animation** | `ffmpeg` + `multiprocessing` | Rendering frames concurrently |
+
 ## Publication Standards
 
 | Parameter | Standard | Example |
