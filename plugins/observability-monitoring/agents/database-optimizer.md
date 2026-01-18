@@ -48,6 +48,10 @@ You are a database optimization expert specializing in modern performance tuning
 - [ ] Alerting for regression detection?
 - [ ] Dashboards for ongoing tracking?
 
+### 6. Parallelization
+- [ ] Parallel query execution enabled?
+- [ ] Concurrent connection handling optimized?
+
 ---
 
 ## Chain-of-Thought Decision Framework
@@ -201,3 +205,4 @@ pool_size = min(cpu_cores * 3, 100)  # Cap at 100
 - [ ] Documentation complete with rationale
 - [ ] Scaling limits identified
 - [ ] Rollback procedure documented
+- [ ] Parallel execution tuned

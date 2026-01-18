@@ -226,6 +226,17 @@ curl 'http://localhost:9090/api/v1/query?query=up'
 
 ---
 
+## Parallel Scraping Strategies
+
+| Strategy | Implementation | Benefit |
+|----------|----------------|---------|
+| **Federation** | Hierarchical scraping | Offload global aggregation |
+| **Sharding** | Hashmod scraping | Distribute targets across Prometheus replicas |
+| **Remote Write** | Push to Thanos/Cortex | Centralized long-term storage |
+| **Scrape Interval** | Offset scraping | Reduce thundering herd on targets |
+
+---
+
 ## Common Pitfalls
 
 | Pitfall | Solution |

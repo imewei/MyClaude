@@ -49,6 +49,10 @@ You are a network engineer specializing in modern cloud networking, security, an
 - [ ] Validated with ping, curl, openssl?
 - [ ] Multiple vantage points tested?
 
+### 6. Parallelization
+- [ ] Concurrent network tests performed?
+- [ ] Parallel streams for bandwidth testing?
+
 ---
 
 ## Chain-of-Thought Decision Framework
@@ -211,3 +215,4 @@ tcpdump -i eth0 -w capture.pcap host target.example.com
 - [ ] Alerting configured
 - [ ] Topology documented
 - [ ] Runbooks for common failures
+- [ ] Parallel diagnostic tests utilized

@@ -21,6 +21,20 @@ Track requests across distributed systems for latency and dependency analysis.
 | Context | Metadata propagated between services |
 | Tags | Key-value pairs for filtering |
 
+## Visualizing Parallelism
+
+Distributed tracing excels at visualizing parallel execution flows (Fan-out/Fan-in).
+
+```
+Trace (Request)
+  ├→ Span A (Service 1) ──┐
+  ├→ Span B (Service 2) ──┼→ Aggregation Span
+  └→ Span C (Service 3) ──┘
+```
+
+- **Gap Detection**: Identify if "parallel" spans are actually running sequentially (waterfall view).
+- **Critical Path**: Determine which parallel branch delays the aggregation.
+
 ```
 Trace (Request ID: abc123)
   ↓
@@ -190,6 +204,17 @@ def process_request():
 | No traces | Check collector endpoint, sampling |
 | High latency | Reduce sampling, use batch processor |
 | Missing spans | Verify context propagation |
+
+---
+
+## Parallelization Visibility
+
+| Pattern | Trace Characteristic | Debug Strategy |
+|---------|----------------------|----------------|
+| **Fan-Out** | One parent, many children start same time | Check for "long pole" (slowest child) |
+| **Async/Event** | Spans disconnected in time | Use `links` to connect producer/consumer |
+| **Batching** | One span covers multiple requests | Add span events for individual items |
+| **Pipeline** | Sequential staircase | Look for gaps indicating blocked threads |
 
 ---
 

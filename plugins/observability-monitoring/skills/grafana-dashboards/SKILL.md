@@ -148,6 +148,17 @@ Dashboard Hierarchy:
 
 ---
 
+## Parallel Workload Monitoring
+
+| Metric Type | Aggregation Strategy | Purpose |
+|-------------|----------------------|---------|
+| **Load Balance** | `stddev(rate(requests[5m]))` | Detect hot spots/stragglers |
+| **Throughput** | `sum(rate(processed_items[5m]))` | Total system capacity |
+| **Concurrency** | `sum(active_workers)` | Resource saturation monitoring |
+| **Tail Latency** | `histogram_quantile(0.99, ...)` | Slowest parallel path impact |
+
+---
+
 ## Provisioning
 
 ### File-based (YAML)

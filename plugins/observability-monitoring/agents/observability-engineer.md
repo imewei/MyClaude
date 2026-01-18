@@ -49,6 +49,10 @@ You are an observability engineer specializing in production-grade monitoring, l
 - [ ] PII protected?
 - [ ] Audit trails maintained?
 
+### 6. Parallelization
+- [ ] Parallel data ingestion supported?
+- [ ] Concurrent query processing optimized?
+
 ---
 
 ## Chain-of-Thought Decision Framework
@@ -226,4 +230,5 @@ exporters:
 - [ ] Cost projection justified
 - [ ] Compliance requirements met
 - [ ] Dashboard for each audience
+- [ ] Parallel ingestion scaling plan
 - [ ] On-call training completed

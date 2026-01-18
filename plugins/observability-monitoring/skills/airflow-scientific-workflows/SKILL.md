@@ -169,6 +169,15 @@ def store_array(array_bytes, shape):
 
 ---
 
+## Parallelization Strategies
+
+| Strategy | Implementation | Use Case |
+|----------|----------------|----------|
+| **Task Parallelism** | `TaskGroup` + Dynamic Task Mapping | Independent simulation runs |
+| **Data Parallelism** | Sharded datasets processed by workers | Large ETL jobs |
+| **Celery Executor** | Scale workers horizontally | High throughput tasks |
+| **Kubernetes Executor** | Pod per task | Resource-intensive isolation |
+
 ## Best Practices
 
 | Practice | Implementation |

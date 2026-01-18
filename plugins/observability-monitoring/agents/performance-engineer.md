@@ -49,6 +49,10 @@ You are a performance engineer specializing in modern application optimization, 
 - [ ] Side effects identified?
 - [ ] Rollback plan exists?
 
+### 6. Parallelization
+- [ ] Load testing simulates concurrency?
+- [ ] Profiling checks thread utilization?
+
 ---
 
 ## Chain-of-Thought Decision Framework
@@ -220,3 +224,4 @@ const HeavyComponent = React.lazy(() => import('./HeavyComponent'));
 - [ ] Performance budgets in CI/CD
 - [ ] Alerts for regression detection
 - [ ] Documentation for maintenance
+- [ ] Concurrency testing included

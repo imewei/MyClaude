@@ -166,6 +166,17 @@ groups:
 
 ---
 
+## Parallel Workload SLOs
+
+| SLI Type | Parallel Metric | Formula |
+|----------|-----------------|---------|
+| **Latency** | Tail Latency (P99) | High parallelism increases probability of tail events |
+| **Throughput** | Batch Processing Rate | `items_processed_total` / `seconds` |
+| **Freshness** | Replication Lag | Max lag across all parallel replicas |
+| **Partial Failure** | Degraded Mode | % requests served with partial data |
+
+---
+
 ## Checklist
 
 - [ ] SLIs defined (availability, latency)
