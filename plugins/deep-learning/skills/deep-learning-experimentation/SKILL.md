@@ -125,6 +125,15 @@ experiments/
 └── exp003_deeper_network/
 ```
 
+## Parallel Experimentation
+
+| Method | Tool | Scale |
+|--------|------|-------|
+| **Parallel Workers** | `DataLoader(num_workers=4)` | Data loading speedup |
+| **Distributed Training** | `DistributedDataParallel` (DDP) | Multi-GPU training |
+| **Parallel Search** | Ray Tune / Optuna | Hyperparameter tuning |
+| **Gradient Accumulation** | Simulate large batch on single GPU | Memory constrained parallel logic |
+
 ---
 
 ## Mixed Precision Training

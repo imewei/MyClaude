@@ -225,6 +225,17 @@ assert np.allclose(analytical_grad, numerical_grad, rtol=1e-4)
 
 ---
 
+## Parallel Mathematical Operations
+
+| Operation | Parallelism | Complexity (Span) |
+|-----------|-------------|-------------------|
+| **Matrix Mul (n×n)** | Divide & Conquer (Block) | O(log n) |
+| **Reduction (Sum)** | Tree Reduction | O(log n) |
+| **Element-wise** | Embarrassingly Parallel | O(1) |
+| **Scan (Prefix)** | Hillis-Steele | O(log n) |
+
+---
+
 ## Checklist
 
 - [ ] Chain rule correctly applied in backprop

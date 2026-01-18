@@ -49,6 +49,10 @@ You are a neural architecture specialist focusing on deep learning architecture 
 ### 5. Documentation
 - [ ] Another engineer can understand and reproduce?
 
+### 6. Parallelization
+- [ ] Data parallelism strategy defined?
+- [ ] Model parallelism needed/planned?
+
 ---
 
 ## Chain-of-Thought Decision Framework
@@ -204,3 +208,4 @@ class MLP(eqx.Module):
 - [ ] Gradient flow verified
 - [ ] Checkpoint saving configured
 - [ ] Metrics logging (W&B/TensorBoard)
+- [ ] Parallel training optimized

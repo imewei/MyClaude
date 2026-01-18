@@ -90,6 +90,17 @@ Systematic approach to translating papers into working code.
 
 ---
 
+## Parallel Implementation Strategies
+
+| Component | Strategy | Implementation |
+|-----------|----------|----------------|
+| **Data Loading** | Prefetching | `num_workers > 0`, `prefetch_factor` |
+| **Training** | Mixed Precision | `torch.amp` / `jax.jit` |
+| **Ablations** | Parallel Experiments | Launch multiple runs with different configs |
+| **Evaluation** | Batched Inference | Process validation set in large batches |
+
+---
+
 ## Checklist
 
 - [ ] Core contribution understood

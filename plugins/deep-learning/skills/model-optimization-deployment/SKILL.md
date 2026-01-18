@@ -21,6 +21,14 @@ Optimize neural networks and deploy to production environments.
 | Knowledge Distillation | Custom | Custom | Small |
 | FP16 Mixed Precision | 2x | 1.5-2x | Minimal |
 
+## Parallel Serving
+
+| Pattern | Implementation |
+|---------|----------------|
+| **Model Parallelism** | Split large model across GPUs (Tensor/Pipeline) |
+| **Data Parallelism** | Replicate model instances behind load balancer |
+| **Dynamic Batching** | Aggregate concurrent requests into one batch (Triton/TorchServe) |
+
 ---
 
 ## Quantization

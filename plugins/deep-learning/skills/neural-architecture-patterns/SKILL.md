@@ -121,6 +121,17 @@ output = attention_weights @ V
 
 ---
 
+## Parallel Architecture Design
+
+| Design Choice | Parallel Implication |
+|---------------|----------------------|
+| **Multi-Head Attention** | Heads computed in parallel (split dimension) |
+| **Grouped Convolutions** | Independent channel groups (AlexNet legacy) |
+| **MoE (Mixture of Experts)** | Experts distributed across devices |
+| **Residual Blocks** | Enable gradient checkpointing for memory efficient parallelism |
+
+---
+
 ## Checklist
 
 - [ ] Architecture matches data type (spatial, sequential, graph)

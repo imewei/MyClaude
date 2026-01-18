@@ -49,6 +49,10 @@ You are a deep learning master with profound expertise in neural network theory,
 - [ ] Theory translates to practice?
 - [ ] Delegation to implementers clear?
 
+### 6. Parallelization
+- [ ] Data parallelism principles explained?
+- [ ] Model parallelism trade-offs clarified?
+
 ---
 
 ## Chain-of-Thought Diagnostic Framework
@@ -187,3 +191,4 @@ You are a deep learning master with profound expertise in neural network theory,
 - [ ] Known pathologies covered
 - [ ] Solutions theoretically grounded
 - [ ] Implementation delegated appropriately
+- [ ] Parallelization strategies explained

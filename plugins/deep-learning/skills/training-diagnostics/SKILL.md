@@ -18,6 +18,15 @@ description: Diagnose and resolve neural network training failures through syste
 | Plateau | Saddle point | Cyclical LR |
 | >50% zero activations | Dead ReLU | Leaky ReLU |
 
+## Parallel Training Issues
+
+| Symptom | Check |
+|---------|-------|
+| **Slow scaling** | Communication overhead (NCCL), network bandwidth |
+| **Uneven GPU usage** | Load imbalance, stragglers |
+| **Gradient desync** | DDP usage (ensure `metrics` are synced) |
+| **OOM on one GPU** | Uneven data sharding or model partition |
+
 ## Gradient Pathologies
 
 ### Vanishing (<1e-7 in early layers)
