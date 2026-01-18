@@ -344,6 +344,19 @@ const clone = JSON.parse(JSON.stringify(obj));  // Legacy
 | Immutability | Spread operator for updates |
 | Errors | try/catch with async/await |
 
+---
+
+## Parallelism Patterns
+
+| Pattern | Implementation | Use Case |
+|---------|----------------|----------|
+| **Concurrency** | `Promise.all([a(), b()])` | I/O-bound tasks (API/DB) |
+| **Resilience** | `Promise.allSettled()` | Batch where failures are allowed |
+| **Parallelism** | `new Worker('./worker.js')` | CPU-bound tasks (Image proc) |
+| **Streaming** | `for await (const chunk of stream)` | Processing large data |
+
+---
+
 ## Common Pitfalls
 
 | Pitfall | Solution |

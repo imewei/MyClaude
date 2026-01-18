@@ -30,10 +30,22 @@ export default defineConfig({
       reporter: ['text', 'json', 'html'],
       thresholds: { branches: 80, functions: 80, lines: 80 }
     },
-    setupFiles: ['./src/test/setup.ts']
+    setupFiles: ['./src/test/setup.ts'],
+    poolOptions: {
+      threads: {
+        singleThread: false, // Default: true for speed in some cases
+        maxThreads: 4
+      }
+    }
   }
 });
 ```
+
+## Parallelization
+
+- **Vitest**: Runs in parallel threads by default. Use `poolOptions.threads` to tune.
+- **Jest**: Use `maxWorkers` (e.g. `jest --maxWorkers=50%`).
+- **Playwright**: Fully parallel by default. Configure `fullyParallel: true` in config.
 
 ## Unit Testing Patterns
 

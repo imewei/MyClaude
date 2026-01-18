@@ -113,6 +113,15 @@ pnpm --filter "@repo/*" build
 pnpm --filter "...web" build  # web + dependencies
 ```
 
+## Parallelization & Caching
+
+| Feature | Implementation | Benefit |
+|---------|----------------|---------|
+| **Task Graph** | `turbo run build test --parallel` | Execute independent tasks concurrently |
+| **Remote Cache** | Vercel/Nx Cloud | Share build artifacts across team |
+| **Partial Builds** | `nx affected:build` | Only build changed packages |
+| **Sharding** | CI matrix strategy | Split tests across machines |
+
 ## Package Configuration
 
 ```json

@@ -241,6 +241,18 @@ export class CacheService {
 | **Logging** | Pino/Winston structured logging |
 | **Testing** | Supertest for API tests |
 
+---
+
+## Parallelization & Concurrency
+
+| Mechanism | Implementation | Use Case |
+|-----------|----------------|----------|
+| **Async/Await** | `Promise.all([p1, p2])` | Concurrent I/O (DB + API) |
+| **Worker Threads** | `worker_threads` module | CPU-heavy tasks (Crypto, Image) |
+| **Clustering** | `cluster` module / PM2 | Utilize multi-core CPU |
+| **Job Queues** | BullMQ / Redis | Background processing offload |
+
+---
 
 ## Checklist
 

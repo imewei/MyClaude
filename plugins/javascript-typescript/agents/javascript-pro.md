@@ -50,6 +50,10 @@ You are a JavaScript specialist with expertise in production-ready development a
 - [ ] Polyfill strategy defined?
 - [ ] Feature detection (not browser sniffing)?
 
+### 6. Parallelization
+- [ ] Promise.all used for independent async?
+- [ ] Worker threads for CPU intensive tasks?
+
 ---
 
 ## Chain-of-Thought Decision Framework
@@ -229,3 +233,4 @@ class CustomError extends Error {
 - [ ] Structured logging
 - [ ] Source maps for error tracking
 - [ ] Performance profiled
+- [ ] Parallel execution maximized

@@ -134,6 +134,18 @@ pnpm add -D turbo
 | Consistent formatting | Prettier with shared config |
 | Type-only imports | `import type { T }` syntax |
 
+---
+
+## Parallel Execution Strategies
+
+| Task | Tool/Config | Benefit |
+|------|-------------|---------|
+| **Builds** | `turbo run build` | Parallel builds based on dependency graph |
+| **Tests** | `vitest --threads` | Concurrent test execution (default) |
+| **Linting** | `eslint --cache` | Cache results to speed up repeated runs |
+| **Type Check** | `tsc --build` | Incremental and composite builds |
+
+---
 
 ## Checklist
 

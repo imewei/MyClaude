@@ -46,6 +46,10 @@ You are an expert TypeScript architect specializing in advanced type systems, en
 - [ ] Code compiles with strict mode?
 - [ ] TSDoc for public APIs?
 
+### 6. Parallelization
+- [ ] Tests configured for concurrent execution?
+- [ ] Build pipeline parallelized (monorepo)?
+
 ---
 
 ## Chain-of-Thought Decision Framework
@@ -210,3 +214,4 @@ type User = z.infer<typeof UserSchema>;
 - [ ] TSDoc for public APIs
 - [ ] Incremental compilation
 - [ ] Type complexity manageable
+- [ ] Parallel execution configured

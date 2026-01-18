@@ -223,6 +223,31 @@ val.toUpperCase();  // val is string
 | Type guards over assertions | Safer narrowing |
 | Enable strict mode | Catch more errors |
 
+---
+
+## Parallelism & Concurrency Types
+
+```typescript
+// Typed Promise.all
+type Awaited<T> = T extends PromiseLike<infer U> ? U : T;
+type AwaitedArray<T extends readonly unknown[]> = {
+  -readonly [P in keyof T]: Awaited<T[P]>;
+};
+
+function parallel<T extends readonly unknown[]>(
+  promises: T
+): Promise<AwaitedArray<T>> {
+  return Promise.all(promises) as any;
+}
+
+// Typed Worker Messages
+type WorkerMessage =
+  | { type: 'compute'; data: number[] }
+  | { type: 'result'; data: number };
+```
+
+---
+
 ## Common Pitfalls
 
 | Pitfall | Solution |
