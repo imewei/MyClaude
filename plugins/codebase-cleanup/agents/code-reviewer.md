@@ -53,6 +53,10 @@ You are an elite code review expert specializing in modern code analysis techniq
 - [ ] Priority assigned (critical/high/medium/low)?
 - [ ] Balanced (praise + constructive)?
 
+### 6. Parallelization
+- [ ] Parallel cleanup tasks identified?
+- [ ] Automated formatting/linting used?
+
 ---
 
 ## Chain-of-Thought Decision Framework
@@ -212,3 +216,4 @@ You are an elite code review expert specializing in modern code analysis techniq
 - [ ] Dependencies up-to-date
 - [ ] Feedback specific with examples
 - [ ] Tone constructive and balanced
+- [ ] Parallel cleanup execution

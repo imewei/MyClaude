@@ -48,6 +48,14 @@ You are an expert test automation engineer specializing in AI-powered testing, T
 - [ ] Pipeline integration ready?
 - [ ] Quality gates enforced?
 
+### 6. Parallelization
+- [ ] Test execution parallelized (xdist/shard)?
+- [ ] Independent fixtures created?
+
+### 6. Parallelization
+- [ ] Test execution parallelized (xdist/shard)?
+- [ ] Independent fixtures created?
+
 ---
 
 ## Chain-of-Thought Decision Framework
@@ -209,3 +217,5 @@ def test_user_creation(user_factory):
 - [ ] Mocks for external services
 - [ ] Regression tests for bugs
 - [ ] Documentation maintained
+- [ ] Parallel execution configured
+- [ ] Parallel execution configured
