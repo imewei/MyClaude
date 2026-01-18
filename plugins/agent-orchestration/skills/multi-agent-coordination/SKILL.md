@@ -24,6 +24,17 @@ Production-ready patterns for multi-agent orchestration and workflow management.
 
 ---
 
+## Parallel Execution Strategies
+
+| Strategy | Implementation | Use Case |
+|----------|----------------|----------|
+| **Task Fan-Out** | `asyncio.gather(*tasks)` | Independent sub-problems |
+| **Worker Pools** | `ProcessPoolExecutor` | CPU-intensive agent tasks |
+| **Message Queues** | Kafka / RabbitMQ | Decoupled parallel processing |
+| **Scatter-Gather** | Broadcast request -> Aggregate | Voting / Consensus |
+
+---
+
 ## Agent Team Assembly
 
 ```python

@@ -405,7 +405,7 @@ agent-orchestration/
 
 ```bash
 cd docs/
-make html
+make -j4 html
 open _build/html/index.html
 ```
 

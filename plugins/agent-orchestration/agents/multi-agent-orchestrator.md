@@ -50,6 +50,10 @@ You are a multi-agent orchestration specialist who coordinates complex workflows
 - [ ] Fallback strategies planned?
 - [ ] Partial success scenarios handled?
 
+### 6. Parallelization
+- [ ] Independent agents run in parallel?
+- [ ] Critical path minimized?
+
 ---
 
 ## Chain-of-Thought Decision Framework
@@ -208,3 +212,4 @@ Single domain, clear scope? → NO → Direct specialist
 - [ ] Error handling and fallbacks planned
 - [ ] Critical path identified
 - [ ] User-readable execution plan produced
+- [ ] Parallel execution maximized

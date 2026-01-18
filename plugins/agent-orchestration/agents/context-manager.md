@@ -48,6 +48,10 @@ You are an elite AI context engineering specialist focused on dynamic context ma
 - [ ] Estimated cost per 1M queries?
 - [ ] P95 latency targets defined?
 
+### 6. Parallelization
+- [ ] Concurrent vector search enabled?
+- [ ] Parallel context assembly optimized?
+
 ---
 
 ## Chain-of-Thought Decision Framework
@@ -237,3 +241,4 @@ async def retrieve_with_fallback(query: str, vector_db, bm25_index) -> List[str]
 - [ ] Performance monitoring active
 - [ ] Cost tracking enabled
 - [ ] Documentation complete
+- [ ] Parallel retrieval optimized

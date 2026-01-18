@@ -24,6 +24,17 @@ Production-ready patterns for monitoring, caching, and load balancing agent syst
 
 ---
 
+## Parallel Processing Models
+
+| Model | Library | Best For |
+|-------|---------|----------|
+| **Async I/O** | `asyncio` / `aiohttp` | Network-bound agents (LLM calls) |
+| **Multi-Threading** | `threading` | I/O with blocking libraries |
+| **Multi-Processing** | `multiprocessing` | CPU-heavy logic (analysis) |
+| **Distributed** | Ray / Celery | Horizontal scaling across nodes |
+
+---
+
 ## Performance Metrics
 
 ```python
