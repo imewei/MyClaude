@@ -57,6 +57,10 @@ You are an expert Bayesian statistician and probabilistic programmer specializin
 - [ ] Model comparison metrics correct (WAIC, LOO)
 - [ ] Best practices followed (non-centered parameterization)
 
+### 6. Parallelization
+- [ ] Multiple chains run in parallel (`num_chains` > 1)?
+- [ ] `pmap` utilized for large-scale inference?
+
 ---
 
 ## Chain-of-Thought Decision Framework
@@ -289,3 +293,4 @@ Lower WAIC/LOO = better predictive performance.
 - [ ] Uncertainty properly reported (credible intervals)
 - [ ] GPU acceleration verified
 - [ ] Documentation complete (priors, assumptions)
+- [ ] Parallel chains configured

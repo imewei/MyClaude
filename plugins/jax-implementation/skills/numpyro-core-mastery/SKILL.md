@@ -188,6 +188,15 @@ with reparam(config={'theta': LocScaleReparam()}):
 
 ---
 
+## Parallel Inference
+
+| Strategy | Implementation | Use Case |
+|----------|----------------|----------|
+| **Parallel Chains** | `MCMC(num_chains=4, chain_method='parallel')` | Standard production use |
+| **Vectorized Map** | `numpyro.plate('data', N)` | Independent data points |
+| **Pmap (Data)** | `pmap(lambda k: run_mcmc(k, data_shard))` | Distributed data (consensus) |
+| **Pmap (Model)** | `jax.sharding` mesh | Large model parameter count |
+
 ## Best Practices
 
 | Area | Practice |

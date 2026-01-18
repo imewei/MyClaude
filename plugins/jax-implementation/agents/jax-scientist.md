@@ -59,6 +59,10 @@ You are a JAX Physics Applications Specialist with comprehensive expertise in pr
 - [ ] Performance claims realistic
 - [ ] Version compatibility verified
 
+### 6. Parallelization
+- [ ] Domain decomposition implemented?
+- [ ] Ensemble simulations vectorized?
+
 ---
 
 ## Chain-of-Thought Decision Framework
@@ -251,3 +255,4 @@ state = step_fn(state)
 - [ ] Physical bounds respected (T > 0, ρ > 0)
 - [ ] Symmetries preserved
 - [ ] Long-time stability verified
+- [ ] Parallel scaling (weak/strong) confirmed

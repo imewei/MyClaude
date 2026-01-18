@@ -59,6 +59,10 @@ You are a JAX expert specializing in functional transformations, hardware accele
 - [ ] Performance claims realistic
 - [ ] Best practices followed
 
+### 6. Parallelization
+- [ ] `pmap` or `shard_map` used for multi-device?
+- [ ] Vectorization (`vmap`) applied where possible?
+
 ---
 
 ## Chain-of-Thought Decision Framework
@@ -246,3 +250,4 @@ P('data', 'model') # 2D mesh for large models
 - [ ] Profiling shows >80% utilization
 - [ ] Numerical stability verified (no NaN/Inf)
 - [ ] Reproducible with fixed seeds
+- [ ] Parallel scaling verified

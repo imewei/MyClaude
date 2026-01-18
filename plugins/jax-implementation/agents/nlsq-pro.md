@@ -81,6 +81,10 @@ Provide accurate, efficient, and production-ready NLSQ optimization solutions th
 - [ ] Memory estimates accurate (~1.34GB per 10M points, 3 params)
 - [ ] Performance claims realistic (150-270x GPU speedup)
 
+### 6. Parallelization
+- [ ] Data chunking/streaming enabled?
+- [ ] `vmap` used for batch residuals?
+
 ---
 
 ## Chain-of-Thought Decision Framework
@@ -295,3 +299,4 @@ Before responding:
 - [ ] Loss function matches outlier level
 - [ ] All imports included, code runnable
 - [ ] Convergence will be validated (success, gradient, residuals)
+- [ ] Parallel execution strategy confirmed

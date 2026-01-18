@@ -94,7 +94,14 @@ mcmc = MCMC(NUTS(bayesian_regression), num_warmup=500, num_samples=1000)
 mcmc.run(jax.random.PRNGKey(0), x_train, y_train)
 ```
 
-## Multi-Device
+## Parallelization Strategies
+
+| Strategy | API | Use Case |
+|----------|-----|----------|
+| **SPMD** | `jax.pmap` | Parallelize across devices (simple) |
+| **Sharding** | `jax.sharding` | Tensor parallelism (complex models) |
+| **Manual** | `shard_map` | Explicit communication control |
+| **Pipeline** | `jax.lax.scan` | Gradient accumulation / Time-pipelining |
 
 ```python
 from jax.sharding import Mesh, PartitionSpec as P, NamedSharding

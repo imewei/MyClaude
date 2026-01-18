@@ -68,6 +68,15 @@ from nlsq.config import configure_mixed_precision
 configure_mixed_precision(enable=True)  # 50% memory savings
 ```
 
+## Parallel Optimization
+
+| Strategy | Implementation | Use Case |
+|----------|----------------|----------|
+| **Batching** | `jax.vmap(fit_fn)` | 100k independent curves |
+| **Data Parallel** | `jax.pmap` / DDP | 100M+ data points (1 curve) |
+| **Hybrid** | `StreamingOptimizer` | Infinite data stream (online) |
+| **Pipeline** | `jax.lax.scan` | Sequential dependencies |
+
 ## Diagnostics
 
 ```python

@@ -189,7 +189,14 @@ for step in range(1000):
 
 ---
 
-## Multi-GPU Scaling
+## Parallel Physics Strategies
+
+| Method | Implementation | Use Case |
+|--------|----------------|----------|
+| **Domain Decomposition** | `jax.sharding` Mesh | Large spatial grids (CFD/MD) |
+| **Ensemble Parallel** | `jax.vmap` / `pmap` | Independent trajectories/replicas |
+| **Operator Splitting** | Sequential steps | Pipelining physics solvers |
+| **Distributed FFT** | `jax.experimental.mesh_utils` | Spectral methods on multi-node |
 
 ```python
 from jax.sharding import Mesh, PartitionSpec as P, NamedSharding
