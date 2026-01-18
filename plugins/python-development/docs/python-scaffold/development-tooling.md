@@ -181,10 +181,10 @@ migrations: ## Create new migration (Django)
 	uv run python manage.py makemigrations
 
 test: ## Run tests with pytest
-	uv run pytest -v
+	uv run pytest -n auto -v
 
 test-cov: ## Run tests with coverage report
-	uv run pytest -v --cov=src --cov-report=term-missing --cov-report=html
+	uv run pytest -n auto -v --cov=src --cov-report=term-missing --cov-report=html
 
 test-watch: ## Run tests in watch mode
 	uv run pytest-watch

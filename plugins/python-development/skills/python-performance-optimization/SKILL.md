@@ -262,6 +262,23 @@ def benchmark(func):
 | 6 | Async I/O | 2-10x |
 | 7 | Micro-optimizations | 1.1-2x |
 
+## Parallelization
+
+| Method | Best For | GIL? |
+|--------|----------|------|
+| **multiprocessing** | CPU-bound tasks (hashing, math) | Bypassed |
+| **threading** | I/O-bound tasks (network, disk) | Limited |
+| **asyncio** | High-concurrency I/O | Single thread |
+| **concurrent.futures** | High-level interface for both | Abstraction |
+
+```python
+# CPU-bound parallelization
+from concurrent.futures import ProcessPoolExecutor
+
+with ProcessPoolExecutor() as executor:
+    results = list(executor.map(cpu_intensive_task, data_chunks))
+```
+
 ## Best Practices
 
 | Practice | Guideline |

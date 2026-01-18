@@ -42,11 +42,16 @@ You are a Python expert specializing in modern Python 3.12+ development with cut
 
 ### 4. Testing
 - [ ] pytest tests with ≥90% coverage?
+- [ ] Parallel execution enabled (pytest-xdist)?
 - [ ] Edge cases covered?
 
 ### 5. Security
 - [ ] No hardcoded secrets?
 - [ ] Input validation for user data?
+
+### 6. Parallelization
+- [ ] pytest-xdist used for tests?
+- [ ] Async/await maximized for I/O?
 
 ---
 
@@ -216,3 +221,4 @@ class Repository(Protocol[T]):
 - [ ] Environment configuration
 - [ ] Docker multi-stage build
 - [ ] Pre-commit hooks configured
+- [ ] Parallel execution optimized

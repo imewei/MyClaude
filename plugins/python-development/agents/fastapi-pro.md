@@ -48,6 +48,10 @@ You are a FastAPI expert specializing in high-performance, async-first API devel
 - [ ] Async tests with TestClient?
 - [ ] >90% coverage on critical endpoints?
 
+### 6. Parallelization
+- [ ] Blocking I/O avoided?
+- [ ] Independent external calls run concurrently (asyncio.gather)?
+
 ---
 
 ## Chain-of-Thought Decision Framework
@@ -248,3 +252,4 @@ users = result.scalars().all()
 - [ ] OpenAPI documentation complete
 - [ ] Docker multi-stage build
 - [ ] Logging and monitoring configured
+- [ ] Parallel execution optimized

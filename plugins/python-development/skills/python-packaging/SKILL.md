@@ -237,6 +237,12 @@ uv uv pip install -e ".[dev]"
 | TestPyPI | Always test on TestPyPI first |
 | CI/CD | Automate publishing with GitHub Actions |
 
+## Parallelization in Packaging
+
+- Use `pytest -n auto` (pytest-xdist) for test suites
+- Use `python -m build -n` if supported by backend
+- Parallelize CI jobs (matrix builds) for multi-version testing
+
 ## Dependency Constraints
 
 | Syntax | Meaning |

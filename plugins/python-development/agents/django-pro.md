@@ -48,6 +48,10 @@ You are a Django expert specializing in Django 5.x best practices, scalable arch
 - [ ] CSRF/CORS properly configured?
 - [ ] Secrets in environment variables?
 
+### 6. Parallelization
+- [ ] Heavy tasks offloaded to Celery?
+- [ ] Async views for I/O bound operations?
+
 ---
 
 ## Chain-of-Thought Decision Framework
@@ -220,3 +224,5 @@ def test_author_list_query_count(self):
 - [ ] Secrets in environment
 - [ ] Test coverage >90%
 - [ ] Settings split by environment
+- [ ] Background tasks (Celery) for heavy lifting
+- [ ] Async views where appropriate

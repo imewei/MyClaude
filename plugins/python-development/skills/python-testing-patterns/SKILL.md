@@ -1,6 +1,6 @@
 name: python-testing-patterns
 version: "2.1.0"
-description: Comprehensive testing with pytest, fixtures, mocking, parameterization, and TDD. Use when writing test files (test_*.py), creating fixtures in conftest.py, using unittest.mock or pytest-mock, writing parameterized tests, testing async code with pytest-asyncio, implementing property-based testing with Hypothesis, or measuring coverage with pytest-cov.
+description: Comprehensive testing with pytest, fixtures, mocking, parameterization, and TDD. Use when writing test files (test_*.py), creating fixtures in conftest.py, using unittest.mock or pytest-mock, writing parameterized tests, testing async code with pytest-asyncio, implementing property-based testing with Hypothesis, or measuring coverage with pytest-cov. Includes parallel execution with pytest-xdist.
 
 # Python Testing Patterns
 
@@ -233,7 +233,7 @@ def test_create_user(db_session):
 # pyproject.toml
 [tool.pytest.ini_options]
 testpaths = ["tests"]
-addopts = "-v --cov=myapp --cov-report=term-missing"
+addopts = "-v -n auto --cov=myapp --cov-report=term-missing"
 markers = [
     "slow: marks slow tests",
     "integration: integration tests"
@@ -274,6 +274,15 @@ jobs:
 | Mocking | Mock external dependencies only |
 | Coverage | Focus on critical paths, not % |
 | Speed | Fast tests run more often |
+
+## Parallel Execution
+
+| Method | Tool | Command |
+|--------|------|---------|
+| **Multi-Process** | pytest-xdist | `pytest -n auto` |
+| **Distributed** | pytest-xdist (socket) | `pytest -d --tx socket=...` |
+| **Async Tests** | pytest-asyncio | `asyncio.gather(*tests)` (within test) |
+| **Matrix** | Tox / CI | Parallel environments |
 
 ## Checklist
 

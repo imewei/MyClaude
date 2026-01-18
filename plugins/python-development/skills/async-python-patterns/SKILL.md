@@ -15,6 +15,24 @@ description: Master Python asyncio, concurrent programming, and async/await patt
 | Async Context Manager | `async with` for resource cleanup |
 | Async Iterator | `async for` for streaming data |
 
+## Parallelization (CPU-bound)
+
+While `asyncio` handles I/O concurrency, CPU-bound tasks require multiprocessing to run in parallel.
+
+```python
+import asyncio
+from concurrent.futures import ProcessPoolExecutor
+
+def cpu_bound_task(x):
+    return x * x
+
+async def main():
+    loop = asyncio.get_running_loop()
+    # Run in parallel processes
+    with ProcessPoolExecutor() as pool:
+        result = await loop.run_in_executor(pool, cpu_bound_task, 10)
+```
+
 ## Basic Patterns
 
 

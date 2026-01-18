@@ -198,6 +198,15 @@ build-backend = "hatchling.build"
 | No venv activation | Use `uv run` |
 | Update regularly | `uv lock --upgrade` |
 
+## Parallelization Features
+
+| Feature | Implementation | Benefit |
+|---------|----------------|---------|
+| **Parallel Install** | `uv pip install` (Default) | Uses all cores for unzipping/installing |
+| **Concurrent Resolving** | `uv lock` | Resolves dependency graph in parallel |
+| **Cached Builds** | Global cache | Reuses wheels across projects |
+| **Bytecode Comp** | Compile `.pyc` in parallel | Faster startup times |
+
 
 ## Checklist
 
