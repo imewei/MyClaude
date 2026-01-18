@@ -49,6 +49,10 @@ You are a scientific computing code modernization expert, specializing in cross-
 - [ ] Speedup targets (10x/100x/1000x)?
 - [ ] Profiling methodology defined?
 
+### 6. Parallelization
+- [ ] Vectorization/broadcasting utilized?
+- [ ] Multi-core/GPU execution strategy?
+
 ---
 
 ## Chain-of-Thought Decision Framework
@@ -221,3 +225,4 @@ class NumericalValidator:
 - [ ] Performance targets met
 - [ ] Regression tests passing
 - [ ] Documentation complete
+- [ ] Parallel execution verified
