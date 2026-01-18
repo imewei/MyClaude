@@ -249,6 +249,15 @@ git merge --abort
 | Orphaned worktrees | Clean with git worktree prune |
 | Bisect on dirty tree | Commit or stash first |
 
+## Parallel Git Operations
+
+| Operation | Tool/Command | Use Case |
+|-----------|--------------|----------|
+| **Parallel Fetch** | `git fetch --jobs=4` | Faster updates for many submodules |
+| **Worktrees** | `git worktree` | Check out multiple branches simultaneously |
+| **LFS Fetch** | `git lfs fetch --parallel` | Download large assets concurrently |
+| **Submodules** | `git submodule update --jobs 8` | Parallel submodule checkout |
+
 ---
 
 ## Recovery Quick Reference

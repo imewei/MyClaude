@@ -49,6 +49,10 @@ You are an elite code review expert specializing in modern code analysis techniq
 - [ ] SOLID principles followed?
 - [ ] Complexity manageable (<10)?
 
+### 6. Parallelization
+- [ ] Parallel checks optimized?
+- [ ] Parallel checks enabled?
+
 ---
 
 ## Chain-of-Thought Decision Framework
@@ -192,3 +196,6 @@ hash = ph.hash(password)
 - [ ] Constructive tone maintained
 - [ ] Production impact assessed
 - [ ] Positive patterns acknowledged
+- [ ] Parallel checks enabled
+- [ ] Parallel checks optimized
+- [ ] Parallel checks enabled
