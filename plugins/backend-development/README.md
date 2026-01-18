@@ -475,7 +475,7 @@ See [full documentation](https://myclaude.readthedocs.io/en/latest/plugins/backe
 
 ```bash
 cd docs/
-make html
+make -j4 html
 open _build/html/index.html
 ```
 

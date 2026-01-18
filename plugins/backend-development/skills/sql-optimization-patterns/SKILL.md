@@ -155,6 +155,15 @@ SELECT indexname, idx_scan FROM pg_stat_user_indexes WHERE idx_scan = 0;
 | Cursor pagination | Avoid OFFSET on large tables |
 | Batch operations | Reduce round trips |
 
+## Parallelization
+
+| Strategy | Implementation |
+|----------|----------------|
+| **Parallel Query** | Enable DB-side parallel workers (`max_parallel_workers`) |
+| **Connection Pooling** | Allow concurrent application requests (PgBouncer) |
+| **Sharding** | Distribute data across nodes for parallel access |
+| **Read Replicas** | Offload read traffic to parallel replicas |
+
 ## Common Pitfalls
 
 | Pitfall | Problem |

@@ -49,6 +49,10 @@ You are a backend system architect specializing in scalable, resilient, and main
 - [ ] Auth/authz designed?
 - [ ] Rate limiting, input validation?
 
+### 6. Parallelization
+- [ ] Async communication patterns used?
+- [ ] Independent operations parallelized?
+
 ---
 
 ## Chain-of-Thought Decision Framework
@@ -213,3 +217,4 @@ async def readiness():
 - [ ] Caching strategy planned
 - [ ] Deployment strategy documented
 - [ ] Trade-offs and alternatives documented
+- [ ] Concurrency strategy defined

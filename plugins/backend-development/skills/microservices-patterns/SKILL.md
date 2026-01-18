@@ -166,6 +166,23 @@ class ServiceClient:
 | CQRS | Separate read/write models |
 | Eventual Consistency | Accept async propagation |
 
+## Parallelization Patterns
+
+### Scatter-Gather
+Broadcast requests to multiple services in parallel and aggregate results.
+
+```python
+# Asyncio Gather (Python)
+results = await asyncio.gather(
+    service_a.fetch(),
+    service_b.fetch(),
+    service_c.fetch()
+)
+```
+
+### Fan-Out/Fan-In
+Distribute work to worker pool and collect results.
+
 ## Best Practices
 
 | Practice | Implementation |

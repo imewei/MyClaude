@@ -228,6 +228,16 @@ def get_rate(currency):
 | Ignoring async errors | Unhandled promise rejections |
 
 
+## Parallel Error Handling
+
+| Pattern | Implementation | Use Case |
+|---------|----------------|----------|
+| **Promise.allSettled** | Wait for all, process results | Batch operations where some failure is OK |
+| **Scatter-Gather** | Send requests, gather results | Resilient aggregation |
+| **Circuit Breaker** | Stop cascading failures | Distributed systems protection |
+| **ErrGroup** (Go) | Cancel all on first error | Strict consistency requirements |
+
+
 ## Checklist
 
 - [ ] Custom exception hierarchy defined

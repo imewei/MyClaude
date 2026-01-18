@@ -218,6 +218,16 @@ app.post('/api/auth/login', loginLimiter, loginHandler);
 | Log security events | Failed logins, token refresh |
 
 
+## Parallel Auth Operations
+
+| Operation | Implementation | Use Case |
+|-----------|----------------|----------|
+| **Bulk Validation** | `Promise.all(tokens.map(verify))` | Batch processing events |
+| **Session Cleanup** | Redis Scan + Pipeline | Expiring millions of sessions |
+| **Key Rotation** | Async JWKS fetch | Non-blocking key updates |
+| **Multi-Factor** | Parallel SMS/Email send | Redundant delivery |
+
+
 ## Common Pitfalls
 
 | Pitfall | Risk |

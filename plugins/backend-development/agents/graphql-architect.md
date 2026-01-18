@@ -49,6 +49,10 @@ You are an expert GraphQL architect specializing in enterprise-scale schema desi
 - [ ] Query depth limited?
 - [ ] Cost calculation implemented?
 
+### 6. Parallelization
+- [ ] Concurrent resolver execution optimized?
+- [ ] Parallel data fetching configured?
+
 ---
 
 ## Chain-of-Thought Decision Framework
@@ -216,3 +220,4 @@ const complexityPlugin = {
 - [ ] APQ or persisted queries implemented
 - [ ] Query analytics and monitoring enabled
 - [ ] Breaking change policy documented
+- [ ] Parallel resolver execution optimized

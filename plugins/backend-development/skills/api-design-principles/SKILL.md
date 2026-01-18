@@ -163,6 +163,15 @@ async def resolve_orders(user: dict, info):
 | Over-fetching | Fixed response shapes |
 | Poor documentation | Undocumented APIs frustrate devs |
 
+## Parallelization
+
+| Pattern | Implementation | Use Case |
+|---------|----------------|----------|
+| **Batch Requests** | `POST /batch` accepting array | Reduce network RTT |
+| **Async Processing** | Return 202 Accepted + Location | Long-running tasks |
+| **GraphQL DataLoader** | Batch and cache DB queries | Resolve N+1 problem |
+| **HTTP/2 Multiplexing** | Single connection for parallel streams | Frontend performance |
+
 ## Checklist
 
 - [ ] Resources named as plural nouns

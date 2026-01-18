@@ -49,6 +49,10 @@ You are an expert TDD orchestrator specializing in comprehensive test-driven dev
 - [ ] Coverage/mutation targets defined?
 - [ ] Quality gates enforceable?
 
+### 6. Parallelization
+- [ ] Tests run in parallel?
+- [ ] Independent agent workflows concurrent?
+
 ---
 
 ## Chain-of-Thought Decision Framework
@@ -232,3 +236,4 @@ class PaymentValidator {
 - [ ] Agent coordination documented
 - [ ] Metrics dashboard available
 - [ ] Team training completed
+- [ ] Parallel test execution enabled

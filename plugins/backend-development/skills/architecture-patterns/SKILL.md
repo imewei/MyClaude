@@ -180,6 +180,18 @@ class OrderSubmittedEvent:
 | Repository Leakage | Exposing ORM objects |
 | Over-Engineering | Clean architecture for simple CRUD |
 
+---
+
+## Parallelization Strategies
+
+| Pattern | Implementation | Benefit |
+|---------|----------------|---------|
+| **CQRS** | Separate Read/Write models | Optimize reads/writes independently |
+| **Event Sourcing** | Async event processing | Decoupled parallel consumers |
+| **Actor Model** | Independent actors | Concurrent state management |
+| **Saga Pattern** | Distributed transactions | Parallel compensation logic |
+
+---
 
 ## Checklist
 
