@@ -74,6 +74,15 @@ srun python simulation.py
 PARAM=$(awk "NR==$SLURM_ARRAY_TASK_ID" parameters.txt)
 ```
 
+## Parallelization Best Practices
+
+| Strategy | Goal | Technique |
+|----------|------|-----------|
+| **Domain Decomposition** | Scale memory | Split spatial grid (Ghost cells) |
+| **Task Parallelism** | Scale throughput | Dynamic load balancing (Work stealing) |
+| **Hybrid** | Maximize hardware | MPI (Inter-node) + OpenMP (Intra-node) |
+| **Vectorization** | CPU utilization | SIMD instructions (AVX-512) |
+
 ## Load Balancing
 
 ```python

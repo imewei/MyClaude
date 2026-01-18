@@ -32,6 +32,15 @@ description: Implement robust numerical algorithms for ODEs (RK45, BDF), PDEs (f
 | Newton-CG | Well-conditioned |
 | Nelder-Mead | Black-box, noisy |
 
+## Parallelization Strategies
+
+| Method | Technique | Implementation |
+|--------|-----------|----------------|
+| Domain Decomposition | Split spatial grid | MPI (mpi4py, MPI.jl) |
+| Vectorization | SIMD instructions | NumPy, Julia `@simd` |
+| Multi-threading | Shared memory | OpenMP, `Threads.@threads` |
+| GPU Acceleration | Massive parallelism | CUDA.jl, CuPy, JAX |
+
 ## ODE Solving
 
 ```python

@@ -53,6 +53,15 @@ result = Array(y_gpu)
 | Pinned memory | Faster transfers |
 | Async transfers | Overlap compute |
 
+## Parallelization Patterns
+
+| Pattern | Implementation | Use Case |
+|---------|----------------|----------|
+| **Grid-Stride Loop** | CUDA Kernel | Arbitrary input sizes |
+| **Reduction** | Tree-based | Sum/Max of arrays |
+| **Stream Processing** | Async CUDA Streams | Overlap copy & compute |
+| **Multi-GPU** | NCCL / NVLink | Distributed training/simulation |
+
 ```python
 stream1 = cp.cuda.Stream()
 with stream1:

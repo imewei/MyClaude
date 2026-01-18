@@ -59,6 +59,15 @@ model = sklearn.LinearRegression().fit(X_train, y_train)
 | Python | Numba JIT, vectorize |
 | Julia | Type stability, in-place ops |
 
+## Parallelization Capabilities
+
+| Feature | Python | Julia |
+|---------|--------|-------|
+| **Multi-threading** | GIL limitations (CPython) | Native composable threading |
+| **Multi-processing** | `multiprocessing` (Heavy) | `Distributed` (Lightweight) |
+| **GPU** | CuPy / PyTorch (Excellent) | CUDA.jl / KernelAbstractions.jl (Native) |
+| **Distributed** | Dask / Ray / MPI4Py | Distributed.jl / MPI.jl |
+
 ## Migration Strategy
 
 1. Profile Python → identify bottlenecks

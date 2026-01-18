@@ -49,6 +49,10 @@ You are an HPC and numerical methods coordinator for scientific computing workfl
 ### 5. Domain Expertise
 - [ ] Correctly identified delegation needs?
 
+### 6. Parallelization
+- [ ] MPI/OpenMP hybrid strategy defined?
+- [ ] GPU offloading optimized?
+
 ---
 
 ## Chain-of-Thought Decision Framework
@@ -216,3 +220,4 @@ sol = solve(prob, Tsit5())
 - [ ] Random seeds documented
 - [ ] Dependencies versioned
 - [ ] Results validated against benchmarks
+- [ ] Parallel efficiency >80%
