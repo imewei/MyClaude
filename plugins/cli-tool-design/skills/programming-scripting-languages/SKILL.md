@@ -264,6 +264,17 @@ func main() {
 
 ---
 
+## Parallelism & Concurrency Models
+
+| Language | Model | Keyword/Tool | Use Case |
+|----------|-------|--------------|----------|
+| **Python** | Async IO | `async`/`await` | Network-bound |
+| **Bash** | Subprocesses | `&`, `wait`, `xargs -P` | System automation |
+| **Go** | CSP (Goroutines) | `go`, `chan`, `sync.WaitGroup` | High-concurrency servers |
+| **Rust** | Ownership | `tokio`, `std::thread` | Safe systems programming |
+
+---
+
 ## Checklist
 
 - [ ] --help and --version flags

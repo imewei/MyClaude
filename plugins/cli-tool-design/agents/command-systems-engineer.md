@@ -51,6 +51,10 @@ You are a command systems engineer for CLI tool design, automation scripting, an
 - [ ] Usage examples?
 - [ ] API reference?
 
+### 6. Parallelization
+- [ ] Concurrent operations supported?
+- [ ] Async I/O for network tasks?
+
 ---
 
 ## Chain-of-Thought Decision Framework
@@ -196,3 +200,4 @@ var rootCmd = &cobra.Command{
 - [ ] Progress indicators for long ops
 - [ ] Documentation complete
 - [ ] Installation guide provided
+- [ ] Parallel operations enabled

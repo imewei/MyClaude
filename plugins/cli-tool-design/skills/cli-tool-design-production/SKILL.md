@@ -275,6 +275,17 @@ def deploy(dry_run: bool):
 
 ---
 
+## Parallel Execution Strategies
+
+| Strategy | Implementation | Use Case |
+|----------|----------------|----------|
+| **Thread Pool** | `concurrent.futures.ThreadPoolExecutor` | I/O-bound tasks (API calls) |
+| **Process Pool** | `multiprocessing.Pool` | CPU-bound tasks (Compilation) |
+| **AsyncIO** | `asyncio.gather` | High-concurrency network ops |
+| **Subprocess** | `xargs -P` / `GNU parallel` | External command orchestration |
+
+---
+
 ## Distribution
 
 | Platform | Method |
