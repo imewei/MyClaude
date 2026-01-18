@@ -144,6 +144,15 @@ python scripts/run_all_validations.py
 
 ---
 
+## Parallel Validation
+
+| Task | Parallel Strategy | Implementation |
+|------|-------------------|----------------|
+| **Tests** | Sharding/Splitting | `pytest -n auto`, `cargo test -jN` |
+| **Linting** | Per-file concurrency | `xargs -P 4 pylint`, `ruff` (native) |
+| **Security** | Async scanning | Run SAST/SCA tools in parallel jobs |
+| **CI/CD** | Matrix Builds | Run validation across OS/Versions concurrently |
+
 ## CI/CD Integration
 
 ```yaml

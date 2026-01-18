@@ -285,7 +285,12 @@ if [ $HAS_PY -gt 0 ]; then
     echo "  Running Python tests..."
 
     if command -v pytest &> /dev/null; then
-        pytest -v \
+        # Use xdist for parallel execution if available
+        PYTEST_ARGS="-v"
+        if python3 -c "import xdist" &> /dev/null; then
+            PYTEST_ARGS="$PYTEST_ARGS -n auto"
+        fi
+        pytest $PYTEST_ARGS \
             --cov=src \
             --cov-report=term-missing \
             --cov-report=html \
