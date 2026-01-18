@@ -13,8 +13,10 @@ Usage:
 import argparse
 import json
 import sys
+import glob
 from pathlib import Path
 from typing import Dict, List, Optional, Tuple
+import concurrent.futures
 
 import numpy as np
 
@@ -55,7 +57,7 @@ def load_training_log(log_path: Path) -> Optional[Dict]:
             pass
 
     # Could add TensorBoard, W&B parsing here
-    print(f"Warning: Could not load training log from {log_path}")
+    # print(f"Warning: Could not load training log from {log_path}")
     return None
 
 
@@ -311,7 +313,7 @@ def main():
         "--runs",
         nargs="+",
         required=True,
-        help="Paths to experiment directories"
+        help="Paths to experiment directories (supports glob patterns)"
     )
     parser.add_argument(
         "--metric",
@@ -327,44 +329,67 @@ def main():
 
     args = parser.parse_args()
 
+    # Expand run paths (handling glob patterns if passed as strings)
+    run_paths = []
+    for run_arg in args.runs:
+        # Check if the argument itself is a glob pattern that wasn't expanded by shell
+        if "*" in run_arg:
+            import glob
+            expanded = [Path(p) for p in glob.glob(run_arg)]
+            if not expanded:
+                print(f"Warning: No matches for glob pattern: {run_arg}")
+            run_paths.extend(expanded)
+        else:
+            path = Path(run_arg)
+            if path.exists():
+                run_paths.append(path)
+            else:
+                print(f"Warning: Path not found: {run_arg}")
+
+    if not run_paths:
+        print("No valid run directories found.")
+        sys.exit(1)
+
     print("\n" + "="*80)
-    print("TRAINING RUN COMPARISON TOOL")
+    print("TRAINING RUN COMPARISON TOOL (PARALLEL)")
     print("="*80)
 
-    print("\nNote: This is a template script. Expected data format:")
-    print("\nEach run directory should contain:")
-    print("  - config.json: Hyperparameters and settings")
-    print("  - metrics.json: Training metrics (loss, accuracy, etc.)")
-    print("\nExample structure:")
-    print("  experiment1/")
-    print("    ├── config.json")
-    print("    └── metrics.json")
+    print(f"\nLoading {len(run_paths)} runs in parallel...")
 
-    print("\nThe comparison functions are available for import:")
-    print("  from compare_training_runs import (")
-    print("      load_training_log,")
-    print("      compare_configs,")
-    print("      compare_metrics,")
-    print("      print_comparison_report")
-    print("  )")
-
-    # Example usage
-    print("\n" + "-"*80)
-    print("EXAMPLE USAGE:")
-    print("-"*80)
-    print("\nIn your code:")
-    print("""
     configs = {}
     metrics = {}
-    for run_dir in run_directories:
-        data = load_training_log(run_dir)
-        configs[run_dir.name] = extract_config(data)
-        metrics[run_dir.name] = extract_metrics(data)
 
-    print_comparison_report(configs, metrics, primary_metric='val_loss')
-    """)
+    # Parallel execution for loading logs
+    with concurrent.futures.ThreadPoolExecutor() as executor:
+        # Map run paths to future objects
+        future_to_path = {
+            executor.submit(load_training_log, path): path
+            for path in run_paths
+        }
 
-    print("\n" + "="*80 + "\n")
+        for future in concurrent.futures.as_completed(future_to_path):
+            path = future_to_path[future]
+            try:
+                data = future.result()
+                if data:
+                    run_name = path.name
+                    # Handle duplicate names if multiple paths point to same folder name
+                    if run_name in configs:
+                        run_name = f"{path.parent.name}/{run_name}"
+
+                    configs[run_name] = extract_config(data)
+                    metrics[run_name] = extract_metrics(data)
+                    print(f"✓ Loaded {run_name}")
+                else:
+                    print(f"✗ Failed to load {path.name} (invalid format)")
+            except Exception as e:
+                print(f"✗ Error loading {path.name}: {e}")
+
+    if not configs:
+        print("\nNo valid training data found in specified directories.")
+        sys.exit(1)
+
+    print_comparison_report(configs, metrics, primary_metric=args.metric)
 
 
 if __name__ == "__main__":

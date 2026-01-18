@@ -21,8 +21,8 @@ import sys
 from pathlib import Path
 from typing import Dict, List, Tuple
 import time
-from dataclasses import dataclass, asdict
-
+import concurrent.futures
+from concurrent.futures import ThreadPoolExecutor
 
 @dataclass
 class ValidationResult:
@@ -247,6 +247,21 @@ class ValidationOrchestrator:
             output="No build configured", skipped=True
         )
 
+    def run_security(self) -> ValidationResult:
+        """Run security scanning."""
+        security_script = Path(__file__).parent / "security_scan.py"
+        if not security_script.exists():
+            return ValidationResult(
+                name="Security Scan", passed=False, duration_seconds=0,
+                output="", error="security_scan.py not found", skipped=True
+            )
+
+        return self.run_command(
+            [sys.executable, str(security_script)],
+            "Security Scan",
+            timeout=600
+        )
+
     def generate_report(self) -> str:
         """Generate a comprehensive validation report."""
         total = len(self.results)
@@ -287,42 +302,43 @@ class ValidationOrchestrator:
         return "\n".join(report)
 
     def run_all(self, skip_security: bool = False, skip_tests: bool = False, skip_build: bool = False):
-        """Run all validations."""
-        print("\n🚀 Starting Comprehensive Validation\n")
+        """Run all validations in parallel."""
+        print("\n🚀 Starting Comprehensive Validation (Parallel Execution)\n")
 
-        # Phase 1: Linting and Formatting
-        print("📋 Phase 1: Code Quality Checks")
-        self.results.append(self.run_linting())
-        self.results.append(self.run_formatting())
-        self.results.append(self.run_type_checking())
+        with ThreadPoolExecutor(max_workers=5) as executor:
+            futures = {}
 
-        # Phase 2: Testing
-        if not skip_tests:
-            print("\n🧪 Phase 2: Testing")
-            self.results.append(self.run_tests())
+            # Code Quality (Phase 1)
+            print("📋 Scheduling: Linting, Formatting, Type Checking")
+            futures[executor.submit(self.run_linting)] = "Linting"
+            futures[executor.submit(self.run_formatting)] = "Formatting"
+            futures[executor.submit(self.run_type_checking)] = "Type Checking"
 
-        # Phase 3: Security
-        if not skip_security:
-            print("\n🔒 Phase 3: Security Scanning")
-            print("(Running security_scan.py...)")
-            # This will be called separately as it's more complex
-            security_result = subprocess.run(
-                [sys.executable, Path(__file__).parent / "security_scan.py"],
-                capture_output=True,
-                text=True
-            )
-            self.results.append(ValidationResult(
-                name="Security Scan",
-                passed=security_result.returncode == 0,
-                duration_seconds=0,
-                output=security_result.stdout,
-                error=security_result.stderr
-            ))
+            # Testing (Phase 2)
+            if not skip_tests:
+                print("🧪 Scheduling: Tests")
+                futures[executor.submit(self.run_tests)] = "Tests"
 
-        # Phase 4: Build
-        if not skip_build:
-            print("\n🏗️  Phase 4: Build Verification")
-            self.results.append(self.run_build())
+            # Security (Phase 3)
+            if not skip_security:
+                print("🔒 Scheduling: Security Scan")
+                futures[executor.submit(self.run_security)] = "Security"
+
+            # Build (Phase 4)
+            if not skip_build:
+                print("🏗️  Scheduling: Build Verification")
+                futures[executor.submit(self.run_build)] = "Build"
+
+            # Collect results as they complete
+            for future in concurrent.futures.as_completed(futures):
+                name = futures[future]
+                try:
+                    result = future.result()
+                    self.results.append(result)
+                    status = "✅ PASS" if result.passed else ("⏭️  SKIP" if result.skipped else "❌ FAIL")
+                    print(f"  -> {name}: {status} ({result.duration_seconds:.2f}s)")
+                except Exception as e:
+                    print(f"  -> {name}: 💥 ERROR ({str(e)})")
 
         # Generate and print report
         report = self.generate_report()

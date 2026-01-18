@@ -61,10 +61,20 @@ class TestRunner:
         return result.returncode
 
     def run_python_tests(self):
-        """Run Python tests with coverage."""
+        """Run Python tests with coverage and parallel execution."""
         print("Running Python tests with coverage...")
 
+        # Check for pytest-xdist
+        import importlib.util
+        has_xdist = importlib.util.find_spec("xdist") is not None
+
         cmd = ["pytest", "--cov", "--cov-report=term"]
+
+        # Enable parallel execution if available
+        if has_xdist:
+            cmd.extend(["-n", "auto"])
+            print("  -> Parallel execution enabled (pytest-xdist)")
+
         if self.html_report:
             cmd.append("--cov-report=html")
 

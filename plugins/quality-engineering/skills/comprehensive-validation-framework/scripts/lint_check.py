@@ -26,59 +26,78 @@ def run_command(cmd: list, check: bool = False) -> int:
         return e.returncode
 
 
+import concurrent.futures
+
+def run_js_checks(root, args):
+    """Run JavaScript/TypeScript checks."""
+    exit_code = 0
+    if (root / "package.json").exists():
+        print("📋 Checking JavaScript/TypeScript...")
+        if (root / "node_modules" / ".bin" / "eslint").exists():
+            cmd = ["npx", "eslint", "."]
+            if args.fix: cmd.append("--fix")
+            exit_code |= run_command(cmd)
+
+        if (root / "node_modules" / ".bin" / "prettier").exists():
+            cmd = ["npx", "prettier", "--check" if not args.fix else "--write", "."]
+            exit_code |= run_command(cmd)
+    return exit_code
+
+def run_python_checks(root, args):
+    """Run Python checks."""
+    exit_code = 0
+    if (root / "pyproject.toml").exists() or any(root.glob("*.py")):
+        print("📋 Checking Python...")
+        try:
+            cmd = ["ruff", "check", "."]
+            if args.fix: cmd.append("--fix")
+            exit_code |= run_command(cmd)
+
+            cmd = ["ruff", "format" if args.fix else "format --check", "."]
+            exit_code |= run_command(cmd)
+        except FileNotFoundError:
+            try:
+                cmd = ["black", "." if args.fix else "--check ."]
+                exit_code |= run_command(cmd)
+            except FileNotFoundError:
+                print("⚠️  No Python formatter found")
+    return exit_code
+
+def run_rust_checks(root, args):
+    """Run Rust checks."""
+    exit_code = 0
+    if (root / "Cargo.toml").exists():
+        print("📋 Checking Rust...")
+        exit_code |= run_command(["cargo", "clippy"])
+        exit_code |= run_command(["cargo", "fmt", "--" if not args.fix else "", "--check" if not args.fix else ""])
+    return exit_code
+
+def run_go_checks(root, args):
+    """Run Go checks."""
+    exit_code = 0
+    if (root / "go.mod").exists():
+        print("📋 Checking Go...")
+        exit_code |= run_command(["gofmt", "-l" if not args.fix else "-w", "."])
+    return exit_code
+
 def main():
-    parser = argparse.ArgumentParser(description="Run linting and formatting checks")
+    parser = argparse.ArgumentParser(description="Run linting and formatting checks (Parallel)")
     parser.add_argument("--fix", action="store_true", help="Auto-fix issues where possible")
     args = parser.parse_args()
 
     root = Path.cwd()
     exit_code = 0
 
-    # JavaScript/TypeScript
-    if (root / "package.json").exists():
-        print("📋 Checking JavaScript/TypeScript...")
+    with concurrent.futures.ThreadPoolExecutor() as executor:
+        futures = [
+            executor.submit(run_js_checks, root, args),
+            executor.submit(run_python_checks, root, args),
+            executor.submit(run_rust_checks, root, args),
+            executor.submit(run_go_checks, root, args)
+        ]
 
-        if (root / "node_modules" / ".bin" / "eslint").exists():
-            cmd = ["npx", "eslint", "."]
-            if args.fix:
-                cmd.append("--fix")
-            exit_code |= run_command(cmd)
-
-        if (root / "node_modules" / ".bin" / "prettier").exists():
-            cmd = ["npx", "prettier", "--check" if not args.fix else "--write", "."]
-            exit_code |= run_command(cmd)
-
-    # Python
-    if (root / "pyproject.toml").exists() or any(root.glob("*.py")):
-        print("\n📋 Checking Python...")
-
-        # Ruff (linter + formatter)
-        try:
-            cmd = ["ruff", "check", "."]
-            if args.fix:
-                cmd.append("--fix")
-            exit_code |= run_command(cmd)
-
-            cmd = ["ruff", "format" if args.fix else "format --check", "."]
-            exit_code |= run_command(cmd)
-        except FileNotFoundError:
-            # Fallback to black
-            try:
-                cmd = ["black", "." if args.fix else "--check ."]
-                exit_code |= run_command(cmd)
-            except FileNotFoundError:
-                print("⚠️  No Python formatter found")
-
-    # Rust
-    if (root / "Cargo.toml").exists():
-        print("\n📋 Checking Rust...")
-        exit_code |= run_command(["cargo", "clippy"])
-        exit_code |= run_command(["cargo", "fmt", "--" if not args.fix else "", "--check" if not args.fix else ""])
-
-    # Go
-    if (root / "go.mod").exists():
-        print("\n📋 Checking Go...")
-        exit_code |= run_command(["gofmt", "-l" if not args.fix else "-w", "."])
+        for future in concurrent.futures.as_completed(futures):
+            exit_code |= future.result()
 
     sys.exit(exit_code)
 
