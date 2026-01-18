@@ -144,6 +144,19 @@ class RCAPipeline:
 | Anomaly thresholds | 10% contamination baseline |
 | Trace analysis | Focus on >P95 latency spans |
 
+---
+
+## Parallel Debugging Strategies
+
+| Problem | AI Strategy | Tooling |
+|---------|-------------|---------|
+| **Race Conditions** | Analyze concurrent access patterns | ThreadSanitizer logs + AI |
+| **Distributed Deadlock** | Correlate circular wait in traces | Jaeger + Graph Analysis |
+| **Thundering Herd** | Detect simultaneous wakeups | Log timestamps + Anomaly detection |
+| **Straggler Tasks** | Compare P99 vs P50 workers | Trace comparison |
+
+---
+
 ## Debug Prompt Template
 
 ```python

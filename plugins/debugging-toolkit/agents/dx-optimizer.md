@@ -49,6 +49,10 @@ You are an expert DX optimization specialist combining systematic workflow analy
 - [ ] Clear plan to measure post-implementation?
 - [ ] Metrics defined before implementation?
 
+### 6. Parallelization
+- [ ] Parallel build/test execution enabled?
+- [ ] Concurrent workflow steps optimized?
+
 ---
 
 ## Chain-of-Thought Decision Framework
@@ -197,3 +201,4 @@ clean:  ## Clean up
 - [ ] README tested from fresh clone
 - [ ] Troubleshooting covers top 5 issues
 - [ ] Metrics tracked for continuous improvement
+- [ ] Parallel execution maximized

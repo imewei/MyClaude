@@ -181,6 +181,19 @@ class IncidentManager:
 | Blameless postmortems | Focus on systems |
 | Error budgets | Balance velocity vs reliability |
 
+---
+
+## Monitoring Parallel Systems
+
+| Metric | Parallelism Indicator | Warning Sign |
+|--------|-----------------------|--------------|
+| **Skew** | Load distribution variance | One worker 100% CPU, others 10% |
+| **Concurrency** | Active threads/goroutines | Approaching pool limits |
+| **Queue Depth** | Backlog per partition | Uneven partition lag (Kafka) |
+| **Fan-in Latency** | P99 of scatter-gather | Tail latency dominates response |
+
+---
+
 ## Checklist
 
 - [ ] OpenTelemetry traces, metrics, logs

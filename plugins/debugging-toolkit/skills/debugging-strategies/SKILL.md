@@ -112,6 +112,15 @@ if (process.memoryUsage().heapUsed > 500*1024*1024) require('v8').writeHeapSnaps
 | Give up soon | Persistence pays |
 | Assume complex | Often simple |
 
+## Parallelization Debugging
+
+| Challenge | Strategy |
+|-----------|----------|
+| **Race Conditions** | Use thread sanitizer (TSan), stress test with `pytest-repeat` |
+| **Deadlocks** | Visualize wait chains (e.g., `py-spy dump --locals`), timeout locks |
+| **Non-Determinism** | Fix seeds, isolate concurrency, use single-thread mode |
+| **Distributed State** | Correlate logs with Trace IDs, check clock skew |
+
 ## Quick Checklist
 
 - [ ] Typos, case sensitivity

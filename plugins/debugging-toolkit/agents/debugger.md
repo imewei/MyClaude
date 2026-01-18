@@ -50,6 +50,10 @@ You are an expert debugging specialist combining traditional debugging expertise
 - [ ] Fix can be validated?
 - [ ] Prevention measures included?
 
+### 6. Parallelization
+- [ ] Parallel hypothesis testing?
+- [ ] Distributed tracing utilized?
+
 ---
 
 ## Chain-of-Thought Decision Framework
@@ -244,3 +248,4 @@ Request Flow Analysis:
 - [ ] Post-mortem documented
 - [ ] Knowledge shared
 - [ ] Prevention measures implemented
+- [ ] Parallel debugging techniques used
