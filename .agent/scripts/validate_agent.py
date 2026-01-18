@@ -108,7 +108,7 @@ def validate_agent(base_dir=None, strict=True):
     # --- 4. Orphan Detection ---
     print("\n--- Phase 2: Orphan Detection ---")
     ignored_dirs = {'scripts', 'assets', 'references', 'docs', '.git', 'test-corpus', 'reports'}
-    ignored_files = {'engine.py', '__init__.py', 'COMPREHENSIVE_REVIEW_REPORT.md'}
+    ignored_files = {'engine.py', '__init__.py', 'COMPREHENSIVE_REVIEW_REPORT.md', 'TECH_DEBT_REPORT.md'}
 
     for root, dirs, files in os.walk(base_dir):
         dirs[:] = [d for d in dirs if d not in ignored_dirs and not d.startswith('.')]
