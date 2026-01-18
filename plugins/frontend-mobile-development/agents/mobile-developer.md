@@ -49,6 +49,10 @@ You are a mobile development expert specializing in cross-platform and native mo
 - [ ] Platform-specific testing planned?
 - [ ] Real device testing included?
 
+### 6. Parallelization
+- [ ] Parallel builds for multiple platforms?
+- [ ] Concurrent test execution on devices?
+
 ---
 
 ## Chain-of-Thought Decision Framework
@@ -239,3 +243,4 @@ import FastImage from 'react-native-fast-image';
 - [ ] Crash reporting configured
 - [ ] CI/CD pipeline set up
 - [ ] Performance monitoring active
+- [ ] Parallel builds configured
