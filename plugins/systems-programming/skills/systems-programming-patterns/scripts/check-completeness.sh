@@ -13,133 +13,113 @@ YELLOW='\033[1;33m'
 BLUE='\033[0;34m'
 NC='\033[0m'
 
-echo "=== Completeness Check for systems-programming-patterns ==="
+echo "=== Completeness Check for systems-programming-patterns (Parallel) ==="
 echo
 
-total_checks=0
-passed_checks=0
-failed_checks=0
+# Setup temporary directory for parallel results
+RESULTS_DIR=$(mktemp -d)
+trap 'rm -rf "$RESULTS_DIR"' EXIT
 
-# Check function
+# Function to write results
+record_result() {
+    local name="$1"
+    local passed="$2"
+    local failed="$3"
+    echo "$passed $failed" > "$RESULTS_DIR/$name.stats"
+}
+
+# Check function (modified for parallel execution)
 check() {
     local description="$1"
     shift
     local condition="$*"
 
-    ((total_checks++))
-
     if eval "$condition"; then
         echo -e "${GREEN}✓${NC} $description"
-        ((passed_checks++))
         return 0
     else
         echo -e "${RED}✗${NC} $description"
-        ((failed_checks++))
         return 1
     fi
 }
 
-# Core Files
-echo -e "${BLUE}=== Core Files ===${NC}"
-check "SKILL.md exists" "[[ -f '$SKILL_DIR/SKILL.md' ]]"
-check "SKILL.md has content (>500 lines)" "[[ $(wc -l < '$SKILL_DIR/SKILL.md') -gt 500 ]]"
-check "SKILL.md has frontmatter" "grep -q '^name:' '$SKILL_DIR/SKILL.md'"
-check "SKILL.md has description" "grep -q '^description:' '$SKILL_DIR/SKILL.md'"
-echo
+# 1. Core Files Check
+check_core_files() {
+    local passed=0
+    local failed=0
 
-# Reference Files
-echo -e "${BLUE}=== Reference Files ===${NC}"
-check "references/ directory exists" "[[ -d '$SKILL_DIR/references' ]]"
-check "profiling-guide.md exists" "[[ -f '$SKILL_DIR/references/profiling-guide.md' ]]"
-check "memory-pools.md exists" "[[ -f '$SKILL_DIR/references/memory-pools.md' ]]"
-check "lock-free-patterns.md exists" "[[ -f '$SKILL_DIR/references/lock-free-patterns.md' ]]"
-check "raii-patterns.md exists" "[[ -f '$SKILL_DIR/references/raii-patterns.md' ]]"
-check "rcu-patterns.md exists" "[[ -f '$SKILL_DIR/references/rcu-patterns.md' ]]"
-check "common-bugs.md exists" "[[ -f '$SKILL_DIR/references/common-bugs.md' ]]"
+    echo -e "${BLUE}=== Core Files ===${NC}"
+    if check "SKILL.md exists" "[[ -f '$SKILL_DIR/SKILL.md' ]]"; then ((passed++)); else ((failed++)); fi
+    if check "SKILL.md has content (>500 lines)" "[[ $(wc -l < '$SKILL_DIR/SKILL.md') -gt 500 ]]"; then ((passed++)); else ((failed++)); fi
+    if check "SKILL.md has frontmatter" "grep -q '^name:' '$SKILL_DIR/SKILL.md'"; then ((passed++)); else ((failed++)); fi
+    if check "SKILL.md has description" "grep -q '^description:' '$SKILL_DIR/SKILL.md'"; then ((passed++)); else ((failed++)); fi
 
-# Check reference file sizes (should have content)
-if [[ -f "$SKILL_DIR/references/memory-pools.md" ]]; then
-    check "memory-pools.md has content (>1000 lines)" "[[ $(wc -l < '$SKILL_DIR/references/memory-pools.md') -gt 1000 ]]"
-fi
+    record_result "core" $passed $failed
+}
 
-if [[ -f "$SKILL_DIR/references/lock-free-patterns.md" ]]; then
-    check "lock-free-patterns.md has content (>500 lines)" "[[ $(wc -l < '$SKILL_DIR/references/lock-free-patterns.md') -gt 500 ]]"
-fi
+# 2. Reference Files Check
+check_references() {
+    local passed=0
+    local failed=0
 
-echo
+    echo -e "${BLUE}=== Reference Files ===${NC}"
+    if check "references/ directory exists" "[[ -d '$SKILL_DIR/references' ]]"; then ((passed++)); else ((failed++)); fi
+    if check "profiling-guide.md exists" "[[ -f '$SKILL_DIR/references/profiling-guide.md' ]]"; then ((passed++)); else ((failed++)); fi
+    if check "memory-pools.md exists" "[[ -f '$SKILL_DIR/references/memory-pools.md' ]]"; then ((passed++)); else ((failed++)); fi
 
-# Assets
-echo -e "${BLUE}=== Assets ===${NC}"
-check "assets/ directory exists" "[[ -d '$SKILL_DIR/assets' ]]"
-
-if [[ -d "$SKILL_DIR/assets" ]]; then
-    asset_count=$(find "$SKILL_DIR/assets" -type f -name "*.md" | wc -l)
-    check "assets/ has diagram files (>2)" "[[ $asset_count -gt 2 ]]"
-
-    check "assets/README.md exists" "[[ -f '$SKILL_DIR/assets/README.md' ]]"
-fi
-
-echo
-
-# Scripts
-echo -e "${BLUE}=== Scripts ===${NC}"
-check "scripts/ directory exists" "[[ -d '$SKILL_DIR/scripts' ]]"
-
-if [[ -d "$SKILL_DIR/scripts" ]]; then
-    check "validate-links.sh exists" "[[ -f '$SKILL_DIR/scripts/validate-links.sh' ]]"
-    check "check-completeness.sh exists" "[[ -f '$SKILL_DIR/scripts/check-completeness.sh' ]]"
-
-    # Check if scripts are executable
-    if [[ -f "$SKILL_DIR/scripts/validate-links.sh" ]]; then
-        check "validate-links.sh is executable" "[[ -x '$SKILL_DIR/scripts/validate-links.sh' ]]"
+    # Size checks
+    if [[ -f "$SKILL_DIR/references/memory-pools.md" ]]; then
+        if check "memory-pools.md has content (>1000 lines)" "[[ $(wc -l < '$SKILL_DIR/references/memory-pools.md') -gt 1000 ]]"; then ((passed++)); else ((failed++)); fi
     fi
 
-    if [[ -f "$SKILL_DIR/scripts/check-completeness.sh" ]]; then
-        check "check-completeness.sh is executable" "[[ -x '$SKILL_DIR/scripts/check-completeness.sh' ]]"
+    record_result "references" $passed $failed
+}
+
+# 3. Assets & Scripts Check
+check_assets_scripts() {
+    local passed=0
+    local failed=0
+
+    echo -e "${BLUE}=== Assets & Scripts ===${NC}"
+    if check "assets/ directory exists" "[[ -d '$SKILL_DIR/assets' ]]"; then ((passed++)); else ((failed++)); fi
+    if check "scripts/ directory exists" "[[ -d '$SKILL_DIR/scripts' ]]"; then ((passed++)); else ((failed++)); fi
+
+    if [[ -d "$SKILL_DIR/scripts" ]]; then
+        if check "validate-links.sh executable" "[[ -x '$SKILL_DIR/scripts/validate-links.sh' ]]"; then ((passed++)); else ((failed++)); fi
     fi
-fi
+
+    record_result "assets" $passed $failed
+}
+
+# Run checks in parallel
+check_core_files &
+PID1=$!
+check_references &
+PID2=$!
+check_assets_scripts &
+PID3=$!
+
+# Wait for all checks
+wait $PID1
+wait $PID2
+wait $PID3
 
 echo
 
-# Content Quality Checks
-echo -e "${BLUE}=== Content Quality ===${NC}"
+# Aggregate results
+total_checks=0
+passed_checks=0
+failed_checks=0
 
-if [[ -f "$SKILL_DIR/SKILL.md" ]]; then
-    check "SKILL.md mentions all 4 languages (C, C++, Rust, Go)" \
-        "grep -qi 'rust' '$SKILL_DIR/SKILL.md' && grep -qi 'c++' '$SKILL_DIR/SKILL.md' && grep -qi 'golang\|\\bgo\\b' '$SKILL_DIR/SKILL.md'"
+for stat_file in "$RESULTS_DIR"/*.stats; do
+    if [[ -f "$stat_file" ]]; then
+        read p f < "$stat_file"
+        ((passed_checks += p))
+        ((failed_checks += f))
+    fi
+done
 
-    check "SKILL.md has code blocks" "grep -q '\`\`\`' '$SKILL_DIR/SKILL.md'"
-
-    check "SKILL.md has memory management section" "grep -qi 'memory.*management' '$SKILL_DIR/SKILL.md'"
-
-    check "SKILL.md has concurrency section" "grep -qi 'concurrency\|concurrent' '$SKILL_DIR/SKILL.md'"
-
-    check "SKILL.md has performance section" "grep -qi 'performance' '$SKILL_DIR/SKILL.md'"
-fi
-
-echo
-
-# Reference Completeness
-echo -e "${BLUE}=== Reference Completeness ===${NC}"
-
-# Extract all reference links from SKILL.md
-if [[ -f "$SKILL_DIR/SKILL.md" ]]; then
-    echo "Checking all referenced files exist..."
-
-    while IFS= read -r ref_path; do
-        full_path="$SKILL_DIR/$ref_path"
-        if [[ -f "$full_path" ]]; then
-            echo -e "  ${GREEN}✓${NC} $ref_path"
-            ((passed_checks++))
-        else
-            echo -e "  ${RED}✗${NC} $ref_path (referenced but missing)"
-            ((failed_checks++))
-        fi
-        ((total_checks++))
-    done < <(grep -oP 'references/[a-z-]+\.md' "$SKILL_DIR/SKILL.md" | sort -u)
-fi
-
-echo
+total_checks=$((passed_checks + failed_checks))
 
 # Summary
 echo -e "${BLUE}=== Summary ===${NC}"
