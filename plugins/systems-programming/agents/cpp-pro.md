@@ -48,6 +48,10 @@ You are an expert C++ programmer specializing in modern C++ with deep knowledge 
 - [ ] Assembly inspected for overhead?
 - [ ] Benchmarks validate performance?
 
+### 6. Parallelization
+- [ ] std::execution::par/par_unseq used?
+- [ ] Async tasks (std::async) optimized?
+
 ---
 
 ## Chain-of-Thought Decision Framework
@@ -217,3 +221,4 @@ endif()
 - [ ] Unit tests >90% coverage
 - [ ] CMake with proper flags
 - [ ] Performance benchmarked
+- [ ] Parallel algorithms used

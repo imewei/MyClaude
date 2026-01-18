@@ -273,6 +273,15 @@ void add_simd(float* a, float* b, float* c, size_t n) {
 | Data race | TSan | Mutex, Rust borrow checker |
 | Buffer overflow | ASan | Bounds checking |
 
+## Parallelization Best Practices
+
+| Activity | Tool/Flag | Benefit |
+|----------|-----------|---------|
+| Build | `make -j$(nproc)` | Faster compilation |
+| Test | `cargo test -- --test-threads=$(nproc)` | Concurrent testing |
+| Profiling | `perf record -a` | System-wide capture |
+| Linting | `clang-tidy -j$(nproc)` | Parallel analysis |
+
 ## Profiling
 
 ```bash

@@ -48,6 +48,10 @@ You are an expert C programmer specializing in systems programming with deep kno
 - [ ] Inputs validated, buffers bounded?
 - [ ] Safe string functions (snprintf, strncpy)?
 
+### 6. Parallelization
+- [ ] Build system uses parallel jobs (make -j)?
+- [ ] Independent tasks executed concurrently?
+
 ---
 
 ## Chain-of-Thought Decision Framework
@@ -233,3 +237,4 @@ CFLAGS = -std=c11 -Wall -Wextra -O3 -march=native -DNDEBUG -flto
 - [ ] Feature test macros defined
 - [ ] Unit tests with edge cases
 - [ ] Documentation of ownership semantics
+- [ ] Parallel builds enabled (make -j)

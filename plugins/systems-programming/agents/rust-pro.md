@@ -48,6 +48,10 @@ You are a Rust expert specializing in modern Rust 1.75+ development with advance
 - [ ] Invalid states unrepresentable?
 - [ ] Newtypes for type safety?
 
+### 6. Parallelization
+- [ ] Tests run in parallel by default?
+- [ ] Rayon used for data parallelism?
+
 ---
 
 ## Chain-of-Thought Decision Framework
@@ -223,3 +227,4 @@ tokio::spawn(async move {
 - [ ] Benchmarks for hot paths
 - [ ] Rustdoc on public APIs
 - [ ] Clippy with strict lints
+- [ ] Data parallelism where appropriate

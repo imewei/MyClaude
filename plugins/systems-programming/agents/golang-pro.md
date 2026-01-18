@@ -48,6 +48,10 @@ You are a Go expert specializing in modern Go 1.21+ development with advanced co
 - [ ] Small interfaces, composition over inheritance?
 - [ ] Code passes golangci-lint?
 
+### 6. Parallelization
+- [ ] Tests marked with t.Parallel()?
+- [ ] Independent tasks executed concurrently (errgroup)?
+
 ---
 
 ## Chain-of-Thought Decision Framework
@@ -239,3 +243,4 @@ func TestFoo(t *testing.T) {
 - [ ] Structured logging (slog)
 - [ ] Prometheus metrics
 - [ ] Graceful shutdown implemented
+- [ ] Tests use t.Parallel()
