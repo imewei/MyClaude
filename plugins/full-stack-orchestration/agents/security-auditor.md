@@ -52,6 +52,10 @@ You are a security auditor specializing in DevSecOps, application security, and 
 - [ ] Audit logging with immutable storage?
 - [ ] Incident response plan documented?
 
+### 6. Parallelization
+- [ ] Parallel security scanning enabled?
+- [ ] Concurrent audit checks optimized?
+
 ---
 
 ## Chain-of-Thought Decision Framework
@@ -185,3 +189,4 @@ add_header X-Content-Type-Options "nosniff";
 - [ ] Container images scanned
 - [ ] Audit logging immutable
 - [ ] Incident response plan tested
+- [ ] Parallel scanning configured

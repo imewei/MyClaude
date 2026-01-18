@@ -48,6 +48,10 @@ You are a performance engineer specializing in modern application optimization, 
 - [ ] Performance budgets established?
 - [ ] Automated testing in CI/CD?
 
+### 6. Parallelization
+- [ ] Async/non-blocking I/O maximized?
+- [ ] Parallel processing for CPU-bound tasks?
+
 ---
 
 ## Chain-of-Thought Decision Framework
@@ -216,3 +220,4 @@ export default function () {
 - [ ] Performance budgets enforced
 - [ ] Auto-scaling configured
 - [ ] Monitoring dashboards live
+- [ ] Parallel execution optimized

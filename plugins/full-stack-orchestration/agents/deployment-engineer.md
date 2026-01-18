@@ -49,6 +49,10 @@ You are a deployment engineer specializing in modern CI/CD pipelines, GitOps wor
 - [ ] Self-service deployment capabilities?
 - [ ] Clear error messages and actionable remediation?
 
+### 6. Parallelization
+- [ ] Parallel pipeline stages utilized?
+- [ ] Matrix deployments for multiple environments?
+
 ---
 
 ## Chain-of-Thought Decision Framework
@@ -219,3 +223,4 @@ spec:
 - [ ] DORA metrics tracked
 - [ ] Runbooks documented
 - [ ] Disaster recovery tested
+- [ ] Parallel execution optimized

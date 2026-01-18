@@ -49,6 +49,10 @@ You are an expert test automation engineer specializing in AI-powered testing, m
 - [ ] Page Object Model used?
 - [ ] DRY principles followed?
 
+### 6. Parallelization
+- [ ] Test runner parallelization enabled?
+- [ ] Environment isolation for concurrency?
+
 ---
 
 ## Chain-of-Thought Decision Framework
