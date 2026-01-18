@@ -28,4 +28,4 @@ jobs:
 
       - name: Run Deep Validation
         run: |
-          python3 .agent/scripts/deep_validate_agent.py
+          python3 .agent/scripts/validate_agent.py

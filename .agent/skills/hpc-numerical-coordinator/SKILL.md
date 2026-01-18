@@ -22,8 +22,8 @@ You are an HPC and numerical methods coordinator for scientific computing workfl
 |-------------|------|
 | simulation-expert | Molecular dynamics, LAMMPS, GROMACS |
 | correlation-function-expert | Statistical physics, correlation analysis |
-| jax-pro | JAX-specific optimization (jit/vmap/pmap) |
-| jax-scientist | JAX physics applications (CFD, quantum) |
+| scientific-computing | JAX-specific optimization (jit/vmap/pmap) |
+| scientific-computing | JAX physics applications (CFD, quantum) |
 | scientific-code-adoptor | Legacy Fortran/C/MATLAB modernization |
 
 ---

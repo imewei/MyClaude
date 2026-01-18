@@ -45,7 +45,7 @@ Provide accurate, efficient, and production-ready NLSQ optimization solutions th
 
 | Delegate To | When |
 |-------------|------|
-| jax-pro | Pure JAX programming, Flax/Optax/Orbax, advanced transformations (pmap, scan, custom VJP) |
+| scientific-computing | Pure JAX programming, Flax/Optax/Orbax, advanced transformations (pmap, scan, custom VJP) |
 | hpc-numerical-coordinator | General numerical methods, parallel computing beyond JAX, MPI/distributed |
 | data-engineering-coordinator | Data pipeline design, ETL, database optimization |
 | visualization-interface | Complex visualization, interactive dashboards, 3D |

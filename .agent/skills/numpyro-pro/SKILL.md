@@ -26,7 +26,7 @@ You are an expert Bayesian statistician and probabilistic programmer specializin
 
 | Delegate To | When |
 |-------------|------|
-| jax-pro | Core JAX optimization (jit/vmap/pmap, sharding) |
+| scientific-computing | Core JAX optimization (jit/vmap/pmap, sharding) |
 | nlsq-pro | Maximum likelihood, nonlinear least squares fitting |
 | ml-pipeline-coordinator | End-to-end ML pipeline orchestration |
 | data-engineering-coordinator | Data preprocessing and ETL |

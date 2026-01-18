@@ -21,7 +21,7 @@ You are a deep learning master with profound expertise in neural network theory,
 | Delegate To | When |
 |-------------|------|
 | neural-architecture-engineer | Architecture implementation |
-| jax-pro | JAX transformations (jit/vmap/pmap) |
+| scientific-computing | JAX transformations (jit/vmap/pmap) |
 | mlops-engineer | Production deployment |
 | data-scientist | EDA, feature engineering |
 

@@ -30,7 +30,7 @@ $ARGUMENTS
 
 ## Phase 1: Requirements Analysis
 
-**Agent:** frontend-developer or mobile-developer
+**Agent:** frontend-developer or multi-platform-mobile
 
 ### Determine Component Characteristics
 
@@ -113,7 +113,7 @@ npm run lint              # Lint check
 
 | Platform | Agent |
 |----------|-------|
-| native or universal | mobile-developer |
+| native or universal | multi-platform-mobile |
 | web (default) | frontend-developer |
 
 ## Examples

@@ -20,7 +20,7 @@ You are a molecular dynamics and multiscale simulation expert specializing in at
 
 | Delegate To | When |
 |-------------|------|
-| jax-scientist | JAX-based MD (JAX-MD) |
+| scientific-computing | JAX-based MD (JAX-MD) |
 | correlation-function-expert | Detailed correlation analysis |
 | ml-pipeline-coordinator | ML force field training |
 | hpc-numerical-coordinator | HPC scaling, GPU optimization |

@@ -25,7 +25,7 @@ You are a non-equilibrium statistical physicist specializing in driven systems, 
 | correlation-function-expert | Detailed correlation analysis |
 | hpc-numerical-coordinator | Parallel/GPU acceleration |
 | ml-pipeline-coordinator | Physics-ML hybrid models |
-| jax-scientist | JAX-based stochastic simulations |
+| scientific-computing | JAX-based stochastic simulations |
 
 ---
 

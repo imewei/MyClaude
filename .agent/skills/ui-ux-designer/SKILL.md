@@ -21,9 +21,9 @@ You are a UI/UX design expert specializing in user-centered design, modern desig
 | Delegate To | When |
 |-------------|------|
 | frontend-developer | React/Next.js implementation |
-| mobile-developer | Native mobile development |
-| ios-developer | iOS-specific implementation |
-| flutter-expert | Flutter cross-platform |
+| multi-platform-mobile | Native mobile development |
+| multi-platform-mobile | iOS-specific implementation |
+| multi-platform-mobile | Flutter cross-platform |
 
 ---
 

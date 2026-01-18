@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-01-18T00:14:17.057899",
+  "generated_at": "2026-01-18T00:50:45.405109",
   "skills": {
     "machine-learning-essentials": {
       "path": "skills/machine-learning-essentials/SKILL.md",
@@ -46,12 +46,6 @@
     "dx-optimizer": {
       "path": "skills/dx-optimizer/SKILL.md",
       "description": "Developer Experience specialist. Improves tooling, setup, and workflows.",
-      "triggers": [],
-      "version": "1.0.0"
-    },
-    "mobile-developer": {
-      "path": "skills/mobile-developer/SKILL.md",
-      "description": "Develop React Native, Flutter, or native mobile apps with modern architecture",
       "triggers": [],
       "version": "1.0.0"
     },
@@ -162,12 +156,6 @@
       "description": "Create domain-specific scientific visualizations with uncertainty quantification (error bars, confidence bands), multi-dimensional data (parallel coordinates, heatmaps), domain plots (vector fields, molecular structures, climate maps, spectroscopy), and publication standards (Nature/Science specs, colorblind-friendly palettes). Use for research papers, presentations, and technical reports.",
       "triggers": [],
       "version": "1.0.7"
-    },
-    "ios-developer": {
-      "path": "skills/ios-developer/SKILL.md",
-      "description": "Develop native iOS applications with Swift/SwiftUI. Masters iOS 18, SwiftUI,",
-      "triggers": [],
-      "version": "1.0.0"
     },
     "django-pro": {
       "path": "skills/django-pro/SKILL.md",
@@ -282,12 +270,6 @@
       "description": "Modern React Native patterns with New Architecture, TypeScript, and performance optimization. Use when building React Native components, optimizing FlatList performance, implementing state management (Redux Toolkit, Zustand), setting up React Navigation, integrating APIs with React Query, handling forms with React Hook Form, creating native modules, or implementing offline-first storage.",
       "triggers": [],
       "version": "1.0.7"
-    },
-    "jax-pro": {
-      "path": "skills/jax-pro/SKILL.md",
-      "description": "Expert Core JAX Programming Specialist for functional transformations,",
-      "triggers": [],
-      "version": "1.0.0"
     },
     "multi-agent-orchestrator": {
       "path": "skills/multi-agent-orchestrator/SKILL.md",
@@ -444,12 +426,6 @@
       "description": "Research intelligence expert specializing in research methodology and",
       "triggers": [],
       "version": "1.0.0"
-    },
-    "jax-core-programming": {
-      "path": "skills/jax-core-programming/SKILL.md",
-      "description": "Master JAX functional transformations (jit, vmap, pmap, grad), Flax NNX neural networks, Optax optimizers, Orbax checkpointing, and NumPyro Bayesian inference. Use when writing JAX code, building training loops, optimizing XLA compilation, debugging tracer errors, or scaling to multi-device GPU/TPU.",
-      "triggers": [],
-      "version": "1.0.7"
     },
     "non-equilibrium-theory": {
       "path": "skills/non-equilibrium-theory/SKILL.md",
@@ -625,17 +601,17 @@
       "triggers": [],
       "version": "1.0.0"
     },
-    "mobile-developer-multi-platform-apps": {
-      "path": "skills/mobile-developer-multi-platform-apps/SKILL.md",
-      "description": "Develop React Native, Flutter, or native mobile apps with modern architecture",
-      "triggers": [],
-      "version": "1.0.0"
-    },
     "sciml-pro": {
       "path": "skills/sciml-pro/SKILL.md",
       "description": "SciML ecosystem expert for scientific machine learning and differential",
       "triggers": [],
       "version": "1.0.0"
+    },
+    "scientific-computing": {
+      "path": "skills/scientific-computing/SKILL.md",
+      "description": "The definitive JAX authority. Master of functional transformations (jit/vmap/pmap), high-performance computing, differentiable physics (MD/CFD/PINNs), and probabilistic programming. Use for ALL JAX-based tasks: training neural networks (Flax NNX), physics simulations, Bayesian inference (NumPyro), and multi-device scaling.",
+      "triggers": [],
+      "version": "2.0.0"
     },
     "active-matter": {
       "path": "skills/active-matter/SKILL.md",
@@ -666,6 +642,12 @@
       "description": "Master NLSQ library for high-performance curve fitting (150-270x faster than SciPy). Use when fitting >10K points, parameter estimation, robust optimization, streaming datasets (100M+ points), or migrating from SciPy.",
       "triggers": [],
       "version": "1.0.7"
+    },
+    "multi-platform-mobile": {
+      "path": "skills/multi-platform-mobile/SKILL.md",
+      "description": "The definitive authority on mobile development. Master of cross-platform frameworks (Flutter/React Native) and native ecosystems (iOS/Android). Use for ALL mobile tasks: architecture design, UI implementation, performance optimization, offline-first data sync, and app store deployment.",
+      "triggers": [],
+      "version": "2.0.0"
     },
     "deployment-engineer-full-stack-orchestration": {
       "path": "skills/deployment-engineer-full-stack-orchestration/SKILL.md",
@@ -829,12 +811,6 @@
       "triggers": [],
       "version": "1.0.0"
     },
-    "jax-physics-applications": {
-      "path": "skills/jax-physics-applications/SKILL.md",
-      "description": "Physics simulations using JAX-based libraries (JAX-MD, JAX-CFD, PINNs). Use when implementing molecular dynamics, computational fluid dynamics, physics-informed neural networks with PDE constraints, quantum computing algorithms (VQE, QAOA), multi-physics coupling, or differentiable physics for gradient-based optimization.",
-      "triggers": [],
-      "version": "1.0.7"
-    },
     "differential-equations": {
       "path": "skills/differential-equations/SKILL.md",
       "description": "Solve ODE/SDE/PDE with DifferentialEquations.jl. Use when defining differential equation systems, selecting solvers, implementing callbacks, or creating ensemble simulations.",
@@ -943,12 +919,6 @@
       "triggers": [],
       "version": "1.0.0"
     },
-    "jax-scientist": {
-      "path": "skills/jax-scientist/SKILL.md",
-      "description": "Production-ready computational physics expert specializing in differentiable",
-      "triggers": [],
-      "version": "1.0.0"
-    },
     "neural-network-mathematics": {
       "path": "skills/neural-network-mathematics/SKILL.md",
       "description": "Apply mathematical foundations of neural networks including linear algebra, calculus, probability theory, optimization, and information theory. Use when deriving backpropagation for custom layers, computing Jacobians/Hessians, implementing automatic differentiation, analyzing gradient flow, proving convergence, working with Bayesian deep learning, deriving loss functions from MLE principles, or understanding PAC learning theory.",
@@ -991,12 +961,6 @@
       "triggers": [],
       "version": "1.0.7"
     },
-    "flutter-development": {
-      "path": "skills/flutter-development/SKILL.md",
-      "description": "Comprehensive Flutter development patterns for mobile, web, and desktop apps. Use when writing Flutter/Dart code, implementing state management (Riverpod, Bloc), creating widgets, optimizing performance, handling navigation, integrating APIs, implementing offline persistence, or writing Flutter tests.",
-      "triggers": [],
-      "version": "1.0.7"
-    },
     "architect-review-framework-migration": {
       "path": "skills/architect-review-framework-migration/SKILL.md",
       "description": "Master software architect specializing in modern architecture patterns,",
@@ -1006,12 +970,6 @@
     "python-performance-optimization": {
       "path": "skills/python-performance-optimization/SKILL.md",
       "description": "Profile and optimize Python code using cProfile, line_profiler, memory_profiler, and py-spy. Use when analyzing slow code, optimizing CPU-intensive operations, reducing memory consumption, implementing caching with lru_cache, using NumPy for vectorization, multiprocessing for CPU-bound tasks, or async/await for I/O-bound tasks.",
-      "triggers": [],
-      "version": "1.0.7"
-    },
-    "ios-best-practices": {
-      "path": "skills/ios-best-practices/SKILL.md",
-      "description": "Native iOS development with Swift 6, SwiftUI, MVVM, Swift concurrency (async/await, actors), Core Data/SwiftData, NavigationStack, and XCTest. Use when building production iOS apps, implementing Swift concurrency, or preparing for App Store.",
       "triggers": [],
       "version": "1.0.7"
     },
@@ -1134,12 +1092,6 @@
       "description": "Model stochastic dynamics using master equations, Fokker-Planck, Langevin dynamics, and Green-Kubo transport theory. Use when simulating noise-driven systems, calculating transport coefficients, or modeling rare events.",
       "triggers": [],
       "version": "1.0.7"
-    },
-    "flutter-expert": {
-      "path": "skills/flutter-expert/SKILL.md",
-      "description": "Master Flutter development with Dart 3, advanced widgets, and multi-platform",
-      "triggers": [],
-      "version": "1.0.0"
     }
   },
   "workflows": {

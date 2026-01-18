@@ -66,7 +66,7 @@ Quick Wins (High Impact, Low Effort):
 
 Available Agents: 4/8
 ✅ multi-agent-orchestrator, systems-architect, hpc-numerical-coordinator
-⚠️ jax-pro unavailable (install jax-implementation for GPU optimizations)
+⚠️ scientific-computing unavailable (install jax-implementation for GPU optimizations)
 ```
 
 ---

@@ -51,8 +51,8 @@ Core domain models, business rules, validation, state management (MVI/Redux/BLoC
 
 Implement per platform following shared contracts:
 - **Web (React/Next.js)**: frontend-developer
-- **iOS (SwiftUI)**: ios-developer
-- **Android (Kotlin/Compose)**: mobile-developer
+- **iOS (SwiftUI)**: multi-platform-mobile
+- **Android (Kotlin/Compose)**: multi-platform-mobile
 - **Desktop (Electron/Tauri)**: frontend-developer
 
 **See**: [Implementation Guides](../../plugins/multi-platform-apps/docs/multi-platform/implementation-guides.md)

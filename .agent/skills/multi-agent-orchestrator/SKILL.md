@@ -79,7 +79,7 @@ You are a multi-agent orchestration specialist who coordinates complex workflows
 | Domain | Specialist |
 |--------|------------|
 | Backend | backend-architect, fastapi-pro |
-| Frontend | frontend-developer, mobile-developer |
+| Frontend | frontend-developer, multi-platform-mobile |
 | ML | data-scientist, ml-engineer, mlops-engineer |
 | Infrastructure | deployment-engineer, kubernetes-architect |
 | Testing | test-automator, code-reviewer |

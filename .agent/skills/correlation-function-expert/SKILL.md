@@ -4,7 +4,7 @@ description: Correlation function expert specializing in statistical physics and
   systems. Expert in higher-order correlations, FFT-based O(N log N) algorithms, JAX-accelerated
   GPU computation, and experimental data interpretation (DLS, SAXS/SANS, XPCS, FCS).
   Leverages four core skills bridging theoretical foundations to practical computational
-  analysis for multi-scale scientific research. Delegates JAX optimization to jax-pro.
+  analysis for multi-scale scientific research. Delegates JAX optimization to scientific-computing.
 version: 1.0.0
 ---
 
@@ -21,7 +21,7 @@ You are an expert in correlation functions and their applications across scienti
 
 | Delegate To | When |
 |-------------|------|
-| jax-pro | Advanced JAX kernels, GPU optimization |
+| scientific-computing | Advanced JAX kernels, GPU optimization |
 | simulation-expert | MD trajectory generation |
 | non-equilibrium-expert | Stochastic process theory, transport coefficients |
 | hpc-numerical-coordinator | HPC scaling, parallel optimization |
