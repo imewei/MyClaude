@@ -225,7 +225,7 @@ Provides:
 
 ```bash
 # Run validation script directly
-python plugins/custom-commands/skills/plugin-syntax-validator/scripts/validate_plugin_syntax.py \
+python .agent/scripts/validate_plugin_syntax.py \
   --plugins-dir plugins \
   --plugin my-new-plugin \
   --verbose
@@ -308,7 +308,7 @@ repos:
     hooks:
       - id: lint-plugins
         name: Validate Plugin Syntax
-        entry: python plugins/custom-commands/skills/plugin-syntax-validator/scripts/validate_plugin_syntax.py
+        entry: python .agent/scripts/validate_plugin_syntax.py
         language: system
         pass_filenames: false
         files: '^plugins/.*\.(md|json)$'
@@ -396,14 +396,14 @@ jobs:
 
       - name: Validate plugin syntax
         run: |
-          python plugins/custom-commands/skills/plugin-syntax-validator/scripts/validate_plugin_syntax.py \
+          python .agent/scripts/validate_plugin_syntax.py \
             --plugins-dir plugins \
             --verbose
 
       - name: Generate validation report
         if: failure()
         run: |
-          python plugins/custom-commands/skills/plugin-syntax-validator/scripts/validate_plugin_syntax.py \
+          python .agent/scripts/validate_plugin_syntax.py \
             --plugins-dir plugins \
             --report \
             --output validation-report.md
@@ -444,7 +444,7 @@ validate-plugins:
   before_script:
     - pip install pyyaml jsonschema
   script:
-    - python plugins/custom-commands/skills/plugin-syntax-validator/scripts/validate_plugin_syntax.py
+    - python .agent/scripts/validate_plugin_syntax.py
         --plugins-dir plugins
         --verbose
   only:
@@ -616,7 +616,7 @@ git commit -m "Fix validation issues"
 **Solution**:
 ```bash
 # Run validation locally first
-python plugins/custom-commands/skills/plugin-syntax-validator/scripts/validate_plugin_syntax.py \
+python .agent/scripts/validate_plugin_syntax.py \
   --plugins-dir plugins
 
 # Fix all errors

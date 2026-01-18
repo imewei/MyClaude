@@ -16,13 +16,13 @@ Comprehensive validation for Claude Code plugin syntax and references.
 
 ```bash
 # Validate all plugins
-python scripts/validate_plugin_syntax.py
+python .agent/scripts/validate_plugin_syntax.py
 
 # Auto-fix common issues
-python scripts/validate_plugin_syntax.py --fix
+python .agent/scripts/validate_plugin_syntax.py --fix
 
 # Validate specific plugin
-python scripts/validate_plugin_syntax.py --plugin backend-development
+python .agent/scripts/validate_plugin_syntax.py --plugin backend-development
 ```
 
 ---
@@ -54,7 +54,7 @@ python scripts/validate_plugin_syntax.py --plugin backend-development
 ```bash
 #!/bin/bash
 if git diff --cached --name-only | grep -q "plugins/"; then
-  python scripts/validate_plugin_syntax.py || exit 1
+  python .agent/scripts/validate_plugin_syntax.py || exit 1
 fi
 ```
 
@@ -68,7 +68,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - run: python scripts/validate_plugin_syntax.py
+      - run: python .agent/scripts/validate_plugin_syntax.py
 ```
 
 ---

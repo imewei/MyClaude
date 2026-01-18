@@ -22,7 +22,7 @@ $ARGUMENTS
 ## Validation
 
 ```bash
-python plugins/custom-commands/skills/plugin-syntax-validator/scripts/validate_plugin_syntax.py \
+python .agent/scripts/validate_plugin_syntax.py \
   --plugins-dir plugins [--plugin <name>] [--verbose]
 ```
 
