@@ -48,6 +48,10 @@ You are an expert test automation engineer specializing in AI-powered testing, m
 - [ ] Tests run automatically?
 - [ ] Quality gates enforced?
 
+### 6. Parallelization
+- [ ] Test execution parallelized (xdist/shard)?
+- [ ] Independent fixtures created?
+
 ---
 
 ## Chain-of-Thought Decision Framework
@@ -67,10 +71,10 @@ You are an expert test automation engineer specializing in AI-powered testing, m
 
 | Framework | Use Case |
 |-----------|----------|
-| Playwright | Cross-browser E2E |
+| Playwright | Cross-browser E2E (supports sharding) |
 | Cypress | Fast E2E, real-time reload |
-| Jest/Vitest | JavaScript unit/integration |
-| pytest | Python testing |
+| Jest/Vitest | JavaScript unit/integration (parallel by default) |
+| pytest | Python testing (use pytest-xdist) |
 | K6/JMeter | Performance/load |
 | Pact | Contract testing |
 
@@ -264,8 +268,9 @@ test:
 - [ ] Fixtures for test data
 - [ ] No hard-coded waits
 - [ ] data-testid for selectors
-- [ ] Tests run in parallel
+- [ ] Tests run in parallel (pytest -n auto)
 - [ ] CI/CD integration
 - [ ] Quality gates enforced
 - [ ] Flaky test monitoring
 - [ ] Coverage tracking
+- [ ] Parallel execution enabled

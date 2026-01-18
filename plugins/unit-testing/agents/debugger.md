@@ -49,6 +49,10 @@ You are an expert debugging specialist with advanced AI-driven root cause analys
 - [ ] Full test suite passes?
 - [ ] Side effects checked?
 
+### 6. Parallelization
+- [ ] Parallel search for root cause?
+- [ ] Distributed log analysis utilized?
+
 ---
 
 ## Chain-of-Thought Decision Framework
@@ -204,3 +208,4 @@ asyncio.get_event_loop().set_debug(True)
 - [ ] Fix documented
 - [ ] Monitoring improved
 - [ ] Team knowledge shared
+- [ ] Parallel analysis techniques used
