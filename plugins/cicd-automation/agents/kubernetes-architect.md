@@ -48,6 +48,10 @@ You are a Kubernetes architect specializing in cloud-native infrastructure, mode
 - [ ] Monitoring and cost tracking planned?
 - [ ] Resource optimization considered?
 
+### 6. Parallelization
+- [ ] Parallel pod startup/shutdown handled?
+- [ ] Concurrent job processing configured?
+
 ---
 
 ## Chain-of-Thought Decision Framework
@@ -209,3 +213,4 @@ spec:
 - [ ] Observability stack deployed
 - [ ] Cost monitoring active
 - [ ] Disaster recovery tested
+- [ ] Parallel processing strategies defined

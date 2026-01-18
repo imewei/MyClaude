@@ -116,6 +116,17 @@ security_scan:
 
 ---
 
+## Parallel Scanning Strategies
+
+| Scan Type | Parallel Implementation |
+|-----------|-------------------------|
+| **Matrix Strategy** | Run scans for different subdirectories in parallel |
+| **Tool Splitting** | Run SAST, SCA, and Secret detection as separate parallel jobs |
+| **Sharding** | Split large repos into chunks for SAST analysis |
+| **Async Reports** | Upload artifacts immediately, aggregate later |
+
+---
+
 ## Common Pitfalls
 
 | Pitfall | Solution |

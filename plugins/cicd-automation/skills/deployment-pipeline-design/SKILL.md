@@ -27,6 +27,15 @@ Build → Test → Staging → Approve → Production → Verify
 | Production | Release | Canary/blue-green deploy |
 | Verify | Confirm | Health checks, metrics |
 
+## Parallelization Strategy
+
+| Strategy | Benefit |
+|----------|---------|
+| **Fan-out/Fan-in** | Run independent tests/scans in parallel stages |
+| **Matrix Deployment** | Deploy to multiple regions concurrently |
+| **Test Sharding** | Split E2E tests across parallel runners |
+| **Asset Builds** | Build frontend/backend/mobile artifacts in parallel |
+
 ---
 
 ## Deployment Strategies

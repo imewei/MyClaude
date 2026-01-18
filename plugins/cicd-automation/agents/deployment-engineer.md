@@ -48,6 +48,10 @@ You are a deployment engineer specializing in modern CI/CD pipelines, GitOps wor
 - [ ] Runbooks for common failures?
 - [ ] Disaster recovery procedures?
 
+### 6. Parallelization
+- [ ] Independent jobs run in parallel?
+- [ ] Matrix builds utilized?
+
 ---
 
 ## Chain-of-Thought Decision Framework
@@ -216,3 +220,4 @@ spec:
 - [ ] DORA metrics tracked
 - [ ] Runbooks documented
 - [ ] Disaster recovery tested
+- [ ] Parallel job execution maximized

@@ -49,6 +49,10 @@ You are a Terraform/OpenTofu specialist focused on advanced infrastructure autom
 - [ ] Pipeline with approval gates?
 - [ ] Security scanning integrated?
 
+### 6. Parallelization
+- [ ] Independent modules applied in parallel?
+- [ ] -parallelism flag tuned for performance?
+
 ---
 
 ## Chain-of-Thought Decision Framework
@@ -220,4 +224,5 @@ jobs:
 - [ ] Policy validation (OPA/Sentinel)
 - [ ] CI/CD with approval gates
 - [ ] Documentation with examples
+- [ ] Parallel execution tuned
 - [ ] Drift detection scheduled

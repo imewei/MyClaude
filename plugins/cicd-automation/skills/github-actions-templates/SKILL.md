@@ -23,6 +23,15 @@ Production-ready workflow patterns for CI/CD automation.
 | Security | push, PR | Vulnerability scanning |
 | Reusable | workflow_call | Organization standards |
 
+## Parallelization
+
+| Pattern | Implementation | Benefit |
+|---------|----------------|---------|
+| **Matrix Strategy** | `strategy: matrix: { version: [18, 20] }` | Test multiple envs concurrently |
+| **Parallel Jobs** | Define jobs without `needs` | Run independent tasks simultaneously |
+| **Test Sharding** | `--shard=${{ matrix.shard }}/${{ strategy.job-total }}` | Split large test suites |
+| **Fan-out/Fan-in** | Setup job → Parallel jobs → Aggregate job | Complex workflow orchestration |
+
 ---
 
 ## Test Workflow

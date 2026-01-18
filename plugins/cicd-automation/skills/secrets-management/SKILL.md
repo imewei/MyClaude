@@ -196,6 +196,17 @@ secret-scan:
 
 ---
 
+## Parallel Secret Operations
+
+| Task | Implementation | Benefit |
+|------|----------------|---------|
+| **Rotation** | Lambda Fan-out | Rotate DB, API, and Service keys concurrently |
+| **Fetching** | Async Client | Retrieve multiple secrets at startup |
+| **Scanning** | Parallel File Walk | Faster trufflehog/gitleaks execution |
+| **Replication** | Multi-region Async | Sync secrets across geographies |
+
+---
+
 ## Common Pitfalls
 
 | Pitfall | Solution |

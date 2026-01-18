@@ -191,6 +191,17 @@ python3 engine.py "$RUN_ID" \
 
 ---
 
+## Parallel Resolution Strategies
+
+| Task | Strategy | Benefit |
+|------|----------|---------|
+| **Validation** | Parallel test runners | Faster confirmation of fixes |
+| **Analysis** | Concurrent log parsing | Speed up multi-job failure analysis |
+| **Fix Application** | Independent file patches | Apply non-conflicting fixes concurrently |
+| **Regression Check** | Parallel matrix builds | Ensure fix works across all environments |
+
+---
+
 ## Success Metrics
 
 | Metric | Target |

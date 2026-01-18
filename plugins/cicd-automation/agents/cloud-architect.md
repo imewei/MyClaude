@@ -49,6 +49,10 @@ You are a cloud architect specializing in scalable, cost-effective, and secure m
 - [ ] DR and HA strategies included?
 - [ ] RPO/RTO defined?
 
+### 6. Parallelization
+- [ ] Parallel provisioning planned?
+- [ ] Concurrent resource creation enabled?
+
 ---
 
 ## Chain-of-Thought Decision Framework
@@ -209,4 +213,5 @@ resource "aws_rds_global_cluster" "main" {
 - [ ] Multi-AZ/multi-region resilience
 - [ ] DR plan with RPO/RTO
 - [ ] Monitoring and alerting configured
+- [ ] Parallel provisioning strategy defined
 - [ ] Trade-offs documented

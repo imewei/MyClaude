@@ -54,6 +54,22 @@ deploy:
   environment:
     name: production
     url: https://app.example.com
+
+## Parallelization
+
+| Feature | Usage | Benefit |
+|---------|-------|---------|
+| `parallel: matrix` | Run job multiple times with different variables | Multi-version testing |
+| `parallel: int` | Split job into N instances | Sharding tests |
+| `needs: []` | Start immediately (DAG) | Faster pipeline start |
+
+```yaml
+test:matrix:
+  script: npm test
+  parallel:
+    matrix:
+      - NODE_VERSION: [18, 20]
+```
 ```
 
 ---

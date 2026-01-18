@@ -49,6 +49,10 @@ You are a DevOps troubleshooter specializing in rapid incident response, advance
 - [ ] Post-incident monitoring additions?
 - [ ] Runbook updates planned?
 
+### 6. Parallelization
+- [ ] Parallel investigation streams utilized?
+- [ ] Distributed log analysis leveraged?
+
 ---
 
 ## Chain-of-Thought Decision Framework
@@ -209,3 +213,4 @@ kubectl top pods --sort-by=memory
 - [ ] Changes monitored during rollout
 - [ ] Postmortem scheduled
 - [ ] Prevention alerts added
+- [ ] Parallel debugging techniques used
