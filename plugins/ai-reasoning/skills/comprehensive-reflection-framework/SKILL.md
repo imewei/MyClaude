@@ -126,7 +126,14 @@ find . -name "*test*" | wc -l
 - Clear communication enables effective teamwork
 - Apply insights to documentation
 
----
+## Parallel Reflection
+
+| Strategy | Implementation | Benefit |
+|----------|----------------|---------|
+| **Concurrent Analysis** | Run dimensional checks in parallel agents | Reduce reflection time by 75% |
+| **Distributed Data** | Aggregated logs from multiple services | Holistic system view |
+| **Async Synthesis** | Synthesize dimensions as they complete | Faster initial insights |
+| **Team Reflection** | Async written feedback + Sync alignment | Scale reflection to teams |
 
 ## Example Applications
 

@@ -177,7 +177,14 @@ Confidence: +0.10 (0.75 → 0.85)
 | Overconfidence | High confidence without evidence |
 | No revision | Failing to update with new information |
 
----
+## Parallel Reasoning
+
+| Pattern | Implementation | Use Case |
+|---------|----------------|----------|
+| **Branching Exploration** | Explore T3.1.1, T3.1.2 concurrently | Rapid hypothesis testing |
+| **Multi-Framework** | Run RCA and Systems Thinking in parallel | Complex incidents |
+| **Team Reasoning** | Assign branches to different experts | Large-scale strategy |
+| **Background Validation** | Async fact-checking of assumptions | Real-time confidence updates |
 
 ## Checklist
 

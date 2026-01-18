@@ -115,6 +115,17 @@ Systematic analysis of AI reasoning, decision-making, and interaction quality.
 
 ---
 
+## Parallel Reflection
+
+| Strategy | Implementation | Benefit |
+|----------|----------------|---------|
+| **Concurrent Analysis** | Run dimensional checks in parallel agents | Reduce reflection time by 75% |
+| **Distributed Data** | Aggregated logs from multiple services | Holistic system view |
+| **Async Synthesis** | Synthesize dimensions as they complete | Faster initial insights |
+| **Team Reflection** | Async written feedback + Sync alignment | Scale reflection to teams |
+
+---
+
 ## Checklist
 
 - [ ] Reasoning patterns identified and evaluated
