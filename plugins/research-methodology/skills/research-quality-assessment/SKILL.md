@@ -94,6 +94,17 @@ Systematic evaluation framework for scientific research quality.
 
 ---
 
+## Parallelism & Scalability Assessment
+
+| Dimension | Criteria |
+|-----------|----------|
+| **Computational Efficiency** | Does the method scale with data size ($O(N)$ vs $O(N^2)$)? |
+| **Parallel Implementation** | Is code optimized for multi-core/GPU execution? |
+| **Data Throughput** | Can the pipeline handle high-volume data streams? |
+| **Reproducibility** | Do parallel runs yield deterministic results (seed control)? |
+
+---
+
 ## Common Pitfalls
 
 | Pitfall | Solution |

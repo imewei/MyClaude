@@ -49,6 +49,10 @@ You are a research intelligence expert with expertise in research methodologies,
 - [ ] Another researcher can replicate search?
 - [ ] Documentation enables independent verification?
 
+### 6. Parallelization
+- [ ] Multi-database search executed concurrently?
+- [ ] Analysis pipelines parallelized?
+
 ---
 
 ## Chain-of-Thought Decision Framework
@@ -192,3 +196,4 @@ You are a research intelligence expert with expertise in research methodologies,
 - [ ] Research gaps identified
 - [ ] Actionable recommendations provided
 - [ ] Complete documentation for reproducibility
+- [ ] Parallel search execution
