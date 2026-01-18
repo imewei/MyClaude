@@ -17,7 +17,7 @@ Software and data engineering practices for scalable, maintainable ML systems.
 ```
 ml-project/
 ├── src/
-│   ├── models/        # Model definitions
+│   ├── models/        # Model definitions (Flax)
 │   ├── data/          # Data loaders, preprocessing
 │   ├── training/      # Trainer, callbacks
 │   └── utils/         # Metrics, helpers
@@ -30,34 +30,53 @@ ml-project/
 
 ---
 
-## Type-Safe ML Code
+## Type-Safe ML Code (JAX/Flax)
 
 ```python
 from dataclasses import dataclass
-from typing import Optional
-# allow-torch
-import torch
+from typing import Any, Callable, Optional, Sequence
+import jax
+import jax.numpy as jnp
+from flax import nnx
+import optax
 
 @dataclass
 class ModelConfig:
     hidden_dims: list[int]
-    dropout: float = 0.1
+    dropout_rate: float = 0.1
     learning_rate: float = 1e-3
 
-class MLModel:
-    def __init__(self, config: ModelConfig) -> None:
+class MLModel(nnx.Module):
+    def __init__(self, config: ModelConfig, *, rngs: nnx.Rngs):
         self.config = config
-        self.model: Optional[torch.nn.Module] = None
+        layers = []
+        for dim in config.hidden_dims:
+            layers.append(nnx.Linear(dim, dim, rngs=rngs))
+            layers.append(nnx.relu)
+            layers.append(nnx.Dropout(config.dropout_rate, rngs=rngs))
+        self.net = nnx.Sequential(*layers)
 
-    def train(self, train_data: torch.Tensor, labels: torch.Tensor) -> dict[str, list[float]]:
-        history: dict[str, list[float]] = {'train_loss': [], 'val_loss': []}
-        # Training logic
-        return history
+    def __call__(self, x: jax.Array) -> jax.Array:
+        return self.net(x)
 
-    def predict(self, data: torch.Tensor) -> torch.Tensor:
-        if self.model is None:
-            raise ValueError("Model not trained")
-        return self.model(data)
+class Trainer:
+    def __init__(self, model: MLModel, optimizer: nnx.Optimizer):
+        self.model = model
+        self.optimizer = optimizer
+
+    @nnx.jit
+    def train_step(self, batch_x: jax.Array, batch_y: jax.Array) -> jax.Array:
+        def loss_fn(model):
+            logits = model(batch_x)
+            return optax.l2_loss(logits, batch_y).mean()
+
+        loss, grads = nnx.value_and_grad(loss_fn)(self.model)
+        self.optimizer.update(grads)
+        return loss
+
+    @nnx.jit
+    def predict(self, x: jax.Array) -> jax.Array:
+        return self.model(x)
 ```
 
 ---
@@ -66,33 +85,40 @@ class MLModel:
 
 ```python
 import pytest
-# allow-torch
-import torch
+import jax
+import jax.numpy as jnp
+from flax import nnx
 
 class TestModel:
     @pytest.fixture
-    def model_config(self):
-        return {'d_model': 512, 'nhead': 8, 'num_layers': 6}
+    def model(self):
+        config = ModelConfig(hidden_dims=[64, 32])
+        return MLModel(config, rngs=nnx.Rngs(0))
 
-    def test_forward_shape(self, model_config):
-        model = TransformerModel(**model_config)
-        x = torch.randn(4, 10, 512)
+    def test_forward_shape(self, model):
+        x = jnp.ones((4, 64)) # Batch size 4
         output = model(x)
-        assert output.shape == x.shape
+        assert output.shape == (4, 32)
 
-    def test_gradients_flow(self, model_config):
-        model = TransformerModel(**model_config)
-        x = torch.randn(4, 10, 512)
-        loss = model(x).mean()
-        loss.backward()
-        for name, param in model.named_parameters():
-            assert param.grad is not None
-            assert not torch.isnan(param.grad).any()
+    def test_gradients_flow(self, model):
+        x = jnp.ones((4, 64))
+        y = jnp.ones((4, 32))
+
+        def loss_fn(m):
+            return ((m(x) - y) ** 2).mean()
+
+        loss, grads = nnx.value_and_grad(loss_fn)(model)
+
+        # Check gradients exist and are finite
+        assert not jnp.isnan(loss)
+        # Verify gradients for first layer weights exist
+        first_layer_grads = grads.net.layers[0].kernel
+        assert first_layer_grads is not None
+        assert not jnp.isnan(first_layer_grads).any()
 
     @pytest.mark.parametrize("batch_size", [1, 4, 8])
-    def test_batch_sizes(self, model_config, batch_size):
-        model = TransformerModel(**model_config)
-        x = torch.randn(batch_size, 10, 512)
+    def test_batch_sizes(self, model, batch_size):
+        x = jnp.ones((batch_size, 64))
         assert model(x).shape[0] == batch_size
 ```
 
@@ -193,18 +219,21 @@ class SQLDataLoader:
 
 ```python
 import wandb
+import orbax.checkpoint as ocp
 
 class ExperimentTracker:
     def __init__(self, project: str, config: dict):
         self.run = wandb.init(project=project, config=config)
+        self.checkpointer = ocp.AsyncCheckpointer(ocp.PyTreeCheckpointHandler())
 
     def log_metrics(self, metrics: dict, step: int = None):
         wandb.log(metrics, step=step)
 
-    def log_model(self, model, name: str):
-        artifact = wandb.Artifact(name, type='model')
-        torch.save(model.state_dict(), f"{name}.pth")
-        artifact.add_file(f"{name}.pth")
+    def log_model(self, model_state, path: str, step: int):
+        # Async checkpointing with Orbax
+        self.checkpointer.save(path, model_state, step=step)
+        artifact = wandb.Artifact(f'model-step-{step}', type='model')
+        artifact.add_dir(path)
         self.run.log_artifact(artifact)
 
     def finish(self):
