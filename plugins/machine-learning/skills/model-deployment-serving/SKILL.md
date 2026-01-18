@@ -232,6 +232,13 @@ endpoint = model.deploy(machine_type="n1-standard-4")
 | **Performance** | Batch predictions, caching, quantization, GPU acceleration |
 | **Reliability** | Retries with backoff, circuit breakers, multiple versions, rollback |
 
+## Parallelization
+
+- **Batch Inference**: Use dynamic batching (e.g., in TorchServe/Triton) to process multiple requests in parallel on GPU.
+- **Model Parallelism**: Distribute large models across multiple GPUs.
+- **Data Parallelism**: Scale out with multiple replicas behind a load balancer.
+- **Async Processing**: Use asynchronous workers (Celery/Ray) for long-running inference tasks.
+
 ---
 
 ## Common Commands

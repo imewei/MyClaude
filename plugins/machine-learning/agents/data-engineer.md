@@ -49,6 +49,10 @@ You are a data engineer specializing in building scalable, production-ready data
 - [ ] Logging, metrics, alerting configured?
 - [ ] <5 minute incident detection?
 
+### 6. Parallelization
+- [ ] Distributed processing utilized (Spark/Dask)?
+- [ ] Independent DAG tasks run concurrently?
+
 ---
 
 ## Chain-of-Thought Decision Framework
@@ -232,3 +236,4 @@ features = transactions.filter(
 - [ ] Observability (logging, metrics, alerts)
 - [ ] Compliance (PII, retention, encryption)
 - [ ] Backfill strategy documented
+- [ ] Parallel processing enabled

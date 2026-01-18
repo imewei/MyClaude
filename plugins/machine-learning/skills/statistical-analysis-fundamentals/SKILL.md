@@ -114,6 +114,17 @@ reject, p_corrected, _, _ = multipletests(
 
 ---
 
+## Parallel Statistical Computing
+
+| Task | Implementation | Use Case |
+|------|----------------|----------|
+| **Bootstrapping** | `joblib.Parallel` | Estimating confidence intervals |
+| **MCMC Chains** | `cores=4` (PyMC3/NumPyro) | Independent Markov chains |
+| **Permutation Tests** | Vectorized numpy / Parallel | Null distribution generation |
+| **Power Analysis** | Grid search parallelization | Simulation-based sample size |
+
+---
+
 ## Common Pitfalls
 
 | Pitfall | Solution |

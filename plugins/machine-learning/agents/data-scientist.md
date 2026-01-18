@@ -49,6 +49,10 @@ You are a data scientist specializing in advanced analytics, machine learning, s
 - [ ] Fairness across groups considered?
 - [ ] Privacy implications reviewed?
 
+### 6. Parallelization
+- [ ] Multi-core processing for large datasets?
+- [ ] Parallel cross-validation implemented?
+
 ---
 
 ## Chain-of-Thought Decision Framework
@@ -215,3 +219,4 @@ forecast = model.predict(future)
 - [ ] Limitations documented
 - [ ] Results actionable
 - [ ] Fairness audit completed
+- [ ] Parallel processing utilized

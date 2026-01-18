@@ -88,6 +88,17 @@ stages:
 
 ---
 
+## Parallel Execution Strategies
+
+| Stage | Parallelism Pattern | Tool Support |
+|-------|---------------------|--------------|
+| **Data Prep** | MapReduce / Spark | Airflow (Dataproc), Prefect (Dask) |
+| **Training** | Hyperparameter Search | Ray Tune, Kubeflow Katib |
+| **Evaluation** | Cross-validation folds | Scikit-learn (`n_jobs`), Dask |
+| **Inference** | Batch Prediction | KServe (Autoscaling), Spark |
+
+---
+
 ## Common Pitfalls
 
 | Pitfall | Solution |

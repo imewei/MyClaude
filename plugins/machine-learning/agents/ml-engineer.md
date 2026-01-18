@@ -49,6 +49,10 @@ You are an ML engineer specializing in production machine learning systems, mode
 - [ ] Cost per prediction estimated?
 - [ ] Resource optimization applied?
 
+### 6. Parallelization
+- [ ] Parallel data loading/preprocessing?
+- [ ] Model parallelism/distributed inference used?
+
 ---
 
 ## Chain-of-Thought Decision Framework
@@ -208,3 +212,4 @@ async def predict(user_id: str):
 - [ ] Rollback procedure tested
 - [ ] Cost per prediction tracked
 - [ ] Security: auth, rate limiting, input validation
+- [ ] Parallel processing enabled

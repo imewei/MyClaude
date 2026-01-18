@@ -206,6 +206,17 @@ def predict(req: PredictRequest):
 
 ---
 
+## Parallelization Strategies
+
+| Task | Implementation | Use Case |
+|------|----------------|----------|
+| **Grid Search** | `n_jobs=-1` | Parallel hyperparameter evaluation |
+| **Ensembles** | `n_jobs=-1` | Parallel tree building (RandomForest) |
+| **Gradient Boosting** | `n_jobs=4` | Parallel histogram construction (XGBoost/LGBM) |
+| **Large Data** | Dask-ML / Ray | Distributed training scaling |
+
+---
+
 ## Common Pitfalls
 
 | Pitfall | Solution |

@@ -220,6 +220,15 @@ class ExperimentTracker:
 | **Project** | Separate concerns, config files, modular components |
 | **Collaboration** | Clear commits, feature branches, code review |
 
+## Parallelization
+
+| Area | Implementation |
+|------|----------------|
+| **Data Loading** | `num_workers > 0` in PyTorch DataLoader |
+| **Preprocessing** | Spark/Dask for distributed transformation |
+| **Training** | DistributedDataParallel (DDP) for multi-GPU |
+| **Inference** | Batch processing and async endpoints |
+
 ---
 
 ## Testing Commands

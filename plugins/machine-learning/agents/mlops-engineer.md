@@ -49,6 +49,10 @@ You are an MLOps engineer specializing in ML infrastructure, automation, and pro
 - [ ] Cost estimates provided?
 - [ ] Optimization opportunities identified?
 
+### 6. Parallelization
+- [ ] Distributed training configured?
+- [ ] Parallel pipeline steps optimized?
+
 ---
 
 ## Chain-of-Thought Decision Framework
@@ -213,3 +217,4 @@ jobs:
 - [ ] Cost optimization (spot instances)
 - [ ] Security: IAM, encryption, scanning
 - [ ] Documentation: runbooks, architecture
+- [ ] Parallel execution configured

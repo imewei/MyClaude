@@ -177,6 +177,17 @@ model.print_trainable_parameters()  # Only 0.2% trainable!
 
 ---
 
+## Parallel Inference Strategies
+
+| Strategy | Implementation | Use Case |
+|----------|----------------|----------|
+| **Tensor Parallelism** | Split layers across GPUs | Large LLMs (>10B params) |
+| **Pipeline Parallelism** | Split model layers depth-wise | High-throughput serving |
+| **Dynamic Batching** | Aggregate requests | Maximize GPU utilization |
+| **Multi-Model Serving** | Share GPU memory | Serve multiple LoRA adapters |
+
+---
+
 ## Checklist
 
 - [ ] torch.compile on model for inference

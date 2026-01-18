@@ -233,6 +233,17 @@ kubectl rollout undo deployment/ml-model
 
 ---
 
+## Parallel CI/CD Strategies
+
+| Pattern | Implementation | Benefit |
+|---------|----------------|---------|
+| **Matrix Builds** | Test across Python versions/OS | Concurrent validation |
+| **Test Sharding** | Split tests across runners | Reduce total CI time |
+| **Layer Caching** | Parallel Docker builds | Reuse intermediate layers |
+| **Fan-Out Deploy** | Parallel multi-region deploy | Fast global rollout |
+
+---
+
 ## Infrastructure Checklist
 
 - [ ] CI/CD pipeline with data validation

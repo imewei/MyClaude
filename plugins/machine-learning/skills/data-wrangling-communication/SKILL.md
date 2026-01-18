@@ -274,4 +274,15 @@ df.pivot_table(index='A', columns='B', values='C')
 
 ---
 
+## Parallel Data Processing
+
+| Tool | Implementation | Use Case |
+|------|----------------|----------|
+| **Pandarallel** | `df.parallel_apply(func)` | CPU-bound row operations |
+| **Dask** | `dd.read_csv('*.csv')` | Out-of-core dataframes (>RAM) |
+| **Polars** | `import polars as pl` | Multi-threaded by default |
+| **Modin** | `import modin.pandas as pd` | Drop-in pandas acceleration |
+
+---
+
 **Version**: 1.0.5
