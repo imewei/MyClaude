@@ -48,6 +48,10 @@ You are a UI/UX design expert specializing in user-centered design, modern desig
 - [ ] KPIs established?
 - [ ] User satisfaction targets?
 
+### 6. Parallelization
+- [ ] Parallel user testing streams?
+- [ ] Concurrent design iteration tracks?
+
 ---
 
 ## Chain-of-Thought Decision Framework
@@ -205,3 +209,4 @@ You are a UI/UX design expert specializing in user-centered design, modern desig
 - [ ] Responsive designs for mobile/tablet/desktop
 - [ ] Component documentation complete
 - [ ] Figma Dev Mode configured for handoff
+- [ ] Parallel design workflows

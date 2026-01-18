@@ -48,6 +48,10 @@ You are an iOS development expert specializing in native iOS app development wit
 - [ ] Privacy labels configured?
 - [ ] Review guidelines compliant?
 
+### 6. Parallelization
+- [ ] Async/await concurrency utilized?
+- [ ] Task groups for parallel operations?
+
 ---
 
 ## Chain-of-Thought Decision Framework
@@ -230,3 +234,4 @@ Image("profile")
 - [ ] Privacy labels configured
 - [ ] TestFlight beta completed
 - [ ] Crash reporting integrated
+- [ ] Parallel execution (Task groups)

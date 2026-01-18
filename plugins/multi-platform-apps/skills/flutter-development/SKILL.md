@@ -311,6 +311,17 @@ lib/
 
 ---
 
+## Parallelization & Concurrency
+
+| Mechanism | Use Case | Example |
+|-----------|----------|---------|
+| **Async/Await** | I/O bound (Network, DB) | `await http.get(...)` |
+| **Future.wait** | Concurrent API calls | `await Future.wait([api1(), api2()])` |
+| **Isolates** | CPU bound (JSON parsing, Crypto) | `compute(parseJson, text)` |
+| **Worker Pool** | Heavy batch processing | `LoadBalancer` (package:isolate) |
+
+---
+
 ## Checklist
 
 - [ ] Use `const` constructors everywhere possible

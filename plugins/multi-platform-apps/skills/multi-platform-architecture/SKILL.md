@@ -184,6 +184,17 @@ class RealtimeManager {
 
 ---
 
+## Parallel Development Strategy
+
+| Strategy | Implementation | Benefit |
+|----------|----------------|---------|
+| **Feature Parity** | Develop feature X on all platforms concurrently | Unified release cycle |
+| **Pipeline isolation** | Separate CI runners for iOS/Android/Web | Unblocked builds |
+| **Shared Logic First** | Complete core/domain logic before UI | Unblock UI teams |
+| **Mock-Driven** | Mock API responses for frontend dev | Decouple from backend |
+
+---
+
 ## Checklist
 
 - [ ] Platform strategy defined

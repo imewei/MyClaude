@@ -249,6 +249,17 @@ final class UserViewModelTests: XCTestCase {
 
 ---
 
+## Parallelization Strategies
+
+| Feature | Implementation | Use Case |
+|---------|----------------|----------|
+| **TaskGroup** | `withTaskGroup` | Parallel fetching of independent resources |
+| **Async Let** | `async let x = ...` | Concurrent execution of fixed tasks |
+| **Actors** | `actor DataStore` | Thread-safe mutable state without locks |
+| **Detached Tasks** | `Task.detached` | Background work independent of view |
+
+---
+
 ## Checklist
 
 - [ ] MVVM architecture with @StateObject

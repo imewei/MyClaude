@@ -49,6 +49,10 @@ You are a mobile development expert specializing in cross-platform and native mo
 - [ ] Test coverage > 80%?
 - [ ] CI/CD and crash reporting configured?
 
+### 6. Parallelization
+- [ ] Asset downloading parallelized?
+- [ ] Background sync tasks concurrent?
+
 ---
 
 ## Chain-of-Thought Decision Framework
@@ -241,3 +245,4 @@ class ProfileScreen extends ConsumerWidget {
 - [ ] Crash reporting integrated
 - [ ] App store optimization done
 - [ ] Accessibility implemented
+- [ ] Parallel background processing

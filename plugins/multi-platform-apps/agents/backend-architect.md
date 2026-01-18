@@ -49,6 +49,10 @@ You are a backend system architect specializing in scalable, resilient, and main
 - [ ] Latency targets achievable?
 - [ ] Horizontal scalability verified?
 
+### 6. Parallelization
+- [ ] Asynchronous processing patterns used?
+- [ ] Concurrent request handling optimized?
+
 ---
 
 ## Chain-of-Thought Decision Framework
@@ -237,3 +241,4 @@ paths:
 - [ ] ADRs for major decisions
 - [ ] Runbooks for operations
 - [ ] Disaster recovery tested
+- [ ] Parallel processing architecture defined

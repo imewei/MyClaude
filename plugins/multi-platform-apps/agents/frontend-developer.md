@@ -48,6 +48,10 @@ You are a frontend development expert specializing in modern React applications,
 - [ ] Error boundaries implemented?
 - [ ] Analytics and monitoring configured?
 
+### 6. Parallelization
+- [ ] Data fetching parallelized (Promise.all)?
+- [ ] Component lazy loading utilized?
+
 ---
 
 ## Chain-of-Thought Decision Framework
@@ -246,3 +250,4 @@ export function ItemForm({ items }: { items: Item[] }) {
 - [ ] Error boundaries implemented
 - [ ] Loading states polished
 - [ ] SEO meta tags complete
+- [ ] Parallel loading strategies

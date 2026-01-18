@@ -330,6 +330,17 @@ src/
 
 ---
 
+## Parallelization & Threading
+
+| Concept | Implementation | Use Case |
+|---------|----------------|----------|
+| **UI Thread** | Worklets (Reanimated) | 60fps animations blocking JS |
+| **Shadow Thread** | Fabric (New Arch) | Layout calculation concurrency |
+| **Background** | Headless JS / native modules | Data sync when app closed |
+| **Deferral** | `InteractionManager` | Run tasks after animations |
+
+---
+
 ## Checklist
 
 - [ ] Use `React.memo` for expensive components

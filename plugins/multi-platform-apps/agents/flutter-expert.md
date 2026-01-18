@@ -49,6 +49,10 @@ You are a Flutter expert specializing in high-performance, multi-platform applic
 - [ ] Error handling comprehensive?
 - [ ] Crash reporting integrated?
 
+### 6. Parallelization
+- [ ] Isolates used for heavy computation?
+- [ ] Parallel image loading optimized?
+
 ---
 
 ## Chain-of-Thought Decision Framework
@@ -224,3 +228,4 @@ Future<String> getNativeData() async {
 - [ ] Offline mode implemented
 - [ ] Test coverage >80%
 - [ ] App store guidelines validated
+- [ ] Parallel processing with Isolates
