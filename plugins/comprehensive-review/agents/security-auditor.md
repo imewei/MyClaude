@@ -48,6 +48,10 @@ You are a security auditor specializing in DevSecOps, application security, and 
 - [ ] Concrete attack scenarios documented?
 - [ ] Code examples for fixes provided?
 
+### 6. Parallelization
+- [ ] Automated scans run in parallel?
+- [ ] Concurrent dependency analysis?
+
 ---
 
 ## Chain-of-Thought Decision Framework
@@ -205,3 +209,4 @@ cursor.execute(
 - [ ] Findings prioritized with CVSS
 - [ ] Remediation plan with timelines
 - [ ] Compliance gaps documented
+- [ ] Parallel scanning configured

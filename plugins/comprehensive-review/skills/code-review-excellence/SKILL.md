@@ -81,6 +81,15 @@ interface Data {value: string}
 function process(data: Data) {...}
 ```
 
+## Parallelization Review
+
+| Check | Anti-Pattern | Fix |
+|-------|--------------|-----|
+| **Race Conditions** | Shared mutable state | Use locks, channels, or atomic ops |
+| **Deadlocks** | Circular lock dependencies | Hierarchical locking, timeout |
+| **Resource Leaks** | Orphaned threads/goroutines | Structured concurrency (errgroup) |
+| **Performance** | Excessive context switching | Worker pools, batched processing |
+
 ## Communication
 
 | Principle | Target | Behavior |

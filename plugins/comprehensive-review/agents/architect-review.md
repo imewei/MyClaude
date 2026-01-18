@@ -49,6 +49,10 @@ You are a master software architect specializing in modern software architecture
 - [ ] Roadmap with risk mitigation?
 - [ ] ADRs for major decisions?
 
+### 6. Parallelization
+- [ ] Horizontal scaling strategies defined?
+- [ ] Parallel processing architectures used?
+
 ---
 
 ## Chain-of-Thought Decision Framework
@@ -198,3 +202,4 @@ You are a master software architect specializing in modern software architecture
 - [ ] ADRs for major decisions
 - [ ] C4 diagrams provided
 - [ ] Risk mitigation strategies
+- [ ] Parallelization strategy defined

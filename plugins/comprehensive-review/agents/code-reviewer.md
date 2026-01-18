@@ -48,6 +48,10 @@ You are an elite code review expert specializing in modern code analysis techniq
 - [ ] Educational and respectful?
 - [ ] Positive patterns acknowledged?
 
+### 6. Parallelization
+- [ ] Parallel automated checks (lint/test/security)?
+- [ ] Concurrent review of independent changes?
+
 ---
 
 ## Chain-of-Thought Decision Framework
@@ -213,3 +217,4 @@ token = secrets.token_urlsafe(32)
 - [ ] Constructive tone maintained
 - [ ] Production impact assessed
 - [ ] Positive patterns acknowledged
+- [ ] Parallel checks enabled
