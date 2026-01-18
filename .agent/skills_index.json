@@ -1,18 +1,6 @@
 {
-  "generated_at": "2026-01-17T16:40:38.378230",
+  "generated_at": "2026-01-18T00:14:17.057899",
   "skills": {
-    "plugin-syntax-validator": {
-      "path": "skills/plugin-syntax-validator/SKILL.md",
-      "description": "Validate Claude Code plugin syntax, structure, and cross-references with automated detection and auto-fixing of common errors. Use when validating agent/skill references, checking namespace syntax, or setting up CI validation pipelines.",
-      "triggers": [],
-      "version": "1.0.7"
-    },
-    "iterative-error-resolution": {
-      "path": "skills/iterative-error-resolution/SKILL.md",
-      "description": "Iterative CI/CD error resolution with pattern recognition, automated fixes, and learning from outcomes. Use when debugging GitHub Actions, fixing dependency/build/test failures, or implementing automated error resolution loops.",
-      "triggers": [],
-      "version": "1.0.7"
-    },
     "machine-learning-essentials": {
       "path": "skills/machine-learning-essentials/SKILL.md",
       "description": "Core ML workflows with scikit-learn, XGBoost, LightGBM including algorithm selection, cross-validation, hyperparameter tuning (GridSearch, Optuna), handling imbalanced data (SMOTE), model evaluation, SHAP interpretability, and deployment. Use when building classification/regression models or evaluating ML performance.",
@@ -21,7 +9,7 @@
     },
     "network-engineer": {
       "path": "skills/network-engineer/SKILL.md",
-      "description": "Expert network engineer specializing in modern cloud networking, security architectures, and performance optimization. Masters multi-cloud connectivity, service mesh, zero-trust networking, SSL/TLS, global load balancing, and advanced troubleshooting. Handles CDN optimization, network automation, and compliance. Use PROACTIVELY for network design, connectivity issues, or performance optimization.",
+      "description": "Expert network engineer specializing in modern cloud networking, security",
       "triggers": [],
       "version": "1.0.0"
     },
@@ -33,19 +21,19 @@
     },
     "database-optimizer": {
       "path": "skills/database-optimizer/SKILL.md",
-      "description": "Expert database optimizer specializing in modern performance tuning, query optimization, and scalable architectures. Masters advanced indexing, N+1 resolution, multi-tier caching, partitioning strategies, and cloud database optimization. Handles complex query analysis, migration strategies, and performance monitoring. Use PROACTIVELY for database optimization, performance issues, or scalability challenges.",
+      "description": "Expert database optimizer specializing in modern performance tuning,",
       "triggers": [],
       "version": "1.0.0"
     },
     "observability-engineer": {
       "path": "skills/observability-engineer/SKILL.md",
-      "description": "Build production-ready monitoring, logging, and tracing systems. Implements comprehensive observability strategies, SLI/SLO management, and incident response workflows. Use PROACTIVELY for monitoring infrastructure, performance optimization, or production reliability.",
+      "description": "Build production-ready monitoring, logging, and tracing systems. Implements",
       "triggers": [],
       "version": "1.0.0"
     },
     "kubernetes-architect": {
       "path": "skills/kubernetes-architect/SKILL.md",
-      "description": "Expert Kubernetes architect specializing in cloud-native infrastructure, advanced GitOps workflows (ArgoCD/Flux), and enterprise container orchestration. Masters EKS/AKS/GKE, service mesh (Istio/Linkerd), progressive delivery, multi-tenancy, and platform engineering. Handles security, observability, cost optimization, and developer experience. Use PROACTIVELY for K8s architecture, GitOps implementation, or cloud-native platform design.",
+      "description": "Expert Kubernetes architect specializing in cloud-native infrastructure,",
       "triggers": [],
       "version": "1.0.0"
     },
@@ -57,13 +45,13 @@
     },
     "dx-optimizer": {
       "path": "skills/dx-optimizer/SKILL.md",
-      "description": "Developer Experience specialist. Improves tooling, setup, and workflows. Use PROACTIVELY when setting up new projects, after team feedback, or when development friction is noticed.",
+      "description": "Developer Experience specialist. Improves tooling, setup, and workflows.",
       "triggers": [],
       "version": "1.0.0"
     },
     "mobile-developer": {
       "path": "skills/mobile-developer/SKILL.md",
-      "description": "Develop React Native, Flutter, or native mobile apps with modern architecture patterns. Masters cross-platform development, native integrations, offline sync, and app store optimization. Use PROACTIVELY for mobile features, cross-platform code, or app optimization.",
+      "description": "Develop React Native, Flutter, or native mobile apps with modern architecture",
       "triggers": [],
       "version": "1.0.0"
     },
@@ -87,13 +75,13 @@
     },
     "frontend-developer": {
       "path": "skills/frontend-developer/SKILL.md",
-      "description": "Build React components, implement responsive layouts, and handle client-side state management. Masters React 19, Next.js 15, and modern frontend architecture. Optimizes performance and ensures accessibility. Use PROACTIVELY when creating UI components or fixing frontend issues.",
+      "description": "Build React components, implement responsive layouts, and handle client-side",
       "triggers": [],
       "version": "1.0.0"
     },
     "terraform-specialist": {
       "path": "skills/terraform-specialist/SKILL.md",
-      "description": "Expert Terraform/OpenTofu specialist mastering advanced IaC automation, state management, and enterprise infrastructure patterns. Handles complex module design, multi-cloud deployments, GitOps workflows, policy as code, and CI/CD integration. Covers migration strategies, security best practices, and modern IaC ecosystems. Use PROACTIVELY for advanced IaC, state management, or infrastructure automation.",
+      "description": "Expert Terraform/OpenTofu specialist mastering advanced IaC automation,",
       "triggers": [],
       "version": "1.0.0"
     },
@@ -165,7 +153,7 @@
     },
     "context-manager": {
       "path": "skills/context-manager/SKILL.md",
-      "description": "Elite AI context engineering specialist mastering dynamic context management, vector databases, knowledge graphs, and intelligent memory systems. Orchestrates context across multi-agent workflows, enterprise AI systems, and long-running projects with 2024/2025 best practices. Use PROACTIVELY for complex AI orchestration.",
+      "description": "Elite AI context engineering specialist mastering dynamic context management,",
       "triggers": [],
       "version": "1.0.0"
     },
@@ -177,13 +165,13 @@
     },
     "ios-developer": {
       "path": "skills/ios-developer/SKILL.md",
-      "description": "Develop native iOS applications with Swift/SwiftUI. Masters iOS 18, SwiftUI, UIKit integration, Core Data, networking, and App Store optimization. Use PROACTIVELY for iOS-specific features, App Store optimization, or native iOS development.",
+      "description": "Develop native iOS applications with Swift/SwiftUI. Masters iOS 18, SwiftUI,",
       "triggers": [],
       "version": "1.0.0"
     },
     "django-pro": {
       "path": "skills/django-pro/SKILL.md",
-      "description": "Master Django 5.x with async views, DRF, Celery, and Django Channels. Build scalable web applications with proper architecture, testing, and deployment. Use PROACTIVELY for Django development, ORM optimization, or complex Django patterns.",
+      "description": "Master Django 5.x with async views, DRF, Celery, and Django Channels.",
       "triggers": [],
       "version": "1.0.0"
     },
@@ -231,19 +219,19 @@
     },
     "neural-architecture-engineer": {
       "path": "skills/neural-architecture-engineer/SKILL.md",
-      "description": "Neural architecture specialist for deep learning design and training strategies. Expert in architecture patterns (transformers, CNNs, RNNs), multi-framework implementation (Flax, Equinox, Haiku, PyTorch). Delegates JAX optimization to jax-pro and MLOps to ml-pipeline-coordinator.",
+      "description": "Neural architecture specialist for deep learning design and training",
       "triggers": [],
       "version": "1.0.0"
     },
     "golang-pro": {
       "path": "skills/golang-pro/SKILL.md",
-      "description": "Master Go 1.21+ with modern patterns, advanced concurrency, performance optimization, and production-ready microservices. Expert in the latest Go ecosystem including generics, workspaces, and cutting-edge frameworks. Use PROACTIVELY for Go development, architecture design, or performance optimization.",
+      "description": "Master Go 1.21+ with modern patterns, advanced concurrency, performance",
       "triggers": [],
       "version": "1.0.0"
     },
     "performance-engineer-observability-monitoring": {
       "path": "skills/performance-engineer-observability-monitoring/SKILL.md",
-      "description": "Expert performance engineer specializing in modern observability, application optimization, and scalable system performance. Masters OpenTelemetry, distributed tracing, load testing, multi-tier caching, Core Web Vitals, and performance monitoring. Handles end-to-end optimization, real user monitoring, and scalability patterns. Use PROACTIVELY for performance optimization, observability, or scalability challenges.",
+      "description": "Expert performance engineer specializing in modern observability, application",
       "triggers": [],
       "version": "1.0.0"
     },
@@ -261,7 +249,7 @@
     },
     "test-automator": {
       "path": "skills/test-automator/SKILL.md",
-      "description": "Master AI-powered test automation with modern frameworks, self-healing tests, and comprehensive quality engineering. Build scalable testing strategies with advanced CI/CD integration. Use PROACTIVELY for testing automation or quality assurance.",
+      "description": "Master AI-powered test automation with modern frameworks, self-healing",
       "triggers": [],
       "version": "1.0.0"
     },
@@ -279,13 +267,13 @@
     },
     "fastapi-pro": {
       "path": "skills/fastapi-pro/SKILL.md",
-      "description": "Build high-performance async APIs with FastAPI, SQLAlchemy 2.0, and Pydantic V2. Master microservices, WebSockets, and modern Python async patterns. Use PROACTIVELY for FastAPI development, async optimization, or API architecture.",
+      "description": "Build high-performance async APIs with FastAPI, SQLAlchemy 2.0, and Pydantic",
       "triggers": [],
       "version": "1.0.0"
     },
     "code-reviewer-codebase-cleanup": {
       "path": "skills/code-reviewer-codebase-cleanup/SKILL.md",
-      "description": "Elite code review expert specializing in modern AI-powered code analysis, security vulnerabilities, performance optimization, and production reliability. Masters static analysis tools, security scanning, and configuration review with 2024/2025 best practices. Use PROACTIVELY for code quality assurance.",
+      "description": "Elite code review expert specializing in modern AI-powered code analysis,",
       "triggers": [],
       "version": "1.0.0"
     },
@@ -297,13 +285,13 @@
     },
     "jax-pro": {
       "path": "skills/jax-pro/SKILL.md",
-      "description": "Expert Core JAX Programming Specialist for functional transformations, high-performance computing, and JAX ecosystem mastery. Use PROACTIVELY for jit/vmap/pmap, Flax NNX, Optax, Orbax, NumPyro, XLA optimization, and production JAX deployments. Pre-response validation framework with 5 mandatory self-checks and 5 quality gates. Applies systematic decision framework with 37+ diagnostic questions and constitutional AI self-checks.",
+      "description": "Expert Core JAX Programming Specialist for functional transformations,",
       "triggers": [],
       "version": "1.0.0"
     },
     "multi-agent-orchestrator": {
       "path": "skills/multi-agent-orchestrator/SKILL.md",
-      "description": "Multi-agent orchestrator specializing in workflow coordination and distributed systems. Expert in agent team assembly and task allocation for scalable collaboration. Delegates domain-specific work to specialist agents.",
+      "description": "Multi-agent orchestrator specializing in workflow coordination and distributed",
       "triggers": [],
       "version": "1.0.0"
     },
@@ -321,7 +309,7 @@
     },
     "prompt-engineer": {
       "path": "skills/prompt-engineer/SKILL.md",
-      "description": "Expert prompt engineer specializing in advanced prompting techniques, LLM optimization, and AI system design. Masters chain-of-thought, constitutional AI, and production prompt strategies. Use when building AI features, improving agent performance, or crafting system prompts.",
+      "description": "Expert prompt engineer specializing in advanced prompting techniques,",
       "triggers": [],
       "version": "1.0.0"
     },
@@ -345,19 +333,19 @@
     },
     "julia-pro": {
       "path": "skills/julia-pro/SKILL.md",
-      "description": "General Julia programming expert for high-performance computing, scientific simulations, data analysis, and machine learning. Master of multiple dispatch, type system, metaprogramming, JuMP optimization, visualization, interoperability, and package management. Provides equal emphasis across all Julia use cases.",
+      "description": "General Julia programming expert for high-performance computing, scientific",
       "triggers": [],
       "version": "1.0.0"
     },
     "turing-pro": {
       "path": "skills/turing-pro/SKILL.md",
-      "description": "Bayesian inference and probabilistic programming expert. Master of Turing.jl, MCMC methods (NUTS, HMC), variational inference (ADVI, Bijectors.jl), model comparison (WAIC, LOO), convergence diagnostics, and integration with SciML for Bayesian ODEs.",
+      "description": "Bayesian inference and probabilistic programming expert. Master of Turing.jl,",
       "triggers": [],
       "version": "1.0.0"
     },
     "tdd-orchestrator": {
       "path": "skills/tdd-orchestrator/SKILL.md",
-      "description": "Master TDD orchestrator specializing in red-green-refactor discipline, multi-agent workflow coordination, and comprehensive test-driven development practices. Enforces TDD best practices across teams with AI-assisted testing and modern frameworks. Use PROACTIVELY for TDD implementation and governance.",
+      "description": "Master TDD orchestrator specializing in red-green-refactor discipline,",
       "triggers": [],
       "version": "1.0.0"
     },
@@ -381,7 +369,7 @@
     },
     "legacy-modernizer": {
       "path": "skills/legacy-modernizer/SKILL.md",
-      "description": "Refactor legacy codebases, migrate outdated frameworks, and implement gradual modernization. Handles technical debt, dependency updates, and backward compatibility. Use PROACTIVELY for legacy system updates, framework migrations, or technical debt reduction.",
+      "description": "Refactor legacy codebases, migrate outdated frameworks, and implement",
       "triggers": [],
       "version": "1.0.0"
     },
@@ -393,7 +381,7 @@
     },
     "ml-engineer": {
       "path": "skills/ml-engineer/SKILL.md",
-      "description": "Build production ML systems with PyTorch 2.x, TensorFlow, and modern ML frameworks. Implements model serving, feature engineering, A/B testing, and monitoring. Use PROACTIVELY for ML model deployment, inference optimization, or production ML infrastructure.",
+      "description": "Build production ML systems with PyTorch 2.x, TensorFlow, and modern",
       "triggers": [],
       "version": "1.0.0"
     },
@@ -405,7 +393,7 @@
     },
     "deployment-engineer": {
       "path": "skills/deployment-engineer/SKILL.md",
-      "description": "Expert deployment engineer specializing in modern CI/CD pipelines, GitOps workflows, and advanced deployment automation. Masters GitHub Actions, ArgoCD/Flux, progressive delivery, container security, and platform engineering. Handles zero-downtime deployments, security scanning, and developer experience optimization. Use PROACTIVELY for CI/CD design, GitOps implementation, or deployment automation.",
+      "description": "Expert deployment engineer specializing in modern CI/CD pipelines, GitOps",
       "triggers": [],
       "version": "1.0.0"
     },
@@ -429,7 +417,7 @@
     },
     "test-automator-full-stack-orchestration": {
       "path": "skills/test-automator-full-stack-orchestration/SKILL.md",
-      "description": "Master AI-powered test automation with modern frameworks, self-healing tests, and comprehensive quality engineering. Build scalable testing strategies with advanced CI/CD integration. Use PROACTIVELY for testing automation or quality assurance.",
+      "description": "Master AI-powered test automation with modern frameworks, self-healing",
       "triggers": [],
       "version": "1.0.0"
     },
@@ -441,7 +429,7 @@
     },
     "architect-review": {
       "path": "skills/architect-review/SKILL.md",
-      "description": "Master software architect specializing in modern architecture patterns, clean architecture, microservices, event-driven systems, and DDD. Reviews system designs and code changes for architectural integrity, scalability, and maintainability. Use PROACTIVELY for architectural decisions.",
+      "description": "Master software architect specializing in modern architecture patterns,",
       "triggers": [],
       "version": "1.0.0"
     },
@@ -453,7 +441,7 @@
     },
     "research-intelligence": {
       "path": "skills/research-intelligence/SKILL.md",
-      "description": "Research intelligence expert specializing in research methodology and information discovery. Expert in literature analysis, trend forecasting, and evidence-based insights. Delegates implementation to domain specialists.",
+      "description": "Research intelligence expert specializing in research methodology and",
       "triggers": [],
       "version": "1.0.0"
     },
@@ -471,7 +459,7 @@
     },
     "typescript-pro": {
       "path": "skills/typescript-pro/SKILL.md",
-      "description": "Master TypeScript with advanced types, generics, and strict type safety. Handles complex type systems, decorators, and enterprise-grade patterns. Use PROACTIVELY for TypeScript architecture, type inference optimization, or advanced typing patterns.",
+      "description": "Master TypeScript with advanced types, generics, and strict type safety.",
       "triggers": [],
       "version": "1.0.0"
     },
@@ -483,7 +471,7 @@
     },
     "backend-architect": {
       "path": "skills/backend-architect/SKILL.md",
-      "description": "Expert backend architect specializing in scalable API design, microservices architecture, and distributed systems. Masters REST/GraphQL/gRPC APIs, event-driven architectures, service mesh patterns, and modern backend frameworks. Handles service boundary definition, inter-service communication, resilience patterns, and observability. Use PROACTIVELY when creating new backend services or APIs.",
+      "description": "Expert backend architect specializing in scalable API design, microservices",
       "triggers": [],
       "version": "1.0.0"
     },
@@ -501,7 +489,7 @@
     },
     "data-engineer": {
       "path": "skills/data-engineer/SKILL.md",
-      "description": "Expert data engineer specializing in scalable data pipelines, ETL/ELT architecture, data quality frameworks, and production data infrastructure. Handles data ingestion, validation, versioning, and storage optimization for ML systems.",
+      "description": "Expert data engineer specializing in scalable data pipelines, ETL/ELT",
       "triggers": [],
       "version": "1.0.0"
     },
@@ -537,7 +525,7 @@
     },
     "docs-architect": {
       "path": "skills/docs-architect/SKILL.md",
-      "description": "Creates comprehensive technical documentation from existing codebases. Analyzes architecture, design patterns, and implementation details to produce long-form technical manuals and ebooks. Use PROACTIVELY for system documentation, architecture guides, or technical deep-dives.",
+      "description": "Creates comprehensive technical documentation from existing codebases.",
       "triggers": [],
       "version": "1.0.0"
     },
@@ -547,7 +535,7 @@
       "triggers": [],
       "version": "1.0.7"
     },
-    "git-pr-patterns": {
+    "git-pr-patterns & PR Patterns": {
       "path": "skills/git-pr-patterns/SKILL.md",
       "description": "Master Git workflows, branching strategies, and PR best practices. Use when writing git commands, creating branches, committing, resolving conflicts, or managing pull requests.",
       "triggers": [],
@@ -561,19 +549,19 @@
     },
     "scientific-code-adoptor": {
       "path": "skills/scientific-code-adoptor/SKILL.md",
-      "description": "Legacy scientific code modernization expert for cross-language migration. Expert in Fortran/C/MATLAB to Python/JAX/Julia with numerical accuracy preservation. Delegates JAX optimization to jax-pro.",
+      "description": "Legacy scientific code modernization expert for cross-language migration.",
       "triggers": [],
       "version": "1.0.0"
     },
     "mlops-engineer": {
       "path": "skills/mlops-engineer/SKILL.md",
-      "description": "Build comprehensive ML pipelines, experiment tracking, and model registries with MLflow, Kubeflow, and modern MLOps tools. Implements automated training, deployment, and monitoring across cloud platforms. Use PROACTIVELY for ML infrastructure, experiment management, or pipeline automation.",
+      "description": "Build comprehensive ML pipelines, experiment tracking, and model registries",
       "triggers": [],
       "version": "1.0.0"
     },
     "c-pro": {
       "path": "skills/c-pro/SKILL.md",
-      "description": "Master C programmer specializing in systems programming, embedded development, memory management, and performance-critical code. Expert in POSIX APIs, kernel programming, and low-level optimization. Use PROACTIVELY for C development, memory debugging, or systems-level programming.",
+      "description": "Master C programmer specializing in systems programming, embedded development,",
       "triggers": [],
       "version": "1.0.0"
     },
@@ -597,13 +585,13 @@
     },
     "tutorial-engineer": {
       "path": "skills/tutorial-engineer/SKILL.md",
-      "description": "Creates step-by-step tutorials and educational content from code. Transforms complex concepts into progressive learning experiences with hands-on examples. Use PROACTIVELY for onboarding guides, feature tutorials, or concept explanations.",
+      "description": "Creates step-by-step tutorials and educational content from code. Transforms",
       "triggers": [],
       "version": "1.0.0"
     },
     "data-scientist": {
       "path": "skills/data-scientist/SKILL.md",
-      "description": "Expert data scientist for advanced analytics, machine learning, and statistical modeling. Handles complex data analysis, predictive modeling, and business intelligence. Use PROACTIVELY for data analysis tasks, ML modeling, statistical analysis, and data-driven insights.",
+      "description": "Expert data scientist for advanced analytics, machine learning, and statistical",
       "triggers": [],
       "version": "1.0.0"
     },
@@ -633,19 +621,19 @@
     },
     "frontend-developer-multi-platform-apps": {
       "path": "skills/frontend-developer-multi-platform-apps/SKILL.md",
-      "description": "Build React components, implement responsive layouts, and handle client-side state management. Masters React 19, Next.js 15, and modern frontend architecture. Optimizes performance and ensures accessibility. Use PROACTIVELY when creating UI components or fixing frontend issues.",
+      "description": "Build React components, implement responsive layouts, and handle client-side",
       "triggers": [],
       "version": "1.0.0"
     },
     "mobile-developer-multi-platform-apps": {
       "path": "skills/mobile-developer-multi-platform-apps/SKILL.md",
-      "description": "Develop React Native, Flutter, or native mobile apps with modern architecture patterns. Masters cross-platform development, native integrations, offline sync, and app store optimization. Use PROACTIVELY for mobile features, cross-platform code, or app optimization.",
+      "description": "Develop React Native, Flutter, or native mobile apps with modern architecture",
       "triggers": [],
       "version": "1.0.0"
     },
     "sciml-pro": {
       "path": "skills/sciml-pro/SKILL.md",
-      "description": "SciML ecosystem expert for scientific machine learning and differential equations. Master of DifferentialEquations.jl, ModelingToolkit.jl, Optimization.jl (distinct from JuMP.jl), NeuralPDE.jl, Catalyst.jl, performance tuning, and parallel computing. Auto-detects problem types and generates template code.",
+      "description": "SciML ecosystem expert for scientific machine learning and differential",
       "triggers": [],
       "version": "1.0.0"
     },
@@ -657,7 +645,7 @@
     },
     "cpp-pro": {
       "path": "skills/cpp-pro/SKILL.md",
-      "description": "Master C++ programmer specializing in modern C++11/14/17/20/23, template metaprogramming, RAII, move semantics, and high-performance systems. Expert in STL algorithms, concurrency, and zero-cost abstractions. Use PROACTIVELY for C++ development, refactoring, or performance optimization.",
+      "description": "Master C++ programmer specializing in modern C++11/14/17/20/23, template",
       "triggers": [],
       "version": "1.0.0"
     },
@@ -681,7 +669,7 @@
     },
     "deployment-engineer-full-stack-orchestration": {
       "path": "skills/deployment-engineer-full-stack-orchestration/SKILL.md",
-      "description": "Expert deployment engineer specializing in modern CI/CD pipelines, GitOps workflows, and advanced deployment automation. Masters GitHub Actions, ArgoCD/Flux, progressive delivery, container security, and platform engineering. Handles zero-downtime deployments, security scanning, and developer experience optimization. Use PROACTIVELY for CI/CD design, GitOps implementation, or deployment automation.",
+      "description": "Expert deployment engineer specializing in modern CI/CD pipelines, GitOps",
       "triggers": [],
       "version": "1.0.0"
     },
@@ -693,7 +681,7 @@
     },
     "code-reviewer-comprehensive-review": {
       "path": "skills/code-reviewer-comprehensive-review/SKILL.md",
-      "description": "Elite code review expert specializing in modern AI-powered code analysis, security vulnerabilities, performance optimization, and production reliability. Masters static analysis tools, security scanning, and configuration review with 2024/2025 best practices. Use PROACTIVELY for code quality assurance.",
+      "description": "Elite code review expert specializing in modern AI-powered code analysis,",
       "triggers": [],
       "version": "1.0.0"
     },
@@ -711,7 +699,7 @@
     },
     "python-pro": {
       "path": "skills/python-pro/SKILL.md",
-      "description": "Master Python 3.12+ with modern features, async programming, performance optimization, and production-ready practices. Expert in the latest Python ecosystem including uv, ruff, pydantic, and FastAPI. Use PROACTIVELY for Python development, optimization, or advanced Python patterns.",
+      "description": "Master Python 3.12+ with modern features, async programming, performance",
       "triggers": [],
       "version": "1.0.0"
     },
@@ -735,25 +723,25 @@
     },
     "nlsq-pro": {
       "path": "skills/nlsq-pro/SKILL.md",
-      "description": "GPU-accelerated nonlinear least squares expert with JAX/NLSQ. Handles curve fitting from 1K to 100M+ data points with automatic large dataset detection, robust optimization, streaming, mixed precision fallback, and adaptive hybrid streaming with parameter normalization. Self-correcting agent with pre-response validation and failure prevention. Use PROACTIVELY for SciPy performance issues, convergence problems, multi-scale parameter estimation, or large-scale optimization (4M-100M+ points).",
+      "description": "GPU-accelerated nonlinear least squares expert with JAX/NLSQ. Handles",
       "triggers": [],
       "version": "1.0.0"
     },
     "performance-engineer": {
       "path": "skills/performance-engineer/SKILL.md",
-      "description": "Expert performance engineer specializing in modern observability, application optimization, and scalable system performance. Masters OpenTelemetry, distributed tracing, load testing, multi-tier caching, Core Web Vitals, and performance monitoring. Handles end-to-end optimization, real user monitoring, and scalability patterns. Use PROACTIVELY for performance optimization, observability, or scalability challenges.",
+      "description": "Expert performance engineer specializing in modern observability, application",
       "triggers": [],
       "version": "1.0.0"
     },
     "neural-network-master": {
       "path": "skills/neural-network-master/SKILL.md",
-      "description": "Deep learning theory expert and neural network master specializing in mathematical foundations, optimization theory, training diagnostics, research translation, and pedagogical explanations. Provides deep theoretical understanding and expert debugging guidance.",
+      "description": "Deep learning theory expert and neural network master specializing in",
       "triggers": [],
       "version": "1.0.0"
     },
     "command-systems-engineer": {
       "path": "skills/command-systems-engineer/SKILL.md",
-      "description": "Command systems engineer specializing in CLI tool design and developer automation. Expert in command development, interactive prompts, and workflow tools. Delegates web UIs to fullstack-developer.",
+      "description": "Command systems engineer specializing in CLI tool design and developer",
       "triggers": [],
       "version": "1.0.0"
     },
@@ -795,7 +783,7 @@
     },
     "ui-ux-designer": {
       "path": "skills/ui-ux-designer/SKILL.md",
-      "description": "Create interface designs, wireframes, and design systems. Masters user research, accessibility standards, and modern design tools. Specializes in design tokens, component libraries, and inclusive design. Use PROACTIVELY for design systems, user flows, or interface optimization.",
+      "description": "Create interface designs, wireframes, and design systems. Masters user",
       "triggers": [],
       "version": "1.0.0"
     },
@@ -831,13 +819,13 @@
     },
     "debugger": {
       "path": "skills/debugger/SKILL.md",
-      "description": "AI-assisted debugging specialist for errors, test failures, and unexpected behavior with LLM-driven RCA, automated log correlation, observability integration, and distributed system debugging. Expert in systematic investigation, performance profiling, memory leak detection, and production incident response.",
+      "description": "AI-assisted debugging specialist for errors, test failures, and unexpected",
       "triggers": [],
       "version": "1.0.0"
     },
     "graphql-architect": {
       "path": "skills/graphql-architect/SKILL.md",
-      "description": "Master modern GraphQL with federation, performance optimization, and enterprise security. Build scalable schemas, implement advanced caching, and design real-time systems. Use PROACTIVELY for GraphQL architecture or performance optimization.",
+      "description": "Master modern GraphQL with federation, performance optimization, and",
       "triggers": [],
       "version": "1.0.0"
     },
@@ -861,7 +849,7 @@
     },
     "security-auditor-full-stack-orchestration": {
       "path": "skills/security-auditor-full-stack-orchestration/SKILL.md",
-      "description": "Expert security auditor specializing in DevSecOps, comprehensive cybersecurity, and compliance frameworks. Masters vulnerability assessment, threat modeling, secure authentication (OAuth2/OIDC), OWASP standards, cloud security, and security automation. Handles DevSecOps integration, compliance (GDPR/HIPAA/SOC2), and incident response. Use PROACTIVELY for security audits, DevSecOps, or compliance implementation.",
+      "description": "Expert security auditor specializing in DevSecOps, comprehensive cybersecurity,",
       "triggers": [],
       "version": "1.0.0"
     },
@@ -873,7 +861,7 @@
     },
     "code-reviewer": {
       "path": "skills/code-reviewer/SKILL.md",
-      "description": "Elite code review expert specializing in modern AI-powered code analysis, security vulnerabilities, performance optimization, and production reliability. Masters static analysis tools, security scanning, and configuration review with 2024/2025 best practices. Use PROACTIVELY for code quality assurance.",
+      "description": "Elite code review expert specializing in modern AI-powered code analysis,",
       "triggers": [],
       "version": "1.0.0"
     },
@@ -885,7 +873,7 @@
     },
     "code-reviewer-git-pr-workflows": {
       "path": "skills/code-reviewer-git-pr-workflows/SKILL.md",
-      "description": "Elite code review expert specializing in modern AI-powered code analysis, security vulnerabilities, performance optimization, and production reliability. Masters static analysis tools, security scanning, and configuration review with 2024/2025 best practices. Use PROACTIVELY for code quality assurance.",
+      "description": "Elite code review expert specializing in modern AI-powered code analysis,",
       "triggers": [],
       "version": "1.0.0"
     },
@@ -903,7 +891,7 @@
     },
     "hpc-numerical-coordinator": {
       "path": "skills/hpc-numerical-coordinator/SKILL.md",
-      "description": "HPC and numerical methods coordinator for scientific computing workflows. Expert in numerical optimization, parallel computing, GPU acceleration, and Python/Julia ecosystems. Leverages four core skills for comprehensive workflow design. Delegates molecular dynamics, statistical physics, and JAX applications to specialized agents.",
+      "description": "HPC and numerical methods coordinator for scientific computing workflows.",
       "triggers": [],
       "version": "1.0.0"
     },
@@ -921,7 +909,7 @@
     },
     "debugger-unit-testing": {
       "path": "skills/debugger-unit-testing/SKILL.md",
-      "description": "AI-assisted debugging specialist for errors, test failures, and unexpected behavior with LLM-driven RCA, automated log correlation, observability integration, and distributed system debugging. Use proactively when encountering issues.",
+      "description": "AI-assisted debugging specialist for errors, test failures, and unexpected",
       "triggers": [],
       "version": "1.0.0"
     },
@@ -945,19 +933,19 @@
     },
     "security-auditor": {
       "path": "skills/security-auditor/SKILL.md",
-      "description": "Expert security auditor specializing in DevSecOps, comprehensive cybersecurity, and compliance frameworks. Masters vulnerability assessment, threat modeling, secure authentication (OAuth2/OIDC), OWASP standards, cloud security, and security automation. Handles DevSecOps integration, compliance (GDPR/HIPAA/SOC2), and incident response. Use PROACTIVELY for security audits, DevSecOps, or compliance implementation.",
+      "description": "Expert security auditor specializing in DevSecOps, comprehensive cybersecurity,",
       "triggers": [],
       "version": "1.0.0"
     },
     "test-automator-unit-testing": {
       "path": "skills/test-automator-unit-testing/SKILL.md",
-      "description": "Master AI-powered test automation with modern frameworks, self-healing tests, and comprehensive quality engineering. Build scalable testing strategies with advanced CI/CD integration. Use PROACTIVELY for testing automation or quality assurance.",
+      "description": "Master AI-powered test automation with modern frameworks, self-healing",
       "triggers": [],
       "version": "1.0.0"
     },
     "jax-scientist": {
       "path": "skills/jax-scientist/SKILL.md",
-      "description": "Production-ready computational physics expert specializing in differentiable physics simulations with JAX. Master of JAX-MD, JAX-CFD, PINNs, and quantum computing. Use PROACTIVELY for physics simulations requiring automatic differentiation, gradient-based optimization, or hybrid ML-physics models. Pre-response validation framework with 5 mandatory self-checks. Applies systematic decision framework with 38+ diagnostic questions and constitutional AI self-checks.",
+      "description": "Production-ready computational physics expert specializing in differentiable",
       "triggers": [],
       "version": "1.0.0"
     },
@@ -969,13 +957,13 @@
     },
     "ai-engineer": {
       "path": "skills/ai-engineer/SKILL.md",
-      "description": "Build production-ready LLM applications, advanced RAG systems, and intelligent agents. Implements vector search, multimodal AI, agent orchestration, and enterprise AI integrations. Use PROACTIVELY for LLM features, chatbots, AI agents, or AI-powered applications.",
+      "description": "Build production-ready LLM applications, advanced RAG systems, and intelligent",
       "triggers": [],
       "version": "1.0.0"
     },
     "javascript-pro": {
       "path": "skills/javascript-pro/SKILL.md",
-      "description": "Master modern JavaScript with ES6+, async patterns, and Node.js APIs. Handles promises, event loops, and browser/Node compatibility. Use PROACTIVELY for JavaScript optimization, async debugging, or complex JS patterns.",
+      "description": "Master modern JavaScript with ES6+, async patterns, and Node.js APIs.",
       "triggers": [],
       "version": "1.0.0"
     },
@@ -1011,7 +999,7 @@
     },
     "architect-review-framework-migration": {
       "path": "skills/architect-review-framework-migration/SKILL.md",
-      "description": "Master software architect specializing in modern architecture patterns, clean architecture, microservices, event-driven systems, and DDD. Reviews system designs and code changes for architectural integrity, scalability, and maintainability. Use PROACTIVELY for architectural decisions.",
+      "description": "Master software architect specializing in modern architecture patterns,",
       "triggers": [],
       "version": "1.0.0"
     },
@@ -1047,7 +1035,7 @@
     },
     "simulation-expert": {
       "path": "skills/simulation-expert/SKILL.md",
-      "description": "Molecular dynamics and multiscale simulation expert for atomistic modeling. Expert in MD (LAMMPS, GROMACS, HOOMD-blue), ML force fields (NequIP, MACE, DeepMD), multiscale methods (DPD, coarse-graining), nanoscale DEM with capillary forces, and trajectory analysis for materials prediction. Leverages four core skills.",
+      "description": "Molecular dynamics and multiscale simulation expert for atomistic modeling.",
       "triggers": [],
       "version": "1.0.0"
     },
@@ -1065,19 +1053,19 @@
     },
     "non-equilibrium-expert": {
       "path": "skills/non-equilibrium-expert/SKILL.md",
-      "description": "Non-equilibrium statistical physicist expert specializing in driven systems, active matter, and complex dynamics. Expert in fluctuation theorems, transport theory, stochastic dynamics, master/Fokker-Planck equations, and NEMD simulations for materials design. Leverages four core skills for theory development, property prediction, and experimental validation.",
+      "description": "Non-equilibrium statistical physicist expert specializing in driven systems,",
       "triggers": [],
       "version": "1.0.0"
     },
     "julia-developer": {
       "path": "skills/julia-developer/SKILL.md",
-      "description": "Package development specialist for creating robust Julia packages. Expert in package structure, testing with Test.jl/Aqua.jl/JET.jl, CI/CD automation with GitHub Actions, PackageCompiler.jl for executables, web development with Genie.jl/HTTP.jl, and integrating optimization, monitoring, and deep learning components.",
+      "description": "Package development specialist for creating robust Julia packages. Expert",
       "triggers": [],
       "version": "1.0.0"
     },
     "rust-pro": {
       "path": "skills/rust-pro/SKILL.md",
-      "description": "Master Rust 1.75+ with modern async patterns, advanced type system features, and production-ready systems programming. Expert in the latest Rust ecosystem including Tokio, axum, and cutting-edge crates. Use PROACTIVELY for Rust development, performance optimization, or systems programming.",
+      "description": "Master Rust 1.75+ with modern async patterns, advanced type system features,",
       "triggers": [],
       "version": "1.0.0"
     },
@@ -1089,13 +1077,13 @@
     },
     "cloud-architect": {
       "path": "skills/cloud-architect/SKILL.md",
-      "description": "Expert cloud architect specializing in AWS/Azure/GCP multi-cloud infrastructure design, advanced IaC (Terraform/OpenTofu/CDK), FinOps cost optimization, and modern architectural patterns. Masters serverless, microservices, security, compliance, and disaster recovery. Use PROACTIVELY for cloud architecture, cost optimization, migration planning, or multi-cloud strategies.",
+      "description": "Expert cloud architect specializing in AWS/Azure/GCP multi-cloud infrastructure",
       "triggers": [],
       "version": "1.0.0"
     },
     "visualization-interface": {
       "path": "skills/visualization-interface/SKILL.md",
-      "description": "Visualization and interface expert specializing in scientific data visualization, UX design, and immersive technologies with Python and Julia. Expert in Matplotlib, Plotly, Makie.jl, D3.js, Dash, Streamlit, AR/VR, and accessibility-first design. Masters publication-quality figures, interactive dashboards, 3D visualization, and user-centered design.",
+      "description": "Visualization and interface expert specializing in scientific data visualization,",
       "triggers": [],
       "version": "1.0.0"
     },
@@ -1113,7 +1101,7 @@
     },
     "correlation-function-expert": {
       "path": "skills/correlation-function-expert/SKILL.md",
-      "description": "Correlation function expert specializing in statistical physics and complex systems. Expert in higher-order correlations, FFT-based O(N log N) algorithms, JAX-accelerated GPU computation, and experimental data interpretation (DLS, SAXS/SANS, XPCS, FCS). Leverages four core skills bridging theoretical foundations to practical computational analysis for multi-scale scientific research. Delegates JAX optimization to jax-pro.",
+      "description": "Correlation function expert specializing in statistical physics and complex",
       "triggers": [],
       "version": "1.0.0"
     },
@@ -1125,13 +1113,13 @@
     },
     "backend-architect-multi-platform-apps": {
       "path": "skills/backend-architect-multi-platform-apps/SKILL.md",
-      "description": "Expert backend architect specializing in scalable API design, microservices architecture, and distributed systems. Masters REST/GraphQL/gRPC APIs, event-driven architectures, service mesh patterns, and modern backend frameworks. Handles service boundary definition, inter-service communication, resilience patterns, and observability. Use PROACTIVELY when creating new backend services or APIs.",
+      "description": "Expert backend architect specializing in scalable API design, microservices",
       "triggers": [],
       "version": "1.0.0"
     },
     "devops-troubleshooter": {
       "path": "skills/devops-troubleshooter/SKILL.md",
-      "description": "Expert DevOps troubleshooter specializing in rapid incident response, advanced debugging, and modern observability. Masters log analysis, distributed tracing, Kubernetes debugging, performance optimization, and root cause analysis. Handles production outages, system reliability, and preventive monitoring. Use PROACTIVELY for debugging, incident response, or system troubleshooting.",
+      "description": "Expert DevOps troubleshooter specializing in rapid incident response,",
       "triggers": [],
       "version": "1.0.0"
     },
@@ -1149,21 +1137,15 @@
     },
     "flutter-expert": {
       "path": "skills/flutter-expert/SKILL.md",
-      "description": "Master Flutter development with Dart 3, advanced widgets, and multi-platform deployment. Handles state management, animations, testing, and performance optimization for mobile, web, desktop, and embedded platforms. Use PROACTIVELY for Flutter architecture, UI implementation, or cross-platform features.",
+      "description": "Master Flutter development with Dart 3, advanced widgets, and multi-platform",
       "triggers": [],
       "version": "1.0.0"
-    },
-    "Code Review Excellence": {
-      "path": "skills/code-review-excellence/Code Review Excellence/SKILL.md",
-      "description": "Conduct systematic code reviews with structured analysis and constructive feedback. Use when reviewing PRs, analyzing code for bugs/security/performance, or establishing review standards.",
-      "triggers": [],
-      "version": "1.0.7"
     }
   },
   "workflows": {
     "deps-upgrade": {
       "path": "workflows/deps-upgrade.md",
-      "description": "Workflow for deps-upgrade",
+      "description": "Safe dependency upgrade orchestration with breaking change management",
       "triggers": [
         "/deps-upgrade",
         "workflow for deps upgrade"
@@ -1171,7 +1153,7 @@
     },
     "doc-generate": {
       "path": "workflows/doc-generate.md",
-      "description": "Workflow for doc-generate",
+      "description": "Generate comprehensive documentation from code with AI-powered analysis",
       "triggers": [
         "/doc-generate",
         "workflow for doc generate"
@@ -1187,7 +1169,7 @@
     },
     "merge-all": {
       "path": "workflows/merge-all.md",
-      "description": "Workflow for merge-all",
+      "description": "Merge all local branches into main and clean up",
       "triggers": [
         "/merge-all",
         "workflow for merge all"
@@ -1211,7 +1193,7 @@
     },
     "run-all-tests": {
       "path": "workflows/run-all-tests.md",
-      "description": "Workflow for run-all-tests",
+      "description": "Iteratively run and fix all tests until zero failures with AI-driven",
       "triggers": [
         "/run-all-tests",
         "workflow for run all tests"
@@ -1227,7 +1209,7 @@
     },
     "double-check": {
       "path": "workflows/double-check.md",
-      "description": "Workflow for double-check",
+      "description": "Multi-dimensional validation with automated testing, security scanning,",
       "triggers": [
         "/double-check",
         "workflow for double check"
@@ -1251,7 +1233,7 @@
     },
     "rust-project": {
       "path": "workflows/rust-project.md",
-      "description": "Workflow for rust-project",
+      "description": "Scaffold production-ready Rust projects with cargo tooling and idiomatic",
       "triggers": [
         "/rust-project",
         "workflow for rust project"
@@ -1307,7 +1289,7 @@
     },
     "git-workflow": {
       "path": "workflows/git-workflow.md",
-      "description": "Workflow for git-workflow",
+      "description": "Complete Git workflow orchestration from code review through PR creation",
       "triggers": [
         "/git-workflow",
         "workflow for git workflow"
@@ -1331,7 +1313,7 @@
     },
     "c-project": {
       "path": "workflows/c-project.md",
-      "description": "Workflow for c-project",
+      "description": "Scaffold production-ready C projects with Makefile/CMake and memory safety",
       "triggers": [
         "/c-project",
         "workflow for c project"
@@ -1379,7 +1361,7 @@
     },
     "update-docs": {
       "path": "workflows/update-docs.md",
-      "description": "Workflow for update-docs",
+      "description": "Update Sphinx docs, README, API documentation with AST-based code analysis",
       "triggers": [
         "/update-docs",
         "workflow for update docs"
@@ -1419,7 +1401,7 @@
     },
     "fix-commit-errors": {
       "path": "workflows/fix-commit-errors.md",
-      "description": "Workflow for fix-commit-errors",
+      "description": "Automatically analyzes GitHub Actions failures, identifies root causes,",
       "triggers": [
         "/fix-commit-errors",
         "workflow for fix commit errors"
@@ -1451,7 +1433,7 @@
     },
     "fix-imports": {
       "path": "workflows/fix-imports.md",
-      "description": "Workflow for fix-imports",
+      "description": "Systematically fix broken imports across the codebase with session continuity",
       "triggers": [
         "/fix-imports",
         "workflow for fix imports"
@@ -1459,7 +1441,7 @@
     },
     "commit": {
       "path": "workflows/commit.md",
-      "description": "Workflow for commit",
+      "description": "Intelligent git commit with automated analysis, quality validation, and",
       "triggers": [
         "/commit",
         "workflow for commit"
@@ -1499,7 +1481,7 @@
     },
     "reflection": {
       "path": "workflows/reflection.md",
-      "description": "Workflow for reflection",
+      "description": "Comprehensive reflection",
       "triggers": [
         "/reflection",
         "workflow for reflection"
