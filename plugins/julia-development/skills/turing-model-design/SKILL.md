@@ -63,6 +63,17 @@ end
 
 ---
 
+## Parallel Sampling
+
+| Method | Implementation | Use Case |
+|--------|----------------|----------|
+| **Multi-Threaded** | `sample(model, NUTS(), MCMCThreads(), 1000, 4)` | Standard scaling |
+| **Distributed** | `sample(..., MCMCDistributed(), ...)` | Multi-node clusters |
+| **GPU** | `Turing.setadbackend(:zygote); ... |> gpu` | High-dimensional models |
+| **Consensus** | Split data -> Parallel MCMC -> Aggregate | Big Data Bayesian |
+
+---
+
 ## Checklist
 
 - [ ] Priors match domain knowledge

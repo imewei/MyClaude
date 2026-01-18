@@ -50,6 +50,17 @@ create_app(
 
 ---
 
+## Parallel Compilation Strategies
+
+| Strategy | Implementation | Benefit |
+|----------|----------------|---------|
+| **Parallel Precompile** | `JULIA_NUM_THREADS=auto` during build | Faster system image generation |
+| **Incremental Builds** | Split large apps into packages | Recompile only changed components |
+| **Artifact Caching** | Cache `~/.julia/artifacts` | Reuse binary dependencies |
+| **Cloud Build** | Remote massive core machines | Scaling compilation vertically |
+
+---
+
 ## Checklist
 
 - [ ] Precompile script covers common paths

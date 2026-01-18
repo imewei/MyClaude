@@ -179,6 +179,17 @@ end
 
 ---
 
+## Parallel Solving Strategies
+
+| Method | Solver Support | Implementation |
+|--------|----------------|----------------|
+| **Concurrent Solves** | Most Solvers | `Threads.@threads` for independent models |
+| **Internal Parallelism** | Gurobi/CPLEX/HiGHS | `set_optimizer_attribute(model, "Threads", n)` |
+| **Distributed** | BlockDecomposition.jl | Stochastic programming / Decomposition |
+| **GPU** | MadNLP.jl | Large-scale NLP on GPU |
+
+---
+
 ## Best Practices
 
 | Practice | Implementation |
@@ -188,6 +199,17 @@ end
 | Warm starts | Provide initial values for NLP |
 | Reuse models | empty!(model) for repeated solves |
 | Vectorize | @variable(model, x[1:n]) for arrays |
+
+---
+
+## Parallel Solving Strategies
+
+| Method | Solver Support | Implementation |
+|--------|----------------|----------------|
+| **Concurrent Solves** | Most Solvers | `Threads.@threads` for independent models |
+| **Internal Parallelism** | Gurobi/CPLEX/HiGHS | `set_optimizer_attribute(model, "Threads", n)` |
+| **Distributed** | BlockDecomposition.jl | Stochastic programming / Decomposition |
+| **GPU** | MadNLP.jl | Large-scale NLP on GPU |
 
 ---
 

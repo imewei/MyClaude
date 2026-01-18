@@ -71,6 +71,12 @@ jobs:
 | Documenter.jl | Documentation deployment |
 | Codecov | Coverage reporting |
 
+## Parallelization
+
+- **Matrix Strategy**: Run tests across multiple OS and Julia versions in parallel.
+- **Parallel Tests**: Use `julia -t auto` to enable multi-threading during tests.
+- **Concurrent Jobs**: Run documentation building and testing concurrently.
+
 ---
 
 ## Checklist

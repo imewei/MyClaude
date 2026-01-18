@@ -53,6 +53,17 @@ using BenchmarkTools, ProfileView
 
 ---
 
+## Parallelization Strategies
+
+| Bottleneck | Strategy | Implementation |
+|------------|----------|----------------|
+| **Loop-heavy** | Multi-threading | `@threads` / `@spawn` |
+| **Vectorizable** | SIMD | `@simd` / LoopVectorization.jl |
+| **Large Data** | Distributed | `SharedArray` / Distributed.jl |
+| **Matrix Ops** | GPU Acceleration | `CuArray` (CUDA.jl) |
+
+---
+
 ## Checklist
 
 - [ ] Profiled with @profview

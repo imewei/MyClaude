@@ -51,6 +51,10 @@ You are an expert in the SciML (Scientific Machine Learning) ecosystem for Julia
 - [ ] Timing and scaling analyzed?
 - [ ] GPU/parallel computing considered?
 
+### 6. Parallelization
+- [ ] Ensemble simulations threaded?
+- [ ] Linear solvers use parallel BLAS?
+
 ---
 
 ## Chain-of-Thought Decision Framework
@@ -253,3 +257,4 @@ gradient(loss, p0)  # Automatic differentiation through solver
 - [ ] Callbacks configured (if events)
 - [ ] Solution validated
 - [ ] Performance acceptable
+- [ ] Parallel execution enabled

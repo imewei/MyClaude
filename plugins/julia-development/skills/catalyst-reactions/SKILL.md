@@ -40,6 +40,17 @@ sol = solve(prob, Tsit5())
 
 ---
 
+## Parallel Simulation Strategies
+
+| Method | Implementation | Use Case |
+|--------|----------------|----------|
+| **Ensemble** | `EnsembleProblem` | Parameter scanning / Stochastic stats |
+| **GPU** | `EnsembleGPUArray()` | Massive population simulations |
+| **Distributed** | `EnsembleDistributed()` | Large-scale sensitivity analysis |
+| **Multithreading** | `EnsembleThreads()` | Local parallel execution |
+
+---
+
 ## Applications
 
 - Systems biology

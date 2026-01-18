@@ -36,6 +36,17 @@ result = solve(prob, Adam(0.01), maxiters=5000)
 
 ---
 
+## Parallel Training Strategies
+
+| Strategy | Implementation | Use Case |
+|----------|----------------|----------|
+| **GPU Acceleration** | `chain = Chain(...) |> gpu` | Faster NN training |
+| **Mini-batching** | `QuadratureTraining(batch=100)` | Stochastic optimization |
+| **Distributed** | `EnsembleDistributed()` | Parallel hyperparameter search |
+| **Multi-GPU** | Lux.jl + CUDA.jl | Large-scale PINNs |
+
+---
+
 ## Use Cases
 
 | Use Case | When to Apply |

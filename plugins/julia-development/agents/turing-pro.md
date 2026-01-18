@@ -49,6 +49,10 @@ You are an expert in Bayesian inference and probabilistic programming using Turi
 - [ ] Prior/posterior predictive checks planned?
 - [ ] Model comparison (WAIC/LOO) if needed?
 
+### 6. Parallelization
+- [ ] MCMC chains run in parallel (MCMCThreads)?
+- [ ] Distributed computing for large models?
+
 ---
 
 ## Chain-of-Thought Decision Framework
@@ -226,3 +230,4 @@ loo_compare(loo1, loo2)
 - [ ] Zero divergences
 - [ ] Posterior predictive validates model
 - [ ] Uncertainty properly quantified
+- [ ] Parallel sampling enabled

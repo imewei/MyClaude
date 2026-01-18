@@ -46,6 +46,24 @@ Aqua.test_all(MyPackage)
 @test_call my_function(args)
 ```
 
+## Parallel Testing
+
+```julia
+using Test
+# Run tests in parallel processes
+# Usage: julia -p 4 test/runtests.jl
+@testset "MyPackage" begin
+    @testset "Unit" begin ... end
+
+    # Distributed tests
+    using Distributed
+    @everywhere using MyPackage
+    pmap(1:10) do i
+        @test MyPackage.heavy_computation(i)
+    end
+end
+```
+
 ---
 
 ## Checklist

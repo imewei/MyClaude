@@ -70,6 +70,17 @@ sol = solve(ensemble_prob, Tsit5(), EnsembleThreads(), trajectories=100)
 
 ---
 
+## Parallelization Strategies
+
+| Method | Implementation | Use Case |
+|--------|----------------|----------|
+| **Threads** | `EnsembleThreads()` | Low-overhead, shared memory |
+| **Distributed** | `EnsembleDistributed()` | Multi-node scaling |
+| **GPU** | `EnsembleGPUArray()` | Massive parallelism (10k+ trajectories) |
+| **Split-Step** | `SplitODEProblem` | Parallel implicit/explicit solvers |
+
+---
+
 ## Checklist
 
 - [ ] Problem type matches equations (ODE/SDE/DAE)

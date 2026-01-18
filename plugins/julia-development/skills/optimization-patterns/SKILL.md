@@ -40,6 +40,17 @@ result = solve(opt_prob, BFGS())
 
 ---
 
+## Parallel Optimization
+
+| Strategy | Implementation | Use Case |
+|----------|----------------|----------|
+| **Multi-start** | `EnsembleProblem` + `solve` | Avoid local minima |
+| **Parallel Adjoints** | `sensealg=InterpolatingAdjoint(autojacvec=EnzymeVjp())` | Fast gradients |
+| **Distributed Data** | `loss(p, data_shard)` | Large dataset fitting |
+| **GPU Evaluation** | `u0 = CuArray(...)` | Massive ODE systems |
+
+---
+
 ## Algorithms
 
 | Algorithm | Use Case |

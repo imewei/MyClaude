@@ -217,6 +217,17 @@ result = 0.0  # Float64 from start
 
 ---
 
+## Parallel Design Patterns
+
+| Pattern | Implementation | Use Case |
+|---------|----------------|----------|
+| **Atomic Fields** | `@atomic` struct fields | Thread-safe mutable state |
+| **Immutable Structs** | `struct` (default) | Safe sharing across threads |
+| **Task Partitioning** | `Channel{T}(n)` | Producer-consumer workflows |
+| **Thread-Local Storage** | `task_local_storage()` | Per-thread temporary buffers |
+
+---
+
 ## Checklist
 
 - [ ] Multiple dispatch used appropriately

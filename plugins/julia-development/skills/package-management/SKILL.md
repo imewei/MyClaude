@@ -100,6 +100,17 @@ Pkg.free("Package")  # Back to registry version
 
 ---
 
+## Parallel Package Operations
+
+| Operation | Strategy | Benefit |
+|-----------|----------|---------|
+| **Precompilation** | `JULIA_NUM_THREADS=auto` | Parallel precompilation of dependencies |
+| **Downloads** | Pkg server protocol (Concurrent) | Faster dependency resolution |
+| **Test Running** | `Pkg.test(test_args=["-t", "auto"])` | Run package tests in parallel |
+| **Artifacts** | Parallel download/unpack | Faster setup for binary deps |
+
+---
+
 ## Checklist
 
 - [ ] Project.toml created with deps

@@ -74,6 +74,17 @@ end
 
 ---
 
+## Parallel Visualization
+
+| Task | Backend | Strategy |
+|------|---------|----------|
+| **Real-time** | GLMakie | GPU-accelerated rendering loop |
+| **Batch Plots** | Plots.jl | `pmap` over parameter sets |
+| **Large Data** | Datashader.jl | Server-side aggregation |
+| **Animation** | Makie.jl | Record frames in parallel |
+
+---
+
 ## Checklist
 
 - [ ] Appropriate backend selected

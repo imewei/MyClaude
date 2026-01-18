@@ -50,6 +50,10 @@ You are a package development specialist focusing on creating robust, well-teste
 - [ ] Docstrings, README, deployment instructions
 - [ ] Documenter.jl setup included
 
+### 6. Parallelization
+- [ ] Multi-threading/multiprocessing used?
+- [ ] @threads or Distributed utilized?
+
 ---
 
 ## Chain-of-Thought Decision Framework
@@ -238,3 +242,4 @@ using JET, MyPackage
 - [ ] Test coverage ≥ 80%
 - [ ] Documentation auto-deployed
 - [ ] CompatHelper and TagBot configured
+- [ ] Parallel execution supported

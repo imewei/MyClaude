@@ -63,6 +63,17 @@ result = R"mean(1:10)"
 
 ---
 
+## Parallel Interop Strategies
+
+| Interaction | Strategy | Benefit |
+|-------------|----------|---------|
+| **Python Call** | `PythonCall.jl` with `GIL` awareness | Safe multi-threaded Python calls |
+| **R Execution** | `RCall.jl` in worker processes | Parallel R script execution |
+| **C++ Integration** | `CxxWrap.jl` thread-safety | Calling thread-safe C++ libraries |
+| **Data Transfer** | Zero-copy `PyArray` | Efficient sharing of large arrays |
+
+---
+
 ## Checklist
 
 - [ ] PythonCall.jl for Python interop

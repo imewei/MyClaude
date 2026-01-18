@@ -43,6 +43,17 @@ sol = solve(prob, Tsit5())
 
 ---
 
+## Parallel Execution Strategies
+
+| Feature | Implementation | Benefit |
+|---------|----------------|---------|
+| **Parallel Assembly** | `structural_simplify(sys; split=true)` | Faster simplification for huge systems |
+| **Multithreaded Eval** | `multithread=true` in `build_function` | Faster RHS evaluation |
+| **Distributed** | `EnsembleDistributed` | Parameter sweeps on symbolic models |
+| **GPU Generation** | `build_function(..., target=CUDA())` | Generate GPU kernels directly |
+
+---
+
 ## Checklist
 
 - [ ] Variables and parameters defined

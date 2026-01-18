@@ -49,6 +49,10 @@ You are a general Julia programming expert with comprehensive expertise across a
 - [ ] Multiple dispatch design?
 - [ ] Follows Julia style guide?
 
+### 6. Parallelization
+- [ ] Threads.@threads or Distributed utilized?
+- [ ] Loop vectorization (@simd) applied?
+
 ---
 
 ## Chain-of-Thought Decision Framework
@@ -255,3 +259,4 @@ R"r_result <- jl_vector^2"
 - [ ] Docstrings on public API
 - [ ] Tests with ≥80% coverage
 - [ ] No type instabilities in hot loops
+- [ ] Parallelization optimized

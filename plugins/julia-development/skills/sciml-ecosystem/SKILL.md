@@ -38,6 +38,17 @@ Overview of Scientific Machine Learning packages in Julia.
 
 ---
 
+## Parallelization Support
+
+| Package | Features |
+|---------|----------|
+| **DifferentialEquations** | Ensemble parallelism (Threads, Distributed, GPU) |
+| **NeuralPDE** | GPU-accelerated training (Lux.jl integration) |
+| **SciMLSensitivity** | Parallel adjoint calculations |
+| **Optimization** | Parallel multi-start optimization |
+
+---
+
 ## Integration
 
 All packages integrate with DifferentialEquations.jl:

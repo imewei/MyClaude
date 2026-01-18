@@ -45,6 +45,17 @@ samples = rand(q, 1000)
 
 ---
 
+## Parallel VI Strategies
+
+| Strategy | Implementation | Use Case |
+|----------|----------------|----------|
+| **Data Subsampling** | Mini-batch ADVI | Large datasets (Stochastic VI) |
+| **Gradient Parallelism** | `Turing.setadbackend(:reversediff)` | Threaded gradient computation |
+| **GPU Acceleration** | `model |> gpu` | High-dimensional parameter spaces |
+| **Ensemble VI** | Parallel independent runs | Avoiding local optima |
+
+---
+
 ## When to Use VI
 
 - MCMC too slow

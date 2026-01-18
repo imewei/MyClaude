@@ -55,6 +55,12 @@ end
 | HTTP.jl | Lightweight, custom control |
 | Oxygen.jl | Minimal API framework |
 
+## Parallelization
+
+- **Async Handlers**: Use `@async` for non-blocking request handling.
+- **Multi-threading**: Start server with `julia -t auto` to utilize multiple threads.
+- **Worker Processes**: Use `Distributed` for CPU-intensive tasks to avoid blocking the event loop.
+
 ---
 
 ## Checklist

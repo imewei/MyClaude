@@ -57,6 +57,17 @@ autocorplot(chain[:parameter])
 
 ---
 
+## Parallel Diagnostics
+
+| Diagnostic | Parallel Strategy | Implementation |
+|------------|-------------------|----------------|
+| **Multi-Chain R-hat** | Compare between parallel chains | Standard `rhat(chain)` usage |
+| **ESS Scaling** | Sum ESS across chains | `ess(chain)` accounts for all chains |
+| **Cross-Chain Variance** | Analyze between-chain variance | `gelman_rubin` metric |
+| **Parallel Plotting** | Generate trace plots concurrently | Parallel plot generation scripts |
+
+---
+
 ## Checklist
 
 - [ ] R-hat < 1.01 for all parameters

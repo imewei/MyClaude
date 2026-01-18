@@ -74,6 +74,12 @@ tpl("MyPackage")
 - [ ] Documentation setup
 - [ ] LICENSE and README
 
+## Parallelization
+
+- Use `TestEnv.activate(); include("test/runtests.jl")` with `julia -t auto`
+- Configure CI with `julia-version: [...]` matrix for parallel testing
+- Use `Distributed` for parallel test execution where appropriate
+
 ---
 
 **Version**: 1.0.5
