@@ -37,12 +37,16 @@ def validate_integrity():
     print("\n--- Orphaned File Check ---")
     orphan_count = 0
     ignored_dirs = {'scripts', 'assets', 'references', 'docs', '.git'} # Common non-indexed dirs
+    ignored_files = {'engine.py', '__init__.py'} # Allowed helper scripts
 
     for root, dirs, files in os.walk(base_dir):
         # Skip ignored directories
         dirs[:] = [d for d in dirs if d not in ignored_dirs and not d.startswith('.')]
 
         for file in files:
+            if file in ignored_files:
+                continue
+
             if file.endswith('.md') or file.endswith('.py'):
                 file_path = os.path.abspath(os.path.join(root, file))
 
@@ -107,6 +111,10 @@ def validate_integrity():
                             # Code often looks like [index](arg)
                             if " " in target or "," in target or "(" in target:
                                 # Likely code, ignore
+                                continue
+
+                            # Ignore short variable-like targets typically found in code snippets (e.g. [-1](x))
+                            if len(target) <= 3 and "." not in target and "/" not in target:
                                 continue
 
                             print(f"[BROKEN] In {rel_file_path}: Link '{text}' -> '{target}' not found")
