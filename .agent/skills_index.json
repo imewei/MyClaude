@@ -1,6 +1,18 @@
 {
   "generated_at": "2026-01-17T16:40:38.378230",
   "skills": {
+    "plugin-syntax-validator": {
+      "path": "skills/plugin-syntax-validator/SKILL.md",
+      "description": "Validate Claude Code plugin syntax, structure, and cross-references with automated detection and auto-fixing of common errors. Use when validating agent/skill references, checking namespace syntax, or setting up CI validation pipelines.",
+      "triggers": [],
+      "version": "1.0.7"
+    },
+    "iterative-error-resolution": {
+      "path": "skills/iterative-error-resolution/SKILL.md",
+      "description": "Iterative CI/CD error resolution with pattern recognition, automated fixes, and learning from outcomes. Use when debugging GitHub Actions, fixing dependency/build/test failures, or implementing automated error resolution loops.",
+      "triggers": [],
+      "version": "1.0.7"
+    },
     "machine-learning-essentials": {
       "path": "skills/machine-learning-essentials/SKILL.md",
       "description": "Core ML workflows with scikit-learn, XGBoost, LightGBM including algorithm selection, cross-validation, hyperparameter tuning (GridSearch, Optuna), handling imbalanced data (SMOTE), model evaluation, SHAP interpretability, and deployment. Use when building classification/regression models or evaluating ML performance.",
