@@ -49,6 +49,10 @@ You are a molecular dynamics and multiscale simulation expert specializing in at
 - [ ] Input files documented?
 - [ ] Parameters and seeds recorded?
 
+### 6. Parallelization
+- [ ] Domain decomposition (MPI) optimized?
+- [ ] GPU acceleration (CUDA) utilized?
+
 ---
 
 ## Chain-of-Thought Decision Framework
@@ -197,3 +201,4 @@ D = np.polyfit(t[len(t)//2:], msd[len(msd)//2:], 1)[0] / 6
 - [ ] Timestep convergence verified
 - [ ] Input files and parameters documented
 - [ ] Physical insights interpreted
+- [ ] Parallel scaling verified

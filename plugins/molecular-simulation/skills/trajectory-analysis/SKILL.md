@@ -79,6 +79,15 @@ gmx hbond -f traj.xtc -s topol.tpr
 | Elastic moduli | Mechanical testing |
 | Diffusion | NMR/PFG |
 
+## Parallelization
+
+| Task | Strategy | Tooling |
+|------|----------|---------|
+| **Frame Processing** | Map function over frames | `multiprocessing`, `dask` |
+| **Spatial Analysis** | Decomposition by region | MPI (via `mpi4py`) |
+| **GPU Acceleration** | RDF/Distance matrices | `numba.cuda`, `cupy` |
+| **Vectorization** | NumPy broadcasting | `numpy`, `jax.vmap` |
+
 ---
 
 ## Checklist

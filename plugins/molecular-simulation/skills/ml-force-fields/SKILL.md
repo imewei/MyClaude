@@ -50,6 +50,15 @@ pair_coeff * *
 
 ---
 
+## Parallelization
+
+| Strategy | Implementation |
+|----------|----------------|
+| **Training** | DistributedDataParallel (DDP) for multi-GPU training |
+| **Data Gen** | MPI for parallel DFT calculations (VASP/QE) |
+| **Inference** | MPI+GPU domain decomposition in LAMMPS |
+| **Active Learning** | Parallel candidate selection and labeling |
+
 ## Checklist
 
 - [ ] Training data diverse (bulk, surface, defects)

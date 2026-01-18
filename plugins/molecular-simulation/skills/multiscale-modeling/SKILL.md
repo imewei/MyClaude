@@ -57,6 +57,15 @@ dpd.pair_coeff.set('A', 'A', A=25.0, gamma=4.5)
 | Concurrent | QM/MM boundary |
 | Adaptive | Resolution switching |
 
+## Parallelization Strategy
+
+| Method | Implementation |
+|--------|----------------|
+| **Domain Decomposition** | Spatial splitting (MPI) for massive systems |
+| **Replica Exchange** | Parallel simulations at different temperatures |
+| **Force Decomposition** | Distribute force calculation loops (OpenMP) |
+| **GPU Acceleration** | Offload non-bonded interactions (CUDA) |
+
 ---
 
 ## Checklist

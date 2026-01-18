@@ -60,6 +60,15 @@ gmx grompp -f md.mdp -o md.tpr && gmx mdrun -deffnm md -nb gpu
 | VDW cutoff | 1.0-1.4 nm |
 | Electrostatics | PME, cutoff 1.0-1.2 nm |
 
+## Parallelization Settings
+
+| Engine | Strategy | Command/Flag |
+|--------|----------|--------------|
+| **LAMMPS** | MPI + OpenMP | `mpirun -np 4 lmp_mpi -sf omp -pk omp 2` |
+| **GROMACS** | GPU Offload | `gmx mdrun -nb gpu -pme gpu -bonded gpu` |
+| **HOOMD** | Multi-GPU | `hoomd.communicator.Communicator(ranks=[...])` |
+| **OpenMM** | CUDA | `Platform.getPlatformByName('CUDA')` |
+
 ## Parallel
 
 | Engine | MPI | GPU |
