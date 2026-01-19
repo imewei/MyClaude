@@ -18,7 +18,7 @@ import jax.numpy as jnp
 import matplotlib.pyplot as plt
 import numpy as np
 
-from nlsq import curve_fit
+from nlsq import fit
 
 # Set random seed
 np.random.seed(42)
@@ -140,7 +140,7 @@ bounds = (
 )
 
 # Fit the model
-popt, pcov = curve_fit(
+popt, pcov = fit(
     logistic_growth,
     time,
     OD_measured,
@@ -148,6 +148,7 @@ popt, pcov = curve_fit(
     sigma=sigma,
     bounds=bounds,
     absolute_sigma=True,
+    workflow="auto",
 )
 
 N0_fit, K_fit, r_fit = popt
@@ -212,7 +213,7 @@ if np.sum(mask_exp) > 5:
     ln_OD = np.log(OD_measured[mask_exp])
     t_exp = time[mask_exp]
 
-    popt_exp, pcov_exp = curve_fit(linear_log, t_exp, ln_OD, p0=[np.log(0.1), 0.8])
+    popt_exp, pcov_exp = fit(linear_log, t_exp, ln_OD, p0=[np.log(0.1), 0.8], workflow="auto")
 
     ln_N0_exp, mu_exp = popt_exp
     N0_exp = np.exp(ln_N0_exp)

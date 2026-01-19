@@ -18,7 +18,7 @@ import jax.numpy as jnp
 import matplotlib.pyplot as plt
 import numpy as np
 
-from nlsq import curve_fit
+from nlsq import fit
 
 # Set random seed
 np.random.seed(42)
@@ -117,7 +117,7 @@ bounds = (
 )
 
 # Fit the model
-popt, pcov = curve_fit(
+popt, pcov = fit(
     four_parameter_logistic,
     dose,
     response_measured,
@@ -125,6 +125,7 @@ popt, pcov = curve_fit(
     sigma=sigma,
     bounds=bounds,
     absolute_sigma=True,
+    workflow="auto",
 )
 
 bottom_fit, top_fit, EC50_fit, hill_slope_fit = popt
@@ -221,13 +222,14 @@ noise_B = np.random.normal(0, 3.0, size=len(dose))
 response_B = response_B_true + noise_B
 
 # Fit Drug B
-popt_B, pcov_B = curve_fit(
+popt_B, pcov_B = fit(
     four_parameter_logistic,
     dose,
     response_B,
     p0=[0, 100, 5, 1.0],
     sigma=sigma,
     bounds=bounds,
+    workflow="auto",
 )
 
 bottom_B_fit, top_B_fit, EC50_B_fit, hill_slope_B_fit = popt_B

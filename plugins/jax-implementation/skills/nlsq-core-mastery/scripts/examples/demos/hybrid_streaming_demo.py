@@ -26,7 +26,7 @@ import jax
 import jax.numpy as jnp
 import numpy as np
 
-from nlsq import HybridStreamingConfig, curve_fit
+from nlsq import HybridStreamingConfig, fit
 from nlsq.parameter_normalizer import NormalizedModelWrapper, ParameterNormalizer
 
 
@@ -88,7 +88,7 @@ def main():
     print()
 
     start_time = time.time()
-    popt1, pcov1 = curve_fit(
+    popt1, pcov1 = fit(
         multi_scale_model,
         x_data,
         y_data,
@@ -96,6 +96,7 @@ def main():
         bounds=bounds,
         method="hybrid_streaming",
         verbose=1,
+        workflow="auto",  # Explicitly use workflow system
     )
     elapsed1 = time.time() - start_time
 
@@ -140,7 +141,7 @@ def main():
     config = HybridStreamingConfig.conservative()
 
     start_time = time.time()
-    popt2, pcov2 = curve_fit(
+    popt2, pcov2 = fit(
         multi_scale_model,
         x_data,
         y_data,
@@ -148,6 +149,7 @@ def main():
         bounds=bounds,
         method="hybrid_streaming",
         verbose=0,
+        workflow="auto",
     )
     elapsed2 = time.time() - start_time
 
@@ -193,7 +195,7 @@ def main():
     print()
 
     start_time = time.time()
-    popt3, pcov3 = curve_fit(
+    popt3, pcov3 = fit(
         multi_scale_model,
         x_data,
         y_data,
@@ -201,6 +203,7 @@ def main():
         bounds=bounds,
         method="hybrid_streaming",
         verbose=0,
+        workflow="auto",
     )
     elapsed3 = time.time() - start_time
 
@@ -294,7 +297,7 @@ def main():
     print("Fitting with TRF (no automatic normalization)...")
     start_time = time.time()
     try:
-        popt_trf, pcov_trf = curve_fit(
+        popt_trf, pcov_trf = fit(
             multi_scale_model,
             x_data,
             y_data,
@@ -302,6 +305,7 @@ def main():
             bounds=bounds,
             method="trf",
             verbose=0,
+            workflow="auto",
         )
         elapsed_trf = time.time() - start_time
         trf_success = True

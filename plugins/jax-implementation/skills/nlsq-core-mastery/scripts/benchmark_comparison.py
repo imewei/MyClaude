@@ -12,7 +12,7 @@ import time
 import numpy as np
 from scipy.optimize import curve_fit
 import jax.numpy as jnp
-from nlsq import CurveFit
+from nlsq import fit
 
 
 def exponential_decay_numpy(t, A, lambda_, c):
@@ -64,8 +64,8 @@ def benchmark_comparison(sizes=[1000, 10_000, 100_000, 1_000_000]):
         p0_jax = jnp.array(p0)
 
         start = time.time()
-        optimizer = CurveFit(exponential_decay_jax, t_jax, y_jax, p0_jax)
-        result = optimizer.fit()
+        # Use unified fit() with auto workflow
+        popt_nlsq, _ = fit(exponential_decay_jax, t_jax, y_jax, p0=p0_jax, workflow="auto")
         nlsq_time = time.time() - start
 
         # Calculate speedup
@@ -83,7 +83,7 @@ def benchmark_comparison(sizes=[1000, 10_000, 100_000, 1_000_000]):
         print(f"{n:10,d} | {scipy_time:10.3f} | {nlsq_time:10.3f} | {speedup:8.1f}x")
 
         # Verify parameters match
-        param_diff = np.linalg.norm(popt_scipy - np.array(result.x))
+        param_diff = np.linalg.norm(popt_scipy - np.array(popt_nlsq))
         if param_diff > 0.01:
             print(f"  ⚠️  WARNING: Parameter mismatch (diff={param_diff:.3f})")
 

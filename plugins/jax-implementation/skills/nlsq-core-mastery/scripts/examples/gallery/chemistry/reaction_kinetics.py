@@ -19,7 +19,7 @@ import jax.numpy as jnp
 import matplotlib.pyplot as plt
 import numpy as np
 
-from nlsq import curve_fit
+from nlsq import fit
 
 # Set random seed
 np.random.seed(42)
@@ -131,7 +131,7 @@ print("-" * 70)
 p0_1st = [0.9, 0.004]  # C0, k
 
 # Fit first-order model
-popt_1st, pcov_1st = curve_fit(
+popt_1st, pcov_1st = fit(
     first_order_decay,
     time,
     C_1st_measured,
@@ -139,6 +139,7 @@ popt_1st, pcov_1st = curve_fit(
     sigma=sigma_1st,
     absolute_sigma=True,
     bounds=([0, 0], [2, 0.1]),
+    workflow="auto",
 )
 
 C0_1st_fit, k_1st_fit = popt_1st
@@ -189,13 +190,14 @@ C_2nd_measured = C_2nd_true + noise_2nd
 sigma_2nd = np.asarray(0.02 * C_2nd_measured + 0.001)
 
 # Fit second-order model
-popt_2nd, pcov_2nd = curve_fit(
+popt_2nd, pcov_2nd = fit(
     second_order_decay,
     time,
     C_2nd_measured,
     p0=[0.9, 0.008],
     sigma=sigma_2nd,
     bounds=([0, 0], [2, 0.1]),
+    workflow="auto",
 )
 
 C0_2nd_fit, k_2nd_fit = popt_2nd
@@ -235,13 +237,14 @@ print("REACTION ORDER DETERMINATION")
 print("-" * 70)
 
 # Fit both models to first-order data and compare
-popt_2nd_on_1st, _ = curve_fit(
+popt_2nd_on_1st, _ = fit(
     second_order_decay,
     time,
     C_1st_measured,
     p0=[0.9, 0.008],
     sigma=sigma_1st,
     bounds=([0, 0], [2, 0.1]),
+    workflow="auto",
 )
 
 residuals_1st_model = C_1st_measured - first_order_decay(time, *popt_1st)
@@ -284,7 +287,7 @@ def linear_1st_order(t, ln_C0, k):
     return ln_C0 - k * t
 
 
-popt_ln, _ = curve_fit(linear_1st_order, time, ln_C_1st, p0=[0, 0.005])
+popt_ln, _ = fit(linear_1st_order, time, ln_C_1st, p0=[0, 0.005], workflow="auto")
 ln_C0_fit, k_ln_fit = popt_ln
 C0_from_ln = np.exp(ln_C0_fit)
 
@@ -301,7 +304,7 @@ def linear_2nd_order(t, inv_C0, k):
     return inv_C0 + k * t
 
 
-popt_inv, _ = curve_fit(linear_2nd_order, time, inv_C_2nd, p0=[1, 0.01])
+popt_inv, _ = fit(linear_2nd_order, time, inv_C_2nd, p0=[1, 0.01], workflow="auto")
 inv_C0_fit, k_inv_fit = popt_inv
 
 print("\nSecond-order linearization (1/[A] vs t):")

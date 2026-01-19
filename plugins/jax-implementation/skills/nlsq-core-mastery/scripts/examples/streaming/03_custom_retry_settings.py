@@ -16,7 +16,7 @@ Run this example:
 import jax.numpy as jnp
 import numpy as np
 
-from nlsq import StreamingConfig, StreamingOptimizer
+from nlsq import fit
 
 
 def noisy_exponential(x, a, b):
@@ -64,30 +64,22 @@ def main():
     print("PART 1: Standard Settings (min_success_rate=0.5)")
     print("=" * 70)
 
-    config_standard = StreamingConfig(
+    print("Starting optimization with standard settings...")
+
+    result1 = fit(
+        noisy_exponential,
+        x_data,
+        y_corrupted,
+        p0=p0,
+        workflow="hpc",
         batch_size=100,
         max_epochs=5,
         learning_rate=0.001,
         enable_fault_tolerance=True,
         validate_numerics=True,
-        min_success_rate=0.5,  # Require 50% success (standard)
-        max_retries_per_batch=2,  # Standard retry limit
-    )
-
-    print("Configuration:")
-    print(f"  Min success rate: {config_standard.min_success_rate:.0%}")
-    print(f"  Max retries per batch: {config_standard.max_retries_per_batch}")
-    print()
-
-    optimizer1 = StreamingOptimizer(config_standard)
-    p0 = np.array([1.0, 0.1])
-
-    print("Starting optimization with standard settings...")
-    result1 = optimizer1.fit(
-        (x_data, y_corrupted),
-        noisy_exponential,
-        p0,
-        verbose=0,  # Silent mode
+        min_success_rate=0.5,
+        max_retries_per_batch=2,
+        verbose=0,
     )
 
     diag1 = result1["streaming_diagnostics"]
@@ -104,28 +96,21 @@ def main():
     print("PART 2: Permissive Settings (min_success_rate=0.3)")
     print("=" * 70)
 
-    config_permissive = StreamingConfig(
+    print("Starting optimization with permissive settings...")
+
+    result2 = fit(
+        noisy_exponential,
+        x_data,
+        y_corrupted,
+        p0=p0,
+        workflow="hpc",
         batch_size=100,
         max_epochs=10,
         learning_rate=0.001,
         enable_fault_tolerance=True,
         validate_numerics=True,
-        min_success_rate=0.3,  # Allow 70% failures (very permissive)
-        max_retries_per_batch=2,  # Standard retry limit
-    )
-
-    print("Configuration:")
-    print(f"  Min success rate: {config_permissive.min_success_rate:.0%} (permissive)")
-    print(f"  Max retries per batch: {config_permissive.max_retries_per_batch}")
-    print()
-
-    optimizer2 = StreamingOptimizer(config_permissive)
-
-    print("Starting optimization with permissive settings...")
-    result2 = optimizer2.fit(
-        (x_data, y_corrupted),
-        noisy_exponential,
-        p0,
+        min_success_rate=0.3,  # Allow 70% failures
+        max_retries_per_batch=2,
         verbose=1,
     )
 

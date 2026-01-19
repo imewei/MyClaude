@@ -18,7 +18,7 @@ import json
 
 import numpy as np
 
-from nlsq import StreamingConfig, StreamingOptimizer
+from nlsq import fit
 
 
 def polynomial_model(x, a, b, c):
@@ -226,8 +226,15 @@ def main():
     print(f"True parameters: a={true_a}, b={true_b}, c={true_c}")
     print()
 
-    # Configure optimizer
-    config = StreamingConfig(
+    # Fit model
+    print("Running optimization...")
+
+    result = fit(
+        polynomial_model,
+        x_data,
+        y_data,
+        p0=p0,
+        workflow="hpc",
         batch_size=100,
         max_epochs=5,
         learning_rate=0.001,
@@ -235,18 +242,7 @@ def main():
         checkpoint_dir="checkpoints_diagnostics",
         checkpoint_frequency=10,
         enable_checkpoints=True,
-        batch_stats_buffer_size=100,  # Track last 100 batches
-    )
-
-    optimizer = StreamingOptimizer(config)
-    p0 = np.array([0.5, 1.0, -0.2])
-
-    # Fit model
-    print("Running optimization...")
-    result = optimizer.fit(
-        (x_data, y_data),
-        polynomial_model,
-        p0,
+        batch_stats_buffer_size=100,
         verbose=1,
     )
 

@@ -51,8 +51,14 @@ def example1_progress_bar():
     callback = ProgressBar(max_nfev=50, desc="Fitting exponential")
 
     # Fit with progress bar
-    popt, pcov = curve_fit(
-        exponential_decay, x, y, p0=[80, 0.4, 5], callback=callback, max_nfev=50
+    popt, pcov = fit(
+        exponential_decay,
+        x,
+        y,
+        p0=[80, 0.4, 5],
+        callback=callback,
+        max_nfev=50,
+        workflow="auto",
     )
 
     callback.close()
@@ -85,8 +91,14 @@ def example2_iteration_logging():
     )
 
     # Fit with logging
-    popt, pcov = curve_fit(
-        exponential_decay, x, y, p0=[80, 0.4, 5], callback=callback, max_nfev=50
+    popt, pcov = fit(
+        exponential_decay,
+        x,
+        y,
+        p0=[80, 0.4, 5],
+        callback=callback,
+        max_nfev=50,
+        workflow="auto",
     )
 
     callback.close()
@@ -123,13 +135,14 @@ def example3_early_stopping():
     )
 
     # Fit with early stopping
-    popt, pcov = curve_fit(
+    popt, pcov = fit(
         exponential_decay,
         x,
         y,
         p0=[80, 0.4, 5],
         callback=callback,
         max_nfev=1000,  # Set high, early stopping will prevent wasted iterations
+        workflow="auto",
     )
 
     print("\n✓ Early stopping completed!")
@@ -160,8 +173,14 @@ def example4_callback_chain():
     )
 
     # Fit with callback chain
-    popt, pcov = curve_fit(
-        exponential_decay, x, y, p0=[80, 0.4, 5], callback=callback, max_nfev=50
+    popt, pcov = fit(
+        exponential_decay,
+        x,
+        y,
+        p0=[80, 0.4, 5],
+        callback=callback,
+        max_nfev=50,
+        workflow="auto",
     )
 
     callback.close()
@@ -213,8 +232,14 @@ def example5_custom_callback():
     tracker = BestParameterTracker()
 
     # Fit with custom callback
-    popt, pcov = curve_fit(
-        exponential_decay, x, y, p0=[80, 0.4, 5], callback=tracker, max_nfev=50
+    popt, pcov = fit(
+        exponential_decay,
+        x,
+        y,
+        p0=[80, 0.4, 5],
+        callback=tracker,
+        max_nfev=50,
+        workflow="auto",
     )
 
     best_params, best_cost = tracker.get_best()
@@ -254,9 +279,9 @@ def main():
     print("  • CallbackChain: Combine multiple callbacks seamlessly")
     print("  • Custom Callbacks: Easy to extend by subclassing CallbackBase")
     print("\nUsage:")
-    print("  from nlsq import curve_fit")
+    print("  from nlsq import fit")
     print("  from nlsq.callbacks import ProgressBar")
-    print("  popt, pcov = curve_fit(f, x, y, callback=ProgressBar())")
+    print("  popt, pcov = fit(f, x, y, callback=ProgressBar())")
     print("=" * 70 + "\n")
 
 

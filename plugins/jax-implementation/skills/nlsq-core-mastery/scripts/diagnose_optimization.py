@@ -3,10 +3,16 @@
 Comprehensive diagnostics for NLSQ optimization results.
 
 Usage:
+    from nlsq import fit
     from diagnose_optimization import diagnose_result
 
+    # Note: diagnose_result requires the full result object
+    # Use standard CurveFit or StreamingOptimizer for full access
     result = optimizer.fit()
     diagnose_result(result)
+
+    # Or inspect tuple output from fit()
+    popt, pcov = fit(..., workflow="auto")
 
 Provides detailed convergence analysis, warnings, and recommendations.
 """
@@ -19,7 +25,7 @@ def diagnose_result(result, verbose=True):
     Comprehensive diagnostics for optimization result.
 
     Args:
-        result: OptimizeResult from NLSQ CurveFit or StreamingOptimizer
+        result: OptimizeResult from NLSQ
         verbose: If True, print detailed diagnostics
 
     Returns:

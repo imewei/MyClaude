@@ -18,7 +18,7 @@ import jax.numpy as jnp
 import matplotlib.pyplot as plt
 import numpy as np
 
-from nlsq import curve_fit
+from nlsq import fit
 
 # Set random seed
 np.random.seed(42)
@@ -173,13 +173,14 @@ print("ELASTIC REGION ANALYSIS")
 print("-" * 70)
 
 # Fit linear elastic model
-popt_elastic, pcov_elastic = curve_fit(
+popt_elastic, pcov_elastic = fit(
     linear_elastic,
     strain_measured[mask_fit_elastic],
     stress_measured[mask_fit_elastic],
     p0=[70],  # Initial guess for E (GPa)
     sigma=sigma_stress[mask_fit_elastic],
     absolute_sigma=True,
+    workflow="auto",
 )
 
 E_fit = popt_elastic[0]
@@ -242,7 +243,7 @@ if np.sum(mask_fit_plastic) > 10:
     def hollomon_model(eps, K, n):
         return K * jnp.power(eps + 1e-6, n)  # Add small offset to avoid log(0)
 
-    popt_plastic, pcov_plastic = curve_fit(
+    popt_plastic, pcov_plastic = fit(
         hollomon_model,
         strain_plastic_fit,
         stress_plastic_fit,
@@ -250,6 +251,7 @@ if np.sum(mask_fit_plastic) > 10:
         sigma=sigma_stress[mask_fit_plastic],
         bounds=([100, 0.01], [1000, 1.0]),
         absolute_sigma=True,
+        workflow="auto",
     )
 
     K_fit, n_fit = popt_plastic

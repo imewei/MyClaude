@@ -17,7 +17,7 @@ Key Concepts:
 import matplotlib.pyplot as plt
 import numpy as np
 
-from nlsq import curve_fit
+from nlsq import fit
 
 # Set random seed
 np.random.seed(42)
@@ -130,7 +130,7 @@ print("=" * 70)
 p0 = [120, 60]  # Vmax, Km
 
 # Fit the model
-popt, pcov = curve_fit(
+popt, pcov = fit(
     michaelis_menten,
     S,
     v_measured,
@@ -138,6 +138,7 @@ popt, pcov = curve_fit(
     sigma=sigma_v,
     absolute_sigma=True,
     bounds=([0, 0], [200, 500]),  # Physical bounds
+    workflow="auto",  # Use smart workflow selection
 )
 
 Vmax_fit, Km_fit = popt
@@ -206,13 +207,14 @@ def linear_lb(S_inv, slope, intercept):
 
 
 # Fit linear model
-popt_lb, pcov_lb = curve_fit(
+popt_lb, pcov_lb = fit(
     linear_lb,
     S_inv,
     v_inv,
     p0=[Km_fit / Vmax_fit, 1 / Vmax_fit],
     sigma=sigma_v_inv,
     absolute_sigma=True,
+    workflow="auto",
 )
 
 slope_lb, intercept_lb = popt_lb
@@ -246,13 +248,14 @@ def competitive_inh_fit(S, Vmax, Km, Ki):
     return competitive_inhibition(S, Vmax, Km, I_conc, Ki)
 
 
-popt_inh, pcov_inh = curve_fit(
+popt_inh, pcov_inh = fit(
     competitive_inh_fit,
     S,
     v_inhibited,
     p0=[100, 50, 30],
     sigma=sigma_v,
     bounds=([0, 0, 0], [200, 500, 200]),
+    workflow="auto",
 )
 
 Vmax_inh, Km_inh, Ki_fit = popt_inh

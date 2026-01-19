@@ -18,7 +18,7 @@ import jax.numpy as jnp
 import matplotlib.pyplot as plt
 import numpy as np
 
-from nlsq import curve_fit
+from nlsq import fit
 
 # Set random seed for reproducibility
 np.random.seed(42)
@@ -121,8 +121,14 @@ print("=" * 70)
 p0 = [1200, 0.0001]  # Rough estimate
 
 # Fit with weighted least squares (using measurement uncertainties)
-popt, pcov = curve_fit(
-    radioactive_decay, time, N_measured, p0=p0, sigma=sigma, absolute_sigma=True
+popt, pcov = fit(
+    radioactive_decay,
+    time,
+    N_measured,
+    p0=p0,
+    sigma=sigma,
+    absolute_sigma=True,
+    workflow="auto",
 )
 
 # Extract fitted parameters

@@ -1,49 +1,61 @@
 ---
 name: nlsq-core-mastery
-version: "2.1.0"
+version: "2.2.0"
 description: Master NLSQ library for high-performance curve fitting (150-270x faster than SciPy). Use when fitting >10K points, parameter estimation, robust optimization, streaming datasets (100M+ points), or migrating from SciPy.
+sources:
+  - https://github.com/imewei/NLSQ
+  - https://pypi.org/project/nlsq/
+  - https://nlsq.readthedocs.io/
 ---
 
 # NLSQ Core Mastery
 
-## API Selection
+## Workflow Selection (v0.6.6)
 
-| Dataset | API | Memory |
-|---------|-----|--------|
-| <1M | `CurveFit` | Low |
-| 1M-4M | `curve_fit_large()` | Managed |
-| 4M-100M | `LargeDatasetFitter` | Configurable |
-| >100M | `StreamingOptimizer` | Constant |
+| Workflow | Description | Memory Strategy | Use Case |
+|----------|-------------|-----------------|----------|
+| `auto` | **Default**. Local optimization | Auto-select | Standard fitting, known initial guess |
+| `auto_global` | Global optimization (multi-start) | Auto-select | Multi-modal, unknown initial guess |
+| `hpc` | Checkpointed global search | Streaming | Long-running HPC jobs |
 
 ## Standard Fitting
 
 ```python
-from nlsq import CurveFit
+from nlsq import fit
+import jax.numpy as jnp
+
 def model(x, params):
     A, lambda_, c = params
     return A * jnp.exp(-lambda_ * x) + c
 
-result = CurveFit(model=model, x=x, y=y, p0=jnp.array([5.0, 0.5, 1.0]),
-                  bounds=([0,0,0], [np.inf,np.inf,np.inf]),
-                  method='trf', loss='huber').fit()
+# workflow="auto" handles memory management automatically
+result = fit(model, x, y, p0=[5.0, 0.5, 1.0], workflow="auto")
 ```
 
-## Large Datasets
+## Global Optimization
 
 ```python
-from nlsq import curve_fit_large
-result = curve_fit_large(model, x_5M, y_5M, p0, bounds, loss='huber')
+# workflow="auto_global" enables multi-start optimization
+# Requires bounds for sampling space
+result = fit(
+    model, x, y,
+    p0=[5.0, 0.5, 1.0],
+    bounds=([0,0,0], [10, 5, 5]),
+    workflow="auto_global"
+)
 ```
 
-## Streaming (100M+)
+## Large Datasets (Streaming)
+
+The `workflow` parameter automatically selects streaming for large datasets (>100M points).
 
 ```python
-from nlsq import StreamingOptimizer, StreamingConfig
-config = StreamingConfig(batch_size=100_000, n_epochs=15, optimizer='adam')
-opt = StreamingOptimizer(model, p0, config=config)
-for epoch in range(15):
-    for x_batch, y_batch in data_gen:
-        opt.update(x_batch, y_batch)
+# workflow="hpc" ensures checkpoints and streaming
+result = fit(
+    model, x_100M, y_100M, p0, bounds,
+    workflow="hpc",
+    checkpoint_dir="/scratch/checkpoints"
+)
 ```
 
 ## Loss Selection

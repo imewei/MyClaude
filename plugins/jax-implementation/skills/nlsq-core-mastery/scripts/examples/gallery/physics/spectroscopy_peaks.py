@@ -18,7 +18,7 @@ import jax.numpy as jnp
 import matplotlib.pyplot as plt
 import numpy as np
 
-from nlsq import curve_fit
+from nlsq import fit
 
 # Set random seed
 np.random.seed(42)
@@ -212,7 +212,7 @@ bounds = (
 )
 
 # Fit with weighted least squares
-popt, pcov = curve_fit(
+popt, pcov = fit(
     multi_peak_model,
     energy,
     spectrum_measured,
@@ -220,6 +220,7 @@ popt, pcov = curve_fit(
     sigma=sigma,
     bounds=bounds,
     absolute_sigma=True,
+    workflow="auto",
 )
 
 # Extract fitted parameters

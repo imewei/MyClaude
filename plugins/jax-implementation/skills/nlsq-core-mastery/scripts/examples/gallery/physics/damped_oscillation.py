@@ -19,7 +19,7 @@ import jax.numpy as jnp
 import matplotlib.pyplot as plt
 import numpy as np
 
-from nlsq import curve_fit
+from nlsq import fit
 
 # Set random seed
 np.random.seed(42)
@@ -131,7 +131,7 @@ p0 = [14, 0.04, 3.0, 0.0]  # A0, gamma, omega, phi
 bounds = ([0, 0, 0, -np.pi], [20, 0.5, 10, np.pi])
 
 # Fit the model
-popt, pcov = curve_fit(
+popt, pcov = fit(
     damped_oscillator,
     time,
     displacement_measured,
@@ -139,6 +139,7 @@ popt, pcov = curve_fit(
     sigma=sigma,
     bounds=bounds,
     absolute_sigma=True,
+    workflow="auto",
 )
 
 # Extract fitted parameters

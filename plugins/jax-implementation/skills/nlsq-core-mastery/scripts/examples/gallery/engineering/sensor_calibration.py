@@ -19,7 +19,7 @@ import jax.numpy as jnp
 import matplotlib.pyplot as plt
 import numpy as np
 
-from nlsq import curve_fit
+from nlsq import fit
 
 # Set random seed
 np.random.seed(42)
@@ -116,13 +116,14 @@ def linear_model(V, a, b):
     return a * V + b
 
 
-popt_linear, pcov_linear = curve_fit(
+popt_linear, pcov_linear = fit(
     linear_model,
     voltage_measured,
     temp_reference,
     p0=[0.01, -20],
     sigma=sigma_temp,
     absolute_sigma=True,
+    workflow="auto",
 )
 
 a_lin, b_lin = popt_linear
@@ -146,13 +147,14 @@ def quadratic_model(V, c0, c1, c2):
     return c0 + c1 * V + c2 * V**2
 
 
-popt_quad, pcov_quad = curve_fit(
+popt_quad, pcov_quad = fit(
     quadratic_model,
     voltage_measured,
     temp_reference,
     p0=[-20, 0.01, -1e-6],
     sigma=sigma_temp,
     absolute_sigma=True,
+    workflow="auto",
 )
 
 c0, c1, c2 = popt_quad
@@ -175,13 +177,14 @@ def cubic_model(V, d0, d1, d2, d3):
     return d0 + d1 * V + d2 * V**2 + d3 * V**3
 
 
-popt_cubic, pcov_cubic = curve_fit(
+popt_cubic, pcov_cubic = fit(
     cubic_model,
     voltage_measured,
     temp_reference,
     p0=[-20, 0.01, -1e-6, 1e-10],
     sigma=sigma_temp,
     absolute_sigma=True,
+    workflow="auto",
 )
 
 d0, d1, d2, d3 = popt_cubic

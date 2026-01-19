@@ -26,7 +26,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 from jax import numpy as jnp
 
-from nlsq import curve_fit
+from nlsq import fit
 
 
 def monoprotic_titration(V, pKa, Ve, C_acid, C_base):
@@ -249,7 +249,7 @@ V_fit = V_titrant[mask_fit]
 pH_fit = pH_measured[mask_fit]
 sigma_fit = sigma_pH[mask_fit]
 
-popt, pcov = curve_fit(
+popt, pcov = fit(
     simplified_titration,
     V_fit,
     pH_fit,
@@ -257,6 +257,7 @@ popt, pcov = curve_fit(
     sigma=sigma_fit,
     bounds=(bounds_lower, bounds_upper),
     absolute_sigma=True,
+    workflow="auto",
 )
 
 pKa_fitted, Ve_fitted, pH0_fitted = popt
@@ -370,7 +371,7 @@ bounds_lower_di = [5.0, 9.0, 20.0, 45.0]
 bounds_upper_di = [7.0, 11.0, 30.0, 55.0]
 
 # Fit to data
-popt_di, pcov_di = curve_fit(
+popt_di, pcov_di = fit(
     diprotic_titration,
     V_di,
     pH_di_measured,
@@ -378,6 +379,7 @@ popt_di, pcov_di = curve_fit(
     sigma=sigma_pH_di,
     bounds=(bounds_lower_di, bounds_upper_di),
     absolute_sigma=True,
+    workflow="auto",
 )
 
 pKa1_fitted_di, pKa2_fitted_di, Ve1_fitted, Ve2_fitted = popt_di

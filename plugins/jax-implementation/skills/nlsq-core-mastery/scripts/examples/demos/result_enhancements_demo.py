@@ -8,7 +8,7 @@ to access statistical properties, confidence intervals, and visualization.
 import jax.numpy as jnp
 import numpy as np
 
-from nlsq import curve_fit
+from nlsq import fit
 
 # ============================================================================
 # Example 1: Basic Statistical Properties
@@ -32,7 +32,7 @@ def example1_statistical_properties():
     y = y_true + np.random.normal(0, 0.5, size=len(x))
 
     # Fit model
-    result = curve_fit(exponential, x, y, p0=[10, 0.5, 2])
+    result = fit(exponential, x, y, p0=[10, 0.5, 2], workflow="auto")
 
     # Access statistical properties
     print("\nFitted parameters:")
@@ -72,13 +72,13 @@ def example2_backward_compatibility():
     y = 2 * x + 1 + np.random.normal(0, 0.5, size=len(x))
 
     # Pattern 1: Traditional tuple unpacking (backward compatible)
-    popt, pcov = curve_fit(linear, x, y, p0=[1, 1])
+    popt, pcov = fit(linear, x, y, p0=[1, 1], workflow="auto")
     print("\nPattern 1 (tuple unpacking):")
     print(f"  popt = {popt}")
     print(f"  pcov shape = {pcov.shape}")
 
     # Pattern 2: Enhanced result object
-    result = curve_fit(linear, x, y, p0=[1, 1])
+    result = fit(linear, x, y, p0=[1, 1], workflow="auto")
     print("\nPattern 2 (enhanced result):")
     print(f"  result.popt = {result.popt}")
     print(f"  result.r_squared = {result.r_squared:.6f}")
@@ -111,7 +111,7 @@ def example3_confidence_intervals():
     y = 2 * x**1.5 + np.random.normal(0, 2, size=len(x))
 
     # Fit model
-    result = curve_fit(power_law, x, y, p0=[2, 1.5])
+    result = fit(power_law, x, y, p0=[2, 1.5], workflow="auto")
 
     # Get confidence intervals
     ci_95 = result.confidence_intervals(alpha=0.95)
@@ -148,7 +148,7 @@ def example4_prediction_intervals():
     y = 0.5 * x**2 - 2 * x + 1 + np.random.normal(0, 0.3, size=len(x))
 
     # Fit model
-    result = curve_fit(quadratic, x, y, p0=[1, -2, 1])
+    result = fit(quadratic, x, y, p0=[1, -2, 1], workflow="auto")
 
     # Get prediction intervals at fitted x values
     pi = result.prediction_interval()
@@ -207,7 +207,7 @@ def example5_visualization():
     )
 
     # Fit model
-    result = curve_fit(gaussian, x, y, p0=[10, 1, 1.5])
+    result = fit(gaussian, x, y, p0=[10, 1, 1.5], workflow="auto")
 
     # Plot with residuals
     print("\nGenerating plot with residuals...")
@@ -246,7 +246,7 @@ def example6_summary_report():
     y = y_true + np.random.normal(0, 0.5, size=len(x))
 
     # Fit model
-    result = curve_fit(exponential, x, y, p0=[10, 0.5, 2])
+    result = fit(exponential, x, y, p0=[10, 0.5, 2], workflow="auto")
 
     # Print summary
     print("\nGenerating statistical summary report...\n")
@@ -285,9 +285,9 @@ def example7_model_comparison():
         return a * x**2 + b * x + c
 
     # Fit all models
-    result_exp = curve_fit(exponential, x, y, p0=[10, 0.5, 2])
-    result_lin = curve_fit(linear, x, y, p0=[-1, 10])
-    result_quad = curve_fit(quadratic, x, y, p0=[0, -1, 10])
+    result_exp = fit(exponential, x, y, p0=[10, 0.5, 2], workflow="auto")
+    result_lin = fit(linear, x, y, p0=[-1, 10], workflow="auto")
+    result_quad = fit(quadratic, x, y, p0=[0, -1, 10], workflow="auto")
 
     # Compare models
     print("\nModel Comparison:")
@@ -335,7 +335,7 @@ def example8_residuals_predictions():
     y = 3 * np.sin(2 * np.pi * 2 * x + 0.5) + np.random.normal(0, 0.3, size=len(x))
 
     # Fit model
-    result = curve_fit(sine_wave, x, y, p0=[3, 2, 0.5])
+    result = fit(sine_wave, x, y, p0=[3, 2, 0.5], workflow="auto")
 
     # Access residuals
     residuals = result.residuals
@@ -398,10 +398,10 @@ def main():
     print("  • Backward compatible: Supports tuple unpacking")
     print("\nUsage:")
     print("  # Traditional usage (still works)")
-    print("  popt, pcov = curve_fit(f, x, y)")
+    print("  popt, pcov = fit(f, x, y, workflow='auto')")
     print()
     print("  # Enhanced usage")
-    print("  result = curve_fit(f, x, y)")
+    print("  result = fit(f, x, y, workflow='auto')")
     print("  print(f'R² = {result.r_squared:.4f}')")
     print("  result.plot()")
     print("  result.summary()")

@@ -1,34 +1,69 @@
-# Reference Documentation for Nlsq Core Mastery
+# API Reference: NLSQ v0.6.6
 
-This is a placeholder for detailed reference documentation.
-Replace with actual reference content or delete if not needed.
+## Core Function: `fit()`
 
-Example real reference docs from other skills:
-- product-management/references/communication.md - Comprehensive guide for status updates
-- product-management/references/context_building.md - Deep-dive on gathering context
-- bigquery/references/ - API references and query examples
+The unified entry point for all curve fitting tasks.
 
-## When Reference Docs Are Useful
+```python
+from nlsq import fit
 
-Reference docs are ideal for:
-- Comprehensive API documentation
-- Detailed workflow guides
-- Complex multi-step processes
-- Information too lengthy for main SKILL.md
-- Content that's only needed for specific use cases
+result = fit(
+    f: Callable,
+    xdata: ArrayLike,
+    ydata: ArrayLike,
+    p0: ArrayLike | None = None,
+    # ... standard arguments ...
+    workflow: str | None = None,  # PRIMARY CONFIGURATION
+    # ... advanced arguments ...
+)
+```
 
-## Structure Suggestions
+### Workflows
 
-### API Reference Example
-- Overview
-- Authentication
-- Endpoints with examples
-- Error codes
-- Rate limits
+| Workflow | Description | Backend | Use Case |
+|----------|-------------|---------|----------|
+| `auto` | **Default**. Local optimization. Auto-selects strategy based on memory. | `CurveFit` or `LargeDatasetFitter` | Standard fitting, known initial guess. |
+| `auto_global` | Global optimization with multi-start. | `MultiStartOrchestrator` | Multi-modal landscapes, unknown `p0`. Requires `bounds`. |
+| `hpc` | Robust streaming with checkpoints. | `StreamingOptimizer` | Long-running jobs, cluster environments. |
 
-### Workflow Guide Example
-- Prerequisites
-- Step-by-step instructions
-- Common patterns
-- Troubleshooting
-- Best practices
+### Parameters
+
+- **f**: Model function `f(x, *params)`. Must use `jax.numpy`.
+- **xdata**: Independent variable.
+- **ydata**: Dependent variable.
+- **p0**: Initial parameter guess. Optional if `workflow="auto_global"`.
+- **bounds**: Parameter bounds `([min...], [max...])`. Required for `auto_global`.
+- **workflow**: One of `"auto"`, `"auto_global"`, `"hpc"`.
+- **memory_limit_gb**: Max memory to use (for `auto` decisions).
+- **checkpoint_dir**: Directory for `hpc` workflow checkpoints.
+
+### Returns
+
+Returns a `CurveFitResult` object that behaves like a tuple `(popt, pcov)` but contains additional metadata.
+
+```python
+# Tuple unpacking (standard)
+popt, pcov = fit(...)
+
+# Object access (advanced)
+result = fit(...)
+print(result.popt)
+print(result.cost)
+print(result.message)
+```
+
+## Legacy API (Deprecated)
+
+- `curve_fit()`: Use `fit(workflow="auto")`
+- `curve_fit_large()`: Use `fit(workflow="auto")` with large data
+- `preset="fast"`, `preset="robust"`: Use `workflow` parameter
+
+## Configuration
+
+```python
+from nlsq import MemoryConfig, memory_context
+
+# Temporary memory limit
+with memory_context(MemoryConfig(memory_limit_gb=4.0)):
+    fit(...)
+```

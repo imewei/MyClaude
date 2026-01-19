@@ -17,7 +17,7 @@ Run this example:
 import jax.numpy as jnp
 import numpy as np
 
-from nlsq import StreamingConfig, StreamingOptimizer
+from nlsq import fit
 
 
 def exponential_decay(x, a, b):
@@ -43,48 +43,27 @@ def main():
     print(f"True parameters: a={true_a}, b={true_b}")
     print()
 
-    # Configure optimizer with fault tolerance (default)
-    config = StreamingConfig(
-        batch_size=100,
-        max_epochs=10,
-        learning_rate=0.001,
-        # Fault tolerance settings (all defaults)
-        enable_fault_tolerance=True,  # Enable fault tolerance features
-        validate_numerics=True,  # Check for NaN/Inf
-        min_success_rate=0.5,  # Require 50% batch success
-        max_retries_per_batch=2,  # Max 2 retry attempts
-        # Checkpoint settings
-        checkpoint_dir="checkpoints",
-        checkpoint_frequency=100,  # Save every 100 iterations
-        enable_checkpoints=True,
-    )
-
-    print("Configuration:")
-    print(f"  Batch size: {config.batch_size}")
-    print(f"  Max epochs: {config.max_epochs}")
-    print(f"  Learning rate: {config.learning_rate}")
-    print(f"  Fault tolerance: {config.enable_fault_tolerance}")
-    print(f"  Validate numerics: {config.validate_numerics}")
-    print(f"  Min success rate: {config.min_success_rate:.0%}")
-    print(f"  Max retries per batch: {config.max_retries_per_batch}")
-    print()
-
-    # Create optimizer
-    optimizer = StreamingOptimizer(config)
-
-    # Initial guess (deliberately poor to show convergence)
-    p0 = np.array([1.0, 0.1])
-    print(f"Initial guess: a={p0[0]}, b={p0[1]}")
-    print()
-
     # Fit with automatic error handling
     print("Starting optimization...")
     print("-" * 70)
-    result = optimizer.fit(
-        (x_data, y_data),  # Data as tuple
-        exponential_decay,  # Model function
-        p0,  # Initial parameters
-        verbose=1,  # Show progress
+
+    # workflow="hpc" enables streaming and fault tolerance features
+    result = fit(
+        exponential_decay,
+        x_data,
+        y_data,
+        p0=p0,
+        workflow="hpc",
+        batch_size=100,
+        max_epochs=10,
+        learning_rate=0.001,
+        enable_fault_tolerance=True,
+        validate_numerics=True,
+        min_success_rate=0.5,
+        max_retries_per_batch=2,
+        checkpoint_dir="checkpoints",
+        checkpoint_frequency=100,
+        verbose=1,
     )
     print("-" * 70)
     print()

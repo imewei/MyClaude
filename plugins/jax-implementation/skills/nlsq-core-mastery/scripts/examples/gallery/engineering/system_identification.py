@@ -19,7 +19,7 @@ import jax.numpy as jnp
 import matplotlib.pyplot as plt
 import numpy as np
 
-from nlsq import curve_fit
+from nlsq import fit
 
 # Set random seed
 np.random.seed(42)
@@ -132,7 +132,7 @@ p0 = [75, 12, 1.5]  # K, tau, t_delay
 bounds = ([0, 0.1, 0], [150, 50, 10])
 
 # Fit the model
-popt, pcov = curve_fit(
+popt, pcov = fit(
     first_order_step_response,
     time,
     output_measured,
@@ -140,6 +140,7 @@ popt, pcov = curve_fit(
     sigma=sigma,
     bounds=bounds,
     absolute_sigma=True,
+    workflow="auto",
 )
 
 # Extract fitted parameters
