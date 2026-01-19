@@ -115,7 +115,7 @@ uv pip freeze > requirements.txt
 | Package | Version |
 |---------|---------|
 | sphinx | 8.1.3 |
-| sphinx-rtd-theme | 3.1.0rc1 |
+| furo | 2024.8.6 |
 | sphinx-autobuild | 2025.8.25 |
 | sphinx-copybutton | 0.5.2 |
 | myst-parser | 4.0.1 |
@@ -139,7 +139,7 @@ This documentation uses sphinx-multiversion for versioned documentation support.
 
 ## Theme
 
-We use the Read the Docs theme (`sphinx_rtd_theme`). Theme options are configured in `conf.py`.
+We use the [Furo](https://pradyunsg.me/furo/) theme, which provides a clean, mobile-friendly design with dark mode support. Theme options are configured in `conf.py`.
 
 ## Extensions
 
@@ -166,14 +166,14 @@ make html
 
 If extensions fail to load, ensure all requirements are installed:
 ```bash
-uv pip install -r requirements.txt
+uv sync --group docs
 ```
 
 ### Sphinx Version Issues
 
 This project is tested with Sphinx 8.1.3. If you encounter issues with newer versions:
 ```bash
-uv pip install sphinx==8.1.3
+uv add "sphinx==8.1.3"
 ```
 
 ## Contributing
@@ -190,5 +190,5 @@ When adding new documentation:
 
 - [Sphinx Documentation](https://www.sphinx-doc.org/)
 - [RST Primer](https://www.sphinx-doc.org/en/master/usage/restructuredtext/basics.html)
-- [Read the Docs Theme](https://sphinx-rtd-theme.readthedocs.io/)
+- [Furo Theme Documentation](https://pradyunsg.me/furo/)
 - [uv Documentation](https://docs.astral.sh/uv/)

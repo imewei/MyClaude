@@ -38,17 +38,17 @@ Tools for validating plugin structure, metadata, and documentation:
 
    * - Tool
      - Purpose
-   * - ``metadata-validator.py``
+   * - ``metadata_validator.py``
      - Validates plugin.json against schema
-   * - ``doc-checker.py``
+   * - ``doc_checker.py``
      - Validates documentation completeness
-   * - ``skill-validator.py``
+   * - ``skill_validator.py``
      - Tests skill pattern matching accuracy
-   * - ``activation-tester.py``
+   * - ``activation_tester.py``
      - Tests plugin activation accuracy
-   * - ``xref-validator.py``
+   * - ``xref_validator.py``
      - Validates cross-plugin references
-   * - ``plugin-review-script.py``
+   * - ``plugin_review_script.py``
      - Comprehensive plugin review
 
 Performance Tools
@@ -62,13 +62,13 @@ Tools for profiling plugin performance:
 
    * - Tool
      - Purpose
-   * - ``load-profiler.py``
+   * - ``load_profiler.py``
      - Measures plugin load time (<100ms target)
-   * - ``activation-profiler.py``
+   * - ``activation_profiler.py``
      - Measures agent activation time (<50ms target)
-   * - ``memory-analyzer.py``
+   * - ``memory_analyzer.py``
      - Profiles memory consumption (<5MB target)
-   * - ``performance-reporter.py``
+   * - ``performance_reporter.py``
      - Aggregates performance metrics
 
 Analysis Tools
@@ -82,17 +82,17 @@ Tools for analyzing plugin relationships and patterns:
 
    * - Tool
      - Purpose
-   * - ``dependency-mapper.py``
+   * - ``dependency_mapper.py``
      - Maps cross-plugin dependencies
-   * - ``terminology-analyzer.py``
+   * - ``terminology_analyzer.py``
      - Analyzes terminology consistency
-   * - ``workflow-generator.py``
+   * - ``workflow_generator.py``
      - Generates integration workflows
-   * - ``command-analyzer.py``
+   * - ``command_analyzer.py``
      - Analyzes command relevance
-   * - ``triggering-reporter.py``
+   * - ``triggering_reporter.py``
      - Comprehensive triggering reports
-   * - ``test-corpus-generator.py``
+   * - ``test_corpus_generator.py``
      - Generates test samples
 
 Data Models
@@ -197,13 +197,13 @@ Running Validators
 .. code-block:: bash
 
    # Validate single plugin
-   python tools/metadata-validator.py plugins/julia-development
+   python tools/metadata_validator.py plugins/julia-development
 
    # Validate all plugins
-   python tools/metadata-validator.py --all
+   python tools/metadata_validator.py --all
 
    # Run comprehensive review
-   python tools/plugin-review-script.py julia-development
+   python tools/plugin_review_script.py julia-development
 
 Running Profilers
 ~~~~~~~~~~~~~~~~~
@@ -211,13 +211,13 @@ Running Profilers
 .. code-block:: bash
 
    # Profile load time
-   python tools/load-profiler.py julia-development
+   python tools/load_profiler.py julia-development
 
    # Profile activation time
-   python tools/activation-profiler.py --all
+   python tools/activation_profiler.py --all
 
    # Generate performance report
-   python tools/performance-reporter.py --all --export json results.json
+   python tools/performance_reporter.py --all --export json results.json
 
 See Also
 --------

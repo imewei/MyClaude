@@ -25,32 +25,32 @@ Quick Reference
    * - Tool
      - Purpose
      - Target Metric
-   * - ``activation-profiler.py``
+   * - ``activation_profiler.py``
      - Measure agent activation time
      - <50ms
-   * - ``load-profiler.py``
+   * - ``load_profiler.py``
      - Measure plugin load time
      - <100ms
-   * - ``memory-analyzer.py``
+   * - ``memory_analyzer.py``
      - Profile memory consumption
      - <5MB per plugin
-   * - ``metadata-validator.py``
+   * - ``metadata_validator.py``
      - Validate plugin.json schema
      - 100% compliance
-   * - ``skill-validator.py``
+   * - ``skill_validator.py``
      - Test skill pattern matching
      - <5% over-trigger rate
-   * - ``plugin-review-script.py``
+   * - ``plugin_review_script.py``
      - Comprehensive plugin validation
      - All checks pass
 
 Plugin Management
 -----------------
 
-enable-all-plugins.py
+enable_all_plugins.py
 ~~~~~~~~~~~~~~~~~~~~~
 
-**Location:** ``tools/enable-all-plugins.py``
+**Location:** ``tools/enable_all_plugins.py``
 
 Enable all 31 plugins from the scientific-computing-workflows marketplace in Claude Code.
 
@@ -58,7 +58,7 @@ Enable all 31 plugins from the scientific-computing-workflows marketplace in Cla
 
 .. code-block:: bash
 
-   python3 tools/enable-all-plugins.py
+   python3 tools/enable_all_plugins.py
 
 **Features:**
 
@@ -70,10 +70,10 @@ Enable all 31 plugins from the scientific-computing-workflows marketplace in Cla
 Validation Tools
 ----------------
 
-metadata-validator.py
+metadata_validator.py
 ~~~~~~~~~~~~~~~~~~~~~
 
-**Location:** ``tools/metadata-validator.py``
+**Location:** ``tools/metadata_validator.py``
 
 Validates plugin.json files against the marketplace schema.
 
@@ -81,8 +81,8 @@ Validates plugin.json files against the marketplace schema.
 
 .. code-block:: bash
 
-   python3 tools/metadata-validator.py <plugin-name>
-   python3 tools/metadata-validator.py --all
+   python3 tools/metadata_validator.py <plugin-name>
+   python3 tools/metadata_validator.py --all
 
 **Validations:**
 
@@ -92,10 +92,10 @@ Validates plugin.json files against the marketplace schema.
 - Status field values (active, deprecated, experimental)
 - Keyword format and uniqueness
 
-skill-validator.py
+skill_validator.py
 ~~~~~~~~~~~~~~~~~~
 
-**Location:** ``tools/skill-validator.py``
+**Location:** ``tools/skill_validator.py``
 
 Tests skill pattern matching and validates skill recommendations to check for over-triggering issues.
 
@@ -103,10 +103,10 @@ Tests skill pattern matching and validates skill recommendations to check for ov
 
 .. code-block:: bash
 
-   python3 tools/skill-validator.py
-   python3 tools/skill-validator.py --plugins-dir /path/to/plugins
-   python3 tools/skill-validator.py --corpus-dir /path/to/test-corpus
-   python3 tools/skill-validator.py --plugin julia-development
+   python3 tools/skill_validator.py
+   python3 tools/skill_validator.py --plugins-dir /path/to/plugins
+   python3 tools/skill_validator.py --corpus-dir /path/to/test-corpus
+   python3 tools/skill_validator.py --plugin julia-development
 
 **Metrics Generated:**
 
@@ -122,10 +122,10 @@ Tests skill pattern matching and validates skill recommendations to check for ov
 - ``SkillApplicationResult``: Result of skill application test
 - ``SkillValidationMetrics``: Aggregated validation metrics
 
-activation-tester.py
+activation_tester.py
 ~~~~~~~~~~~~~~~~~~~~
 
-**Location:** ``tools/activation-tester.py``
+**Location:** ``tools/activation_tester.py``
 
 Tests plugin activation accuracy against test corpus samples, measuring false positive and false negative rates.
 
@@ -133,9 +133,9 @@ Tests plugin activation accuracy against test corpus samples, measuring false po
 
 .. code-block:: bash
 
-   python3 tools/activation-tester.py
-   python3 tools/activation-tester.py --plugin julia-development
-   python3 tools/activation-tester.py --corpus-dir /path/to/test-corpus
+   python3 tools/activation_tester.py
+   python3 tools/activation_tester.py --plugin julia-development
+   python3 tools/activation_tester.py --corpus-dir /path/to/test-corpus
 
 **Metrics:**
 
@@ -144,10 +144,10 @@ Tests plugin activation accuracy against test corpus samples, measuring false po
 - False positive rate (target: <5%)
 - False negative rate (target: <5%)
 
-doc-checker.py
+doc_checker.py
 ~~~~~~~~~~~~~~
 
-**Location:** ``tools/doc-checker.py``
+**Location:** ``tools/doc_checker.py``
 
 Validates plugin documentation for completeness and formatting.
 
@@ -155,8 +155,8 @@ Validates plugin documentation for completeness and formatting.
 
 .. code-block:: bash
 
-   python3 tools/doc-checker.py <plugin-name>
-   python3 tools/doc-checker.py --all
+   python3 tools/doc_checker.py <plugin-name>
+   python3 tools/doc_checker.py --all
 
 **Validations:**
 
@@ -166,10 +166,10 @@ Validates plugin documentation for completeness and formatting.
 - Cross-reference accuracy
 - Link validation
 
-xref-validator.py
+xref_validator.py
 ~~~~~~~~~~~~~~~~~
 
-**Location:** ``tools/xref-validator.py``
+**Location:** ``tools/xref_validator.py``
 
 Validates cross-plugin references to identify broken links.
 
@@ -177,8 +177,8 @@ Validates cross-plugin references to identify broken links.
 
 .. code-block:: bash
 
-   python3 tools/xref-validator.py
-   python3 tools/xref-validator.py --plugins-dir /path/to/plugins
+   python3 tools/xref_validator.py
+   python3 tools/xref_validator.py --plugins-dir /path/to/plugins
 
 **Features:**
 
@@ -187,10 +187,10 @@ Validates cross-plugin references to identify broken links.
 - Identifies broken references
 - Generates validation reports
 
-plugin-review-script.py
+plugin_review_script.py
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-**Location:** ``tools/plugin-review-script.py``
+**Location:** ``tools/plugin_review_script.py``
 
 Comprehensive plugin validation combining multiple checks.
 
@@ -198,8 +198,8 @@ Comprehensive plugin validation combining multiple checks.
 
 .. code-block:: bash
 
-   python3 tools/plugin-review-script.py <plugin-name>
-   python3 tools/plugin-review-script.py --all
+   python3 tools/plugin_review_script.py <plugin-name>
+   python3 tools/plugin_review_script.py --all
 
 **Checks Performed:**
 
@@ -212,10 +212,10 @@ Comprehensive plugin validation combining multiple checks.
 Performance Profilers
 ---------------------
 
-activation-profiler.py
+activation_profiler.py
 ~~~~~~~~~~~~~~~~~~~~~~
 
-**Location:** ``tools/activation-profiler.py``
+**Location:** ``tools/activation_profiler.py``
 
 Measures agent activation performance to identify bottlenecks in triggering logic.
 
@@ -223,9 +223,9 @@ Measures agent activation performance to identify bottlenecks in triggering logi
 
 .. code-block:: bash
 
-   python3 tools/activation-profiler.py <plugin-name>
-   python3 tools/activation-profiler.py <plugin-name> /path/to/plugins
-   python3 tools/activation-profiler.py --all
+   python3 tools/activation_profiler.py <plugin-name>
+   python3 tools/activation_profiler.py <plugin-name> /path/to/plugins
+   python3 tools/activation_profiler.py --all
 
 **Target:** <50ms activation time
 
@@ -237,10 +237,10 @@ Measures agent activation performance to identify bottlenecks in triggering logi
 - Agent description parsing time
 - Context relevance scoring time
 
-load-profiler.py
+load_profiler.py
 ~~~~~~~~~~~~~~~~
 
-**Location:** ``tools/load-profiler.py``
+**Location:** ``tools/load_profiler.py``
 
 Measures plugin loading performance to identify bottlenecks and optimize initialization.
 
@@ -248,9 +248,9 @@ Measures plugin loading performance to identify bottlenecks and optimize initial
 
 .. code-block:: bash
 
-   python3 tools/load-profiler.py <plugin-name>
-   python3 tools/load-profiler.py <plugin-name> /path/to/plugins
-   python3 tools/load-profiler.py --all
+   python3 tools/load_profiler.py <plugin-name>
+   python3 tools/load_profiler.py <plugin-name> /path/to/plugins
+   python3 tools/load_profiler.py --all
 
 **Target:** <100ms load time per plugin
 
@@ -262,10 +262,10 @@ Measures plugin loading performance to identify bottlenecks and optimize initial
 - Skills directory scan time
 - README.md loading time
 
-memory-analyzer.py
+memory_analyzer.py
 ~~~~~~~~~~~~~~~~~~
 
-**Location:** ``tools/memory-analyzer.py``
+**Location:** ``tools/memory_analyzer.py``
 
 Measures plugin memory consumption to identify memory leaks and inefficiencies.
 
@@ -273,9 +273,9 @@ Measures plugin memory consumption to identify memory leaks and inefficiencies.
 
 .. code-block:: bash
 
-   python3 tools/memory-analyzer.py <plugin-name>
-   python3 tools/memory-analyzer.py <plugin-name> /path/to/plugins
-   python3 tools/memory-analyzer.py --all
+   python3 tools/memory_analyzer.py <plugin-name>
+   python3 tools/memory_analyzer.py <plugin-name> /path/to/plugins
+   python3 tools/memory_analyzer.py --all
 
 **Features:**
 
@@ -284,10 +284,10 @@ Measures plugin memory consumption to identify memory leaks and inefficiencies.
 - Identifies memory leaks
 - Profiles data structure efficiency
 
-performance-reporter.py
+performance_reporter.py
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-**Location:** ``tools/performance-reporter.py``
+**Location:** ``tools/performance_reporter.py``
 
 Aggregates performance metrics across all profiling tools and generates comprehensive reports.
 
@@ -295,11 +295,11 @@ Aggregates performance metrics across all profiling tools and generates comprehe
 
 .. code-block:: bash
 
-   python3 tools/performance-reporter.py <plugin-name>
-   python3 tools/performance-reporter.py --all
-   python3 tools/performance-reporter.py --compare before.json after.json
-   python3 tools/performance-reporter.py --export csv output.csv
-   python3 tools/performance-reporter.py --export json output.json
+   python3 tools/performance_reporter.py <plugin-name>
+   python3 tools/performance_reporter.py --all
+   python3 tools/performance_reporter.py --compare before.json after.json
+   python3 tools/performance_reporter.py --export csv output.csv
+   python3 tools/performance_reporter.py --export json output.json
 
 **Features:**
 
@@ -311,20 +311,20 @@ Aggregates performance metrics across all profiling tools and generates comprehe
 Analysis Tools
 --------------
 
-command-analyzer.py
+command_analyzer.py
 ~~~~~~~~~~~~~~~~~~~
 
-**Location:** ``tools/command-analyzer.py``
+**Location:** ``tools/command_analyzer.py``
 
-Analyzes command relevance in different contexts, validates suggestion timing, and evaluates priority ranking accuracy.
+Analyzes command suggestion relevance, timing, and priority ranking accuracy.
 
 **Usage:**
 
 .. code-block:: bash
 
-   python3 tools/command-analyzer.py
-   python3 tools/command-analyzer.py --plugin julia-development
-   python3 tools/command-analyzer.py --corpus-dir /path/to/test-corpus
+   python3 tools/command_analyzer.py
+   python3 tools/command_analyzer.py --plugin julia-development
+   python3 tools/command_analyzer.py --corpus-dir /path/to/test-corpus
 
 **Features:**
 
@@ -333,10 +333,10 @@ Analyzes command relevance in different contexts, validates suggestion timing, a
 - Priority ranking accuracy
 - Context-aware analysis
 
-dependency-mapper.py
+dependency_mapper.py
 ~~~~~~~~~~~~~~~~~~~~
 
-**Location:** ``tools/dependency-mapper.py``
+**Location:** ``tools/dependency_mapper.py``
 
 Analyzes cross-plugin relationships and generates dependency maps.
 
@@ -344,8 +344,8 @@ Analyzes cross-plugin relationships and generates dependency maps.
 
 .. code-block:: bash
 
-   python3 tools/dependency-mapper.py
-   python3 tools/dependency-mapper.py --output graph.json
+   python3 tools/dependency_mapper.py
+   python3 tools/dependency_mapper.py --output graph.json
 
 **Features:**
 
@@ -355,19 +355,19 @@ Analyzes cross-plugin relationships and generates dependency maps.
 - Identifies integration patterns
 - Generates visual and textual dependency maps
 
-terminology-analyzer.py
+terminology_analyzer.py
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-**Location:** ``tools/terminology-analyzer.py``
+**Location:** ``tools/terminology_analyzer.py``
 
-Analyzes terminology consistency across plugins to identify variations and suggest standardization.
+Analyzes terminology usage and consistency across all plugins.
 
 **Usage:**
 
 .. code-block:: bash
 
-   python3 tools/terminology-analyzer.py
-   python3 tools/terminology-analyzer.py --plugins-dir /path/to/plugins
+   python3 tools/terminology_analyzer.py
+   python3 tools/terminology_analyzer.py --plugins-dir /path/to/plugins
 
 **Features:**
 
@@ -376,10 +376,10 @@ Analyzes terminology consistency across plugins to identify variations and sugge
 - Maps synonyms and inconsistencies
 - Suggests standardization
 
-workflow-generator.py
+workflow_generator.py
 ~~~~~~~~~~~~~~~~~~~~~
 
-**Location:** ``tools/workflow-generator.py``
+**Location:** ``tools/workflow_generator.py``
 
 Creates integration workflow documentation for multi-plugin use cases.
 
@@ -387,8 +387,8 @@ Creates integration workflow documentation for multi-plugin use cases.
 
 .. code-block:: bash
 
-   python3 tools/workflow-generator.py
-   python3 tools/workflow-generator.py --output workflows.md
+   python3 tools/workflow_generator.py
+   python3 tools/workflow_generator.py --output workflows.md
 
 **Features:**
 
@@ -397,10 +397,10 @@ Creates integration workflow documentation for multi-plugin use cases.
 - Creates integration examples
 - Documents multi-plugin use cases
 
-triggering-reporter.py
+triggering_reporter.py
 ~~~~~~~~~~~~~~~~~~~~~~
 
-**Location:** ``tools/triggering-reporter.py``
+**Location:** ``tools/triggering_reporter.py``
 
 Aggregates triggering metrics across all validation tools.
 
@@ -408,8 +408,8 @@ Aggregates triggering metrics across all validation tools.
 
 .. code-block:: bash
 
-   python3 tools/triggering-reporter.py
-   python3 tools/triggering-reporter.py --export report.json
+   python3 tools/triggering_reporter.py
+   python3 tools/triggering_reporter.py --export report.json
 
 **Features:**
 
@@ -418,10 +418,10 @@ Aggregates triggering metrics across all validation tools.
 - Identifies plugins with high over-trigger rates
 - Tracks improvements over time
 
-test-corpus-generator.py
+test_corpus_generator.py
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-**Location:** ``tools/test-corpus-generator.py``
+**Location:** ``tools/test_corpus_generator.py``
 
 Generates diverse sample projects for testing plugin activation accuracy.
 
@@ -429,9 +429,9 @@ Generates diverse sample projects for testing plugin activation accuracy.
 
 .. code-block:: bash
 
-   python3 tools/test-corpus-generator.py
-   python3 tools/test-corpus-generator.py --output-dir custom-test-corpus
-   python3 tools/test-corpus-generator.py --categories scientific-computing development
+   python3 tools/test_corpus_generator.py
+   python3 tools/test_corpus_generator.py --output-dir custom-test-corpus
+   python3 tools/test_corpus_generator.py --categories scientific-computing development
 
 **Features:**
 

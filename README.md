@@ -176,7 +176,7 @@ cd MyClaude
 make plugin-enable-all
 
 # Or use the Python script directly
-python3 tools/enable-all-plugins.py
+python3 tools/enable_all_plugins.py
 ```
 
 **Note:** After installation, restart Claude Code for changes to take effect.
@@ -218,12 +218,12 @@ The marketplace includes 16 Python utilities for plugin management, validation, 
 
 | Tool | Purpose | Target |
 |------|---------|--------|
-| `activation-profiler.py` | Measure agent activation time | <50ms |
-| `load-profiler.py` | Measure plugin load time | <100ms |
-| `memory-analyzer.py` | Profile memory consumption | <5MB |
-| `metadata-validator.py` | Validate plugin.json schema | 100% |
-| `skill-validator.py` | Test skill pattern matching | <5% over-trigger |
-| `plugin-review-script.py` | Comprehensive validation | All pass |
+| `activation_profiler.py` | Measure agent activation time | <50ms |
+| `load_profiler.py` | Measure plugin load time | <100ms |
+| `memory_analyzer.py` | Profile memory consumption | <5MB |
+| `metadata_validator.py` | Validate plugin.json schema | 100% |
+| `skill_validator.py` | Test skill pattern matching | <5% over-trigger |
+| `plugin_review_script.py` | Comprehensive validation | All pass |
 
 See [Tools Reference](docs/tools-reference.rst) for complete documentation.
 
