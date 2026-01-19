@@ -17,7 +17,7 @@ import json
 import subprocess
 import sys
 from pathlib import Path
-from typing import Dict, List, Optional
+from typing import List, Optional
 from dataclasses import dataclass, asdict
 import shutil
 
@@ -314,7 +314,7 @@ class SecurityScanner:
         report.append("\n" + "="*80)
         report.append("SECURITY SCAN RESULTS")
         report.append("="*80)
-        report.append(f"\n📊 Summary:")
+        report.append("\n📊 Summary:")
         report.append(f"  🔴 Critical: {len(critical)}")
         report.append(f"  🟠 High:     {len(high)}")
         report.append(f"  🟡 Medium:   {len(medium)}")

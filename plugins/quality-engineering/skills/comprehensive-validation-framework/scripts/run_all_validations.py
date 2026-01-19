@@ -19,10 +19,11 @@ import json
 import subprocess
 import sys
 from pathlib import Path
-from typing import Dict, List, Tuple
+from typing import List
 import time
 import concurrent.futures
 from concurrent.futures import ThreadPoolExecutor
+from dataclasses import dataclass
 
 @dataclass
 class ValidationResult:
@@ -122,10 +123,10 @@ class ValidationOrchestrator:
             # Try ruff first, then flake8
             try:
                 return self.run_command(["ruff", "check", "."], "Ruff Lint Check")
-            except:
+            except Exception:
                 try:
                     return self.run_command(["flake8", "."], "Flake8 Check")
-                except:
+                except Exception:
                     pass
 
         elif project_type == "rust":
@@ -150,7 +151,7 @@ class ValidationOrchestrator:
         elif project_type == "python":
             try:
                 return self.run_command(["black", "--check", "."], "Black Format Check")
-            except:
+            except Exception:
                 pass
 
         elif project_type == "rust":
@@ -176,7 +177,7 @@ class ValidationOrchestrator:
             if (self.root_dir / "pyproject.toml").exists():
                 try:
                     return self.run_command(["mypy", "."], "MyPy Type Check")
-                except:
+                except Exception:
                     pass
 
         elif project_type == "rust":
@@ -204,10 +205,10 @@ class ValidationOrchestrator:
                     "Pytest with Coverage",
                     timeout=600
                 )
-            except:
+            except Exception:
                 try:
                     return self.run_command(["pytest"], "Pytest", timeout=600)
-                except:
+                except Exception:
                     pass
 
         elif project_type == "rust":

@@ -6,6 +6,7 @@ Usage:
     python lint_check.py [--fix]
 """
 
+import concurrent.futures
 import argparse
 import subprocess
 import sys
@@ -26,7 +27,6 @@ def run_command(cmd: list, check: bool = False) -> int:
         return e.returncode
 
 
-import concurrent.futures
 
 def run_js_checks(root, args):
     """Run JavaScript/TypeScript checks."""
@@ -35,7 +35,8 @@ def run_js_checks(root, args):
         print("📋 Checking JavaScript/TypeScript...")
         if (root / "node_modules" / ".bin" / "eslint").exists():
             cmd = ["npx", "eslint", "."]
-            if args.fix: cmd.append("--fix")
+            if args.fix:
+                cmd.append("--fix")
             exit_code |= run_command(cmd)
 
         if (root / "node_modules" / ".bin" / "prettier").exists():
@@ -50,7 +51,8 @@ def run_python_checks(root, args):
         print("📋 Checking Python...")
         try:
             cmd = ["ruff", "check", "."]
-            if args.fix: cmd.append("--fix")
+            if args.fix:
+                cmd.append("--fix")
             exit_code |= run_command(cmd)
 
             cmd = ["ruff", "format" if args.fix else "format --check", "."]

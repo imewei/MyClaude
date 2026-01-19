@@ -11,7 +11,6 @@ Usage:
 import argparse
 import subprocess
 import sys
-from pathlib import Path
 
 
 def check_with_pa11y(target: str, wcag_level: str = "AA"):
@@ -39,7 +38,7 @@ def check_with_pa11y(target: str, wcag_level: str = "AA"):
 
 def check_with_axe(target: str):
     """Run axe-core accessibility check."""
-    print(f"♿ Running axe-core accessibility check...")
+    print("♿ Running axe-core accessibility check...")
 
     # This requires axe-cli
     cmd = ["axe", target, "--verbose"]
