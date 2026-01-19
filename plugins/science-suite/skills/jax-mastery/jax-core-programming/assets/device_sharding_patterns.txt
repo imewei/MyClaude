@@ -1,0 +1,288 @@
+JAX Device Sharding Patterns
+============================
+
+1D DATA PARALLELISM (Most Common)
+----------------------------------
+
+Physical Layout (4 GPUs):
+┌──────────┬──────────┬──────────┬──────────┐
+│  GPU 0   │  GPU 1   │  GPU 2   │  GPU 3   │
+└──────────┴──────────┴──────────┴──────────┘
+
+Data Distribution:
+┌──────────────────────────────────────────────────┐
+│ Batch of 128 examples                            │
+│                                                  │
+│ [0:32]    [32:64]   [64:96]   [96:128]         │
+│   GPU0      GPU1      GPU2       GPU3           │
+└──────────────────────────────────────────────────┘
+
+Model Parameters (Replicated on each GPU):
+GPU 0: ████████████ Full Model
+GPU 1: ████████████ Full Model (copy)
+GPU 2: ████████████ Full Model (copy)
+GPU 3: ████████████ Full Model (copy)
+
+JAX Code:
+mesh = Mesh(devices, axis_names=('data',))
+data_sharding = NamedSharding(mesh, P('data'))
+x_sharded = jax.device_put(x, data_sharding)
+
+
+2D PARALLELISM (Data + Model)
+------------------------------
+
+Physical Layout (8 GPUs in 4x2 grid):
+                Model Axis →
+              ┌─────┬─────┐
+        ┌─────┤  0  │  1  │
+        │   0 ├─────┼─────┤
+   Data │     │  2  │  3  │
+   Axis ├─────┼─────┼─────┤
+    ↓   │   1 │  4  │  5  │
+        │     ├─────┼─────┤
+        └─────┤  6  │  7  │
+              └─────┴─────┘
+
+Data Distribution (4 data shards):
+Shard 0: GPUs 0,1
+Shard 1: GPUs 2,3
+Shard 2: GPUs 4,5
+Shard 3: GPUs 6,7
+
+Model Distribution (2 model shards):
+Shard A: GPUs 0,2,4,6
+Shard B: GPUs 1,3,5,7
+
+Example: 4096-dim input, 2048-dim hidden layer
+┌──────────────────────────────────────────┐
+│ Input: (batch=128, features=4096)        │
+│                                          │
+│ Data sharding: Split 128 → 32 per row   │
+│ No model sharding yet                    │
+└────────────┬─────────────────────────────┘
+             │
+             ▼
+┌──────────────────────────────────────────┐
+│ Weight: (4096, 2048)                     │
+│                                          │
+│ Model sharding: Split 2048 → 1024 cols  │
+│   GPU col 0: [:, :1024]                 │
+│   GPU col 1: [:, 1024:]                 │
+└────────────┬─────────────────────────────┘
+             │
+             ▼
+┌──────────────────────────────────────────┐
+│ Output: (batch=32, hidden=2048)          │
+│                                          │
+│ Sharded as (data=4, model=2)            │
+│ Each GPU has (32, 1024)                 │
+└──────────────────────────────────────────┘
+
+JAX Code:
+devices = mesh_utils.create_device_mesh((4, 2))
+mesh = Mesh(devices, axis_names=('data', 'model'))
+
+# Shard input along data dimension
+x_sharding = NamedSharding(mesh, P('data', None))
+
+# Shard weights along model dimension
+w_sharding = NamedSharding(mesh, P(None, 'model'))
+
+# Output sharded both ways
+output_sharding = NamedSharding(mesh, P('data', 'model'))
+
+
+TENSOR PARALLELISM (Large Models)
+----------------------------------
+
+For very large models that don't fit on one device:
+
+Layer N:  [GPU 0: Part 1] [GPU 1: Part 2] [GPU 2: Part 3]
+            ↓                 ↓                 ↓
+          Compute          Compute          Compute
+            ↓                 ↓                 ↓
+          [All-Gather: Combine results]
+            ↓
+Layer N+1: [GPU 0: Part 1] [GPU 1: Part 2] [GPU 2: Part 3]
+
+Example: 8B parameter Transformer
+┌─────────────────────────────────────────────┐
+│ Total parameters: 8B                         │
+│ GPUs available: 8 (80GB each)               │
+│ Per-GPU capacity: ~10B parameters (FP16)    │
+└────────────────┬────────────────────────────┘
+                 │
+                 ▼
+┌─────────────────────────────────────────────┐
+│ Shard model across 8 GPUs:                  │
+│   GPU 0: Layers  0-2  (1B params)           │
+│   GPU 1: Layers  3-5  (1B params)           │
+│   GPU 2: Layers  6-8  (1B params)           │
+│   GPU 3: Layers  9-11 (1B params)           │
+│   GPU 4: Layers 12-14 (1B params)           │
+│   GPU 5: Layers 15-17 (1B params)           │
+│   GPU 6: Layers 18-20 (1B params)           │
+│   GPU 7: Layers 21-23 (1B params)           │
+└─────────────────────────────────────────────┘
+
+
+PIPELINE PARALLELISM
+--------------------
+
+Stage 1 (GPU 0)  →  Stage 2 (GPU 1)  →  Stage 3 (GPU 2)
+                                              ↓
+Stage 6 (GPU 5)  ←  Stage 5 (GPU 4)  ←  Stage 4 (GPU 3)
+
+Micro-batches flowing through pipeline:
+Time 0: [Batch 0 on GPU 0]
+Time 1: [Batch 0 on GPU 1] [Batch 1 on GPU 0]
+Time 2: [Batch 0 on GPU 2] [Batch 1 on GPU 1] [Batch 2 on GPU 0]
+...
+
+Bubble: Time when GPUs are idle waiting for data
+Efficiency: (n_microbatches - n_stages + 1) / n_microbatches
+
+
+SHARDING STRATEGIES COMPARISON
+-------------------------------
+
+Strategy          | Use Case              | Communication | Memory per Device
+------------------|-----------------------|---------------|------------------
+None (Replicated) | Small models          | All-reduce    | Full model
+Data Parallel     | Standard training     | All-reduce    | Full model
+Model Parallel    | Very large models     | All-gather    | 1/N of model
+2D (Data+Model)   | Large-scale training  | Both          | 1/N of model
+Pipeline          | Giant models (GPT-3)  | Point-to-point| 1/N of model
+3D (D+M+P)        | Extreme scale (100B+) | All types     | 1/(D*M*P)
+
+
+COMMUNICATION PATTERNS
+----------------------
+
+All-Reduce (Data Parallelism):
+┌───┐ ┌───┐ ┌───┐ ┌───┐
+│ 1 │ │ 2 │ │ 3 │ │ 4 │  Local gradients
+└─┬─┘ └─┬─┘ └─┬─┘ └─┬─┘
+  │     │     │     │
+  └─────┴──┬──┴─────┘
+           │ Sum
+  ┌────────▼────────┐
+  │      10         │  Global sum
+  └────────┬────────┘
+           │ Broadcast
+  ┌────┴────┴────┴────┐
+  ▼    ▼    ▼    ▼
+┌───┐┌───┐┌───┐┌───┐
+│10 ││10 ││10 ││10 │  Synchronized
+└───┘└───┘└───┘└───┘
+
+All-Gather (Model Parallelism):
+┌───┐ ┌───┐ ┌───┐ ┌───┐
+│ A │ │ B │ │ C │ │ D │  Sharded data
+└─┬─┘ └─┬─┘ └─┬─┘ └─┬─┘
+  └─────┴──┬──┴─────┘
+           │ Gather
+  ┌────────▼────────┐
+  │    A B C D      │  Complete data
+  │    A B C D      │  Replicated on
+  │    A B C D      │  all devices
+  │    A B C D      │
+  └─────────────────┘
+
+Reduce-Scatter (Efficient Data Parallel):
+┌────┐ ┌────┐ ┌────┐ ┌────┐
+│1234│ │1234│ │1234│ │1234│  Local gradients
+└──┬─┘ └──┬─┘ └──┬─┘ └──┬─┘
+   └──────┴──┬───┴──────┘
+              │ Reduce + Scatter
+   ┌──────────┼──────────┐
+   ▼          ▼          ▼          ▼
+┌────┐    ┌────┐    ┌────┐    ┌────┐
+│ 4  │    │ 8  │    │ 12 │    │ 16 │  Sharded results
+└────┘    └────┘    └────┘    └────┘
+
+
+SHARDING BEST PRACTICES
+------------------------
+
+1. Choose Strategy Based on Model Size:
+   Model < GPU memory:     Data Parallel
+   Model 2-8x GPU memory:  Model Parallel (1D)
+   Model 8-64x GPU:        2D Parallel
+   Model > 64x GPU:        3D Parallel + Pipeline
+
+2. Optimize Communication:
+   ✓ Minimize cross-device transfers
+   ✓ Overlap communication with computation
+   ✓ Use gradient accumulation to reduce frequency
+   ✓ Prefer reduce-scatter over all-reduce when possible
+
+3. Memory Planning:
+   Total Memory = Model + Activations + Gradients + Optimizer States
+
+   Example (1B param model):
+   - Model: 2GB (FP16)
+   - Activations: 4GB (batch 32)
+   - Gradients: 2GB
+   - Optimizer (AdamW): 4GB (2x for momentum)
+   Total: 12GB per GPU
+
+4. Performance Tuning:
+   ✓ Profile communication overhead
+   ✓ Measure per-device utilization
+   ✓ Check for load imbalance
+   ✓ Monitor network bandwidth usage
+
+
+PRACTICAL EXAMPLES
+-------------------
+
+Example 1: Training ResNet-50 on ImageNet
+- Model size: 25M params = 100MB (FP32)
+- Strategy: Data Parallel (8 GPUs)
+- Batch size: 256 (32 per GPU)
+- Communication: All-reduce gradients after each step
+
+Example 2: Training GPT-2 (1.5B params)
+- Model size: 1.5B params = 6GB (FP16)
+- Strategy: Model Parallel (4 GPUs)
+- Batch size: 64 (16 per GPU)
+- Communication: All-gather activations between layers
+
+Example 3: Training GPT-3 (175B params)
+- Model size: 175B params = 350GB (FP16)
+- Strategy: 3D Parallel
+  * Data: 64 nodes
+  * Model: 8-way tensor parallel
+  * Pipeline: 16 stages
+- Batch size: 1536
+- Micro-batch: 1 (pipeline)
+
+
+DEBUGGING SHARDING
+------------------
+
+Check Sharding:
+>>> x_sharded.sharding
+NamedSharding(mesh=Mesh(shape=(4, 2)), spec=PartitionSpec('data', 'model'))
+
+Visualize Sharding:
+>>> jax.debug.visualize_array_sharding(x_sharded)
+┌───┬───┐
+│ 0 │ 1 │
+├───┼───┤
+│ 2 │ 3 │
+├───┼───┤
+│ 4 │ 5 │
+├───┼───┤
+│ 6 │ 7 │
+└───┴───┘
+
+Check Device Placement:
+>>> x_sharded.devices()
+{cuda(id=0), cuda(id=1), cuda(id=2), cuda(id=3), ...}
+
+Inspect Shards:
+>>> for shard in x_sharded.addressable_shards:
+...     print(f"Device: {shard.device}, Shape: {shard.data.shape}")

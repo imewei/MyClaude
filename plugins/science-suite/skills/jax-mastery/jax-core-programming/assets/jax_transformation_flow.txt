@@ -1,0 +1,136 @@
+JAX Transformation Flow - Visual Reference
+==========================================
+
+BASIC TRANSFORMATION STACK
+---------------------------
+
+┌─────────────────────────────────────────────────────────────┐
+│                    User Function f(x)                        │
+│                                                               │
+│  def f(x):                                                   │
+│      return x ** 2 + jnp.sin(x)                             │
+└──────────────────────┬──────────────────────────────────────┘
+                       │ Apply transformations
+                       ▼
+┌─────────────────────────────────────────────────────────────┐
+│              LEVEL 1: Automatic Differentiation             │
+│                     grad(f) or jax.grad(f)                   │
+│                                                               │
+│  Returns: Function computing ∂f/∂x                           │
+│  Speedup: N/A (different operation)                          │
+│  Use case: Computing gradients for optimization             │
+└──────────────────────┬──────────────────────────────────────┘
+                       │
+                       ▼
+┌─────────────────────────────────────────────────────────────┐
+│              LEVEL 2: Vectorization                          │
+│                     vmap(grad(f))                             │
+│                                                               │
+│  Returns: Function computing gradients over batch            │
+│  Speedup: 2-10x vs Python loop                              │
+│  Use case: Batch gradient computation                        │
+└──────────────────────┬──────────────────────────────────────┘
+                       │
+                       ▼
+┌─────────────────────────────────────────────────────────────┐
+│              LEVEL 3: JIT Compilation                        │
+│                   jit(vmap(grad(f)))                         │
+│                                                               │
+│  Returns: Compiled function to XLA machine code              │
+│  Speedup: 10-100x vs eager execution                        │
+│  Use case: Production training loops                         │
+└──────────────────────┬──────────────────────────────────────┘
+                       │
+                       ▼
+┌─────────────────────────────────────────────────────────────┐
+│              LEVEL 4: Multi-Device Parallelism               │
+│                   shard(jit(vmap(grad(f))))                  │
+│                                                               │
+│  Returns: Function distributed across devices                │
+│  Speedup: N x speedup (N = number of devices)               │
+│  Use case: Large-scale distributed training                  │
+└─────────────────────────────────────────────────────────────┘
+
+
+PERFORMANCE PROGRESSION
+-----------------------
+
+Baseline (Python loop):                    ████████████████████████████████████████ 1000ms
+
+After vmap:                               ████████ 200ms (5x faster)
+
+After jit + vmap:                         ██ 40ms (25x faster)
+
+After multi-device (8 GPUs):              ▌ 5ms (200x faster)
+
+
+COMPOSITION PATTERNS
+--------------------
+
+Pattern 1: Forward + Backward
+┌──────────┐
+│ jit(fn)  │ ──► Forward pass (10-100x faster)
+└──────────┘
+
+┌─────────────────┐
+│ jit(grad(fn))   │ ──► Backward pass (10-100x faster)
+└─────────────────┘
+
+Pattern 2: Batched Gradients
+┌───────────────────────┐
+│ jit(vmap(grad(fn)))   │ ──► Per-example gradients (100-1000x faster)
+└───────────────────────┘
+
+Pattern 3: Full Training Step
+┌────────────────────────────────────────┐
+│ @jit                                    │
+│ def train_step(params, batch):         │
+│     loss, grads = value_and_grad(      │
+│         vmap(loss_fn)                  │
+│     )(params, batch)                    │
+│     return update(params, grads)       │
+└────────────────────────────────────────┘
+
+
+TRANSFORMATION ORDER MATTERS
+----------------------------
+
+✓ GOOD: jit(vmap(fn))
+   Compile the vectorized code once
+   ┌─────────────┐
+   │   Compile   │
+   │      ▼      │
+   │  Vectorize  │
+   │      ▼      │
+   │   Execute   │
+   └─────────────┘
+
+✗ BAD: vmap(jit(fn))
+   Compile each vector element separately
+   ┌─────────────┐
+   │  Vectorize  │
+   │      ▼      │
+   │   Compile   │ ◄── Compiled N times!
+   │      ▼      │
+   │   Execute   │
+   └─────────────┘
+
+
+COMMON PITFALLS
+---------------
+
+Pitfall 1: Python Control Flow in JIT
+  ✗ if x.sum() > 0:  # Tracer error!
+  ✓ jax.lax.cond(x.sum() > 0, true_fn, false_fn)
+
+Pitfall 2: Dynamic Shapes
+  ✗ jnp.concatenate([x] * n)  # Recompiles for each n
+  ✓ Use static_argnums or padding
+
+Pitfall 3: In-place Mutations
+  ✗ x[0] = 1  # Not allowed
+  ✓ x = x.at[0].set(1)
+
+Pitfall 4: Global State
+  ✗ global_rng_key  # Side effects break JAX
+  ✓ Explicit key passing and splitting
