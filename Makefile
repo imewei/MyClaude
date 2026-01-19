@@ -86,17 +86,20 @@ docs-linkcheck: ## Check documentation for broken links
 
 install: ## Install the marketplace and dependencies
 	@echo "Installing marketplace..."
-	@if [ -f "requirements.txt" ]; then \
+	@if command -v uv >/dev/null 2>&1; then \
+		uv sync --group docs; \
+	elif [ -f "requirements.txt" ]; then \
 		pip install -r requirements.txt; \
-	fi
-	@if [ -f "docs/requirements.txt" ]; then \
-		pip install -r docs/requirements.txt; \
 	fi
 	@echo "✓ Installation complete"
 
 dev-install: install ## Install development dependencies
 	@echo "Installing development dependencies..."
-	@pip install sphinx-autobuild pytest pytest-cov ruff mypy black
+	@if command -v uv >/dev/null 2>&1; then \
+		uv sync --group dev; \
+	else \
+		pip install sphinx-autobuild pytest pytest-cov ruff mypy black; \
+	fi
 	@echo "✓ Development environment ready"
 
 ##@ Quality
@@ -125,8 +128,8 @@ format: ## Format Python code with black and ruff
 
 validate: ## Validate plugin metadata and configuration
 	@echo "Validating plugins..."
-	@if [ -f "tools/metadata-validator.py" ]; then \
-		python tools/metadata-validator.py; \
+	@if [ -f "tools/validation/metadata_validator.py" ]; then \
+		python tools/validation/metadata_validator.py; \
 	fi
 	@echo "✓ Validation complete"
 
@@ -194,7 +197,7 @@ plugin-list: ## List all plugins with their versions
 
 plugin-enable-all: ## Enable all plugins in Claude Code (requires restart)
 	@echo "Enabling all plugins in Claude Code..."
-	@python3 tools/enable-all-plugins.py
+	@python3 tools/maintenance/enable_all_plugins.py
 
 ##@ Information
 
