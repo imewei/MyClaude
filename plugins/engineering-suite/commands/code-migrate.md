@@ -2,7 +2,7 @@
 version: "2.1.0"
 description: Orchestrate systematic code migration between frameworks with test-first discipline
 argument-hint: <source-path> [--target <framework>] [--strategy <pattern>] [--mode quick|standard|deep]
-category: framework-migration
+category: engineering-suite
 execution_time:
   quick: "30-60m: Assessment + strategy"
   standard: "2-6h: Complete component migration"

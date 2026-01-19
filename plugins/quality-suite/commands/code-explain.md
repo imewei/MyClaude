@@ -1,6 +1,6 @@
 ---
 version: "2.1.0"
-category: code-documentation
+category: quality-suite
 command: /code-explain
 description: Detailed code explanation with visual aids and domain expertise
 argument-hint: <code-path-or-snippet>

@@ -1,6 +1,6 @@
 ---
 version: "2.1.0"
-category: code-documentation
+category: quality-suite
 command: /doc-generate
 description: Generate comprehensive documentation from code with AI-powered analysis
 argument-hint: "[--api] [--readme] [--sphinx] [--full]"

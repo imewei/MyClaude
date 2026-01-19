@@ -6,9 +6,9 @@ argument-hint: [--mode=basic|enhanced|enterprise]
 color: green
 agents:
   primary:
-    - code-reviewer
+    - quality-specialist
   conditional:
-    - agent: security-auditor
+    - agent: quality-specialist
       trigger: pattern "security|auth|credentials"
   orchestrated: false
 ---

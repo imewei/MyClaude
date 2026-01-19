@@ -1,6 +1,6 @@
 ---
 version: "2.1.0"
-category: "code-documentation"
+category: "quality-suite"
 command: "/update-claudemd"
 description: Automatically update CLAUDE.md file based on recent code changes
 allowed-tools: Bash(git diff:*), Bash(git log:*), Bash(git status:*), Bash(find:*), Bash(grep:*), Bash(wc:*), Bash(ls:*)
@@ -14,7 +14,7 @@ agents:
   primary:
     - research-intelligence
   conditional:
-    - agent: systems-architect
+    - agent: software-architect
       trigger: pattern "architecture|structure" OR files > 50
   orchestrated: false
 ---

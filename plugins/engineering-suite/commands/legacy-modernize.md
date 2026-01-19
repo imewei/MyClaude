@@ -2,7 +2,7 @@
 version: "2.1.0"
 description: Comprehensive legacy system modernization using Strangler Fig pattern with multi-agent orchestration
 argument-hint: <legacy-system-path> [--strategy strangler-fig|big-bang|branch-by-abstraction] [--mode quick|standard|deep]
-category: framework-migration
+category: engineering-suite
 execution_time:
   quick: "1-2h: Assessment + quick wins"
   standard: "1-2w: Single component modernization"

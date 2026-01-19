@@ -6,8 +6,8 @@ argument-hint: <target-path> [--mode=scan|analyze|apply] [--agents=AGENTS] [--fo
 color: magenta
 agents:
   primary:
-    - multi-agent-orchestrator
-    - systems-architect
+    - orchestrator
+    - software-architect
   conditional:
     - agent: hpc-numerical-coordinator
       trigger: pattern "numpy|scipy|pandas|numerical|simulation"
@@ -70,7 +70,7 @@ Quick Wins (High Impact, Low Effort):
    → Expected: 20x speedup | Effort: 15 min | Confidence: 90%
 
 Available Agents: 4/8
-✅ multi-agent-orchestrator, systems-architect, hpc-numerical-coordinator
+✅ orchestrator, software-architect, hpc-numerical-coordinator
 ⚠️ jax-pro unavailable (install jax-implementation for GPU optimizations)
 ```
 
@@ -91,7 +91,7 @@ Available Agents: 4/8
 
 ```
 Parallel Execution:
-├─ systems-architect     ███████░░ 80%
+├─ software-architect     ███████░░ 80%
 ├─ hpc-numerical         █████████░ 90%
 └─ jax-pro               ████████░░ 75%
 

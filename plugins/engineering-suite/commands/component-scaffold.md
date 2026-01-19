@@ -12,8 +12,8 @@ external_docs:
   - storybook-integration.md
 agents:
   primary:
-    - frontend-mobile-development:frontend-developer
-    - frontend-mobile-development:mobile-developer
+    - engineering-suite:app-developer
+    - engineering-suite:app-developer
   conditional: []
 allowed-tools: [Write, Read, Task, Bash(uv:*)]
 ---
@@ -40,7 +40,7 @@ $ARGUMENTS
 
 ## Phase 1: Requirements Analysis
 
-**Agent:** frontend-developer or mobile-developer
+**Agent:** app-developer or app-developer
 
 ### Determine Component Characteristics
 
@@ -94,7 +94,7 @@ $ARGUMENTS
 
 ## Phase 4: Testing & Documentation (Deep Mode)
 
-**Agents:** frontend-developer, test-automator
+**Agents:** app-developer, quality-specialist
 
 ### Generate Tests (if `--tests`)
 - React Testing Library tests
@@ -128,8 +128,8 @@ npm run lint              # Lint check
 
 | Platform | Agent |
 |----------|-------|
-| native or universal | mobile-developer |
-| web (default) | frontend-developer |
+| native or universal | app-developer |
+| web (default) | app-developer |
 
 
 ## Examples

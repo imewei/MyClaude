@@ -1,6 +1,6 @@
 ---
 version: "2.1.0"
-category: "llm-application-dev"
+category: "agent-core"
 command: "/prompt-optimize"
 description: Optimize prompts for better LLM performance through CoT, few-shot learning, and constitutional AI
 allowed-tools: Bash(find:*), Bash(git:*)
@@ -11,7 +11,7 @@ execution_modes:
   comprehensive: "30-45 minutes"
 agents:
   primary:
-    - prompt-engineer
+    - reasoning-engine
   conditional:
     - agent: ai-engineer
       trigger: pattern "code.*generation|implementation.*example"

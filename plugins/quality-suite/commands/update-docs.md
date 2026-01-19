@@ -1,6 +1,6 @@
 ---
 version: "2.1.0"
-category: code-documentation
+category: quality-suite
 command: /update-docs
 description: Update Sphinx docs, README, API documentation with AST-based code analysis
 argument-hint: "[--full] [--sphinx] [--readme] [--api] [--format=<type>]"

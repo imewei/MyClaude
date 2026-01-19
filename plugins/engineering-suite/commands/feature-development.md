@@ -1,7 +1,7 @@
 ---
 version: "2.1.0"
 description: Orchestrate end-to-end feature development with customizable methodologies (TDD, BDD, DDD) and deployment strategies
-category: "backend-development"
+category: "engineering-suite"
 command: "/feature-development"
 
 execution-modes:
@@ -10,28 +10,28 @@ execution-modes:
   enterprise: "2-4w: All steps + compliance, legal, multi-region"
 
 documentation:
-  detailed-guides: "../docs/backend-development/methodology-guides.md"
-  phase-templates: "../docs/backend-development/phase-templates.md"
-  agent-patterns: "../docs/backend-development/agent-orchestration.md"
-  deployment: "../docs/backend-development/deployment-strategies.md"
-  best-practices: "../docs/backend-development/best-practices.md"
-  metrics: "../docs/backend-development/success-metrics.md"
+  detailed-guides: "../docs/engineering-suite/methodology-guides.md"
+  phase-templates: "../docs/engineering-suite/phase-templates.md"
+  agent-patterns: "../docs/engineering-suite/agent-core.md"
+  deployment: "../docs/engineering-suite/deployment-strategies.md"
+  best-practices: "../docs/engineering-suite/best-practices.md"
+  metrics: "../docs/engineering-suite/success-metrics.md"
 ---
 
 Orchestrate end-to-end feature development: $ARGUMENTS
 
 | Phase | Step | Agent Type | Primary Role |
 |-------|------|------------|--------------|
-| 1 | 2 | comprehensive-review:architect-review | Technical architecture design |
-| 1 | 3 | comprehensive-review:security-auditor | Security & risk assessment |
-| 2 | 4 | backend-development:backend-architect | Backend services implementation |
-| 2 | 5 | frontend-mobile-development:frontend-developer | Frontend UI implementation |
-| 3 | 7 | unit-testing:test-automator | Test suite creation |
-| 3 | 8 | comprehensive-review:security-auditor | Security validation |
-| 3 | 9 | full-stack-orchestration:performance-engineer | Performance optimization |
-| 4 | 10 | cicd-automation:deployment-engineer | CI/CD pipeline setup |
-| 4 | 11 | observability-monitoring:observability-engineer | Monitoring & alerting |
-| 4 | 12 | code-documentation:docs-architect | Documentation generation |
+| 1 | 2 | quality-suite:architect-review | Technical architecture design |
+| 1 | 3 | quality-suite:quality-specialist | Security & risk assessment |
+| 2 | 4 | engineering-suite:software-architect | Backend services implementation |
+| 2 | 5 | engineering-suite:app-developer | Frontend UI implementation |
+| 3 | 7 | quality-suite:quality-specialist | Test suite creation |
+| 3 | 8 | quality-suite:quality-specialist | Security validation |
+| 3 | 9 | agent-core:sre-expert | Performance optimization |
+| 4 | 10 | infrastructure-suite:automation-engineer | CI/CD pipeline setup |
+| 4 | 11 | infrastructure-suite:observability-engineer | Monitoring & alerting |
+| 4 | 12 | quality-suite:documentation-expert | Documentation generation |
 
 ## Configuration
 
@@ -43,25 +43,25 @@ Orchestrate end-to-end feature development: $ARGUMENTS
 
 1. **Business Analysis** - Requirements doc with user stories, success metrics, risk assessment
 2. **Technical Architecture** (architect-review) - Service boundaries, API contracts, data models
-3. **Security Assessment** (security-auditor) - Risk matrix, compliance checklist, mitigations
+3. **Security Assessment** (quality-specialist) - Risk matrix, compliance checklist, mitigations
 
 ## Phase 2: Implementation
 
-4. **Backend Services** (backend-architect) - RESTful/GraphQL APIs, business logic, caching, feature flags
-5. **Frontend** (frontend-developer) - UI, state management, error handling, analytics
+4. **Backend Services** (software-architect) - RESTful/GraphQL APIs, business logic, caching, feature flags
+5. **Frontend** (app-developer) - UI, state management, error handling, analytics
 6. **Data Pipeline** - ETL/ELT processes, validation, quality monitoring
 
 ## Phase 3: Testing & QA
 
-7. **Test Suite** (test-automator) - Unit, integration, E2E tests (80%+ coverage)
-8. **Security Validation** (security-auditor) - OWASP checks, pen testing, dependency scanning
-9. **Performance** (performance-engineer) - Query optimization, caching, bundle size reduction
+7. **Test Suite** (quality-specialist) - Unit, integration, E2E tests (80%+ coverage)
+8. **Security Validation** (quality-specialist) - OWASP checks, pen testing, dependency scanning
+9. **Performance** (sre-expert) - Query optimization, caching, bundle size reduction
 
 ## Phase 4: Deployment & Observability
 
-10. **CI/CD Pipeline** (deployment-engineer) - Automated tests, feature flags, rollback procedures
+10. **CI/CD Pipeline** (automation-engineer) - Automated tests, feature flags, rollback procedures
 11. **Monitoring** (observability-engineer) - Distributed tracing, metrics, alerting, SLOs/SLIs
-12. **Documentation** (docs-architect) - API docs, user guides, deployment guides, runbooks
+12. **Documentation** (documentation-expert) - API docs, user guides, deployment guides, runbooks
 
 ## Parameters
 

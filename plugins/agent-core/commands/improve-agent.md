@@ -6,9 +6,9 @@ argument-hint: <agent-name> [--mode=check|phase|optimize] [--phase=1|2|3|4] [--f
 color: blue
 agents:
   primary:
-    - context-manager
+    - context-specialist
   conditional:
-    - agent: prompt-engineer
+    - agent: reasoning-engine
       trigger: argument "--phase=2" OR argument "--mode=optimize"
   orchestrated: false
 execution-modes:
@@ -36,7 +36,7 @@ output-format: json-report + markdown-summary + improved-prompts
 
 1. Parse agent name from arguments
 2. Find agent in `plugins/*/agents/`
-3. Invoke context-manager for metrics analysis
+3. Invoke context-specialist for metrics analysis
 4. Generate health report with actionable fixes
 
 ### Health Report Format
@@ -137,7 +137,7 @@ Execute all phases sequentially with validation gates:
 
 | Issue | Solution |
 |-------|----------|
-| context-manager not available | Verify `plugins/agent-orchestration/agents/context-manager.md` exists |
+| context-specialist not available | Verify `plugins/agent-core/agents/context-specialist.md` exists |
 | No performance data | Agent needs 7+ days production usage |
 | Improvements don't show impact | Need 100+ tasks for statistical significance |
 

@@ -17,7 +17,7 @@ agents:
   primary:
     - research-intelligence
   conditional:
-    - agent: systems-architect
+    - agent: software-architect
       trigger: pattern "architecture|design|system" OR argument "code"
     - agent: code-quality
       trigger: pattern "quality|test|lint" OR argument "workflow"

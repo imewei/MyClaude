@@ -98,8 +98,8 @@ PLUGIN SYNTAX VALIDATION
   🟡 Warnings: 2
 
 🔴 ERRORS
-  [SYNTAX_001] file.md:29 - Double colon in 'comprehensive-review::code-reviewer'
-  💡 Fix: 'comprehensive-review:code-reviewer'
+  [SYNTAX_001] file.md:29 - Double colon in 'quality-suite::quality-specialist'
+  💡 Fix: 'quality-suite:quality-specialist'
 ```
 
 ## Success

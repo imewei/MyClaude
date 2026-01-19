@@ -1,6 +1,6 @@
 ---
 version: "2.1.0"
-category: codebase-cleanup
+category: quality-suite
 purpose: Refactor code for quality, maintainability, and SOLID principles
 execution_time:
   quick: 5-10 minutes

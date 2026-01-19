@@ -1,6 +1,6 @@
 ---
 version: "2.1.0"
-category: codebase-cleanup
+category: quality-suite
 purpose: Dependency security scanning and vulnerability analysis
 execution_time: {quick: "2-5min", standard: "5-15min", comprehensive: "15-45min"}
 external_docs: [dependency-security-guide.md, vulnerability-analysis-framework.md]

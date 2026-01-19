@@ -2,7 +2,7 @@
 version: "2.1.0"
 description: Systematically fix broken imports across the codebase with session continuity
 argument-hint: "[path-or-pattern] [resume|status|new]"
-category: codebase-cleanup
+category: quality-suite
 purpose: Resolve broken imports with intelligent strategies and session management
 execution_time:
   quick: 3-8 minutes
@@ -21,7 +21,7 @@ agents:
   conditional:
     - agent: legacy-modernizer
       trigger: pattern "migration|refactor|modernize"
-    - agent: systems-architect
+    - agent: software-architect
       trigger: pattern "architecture|barrel.*export|module.*system"
   orchestrated: false
 ---

@@ -1,6 +1,6 @@
 ---
 version: "2.1.0"
-category: llm-application-dev
+category: agent-core
 command: /langchain-agent
 description: Create production-ready LangChain agents with LangGraph, RAG, and observability
 allowed-tools: Bash(find:*), Bash(git:*), Bash(uv:*)
@@ -13,7 +13,7 @@ agents:
   primary:
     - ai-engineer
   conditional:
-    - agent: prompt-engineer
+    - agent: reasoning-engine
       trigger: pattern "prompt|system.*message|instruction"
   orchestrated: false
 ---

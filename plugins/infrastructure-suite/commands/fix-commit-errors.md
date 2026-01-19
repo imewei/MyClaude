@@ -1,15 +1,15 @@
 ---
 version: "2.1.0"
-category: "cicd-automation"
+category: "infrastructure-suite"
 command: "/fix-commit-errors"
 execution-modes:
   quick-fix: "5-10m: Discovery + Fix"
   standard: "15-30m: Full resolution + learning"
   comprehensive: "30-60m: Deep analysis + correlation"
 documentation:
-  multi-agent-system: "../docs/cicd-automation/multi-agent-error-analysis.md"
-  error-patterns: "../docs/cicd-automation/error-pattern-library.md"
-  fix-strategies: "../docs/cicd-automation/fix-strategies.md"
+  multi-agent-system: "../docs/infrastructure-suite/multi-agent-error-analysis.md"
+  error-patterns: "../docs/infrastructure-suite/error-pattern-library.md"
+  fix-strategies: "../docs/infrastructure-suite/fix-strategies.md"
 description: Automatically analyzes GitHub Actions failures, identifies root causes, applies intelligent solutions, validates, and reruns workflows with adaptive learning.
 allowed-tools: Bash(gh:*), Bash(git:*), Bash(npm:*), Bash(yarn:*), Bash(uv:*), Bash(cargo:*), Bash(go:*)
 argument-hint: "[workflow-id|commit-sha|pr-number] [--auto-fix] [--learn] [--mode=quick-fix|standard|comprehensive]"

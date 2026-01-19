@@ -18,13 +18,13 @@ execution-modes:
 agents:
   primary:
     - research-intelligence
-    - multi-agent-orchestrator
+    - orchestrator
   conditional:
-    - agent: systems-architect
+    - agent: software-architect
       trigger: pattern "architecture|design|system"
     - agent: hpc-numerical-coordinator
       trigger: pattern "scientific|numerical|computing"
-    - agent: ai-systems-architect
+    - agent: ai-software-architect
       trigger: pattern "llm|ai|ml|neural"
   orchestrated: true
 ---

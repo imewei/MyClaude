@@ -6,9 +6,9 @@ argument-hint: "[commit-message] [--quick] [--split] [--amend] [--no-verify]"
 color: green
 agents:
   primary:
-    - code-reviewer
+    - quality-specialist
   conditional:
-    - agent: security-auditor
+    - agent: quality-specialist
       trigger: files "*.env|secrets|credentials|keys"
   orchestrated: false
 ---

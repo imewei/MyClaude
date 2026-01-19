@@ -55,10 +55,10 @@ Core domain models, business rules, validation, state management (MVI/Redux/BLoC
 ## Phase 2: Platform Implementation (Parallel)
 
 Implement per platform following shared contracts:
-- **Web (React/Next.js)**: frontend-developer
+- **Web (React/Next.js)**: app-developer
 - **iOS (SwiftUI)**: ios-developer
-- **Android (Kotlin/Compose)**: mobile-developer
-- **Desktop (Electron/Tauri)**: frontend-developer
+- **Android (Kotlin/Compose)**: app-developer
+- **Desktop (Electron/Tauri)**: app-developer
 
 **See**: [Implementation Guides](../docs/multi-platform/implementation-guides.md)
 

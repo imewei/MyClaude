@@ -1,17 +1,17 @@
 ---
 version: "2.1.0"
-category: "cicd-automation"
+category: "infrastructure-suite"
 command: "/workflow-automate"
 execution-modes:
   quick-start: "10-15m: Single workflow (GitHub/GitLab)"
   standard: "30-45m: Full pipeline + security + monitoring"
   enterprise: "60-120m: Multi-platform + IaC + compliance"
 documentation:
-  analysis-framework: "../docs/cicd-automation/workflow-analysis-framework.md"
-  github-actions: "../docs/cicd-automation/github-actions-reference.md"
-  gitlab-ci: "../docs/cicd-automation/gitlab-ci-reference.md"
-  terraform-integration: "../docs/cicd-automation/terraform-cicd-integration.md"
-  security-workflows: "../docs/cicd-automation/security-automation-workflows.md"
+  analysis-framework: "../docs/infrastructure-suite/workflow-analysis-framework.md"
+  github-actions: "../docs/infrastructure-suite/github-actions-reference.md"
+  gitlab-ci: "../docs/infrastructure-suite/gitlab-ci-reference.md"
+  terraform-integration: "../docs/infrastructure-suite/terraform-cicd-integration.md"
+  security-workflows: "../docs/infrastructure-suite/security-automation-workflows.md"
 allowed-tools: [Write, Bash, Read, Task]
 ---
 

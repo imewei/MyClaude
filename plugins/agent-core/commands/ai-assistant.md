@@ -1,6 +1,6 @@
 ---
 version: "2.1.0"
-category: "llm-application-dev"
+category: "agent-core"
 command: "/ai-assistant"
 description: Build production-ready AI assistants with NLU, conversation management, and intelligent response generation
 allowed-tools: Bash(find:*), Bash(git:*), Bash(uv:*)
@@ -11,7 +11,7 @@ execution_modes:
   comprehensive: "30-45 minutes"
 agents:
   primary: [ai-engineer]
-  conditional: [{agent: prompt-engineer, trigger: pattern "prompt|llm.*prompt|response.*generation"}]
+  conditional: [{agent: reasoning-engine, trigger: pattern "prompt|llm.*prompt|response.*generation"}]
 ---
 
 # AI Assistant Development

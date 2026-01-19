@@ -2,7 +2,7 @@
 version: "2.1.0"
 description: Safe dependency upgrade orchestration with breaking change management and security-first prioritization
 argument-hint: "[--security-only] [--mode quick|standard|deep] [--strategy incremental|batch]"
-category: framework-migration
+category: engineering-suite
 execution_time:
   quick: "15-25m: Security patches only"
   standard: "30-60m: Minor/patch upgrades"
