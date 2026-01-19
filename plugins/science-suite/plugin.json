@@ -22,5 +22,10 @@
     "research",
     "julia"
   ],
+  "agents": [
+    "simulation-expert",
+    "ml-expert",
+    "research-expert"
+  ],
   "category": "science"
 }
