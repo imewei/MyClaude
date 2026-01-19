@@ -12,7 +12,7 @@ documentation:
   fix-strategies: "../docs/cicd-automation/fix-strategies.md"
 description: Automatically analyzes GitHub Actions failures, identifies root causes, applies intelligent solutions, validates, and reruns workflows with adaptive learning.
 allowed-tools: Bash(gh:*), Bash(git:*), Bash(npm:*), Bash(yarn:*), Bash(uv:*), Bash(cargo:*), Bash(go:*)
-argument-hint: [workflow-id|commit-sha|pr-number] [--auto-fix] [--learn] [--mode=quick-fix|standard|comprehensive]
+argument-hint: "[workflow-id|commit-sha|pr-number] [--auto-fix] [--learn] [--mode=quick-fix|standard|comprehensive]"
 color: red
 ---
 

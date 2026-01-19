@@ -3,7 +3,7 @@ version: "2.1.0"
 category: code-documentation
 command: /doc-generate
 description: Generate comprehensive documentation from code with AI-powered analysis
-argument-hint: [--api] [--readme] [--sphinx] [--full]
+argument-hint: "[--api] [--readme] [--sphinx] [--full]"
 color: blue
 execution_modes: {quick: "10-15min", standard: "20-30min", comprehensive: "40-60min"}
 ---

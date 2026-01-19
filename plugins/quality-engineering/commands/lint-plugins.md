@@ -2,7 +2,7 @@
 version: "2.1.0"
 command: /lint-plugins
 description: Validate Claude Code plugin syntax, structure, cross-references
-argument-hint: [--fix] [--plugin=name] [--report] [--analyze-deps]
+argument-hint: "[--fix] [--plugin=name] [--report] [--analyze-deps]"
 execution_modes: {quick: "30sec", standard: "1-2min", enterprise: "3-5min"}
 color: cyan
 ---

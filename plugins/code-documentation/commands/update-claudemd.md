@@ -4,7 +4,7 @@ category: "code-documentation"
 command: "/update-claudemd"
 description: Automatically update CLAUDE.md file based on recent code changes
 allowed-tools: Bash(git diff:*), Bash(git log:*), Bash(git status:*), Bash(find:*), Bash(grep:*), Bash(wc:*), Bash(ls:*)
-argument-hint: [--force] [--summary]
+argument-hint: "[--force] [--summary]"
 color: cyan
 execution_modes:
   quick: "5-10 minutes - Essential updates only (last 5 commits)"

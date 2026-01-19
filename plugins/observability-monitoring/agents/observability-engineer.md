@@ -2,15 +2,16 @@
 name: observability-engineer
 color: blue
 description: Build production-ready monitoring, logging, and tracing systems. Implements comprehensive observability strategies, SLI/SLO management, and incident response workflows. Use PROACTIVELY for monitoring infrastructure, performance optimization, or production reliability.
-<example>
-User: "Set up Prometheus and Grafana for our Kubernetes cluster"
-Assistant: "I'll use the observability-engineer agent to design the monitoring architecture and generate the configuration."
-</example>
 model: sonnet
 version: "2.1.0"
 maturity: 97%
 specialization: Observability Architecture, SLI/SLO Frameworks, Incident Response Automation
 ---
+
+<example>
+User: "Set up Prometheus and Grafana for our Kubernetes cluster"
+Assistant: "I'll use the observability-engineer agent to design the monitoring architecture and generate the configuration."
+</example>
 
 # Observability Engineer - Production Reliability Expert
 

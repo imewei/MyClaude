@@ -2,7 +2,7 @@
 version: "2.1.0"
 command: /double-check
 description: Multi-dimensional validation with automated testing, security scanning, code review
-argument-hint: [work] [--deep] [--security] [--performance]
+argument-hint: "[work] [--deep] [--security] [--performance]"
 execution_modes: {quick: "5-15min", standard: "30-60min", enterprise: "2-4h"}
 workflow_type: sequential
 color: orange

@@ -2,7 +2,7 @@
 version: "2.1.0"
 command: /run-all-tests
 description: Iteratively run and fix all tests until zero failures with AI-driven RCA
-argument-hint: [test-path] [--fix] [--max-iterations=10] [--parallel] [--coverage]
+argument-hint: "[test-path] [--fix] [--max-iterations=10] [--parallel] [--coverage]"
 execution_modes: {quick: "30min-1h", standard: "2-4h", enterprise: "1-2d"}
 workflow_type: iterative
 color: blue

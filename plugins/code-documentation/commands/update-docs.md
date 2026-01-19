@@ -3,7 +3,7 @@ version: "2.1.0"
 category: code-documentation
 command: /update-docs
 description: Update Sphinx docs, README, API documentation with AST-based code analysis
-argument-hint: [--full] [--sphinx] [--readme] [--api] [--format=<type>]
+argument-hint: "[--full] [--sphinx] [--readme] [--api] [--format=<type>]"
 color: blue
 execution_modes: {quick: "15-20min", standard: "30-45min", comprehensive: "60-90min"}
 ---

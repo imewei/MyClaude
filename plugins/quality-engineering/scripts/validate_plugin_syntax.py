@@ -19,9 +19,13 @@ def validate_plugin_structure(plugin_path):
     plugin_path = Path(plugin_path)
     issues = []
 
-    # Check for plugin.json
-    if not (plugin_path / "plugin.json").exists():
-        issues.append("Missing plugin.json")
+    # Check for plugin.json (root or .claude-plugin/)
+    manifest_path = plugin_path / "plugin.json"
+    if not manifest_path.exists():
+        manifest_path = plugin_path / ".claude-plugin" / "plugin.json"
+
+    if not manifest_path.exists():
+        issues.append("Missing plugin.json (checked root and .claude-plugin/)")
 
     # Check README.md
     if not (plugin_path / "README.md").exists():

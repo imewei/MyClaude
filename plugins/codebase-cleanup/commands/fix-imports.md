@@ -1,7 +1,7 @@
 ---
 version: "2.1.0"
 description: Systematically fix broken imports across the codebase with session continuity
-argument-hint: [path-or-pattern] [resume|status|new]
+argument-hint: "[path-or-pattern] [resume|status|new]"
 category: codebase-cleanup
 purpose: Resolve broken imports with intelligent strategies and session management
 execution_time:
