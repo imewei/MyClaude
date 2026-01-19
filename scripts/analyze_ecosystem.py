@@ -31,7 +31,8 @@ def parse_frontmatter(content: str) -> Dict[str, Any]:
     match = re.match(r'^---\n(.*?)\n---', content, re.DOTALL)
     if match:
         try:
-            return yaml.safe_load(match.group(1)) or {}
+            data = yaml.safe_load(match.group(1))
+            return data if isinstance(data, dict) else {}
         except yaml.YAMLError:
             return {}
     return {}
@@ -44,7 +45,7 @@ def extract_domains(texts: List[str], domain_map: Dict[str, str]) -> Set[str]:
             continue
         text_lower = text.lower()
         for keyword, domain in domain_map.items():
-            if keyword in text_lower:
+            if re.search(rf'\b{re.escape(keyword.lower())}\b', text_lower):
                 found_domains.add(domain)
     return found_domains
 
@@ -62,7 +63,7 @@ def analyze_ecosystem(base_path: Union[str, Path]) -> Dict[str, Any]:
         return capabilities
 
     for plugin_path in plugins_dir.iterdir():
-        if not plugin_path.is_dir():
+        if not plugin_path.is_dir() or plugin_path.name.startswith('.'):
             continue
 
         plugin_info: Dict[str, Any] = {
@@ -80,7 +81,7 @@ def analyze_ecosystem(base_path: Union[str, Path]) -> Dict[str, Any]:
 
         if manifest_path.exists():
             try:
-                with open(manifest_path, 'r') as f:
+                with open(manifest_path, 'r', encoding='utf-8') as f:
                     manifest = json.load(f)
                     keywords = manifest.get("keywords", [])
                     categories = manifest.get("categories", [])
@@ -93,7 +94,7 @@ def analyze_ecosystem(base_path: Union[str, Path]) -> Dict[str, Any]:
         if agents_dir.exists():
             for agent_file in agents_dir.glob("*.md"):
                 try:
-                    with open(agent_file, 'r') as f:
+                    with open(agent_file, 'r', encoding='utf-8') as f:
                         content = f.read()
                         frontmatter = parse_frontmatter(content)
                         if frontmatter:
@@ -118,7 +119,7 @@ def analyze_ecosystem(base_path: Union[str, Path]) -> Dict[str, Any]:
                 skill_file = skill_path / "SKILL.md"
                 if skill_file.exists():
                     try:
-                        with open(skill_file, 'r') as f:
+                        with open(skill_file, 'r', encoding='utf-8') as f:
                             content = f.read()
                             frontmatter = parse_frontmatter(content)
                             if frontmatter:
@@ -159,7 +160,7 @@ if __name__ == "__main__":
 
     output_path = repo_root / "ecosystem_capabilities.json"
     try:
-        with open(output_path, 'w') as f:
+        with open(output_path, 'w', encoding='utf-8') as f:
             json.dump(report, f, indent=2)
         print(f"Generated {output_path}")
     except OSError as e:
