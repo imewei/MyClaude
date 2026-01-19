@@ -1,0 +1,26 @@
+{
+  "name": "engineering-suite",
+  "displayName": "Software Engineering Suite",
+  "version": "1.0.0",
+  "description": "Consolidated suite for full-stack engineering, language-specific development, and platform-specific implementations.",
+  "author": {
+    "name": "Wei Chen",
+    "url": "https://myclaude.readthedocs.io/en/latest/"
+  },
+  "homepage": "https://github.com/imewei/MyClaude",
+  "repository": "https://github.com/imewei/MyClaude",
+  "license": "MIT",
+  "keywords": [
+    "engineering",
+    "backend",
+    "frontend",
+    "mobile",
+    "python",
+    "javascript",
+    "typescript",
+    "systems",
+    "cli",
+    "migration"
+  ],
+  "category": "engineering"
+}

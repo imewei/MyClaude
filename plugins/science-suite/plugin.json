@@ -1,0 +1,26 @@
+{
+  "name": "science-suite",
+  "displayName": "Scientific Computing Suite",
+  "version": "1.0.0",
+  "description": "Consolidated suite for high-performance computing, specialized physics/chemistry simulations, and data science workflows.",
+  "author": {
+    "name": "Wei Chen",
+    "url": "https://myclaude.readthedocs.io/en/latest/"
+  },
+  "homepage": "https://github.com/imewei/MyClaude",
+  "repository": "https://github.com/imewei/MyClaude",
+  "license": "MIT",
+  "keywords": [
+    "science",
+    "hpc",
+    "jax",
+    "molecular-simulation",
+    "statistical-physics",
+    "deep-learning",
+    "machine-learning",
+    "visualization",
+    "research",
+    "julia"
+  ],
+  "category": "science"
+}

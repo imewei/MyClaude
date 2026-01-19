@@ -1,0 +1,24 @@
+{
+  "name": "infrastructure-suite",
+  "displayName": "Infrastructure & Ops Suite",
+  "version": "1.0.0",
+  "description": "Consolidated suite for CI/CD automation, observability monitoring, and Git PR workflows.",
+  "author": {
+    "name": "Wei Chen",
+    "url": "https://myclaude.readthedocs.io/en/latest/"
+  },
+  "homepage": "https://github.com/imewei/MyClaude",
+  "repository": "https://github.com/imewei/MyClaude",
+  "license": "MIT",
+  "keywords": [
+    "infrastructure",
+    "devops",
+    "cicd",
+    "observability",
+    "monitoring",
+    "git",
+    "workflow",
+    "automation"
+  ],
+  "category": "infrastructure"
+}

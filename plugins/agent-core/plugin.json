@@ -1,0 +1,22 @@
+{
+  "name": "agent-core",
+  "displayName": "Agent Core Suite",
+  "version": "1.0.0",
+  "description": "Consolidated suite for multi-agent coordination, deep reasoning, and specialized LLM application development.",
+  "author": {
+    "name": "Wei Chen",
+    "url": "https://myclaude.readthedocs.io/en/latest/"
+  },
+  "homepage": "https://github.com/imewei/MyClaude",
+  "repository": "https://github.com/imewei/MyClaude",
+  "license": "MIT",
+  "keywords": [
+    "agent",
+    "orchestration",
+    "reasoning",
+    "llm",
+    "workflow",
+    "ai"
+  ],
+  "category": "orchestration"
+}
