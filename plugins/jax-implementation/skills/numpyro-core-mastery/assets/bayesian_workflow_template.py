@@ -392,7 +392,7 @@ def main():
 
     # Step 7: Extract results
     print("\n7. Extracting results...")
-    results = extract_results(mcmc)
+    _ = extract_results(mcmc)
 
     # Final summary
     print("\n" + "="*70)

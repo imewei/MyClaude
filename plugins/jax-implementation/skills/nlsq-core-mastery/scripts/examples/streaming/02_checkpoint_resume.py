@@ -13,7 +13,6 @@ Run this example:
     python examples/streaming/02_checkpoint_resume.py
 """
 
-import time
 from pathlib import Path
 
 import jax.numpy as jnp
@@ -157,7 +156,7 @@ def main():
         )
 
         optimizer3 = StreamingOptimizer(config_specific)
-        result3 = optimizer3.fit(
+        _ = optimizer3.fit(
             (x_data, y_data),
             gaussian_model,
             p0,

@@ -9,7 +9,7 @@ and optimizing computational efficiency.
 import jax
 import jax.numpy as jnp
 import time
-from typing import Callable, Any, Dict
+from typing import Callable, Dict
 from functools import wraps
 
 

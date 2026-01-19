@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 """Prior predictive checks for model validation."""
 
-import jax.numpy as jnp
 import jax.random as random
 from numpyro.infer import Predictive
 

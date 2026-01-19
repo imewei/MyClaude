@@ -58,7 +58,7 @@ def benchmark_mcmc_vi(model, x, y, sizes=[1000, 10000, 100000]):
             svi = SVI(model, guide, optimizer, Trace_ELBO())
 
             start = time.time()
-            svi_result = svi.run(random.PRNGKey(1), 5000, x_sub, y_sub)
+            _ = svi.run(random.PRNGKey(1), 5000, x_sub, y_sub)
             vi_time = time.time() - start
 
             results['vi'][n] = vi_time

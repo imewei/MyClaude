@@ -58,7 +58,7 @@ def main():
     true_amplitude = 1500.0  # O(1000)
     true_decay_rate = 0.005  # O(0.001)
     true_offset = 75.0  # O(100)
-    true_params = jnp.array([true_amplitude, true_decay_rate, true_offset])
+    _ = jnp.array([true_amplitude, true_decay_rate, true_offset])
 
     # Generate noisy data
     y_true = multi_scale_model(x_data, true_amplitude, true_decay_rate, true_offset)
@@ -66,7 +66,7 @@ def main():
     y_data = y_true + noise
 
     print(f"Dataset: {n_samples:,} samples")
-    print(f"True parameters:")
+    print("True parameters:")
     print(f"  amplitude   = {true_amplitude:.4f} (O(1000))")
     print(f"  decay_rate  = {true_decay_rate:.6f} (O(0.001))")
     print(f"  offset      = {true_offset:.4f} (O(100))")
@@ -248,9 +248,9 @@ def main():
     simple_p0 = jnp.array([50.0, 0.5])
     simple_bounds = (jnp.array([10.0, 0.0]), jnp.array([100.0, 1.0]))
     simple_normalizer = ParameterNormalizer(simple_p0, simple_bounds, strategy="bounds")
-    wrapped_model = NormalizedModelWrapper(simple_model, simple_normalizer)
+    _ = NormalizedModelWrapper(simple_model, simple_normalizer)
 
-    print(f"  Wrapped model created for optimization in normalized space")
+    print("  Wrapped model created for optimization in normalized space")
     print()
 
     # =========================================================================
@@ -270,7 +270,7 @@ def main():
 
     # Demo with the normalizer
     J = normalizer.normalization_jacobian
-    print(f"Normalization Jacobian (diagonal):")
+    print("Normalization Jacobian (diagonal):")
     print(f"  J = diag({jnp.diag(J)})")
     print()
 

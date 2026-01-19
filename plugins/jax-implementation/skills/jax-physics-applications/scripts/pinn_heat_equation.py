@@ -45,7 +45,7 @@ def main():
     print("Physics-Informed Neural Network for Heat Equation")
     print("=" * 60)
     print(f"PDE: ∂u/∂t = {alpha}∂²u/∂x²")
-    print(f"Domain: x ∈ [0,1], t ∈ [0,1]")
+    print("Domain: x ∈ [0,1], t ∈ [0,1]")
     print(f"Hidden dimensions: {hidden_dim}")
     print(f"Number of layers: {n_layers}")
     print(f"Learning rate: {learning_rate}")
@@ -130,7 +130,7 @@ def main():
     overall_max_error = jnp.max(jnp.array(max_errors))
     overall_mean_error = jnp.mean(jnp.array(mean_errors))
 
-    print(f"\nOverall Statistics:")
+    print("\nOverall Statistics:")
     print(f"  Max error: {overall_max_error:.6f}")
     print(f"  Mean error: {overall_mean_error:.6f}")
 
@@ -142,7 +142,7 @@ def main():
         print("  ⚠ Solution accuracy: POOR (consider more training)")
 
     # Validate PDE residual on test points
-    print(f"\nPDE Residual Validation:")
+    print("\nPDE Residual Validation:")
     x_test_grid, t_test_grid = jnp.meshgrid(
         jnp.linspace(0.1, 0.9, 20),
         jnp.linspace(0.1, 0.9, 20)
@@ -165,8 +165,8 @@ def main():
         print("  ⚠ PDE satisfaction: POOR")
 
     # 5. Visualization
-    print(f"\nGenerating plots...")
-    fig = plt.figure(figsize=(16, 10))
+    print("\nGenerating plots...")
+    _ = plt.figure(figsize=(16, 10))
 
     # Loss evolution
     ax1 = plt.subplot(2, 3, 1)
@@ -242,7 +242,7 @@ def main():
 
     plt.tight_layout()
     plt.savefig('pinn_heat_equation_results.png', dpi=300, bbox_inches='tight')
-    print(f"✓ Plots saved to: pinn_heat_equation_results.png")
+    print("✓ Plots saved to: pinn_heat_equation_results.png")
 
     print("\n" + "=" * 60)
     print("SIMULATION COMPLETE")
@@ -317,7 +317,7 @@ def compute_pde_residual(model, x, t, alpha):
 
     # First derivatives
     u_t = jax.grad(u_fn, argnums=1)(x, t)
-    u_x = jax.grad(u_fn, argnums=0)(x, t)
+    _ = jax.grad(u_fn, argnums=0)(x, t)
 
     # Second derivative
     u_xx = jax.grad(lambda x_val: jax.grad(u_fn, argnums=0)(x_val, t))(x)

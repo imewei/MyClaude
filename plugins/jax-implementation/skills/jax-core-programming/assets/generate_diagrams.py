@@ -12,7 +12,6 @@ Requirements: matplotlib, numpy
 """
 
 import matplotlib.pyplot as plt
-import matplotlib.patches as mpatches
 import numpy as np
 from pathlib import Path
 
@@ -156,11 +155,11 @@ def generate_optimizer_comparison(output_dir):
 
     fig, ax = plt.subplots(figsize=(14, 7))
 
-    bars1 = ax.bar(x - width, convergence_speed, width, label='Convergence Speed',
+    ax.bar(x - width, convergence_speed, width, label='Convergence Speed',
                    color='#1f77b4', alpha=0.8, edgecolor='black', linewidth=1.5)
-    bars2 = ax.bar(x, [10 - m for m in memory_usage], width, label='Memory Efficiency (10-usage)',
+    ax.bar(x, [10 - m for m in memory_usage], width, label='Memory Efficiency (10-usage)',
                    color='#2ca02c', alpha=0.8, edgecolor='black', linewidth=1.5)
-    bars3 = ax.bar(x + width, [a - 90 for a in final_accuracy], width, label='Final Accuracy (%-90)',
+    ax.bar(x + width, [a - 90 for a in final_accuracy], width, label='Final Accuracy (%-90)',
                    color='#ff7f0e', alpha=0.8, edgecolor='black', linewidth=1.5)
 
     ax.set_xlabel('Optimizer', fontsize=14, fontweight='bold')

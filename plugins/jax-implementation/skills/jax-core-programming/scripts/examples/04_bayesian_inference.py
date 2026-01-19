@@ -14,7 +14,6 @@ import numpyro.distributions as dist
 from numpyro.infer import MCMC, NUTS, Predictive
 import matplotlib
 matplotlib.use('Agg')  # Non-interactive backend
-import matplotlib.pyplot as plt
 
 
 def generate_synthetic_data(n=100):
@@ -84,7 +83,7 @@ def example_bayesian_inference():
 
     # Get samples
     samples = mcmc.get_samples()
-    print(f"\n✓ MCMC complete!")
+    print("\n✓ MCMC complete!")
     print(f"Samples shape: w={samples['w'].shape}, b={samples['b'].shape}")
 
     # Step 3: Posterior analysis
@@ -100,7 +99,7 @@ def example_bayesian_inference():
     b_std = jnp.std(samples['b'])
     sigma_std = jnp.std(samples['sigma'])
 
-    print(f"Posterior means:")
+    print("Posterior means:")
     print(f"  w = {w_mean:.3f} ± {w_std:.3f} (true: {true_w:.2f})")
     print(f"  b = {b_mean:.3f} ± {b_std:.3f} (true: {true_b:.2f})")
     print(f"  sigma = {sigma_mean:.3f} ± {sigma_std:.3f} (true: {true_sigma:.2f})")
@@ -194,7 +193,7 @@ def example_bayesian_inference():
     mle_w, mle_b = params
     print(f"MLE estimates: w={mle_w:.3f}, b={mle_b:.3f}")
     print(f"Bayesian estimates: w={w_mean:.3f}, b={b_mean:.3f}")
-    print(f"Key difference: Bayesian provides uncertainty quantification!")
+    print("Key difference: Bayesian provides uncertainty quantification!")
 
     # Step 9: Out-of-distribution uncertainty
     print("\nStep 9: Out-of-distribution uncertainty")

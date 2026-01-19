@@ -18,11 +18,9 @@ Requirements:
     uv pip install jax jax-cfd matplotlib numpy
 """
 
-import jax
 import jax.numpy as jnp
-from jax_cfd import grids, finite_differences
+from jax_cfd import grids
 import matplotlib.pyplot as plt
-import numpy as np
 
 
 def main():
@@ -104,7 +102,7 @@ def main():
     max_error = jnp.max(energy_error)
     mean_error = jnp.mean(energy_error)
 
-    print(f"\nEnergy Decay Validation:")
+    print("\nEnergy Decay Validation:")
     print(f"  Initial KE: {E0:.6f}")
     print(f"  Final KE: {kinetic_energies[-1]:.6f}")
     print(f"  Analytical final KE: {analytical_energy[-1]:.6f}")
@@ -120,7 +118,7 @@ def main():
 
     # Mass conservation (divergence-free)
     max_div = jnp.max(max_divergences)
-    print(f"\nMass Conservation (∇·u = 0):")
+    print("\nMass Conservation (∇·u = 0):")
     print(f"  Maximum divergence: {max_div:.2e}")
 
     if max_div < 1e-10:
@@ -131,8 +129,8 @@ def main():
         print("  ⚠ Mass conservation: POOR (check pressure solver)")
 
     # 5. Visualization
-    print(f"\nGenerating plots...")
-    fig = plt.figure(figsize=(14, 10))
+    print("\nGenerating plots...")
+    _ = plt.figure(figsize=(14, 10))
 
     # Energy decay comparison
     ax1 = plt.subplot(2, 3, 1)
@@ -195,7 +193,7 @@ def main():
 
     plt.tight_layout()
     plt.savefig('cfd_taylor_green_results.png', dpi=300, bbox_inches='tight')
-    print(f"✓ Plots saved to: cfd_taylor_green_results.png")
+    print("✓ Plots saved to: cfd_taylor_green_results.png")
 
     print("\n" + "=" * 60)
     print("SIMULATION COMPLETE")

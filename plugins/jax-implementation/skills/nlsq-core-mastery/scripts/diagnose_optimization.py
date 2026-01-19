@@ -153,7 +153,7 @@ def diagnose_result(result, verbose=True):
             diagnostics['warnings'].append(f"Parameters at bounds: {at_bounds.tolist()}")
             diagnostics['recommendations'].append("Consider relaxing bounds")
             if verbose:
-                print(f"   ⚠️  WARNING: Some parameters at bounds")
+                print("   ⚠️  WARNING: Some parameters at bounds")
                 print(f"      Active constraints: {at_bounds.tolist()}")
 
     # 6. Residual Analysis
@@ -199,7 +199,7 @@ def diagnose_result(result, verbose=True):
                 print(f"{i}. {warning}")
 
             if diagnostics['recommendations']:
-                print(f"\nRecommendations:")
+                print("\nRecommendations:")
                 for rec in set(diagnostics['recommendations']):  # Remove duplicates
                     print(f"  • {rec}")
 
@@ -246,8 +246,8 @@ def troubleshoot_nonconvergence(model, x, y, p0, result):
 
     # Check 2: Data quality
     print("\n2. Data Quality")
-    x_range = jnp.max(x) - jnp.min(x)
-    y_range = jnp.max(y) - jnp.min(y)
+    _ = jnp.max(x) - jnp.min(x)
+    _ = jnp.max(y) - jnp.min(y)
     y_noise = jnp.std(y - jnp.mean(y))
 
     print(f"   X range: [{jnp.min(x):.2e}, {jnp.max(x):.2e}]")

@@ -113,7 +113,7 @@ def example_quick_prototyping():
     def fast_grad_fn(params, X_batch, y_batch):
         """Compiled gradient function with vectorization"""
         vectorized_loss = jax.vmap(loss_fn, in_axes=(None, 0, 0))
-        batch_loss = lambda p: jnp.mean(vectorized_loss(p, X_batch, y_batch))
+        def batch_loss(p): return jnp.mean(vectorized_loss(p, X_batch, y_batch))
         return jax.grad(batch_loss)(params)
 
     # Final benchmark

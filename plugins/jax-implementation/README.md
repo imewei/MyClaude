@@ -140,6 +140,12 @@ See the full documentation for integration patterns and compatible plugins.
 
 For comprehensive documentation, see: [Plugin Documentation](https://myclaude.readthedocs.io/en/latest/plugins/jax-implementation.html)
 
+**Internal Documentation:**
+*   [Core Programming](docs/jax-core/README.md)
+*   [Physics Applications](docs/physics/api_reference.md)
+*   [NLSQ Optimization](docs/nlsq/api_reference.md)
+*   [NumPyro Probabilistic Programming](docs/numpyro/api_reference.md)
+
 To build documentation locally:
 
 ```bash

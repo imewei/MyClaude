@@ -13,7 +13,7 @@ import jax.numpy as jnp
 import jax.random as random
 import numpyro
 import numpyro.distributions as dist
-from numpyro.infer import NUTS, MCMC, Predictive
+from numpyro.infer import NUTS, MCMC
 import matplotlib.pyplot as plt
 
 
@@ -100,7 +100,7 @@ def generate_hierarchical_data():
     y = true_alpha[group_idx] + true_beta[group_idx] * x + \
         true_sigma * random.normal(key_noise, (N,))
 
-    print(f"Generated hierarchical data:")
+    print("Generated hierarchical data:")
     print(f"  Groups: {n_groups}")
     print(f"  Observations per group: {n_per_group}")
     print(f"  Total observations: {N}")

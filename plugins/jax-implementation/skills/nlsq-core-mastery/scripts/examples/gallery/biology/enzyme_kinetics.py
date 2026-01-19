@@ -14,7 +14,6 @@ Key Concepts:
 - Hill equation for cooperative binding
 """
 
-import jax.numpy as jnp
 import matplotlib.pyplot as plt
 import numpy as np
 
@@ -47,7 +46,7 @@ def michaelis_menten(S, Vmax, Km):
     return Vmax * S / (Km + S)
 
 
-def competitive_inhibition(S, Vmax, Km, I, Ki):
+def competitive_inhibition(S, Vmax, Km, Inhibitor_conc, Ki):
     """
     Competitive inhibition model.
 
@@ -63,7 +62,7 @@ def competitive_inhibition(S, Vmax, Km, I, Ki):
         Maximum velocity (μM/min)
     Km : float
         Michaelis constant (μM)
-    I : float
+    Inhibitor_conc : float
         Inhibitor concentration (μM)
     Ki : float
         Inhibition constant (μM)
@@ -73,7 +72,7 @@ def competitive_inhibition(S, Vmax, Km, I, Ki):
     v : array_like
         Reaction velocity (μM/min)
     """
-    Km_app = Km * (1 + I / Ki)
+    Km_app = Km * (1 + Inhibitor_conc / Ki)
     return Vmax * S / (Km_app + S)
 
 

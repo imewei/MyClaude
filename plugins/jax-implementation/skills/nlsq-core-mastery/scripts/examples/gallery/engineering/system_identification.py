@@ -14,6 +14,7 @@ Key Concepts:
 - Rise time and settling time calculation
 """
 
+from scipy import stats
 import jax.numpy as jnp
 import matplotlib.pyplot as plt
 import numpy as np
@@ -220,7 +221,6 @@ print(f"  R²: {r_squared:.4f} (closer to 1 is better)")
 print(f"  RMSE/Range: {rmse / (output_measured.max() - output_measured.min()):.2%}")
 
 # Check for systematic residuals
-from scipy import stats
 
 # Durbin-Watson statistic for autocorrelation
 dw = np.sum(np.diff(residuals) ** 2) / np.sum(residuals**2)

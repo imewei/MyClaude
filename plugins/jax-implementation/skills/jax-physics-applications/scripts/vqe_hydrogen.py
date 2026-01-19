@@ -102,7 +102,7 @@ def main():
     final_energy = energies[-1]
     energy_error = jnp.abs(final_energy - E_exact)
 
-    print(f"\nEnergy Results:")
+    print("\nEnergy Results:")
     print(f"  VQE energy: {final_energy:.6f} Ha")
     print(f"  Exact energy: {E_exact:.6f} Ha")
     print(f"  Absolute error: {energy_error:.6f} Ha")
@@ -114,20 +114,20 @@ def main():
         print(f"  ✓ Chemical accuracy achieved (< {chemical_accuracy} Ha)")
     else:
         print(f"  ⚠ Chemical accuracy NOT achieved (error = {energy_error:.6f} Ha)")
-        print(f"    Consider: more circuit layers, better ansatz, or longer training")
+        print("    Consider: more circuit layers, better ansatz, or longer training")
 
     # Gradient analysis
     final_grad_norm = gradients_norm[-1]
-    print(f"\nGradient Analysis:")
+    print("\nGradient Analysis:")
     print(f"  Initial |∇E|: {gradients_norm[0]:.6f}")
     print(f"  Final |∇E|: {final_grad_norm:.6f}")
 
     if final_grad_norm < 1e-4:
-        print(f"  ✓ Convergence: EXCELLENT (gradient vanished)")
+        print("  ✓ Convergence: EXCELLENT (gradient vanished)")
     elif final_grad_norm < 1e-2:
-        print(f"  ✓ Convergence: GOOD")
+        print("  ✓ Convergence: GOOD")
     else:
-        print(f"  ⚠ Convergence: INCOMPLETE (gradient still large)")
+        print("  ⚠ Convergence: INCOMPLETE (gradient still large)")
 
     # Convergence statistics
     energies_array = jnp.array(energies)
@@ -138,12 +138,12 @@ def main():
         print(f"  Energy std: {recent_std:.8f} Ha")
 
         if recent_std < 1e-6:
-            print(f"  ✓ Stable convergence achieved")
+            print("  ✓ Stable convergence achieved")
         else:
-            print(f"  ~ Energy still fluctuating")
+            print("  ~ Energy still fluctuating")
 
     # 6. Visualization
-    print(f"\nGenerating plots...")
+    print("\nGenerating plots...")
     fig, axes = plt.subplots(2, 2, figsize=(12, 10))
 
     # Energy convergence
@@ -196,7 +196,7 @@ def main():
 
     plt.tight_layout()
     plt.savefig('vqe_hydrogen_results.png', dpi=300, bbox_inches='tight')
-    print(f"✓ Plots saved to: vqe_hydrogen_results.png")
+    print("✓ Plots saved to: vqe_hydrogen_results.png")
 
     print("\n" + "=" * 60)
     print("VQE SIMULATION COMPLETE")

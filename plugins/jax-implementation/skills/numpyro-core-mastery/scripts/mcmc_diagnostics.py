@@ -10,7 +10,6 @@ Or import:
     diagnose_mcmc(mcmc, verbose=True)
 """
 
-import jax.numpy as jnp
 import argparse
 import pickle
 

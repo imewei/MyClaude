@@ -14,6 +14,7 @@ Key Concepts:
 - Comparison with theoretical models
 """
 
+from scipy import signal
 import jax.numpy as jnp
 import matplotlib.pyplot as plt
 import numpy as np
@@ -336,7 +337,6 @@ ax4.grid(True, alpha=0.3)
 
 # Frequency spectrum (FFT)
 ax5 = plt.subplot(3, 2, 5)
-from scipy import signal
 
 frequencies, power = signal.periodogram(
     displacement_measured, fs=1 / (time[1] - time[0])

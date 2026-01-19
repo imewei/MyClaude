@@ -55,7 +55,7 @@ def monoprotic_titration(V, pKa, Ve, C_acid, C_base):
     V = jnp.maximum(V, 1e-6)
 
     # Initial volume of acid
-    V0 = 25.0  # mL (fixed for this example)
+    _ = 25.0  # mL (fixed for this example)
 
     # Fraction titrated
     f = V / Ve

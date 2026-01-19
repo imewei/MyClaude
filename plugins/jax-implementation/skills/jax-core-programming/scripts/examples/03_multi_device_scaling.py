@@ -57,12 +57,12 @@ def example_multi_device_scaling():
         # 2D mesh: data and model parallelism
         data_sharding = NamedSharding(mesh, P('data', None))
         model_sharding = NamedSharding(mesh, P(None, 'model'))
-        full_sharding = NamedSharding(mesh, P('data', 'model'))
+        _ = NamedSharding(mesh, P('data', 'model'))
     else:
         # 1D mesh: data parallelism only
         data_sharding = NamedSharding(mesh, P('data'))
         model_sharding = NamedSharding(mesh, P(None))
-        full_sharding = NamedSharding(mesh, P('data'))
+        _ = NamedSharding(mesh, P('data'))
 
     print("Sharding strategies created:")
     print(f"  Data sharding: shard along {axis_names[0]}")
@@ -105,7 +105,7 @@ def example_multi_device_scaling():
         w1_sharded = jax.device_put(w1, NamedSharding(mesh, P(None)))
         w2_sharded = jax.device_put(w2, NamedSharding(mesh, P(None)))
         print(f"Weight w1 shape: {w1.shape}")
-        print(f"Weight w1 sharding: replicated")
+        print("Weight w1 sharding: replicated")
 
     # Step 5: Sharded computation
     print("\nStep 5: Sharded computation (automatic communication)")

@@ -11,7 +11,6 @@ from flax import nnx
 import optax
 import orbax.checkpoint as ocp
 import tempfile
-import os
 
 
 class MLP(nnx.Module):
@@ -95,7 +94,7 @@ def example_production_training():
             weight_decay=config['weight_decay']
         )
     )
-    print(f"Optimizer initialized with AdamW")
+    print("Optimizer initialized with AdamW")
 
     # Step 3: Setup async checkpointing
     print("\nStep 3: Setup async checkpointing")
@@ -226,7 +225,7 @@ def example_production_training():
     # Cleanup
     import shutil
     shutil.rmtree(checkpoint_dir)
-    print(f"\n✓ Production training workflow complete!")
+    print("\n✓ Production training workflow complete!")
     print(f"Trained for {step} steps across {config['num_epochs']} epochs")
 
 

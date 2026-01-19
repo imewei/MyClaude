@@ -177,11 +177,11 @@ def check_gradient_flow(loss_fn: Callable, params: Any, *args, **kwargs):
         print(f"    norm={grad_norm:.4f}, mean={grad_mean:.6f}, max={grad_max:.6f}")
 
         if has_nan:
-            print(f"    ⚠ Contains NaN!")
+            print("    ⚠ Contains NaN!")
         if has_inf:
-            print(f"    ⚠ Contains Inf!")
+            print("    ⚠ Contains Inf!")
         if grad_norm == 0:
-            print(f"    ⚠ Zero gradient (no gradient flow)")
+            print("    ⚠ Zero gradient (no gradient flow)")
 
     # Check all parameters
     jax.tree_map_with_path(check_param, grads)

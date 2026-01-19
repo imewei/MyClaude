@@ -111,7 +111,7 @@ def main():
     energy_std = jnp.std(energies)
     energy_drift = jnp.abs(energies[-1] - energies[0]) / jnp.abs(energy_mean)
 
-    print(f"\nEnergy Statistics:")
+    print("\nEnergy Statistics:")
     print(f"  Mean energy: {energy_mean:.6f}")
     print(f"  Std deviation: {energy_std:.6f}")
     print(f"  Relative drift: {energy_drift:.6f} ({energy_drift*100:.4f}%)")
@@ -127,13 +127,13 @@ def main():
     temp_mean = jnp.mean(temperatures)
     temp_std = jnp.std(temperatures)
 
-    print(f"\nTemperature Statistics:")
+    print("\nTemperature Statistics:")
     print(f"  Mean temperature: {temp_mean:.6f}")
     print(f"  Std deviation: {temp_std:.6f}")
     print(f"  Relative fluctuation: {temp_std/temp_mean*100:.2f}%")
 
     # Compute radial distribution function
-    print(f"\nComputing radial distribution function...")
+    print("\nComputing radial distribution function...")
     rdf, r_bins = compute_rdf(positions_trajectory[-1], box_size, displacement_fn)
 
     first_peak_idx = jnp.argmax(rdf[:20])
@@ -145,7 +145,7 @@ def main():
     print(f"  Difference: {jnp.abs(first_peak_position - lj_minimum):.3f}")
 
     # 8. Visualization
-    print(f"\nGenerating plots...")
+    print("\nGenerating plots...")
     fig, axes = plt.subplots(2, 2, figsize=(12, 10))
 
     # Energy time series
@@ -189,7 +189,7 @@ def main():
 
     plt.tight_layout()
     plt.savefig('md_lennard_jones_results.png', dpi=300, bbox_inches='tight')
-    print(f"✓ Plots saved to: md_lennard_jones_results.png")
+    print("✓ Plots saved to: md_lennard_jones_results.png")
 
     print("\n" + "=" * 60)
     print("SIMULATION COMPLETE")

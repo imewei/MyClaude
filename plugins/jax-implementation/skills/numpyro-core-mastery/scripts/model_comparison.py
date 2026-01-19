@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 """Model comparison using WAIC and LOO."""
 
-import jax.numpy as jnp
 from numpyro.diagnostics import waic, loo
 
 
