@@ -19,5 +19,10 @@
     "review",
     "debugging"
   ],
+  "agents": [
+    "quality-specialist",
+    "debugger-pro",
+    "documentation-expert"
+  ],
   "category": "quality"
 }
