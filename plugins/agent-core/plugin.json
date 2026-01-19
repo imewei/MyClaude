@@ -18,5 +18,10 @@
     "workflow",
     "ai"
   ],
+  "agents": [
+    "orchestrator",
+    "context-specialist",
+    "reasoning-engine"
+  ],
   "category": "orchestration"
 }
