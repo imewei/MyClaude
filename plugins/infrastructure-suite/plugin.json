@@ -20,5 +20,10 @@
     "workflow",
     "automation"
   ],
+  "agents": [
+    "devops-architect",
+    "sre-expert",
+    "automation-engineer"
+  ],
   "category": "infrastructure"
 }
