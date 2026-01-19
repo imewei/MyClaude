@@ -182,8 +182,8 @@ def main():
     print(f"{BLUE}=== Performance Summary ==={NC}")
     print(f"Overall plugin health: {GREEN}GOOD{NC}")
     print(f"Estimated overall improvement potential: {YELLOW}40-60%{NC}")
-    print(f"Primary optimizations: Adaptive routing, caching, skills creation")
-    print(f"Quick wins: plugin.json ✓, validation scripts ✓")
+    print("Primary optimizations: Adaptive routing, caching, skills creation")
+    print("Quick wins: plugin.json ✓, validation scripts ✓")
 
 
 if __name__ == "__main__":

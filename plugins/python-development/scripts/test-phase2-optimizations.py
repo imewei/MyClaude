@@ -12,15 +12,16 @@ Tests:
 
 import sys
 import time
+import importlib.util
 from pathlib import Path
-from typing import List, Tuple
+from typing import List
 
 # Add scripts directory to path
 SCRIPTS_DIR = Path(__file__).parent
 sys.path.insert(0, str(SCRIPTS_DIR))
 
 # Import Phase 2 modules
-import importlib.util
+
 
 def load_module(name: str, path: Path):
     """Dynamically load module"""

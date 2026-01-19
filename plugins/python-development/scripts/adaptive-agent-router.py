@@ -14,6 +14,7 @@ To route queries to the optimal model with caching and monitoring.
 import json
 import time
 import sys
+import importlib.util
 from pathlib import Path
 from typing import Dict, Optional, Tuple
 from dataclasses import dataclass
@@ -23,7 +24,7 @@ SCRIPTS_DIR = Path(__file__).parent
 sys.path.insert(0, str(SCRIPTS_DIR))
 
 # Import Phase 2 components
-import importlib.util
+
 
 def load_module(name: str, path: Path):
     """Dynamically load module from path"""
@@ -117,7 +118,7 @@ class AdaptiveAgentRouter:
         config = {}
         lines = frontmatter.split('\n')
 
-        current_section = None
+        _ = None
         for line in lines:
             line = line.strip()
             if not line:
@@ -129,7 +130,7 @@ class AdaptiveAgentRouter:
                 config['model'] = line.split(':', 1)[1].strip()
             elif line.startswith('complexity_hints:'):
                 config['complexity_hints'] = {}
-                current_section = 'hints'
+                _ = 'hints'
 
         return config
 
@@ -168,7 +169,7 @@ class AdaptiveAgentRouter:
 
         # Get agent configuration
         agent_config = self.agents.get(agent, {})
-        default_model = agent_config.get('model', 'sonnet')
+        _ = agent_config.get('model', 'sonnet')
 
         # Determine optimal model
         recommended_model = analysis.recommended_model.value

@@ -1,8 +1,16 @@
 """Tests for the core module."""
 
-import pytest
+import sys
+from pathlib import Path
 
-from example_package.core import Greeter, greet, greet_multiple
+# Add the package root to sys.path so we can import 'example_package'
+# without it being installed in the environment
+pkg_root = Path(__file__).parent.parent / "src"
+sys.path.insert(0, str(pkg_root))
+
+import pytest  # noqa: E402
+
+from example_package.core import Greeter, greet, greet_multiple  # noqa: E402
 
 
 class TestGreet:

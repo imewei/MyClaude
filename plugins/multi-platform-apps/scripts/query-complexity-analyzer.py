@@ -9,7 +9,7 @@ based on complexity heuristics tailored for multi-platform development.
 import re
 from dataclasses import dataclass
 from enum import Enum
-from typing import List, Dict, Optional
+from typing import Dict, Optional
 
 
 class QueryComplexity(Enum):

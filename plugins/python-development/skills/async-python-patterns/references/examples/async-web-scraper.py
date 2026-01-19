@@ -16,7 +16,6 @@ import aiohttp
 import time
 from dataclasses import dataclass
 from typing import List, Optional
-from urllib.parse import urljoin, urlparse
 
 
 @dataclass
@@ -219,7 +218,7 @@ async def demo_basic_usage():
     ]
 
     scraper = AsyncWebScraper(max_concurrent=3, timeout=10.0)
-    results = await scraper.scrape_urls(urls)
+    _ = await scraper.scrape_urls(urls)
     scraper.print_summary()
 
 
@@ -240,7 +239,7 @@ async def demo_large_scale():
     urls = [f"{url}?id={i}" for url in base_urls for i in range(25)]
 
     scraper = AsyncWebScraper(max_concurrent=20, timeout=5.0)
-    results = await scraper.scrape_urls(urls)
+    _ = await scraper.scrape_urls(urls)
     scraper.print_summary()
 
 
@@ -264,7 +263,7 @@ async def demo_error_handling():
         max_retries=2,
         retry_delay=0.5
     )
-    results = await scraper.scrape_urls(urls)
+    _ = await scraper.scrape_urls(urls)
     scraper.print_summary()
 
 

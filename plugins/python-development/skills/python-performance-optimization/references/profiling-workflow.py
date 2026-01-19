@@ -33,7 +33,7 @@ def process_data_slow(data: list[int]) -> list[int]:
     result = []
     for i in range(len(data)):
         # Inefficient: recalculating sum every iteration
-        total = sum(data)
+        _ = sum(data)
         # Inefficient: quadratic complexity
         for j in range(len(data)):
             if data[i] > data[j]:
@@ -66,7 +66,7 @@ def fibonacci_iterative(n: int) -> int:
 def process_data_fast(data: list[int]) -> list[int]:
     """Optimized data processing with pre-computed values."""
     result = []
-    total = sum(data)  # Calculate once
+    _ = sum(data)  # Calculate once
     sorted_data = sorted(data)  # Sort once for efficient comparisons
 
     for i, val in enumerate(data):
