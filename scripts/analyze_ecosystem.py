@@ -3,19 +3,56 @@ import json
 import yaml
 import re
 from pathlib import Path
+from typing import Any, Dict, List, Set, Union
 
-def parse_frontmatter(content):
+# Functional domain mapping rules (keywords -> domain)
+DOMAIN_MAP: Dict[str, str] = {
+    "testing": "Quality Engineering",
+    "validation": "Quality Engineering",
+    "qa": "Quality Engineering",
+    "optimization": "Performance Optimization",
+    "performance": "Performance Optimization",
+    "security": "Security",
+    "vulnerability": "Security",
+    "jax": "Scientific Computing",
+    "numpy": "Scientific Computing",
+    "scientific": "Scientific Computing",
+    "hpc": "High Performance Computing",
+    "parallel": "High Performance Computing",
+    "monitoring": "Observability",
+    "observability": "Observability",
+    "deployment": "DevOps",
+    "ci/cd": "DevOps",
+    "docker": "DevOps"
+}
+
+def parse_frontmatter(content: str) -> Dict[str, Any]:
+    """Parses YAML frontmatter from a markdown string."""
     match = re.match(r'^---\n(.*?)\n---', content, re.DOTALL)
     if match:
         try:
-            return yaml.safe_load(match.group(1))
+            return yaml.safe_load(match.group(1)) or {}
         except yaml.YAMLError:
             return {}
     return {}
 
-def analyze_ecosystem(base_path):
-    plugins_dir = Path(base_path) / "plugins"
-    capabilities = {
+def extract_domains(texts: List[str], domain_map: Dict[str, str]) -> Set[str]:
+    """Extracts domains from a list of texts based on a mapping of keywords."""
+    found_domains: Set[str] = set()
+    for text in texts:
+        if not text:
+            continue
+        text_lower = text.lower()
+        for keyword, domain in domain_map.items():
+            if keyword in text_lower:
+                found_domains.add(domain)
+    return found_domains
+
+def analyze_ecosystem(base_path: Union[str, Path]) -> Dict[str, Any]:
+    """Analyzes the plugin ecosystem and extracts capabilities."""
+    base_path = Path(base_path)
+    plugins_dir = base_path / "plugins"
+    capabilities: Dict[str, Any] = {
         "plugins": [],
         "capability_matrix": {}
     }
@@ -24,32 +61,11 @@ def analyze_ecosystem(base_path):
         print(f"Directory {plugins_dir} not found.")
         return capabilities
 
-    # Functional domain mapping rules (keywords -> domain)
-    domain_map = {
-        "testing": "Quality Engineering",
-        "validation": "Quality Engineering",
-        "qa": "Quality Engineering",
-        "optimization": "Performance Optimization",
-        "performance": "Performance Optimization",
-        "security": "Security",
-        "vulnerability": "Security",
-        "jax": "Scientific Computing",
-        "numpy": "Scientific Computing",
-        "scientific": "Scientific Computing",
-        "hpc": "High Performance Computing",
-        "parallel": "High Performance Computing",
-        "monitoring": "Observability",
-        "observability": "Observability",
-        "deployment": "DevOps",
-        "ci/cd": "DevOps",
-        "docker": "DevOps"
-    }
-
     for plugin_path in plugins_dir.iterdir():
         if not plugin_path.is_dir():
             continue
 
-        plugin_info = {
+        plugin_info: Dict[str, Any] = {
             "name": plugin_path.name,
             "path": str(plugin_path),
             "agents": [],
@@ -68,13 +84,8 @@ def analyze_ecosystem(base_path):
                     manifest = json.load(f)
                     keywords = manifest.get("keywords", [])
                     categories = manifest.get("categories", [])
-
-                    for k in keywords + categories:
-                        k_lower = k.lower()
-                        for key, domain in domain_map.items():
-                            if key in k_lower:
-                                plugin_info["domains"].add(domain)
-            except Exception as e:
+                    plugin_info["domains"].update(extract_domains(keywords + categories, DOMAIN_MAP))
+            except (json.JSONDecodeError, OSError) as e:
                 print(f"Error parsing {manifest_path}: {e}")
 
         # 2. Parse agents
@@ -92,13 +103,10 @@ def analyze_ecosystem(base_path):
                                 "description": frontmatter.get("description", "")
                             }
                             plugin_info["agents"].append(agent_data)
-
-                            spec = agent_data["specialization"].lower()
-                            desc = agent_data["description"].lower()
-                            for key, domain in domain_map.items():
-                                if key in spec or key in desc:
-                                    plugin_info["domains"].add(domain)
-                except Exception as e:
+                            plugin_info["domains"].update(
+                                extract_domains([agent_data["specialization"], agent_data["description"]], DOMAIN_MAP)
+                            )
+                except (yaml.YAMLError, OSError) as e:
                     print(f"Error parsing agent {agent_file}: {e}")
 
         # 3. Parse skills
@@ -120,16 +128,13 @@ def analyze_ecosystem(base_path):
                                     "description": frontmatter.get("description", "")
                                 }
                                 plugin_info["skills"].append(skill_data)
-
-                                spec = skill_data["specialization"].lower()
-                                desc = skill_data["description"].lower()
-                                for key, domain in domain_map.items():
-                                    if key in spec or key in desc:
-                                        plugin_info["domains"].add(domain)
-                    except Exception as e:
+                                plugin_info["domains"].update(
+                                    extract_domains([skill_data["specialization"], skill_data["description"]], DOMAIN_MAP)
+                                )
+                    except (yaml.YAMLError, OSError) as e:
                         print(f"Error parsing skill {skill_file}: {e}")
 
-        plugin_info["domains"] = list(plugin_info["domains"])
+        plugin_info["domains"] = sorted(list(plugin_info["domains"]))
         capabilities["plugins"].append(plugin_info)
 
         # Update capability matrix
@@ -141,11 +146,22 @@ def analyze_ecosystem(base_path):
     return capabilities
 
 if __name__ == "__main__":
-    repo_root = os.getcwd()
+    import sys
+
+    # Determine repo root relative to this script
+    script_dir = Path(__file__).parent.absolute()
+    default_repo_root = script_dir.parent
+
+    # Allow overriding repo root via argument
+    repo_root = Path(sys.argv[1]) if len(sys.argv) > 1 else default_repo_root
+
     report = analyze_ecosystem(repo_root)
 
-    output_path = Path(repo_root) / "ecosystem_capabilities.json"
-    with open(output_path, 'w') as f:
-        json.dump(report, f, indent=2)
-
-    print(f"Generated {output_path}")
+    output_path = repo_root / "ecosystem_capabilities.json"
+    try:
+        with open(output_path, 'w') as f:
+            json.dump(report, f, indent=2)
+        print(f"Generated {output_path}")
+    except OSError as e:
+        print(f"Error writing report to {output_path}: {e}")
+        sys.exit(1)
