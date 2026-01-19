@@ -255,6 +255,48 @@ end
 4. Add `[compat]` entries
 5. `git push -u origin main`
 
+### CI/CD Setup (--ci flag)
+
+Generate GitHub Actions workflows for Julia packages:
+
+**Workflow Components:**
+| Component | Purpose |
+|-----------|---------|
+| actions/checkout@v4 | Checkout code |
+| julia-actions/setup-julia@v1 | Install Julia |
+| julia-actions/cache@v1 | Cache packages |
+| julia-actions/julia-buildpkg@v1 | Build |
+| julia-actions/julia-runtest@v1 | Test |
+
+**Platform Matrix:**
+- Linux (ubuntu-latest): Always included
+- macOS: For platform-specific code
+- Windows: For Windows compatibility
+
+**Julia Versions:**
+- LTS (1.6): Long-term support
+- Latest (1): Current stable
+- Nightly: Future compatibility testing
+
+**Optional Features:**
+- `--coverage`: Codecov/Coveralls integration
+- `--docs`: Documenter.jl workflow
+- `--compat-helper`: Dependency update automation
+- `--tagbot`: Release automation
+- `--formatter`: JuliaFormatter checks
+- `--quality`: Aqua.jl and JET.jl analysis
+
+**Coverage Setup:**
+1. Add julia-processcoverage action
+2. Add codecov-action with lcov.info
+3. Create .codecov.yml (target 80%)
+4. Add badge to README
+
+**Documentation Workflow:**
+- Trigger on main, tags, PRs
+- Install docs dependencies
+- Deploy with DOCUMENTER_KEY secret
+
 ---
 
 ## Success Criteria
