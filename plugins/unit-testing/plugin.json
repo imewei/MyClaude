@@ -20,5 +20,8 @@
     "debugging",
     "quality-engineering"
   ],
+  "agents": ["./agents"],
+  "commands": ["./commands"],
+  "skills": ["./skills"],
   "category": "development"
 }

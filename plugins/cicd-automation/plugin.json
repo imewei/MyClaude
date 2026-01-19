@@ -20,26 +20,5 @@
     "error-resolution",
     "workflow-automation"
   ],
-  "category": "infrastructure",
-  "documentation": {
-    "external_docs": {
-      "fix-commit-errors": [
-        "docs/cicd-automation/multi-agent-error-analysis.md",
-        "docs/cicd-automation/error-pattern-library.md",
-        "docs/cicd-automation/fix-strategies.md",
-        "docs/cicd-automation/knowledge-base-system.md",
-        "docs/cicd-automation/fix-examples.md"
-      ],
-      "workflow-automate": [
-        "docs/cicd-automation/workflow-analysis-framework.md",
-        "docs/cicd-automation/github-actions-reference.md",
-        "docs/cicd-automation/gitlab-ci-reference.md",
-        "docs/cicd-automation/terraform-cicd-integration.md",
-        "docs/cicd-automation/security-automation-workflows.md",
-        "docs/cicd-automation/workflow-orchestration-patterns.md"
-      ]
-    },
-    "total_lines": "~4,600 lines",
-    "command_optimization": "62.1% token reduction (2,391 → 906 lines)"
-  }
+  "category": "infrastructure"
 }

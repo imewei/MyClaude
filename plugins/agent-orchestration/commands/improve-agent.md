@@ -66,7 +66,7 @@ Top 3 Issues:
 | 3 | Testing & validation | Test suite, A/B testing, evaluation |
 | 4 | Deployment & monitoring | Versioning, staged rollout, monitoring |
 
-**Detailed methodology:** [Agent Optimization Guide](../../docs/agent-optimization-guide.md)
+**Detailed methodology:** [Agent Optimization Guide](../docs/agent-optimization-guide.md)
 
 ---
 
@@ -141,7 +141,7 @@ Execute all phases sequentially with validation gates:
 | No performance data | Agent needs 7+ days production usage |
 | Improvements don't show impact | Need 100+ tasks for statistical significance |
 
-**More:** [Troubleshooting Guide](../../docs/troubleshooting.md)
+**More:** [Troubleshooting Guide](../docs/troubleshooting.md)
 
 ---
 
@@ -149,7 +149,7 @@ Execute all phases sequentially with validation gates:
 
 | Document | Purpose |
 |----------|---------|
-| [Agent Optimization Guide](../../docs/agent-optimization-guide.md) | Complete methodology |
-| [Success Metrics](../../docs/success-metrics.md) | KPIs and thresholds |
-| [Prompt Techniques](../../docs/prompt-techniques.md) | Improvement patterns |
-| [Testing Tools](../../docs/testing-tools.md) | Validation frameworks |
+| [Agent Optimization Guide](../docs/agent-optimization-guide.md) | Complete methodology |
+| [Success Metrics](../docs/success-metrics.md) | KPIs and thresholds |
+| [Prompt Techniques](../docs/prompt-techniques.md) | Improvement patterns |
+| [Testing Tools](../docs/testing-tools.md) | Validation frameworks |

@@ -1,5 +1,6 @@
 ---
 version: "2.1.0"
+description: Orchestrate end-to-end feature development with customizable methodologies (TDD, BDD, DDD) and deployment strategies
 category: "backend-development"
 command: "/feature-development"
 

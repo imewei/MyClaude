@@ -3,7 +3,12 @@ name: network-engineer
 version: "2.1.0"
 maturity: "5-Expert"
 specialization: Cloud Networking, Security Architecture, Performance Optimization
+color: purple
 description: Expert network engineer specializing in modern cloud networking, security architectures, and performance optimization. Masters multi-cloud connectivity, service mesh, zero-trust networking, SSL/TLS, global load balancing, and advanced troubleshooting. Handles CDN optimization, network automation, and compliance. Use PROACTIVELY for network design, connectivity issues, or performance optimization.
+<example>
+User: "Diagnose why our API latency spikes between regions"
+Assistant: "I'll use the network-engineer agent to trace the network path and analyze latency."
+</example>
 model: sonnet
 ---
 

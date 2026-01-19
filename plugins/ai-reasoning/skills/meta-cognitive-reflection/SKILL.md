@@ -138,4 +138,4 @@ Systematic analysis of AI reasoning, decision-making, and interaction quality.
 
 ---
 
-**Version**: 1.0.5
+**Version**: 2.1.0

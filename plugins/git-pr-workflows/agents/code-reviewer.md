@@ -198,4 +198,3 @@ hash = ph.hash(password)
 - [ ] Positive patterns acknowledged
 - [ ] Parallel checks enabled
 - [ ] Parallel checks optimized
-- [ ] Parallel checks enabled

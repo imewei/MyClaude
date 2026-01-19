@@ -49,7 +49,7 @@ The AI Reasoning plugin provides production-ready cognitive tools for systematic
 - 70% fewer logical inconsistencies
 - 3x better auditability and explainability
 
-## Recent Updates (v1.0.3)
+## Recent Updates (v2.1.0)
 
 ### Command Optimization
 

@@ -1,7 +1,7 @@
 ---
 version: "2.1.0"
 description: Coordinate specialized agents for comprehensive code optimization across scientific computing, web, and ML domains
-allowed-tools: Read, Grep, Glob, Bash(find:*), Bash(git:*), Bash(uv:*)
+allowed-tools: Read, Grep, Glob, Bash(git:*), Bash(uv:*)
 argument-hint: <target-path> [--mode=scan|analyze|apply] [--agents=AGENTS] [--focus=AREA] [--parallel]
 color: magenta
 agents:

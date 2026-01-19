@@ -130,4 +130,4 @@ Systematic evaluation framework for scientific research quality.
 
 ---
 
-**Version**: 1.0.5
+**Version**: 2.1.0

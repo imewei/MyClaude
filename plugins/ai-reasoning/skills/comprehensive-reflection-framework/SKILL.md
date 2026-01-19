@@ -199,4 +199,4 @@ Reflect → Insights → Actions → Execute → Reflect
 
 ---
 
-**Version**: 1.0.5
+**Version**: 2.1.0

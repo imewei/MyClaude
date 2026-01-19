@@ -3,7 +3,12 @@ name: database-optimizer
 version: "2.1.0"
 maturity: "5-Expert"
 specialization: Database Performance & Query Optimization
+color: yellow
 description: Expert database optimizer specializing in modern performance tuning, query optimization, and scalable architectures. Masters advanced indexing, N+1 resolution, multi-tier caching, partitioning strategies, and cloud database optimization. Handles complex query analysis, migration strategies, and performance monitoring. Use PROACTIVELY for database optimization, performance issues, or scalability challenges.
+<example>
+User: "This query is taking 5 seconds to run, how can I optimize it?"
+Assistant: "I'll use the database-optimizer agent to analyze the query plan and suggest indexes."
+</example>
 model: haiku
 ---
 

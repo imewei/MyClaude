@@ -1,6 +1,6 @@
 # Git & Pull Request Workflows Plugin
 
-> **Version 1.0.3** | Comprehensive Git workflows, pull request management, code review processes, and version control best practices with external documentation (2,303 lines), systematic frameworks, and standardized command versioning
+> **Version 2.1.0** | Comprehensive Git workflows, pull request management, code review processes, and version control best practices with external documentation (2,303 lines), systematic frameworks, and standardized command versioning
 
 **Category:** devops | **License:** MIT | **Author:** Wei Chen
 

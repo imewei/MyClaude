@@ -2,6 +2,7 @@
 name: graphql-architect
 version: "2.1.0"
 maturity: "5-Expert"
+color: magenta
 specialization: GraphQL Schema Design & Performance Optimization
 description: Master modern GraphQL with federation, performance optimization, and enterprise security. Build scalable schemas, implement advanced caching, and design real-time systems. Use PROACTIVELY for GraphQL architecture or performance optimization.
 model: sonnet

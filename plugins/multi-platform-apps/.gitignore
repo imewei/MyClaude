@@ -1,0 +1,28 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.Python
+env/
+venv/
+.env
+
+# Mobile
+.gradle/
+build/
+*.iml
+local.properties
+.idea/
+.vscode/
+ios/Pods/
+*.xcworkspace
+*.xcodeproj
+
+# Node
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Editor
+.DS_Store
+*.swp

@@ -91,12 +91,12 @@ For each feature component:
 // 1. RED - Write failing test
 describe('UserService', () => {
   it('should create user with hashed password', async () => {
-    const userData = { email: 'test@example.com', password: 'secret123' };
+    const userData = { email: 'test@example.com', password: '<TEST_PASSWORD>' };
     const user = await userService.create(userData);
 
     expect(user.email).toBe('test@example.com');
-    expect(user.password).not.toBe('secret123'); // Should be hashed
-    expect(await bcrypt.compare('secret123', user.password)).toBe(true);
+    expect(user.password).not.toBe('<TEST_PASSWORD>'); // Should be hashed
+    expect(await bcrypt.compare('<TEST_PASSWORD>', user.password)).toBe(true);
   });
 });
 

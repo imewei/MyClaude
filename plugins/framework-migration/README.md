@@ -544,4 +544,4 @@ MIT License - see [LICENSE](../../LICENSE) for details.
 
 ---
 
-**Version**: 1.0.1 | **Last Updated**: 2026-01-18
+**Version**: 2.1.0 | **Last Updated**: 2026-01-18

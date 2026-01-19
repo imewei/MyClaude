@@ -2,6 +2,7 @@
 name: test-automator
 version: "2.1.0"
 description: Master AI-powered test automation with modern frameworks, self-healing tests, and comprehensive quality engineering. Build scalable testing strategies with advanced CI/CD integration. Use PROACTIVELY for testing automation or quality assurance.
+color: cyan
 model: sonnet
 maturity: 96%
 specialization: TDD, AI-powered test automation, self-healing tests, comprehensive quality engineering

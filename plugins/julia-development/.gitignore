@@ -1,0 +1,16 @@
+# Julia
+*.jl.cov
+*.jl.*.cov
+*.ji
+*.o
+*.so
+*.dylib
+*.dll
+*.g.v
+*.log
+Manifest.toml
+docs/build/
+docs/site/
+.ipynb_checkpoints/
+.DS_Store
+.vscode/
