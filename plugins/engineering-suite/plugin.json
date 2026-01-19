@@ -22,5 +22,10 @@
     "cli",
     "migration"
   ],
+  "agents": [
+    "software-architect",
+    "app-developer",
+    "systems-engineer"
+  ],
   "category": "engineering"
 }
