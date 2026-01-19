@@ -3,7 +3,7 @@ Production-ready REST API template using FastAPI.
 Includes pagination, filtering, error handling, and best practices.
 """
 
-from fastapi import FastAPI, HTTPException, Query, Path, Depends, status
+from fastapi import FastAPI, HTTPException, Query, Path, status
 from fastapi.responses import JSONResponse
 from pydantic import BaseModel, Field, EmailStr
 from typing import Optional, List, Any

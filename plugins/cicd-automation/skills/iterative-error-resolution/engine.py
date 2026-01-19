@@ -9,8 +9,8 @@ import json
 import time
 import re
 import sys
-from typing import Dict, List, Optional, Tuple
-from dataclasses import dataclass, field
+from typing import Dict, List, Optional
+from dataclasses import dataclass
 from enum import Enum
 from pathlib import Path
 
@@ -579,7 +579,7 @@ class IterativeFixEngine:
             print(f"  Errors remaining: {result.errors_remaining}")
             print(f"  Status: {'✓ SUCCESS' if result.success else '✗ FAILED'}")
             if result.fixes_applied:
-                print(f"  Fixes applied:")
+                print("  Fixes applied:")
                 for fix in result.fixes_applied:
                     print(f"    - {fix}")
             print()
