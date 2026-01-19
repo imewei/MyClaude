@@ -12,8 +12,7 @@ Usage:
 
 import argparse
 import sys
-from pathlib import Path
-from typing import Dict, List, Optional, Tuple
+from typing import Dict, List
 
 import numpy as np
 
@@ -139,7 +138,7 @@ def diagnose_activation_pathologies(activation_stats: Dict[str, Dict],
         if 'dead_neuron_percent' in stats:
             if stats['dead_neuron_percent'] > 50:
                 errors.append(f"💀 {layer_name}: {stats['dead_neuron_percent']:.1f}% dead neurons (ReLU)")
-                errors.append(f"   → Learning rate may be too high or initialization poor")
+                errors.append("   → Learning rate may be too high or initialization poor")
             elif stats['dead_neuron_percent'] > 20:
                 warnings.append(f"⚠️  {layer_name}: {stats['dead_neuron_percent']:.1f}% dead neurons")
 
@@ -147,7 +146,7 @@ def diagnose_activation_pathologies(activation_stats: Dict[str, Dict],
         if 'saturation_percent' in stats:
             if stats['saturation_percent'] > 80:
                 errors.append(f"📉 {layer_name}: {stats['saturation_percent']:.1f}% saturated activations")
-                errors.append(f"   → Consider switching to ReLU or adjusting input scale")
+                errors.append("   → Consider switching to ReLU or adjusting input scale")
             elif stats['saturation_percent'] > 50:
                 warnings.append(f"⚠️  {layer_name}: {stats['saturation_percent']:.1f}% saturated")
 
@@ -318,7 +317,7 @@ def main():
         help="Device to use (cuda/cpu)"
     )
 
-    args = parser.parse_args()
+    _ = parser.parse_args()
 
     print("\n" + "="*80)
     print("ACTIVATION ANALYSIS TOOL")

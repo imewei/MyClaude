@@ -500,6 +500,10 @@ All 6 skills enhanced with **3x more specific use cases**:
 - **[CHANGELOG.md](./CHANGELOG.md)** - Complete version history with detailed improvements
 - **[AGENT_ANALYSIS_SUMMARY.md](./AGENT_ANALYSIS_SUMMARY.md)** - Comprehensive agent analysis (450+ lines)
 
+### Internal Documentation
+- **[Mathematics](docs/mathematics/README.md)** - Linear algebra, calculus, optimization theory.
+- **[Diagnostics](docs/diagnostics/README.md)** - Training issues, gradient pathologies.
+
 ### Agent Documentation
 - **[neural-network-master.md](./agents/neural-network-master.md)** - Complete specification (1,675 lines)
 - **[neural-architecture-engineer.md](./agents/neural-architecture-engineer.md)** - Complete specification (1,403 lines)

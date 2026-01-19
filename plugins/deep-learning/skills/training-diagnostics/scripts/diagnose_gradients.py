@@ -12,8 +12,7 @@ Usage:
 
 import argparse
 import sys
-from pathlib import Path
-from typing import Dict, List, Optional, Tuple
+from typing import Dict, List, Optional
 
 import numpy as np
 
@@ -302,10 +301,10 @@ def main():
     checkpoint = torch.load(args.checkpoint, map_location=args.device)
 
     if isinstance(checkpoint, dict) and 'model_state_dict' in checkpoint:
-        model_state = checkpoint['model_state_dict']
+        _ = checkpoint['model_state_dict']
         print("Checkpoint format: state dict in 'model_state_dict' key")
     elif isinstance(checkpoint, dict) and 'state_dict' in checkpoint:
-        model_state = checkpoint['state_dict']
+        _ = checkpoint['state_dict']
         print("Checkpoint format: state dict in 'state_dict' key")
     else:
         print("Warning: Cannot automatically load model. Please load manually.")

@@ -13,9 +13,8 @@ Usage:
 import argparse
 import json
 import sys
-import glob
 from pathlib import Path
-from typing import Dict, List, Optional, Tuple
+from typing import Dict, List, Optional
 import concurrent.futures
 
 import numpy as np
@@ -39,7 +38,7 @@ def load_training_log(log_path: Path) -> Optional[Dict]:
                 with open(json_file) as f:
                     data = json.load(f)
                 return data
-            except Exception as e:
+            except Exception:
                 continue
 
     # Try config.json + metrics.json pattern
@@ -53,7 +52,7 @@ def load_training_log(log_path: Path) -> Optional[Dict]:
             with open(metrics_file) as f:
                 metrics = json.load(f)
             return {"config": config, "metrics": metrics}
-        except Exception as e:
+        except Exception:
             pass
 
     # Could add TensorBoard, W&B parsing here
@@ -292,7 +291,7 @@ def print_comparison_report(configs: Dict[str, Dict],
             convergence_pct = 100 * stats['convergence_epoch'] / stats['num_epochs']
             if convergence_pct < 50:
                 print(f"   ⚠️  {run_name}: Early convergence ({convergence_pct:.0f}% through training)")
-                print(f"      → Consider increasing learning rate or model capacity")
+                print("      → Consider increasing learning rate or model capacity")
 
     # Check for instability
     for run_name, stats in metric_comparison.items():
@@ -300,7 +299,7 @@ def print_comparison_report(configs: Dict[str, Dict],
             # High variance indicates instability
             if stats['std'] > 0.1 * abs(stats['mean']):
                 print(f"   ⚠️  {run_name}: High variance in {primary_metric}")
-                print(f"      → Training may be unstable, consider reducing learning rate")
+                print("      → Training may be unstable, consider reducing learning rate")
 
     print("\n" + "="*80 + "\n")
 
