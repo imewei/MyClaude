@@ -1,7 +1,7 @@
 """
 Timer utility for profiling code blocks.
 
-Used by load-profiler.py, activation-profiler.py, and other profiling tools.
+Used by load_profiler.py, activation_profiler.py, and other profiling tools.
 """
 
 import time

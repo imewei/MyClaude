@@ -6,20 +6,18 @@ Aggregates metrics from activation testing, command analysis, and skill validati
 to generate comprehensive triggering pattern reports with actionable recommendations.
 
 Usage:
-    python3 tools/triggering-reporter.py
-    python3 tools/triggering-reporter.py --reports-dir /path/to/reports
-    python3 tools/triggering-reporter.py --output comprehensive-report.md
+    python3 tools/triggering_reporter.py
+    python3 tools/triggering_reporter.py --reports-dir /path/to/reports
+    python3 tools/triggering_reporter.py --output comprehensive-report.md
 """
 
 import argparse
-import json
-import os
 import re
 import sys
 from dataclasses import dataclass, field
 from datetime import datetime
 from pathlib import Path
-from typing import Dict, List, Optional, Tuple
+from typing import Dict, List, Optional
 
 
 @dataclass
@@ -521,7 +519,7 @@ class TriggeringPatternReporter:
         else:
             report += "Continue monitoring triggering patterns and maintain current quality standards.\n"
 
-        report += f"""
+        report += """
 
 ## Pattern Improvement Suggestions
 
@@ -610,9 +608,9 @@ def main():
     if not reports_dir.exists():
         print(f"Error: Reports directory not found: {reports_dir}")
         print("Run the triggering analysis tools first:")
-        print("  - activation-tester.py")
-        print("  - command-analyzer.py")
-        print("  - skill-validator.py")
+        print("  - activation_tester.py")
+        print("  - command_analyzer.py")
+        print("  - skill_validator.py")
         return 1
 
     # Generate report

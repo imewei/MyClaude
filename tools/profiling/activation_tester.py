@@ -6,15 +6,14 @@ Tests plugin activation accuracy against test corpus samples, measuring false po
 and false negative rates. Target: <5% for both metrics.
 
 Usage:
-    python3 tools/activation-tester.py
-    python3 tools/activation-tester.py --plugins-dir /path/to/plugins
-    python3 tools/activation-tester.py --corpus-dir /path/to/test-corpus
-    python3 tools/activation-tester.py --plugin julia-development
+    python3 tools/activation_tester.py
+    python3 tools/activation_tester.py --plugins-dir /path/to/plugins
+    python3 tools/activation_tester.py --corpus-dir /path/to/test-corpus
+    python3 tools/activation_tester.py --plugin julia-development
 """
 
 import argparse
 import json
-import os
 import re
 import sys
 from dataclasses import dataclass, field
@@ -268,7 +267,7 @@ class PluginActivationTester:
         matching_dirs = []
         for dir_path in sample_path.rglob("*"):
             if dir_path.is_dir():
-                dir_name = dir_path.name.lower()
+                _ = dir_path.name.lower()
                 for pattern in plugin.directory_patterns:
                     if pattern.lower() in str(dir_path).lower():
                         matching_dirs.append(str(dir_path.relative_to(sample_path)))
@@ -453,7 +452,7 @@ Samples that triggered plugins but shouldn't have:
         for result in self.results:
             if result.false_positive:
                 report += f"- **{result.sample_name}** ({result.sample_category})\n"
-                report += f"  - Expected: No activation\n"
+                report += "  - Expected: No activation\n"
                 report += f"  - Activated: {', '.join(result.activated_plugins)}\n"
                 report += f"  - Problematic plugins: {', '.join(result.activated_plugins)}\n\n"
 
@@ -468,10 +467,10 @@ Samples that should have triggered plugins but didn't:
             if result.false_negative:
                 report += f"- **{result.sample_name}** ({result.sample_category})\n"
                 report += f"  - Expected: {', '.join(result.expected_plugins)}\n"
-                report += f"  - Activated: None\n"
+                report += "  - Activated: None\n"
                 report += f"  - Missing plugins: {', '.join(result.expected_plugins)}\n\n"
 
-        report += f"""
+        report += """
 ## Plugin Performance
 
 """
@@ -499,7 +498,7 @@ Samples that should have triggered plugins but didn't:
                        if max(expected, activated) > 0 else 0)
             report += f"| {plugin} | {expected} | {activated} | {accuracy:.1f}% |\n"
 
-        report += f"""
+        report += """
 ## Overall Assessment
 
 """
@@ -511,7 +510,7 @@ Samples that should have triggered plugins but didn't:
         else:
             report += "**Status:** ❌ NEEDS IMPROVEMENT - FP or FN rates above acceptable threshold\n\n"
 
-        report += f"Plugin activation patterns are "
+        report += "Plugin activation patterns are "
         if metrics.accuracy > 90:
             report += "highly accurate and meet quality standards. "
         elif metrics.accuracy > 75:
@@ -575,7 +574,7 @@ def main():
 
     if not corpus_dir.exists():
         print(f"Error: Test corpus directory not found: {corpus_dir}")
-        print(f"Run test-corpus-generator.py first to create test samples")
+        print("Run test_corpus_generator.py first to create test samples")
         return 1
 
     # Run tests

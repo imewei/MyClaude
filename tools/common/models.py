@@ -2,11 +2,11 @@
 Shared data models for plugin validation tools.
 
 Consolidates duplicate dataclass definitions from:
-- metadata-validator.py (ValidationError, ValidationResult)
-- plugin-review-script.py (ReviewIssue, ReviewReport)
-- xref-validator.py (CrossReference, ValidationResult)
-- load-profiler.py (LoadMetric, PluginLoadProfile)
-- activation-profiler.py (ActivationMetric, ActivationProfile)
+- metadata_validator.py (ValidationError, ValidationResult)
+- plugin_review_script.py (ReviewIssue, ReviewReport)
+- xref_validator.py (CrossReference, ValidationResult)
+- load_profiler.py (LoadMetric, PluginLoadProfile)
+- activation_profiler.py (ActivationMetric, ActivationProfile)
 """
 
 from dataclasses import dataclass, field
@@ -48,8 +48,8 @@ class ValidationIssue:
 class ValidationResult:
     """Standardized validation result for all validators.
 
-    Consolidates ValidationResult from metadata-validator.py, ReviewReport
-    from plugin-review-script.py, etc.
+    Consolidates ValidationResult from metadata_validator.py, ReviewReport
+    from plugin_review_script.py, etc.
     """
 
     plugin_name: str
@@ -136,7 +136,7 @@ class ValidationResult:
 class PluginMetadata:
     """Plugin metadata extracted from plugin.json.
 
-    Consolidates PluginMetadata from dependency-mapper.py and similar.
+    Consolidates PluginMetadata from dependency_mapper.py and similar.
     """
 
     name: str

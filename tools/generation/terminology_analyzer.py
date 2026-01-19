@@ -568,7 +568,7 @@ def main():
     report = analyzer.analyze_all_plugins()
 
     # Generate report
-    print(f"\n📊 Generating terminology analysis...")
+    print("\n📊 Generating terminology analysis...")
     analyzer.generate_report(args.output)
 
     # Export glossary if requested
@@ -576,7 +576,7 @@ def main():
         analyzer.export_glossary(args.export_glossary)
 
     # Print summary
-    print(f"\n✅ Analysis complete!")
+    print("\n✅ Analysis complete!")
     print(f"   Total terms: {report.total_terms:,}")
     print(f"   Unique terms: {report.unique_terms:,}")
     print(f"   Variations found: {len(report.variations_found)}")

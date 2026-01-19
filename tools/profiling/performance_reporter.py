@@ -11,17 +11,16 @@ Features:
 - Exports results to CSV/JSON
 
 Usage:
-    python3 tools/performance-reporter.py <plugin-name>
-    python3 tools/performance-reporter.py --all
-    python3 tools/performance-reporter.py --compare before.json after.json
-    python3 tools/performance-reporter.py --export csv output.csv
-    python3 tools/performance-reporter.py --export json output.json
+    python3 tools/performance_reporter.py <plugin-name>
+    python3 tools/performance_reporter.py --all
+    python3 tools/performance_reporter.py --compare before.json after.json
+    python3 tools/performance_reporter.py --export csv output.csv
+    python3 tools/performance_reporter.py --export json output.json
 """
 
 import json
 import csv
 import sys
-import subprocess
 from pathlib import Path
 from dataclasses import dataclass, field, asdict
 from typing import Any
@@ -416,11 +415,11 @@ def main() -> int:
 
     if len(sys.argv) < 2:
         print("Usage:")
-        print("  python3 performance-reporter.py <plugin-name>")
-        print("  python3 performance-reporter.py --all")
-        print("  python3 performance-reporter.py --compare before.json after.json")
-        print("  python3 performance-reporter.py --export csv output.csv")
-        print("  python3 performance-reporter.py --export json output.json")
+        print("  python3 performance_reporter.py <plugin-name>")
+        print("  python3 performance_reporter.py --all")
+        print("  python3 performance_reporter.py --compare before.json after.json")
+        print("  python3 performance_reporter.py --export csv output.csv")
+        print("  python3 performance_reporter.py --export json output.json")
         return 1
 
     # Determine plugins root and tools directory

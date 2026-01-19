@@ -12,7 +12,7 @@ Validates plugin.json metadata against schema requirements:
 import json
 import sys
 from pathlib import Path
-from typing import Dict, Any, List, Optional, Set
+from typing import Dict, Any, List, Optional
 import re
 from dataclasses import dataclass, field
 
@@ -258,9 +258,9 @@ class MetadataValidator:
         self._validate_fields(metadata, self.SCHEMA["recommended"], result, required=False)
 
         # Validate optional fields (if present)
-        for field, field_schema in self.SCHEMA["optional"].items():
-            if field in metadata:
-                self._validate_field(field, metadata[field], field_schema, result)
+        for field_name, field_schema in self.SCHEMA["optional"].items():
+            if field_name in metadata:
+                self._validate_field(field_name, metadata[field_name], field_schema, result)
 
         # Validate nested structures
         if "agents" in metadata and isinstance(metadata["agents"], list):
@@ -277,8 +277,8 @@ class MetadataValidator:
     def _validate_fields(self, metadata: Dict[str, Any], schema: Dict[str, Any],
                         result: ValidationResult, required: bool):
         """Validate a set of fields"""
-        for field, field_schema in schema.items():
-            if field not in metadata:
+        for field_name, field_schema in schema.items():
+            if field_name not in metadata:
                 if required:
                     result.add_error(
                         field,
@@ -292,42 +292,54 @@ class MetadataValidator:
                         f"Consider adding: {field_schema['description']}"
                     )
             else:
-                self._validate_field(field, metadata[field], field_schema, result)
+                self._validate_field(field_name, metadata[field_name], field_schema, result)
 
     def _validate_field(self, field_name: str, value: Any, schema: Dict[str, Any],
                        result: ValidationResult):
         """Validate a single field"""
-        # Type validation
+        # Validation chain
+        if not self._validate_type_constraint(field_name, value, schema, result):
+            return
+
+        self._validate_pattern_constraint(field_name, value, schema, result)
+        self._validate_string_length_constraint(field_name, value, schema, result)
+        self._validate_enum_constraint(field_name, value, schema, result)
+        self._validate_array_constraint(field_name, value, schema, result)
+        self._validate_numeric_constraint(field_name, value, schema, result)
+
+    def _validate_type_constraint(self, field_name: str, value: Any, schema: Dict[str, Any],
+                                result: ValidationResult) -> bool:
+        """Validate type constraint. Returns False if type check fails."""
         expected_type = schema.get("type")
-        if expected_type:
-            if isinstance(expected_type, list):
-                # Multiple allowed types
-                type_names = []
-                valid_type = False
-                for t in expected_type:
-                    type_names.append(t)
-                    if self._check_type(value, t):
-                        valid_type = True
-                        break
+        if not expected_type:
+            return True
 
-                if not valid_type:
-                    result.add_error(
-                        field_name,
-                        f"Invalid type. Expected one of: {', '.join(type_names)}",
-                        f"Current type: {type(value).__name__}"
-                    )
-                    return
-            else:
-                # Single type
-                if not self._check_type(value, expected_type):
-                    result.add_error(
-                        field_name,
-                        f"Invalid type. Expected: {expected_type}",
-                        f"Current type: {type(value).__name__}"
-                    )
-                    return
+        if isinstance(expected_type, list):
+            # Multiple allowed types
+            type_names = list(expected_type)
+            valid_type = any(self._check_type(value, t) for t in expected_type)
 
-        # Pattern validation (for strings)
+            if not valid_type:
+                result.add_error(
+                    field_name,
+                    f"Invalid type. Expected one of: {', '.join(type_names)}",
+                    f"Current type: {type(value).__name__}"
+                )
+                return False
+        else:
+            # Single type
+            if not self._check_type(value, expected_type):
+                result.add_error(
+                    field_name,
+                    f"Invalid type. Expected: {expected_type}",
+                    f"Current type: {type(value).__name__}"
+                )
+                return False
+        return True
+
+    def _validate_pattern_constraint(self, field_name: str, value: Any, schema: Dict[str, Any],
+                                   result: ValidationResult):
+        """Validate regex pattern constraint for strings"""
         if isinstance(value, str) and "pattern" in schema:
             pattern = schema["pattern"]
             if not re.match(pattern, value):
@@ -337,7 +349,9 @@ class MetadataValidator:
                     f"Expected pattern: {schema.get('description', pattern)}"
                 )
 
-        # Length validation (for strings)
+    def _validate_string_length_constraint(self, field_name: str, value: Any, schema: Dict[str, Any],
+                                         result: ValidationResult):
+        """Validate string length constraints"""
         if isinstance(value, str):
             if "min_length" in schema and len(value) < schema["min_length"]:
                 result.add_error(
@@ -352,7 +366,9 @@ class MetadataValidator:
                     f"Current length: {len(value)}"
                 )
 
-        # Enum validation
+    def _validate_enum_constraint(self, field_name: str, value: Any, schema: Dict[str, Any],
+                                result: ValidationResult):
+        """Validate enum constraints"""
         if "enum" in schema:
             if value not in schema["enum"]:
                 result.add_error(
@@ -361,7 +377,9 @@ class MetadataValidator:
                     f"Allowed values: {', '.join(map(str, schema['enum']))}"
                 )
 
-        # Array validation
+    def _validate_array_constraint(self, field_name: str, value: Any, schema: Dict[str, Any],
+                                 result: ValidationResult):
+        """Validate array constraints"""
         if isinstance(value, list):
             if "min_items" in schema and len(value) < schema["min_items"]:
                 result.add_warning(
@@ -370,7 +388,9 @@ class MetadataValidator:
                     f"Current count: {len(value)}"
                 )
 
-        # Integer validation
+    def _validate_numeric_constraint(self, field_name: str, value: Any, schema: Dict[str, Any],
+                                   result: ValidationResult):
+        """Validate numeric min/max constraints"""
         if isinstance(value, int):
             if "min" in schema and value < schema["min"]:
                 result.add_error(
@@ -414,8 +434,8 @@ class MetadataValidator:
                 continue
 
             # Validate required fields
-            for field, field_schema in self.AGENT_SCHEMA["required"].items():
-                if field not in agent:
+            for field_name, field_schema in self.AGENT_SCHEMA["required"].items():
+                if field_name not in agent:
                     result.add_error(
                         f"agents[{idx}].{field}",
                         f"Missing required field in agent {idx}"
@@ -436,8 +456,8 @@ class MetadataValidator:
                 continue
 
             # Validate required fields
-            for field, field_schema in self.COMMAND_SCHEMA["required"].items():
-                if field not in command:
+            for field_name, field_schema in self.COMMAND_SCHEMA["required"].items():
+                if field_name not in command:
                     result.add_error(
                         f"commands[{idx}].{field}",
                         f"Missing required field in command {idx}"
@@ -451,7 +471,7 @@ class MetadataValidator:
                     )
 
             # Validate optional fields if present
-            for field, field_schema in self.COMMAND_SCHEMA["optional"].items():
+            for field_name, field_schema in self.COMMAND_SCHEMA["optional"].items():
                 if field in command:
                     self._validate_field(
                         f"commands[{idx}].{field}",
@@ -468,8 +488,8 @@ class MetadataValidator:
                 continue
 
             # Validate required fields
-            for field, field_schema in self.SKILL_SCHEMA["required"].items():
-                if field not in skill:
+            for field_name, field_schema in self.SKILL_SCHEMA["required"].items():
+                if field_name not in skill:
                     result.add_error(
                         f"skills[{idx}].{field}",
                         f"Missing required field in skill {idx}"
@@ -524,9 +544,9 @@ class MetadataValidator:
 def main():
     """Main entry point"""
     if len(sys.argv) < 2:
-        print("Usage: python metadata-validator.py <plugin-path>")
+        print("Usage: python metadata_validator.py <plugin-path>")
         print("\nExample:")
-        print("  python metadata-validator.py plugins/julia-development")
+        print("  python metadata_validator.py plugins/julia-development")
         sys.exit(1)
 
     plugin_path = Path(sys.argv[1])

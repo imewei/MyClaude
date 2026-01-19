@@ -6,15 +6,14 @@ Tests skill pattern matching, validates skill recommendations,
 and checks for over-triggering issues.
 
 Usage:
-    python3 tools/skill-validator.py
-    python3 tools/skill-validator.py --plugins-dir /path/to/plugins
-    python3 tools/skill-validator.py --corpus-dir /path/to/test-corpus
-    python3 tools/skill-validator.py --plugin julia-development
+    python3 tools/skill_validator.py
+    python3 tools/skill_validator.py --plugins-dir /path/to/plugins
+    python3 tools/skill_validator.py --corpus-dir /path/to/test-corpus
+    python3 tools/skill_validator.py --plugin julia-development
 """
 
 import argparse
 import json
-import os
 import re
 import sys
 from dataclasses import dataclass, field
@@ -131,62 +130,79 @@ class SkillApplicationValidator:
         """Load skills from all plugins."""
         print("Loading plugin skills...")
 
-        plugin_dirs = []
+        plugin_dirs = self._get_plugin_dirs(specific_plugin)
+
+        for plugin_dir in plugin_dirs:
+            self._load_skills_from_plugin(plugin_dir)
+
+        print(f"\nLoaded {len(self.skills)} total skills")
+
+    def _get_plugin_dirs(self, specific_plugin: Optional[str]) -> List[Path]:
+        """Get list of plugin directories to process."""
         if specific_plugin:
             plugin_path = self.plugins_dir / specific_plugin
             if plugin_path.exists():
-                plugin_dirs.append(plugin_path)
-        else:
-            plugin_dirs = [p for p in self.plugins_dir.iterdir() if p.is_dir()]
+                return [plugin_path]
+            return []
 
-        for plugin_dir in plugin_dirs:
-            plugin_json = plugin_dir / "plugin.json"
-            if not plugin_json.exists():
-                continue
+        return [p for p in self.plugins_dir.iterdir() if p.is_dir()]
 
+    def _load_skills_from_plugin(self, plugin_dir: Path) -> None:
+        """Load skills from a single plugin directory."""
+        plugin_json = plugin_dir / "plugin.json"
+        if not plugin_json.exists():
+            return
+
+        try:
+            data = json.loads(plugin_json.read_text())
+            plugin_name = data["name"]
+
+            if "skills" not in data or not data["skills"]:
+                return
+
+            for skill_data in data["skills"]:
+                self._add_skill(skill_data, plugin_name, plugin_dir)
+
+            count = len([s for s in self.skills if s.plugin_name == plugin_name])
+            print(f"  ✓ {plugin_name}: {count} skills")
+
+        except Exception as e:
+            print(f"  ✗ Error loading {plugin_dir.name}: {e}")
+
+    def _add_skill(self, skill_data: Dict, plugin_name: str, plugin_dir: Path) -> None:
+        """Create and add a skill object from data."""
+        skill = Skill(
+            name=skill_data["name"],
+            description=skill_data.get("description", ""),
+            status=skill_data.get("status", "active"),
+            plugin_name=plugin_name
+        )
+
+        # Extract keywords from skill name and description
+        text = f"{skill.name} {skill.description}".lower()
+        skill.keywords = self._extract_keywords(text)
+
+        # Extract technical patterns
+        skill.patterns = self._extract_patterns(text)
+
+        # Try to load skill documentation for more patterns
+        self._enrich_skill_from_docs(skill, plugin_dir)
+
+        # Infer file patterns from skill name
+        skill.file_patterns = self._infer_file_patterns(skill.name)
+
+        self.skills.append(skill)
+
+    def _enrich_skill_from_docs(self, skill: Skill, plugin_dir: Path) -> None:
+        """Enrich skill keywords and patterns from documentation."""
+        skill_file = plugin_dir / "skills" / f"{skill.name}.md"
+        if skill_file.exists():
             try:
-                data = json.loads(plugin_json.read_text())
-                plugin_name = data["name"]
-
-                if "skills" not in data or not data["skills"]:
-                    continue
-
-                for skill_data in data["skills"]:
-                    skill = Skill(
-                        name=skill_data["name"],
-                        description=skill_data.get("description", ""),
-                        status=skill_data.get("status", "active"),
-                        plugin_name=plugin_name
-                    )
-
-                    # Extract keywords from skill name and description
-                    text = f"{skill.name} {skill.description}".lower()
-                    skill.keywords = self._extract_keywords(text)
-
-                    # Extract technical patterns
-                    skill.patterns = self._extract_patterns(text)
-
-                    # Try to load skill documentation for more patterns
-                    skill_file = plugin_dir / "skills" / f"{skill.name}.md"
-                    if skill_file.exists():
-                        try:
-                            skill_content = skill_file.read_text().lower()
-                            skill.keywords.update(self._extract_keywords(skill_content))
-                            skill.patterns.update(self._extract_patterns(skill_content))
-                        except Exception:
-                            pass
-
-                    # Infer file patterns from skill name
-                    skill.file_patterns = self._infer_file_patterns(skill.name)
-
-                    self.skills.append(skill)
-
-                print(f"  ✓ {plugin_name}: {len([s for s in self.skills if s.plugin_name == plugin_name])} skills")
-
-            except Exception as e:
-                print(f"  ✗ Error loading {plugin_dir.name}: {e}")
-
-        print(f"\nLoaded {len(self.skills)} total skills")
+                skill_content = skill_file.read_text().lower()
+                skill.keywords.update(self._extract_keywords(skill_content))
+                skill.patterns.update(self._extract_patterns(skill_content))
+            except Exception:
+                pass
 
     def _extract_keywords(self, text: str) -> Set[str]:
         """Extract keywords from text."""
@@ -460,7 +476,7 @@ class SkillApplicationValidator:
 
                         self.results.append(result)
 
-                except Exception as e:
+                except Exception:
                     pass
 
         print(f"\n  Analyzed {len(self.results)} skill applications")
@@ -611,7 +627,7 @@ class SkillApplicationValidator:
         else:
             report += "No significant under-triggering issues detected.\n"
 
-        report += f"""
+        report += """
 ## Overall Assessment
 
 """
@@ -676,7 +692,7 @@ def main():
 
     if not corpus_dir.exists():
         print(f"Error: Test corpus directory not found: {corpus_dir}")
-        print(f"Run test-corpus-generator.py first to create test samples")
+        print("Run test_corpus_generator.py first to create test samples")
         return 1
 
     # Run validation

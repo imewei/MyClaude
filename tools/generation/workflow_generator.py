@@ -14,7 +14,7 @@ Part of: Plugin Review and Optimization - Task Group 0.4
 
 import json
 from pathlib import Path
-from typing import Dict, List, Set, Tuple
+from typing import Dict, List
 from dataclasses import dataclass, field
 from collections import defaultdict
 import sys
@@ -523,7 +523,7 @@ def main():
     workflows = generator.generate_workflows()
 
     # Generate report
-    print(f"\n📊 Generating workflow documentation...")
+    print("\n📊 Generating workflow documentation...")
     generator.generate_report(args.output)
 
     # Export JSON if requested
@@ -531,7 +531,7 @@ def main():
         generator.export_workflows_json(args.export_json)
 
     # Print summary
-    print(f"\n✅ Generation complete!")
+    print("\n✅ Generation complete!")
     print(f"   Workflows created: {len(workflows)}")
     print(f"   Documentation saved to: {args.output}")
 

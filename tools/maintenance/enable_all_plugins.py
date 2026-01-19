@@ -7,7 +7,6 @@ Usage:
 """
 
 import json
-import os
 from pathlib import Path
 
 def enable_all_plugins():
@@ -57,12 +56,12 @@ def enable_all_plugins():
         json.dump(settings, f, indent=2)
 
     print(f"\n{'='*60}")
-    print(f"✅ Configuration updated!")
+    print("✅ Configuration updated!")
     print(f"   Newly enabled: {newly_enabled}")
     print(f"   Already enabled: {already_enabled}")
     print(f"   Total plugins in marketplace: {len(plugins)}")
     print(f"   Total enabled plugins: {len(enabled_plugins)}")
-    print(f"\n🔄 Please restart Claude Code for changes to take effect.")
+    print("\n🔄 Please restart Claude Code for changes to take effect.")
     print(f"{'='*60}")
 
 if __name__ == '__main__':

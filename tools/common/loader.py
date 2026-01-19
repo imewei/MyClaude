@@ -2,13 +2,13 @@
 Unified plugin.json loader with caching.
 
 Consolidates duplicate plugin loading logic from:
-- metadata-validator.py
-- plugin-review-script.py
+- metadata_validator.py
+- plugin_review_script.py
 - validate_plugins.py
-- xref-validator.py
-- dependency-mapper.py
-- load-profiler.py
-- activation-profiler.py
+- xref_validator.py
+- dependency_mapper.py
+- load_profiler.py
+- activation_profiler.py
 """
 
 import json

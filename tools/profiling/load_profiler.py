@@ -12,9 +12,9 @@ Features:
 - Target: <100ms load time per plugin
 
 Usage:
-    python3 tools/load-profiler.py <plugin-name>
-    python3 tools/load-profiler.py <plugin-name> /path/to/plugins
-    python3 tools/load-profiler.py --all  # Profile all plugins
+    python3 tools/load_profiler.py <plugin-name>
+    python3 tools/load_profiler.py <plugin-name> /path/to/plugins
+    python3 tools/load_profiler.py --all  # Profile all plugins
 """
 
 import json
@@ -23,7 +23,6 @@ import sys
 from pathlib import Path
 from dataclasses import dataclass, field
 from typing import Any
-from collections.abc import Callable
 
 
 @dataclass
@@ -462,8 +461,8 @@ def main() -> int:
 
     # Parse arguments
     if len(sys.argv) < 2:
-        print("Usage: python3 load-profiler.py <plugin-name> [plugins-root]")
-        print("       python3 load-profiler.py --all [plugins-root]")
+        print("Usage: python3 load_profiler.py <plugin-name> [plugins-root]")
+        print("       python3 load_profiler.py --all [plugins-root]")
         return 1
 
     # Determine plugins root

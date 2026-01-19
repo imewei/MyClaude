@@ -12,7 +12,7 @@ Validates plugin documentation for:
 import sys
 import re
 from pathlib import Path
-from typing import Dict, List, Optional, Set, Tuple
+from typing import Dict, List, Optional, Tuple
 from dataclasses import dataclass, field
 
 
@@ -125,56 +125,12 @@ class DocumentationChecker:
             result.add_issue("README.md", "error", f"Failed to read file: {e}")
             return
 
-        # Check file length
-        if len(content) < 500:
-            result.add_issue(
-                "README.md", "warning",
-                "README is too short (< 500 characters)",
-                suggestion="Add more comprehensive documentation"
-            )
+        self._check_file_length(readme_path.name, content, 500, result)
+        self._check_required_sections(readme_path.name, content, self.REQUIRED_README_SECTIONS, result)
+        self._check_recommended_sections(readme_path.name, content, self.RECOMMENDED_README_SECTIONS, result)
 
-        # Check required sections
-        missing_sections = []
-        for pattern, section_name in self.REQUIRED_README_SECTIONS:
-            if not re.search(pattern, content, re.IGNORECASE | re.MULTILINE):
-                missing_sections.append(section_name)
-
-        if missing_sections:
-            result.add_issue(
-                "README.md", "error",
-                f"Missing required sections: {', '.join(missing_sections)}",
-                suggestion="Add these sections to improve documentation structure"
-            )
-
-        # Check recommended sections
-        missing_recommended = []
-        for pattern, section_name in self.RECOMMENDED_README_SECTIONS:
-            if not re.search(pattern, content, re.IGNORECASE | re.MULTILINE):
-                missing_recommended.append(section_name)
-
-        if missing_recommended:
-            result.add_issue(
-                "README.md", "warning",
-                f"Missing recommended sections: {', '.join(missing_recommended)}",
-                suggestion="Consider adding these sections for better documentation"
-            )
-
-        # Check markdown formatting
-        self._check_markdown_formatting(readme_path, content, lines, result)
-
-        # Check code blocks
-        self._check_code_blocks(readme_path, content, lines, result)
-
-        # Check links
-        self._check_links(readme_path, content, lines, result)
-
-        # Check for common issues
-        self._check_common_issues(readme_path, content, lines, result)
-
-    def _check_markdown_dir(self, dir_path: Path, doc_type: str, result: DocCheckResult):
-        """Check all markdown files in a directory"""
-        for md_file in dir_path.glob("*.md"):
-            self._check_markdown_file(md_file, doc_type, result)
+        # Run common checks
+        self._run_common_checks(readme_path, content, lines, result)
 
     def _check_markdown_file(self, file_path: Path, doc_type: str, result: DocCheckResult):
         """Check individual markdown file"""
@@ -191,12 +147,7 @@ class DocumentationChecker:
 
         # Check minimum content length
         min_length = 100 if doc_type == "skill" else 150
-        if len(content) < min_length:
-            result.add_issue(
-                file_path.name, "warning",
-                f"{doc_type.capitalize()} documentation too short (< {min_length} chars)",
-                suggestion="Add more detailed documentation and examples"
-            )
+        self._check_file_length(file_path.name, content, min_length, result, doc_type)
 
         # Check for headings
         if not re.search(r'^#{1,3}\s+.+', content, re.MULTILINE):
@@ -215,11 +166,56 @@ class DocumentationChecker:
                     suggestion="Add code examples to illustrate usage"
                 )
 
-        # Check markdown formatting
-        self._check_markdown_formatting(file_path, content, lines, result)
+        # Run common checks
+        self._run_common_checks(file_path, content, lines, result)
 
-        # Check code blocks
+    def _run_common_checks(self, file_path: Path, content: str, lines: List[str], result: DocCheckResult):
+        """Run checks common to all markdown files"""
+        self._check_markdown_formatting(file_path, content, lines, result)
         self._check_code_blocks(file_path, content, lines, result)
+        self._check_links(file_path, content, lines, result)
+        self._check_common_issues(file_path, content, lines, result)
+
+    def _check_file_length(self, filename: str, content: str, min_length: int,
+                          result: DocCheckResult, doc_type: str = "README"):
+        """Check if file meets minimum length requirements"""
+        if len(content) < min_length:
+            msg_prefix = f"{doc_type.capitalize()} documentation" if doc_type != "README" else "README"
+            result.add_issue(
+                filename, "warning",
+                f"{msg_prefix} is too short (< {min_length} characters)",
+                suggestion="Add more comprehensive documentation"
+            )
+
+    def _check_required_sections(self, filename: str, content: str,
+                               sections: List[Tuple[str, str]], result: DocCheckResult):
+        """Check for presence of required sections"""
+        missing_sections = []
+        for pattern, section_name in sections:
+            if not re.search(pattern, content, re.IGNORECASE | re.MULTILINE):
+                missing_sections.append(section_name)
+
+        if missing_sections:
+            result.add_issue(
+                filename, "error",
+                f"Missing required sections: {', '.join(missing_sections)}",
+                suggestion="Add these sections to improve documentation structure"
+            )
+
+    def _check_recommended_sections(self, filename: str, content: str,
+                                  sections: List[Tuple[str, str]], result: DocCheckResult):
+        """Check for presence of recommended sections"""
+        missing_recommended = []
+        for pattern, section_name in sections:
+            if not re.search(pattern, content, re.IGNORECASE | re.MULTILINE):
+                missing_recommended.append(section_name)
+
+        if missing_recommended:
+            result.add_issue(
+                filename, "warning",
+                f"Missing recommended sections: {', '.join(missing_recommended)}",
+                suggestion="Consider adding these sections for better documentation"
+            )
 
     def _check_markdown_formatting(self, file_path: Path, content: str,
                                    lines: List[str], result: DocCheckResult):
@@ -464,9 +460,9 @@ class DocumentationChecker:
 def main():
     """Main entry point"""
     if len(sys.argv) < 2:
-        print("Usage: python doc-checker.py <plugin-path>")
+        print("Usage: python doc_checker.py <plugin-path>")
         print("\nExample:")
-        print("  python doc-checker.py plugins/julia-development")
+        print("  python doc_checker.py plugins/julia-development")
         sys.exit(1)
 
     plugin_path = Path(sys.argv[1])

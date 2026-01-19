@@ -11,9 +11,9 @@ Features:
 - Profiles data structure efficiency
 
 Usage:
-    python3 tools/memory-analyzer.py <plugin-name>
-    python3 tools/memory-analyzer.py <plugin-name> /path/to/plugins
-    python3 tools/memory-analyzer.py --all  # Profile all plugins
+    python3 tools/memory_analyzer.py <plugin-name>
+    python3 tools/memory_analyzer.py <plugin-name> /path/to/plugins
+    python3 tools/memory_analyzer.py --all  # Profile all plugins
 """
 
 import json
@@ -198,7 +198,7 @@ class PluginMemoryAnalyzer:
                 name="plugin.json",
                 memory_kb=0,
                 status='error',
-                details=f"JSON decode error"
+                details="JSON decode error"
             ))
             return 0
 
@@ -517,8 +517,8 @@ def main() -> int:
 
     # Parse arguments
     if len(sys.argv) < 2:
-        print("Usage: python3 memory-analyzer.py <plugin-name> [plugins-root]")
-        print("       python3 memory-analyzer.py --all [plugins-root]")
+        print("Usage: python3 memory_analyzer.py <plugin-name> [plugins-root]")
+        print("       python3 memory_analyzer.py --all [plugins-root]")
         return 1
 
     # Determine plugins root

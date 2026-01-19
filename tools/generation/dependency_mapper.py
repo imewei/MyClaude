@@ -16,7 +16,7 @@ Part of: Plugin Review and Optimization - Task Group 0.4
 import json
 import re
 from pathlib import Path
-from typing import Dict, List, Set, Tuple
+from typing import Dict, List, Set
 from dataclasses import dataclass, field
 from collections import defaultdict
 import sys
@@ -577,15 +577,15 @@ def main():
     graph = mapper.analyze_all_plugins()
 
     # Generate report
-    print(f"\n📊 Generating dependency report...")
-    report = mapper.generate_report(args.output)
+    print("\n📊 Generating dependency report...")
+    _ = mapper.generate_report(args.output)
 
     # Export JSON if requested
     if args.export_json:
         mapper.export_json(args.export_json)
 
     # Print summary
-    print(f"\n✅ Analysis complete!")
+    print("\n✅ Analysis complete!")
     print(f"   Plugins analyzed: {len(graph.plugins)}")
     print(f"   References found: {len(graph.references)}")
     print(f"   Report saved to: {args.output}")

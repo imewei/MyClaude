@@ -12,9 +12,9 @@ Features:
 - Target: <50ms activation time
 
 Usage:
-    python3 tools/activation-profiler.py <plugin-name>
-    python3 tools/activation-profiler.py <plugin-name> /path/to/plugins
-    python3 tools/activation-profiler.py --all  # Profile all plugins
+    python3 tools/activation_profiler.py <plugin-name>
+    python3 tools/activation_profiler.py <plugin-name> /path/to/plugins
+    python3 tools/activation_profiler.py --all  # Profile all plugins
 """
 
 import json
@@ -501,8 +501,8 @@ def main() -> int:
 
     # Parse arguments
     if len(sys.argv) < 2:
-        print("Usage: python3 activation-profiler.py <plugin-name> [plugins-root]")
-        print("       python3 activation-profiler.py --all [plugins-root]")
+        print("Usage: python3 activation_profiler.py <plugin-name> [plugins-root]")
+        print("       python3 activation_profiler.py --all [plugins-root]")
         return 1
 
     # Determine plugins root

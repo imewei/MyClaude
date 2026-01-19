@@ -14,10 +14,20 @@ import json
 import os
 import sys
 from pathlib import Path
-from typing import Dict, List, Any, Optional, Set
+from typing import Dict, List, Any, Optional
 import re
 from dataclasses import dataclass, field
 
+# Ensure tools directory is in path for imports
+tools_dir = os.path.dirname(os.path.abspath(__file__))
+if tools_dir not in sys.path:
+    sys.path.insert(0, tools_dir)
+
+try:
+    from metadata_validator import MetadataValidator
+except ImportError:
+    # Fallback if running from a different context where sys.path setup didn't work as expected
+    pass
 
 @dataclass
 class ReviewIssue:
@@ -105,7 +115,7 @@ class PluginReviewer:
         return report
 
     def _review_plugin_json(self, plugin_path: Path, report: ReviewReport):
-        """Review plugin.json structure and completeness"""
+        """Review plugin.json structure and completeness using MetadataValidator"""
         plugin_json_path = plugin_path / "plugin.json"
 
         if not plugin_json_path.exists():
@@ -117,6 +127,32 @@ class PluginReviewer:
             )
             return
 
+        # Use shared MetadataValidator if available
+        if 'MetadataValidator' in globals():
+            validator = MetadataValidator()
+            result = validator.validate_plugin_json(plugin_path)
+
+            for error in result.errors:
+                report.add_issue(
+                    f"plugin.json/{error.field}",
+                    "high",  # Map validator errors to high priority issues
+                    error.message,
+                    error.suggestion
+                )
+
+            for warning in result.warnings:
+                report.add_issue( # Map warnings to issues but with lower severity
+                    f"plugin.json/{warning.field}",
+                    "medium",
+                    warning.message,
+                    warning.suggestion
+                )
+
+            if result.is_valid:
+                report.add_success("plugin.json structure validated successfully")
+            return
+
+        # Fallback to internal validation if MetadataValidator not available
         try:
             with open(plugin_json_path, 'r', encoding='utf-8') as f:
                 plugin_data = json.load(f)
@@ -138,26 +174,26 @@ class PluginReviewer:
             return
 
         # Check required fields
-        for field in self.REQUIRED_PLUGIN_JSON_FIELDS:
-            if field not in plugin_data:
+        for field_name in self.REQUIRED_PLUGIN_JSON_FIELDS:
+            if field_name not in plugin_data:
                 report.add_issue(
                     "plugin.json",
                     "high",
-                    f"Missing required field: {field}"
+                    f"Missing required field: {field_name}"
                 )
-            elif not plugin_data[field]:
+            elif not plugin_data[field_name]:
                 report.add_issue(
                     "plugin.json",
                     "medium",
-                    f"Required field is empty: {field}"
+                    f"Required field is empty: {field_name}"
                 )
 
         # Check recommended fields
-        for field in self.RECOMMENDED_PLUGIN_JSON_FIELDS:
-            if field not in plugin_data:
-                report.add_warning(f"Missing recommended field in plugin.json: {field}")
-            elif isinstance(plugin_data.get(field), list) and len(plugin_data[field]) == 0:
-                report.add_warning(f"Recommended field is empty: {field}")
+        for field_name in self.RECOMMENDED_PLUGIN_JSON_FIELDS:
+            if field_name not in plugin_data:
+                report.add_warning(f"Missing recommended field in plugin.json: {field_name}")
+            elif isinstance(plugin_data.get(field_name), list) and len(plugin_data[field_name]) == 0:
+                report.add_warning(f"Recommended field is empty: {field_name}")
 
         # Validate semantic versioning
         if "version" in plugin_data:
@@ -202,8 +238,8 @@ class PluginReviewer:
 
     def _validate_agent_structure(self, agent: Dict[str, Any], idx: int, report: ReviewReport):
         """Validate individual agent structure"""
-        for field in self.REQUIRED_AGENT_FIELDS:
-            if field not in agent:
+        for field_name in self.REQUIRED_AGENT_FIELDS:
+            if field_name not in agent:
                 report.add_issue(
                     "plugin.json/agents",
                     "high",
@@ -222,8 +258,8 @@ class PluginReviewer:
 
     def _validate_command_structure(self, command: Dict[str, Any], idx: int, report: ReviewReport):
         """Validate individual command structure"""
-        for field in self.REQUIRED_COMMAND_FIELDS:
-            if field not in command:
+        for field_name in self.REQUIRED_COMMAND_FIELDS:
+            if field_name not in command:
                 report.add_issue(
                     "plugin.json/commands",
                     "high",
@@ -241,8 +277,8 @@ class PluginReviewer:
 
     def _validate_skill_structure(self, skill: Dict[str, Any], idx: int, report: ReviewReport):
         """Validate individual skill structure"""
-        for field in self.REQUIRED_SKILL_FIELDS:
-            if field not in skill:
+        for field_name in self.REQUIRED_SKILL_FIELDS:
+            if field_name not in skill:
                 report.add_issue(
                     "plugin.json/skills",
                     "high",
@@ -593,10 +629,10 @@ class PluginReviewer:
 def main():
     """Main entry point"""
     if len(sys.argv) < 2:
-        print("Usage: python plugin-review-script.py <plugin-name> [plugins-root]")
+        print("Usage: python plugin_review_script.py <plugin-name> [plugins-root]")
         print("\nExample:")
-        print("  python plugin-review-script.py julia-development")
-        print("  python plugin-review-script.py julia-development /path/to/plugins")
+        print("  python plugin_review_script.py julia-development")
+        print("  python plugin_review_script.py julia-development /path/to/plugins")
         sys.exit(1)
 
     plugin_name = sys.argv[1]

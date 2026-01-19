@@ -15,7 +15,7 @@ Part of: Plugin Review and Optimization - Task Group 0.4
 import json
 import re
 from pathlib import Path
-from typing import Dict, List, Set, Tuple
+from typing import Dict, List
 from dataclasses import dataclass, field
 from collections import defaultdict
 import sys
@@ -589,7 +589,7 @@ def main():
     result = validator.validate_all_references()
 
     # Generate report
-    print(f"\n📊 Generating validation report...")
+    print("\n📊 Generating validation report...")
     validator.generate_report(args.output)
 
     # Export JSON if requested
@@ -597,7 +597,7 @@ def main():
         validator.export_json(args.export_json)
 
     # Print summary
-    print(f"\n✅ Validation complete!")
+    print("\n✅ Validation complete!")
     print(f"   Total references: {result.total_references}")
     print(f"   Valid: {result.valid_references}")
     print(f"   Broken: {len(result.broken_references)}")

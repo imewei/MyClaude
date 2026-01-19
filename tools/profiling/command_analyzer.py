@@ -6,21 +6,20 @@ Analyzes command relevance in different contexts, validates suggestion timing,
 and evaluates priority ranking accuracy.
 
 Usage:
-    python3 tools/command-analyzer.py
-    python3 tools/command-analyzer.py --plugins-dir /path/to/plugins
-    python3 tools/command-analyzer.py --corpus-dir /path/to/test-corpus
-    python3 tools/command-analyzer.py --plugin julia-development
+    python3 tools/command_analyzer.py
+    python3 tools/command_analyzer.py --plugins-dir /path/to/plugins
+    python3 tools/command_analyzer.py --corpus-dir /path/to/test-corpus
+    python3 tools/command_analyzer.py --plugin julia-development
 """
 
 import argparse
 import json
-import os
 import re
 import sys
 from dataclasses import dataclass, field
 from datetime import datetime
 from pathlib import Path
-from typing import Dict, List, Set, Optional, Tuple
+from typing import List, Set, Optional, Tuple
 
 
 @dataclass
@@ -506,7 +505,7 @@ class CommandSuggestionAnalyzer:
         else:
             report += "No commands with poor performance detected.\n"
 
-        report += f"""
+        report += """
 ## Sample Analysis
 
 ### High Relevance Suggestions
@@ -601,7 +600,7 @@ def main():
 
     if not corpus_dir.exists():
         print(f"Error: Test corpus directory not found: {corpus_dir}")
-        print(f"Run test-corpus-generator.py first to create test samples")
+        print("Run test_corpus_generator.py first to create test samples")
         return 1
 
     # Run analysis
