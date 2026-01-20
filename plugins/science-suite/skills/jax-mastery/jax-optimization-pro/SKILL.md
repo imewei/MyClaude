@@ -1,12 +1,20 @@
 ---
 name: jax-optimization-pro
-version: "1.0.0"
+version: "1.0.1"
 description: This skill should be used when the user asks to "optimize JAX code for production", "write JAX-first code", "debug ConcretizationError", "analyze XLA/HLO output", "implement SPMD parallelism", "use jax.sharding for TPU pods", "write Pallas/Triton kernels", "fix tracer errors", "optimize GPU/TPU memory", "handle numerical stability", "implement custom VJPs", or needs expert-level guidance on functional programming patterns, PyTree manipulation, multi-device scaling, or XLA compiler optimization.
 ---
 
 # JAX Optimization Pro: The JAX-First Engineer
 
 Transform from a JAX user to a JAX-first optimization engineer. Unlike PyTorch or TensorFlow which allow imperative "eager" execution, JAX demands a **functional, compiler-centric mindset**.
+
+## Expert Agent
+
+For advanced optimization, distributed training setup, and performance engineering, delegate to the expert agent:
+
+- **`jax-pro`**: Unified specialist for Core JAX optimization, hardware acceleration, and sharding.
+  - *Location*: `plugins/science-suite/agents/jax-pro.md`
+  - *Capabilities*: Multi-device parallelism (pmap/sharding), XLA HLO analysis, and memory optimization (remat/checkpointing).
 
 ## The JAX-First Mindset
 

@@ -1,12 +1,20 @@
 ---
 name: jax-mastery
-version: "1.0.0"
+version: "1.0.1"
 description: Master JAX for high-performance scientific computing. Covers functional transformations (JIT, vmap, pmap, grad), neural networks (Flax NNX), and specialized optimization (NLSQ, NumPyro).
 ---
 
 # JAX Mastery
 
 Expert guide for leveraging JAX's functional paradigm for scientific research and high-performance computing.
+
+## Expert Agent
+
+For complex implementation tasks, JAX optimization, and scientific computing workflows, delegate to the expert agent:
+
+- **`jax-pro`**: Unified specialist for Core JAX, Bayesian inference (NumPyro), Nonlinear optimization (NLSQ), and Computational Physics (JAX-MD/CFD).
+  - *Location*: `plugins/science-suite/agents/jax-pro.md`
+  - *Capabilities*: Production-ready JIT/vmap patterns, distributed computing (pmap/sharding), differentiable physics, and probabilistic programming.
 
 ## 1. Core Transformations
 
@@ -33,6 +41,7 @@ def fast_step(state, x):
 - **NLSQ**: High-performance curve fitting and non-linear least squares, optimized for GPUs.
 - **NumPyro**: Probabilistic programming and Bayesian inference built on JAX.
 - **JAX-MD / JAX-CFD**: End-to-end differentiable physics simulations.
+- **Diffrax**: Numerical differential equation solvers (ODE/SDE) with JAX.
 
 ## 4. JAX Performance Checklist
 

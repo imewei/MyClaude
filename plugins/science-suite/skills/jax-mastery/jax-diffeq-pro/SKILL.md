@@ -1,12 +1,20 @@
 ---
 name: jax-diffeq-pro
-version: "1.0.0"
+version: "1.0.1"
 description: This skill should be used when the user asks to "solve ODEs in JAX", "use Diffrax", "implement stiff solvers", "choose implicit vs explicit solvers", "backpropagate through ODEs", "use adjoint methods", "implement RecursiveCheckpointAdjoint", "solve SDEs", "use VirtualBrownianTree", "handle ODE events", "find steady states with Optimistix", "use Lineax for linear solves", or needs expert guidance on differentiable physics, neural ODEs, rheology simulations, or soft matter dynamics.
 ---
 
 # JAX DiffEq Pro: The Differentiable Physicist
 
 A JAX-first differential equation expert builds **differentiable physics engines**. The standard stack is **Diffrax** (ODE/SDE solvers), **Lineax** (linear algebra), and **Optimistix** (root finding). An expert architects solvers that are robust to stiff soft matter systems and efficient enough for training loops.
+
+## Expert Agent
+
+For complex differentiable physics, neural ODEs, and stiff systems simulation, delegate to the expert agent:
+
+- **`jax-pro`**: Unified specialist for Diffrax ODE/SDE solvers, adjoint methods, and physics integration.
+  - *Location*: `plugins/science-suite/agents/jax-pro.md`
+  - *Capabilities*: Stiff solver selection (Kvaerno/KenCarp), adjoint optimization (RecursiveCheckpointAdjoint), and SDE simulation.
 
 ## The Differentiable Physicist Mindset
 

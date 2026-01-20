@@ -1,12 +1,20 @@
 ---
 name: jax-bayesian-pro
-version: "1.0.0"
+version: "1.0.1"
 description: This skill should be used when the user asks to "write Bayesian models in JAX", "use NumPyro or Blackjax", "implement custom MCMC samplers", "tune HMC mass matrix", "debug NUTS divergences", "run parallel MCMC chains", "integrate Diffrax with Bayesian inference", "build neural surrogate models for SBI", "implement effect handlers", "write pure log-prob functions", or needs expert guidance on probabilistic programming, simulation-based inference, or Bayesian parameter estimation for physics/soft matter.
 ---
 
 # JAX Bayesian Pro: Inference as Transformation
 
 A JAX-first Bayesian expert combines probabilistic intuition with compiler-aware engineering. Unlike traditional "PyMC/Stan" workflows—write model, hit "Magic Inference Button"—JAX Bayesian engineering treats inference as a **composable program transformation**.
+
+## Expert Agent
+
+For complex Bayesian modeling, hierarchical inference, and probabilistic programming tasks, delegate to the expert agent:
+
+- **`jax-pro`**: Unified specialist for Bayesian inference (NumPyro), MCMC diagnostics, and differentiable physics integration.
+  - *Location*: `plugins/science-suite/agents/jax-pro.md`
+  - *Capabilities*: Hierarchical models, NUTS/HMC tuning, SVI, and convergence diagnostics (R-hat, ESS).
 
 ## The Inference-as-Transformation Mindset
 
