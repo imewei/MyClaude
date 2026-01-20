@@ -1,134 +1,66 @@
 Plugin Marketplace Documentation
 =================================
 
-Welcome to the comprehensive documentation for the Claude Code Plugin Marketplace. This marketplace provides 31 specialized plugins for scientific computing, software development, DevOps, AI/ML, and research workflows.
+Welcome to the comprehensive documentation for the Claude Code Plugin Marketplace. This marketplace provides 5 consolidated suites for scientific computing, software engineering, infrastructure, quality, and agent orchestration.
 
 Overview
 --------
 
 The Plugin Marketplace offers:
 
-- **31 Specialized Plugins** across 6 major categories
-- **74 Expert Agents** for AI-powered development assistance
-- **49 Slash Commands** for automated workflows
-- **117 Skills** for context-aware intelligence
-- **16 Tools** for validation and profiling
-- **Integrated Ecosystem** with extensive cross-plugin collaboration
+- **5 Specialized Suites** consolidated from 31 legacy plugins
+- **22 Core Agents** for AI-powered development assistance
+- **Extensive Slash Commands** for automated workflows
+- **Deep Skill Integration** for context-aware intelligence
+- **Integrated Ecosystem** with extensive cross-suite collaboration
 
-Categories
-----------
+Suites
+------
 
-Plugins are organized into the following categories:
+The marketplace is organized into the following suites:
 
-Scientific Computing (8 plugins)
-  Julia development, JAX implementation, HPC computing, molecular simulation, statistical physics, deep learning, data visualization, and research methodology
+Agent Core
+  Consolidated suite for multi-agent coordination, deep reasoning, and specialized LLM application development.
 
-Development (10 plugins)
-  Python, JavaScript/TypeScript, backend, frontend/mobile, systems programming, multi-platform apps, LLM applications, CLI tools, full-stack orchestration, and agent orchestration
+Software Engineering
+  Consolidated suite for full-stack engineering, language-specific development, and platform-specific implementations.
 
-AI & Machine Learning (2 plugins)
-  Machine learning pipelines and AI reasoning frameworks
+Infrastructure & Ops
+  Consolidated suite for CI/CD automation, observability monitoring, and Git PR workflows.
 
-DevOps & Infrastructure (3 plugins)
-  CI/CD automation, Git/PR workflows, and observability monitoring
+Quality & Maintenance
+  Consolidated suite for code quality, test automation, legacy modernization, and debugging.
 
-Quality & Testing (4 plugins)
-  Unit testing, comprehensive review, codebase cleanup, and quality engineering
-
-Tools & Migration (4 plugins)
-  Code documentation, code migration, framework migration, and debugging toolkit
-
-Statistics
-----------
-
-**Version 1.0.7** (January 12, 2026)
-
-**Total Resources:**
-
-- 31 plugins
-- 74 agents
-- 49 commands
-- 117 skills
-- 16 tools
-
-**By Category:**
-
-- Scientific Computing: 8 plugins, 18 agents, 4 commands, 54 skills
-- Development: 10 plugins, 24 agents, 14 commands, 30 skills
-- AI & Machine Learning: 2 plugins, 6 agents, 3 commands, 10 skills
-- DevOps & Infrastructure: 3 plugins, 10 agents, 9 commands, 12 skills
-- Quality & Testing: 4 plugins, 7 agents, 10 commands, 3 skills
-- Tools & Migration: 4 plugins, 9 agents, 9 commands, 7 skills
+Scientific Computing
+  Consolidated suite for high-performance computing, specialized physics/chemistry simulations, and data science workflows.
 
 Features
 --------
 
-**v1.0.7 Optimization Release**
-  40-76% token reduction across all 31 plugins for faster loading. Average ~50% reduction in prompt token usage with optimized agent, skill, and command definitions.
+**v2.0 Architecture**
+  Consolidated 31 plugins into 5 high-performance suites for better maintainability and faster loading.
 
 **New Furo Theme**
   Modern documentation theme with light/dark mode support, keyboard navigation, and enhanced mobile experience.
 
-**API Documentation**
-  New ``docs/api/`` reference documenting Python tools including data models (PluginMetadata, AgentConfig, SkillConfig, CommandConfig).
+**Automated Documentation**
+  Suite documentation is now automatically generated from plugin metadata, ensuring consistency across the ecosystem.
 
-**49 Slash Commands**
-  New ``/merge-all`` command for branch consolidation in git-pr-workflows plugin.
-
-**Cross-Plugin Integration**
-  Plugins are designed to work together, enabling complex multi-plugin workflows. See the :doc:`integration-map` for detailed integration patterns.
-
-**Comprehensive Documentation**
-  Every plugin includes detailed documentation covering description, usage, examples, and integration points.
-
-**Quality Assurance**
-  All plugins follow consistent metadata standards and include testing, CI/CD, and contribution guidelines.
-
-Quick Links
------------
-
-Popular Plugins
-~~~~~~~~~~~~~~~
-
-- :doc:`/plugins/julia-development` - Comprehensive Julia development with SciML and Bayesian inference
-- :doc:`/plugins/python-development` - Python programming with async patterns and packaging
-- :doc:`/plugins/backend-development` - Backend API design and microservices
-- :doc:`/plugins/jax-implementation` - JAX for numerical computing and optimization
-- :doc:`/plugins/cicd-automation` - CI/CD pipelines and deployment automation
-
-Getting Started
-~~~~~~~~~~~~~~~
-
-- :doc:`guides/scientific-workflows` - Scientific computing workflows
-- :doc:`guides/development-workflows` - Development workflows
-- :doc:`guides/devops-workflows` - DevOps workflows
-- :doc:`guides/integration-patterns` - Integration patterns and best practices
-
-Reference
-~~~~~~~~~
-
-- :doc:`integration-map` - Plugin integration matrix
-- :doc:`tools-reference` - 16 utility scripts and tools
-- :doc:`glossary` - Technical terminology reference
-- :doc:`changelog` - Version history and updates
+**Cross-Suite Integration**
+  Suites are designed to work together, enabling complex multi-agent workflows.
 
 Documentation
 -------------
 
 .. toctree::
    :maxdepth: 2
-   :caption: Categories
+   :caption: Suites
 
-   categories/scientific-computing
-   categories/development
-   categories/ai-ml
-   categories/devops
-   categories/tools
-   categories/orchestration
-   categories/quality
-   categories/developer-tools
-   categories/dev-tools
-   categories/uncategorized
+   suites/agent-core
+   suites/engineering-suite
+   suites/infrastructure-suite
+   suites/quality-suite
+   suites/science-suite
 
 .. toctree::
    :maxdepth: 1
@@ -164,17 +96,16 @@ Quick Setup
 .. code-block:: bash
 
    /plugin marketplace add imewei/MyClaude
-   # Select "Browse and install plugins" -> "scientific-computing-workflows" -> Select plugin
+   # Select "Browse and install suites" -> Select suite
 
-**Option 2: Install Specific Plugins**
+**Option 2: Install Specific Suites**
 
 .. code-block:: bash
 
-   /plugin install python-development@scientific-computing-workflows
-   /plugin install backend-development@scientific-computing-workflows
-   /plugin install julia-development@scientific-computing-workflows
+   /plugin install engineering-suite@marketplace
+   /plugin install science-suite@marketplace
 
-**Option 3: Install All 31 Plugins**
+**Option 3: Install All Suites**
 
 .. code-block:: bash
 
@@ -182,49 +113,44 @@ Quick Setup
    git clone https://github.com/imewei/MyClaude.git
    cd MyClaude
 
-   # Enable all plugins
+   # Enable all suites
    make plugin-enable-all
-
-   # Or use the Python script directly
-   python3 tools/enable-all-plugins.py
 
 **Note:** After installation, restart Claude Code for changes to take effect.
 
-Using Plugins
-~~~~~~~~~~~~~
+Using Suites
+~~~~~~~~~~~~
 
-Once installed, plugins provide agents, commands, and skills that are automatically available:
+Once installed, suites provide agents, commands, and skills that are automatically available:
 
 **Using Specialized Agents**
 
 .. code-block:: text
 
-   Ask Claude: "@python-pro help me optimize this async function"
-   Ask Claude: "@julia-pro implement this differential equation using SciML"
+   Ask Claude: "@software-architect help me design this microservice"
    Ask Claude: "@jax-pro optimize this neural network training loop"
 
 **Running Commands**
 
 .. code-block:: bash
 
-   /ai-reasoning:ultra-think "Analyze the architecture of this system"
-   /quality-engineering:double-check --mode=standard
-   /unit-testing:run-all-tests --fix --coverage
+   /agent-build:create "customer support chatbot"
+   /quality-suite:double-check --mode=standard
 
 Contributing
 ------------
 
 We welcome contributions! See the contribution guidelines for:
 
-- Adding new plugins
-- Improving existing plugins
+- Adding new suites
+- Improving existing suites
 - Reporting issues
 - Documentation improvements
 
 License
 -------
 
-This marketplace is licensed under the MIT License. Individual plugins may have their own licenses - see each plugin's documentation for details.
+This marketplace is licensed under the MIT License. Individual suites may have their own licenses - see each suite's documentation for details.
 
 Indices and Tables
 ------------------
