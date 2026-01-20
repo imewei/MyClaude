@@ -1,4 +1,6 @@
 ---
+name: workflow-automate
+description: Automated CI/CD workflow generation and management for GitHub Actions and GitLab CI.
 version: "2.1.0"
 category: "infrastructure-suite"
 command: "/workflow-automate"

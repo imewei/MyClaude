@@ -1,4 +1,6 @@
 ---
+name: refactor-clean
+description: Analyze and refactor code to improve quality, maintainability, and SOLID principles.
 version: "2.1.0"
 category: quality-suite
 purpose: Refactor code for quality, maintainability, and SOLID principles

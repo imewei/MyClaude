@@ -1,4 +1,6 @@
 ---
+name: tech-debt
+description: Analyze, prioritize, and remediate technical debt using metrics and ROI-based roadmaps.
 version: "2.1.0"
 category: quality-suite
 purpose: Analyze, prioritize, remediate technical debt
