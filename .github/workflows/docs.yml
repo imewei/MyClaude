@@ -40,7 +40,7 @@ jobs:
           echo "$PWD/.venv/bin" >> $GITHUB_PATH
 
       - name: Generate Plugin Docs
-        run: python tools/generation/sphinx_doc_generator.py
+        run: python docs/scripts/regenerate_docs.py
 
       - name: Build documentation
         run: |
