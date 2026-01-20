@@ -135,7 +135,11 @@ format: ## Format Python code with black and ruff
 validate: ## Validate plugin metadata and configuration
 	@echo "Validating plugins..."
 	@if [ -f "tools/validation/metadata_validator.py" ]; then \
-		python tools/validation/metadata_validator.py; \
+		for dir in plugins/*/; do \
+			if [ -d "$$dir" ]; then \
+				python3 tools/validation/metadata_validator.py "$$dir" || exit 1; \
+			fi \
+		done; \
 	fi
 	@echo "✓ Validation complete"
 
