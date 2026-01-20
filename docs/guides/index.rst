@@ -75,7 +75,7 @@ Printable reference documents are available in LaTeX format for offline use:
      - Description
      - Format
    * - ``AGENTS_LIST.tex``
-     - Complete 74-agent reference with professional styling
+     - Complete 71-agent reference with professional styling
      - LaTeX (~27KB)
    * - ``COMMANDS_LIST.tex``
      - Complete 48-command reference with professional styling
@@ -163,12 +163,12 @@ Commands use the format ``/plugin:command`` (slash prefix):
 Statistics
 ----------
 
-**Version 1.0.4** (December 2025)
+**Version 1.0.8** (January 2026)
 
 - **31 Plugins** across 6 categories
-- **74 Agents** enhanced with nlsq-pro template
-- **48 Commands** with execution mode support
-- **114 Skills** for context-aware intelligence
+- **71 Agents** enhanced with nlsq-pro template
+- **49 Commands** with execution mode support
+- **117 Skills** for context-aware intelligence
 - **16 Tools** for validation and profiling
 
 See Also

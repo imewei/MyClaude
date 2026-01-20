@@ -9,7 +9,7 @@
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Docs](https://img.shields.io/badge/Docs-ReadTheDocs-brightgreen.svg)](https://myclaude.readthedocs.io/en/latest/)
 
-Claude Code plugin marketplace with **31 specialized plugins**, **74 expert agents**, **49 slash commands**, **117 skills**, and **16 tools** for AI-powered development, scientific computing, and research workflows.
+Claude Code plugin marketplace with **31 specialized plugins**, **71 expert agents**, **49 slash commands**, **117 skills**, and **16 tools** for AI-powered development, scientific computing, and research workflows.
 
 ## Full Documentation
 
@@ -52,7 +52,7 @@ All plugins synchronized to version 2.1.0:
 | Metric | Count |
 |--------|-------|
 | Plugins | 31 |
-| Agents | 74 |
+| Agents | 71 |
 | Commands | 49 |
 | Skills | 117 |
 | Tools | 16 |
@@ -62,7 +62,7 @@ All plugins synchronized to version 2.1.0:
 
 | Category | Plugins | Agents | Commands | Skills |
 |----------|---------|--------|----------|--------|
-| Scientific Computing | 8 | 18 | 4 | 54 |
+| Scientific Computing | 8 | 15 | 4 | 54 |
 | Development | 10 | 24 | 14 | 30 |
 | AI & Machine Learning | 2 | 6 | 3 | 10 |
 | DevOps & Infrastructure | 3 | 10 | 8 | 12 |
@@ -76,7 +76,7 @@ All plugins synchronized to version 2.1.0:
 | Plugin | Version | Agents | Commands | Description |
 |--------|---------|--------|----------|-------------|
 | [julia-development](plugins/julia-development/) | v2.1.0 | 4 | 4 | Julia ecosystem with SciML, Turing.jl, and package development |
-| [jax-implementation](plugins/jax-implementation/) | v2.1.0 | 4 | - | JAX with NumPyro, Flax NNX, NLSQ optimization |
+| [jax-implementation](plugins/jax-implementation/) | v2.1.0 | 1 | - | JAX with NumPyro, Flax NNX, NLSQ optimization |
 | [hpc-computing](plugins/hpc-computing/) | v2.1.0 | 1 | - | High-performance computing and numerical methods |
 | [molecular-simulation](plugins/molecular-simulation/) | v2.1.0 | 1 | - | MD with LAMMPS, GROMACS, HOOMD-blue |
 | [statistical-physics](plugins/statistical-physics/) | v2.1.0 | 2 | - | Non-equilibrium systems and correlation functions |

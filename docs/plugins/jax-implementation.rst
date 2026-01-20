@@ -22,19 +22,7 @@ Agents
 
 .. agent:: jax-pro
 
-   Core JAX programming specialist for functional transformations (jit, vmap, pmap, grad) and performance optimization. Expert in Flax NNX, Optax, Orbax, NumPyro, and the complete JAX ecosystem for high-performance machine learning.
-
-   **Status:** active
-
-.. agent:: numpyro-pro
-
-   Expert in NumPyro probabilistic programming library for Bayesian inference using JAX. Master of MCMC algorithms (NUTS, HMC), variational inference (SVI), and JAX-accelerated probabilistic computing.
-
-   **Status:** active
-
-.. agent:: jax-scientist
-
-   JAX Physics Applications Specialist leveraging differentiable programming for complex physical systems. Expert in computational fluid dynamics (JAX-CFD), molecular dynamics (JAX-MD), physics-informed neural networks (PINNs), and quantum computing. Bridges physics principles with JAX's functional paradigm for scalable simulations.
+   Unified specialist for Core JAX programming (jit/vmap/pmap, Flax, Optax), Bayesian inference (NumPyro), Nonlinear optimization (NLSQ), and Computational Physics (JAX-MD/CFD/Diffrax). Covers functional transformations, distributed computing, probabilistic programming, and differentiable physics with a 6-step decision framework.
 
    **Status:** active
 

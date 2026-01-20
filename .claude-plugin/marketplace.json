@@ -605,10 +605,7 @@
       "category": "ai-ml",
       "strict": false,
       "agents": [
-        "./agents/jax-pro.md",
-        "./agents/jax-scientist.md",
-        "./agents/numpyro-pro.md",
-        "./agents/nlsq-pro.md"
+        "./agents/jax-pro.md"
       ]
     },
     {

@@ -14,11 +14,8 @@
 - **julia-development:turing-pro** - Master Bayesian inference with 6-step framework (Bayesian Model Formulation, Inference Strategy Selection, Prior Specification, Diagnostics, Model Comparison, Deployment)
 - **julia-development:julia-developer** - Master Julia package development with 6-step framework (Package Scope & Architecture, Project Structure & Organization, Testing Infrastructure, CI/CD, Documentation, Registry)
 
-### jax-implementation (4 agents)
-- **jax-implementation:jax-pro** - Master JAX programming with 6-step decision framework (Problem Analysis, Transformation Strategy, Performance Optimization, GPU Acceleration, Testing, Deployment)
-- **jax-implementation:jax-scientist** - Master computational physics with JAX leveraging 6-step framework (Physics Analysis, JAX-Physics Integration, Numerical Stability, Validation, Visualization, Deployment)
-- **jax-implementation:nlsq-pro** - Master GPU-accelerated nonlinear least squares with 6-step framework (Problem Characterization, Algorithm Selection, Performance Optimization, Robustness, Validation, Scaling)
-- **jax-implementation:numpyro-pro** - Master NumPyro Bayesian inference with 6-step framework (Bayesian Formulation, Model Specification, Inference Strategy, Diagnostics, Model Comparison, Production)
+### jax-implementation (1 agent)
+- **jax-implementation:jax-pro** - Unified specialist for Core JAX, Bayesian inference (NumPyro), Nonlinear optimization (NLSQ), and Computational Physics (JAX-MD/CFD/Diffrax). Covers functional transformations, distributed computing, probabilistic programming, and differentiable physics with a 6-step decision framework.
 
 ### hpc-computing (1 agent)
 - **hpc-computing:hpc-numerical-coordinator** - HPC and numerical methods coordinator with 6-step computational framework (Problem Analysis, Language Selection, Parallel Strategy, GPU Acceleration, Optimization, Scaling)

@@ -17,6 +17,26 @@ Version Format: ``MAJOR.MINOR.PATCH``
 Current Version
 ---------------
 
+v1.0.8 (2026-01-19) - JAX Agent Consolidation
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+This release unifies the JAX scientific computing agents into a single, powerful specialist.
+
+Changed
+^^^^^^^
+
+**Agent Consolidation**
+
+- Consolidated 4 JAX-related agents into a single **jax-pro** agent in the ``jax-implementation`` plugin.
+- Merged capabilities of ``numpyro-pro`` (Bayesian inference), ``nlsq-pro`` (Optimization), and ``jax-scientist`` (Physics) into ``jax-pro``.
+- Updated ``jax-pro`` with a unified 6-step decision framework covering Core JAX, Bayesian Inference, Nonlinear Optimization, and Computational Physics.
+- Reduced total agent count from 74 to 71.
+
+**Documentation**
+
+- Updated agent lists and cheatsheets to reflect the consolidation.
+- Updated ``jax-mastery`` skills to delegate complex tasks to the unified ``jax-pro`` agent.
+
 v1.0.7 (2026-01-12) - Optimization & Documentation Release
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 

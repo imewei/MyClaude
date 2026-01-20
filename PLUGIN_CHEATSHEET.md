@@ -24,9 +24,9 @@
 **Commands:** `/julia-optimize`, `/julia-package-ci`, `/julia-scaffold`, `/sciml-setup`
 **Use When:** Scientific simulations, differential equations, Bayesian modeling, high-performance numerics
 
-### jax-implementation (4 agents, 4 skills)
+### jax-implementation (1 agent, 4 skills)
 **Purpose:** JAX for numerical computing, physics-informed ML, optimization
-**Agents:** jax-pro, jax-scientist, nlsq-pro, numpyro-pro
+**Agent:** jax-pro
 **Use When:** JAX projects, physics simulations, Bayesian inference with JAX, NLSQ optimization
 
 ### hpc-computing (1 agent, 4 skills)
@@ -304,13 +304,13 @@ make plugin-enable-all
 
 | Category | Plugins | Agents | Commands |
 |----------|---------|--------|----------|
-| Scientific Computing | 8 | 18 | 4 |
+| Scientific Computing | 8 | 15 | 4 |
 | Development | 10 | 24 | 14 |
 | AI & ML | 2 | 6 | 3 |
 | DevOps & Infrastructure | 3 | 10 | 9 |
 | Quality & Testing | 4 | 7 | 10 |
 | Tools & Migration | 4 | 8 | 9 |
-| **Total** | **31** | **74** | **49** |
+| **Total** | **31** | **71** | **49** |
 
 ---
 
