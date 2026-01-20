@@ -1,12 +1,20 @@
 ---
 name: machine-learning
-version: "1.0.0"
+version: "1.1.0"
 description: Comprehensive Machine Learning and Deep Learning suite. Covers core ML (scikit-learn, XGBoost), Deep Learning (PyTorch, JAX), experiment tracking, and model optimization.
 ---
 
 # Machine Learning & Deep Learning
 
 Complete workflow for building, training, and deploying ML/DL models in scientific research.
+
+## Expert Agent
+
+For advanced machine learning architectures, MLOps pipelines, and scientific ML, delegate to the expert agent:
+
+- **`ml-expert`**: Unified specialist for Scientific Machine Learning (SciML), Deep Learning, and MLOps.
+  - *Location*: `plugins/science-suite/agents/ml-expert.md`
+  - *Capabilities*: PINNs, Neural Operators, Distributed Training (DDP/FSDP), and Model Deployment.
 
 ## 1. Core Machine Learning (Tabular Data)
 

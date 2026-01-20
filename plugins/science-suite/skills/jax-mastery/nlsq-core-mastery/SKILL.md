@@ -1,6 +1,6 @@
 ---
 name: nlsq-core-mastery
-version: "2.2.1"
+version: "2.2.2"
 description: Master NLSQ library for high-performance curve fitting (150-270x faster than SciPy). Use when fitting >10K points, parameter estimation, robust optimization, streaming datasets (100M+ points), or migrating from SciPy.
 sources:
   - https://github.com/imewei/NLSQ

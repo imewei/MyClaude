@@ -1,10 +1,17 @@
 ---
 name: gpu-acceleration
-version: "2.1.0"
+version: "2.1.1"
 description: Implement GPU acceleration using CUDA/CuPy (Python) and CUDA.jl (Julia) with kernel optimization and memory management. Use when offloading computations to GPU, writing custom kernels, or optimizing multi-GPU workflows.
 ---
 
 # GPU Acceleration
+
+## Expert Agent
+
+For GPU optimization strategies and kernel implementation, delegate to:
+
+- **`jax-pro`**: For JAX-based GPU acceleration, sharding, and Pallas kernels.
+- **`julia-pro`**: For CUDA.jl, KernelAbstractions.jl, and Julia GPU kernels.
 
 ## Framework Selection
 

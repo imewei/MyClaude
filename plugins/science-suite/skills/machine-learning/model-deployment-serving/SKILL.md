@@ -1,8 +1,6 @@
 ---
 name: model-deployment-serving
-version: "1.0.7"
-maturity: "5-Expert"
-specialization: Production ML Model Serving & Deployment
+version: "1.1.0"
 description: Deploy ML models with FastAPI, TorchServe, BentoML, Docker, Kubernetes, and cloud platforms. Implement monitoring, A/B testing, and drift detection. Use when building model serving APIs, containerizing models, or setting up production ML infrastructure.
 ---
 
@@ -10,7 +8,13 @@ description: Deploy ML models with FastAPI, TorchServe, BentoML, Docker, Kuberne
 
 Production ML model deployment from local serving to cloud-scale with monitoring, versioning, and drift detection.
 
----
+## Expert Agent
+
+For model serving, containerization strategies, and deployment architectures, delegate to the expert agent:
+
+- **`ml-expert`**: Unified specialist for Model Serving and MLOps.
+  - *Location*: `plugins/science-suite/agents/ml-expert.md`
+  - *Capabilities*: FastAPI/TorchServe implementation, Docker/K8s deployment, and monitoring setup.
 
 ## Framework Selection
 
@@ -22,8 +26,6 @@ Production ML model deployment from local serving to cloud-scale with monitoring
 | KServe | Kubernetes-native | High |
 | SageMaker | AWS managed | Medium |
 | Vertex AI | GCP managed | Medium |
-
----
 
 ## FastAPI Model Serving
 
@@ -56,8 +58,6 @@ async def predict(request: PredictionRequest):
         )
 ```
 
----
-
 ## Docker Containerization
 
 ```dockerfile
@@ -76,8 +76,6 @@ EXPOSE 8000
 HEALTHCHECK --interval=30s CMD curl -f http://localhost:8000/health
 CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
 ```
-
----
 
 ## Kubernetes Deployment
 
@@ -114,8 +112,6 @@ spec:
     resource: {name: cpu, target: {type: Utilization, averageUtilization: 70}}
 ```
 
----
-
 ## Prometheus Metrics
 
 ```python
@@ -135,8 +131,6 @@ async def predict(request: PredictionRequest):
 async def metrics():
     return Response(content=generate_latest(), media_type="text/plain")
 ```
-
----
 
 ## Drift Detection
 
@@ -162,8 +156,6 @@ class DriftDetector:
         return results
 ```
 
----
-
 ## A/B Testing
 
 ```python
@@ -188,8 +180,6 @@ class ABTest:
                 return variant
         return self.variants[-1]
 ```
-
----
 
 ## Cloud Deployment
 
@@ -221,8 +211,6 @@ model = aiplatform.Model.upload(
 endpoint = model.deploy(machine_type="n1-standard-4")
 ```
 
----
-
 ## Best Practices
 
 | Area | Practice |
@@ -231,8 +219,6 @@ endpoint = model.deploy(machine_type="n1-standard-4")
 | **Monitoring** | Latency/throughput/errors, confidence distribution, drift detection |
 | **Performance** | Batch predictions, caching, quantization, GPU acceleration |
 | **Reliability** | Retries with backoff, circuit breakers, multiple versions, rollback |
-
----
 
 ## Common Commands
 
@@ -251,8 +237,6 @@ curl http://localhost:8000/health
 curl -X POST http://localhost:8000/predict -H "Content-Type: application/json" -d '{"features": [1,2,3]}'
 ```
 
----
-
 ## Deployment Checklist
 
 - [ ] Model containerized with multi-stage build
@@ -263,7 +247,3 @@ curl -X POST http://localhost:8000/predict -H "Content-Type: application/json" -
 - [ ] A/B testing framework ready
 - [ ] Autoscaling configured
 - [ ] Rollback procedure documented
-
----
-
-**Version**: 1.0.5

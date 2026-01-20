@@ -1,6 +1,6 @@
 ---
 name: jax-core-programming
-version: "2.1.1"
+version: "2.1.2"
 description: Master JAX functional transformations (jit, vmap, pmap, grad), Flax NNX neural networks, Optax optimizers, Orbax checkpointing, and NumPyro Bayesian inference. Use when writing JAX code, building training loops, optimizing XLA compilation, debugging tracer errors, or scaling to multi-device GPU/TPU.
 ---
 
@@ -13,8 +13,6 @@ For complex JAX transformations, distributed training, and performance engineeri
 - **`jax-pro`**: Unified specialist for Core JAX optimization, hardware acceleration, and production deployments.
   - *Location*: `plugins/science-suite/agents/jax-pro.md`
   - *Capabilities*: Multi-device parallelism (pmap/sharding), XLA optimization, custom VJPs, and memory efficiency.
-
----
 
 ## Transforms
 
@@ -37,8 +35,6 @@ loss, grads = jax.value_and_grad(loss_fn)(params, x, y)
 def shaped_fn(x, shape):
     return jnp.zeros(shape)
 ```
-
----
 
 ## Flax NNX
 
@@ -65,8 +61,6 @@ def train_step(optimizer, batch):
     return loss
 ```
 
----
-
 ## Optax
 
 ```python
@@ -82,8 +76,6 @@ optimizer = optax.adam(learning_rate=schedule)
 optimizer = optax.multi_steps(optax.adam(1e-3), every_k_schedule=4)
 ```
 
----
-
 ## Orbax
 
 ```python
@@ -92,8 +84,6 @@ ckpt = ocp.AsyncCheckpointer(ocp.PyTreeCheckpointHandler())
 ckpt.save('/ckpt/step_1000', {'model': model, 'opt_state': opt_state, 'step': 1000})
 restored = ckpt.restore('/ckpt/step_1000')
 ```
-
----
 
 ## NumPyro
 
@@ -112,8 +102,6 @@ mcmc = MCMC(NUTS(bayesian_regression), num_warmup=500, num_samples=1000)
 mcmc.run(jax.random.PRNGKey(0), x_train, y_train)
 ```
 
----
-
 ## Parallelization Strategies
 
 | Strategy | API | Use Case |
@@ -131,8 +119,6 @@ devices = mesh_utils.create_device_mesh((4, 2))
 mesh = Mesh(devices, axis_names=('data', 'model'))
 x_sharded = jax.device_put(x, NamedSharding(mesh, P('data', None)))
 ```
-
----
 
 ## Pitfalls & Fixes
 

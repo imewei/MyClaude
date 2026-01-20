@@ -1,8 +1,6 @@
 ---
 name: devops-ml-infrastructure
-version: "1.0.7"
-maturity: "5-Expert"
-specialization: CI/CD & Infrastructure for ML Systems
+version: "1.1.0"
 description: DevOps for ML with GitHub Actions pipelines, Terraform IaC, Docker/Kubernetes, and cloud ML platforms (SageMaker, Azure ML, Vertex AI). Use when automating training, deploying models, or provisioning ML infrastructure.
 ---
 
@@ -10,7 +8,13 @@ description: DevOps for ML with GitHub Actions pipelines, Terraform IaC, Docker/
 
 CI/CD pipelines, infrastructure automation, and deployment orchestration for production ML systems.
 
----
+## Expert Agent
+
+For CI/CD setup, infrastructure as code, and cloud provisioning, delegate to the expert agent:
+
+- **`ml-expert`**: Unified specialist for MLOps and Infrastructure.
+  - *Location*: `plugins/science-suite/agents/ml-expert.md`
+  - *Capabilities*: GitHub Actions pipelines, Terraform/Kubernetes configs, and Docker containerization.
 
 ## Pipeline Selection
 
@@ -22,8 +26,6 @@ CI/CD pipelines, infrastructure automation, and deployment orchestration for pro
 | Orchestration | Kubernetes | Scalable serving |
 | Registry | ECR/GCR/ACR | Image storage |
 | MLOps | MLflow/W&B | Experiment tracking |
-
----
 
 ## GitHub Actions ML Pipeline
 
@@ -64,8 +66,6 @@ jobs:
       - run: kubectl set image deployment/ml-model ml-model=${{ secrets.ECR_REGISTRY }}/ml-model:${{ github.sha }}
 ```
 
----
-
 ## Terraform ML Infrastructure
 
 ```hcl
@@ -93,8 +93,6 @@ resource "aws_ecr_repository" "ml_models" {
 }
 ```
 
----
-
 ## Dockerfile for ML
 
 ```dockerfile
@@ -113,8 +111,6 @@ EXPOSE 8000
 HEALTHCHECK --interval=30s CMD curl -f http://localhost:8000/health
 CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
 ```
-
----
 
 ## Kubernetes ML Deployment
 
@@ -147,8 +143,6 @@ spec:
   - type: Resource
     resource: { name: cpu, target: { averageUtilization: 70 } }
 ```
-
----
 
 ## Optimized Inference Service
 
@@ -184,8 +178,6 @@ class BatchProcessor:
             future.set_result(outputs[i])
 ```
 
----
-
 ## Cloud ML Platforms
 
 ### AWS SageMaker
@@ -202,8 +194,6 @@ model = aiplatform.Model.upload(artifact_uri="gs://bucket/model/")
 endpoint = model.deploy(machine_type="n1-standard-4")
 ```
 
----
-
 ## Best Practices
 
 | Area | Practice |
@@ -212,8 +202,6 @@ endpoint = model.deploy(machine_type="n1-standard-4")
 | **IaC** | Module-based Terraform, state locking, lifecycle policies |
 | **Deployment** | Batching, caching, torch.compile, connection pooling |
 | **Monitoring** | Health checks, automated rollback, cost tracking |
-
----
 
 ## Commands Reference
 
@@ -231,8 +219,6 @@ kubectl rollout status deployment/ml-model
 kubectl rollout undo deployment/ml-model
 ```
 
----
-
 ## Infrastructure Checklist
 
 - [ ] CI/CD pipeline with data validation
@@ -243,7 +229,3 @@ kubectl rollout undo deployment/ml-model
 - [ ] Terraform state management
 - [ ] Canary deployment strategy
 - [ ] Rollback procedures documented
-
----
-
-**Version**: 1.0.5

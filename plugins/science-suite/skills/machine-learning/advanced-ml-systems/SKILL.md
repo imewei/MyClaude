@@ -1,8 +1,6 @@
 ---
 name: advanced-ml-systems
-version: "1.0.7"
-maturity: "5-Expert"
-specialization: Deep Learning Systems
+version: "1.1.0"
 description: Build advanced deep learning with PyTorch 2.x, TensorFlow, JAX including architectures (CNNs, Transformers, GANs), distributed training (DDP, FSDP, DeepSpeed), hyperparameter optimization (Optuna, Ray Tune), and model optimization (quantization, pruning, distillation). Use when training scripts, custom architectures, or scaling to multi-GPU/TPU.
 ---
 
@@ -10,7 +8,13 @@ description: Build advanced deep learning with PyTorch 2.x, TensorFlow, JAX incl
 
 Deep learning frameworks, distributed training, and production-ready optimization.
 
----
+## Expert Agent
+
+For advanced deep learning architectures, distributed training, and model optimization, delegate to the expert agent:
+
+- **`ml-expert`**: Unified specialist for Scientific ML, Deep Learning, and MLOps.
+  - *Location*: `plugins/science-suite/agents/ml-expert.md`
+  - *Capabilities*: Distributed training (DDP/FSDP), custom architectures (Transformers/GNNs), and model optimization.
 
 ## Framework Selection
 
@@ -19,8 +23,6 @@ Deep learning frameworks, distributed training, and production-ready optimizatio
 | PyTorch 2.x | ★★★★★ | ★★★★ | ★★★ | ★★★★★ |
 | TensorFlow | ★★★ | ★★★★ | ★★★★★ | ★★★ |
 | JAX | ★★ | ★★★★★ | ★★★ | ★★★★★ |
-
----
 
 ## PyTorch 2.x Patterns
 
@@ -44,8 +46,6 @@ for batch in dataloader:
     scaler.step(optimizer)
     scaler.update()
 ```
-
----
 
 ## Distributed Training
 
@@ -86,8 +86,6 @@ ds_config = {
 model_engine, optimizer, _, _ = deepspeed.initialize(model=model, config=ds_config)
 ```
 
----
-
 ## Hyperparameter Optimization
 
 ### Optuna
@@ -110,8 +108,6 @@ def objective(trial):
 study = optuna.create_study(direction="minimize", pruner=optuna.pruners.MedianPruner())
 study.optimize(objective, n_trials=100)
 ```
-
----
 
 ## Model Optimization
 
@@ -140,8 +136,6 @@ def distillation_loss(student_logits, teacher_logits, labels, T=3.0, alpha=0.5):
     return alpha * kd_loss + (1 - alpha) * ce_loss
 ```
 
----
-
 ## LoRA Fine-Tuning
 
 ```python
@@ -151,8 +145,6 @@ lora_config = LoraConfig(r=8, lora_alpha=32, target_modules=["q_proj", "v_proj"]
 model = get_peft_model(AutoModelForCausalLM.from_pretrained("gpt2"), lora_config)
 model.print_trainable_parameters()  # Only 0.2% trainable!
 ```
-
----
 
 ## Best Practices
 
@@ -164,8 +156,6 @@ model.print_trainable_parameters()  # Only 0.2% trainable!
 | DDP before FSDP | Start simple, scale complexity as needed |
 | Profile first | Use torch.profiler before optimizing |
 
----
-
 ## Common Pitfalls
 
 | Pitfall | Problem |
@@ -174,8 +164,6 @@ model.print_trainable_parameters()  # Only 0.2% trainable!
 | Wrong ZeRO stage | ZeRO-3 overhead for small models |
 | Ignoring data loading | CPU bottleneck, GPU idle |
 | No warmup | Unstable early training |
-
----
 
 ## Checklist
 
@@ -186,7 +174,3 @@ model.print_trainable_parameters()  # Only 0.2% trainable!
 - [ ] Learning rate warmup configured
 - [ ] Quantization for deployment
 - [ ] Hyperparameter search completed
-
----
-
-**Version**: 1.0.5

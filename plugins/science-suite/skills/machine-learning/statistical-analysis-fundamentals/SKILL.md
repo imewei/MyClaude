@@ -1,8 +1,6 @@
 ---
 name: statistical-analysis-fundamentals
-version: "1.0.7"
-maturity: "5-Expert"
-specialization: Statistical Analysis
+version: "1.1.0"
 description: Comprehensive statistical analysis with scipy.stats, statsmodels, and PyMC3 including hypothesis testing, Bayesian methods, regression, experimental design, and causal inference. Use when conducting A/B tests, power analysis, or treatment effect estimation.
 ---
 
@@ -10,7 +8,13 @@ description: Comprehensive statistical analysis with scipy.stats, statsmodels, a
 
 Systematic frameworks for hypothesis testing, experimental design, and causal inference.
 
----
+## Expert Agent
+
+For advanced statistical analysis, experimental design, and causal inference, delegate to the expert agent:
+
+- **`research-expert`**: Unified specialist for Research Methodology and Statistics.
+  - *Location*: `plugins/science-suite/agents/research-expert.md`
+  - *Capabilities*: Power analysis, hypothesis testing selection, and rigorous statistical reporting.
 
 ## Test Selection Guide
 
@@ -24,8 +28,6 @@ Systematic frameworks for hypothesis testing, experimental design, and causal in
 | Bayesian inference | MCMC | `pymc3`, `numpyro` |
 | Time series | ARIMA | `statsmodels.tsa` |
 | Causal inference | DiD, PSM | `statsmodels`, `econml` |
-
----
 
 ## Hypothesis Testing Framework
 
@@ -44,8 +46,6 @@ effect_size = (group_a.mean() - group_b.mean()) / pooled_std
 ci = stats.t.interval(0.95, len(group_a)-1, loc=group_a.mean(), scale=stats.sem(group_a))
 ```
 
----
-
 ## Sample Size Calculation
 
 ```python
@@ -57,8 +57,6 @@ n_per_group = tt_ind_solve_power(
     power=0.8
 )
 ```
-
----
 
 ## Bayesian A/B Testing
 
@@ -76,8 +74,6 @@ with pm.Model():
 prob_b_wins = (trace['delta'] > 0).mean()
 ```
 
----
-
 ## Causal Inference Methods
 
 | Method | Use Case | Assumption |
@@ -86,8 +82,6 @@ prob_b_wins = (trace['delta'] > 0).mean()
 | Propensity Score Matching | Observational treatment | No unmeasured confounders |
 | Instrumental Variables | Endogeneity present | Valid instrument |
 | Regression Discontinuity | Threshold-based assignment | Continuity at cutoff |
-
----
 
 ## Multiple Testing Correction
 
@@ -98,8 +92,6 @@ reject, p_corrected, _, _ = multipletests(
     p_values, alpha=0.05, method='fdr_bh'  # Benjamini-Hochberg
 )
 ```
-
----
 
 ## Best Practices
 
@@ -112,8 +104,6 @@ reject, p_corrected, _, _ = multipletests(
 | Correct for multiple tests | Bonferroni or FDR |
 | Distinguish statistical vs practical | Large n → small p doesn't mean important |
 
----
-
 ## Common Pitfalls
 
 | Pitfall | Solution |
@@ -124,8 +114,6 @@ reject, p_corrected, _, _ = multipletests(
 | Assumption violations | Check residuals, use robust methods |
 | Causal claims from correlation | Use appropriate causal methods |
 
----
-
 ## Checklist
 
 - [ ] Hypothesis and alpha level pre-specified
@@ -135,7 +123,3 @@ reject, p_corrected, _, _ = multipletests(
 - [ ] Effect size and CI reported
 - [ ] Multiple testing corrected if applicable
 - [ ] Statistical vs practical significance distinguished
-
----
-
-**Version**: 1.0.5

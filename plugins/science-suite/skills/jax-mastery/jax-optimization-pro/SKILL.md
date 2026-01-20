@@ -1,6 +1,6 @@
 ---
 name: jax-optimization-pro
-version: "1.0.1"
+version: "1.1.0"
 description: This skill should be used when the user asks to "optimize JAX code for production", "write JAX-first code", "debug ConcretizationError", "analyze XLA/HLO output", "implement SPMD parallelism", "use jax.sharding for TPU pods", "write Pallas/Triton kernels", "fix tracer errors", "optimize GPU/TPU memory", "handle numerical stability", "implement custom VJPs", or needs expert-level guidance on functional programming patterns, PyTree manipulation, multi-device scaling, or XLA compiler optimization.
 ---
 

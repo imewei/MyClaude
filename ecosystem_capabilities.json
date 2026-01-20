@@ -752,24 +752,9 @@
       "path": "/Users/b80985/Projects/MyClaude/plugins/julia-development",
       "agents": [
         {
-          "name": "turing-pro",
-          "specialization": "Bayesian Inference Excellence",
-          "description": "Bayesian inference and probabilistic programming expert. Master of Turing.jl, MCMC methods (NUTS, HMC), variational inference (ADVI, Bijectors.jl), model comparison (WAIC, LOO), convergence diagnostics, and integration with SciML for Bayesian ODEs."
-        },
-        {
-          "name": "julia-developer",
-          "specialization": "Julia Package Development Excellence",
-          "description": "Package development specialist for creating robust Julia packages. Expert in package structure, testing with Test.jl/Aqua.jl/JET.jl, CI/CD automation with GitHub Actions, PackageCompiler.jl for executables, web development with Genie.jl/HTTP.jl, and integrating optimization, monitoring, and deep learning components."
-        },
-        {
-          "name": "sciml-pro",
-          "specialization": "SciML Ecosystem Mastery",
-          "description": "SciML ecosystem expert for scientific machine learning and differential equations. Master of DifferentialEquations.jl, ModelingToolkit.jl, Optimization.jl (distinct from JuMP.jl), NeuralPDE.jl, Catalyst.jl, performance tuning, and parallel computing. Auto-detects problem types and generates template code."
-        },
-        {
           "name": "julia-pro",
-          "specialization": "General Julia Programming Mastery",
-          "description": "General Julia programming expert for high-performance computing, scientific simulations, data analysis, and machine learning. Master of multiple dispatch, type system, metaprogramming, JuMP optimization, visualization, interoperability, and package management. Provides equal emphasis across all Julia use cases."
+          "specialization": "Unified Scientific Computing Specialist",
+          "description": "Unified specialist for Julia programming, Scientific Machine Learning (SciML), Bayesian inference (Turing.jl), and package development. Covers optimization, visualization, and distributed computing with a 6-step decision framework."
         }
       ],
       "skills": [

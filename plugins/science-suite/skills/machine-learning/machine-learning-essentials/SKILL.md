@@ -1,8 +1,6 @@
 ---
 name: machine-learning-essentials
-version: "1.0.7"
-maturity: "5-Expert"
-specialization: Core ML Workflows
+version: "1.1.0"
 description: Core ML workflows with scikit-learn, XGBoost, LightGBM including algorithm selection, cross-validation, hyperparameter tuning (GridSearch, Optuna), handling imbalanced data (SMOTE), model evaluation, SHAP interpretability, and deployment. Use when building classification/regression models or evaluating ML performance.
 ---
 
@@ -10,7 +8,13 @@ description: Core ML workflows with scikit-learn, XGBoost, LightGBM including al
 
 Practical ML from data to deployment with scikit-learn and gradient boosting.
 
----
+## Expert Agent
+
+For classical ML workflows, algorithm selection, and model evaluation, delegate to the expert agent:
+
+- **`ml-expert`**: Unified specialist for Machine Learning.
+  - *Location*: `plugins/science-suite/agents/ml-expert.md`
+  - *Capabilities*: Model selection, hyperparameter tuning (Optuna), and interpretability (SHAP).
 
 ## Algorithm Selection
 
@@ -21,8 +25,6 @@ Practical ML from data to deployment with scikit-learn and gradient boosting.
 | High-dimensional | Ridge, Lasso, Elastic Net | Regularization needed |
 | Clustering | K-Means, DBSCAN | Segmentation, anomaly |
 | Dimensionality | PCA, t-SNE, UMAP | Visualization, features |
-
----
 
 ## Classification Workflow
 
@@ -53,8 +55,6 @@ print(classification_report(y_test, y_pred))
 print(f"ROC-AUC: {roc_auc_score(y_test, y_proba):.3f}")
 ```
 
----
-
 ## Regression Workflow
 
 ```python
@@ -70,8 +70,6 @@ print(f"R²: {r2_score(y_test, y_pred):.3f}")
 print(f"RMSE: {np.sqrt(mean_squared_error(y_test, y_pred)):.3f}")
 print(f"MAE: {mean_absolute_error(y_test, y_pred):.3f}")
 ```
-
----
 
 ## Evaluation Metrics
 
@@ -93,8 +91,6 @@ print(f"MAE: {mean_absolute_error(y_test, y_pred):.3f}")
 | MAE | Robust to outliers |
 | MAPE | Percentage interpretation |
 
----
-
 ## Handling Imbalanced Data
 
 ```python
@@ -110,8 +106,6 @@ X_resampled, y_resampled = smote.fit_resample(X_train, y_train)
 weights = compute_class_weight('balanced', classes=np.unique(y_train), y=y_train)
 model = XGBClassifier(scale_pos_weight=weights[1]/weights[0])
 ```
-
----
 
 ## Hyperparameter Tuning
 
@@ -134,8 +128,6 @@ study.optimize(objective, n_trials=50)
 print(study.best_params)
 ```
 
----
-
 ## Model Interpretability
 
 ```python
@@ -152,8 +144,6 @@ shap.summary_plot(shap_values, X_test, feature_names=feature_names)
 shap.force_plot(explainer.expected_value, shap_values[0], X_test.iloc[0])
 ```
 
----
-
 ## Cross-Validation
 
 ```python
@@ -163,8 +153,6 @@ cv = StratifiedKFold(n_splits=5, shuffle=True, random_state=42)
 scores = cross_val_score(model, X, y, cv=cv, scoring='roc_auc')
 print(f"CV: {scores.mean():.3f} (+/- {scores.std() * 2:.3f})")
 ```
-
----
 
 ## Model Deployment
 
@@ -191,8 +179,6 @@ def predict(req: PredictRequest):
             "probability": model.predict_proba(X)[0].tolist()}
 ```
 
----
-
 ## Best Practices
 
 | Practice | Implementation |
@@ -204,8 +190,6 @@ def predict(req: PredictRequest):
 | Early stopping | Prevent overfitting |
 | SHAP values | Model interpretability |
 
----
-
 ## Common Pitfalls
 
 | Pitfall | Solution |
@@ -215,8 +199,6 @@ def predict(req: PredictRequest):
 | Overfitting | Cross-validation, regularization |
 | Wrong metric | Match metric to business goal |
 | No baseline | Compare against simple model |
-
----
 
 ## Checklist
 
@@ -228,7 +210,3 @@ def predict(req: PredictRequest):
 - [ ] Model evaluated on held-out test set
 - [ ] Interpretability assessed (SHAP)
 - [ ] Model serialized for deployment
-
----
-
-**Version**: 1.0.5

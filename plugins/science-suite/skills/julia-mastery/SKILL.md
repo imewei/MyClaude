@@ -1,12 +1,20 @@
 ---
 name: julia-mastery
-version: "1.0.0"
+version: "1.0.1"
 description: Master the Julia language for scientific computing. Covers multiple dispatch, type stability, metaprogramming, and the SciML ecosystem.
 ---
 
 # Julia Mastery
 
 Expert guide for writing high-performance, idiomatic Julia code for scientific applications.
+
+## Expert Agent
+
+For complex Julia programming, SciML workflows, and performance optimization, delegate to the expert agent:
+
+- **`julia-pro`**: Unified specialist for Julia optimization, including Core Julia, SciML, Turing.jl, and Package Development.
+  - *Location*: `plugins/science-suite/agents/julia-pro.md`
+  - *Capabilities*: Performance tuning, stiff ODE solvers, Bayesian inference, and CI/CD setup.
 
 ## 1. Multiple Dispatch & Type System
 

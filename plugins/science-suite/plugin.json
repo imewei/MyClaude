@@ -1,8 +1,8 @@
 {
   "name": "science-suite",
   "displayName": "Scientific Computing Suite",
-  "version": "1.0.0",
-  "description": "Consolidated suite for high-performance computing, specialized physics/chemistry simulations, and data science workflows.",
+  "version": "2.0.0",
+  "description": "Consolidated suite for high-performance computing, specialized physics/chemistry simulations, and data science workflows. Optimized for Claude Code v2.1.12 with parallel agent execution and MCP server integration.",
   "author": {
     "name": "Wei Chen",
     "url": "https://myclaude.readthedocs.io/en/latest/"
@@ -20,12 +20,21 @@
     "machine-learning",
     "visualization",
     "research",
-    "julia"
+    "julia",
+    "parallel-computing",
+    "claude-code"
   ],
   "agents": [
+    "jax-pro",
+    "julia-pro",
+    "statistical-physicist",
     "simulation-expert",
     "ml-expert",
-    "research-expert"
+    "research-expert",
+    "python-pro",
+    "ai-engineer",
+    "prompt-engineer",
+    "neural-network-master"
   ],
   "category": "science"
 }

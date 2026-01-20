@@ -37,6 +37,13 @@ Changed
 - Updated agent lists and cheatsheets to reflect the consolidation.
 - Updated ``jax-mastery`` skills to delegate complex tasks to the unified ``jax-pro`` agent.
 
+**Julia Agent Consolidation**
+
+- Consolidated 4 Julia-related agents into a single **julia-pro** agent in the ``julia-development`` plugin.
+- Merged capabilities of ``julia-developer`` (Package Dev), ``sciml-pro`` (SciML), and ``turing-pro`` (Bayesian) into ``julia-pro``.
+- Updated ``julia-pro`` with a unified 6-step decision framework covering Core Julia, SciML, Bayesian Inference, and Package Development.
+- Reduced total agent count from 71 to 68.
+
 v1.0.7 (2026-01-12) - Optimization & Documentation Release
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 

@@ -1,12 +1,20 @@
 ---
 name: research-methodology
-version: "1.0.0"
+version: "1.1.0"
 description: Systematic framework for scientific research, covering experimental design, statistical rigor, quality assessment, and publication readiness.
 ---
 
 # Research Methodology
 
 Expert guide for designing, executing, and evaluating scientific research with high rigor and reproducibility.
+
+## Expert Agent
+
+For systematic reviews, rigorous experimental design, and publication-quality reporting, delegate to the expert agent:
+
+- **`research-expert`**: Unified specialist for Research Methodology and Evidence Synthesis.
+  - *Location*: `plugins/science-suite/agents/research-expert.md`
+  - *Capabilities*: Systematic literature reviews (PRISMA), meta-analysis, evidence grading (GRADE), and technical writing.
 
 ## 1. Experimental Design
 

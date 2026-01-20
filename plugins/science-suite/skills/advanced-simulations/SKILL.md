@@ -1,12 +1,20 @@
 ---
 name: advanced-simulations
-version: "1.0.0"
+version: "1.0.1"
 description: Master advanced simulation techniques including non-equilibrium thermodynamics, stochastic dynamics, and multiscale modeling. Bridge scales from atomistic to mesoscale.
 ---
 
 # Advanced Simulations & Statistical Physics
 
 Comprehensive framework for modeling complex physical systems across multiple scales and environments.
+
+## Expert Agent
+
+For complex simulation workflows, multi-scale modeling, and HPC execution, delegate to the expert agent:
+
+- **`simulation-expert`**: Unified specialist for Molecular Dynamics, Computational Physics, and HPC.
+  - *Location*: `plugins/science-suite/agents/simulation-expert.md`
+  - *Capabilities*: Large-scale MD (LAMMPS/GROMACS), differentiable physics (JAX-MD), and non-equilibrium thermodynamics.
 
 ## 1. Stochastic Dynamics & Transport
 

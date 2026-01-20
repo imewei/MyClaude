@@ -1,10 +1,18 @@
 ---
 name: md-simulation-setup
-version: "2.1.0"
+version: "2.1.1"
 description: Set up classical MD simulations using LAMMPS, GROMACS, and HOOMD-blue for materials and biomolecular systems. Use when writing input scripts, selecting force fields, configuring ensembles, or optimizing parallel execution.
 ---
 
 # MD Simulation Setup
+
+## Expert Agent
+
+For setting up, running, and analyzing Molecular Dynamics simulations, delegate to the expert agent:
+
+- **`simulation-expert`**: Unified specialist for Molecular Dynamics and HPC.
+  - *Location*: `plugins/science-suite/agents/simulation-expert.md`
+  - *Capabilities*: Simulation setup (LAMMPS/GROMACS), equilibration protocols, and parallel performance optimization.
 
 ## Engine Selection
 

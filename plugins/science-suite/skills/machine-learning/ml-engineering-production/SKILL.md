@@ -1,8 +1,6 @@
 ---
 name: ml-engineering-production
-version: "1.0.7"
-maturity: "5-Expert"
-specialization: Production ML Engineering Practices
+version: "1.1.0"
 description: Software and data engineering best practices for production ML. Type-safe code, pytest testing, pre-commit hooks, pandas/SQL pipelines, and modern project structure. Use when building maintainable ML systems.
 ---
 
@@ -10,7 +8,13 @@ description: Software and data engineering best practices for production ML. Typ
 
 Software and data engineering practices for scalable, maintainable ML systems.
 
----
+## Expert Agent
+
+For production ML engineering, testing, and code quality, delegate to the expert agent:
+
+- **`ml-expert`**: Unified specialist for MLOps and Engineering.
+  - *Location*: `plugins/science-suite/agents/ml-expert.md`
+  - *Capabilities*: Code structure, testing strategies, and production readiness checks.
 
 ## Project Structure
 
@@ -27,8 +31,6 @@ ml-project/
 ├── pyproject.toml     # Project config
 └── README.md
 ```
-
----
 
 ## Type-Safe ML Code
 
@@ -58,8 +60,6 @@ class MLModel:
             raise ValueError("Model not trained")
         return self.model(data)
 ```
-
----
 
 ## Testing ML Code
 
@@ -94,8 +94,6 @@ class TestModel:
         assert model(x).shape[0] == batch_size
 ```
 
----
-
 ## Pre-commit Configuration
 
 ```yaml
@@ -119,8 +117,6 @@ repos:
     hooks:
       - id: mypy
 ```
-
----
 
 ## Data Pipeline (ETL)
 
@@ -154,8 +150,6 @@ class DataPipeline:
         self.load(final_df)
 ```
 
----
-
 ## SQL Feature Extraction
 
 ```python
@@ -175,8 +169,6 @@ class SQLDataLoader:
         return df[feature_cols], df[target_col]
 ```
 
----
-
 ## Data Format Comparison
 
 | Format | Write (1M rows) | Read | Size | Use Case |
@@ -184,8 +176,6 @@ class SQLDataLoader:
 | CSV | 4.2s | 1.9s | 73 MB | Exchange, debugging |
 | Parquet (uncompressed) | 0.4s | 0.15s | 38 MB | Fast I/O |
 | Parquet (snappy) | 0.5s | 0.16s | 27 MB | Production |
-
----
 
 ## Experiment Tracking
 
@@ -209,8 +199,6 @@ class ExperimentTracker:
         wandb.finish()
 ```
 
----
-
 ## Best Practices Summary
 
 | Area | Practice |
@@ -220,8 +208,6 @@ class ExperimentTracker:
 | **Project** | Separate concerns, config files, modular components |
 | **Collaboration** | Clear commits, feature branches, code review |
 
----
-
 ## Testing Commands
 
 ```bash
@@ -230,8 +216,6 @@ pytest --cov=src tests/                # With coverage
 pytest tests/test_models.py::TestModel # Specific test
 ```
 
----
-
 ## Git Workflow
 
 ```bash
@@ -239,8 +223,6 @@ git checkout -b feature/new-feature
 git commit -m "feat: add new feature"
 git fetch origin && git rebase origin/main
 ```
-
----
 
 ## .gitignore for ML
 
@@ -255,8 +237,6 @@ data/, datasets/
 .env
 ```
 
----
-
 ## ML Engineering Checklist
 
 - [ ] Type hints on all functions
@@ -267,7 +247,3 @@ data/, datasets/
 - [ ] Experiment tracking enabled
 - [ ] Configuration files (not hardcoded)
 - [ ] Documentation up to date
-
----
-
-**Version**: 1.0.5

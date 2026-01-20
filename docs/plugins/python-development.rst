@@ -56,33 +56,33 @@ Commands
 Skills
 ------
 
-.. skill:: async-python-patterns
+.. skill:: type-driven-design
 
-   Master Python asyncio, concurrent programming, and async/await patterns for high-performance applications
+   Master type-driven design in Python using Protocols, Generics, and strict static analysis.
 
    **Status:** active
 
-.. skill:: python-testing-patterns
+.. skill:: rust-extensions
 
-   Comprehensive testing strategies with pytest, fixtures, mocking, and test-driven development
+   Build high-performance Python extensions using Rust, PyO3, and Maturin.
+
+   **Status:** active
+
+.. skill:: modern-concurrency
+
+   Master structured concurrency in Python using asyncio TaskGroups and modern primitives.
+
+   **Status:** active
+
+.. skill:: robust-testing
+
+   Implement robust testing strategies using property-based testing (Hypothesis) and advanced fixtures.
 
    **Status:** active
 
 .. skill:: python-packaging
 
-   Create distributable Python packages with proper project structure and PyPI publishing
-
-   **Status:** active
-
-.. skill:: python-performance-optimization
-
-   Profile and optimize Python code using cProfile, memory profilers, and performance best practices
-
-   **Status:** active
-
-.. skill:: uv-package-manager
-
-   Master the uv package manager for fast Python dependency management and modern workflows
+   Master modern Python packaging using uv, focusing on workspaces, monorepos, and reproducible builds.
 
    **Status:** active
 

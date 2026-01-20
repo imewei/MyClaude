@@ -1,7 +1,7 @@
 # MyClaude
 
 [![Plugins](https://img.shields.io/badge/Plugins-31-blue.svg)](https://myclaude.readthedocs.io/en/latest/plugins/)
-[![Agents](https://img.shields.io/badge/Agents-74-green.svg)](AGENTS_LIST.md)
+[![Agents](https://img.shields.io/badge/Agents-71-green.svg)](AGENTS_LIST.md)
 [![Commands](https://img.shields.io/badge/Commands-49-orange.svg)](COMMANDS_LIST.md)
 [![Skills](https://img.shields.io/badge/Skills-117-purple.svg)](PLUGIN_CHEATSHEET.md)
 [![Tools](https://img.shields.io/badge/Tools-16-teal.svg)](docs/tools-reference.rst)
@@ -230,7 +230,7 @@ See [Tools Reference](docs/tools-reference.rst) for complete documentation.
 ## Documentation
 
 - **[Plugin Cheatsheet](PLUGIN_CHEATSHEET.md)** - Quick reference for all plugins
-- **[Complete Agents List](AGENTS_LIST.md)** - Catalog of all 74 agents
+- **[Complete Agents List](AGENTS_LIST.md)** - Catalog of all 71 agents
 - **[Complete Commands List](COMMANDS_LIST.md)** - Catalog of all 48 commands
 - **[Tools Reference](docs/tools-reference.rst)** - 16 utility scripts documentation
 - **[API Reference](docs/api/index.rst)** - Python tools API documentation
@@ -240,7 +240,7 @@ See [Tools Reference](docs/tools-reference.rst) for complete documentation.
 
 Printable reference documents are available in `docs/guides/`:
 
-- `AGENTS_LIST.tex` - Complete 74-agent reference guide
+- `AGENTS_LIST.tex` - Complete 71-agent reference guide
 - `COMMANDS_LIST.tex` - Complete 48-command reference guide
 - `agents-reference.tex` - Concise agent reference
 - `commands-reference.tex` - Concise command reference
@@ -310,7 +310,7 @@ make clean-all               # Deep clean including docs
 
 ### v1.0.4 (2025-12-03)
 
-**Agent Optimization Release** - All 74 agents enhanced with nlsq-pro template:
+**Agent Optimization Release** - All 71 agents enhanced with nlsq-pro template:
 
 - Pre-Response Validation Framework: 5 mandatory self-checks + 5 quality gates
 - When to Invoke Sections: USE FOR / DELEGATE TO tables and Decision Trees
@@ -333,7 +333,7 @@ make clean-all               # Deep clean including docs
 ### v1.0.1 (2025-10-31)
 
 - Documentation improvements and enhanced installation guide
-- Updated statistics (74 agents, 48 commands, 114 skills)
+- Updated statistics (71 agents, 49 commands, 117 skills)
 
 ### v1.0.0 (2025-10-29)
 

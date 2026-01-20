@@ -1,8 +1,6 @@
 ---
 name: data-wrangling-communication
-version: "1.0.7"
-maturity: "5-Expert"
-specialization: Data Cleaning & Visualization
+version: "1.1.0"
 description: Comprehensive data wrangling, cleaning, feature engineering, and visualization workflows using pandas, NumPy, Matplotlib, Seaborn, and Plotly. Use when cleaning messy datasets, handling missing values, dealing with outliers, engineering features, performing EDA, creating statistical visualizations, building interactive dashboards with Plotly Dash or Streamlit, or presenting data-driven insights to stakeholders.
 ---
 
@@ -10,7 +8,13 @@ description: Comprehensive data wrangling, cleaning, feature engineering, and vi
 
 Transform raw data into actionable insights through systematic cleaning, feature engineering, and visualization.
 
----
+## Expert Agent
+
+For complex data analysis, cleaning pipelines, and interactive dashboards, delegate to the expert agent:
+
+- **`ml-expert`**: Unified specialist for Data Science and Engineering.
+  - *Location*: `plugins/science-suite/agents/ml-expert.md`
+  - *Capabilities*: Advanced pandas pipelines, feature engineering, and automated EDA.
 
 ## Data Cleaning Workflow
 
@@ -68,8 +72,6 @@ z_scores = np.abs(stats.zscore(df['value']))
 df_clean = df[z_scores < 3]
 ```
 
----
-
 ## Feature Engineering
 
 ### Numerical Transformations
@@ -120,8 +122,6 @@ df['rolling_mean_7'] = df['sales'].rolling(7).mean()
 | MinMaxScaler | (x - min) / (max - min) | Neural networks [0, 1] |
 | RobustScaler | (x - median) / IQR | Outlier-robust |
 
----
-
 ## EDA Visualizations
 
 ### Distribution Analysis
@@ -163,8 +163,6 @@ fig = px.line(df, x='date', y='sales', color='category')
 fig = px.scatter_3d(df, x='area', y='price', z='age', color='category')
 ```
 
----
-
 ## Dashboard Patterns
 
 ### Streamlit
@@ -191,8 +189,6 @@ fig = px.line(df_filtered.groupby('date')['sales'].sum().reset_index(), x='date'
 st.plotly_chart(fig, use_container_width=True)
 ```
 
----
-
 ## Automated Insights
 
 ```python
@@ -212,8 +208,6 @@ def generate_insights(df):
 
     return insights
 ```
-
----
 
 ## Pandas Quick Reference
 
@@ -236,8 +230,6 @@ df.merge(df2, on='key')
 df.pivot_table(index='A', columns='B', values='C')
 ```
 
----
-
 ## Visualization Quick Reference
 
 | Chart | Seaborn | Plotly |
@@ -248,8 +240,6 @@ df.pivot_table(index='A', columns='B', values='C')
 | Box | `sns.boxplot(data=df, x='cat', y='num')` | `px.box(df, x='cat', y='num')` |
 | Heatmap | `sns.heatmap(corr_matrix)` | `px.imshow(corr_matrix)` |
 
----
-
 ## Data Quality Checklist
 
 - [ ] **Completeness**: Missing values handled
@@ -258,8 +248,6 @@ df.pivot_table(index='A', columns='B', values='C')
 - [ ] **Uniqueness**: Duplicates removed
 - [ ] **Validity**: Values within expected ranges
 - [ ] **Timeliness**: Date ranges validated
-
----
 
 ## Best Practices
 
@@ -271,7 +259,3 @@ df.pivot_table(index='A', columns='B', values='C')
 | Validate transformations | Check distributions before/after |
 | Use appropriate charts | Match chart type to data and message |
 | Tell a story | Context → Analysis → Insight → Action |
-
----
-
-**Version**: 1.0.5

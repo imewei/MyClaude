@@ -244,7 +244,7 @@ for step in range(100000):
 | Delegate To | When |
 |-------------|------|
 | jax-pro | Core JAX transforms, memory optimization |
-| neural-architecture-engineer | Novel PINN architectures |
+| neural-network-master | Novel PINN architectures |
 | simulation-expert | LAMMPS/GROMACS integration |
 
 ---

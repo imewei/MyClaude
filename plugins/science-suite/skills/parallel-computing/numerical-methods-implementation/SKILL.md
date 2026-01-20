@@ -1,28 +1,41 @@
 ---
 name: numerical-methods-implementation
-version: "2.1.0"
-description: Implement robust numerical algorithms for ODEs (RK45, BDF), PDEs (finite difference, FEM), optimization (L-BFGS, Newton), and linear algebra (LU, QR, SVD, iterative solvers). Use when selecting solvers, implementing adaptive stepping, handling stiff systems, or ensuring numerical stability.
+version: "2.2.0"
+description: Implement robust numerical algorithms for ODEs (RK45, BDF), PDEs (finite difference, FEM), optimization (L-BFGS, Newton), and molecular simulations. Master solver selection, stability analysis, and differentiable physics using Python and Julia.
 ---
 
 # Numerical Methods Implementation
 
+Expert guide for implementing numerical solvers and physical simulations with high precision and performance.
+
+## Expert Agent
+
+For advanced numerical methods, solver selection, and stability analysis, delegate to:
+
+- **`simulation-expert`**: For physical simulations, HPC solvers, and Molecular Dynamics.
+  - *Location*: `plugins/science-suite/agents/simulation-expert.md`
+- **`julia-pro`**: For DifferentialEquations.jl solvers, stiff systems, and performance tuning.
+  - *Location*: `plugins/science-suite/agents/julia-pro.md`
+- **`jax-pro`**: For Diffrax solvers, autodiff-compatible methods, and GPU-accelerated linear algebra.
+  - *Location*: `plugins/science-suite/agents/jax-pro.md`
+
 ## Solver Selection
 
 ### ODE
-| Method | Stiffness | Library |
-|--------|-----------|---------|
-| RK45 | No | `solve_ivp`, `Tsit5()` |
-| BDF | Yes | `solve_ivp`, `QNDF()` |
-| Rosenbrock | Moderate | `Rodas4()` |
-| Radau | Very stiff, DAEs | `solve_ivp` |
+| Problem Type | Stiffness | Recommended Solver (Julia) | Recommended Solver (Python) |
+|--------------|-----------|----------------------------|-----------------------------|
+| **General ODE** | Non-stiff | `Tsit5()`                 | `solve_ivp(method='RK45')` |
+| **Stiff ODE**   | Stiff     | `QNDF()` or `Rodas4()`    | `solve_ivp(method='BDF')`  |
+| **DAEs**        | Stiff     | `IDA()`                   | `solve_ivp(method='Radau')`|
 
 ### PDE
-| Method | Stability |
-|--------|-----------|
-| Explicit FD | Conditional (CFL) |
-| Implicit FD (Crank-Nicolson) | Unconditional |
-| FEM | Problem-dependent |
-| Spectral | Exponential |
+| Method | Stability | Library |
+|--------|-----------|---------|
+| Explicit FD | Conditional (CFL) | Custom, `FIPY` |
+| Implicit FD (Crank-Nicolson) | Unconditional | Custom, `Dedalus` |
+| FEM | Problem-dependent | `FEniCS`, `Gridap.jl` |
+| Spectral | Exponential | `Dedalus`, `ApproxFun.jl` |
+| Method of Lines | Varies | `MethodOfLines.jl` |
 
 ### Optimization
 | Method | Best For |
@@ -41,6 +54,21 @@ description: Implement robust numerical algorithms for ODEs (RK45, BDF), PDEs (f
 | Multi-threading | Shared memory | OpenMP, `Threads.@threads` |
 | GPU Acceleration | Massive parallelism | CUDA.jl, CuPy, JAX |
 
+## Molecular Dynamics (MD)
+
+### Traditional Engines
+- **LAMMPS**: Best for materials, polymers, and large-scale inorganic systems.
+- **GROMACS**: Optimized for biomolecules and solvation.
+- **HOOMD-blue**: Native GPU acceleration for soft matter.
+
+### Differentiable MD (JAX-MD)
+```python
+from jax_md import space, energy, simulate
+displacement_fn, shift_fn = space.periodic(box_size=10.0)
+energy_fn = energy.lennard_jones_pair(displacement_fn)
+init_fn, apply_fn = simulate.nve(energy_fn, shift_fn, dt=0.005)
+```
+
 ## ODE Solving
 
 ```python
@@ -55,6 +83,22 @@ using DifferentialEquations
 prob = ODEProblem(f, u0, tspan)
 alg = stiff ? QNDF() : Tsit5()
 solve(prob, alg; reltol=1e-6, abstol=1e-9)
+```
+
+## Differentiable Physics (JAX)
+
+Use JAX for gradient-based optimization of physical parameters.
+
+```python
+import jax.numpy as jnp
+from jax import grad, jit
+
+@jit
+def potential_energy(params, positions):
+    # Differentiable energy function
+    return jnp.sum(params * positions**2)
+
+force_fn = grad(potential_energy, argnums=1)
 ```
 
 ## Linear Algebra
@@ -107,17 +151,12 @@ cond = np.linalg.cond(A)
 if cond > 1e12: print(f"Ill-conditioned: ~{-np.log10(cond/1e16):.0f} accurate digits")
 ```
 
-## Validation
+## Validation Checklist
 
-- Manufactured solutions
-- Richardson extrapolation
-- Conservation laws
-- Benchmark problems
-
-```python
-def convergence_test(solver, h_values, exact):
-    errors = [np.max(np.abs(solver(h) - exact)) for h in h_values]
-    return np.polyfit(np.log(h_values), np.log(errors), 1)[0]  # Order
-```
+- [ ] **Condition Number**: Check `np.linalg.cond(A)` to identify ill-conditioned systems.
+- [ ] **CFL Condition**: Ensure $\Delta t \leq \Delta x / v$ for explicit PDE stability.
+- [ ] **Conservation Laws**: Verify energy, mass, and momentum conservation in simulations.
+- [ ] **Convergence**: Perform Richardson extrapolation or manufacturing of solutions to verify order of accuracy.
+- [ ] **Manufactured Solutions**: Test against known analytical solutions.
 
 **Outcome**: Appropriate solvers, adaptive stepping, stability checks, convergence verification

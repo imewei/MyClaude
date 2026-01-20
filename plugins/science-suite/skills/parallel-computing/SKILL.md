@@ -1,12 +1,23 @@
 ---
 name: parallel-computing
-version: "1.0.0"
+version: "1.0.1"
 description: Implement high-performance parallel computing across CPUs and GPUs using Python (CUDA/CuPy) and Julia (CUDA.jl/Distributed.jl). Master multi-threading, distributed systems, and kernel optimization.
 ---
 
 # Parallel Computing Suite
 
 Comprehensive guide for scaling scientific computations across multiple cores, machines, and GPUs.
+
+## Expert Agent
+
+For high-performance computing, GPU optimization, and distributed systems, delegate to the expert agent:
+
+- **`jax-pro`** (for Python/JAX):
+  - *Location*: `plugins/science-suite/agents/jax-pro.md`
+  - *Capabilities*: Multi-device parallelism (`pmap`), sharding, and TPU optimization.
+- **`julia-pro`** (for Julia):
+  - *Location*: `plugins/science-suite/agents/julia-pro.md`
+  - *Capabilities*: Native GPU arrays (`CUDA.jl`), distributed computing (`Distributed.jl`), and multi-threading.
 
 ## 1. GPU Acceleration (Cross-Platform)
 

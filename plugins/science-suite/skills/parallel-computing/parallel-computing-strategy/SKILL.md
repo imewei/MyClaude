@@ -1,10 +1,17 @@
 ---
 name: parallel-computing-strategy
-version: "2.1.0"
+version: "2.1.1"
 description: Design parallel strategies with MPI (distributed memory), OpenMP (shared memory), hybrid MPI+OpenMP, SLURM scheduling, Dask/Dagger.jl workflows, and load balancing. Use when implementing multi-node parallelization, writing job scripts, or optimizing HPC workflows.
 ---
 
 # Parallel Computing Strategy
+
+## Expert Agent
+
+For designing HPC architectures and parallel workflows, delegate to:
+
+- **`simulation-expert`**: For HPC scaling, MPI/OpenMP strategies, and job scheduling.
+- **`jax-pro`**: For distributed JAX strategies (pmap/sharding).
 
 ## Parallelism Types
 

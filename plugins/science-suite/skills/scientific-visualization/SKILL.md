@@ -1,12 +1,20 @@
 ---
 name: scientific-visualization
-version: "1.0.0"
+version: "1.1.0"
 description: Create publication-quality scientific visualizations across physics, biology, chemistry, and climate science. Supports uncertainty quantification, multi-dimensional data, and domain-specific plots in both Python and Julia.
 ---
 
 # Scientific Visualization
 
 Expert guide for creating research-grade figures that meet international publication standards (Nature, Science, etc.).
+
+## Expert Agent
+
+For creating publication-quality figures, complex multi-dimensional plots, and interactive visualizations, delegate to the expert agent:
+
+- **`research-expert`**: Unified specialist for Scientific Visualization and Communication.
+  - *Location*: `plugins/science-suite/agents/research-expert.md`
+  - *Capabilities*: Matplotlib/Makie styling, domain-specific plotting, and adherence to publication standards.
 
 ## 1. Uncertainty & Statistical Visualization
 

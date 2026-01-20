@@ -18,9 +18,9 @@
 
 ## Scientific Computing (8 plugins)
 
-### julia-development (4 agents, 4 commands, 21 skills)
+### julia-development (1 agent, 4 commands, 21 skills)
 **Purpose:** Comprehensive Julia development with SciML, Bayesian inference, and scientific computing
-**Agents:** julia-pro, sciml-pro, turing-pro, julia-developer
+**Agent:** julia-pro
 **Commands:** `/julia-optimize`, `/julia-package-ci`, `/julia-scaffold`, `/sciml-setup`
 **Use When:** Scientific simulations, differential equations, Bayesian modeling, high-performance numerics
 
