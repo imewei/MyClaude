@@ -11,31 +11,13 @@ Usage:
 """
 
 import argparse
-import sys
 # pathlib.Path unused
-from typing import Dict, List
+from typing import Any, Dict, List
 # Optional, Tuple unused
 
 import numpy as np
 import torch
 import torch.nn as nn
-# ... (imports adjusted, will exact match lines)
-
-# ...
-
-    parser.add_argument(
-        "--device",
-        type=str,
-        default="cuda" if torch.cuda.is_available() else "cpu",
-        help="Device to use (cuda/cpu)"
-    )
-
-    parser.parse_args()
-
-    print("\n" + "="*80)
-
-
-
 class ActivationHook:
     """Hook to capture activations from intermediate layers."""
 
@@ -78,7 +60,7 @@ def register_activation_hooks(model: nn.Module) -> Dict[str, ActivationHook]:
 
 def analyze_activation_statistics(activations: torch.Tensor,
                                  layer_name: str,
-                                 activation_type: str = "unknown") -> Dict[str, float]:
+                                 activation_type: str = "unknown") -> Dict[str, Any]:
     """
     Compute statistics for activation tensor.
 
@@ -92,7 +74,7 @@ def analyze_activation_statistics(activations: torch.Tensor,
     """
     acts = activations.detach().cpu().numpy()
 
-    stats = {
+    stats: Dict[str, Any] = {
         'mean': float(np.mean(acts)),
         'std': float(np.std(acts)),
         'min': float(np.min(acts)),
@@ -113,18 +95,18 @@ def analyze_activation_statistics(activations: torch.Tensor,
 
     # Dead neuron detection (for ReLU)
     if activation_type.lower() in ['relu', 'leakyrelu', 'prelu']:
-        zero_percent = 100 * stats['num_zeros'] / stats['total_activations']
+        zero_percent = 100 * stats["num_zeros"] / stats["total_activations"]
         stats['dead_neuron_percent'] = zero_percent
 
     # Saturation detection (for sigmoid/tanh)
     if activation_type.lower() == 'sigmoid':
         saturated_low = np.sum(acts < 0.1)
         saturated_high = np.sum(acts > 0.9)
-        stats['saturation_percent'] = 100 * (saturated_low + saturated_high) / stats['total_activations']
+        stats['saturation_percent'] = 100 * (saturated_low + saturated_high) / stats["total_activations"]
     elif activation_type.lower() == 'tanh':
         saturated_low = np.sum(acts < -0.9)
         saturated_high = np.sum(acts > 0.9)
-        stats['saturation_percent'] = 100 * (saturated_low + saturated_high) / stats['total_activations']
+        stats['saturation_percent'] = 100 * (saturated_low + saturated_high) / stats["total_activations"]
 
     return stats
 
@@ -329,7 +311,7 @@ def main():
         help="Device to use (cuda/cpu)"
     )
 
-    args = parser.parse_args()
+    parser.parse_args()
 
     print("\n" + "="*80)
     print("ACTIVATION ANALYSIS TOOL")

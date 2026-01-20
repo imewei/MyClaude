@@ -114,6 +114,12 @@ class DocumentationChecker:
         }
 
         return result
+    def _check_markdown_dir(self, directory: Path, doc_type: str, result: DocCheckResult):
+        """Check all markdown files in a directory"""
+        for file_path in directory.glob("*.md"):
+            self._check_markdown_file(file_path, doc_type, result)
+
+        return result
 
     def _check_readme(self, readme_path: Path, result: DocCheckResult):
         """Check README.md file"""

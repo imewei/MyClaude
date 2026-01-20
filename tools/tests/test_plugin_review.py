@@ -12,7 +12,7 @@ sys.path.insert(0, str(project_root))
 class TestPluginReview(unittest.TestCase):
     def test_import(self):
         try:
-            from tools.validation.plugin_review_script import PluginReviewer
+            from tools.validation.plugin_review_script import PluginReviewer  # noqa: F401
         except ImportError:
             self.fail("Could not import PluginReviewer")
 

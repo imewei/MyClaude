@@ -10,7 +10,6 @@ Tests supplementary documentation components:
 - Changelog following version structure
 """
 
-import os
 import re
 import sys
 import unittest
@@ -79,7 +78,7 @@ class TestSupplementaryDocs(unittest.TestCase):
 
         # Check for proper indentation
         glossary_section = content.split('.. glossary::')[1] if '.. glossary::' in content else ''
-        lines_after_directive = [l for l in glossary_section.split('\n')[1:] if l.strip()]
+        lines_after_directive = [line for line in glossary_section.split('\n')[1:] if line.strip()]
         self.assertGreaterEqual(len(lines_after_directive), 3, "Glossary appears empty or improperly formatted")
 
     def test_guide_code_examples_render(self):

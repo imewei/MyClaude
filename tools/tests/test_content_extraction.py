@@ -6,19 +6,18 @@ Tests code example extraction, usage pattern identification, and RST generation
 for plugin documentation pages.
 """
 
-import json
 import re
 import sys
 import unittest
 from pathlib import Path
-from typing import List, Dict, Any
+from typing import List, Dict
 
 # Add project root to path for imports
 project_root = Path(__file__).resolve().parent.parent.parent
 sys.path.insert(0, str(project_root))
 
 try:
-    from tools.generation.sphinx_doc_generator import SphinxDocGenerator
+    from tools.generation.sphinx_doc_generator import SphinxDocGenerator  # noqa: F401
 except ImportError:
     pass
 

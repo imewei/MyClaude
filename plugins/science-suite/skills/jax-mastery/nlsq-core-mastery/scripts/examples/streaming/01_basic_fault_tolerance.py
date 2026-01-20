@@ -41,6 +41,7 @@ def main():
 
     print(f"Dataset: {n_samples} samples")
     print(f"True parameters: a={true_a}, b={true_b}")
+    p0 = [1.0, 0.1]
     print()
 
     # Fit with automatic error handling

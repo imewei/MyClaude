@@ -13,7 +13,6 @@ import json
 import sys
 import tempfile
 from pathlib import Path
-from typing import Dict, Any
 
 # Add tools directory to path
 project_root = Path(__file__).resolve().parents[2]
@@ -250,7 +249,6 @@ def test_integration_detection():
 def test_rst_builds_without_warnings():
     """Test that generated RST builds with Sphinx without warnings"""
     from tools.generation.sphinx_doc_generator import SphinxDocGenerator
-    import subprocess
 
     with tempfile.TemporaryDirectory() as tmpdir:
         plugins_dir = Path(tmpdir) / "plugins"

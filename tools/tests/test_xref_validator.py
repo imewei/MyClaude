@@ -12,7 +12,7 @@ sys.path.insert(0, str(project_root))
 class TestXrefValidator(unittest.TestCase):
     def test_import(self):
         try:
-            from tools.validation.xref_validator import main
+            from tools.validation.xref_validator import main  # noqa: F401
         except ImportError:
             self.fail("Could not import xref_validator")
 

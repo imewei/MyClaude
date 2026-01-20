@@ -48,7 +48,7 @@ class MetadataValidator:
     """Plugin metadata validator"""
 
     # Schema definition
-    SCHEMA = {
+    SCHEMA: Dict[str, Dict[str, Any]] = {
         "required": {
             "name": {
                 "type": "string",
@@ -133,7 +133,7 @@ class MetadataValidator:
     }
 
     # Agent schema
-    AGENT_SCHEMA = {
+    AGENT_SCHEMA: Dict[str, Dict[str, Any]] = {
         "required": {
             "name": {
                 "type": "string",
@@ -164,7 +164,7 @@ class MetadataValidator:
     }
 
     # Command schema
-    COMMAND_SCHEMA = {
+    COMMAND_SCHEMA: Dict[str, Dict[str, Any]] = {
         "required": {
             "name": {
                 "type": "string",
@@ -197,7 +197,7 @@ class MetadataValidator:
     }
 
     # Skill schema
-    SKILL_SCHEMA = {
+    SKILL_SCHEMA: Dict[str, Dict[str, Any]] = {
         "required": {
             "name": {
                 "type": "string",
@@ -406,7 +406,7 @@ class MetadataValidator:
 
     def _check_type(self, value: Any, expected_type: str) -> bool:
         """Check if value matches expected type"""
-        type_mapping = {
+        type_mapping: Dict[str, Any] = {
             "string": str,
             "integer": int,
             "number": (int, float),

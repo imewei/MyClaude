@@ -58,6 +58,8 @@ def main():
     print(f"Dataset: {n_samples} samples")
     print(f"Corrupted samples: {n_corrupted} ({n_corrupted / n_samples:.1%})")
     print(f"True parameters: a={true_a}, b={true_b}")
+    p0 = [1.0, 0.1]
+
     print()
 
     # Part 1: Standard settings (may fail due to low success rate)

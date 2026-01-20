@@ -7,10 +7,8 @@ custom kernels, mixed samplers, and parallel chains.
 
 import jax
 import jax.numpy as jnp
-from jax.scipy import stats
 import blackjax
-from functools import partial
-from typing import NamedTuple, Callable, Dict, Any
+from typing import Any, Callable, Dict, NamedTuple, Tuple
 
 
 # =============================================================================
@@ -44,7 +42,7 @@ def custom_nuts_sampler(log_prob_fn: Callable,
         num_steps=num_warmup
     )
 
-    print(f"Warmup complete:")
+    print("Warmup complete:")
     print(f"  Step size: {kernel_params['step_size']:.4f}")
     print(f"  Mass matrix diag (first 5): {jnp.diag(kernel_params['inverse_mass_matrix'])[:5]}")
 
@@ -107,7 +105,7 @@ def create_mixed_sampler(continuous_log_prob: Callable,
 
     hmc_kernel = blackjax.hmc(continuous_log_prob, **hmc_params).step
 
-    def mixed_step(state: MixedSamplerState, key: jnp.ndarray) -> MixedSamplerState:
+    def mixed_step(state: MixedSamplerState, key: jnp.ndarray) -> Tuple[MixedSamplerState, Any]:
         key1, key2 = jax.random.split(key)
 
         # Step 1: HMC update for continuous parameters

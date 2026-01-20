@@ -172,7 +172,7 @@ class ComparisonAnalyzer:
 
     def compare_reports(self, before: PerformanceReport, after: PerformanceReport) -> dict[str, Any]:
         """Compare two performance reports."""
-        comparison = {
+        comparison: dict[str, Any] = {
             'timestamp': datetime.now().isoformat(),
             'before_timestamp': before.timestamp,
             'after_timestamp': after.timestamp,

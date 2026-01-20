@@ -1,5 +1,5 @@
 from docutils import nodes
-from docutils.parsers.rst import Directive, directives
+from docutils.parsers.rst import directives
 from sphinx.util.docutils import SphinxDirective
 
 class BasePluginDirective(SphinxDirective):

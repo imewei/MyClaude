@@ -18,7 +18,7 @@ from pathlib import Path
 import jax.numpy as jnp
 import numpy as np
 
-from nlsq import StreamingConfig, fit
+from nlsq import fit
 
 
 def gaussian_model(x, amp, center, width):
@@ -73,7 +73,7 @@ def main():
     print()
 
     print("Starting training (will interrupt after 5 iterations)...")
-    result1 = fit(
+    fit(
         gaussian_model,
         x_data,
         y_data,

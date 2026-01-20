@@ -224,6 +224,8 @@ def main():
 
     print(f"Dataset: {n_samples} samples")
     print(f"True parameters: a={true_a}, b={true_b}, c={true_c}")
+    p0 = [0.5, 1.0, 0.0]
+
     print()
 
     # Fit model

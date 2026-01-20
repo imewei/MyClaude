@@ -10,8 +10,6 @@ import jax.numpy as jnp
 from jax.scipy import stats
 import diffrax
 import blackjax
-from typing import Dict, Callable, Tuple
-from functools import partial
 
 
 # =============================================================================
@@ -163,7 +161,7 @@ def lotka_volterra_model():
                 max_steps=10000,
             )
             predicted = sol.ys
-        except:
+        except Exception:
             return -jnp.inf  # Failed integration
 
         # Check for NaN/Inf
@@ -204,7 +202,7 @@ def stiff_chemical_kinetics():
         k1 = jnp.exp(params['log_k1'])
         k2 = jnp.exp(params['log_k2'])
         k3 = jnp.exp(params['log_k3'])
-        sigma = jnp.exp(params['log_sigma'])
+        jnp.exp(params['log_sigma'])
 
         # Prior
         log_prior = (
@@ -221,7 +219,7 @@ def stiff_chemical_kinetics():
         ts = jnp.logspace(-5, 5, 50)  # Log-spaced for wide time range
         y0 = jnp.array([1.0, 0.0, 0.0])
 
-        sol = diffrax.diffeqsolve(
+        diffrax.diffeqsolve(
             term, solver,
             t0=ts[0], t1=ts[-1], dt0=1e-6,
             y0=y0,
@@ -285,7 +283,7 @@ def neural_ode_surrogate():
         ts, trajectories = training_data  # (n_sims, n_times, dim)
 
         optimizer = optax.adam(1e-3)
-        opt_state = optimizer.init(eqx.filter(model, eqx.is_array))
+        optimizer.init(eqx.filter(model, eqx.is_array))
 
         @eqx.filter_jit
         def loss_fn(model, y0, target_trajectory, ts):

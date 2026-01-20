@@ -10,7 +10,6 @@ import jax.numpy as jnp
 import diffrax
 import equinox as eqx
 import optax
-from functools import partial
 
 
 # =============================================================================

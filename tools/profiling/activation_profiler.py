@@ -308,7 +308,7 @@ class AgentActivationProfiler:
 
     def profile_all_plugins(self) -> list[ActivationProfile]:
         """Profile all plugins in the marketplace."""
-        profiles = []
+        profiles: list[ActivationProfile] = []
 
         if not self.plugins_root.exists():
             return profiles

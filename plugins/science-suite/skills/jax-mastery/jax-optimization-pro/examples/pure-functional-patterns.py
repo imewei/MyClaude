@@ -8,8 +8,8 @@ JIT-compatible, parallelizable code.
 
 import jax
 import jax.numpy as jnp
+import optax
 from typing import NamedTuple, Dict, Any
-from functools import partial
 
 
 # =============================================================================

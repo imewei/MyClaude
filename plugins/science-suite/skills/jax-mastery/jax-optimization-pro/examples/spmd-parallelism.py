@@ -9,7 +9,6 @@ import jax
 import jax.numpy as jnp
 from jax.sharding import Mesh, PartitionSpec as P, NamedSharding
 from jax.experimental import mesh_utils
-from functools import partial
 
 
 # =============================================================================
@@ -79,7 +78,7 @@ def run_pmap_example():
 
     # Create sharded batch (first axis = n_devices)
     batch_per_device = 32
-    total_batch = batch_per_device * n_devices
+    batch_per_device * n_devices
     batch = {
         'x': jnp.ones((n_devices, batch_per_device, 10)),
         'y': jnp.ones((n_devices, batch_per_device, 10)),
@@ -151,7 +150,7 @@ def sharding_example():
         # Apply shardings
         x_rep = jax.device_put(x, replicated)
         x_sh0 = jax.device_put(x, sharded_0)
-        x_sh1 = jax.device_put(x[:, :n_devices * 16].reshape(n_devices * 32, -1),
+        jax.device_put(x[:, :n_devices * 16].reshape(n_devices * 32, -1),
                                sharded_1)
 
         print(f"Replicated: {x_rep.sharding}")
@@ -364,7 +363,7 @@ def visualize_sharding():
     with mesh:
         # Create data with visible values per shard
         data = jnp.arange(n_devices * 4).reshape(n_devices, 4)
-        sharded = jax.device_put(data, NamedSharding(mesh, P('d', None)))
+        jax.device_put(data, NamedSharding(mesh, P('d', None)))
 
         print("Sharding visualization:")
         for i, device in enumerate(devices):

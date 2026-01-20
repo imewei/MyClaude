@@ -5,7 +5,6 @@ Demonstrates choosing between explicit and implicit solvers,
 detecting stiffness, and configuring step size control.
 """
 
-import jax
 import jax.numpy as jnp
 import diffrax
 from typing import Callable, Tuple

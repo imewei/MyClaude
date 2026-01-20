@@ -1,7 +1,7 @@
 import json
 import pytest
 import re
-import yaml
+import yaml  # type: ignore
 from pathlib import Path
 
 # Paths adjustment: .../tools/tests -> .../tools -> .../ (root) -> .../plugins/science-suite

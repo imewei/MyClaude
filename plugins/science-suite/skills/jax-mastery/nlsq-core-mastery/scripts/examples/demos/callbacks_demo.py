@@ -8,7 +8,7 @@ optimization progress with progress bars, logging, and early stopping.
 import jax.numpy as jnp
 import numpy as np
 
-from nlsq import curve_fit
+from nlsq import fit
 from nlsq.callbacks import (
     CallbackBase,
     CallbackChain,

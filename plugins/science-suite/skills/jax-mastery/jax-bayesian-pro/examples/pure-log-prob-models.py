@@ -8,7 +8,7 @@ any probabilistic programming language syntax - just vanilla JAX.
 import jax
 import jax.numpy as jnp
 from jax.scipy import stats
-from typing import Dict, Any
+from typing import Dict
 from functools import partial
 
 
@@ -180,7 +180,7 @@ def mixture_log_prob(params: Dict, data: jnp.ndarray) -> float:
     mus = params['mus']                   # (K,) component means
     log_sigmas = params['log_sigmas']     # (K,) log component stds
 
-    K = len(log_weights)
+    len(log_weights)
     sigmas = jnp.exp(log_sigmas)
 
     # Normalize weights
@@ -222,7 +222,7 @@ def funnel_log_prob_centered(params: Dict) -> float:
 def funnel_log_prob_noncentered(params: Dict) -> float:
     """Non-centered parameterization - no funnel."""
     log_tau = params['log_tau']
-    tau = jnp.exp(log_tau)
+    jnp.exp(log_tau)
     z = params['z']  # (n,) - standard normal latent
 
     # Priors on transformed parameters
@@ -254,7 +254,7 @@ def transformed_params_log_prob(unconstrained_params: Dict, data: jnp.ndarray) -
 
     # rho in (-1, 1): use tanh transform
     unconstrained_rho = unconstrained_params['unconstrained_rho']
-    rho = jnp.tanh(unconstrained_rho)
+    jnp.tanh(unconstrained_rho)
 
     # === PRIORS IN CONSTRAINED SPACE ===
     # But we're sampling in unconstrained space, so add Jacobians

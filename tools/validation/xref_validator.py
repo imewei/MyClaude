@@ -15,7 +15,7 @@ Part of: Plugin Review and Optimization - Task Group 0.4
 import json
 import re
 from pathlib import Path
-from typing import Dict, List
+from typing import Dict, List, Optional
 from dataclasses import dataclass, field
 from collections import defaultdict
 import sys
@@ -383,7 +383,7 @@ class CrossReferenceValidator:
                     ref.is_valid = False
                     ref.error_message = f"Skill '{ref.target_name}' not found in plugin '{ref.target_plugin}'"
 
-    def generate_report(self, output_path: Path = None) -> str:
+    def generate_report(self, output_path: Optional[Path] = None) -> str:
         """Generate validation report"""
         lines = []
 
@@ -415,7 +415,7 @@ class CrossReferenceValidator:
         # Reference type breakdown
         lines.append("## Reference Type Distribution")
         lines.append("")
-        type_counts = defaultdict(int)
+        type_counts: Dict[str, int] = defaultdict(int)
         for ref in self.references:
             type_counts[ref.target_type] += 1
 

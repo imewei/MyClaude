@@ -355,7 +355,7 @@ ax5.axvline(
 ax5.set_xlabel("Frequency (Hz)")
 ax5.set_ylabel("Power Spectral Density")
 ax5.set_title("Frequency Spectrum (FFT)")
-ax5.set_xlim([0, 2])
+ax5.set_xlim((0.0, 2.0))
 ax5.legend()
 ax5.grid(True, alpha=0.3)
 

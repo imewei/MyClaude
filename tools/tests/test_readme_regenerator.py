@@ -1,10 +1,8 @@
 
 import unittest
-from unittest.mock import MagicMock, patch, mock_open
+from unittest.mock import patch
 import sys
-import os
 from pathlib import Path
-import json
 
 # Add project root to path for imports
 project_root = Path(__file__).resolve().parent.parent.parent

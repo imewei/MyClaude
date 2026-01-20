@@ -323,7 +323,7 @@ class PluginMemoryAnalyzer:
 
     def profile_all_plugins(self) -> list[MemoryProfile]:
         """Profile all plugins in the marketplace."""
-        profiles = []
+        profiles: list[MemoryProfile] = []
 
         if not self.plugins_root.exists():
             return profiles

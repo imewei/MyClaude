@@ -14,7 +14,8 @@ No manual parameter guessing needed!
 import matplotlib.pyplot as plt
 import numpy as np
 
-from nlsq import curve_fit, functions
+from nlsq import fit
+from nlsq import functions
 
 
 def demo_linear():

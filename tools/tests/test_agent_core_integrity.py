@@ -1,6 +1,5 @@
 import json
-import os
-import yaml
+import yaml  # type: ignore
 import pytest
 import re
 from pathlib import Path

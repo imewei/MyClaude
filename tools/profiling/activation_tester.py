@@ -312,7 +312,7 @@ class PluginActivationTester:
             sample_category=sample["category"],
             expected_plugins=sample["expected_plugins"],
             activated_plugins=[],
-            expected_trigger=sample["expected_trigger"]
+            expected_trigger=sample["expected_trigger"], actual_trigger=False
         )
 
         # Test each plugin

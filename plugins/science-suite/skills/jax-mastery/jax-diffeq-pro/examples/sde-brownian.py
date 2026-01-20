@@ -8,7 +8,6 @@ and soft matter applications including Langevin dynamics and colloidal systems.
 import jax
 import jax.numpy as jnp
 import diffrax
-from functools import partial
 
 
 # =============================================================================

@@ -12,7 +12,7 @@ sys.path.insert(0, str(project_root))
 class TestSkillValidator(unittest.TestCase):
     def test_import(self):
         try:
-            from tools.validation.skill_validator import main
+            from tools.validation.skill_validator import main  # noqa: F401
         except ImportError:
             self.fail("Could not import skill_validator")
 

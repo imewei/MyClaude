@@ -14,7 +14,6 @@ import json
 import sys
 import tempfile
 from pathlib import Path
-from typing import Dict, List, Set
 
 # Add tools directory to path
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent.parent))
@@ -100,8 +99,8 @@ def test_integration_matrix_generation():
 
         # Generate integration map
         generator = SphinxDocGenerator(plugins_dir, verbose=False)
-        plugins = generator.discover_plugins()
-        integrations = generator.detect_integrations()
+        generator.discover_plugins()
+        generator.detect_integrations()
 
         # Generate integration matrix
         matrix = generator.generate_integration_matrix()
@@ -165,7 +164,7 @@ def test_bidirectional_reference_detection():
 
         # Detect integrations
         generator = SphinxDocGenerator(plugins_dir, verbose=False)
-        plugins = generator.discover_plugins()
+        generator.discover_plugins()
         integrations = generator.detect_integrations()
 
         # Build reverse dependencies
@@ -231,7 +230,7 @@ def test_common_workflow_pattern_identification():
 
         # Detect patterns
         generator = SphinxDocGenerator(plugins_dir, verbose=False)
-        plugins = generator.discover_plugins()
+        generator.discover_plugins()
 
         # Identify integration patterns
         patterns = generator.identify_integration_patterns()
@@ -302,7 +301,7 @@ def test_integration_section_rst_generation():
         output_dir.mkdir()
 
         generator = SphinxDocGenerator(plugins_dir, verbose=False)
-        plugins = generator.discover_plugins()
+        generator.discover_plugins()
         integrations = generator.detect_integrations()
 
         # Generate RST for main plugin
@@ -340,7 +339,7 @@ def test_integration_points_threshold():
     generator = SphinxDocGenerator(plugins_dir, verbose=False)
 
     # Discover and analyze all plugins
-    plugins = generator.discover_plugins()
+    generator.discover_plugins()
     integrations = generator.detect_integrations()
 
     # Count total integration points
@@ -389,8 +388,8 @@ def test_integration_matrix_rst_format():
 
         # Generate integration matrix
         generator = SphinxDocGenerator(plugins_dir, verbose=False)
-        plugins = generator.discover_plugins()
-        integrations = generator.detect_integrations()
+        generator.discover_plugins()
+        generator.detect_integrations()
 
         matrix_rst = generator.generate_integration_matrix()
 

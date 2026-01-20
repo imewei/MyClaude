@@ -267,7 +267,7 @@ class PluginLoadProfiler:
 
     def profile_all_plugins(self) -> list[PluginLoadProfile]:
         """Profile all plugins in the marketplace."""
-        profiles = []
+        profiles: list[PluginLoadProfile] = []
 
         if not self.plugins_root.exists():
             return profiles

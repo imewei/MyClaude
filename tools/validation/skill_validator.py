@@ -221,7 +221,7 @@ class SkillApplicationValidator:
 
     def _extract_patterns(self, text: str) -> Set[str]:
         """Extract technical patterns from text."""
-        patterns = set()
+        patterns: set[str] = set()
 
         # Extract package/module patterns (e.g., DifferentialEquations.jl)
         packages = re.findall(r'\b[A-Z][a-zA-Z]+(?:\.[a-z]+)+\b', text)

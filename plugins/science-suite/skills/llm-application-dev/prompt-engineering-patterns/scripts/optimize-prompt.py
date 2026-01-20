@@ -7,7 +7,7 @@ Automatically test and optimize prompts using A/B testing and metrics tracking.
 
 import json
 import time
-from typing import List, Dict, Any
+from typing import Any, Dict, List, Optional
 from dataclasses import dataclass
 import numpy as np
 
@@ -16,21 +16,21 @@ import numpy as np
 class TestCase:
     input: Dict[str, Any]
     expected_output: str
-    metadata: Dict[str, Any] = None
+    metadata: Optional[Dict[str, Any]] = None
 
 
 class PromptOptimizer:
     def __init__(self, llm_client, test_suite: List[TestCase]):
         self.client = llm_client
         self.test_suite = test_suite
-        self.results_history = []
+        self.results_history: List[Dict[str, Any]] = []
 
-    def evaluate_prompt(self, prompt_template: str, test_cases: List[TestCase] = None) -> Dict[str, float]:
+    def evaluate_prompt(self, prompt_template: str, test_cases: Optional[List[TestCase]] = None) -> Dict[str, float]:
         """Evaluate a prompt template against test cases."""
         if test_cases is None:
             test_cases = self.test_suite
 
-        metrics = {
+        metrics: Dict[str, List[float]] = {
             'accuracy': [],
             'latency': [],
             'token_count': [],
@@ -60,11 +60,11 @@ class PromptOptimizer:
 
         # Aggregate metrics
         return {
-            'avg_accuracy': np.mean(metrics['accuracy']),
-            'avg_latency': np.mean(metrics['latency']),
-            'p95_latency': np.percentile(metrics['latency'], 95),
-            'avg_tokens': np.mean(metrics['token_count']),
-            'success_rate': np.mean(metrics['success_rate'])
+            'avg_accuracy': float(np.mean(metrics["accuracy"])),
+            'avg_latency': float(np.mean(metrics["latency"])),
+            'p95_latency': float(np.percentile(metrics["latency"], 95)),
+            'avg_tokens': float(np.mean(metrics["token_count"])),
+            'success_rate': float(np.mean(metrics["success_rate"]))
         }
 
     def calculate_accuracy(self, response: str, expected: str) -> float:
@@ -87,7 +87,7 @@ class PromptOptimizer:
         """Iteratively optimize a prompt."""
         current_prompt = base_prompt
         best_prompt = base_prompt
-        best_score = 0
+        best_score: float = 0.0
 
         for iteration in range(max_iterations):
             print(f"\nIteration {iteration + 1}/{max_iterations}")
