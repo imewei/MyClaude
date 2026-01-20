@@ -438,11 +438,10 @@ TaskOutput(task_id="...", block=false)  # Non-blocking status check
 
 | Delegate To | When | Parallel? |
 |-------------|------|-----------|
-| statistical-physicist | Physics validation, ensemble analysis | ✅ Yes |
-| simulation-expert | MD trajectory generation | ✅ Yes |
-| ml-expert | Neural network architecture | ✅ Yes |
+| ml-expert | Neural network architecture comparison | ✅ Yes |
 | research-expert | Literature review | ✅ Yes (background) |
 | julia-pro | Julia interop comparison | ✅ Yes |
+| python-pro | Rust/Python extension optimization | ✅ Yes |
 
 ---
 

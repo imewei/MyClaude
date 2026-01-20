@@ -19,14 +19,14 @@ A consolidated suite for high-performance computing, specialized physics/chemist
 |-------|----------------|
 | `jax-pro` | Core JAX, NumPyro, Diffrax, JAX-MD |
 | `julia-pro` | Julia, SciML, DifferentialEquations.jl |
-| `ml-expert` | Deep Learning, MLOps, Data Science |
+| `ml-expert` | Classical ML, MLOps, Data Engineering |
 | `simulation-expert` | HPC, Molecular Dynamics, Multi-scale |
 | `statistical-physicist` | Soft Matter, Non-equilibrium, Correlations |
 | `research-expert` | Methodology, Visualization, Literature |
 | `python-pro` | Python 3.12+, Systems Engineering, Performance |
 | `ai-engineer` | RAG, Agents, LLM Apps |
 | `prompt-engineer` | Prompt Optimization, Safety, Evaluation |
-| `neural-network-master` | DL Architecture, Theory, Diagnostics, Implementation |
+| `neural-network-master` | DL Architecture, PINNs, Theory, Diagnostics |
 
 ## 🛠️ Skills
 

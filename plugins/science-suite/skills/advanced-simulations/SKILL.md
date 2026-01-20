@@ -4,9 +4,9 @@ version: "1.0.1"
 description: Master advanced simulation techniques including non-equilibrium thermodynamics, stochastic dynamics, and multiscale modeling. Bridge scales from atomistic to mesoscale.
 ---
 
-# Advanced Simulations & Statistical Physics
+# Advanced Simulations
 
-Comprehensive framework for modeling complex physical systems across multiple scales and environments.
+Comprehensive framework for high-performance computational physics workflows and multiscale modeling.
 
 ## Expert Agent
 
@@ -14,7 +14,7 @@ For complex simulation workflows, multi-scale modeling, and HPC execution, deleg
 
 - **`simulation-expert`**: Unified specialist for Molecular Dynamics, Computational Physics, and HPC.
   - *Location*: `plugins/science-suite/agents/simulation-expert.md`
-  - *Capabilities*: Large-scale MD (LAMMPS/GROMACS), differentiable physics (JAX-MD), and non-equilibrium thermodynamics.
+  - *Capabilities*: Large-scale MD (LAMMPS/GROMACS), differentiable physics (JAX-MD), and HPC cluster optimization.
 
 ## Core Skills
 
@@ -30,38 +30,36 @@ Bridging scales from atomistic MD to mesoscopic continuum models.
 ### [Trajectory Analysis](./trajectory-analysis/SKILL.md)
 Computing structural and dynamic properties from simulation data.
 
-## 1. Stochastic Dynamics & Transport
+## 1. Molecular Dynamics Workflows
 
-### Framework Selection
-- **Langevin Dynamics**: For noise-driven trajectories (Brownian motion, polymers).
-- **Master Equations**: For discrete state transitions (chemical kinetics).
-- **Gillespie Algorithm**: Exact stochastic simulation for Markov processes.
+### Force Field Integration
+- **Classical**: CHARMM, AMBER, GROMOS.
+- **Machine Learning**: DeepMD-kit, NequIP, MACE.
+- **Differentiable**: JAX-MD neighbor lists and energy functions.
 
-### Transport Coefficients (Green-Kubo)
-Calculate macroscopic transport properties from microscopic fluctuations:
-- **Diffusion**: $D = \int_0^\infty \langle v(t) \cdot v(0) \rangle dt$
-- **Viscosity**: $\eta = \frac{V}{kT} \int_0^\infty \langle \sigma_{xy}(t) \sigma_{xy}(0) \rangle dt$
+### HPC Scaling
+- **Parallelization**: Domain decomposition and MPI sharded execution.
+- **Acceleration**: GPU kernels for neighbor list builds and force calculations.
 
-## 2. Non-Equilibrium Theory
-
-### Key Theorems
-- **Jarzynski Equality**: $\langle \exp(-\beta W) \rangle = \exp(-\beta \Delta F)$. Extract free energy from non-equilibrium work.
-- **Crooks Fluctuation Theorem**: Relates forward and reverse work distributions.
-- **Fluctuation-Dissipation Theorem (FDT)**: Relates response to equilibrium fluctuations.
-
-### Entropy Production
-Quantify irreversibility in driven systems: $\sigma = \sum J_i X_i \geq 0$, where $J_i$ are fluxes and $X_i$ are forces.
-
-## 3. Multiscale Modeling & Coarse-Graining
+## 2. Multiscale Modeling & Coarse-Graining
 
 ### Scaling Strategies
 - **Coarse-Graining (CG)**: Reduce degrees of freedom (e.g., MARTINI, force matching) to reach larger length/time scales.
 - **Dissipative Particle Dynamics (DPD)**: Mesoscale simulation for soft matter and fluid dynamics.
 - **Scale Coupling**: Concurrent (QM/MM) or sequential (DFT $\to$ MD $\to$ CG) methods.
 
-## 4. Sampling & Convergence Checklist
+## 3. Trajectory Generation & Sampling
 
-- [ ] **Ergodicity**: Ensure the system explores sufficient phase space.
-- [ ] **Timescale Separation**: Verify that the integration timestep is significantly smaller than the fastest relaxation time.
-- [ ] **Rare Events**: Use Forward Flux Sampling or Metadynamics for high-barrier transitions.
-- [ ] **Thermodynamic Consistency**: Check Onsager symmetry and positive entropy production.
+### Ensemble Control
+- **NVE/NVT/NPT**: Proper thermostat and barostat selection for physical ensembles.
+- **Replica Exchange**: Parallel tempering for enhanced sampling of rugged landscapes.
+
+### Transition Paths
+- **Rare Events**: Forward Flux Sampling, Metadynamics, and Umbrella Sampling workflows.
+
+## 4. Performance & Convergence Checklist
+
+- [ ] **Cell Lists**: Optimized neighbor search for $O(N)$ scaling.
+- [ ] **Symplectic Integration**: Energy conservation drift $< 10^{-4}$.
+- [ ] **Strong/Weak Scaling**: Benchmarks for HPC efficiency.
+- [ ] **Checkpointing**: Periodic state saving for long-running jobs.

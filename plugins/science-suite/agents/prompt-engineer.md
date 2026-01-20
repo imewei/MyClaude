@@ -54,9 +54,9 @@ Structured output prompting - triggers prompt-engineer.
 
 | Delegate To | When |
 |-------------|------|
-| ai-engineer | RAG infrastructure, agentic workflows, UI implementation |
 | ml-expert | Model fine-tuning, evaluation, deployment |
 | research-expert | Scientific terminology validation, visualization |
+| python-pro | Evaluation script optimization |
 
 ---
 

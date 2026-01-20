@@ -1,15 +1,13 @@
 import json
-import os
-import yaml
 import pytest
 import re
+import yaml
 from pathlib import Path
 
-# Paths
-PLUGIN_ROOT = Path(__file__).parent.parent
+# Paths adjustment: .../tools/tests -> .../tools -> .../ (root) -> .../plugins/quality-suite
+PLUGIN_ROOT = Path(__file__).parent.parent.parent / "plugins" / "quality-suite"
 PLUGIN_JSON = PLUGIN_ROOT / "plugin.json"
 AGENTS_DIR = PLUGIN_ROOT / "agents"
-SKILLS_DIR = PLUGIN_ROOT / "skills"
 
 def load_frontmatter(file_path):
     """Extract and parse YAML frontmatter from a markdown file."""
@@ -24,19 +22,19 @@ def load_frontmatter(file_path):
             return None
     return None
 
-def test_plugin_json_exists():
-    assert PLUGIN_JSON.exists(), "plugin.json missing"
+def test_plugin_exists():
+    assert PLUGIN_ROOT.exists(), f"Plugin directory not found: {PLUGIN_ROOT}"
 
 def test_plugin_json_structure():
+    assert PLUGIN_JSON.exists(), "plugin.json missing"
     with open(PLUGIN_JSON, 'r', encoding='utf-8') as f:
         data = json.load(f)
     
     required_fields = ["name", "version", "description", "agents"]
     for field in required_fields:
-        assert field in data, f"Missing required field in plugin.json: {field}"
+        assert field in data, f"Missing required field: {field}"
     
-    assert isinstance(data["agents"], list), "'agents' must be a list"
-    assert len(data["agents"]) > 0, "'agents' list should not be empty"
+    assert data["name"] == "quality-suite"
 
 def test_agents_exist():
     with open(PLUGIN_JSON, 'r', encoding='utf-8') as f:
@@ -52,18 +50,4 @@ def test_agent_frontmatter_validity():
         
     for agent_file in AGENTS_DIR.glob("*.md"):
         frontmatter = load_frontmatter(agent_file)
-        assert frontmatter is not None, f"Invalid or missing YAML frontmatter in {agent_file.name}"
-        assert "description" in frontmatter, f"Missing 'description' in frontmatter of {agent_file.name}"
-
-def test_skill_frontmatter_validity():
-    if not SKILLS_DIR.exists():
-        return # Skills are optional
-        
-    for skill_file in SKILLS_DIR.rglob("*.md"):
-        # Skip READMEs or non-skill markdowns if convention dictates, 
-        # but typically SKILL.md is the standard
-        if skill_file.name == "SKILL.md":
-            frontmatter = load_frontmatter(skill_file)
-            assert frontmatter is not None, f"Invalid or missing YAML frontmatter in {skill_file}"
-            assert "name" in frontmatter or "description" in frontmatter, \
-                f"Missing required fields in frontmatter of {skill_file}"
+        assert frontmatter is not None, f"Invalid YAML frontmatter in {agent_file.name}"

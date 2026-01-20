@@ -327,10 +327,9 @@ Task(prompt="Run NUTS sampling with Turing.jl, 10000 iterations", run_in_backgro
 | Delegate To | When | Parallel? |
 |-------------|------|-----------|
 | jax-pro | Python/JAX comparison, interop | ✅ Yes |
-| simulation-expert | Physics simulation validation | ✅ Yes |
-| statistical-physicist | Statistical mechanics analysis | ✅ Yes |
-| ml-expert | ML comparison (Flux.jl vs PyTorch) | ✅ Yes |
+| ml-expert | ML comparison (Classical ML/MLOps) | ✅ Yes |
 | research-expert | Package documentation, papers | ✅ Yes (background) |
+| python-pro | Python/Rust bridge optimization | ✅ Yes |
 
 ---
 
