@@ -18,7 +18,11 @@
     "monitoring",
     "git",
     "workflow",
-    "automation"
+    "automation",
+    "mcp",
+    "github",
+    "serena",
+    "semantic-code"
   ],
   "agents": [
     "devops-architect",

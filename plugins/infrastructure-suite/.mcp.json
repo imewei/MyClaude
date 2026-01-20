@@ -1,0 +1,13 @@
+{
+  "github": {
+    "type": "sse",
+    "url": "https://api.githubcopilot.com/mcp/sse",
+    "description": "GitHub operations - issues, PRs, repos, code search"
+  },
+  "serena": {
+    "type": "stdio",
+    "command": "uvx",
+    "args": ["serena-mcp"],
+    "description": "Semantic code analysis with symbol navigation and refactoring"
+  }
+}

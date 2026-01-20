@@ -16,7 +16,11 @@
     "reasoning",
     "llm",
     "workflow",
-    "ai"
+    "ai",
+    "mcp",
+    "sequential-thinking",
+    "context7",
+    "chain-of-thought"
   ],
   "agents": [
     "orchestrator",
