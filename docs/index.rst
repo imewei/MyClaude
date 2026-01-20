@@ -14,6 +14,14 @@ This system has been consolidated into 5 powerful suites to streamline your deve
    suites/quality-suite
    suites/science-suite
 
+.. toctree::
+   :maxdepth: 1
+   :caption: Reference
+
+   reference/agents
+   reference/commands
+   reference/cheatsheet
+
 Indices and tables
 ==================
 
