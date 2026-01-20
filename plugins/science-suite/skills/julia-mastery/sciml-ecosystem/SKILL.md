@@ -1,6 +1,6 @@
 ---
 name: sciml-ecosystem
-version: "1.0.7"
+version: "1.0.8"
 maturity: "5-Expert"
 specialization: SciML Overview
 description: Navigate the SciML ecosystem including DifferentialEquations.jl, ModelingToolkit.jl, Optimization.jl, and Catalyst.jl. Use when selecting packages for scientific computing tasks.
@@ -9,6 +9,14 @@ description: Navigate the SciML ecosystem including DifferentialEquations.jl, Mo
 # SciML Ecosystem
 
 Overview of Scientific Machine Learning packages in Julia.
+
+## Expert Agent
+
+For complex SciML workflows, differential equation solving, and scientific machine learning integration, delegate to the expert agent:
+
+- **`julia-pro`**: Unified specialist for Julia optimization, including SciML, DifferentialEquations.jl, ModelingToolkit.jl, and Optimization.jl.
+  - *Location*: `plugins/science-suite/agents/julia-pro.md`
+  - *Capabilities*: Stiff ODE solvers, sensitivity analysis, symbolic modeling, and physics-informed neural networks.
 
 ---
 
@@ -55,4 +63,4 @@ All packages integrate with DifferentialEquations.jl:
 
 ---
 
-**Version**: 1.0.5
+**Version**: 1.0.6

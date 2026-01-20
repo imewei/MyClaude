@@ -1,6 +1,6 @@
 ---
 name: turing-model-design
-version: "1.0.7"
+version: "1.0.8"
 maturity: "5-Expert"
 specialization: Bayesian Modeling
 description: Design probabilistic models with Turing.jl including prior selection, hierarchical models, and non-centered parameterization. Use when building Bayesian models for inference.
@@ -9,6 +9,14 @@ description: Design probabilistic models with Turing.jl including prior selectio
 # Turing.jl Model Design
 
 Probabilistic model specification for Bayesian inference.
+
+## Expert Agent
+
+For complex Bayesian models, hierarchical inference, and probabilistic programming workflows, delegate to the expert agent:
+
+- **`julia-pro`**: Unified specialist for Julia optimization, including Bayesian inference with Turing.jl.
+  - *Location*: `plugins/science-suite/agents/julia-pro.md`
+  - *Capabilities*: MCMC sampling (NUTS/HMC), variational inference, hierarchical modeling, and convergence diagnostics.
 
 ---
 
@@ -72,4 +80,4 @@ end
 
 ---
 
-**Version**: 1.0.5
+**Version**: 1.0.6

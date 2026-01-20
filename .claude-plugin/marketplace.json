@@ -705,10 +705,7 @@
         "./commands/julia-package-ci.md"
       ],
       "agents": [
-        "./agents/julia-pro.md",
-        "./agents/julia-developer.md",
-        "./agents/sciml-pro.md",
-        "./agents/turing-pro.md"
+        "./agents/julia-pro.md"
       ],
       "skills": [
         "./skills/core-julia-patterns",

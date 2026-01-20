@@ -1,6 +1,6 @@
 ---
 name: jump-optimization
-version: "1.0.7"
+version: "1.0.8"
 maturity: "5-Expert"
 specialization: Mathematical Programming
 description: Master JuMP.jl for LP, QP, NLP, and MIP with HiGHS, Ipopt, and commercial solvers. Use for production planning, portfolio optimization, scheduling, and constrained optimization. Note that JuMP.jl is separate from Optimization.jl (sciml-pro).
@@ -9,6 +9,14 @@ description: Master JuMP.jl for LP, QP, NLP, and MIP with HiGHS, Ipopt, and comm
 # JuMP Optimization
 
 Mathematical programming with JuMP.jl for LP, QP, NLP, and MIP problems.
+
+## Expert Agent
+
+For complex optimization modeling, large-scale solver configuration, and advanced JuMP patterns, delegate to the expert agent:
+
+- **`julia-pro`**: Unified specialist for Julia optimization, including JuMP (Mathematical Programming) and Optimization.jl (Scientific Optimization).
+  - *Location*: `plugins/science-suite/agents/julia-pro.md`
+  - *Capabilities*: Large-scale MIP/LP modeling, solver tuning, and high-performance optimization workflows.
 
 ---
 
@@ -213,4 +221,4 @@ end
 
 ---
 
-**Version**: 1.0.5
+**Version**: 1.0.6

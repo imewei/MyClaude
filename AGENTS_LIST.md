@@ -8,11 +8,8 @@
 
 ## Scientific Computing (16 agents)
 
-### julia-development (4 agents)
-- **julia-development:julia-pro** - Master Julia programming with 6-step decision framework (Problem Analysis, Multiple Dispatch Strategy, Performance Optimization, Testing, Documentation, Deployment)
-- **julia-development:sciml-pro** - Master SciML ecosystem with 6-step framework (Problem Characterization, Solver Selection Strategy, Performance Optimization, Sensitivity Analysis, Validation, Deployment)
-- **julia-development:turing-pro** - Master Bayesian inference with 6-step framework (Bayesian Model Formulation, Inference Strategy Selection, Prior Specification, Diagnostics, Model Comparison, Deployment)
-- **julia-development:julia-developer** - Master Julia package development with 6-step framework (Package Scope & Architecture, Project Structure & Organization, Testing Infrastructure, CI/CD, Documentation, Registry)
+### julia-development (1 agent)
+- **julia-development:julia-pro** - Unified specialist for Julia programming, Scientific Machine Learning (SciML), Bayesian inference (Turing.jl), and package development. Covers optimization, visualization, and distributed computing with a 6-step decision framework.
 
 ### jax-implementation (1 agent)
 - **jax-implementation:jax-pro** - Unified specialist for Core JAX, Bayesian inference (NumPyro), Nonlinear optimization (NLSQ), and Computational Physics (JAX-MD/CFD/Diffrax). Covers functional transformations, distributed computing, probabilistic programming, and differentiable physics with a 6-step decision framework.

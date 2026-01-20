@@ -1,6 +1,6 @@
 ---
 name: package-development-workflow
-version: "1.0.7"
+version: "1.0.8"
 maturity: "5-Expert"
 specialization: Julia Packages
 description: Create Julia packages following community standards with proper structure, exports, and PkgTemplates.jl. Use when creating new packages or organizing source code.
@@ -9,6 +9,14 @@ description: Create Julia packages following community standards with proper str
 # Julia Package Development
 
 Create packages following ecosystem standards.
+
+## Expert Agent
+
+For package structure, CI/CD configuration, and documentation workflows, delegate to the expert agent:
+
+- **`julia-pro`**: Unified specialist for Julia package development and testing.
+  - *Location*: `plugins/science-suite/agents/julia-pro.md`
+  - *Capabilities*: PkgTemplates.jl configuration, GitHub Actions setup, and comprehensive test suite generation.
 
 ---
 
@@ -76,4 +84,4 @@ tpl("MyPackage")
 
 ---
 
-**Version**: 1.0.5
+**Version**: 1.0.6
