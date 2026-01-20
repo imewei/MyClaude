@@ -1,142 +1,43 @@
 # MyClaude
 
-[![Plugins](https://img.shields.io/badge/Plugins-31-blue.svg)](https://myclaude.readthedocs.io/en/latest/plugins/)
-[![Agents](https://img.shields.io/badge/Agents-71-green.svg)](docs/reference/agents.md)
-[![Commands](https://img.shields.io/badge/Commands-49-orange.svg)](docs/reference/commands.md)
-[![Skills](https://img.shields.io/badge/Skills-117-purple.svg)](docs/reference/cheatsheet.md)
-[![Tools](https://img.shields.io/badge/Tools-16-teal.svg)](docs/tools-reference.rst)
+[![Plugins](https://img.shields.io/badge/Plugins-5-blue.svg)](https://myclaude.readthedocs.io/en/latest/plugins/)
+[![Agents](https://img.shields.io/badge/Agents-22-green.svg)](docs/reference/agents.md)
+[![Commands](https://img.shields.io/badge/Commands-32-orange.svg)](docs/reference/commands.md)
 [![Version](https://img.shields.io/badge/Version-2.1.0-red.svg)](https://github.com/imewei/MyClaude)
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Docs](https://img.shields.io/badge/Docs-ReadTheDocs-brightgreen.svg)](https://myclaude.readthedocs.io/en/latest/)
 
-Claude Code plugin marketplace with **31 specialized plugins**, **71 expert agents**, **49 slash commands**, **117 skills**, and **16 tools** for AI-powered development, scientific computing, and research workflows.
+Claude Code plugin marketplace with **5 consolidated suites**, **22 expert agents**, and **32 slash commands** optimized for AI-powered development, scientific computing, and research workflows.
 
-## Full Documentation
+## 🚀 The 5-Suite System
 
-**[View Complete Plugin Documentation](https://myclaude.readthedocs.io/en/latest/)**
+The MyClaude ecosystem has been consolidated into five powerful suites:
 
-For comprehensive documentation including detailed plugin guides, integration patterns, quick-start tutorials, and API references, visit the full Sphinx documentation.
+1.  **[Agent Core Suite](plugins/agent-core/)**: Multi-agent coordination, advanced reasoning, and context engineering.
+2.  **[Software Engineering Suite](plugins/engineering-suite/)**: Full-stack development, systems programming, and legacy modernization.
+3.  **[Infrastructure & Ops Suite](plugins/infrastructure-suite/)**: CI/CD automation, observability, and Git workflows.
+4.  **[Quality & Maintenance Suite](plugins/quality-suite/)**: Code quality, test automation, and intelligent debugging.
+5.  **[Scientific Computing Suite](plugins/science-suite/)**: HPC, JAX/Julia mastery, and specialized physics simulations.
 
-```bash
-# Build documentation locally
-cd docs/
-make html
-open _build/html/index.html
-```
+## 🤖 Specialist Agents
 
-## Overview
+The system features 22 specialized agents across all suites, including:
 
-The MyClaude plugin ecosystem provides production-ready tools for:
+| Agent | Suite | Specialization |
+|-------|-------|----------------|
+| `@orchestrator` | Agent Core | Multi-agent coordination and task delegation |
+| `@software-architect` | Engineering | Backend systems, microservices, and API design |
+| `@jax-pro` | Science | Core JAX, Bayesian inference, and physics apps |
+| `@quality-specialist` | Quality | Code review, security auditing, and test automation |
+| `@devops-architect` | Infrastructure | Cloud infrastructure, Kubernetes, and IaC |
+| `@python-pro` | Science | Modern Python systems engineering and performance |
+| `@reasoning-engine` | Agent Core | Advanced reasoning and structured thinking |
+| `@sre-expert` | Infrastructure | Reliability, observability, and incident response |
+| `@app-developer` | Engineering | Web, iOS, and Android development (React, Flutter) |
 
-- **AI-Powered Development**: Advanced reasoning, multi-agent orchestration, and LLM application development
-- **Full-Stack Engineering**: Backend APIs, frontend/mobile apps, multi-platform development
-- **Scientific Computing**: HPC, molecular simulation, JAX/Julia workflows, deep learning
-- **Quality Engineering**: Comprehensive testing, security auditing, code review
-- **DevOps & Infrastructure**: CI/CD automation, observability, Kubernetes orchestration
-- **Code Intelligence**: Documentation generation, migration, cleanup, debugging
+## 📦 Installation
 
-## What's New in v2.1.0
-
-**Optimization & Documentation Release** (All 31 plugins updated)
-
-All plugins synchronized to version 2.1.0:
-
-- **Plugin Optimization**: 40-76% token reduction across all plugins for faster loading
-- **New Command**: Added `/merge-all` to git-pr-workflows for branch consolidation
-- **API Documentation**: New `docs/api/` reference for Python tools
-- **Enhanced CI/CD**: Documentation workflow with coverage and linkcheck
-- **49 Commands**: Total commands increased from 48 to 49
-
-## Statistics
-
-| Metric | Count |
-|--------|-------|
-| Plugins | 31 |
-| Agents | 71 |
-| Commands | 49 |
-| Skills | 117 |
-| Tools | 16 |
-| Categories | 6 |
-
-### Category Breakdown
-
-| Category | Plugins | Agents | Commands | Skills |
-|----------|---------|--------|----------|--------|
-| Scientific Computing | 8 | 15 | 4 | 54 |
-| Development | 10 | 24 | 14 | 30 |
-| AI & Machine Learning | 2 | 6 | 3 | 10 |
-| DevOps & Infrastructure | 3 | 10 | 8 | 12 |
-| Quality & Testing | 4 | 7 | 10 | 3 |
-| Tools & Migration | 4 | 9 | 9 | 7 |
-
-## Plugin Categories
-
-### Scientific Computing (8 plugins)
-
-| Plugin | Version | Agents | Commands | Description |
-|--------|---------|--------|----------|-------------|
-| [julia-development](plugins/julia-development/) | v2.1.0 | 4 | 4 | Julia ecosystem with SciML, Turing.jl, and package development |
-| [jax-implementation](plugins/jax-implementation/) | v2.1.0 | 1 | - | JAX with NumPyro, Flax NNX, NLSQ optimization |
-| [hpc-computing](plugins/hpc-computing/) | v2.1.0 | 1 | - | High-performance computing and numerical methods |
-| [molecular-simulation](plugins/molecular-simulation/) | v2.1.0 | 1 | - | MD with LAMMPS, GROMACS, HOOMD-blue |
-| [statistical-physics](plugins/statistical-physics/) | v2.1.0 | 2 | - | Non-equilibrium systems and correlation functions |
-| [deep-learning](plugins/deep-learning/) | v2.1.0 | 2 | - | Neural networks with systematic frameworks |
-| [data-visualization](plugins/data-visualization/) | v2.1.0 | 1 | - | Scientific plots with Matplotlib, Plotly, Makie |
-| [research-methodology](plugins/research-methodology/) | v2.1.0 | 1 | - | Research intelligence and literature analysis |
-
-### Development (10 plugins)
-
-| Plugin | Version | Agents | Commands | Description |
-|--------|---------|--------|----------|-------------|
-| [python-development](plugins/python-development/) | v2.1.0 | 3 | 1 | Python 3.12+ with FastAPI, Django, async patterns |
-| [backend-development](plugins/backend-development/) | v2.1.0 | 3 | 1 | REST/GraphQL/gRPC APIs, microservices, TDD |
-| [frontend-mobile-development](plugins/frontend-mobile-development/) | v2.1.0 | 2 | 1 | React 19, Next.js 15, React Native, Flutter |
-| [javascript-typescript](plugins/javascript-typescript/) | v2.1.0 | 2 | 1 | Modern JS/TS with ES2024 and Node.js |
-| [systems-programming](plugins/systems-programming/) | v2.1.0 | 4 | 3 | C, C++, Rust, Go systems programming |
-| [multi-platform-apps](plugins/multi-platform-apps/) | v2.1.0 | 6 | 1 | Cross-platform web, iOS, Android, desktop apps |
-| [llm-application-dev](plugins/llm-application-dev/) | v2.1.0 | 2 | 3 | LLM apps with prompt engineering and RAG |
-| [cli-tool-design](plugins/cli-tool-design/) | v2.1.0 | 1 | - | CLI tool design and developer automation |
-| [full-stack-orchestration](plugins/full-stack-orchestration/) | v2.1.0 | 4 | 1 | End-to-end feature delivery with multi-agent coordination |
-| [agent-orchestration](plugins/agent-orchestration/) | v2.1.0 | 2 | 2 | Multi-agent workflow coordination and context management |
-
-### AI & Machine Learning (2 plugins)
-
-| Plugin | Version | Agents | Commands | Description |
-|--------|---------|--------|----------|-------------|
-| [machine-learning](plugins/machine-learning/) | v2.1.0 | 4 | 1 | MLOps with data engineering and ML pipelines |
-| [ai-reasoning](plugins/ai-reasoning/) | v2.1.0 | - | 2 | Advanced reasoning with ultra-think and reflection |
-
-### DevOps & Infrastructure (3 plugins)
-
-| Plugin | Version | Agents | Commands | Description |
-|--------|---------|--------|----------|-------------|
-| [cicd-automation](plugins/cicd-automation/) | v2.1.0 | 5 | 2 | CI/CD with intelligent error resolution |
-| [git-pr-workflows](plugins/git-pr-workflows/) | v2.1.0 | 1 | 4 | Git workflows and PR enhancement |
-| [observability-monitoring](plugins/observability-monitoring/) | v2.1.0 | 4 | 2 | Prometheus, Grafana, distributed tracing |
-
-### Quality & Testing (4 plugins)
-
-| Plugin | Version | Agents | Commands | Description |
-|--------|---------|--------|----------|-------------|
-| [unit-testing](plugins/unit-testing/) | v2.1.0 | 2 | 2 | Test automation with AI-powered debugging |
-| [comprehensive-review](plugins/comprehensive-review/) | v2.1.0 | 3 | 2 | Multi-agent code review with security auditing |
-| [codebase-cleanup](plugins/codebase-cleanup/) | v2.1.0 | 2 | 4 | Technical debt reduction and refactoring |
-| [quality-engineering](plugins/quality-engineering/) | v2.1.0 | - | 2 | Comprehensive validation frameworks |
-
-### Tools & Migration (4 plugins)
-
-| Plugin | Version | Agents | Commands | Description |
-|--------|---------|--------|----------|-------------|
-| [code-documentation](plugins/code-documentation/) | v2.1.0 | 3 | 4 | AI-powered documentation with AST analysis |
-| [code-migration](plugins/code-migration/) | v2.1.0 | 1 | 1 | Scientific code modernization (Fortran/MATLAB to Python/JAX) |
-| [framework-migration](plugins/framework-migration/) | v2.1.0 | 2 | 3 | Framework upgrades with strangler fig patterns |
-| [debugging-toolkit](plugins/debugging-toolkit/) | v2.1.0 | 2 | 1 | AI-assisted debugging with RCA frameworks |
-
-## Quick Start
-
-### Installation
-
-#### Step 1: Add the Marketplace
+### Step 1: Add the Marketplace
 
 In Claude Code, add this marketplace:
 
@@ -144,212 +45,43 @@ In Claude Code, add this marketplace:
 /plugin marketplace add imewei/MyClaude
 ```
 
-#### Step 2: Install Plugins
-
-**Option A: Browse and Install via UI**
-
-1. Select "Browse and install plugins"
-2. Select "scientific-computing-workflows"
-3. Select the plugin you want to install
-4. Select "Install now"
-
-**Option B: Install Specific Plugins via CLI**
+### Step 2: Install Suites
 
 ```bash
-# Install a single plugin
-/plugin install plugin-name@scientific-computing-workflows
-
-# Examples:
-/plugin install ai-reasoning@scientific-computing-workflows
-/plugin install quality-engineering@scientific-computing-workflows
-/plugin install backend-development@scientific-computing-workflows
-```
-
-**Option C: Install All 31 Plugins at Once**
-
-```bash
-# Clone the repository first
-git clone https://github.com/imewei/MyClaude.git
-cd MyClaude
-
-# Enable all plugins
-make plugin-enable-all
-
-# Or use the Python script directly
-python3 tools/enable_all_plugins.py
+# Install specific suites
+/plugin install agent-core@marketplace
+/plugin install engineering-suite@marketplace
+/plugin install infrastructure-suite@marketplace
+/plugin install quality-suite@marketplace
+/plugin install science-suite@marketplace
 ```
 
 **Note:** After installation, restart Claude Code for changes to take effect.
 
-#### Verify Installation
+## Quick Start
 
-```bash
-# From the cloned repository
-make plugin-count   # Show plugin statistics
-make plugin-list    # List all plugins with versions
-```
-
-### Using Plugins
-
-Once installed, plugins provide agents, commands, and skills that are automatically available:
+Once installed, suites provide agents, commands, and skills that are automatically available:
 
 **Using Specialized Agents**
 ```
 Ask Claude: "@python-pro help me optimize this async function"
-Ask Claude: "@julia-pro implement this differential equation using SciML"
-Ask Claude: "@jax-pro optimize this neural network training loop"
-Ask Claude: "@rust-pro refactor this code for better memory safety"
+Ask Claude: "@orchestrator coordinate a team for this new feature"
+Ask Claude: "@jax-pro implement this differentiable physics model"
 ```
 
 **Running Commands**
 ```bash
-/ai-reasoning:ultra-think "Analyze the architecture of this system" --depth=deep
-/quality-engineering:double-check my-feature --mode=standard
-/unit-testing:run-all-tests --fix --coverage
-/cicd-automation:fix-commit-errors workflow-123 --auto-fix
+/agent-core:ultra-think "Analyze the architecture of this system"
+/quality-suite:double-check my-feature
+/infrastructure-suite:fix-commit-errors
 ```
-
-**Accessing Skills**
-Skills are automatically loaded based on file context and your requests.
-
-## Tools
-
-The marketplace includes 16 Python utilities for plugin management, validation, and profiling:
-
-| Tool | Purpose | Target |
-|------|---------|--------|
-| `activation_profiler.py` | Measure agent activation time | <50ms |
-| `load_profiler.py` | Measure plugin load time | <100ms |
-| `memory_analyzer.py` | Profile memory consumption | <5MB |
-| `metadata_validator.py` | Validate plugin.json schema | 100% |
-| `skill_validator.py` | Test skill pattern matching | <5% over-trigger |
-| `plugin_review_script.py` | Comprehensive validation | All pass |
-
-See [Tools Reference](docs/tools-reference.rst) for complete documentation.
 
 ## Documentation
 
-- **[Plugin Cheatsheet](docs/reference/cheatsheet.md)** - Quick reference for all plugins
-- **[Complete Agents List](docs/reference/agents.md)** - Catalog of all 71 agents
-- **[Complete Commands List](docs/reference/commands.md)** - Catalog of all 48 commands
-- **[Tools Reference](docs/tools-reference.rst)** - 16 utility scripts documentation
-- **[API Reference](docs/api/index.rst)** - Python tools API documentation
-- **[Full Documentation](https://myclaude.readthedocs.io/en/latest/)** - Comprehensive guides and API references
-
-### LaTeX Reference Documents
-
-Printable reference documents are available in `docs/guides/`:
-
-- `AGENTS_LIST.tex` - Complete 71-agent reference guide
-- `COMMANDS_LIST.tex` - Complete 48-command reference guide
-- `agents-reference.tex` - Concise agent reference
-- `commands-reference.tex` - Concise command reference
-- `plugin-cheatsheet.tex` - Quick reference cheatsheet (landscape)
-
-To compile LaTeX documents:
-
-```bash
-cd docs/guides/
-pdflatex AGENTS_LIST.tex
-pdflatex COMMANDS_LIST.tex
-```
-
-## Development Commands
-
-```bash
-# Build Sphinx documentation
-make docs                    # Build to docs/_build/html/
-make docs-live               # Live server with auto-reload
-
-# Quality checks
-make lint                    # Run ruff and mypy
-make format                  # Format with black and ruff
-make validate                # Validate plugin metadata
-
-# Testing
-make test                    # Run pytest
-make test-coverage           # Run with coverage report
-
-# Plugin management
-make plugin-count            # Show plugin statistics
-make plugin-list             # List all plugins with versions
-make plugin-enable-all       # Enable all plugins in Claude Code
-
-# Cleanup
-make clean                   # Clean Python artifacts and cache
-make clean-all               # Deep clean including docs
-```
-
-## Version History
-
-### v2.1.0 (Current - 2026-01-12)
-
-**Optimization & Documentation Release** - All 31 plugins synchronized to 2.1.0:
-
-- Plugin Optimization: 40-76% token reduction across all plugins for faster loading
-- New Command: Added `/merge-all` for branch consolidation (48 → 49 commands)
-- API Documentation: New `docs/api/` reference for Python tools
-- Theme Migration: Switched Sphinx from RTD to Furo theme with dark mode
-- Enhanced CI/CD: Documentation workflow with coverage and linkcheck jobs
-- Version Consistency: Updated 272 files (agents, skills, commands, READMEs)
-
-### v1.0.6 (2025-12-24)
-
-**Documentation Sync Release** - All 31 plugins synchronized to 1.0.6:
-
-- Plugin.json Schema Fix: Convert author to object format for Claude Code compatibility
-- ReadTheDocs: Fixed build configuration with uv package manager
-- All documentation files synchronized with package version
-
-### v1.0.5 (2025-12-24)
-
-**Opus 4.5 Optimization Release** - Documentation and statistics updates:
-
-- Unified versioning across marketplace.json and documentation
-- Updated RST files for all 31 plugins
-
-### v1.0.4 (2025-12-03)
-
-**Agent Optimization Release** - All 71 agents enhanced with nlsq-pro template:
-
-- Pre-Response Validation Framework: 5 mandatory self-checks + 5 quality gates
-- When to Invoke Sections: USE FOR / DELEGATE TO tables and Decision Trees
-- Enhanced Constitutional AI Principles: Target %, Self-Check Questions, Anti-Patterns, Metrics
-- Version Consistency: All agents bumped to v1.0.4
-
-### v1.0.3 (2025-11-08)
-
-**Command Optimization Release** - 21 plugins updated:
-
-- 25-73% token reduction across plugins with hub-and-spoke architecture
-- Execution modes: quick/standard/comprehensive with time estimates
-- ~30,000+ lines of external documentation across plugins
-- Enhanced YAML frontmatter for better command discovery
-
-### v1.0.2 (2025-10-31)
-
-- jax-implementation v1.0.2: Enhanced NumPyro with ArviZ integration
-
-### v1.0.1 (2025-10-31)
-
-- Documentation improvements and enhanced installation guide
-- Updated statistics (71 agents, 49 commands, 117 skills)
-
-### v1.0.0 (2025-10-29)
-
-- Initial release with 31 specialized plugins
-- Comprehensive coverage for scientific computing and software development
-
-See [changelog](https://myclaude.readthedocs.io/en/latest/changelog.html) for detailed version history.
-
-## Contributing
-
-1. Fork and create a branch
-2. Make changes to plugins
-3. Test thoroughly with Claude Code
-4. Submit PR with detailed description
-
-See [contribution guidelines](https://myclaude.readthedocs.io/en/latest/contributing.html) for details.
+- **[Full Documentation](https://myclaude.readthedocs.io/en/latest/)**
+- **[Plugin Cheatsheet](docs/reference/cheatsheet.md)**
+- **[Complete Agents List](docs/reference/agents.md)**
+- **[Complete Commands List](docs/reference/commands.md)**
 
 ## License
 

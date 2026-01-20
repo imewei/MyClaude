@@ -1,7 +1,7 @@
 {
   "name": "agent-core",
   "displayName": "Agent Core Suite",
-  "version": "1.0.0",
+  "version": "2.1.0",
   "description": "Consolidated suite for multi-agent coordination, deep reasoning, and specialized LLM application development.",
   "author": {
     "name": "Wei Chen",
@@ -22,10 +22,67 @@
     "context7",
     "chain-of-thought"
   ],
+  "category": "core",
   "agents": [
-    "orchestrator",
-    "context-specialist",
-    "reasoning-engine"
+    {
+      "name": "orchestrator",
+      "description": "Multi-agent orchestrator specializing in workflow coordination, agent team assembly, and task allocation.",
+      "status": "active"
+    },
+    {
+      "name": "reasoning-engine",
+      "description": "Expert in advanced reasoning, prompt design, and cognitive tasks. Masters Chain-of-Thought and structured frameworks.",
+      "status": "active"
+    },
+    {
+      "name": "context-specialist",
+      "description": "Elite AI context engineering specialist mastering dynamic context management, vector databases, and memory systems.",
+      "status": "active"
+    }
   ],
-  "category": "orchestration"
+  "commands": [
+    {
+      "name": "/agent-build",
+      "description": "Unified AI agent creation, optimization, and prompt engineering.",
+      "status": "active"
+    },
+    {
+      "name": "/ai-assistant",
+      "description": "Build production-ready AI assistants with NLU and intelligent response generation.",
+      "status": "active"
+    },
+    {
+      "name": "/docs-lookup",
+      "description": "Query library documentation using Context7 MCP for up-to-date API references.",
+      "status": "active"
+    },
+    {
+      "name": "/reflection",
+      "description": "Comprehensive meta-cognitive reflection framework execution.",
+      "status": "active"
+    },
+    {
+      "name": "/ultra-think",
+      "description": "Comprehensive analysis with full reasoning framework execution.",
+      "status": "active"
+    }
+  ],
+  "skills": [
+    {
+      "name": "advanced-reasoning",
+      "description": "Structured thinking frameworks and meta-cognitive reflection."
+    },
+    {
+      "name": "agent-orchestration",
+      "description": "Workflow coordination, DAG-based tasks, and team management."
+    },
+    {
+      "name": "llm-application-patterns",
+      "description": "Prompt engineering (CoT, few-shot), RAG, and evaluation."
+    },
+    {
+      "name": "mcp-integration",
+      "description": "Integration guide for serena, github, sequential-thinking, and context7."
+    }
+  ]
 }

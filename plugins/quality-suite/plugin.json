@@ -1,7 +1,7 @@
 {
   "name": "quality-suite",
   "displayName": "Quality & Maintenance Suite",
-  "version": "1.0.0",
+  "version": "2.1.0",
   "description": "Consolidated suite for code quality, test automation, legacy modernization, and debugging.",
   "author": {
     "name": "Wei Chen",
@@ -19,10 +19,101 @@
     "review",
     "debugging"
   ],
+  "category": "quality",
   "agents": [
-    "quality-specialist",
-    "debugger-pro",
-    "documentation-expert"
+    {
+      "name": "quality-specialist",
+      "description": "Expert in ensuring software quality through rigorous code reviews, security audits, and test automation.",
+      "status": "active"
+    },
+    {
+      "name": "debugger-pro",
+      "description": "Expert in AI-assisted debugging, log correlation, and complex root cause analysis across distributed systems.",
+      "status": "active"
+    },
+    {
+      "name": "documentation-expert",
+      "description": "Expert in creating clear, comprehensive, and accurate technical documentation and tutorials.",
+      "status": "active"
+    }
   ],
-  "category": "quality"
+  "commands": [
+    {
+      "name": "/run-all-tests",
+      "description": "Iteratively run and fix all tests until zero failures with AI-driven RCA.",
+      "status": "active"
+    },
+    {
+      "name": "/test-generate",
+      "description": "Generate comprehensive test suites with scientific computing support.",
+      "status": "active"
+    },
+    {
+      "name": "/double-check",
+      "description": "Multi-dimensional validation with automated testing and security scanning.",
+      "status": "active"
+    },
+    {
+      "name": "/smart-debug",
+      "description": "Intelligent debugging with multi-mode execution and automated RCA.",
+      "status": "active"
+    },
+    {
+      "name": "/refactor-clean",
+      "description": "Analyze and refactor code to improve quality and maintainability.",
+      "status": "active"
+    },
+    {
+      "name": "/tech-debt",
+      "description": "Analyze, prioritize, and remediate technical debt using ROI metrics.",
+      "status": "active"
+    },
+    {
+      "name": "/adopt-code",
+      "description": "Analyze and modernize scientific computing codebases with accuracy.",
+      "status": "active"
+    },
+    {
+      "name": "/code-explain",
+      "description": "Detailed code explanation with visual aids and domain expertise.",
+      "status": "active"
+    },
+    {
+      "name": "/deps",
+      "description": "Unified dependency management - security auditing and safe upgrades.",
+      "status": "active"
+    },
+    {
+      "name": "/docs",
+      "description": "Unified documentation management - generate, update, and sync.",
+      "status": "active"
+    },
+    {
+      "name": "/fix-imports",
+      "description": "Systematically fix broken imports across the codebase.",
+      "status": "active"
+    }
+  ],
+  "skills": [
+    {
+      "name": "code-review",
+      "description": "Performance, maintainability, and security focused reviews."
+    },
+    {
+      "name": "comprehensive-validation",
+      "description": "Multi-dimensional validation for code and systems."
+    },
+    {
+      "name": "debugging-strategies",
+      "description": "Systematic methodologies and scientific RCA."
+    },
+    {
+      "name": "documentation-standards",
+      "description": "Guidelines for high-quality technical docs."
+    },
+    {
+      "name": "test-automation",
+      "description": "pyramind-based testing (Unit, Integration, E2E)."
+    }
+  ]
 }

@@ -1,8 +1,8 @@
 {
   "name": "science-suite",
   "displayName": "Scientific Computing Suite",
-  "version": "2.0.0",
-  "description": "Consolidated suite for high-performance computing, specialized physics/chemistry simulations, and data science workflows. Optimized for Claude Code v2.1.12 with parallel agent execution and MCP server integration.",
+  "version": "2.1.0",
+  "description": "Consolidated suite for high-performance computing, specialized physics/chemistry simulations, and data science workflows.",
   "author": {
     "name": "Wei Chen",
     "url": "https://myclaude.readthedocs.io/en/latest/"
@@ -24,17 +24,108 @@
     "parallel-computing",
     "claude-code"
   ],
+  "category": "science",
   "agents": [
-    "jax-pro",
-    "julia-pro",
-    "statistical-physicist",
-    "simulation-expert",
-    "ml-expert",
-    "research-expert",
-    "python-pro",
-    "ai-engineer",
-    "prompt-engineer",
-    "neural-network-master"
+    {
+      "name": "jax-pro",
+      "description": "Expert in JAX-based scientific computing, functional transformations, and high-performance numerical kernels.",
+      "status": "active"
+    },
+    {
+      "name": "julia-pro",
+      "description": "Expert in Julia programming, Scientific Machine Learning (SciML), and DifferentialEquations.jl.",
+      "status": "active"
+    },
+    {
+      "name": "statistical-physicist",
+      "description": "Expert in correlation functions, non-equilibrium dynamics, and ensemble theory.",
+      "status": "active"
+    },
+    {
+      "name": "simulation-expert",
+      "description": "Expert in molecular dynamics, statistical mechanics, and numerical methods (HPC/GPU).",
+      "status": "active"
+    },
+    {
+      "name": "ml-expert",
+      "description": "Expert in classical ML algorithms, MLOps pipelines, and data engineering.",
+      "status": "active"
+    },
+    {
+      "name": "research-expert",
+      "description": "Expert in systematic research, evidence synthesis, and publication-quality visualization.",
+      "status": "active"
+    },
+    {
+      "name": "python-pro",
+      "description": "Expert Python Systems Engineer specializing in type-driven development and performance.",
+      "status": "active"
+    },
+    {
+      "name": "ai-engineer",
+      "description": "Build production-ready LLM applications, advanced RAG systems, and intelligent agents.",
+      "status": "active"
+    },
+    {
+      "name": "prompt-engineer",
+      "description": "Expert prompt engineer specializing in advanced techniques and performance optimization.",
+      "status": "active"
+    },
+    {
+      "name": "neural-network-master",
+      "description": "Deep learning authority specializing in theory and implementation (Transformers, CNNs, diagnostics).",
+      "status": "active"
+    }
   ],
-  "category": "science"
+  "commands": [],
+  "skills": [
+    {
+      "name": "advanced-simulations",
+      "description": "MD setup, ML force fields, multiscale modeling."
+    },
+    {
+      "name": "jax-mastery",
+      "description": "Core programming, Bayesian inference, DiffEq, Physics apps."
+    },
+    {
+      "name": "julia-mastery",
+      "description": "Core patterns, SciML ecosystem, Performance tuning."
+    },
+    {
+      "name": "machine-learning",
+      "description": "Essentials, Pipeline orchestration, MLOps."
+    },
+    {
+      "name": "deep-learning",
+      "description": "Architectures, Theory, Diagnostics, and Research Implementation."
+    },
+    {
+      "name": "llm-application-dev",
+      "description": "RAG systems, LangChain patterns, and Eval."
+    },
+    {
+      "name": "numerical-methods",
+      "description": "Solvers for ODEs, PDEs, and Optimization (via Parallel Computing)."
+    },
+    {
+      "name": "parallel-computing",
+      "description": "GPU acceleration, Distributed systems (MPI/Dask)."
+    },
+    {
+      "name": "python-development",
+      "description": "Type-driven design, Rust extensions, Modern concurrency."
+    },
+    {
+      "name": "research-methodology",
+      "description": "Experimental design and statistical rigor."
+    },
+    {
+      "name": "scientific-visualization",
+      "description": "Publication-quality plotting."
+    },
+    {
+      "name": "statistical-physics",
+      "description": "Correlation functions, Stochastic dynamics, Active matter."
+    }
+  ]
 }

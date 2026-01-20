@@ -1,7 +1,7 @@
 {
   "name": "infrastructure-suite",
   "displayName": "Infrastructure & Ops Suite",
-  "version": "1.0.0",
+  "version": "2.1.0",
   "description": "Consolidated suite for CI/CD automation, observability monitoring, and Git PR workflows.",
   "author": {
     "name": "Wei Chen",
@@ -24,10 +24,83 @@
     "serena",
     "semantic-code"
   ],
+  "category": "infrastructure",
   "agents": [
-    "devops-architect",
-    "sre-expert",
-    "automation-engineer"
+    {
+      "name": "devops-architect",
+      "description": "Expert in multi-cloud architecture (AWS/Azure/GCP), Kubernetes orchestration, and Infrastructure as Code (Terraform).",
+      "status": "active"
+    },
+    {
+      "name": "sre-expert",
+      "description": "Expert in system reliability, observability (monitoring, logging, tracing), and incident response.",
+      "status": "active"
+    },
+    {
+      "name": "automation-engineer",
+      "description": "Expert in automating software delivery pipelines and optimizing Git collaboration workflows.",
+      "status": "active"
+    }
   ],
-  "category": "infrastructure"
+  "commands": [
+    {
+      "name": "/commit",
+      "description": "Intelligent git commit with automated analysis and quality validation.",
+      "status": "active"
+    },
+    {
+      "name": "/fix-commit-errors",
+      "description": "Automatically analyzes GitHub Actions failures and applies solutions.",
+      "status": "active"
+    },
+    {
+      "name": "/merge-all",
+      "description": "Merge all local branches into main and clean up.",
+      "status": "active"
+    },
+    {
+      "name": "/monitor-setup",
+      "description": "Set up Prometheus, Grafana, and distributed tracing stack.",
+      "status": "active"
+    },
+    {
+      "name": "/onboard",
+      "description": "Orchestrate complete onboarding for new team members.",
+      "status": "active"
+    },
+    {
+      "name": "/slo-implement",
+      "description": "Implement SLO/SLA monitoring, error budgets, and alerting.",
+      "status": "active"
+    },
+    {
+      "name": "/workflow-automate",
+      "description": "Automated CI/CD workflow generation for GitHub Actions and GitLab CI.",
+      "status": "active"
+    },
+    {
+      "name": "/code-analyze",
+      "description": "Semantic code analysis using Serena MCP for symbol navigation.",
+      "status": "active"
+    },
+    {
+      "name": "/github-assist",
+      "description": "GitHub operations using GitHub MCP for issues, PRs, and repos.",
+      "status": "active"
+    }
+  ],
+  "skills": [
+    {
+      "name": "deployment-pipelines",
+      "description": "Robust CI/CD design and secrets management."
+    },
+    {
+      "name": "git-workflow",
+      "description": "Advanced Git operations and collaborative patterns."
+    },
+    {
+      "name": "observability",
+      "description": "Monitoring, logging, tracing, and SLO implementation."
+    }
+  ]
 }

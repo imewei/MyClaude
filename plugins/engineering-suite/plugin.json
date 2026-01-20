@@ -1,7 +1,7 @@
 {
   "name": "engineering-suite",
   "displayName": "Software Engineering Suite",
-  "version": "1.0.0",
+  "version": "2.1.0",
   "description": "Consolidated suite for full-stack engineering, language-specific development, and platform-specific implementations.",
   "author": {
     "name": "Wei Chen",
@@ -22,10 +22,81 @@
     "cli",
     "migration"
   ],
+  "category": "engineering",
   "agents": [
-    "software-architect",
-    "app-developer",
-    "systems-engineer"
+    {
+      "name": "software-architect",
+      "description": "Expert in designing scalable backend systems, microservices, and high-performance APIs (REST/GraphQL/gRPC).",
+      "status": "active"
+    },
+    {
+      "name": "app-developer",
+      "description": "Expert in building high-quality applications for Web, iOS, and Android (React, Next.js, Flutter).",
+      "status": "active"
+    },
+    {
+      "name": "systems-engineer",
+      "description": "Expert in low-level systems programming (C, C++, Rust, Go) and production-grade CLI tool design.",
+      "status": "active"
+    }
   ],
-  "category": "engineering"
+  "commands": [
+    {
+      "name": "/scaffold",
+      "description": "Unified project and component scaffolding for TypeScript, Python, React, and Julia.",
+      "status": "active"
+    },
+    {
+      "name": "/rust-project",
+      "description": "Scaffold production-ready Rust projects with cargo tooling and idiomatic patterns.",
+      "status": "active"
+    },
+    {
+      "name": "/c-project",
+      "description": "Scaffold production-ready C projects with Makefile/CMake and memory safety tools.",
+      "status": "active"
+    },
+    {
+      "name": "/feature-dev",
+      "description": "Unified end-to-end feature development with customizable methodologies and deployment strategies.",
+      "status": "active"
+    },
+    {
+      "name": "/modernize",
+      "description": "Unified code migration and legacy modernization with Strangler Fig pattern.",
+      "status": "active"
+    },
+    {
+      "name": "/multi-platform",
+      "description": "Build and deploy features across web, mobile, and desktop platforms.",
+      "status": "active"
+    },
+    {
+      "name": "/profile-performance",
+      "description": "Comprehensive performance profiling with perf, flamegraph, and valgrind.",
+      "status": "active"
+    }
+  ],
+  "skills": [
+    {
+      "name": "backend-engineering",
+      "description": "API design, database optimization, and microservices patterns."
+    },
+    {
+      "name": "frontend-mobile-engineering",
+      "description": "Cross-platform development and mobile-first UX."
+    },
+    {
+      "name": "language-mastery",
+      "description": "Python (Async/Packaging), JS/TS (Node.js), and Systems languages."
+    },
+    {
+      "name": "modernization-migration",
+      "description": "Legacy migration strategies and framework evolution."
+    },
+    {
+      "name": "systems-cli-engineering",
+      "description": "High-performance systems and production-grade CLI UX."
+    }
+  ]
 }

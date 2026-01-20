@@ -6,20 +6,20 @@
     "url": "https://myclaude.readthedocs.io/en/latest/"
   },
   "metadata": {
-    "description": "Custom marketplace for scientific computing workflows with specialized HPC/JAX/ML agents and selected claude-code-workflows plugins",
-    "version": "1.0.7",
-    "based_on": "claude-code-workflows v1.2.0",
-    "reorganization_date": "2025-10-27",
-    "last_updated": "2025-12-24",
-    "total_plugins": 31,
-    "note": "v1.0.6 documentation sync release with 74 agents, 48 commands, 117 skills"
+    "description": "Consolidated 5-suite marketplace for scientific computing, engineering, and agent orchestration",
+    "version": "2.1.0",
+    "based_on": "claude-code-workflows v2.0.0",
+    "reorganization_date": "2026-01-20",
+    "last_updated": "2026-01-20",
+    "total_plugins": 5,
+    "note": "v2.1.0 consolidated release with 5 suites: Agent Core, Engineering, Infrastructure, Quality, and Science"
   },
   "plugins": [
     {
-      "name": "agent-orchestration",
-      "source": "./plugins/agent-orchestration",
-      "description": "Multi-agent system optimization, agent improvement workflows, and context management with multi-agent-orchestrator",
-      "version": "1.0.7",
+      "name": "agent-core",
+      "source": "./plugins/agent-core",
+      "description": "Core agent orchestration, multi-agent systems, and AI reasoning capabilities",
+      "version": "2.1.0",
       "author": {
         "name": "Wei Chen",
         "url": "https://myclaude.readthedocs.io/en/latest/"
@@ -28,27 +28,31 @@
       "repository": "https://github.com/imewei/MyClaude",
       "license": "MIT",
       "keywords": [
-        "multi-agent",
+        "agent-core",
         "orchestration",
-        "ai-agents",
-        "optimization"
+        "reasoning",
+        "multi-agent"
       ],
-      "category": "ai-ml",
+      "category": "core",
       "strict": false,
-      "commands": [
-        "./commands/multi-agent-optimize.md",
-        "./commands/improve-agent.md"
-      ],
       "agents": [
-        "./agents/context-manager.md",
-        "./agents/multi-agent-orchestrator.md"
+        "./agents/orchestrator.md",
+        "./agents/context-specialist.md",
+        "./agents/reasoning-engine.md"
+      ],
+      "commands": [
+        "./commands/agent-build.md",
+        "./commands/ai-assistant.md",
+        "./commands/docs-lookup.md",
+        "./commands/reflection.md",
+        "./commands/ultra-think.md"
       ]
     },
     {
-      "name": "backend-development",
-      "source": "./plugins/backend-development",
-      "description": "Backend API design, GraphQL architecture, and test-driven backend development",
-      "version": "1.0.7",
+      "name": "engineering-suite",
+      "source": "./plugins/engineering-suite",
+      "description": "Comprehensive software engineering suite covering backend, frontend, mobile, and systems programming",
+      "version": "2.1.0",
       "author": {
         "name": "Wei Chen",
         "url": "https://myclaude.readthedocs.io/en/latest/"
@@ -57,33 +61,34 @@
       "repository": "https://github.com/imewei/MyClaude",
       "license": "MIT",
       "keywords": [
-        "backend",
-        "api-design",
-        "graphql",
-        "tdd",
-        "architecture"
+        "engineering",
+        "development",
+        "python",
+        "javascript",
+        "rust"
       ],
-      "category": "development",
+      "category": "engineering",
       "strict": false,
-      "commands": [
-        "./commands/feature-development.md"
-      ],
       "agents": [
-        "./agents/backend-architect.md",
-        "./agents/graphql-architect.md",
-        "./agents/tdd-orchestrator.md"
+        "./agents/app-developer.md",
+        "./agents/software-architect.md",
+        "./agents/systems-engineer.md"
       ],
-      "skills": [
-        "./skills/api-design-principles",
-        "./skills/architecture-patterns",
-        "./skills/microservices-patterns"
+      "commands": [
+        "./commands/c-project.md",
+        "./commands/feature-dev.md",
+        "./commands/modernize.md",
+        "./commands/multi-platform.md",
+        "./commands/profile-performance.md",
+        "./commands/rust-project.md",
+        "./commands/scaffold.md"
       ]
     },
     {
-      "name": "cicd-automation",
-      "source": "./plugins/cicd-automation",
-      "description": "CI/CD pipeline configuration, GitHub Actions/GitLab CI workflow setup, and automated deployment with fix-commit-errors command",
-      "version": "1.0.7",
+      "name": "infrastructure-suite",
+      "source": "./plugins/infrastructure-suite",
+      "description": "Infrastructure, DevOps, CI/CD, and observability automation tools",
+      "version": "2.1.0",
       "author": {
         "name": "Wei Chen",
         "url": "https://myclaude.readthedocs.io/en/latest/"
@@ -92,1000 +97,35 @@
       "repository": "https://github.com/imewei/MyClaude",
       "license": "MIT",
       "keywords": [
+        "infrastructure",
+        "devops",
         "ci-cd",
-        "automation",
-        "pipeline",
-        "github-actions",
-        "gitlab-ci"
+        "observability"
       ],
       "category": "infrastructure",
       "strict": false,
+      "agents": [
+        "./agents/automation-engineer.md",
+        "./agents/devops-architect.md",
+        "./agents/sre-expert.md"
+      ],
       "commands": [
-        "./commands/workflow-automate.md",
-        "./commands/fix-commit-errors.md"
-      ],
-      "agents": [
-        "./agents/deployment-engineer.md",
-        "./agents/devops-troubleshooter.md",
-        "./agents/kubernetes-architect.md",
-        "./agents/cloud-architect.md",
-        "./agents/terraform-specialist.md"
-      ],
-      "skills": [
-        "./skills/deployment-pipeline-design",
-        "./skills/github-actions-templates",
-        "./skills/gitlab-ci-patterns",
-        "./skills/secrets-management",
-        "./skills/security-ci-template"
-      ]
-    },
-    {
-      "name": "cli-tool-design",
-      "source": "./plugins/cli-tool-design",
-      "description": "CLI tool design and developer automation expertise: command development, interactive prompts, workflow automation, and developer productivity tools",
-      "version": "1.0.7",
-      "author": {
-        "name": "Wei Chen",
-        "url": "https://myclaude.readthedocs.io/en/latest/"
-      },
-      "homepage": "https://github.com/imewei/MyClaude",
-      "repository": "https://github.com/imewei/MyClaude",
-      "license": "MIT",
-      "keywords": [
-        "cli",
-        "command-line",
-        "automation",
-        "developer-tools",
-        "workflow",
-        "scripting",
-        "python-click",
-        "typer",
-        "commander",
-        "inquirer",
-        "interactive-prompts",
-        "terminal",
-        "bash",
-        "shell-scripts",
-        "productivity",
-        "code-generation",
-        "scaffolding",
-        "deployment-automation",
-        "build-tools",
-        "task-runner"
-      ],
-      "category": "developer-tools",
-      "strict": false,
-      "commands": [],
-      "agents": [
-        "./agents/command-systems-engineer.md"
-      ],
-      "skills": [
-        "./skills/cli-tool-design-production",
-        "./skills/programming-scripting-languages"
-      ]
-    },
-    {
-      "name": "code-documentation",
-      "source": "./plugins/code-documentation",
-      "description": "Documentation generation, code explanation, and technical writing with automated doc generation, tutorial creation, and Sphinx updates",
-      "version": "1.0.7",
-      "author": {
-        "name": "Wei Chen",
-        "url": "https://myclaude.readthedocs.io/en/latest/"
-      },
-      "homepage": "https://github.com/imewei/MyClaude",
-      "repository": "https://github.com/imewei/MyClaude",
-      "license": "MIT",
-      "keywords": [
-        "documentation",
-        "code-explanation",
-        "technical-writing",
-        "tutorials",
-        "sphinx"
-      ],
-      "category": "documentation",
-      "strict": false,
-      "commands": [
-        "./commands/doc-generate.md",
-        "./commands/code-explain.md",
-        "./commands/update-docs.md"
-      ],
-      "agents": [
-        "./agents/docs-architect.md",
-        "./agents/tutorial-engineer.md",
-        "./agents/code-reviewer.md"
-      ]
-    },
-    {
-      "name": "code-migration",
-      "source": "./plugins/code-migration",
-      "description": "Legacy scientific code modernization with cross-language migration for Fortran/C/MATLAB to Python/JAX/Julia while preserving numerical accuracy",
-      "version": "1.0.7",
-      "author": {
-        "name": "Wei Chen",
-        "url": "https://myclaude.readthedocs.io/en/latest/"
-      },
-      "homepage": "https://github.com/imewei/MyClaude",
-      "repository": "https://github.com/imewei/MyClaude",
-      "license": "MIT",
-      "keywords": [
-        "code-migration",
-        "legacy-modernization",
-        "fortran",
-        "matlab",
-        "python",
-        "jax",
-        "julia",
-        "scientific-computing"
-      ],
-      "category": "modernization",
-      "strict": false,
-      "commands": [
-        "./commands/adopt-code.md"
-      ],
-      "agents": [
-        "./agents/scientific-code-adoptor.md"
-      ]
-    },
-    {
-      "name": "codebase-cleanup",
-      "source": "./plugins/codebase-cleanup",
-      "description": "Technical debt reduction, dependency updates, and code refactoring automation",
-      "version": "1.0.7",
-      "author": {
-        "name": "Wei Chen",
-        "url": "https://myclaude.readthedocs.io/en/latest/"
-      },
-      "homepage": "https://github.com/imewei/MyClaude",
-      "repository": "https://github.com/imewei/MyClaude",
-      "license": "MIT",
-      "keywords": [
-        "technical-debt",
-        "cleanup",
-        "refactoring",
-        "dependencies"
-      ],
-      "category": "modernization",
-      "strict": false,
-      "commands": [
-        "./commands/deps-audit.md",
-        "./commands/tech-debt.md",
-        "./commands/refactor-clean.md"
-      ],
-      "agents": [
-        "./agents/test-automator.md",
-        "./agents/code-reviewer.md"
-      ]
-    },
-    {
-      "name": "comprehensive-review",
-      "source": "./plugins/comprehensive-review",
-      "description": "Multi-perspective code analysis covering architecture, security, and best practices",
-      "version": "1.0.7",
-      "author": {
-        "name": "Wei Chen",
-        "url": "https://myclaude.readthedocs.io/en/latest/"
-      },
-      "homepage": "https://github.com/imewei/MyClaude",
-      "repository": "https://github.com/imewei/MyClaude",
-      "license": "MIT",
-      "keywords": [
-        "code-review",
-        "quality",
-        "architecture",
-        "security",
-        "best-practices"
-      ],
-      "category": "quality",
-      "strict": false,
-      "commands": [
-        "./commands/full-review.md",
-        "./commands/pr-enhance.md"
-      ],
-      "agents": [
-        "./agents/code-reviewer.md",
-        "./agents/architect-review.md",
-        "./agents/security-auditor.md"
-      ]
-    },
-    {
-      "name": "data-visualization",
-      "source": "./plugins/data-visualization",
-      "description": "Scientific data visualization, UX design, and immersive AR/VR interfaces for compelling visual narratives",
-      "version": "1.0.7",
-      "author": {
-        "name": "Wei Chen",
-        "url": "https://myclaude.readthedocs.io/en/latest/"
-      },
-      "homepage": "https://github.com/imewei/MyClaude",
-      "repository": "https://github.com/imewei/MyClaude",
-      "license": "MIT",
-      "keywords": [
-        "visualization",
-        "data-viz",
-        "d3js",
-        "plotly",
-        "ar-vr",
-        "scientific-computing",
-        "ui-ux"
-      ],
-      "category": "visualization",
-      "strict": false,
-      "agents": [
-        "./agents/visualization-interface.md"
-      ]
-    },
-    {
-      "name": "debugging-toolkit",
-      "source": "./plugins/debugging-toolkit",
-      "description": "Interactive debugging, developer experience optimization, and smart debugging workflows",
-      "version": "1.0.7",
-      "author": {
-        "name": "Wei Chen",
-        "url": "https://myclaude.readthedocs.io/en/latest/"
-      },
-      "homepage": "https://github.com/imewei/MyClaude",
-      "repository": "https://github.com/imewei/MyClaude",
-      "license": "MIT",
-      "keywords": [
-        "debugging",
-        "developer-experience",
-        "troubleshooting",
-        "essential"
-      ],
-      "category": "development",
-      "strict": false,
-      "commands": [
-        "./commands/smart-debug.md"
-      ],
-      "agents": [
-        "./agents/debugger.md",
-        "./agents/dx-optimizer.md"
-      ]
-    },
-    {
-      "name": "ai-reasoning",
-      "source": "./plugins/ai-reasoning",
-      "description": "Advanced AI-powered cognitive tools for problem-solving, meta-analysis, and structured reasoning",
-      "version": "1.0.7",
-      "author": {
-        "name": "Wei Chen",
-        "url": "https://myclaude.readthedocs.io/en/latest/"
-      },
-      "homepage": "https://github.com/imewei/MyClaude",
-      "repository": "https://github.com/imewei/MyClaude",
-      "license": "MIT",
-      "keywords": [
-        "reasoning",
-        "thinking",
-        "reflection",
-        "meta-cognition",
-        "problem-solving",
-        "analysis",
-        "ultra-think"
-      ],
-      "category": "ai-ml",
-      "strict": false,
-      "commands": [
-        "./commands/ultra-think.md",
-        "./commands/reflection.md"
-      ],
-      "skills": [
-        "./skills/comprehensive-reflection-framework",
-        "./skills/meta-cognitive-reflection",
-        "./skills/structured-reasoning"
-      ]
-    },
-    {
-      "name": "deep-learning",
-      "source": "./plugins/deep-learning",
-      "description": "Comprehensive deep learning expertise: neural network theory, mathematical foundations, architecture design, multi-framework implementation (Flax, Equinox, Haiku, PyTorch), training diagnostics, and research translation with 6 practical skills",
-      "version": "1.0.7",
-      "author": {
-        "name": "Wei Chen",
-        "url": "https://myclaude.readthedocs.io/en/latest/"
-      },
-      "homepage": "https://github.com/imewei/MyClaude",
-      "repository": "https://github.com/imewei/MyClaude",
-      "license": "MIT",
-      "keywords": [
-        "deep-learning",
-        "neural-networks",
-        "architecture",
-        "theory",
-        "optimization",
-        "flax",
-        "equinox",
-        "haiku",
-        "transformers",
-        "training",
-        "debugging",
-        "research",
-        "mathematics",
-        "deployment"
-      ],
-      "category": "ai-ml",
-      "strict": false,
-      "agents": [
-        "./agents/neural-architecture-engineer.md",
-        "./agents/neural-network-master.md"
-      ],
-      "skills": [
-        "./skills/neural-network-mathematics",
-        "./skills/training-diagnostics",
-        "./skills/research-paper-implementation",
-        "./skills/model-optimization-deployment",
-        "./skills/neural-architecture-patterns",
-        "./skills/deep-learning-experimentation"
-      ]
-    },
-    {
-      "name": "framework-migration",
-      "source": "./plugins/framework-migration",
-      "description": "Framework updates, migration planning, and architectural transformation workflows",
-      "version": "1.0.7",
-      "author": {
-        "name": "Wei Chen",
-        "url": "https://myclaude.readthedocs.io/en/latest/"
-      },
-      "homepage": "https://github.com/imewei/MyClaude",
-      "repository": "https://github.com/imewei/MyClaude",
-      "license": "MIT",
-      "keywords": [
-        "migration",
-        "framework-upgrade",
-        "modernization",
-        "angular",
-        "react"
-      ],
-      "category": "modernization",
-      "strict": false,
-      "commands": [
-        "./commands/legacy-modernize.md",
-        "./commands/code-migrate.md",
-        "./commands/deps-upgrade.md"
-      ],
-      "agents": [
-        "./agents/legacy-modernizer.md",
-        "./agents/architect-review.md"
-      ],
-      "skills": [
-        "./skills/angular-migration",
-        "./skills/database-migration",
-        "./skills/dependency-upgrade",
-        "./skills/react-modernization"
-      ]
-    },
-    {
-      "name": "frontend-mobile-development",
-      "source": "./plugins/frontend-mobile-development",
-      "description": "Frontend UI development and mobile application implementation across platforms",
-      "version": "1.0.7",
-      "author": {
-        "name": "Wei Chen",
-        "url": "https://myclaude.readthedocs.io/en/latest/"
-      },
-      "homepage": "https://github.com/imewei/MyClaude",
-      "repository": "https://github.com/imewei/MyClaude",
-      "license": "MIT",
-      "keywords": [
-        "frontend",
-        "mobile",
-        "react",
-        "ui",
-        "cross-platform"
-      ],
-      "category": "development",
-      "strict": false,
-      "commands": [
-        "./commands/component-scaffold.md"
-      ],
-      "agents": [
-        "./agents/frontend-developer.md",
-        "./agents/mobile-developer.md"
-      ]
-    },
-    {
-      "name": "full-stack-orchestration",
-      "source": "./plugins/full-stack-orchestration",
-      "description": "Full-stack development orchestration coordinating frontend, backend, testing, security, performance, and deployment for end-to-end feature delivery",
-      "version": "1.0.7",
-      "author": {
-        "name": "Wei Chen",
-        "url": "https://myclaude.readthedocs.io/en/latest/"
-      },
-      "homepage": "https://github.com/imewei/MyClaude",
-      "repository": "https://github.com/imewei/MyClaude",
-      "license": "MIT",
-      "keywords": [
-        "full-stack",
-        "orchestration",
-        "coordination",
-        "integration",
-        "frontend-backend",
-        "e2e-development",
-        "deployment",
-        "testing",
-        "security",
-        "performance",
-        "workflow-automation",
-        "feature-development"
-      ],
-      "category": "orchestration",
-      "strict": false,
-      "commands": [
-        "./commands/full-stack-feature.md"
-      ],
-      "agents": [
-        "./agents/deployment-engineer.md",
-        "./agents/performance-engineer.md",
-        "./agents/security-auditor.md",
-        "./agents/test-automator.md"
-      ],
-      "skills": []
-    },
-    {
-      "name": "git-pr-workflows",
-      "source": "./plugins/git-pr-workflows",
-      "description": "Git workflow automation, pull request enhancement, and team onboarding processes",
-      "version": "1.0.7",
-      "author": {
-        "name": "Wei Chen",
-        "url": "https://myclaude.readthedocs.io/en/latest/"
-      },
-      "homepage": "https://github.com/imewei/MyClaude",
-      "repository": "https://github.com/imewei/MyClaude",
-      "license": "MIT",
-      "keywords": [
-        "git",
-        "pull-request",
-        "workflow",
-        "onboarding",
-        "essential"
-      ],
-      "category": "workflows",
-      "strict": false,
-      "commands": [
-        "./commands/pr-enhance.md",
-        "./commands/onboard.md",
-        "./commands/git-workflow.md"
-      ],
-      "agents": [
-        "./agents/code-reviewer.md"
-      ]
-    },
-    {
-      "name": "hpc-computing",
-      "source": "./plugins/hpc-computing",
-      "description": "High-performance computing and numerical methods for scientific computing across Python, Julia/SciML, C++, and Rust",
-      "version": "1.0.7",
-      "author": {
-        "name": "Wei Chen",
-        "url": "https://myclaude.readthedocs.io/en/latest/"
-      },
-      "homepage": "https://github.com/imewei/MyClaude",
-      "repository": "https://github.com/imewei/MyClaude",
-      "license": "MIT",
-      "keywords": [
-        "hpc",
-        "high-performance-computing",
-        "numerical-methods",
-        "julia",
-        "sciml",
-        "scientific-computing"
-      ],
-      "category": "scientific",
-      "strict": false,
-      "agents": [
-        "./agents/hpc-numerical-coordinator.md"
-      ]
-    },
-    {
-      "name": "jax-implementation",
-      "source": "./plugins/jax-implementation",
-      "description": "JAX programming expertise for functional transformations (jit/vmap/pmap), Flax NNX, Optax, and JAX-based physics applications (quantum, CFD, MD)",
-      "version": "1.0.7",
-      "author": {
-        "name": "Wei Chen",
-        "url": "https://myclaude.readthedocs.io/en/latest/"
-      },
-      "homepage": "https://github.com/imewei/MyClaude",
-      "repository": "https://github.com/imewei/MyClaude",
-      "license": "MIT",
-      "keywords": [
-        "jax",
-        "flax",
-        "optax",
-        "functional-programming",
-        "quantum-computing",
-        "cfd",
-        "molecular-dynamics",
-        "scientific-computing"
-      ],
-      "category": "ai-ml",
-      "strict": false,
-      "agents": [
-        "./agents/jax-pro.md"
-      ]
-    },
-    {
-      "name": "javascript-typescript",
-      "source": "./plugins/javascript-typescript",
-      "description": "Modern JavaScript/TypeScript development with ES6+, async patterns, Node.js backends, and advanced TypeScript type systems",
-      "version": "1.0.7",
-      "author": {
-        "name": "Wei Chen",
-        "url": "https://myclaude.readthedocs.io/en/latest/"
-      },
-      "homepage": "https://github.com/imewei/MyClaude",
-      "repository": "https://github.com/imewei/MyClaude",
-      "license": "MIT",
-      "keywords": [
-        "javascript",
-        "typescript",
-        "nodejs",
-        "es6",
-        "async",
-        "backend",
-        "testing"
-      ],
-      "category": "development",
-      "strict": false,
-      "commands": [
-        "./commands/typescript-scaffold.md"
-      ],
-      "agents": [
-        "./agents/javascript-pro.md",
-        "./agents/typescript-pro.md"
-      ],
-      "skills": [
-        "./skills/javascript-testing-patterns",
-        "./skills/modern-javascript-patterns",
-        "./skills/nodejs-backend-patterns",
-        "./skills/typescript-advanced-types"
-      ]
-    },
-    {
-      "name": "julia-development",
-      "source": "./plugins/julia-development",
-      "description": "Comprehensive Julia development plugin with specialized agents for high-performance computing, package development, scientific machine learning (SciML), and Bayesian inference. Expert guidance for building robust Julia applications with optimization, monitoring, and deep learning capabilities.",
-      "version": "1.0.7",
-      "author": {
-        "name": "Wei Chen",
-        "url": "https://myclaude.readthedocs.io/en/latest/"
-      },
-      "homepage": "https://github.com/imewei/MyClaude",
-      "repository": "https://github.com/imewei/MyClaude",
-      "license": "MIT",
-      "keywords": [
-        "julia",
-        "scientific-computing",
-        "sciml",
-        "bayesian",
-        "hpc",
-        "high-performance-computing",
-        "differential-equations",
-        "ode",
-        "pde",
-        "sde",
-        "optimization",
-        "jump",
-        "turing",
-        "probabilistic-programming",
-        "mcmc",
-        "variational-inference",
-        "package-development",
-        "testing",
-        "ci-cd",
-        "multiple-dispatch",
-        "type-system",
-        "metaprogramming",
-        "performance-optimization",
-        "parallel-computing",
-        "gpu-computing",
-        "neural-pde",
-        "physics-informed-neural-networks",
-        "modeling-toolkit",
-        "catalyst",
-        "machine-learning",
-        "deep-learning",
-        "flux",
-        "visualization",
-        "plots",
-        "makie",
-        "interoperability",
-        "python-integration"
-      ],
-      "category": "scientific-computing",
-      "strict": false,
-      "commands": [
-        "./commands/sciml-setup.md",
-        "./commands/julia-optimize.md",
-        "./commands/julia-scaffold.md",
-        "./commands/julia-package-ci.md"
-      ],
-      "agents": [
-        "./agents/julia-pro.md"
-      ],
-      "skills": [
-        "./skills/core-julia-patterns",
-        "./skills/jump-optimization",
-        "./skills/visualization-patterns",
-        "./skills/interop-patterns",
-        "./skills/package-management",
-        "./skills/package-development-workflow",
-        "./skills/testing-patterns",
-        "./skills/compiler-patterns",
-        "./skills/web-development-julia",
-        "./skills/ci-cd-patterns",
-        "./skills/sciml-ecosystem",
-        "./skills/differential-equations",
-        "./skills/modeling-toolkit",
-        "./skills/optimization-patterns",
-        "./skills/neural-pde",
-        "./skills/catalyst-reactions",
-        "./skills/performance-tuning",
-        "./skills/parallel-computing",
-        "./skills/turing-model-design",
-        "./skills/mcmc-diagnostics",
-        "./skills/variational-inference-patterns"
-      ]
-    },
-    {
-      "name": "llm-application-dev",
-      "source": "./plugins/llm-application-dev",
-      "description": "LLM application development with prompt engineering, RAG implementation, vector databases, LangChain, and modern AI integration patterns for building intelligent applications",
-      "version": "1.0.7",
-      "author": {
-        "name": "Wei Chen",
-        "url": "https://myclaude.readthedocs.io/en/latest/"
-      },
-      "homepage": "https://github.com/imewei/MyClaude",
-      "repository": "https://github.com/imewei/MyClaude",
-      "license": "MIT",
-      "keywords": [
-        "llm",
-        "gpt",
-        "claude",
-        "openai",
-        "anthropic",
-        "prompt-engineering",
-        "rag",
-        "retrieval-augmented-generation",
-        "embeddings",
-        "vector-db",
-        "langchain",
-        "llamaindex",
-        "ai-integration",
-        "chatbot",
-        "semantic-search"
-      ],
-      "category": "development",
-      "strict": false,
-      "commands": [
-        "./commands/ai-assistant.md",
-        "./commands/langchain-agent.md",
-        "./commands/prompt-optimize.md"
-      ],
-      "agents": [
-        "./agents/ai-engineer.md",
-        "./agents/prompt-engineer.md"
-      ],
-      "skills": [
-        "./skills/prompt-engineering-patterns",
-        "./skills/rag-implementation",
-        "./skills/langchain-architecture",
-        "./skills/llm-evaluation"
-      ]
-    },
-    {
-      "name": "machine-learning",
-      "source": "./plugins/machine-learning",
-      "description": "Comprehensive machine learning and data science expertise: statistical analysis, classical ML algorithms, deep learning, production ML engineering, model deployment, MLOps, and data science workflows",
-      "version": "1.0.7",
-      "author": {
-        "name": "Wei Chen",
-        "url": "https://myclaude.readthedocs.io/en/latest/"
-      },
-      "homepage": "https://github.com/imewei/MyClaude",
-      "repository": "https://github.com/imewei/MyClaude",
-      "license": "MIT",
-      "keywords": [
-        "machine-learning",
-        "data-science",
-        "statistics",
-        "statistical-analysis",
-        "hypothesis-testing",
-        "bayesian-methods",
-        "regression",
-        "classification",
-        "clustering",
-        "feature-engineering",
-        "data-wrangling",
-        "visualization",
-        "pandas",
-        "scikit-learn",
-        "xgboost",
-        "data-cleaning",
-        "exploratory-analysis",
-        "dashboards",
-        "business-analytics",
-        "deep-learning",
-        "pytorch",
-        "tensorflow",
-        "distributed-training",
-        "model-deployment",
-        "mlops",
-        "model-serving",
-        "docker",
-        "kubernetes",
-        "fastapi",
-        "monitoring",
-        "drift-detection",
-        "ab-testing",
-        "model-optimization",
-        "quantization",
-        "hyperparameter-tuning",
-        "github-actions",
-        "terraform",
-        "infrastructure-as-code",
-        "ci-cd",
-        "mlflow",
-        "model-registry",
-        "data-drift",
-        "concept-drift",
-        "prometheus",
-        "grafana",
-        "automated-training"
-      ],
-      "category": "ai-ml",
-      "strict": false,
-      "commands": [],
-      "agents": [
-        "./agents/data-scientist.md",
-        "./agents/ml-engineer.md",
-        "./agents/mlops-engineer.md"
-      ],
-      "skills": [
-        "./skills/statistical-analysis-fundamentals",
-        "./skills/machine-learning-essentials",
-        "./skills/data-wrangling-communication",
-        "./skills/advanced-ml-systems",
-        "./skills/ml-engineering-production",
-        "./skills/model-deployment-serving",
-        "./skills/devops-ml-infrastructure"
-      ]
-    },
-    {
-      "name": "molecular-simulation",
-      "source": "./plugins/molecular-simulation",
-      "description": "Molecular dynamics and multiscale simulation with LAMMPS, GROMACS, ML force fields, and materials property prediction",
-      "version": "1.0.7",
-      "author": {
-        "name": "Wei Chen",
-        "url": "https://myclaude.readthedocs.io/en/latest/"
-      },
-      "homepage": "https://github.com/imewei/MyClaude",
-      "repository": "https://github.com/imewei/MyClaude",
-      "license": "MIT",
-      "keywords": [
-        "molecular-dynamics",
-        "simulation",
-        "lammps",
-        "gromacs",
-        "ml-force-fields",
-        "materials-science",
-        "scientific-computing"
-      ],
-      "category": "scientific",
-      "strict": false,
-      "agents": [
-        "./agents/simulation-expert.md"
-      ]
-    },
-    {
-      "name": "multi-platform-apps",
-      "source": "./plugins/multi-platform-apps",
-      "description": "Cross-platform application development coordinating web, iOS, Android, and desktop implementations",
-      "version": "1.0.7",
-      "author": {
-        "name": "Wei Chen",
-        "url": "https://myclaude.readthedocs.io/en/latest/"
-      },
-      "homepage": "https://github.com/imewei/MyClaude",
-      "repository": "https://github.com/imewei/MyClaude",
-      "license": "MIT",
-      "keywords": [
-        "cross-platform",
-        "mobile",
-        "web",
-        "desktop",
-        "react-native",
-        "flutter"
-      ],
-      "category": "development",
-      "strict": false,
-      "commands": [
-        "./commands/multi-platform.md"
-      ],
-      "agents": [
-        "./agents/mobile-developer.md",
-        "./agents/flutter-expert.md",
-        "./agents/ios-developer.md",
-        "./agents/frontend-developer.md",
-        "./agents/backend-architect.md",
-        "./agents/ui-ux-designer.md"
-      ]
-    },
-    {
-      "name": "observability-monitoring",
-      "source": "./plugins/observability-monitoring",
-      "description": "Metrics collection, logging infrastructure, distributed tracing, SLO implementation, and monitoring dashboards",
-      "version": "1.0.7",
-      "author": {
-        "name": "Wei Chen",
-        "url": "https://myclaude.readthedocs.io/en/latest/"
-      },
-      "homepage": "https://github.com/imewei/MyClaude",
-      "repository": "https://github.com/imewei/MyClaude",
-      "license": "MIT",
-      "keywords": [
-        "observability",
-        "monitoring",
-        "metrics",
-        "logging",
-        "tracing",
-        "slo",
-        "prometheus",
-        "grafana"
-      ],
-      "category": "operations",
-      "strict": false,
-      "commands": [
+        "./commands/code-analyze.md",
+        "./commands/commit.md",
+        "./commands/fix-commit-errors.md",
+        "./commands/github-assist.md",
+        "./commands/merge-all.md",
         "./commands/monitor-setup.md",
-        "./commands/slo-implement.md"
-      ],
-      "agents": [
-        "./agents/observability-engineer.md",
-        "./agents/performance-engineer.md",
-        "./agents/database-optimizer.md",
-        "./agents/network-engineer.md"
-      ],
-      "skills": [
-        "./skills/distributed-tracing",
-        "./skills/grafana-dashboards",
-        "./skills/prometheus-configuration",
-        "./skills/slo-implementation",
-        "./skills/airflow-scientific-workflows"
+        "./commands/onboard.md",
+        "./commands/slo-implement.md",
+        "./commands/workflow-automate.md"
       ]
     },
     {
-      "name": "python-development",
-      "source": "./plugins/python-development",
-      "description": "Python development with FastAPI, Django, async patterns, testing, packaging, and performance optimization",
-      "version": "1.0.7",
-      "author": {
-        "name": "Wei Chen",
-        "url": "https://myclaude.readthedocs.io/en/latest/"
-      },
-      "homepage": "https://github.com/imewei/MyClaude",
-      "repository": "https://github.com/imewei/MyClaude",
-      "license": "MIT",
-      "keywords": [
-        "python",
-        "fastapi",
-        "django",
-        "async",
-        "testing",
-        "packaging",
-        "performance"
-      ],
-      "category": "development",
-      "strict": false,
-      "commands": [
-        "./commands/python-scaffold.md"
-      ],
-      "agents": [
-        "./agents/python-pro.md",
-        "./agents/fastapi-pro.md",
-        "./agents/django-pro.md"
-      ],
-      "skills": [
-        "./skills/async-python-patterns",
-        "./skills/python-packaging",
-        "./skills/python-performance-optimization",
-        "./skills/python-testing-patterns",
-        "./skills/uv-package-manager"
-      ]
-    },
-    {
-      "name": "research-methodology",
-      "source": "./plugins/research-methodology",
-      "description": "Research intelligence, methodology design, literature analysis, and evidence-based insights for scientific investigation",
-      "version": "1.0.7",
-      "author": {
-        "name": "Wei Chen",
-        "url": "https://myclaude.readthedocs.io/en/latest/"
-      },
-      "homepage": "https://github.com/imewei/MyClaude",
-      "repository": "https://github.com/imewei/MyClaude",
-      "license": "MIT",
-      "keywords": [
-        "research",
-        "methodology",
-        "literature-review",
-        "scientific-research",
-        "evidence-based"
-      ],
-      "category": "research",
-      "strict": false,
-      "agents": [
-        "./agents/research-intelligence.md"
-      ]
-    },
-    {
-      "name": "statistical-physics",
-      "source": "./plugins/statistical-physics",
-      "description": "Statistical physics and correlation function analysis for experimental data and simulations",
-      "version": "1.0.7",
-      "author": {
-        "name": "Wei Chen",
-        "url": "https://myclaude.readthedocs.io/en/latest/"
-      },
-      "homepage": "https://github.com/imewei/MyClaude",
-      "repository": "https://github.com/imewei/MyClaude",
-      "license": "MIT",
-      "keywords": [
-        "statistical-physics",
-        "correlation-functions",
-        "fft-analysis",
-        "experimental-data",
-        "scientific-computing"
-      ],
-      "category": "scientific",
-      "strict": false,
-      "agents": [
-        "./agents/correlation-function-expert.md"
-      ]
-    },
-    {
-      "name": "systems-programming",
-      "source": "./plugins/systems-programming",
-      "description": "Systems programming with Rust, C, C++, and Go for high-performance, low-level, and systems-level development",
-      "version": "1.0.7",
-      "author": {
-        "name": "Wei Chen",
-        "url": "https://myclaude.readthedocs.io/en/latest/"
-      },
-      "homepage": "https://github.com/imewei/MyClaude",
-      "repository": "https://github.com/imewei/MyClaude",
-      "license": "MIT",
-      "keywords": [
-        "systems-programming",
-        "rust",
-        "c",
-        "cpp",
-        "golang",
-        "performance",
-        "low-level"
-      ],
-      "category": "development",
-      "strict": false,
-      "commands": [
-        "./commands/rust-project.md"
-      ],
-      "agents": [
-        "./agents/rust-pro.md",
-        "./agents/c-pro.md",
-        "./agents/cpp-pro.md",
-        "./agents/golang-pro.md"
-      ]
-    },
-    {
-      "name": "quality-engineering",
-      "source": "./plugins/quality-engineering",
-      "description": "Comprehensive quality assurance, validation, and correctness verification tools",
-      "version": "1.0.7",
+      "name": "quality-suite",
+      "source": "./plugins/quality-suite",
+      "description": "Code quality, testing, debugging, and modernization tools",
+      "version": "2.1.0",
       "author": {
         "name": "Wei Chen",
         "url": "https://myclaude.readthedocs.io/en/latest/"
@@ -1095,29 +135,36 @@
       "license": "MIT",
       "keywords": [
         "quality",
-        "validation",
-        "verification",
-        "lint",
-        "correctness",
-        "assurance",
-        "qa"
+        "testing",
+        "debugging",
+        "maintenance"
       ],
       "category": "quality",
       "strict": false,
-      "commands": [
-        "./commands/double-check.md",
-        "./commands/lint-plugins.md"
+      "agents": [
+        "./agents/debugger-pro.md",
+        "./agents/documentation-expert.md",
+        "./agents/quality-specialist.md"
       ],
-      "skills": [
-        "./skills/comprehensive-validation-framework",
-        "./skills/plugin-syntax-validator"
+      "commands": [
+        "./commands/adopt-code.md",
+        "./commands/code-explain.md",
+        "./commands/deps.md",
+        "./commands/docs.md",
+        "./commands/double-check.md",
+        "./commands/fix-imports.md",
+        "./commands/refactor-clean.md",
+        "./commands/run-all-tests.md",
+        "./commands/smart-debug.md",
+        "./commands/tech-debt.md",
+        "./commands/test-generate.md"
       ]
     },
     {
-      "name": "unit-testing",
-      "source": "./plugins/unit-testing",
-      "description": "Comprehensive test automation, generation, and execution with iterative fixing until 100% pass rate",
-      "version": "1.0.7",
+      "name": "science-suite",
+      "source": "./plugins/science-suite",
+      "description": "Scientific computing, HPC, simulation, and data analysis workflows",
+      "version": "2.1.0",
       "author": {
         "name": "Wei Chen",
         "url": "https://myclaude.readthedocs.io/en/latest/"
@@ -1126,22 +173,24 @@
       "repository": "https://github.com/imewei/MyClaude",
       "license": "MIT",
       "keywords": [
-        "testing",
-        "unit-tests",
-        "python",
-        "javascript",
-        "automation",
-        "test-fixing"
+        "science",
+        "hpc",
+        "simulation",
+        "data-analysis"
       ],
-      "category": "testing",
+      "category": "science",
       "strict": false,
-      "commands": [
-        "./commands/test-generate.md",
-        "./commands/run-all-tests.md"
-      ],
       "agents": [
-        "./agents/test-automator.md",
-        "./agents/debugger.md"
+        "./agents/jax-pro.md",
+        "./agents/julia-pro.md",
+        "./agents/statistical-physicist.md",
+        "./agents/simulation-expert.md",
+        "./agents/ml-expert.md",
+        "./agents/research-expert.md",
+        "./agents/python-pro.md",
+        "./agents/ai-engineer.md",
+        "./agents/prompt-engineer.md",
+        "./agents/neural-network-master.md"
       ]
     }
   ]
