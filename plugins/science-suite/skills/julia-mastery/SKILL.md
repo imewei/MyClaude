@@ -42,6 +42,45 @@ Memory optimization, type stability, and benchmarking.
 ### [Package Development](./package-development-workflow/SKILL.md)
 Scaffolding, testing, and CI/CD for Julia packages.
 
+### [Variational Inference Patterns](./variational-inference-patterns/SKILL.md)
+ADVI and approximate inference with Turing.jl.
+
+### [Optimization Patterns](./optimization-patterns/SKILL.md)
+Non-linear optimization and parameter estimation with Optimization.jl.
+
+### [Jump Optimization](./jump-optimization/SKILL.md)
+Mathematical programming (LP, QP, MIP) with JuMP.jl.
+
+### [MCMC Diagnostics](./mcmc-diagnostics/SKILL.md)
+Convergence checking and chain analysis.
+
+### [Testing Patterns](./testing-patterns/SKILL.md)
+Robust testing strategies with ReTestItems.jl and Aqua.jl.
+
+### [Package Management](./package-management/SKILL.md)
+Environment management and Pkg.jl workflows.
+
+### [Catalyst Reactions](./catalyst-reactions/SKILL.md)
+Chemical reaction network modeling.
+
+### [Visualization Patterns](./visualization-patterns/SKILL.md)
+Data visualization with Makie.jl and Plots.jl.
+
+### [Web Development](./web-development-julia/SKILL.md)
+Building scientific web services with Genie.jl/Oxygen.jl.
+
+### [Interop Patterns](./interop-patterns/SKILL.md)
+Calling Python and R from Julia.
+
+### [CI/CD Patterns](./ci-cd-patterns/SKILL.md)
+GitHub Actions for Julia packages.
+
+### [Compiler Patterns](./compiler-patterns/SKILL.md)
+PackageCompiler.jl and system images.
+
+### [Parallel Computing](./parallel-computing/SKILL.md)
+Multi-threading and distributed computing patterns.
+
 ## 1. Multiple Dispatch & Type System
 
 - **Multiple Dispatch**: Design functions that specialize based on all argument types.
