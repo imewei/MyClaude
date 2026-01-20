@@ -16,6 +16,32 @@ For classical ML workflows, MLOps, and deployment, delegate to the expert agent:
   - *Location*: `plugins/science-suite/agents/ml-expert.md`
   - *Capabilities*: Pipeline orchestration, Model Serving, A/B Testing, and Data Engineering.
 
+## Core Skills
+
+### [Machine Learning Essentials](./machine-learning-essentials/SKILL.md)
+Foundational algorithms: Linear models, Trees, and Ensembles.
+
+### [Advanced ML Systems](./advanced-ml-systems/SKILL.md)
+Boosting (XGBoost/LightGBM) and deep tabular models.
+
+### [Data Wrangling & Communication](./data-wrangling-communication/SKILL.md)
+Preprocessing, feature engineering, and reporting.
+
+### [Statistical Analysis Fundamentals](./statistical-analysis-fundamentals/SKILL.md)
+Hypothesis testing and uncertainty quantification in ML.
+
+### [ML Pipeline Workflow](./ml-pipeline-workflow/SKILL.md)
+Orchestration and reproducibility with Airflow/Dagster.
+
+### [ML Engineering & Production](./ml-engineering-production/SKILL.md)
+Serialization, scaling, and high-performance inference.
+
+### [Model Deployment & Serving](./model-deployment-serving/SKILL.md)
+FastAPI, Triton, and cloud-native deployment.
+
+### [DevOps & ML Infrastructure](./devops-ml-infrastructure/SKILL.md)
+Docker, Kubernetes, and cluster management.
+
 ## 1. Core Machine Learning (Tabular Data)
 
 ### Algorithm Selection

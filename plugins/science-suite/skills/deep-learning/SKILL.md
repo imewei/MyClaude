@@ -36,6 +36,9 @@ Quantization, pruning, knowledge distillation, and efficient inference.
 ### [Research Paper Implementation](./research-paper-implementation/SKILL.md)
 Translating academic papers into working code in JAX or PyTorch.
 
+### [Deep Learning Experimentation](./deep-learning-experimentation/SKILL.md)
+Systematic workflows for training, ablation, and hyperparameter tuning.
+
 ## Frameworks
 
 - **PyTorch**: Standard for research and production.

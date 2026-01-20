@@ -30,6 +30,18 @@ Self-propelled particles, MIPS, and collective behavior.
 ### [Correlation Analysis](./data-analysis/SKILL.md)
 FFT-based analysis, structure factors, and dynamic heterogeneity.
 
+### [Correlation Math Foundations](./correlation-math-foundations/SKILL.md)
+Mathematical basis for two-point and higher-order correlation functions.
+
+### [Correlation Physical Systems](./correlation-physical-systems/SKILL.md)
+S(q), g(r), and χ₄(t) across different physical states.
+
+### [Correlation Computational Methods](./correlation-computational-methods/SKILL.md)
+O(N log N) algorithms and multi-tau implementation.
+
+### [Correlation Experimental Data](./correlation-experimental-data/SKILL.md)
+Extracting physical parameters from DLS, SAXS, and microscopy.
+
 ## 1. Equilibrium Statistical Mechanics
 
 - **Ensembles**: Microcanonical (NVE), Canonical (NVT), Grand Canonical (μVT).
