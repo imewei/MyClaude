@@ -2,8 +2,14 @@ import os
 import json
 import re
 
-PLUGIN_ROOT = "plugins"
-DOCS_ROOT = "docs/suites"
+# Calculate project root relative to this script
+# Script is in docs/scripts/regenerate_docs.py
+# Root is ../../ from here
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+PROJECT_ROOT = os.path.abspath(os.path.join(SCRIPT_DIR, "../../"))
+
+PLUGIN_ROOT = os.path.join(PROJECT_ROOT, "plugins")
+DOCS_ROOT = os.path.join(PROJECT_ROOT, "docs/suites")
 
 SUITES = [
     "agent-core",
