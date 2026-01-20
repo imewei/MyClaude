@@ -9,19 +9,23 @@ This skill documents the integrated MCP servers available across MyClaude plugin
 
 ## Available MCP Servers
 
-### Agent Core Suite
+These servers are provided by official Claude Code plugins and are available for use in MyClaude commands.
+
+### Agent Core Suite Commands
 
 | Server | Purpose | Command |
 |--------|---------|---------|
 | **sequential-thinking** | Chain-of-thought reasoning with revision/branching | `/ultra-think` (native implementation) |
 | **context7** | Library documentation retrieval | `/docs-lookup` |
 
-### Infrastructure & Ops Suite
+### Infrastructure & Ops Suite Commands
 
 | Server | Purpose | Command |
 |--------|---------|---------|
 | **serena** | Semantic code analysis & symbol navigation | `/code-analyze` |
 | **github** | GitHub API operations (issues, PRs, repos) | `/github-assist` |
+
+> **Note**: MCP servers are provided by official Claude plugins. Commands here use `allowed-tools` to pre-authorize access to these existing servers.
 
 ## Quick Reference
 
