@@ -190,24 +190,43 @@ def _find_convergence_epoch(values: List[float], metric_name: str) -> int:
     return len(values) - 1
 
 
-def print_comparison_report(configs: Dict[str, Dict],
-                           metrics_dict: Dict[str, Dict[str, List[float]]],
-                           primary_metric: str = "val_loss"):
-    """Print comprehensive comparison report."""
 
-    print("\n" + "="*80)
-    print("TRAINING RUN COMPARISON REPORT")
-    print("="*80)
+def print_comparison_report(configs: Dict[str, Dict],
+                            metrics_dict: Dict[str, Dict[str, List[float]]],
+                            primary_metric: str = "val_loss"):
+    """Print comprehensive comparison report."""
+    _print_header()
 
     run_names = list(configs.keys())
     print(f"\nComparing {len(run_names)} runs: {', '.join(run_names)}")
 
-    # Configuration comparison
+    config_comparison = compare_configs(configs)
+    _print_config_comparison(run_names, config_comparison)
+
+    print("\n" + "-"*80)
+    print(f"METRIC COMPARISON: {primary_metric}")
+    print("-"*80)
+
+    metric_comparison = compare_metrics(metrics_dict, primary_metric)
+    _print_metric_comparison(run_names, metric_comparison, primary_metric)
+    
+    _print_summary(run_names, config_comparison, metric_comparison, primary_metric)
+    
+    print("\n" + "="*80 + "\n")
+
+
+def _print_header():
+    """Print report header."""
+    print("\n" + "="*80)
+    print("TRAINING RUN COMPARISON REPORT")
+    print("="*80)
+
+
+def _print_config_comparison(run_names, config_comparison):
+    """Print configuration differences table."""
     print("\n" + "-"*80)
     print("CONFIGURATION DIFFERENCES:")
     print("-"*80)
-
-    config_comparison = compare_configs(configs)
 
     if config_comparison["different"]:
         print(f"\n{'Parameter':<30} {' '.join(f'{name:<15}' for name in run_names)}")
@@ -223,13 +242,9 @@ def print_comparison_report(configs: Dict[str, Dict],
         print(f"\n📋 Common parameters: {len(config_comparison['common'])} "
               f"(use --verbose to see all)")
 
-    # Metric comparison
-    print("\n" + "-"*80)
-    print(f"METRIC COMPARISON: {primary_metric}")
-    print("-"*80)
 
-    metric_comparison = compare_metrics(metrics_dict, primary_metric)
-
+def _print_metric_comparison(run_names, metric_comparison, primary_metric):
+    """Print metric comparison table."""
     print(f"\n{'Run':<20} {'Final':>12} {'Best':>12} {'Mean±Std':>15} {'Converged':>12}")
     print("-"*80)
 
@@ -247,16 +262,21 @@ def print_comparison_report(configs: Dict[str, Dict],
 
         # Add indicator for best run
         indicator = ""
-        if stats['best'] == min(s['best'] for s in metric_comparison.values()
-                               if s.get('available', False)) and "loss" in primary_metric.lower():
-            indicator = " 🏆"
-        elif stats['best'] == max(s['best'] for s in metric_comparison.values()
-                                 if s.get('available', False)) and "loss" not in primary_metric.lower():
-            indicator = " 🏆"
+        is_loss = "loss" in primary_metric.lower()
+        if is_loss:
+            best_val = min(s['best'] for s in metric_comparison.values() if s.get('available', False))
+            if stats['best'] == best_val:
+                indicator = " 🏆"
+        else:
+            best_val = max(s['best'] for s in metric_comparison.values() if s.get('available', False))
+            if stats['best'] == best_val:
+                indicator = " 🏆"
 
         print(f"{run_name:<20} {final:>12} {best:>12} {mean_std:>15} {converged:>12}{indicator}")
 
-    # Summary and recommendations
+
+def _print_summary(run_names, config_comparison, metric_comparison, primary_metric):
+    """Print summary and recommendations."""
     print("\n" + "="*80)
     print("SUMMARY & RECOMMENDATIONS:")
     print("="*80)
@@ -295,12 +315,11 @@ def print_comparison_report(configs: Dict[str, Dict],
     # Check for instability
     for run_name, stats in metric_comparison.items():
         if stats.get("available"):
-            # High variance indicates instability
+            # High variance indicates instability (std > 10% of mean magnitude)
             if stats['std'] > 0.1 * abs(stats['mean']):
                 print(f"   ⚠️  {run_name}: High variance in {primary_metric}")
                 print(f"      → Training may be unstable, consider reducing learning rate")
 
-    print("\n" + "="*80 + "\n")
 
 
 def main():

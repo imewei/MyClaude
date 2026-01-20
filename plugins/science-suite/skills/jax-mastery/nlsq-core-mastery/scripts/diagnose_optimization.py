@@ -20,6 +20,7 @@ Provides detailed convergence analysis, warnings, and recommendations.
 import jax.numpy as jnp
 
 
+
 def diagnose_result(result, verbose=True):
     """
     Comprehensive diagnostics for optimization result.
@@ -31,7 +32,6 @@ def diagnose_result(result, verbose=True):
     Returns:
         dict: Diagnostic metrics and warnings
     """
-
     diagnostics = {
         'warnings': [],
         'recommendations': [],
@@ -43,7 +43,19 @@ def diagnose_result(result, verbose=True):
         print("NLSQ OPTIMIZATION DIAGNOSTICS")
         print("=" * 70)
 
-    # 1. Convergence Status
+    _analyze_convergence(result, diagnostics, verbose)
+    _analyze_cost_function(result, diagnostics, verbose)
+    _analyze_gradient(result, diagnostics, verbose)
+    _analyze_jacobian(result, diagnostics, verbose)
+    _analyze_parameters(result, diagnostics, verbose)
+    _analyze_residuals(result, diagnostics, verbose)
+    _print_summary(diagnostics, verbose)
+
+    return diagnostics
+
+
+def _analyze_convergence(result, diagnostics, verbose):
+    """Analyze convergence status."""
     if verbose:
         print("\n1. Convergence Status")
         print(f"   Success: {result.success}")
@@ -57,7 +69,9 @@ def diagnose_result(result, verbose=True):
         diagnostics['warnings'].append("Optimization did not converge")
         diagnostics['recommendations'].append("See troubleshooting section below")
 
-    # 2. Cost Function Analysis
+
+def _analyze_cost_function(result, diagnostics, verbose):
+    """Analyze cost function reduction."""
     if verbose:
         print("\n2. Cost Function")
 
@@ -69,7 +83,6 @@ def diagnose_result(result, verbose=True):
         print(f"   Final cost:   {result.cost:.6e}")
         print(f"   Reduction:    {cost_reduction:.2f}%")
 
-    # Assess cost reduction quality
     if cost_reduction < 10:
         diagnostics['warnings'].append(f"Poor cost reduction ({cost_reduction:.1f}%)")
         diagnostics['recommendations'].extend([
@@ -83,7 +96,9 @@ def diagnose_result(result, verbose=True):
         if verbose:
             print("   ✓ Excellent cost reduction")
 
-    # 3. Gradient Analysis
+
+def _analyze_gradient(result, diagnostics, verbose):
+    """Analyze gradient norm."""
     if verbose:
         print("\n3. Gradient")
 
@@ -110,7 +125,9 @@ def diagnose_result(result, verbose=True):
         if verbose:
             print("   ✓ Small gradient (near critical point)")
 
-    # 4. Jacobian Conditioning
+
+def _analyze_jacobian(result, diagnostics, verbose):
+    """Analyze Jacobian condition number."""
     if verbose:
         print("\n4. Jacobian Conditioning")
 
@@ -144,14 +161,15 @@ def diagnose_result(result, verbose=True):
         if verbose:
             print("   ✓ Well-conditioned")
 
-    # 5. Parameter Analysis
+
+def _analyze_parameters(result, diagnostics, verbose):
+    """Analyze parameter values and bounds."""
     if verbose:
         print("\n5. Parameters")
         print(f"   Values: {result.x}")
 
     diagnostics['metrics']['parameters'] = [float(p) for p in result.x]
 
-    # Check for parameters at bounds
     if hasattr(result, 'active_mask'):
         active = result.active_mask
         if jnp.any(active != 0):
@@ -162,7 +180,9 @@ def diagnose_result(result, verbose=True):
                 print("   ⚠️  WARNING: Some parameters at bounds")
                 print(f"      Active constraints: {at_bounds.tolist()}")
 
-    # 6. Residual Analysis
+
+def _analyze_residuals(result, diagnostics, verbose):
+    """Analyze residuals for bias and scale."""
     if verbose:
         print("\n6. Residuals")
 
@@ -191,27 +211,32 @@ def diagnose_result(result, verbose=True):
         if verbose:
             print("   ⚠️  WARNING: Systematic bias in residuals")
 
-    # 7. Summary
-    if verbose:
-        print("\n" + "=" * 70)
-        print("SUMMARY")
-        print("=" * 70)
 
-        if not diagnostics['warnings']:
-            print("✓ No issues detected - optimization looks good!")
-        else:
-            print(f"⚠️  {len(diagnostics['warnings'])} warning(s) detected:\n")
-            for i, warning in enumerate(diagnostics['warnings'], 1):
-                print(f"{i}. {warning}")
+def _print_summary(diagnostics, verbose):
+    """Print overall diagnostics summary."""
+    if not verbose:
+        return
 
-            if diagnostics['recommendations']:
-                print("\nRecommendations:")
-                for rec in set(diagnostics['recommendations']):  # Remove duplicates
-                    print(f"  • {rec}")
+    print("\n" + "=" * 70)
+    print("SUMMARY")
+    print("=" * 70)
 
-        print("=" * 70)
+    if not diagnostics['warnings']:
+        print("✓ No issues detected - optimization looks good!")
+    else:
+        print(f"⚠️  {len(diagnostics['warnings'])} warning(s) detected:\n")
+        for i, warning in enumerate(diagnostics['warnings'], 1):
+            print(f"{i}. {warning}")
 
-    return diagnostics
+        if diagnostics['recommendations']:
+            print("\nRecommendations:")
+            # Use set to remove duplicates, but need to preserve order roughly or just sort
+            unique_recs = sorted(list(set(diagnostics['recommendations'])))
+            for rec in unique_recs:
+                print(f"  • {rec}")
+
+    print("=" * 70)
+
 
 
 def troubleshoot_nonconvergence(model, x, y, p0, result):
