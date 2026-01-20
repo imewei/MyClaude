@@ -144,9 +144,9 @@ validate: ## Validate plugin metadata and configuration
 test: ## Run tests with pytest
 	@echo "Running tests..."
 	@if command -v uv >/dev/null 2>&1; then \
-		uv run pytest tests/ -v; \
+		uv run pytest tools/tests/ -v; \
 	elif command -v pytest >/dev/null 2>&1; then \
-		pytest tests/ -v || true; \
+		pytest tools/tests/ -v || true; \
 	else \
 		echo "pytest not installed. Install with: pip install pytest"; \
 	fi
@@ -154,9 +154,9 @@ test: ## Run tests with pytest
 test-coverage: ## Run tests with coverage report
 	@echo "Running tests with coverage..."
 	@if command -v uv >/dev/null 2>&1; then \
-		uv run pytest tests/ --cov=. --cov-report=html --cov-report=term; \
+		uv run pytest tools/tests/ --cov=. --cov-report=html --cov-report=term; \
 	elif command -v pytest >/dev/null 2>&1; then \
-		pytest tests/ --cov=. --cov-report=html --cov-report=term; \
+		pytest tools/tests/ --cov=. --cov-report=html --cov-report=term; \
 		echo "Coverage report: htmlcov/index.html"; \
 	else \
 		echo "pytest-cov not installed. Install with: pip install pytest-cov"; \

@@ -37,12 +37,11 @@ class TestCategoryPages(unittest.TestCase):
     def test_all_category_pages_exist(self):
         """Test that all required category pages are created"""
         expected_categories = [
-            "scientific-computing.rst",
-            "development.rst",
-            "devops.rst",
-            "ai-ml.rst",
-            "tools.rst",
-            "orchestration.rst",
+            "core.rst",
+            "engineering.rst",
+            "infrastructure.rst",
+            "quality.rst",
+            "science.rst",
         ]
 
         for category_file in expected_categories:
@@ -55,7 +54,7 @@ class TestCategoryPages(unittest.TestCase):
     def test_category_page_structure(self):
         """Test that category pages have required RST structure"""
         # Test scientific-computing as example
-        category_file = self.categories_dir / "scientific-computing.rst"
+        category_file = self.categories_dir / "science.rst"
 
         if not category_file.exists():
             self.skipTest("Category page not yet generated")
@@ -64,7 +63,7 @@ class TestCategoryPages(unittest.TestCase):
 
         # Check for required sections
         required_elements = [
-            "Scientific Computing",  # Title
+            "Science Suite",  # Title
             ".. toctree::",  # TOC tree directive
             ":maxdepth:",  # TOC tree option
         ]
@@ -78,7 +77,7 @@ class TestCategoryPages(unittest.TestCase):
 
     def test_category_toctree_includes_plugins(self):
         """Test that category TOC tree includes plugin references"""
-        category_file = self.categories_dir / "scientific-computing.rst"
+        category_file = self.categories_dir / "science.rst"
 
         if not category_file.exists():
             self.skipTest("Category page not yet generated")
@@ -87,8 +86,8 @@ class TestCategoryPages(unittest.TestCase):
 
         # Should reference plugins in this category
         expected_plugins = [
-            "/plugins/julia-development",
-            "/plugins/data-visualization",
+            "/suites/science-suite",
+            "/suites/science-suite",
         ]
 
         for plugin_ref in expected_plugins:
@@ -117,7 +116,7 @@ class TestCategoryPages(unittest.TestCase):
 
         # Check for navigation structure
         required_elements = [
-            "Plugin Marketplace Documentation",
+            "Claude Code Plugin Marketplace",
             ".. toctree::",
             ":maxdepth:",
             "categories/",  # Should reference category pages
@@ -171,7 +170,7 @@ class TestCategoryPages(unittest.TestCase):
 
             # Verify category HTML files were generated
             build_path = Path(build_dir)
-            category_html = build_path / "categories" / "scientific-computing.html"
+            category_html = build_path / "categories" / "science.html"
 
             if category_html.exists():
                 self.assertTrue(
@@ -195,9 +194,9 @@ class TestCategoryPages(unittest.TestCase):
 
         # Check that categories are included
         category_references = [
-            "categories/scientific-computing",
-            "categories/development",
-            "categories/devops",
+            "categories/core",
+            "categories/engineering",
+            "categories/infrastructure",
         ]
 
         for ref in category_references:

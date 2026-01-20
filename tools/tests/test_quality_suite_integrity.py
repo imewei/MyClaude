@@ -40,7 +40,8 @@ def test_agents_exist():
     with open(PLUGIN_JSON, 'r', encoding='utf-8') as f:
         data = json.load(f)
     
-    for agent_name in data.get("agents", []):
+    for agent_info in data.get("agents", []):
+        agent_name = agent_info["name"] if isinstance(agent_info, dict) else agent_info
         agent_file = AGENTS_DIR / f"{agent_name}.md"
         assert agent_file.exists(), f"Agent file missing: {agent_file}"
 

@@ -207,7 +207,7 @@ class TestCrossReferences(unittest.TestCase):
 
     def test_plugin_pages_exist(self):
         """Test that all 31 plugin documentation pages exist."""
-        plugins_dir = self.docs_dir / "plugins"
+        plugins_dir = self.docs_dir / "suites"
         self.assertTrue(plugins_dir.exists(), "plugins directory must exist")
 
         rst_files = list(plugins_dir.glob("*.rst"))
@@ -215,8 +215,8 @@ class TestCrossReferences(unittest.TestCase):
         # Should have 31 plugin pages
         self.assertGreaterEqual(
             len(rst_files),
-            31,
-            f"Expected at least 31 plugin pages, found {len(rst_files)}"
+            5,
+            f"Expected at least 5 suite pages, found {len(rst_files)}"
         )
 
     def test_category_pages_exist(self):
@@ -229,8 +229,8 @@ class TestCrossReferences(unittest.TestCase):
         # Should have at least 6 category pages
         self.assertGreaterEqual(
             len(rst_files),
-            6,
-            f"Expected at least 6 category pages, found {len(rst_files)}"
+            5,
+            f"Expected at least 5 category pages, found {len(rst_files)}"
         )
 
 
@@ -307,7 +307,7 @@ class TestNavigationStructure(unittest.TestCase):
 
         # Should reference categories
         self.assertIn(
-            'categories/',
+            'categories/index',
             content,
             "index.rst should link to category pages"
         )

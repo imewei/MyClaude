@@ -7,6 +7,7 @@ sys.path.insert(0, os.path.abspath('_ext'))
 project = 'Claude Code Plugin Marketplace'
 copyright = '2026, DeepMind & Anthropic'
 author = 'DeepMind & Anthropic'
+version = '2.0'
 release = '2.0.0'
 
 # General configuration
@@ -27,3 +28,7 @@ html_static_path = ['_static']
 html_title = "Claude Code Plugins"
 
 # Custom styling could go here, but we'll stick to defaults for now
+
+# Multi-version configuration
+smv_tag_whitelist = r'^v\d+\.\d+\.\d+$'
+smv_branch_whitelist = r'^main$'

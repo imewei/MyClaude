@@ -6,6 +6,17 @@ This system has been consolidated into 5 powerful suites to streamline your deve
 
 .. toctree::
    :maxdepth: 2
+   :caption: Categories
+
+   categories/index
+   categories/core
+   categories/engineering
+   categories/infrastructure
+   categories/quality
+   categories/science
+
+.. toctree::
+   :maxdepth: 2
    :caption: Suites
 
    suites/agent-core
@@ -21,6 +32,19 @@ This system has been consolidated into 5 powerful suites to streamline your deve
    reference/agents
    reference/commands
    reference/cheatsheet
+   integration-map
+
+.. toctree::
+   :maxdepth: 1
+   :caption: Supplementary
+
+   glossary
+   changelog
+   guides/scientific-workflows
+   guides/development-workflows
+   guides/devops-workflows
+   guides/infrastructure-workflows
+   guides/integration-patterns
 
 Indices and tables
 ==================
