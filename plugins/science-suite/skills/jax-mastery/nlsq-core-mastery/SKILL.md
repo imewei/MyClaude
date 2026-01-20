@@ -1,6 +1,6 @@
 ---
 name: nlsq-core-mastery
-version: "2.2.0"
+version: "2.2.1"
 description: Master NLSQ library for high-performance curve fitting (150-270x faster than SciPy). Use when fitting >10K points, parameter estimation, robust optimization, streaming datasets (100M+ points), or migrating from SciPy.
 sources:
   - https://github.com/imewei/NLSQ
@@ -9,6 +9,14 @@ sources:
 ---
 
 # NLSQ Core Mastery
+
+## Expert Agent
+
+For complex optimization problems, GPU acceleration setup, and large-scale curve fitting, delegate to the expert agent:
+
+- **`jax-pro`**: Unified specialist for Nonlinear Least Squares (NLSQ) and Core JAX optimization.
+  - *Location*: `plugins/science-suite/agents/jax-pro.md`
+  - *Capabilities*: Large-scale fitting (100M+ points), hybrid streaming optimization, and custom loss functions.
 
 ## Workflow Selection (v0.6.6)
 

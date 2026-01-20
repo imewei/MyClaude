@@ -1,6 +1,6 @@
 ---
 name: numpyro-core-mastery
-version: "2.1.0"
+version: "2.1.1"
 maturity: "5-Expert"
 specialization: Bayesian Inference with JAX
 description: Master NumPyro for production Bayesian inference, MCMC sampling (NUTS/HMC), variational inference (SVI), hierarchical models, and uncertainty quantification. Use when building probabilistic models with numpyro.sample(), running MCMC with NUTS/HMC, implementing SVI with AutoGuides, diagnosing convergence (R-hat, ESS, divergences), or deploying production Bayesian pipelines.
@@ -9,6 +9,14 @@ description: Master NumPyro for production Bayesian inference, MCMC sampling (NU
 # NumPyro Core Mastery
 
 Production Bayesian inference with JAX-accelerated probabilistic programming.
+
+## Expert Agent
+
+For complex Bayesian modeling, hierarchical inference, and probabilistic programming tasks, delegate to the expert agent:
+
+- **`jax-pro`**: Unified specialist for Bayesian inference (NumPyro), MCMC diagnostics, and differentiable physics integration.
+  - *Location*: `plugins/science-suite/agents/jax-pro.md`
+  - *Capabilities*: Hierarchical models, NUTS/HMC tuning, SVI, and convergence diagnostics (R-hat, ESS).
 
 ---
 
@@ -223,4 +231,4 @@ with reparam(config={'theta': LocScaleReparam()}):
 
 ---
 
-**Version**: 1.0.5
+**Version**: 1.0.6
