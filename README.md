@@ -1,9 +1,9 @@
 # MyClaude
 
 [![Plugins](https://img.shields.io/badge/Plugins-31-blue.svg)](https://myclaude.readthedocs.io/en/latest/plugins/)
-[![Agents](https://img.shields.io/badge/Agents-71-green.svg)](AGENTS_LIST.md)
-[![Commands](https://img.shields.io/badge/Commands-49-orange.svg)](COMMANDS_LIST.md)
-[![Skills](https://img.shields.io/badge/Skills-117-purple.svg)](PLUGIN_CHEATSHEET.md)
+[![Agents](https://img.shields.io/badge/Agents-71-green.svg)](docs/reference/agents.md)
+[![Commands](https://img.shields.io/badge/Commands-49-orange.svg)](docs/reference/commands.md)
+[![Skills](https://img.shields.io/badge/Skills-117-purple.svg)](docs/reference/cheatsheet.md)
 [![Tools](https://img.shields.io/badge/Tools-16-teal.svg)](docs/tools-reference.rst)
 [![Version](https://img.shields.io/badge/Version-2.1.0-red.svg)](https://github.com/imewei/MyClaude)
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
@@ -229,9 +229,9 @@ See [Tools Reference](docs/tools-reference.rst) for complete documentation.
 
 ## Documentation
 
-- **[Plugin Cheatsheet](PLUGIN_CHEATSHEET.md)** - Quick reference for all plugins
-- **[Complete Agents List](AGENTS_LIST.md)** - Catalog of all 71 agents
-- **[Complete Commands List](COMMANDS_LIST.md)** - Catalog of all 48 commands
+- **[Plugin Cheatsheet](docs/reference/cheatsheet.md)** - Quick reference for all plugins
+- **[Complete Agents List](docs/reference/agents.md)** - Catalog of all 71 agents
+- **[Complete Commands List](docs/reference/commands.md)** - Catalog of all 48 commands
 - **[Tools Reference](docs/tools-reference.rst)** - 16 utility scripts documentation
 - **[API Reference](docs/api/index.rst)** - Python tools API documentation
 - **[Full Documentation](https://myclaude.readthedocs.io/en/latest/)** - Comprehensive guides and API references

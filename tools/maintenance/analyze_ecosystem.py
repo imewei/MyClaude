@@ -158,7 +158,8 @@ if __name__ == "__main__":
 
     report = analyze_ecosystem(repo_root)
 
-    output_path = repo_root / "ecosystem_capabilities.json"
+    output_path = repo_root / "tools" / "maintenance" / "output" / "ecosystem_capabilities.json"
+    output_path.parent.mkdir(parents=True, exist_ok=True)
     try:
         with open(output_path, 'w', encoding='utf-8') as f:
             json.dump(report, f, indent=2)

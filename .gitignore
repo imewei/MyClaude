@@ -207,6 +207,7 @@ agent-os/
 /reports/
 /reviews/
 /test-corpus/
+tools/maintenance/output/
 
 # ----------------
 # Plugin Development

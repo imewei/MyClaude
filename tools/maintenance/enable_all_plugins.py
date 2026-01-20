@@ -3,7 +3,7 @@
 Enable all plugins from the scientific-computing-workflows marketplace in Claude Code.
 
 Usage:
-    python3 scripts/enable-all-plugins.py
+    python3 tools/maintenance/enable_all_plugins.py
 """
 
 import json

@@ -220,21 +220,11 @@ version: ## Show current version
 
 ##@ Advanced Cleaning
 
-clean-test-corpus: ## Remove test corpus directory
-	@echo "Removing test corpus..."
-	@rm -rf test-corpus/ 2>/dev/null || true
-	@echo "  ✓ Test corpus removed"
-
-clean-specs: ## Remove agent-os specs directory
-	@echo "Removing specifications..."
-	@rm -rf agent-os/ 2>/dev/null || true
-	@echo "  ✓ Specifications removed"
-
 clean-tools-output: ## Clean tool output files
 	@echo "Cleaning tool outputs..."
 	@find tools -name '*.log' -delete 2>/dev/null || true
 	@find tools -name '*.tmp' -delete 2>/dev/null || true
 	@echo "  ✓ Tool outputs cleaned"
 
-nuke: clean-all clean-test-corpus clean-specs ## Nuclear option: remove everything that can be regenerated
+nuke: clean-all clean-tools-output ## Nuclear option: remove everything that can be regenerated
 	@echo "⚠️  Nuclear cleanup complete - regenerate docs with 'make docs'"
