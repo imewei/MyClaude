@@ -98,12 +98,11 @@ class MetadataValidator:
             "category": {
                 "type": "string",
                 "enum": [
-                    "scientific-computing",
-                    "development",
-                    "devops",
-                    "quality-engineering",
+                    "core",
+                    "engineering",
                     "infrastructure",
-                    "tools"
+                    "quality",
+                    "science"
                 ],
                 "description": "Plugin category"
             }
@@ -281,14 +280,14 @@ class MetadataValidator:
             if field_name not in metadata:
                 if required:
                     result.add_error(
-                        field,
-                        f"Missing required field: {field}",
-                        f"Add '{field}': {field_schema['description']}"
+                        field_name,
+                        f"Missing required field: {field_name}",
+                        f"Add '{field_name}': {field_schema['description']}"
                     )
                 else:
                     result.add_warning(
-                        field,
-                        f"Missing recommended field: {field}",
+                        field_name,
+                        f"Missing recommended field: {field_name}",
                         f"Consider adding: {field_schema['description']}"
                     )
             else:
@@ -437,13 +436,13 @@ class MetadataValidator:
             for field_name, field_schema in self.AGENT_SCHEMA["required"].items():
                 if field_name not in agent:
                     result.add_error(
-                        f"agents[{idx}].{field}",
+                        f"agents[{idx}].{field_name}",
                         f"Missing required field in agent {idx}"
                     )
                 else:
                     self._validate_field(
-                        f"agents[{idx}].{field}",
-                        agent[field],
+                        f"agents[{idx}].{field_name}",
+                        agent[field_name],
                         field_schema,
                         result
                     )
@@ -459,23 +458,23 @@ class MetadataValidator:
             for field_name, field_schema in self.COMMAND_SCHEMA["required"].items():
                 if field_name not in command:
                     result.add_error(
-                        f"commands[{idx}].{field}",
+                        f"commands[{idx}].{field_name}",
                         f"Missing required field in command {idx}"
                     )
                 else:
                     self._validate_field(
-                        f"commands[{idx}].{field}",
-                        command[field],
+                        f"commands[{idx}].{field_name}",
+                        command[field_name],
                         field_schema,
                         result
                     )
 
             # Validate optional fields if present
             for field_name, field_schema in self.COMMAND_SCHEMA["optional"].items():
-                if field in command:
+                if field_name in command:
                     self._validate_field(
-                        f"commands[{idx}].{field}",
-                        command[field],
+                        f"commands[{idx}].{field_name}",
+                        command[field_name],
                         field_schema,
                         result
                     )
@@ -491,13 +490,13 @@ class MetadataValidator:
             for field_name, field_schema in self.SKILL_SCHEMA["required"].items():
                 if field_name not in skill:
                     result.add_error(
-                        f"skills[{idx}].{field}",
+                        f"skills[{idx}].{field_name}",
                         f"Missing required field in skill {idx}"
                     )
                 else:
                     self._validate_field(
-                        f"skills[{idx}].{field}",
-                        skill[field],
+                        f"skills[{idx}].{field_name}",
+                        skill[field_name],
                         field_schema,
                         result
                     )

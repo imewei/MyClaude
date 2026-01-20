@@ -45,11 +45,17 @@ A consolidated suite for high-performance computing, specialized physics/chemist
 
 ## 📦 Installation
 
-This plugin is designed for [Claude Code](https://claude.com/code). Ensure you have the latest version installed.
+This plugin is designed for [Claude Code](https://claude.com/code).
 
 ```bash
-claude plugin add science-suite
+# Add the marketplace
+/plugin marketplace add imewei/MyClaude
+
+# Install the suite
+/plugin install science-suite@marketplace
 ```
+
+**Note:** After installation, restart Claude Code for changes to take effect.
 
 ## 📜 License
 
