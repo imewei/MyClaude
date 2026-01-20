@@ -1,5 +1,5 @@
 # Makefile for Scientific Computing Workflows Marketplace
-# Version: 1.0.7
+# Version: 1.0.8
 
 .PHONY: help clean clean-all clean-python clean-docs clean-cache clean-build clean-reports \
         build docs docs-live test lint validate install dev-install plugin-enable-all
@@ -70,11 +70,13 @@ docs: ## Build Sphinx documentation
 
 docs-live: ## Build and serve documentation with auto-reload
 	@echo "Starting live documentation server..."
-	@if command -v sphinx-autobuild >/dev/null 2>&1; then \
+	@if command -v uv >/dev/null 2>&1; then \
+		uv run sphinx-autobuild docs docs/_build/html --open-browser; \
+	elif command -v sphinx-autobuild >/dev/null 2>&1; then \
 		cd docs && sphinx-autobuild . _build/html --open-browser; \
 	else \
 		echo "Error: sphinx-autobuild not installed"; \
-		echo "Install with: pip install sphinx-autobuild"; \
+		echo "Install with: uv sync --group docs"; \
 		exit 1; \
 	fi
 
@@ -88,8 +90,8 @@ install: ## Install the marketplace and dependencies
 	@echo "Installing marketplace..."
 	@if command -v uv >/dev/null 2>&1; then \
 		uv sync --group docs; \
-	elif [ -f "requirements.txt" ]; then \
-		pip install -r requirements.txt; \
+	else \
+		pip install .; \
 	fi
 	@echo "✓ Installation complete"
 
@@ -98,7 +100,7 @@ dev-install: install ## Install development dependencies
 	@if command -v uv >/dev/null 2>&1; then \
 		uv sync --group dev; \
 	else \
-		pip install sphinx-autobuild pytest pytest-cov ruff mypy black; \
+		pip install .[dev,docs]; \
 	fi
 	@echo "✓ Development environment ready"
 
@@ -106,23 +108,27 @@ dev-install: install ## Install development dependencies
 
 lint: ## Run linters on Python code
 	@echo "Running linters..."
-	@if command -v ruff >/dev/null 2>&1; then \
-		echo "Running ruff..."; \
+	@if command -v uv >/dev/null 2>&1; then \
+		uv run ruff check .; \
+		uv run mypy --ignore-missing-imports tools/ plugins/; \
+	elif command -v ruff >/dev/null 2>&1; then \
 		ruff check . || true; \
-	fi
-	@if command -v mypy >/dev/null 2>&1; then \
-		echo "Running mypy..."; \
-		mypy --ignore-missing-imports tools/ plugins/ || true; \
+		if command -v mypy >/dev/null 2>&1; then \
+			mypy --ignore-missing-imports tools/ plugins/ || true; \
+		fi \
 	fi
 	@echo "✓ Linting complete"
 
 format: ## Format Python code with black and ruff
 	@echo "Formatting code..."
-	@if command -v black >/dev/null 2>&1; then \
+	@if command -v uv >/dev/null 2>&1; then \
+		uv run black tools/ plugins/; \
+		uv run ruff check --fix .; \
+	elif command -v black >/dev/null 2>&1; then \
 		black tools/ plugins/; \
-	fi
-	@if command -v ruff >/dev/null 2>&1; then \
-		ruff check --fix . || true; \
+		if command -v ruff >/dev/null 2>&1; then \
+			ruff check --fix . || true; \
+		fi \
 	fi
 	@echo "✓ Formatting complete"
 
@@ -137,7 +143,9 @@ validate: ## Validate plugin metadata and configuration
 
 test: ## Run tests with pytest
 	@echo "Running tests..."
-	@if command -v pytest >/dev/null 2>&1; then \
+	@if command -v uv >/dev/null 2>&1; then \
+		uv run pytest tests/ -v; \
+	elif command -v pytest >/dev/null 2>&1; then \
 		pytest tests/ -v || true; \
 	else \
 		echo "pytest not installed. Install with: pip install pytest"; \
@@ -145,7 +153,9 @@ test: ## Run tests with pytest
 
 test-coverage: ## Run tests with coverage report
 	@echo "Running tests with coverage..."
-	@if command -v pytest >/dev/null 2>&1; then \
+	@if command -v uv >/dev/null 2>&1; then \
+		uv run pytest tests/ --cov=. --cov-report=html --cov-report=term; \
+	elif command -v pytest >/dev/null 2>&1; then \
 		pytest tests/ --cov=. --cov-report=html --cov-report=term; \
 		echo "Coverage report: htmlcov/index.html"; \
 	else \
@@ -204,7 +214,7 @@ plugin-enable-all: ## Enable all plugins in Claude Code (requires restart)
 info: ## Show repository information
 	@echo "=== Repository Information ==="
 	@echo "Name: Scientific Computing Workflows Marketplace"
-	@echo "Version: 1.0.7"
+	@echo "Version: 1.0.8"
 	@echo "Author: Wei Chen"
 	@echo "Documentation: https://myclaude.readthedocs.io/en/latest/"
 	@echo "Repository: https://github.com/imewei/MyClaude"
@@ -216,7 +226,7 @@ info: ## Show repository information
 	@echo "Total Lines of Code: $$(find . -name '*.py' -o -name '*.md' -o -name '*.rst' | xargs wc -l 2>/dev/null | tail -1 | awk '{print $$1}')"
 
 version: ## Show current version
-	@echo "v1.0.7"
+	@echo "v1.0.8"
 
 ##@ Advanced Cleaning
 
