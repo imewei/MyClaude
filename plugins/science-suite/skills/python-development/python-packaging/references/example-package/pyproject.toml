@@ -73,6 +73,8 @@ addopts = [
 [tool.ruff]
 line-length = 100
 target-version = "py312"
+
+[tool.ruff.lint]
 select = [
     "E",   # pycodestyle errors
     "W",   # pycodestyle warnings
@@ -86,7 +88,7 @@ ignore = []
 fixable = ["ALL"]
 unfixable = []
 
-[tool.ruff.per-file-ignores]
+[tool.ruff.lint.per-file-ignores]
 "__init__.py" = ["F401"]  # Allow unused imports in __init__.py
 
 [tool.mypy]

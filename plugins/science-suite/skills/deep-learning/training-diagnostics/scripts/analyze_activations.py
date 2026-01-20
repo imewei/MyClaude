@@ -12,17 +12,28 @@ Usage:
 
 import argparse
 import sys
-from pathlib import Path
-from typing import Dict, List, Optional, Tuple
+# pathlib.Path unused
+from typing import Dict, List
+# Optional, Tuple unused
 
 import numpy as np
+import torch
+import torch.nn as nn
+# ... (imports adjusted, will exact match lines)
 
-try:
-    import torch
-    import torch.nn as nn
-except ImportError:
-    print("Error: PyTorch is required. Install with: pip install torch")
-    sys.exit(1)
+# ...
+
+    parser.add_argument(
+        "--device",
+        type=str,
+        default="cuda" if torch.cuda.is_available() else "cpu",
+        help="Device to use (cuda/cpu)"
+    )
+
+    parser.parse_args()
+
+    print("\n" + "="*80)
+
 
 
 class ActivationHook:
@@ -139,7 +150,7 @@ def diagnose_activation_pathologies(activation_stats: Dict[str, Dict],
         if 'dead_neuron_percent' in stats:
             if stats['dead_neuron_percent'] > 50:
                 errors.append(f"💀 {layer_name}: {stats['dead_neuron_percent']:.1f}% dead neurons (ReLU)")
-                errors.append(f"   → Learning rate may be too high or initialization poor")
+                errors.append("   → Learning rate may be too high or initialization poor")
             elif stats['dead_neuron_percent'] > 20:
                 warnings.append(f"⚠️  {layer_name}: {stats['dead_neuron_percent']:.1f}% dead neurons")
 
@@ -147,7 +158,7 @@ def diagnose_activation_pathologies(activation_stats: Dict[str, Dict],
         if 'saturation_percent' in stats:
             if stats['saturation_percent'] > 80:
                 errors.append(f"📉 {layer_name}: {stats['saturation_percent']:.1f}% saturated activations")
-                errors.append(f"   → Consider switching to ReLU or adjusting input scale")
+                errors.append("   → Consider switching to ReLU or adjusting input scale")
             elif stats['saturation_percent'] > 50:
                 warnings.append(f"⚠️  {layer_name}: {stats['saturation_percent']:.1f}% saturated")
 

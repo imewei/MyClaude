@@ -1,20 +1,20 @@
 ---
 name: machine-learning
-version: "1.1.0"
-description: Comprehensive Machine Learning and Deep Learning suite. Covers core ML (scikit-learn, XGBoost), Deep Learning (PyTorch, JAX), experiment tracking, and model optimization.
+version: "2.0.0"
+description: Comprehensive Classical Machine Learning suite. Covers scikit-learn, XGBoost, LightGBM, and MLOps pipelines. Focuses on tabular data, feature engineering, and production deployment.
 ---
 
-# Machine Learning & Deep Learning
+# Machine Learning & MLOps
 
-Complete workflow for building, training, and deploying ML/DL models in scientific research.
+Complete workflow for building, training, and deploying classical ML models.
 
 ## Expert Agent
 
-For advanced machine learning architectures, MLOps pipelines, and scientific ML, delegate to the expert agent:
+For classical ML workflows, MLOps, and deployment, delegate to the expert agent:
 
-- **`ml-expert`**: Unified specialist for Scientific Machine Learning (SciML), Deep Learning, and MLOps.
+- **`ml-expert`**: Unified specialist for MLOps, Infrastructure, and Classical ML.
   - *Location*: `plugins/science-suite/agents/ml-expert.md`
-  - *Capabilities*: PINNs, Neural Operators, Distributed Training (DDP/FSDP), and Model Deployment.
+  - *Capabilities*: Pipeline orchestration, Model Serving, A/B Testing, and Data Engineering.
 
 ## 1. Core Machine Learning (Tabular Data)
 
@@ -22,6 +22,7 @@ For advanced machine learning architectures, MLOps pipelines, and scientific ML,
 - **Linear/Logistic Regression**: For baselines and interpretability.
 - **XGBoost / LightGBM**: State-of-the-art for structured/tabular data.
 - **Random Forests**: Robust ensembles for high-dimensional data.
+- **Clustering**: K-Means, DBSCAN, Hierarchical.
 
 ### Workflow Example (Scikit-learn & XGBoost)
 ```python
@@ -33,26 +34,22 @@ grid = GridSearchCV(XGBClassifier(), param_grid, cv=5, scoring='roc_auc')
 grid.fit(X_train, y_train)
 ```
 
-## 2. Deep Learning & Experimentation
+## 2. Feature Engineering & Selection
 
-### Frameworks
-- **PyTorch**: Flexible, widely used for research and production.
-- **JAX**: High-performance, functional, and differentiable programming.
+- **Preprocessing**: Scaling (Standard/MinMax), Imputation, Encoding (One-hot/Target).
+- **Selection**: Recursive Feature Elimination (RFE), Feature Importance, SHAP.
+- **Dimensionality Reduction**: PCA, t-SNE, UMAP.
 
-### Systematic Experimentation
-- **Reproducibility**: Always set seeds for `random`, `numpy`, `torch`, and `jax`.
-- **Tracking**: Use `Weights & Biases` or `MLflow` to log metrics, hyperparameters, and artifacts.
-- **Ablation Studies**: Systematically remove components to identify critical model features.
+## 3. MLOps & Production
 
-## 3. Advanced Optimization
-
-### Hyperparameter Tuning
-- **Optuna**: Bayesian optimization for efficient search spaces.
-- **Learning Rate Range Test**: Find optimal LR by observing loss descent.
+### Pipeline Orchestration
+- **Tools**: Airflow, Dagster, Kubeflow, Prefect.
+- **Goals**: Reproducibility, scheduling, data validation.
 
 ### Model Deployment
-- **Serialization**: Use `joblib` or `ONNX` for traditional ML; `torch.jit` or `SavedModel` for DL.
-- **FastAPI**: Serve models via REST APIs for integration into scientific workflows.
+- **Serialization**: `joblib`, `ONNX`.
+- **Serving**: FastAPI, Triton Inference Server.
+- **Monitoring**: Drift detection, performance metrics.
 
 ## 4. Validation & Interpretability Checklist
 

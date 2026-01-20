@@ -157,7 +157,7 @@ Run: `find plugins/*-suite/skills -type d -empty`
 Action: Delete or populate any empty directories.
 
 **Step 2: Final Verification**
-Run: `python3 scripts/analyze_ecosystem.py` (optional, if script updated to point to new locs)
+Run: `python3 tools/maintenance/analyze_ecosystem.py` (optional, if script updated to point to new locs)
 Or manual spot check of 2-3 migrated skills.
 
 **Step 3: Commit Cleanup**

@@ -151,7 +151,7 @@ if __name__ == "__main__":
 
     # Determine repo root relative to this script
     script_dir = Path(__file__).parent.absolute()
-    default_repo_root = script_dir.parent
+    default_repo_root = script_dir.parent.parent
 
     # Allow overriding repo root via argument
     repo_root = Path(sys.argv[1]) if len(sys.argv) > 1 else default_repo_root

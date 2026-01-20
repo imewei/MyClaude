@@ -1,516 +1,33 @@
 {
   "plugins": [
     {
-      "name": "hpc-computing",
-      "path": "/Users/b80985/Projects/MyClaude/plugins/hpc-computing",
-      "agents": [
-        {
-          "name": "hpc-numerical-coordinator",
-          "specialization": "Scientific Computing, Numerical Methods, HPC Parallelization, GPU Acceleration",
-          "description": "HPC and numerical methods coordinator for scientific computing workflows. Expert in numerical optimization, parallel computing, GPU acceleration, and Python/Julia ecosystems. Leverages four core skills for comprehensive workflow design. Delegates molecular dynamics, statistical physics, and JAX applications to specialized agents."
-        }
-      ],
-      "skills": [
-        {
-          "name": "gpu-acceleration",
-          "specialization": "",
-          "description": "Implement GPU acceleration using CUDA/CuPy (Python) and CUDA.jl (Julia) with kernel optimization and memory management. Use when offloading computations to GPU, writing custom kernels, or optimizing multi-GPU workflows."
-        },
-        {
-          "name": "numerical-methods-implementation",
-          "specialization": "",
-          "description": "Implement robust numerical algorithms for ODEs (RK45, BDF), PDEs (finite difference, FEM), optimization (L-BFGS, Newton), and linear algebra (LU, QR, SVD, iterative solvers). Use when selecting solvers, implementing adaptive stepping, handling stiff systems, or ensuring numerical stability."
-        },
-        {
-          "name": "parallel-computing-strategy",
-          "specialization": "",
-          "description": "Design parallel strategies with MPI (distributed memory), OpenMP (shared memory), hybrid MPI+OpenMP, SLURM scheduling, Dask/Dagger.jl workflows, and load balancing. Use when implementing multi-node parallelization, writing job scripts, or optimizing HPC workflows."
-        },
-        {
-          "name": "ecosystem-selection",
-          "specialization": "",
-          "description": "Select optimal scientific computing ecosystems and manage multi-language workflows. Use when evaluating Python vs Julia for performance-critical numerical computing, implementing hybrid PyJulia/PyCall.jl interoperability, or setting up reproducible toolchains with Conda or Pkg.jl."
-        }
-      ],
-      "domains": [
-        "High Performance Computing",
-        "Performance Optimization",
-        "Scientific Computing"
-      ]
-    },
-    {
-      "name": "molecular-simulation",
-      "path": "/Users/b80985/Projects/MyClaude/plugins/molecular-simulation",
-      "agents": [
-        {
-          "name": "simulation-expert",
-          "specialization": "Molecular Dynamics & Multiscale Simulation",
-          "description": "Molecular dynamics and multiscale simulation expert for atomistic modeling. Expert in MD (LAMMPS, GROMACS, HOOMD-blue), ML force fields (NequIP, MACE, DeepMD), multiscale methods (DPD, coarse-graining), nanoscale DEM with capillary forces, and trajectory analysis for materials prediction. Leverages four core skills."
-        }
-      ],
-      "skills": [
-        {
-          "name": "trajectory-analysis",
-          "specialization": "MD Analysis",
-          "description": "Analyze MD trajectories to extract structural, thermodynamic, mechanical, and transport properties. Use when calculating RDF, MSD, viscosity, or validating simulations against experimental data."
-        },
-        {
-          "name": "multiscale-modeling",
-          "specialization": "Multiscale Simulation",
-          "description": "Bridge atomistic MD to mesoscale using coarse-graining, DPD, and nanoscale DEM. Use when developing CG models, implementing DPD simulations, or coupling scales."
-        },
-        {
-          "name": "md-simulation-setup",
-          "specialization": "",
-          "description": "Set up classical MD simulations using LAMMPS, GROMACS, and HOOMD-blue for materials and biomolecular systems. Use when writing input scripts, selecting force fields, configuring ensembles, or optimizing parallel execution."
-        },
-        {
-          "name": "ml-force-fields",
-          "specialization": "ML Potentials",
-          "description": "Develop ML force fields (NequIP, MACE, DeepMD) achieving quantum accuracy with 1000x speedup. Use when training neural network potentials or deploying ML force fields in MD."
-        }
-      ],
-      "domains": [
-        "High Performance Computing"
-      ]
-    },
-    {
-      "name": "backend-development",
-      "path": "/Users/b80985/Projects/MyClaude/plugins/backend-development",
-      "agents": [
-        {
-          "name": "backend-architect",
-          "specialization": "Backend Systems Architecture & API Design",
-          "description": "Expert backend architect specializing in scalable API design, microservices architecture, and distributed systems. Masters REST/GraphQL/gRPC APIs, event-driven architectures, service mesh patterns, and modern backend frameworks. Handles service boundary definition, inter-service communication, resilience patterns, and observability. Use PROACTIVELY when creating new backend services or APIs."
-        },
-        {
-          "name": "tdd-orchestrator",
-          "specialization": "Test-Driven Development & Multi-Agent Workflow Orchestration",
-          "description": "Master TDD orchestrator specializing in red-green-refactor discipline, multi-agent workflow coordination, and comprehensive test-driven development practices. Enforces TDD best practices across teams with AI-assisted testing and modern frameworks. Use PROACTIVELY for TDD implementation and governance."
-        },
-        {
-          "name": "graphql-architect",
-          "specialization": "GraphQL Schema Design & Performance Optimization",
-          "description": "Master modern GraphQL with federation, performance optimization, and enterprise security. Build scalable schemas, implement advanced caching, and design real-time systems. Use PROACTIVELY for GraphQL architecture or performance optimization."
-        }
-      ],
-      "skills": [],
-      "domains": [
-        "Observability",
-        "Performance Optimization",
-        "Quality Engineering",
-        "Security"
-      ]
-    },
-    {
-      "name": "deep-learning",
-      "path": "/Users/b80985/Projects/MyClaude/plugins/deep-learning",
-      "agents": [
-        {
-          "name": "neural-architecture-engineer",
-          "specialization": "Neural Architecture Design, Multi-Framework Implementation, Training Strategy",
-          "description": "Neural architecture specialist for deep learning design and training strategies. Expert in architecture patterns (transformers, CNNs, RNNs), multi-framework implementation (Flax, Equinox, Haiku, PyTorch). Delegates JAX optimization to jax-pro and MLOps to ml-pipeline-coordinator."
-        },
-        {
-          "name": "neural-network-master",
-          "specialization": "Deep Learning Theory, Training Diagnostics, Research Translation, Pedagogical Mastery",
-          "description": "Deep learning theory expert and neural network master specializing in mathematical foundations, optimization theory, training diagnostics, research translation, and pedagogical explanations. Provides deep theoretical understanding and expert debugging guidance."
-        }
-      ],
-      "skills": [
-        {
-          "name": "model-optimization-deployment",
-          "specialization": "Neural Network Optimization",
-          "description": "Optimize and deploy neural networks with quantization, pruning, knowledge distillation, and production serving. Use when compressing models, converting between frameworks (ONNX, TFLite), or setting up TorchServe/Triton serving infrastructure."
-        },
-        {
-          "name": "research-paper-implementation",
-          "specialization": "Paper-to-Code Translation",
-          "description": "Translate research papers into production implementations through systematic analysis and architecture extraction. Use when implementing novel architectures, reproducing experiments, or adapting state-of-the-art methods."
-        },
-        {
-          "name": "training-diagnostics",
-          "specialization": "",
-          "description": "Diagnose and resolve neural network training failures through systematic analysis of gradient pathologies, loss curves, and convergence issues. Use when encountering vanishing/exploding gradients, dead ReLU neurons, loss anomalies (NaN, spikes, plateaus), overfitting/underfitting patterns, or when debugging training scripts requiring systematic troubleshooting."
-        },
-        {
-          "name": "deep-learning-experimentation",
-          "specialization": "ML Experiment Design",
-          "description": "Design systematic deep learning experiments with hyperparameter optimization, ablation studies, and reproducible workflows. Use when tuning hyperparameters, conducting ablations, setting up experiment tracking (W&B, TensorBoard, MLflow), or managing reproducibility."
-        },
-        {
-          "name": "neural-network-mathematics",
-          "specialization": "NN Mathematical Foundations",
-          "description": "Apply mathematical foundations of neural networks including linear algebra, calculus, probability theory, optimization, and information theory. Use when deriving backpropagation for custom layers, computing Jacobians/Hessians, implementing automatic differentiation, analyzing gradient flow, proving convergence, working with Bayesian deep learning, deriving loss functions from MLE principles, or understanding PAC learning theory."
-        },
-        {
-          "name": "neural-architecture-patterns",
-          "specialization": "Neural Network Architecture",
-          "description": "Design neural architectures with skip connections, attention, normalization, and encoder-decoders. Use when designing CNNs, transformers, U-Nets, or selecting architectures for vision, NLP, and multimodal tasks."
-        }
-      ],
-      "domains": [
-        "DevOps",
-        "Performance Optimization",
-        "Scientific Computing"
-      ]
-    },
-    {
-      "name": "comprehensive-review",
-      "path": "/Users/b80985/Projects/MyClaude/plugins/comprehensive-review",
-      "agents": [
-        {
-          "name": "code-reviewer",
-          "specialization": "Code Quality & Security Analysis",
-          "description": "Elite code review expert specializing in modern AI-powered code analysis, security vulnerabilities, performance optimization, and production reliability. Masters static analysis tools, security scanning, and configuration review with 2026 best practices. Use PROACTIVELY for code quality assurance."
-        },
-        {
-          "name": "architect-review",
-          "specialization": "Enterprise Architecture & System Design",
-          "description": "Master software architect specializing in modern architecture patterns, clean architecture, microservices, event-driven systems, and DDD. Reviews system designs and code changes for architectural integrity, scalability, and maintainability. Use PROACTIVELY for architectural decisions."
-        },
-        {
-          "name": "security-auditor",
-          "specialization": "Security Architecture & Threat Modeling",
-          "description": "Expert security auditor specializing in DevSecOps, comprehensive cybersecurity, and compliance frameworks. Masters vulnerability assessment, threat modeling, secure authentication (OAuth2/OIDC), OWASP standards, cloud security, and security automation. Handles DevSecOps integration, compliance (GDPR/HIPAA/SOC2), and incident response. Use PROACTIVELY for security audits, DevSecOps, or compliance implementation."
-        }
-      ],
-      "skills": [
-        {
-          "name": "code-review-excellence",
-          "specialization": "Systematic Code Review & Feedback",
-          "description": "Systematic code review with constructive feedback, security/performance analysis, knowledge sharing. Use for PRs, feedback on changes, security/perf validation, test validation, review standards."
-        }
-      ],
-      "domains": [
-        "Performance Optimization",
-        "Quality Engineering",
-        "Security"
-      ]
-    },
-    {
-      "name": "observability-monitoring",
-      "path": "/Users/b80985/Projects/MyClaude/plugins/observability-monitoring",
-      "agents": [
-        {
-          "name": "performance-engineer",
-          "specialization": "Application Performance Optimization, Observability Integration, Load Testing",
-          "description": "Expert performance engineer specializing in modern observability, application optimization, and scalable system performance. Masters OpenTelemetry, distributed tracing, load testing, multi-tier caching, Core Web Vitals, and performance monitoring. Handles end-to-end optimization, real user monitoring, and scalability patterns. Use PROACTIVELY for performance optimization, observability, or scalability challenges."
-        },
-        {
-          "name": "database-optimizer",
-          "specialization": "Database Performance & Query Optimization",
-          "description": "Expert database optimizer specializing in modern performance tuning, query optimization, and scalable architectures. Masters advanced indexing, N+1 resolution, multi-tier caching, partitioning strategies, and cloud database optimization. Handles complex query analysis, migration strategies, and performance monitoring. Use PROACTIVELY for database optimization, performance issues, or scalability challenges."
-        },
-        {
-          "name": "observability-engineer",
-          "specialization": "Observability Architecture, SLI/SLO Frameworks, Incident Response Automation",
-          "description": "Build production-ready monitoring, logging, and tracing systems. Implements comprehensive observability strategies, SLI/SLO management, and incident response workflows. Use PROACTIVELY for monitoring infrastructure, performance optimization, or production reliability."
-        },
-        {
-          "name": "network-engineer",
-          "specialization": "Cloud Networking, Security Architecture, Performance Optimization",
-          "description": "Expert network engineer specializing in modern cloud networking, security architectures, and performance optimization. Masters multi-cloud connectivity, service mesh, zero-trust networking, SSL/TLS, global load balancing, and advanced troubleshooting. Handles CDN optimization, network automation, and compliance. Use PROACTIVELY for network design, connectivity issues, or performance optimization."
-        }
-      ],
-      "skills": [
-        {
-          "name": "airflow-scientific-workflows",
-          "specialization": "Scientific Pipeline Orchestration",
-          "description": "Design Apache Airflow DAGs for scientific data pipelines, batch computations, distributed simulations, and time-series data ingestion with PostgreSQL/TimescaleDB integration. Use when orchestrating experimental workflows or coordinating scientific computations."
-        },
-        {
-          "name": "grafana-dashboards",
-          "specialization": "Metric Visualization",
-          "description": "Create production Grafana dashboards with panels, variables, alerts, and templates using RED/USE methods. Use when building API monitoring, infrastructure, database, or SLO dashboards with Prometheus data sources."
-        },
-        {
-          "name": "prometheus-configuration",
-          "specialization": "Metric Collection",
-          "description": "Configure Prometheus for metric collection, alerting, and monitoring with scrape configs, recording rules, alert rules, and service discovery. Use when setting up Prometheus servers, creating alert rules, or implementing Kubernetes monitoring."
-        },
-        {
-          "name": "slo-implementation",
-          "specialization": "SRE Reliability",
-          "description": "Define SLIs, SLOs, error budgets, and burn rate alerting following SRE best practices. Use when establishing reliability targets, implementing error budget policies, creating SLO dashboards, or designing multi-window burn rate alerts."
-        },
-        {
-          "name": "distributed-tracing",
-          "specialization": "Request Flow Visibility",
-          "description": "Implement distributed tracing with OpenTelemetry, Jaeger, and Tempo including instrumentation, context propagation, sampling strategies, and trace analysis. Use when debugging latency issues, understanding service dependencies, or tracing error propagation across microservices."
-        }
-      ],
-      "domains": [
-        "Observability",
-        "Performance Optimization",
-        "Quality Engineering",
-        "Scientific Computing",
-        "Security"
-      ]
-    },
-    {
-      "name": "quality-engineering",
-      "path": "/Users/b80985/Projects/MyClaude/plugins/quality-engineering",
-      "agents": [],
-      "skills": [
-        {
-          "name": "plugin-syntax-validator",
-          "specialization": "Claude Code Plugin Validation",
-          "description": "Validates plugin structure, manifest correctness, and component syntax against official standards. Checks for required files (plugin.json, README.md, LICENSE), validates YAML frontmatter in agents/commands/skills, and ensures directory compliance. Use PROACTIVELY when creating or modifying plugins."
-        },
-        {
-          "name": "comprehensive-validation-framework",
-          "specialization": "Production Validation",
-          "description": "Systematic multi-dimensional validation framework for code, APIs, and systems. Use when validating before deployment, running security scans (OWASP Top 10, dependency vulnerabilities), checking test coverage (>80% target), verifying accessibility (WCAG 2.1 AA), profiling performance, validating breaking changes, or preparing deployment readiness reports."
-        }
-      ],
-      "domains": [
-        "DevOps",
-        "Performance Optimization",
-        "Quality Engineering",
-        "Security"
-      ]
-    },
-    {
-      "name": "data-visualization",
-      "path": "/Users/b80985/Projects/MyClaude/plugins/data-visualization",
-      "agents": [
-        {
-          "name": "visualization-interface",
-          "specialization": "Scientific Data Visualization & UX Design",
-          "description": "Visualization and interface expert specializing in scientific data visualization, UX design, and immersive technologies with Python and Julia. Expert in Matplotlib, Plotly, Makie.jl, D3.js, Dash, Streamlit, AR/VR, and accessibility-first design. Masters publication-quality figures, interactive dashboards, 3D visualization, and user-centered design."
-        }
-      ],
-      "skills": [
-        {
-          "name": "scientific-data-visualization",
-          "specialization": "Publication-Quality Figures",
-          "description": "Create domain-specific scientific visualizations with uncertainty quantification (error bars, confidence bands), multi-dimensional data (parallel coordinates, heatmaps), domain plots (vector fields, molecular structures, climate maps, spectroscopy), and publication standards (Nature/Science specs, colorblind-friendly palettes). Use for research papers, presentations, and technical reports."
-        },
-        {
-          "name": "python-julia-visualization",
-          "specialization": "Scientific Data Visualization",
-          "description": "Implement production-ready scientific visualizations using Python (Matplotlib, Seaborn, Plotly, Bokeh) and Julia (Plots.jl, Makie.jl) ecosystems. Use when creating publication-quality static plots, interactive dashboards, real-time streaming visualizations, 3D surfaces, or configuring export settings (300 DPI, vector formats, colorblind-friendly palettes)."
-        },
-        {
-          "name": "ux-design-scientific-interfaces",
-          "specialization": "Scientific Interface Design",
-          "description": "Design intuitive, accessible interfaces for scientific tools and research applications. Use when building Plotly Dash or Streamlit dashboards, creating Pluto.jl notebooks, implementing WCAG 2.1 AA accessibility, designing Jupyter widgets, building CLIs for scientific tools, implementing progressive disclosure patterns, or creating reproducibility features."
-        }
-      ],
-      "domains": [
-        "High Performance Computing",
-        "Scientific Computing"
-      ]
-    },
-    {
-      "name": "multi-platform-apps",
-      "path": "/Users/b80985/Projects/MyClaude/plugins/multi-platform-apps",
-      "agents": [
-        {
-          "name": "backend-architect",
-          "specialization": "Backend Systems Architecture",
-          "description": "Expert backend architect specializing in scalable API design, microservices architecture, and distributed systems. Masters REST/GraphQL/gRPC APIs, event-driven architectures, service mesh patterns, and modern backend frameworks. Handles service boundary definition, inter-service communication, resilience patterns, and observability. Use PROACTIVELY when creating new backend services or APIs."
-        },
-        {
-          "name": "ios-developer",
-          "specialization": "Native iOS Development",
-          "description": "Develop native iOS applications with Swift/SwiftUI. Masters iOS 18, SwiftUI, UIKit integration, Core Data, networking, and App Store optimization. Use PROACTIVELY for iOS-specific features, App Store optimization, or native iOS development."
-        },
-        {
-          "name": "flutter-expert",
-          "specialization": "Multi-Platform Flutter Development",
-          "description": "Master Flutter development with Dart 3, advanced widgets, and multi-platform deployment. Handles state management, animations, testing, and performance optimization for mobile, web, desktop, and embedded platforms. Use PROACTIVELY for Flutter architecture, UI implementation, or cross-platform features."
-        },
-        {
-          "name": "ui-ux-designer",
-          "specialization": "Design Systems & Accessible UX",
-          "description": "Create interface designs, wireframes, and design systems. Masters user research, accessibility standards, and modern design tools. Specializes in design tokens, component libraries, and inclusive design. Use PROACTIVELY for design systems, user flows, or interface optimization."
-        },
-        {
-          "name": "mobile-developer",
-          "specialization": "Cross-Platform Mobile Development",
-          "description": "Develop React Native, Flutter, or native mobile apps with modern architecture patterns. Masters cross-platform development, native integrations, offline sync, and app store optimization. Use PROACTIVELY for mobile features, cross-platform code, or app optimization."
-        },
-        {
-          "name": "frontend-developer",
-          "specialization": "React & Next.js Frontend Development",
-          "description": "Build React components, implement responsive layouts, and handle client-side state management. Masters React 19, Next.js 15, and modern frontend architecture. Optimizes performance and ensures accessibility. Use PROACTIVELY when creating UI components or fixing frontend issues."
-        }
-      ],
-      "skills": [
-        {
-          "name": "multi-platform-architecture",
-          "specialization": "Cross-Platform Strategy",
-          "description": "Design multi-platform apps with clean architecture, code sharing (Flutter, React Native, KMP), BFF patterns, offline-first sync, and team organization. Use when planning mobile/web/desktop architecture, choosing frameworks, or maximizing code reuse."
-        },
-        {
-          "name": "react-native-patterns",
-          "specialization": "React Native Development",
-          "description": "Modern React Native patterns with New Architecture, TypeScript, and performance optimization. Use when building React Native components, optimizing FlatList performance, implementing state management (Redux Toolkit, Zustand), setting up React Navigation, integrating APIs with React Query, handling forms with React Hook Form, creating native modules, or implementing offline-first storage."
-        },
-        {
-          "name": "flutter-development",
-          "specialization": "Flutter/Dart Development",
-          "description": "Comprehensive Flutter development patterns for mobile, web, and desktop apps. Use when writing Flutter/Dart code, implementing state management (Riverpod, Bloc), creating widgets, optimizing performance, handling navigation, integrating APIs, implementing offline persistence, or writing Flutter tests."
-        },
-        {
-          "name": "ios-best-practices",
-          "specialization": "Native iOS Development",
-          "description": "Native iOS development with Swift 6, SwiftUI, MVVM, Swift concurrency (async/await, actors), Core Data/SwiftData, NavigationStack, and XCTest. Use when building production iOS apps, implementing Swift concurrency, or preparing for App Store."
-        }
-      ],
-      "domains": [
-        "DevOps",
-        "Observability",
-        "Performance Optimization",
-        "Quality Engineering"
-      ]
-    },
-    {
-      "name": "python-development",
-      "path": "/Users/b80985/Projects/MyClaude/plugins/python-development",
-      "agents": [
-        {
-          "name": "fastapi-pro",
-          "specialization": "FastAPI, Async APIs, SQLAlchemy 2.0+, Pydantic V2",
-          "description": "Build high-performance async APIs with FastAPI, SQLAlchemy 2.0, and Pydantic V2. Master microservices, WebSockets, and modern Python async patterns. Use PROACTIVELY for FastAPI development, async optimization, or API architecture."
-        },
-        {
-          "name": "django-pro",
-          "specialization": "Django 5.x, DRF, ORM Optimization",
-          "description": "Master Django 5.x with async views, DRF, Celery, and Django Channels. Build scalable web applications with proper architecture, testing, and deployment. Use PROACTIVELY for Django development, ORM optimization, or complex Django patterns."
-        },
-        {
-          "name": "python-pro",
-          "specialization": "Modern Python 3.12+ & Async Patterns",
-          "description": "Master Python 3.12+ with modern features, async programming, performance optimization, and production-ready practices. Expert in the latest Python ecosystem including uv, ruff, pydantic, and FastAPI. Use PROACTIVELY for Python development, optimization, or advanced Python patterns."
-        }
-      ],
-      "skills": [],
-      "domains": [
-        "DevOps",
-        "Performance Optimization",
-        "Quality Engineering"
-      ]
-    },
-    {
-      "name": "frontend-mobile-development",
-      "path": "/Users/b80985/Projects/MyClaude/plugins/frontend-mobile-development",
-      "agents": [
-        {
-          "name": "mobile-developer",
-          "specialization": "Cross-Platform & Native Mobile Development",
-          "description": "Develop React Native, Flutter, or native mobile apps with modern architecture patterns. Masters cross-platform development, native integrations, offline sync, and app store optimization. Use PROACTIVELY for mobile features, cross-platform code, or app optimization."
-        },
-        {
-          "name": "frontend-developer",
-          "specialization": "React & Next.js Frontend Development",
-          "description": "Build React components, implement responsive layouts, and handle client-side state management. Masters React 19, Next.js 15, and modern frontend architecture. Optimizes performance and ensures accessibility. Use PROACTIVELY when creating UI components or fixing frontend issues."
-        }
-      ],
-      "skills": [],
-      "domains": [
-        "Performance Optimization"
-      ]
-    },
-    {
-      "name": "codebase-cleanup",
-      "path": "/Users/b80985/Projects/MyClaude/plugins/codebase-cleanup",
-      "agents": [
-        {
-          "name": "code-reviewer",
-          "specialization": "Code Quality & Security Review",
-          "description": "Elite code review expert specializing in modern AI-powered code analysis, security vulnerabilities, performance optimization, and production reliability. Masters static analysis tools, security scanning, and configuration review with 2026 best practices. Use PROACTIVELY for code quality assurance."
-        },
-        {
-          "name": "test-automator",
-          "specialization": "Test Automation & TDD",
-          "description": "Master AI-powered test automation with modern frameworks, self-healing tests, and comprehensive quality engineering. Build scalable testing strategies with advanced CI/CD integration. Use PROACTIVELY for testing automation or quality assurance."
-        }
-      ],
-      "skills": [],
-      "domains": [
-        "DevOps",
-        "Performance Optimization",
-        "Quality Engineering",
-        "Security"
-      ]
-    },
-    {
-      "name": "code-documentation",
-      "path": "/Users/b80985/Projects/MyClaude/plugins/code-documentation",
-      "agents": [
-        {
-          "name": "code-reviewer",
-          "specialization": "Code Quality & Security Analysis",
-          "description": "Elite code review expert specializing in modern AI-powered code analysis, security vulnerabilities, performance optimization, and production reliability. Masters static analysis tools, security scanning, and configuration review with 2026 best practices. Use PROACTIVELY for code quality assurance."
-        },
-        {
-          "name": "docs-architect",
-          "specialization": "Technical Documentation & System Architecture",
-          "description": "Creates comprehensive technical documentation from existing codebases. Analyzes architecture, design patterns, and implementation details to produce long-form technical manuals and ebooks. Use PROACTIVELY for system documentation, architecture guides, or technical deep-dives."
-        },
-        {
-          "name": "tutorial-engineer",
-          "specialization": "Educational Content & Tutorial Development",
-          "description": "Creates step-by-step tutorials and educational content from code. Transforms complex concepts into progressive learning experiences with hands-on examples. Use PROACTIVELY for onboarding guides, feature tutorials, or concept explanations."
-        }
-      ],
-      "skills": [],
-      "domains": [
-        "Performance Optimization",
-        "Scientific Computing",
-        "Security"
-      ]
-    },
-    {
-      "name": "jax-implementation",
-      "path": "/Users/b80985/Projects/MyClaude/plugins/jax-implementation",
-      "agents": [
-        {
-          "name": "jax-pro",
-          "specialization": "Unified Scientific Computing Specialist",
-          "description": "Unified specialist for Core JAX programming (jit/vmap/pmap, Flax, Optax), Bayesian inference (NumPyro), Nonlinear optimization (NLSQ), and Computational Physics (JAX-MD/CFD/Diffrax). Covers functional transformations, distributed computing, probabilistic programming, and differentiable physics with a 6-step decision framework."
-        }
-      ],
-      "skills": [
-        {
-          "name": "jax-core-programming",
-          "specialization": "",
-          "description": "Master JAX functional transformations (jit, vmap, pmap, grad), Flax NNX neural networks, Optax optimizers, Orbax checkpointing, and NumPyro Bayesian inference. Use when writing JAX code, building training loops, optimizing XLA compilation, debugging tracer errors, or scaling to multi-device GPU/TPU."
-        },
-        {
-          "name": "nlsq-core-mastery",
-          "specialization": "",
-          "description": "Master NLSQ library for high-performance curve fitting (150-270x faster than SciPy). Use when fitting >10K points, parameter estimation, robust optimization, streaming datasets (100M+ points), or migrating from SciPy."
-        },
-        {
-          "name": "numpyro-core-mastery",
-          "specialization": "Bayesian Inference with JAX",
-          "description": "Master NumPyro for production Bayesian inference, MCMC sampling (NUTS/HMC), variational inference (SVI), hierarchical models, and uncertainty quantification. Use when building probabilistic models with numpyro.sample(), running MCMC with NUTS/HMC, implementing SVI with AutoGuides, diagnosing convergence (R-hat, ESS, divergences), or deploying production Bayesian pipelines."
-        },
-        {
-          "name": "jax-physics-applications",
-          "specialization": "JAX Physics Simulations",
-          "description": "Physics simulations using JAX-based libraries (JAX-MD, JAX-CFD, PINNs). Use when implementing molecular dynamics, computational fluid dynamics, physics-informed neural networks with PDE constraints, quantum computing algorithms (VQE, QAOA), multi-physics coupling, or differentiable physics for gradient-based optimization."
-        }
-      ],
-      "domains": [
-        "DevOps",
-        "Performance Optimization",
-        "Quality Engineering",
-        "Scientific Computing"
-      ]
-    },
-    {
       "name": "science-suite",
       "path": "/Users/b80985/Projects/MyClaude/plugins/science-suite",
       "agents": [
         {
+          "name": "prompt-engineer",
+          "specialization": "LLM Optimization & Prompt Design",
+          "description": "Expert prompt engineer specializing in advanced prompting techniques, LLM optimization, and AI system design. Masters chain-of-thought, constitutional AI, and production prompt strategies. Use when building AI features, improving agent performance, or crafting system prompts."
+        },
+        {
+          "name": "jax-pro",
+          "specialization": "JAX Scientific Computing",
+          "description": "Expert JAX-based scientific computing agent. Use for Core JAX transformations (JIT/vmap/pmap), Bayesian inference (NumPyro), nonlinear optimization (NLSQ), and computational physics (JAX-MD/CFD). Handles distributed training, custom VJPs, and high-performance numerical kernels."
+        },
+        {
           "name": "ml-expert",
           "specialization": "Scientific Machine Learning & Deep Learning",
           "description": "Expert in scientific ML, deep learning architectures, and MLOps. Masters PyTorch, JAX, experiment tracking, and model optimization for research workflows."
+        },
+        {
+          "name": "ai-engineer",
+          "specialization": "LLM Applications, RAG Systems, Agentic AI",
+          "description": "Build production-ready LLM applications, advanced RAG systems, and intelligent agents. Implements vector search, multimodal AI, agent orchestration, and enterprise AI integrations. Use PROACTIVELY for LLM features, chatbots, AI agents, or AI-powered applications."
+        },
+        {
+          "name": "statistical-physicist",
+          "specialization": "Computational Statistical Physics & Soft Matter",
+          "description": "Statistical physicist expert\u2014the bridge builder asking \"How does the chaos of the microscopic world conspire to create the order of the macroscopic world?\" Expert in correlation functions, non-equilibrium dynamics, JAX-accelerated GPU simulations, ensemble theory, stochastic calculus (Langevin/Fokker-Planck), phase transitions, fluctuation theorems, and modern AI-physics integration (normalizing flows, ML coarse-graining). Bridges theoretical foundations to high-performance computational analysis. Delegates JAX optimization to jax-pro."
         },
         {
           "name": "simulation-expert",
@@ -521,18 +38,38 @@
           "name": "research-expert",
           "specialization": "Scientific Research Methodology & Visualization",
           "description": "Expert in systematic research, evidence synthesis, statistical rigor, and publication-quality visualization. Guides the research lifecycle from hypothesis design to final figure generation."
+        },
+        {
+          "name": "python-pro",
+          "specialization": "Python Systems Engineering & Architecture",
+          "description": "Expert Python Systems Engineer treating Python as a rigorous systems language. Specializes in type-driven development (Protocols, Generics), modern toolchains (uv, ruff), concurrency (TaskGroups, multiprocessing), and performance optimization (PyO3/Rust extensions). Enforces strict typing, zero global state, and library-first architecture."
+        },
+        {
+          "name": "neural-network-master",
+          "specialization": "Deep Learning Architecture, Theory & Implementation",
+          "description": "Deep learning authority specializing in both theory and implementation. Master of neural architecture design (Transformers, CNNs), mathematical foundations, multi-framework implementation (Flax, Equinox, PyTorch), and training diagnostics. Provides unified guidance from architectural blueprints to theoretical proofs."
+        },
+        {
+          "name": "julia-pro",
+          "specialization": "Julia Scientific Computing",
+          "description": "Expert Julia scientific computing agent. Use for Core Julia, Scientific Machine Learning (SciML), DifferentialEquations.jl, ModelingToolkit.jl, and Turing.jl. Handles high-performance optimization, package development, and cross-language interoperability."
         }
       ],
       "skills": [
+        {
+          "name": "deep-learning",
+          "specialization": "",
+          "description": "Master deep learning architecture design, theory, and implementation. Covers neural network mathematics, training diagnostics, and advanced patterns."
+        },
         {
           "name": "advanced-simulations",
           "specialization": "",
           "description": "Master advanced simulation techniques including non-equilibrium thermodynamics, stochastic dynamics, and multiscale modeling. Bridge scales from atomistic to mesoscale."
         },
         {
-          "name": "numerical-methods",
+          "name": "python-development",
           "specialization": "",
-          "description": "Implement robust numerical algorithms for ODEs, PDEs, optimization, and molecular simulations. Master solver selection, stability analysis, and differentiable physics using Python and Julia."
+          "description": "Master modern Python systems engineering for scientific computing. Covers type-driven design, Rust extensions (PyO3), structured concurrency (TaskGroups), robust testing (Hypothesis), and uv-based packaging."
         },
         {
           "name": "parallel-computing",
@@ -555,6 +92,11 @@
           "description": "Master JAX for high-performance scientific computing. Covers functional transformations (JIT, vmap, pmap, grad), neural networks (Flax NNX), and specialized optimization (NLSQ, NumPyro)."
         },
         {
+          "name": "llm-application-dev",
+          "specialization": "",
+          "description": "Build production-ready LLM applications, RAG systems, and AI agents. Covers prompt engineering, LangChain/LangGraph architecture, and evaluation."
+        },
+        {
           "name": "scientific-visualization",
           "specialization": "",
           "description": "Create publication-quality scientific visualizations across physics, biology, chemistry, and climate science. Supports uncertainty quantification, multi-dimensional data, and domain-specific plots in both Python and Julia."
@@ -563,66 +105,17 @@
           "name": "machine-learning",
           "specialization": "",
           "description": "Comprehensive Machine Learning and Deep Learning suite. Covers core ML (scikit-learn, XGBoost), Deep Learning (PyTorch, JAX), experiment tracking, and model optimization."
+        },
+        {
+          "name": "statistical-physics",
+          "specialization": "",
+          "description": "Comprehensive statistical physics suite covering equilibrium and non-equilibrium statistical mechanics, active matter, stochastic dynamics, and correlation analysis. Master the bridge between microscopic laws and macroscopic behavior."
         }
       ],
       "domains": [
         "High Performance Computing",
         "Performance Optimization",
-        "Scientific Computing"
-      ]
-    },
-    {
-      "name": "full-stack-orchestration",
-      "path": "/Users/b80985/Projects/MyClaude/plugins/full-stack-orchestration",
-      "agents": [
-        {
-          "name": "test-automator",
-          "specialization": "TDD, AI-powered test automation, self-healing tests, comprehensive quality engineering",
-          "description": "Master AI-powered test automation with modern frameworks, self-healing tests, and comprehensive quality engineering. Build scalable testing strategies with advanced CI/CD integration. Use PROACTIVELY for testing automation or quality assurance."
-        },
-        {
-          "name": "performance-engineer",
-          "specialization": "",
-          "description": "Expert performance engineer specializing in modern observability, application optimization, and scalable system performance. Masters OpenTelemetry, distributed tracing, load testing, multi-tier caching, Core Web Vitals, and performance monitoring. Handles end-to-end optimization, real user monitoring, and scalability patterns. Use PROACTIVELY for performance optimization, observability, or scalability challenges."
-        },
-        {
-          "name": "security-auditor",
-          "specialization": "DevSecOps, OWASP Top 10 prevention, zero-trust security, compliance frameworks",
-          "description": "Expert security auditor specializing in DevSecOps, comprehensive cybersecurity, and compliance frameworks. Masters vulnerability assessment, threat modeling, secure authentication (OAuth2/OIDC), OWASP standards, cloud security, and security automation. Handles DevSecOps integration, compliance (GDPR/HIPAA/SOC2), and incident response. Use PROACTIVELY for security audits, DevSecOps, or compliance implementation."
-        },
-        {
-          "name": "deployment-engineer",
-          "specialization": "CI/CD Pipelines & GitOps Automation",
-          "description": "Expert deployment engineer specializing in modern CI/CD pipelines, GitOps workflows, and advanced deployment automation. Masters GitHub Actions, ArgoCD/Flux, progressive delivery, container security, and platform engineering. Handles zero-downtime deployments, security scanning, and developer experience optimization. Use PROACTIVELY for CI/CD design, GitOps implementation, or deployment automation."
-        }
-      ],
-      "skills": [],
-      "domains": [
-        "DevOps",
-        "Observability",
-        "Performance Optimization",
         "Quality Engineering",
-        "Security"
-      ]
-    },
-    {
-      "name": "research-methodology",
-      "path": "/Users/b80985/Projects/MyClaude/plugins/research-methodology",
-      "agents": [
-        {
-          "name": "research-intelligence",
-          "specialization": "Systematic Research & Evidence Synthesis",
-          "description": "Research intelligence expert specializing in research methodology and information discovery. Expert in literature analysis, trend forecasting, and evidence-based insights. Delegates implementation to domain specialists. <example>@Research Intelligence analyze recent trends in LLM reasoning</example>"
-        }
-      ],
-      "skills": [
-        {
-          "name": "research-quality-assessment",
-          "specialization": "Research Quality Evaluation",
-          "description": "Evaluate scientific research quality across methodology, experimental design, statistical rigor, and publication readiness. Use when reviewing papers, grant proposals, or assessing reproducibility using CONSORT, STROBE, or PRISMA guidelines."
-        }
-      ],
-      "domains": [
         "Scientific Computing"
       ]
     },
@@ -633,17 +126,17 @@
         {
           "name": "documentation-expert",
           "specialization": "Technical Documentation & Knowledge Management",
-          "description": "Expert in creating clear, comprehensive, and accurate technical documentation, manuals, and tutorials."
+          "description": "Expert in creating clear, comprehensive, and accurate technical documentation, manuals, and tutorials. Unifies capabilities of documentation architecture and tutorial engineering."
         },
         {
           "name": "debugger-pro",
           "specialization": "Root Cause Analysis & Distributed Debugging",
-          "description": "Expert in AI-assisted debugging, log correlation, and complex root cause analysis across distributed systems."
+          "description": "Expert in AI-assisted debugging, log correlation, and complex root cause analysis across distributed systems. Masters systematic investigation, memory profiling, and production incident resolution."
         },
         {
           "name": "quality-specialist",
           "specialization": "Code Review, Security Auditing & Test Automation",
-          "description": "Expert in ensuring software quality through rigorous code reviews, comprehensive security audits, and robust test automation strategies."
+          "description": "Expert in ensuring software quality through rigorous code reviews, comprehensive security audits, and robust test automation strategies. Unifies capabilities of code review, security auditing, and test automation."
         }
       ],
       "skills": [
@@ -678,22 +171,6 @@
         "Quality Engineering",
         "Scientific Computing",
         "Security"
-      ]
-    },
-    {
-      "name": "code-migration",
-      "path": "/Users/b80985/Projects/MyClaude/plugins/code-migration",
-      "agents": [
-        {
-          "name": "scientific-code-adoptor",
-          "specialization": "Scientific Legacy Code Modernization",
-          "description": "Legacy scientific code modernization expert for cross-language migration. Expert in Fortran/C/MATLAB to Python/JAX/Julia with numerical accuracy preservation. Delegates JAX optimization to jax-pro."
-        }
-      ],
-      "skills": [],
-      "domains": [
-        "Performance Optimization",
-        "Scientific Computing"
       ]
     },
     {
@@ -748,323 +225,25 @@
       ]
     },
     {
-      "name": "julia-development",
-      "path": "/Users/b80985/Projects/MyClaude/plugins/julia-development",
+      "name": "agent-core",
+      "path": "/Users/b80985/Projects/MyClaude/plugins/agent-core",
       "agents": [
         {
-          "name": "julia-pro",
-          "specialization": "Unified Scientific Computing Specialist",
-          "description": "Unified specialist for Julia programming, Scientific Machine Learning (SciML), Bayesian inference (Turing.jl), and package development. Covers optimization, visualization, and distributed computing with a 6-step decision framework."
-        }
-      ],
-      "skills": [
-        {
-          "name": "web-development-julia",
-          "specialization": "Julia Web Development",
-          "description": "Build web applications with Genie.jl MVC framework and HTTP.jl. Use when creating REST APIs, handling HTTP requests, or building web services in Julia."
-        },
-        {
-          "name": "interop-patterns",
-          "specialization": "Julia Cross-Language",
-          "description": "Master cross-language integration with PythonCall.jl, RCall.jl, and CxxWrap.jl. Use when calling Python/R libraries from Julia or minimizing data transfer overhead."
-        },
-        {
-          "name": "performance-tuning",
-          "specialization": "Julia Performance",
-          "description": "Profile and optimize Julia code with @code_warntype, @profview, and BenchmarkTools.jl. Use when debugging slow code, reducing allocations, or improving execution speed."
-        },
-        {
-          "name": "visualization-patterns",
-          "specialization": "Julia Visualization",
-          "description": "Master Plots.jl and Makie.jl for data visualization in Julia. Use when creating plots, selecting backends, building statistical visualizations, or making publication-quality figures."
-        },
-        {
-          "name": "jump-optimization",
-          "specialization": "Mathematical Programming",
-          "description": "Master JuMP.jl for LP, QP, NLP, and MIP with HiGHS, Ipopt, and commercial solvers. Use for production planning, portfolio optimization, scheduling, and constrained optimization. Note that JuMP.jl is separate from Optimization.jl (sciml-pro)."
-        },
-        {
-          "name": "optimization-patterns",
-          "specialization": "SciML Optimization",
-          "description": "Use Optimization.jl for parameter estimation in differential equations. Use when fitting models to data or solving inverse problems. For LP/QP/MIP, use JuMP.jl instead."
-        },
-        {
-          "name": "sciml-ecosystem",
-          "specialization": "SciML Overview",
-          "description": "Navigate the SciML ecosystem including DifferentialEquations.jl, ModelingToolkit.jl, Optimization.jl, and Catalyst.jl. Use when selecting packages for scientific computing tasks."
-        },
-        {
-          "name": "parallel-computing",
-          "specialization": "Julia Parallelism",
-          "description": "Master multi-threading, Distributed.jl, and GPU computing with CUDA.jl. Use when scaling computations across CPUs or GPUs for scientific computing."
-        },
-        {
-          "name": "variational-inference-patterns",
-          "specialization": "Variational Inference",
-          "description": "Master ADVI variational inference with Turing.jl and Bijectors.jl for scalable approximate Bayesian inference. Use when MCMC is too slow for large datasets."
-        },
-        {
-          "name": "catalyst-reactions",
-          "specialization": "Reaction Networks",
-          "description": "Model chemical reaction networks with Catalyst.jl for deterministic and stochastic simulations. Use when modeling biochemical pathways or chemical kinetics."
-        },
-        {
-          "name": "package-development-workflow",
-          "specialization": "Julia Packages",
-          "description": "Create Julia packages following community standards with proper structure, exports, and PkgTemplates.jl. Use when creating new packages or organizing source code."
-        },
-        {
-          "name": "testing-patterns",
-          "specialization": "Julia Testing",
-          "description": "Master Test.jl, Aqua.jl quality checks, and JET.jl static analysis for Julia testing. Use when writing unit tests, organizing test suites, or validating package quality."
-        },
-        {
-          "name": "neural-pde",
-          "specialization": "Physics-Informed Neural Networks",
-          "description": "Solve PDEs with physics-informed neural networks using NeuralPDE.jl. Use when solving PDEs with neural networks, enforcing boundary conditions, or combining ML with physics."
-        },
-        {
-          "name": "core-julia-patterns",
-          "specialization": "Julia Language Fundamentals",
-          "description": "Master multiple dispatch, type system, parametric types, type stability, and metaprogramming for high-performance Julia. Use when designing type hierarchies, debugging @code_warntype issues, optimizing with @inbounds/@simd/StaticArrays, or writing macros and generated functions."
-        },
-        {
-          "name": "package-management",
-          "specialization": "Julia Package Management",
-          "description": "Master Julia package management with Pkg.jl, Project.toml, and Manifest.toml for reproducible environments. Use when managing dependencies, specifying compatibility bounds, or setting up project environments."
-        },
-        {
-          "name": "differential-equations",
-          "specialization": "Julia DiffEq",
-          "description": "Solve ODE/SDE/PDE with DifferentialEquations.jl. Use when defining differential equation systems, selecting solvers, implementing callbacks, or creating ensemble simulations."
-        },
-        {
-          "name": "ci-cd-patterns",
-          "specialization": "Julia CI/CD",
-          "description": "Master GitHub Actions for Julia packages with test matrices, CompatHelper, TagBot, and documentation deployment. Use when setting up CI workflows for Julia packages."
-        },
-        {
-          "name": "mcmc-diagnostics",
-          "specialization": "Bayesian Diagnostics",
-          "description": "Master MCMC convergence diagnostics with R-hat, ESS, trace plots, and divergence checking. Use when validating Bayesian inference results from Turing.jl."
-        },
-        {
-          "name": "compiler-patterns",
-          "specialization": "Julia Compilation",
-          "description": "Create system images and standalone executables with PackageCompiler.jl. Use when reducing startup time or deploying Julia applications without requiring Julia installation."
-        },
-        {
-          "name": "turing-model-design",
-          "specialization": "Bayesian Modeling",
-          "description": "Design probabilistic models with Turing.jl including prior selection, hierarchical models, and non-centered parameterization. Use when building Bayesian models for inference."
-        },
-        {
-          "name": "modeling-toolkit",
-          "specialization": "Symbolic Modeling",
-          "description": "Define symbolic differential equations with ModelingToolkit.jl for automatic simplification and code generation. Use when building complex mathematical models declaratively."
-        }
-      ],
-      "domains": [
-        "DevOps",
-        "High Performance Computing",
-        "Observability",
-        "Performance Optimization",
-        "Quality Engineering",
-        "Scientific Computing"
-      ]
-    },
-    {
-      "name": "agent-orchestration",
-      "path": "/Users/b80985/Projects/MyClaude/plugins/agent-orchestration",
-      "agents": [
-        {
-          "name": "systems-architect",
-          "specialization": "",
-          "description": "Senior Systems Architect specialized in high-level system design, architectural pattern analysis, and cross-domain optimization"
-        },
-        {
-          "name": "multi-agent-orchestrator",
+          "name": "orchestrator",
           "specialization": "Multi-Agent Workflow Orchestration",
           "description": "Multi-agent orchestrator specializing in workflow coordination and distributed systems. Expert in agent team assembly and task allocation for scalable collaboration. Delegates domain-specific work to specialist agents."
         },
         {
-          "name": "context-manager",
+          "name": "context-specialist",
           "specialization": "Context Engineering & Memory Systems",
-          "description": "Elite AI context engineering specialist mastering dynamic context management, vector databases, knowledge graphs, and intelligent memory systems. Orchestrates context across multi-agent workflows, enterprise AI systems, and long-running projects with 2026 best practices. Use PROACTIVELY for complex AI orchestration."
+          "description": "Elite AI context engineering specialist mastering dynamic context management, vector databases, knowledge graphs, and intelligent memory systems. Orchestrates context across multi-agent workflows, enterprise AI systems, and long-running projects."
+        },
+        {
+          "name": "reasoning-engine",
+          "specialization": "Advanced Reasoning & Cognitive Tasks",
+          "description": "Expert in advanced reasoning, prompt design, and cognitive tasks. Unifies capabilities of Prompt Engineering and AI Reasoning. Masters Chain-of-Thought, Tree-of-Thought, and constitutional AI principles."
         }
       ],
-      "skills": [
-        {
-          "name": "multi-agent-coordination",
-          "specialization": "Multi-Agent Workflow Orchestration",
-          "description": "Coordinate multiple AI agents through workflow orchestration, task allocation, and distributed systems. Use when designing DAG-based workflows with task dependencies, building agent team assembly with capability matching, implementing inter-agent communication protocols, orchestrating parallel execution with synchronization, designing fault-tolerant systems with retry logic, or managing distributed agent teams."
-        },
-        {
-          "name": "agent-performance-optimization",
-          "specialization": "Agent Performance Tuning",
-          "description": "Optimize AI agent performance through monitoring, metrics collection, caching, and load balancing. Use when analyzing agent execution bottlenecks, implementing latency percentiles (P50/P95/P99), setting up multi-tier caching, tracking success/failure rates, load balancing across agent instances, or scaling agent systems for production."
-        }
-      ],
-      "domains": [
-        "High Performance Computing",
-        "Observability",
-        "Performance Optimization"
-      ]
-    },
-    {
-      "name": "llm-application-dev",
-      "path": "/Users/b80985/Projects/MyClaude/plugins/llm-application-dev",
-      "agents": [
-        {
-          "name": "prompt-engineer",
-          "specialization": "LLM Optimization & Prompt Design",
-          "description": "Expert prompt engineer specializing in advanced prompting techniques, LLM optimization, and AI system design. Masters chain-of-thought, constitutional AI, and production prompt strategies. Use when building AI features, improving agent performance, or crafting system prompts."
-        },
-        {
-          "name": "ai-engineer",
-          "specialization": "LLM Applications, RAG Systems, Agentic AI",
-          "description": "Build production-ready LLM applications, advanced RAG systems, and intelligent agents. Implements vector search, multimodal AI, agent orchestration, and enterprise AI integrations. Use PROACTIVELY for LLM features, chatbots, AI agents, or AI-powered applications."
-        }
-      ],
-      "skills": [],
-      "domains": [
-        "Performance Optimization"
-      ]
-    },
-    {
-      "name": "framework-migration",
-      "path": "/Users/b80985/Projects/MyClaude/plugins/framework-migration",
-      "agents": [
-        {
-          "name": "legacy-modernizer",
-          "specialization": "Safe Incremental Legacy Modernization",
-          "description": "Refactor legacy codebases, migrate outdated frameworks, and implement gradual modernization. Handles technical debt, dependency updates, and backward compatibility. Use PROACTIVELY for legacy system updates, framework migrations, or technical debt reduction."
-        },
-        {
-          "name": "architect-review",
-          "specialization": "Enterprise Architecture & System Design",
-          "description": "Master software architect specializing in modern architecture patterns, clean architecture, microservices, event-driven systems, and DDD. Reviews system designs and code changes for architectural integrity, scalability, and maintainability. Use PROACTIVELY for architectural decisions."
-        }
-      ],
-      "skills": [
-        {
-          "name": "angular-migration",
-          "specialization": "AngularJS to Angular",
-          "description": "Migrate AngularJS (1.x) to Angular (2+) using hybrid mode, ngUpgrade, component conversion, dependency injection updates, and routing migration. Use when upgrading legacy AngularJS apps incrementally or implementing hybrid AngularJS/Angular applications."
-        },
-        {
-          "name": "react-modernization",
-          "specialization": "React Migration & Hooks",
-          "description": "Upgrade React 16\u219217\u219218, migrate class components to hooks (useState, useEffect, useContext), adopt concurrent features (Suspense, transitions), apply codemods, optimize with memo/useMemo/useCallback, and add TypeScript. Use for class-to-hooks migration, lifecycle conversion, or React 18 adoption."
-        },
-        {
-          "name": "dependency-upgrade",
-          "specialization": "Package Management",
-          "description": "Manage major dependency upgrades with semver analysis, compatibility matrices, staged rollouts, codemods, and testing. Use when upgrading frameworks (React, Angular, Vue), resolving peer dependency conflicts, or implementing automated updates with Renovate/Dependabot."
-        },
-        {
-          "name": "database-migration",
-          "specialization": "Schema Evolution",
-          "description": "Execute database migrations across ORMs (Sequelize, TypeORM, Prisma, Django) with zero-downtime strategies, rollback procedures, and data transformations. Use when adding/removing columns, renaming tables, changing types, or implementing blue-green deployments."
-        }
-      ],
-      "domains": [
-        "Quality Engineering"
-      ]
-    },
-    {
-      "name": "systems-programming",
-      "path": "/Users/b80985/Projects/MyClaude/plugins/systems-programming",
-      "agents": [
-        {
-          "name": "golang-pro",
-          "specialization": "Modern Go Systems & Concurrency",
-          "description": "Master Go 1.21+ with modern patterns, advanced concurrency, performance optimization, and production-ready microservices. Expert in the latest Go ecosystem including generics, workspaces, and cutting-edge frameworks. Use PROACTIVELY for Go development, architecture design, or performance optimization."
-        },
-        {
-          "name": "cpp-pro",
-          "specialization": "Modern C++ Systems Programming",
-          "description": "Master C++ programmer specializing in modern C++11/14/17/20/23, template metaprogramming, RAII, move semantics, and high-performance systems. Expert in STL algorithms, concurrency, and zero-cost abstractions. Use PROACTIVELY for C++ development, refactoring, or performance optimization."
-        },
-        {
-          "name": "rust-pro",
-          "specialization": "Modern Rust Systems Programming",
-          "description": "Master Rust 1.75+ with modern async patterns, advanced type system features, and production-ready systems programming. Expert in the latest Rust ecosystem including Tokio, axum, and cutting-edge crates. Use PROACTIVELY for Rust development, performance optimization, or systems programming."
-        },
-        {
-          "name": "c-pro",
-          "specialization": "Systems Programming & Embedded Development",
-          "description": "Master C programmer specializing in systems programming, embedded development, memory management, and performance-critical code. Expert in POSIX APIs, kernel programming, and low-level optimization. Use PROACTIVELY for C development, memory debugging, or systems-level programming."
-        }
-      ],
-      "skills": [],
-      "domains": [
-        "Performance Optimization"
-      ]
-    },
-    {
-      "name": "unit-testing",
-      "path": "/Users/b80985/Projects/MyClaude/plugins/unit-testing",
-      "agents": [
-        {
-          "name": "test-automator",
-          "specialization": "Test Automation + Quality Engineering Strategy",
-          "description": "Master AI-powered test automation with modern frameworks, self-healing tests, and comprehensive quality engineering. Build scalable testing strategies with advanced CI/CD integration. Use PROACTIVELY for testing automation or quality assurance."
-        },
-        {
-          "name": "debugger",
-          "specialization": "Root Cause Analysis & Distributed Debugging",
-          "description": "AI-assisted debugging specialist for errors, test failures, and unexpected behavior with LLM-driven RCA, automated log correlation, observability integration, and distributed system debugging. Use proactively when encountering issues."
-        }
-      ],
-      "skills": [
-        {
-          "name": "e2e-testing-patterns",
-          "specialization": "E2E Test Automation",
-          "description": "Build reliable E2E tests with Playwright and Cypress for web testing, browser automation, and CI/CD integration. Use when writing E2E tests, implementing Page Object Model, mocking APIs, visual regression, or accessibility testing."
-        }
-      ],
-      "domains": [
-        "DevOps",
-        "Observability",
-        "Quality Engineering"
-      ]
-    },
-    {
-      "name": "ai-reasoning",
-      "path": "/Users/b80985/Projects/MyClaude/plugins/ai-reasoning",
-      "agents": [
-        {
-          "name": "ai-systems-architect",
-          "specialization": "",
-          "description": "AI Systems Architect specialized in LLM application design, neural architecture search, and agentic system patterns"
-        }
-      ],
-      "skills": [
-        {
-          "name": "comprehensive-reflection-framework",
-          "specialization": "Multi-Dimensional Analysis",
-          "description": "Orchestrate reflection across cognitive, technical, scientific, and strategic dimensions for integrated insights and cross-cutting patterns. Use for quarterly reviews, major milestones, grant proposals, strategic planning, or comprehensive project health assessments."
-        },
-        {
-          "name": "meta-cognitive-reflection",
-          "specialization": "AI Reasoning Analysis",
-          "description": "Analyze AI reasoning patterns, cognitive biases, problem-solving quality, and communication effectiveness through systematic meta-cognitive reflection. Use for session reflections, reasoning audits, bias detection, and continuous improvement."
-        },
-        {
-          "name": "structured-reasoning",
-          "specialization": "Systematic Problem-Solving",
-          "description": "Apply structured reasoning with systematic thought processing, branching exploration, multi-framework analysis (First Principles, Root Cause Analysis, Decision Analysis), and auditability. Use for complex debugging, architectural decisions, strategic planning, novel problems, and high-stakes decisions requiring explicit reasoning chains."
-        }
-      ],
-      "domains": [
-        "Scientific Computing"
-      ]
-    },
-    {
-      "name": "agent-core",
-      "path": "/Users/b80985/Projects/MyClaude/plugins/agent-core",
-      "agents": [],
       "skills": [
         {
           "name": "advanced-reasoning",
@@ -1083,288 +262,6 @@
         }
       ],
       "domains": []
-    },
-    {
-      "name": "javascript-typescript",
-      "path": "/Users/b80985/Projects/MyClaude/plugins/javascript-typescript",
-      "agents": [
-        {
-          "name": "javascript-pro",
-          "specialization": "",
-          "description": "Master modern JavaScript with ES6+, async patterns, and Node.js APIs. Handles promises, event loops, and browser/Node compatibility. Use PROACTIVELY for JavaScript optimization, async debugging, or complex JS patterns."
-        },
-        {
-          "name": "typescript-pro",
-          "specialization": "",
-          "description": "Master TypeScript with advanced types, generics, and strict type safety. Handles complex type systems, decorators, and enterprise-grade patterns. Use PROACTIVELY for TypeScript architecture, type inference optimization, or advanced typing patterns."
-        }
-      ],
-      "skills": [],
-      "domains": [
-        "Performance Optimization",
-        "Quality Engineering"
-      ]
-    },
-    {
-      "name": "git-pr-workflows",
-      "path": "/Users/b80985/Projects/MyClaude/plugins/git-pr-workflows",
-      "agents": [
-        {
-          "name": "code-reviewer",
-          "specialization": "Security-First Code Review & Analysis",
-          "description": "Elite code review expert specializing in modern AI-powered code analysis, security vulnerabilities, performance optimization, and production reliability. Masters static analysis tools, security scanning, and configuration review with 2024/2025 best practices. Use PROACTIVELY for code quality assurance."
-        }
-      ],
-      "skills": [
-        {
-          "name": "git-pr-patterns",
-          "specialization": "Version Control",
-          "description": "Master Git workflows, branching strategies, and PR best practices. Use when writing git commands, creating branches, committing, resolving conflicts, or managing pull requests."
-        },
-        {
-          "name": "git-advanced-workflows",
-          "specialization": "Git History Management",
-          "description": "Master advanced Git including interactive rebase, cherry-pick, bisect, worktrees, and reflog for clean history and recovery. Use when cleaning up commits before PRs, applying fixes across branches, finding bug-introducing commits, or recovering from Git mistakes."
-        }
-      ],
-      "domains": [
-        "Performance Optimization",
-        "Security"
-      ]
-    },
-    {
-      "name": "cicd-automation",
-      "path": "/Users/b80985/Projects/MyClaude/plugins/cicd-automation",
-      "agents": [
-        {
-          "name": "terraform-specialist",
-          "specialization": "Infrastructure as Code & State Management Excellence",
-          "description": "Expert Terraform/OpenTofu specialist mastering advanced IaC automation, state management, and enterprise infrastructure patterns. Handles complex module design, multi-cloud deployments, GitOps workflows, policy as code, and CI/CD integration. Covers migration strategies, security best practices, and modern IaC ecosystems. Use PROACTIVELY for advanced IaC, state management, or infrastructure automation."
-        },
-        {
-          "name": "kubernetes-architect",
-          "specialization": "Cloud-Native Platform Architecture & GitOps Automation",
-          "description": "Expert Kubernetes architect specializing in cloud-native infrastructure, advanced GitOps workflows (ArgoCD/Flux), and enterprise container orchestration. Masters EKS/AKS/GKE, service mesh (Istio/Linkerd), progressive delivery, multi-tenancy, and platform engineering. Handles security, observability, cost optimization, and developer experience. Use PROACTIVELY for K8s architecture, GitOps implementation, or cloud-native platform design."
-        },
-        {
-          "name": "cloud-architect",
-          "specialization": "Multi-cloud Infrastructure & Cost Optimization",
-          "description": "Expert cloud architect specializing in AWS/Azure/GCP multi-cloud infrastructure design, advanced IaC (Terraform/OpenTofu/CDK), FinOps cost optimization, and modern architectural patterns. Masters serverless, microservices, security, compliance, and disaster recovery. Use PROACTIVELY for cloud architecture, cost optimization, migration planning, or multi-cloud strategies."
-        },
-        {
-          "name": "deployment-engineer",
-          "specialization": "CI/CD Pipelines & Progressive Deployment Automation",
-          "description": "Expert deployment engineer specializing in modern CI/CD pipelines, GitOps workflows, and advanced deployment automation. Masters GitHub Actions, ArgoCD/Flux, progressive delivery, container security, and platform engineering. Handles zero-downtime deployments, security scanning, and developer experience optimization. Use PROACTIVELY for CI/CD design, GitOps implementation, or deployment automation."
-        },
-        {
-          "name": "devops-troubleshooter",
-          "specialization": "Incident Response & Observability-Driven Debugging",
-          "description": "Expert DevOps troubleshooter specializing in rapid incident response, advanced debugging, and modern observability. Masters log analysis, distributed tracing, Kubernetes debugging, performance optimization, and root cause analysis. Handles production outages, system reliability, and preventive monitoring. Use PROACTIVELY for debugging, incident response, or system troubleshooting."
-        }
-      ],
-      "skills": [
-        {
-          "name": "gitlab-ci-patterns",
-          "specialization": "GitLab CI/CD",
-          "description": "Build GitLab CI/CD pipelines with multi-stage workflows, caching, Docker builds, Kubernetes deployments, and security scanning. Use when creating .gitlab-ci.yml pipelines, setting up runners, implementing Terraform/IaC, or configuring GitOps workflows."
-        },
-        {
-          "name": "iterative-error-resolution",
-          "specialization": "CI/CD Error Resolution & Knowledge-Based Fixing",
-          "description": "Iterative CI/CD error resolution with pattern recognition, automated fixes, and learning from outcomes. Use when debugging GitHub Actions, fixing dependency/build/test failures, or implementing automated error resolution loops."
-        },
-        {
-          "name": "secrets-management",
-          "specialization": "Credential Security",
-          "description": "Implement secrets management with HashiCorp Vault, AWS Secrets Manager, Azure Key Vault, or platform-native solutions with encryption, rotation, and access control. Use when storing API keys, database passwords, TLS certificates, or implementing secret rotation."
-        },
-        {
-          "name": "deployment-pipeline-design",
-          "specialization": "CI/CD Architecture",
-          "description": "Design multi-stage CI/CD pipelines with approval gates, security checks, and progressive delivery (rolling, blue-green, canary, feature flags). Use when architecting deployment workflows, implementing GitOps, or establishing multi-environment promotion strategies."
-        },
-        {
-          "name": "github-actions-templates",
-          "specialization": "CI/CD Automation",
-          "description": "Create production GitHub Actions workflows for testing, building, and deploying. Use when setting up CI pipelines, Docker builds, Kubernetes deployments, matrix builds, security scans, or reusable workflows."
-        },
-        {
-          "name": "security-ci-template",
-          "specialization": "CI/CD Security Scanning",
-          "description": "Security scanning and lock file validation templates for CI/CD pipelines. Use when implementing SAST/DAST scanning, dependency vulnerability checks, lock file validation, or automated security gates in GitHub Actions or GitLab CI."
-        }
-      ],
-      "domains": [
-        "DevOps",
-        "Observability",
-        "Performance Optimization",
-        "Quality Engineering",
-        "Security"
-      ]
-    },
-    {
-      "name": "machine-learning",
-      "path": "/Users/b80985/Projects/MyClaude/plugins/machine-learning",
-      "agents": [
-        {
-          "name": "ml-engineer",
-          "specialization": "Production Model Serving & ML Infrastructure",
-          "description": "Build production ML systems with PyTorch 2.x, TensorFlow, and modern ML frameworks. Implements model serving, feature engineering, A/B testing, and monitoring. Use PROACTIVELY for ML model deployment, inference optimization, or production ML infrastructure."
-        },
-        {
-          "name": "mlops-engineer",
-          "specialization": "ML Pipelines & Infrastructure Automation",
-          "description": "Build comprehensive ML pipelines, experiment tracking, and model registries with MLflow, Kubeflow, and modern MLOps tools. Implements automated training, deployment, and monitoring across cloud platforms. Use PROACTIVELY for ML infrastructure, experiment management, or pipeline automation."
-        },
-        {
-          "name": "data-scientist",
-          "specialization": "Advanced Analytics & ML Modeling",
-          "description": "Expert data scientist for advanced analytics, machine learning, and statistical modeling. Handles complex data analysis, predictive modeling, and business intelligence. Use PROACTIVELY for data analysis tasks, ML modeling, statistical analysis, and data-driven insights."
-        },
-        {
-          "name": "data-engineer",
-          "specialization": "Data Pipelines & ETL Architecture",
-          "description": "Expert data engineer specializing in scalable data pipelines, ETL/ELT architecture, data quality frameworks, and production data infrastructure. Handles data ingestion, validation, versioning, and storage optimization for ML systems."
-        }
-      ],
-      "skills": [
-        {
-          "name": "machine-learning-essentials",
-          "specialization": "Core ML Workflows",
-          "description": "Core ML workflows with scikit-learn, XGBoost, LightGBM including algorithm selection, cross-validation, hyperparameter tuning (GridSearch, Optuna), handling imbalanced data (SMOTE), model evaluation, SHAP interpretability, and deployment. Use when building classification/regression models or evaluating ML performance."
-        },
-        {
-          "name": "ml-pipeline-workflow",
-          "specialization": "MLOps Pipeline Orchestration",
-          "description": "Build end-to-end MLOps pipelines with Airflow, Dagster, Kubeflow, or Prefect for data preparation, training, validation, and deployment. Use when creating DAG definitions, workflow configs, or orchestrating ML lifecycle stages."
-        },
-        {
-          "name": "ml-engineering-production",
-          "specialization": "Production ML Engineering Practices",
-          "description": "Software and data engineering best practices for production ML. Type-safe code, pytest testing, pre-commit hooks, pandas/SQL pipelines, and modern project structure. Use when building maintainable ML systems."
-        },
-        {
-          "name": "model-deployment-serving",
-          "specialization": "Production ML Model Serving & Deployment",
-          "description": "Deploy ML models with FastAPI, TorchServe, BentoML, Docker, Kubernetes, and cloud platforms. Implement monitoring, A/B testing, and drift detection. Use when building model serving APIs, containerizing models, or setting up production ML infrastructure."
-        },
-        {
-          "name": "devops-ml-infrastructure",
-          "specialization": "CI/CD & Infrastructure for ML Systems",
-          "description": "DevOps for ML with GitHub Actions pipelines, Terraform IaC, Docker/Kubernetes, and cloud ML platforms (SageMaker, Azure ML, Vertex AI). Use when automating training, deploying models, or provisioning ML infrastructure."
-        },
-        {
-          "name": "advanced-ml-systems",
-          "specialization": "Deep Learning Systems",
-          "description": "Build advanced deep learning with PyTorch 2.x, TensorFlow, JAX including architectures (CNNs, Transformers, GANs), distributed training (DDP, FSDP, DeepSpeed), hyperparameter optimization (Optuna, Ray Tune), and model optimization (quantization, pruning, distillation). Use when training scripts, custom architectures, or scaling to multi-GPU/TPU."
-        },
-        {
-          "name": "data-wrangling-communication",
-          "specialization": "Data Cleaning & Visualization",
-          "description": "Comprehensive data wrangling, cleaning, feature engineering, and visualization workflows using pandas, NumPy, Matplotlib, Seaborn, and Plotly. Use when cleaning messy datasets, handling missing values, dealing with outliers, engineering features, performing EDA, creating statistical visualizations, building interactive dashboards with Plotly Dash or Streamlit, or presenting data-driven insights to stakeholders."
-        },
-        {
-          "name": "statistical-analysis-fundamentals",
-          "specialization": "Statistical Analysis",
-          "description": "Comprehensive statistical analysis with scipy.stats, statsmodels, and PyMC3 including hypothesis testing, Bayesian methods, regression, experimental design, and causal inference. Use when conducting A/B tests, power analysis, or treatment effect estimation."
-        }
-      ],
-      "domains": [
-        "DevOps",
-        "Observability",
-        "Performance Optimization",
-        "Quality Engineering",
-        "Scientific Computing"
-      ]
-    },
-    {
-      "name": "cli-tool-design",
-      "path": "/Users/b80985/Projects/MyClaude/plugins/cli-tool-design",
-      "agents": [
-        {
-          "name": "command-systems-engineer",
-          "specialization": "CLI Tool Design & Developer Automation",
-          "description": "Command systems engineer specializing in CLI tool design and developer automation. Expert in command development, interactive prompts, and workflow tools. Delegates web UIs to fullstack-developer."
-        }
-      ],
-      "skills": [
-        {
-          "name": "programming-scripting-languages",
-          "specialization": "Multi-Language CLI Development",
-          "description": "Master CLI development across Python (Click, Typer), Bash, PowerShell, and Go (Cobra). Use when implementing argument parsing, creating shell automation scripts, building Go CLIs with Cobra, designing interactive prompts, handling subcommands, or creating cross-platform CLI tools."
-        },
-        {
-          "name": "cli-tool-design-production",
-          "specialization": "CLI Tool Development",
-          "description": "Build production-ready CLI tools with Python Click/Typer, Node.js Commander/Inquirer, Go Cobra, and shell scripting. Use when creating command-line applications with interactive prompts, implementing developer workflow automation, designing project scaffolding tools, building TUIs with progress bars and spinners, or creating deployment and release automation tools."
-        }
-      ],
-      "domains": [
-        "DevOps"
-      ]
-    },
-    {
-      "name": "statistical-physics",
-      "path": "/Users/b80985/Projects/MyClaude/plugins/statistical-physics",
-      "agents": [
-        {
-          "name": "non-equilibrium-expert",
-          "specialization": "Non-Equilibrium Statistical Mechanics & Transport Theory",
-          "description": "Non-equilibrium statistical physicist expert specializing in driven systems, active matter, and complex dynamics. Expert in fluctuation theorems, transport theory, stochastic dynamics, master/Fokker-Planck equations, and NEMD simulations for materials design. Leverages four core skills for theory development, property prediction, and experimental validation."
-        },
-        {
-          "name": "correlation-function-expert",
-          "specialization": "Correlation Functions & Statistical Mechanics Analysis",
-          "description": "Correlation function expert specializing in statistical physics and complex systems. Expert in higher-order correlations, FFT-based O(N log N) algorithms, JAX-accelerated GPU computation, and experimental data interpretation (DLS, SAXS/SANS, XPCS, FCS). Leverages four core skills bridging theoretical foundations to practical computational analysis for multi-scale scientific research. Delegates JAX optimization to jax-pro."
-        }
-      ],
-      "skills": [
-        {
-          "name": "non-equilibrium-theory",
-          "specialization": "Non-Equilibrium Physics",
-          "description": "Apply non-equilibrium thermodynamics including fluctuation theorems, entropy production, and linear response theory. Use when modeling irreversible processes, analyzing driven systems, or deriving transport coefficients."
-        },
-        {
-          "name": "correlation-math-foundations",
-          "specialization": "",
-          "description": "Mathematical foundations of correlation functions including two-point C(r), higher-order \u03c7\u2084(t), cumulants, Fourier/Laplace/wavelet transforms, Wiener-Khinchin theorem, Ornstein-Zernike equations, fluctuation-dissipation theorem, and Green's functions. Use when developing correlation theory or connecting microscopic correlations to macroscopic response."
-        },
-        {
-          "name": "correlation-experimental-data",
-          "specialization": "Experimental Correlation Analysis",
-          "description": "Interpret experimental correlation data from DLS (g\u2082(\u03c4), Siegert relation, Stokes-Einstein), SAXS/SANS (S(q), g(r), Guinier/Porod analysis), XPCS (two-time correlation, aging), FCS (diffusion time, binding kinetics), and rheology (Green-Kubo, microrheology). Extract physical parameters, perform Bayesian model fitting, and validate against theoretical predictions."
-        },
-        {
-          "name": "correlation-physical-systems",
-          "specialization": "Physical System Correlations",
-          "description": "Map correlation functions to physical systems including condensed matter (spin correlations, critical exponents \u03be ~ |T-Tc|^(-\u03bd)), soft matter (polymer Rouse/Zimm dynamics, colloidal g(r), glass \u03c7\u2084), biological systems (protein folding, membrane fluctuations), and non-equilibrium (active matter, transfer entropy). Use for materials characterization, transport predictions, or connecting experiments to theory."
-        },
-        {
-          "name": "correlation-computational-methods",
-          "specialization": "Correlation Algorithms",
-          "description": "Implement efficient correlation algorithms including FFT-based O(N log N) autocorrelation (50,000\u00d7 speedup), multi-tau correlators for wide dynamic ranges, KD-tree spatial correlations, JAX-accelerated GPU computation (200\u00d7 speedup), and statistical validation (bootstrap, convergence). Use when optimizing calculations for MD trajectories, DLS, XPCS, or large experimental datasets."
-        },
-        {
-          "name": "active-matter",
-          "specialization": "Active Matter Physics",
-          "description": "Model active matter including self-propelled particles, flocking, pattern formation, and collective behavior. Use when simulating ABPs, Vicsek model, MIPS, reaction-diffusion systems, or designing bio-inspired materials."
-        },
-        {
-          "name": "data-analysis",
-          "specialization": "Experimental Data Analysis",
-          "description": "Analyze experimental correlation data from DLS, SAXS/SANS, rheology, and microscopy using Green-Kubo relations, Bayesian inference (MCMC), and model validation. Use when interpreting scattering data, validating non-equilibrium theories, or predicting transport coefficients."
-        },
-        {
-          "name": "stochastic-dynamics",
-          "specialization": "Stochastic Processes",
-          "description": "Model stochastic dynamics using master equations, Fokker-Planck, Langevin dynamics, and Green-Kubo transport theory. Use when simulating noise-driven systems, calculating transport coefficients, or modeling rare events."
-        }
-      ],
-      "domains": [
-        "Performance Optimization",
-        "Quality Engineering",
-        "Scientific Computing"
-      ]
     },
     {
       "name": "infrastructure-suite",
@@ -1408,159 +305,33 @@
         "Observability",
         "Security"
       ]
-    },
-    {
-      "name": "debugging-toolkit",
-      "path": "/Users/b80985/Projects/MyClaude/plugins/debugging-toolkit",
-      "agents": [
-        {
-          "name": "debugger",
-          "specialization": "Systematic Root Cause Analysis with AI-Driven Hypothesis Generation",
-          "description": "AI-assisted debugging specialist for errors, test failures, and unexpected behavior with LLM-driven RCA, automated log correlation, observability integration, and distributed system debugging. Expert in systematic investigation, performance profiling, memory leak detection, and production incident response."
-        },
-        {
-          "name": "dx-optimizer",
-          "specialization": "Systematic Friction Elimination with Measurable Impact",
-          "description": "Developer Experience specialist. Improves tooling, setup, and workflows. Use PROACTIVELY when setting up new projects, after team feedback, or when development friction is noticed."
-        }
-      ],
-      "skills": [
-        {
-          "name": "debugging-strategies",
-          "specialization": "Systematic Debugging",
-          "description": "Systematic debugging with scientific method, profiling, RCA across any stack. Use for runtime errors, performance issues, memory leaks, flaky bugs, production debugging with Chrome DevTools, VS Code, pdb/ipdb, Delve, git bisect."
-        },
-        {
-          "name": "ai-assisted-debugging",
-          "specialization": "AI-Powered Debugging & RCA",
-          "description": "AI/LLM for automated stack trace analysis, intelligent RCA, ML log correlation in distributed systems. Use for Python/JS/Go exceptions, K8s pod failures, automated anomaly detection on logs/metrics, correlating git commits with production incidents."
-        },
-        {
-          "name": "observability-sre-practices",
-          "specialization": "SRE and Observability",
-          "description": "Production observability, monitoring, SRE with OpenTelemetry, Prometheus, Grafana, incident management. Use for tracing/metrics/logs, SLOs/SLIs, alerts with AlertManager, Golden Signals, incident response, post-mortems, error budgets."
-        }
-      ],
-      "domains": [
-        "Observability",
-        "Performance Optimization",
-        "Scientific Computing"
-      ]
     }
   ],
   "capability_matrix": {
     "High Performance Computing": [
-      "hpc-computing",
-      "molecular-simulation",
-      "data-visualization",
-      "science-suite",
-      "julia-development",
-      "agent-orchestration"
+      "science-suite"
     ],
     "Performance Optimization": [
-      "hpc-computing",
-      "backend-development",
-      "deep-learning",
-      "comprehensive-review",
-      "observability-monitoring",
-      "quality-engineering",
-      "multi-platform-apps",
-      "python-development",
-      "frontend-mobile-development",
-      "codebase-cleanup",
-      "code-documentation",
-      "jax-implementation",
       "science-suite",
-      "full-stack-orchestration",
       "quality-suite",
-      "code-migration",
-      "engineering-suite",
-      "julia-development",
-      "agent-orchestration",
-      "llm-application-dev",
-      "systems-programming",
-      "javascript-typescript",
-      "git-pr-workflows",
-      "cicd-automation",
-      "machine-learning",
-      "statistical-physics",
-      "debugging-toolkit"
-    ],
-    "Scientific Computing": [
-      "hpc-computing",
-      "deep-learning",
-      "observability-monitoring",
-      "data-visualization",
-      "code-documentation",
-      "jax-implementation",
-      "science-suite",
-      "research-methodology",
-      "quality-suite",
-      "code-migration",
-      "julia-development",
-      "ai-reasoning",
-      "machine-learning",
-      "statistical-physics",
-      "debugging-toolkit"
-    ],
-    "Observability": [
-      "backend-development",
-      "observability-monitoring",
-      "multi-platform-apps",
-      "full-stack-orchestration",
-      "julia-development",
-      "agent-orchestration",
-      "unit-testing",
-      "cicd-automation",
-      "machine-learning",
-      "infrastructure-suite",
-      "debugging-toolkit"
+      "engineering-suite"
     ],
     "Quality Engineering": [
-      "backend-development",
-      "comprehensive-review",
-      "observability-monitoring",
-      "quality-engineering",
-      "multi-platform-apps",
-      "python-development",
-      "codebase-cleanup",
-      "jax-implementation",
-      "full-stack-orchestration",
-      "quality-suite",
-      "julia-development",
-      "framework-migration",
-      "unit-testing",
-      "javascript-typescript",
-      "cicd-automation",
-      "machine-learning",
-      "statistical-physics"
+      "science-suite",
+      "quality-suite"
+    ],
+    "Scientific Computing": [
+      "science-suite",
+      "quality-suite"
     ],
     "Security": [
-      "backend-development",
-      "comprehensive-review",
-      "observability-monitoring",
-      "quality-engineering",
-      "codebase-cleanup",
-      "code-documentation",
-      "full-stack-orchestration",
       "quality-suite",
-      "git-pr-workflows",
-      "cicd-automation",
       "infrastructure-suite"
     ],
     "DevOps": [
-      "deep-learning",
-      "quality-engineering",
-      "multi-platform-apps",
-      "python-development",
-      "codebase-cleanup",
-      "jax-implementation",
-      "full-stack-orchestration",
-      "julia-development",
-      "unit-testing",
-      "cicd-automation",
-      "machine-learning",
-      "cli-tool-design",
+      "infrastructure-suite"
+    ],
+    "Observability": [
       "infrastructure-suite"
     ]
   }
