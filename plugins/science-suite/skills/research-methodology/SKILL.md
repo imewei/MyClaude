@@ -16,6 +16,17 @@ For systematic reviews, rigorous experimental design, and publication-quality re
   - *Location*: `plugins/science-suite/agents/research-expert.md`
   - *Capabilities*: Systematic literature reviews (PRISMA), meta-analysis, evidence grading (GRADE), and technical writing.
 
+## Core Skills
+
+### [Evidence Synthesis](./evidence-synthesis/SKILL.md)
+Systematic reviews, meta-analyses, and GRADE evidence evaluation.
+
+### [Scientific Communication](./scientific-communication/SKILL.md)
+IMRaD structuring, technical writing principles, and reporting standards.
+
+### [Research Quality Assessment](./research-quality-assessment/SKILL.md)
+Evaluating rigor, reproducibility, and statistical validity.
+
 ## 1. Experimental Design
 
 ### Core Principles

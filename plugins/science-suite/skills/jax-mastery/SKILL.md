@@ -16,6 +16,29 @@ For complex implementation tasks, JAX optimization, and scientific computing wor
   - *Location*: `plugins/science-suite/agents/jax-pro.md`
   - *Capabilities*: Production-ready JIT/vmap patterns, distributed computing (pmap/sharding), differentiable physics, and probabilistic programming.
 
+## Core Skills
+
+### [JAX Core Programming](./jax-core-programming/SKILL.md)
+Functional transformations, JIT compilation, and array operations.
+
+### [JAX Bayesian Pro](./jax-bayesian-pro/SKILL.md)
+Advanced probabilistic modeling and inference with NumPyro.
+
+### [JAX DiffEq Pro](./jax-diffeq-pro/SKILL.md)
+Numerical differential equation solvers with Diffrax.
+
+### [JAX Optimization Pro](./jax-optimization-pro/SKILL.md)
+Scientific optimization and functional gradients.
+
+### [JAX Physics Applications](./jax-physics-applications/SKILL.md)
+Molecular dynamics, CFD, and physics-informed neural networks.
+
+### [NLSQ Core Mastery](./nlsq-core-mastery/SKILL.md)
+GPU-accelerated nonlinear least squares and curve fitting.
+
+### [NumPyro Core Mastery](./numpyro-core-mastery/SKILL.md)
+Foundational Bayesian inference and MCMC diagnostics.
+
 ## 1. Core Transformations
 
 - **`jax.jit`**: XLA compilation for massive speedups. Always use for hot paths.

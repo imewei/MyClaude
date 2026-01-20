@@ -16,6 +16,20 @@ For complex statistical mechanics problems, active matter simulations, and theor
   - *Location*: `plugins/science-suite/agents/statistical-physicist.md`
   - *Capabilities*: Non-equilibrium thermodynamics, active matter simulations, correlation function analysis, and stochastic calculus.
 
+## Core Skills
+
+### [Stochastic Dynamics](./stochastic-dynamics/SKILL.md)
+Langevin equations, Fokker-Planck modeling, and noise-driven systems.
+
+### [Non-Equilibrium Theory](./non-equilibrium-theory/SKILL.md)
+Fluctuation theorems, entropy production, and driven systems.
+
+### [Active Matter](./active-matter/SKILL.md)
+Self-propelled particles, MIPS, and collective behavior.
+
+### [Correlation Analysis](./data-analysis/SKILL.md)
+FFT-based analysis, structure factors, and dynamic heterogeneity.
+
 ## 1. Equilibrium Statistical Mechanics
 
 - **Ensembles**: Microcanonical (NVE), Canonical (NVT), Grand Canonical (μVT).

@@ -16,6 +16,20 @@ For complex simulation workflows, multi-scale modeling, and HPC execution, deleg
   - *Location*: `plugins/science-suite/agents/simulation-expert.md`
   - *Capabilities*: Large-scale MD (LAMMPS/GROMACS), differentiable physics (JAX-MD), and non-equilibrium thermodynamics.
 
+## Core Skills
+
+### [MD Simulation Setup](./md-simulation-setup/SKILL.md)
+Configuring force fields, ensembles, and boundary conditions.
+
+### [ML Force Fields](./ml-force-fields/SKILL.md)
+Integrating machine learning potentials into physics simulations.
+
+### [Multiscale Modeling](./multiscale-modeling/SKILL.md)
+Bridging scales from atomistic MD to mesoscopic continuum models.
+
+### [Trajectory Analysis](./trajectory-analysis/SKILL.md)
+Computing structural and dynamic properties from simulation data.
+
 ## 1. Stochastic Dynamics & Transport
 
 ### Framework Selection

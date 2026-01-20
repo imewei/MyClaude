@@ -19,6 +19,20 @@ For high-performance computing, GPU optimization, and distributed systems, deleg
   - *Location*: `plugins/science-suite/agents/julia-pro.md`
   - *Capabilities*: Native GPU arrays (`CUDA.jl`), distributed computing (`Distributed.jl`), and multi-threading.
 
+## Core Skills
+
+### [Ecosystem Selection](./ecosystem-selection/SKILL.md)
+Selection criteria for parallel computing frameworks (Python vs Julia).
+
+### [GPU Acceleration](./gpu-acceleration/SKILL.md)
+Native GPU computing using CUDA, CuPy, and CUDA.jl.
+
+### [Numerical Methods Implementation](./numerical-methods-implementation/SKILL.md)
+High-performance solvers for ODEs, PDEs, and linear systems.
+
+### [Parallel Computing Strategy](./parallel-computing-strategy/SKILL.md)
+Architecture patterns for multi-threading and distributed computing.
+
 ## 1. GPU Acceleration (Cross-Platform)
 
 ### Framework Selection

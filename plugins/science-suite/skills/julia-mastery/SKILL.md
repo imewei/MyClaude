@@ -16,6 +16,32 @@ For complex Julia programming, SciML workflows, and performance optimization, de
   - *Location*: `plugins/science-suite/agents/julia-pro.md`
   - *Capabilities*: Performance tuning, stiff ODE solvers, Bayesian inference, and CI/CD setup.
 
+## Core Skills
+
+### [Core Julia Patterns](./core-julia-patterns/SKILL.md)
+Multiple dispatch, type stability, and functional programming.
+
+### [SciML Ecosystem](./sciml-ecosystem/SKILL.md)
+Unified framework for scientific machine learning and modeling.
+
+### [Differential Equations](./differential-equations/SKILL.md)
+High-performance ODE, PDE, SDE, and DAE solvers.
+
+### [ModelingToolkit](./modeling-toolkit/SKILL.md)
+Symbolic-numeric modeling and acausal system design.
+
+### [Neural PDE](./neural-pde/SKILL.md)
+Physics-informed neural networks (PINNs) in Julia.
+
+### [Turing Model Design](./turing-model-design/SKILL.md)
+Bayesian inference and probabilistic programming.
+
+### [Performance Tuning](./performance-tuning/SKILL.md)
+Memory optimization, type stability, and benchmarking.
+
+### [Package Development](./package-development-workflow/SKILL.md)
+Scaffolding, testing, and CI/CD for Julia packages.
+
 ## 1. Multiple Dispatch & Type System
 
 - **Multiple Dispatch**: Design functions that specialize based on all argument types.
