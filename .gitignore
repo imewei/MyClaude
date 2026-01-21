@@ -199,6 +199,7 @@ temp/
 # Claude Code guidance file (auto-generated)
 CLAUDE.md
 !memory/CLAUDE.md
+memory/settings.json
 
 # Agent-OS development framework (internal use)
 agent-os/

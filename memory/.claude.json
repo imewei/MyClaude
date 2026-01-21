@@ -1,0 +1,40 @@
+{
+  "mcpServers": {
+    "codex-cli-mcp": {
+      "type": "stdio",
+      "command": "npx",
+      "args": [
+        "-y",
+        "codex-cli-mcp-tool"
+      ],
+      "env": {}
+    },
+    "gemini-cli": {
+      "type": "stdio",
+      "command": "npx",
+      "args": [
+        "-y",
+        "@tuannvm/gemini-mcp-server"
+      ],
+      "env": {}
+    },
+    "sequential-thinking": {
+      "type": "stdio",
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-sequential-thinking"
+      ],
+      "env": {}
+    },
+    "voicemode": {
+      "type": "stdio",
+      "command": "uvx",
+      "args": [
+        "--refresh",
+        "voice-mode"
+      ],
+      "env": {}
+    }
+  }
+}
