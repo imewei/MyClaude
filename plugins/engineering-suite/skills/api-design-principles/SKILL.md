@@ -1,6 +1,8 @@
+---
 name: api-design-principles
 version: "2.1.0"
 description: Master REST and GraphQL API design including resource-oriented architecture, HTTP semantics, pagination (cursor/offset), versioning strategies, error handling, HATEOAS, DataLoader patterns, and documentation. Use when designing new APIs, implementing pagination, handling errors, or establishing API standards.
+---
 
 # API Design Principles
 

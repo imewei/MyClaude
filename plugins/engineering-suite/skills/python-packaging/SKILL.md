@@ -1,6 +1,8 @@
+---
 name: python-packaging
 version: "2.1.0"
 description: Create distributable Python packages with pyproject.toml, proper project structure, and publishing to PyPI. Use when writing pyproject.toml or setup.py, creating package structures with __init__.py, building wheel/source distributions, setting up CLI entry points, configuring build backends (setuptools, hatchling), or publishing to PyPI/TestPyPI.
+---
 
 # Python Packaging
 
