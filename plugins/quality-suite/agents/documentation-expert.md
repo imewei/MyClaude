@@ -1,6 +1,6 @@
 ---
 name: documentation-expert
-version: "3.0.0"
+version: "2.1.0"
 color: blue
 description: Expert in creating clear, comprehensive, and accurate technical documentation, manuals, and tutorials. Unifies capabilities of documentation architecture and tutorial engineering.
 model: sonnet

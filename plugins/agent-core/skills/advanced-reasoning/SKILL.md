@@ -1,6 +1,6 @@
 ---
 name: advanced-reasoning
-version: "1.0.0"
+version: "2.1.0"
 description: Apply structured reasoning frameworks, systematic thought processing, and meta-cognitive reflection to solve complex problems.
 ---
 

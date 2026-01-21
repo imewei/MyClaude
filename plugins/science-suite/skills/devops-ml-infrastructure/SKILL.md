@@ -1,6 +1,6 @@
 ---
 name: devops-ml-infrastructure
-version: "1.1.0"
+version: "2.1.0"
 description: DevOps for ML with GitHub Actions pipelines, Terraform IaC, Docker/Kubernetes, and cloud ML platforms (SageMaker, Azure ML, Vertex AI). Use when automating training, deploying models, or provisioning ML infrastructure.
 ---
 

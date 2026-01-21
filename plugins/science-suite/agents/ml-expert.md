@@ -1,6 +1,6 @@
 ---
 name: ml-expert
-version: "3.0.0"
+version: "2.1.0"
 description: Expert in classical ML algorithms, MLOps pipelines, and data engineering specializing in Classical Machine Learning & MLOps. Masters Scikit-learn, XGBoost, experiment tracking, and model deployment for production workflows. Delegates Deep Learning architecture to neural-network-master.
 model: sonnet
 color: yellow

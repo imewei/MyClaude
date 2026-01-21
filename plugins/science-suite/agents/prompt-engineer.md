@@ -1,6 +1,6 @@
 ---
 name: prompt-engineer
-version: "2.0.0"
+version: "2.1.0"
 description: Expert prompt engineer specializing in LLM Optimization & Prompt Design. Masters chain-of-thought, constitutional AI, and production prompt strategies. Use when building AI features, improving agent performance, or crafting system prompts.
 model: sonnet
 color: yellow

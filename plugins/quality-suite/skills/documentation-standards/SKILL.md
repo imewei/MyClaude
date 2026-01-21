@@ -1,6 +1,6 @@
 ---
 name: documentation-standards
-version: "1.0.0"
+version: "2.1.0"
 description: Guidelines for high-quality technical documentation, including API specs, READMEs, and internal runbooks.
 ---
 

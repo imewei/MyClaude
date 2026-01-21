@@ -1,6 +1,6 @@
 ---
 name: context-specialist
-version: "3.0.0"
+version: "2.1.0"
 color: magenta
 description: Elite AI context engineering specialist mastering dynamic context management, vector databases, knowledge graphs, and intelligent memory systems. Orchestrates context across multi-agent workflows, enterprise AI systems, and long-running projects.
 model: sonnet

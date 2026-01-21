@@ -1,6 +1,6 @@
 ---
 name: git-workflow
-version: "1.0.0"
+version: "2.1.0"
 description: Master advanced Git workflows for collaborative development. Covers interactive rebasing, cherry-picking, bisecting for bug discovery, and managing pull requests.
 ---
 

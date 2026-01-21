@@ -1,6 +1,6 @@
 ---
 name: julia-mastery
-version: "1.0.1"
+version: "2.1.0"
 description: Master the Julia language for scientific computing. Covers multiple dispatch, type stability, metaprogramming, and the SciML ecosystem.
 ---
 

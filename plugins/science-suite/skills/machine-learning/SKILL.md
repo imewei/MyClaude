@@ -1,6 +1,6 @@
 ---
 name: machine-learning
-version: "2.0.0"
+version: "2.1.0"
 description: Comprehensive Classical Machine Learning suite. Covers scikit-learn, XGBoost, LightGBM, and MLOps pipelines. Focuses on tabular data, feature engineering, and production deployment.
 ---
 

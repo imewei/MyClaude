@@ -1,6 +1,6 @@
 ---
 name: jax-bayesian-pro
-version: "1.1.0"
+version: "2.1.0"
 description: This skill should be used when the user asks to "write Bayesian models in JAX", "use NumPyro or Blackjax", "implement custom MCMC samplers", "tune HMC mass matrix", "debug NUTS divergences", "run parallel MCMC chains", "integrate Diffrax with Bayesian inference", "build neural surrogate models for SBI", "implement effect handlers", "write pure log-prob functions", or needs expert guidance on probabilistic programming, simulation-based inference, or Bayesian parameter estimation for physics/soft matter.
 ---
 

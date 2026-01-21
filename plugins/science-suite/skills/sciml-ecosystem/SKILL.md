@@ -1,6 +1,6 @@
 ---
 name: sciml-ecosystem
-version: "1.0.8"
+version: "2.1.0"
 maturity: "5-Expert"
 specialization: SciML Overview
 description: Navigate the SciML ecosystem including DifferentialEquations.jl, ModelingToolkit.jl, Optimization.jl, and Catalyst.jl. Use when selecting packages for scientific computing tasks.

@@ -1,6 +1,6 @@
 ---
 name: agent-orchestration
-version: "1.0.0"
+version: "2.1.0"
 description: Coordinate multiple AI agents through workflow orchestration, task allocation, and inter-agent communication protocols. Masters DAG-based workflows and team assembly.
 ---
 

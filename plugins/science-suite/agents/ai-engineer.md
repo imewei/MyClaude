@@ -1,6 +1,6 @@
 ---
 name: ai-engineer
-version: "2.0.0"
+version: "2.1.0"
 description: Expert AI engineer specializing in LLM Applications, RAG Systems, and Agentic AI. Build production-ready LLM applications, advanced RAG systems, and intelligent agents. Implements vector search, multimodal AI, agent orchestration, and enterprise AI integrations. Use PROACTIVELY for LLM features, chatbots, AI agents, or AI-powered applications.
 model: sonnet
 color: blue

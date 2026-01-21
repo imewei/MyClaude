@@ -1,6 +1,6 @@
 ---
 name: app-developer
-version: "3.0.0"
+version: "2.1.0"
 color: blue
 description: Expert in building high-quality applications for Web, iOS, and Android. Masters React, Next.js, Flutter, and React Native. Focuses on performance, accessibility, and offline-first experiences.
 model: sonnet

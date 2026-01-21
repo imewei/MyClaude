@@ -1,6 +1,6 @@
 ---
 name: orchestrator
-version: "3.0.0"
+version: "2.1.0"
 color: blue
 description: Multi-agent orchestrator specializing in workflow coordination and distributed systems. Expert in agent team assembly and task allocation for scalable collaboration. Delegates domain-specific work to specialist agents.
 model: sonnet

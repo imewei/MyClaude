@@ -1,6 +1,6 @@
 ---
 name: core-julia-patterns
-version: "1.0.8"
+version: "2.1.0"
 maturity: "5-Expert"
 specialization: Julia Language Fundamentals
 description: Master multiple dispatch, type system, parametric types, type stability, and metaprogramming for high-performance Julia. Use when designing type hierarchies, debugging @code_warntype issues, optimizing with @inbounds/@simd/StaticArrays, or writing macros and generated functions.

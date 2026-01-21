@@ -1,6 +1,6 @@
 ---
 name: non-equilibrium-theory
-version: "1.1.0"
+version: "2.1.0"
 description: Apply non-equilibrium thermodynamics including fluctuation theorems, entropy production, and linear response theory. Use when modeling irreversible processes, analyzing driven systems, or deriving transport coefficients.
 ---
 
