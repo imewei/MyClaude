@@ -42,8 +42,9 @@ def test_agents_exist():
         data = json.load(f)
     
     for agent_info in data.get("agents", []):
-        agent_name = agent_info["name"] if isinstance(agent_info, dict) else agent_info
-        agent_file = AGENTS_DIR / f"{agent_name}.md"
+        # agent_name is actually a relative path like "./agents/foo.md"
+        agent_rel_path = agent_info["name"] if isinstance(agent_info, dict) else agent_info
+        agent_file = PLUGIN_ROOT / agent_rel_path
         assert agent_file.exists(), f"Agent file missing: {agent_file}"
 
 def test_agent_frontmatter_validity():
