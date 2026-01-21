@@ -468,7 +468,7 @@ def main():
     if len(sys.argv) < 2:
         print("Usage: python doc_checker.py <plugin-path>")
         print("\nExample:")
-        print("  python doc_checker.py plugins/julia-development")
+        print("  python doc_checker.py plugins/science-suite")
         sys.exit(1)
 
     plugin_path = Path(sys.argv[1])

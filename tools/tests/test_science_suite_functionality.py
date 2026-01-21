@@ -14,8 +14,8 @@ def import_from_path(module_name, file_path):
 
 # Define paths to scripts
 PLUGIN_ROOT = Path(__file__).parent.parent.parent / "plugins" / "science-suite"
-DIAGNOSE_SCRIPT = PLUGIN_ROOT / "skills/jax-mastery/nlsq-core-mastery/scripts/diagnose_optimization.py"
-COMPARE_SCRIPT = PLUGIN_ROOT / "skills/deep-learning/training-diagnostics/scripts/compare_training_runs.py"
+DIAGNOSE_SCRIPT = PLUGIN_ROOT / "skills/nlsq-core-mastery/scripts/diagnose_optimization.py"
+COMPARE_SCRIPT = PLUGIN_ROOT / "skills/training-diagnostics/scripts/compare_training_runs.py"
 
 class TestDiagnoseOptimization(unittest.TestCase):
     def setUp(self):
