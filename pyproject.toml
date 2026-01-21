@@ -43,3 +43,6 @@ docs = [
 
 [tool.uv]
 default-groups = ["dev", "docs", "science"]
+
+[tool.setuptools]
+packages = ["tools"]
