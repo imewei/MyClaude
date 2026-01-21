@@ -18,7 +18,7 @@ The MyClaude ecosystem is organized into five powerful suites, each consolidated
 ### 2. Software Engineering Suite (`engineering-suite`)
 **Purpose:** Full-stack engineering, systems programming, and platform implementations.
 - **Agents:** `@software-architect`, `@app-developer`, `@systems-engineer`
-- **Commands:** `/scaffold`, `/rust-project`, `/c-project`, `/feature-dev`, `/modernize`, `/multi-platform`, `/profile-performance`
+- **Commands:** `/scaffold`, `/rust-project`, `/c-project`, `/eng-feature-dev`, `/modernize`, `/multi-platform`, `/profile-performance`
 - **Use When:** Building web/mobile apps, systems programming (Rust/C), backend architecture, legacy modernization.
 
 ### 3. Infrastructure & Ops Suite (`infrastructure-suite`)
@@ -45,7 +45,7 @@ The MyClaude ecosystem is organized into five powerful suites, each consolidated
 
 ### Feature Development
 1. Use `@software-architect` to design the system.
-2. Run `/engineering-suite:feature-dev` to implement the core logic.
+2. Run `/engineering-suite:eng-feature-dev` to implement the core logic.
 3. Use `/quality-suite:test-generate` to create tests.
 4. Run `/quality-suite:double-check` before submitting.
 

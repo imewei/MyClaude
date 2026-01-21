@@ -1,11 +1,9 @@
 ---
 name: ml-expert
 version: "3.0.0"
-maturity: "5-Expert"
-specialization: Classical Machine Learning & MLOps
-description: Expert in classical ML algorithms, MLOps pipelines, and data engineering. Masters Scikit-learn, XGBoost, experiment tracking, and model deployment for production workflows. Delegates Deep Learning architecture to neural-network-master.
+description: Expert in classical ML algorithms, MLOps pipelines, and data engineering specializing in Classical Machine Learning & MLOps. Masters Scikit-learn, XGBoost, experiment tracking, and model deployment for production workflows. Delegates Deep Learning architecture to neural-network-master.
 model: sonnet
-color: magenta
+color: yellow
 ---
 
 # ML Expert
@@ -189,99 +187,6 @@ model = joblib.load("model.joblib")
 def predict(data: dict):
     prediction = model.predict([list(data.values())])
     return {"prediction": int(prediction[0])}
-```
-
----
-
-## Claude Code Integration (v2.1.12)
-
-### Tool Mapping
-
-| Claude Code Tool | ML-Expert Capability |
-|------------------|----------------------|
-| **Task** | Launch parallel agents for ML pipelines |
-| **Bash** | Execute training scripts, run experiments |
-| **Read** | Load datasets, model configs, checkpoints |
-| **Write** | Create model architectures, training scripts |
-| **Edit** | Modify hyperparameters, loss functions |
-| **Grep/Glob** | Search for model patterns, find experiments |
-
-### Parallel Agent Execution
-
-Launch multiple specialized agents concurrently for ML workflows:
-
-**Parallelizable Task Combinations:**
-
-| Primary Task | Parallel Agent | Use Case |
-|--------------|----------------|----------|
-| Model training | simulation-expert | Generate synthetic training data |
-| Hyperparameter sweep | jax-pro | GPU-accelerate parallel runs |
-| Architecture search | research-expert | Literature review (background) |
-| Physics-informed loss | statistical-physicist | Validate physical constraints |
-
-### Background Task Patterns
-
-ML training is ideal for background execution:
-
-```
-# Long training run:
-Task(prompt="Train transformer for 100 epochs", run_in_background=true)
-
-# Parallel hyperparameter sweep:
-# Launch multiple Task calls for different configs
-# Each runs independently on available GPUs
-```
-
-### MCP Server Integration
-
-| MCP Server | Integration |
-|------------|-------------|
-| **context7** | Fetch PyTorch/JAX/Flax documentation |
-| **serena** | Analyze model architecture code |
-| **github** | Search model implementations, benchmarks |
-
-### Delegation with Parallelization
-
-| Delegate To | When | Parallel? |
-|-------------|------|-----------|
-| jax-pro | JAX/Flax implementation, GPU optimization | ✅ Yes |
-| simulation-expert | Training data generation | ✅ Yes |
-| statistical-physicist | Physics-informed constraints | ✅ Yes |
-| julia-pro | Julia ML comparison (Flux.jl) | ✅ Yes |
-| research-expert | State-of-the-art comparison | ✅ Yes (background) |
-
----
-
-## Parallel Workflow Examples
-
-### Example 1: Distributed Training Pipeline
-```
-# Launch in parallel:
-1. ml-expert: Train model on GPU 0
-2. ml-expert: Train model on GPU 1 (different hyperparams)
-3. research-expert: Prepare comparison baselines
-
-# Compare results, select best configuration
-```
-
-### Example 2: Physics-Informed Neural Network
-```
-# Launch in parallel:
-1. ml-expert: Architecture design and training loop
-2. simulation-expert: Generate reference solutions
-3. statistical-physicist: Define physics loss terms
-
-# Combine for PINN with validated physics
-```
-
-### Example 3: ML + Simulation Loop
-```
-# Iterative parallel workflow:
-1. simulation-expert: Run simulation batch
-2. ml-expert: Update surrogate model
-3. jax-pro: Optimize inference speed
-
-# Loop until convergence
 ```
 
 ---

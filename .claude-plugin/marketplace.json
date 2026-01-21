@@ -76,7 +76,7 @@
       ],
       "commands": [
         "./commands/c-project.md",
-        "./commands/feature-dev.md",
+        "./commands/eng-feature-dev.md",
         "./commands/modernize.md",
         "./commands/multi-platform.md",
         "./commands/profile-performance.md",

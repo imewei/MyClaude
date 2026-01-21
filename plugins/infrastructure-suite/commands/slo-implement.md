@@ -1,14 +1,16 @@
 ---
-allowed-tools: [Bash, Read, Write, Edit, Task, Glob, Grep]
 version: "2.1.0"
 command: /slo-implement
 description: Implement SLO/SLA monitoring, error budgets, and burn rate alerting
-execution_modes:
+argument-hint: "[service-name] [--mode=quick|standard|enterprise]"
+color: purple
+execution-modes:
   quick: "2-3d: 1 service, 1-2 SLIs, basic budget, fast burn alert"
   standard: "1-2w: 3-5 services, multi-SLI, multi-burn alerts, reporting"
   enterprise: "3-4w: + SLO-as-code, governance, automation"
-workflow_type: "hybrid"
-interactive_mode: true
+workflow-type: "hybrid"
+interactive-mode: true
+allowed-tools: [Bash, Read, Write, Edit, Task, Glob, Grep]
 ---
 
 # SLO Implementation
@@ -17,7 +19,7 @@ $ARGUMENTS
 
 ## External Docs
 
-[SLO Framework](../docs/slo-implement/slo-framework.md) (~1,680 lines), [SLI Measurement](../docs/slo-implement/sli-measurement.md) (~1,538), [Error Budgets](../docs/slo-implement/error-budgets.md) (~1,500), [SLO Monitoring](../docs/slo-implement/slo-monitoring.md) (~1,545), [SLO Reporting](../docs/slo-implement/slo-reporting.md) (~1,450), [SLO Automation](../docs/slo-implement/slo-automation.md) (~1,450), [SLO Governance](../docs/slo-implement/slo-governance.md) (~1,420)
+[SLO Framework](${CLAUDE_PLUGIN_ROOT}/docs/slo-implement/slo-framework.md) (~1,680 lines), [SLI Measurement](${CLAUDE_PLUGIN_ROOT}/docs/slo-implement/sli-measurement.md) (~1,538), [Error Budgets](${CLAUDE_PLUGIN_ROOT}/docs/slo-implement/error-budgets.md) (~1,500), [SLO Monitoring](${CLAUDE_PLUGIN_ROOT}/docs/slo-implement/slo-monitoring.md) (~1,545), [SLO Reporting](${CLAUDE_PLUGIN_ROOT}/docs/slo-implement/slo-reporting.md) (~1,450), [SLO Automation](${CLAUDE_PLUGIN_ROOT}/docs/slo-implement/slo-automation.md) (~1,450), [SLO Governance](${CLAUDE_PLUGIN_ROOT}/docs/slo-implement/slo-governance.md) (~1,420)
 
 ## Phase 1: Analysis & Design
 

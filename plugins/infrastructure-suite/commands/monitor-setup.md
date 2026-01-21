@@ -2,12 +2,14 @@
 version: "2.1.0"
 command: /monitor-setup
 description: Set up Prometheus, Grafana, and distributed tracing observability stack
-execution_modes:
+argument-hint: "[--mode=quick|standard|enterprise] [--platform=kubernetes|bare-metal]"
+color: purple
+execution-modes:
   quick: "1-2d: Prometheus + Grafana + basic alerts"
   standard: "1w: + Tracing, logs, IaC, multi-window alerts"
   enterprise: "2-3w: + Multi-cluster, SLO, security monitoring"
-workflow_type: "hybrid"
-interactive_mode: true
+workflow-type: "hybrid"
+interactive-mode: true
 allowed-tools: [Bash, Write, Read, Task]
 ---
 
@@ -17,7 +19,7 @@ $ARGUMENTS
 
 ## External Docs
 
-[Prometheus Setup](../docs/monitor-setup/prometheus-setup.md) (~1,220 lines), [Grafana Dashboards](../docs/monitor-setup/grafana-dashboards.md) (~1,470), [Distributed Tracing](../docs/monitor-setup/distributed-tracing.md) (~1,368), [Log Aggregation](../docs/monitor-setup/log-aggregation.md) (~1,200), [Alerting Strategies](../docs/monitor-setup/alerting-strategies.md) (~1,327), [Infrastructure Code](../docs/monitor-setup/infrastructure-code.md) (~1,200)
+[Prometheus Setup](${CLAUDE_PLUGIN_ROOT}/docs/monitor-setup/prometheus-setup.md) (~1,220 lines), [Grafana Dashboards](${CLAUDE_PLUGIN_ROOT}/docs/monitor-setup/grafana-dashboards.md) (~1,470), [Distributed Tracing](${CLAUDE_PLUGIN_ROOT}/docs/monitor-setup/distributed-tracing.md) (~1,368), [Log Aggregation](${CLAUDE_PLUGIN_ROOT}/docs/monitor-setup/log-aggregation.md) (~1,200), [Alerting Strategies](${CLAUDE_PLUGIN_ROOT}/docs/monitor-setup/alerting-strategies.md) (~1,327), [Infrastructure Code](${CLAUDE_PLUGIN_ROOT}/docs/monitor-setup/infrastructure-code.md) (~1,200)
 
 ## Phase 1: Planning
 

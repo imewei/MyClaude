@@ -57,7 +57,7 @@
       "status": "active"
     },
     {
-      "name": "/feature-dev",
+      "name": "/eng-feature-dev",
       "description": "Unified end-to-end feature development with customizable methodologies and deployment strategies.",
       "status": "active"
     },
@@ -79,24 +79,84 @@
   ],
   "skills": [
     {
-      "name": "backend-engineering",
-      "description": "API design, database optimization, and microservices patterns."
+      "name": "api-design-principles",
+      "description": "Master REST and GraphQL API design including resource-oriented architecture, HTTP semantics, pagination, versioning, and documentation."
+    },
+    {
+      "name": "architecture-patterns",
+      "description": "Master Clean Architecture, Hexagonal Architecture, and DDD patterns including entities, value objects, aggregates, and repositories."
+    },
+    {
+      "name": "async-python-patterns",
+      "description": "Master Python asyncio, concurrent programming, and async/await patterns for high-performance non-blocking applications."
+    },
+    {
+      "name": "auth-implementation-patterns",
+      "description": "Master authentication patterns including JWT, OAuth2/OpenID Connect, RBAC/ABAC, and secure cookie management."
+    },
+    {
+      "name": "error-handling-patterns",
+      "description": "Master error handling patterns including exception hierarchies, Result types, retries with backoff, and circuit breakers."
     },
     {
       "name": "frontend-mobile-engineering",
-      "description": "Cross-platform development and mobile-first UX."
+      "description": "Design and build multi-platform applications for web, iOS, and Android. Covers Flutter, React Native, modern JavaScript/TypeScript patterns, and mobile-first UX."
     },
     {
-      "name": "language-mastery",
-      "description": "Python (Async/Packaging), JS/TS (Node.js), and Systems languages."
+      "name": "javascript-testing-patterns",
+      "description": "Comprehensive testing with Jest/Vitest and Testing Library, covering unit tests, integration tests, and mocking patterns."
+    },
+    {
+      "name": "microservices-patterns",
+      "description": "Design microservices with proper boundaries, event-driven communication, Saga pattern, and resilience patterns like circuit breakers."
+    },
+    {
+      "name": "modern-javascript-patterns",
+      "description": "Master modern JavaScript (ES6+) features including async/await, destructuring, spread operators, and functional programming patterns."
     },
     {
       "name": "modernization-migration",
-      "description": "Legacy migration strategies and framework evolution."
+      "description": "Strategy and patterns for legacy modernization, framework migrations, and database schema evolution."
+    },
+    {
+      "name": "monorepo-management",
+      "description": "Master monorepo management with Turborepo, Nx, and pnpm workspaces, focusing on optimized builds and shared configurations."
+    },
+    {
+      "name": "nodejs-backend-patterns",
+      "description": "Build scalable Node.js backends with Express/Fastify/NestJS, implementing middleware, authentication, and database integration."
+    },
+    {
+      "name": "python-packaging",
+      "description": "Create distributable Python packages with pyproject.toml, proper project structure, and publishing to PyPI."
+    },
+    {
+      "name": "python-performance-optimization",
+      "description": "Profile and optimize Python code using cProfile, line_profiler, and memory_profiler to identify and resolve bottlenecks."
+    },
+    {
+      "name": "python-testing-patterns",
+      "description": "Comprehensive testing with pytest, fixtures, mocking, and parameterization, including parallel execution with pytest-xdist."
+    },
+    {
+      "name": "sql-optimization-patterns",
+      "description": "Master SQL optimization with EXPLAIN analysis, indexing strategies, N+1 elimination, and cursor-based pagination."
     },
     {
       "name": "systems-cli-engineering",
-      "description": "High-performance systems and production-grade CLI UX."
+      "description": "Design high-performance systems and production-grade CLI tools. Covers memory management, concurrency, and CLI UX design."
+    },
+    {
+      "name": "typescript-advanced-types",
+      "description": "Master TypeScript's advanced type system including generics, conditional types, mapped types, and discriminated unions."
+    },
+    {
+      "name": "typescript-project-scaffolding",
+      "description": "Set up production-ready TypeScript projects with modern tooling like Vite, ESLint, and Vitest."
+    },
+    {
+      "name": "uv-package-manager",
+      "description": "Master uv for blazing-fast Python dependency management, virtual environments, and reproducible builds with lockfiles."
     }
   ]
 }

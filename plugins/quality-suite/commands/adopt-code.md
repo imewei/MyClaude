@@ -5,18 +5,18 @@ command: /adopt-code
 description: Analyze and modernize scientific computing codebases while preserving numerical accuracy
 argument-hint: <path-to-code> [target-framework]
 color: purple
-execution_modes:
+execution-modes:
   quick: "30-45m: Analysis + strategy"
   standard: "1-2h: + Framework selection + initial implementation"
   comprehensive: "3-5h: + Validation, benchmarking, production integration"
-external_docs:
+external-docs:
   - docs/quality-suite/algorithm-analysis-framework.md
   - docs/quality-suite/numerical-accuracy-guide.md
   - docs/quality-suite/engineering-suite-strategies.md
   - docs/quality-suite/performance-optimization-techniques.md
   - docs/quality-suite/integration-testing-patterns.md
   - docs/quality-suite/scientific-computing-best-practices.md
-allowed-tools: Bash(find:*), Bash(ls:*), Bash(grep:*), Bash(wc:*), Bash(du:*), Bash(head:*), Bash(tail:*), Bash(file:*), Bash(uv:*)
+allowed-tools: [Bash(find:*), Bash(ls:*), Bash(grep:*), Bash(wc:*), Bash(du:*), Bash(head:*), Bash(tail:*), Bash(file:*), Bash(uv:*)]
 ---
 
 # Scientific Code Adoption

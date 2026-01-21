@@ -3,13 +3,13 @@ version: "2.1.0"
 description: Unified end-to-end feature development with customizable methodologies and deployment strategies
 argument-hint: <action> <feature-name> [options]
 category: engineering-suite
-execution_time:
+execution-time:
   quick: "30m-2d: Architecture + hot fixes"
   standard: "3-14d: Full production workflow"
   deep: "2-4w: Enterprise with compliance"
 color: purple
 allowed-tools: [Bash, Read, Write, Edit, Task, Glob, Grep, Bash(uv:*)]
-external_docs:
+external-docs:
   - architecture-patterns-library.md
   - methodology-guides.md
   - testing-strategies.md
@@ -17,7 +17,7 @@ external_docs:
 tags: [full-stack, orchestration, api-first, feature-development]
 ---
 
-# Feature Development
+# Engineering Feature Development
 
 $ARGUMENTS
 
@@ -32,9 +32,9 @@ $ARGUMENTS
 
 **Examples:**
 ```bash
-/feature-dev plan user-authentication --methodology tdd
-/feature-dev build shopping-cart --stack "React/FastAPI/PostgreSQL"
-/feature-dev full payment-system --mode deep --deployment canary
+/eng-feature-dev plan user-authentication --methodology tdd
+/eng-feature-dev build shopping-cart --stack "React/FastAPI/PostgreSQL"
+/eng-feature-dev full payment-system --mode deep --deployment canary
 ```
 
 ## Options

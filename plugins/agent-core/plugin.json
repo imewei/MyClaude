@@ -70,19 +70,39 @@
   "skills": [
     {
       "name": "advanced-reasoning",
-      "description": "Structured thinking frameworks and meta-cognitive reflection."
+      "description": "Apply structured reasoning frameworks, systematic thought processing, and meta-cognitive reflection to solve complex problems."
     },
     {
       "name": "agent-orchestration",
-      "description": "Workflow coordination, DAG-based tasks, and team management."
+      "description": "Coordinate multiple AI agents through workflow orchestration, task allocation, and inter-agent communication protocols. Masters DAG-based workflows and team assembly."
+    },
+    {
+      "name": "agent-performance-optimization",
+      "description": "Optimize AI agent performance through monitoring, metrics collection, caching, and load balancing. Use when analyzing agent execution bottlenecks, implementing latency percentiles (P50/P95/P99), setting up multi-tier caching, tracking success/failure rates, load balancing across agent instances, or scaling agent systems for production."
+    },
+    {
+      "name": "comprehensive-reflection-framework",
+      "description": "Orchestrate reflection across cognitive, technical, scientific, and strategic dimensions for integrated insights and cross-cutting patterns. Use for quarterly reviews, major milestones, grant proposals, strategic planning, or comprehensive project health assessments."
     },
     {
       "name": "llm-application-patterns",
-      "description": "Prompt engineering (CoT, few-shot), RAG, and evaluation."
+      "description": "Design and build robust LLM-powered applications. Covers advanced prompt engineering (CoT, few-shot), RAG implementation, and LLM evaluation."
     },
     {
       "name": "mcp-integration",
-      "description": "Integration guide for serena, github, sequential-thinking, and context7."
+      "description": "Guide for using integrated MCP servers (serena, github, sequential-thinking, context7)"
+    },
+    {
+      "name": "meta-cognitive-reflection",
+      "description": "Analyze AI reasoning patterns, cognitive biases, problem-solving quality, and communication effectiveness through systematic meta-cognitive reflection. Use for session reflections, reasoning audits, bias detection, and continuous improvement."
+    },
+    {
+      "name": "multi-agent-coordination",
+      "description": "Coordinate multiple AI agents through workflow orchestration, task allocation, and distributed systems. Use when designing DAG-based workflows with task dependencies, building agent team assembly with capability matching, implementing inter-agent communication protocols, orchestrating parallel execution with synchronization, designing fault-tolerant systems with retry logic, or managing distributed agent teams."
+    },
+    {
+      "name": "structured-reasoning",
+      "description": "Apply structured reasoning with systematic thought processing, branching exploration, multi-framework analysis (First Principles, Root Cause Analysis, Decision Analysis), and auditability. Use for complex debugging, architectural decisions, strategic planning, novel problems, and high-stakes decisions requiring explicit reasoning chains."
     }
   ]
 }

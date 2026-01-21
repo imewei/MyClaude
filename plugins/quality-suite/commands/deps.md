@@ -3,7 +3,7 @@ version: "3.0.0"
 description: Unified dependency management - security auditing, vulnerability scanning, and safe upgrades
 argument-hint: "<action> [--mode quick|standard|deep] [--security-only] [--strategy incremental|batch]"
 category: quality-suite
-execution_time:
+execution-time:
   audit-quick: "2-5min"
   audit-standard: "5-15min"
   upgrade-quick: "15-25min"

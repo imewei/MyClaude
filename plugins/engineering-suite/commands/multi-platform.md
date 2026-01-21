@@ -2,7 +2,9 @@
 version: "2.1.0"
 command: /multi-platform
 description: Build and deploy features across web, mobile, and desktop platforms with API-first architecture and multi-agent orchestration
-execution_modes:
+argument-hint: <platforms>
+color: indigo
+execution-modes:
   quick:
     duration: "3-5 days"
     description: "Single-platform MVP with API-first design"
@@ -15,8 +17,8 @@ execution_modes:
     duration: "4-6 weeks"
     description: "All platforms with shared code and optimization"
     scope: "4+ platforms, shared logic, performance optimization, deployment"
-workflow_type: "hybrid"
-interactive_mode: true
+workflow-type: "hybrid"
+interactive-mode: true
 ---
 
 # Multi-Platform Feature Development

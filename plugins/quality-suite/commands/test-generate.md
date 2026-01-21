@@ -3,9 +3,10 @@ version: "2.1.0"
 command: /test-generate
 description: Generate comprehensive test suites with scientific computing support, numerical validation, property-based testing, benchmarks
 argument-hint: <source> [--coverage] [--property-based] [--benchmarks] [--scientific]
-execution_modes: {quick: "30min-1h", standard: "2-4h", enterprise: "1-2d"}
-workflow_type: generative
+execution-modes: {quick: "30min-1h", standard: "2-4h", enterprise: "1-2d"}
+workflow-type: generative
 color: cyan
+allowed-tools: [Read, Write, Bash, Task]
 ---
 
 # Automated Test Generation

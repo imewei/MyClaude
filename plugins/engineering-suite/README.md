@@ -26,7 +26,7 @@ Consolidated suite for full-stack engineering, language-specific development, an
 | `/scaffold` | Unified project and component scaffolding for TypeScript, Python, React, and Julia |
 | `/rust-project` | Scaffold production-ready Rust projects with cargo tooling |
 | `/c-project` | Scaffold production-ready C projects with Makefile/CMake |
-| `/feature-dev` | Unified end-to-end feature development with customizable methodologies |
+| `/eng-feature-dev` | Unified end-to-end feature development with customizable methodologies |
 | `/modernize` | Unified code migration and legacy modernization with Strangler Fig pattern |
 | `/multi-platform` | All platforms with shared code and optimization |
 | `/profile-performance` | Comprehensive performance profiling with perf, flamegraph, and valgrind |

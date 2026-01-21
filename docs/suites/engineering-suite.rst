@@ -28,7 +28,7 @@ Commands
    :description: Scaffold production-ready C projects with Makefile/CMake and memory safety tools
    :version: 2.1.0
 
-.. command:: feature-dev
+.. command:: eng-feature-dev
    :description: Unified end-to-end feature development with customizable methodologies and deployment strategies
    :version: 2.1.0
 

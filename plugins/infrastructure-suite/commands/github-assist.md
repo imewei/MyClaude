@@ -1,6 +1,9 @@
 ---
+version: "2.1.0"
 name: github-assist
 description: GitHub operations using GitHub MCP for issues, PRs, repos, and code search
+argument-hint: "[query] [--type=issue|pr|code] [--org=name] [--label=name]"
+color: blue
 allowed-tools:
   - mcp__plugin_github_github__get_me
   - mcp__plugin_github_github__search_issues

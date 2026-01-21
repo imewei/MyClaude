@@ -1,7 +1,9 @@
 ---
+version: "2.1.0"
 name: workflow-automate
 description: Automated CI/CD workflow generation and management for GitHub Actions and GitLab CI.
-version: "2.1.0"
+argument-hint: "[--mode=quick-start|standard|enterprise] [--platform=github|gitlab|both]"
+color: orange
 category: "infrastructure-suite"
 command: "/workflow-automate"
 execution-modes:
@@ -9,11 +11,11 @@ execution-modes:
   standard: "30-45m: Full pipeline + security + monitoring"
   enterprise: "60-120m: Multi-platform + IaC + compliance"
 documentation:
-  analysis-framework: "../docs/infrastructure-suite/workflow-analysis-framework.md"
-  github-actions: "../docs/infrastructure-suite/github-actions-reference.md"
-  gitlab-ci: "../docs/infrastructure-suite/gitlab-ci-reference.md"
-  terraform-integration: "../docs/infrastructure-suite/terraform-cicd-integration.md"
-  security-workflows: "../docs/infrastructure-suite/security-automation-workflows.md"
+  analysis-framework: "${CLAUDE_PLUGIN_ROOT}/docs/infrastructure-suite/workflow-analysis-framework.md"
+  github-actions: "${CLAUDE_PLUGIN_ROOT}/docs/infrastructure-suite/github-actions-reference.md"
+  gitlab-ci: "${CLAUDE_PLUGIN_ROOT}/docs/infrastructure-suite/gitlab-ci-reference.md"
+  terraform-integration: "${CLAUDE_PLUGIN_ROOT}/docs/infrastructure-suite/terraform-cicd-integration.md"
+  security-workflows: "${CLAUDE_PLUGIN_ROOT}/docs/infrastructure-suite/security-automation-workflows.md"
 allowed-tools: [Write, Bash, Read, Task]
 ---
 

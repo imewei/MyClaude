@@ -21,7 +21,7 @@
 - **/scaffold** - Unified project and component scaffolding for TypeScript, Python, React, and Julia.
 - **/rust-project** - Scaffold production-ready Rust projects with cargo tooling and idiomatic patterns.
 - **/c-project** - Scaffold production-ready C projects with Makefile/CMake and memory safety tools.
-- **/feature-dev** - Unified end-to-end feature development with customizable methodologies and deployment strategies.
+- **/eng-feature-dev** - Unified end-to-end feature development with customizable methodologies and deployment strategies.
 - **/modernize** - Unified code migration and legacy modernization with Strangler Fig pattern.
 - **/multi-platform** - Build and deploy features across web, mobile, and desktop platforms.
 - **/profile-performance** - Comprehensive performance profiling with perf, flamegraph, and valgrind.

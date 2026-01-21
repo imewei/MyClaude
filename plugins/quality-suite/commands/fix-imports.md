@@ -4,13 +4,13 @@ description: Systematically fix broken imports across the codebase with session 
 argument-hint: "[path-or-pattern] [resume|status|new]"
 category: quality-suite
 purpose: Resolve broken imports with intelligent strategies and session management
-execution_time:
+execution-time:
   quick: 3-8 minutes
   standard: 10-20 minutes
   comprehensive: 20-45 minutes
 color: purple
-allowed-tools: Bash, Read, Write, Edit, Glob, Grep, Task, Bash(uv:*)
-external_docs:
+allowed-tools: [Bash, Read, Write, Edit, Glob, Grep, Task, Bash(uv:*)]
+external-docs:
   - import-resolution-strategies.md
   - session-management-guide.md
   - refactoring-patterns.md

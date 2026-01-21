@@ -3,13 +3,13 @@ version: "2.1.0"
 description: Unified AI agent creation, optimization, and prompt engineering
 argument-hint: <action> <target> [options]
 category: agent-core
-execution_time:
+execution-modes:
   quick: "5-15 minutes"
   standard: "15-45 minutes"
   deep: "1-2 hours"
 color: magenta
 allowed-tools: [Bash, Read, Write, Edit, Task, Glob, Grep, Bash(uv:*)]
-external_docs:
+external-docs:
   - agent-optimization-guide.md
   - langchain-advanced-patterns.md
   - prompt-patterns.md

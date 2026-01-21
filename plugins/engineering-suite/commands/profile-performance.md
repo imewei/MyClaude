@@ -3,7 +3,8 @@ version: "2.1.0"
 command: /profile-performance
 description: Comprehensive performance profiling with perf, flamegraph, and valgrind
 argument-hint: [target-binary-or-code]
-execution_modes:
+color: blue
+execution-modes:
   quick: "30 min - 1 hour"
   standard: "2-3 hours"
   enterprise: "1 day"

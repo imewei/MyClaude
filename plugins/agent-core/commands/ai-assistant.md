@@ -1,11 +1,12 @@
 ---
 version: "2.1.0"
+color: blue
 category: "agent-core"
 command: "/ai-assistant"
 description: Build production-ready AI assistants with NLU, conversation management, and intelligent response generation
 allowed-tools: Bash(find:*), Bash(git:*), Bash(uv:*)
 argument-hint: "<assistant_description>"
-execution_modes:
+execution-modes:
   quick: "5-10 minutes"
   standard: "15-25 minutes"
   comprehensive: "30-45 minutes"

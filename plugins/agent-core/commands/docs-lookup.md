@@ -1,5 +1,8 @@
 ---
 name: docs-lookup
+version: "2.1.0"
+color: green
+argument-hint: "<library_name> [query]"
 description: Query library documentation using Context7 MCP for up-to-date API references
 allowed-tools:
   - mcp__plugin_context7_context7__resolve-library-id
