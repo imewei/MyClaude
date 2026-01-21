@@ -1,8 +1,7 @@
 {
   "name": "engineering-suite",
-  "displayName": "Software Engineering Suite",
   "version": "2.1.0",
-  "description": "Consolidated suite for full-stack engineering, language-specific development, and platform-specific implementations.",
+  "description": "Full-stack engineering, language-specific development, and platform implementations",
   "author": {
     "name": "Wei Chen",
     "url": "https://myclaude.readthedocs.io/en/latest/"
@@ -22,141 +21,40 @@
     "cli",
     "migration"
   ],
-  "category": "engineering",
   "agents": [
-    {
-      "name": "software-architect",
-      "description": "Expert in designing scalable backend systems, microservices, and high-performance APIs (REST/GraphQL/gRPC).",
-      "status": "active"
-    },
-    {
-      "name": "app-developer",
-      "description": "Expert in building high-quality applications for Web, iOS, and Android (React, Next.js, Flutter).",
-      "status": "active"
-    },
-    {
-      "name": "systems-engineer",
-      "description": "Expert in low-level systems programming (C, C++, Rust, Go) and production-grade CLI tool design.",
-      "status": "active"
-    }
+    "./agents/app-developer.md",
+    "./agents/software-architect.md",
+    "./agents/systems-engineer.md"
   ],
   "commands": [
-    {
-      "name": "/scaffold",
-      "description": "Unified project and component scaffolding for TypeScript, Python, React, and Julia.",
-      "status": "active"
-    },
-    {
-      "name": "/rust-project",
-      "description": "Scaffold production-ready Rust projects with cargo tooling and idiomatic patterns.",
-      "status": "active"
-    },
-    {
-      "name": "/c-project",
-      "description": "Scaffold production-ready C projects with Makefile/CMake and memory safety tools.",
-      "status": "active"
-    },
-    {
-      "name": "/eng-feature-dev",
-      "description": "Unified end-to-end feature development with customizable methodologies and deployment strategies.",
-      "status": "active"
-    },
-    {
-      "name": "/modernize",
-      "description": "Unified code migration and legacy modernization with Strangler Fig pattern.",
-      "status": "active"
-    },
-    {
-      "name": "/multi-platform",
-      "description": "Build and deploy features across web, mobile, and desktop platforms.",
-      "status": "active"
-    },
-    {
-      "name": "/profile-performance",
-      "description": "Comprehensive performance profiling with perf, flamegraph, and valgrind.",
-      "status": "active"
-    }
+    "./commands/c-project.md",
+    "./commands/eng-feature-dev.md",
+    "./commands/modernize.md",
+    "./commands/multi-platform.md",
+    "./commands/profile-performance.md",
+    "./commands/rust-project.md",
+    "./commands/scaffold.md"
   ],
   "skills": [
-    {
-      "name": "api-design-principles",
-      "description": "Master REST and GraphQL API design including resource-oriented architecture, HTTP semantics, pagination, versioning, and documentation."
-    },
-    {
-      "name": "architecture-patterns",
-      "description": "Master Clean Architecture, Hexagonal Architecture, and DDD patterns including entities, value objects, aggregates, and repositories."
-    },
-    {
-      "name": "async-python-patterns",
-      "description": "Master Python asyncio, concurrent programming, and async/await patterns for high-performance non-blocking applications."
-    },
-    {
-      "name": "auth-implementation-patterns",
-      "description": "Master authentication patterns including JWT, OAuth2/OpenID Connect, RBAC/ABAC, and secure cookie management."
-    },
-    {
-      "name": "error-handling-patterns",
-      "description": "Master error handling patterns including exception hierarchies, Result types, retries with backoff, and circuit breakers."
-    },
-    {
-      "name": "frontend-mobile-engineering",
-      "description": "Design and build multi-platform applications for web, iOS, and Android. Covers Flutter, React Native, modern JavaScript/TypeScript patterns, and mobile-first UX."
-    },
-    {
-      "name": "javascript-testing-patterns",
-      "description": "Comprehensive testing with Jest/Vitest and Testing Library, covering unit tests, integration tests, and mocking patterns."
-    },
-    {
-      "name": "microservices-patterns",
-      "description": "Design microservices with proper boundaries, event-driven communication, Saga pattern, and resilience patterns like circuit breakers."
-    },
-    {
-      "name": "modern-javascript-patterns",
-      "description": "Master modern JavaScript (ES6+) features including async/await, destructuring, spread operators, and functional programming patterns."
-    },
-    {
-      "name": "modernization-migration",
-      "description": "Strategy and patterns for legacy modernization, framework migrations, and database schema evolution."
-    },
-    {
-      "name": "monorepo-management",
-      "description": "Master monorepo management with Turborepo, Nx, and pnpm workspaces, focusing on optimized builds and shared configurations."
-    },
-    {
-      "name": "nodejs-backend-patterns",
-      "description": "Build scalable Node.js backends with Express/Fastify/NestJS, implementing middleware, authentication, and database integration."
-    },
-    {
-      "name": "python-packaging",
-      "description": "Create distributable Python packages with pyproject.toml, proper project structure, and publishing to PyPI."
-    },
-    {
-      "name": "python-performance-optimization",
-      "description": "Profile and optimize Python code using cProfile, line_profiler, and memory_profiler to identify and resolve bottlenecks."
-    },
-    {
-      "name": "python-testing-patterns",
-      "description": "Comprehensive testing with pytest, fixtures, mocking, and parameterization, including parallel execution with pytest-xdist."
-    },
-    {
-      "name": "sql-optimization-patterns",
-      "description": "Master SQL optimization with EXPLAIN analysis, indexing strategies, N+1 elimination, and cursor-based pagination."
-    },
-    {
-      "name": "systems-cli-engineering",
-      "description": "Design high-performance systems and production-grade CLI tools. Covers memory management, concurrency, and CLI UX design."
-    },
-    {
-      "name": "typescript-advanced-types",
-      "description": "Master TypeScript's advanced type system including generics, conditional types, mapped types, and discriminated unions."
-    },
-    {
-      "name": "typescript-project-scaffolding",
-      "description": "Set up production-ready TypeScript projects with modern tooling like Vite, ESLint, and Vitest."
-    },
-    {
-      "name": "uv-package-manager",
-      "description": "Master uv for blazing-fast Python dependency management, virtual environments, and reproducible builds with lockfiles."
-    }
+    "./skills/api-design-principles",
+    "./skills/architecture-patterns",
+    "./skills/async-python-patterns",
+    "./skills/auth-implementation-patterns",
+    "./skills/error-handling-patterns",
+    "./skills/frontend-mobile-engineering",
+    "./skills/javascript-testing-patterns",
+    "./skills/microservices-patterns",
+    "./skills/modern-javascript-patterns",
+    "./skills/modernization-migration",
+    "./skills/monorepo-management",
+    "./skills/nodejs-backend-patterns",
+    "./skills/python-packaging",
+    "./skills/python-performance-optimization",
+    "./skills/python-testing-patterns",
+    "./skills/sql-optimization-patterns",
+    "./skills/systems-cli-engineering",
+    "./skills/typescript-advanced-types",
+    "./skills/typescript-project-scaffolding",
+    "./skills/uv-package-manager"
   ]
 }

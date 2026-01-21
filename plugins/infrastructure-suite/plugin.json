@@ -1,8 +1,7 @@
 {
   "name": "infrastructure-suite",
-  "displayName": "Infrastructure & Ops Suite",
   "version": "2.1.0",
-  "description": "Consolidated suite for CI/CD automation, observability monitoring, and Git PR workflows.",
+  "description": "CI/CD automation, observability monitoring, and Git PR workflows",
   "author": {
     "name": "Wei Chen",
     "url": "https://myclaude.readthedocs.io/en/latest/"
@@ -24,119 +23,34 @@
     "serena",
     "semantic-code"
   ],
-  "category": "infrastructure",
   "agents": [
-    {
-      "name": "devops-architect",
-      "description": "Expert in multi-cloud architecture (AWS/Azure/GCP), Kubernetes orchestration, and Infrastructure as Code (Terraform).",
-      "status": "active"
-    },
-    {
-      "name": "sre-expert",
-      "description": "Expert in system reliability, observability (monitoring, logging, tracing), and incident response.",
-      "status": "active"
-    },
-    {
-      "name": "automation-engineer",
-      "description": "Expert in automating software delivery pipelines and optimizing Git collaboration workflows.",
-      "status": "active"
-    }
+    "./agents/automation-engineer.md",
+    "./agents/devops-architect.md",
+    "./agents/sre-expert.md"
   ],
   "commands": [
-    {
-      "name": "/commit",
-      "description": "Intelligent git commit with automated analysis and quality validation.",
-      "status": "active"
-    },
-    {
-      "name": "/fix-commit-errors",
-      "description": "Automatically analyzes GitHub Actions failures and applies solutions.",
-      "status": "active"
-    },
-    {
-      "name": "/merge-all",
-      "description": "Merge all local branches into main and clean up.",
-      "status": "active"
-    },
-    {
-      "name": "/monitor-setup",
-      "description": "Set up Prometheus, Grafana, and distributed tracing stack.",
-      "status": "active"
-    },
-    {
-      "name": "/onboard",
-      "description": "Orchestrate complete onboarding for new team members.",
-      "status": "active"
-    },
-    {
-      "name": "/slo-implement",
-      "description": "Implement SLO/SLA monitoring, error budgets, and alerting.",
-      "status": "active"
-    },
-    {
-      "name": "/workflow-automate",
-      "description": "Automated CI/CD workflow generation for GitHub Actions and GitLab CI.",
-      "status": "active"
-    },
-    {
-      "name": "/code-analyze",
-      "description": "Semantic code analysis using Serena MCP for symbol navigation.",
-      "status": "active"
-    },
-    {
-      "name": "/github-assist",
-      "description": "GitHub operations using GitHub MCP for issues, PRs, and repos.",
-      "status": "active"
-    }
+    "./commands/code-analyze.md",
+    "./commands/commit.md",
+    "./commands/fix-commit-errors.md",
+    "./commands/github-assist.md",
+    "./commands/merge-all.md",
+    "./commands/monitor-setup.md",
+    "./commands/onboard.md",
+    "./commands/slo-implement.md",
+    "./commands/workflow-automate.md"
   ],
   "skills": [
-    {
-      "name": "airflow-scientific-workflows",
-      "description": "Design Apache Airflow DAGs for scientific data pipelines, batch computations, distributed simulations, and time-series data ingestion with PostgreSQL/TimescaleDB integration. Use when orchestrating experimental workflows or coordinating scientific computations."
-    },
-    {
-      "name": "deployment-pipeline-design",
-      "description": "Design multi-stage CI/CD pipelines with approval gates, security checks, and progressive delivery (rolling, blue-green, canary, feature flags). Use when architecting deployment workflows, implementing GitOps, or establishing multi-environment promotion strategies."
-    },
-    {
-      "name": "distributed-tracing",
-      "description": "Implement distributed tracing with OpenTelemetry, Jaeger, and Tempo including instrumentation, context propagation, sampling strategies, and trace analysis. Use when debugging latency issues, understanding service dependencies, or tracing error propagation across microservices."
-    },
-    {
-      "name": "git-workflow",
-      "description": "Master advanced Git workflows for collaborative development. Covers interactive rebasing, cherry-picking, bisecting for bug discovery, and managing pull requests."
-    },
-    {
-      "name": "github-actions-templates",
-      "description": "Create production GitHub Actions workflows for testing, building, and deploying. Use when setting up CI pipelines, Docker builds, Kubernetes deployments, matrix builds, security scans, or reusable workflows."
-    },
-    {
-      "name": "gitlab-ci-patterns",
-      "description": "Build GitLab CI/CD pipelines with multi-stage workflows, caching, Docker builds, Kubernetes deployments, and security scanning. Use when creating .gitlab-ci.yml pipelines, setting up runners, implementing Terraform/IaC, or configuring GitOps workflows."
-    },
-    {
-      "name": "grafana-dashboards",
-      "description": "Create production Grafana dashboards with panels, variables, alerts, and templates using RED/USE methods. Use when building API monitoring, infrastructure, database, or SLO dashboards with Prometheus data sources."
-    },
-    {
-      "name": "iterative-error-resolution",
-      "description": "Iterative CI/CD error resolution with pattern recognition, automated fixes, and learning from outcomes. Use when debugging GitHub Actions, fixing dependency/build/test failures, or implementing automated error resolution loops."
-    },
-    {
-      "name": "prometheus-configuration",
-      "description": "Configure Prometheus for metric collection, alerting, and monitoring with scrape configs, recording rules, alert rules, and service discovery. Use when setting up Prometheus servers, creating alert rules, or implementing Kubernetes monitoring."
-    },
-    {
-      "name": "secrets-management",
-      "description": "Implement secrets management with HashiCorp Vault, AWS Secrets Manager, Azure Key Vault, or platform-native solutions with encryption, rotation, and access control. Use when storing API keys, database passwords, TLS certificates, or implementing secret rotation."
-    },
-    {
-      "name": "security-ci-template",
-      "description": "Security scanning and lock file validation templates for CI/CD pipelines. Use when implementing SAST/DAST scanning, dependency vulnerability checks, lock file validation, or automated security gates in GitHub Actions or GitLab CI."
-    },
-    {
-      "name": "slo-implementation",
-      "description": "Define SLIs, SLOs, error budgets, and burn rate alerting following SRE best practices. Use when establishing reliability targets, implementing error budget policies, creating SLO dashboards, or designing multi-window burn rate alerts."
-    }
+    "./skills/airflow-scientific-workflows",
+    "./skills/deployment-pipeline-design",
+    "./skills/distributed-tracing",
+    "./skills/git-workflow",
+    "./skills/github-actions-templates",
+    "./skills/gitlab-ci-patterns",
+    "./skills/grafana-dashboards",
+    "./skills/iterative-error-resolution",
+    "./skills/prometheus-configuration",
+    "./skills/secrets-management",
+    "./skills/security-ci-template",
+    "./skills/slo-implementation"
   ]
 }

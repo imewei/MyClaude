@@ -1,8 +1,7 @@
 {
   "name": "agent-core",
-  "displayName": "Agent Core Suite",
   "version": "2.1.0",
-  "description": "Consolidated suite for multi-agent coordination, deep reasoning, and specialized LLM application development.",
+  "description": "Core agent orchestration, multi-agent systems, and AI reasoning capabilities",
   "author": {
     "name": "Wei Chen",
     "url": "https://myclaude.readthedocs.io/en/latest/"
@@ -22,87 +21,27 @@
     "context7",
     "chain-of-thought"
   ],
-  "category": "core",
   "agents": [
-    {
-      "name": "orchestrator",
-      "description": "Multi-agent orchestrator specializing in workflow coordination, agent team assembly, and task allocation.",
-      "status": "active"
-    },
-    {
-      "name": "reasoning-engine",
-      "description": "Expert in advanced reasoning, prompt design, and cognitive tasks. Masters Chain-of-Thought and structured frameworks.",
-      "status": "active"
-    },
-    {
-      "name": "context-specialist",
-      "description": "Elite AI context engineering specialist mastering dynamic context management, vector databases, and memory systems.",
-      "status": "active"
-    }
+    "./agents/orchestrator.md",
+    "./agents/context-specialist.md",
+    "./agents/reasoning-engine.md"
   ],
   "commands": [
-    {
-      "name": "/agent-build",
-      "description": "Unified AI agent creation, optimization, and prompt engineering.",
-      "status": "active"
-    },
-    {
-      "name": "/ai-assistant",
-      "description": "Build production-ready AI assistants with NLU and intelligent response generation.",
-      "status": "active"
-    },
-    {
-      "name": "/docs-lookup",
-      "description": "Query library documentation using Context7 MCP for up-to-date API references.",
-      "status": "active"
-    },
-    {
-      "name": "/reflection",
-      "description": "Comprehensive meta-cognitive reflection framework execution.",
-      "status": "active"
-    },
-    {
-      "name": "/ultra-think",
-      "description": "Comprehensive analysis with full reasoning framework execution.",
-      "status": "active"
-    }
+    "./commands/agent-build.md",
+    "./commands/ai-assistant.md",
+    "./commands/docs-lookup.md",
+    "./commands/reflection.md",
+    "./commands/ultra-think.md"
   ],
   "skills": [
-    {
-      "name": "advanced-reasoning",
-      "description": "Apply structured reasoning frameworks, systematic thought processing, and meta-cognitive reflection to solve complex problems."
-    },
-    {
-      "name": "agent-orchestration",
-      "description": "Coordinate multiple AI agents through workflow orchestration, task allocation, and inter-agent communication protocols. Masters DAG-based workflows and team assembly."
-    },
-    {
-      "name": "agent-performance-optimization",
-      "description": "Optimize AI agent performance through monitoring, metrics collection, caching, and load balancing. Use when analyzing agent execution bottlenecks, implementing latency percentiles (P50/P95/P99), setting up multi-tier caching, tracking success/failure rates, load balancing across agent instances, or scaling agent systems for production."
-    },
-    {
-      "name": "comprehensive-reflection-framework",
-      "description": "Orchestrate reflection across cognitive, technical, scientific, and strategic dimensions for integrated insights and cross-cutting patterns. Use for quarterly reviews, major milestones, grant proposals, strategic planning, or comprehensive project health assessments."
-    },
-    {
-      "name": "llm-application-patterns",
-      "description": "Design and build robust LLM-powered applications. Covers advanced prompt engineering (CoT, few-shot), RAG implementation, and LLM evaluation."
-    },
-    {
-      "name": "mcp-integration",
-      "description": "Guide for using integrated MCP servers (serena, github, sequential-thinking, context7)"
-    },
-    {
-      "name": "meta-cognitive-reflection",
-      "description": "Analyze AI reasoning patterns, cognitive biases, problem-solving quality, and communication effectiveness through systematic meta-cognitive reflection. Use for session reflections, reasoning audits, bias detection, and continuous improvement."
-    },
-    {
-      "name": "multi-agent-coordination",
-      "description": "Coordinate multiple AI agents through workflow orchestration, task allocation, and distributed systems. Use when designing DAG-based workflows with task dependencies, building agent team assembly with capability matching, implementing inter-agent communication protocols, orchestrating parallel execution with synchronization, designing fault-tolerant systems with retry logic, or managing distributed agent teams."
-    },
-    {
-      "name": "structured-reasoning",
-      "description": "Apply structured reasoning with systematic thought processing, branching exploration, multi-framework analysis (First Principles, Root Cause Analysis, Decision Analysis), and auditability. Use for complex debugging, architectural decisions, strategic planning, novel problems, and high-stakes decisions requiring explicit reasoning chains."
-    }
+    "./skills/advanced-reasoning",
+    "./skills/agent-orchestration",
+    "./skills/agent-performance-optimization",
+    "./skills/comprehensive-reflection-framework",
+    "./skills/llm-application-patterns",
+    "./skills/mcp-integration",
+    "./skills/meta-cognitive-reflection",
+    "./skills/multi-agent-coordination",
+    "./skills/structured-reasoning"
   ]
 }

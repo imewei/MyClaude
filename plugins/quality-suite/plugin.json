@@ -1,8 +1,7 @@
 {
   "name": "quality-suite",
-  "displayName": "Quality & Maintenance Suite",
   "version": "2.1.0",
-  "description": "Consolidated suite for code quality, test automation, legacy modernization, and debugging.",
+  "description": "Code quality, test automation, legacy modernization, and debugging",
   "author": {
     "name": "Wei Chen",
     "url": "https://myclaude.readthedocs.io/en/latest/"
@@ -19,121 +18,34 @@
     "review",
     "debugging"
   ],
-  "category": "quality",
   "agents": [
-    {
-      "name": "quality-specialist",
-      "description": "Expert in ensuring software quality through rigorous code reviews, security audits, and test automation.",
-      "status": "active"
-    },
-    {
-      "name": "debugger-pro",
-      "description": "Expert in AI-assisted debugging, log correlation, and complex root cause analysis across distributed systems.",
-      "status": "active"
-    },
-    {
-      "name": "documentation-expert",
-      "description": "Expert in creating clear, comprehensive, and accurate technical documentation and tutorials.",
-      "status": "active"
-    }
+    "./agents/debugger-pro.md",
+    "./agents/documentation-expert.md",
+    "./agents/quality-specialist.md"
   ],
   "commands": [
-    {
-      "name": "/run-all-tests",
-      "description": "Iteratively run and fix all tests until zero failures with AI-driven RCA.",
-      "status": "active"
-    },
-    {
-      "name": "/test-generate",
-      "description": "Generate comprehensive test suites with scientific computing support.",
-      "status": "active"
-    },
-    {
-      "name": "/double-check",
-      "description": "Multi-dimensional validation with automated testing and security scanning.",
-      "status": "active"
-    },
-    {
-      "name": "/smart-debug",
-      "description": "Intelligent debugging with multi-mode execution and automated RCA.",
-      "status": "active"
-    },
-    {
-      "name": "/refactor-clean",
-      "description": "Analyze and refactor code to improve quality and maintainability.",
-      "status": "active"
-    },
-    {
-      "name": "/tech-debt",
-      "description": "Analyze, prioritize, and remediate technical debt using ROI metrics.",
-      "status": "active"
-    },
-    {
-      "name": "/adopt-code",
-      "description": "Analyze and modernize scientific computing codebases with accuracy.",
-      "status": "active"
-    },
-    {
-      "name": "/code-explain",
-      "description": "Detailed code explanation with visual aids and domain expertise.",
-      "status": "active"
-    },
-    {
-      "name": "/deps",
-      "description": "Unified dependency management - security auditing and safe upgrades.",
-      "status": "active"
-    },
-    {
-      "name": "/docs",
-      "description": "Unified documentation management - generate, update, and sync.",
-      "status": "active"
-    },
-    {
-      "name": "/fix-imports",
-      "description": "Systematically fix broken imports across the codebase.",
-      "status": "active"
-    }
+    "./commands/adopt-code.md",
+    "./commands/code-explain.md",
+    "./commands/deps.md",
+    "./commands/docs.md",
+    "./commands/double-check.md",
+    "./commands/fix-imports.md",
+    "./commands/refactor-clean.md",
+    "./commands/run-all-tests.md",
+    "./commands/smart-debug.md",
+    "./commands/tech-debt.md",
+    "./commands/test-generate.md"
   ],
   "skills": [
-    {
-      "name": "ai-assisted-debugging",
-      "description": "AI/LLM for automated stack trace analysis, intelligent RCA, ML log correlation in distributed systems. Use for Python/JS/Go exceptions, K8s pod failures, automated anomaly detection on logs/metrics, correlating git commits with production incidents."
-    },
-    {
-      "name": "code-review",
-      "description": "Systematic process for code review focused on security, performance, maintainability, and knowledge sharing."
-    },
-    {
-      "name": "comprehensive-validation",
-      "description": "Multi-dimensional validation framework for code, APIs, and systems. Covers security scans, performance profiling, and production readiness checks."
-    },
-    {
-      "name": "comprehensive-validation-framework",
-      "description": "Systematic multi-dimensional validation framework for code, APIs, and systems. Use when validating before deployment, running security scans (OWASP Top 10, dependency vulnerabilities), checking test coverage (>80% target), verifying accessibility (WCAG 2.1 AA), profiling performance, validating breaking changes, or preparing deployment readiness reports."
-    },
-    {
-      "name": "debugging-strategies",
-      "description": "Systematic debugging with scientific method, profiling, RCA across any stack. Use for runtime errors, performance issues, memory leaks, flaky bugs, production debugging with Chrome DevTools, VS Code, pdb/ipdb, Delve, git bisect."
-    },
-    {
-      "name": "documentation-standards",
-      "description": "Guidelines for high-quality technical documentation, including API specs, READMEs, and internal runbooks."
-    },
-    {
-      "name": "e2e-testing-patterns",
-      "description": "Build reliable E2E tests with Playwright and Cypress for web testing, browser automation, and CI/CD integration. Use when writing E2E tests, implementing Page Object Model, mocking APIs, visual regression, or accessibility testing."
-    },
-    {
-      "name": "observability-sre-practices",
-      "description": "Production observability, monitoring, SRE with OpenTelemetry, Prometheus, Grafana, incident management. Use for tracing/metrics/logs, SLOs/SLIs, alerts with AlertManager, Golden Signals, incident response, post-mortems, error budgets."
-    },
-    {
-      "name": "plugin-syntax-validator",
-      "description": "Validates plugin structure, manifest correctness, and component syntax against official standards. Checks for required files (plugin.json, README.md, LICENSE), validates YAML frontmatter in agents/commands/skills, and ensures directory compliance. Use PROACTIVELY when creating or modifying plugins."
-    },
-    {
-      "name": "test-automation",
-      "description": "Expert guide for implementing automated testing across the pyramid (Unit, Integration, E2E). Masters Jest, Pytest, Playwright, and Cypress."
-    }
+    "./skills/ai-assisted-debugging",
+    "./skills/code-review",
+    "./skills/comprehensive-validation",
+    "./skills/comprehensive-validation-framework",
+    "./skills/debugging-strategies",
+    "./skills/documentation-standards",
+    "./skills/e2e-testing-patterns",
+    "./skills/observability-sre-practices",
+    "./skills/plugin-syntax-validator",
+    "./skills/test-automation"
   ]
 }
