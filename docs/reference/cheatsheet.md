@@ -48,7 +48,7 @@ The MyClaude ecosystem is organized into five powerful suites, each consolidated
 
 ## 🛠️ Common Workflows
 
-### Feature Development
+### Engineering Feature Development
 1. Use `@software-architect` to design the system.
 2. Run `/engineering-suite:eng-feature-dev` to implement the core logic.
 3. Use `/quality-suite:test-generate` to create tests.
