@@ -71,12 +71,20 @@ Commands
 Skills
 ------
 
+.. skill:: ai-assisted-debugging
+   :description: Leveraging AI for efficient debugging.
+   :version: 1.0.0
+
 .. skill:: code-review
    :description: Systematic process for code review focused on security, performance, maintainability, and knowledge sharing.
    :version: 1.0.0
 
 .. skill:: comprehensive-validation
-   :description: Multi-dimensional validation framework for code, APIs, and systems. Covers security scans, performance profiling, and production readiness checks.
+   :description: comprehensive validation strategies.
+   :version: 1.0.0
+
+.. skill:: comprehensive-validation-framework
+   :description: Multi-dimensional validation framework for code, APIs, and systems.
    :version: 1.0.0
 
 .. skill:: debugging-strategies
@@ -85,6 +93,18 @@ Skills
 
 .. skill:: documentation-standards
    :description: Guidelines for high-quality technical documentation, including API specs, READMEs, and internal runbooks.
+   :version: 1.0.0
+
+.. skill:: e2e-testing-patterns
+   :description: Patterns for End-to-End (E2E) testing.
+   :version: 1.0.0
+
+.. skill:: observability-sre-practices
+   :description: SRE practices for observability and reliability.
+   :version: 1.0.0
+
+.. skill:: plugin-syntax-validator
+   :description: Validating plugin syntax and structure.
    :version: 1.0.0
 
 .. skill:: test-automation

@@ -61,15 +61,51 @@ Commands
 Skills
 ------
 
-.. skill:: deployment-pipelines
-   :description: Design and implement robust CI/CD pipelines using GitHub Actions, GitLab CI, and Jenkins. Covers multi-stage workflows, security scanning, secrets management, and progressive delivery (canary, blue-green).
+.. skill:: airflow-scientific-workflows
+   :description: Managing scientific workflows with Airflow.
+   :version: 1.0.0
+
+.. skill:: deployment-pipeline-design
+   :description: Designing robust deployment pipelines.
+   :version: 1.0.0
+
+.. skill:: distributed-tracing
+   :description: Implementing distributed tracing for observability.
    :version: 1.0.0
 
 .. skill:: git-workflow
    :description: Master advanced Git workflows for collaborative development. Covers interactive rebasing, cherry-picking, bisecting for bug discovery, and managing pull requests.
    :version: 1.0.0
 
-.. skill:: observability
-   :description: Implement comprehensive monitoring, logging, and tracing using Prometheus, Grafana, and ELK/Loki. Master SLIs/SLOs, error budgets, and distributed tracing for distributed systems.
+.. skill:: github-actions-templates
+   :description: Templates and best practices for GitHub Actions.
+   :version: 1.0.0
+
+.. skill:: gitlab-ci-patterns
+   :description: Patterns for GitLab CI/CD pipelines.
+   :version: 1.0.0
+
+.. skill:: grafana-dashboards
+   :description: Creating effective dashboards in Grafana.
+   :version: 1.0.0
+
+.. skill:: iterative-error-resolution
+   :description: Strategies for iteratively resolving errors in infrastructure.
+   :version: 1.0.0
+
+.. skill:: prometheus-configuration
+   :description: Configuring Prometheus for monitoring.
+   :version: 1.0.0
+
+.. skill:: secrets-management
+   :description: Best practices for managing secrets securely.
+   :version: 1.0.0
+
+.. skill:: security-ci-template
+   :description: CI templates for security scanning and checks.
+   :version: 1.0.0
+
+.. skill:: slo-implementation
+   :description: Implementing Service Level Objectives (SLOs).
    :version: 1.0.0
 

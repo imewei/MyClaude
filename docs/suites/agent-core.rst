@@ -54,10 +54,31 @@ Skills
    :description: Coordinate multiple AI agents through workflow orchestration, task allocation, and inter-agent communication protocols. Masters DAG-based workflows and team assembly.
    :version: 1.0.0
 
+.. skill:: agent-performance-optimization
+   :description: Techniques for optimizing agent performance and reliability.
+   :version: 1.0.0
+
+.. skill:: comprehensive-reflection-framework
+   :description: Framework for deep reflection and self-improvement in agents.
+   :version: 1.0.0
+
 .. skill:: llm-application-patterns
    :description: Design and build robust LLM-powered applications. Covers advanced prompt engineering (CoT, few-shot), RAG implementation, and LLM evaluation.
    :version: 1.0.0
 
 .. skill:: mcp-integration
    :description: Guide for using integrated MCP servers (serena, github, sequential-thinking, context7)
+   :version: 1.0.0
+
+.. skill:: meta-cognitive-reflection
+   :description: Meta-cognitive strategies for agent self-awareness and error correction.
+   :version: 1.0.0
+
+.. skill:: multi-agent-coordination
+   :description: Patterns for effective coordination between multiple agents.
+   :version: 1.0.0
+
+.. skill:: structured-reasoning
+   :description: Techniques for structured reasoning and problem decomposition.
+   :version: 1.0.0
 

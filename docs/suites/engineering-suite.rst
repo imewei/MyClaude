@@ -55,23 +55,83 @@ Commands
 Skills
 ------
 
-.. skill:: backend-engineering
-   :description: Master backend development including API design (REST, GraphQL, gRPC), database optimization, microservices architecture, and authentication patterns.
+.. skill:: api-design-principles
+   :description: Principles for designing robust, scalable, and intuitive APIs.
+   :version: 1.0.0
+
+.. skill:: architecture-patterns
+   :description: Common architectural patterns for software systems.
+   :version: 1.0.0
+
+.. skill:: async-python-patterns
+   :description: Patterns for asynchronous programming in Python.
+   :version: 1.0.0
+
+.. skill:: auth-implementation-patterns
+   :description: Patterns for implementing authentication and authorization.
+   :version: 1.0.0
+
+.. skill:: error-handling-patterns
+   :description: Patterns for robust error handling and recovery.
    :version: 1.0.0
 
 .. skill:: frontend-mobile-engineering
-   :description: Design and build multi-platform applications for web, iOS, and Android. Covers Flutter, React Native, modern JavaScript/TypeScript patterns, and mobile-first UX.
+   :description: Design and build multi-platform applications for web, iOS, and Android.
    :version: 1.0.0
 
-.. skill:: language-mastery
-   :description: Master core programming languages and environments including Python (Async, Packaging), JavaScript/TypeScript (Advanced types, Node.js), and Systems languages.
+.. skill:: javascript-testing-patterns
+   :description: Patterns for testing JavaScript applications.
+   :version: 1.0.0
+
+.. skill:: microservices-patterns
+   :description: Patterns for designing and implementing microservices.
+   :version: 1.0.0
+
+.. skill:: modern-javascript-patterns
+   :description: Modern patterns and practices for JavaScript development.
    :version: 1.0.0
 
 .. skill:: modernization-migration
-   :description: Strategy and patterns for legacy modernization, framework migrations, and database schema evolution.
+   :description: Strategy and patterns for legacy modernization and migration.
+   :version: 1.0.0
+
+.. skill:: monorepo-management
+   :description: Best practices for managing monorepos.
+   :version: 1.0.0
+
+.. skill:: nodejs-backend-patterns
+   :description: Patterns for building backend services with Node.js.
+   :version: 1.0.0
+
+.. skill:: python-packaging
+   :description: Best practices for Python packaging and distribution.
+   :version: 1.0.0
+
+.. skill:: python-performance-optimization
+   :description: Techniques for optimizing Python code performance.
+   :version: 1.0.0
+
+.. skill:: python-testing-patterns
+   :description: Patterns for testing Python applications.
+   :version: 1.0.0
+
+.. skill:: sql-optimization-patterns
+   :description: Patterns for optimizing SQL queries and database performance.
    :version: 1.0.0
 
 .. skill:: systems-cli-engineering
-   :description: Design high-performance systems and production-grade CLI tools. Covers memory management, concurrency, and CLI UX design.
+   :description: Design high-performance systems and production-grade CLI tools.
+   :version: 1.0.0
+
+.. skill:: typescript-advanced-types
+   :description: Advanced usage of TypeScript types.
+   :version: 1.0.0
+
+.. skill:: typescript-project-scaffolding
+   :description: Scaffolding and setup for TypeScript projects.
+   :version: 1.0.0
+
+.. skill:: uv-package-manager
+   :description: Guide for using the uv package manager.
    :version: 1.0.0
 

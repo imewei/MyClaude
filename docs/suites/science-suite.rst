@@ -59,47 +59,323 @@ Agents
 Skills
 ------
 
+.. skill:: active-matter
+   :description: Simulation and analysis of active matter systems.
+   :version: 1.0.0
+
+.. skill:: advanced-ml-systems
+   :description: Building and managing advanced machine learning systems.
+   :version: 1.0.0
+
 .. skill:: advanced-simulations
-   :description: Master advanced simulation techniques including non-equilibrium thermodynamics, stochastic dynamics, and multiscale modeling. Bridge scales from atomistic to mesoscale.
+   :description: Master advanced simulation techniques including non-equilibrium thermodynamics, stochastic dynamics, and multiscale modeling.
    :version: 1.0.1
+
+.. skill:: catalyst-reactions
+   :description: Modeling and simulation of catalytic reactions.
+   :version: 1.0.0
+
+.. skill:: ci-cd-patterns
+   :description: CI/CD patterns specifically for scientific workflows.
+   :version: 1.0.0
+
+.. skill:: compiler-patterns
+   :description: Compiler optimization patterns for scientific code.
+   :version: 1.0.0
+
+.. skill:: core-julia-patterns
+   :description: Core design patterns in Julia.
+   :version: 1.0.0
+
+.. skill:: correlation-computational-methods
+   :description: Computational methods for correlation analysis.
+   :version: 1.0.0
+
+.. skill:: correlation-experimental-data
+   :description: Correlating experimental data with theoretical models.
+   :version: 1.0.0
+
+.. skill:: correlation-math-foundations
+   :description: Mathematical foundations of correlation functions.
+   :version: 1.0.0
+
+.. skill:: correlation-physical-systems
+   :description: Applying correlation analysis to physical systems.
+   :version: 1.0.0
+
+.. skill:: data-analysis
+   :description: General scientific data analysis techniques.
+   :version: 1.0.0
+
+.. skill:: data-wrangling-communication
+   :description: Wrangling data and communicating results effectively.
+   :version: 1.0.0
 
 .. skill:: deep-learning
-   :description: Master deep learning architecture design, theory, and implementation. Covers neural network mathematics, training diagnostics, PyTorch/JAX frameworks, and advanced patterns.
+   :description: Master deep learning architecture design, theory, and implementation.
    :version: 2.0.0
 
+.. skill:: deep-learning-experimentation
+   :description: Designing and running deep learning experiments.
+   :version: 1.0.0
+
+.. skill:: devops-ml-infrastructure
+   :description: DevOps practices for ML infrastructure.
+   :version: 1.0.0
+
+.. skill:: differential-equations
+   :description: Solving differential equations numerically.
+   :version: 1.0.0
+
+.. skill:: ecosystem-selection
+   :description: Selecting the right scientific ecosystem (Python vs Julia vs JAX).
+   :version: 1.0.0
+
+.. skill:: evidence-synthesis
+   :description: Synthesizing evidence from multiple scientific sources.
+   :version: 1.0.0
+
+.. skill:: gpu-acceleration
+   :description: Accelerating scientific code on GPUs.
+   :version: 1.0.0
+
+.. skill:: interop-patterns
+   :description: Patterns for interoperability between languages (e.g. Python/Julia).
+   :version: 1.0.0
+
+.. skill:: jax-bayesian-pro
+   :description: Advanced Bayesian inference with JAX.
+   :version: 1.0.0
+
+.. skill:: jax-core-programming
+   :description: Core programming concepts and patterns in JAX.
+   :version: 1.0.0
+
+.. skill:: jax-diffeq-pro
+   :description: Solving differential equations with JAX.
+   :version: 1.0.0
+
 .. skill:: jax-mastery
-   :description: Master JAX for high-performance scientific computing. Covers functional transformations (JIT, vmap, pmap, grad), neural networks (Flax NNX), and specialized optimization (NLSQ, NumPyro).
+   :description: Master JAX for high-performance scientific computing.
    :version: 1.1.0
 
+.. skill:: jax-optimization-pro
+   :description: Advanced optimization techniques in JAX.
+   :version: 1.0.0
+
+.. skill:: jax-physics-applications
+   :description: Applying JAX to physics problems.
+   :version: 1.0.0
+
 .. skill:: julia-mastery
-   :description: Master the Julia language for scientific computing. Covers multiple dispatch, type stability, metaprogramming, and the SciML ecosystem.
+   :description: Master the Julia language for scientific computing.
    :version: 1.0.1
 
+.. skill:: jump-optimization
+   :description: Optimization using JuMP in Julia.
+   :version: 1.0.0
+
+.. skill:: langchain-architecture
+   :description: Architecting applications with LangChain.
+   :version: 1.0.0
+
 .. skill:: llm-application-dev
-   :description: Build production-ready LLM applications, RAG systems, and AI agents. Covers prompt engineering, LangChain/LangGraph architecture, and evaluation.
+   :description: Build production-ready LLM applications.
+   :version: 1.0.0
+
+.. skill:: llm-evaluation
+   :description: Evaluating LLM performance and quality.
    :version: 1.0.0
 
 .. skill:: machine-learning
-   :description: Comprehensive Classical Machine Learning suite. Covers scikit-learn, XGBoost, LightGBM, and MLOps pipelines. Focuses on tabular data, feature engineering, and production deployment.
+   :description: Comprehensive Classical Machine Learning suite.
    :version: 2.0.0
+
+.. skill:: machine-learning-essentials
+   :description: Essential concepts and algorithms in machine learning.
+   :version: 1.0.0
+
+.. skill:: mcmc-diagnostics
+   :description: Diagnostics for MCMC simulations.
+   :version: 1.0.0
+
+.. skill:: md-simulation-setup
+   :description: Setting up molecular dynamics simulations.
+   :version: 1.0.0
+
+.. skill:: ml-engineering-production
+   :description: Engineering ML systems for production.
+   :version: 1.0.0
+
+.. skill:: ml-force-fields
+   :description: Machine learning force fields for molecular simulation.
+   :version: 1.0.0
+
+.. skill:: ml-pipeline-workflow
+   :description: Building ML pipeline workflows.
+   :version: 1.0.0
+
+.. skill:: model-deployment-serving
+   :description: Deploying and serving ML models.
+   :version: 1.0.0
+
+.. skill:: model-optimization-deployment
+   :description: Optimizing models for deployment.
+   :version: 1.0.0
+
+.. skill:: modeling-toolkit
+   :description: Using ModelingToolkit.jl for acausal modeling.
+   :version: 1.0.0
+
+.. skill:: modern-concurrency
+   :description: Modern concurrency patterns in scientific computing.
+   :version: 1.0.0
+
+.. skill:: multiscale-modeling
+   :description: Modeling systems across multiple scales.
+   :version: 1.0.0
+
+.. skill:: neural-architecture-patterns
+   :description: Design patterns for neural network architectures.
+   :version: 1.0.0
+
+.. skill:: neural-network-mathematics
+   :description: Mathematical foundations of neural networks.
+   :version: 1.0.0
+
+.. skill:: neural-pde
+   :description: Solving PDEs with neural networks (Physics-Informed Neural Networks).
+   :version: 1.0.0
+
+.. skill:: nlsq-core-mastery
+   :description: Mastery of Non-Linear Least Squares optimization.
+   :version: 1.0.0
+
+.. skill:: non-equilibrium-theory
+   :description: Theory of non-equilibrium statistical mechanics.
+   :version: 1.0.0
+
+.. skill:: numerical-methods-implementation
+   :description: Implementing numerical methods efficiently.
+   :version: 1.0.0
+
+.. skill:: numpyro-core-mastery
+   :description: Mastery of NumPyro for probabilistic programming.
+   :version: 1.0.0
+
+.. skill:: optimization-patterns
+   :description: General optimization patterns and strategies.
+   :version: 1.0.0
+
+.. skill:: package-development-workflow
+   :description: Workflows for developing scientific packages.
+   :version: 1.0.0
+
+.. skill:: package-management
+   :description: Managing dependencies and environments.
+   :version: 1.0.0
 
 .. skill:: parallel-computing
-   :description: Implement high-performance parallel computing across CPUs and GPUs using Python (CUDA/CuPy) and Julia (CUDA.jl/Distributed.jl). Master multi-threading, distributed systems, and kernel optimization.
+   :description: Implement high-performance parallel computing.
    :version: 1.0.1
 
+.. skill:: parallel-computing-strategy
+   :description: Strategies for parallelizing scientific code.
+   :version: 1.0.0
+
+.. skill:: performance-tuning
+   :description: Tuning code for maximum performance.
+   :version: 1.0.0
+
+.. skill:: prompt-engineering-patterns
+   :description: Patterns for effective prompt engineering in science.
+   :version: 1.0.0
+
 .. skill:: python-development
-   :description: Master modern Python systems engineering for scientific computing. Covers type-driven design, Rust extensions (PyO3), structured concurrency (TaskGroups), robust testing (Hypothesis), and uv-based packaging.
+   :description: Master modern Python systems engineering for scientific computing.
    :version: 2.0.0
 
+.. skill:: python-packaging-advanced
+   :description: Advanced Python packaging for scientific libraries.
+   :version: 1.0.0
+
+.. skill:: rag-implementation
+   :description: Implementing Retrieval-Augmented Generation for science.
+   :version: 1.0.0
+
 .. skill:: research-methodology
-   :description: Systematic framework for scientific research, covering experimental design, statistical rigor, quality assessment, and publication readiness.
+   :description: Systematic framework for scientific research.
    :version: 1.1.0
+
+.. skill:: research-paper-implementation
+   :description: Implementing algorithms from research papers.
+   :version: 1.0.0
+
+.. skill:: research-quality-assessment
+   :description: Assessing the quality and reproducibility of research.
+   :version: 1.0.0
+
+.. skill:: robust-testing
+   :description: Robust testing strategies for scientific code.
+   :version: 1.0.0
+
+.. skill:: rust-extensions
+   :description: Writing Rust extensions for Python (PyO3).
+   :version: 1.0.0
+
+.. skill:: scientific-communication
+   :description: Communicating scientific results effectively.
+   :version: 1.0.0
 
 .. skill:: scientific-visualization
-   :description: Create publication-quality scientific visualizations across physics, biology, chemistry, and climate science. Supports uncertainty quantification, multi-dimensional data, and domain-specific plots in both Python and Julia.
+   :description: Create publication-quality scientific visualizations.
    :version: 1.1.0
 
+.. skill:: sciml-ecosystem
+   :description: Navigating the SciML ecosystem.
+   :version: 1.0.0
+
+.. skill:: statistical-analysis-fundamentals
+   :description: Fundamentals of statistical analysis.
+   :version: 1.0.0
+
 .. skill:: statistical-physics
-   :description: Comprehensive statistical physics suite covering equilibrium and non-equilibrium statistical mechanics, active matter, stochastic dynamics, and correlation analysis. Master the bridge between microscopic laws and macroscopic behavior.
+   :description: Comprehensive statistical physics suite.
    :version: 1.1.0
+
+.. skill:: stochastic-dynamics
+   :description: Simulation of stochastic dynamical systems.
+   :version: 1.0.0
+
+.. skill:: testing-patterns
+   :description: Testing patterns for scientific software.
+   :version: 1.0.0
+
+.. skill:: training-diagnostics
+   :description: Diagnosing issues in ML model training.
+   :version: 1.0.0
+
+.. skill:: trajectory-analysis
+   :description: Analyzing simulation trajectories.
+   :version: 1.0.0
+
+.. skill:: turing-model-design
+   :description: Designing probabilistic models with Turing.jl.
+   :version: 1.0.0
+
+.. skill:: type-driven-design
+   :description: Using type systems for robust scientific code design.
+   :version: 1.0.0
+
+.. skill:: variational-inference-patterns
+   :description: Patterns for variational inference.
+   :version: 1.0.0
+
+.. skill:: visualization-patterns
+   :description: Patterns for effective data visualization.
+   :version: 1.0.0
+
+.. skill:: web-development-julia
+   :description: Web development using Julia (Genie, etc.).
+   :version: 1.0.0
 
