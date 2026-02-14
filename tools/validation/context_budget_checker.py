@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Context Budget Checker for Skills (v2.2.0+)
+Context Budget Checker for Skills (v2.2.1+)
 
 Claude Code v2.1.32+ allocates 2% of the context window for skill content.
 With Opus 4.6's 200K context, that's ~4,000 tokens (~3,000 words).
@@ -172,7 +172,7 @@ def check_all_plugins(plugins_dir: Path) -> BudgetReport:
 def generate_report(report: BudgetReport) -> str:
     """Generate context budget report."""
     lines = [
-        "# Skill Context Budget Report (v2.2.0+)",
+        "# Skill Context Budget Report (v2.2.1+)",
         "",
         f"**Date:** {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}",
         f"**Total Skills Checked:** {report.total_skills}",
