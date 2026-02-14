@@ -45,7 +45,8 @@
         "./commands/ai-assistant.md",
         "./commands/docs-lookup.md",
         "./commands/reflection.md",
-        "./commands/ultra-think.md"
+        "./commands/ultra-think.md",
+        "./commands/team-assemble.md"
       ]
     },
     {

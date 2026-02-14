@@ -192,6 +192,9 @@ temp/
 # Local Claude configuration (user-specific, entire directory)
 .claude/
 
+# Serena IDE integration
+.serena/
+
 # Claude session data
 .claude-sessions/
 .claude-context/
