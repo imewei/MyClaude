@@ -1,7 +1,7 @@
 {
   "name": "engineering-suite",
-  "version": "2.1.0",
-  "description": "Full-stack engineering, language-specific development, and platform implementations",
+  "version": "2.2.0",
+  "description": "Full-stack engineering with adaptive code generation, language-specific development, and cross-platform implementations for Claude Opus 4.6",
   "author": {
     "name": "Wei Chen",
     "url": "https://myclaude.readthedocs.io/en/latest/"
@@ -9,6 +9,7 @@
   "homepage": "https://github.com/imewei/MyClaude",
   "repository": "https://github.com/imewei/MyClaude",
   "license": "MIT",
+  "category": "engineering",
   "keywords": [
     "engineering",
     "backend",
@@ -19,7 +20,9 @@
     "typescript",
     "systems",
     "cli",
-    "migration"
+    "migration",
+    "opus-4.6",
+    "adaptive-thinking"
   ],
   "agents": [
     "./agents/app-developer.md",

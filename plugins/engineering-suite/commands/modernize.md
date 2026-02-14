@@ -1,9 +1,9 @@
 ---
-version: "2.1.0"
+version: "2.2.0"
 description: Unified code migration and legacy modernization with Strangler Fig pattern
 argument-hint: <action> <path> [options]
 category: engineering-suite
-execution-time:
+execution-modes:
   quick: "30-60m: Assessment + strategy"
   standard: "1-2w: Component migration"
   deep: "2-6mo: Enterprise transformation"

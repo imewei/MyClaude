@@ -1,9 +1,9 @@
 ---
-version: "2.1.0"
+version: "2.2.0"
 description: Unified project and component scaffolding for TypeScript, Python, React, and Julia
 argument-hint: <language> <name> [options]
 category: engineering-suite
-execution-time:
+execution-modes:
   quick: "5-15 minutes"
   standard: "20-45 minutes"
   deep: "1-2 hours"

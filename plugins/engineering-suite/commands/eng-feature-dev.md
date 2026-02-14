@@ -1,9 +1,9 @@
 ---
-version: "2.1.0"
+version: "2.2.0"
 description: Unified end-to-end feature development with customizable methodologies and deployment strategies
 argument-hint: <action> <feature-name> [options]
 category: engineering-suite
-execution-time:
+execution-modes:
   quick: "30m-2d: Architecture + hot fixes"
   standard: "3-14d: Full production workflow"
   deep: "2-4w: Enterprise with compliance"

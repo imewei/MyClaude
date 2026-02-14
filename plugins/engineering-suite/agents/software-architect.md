@@ -1,9 +1,11 @@
 ---
 name: software-architect
-version: "2.1.0"
+version: "2.2.0"
 color: blue
 description: Expert in designing scalable backend systems, microservices, and high-performance APIs (REST/GraphQL/gRPC). Conducts deep architectural reviews and modernization planning.
 model: sonnet
+memory: project
+maxTurns: 35
 ---
 
 # Software Architect
