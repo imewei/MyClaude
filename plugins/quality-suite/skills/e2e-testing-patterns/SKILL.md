@@ -1,6 +1,6 @@
 ---
 name: e2e-testing-patterns
-version: "2.1.0"
+version: "2.2.0"
 maturity: "5-Expert"
 specialization: E2E Test Automation
 description: Build reliable E2E tests with Playwright and Cypress for web testing, browser automation, and CI/CD integration. Use when writing E2E tests, implementing Page Object Model, mocking APIs, visual regression, or accessibility testing.

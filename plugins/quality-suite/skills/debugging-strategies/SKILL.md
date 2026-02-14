@@ -1,6 +1,6 @@
 ---
 name: debugging-strategies
-version: "2.1.0"
+version: "2.2.0"
 maturity: "5-Expert"
 specialization: Systematic Debugging
 description: Systematic debugging with scientific method, profiling, RCA across any stack. Use for runtime errors, performance issues, memory leaks, flaky bugs, production debugging with Chrome DevTools, VS Code, pdb/ipdb, Delve, git bisect.

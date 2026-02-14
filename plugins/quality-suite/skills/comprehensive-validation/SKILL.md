@@ -1,6 +1,6 @@
 ---
 name: comprehensive-validation
-version: "2.1.0"
+version: "2.2.0"
 description: Multi-dimensional validation framework for code, APIs, and systems. Covers security scans, performance profiling, and production readiness checks.
 ---
 

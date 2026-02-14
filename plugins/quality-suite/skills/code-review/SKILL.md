@@ -1,6 +1,6 @@
 ---
 name: code-review
-version: "2.1.0"
+version: "2.2.0"
 description: Systematic process for code review focused on security, performance, maintainability, and knowledge sharing.
 ---
 
