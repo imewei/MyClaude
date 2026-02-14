@@ -1,6 +1,6 @@
 ---
 name: deep-learning
-version: "2.1.0"
+version: "2.2.0"
 description: Master deep learning architecture design, theory, and implementation. Covers neural network mathematics, training diagnostics, PyTorch/JAX frameworks, and advanced patterns.
 ---
 

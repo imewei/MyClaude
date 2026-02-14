@@ -1,6 +1,6 @@
 ---
 name: neural-pde
-version: "2.1.0"
+version: "2.2.0"
 maturity: "5-Expert"
 specialization: Physics-Informed Neural Networks
 description: Solve PDEs with physics-informed neural networks using NeuralPDE.jl. Use when solving PDEs with neural networks, enforcing boundary conditions, or combining ML with physics.

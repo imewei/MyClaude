@@ -1,6 +1,6 @@
 ---
 name: data-wrangling-communication
-version: "2.1.0"
+version: "2.2.0"
 description: Comprehensive data wrangling, cleaning, feature engineering, and visualization workflows using pandas, NumPy, Matplotlib, Seaborn, and Plotly. Use when cleaning messy datasets, handling missing values, dealing with outliers, engineering features, performing EDA, creating statistical visualizations, building interactive dashboards with Plotly Dash or Streamlit, or presenting data-driven insights to stakeholders.
 ---
 

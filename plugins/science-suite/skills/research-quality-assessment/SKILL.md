@@ -1,6 +1,6 @@
 ---
 name: research-quality-assessment
-version: "2.1.0"
+version: "2.2.0"
 maturity: "5-Expert"
 specialization: Research Quality Evaluation
 description: Evaluate scientific research quality across methodology, experimental design, statistical rigor, and publication readiness. Use when reviewing papers, grant proposals, or assessing reproducibility using CONSORT, STROBE, or PRISMA guidelines.

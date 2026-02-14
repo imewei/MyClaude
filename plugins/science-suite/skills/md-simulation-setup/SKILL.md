@@ -1,6 +1,6 @@
 ---
 name: md-simulation-setup
-version: "2.1.0"
+version: "2.2.0"
 description: Set up classical MD simulations using LAMMPS, GROMACS, and HOOMD-blue for materials and biomolecular systems. Use when writing input scripts, selecting force fields, configuring ensembles, or optimizing parallel execution.
 ---
 

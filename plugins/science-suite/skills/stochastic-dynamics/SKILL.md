@@ -1,6 +1,6 @@
 ---
 name: stochastic-dynamics
-version: "2.1.0"
+version: "2.2.0"
 description: Model stochastic dynamics using master equations, Fokker-Planck, Langevin dynamics, and Green-Kubo transport theory. Use when simulating noise-driven systems, calculating transport coefficients, or modeling rare events.
 ---
 

@@ -1,6 +1,6 @@
 ---
 name: parallel-computing
-version: "2.1.0"
+version: "2.2.0"
 description: Implement high-performance parallel computing across CPUs and GPUs using Python (CUDA/CuPy) and Julia (CUDA.jl/Distributed.jl). Master multi-threading, distributed systems, and kernel optimization.
 ---
 

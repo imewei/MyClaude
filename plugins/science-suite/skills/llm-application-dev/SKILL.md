@@ -1,6 +1,6 @@
 ---
 name: llm-application-dev
-version: "2.1.0"
+version: "2.2.0"
 description: Build production-ready LLM applications, RAG systems, and AI agents. Covers prompt engineering, LangChain/LangGraph architecture, and evaluation.
 ---
 

@@ -1,6 +1,6 @@
 ---
 name: advanced-ml-systems
-version: "2.1.0"
+version: "2.2.0"
 description: Build advanced deep learning with PyTorch 2.x, TensorFlow, JAX including architectures (CNNs, Transformers, GANs), distributed training (DDP, FSDP, DeepSpeed), hyperparameter optimization (Optuna, Ray Tune), and model optimization (quantization, pruning, distillation). Use when training scripts, custom architectures, or scaling to multi-GPU/TPU.
 ---
 

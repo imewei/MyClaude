@@ -1,6 +1,6 @@
 ---
 name: advanced-simulations
-version: "2.1.0"
+version: "2.2.0"
 description: Master advanced simulation techniques including non-equilibrium thermodynamics, stochastic dynamics, and multiscale modeling. Bridge scales from atomistic to mesoscale.
 ---
 

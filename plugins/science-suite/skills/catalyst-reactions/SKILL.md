@@ -1,6 +1,6 @@
 ---
 name: catalyst-reactions
-version: "2.1.0"
+version: "2.2.0"
 maturity: "5-Expert"
 specialization: Reaction Networks
 description: Model chemical reaction networks with Catalyst.jl for deterministic and stochastic simulations. Use when modeling biochemical pathways or chemical kinetics.

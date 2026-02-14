@@ -1,6 +1,6 @@
 ---
 name: ci-cd-patterns
-version: "2.1.0"
+version: "2.2.0"
 maturity: "5-Expert"
 specialization: Julia CI/CD
 description: Master GitHub Actions for Julia packages with test matrices, CompatHelper, TagBot, and documentation deployment. Use when setting up CI workflows for Julia packages.

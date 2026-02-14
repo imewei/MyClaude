@@ -1,6 +1,6 @@
 ---
 name: python-packaging-advanced
-version: "2.1.0"
+version: "2.2.0"
 description: Master modern Python packaging using uv, focusing on workspaces, monorepos, and reproducible builds. Use when configuring pyproject.toml for uv, setting up monorepo workspaces, managing toolchains with uv, defining dependency groups, or publishing high-performance Python libraries.
 ---
 

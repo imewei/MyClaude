@@ -1,6 +1,6 @@
 ---
 name: model-deployment-serving
-version: "2.1.0"
+version: "2.2.0"
 description: Deploy ML models with FastAPI, TorchServe, BentoML, Docker, Kubernetes, and cloud platforms. Implement monitoring, A/B testing, and drift detection. Use when building model serving APIs, containerizing models, or setting up production ML infrastructure.
 ---
 

@@ -1,6 +1,6 @@
 ---
 name: python-development
-version: "2.1.0"
+version: "2.2.0"
 description: Master modern Python systems engineering for scientific computing. Covers type-driven design, Rust extensions (PyO3), structured concurrency (TaskGroups), robust testing (Hypothesis), and uv-based packaging.
 ---
 

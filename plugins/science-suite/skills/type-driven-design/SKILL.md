@@ -1,6 +1,6 @@
 ---
 name: type-driven-design
-version: "2.1.0"
+version: "2.2.0"
 description: Master type-driven design in Python using Protocols, Generics, and static analysis. Use when designing library interfaces, implementing structural typing, using Generic types for reusable components, or enforcing strict type safety with pyright/mypy.
 ---
 

@@ -1,6 +1,6 @@
 ---
 name: correlation-experimental-data
-version: "2.1.0"
+version: "2.2.0"
 description: Interpret experimental correlation data from DLS (g₂(τ), Siegert relation, Stokes-Einstein), SAXS/SANS (S(q), g(r), Guinier/Porod analysis), XPCS (two-time correlation, aging), FCS (diffusion time, binding kinetics), and rheology (Green-Kubo, microrheology). Extract physical parameters, perform Bayesian model fitting, and validate against theoretical predictions.
 ---
 

@@ -1,6 +1,6 @@
 ---
 name: research-methodology
-version: "2.1.0"
+version: "2.2.0"
 description: Systematic framework for scientific research, covering experimental design, statistical rigor, quality assessment, and publication readiness.
 ---
 
