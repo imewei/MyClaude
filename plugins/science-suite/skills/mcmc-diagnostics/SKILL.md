@@ -1,6 +1,6 @@
 ---
 name: mcmc-diagnostics
-version: "2.2.0"
+version: "2.2.1"
 maturity: "5-Expert"
 specialization: Bayesian Diagnostics
 description: Master MCMC convergence diagnostics with R-hat, ESS, trace plots, and divergence checking. Use when validating Bayesian inference results from Turing.jl.

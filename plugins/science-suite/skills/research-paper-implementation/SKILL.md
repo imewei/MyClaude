@@ -1,6 +1,6 @@
 ---
 name: research-paper-implementation
-version: "2.2.0"
+version: "2.2.1"
 maturity: "5-Expert"
 specialization: Paper-to-Code Translation
 description: Translate research papers into production implementations through systematic analysis and architecture extraction. Use when implementing novel architectures, reproducing experiments, or adapting state-of-the-art methods.

@@ -1,6 +1,6 @@
 ---
 name: correlation-computational-methods
-version: "2.2.0"
+version: "2.2.1"
 description: Implement efficient correlation algorithms including FFT-based O(N log N) autocorrelation (50,000× speedup), multi-tau correlators for wide dynamic ranges, KD-tree spatial correlations, JAX-accelerated GPU computation (200× speedup), and statistical validation (bootstrap, convergence). Use when optimizing calculations for MD trajectories, DLS, XPCS, or large experimental datasets.
 ---
 

@@ -1,6 +1,6 @@
 ---
 name: compiler-patterns
-version: "2.2.0"
+version: "2.2.1"
 maturity: "5-Expert"
 specialization: Julia Compilation
 description: Create system images and standalone executables with PackageCompiler.jl. Use when reducing startup time or deploying Julia applications without requiring Julia installation.

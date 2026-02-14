@@ -1,6 +1,6 @@
 ---
 name: performance-tuning
-version: "2.2.0"
+version: "2.2.1"
 maturity: "5-Expert"
 specialization: Julia Performance
 description: Profile and optimize Julia code with @code_warntype, @profview, and BenchmarkTools.jl. Use when debugging slow code, reducing allocations, or improving execution speed.

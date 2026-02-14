@@ -1,6 +1,6 @@
 ---
 name: robust-testing
-version: "2.2.0"
+version: "2.2.1"
 description: Implement robust testing strategies using property-based testing, advanced fixtures, and mutation testing. Use when writing tests with Hypothesis, implementing complex pytest fixtures, or ensuring high reliability in scientific computations.
 ---
 

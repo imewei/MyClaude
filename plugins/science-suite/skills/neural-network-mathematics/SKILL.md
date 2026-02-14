@@ -1,6 +1,6 @@
 ---
 name: neural-network-mathematics
-version: "2.2.0"
+version: "2.2.1"
 maturity: "5-Expert"
 specialization: NN Mathematical Foundations
 description: Apply mathematical foundations of neural networks including linear algebra, calculus, probability theory, optimization, and information theory. Use when deriving backpropagation for custom layers, computing Jacobians/Hessians, implementing automatic differentiation, analyzing gradient flow, proving convergence, working with Bayesian deep learning, deriving loss functions from MLE principles, or understanding PAC learning theory.

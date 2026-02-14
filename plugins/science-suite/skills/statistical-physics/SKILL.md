@@ -1,6 +1,6 @@
 ---
 name: statistical-physics
-version: "2.2.0"
+version: "2.2.1"
 description: Comprehensive statistical physics suite covering equilibrium and non-equilibrium statistical mechanics, active matter, stochastic dynamics, and correlation analysis. Master the bridge between microscopic laws and macroscopic behavior.
 ---
 
