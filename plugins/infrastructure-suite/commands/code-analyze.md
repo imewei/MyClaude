@@ -1,5 +1,5 @@
 ---
-version: "2.1.0"
+version: "2.2.0"
 name: code-analyze
 description: Semantic code analysis using Serena MCP for symbol navigation and understanding
 argument-hint: "[symbol-name] [--path=relative/path] [--depth=N] [--substring]"

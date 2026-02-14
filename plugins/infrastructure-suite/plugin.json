@@ -1,7 +1,7 @@
 {
   "name": "infrastructure-suite",
-  "version": "2.1.0",
-  "description": "CI/CD automation, observability monitoring, and Git PR workflows",
+  "version": "2.2.0",
+  "description": "CI/CD automation, observability monitoring, Git PR workflows, and agent team coordination for Claude Opus 4.6",
   "author": {
     "name": "Wei Chen",
     "url": "https://myclaude.readthedocs.io/en/latest/"
@@ -9,6 +9,7 @@
   "homepage": "https://github.com/imewei/MyClaude",
   "repository": "https://github.com/imewei/MyClaude",
   "license": "MIT",
+  "category": "infrastructure",
   "keywords": [
     "infrastructure",
     "devops",
@@ -21,7 +22,10 @@
     "mcp",
     "github",
     "serena",
-    "semantic-code"
+    "semantic-code",
+    "opus-4.6",
+    "agent-teams",
+    "task-management"
   ],
   "agents": [
     "./agents/automation-engineer.md",

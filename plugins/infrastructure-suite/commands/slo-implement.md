@@ -1,5 +1,5 @@
 ---
-version: "2.1.0"
+version: "2.2.0"
 command: /slo-implement
 description: Implement SLO/SLA monitoring, error budgets, and burn rate alerting
 argument-hint: "[service-name] [--mode=quick|standard|enterprise]"

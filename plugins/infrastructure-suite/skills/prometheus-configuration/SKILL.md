@@ -1,6 +1,6 @@
 ---
 name: prometheus-configuration
-version: "2.1.0"
+version: "2.2.0"
 maturity: "5-Expert"
 specialization: Metric Collection
 description: Configure Prometheus for metric collection, alerting, and monitoring with scrape configs, recording rules, alert rules, and service discovery. Use when setting up Prometheus servers, creating alert rules, or implementing Kubernetes monitoring.

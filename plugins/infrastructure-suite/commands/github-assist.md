@@ -1,5 +1,5 @@
 ---
-version: "2.1.0"
+version: "2.2.0"
 name: github-assist
 description: GitHub operations using GitHub MCP for issues, PRs, repos, and code search
 argument-hint: "[query] [--type=issue|pr|code] [--org=name] [--label=name]"
