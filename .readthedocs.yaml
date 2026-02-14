@@ -1,5 +1,5 @@
 # Read the Docs configuration file
-# Updated to sync with pyproject.toml dependency groups
+# Dependencies resolved from pyproject.toml [dependency-groups]
 version: 2
 
 build:
@@ -8,13 +8,10 @@ build:
     python: "3.13"
   jobs:
     post_create_environment:
-      - pip install uv
+      - pip install uv==0.10.2
     post_install:
-      # Export dependency groups from pyproject.toml and install them
-      - uv export --group docs --group science --no-hashes > rtd-requirements.txt
-      - uv pip install -r rtd-requirements.txt
-      - uv pip install .
-      - rm rtd-requirements.txt
+      - uv export --group docs --group science --no-hashes | uv pip install -r -
+      - uv pip install --no-deps .
 
 sphinx:
   configuration: docs/conf.py

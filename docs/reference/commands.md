@@ -1,8 +1,8 @@
 # Claude Code Plugin Marketplace - Complete Command List
 
-**Total Commands:** 32 across 5 consolidated suites
+**Total Commands:** 33 across 5 consolidated suites
 **Format:** `/suite:command`
-**Version:** 2.1.0 | **Last Updated:** January 20, 2026
+**Version:** 2.2.0 | **Last Updated:** February 14, 2026
 
 ---
 
@@ -13,6 +13,7 @@
 - **/docs-lookup** - Query library documentation using Context7 MCP for up-to-date API references.
 - **/reflection** - Comprehensive meta-cognitive reflection framework execution.
 - **/ultra-think** - Comprehensive analysis with full reasoning framework execution.
+- **/team-assemble** - Generate ready-to-use agent team configurations from 33 pre-built templates.
 
 ---
 
@@ -86,4 +87,4 @@ Use `--mode=<mode>` to specify the execution mode.
 
 ---
 
-*Generated from v2.1.0 validated marketplace data.*
+*Generated from v2.2.0 validated marketplace data.*

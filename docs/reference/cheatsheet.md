@@ -1,7 +1,7 @@
 # Claude Code Plugin Marketplace - Quick Reference
 
-**Total Resources:** 5 Suites | 22 Expert Agents | 32 Slash Commands
-**Version:** 2.1.0 | **Last Updated:** January 20, 2026
+**Total Resources:** 5 Suites | 22 Expert Agents | 33 Slash Commands | 131 Skills
+**Version:** 2.2.0 | **Last Updated:** February 14, 2026
 
 ---
 
@@ -12,7 +12,7 @@ The MyClaude ecosystem is organized into five powerful suites, each consolidated
 ### 1. Agent Core Suite (`agent-core`)
 **Purpose:** Multi-agent coordination, advanced reasoning, and context engineering.
 - **Agents:** `@orchestrator`, `@reasoning-engine`, `@context-specialist`
-- **Commands:** `/agent-build`, `/ai-assistant`, `/docs-lookup`, `/reflection`, `/ultra-think`
+- **Commands:** `/agent-build`, `/ai-assistant`, `/docs-lookup`, `/reflection`, `/ultra-think`, `/team-assemble`
 - **Skills:** `advanced-reasoning`, `agent-orchestration`, `agent-performance-optimization`, `comprehensive-reflection-framework`, `llm-application-patterns`, `mcp-integration`, `meta-cognitive-reflection`, `multi-agent-coordination`, `structured-reasoning`
 - **Use When:** Complex problem solving, building AI assistants, managing long-running project context.
 
@@ -41,7 +41,7 @@ The MyClaude ecosystem is organized into five powerful suites, each consolidated
 **Purpose:** HPC, specialized simulations, and data science workflows.
 - **Agents:** `@jax-pro`, `@julia-pro`, `@ml-expert`, `@neural-network-master`, `@prompt-engineer`, `@python-pro`, `@research-expert`, `@simulation-expert`, `@statistical-physicist`, `@ai-engineer`
 - **Commands:** *Specialized commands are planned for future releases. Use suite agents for guided execution.*
-- **Skills:** Extensive scientific skills including `jax-mastery`, `julia-mastery`, `deep-learning`, `statistical-physics`, `parallel-computing`, and 60+ specialized domain skills.
+- **Skills:** Extensive scientific skills including `jax-mastery`, `julia-mastery`, `deep-learning`, `statistical-physics`, `parallel-computing`, and 80 specialized domain skills.
 - **Use When:** HPC, JAX/Julia projects, physics simulations, ML engineering, scientific research.
 
 ---
@@ -58,6 +58,12 @@ The MyClaude ecosystem is organized into five powerful suites, each consolidated
 1. Use `@simulation-expert` to design the simulation.
 2. Use `@jax-pro` or `@julia-pro` to implement the numerical kernels.
 3. Use `@research-expert` to analyze and visualize results.
+
+### Agent Teams
+1. Run `/agent-core:team-assemble list` to see all 33 team templates.
+2. Run `/agent-core:team-assemble <type>` to generate a team prompt.
+3. Paste the prompt into Claude Code with agent teams enabled.
+4. See [Agent Teams Guide](../agent-teams-guide.md) for full details.
 
 ---
 
@@ -86,4 +92,4 @@ The MyClaude ecosystem is organized into five powerful suites, each consolidated
 
 ---
 
-*Generated from v2.1.0 validated marketplace data.*
+*Generated from v2.2.0 validated marketplace data.*

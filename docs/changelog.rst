@@ -1,6 +1,42 @@
 Changelog
 =========
 
+v2.2.0 (2026-02-14)
+-------------------
+
+**Claude Opus 4.6 Compatibility**
+
+* Upgraded all 5 plugin suites to v2.2.0 for Claude Opus 4.6 compatibility.
+* Updated all 22 agents and 131 skills to version 2.2.0.
+
+**Agent Teams System**
+
+* New ``/team-assemble`` command with 33 pre-built team configurations.
+* Teams span Development & Operations (1-10), Scientific Computing (11-16),
+  Cross-Suite Specialized (17-25), and Official Plugin Integration (26-33).
+* Each team provides a ready-to-paste prompt with role assignments, file
+  ownership, and workflow ordering.
+* Integrated 20 official plugin agents (pr-review-toolkit, feature-dev,
+  coderabbit, plugin-dev, hookify, huggingface-skills, agent-sdk-dev, superpowers).
+* Quality Gate Enhancers section for adding review agents to any team.
+* Comprehensive reference guide at ``docs/agent-teams-guide.md``.
+
+**Agent Enhancements**
+
+* Added adaptive thinking references to reasoning-engine agent.
+* Integrated Agent Teams coordination into orchestrator agent.
+* Added ``memory`` frontmatter to 11 key agents for persistent context.
+
+**Hooks Infrastructure**
+
+* Added hooks support to agent-core suite (``SessionStart``, ``PreToolUse``).
+* New ``hooks/hooks.json`` configuration in agent-core plugin manifest.
+
+**Tooling**
+
+* Added context budget checker tool (``tools/validation/context_budget_checker.py``).
+* Refined descriptions across all 80 science-suite skills.
+
 v2.1.0 (2026-01-20)
 -------------------
 

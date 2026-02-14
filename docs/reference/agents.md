@@ -2,7 +2,7 @@
 
 **Total Agents:** 22 across 5 consolidated suites
 **Format:** `suite:agent`
-**Version:** 2.1.0 | **Last Updated:** January 20, 2026
+**Version:** 2.2.0 | **Last Updated:** February 14, 2026
 
 ---
 
@@ -67,4 +67,4 @@ Consolidated suite for high-performance computing, specialized physics/chemistry
 
 ---
 
-*Generated from v2.1.0 validated marketplace data.*
+*Generated from v2.2.0 validated marketplace data.*

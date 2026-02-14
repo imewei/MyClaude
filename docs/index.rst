@@ -1,7 +1,7 @@
 Claude Code Plugin Marketplace
 ==============================
 
-Welcome to the documentation for the Claude Code Plugin Marketplace v2.1.0.
+Welcome to the documentation for the Claude Code Plugin Marketplace v2.2.0.
 This system has been consolidated into 5 powerful suites to streamline your development workflow.
 
 .. toctree::
@@ -45,6 +45,7 @@ This system has been consolidated into 5 powerful suites to streamline your deve
    guides/devops-workflows
    guides/infrastructure-workflows
    guides/integration-patterns
+   agent-teams-guide
 
 Indices and tables
 ==================

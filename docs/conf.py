@@ -5,10 +5,10 @@ import sys
 sys.path.insert(0, os.path.abspath('_ext'))
 
 project = 'Claude Code Plugin Marketplace'
-copyright = '2026, DeepMind & Anthropic'
-author = 'DeepMind & Anthropic'
-version = '2.0'
-release = '2.0.0'
+copyright = '2026, Wei Chen'
+author = 'Wei Chen'
+version = '2.2'
+release = '2.2.0'
 
 # General configuration
 extensions = [
