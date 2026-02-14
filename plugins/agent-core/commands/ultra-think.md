@@ -1,6 +1,6 @@
 ---
 description: Advanced structured reasoning engine with step-by-step thought processing, branching logic, and dynamic adaptation for complex problem-solving (v2.1)
-version: "2.1.0"
+version: "2.2.0"
 allowed-tools: Read, Write, Edit, Grep, Glob, Bash(git:*), Bash(find:*), Bash(uv:*), Task, WebSearch, WebFetch
 argument-hint: <question-or-problem> [--mode=quick|standard] [--framework=...] [--depth=shallow|deep|ultradeep]
 color: purple

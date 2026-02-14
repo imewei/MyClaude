@@ -1,6 +1,6 @@
 ---
 name: comprehensive-reflection-framework
-version: "2.1.0"
+version: "2.2.0"
 maturity: "5-Expert"
 specialization: Multi-Dimensional Analysis
 description: Orchestrate reflection across cognitive, technical, scientific, and strategic dimensions for integrated insights and cross-cutting patterns. Use for quarterly reviews, major milestones, grant proposals, strategic planning, or comprehensive project health assessments.

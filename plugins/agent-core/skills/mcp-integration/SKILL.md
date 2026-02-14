@@ -1,6 +1,6 @@
 ---
 name: mcp-integration
-version: "2.1.0"
+version: "2.2.0"
 description: Guide for using integrated MCP servers (serena, github, sequential-thinking, context7)
 ---
 

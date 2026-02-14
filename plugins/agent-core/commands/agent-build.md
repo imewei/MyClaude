@@ -1,5 +1,5 @@
 ---
-version: "2.1.0"
+version: "2.2.0"
 description: Unified AI agent creation, optimization, and prompt engineering
 argument-hint: <action> <target> [options]
 category: agent-core

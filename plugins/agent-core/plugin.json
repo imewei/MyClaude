@@ -1,7 +1,7 @@
 {
   "name": "agent-core",
-  "version": "2.1.0",
-  "description": "Core agent orchestration, multi-agent systems, and AI reasoning capabilities",
+  "version": "2.2.0",
+  "description": "Core agent orchestration, multi-agent teams, adaptive reasoning, and workflow coordination for Claude Opus 4.6",
   "author": {
     "name": "Wei Chen",
     "url": "https://myclaude.readthedocs.io/en/latest/"
@@ -9,6 +9,7 @@
   "homepage": "https://github.com/imewei/MyClaude",
   "repository": "https://github.com/imewei/MyClaude",
   "license": "MIT",
+  "category": "core",
   "keywords": [
     "agent",
     "orchestration",
@@ -19,8 +20,13 @@
     "mcp",
     "sequential-thinking",
     "context7",
-    "chain-of-thought"
+    "chain-of-thought",
+    "agent-teams",
+    "adaptive-thinking",
+    "opus-4.6",
+    "memory-system"
   ],
+  "hooks": "./hooks/hooks.json",
   "agents": [
     "./agents/orchestrator.md",
     "./agents/context-specialist.md",
@@ -31,7 +37,8 @@
     "./commands/ai-assistant.md",
     "./commands/docs-lookup.md",
     "./commands/reflection.md",
-    "./commands/ultra-think.md"
+    "./commands/ultra-think.md",
+    "./commands/team-assemble.md"
   ],
   "skills": [
     "./skills/advanced-reasoning",
