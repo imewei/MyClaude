@@ -1,6 +1,6 @@
 {
   "name": "agent-core",
-  "version": "2.2.0",
+  "version": "2.2.1",
   "description": "Core agent orchestration, multi-agent teams, adaptive reasoning, and workflow coordination for Claude Opus 4.6",
   "author": {
     "name": "Wei Chen",

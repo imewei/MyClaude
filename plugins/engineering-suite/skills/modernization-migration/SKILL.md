@@ -1,6 +1,6 @@
 ---
 name: modernization-migration
-version: "2.2.0"
+version: "2.2.1"
 description: Strategy and patterns for legacy modernization, framework migrations, and database schema evolution.
 ---
 

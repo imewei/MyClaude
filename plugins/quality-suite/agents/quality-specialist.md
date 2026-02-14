@@ -1,6 +1,6 @@
 ---
 name: quality-specialist
-version: "2.2.0"
+version: "2.2.1"
 color: green
 description: Expert in ensuring software quality through rigorous code reviews, comprehensive security audits, and robust test automation strategies. Unifies capabilities of code review, security auditing, and test automation.
 model: sonnet

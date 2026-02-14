@@ -1,5 +1,5 @@
 ---
-version: "2.2.0"
+version: "2.2.1"
 description: Unified code migration and legacy modernization with Strangler Fig pattern
 argument-hint: <action> <path> [options]
 category: engineering-suite

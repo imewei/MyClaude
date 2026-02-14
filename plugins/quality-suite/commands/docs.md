@@ -1,5 +1,5 @@
 ---
-version: "2.2.0"
+version: "2.2.1"
 description: Unified documentation management - generate, update, and sync documentation
 argument-hint: "<action> [--api] [--readme] [--sphinx] [--full] [--from-git]"
 category: quality-suite

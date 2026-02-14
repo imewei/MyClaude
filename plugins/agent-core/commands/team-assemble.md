@@ -1,5 +1,5 @@
 ---
-version: "2.2.0"
+version: "2.2.1"
 description: Generate ready-to-use agent team configurations from 35 pre-built templates
 argument-hint: <team-type> [--var KEY=VALUE]
 category: agent-core
@@ -50,7 +50,7 @@ You are a team assembly specialist. Your job is to generate a ready-to-use agent
 When `list` is invoked, display this table:
 
 ```
-Agent Team Catalog (MyClaude v2.2.0) — 33 Teams
+Agent Team Catalog (MyClaude v2.2.1) — 33 Teams
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 DEVELOPMENT & OPERATIONS

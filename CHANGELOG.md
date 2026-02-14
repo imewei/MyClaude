@@ -1,5 +1,14 @@
 # Changelog
 
+## v2.2.1 (2026-02-14)
+
+**Version Consistency**
+
+* Bumped all 208 versioned files from 2.2.0 to 2.2.1.
+* Synchronized marketplace.json, plugin.json, agents, commands, skills, and docs.
+* Added `.serena/` to `.gitignore`.
+* Added `team-assemble` command to marketplace agent-core entry.
+
 ## v2.2.0 (2026-02-14)
 
 **Agent Teams & Core**
@@ -13,6 +22,12 @@
 * **Science Suite**: Updated agents and skills to v2.2.0; enhanced metadata validation.
 * **Quality Suite**: Comprehensive skill updates and new validation tools.
 * **Engineering & Infrastructure**: Full suite updates with new skills and agents.
+
+**Marketplace & Configuration**
+
+* Bumped all marketplace.json versions from 2.1.0 to 2.2.0.
+* Added `team-assemble` command to agent-core marketplace entry.
+* Added `.serena/` to `.gitignore`.
 
 **Maintenance**
 

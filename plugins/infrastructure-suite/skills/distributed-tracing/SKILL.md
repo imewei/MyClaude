@@ -1,6 +1,6 @@
 ---
 name: distributed-tracing
-version: "2.2.0"
+version: "2.2.1"
 maturity: "5-Expert"
 specialization: Request Flow Visibility
 description: Implement distributed tracing with OpenTelemetry, Jaeger, and Tempo including instrumentation, context propagation, sampling strategies, and trace analysis. Use when debugging latency issues, understanding service dependencies, or tracing error propagation across microservices.

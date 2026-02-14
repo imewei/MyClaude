@@ -1,5 +1,5 @@
 ---
-version: "2.2.0"
+version: "2.2.1"
 description: Unified dependency management - security auditing, vulnerability scanning, and safe upgrades
 argument-hint: "<action> [--mode quick|standard|deep] [--security-only] [--strategy incremental|batch]"
 category: quality-suite
@@ -175,7 +175,7 @@ npm test && npm run test:e2e && npx tsc --noEmit
 
 **Dependabot:**
 ```yaml
-version: "2.2.0"
+version: "2.2.1"
 updates:
   - package-ecosystem: "npm"
     schedule: {interval: "weekly"}

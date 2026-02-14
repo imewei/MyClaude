@@ -1,7 +1,7 @@
 ---
 name: refactor-clean
 description: Analyze and refactor code to improve quality, maintainability, and SOLID principles.
-version: "2.2.0"
+version: "2.2.1"
 category: quality-suite
 color: green
 argument-hint: "<path-to-code>"

@@ -1,6 +1,6 @@
 ---
 name: automation-engineer
-version: "2.2.0"
+version: "2.2.1"
 color: yellow
 description: Expert in automating software delivery pipelines and optimizing Git collaboration workflows. Masters GitHub Actions, GitLab CI, and advanced Git history management.
 model: sonnet

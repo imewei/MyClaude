@@ -1,6 +1,6 @@
 {
   "name": "quality-suite",
-  "version": "2.2.0",
+  "version": "2.2.1",
   "description": "Code quality validation, test automation, intelligent debugging with adaptive reasoning, and legacy modernization for Claude Opus 4.6",
   "author": {
     "name": "Wei Chen",

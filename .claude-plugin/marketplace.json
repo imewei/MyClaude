@@ -7,19 +7,19 @@
   },
   "metadata": {
     "description": "Consolidated 5-suite marketplace for scientific computing, engineering, and agent orchestration",
-    "version": "2.2.0",
+    "version": "2.2.1",
     "based_on": "claude-code-workflows v2.0.0",
     "reorganization_date": "2026-01-20",
     "last_updated": "2026-02-13",
     "total_plugins": 5,
-    "note": "v2.2.0 Opus 4.6 compatibility release with adaptive thinking, Agent Teams integration, memory frontmatter, and hooks infrastructure"
+    "note": "v2.2.1 Opus 4.6 compatibility release with adaptive thinking, Agent Teams integration, memory frontmatter, and hooks infrastructure"
   },
   "plugins": [
     {
       "name": "agent-core",
       "source": "./plugins/agent-core",
       "description": "Core agent orchestration, multi-agent systems, and AI reasoning capabilities",
-      "version": "2.2.0",
+      "version": "2.2.1",
       "author": {
         "name": "Wei Chen",
         "url": "https://myclaude.readthedocs.io/en/latest/"
@@ -53,7 +53,7 @@
       "name": "engineering-suite",
       "source": "./plugins/engineering-suite",
       "description": "Comprehensive software engineering suite covering backend, frontend, mobile, and systems programming",
-      "version": "2.2.0",
+      "version": "2.2.1",
       "author": {
         "name": "Wei Chen",
         "url": "https://myclaude.readthedocs.io/en/latest/"
@@ -89,7 +89,7 @@
       "name": "infrastructure-suite",
       "source": "./plugins/infrastructure-suite",
       "description": "Infrastructure, DevOps, CI/CD, and observability automation tools",
-      "version": "2.2.0",
+      "version": "2.2.1",
       "author": {
         "name": "Wei Chen",
         "url": "https://myclaude.readthedocs.io/en/latest/"
@@ -126,7 +126,7 @@
       "name": "quality-suite",
       "source": "./plugins/quality-suite",
       "description": "Code quality, testing, debugging, and modernization tools",
-      "version": "2.2.0",
+      "version": "2.2.1",
       "author": {
         "name": "Wei Chen",
         "url": "https://myclaude.readthedocs.io/en/latest/"
@@ -165,7 +165,7 @@
       "name": "science-suite",
       "source": "./plugins/science-suite",
       "description": "Scientific computing, HPC, simulation, and data analysis workflows",
-      "version": "2.2.0",
+      "version": "2.2.1",
       "author": {
         "name": "Wei Chen",
         "url": "https://myclaude.readthedocs.io/en/latest/"

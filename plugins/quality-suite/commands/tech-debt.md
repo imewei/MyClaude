@@ -1,7 +1,7 @@
 ---
 name: tech-debt
 description: Analyze, prioritize, and remediate technical debt using metrics and ROI-based roadmaps.
-version: "2.2.0"
+version: "2.2.1"
 category: quality-suite
 color: yellow
 argument-hint: "[--mode quick|standard|comprehensive]"

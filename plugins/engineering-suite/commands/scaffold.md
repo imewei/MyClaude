@@ -1,5 +1,5 @@
 ---
-version: "2.2.0"
+version: "2.2.1"
 description: Unified project and component scaffolding for TypeScript, Python, React, and Julia
 argument-hint: <language> <name> [options]
 category: engineering-suite

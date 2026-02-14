@@ -1,6 +1,6 @@
 ---
 name: javascript-testing-patterns
-version: "2.2.0"
+version: "2.2.1"
 description: Comprehensive testing with Jest/Vitest and Testing Library. Unit tests, integration tests, mocking, fixtures, and TDD workflows. Use when writing tests, setting up test infrastructure, or implementing testing best practices.
 ---
 

@@ -4,7 +4,7 @@
 [![Agents](https://img.shields.io/badge/Agents-22-green.svg)](docs/reference/agents.md)
 [![Commands](https://img.shields.io/badge/Commands-33-orange.svg)](docs/reference/commands.md)
 [![Skills](https://img.shields.io/badge/Skills-131-purple.svg)](docs/reference/cheatsheet.md)
-[![Version](https://img.shields.io/badge/Version-2.2.0-red.svg)](https://github.com/imewei/MyClaude)
+[![Version](https://img.shields.io/badge/Version-2.2.1-red.svg)](https://github.com/imewei/MyClaude)
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Docs](https://img.shields.io/badge/Docs-ReadTheDocs-brightgreen.svg)](https://myclaude.readthedocs.io/en/latest/)
 

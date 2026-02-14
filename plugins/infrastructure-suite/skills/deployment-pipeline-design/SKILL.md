@@ -1,6 +1,6 @@
 ---
 name: deployment-pipeline-design
-version: "2.2.0"
+version: "2.2.1"
 maturity: "5-Expert"
 specialization: CI/CD Architecture
 description: Design multi-stage CI/CD pipelines with approval gates, security checks, and progressive delivery (rolling, blue-green, canary, feature flags). Use when architecting deployment workflows, implementing GitOps, or establishing multi-environment promotion strategies.

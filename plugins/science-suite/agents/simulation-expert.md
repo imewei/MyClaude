@@ -1,6 +1,6 @@
 ---
 name: simulation-expert
-version: "2.2.0"
+version: "2.2.1"
 description: Expert in Physics & High-Performance Simulation. Expert in molecular dynamics, statistical mechanics, and numerical methods. Masters HPC scaling, GPU acceleration, and differentiable physics using JAX and Julia.
 model: sonnet
 color: blue

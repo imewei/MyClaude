@@ -1,6 +1,6 @@
 ---
 name: test-automation
-version: "2.2.0"
+version: "2.2.1"
 description: Expert guide for implementing automated testing across the pyramid (Unit, Integration, E2E). Masters Jest, Pytest, Playwright, and Cypress.
 ---
 

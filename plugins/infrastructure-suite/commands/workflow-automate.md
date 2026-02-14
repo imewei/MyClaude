@@ -1,5 +1,5 @@
 ---
-version: "2.2.0"
+version: "2.2.1"
 name: workflow-automate
 description: Automated CI/CD workflow generation and management for GitHub Actions and GitLab CI.
 argument-hint: "[--mode=quick-start|standard|enterprise] [--platform=github|gitlab|both]"

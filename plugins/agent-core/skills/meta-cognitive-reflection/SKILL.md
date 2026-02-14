@@ -1,6 +1,6 @@
 ---
 name: meta-cognitive-reflection
-version: "2.2.0"
+version: "2.2.1"
 maturity: "5-Expert"
 specialization: AI Reasoning Analysis
 description: Analyze AI reasoning patterns, cognitive biases, problem-solving quality, and communication effectiveness through systematic meta-cognitive reflection. Use for session reflections, reasoning audits, bias detection, and continuous improvement.

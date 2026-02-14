@@ -1,13 +1,13 @@
 Changelog
 =========
 
-v2.2.0 (2026-02-14)
+v2.2.1 (2026-02-14)
 -------------------
 
 **Claude Opus 4.6 Compatibility**
 
-* Upgraded all 5 plugin suites to v2.2.0 for Claude Opus 4.6 compatibility.
-* Updated all 22 agents and 131 skills to version 2.2.0.
+* Upgraded all 5 plugin suites to v2.2.1 for Claude Opus 4.6 compatibility.
+* Updated all 22 agents and 131 skills to version 2.2.1.
 
 **Agent Teams System**
 

@@ -1,5 +1,5 @@
 ---
-version: "2.2.0"
+version: "2.2.1"
 category: "infrastructure-suite"
 command: "/fix-commit-errors"
 execution-modes:

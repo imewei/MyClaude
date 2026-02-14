@@ -1,6 +1,6 @@
 ---
 name: research-expert
-version: "2.2.0"
+version: "2.2.1"
 description: Expert in Scientific Research Methodology & Visualization. Expert in systematic research, evidence synthesis, statistical rigor, and publication-quality visualization. Guides the research lifecycle from hypothesis design to final figure generation.
 model: sonnet
 memory: project

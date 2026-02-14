@@ -9,17 +9,17 @@ Agents
 .. agent:: app-developer
    :description: Expert in building high-quality applications for Web, iOS, and Android (React, Next.js, Flutter).
    :model: sonnet
-   :version: 2.2.0
+   :version: 2.2.1
 
 .. agent:: software-architect
    :description: Expert in designing scalable backend systems, microservices, and high-performance APIs (REST/GraphQL/gRPC).
    :model: sonnet
-   :version: 2.2.0
+   :version: 2.2.1
 
 .. agent:: systems-engineer
    :description: Expert in low-level systems programming (C, C++, Rust, Go) and production-grade CLI tool design.
    :model: sonnet
-   :version: 2.2.0
+   :version: 2.2.1
 
 Commands
 --------
@@ -65,7 +65,7 @@ Skills
 
 .. skill:: frontend-mobile-engineering
    :description: Design and build multi-platform applications for web, iOS, and Android. Covers Flutter, React Native, modern JavaScript/TypeScript patterns, and mobile-first UX.
-   :version: 2.2.0
+   :version: 2.2.1
 
 .. skill:: javascript-testing-patterns
    :description: Comprehensive testing with Jest/Vitest and Testing Library, covering unit tests, integration tests, and mocking patterns.
@@ -78,7 +78,7 @@ Skills
 
 .. skill:: modernization-migration
    :description: Strategy and patterns for legacy modernization, framework migrations, and database schema evolution.
-   :version: 2.2.0
+   :version: 2.2.1
 
 .. skill:: monorepo-management
    :description: Master monorepo management with Turborepo, Nx, and pnpm workspaces, focusing on optimized builds and shared configurations.
@@ -100,7 +100,7 @@ Skills
 
 .. skill:: systems-cli-engineering
    :description: Design high-performance systems and production-grade CLI tools. Covers memory management, concurrency, and CLI UX design.
-   :version: 2.2.0
+   :version: 2.2.1
 
 .. skill:: typescript-advanced-types
    :description: Master TypeScript's advanced type system including generics, conditional types, mapped types, and discriminated unions.

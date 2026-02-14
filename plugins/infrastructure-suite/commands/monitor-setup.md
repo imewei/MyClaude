@@ -1,5 +1,5 @@
 ---
-version: "2.2.0"
+version: "2.2.1"
 command: /monitor-setup
 description: Set up Prometheus, Grafana, and distributed tracing observability stack
 argument-hint: "[--mode=quick|standard|enterprise] [--platform=kubernetes|bare-metal]"

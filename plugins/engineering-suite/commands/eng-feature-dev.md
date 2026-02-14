@@ -1,5 +1,5 @@
 ---
-version: "2.2.0"
+version: "2.2.1"
 description: Unified end-to-end feature development with customizable methodologies and deployment strategies
 argument-hint: <action> <feature-name> [options]
 category: engineering-suite

@@ -1,6 +1,6 @@
 {
   "name": "engineering-suite",
-  "version": "2.2.0",
+  "version": "2.2.1",
   "description": "Full-stack engineering with adaptive code generation, language-specific development, and cross-platform implementations for Claude Opus 4.6",
   "author": {
     "name": "Wei Chen",

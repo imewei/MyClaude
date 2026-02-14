@@ -1,5 +1,5 @@
 ---
-version: "2.2.0"
+version: "2.2.1"
 description: Systematically fix broken imports across the codebase with session continuity
 argument-hint: "[path-or-pattern] [resume|status|new]"
 category: quality-suite

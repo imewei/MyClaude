@@ -1,6 +1,6 @@
 ---
 name: frontend-mobile-engineering
-version: "2.2.0"
+version: "2.2.1"
 description: Design and build multi-platform applications for web, iOS, and Android. Covers Flutter, React Native, modern JavaScript/TypeScript patterns, and mobile-first UX.
 ---
 

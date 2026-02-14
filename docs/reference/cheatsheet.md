@@ -1,7 +1,7 @@
 # Claude Code Plugin Marketplace - Quick Reference
 
 **Total Resources:** 5 Suites | 22 Expert Agents | 33 Slash Commands | 131 Skills
-**Version:** 2.2.0 | **Last Updated:** February 14, 2026
+**Version:** 2.2.1 | **Last Updated:** February 14, 2026
 
 ---
 
@@ -92,4 +92,4 @@ The MyClaude ecosystem is organized into five powerful suites, each consolidated
 
 ---
 
-*Generated from v2.2.0 validated marketplace data.*
+*Generated from v2.2.1 validated marketplace data.*

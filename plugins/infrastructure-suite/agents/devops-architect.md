@@ -1,6 +1,6 @@
 ---
 name: devops-architect
-version: "2.2.0"
+version: "2.2.1"
 color: blue
 description: Platform Owner expert in multi-cloud architecture (AWS/Azure/GCP), Kubernetes orchestration, and Infrastructure as Code (Terraform/Pulumi). Designs scalable, secure, and cost-optimized platforms.
 model: sonnet

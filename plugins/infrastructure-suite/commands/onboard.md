@@ -1,5 +1,5 @@
 ---
-version: "2.2.0"
+version: "2.2.1"
 description: Orchestrate complete onboarding for new team members with customized 30/60/90 day plans
 argument-hint: "<role> [--level=junior|mid|senior] [--location=remote|hybrid|onsite]"
 execution-modes:

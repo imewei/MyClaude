@@ -1,5 +1,5 @@
 ---
-version: "2.2.0"
+version: "2.2.1"
 command: /c-project
 description: Scaffold production-ready C projects with Makefile/CMake and memory safety tools
 argument-hint: "[project-type] [project-name]"

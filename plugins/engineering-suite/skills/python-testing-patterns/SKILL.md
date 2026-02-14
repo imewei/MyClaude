@@ -1,6 +1,6 @@
 ---
 name: python-testing-patterns
-version: "2.2.0"
+version: "2.2.1"
 description: Comprehensive testing with pytest, fixtures, mocking, parameterization, and TDD. Use when writing test files (test_*.py), creating fixtures in conftest.py, using unittest.mock or pytest-mock, writing parameterized tests, testing async code with pytest-asyncio, implementing property-based testing with Hypothesis, or measuring coverage with pytest-cov. Includes parallel execution with pytest-xdist.
 ---
 

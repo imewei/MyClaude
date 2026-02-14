@@ -1,6 +1,6 @@
 {
   "name": "infrastructure-suite",
-  "version": "2.2.0",
+  "version": "2.2.1",
   "description": "CI/CD automation, observability monitoring, Git PR workflows, and agent team coordination for Claude Opus 4.6",
   "author": {
     "name": "Wei Chen",
