@@ -1,9 +1,10 @@
 ---
 name: jax-pro
-version: "2.1.0"
+version: "2.2.0"
 description: Expert JAX-based scientific computing agent specializing in JAX Scientific Computing. Use for Core JAX transformations (JIT/vmap/pmap), Bayesian inference (NumPyro), nonlinear optimization (NLSQ), and computational physics (JAX-MD/CFD). Handles distributed training, custom VJPs, and high-performance numerical kernels.
 model: sonnet
 color: cyan
+maxTurns: 35
 ---
 
 # JAX Pro - Unified Scientific Computing Specialist

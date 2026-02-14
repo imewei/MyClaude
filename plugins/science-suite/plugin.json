@@ -1,7 +1,7 @@
 {
   "name": "science-suite",
-  "version": "2.1.0",
-  "description": "Scientific computing, high-performance computing, physics/chemistry simulations, and data science workflows",
+  "version": "2.2.0",
+  "description": "Scientific computing, HPC, physics/chemistry simulations, and data science workflows with extended context and adaptive reasoning for Claude Opus 4.6",
   "author": {
     "name": "Wei Chen",
     "url": "https://myclaude.readthedocs.io/en/latest/"
@@ -9,6 +9,7 @@
   "homepage": "https://github.com/imewei/MyClaude",
   "repository": "https://github.com/imewei/MyClaude",
   "license": "MIT",
+  "category": "science",
   "keywords": [
     "science",
     "hpc",
@@ -21,7 +22,11 @@
     "research",
     "julia",
     "parallel-computing",
-    "claude-code"
+    "claude-code",
+    "opus-4.6",
+    "adaptive-thinking",
+    "extended-context",
+    "agent-teams"
   ],
   "agents": [
     "./agents/ai-engineer.md",
