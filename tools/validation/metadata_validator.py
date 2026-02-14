@@ -128,11 +128,23 @@ class MetadataValidator:
             "engines": {
                 "type": "object",
                 "description": "Required engine versions"
+            },
+            "hooks": {
+                "type": ["string", "array", "object"],
+                "description": "Hook config path(s) or inline configuration (v2.1.9+)"
+            },
+            "lspServers": {
+                "type": ["string", "array", "object"],
+                "description": "Language Server Protocol configurations"
+            },
+            "outputStyles": {
+                "type": ["string", "array"],
+                "description": "Output style files or directories"
             }
         }
     }
 
-    # Agent schema
+    # Agent schema — aligned with Claude Code v2.1.42 subagent frontmatter spec
     AGENT_SCHEMA: Dict[str, Dict[str, Any]] = {
         "required": {
             "name": {
@@ -143,22 +155,61 @@ class MetadataValidator:
             "description": {
                 "type": "string",
                 "min_length": 20,
-                "description": "Agent description"
-            },
-            "status": {
-                "type": "string",
-                "enum": ["active", "inactive", "beta", "deprecated"],
-                "description": "Agent status"
+                "description": "Agent description for delegation routing"
             }
         },
         "optional": {
-            "expertise": {
-                "type": "array",
-                "description": "List of expertise areas"
+            "tools": {
+                "type": "string",
+                "description": "Comma-separated list of allowed tools"
             },
-            "triggers": {
-                "type": "object",
-                "description": "Activation triggers"
+            "disallowedTools": {
+                "type": "string",
+                "description": "Comma-separated list of denied tools"
+            },
+            "model": {
+                "type": "string",
+                "enum": ["sonnet", "opus", "haiku", "inherit"],
+                "description": "Model to use (default: inherit)"
+            },
+            "permissionMode": {
+                "type": "string",
+                "enum": [
+                    "default", "acceptEdits", "delegate",
+                    "dontAsk", "bypassPermissions", "plan"
+                ],
+                "description": "Permission handling mode"
+            },
+            "maxTurns": {
+                "type": "integer",
+                "min": 1,
+                "description": "Maximum agentic turns before stopping"
+            },
+            "skills": {
+                "type": "array",
+                "description": "Skills to preload into agent context"
+            },
+            "mcpServers": {
+                "type": ["string", "object", "array"],
+                "description": "MCP server configurations"
+            },
+            "hooks": {
+                "type": ["string", "object"],
+                "description": "Lifecycle hooks scoped to this agent"
+            },
+            "memory": {
+                "type": "string",
+                "enum": ["user", "project", "local"],
+                "description": "Persistent memory scope (v2.1.40+)"
+            },
+            "color": {
+                "type": "string",
+                "description": "Background color for UI identification"
+            },
+            "version": {
+                "type": "string",
+                "pattern": r'^\d+\.\d+\.\d+',
+                "description": "Custom metadata version (non-standard)"
             }
         }
     }
@@ -422,17 +473,26 @@ class MetadataValidator:
         return isinstance(value, expected)
 
     def _validate_agents(self, agents: List[Dict[str, Any]], result: ValidationResult):
-        """Validate agents array"""
+        """Validate agents array (supports both file paths and inline objects)"""
         if not agents:
             result.add_warning("agents", "Agents array is empty")
             return
 
         for idx, agent in enumerate(agents):
-            if not isinstance(agent, dict):
-                result.add_error(f"agents[{idx}]", "Agent must be an object")
+            if isinstance(agent, str):
+                # File path reference format: "./agents/orchestrator.md"
+                if not agent.endswith(".md"):
+                    result.add_warning(
+                        f"agents[{idx}]",
+                        f"Agent file path should end with .md: {agent}"
+                    )
                 continue
 
-            # Validate required fields
+            if not isinstance(agent, dict):
+                result.add_error(f"agents[{idx}]", "Agent must be a string path or object")
+                continue
+
+            # Validate required fields for inline object format
             for field_name, field_schema in self.AGENT_SCHEMA["required"].items():
                 if field_name not in agent:
                     result.add_error(
@@ -448,13 +508,22 @@ class MetadataValidator:
                     )
 
     def _validate_commands(self, commands: List[Dict[str, Any]], result: ValidationResult):
-        """Validate commands array"""
+        """Validate commands array (supports both file paths and inline objects)"""
         for idx, command in enumerate(commands):
-            if not isinstance(command, dict):
-                result.add_error(f"commands[{idx}]", "Command must be an object")
+            if isinstance(command, str):
+                # File path reference format: "./commands/commit.md"
+                if not command.endswith(".md"):
+                    result.add_warning(
+                        f"commands[{idx}]",
+                        f"Command file path should end with .md: {command}"
+                    )
                 continue
 
-            # Validate required fields
+            if not isinstance(command, dict):
+                result.add_error(f"commands[{idx}]", "Command must be a string path or object")
+                continue
+
+            # Validate required fields for inline object format
             for field_name, field_schema in self.COMMAND_SCHEMA["required"].items():
                 if field_name not in command:
                     result.add_error(
@@ -480,13 +549,18 @@ class MetadataValidator:
                     )
 
     def _validate_skills(self, skills: List[Dict[str, Any]], result: ValidationResult):
-        """Validate skills array"""
+        """Validate skills array (supports both directory paths and inline objects)"""
         for idx, skill in enumerate(skills):
-            if not isinstance(skill, dict):
-                result.add_error(f"skills[{idx}]", "Skill must be an object")
+            if isinstance(skill, str):
+                # Directory path reference format: "./skills/advanced-reasoning"
+                # Skills reference directories, not .md files
                 continue
 
-            # Validate required fields
+            if not isinstance(skill, dict):
+                result.add_error(f"skills[{idx}]", "Skill must be a string path or object")
+                continue
+
+            # Validate required fields for inline object format
             for field_name, field_schema in self.SKILL_SCHEMA["required"].items():
                 if field_name not in skill:
                     result.add_error(
