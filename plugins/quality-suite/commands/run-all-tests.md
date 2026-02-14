@@ -1,5 +1,5 @@
 ---
-version: "2.1.0"
+version: "2.2.0"
 command: /run-all-tests
 description: Iteratively run and fix all tests until zero failures with AI-driven RCA
 argument-hint: "[test-path] [--fix] [--max-iterations=10] [--parallel] [--coverage]"

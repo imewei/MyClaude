@@ -1,7 +1,7 @@
 {
   "name": "quality-suite",
-  "version": "2.1.0",
-  "description": "Code quality, test automation, legacy modernization, and debugging",
+  "version": "2.2.0",
+  "description": "Code quality validation, test automation, intelligent debugging with adaptive reasoning, and legacy modernization for Claude Opus 4.6",
   "author": {
     "name": "Wei Chen",
     "url": "https://myclaude.readthedocs.io/en/latest/"
@@ -9,6 +9,7 @@
   "homepage": "https://github.com/imewei/MyClaude",
   "repository": "https://github.com/imewei/MyClaude",
   "license": "MIT",
+  "category": "quality",
   "keywords": [
     "quality",
     "testing",
@@ -16,7 +17,10 @@
     "documentation",
     "migration",
     "review",
-    "debugging"
+    "debugging",
+    "opus-4.6",
+    "adaptive-thinking",
+    "task-management"
   ],
   "agents": [
     "./agents/debugger-pro.md",

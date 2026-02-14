@@ -1,5 +1,5 @@
 ---
-version: "2.1.0"
+version: "2.2.0"
 command: /test-generate
 description: Generate comprehensive test suites with scientific computing support, numerical validation, property-based testing, benchmarks
 argument-hint: <source> [--coverage] [--property-based] [--benchmarks] [--scientific]

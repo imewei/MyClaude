@@ -1,5 +1,5 @@
 ---
-version: "2.1.0"
+version: "2.2.0"
 category: quality-suite
 command: /code-explain
 description: Detailed code explanation with visual aids and domain expertise

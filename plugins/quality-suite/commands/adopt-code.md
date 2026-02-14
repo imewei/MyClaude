@@ -1,5 +1,5 @@
 ---
-version: "2.1.0"
+version: "2.2.0"
 category: quality-suite
 command: /adopt-code
 description: Analyze and modernize scientific computing codebases while preserving numerical accuracy

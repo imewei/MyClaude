@@ -1,12 +1,12 @@
 ---
 name: tech-debt
 description: Analyze, prioritize, and remediate technical debt using metrics and ROI-based roadmaps.
-version: "2.1.0"
+version: "2.2.0"
 category: quality-suite
 color: yellow
 argument-hint: "[--mode quick|standard|comprehensive]"
 purpose: Analyze, prioritize, remediate technical debt
-execution-time: {quick: "5-10min", standard: "15-25min", comprehensive: "30-60min"}
+execution-modes: {quick: "5-10min", standard: "15-25min", comprehensive: "30-60min"}
 external-docs: [technical-debt-framework.md, code-quality-metrics.md, refactoring-patterns.md]
 allowed-tools: [Bash, Read, Task]
 ---

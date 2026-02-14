@@ -1,13 +1,13 @@
 ---
 name: refactor-clean
 description: Analyze and refactor code to improve quality, maintainability, and SOLID principles.
-version: "2.1.0"
+version: "2.2.0"
 category: quality-suite
 color: green
 argument-hint: "<path-to-code>"
 allowed-tools: [Read, Edit, Bash, Task]
 purpose: Refactor code for quality, maintainability, and SOLID principles
-execution-time:
+execution-modes:
   quick: 5-10 minutes
   standard: 15-30 minutes
   comprehensive: 30-90 minutes

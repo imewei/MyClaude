@@ -1,10 +1,10 @@
 ---
-version: "2.1.0"
+version: "2.2.0"
 description: Systematically fix broken imports across the codebase with session continuity
 argument-hint: "[path-or-pattern] [resume|status|new]"
 category: quality-suite
 purpose: Resolve broken imports with intelligent strategies and session management
-execution-time:
+execution-modes:
   quick: 3-8 minutes
   standard: 10-20 minutes
   comprehensive: 20-45 minutes
