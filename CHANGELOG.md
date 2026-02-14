@@ -1,5 +1,24 @@
 # Changelog
 
+## v2.2.0 (2026-02-14)
+
+**Agent Teams & Core**
+
+* **New Feature**: Added Agent Teams support with `team-assemble` command and guide.
+* Added project-level configuration support (`.serena/project.yml`).
+* Implemented new hooks system (`pre_task`, `session_start`).
+
+**Suite Updates**
+
+* **Science Suite**: Updated agents and skills to v2.2.0; enhanced metadata validation.
+* **Quality Suite**: Comprehensive skill updates and new validation tools.
+* **Engineering & Infrastructure**: Full suite updates with new skills and agents.
+
+**Maintenance**
+
+* Updated dependencies and lockfile.
+* Added context budget checker tool.
+
 ## v2.1.0 (2026-01-20)
 
 **Suite Consolidation**
