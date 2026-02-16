@@ -40,7 +40,7 @@ Commands
    :description: Comprehensive analysis with full reasoning framework execution.
 
 .. command:: /team-assemble
-   :description: Generate ready-to-use agent team configurations from 33 pre-built templates.
+   :description: Generate ready-to-use agent team configurations from 38 pre-built templates.
 
 Skills
 ------

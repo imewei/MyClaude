@@ -60,7 +60,7 @@ The MyClaude ecosystem is organized into five powerful suites, each consolidated
 3. Use `@research-expert` to analyze and visualize results.
 
 ### Agent Teams
-1. Run `/agent-core:team-assemble list` to see all 33 team templates.
+1. Run `/agent-core:team-assemble list` to see all 38 team templates.
 2. Run `/agent-core:team-assemble <type>` to generate a team prompt.
 3. Paste the prompt into Claude Code with agent teams enabled.
 4. See [Agent Teams Guide](../agent-teams-guide.md) for full details.

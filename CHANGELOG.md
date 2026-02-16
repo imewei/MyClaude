@@ -1,6 +1,13 @@
 # Changelog
 
-## v2.2.1 (2026-02-14)
+## v2.2.1 (2026-02-15)
+
+**Debugging Team Templates**
+
+* Added 5 debugging agent teams (teams 34-38): `debug-gui`, `debug-numerical`, `debug-schema`, `debug-triage`, and `debug-full-audit`.
+* Teams use a proven Core Trio pattern (explorer → debugger → python-pro) plus rotating domain specialists.
+* Updated team-assemble catalog from 33 to 38 teams.
+* Updated all docs to reflect new team count: README, cheatsheet, commands, agent-core RST and README.
 
 **Version Consistency**
 

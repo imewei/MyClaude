@@ -11,9 +11,9 @@ v2.2.1 (2026-02-14)
 
 **Agent Teams System**
 
-* New ``/team-assemble`` command with 33 pre-built team configurations.
+* New ``/team-assemble`` command with 38 pre-built team configurations.
 * Teams span Development & Operations (1-10), Scientific Computing (11-16),
-  Cross-Suite Specialized (17-25), and Official Plugin Integration (26-33).
+  Cross-Suite Specialized (17-25), Official Plugin Integration (26-33), and Debugging (34-38).
 * Each team provides a ready-to-paste prompt with role assignments, file
   ownership, and workflow ordering.
 * Integrated 20 official plugin agents (pr-review-toolkit, feature-dev,

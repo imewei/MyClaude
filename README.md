@@ -83,7 +83,7 @@ Ask Claude: "@jax-pro implement this differentiable physics model"
 - **[Plugin Cheatsheet](docs/reference/cheatsheet.md)**
 - **[Complete Agents List](docs/reference/agents.md)**
 - **[Complete Commands List](docs/reference/commands.md)**
-- **[Agent Teams Guide](docs/agent-teams-guide.md)** — 33 ready-to-use team configurations
+- **[Agent Teams Guide](docs/agent-teams-guide.md)** — 38 ready-to-use team configurations
 
 ## License
 

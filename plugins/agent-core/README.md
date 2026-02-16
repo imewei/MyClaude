@@ -1,6 +1,6 @@
 # Agent Core Suite
 
-Consolidated suite for multi-agent coordination, deep reasoning, and specialized LLM application development. Optimized for Claude Code v2.1.12 with parallel agent execution and MCP server integration.
+Consolidated suite for multi-agent coordination, deep reasoning, and specialized LLM application development. Optimized for Claude Opus 4.6 with Agent Teams, adaptive thinking, and MCP server integration.
 
 ## 🚀 Features
 
@@ -27,6 +27,7 @@ Consolidated suite for multi-agent coordination, deep reasoning, and specialized
 | `/docs-lookup` | Query library documentation using Context7 MCP for up-to-date API references |
 | `/reflection` | Comprehensive meta-cognitive reflection framework execution |
 | `/ultra-think` | Comprehensive analysis with full reasoning framework execution |
+| `/team-assemble` | Generate ready-to-use agent team configurations from 38 pre-built templates |
 
 ## 🛠️ Skills
 

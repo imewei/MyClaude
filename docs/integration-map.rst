@@ -62,11 +62,12 @@ Key integration patterns:
 Agent Teams
 -----------
 
-33 pre-built team configurations span four categories:
+38 pre-built team configurations span five categories:
 
 1. **Development & Operations** (1-10): Feature dev, incident response, API design
 2. **Scientific Computing** (11-16): Bayesian inference, MD simulations, ML force fields
 3. **Cross-Suite Specialized** (17-25): HPC interop, prompt R&D, security hardening
 4. **Official Plugin Integration** (26-33): PR review, plugin development, HuggingFace
+5. **Debugging** (34-38): GUI threading, numerical/JAX, schema drift, triage, full audit
 
 Use ``/agent-core:team-assemble list`` to browse all templates.

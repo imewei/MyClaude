@@ -7,7 +7,7 @@ cross-cutting concerns.
 Cross-Suite Agent Teams
 -----------------------
 
-The :doc:`Agent Teams Guide </agent-teams-guide>` provides 33 ready-to-use
+The :doc:`Agent Teams Guide </agent-teams-guide>` provides 38 ready-to-use
 team configurations. Teams 17-25 are specifically designed for cross-suite
 collaboration.
 
