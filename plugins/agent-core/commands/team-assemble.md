@@ -1,6 +1,6 @@
 ---
 version: "2.2.1"
-description: Generate ready-to-use agent team configurations from 35 pre-built templates
+description: Generate ready-to-use agent team configurations from 38 pre-built templates
 argument-hint: <team-type> [--var KEY=VALUE]
 category: agent-core
 execution-modes:
@@ -21,7 +21,7 @@ You are a team assembly specialist. Your job is to generate a ready-to-use agent
 
 | Action | Description |
 |--------|-------------|
-| `list` | Show all 33 available team configurations |
+| `list` | Show all 38 available team configurations |
 | `<team-type>` | Generate the prompt for the specified team |
 | `<team-type> --var KEY=VALUE` | Generate with placeholder substitution |
 
@@ -39,7 +39,7 @@ You are a team assembly specialist. Your job is to generate a ready-to-use agent
 ## Step 1: Parse the Command
 
 1. If the argument is `list`, display the team catalog table and stop.
-2. Otherwise, match the argument to one of the 25 team types below.
+2. Otherwise, match the argument to one of the 38 team types below.
 3. If `--var` flags are provided, substitute `[PLACEHOLDER]` values in the template.
 4. Output the final prompt in a fenced code block, ready to paste.
 
@@ -50,7 +50,7 @@ You are a team assembly specialist. Your job is to generate a ready-to-use agent
 When `list` is invoked, display this table:
 
 ```
-Agent Team Catalog (MyClaude v2.2.1) — 33 Teams
+Agent Team Catalog (MyClaude v2.2.1) — 38 Teams
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 DEVELOPMENT & OPERATIONS
@@ -94,6 +94,14 @@ OFFICIAL PLUGIN INTEGRATION
 31  code-health         4          pr-review + simplifier    Code quality + type safety
 32  hf-ml-publish       4          huggingface + science     HuggingFace model publish
 33  frontend-excellence 3          engineering + coderabbit  Frontend with review gates
+
+DEBUGGING
+ #  Type                Teammates  Suites Used              Best For
+34  debug-gui           4          quality + feature + infra GUI threading, signal safety
+35  debug-numerical     4          quality + feature + sci   JAX/NaN, ODE solver, tracing
+36  debug-schema        4          quality + feature + pr    Schema/type drift, contracts
+37  debug-triage        2          quality + feature         Quick bug triage (lightweight)
+38  debug-full-audit    6          quality + feat + sci + ir Comprehensive multi-phase audit
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
@@ -1277,6 +1285,207 @@ Spawn 3 specialist teammates:
 
 Workflow: builder → (pr-reviewer + ai-reviewer in parallel).
 Output: implemented feature + two independent review reports.
+```
+
+### debug-gui
+
+**Placeholders:** `SYMPTOMS`, `AFFECTED_MODULES`
+
+```
+Create an agent team called "debug-gui" to investigate a GUI/threading bug:
+[SYMPTOMS].
+
+Spawn 4 specialist teammates using the proven Debugging Core Trio + SRE pattern:
+
+1. "explorer" (feature-dev:code-explorer) - Run FIRST. Map the architecture:
+   trace signal flows (e.g., Worker.signals.completed → Pool._on_worker_completed
+   → store reducer), identify Qt thread boundaries, and document the execution
+   path through [AFFECTED_MODULES]. Produce a component map before other agents
+   begin targeted investigation.
+
+2. "debugger" (quality-suite:debugger-pro) - ANCHOR agent. After explorer maps
+   the architecture, perform root cause analysis: correlate logs, analyze stack
+   traces, reproduce the issue. Synthesize all findings from other agents into a
+   prioritized fix list (P0/P1/P2). Focus on signal safety, shiboken lifecycle,
+   and singleton race conditions.
+
+3. "python-pro" (science-suite:python-pro) - Type and contract verification.
+   Check for attribute mismatches across abstraction boundaries (e.g., unit vs
+   units, cancel() vs cancel_token.cancel()). Verify Protocol compliance,
+   thread-safety of shared state, and API contract consistency between layers.
+
+4. "sre" (infrastructure-suite:sre-expert) - Threading and reliability specialist.
+   Investigate Qt event loop interactions, GIL contention with background workers,
+   QThread lifecycle management, and cross-thread signal/slot safety. Check for
+   resource leaks, deadlocks, and race conditions in the threading model.
+
+Workflow: explorer first → (debugger + python-pro + sre in parallel) → debugger synthesizes.
+Parallelism cap: 3-4 agents max. More causes duplicate findings.
+```
+
+### debug-numerical
+
+**Placeholders:** `SYMPTOMS`, `AFFECTED_MODULES`
+
+```
+Create an agent team called "debug-numerical" to investigate a numerical/JAX bug:
+[SYMPTOMS].
+
+Spawn 4 specialist teammates using the proven Debugging Core Trio + JAX Pro pattern:
+
+1. "explorer" (feature-dev:code-explorer) - Run FIRST. Map the computational
+   pipeline: trace data flow from input through transformations to output,
+   identify JIT compilation boundaries, vmap/pmap usage, and host-device
+   transfer points in [AFFECTED_MODULES]. Document the numerical pipeline
+   architecture before other agents begin investigation.
+
+2. "debugger" (quality-suite:debugger-pro) - ANCHOR agent. After explorer maps
+   the pipeline, perform root cause analysis: correlate NaN propagation paths,
+   analyze gradient flow, and trace convergence failures. Synthesize all findings
+   from other agents into a prioritized fix list (P0/P1/P2).
+
+3. "python-pro" (science-suite:python-pro) - Type and contract verification.
+   Check dtype mismatches, shape errors across function boundaries, incorrect
+   array broadcasting, and API contract violations between numerical modules.
+   Verify that JIT-traced functions receive consistent static arguments.
+
+4. "jax-pro" (science-suite:jax-pro) - JAX/numerical specialist. Investigate
+   JIT tracing errors, XLA compilation failures, NaN gradients, ODE solver
+   divergence, custom VJP correctness, and host-device transfer overhead.
+   Check for non-JIT-safe operations (e.g., Python control flow inside traced
+   functions, non-interpax interpolation). Verify vmap/pmap sharding.
+
+Workflow: explorer first → (debugger + python-pro + jax-pro in parallel) → debugger synthesizes.
+Parallelism cap: 3-4 agents max. More causes duplicate findings.
+```
+
+### debug-schema
+
+**Placeholders:** `SYMPTOMS`, `AFFECTED_MODULES`
+
+```
+Create an agent team called "debug-schema" to investigate a schema/type drift bug:
+[SYMPTOMS].
+
+Spawn 4 specialist teammates using the proven Debugging Core Trio + Type Analyzer pattern:
+
+1. "explorer" (feature-dev:code-explorer) - Run FIRST. Map the data flow:
+   trace how data structures (dataclasses, TypedDicts, Pydantic models) flow
+   across layer boundaries in [AFFECTED_MODULES]. Identify all definitions of
+   the same logical type (e.g., 3 incompatible BayesianResult classes across
+   worker, service, and store layers). Document the schema dependency graph.
+
+2. "debugger" (quality-suite:debugger-pro) - ANCHOR agent. After explorer maps
+   the schema landscape, perform root cause analysis: identify where schemas
+   diverged, which layer introduced the incompatibility, and whether the drift
+   is in field names, types, optionality, or serialization. Synthesize all
+   findings into a prioritized fix list (P0/P1/P2).
+
+3. "python-pro" (science-suite:python-pro) - Type and contract verification.
+   Use Protocol analysis to check structural compatibility between type
+   definitions that should be identical. Verify serialization/deserialization
+   round-trips, check for missing fields, type narrowing errors, and Optional
+   vs required field mismatches across abstraction boundaries.
+
+4. "type-analyzer" (pr-review-toolkit:type-design-analyzer) - Type design
+   specialist. Analyze all types involved in the drift for encapsulation
+   quality, invariant expression, and enforcement. Rate each type 1-5. Flag
+   types that leak implementation details, have weak invariants, or fail to
+   enforce their contracts. Recommend canonical type definitions. Read-only.
+
+Workflow: explorer first → (debugger + python-pro + type-analyzer in parallel) → debugger synthesizes.
+Do NOT run type-analyzer and quality-specialist simultaneously — they overlap on interface contract checking.
+```
+
+### debug-triage
+
+**Placeholders:** `SYMPTOMS`, `AFFECTED_MODULES`
+
+```
+Create an agent team called "debug-triage" to quickly triage a bug:
+[SYMPTOMS].
+
+Spawn 2 lightweight teammates for fast initial investigation:
+
+1. "explorer" (feature-dev:code-explorer) - Run FIRST. Rapidly map the
+   execution path through [AFFECTED_MODULES]: trace from entry point to
+   failure site, identify the architectural layers involved, and document
+   key dependencies. Produce a focused component map of the affected area.
+
+2. "debugger" (quality-suite:debugger-pro) - After explorer provides the
+   architecture map, perform targeted root cause analysis: examine the
+   specific failure path, check for obvious issues (null/undefined access,
+   off-by-one, missing error handling, type mismatches), and produce an
+   initial severity assessment (P0/P1/P2). Recommend whether the bug
+   needs escalation to a full debug team (debug-gui, debug-numerical,
+   or debug-schema).
+
+Workflow: explorer → debugger (sequential, not parallel).
+Use this team for: initial bug investigation, severity assessment, and
+routing to the appropriate specialist team. Typical runtime: 2-5 minutes.
+Escalation guide:
+- GUI threading bugs → /team-assemble debug-gui
+- JAX/numerical bugs → /team-assemble debug-numerical
+- Schema/type drift  → /team-assemble debug-schema
+```
+
+### debug-full-audit
+
+**Placeholders:** `SYMPTOMS`, `AFFECTED_MODULES`
+
+```
+Create an agent team called "debug-full-audit" to perform a comprehensive
+multi-phase debugging audit: [SYMPTOMS].
+
+Spawn 6 specialist teammates — the full Debugging Core Trio plus all 3
+specialist angles. Strict phased workflow keeps active parallelism at 3-4
+agents per phase (the proven sweet spot).
+
+CORE TRIO (active in all phases):
+
+1. "explorer" (feature-dev:code-explorer) - Run in Phase 1 (solo). Map the
+   full architecture: execution paths, thread boundaries, data flow, schema
+   dependency graph, and JIT compilation boundaries across [AFFECTED_MODULES].
+   Produce a comprehensive component map that all other agents will reference.
+
+2. "debugger" (quality-suite:debugger-pro) - ANCHOR agent. Active from Phase 2
+   onward. Coordinates investigation, cross-references findings from all
+   specialists, and produces the final synthesized report. Owns the
+   prioritized fix list (P0/P1/P2) with evidence chains.
+
+3. "python-pro" (science-suite:python-pro) - Active from Phase 2 onward.
+   Type and contract verification across ALL boundaries: attribute mismatches,
+   Protocol compliance, dtype/shape errors, serialization round-trips, and
+   API contract consistency between layers.
+
+ROTATING SPECIALISTS (one per phase, sequential):
+
+4. "sre" (infrastructure-suite:sre-expert) - Phase 2: Threading & reliability.
+   Qt event loop interactions, GIL contention, QThread lifecycle, cross-thread
+   signal/slot safety, resource leaks, deadlocks, and race conditions.
+
+5. "jax-pro" (science-suite:jax-pro) - Phase 3: Numerical & JAX. JIT tracing
+   errors, XLA compilation failures, NaN gradients, ODE solver divergence,
+   custom VJP correctness, host-device transfer overhead, non-JIT-safe
+   operations, and vmap/pmap sharding issues.
+
+6. "type-analyzer" (pr-review-toolkit:type-design-analyzer) - Phase 4: Schema
+   & type design. Analyze all types for encapsulation quality, invariant
+   expression, and enforcement. Rate each type 1-5. Flag types that leak
+   implementation details or fail to enforce contracts. Read-only.
+
+WORKFLOW (strict phasing):
+  Phase 1: explorer maps architecture (solo)
+  Phase 2: debugger + python-pro + sre investigate threading/reliability
+  Phase 3: debugger + python-pro + jax-pro investigate numerical/JAX
+  Phase 4: type-analyzer reviews all types identified in Phases 2-3 (read-only)
+  Phase 5: debugger produces final synthesis — unified P0/P1/P2 fix list
+
+CRITICAL RULES:
+- Never run more than 4 agents in parallel (diminishing returns above that)
+- type-analyzer runs AFTER code investigation phases (it needs their findings)
+- debugger is the single source of truth for the final report
+- Each specialist focuses on their domain — do not duplicate another's work
 ```
 
 ---
