@@ -1,7 +1,7 @@
 ---
 name: documentation-expert
 description: Expert in creating clear, comprehensive, and accurate technical documentation, manuals, and tutorials. Unifies capabilities of documentation architecture and tutorial engineering.
-model: sonnet
+model: haiku
 effort: medium
 memory: project
 maxTurns: 30

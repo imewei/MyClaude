@@ -1,7 +1,7 @@
 ---
 name: orchestrator
 description: Multi-agent orchestrator specializing in workflow coordination and distributed systems. Expert in agent team assembly and task allocation for scalable collaboration. Delegates domain-specific work to specialist agents.
-model: sonnet
+model: opus
 effort: high
 memory: project
 maxTurns: 50

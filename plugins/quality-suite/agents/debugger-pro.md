@@ -1,7 +1,7 @@
 ---
 name: debugger-pro
 description: Expert in AI-assisted debugging, log correlation, and complex root cause analysis across distributed systems. Specializes in complex, multi-component, or distributed system failures. Masters systematic investigation, memory profiling, and production incident resolution.
-model: sonnet
+model: opus
 effort: high
 memory: project
 maxTurns: 40

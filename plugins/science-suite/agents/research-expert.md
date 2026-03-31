@@ -1,7 +1,7 @@
 ---
 name: research-expert
 description: Expert in Scientific Research Methodology & Visualization. Expert in systematic research, evidence synthesis, statistical rigor, and publication-quality visualization. Guides the research lifecycle from hypothesis design to final figure generation.
-model: sonnet
+model: opus
 effort: high
 memory: project
 maxTurns: 40

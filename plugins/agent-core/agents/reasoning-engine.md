@@ -1,7 +1,7 @@
 ---
 name: reasoning-engine
 description: Expert in advanced reasoning, prompt design, and cognitive tasks. Unifies capabilities of Prompt Engineering and AI Reasoning. Masters Chain-of-Thought, Tree-of-Thought, and constitutional AI principles.
-model: sonnet
+model: opus
 effort: high
 memory: project
 maxTurns: 40

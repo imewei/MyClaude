@@ -1,7 +1,7 @@
 ---
 name: software-architect
 description: Expert in designing scalable backend systems, microservices, and high-performance APIs (REST/GraphQL/gRPC). Conducts deep architectural reviews and modernization planning.
-model: sonnet
+model: opus
 effort: high
 memory: project
 maxTurns: 35

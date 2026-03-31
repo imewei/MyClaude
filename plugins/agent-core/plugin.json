@@ -27,6 +27,7 @@
     "memory-system"
   ],
   "hooks": "./hooks/hooks.json",
+  "outputStyles": "./output-styles",
   "agents": [
     "./agents/orchestrator.md",
     "./agents/context-specialist.md",
