@@ -130,7 +130,7 @@ class PluginActivationTester:
             plugin_dirs = [p for p in self.plugins_dir.iterdir() if p.is_dir()]
 
         for plugin_dir in plugin_dirs:
-            plugin_json = plugin_dir / "plugin.json"
+            plugin_json = plugin_dir / ".claude-plugin" / "plugin.json"
             if not plugin_json.exists():
                 continue
 

@@ -49,7 +49,8 @@ make clean
 Each suite is a directory with this structure:
 ```
 plugins/<suite-name>/
-├── plugin.json          # Manifest: declares agents, commands, skills, hooks
+├── .claude-plugin/
+│   └── plugin.json      # Manifest: declares agents, commands, skills, hooks
 ├── settings.json        # Default agent configuration for the suite
 ├── agents/              # Agent definitions (markdown with YAML frontmatter)
 ├── commands/            # Slash command definitions (markdown with frontmatter)

@@ -7,7 +7,7 @@ from pathlib import Path
 # Paths
 # tools/tests/test_agent_core_integrity.py -> .../tools/tests -> .../tools -> .../ (root) -> .../plugins/agent-core
 PLUGIN_ROOT = Path(__file__).parent.parent.parent / "plugins" / "agent-core"
-PLUGIN_JSON = PLUGIN_ROOT / "plugin.json"
+PLUGIN_JSON = PLUGIN_ROOT / ".claude-plugin" / "plugin.json"
 AGENTS_DIR = PLUGIN_ROOT / "agents"
 SKILLS_DIR = PLUGIN_ROOT / "skills"
 

@@ -149,7 +149,7 @@ class SkillApplicationValidator:
 
     def _load_skills_from_plugin(self, plugin_dir: Path) -> None:
         """Load skills from a single plugin directory."""
-        plugin_json = plugin_dir / "plugin.json"
+        plugin_json = plugin_dir / ".claude-plugin" / "plugin.json"
         if not plugin_json.exists():
             return
 

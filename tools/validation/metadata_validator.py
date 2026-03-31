@@ -288,7 +288,7 @@ class MetadataValidator:
         plugin_name = plugin_path.name
         result = ValidationResult(plugin_name=plugin_name, is_valid=True)
 
-        plugin_json_path = plugin_path / "plugin.json"
+        plugin_json_path = plugin_path / ".claude-plugin" / "plugin.json"
 
         # Check file exists
         if not plugin_json_path.exists():

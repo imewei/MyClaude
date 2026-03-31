@@ -116,7 +116,7 @@ class PluginReviewer:
 
     def _review_plugin_json(self, plugin_path: Path, report: ReviewReport):
         """Review plugin.json structure and completeness using MetadataValidator"""
-        plugin_json_path = plugin_path / "plugin.json"
+        plugin_json_path = plugin_path / ".claude-plugin" / "plugin.json"
 
         if not plugin_json_path.exists():
             report.add_issue(
@@ -295,7 +295,7 @@ class PluginReviewer:
             return
 
         # Get agent names from plugin.json
-        plugin_json_path = plugin_path / "plugin.json"
+        plugin_json_path = plugin_path / ".claude-plugin" / "plugin.json"
         if plugin_json_path.exists():
             try:
                 with open(plugin_json_path, 'r', encoding='utf-8') as f:
@@ -349,7 +349,7 @@ class PluginReviewer:
             return
 
         # Get command names from plugin.json
-        plugin_json_path = plugin_path / "plugin.json"
+        plugin_json_path = plugin_path / ".claude-plugin" / "plugin.json"
         if plugin_json_path.exists():
             try:
                 with open(plugin_json_path, 'r', encoding='utf-8') as f:
@@ -403,7 +403,7 @@ class PluginReviewer:
             return
 
         # Get skill names from plugin.json
-        plugin_json_path = plugin_path / "plugin.json"
+        plugin_json_path = plugin_path / ".claude-plugin" / "plugin.json"
         if plugin_json_path.exists():
             try:
                 with open(plugin_json_path, 'r', encoding='utf-8') as f:

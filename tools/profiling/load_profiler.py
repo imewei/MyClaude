@@ -137,7 +137,7 @@ class PluginLoadProfiler:
 
     def _measure_json_load(self, profile: PluginLoadProfile) -> None:
         """Measure plugin.json parsing time."""
-        json_path = profile.plugin_path / "plugin.json"
+        json_path = profile.plugin_path / ".claude-plugin" / "plugin.json"
 
         timer = Timer()
         try:
@@ -273,7 +273,7 @@ class PluginLoadProfiler:
             return profiles
 
         for plugin_dir in sorted(self.plugins_root.iterdir()):
-            if plugin_dir.is_dir() and (plugin_dir / "plugin.json").exists():
+            if plugin_dir.is_dir() and (plugin_dir / ".claude-plugin" / "plugin.json").exists():
                 profile = self.profile_plugin(plugin_dir.name)
                 profiles.append(profile)
 
