@@ -2,7 +2,7 @@
 name: deps
 description: Unified dependency management - security auditing, vulnerability scanning, and safe upgrades
 argument-hint: "<action> [--mode quick|standard|deep] [--security-only] [--strategy incremental|batch]"
-category: quality-suite
+category: dev-suite
 execution-modes:
   audit-quick: "2-5min"
   audit-standard: "5-15min"

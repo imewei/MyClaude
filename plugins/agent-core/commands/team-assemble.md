@@ -1055,12 +1055,12 @@ Spawn 4 specialist teammates:
    data flows, and build sequence. Present the blueprint for approval
    before any code is written. Owns docs/design/.
 
-2. "builder" (engineering-suite:app-developer) - Implement the frontend
+2. "builder" (dev-suite:app-developer) - Implement the frontend
    components following the architect's blueprint. Build with
    [FRONTEND_STACK]. Focus on performance, accessibility, and
    offline-first patterns. Owns src/components/, src/pages/, src/hooks/.
 
-3. "backend" (engineering-suite:software-architect) - Implement the
+3. "backend" (dev-suite:software-architect) - Implement the
    backend services following the architect's blueprint. Build with
    [BACKEND_STACK]. Design scalable APIs with proper error handling
    and validation. Owns src/api/, src/services/, src/models/.
@@ -1096,7 +1096,7 @@ Spawn 4 specialist teammates:
    and few-shot examples. Optimize for accuracy and safety. Create
    evaluation test cases. Owns prompts/, system instructions.
 
-3. "api-architect" (engineering-suite:software-architect) - Build the
+3. "api-architect" (dev-suite:software-architect) - Build the
    API layer and infrastructure: REST/WebSocket endpoints, streaming
    support, authentication, rate limiting, and deployment config.
    Owns src/api/, infrastructure/.
@@ -1132,7 +1132,7 @@ Spawn 4 specialist teammates:
    the extension's reliability. Create hook rules with clear trigger
    conditions. Owns hooks/.
 
-3. "quality" (quality-suite:quality-specialist) - Write comprehensive
+3. "quality" (dev-suite:quality-specialist) - Write comprehensive
    tests for the plugin: manifest validation, agent prompt testing,
    command argument parsing. Set up GitHub Actions for automated
    validation: lint checks, metadata validation, context budget
@@ -1167,7 +1167,7 @@ Spawn 3 specialist teammates:
    layers, identify patterns and abstractions, document dependencies
    between modules. Produce a component map with data flow diagrams.
 
-2. "documenter" (quality-suite:documentation-expert) - Transform the
+2. "documenter" (dev-suite:documentation-expert) - Transform the
    explorer's findings into clear, comprehensive architecture
    documentation. Create: system overview, component catalog, API
    reference, dependency map, and onboarding guide. Write for a
@@ -1211,7 +1211,7 @@ Spawn 4 specialist teammates:
    types that leak implementation details or fail to express their
    invariants. Read-only.
 
-4. "enforcer" (quality-suite:quality-specialist) - After simplifier and
+4. "enforcer" (dev-suite:quality-specialist) - After simplifier and
    type-engineer complete, run the full test suite and verify no
    regressions. Review all changes for security implications. Add tests
    for any uncovered edge cases discovered during the sprint.
@@ -1266,7 +1266,7 @@ review [FEATURE_NAME] using [FRONTEND_STACK].
 
 Spawn 3 specialist teammates:
 
-1. "builder" (engineering-suite:app-developer) - Implement the frontend
+1. "builder" (dev-suite:app-developer) - Implement the frontend
    feature with focus on performance, accessibility (WCAG 2.1 AA),
    responsive design, and offline-first patterns. Write component
    tests and integration tests. Use [FRONTEND_STACK] patterns and
@@ -1302,7 +1302,7 @@ Spawn 4 specialist teammates using the proven Debugging Core Trio + SRE pattern:
    path through [AFFECTED_MODULES]. Produce a component map before other agents
    begin targeted investigation.
 
-2. "debugger" (quality-suite:debugger-pro) - ANCHOR agent. After explorer maps
+2. "debugger" (dev-suite:debugger-pro) - ANCHOR agent. After explorer maps
    the architecture, perform root cause analysis: correlate logs, analyze stack
    traces, reproduce the issue. Synthesize all findings from other agents into a
    prioritized fix list (P0/P1/P2). Focus on signal safety, shiboken lifecycle,
@@ -1313,7 +1313,7 @@ Spawn 4 specialist teammates using the proven Debugging Core Trio + SRE pattern:
    units, cancel() vs cancel_token.cancel()). Verify Protocol compliance,
    thread-safety of shared state, and API contract consistency between layers.
 
-4. "sre" (infrastructure-suite:sre-expert) - Threading and reliability specialist.
+4. "sre" (dev-suite:sre-expert) - Threading and reliability specialist.
    Investigate Qt event loop interactions, GIL contention with background workers,
    QThread lifecycle management, and cross-thread signal/slot safety. Check for
    resource leaks, deadlocks, and race conditions in the threading model.
@@ -1338,7 +1338,7 @@ Spawn 4 specialist teammates using the proven Debugging Core Trio + JAX Pro patt
    transfer points in [AFFECTED_MODULES]. Document the numerical pipeline
    architecture before other agents begin investigation.
 
-2. "debugger" (quality-suite:debugger-pro) - ANCHOR agent. After explorer maps
+2. "debugger" (dev-suite:debugger-pro) - ANCHOR agent. After explorer maps
    the pipeline, perform root cause analysis: correlate NaN propagation paths,
    analyze gradient flow, and trace convergence failures. Synthesize all findings
    from other agents into a prioritized fix list (P0/P1/P2).
@@ -1374,7 +1374,7 @@ Spawn 4 specialist teammates using the proven Debugging Core Trio + Type Analyze
    the same logical type (e.g., 3 incompatible BayesianResult classes across
    worker, service, and store layers). Document the schema dependency graph.
 
-2. "debugger" (quality-suite:debugger-pro) - ANCHOR agent. After explorer maps
+2. "debugger" (dev-suite:debugger-pro) - ANCHOR agent. After explorer maps
    the schema landscape, perform root cause analysis: identify where schemas
    diverged, which layer introduced the incompatibility, and whether the drift
    is in field names, types, optionality, or serialization. Synthesize all
@@ -1411,7 +1411,7 @@ Spawn 2 lightweight teammates for fast initial investigation:
    failure site, identify the architectural layers involved, and document
    key dependencies. Produce a focused component map of the affected area.
 
-2. "debugger" (quality-suite:debugger-pro) - After explorer provides the
+2. "debugger" (dev-suite:debugger-pro) - After explorer provides the
    architecture map, perform targeted root cause analysis: examine the
    specific failure path, check for obvious issues (null/undefined access,
    off-by-one, missing error handling, type mismatches), and produce an
@@ -1447,7 +1447,7 @@ CORE TRIO (active in all phases):
    dependency graph, and JIT compilation boundaries across [AFFECTED_MODULES].
    Produce a comprehensive component map that all other agents will reference.
 
-2. "debugger" (quality-suite:debugger-pro) - ANCHOR agent. Active from Phase 2
+2. "debugger" (dev-suite:debugger-pro) - ANCHOR agent. Active from Phase 2
    onward. Coordinates investigation, cross-references findings from all
    specialists, and produces the final synthesized report. Owns the
    prioritized fix list (P0/P1/P2) with evidence chains.
@@ -1459,7 +1459,7 @@ CORE TRIO (active in all phases):
 
 ROTATING SPECIALISTS (one per phase, sequential):
 
-4. "sre" (infrastructure-suite:sre-expert) - Phase 2: Threading & reliability.
+4. "sre" (dev-suite:sre-expert) - Phase 2: Threading & reliability.
    Qt event loop interactions, GIL contention, QThread lifecycle, cross-thread
    signal/slot safety, resource leaks, deadlocks, and race conditions.
 

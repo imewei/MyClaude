@@ -2,7 +2,7 @@
 name: fix-imports
 description: Systematically fix broken imports across the codebase with session continuity
 argument-hint: "[path-or-pattern] [resume|status|new]"
-category: quality-suite
+category: dev-suite
 purpose: Resolve broken imports with intelligent strategies and session management
 execution-modes:
   quick: 3-8 minutes

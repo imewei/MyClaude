@@ -1,6 +1,6 @@
 ---
 name: code-explain
-category: quality-suite
+category: dev-suite
 command: /code-explain
 description: Detailed code explanation with visual aids and domain expertise
 argument-hint: <code-path-or-snippet>

@@ -1,7 +1,7 @@
 ---
 name: refactor-clean
 description: Analyze and refactor code to improve quality, maintainability, and SOLID principles.
-category: quality-suite
+category: dev-suite
 argument-hint: "<path-to-code>"
 allowed-tools: [Read, Edit, Bash, Task]
 purpose: Refactor code for quality, maintainability, and SOLID principles

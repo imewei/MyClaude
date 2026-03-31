@@ -2,7 +2,7 @@
 name: eng-feature-dev
 description: Unified end-to-end feature development with customizable methodologies and deployment strategies
 argument-hint: <action> <feature-name> [options]
-category: engineering-suite
+category: dev-suite
 execution-modes:
   quick: "30m-2d: Architecture + hot fixes"
   standard: "3-14d: Full production workflow"
@@ -61,7 +61,7 @@ $ARGUMENTS
 - Risk assessment and stakeholder sign-off
 
 ### Step 2: Technical Architecture
-**Agent:** quality-suite:architect-review
+**Agent:** dev-suite:architect-review
 
 - Database: Entity relationship model, schemas, indexing, migrations (zero-downtime)
 - Backend: API contracts (OpenAPI/GraphQL), auth flows, caching, resilience patterns
@@ -69,7 +69,7 @@ $ARGUMENTS
 - ADRs (Architecture Decision Records) written
 
 ### Step 3: Security Assessment
-**Agent:** quality-suite:quality-specialist
+**Agent:** dev-suite:quality-specialist
 
 - Threat modeling and risk matrix
 - Compliance checklist (GDPR, SOC2, etc.)
@@ -82,7 +82,7 @@ $ARGUMENTS
 ## Phase 2: Implementation
 
 ### Step 4: Backend Services
-**Agent:** engineering-suite:software-architect
+**Agent:** dev-suite:software-architect
 
 - RESTful/GraphQL endpoints with OpenAPI docs
 - Business logic layer with validation (Pydantic/Zod)
@@ -91,7 +91,7 @@ $ARGUMENTS
 - Unit tests (80%+ coverage)
 
 ### Step 5: Frontend Implementation
-**Agent:** engineering-suite:app-developer
+**Agent:** dev-suite:app-developer
 
 - React/Vue components following SRP
 - State management (Redux/Zustand/Context)
@@ -111,7 +111,7 @@ $ARGUMENTS
 ## Phase 3: Testing & QA
 
 ### Step 7: Test Suite
-**Agent:** quality-suite:quality-specialist
+**Agent:** dev-suite:quality-specialist
 
 - Unit, integration, E2E tests
 - Contract testing (Pact provider/consumer)
@@ -120,7 +120,7 @@ $ARGUMENTS
 - Visual regression tests
 
 ### Step 8: Security Validation
-**Agent:** quality-suite:quality-specialist
+**Agent:** dev-suite:quality-specialist
 
 - OWASP Top 10 compliance check
 - Authentication/authorization review
@@ -144,7 +144,7 @@ $ARGUMENTS
 ## Phase 4: Deployment & Operations
 
 ### Step 10: CI/CD Pipeline
-**Agent:** infrastructure-suite:automation-engineer
+**Agent:** dev-suite:automation-engineer
 
 - Dockerfiles for backend/frontend
 - Kubernetes manifests or serverless configs
@@ -154,7 +154,7 @@ $ARGUMENTS
 - Rollback procedures tested
 
 ### Step 11: Observability
-**Agent:** infrastructure-suite:observability-engineer
+**Agent:** dev-suite:observability-engineer
 
 - Distributed tracing (OpenTelemetry)
 - Metrics collection (Prometheus)
@@ -163,7 +163,7 @@ $ARGUMENTS
 - SLIs/SLOs defined
 
 ### Step 12: Documentation
-**Agent:** quality-suite:documentation-expert
+**Agent:** dev-suite:documentation-expert
 
 - API documentation
 - User guides

@@ -2,7 +2,7 @@
 name: docs
 description: Unified documentation management - generate, update, and sync documentation
 argument-hint: "<action> [--api] [--readme] [--sphinx] [--full] [--from-git]"
-category: quality-suite
+category: dev-suite
 execution-modes:
   generate-quick: "10-15min"
   generate-standard: "20-30min"

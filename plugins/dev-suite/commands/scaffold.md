@@ -2,7 +2,7 @@
 name: scaffold
 description: Unified project and component scaffolding for TypeScript, Python, React, and Julia
 argument-hint: <language> <name> [options]
-category: engineering-suite
+category: dev-suite
 execution-modes:
   quick: "5-15 minutes"
   standard: "20-45 minutes"

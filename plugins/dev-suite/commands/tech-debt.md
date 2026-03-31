@@ -1,7 +1,7 @@
 ---
 name: tech-debt
 description: Analyze, prioritize, and remediate technical debt using metrics and ROI-based roadmaps.
-category: quality-suite
+category: dev-suite
 argument-hint: "[--mode quick|standard|comprehensive]"
 purpose: Analyze, prioritize, remediate technical debt
 execution-modes: {quick: "5-10min", standard: "15-25min", comprehensive: "30-60min"}

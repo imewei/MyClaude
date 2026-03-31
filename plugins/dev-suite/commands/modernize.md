@@ -2,7 +2,7 @@
 name: modernize
 description: Unified code migration and legacy modernization with Strangler Fig pattern
 argument-hint: <action> <path> [options]
-category: engineering-suite
+category: dev-suite
 execution-modes:
   quick: "30-60m: Assessment + strategy"
   standard: "1-2w: Component migration"

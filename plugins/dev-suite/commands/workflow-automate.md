@@ -2,18 +2,18 @@
 name: workflow-automate
 description: Automated CI/CD workflow generation and management for GitHub Actions and GitLab CI.
 argument-hint: "[--mode=quick-start|standard|enterprise] [--platform=github|gitlab|both]"
-category: "infrastructure-suite"
+category: "dev-suite"
 command: "/workflow-automate"
 execution-modes:
   quick-start: "10-15m: Single workflow (GitHub/GitLab)"
   standard: "30-45m: Full pipeline + security + monitoring"
   enterprise: "60-120m: Multi-platform + IaC + compliance"
 documentation:
-  analysis-framework: "${CLAUDE_PLUGIN_ROOT}/docs/infrastructure-suite/workflow-analysis-framework.md"
-  github-actions: "${CLAUDE_PLUGIN_ROOT}/docs/infrastructure-suite/github-actions-reference.md"
-  gitlab-ci: "${CLAUDE_PLUGIN_ROOT}/docs/infrastructure-suite/gitlab-ci-reference.md"
-  terraform-integration: "${CLAUDE_PLUGIN_ROOT}/docs/infrastructure-suite/terraform-cicd-integration.md"
-  security-workflows: "${CLAUDE_PLUGIN_ROOT}/docs/infrastructure-suite/security-automation-workflows.md"
+  analysis-framework: "${CLAUDE_PLUGIN_ROOT}/docs/dev-suite/workflow-analysis-framework.md"
+  github-actions: "${CLAUDE_PLUGIN_ROOT}/docs/dev-suite/github-actions-reference.md"
+  gitlab-ci: "${CLAUDE_PLUGIN_ROOT}/docs/dev-suite/gitlab-ci-reference.md"
+  terraform-integration: "${CLAUDE_PLUGIN_ROOT}/docs/dev-suite/terraform-cicd-integration.md"
+  security-workflows: "${CLAUDE_PLUGIN_ROOT}/docs/dev-suite/security-automation-workflows.md"
 allowed-tools: [Write, Bash, Read, Task]
 ---
 
