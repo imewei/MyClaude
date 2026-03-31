@@ -1,62 +1,55 @@
-# Scientific Computing Suite
+# Science Suite
 
-A consolidated suite for high-performance computing, specialized physics/chemistry simulations, and data science workflows. Optimized for Claude Code v2.1.12 with parallel agent execution and MCP server integration.
+Domain-specific scientific computing suite for high-performance computing, specialized physics/chemistry simulations, and data science workflows. Agents primarily collaborate within the suite with only 2 outward delegation edges. Optimized for Claude Opus 4.6.
 
-## 🚀 Features
+## Features
 
-- **JAX Mastery**: High-performance numerical computing, differentiable physics, and Bayesian inference.
+- **JAX Mastery**: High-performance numerical computing, differentiable physics, and Bayesian inference (NumPyro, Diffrax).
 - **Julia Pro**: Scientific machine learning (SciML), differential equations, and package development.
-- **Machine Learning**: End-to-end workflows from data wrangling to production deployment.
+- **Machine Learning**: End-to-end workflows from data wrangling to production deployment (scikit-learn, XGBoost, Optuna).
 - **Statistical Physics**: Equilibrium and non-equilibrium thermodynamics, active matter, and correlation analysis.
 - **Simulation**: Molecular dynamics (MD), computational fluid dynamics (CFD), and multiscale modeling.
 - **Research**: Systematic literature reviews, evidence synthesis, and publication-quality visualization.
-- **Python Systems Engineering**: Modern Python 3.12+ development with rigorous typing, testing, and performance optimization.
+- **Deep Learning**: Architecture design (Transformers, CNNs), training diagnostics, and neural network mathematics.
 - **AI Engineering**: RAG systems, agentic workflows, and LLM application architecture.
 
-## 🤖 Agents
+## Agents
 
-| Agent | Specialization |
-|-------|----------------|
-| `jax-pro` | Core JAX, NumPyro, Diffrax, JAX-MD |
-| `julia-pro` | Julia, SciML, DifferentialEquations.jl |
-| `ml-expert` | Classical ML, MLOps, Data Engineering |
-| `simulation-expert` | HPC, Molecular Dynamics, Multi-scale |
-| `statistical-physicist` | Soft Matter, Non-equilibrium, Correlations |
-| `research-expert` | Methodology, Visualization, Literature |
-| `python-pro` | Python 3.12+, Systems Engineering, Performance |
-| `ai-engineer` | RAG, Agents, LLM Apps |
-| `prompt-engineer` | Prompt Optimization, Safety, Evaluation |
-| `neural-network-master` | DL Architecture, PINNs, Theory, Diagnostics |
+| Agent | Model | Specialization |
+|-------|-------|----------------|
+| `jax-pro` | sonnet | Core JAX, NumPyro, Diffrax, JAX-MD |
+| `julia-pro` | sonnet | Julia, SciML, DifferentialEquations.jl |
+| `ml-expert` | sonnet | Classical ML, MLOps, data engineering |
+| `simulation-expert` | sonnet | HPC, molecular dynamics, multiscale |
+| `statistical-physicist` | opus | Soft matter, non-equilibrium, correlations |
+| `research-expert` | opus | Methodology, visualization, literature |
+| `python-pro` | sonnet | Python systems engineering, performance |
+| `ai-engineer` | sonnet | RAG, agents, LLM apps |
+| `prompt-engineer` | sonnet | Prompt optimization, safety, evaluation |
+| `neural-network-master` | sonnet | DL architecture, PINNs, theory, diagnostics |
 
-## 🛠️ Skills
+## Skills (78)
 
-- **Advanced Simulations**: MD setup, ML force fields, multiscale modeling.
-- **JAX Mastery**: Core programming, Bayesian inference, DiffEq, Physics apps.
-- **Julia Mastery**: Core patterns, SciML ecosystem, Performance tuning.
-- **Machine Learning**: Essentials, Pipeline orchestration, MLOps.
-- **Deep Learning**: Architectures, Theory, Diagnostics, and Research Implementation.
-- **LLM Application Dev**: RAG systems, LangChain patterns, and Eval.
-- **Numerical Methods**: Solvers for ODEs, PDEs, and Optimization (via Parallel Computing).
-- **Parallel Computing**: GPU acceleration, Distributed systems (MPI/Dask).
-- **Python Development**: Type-driven design, Rust extensions, Modern concurrency.
-- **Research Methodology**: Experimental design and statistical rigor.
-- **Scientific Visualization**: Publication-quality plotting.
-- **Statistical Physics**: Correlation functions, Stochastic dynamics, Active matter.
+Organized by domain:
 
-## 📦 Installation
+- **JAX**: Core programming, Bayesian inference, DiffEq, optimization, physics applications
+- **Julia**: Core patterns, SciML ecosystem, performance tuning, package development
+- **Machine Learning**: Algorithm selection, pipelines, deployment, deep learning, neural architectures
+- **Statistical Physics**: Correlation functions, stochastic dynamics, active matter, non-equilibrium theory
+- **Simulation**: MD setup, ML force fields, multiscale modeling, trajectory analysis
+- **Research**: Methodology, evidence synthesis, scientific communication, visualization
+- **Python**: Type-driven design, Rust extensions (PyO3), modern concurrency, packaging
+- **Numerical Methods**: Solvers, parallel computing, GPU acceleration
 
-This plugin is designed for [Claude Code](https://claude.com/code).
+## Installation
 
 ```bash
-# Add the marketplace
 /plugin marketplace add imewei/MyClaude
-
-# Install the suite
 /plugin install science-suite@marketplace
 ```
 
-**Note:** After installation, restart Claude Code for changes to take effect.
+After installation, restart Claude Code for changes to take effect.
 
-## 📜 License
+## License
 
 MIT License

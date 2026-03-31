@@ -1,55 +1,57 @@
-# Agent Core Suite
+# Agent Core
 
-Consolidated suite for multi-agent coordination, deep reasoning, and specialized LLM application development. Optimized for Claude Opus 4.6 with Agent Teams, adaptive thinking, and MCP server integration.
+Meta-agent suite for multi-agent orchestration, advanced reasoning, and context engineering. Coordinates all other suites but is never delegated to from below. Optimized for Claude Opus 4.6.
 
-## 🚀 Features
+## Features
 
 - **Multi-Agent Orchestration**: Expert coordination of specialized agent teams and complex distributed workflows.
-- **Advanced Reasoning**: Systematic problem-solving using structured frameworks, meta-cognitive reflection, and Chain-of-Thought.
+- **Advanced Reasoning**: Systematic problem-solving using structured frameworks (First Principles, Systems Thinking, OODA Loop).
 - **Context Engineering**: Intelligent management of long-running session context, vector databases, and knowledge graphs.
 - **LLM Application Patterns**: Production-ready RAG implementation, prompt optimization, and evaluation frameworks.
 - **MCP Integration**: First-class support for Model Context Protocol servers (Serena, GitHub, Context7).
 
-## 🤖 Agents
+## Agents
 
-| Agent | Specialization |
-|-------|----------------|
-| `orchestrator` | Multi-agent coordination, team assembly, and task delegation |
-| `reasoning-engine` | Advanced reasoning, prompt design, and cognitive tasks |
-| `context-specialist` | Context engineering, memory systems, and knowledge graphs |
+| Agent | Model | Specialization |
+|-------|-------|----------------|
+| `orchestrator` | opus | Multi-agent coordination, team assembly, task delegation |
+| `reasoning-engine` | opus | Advanced reasoning, prompt design, cognitive tasks |
+| `context-specialist` | sonnet | Context engineering, memory systems, knowledge graphs |
 
-## 🛠️ Commands
+## Commands
 
 | Command | Description |
 |---------|-------------|
 | `/agent-build` | Unified AI agent creation, optimization, and prompt engineering |
-| `/ai-assistant` | Build production-ready AI assistants with NLU and intelligent response generation |
-| `/docs-lookup` | Query library documentation using Context7 MCP for up-to-date API references |
-| `/reflection` | Comprehensive meta-cognitive reflection framework execution |
-| `/ultra-think` | Comprehensive analysis with full reasoning framework execution |
-| `/team-assemble` | Generate ready-to-use agent team configurations from 38 pre-built templates |
+| `/ai-assistant` | Build production-ready AI assistants with NLU and response generation |
+| `/docs-lookup` | Query library documentation via Context7 MCP |
+| `/reflection` | Meta-cognitive reflection framework execution |
+| `/ultra-think` | Advanced structured reasoning with branching exploration |
+| `/team-assemble` | Generate agent team configs from 38 pre-built templates |
 
-## 🛠️ Skills
+## Skills (7)
 
-- **Advanced Reasoning**: Structured thinking frameworks and meta-cognitive reflection.
-- **Agent Orchestration**: Workflow coordination, DAG-based tasks, and team management.
-- **LLM Application Patterns**: Prompt engineering (CoT, few-shot), RAG, and evaluation.
-- **MCP Integration**: Integration guide for serena, github, sequential-thinking, and context7.
+- **Reasoning Frameworks**: Unified advanced reasoning and structured thinking (merged from advanced-reasoning + structured-reasoning)
+- **Reflection Framework**: Meta-cognitive and comprehensive reflection (merged from meta-cognitive-reflection + comprehensive-reflection-framework)
+- **Agent Orchestration**: Workflow coordination, DAG-based tasks, and team management
+- **Agent Performance Optimization**: Monitoring, metrics, caching, and load balancing
+- **LLM Application Patterns**: Prompt engineering (CoT, few-shot), RAG, and evaluation
+- **MCP Integration**: Guide for serena, github, sequential-thinking, and context7
+- **Multi-Agent Coordination**: Inter-agent communication and task allocation
 
-## 📦 Installation
+## Hooks (8 events)
 
-This plugin is designed for [Claude Code](https://claude.com/code).
+SessionStart, PreToolUse, PostToolUse, PreCompact, PostCompact, SubagentStop, PermissionDenied, TaskCompleted
+
+## Installation
 
 ```bash
-# Add the marketplace
 /plugin marketplace add imewei/MyClaude
-
-# Install the suite
 /plugin install agent-core@marketplace
 ```
 
-**Note:** After installation, restart Claude Code for changes to take effect.
+After installation, restart Claude Code for changes to take effect.
 
-## 📜 License
+## License
 
 MIT License
