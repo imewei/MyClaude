@@ -1,9 +1,8 @@
 ---
+name: reflection
 description: Advanced reflection engine for AI reasoning, session analysis, and research optimization (v2.1)
-version: "2.2.1"
 allowed-tools: Bash(find:*), Bash(grep:*), Bash(git:*), Bash(uv:*), Read, Grep, Task
 argument-hint: "[session|code|research|workflow] [--mode=quick-check|standard] [--depth=shallow|deep]"
-color: purple
 
 execution-modes:
   quick-check:

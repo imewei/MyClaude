@@ -1,5 +1,5 @@
 ---
-version: "2.2.1"
+name: scaffold
 description: Unified project and component scaffolding for TypeScript, Python, React, and Julia
 argument-hint: <language> <name> [options]
 category: engineering-suite
@@ -7,7 +7,6 @@ execution-modes:
   quick: "5-15 minutes"
   standard: "20-45 minutes"
   deep: "1-2 hours"
-color: green
 allowed-tools: [Write, Read, Task, Bash, Glob, Grep, Bash(uv:*)]
 external-docs:
   - project-scaffolding-guide.md

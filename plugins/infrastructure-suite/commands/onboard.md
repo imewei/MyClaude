@@ -1,12 +1,11 @@
 ---
-version: "2.2.1"
+name: onboard
 description: Orchestrate complete onboarding for new team members with customized 30/60/90 day plans
 argument-hint: "<role> [--level=junior|mid|senior] [--location=remote|hybrid|onsite]"
 execution-modes:
   quick: "15-20 minutes"
   standard: "30-45 minutes"
   comprehensive: "60-90 minutes"
-color: green
 allowed-tools: Read, Write, Bash, Glob, Grep
 ---
 

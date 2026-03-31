@@ -1,9 +1,8 @@
 ---
-version: "2.2.1"
+name: rust-project
 command: /rust-project
 description: Scaffold production-ready Rust projects with cargo tooling and idiomatic patterns
 argument-hint: "[project-type] [project-name]"
-color: orange
 execution-modes:
   quick: "1-2 hours"
   standard: "4-6 hours"

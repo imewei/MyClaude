@@ -1,9 +1,8 @@
 ---
-version: "2.2.1"
+name: merge-all
 description: Merge all local branches into main and clean up
 allowed-tools: Bash(git:*), Read
 argument-hint: "[--skip-commit] [--no-delete] [--force] [--dry-run]"
-color: magenta
 agents:
   orchestrated: false
 ---

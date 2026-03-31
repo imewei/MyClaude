@@ -1,5 +1,5 @@
 ---
-version: "2.2.1"
+name: modernize
 description: Unified code migration and legacy modernization with Strangler Fig pattern
 argument-hint: <action> <path> [options]
 category: engineering-suite
@@ -7,7 +7,6 @@ execution-modes:
   quick: "30-60m: Assessment + strategy"
   standard: "1-2w: Component migration"
   deep: "2-6mo: Enterprise transformation"
-color: blue
 allowed-tools: [Bash, Read, Write, Edit, Task, Glob, Grep, WebFetch, Bash(uv:*)]
 external-docs:
   - migration-patterns-library.md

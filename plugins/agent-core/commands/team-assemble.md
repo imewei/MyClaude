@@ -1,12 +1,11 @@
 ---
-version: "2.2.1"
+name: team-assemble
 description: Generate ready-to-use agent team configurations from 38 pre-built templates
 argument-hint: <team-type> [--var KEY=VALUE]
 category: agent-core
 execution-modes:
   quick: "1-2 minutes"
   standard: "2-5 minutes"
-color: cyan
 allowed-tools: [Read, Glob, Grep, Bash, Task, Write, Edit]
 tags: [agent-teams, orchestration, multi-agent, collaboration, parallel]
 ---

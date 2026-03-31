@@ -1,10 +1,9 @@
 ---
-version: "2.2.1"
+name: adopt-code
 category: quality-suite
 command: /adopt-code
 description: Analyze and modernize scientific computing codebases while preserving numerical accuracy
 argument-hint: <path-to-code> [target-framework]
-color: purple
 execution-modes:
   quick: "30-45m: Analysis + strategy"
   standard: "1-2h: + Framework selection + initial implementation"

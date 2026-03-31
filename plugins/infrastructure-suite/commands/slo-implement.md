@@ -1,9 +1,8 @@
 ---
-version: "2.2.1"
+name: slo-implement
 command: /slo-implement
 description: Implement SLO/SLA monitoring, error budgets, and burn rate alerting
 argument-hint: "[service-name] [--mode=quick|standard|enterprise]"
-color: purple
 execution-modes:
   quick: "2-3d: 1 service, 1-2 SLIs, basic budget, fast burn alert"
   standard: "1-2w: 3-5 services, multi-SLI, multi-burn alerts, reporting"

@@ -1,9 +1,8 @@
 ---
-version: "2.2.1"
+name: multi-platform
 command: /multi-platform
 description: Build and deploy features across web, mobile, and desktop platforms with API-first architecture and multi-agent orchestration
 argument-hint: <platforms>
-color: indigo
 execution-modes:
   quick:
     duration: "3-5 days"

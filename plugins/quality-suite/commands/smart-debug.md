@@ -1,5 +1,5 @@
 ---
-version: "2.2.1"
+name: smart-debug
 category: debugging
 purpose: AI-assisted debugging with automated RCA, pattern recognition, production-safe techniques
 description: Intelligent debugging with multi-mode execution and automated RCA
@@ -10,7 +10,6 @@ execution-modes:
 external-docs: [debugging-patterns-library.md, rca-frameworks-guide.md, observability-integration-guide.md]
 tags: [debugging, rca, observability, production]
 argument-hint: <error-description> [--quick-triage|--standard-debug|--deep-rca] [--production]
-color: red
 allowed-tools: [Read, Bash, Edit, Task]
 ---
 

@@ -1,11 +1,10 @@
 ---
-version: "2.2.1"
+name: double-check
 command: /double-check
 description: Multi-dimensional validation with automated testing, security scanning, code review
 argument-hint: "[work] [--deep] [--security] [--performance]"
 execution-modes: {quick: "5-15min", standard: "30-60min", enterprise: "2-4h"}
 workflow-type: sequential
-color: orange
 allowed-tools: [Bash, Read, Task, Grep]
 ---
 

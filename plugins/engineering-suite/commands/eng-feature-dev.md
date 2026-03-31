@@ -1,5 +1,5 @@
 ---
-version: "2.2.1"
+name: eng-feature-dev
 description: Unified end-to-end feature development with customizable methodologies and deployment strategies
 argument-hint: <action> <feature-name> [options]
 category: engineering-suite
@@ -7,7 +7,6 @@ execution-modes:
   quick: "30m-2d: Architecture + hot fixes"
   standard: "3-14d: Full production workflow"
   deep: "2-4w: Enterprise with compliance"
-color: purple
 allowed-tools: [Bash, Read, Write, Edit, Task, Glob, Grep, Bash(uv:*)]
 external-docs:
   - architecture-patterns-library.md

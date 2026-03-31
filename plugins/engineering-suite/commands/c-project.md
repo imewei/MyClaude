@@ -1,9 +1,8 @@
 ---
-version: "2.2.1"
+name: c-project
 command: /c-project
 description: Scaffold production-ready C projects with Makefile/CMake and memory safety tools
 argument-hint: "[project-type] [project-name]"
-color: blue
 execution-modes:
   quick: "1-2 hours"
   standard: "4-6 hours"

@@ -1,5 +1,5 @@
 ---
-version: "2.2.1"
+name: deps
 description: Unified dependency management - security auditing, vulnerability scanning, and safe upgrades
 argument-hint: "<action> [--mode quick|standard|deep] [--security-only] [--strategy incremental|batch]"
 category: quality-suite
@@ -9,7 +9,6 @@ execution-modes:
   upgrade-quick: "15-25min"
   upgrade-standard: "30-60min"
   upgrade-deep: "1-3h"
-color: green
 allowed-tools: [Bash, Edit, Read, Task, Bash(uv:*)]
 agents:
   primary:

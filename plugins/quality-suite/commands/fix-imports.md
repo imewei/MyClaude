@@ -1,5 +1,5 @@
 ---
-version: "2.2.1"
+name: fix-imports
 description: Systematically fix broken imports across the codebase with session continuity
 argument-hint: "[path-or-pattern] [resume|status|new]"
 category: quality-suite
@@ -8,7 +8,6 @@ execution-modes:
   quick: 3-8 minutes
   standard: 10-20 minutes
   comprehensive: 20-45 minutes
-color: purple
 allowed-tools: [Bash, Read, Write, Edit, Glob, Grep, Task, Bash(uv:*)]
 external-docs:
   - import-resolution-strategies.md

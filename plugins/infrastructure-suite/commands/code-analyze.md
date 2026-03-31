@@ -1,9 +1,7 @@
 ---
-version: "2.2.1"
 name: code-analyze
 description: Semantic code analysis using Serena MCP for symbol navigation and understanding
 argument-hint: "[symbol-name] [--path=relative/path] [--depth=N] [--substring]"
-color: blue
 allowed-tools:
   - mcp__plugin_serena_serena__find_symbol
   - mcp__plugin_serena_serena__get_symbols_overview

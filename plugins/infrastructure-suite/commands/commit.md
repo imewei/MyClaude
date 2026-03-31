@@ -1,9 +1,8 @@
 ---
-version: "2.2.1"
+name: commit
 description: Intelligent git commit with automated analysis, quality validation, and atomic commit enforcement
 allowed-tools: Bash(git:*), Read, Grep
 argument-hint: "[commit-message] [--quick] [--split] [--amend] [--no-verify]"
-color: green
 agents:
   primary:
     - quality-specialist

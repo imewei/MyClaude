@@ -1,11 +1,10 @@
 ---
-version: "2.2.1"
+name: run-all-tests
 command: /run-all-tests
 description: Iteratively run and fix all tests until zero failures with AI-driven RCA
 argument-hint: "[test-path] [--fix] [--max-iterations=10] [--parallel] [--coverage]"
 execution-modes: {quick: "30min-1h", standard: "2-4h", enterprise: "1-2d"}
 workflow-type: iterative
-color: blue
 allowed-tools: [Bash, Read, Edit, Task, Bash(uv:*)]
 ---
 
