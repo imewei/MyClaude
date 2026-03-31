@@ -210,8 +210,7 @@ class PluginReviewer:
         if "category" in plugin_data:
             category = plugin_data["category"]
             valid_categories = [
-                "agent-core", "engineering-suite", "infrastructure-suite",
-                "quality-suite", "science-suite"
+                "agent-core", "dev-suite", "science-suite"
             ]
             if category not in valid_categories:
                 report.add_warning(

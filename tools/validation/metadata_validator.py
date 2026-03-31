@@ -99,9 +99,7 @@ class MetadataValidator:
                 "type": "string",
                 "enum": [
                     "core",
-                    "engineering",
-                    "infrastructure",
-                    "quality",
+                    "dev",
                     "science"
                 ],
                 "description": "Plugin category"
