@@ -41,11 +41,9 @@
     "./commands/test-generate.md"
   ],
   "skills": [
-    "./skills/ai-assisted-debugging",
     "./skills/code-review",
     "./skills/comprehensive-validation",
-    "./skills/comprehensive-validation-framework",
-    "./skills/debugging-strategies",
+    "./skills/debugging-toolkit",
     "./skills/documentation-standards",
     "./skills/e2e-testing-patterns",
     "./skills/observability-sre-practices",

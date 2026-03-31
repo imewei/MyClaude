@@ -144,7 +144,7 @@ class MetadataValidator:
         }
     }
 
-    # Agent schema — aligned with Claude Code v2.1.42 subagent frontmatter spec
+    # Agent schema — aligned with Claude Code v2.1.88 subagent frontmatter spec
     AGENT_SCHEMA: Dict[str, Dict[str, Any]] = {
         "required": {
             "name": {
@@ -176,7 +176,7 @@ class MetadataValidator:
                 "type": "string",
                 "enum": [
                     "default", "acceptEdits", "delegate",
-                    "dontAsk", "bypassPermissions", "plan"
+                    "dontAsk", "bypassPermissions", "plan", "auto"
                 ],
                 "description": "Permission handling mode"
             },
@@ -184,6 +184,20 @@ class MetadataValidator:
                 "type": "integer",
                 "min": 1,
                 "description": "Maximum agentic turns before stopping"
+            },
+            "effort": {
+                "type": "string",
+                "enum": ["low", "medium", "high"],
+                "description": "Model reasoning depth (v2.1.88+)"
+            },
+            "background": {
+                "type": "boolean",
+                "description": "Run agent in background (v2.1.88+)"
+            },
+            "isolation": {
+                "type": "string",
+                "enum": ["worktree"],
+                "description": "Run agent in isolated git worktree (v2.1.88+)"
             },
             "skills": {
                 "type": "array",
@@ -201,15 +215,6 @@ class MetadataValidator:
                 "type": "string",
                 "enum": ["user", "project", "local"],
                 "description": "Persistent memory scope (v2.1.40+)"
-            },
-            "color": {
-                "type": "string",
-                "description": "Background color for UI identification"
-            },
-            "version": {
-                "type": "string",
-                "pattern": r'^\d+\.\d+\.\d+',
-                "description": "Custom metadata version (non-standard)"
             }
         }
     }

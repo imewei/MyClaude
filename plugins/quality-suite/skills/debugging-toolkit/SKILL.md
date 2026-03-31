@@ -1,14 +1,16 @@
 ---
-name: ai-assisted-debugging
+name: debugging-toolkit
 version: "2.2.1"
 maturity: "5-Expert"
-specialization: AI-Powered Debugging & RCA
-description: AI/LLM for automated stack trace analysis, intelligent RCA, ML log correlation in distributed systems. Use for Python/JS/Go exceptions, K8s pod failures, automated anomaly detection on logs/metrics, correlating git commits with production incidents.
+specialization: AI-Assisted & Systematic Debugging
+description: Unified debugging toolkit combining AI/LLM-powered automated analysis (stack traces, RCA, ML log correlation, distributed tracing) with systematic debugging strategies (scientific method, profiling, differential debugging). Use for runtime errors, performance issues, memory leaks, flaky bugs, production debugging, K8s/Docker failures, and anomaly detection across Python/JS/Go/any stack.
 ---
 
-# AI-Assisted Debugging
+# Debugging Toolkit
 
-## Technique Selection
+## AI-Assisted Debugging
+
+### Technique Selection
 
 | Technique | Use Case | Tools |
 |-----------|----------|-------|
@@ -18,7 +20,7 @@ description: AI/LLM for automated stack trace analysis, intelligent RCA, ML log 
 | Change Correlation | Recent deploy → incident | Git, deploy logs |
 | Predictive | Failure forecasting | ARIMA, Prophet |
 
-## LLM Stack Analysis
+### LLM Stack Analysis
 
 ```python
 import openai
@@ -38,7 +40,7 @@ class AIDebugAssistant:
         return json.loads(resp.choices[0].message.content)
 ```
 
-## ML Log Anomaly Detection
+### ML Log Anomaly Detection
 
 ```python
 from sklearn.ensemble import IsolationForest
@@ -64,7 +66,7 @@ class LogAnomalyDetector:
         return logs
 ```
 
-## K8s Pod Debugging
+### K8s Pod Debugging
 
 ```bash
 #!/bin/bash
@@ -75,7 +77,7 @@ echo "=== Logs ===" && kubectl logs $POD -n $NS --tail=50
 echo "=== Resources ===" && kubectl top pod $POD -n $NS
 ```
 
-## Docker Container Debug
+### Docker Container Debug
 
 ```python
 import docker
@@ -94,7 +96,7 @@ def debug_container(cid):
     return issues
 ```
 
-## OpenTelemetry Trace Analysis
+### OpenTelemetry Trace Analysis
 
 ```python
 class TraceAnalyzer:
@@ -111,7 +113,7 @@ class TraceAnalyzer:
         return report
 ```
 
-## Automated RCA Pipeline
+### Automated RCA Pipeline
 
 ```python
 class RCAPipeline:
@@ -133,7 +135,7 @@ class RCAPipeline:
         return result
 ```
 
-## Best Practices
+### AI Debugging Best Practices
 
 | Practice | Implementation |
 |----------|----------------|
@@ -144,9 +146,7 @@ class RCAPipeline:
 | Anomaly thresholds | 10% contamination baseline |
 | Trace analysis | Focus on >P95 latency spans |
 
----
-
-## Parallel Debugging Strategies
+### Parallel Debugging Strategies (AI-Assisted)
 
 | Problem | AI Strategy | Tooling |
 |---------|-------------|---------|
@@ -155,9 +155,7 @@ class RCAPipeline:
 | **Thundering Herd** | Detect simultaneous wakeups | Log timestamps + Anomaly detection |
 | **Straggler Tasks** | Compare P99 vs P50 workers | Trace comparison |
 
----
-
-## Debug Prompt Template
+### Debug Prompt Template
 
 ```python
 def debug_prompt(ctx):
@@ -168,7 +166,7 @@ LOGS: {ctx.get('logs','N/A')}
 Provide: 1) Root cause (WHY), 2) Fixes with code, 3) Tests, 4) Monitoring"""
 ```
 
-## Checklist
+### AI-Assisted Debugging Checklist
 
 - [ ] LLM for stack trace analysis
 - [ ] Anomaly detector trained on normal logs
@@ -177,3 +175,131 @@ Provide: 1) Root cause (WHY), 2) Fixes with code, 3) Tests, 4) Monitoring"""
 - [ ] Change correlation (git, deploys)
 - [ ] RCA pipeline connects all sources
 - [ ] Prompts have sufficient context
+
+---
+
+## Systematic Debugging Strategies
+
+### Scientific Method
+1. Observe: Actual behavior?
+2. Hypothesize: Possible causes?
+3. Experiment: Test hypothesis
+4. Analyze: Proved/disproved?
+5. Repeat: Until root cause found
+
+### Process
+
+| Phase | Actions |
+|-------|---------|
+| Reproduce | Minimal repro, exact steps |
+| Info | Stack trace, env, recent changes |
+| Hypothesize | What changed? Where fail? |
+| Test | Binary search, logging, isolate |
+| Fix | Root cause, not symptoms |
+
+### Tools
+
+#### JavaScript/TypeScript
+```typescript
+debugger;  // Pause here
+console.log('Value:', v);
+console.table(arr);
+console.time('op'); /* code */ console.timeEnd('op');
+console.trace();  // Stack
+performance.mark('start'); /* op */ performance.mark('end');
+performance.measure('op', 'start', 'end');
+```
+
+VS Code launch.json:
+```json
+{"type":"node","request":"launch","name":"Debug","program":"${workspaceFolder}/src/index.ts","outFiles":["${workspaceFolder}/dist/**/*.js"]}
+```
+
+#### Python
+```python
+import pdb; pdb.set_trace()  # or breakpoint()
+try: risky()
+except: import pdb; pdb.post_mortem()
+import cProfile; cProfile.run('slow()', 'stats')
+```
+
+#### Go
+```go
+import "runtime/debug"
+debug.PrintStack()
+defer func() { if r := recover(); r != nil { debug.PrintStack() }}()
+// pprof: http://localhost:6060/debug/pprof/
+import _ "net/http/pprof"
+```
+
+#### Git Bisect
+```bash
+git bisect start
+git bisect bad            # Current broken
+git bisect good v1.0.0    # Known working
+git bisect good|bad       # Repeat
+git bisect reset
+```
+
+### Differential Debugging
+
+| Aspect | Working | Broken |
+|--------|---------|--------|
+| Env | Dev | Prod |
+| Data | Empty | 1M records |
+| User | Admin | Regular |
+| Browser | Chrome | Safari |
+| Time | Day | Midnight |
+
+→ Form hypothesis from differences
+
+### By Issue Type
+
+**Intermittent/Flaky**: Extensive logging + timing, check race conditions, async ordering, stress test
+**Performance**: Profile first, check N+1 queries, unnecessary renders, sync I/O. Tools: DevTools, cProfile, clinic.js
+**Memory Leaks**:
+```javascript
+if (process.memoryUsage().heapUsed > 500*1024*1024) require('v8').writeHeapSnapshot();
+```
+**Production**: Gather evidence, reproduce locally with prod data, never change prod directly
+
+### Systematic Best Practices
+
+| Practice | Why |
+|----------|-----|
+| Reproduce first | Can't fix what you can't reproduce |
+| Isolate | Remove complexity to minimal case |
+| Read errors | Usually helpful |
+| Check recent | Most bugs are recent |
+| Take breaks | Fresh eyes see better |
+| Fix root | Not symptoms |
+
+### Common Mistakes
+
+| Mistake | Problem |
+|---------|---------|
+| Multiple changes | Can't ID what fixed |
+| Ignore stack trace | Miss obvious clues |
+| Debug logs in prod | Security, perf risk |
+| Give up soon | Persistence pays |
+| Assume complex | Often simple |
+
+### Parallelization Debugging (Systematic)
+
+| Challenge | Strategy |
+|-----------|----------|
+| **Race Conditions** | Use thread sanitizer (TSan), stress test with `pytest-repeat` |
+| **Deadlocks** | Visualize wait chains (e.g., `py-spy dump --locals`), timeout locks |
+| **Non-Determinism** | Fix seeds, isolate concurrency, use single-thread mode |
+| **Distributed State** | Correlate logs with Trace IDs, check clock skew |
+
+### Quick Checklist
+
+- [ ] Typos, case sensitivity
+- [ ] Null/undefined
+- [ ] Array off-by-one
+- [ ] Async/race conditions
+- [ ] Type mismatches
+- [ ] Environment vars
+- [ ] Cache issues
+- [ ] Absolute vs relative paths

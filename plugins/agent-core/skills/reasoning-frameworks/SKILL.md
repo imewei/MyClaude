@@ -1,18 +1,55 @@
 ---
-name: structured-reasoning
+name: reasoning-frameworks
 version: "2.2.1"
 maturity: "5-Expert"
-specialization: Systematic Problem-Solving
-description: Apply structured reasoning with systematic thought processing, branching exploration, multi-framework analysis (First Principles, Root Cause Analysis, Decision Analysis), and auditability. Use for complex debugging, architectural decisions, strategic planning, novel problems, and high-stakes decisions requiring explicit reasoning chains.
+specialization: Systematic Problem-Solving & Meta-Cognition
+description: Unified reasoning skill combining structured reasoning frameworks, systematic thought processing, branching exploration, multi-framework analysis (First Principles, Root Cause Analysis, Decision Analysis, Systems Thinking, OODA Loop), meta-cognitive reflection, and auditability. Use for complex debugging, architectural decisions, strategic planning, novel problems, and high-stakes decisions requiring explicit reasoning chains.
 ---
 
-# Structured Reasoning
+# Reasoning Frameworks
+
+Unified guide for maximizing cognitive performance through systematic reasoning, structured thought processing, meta-cognitive reflection, and self-correction.
+
+---
+
+## From: Advanced Reasoning
+
+Expert guide for maximizing LLM cognitive performance through systematic reasoning and self-correction.
+
+### 1. Reasoning Frameworks
+
+- **First Principles**: Deconstruct problems into fundamental truths and rebuild solutions from the ground up.
+- **Systems Thinking**: Analyze complex interdependencies and feedback loops within a system.
+- **Root Cause Analysis (RCA)**: Use the "Five Whys" and Fishbone diagrams to identify underlying issues.
+- **OODA Loop**: Rapidly observe, orient, decide, and act in dynamic environments.
+
+### 2. Thought Structuring
+
+- **Explicit Chains**: Document the step-by-step logic used to reach a conclusion.
+- **Branching**: Explore multiple potential solutions concurrently before committing to a path.
+- **Evidence-Based**: Support every major claim with data, logs, or established facts.
+- **Confidence Scoring**: Assign honest confidence levels to conclusions to highlight uncertainty.
+
+### 3. Meta-Cognitive Reflection
+
+- **Self-Correction**: Periodically review the reasoning chain for contradictions or invalid assumptions.
+- **Bias Detection**: Actively search for and mitigate common cognitive biases (e.g., confirmation bias).
+- **Session Reflection**: Analyze the entire problem-solving session to improve future reasoning strategies.
+
+### 4. Reasoning Checklist
+
+- [ ] **Assumptions**: Are all assumptions made explicit and validated?
+- [ ] **Branches**: Have alternative interpretations or solutions been considered?
+- [ ] **Contradictions**: Has the reasoning chain been checked for internal consistency?
+- [ ] **Auditability**: Can a human follow the logic from the problem statement to the final decision?
+
+---
+
+## From: Structured Reasoning
 
 Systematic problem-solving with explicit reasoning chains and cognitive frameworks.
 
----
-
-## Framework Selection
+### Framework Selection
 
 | Framework | Use Case | Example |
 |-----------|----------|---------|
@@ -24,7 +61,7 @@ Systematic problem-solving with explicit reasoning chains and cognitive framewor
 
 ---
 
-## Six-Phase Process
+### Six-Phase Process
 
 | Phase | Goal | Key Outputs |
 |-------|------|-------------|
@@ -37,7 +74,7 @@ Systematic problem-solving with explicit reasoning chains and cognitive framewor
 
 ---
 
-## Thought Structure
+### Thought Structure
 
 ```yaml
 thought:
@@ -53,7 +90,7 @@ thought:
 
 ---
 
-## First Principles Framework
+### First Principles Framework
 
 **When**: Novel problems, deep understanding needed
 
@@ -67,7 +104,7 @@ T3.5: Validate reconstruction
 
 ---
 
-## Root Cause Analysis
+### Root Cause Analysis
 
 **When**: Debugging, incident response, quality issues
 
@@ -85,7 +122,7 @@ T3.5: Propose solutions
 
 ---
 
-## Decision Analysis
+### Decision Analysis
 
 **When**: Technology choices, architectural decisions
 
@@ -99,14 +136,14 @@ T3.7: Make recommendation with confidence
 
 ---
 
-## Branching & Revision
+### Branching & Revision
 
-### When to Branch
+#### When to Branch
 - Alternative solutions: T3.1.1, T3.1.2, T3.1.3
 - Hypothesis testing: T3.2.v (validation)
 - Different frameworks: T3.1.f (framework switch)
 
-### When to Revise
+#### When to Revise
 - New evidence contradicts previous thought
 - Assumption found invalid
 - Better approach identified
@@ -116,12 +153,12 @@ T3.5.1 [Revision of T3.5]
 Original: [Previous reasoning]
 Reason: [Why update needed]
 Updated: [Corrected analysis]
-Confidence: +0.10 (0.75 → 0.85)
+Confidence: +0.10 (0.75 -> 0.85)
 ```
 
 ---
 
-## Confidence Levels
+### Confidence Levels
 
 | Level | Range | Criteria |
 |-------|-------|----------|
@@ -131,7 +168,7 @@ Confidence: +0.10 (0.75 → 0.85)
 
 ---
 
-## Contradiction Detection
+### Contradiction Detection
 
 | Level | Type | Example |
 |-------|------|---------|
@@ -139,11 +176,11 @@ Confidence: +0.10 (0.75 → 0.85)
 | Constraint | Requirement violation | Budget $50K vs Cost $75K |
 | Temporal | Cause-effect inconsistency | "Reduces latency" vs "Increases latency" |
 
-**Resolution**: Flag → Analyze root cause → Create revision branch → Update chain → Validate downstream
+**Resolution**: Flag -> Analyze root cause -> Create revision branch -> Update chain -> Validate downstream
 
 ---
 
-## Depth Modes
+### Depth Modes
 
 | Mode | Thoughts | Duration | Branches | Use Case |
 |------|----------|----------|----------|----------|
@@ -153,7 +190,7 @@ Confidence: +0.10 (0.75 → 0.85)
 
 ---
 
-## Best Practices
+### Best Practices
 
 | Practice | Implementation |
 |----------|----------------|
@@ -167,7 +204,7 @@ Confidence: +0.10 (0.75 → 0.85)
 
 ---
 
-## Common Pitfalls
+### Common Pitfalls
 
 | Pitfall | Problem |
 |---------|---------|
@@ -177,7 +214,7 @@ Confidence: +0.10 (0.75 → 0.85)
 | Overconfidence | High confidence without evidence |
 | No revision | Failing to update with new information |
 
-## Parallel Reasoning
+### Parallel Reasoning
 
 | Pattern | Implementation | Use Case |
 |---------|----------------|----------|
@@ -186,7 +223,7 @@ Confidence: +0.10 (0.75 → 0.85)
 | **Team Reasoning** | Assign branches to different experts | Large-scale strategy |
 | **Background Validation** | Async fact-checking of assumptions | Real-time confidence updates |
 
-## Checklist
+### Comprehensive Checklist
 
 - [ ] Problem fully understood with constraints
 - [ ] Framework selected appropriate to problem type
@@ -196,7 +233,3 @@ Confidence: +0.10 (0.75 → 0.85)
 - [ ] Confidence levels assigned honestly
 - [ ] Contradictions checked and resolved
 - [ ] Conclusions synthesized with rationale
-
----
-
-**Version**: 2.1.0

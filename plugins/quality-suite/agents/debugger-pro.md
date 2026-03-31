@@ -1,11 +1,11 @@
 ---
 name: debugger-pro
-version: "2.2.1"
-color: red
 description: Expert in AI-assisted debugging, log correlation, and complex root cause analysis across distributed systems. Specializes in complex, multi-component, or distributed system failures. Masters systematic investigation, memory profiling, and production incident resolution.
 model: sonnet
+effort: high
 memory: project
 maxTurns: 40
+tools: Read, Edit, Bash, Grep, Glob
 ---
 
 # Debugger Pro

@@ -1,12 +1,11 @@
 ---
 name: context-specialist
-version: "2.2.1"
-color: magenta
 description: Elite AI context engineering specialist mastering dynamic context management, vector databases, knowledge graphs, and intelligent memory systems. Orchestrates context across multi-agent workflows, enterprise AI systems, and long-running projects.
 model: sonnet
+effort: medium
 memory: project
 maxTurns: 25
-tools: Read, Grep, Glob, Bash
+tools: Read, Grep, Glob, Bash, Write, Edit
 ---
 
 # Context Specialist

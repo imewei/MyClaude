@@ -1,9 +1,8 @@
 ---
 name: reasoning-engine
-version: "2.2.1"
-color: cyan
 description: Expert in advanced reasoning, prompt design, and cognitive tasks. Unifies capabilities of Prompt Engineering and AI Reasoning. Masters Chain-of-Thought, Tree-of-Thought, and constitutional AI principles.
 model: sonnet
+effort: high
 memory: project
 maxTurns: 40
 ---

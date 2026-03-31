@@ -1,9 +1,9 @@
 ---
 name: systems-engineer
-version: "2.2.1"
-color: magenta
 description: Expert in low-level systems programming (C, C++, Rust, Go) and production-grade CLI tool design. Masters memory management, concurrency, and high-performance developer tools.
 model: sonnet
+effort: high
+memory: project
 maxTurns: 35
 ---
 

@@ -1,18 +1,145 @@
 ---
-name: comprehensive-reflection-framework
+name: reflection-framework
 version: "2.2.1"
 maturity: "5-Expert"
-specialization: Multi-Dimensional Analysis
-description: Orchestrate reflection across cognitive, technical, scientific, and strategic dimensions for integrated insights and cross-cutting patterns. Use for quarterly reviews, major milestones, grant proposals, strategic planning, or comprehensive project health assessments.
+specialization: AI Reasoning & Multi-Dimensional Analysis
+description: Unified reflection framework combining meta-cognitive analysis (reasoning patterns, cognitive biases, problem-solving quality, communication effectiveness) with multi-dimensional orchestration across cognitive, technical, scientific, and strategic dimensions. Use for session reflections, reasoning audits, bias detection, quarterly reviews, strategic planning, grant proposals, and comprehensive project health assessments.
 ---
 
-# Comprehensive Reflection Framework
+# Reflection Framework
+
+Unified framework for meta-cognitive reflection and multi-dimensional analysis, integrating reasoning evaluation, bias detection, and strategic assessment.
+
+---
+
+## From: Meta-Cognitive Reflection
+
+Systematic analysis of AI reasoning, decision-making, and interaction quality.
+
+---
+
+### Reasoning Types
+
+| Type | Description | Detection |
+|------|-------------|-----------|
+| Deductive | General → specific | "If A then B" patterns |
+| Inductive | Specific → general | Pattern recognition |
+| Abductive | Best explanation | Inference to cause |
+| Analogical | Cross-domain mapping | "Similar to X" patterns |
+| Causal | Cause-effect | "Because" relationships |
+
+---
+
+### Cognitive Biases
+
+| Bias | Detection | Mitigation |
+|------|-----------|------------|
+| Availability | Over-relying on recent examples | Seek diverse examples |
+| Anchoring | First info dominates | Consider alternatives |
+| Confirmation | Seeking supporting evidence | Test contradictions |
+| Recency | Overweighting recent | Review full context |
+| Selection | Non-representative sampling | Systematic coverage |
+
+---
+
+### Problem-Solving Evaluation
+
+| Stage | Questions |
+|-------|-----------|
+| Understanding | Clear problem definition? Requirements covered? |
+| Strategy | Approaches considered? Rationale documented? |
+| Implementation | Quality execution? Errors handled? |
+| Validation | Testing thorough? Edge cases covered? |
+| Iteration | Adapted to feedback? Learned? |
+
+---
+
+### Communication Assessment
+
+| Dimension | Criteria |
+|-----------|----------|
+| Clarity | Appropriate jargon, structure, depth |
+| Accuracy | Factual correctness, precision |
+| Pedagogy | Example quality, scaffolding |
+| Relevance | On-topic, priority alignment |
+| Engagement | Interactivity, collaboration |
+
+---
+
+### Reflection Workflow
+
+1. **Define Scope** - Single conversation, decision, or session
+2. **Gather Context** - Conversation history, outcomes, feedback
+3. **Analyze Reasoning** - Identify types, count instances, evaluate
+4. **Detect Biases** - Check indicators, assess severity
+5. **Evaluate Problem-Solving** - Score each stage
+6. **Assess Communication** - Rate dimensions
+7. **Generate Insights** - Patterns, strengths, weaknesses
+8. **Create Report** - Summary, recommendations, actions
+
+---
+
+### Session Report Template
+
+```markdown
+## Executive Summary
+[Overall assessment, key findings]
+
+## Reasoning Analysis
+| Type | Instances | Effectiveness |
+|------|-----------|---------------|
+| Deductive | X | High/Medium/Low |
+...
+
+## Cognitive Biases Detected
+| Bias | Severity | Mitigation Applied |
+|------|----------|---------------------|
+...
+
+## Problem-Solving Scores
+| Stage | Score (1-5) | Notes |
+|-------|-------------|-------|
+...
+
+## Recommendations
+1. [Actionable improvement]
+2. [Actionable improvement]
+```
+
+---
+
+### Meta-Cognitive Best Practices
+
+| Practice | Implementation |
+|----------|----------------|
+| Be Objective | Base on evidence, not assumptions |
+| Quantify | Use metrics and counts |
+| Context Matters | Consider task complexity |
+| Balance | Acknowledge strengths and weaknesses |
+| Actionable | Provide specific improvements |
+| Meta-Reflect | Assess reflection quality itself |
+
+---
+
+### Meta-Cognitive Checklist
+
+- [ ] Reasoning patterns identified and evaluated
+- [ ] Cognitive biases checked and documented
+- [ ] Problem-solving stages scored
+- [ ] Communication effectiveness assessed
+- [ ] Cross-cutting patterns synthesized
+- [ ] Actionable recommendations provided
+- [ ] Report generated with metrics
+
+---
+
+## From: Comprehensive Reflection Framework
 
 Multi-dimensional analysis integrating cognitive, technical, research, and strategic perspectives.
 
 ---
 
-## Reflection Dimensions
+### Reflection Dimensions
 
 | Dimension | Focus | Key Questions |
 |-----------|-------|---------------|
@@ -23,9 +150,9 @@ Multi-dimensional analysis integrating cognitive, technical, research, and strat
 
 ---
 
-## Workflow Phases
+### Workflow Phases
 
-### Phase 1: Context Gathering
+#### Phase 1: Context Gathering
 
 ```bash
 # Session context
@@ -39,16 +166,16 @@ find . -name "*test*" | wc -l
 
 **Collect**: Conversation history, research materials, codebase state, goal documents
 
-### Phase 2: Parallel Analysis
+#### Phase 2: Parallel Analysis
 
 | Dimension | Skill | Output |
 |-----------|-------|--------|
-| Meta-Cognitive | meta-cognitive-reflection | Reasoning report |
+| Meta-Cognitive | reflection-framework | Reasoning report |
 | Research | research-quality-assessment | Quality report |
 | Technical | Code analysis tools | Technical report |
 | Strategic | Goal tracking | Progress report |
 
-### Phase 3: Pattern Synthesis
+#### Phase 3: Pattern Synthesis
 
 | Pattern Type | Description |
 |--------------|-------------|
@@ -61,14 +188,14 @@ find . -name "*test*" | wc -l
 - "Strong reasoning but weak documentation" → Integration opportunity
 - "High code quality but slow progress" → Speed vs quality tradeoff
 
-### Phase 4: Meta-Level Insights
+#### Phase 4: Meta-Level Insights
 
 **Assess**:
 - **System Health**: Trajectory (improving/stable/declining)
 - **Effectiveness**: Input-output efficiency, learning rate
 - **Sustainability**: Technical debt, cognitive load, resource use
 
-### Phase 5: Strategic Recommendations
+#### Phase 5: Strategic Recommendations
 
 | Timeframe | Focus |
 |-----------|-------|
@@ -79,7 +206,7 @@ find . -name "*test*" | wc -l
 
 ---
 
-## Depth Modes
+### Depth Modes
 
 | Mode | Duration | Scope |
 |------|----------|-------|
@@ -89,9 +216,9 @@ find . -name "*test*" | wc -l
 
 ---
 
-## Scoring Framework
+### Scoring Framework
 
-### Overall Health Score: X.X/10
+#### Overall Health Score: X.X/10
 
 | Dimension | Weight | Score | Trend |
 |-----------|--------|-------|-------|
@@ -100,7 +227,7 @@ find . -name "*test*" | wc -l
 | Technical Quality | 25% | X.X/10 | ↑/→/↓ |
 | Strategic | 25% | X.X/10 | ↑/→/↓ |
 
-### Interpretation
+#### Interpretation
 
 | Score | Level | Action |
 |-------|-------|--------|
@@ -112,21 +239,23 @@ find . -name "*test*" | wc -l
 
 ---
 
-## Integration Patterns
+### Integration Patterns
 
-### Reasoning → Code Quality
+#### Reasoning → Code Quality
 - Strong deductive reasoning correlates with structured code
 - Apply systematic reasoning to architecture decisions
 
-### Research Rigor → Technical Debt
+#### Research Rigor → Technical Debt
 - Research thoroughness inversely related to debt
 - Adopt reproducibility practices in development
 
-### Communication → Collaboration
+#### Communication → Collaboration
 - Clear communication enables effective teamwork
 - Apply insights to documentation
 
-## Parallel Reflection
+---
+
+### Parallel Reflection
 
 | Strategy | Implementation | Benefit |
 |----------|----------------|---------|
@@ -135,7 +264,9 @@ find . -name "*test*" | wc -l
 | **Async Synthesis** | Synthesize dimensions as they complete | Faster initial insights |
 | **Team Reflection** | Async written feedback + Sync alignment | Scale reflection to teams |
 
-## Example Applications
+---
+
+### Example Applications
 
 **Quarterly Review**:
 1. Gather commits, conversations, research outputs
@@ -152,7 +283,7 @@ find . -name "*test*" | wc -l
 
 ---
 
-## Report Structure
+### Comprehensive Report Structure
 
 1. **Executive Summary**: Overall assessment, key findings
 2. **Dimensional Analysis**: Findings from each dimension
@@ -163,7 +294,7 @@ find . -name "*test*" | wc -l
 
 ---
 
-## Best Practices
+### Comprehensive Best Practices
 
 | Practice | Implementation |
 |----------|----------------|
@@ -176,7 +307,7 @@ find . -name "*test*" | wc -l
 
 ---
 
-## Continuous Improvement Cycle
+### Continuous Improvement Cycle
 
 ```
 Reflect → Insights → Actions → Execute → Reflect
@@ -188,7 +319,7 @@ Reflect → Insights → Actions → Execute → Reflect
 
 ---
 
-## Checklist
+### Comprehensive Checklist
 
 - [ ] All dimensions analyzed
 - [ ] Cross-cutting patterns identified
@@ -199,4 +330,4 @@ Reflect → Insights → Actions → Execute → Reflect
 
 ---
 
-**Version**: 2.1.0
+**Version**: 2.2.1

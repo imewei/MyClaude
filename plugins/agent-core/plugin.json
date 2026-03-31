@@ -41,14 +41,12 @@
     "./commands/team-assemble.md"
   ],
   "skills": [
-    "./skills/advanced-reasoning",
     "./skills/agent-orchestration",
     "./skills/agent-performance-optimization",
-    "./skills/comprehensive-reflection-framework",
     "./skills/llm-application-patterns",
     "./skills/mcp-integration",
-    "./skills/meta-cognitive-reflection",
     "./skills/multi-agent-coordination",
-    "./skills/structured-reasoning"
+    "./skills/reasoning-frameworks",
+    "./skills/reflection-framework"
   ]
 }

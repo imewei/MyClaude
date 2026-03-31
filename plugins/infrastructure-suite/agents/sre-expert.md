@@ -1,9 +1,8 @@
 ---
 name: sre-expert
-version: "2.2.1"
-color: magenta
 description: Reliability Consultant expert in system reliability, observability (monitoring, logging, tracing), and incident response. Masters SLO/SLI frameworks and root cause analysis.
 model: sonnet
+effort: high
 memory: project
 maxTurns: 25
 ---

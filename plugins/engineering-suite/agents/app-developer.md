@@ -1,10 +1,11 @@
 ---
 name: app-developer
-version: "2.2.1"
-color: blue
 description: Expert in building high-quality applications for Web, iOS, and Android. Masters React, Next.js, Flutter, and React Native. Focuses on performance, accessibility, and offline-first experiences.
 model: sonnet
+effort: high
+memory: project
 maxTurns: 35
+isolation: worktree
 ---
 
 # App Developer
