@@ -369,3 +369,4 @@ junit.xml
 *.out
 *.toc
 *.synctex.gz
+.serena/
