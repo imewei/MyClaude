@@ -1,8 +1,7 @@
 Development Workflows
 =====================
 
-Patterns for using the **engineering-suite** and **quality-suite** agents in
-software development.
+Patterns for using the **dev-suite** agents in software development.
 
 Feature Development
 -------------------
@@ -23,18 +22,18 @@ multi-agent feature development.
 Code Quality Pipeline
 ---------------------
 
-Maintain code quality with the **quality-suite** agents.
+Maintain code quality with the **dev-suite** agents.
 
 .. code-block:: bash
 
    # Generate tests for new code
-   /quality-suite:test-generate src/new_module.py
+   /dev-suite:test-generate src/new_module.py
 
    # Run all tests iteratively until green
-   /quality-suite:run-all-tests
+   /dev-suite:run-all-tests
 
    # Full validation before merge
-   /quality-suite:double-check --deep
+   /dev-suite:double-check --deep
 
 **Agent team:** Use :doc:`Team 3 (quality-audit) </agent-teams-guide>` for
 pre-release quality gates.
@@ -55,5 +54,4 @@ coordinated migration.
 Related
 -------
 
-- :doc:`/suites/engineering-suite` — Full engineering-suite reference
-- :doc:`/suites/quality-suite` — Full quality-suite reference
+- :doc:`/suites/dev-suite` — Full dev-suite reference

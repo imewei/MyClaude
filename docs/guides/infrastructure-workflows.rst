@@ -2,7 +2,7 @@ Infrastructure Workflows
 ========================
 
 Patterns for provisioning cloud infrastructure and managing platform
-operations with the **infrastructure-suite**.
+operations with the **dev-suite**.
 
 Cloud Infrastructure
 --------------------
@@ -52,5 +52,4 @@ coordinated multi-hypothesis investigation.
 Related
 -------
 
-- :doc:`/suites/infrastructure-suite` — Full infrastructure-suite reference
-- :doc:`/suites/engineering-suite` — Application-level architecture
+- :doc:`/suites/dev-suite` — Full dev-suite reference (includes infrastructure and architecture)

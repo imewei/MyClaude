@@ -1,7 +1,7 @@
 DevOps Workflows
 ================
 
-Patterns for using the **infrastructure-suite** agents to automate CI/CD,
+Patterns for using the **dev-suite** agents to automate CI/CD,
 monitoring, and Git workflows.
 
 CI/CD Pipeline Setup
@@ -54,16 +54,15 @@ Streamline Git operations with ``@automation-engineer``.
 .. code-block:: bash
 
    # Intelligent commit with analysis
-   /infrastructure-suite:commit
+   /dev-suite:commit
 
    # Fix CI failures automatically
-   /infrastructure-suite:fix-commit-errors
+   /dev-suite:fix-commit-errors
 
    # Merge all branches and clean up
-   /infrastructure-suite:merge-all
+   /dev-suite:merge-all
 
 Related
 -------
 
-- :doc:`/suites/infrastructure-suite` — Full infrastructure-suite reference
-- :doc:`/suites/quality-suite` — Quality gates for pipelines
+- :doc:`/suites/dev-suite` — Full dev-suite reference (includes CI/CD, quality gates)

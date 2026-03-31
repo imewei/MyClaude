@@ -195,8 +195,8 @@ class TestCategoryPages(unittest.TestCase):
         # Check that categories are included
         category_references = [
             "categories/core",
-            "categories/engineering",
-            "categories/infrastructure",
+            "categories/dev",
+            "categories/science",
         ]
 
         for ref in category_references:

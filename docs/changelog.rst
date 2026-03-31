@@ -1,12 +1,21 @@
 Changelog
 =========
 
-v2.3.0 (2026-03-31)
+v3.0.0 (2026-03-31)
 -------------------
+
+**3-Suite Architecture (5 → 3 suites)**
+
+* Merged engineering-suite + infrastructure-suite + quality-suite into a single
+  ``dev-suite``. Eliminates 27 cross-suite delegation edges.
+* New structure: agent-core (3 meta-agents), dev-suite (9 agents, 27 commands,
+  39 skills), science-suite (10 agents, 78 skills).
+* dev-suite includes PostToolUse and SubagentStop hooks, ``.lsp.json`` for
+  Pyright and TypeScript LSP, and output-styles.
 
 **v2.1.88 Spec Compliance Upgrade**
 
-* Migrated all 5 plugin manifests to ``.claude-plugin/plugin.json`` per official spec.
+* Migrated all 3 plugin manifests to ``.claude-plugin/plugin.json`` per official spec.
 * Consolidated 131 skills to 124 with zero function loss (7 semantic merges).
 * Hardened all 22 agents with ``effort``, ``memory``, and ``tools`` fields.
 * Removed non-spec ``version``/``color`` fields from all agent and command frontmatter.

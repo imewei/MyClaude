@@ -2,7 +2,7 @@ Claude Code Plugin Marketplace
 ==============================
 
 Welcome to the documentation for the Claude Code Plugin Marketplace v2.2.1.
-This system has been consolidated into 5 powerful suites to streamline your development workflow.
+This system has been consolidated into 3 focused suites to streamline your development workflow.
 
 .. toctree::
    :maxdepth: 2
@@ -10,9 +10,7 @@ This system has been consolidated into 5 powerful suites to streamline your deve
 
    categories/index
    categories/core
-   categories/engineering
-   categories/infrastructure
-   categories/quality
+   categories/dev
    categories/science
 
 .. toctree::
@@ -20,9 +18,7 @@ This system has been consolidated into 5 powerful suites to streamline your deve
    :caption: Suites
 
    suites/agent-core
-   suites/engineering-suite
-   suites/infrastructure-suite
-   suites/quality-suite
+   suites/dev-suite
    suites/science-suite
 
 .. toctree::

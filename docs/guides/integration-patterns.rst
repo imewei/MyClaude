@@ -14,15 +14,15 @@ collaboration.
 Key cross-suite patterns:
 
 - **Performance optimization** (Team 17): Combines ``@systems-engineer``
-  from engineering-suite with ``@jax-pro`` from science-suite and
-  ``@debugger-pro`` from quality-suite.
+  from dev-suite with ``@jax-pro`` from science-suite and
+  ``@debugger-pro`` from dev-suite.
 
 - **HPC interoperability** (Team 18): Bridges ``@julia-pro`` and
   ``@python-pro`` from science-suite with ``@systems-engineer`` from
-  engineering-suite.
+  dev-suite.
 
 - **Reproducible research** (Team 19): Connects ``@research-expert`` from
-  science-suite with ``@automation-engineer`` from infrastructure-suite.
+  science-suite with ``@automation-engineer`` from dev-suite.
 
 MCP Server Integration
 ----------------------
@@ -52,4 +52,4 @@ Related
 -------
 
 - :doc:`/suites/agent-core` — Orchestration and coordination
-- :doc:`/suites/infrastructure-suite` — CI/CD and automation
+- :doc:`/suites/dev-suite` — CI/CD and automation

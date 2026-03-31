@@ -17,14 +17,10 @@ Suite Dependencies
      - Integrates With
    * - **agent-core**
      - All suites (orchestration layer). MCP: Sequential Thinking, Context7.
-   * - **engineering-suite**
-     - quality-suite (testing), infrastructure-suite (deployment). MCP: Serena.
-   * - **infrastructure-suite**
-     - engineering-suite (app config), quality-suite (validation). MCP: Serena, GitHub.
-   * - **quality-suite**
-     - All suites (quality gates). MCP: Serena.
+   * - **dev-suite**
+     - Internal: all 9 agents cross-delegate freely. MCP: Serena, GitHub.
    * - **science-suite**
-     - agent-core (reasoning), engineering-suite (packaging). MCP: Context7.
+     - agent-core (reasoning), dev-suite (packaging). MCP: Context7.
 
 MCP Server Roles
 ----------------

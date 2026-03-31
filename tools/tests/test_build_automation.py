@@ -212,11 +212,11 @@ class TestCrossReferences(unittest.TestCase):
 
         rst_files = list(plugins_dir.glob("*.rst"))
 
-        # Should have 31 plugin pages
+        # Should have 3 suite pages (agent-core, dev-suite, science-suite)
         self.assertGreaterEqual(
             len(rst_files),
-            5,
-            f"Expected at least 5 suite pages, found {len(rst_files)}"
+            3,
+            f"Expected at least 3 suite pages, found {len(rst_files)}"
         )
 
     def test_category_pages_exist(self):
