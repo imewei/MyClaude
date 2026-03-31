@@ -1,5 +1,66 @@
 # Changelog
 
+## v3.0.0 (2026-03-31)
+
+**Architecture Reorganization (5 suites -> 3 suites)**
+
+* Merged engineering-suite + infrastructure-suite + quality-suite into a single **dev-suite**.
+* Eliminates 27 cross-suite agent delegation edges — all now intra-suite.
+* New structure: agent-core (3 meta-agents), dev-suite (9 agents, 27 commands, 39 skills), science-suite (10 agents, 78 skills).
+* Total: 22 agents, 33 commands, 124 skills across 3 suites.
+
+**Skill Consolidation (131 -> 124 skills)**
+
+* Merged 7 overlapping skill pairs with zero function loss:
+  - advanced-reasoning + structured-reasoning -> reasoning-frameworks
+  - meta-cognitive-reflection + comprehensive-reflection-framework -> reflection-framework
+  - ai-assisted-debugging + debugging-strategies -> debugging-toolkit
+  - comprehensive-validation-framework merged into comprehensive-validation
+  - machine-learning-essentials absorbed into machine-learning
+  - parallel-computing-strategy absorbed into parallel-computing
+  - python-testing-patterns + javascript-testing-patterns -> testing-patterns
+
+**v2.1.88 Spec Compliance**
+
+* Migrated all manifests to `.claude-plugin/plugin.json` per official plugin spec.
+* Removed non-spec `version`/`color` fields from all agent and command frontmatter.
+* Version now lives only in `plugin.json` (single source of truth).
+* Added explicit `name` field to 27 commands that were missing it.
+* Updated metadata validator schema from v2.1.42 to v2.1.88.
+
+**Agent Hardening**
+
+* Added `effort` field (low/medium/high) to all 22 agents.
+* Extended `memory: project` to all 22 agents (was 11).
+* Added explicit `tools` or `disallowedTools` to all 22 agents (was 1).
+* Added `background: true` to 5 research-focused agents.
+* Added `isolation: worktree` to app-developer and automation-engineer.
+
+**Model Tier Optimization**
+
+* Assigned Opus to 6 deep-reasoning agents: orchestrator, reasoning-engine, software-architect, debugger-pro, research-expert, statistical-physicist.
+* Assigned Haiku to documentation-expert for speed-optimized doc generation.
+* Fixed neural-network-master from `inherit` to explicit `sonnet`.
+
+**Hook Expansion (3 -> 10 events)**
+
+* agent-core: Added PostToolUse, PostCompact, SubagentStop, PermissionDenied, TaskCompleted (3 -> 8 events).
+* dev-suite: Added PostToolUse (auto-lint for Python/JS/TS) and SubagentStop (2 events).
+
+**New Infrastructure**
+
+* Added `output-styles/` directory to agent-core and dev-suite (terse + verbose modes).
+* Added `settings.json` with default agent configuration to all 3 suites.
+* Added `.lsp.json` to dev-suite (Pyright + TypeScript language servers).
+* Updated marketplace.json for 3-suite architecture.
+
+**Cleanup**
+
+* Removed obsolete `_optimization/` directory (v2.1.42 audit patches all superseded).
+* Stripped `version` field from all 121 skill SKILL.md frontmatter files.
+* Removed stale suite references from all command body content (13 files).
+* Updated all documentation: README, CLAUDE.md, Sphinx docs, cheatsheet, changelog, agent-teams-guide.
+
 ## v2.2.1 (2026-02-15)
 
 **Debugging Team Templates**
