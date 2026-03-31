@@ -74,9 +74,7 @@ def analyze_ecosystem(base_path: Union[str, Path]) -> Dict[str, Any]:
         }
 
         # 1. Parse plugin.json
-        manifest_path = plugin_path / "plugin.json"
-        if not manifest_path.exists():
-            manifest_path = plugin_path / ".claude-plugin" / "plugin.json"
+        manifest_path = plugin_path / ".claude-plugin" / "plugin.json"
 
         if manifest_path.exists():
             try:

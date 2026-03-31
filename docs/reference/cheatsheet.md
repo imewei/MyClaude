@@ -1,47 +1,33 @@
 # Claude Code Plugin Marketplace - Quick Reference
 
-**Total Resources:** 5 Suites | 22 Expert Agents | 33 Slash Commands | 131 Skills
-**Version:** 2.2.1 | **Last Updated:** February 14, 2026
+**Total Resources:** 3 Suites | 22 Expert Agents | 33 Slash Commands | 124 Skills
+**Version:** 2.2.1 | **Last Updated:** March 31, 2026
 
 ---
 
-## 🚀 The 5-Suite System
+## The 3-Suite System
 
-The MyClaude ecosystem is organized into five powerful suites, each consolidated from specialized legacy plugins.
+The MyClaude ecosystem is organized into three focused suites, consolidated from specialized legacy plugins.
 
 ### 1. Agent Core Suite (`agent-core`)
 **Purpose:** Multi-agent coordination, advanced reasoning, and context engineering.
 - **Agents:** `@orchestrator`, `@reasoning-engine`, `@context-specialist`
 - **Commands:** `/agent-build`, `/ai-assistant`, `/docs-lookup`, `/reflection`, `/ultra-think`, `/team-assemble`
-- **Skills:** `advanced-reasoning`, `agent-orchestration`, `agent-performance-optimization`, `comprehensive-reflection-framework`, `llm-application-patterns`, `mcp-integration`, `meta-cognitive-reflection`, `multi-agent-coordination`, `structured-reasoning`
+- **Skills:** `agent-orchestration`, `agent-performance-optimization`, `llm-application-patterns`, `mcp-integration`, `multi-agent-coordination`, `reasoning-frameworks`, `reflection-framework`
 - **Use When:** Complex problem solving, building AI assistants, managing long-running project context.
 
-### 2. Software Engineering Suite (`engineering-suite`)
-**Purpose:** Full-stack engineering, systems programming, and platform implementations.
-- **Agents:** `@software-architect`, `@app-developer`, `@systems-engineer`
-- **Commands:** `/scaffold`, `/rust-project`, `/c-project`, `/eng-feature-dev`, `/modernize`, `/multi-platform`, `/profile-performance`
-- **Skills:** `api-design-principles`, `architecture-patterns`, `async-python-patterns`, `auth-implementation-patterns`, `error-handling-patterns`, `frontend-mobile-engineering`, `javascript-testing-patterns`, `microservices-patterns`, `modern-javascript-patterns`, `modernization-migration`, `monorepo-management`, `nodejs-backend-patterns`, `python-packaging`, `python-performance-optimization`, `python-testing-patterns`, `sql-optimization-patterns`, `systems-cli-engineering`, `typescript-advanced-types`, `typescript-project-scaffolding`, `uv-package-manager`
-- **Use When:** Building web/mobile apps, systems programming (Rust/C), backend architecture, legacy modernization.
+### 2. Dev Suite (`dev-suite`)
+**Purpose:** Full-stack engineering, infrastructure, CI/CD, quality assurance, and debugging.
+- **Agents:** `@app-developer`, `@automation-engineer`, `@debugger-pro`, `@devops-architect`, `@documentation-expert`, `@quality-specialist`, `@software-architect`, `@sre-expert`, `@systems-engineer`
+- **Commands:** `/adopt-code`, `/c-project`, `/code-analyze`, `/code-explain`, `/commit`, `/deps`, `/docs`, `/double-check`, `/eng-feature-dev`, `/fix-commit-errors`, `/fix-imports`, `/github-assist`, `/merge-all`, `/modernize`, `/monitor-setup`, `/multi-platform`, `/onboard`, `/profile-performance`, `/refactor-clean`, `/run-all-tests`, `/rust-project`, `/scaffold`, `/slo-implement`, `/smart-debug`, `/tech-debt`, `/test-generate`, `/workflow-automate`
+- **Skills:** `airflow-scientific-workflows`, `api-design-principles`, `architecture-patterns`, `async-python-patterns`, `auth-implementation-patterns`, `code-review`, `comprehensive-validation`, `debugging-toolkit`, `deployment-pipeline-design`, `distributed-tracing`, `documentation-standards`, `e2e-testing-patterns`, `error-handling-patterns`, `frontend-mobile-engineering`, `git-workflow`, `github-actions-templates`, `gitlab-ci-patterns`, `grafana-dashboards`, `iterative-error-resolution`, `microservices-patterns`, `modern-javascript-patterns`, `modernization-migration`, `monorepo-management`, `nodejs-backend-patterns`, `observability-sre-practices`, `plugin-syntax-validator`, `prometheus-configuration`, `python-packaging`, `python-performance-optimization`, `secrets-management`, `security-ci-template`, `slo-implementation`, `sql-optimization-patterns`, `systems-cli-engineering`, `test-automation`, `testing-patterns`, `typescript-advanced-types`, `typescript-project-scaffolding`, `uv-package-manager`
+- **Use When:** Building web/mobile apps, systems programming, backend architecture, CI/CD, monitoring, Git workflows, testing, debugging, code quality, documentation.
 
-### 3. Infrastructure & Ops Suite (`infrastructure-suite`)
-**Purpose:** CI/CD automation, observability monitoring, and Git workflows.
-- **Agents:** `@devops-architect`, `@automation-engineer`, `@sre-expert`
-- **Commands:** `/commit`, `/fix-commit-errors`, `/merge-all`, `/monitor-setup`, `/onboard`, `/slo-implement`, `/workflow-automate`, `/code-analyze`, `/github-assist`
-- **Skills:** `airflow-scientific-workflows`, `deployment-pipeline-design`, `distributed-tracing`, `git-workflow`, `github-actions-templates`, `gitlab-ci-patterns`, `grafana-dashboards`, `iterative-error-resolution`, `prometheus-configuration`, `secrets-management`, `security-ci-template`, `slo-implementation`
-- **Use When:** Setting up CI/CD, monitoring/observability, Git workflow automation, cloud infrastructure.
-
-### 4. Quality & Maintenance Suite (`quality-suite`)
-**Purpose:** Code quality, test automation, and intelligent debugging.
-- **Agents:** `@quality-specialist`, `@debugger-pro`, `@documentation-expert`
-- **Commands:** `/run-all-tests`, `/test-generate`, `/double-check`, `/smart-debug`, `/refactor-clean`, `/tech-debt`, `/adopt-code`, `/code-explain`, `/deps`, `/docs`, `/fix-imports`
-- **Skills:** `ai-assisted-debugging`, `code-review`, `comprehensive-validation`, `comprehensive-validation-framework`, `debugging-strategies`, `documentation-standards`, `e2e-testing-patterns`, `observability-sre-practices`, `plugin-syntax-validator`, `test-automation`
-- **Use When:** Writing/fixing tests, debugging complex bugs, technical debt remediation, documentation generation.
-
-### 5. Scientific Computing Suite (`science-suite`)
+### 3. Scientific Computing Suite (`science-suite`)
 **Purpose:** HPC, specialized simulations, and data science workflows.
 - **Agents:** `@jax-pro`, `@julia-pro`, `@ml-expert`, `@neural-network-master`, `@prompt-engineer`, `@python-pro`, `@research-expert`, `@simulation-expert`, `@statistical-physicist`, `@ai-engineer`
 - **Commands:** *Specialized commands are planned for future releases. Use suite agents for guided execution.*
-- **Skills:** Extensive scientific skills including `jax-mastery`, `julia-mastery`, `deep-learning`, `statistical-physics`, `parallel-computing`, and 80 specialized domain skills.
+- **Skills:** Extensive scientific skills including `jax-mastery`, `julia-mastery`, `deep-learning`, `statistical-physics`, `parallel-computing`, `machine-learning`, and 78 specialized domain skills.
 - **Use When:** HPC, JAX/Julia projects, physics simulations, ML engineering, scientific research.
 
 ---
@@ -50,9 +36,9 @@ The MyClaude ecosystem is organized into five powerful suites, each consolidated
 
 ### Engineering Feature Development
 1. Use `@software-architect` to design the system.
-2. Run `/engineering-suite:eng-feature-dev` to implement the core logic.
-3. Use `/quality-suite:test-generate` to create tests.
-4. Run `/quality-suite:double-check` before submitting.
+2. Run `/dev-suite:eng-feature-dev` to implement the core logic.
+3. Use `/dev-suite:test-generate` to create tests.
+4. Run `/dev-suite:double-check` before submitting.
 
 ### Scientific Simulation
 1. Use `@simulation-expert` to design the simulation.
@@ -77,9 +63,7 @@ The MyClaude ecosystem is organized into five powerful suites, each consolidated
 ### Step 2: Install Suites
 ```bash
 /plugin install agent-core@marketplace
-/plugin install engineering-suite@marketplace
-/plugin install infrastructure-suite@marketplace
-/plugin install quality-suite@marketplace
+/plugin install dev-suite@marketplace
 /plugin install science-suite@marketplace
 ```
 

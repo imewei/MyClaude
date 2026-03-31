@@ -1,6 +1,5 @@
 ---
 name: active-matter
-version: "2.2.1"
 description: Model active matter including self-propelled particles, flocking, pattern formation, and collective behavior. Use when simulating ABPs, Vicsek model, MIPS, reaction-diffusion systems, or designing bio-inspired materials.
 ---
 

@@ -1,6 +1,5 @@
 ---
 name: llm-application-patterns
-version: "2.2.1"
 description: Design and build robust LLM-powered applications. Covers advanced prompt engineering (CoT, few-shot), RAG implementation, and LLM evaluation.
 ---
 

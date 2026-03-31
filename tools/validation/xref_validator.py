@@ -70,7 +70,7 @@ class CrossReferenceValidator:
         plugin_dirs = [d for d in self.plugins_dir.iterdir() if d.is_dir()]
 
         for plugin_dir in sorted(plugin_dirs):
-            plugin_json = plugin_dir / "plugin.json"
+            plugin_json = plugin_dir / ".claude-plugin" / "plugin.json"
             if not plugin_json.exists():
                 continue
 

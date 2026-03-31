@@ -1,6 +1,5 @@
 ---
-version: "2.2.1"
-color: blue
+name: ai-assistant
 category: "agent-core"
 command: "/ai-assistant"
 description: Build production-ready AI assistants with NLU, conversation management, and intelligent response generation

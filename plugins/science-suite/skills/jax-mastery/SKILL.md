@@ -1,6 +1,5 @@
 ---
 name: jax-mastery
-version: "2.2.1"
 description: Master JAX for high-performance scientific computing. Covers functional transformations (JIT, vmap, pmap, grad), neural networks (Flax NNX), and specialized optimization (NLSQ, NumPyro).
 ---
 

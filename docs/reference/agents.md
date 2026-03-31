@@ -1,6 +1,6 @@
 # Claude Code Plugin Marketplace - Complete Agent List
 
-**Total Agents:** 22 across 5 consolidated suites
+**Total Agents:** 22 across 3 focused suites
 **Format:** `suite:agent`
 **Version:** 2.2.1 | **Last Updated:** February 14, 2026
 
@@ -15,34 +15,22 @@ Consolidated suite for multi-agent coordination, deep reasoning, and specialized
 
 ---
 
-## 2. Software Engineering Suite (`engineering-suite`)
-Consolidated suite for full-stack engineering, systems programming, and platform-specific implementations.
+## 2. Dev Suite (`dev-suite`)
+Consolidated suite for full-stack engineering, infrastructure, CI/CD, quality assurance, and debugging.
 
-- **`software-architect`** - Expert in designing scalable backend systems, microservices, and high-performance APIs (REST/GraphQL/gRPC).
 - **`app-developer`** - Expert in building high-quality applications for Web, iOS, and Android (React, Next.js, Flutter).
+- **`automation-engineer`** - Expert in automating software delivery pipelines and optimizing Git collaboration workflows.
+- **`debugger-pro`** - Expert in AI-assisted debugging, log correlation, and complex root cause analysis across distributed systems.
+- **`devops-architect`** - Expert in multi-cloud architecture (AWS/Azure/GCP), Kubernetes orchestration, and Infrastructure as Code (Terraform).
+- **`documentation-expert`** - Expert in creating clear, comprehensive, and accurate technical documentation and tutorials.
+- **`quality-specialist`** - Expert in ensuring software quality through rigorous code reviews, security audits, and test automation.
+- **`software-architect`** - Expert in designing scalable backend systems, microservices, and high-performance APIs (REST/GraphQL/gRPC).
+- **`sre-expert`** - Expert in system reliability, observability (monitoring, logging, tracing), and incident response.
 - **`systems-engineer`** - Expert in low-level systems programming (C, C++, Rust, Go) and production-grade CLI tool design.
 
 ---
 
-## 3. Infrastructure & Ops Suite (`infrastructure-suite`)
-Consolidated suite for CI/CD automation, observability monitoring, and Git PR workflows.
-
-- **`devops-architect`** - Expert in multi-cloud architecture (AWS/Azure/GCP), Kubernetes orchestration, and Infrastructure as Code (Terraform).
-- **`automation-engineer`** - Expert in automating software delivery pipelines and optimizing Git collaboration workflows.
-- **`sre-expert`** - Expert in system reliability, observability (monitoring, logging, tracing), and incident response.
-
----
-
-## 4. Quality & Maintenance Suite (`quality-suite`)
-Consolidated suite for code quality, test automation, legacy modernization, and debugging.
-
-- **`quality-specialist`** - Expert in ensuring software quality through rigorous code reviews, security audits, and test automation.
-- **`debugger-pro`** - Expert in AI-assisted debugging, log correlation, and complex root cause analysis across distributed systems.
-- **`documentation-expert`** - Expert in creating clear, comprehensive, and accurate technical documentation and tutorials.
-
----
-
-## 5. Scientific Computing Suite (`science-suite`)
+## 3. Scientific Computing Suite (`science-suite`)
 Consolidated suite for high-performance computing, specialized physics/chemistry simulations, and data science workflows.
 
 - **`jax-pro`** - Expert in JAX-based scientific computing, functional transformations, and high-performance numerical kernels.

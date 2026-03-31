@@ -1,7 +1,7 @@
 Scientific Computing Suite
 ==========================
 
-Consolidated suite for high-performance computing, specialized physics/chemistry simulations, and data science workflows. Features 80 specialized skills with extended context and adaptive reasoning for Claude Opus 4.6.
+Consolidated suite for high-performance computing, specialized physics/chemistry simulations, and data science workflows. Features 78 specialized skills with extended context and adaptive reasoning for Claude Opus 4.6.
 
 Agents
 ------
@@ -43,7 +43,7 @@ Agents
 
 .. agent:: research-expert
    :description: Expert in systematic research, evidence synthesis, and publication-quality visualization.
-   :model: sonnet
+   :model: opus
    :version: 2.2.1
 
 .. agent:: simulation-expert
@@ -53,7 +53,7 @@ Agents
 
 .. agent:: statistical-physicist
    :description: Expert in correlation functions, non-equilibrium dynamics, and ensemble theory.
-   :model: sonnet
+   :model: opus
    :version: 2.2.1
 
 Skills
@@ -189,10 +189,6 @@ Skills
    :description: Comprehensive Classical Machine Learning suite. Covers scikit-learn, XGBoost, LightGBM, and MLOps pipelines. Focuses on tabular data, feature engineering, and production deployment.
    :version: 2.2.1
 
-.. skill:: machine-learning-essentials
-   :description: Core ML workflows with scikit-learn, XGBoost, LightGBM including algorithm selection, cross-validation, hyperparameter tuning (GridSearch, Optuna), handling imbalanced data (SMOTE), model evaluation, SHAP interpretability, and deployment. Use when building classification/regression models or evaluating ML performance.
-   :version: 2.2.1
-
 .. skill:: mcmc-diagnostics
    :description: Master MCMC convergence diagnostics with R-hat, ESS, trace plots, and divergence checking. Use when validating Bayesian inference results from Turing.jl.
    :version: 2.2.1
@@ -275,10 +271,6 @@ Skills
 
 .. skill:: parallel-computing
    :description: Implement high-performance parallel computing across CPUs and GPUs using Python (CUDA/CuPy) and Julia (CUDA.jl/Distributed.jl). Master multi-threading, distributed systems, and kernel optimization.
-   :version: 2.2.1
-
-.. skill:: parallel-computing-strategy
-   :description: Design parallel strategies with MPI (distributed memory), OpenMP (shared memory), hybrid MPI+OpenMP, SLURM scheduling, Dask/Dagger.jl workflows, and load balancing. Use when implementing multi-node parallelization, writing job scripts, or optimizing HPC workflows.
    :version: 2.2.1
 
 .. skill:: performance-tuning

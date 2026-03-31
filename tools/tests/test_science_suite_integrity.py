@@ -6,7 +6,7 @@ from pathlib import Path
 
 # Paths adjustment: .../tools/tests -> .../tools -> .../ (root) -> .../plugins/science-suite
 PLUGIN_ROOT = Path(__file__).parent.parent.parent / "plugins" / "science-suite"
-PLUGIN_JSON = PLUGIN_ROOT / "plugin.json"
+PLUGIN_JSON = PLUGIN_ROOT / ".claude-plugin" / "plugin.json"
 AGENTS_DIR = PLUGIN_ROOT / "agents"
 SKILLS_DIR = PLUGIN_ROOT / "skills"
 

@@ -4,4 +4,4 @@ Engineering Suite
 .. toctree::
    :maxdepth: 2
 
-   /suites/engineering-suite
+   /suites/dev-suite

@@ -134,7 +134,7 @@ class PerformanceAggregator:
             return report
 
         for plugin_dir in sorted(self.plugins_root.iterdir()):
-            if plugin_dir.is_dir() and (plugin_dir / "plugin.json").exists():
+            if plugin_dir.is_dir() and (plugin_dir / ".claude-plugin" / "plugin.json").exists():
                 metrics = self.collect_plugin_metrics(plugin_dir.name)
                 report.metrics.append(metrics)
 

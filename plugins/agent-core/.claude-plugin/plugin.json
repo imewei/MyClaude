@@ -1,0 +1,53 @@
+{
+  "name": "agent-core",
+  "version": "3.0.0",
+  "description": "Core agent orchestration, multi-agent teams, adaptive reasoning, and workflow coordination for Claude Opus 4.6",
+  "author": {
+    "name": "Wei Chen",
+    "url": "https://myclaude.readthedocs.io/en/latest/"
+  },
+  "homepage": "https://github.com/imewei/MyClaude",
+  "repository": "https://github.com/imewei/MyClaude",
+  "license": "MIT",
+  "category": "core",
+  "keywords": [
+    "agent",
+    "orchestration",
+    "reasoning",
+    "llm",
+    "workflow",
+    "ai",
+    "mcp",
+    "sequential-thinking",
+    "context7",
+    "chain-of-thought",
+    "agent-teams",
+    "adaptive-thinking",
+    "opus-4.6",
+    "memory-system"
+  ],
+  "hooks": "./hooks/hooks.json",
+  "outputStyles": "./output-styles",
+  "agents": [
+    "./agents/orchestrator.md",
+    "./agents/context-specialist.md",
+    "./agents/reasoning-engine.md"
+  ],
+  "commands": [
+    "./commands/agent-build.md",
+    "./commands/ai-assistant.md",
+    "./commands/docs-lookup.md",
+    "./commands/reflection.md",
+    "./commands/ultra-think.md",
+    "./commands/team-assemble.md"
+  ],
+  "skills": [
+    "./skills/agent-orchestration",
+    "./skills/agent-performance-optimization",
+    "./skills/llm-application-patterns",
+    "./skills/mcp-integration",
+    "./skills/multi-agent-coordination",
+    "./skills/reasoning-frameworks",
+    "./skills/reflection-framework"
+  ]
+}

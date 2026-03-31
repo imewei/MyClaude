@@ -1,6 +1,6 @@
 # Agent Teams Guide for MyClaude Plugin Suites
 
-> 38 ready-to-use team configurations leveraging 22 MyClaude agents + 20 official plugin agents across 5 suites.
+> 38 ready-to-use team configurations leveraging 22 MyClaude agents + 20 official plugin agents across 3 suites.
 
 ## Prerequisites
 
@@ -22,15 +22,15 @@ Enable agent teams (experimental) in your settings:
 | **agent-core** | orchestrator | `agent-core:orchestrator` | Workflow coordination, team assembly |
 | | reasoning-engine | `agent-core:reasoning-engine` | Chain-of-Thought, prompt design |
 | | context-specialist | `agent-core:context-specialist` | Memory, context management |
-| **engineering** | software-architect | `engineering-suite:software-architect` | Backend, API, microservices |
-| | app-developer | `engineering-suite:app-developer` | Frontend, mobile, React/Next.js |
-| | systems-engineer | `engineering-suite:systems-engineer` | C/C++/Rust, CLI tools, low-level |
-| **infra** | devops-architect | `infrastructure-suite:devops-architect` | Cloud, K8s, Terraform |
-| | sre-expert | `infrastructure-suite:sre-expert` | Observability, SLOs, incidents |
-| | automation-engineer | `infrastructure-suite:automation-engineer` | CI/CD, GitHub Actions, Git |
-| **quality** | debugger-pro | `quality-suite:debugger-pro` | Root cause analysis, log correlation |
-| | documentation-expert | `quality-suite:documentation-expert` | Tech writing, API docs |
-| | quality-specialist | `quality-suite:quality-specialist` | Code review, security audit, testing |
+| **dev** | software-architect | `dev-suite:software-architect` | Backend, API, microservices |
+| | app-developer | `dev-suite:app-developer` | Frontend, mobile, React/Next.js |
+| | systems-engineer | `dev-suite:systems-engineer` | C/C++/Rust, CLI tools, low-level |
+| | devops-architect | `dev-suite:devops-architect` | Cloud, K8s, Terraform |
+| | sre-expert | `dev-suite:sre-expert` | Observability, SLOs, incidents |
+| | automation-engineer | `dev-suite:automation-engineer` | CI/CD, GitHub Actions, Git |
+| | debugger-pro | `dev-suite:debugger-pro` | Root cause analysis, log correlation |
+| | documentation-expert | `dev-suite:documentation-expert` | Tech writing, API docs |
+| | quality-specialist | `dev-suite:quality-specialist` | Code review, security audit, testing |
 | **science** | jax-pro | `science-suite:jax-pro` | JAX, NumPyro, Bayesian inference |
 | | neural-network-master | `science-suite:neural-network-master` | Deep learning, Transformers, Flax |
 | | ml-expert | `science-suite:ml-expert` | Scikit-learn, MLOps, XGBoost |
@@ -140,15 +140,15 @@ These agents come from [claude-plugins-official](https://github.com/anthropics/c
 ## Team 1: Full-Stack Feature Development
 
 **When:** Building a new feature spanning frontend, backend, and tests.
-**Suites:** engineering-suite, quality-suite
+**Suites:** dev-suite
 **See also:** Team 27 adds a design-first pipeline with review gates using official plugins.
 
 | Role | Agent Type | File Ownership |
 |------|-----------|----------------|
 | Lead | `agent-core:orchestrator` | Coordination only |
-| backend | `engineering-suite:software-architect` | `src/api/`, `src/models/`, `src/services/` |
-| frontend | `engineering-suite:app-developer` | `src/components/`, `src/pages/`, `src/hooks/` |
-| qa | `quality-suite:quality-specialist` | `tests/`, `*.test.*` |
+| backend | `dev-suite:software-architect` | `src/api/`, `src/models/`, `src/services/` |
+| frontend | `dev-suite:app-developer` | `src/components/`, `src/pages/`, `src/hooks/` |
+| qa | `dev-suite:quality-specialist` | `tests/`, `*.test.*` |
 
 ### Prompt
 
@@ -183,14 +183,14 @@ Quality gates: QA must review all code before marking tasks complete.
 ## Team 2: Production Incident Response
 
 **When:** Debugging a production issue with unknown root cause.
-**Suites:** quality-suite, infrastructure-suite
+**Suites:** dev-suite
 
 | Role | Agent Type | Focus Area |
 |------|-----------|------------|
 | Lead | `agent-core:orchestrator` | Triage, synthesis |
-| debugger | `quality-suite:debugger-pro` | Code-level root cause analysis |
-| sre | `infrastructure-suite:sre-expert` | Metrics, logs, traces |
-| infra | `infrastructure-suite:devops-architect` | Infrastructure investigation |
+| debugger | `dev-suite:debugger-pro` | Code-level root cause analysis |
+| sre | `dev-suite:sre-expert` | Metrics, logs, traces |
+| infra | `dev-suite:devops-architect` | Infrastructure investigation |
 
 ### Prompt
 
@@ -224,15 +224,15 @@ evidence, recommended fix, and prevention measures.
 ## Team 3: Code Quality & Security Audit
 
 **When:** Comprehensive codebase review before a release or compliance audit.
-**Suites:** quality-suite, engineering-suite
+**Suites:** dev-suite
 
 | Role | Agent Type | Review Lens |
 |------|-----------|-------------|
 | Lead | `agent-core:orchestrator` | Synthesis, prioritization |
-| security | `quality-suite:quality-specialist` | OWASP, vulnerabilities, auth |
-| architecture | `engineering-suite:software-architect` | Design patterns, SOLID, complexity |
-| testing | `quality-suite:debugger-pro` | Test coverage gaps, edge cases |
-| docs | `quality-suite:documentation-expert` | API docs, runbooks, README |
+| security | `dev-suite:quality-specialist` | OWASP, vulnerabilities, auth |
+| architecture | `dev-suite:software-architect` | Design patterns, SOLID, complexity |
+| testing | `dev-suite:debugger-pro` | Test coverage gaps, edge cases |
+| docs | `dev-suite:documentation-expert` | API docs, runbooks, README |
 
 ### Prompt
 
@@ -316,14 +316,14 @@ interpax for interpolation, mandatory ArviZ diagnostics for Bayesian work.
 ## Team 5: Infrastructure & DevOps Setup
 
 **When:** Setting up cloud infrastructure, CI/CD, and observability from scratch.
-**Suites:** infrastructure-suite
+**Suites:** dev-suite
 
 | Role | Agent Type | Domain |
 |------|-----------|--------|
 | Lead | `agent-core:orchestrator` | Architecture decisions |
-| cloud | `infrastructure-suite:devops-architect` | IaC, cloud resources |
-| cicd | `infrastructure-suite:automation-engineer` | Pipelines, Git workflows |
-| monitoring | `infrastructure-suite:sre-expert` | Observability stack |
+| cloud | `dev-suite:devops-architect` | IaC, cloud resources |
+| cicd | `dev-suite:automation-engineer` | Pipelines, Git workflows |
+| monitoring | `dev-suite:sre-expert` | Observability stack |
 
 ### Prompt
 
@@ -361,15 +361,15 @@ the services.
 ## Team 6: Legacy Modernization
 
 **When:** Migrating a legacy codebase to modern architecture.
-**Suites:** engineering-suite, quality-suite
+**Suites:** dev-suite
 
 | Role | Agent Type | Focus |
 |------|-----------|-------|
 | Lead | `agent-core:orchestrator` | Migration strategy |
-| architect | `engineering-suite:software-architect` | Target architecture |
-| implementer | `engineering-suite:app-developer` | Migration code |
-| qa | `quality-suite:quality-specialist` | Regression testing |
-| docs | `quality-suite:documentation-expert` | Migration documentation |
+| architect | `dev-suite:software-architect` | Target architecture |
+| implementer | `dev-suite:app-developer` | Migration code |
+| qa | `dev-suite:quality-specialist` | Regression testing |
+| docs | `dev-suite:documentation-expert` | Migration documentation |
 
 ### Prompt
 
@@ -457,15 +457,15 @@ Use mandatory ArviZ diagnostics for any Bayesian components.
 ## Team 8: API Design & Integration
 
 **When:** Designing, building, and documenting a public or internal API.
-**Suites:** engineering-suite, quality-suite
+**Suites:** dev-suite
 
 | Role | Agent Type | Domain |
 |------|-----------|--------|
 | Lead | `agent-core:orchestrator` | API strategy |
-| designer | `engineering-suite:software-architect` | API specification |
-| implementer | `engineering-suite:app-developer` | Client SDKs |
-| tester | `quality-suite:quality-specialist` | Contract testing |
-| docs | `quality-suite:documentation-expert` | API documentation |
+| designer | `dev-suite:software-architect` | API specification |
+| implementer | `dev-suite:app-developer` | Client SDKs |
+| tester | `dev-suite:quality-specialist` | Contract testing |
+| docs | `dev-suite:documentation-expert` | API documentation |
 
 ### Prompt
 
@@ -504,15 +504,15 @@ parallel -> docs-writer documents the final API.
 ## Team 9: PR Review Swarm
 
 **When:** Thorough multi-perspective review of a critical pull request.
-**Suites:** quality-suite, engineering-suite
+**Suites:** dev-suite
 **See also:** Team 26 uses pr-review-toolkit specialized analyzers for toolkit-driven review.
 
 | Role | Agent Type | Review Lens |
 |------|-----------|-------------|
 | Lead | `agent-core:orchestrator` | Review synthesis |
-| security | `quality-suite:quality-specialist` | Vulnerabilities, auth |
-| performance | `engineering-suite:systems-engineer` | Perf, memory, complexity |
-| correctness | `quality-suite:debugger-pro` | Bugs, edge cases, logic |
+| security | `dev-suite:quality-specialist` | Vulnerabilities, auth |
+| performance | `dev-suite:systems-engineer` | Perf, memory, complexity |
+| correctness | `dev-suite:debugger-pro` | Bugs, edge cases, logic |
 
 ### Prompt
 
@@ -552,7 +552,7 @@ Synthesize into a unified review with prioritized action items.
 ## Team 10: LLM Application Development
 
 **When:** Building production LLM-powered applications (RAG, agents, chatbots).
-**Suites:** science-suite, engineering-suite
+**Suites:** science-suite, dev-suite
 **See also:** Team 21 for multi-agent systems, Team 28 for Agent SDK apps.
 
 | Role | Agent Type | Domain |
@@ -560,7 +560,7 @@ Synthesize into a unified review with prioritized action items.
 | Lead | `agent-core:orchestrator` | Architecture decisions |
 | ai-eng | `science-suite:ai-engineer` | RAG, vector search, agents |
 | prompt-eng | `science-suite:prompt-engineer` | Prompt design, evaluation |
-| backend | `engineering-suite:software-architect` | API, infrastructure |
+| backend | `dev-suite:software-architect` | API, infrastructure |
 
 ### Prompt
 
@@ -900,14 +900,14 @@ deviations from the paper.
 ## Team 17: Performance Optimization Swarm
 
 **When:** Profiling and optimizing computational code (Python, JAX, or systems-level).
-**Suites:** engineering-suite, science-suite, quality-suite
+**Suites:** dev-suite, science-suite
 
 | Role | Agent Type | Focus |
 |------|-----------|-------|
 | Lead | `agent-core:orchestrator` | Optimization strategy |
-| systems | `engineering-suite:systems-engineer` | Systems profiling, memory |
+| systems | `dev-suite:systems-engineer` | Systems profiling, memory |
 | jax | `science-suite:jax-pro` | JIT, vectorization, GPU |
-| debugger | `quality-suite:debugger-pro` | Bottleneck identification |
+| debugger | `dev-suite:debugger-pro` | Bottleneck identification |
 | python | `science-suite:python-pro` | Python optimization |
 
 ### Prompt
@@ -951,14 +951,14 @@ Target: [SPEEDUP_TARGET] (e.g., 10x throughput improvement).
 ## Team 18: HPC & Cross-Language Interop
 
 **When:** Building high-performance pipelines spanning Julia, Python, and compiled languages.
-**Suites:** science-suite, engineering-suite
+**Suites:** science-suite, dev-suite
 
 | Role | Agent Type | Domain |
 |------|-----------|--------|
 | Lead | `agent-core:orchestrator` | Architecture coordination |
 | julia | `science-suite:julia-pro` | Julia performance, packages |
 | python | `science-suite:python-pro` | Python integration |
-| systems | `engineering-suite:systems-engineer` | C/Rust FFI, memory |
+| systems | `dev-suite:systems-engineer` | C/Rust FFI, memory |
 | jax | `science-suite:jax-pro` | GPU compute, JAX kernels |
 
 ### Prompt
@@ -1001,15 +1001,15 @@ Benchmark each language boundary to quantify overhead.
 ## Team 19: Reproducible Research
 
 **When:** Setting up fully reproducible computational research with CI/CD, packaging, and documentation.
-**Suites:** science-suite, infrastructure-suite, quality-suite
+**Suites:** science-suite, dev-suite
 
 | Role | Agent Type | Domain |
 |------|-----------|--------|
 | Lead | `agent-core:orchestrator` | Workflow design |
 | research | `science-suite:research-expert` | Methodology, documentation |
 | python | `science-suite:python-pro` | Package structure, environments |
-| cicd | `infrastructure-suite:automation-engineer` | CI/CD, automation |
-| docs | `quality-suite:documentation-expert` | Documentation, notebooks |
+| cicd | `dev-suite:automation-engineer` | CI/CD, automation |
+| docs | `dev-suite:documentation-expert` | Documentation, notebooks |
 
 ### Prompt
 
@@ -1103,14 +1103,14 @@ regression testing against the existing prompt suite.
 ## Team 21: AI Agent Development
 
 **When:** Building multi-agent AI systems, tool-using agents, or autonomous workflows.
-**Suites:** science-suite, engineering-suite, agent-core
+**Suites:** science-suite, dev-suite, agent-core
 
 | Role | Agent Type | Domain |
 |------|-----------|--------|
 | Lead | `agent-core:orchestrator` | Architecture coordination |
 | ai | `science-suite:ai-engineer` | Agent framework, tools |
 | prompt | `science-suite:prompt-engineer` | System prompts, behavior |
-| architect | `engineering-suite:software-architect` | Backend, API design |
+| architect | `dev-suite:software-architect` | Backend, API design |
 | reasoning | `agent-core:reasoning-engine` | Cognitive architecture |
 
 ### Prompt
@@ -1153,15 +1153,15 @@ tools fail, and comprehensive logging of agent decision traces.
 ## Team 22: Data Pipeline & Feature Engineering
 
 **When:** Building ETL pipelines, feature stores, or MLOps data infrastructure.
-**Suites:** science-suite, infrastructure-suite, quality-suite
+**Suites:** science-suite, dev-suite
 
 | Role | Agent Type | Domain |
 |------|-----------|--------|
 | Lead | `agent-core:orchestrator` | Pipeline architecture |
 | python | `science-suite:python-pro` | Data engineering |
 | ml | `science-suite:ml-expert` | Feature engineering, MLOps |
-| devops | `infrastructure-suite:devops-architect` | Infrastructure, storage |
-| quality | `quality-suite:quality-specialist` | Data quality, testing |
+| devops | `dev-suite:devops-architect` | Infrastructure, storage |
+| quality | `dev-suite:quality-specialist` | Data quality, testing |
 
 ### Prompt
 
@@ -1202,15 +1202,15 @@ with synthetic data.
 ## Team 23: Security Hardening
 
 **When:** Comprehensive security review and hardening of infrastructure and application code.
-**Suites:** quality-suite, infrastructure-suite, engineering-suite
+**Suites:** dev-suite
 
 | Role | Agent Type | Focus |
 |------|-----------|-------|
 | Lead | `agent-core:orchestrator` | Security strategy |
-| security | `quality-suite:quality-specialist` | AppSec, OWASP |
-| infra | `infrastructure-suite:devops-architect` | Infrastructure security |
-| systems | `engineering-suite:systems-engineer` | Binary security, memory |
-| cicd | `infrastructure-suite:automation-engineer` | Security automation |
+| security | `dev-suite:quality-specialist` | AppSec, OWASP |
+| infra | `dev-suite:devops-architect` | Infrastructure security |
+| systems | `dev-suite:systems-engineer` | Binary security, memory |
+| cicd | `dev-suite:automation-engineer` | Security automation |
 
 ### Prompt
 
@@ -1252,15 +1252,15 @@ steps, and verification procedures.
 ## Team 24: Documentation Sprint
 
 **When:** Comprehensive documentation overhaul for a project or API.
-**Suites:** quality-suite, science-suite, engineering-suite
+**Suites:** dev-suite, science-suite
 
 | Role | Agent Type | Domain |
 |------|-----------|--------|
 | Lead | `agent-core:orchestrator` | Documentation strategy |
-| docs | `quality-suite:documentation-expert` | Structure, standards |
+| docs | `dev-suite:documentation-expert` | Structure, standards |
 | research | `science-suite:research-expert` | Technical accuracy |
-| frontend | `engineering-suite:app-developer` | Interactive examples |
-| architect | `engineering-suite:software-architect` | Architecture docs |
+| frontend | `dev-suite:app-developer` | Interactive examples |
+| architect | `dev-suite:software-architect` | Architecture docs |
 
 ### Prompt
 
@@ -1302,15 +1302,15 @@ at least one usage example.
 ## Team 25: Monorepo Refactoring
 
 **When:** Restructuring a monorepo, improving build systems, or splitting/merging repositories.
-**Suites:** engineering-suite, infrastructure-suite, quality-suite
+**Suites:** dev-suite
 
 | Role | Agent Type | Focus |
 |------|-----------|-------|
 | Lead | `agent-core:orchestrator` | Refactoring strategy |
-| architect | `engineering-suite:software-architect` | Module boundaries |
-| cicd | `infrastructure-suite:automation-engineer` | Build system, CI |
-| quality | `quality-suite:quality-specialist` | Testing, code quality |
-| systems | `engineering-suite:systems-engineer` | Build performance |
+| architect | `dev-suite:software-architect` | Module boundaries |
+| cicd | `dev-suite:automation-engineer` | Build system, CI |
+| quality | `dev-suite:quality-specialist` | Testing, code quality |
+| systems | `dev-suite:systems-engineer` | Build performance |
 
 ### Prompt
 
@@ -1402,14 +1402,14 @@ by severity. No file ownership conflicts since all agents are read-only.
 ## Team 27: Feature Ship Pipeline
 
 **When:** End-to-end feature development with architecture design, implementation, and automated review gates.
-**Plugins:** feature-dev, pr-review-toolkit, engineering-suite
+**Plugins:** feature-dev, pr-review-toolkit, dev-suite
 
 | Role | Agent Type | File Ownership |
 |------|-----------|----------------|
 | Lead | `agent-core:orchestrator` | Coordination only |
 | architect | `feature-dev:code-architect` | docs/design/, architecture decisions |
-| builder | `engineering-suite:app-developer` | src/, components, pages |
-| backend | `engineering-suite:software-architect` | api/, services/, models/ |
+| builder | `dev-suite:app-developer` | src/, components, pages |
+| backend | `dev-suite:software-architect` | api/, services/, models/ |
 | reviewer | `pr-review-toolkit:code-reviewer` | Read-only review |
 
 ### Prompt
@@ -1426,12 +1426,12 @@ Spawn 4 specialist teammates:
    data flows, and build sequence. Present the blueprint for approval
    before any code is written. Owns docs/design/.
 
-2. "builder" (engineering-suite:app-developer) - Implement the frontend
+2. "builder" (dev-suite:app-developer) - Implement the frontend
    components following the architect's blueprint. Build with
    [FRONTEND_STACK]. Focus on performance, accessibility, and
    offline-first patterns. Owns src/components/, src/pages/, src/hooks/.
 
-3. "backend" (engineering-suite:software-architect) - Implement the
+3. "backend" (dev-suite:software-architect) - Implement the
    backend services following the architect's blueprint. Build with
    [BACKEND_STACK]. Design scalable APIs with proper error handling
    and validation. Owns src/api/, src/services/, src/models/.
@@ -1449,14 +1449,14 @@ Workflow: architect → (builder + backend in parallel) → reviewer.
 ## Team 28: Agent SDK Build
 
 **When:** Building AI agent applications using the Claude Agent SDK (TypeScript or Python).
-**Plugins:** agent-sdk-dev, science-suite, engineering-suite
+**Plugins:** agent-sdk-dev, science-suite, dev-suite
 
 | Role | Agent Type | File Ownership |
 |------|-----------|----------------|
 | Lead | `agent-core:orchestrator` | Coordination only |
 | ai-engineer | `science-suite:ai-engineer` | src/agents/, src/tools/ |
 | prompt-designer | `science-suite:prompt-engineer` | prompts/, system instructions |
-| api-architect | `engineering-suite:software-architect` | src/api/, infrastructure |
+| api-architect | `dev-suite:software-architect` | src/api/, infrastructure |
 | verifier | `agent-sdk-dev:agent-sdk-verifier-[LANG]` | Read-only validation |
 
 ### Prompt
@@ -1480,7 +1480,7 @@ Spawn 4 specialist teammates:
    and few-shot examples. Optimize for accuracy and safety. Create
    evaluation test cases. Owns prompts/, system instructions.
 
-3. "api-architect" (engineering-suite:software-architect) - Build the
+3. "api-architect" (dev-suite:software-architect) - Build the
    API layer and infrastructure: REST/WebSocket endpoints, streaming
    support, authentication, rate limiting, and deployment config.
    Owns src/api/, infrastructure/.
@@ -1498,7 +1498,7 @@ Workflow: ai-engineer + prompt-designer + api-architect (parallel) → verifier.
 ## Team 29: Plugin Forge
 
 **When:** Building Claude Code extensions — plugins, hooks, agents, commands, skills, and SDK integrations.
-**Plugins:** plugin-dev, hookify, quality-suite, superpowers
+**Plugins:** plugin-dev, hookify, dev-suite, superpowers
 **See also:** For Agent SDK apps (not plugins), use Team 28 (agent-sdk-build).
 
 | Role | Agent Type | File Ownership |
@@ -1506,7 +1506,7 @@ Workflow: ai-engineer + prompt-designer + api-architect (parallel) → verifier.
 | Lead | `agent-core:orchestrator` | Coordination only |
 | creator | `plugin-dev:agent-creator` | agents/, commands/, skills/, plugin.json |
 | hook-designer | `hookify:conversation-analyzer` | hooks/ |
-| quality | `quality-suite:quality-specialist` | tests/, .github/workflows/ |
+| quality | `dev-suite:quality-specialist` | tests/, .github/workflows/ |
 | validator | `plugin-dev:plugin-validator` | Read-only validation |
 
 ### Prompt
@@ -1518,11 +1518,11 @@ extension: [PLUGIN_NAME] — [PLUGIN_DESCRIPTION].
 Spawn 4 specialist teammates:
 
 1. "creator" (plugin-dev:agent-creator) - Generate the plugin structure:
-   plugin.json manifest, agent definitions (.md files with proper
-   frontmatter: name, version, color, description, model, memory),
+   .claude-plugin/plugin.json manifest, agent definitions (.md files with
+   frontmatter: name, description, model, effort, memory, tools),
    command definitions with argument hints and allowed-tools, and skill
    files. Follow MyClaude plugin conventions for file paths and
-   metadata. Owns agents/, commands/, skills/, plugin.json.
+   metadata. Owns agents/, commands/, skills/, .claude-plugin/plugin.json.
 
 2. "hook-designer" (hookify:conversation-analyzer) - Analyze conversation
    patterns to identify behaviors that should be prevented or enhanced
@@ -1530,7 +1530,7 @@ Spawn 4 specialist teammates:
    the extension's reliability. Create hook rules with clear trigger
    conditions. Owns hooks/.
 
-3. "quality" (quality-suite:quality-specialist) - Write comprehensive
+3. "quality" (dev-suite:quality-specialist) - Write comprehensive
    tests for the plugin: manifest validation, agent prompt testing,
    command argument parsing. Set up GitHub Actions for automated
    validation: lint checks, metadata validation, context budget
@@ -1553,13 +1553,13 @@ SDK best practices validation.
 ## Team 30: Codebase Archaeology
 
 **When:** Understanding unfamiliar codebases — onboarding, pre-refactor analysis, or architecture documentation.
-**Plugins:** feature-dev, quality-suite, science-suite
+**Plugins:** feature-dev, dev-suite, science-suite
 
 | Role | Agent Type | Focus Area |
 |------|-----------|------------|
 | Lead | `agent-core:orchestrator` | Coordination only |
 | explorer | `feature-dev:code-explorer` | Execution paths, patterns |
-| documenter | `quality-suite:documentation-expert` | Architecture docs |
+| documenter | `dev-suite:documentation-expert` | Architecture docs |
 | researcher | `science-suite:research-expert` | Methodology, synthesis |
 
 ### Prompt
@@ -1577,7 +1577,7 @@ Spawn 3 specialist teammates:
    layers, identify patterns and abstractions, document dependencies
    between modules. Produce a component map with data flow diagrams.
 
-2. "documenter" (quality-suite:documentation-expert) - Transform the
+2. "documenter" (dev-suite:documentation-expert) - Transform the
    explorer's findings into clear, comprehensive architecture
    documentation. Create: system overview, component catalog, API
    reference, dependency map, and onboarding guide. Write for a
@@ -1597,7 +1597,7 @@ Output: docs/architecture/ with overview, components, and recommendations.
 ## Team 31: Code Health Sprint
 
 **When:** Systematic code quality improvement — reducing complexity, improving types, cleaning up dead code, or strengthening type safety.
-**Plugins:** pr-review-toolkit, code-simplifier, quality-suite, science-suite
+**Plugins:** pr-review-toolkit, code-simplifier, dev-suite, science-suite
 **See also:** For type-safety-only focus, omit the simplifier and use the type-engineer + type-reviewer + tester trio.
 
 | Role | Agent Type | Focus Area |
@@ -1606,7 +1606,7 @@ Output: docs/architecture/ with overview, components, and recommendations.
 | simplifier | `code-simplifier:code-simplifier` | Clarity, maintainability |
 | type-engineer | `science-suite:python-pro` | Type annotations, strict typing |
 | type-reviewer | `pr-review-toolkit:type-design-analyzer` | Type quality analysis |
-| enforcer | `quality-suite:quality-specialist` | Standards, testing |
+| enforcer | `dev-suite:quality-specialist` | Standards, testing |
 
 ### Prompt
 
@@ -1635,7 +1635,7 @@ Spawn 4 specialist teammates:
    types that leak implementation details or fail to express their
    invariants. Read-only.
 
-4. "enforcer" (quality-suite:quality-specialist) - After simplifier and
+4. "enforcer" (dev-suite:quality-specialist) - After simplifier and
    type-engineer complete, run the full test suite and verify no
    regressions. Review all changes for security implications. Add tests
    for any uncovered edge cases discovered during the sprint.
@@ -1698,12 +1698,12 @@ Workflow: coder → ml-engineer → (publisher + evaluator in parallel).
 ## Team 33: Frontend Excellence
 
 **When:** Frontend development with multiple quality gates — code review, AI review, and standards enforcement.
-**Plugins:** engineering-suite, pr-review-toolkit, coderabbit
+**Plugins:** dev-suite, pr-review-toolkit, coderabbit
 
 | Role | Agent Type | File Ownership |
 |------|-----------|----------------|
 | Lead | `agent-core:orchestrator` | Coordination only |
-| builder | `engineering-suite:app-developer` | src/components/, src/pages/ |
+| builder | `dev-suite:app-developer` | src/components/, src/pages/ |
 | pr-reviewer | `pr-review-toolkit:code-reviewer` | Read-only review |
 | ai-reviewer | `coderabbit:code-reviewer` | Read-only review |
 
@@ -1715,7 +1715,7 @@ review [FEATURE_NAME] using [FRONTEND_STACK].
 
 Spawn 3 specialist teammates:
 
-1. "builder" (engineering-suite:app-developer) - Implement the frontend
+1. "builder" (dev-suite:app-developer) - Implement the frontend
    feature with focus on performance, accessibility (WCAG 2.1 AA),
    responsive design, and offline-first patterns. Write component
    tests and integration tests. Use [FRONTEND_STACK] patterns and
@@ -1740,16 +1740,16 @@ Output: implemented feature + two independent review reports.
 ## Team 34: Debug GUI
 
 **When:** GUI threading bugs — signal safety, shiboken crashes, singleton races, Qt event loop issues.
-**Suites:** quality-suite, feature-dev, infrastructure-suite, science-suite
+**Suites:** dev-suite, feature-dev, science-suite
 **Pattern:** Debugging Core Trio + SRE Expert
 **See also:** Team 37 for quick triage before committing to a full team.
 
 | Role | Agent Type | Focus |
 |------|-----------|-------|
 | explorer | `feature-dev:code-explorer` | Architecture mapping (runs FIRST) |
-| debugger | `quality-suite:debugger-pro` | Root cause synthesis (ANCHOR) |
+| debugger | `dev-suite:debugger-pro` | Root cause synthesis (ANCHOR) |
 | python-pro | `science-suite:python-pro` | Type/contract verification |
-| sre | `infrastructure-suite:sre-expert` | Threading, resource leaks, deadlocks |
+| sre | `dev-suite:sre-expert` | Threading, resource leaks, deadlocks |
 
 ### Prompt
 
@@ -1765,7 +1765,7 @@ Spawn 4 specialist teammates using the proven Debugging Core Trio + SRE pattern:
    path through [AFFECTED_MODULES]. Produce a component map before other agents
    begin targeted investigation.
 
-2. "debugger" (quality-suite:debugger-pro) - ANCHOR agent. After explorer maps
+2. "debugger" (dev-suite:debugger-pro) - ANCHOR agent. After explorer maps
    the architecture, perform root cause analysis: correlate logs, analyze stack
    traces, reproduce the issue. Synthesize all findings from other agents into a
    prioritized fix list (P0/P1/P2). Focus on signal safety, shiboken lifecycle,
@@ -1776,7 +1776,7 @@ Spawn 4 specialist teammates using the proven Debugging Core Trio + SRE pattern:
    units, cancel() vs cancel_token.cancel()). Verify Protocol compliance,
    thread-safety of shared state, and API contract consistency between layers.
 
-4. "sre" (infrastructure-suite:sre-expert) - Threading and reliability specialist.
+4. "sre" (dev-suite:sre-expert) - Threading and reliability specialist.
    Investigate Qt event loop interactions, GIL contention with background workers,
    QThread lifecycle management, and cross-thread signal/slot safety. Check for
    resource leaks, deadlocks, and race conditions in the threading model.
@@ -1790,13 +1790,13 @@ Parallelism cap: 3-4 agents max. More causes duplicate findings.
 ## Team 35: Debug Numerical
 
 **When:** JAX/numerical bugs — NaN gradients, ODE solver divergence, JIT tracing errors, shape mismatches.
-**Suites:** quality-suite, feature-dev, science-suite
+**Suites:** dev-suite, feature-dev, science-suite
 **Pattern:** Debugging Core Trio + JAX Pro
 
 | Role | Agent Type | Focus |
 |------|-----------|-------|
 | explorer | `feature-dev:code-explorer` | Pipeline architecture mapping (runs FIRST) |
-| debugger | `quality-suite:debugger-pro` | Root cause synthesis (ANCHOR) |
+| debugger | `dev-suite:debugger-pro` | Root cause synthesis (ANCHOR) |
 | python-pro | `science-suite:python-pro` | Type/shape/dtype verification |
 | jax-pro | `science-suite:jax-pro` | JIT, XLA, gradient flow, vmap/pmap |
 
@@ -1814,7 +1814,7 @@ Spawn 4 specialist teammates using the proven Debugging Core Trio + JAX Pro patt
    transfer points in [AFFECTED_MODULES]. Document the numerical pipeline
    architecture before other agents begin investigation.
 
-2. "debugger" (quality-suite:debugger-pro) - ANCHOR agent. After explorer maps
+2. "debugger" (dev-suite:debugger-pro) - ANCHOR agent. After explorer maps
    the pipeline, perform root cause analysis: correlate NaN propagation paths,
    analyze gradient flow, and trace convergence failures. Synthesize all findings
    from other agents into a prioritized fix list (P0/P1/P2).
@@ -1839,14 +1839,14 @@ Parallelism cap: 3-4 agents max. More causes duplicate findings.
 ## Team 36: Debug Schema
 
 **When:** Schema/type drift — incompatible data classes across layers, field name mismatches, serialization errors.
-**Suites:** quality-suite, feature-dev, science-suite, pr-review-toolkit
+**Suites:** dev-suite, feature-dev, science-suite, pr-review-toolkit
 **Pattern:** Debugging Core Trio + Type Analyzer
 **Note:** Do NOT run type-analyzer and quality-specialist simultaneously — they overlap on interface contract checking.
 
 | Role | Agent Type | Focus |
 |------|-----------|-------|
 | explorer | `feature-dev:code-explorer` | Schema dependency graph (runs FIRST) |
-| debugger | `quality-suite:debugger-pro` | Root cause synthesis (ANCHOR) |
+| debugger | `dev-suite:debugger-pro` | Root cause synthesis (ANCHOR) |
 | python-pro | `science-suite:python-pro` | Protocol/structural compatibility |
 | type-analyzer | `pr-review-toolkit:type-design-analyzer` | Type design quality (read-only) |
 
@@ -1864,7 +1864,7 @@ Spawn 4 specialist teammates using the proven Debugging Core Trio + Type Analyze
    the same logical type (e.g., 3 incompatible BayesianResult classes across
    worker, service, and store layers). Document the schema dependency graph.
 
-2. "debugger" (quality-suite:debugger-pro) - ANCHOR agent. After explorer maps
+2. "debugger" (dev-suite:debugger-pro) - ANCHOR agent. After explorer maps
    the schema landscape, perform root cause analysis: identify where schemas
    diverged, which layer introduced the incompatibility, and whether the drift
    is in field names, types, optionality, or serialization. Synthesize all
@@ -1891,14 +1891,14 @@ Do NOT run type-analyzer and quality-specialist simultaneously — they overlap 
 ## Team 37: Debug Triage
 
 **When:** Quick initial investigation to assess severity and route to the right specialist team.
-**Suites:** quality-suite, feature-dev
+**Suites:** dev-suite, feature-dev
 **Pattern:** Lightweight 2-agent triage
 **Typical runtime:** 2-5 minutes
 
 | Role | Agent Type | Focus |
 |------|-----------|-------|
 | explorer | `feature-dev:code-explorer` | Rapid architecture mapping (runs FIRST) |
-| debugger | `quality-suite:debugger-pro` | Severity assessment + team recommendation |
+| debugger | `dev-suite:debugger-pro` | Severity assessment + team recommendation |
 
 ### Prompt
 
@@ -1913,7 +1913,7 @@ Spawn 2 lightweight teammates for fast initial investigation:
    failure site, identify the architectural layers involved, and document
    key dependencies. Produce a focused component map of the affected area.
 
-2. "debugger" (quality-suite:debugger-pro) - After explorer provides the
+2. "debugger" (dev-suite:debugger-pro) - After explorer provides the
    architecture map, perform targeted root cause analysis: examine the
    specific failure path, check for obvious issues (null/undefined access,
    off-by-one, missing error handling, type mismatches), and produce an
@@ -1935,16 +1935,16 @@ Escalation guide:
 ## Team 38: Debug Full Audit
 
 **When:** Comprehensive investigation covering all bug categories — GUI threading, numerical/JAX, and schema drift — in a single coordinated audit.
-**Suites:** quality-suite, feature-dev, science-suite, infrastructure-suite, pr-review-toolkit
+**Suites:** dev-suite, feature-dev, science-suite, pr-review-toolkit
 **Pattern:** Full Core Trio + all 3 specialists, phased sequentially (max 4 active at a time)
 **Note:** Specialists rotate through phases so parallelism stays at the 3-4 sweet spot. Type-analyzer runs last (needs findings from earlier phases). Never run type-analyzer and quality-specialist simultaneously.
 
 | Role | Agent Type | Phase | Focus |
 |------|-----------|-------|-------|
 | explorer | `feature-dev:code-explorer` | 1 (solo) | Full architecture mapping |
-| debugger | `quality-suite:debugger-pro` | 2-5 (ANCHOR) | Root cause synthesis, final report |
+| debugger | `dev-suite:debugger-pro` | 2-5 (ANCHOR) | Root cause synthesis, final report |
 | python-pro | `science-suite:python-pro` | 2-4 | Type/contract verification |
-| sre | `infrastructure-suite:sre-expert` | 2 | Threading, deadlocks, resource leaks |
+| sre | `dev-suite:sre-expert` | 2 | Threading, deadlocks, resource leaks |
 | jax-pro | `science-suite:jax-pro` | 3 | JIT, NaN, gradient flow, vmap/pmap |
 | type-analyzer | `pr-review-toolkit:type-design-analyzer` | 4 (read-only) | Type design quality ratings |
 
@@ -1975,7 +1975,7 @@ CORE TRIO (active in all phases):
    dependency graph, and JIT compilation boundaries across [AFFECTED_MODULES].
    Produce a comprehensive component map that all other agents will reference.
 
-2. "debugger" (quality-suite:debugger-pro) - ANCHOR agent. Active from Phase 2
+2. "debugger" (dev-suite:debugger-pro) - ANCHOR agent. Active from Phase 2
    onward. Coordinates investigation, cross-references findings from all
    specialists, and produces the final synthesized report. Owns the
    prioritized fix list (P0/P1/P2) with evidence chains.
@@ -1987,7 +1987,7 @@ CORE TRIO (active in all phases):
 
 ROTATING SPECIALISTS (one per phase, sequential):
 
-4. "sre" (infrastructure-suite:sre-expert) - Phase 2: Threading & reliability.
+4. "sre" (dev-suite:sre-expert) - Phase 2: Threading & reliability.
    Qt event loop interactions, GIL contention, QThread lifecycle, cross-thread
    signal/slot safety, resource leaks, deadlocks, and race conditions.
 

@@ -4,4 +4,4 @@ Quality Suite
 .. toctree::
    :maxdepth: 2
 
-   /suites/quality-suite
+   /suites/dev-suite

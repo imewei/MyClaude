@@ -1,6 +1,5 @@
 ---
 name: evidence-synthesis
-version: "2.2.1"
 description: Conduct systematic literature reviews (PRISMA), meta-analyses, and evidence grading (GRADE). Use when synthesizing research findings, evaluating evidence quality, or conducting comprehensive literature searches.
 ---
 

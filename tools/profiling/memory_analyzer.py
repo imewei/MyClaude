@@ -163,7 +163,7 @@ class PluginMemoryAnalyzer:
 
     def _measure_json_memory(self, profile: MemoryProfile) -> float:
         """Measure plugin.json memory usage."""
-        json_path = profile.plugin_path / "plugin.json"
+        json_path = profile.plugin_path / ".claude-plugin" / "plugin.json"
 
         try:
             with open(json_path, 'r', encoding='utf-8') as f:
@@ -329,7 +329,7 @@ class PluginMemoryAnalyzer:
             return profiles
 
         for plugin_dir in sorted(self.plugins_root.iterdir()):
-            if plugin_dir.is_dir() and (plugin_dir / "plugin.json").exists():
+            if plugin_dir.is_dir() and (plugin_dir / ".claude-plugin" / "plugin.json").exists():
                 profile = self.profile_plugin(plugin_dir.name)
                 profiles.append(profile)
 

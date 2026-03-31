@@ -1,0 +1,14 @@
+{
+  "servers": {
+    "pyright": {
+      "command": "pyright-langserver",
+      "args": ["--stdio"],
+      "languages": ["python"]
+    },
+    "typescript": {
+      "command": "typescript-language-server",
+      "args": ["--stdio"],
+      "languages": ["typescript", "javascript"]
+    }
+  }
+}

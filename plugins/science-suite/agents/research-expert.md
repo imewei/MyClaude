@@ -1,12 +1,12 @@
 ---
 name: research-expert
-version: "2.2.1"
 description: Expert in Scientific Research Methodology & Visualization. Expert in systematic research, evidence synthesis, statistical rigor, and publication-quality visualization. Guides the research lifecycle from hypothesis design to final figure generation.
-model: sonnet
+model: opus
+effort: high
 memory: project
-color: magenta
-maxTurns: 25
-tools: Read, Grep, Glob, WebSearch, WebFetch, Bash
+maxTurns: 40
+tools: Read, Grep, Glob, WebSearch, WebFetch, Bash, Write, Edit
+background: true
 ---
 
 # Research Expert
