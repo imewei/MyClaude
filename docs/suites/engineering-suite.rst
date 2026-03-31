@@ -13,7 +13,7 @@ Agents
 
 .. agent:: software-architect
    :description: Expert in designing scalable backend systems, microservices, and high-performance APIs (REST/GraphQL/gRPC).
-   :model: sonnet
+   :model: opus
    :version: 2.2.1
 
 .. agent:: systems-engineer
@@ -67,8 +67,8 @@ Skills
    :description: Design and build multi-platform applications for web, iOS, and Android. Covers Flutter, React Native, modern JavaScript/TypeScript patterns, and mobile-first UX.
    :version: 2.2.1
 
-.. skill:: javascript-testing-patterns
-   :description: Comprehensive testing with Jest/Vitest and Testing Library, covering unit tests, integration tests, and mocking patterns.
+.. skill:: testing-patterns
+   :description: Multi-language testing patterns for Python and JavaScript/TypeScript.
 
 .. skill:: microservices-patterns
    :description: Design microservices with proper boundaries, event-driven communication, Saga pattern, and resilience patterns like circuit breakers.
@@ -91,9 +91,6 @@ Skills
 
 .. skill:: python-performance-optimization
    :description: Profile and optimize Python code using cProfile, line_profiler, and memory_profiler to identify and resolve bottlenecks.
-
-.. skill:: python-testing-patterns
-   :description: Comprehensive testing with pytest, fixtures, mocking, and parameterization, including parallel execution with pytest-xdist.
 
 .. skill:: sql-optimization-patterns
    :description: Master SQL optimization with EXPLAIN analysis, indexing strategies, N+1 elimination, and cursor-based pagination.

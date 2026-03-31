@@ -13,12 +13,12 @@ Agents
 
 .. agent:: orchestrator
    :description: Multi-agent orchestrator specializing in workflow coordination, agent team assembly, and task allocation.
-   :model: sonnet
+   :model: opus
    :version: 2.2.1
 
 .. agent:: reasoning-engine
    :description: Expert in advanced reasoning, prompt design, and cognitive tasks. Masters Chain-of-Thought and structured frameworks.
-   :model: sonnet
+   :model: opus
    :version: 2.2.1
 
 Commands
@@ -45,8 +45,8 @@ Commands
 Skills
 ------
 
-.. skill:: advanced-reasoning
-   :description: Apply structured reasoning frameworks, systematic thought processing, and meta-cognitive reflection to solve complex problems.
+.. skill:: reasoning-frameworks
+   :description: Unified advanced reasoning with structured thinking, systematic thought processing, and multi-framework analysis for complex problem solving.
    :version: 2.2.1
 
 .. skill:: agent-orchestration
@@ -57,8 +57,8 @@ Skills
    :description: Optimize AI agent performance through monitoring, metrics collection, caching, and load balancing. Use when analyzing agent execution bottlenecks, implementing latency percentiles (P50/P95/P99), setting up multi-tier caching, tracking success/failure rates, load balancing across agent instances, or scaling agent systems for production.
    :version: 2.2.1
 
-.. skill:: comprehensive-reflection-framework
-   :description: Orchestrate reflection across cognitive, technical, scientific, and strategic dimensions for integrated insights and cross-cutting patterns. Use for quarterly reviews, major milestones, grant proposals, strategic planning, or comprehensive project health assessments.
+.. skill:: reflection-framework
+   :description: Unified reflection framework orchestrating cognitive, technical, scientific, and strategic dimensions with meta-cognitive analysis for integrated insights and cross-cutting patterns.
    :version: 2.2.1
 
 .. skill:: llm-application-patterns
@@ -68,15 +68,6 @@ Skills
 .. skill:: mcp-integration
    :description: Guide for using integrated MCP servers (serena, github, sequential-thinking, context7)
 
-.. skill:: meta-cognitive-reflection
-   :description: Analyze AI reasoning patterns, cognitive biases, problem-solving quality, and communication effectiveness through systematic meta-cognitive reflection. Use for session reflections, reasoning audits, bias detection, and continuous improvement.
-   :version: 2.2.1
-
 .. skill:: multi-agent-coordination
    :description: Coordinate multiple AI agents through workflow orchestration, task allocation, and distributed systems. Use when designing DAG-based workflows with task dependencies, building agent team assembly with capability matching, implementing inter-agent communication protocols, orchestrating parallel execution with synchronization, designing fault-tolerant systems with retry logic, or managing distributed agent teams.
    :version: 2.2.1
-
-.. skill:: structured-reasoning
-   :description: Apply structured reasoning with systematic thought processing, branching exploration, multi-framework analysis (First Principles, Root Cause Analysis, Decision Analysis), and auditability. Use for complex debugging, architectural decisions, strategic planning, novel problems, and high-stakes decisions requiring explicit reasoning chains.
-   :version: 2.2.1
-

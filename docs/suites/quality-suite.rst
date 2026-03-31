@@ -8,12 +8,12 @@ Agents
 
 .. agent:: debugger-pro
    :description: Expert in AI-assisted debugging, log correlation, and complex root cause analysis across distributed systems.
-   :model: sonnet
+   :model: opus
    :version: 2.2.1
 
 .. agent:: documentation-expert
    :description: Expert in creating clear, comprehensive, and accurate technical documentation and tutorials.
-   :model: sonnet
+   :model: haiku
    :version: 2.2.1
 
 .. agent:: quality-specialist
@@ -60,8 +60,8 @@ Commands
 Skills
 ------
 
-.. skill:: ai-assisted-debugging
-   :description: AI/LLM for automated stack trace analysis, intelligent RCA, ML log correlation in distributed systems. Use for Python/JS/Go exceptions, K8s pod failures, automated anomaly detection on logs/metrics, correlating git commits with production incidents.
+.. skill:: debugging-toolkit
+   :description: Unified AI-assisted and systematic debugging toolkit covering automated stack trace analysis, intelligent RCA, ML log correlation, scientific method-based profiling, and distributed systems diagnostics.
    :version: 2.2.1
 
 .. skill:: code-review
@@ -70,14 +70,6 @@ Skills
 
 .. skill:: comprehensive-validation
    :description: Multi-dimensional validation framework for code, APIs, and systems. Covers security scans, performance profiling, and production readiness checks.
-   :version: 2.2.1
-
-.. skill:: comprehensive-validation-framework
-   :description: Systematic multi-dimensional validation framework for code, APIs, and systems. Use when validating before deployment, running security scans (OWASP Top 10, dependency vulnerabilities), checking test coverage (>80% target), verifying accessibility (WCAG 2.1 AA), profiling performance, validating breaking changes, or preparing deployment readiness reports.
-   :version: 2.2.1
-
-.. skill:: debugging-strategies
-   :description: Systematic debugging with scientific method, profiling, RCA across any stack. Use for runtime errors, performance issues, memory leaks, flaky bugs, production debugging with Chrome DevTools, VS Code, pdb/ipdb, Delve, git bisect.
    :version: 2.2.1
 
 .. skill:: documentation-standards

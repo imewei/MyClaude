@@ -14,7 +14,7 @@ The standard feature workflow uses ``@software-architect`` for design and
 2. Scaffold the project structure (command: ``/scaffold``).
 3. Implement backend logic (skill: ``architecture-patterns``).
 4. Build the frontend (skill: ``frontend-mobile-engineering``).
-5. Write tests (skill: ``python-testing-patterns`` or ``javascript-testing-patterns``).
+5. Write tests (skill: ``testing-patterns``).
 6. Validate with ``/double-check``.
 
 **Agent team:** Use :doc:`Team 1 (feature-dev) </agent-teams-guide>` for

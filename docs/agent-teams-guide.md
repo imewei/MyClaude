@@ -1518,11 +1518,11 @@ extension: [PLUGIN_NAME] — [PLUGIN_DESCRIPTION].
 Spawn 4 specialist teammates:
 
 1. "creator" (plugin-dev:agent-creator) - Generate the plugin structure:
-   plugin.json manifest, agent definitions (.md files with proper
-   frontmatter: name, version, color, description, model, memory),
+   .claude-plugin/plugin.json manifest, agent definitions (.md files with
+   frontmatter: name, description, model, effort, memory, tools),
    command definitions with argument hints and allowed-tools, and skill
    files. Follow MyClaude plugin conventions for file paths and
-   metadata. Owns agents/, commands/, skills/, plugin.json.
+   metadata. Owns agents/, commands/, skills/, .claude-plugin/plugin.json.
 
 2. "hook-designer" (hookify:conversation-analyzer) - Analyze conversation
    patterns to identify behaviors that should be prevented or enhanced

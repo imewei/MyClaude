@@ -13,14 +13,14 @@ The MyClaude ecosystem is organized into five powerful suites, each consolidated
 **Purpose:** Multi-agent coordination, advanced reasoning, and context engineering.
 - **Agents:** `@orchestrator`, `@reasoning-engine`, `@context-specialist`
 - **Commands:** `/agent-build`, `/ai-assistant`, `/docs-lookup`, `/reflection`, `/ultra-think`, `/team-assemble`
-- **Skills:** `advanced-reasoning`, `agent-orchestration`, `agent-performance-optimization`, `comprehensive-reflection-framework`, `llm-application-patterns`, `mcp-integration`, `meta-cognitive-reflection`, `multi-agent-coordination`, `structured-reasoning`
+- **Skills:** `agent-orchestration`, `agent-performance-optimization`, `llm-application-patterns`, `mcp-integration`, `multi-agent-coordination`, `reasoning-frameworks`, `reflection-framework`
 - **Use When:** Complex problem solving, building AI assistants, managing long-running project context.
 
 ### 2. Software Engineering Suite (`engineering-suite`)
 **Purpose:** Full-stack engineering, systems programming, and platform implementations.
 - **Agents:** `@software-architect`, `@app-developer`, `@systems-engineer`
 - **Commands:** `/scaffold`, `/rust-project`, `/c-project`, `/eng-feature-dev`, `/modernize`, `/multi-platform`, `/profile-performance`
-- **Skills:** `api-design-principles`, `architecture-patterns`, `async-python-patterns`, `auth-implementation-patterns`, `error-handling-patterns`, `frontend-mobile-engineering`, `javascript-testing-patterns`, `microservices-patterns`, `modern-javascript-patterns`, `modernization-migration`, `monorepo-management`, `nodejs-backend-patterns`, `python-packaging`, `python-performance-optimization`, `python-testing-patterns`, `sql-optimization-patterns`, `systems-cli-engineering`, `typescript-advanced-types`, `typescript-project-scaffolding`, `uv-package-manager`
+- **Skills:** `api-design-principles`, `architecture-patterns`, `async-python-patterns`, `auth-implementation-patterns`, `error-handling-patterns`, `frontend-mobile-engineering`, `microservices-patterns`, `modern-javascript-patterns`, `modernization-migration`, `monorepo-management`, `nodejs-backend-patterns`, `python-packaging`, `python-performance-optimization`, `sql-optimization-patterns`, `systems-cli-engineering`, `testing-patterns`, `typescript-advanced-types`, `typescript-project-scaffolding`, `uv-package-manager`
 - **Use When:** Building web/mobile apps, systems programming (Rust/C), backend architecture, legacy modernization.
 
 ### 3. Infrastructure & Ops Suite (`infrastructure-suite`)
@@ -34,14 +34,14 @@ The MyClaude ecosystem is organized into five powerful suites, each consolidated
 **Purpose:** Code quality, test automation, and intelligent debugging.
 - **Agents:** `@quality-specialist`, `@debugger-pro`, `@documentation-expert`
 - **Commands:** `/run-all-tests`, `/test-generate`, `/double-check`, `/smart-debug`, `/refactor-clean`, `/tech-debt`, `/adopt-code`, `/code-explain`, `/deps`, `/docs`, `/fix-imports`
-- **Skills:** `ai-assisted-debugging`, `code-review`, `comprehensive-validation`, `comprehensive-validation-framework`, `debugging-strategies`, `documentation-standards`, `e2e-testing-patterns`, `observability-sre-practices`, `plugin-syntax-validator`, `test-automation`
+- **Skills:** `code-review`, `comprehensive-validation`, `debugging-toolkit`, `documentation-standards`, `e2e-testing-patterns`, `observability-sre-practices`, `plugin-syntax-validator`, `test-automation`
 - **Use When:** Writing/fixing tests, debugging complex bugs, technical debt remediation, documentation generation.
 
 ### 5. Scientific Computing Suite (`science-suite`)
 **Purpose:** HPC, specialized simulations, and data science workflows.
 - **Agents:** `@jax-pro`, `@julia-pro`, `@ml-expert`, `@neural-network-master`, `@prompt-engineer`, `@python-pro`, `@research-expert`, `@simulation-expert`, `@statistical-physicist`, `@ai-engineer`
 - **Commands:** *Specialized commands are planned for future releases. Use suite agents for guided execution.*
-- **Skills:** Extensive scientific skills including `jax-mastery`, `julia-mastery`, `deep-learning`, `statistical-physics`, `parallel-computing`, and 80 specialized domain skills.
+- **Skills:** Extensive scientific skills including `jax-mastery`, `julia-mastery`, `deep-learning`, `statistical-physics`, `parallel-computing`, `machine-learning`, and 78 specialized domain skills.
 - **Use When:** HPC, JAX/Julia projects, physics simulations, ML engineering, scientific research.
 
 ---
