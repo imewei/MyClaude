@@ -6,6 +6,7 @@ effort: high
 memory: project
 maxTurns: 35
 background: true
+tools: Read, Grep, Glob, Bash
 ---
 
 # Software Architect

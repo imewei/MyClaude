@@ -5,6 +5,7 @@ model: opus
 effort: high
 memory: project
 maxTurns: 40
+disallowedTools: Write, Edit, NotebookEdit
 ---
 
 # Reasoning Engine

@@ -6,6 +6,7 @@ effort: high
 memory: project
 maxTurns: 25
 background: true
+tools: Read, Write, Edit, Bash, Grep, Glob
 ---
 
 # DevOps Architect (Platform Owner)

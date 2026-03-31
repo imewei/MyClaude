@@ -5,6 +5,7 @@ model: sonnet
 effort: high
 memory: project
 maxTurns: 35
+tools: Read, Write, Edit, Bash, Grep, Glob
 ---
 
 # Systems Engineer

@@ -5,6 +5,7 @@ model: sonnet
 effort: high
 memory: project
 maxTurns: 25
+tools: Read, Grep, Glob, Bash
 ---
 
 # SRE Expert (Reliability Consultant)

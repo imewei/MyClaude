@@ -6,6 +6,7 @@ effort: high
 memory: project
 maxTurns: 35
 isolation: worktree
+tools: Read, Write, Edit, Bash, Grep, Glob
 ---
 
 # App Developer

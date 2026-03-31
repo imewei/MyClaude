@@ -13,7 +13,6 @@ import sys
 def main() -> None:
     """Log file modifications for potential auto-linting."""
     try:
-        tool_name = os.environ.get("TOOL_NAME", "")
         tool_input = os.environ.get("TOOL_INPUT", "{}")
 
         try:

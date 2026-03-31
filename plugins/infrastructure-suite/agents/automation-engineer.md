@@ -6,6 +6,7 @@ effort: medium
 memory: project
 maxTurns: 25
 isolation: worktree
+tools: Read, Write, Edit, Bash, Grep, Glob
 ---
 
 # Automation Engineer
