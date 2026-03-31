@@ -1,6 +1,46 @@
 Changelog
 =========
 
+v2.3.0 (2026-03-31)
+-------------------
+
+**v2.1.88 Spec Compliance Upgrade**
+
+* Migrated all 5 plugin manifests to ``.claude-plugin/plugin.json`` per official spec.
+* Consolidated 131 skills to 124 with zero function loss (7 semantic merges).
+* Hardened all 22 agents with ``effort``, ``memory``, and ``tools`` fields.
+* Removed non-spec ``version``/``color`` fields from all agent and command frontmatter.
+* Added explicit ``name`` field to 27 commands that were missing it.
+
+**Model Tier Optimization**
+
+* Assigned Opus to 6 deep-reasoning agents (orchestrator, reasoning-engine,
+  software-architect, debugger-pro, research-expert, statistical-physicist).
+* Assigned Haiku to documentation-expert for speed-optimized docs generation.
+* Fixed neural-network-master from ``inherit`` to explicit ``sonnet``.
+
+**Hook Expansion**
+
+* Expanded hook events from 3 to 8: added PostToolUse, PostCompact,
+  SubagentStop, PermissionDenied, TaskCompleted.
+* PostToolUse fires on Write/Edit for Python lint suggestions.
+
+**New Infrastructure**
+
+* Added ``output-styles/`` directory to agent-core (terse and verbose modes).
+* Added ``settings.json`` with default agent configuration to all 5 suites.
+* Updated metadata validator schema from v2.1.42 to v2.1.88.
+
+**Skill Consolidations (7 merges)**
+
+* advanced-reasoning + structured-reasoning → reasoning-frameworks
+* meta-cognitive-reflection + comprehensive-reflection-framework → reflection-framework
+* ai-assisted-debugging + debugging-strategies → debugging-toolkit
+* comprehensive-validation-framework merged into comprehensive-validation
+* machine-learning-essentials absorbed into machine-learning
+* parallel-computing-strategy absorbed into parallel-computing
+* python-testing-patterns + javascript-testing-patterns → testing-patterns
+
 v2.2.1 (2026-02-14)
 -------------------
 

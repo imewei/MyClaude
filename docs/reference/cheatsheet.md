@@ -1,7 +1,7 @@
 # Claude Code Plugin Marketplace - Quick Reference
 
-**Total Resources:** 5 Suites | 22 Expert Agents | 33 Slash Commands | 131 Skills
-**Version:** 2.2.1 | **Last Updated:** February 14, 2026
+**Total Resources:** 5 Suites | 22 Expert Agents | 33 Slash Commands | 124 Skills
+**Version:** 2.2.1 | **Last Updated:** March 31, 2026
 
 ---
 

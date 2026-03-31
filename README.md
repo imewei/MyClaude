@@ -3,12 +3,12 @@
 [![Plugins](https://img.shields.io/badge/Plugins-5-blue.svg)](https://myclaude.readthedocs.io/en/latest/plugins/)
 [![Agents](https://img.shields.io/badge/Agents-22-green.svg)](docs/reference/agents.md)
 [![Commands](https://img.shields.io/badge/Commands-33-orange.svg)](docs/reference/commands.md)
-[![Skills](https://img.shields.io/badge/Skills-131-purple.svg)](docs/reference/cheatsheet.md)
+[![Skills](https://img.shields.io/badge/Skills-124-purple.svg)](docs/reference/cheatsheet.md)
 [![Version](https://img.shields.io/badge/Version-2.2.1-red.svg)](https://github.com/imewei/MyClaude)
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Docs](https://img.shields.io/badge/Docs-ReadTheDocs-brightgreen.svg)](https://myclaude.readthedocs.io/en/latest/)
 
-Claude Code plugin marketplace with **5 consolidated suites**, **22 expert agents**, **33 slash commands**, and **131 skills** optimized for AI-powered development, scientific computing, and research workflows. Built for Claude Opus 4.6.
+Claude Code plugin marketplace with **5 consolidated suites**, **22 expert agents**, **33 slash commands**, and **124 skills** optimized for AI-powered development, scientific computing, and research workflows. Built for Claude Opus 4.6 with tiered model assignments (Opus/Sonnet/Haiku), 8 lifecycle hooks, and full v2.1.88 spec compliance.
 
 ## 🚀 The 5-Suite System
 
