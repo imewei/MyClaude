@@ -1,6 +1,5 @@
 ---
 name: debugging-toolkit
-version: "2.2.1"
 maturity: "5-Expert"
 specialization: AI-Assisted & Systematic Debugging
 description: Unified debugging toolkit combining AI/LLM-powered automated analysis (stack traces, RCA, ML log correlation, distributed tracing) with systematic debugging strategies (scientific method, profiling, differential debugging). Use for runtime errors, performance issues, memory leaks, flaky bugs, production debugging, K8s/Docker failures, and anomaly detection across Python/JS/Go/any stack.

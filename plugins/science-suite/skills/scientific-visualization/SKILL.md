@@ -1,6 +1,5 @@
 ---
 name: scientific-visualization
-version: "2.2.1"
 description: Create publication-quality scientific visualizations across physics, biology, chemistry, and climate science. Supports uncertainty quantification, multi-dimensional data, and domain-specific plots in both Python and Julia.
 ---
 

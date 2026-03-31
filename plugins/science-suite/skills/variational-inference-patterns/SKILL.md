@@ -1,6 +1,5 @@
 ---
 name: variational-inference-patterns
-version: "2.2.1"
 maturity: "5-Expert"
 specialization: Variational Inference
 description: Master ADVI variational inference with Turing.jl and Bijectors.jl for scalable approximate Bayesian inference. Use when MCMC is too slow for large datasets.

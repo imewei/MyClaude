@@ -6,20 +6,20 @@
     "url": "https://myclaude.readthedocs.io/en/latest/"
   },
   "metadata": {
-    "description": "Consolidated 5-suite marketplace for scientific computing, engineering, and agent orchestration",
-    "version": "2.2.1",
+    "description": "3-suite marketplace for agent orchestration, software development, and scientific computing",
+    "version": "3.0.0",
     "based_on": "claude-code-workflows v2.0.0",
-    "reorganization_date": "2026-01-20",
-    "last_updated": "2026-02-13",
-    "total_plugins": 5,
-    "note": "v2.2.1 Opus 4.6 compatibility release with adaptive thinking, Agent Teams integration, memory frontmatter, and hooks infrastructure"
+    "reorganization_date": "2026-03-31",
+    "last_updated": "2026-03-31",
+    "total_plugins": 3,
+    "note": "v3.0.0 architecture reorganization: 5→3 suites, v2.1.88 spec compliance, tiered model assignments"
   },
   "plugins": [
     {
       "name": "agent-core",
       "source": "./plugins/agent-core",
-      "description": "Core agent orchestration, multi-agent systems, and AI reasoning capabilities",
-      "version": "2.2.1",
+      "description": "Meta-agent orchestration, advanced reasoning, and context engineering",
+      "version": "3.0.0",
       "author": {
         "name": "Wei Chen",
         "url": "https://myclaude.readthedocs.io/en/latest/"
@@ -31,7 +31,8 @@
         "agent-core",
         "orchestration",
         "reasoning",
-        "multi-agent"
+        "multi-agent",
+        "context-engineering"
       ],
       "category": "core",
       "strict": false,
@@ -50,10 +51,10 @@
       ]
     },
     {
-      "name": "engineering-suite",
-      "source": "./plugins/engineering-suite",
-      "description": "Comprehensive software engineering suite covering backend, frontend, mobile, and systems programming",
-      "version": "2.2.1",
+      "name": "dev-suite",
+      "source": "./plugins/dev-suite",
+      "description": "Unified software development lifecycle: architecture, implementation, CI/CD, testing, debugging, and deployment",
+      "version": "3.0.0",
       "author": {
         "name": "Wei Chen",
         "url": "https://myclaude.readthedocs.io/en/latest/"
@@ -62,110 +63,62 @@
       "repository": "https://github.com/imewei/MyClaude",
       "license": "MIT",
       "keywords": [
-        "engineering",
         "development",
-        "python",
-        "javascript",
-        "rust"
+        "engineering",
+        "infrastructure",
+        "quality",
+        "testing",
+        "ci-cd",
+        "deployment"
       ],
-      "category": "engineering",
+      "category": "dev",
       "strict": false,
       "agents": [
         "./agents/app-developer.md",
+        "./agents/automation-engineer.md",
+        "./agents/debugger-pro.md",
+        "./agents/devops-architect.md",
+        "./agents/documentation-expert.md",
+        "./agents/quality-specialist.md",
         "./agents/software-architect.md",
+        "./agents/sre-expert.md",
         "./agents/systems-engineer.md"
       ],
       "commands": [
-        "./commands/c-project.md",
-        "./commands/eng-feature-dev.md",
-        "./commands/modernize.md",
-        "./commands/multi-platform.md",
-        "./commands/profile-performance.md",
-        "./commands/rust-project.md",
-        "./commands/scaffold.md"
-      ]
-    },
-    {
-      "name": "infrastructure-suite",
-      "source": "./plugins/infrastructure-suite",
-      "description": "Infrastructure, DevOps, CI/CD, and observability automation tools",
-      "version": "2.2.1",
-      "author": {
-        "name": "Wei Chen",
-        "url": "https://myclaude.readthedocs.io/en/latest/"
-      },
-      "homepage": "https://github.com/imewei/MyClaude",
-      "repository": "https://github.com/imewei/MyClaude",
-      "license": "MIT",
-      "keywords": [
-        "infrastructure",
-        "devops",
-        "ci-cd",
-        "observability"
-      ],
-      "category": "infrastructure",
-      "strict": false,
-      "agents": [
-        "./agents/automation-engineer.md",
-        "./agents/devops-architect.md",
-        "./agents/sre-expert.md"
-      ],
-      "commands": [
-        "./commands/code-analyze.md",
-        "./commands/commit.md",
-        "./commands/fix-commit-errors.md",
-        "./commands/github-assist.md",
-        "./commands/merge-all.md",
-        "./commands/monitor-setup.md",
-        "./commands/onboard.md",
-        "./commands/slo-implement.md",
-        "./commands/workflow-automate.md"
-      ]
-    },
-    {
-      "name": "quality-suite",
-      "source": "./plugins/quality-suite",
-      "description": "Code quality, testing, debugging, and modernization tools",
-      "version": "2.2.1",
-      "author": {
-        "name": "Wei Chen",
-        "url": "https://myclaude.readthedocs.io/en/latest/"
-      },
-      "homepage": "https://github.com/imewei/MyClaude",
-      "repository": "https://github.com/imewei/MyClaude",
-      "license": "MIT",
-      "keywords": [
-        "quality",
-        "testing",
-        "debugging",
-        "maintenance"
-      ],
-      "category": "quality",
-      "strict": false,
-      "agents": [
-        "./agents/debugger-pro.md",
-        "./agents/documentation-expert.md",
-        "./agents/quality-specialist.md"
-      ],
-      "commands": [
         "./commands/adopt-code.md",
+        "./commands/c-project.md",
+        "./commands/code-analyze.md",
         "./commands/code-explain.md",
+        "./commands/commit.md",
         "./commands/deps.md",
         "./commands/docs.md",
         "./commands/double-check.md",
+        "./commands/eng-feature-dev.md",
+        "./commands/fix-commit-errors.md",
         "./commands/fix-imports.md",
+        "./commands/github-assist.md",
+        "./commands/merge-all.md",
+        "./commands/modernize.md",
+        "./commands/monitor-setup.md",
+        "./commands/multi-platform.md",
+        "./commands/onboard.md",
+        "./commands/profile-performance.md",
         "./commands/refactor-clean.md",
         "./commands/run-all-tests.md",
+        "./commands/rust-project.md",
+        "./commands/scaffold.md",
+        "./commands/slo-implement.md",
         "./commands/smart-debug.md",
         "./commands/tech-debt.md",
-        "./commands/test-generate.md"
+        "./commands/test-generate.md",
+        "./commands/workflow-automate.md"
       ]
     },
     {
       "name": "science-suite",
       "source": "./plugins/science-suite",
       "description": "Scientific computing, HPC, simulation, and data analysis workflows",
-      "version": "2.2.1",
+      "version": "3.0.0",
       "author": {
         "name": "Wei Chen",
         "url": "https://myclaude.readthedocs.io/en/latest/"
@@ -177,21 +130,23 @@
         "science",
         "hpc",
         "simulation",
-        "data-analysis"
+        "data-analysis",
+        "jax",
+        "julia"
       ],
       "category": "science",
       "strict": false,
       "agents": [
+        "./agents/ai-engineer.md",
         "./agents/jax-pro.md",
         "./agents/julia-pro.md",
-        "./agents/statistical-physicist.md",
-        "./agents/simulation-expert.md",
         "./agents/ml-expert.md",
-        "./agents/research-expert.md",
-        "./agents/python-pro.md",
-        "./agents/ai-engineer.md",
+        "./agents/neural-network-master.md",
         "./agents/prompt-engineer.md",
-        "./agents/neural-network-master.md"
+        "./agents/python-pro.md",
+        "./agents/research-expert.md",
+        "./agents/simulation-expert.md",
+        "./agents/statistical-physicist.md"
       ]
     }
   ]

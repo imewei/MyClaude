@@ -1,6 +1,5 @@
 ---
 name: reasoning-frameworks
-version: "2.2.1"
 maturity: "5-Expert"
 specialization: Systematic Problem-Solving & Meta-Cognition
 description: Unified reasoning skill combining structured reasoning frameworks, systematic thought processing, branching exploration, multi-framework analysis (First Principles, Root Cause Analysis, Decision Analysis, Systems Thinking, OODA Loop), meta-cognitive reflection, and auditability. Use for complex debugging, architectural decisions, strategic planning, novel problems, and high-stakes decisions requiring explicit reasoning chains.

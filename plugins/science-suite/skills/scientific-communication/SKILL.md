@@ -1,6 +1,5 @@
 ---
 name: scientific-communication
-version: "2.2.1"
 description: Structure scientific arguments, write technical reports (IMRaD), and ensure clarity and precision in scientific writing. Use when drafting papers, creating posters, or structuring technical documentation.
 ---
 

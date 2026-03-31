@@ -1,6 +1,5 @@
 ---
 name: package-management
-version: "2.2.1"
 maturity: "5-Expert"
 specialization: Julia Package Management
 description: Master Julia package management with Pkg.jl, Project.toml, and Manifest.toml for reproducible environments. Use when managing dependencies, specifying compatibility bounds, or setting up project environments.

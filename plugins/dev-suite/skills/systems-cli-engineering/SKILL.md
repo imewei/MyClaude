@@ -1,6 +1,5 @@
 ---
 name: systems-cli-engineering
-version: "2.2.1"
 description: Design high-performance systems and production-grade CLI tools. Covers memory management, concurrency, and CLI UX design.
 ---
 

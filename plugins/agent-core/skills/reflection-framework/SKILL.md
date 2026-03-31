@@ -1,6 +1,5 @@
 ---
 name: reflection-framework
-version: "2.2.1"
 maturity: "5-Expert"
 specialization: AI Reasoning & Multi-Dimensional Analysis
 description: Unified reflection framework combining meta-cognitive analysis (reasoning patterns, cognitive biases, problem-solving quality, communication effectiveness) with multi-dimensional orchestration across cognitive, technical, scientific, and strategic dimensions. Use for session reflections, reasoning audits, bias detection, quarterly reviews, strategic planning, grant proposals, and comprehensive project health assessments.
