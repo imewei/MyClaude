@@ -4,16 +4,17 @@ import re
 import yaml  # type: ignore
 from pathlib import Path
 
-# Paths adjustment: .../tools/tests -> .../tools -> .../ (root) -> .../plugins/quality-suite
-PLUGIN_ROOT = Path(__file__).parent.parent.parent / "plugins" / "quality-suite"
+# Paths adjustment: .../tools/tests -> .../tools -> .../ (root) -> .../plugins/dev-suite
+PLUGIN_ROOT = Path(__file__).parent.parent.parent / "plugins" / "dev-suite"
 PLUGIN_JSON = PLUGIN_ROOT / ".claude-plugin" / "plugin.json"
 AGENTS_DIR = PLUGIN_ROOT / "agents"
+SKILLS_DIR = PLUGIN_ROOT / "skills"
 
 def load_frontmatter(file_path):
     """Extract and parse YAML frontmatter from a markdown file."""
     with open(file_path, 'r', encoding='utf-8') as f:
         content = f.read()
-    
+
     match = re.match(r'^---\n(.*?)\n---', content, re.DOTALL)
     if match:
         try:
@@ -29,17 +30,17 @@ def test_plugin_json_structure():
     assert PLUGIN_JSON.exists(), "plugin.json missing"
     with open(PLUGIN_JSON, 'r', encoding='utf-8') as f:
         data = json.load(f)
-    
+
     required_fields = ["name", "version", "description", "agents"]
     for field in required_fields:
         assert field in data, f"Missing required field: {field}"
-    
-    assert data["name"] == "quality-suite"
+
+    assert data["name"] == "dev-suite"
 
 def test_agents_exist():
     with open(PLUGIN_JSON, 'r', encoding='utf-8') as f:
         data = json.load(f)
-    
+
     for agent_info in data.get("agents", []):
         # agent_name is actually a relative path like "./agents/foo.md"
         agent_rel_path = agent_info["name"] if isinstance(agent_info, dict) else agent_info
@@ -49,7 +50,19 @@ def test_agents_exist():
 def test_agent_frontmatter_validity():
     if not AGENTS_DIR.exists():
         pytest.skip("Agents directory not found")
-        
+
     for agent_file in AGENTS_DIR.glob("*.md"):
         frontmatter = load_frontmatter(agent_file)
         assert frontmatter is not None, f"Invalid YAML frontmatter in {agent_file.name}"
+
+def test_skill_frontmatter_validity():
+    if not SKILLS_DIR.exists():
+        pytest.skip("Skills directory not found")
+
+    for skill_dir in SKILLS_DIR.iterdir():
+        if not skill_dir.is_dir():
+            continue
+        skill_file = skill_dir / "SKILL.md"
+        if skill_file.exists():
+            frontmatter = load_frontmatter(skill_file)
+            assert frontmatter is not None, f"Invalid YAML frontmatter in {skill_file}"

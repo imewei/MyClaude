@@ -1,8 +1,0 @@
-{
-  "defaults": {
-    "model": "sonnet",
-    "effort": "medium",
-    "memory": "project",
-    "maxTurns": 25
-  }
-}
