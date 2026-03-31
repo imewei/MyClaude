@@ -88,10 +88,6 @@ The manifest uses **file-path references** (not inline objects) to point to agen
 - `tools/common/` — Shared utilities: loader, models, reporter, timer
 - `tools/maintenance/` — Maintenance scripts (e.g., `enable_all_plugins.py`)
 
-### `_optimization/` directory
-
-Contains audit reports, patches, and performance analysis — not a plugin suite.
-
 ## Key Conventions
 
 - **Version sync**: All `plugin.json` files must use the same version string. Version lives only in manifests, not in agent/command/skill frontmatter.
