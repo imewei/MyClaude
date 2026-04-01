@@ -1,7 +1,5 @@
 ---
 name: web-development-julia
-maturity: "5-Expert"
-specialization: Julia Web Development
 description: Build web applications with Genie.jl MVC framework and HTTP.jl. Use when creating REST APIs, handling HTTP requests, or building web services in Julia.
 ---
 
