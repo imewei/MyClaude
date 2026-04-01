@@ -7,11 +7,9 @@ description: Build web applications with Genie.jl MVC framework and HTTP.jl. Use
 
 # Julia Web Development
 
-Web applications and REST APIs with Genie.jl and HTTP.jl.
+REST APIs and web services with Genie.jl and HTTP.jl.
 
----
-
-## Genie.jl (MVC Framework)
+## Genie.jl REST API
 
 ```julia
 using Genie, Genie.Router, Genie.Renderer.Json
@@ -20,31 +18,30 @@ route("/") do
     "Welcome"
 end
 
-route("/api/:id::Int") do
+route("/api/items/:id::Int") do
     id = payload(:id)
     json(:result => compute(id))
+end
+
+route("/api/items", method = POST) do
+    data = jsonpayload()
+    json(:created => process(data))
 end
 
 up(8000)
 ```
 
----
-
-## HTTP.jl (Lightweight)
+## Middleware
 
 ```julia
-using HTTP, JSON3
-
-HTTP.serve("0.0.0.0", 8000) do req
-    if req.target == "/"
-        return HTTP.Response(200, "Welcome")
-    else
-        return HTTP.Response(404, "Not Found")
+function auth_middleware(handler)
+    req = handler
+    function(req)
+        haskey(req.headers, "Authorization") || return HTTP.Response(401, "Unauthorized")
+        handler(req)
     end
 end
 ```
-
----
 
 ## Framework Selection
 
@@ -53,16 +50,3 @@ end
 | Genie.jl | Full MVC, authentication, ORM |
 | HTTP.jl | Lightweight, custom control |
 | Oxygen.jl | Minimal API framework |
-
----
-
-## Checklist
-
-- [ ] Framework selected for use case
-- [ ] Routes defined
-- [ ] JSON serialization configured
-- [ ] Error handling implemented
-
----
-
-**Version**: 1.0.5
