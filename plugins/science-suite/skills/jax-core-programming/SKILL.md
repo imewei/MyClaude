@@ -136,3 +136,93 @@ jax.debug.print("x = {}", x)  # Print in JIT
 ```
 
 **Outcome**: Pure functions, explicit RNG, JIT hot paths, multi-device scaling
+
+## Equinox: PyTree-Native Neural Networks
+
+Equinox models ARE PyTrees — every layer, parameter, and buffer is a leaf in the tree. No separate `params` dict needed.
+
+```python
+import equinox as eqx
+import jax
+
+class MLP(eqx.Module):
+    layers: list
+
+    def __init__(self, key):
+        k1, k2, k3 = jax.random.split(key, 3)
+        self.layers = [eqx.nn.Linear(784, 256, key=k1),
+                       eqx.nn.Linear(256, 64, key=k2),
+                       eqx.nn.Linear(64, 10, key=k3)]
+
+    def __call__(self, x):
+        for layer in self.layers[:-1]:
+            x = jax.nn.relu(layer(x))
+        return self.layers[-1](x)
+
+# Filtered transforms: JIT/grad only over parameters, not static fields
+@eqx.filter_jit
+def train_step(model, x, y):
+    loss, grads = eqx.filter_value_and_grad(loss_fn)(model, x, y)
+    model = jax.tree.map(lambda p, g: p - 0.001 * g, model, grads)
+    return model, loss
+```
+
+**When to use**: Equinox for scientific computing, Diffrax integration, and PyTree-native workflows. Flax NNX for large-scale ML with ecosystem tooling (Orbax, CLU).
+
+## Lineax: Linear Solvers
+
+```python
+import lineax as lx
+import jax.numpy as jnp
+
+A = jnp.array([[4.0, 1.0], [1.0, 3.0]])
+b = jnp.array([1.0, 2.0])
+solution = lx.linear_solve(lx.MatrixLinearOperator(A), b)
+x = solution.value  # [0.1, 0.6333...]
+```
+
+| Solver | Use Case |
+|--------|----------|
+| `lx.CG()` | Symmetric positive-definite (SPD) matrices |
+| `lx.GMRES()` | General non-symmetric systems |
+| `lx.LU()` | Dense direct solves |
+
+**Note**: Diffrax implicit solvers (e.g., `Kvaerno5`) use Lineax internally for their Newton steps.
+
+## interpax: JIT-Safe Interpolation
+
+**Rule**: Never use `scipy.interpolate` inside JIT — it traces Python objects and breaks.
+
+```python
+import interpax
+
+# 1D interpolation (JIT-safe)
+y_new = interpax.interp1d(x_new, x_data, y_data, method="cubic")
+
+# 2D interpolation
+z_new = interpax.interp2d(x_new, y_new, x_data, y_data, z_data, method="cubic")
+
+# B-spline variant
+y_bspline = interpax.interp1d(x_new, x_data, y_data, method="cubic2")
+```
+
+All `interpax` functions are compatible with `jax.jit`, `jax.vmap`, and `jax.grad`.
+
+## Optimistix: Root-Finding & Optimization
+
+```python
+import optimistix as optx
+
+# Root-finding: find x such that residual_fn(x, args) = 0
+sol = optx.root_find(residual_fn, optx.Newton(rtol=1e-8, atol=1e-8), x0, args=args)
+x_root = sol.value
+
+# Fixed-point iteration: find x such that g(x) = x
+sol = optx.fixed_point(g_fn, optx.FixedPointIteration(rtol=1e-6, atol=1e-6), x0, args=args)
+
+# Nonlinear least squares: minimize ||residual_fn(p, args)||^2
+sol = optx.least_squares(residual_fn, optx.LevenbergMarquardt(rtol=1e-8, atol=1e-8), p0, args=args)
+params = sol.value
+```
+
+All solvers are JIT-compatible and differentiable via implicit differentiation.
