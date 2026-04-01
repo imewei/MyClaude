@@ -38,6 +38,9 @@ GPU-accelerated nonlinear least squares and curve fitting.
 ### [NumPyro Core Mastery](./numpyro-core-mastery/SKILL.md)
 Foundational Bayesian inference and MCMC diagnostics.
 
+### [JAX-Julia Interop](./jax-julia-interop/SKILL.md)
+Bridge JAX and Julia SciML for hybrid workflows.
+
 ## 1. Core Transformations
 
 - **`jax.jit`**: XLA compilation for massive speedups. Always use for hot paths.
@@ -54,9 +57,13 @@ def fast_step(state, x):
 
 ## 2. Neural Networks & Optimization
 
-- **Flax NNX**: Modern, module-based neural network library for JAX.
+- **Equinox**: PyTree-native neural networks for scientific computing (Diffrax integration). See `jax-core-programming` skill.
+- **Flax NNX**: Structured neural network library for large-scale ML training.
 - **Optax**: Composable gradient transformation and optimization library.
 - **Orbax**: Flexible checkpointing for long-running simulations.
+- **Lineax**: JIT-compatible linear solvers (CG, GMRES, LU). See `jax-core-programming` skill.
+- **Optimistix**: Root-finding, fixed-point iteration, least-squares. See `jax-core-programming` skill.
+- **interpax**: JIT-safe interpolation (replaces scipy.interpolate). See `jax-core-programming` skill.
 
 ## 3. Specialized Scientific Libraries
 

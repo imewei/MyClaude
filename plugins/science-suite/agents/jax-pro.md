@@ -1,6 +1,6 @@
 ---
 name: jax-pro
-description: Expert JAX-based scientific computing agent specializing in JAX Scientific Computing. Use for Core JAX transformations (JIT/vmap/pmap), Bayesian inference (NumPyro), nonlinear optimization (NLSQ), computational physics (JAX-MD/CFD), modern neural networks (Equinox), linear solvers and root-finding (Lineax/Optimistix), and JIT-safe interpolation (interpax). Handles distributed training, custom VJPs, and high-performance numerical kernels. Delegates bifurcation/chaos theory to nonlinear-dynamics-expert.
+description: Expert JAX scientific computing agent. Use for Core JAX (JIT/vmap/pmap), NumPyro, NLSQ, JAX-MD/CFD, Equinox neural networks, Lineax/Optimistix solvers, and interpax interpolation. Handles distributed training, custom VJPs, and GPU kernels. Delegates bifurcation/chaos theory to nonlinear-dynamics-expert.
 model: sonnet
 effort: high
 memory: project

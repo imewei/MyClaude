@@ -11,9 +11,9 @@ Expert guide for writing high-performance, idiomatic Julia code for scientific a
 
 For complex Julia programming, SciML workflows, and performance optimization, delegate to the expert agent:
 
-- **`julia-pro`**: Unified specialist for Julia optimization, including Core Julia, SciML, Turing.jl, and Package Development.
+- **`julia-pro`**: Unified specialist for Julia optimization, including Core Julia, SciML (Lux.jl, UDEs), nonlinear dynamics (DynamicalSystems.jl, BifurcationKit.jl), Turing.jl, and Package Development.
   - *Location*: `plugins/science-suite/agents/julia-pro.md`
-  - *Capabilities*: Performance tuning, stiff ODE solvers, Bayesian inference, and CI/CD setup.
+  - *Capabilities*: Performance tuning, stiff ODE solvers, Bayesian inference, UDEs, bifurcation analysis, equation discovery, and CI/CD setup.
 
 ## Core Skills
 
@@ -68,6 +68,12 @@ Data visualization with Makie.jl and Plots.jl.
 ### [Web Development](./web-development-julia/SKILL.md)
 Building scientific web services with Genie.jl/Oxygen.jl.
 
+### [Modern SciML Stack](./sciml-modern-stack/SKILL.md)
+Lux.jl, Universal Differential Equations (UDEs), SciMLSensitivity.jl, NeuralPDE.jl v5+.
+
+### [Nonlinear Dynamics](./nonlinear-dynamics/SKILL.md)
+Bifurcation analysis, chaos, network dynamics, pattern formation, equation discovery.
+
 ### [Interop Patterns](./interop-patterns/SKILL.md)
 Calling Python and R from Julia.
 
@@ -96,9 +102,12 @@ Multi-threading and distributed computing patterns.
 
 ## 3. The SciML Ecosystem
 
+- **Lux.jl**: Modern neural networks with explicit parameterization (replaces Flux for SciML). See `sciml-modern-stack` skill.
 - **DifferentialEquations.jl**: State-of-the-art solvers for ODEs, PDEs, SDEs, and DAEs.
 - **ModelingToolkit.jl**: Symbolic-numeric modeling for simplifying complex systems.
+- **SciMLSensitivity.jl**: Adjoint and forward sensitivity analysis through solvers.
 - **Optimization.jl**: Unified interface for local and global optimization.
+- **DataDrivenDiffEq.jl**: SINDy and equation discovery from data. See `equation-discovery` skill.
 - **NeuralPDE.jl**: Physics-informed neural networks (PINNs) for solving PDEs.
 
 ## 4. Julia Development Workflow
