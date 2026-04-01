@@ -1,6 +1,6 @@
 ---
 name: jax-pro
-description: Expert JAX-based scientific computing agent specializing in JAX Scientific Computing. Use for Core JAX transformations (JIT/vmap/pmap), Bayesian inference (NumPyro), nonlinear optimization (NLSQ), and computational physics (JAX-MD/CFD). Handles distributed training, custom VJPs, and high-performance numerical kernels.
+description: Expert JAX-based scientific computing agent specializing in JAX Scientific Computing. Use for Core JAX transformations (JIT/vmap/pmap), Bayesian inference (NumPyro), nonlinear optimization (NLSQ), computational physics (JAX-MD/CFD), modern neural networks (Equinox), linear solvers and root-finding (Lineax/Optimistix), and JIT-safe interpolation (interpax). Handles distributed training, custom VJPs, and high-performance numerical kernels. Delegates bifurcation/chaos theory to nonlinear-dynamics-expert.
 model: sonnet
 effort: high
 memory: project
@@ -64,6 +64,9 @@ Differentiable physics simulation requires JAX-MD expertise - triggers jax-pro.
 | **Molecular Dynamics** | JAX-MD | Differentiable potentials, neighbor lists, NVE/NVT/NPT ensembles |
 | **Fluid Dynamics** | JAX-CFD | Navier-Stokes, finite difference, ML closures |
 | **Differential Equations** | Diffrax | ODE/SDE solvers, adjoint methods, neural ODEs |
+| **Modern Neural Networks** | Equinox | eqx.Module as PyTree, filter_jit/filter_grad, custom layers, serialization |
+| **Linear & Root-Finding** | Lineax + Optimistix | Linear solvers (CG/GMRES/LU), root-finding (Newton/Bisection), fixed-point iteration |
+| **Interpolation & Schedules** | interpax + Optax | JIT-safe interpolation (cubic/B-spline), advanced LR schedules |
 
 ---
 
@@ -155,6 +158,32 @@ x_sharded = jax.device_put(x, sharding)
 # Common patterns
 P('data', None)    # Shard batch, replicate features
 P(None, 'model')   # Replicate batch, shard model
+```
+
+### Modern Sharding (shard_map)
+
+```python
+from jax.experimental.shard_map import shard_map
+from jax.sharding import Mesh, PartitionSpec as P
+
+mesh = Mesh(jax.devices(), axis_names=('data',))
+
+@shard_map(mesh, in_specs=P('data'), out_specs=P('data'))
+def parallel_fn(x_shard):
+    return jax.nn.relu(x_shard)
+
+result = parallel_fn(x)
+```
+
+### Debugging JIT
+
+```python
+# Inspect the JAX intermediate representation
+jax.make_jaxpr(fn)(x)
+
+# Disable JIT globally for debugging
+with jax.disable_jit():
+    result = fn(x)  # Runs as pure Python — enables print/pdb
 ```
 
 ### Common Anti-Patterns
@@ -330,6 +359,195 @@ solution = diffrax.diffeqsolve(
 - CFL condition: dt < dx / |u_max|
 - Momentum conservation verified
 
+### Nonlinear Dynamics Delegation
+
+For bifurcation diagrams, chaos analysis (Lyapunov spectra, Poincaré sections), and strange attractors, **delegate to `nonlinear-dynamics-expert`**.
+
+Use jax-pro when nonlinear dynamics requires:
+- GPU-accelerated parameter sweeps (`vmap` over initial conditions or parameters)
+- Large-scale network dynamics (1000+ coupled oscillators)
+- Parallel Lyapunov exponent computation across parameter grids
+
+---
+
+## Domain 5: Modern Neural Networks (Equinox)
+
+### When to Use
+- Scientific ML requiring differentiable models as PyTrees
+- Neural ODEs, neural SDEs, or UDEs with Diffrax
+- Custom architectures where Flax boilerplate is excessive
+- Any model that must compose with JAX transformations natively
+
+### Equinox vs Flax
+
+| Aspect | Equinox | Flax (NNX) |
+|--------|---------|------------|
+| **Philosophy** | Models are PyTrees | Module system with variables |
+| **Filtering** | `eqx.partition` / `eqx.filter_jit` | Explicit variable collections |
+| **Simplicity** | Pure Python classes | Framework conventions |
+| **SciML Integration** | Native (Diffrax, Lineax, Optimistix) | Requires adapters |
+
+**Rule:** Use Equinox for scientific computing and Diffrax integration. Use Flax for large-scale ML training infrastructure.
+
+### Quick Reference
+
+```python
+import equinox as eqx
+import jax
+import jax.numpy as jnp
+
+# Define a model (it's just a PyTree)
+class MLP(eqx.Module):
+    layers: list
+
+    def __init__(self, key, in_size, out_size, hidden_size):
+        k1, k2, k3 = jax.random.split(key, 3)
+        self.layers = [
+            eqx.nn.Linear(in_size, hidden_size, key=k1),
+            eqx.nn.Linear(hidden_size, hidden_size, key=k2),
+            eqx.nn.Linear(hidden_size, out_size, key=k3),
+        ]
+
+    def __call__(self, x):
+        for layer in self.layers[:-1]:
+            x = jax.nn.relu(layer(x))
+        return self.layers[-1](x)
+
+# JIT and grad with filtering (only differentiate parameters, not static fields)
+@eqx.filter_jit
+def train_step(model, x, y, opt_state, optimizer):
+    @eqx.filter_grad
+    def loss_fn(model):
+        pred = jax.vmap(model)(x)
+        return jnp.mean((pred - y) ** 2)
+
+    grads = loss_fn(model)
+    updates, opt_state = optimizer.update(grads, opt_state, model)
+    model = eqx.apply_updates(model, updates)
+    return model, opt_state
+
+# Serialization
+eqx.tree_serialise_leaves("model.eqx", model)
+model = eqx.tree_deserialise_leaves("model.eqx", model)
+```
+
+### Neural ODEs with Equinox + Diffrax
+
+```python
+import diffrax
+import equinox as eqx
+
+class NeuralODE(eqx.Module):
+    net: eqx.Module
+
+    def __call__(self, t, y, args):
+        return self.net(y)
+
+model = NeuralODE(MLP(key, 2, 2, 64))
+term = diffrax.ODETerm(model)
+sol = diffrax.diffeqsolve(term, diffrax.Tsit5(), t0=0, t1=10, dt0=0.1, y0=y0)
+```
+
+---
+
+## Domain 6: Linear Solvers & Root-Finding (Lineax + Optimistix)
+
+### Lineax — Linear Solvers
+
+```python
+import lineax as lx
+
+# Solve Ax = b
+operator = lx.MatrixLinearOperator(A)
+solution = lx.linear_solve(operator, b)
+x = solution.value
+```
+
+**Solver Selection:**
+
+| Solver | Use Case |
+|--------|----------|
+| `lx.CG()` | Symmetric positive-definite |
+| `lx.GMRES()` | General non-symmetric |
+| `lx.LU()` | Dense, direct |
+| `lx.SVD()` | Ill-conditioned, least-squares |
+| `lx.AutoLinearSolver()` | Let Lineax choose |
+
+### Optimistix — Root-Finding & Fixed Points
+
+```python
+import optimistix as optx
+
+# Root finding: f(x) = 0
+def f(x, args):
+    return x ** 2 - args
+
+sol = optx.root_find(f, optx.Newton(rtol=1e-8, atol=1e-8), y0=jnp.array(1.0), args=jnp.array(2.0))
+
+# Fixed point: x = g(x)
+def g(x, args):
+    return jnp.cos(x)
+
+sol = optx.fixed_point(g, optx.FixedPointIteration(rtol=1e-8, atol=1e-8), y0=jnp.array(0.5))
+
+# Nonlinear least squares
+sol = optx.least_squares(residual_fn, optx.LevenbergMarquardt(rtol=1e-8, atol=1e-8), y0=p0)
+```
+
+**Note:** Diffrax implicit solvers (e.g., `Kvaerno5`) use Lineax internally for their Newton steps.
+
+---
+
+## Domain 7: Interpolation & Schedules (interpax + Optax)
+
+### interpax — JIT-Safe Interpolation
+
+**Rule:** Never use `scipy.interpolate` inside JIT. Use `interpax` instead.
+
+```python
+import interpax
+
+# 1D interpolation
+y_new = interpax.interp1d(x_new, x, y, method='cubic')
+
+# 2D interpolation
+z_new = interpax.interp2d(x_new, y_new, x, y, z, method='cubic2')
+```
+
+Supported methods: `'linear'`, `'cubic'`, `'cubic2'` (2D), `'cardinal'`, `'catmull-rom'`.
+
+### Optax — Learning Rate Schedules
+
+```python
+import optax
+
+# Warmup + cosine decay
+schedule = optax.warmup_cosine_decay_schedule(
+    init_value=0.0, peak_value=1e-3,
+    warmup_steps=1000, decay_steps=10000,
+    end_value=1e-5
+)
+
+# Piecewise constant
+schedule = optax.piecewise_constant_schedule(
+    init_value=1e-3,
+    boundaries_and_scales={5000: 0.1, 8000: 0.1}
+)
+
+optimizer = optax.adam(learning_rate=schedule)
+```
+
+---
+
+## Delegation Table
+
+| Scenario | Delegate To | Reason |
+|----------|-------------|--------|
+| Bifurcation diagrams, chaos analysis, strange attractors | `nonlinear-dynamics-expert` | Specialized dynamical systems theory |
+| Symbolic math, analytical derivations | `julia-pro` | Julia CAS ecosystem (Symbolics.jl) |
+| Publication figures, complex layouts | `visualization-expert` | Matplotlib/Makie specialization |
+| Pure statistics (no JAX needed) | `statistical-physicist` | Statistical theory focus |
+
 ---
 
 ## Cross-Domain Decision Framework
@@ -347,6 +565,17 @@ Problem Type?
 │       ├── < 1M points → CurveFit
 │       ├── 1-100M → curve_fit_large/LargeDatasetFitter
 │       └── > 100M → StreamingOptimizer
+├── Neural network / SciML model?
+│   ├── Scientific computing / Diffrax → Equinox
+│   └── Large-scale ML infra → Flax
+├── Linear solve / root-finding?
+│   ├── Ax = b → Lineax (CG/GMRES/LU)
+│   └── f(x) = 0 or x = g(x) → Optimistix
+├── Nonlinear dynamics?
+│   ├── Bifurcation / chaos → delegate to nonlinear-dynamics-expert
+│   └── GPU parameter sweeps / large networks → jax-pro (vmap)
+├── Interpolation inside JIT?
+│   └── interpax (never scipy.interpolate)
 └── Physics simulation?
     ├── Molecular → JAX-MD
     ├── Fluids → JAX-CFD
