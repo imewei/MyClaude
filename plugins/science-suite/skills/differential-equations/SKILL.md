@@ -78,4 +78,96 @@ sol = solve(ensemble_prob, Tsit5(), EnsembleThreads(), trajectories=100)
 
 ---
 
+## Continuation Methods
+
+Use [BifurcationKit.jl](https://github.com/bifurcationkit/BifurcationKit.jl) for parameter continuation and bifurcation analysis. See the `bifurcation-analysis` skill for advanced workflows.
+
+```julia
+using BifurcationKit
+
+F(u, p) = @. u^3 - p.mu * u  # steady-state equation
+
+u0 = zeros(1)
+params = (mu = 0.0,)
+
+prob = BifurcationProblem(F, u0, params, (@optic _.mu))
+opts = ContinuationPar(p_min = -1.0, p_max = 2.0, ds = 0.01)
+br = continuation(prob, PALC(), opts)
+```
+
+---
+
+## Sensitivity Analysis
+
+Choose forward or adjoint sensitivity based on problem characteristics:
+
+| Criterion | ForwardDiffSensitivity | InterpolatingAdjoint |
+|-----------|----------------------|---------------------|
+| Parameters | < 100 | > 100 |
+| Time span | Short | Long |
+| Memory | O(N x p) | O(N) |
+| Use case | Few-param models | Neural ODEs, UDEs |
+
+**Forward sensitivity** — best for few parameters:
+
+```julia
+using SciMLSensitivity
+
+sol = solve(prob, Tsit5(), sensealg=ForwardDiffSensitivity())
+```
+
+**Adjoint sensitivity** — best for many parameters (neural ODEs, UDEs):
+
+```julia
+sol = solve(prob, Tsit5(),
+    sensealg=InterpolatingAdjoint(autojacvec=ZygoteVJP()))
+```
+
+---
+
+## Stiff System Patterns
+
+**Auto stiffness detection** — switches between non-stiff and stiff solvers automatically:
+
+```julia
+sol = solve(prob, AutoTsit5(Rosenbrock23()))
+```
+
+**Jacobian sparsity** — exploit structure for large stiff systems:
+
+```julia
+using SparseDiffTools, SparseArrays
+
+jac_sparsity = Symbolics.jacobian_sparsity(my_ode!, similar(u0), u0, p, 0.0)
+f = ODEFunction(my_ode!; jac_prototype=float.(jac_sparsity))
+prob_sparse = ODEProblem(f, u0, tspan, p)
+sol = solve(prob_sparse, Rosenbrock23())
+```
+
+---
+
+## Event Handling
+
+**Continuous callback** — Poincare section (detect zero-crossing of `u[1]`):
+
+```julia
+condition(u, t, integrator) = u[1]  # triggers when u[1] crosses zero
+affect!(integrator) = nothing        # record state, no modification
+
+cb = ContinuousCallback(condition, affect!)
+sol = solve(prob, Tsit5(), callback=cb, save_everystep=false)
+```
+
+**Threshold crossing with termination**:
+
+```julia
+condition(u, t, integrator) = u[2] - 1e-6  # stop when u[2] hits threshold
+affect!(integrator) = terminate!(integrator)
+
+cb = ContinuousCallback(condition, affect!)
+sol = solve(prob, Tsit5(), callback=cb)
+```
+
+---
+
 **Version**: 1.0.5
