@@ -1,6 +1,6 @@
 ---
 name: team-assemble
-description: Generate ready-to-use agent team configurations from 38 pre-built templates
+description: Generate ready-to-use agent team configurations from 34 pre-built templates
 argument-hint: <team-type> [--var KEY=VALUE]
 category: agent-core
 execution-modes:
@@ -20,7 +20,7 @@ You are a team assembly specialist. Your job is to generate a ready-to-use agent
 
 | Action | Description |
 |--------|-------------|
-| `list` | Show all 38 available team configurations |
+| `list` | Show all 34 available team configurations |
 | `<team-type>` | Generate the prompt for the specified team |
 | `<team-type> --var KEY=VALUE` | Generate with placeholder substitution |
 
@@ -38,7 +38,7 @@ You are a team assembly specialist. Your job is to generate a ready-to-use agent
 ## Step 1: Parse the Command
 
 1. If the argument is `list`, display the team catalog table and stop.
-2. Otherwise, match the argument to one of the 38 team types below.
+2. Otherwise, match the argument to one of the 34 team types below.
 3. If `--var` flags are provided, substitute `[PLACEHOLDER]` values in the template.
 4. Output the final prompt in a fenced code block, ready to paste.
 
@@ -49,58 +49,54 @@ You are a team assembly specialist. Your job is to generate a ready-to-use agent
 When `list` is invoked, display this table:
 
 ```
-Agent Team Catalog (MyClaude v2.2.1) — 38 Teams
+Agent Team Catalog (MyClaude v2.2.1) — 34 Teams
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 DEVELOPMENT & OPERATIONS
  #  Type                Teammates  Suites Used              Best For
- 1  feature-dev         3          engineering + quality     New features (fullstack)
- 2  incident-response   3          quality + infra           Production debugging
- 3  quality-audit       4          quality + engineering     Pre-release review
+ 2  incident-response   3          dev-suite                 Production debugging
+ 3  quality-audit       4          dev-suite                 Pre-release review
  4  sci-pipeline        4          science                   ML/JAX workflows
- 5  infra-setup         3          infrastructure            Cloud + CI/CD setup
- 6  modernization       4          engineering + quality     Legacy migration
+ 5  infra-setup         3          dev-suite                 Cloud + CI/CD setup
+ 6  modernization       4          dev-suite                 Legacy migration
  7  dl-research         4          science                   Neural network dev
- 8  api-design          4          engineering + quality     API development
- 9  pr-review           3          quality + engineering     Critical PR review
-10  llm-app             3          science + engineering     AI applications
+ 8  api-design          4          dev-suite                 API development
+ 9  pr-review           3          dev-suite                 Critical PR review
+10  ai-engineering      4          science + dev + core      AI/LLM apps + agents
 
 SCIENTIFIC COMPUTING
 11  julia-sciml         4          science                   Julia SciML / DiffEq
-12  stat-phys           4          science                   Phase transitions, correlations
+12  stat-phys           5          science                   Phase transitions, dynamics
 13  bayesian-pipeline   4          science                   NumPyro / MCMC inference
 14  md-campaign         4          science                   Molecular dynamics
 15  ml-forcefield       4          science                   ML potentials (NequIP/MACE)
 16  paper-implement     4          science                   Reproduce research papers
 
 CROSS-SUITE SPECIALIZED
-17  perf-optimize       4          eng + science + quality   Performance profiling
-18  hpc-interop         4          science + engineering     Cross-language HPC
-19  reproducible-research 4        science + infra + quality Open science, CI/CD
-20  prompt-lab          4          science + agent-core      Prompt R&D, evaluation
-21  ai-agent-dev        4          science + eng + core      Agent systems, multi-agent
-22  data-pipeline       4          science + infra + quality ETL, feature engineering
-23  security-harden     4          quality + infra + eng     Security hardening
-24  docs-sprint         4          quality + science + eng   Documentation overhaul
-25  monorepo-refactor   4          eng + infra + quality     Monorepo restructuring
+17  perf-optimize       4          dev + science             Performance profiling
+18  hpc-interop         4          science + dev             Cross-language HPC
+19  reproducible-research 4        science + dev             Open science, CI/CD
+22  data-pipeline       4          science + dev             ETL, feature engineering
+23  security-harden     4          dev-suite                 Security hardening
+24  docs-sprint         4          dev + science             Documentation overhaul
+25  monorepo-refactor   4          dev-suite                 Monorepo restructuring
 
 OFFICIAL PLUGIN INTEGRATION
 26  full-pr-review      4          pr-review-toolkit         Maximum PR scrutiny
-27  feature-ship        4          feature-dev + engineering Feature + review pipeline
+27  feature-dev         4          feature-dev + dev-suite   Feature + review pipeline
 28  agent-sdk-build     4          agent-sdk-dev + science   Agent SDK applications
 29  plugin-forge        4          plugin-dev + hookify      Claude Code extensions
-30  codebase-archaeology 3         feature-dev + quality     Codebase understanding
+30  codebase-archaeology 3         feature-dev + dev-suite   Codebase understanding
 31  code-health         4          pr-review + simplifier    Code quality + type safety
 32  hf-ml-publish       4          huggingface + science     HuggingFace model publish
-33  frontend-excellence 3          engineering + coderabbit  Frontend with review gates
 
 DEBUGGING
  #  Type                Teammates  Suites Used              Best For
-34  debug-gui           4          quality + feature + infra GUI threading, signal safety
-35  debug-numerical     4          quality + feature + sci   JAX/NaN, ODE solver, tracing
-36  debug-schema        4          quality + feature + pr    Schema/type drift, contracts
-37  debug-triage        2          quality + feature         Quick bug triage (lightweight)
-38  debug-full-audit    6          quality + feat + sci + ir Comprehensive multi-phase audit
+34  debug-gui           4          dev + feature + science   GUI threading, signal safety
+35  debug-numerical     4          dev + feature + science   JAX/NaN, ODE solver, tracing
+36  debug-schema        4          dev + feature + pr-review Schema/type drift, contracts
+37  debug-triage        2          dev + feature             Quick bug triage (lightweight)
+38  debug-full-audit    6          dev + feat + sci + pr     Comprehensive multi-phase audit
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
@@ -114,33 +110,36 @@ Docs:  docs/agent-teams-guide.md
 
 ### feature-dev
 
-**Placeholders:** `FEATURE_NAME`, `BACKEND_STACK`, `FRONTEND_STACK`
+**Placeholders:** `FEATURE_NAME`, `PROJECT`, `FRONTEND_STACK`, `BACKEND_STACK`
 
 ```
-Create an agent team called "feature-dev" with 3 teammates to build [FEATURE_NAME].
+Create an agent team called "feature-dev" to design, build, and review
+[FEATURE_NAME] for [PROJECT].
 
-Teammates:
-1. "backend" - Backend engineer focused on API endpoints, data models, and
-   business logic. Owns src/api/, src/models/, src/services/. Tech stack:
-   [BACKEND_STACK]. Implement the server-side logic first so frontend
-   can integrate.
+Spawn 4 specialist teammates:
 
-2. "frontend" - Frontend engineer building the UI components and pages.
-   Owns src/components/, src/pages/, src/hooks/. Tech stack: [FRONTEND_STACK].
-   Wait for backend to define API contracts before integrating.
+1. "architect" (feature-dev:code-architect) - Analyze the existing
+   codebase patterns and conventions, then produce a comprehensive
+   implementation blueprint: files to create/modify, component designs,
+   data flows, and build sequence. Present the blueprint for approval
+   before any code is written. Owns docs/design/.
 
-3. "qa" - Quality engineer writing tests and reviewing code. Owns tests/.
-   Write unit tests for backend logic, integration tests for API endpoints,
-   and component tests for frontend. Review all code for security and
-   maintainability.
+2. "builder" (dev-suite:app-developer) - Implement the frontend
+   components following the architect's blueprint. Build with
+   [FRONTEND_STACK]. Focus on performance, accessibility, and
+   offline-first patterns. Owns src/components/, src/pages/, src/hooks/.
 
-Task breakdown:
-- Backend: Design data model -> Implement API endpoints -> Add validation
-- Frontend: Create component skeleton -> Implement UI logic -> Connect to API
-- QA: Write unit tests -> Write integration tests -> Security review
+3. "backend" (dev-suite:software-architect) - Implement the backend
+   services following the architect's blueprint. Build with
+   [BACKEND_STACK]. Design scalable APIs with proper error handling
+   and validation. Owns src/api/, src/services/, src/models/.
 
-Quality gates: QA must review all code before marking tasks complete.
-Use Sonnet for all teammates.
+4. "reviewer" (pr-review-toolkit:code-reviewer) - After builder and
+   backend complete their work, review all changes for adherence to
+   the architect's blueprint, project guidelines, and best practices.
+   Report only high-priority issues. Read-only.
+
+Workflow: architect → (builder + backend in parallel) → reviewer.
 ```
 
 ### incident-response
@@ -411,36 +410,42 @@ Have reviewers share findings with each other and debate disagreements.
 Synthesize into a unified review with prioritized action items.
 ```
 
-### llm-app
+### ai-engineering
 
 **Placeholders:** `USE_CASE`
+**Aliases:** `llm-app`, `ai-agent-dev`, `prompt-lab`
 
 ```
-Create an agent team called "llm-app" to build a production LLM
+Create an agent team called "ai-engineering" to build a production LLM
 application for [USE_CASE].
 
-Spawn 3 specialists:
+Spawn 4 specialists:
 
-1. "ai-engineer" - LLM application architect. Design and implement the
-   core AI pipeline: document ingestion, chunking strategy, embedding
-   generation, vector store (Pinecone/Weaviate/pgvector), retrieval
-   logic, and LLM orchestration. Implement guardrails, content filtering,
-   and hallucination detection. Owns src/ai/, src/retrieval/, src/agents/.
+1. "ai-engineer" (science-suite:ai-engineer) - LLM application architect.
+   Design and implement the core AI pipeline: document ingestion, chunking
+   strategy, embedding generation, vector store, retrieval logic, and LLM
+   orchestration. For agent systems: design tool definitions, state
+   management, memory systems, and planning strategies. Implement
+   guardrails, content filtering, and hallucination detection.
+   Owns src/ai/, src/retrieval/, src/agents/.
 
-2. "prompt-engineer" - Prompt and evaluation specialist. Design system
-   prompts, few-shot examples, and chain-of-thought templates. Build
-   evaluation framework: automated scoring, human evaluation interface,
-   regression testing for prompt changes. Optimize for cost/latency/quality
-   trade-offs. Owns prompts/, evaluation/, benchmarks/.
+2. "prompt-engineer" (science-suite:prompt-engineer) - Prompt design and
+   evaluation specialist. Design system prompts using chain-of-thought and
+   constitutional AI patterns. Build evaluation framework: LLM-as-judge
+   scoring, A/B testing, regression testing for prompt changes. Optimize
+   for cost/latency/quality trade-offs. Owns prompts/, evaluation/.
 
-3. "backend-architect" - API and infrastructure. Build the serving layer:
-   streaming API endpoints, authentication, rate limiting, caching
-   (semantic cache for LLM responses), observability (token usage,
-   latency, error rates). Design for horizontal scaling. Owns src/api/,
-   src/middleware/, infra/.
+3. "backend-architect" (dev-suite:software-architect) - API and serving
+   infrastructure. Build streaming API endpoints, authentication, rate
+   limiting, semantic caching, session management, and observability.
+   Design for horizontal scaling. Owns src/api/, src/middleware/, infra/.
 
-Key requirements: implement structured output parsing, retry logic with
-exponential backoff, and cost tracking per request.
+4. "reasoning-architect" (agent-core:reasoning-engine) - Cognitive
+   architecture designer. Design reasoning scaffolds, self-reflection
+   checkpoints, confidence calibration, and error correction loops.
+   Owns src/reasoning/.
+
+For LLM-only apps (no agents): omit reasoning-architect, keep 3 teammates.
 ```
 
 ### julia-sciml
@@ -781,81 +786,6 @@ Goal: anyone should be able to clone, install, and reproduce all results
 with: uv sync && uv run reproduce-all
 ```
 
-### prompt-lab
-
-**Placeholders:** `LLM_TASK`
-
-```
-Create an agent team called "prompt-lab" to design and evaluate prompts
-for [LLM_TASK].
-
-Spawn 4 specialist teammates:
-
-1. "prompt-designer" - Prompt engineering specialist. Design prompt
-   variants using: zero-shot, few-shot, chain-of-thought, tree-of-thought,
-   and constitutional AI patterns. Create a prompt library with versioning.
-   Implement prompt templates with variable substitution. Owns
-   prompts/, src/templates/.
-
-2. "reasoning-architect" - Cognitive architecture designer. Design
-   reasoning scaffolds: structured output formats, self-consistency
-   checks, meta-cognitive reflection steps, and error correction loops.
-   Implement the evaluation criteria for each reasoning pattern.
-   Owns src/reasoning/, src/scaffolds/.
-
-3. "eval-engineer" - Evaluation infrastructure. Build automated evaluation
-   pipelines: LLM-as-judge scoring, reference-based metrics (BLEU/ROUGE
-   for text, exact match for structured), human evaluation interfaces,
-   and A/B testing frameworks. Track prompt performance over time.
-   Owns evaluation/, benchmarks/, src/eval/.
-
-4. "researcher" - Experimental methodology. Design statistically rigorous
-   experiments: sample sizes, confidence intervals, ablation studies.
-   Control for prompt ordering effects and model temperature sensitivity.
-   Produce publication-quality analysis of prompt performance.
-   Owns experiments/, analysis/, notebooks/.
-
-Track all prompt versions and evaluation results. Never deploy without
-regression testing against the existing prompt suite.
-```
-
-### ai-agent-dev
-
-**Placeholders:** `AGENT_PURPOSE`
-
-```
-Create an agent team called "ai-agent-dev" to build an AI agent system
-for [AGENT_PURPOSE].
-
-Spawn 4 specialist teammates:
-
-1. "agent-architect" - AI agent framework engineer. Design the agent
-   architecture: tool definitions, state management, memory systems
-   (short-term/long-term), planning strategies (ReAct, Plan-and-Execute),
-   and error recovery. Implement using Claude Agent SDK or LangGraph.
-   Owns src/agents/, src/tools/.
-
-2. "prompt-architect" - System prompt engineer. Design the agent's
-   personality, capabilities description, tool usage instructions,
-   safety guardrails, and output formatting. Implement constitutional
-   AI principles for self-correction. Create few-shot examples for
-   complex tool chains. Owns prompts/, src/guardrails/.
-
-3. "backend-engineer" - Serving infrastructure. Build the API layer:
-   streaming responses, session management, tool execution sandbox,
-   rate limiting, cost tracking, and observability (latency, token
-   usage, tool call frequency). Owns src/api/, src/middleware/.
-
-4. "cognitive-designer" - Reasoning architecture. Design the agent's
-   reasoning loop: when to use tools vs direct response, multi-step
-   planning, self-reflection checkpoints, and confidence calibration.
-   Implement evaluation harness for agent behavior. Owns src/reasoning/,
-   evaluation/.
-
-Key requirements: implement retry logic, graceful degradation when
-tools fail, and comprehensive logging of agent decision traces.
-```
-
 ### data-pipeline
 
 **Placeholders:** `DATA_SOURCE`, `ML_TARGET`
@@ -1039,40 +969,6 @@ collects all findings and produces a unified review with issues sorted
 by severity. No file ownership conflicts since all agents are read-only.
 ```
 
-### feature-ship
-
-**Placeholders:** `FEATURE_NAME`, `PROJECT`, `FRONTEND_STACK`, `BACKEND_STACK`
-
-```
-Create an agent team called "feature-ship" to design, build, and review
-[FEATURE_NAME] for [PROJECT].
-
-Spawn 4 specialist teammates:
-
-1. "architect" (feature-dev:code-architect) - Analyze the existing
-   codebase patterns and conventions, then produce a comprehensive
-   implementation blueprint: files to create/modify, component designs,
-   data flows, and build sequence. Present the blueprint for approval
-   before any code is written. Owns docs/design/.
-
-2. "builder" (dev-suite:app-developer) - Implement the frontend
-   components following the architect's blueprint. Build with
-   [FRONTEND_STACK]. Focus on performance, accessibility, and
-   offline-first patterns. Owns src/components/, src/pages/, src/hooks/.
-
-3. "backend" (dev-suite:software-architect) - Implement the
-   backend services following the architect's blueprint. Build with
-   [BACKEND_STACK]. Design scalable APIs with proper error handling
-   and validation. Owns src/api/, src/services/, src/models/.
-
-4. "reviewer" (pr-review-toolkit:code-reviewer) - After builder and
-   backend complete their work, review all changes for adherence to
-   the architect's blueprint, project guidelines, and best practices.
-   Report only high-priority issues. Read-only.
-
-Workflow: architect → (builder + backend in parallel) → reviewer.
-```
-
 ### agent-sdk-build
 
 **Placeholders:** `AGENT_DESCRIPTION`, `LANGUAGE`
@@ -1254,36 +1150,6 @@ Spawn 4 specialist teammates:
    a reproducibility report. Owns evaluation/, benchmarks/.
 
 Workflow: coder → ml-engineer → (publisher + evaluator in parallel).
-```
-
-### frontend-excellence
-
-**Placeholders:** `FEATURE_NAME`, `FRONTEND_STACK`
-
-```
-Create an agent team called "frontend-excellence" to build and
-review [FEATURE_NAME] using [FRONTEND_STACK].
-
-Spawn 3 specialist teammates:
-
-1. "builder" (dev-suite:app-developer) - Implement the frontend
-   feature with focus on performance, accessibility (WCAG 2.1 AA),
-   responsive design, and offline-first patterns. Write component
-   tests and integration tests. Use [FRONTEND_STACK] patterns and
-   conventions. Owns src/components/, src/pages/, src/hooks/, tests/.
-
-2. "pr-reviewer" (pr-review-toolkit:code-reviewer) - After builder
-   completes, review all changes for adherence to project guidelines,
-   style violations, potential bugs, and accessibility issues. Use
-   confidence-based filtering for high-priority issues only. Read-only.
-
-3. "ai-reviewer" (coderabbit:code-reviewer) - Independently review the
-   same changes using CodeRabbit AI analysis. Provide a second opinion
-   on code quality, potential issues, and improvement suggestions.
-   Read-only.
-
-Workflow: builder → (pr-reviewer + ai-reviewer in parallel).
-Output: implemented feature + two independent review reports.
 ```
 
 ### debug-gui

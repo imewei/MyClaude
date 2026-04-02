@@ -1,6 +1,6 @@
 # Agent Teams Guide for MyClaude Plugin Suites
 
-> 38 ready-to-use team configurations leveraging 22 MyClaude agents + 20 official plugin agents across 3 suites.
+> 34 ready-to-use team configurations leveraging 23 MyClaude agents + 20 official plugin agents across 3 suites.
 
 ## Prerequisites
 
@@ -39,6 +39,7 @@ Enable agent teams (experimental) in your settings:
 | | research-expert | `science-suite:research-expert` | Scientific methodology, papers |
 | | simulation-expert | `science-suite:simulation-expert` | Physics simulation, MD |
 | | statistical-physicist | `science-suite:statistical-physicist` | Stat mech, stochastic dynamics |
+| | nonlinear-dynamics-expert | `science-suite:nonlinear-dynamics-expert` | Bifurcation, chaos, SINDy/UDE |
 | | julia-pro | `science-suite:julia-pro` | Julia HPC, SciML |
 | | prompt-engineer | `science-suite:prompt-engineer` | LLM optimization, eval |
 
@@ -72,11 +73,10 @@ These agents come from [claude-plugins-official](https://github.com/anthropics/c
 
 ## Quick Reference
 
-### Development & Operations (Teams 1-10)
+### Development & Operations (Teams 2-10)
 
 | # | Team | Best For | Agents Used | Teammates |
 |---|------|----------|-------------|-----------|
-| 1 | feature-dev | New features | architect + app-dev + quality | 3 |
 | 2 | incident-response | Prod debugging | debugger + sre + devops | 3 |
 | 3 | quality-audit | Pre-release review | quality + architect + debugger + docs | 4 |
 | 4 | sci-pipeline | ML/JAX workflows | jax + ml + python + research | 4 |
@@ -85,14 +85,14 @@ These agents come from [claude-plugins-official](https://github.com/anthropics/c
 | 7 | dl-research | Neural networks | nn-master + jax + ml + research | 4 |
 | 8 | api-design | API development | architect + app-dev + quality + docs | 4 |
 | 9 | pr-review | Critical PR review | quality + systems + debugger | 3 |
-| 10 | llm-app | AI applications | ai-eng + prompt-eng + architect | 3 |
+| 10 | ai-engineering | AI/LLM/agents | ai-eng + prompt-eng + architect + reasoning | 4 |
 
 ### Scientific Computing (Teams 11-16)
 
 | # | Team | Best For | Agents Used | Teammates |
 |---|------|----------|-------------|-----------|
 | 11 | julia-sciml | Julia SciML / DiffEq | julia + simulation + research + python | 4 |
-| 12 | stat-phys | Phase transitions, correlations | stat-phys + jax + simulation + research | 4 |
+| 12 | stat-phys | Phase transitions, dynamics | stat-phys + dynamics + jax + sim + research | 5 |
 | 13 | bayesian-pipeline | NumPyro / MCMC inference | jax + stat-phys + ml + research | 4 |
 | 14 | md-campaign | Molecular dynamics | simulation + jax + stat-phys + python | 4 |
 | 15 | ml-forcefield | ML potentials (NequIP/MACE) | nn-master + simulation + jax + research | 4 |
@@ -105,25 +105,22 @@ These agents come from [claude-plugins-official](https://github.com/anthropics/c
 | 17 | perf-optimize | Performance profiling | systems + jax + debugger + python | 4 |
 | 18 | hpc-interop | Cross-language HPC | julia + python + systems + jax | 4 |
 | 19 | reproducible-research | Open science, CI/CD for research | research + python + automation + docs | 4 |
-| 20 | prompt-lab | Prompt R&D, evaluation | prompt-eng + reasoning + ai-eng + research | 4 |
-| 21 | ai-agent-dev | Agent systems, multi-agent | ai-eng + prompt-eng + architect + reasoning | 4 |
 | 22 | data-pipeline | ETL, feature engineering, MLOps | python + ml + devops + quality | 4 |
 | 23 | security-harden | Security hardening | quality + devops + systems + automation | 4 |
 | 24 | docs-sprint | Documentation overhaul | docs-expert + research + app-dev + architect | 4 |
 | 25 | monorepo-refactor | Monorepo restructuring | architect + automation + quality + systems | 4 |
 
-### Official Plugin Integration (Teams 26-33)
+### Official Plugin Integration (Teams 26-32)
 
 | # | Team | Best For | Agents Used | Teammates |
 |---|------|----------|-------------|-----------|
 | 26 | full-pr-review | Maximum PR scrutiny | 4 pr-review-toolkit analyzers | 4 |
-| 27 | feature-ship | Feature + review pipeline | code-architect + architect + app-dev + reviewer | 4 |
+| 27 | feature-dev | Feature + review pipeline (+ frontend variant) | code-architect + architect + app-dev + reviewer | 4 |
 | 28 | agent-sdk-build | Agent SDK applications | sdk-verifiers + ai-eng + prompt-eng | 4 |
 | 29 | plugin-forge | Claude Code extensions | plugin-dev + hookify + quality + validator | 4 |
 | 30 | codebase-archaeology | Codebase understanding | code-explorer + docs-expert + researcher | 3 |
 | 31 | code-health | Code quality + type safety | simplifier + type-eng + type-reviewer + quality | 4 |
 | 32 | hf-ml-publish | HuggingFace model publish | hf-agents + ml-expert + python-pro | 4 |
-| 33 | frontend-excellence | Frontend with review gates | app-dev + pr-reviewer + coderabbit | 3 |
 
 ### Debugging (Teams 34-38)
 
@@ -134,49 +131,6 @@ These agents come from [claude-plugins-official](https://github.com/anthropics/c
 | 36 | debug-schema | Schema/type drift, contracts | debugger + explorer + python-pro + type-analyzer | 4 |
 | 37 | debug-triage | Quick bug triage (lightweight) | debugger + explorer | 2 |
 | 38 | debug-full-audit | Comprehensive multi-phase audit | core trio + sre + jax-pro + type-analyzer | 6 |
-
----
-
-## Team 1: Full-Stack Feature Development
-
-**When:** Building a new feature spanning frontend, backend, and tests.
-**Suites:** dev-suite
-**See also:** Team 27 adds a design-first pipeline with review gates using official plugins.
-
-| Role | Agent Type | File Ownership |
-|------|-----------|----------------|
-| Lead | `agent-core:orchestrator` | Coordination only |
-| backend | `dev-suite:software-architect` | `src/api/`, `src/models/`, `src/services/` |
-| frontend | `dev-suite:app-developer` | `src/components/`, `src/pages/`, `src/hooks/` |
-| qa | `dev-suite:quality-specialist` | `tests/`, `*.test.*` |
-
-### Prompt
-
-```
-Create an agent team called "feature-dev" with 3 teammates to build [FEATURE_NAME].
-
-Teammates:
-1. "backend" - Backend engineer focused on API endpoints, data models, and
-   business logic. Owns src/api/, src/models/, src/services/. Tech stack:
-   [YOUR_BACKEND_STACK]. Implement the server-side logic first so frontend
-   can integrate.
-
-2. "frontend" - Frontend engineer building the UI components and pages.
-   Owns src/components/, src/pages/, src/hooks/. Tech stack: [YOUR_FRONTEND_STACK].
-   Wait for backend to define API contracts before integrating.
-
-3. "qa" - Quality engineer writing tests and reviewing code. Owns tests/.
-   Write unit tests for backend logic, integration tests for API endpoints,
-   and component tests for frontend. Review all code for security and
-   maintainability.
-
-Task breakdown:
-- Backend: Design data model -> Implement API endpoints -> Add validation
-- Frontend: Create component skeleton -> Implement UI logic -> Connect to API
-- QA: Write unit tests -> Write integration tests -> Security review
-
-Quality gates: QA must review all code before marking tasks complete.
-```
 
 ---
 
@@ -505,7 +459,7 @@ parallel -> docs-writer documents the final API.
 
 **When:** Thorough multi-perspective review of a critical pull request.
 **Suites:** dev-suite
-**See also:** Team 26 uses pr-review-toolkit specialized analyzers for toolkit-driven review.
+**See also:** Team 26 uses pr-review-toolkit specialized analyzers for toolkit-driven review. Team 27 adds review gates to feature development.
 
 | Role | Agent Type | Review Lens |
 |------|-----------|-------------|
@@ -549,47 +503,63 @@ Synthesize into a unified review with prioritized action items.
 
 ---
 
-## Team 10: LLM Application Development
+## Team 10: AI Engineering
 
-**When:** Building production LLM-powered applications (RAG, agents, chatbots).
-**Suites:** science-suite, dev-suite
-**See also:** Team 21 for multi-agent systems, Team 28 for Agent SDK apps.
+**When:** Building production AI applications — RAG systems, LLM-powered apps, multi-agent systems, or prompt R&D.
+**Suites:** science-suite, dev-suite, agent-core
+**Replaces:** Former Teams 10 (llm-app), 20 (prompt-lab), and 21 (ai-agent-dev).
+**See also:** Team 28 for Claude Agent SDK apps specifically.
 
 | Role | Agent Type | Domain |
 |------|-----------|--------|
 | Lead | `agent-core:orchestrator` | Architecture decisions |
-| ai-eng | `science-suite:ai-engineer` | RAG, vector search, agents |
+| ai-eng | `science-suite:ai-engineer` | RAG, vector search, agent framework |
 | prompt-eng | `science-suite:prompt-engineer` | Prompt design, evaluation |
 | backend | `dev-suite:software-architect` | API, infrastructure |
+| reasoning | `agent-core:reasoning-engine` | Cognitive architecture (agent systems) |
 
-### Prompt
+### Prompt (LLM Application)
 
 ```
-Create an agent team called "llm-app" to build a production LLM
+Create an agent team called "ai-engineering" to build a production LLM
 application for [USE_CASE].
 
-Spawn 3 specialists:
+Spawn 4 specialists:
 
-1. "ai-engineer" - LLM application architect. Design and implement the
-   core AI pipeline: document ingestion, chunking strategy, embedding
-   generation, vector store (Pinecone/Weaviate/pgvector), retrieval
-   logic, and LLM orchestration. Implement guardrails, content filtering,
-   and hallucination detection. Owns src/ai/, src/retrieval/, src/agents/.
+1. "ai-engineer" (science-suite:ai-engineer) - LLM application architect.
+   Design and implement the core AI pipeline: document ingestion, chunking
+   strategy, embedding generation, vector store (Pinecone/Weaviate/pgvector),
+   retrieval logic, and LLM orchestration. For agent systems: design tool
+   definitions, state management, memory systems, and planning strategies
+   (ReAct, Plan-and-Execute). Implement guardrails, content filtering, and
+   hallucination detection. Owns src/ai/, src/retrieval/, src/agents/.
 
-2. "prompt-engineer" - Prompt and evaluation specialist. Design system
-   prompts, few-shot examples, and chain-of-thought templates. Build
-   evaluation framework: automated scoring, human evaluation interface,
-   regression testing for prompt changes. Optimize for cost/latency/quality
-   trade-offs. Owns prompts/, evaluation/, benchmarks/.
+2. "prompt-engineer" (science-suite:prompt-engineer) - Prompt design and
+   evaluation specialist. Design system prompts using zero-shot, few-shot,
+   chain-of-thought, and constitutional AI patterns. Build evaluation
+   framework: LLM-as-judge scoring, reference-based metrics, A/B testing,
+   and regression testing for prompt changes. Optimize for cost/latency/
+   quality trade-offs. Owns prompts/, evaluation/, benchmarks/.
 
-3. "backend-architect" - API and infrastructure. Build the serving layer:
-   streaming API endpoints, authentication, rate limiting, caching
-   (semantic cache for LLM responses), observability (token usage,
-   latency, error rates). Design for horizontal scaling. Owns src/api/,
-   src/middleware/, infra/.
+3. "backend-architect" (dev-suite:software-architect) - API and serving
+   infrastructure. Build streaming API endpoints, authentication, rate
+   limiting, semantic caching for LLM responses, session management, and
+   observability (token usage, latency, error rates). Design for horizontal
+   scaling. Owns src/api/, src/middleware/, infra/.
+
+4. "reasoning-architect" (agent-core:reasoning-engine) - Cognitive
+   architecture designer. Design reasoning scaffolds: when to use tools
+   vs direct response, multi-step planning, self-reflection checkpoints,
+   confidence calibration, and self-consistency checks. Implement error
+   correction loops and meta-cognitive reflection. Owns src/reasoning/.
 
 Key requirements: implement structured output parsing, retry logic with
-exponential backoff, and cost tracking per request.
+exponential backoff, cost tracking per request, and comprehensive logging
+of agent decision traces.
+
+For LLM-only apps (no agents): omit reasoning-architect, keep 3 teammates.
+For prompt R&D focus: add a research-expert teammate for statistical
+rigor in evaluation experiments.
 ```
 
 ---
@@ -645,13 +615,14 @@ Use Julia 1.10+ with strict type annotations at module boundaries.
 
 ## Team 12: Statistical Physics Research
 
-**When:** Studying phase transitions, correlation functions, non-equilibrium dynamics, or soft matter systems.
+**When:** Studying phase transitions, correlation functions, non-equilibrium dynamics, bifurcations, or soft matter systems.
 **Suites:** science-suite
 
 | Role | Agent Type | Domain |
 |------|-----------|--------|
 | Lead | `agent-core:orchestrator` | Research coordination |
 | physicist | `science-suite:statistical-physicist` | Theory, ensemble methods |
+| dynamics | `science-suite:nonlinear-dynamics-expert` | Bifurcation, chaos, pattern formation |
 | jax | `science-suite:jax-pro` | GPU-accelerated computation |
 | simulation | `science-suite:simulation-expert` | MD/MC simulations |
 | research | `science-suite:research-expert` | Literature, methodology |
@@ -661,9 +632,9 @@ Use Julia 1.10+ with strict type annotations at module boundaries.
 ```
 Create an agent team called "stat-phys" to investigate [PHYSICAL_SYSTEM]
 with focus on [PHENOMENON] (e.g., phase transitions, correlation functions,
-non-equilibrium dynamics).
+non-equilibrium dynamics, bifurcations, pattern formation).
 
-Spawn 4 specialist teammates:
+Spawn 5 specialist teammates:
 
 1. "theorist" - Statistical physicist. Derive the theoretical framework:
    partition function, order parameters, critical exponents, scaling
@@ -671,19 +642,25 @@ Spawn 4 specialist teammates:
    non-equilibrium. Identify universality class and relevant symmetries.
    Predict expected behavior to validate simulations. Owns theory/, docs/.
 
-2. "gpu-compute" - JAX computation specialist. Implement GPU-accelerated
+2. "dynamics" (science-suite:nonlinear-dynamics-expert) - Nonlinear dynamics
+   specialist. Analyze bifurcation diagrams, Lyapunov exponents, strange
+   attractors, and pattern formation mechanisms. Apply SINDy for equation
+   discovery from simulation data. Identify universality in dynamical
+   transitions. Owns src/dynamics/, src/bifurcation/.
+
+3. "gpu-compute" - JAX computation specialist. Implement GPU-accelerated
    Monte Carlo or molecular dynamics using JAX. Use vmap for ensemble
    averaging, pmap for multi-GPU scaling. Implement efficient correlation
    function computation (FFT-based), histogram reweighting, and
    finite-size scaling analysis. Owns src/compute/, src/analysis/.
 
-3. "simulator" - Simulation architect. Design the simulation protocol:
+4. "simulator" - Simulation architect. Design the simulation protocol:
    equilibration criteria, production run lengths, sampling strategies
    (replica exchange, Wang-Landau, umbrella sampling). Implement
    observables: structure factor S(q), radial distribution g(r),
    mean-square displacement, susceptibility. Owns src/simulation/.
 
-4. "researcher" - Methodology and literature. Survey existing results
+5. "researcher" - Methodology and literature. Survey existing results
    for [PHYSICAL_SYSTEM], identify open questions, validate simulation
    results against known benchmarks. Prepare publication-quality figures
    using scientific visualization best practices. Owns papers/, figures/.
@@ -792,6 +769,10 @@ Spawn 4 specialist teammates:
 
 Ensure: proper equilibration verification, production run length
 justified by autocorrelation analysis, explicit seeds.
+
+Optional: For systems with phase transitions or pattern formation, add
+a 5th teammate "dynamics" (science-suite:nonlinear-dynamics-expert) to
+analyze bifurcation diagrams and order parameter dynamics.
 ```
 
 ---
@@ -1049,107 +1030,6 @@ with `uv sync && uv run reproduce-all`.
 
 ---
 
-## Team 20: Prompt Engineering Lab
-
-**When:** Systematic prompt R&D: designing, testing, and evaluating LLM prompts.
-**Suites:** science-suite, agent-core
-
-| Role | Agent Type | Domain |
-|------|-----------|--------|
-| Lead | `agent-core:orchestrator` | Experiment coordination |
-| prompt | `science-suite:prompt-engineer` | Prompt design, patterns |
-| reasoning | `agent-core:reasoning-engine` | CoT, constitutional AI |
-| ai | `science-suite:ai-engineer` | Integration, tooling |
-| research | `science-suite:research-expert` | Evaluation methodology |
-
-### Prompt
-
-```
-Create an agent team called "prompt-lab" to design and evaluate prompts
-for [LLM_TASK].
-
-Spawn 4 specialist teammates:
-
-1. "prompt-designer" - Prompt engineering specialist. Design prompt
-   variants using: zero-shot, few-shot, chain-of-thought, tree-of-thought,
-   and constitutional AI patterns. Create a prompt library with versioning.
-   Implement prompt templates with variable substitution. Owns
-   prompts/, src/templates/.
-
-2. "reasoning-architect" - Cognitive architecture designer. Design
-   reasoning scaffolds: structured output formats, self-consistency
-   checks, meta-cognitive reflection steps, and error correction loops.
-   Implement the evaluation criteria for each reasoning pattern.
-   Owns src/reasoning/, src/scaffolds/.
-
-3. "eval-engineer" - Evaluation infrastructure. Build automated evaluation
-   pipelines: LLM-as-judge scoring, reference-based metrics (BLEU/ROUGE
-   for text, exact match for structured), human evaluation interfaces,
-   and A/B testing frameworks. Track prompt performance over time.
-   Owns evaluation/, benchmarks/, src/eval/.
-
-4. "researcher" - Experimental methodology. Design statistically rigorous
-   experiments: sample sizes, confidence intervals, ablation studies.
-   Control for prompt ordering effects and model temperature sensitivity.
-   Produce publication-quality analysis of prompt performance.
-   Owns experiments/, analysis/, notebooks/.
-
-Track all prompt versions and evaluation results. Never deploy without
-regression testing against the existing prompt suite.
-```
-
----
-
-## Team 21: AI Agent Development
-
-**When:** Building multi-agent AI systems, tool-using agents, or autonomous workflows.
-**Suites:** science-suite, dev-suite, agent-core
-
-| Role | Agent Type | Domain |
-|------|-----------|--------|
-| Lead | `agent-core:orchestrator` | Architecture coordination |
-| ai | `science-suite:ai-engineer` | Agent framework, tools |
-| prompt | `science-suite:prompt-engineer` | System prompts, behavior |
-| architect | `dev-suite:software-architect` | Backend, API design |
-| reasoning | `agent-core:reasoning-engine` | Cognitive architecture |
-
-### Prompt
-
-```
-Create an agent team called "ai-agent-dev" to build an AI agent system
-for [AGENT_PURPOSE].
-
-Spawn 4 specialist teammates:
-
-1. "agent-architect" - AI agent framework engineer. Design the agent
-   architecture: tool definitions, state management, memory systems
-   (short-term/long-term), planning strategies (ReAct, Plan-and-Execute),
-   and error recovery. Implement using Claude Agent SDK or LangGraph.
-   Owns src/agents/, src/tools/.
-
-2. "prompt-architect" - System prompt engineer. Design the agent's
-   personality, capabilities description, tool usage instructions,
-   safety guardrails, and output formatting. Implement constitutional
-   AI principles for self-correction. Create few-shot examples for
-   complex tool chains. Owns prompts/, src/guardrails/.
-
-3. "backend-engineer" - Serving infrastructure. Build the API layer:
-   streaming responses, session management, tool execution sandbox,
-   rate limiting, cost tracking, and observability (latency, token
-   usage, tool call frequency). Owns src/api/, src/middleware/.
-
-4. "cognitive-designer" - Reasoning architecture. Design the agent's
-   reasoning loop: when to use tools vs direct response, multi-step
-   planning, self-reflection checkpoints, and confidence calibration.
-   Implement evaluation harness for agent behavior. Owns src/reasoning/,
-   evaluation/.
-
-Key requirements: implement retry logic, graceful degradation when
-tools fail, and comprehensive logging of agent decision traces.
-```
-
----
-
 ## Team 22: Data Pipeline & Feature Engineering
 
 **When:** Building ETL pipelines, feature stores, or MLOps data infrastructure.
@@ -1354,7 +1234,7 @@ tests at every intermediate step.
 
 **When:** Critical PRs needing maximum scrutiny — security-sensitive changes, major refactors, or pre-release reviews.
 **Plugins:** pr-review-toolkit (4 specialized analyzers)
-**See also:** Team 9 uses MyClaude domain experts (security, performance, correctness) for perspective-based review.
+**See also:** Team 9 uses MyClaude domain experts for perspective-based review.
 
 | Role | Agent Type | Focus Area |
 |------|-----------|------------|
@@ -1399,23 +1279,24 @@ by severity. No file ownership conflicts since all agents are read-only.
 
 ---
 
-## Team 27: Feature Ship Pipeline
+## Team 27: Feature Development
 
-**When:** End-to-end feature development with architecture design, implementation, and automated review gates.
+**When:** Building new features — full-stack, backend-only, or frontend-only — with a design-first pipeline and automated review gate.
 **Plugins:** feature-dev, pr-review-toolkit, dev-suite
+**Replaces:** Former Teams 1 (feature-dev) and 33 (frontend-excellence).
 
 | Role | Agent Type | File Ownership |
 |------|-----------|----------------|
 | Lead | `agent-core:orchestrator` | Coordination only |
 | architect | `feature-dev:code-architect` | docs/design/, architecture decisions |
-| builder | `dev-suite:app-developer` | src/, components, pages |
-| backend | `dev-suite:software-architect` | api/, services/, models/ |
+| builder | `dev-suite:app-developer` | src/components/, src/pages/, src/hooks/ |
+| backend | `dev-suite:software-architect` | src/api/, src/services/, src/models/ |
 | reviewer | `pr-review-toolkit:code-reviewer` | Read-only review |
 
-### Prompt
+### Prompt (Full-Stack)
 
 ```
-Create an agent team called "feature-ship" to design, build, and review
+Create an agent team called "feature-dev" to design, build, and review
 [FEATURE_NAME] for [PROJECT].
 
 Spawn 4 specialist teammates:
@@ -1442,6 +1323,32 @@ Spawn 4 specialist teammates:
    Report only high-priority issues. Read-only.
 
 Workflow: architect → (builder + backend in parallel) → reviewer.
+```
+
+### Variant: Frontend-Only (with dual review gates)
+
+For frontend-only features, drop the backend agent and add a second reviewer for maximum quality:
+
+```
+Create an agent team called "frontend-dev" to build and review
+[FEATURE_NAME] using [FRONTEND_STACK].
+
+Spawn 3 specialist teammates:
+
+1. "builder" (dev-suite:app-developer) - Implement the frontend feature
+   with focus on performance, accessibility (WCAG 2.1 AA), responsive
+   design, and offline-first patterns. Write component and integration
+   tests. Owns src/components/, src/pages/, src/hooks/, tests/.
+
+2. "pr-reviewer" (pr-review-toolkit:code-reviewer) - After builder
+   completes, review all changes for adherence to project guidelines,
+   style violations, potential bugs, and accessibility issues. Read-only.
+
+3. "ai-reviewer" (coderabbit:code-reviewer) - Independently review the
+   same changes using CodeRabbit AI analysis. Provide a second opinion
+   on code quality and improvement suggestions. Read-only.
+
+Workflow: builder → (pr-reviewer + ai-reviewer in parallel).
 ```
 
 ---
@@ -1691,48 +1598,6 @@ Spawn 4 specialist teammates:
    a reproducibility report. Owns evaluation/, benchmarks/.
 
 Workflow: coder → ml-engineer → (publisher + evaluator in parallel).
-```
-
----
-
-## Team 33: Frontend Excellence
-
-**When:** Frontend development with multiple quality gates — code review, AI review, and standards enforcement.
-**Plugins:** dev-suite, pr-review-toolkit, coderabbit
-
-| Role | Agent Type | File Ownership |
-|------|-----------|----------------|
-| Lead | `agent-core:orchestrator` | Coordination only |
-| builder | `dev-suite:app-developer` | src/components/, src/pages/ |
-| pr-reviewer | `pr-review-toolkit:code-reviewer` | Read-only review |
-| ai-reviewer | `coderabbit:code-reviewer` | Read-only review |
-
-### Prompt
-
-```
-Create an agent team called "frontend-excellence" to build and
-review [FEATURE_NAME] using [FRONTEND_STACK].
-
-Spawn 3 specialist teammates:
-
-1. "builder" (dev-suite:app-developer) - Implement the frontend
-   feature with focus on performance, accessibility (WCAG 2.1 AA),
-   responsive design, and offline-first patterns. Write component
-   tests and integration tests. Use [FRONTEND_STACK] patterns and
-   conventions. Owns src/components/, src/pages/, src/hooks/, tests/.
-
-2. "pr-reviewer" (pr-review-toolkit:code-reviewer) - After builder
-   completes, review all changes for adherence to project guidelines,
-   style violations, potential bugs, and accessibility issues. Use
-   confidence-based filtering for high-priority issues only. Read-only.
-
-3. "ai-reviewer" (coderabbit:code-reviewer) - Independently review the
-   same changes using CodeRabbit AI analysis. Provide a second opinion
-   on code quality, potential issues, and improvement suggestions.
-   Read-only.
-
-Workflow: builder → (pr-reviewer + ai-reviewer in parallel).
-Output: implemented feature + two independent review reports.
 ```
 
 ---
@@ -2025,13 +1890,13 @@ Any team can be enhanced by adding official plugin agents as quality gates. Add 
 
 | Enhancer | Agent Type | Add To Teams | What It Catches |
 |----------|-----------|--------------|-----------------|
-| Code Review | `pr-review-toolkit:code-reviewer` | 1, 6, 8, 10 | Style, bugs, guidelines |
+| Code Review | `pr-review-toolkit:code-reviewer` | 6, 8, 10 | Style, bugs, guidelines |
 | Silent Failures | `pr-review-toolkit:silent-failure-hunter` | 2, 5, 22 | Swallowed errors |
-| Test Gaps | `pr-review-toolkit:pr-test-analyzer` | 1, 3, 6, 8 | Missing test coverage |
+| Test Gaps | `pr-review-toolkit:pr-test-analyzer` | 3, 6, 8 | Missing test coverage |
 | Type Quality | `pr-review-toolkit:type-design-analyzer` | 17, 22, 25 | Weak type invariants |
-| AI Review | `coderabbit:code-reviewer` | 1, 6, 8, 9 | Second-opinion analysis |
+| AI Review | `coderabbit:code-reviewer` | 6, 8, 9 | Second-opinion analysis |
 | Code Simplicity | `code-simplifier:code-simplifier` | 6, 17, 25 | Unnecessary complexity |
-| Plan Adherence | `superpowers:code-reviewer` | 1, 6, 21, 25 | Drift from plan |
+| Plan Adherence | `superpowers:code-reviewer` | 6, 10, 25 | Drift from plan |
 
 ### How to Add an Enhancer
 
