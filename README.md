@@ -1,14 +1,14 @@
 # MyClaude
 
 [![Plugins](https://img.shields.io/badge/Plugins-3-blue.svg)](https://myclaude.readthedocs.io/en/latest/plugins/)
-[![Agents](https://img.shields.io/badge/Agents-22-green.svg)](docs/reference/agents.md)
+[![Agents](https://img.shields.io/badge/Agents-23-green.svg)](docs/reference/agents.md)
 [![Commands](https://img.shields.io/badge/Commands-33-orange.svg)](docs/reference/commands.md)
-[![Skills](https://img.shields.io/badge/Skills-124-purple.svg)](docs/reference/cheatsheet.md)
+[![Skills](https://img.shields.io/badge/Skills-132-purple.svg)](docs/reference/cheatsheet.md)
 [![Version](https://img.shields.io/badge/Version-2.2.1-red.svg)](https://github.com/imewei/MyClaude)
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Docs](https://img.shields.io/badge/Docs-ReadTheDocs-brightgreen.svg)](https://myclaude.readthedocs.io/en/latest/)
 
-Claude Code plugin marketplace with **3 focused suites**, **22 expert agents**, **33 slash commands**, and **124 skills** optimized for AI-powered development, scientific computing, and research workflows. Built for Claude Opus 4.6 with tiered model assignments (Opus/Sonnet/Haiku), 10 lifecycle hooks, and full v2.1.88 spec compliance.
+Claude Code plugin marketplace with **3 focused suites**, **23 expert agents**, **33 slash commands**, and **132 skills** optimized for AI-powered development, scientific computing, and research workflows. Built for Claude Opus 4.6 with tiered model assignments (Opus/Sonnet/Haiku), 10 lifecycle hooks, and full v2.1.88 spec compliance.
 
 ## The 3-Suite Architecture
 
@@ -20,7 +20,7 @@ The MyClaude ecosystem is organized into three suites by delegation topology:
 
 ## Specialist Agents
 
-The system features 22 specialized agents across all suites, including:
+The system features 23 specialized agents across all suites, including:
 
 | Agent | Suite | Specialization |
 |-------|-------|----------------|
@@ -79,7 +79,7 @@ Ask Claude: "@jax-pro implement this differentiable physics model"
 - **[Plugin Cheatsheet](docs/reference/cheatsheet.md)**
 - **[Complete Agents List](docs/reference/agents.md)**
 - **[Complete Commands List](docs/reference/commands.md)**
-- **[Agent Teams Guide](docs/agent-teams-guide.md)** — 38 ready-to-use team configurations
+- **[Agent Teams Guide](docs/agent-teams-guide.md)** — 34 ready-to-use team configurations
 
 ## License
 

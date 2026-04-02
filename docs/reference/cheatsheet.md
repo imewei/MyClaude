@@ -1,6 +1,6 @@
 # Claude Code Plugin Marketplace - Quick Reference
 
-**Total Resources:** 3 Suites | 22 Expert Agents | 33 Slash Commands | 124 Skills
+**Total Resources:** 3 Suites | 23 Expert Agents | 33 Slash Commands | 132 Skills
 **Version:** 2.2.1 | **Last Updated:** March 31, 2026
 
 ---
@@ -25,9 +25,9 @@ The MyClaude ecosystem is organized into three focused suites, consolidated from
 
 ### 3. Scientific Computing Suite (`science-suite`)
 **Purpose:** HPC, specialized simulations, and data science workflows.
-- **Agents:** `@jax-pro`, `@julia-pro`, `@ml-expert`, `@neural-network-master`, `@prompt-engineer`, `@python-pro`, `@research-expert`, `@simulation-expert`, `@statistical-physicist`, `@ai-engineer`
+- **Agents:** `@ai-engineer`, `@jax-pro`, `@julia-pro`, `@ml-expert`, `@neural-network-master`, `@nonlinear-dynamics-expert`, `@prompt-engineer`, `@python-pro`, `@research-expert`, `@simulation-expert`, `@statistical-physicist`
 - **Commands:** *Specialized commands are planned for future releases. Use suite agents for guided execution.*
-- **Skills:** Extensive scientific skills including `jax-mastery`, `julia-mastery`, `deep-learning`, `statistical-physics`, `parallel-computing`, `machine-learning`, and 78 specialized domain skills.
+- **Skills:** Extensive scientific skills including `jax-mastery`, `julia-mastery`, `deep-learning`, `statistical-physics`, `parallel-computing`, `machine-learning`, and 86 specialized domain skills.
 - **Use When:** HPC, JAX/Julia projects, physics simulations, ML engineering, scientific research.
 
 ---
@@ -46,7 +46,7 @@ The MyClaude ecosystem is organized into three focused suites, consolidated from
 3. Use `@research-expert` to analyze and visualize results.
 
 ### Agent Teams
-1. Run `/agent-core:team-assemble list` to see all 38 team templates.
+1. Run `/agent-core:team-assemble list` to see all 34 team templates.
 2. Run `/agent-core:team-assemble <type>` to generate a team prompt.
 3. Paste the prompt into Claude Code with agent teams enabled.
 4. See [Agent Teams Guide](../agent-teams-guide.md) for full details.

@@ -1,7 +1,7 @@
 Integration Map
 ===============
 
-How the 5 MyClaude suites connect to each other and to external tools.
+How the 3 MyClaude suites connect to each other and to external tools.
 
 .. contents:: Table of Contents
    :depth: 2
@@ -45,7 +45,7 @@ MCP Server Roles
 Official Plugin Agents
 ----------------------
 
-20 agents from `claude-plugins-official <https://github.com/anthropics/claude-plugins-official>`_
+23 agents from `claude-plugins-official <https://github.com/anthropics/claude-plugins-official>`_
 complement MyClaude domain experts. See the :doc:`Agent Teams Guide <agent-teams-guide>`
 for teams 26-33 that integrate these agents.
 
@@ -58,7 +58,7 @@ Key integration patterns:
 Agent Teams
 -----------
 
-38 pre-built team configurations span five categories:
+34 pre-built team configurations span five categories:
 
 1. **Development & Operations** (1-10): Feature dev, incident response, API design
 2. **Scientific Computing** (11-16): Bayesian inference, MD simulations, ML force fields

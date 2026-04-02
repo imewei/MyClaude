@@ -9,22 +9,23 @@ v3.0.0 (2026-03-31)
 * Merged engineering-suite + infrastructure-suite + quality-suite into a single
   ``dev-suite``. Eliminates 27 cross-suite delegation edges.
 * New structure: agent-core (3 meta-agents), dev-suite (9 agents, 27 commands,
-  39 skills), science-suite (10 agents, 78 skills).
+  39 skills), science-suite (11 agents, 86 skills).
 * dev-suite includes PostToolUse and SubagentStop hooks, ``.lsp.json`` for
   Pyright and TypeScript LSP, and output-styles.
 
 **v2.1.88 Spec Compliance Upgrade**
 
 * Migrated all 3 plugin manifests to ``.claude-plugin/plugin.json`` per official spec.
-* Consolidated 131 skills to 124 with zero function loss (7 semantic merges).
-* Hardened all 22 agents with ``effort``, ``memory``, and ``tools`` fields.
+* Consolidated skills to 132 with zero function loss (7 semantic merges, 8 new skills added).
+* Hardened all 23 agents with ``effort``, ``memory``, and ``tools`` fields.
 * Removed non-spec ``version``/``color`` fields from all agent and command frontmatter.
 * Added explicit ``name`` field to 27 commands that were missing it.
 
 **Model Tier Optimization**
 
-* Assigned Opus to 6 deep-reasoning agents (orchestrator, reasoning-engine,
-  software-architect, debugger-pro, research-expert, statistical-physicist).
+* Assigned Opus to 7 deep-reasoning agents (orchestrator, reasoning-engine,
+  software-architect, debugger-pro, research-expert, statistical-physicist,
+  nonlinear-dynamics-expert).
 * Assigned Haiku to documentation-expert for speed-optimized docs generation.
 * Fixed neural-network-master from ``inherit`` to explicit ``sonnet``.
 
@@ -37,7 +38,7 @@ v3.0.0 (2026-03-31)
 **New Infrastructure**
 
 * Added ``output-styles/`` directory to agent-core (terse and verbose modes).
-* Added ``settings.json`` with default agent configuration to all 5 suites.
+* Added ``settings.json`` with default agent configuration to all 3 suites.
 * Updated metadata validator schema from v2.1.42 to v2.1.88.
 
 **Skill Consolidations (7 merges)**
@@ -55,8 +56,8 @@ v2.2.1 (2026-02-14)
 
 **Claude Opus 4.6 Compatibility**
 
-* Upgraded all 5 plugin suites to v2.2.1 for Claude Opus 4.6 compatibility.
-* Updated all 22 agents and 131 skills to version 2.2.1.
+* Upgraded all plugin suites to v2.2.1 for Claude Opus 4.6 compatibility.
+* Updated all agents and skills to version 2.2.1.
 
 **Agent Teams System**
 

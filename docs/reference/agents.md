@@ -1,8 +1,8 @@
 # Claude Code Plugin Marketplace - Complete Agent List
 
-**Total Agents:** 22 across 3 focused suites
+**Total Agents:** 23 across 3 focused suites
 **Format:** `suite:agent`
-**Version:** 2.2.1 | **Last Updated:** February 14, 2026
+**Version:** 2.2.1 | **Last Updated:** April 1, 2026
 
 ---
 
@@ -37,6 +37,7 @@ Consolidated suite for high-performance computing, specialized physics/chemistry
 - **`julia-pro`** - Expert in Julia programming, Scientific Machine Learning (SciML), and DifferentialEquations.jl.
 - **`ml-expert`** - Expert in classical ML algorithms, MLOps pipelines, and data engineering.
 - **`neural-network-master`** - Deep learning authority specializing in theory and implementation (Transformers, CNNs, diagnostics).
+- **`nonlinear-dynamics-expert`** - Expert in bifurcation analysis, chaos, coupled networks, pattern formation, and equation discovery (SINDy/UDE).
 - **`prompt-engineer`** - Expert prompt engineer specializing in advanced techniques and performance optimization.
 - **`python-pro`** - Expert Python Systems Engineer specializing in type-driven development and performance.
 - **`research-expert`** - Expert in systematic research, evidence synthesis, and publication-quality visualization.
