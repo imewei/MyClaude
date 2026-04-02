@@ -18,6 +18,10 @@ For high-performance computing, GPU optimization, and distributed systems, deleg
   - *Location*: `plugins/science-suite/agents/julia-pro.md`
   - *Capabilities*: Native GPU arrays (`CUDA.jl`), distributed computing (`Distributed.jl`), and multi-threading.
 - **`simulation-expert`**: For HPC scaling, MPI/OpenMP strategies, and job scheduling.
+- **`julia-ml-hpc`** (for Julia ML/HPC):
+  - *Location*: `plugins/science-suite/agents/julia-ml-hpc.md`
+  - *Capabilities*: Julia GPU kernels (CUDA.jl/KernelAbstractions.jl), MPI.jl, SLURM.
+  - *Julia skills*: See `julia-hpc-distributed` and `julia-gpu-kernels`.
 
 ## Core Skills
 

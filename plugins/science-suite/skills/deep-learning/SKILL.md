@@ -17,6 +17,10 @@ For deep learning tasks, delegate to the specialized experts:
 - **`ml-expert`**: Distributed training implementation and hardware optimization.
   - *Location*: `plugins/science-suite/agents/ml-expert.md`
   - *Capabilities*: DDP/FSDP setup, multi-node scaling.
+- **`julia-ml-hpc`**: Julia DL implementation with Lux.jl/Flux.jl.
+  - *Location*: `plugins/science-suite/agents/julia-ml-hpc.md`
+  - *Capabilities*: Lux.jl training, GPU acceleration, Julia neural architectures.
+  - *Julia skill*: See `julia-neural-networks` for Julia-specific deep learning.
 
 ## Core Skills
 

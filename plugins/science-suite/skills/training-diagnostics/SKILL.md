@@ -5,6 +5,10 @@ description: Diagnose and resolve neural network training failures through syste
 
 # Training Diagnostics
 
+## Julia Equivalent
+
+For training diagnostics in Julia (Lux.jl, Zygote/Enzyme debugging), see the `julia-training-diagnostics` skill.
+
 ## Quick Reference
 
 | Symptom | Cause | Fix |

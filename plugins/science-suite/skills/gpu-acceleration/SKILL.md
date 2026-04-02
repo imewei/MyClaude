@@ -11,6 +11,8 @@ For GPU optimization strategies and kernel implementation, delegate to:
 
 - **`jax-pro`**: For JAX-based GPU acceleration, sharding, and Pallas kernels.
 - **`julia-pro`**: For CUDA.jl, KernelAbstractions.jl, and Julia GPU kernels.
+- **`julia-ml-hpc`**: For advanced Julia GPU kernels, KernelAbstractions.jl, and multi-GPU with NCCL.jl.
+  - *Julia skill*: See `julia-gpu-kernels` for detailed Julia GPU programming.
 
 ## Framework Selection
 

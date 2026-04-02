@@ -14,6 +14,9 @@ For classical ML workflows, MLOps, and deployment, delegate to the expert agent:
 - **`ml-expert`**: Unified specialist for MLOps, Infrastructure, and Classical ML.
   - *Location*: `plugins/science-suite/agents/ml-expert.md`
   - *Capabilities*: Pipeline orchestration, Model Serving, A/B Testing, Data Engineering, model selection, hyperparameter tuning (Optuna), and interpretability (SHAP).
+- **`julia-ml-hpc`**: Julia ML pipelines with MLJ.jl and DrWatson.jl.
+  - *Location*: `plugins/science-suite/agents/julia-ml-hpc.md`
+  - *Julia skill*: See `julia-ml-pipelines` for Julia-specific ML workflows.
 
 ## Core Skills
 

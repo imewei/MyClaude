@@ -9,6 +9,10 @@ description: Design neural architectures with skip connections, attention, norma
 
 Design patterns and principles for building effective neural networks.
 
+## Julia Equivalent
+
+For neural architecture implementation in Julia using Lux.jl, see the `julia-neural-architectures` skill.
+
 ---
 
 ## Core Patterns
