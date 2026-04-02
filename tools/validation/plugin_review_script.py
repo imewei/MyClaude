@@ -30,7 +30,7 @@ class ReviewReport:
     successes: List[str] = field(default_factory=list)
 
     # Severity mapping: review severities → shared model severities
-    _SEVERITY_MAP: Dict[str, str] = field(default=None, init=False, repr=False)
+    _SEVERITY_MAP: Dict[str, str] = field(default_factory=dict, init=False, repr=False)
 
     def __post_init__(self) -> None:
         self._result = ValidationResult(

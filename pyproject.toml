@@ -44,5 +44,9 @@ docs = [
 [tool.uv]
 default-groups = ["dev", "docs", "science"]
 
+[tool.mypy]
+explicit_package_bases = true
+exclude = ["plugins/.*/hooks/"]
+
 [tool.setuptools]
 packages = ["tools"]
