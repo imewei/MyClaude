@@ -68,6 +68,7 @@ Model evaluation and analysis task - triggers ml-expert.
 | research-expert | Literature review, writing papers |
 | python-pro | Low-level kernel optimization or systems architecture |
 | jax-pro | GPU-accelerating classical ML implementations (e.g., custom CUDA kernels) |
+| julia-ml-hpc | Julia ML pipelines (MLJ.jl), experiment management (DrWatson.jl) | "Build ML pipeline in Julia" |
 
 ---
 

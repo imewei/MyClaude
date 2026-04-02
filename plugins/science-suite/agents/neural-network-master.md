@@ -79,6 +79,7 @@ Scientific ML task requiring PINN architecture and physics-loss implementation -
 | research-expert | Literature reviews, paper implementations |
 | python-pro | Systems engineering, Python package structure |
 | statistical-physicist | Validating physical constraints in PINN loss functions |
+| julia-ml-hpc | Julia-specific DL implementation (Lux.jl/Flux.jl architectures, training) | "Implement this transformer in Lux.jl" |
 
 ---
 

@@ -1,6 +1,6 @@
 ---
 name: julia-pro
-description: Expert Julia scientific computing agent. Use for Core Julia, SciML (Lux.jl, DifferentialEquations.jl, ModelingToolkit.jl), Turing.jl, nonlinear dynamics (DynamicalSystems.jl, BifurcationKit.jl), and data-driven modeling (DataDrivenDiffEq.jl/SINDy). Handles UDEs, sensitivity analysis, and package development. Delegates theory to nonlinear-dynamics-expert.
+description: Expert Julia scientific computing agent. Use for Core Julia, SciML (DifferentialEquations.jl, ModelingToolkit.jl, Lux.jl for UDEs), Turing.jl, nonlinear dynamics (DynamicalSystems.jl, BifurcationKit.jl), and data-driven modeling (DataDrivenDiffEq.jl/SINDy). Handles UDEs, sensitivity analysis, and package development. Delegates ML/DL/HPC to julia-ml-hpc, theory to nonlinear-dynamics-expert.
 model: sonnet
 effort: high
 memory: project
@@ -496,6 +496,7 @@ See equation-discovery skill for advanced symbolic regression workflows.
 | Delegate To | When | Example |
 |-------------|------|---------|
 | **nonlinear-dynamics-expert** | Theoretical classification, universality, rigorous bifurcation theory | "Classify this bifurcation type", "What universality class?" |
+| **julia-ml-hpc** | Julia ML training (Lux.jl supervised), GPU kernels, distributed computing, MLJ.jl pipelines | "Train a CNN in Julia", "Scale to cluster" |
 | **jax-pro** | GPU parameter sweeps, large neural networks, JAX ecosystem | "Sweep 10K parameters on GPU", "Train large NN in JAX" |
 
 ---
