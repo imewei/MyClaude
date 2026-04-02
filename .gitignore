@@ -185,6 +185,7 @@ $RECYCLE.BIN/
 .cache/
 tmp/
 temp/
+.serena/
 
 # ----------------
 # Claude Code Specific
@@ -201,8 +202,7 @@ temp/
 
 # Claude Code guidance file (auto-generated)
 CLAUDE.md
-!memory/CLAUDE.md
-memory/settings.json
+memory/
 
 # Agent-OS development framework (internal use)
 agent-os/
