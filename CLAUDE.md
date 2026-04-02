@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-MyClaude is a Claude Code plugin marketplace: 3 plugin suites containing 23 agents, 33 commands, and 132 skills. It is **not** a runnable application — it's a collection of markdown-based plugin definitions with Python tooling for validation and maintenance.
+MyClaude is a Claude Code plugin marketplace: 3 plugin suites containing 24 agents, 33 commands, and 142 skills. It is **not** a runnable application — it's a collection of markdown-based plugin definitions with Python tooling for validation and maintenance.
 
 ## Commands
 
@@ -65,7 +65,7 @@ Suite breakdown:
 |-------|--------|----------|--------|-------|-------|
 | agent-core | 3 | 6 | 7 | 8 events | Reasoning, orchestration, context engineering |
 | dev-suite | 9 | 27 | 39 | 2 events | Full SDLC: architecture, implementation, CI/CD, testing, debugging |
-| science-suite | 11 | 0 | 86 | 0 | JAX, Julia, physics, ML, nonlinear dynamics, research |
+| science-suite | 12 | 0 | 96 | 0 | JAX, Julia, physics, ML/DL/HPC, nonlinear dynamics, research |
 
 ### Component File Formats
 
