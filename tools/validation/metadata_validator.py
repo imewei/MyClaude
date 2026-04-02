@@ -12,36 +12,10 @@ Validates plugin.json metadata against schema requirements:
 import json
 import sys
 from pathlib import Path
-from typing import Dict, Any, List, Optional
+from typing import Dict, Any, List
 import re
-from dataclasses import dataclass, field
 
-
-@dataclass
-class ValidationError:
-    """Represents a validation error"""
-    field: str
-    severity: str  # error, warning
-    message: str
-    suggestion: Optional[str] = None
-
-
-@dataclass
-class ValidationResult:
-    """Results of metadata validation"""
-    plugin_name: str
-    is_valid: bool
-    errors: List[ValidationError] = field(default_factory=list)
-    warnings: List[ValidationError] = field(default_factory=list)
-
-    def add_error(self, field: str, message: str, suggestion: Optional[str] = None):
-        """Add a validation error"""
-        self.errors.append(ValidationError(field, "error", message, suggestion))
-        self.is_valid = False
-
-    def add_warning(self, field: str, message: str, suggestion: Optional[str] = None):
-        """Add a validation warning"""
-        self.warnings.append(ValidationError(field, "warning", message, suggestion))
+from tools.common.models import ValidationResult
 
 
 class MetadataValidator:
@@ -583,32 +557,35 @@ class MetadataValidator:
         lines = []
         lines.append(f"# Metadata Validation Report: {result.plugin_name}\n")
 
+        errors = result.errors
+        warnings = result.warnings
+
         # Status
-        if result.is_valid and not result.warnings:
+        if result.is_valid and not warnings:
             lines.append("**Status:** ✅ VALID - No issues found\n")
         elif result.is_valid:
-            lines.append(f"**Status:** ✅ VALID - {len(result.warnings)} warnings\n")
+            lines.append(f"**Status:** ✅ VALID - {len(warnings)} warnings\n")
         else:
-            lines.append(f"**Status:** ❌ INVALID - {len(result.errors)} errors\n")
+            lines.append(f"**Status:** ❌ INVALID - {len(errors)} errors\n")
 
         # Summary
         lines.append("## Summary\n")
-        lines.append(f"- **Errors:** {len(result.errors)}")
-        lines.append(f"- **Warnings:** {len(result.warnings)}\n")
+        lines.append(f"- **Errors:** {len(errors)}")
+        lines.append(f"- **Warnings:** {len(warnings)}\n")
 
         # Errors
-        if result.errors:
+        if errors:
             lines.append("## Errors\n")
-            for error in result.errors:
+            for error in errors:
                 lines.append(f"❌ **{error.field}**: {error.message}")
                 if error.suggestion:
                     lines.append(f"   → {error.suggestion}")
                 lines.append("")
 
         # Warnings
-        if result.warnings:
+        if warnings:
             lines.append("## Warnings\n")
-            for warning in result.warnings:
+            for warning in warnings:
                 lines.append(f"⚠️  **{warning.field}**: {warning.message}")
                 if warning.suggestion:
                     lines.append(f"   → {warning.suggestion}")

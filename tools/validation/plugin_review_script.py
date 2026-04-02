@@ -11,31 +11,14 @@ Automates the comprehensive review of Claude Code plugins by validating:
 """
 
 import json
-import os
 import sys
 from pathlib import Path
-from typing import Dict, List, Any, Optional
+from typing import Dict, List, Optional
 import re
 from dataclasses import dataclass, field
 
-# Ensure tools directory is in path for imports
-tools_dir = os.path.dirname(os.path.abspath(__file__))
-if tools_dir not in sys.path:
-    sys.path.insert(0, tools_dir)
-
-try:
-    from metadata_validator import MetadataValidator
-except ImportError:
-    # Fallback if running from a different context where sys.path setup didn't work as expected
-    pass
-
-@dataclass
-class ReviewIssue:
-    """Represents a single review issue"""
-    section: str
-    severity: str  # critical, high, medium, low
-    message: str
-    details: Optional[str] = None
+from tools.common.models import ValidationIssue, ValidationResult
+from tools.validation.metadata_validator import MetadataValidator
 
 
 @dataclass
@@ -43,44 +26,64 @@ class ReviewReport:
     """Complete review report for a plugin"""
     plugin_name: str
     plugin_path: Path
-    issues: List[ReviewIssue] = field(default_factory=list)
-    warnings: List[str] = field(default_factory=list)
+    _result: ValidationResult = field(init=False)
     successes: List[str] = field(default_factory=list)
 
-    def add_issue(self, section: str, severity: str, message: str, details: Optional[str] = None):
+    # Severity mapping: review severities → shared model severities
+    _SEVERITY_MAP: Dict[str, str] = field(default=None, init=False, repr=False)
+
+    def __post_init__(self) -> None:
+        self._result = ValidationResult(
+            plugin_name=self.plugin_name,
+            plugin_path=self.plugin_path,
+        )
+        self._SEVERITY_MAP = {
+            "critical": "critical",
+            "high": "error",
+            "medium": "warning",
+            "low": "info",
+        }
+
+    def add_issue(self, section: str, severity: str, message: str, details: Optional[str] = None) -> None:
         """Add an issue to the report"""
-        self.issues.append(ReviewIssue(section, severity, message, details))
+        mapped_severity = self._SEVERITY_MAP.get(severity, "warning")
+        suggestion = details
+        if mapped_severity in ("critical", "error"):
+            self._result.add_error(field=section, message=message, suggestion=suggestion)
+        elif mapped_severity == "warning":
+            self._result.add_warning(field=section, message=message, suggestion=suggestion)
+        else:
+            self._result.add_info(field=section, message=message)
 
-    def add_warning(self, message: str):
+    def add_warning(self, message: str) -> None:
         """Add a warning to the report"""
-        self.warnings.append(message)
+        self._result.add_warning(field="general", message=message)
 
-    def add_success(self, message: str):
+    def add_success(self, message: str) -> None:
         """Add a success to the report"""
         self.successes.append(message)
 
+    @property
+    def issues(self) -> list[ValidationIssue]:
+        return self._result.issues
+
+    @property
+    def warnings(self) -> list[ValidationIssue]:
+        return self._result.warnings
+
     def get_issue_count_by_severity(self) -> Dict[str, int]:
-        """Count issues by severity"""
+        """Count issues by severity (using original review severity names)"""
+        # Map back from shared severities to review severities for report compatibility
+        reverse_map = {"critical": "critical", "error": "high", "warning": "medium", "info": "low"}
         counts = {"critical": 0, "high": 0, "medium": 0, "low": 0}
-        for issue in self.issues:
-            counts[issue.severity] = counts.get(issue.severity, 0) + 1
+        for issue in self._result.issues:
+            review_severity = reverse_map.get(issue.severity, "low")
+            counts[review_severity] = counts.get(review_severity, 0) + 1
         return counts
 
 
 class PluginReviewer:
     """Main plugin review automation class"""
-
-    REQUIRED_PLUGIN_JSON_FIELDS = [
-        "name", "version", "description", "author", "license"
-    ]
-
-    RECOMMENDED_PLUGIN_JSON_FIELDS = [
-        "agents", "commands", "skills", "keywords", "category"
-    ]
-
-    REQUIRED_AGENT_FIELDS = ["name", "description", "status"]
-    REQUIRED_COMMAND_FIELDS = ["name", "description", "status"]
-    REQUIRED_SKILL_FIELDS = ["name", "description"]
 
     def __init__(self, plugins_root: Path):
         """Initialize the plugin reviewer"""
@@ -127,163 +130,27 @@ class PluginReviewer:
             )
             return
 
-        # Use shared MetadataValidator if available
-        if 'MetadataValidator' in globals():
-            validator = MetadataValidator()
-            result = validator.validate_plugin_json(plugin_path)
+        validator = MetadataValidator()
+        result = validator.validate_plugin_json(plugin_path)
 
-            for error in result.errors:
-                report.add_issue(
-                    f"plugin.json/{error.field}",
-                    "high",  # Map validator errors to high priority issues
-                    error.message,
-                    error.suggestion
-                )
-
-            for warning in result.warnings:
-                report.add_issue( # Map warnings to issues but with lower severity
-                    f"plugin.json/{warning.field}",
-                    "medium",
-                    warning.message,
-                    warning.suggestion
-                )
-
-            if result.is_valid:
-                report.add_success("plugin.json structure validated successfully")
-            return
-
-        # Fallback to internal validation if MetadataValidator not available
-        try:
-            with open(plugin_json_path, 'r', encoding='utf-8') as f:
-                plugin_data = json.load(f)
-        except json.JSONDecodeError as e:
+        for error in result.errors:
             report.add_issue(
-                "plugin.json",
-                "critical",
-                "Invalid JSON syntax",
-                str(e)
+                f"plugin.json/{error.field}",
+                "high",
+                error.message,
+                error.suggestion
             )
-            return
-        except Exception as e:
+
+        for warning in result.warnings:
             report.add_issue(
-                "plugin.json",
-                "critical",
-                "Failed to read plugin.json",
-                str(e)
-            )
-            return
-
-        # Check required fields
-        for field_name in self.REQUIRED_PLUGIN_JSON_FIELDS:
-            if field_name not in plugin_data:
-                report.add_issue(
-                    "plugin.json",
-                    "high",
-                    f"Missing required field: {field_name}"
-                )
-            elif not plugin_data[field_name]:
-                report.add_issue(
-                    "plugin.json",
-                    "medium",
-                    f"Required field is empty: {field_name}"
-                )
-
-        # Check recommended fields
-        for field_name in self.RECOMMENDED_PLUGIN_JSON_FIELDS:
-            if field_name not in plugin_data:
-                report.add_warning(f"Missing recommended field in plugin.json: {field_name}")
-            elif isinstance(plugin_data.get(field_name), list) and len(plugin_data[field_name]) == 0:
-                report.add_warning(f"Recommended field is empty: {field_name}")
-
-        # Validate semantic versioning
-        if "version" in plugin_data:
-            version = plugin_data["version"]
-            if not re.match(r'^\d+\.\d+\.\d+(-[a-zA-Z0-9]+)?$', version):
-                report.add_issue(
-                    "plugin.json",
-                    "medium",
-                    f"Invalid semantic versioning format: {version}",
-                    "Expected format: MAJOR.MINOR.PATCH (e.g., 1.0.0)"
-                )
-
-        # Validate category
-        if "category" in plugin_data:
-            category = plugin_data["category"]
-            valid_categories = [
-                "agent-core", "dev-suite", "science-suite"
-            ]
-            if category not in valid_categories:
-                report.add_warning(
-                    f"Non-standard category: {category}. "
-                    f"Consider using: {', '.join(valid_categories)}"
-                )
-
-        # Validate agents structure
-        if "agents" in plugin_data:
-            for idx, agent in enumerate(plugin_data["agents"]):
-                self._validate_agent_structure(agent, idx, report)
-
-        # Validate commands structure
-        if "commands" in plugin_data:
-            for idx, command in enumerate(plugin_data["commands"]):
-                self._validate_command_structure(command, idx, report)
-
-        # Validate skills structure
-        if "skills" in plugin_data:
-            for idx, skill in enumerate(plugin_data["skills"]):
-                self._validate_skill_structure(skill, idx, report)
-
-        report.add_success("plugin.json successfully validated")
-
-    def _validate_agent_structure(self, agent: Dict[str, Any], idx: int, report: ReviewReport):
-        """Validate individual agent structure"""
-        for field_name in self.REQUIRED_AGENT_FIELDS:
-            if field_name not in agent:
-                report.add_issue(
-                    "plugin.json/agents",
-                    "high",
-                    f"Agent {idx}: Missing required field '{field}'",
-                    f"Agent name: {agent.get('name', 'unknown')}"
-                )
-
-        # Check description length
-        if "description" in agent and len(agent["description"]) < 20:
-            report.add_issue(
-                "plugin.json/agents",
+                f"plugin.json/{warning.field}",
                 "medium",
-                f"Agent {idx}: Description too short (< 20 chars)",
-                f"Agent: {agent.get('name', 'unknown')}"
+                warning.message,
+                warning.suggestion
             )
 
-    def _validate_command_structure(self, command: Dict[str, Any], idx: int, report: ReviewReport):
-        """Validate individual command structure"""
-        for field_name in self.REQUIRED_COMMAND_FIELDS:
-            if field_name not in command:
-                report.add_issue(
-                    "plugin.json/commands",
-                    "high",
-                    f"Command {idx}: Missing required field '{field}'",
-                    f"Command name: {command.get('name', 'unknown')}"
-                )
-
-        # Validate command name format (should start with /)
-        if "name" in command:
-            name = command["name"]
-            if not name.startswith("/"):
-                report.add_warning(
-                    f"Command {idx} ({name}): Name should start with '/'"
-                )
-
-    def _validate_skill_structure(self, skill: Dict[str, Any], idx: int, report: ReviewReport):
-        """Validate individual skill structure"""
-        for field_name in self.REQUIRED_SKILL_FIELDS:
-            if field_name not in skill:
-                report.add_issue(
-                    "plugin.json/skills",
-                    "high",
-                    f"Skill {idx}: Missing required field '{field}'",
-                    f"Skill name: {skill.get('name', 'unknown')}"
-                )
+        if result.is_valid:
+            report.add_success("plugin.json structure validated successfully")
 
     def _review_agents(self, plugin_path: Path, report: ReviewReport):
         """Review agent documentation files"""
@@ -566,40 +433,43 @@ class PluginReviewer:
         lines.append(f"  - High: {issue_counts['high']}")
         lines.append(f"  - Medium: {issue_counts['medium']}")
         lines.append(f"  - Low: {issue_counts['low']}")
-        lines.append(f"- **Warnings:** {len(report.warnings)}")
+        # Count standalone warnings (add_warning calls, field="general")
+        standalone_warnings = [i for i in report.issues if i.field == "general"]
+        lines.append(f"- **Warnings:** {len(standalone_warnings)}")
         lines.append(f"- **Successes:** {len(report.successes)}\n")
 
-        # Issues by section
-        if report.issues:
+        # Reverse severity map for display
+        display_severity = {"critical": "critical", "error": "high", "warning": "medium", "info": "low"}
+        severity_emoji_map = {"critical": "\U0001f534", "error": "\U0001f7e0", "warning": "\U0001f7e1", "info": "\U0001f535"}
+
+        # Issues by section (exclude standalone warnings)
+        section_issues = [i for i in report.issues if i.field != "general"]
+        if section_issues:
             lines.append("## Issues Found\n")
 
-            # Group issues by section
-            issues_by_section: Dict[str, List[ReviewIssue]] = {}
-            for issue in report.issues:
-                if issue.section not in issues_by_section:
-                    issues_by_section[issue.section] = []
-                issues_by_section[issue.section].append(issue)
+            # Group issues by field (section)
+            issues_by_section: Dict[str, list] = {}
+            for issue in section_issues:
+                if issue.field not in issues_by_section:
+                    issues_by_section[issue.field] = []
+                issues_by_section[issue.field].append(issue)
 
             for section, issues in sorted(issues_by_section.items()):
                 lines.append(f"### {section}\n")
                 for issue in issues:
-                    severity_emoji = {
-                        "critical": "🔴",
-                        "high": "🟠",
-                        "medium": "🟡",
-                        "low": "🔵"
-                    }.get(issue.severity, "⚪")
+                    emoji = severity_emoji_map.get(issue.severity, "\u26aa")
+                    display_sev = display_severity.get(issue.severity, issue.severity).upper()
 
-                    lines.append(f"{severity_emoji} **{issue.severity.upper()}**: {issue.message}")
-                    if issue.details:
-                        lines.append(f"   - {issue.details}")
+                    lines.append(f"{emoji} **{display_sev}**: {issue.message}")
+                    if issue.suggestion:
+                        lines.append(f"   - {issue.suggestion}")
                     lines.append("")
 
-        # Warnings
-        if report.warnings:
+        # Standalone warnings
+        if standalone_warnings:
             lines.append("## Warnings\n")
-            for warning in report.warnings:
-                lines.append(f"⚠️  {warning}")
+            for warning in standalone_warnings:
+                lines.append(f"\u26a0\ufe0f  {warning.message}")
             lines.append("")
 
         # Successes

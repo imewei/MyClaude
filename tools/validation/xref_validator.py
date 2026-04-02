@@ -20,6 +20,8 @@ from dataclasses import dataclass, field
 from collections import defaultdict
 import sys
 
+from tools.common.loader import PluginLoader
+
 
 @dataclass
 class CrossReference:
@@ -36,7 +38,7 @@ class CrossReference:
 
 
 @dataclass
-class ValidationResult:
+class XrefResult:
     """Results of cross-reference validation"""
     total_references: int = 0
     valid_references: int = 0
@@ -59,49 +61,40 @@ class CrossReferenceValidator:
 
     def __init__(self, plugins_dir: Path):
         self.plugins_dir = plugins_dir
-        self.result = ValidationResult()
+        self.result = XrefResult()
         self.references: List[CrossReference] = []
         self._build_plugin_index()
 
     def _build_plugin_index(self):
-        """Build index of all plugins, agents, commands, and skills"""
+        """Build index of all plugins, agents, commands, and skills using PluginLoader"""
         print("📋 Building plugin index...")
 
-        plugin_dirs = [d for d in self.plugins_dir.iterdir() if d.is_dir()]
+        loader = PluginLoader(self.plugins_dir)
+        all_plugins = loader.load_all_plugins()
 
-        for plugin_dir in sorted(plugin_dirs):
-            plugin_json = plugin_dir / ".claude-plugin" / "plugin.json"
-            if not plugin_json.exists():
-                continue
+        for plugin_name, metadata in all_plugins.items():
+            self.result.plugin_index[plugin_name] = {
+                "version": metadata.version,
+                "category": metadata.category,
+                "agents": {
+                    a.get("name"): a.get("description", "")
+                    for a in metadata.agents
+                },
+                "commands": {
+                    c.get("name"): c.get("description", "")
+                    for c in metadata.commands
+                },
+                "skills": {
+                    s.get("name"): s.get("description", "")
+                    for s in metadata.skills
+                },
+                "path": str(metadata.path)
+            }
 
-            try:
-                with open(plugin_json) as f:
-                    data = json.load(f)
+        for error in loader.get_errors():
+            print(f"⚠️  Warning: {error.message}")
 
-                plugin_name = data.get("name", plugin_dir.name)
-
-                self.result.plugin_index[plugin_name] = {
-                    "version": data.get("version", "unknown"),
-                    "category": data.get("category", "uncategorized"),
-                    "agents": {
-                        a.get("name"): a.get("description", "")
-                        for a in data.get("agents", [])
-                    },
-                    "commands": {
-                        c.get("name"): c.get("description", "")
-                        for c in data.get("commands", [])
-                    },
-                    "skills": {
-                        s.get("name"): s.get("description", "")
-                        for s in data.get("skills", [])
-                    },
-                    "path": str(plugin_dir)
-                }
-
-            except Exception as e:
-                print(f"⚠️  Warning: Error loading {plugin_json}: {e}")
-
-    def validate_all_references(self) -> ValidationResult:
+    def validate_all_references(self) -> XrefResult:
         """Validate all cross-references in all plugins"""
         print("🔍 Validating cross-references...")
 

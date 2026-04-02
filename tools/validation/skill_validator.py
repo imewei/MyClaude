@@ -120,6 +120,24 @@ class SkillValidationMetrics:
 class SkillApplicationValidator:
     """Validates skill pattern matching and application."""
 
+    # Scoring weights for skill-context matching
+    SCORE_FILE_EXT_EXACT = 0.3
+    SCORE_FILE_EXT_PARTIAL = 0.2
+    SCORE_KEYWORD_PER_MATCH = 0.1
+    SCORE_KEYWORD_MAX = 0.4
+    SCORE_PATTERN_PER_MATCH = 0.15
+    SCORE_PATTERN_MAX = 0.4
+    SCORE_IMPORT_MATCH = 0.3
+    SCORE_CONTEXT_BONUS = 0.2
+
+    # Threshold for skill application
+    APPLICATION_THRESHOLD = 0.3
+
+    # Report thresholds
+    TRIGGER_RATE_GOOD = 10
+    TRIGGER_RATE_ACCEPTABLE = 20
+    OVER_TRIGGER_ALERT_RATE = 0.2
+
     def __init__(self, plugins_dir: str, corpus_dir: str):
         self.plugins_dir = Path(plugins_dir)
         self.corpus_dir = Path(corpus_dir)
@@ -321,29 +339,29 @@ class SkillApplicationValidator:
         # Check file extension match
         if skill.file_patterns:
             if context.file_extension in skill.file_patterns:
-                score += 0.3
+                score += self.SCORE_FILE_EXT_EXACT
                 matching_patterns.append(f"ext:{context.file_extension}")
             elif any(pattern in str(context.file_path).lower() for pattern in skill.file_patterns):
-                score += 0.2
+                score += self.SCORE_FILE_EXT_PARTIAL
                 matching_patterns.append("file_pattern")
 
         # Check keyword overlap
         keyword_overlap = skill.keywords & context.keywords
         if keyword_overlap:
-            keyword_score = min(len(keyword_overlap) * 0.1, 0.4)
+            keyword_score = min(len(keyword_overlap) * self.SCORE_KEYWORD_PER_MATCH, self.SCORE_KEYWORD_MAX)
             score += keyword_score
             matching_patterns.extend([f"kw:{kw}" for kw in list(keyword_overlap)[:3]])
 
         # Check pattern overlap (imports, functions, etc.)
         pattern_overlap = skill.patterns & context.patterns_found
         if pattern_overlap:
-            pattern_score = min(len(pattern_overlap) * 0.15, 0.4)
+            pattern_score = min(len(pattern_overlap) * self.SCORE_PATTERN_PER_MATCH, self.SCORE_PATTERN_MAX)
             score += pattern_score
             matching_patterns.extend([f"pat:{p}" for p in list(pattern_overlap)[:3]])
 
         # Check specific imports
         if skill.patterns & context.imports:
-            score += 0.3
+            score += self.SCORE_IMPORT_MATCH
             matching_patterns.append("import_match")
 
         # Skill-specific rules
@@ -352,25 +370,25 @@ class SkillApplicationValidator:
         # Testing skills need test-related context
         if "test" in skill_name_lower:
             if "test" in str(context.file_path).lower() or "test" in context.keywords:
-                score += 0.2
+                score += self.SCORE_CONTEXT_BONUS
 
         # Optimization skills need performance context
         if "optim" in skill_name_lower or "performance" in skill_name_lower:
             perf_keywords = {"benchmark", "profile", "performance", "speed", "optimize"}
             if context.keywords & perf_keywords:
-                score += 0.2
+                score += self.SCORE_CONTEXT_BONUS
 
         # Async skills need async context
         if "async" in skill_name_lower:
             async_keywords = {"async", "await", "asyncio", "task", "coroutine"}
             if context.keywords & async_keywords:
-                score += 0.2
+                score += self.SCORE_CONTEXT_BONUS
 
         # Package/module skills need related imports
         if "package" in skill_name_lower or "module" in skill_name_lower:
             pkg_keywords = {"import", "using", "require", "package", "module"}
             if context.keywords & pkg_keywords:
-                score += 0.2
+                score += self.SCORE_CONTEXT_BONUS
 
         return min(score, 1.0), matching_patterns
 
@@ -409,7 +427,7 @@ class SkillApplicationValidator:
         # Skill should apply if:
         # 1. Context matches plugin
         # 2. AND score is high enough
-        return plugin_context_match and score >= 0.3
+        return plugin_context_match and score >= self.APPLICATION_THRESHOLD
 
     def test_skill_application(self) -> None:
         """Test skill application across all contexts."""
@@ -450,7 +468,7 @@ class SkillApplicationValidator:
 
                         # Determine expected and actual application
                         should_apply = self.determine_expected_application(skill, context)
-                        did_apply = score >= 0.3  # Application threshold
+                        did_apply = score >= self.APPLICATION_THRESHOLD
 
                         # Create result
                         result = SkillApplicationResult(
@@ -529,8 +547,8 @@ class SkillApplicationValidator:
 | Overall Accuracy | {metrics.accuracy:.1f}% | >90% | {self._status_icon(metrics.accuracy > 90)} |
 | Precision | {metrics.precision:.1f}% | >85% | {self._status_icon(metrics.precision > 85)} |
 | Recall | {metrics.recall:.1f}% | >85% | {self._status_icon(metrics.recall > 85)} |
-| Over-Trigger Rate | {metrics.over_trigger_rate:.1f}% | <10% | {self._status_icon(metrics.over_trigger_rate < 10)} |
-| Under-Trigger Rate | {metrics.under_trigger_rate:.1f}% | <10% | {self._status_icon(metrics.under_trigger_rate < 10)} |
+| Over-Trigger Rate | {metrics.over_trigger_rate:.1f}% | <{self.TRIGGER_RATE_GOOD}% | {self._status_icon(metrics.over_trigger_rate < self.TRIGGER_RATE_GOOD)} |
+| Under-Trigger Rate | {metrics.under_trigger_rate:.1f}% | <{self.TRIGGER_RATE_GOOD}% | {self._status_icon(metrics.under_trigger_rate < self.TRIGGER_RATE_GOOD)} |
 
 ## Classification Results
 
@@ -590,7 +608,7 @@ class SkillApplicationValidator:
         # Find skills with high false positive rate
         over_trigger_skills = [
             (key, stats) for key, stats in sorted_skills
-            if stats["fp"] / max(stats["fp"] + stats["tn"], 1) > 0.2
+            if stats["fp"] / max(stats["fp"] + stats["tn"], 1) > self.OVER_TRIGGER_ALERT_RATE
         ]
 
         if over_trigger_skills:
@@ -611,7 +629,7 @@ class SkillApplicationValidator:
         # Find skills with high false negative rate
         under_trigger_skills = [
             (key, stats) for key, stats in sorted_skills
-            if stats["fn"] / max(stats["fn"] + stats["tp"], 1) > 0.2
+            if stats["fn"] / max(stats["fn"] + stats["tp"], 1) > self.OVER_TRIGGER_ALERT_RATE
         ]
 
         if under_trigger_skills:
@@ -632,20 +650,20 @@ class SkillApplicationValidator:
 
 """
 
-        if metrics.over_trigger_rate < 10 and metrics.under_trigger_rate < 10:
+        if metrics.over_trigger_rate < self.TRIGGER_RATE_GOOD and metrics.under_trigger_rate < self.TRIGGER_RATE_GOOD:
             report += "**Status:** ✅ EXCELLENT - Skill triggering is well-balanced\n\n"
-        elif metrics.over_trigger_rate < 20 and metrics.under_trigger_rate < 20:
+        elif metrics.over_trigger_rate < self.TRIGGER_RATE_ACCEPTABLE and metrics.under_trigger_rate < self.TRIGGER_RATE_ACCEPTABLE:
             report += "**Status:** ⚠️ GOOD - Skill triggering is acceptable but could be improved\n\n"
         else:
             report += "**Status:** ❌ NEEDS IMPROVEMENT - Skill triggering needs optimization\n\n"
 
         report += f"Skill pattern matching is performing at {metrics.accuracy:.1f}% accuracy. "
 
-        if metrics.over_trigger_rate >= 10:
+        if metrics.over_trigger_rate >= self.TRIGGER_RATE_GOOD:
             report += f"\n\n**Action Required:** Over-trigger rate of {metrics.over_trigger_rate:.1f}% "
             report += "indicates skills are applying too broadly. Review and tighten matching patterns."
 
-        if metrics.under_trigger_rate >= 10:
+        if metrics.under_trigger_rate >= self.TRIGGER_RATE_GOOD:
             report += f"\n\n**Action Required:** Under-trigger rate of {metrics.under_trigger_rate:.1f}% "
             report += "indicates skills are not applying when needed. Expand matching patterns and keywords."
 
@@ -713,7 +731,8 @@ def main():
 
     # Determine exit code
     metrics = validator.calculate_metrics()
-    if metrics.over_trigger_rate < 10 and metrics.under_trigger_rate < 10:
+    if (metrics.over_trigger_rate < validator.TRIGGER_RATE_GOOD
+            and metrics.under_trigger_rate < validator.TRIGGER_RATE_GOOD):
         return 0
     else:
         return 1

@@ -15,34 +15,47 @@ from pathlib import Path
 from typing import Dict, List, Optional, Tuple
 from dataclasses import dataclass, field
 
-
-@dataclass
-class DocIssue:
-    """Represents a documentation issue"""
-    file: str
-    line: Optional[int]
-    severity: str  # error, warning, info
-    message: str
-    suggestion: Optional[str] = None
+from tools.common.models import ValidationResult
 
 
 @dataclass
 class DocCheckResult:
-    """Results of documentation check"""
+    """Results of documentation check, wrapping shared ValidationResult."""
     plugin_name: str
     plugin_path: Path
-    issues: List[DocIssue] = field(default_factory=list)
+    _result: ValidationResult = field(init=False)
     stats: Dict[str, int] = field(default_factory=dict)
 
+    def __post_init__(self) -> None:
+        self._result = ValidationResult(
+            plugin_name=self.plugin_name,
+            plugin_path=self.plugin_path,
+        )
+
     def add_issue(self, file: str, severity: str, message: str,
-                  line: Optional[int] = None, suggestion: Optional[str] = None):
+                  line: Optional[int] = None, suggestion: Optional[str] = None) -> None:
         """Add a documentation issue"""
-        self.issues.append(DocIssue(file, line, severity, message, suggestion))
+        if severity == "error":
+            self._result.add_error(
+                field=file, message=message,
+                suggestion=suggestion, file_path=file, line_number=line or 0,
+            )
+        elif severity == "warning":
+            self._result.add_warning(
+                field=file, message=message,
+                suggestion=suggestion, file_path=file, line_number=line or 0,
+            )
+        else:
+            self._result.add_info(field=file, message=message)
+
+    @property
+    def issues(self) -> list:
+        return self._result.issues
 
     def get_issue_count_by_severity(self) -> Dict[str, int]:
         """Count issues by severity"""
         counts = {"error": 0, "warning": 0, "info": 0}
-        for issue in self.issues:
+        for issue in self._result.issues:
             counts[issue.severity] = counts.get(issue.severity, 0) + 1
         return counts
 
@@ -419,11 +432,12 @@ class DocumentationChecker:
             lines.append("## Issues by File\n")
 
             # Group issues by file
-            issues_by_file: Dict[str, List[DocIssue]] = {}
+            issues_by_file: Dict[str, list] = {}
             for issue in result.issues:
-                if issue.file not in issues_by_file:
-                    issues_by_file[issue.file] = []
-                issues_by_file[issue.file].append(issue)
+                file_key = issue.file_path or issue.field
+                if file_key not in issues_by_file:
+                    issues_by_file[file_key] = []
+                issues_by_file[file_key].append(issue)
 
             for file_name, issues in sorted(issues_by_file.items()):
                 lines.append(f"### {file_name}\n")
@@ -441,7 +455,7 @@ class DocumentationChecker:
                     }[severity]
 
                     for issue in severity_issues:
-                        location = f" (line {issue.line})" if issue.line else ""
+                        location = f" (line {issue.line_number})" if issue.line_number else ""
                         lines.append(f"{severity_emoji} {issue.message}{location}")
                         if issue.suggestion:
                             lines.append(f"   → {issue.suggestion}")
