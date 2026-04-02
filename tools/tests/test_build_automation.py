@@ -59,7 +59,6 @@ class TestBuildAutomation(unittest.TestCase):
             'checkout',          # Checkout repository
             'python',            # Set up Python
             'dependencies',      # Install dependencies
-            'generate',          # Generate Plugin Docs
             'sphinx',            # Build documentation
         ]
 
@@ -226,11 +225,11 @@ class TestCrossReferences(unittest.TestCase):
 
         rst_files = list(categories_dir.glob("*.rst"))
 
-        # Should have at least 6 category pages
+        # 3 suites + index = 4 category pages
         self.assertGreaterEqual(
             len(rst_files),
-            5,
-            f"Expected at least 5 category pages, found {len(rst_files)}"
+            3,
+            f"Expected at least 3 category pages, found {len(rst_files)}"
         )
 
 

@@ -39,9 +39,6 @@ jobs:
           uv sync --group docs
           echo "$PWD/.venv/bin" >> $GITHUB_PATH
 
-      - name: Generate Plugin Docs
-        run: python docs/scripts/regenerate_docs.py
-
       - name: Build documentation
         run: |
           cd docs

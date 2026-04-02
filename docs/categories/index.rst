@@ -5,7 +5,5 @@ Categories
    :maxdepth: 2
 
    core
-   engineering
-   infrastructure
-   quality
+   dev
    science

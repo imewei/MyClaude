@@ -38,9 +38,7 @@ class TestCategoryPages(unittest.TestCase):
         """Test that all required category pages are created"""
         expected_categories = [
             "core.rst",
-            "engineering.rst",
-            "infrastructure.rst",
-            "quality.rst",
+            "dev.rst",
             "science.rst",
         ]
 
