@@ -29,15 +29,21 @@ Meta-agent suite for multi-agent orchestration, advanced reasoning, and context 
 | `/ultra-think` | Advanced structured reasoning with branching exploration |
 | `/team-assemble` | Generate agent team configs from 38 pre-built templates |
 
-## Skills (7)
+## Skills (13)
 
-- **Reasoning Frameworks**: Unified advanced reasoning and structured thinking (merged from advanced-reasoning + structured-reasoning)
-- **Reflection Framework**: Meta-cognitive and comprehensive reflection (merged from meta-cognitive-reflection + comprehensive-reflection-framework)
+- **Reasoning Frameworks**: Unified advanced reasoning and structured thinking
+- **Reflection Framework**: Meta-cognitive and comprehensive reflection
 - **Agent Orchestration**: Workflow coordination, DAG-based tasks, and team management
 - **Agent Performance Optimization**: Monitoring, metrics, caching, and load balancing
+- **Agent Evaluation**: Benchmark design, metrics collection, A/B testing, quality scoring
 - **LLM Application Patterns**: Prompt engineering (CoT, few-shot), RAG, and evaluation
 - **MCP Integration**: Guide for serena, github, sequential-thinking, and context7
 - **Multi-Agent Coordination**: Inter-agent communication and task allocation
+- **Prompt Engineering Patterns**: Chain-of-thought, few-shot learning, prompt versioning
+- **Memory System Patterns**: Vector databases, semantic memory, retrieval strategies
+- **Safety Guardrails**: Content filtering, constitutional AI, jailbreak detection
+- **Tool Use Patterns**: Function calling, tool selection, chaining, error recovery
+- **Knowledge Graph Patterns**: Entity modeling, graph databases, semantic search
 
 ## Hooks (8 events)
 

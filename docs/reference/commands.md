@@ -1,8 +1,8 @@
 # Claude Code Plugin Marketplace - Complete Command List
 
-**Total Commands:** 33 across 3 focused suites
+**Total Commands:** 36 across 3 focused suites
 **Format:** `/suite:command`
-**Version:** 2.2.1 | **Last Updated:** February 14, 2026
+**Version:** 3.1.0 | **Last Updated:** April 3, 2026
 
 ---
 

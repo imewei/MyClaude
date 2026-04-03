@@ -1,5 +1,58 @@
 # Changelog
 
+## v3.1.0 (2026-04-03)
+
+**Knowledge Gap Closure (+28 skills, +3 commands)**
+
+* Added 6 agent-core skills: prompt-engineering-patterns, memory-system-patterns,
+  safety-guardrails, tool-use-patterns, agent-evaluation, knowledge-graph-patterns.
+* Added 10 dev-suite skills: database-patterns, containerization-patterns,
+  cloud-provider-patterns, message-queue-patterns, caching-patterns,
+  graphql-patterns, accessibility-testing, websocket-patterns,
+  search-patterns, mobile-testing-patterns.
+* Added 12 science-suite skills: computer-vision, nlp-fundamentals,
+  bioinformatics, time-series-analysis, control-theory, experiment-tracking,
+  signal-processing, symbolic-math, reinforcement-learning, quantum-computing,
+  federated-learning, advanced-optimization.
+* Added 3 science-suite commands: run-experiment, analyze-data, paper-review.
+* Deduplicated prompt-engineering-patterns (removed science-suite copy,
+  migrated resources to agent-core).
+* Total: 24 agents, 36 commands, 169 skills.
+
+**Agent Optimization (24 agents)**
+
+* Added `background: true` to 18 agents for parallel dispatch.
+* Upgraded neural-network-master and simulation-expert to opus model tier.
+* Upgraded context-specialist and automation-engineer effort to high.
+* Right-sized maxTurns on 4 agents.
+* Restricted tools on context-specialist and research-expert to read-only.
+* Added worktree isolation to systems-engineer and python-pro.
+* Added "Use when..." activation triggers to all 24 agent descriptions.
+* Added missing CoT frameworks (6 agents) and Constitutional AI principles (6 agents).
+
+**Skill Quality Improvements (170 skills)**
+
+* Added "Use when..." trigger phrases to all 170 skill descriptions (was 143).
+* Expanded 9 thin skills from <200 words to 400-800 words.
+* Strengthened 27 weak descriptions with proactive trigger language.
+* Added domain-specific checklists to 23 skills that lacked them.
+* All 170 skills now have: trigger phrases, Expert Agent sections, and checklists.
+* Refactored testing-patterns from 96% to under 75% context budget.
+* Froze sciml-modern-stack at 78% budget.
+
+**Security Fixes**
+
+* Gated `commit_fixes()` behind `--auto-commit` flag in iterative-error-resolution
+  engine (default: dry-run showing diff).
+* Added package name validation regex for npm/pip subprocess calls.
+* Replaced `git add .` with `git add --update` for safe staging.
+* Added CLI argument validation for `gh` subprocess calls.
+* Anchored SessionStart hook matcher to `^(startup|resume)$`.
+
+**Governance**
+
+* Added skill size governance policy to CLAUDE.md (>3000 bytes = review required).
+
 ## v3.0.0 (2026-04-02)
 
 **Julia ML/DL/HPC Expansion**

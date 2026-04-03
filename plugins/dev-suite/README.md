@@ -44,14 +44,15 @@ Unified software development lifecycle suite covering architecture, implementati
 | `/docs` | Documentation generation and sync |
 | *+ 15 more* | See plugin.json for full list |
 
-## Skills (39)
+## Skills (49)
 
 Covers the complete SDLC:
 
-- **Architecture**: API design, auth patterns, microservices, monorepo management
-- **Implementation**: TypeScript, Python, async patterns, SQL optimization, error handling
-- **Infrastructure**: Git workflows, GitHub Actions, GitLab CI, Prometheus, Grafana, secrets management
-- **Quality**: Code review, debugging toolkit, test automation, E2E testing, validation
+- **Architecture**: API design, auth patterns, microservices, monorepo management, GraphQL
+- **Data & Storage**: Database patterns (ORMs, migrations), caching (Redis), search (Elasticsearch)
+- **Implementation**: TypeScript, Python, async patterns, SQL optimization, error handling, WebSocket
+- **Infrastructure**: Git workflows, GitHub Actions, GitLab CI, Prometheus, Grafana, secrets management, Docker/K8s, cloud providers (AWS/GCP/Azure), message queues
+- **Quality**: Code review, debugging toolkit, test automation, E2E testing, validation, accessibility (WCAG), mobile testing
 - **Documentation**: Standards and best practices
 
 ## Hooks

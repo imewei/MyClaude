@@ -1,6 +1,33 @@
 Changelog
 =========
 
+v3.1.0 (2026-04-03)
+-------------------
+
+**Knowledge Gap Closure**
+
+* Added 28 new skills across all suites closing Tier 1-3 gaps:
+  agent-core (+6: prompt-engineering, memory, safety, tools, eval, knowledge-graphs),
+  dev-suite (+10: databases, Docker, cloud, queues, caching, GraphQL, a11y, WebSocket, search, mobile testing),
+  science-suite (+12: CV, NLP, bioinformatics, time series, control theory, experiment tracking, signal processing, symbolic math, RL, quantum, federated learning, optimization).
+* Added 3 science-suite commands: ``run-experiment``, ``analyze-data``, ``paper-review``.
+* Deduplicated ``prompt-engineering-patterns`` (science-suite copy removed, resources migrated to agent-core).
+
+**Agent Optimization**
+
+* Added ``background: true`` to 18 agents, upgraded 2 to opus, right-sized maxTurns on 4.
+* Added "Use when..." triggers to all 24 agent descriptions.
+* Added missing CoT and Constitutional AI sections to 6 agents each.
+
+**Skill Quality**
+
+* All 169 skills now have trigger phrases, Expert Agent sections, and checklists.
+* Refactored testing-patterns from 96% to <75% context budget.
+
+**Security**
+
+* Gated ``commit_fixes()`` behind ``--auto-commit`` flag, added package name validation.
+
 v3.0.0 (2026-04-02)
 -------------------
 

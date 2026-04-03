@@ -2,7 +2,7 @@
 
 **Total Agents:** 24 across 3 focused suites
 **Format:** `suite:agent`
-**Version:** 3.0.0 | **Last Updated:** April 2, 2026
+**Version:** 3.1.0 | **Last Updated:** April 3, 2026
 
 ---
 
