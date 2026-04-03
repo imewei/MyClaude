@@ -390,3 +390,15 @@ Have known physics + unknown terms?
 Want to discover equations from trained NN?
   → UDE + SINDy pipeline (DataDrivenDiffEq.jl)
 ```
+
+## Checklist
+
+- [ ] Verify Lux.jl is used instead of Flux.jl for all new SciML work
+- [ ] Confirm explicit parameterization: `(ps, st)` tuple is passed to every model call
+- [ ] Check UDE neural network size is small (2-3 layers, 32-64 neurons) to avoid overfitting
+- [ ] Ensure sensitivity algorithm matches problem type: `InterpolatingAdjoint` for UDEs, `ForwardDiffSensitivity` for <100 parameters
+- [ ] Validate UDE training on multiple trajectories from different initial conditions
+- [ ] Add L2 regularization (`1e-4 * sum(abs2, p)`) to UDE loss to prevent overfitting noise
+- [ ] Confirm solver retcode check (`ReturnCode.Success`) in UDE loss function
+- [ ] Use two-phase optimization: ADAM for rough convergence, then BFGS for fine convergence
+- [ ] Verify SINDy extraction from trained NN produces physically interpretable equations

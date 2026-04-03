@@ -1,6 +1,6 @@
 ---
 name: research-methodology
-description: Systematic framework for scientific research, covering experimental design, statistical rigor, quality assessment, and publication readiness.
+description: Systematic framework for scientific research, covering experimental design, statistical rigor, quality assessment, and publication readiness. Use proactively when designing experiments, planning sample sizes, choosing statistical tests, writing methods sections, checking for p-hacking, or preparing manuscripts for journal submission. Also use when evaluating reproducibility, conducting power analysis, or structuring ablation studies, even if the user doesn't explicitly ask for methodology guidance.
 ---
 
 # Research Methodology

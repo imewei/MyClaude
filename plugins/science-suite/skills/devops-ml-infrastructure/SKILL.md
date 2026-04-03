@@ -80,3 +80,15 @@ stages = {
 | **Training** | Performance gates, reproducible seeds, checkpointing |
 | **Serving** | Health probes, canary deploys, automated rollback |
 | **Tracking** | Log all hyperparams, metrics, and artifacts |
+
+## Checklist
+
+- [ ] Verify experiment tracking logs all hyperparameters, metrics, and model artifacts
+- [ ] Confirm training pipeline includes data validation stage with schema checks
+- [ ] Ensure model registry stores versioned artifacts with promotion stages (staging, production)
+- [ ] Check that inference endpoints have health probes and readiness checks configured
+- [ ] Validate canary deployment rollback triggers on accuracy degradation thresholds
+- [ ] Confirm reproducible seeds are set in training scripts and logged to experiment tracker
+- [ ] Ensure Docker images pin dependency versions and use multi-stage builds
+- [ ] Verify GPU resource requests match actual training requirements to avoid over-provisioning
+- [ ] Check that data drift detection is active on serving endpoints

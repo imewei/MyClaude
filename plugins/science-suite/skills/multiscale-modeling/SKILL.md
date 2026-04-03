@@ -2,7 +2,7 @@
 name: multiscale-modeling
 maturity: "5-Expert"
 specialization: Multiscale Simulation
-description: Bridge atomistic MD to mesoscale using coarse-graining, DPD, and nanoscale DEM. Use when developing CG models, implementing DPD simulations, or coupling scales.
+description: Bridge atomistic MD to mesoscale using coarse-graining, DPD, and nanoscale DEM. Use when developing CG models, implementing DPD simulations, or coupling scales. Also use when building MARTINI models, performing force matching, running QM/MM simulations, designing sequential or concurrent multiscale workflows, or simulating soft matter and polymers at mesoscale. Use proactively when the user needs to connect molecular-level detail to larger-scale behavior, even if they only mention "coarse-graining" or "mesoscale."
 ---
 
 # Multiscale Modeling

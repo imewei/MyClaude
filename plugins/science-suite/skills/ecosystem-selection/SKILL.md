@@ -83,3 +83,14 @@ model = sklearn.LinearRegression().fit(X_train, y_train)
 5. Iterate gradual migration
 
 **Outcome**: Optimal ecosystem choice, hybrid integration, reproducible environments
+
+## Checklist
+
+- [ ] Profile Python bottlenecks before deciding to migrate to Julia
+- [ ] Verify Julia prototype achieves >10x speedup over Python baseline on the target workload
+- [ ] Confirm PyJulia bridge uses `compiled_modules=False` to avoid precompilation issues
+- [ ] Ensure Python and Julia environments are locked (`uv.lock` / `Manifest.toml`) for reproducibility
+- [ ] Check dtype consistency at language boundaries (Python float32 vs Julia Float64)
+- [ ] Validate that hybrid workflows produce bit-identical results to single-language reference
+- [ ] Ensure GIL-sensitive operations are offloaded to Julia or use multiprocessing
+- [ ] Confirm package manager isolation (no mixing pip and CondaPkg in the same environment)

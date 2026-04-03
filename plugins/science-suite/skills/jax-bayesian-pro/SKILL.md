@@ -190,3 +190,16 @@ def masked_log_lik(params, padded_data, mask):
 - **`examples/diffrax-bayesian-ode.py`** - Bayesian parameter estimation with differentiable ODE solvers
 
 **Outcome**: Write pure log-prob functions, master effect handlers, build custom samplers, integrate differentiable physics, run massively parallel chains.
+
+## Checklist
+
+- [ ] Verify log-probability function is pure (no global state, no side effects)
+- [ ] Confirm PRNG keys are explicitly split for every stochastic operation
+- [ ] Check MCMC diagnostics: R-hat < 1.01, ESS > 400, no divergences
+- [ ] Validate prior predictive distribution covers plausible data ranges
+- [ ] Ensure posterior predictive checks reproduce observed data patterns
+- [ ] Use non-centered reparameterization for hierarchical models with funnel geometries
+- [ ] Confirm Blackjax window adaptation warmup is sufficient (typically 500+ steps)
+- [ ] Verify differentiable physics integration: gradients propagate through ODE solver without NaN
+- [ ] Check that masking for ragged data uses `jnp.where` (not Python conditionals) for JIT compatibility
+- [ ] Run parallel chains with `jax.pmap` and verify inter-chain mixing

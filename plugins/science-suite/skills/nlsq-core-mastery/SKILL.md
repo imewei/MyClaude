@@ -113,3 +113,15 @@ diagnose_result(result)  # Check convergence metrics
 | JAX tracer errors | `jnp.where`, `lax.cond` |
 
 **Outcome**: Fast GPU/TPU curve fitting with automatic memory management
+
+## Checklist
+
+- [ ] Verify workflow selection matches dataset size: `auto` for standard, `auto_global` for multi-modal, `hpc` for >100M points
+- [ ] Confirm initial guess `p0` is physically reasonable to avoid local minima
+- [ ] Check that bounds are set for `auto_global` and `hpc` workflows
+- [ ] Select loss function based on outlier fraction (linear for clean, cauchy/arctan for heavy outliers)
+- [ ] Choose TRF for bounded problems >10K points, LM for unbounded <10K points
+- [ ] Enable mixed precision (`configure_mixed_precision`) for memory-constrained workloads
+- [ ] Run `diagnose_result()` to verify convergence metrics after fitting
+- [ ] Validate fitted parameters against physical constraints and expected ranges
+- [ ] Confirm checkpoint directory exists and is writable for `hpc` workflow

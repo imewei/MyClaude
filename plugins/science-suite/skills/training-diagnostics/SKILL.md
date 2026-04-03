@@ -148,3 +148,15 @@ for x, y in train_loader:
 ```
 
 **Outcome**: ReLU/LeakyReLU, He init, batch norm, residuals, gradient clipping, warmup, monitoring
+
+## Checklist
+
+- [ ] Run single-batch overfit test to verify model can memorize one batch (loss < 0.01)
+- [ ] Check gradient norms across all layers for vanishing (<1e-7) or exploding (>100) patterns
+- [ ] Verify activation statistics: flag layers with >50% zero activations (dead ReLU)
+- [ ] Confirm no NaN or Inf values in training data before starting training
+- [ ] Validate learning rate with LR range test (select steepest descent point before explosion)
+- [ ] Ensure gradient clipping is enabled (`max_norm=1.0`) for models prone to gradient spikes
+- [ ] Check train/val loss divergence: widening gap indicates overfitting, both high indicates underfitting
+- [ ] Apply warmup schedule when using large batch sizes (linear scaling rule)
+- [ ] Monitor loss curve for plateaus and apply cyclical LR or ReduceLROnPlateau as needed

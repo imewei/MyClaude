@@ -237,3 +237,15 @@ def cgle_step(A_hat, dt, c1, c2, k2):
 | Wrong diffusion ratio | No Turing patterns form | Verify D_v / D_u >> 1 and check instability criteria analytically |
 | Aliasing in pseudo-spectral | Spurious high-k energy growth | Apply 2/3-rule dealiasing or exponential filter |
 | Graph Laplacian sign convention | Diffusion amplifies instead of smooths | Ensure L = D_deg - A (positive semi-definite), flux term is -D * L * u |
+
+## Checklist
+
+- [ ] Verify Turing instability criteria analytically before running simulations (tr(J) < 0, det(J) > 0, diffusion ratio condition)
+- [ ] Confirm grid resolution satisfies Nyquist: dx < pi / k_crit for the most unstable wavenumber
+- [ ] Check CFL condition for explicit time-stepping: dt < dx^2 / (4 * D_max)
+- [ ] Apply 2/3-rule dealiasing or exponential filter in pseudo-spectral methods
+- [ ] Validate dispersion relation omega(k) identifies correct critical wavenumber k_crit
+- [ ] Ensure graph Laplacian L = D_deg - A is positive semi-definite with lambda_1 = 0
+- [ ] Verify spiral wave tip tracking uses contour intersection (not thresholding alone)
+- [ ] Confirm amplitude equation coefficients (c1, c2 in CGLE) match the physical regime
+- [ ] Test pattern persistence with longer integration times to rule out transient structures

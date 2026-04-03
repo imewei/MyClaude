@@ -226,3 +226,15 @@ params = sol.value
 ```
 
 All solvers are JIT-compatible and differentiable via implicit differentiation.
+
+## Checklist
+
+- [ ] Verify all functions under `jax.jit` are pure (no side effects, no global state mutation)
+- [ ] Confirm explicit PRNG key splitting for every random operation (`jax.random.split`)
+- [ ] Check that `static_argnums` is set for arguments affecting control flow or shapes
+- [ ] Validate no Python `for` loops in JIT-traced code (use `jax.lax.scan` instead)
+- [ ] Ensure in-place operations use `.at[idx].set()` syntax (not array mutation)
+- [ ] Run `jax.make_jaxpr(fn)(args)` to inspect traced computation for unexpected behavior
+- [ ] Enable `jax_debug_nans` during development to catch numerical issues early
+- [ ] Verify multi-device sharding with `NamedSharding` and correct `PartitionSpec`
+- [ ] Confirm Orbax checkpoints save and restore model state, optimizer state, and step count

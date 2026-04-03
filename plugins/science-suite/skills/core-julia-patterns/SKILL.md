@@ -2,7 +2,7 @@
 name: core-julia-patterns
 maturity: "5-Expert"
 specialization: Julia Language Fundamentals
-description: Master multiple dispatch, type system, parametric types, type stability, and metaprogramming for high-performance Julia. Use when designing type hierarchies, debugging @code_warntype issues, optimizing with @inbounds/@simd/StaticArrays, or writing macros and generated functions.
+description: Master multiple dispatch, type system, parametric types, type stability, and metaprogramming for high-performance Julia. Use when designing type hierarchies, debugging @code_warntype issues, optimizing with @inbounds/@simd/StaticArrays, or writing macros and generated functions. Also use when learning Julia fundamentals, understanding abstract vs concrete types, writing performant inner loops, or structuring code around multiple dispatch. Use proactively when the user writes Julia code with type instabilities, asks about Julia design patterns, or needs help with Julia's core language features.
 ---
 
 # Core Julia Patterns

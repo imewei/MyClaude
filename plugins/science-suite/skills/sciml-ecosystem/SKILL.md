@@ -2,7 +2,7 @@
 name: sciml-ecosystem
 maturity: "5-Expert"
 specialization: SciML Overview
-description: Navigate the SciML ecosystem including DifferentialEquations.jl, ModelingToolkit.jl, Optimization.jl, and Catalyst.jl. Use when selecting packages for scientific computing tasks.
+description: Navigate the SciML ecosystem including DifferentialEquations.jl, ModelingToolkit.jl, Optimization.jl, and Catalyst.jl. Use when selecting packages for scientific computing tasks. Also use when deciding which SciML package to use for a problem, understanding how packages interconnect, planning a Julia scientific computing workflow, or comparing SciML tools for ODEs, optimization, sensitivity analysis, and symbolic modeling. Use proactively when the user asks "which Julia package should I use for..." or mentions scientific machine learning in Julia.
 ---
 
 # SciML Ecosystem

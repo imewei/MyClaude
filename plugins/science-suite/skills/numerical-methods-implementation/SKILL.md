@@ -1,6 +1,6 @@
 ---
 name: numerical-methods-implementation
-description: Implement robust numerical algorithms for ODEs (RK45, BDF), PDEs (finite difference, FEM), optimization (L-BFGS, Newton), and molecular simulations. Master solver selection, stability analysis, and differentiable physics using Python and Julia.
+description: Implement robust numerical algorithms for ODEs (RK45, BDF), PDEs (finite difference, FEM), optimization (L-BFGS, Newton), and molecular simulations. Master solver selection, stability analysis, and differentiable physics using Python and Julia. Use when writing numerical solvers from scratch, choosing between implicit and explicit integrators, implementing finite element methods, or debugging numerical instabilities. Also use proactively when the user mentions stiff equations, convergence issues, CFL conditions, or needs custom numerical implementations beyond library defaults.
 ---
 
 # Numerical Methods Implementation

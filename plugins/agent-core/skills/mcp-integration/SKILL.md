@@ -87,3 +87,16 @@ Examples:
 
 - `agent-orchestration` -- Workflow patterns for coordinating MCP tool usage across agents
 - `llm-application-patterns` -- RAG and prompt engineering patterns that leverage MCP retrieval
+
+## Checklist
+
+- [ ] Verify MCP server plugin is installed and listed in `claude mcp list`
+- [ ] Confirm tool naming follows `mcp__plugin_<plugin-name>_<server-name>__<tool-name>` convention
+- [ ] Check `allowed-tools` in command frontmatter matches the MCP tools actually needed
+- [ ] Test each MCP server connection independently before combining in workflows
+- [ ] Validate that sequential-thinking responses include revision and branching metadata
+- [ ] Ensure Context7 queries specify the correct library name and version
+- [ ] Verify Serena semantic analysis targets the correct project and symbol scope
+- [ ] Confirm GitHub MCP operations use appropriate authentication and repository context
+- [ ] Test cross-server workflows end-to-end (e.g., Context7 lookup then Serena analysis)
+- [ ] Review error handling for MCP server timeouts or unavailability

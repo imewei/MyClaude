@@ -47,3 +47,14 @@ Systematic workflows for training, ablation, and hyperparameter tuning.
 - **PyTorch**: Standard for research and production.
 - **JAX (Flax/Equinox)**: High-performance research and scientific computing.
 - **TensorFlow/Keras**: Legacy support and rapid prototyping.
+
+## Checklist
+
+- [ ] Verify architecture choice matches problem type (CNN for spatial, Transformer for sequential, MLP for tabular)
+- [ ] Confirm weight initialization scheme is appropriate (He for ReLU, Xavier for tanh/sigmoid)
+- [ ] Check that loss function aligns with the task (cross-entropy for classification, MSE for regression)
+- [ ] Validate gradient flow through all layers using gradient norm diagnostics
+- [ ] Ensure learning rate schedule includes warmup for large-batch training
+- [ ] Run single-batch overfit test before full training to verify model capacity
+- [ ] Confirm data pipeline produces correctly shaped, normalized, and shuffled batches
+- [ ] Check for numerical stability (NaN/Inf) in forward and backward passes

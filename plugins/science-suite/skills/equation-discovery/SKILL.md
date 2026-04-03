@@ -267,3 +267,15 @@ This pipeline combines the flexibility of neural networks with the interpretabil
 | Insufficient data | Underdetermined system | Collect longer trajectories or multiple initial conditions |
 | Wrong coordinate system | Complex equations with many terms | Transform to physically meaningful coordinates before SINDy |
 | Threshold too aggressive | Missing true dynamics terms | Sweep thresholds and inspect Pareto front for elbow |
+
+## Checklist
+
+- [ ] Verify derivative estimation method matches data noise level (finite difference for clean, smoothed/integral for noisy)
+- [ ] Confirm candidate library includes domain-appropriate basis functions (polynomial, trig, exponential)
+- [ ] Sweep sparsity thresholds and inspect the Pareto front (complexity vs prediction error) for the elbow
+- [ ] Validate discovered equations on held-out trajectories not used during SINDy fitting
+- [ ] Check long-time stability by simulating discovered equations well beyond training time horizon
+- [ ] Ensure multi-trajectory validation uses independent initial conditions
+- [ ] Compare STLSQ, SR3, and ADMM results to assess robustness of discovered terms
+- [ ] Verify coordinate system is physically meaningful before applying SINDy
+- [ ] Confirm UDE+SINDy pipeline extracts symbolic equations consistent with known physics

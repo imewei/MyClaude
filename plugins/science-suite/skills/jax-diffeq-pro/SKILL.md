@@ -153,3 +153,15 @@ adjoint = diffrax.BacksolveAdjoint()
 - **`examples/sde-brownian.py`** - Stochastic ODEs, reproducible Brownian motion, soft matter applications
 
 **Outcome**: Build differentiable physics engines, choose appropriate solvers for stiff systems, efficiently backprop through long simulations, handle events and SDEs.
+
+## Checklist
+
+- [ ] Verify solver selection matches stiffness: explicit (Tsit5/Dopri5) for non-stiff, implicit (Kvaerno5/KenCarp4) for stiff
+- [ ] Confirm `PIDController` tolerance settings (rtol, atol) are appropriate for the physics scale
+- [ ] Check adjoint method: `RecursiveCheckpointAdjoint` for long simulations, `BacksolveAdjoint` only for non-chaotic systems
+- [ ] Validate that gradients through `diffeqsolve` produce finite values (no NaN/Inf)
+- [ ] Ensure `SaveAt` captures the required time points without excessive memory consumption
+- [ ] Use `VirtualBrownianTree` for SDEs with adaptive step sizes (not fixed-step noise)
+- [ ] Confirm hybrid vector fields (physics + neural network) have consistent dtypes
+- [ ] Test event handling with `diffrax.Event` instead of Python `if` statements (which break gradients)
+- [ ] Verify Lineax linear solver choice matches matrix structure (CG for SPD, GMRES for general)

@@ -94,3 +94,15 @@ gmx grompp -f md.mdp -o md.tpr && gmx mdrun -deffnm md -nb gpu
 | Density drift | Longer equilibration |
 
 **Outcome**: Properly configured MD simulation with appropriate force field, equilibration, and parallelization
+
+## Checklist
+
+- [ ] Verify force field selection is appropriate for the system (EAM for metals, AMBER/CHARMM for biomolecules)
+- [ ] Confirm energy minimization converges (Fmax < 10 kJ/mol/nm) before dynamics
+- [ ] Check that timestep respects constraints: 2 fs with SHAKE/LINCS, 0.5-1 fs without
+- [ ] Validate NVT equilibration reaches target temperature with stable fluctuations
+- [ ] Ensure NPT equilibration produces stable density before production run
+- [ ] Verify thermostat and barostat coupling constants match system relaxation timescales
+- [ ] Confirm electrostatics use PME with appropriate cutoff (1.0-1.2 nm)
+- [ ] Check parallel decomposition efficiency: MPI ranks match domain decomposition
+- [ ] Validate trajectory output frequency balances storage cost with analysis resolution

@@ -72,3 +72,14 @@ What is the analysis goal?
 | Small networks (<1K)     | DynamicalSystems.jl          | --                           |
 | Equation discovery       | DataDrivenDiffEq.jl          | --                           |
 | Neural ODEs              | DiffEqFlux.jl                | Diffrax                      |
+
+## Checklist
+
+- [ ] Identify the analysis goal using the routing decision tree before selecting a sub-skill
+- [ ] Verify ecosystem selection matches problem scale (Julia for symbolic/small, JAX for GPU/large)
+- [ ] Confirm the dynamical system is well-posed (existence and uniqueness of solutions)
+- [ ] Check that initial conditions and parameter ranges cover the regime of interest
+- [ ] Validate numerical integration accuracy with convergence tests (halve dt, compare results)
+- [ ] Ensure bifurcation analysis uses continuation (not brute-force parameter sweeps) for critical points
+- [ ] Cross-validate Julia symbolic results with JAX numerical sweeps when using hybrid workflows
+- [ ] Document all discovered dynamical features (fixed points, limit cycles, chaos) with parameter values

@@ -131,3 +131,15 @@ class CorrelationAnalyzer:
 ```
 
 **Outcome**: Transform methods, FDT, Ornstein-Zernike, finite-size scaling, sum rules
+
+## Checklist
+
+- [ ] Verify C(r) normalization: C(0) = variance and C(r -> inf) -> 0
+- [ ] Confirm symmetry property C(r) = C(-r) holds in computed correlation functions
+- [ ] Check Fourier transform conventions (sign, prefactor) match the physics domain
+- [ ] Validate Wiener-Khinchin relation: S(omega) matches |FT[signal]|^2
+- [ ] Ensure Ornstein-Zernike closure (PY, HNC) is appropriate for the pair interaction
+- [ ] Verify fluctuation-dissipation theorem connects measured response to equilibrium correlations
+- [ ] Check finite-size corrections when correlation length xi approaches system size L
+- [ ] Confirm sum rules (compressibility, conservation) are satisfied within numerical tolerance
+- [ ] Validate cumulant calculations: kappa_4 = <(delta phi)^4> - 3*var^2 (excess kurtosis)

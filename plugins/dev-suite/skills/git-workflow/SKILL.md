@@ -36,3 +36,14 @@ Expert guide for maintaining a clean, navigable code history and optimizing coll
 
 - **Parallel Operations**: Use `git fetch --jobs=n` and `git submodule update --jobs=n` for large repositories.
 - **LFS**: Use Git Large File Storage for binary assets to keep the repository size manageable.
+
+## Checklist
+
+- [ ] Verify branch naming follows the project's convention (e.g., `feature/`, `fix/`, `chore/`)
+- [ ] Ensure commits are atomic with descriptive messages explaining the "why"
+- [ ] Run `git rebase -i` to squash fixup commits before merging to main
+- [ ] Confirm `--force-with-lease` is used instead of `--force` when updating rebased branches
+- [ ] Check that `.gitignore` excludes build artifacts, secrets, and IDE-specific files
+- [ ] Validate PR description includes summary, test plan, and linked issues
+- [ ] Run `git bisect` to locate regression commits before applying fixes
+- [ ] Ensure LFS is configured for binary assets exceeding 100KB

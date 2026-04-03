@@ -1,6 +1,6 @@
 ---
 name: scientific-visualization
-description: Create publication-quality scientific visualizations across physics, biology, chemistry, and climate science. Supports uncertainty quantification, multi-dimensional data, and domain-specific plots in both Python and Julia.
+description: Create publication-quality scientific visualizations across physics, biology, chemistry, and climate science. Supports uncertainty quantification, multi-dimensional data, and domain-specific plots in both Python and Julia. Use when making figures for Nature/Science journals, plotting error bars and confidence intervals, creating phase diagrams, molecular structure renderings, or climate maps. Also use proactively when the user needs matplotlib or Makie figures with proper DPI, font sizes, and color palettes for academic papers.
 ---
 
 # Scientific Visualization

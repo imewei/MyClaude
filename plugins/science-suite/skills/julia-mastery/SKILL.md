@@ -116,3 +116,15 @@ Multi-threading and distributed computing patterns.
 - **Metaprogramming**: Use macros (`@macro`) for code generation, but prefer functions when possible. Ensure macros use `esc()` to avoid hygiene issues.
 - **Package Management**: Use `Pkg` for managing environments and dependencies.
 - **Parallelism**: Leverage `Threads.@threads` for shared memory and `Distributed` for multi-node parallelism.
+
+## Checklist
+
+- [ ] Verify type stability with `@code_warntype` on all performance-critical functions
+- [ ] Confirm struct fields use concrete types (not abstract) for allocation efficiency
+- [ ] Check that hot loops preallocate output arrays and use mutating functions (ending in `!`)
+- [ ] Validate multiple dispatch design: methods specialize on all argument types as intended
+- [ ] Ensure `@simd` and `@inbounds` are applied only after correctness is verified
+- [ ] Use `BenchmarkTools.@btime` (not `@time`) for accurate performance measurements
+- [ ] Confirm `Manifest.toml` is committed for reproducible environments
+- [ ] Check that macros use `esc()` correctly to avoid hygiene issues
+- [ ] Validate SciML solver selection matches problem stiffness and accuracy requirements

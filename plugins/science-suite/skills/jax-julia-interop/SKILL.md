@@ -271,3 +271,15 @@ for step in range(5000):
 | Equation discovery | Julia (DataDrivenDiffEq.jl) | SINDy, symbolic regression integration |
 | Neural ODE | Both | Diffrax (JAX) or DiffEqFlux.jl (Julia) |
 | Symbolic manipulation | Julia (ModelingToolkit.jl) | Symbolic-numeric compilation pipeline |
+
+## Checklist
+
+- [ ] Verify Julia JIT warmup is complete before benchmarking interop performance
+- [ ] Confirm JAX arrays are converted to NumPy (`np.asarray`) before passing to Julia (device-to-host copy)
+- [ ] Check dtype consistency at boundaries: JAX defaults to float32, Julia to Float64
+- [ ] Ensure CondaPkg.jl manages Python dependencies from Julia side for reproducibility
+- [ ] Validate zero-copy NumPy-Julia array sharing via `PythonCall.PyArray`
+- [ ] Test that batch transfers minimize per-element copy overhead for large arrays
+- [ ] Verify `juliacall` and `PythonCall.jl` versions are compatible
+- [ ] Confirm GIL is not blocking during long Julia computations (use `@spawn` if needed)
+- [ ] Validate end-to-end workflow produces identical results when run purely in one language

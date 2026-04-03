@@ -2,7 +2,7 @@
 name: testing-patterns
 maturity: "5-Expert"
 specialization: Julia Testing
-description: Master Test.jl, Aqua.jl quality checks, and JET.jl static analysis for Julia testing. Use when writing unit tests, organizing test suites, or validating package quality.
+description: Master Test.jl, Aqua.jl quality checks, and JET.jl static analysis for Julia testing. Use when writing unit tests, organizing test suites, or validating package quality. Also use when adding @testset blocks, checking floating-point approximate equality, parameterizing tests across solvers, detecting type piracy with Aqua.jl, or running static analysis with JET.jl. Use proactively when the user writes Julia code and needs tests, mentions test failures, or asks about Julia package quality checks.
 ---
 
 # Julia Testing Patterns

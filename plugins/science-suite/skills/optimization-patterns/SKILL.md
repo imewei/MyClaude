@@ -2,7 +2,7 @@
 name: optimization-patterns
 maturity: "5-Expert"
 specialization: SciML Optimization
-description: Use Optimization.jl for parameter estimation in differential equations. Use when fitting models to data or solving inverse problems. For LP/QP/MIP, use JuMP.jl instead.
+description: Use Optimization.jl for parameter estimation in differential equations. Use when fitting models to data or solving inverse problems. For LP/QP/MIP, use JuMP.jl instead. Also use when choosing between BFGS, Adam, NelderMead, or PSO algorithms, calibrating ODE/SDE model parameters against experimental data, or setting up gradient-based optimization for SciML workflows. Use proactively when the user mentions curve fitting, inverse modeling, or parameter calibration in Julia.
 ---
 
 # Optimization.jl Patterns

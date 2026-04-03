@@ -252,3 +252,15 @@ crossings = jnp.where(jnp.diff(jnp.sign(real_parts[:, 0])) != 0)[0]
 | `detect_bifurcation = 0` | Bifurcations not flagged | Set `detect_bifurcation >= 2` for Hopf detection |
 | Singular Jacobian at fold | Newton diverges near fold | Use PALC (pseudo-arclength) not natural parameter continuation |
 | Incorrect lens for codim-2 | Wrong parameter varied in two-parameter continuation | Double-check `(@optic _.param_name)` matches the second parameter |
+
+## Checklist
+
+- [ ] Verify analytical Jacobian `J` is supplied to `BifurcationProblem` (or use `AutoDiff()`)
+- [ ] Confirm `detect_bifurcation >= 2` for Hopf detection and `>= 3` for period-doubling
+- [ ] Set `bothside = true` in `continuation()` to compute the full branch
+- [ ] Check that `ds` and `dsmax` are small enough near expected critical points
+- [ ] Validate normal form coefficients (e.g., first Lyapunov coefficient sign for Hopf criticality)
+- [ ] Ensure `(@optic _.param)` lens targets the correct parameter for two-parameter continuation
+- [ ] Inspect all `br.specialpoint` entries for missed or spurious bifurcation detections
+- [ ] Cross-validate bifurcation points with JAX vmap eigenvalue sweeps around critical values
+- [ ] Confirm Newton solver convergence tolerance (`tol = 1e-10`) is sufficient for the problem scale

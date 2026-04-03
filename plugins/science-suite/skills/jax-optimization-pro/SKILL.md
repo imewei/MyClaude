@@ -188,3 +188,16 @@ Working examples demonstrating expert patterns:
 - **`examples/spmd-parallelism.py`** - Sharding, mesh configuration, multi-device execution
 
 **Outcome**: Write pure functions, explicit RNG, JIT hot paths, multi-device scaling, HLO-aware optimization.
+
+## Checklist
+
+- [ ] Verify all JIT-compiled functions are pure (no side effects, no mutable state)
+- [ ] Confirm `static_argnums` is set for values that affect control flow or array shapes
+- [ ] Check for unnecessary recompilation by enabling `JAX_LOG_COMPILES=1`
+- [ ] Inspect HLO output for fusion breaks and unexpected memory allocations
+- [ ] Validate PyTree structures are consistent across `jax.tree.map` operations
+- [ ] Ensure `jax.lax.scan` replaces Python `for` loops in performance-critical paths
+- [ ] Use `jax.lax.cond` instead of Python `if` for traced conditional logic
+- [ ] Confirm custom VJPs (`jax.custom_vjp`) produce correct gradients via finite-difference check
+- [ ] Profile with Perfetto/JAX profiler to identify device idle time and transfer bottlenecks
+- [ ] Verify multi-device sharding mesh configuration matches hardware topology

@@ -2,7 +2,7 @@
 name: compiler-patterns
 maturity: "5-Expert"
 specialization: Julia Compilation
-description: Create system images and standalone executables with PackageCompiler.jl. Use when reducing startup time or deploying Julia applications without requiring Julia installation.
+description: Create system images and standalone executables with PackageCompiler.jl. Use when reducing startup time or deploying Julia applications without requiring Julia installation. Also use when building Docker images for Julia services, writing precompile scripts, bundling apps with artifacts, troubleshooting method invalidations with SnoopCompile, or shipping Julia code to end users. Use proactively when the user complains about Julia startup latency or asks how to distribute a Julia application.
 ---
 
 # PackageCompiler.jl Patterns

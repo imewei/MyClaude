@@ -64,3 +64,15 @@ Extracting physical parameters from DLS, SAXS, and microscopy.
 - **Scattering**: SAXS/SANS/DLS interpretation.
 - **Rheology**: Viscoelasticity and transport coefficients.
 - **Microscopy**: Particle tracking and trajectory analysis.
+
+## Checklist
+
+- [ ] Verify ensemble selection matches experimental constraints (NVE, NVT, NPT, or grand canonical)
+- [ ] Confirm partition function calculation accounts for all relevant microstates
+- [ ] Check that order parameter correctly identifies the phase transition (e.g., magnetization, density)
+- [ ] Validate fluctuation-dissipation theorem connects measured susceptibility to equilibrium fluctuations
+- [ ] Ensure critical exponents satisfy known scaling relations (e.g., Rushbrooke, Widom)
+- [ ] Verify finite-size scaling extrapolation to thermodynamic limit L -> infinity
+- [ ] Confirm entropy production calculation is non-negative for irreversible processes
+- [ ] Check that Langevin/Fokker-Planck parameters match the physical noise source
+- [ ] Validate correlation function analysis against known sum rules and asymptotic behaviors

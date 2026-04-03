@@ -105,3 +105,15 @@ ncu --set full python code.py
 **Avoid**: Small problems (transfer overhead), sequential algorithms
 
 **Outcome**: Maximize occupancy, coalescing, minimize transfers, overlap compute
+
+## Checklist
+
+- [ ] Verify problem size exceeds GPU transfer overhead threshold (>10^6 elements for dense operations)
+- [ ] Confirm memory access patterns are coalesced (consecutive threads access consecutive memory)
+- [ ] Check that shared memory is used for frequently accessed data within thread blocks
+- [ ] Validate thread block size is between 128-512 for optimal occupancy
+- [ ] Ensure host-to-device transfers use pinned memory for maximum bandwidth
+- [ ] Overlap compute and data transfer using CUDA streams or async operations
+- [ ] Profile with `nsys` or `ncu` to identify bottlenecks before manual optimization
+- [ ] Verify multi-GPU workload distribution is balanced across devices
+- [ ] Check that kernel launches avoid warp divergence in conditional branches

@@ -1,6 +1,6 @@
 ---
 name: ml-force-fields
-description: Develop ML force fields (NequIP, MACE, DeepMD) achieving quantum accuracy with 1000x speedup. Use when training neural network potentials or deploying ML force fields in MD.
+description: Develop ML force fields (NequIP, MACE, DeepMD) achieving quantum accuracy with 1000x speedup. Use when training neural network potentials or deploying ML force fields in MD. Also use when generating AIMD training data, running active learning loops for force field refinement, deploying potentials in LAMMPS/GROMACS, quantifying ensemble uncertainty, or choosing between NequIP, MACE, and DeepMD architectures. Use proactively when the user mentions machine learning interatomic potentials or wants DFT-quality forces at classical MD speed.
 ---
 
 # ML Force Fields

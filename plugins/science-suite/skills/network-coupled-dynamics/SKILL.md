@@ -290,3 +290,15 @@ where <k> and <k^2> are the first and second moments of the degree distribution.
 | All-to-all coupling assumption | Mean-field K_c formula fails on sparse networks | Use network-specific MSF or numerical sweep for K_c |
 | Finite-size effects | Order parameter R never reaches 0 (scales as 1/sqrt(N)) | Report R with finite-size correction; compare against R_null = 1/sqrt(N) |
 | Chimera vs transient | Apparent chimera dissolves after long integration | Integrate for t > 1000/K; verify persistence with time-windowed R_local |
+
+## Checklist
+
+- [ ] Verify graph connectivity with `is_connected(g)` before running dynamics
+- [ ] Confirm Laplacian sign convention: L = D - A (positive semi-definite, lambda_1 = 0)
+- [ ] Check order parameter R against finite-size null R_null = 1/sqrt(N)
+- [ ] Validate Kuramoto critical coupling K_c against mean-field prediction for the frequency distribution
+- [ ] Ensure master stability function is evaluated for all Laplacian eigenvalues k >= 2
+- [ ] Test chimera persistence by integrating for t > 1000/K with time-windowed local order parameter
+- [ ] Verify bimodal distribution detection uses appropriate prominence threshold
+- [ ] Confirm epidemic R_0 accounts for degree heterogeneity: R_0 = (beta/gamma) * <k^2>/<k>
+- [ ] Use JAX sparse BCOO for networks >1K nodes to avoid dense memory overhead
