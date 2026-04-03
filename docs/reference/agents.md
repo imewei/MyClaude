@@ -1,8 +1,8 @@
 # Claude Code Plugin Marketplace - Complete Agent List
 
-**Total Agents:** 23 across 3 focused suites
+**Total Agents:** 24 across 3 focused suites
 **Format:** `suite:agent`
-**Version:** 2.2.1 | **Last Updated:** April 1, 2026
+**Version:** 3.0.0 | **Last Updated:** April 2, 2026
 
 ---
 
@@ -34,6 +34,7 @@ Consolidated suite for full-stack engineering, infrastructure, CI/CD, quality as
 Consolidated suite for high-performance computing, specialized physics/chemistry simulations, and data science workflows.
 
 - **`jax-pro`** - Expert in JAX-based scientific computing, functional transformations, and high-performance numerical kernels.
+- **`julia-ml-hpc`** - Expert in Julia ML, Deep Learning, and HPC (Lux.jl, MLJ.jl, CUDA.jl, MPI.jl, GraphNeuralNetworks.jl).
 - **`julia-pro`** - Expert in Julia programming, Scientific Machine Learning (SciML), and DifferentialEquations.jl.
 - **`ml-expert`** - Expert in classical ML algorithms, MLOps pipelines, and data engineering.
 - **`neural-network-master`** - Deep learning authority specializing in theory and implementation (Transformers, CNNs, diagnostics).
@@ -56,4 +57,4 @@ Consolidated suite for high-performance computing, specialized physics/chemistry
 
 ---
 
-*Generated from v2.2.1 validated marketplace data.*
+*Generated from v3.0.0 validated marketplace data.*

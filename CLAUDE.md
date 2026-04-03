@@ -91,7 +91,7 @@ The manifest uses **file-path references** (not inline objects) to point to agen
 ## Key Conventions
 
 - **Version sync**: All `plugin.json` files must use the same version string. Version lives only in manifests, not in agent/command/skill frontmatter.
-- **Skill budget**: All 132 skills must fit within 2% of the context window. Run `context_budget_checker.py` after adding skills.
+- **Skill budget**: All 142 skills must fit within 2% of the context window. Run `context_budget_checker.py` after adding skills.
 - **Model tiers**: Agents use `opus` (deep reasoning: orchestrator, reasoning-engine, debugger-pro, software-architect, research-expert, statistical-physicist, nonlinear-dynamics-expert), `sonnet` (standard tasks), or `haiku` (fast/simple: documentation-expert).
 - **No wildcard imports**: `from module import *` is prohibited.
 - **Python 3.13+**: Required by `pyproject.toml`.

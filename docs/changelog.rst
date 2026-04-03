@@ -1,15 +1,35 @@
 Changelog
 =========
 
-v3.0.0 (2026-03-31)
+v3.0.0 (2026-04-02)
 -------------------
+
+**Julia ML/DL/HPC Expansion (2026-04-02)**
+
+* Added ``julia-ml-hpc`` agent (sonnet) for Julia ML, Deep Learning, and HPC.
+  Covers Lux.jl/Flux.jl, MLJ.jl, CUDA.jl, MPI.jl, GraphNeuralNetworks.jl, and
+  ReinforcementLearning.jl. Delegates SciML/ODE work to ``julia-pro``.
+* Added 10 new Julia skills: ``julia-neural-networks``, ``julia-neural-architectures``,
+  ``julia-training-diagnostics``, ``julia-ad-backends``, ``julia-ml-pipelines``,
+  ``julia-gpu-kernels``, ``julia-hpc-distributed``, ``julia-model-deployment``,
+  ``julia-graph-neural-networks``, ``julia-reinforcement-learning``.
+* Updated 4 existing agents with ``julia-ml-hpc`` delegation rows.
+* Added Julia cross-references to 7 existing Python/JAX skills.
+* New totals: 24 agents, 142 skills (science-suite: 12 agents, 96 skills).
+
+**Nonlinear Dynamics Expansion (2026-03-31)**
+
+* Added ``nonlinear-dynamics-expert`` agent (opus) for bifurcation, chaos, and
+  pattern formation theory.
+* Added 8 nonlinear dynamics skills covering bifurcation analysis, chaos attractors,
+  pattern formation, equation discovery, network-coupled dynamics, and more.
 
 **3-Suite Architecture (5 → 3 suites)**
 
 * Merged engineering-suite + infrastructure-suite + quality-suite into a single
   ``dev-suite``. Eliminates 27 cross-suite delegation edges.
 * New structure: agent-core (3 meta-agents), dev-suite (9 agents, 27 commands,
-  39 skills), science-suite (11 agents, 86 skills).
+  39 skills), science-suite (12 agents, 96 skills).
 * dev-suite includes PostToolUse and SubagentStop hooks, ``.lsp.json`` for
   Pyright and TypeScript LSP, and output-styles.
 
