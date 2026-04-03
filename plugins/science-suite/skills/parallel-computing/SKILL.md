@@ -1,6 +1,6 @@
 ---
 name: parallel-computing
-description: Implement high-performance parallel computing across CPUs and GPUs using Python (CUDA/CuPy) and Julia (CUDA.jl/Distributed.jl). Design parallel strategies with MPI (distributed memory), OpenMP (shared memory), hybrid MPI+OpenMP, SLURM scheduling, Dask/Dagger.jl workflows, and load balancing. Master multi-threading, distributed systems, and kernel optimization. Use proactively when the user needs to speed up scientific code, submit HPC cluster jobs, write CUDA kernels, parallelize loops, or scale computations across multiple nodes, even if they just say "this is too slow" or "how do I use the GPU."
+description: Implement high-performance parallel computing across CPUs and GPUs using Python (CUDA/CuPy) and Julia (CUDA.jl/Distributed.jl). Design parallel strategies with MPI (distributed memory), OpenMP (shared memory), hybrid MPI+OpenMP, SLURM scheduling, Dask/Dagger.jl workflows, and load balancing. Master multi-threading, distributed systems, and kernel optimization. Use when the user needs to speed up scientific code, submit HPC cluster jobs, write CUDA kernels, parallelize loops, or scale computations across multiple nodes, even if they just say "this is too slow" or "how do I use the GPU."
 ---
 
 # Parallel Computing Suite
