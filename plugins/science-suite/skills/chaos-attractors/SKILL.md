@@ -1,6 +1,6 @@
 ---
 name: chaos-attractors
-description: Chaos characterization and attractor analysis with DynamicalSystems.jl (Julia) and JAX. Covers Lyapunov exponents (variational, QR), attractor reconstruction (Takens embedding), fractal dimension (correlation, Kaplan-Yorke), recurrence analysis, and Poincare sections. Use JAX vmap for parallel Lyapunov computation over parameter grids.
+description: Chaos characterization and attractor analysis with DynamicalSystems.jl (Julia) and JAX. Covers Lyapunov exponents (variational, QR), attractor reconstruction (Takens embedding), fractal dimension (correlation, Kaplan-Yorke), recurrence analysis, and Poincare sections. Use JAX vmap for parallel Lyapunov computation over parameter grids. Use when computing Lyapunov spectra, reconstructing attractors from time series, or quantifying chaotic behavior.
 ---
 
 # Chaos Characterization & Attractor Analysis

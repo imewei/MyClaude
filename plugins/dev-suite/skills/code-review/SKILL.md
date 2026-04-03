@@ -1,6 +1,6 @@
 ---
 name: code-review
-description: Systematic process for code review focused on security, performance, maintainability, and knowledge sharing.
+description: Systematic process for code review focused on security, performance, maintainability, and knowledge sharing. Use when reviewing pull requests, auditing code quality, or enforcing coding standards.
 ---
 
 # Code Review Excellence

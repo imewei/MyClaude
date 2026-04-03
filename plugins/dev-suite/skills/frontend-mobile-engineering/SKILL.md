@@ -1,6 +1,6 @@
 ---
 name: frontend-mobile-engineering
-description: Design and build multi-platform applications for web, iOS, and Android. Covers Flutter, React Native, modern JavaScript/TypeScript patterns, and mobile-first UX.
+description: Design and build multi-platform applications for web, iOS, and Android. Covers Flutter, React Native, modern JavaScript/TypeScript patterns, and mobile-first UX. Use when building cross-platform apps, implementing responsive layouts, or choosing between Flutter and React Native.
 ---
 
 # Frontend & Mobile Engineering

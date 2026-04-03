@@ -1,6 +1,6 @@
 ---
 name: deep-learning
-description: Master deep learning architecture design, theory, and implementation. Covers neural network mathematics, training diagnostics, PyTorch/JAX frameworks, and advanced patterns.
+description: Master deep learning architecture design, theory, and implementation. Covers neural network mathematics, training diagnostics, PyTorch/JAX frameworks, and advanced patterns. Use when designing neural network architectures, diagnosing training failures, or implementing custom layers and loss functions.
 ---
 
 # Deep Learning Mastery

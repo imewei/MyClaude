@@ -1,6 +1,6 @@
 ---
 name: bifurcation-analysis
-description: Numerical continuation and bifurcation analysis with BifurcationKit.jl. Covers codimension-1 (saddle-node, Hopf, pitchfork, period-doubling) and codimension-2 (Bogdanov-Takens, cusp, Bautin) bifurcations, normal forms, branch switching, and periodic orbit continuation. Julia-first; use JAX vmap for parameter sweeps around critical points.
+description: Numerical continuation and bifurcation analysis with BifurcationKit.jl. Covers codimension-1 (saddle-node, Hopf, pitchfork, period-doubling) and codimension-2 (Bogdanov-Takens, cusp, Bautin) bifurcations, normal forms, branch switching, and periodic orbit continuation. Julia-first; use JAX vmap for parameter sweeps around critical points. Use when computing bifurcation diagrams, tracking steady-state branches, or identifying critical transitions in dynamical systems.
 ---
 
 # Bifurcation Analysis

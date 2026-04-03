@@ -1,6 +1,6 @@
 ---
 name: documentation-standards
-description: Guidelines for high-quality technical documentation, including API specs, READMEs, and internal runbooks.
+description: Guidelines for high-quality technical documentation, including API specs, READMEs, and internal runbooks. Use when writing API documentation, creating runbooks, structuring READMEs, or establishing documentation conventions.
 ---
 
 # Documentation Standards

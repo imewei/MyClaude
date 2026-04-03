@@ -1,6 +1,6 @@
 ---
 name: mcp-integration
-description: Guide for using integrated MCP servers (serena, github, sequential-thinking, context7)
+description: Guide for using integrated MCP servers (serena, github, sequential-thinking, context7). Use when connecting to MCP servers, configuring tool integrations, or coordinating cross-tool workflows.
 ---
 
 # MCP Integration Guide

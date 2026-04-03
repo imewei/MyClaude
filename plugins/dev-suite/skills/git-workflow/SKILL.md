@@ -1,6 +1,6 @@
 ---
 name: git-workflow
-description: Master advanced Git workflows for collaborative development. Covers interactive rebasing, cherry-picking, bisecting for bug discovery, and managing pull requests.
+description: Master advanced Git workflows for collaborative development. Covers interactive rebasing, cherry-picking, bisecting for bug discovery, and managing pull requests. Use when resolving merge conflicts, setting up branching strategies, or managing complex Git history.
 ---
 
 # Git & Workflow Management

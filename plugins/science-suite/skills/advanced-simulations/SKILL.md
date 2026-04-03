@@ -1,6 +1,6 @@
 ---
 name: advanced-simulations
-description: Master advanced simulation techniques including non-equilibrium thermodynamics, stochastic dynamics, and multiscale modeling. Bridge scales from atomistic to mesoscale.
+description: Master advanced simulation techniques including non-equilibrium thermodynamics, stochastic dynamics, and multiscale modeling. Bridge scales from atomistic to mesoscale. Use when running molecular dynamics, designing multiscale simulations, or computing non-equilibrium transport properties.
 ---
 
 # Advanced Simulations

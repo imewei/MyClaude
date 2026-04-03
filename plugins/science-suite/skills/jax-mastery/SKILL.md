@@ -1,6 +1,6 @@
 ---
 name: jax-mastery
-description: Master JAX for high-performance scientific computing. Covers functional transformations (JIT, vmap, pmap, grad), neural networks (Flax NNX), and specialized optimization (NLSQ, NumPyro).
+description: Master JAX for high-performance scientific computing. Covers functional transformations (JIT, vmap, pmap, grad), neural networks (Flax NNX), and specialized optimization (NLSQ, NumPyro). Use when writing JAX code, debugging JIT compilation, vectorizing computations with vmap, or building Flax models.
 ---
 
 # JAX Mastery

@@ -1,6 +1,6 @@
 ---
 name: agent-orchestration
-description: Coordinate multiple AI agents through workflow orchestration, task allocation, and inter-agent communication protocols. Masters DAG-based workflows and team assembly.
+description: Coordinate multiple AI agents through workflow orchestration, task allocation, and inter-agent communication protocols. Masters DAG-based workflows and team assembly. Use when designing multi-agent workflows, coordinating agent teams, or implementing DAG-based task execution.
 ---
 
 # Agent Orchestration

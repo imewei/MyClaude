@@ -1,6 +1,6 @@
 ---
 name: python-development
-description: Master modern Python systems engineering for scientific computing. Covers type-driven design, Rust extensions (PyO3), structured concurrency (TaskGroups), robust testing (Hypothesis), and uv-based packaging.
+description: Master modern Python systems engineering for scientific computing. Covers type-driven design, Rust extensions (PyO3), structured concurrency (TaskGroups), robust testing (Hypothesis), and uv-based packaging. Use when architecting Python packages, writing Rust extensions with PyO3, implementing async concurrency, or setting up property-based testing.
 ---
 
 # Python Systems Engineering
