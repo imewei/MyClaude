@@ -5,6 +5,13 @@ description: Expert guide for implementing automated testing across the pyramid 
 
 # Test Automation
 
+## Expert Agent
+
+For test strategy design, CI/CD quality gates, and automated test suite architecture, delegate to:
+
+- **`quality-specialist`**: Designs comprehensive test strategies (Unit, Integration, E2E) and enforces quality standards.
+  - *Location*: `plugins/dev-suite/agents/quality-specialist.md`
+
 Comprehensive strategy for building reliable, maintainable automated test suites.
 
 ## 1. The Testing Pyramid

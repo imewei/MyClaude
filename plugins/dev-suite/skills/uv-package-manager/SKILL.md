@@ -5,6 +5,13 @@ description: Master uv for blazing-fast Python dependency management, virtual en
 
 # UV Package Manager
 
+## Expert Agent
+
+For uv-based Python dependency management, virtual environments, and lockfile workflows, delegate to:
+
+- **`systems-engineer`**: Masters developer tooling, dependency management, and build system optimization.
+  - *Location*: `plugins/dev-suite/agents/systems-engineer.md`
+
 Ultra-fast Python package management with Rust-powered uv.
 
 

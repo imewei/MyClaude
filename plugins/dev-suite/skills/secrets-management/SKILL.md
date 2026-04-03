@@ -7,6 +7,13 @@ description: Implement secrets management with HashiCorp Vault, AWS Secrets Mana
 
 # Secrets Management
 
+## Expert Agent
+
+For secrets management, credential security, and infrastructure-level access control, delegate to:
+
+- **`devops-architect`**: Implements Vault, AWS Secrets Manager, and platform-native secrets solutions with encryption and rotation.
+  - *Location*: `plugins/dev-suite/agents/devops-architect.md`
+
 Secure credential storage with rotation and access control.
 
 ---

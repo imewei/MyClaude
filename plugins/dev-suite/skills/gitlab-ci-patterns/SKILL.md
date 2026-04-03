@@ -7,6 +7,13 @@ description: Build GitLab CI/CD pipelines with multi-stage workflows, caching, D
 
 # GitLab CI Patterns
 
+## Expert Agent
+
+For GitLab CI/CD pipeline design, multi-stage workflows, and runner configuration, delegate to:
+
+- **`automation-engineer`**: Masters GitLab CI, GitHub Actions, and delivery pipeline optimization.
+  - *Location*: `plugins/dev-suite/agents/automation-engineer.md`
+
 Production-ready GitLab CI/CD pipeline patterns and automation.
 
 ---

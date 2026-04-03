@@ -5,6 +5,13 @@ description: Master error handling patterns including exception hierarchies, Res
 
 # Error Handling Patterns
 
+## Expert Agent
+
+For fault-tolerant system design, resilience patterns, and structured error responses, delegate to:
+
+- **`software-architect`**: Designs resilient distributed systems with circuit breakers, retries, and graceful degradation.
+  - *Location*: `plugins/dev-suite/agents/software-architect.md`
+
 Build resilient applications with robust error handling strategies.
 
 

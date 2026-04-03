@@ -5,6 +5,15 @@ description: Comprehensive testing patterns for Python (pytest, fixtures, mockin
 
 # Testing Patterns (Multi-Language)
 
+## Expert Agent
+
+For multi-language testing patterns, pytest/Jest/Vitest strategies, and TDD workflows, delegate to:
+
+- **`systems-engineer`**: Implements robust testing across Python, JavaScript, and TypeScript ecosystems.
+  - *Location*: `plugins/dev-suite/agents/systems-engineer.md`
+- **`quality-specialist`**: Designs comprehensive test strategies and enforces quality gates.
+  - *Location*: `plugins/dev-suite/agents/quality-specialist.md`
+
 Robust testing strategies covering Python and JavaScript/TypeScript ecosystems.
 
 ---

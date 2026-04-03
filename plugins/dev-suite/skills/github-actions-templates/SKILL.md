@@ -7,6 +7,13 @@ description: Create production GitHub Actions workflows for testing, building, a
 
 # GitHub Actions Templates
 
+## Expert Agent
+
+For GitHub Actions workflow design, CI/CD pipeline optimization, and build automation, delegate to:
+
+- **`automation-engineer`**: Masters GitHub Actions, GitLab CI, and delivery pipeline architecture.
+  - *Location*: `plugins/dev-suite/agents/automation-engineer.md`
+
 Production-ready workflow patterns for CI/CD automation.
 
 ---

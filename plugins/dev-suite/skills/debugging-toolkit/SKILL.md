@@ -7,6 +7,13 @@ description: Unified debugging toolkit combining AI/LLM-powered automated analys
 
 # Debugging Toolkit
 
+## Expert Agent
+
+For complex debugging, root cause analysis, and production incident resolution, delegate to:
+
+- **`debugger-pro`**: AI-assisted debugging specialist with systematic investigation, memory profiling, and distributed system failure analysis.
+  - *Location*: `plugins/dev-suite/agents/debugger-pro.md`
+
 ## AI-Assisted Debugging
 
 ### Technique Selection

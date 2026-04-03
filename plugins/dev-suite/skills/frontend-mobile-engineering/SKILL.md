@@ -5,6 +5,13 @@ description: Design and build multi-platform applications for web, iOS, and Andr
 
 # Frontend & Mobile Engineering
 
+## Expert Agent
+
+For multi-platform application development across web, iOS, and Android, delegate to:
+
+- **`app-developer`**: Builds high-quality applications with React, Next.js, Flutter, and React Native, focusing on performance and accessibility.
+  - *Location*: `plugins/dev-suite/agents/app-developer.md`
+
 Expert guide for creating high-quality user interfaces across all platforms.
 
 ## 1. Multi-Platform Strategy

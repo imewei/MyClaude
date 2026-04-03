@@ -5,6 +5,13 @@ description: Set up production-ready TypeScript projects with modern tooling. Us
 
 # TypeScript Project Scaffolding
 
+## Expert Agent
+
+For TypeScript project initialization, tooling configuration, and scaffolding, delegate to:
+
+- **`systems-engineer`**: Designs and builds production-grade developer tools and CLI applications.
+  - *Location*: `plugins/dev-suite/agents/systems-engineer.md`
+
 Production-ready TypeScript project setup with modern tooling.
 
 

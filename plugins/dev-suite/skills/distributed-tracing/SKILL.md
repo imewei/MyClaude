@@ -7,6 +7,13 @@ description: Implement distributed tracing with OpenTelemetry, Jaeger, and Tempo
 
 # Distributed Tracing
 
+## Expert Agent
+
+For distributed tracing implementation, request flow analysis, and latency debugging, delegate to:
+
+- **`sre-expert`**: Implements OpenTelemetry instrumentation, trace analysis, and cross-service debugging.
+  - *Location*: `plugins/dev-suite/agents/sre-expert.md`
+
 Track requests across distributed systems for latency and dependency analysis.
 
 ---

@@ -5,6 +5,13 @@ description: Build scalable Node.js backends with Express/Fastify/NestJS. Implem
 
 # Node.js Backend Patterns
 
+## Expert Agent
+
+For backend system design, API architecture, and Node.js service patterns, delegate to:
+
+- **`software-architect`**: Designs scalable backend systems, microservices, and high-performance APIs.
+  - *Location*: `plugins/dev-suite/agents/software-architect.md`
+
 Production-ready Node.js backend development with modern frameworks and architectural patterns.
 
 

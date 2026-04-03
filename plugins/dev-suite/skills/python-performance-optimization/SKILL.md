@@ -5,6 +5,13 @@ description: Profile and optimize Python code using cProfile, line_profiler, mem
 
 # Python Performance Optimization
 
+## Expert Agent
+
+For Python profiling, CPU/memory optimization, and performance-critical code, delegate to:
+
+- **`systems-engineer`**: Masters low-level performance optimization, profiling, and concurrency across Python, Rust, C++, and Go.
+  - *Location*: `plugins/dev-suite/agents/systems-engineer.md`
+
 ## Profiling Tools
 
 | Tool | Purpose | Command |

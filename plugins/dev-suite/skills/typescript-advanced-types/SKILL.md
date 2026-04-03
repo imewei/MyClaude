@@ -5,6 +5,13 @@ description: Master TypeScript's advanced type system including generics, condit
 
 # TypeScript Advanced Types
 
+## Expert Agent
+
+For advanced TypeScript type system usage in application development, delegate to:
+
+- **`app-developer`**: Builds type-safe web and mobile applications with TypeScript across React, Next.js, and React Native.
+  - *Location*: `plugins/dev-suite/agents/app-developer.md`
+
 ## Utility Types Quick Reference
 
 | Type | Purpose | Example |

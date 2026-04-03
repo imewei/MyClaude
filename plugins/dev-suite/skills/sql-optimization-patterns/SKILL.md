@@ -5,6 +5,13 @@ description: Master SQL optimization with EXPLAIN analysis, indexing strategies 
 
 # SQL Optimization Patterns
 
+## Expert Agent
+
+For database schema design, query optimization, and data architecture, delegate to:
+
+- **`software-architect`**: Designs data models, reviews schemas, and optimizes database performance at the architecture level.
+  - *Location*: `plugins/dev-suite/agents/software-architect.md`
+
 Transform slow queries into lightning-fast operations.
 
 ## Index Types

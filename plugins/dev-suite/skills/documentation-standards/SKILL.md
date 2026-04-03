@@ -5,6 +5,13 @@ description: Guidelines for high-quality technical documentation, including API 
 
 # Documentation Standards
 
+## Expert Agent
+
+For technical documentation, API specs, runbooks, and content architecture, delegate to:
+
+- **`documentation-expert`**: Creates comprehensive, accessible technical documentation, tutorials, and knowledge management systems.
+  - *Location*: `plugins/dev-suite/agents/documentation-expert.md`
+
 Expert guide for maintaining clear, accurate, and useful technical documentation.
 
 ## 1. Documentation Types

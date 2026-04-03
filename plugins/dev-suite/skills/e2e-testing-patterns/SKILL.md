@@ -7,6 +7,13 @@ description: Build reliable E2E tests with Playwright and Cypress for web testin
 
 # E2E Testing Patterns
 
+## Expert Agent
+
+For end-to-end test automation, browser testing, and CI/CD integration, delegate to:
+
+- **`quality-specialist`**: Implements robust E2E testing strategies with Playwright and Cypress, including Page Object patterns.
+  - *Location*: `plugins/dev-suite/agents/quality-specialist.md`
+
 Reliable end-to-end testing with Playwright and Cypress.
 
 ---

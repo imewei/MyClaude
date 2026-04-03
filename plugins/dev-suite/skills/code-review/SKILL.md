@@ -5,6 +5,13 @@ description: Systematic process for code review focused on security, performance
 
 # Code Review Excellence
 
+## Expert Agent
+
+For systematic code review, security auditing, and quality enforcement, delegate to:
+
+- **`quality-specialist`**: Conducts deep code reviews focused on security, performance, maintainability, and test coverage.
+  - *Location*: `plugins/dev-suite/agents/quality-specialist.md`
+
 Expert guide for conducting thorough and constructive code reviews.
 
 ## 1. The 6-Step Review Process

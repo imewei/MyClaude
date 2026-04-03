@@ -5,6 +5,13 @@ description: Strategy and patterns for legacy modernization, framework migration
 
 # Modernization & Migration
 
+## Expert Agent
+
+For legacy modernization strategy, framework migration, and incremental system evolution, delegate to:
+
+- **`software-architect`**: Plans Strangler Fig migrations, architecture refactoring, and technology modernization.
+  - *Location*: `plugins/dev-suite/agents/software-architect.md`
+
 Expert guide for safely evolving legacy systems and adopting modern technologies.
 
 ## 1. Strategy & Patterns

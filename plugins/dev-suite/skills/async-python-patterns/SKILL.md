@@ -5,6 +5,13 @@ description: Master Python asyncio, concurrent programming, and async/await patt
 
 # Async Python Patterns
 
+## Expert Agent
+
+For async/await patterns, concurrent programming, and high-performance Python I/O, delegate to:
+
+- **`systems-engineer`**: Implements safe concurrent and parallel systems with async/await, threads, and channels.
+  - *Location*: `plugins/dev-suite/agents/systems-engineer.md`
+
 ## Core Concepts
 
 | Concept | Description |

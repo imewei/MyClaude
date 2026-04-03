@@ -5,6 +5,13 @@ description: Master modern JavaScript (ES6-ES2024) including async/await, destru
 
 # Modern JavaScript Patterns
 
+## Expert Agent
+
+For modern JavaScript development in web and mobile applications, delegate to:
+
+- **`app-developer`**: Masters React, Next.js, and modern JS/TS patterns for multi-platform applications.
+  - *Location*: `plugins/dev-suite/agents/app-developer.md`
+
 ## Feature
 
 | Feature | Syntax | Use Case |

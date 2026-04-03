@@ -7,6 +7,13 @@ description: Validates plugin structure, manifest correctness, and component syn
 
 # Plugin Syntax Validator
 
+## Expert Agent
+
+For plugin structure validation, manifest correctness, and component syntax checking, delegate to:
+
+- **`quality-specialist`**: Ensures compliance with architectural standards and enforces coding guidelines.
+  - *Location*: `plugins/dev-suite/agents/quality-specialist.md`
+
 Expert validation skill for Claude Code plugins. Ensures compliance with architectural standards.
 
 ## Capabilities

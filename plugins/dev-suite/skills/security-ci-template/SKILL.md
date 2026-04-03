@@ -7,6 +7,13 @@ description: Security scanning and lock file validation templates for CI/CD pipe
 
 # Security CI Template
 
+## Expert Agent
+
+For security scanning integration in CI/CD pipelines and supply chain security, delegate to:
+
+- **`automation-engineer`**: Integrates SAST/DAST scanning, dependency checks, and security gates into pipelines.
+  - *Location*: `plugins/dev-suite/agents/automation-engineer.md`
+
 Security scanning and lock file validation for CI/CD pipelines.
 
 ---

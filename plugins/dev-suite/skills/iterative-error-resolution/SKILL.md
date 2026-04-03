@@ -7,6 +7,13 @@ description: Iterative CI/CD error resolution with pattern recognition, automate
 
 # Iterative Error Resolution for CI/CD
 
+## Expert Agent
+
+For CI/CD error diagnosis, automated fix loops, and pipeline troubleshooting, delegate to:
+
+- **`automation-engineer`**: Debugs pipeline failures with pattern recognition and automated resolution.
+  - *Location*: `plugins/dev-suite/agents/automation-engineer.md`
+
 Systematic framework for analyzing failures, applying intelligent fixes, and iterating until zero errors.
 
 ---

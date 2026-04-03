@@ -5,6 +5,13 @@ description: Master advanced Git workflows for collaborative development. Covers
 
 # Git & Workflow Management
 
+## Expert Agent
+
+For Git branching strategies, history management, and collaborative workflows, delegate to:
+
+- **`automation-engineer`**: Enforces branching strategies (trunk-based, GitFlow) and optimizes Git collaboration.
+  - *Location*: `plugins/dev-suite/agents/automation-engineer.md`
+
 Expert guide for maintaining a clean, navigable code history and optimizing collaboration.
 
 ## 1. History Management

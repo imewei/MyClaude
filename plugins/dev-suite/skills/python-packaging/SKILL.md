@@ -5,6 +5,13 @@ description: Create distributable Python packages with pyproject.toml, proper pr
 
 # Python Packaging
 
+## Expert Agent
+
+For Python package structure, build backends, and distribution to PyPI, delegate to:
+
+- **`systems-engineer`**: Builds production-grade developer tools and manages dependency systems across languages.
+  - *Location*: `plugins/dev-suite/agents/systems-engineer.md`
+
 Modern Python packaging with pyproject.toml and PyPI distribution.
 
 ## Build Backend Selection
