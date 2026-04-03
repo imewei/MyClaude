@@ -7,6 +7,13 @@ description: Analyze MD trajectories to extract structural, thermodynamic, mecha
 
 # MD Trajectory Analysis
 
+## Expert Agent
+
+For MD trajectory analysis, property extraction, and simulation validation, delegate to:
+
+- **`simulation-expert`**: Molecular dynamics, trajectory analysis, and HPC simulations.
+  - *Location*: `plugins/science-suite/agents/simulation-expert.md`
+
 Extract properties from LAMMPS/GROMACS trajectories and validate against experiments.
 
 ---

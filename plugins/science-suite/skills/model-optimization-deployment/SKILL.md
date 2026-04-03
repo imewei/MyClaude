@@ -7,6 +7,13 @@ description: Optimize and deploy neural networks with quantization, pruning, kno
 
 # Model Optimization & Deployment
 
+## Expert Agent
+
+For neural network optimization (quantization, pruning, distillation) and production serving, delegate to:
+
+- **`neural-network-master`**: Deep learning architectures, model compression, and deployment.
+  - *Location*: `plugins/science-suite/agents/neural-network-master.md`
+
 Optimize neural networks and deploy to production environments.
 
 ---

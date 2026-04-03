@@ -7,6 +7,13 @@ description: Apply mathematical foundations of neural networks including linear 
 
 # Neural Network Mathematics
 
+## Expert Agent
+
+For neural network mathematical foundations, gradient analysis, and optimization theory, delegate to:
+
+- **`neural-network-master`**: Deep learning theory, mathematical foundations, and training dynamics.
+  - *Location*: `plugins/science-suite/agents/neural-network-master.md`
+
 Mathematical foundations for understanding and implementing neural networks.
 
 ---

@@ -7,6 +7,13 @@ description: Bridge atomistic MD to mesoscale using coarse-graining, DPD, and na
 
 # Multiscale Modeling
 
+## Expert Agent
+
+For coarse-graining, DPD, and multiscale simulation methods, delegate to:
+
+- **`simulation-expert`**: Molecular dynamics, HPC, and multiscale simulation techniques.
+  - *Location*: `plugins/science-suite/agents/simulation-expert.md`
+
 Coarse-graining and mesoscale methods bridging atomistic to continuum.
 
 ---

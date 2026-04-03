@@ -7,6 +7,13 @@ description: Use Optimization.jl for parameter estimation in differential equati
 
 # Optimization.jl Patterns
 
+## Expert Agent
+
+For parameter estimation and inverse problems with Optimization.jl, delegate to:
+
+- **`julia-pro`**: Julia SciML ecosystem and optimization workflows.
+  - *Location*: `plugins/science-suite/agents/julia-pro.md`
+
 Parameter estimation for SciML workflows.
 
 ---

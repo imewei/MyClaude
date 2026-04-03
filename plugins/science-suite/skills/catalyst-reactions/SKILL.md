@@ -7,6 +7,13 @@ description: Model chemical reaction networks with Catalyst.jl for deterministic
 
 # Catalyst.jl Reaction Networks
 
+## Expert Agent
+
+For reaction network modeling with Catalyst.jl, delegate to:
+
+- **`julia-pro`**: Julia SciML ecosystem, differential equations, and symbolic modeling.
+  - *Location*: `plugins/science-suite/agents/julia-pro.md`
+
 Chemical and biochemical reaction network modeling.
 
 ---

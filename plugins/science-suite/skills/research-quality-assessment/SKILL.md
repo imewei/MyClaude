@@ -7,6 +7,13 @@ description: Evaluate scientific research quality across methodology, experiment
 
 # Research Quality Assessment
 
+## Expert Agent
+
+For research quality evaluation, methodology assessment, and publication readiness, delegate to:
+
+- **`research-expert`**: Research methodology, quality assessment, and scientific rigor.
+  - *Location*: `plugins/science-suite/agents/research-expert.md`
+
 Systematic evaluation framework for scientific research quality.
 
 ---

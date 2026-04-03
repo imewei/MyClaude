@@ -7,6 +7,13 @@ description: Design neural architectures with skip connections, attention, norma
 
 # Neural Architecture Patterns
 
+## Expert Agent
+
+For neural architecture design, attention mechanisms, and model selection, delegate to:
+
+- **`neural-network-master`**: Deep learning architectures, design patterns, and implementation.
+  - *Location*: `plugins/science-suite/agents/neural-network-master.md`
+
 Design patterns and principles for building effective neural networks.
 
 ## Julia Equivalent

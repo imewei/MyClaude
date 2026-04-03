@@ -7,6 +7,13 @@ description: Create system images and standalone executables with PackageCompile
 
 # PackageCompiler.jl Patterns
 
+## Expert Agent
+
+For Julia compilation, system images, and standalone executables, delegate to:
+
+- **`julia-pro`**: Julia performance optimization and deployment.
+  - *Location*: `plugins/science-suite/agents/julia-pro.md`
+
 System images and standalone executables for Julia deployment.
 
 ---

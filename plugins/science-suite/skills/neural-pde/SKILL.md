@@ -7,6 +7,13 @@ description: Solve PDEs with physics-informed neural networks using NeuralPDE.jl
 
 # NeuralPDE.jl (PINNs)
 
+## Expert Agent
+
+For physics-informed neural networks and PDE solving with NeuralPDE.jl, delegate to:
+
+- **`julia-pro`**: Julia SciML ecosystem and neural PDE workflows.
+  - *Location*: `plugins/science-suite/agents/julia-pro.md`
+
 Physics-informed neural networks for solving PDEs.
 
 ---

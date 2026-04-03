@@ -5,6 +5,13 @@ description: Select optimal scientific computing ecosystems and manage multi-lan
 
 # Python/Julia Ecosystem Selection
 
+## Expert Agent
+
+For ecosystem evaluation and multi-language workflow selection, delegate to:
+
+- **`julia-pro`**: Julia and Python ecosystem comparison, interoperability, and toolchain selection.
+  - *Location*: `plugins/science-suite/agents/julia-pro.md`
+
 ## Comparison
 
 | Aspect | Python | Julia |

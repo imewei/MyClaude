@@ -7,6 +7,13 @@ description: Translate research papers into production implementations through s
 
 # Research Paper Implementation
 
+## Expert Agent
+
+For translating research papers into production implementations, delegate to:
+
+- **`research-expert`**: Research methodology, paper analysis, and systematic implementation.
+  - *Location*: `plugins/science-suite/agents/research-expert.md`
+
 Systematic approach to translating papers into working code.
 
 ---

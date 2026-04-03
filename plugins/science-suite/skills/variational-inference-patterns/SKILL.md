@@ -7,6 +7,13 @@ description: Master ADVI variational inference with Turing.jl and Bijectors.jl f
 
 # Variational Inference
 
+## Expert Agent
+
+For variational inference with Turing.jl and Bijectors.jl, delegate to:
+
+- **`julia-pro`**: Julia Bayesian inference, Turing.jl, and approximate methods.
+  - *Location*: `plugins/science-suite/agents/julia-pro.md`
+
 ADVI for scalable approximate Bayesian inference.
 
 ---

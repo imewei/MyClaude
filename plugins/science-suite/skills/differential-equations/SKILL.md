@@ -7,6 +7,13 @@ description: Solve ODE/SDE/PDE with DifferentialEquations.jl. Use when defining 
 
 # DifferentialEquations.jl
 
+## Expert Agent
+
+For ODE/SDE/PDE solving with DifferentialEquations.jl and the SciML ecosystem, delegate to:
+
+- **`julia-pro`**: Julia SciML ecosystem, solver selection, and differential equation workflows.
+  - *Location*: `plugins/science-suite/agents/julia-pro.md`
+
 Solve differential equations with the SciML ecosystem.
 
 ---

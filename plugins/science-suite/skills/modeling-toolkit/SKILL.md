@@ -7,6 +7,13 @@ description: Define symbolic differential equations with ModelingToolkit.jl for 
 
 # ModelingToolkit.jl
 
+## Expert Agent
+
+For symbolic differential equation modeling with ModelingToolkit.jl, delegate to:
+
+- **`julia-pro`**: Julia SciML ecosystem and symbolic modeling workflows.
+  - *Location*: `plugins/science-suite/agents/julia-pro.md`
+
 Symbolic modeling with automatic equation simplification.
 
 ---

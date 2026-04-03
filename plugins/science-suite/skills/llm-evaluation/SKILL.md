@@ -5,8 +5,14 @@ description: Implement LLM evaluation with automated metrics (BLEU, ROUGE, BERTS
 
 # LLM Evaluation
 
-Comprehensive evaluation strategies from automated metrics to human assessment.
+## Expert Agent
 
+For LLM evaluation, automated metrics, and quality assessment, delegate to:
+
+- **`ai-engineer`**: LLM applications, evaluation frameworks, and AI quality assurance.
+  - *Location*: `plugins/science-suite/agents/ai-engineer.md`
+
+Comprehensive evaluation strategies from automated metrics to human assessment.
 
 ## Evaluation Types
 

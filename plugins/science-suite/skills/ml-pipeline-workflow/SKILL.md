@@ -7,6 +7,13 @@ description: Build end-to-end MLOps pipelines with Airflow, Dagster, Kubeflow, o
 
 # ML Pipeline Workflow
 
+## Expert Agent
+
+For end-to-end MLOps pipelines with Airflow, Dagster, or Kubeflow, delegate to:
+
+- **`ml-expert`**: Classical ML, MLOps pipelines, and production ML workflows.
+  - *Location*: `plugins/science-suite/agents/ml-expert.md`
+
 End-to-end MLOps pipeline orchestration from data to deployment.
 
 ---

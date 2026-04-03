@@ -5,6 +5,13 @@ description: Master advanced prompt engineering with chain-of-thought, few-shot 
 
 # Prompt Engineering Patterns
 
+## Expert Agent
+
+For advanced prompt design, chain-of-thought patterns, and LLM optimization, delegate to:
+
+- **`prompt-engineer`**: Prompt engineering, structured reasoning, and LLM interaction design.
+  - *Location*: `plugins/science-suite/agents/prompt-engineer.md`
+
 Advanced techniques for maximizing LLM performance and reliability.
 
 ## Core Techniques

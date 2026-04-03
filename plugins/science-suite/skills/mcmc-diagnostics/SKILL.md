@@ -7,6 +7,13 @@ description: Master MCMC convergence diagnostics with R-hat, ESS, trace plots, a
 
 # MCMC Diagnostics
 
+## Expert Agent
+
+For MCMC convergence diagnostics and Bayesian validation with Turing.jl, delegate to:
+
+- **`julia-pro`**: Julia Bayesian inference, Turing.jl, and MCMC workflows.
+  - *Location*: `plugins/science-suite/agents/julia-pro.md`
+
 Convergence diagnostics with MCMCChains.jl.
 
 ---

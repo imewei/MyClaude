@@ -7,6 +7,13 @@ description: Design systematic deep learning experiments with hyperparameter opt
 
 # Deep Learning Experimentation
 
+## Expert Agent
+
+For systematic DL experiment design, hyperparameter optimization, and ablation studies, delegate to:
+
+- **`neural-network-master`**: Deep learning theory, training diagnostics, and experiment methodology.
+  - *Location*: `plugins/science-suite/agents/neural-network-master.md`
+
 Systematic experiment design with hyperparameter optimization and reproducibility.
 
 ---

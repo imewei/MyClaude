@@ -5,6 +5,13 @@ description: Build production RAG systems with vector databases (Pinecone, Weavi
 
 # RAG Implementation
 
+## Expert Agent
+
+For RAG system design, vector databases, and retrieval pipelines, delegate to:
+
+- **`ai-engineer`**: LLM applications, RAG systems, and agentic AI.
+  - *Location*: `plugins/science-suite/agents/ai-engineer.md`
+
 Retrieval-Augmented Generation for accurate, grounded LLM responses.
 
 ## Core Components

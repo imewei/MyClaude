@@ -5,6 +5,13 @@ description: Diagnose and resolve neural network training failures through syste
 
 # Training Diagnostics
 
+## Expert Agent
+
+For diagnosing neural network training failures, gradient pathologies, and convergence issues, delegate to:
+
+- **`neural-network-master`**: Deep learning training dynamics, diagnostics, and troubleshooting.
+  - *Location*: `plugins/science-suite/agents/neural-network-master.md`
+
 ## Julia Equivalent
 
 For training diagnostics in Julia (Lux.jl, Zygote/Enzyme debugging), see the `julia-training-diagnostics` skill.
