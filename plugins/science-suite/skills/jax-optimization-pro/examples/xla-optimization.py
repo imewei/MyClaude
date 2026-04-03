@@ -10,17 +10,17 @@ import jax.numpy as jnp
 import os
 from functools import partial
 
-
 # =============================================================================
 # Pattern 1: Avoiding Recompilation
 # =============================================================================
+
 
 # BAD: Different shapes cause recompilation
 def bad_variable_shapes(data_list):
     """This recompiles for each unique shape."""
     results = []
     for data in data_list:
-        result = jax.jit(lambda x: x ** 2)(data)  # Recompiles!
+        result = jax.jit(lambda x: x**2)(data)  # Recompiles!
         results.append(result)
     return results
 
@@ -31,13 +31,13 @@ def good_fixed_shapes(data_list, max_len):
 
     @jax.jit
     def compute(x, mask):
-        result = x ** 2
+        result = x**2
         return jnp.where(mask, result, 0.0)
 
     results = []
     for data in data_list:
         # Pad to max_len
-        padded = jnp.zeros(max_len).at[:len(data)].set(data)
+        padded = jnp.zeros(max_len).at[: len(data)].set(data)
         mask = jnp.arange(max_len) < len(data)
         results.append(compute(padded, mask))
     return results
@@ -46,6 +46,7 @@ def good_fixed_shapes(data_list, max_len):
 # =============================================================================
 # Pattern 2: Static vs Traced Arguments
 # =============================================================================
+
 
 # BAD: Recompiles for every unique value of `num_layers`
 @jax.jit
@@ -64,9 +65,9 @@ def good_static_layers(x, num_layers):
 
 
 # GOOD: Use static_argnames for clarity
-@partial(jax.jit, static_argnames=('num_layers', 'activation'))
-def configurable_network(x, num_layers, activation='relu'):
-    act_fn = {'relu': jax.nn.relu, 'gelu': jax.nn.gelu}[activation]
+@partial(jax.jit, static_argnames=("num_layers", "activation"))
+def configurable_network(x, num_layers, activation="relu"):
+    act_fn = {"relu": jax.nn.relu, "gelu": jax.nn.gelu}[activation]
     for _ in range(num_layers):
         x = act_fn(x @ jnp.eye(x.shape[-1]))
     return x
@@ -75,6 +76,7 @@ def configurable_network(x, num_layers, activation='relu'):
 # =============================================================================
 # Pattern 3: Inspecting Traced Computation
 # =============================================================================
+
 
 def inspect_jaxpr(fn, *example_args):
     """Print the JAX intermediate representation."""
@@ -103,6 +105,7 @@ def inspect_hlo(fn, *example_args):
 # Pattern 4: Fusion Optimization
 # =============================================================================
 
+
 def unfused_operations(x):
     """Multiple operations that should fuse."""
     y = x * 2
@@ -117,11 +120,11 @@ def check_fusion(fn, *args):
     hlo = computation.as_hlo_text()
 
     # Look for fusion indicators
-    fusion_count = hlo.count('fusion')
+    fusion_count = hlo.count("fusion")
     print(f"Fusion operations found: {fusion_count}")
 
     # Check for separate kernels (bad)
-    kernel_count = hlo.count('ROOT')
+    kernel_count = hlo.count("ROOT")
     print(f"Root operations (potential kernel launches): {kernel_count}")
 
     return hlo
@@ -130,6 +133,7 @@ def check_fusion(fn, *args):
 # =============================================================================
 # Pattern 5: Memory-Efficient Patterns
 # =============================================================================
+
 
 def memory_inefficient(x, weights_list):
     """Stores all intermediate activations."""
@@ -171,6 +175,7 @@ def gradient_checkpointing(x, weights_list):
 # Pattern 6: Compilation Caching
 # =============================================================================
 
+
 def setup_compilation_cache(cache_dir="/tmp/jax_cache"):
     """Enable persistent compilation cache."""
     os.makedirs(cache_dir, exist_ok=True)
@@ -187,6 +192,7 @@ def monitor_compilations():
 # =============================================================================
 # Pattern 7: Donate Buffers for In-Place Updates
 # =============================================================================
+
 
 @partial(jax.jit, donate_argnums=(0,))
 def inplace_update(state, update):
@@ -216,6 +222,7 @@ def demonstrate_donation():
 # Pattern 8: Debugging Slow Compilation
 # =============================================================================
 
+
 def profile_compilation(fn, *args):
     """Profile JIT compilation time."""
     import time
@@ -242,6 +249,7 @@ def profile_compilation(fn, *args):
 # =============================================================================
 # Pattern 9: XLA Dump for Deep Analysis
 # =============================================================================
+
 
 def enable_xla_dump(dump_dir="/tmp/xla_dump"):
     """Enable XLA dump for detailed analysis."""

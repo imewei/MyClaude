@@ -78,66 +78,76 @@ class TriggeringPatternReporter:
             content = report_path.read_text()
 
             # Extract metrics using regex
-            accuracy_match = re.search(r'Overall Accuracy \| ([\d.]+)%', content)
+            accuracy_match = re.search(r"Overall Accuracy \| ([\d.]+)%", content)
             if accuracy_match:
                 self.metrics.activation_accuracy = float(accuracy_match.group(1))
 
-            precision_match = re.search(r'Precision \| ([\d.]+)%', content)
+            precision_match = re.search(r"Precision \| ([\d.]+)%", content)
             if precision_match:
                 self.metrics.activation_precision = float(precision_match.group(1))
 
-            recall_match = re.search(r'Recall \| ([\d.]+)%', content)
+            recall_match = re.search(r"Recall \| ([\d.]+)%", content)
             if recall_match:
                 self.metrics.activation_recall = float(recall_match.group(1))
 
-            fp_match = re.search(r'False Positive Rate \| ([\d.]+)%', content)
+            fp_match = re.search(r"False Positive Rate \| ([\d.]+)%", content)
             if fp_match:
                 self.metrics.false_positive_rate = float(fp_match.group(1))
 
-            fn_match = re.search(r'False Negative Rate \| ([\d.]+)%', content)
+            fn_match = re.search(r"False Negative Rate \| ([\d.]+)%", content)
             if fn_match:
                 self.metrics.false_negative_rate = float(fn_match.group(1))
 
             # Identify issues
             if self.metrics.false_positive_rate >= 10:
-                self.issues.append(Issue(
-                    severity="high",
-                    category="activation",
-                    plugin=None,
-                    description=f"High false positive rate: {self.metrics.false_positive_rate:.1f}%",
-                    impact="Plugins activating in inappropriate contexts, causing user confusion",
-                    recommendation="Review and tighten plugin triggering patterns. Add negative patterns to exclude irrelevant contexts."
-                ))
+                self.issues.append(
+                    Issue(
+                        severity="high",
+                        category="activation",
+                        plugin=None,
+                        description=f"High false positive rate: {self.metrics.false_positive_rate:.1f}%",
+                        impact="Plugins activating in inappropriate contexts, causing user confusion",
+                        recommendation="Review and tighten plugin triggering patterns. Add negative patterns to exclude irrelevant contexts.",
+                    )
+                )
             elif self.metrics.false_positive_rate >= 5:
-                self.issues.append(Issue(
-                    severity="medium",
-                    category="activation",
-                    plugin=None,
-                    description=f"Elevated false positive rate: {self.metrics.false_positive_rate:.1f}%",
-                    impact="Some plugins activating too broadly",
-                    recommendation="Review triggering patterns for plugins with high false positive rates."
-                ))
+                self.issues.append(
+                    Issue(
+                        severity="medium",
+                        category="activation",
+                        plugin=None,
+                        description=f"Elevated false positive rate: {self.metrics.false_positive_rate:.1f}%",
+                        impact="Some plugins activating too broadly",
+                        recommendation="Review triggering patterns for plugins with high false positive rates.",
+                    )
+                )
 
             if self.metrics.false_negative_rate >= 10:
-                self.issues.append(Issue(
-                    severity="high",
-                    category="activation",
-                    plugin=None,
-                    description=f"High false negative rate: {self.metrics.false_negative_rate:.1f}%",
-                    impact="Plugins not activating when needed, missing helpful suggestions",
-                    recommendation="Expand plugin triggering patterns. Add more keywords and file patterns."
-                ))
+                self.issues.append(
+                    Issue(
+                        severity="high",
+                        category="activation",
+                        plugin=None,
+                        description=f"High false negative rate: {self.metrics.false_negative_rate:.1f}%",
+                        impact="Plugins not activating when needed, missing helpful suggestions",
+                        recommendation="Expand plugin triggering patterns. Add more keywords and file patterns.",
+                    )
+                )
             elif self.metrics.false_negative_rate >= 5:
-                self.issues.append(Issue(
-                    severity="medium",
-                    category="activation",
-                    plugin=None,
-                    description=f"Elevated false negative rate: {self.metrics.false_negative_rate:.1f}%",
-                    impact="Some plugins not activating when they should",
-                    recommendation="Review and expand triggering patterns for affected plugins."
-                ))
+                self.issues.append(
+                    Issue(
+                        severity="medium",
+                        category="activation",
+                        plugin=None,
+                        description=f"Elevated false negative rate: {self.metrics.false_negative_rate:.1f}%",
+                        impact="Some plugins not activating when they should",
+                        recommendation="Review and expand triggering patterns for affected plugins.",
+                    )
+                )
 
-            print(f"✓ Loaded activation metrics: {self.metrics.activation_accuracy:.1f}% accuracy")
+            print(
+                f"✓ Loaded activation metrics: {self.metrics.activation_accuracy:.1f}% accuracy"
+            )
             return True
 
         except Exception as e:
@@ -156,59 +166,69 @@ class TriggeringPatternReporter:
             content = report_path.read_text()
 
             # Extract metrics
-            relevance_match = re.search(r'Relevance Accuracy \| ([\d.]+)%', content)
+            relevance_match = re.search(r"Relevance Accuracy \| ([\d.]+)%", content)
             if relevance_match:
                 self.metrics.command_relevance = float(relevance_match.group(1))
 
-            timing_match = re.search(r'Timing Accuracy \| ([\d.]+)%', content)
+            timing_match = re.search(r"Timing Accuracy \| ([\d.]+)%", content)
             if timing_match:
                 self.metrics.command_timing = float(timing_match.group(1))
 
-            priority_match = re.search(r'Priority Accuracy \| ([\d.]+)%', content)
+            priority_match = re.search(r"Priority Accuracy \| ([\d.]+)%", content)
             if priority_match:
                 self.metrics.command_priority = float(priority_match.group(1))
 
             # Identify issues
             if self.metrics.command_relevance < 70:
-                self.issues.append(Issue(
-                    severity="high",
-                    category="command",
-                    plugin=None,
-                    description=f"Low command relevance: {self.metrics.command_relevance:.1f}%",
-                    impact="Commands being suggested in inappropriate contexts",
-                    recommendation="Review command keywords and triggering conditions. Add context-specific logic."
-                ))
+                self.issues.append(
+                    Issue(
+                        severity="high",
+                        category="command",
+                        plugin=None,
+                        description=f"Low command relevance: {self.metrics.command_relevance:.1f}%",
+                        impact="Commands being suggested in inappropriate contexts",
+                        recommendation="Review command keywords and triggering conditions. Add context-specific logic.",
+                    )
+                )
             elif self.metrics.command_relevance < 80:
-                self.issues.append(Issue(
-                    severity="medium",
-                    category="command",
-                    plugin=None,
-                    description=f"Suboptimal command relevance: {self.metrics.command_relevance:.1f}%",
-                    impact="Some commands suggested with low relevance",
-                    recommendation="Refine command triggering logic to improve relevance scoring."
-                ))
+                self.issues.append(
+                    Issue(
+                        severity="medium",
+                        category="command",
+                        plugin=None,
+                        description=f"Suboptimal command relevance: {self.metrics.command_relevance:.1f}%",
+                        impact="Some commands suggested with low relevance",
+                        recommendation="Refine command triggering logic to improve relevance scoring.",
+                    )
+                )
 
             if self.metrics.command_timing < 75:
-                self.issues.append(Issue(
-                    severity="medium",
-                    category="command",
-                    plugin=None,
-                    description=f"Poor command timing: {self.metrics.command_timing:.1f}%",
-                    impact="Commands suggested at inappropriate times in workflow",
-                    recommendation="Implement workflow-aware command suggestions. Consider project maturity."
-                ))
+                self.issues.append(
+                    Issue(
+                        severity="medium",
+                        category="command",
+                        plugin=None,
+                        description=f"Poor command timing: {self.metrics.command_timing:.1f}%",
+                        impact="Commands suggested at inappropriate times in workflow",
+                        recommendation="Implement workflow-aware command suggestions. Consider project maturity.",
+                    )
+                )
 
             if self.metrics.command_priority < 85:
-                self.issues.append(Issue(
-                    severity="low",
-                    category="command",
-                    plugin=None,
-                    description=f"Suboptimal priority ranking: {self.metrics.command_priority:.1f}%",
-                    impact="Command priorities don't reflect their importance",
-                    recommendation="Review and adjust command priority values based on usage patterns."
-                ))
+                self.issues.append(
+                    Issue(
+                        severity="low",
+                        category="command",
+                        plugin=None,
+                        description=f"Suboptimal priority ranking: {self.metrics.command_priority:.1f}%",
+                        impact="Command priorities don't reflect their importance",
+                        recommendation="Review and adjust command priority values based on usage patterns.",
+                    )
+                )
 
-            print(f"✓ Loaded command metrics: {self.metrics.command_relevance:.1f}% relevance")
+            print(
+                f"✓ Loaded command metrics: {self.metrics.command_relevance:.1f}% relevance"
+            )
             return True
 
         except Exception as e:
@@ -227,62 +247,76 @@ class TriggeringPatternReporter:
             content = report_path.read_text()
 
             # Extract metrics
-            accuracy_match = re.search(r'Overall Accuracy \| ([\d.]+)%', content)
+            accuracy_match = re.search(r"Overall Accuracy \| ([\d.]+)%", content)
             if accuracy_match:
                 self.metrics.skill_accuracy = float(accuracy_match.group(1))
 
-            precision_match = re.search(r'Precision \| ([\d.]+)%', content)
+            precision_match = re.search(r"Precision \| ([\d.]+)%", content)
             if precision_match:
                 self.metrics.skill_precision = float(precision_match.group(1))
 
-            over_trigger_match = re.search(r'Over-Trigger Rate \| ([\d.]+)%', content)
+            over_trigger_match = re.search(r"Over-Trigger Rate \| ([\d.]+)%", content)
             if over_trigger_match:
-                self.metrics.skill_over_trigger_rate = float(over_trigger_match.group(1))
+                self.metrics.skill_over_trigger_rate = float(
+                    over_trigger_match.group(1)
+                )
 
-            under_trigger_match = re.search(r'Under-Trigger Rate \| ([\d.]+)%', content)
+            under_trigger_match = re.search(r"Under-Trigger Rate \| ([\d.]+)%", content)
             if under_trigger_match:
-                self.metrics.skill_under_trigger_rate = float(under_trigger_match.group(1))
+                self.metrics.skill_under_trigger_rate = float(
+                    under_trigger_match.group(1)
+                )
 
             # Identify issues
             if self.metrics.skill_over_trigger_rate >= 15:
-                self.issues.append(Issue(
-                    severity="high",
-                    category="skill",
-                    plugin=None,
-                    description=f"High skill over-triggering: {self.metrics.skill_over_trigger_rate:.1f}%",
-                    impact="Skills applying too broadly, causing noise",
-                    recommendation="Tighten skill pattern matching. Add more specific keywords and context checks."
-                ))
+                self.issues.append(
+                    Issue(
+                        severity="high",
+                        category="skill",
+                        plugin=None,
+                        description=f"High skill over-triggering: {self.metrics.skill_over_trigger_rate:.1f}%",
+                        impact="Skills applying too broadly, causing noise",
+                        recommendation="Tighten skill pattern matching. Add more specific keywords and context checks.",
+                    )
+                )
             elif self.metrics.skill_over_trigger_rate >= 10:
-                self.issues.append(Issue(
-                    severity="medium",
-                    category="skill",
-                    plugin=None,
-                    description=f"Elevated skill over-triggering: {self.metrics.skill_over_trigger_rate:.1f}%",
-                    impact="Some skills applying more broadly than intended",
-                    recommendation="Review skill patterns for affected plugins."
-                ))
+                self.issues.append(
+                    Issue(
+                        severity="medium",
+                        category="skill",
+                        plugin=None,
+                        description=f"Elevated skill over-triggering: {self.metrics.skill_over_trigger_rate:.1f}%",
+                        impact="Some skills applying more broadly than intended",
+                        recommendation="Review skill patterns for affected plugins.",
+                    )
+                )
 
             if self.metrics.skill_under_trigger_rate >= 15:
-                self.issues.append(Issue(
-                    severity="high",
-                    category="skill",
-                    plugin=None,
-                    description=f"High skill under-triggering: {self.metrics.skill_under_trigger_rate:.1f}%",
-                    impact="Skills not applying when they should",
-                    recommendation="Expand skill pattern matching. Add more keywords and broaden context detection."
-                ))
+                self.issues.append(
+                    Issue(
+                        severity="high",
+                        category="skill",
+                        plugin=None,
+                        description=f"High skill under-triggering: {self.metrics.skill_under_trigger_rate:.1f}%",
+                        impact="Skills not applying when they should",
+                        recommendation="Expand skill pattern matching. Add more keywords and broaden context detection.",
+                    )
+                )
             elif self.metrics.skill_under_trigger_rate >= 10:
-                self.issues.append(Issue(
-                    severity="medium",
-                    category="skill",
-                    plugin=None,
-                    description=f"Elevated skill under-triggering: {self.metrics.skill_under_trigger_rate:.1f}%",
-                    impact="Some skills missing relevant contexts",
-                    recommendation="Review and expand skill patterns."
-                ))
+                self.issues.append(
+                    Issue(
+                        severity="medium",
+                        category="skill",
+                        plugin=None,
+                        description=f"Elevated skill under-triggering: {self.metrics.skill_under_trigger_rate:.1f}%",
+                        impact="Some skills missing relevant contexts",
+                        recommendation="Review and expand skill patterns.",
+                    )
+                )
 
-            print(f"✓ Loaded skill metrics: {self.metrics.skill_accuracy:.1f}% accuracy")
+            print(
+                f"✓ Loaded skill metrics: {self.metrics.skill_accuracy:.1f}% accuracy"
+            )
             return True
 
         except Exception as e:
@@ -296,27 +330,27 @@ class TriggeringPatternReporter:
         # Activation score (weight: 40%)
         if self.metrics.activation_accuracy > 0:
             activation_score = (
-                self.metrics.activation_accuracy * 0.4 +
-                (100 - self.metrics.false_positive_rate) * 0.3 +
-                (100 - self.metrics.false_negative_rate) * 0.3
+                self.metrics.activation_accuracy * 0.4
+                + (100 - self.metrics.false_positive_rate) * 0.3
+                + (100 - self.metrics.false_negative_rate) * 0.3
             )
             scores.append((activation_score, 0.4))
 
         # Command score (weight: 30%)
         if self.metrics.command_relevance > 0:
             command_score = (
-                self.metrics.command_relevance * 0.5 +
-                self.metrics.command_timing * 0.3 +
-                self.metrics.command_priority * 0.2
+                self.metrics.command_relevance * 0.5
+                + self.metrics.command_timing * 0.3
+                + self.metrics.command_priority * 0.2
             )
             scores.append((command_score, 0.3))
 
         # Skill score (weight: 30%)
         if self.metrics.skill_accuracy > 0:
             skill_score = (
-                self.metrics.skill_accuracy * 0.5 +
-                (100 - self.metrics.skill_over_trigger_rate) * 0.25 +
-                (100 - self.metrics.skill_under_trigger_rate) * 0.25
+                self.metrics.skill_accuracy * 0.5
+                + (100 - self.metrics.skill_over_trigger_rate) * 0.25
+                + (100 - self.metrics.skill_under_trigger_rate) * 0.25
             )
             scores.append((skill_score, 0.3))
 
@@ -364,8 +398,12 @@ class TriggeringPatternReporter:
 
         if overall_score < 70:
             recommendations.append("\n**GENERAL RECOMMENDATIONS:**")
-            recommendations.append("- Conduct comprehensive review of all triggering patterns")
-            recommendations.append("- Implement automated testing for triggering accuracy")
+            recommendations.append(
+                "- Conduct comprehensive review of all triggering patterns"
+            )
+            recommendations.append(
+                "- Implement automated testing for triggering accuracy"
+            )
             recommendations.append("- Consider refactoring pattern matching logic")
 
         return recommendations
@@ -395,10 +433,14 @@ class TriggeringPatternReporter:
             summary = "Triggering patterns are functional but have notable areas needing improvement."
         elif overall_score >= 60:
             status = "⚠️ NEEDS ATTENTION"
-            summary = "Triggering patterns have significant issues that should be addressed."
+            summary = (
+                "Triggering patterns have significant issues that should be addressed."
+            )
         else:
             status = "❌ CRITICAL"
-            summary = "Triggering patterns require immediate attention and optimization."
+            summary = (
+                "Triggering patterns require immediate attention and optimization."
+            )
 
         report += f"**Status:** {status}\n\n"
         report += f"{summary}\n\n"
@@ -409,35 +451,59 @@ class TriggeringPatternReporter:
         findings = []
         if self.metrics.activation_accuracy > 0:
             if self.metrics.activation_accuracy >= 90:
-                findings.append(f"✓ Excellent plugin activation accuracy ({self.metrics.activation_accuracy:.1f}%)")
+                findings.append(
+                    f"✓ Excellent plugin activation accuracy ({self.metrics.activation_accuracy:.1f}%)"
+                )
             elif self.metrics.activation_accuracy >= 75:
-                findings.append(f"• Good plugin activation accuracy ({self.metrics.activation_accuracy:.1f}%)")
+                findings.append(
+                    f"• Good plugin activation accuracy ({self.metrics.activation_accuracy:.1f}%)"
+                )
             else:
-                findings.append(f"✗ Low plugin activation accuracy ({self.metrics.activation_accuracy:.1f}%)")
+                findings.append(
+                    f"✗ Low plugin activation accuracy ({self.metrics.activation_accuracy:.1f}%)"
+                )
 
         if self.metrics.false_positive_rate > 0:
             if self.metrics.false_positive_rate < 5:
-                findings.append(f"✓ False positive rate well below target ({self.metrics.false_positive_rate:.1f}%)")
+                findings.append(
+                    f"✓ False positive rate well below target ({self.metrics.false_positive_rate:.1f}%)"
+                )
             elif self.metrics.false_positive_rate < 10:
-                findings.append(f"• False positive rate acceptable ({self.metrics.false_positive_rate:.1f}%)")
+                findings.append(
+                    f"• False positive rate acceptable ({self.metrics.false_positive_rate:.1f}%)"
+                )
             else:
-                findings.append(f"✗ False positive rate above target ({self.metrics.false_positive_rate:.1f}%)")
+                findings.append(
+                    f"✗ False positive rate above target ({self.metrics.false_positive_rate:.1f}%)"
+                )
 
         if self.metrics.command_relevance > 0:
             if self.metrics.command_relevance >= 80:
-                findings.append(f"✓ High command relevance accuracy ({self.metrics.command_relevance:.1f}%)")
+                findings.append(
+                    f"✓ High command relevance accuracy ({self.metrics.command_relevance:.1f}%)"
+                )
             elif self.metrics.command_relevance >= 70:
-                findings.append(f"• Moderate command relevance accuracy ({self.metrics.command_relevance:.1f}%)")
+                findings.append(
+                    f"• Moderate command relevance accuracy ({self.metrics.command_relevance:.1f}%)"
+                )
             else:
-                findings.append(f"✗ Low command relevance accuracy ({self.metrics.command_relevance:.1f}%)")
+                findings.append(
+                    f"✗ Low command relevance accuracy ({self.metrics.command_relevance:.1f}%)"
+                )
 
         if self.metrics.skill_accuracy > 0:
             if self.metrics.skill_accuracy >= 90:
-                findings.append(f"✓ Excellent skill pattern matching ({self.metrics.skill_accuracy:.1f}%)")
+                findings.append(
+                    f"✓ Excellent skill pattern matching ({self.metrics.skill_accuracy:.1f}%)"
+                )
             elif self.metrics.skill_accuracy >= 80:
-                findings.append(f"• Good skill pattern matching ({self.metrics.skill_accuracy:.1f}%)")
+                findings.append(
+                    f"• Good skill pattern matching ({self.metrics.skill_accuracy:.1f}%)"
+                )
             else:
-                findings.append(f"✗ Skill pattern matching needs improvement ({self.metrics.skill_accuracy:.1f}%)")
+                findings.append(
+                    f"✗ Skill pattern matching needs improvement ({self.metrics.skill_accuracy:.1f}%)"
+                )
 
         for finding in findings:
             report += f"- {finding}\n"
@@ -531,15 +597,21 @@ Based on the analysis, consider these specific improvements:
 
         if self.metrics.false_positive_rate >= 5:
             suggestions.append("**Reduce False Positives:**")
-            suggestions.append("  - Add negative patterns to exclude common false positive triggers")
+            suggestions.append(
+                "  - Add negative patterns to exclude common false positive triggers"
+            )
             suggestions.append("  - Increase specificity of file extension patterns")
             suggestions.append("  - Require minimum keyword threshold for activation")
 
         if self.metrics.false_negative_rate >= 5:
             suggestions.append("**Reduce False Negatives:**")
-            suggestions.append("  - Expand keyword sets with synonyms and related terms")
+            suggestions.append(
+                "  - Expand keyword sets with synonyms and related terms"
+            )
             suggestions.append("  - Add alternative file extension patterns")
-            suggestions.append("  - Lower activation thresholds for high-confidence patterns")
+            suggestions.append(
+                "  - Lower activation thresholds for high-confidence patterns"
+            )
 
         if self.metrics.command_timing < 85:
             suggestions.append("**Improve Command Timing:**")
@@ -592,12 +664,12 @@ def main():
     parser.add_argument(
         "--reports-dir",
         default="reports",
-        help="Path to reports directory (default: reports)"
+        help="Path to reports directory (default: reports)",
     )
     parser.add_argument(
         "--output",
         default="reports/triggering-comprehensive-report.md",
-        help="Output report file (default: reports/triggering-comprehensive-report.md)"
+        help="Output report file (default: reports/triggering-comprehensive-report.md)",
     )
 
     args = parser.parse_args()

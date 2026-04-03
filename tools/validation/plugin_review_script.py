@@ -24,6 +24,7 @@ from tools.validation.metadata_validator import MetadataValidator
 @dataclass
 class ReviewReport:
     """Complete review report for a plugin"""
+
     plugin_name: str
     plugin_path: Path
     _result: ValidationResult = field(init=False)
@@ -44,14 +45,20 @@ class ReviewReport:
             "low": "info",
         }
 
-    def add_issue(self, section: str, severity: str, message: str, details: Optional[str] = None) -> None:
+    def add_issue(
+        self, section: str, severity: str, message: str, details: Optional[str] = None
+    ) -> None:
         """Add an issue to the report"""
         mapped_severity = self._SEVERITY_MAP.get(severity, "warning")
         suggestion = details
         if mapped_severity in ("critical", "error"):
-            self._result.add_error(field=section, message=message, suggestion=suggestion)
+            self._result.add_error(
+                field=section, message=message, suggestion=suggestion
+            )
         elif mapped_severity == "warning":
-            self._result.add_warning(field=section, message=message, suggestion=suggestion)
+            self._result.add_warning(
+                field=section, message=message, suggestion=suggestion
+            )
         else:
             self._result.add_info(field=section, message=message)
 
@@ -74,7 +81,12 @@ class ReviewReport:
     def get_issue_count_by_severity(self) -> Dict[str, int]:
         """Count issues by severity (using original review severity names)"""
         # Map back from shared severities to review severities for report compatibility
-        reverse_map = {"critical": "critical", "error": "high", "warning": "medium", "info": "low"}
+        reverse_map = {
+            "critical": "critical",
+            "error": "high",
+            "warning": "medium",
+            "info": "low",
+        }
         counts = {"critical": 0, "high": 0, "medium": 0, "low": 0}
         for issue in self._result.issues:
             review_severity = reverse_map.get(issue.severity, "low")
@@ -126,7 +138,7 @@ class PluginReviewer:
                 "plugin.json",
                 "critical",
                 "plugin.json file not found",
-                f"Expected at: {plugin_json_path}"
+                f"Expected at: {plugin_json_path}",
             )
             return
 
@@ -135,10 +147,7 @@ class PluginReviewer:
 
         for error in result.errors:
             report.add_issue(
-                f"plugin.json/{error.field}",
-                "high",
-                error.message,
-                error.suggestion
+                f"plugin.json/{error.field}", "high", error.message, error.suggestion
             )
 
         for warning in result.warnings:
@@ -146,7 +155,7 @@ class PluginReviewer:
                 f"plugin.json/{warning.field}",
                 "medium",
                 warning.message,
-                warning.suggestion
+                warning.suggestion,
             )
 
         if result.is_valid:
@@ -164,7 +173,7 @@ class PluginReviewer:
         plugin_json_path = plugin_path / ".claude-plugin" / "plugin.json"
         if plugin_json_path.exists():
             try:
-                with open(plugin_json_path, 'r', encoding='utf-8') as f:
+                with open(plugin_json_path, "r", encoding="utf-8") as f:
                     plugin_data = json.load(f)
                     agents = plugin_data.get("agents", [])
 
@@ -176,17 +185,21 @@ class PluginReviewer:
                                 report.add_issue(
                                     "agents",
                                     "high",
-                                    f"Agent documentation file not found: {agent_name}.md"
+                                    f"Agent documentation file not found: {agent_name}.md",
                                 )
                             else:
-                                self._validate_agent_file(agent_file, agent_name, report)
+                                self._validate_agent_file(
+                                    agent_file, agent_name, report
+                                )
             except Exception as e:
                 report.add_warning(f"Failed to validate agent files: {e}")
 
-    def _validate_agent_file(self, agent_file: Path, agent_name: str, report: ReviewReport):
+    def _validate_agent_file(
+        self, agent_file: Path, agent_name: str, report: ReviewReport
+    ):
         """Validate individual agent markdown file"""
         try:
-            with open(agent_file, 'r', encoding='utf-8') as f:
+            with open(agent_file, "r", encoding="utf-8") as f:
                 content = f.read()
 
                 # Check minimum content length
@@ -195,11 +208,11 @@ class PluginReviewer:
                         "agents",
                         "medium",
                         f"Agent file too short: {agent_name}.md",
-                        "Should contain comprehensive documentation"
+                        "Should contain comprehensive documentation",
                     )
 
                 # Check for required sections (basic markdown headings)
-                if not re.search(r'^#{1,3}\s+', content, re.MULTILINE):
+                if not re.search(r"^#{1,3}\s+", content, re.MULTILINE):
                     report.add_warning(
                         f"Agent {agent_name}.md: No markdown headings found"
                     )
@@ -218,7 +231,7 @@ class PluginReviewer:
         plugin_json_path = plugin_path / ".claude-plugin" / "plugin.json"
         if plugin_json_path.exists():
             try:
-                with open(plugin_json_path, 'r', encoding='utf-8') as f:
+                with open(plugin_json_path, "r", encoding="utf-8") as f:
                     plugin_data = json.load(f)
                     commands = plugin_data.get("commands", [])
 
@@ -230,17 +243,21 @@ class PluginReviewer:
                                 report.add_issue(
                                     "commands",
                                     "high",
-                                    f"Command documentation file not found: {command_name}.md"
+                                    f"Command documentation file not found: {command_name}.md",
                                 )
                             else:
-                                self._validate_command_file(command_file, command_name, report)
+                                self._validate_command_file(
+                                    command_file, command_name, report
+                                )
             except Exception as e:
                 report.add_warning(f"Failed to validate command files: {e}")
 
-    def _validate_command_file(self, command_file: Path, command_name: str, report: ReviewReport):
+    def _validate_command_file(
+        self, command_file: Path, command_name: str, report: ReviewReport
+    ):
         """Validate individual command markdown file"""
         try:
-            with open(command_file, 'r', encoding='utf-8') as f:
+            with open(command_file, "r", encoding="utf-8") as f:
                 content = f.read()
 
                 # Check minimum content length
@@ -249,7 +266,7 @@ class PluginReviewer:
                         "commands",
                         "medium",
                         f"Command file too short: {command_name}.md",
-                        "Should contain usage examples and documentation"
+                        "Should contain usage examples and documentation",
                     )
 
                 # Check for code blocks (commands should have examples)
@@ -272,7 +289,7 @@ class PluginReviewer:
         plugin_json_path = plugin_path / ".claude-plugin" / "plugin.json"
         if plugin_json_path.exists():
             try:
-                with open(plugin_json_path, 'r', encoding='utf-8') as f:
+                with open(plugin_json_path, "r", encoding="utf-8") as f:
                     plugin_data = json.load(f)
                     skills = plugin_data.get("skills", [])
 
@@ -284,17 +301,21 @@ class PluginReviewer:
                                 report.add_issue(
                                     "skills",
                                     "medium",
-                                    f"Skill documentation file not found: {skill_name}.md"
+                                    f"Skill documentation file not found: {skill_name}.md",
                                 )
                             else:
-                                self._validate_skill_file(skill_file, skill_name, report)
+                                self._validate_skill_file(
+                                    skill_file, skill_name, report
+                                )
             except Exception as e:
                 report.add_warning(f"Failed to validate skill files: {e}")
 
-    def _validate_skill_file(self, skill_file: Path, skill_name: str, report: ReviewReport):
+    def _validate_skill_file(
+        self, skill_file: Path, skill_name: str, report: ReviewReport
+    ):
         """Validate individual skill markdown file"""
         try:
-            with open(skill_file, 'r', encoding='utf-8') as f:
+            with open(skill_file, "r", encoding="utf-8") as f:
                 content = f.read()
 
                 # Check minimum content length
@@ -303,14 +324,12 @@ class PluginReviewer:
                         "skills",
                         "low",
                         f"Skill file too short: {skill_name}.md",
-                        "Should contain patterns and examples"
+                        "Should contain patterns and examples",
                     )
 
                 # Check for code blocks (skills should have examples)
                 if "```" not in content:
-                    report.add_warning(
-                        f"Skill {skill_name}.md: No code examples found"
-                    )
+                    report.add_warning(f"Skill {skill_name}.md: No code examples found")
         except Exception as e:
             report.add_warning(f"Failed to read skill file {skill_name}.md: {e}")
 
@@ -319,15 +338,11 @@ class PluginReviewer:
         readme_path = plugin_path / "README.md"
 
         if not readme_path.exists():
-            report.add_issue(
-                "README",
-                "high",
-                "README.md not found"
-            )
+            report.add_issue("README", "high", "README.md not found")
             return
 
         try:
-            with open(readme_path, 'r', encoding='utf-8') as f:
+            with open(readme_path, "r", encoding="utf-8") as f:
                 content = f.read()
 
             # Check minimum length
@@ -336,15 +351,15 @@ class PluginReviewer:
                     "README",
                     "medium",
                     "README.md is too short (< 500 chars)",
-                    "Should provide comprehensive documentation"
+                    "Should provide comprehensive documentation",
                 )
 
             # Check for required sections
             required_sections = [
-                (r'#.*overview', "Overview or similar section"),
-                (r'#.*agent', "Agents section"),
-                (r'#.*command', "Commands section"),
-                (r'#.*skill', "Skills section"),
+                (r"#.*overview", "Overview or similar section"),
+                (r"#.*agent", "Agents section"),
+                (r"#.*command", "Commands section"),
+                (r"#.*skill", "Skills section"),
             ]
 
             for pattern, description in required_sections:
@@ -352,19 +367,14 @@ class PluginReviewer:
                     report.add_warning(f"README.md: Missing {description}")
 
             # Check for code examples
-            code_blocks = re.findall(r'```', content)
+            code_blocks = re.findall(r"```", content)
             if len(code_blocks) < 4:  # At least 2 code blocks (opening and closing)
                 report.add_warning("README.md: Insufficient code examples")
 
             report.add_success("README.md found and contains documentation")
 
         except Exception as e:
-            report.add_issue(
-                "README",
-                "medium",
-                "Failed to read README.md",
-                str(e)
-            )
+            report.add_issue("README", "medium", "Failed to read README.md", str(e))
 
     def _review_file_structure(self, plugin_path: Path, report: ReviewReport):
         """Review overall file structure"""
@@ -378,9 +388,7 @@ class PluginReviewer:
 
         if len(found_dirs) < len(expected_dirs):
             missing = set(expected_dirs) - set(found_dirs)
-            report.add_warning(
-                f"Missing recommended directories: {', '.join(missing)}"
-            )
+            report.add_warning(f"Missing recommended directories: {', '.join(missing)}")
 
         if len(found_dirs) > 0:
             report.add_success(f"Found directories: {', '.join(found_dirs)}")
@@ -393,15 +401,15 @@ class PluginReviewer:
             return
 
         try:
-            with open(readme_path, 'r', encoding='utf-8') as f:
+            with open(readme_path, "r", encoding="utf-8") as f:
                 readme_content = f.read()
 
             # Find broken local file links
-            local_links = re.findall(r'\[([^\]]+)\]\(([^)]+)\)', readme_content)
+            local_links = re.findall(r"\[([^\]]+)\]\(([^)]+)\)", readme_content)
 
             for link_text, link_url in local_links:
                 # Skip external URLs
-                if link_url.startswith(('http://', 'https://', '#')):
+                if link_url.startswith(("http://", "https://", "#")):
                     continue
 
                 # Check if local file exists
@@ -411,7 +419,7 @@ class PluginReviewer:
                         "cross-references",
                         "medium",
                         f"Broken link in README: {link_url}",
-                        f"Link text: '{link_text}'"
+                        f"Link text: '{link_text}'",
                     )
 
         except Exception as e:
@@ -439,8 +447,18 @@ class PluginReviewer:
         lines.append(f"- **Successes:** {len(report.successes)}\n")
 
         # Reverse severity map for display
-        display_severity = {"critical": "critical", "error": "high", "warning": "medium", "info": "low"}
-        severity_emoji_map = {"critical": "\U0001f534", "error": "\U0001f7e0", "warning": "\U0001f7e1", "info": "\U0001f535"}
+        display_severity = {
+            "critical": "critical",
+            "error": "high",
+            "warning": "medium",
+            "info": "low",
+        }
+        severity_emoji_map = {
+            "critical": "\U0001f534",
+            "error": "\U0001f7e0",
+            "warning": "\U0001f7e1",
+            "info": "\U0001f535",
+        }
 
         # Issues by section (exclude standalone warnings)
         section_issues = [i for i in report.issues if i.field != "general"]
@@ -458,7 +476,9 @@ class PluginReviewer:
                 lines.append(f"### {section}\n")
                 for issue in issues:
                     emoji = severity_emoji_map.get(issue.severity, "\u26aa")
-                    display_sev = display_severity.get(issue.severity, issue.severity).upper()
+                    display_sev = display_severity.get(
+                        issue.severity, issue.severity
+                    ).upper()
 
                     lines.append(f"{emoji} **{display_sev}**: {issue.message}")
                     if issue.suggestion:
@@ -481,13 +501,15 @@ class PluginReviewer:
 
         # Overall assessment
         lines.append("## Overall Assessment\n")
-        if issue_counts['critical'] > 0:
-            lines.append("**Status:** ❌ CRITICAL ISSUES - Immediate attention required")
-        elif issue_counts['high'] > 0:
+        if issue_counts["critical"] > 0:
+            lines.append(
+                "**Status:** ❌ CRITICAL ISSUES - Immediate attention required"
+            )
+        elif issue_counts["high"] > 0:
             lines.append("**Status:** ⚠️  HIGH PRIORITY ISSUES - Should be addressed")
-        elif issue_counts['medium'] > 0:
+        elif issue_counts["medium"] > 0:
             lines.append("**Status:** 🔸 MEDIUM PRIORITY ISSUES - Recommended to fix")
-        elif issue_counts['low'] > 0:
+        elif issue_counts["low"] > 0:
             lines.append("**Status:** ✓ MINOR ISSUES - Optional improvements")
         else:
             lines.append("**Status:** ✅ EXCELLENT - No issues found")
@@ -528,16 +550,16 @@ def main():
     output_dir.mkdir(exist_ok=True)
     output_file = output_dir / f"{plugin_name}.md"
 
-    with open(output_file, 'w', encoding='utf-8') as f:
+    with open(output_file, "w", encoding="utf-8") as f:
         f.write(markdown_report)
 
     print(f"\n\nReport saved to: {output_file}")
 
     # Exit with appropriate code
     issue_counts = report.get_issue_count_by_severity()
-    if issue_counts['critical'] > 0:
+    if issue_counts["critical"] > 0:
         sys.exit(2)
-    elif issue_counts['high'] > 0:
+    elif issue_counts["high"] > 0:
         sys.exit(1)
     else:
         sys.exit(0)

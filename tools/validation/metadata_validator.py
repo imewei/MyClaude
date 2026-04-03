@@ -26,94 +26,78 @@ class MetadataValidator:
         "required": {
             "name": {
                 "type": "string",
-                "pattern": r'^[a-z0-9]+(-[a-z0-9]+)*$',
-                "description": "Plugin name in kebab-case"
+                "pattern": r"^[a-z0-9]+(-[a-z0-9]+)*$",
+                "description": "Plugin name in kebab-case",
             },
             "version": {
                 "type": "string",
-                "pattern": r'^\d+\.\d+\.\d+(-[a-zA-Z0-9.-]+)?(\+[a-zA-Z0-9.-]+)?$',
-                "description": "Semantic version (e.g., 1.0.0)"
+                "pattern": r"^\d+\.\d+\.\d+(-[a-zA-Z0-9.-]+)?(\+[a-zA-Z0-9.-]+)?$",
+                "description": "Semantic version (e.g., 1.0.0)",
             },
             "description": {
                 "type": "string",
                 "min_length": 20,
                 "max_length": 500,
-                "description": "Brief plugin description"
+                "description": "Brief plugin description",
             },
             "author": {
                 "type": ["string", "object"],
-                "description": "Author name or object with name/url"
+                "description": "Author name or object with name/url",
             },
             "license": {
                 "type": "string",
                 "enum": ["MIT", "Apache-2.0", "GPL-3.0", "BSD-3-Clause", "ISC"],
-                "description": "Open source license identifier"
-            }
+                "description": "Open source license identifier",
+            },
         },
         "recommended": {
             "agents": {
                 "type": "array",
                 "min_items": 1,
-                "description": "List of agent definitions"
+                "description": "List of agent definitions",
             },
-            "commands": {
-                "type": "array",
-                "description": "List of command definitions"
-            },
-            "skills": {
-                "type": "array",
-                "description": "List of skill definitions"
-            },
+            "commands": {"type": "array", "description": "List of command definitions"},
+            "skills": {"type": "array", "description": "List of skill definitions"},
             "keywords": {
                 "type": "array",
                 "min_items": 3,
-                "description": "List of searchable keywords"
+                "description": "List of searchable keywords",
             },
             "category": {
                 "type": "string",
-                "enum": [
-                    "core",
-                    "dev",
-                    "science"
-                ],
-                "description": "Plugin category"
-            }
+                "enum": ["core", "dev", "science"],
+                "description": "Plugin category",
+            },
         },
         "optional": {
             "homepage": {
                 "type": "string",
-                "pattern": r'^https?://.+',
-                "description": "Plugin homepage URL"
+                "pattern": r"^https?://.+",
+                "description": "Plugin homepage URL",
             },
             "repository": {
                 "type": ["string", "object"],
-                "description": "Repository URL or object"
+                "description": "Repository URL or object",
             },
             "bugs": {
                 "type": ["string", "object"],
-                "description": "Bug tracker URL or object"
+                "description": "Bug tracker URL or object",
             },
-            "dependencies": {
-                "type": "object",
-                "description": "Plugin dependencies"
-            },
-            "engines": {
-                "type": "object",
-                "description": "Required engine versions"
-            },
+            "dependencies": {"type": "object", "description": "Plugin dependencies"},
+            "engines": {"type": "object", "description": "Required engine versions"},
             "hooks": {
                 "type": ["string", "array", "object"],
-                "description": "Hook config path(s) or inline configuration (v2.1.9+)"
+                "description": "Hook config path(s) or inline configuration (v2.1.9+)",
             },
             "lspServers": {
                 "type": ["string", "array", "object"],
-                "description": "Language Server Protocol configurations"
+                "description": "Language Server Protocol configurations",
             },
             "outputStyles": {
                 "type": ["string", "array"],
-                "description": "Output style files or directories"
-            }
-        }
+                "description": "Output style files or directories",
+            },
+        },
     }
 
     # Agent schema — aligned with Claude Code v2.1.88 subagent frontmatter spec
@@ -121,74 +105,79 @@ class MetadataValidator:
         "required": {
             "name": {
                 "type": "string",
-                "pattern": r'^[a-z0-9]+(-[a-z0-9]+)*$',
-                "description": "Agent name in kebab-case"
+                "pattern": r"^[a-z0-9]+(-[a-z0-9]+)*$",
+                "description": "Agent name in kebab-case",
             },
             "description": {
                 "type": "string",
                 "min_length": 20,
-                "description": "Agent description for delegation routing"
-            }
+                "description": "Agent description for delegation routing",
+            },
         },
         "optional": {
             "tools": {
                 "type": "string",
-                "description": "Comma-separated list of allowed tools"
+                "description": "Comma-separated list of allowed tools",
             },
             "disallowedTools": {
                 "type": "string",
-                "description": "Comma-separated list of denied tools"
+                "description": "Comma-separated list of denied tools",
             },
             "model": {
                 "type": "string",
                 "enum": ["sonnet", "opus", "haiku", "inherit"],
-                "description": "Model to use (default: inherit)"
+                "description": "Model to use (default: inherit)",
             },
             "permissionMode": {
                 "type": "string",
                 "enum": [
-                    "default", "acceptEdits", "delegate",
-                    "dontAsk", "bypassPermissions", "plan", "auto"
+                    "default",
+                    "acceptEdits",
+                    "delegate",
+                    "dontAsk",
+                    "bypassPermissions",
+                    "plan",
+                    "auto",
                 ],
-                "description": "Permission handling mode"
+                "description": "Permission handling mode",
             },
             "maxTurns": {
                 "type": "integer",
                 "min": 1,
-                "description": "Maximum agentic turns before stopping"
+                "description": "Maximum agentic turns before stopping",
             },
             "effort": {
                 "type": "string",
                 "enum": ["low", "medium", "high"],
-                "description": "Model reasoning depth (v2.1.88+)"
+                "description": "Model reasoning depth (v2.1.88+)",
             },
             "background": {
                 "type": "boolean",
-                "description": "Run agent in background (v2.1.88+)"
+                "description": "Run agent in background (v2.1.88+)",
             },
             "isolation": {
                 "type": "string",
                 "enum": ["worktree"],
-                "description": "Run agent in isolated git worktree (v2.1.88+)"
+                "description": "Run agent in isolated git worktree (v2.1.88+)",
             },
             "skills": {
                 "type": "array",
-                "description": "Skills to preload into agent context"
+                "description": "Skills to preload into agent context",
             },
             "mcpServers": {
                 "type": ["string", "object", "array"],
-                "description": "MCP server configurations"
+                "description": "MCP server configurations",
             },
             "hooks": {
                 "type": ["string", "object"],
-                "description": "Lifecycle hooks scoped to this agent"
+                "description": "Lifecycle hooks scoped to this agent",
             },
             "memory": {
                 "type": "string",
                 "enum": ["user", "project", "local"],
-                "description": "Persistent memory scope (v2.1.40+)"
-            }
-        }
+                "description": "Persistent memory scope (v2.1.40+)",
+            },
+        },
     }
 
     # Command schema
@@ -196,32 +185,29 @@ class MetadataValidator:
         "required": {
             "name": {
                 "type": "string",
-                "pattern": r'^/?[a-z0-9]+(-[a-z0-9]+)*$',
-                "description": "Command name (with or without leading /)"
+                "pattern": r"^/?[a-z0-9]+(-[a-z0-9]+)*$",
+                "description": "Command name (with or without leading /)",
             },
             "description": {
                 "type": "string",
                 "min_length": 10,
-                "description": "Command description"
+                "description": "Command description",
             },
             "status": {
                 "type": "string",
                 "enum": ["active", "inactive", "beta", "deprecated"],
-                "description": "Command status"
-            }
+                "description": "Command status",
+            },
         },
         "optional": {
             "priority": {
                 "type": "integer",
                 "min": 1,
                 "max": 10,
-                "description": "Command priority (1=highest)"
+                "description": "Command priority (1=highest)",
             },
-            "parameters": {
-                "type": "array",
-                "description": "Command parameters"
-            }
-        }
+            "parameters": {"type": "array", "description": "Command parameters"},
+        },
     }
 
     # Skill schema
@@ -229,26 +215,23 @@ class MetadataValidator:
         "required": {
             "name": {
                 "type": "string",
-                "pattern": r'^[a-z0-9]+(-[a-z0-9]+)*$',
-                "description": "Skill name in kebab-case"
+                "pattern": r"^[a-z0-9]+(-[a-z0-9]+)*$",
+                "description": "Skill name in kebab-case",
             },
             "description": {
                 "type": "string",
                 "min_length": 10,
-                "description": "Skill description"
-            }
+                "description": "Skill description",
+            },
         },
         "optional": {
             "status": {
                 "type": "string",
                 "enum": ["active", "inactive", "beta", "deprecated"],
-                "description": "Skill status"
+                "description": "Skill status",
             },
-            "tags": {
-                "type": "array",
-                "description": "Skill tags"
-            }
-        }
+            "tags": {"type": "array", "description": "Skill tags"},
+        },
     }
 
     def __init__(self):
@@ -269,7 +252,7 @@ class MetadataValidator:
 
         # Read and parse JSON
         try:
-            with open(plugin_json_path, 'r', encoding='utf-8') as f:
+            with open(plugin_json_path, "r", encoding="utf-8") as f:
                 metadata = json.load(f)
         except json.JSONDecodeError as e:
             result.add_error("json", f"Invalid JSON syntax: {e}")
@@ -282,12 +265,16 @@ class MetadataValidator:
         self._validate_fields(metadata, self.SCHEMA["required"], result, required=True)
 
         # Validate recommended fields
-        self._validate_fields(metadata, self.SCHEMA["recommended"], result, required=False)
+        self._validate_fields(
+            metadata, self.SCHEMA["recommended"], result, required=False
+        )
 
         # Validate optional fields (if present)
         for field_name, field_schema in self.SCHEMA["optional"].items():
             if field_name in metadata:
-                self._validate_field(field_name, metadata[field_name], field_schema, result)
+                self._validate_field(
+                    field_name, metadata[field_name], field_schema, result
+                )
 
         # Validate nested structures
         if "agents" in metadata and isinstance(metadata["agents"], list):
@@ -301,8 +288,13 @@ class MetadataValidator:
 
         return result
 
-    def _validate_fields(self, metadata: Dict[str, Any], schema: Dict[str, Any],
-                        result: ValidationResult, required: bool):
+    def _validate_fields(
+        self,
+        metadata: Dict[str, Any],
+        schema: Dict[str, Any],
+        result: ValidationResult,
+        required: bool,
+    ):
         """Validate a set of fields"""
         for field_name, field_schema in schema.items():
             if field_name not in metadata:
@@ -310,19 +302,26 @@ class MetadataValidator:
                     result.add_error(
                         field_name,
                         f"Missing required field: {field_name}",
-                        f"Add '{field_name}': {field_schema['description']}"
+                        f"Add '{field_name}': {field_schema['description']}",
                     )
                 else:
                     result.add_warning(
                         field_name,
                         f"Missing recommended field: {field_name}",
-                        f"Consider adding: {field_schema['description']}"
+                        f"Consider adding: {field_schema['description']}",
                     )
             else:
-                self._validate_field(field_name, metadata[field_name], field_schema, result)
+                self._validate_field(
+                    field_name, metadata[field_name], field_schema, result
+                )
 
-    def _validate_field(self, field_name: str, value: Any, schema: Dict[str, Any],
-                       result: ValidationResult):
+    def _validate_field(
+        self,
+        field_name: str,
+        value: Any,
+        schema: Dict[str, Any],
+        result: ValidationResult,
+    ):
         """Validate a single field"""
         # Validation chain
         if not self._validate_type_constraint(field_name, value, schema, result):
@@ -334,8 +333,13 @@ class MetadataValidator:
         self._validate_array_constraint(field_name, value, schema, result)
         self._validate_numeric_constraint(field_name, value, schema, result)
 
-    def _validate_type_constraint(self, field_name: str, value: Any, schema: Dict[str, Any],
-                                result: ValidationResult) -> bool:
+    def _validate_type_constraint(
+        self,
+        field_name: str,
+        value: Any,
+        schema: Dict[str, Any],
+        result: ValidationResult,
+    ) -> bool:
         """Validate type constraint. Returns False if type check fails."""
         expected_type = schema.get("type")
         if not expected_type:
@@ -350,7 +354,7 @@ class MetadataValidator:
                 result.add_error(
                     field_name,
                     f"Invalid type. Expected one of: {', '.join(type_names)}",
-                    f"Current type: {type(value).__name__}"
+                    f"Current type: {type(value).__name__}",
                 )
                 return False
         else:
@@ -359,13 +363,18 @@ class MetadataValidator:
                 result.add_error(
                     field_name,
                     f"Invalid type. Expected: {expected_type}",
-                    f"Current type: {type(value).__name__}"
+                    f"Current type: {type(value).__name__}",
                 )
                 return False
         return True
 
-    def _validate_pattern_constraint(self, field_name: str, value: Any, schema: Dict[str, Any],
-                                   result: ValidationResult):
+    def _validate_pattern_constraint(
+        self,
+        field_name: str,
+        value: Any,
+        schema: Dict[str, Any],
+        result: ValidationResult,
+    ):
         """Validate regex pattern constraint for strings"""
         if isinstance(value, str) and "pattern" in schema:
             pattern = schema["pattern"]
@@ -373,63 +382,83 @@ class MetadataValidator:
                 result.add_error(
                     field_name,
                     f"Invalid format: '{value}'",
-                    f"Expected pattern: {schema.get('description', pattern)}"
+                    f"Expected pattern: {schema.get('description', pattern)}",
                 )
 
-    def _validate_string_length_constraint(self, field_name: str, value: Any, schema: Dict[str, Any],
-                                         result: ValidationResult):
+    def _validate_string_length_constraint(
+        self,
+        field_name: str,
+        value: Any,
+        schema: Dict[str, Any],
+        result: ValidationResult,
+    ):
         """Validate string length constraints"""
         if isinstance(value, str):
             if "min_length" in schema and len(value) < schema["min_length"]:
                 result.add_error(
                     field_name,
                     f"Too short (min {schema['min_length']} chars)",
-                    f"Current length: {len(value)}"
+                    f"Current length: {len(value)}",
                 )
             if "max_length" in schema and len(value) > schema["max_length"]:
                 result.add_warning(
                     field_name,
                     f"Too long (max {schema['max_length']} chars recommended)",
-                    f"Current length: {len(value)}"
+                    f"Current length: {len(value)}",
                 )
 
-    def _validate_enum_constraint(self, field_name: str, value: Any, schema: Dict[str, Any],
-                                result: ValidationResult):
+    def _validate_enum_constraint(
+        self,
+        field_name: str,
+        value: Any,
+        schema: Dict[str, Any],
+        result: ValidationResult,
+    ):
         """Validate enum constraints"""
         if "enum" in schema:
             if value not in schema["enum"]:
                 result.add_error(
                     field_name,
                     f"Invalid value: '{value}'",
-                    f"Allowed values: {', '.join(map(str, schema['enum']))}"
+                    f"Allowed values: {', '.join(map(str, schema['enum']))}",
                 )
 
-    def _validate_array_constraint(self, field_name: str, value: Any, schema: Dict[str, Any],
-                                 result: ValidationResult):
+    def _validate_array_constraint(
+        self,
+        field_name: str,
+        value: Any,
+        schema: Dict[str, Any],
+        result: ValidationResult,
+    ):
         """Validate array constraints"""
         if isinstance(value, list):
             if "min_items" in schema and len(value) < schema["min_items"]:
                 result.add_warning(
                     field_name,
                     f"Should have at least {schema['min_items']} items",
-                    f"Current count: {len(value)}"
+                    f"Current count: {len(value)}",
                 )
 
-    def _validate_numeric_constraint(self, field_name: str, value: Any, schema: Dict[str, Any],
-                                   result: ValidationResult):
+    def _validate_numeric_constraint(
+        self,
+        field_name: str,
+        value: Any,
+        schema: Dict[str, Any],
+        result: ValidationResult,
+    ):
         """Validate numeric min/max constraints"""
         if isinstance(value, int):
             if "min" in schema and value < schema["min"]:
                 result.add_error(
                     field_name,
                     f"Value too small (min: {schema['min']})",
-                    f"Current value: {value}"
+                    f"Current value: {value}",
                 )
             if "max" in schema and value > schema["max"]:
                 result.add_error(
                     field_name,
                     f"Value too large (max: {schema['max']})",
-                    f"Current value: {value}"
+                    f"Current value: {value}",
                 )
 
     def _check_type(self, value: Any, expected_type: str) -> bool:
@@ -440,7 +469,7 @@ class MetadataValidator:
             "number": (int, float),
             "boolean": bool,
             "array": list,
-            "object": dict
+            "object": dict,
         }
 
         expected = type_mapping.get(expected_type)
@@ -461,12 +490,14 @@ class MetadataValidator:
                 if not agent.endswith(".md"):
                     result.add_warning(
                         f"agents[{idx}]",
-                        f"Agent file path should end with .md: {agent}"
+                        f"Agent file path should end with .md: {agent}",
                     )
                 continue
 
             if not isinstance(agent, dict):
-                result.add_error(f"agents[{idx}]", "Agent must be a string path or object")
+                result.add_error(
+                    f"agents[{idx}]", "Agent must be a string path or object"
+                )
                 continue
 
             # Validate required fields for inline object format
@@ -474,17 +505,19 @@ class MetadataValidator:
                 if field_name not in agent:
                     result.add_error(
                         f"agents[{idx}].{field_name}",
-                        f"Missing required field in agent {idx}"
+                        f"Missing required field in agent {idx}",
                     )
                 else:
                     self._validate_field(
                         f"agents[{idx}].{field_name}",
                         agent[field_name],
                         field_schema,
-                        result
+                        result,
                     )
 
-    def _validate_commands(self, commands: List[Dict[str, Any]], result: ValidationResult):
+    def _validate_commands(
+        self, commands: List[Dict[str, Any]], result: ValidationResult
+    ):
         """Validate commands array (supports both file paths and inline objects)"""
         for idx, command in enumerate(commands):
             if isinstance(command, str):
@@ -492,12 +525,14 @@ class MetadataValidator:
                 if not command.endswith(".md"):
                     result.add_warning(
                         f"commands[{idx}]",
-                        f"Command file path should end with .md: {command}"
+                        f"Command file path should end with .md: {command}",
                     )
                 continue
 
             if not isinstance(command, dict):
-                result.add_error(f"commands[{idx}]", "Command must be a string path or object")
+                result.add_error(
+                    f"commands[{idx}]", "Command must be a string path or object"
+                )
                 continue
 
             # Validate required fields for inline object format
@@ -505,14 +540,14 @@ class MetadataValidator:
                 if field_name not in command:
                     result.add_error(
                         f"commands[{idx}].{field_name}",
-                        f"Missing required field in command {idx}"
+                        f"Missing required field in command {idx}",
                     )
                 else:
                     self._validate_field(
                         f"commands[{idx}].{field_name}",
                         command[field_name],
                         field_schema,
-                        result
+                        result,
                     )
 
             # Validate optional fields if present
@@ -522,7 +557,7 @@ class MetadataValidator:
                         f"commands[{idx}].{field_name}",
                         command[field_name],
                         field_schema,
-                        result
+                        result,
                     )
 
     def _validate_skills(self, skills: List[Dict[str, Any]], result: ValidationResult):
@@ -534,7 +569,9 @@ class MetadataValidator:
                 continue
 
             if not isinstance(skill, dict):
-                result.add_error(f"skills[{idx}]", "Skill must be a string path or object")
+                result.add_error(
+                    f"skills[{idx}]", "Skill must be a string path or object"
+                )
                 continue
 
             # Validate required fields for inline object format
@@ -542,14 +579,14 @@ class MetadataValidator:
                 if field_name not in skill:
                     result.add_error(
                         f"skills[{idx}].{field_name}",
-                        f"Missing required field in skill {idx}"
+                        f"Missing required field in skill {idx}",
                     )
                 else:
                     self._validate_field(
                         f"skills[{idx}].{field_name}",
                         skill[field_name],
                         field_schema,
-                        result
+                        result,
                     )
 
     def generate_report(self, result: ValidationResult) -> str:

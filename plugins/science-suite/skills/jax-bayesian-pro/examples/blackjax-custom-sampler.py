@@ -10,16 +10,18 @@ import jax.numpy as jnp
 import blackjax
 from typing import Any, Callable, Dict, NamedTuple, Tuple
 
-
 # =============================================================================
 # Pattern 1: Basic Custom NUTS Loop
 # =============================================================================
 
-def custom_nuts_sampler(log_prob_fn: Callable,
-                        initial_position: jnp.ndarray,
-                        num_warmup: int = 500,
-                        num_samples: int = 1000,
-                        rng_key: jnp.ndarray = None) -> Dict[str, Any]:
+
+def custom_nuts_sampler(
+    log_prob_fn: Callable,
+    initial_position: jnp.ndarray,
+    num_warmup: int = 500,
+    num_samples: int = 1000,
+    rng_key: jnp.ndarray = None,
+) -> Dict[str, Any]:
     """Full custom NUTS implementation with diagnostics."""
 
     if rng_key is None:
@@ -37,14 +39,14 @@ def custom_nuts_sampler(log_prob_fn: Callable,
     )
 
     (state, kernel_params), warmup_info = warmup.run(
-        warmup_key,
-        initial_position,
-        num_steps=num_warmup
+        warmup_key, initial_position, num_steps=num_warmup
     )
 
     print("Warmup complete:")
     print(f"  Step size: {kernel_params['step_size']:.4f}")
-    print(f"  Mass matrix diag (first 5): {jnp.diag(kernel_params['inverse_mass_matrix'])[:5]}")
+    print(
+        f"  Mass matrix diag (first 5): {jnp.diag(kernel_params['inverse_mass_matrix'])[:5]}"
+    )
 
     # === SAMPLING ===
     nuts_kernel = blackjax.nuts(log_prob_fn, **kernel_params).step
@@ -53,20 +55,20 @@ def custom_nuts_sampler(log_prob_fn: Callable,
     def step_fn(state, key):
         new_state, info = nuts_kernel(key, state)
         return new_state, {
-            'position': new_state.position,
-            'log_prob': new_state.logdensity,
-            'is_divergent': info.is_divergent,
-            'acceptance_rate': info.acceptance_rate,
-            'num_integration_steps': info.num_integration_steps,
+            "position": new_state.position,
+            "log_prob": new_state.logdensity,
+            "is_divergent": info.is_divergent,
+            "acceptance_rate": info.acceptance_rate,
+            "num_integration_steps": info.num_integration_steps,
         }
 
     sample_keys = jax.random.split(sample_key, num_samples)
     final_state, samples = jax.lax.scan(step_fn, state, sample_keys)
 
     # Compute diagnostics
-    n_divergent = jnp.sum(samples['is_divergent'])
-    mean_accept = jnp.mean(samples['acceptance_rate'])
-    mean_steps = jnp.mean(samples['num_integration_steps'])
+    n_divergent = jnp.sum(samples["is_divergent"])
+    mean_accept = jnp.mean(samples["acceptance_rate"])
+    mean_steps = jnp.mean(samples["num_integration_steps"])
 
     print(f"\nSampling complete ({num_samples} samples):")
     print(f"  Divergences: {n_divergent}")
@@ -74,10 +76,10 @@ def custom_nuts_sampler(log_prob_fn: Callable,
     print(f"  Mean integration steps: {mean_steps:.1f}")
 
     return {
-        'samples': samples['position'],
-        'log_probs': samples['log_prob'],
-        'diagnostics': samples,
-        'kernel_params': kernel_params,
+        "samples": samples["position"],
+        "log_probs": samples["log_prob"],
+        "diagnostics": samples,
+        "kernel_params": kernel_params,
     }
 
 
@@ -85,16 +87,18 @@ def custom_nuts_sampler(log_prob_fn: Callable,
 # Pattern 2: Mixed Gibbs + HMC Sampler
 # =============================================================================
 
+
 class MixedSamplerState(NamedTuple):
     """State for mixed Gibbs/HMC sampler."""
+
     continuous_position: jnp.ndarray
     discrete_position: jnp.ndarray
     hmc_state: Any  # Blackjax HMC state
 
 
-def create_mixed_sampler(continuous_log_prob: Callable,
-                         discrete_update: Callable,
-                         hmc_params: Dict) -> Callable:
+def create_mixed_sampler(
+    continuous_log_prob: Callable, discrete_update: Callable, hmc_params: Dict
+) -> Callable:
     """Create sampler that mixes HMC (continuous) with Gibbs (discrete).
 
     Args:
@@ -105,20 +109,27 @@ def create_mixed_sampler(continuous_log_prob: Callable,
 
     hmc_kernel = blackjax.hmc(continuous_log_prob, **hmc_params).step
 
-    def mixed_step(state: MixedSamplerState, key: jnp.ndarray) -> Tuple[MixedSamplerState, Any]:
+    def mixed_step(
+        state: MixedSamplerState, key: jnp.ndarray
+    ) -> Tuple[MixedSamplerState, Any]:
         key1, key2 = jax.random.split(key)
 
         # Step 1: HMC update for continuous parameters
         new_hmc_state, hmc_info = hmc_kernel(key1, state.hmc_state)
 
         # Step 2: Gibbs update for discrete parameters
-        new_discrete = discrete_update(key2, state.discrete_position, new_hmc_state.position)
+        new_discrete = discrete_update(
+            key2, state.discrete_position, new_hmc_state.position
+        )
 
-        return MixedSamplerState(
-            continuous_position=new_hmc_state.position,
-            discrete_position=new_discrete,
-            hmc_state=new_hmc_state,
-        ), hmc_info
+        return (
+            MixedSamplerState(
+                continuous_position=new_hmc_state.position,
+                discrete_position=new_discrete,
+                hmc_state=new_hmc_state,
+            ),
+            hmc_info,
+        )
 
     return mixed_step
 
@@ -127,11 +138,14 @@ def create_mixed_sampler(continuous_log_prob: Callable,
 # Pattern 3: Parallel Chains with Different Initializations
 # =============================================================================
 
-def run_parallel_chains(log_prob_fn: Callable,
-                        initial_positions: jnp.ndarray,
-                        num_warmup: int = 500,
-                        num_samples: int = 1000,
-                        rng_key: jnp.ndarray = None) -> Dict:
+
+def run_parallel_chains(
+    log_prob_fn: Callable,
+    initial_positions: jnp.ndarray,
+    num_warmup: int = 500,
+    num_samples: int = 1000,
+    rng_key: jnp.ndarray = None,
+) -> Dict:
     """Run multiple chains in parallel using vmap.
 
     Args:
@@ -160,15 +174,17 @@ def run_parallel_chains(log_prob_fn: Callable,
         return samples, divergent
 
     # Vectorize over chains
-    all_samples, all_divergent = jax.vmap(run_single_chain)(initial_positions, chain_keys)
+    all_samples, all_divergent = jax.vmap(run_single_chain)(
+        initial_positions, chain_keys
+    )
 
     # Shape: (n_chains, num_samples, param_dim)
     print(f"Ran {n_chains} chains, {num_samples} samples each")
     print(f"Total divergences: {jnp.sum(all_divergent)}")
 
     return {
-        'samples': all_samples,
-        'divergent': all_divergent,
+        "samples": all_samples,
+        "divergent": all_divergent,
     }
 
 
@@ -176,19 +192,23 @@ def run_parallel_chains(log_prob_fn: Callable,
 # Pattern 4: Parallel Chains with pmap (Multi-Device)
 # =============================================================================
 
-def run_pmap_chains(log_prob_fn: Callable,
-                    initial_positions: jnp.ndarray,
-                    num_warmup: int = 500,
-                    num_samples: int = 1000,
-                    rng_key: jnp.ndarray = None) -> jnp.ndarray:
+
+def run_pmap_chains(
+    log_prob_fn: Callable,
+    initial_positions: jnp.ndarray,
+    num_warmup: int = 500,
+    num_samples: int = 1000,
+    rng_key: jnp.ndarray = None,
+) -> jnp.ndarray:
     """Run chains across multiple devices using pmap.
 
     Args:
         initial_positions: Shape (n_devices, param_dim)
     """
     n_devices = jax.device_count()
-    assert initial_positions.shape[0] == n_devices, \
-        f"Need {n_devices} initial positions for {n_devices} devices"
+    assert (
+        initial_positions.shape[0] == n_devices
+    ), f"Need {n_devices} initial positions for {n_devices} devices"
 
     if rng_key is None:
         rng_key = jax.random.PRNGKey(0)
@@ -223,11 +243,14 @@ def run_pmap_chains(log_prob_fn: Callable,
 # Pattern 5: Adaptive Step Size During Sampling
 # =============================================================================
 
-def dual_averaging_step_size(log_prob_fn: Callable,
-                              initial_position: jnp.ndarray,
-                              target_accept: float = 0.8,
-                              num_adapt: int = 100,
-                              rng_key: jnp.ndarray = None) -> float:
+
+def dual_averaging_step_size(
+    log_prob_fn: Callable,
+    initial_position: jnp.ndarray,
+    target_accept: float = 0.8,
+    num_adapt: int = 100,
+    rng_key: jnp.ndarray = None,
+) -> float:
     """Find optimal step size using dual averaging."""
 
     if rng_key is None:
@@ -279,18 +302,23 @@ def dual_averaging_step_size(log_prob_fn: Callable,
 # Pattern 6: Custom Kernel with Tempering
 # =============================================================================
 
+
 def tempered_log_prob(log_prob_fn: Callable, temperature: float) -> Callable:
     """Create tempered version of log-prob: log_prob / T."""
+
     def tempered(position):
         return log_prob_fn(position) / temperature
+
     return tempered
 
 
-def parallel_tempering_step(log_prob_fn: Callable,
-                             states: list,
-                             temperatures: jnp.ndarray,
-                             kernels: list,
-                             key: jnp.ndarray) -> list:
+def parallel_tempering_step(
+    log_prob_fn: Callable,
+    states: list,
+    temperatures: jnp.ndarray,
+    kernels: list,
+    key: jnp.ndarray,
+) -> list:
     """Single step of parallel tempering.
 
     Run each chain at its temperature, then propose swaps.
@@ -327,6 +355,7 @@ def parallel_tempering_step(log_prob_fn: Callable,
 # Demo
 # =============================================================================
 
+
 def demo():
     """Demonstrate custom MCMC patterns."""
     print("=" * 60)
@@ -347,7 +376,7 @@ def demo():
     initial = jnp.array([5.0, -5.0])
     result = custom_nuts_sampler(log_prob, initial, num_warmup=200, num_samples=500)
 
-    samples = result['samples']
+    samples = result["samples"]
     print(f"\nPosterior mean: {jnp.mean(samples, axis=0)}")
     print(f"Posterior std: {jnp.std(samples, axis=0)}")
 
@@ -356,11 +385,12 @@ def demo():
     print("-" * 40)
     n_chains = 4
     initial_positions = jax.random.normal(jax.random.PRNGKey(0), (n_chains, 2)) * 3
-    parallel_result = run_parallel_chains(log_prob, initial_positions,
-                                          num_warmup=200, num_samples=500)
+    parallel_result = run_parallel_chains(
+        log_prob, initial_positions, num_warmup=200, num_samples=500
+    )
 
     # Pool all chains
-    pooled = parallel_result['samples'].reshape(-1, 2)
+    pooled = parallel_result["samples"].reshape(-1, 2)
     print(f"Pooled posterior mean: {jnp.mean(pooled, axis=0)}")
 
 

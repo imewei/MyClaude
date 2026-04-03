@@ -213,7 +213,9 @@ if np.sum(mask_exp) > 5:
     ln_OD = np.log(OD_measured[mask_exp])
     t_exp = time[mask_exp]
 
-    popt_exp, pcov_exp = fit(linear_log, t_exp, ln_OD, p0=[np.log(0.1), 0.8], workflow="auto")
+    popt_exp, pcov_exp = fit(
+        linear_log, t_exp, ln_OD, p0=[np.log(0.1), 0.8], workflow="auto"
+    )
 
     ln_N0_exp, mu_exp = popt_exp
     N0_exp = np.exp(ln_N0_exp)

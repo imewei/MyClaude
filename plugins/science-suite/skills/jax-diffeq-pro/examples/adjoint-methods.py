@@ -11,10 +11,10 @@ import diffrax
 import equinox as eqx
 import optax
 
-
 # =============================================================================
 # Pattern 1: RecursiveCheckpointAdjoint (Memory-Efficient)
 # =============================================================================
+
 
 def checkpoint_adjoint_example():
     """Use checkpointing to trade compute for memory.
@@ -25,7 +25,12 @@ def checkpoint_adjoint_example():
     def vector_field(t, y, args):
         """Lotka-Volterra dynamics."""
         x, pred = y
-        alpha, beta, delta, gamma = args['alpha'], args['beta'], args['delta'], args['gamma']
+        alpha, beta, delta, gamma = (
+            args["alpha"],
+            args["beta"],
+            args["delta"],
+            args["gamma"],
+        )
 
         dx = alpha * x - beta * x * pred
         dpred = delta * x * pred - gamma * pred
@@ -42,8 +47,11 @@ def checkpoint_adjoint_example():
         adjoint = diffrax.RecursiveCheckpointAdjoint(checkpoints=None)
 
         solution = diffrax.diffeqsolve(
-            term, solver,
-            t0=ts[0], t1=ts[-1], dt0=0.01,
+            term,
+            solver,
+            t0=ts[0],
+            t1=ts[-1],
+            dt0=0.01,
             y0=y0,
             args=params,
             saveat=diffrax.SaveAt(ts=ts),
@@ -57,7 +65,7 @@ def checkpoint_adjoint_example():
         predicted = simulate(params, y0, ts)
         return jnp.mean((predicted - target) ** 2)
 
-    params = {'alpha': 1.0, 'beta': 0.4, 'delta': 0.1, 'gamma': 0.4}
+    params = {"alpha": 1.0, "beta": 0.4, "delta": 0.1, "gamma": 0.4}
     y0 = jnp.array([10.0, 5.0])
     ts = jnp.linspace(0, 20, 100)
 
@@ -78,11 +86,12 @@ def checkpoint_adjoint_example():
 # Pattern 2: Controlling Checkpoint Count
 # =============================================================================
 
+
 def checkpoint_memory_tradeoff():
     """Demonstrate memory/compute tradeoff with checkpoint count."""
 
     def vector_field(t, y, args):
-        return -args['k'] * y
+        return -args["k"] * y
 
     def simulate(y0, k, num_checkpoints=None):
         term = diffrax.ODETerm(vector_field)
@@ -92,10 +101,13 @@ def checkpoint_memory_tradeoff():
         adjoint = diffrax.RecursiveCheckpointAdjoint(checkpoints=num_checkpoints)
 
         solution = diffrax.diffeqsolve(
-            term, solver,
-            t0=0.0, t1=100.0, dt0=0.1,  # Long simulation
+            term,
+            solver,
+            t0=0.0,
+            t1=100.0,
+            dt0=0.1,  # Long simulation
             y0=y0,
-            args={'k': k},
+            args={"k": k},
             adjoint=adjoint,
         )
 
@@ -116,6 +128,7 @@ def checkpoint_memory_tradeoff():
 # Pattern 3: BacksolveAdjoint (Continuous Adjoint)
 # =============================================================================
 
+
 def backsolve_adjoint_example():
     """Use continuous adjoint ODE for gradients.
 
@@ -125,7 +138,7 @@ def backsolve_adjoint_example():
     def vector_field(t, y, args):
         """Simple damped oscillator (stable, non-chaotic)."""
         x, v = y
-        k, gamma = args['k'], args['gamma']
+        k, gamma = args["k"], args["gamma"]
         return jnp.array([v, -k * x - gamma * v])
 
     def simulate(params, y0, t1):
@@ -139,8 +152,11 @@ def backsolve_adjoint_example():
         )
 
         solution = diffrax.diffeqsolve(
-            term, solver,
-            t0=0.0, t1=t1, dt0=0.01,
+            term,
+            solver,
+            t0=0.0,
+            t1=t1,
+            dt0=0.01,
             y0=y0,
             args=params,
             adjoint=adjoint,
@@ -150,9 +166,9 @@ def backsolve_adjoint_example():
 
     def loss(params, y0):
         final_state = simulate(params, y0, 10.0)
-        return jnp.sum(final_state ** 2)
+        return jnp.sum(final_state**2)
 
-    params = {'k': 1.0, 'gamma': 0.1}
+    params = {"k": 1.0, "gamma": 0.1}
     y0 = jnp.array([1.0, 0.0])
 
     grad_params = jax.grad(loss)(params, y0)
@@ -168,6 +184,7 @@ def backsolve_adjoint_example():
 # Pattern 4: DirectAdjoint (Exact Gradients)
 # =============================================================================
 
+
 def direct_adjoint_example():
     """Use direct adjoint for short simulations requiring exact gradients.
 
@@ -175,7 +192,7 @@ def direct_adjoint_example():
     """
 
     def vector_field(t, y, args):
-        return -args['k'] * y
+        return -args["k"] * y
 
     def simulate(k, y0):
         term = diffrax.ODETerm(vector_field)
@@ -186,10 +203,13 @@ def direct_adjoint_example():
         adjoint = diffrax.DirectAdjoint()
 
         solution = diffrax.diffeqsolve(
-            term, solver,
-            t0=0.0, t1=1.0, dt0=0.01,  # Short simulation only!
+            term,
+            solver,
+            t0=0.0,
+            t1=1.0,
+            dt0=0.01,  # Short simulation only!
             y0=y0,
-            args={'k': k},
+            args={"k": k},
             adjoint=adjoint,
         )
 
@@ -208,8 +228,10 @@ def direct_adjoint_example():
 # Pattern 5: Neural ODE Training Loop
 # =============================================================================
 
+
 class NeuralODE(eqx.Module):
     """Neural network defining ODE dynamics."""
+
     layers: list
 
     def __init__(self, hidden_dim: int, state_dim: int, key):
@@ -247,7 +269,9 @@ def train_neural_ode():
     true_sol = diffrax.diffeqsolve(
         diffrax.ODETerm(true_dynamics),
         diffrax.Tsit5(),
-        t0=0.0, t1=5.0, dt0=0.01,
+        t0=0.0,
+        t1=5.0,
+        dt0=0.01,
         y0=y0,
         saveat=diffrax.SaveAt(ts=ts),
     )
@@ -261,8 +285,11 @@ def train_neural_ode():
         adjoint = diffrax.RecursiveCheckpointAdjoint()
 
         solution = diffrax.diffeqsolve(
-            term, solver,
-            t0=ts[0], t1=ts[-1], dt0=0.01,
+            term,
+            solver,
+            t0=ts[0],
+            t1=ts[-1],
+            dt0=0.01,
             y0=y0,
             saveat=diffrax.SaveAt(ts=ts),
             adjoint=adjoint,
@@ -299,12 +326,13 @@ def train_neural_ode():
 # Pattern 6: Implicit Adjoint for Stiff Systems
 # =============================================================================
 
+
 def implicit_adjoint_example():
     """Use implicit adjoint for stiff ODE systems."""
 
     def stiff_vector_field(t, y, args):
         """Stiff chemical kinetics."""
-        k1, k2, k3 = args['k1'], args['k2'], args['k3']
+        k1, k2, k3 = args["k1"], args["k2"], args["k3"]
         y1, y2, y3 = y
 
         dy1 = -k1 * y1 + k3 * y2 * y3
@@ -326,8 +354,11 @@ def implicit_adjoint_example():
         )
 
         solution = diffrax.diffeqsolve(
-            term, solver,
-            t0=0.0, t1=100.0, dt0=0.001,
+            term,
+            solver,
+            t0=0.0,
+            t1=100.0,
+            dt0=0.001,
             y0=y0,
             args=params,
             adjoint=adjoint,
@@ -338,9 +369,9 @@ def implicit_adjoint_example():
 
     def loss(params, y0):
         final = simulate(params, y0)
-        return jnp.sum(final ** 2)
+        return jnp.sum(final**2)
 
-    params = {'k1': 0.04, 'k2': 3e7, 'k3': 1e4}
+    params = {"k1": 0.04, "k2": 3e7, "k3": 1e4}
     y0 = jnp.array([1.0, 0.0, 0.0])
 
     grad_params = jax.grad(loss)(params, y0)
@@ -356,10 +387,11 @@ def implicit_adjoint_example():
 # Pattern 7: Adjoint Method Selection Guide
 # =============================================================================
 
+
 def get_adjoint_method(
     simulation_length: str = "medium",
     system_type: str = "non-stiff",
-    accuracy_requirement: str = "standard"
+    accuracy_requirement: str = "standard",
 ):
     """Select appropriate adjoint method based on problem characteristics.
 
@@ -392,6 +424,7 @@ def get_adjoint_method(
 # =============================================================================
 # Demo
 # =============================================================================
+
 
 def demo():
     """Demonstrate adjoint methods for ODE gradients."""

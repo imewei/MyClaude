@@ -28,6 +28,7 @@ from typing import Any
 @dataclass
 class LoadMetric:
     """Timing metric for a specific loading operation."""
+
     name: str
     duration_ms: float
     status: str  # 'pass', 'warn', 'fail'
@@ -37,6 +38,7 @@ class LoadMetric:
 @dataclass
 class PluginLoadProfile:
     """Complete load performance profile for a plugin."""
+
     plugin_name: str
     plugin_path: Path
     total_load_time_ms: float
@@ -48,23 +50,20 @@ class PluginLoadProfile:
     def status(self) -> str:
         """Overall status based on total load time."""
         if self.errors:
-            return 'error'
+            return "error"
         elif self.total_load_time_ms > 100:
-            return 'fail'
+            return "fail"
         elif self.total_load_time_ms > 75:
-            return 'warn'
+            return "warn"
         else:
-            return 'pass'
+            return "pass"
 
     @property
     def status_emoji(self) -> str:
         """Visual status indicator."""
-        return {
-            'pass': '✅',
-            'warn': '⚠️',
-            'fail': '❌',
-            'error': '🔴'
-        }.get(self.status, '❓')
+        return {"pass": "✅", "warn": "⚠️", "fail": "❌", "error": "🔴"}.get(
+            self.status, "❓"
+        )
 
 
 class Timer:
@@ -75,7 +74,7 @@ class Timer:
         self.end_time: float = 0
         self.duration_ms: float = 0
 
-    def __enter__(self) -> 'Timer':
+    def __enter__(self) -> "Timer":
         self.start_time = time.perf_counter()
         return self
 
@@ -97,9 +96,7 @@ class PluginLoadProfiler:
         """Profile a single plugin's load performance."""
         plugin_path = self.plugins_root / plugin_name
         profile = PluginLoadProfile(
-            plugin_name=plugin_name,
-            plugin_path=plugin_path,
-            total_load_time_ms=0
+            plugin_name=plugin_name, plugin_path=plugin_path, total_load_time_ms=0
         )
 
         # Check if plugin exists
@@ -142,43 +139,53 @@ class PluginLoadProfiler:
         timer = Timer()
         try:
             with timer:
-                with open(json_path, 'r', encoding='utf-8') as f:
+                with open(json_path, "r", encoding="utf-8") as f:
                     data = json.load(f)
 
                 # Simulate metadata extraction overhead
-                _ = data.get('name')
-                _ = data.get('version')
-                _ = data.get('description')
-                _ = data.get('agents', [])
-                _ = data.get('commands', [])
-                _ = data.get('skills', [])
-                _ = data.get('keywords', [])
+                _ = data.get("name")
+                _ = data.get("version")
+                _ = data.get("description")
+                _ = data.get("agents", [])
+                _ = data.get("commands", [])
+                _ = data.get("skills", [])
+                _ = data.get("keywords", [])
         except FileNotFoundError:
             profile.errors.append(f"plugin.json not found at {json_path}")
-            profile.metrics.append(LoadMetric(
-                name="plugin.json parsing",
-                duration_ms=0,
-                status='error',
-                details="File not found"
-            ))
+            profile.metrics.append(
+                LoadMetric(
+                    name="plugin.json parsing",
+                    duration_ms=0,
+                    status="error",
+                    details="File not found",
+                )
+            )
             return
         except json.JSONDecodeError as e:
             profile.errors.append(f"Invalid JSON in plugin.json: {e}")
-            profile.metrics.append(LoadMetric(
-                name="plugin.json parsing",
-                duration_ms=timer.duration_ms,
-                status='error',
-                details=f"JSON decode error: {e}"
-            ))
+            profile.metrics.append(
+                LoadMetric(
+                    name="plugin.json parsing",
+                    duration_ms=timer.duration_ms,
+                    status="error",
+                    details=f"JSON decode error: {e}",
+                )
+            )
             return
 
-        status = 'pass' if timer.duration_ms < 10 else ('warn' if timer.duration_ms < 25 else 'fail')
-        profile.metrics.append(LoadMetric(
-            name="plugin.json parsing",
-            duration_ms=timer.duration_ms,
-            status=status,
-            details=f"Parsed {len(str(data))} characters"
-        ))
+        status = (
+            "pass"
+            if timer.duration_ms < 10
+            else ("warn" if timer.duration_ms < 25 else "fail")
+        )
+        profile.metrics.append(
+            LoadMetric(
+                name="plugin.json parsing",
+                duration_ms=timer.duration_ms,
+                status=status,
+                details=f"Parsed {len(str(data))} characters",
+            )
+        )
 
     def _measure_agents_load(self, profile: PluginLoadProfile) -> None:
         """Measure agents directory scanning time."""
@@ -192,14 +199,20 @@ class PluginLoadProfiler:
                 for agent_file in agent_files:
                     _ = agent_file.stat()
 
-        status = 'pass' if timer.duration_ms < 5 else ('warn' if timer.duration_ms < 15 else 'fail')
+        status = (
+            "pass"
+            if timer.duration_ms < 5
+            else ("warn" if timer.duration_ms < 15 else "fail")
+        )
         file_count = len(list(agents_dir.glob("*.md"))) if agents_dir.exists() else 0
-        profile.metrics.append(LoadMetric(
-            name="agents directory scan",
-            duration_ms=timer.duration_ms,
-            status=status,
-            details=f"Scanned {file_count} agent files"
-        ))
+        profile.metrics.append(
+            LoadMetric(
+                name="agents directory scan",
+                duration_ms=timer.duration_ms,
+                status=status,
+                details=f"Scanned {file_count} agent files",
+            )
+        )
 
     def _measure_commands_load(self, profile: PluginLoadProfile) -> None:
         """Measure commands directory scanning time."""
@@ -213,14 +226,22 @@ class PluginLoadProfiler:
                 for command_file in command_files:
                     _ = command_file.stat()
 
-        status = 'pass' if timer.duration_ms < 5 else ('warn' if timer.duration_ms < 15 else 'fail')
-        file_count = len(list(commands_dir.glob("*.md"))) if commands_dir.exists() else 0
-        profile.metrics.append(LoadMetric(
-            name="commands directory scan",
-            duration_ms=timer.duration_ms,
-            status=status,
-            details=f"Scanned {file_count} command files"
-        ))
+        status = (
+            "pass"
+            if timer.duration_ms < 5
+            else ("warn" if timer.duration_ms < 15 else "fail")
+        )
+        file_count = (
+            len(list(commands_dir.glob("*.md"))) if commands_dir.exists() else 0
+        )
+        profile.metrics.append(
+            LoadMetric(
+                name="commands directory scan",
+                duration_ms=timer.duration_ms,
+                status=status,
+                details=f"Scanned {file_count} command files",
+            )
+        )
 
     def _measure_skills_load(self, profile: PluginLoadProfile) -> None:
         """Measure skills directory scanning time."""
@@ -234,14 +255,20 @@ class PluginLoadProfiler:
                 for skill_file in skill_files:
                     _ = skill_file.stat()
 
-        status = 'pass' if timer.duration_ms < 5 else ('warn' if timer.duration_ms < 15 else 'fail')
+        status = (
+            "pass"
+            if timer.duration_ms < 5
+            else ("warn" if timer.duration_ms < 15 else "fail")
+        )
         file_count = len(list(skills_dir.glob("*.md"))) if skills_dir.exists() else 0
-        profile.metrics.append(LoadMetric(
-            name="skills directory scan",
-            duration_ms=timer.duration_ms,
-            status=status,
-            details=f"Scanned {file_count} skill files"
-        ))
+        profile.metrics.append(
+            LoadMetric(
+                name="skills directory scan",
+                duration_ms=timer.duration_ms,
+                status=status,
+                details=f"Scanned {file_count} skill files",
+            )
+        )
 
     def _measure_readme_load(self, profile: PluginLoadProfile) -> None:
         """Measure README.md loading time."""
@@ -251,19 +278,25 @@ class PluginLoadProfiler:
         try:
             with timer:
                 if readme_path.exists():
-                    with open(readme_path, 'r', encoding='utf-8') as f:
+                    with open(readme_path, "r", encoding="utf-8") as f:
                         content = f.read()
                     _ = len(content)
         except Exception as e:
             profile.warnings.append(f"Error reading README.md: {e}")
 
-        status = 'pass' if timer.duration_ms < 5 else ('warn' if timer.duration_ms < 15 else 'fail')
-        profile.metrics.append(LoadMetric(
-            name="README.md loading",
-            duration_ms=timer.duration_ms,
-            status=status,
-            details=f"Loaded {readme_path.stat().st_size if readme_path.exists() else 0} bytes"
-        ))
+        status = (
+            "pass"
+            if timer.duration_ms < 5
+            else ("warn" if timer.duration_ms < 15 else "fail")
+        )
+        profile.metrics.append(
+            LoadMetric(
+                name="README.md loading",
+                duration_ms=timer.duration_ms,
+                status=status,
+                details=f"Loaded {readme_path.stat().st_size if readme_path.exists() else 0} bytes",
+            )
+        )
 
     def profile_all_plugins(self) -> list[PluginLoadProfile]:
         """Profile all plugins in the marketplace."""
@@ -273,7 +306,10 @@ class PluginLoadProfiler:
             return profiles
 
         for plugin_dir in sorted(self.plugins_root.iterdir()):
-            if plugin_dir.is_dir() and (plugin_dir / ".claude-plugin" / "plugin.json").exists():
+            if (
+                plugin_dir.is_dir()
+                and (plugin_dir / ".claude-plugin" / "plugin.json").exists()
+            ):
                 profile = self.profile_plugin(plugin_dir.name)
                 profiles.append(profile)
 
@@ -297,7 +333,9 @@ class LoadProfileReporter:
         lines.append("## Summary")
         lines.append("")
         lines.append(f"- **Total Load Time:** {profile.total_load_time_ms:.2f}ms")
-        lines.append(f"- **Target Load Time:** {PluginLoadProfiler.TARGET_LOAD_TIME_MS}ms")
+        lines.append(
+            f"- **Target Load Time:** {PluginLoadProfiler.TARGET_LOAD_TIME_MS}ms"
+        )
         lines.append(f"- **Status:** {profile.status_emoji} {profile.status.upper()}")
         lines.append(f"- **Metrics Collected:** {len(profile.metrics)}")
         lines.append(f"- **Errors:** {len(profile.errors)}")
@@ -313,11 +351,11 @@ class LoadProfileReporter:
 
             for metric in profile.metrics:
                 status_icon = {
-                    'pass': '✅',
-                    'warn': '⚠️',
-                    'fail': '❌',
-                    'error': '🔴'
-                }.get(metric.status, '❓')
+                    "pass": "✅",
+                    "warn": "⚠️",
+                    "fail": "❌",
+                    "error": "🔴",
+                }.get(metric.status, "❓")
 
                 lines.append(
                     f"| {metric.name} | {metric.duration_ms:.2f} | {status_icon} | {metric.details} |"
@@ -329,11 +367,15 @@ class LoadProfileReporter:
             lines.append("### Time Distribution")
             lines.append("")
             total = sum(m.duration_ms for m in profile.metrics)
-            for metric in sorted(profile.metrics, key=lambda m: m.duration_ms, reverse=True):
+            for metric in sorted(
+                profile.metrics, key=lambda m: m.duration_ms, reverse=True
+            ):
                 percentage = (metric.duration_ms / total * 100) if total > 0 else 0
                 bar_length = int(percentage / 2)  # Scale to 50 chars max
-                bar = '█' * bar_length
-                lines.append(f"- {metric.name}: {metric.duration_ms:.2f}ms ({percentage:.1f}%) {bar}")
+                bar = "█" * bar_length
+                lines.append(
+                    f"- {metric.name}: {metric.duration_ms:.2f}ms ({percentage:.1f}%) {bar}"
+                )
             lines.append("")
 
         # Errors
@@ -356,31 +398,47 @@ class LoadProfileReporter:
         lines.append("## Overall Assessment")
         lines.append("")
 
-        if profile.status == 'pass':
-            lines.append(f"**Status:** {profile.status_emoji} EXCELLENT - Load time well below target")
+        if profile.status == "pass":
+            lines.append(
+                f"**Status:** {profile.status_emoji} EXCELLENT - Load time well below target"
+            )
             lines.append("")
-            lines.append(f"Plugin loads in {profile.total_load_time_ms:.2f}ms, well under the {PluginLoadProfiler.TARGET_LOAD_TIME_MS}ms target.")
-        elif profile.status == 'warn':
-            lines.append(f"**Status:** {profile.status_emoji} WARNING - Load time approaching target")
+            lines.append(
+                f"Plugin loads in {profile.total_load_time_ms:.2f}ms, well under the {PluginLoadProfiler.TARGET_LOAD_TIME_MS}ms target."
+            )
+        elif profile.status == "warn":
+            lines.append(
+                f"**Status:** {profile.status_emoji} WARNING - Load time approaching target"
+            )
             lines.append("")
-            lines.append(f"Plugin loads in {profile.total_load_time_ms:.2f}ms, approaching the {PluginLoadProfiler.TARGET_LOAD_TIME_MS}ms target.")
+            lines.append(
+                f"Plugin loads in {profile.total_load_time_ms:.2f}ms, approaching the {PluginLoadProfiler.TARGET_LOAD_TIME_MS}ms target."
+            )
             lines.append("Consider optimizing slow components.")
-        elif profile.status == 'fail':
-            lines.append(f"**Status:** {profile.status_emoji} OPTIMIZATION NEEDED - Load time exceeds target")
+        elif profile.status == "fail":
+            lines.append(
+                f"**Status:** {profile.status_emoji} OPTIMIZATION NEEDED - Load time exceeds target"
+            )
             lines.append("")
-            lines.append(f"Plugin loads in {profile.total_load_time_ms:.2f}ms, exceeding the {PluginLoadProfiler.TARGET_LOAD_TIME_MS}ms target.")
+            lines.append(
+                f"Plugin loads in {profile.total_load_time_ms:.2f}ms, exceeding the {PluginLoadProfiler.TARGET_LOAD_TIME_MS}ms target."
+            )
             lines.append("")
             lines.append("**Recommended Actions:**")
             # Find slowest components
-            slow_metrics = [m for m in profile.metrics if m.status in ['warn', 'fail']]
+            slow_metrics = [m for m in profile.metrics if m.status in ["warn", "fail"]]
             for metric in slow_metrics:
-                lines.append(f"- Optimize {metric.name} (currently {metric.duration_ms:.2f}ms)")
+                lines.append(
+                    f"- Optimize {metric.name} (currently {metric.duration_ms:.2f}ms)"
+                )
         else:
-            lines.append(f"**Status:** {profile.status_emoji} ERROR - Unable to complete profiling")
+            lines.append(
+                f"**Status:** {profile.status_emoji} ERROR - Unable to complete profiling"
+            )
 
         lines.append("")
 
-        return '\n'.join(lines)
+        return "\n".join(lines)
 
     def generate_summary_report(self, profiles: list[PluginLoadProfile]) -> str:
         """Generate summary report for multiple plugins."""
@@ -394,24 +452,36 @@ class LoadProfileReporter:
 
         # Overall Statistics
         total_plugins = len(profiles)
-        pass_count = sum(1 for p in profiles if p.status == 'pass')
-        warn_count = sum(1 for p in profiles if p.status == 'warn')
-        fail_count = sum(1 for p in profiles if p.status == 'fail')
-        error_count = sum(1 for p in profiles if p.status == 'error')
+        pass_count = sum(1 for p in profiles if p.status == "pass")
+        warn_count = sum(1 for p in profiles if p.status == "warn")
+        fail_count = sum(1 for p in profiles if p.status == "fail")
+        error_count = sum(1 for p in profiles if p.status == "error")
 
-        avg_load_time = sum(p.total_load_time_ms for p in profiles) / total_plugins if total_plugins > 0 else 0
+        avg_load_time = (
+            sum(p.total_load_time_ms for p in profiles) / total_plugins
+            if total_plugins > 0
+            else 0
+        )
 
         lines.append("## Summary Statistics")
         lines.append("")
         lines.append(f"- **Average Load Time:** {avg_load_time:.2f}ms")
-        lines.append(f"- **Target Load Time:** {PluginLoadProfiler.TARGET_LOAD_TIME_MS}ms")
-        lines.append(f"- **Pass Rate:** {pass_count}/{total_plugins} ({pass_count/total_plugins*100:.1f}%)")
+        lines.append(
+            f"- **Target Load Time:** {PluginLoadProfiler.TARGET_LOAD_TIME_MS}ms"
+        )
+        lines.append(
+            f"- **Pass Rate:** {pass_count}/{total_plugins} ({pass_count/total_plugins*100:.1f}%)"
+        )
         lines.append("")
         lines.append("**Status Distribution:**")
         lines.append(f"- ✅ Pass: {pass_count} ({pass_count/total_plugins*100:.1f}%)")
-        lines.append(f"- ⚠️ Warning: {warn_count} ({warn_count/total_plugins*100:.1f}%)")
+        lines.append(
+            f"- ⚠️ Warning: {warn_count} ({warn_count/total_plugins*100:.1f}%)"
+        )
         lines.append(f"- ❌ Fail: {fail_count} ({fail_count/total_plugins*100:.1f}%)")
-        lines.append(f"- 🔴 Error: {error_count} ({error_count/total_plugins*100:.1f}%)")
+        lines.append(
+            f"- 🔴 Error: {error_count} ({error_count/total_plugins*100:.1f}%)"
+        )
         lines.append("")
 
         # Per-Plugin Results
@@ -420,7 +490,9 @@ class LoadProfileReporter:
         lines.append("| Plugin | Load Time (ms) | Status | Notes |")
         lines.append("|--------|----------------|--------|-------|")
 
-        for profile in sorted(profiles, key=lambda p: p.total_load_time_ms, reverse=True):
+        for profile in sorted(
+            profiles, key=lambda p: p.total_load_time_ms, reverse=True
+        ):
             notes = []
             if profile.errors:
                 notes.append(f"{len(profile.errors)} errors")
@@ -449,11 +521,13 @@ class LoadProfileReporter:
         lines.append("| Plugin | Component | Time (ms) |")
         lines.append("|--------|-----------|-----------|")
         for plugin_name, metric in slowest:
-            lines.append(f"| {plugin_name} | {metric.name} | {metric.duration_ms:.2f} |")
+            lines.append(
+                f"| {plugin_name} | {metric.name} | {metric.duration_ms:.2f} |"
+            )
 
         lines.append("")
 
-        return '\n'.join(lines)
+        return "\n".join(lines)
 
 
 def main() -> int:
@@ -495,9 +569,9 @@ def main() -> int:
             print(report)
 
         # Return exit code based on overall status
-        if any(p.status == 'error' for p in profiles):
+        if any(p.status == "error" for p in profiles):
             return 2
-        elif any(p.status == 'fail' for p in profiles):
+        elif any(p.status == "fail" for p in profiles):
             return 1
         else:
             return 0
@@ -510,9 +584,9 @@ def main() -> int:
         print(report)
 
         # Return exit code
-        if profile.status == 'error':
+        if profile.status == "error":
             return 2
-        elif profile.status == 'fail':
+        elif profile.status == "fail":
             return 1
         else:
             return 0

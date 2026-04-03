@@ -10,10 +10,10 @@ import jax.numpy as jnp
 from jax.sharding import Mesh, PartitionSpec as P, NamedSharding
 from jax.experimental import mesh_utils
 
-
 # =============================================================================
 # Pattern 1: Basic Device Placement
 # =============================================================================
+
 
 def show_available_devices():
     """Display available devices."""
@@ -38,8 +38,7 @@ def explicit_device_placement():
 
     # Shard across devices (first axis)
     x_sharded = jax.device_put_sharded(
-        [jnp.ones(1000) * i for i in range(len(devices))],
-        devices
+        [jnp.ones(1000) * i for i in range(len(devices))], devices
     )
     print(f"Sharded on: {x_sharded.devices()}")
 
@@ -47,6 +46,7 @@ def explicit_device_placement():
 # =============================================================================
 # Pattern 2: pmap - Simple Data Parallelism
 # =============================================================================
+
 
 @jax.pmap
 def pmap_train_step(params, batch):
@@ -56,9 +56,10 @@ def pmap_train_step(params, batch):
     - Full copy of params
     - Shard of batch (first axis split across devices)
     """
+
     def loss_fn(p, b):
-        pred = p['w'] @ b['x'] + p['b']
-        return jnp.mean((pred - b['y']) ** 2)
+        pred = p["w"] @ b["x"] + p["b"]
+        return jnp.mean((pred - b["y"]) ** 2)
 
     loss, grads = jax.value_and_grad(loss_fn)(params, batch)
     return loss, grads
@@ -71,8 +72,8 @@ def run_pmap_example():
 
     # Initialize params (replicated)
     params = {
-        'w': jnp.ones((10, 10)),
-        'b': jnp.zeros(10),
+        "w": jnp.ones((10, 10)),
+        "b": jnp.zeros(10),
     }
     replicated_params = jax.device_put_replicated(params, jax.devices())
 
@@ -80,8 +81,8 @@ def run_pmap_example():
     batch_per_device = 32
     batch_per_device * n_devices
     batch = {
-        'x': jnp.ones((n_devices, batch_per_device, 10)),
-        'y': jnp.ones((n_devices, batch_per_device, 10)),
+        "x": jnp.ones((n_devices, batch_per_device, 10)),
+        "y": jnp.ones((n_devices, batch_per_device, 10)),
     }
 
     # Run parallel step
@@ -99,6 +100,7 @@ def run_pmap_example():
 # Pattern 3: Mesh and Sharding - Advanced Parallelism
 # =============================================================================
 
+
 def create_mesh_examples():
     """Different mesh configurations."""
     devices = jax.devices()
@@ -106,19 +108,19 @@ def create_mesh_examples():
 
     # 1D mesh: data parallelism only
     if n_devices >= 1:
-        mesh_1d = Mesh(devices, axis_names=('data',))
+        mesh_1d = Mesh(devices, axis_names=("data",))
         print(f"1D mesh (data parallel): {mesh_1d.shape}")
 
     # 2D mesh: data + model parallelism (requires 4+ devices)
     if n_devices >= 4:
         devices_2d = mesh_utils.create_device_mesh((2, n_devices // 2))
-        mesh_2d = Mesh(devices_2d, axis_names=('data', 'model'))
+        mesh_2d = Mesh(devices_2d, axis_names=("data", "model"))
         print(f"2D mesh (data x model): {mesh_2d.shape}")
 
     # 3D mesh: data + model + pipeline (requires 8+ devices)
     if n_devices >= 8:
         devices_3d = mesh_utils.create_device_mesh((2, 2, n_devices // 4))
-        mesh_3d = Mesh(devices_3d, axis_names=('data', 'model', 'pipeline'))
+        mesh_3d = Mesh(devices_3d, axis_names=("data", "model", "pipeline"))
         print(f"3D mesh (data x model x pipeline): {mesh_3d.shape}")
 
 
@@ -132,17 +134,17 @@ def sharding_example():
         return
 
     # Create mesh
-    mesh = Mesh(devices, axis_names=('devices',))
+    mesh = Mesh(devices, axis_names=("devices",))
 
     with mesh:
         # Fully replicated (same data on all devices)
         replicated = NamedSharding(mesh, P())
 
         # Sharded on first axis
-        sharded_0 = NamedSharding(mesh, P('devices'))
+        sharded_0 = NamedSharding(mesh, P("devices"))
 
         # Sharded on second axis
-        sharded_1 = NamedSharding(mesh, P(None, 'devices'))
+        sharded_1 = NamedSharding(mesh, P(None, "devices"))
 
         # Create data
         x = jnp.ones((n_devices * 32, 128))
@@ -150,8 +152,7 @@ def sharding_example():
         # Apply shardings
         x_rep = jax.device_put(x, replicated)
         x_sh0 = jax.device_put(x, sharded_0)
-        jax.device_put(x[:, :n_devices * 16].reshape(n_devices * 32, -1),
-                               sharded_1)
+        jax.device_put(x[:, : n_devices * 16].reshape(n_devices * 32, -1), sharded_1)
 
         print(f"Replicated: {x_rep.sharding}")
         print(f"Sharded axis 0: {x_sh0.sharding}")
@@ -160,6 +161,7 @@ def sharding_example():
 # =============================================================================
 # Pattern 4: Model Parallelism with Sharding
 # =============================================================================
+
 
 def model_parallel_matmul():
     """Distribute matrix multiplication across devices."""
@@ -173,12 +175,12 @@ def model_parallel_matmul():
     # 2D mesh if we have enough devices, else 1D
     if n_devices >= 4:
         device_mesh = mesh_utils.create_device_mesh((2, n_devices // 2))
-        mesh = Mesh(device_mesh, axis_names=('data', 'model'))
-        data_axis = 'data'
-        model_axis = 'model'
+        mesh = Mesh(device_mesh, axis_names=("data", "model"))
+        data_axis = "data"
+        model_axis = "model"
     else:
-        mesh = Mesh(devices, axis_names=('devices',))
-        data_axis = 'devices'
+        mesh = Mesh(devices, axis_names=("devices",))
+        data_axis = "devices"
         model_axis = None
 
     with mesh:
@@ -196,14 +198,8 @@ def model_parallel_matmul():
         hidden_dim = 1024
         output_dim = 2048
 
-        x = jax.device_put(
-            jnp.ones((batch_size, hidden_dim)),
-            x_sharding
-        )
-        w = jax.device_put(
-            jnp.ones((hidden_dim, output_dim)) * 0.01,
-            w_sharding
-        )
+        x = jax.device_put(jnp.ones((batch_size, hidden_dim)), x_sharding)
+        w = jax.device_put(jnp.ones((hidden_dim, output_dim)) * 0.01, w_sharding)
 
         # JIT with output sharding constraint
         @jax.jit
@@ -221,6 +217,7 @@ def model_parallel_matmul():
 # Pattern 5: Sharding Constraints
 # =============================================================================
 
+
 def with_sharding_constraints():
     """Use sharding constraints to guide XLA partitioning."""
     devices = jax.devices()
@@ -228,7 +225,7 @@ def with_sharding_constraints():
         print("Need 2+ devices")
         return
 
-    mesh = Mesh(devices, axis_names=('devices',))
+    mesh = Mesh(devices, axis_names=("devices",))
 
     def forward(x, w1, w2):
         # First layer
@@ -236,10 +233,7 @@ def with_sharding_constraints():
         h = jax.nn.relu(h)
 
         # Force specific sharding after first layer
-        h = jax.lax.with_sharding_constraint(
-            h,
-            NamedSharding(mesh, P('devices', None))
-        )
+        h = jax.lax.with_sharding_constraint(h, NamedSharding(mesh, P("devices", None)))
 
         # Second layer
         y = h @ w2
@@ -251,10 +245,7 @@ def with_sharding_constraints():
         w2 = jnp.ones((256, 64)) * 0.01
 
         # Shard input
-        x_sharded = jax.device_put(
-            x,
-            NamedSharding(mesh, P('devices', None))
-        )
+        x_sharded = jax.device_put(x, NamedSharding(mesh, P("devices", None)))
 
         result = jax.jit(forward)(x_sharded, w1, w2)
         print(f"Result shape: {result.shape}")
@@ -264,6 +255,7 @@ def with_sharding_constraints():
 # =============================================================================
 # Pattern 6: Complete SPMD Training Example
 # =============================================================================
+
 
 def spmd_training_example():
     """Full SPMD training loop with proper sharding."""
@@ -278,19 +270,19 @@ def spmd_training_example():
     output_dim = 10
 
     # Create mesh
-    mesh = Mesh(devices, axis_names=('batch',))
+    mesh = Mesh(devices, axis_names=("batch",))
 
     # Define shardings
-    data_sharding = NamedSharding(mesh, P('batch', None))
+    data_sharding = NamedSharding(mesh, P("batch", None))
     replicated = NamedSharding(mesh, P())
 
     # Initialize model (replicated)
     def init_model(rng):
         return {
-            'w1': jax.random.normal(rng, (784, hidden_dim)) * 0.01,
-            'b1': jnp.zeros(hidden_dim),
-            'w2': jax.random.normal(rng, (hidden_dim, output_dim)) * 0.01,
-            'b2': jnp.zeros(output_dim),
+            "w1": jax.random.normal(rng, (784, hidden_dim)) * 0.01,
+            "b1": jnp.zeros(hidden_dim),
+            "w2": jax.random.normal(rng, (hidden_dim, output_dim)) * 0.01,
+            "b2": jnp.zeros(output_dim),
         }
 
     rng = jax.random.PRNGKey(0)
@@ -300,8 +292,8 @@ def spmd_training_example():
     params = jax.device_put(params, replicated)
 
     def forward(params, x):
-        h = jax.nn.relu(x @ params['w1'] + params['b1'])
-        return h @ params['w2'] + params['b2']
+        h = jax.nn.relu(x @ params["w1"] + params["b1"])
+        return h @ params["w2"] + params["b2"]
 
     def loss_fn(params, x, y):
         logits = forward(params, x)
@@ -319,11 +311,11 @@ def spmd_training_example():
         # Create sharded batch
         x = jax.device_put(
             jax.random.normal(jax.random.PRNGKey(step), (batch_size, 784)),
-            data_sharding
+            data_sharding,
         )
         y = jax.device_put(
             jax.random.normal(jax.random.PRNGKey(step + 100), (batch_size, output_dim)),
-            data_sharding
+            data_sharding,
         )
 
         params, loss = train_step(params, x, y)
@@ -336,6 +328,7 @@ def spmd_training_example():
 # Pattern 7: Debugging Sharding
 # =============================================================================
 
+
 def debug_sharding(array, name="array"):
     """Print sharding information for debugging."""
     print(f"\n{name}:")
@@ -345,7 +338,7 @@ def debug_sharding(array, name="array"):
     print(f"  Devices: {array.devices()}")
 
     # Check if fully replicated
-    if hasattr(array.sharding, 'is_fully_replicated'):
+    if hasattr(array.sharding, "is_fully_replicated"):
         print(f"  Fully replicated: {array.sharding.is_fully_replicated}")
 
 
@@ -358,12 +351,12 @@ def visualize_sharding():
         print("Need 2+ devices to visualize sharding")
         return
 
-    mesh = Mesh(devices, axis_names=('d',))
+    mesh = Mesh(devices, axis_names=("d",))
 
     with mesh:
         # Create data with visible values per shard
         data = jnp.arange(n_devices * 4).reshape(n_devices, 4)
-        jax.device_put(data, NamedSharding(mesh, P('d', None)))
+        jax.device_put(data, NamedSharding(mesh, P("d", None)))
 
         print("Sharding visualization:")
         for i, device in enumerate(devices):

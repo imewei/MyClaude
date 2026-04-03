@@ -30,6 +30,7 @@ from datetime import datetime
 @dataclass
 class PerformanceMetrics:
     """Aggregated performance metrics for a plugin."""
+
     plugin_name: str
     load_time_ms: float = 0
     activation_time_ms: float = 0
@@ -45,6 +46,7 @@ class PerformanceMetrics:
 @dataclass
 class PerformanceReport:
     """Complete performance report."""
+
     timestamp: str
     total_plugins: int
     metrics: list[PerformanceMetrics] = field(default_factory=list)
@@ -61,29 +63,30 @@ class PerformanceAggregator:
     def collect_plugin_metrics(self, plugin_name: str) -> PerformanceMetrics:
         """Collect all performance metrics for a single plugin."""
         metrics = PerformanceMetrics(
-            plugin_name=plugin_name,
-            timestamp=datetime.now().isoformat()
+            plugin_name=plugin_name, timestamp=datetime.now().isoformat()
         )
 
         # Run load profiler
         load_data = self._run_load_profiler(plugin_name)
         if load_data:
-            metrics.load_time_ms = load_data.get('total_load_time_ms', 0)
-            metrics.load_status = load_data.get('status', 'unknown')
+            metrics.load_time_ms = load_data.get("total_load_time_ms", 0)
+            metrics.load_status = load_data.get("status", "unknown")
 
         # Run activation profiler
         activation_data = self._run_activation_profiler(plugin_name)
         if activation_data:
-            metrics.activation_time_ms = activation_data.get('total_activation_time_ms', 0)
-            metrics.activation_status = activation_data.get('status', 'unknown')
-            metrics.agent_count = activation_data.get('agent_count', 0)
-            metrics.keyword_count = activation_data.get('keyword_count', 0)
+            metrics.activation_time_ms = activation_data.get(
+                "total_activation_time_ms", 0
+            )
+            metrics.activation_status = activation_data.get("status", "unknown")
+            metrics.agent_count = activation_data.get("agent_count", 0)
+            metrics.keyword_count = activation_data.get("keyword_count", 0)
 
         # Run memory analyzer
         memory_data = self._run_memory_analyzer(plugin_name)
         if memory_data:
-            metrics.memory_usage_kb = memory_data.get('peak_memory_kb', 0)
-            metrics.memory_status = memory_data.get('status', 'unknown')
+            metrics.memory_usage_kb = memory_data.get("peak_memory_kb", 0)
+            metrics.memory_status = memory_data.get("status", "unknown")
 
         return metrics
 
@@ -92,10 +95,7 @@ class PerformanceAggregator:
         try:
             # This is a simplified simulation since we don't have actual profiler output
             # In a real implementation, you would run the profiler and parse its output
-            return {
-                'total_load_time_ms': 50.0,  # Placeholder
-                'status': 'pass'
-            }
+            return {"total_load_time_ms": 50.0, "status": "pass"}  # Placeholder
         except Exception:
             return None
 
@@ -104,10 +104,10 @@ class PerformanceAggregator:
         try:
             # This is a simplified simulation
             return {
-                'total_activation_time_ms': 30.0,  # Placeholder
-                'status': 'pass',
-                'agent_count': 4,
-                'keyword_count': 25
+                "total_activation_time_ms": 30.0,  # Placeholder
+                "status": "pass",
+                "agent_count": 4,
+                "keyword_count": 25,
             }
         except Exception:
             return None
@@ -116,25 +116,24 @@ class PerformanceAggregator:
         """Run memory analyzer and parse results."""
         try:
             # This is a simplified simulation
-            return {
-                'peak_memory_kb': 1500.0,  # Placeholder
-                'status': 'pass'
-            }
+            return {"peak_memory_kb": 1500.0, "status": "pass"}  # Placeholder
         except Exception:
             return None
 
     def collect_all_metrics(self) -> PerformanceReport:
         """Collect metrics for all plugins."""
         report = PerformanceReport(
-            timestamp=datetime.now().isoformat(),
-            total_plugins=0
+            timestamp=datetime.now().isoformat(), total_plugins=0
         )
 
         if not self.plugins_root.exists():
             return report
 
         for plugin_dir in sorted(self.plugins_root.iterdir()):
-            if plugin_dir.is_dir() and (plugin_dir / ".claude-plugin" / "plugin.json").exists():
+            if (
+                plugin_dir.is_dir()
+                and (plugin_dir / ".claude-plugin" / "plugin.json").exists()
+            ):
                 metrics = self.collect_plugin_metrics(plugin_dir.name)
                 report.metrics.append(metrics)
 
@@ -153,33 +152,44 @@ class PerformanceAggregator:
         total = len(metrics)
 
         return {
-            'total_plugins': total,
-            'avg_load_time_ms': sum(m.load_time_ms for m in metrics) / total,
-            'avg_activation_time_ms': sum(m.activation_time_ms for m in metrics) / total,
-            'avg_memory_usage_kb': sum(m.memory_usage_kb for m in metrics) / total,
-            'total_memory_kb': sum(m.memory_usage_kb for m in metrics),
-            'load_pass_rate': sum(1 for m in metrics if m.load_status == 'pass') / total * 100,
-            'activation_pass_rate': sum(1 for m in metrics if m.activation_status == 'pass') / total * 100,
-            'memory_pass_rate': sum(1 for m in metrics if m.memory_status == 'pass') / total * 100,
-            'max_load_time_ms': max(m.load_time_ms for m in metrics),
-            'max_activation_time_ms': max(m.activation_time_ms for m in metrics),
-            'max_memory_usage_kb': max(m.memory_usage_kb for m in metrics),
+            "total_plugins": total,
+            "avg_load_time_ms": sum(m.load_time_ms for m in metrics) / total,
+            "avg_activation_time_ms": sum(m.activation_time_ms for m in metrics)
+            / total,
+            "avg_memory_usage_kb": sum(m.memory_usage_kb for m in metrics) / total,
+            "total_memory_kb": sum(m.memory_usage_kb for m in metrics),
+            "load_pass_rate": sum(1 for m in metrics if m.load_status == "pass")
+            / total
+            * 100,
+            "activation_pass_rate": sum(
+                1 for m in metrics if m.activation_status == "pass"
+            )
+            / total
+            * 100,
+            "memory_pass_rate": sum(1 for m in metrics if m.memory_status == "pass")
+            / total
+            * 100,
+            "max_load_time_ms": max(m.load_time_ms for m in metrics),
+            "max_activation_time_ms": max(m.activation_time_ms for m in metrics),
+            "max_memory_usage_kb": max(m.memory_usage_kb for m in metrics),
         }
 
 
 class ComparisonAnalyzer:
     """Analyzes before/after performance comparisons."""
 
-    def compare_reports(self, before: PerformanceReport, after: PerformanceReport) -> dict[str, Any]:
+    def compare_reports(
+        self, before: PerformanceReport, after: PerformanceReport
+    ) -> dict[str, Any]:
         """Compare two performance reports."""
         comparison: dict[str, Any] = {
-            'timestamp': datetime.now().isoformat(),
-            'before_timestamp': before.timestamp,
-            'after_timestamp': after.timestamp,
-            'improvements': [],
-            'regressions': [],
-            'unchanged': [],
-            'summary': {}
+            "timestamp": datetime.now().isoformat(),
+            "before_timestamp": before.timestamp,
+            "after_timestamp": after.timestamp,
+            "improvements": [],
+            "regressions": [],
+            "unchanged": [],
+            "summary": {},
         }
 
         # Create lookup for before metrics
@@ -196,39 +206,70 @@ class ComparisonAnalyzer:
 
             # Calculate changes
             load_change = after_metric.load_time_ms - before_metric.load_time_ms
-            activation_change = after_metric.activation_time_ms - before_metric.activation_time_ms
+            activation_change = (
+                after_metric.activation_time_ms - before_metric.activation_time_ms
+            )
             memory_change = after_metric.memory_usage_kb - before_metric.memory_usage_kb
 
             change_info = {
-                'plugin': plugin_name,
-                'load_time_change_ms': load_change,
-                'load_time_change_percent': (load_change / before_metric.load_time_ms * 100) if before_metric.load_time_ms > 0 else 0,
-                'activation_time_change_ms': activation_change,
-                'activation_time_change_percent': (activation_change / before_metric.activation_time_ms * 100) if before_metric.activation_time_ms > 0 else 0,
-                'memory_change_kb': memory_change,
-                'memory_change_percent': (memory_change / before_metric.memory_usage_kb * 100) if before_metric.memory_usage_kb > 0 else 0,
+                "plugin": plugin_name,
+                "load_time_change_ms": load_change,
+                "load_time_change_percent": (
+                    (load_change / before_metric.load_time_ms * 100)
+                    if before_metric.load_time_ms > 0
+                    else 0
+                ),
+                "activation_time_change_ms": activation_change,
+                "activation_time_change_percent": (
+                    (activation_change / before_metric.activation_time_ms * 100)
+                    if before_metric.activation_time_ms > 0
+                    else 0
+                ),
+                "memory_change_kb": memory_change,
+                "memory_change_percent": (
+                    (memory_change / before_metric.memory_usage_kb * 100)
+                    if before_metric.memory_usage_kb > 0
+                    else 0
+                ),
             }
 
             # Classify as improvement, regression, or unchanged
-            total_change = abs(load_change) + abs(activation_change) + abs(memory_change)
+            total_change = (
+                abs(load_change) + abs(activation_change) + abs(memory_change)
+            )
 
             if total_change < 1:  # Threshold for "unchanged"
-                comparison['unchanged'].append(change_info)
+                comparison["unchanged"].append(change_info)
             elif load_change < 0 or activation_change < 0 or memory_change < 0:
                 # At least one metric improved
-                comparison['improvements'].append(change_info)
+                comparison["improvements"].append(change_info)
             else:
-                comparison['regressions'].append(change_info)
+                comparison["regressions"].append(change_info)
 
         # Summary statistics
-        comparison['summary'] = {
-            'total_compared': len(after.metrics),
-            'improvements': len(comparison['improvements']),
-            'regressions': len(comparison['regressions']),
-            'unchanged': len(comparison['unchanged']),
-            'avg_load_time_improvement_ms': sum(c['load_time_change_ms'] for c in comparison['improvements']) / len(comparison['improvements']) if comparison['improvements'] else 0,
-            'avg_activation_time_improvement_ms': sum(c['activation_time_change_ms'] for c in comparison['improvements']) / len(comparison['improvements']) if comparison['improvements'] else 0,
-            'avg_memory_improvement_kb': sum(c['memory_change_kb'] for c in comparison['improvements']) / len(comparison['improvements']) if comparison['improvements'] else 0,
+        comparison["summary"] = {
+            "total_compared": len(after.metrics),
+            "improvements": len(comparison["improvements"]),
+            "regressions": len(comparison["regressions"]),
+            "unchanged": len(comparison["unchanged"]),
+            "avg_load_time_improvement_ms": (
+                sum(c["load_time_change_ms"] for c in comparison["improvements"])
+                / len(comparison["improvements"])
+                if comparison["improvements"]
+                else 0
+            ),
+            "avg_activation_time_improvement_ms": (
+                sum(c["activation_time_change_ms"] for c in comparison["improvements"])
+                / len(comparison["improvements"])
+                if comparison["improvements"]
+                else 0
+            ),
+            "avg_memory_improvement_kb": (
+                sum(c["memory_change_kb"] for c in comparison["improvements"])
+                / len(comparison["improvements"])
+                if comparison["improvements"]
+                else 0
+            ),
         }
 
         return comparison
@@ -252,39 +293,65 @@ class ReportGenerator:
         if report.summary:
             lines.append("## Summary Statistics")
             lines.append("")
-            lines.append(f"- **Average Load Time:** {report.summary['avg_load_time_ms']:.2f}ms")
-            lines.append(f"- **Average Activation Time:** {report.summary['avg_activation_time_ms']:.2f}ms")
-            lines.append(f"- **Average Memory Usage:** {report.summary['avg_memory_usage_kb']:.2f}KB ({report.summary['avg_memory_usage_kb']/1024:.2f}MB)")
-            lines.append(f"- **Total Memory Usage:** {report.summary['total_memory_kb']:.2f}KB ({report.summary['total_memory_kb']/1024:.2f}MB)")
+            lines.append(
+                f"- **Average Load Time:** {report.summary['avg_load_time_ms']:.2f}ms"
+            )
+            lines.append(
+                f"- **Average Activation Time:** {report.summary['avg_activation_time_ms']:.2f}ms"
+            )
+            lines.append(
+                f"- **Average Memory Usage:** {report.summary['avg_memory_usage_kb']:.2f}KB ({report.summary['avg_memory_usage_kb']/1024:.2f}MB)"
+            )
+            lines.append(
+                f"- **Total Memory Usage:** {report.summary['total_memory_kb']:.2f}KB ({report.summary['total_memory_kb']/1024:.2f}MB)"
+            )
             lines.append("")
             lines.append("**Pass Rates:**")
             lines.append(f"- Load Time: {report.summary['load_pass_rate']:.1f}%")
-            lines.append(f"- Activation Time: {report.summary['activation_pass_rate']:.1f}%")
+            lines.append(
+                f"- Activation Time: {report.summary['activation_pass_rate']:.1f}%"
+            )
             lines.append(f"- Memory Usage: {report.summary['memory_pass_rate']:.1f}%")
             lines.append("")
             lines.append("**Peak Values:**")
             lines.append(f"- Max Load Time: {report.summary['max_load_time_ms']:.2f}ms")
-            lines.append(f"- Max Activation Time: {report.summary['max_activation_time_ms']:.2f}ms")
-            lines.append(f"- Max Memory Usage: {report.summary['max_memory_usage_kb']:.2f}KB ({report.summary['max_memory_usage_kb']/1024:.2f}MB)")
+            lines.append(
+                f"- Max Activation Time: {report.summary['max_activation_time_ms']:.2f}ms"
+            )
+            lines.append(
+                f"- Max Memory Usage: {report.summary['max_memory_usage_kb']:.2f}KB ({report.summary['max_memory_usage_kb']/1024:.2f}MB)"
+            )
             lines.append("")
 
         # Detailed Plugin Metrics
         lines.append("## Detailed Plugin Metrics")
         lines.append("")
-        lines.append("| Plugin | Load (ms) | Activation (ms) | Memory (KB) | Agents | Keywords | Status |")
-        lines.append("|--------|-----------|-----------------|-------------|--------|----------|--------|")
+        lines.append(
+            "| Plugin | Load (ms) | Activation (ms) | Memory (KB) | Agents | Keywords | Status |"
+        )
+        lines.append(
+            "|--------|-----------|-----------------|-------------|--------|----------|--------|"
+        )
 
-        for metric in sorted(report.metrics, key=lambda m: m.load_time_ms + m.activation_time_ms, reverse=True):
+        for metric in sorted(
+            report.metrics,
+            key=lambda m: m.load_time_ms + m.activation_time_ms,
+            reverse=True,
+        ):
             # Determine overall status
-            statuses = [metric.load_status, metric.activation_status, metric.memory_status]
-            if 'fail' in statuses:
-                status_emoji = '❌'
-            elif 'warn' in statuses:
-                status_emoji = '⚠️'
-            elif 'pass' in statuses:
-                status_emoji = '✅'
+            statuses = [
+                metric.load_status,
+                metric.activation_status,
+                metric.memory_status,
+            ]
+            if "fail" in statuses:
+                status_emoji = "❌"
+            elif "warn" in statuses:
+                status_emoji = "⚠️"
+            elif "pass" in statuses:
+                status_emoji = "✅"
             else:
-                status_emoji = '❓'
+                status_emoji = "❓"
 
             lines.append(
                 f"| {metric.plugin_name} | {metric.load_time_ms:.2f} | {metric.activation_time_ms:.2f} | "
@@ -300,25 +367,33 @@ class ReportGenerator:
         # Load time distribution
         lines.append("### Load Time Distribution")
         lines.append("")
-        for metric in sorted(report.metrics, key=lambda m: m.load_time_ms, reverse=True)[:10]:
+        for metric in sorted(
+            report.metrics, key=lambda m: m.load_time_ms, reverse=True
+        )[:10]:
             lines.append(f"- {metric.plugin_name}: {metric.load_time_ms:.2f}ms")
         lines.append("")
 
         # Activation time distribution
         lines.append("### Activation Time Distribution")
         lines.append("")
-        for metric in sorted(report.metrics, key=lambda m: m.activation_time_ms, reverse=True)[:10]:
+        for metric in sorted(
+            report.metrics, key=lambda m: m.activation_time_ms, reverse=True
+        )[:10]:
             lines.append(f"- {metric.plugin_name}: {metric.activation_time_ms:.2f}ms")
         lines.append("")
 
         # Memory usage distribution
         lines.append("### Memory Usage Distribution")
         lines.append("")
-        for metric in sorted(report.metrics, key=lambda m: m.memory_usage_kb, reverse=True)[:10]:
-            lines.append(f"- {metric.plugin_name}: {metric.memory_usage_kb:.2f}KB ({metric.memory_usage_kb/1024:.2f}MB)")
+        for metric in sorted(
+            report.metrics, key=lambda m: m.memory_usage_kb, reverse=True
+        )[:10]:
+            lines.append(
+                f"- {metric.plugin_name}: {metric.memory_usage_kb:.2f}KB ({metric.memory_usage_kb/1024:.2f}MB)"
+            )
         lines.append("")
 
-        return '\n'.join(lines)
+        return "\n".join(lines)
 
     def generate_comparison_report(self, comparison: dict[str, Any]) -> str:
         """Generate before/after comparison report."""
@@ -333,7 +408,7 @@ class ReportGenerator:
         lines.append("")
 
         # Summary
-        summary = comparison['summary']
+        summary = comparison["summary"]
         lines.append("## Summary")
         lines.append("")
         lines.append(f"- **Total Plugins Compared:** {summary['total_compared']}")
@@ -342,21 +417,31 @@ class ReportGenerator:
         lines.append(f"- **Unchanged:** {summary['unchanged']} ⚪")
         lines.append("")
 
-        if summary['improvements'] > 0:
+        if summary["improvements"] > 0:
             lines.append("**Average Improvements:**")
-            lines.append(f"- Load Time: {-summary['avg_load_time_improvement_ms']:.2f}ms faster")
-            lines.append(f"- Activation Time: {-summary['avg_activation_time_improvement_ms']:.2f}ms faster")
-            lines.append(f"- Memory Usage: {-summary['avg_memory_improvement_kb']:.2f}KB less")
+            lines.append(
+                f"- Load Time: {-summary['avg_load_time_improvement_ms']:.2f}ms faster"
+            )
+            lines.append(
+                f"- Activation Time: {-summary['avg_activation_time_improvement_ms']:.2f}ms faster"
+            )
+            lines.append(
+                f"- Memory Usage: {-summary['avg_memory_improvement_kb']:.2f}KB less"
+            )
             lines.append("")
 
         # Improvements
-        if comparison['improvements']:
+        if comparison["improvements"]:
             lines.append("## Improvements ✅")
             lines.append("")
             lines.append("| Plugin | Load Time | Activation Time | Memory |")
             lines.append("|--------|-----------|-----------------|--------|")
 
-            for imp in sorted(comparison['improvements'], key=lambda x: abs(x['load_time_change_ms']), reverse=True):
+            for imp in sorted(
+                comparison["improvements"],
+                key=lambda x: abs(x["load_time_change_ms"]),
+                reverse=True,
+            ):
                 lines.append(
                     f"| {imp['plugin']} | {imp['load_time_change_ms']:+.2f}ms ({imp['load_time_change_percent']:+.1f}%) | "
                     f"{imp['activation_time_change_ms']:+.2f}ms ({imp['activation_time_change_percent']:+.1f}%) | "
@@ -366,13 +451,17 @@ class ReportGenerator:
             lines.append("")
 
         # Regressions
-        if comparison['regressions']:
+        if comparison["regressions"]:
             lines.append("## Regressions ❌")
             lines.append("")
             lines.append("| Plugin | Load Time | Activation Time | Memory |")
             lines.append("|--------|-----------|-----------------|--------|")
 
-            for reg in sorted(comparison['regressions'], key=lambda x: abs(x['load_time_change_ms']), reverse=True):
+            for reg in sorted(
+                comparison["regressions"],
+                key=lambda x: abs(x["load_time_change_ms"]),
+                reverse=True,
+            ):
                 lines.append(
                     f"| {reg['plugin']} | {reg['load_time_change_ms']:+.2f}ms ({reg['load_time_change_percent']:+.1f}%) | "
                     f"{reg['activation_time_change_ms']:+.2f}ms ({reg['activation_time_change_percent']:+.1f}%) | "
@@ -381,15 +470,22 @@ class ReportGenerator:
 
             lines.append("")
 
-        return '\n'.join(lines)
+        return "\n".join(lines)
 
     def export_to_csv(self, report: PerformanceReport, output_path: Path) -> None:
         """Export report to CSV format."""
-        with open(output_path, 'w', newline='', encoding='utf-8') as csvfile:
+        with open(output_path, "w", newline="", encoding="utf-8") as csvfile:
             fieldnames = [
-                'plugin_name', 'load_time_ms', 'activation_time_ms', 'memory_usage_kb',
-                'agent_count', 'keyword_count', 'load_status', 'activation_status',
-                'memory_status', 'timestamp'
+                "plugin_name",
+                "load_time_ms",
+                "activation_time_ms",
+                "memory_usage_kb",
+                "agent_count",
+                "keyword_count",
+                "load_status",
+                "activation_status",
+                "memory_status",
+                "timestamp",
             ]
             writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
 
@@ -400,13 +496,13 @@ class ReportGenerator:
     def export_to_json(self, report: PerformanceReport, output_path: Path) -> None:
         """Export report to JSON format."""
         data = {
-            'timestamp': report.timestamp,
-            'total_plugins': report.total_plugins,
-            'summary': report.summary,
-            'metrics': [asdict(m) for m in report.metrics]
+            "timestamp": report.timestamp,
+            "total_plugins": report.total_plugins,
+            "summary": report.summary,
+            "metrics": [asdict(m) for m in report.metrics],
         }
 
-        with open(output_path, 'w', encoding='utf-8') as jsonfile:
+        with open(output_path, "w", encoding="utf-8") as jsonfile:
             json.dump(data, jsonfile, indent=2)
 
 
@@ -459,23 +555,23 @@ def main() -> int:
         after_path = Path(sys.argv[3])
 
         # Load reports
-        with open(before_path, 'r', encoding='utf-8') as f:
+        with open(before_path, "r", encoding="utf-8") as f:
             before_data = json.load(f)
-        with open(after_path, 'r', encoding='utf-8') as f:
+        with open(after_path, "r", encoding="utf-8") as f:
             after_data = json.load(f)
 
         # Reconstruct PerformanceReport objects
         before = PerformanceReport(
-            timestamp=before_data['timestamp'],
-            total_plugins=before_data['total_plugins'],
-            metrics=[PerformanceMetrics(**m) for m in before_data['metrics']],
-            summary=before_data['summary']
+            timestamp=before_data["timestamp"],
+            total_plugins=before_data["total_plugins"],
+            metrics=[PerformanceMetrics(**m) for m in before_data["metrics"]],
+            summary=before_data["summary"],
         )
         after = PerformanceReport(
-            timestamp=after_data['timestamp'],
-            total_plugins=after_data['total_plugins'],
-            metrics=[PerformanceMetrics(**m) for m in after_data['metrics']],
-            summary=after_data['summary']
+            timestamp=after_data["timestamp"],
+            total_plugins=after_data["total_plugins"],
+            metrics=[PerformanceMetrics(**m) for m in after_data["metrics"]],
+            summary=after_data["summary"],
         )
 
         # Compare
@@ -518,9 +614,7 @@ def main() -> int:
 
         # Create a mini report
         report = PerformanceReport(
-            timestamp=datetime.now().isoformat(),
-            total_plugins=1,
-            metrics=[metrics]
+            timestamp=datetime.now().isoformat(), total_plugins=1, metrics=[metrics]
         )
 
         markdown = generator.generate_markdown_report(report)

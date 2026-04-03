@@ -71,9 +71,7 @@ class IterativeFixEngine:
 
             if not errors:
                 print("✓ SUCCESS: Zero errors detected!")
-                self.record_iteration(
-                    iteration, 0, 0, 0, [], None, True
-                )
+                self.record_iteration(iteration, 0, 0, 0, [], None, True)
                 return True
 
             print(f"Found {len(errors)} error(s) to fix\n")
@@ -118,8 +116,13 @@ class IterativeFixEngine:
             if not new_run_id:
                 print("Failed to trigger workflow")
                 self.record_iteration(
-                    iteration, len(errors), errors_fixed,
-                    len(errors) - errors_fixed, fixes_applied, None, False
+                    iteration,
+                    len(errors),
+                    errors_fixed,
+                    len(errors) - errors_fixed,
+                    fixes_applied,
+                    None,
+                    False,
                 )
                 return False
 
@@ -130,8 +133,13 @@ class IterativeFixEngine:
             if not self.wait_for_completion(new_run_id, timeout=600):
                 print("Workflow timeout")
                 self.record_iteration(
-                    iteration, len(errors), errors_fixed,
-                    len(errors) - errors_fixed, fixes_applied, new_run_id, False
+                    iteration,
+                    len(errors),
+                    errors_fixed,
+                    len(errors) - errors_fixed,
+                    fixes_applied,
+                    new_run_id,
+                    False,
                 )
                 return False
 
@@ -139,9 +147,13 @@ class IterativeFixEngine:
             status = self.get_run_status(new_run_id)
 
             self.record_iteration(
-                iteration, len(errors), errors_fixed,
-                len(errors) - errors_fixed, fixes_applied, new_run_id,
-                status == "success"
+                iteration,
+                len(errors),
+                errors_fixed,
+                len(errors) - errors_fixed,
+                fixes_applied,
+                new_run_id,
+                status == "success",
             )
 
             if status == "success":
@@ -163,11 +175,7 @@ class IterativeFixEngine:
 
     def analyze_run(self, run_id: str) -> List[Dict]:
         """Fetch and parse workflow run logs."""
-        cmd = [
-            'gh', 'run', 'view', run_id,
-            '--repo', self.repo,
-            '--log-failed'
-        ]
+        cmd = ["gh", "run", "view", run_id, "--repo", self.repo, "--log-failed"]
 
         try:
             result = subprocess.run(cmd, capture_output=True, text=True, check=True)
@@ -182,34 +190,36 @@ class IterativeFixEngine:
         errors = []
 
         patterns = {
-            'npm_eresolve': r'npm ERR! code ERESOLVE',
-            'npm_404': r'npm ERR! 404',
-            'npm_peer': r'npm ERR! peer dep missing',
-            'ts_error': r'TS\d+:',
-            'eslint_error': r'\d+:\d+\s+error',
-            'test_failure': r'FAIL .*\.test\.',
-            'python_import': r'ModuleNotFoundError|ImportError',
-            'python_version': r'Could not find a version that satisfies',
-            'build_error': r'Build failed|compilation failed',
-            'timeout': r'exceeded the maximum execution time',
-            'oom': r'heap out of memory',
-            'network_error': r'ETIMEDOUT|ENOTFOUND|ECONNREFUSED',
+            "npm_eresolve": r"npm ERR! code ERESOLVE",
+            "npm_404": r"npm ERR! 404",
+            "npm_peer": r"npm ERR! peer dep missing",
+            "ts_error": r"TS\d+:",
+            "eslint_error": r"\d+:\d+\s+error",
+            "test_failure": r"FAIL .*\.test\.",
+            "python_import": r"ModuleNotFoundError|ImportError",
+            "python_version": r"Could not find a version that satisfies",
+            "build_error": r"Build failed|compilation failed",
+            "timeout": r"exceeded the maximum execution time",
+            "oom": r"heap out of memory",
+            "network_error": r"ETIMEDOUT|ENOTFOUND|ECONNREFUSED",
         }
 
         for name, pattern in patterns.items():
             matches = re.finditer(pattern, logs, re.MULTILINE)
             for match in matches:
                 # Extract context (5 lines before and after)
-                lines = logs[:match.end()].split('\n')
+                lines = logs[: match.end()].split("\n")
                 context_start = max(0, len(lines) - 5)
-                context = '\n'.join(lines[context_start:])
+                context = "\n".join(lines[context_start:])
 
-                errors.append({
-                    'type': name,
-                    'pattern': pattern,
-                    'match': match.group(),
-                    'context': context
-                })
+                errors.append(
+                    {
+                        "type": name,
+                        "pattern": pattern,
+                        "match": match.group(),
+                        "context": context,
+                    }
+                )
 
         return errors
 
@@ -218,65 +228,67 @@ class IterativeFixEngine:
         analyses = []
 
         for error in errors:
-            category = self.get_category(error['type'])
+            category = self.get_category(error["type"])
             confidence = self.calculate_confidence(error)
             fix_strategy = self.knowledge_base.get_fix_strategy(
-                error['type'], error['context']
+                error["type"], error["context"]
             )
             priority = self.calculate_priority(error, confidence)
 
-            analyses.append(ErrorAnalysis(
-                category=category,
-                pattern=error['match'],
-                confidence=confidence,
-                suggested_fix=fix_strategy,
-                priority=priority,
-                context=error['context']
-            ))
+            analyses.append(
+                ErrorAnalysis(
+                    category=category,
+                    pattern=error["match"],
+                    confidence=confidence,
+                    suggested_fix=fix_strategy,
+                    priority=priority,
+                    context=error["context"],
+                )
+            )
 
         return analyses
 
     def get_category(self, error_type: str) -> str:
         """Map error type to category."""
         category_map = {
-            'npm_eresolve': 'dependency',
-            'npm_404': 'dependency',
-            'npm_peer': 'dependency',
-            'python_import': 'dependency',
-            'python_version': 'dependency',
-            'ts_error': 'build',
-            'eslint_error': 'build',
-            'build_error': 'build',
-            'test_failure': 'test',
-            'timeout': 'runtime',
-            'oom': 'runtime',
-            'network_error': 'runtime',
+            "npm_eresolve": "dependency",
+            "npm_404": "dependency",
+            "npm_peer": "dependency",
+            "python_import": "dependency",
+            "python_version": "dependency",
+            "ts_error": "build",
+            "eslint_error": "build",
+            "build_error": "build",
+            "test_failure": "test",
+            "timeout": "runtime",
+            "oom": "runtime",
+            "network_error": "runtime",
         }
-        return category_map.get(error_type, 'unknown')
+        return category_map.get(error_type, "unknown")
 
     def calculate_confidence(self, error: Dict) -> float:
         """Calculate confidence score for fix."""
         # Base confidence from knowledge base
-        kb_confidence = self.knowledge_base.get_confidence(error['type'])
+        kb_confidence = self.knowledge_base.get_confidence(error["type"])
 
         # Adjust based on error clarity
         clarity_bonus = 0.0
-        if error['type'] in ['npm_eresolve', 'npm_404', 'python_import']:
+        if error["type"] in ["npm_eresolve", "npm_404", "python_import"]:
             clarity_bonus = 0.1  # These have clear fixes
 
         # Adjust based on historical success
-        history_bonus = self.knowledge_base.get_success_rate(error['type']) * 0.2
+        history_bonus = self.knowledge_base.get_success_rate(error["type"]) * 0.2
 
         return min(1.0, kb_confidence + clarity_bonus + history_bonus)
 
     def calculate_priority(self, error: Dict, confidence: float) -> int:
         """Calculate priority score (higher = more important)."""
         # Blocking errors get highest priority
-        blocking_types = ['build_error', 'npm_eresolve', 'python_import']
+        blocking_types = ["build_error", "npm_eresolve", "python_import"]
 
         priority = int(confidence * 100)
 
-        if error['type'] in blocking_types:
+        if error["type"] in blocking_types:
             priority += 50
 
         return priority
@@ -288,13 +300,13 @@ class IterativeFixEngine:
     def apply_fix(self, error: ErrorAnalysis) -> FixResult:
         """Execute fix strategy."""
         try:
-            if error.category == 'dependency':
+            if error.category == "dependency":
                 return self.fix_dependency_error(error)
-            elif error.category == 'build':
+            elif error.category == "build":
                 return self.fix_build_error(error)
-            elif error.category == 'test':
+            elif error.category == "test":
                 return self.fix_test_error(error)
-            elif error.category == 'runtime':
+            elif error.category == "runtime":
                 return self.fix_runtime_error(error)
             else:
                 return FixResult.NO_FIX_AVAILABLE
@@ -304,11 +316,11 @@ class IterativeFixEngine:
 
     def fix_dependency_error(self, error: ErrorAnalysis) -> FixResult:
         """Fix dependency-related errors."""
-        if 'npm_eresolve' in error.pattern:
+        if "npm_eresolve" in error.pattern:
             return self.fix_npm_eresolve()
-        elif 'npm_404' in error.pattern:
+        elif "npm_404" in error.pattern:
             return self.fix_npm_404(error)
-        elif 'python_import' in error.pattern:
+        elif "python_import" in error.pattern:
             return self.fix_python_import(error)
         return FixResult.NO_FIX_AVAILABLE
 
@@ -316,15 +328,17 @@ class IterativeFixEngine:
         """Fix npm ERESOLVE conflicts."""
         try:
             # Find workflow files
-            workflow_files = list(Path('.github/workflows').glob('*.yml'))
+            workflow_files = list(Path(".github/workflows").glob("*.yml"))
 
             for workflow_file in workflow_files:
                 content = workflow_file.read_text()
 
                 # Add --legacy-peer-deps to npm install commands
-                if 'npm install' in content and '--legacy-peer-deps' not in content:
-                    content = content.replace('npm install', 'npm install --legacy-peer-deps')
-                    content = content.replace('npm ci', 'npm ci --legacy-peer-deps')
+                if "npm install" in content and "--legacy-peer-deps" not in content:
+                    content = content.replace(
+                        "npm install", "npm install --legacy-peer-deps"
+                    )
+                    content = content.replace("npm ci", "npm ci --legacy-peer-deps")
                     workflow_file.write_text(content)
 
             return FixResult.SUCCESS
@@ -343,7 +357,7 @@ class IterativeFixEngine:
         print(f"Removing unavailable package: {package}")
 
         try:
-            subprocess.run(['npm', 'uninstall', package], check=True)
+            subprocess.run(["npm", "uninstall", package], check=True)
             return FixResult.SUCCESS
         except subprocess.CalledProcessError:
             return FixResult.FAILED
@@ -359,20 +373,20 @@ class IterativeFixEngine:
 
         # Map common module names to package names
         package_map = {
-            'cv2': 'opencv-python',
-            'PIL': 'Pillow',
-            'sklearn': 'scikit-learn',
+            "cv2": "opencv-python",
+            "PIL": "Pillow",
+            "sklearn": "scikit-learn",
         }
 
         package = package_map.get(module, module)
         print(f"Installing missing module: {package}")
 
         try:
-            subprocess.run(['pip', 'install', package], check=True)
+            subprocess.run(["pip", "install", package], check=True)
 
             # Update requirements.txt
-            with open('requirements.txt', 'a') as f:
-                f.write(f'\n{package}\n')
+            with open("requirements.txt", "a") as f:
+                f.write(f"\n{package}\n")
 
             return FixResult.SUCCESS
         except subprocess.CalledProcessError:
@@ -380,55 +394,55 @@ class IterativeFixEngine:
 
     def fix_build_error(self, error: ErrorAnalysis) -> FixResult:
         """Fix build-related errors."""
-        if 'eslint' in error.pattern.lower():
+        if "eslint" in error.pattern.lower():
             return self.fix_eslint_errors()
         return FixResult.NO_FIX_AVAILABLE
 
     def fix_eslint_errors(self) -> FixResult:
         """Run ESLint auto-fix."""
         try:
-            subprocess.run(['npx', 'eslint', '.', '--fix'], check=False)
+            subprocess.run(["npx", "eslint", ".", "--fix"], check=False)
             return FixResult.SUCCESS
         except Exception:
             return FixResult.PARTIAL
 
     def fix_test_error(self, error: ErrorAnalysis) -> FixResult:
         """Fix test-related errors."""
-        if 'snapshot' in error.context.lower():
+        if "snapshot" in error.context.lower():
             return self.fix_snapshot_errors()
         return FixResult.NO_FIX_AVAILABLE
 
     def fix_snapshot_errors(self) -> FixResult:
         """Update test snapshots."""
         try:
-            subprocess.run(['npm', 'test', '--', '-u'], check=True)
+            subprocess.run(["npm", "test", "--", "-u"], check=True)
             return FixResult.SUCCESS
         except subprocess.CalledProcessError:
             return FixResult.FAILED
 
     def fix_runtime_error(self, error: ErrorAnalysis) -> FixResult:
         """Fix runtime errors."""
-        if 'oom' in error.pattern or 'heap out of memory' in error.context.lower():
+        if "oom" in error.pattern or "heap out of memory" in error.context.lower():
             return self.fix_oom_error()
-        elif 'timeout' in error.pattern:
+        elif "timeout" in error.pattern:
             return self.fix_timeout_error()
         return FixResult.NO_FIX_AVAILABLE
 
     def fix_oom_error(self) -> FixResult:
         """Fix out of memory errors."""
         try:
-            workflow_files = list(Path('.github/workflows').glob('*.yml'))
+            workflow_files = list(Path(".github/workflows").glob("*.yml"))
 
             for workflow_file in workflow_files:
                 content = workflow_file.read_text()
 
                 # Add NODE_OPTIONS for increased heap
-                if 'NODE_OPTIONS' not in content:
+                if "NODE_OPTIONS" not in content:
                     # Add after env: section
                     content = re.sub(
-                        r'(env:)',
+                        r"(env:)",
                         r'\1\n        NODE_OPTIONS: "--max-old-space-size=4096"',
-                        content
+                        content,
                     )
                     workflow_file.write_text(content)
 
@@ -440,23 +454,19 @@ class IterativeFixEngine:
     def fix_timeout_error(self) -> FixResult:
         """Fix timeout errors."""
         try:
-            workflow_files = list(Path('.github/workflows').glob('*.yml'))
+            workflow_files = list(Path(".github/workflows").glob("*.yml"))
 
             for workflow_file in workflow_files:
                 content = workflow_file.read_text()
 
                 # Add or increase timeout-minutes
-                if 'timeout-minutes:' not in content:
+                if "timeout-minutes:" not in content:
                     content = re.sub(
-                        r'(runs-on:)',
-                        r'timeout-minutes: 60\n    \1',
-                        content
+                        r"(runs-on:)", r"timeout-minutes: 60\n    \1", content
                     )
                 else:
                     content = re.sub(
-                        r'timeout-minutes: \d+',
-                        'timeout-minutes: 60',
-                        content
+                        r"timeout-minutes: \d+", "timeout-minutes: 60", content
                     )
 
                 workflow_file.write_text(content)
@@ -469,7 +479,7 @@ class IterativeFixEngine:
     def commit_fixes(self, fixes: List[str], iteration: int):
         """Commit all applied fixes."""
         try:
-            subprocess.run(['git', 'add', '.'], check=True)
+            subprocess.run(["git", "add", "."], check=True)
 
             message = f"fix(ci): iteration {iteration} - automated error resolution\n\n"
             message += "Applied fixes:\n"
@@ -477,8 +487,8 @@ class IterativeFixEngine:
                 message += f"- {fix}\n"
             message += "\n🤖 Generated with iterative-error-resolution"
 
-            subprocess.run(['git', 'commit', '-m', message], check=True)
-            subprocess.run(['git', 'push'], check=True)
+            subprocess.run(["git", "commit", "-m", message], check=True)
+            subprocess.run(["git", "push"], check=True)
         except subprocess.CalledProcessError as e:
             print(f"Error committing fixes: {e}")
 
@@ -486,8 +496,10 @@ class IterativeFixEngine:
         """Trigger workflow and return new run ID."""
         try:
             result = subprocess.run(
-                ['gh', 'workflow', 'run', self.workflow, '--repo', self.repo],
-                capture_output=True, text=True, check=True
+                ["gh", "workflow", "run", self.workflow, "--repo", self.repo],
+                capture_output=True,
+                text=True,
+                check=True,
             )
 
             # Wait for run to appear
@@ -495,13 +507,26 @@ class IterativeFixEngine:
 
             # Get latest run ID
             result = subprocess.run(
-                ['gh', 'run', 'list', '--workflow', self.workflow,
-                 '--repo', self.repo, '--limit', '1', '--json', 'databaseId'],
-                capture_output=True, text=True, check=True
+                [
+                    "gh",
+                    "run",
+                    "list",
+                    "--workflow",
+                    self.workflow,
+                    "--repo",
+                    self.repo,
+                    "--limit",
+                    "1",
+                    "--json",
+                    "databaseId",
+                ],
+                capture_output=True,
+                text=True,
+                check=True,
             )
 
             runs = json.loads(result.stdout)
-            return str(runs[0]['databaseId']) if runs else None
+            return str(runs[0]["databaseId"]) if runs else None
         except (subprocess.CalledProcessError, json.JSONDecodeError, KeyError) as e:
             print(f"Error triggering workflow: {e}")
             return None
@@ -513,7 +538,7 @@ class IterativeFixEngine:
         while time.time() - start_time < timeout:
             status = self.get_run_status(run_id)
 
-            if status in ['success', 'failure', 'cancelled']:
+            if status in ["success", "failure", "cancelled"]:
                 return True
 
             print(".", end="", flush=True)
@@ -526,24 +551,40 @@ class IterativeFixEngine:
         """Get current status of workflow run."""
         try:
             result = subprocess.run(
-                ['gh', 'run', 'view', run_id, '--repo', self.repo,
-                 '--json', 'status,conclusion'],
-                capture_output=True, text=True, check=True
+                [
+                    "gh",
+                    "run",
+                    "view",
+                    run_id,
+                    "--repo",
+                    self.repo,
+                    "--json",
+                    "status,conclusion",
+                ],
+                capture_output=True,
+                text=True,
+                check=True,
             )
 
             data = json.loads(result.stdout)
 
-            if data['status'] == 'completed':
-                return data['conclusion']
+            if data["status"] == "completed":
+                return data["conclusion"]
 
-            return data['status']
+            return data["status"]
         except (subprocess.CalledProcessError, json.JSONDecodeError, KeyError):
-            return 'unknown'
+            return "unknown"
 
-    def record_iteration(self, iteration: int, errors_found: int,
-                        errors_fixed: int, errors_remaining: int,
-                        fixes_applied: List[str], new_run_id: Optional[str],
-                        success: bool):
+    def record_iteration(
+        self,
+        iteration: int,
+        errors_found: int,
+        errors_fixed: int,
+        errors_remaining: int,
+        fixes_applied: List[str],
+        new_run_id: Optional[str],
+        success: bool,
+    ):
         """Record iteration results."""
         result = IterationResult(
             iteration=iteration,
@@ -552,7 +593,7 @@ class IterativeFixEngine:
             errors_remaining=errors_remaining,
             fixes_applied=fixes_applied,
             new_run_id=new_run_id,
-            success=success
+            success=success,
         )
 
         self.iteration_history.append(result)
@@ -565,9 +606,9 @@ class IterativeFixEngine:
 
     def print_summary(self):
         """Print iteration history summary."""
-        print("\n" + "="*60)
+        print("\n" + "=" * 60)
         print("ITERATION SUMMARY")
-        print("="*60 + "\n")
+        print("=" * 60 + "\n")
 
         total_errors = 0
         total_fixed = 0
@@ -589,54 +630,56 @@ class IterativeFixEngine:
 
         print(f"Total errors encountered: {total_errors}")
         print(f"Total errors fixed: {total_fixed}")
-        print(f"Success rate: {(total_fixed/total_errors*100) if total_errors > 0 else 0:.1f}%")
+        print(
+            f"Success rate: {(total_fixed/total_errors*100) if total_errors > 0 else 0:.1f}%"
+        )
 
 
 class KnowledgeBase:
     """Store and retrieve successful fix strategies."""
 
     def __init__(self):
-        self.kb_file = Path('.github/fix-knowledge-base.json')
+        self.kb_file = Path(".github/fix-knowledge-base.json")
         self.fixes: Dict[str, Dict] = {}
         self.load()
 
     def get_fix_strategy(self, error_type: str, context: str) -> str:
         """Get best fix strategy based on historical success."""
         if error_type in self.fixes:
-            strategies = self.fixes[error_type].get('strategies', [])
+            strategies = self.fixes[error_type].get("strategies", [])
             if strategies:
                 # Return strategy with highest success rate
-                best = max(strategies, key=lambda x: x.get('success_rate', 0))
-                return best['strategy']
+                best = max(strategies, key=lambda x: x.get("success_rate", 0))
+                return best["strategy"]
 
         # Default strategies
         defaults = {
-            'npm_eresolve': 'Add --legacy-peer-deps flag',
-            'npm_404': 'Remove unavailable package',
-            'npm_peer': 'Update peer dependencies',
-            'ts_error': 'Fix TypeScript type errors',
-            'eslint_error': 'Run ESLint auto-fix',
-            'test_failure': 'Update test snapshots or assertions',
-            'python_import': 'Install missing Python module',
-            'python_version': 'Relax version constraints',
-            'timeout': 'Increase timeout duration',
-            'oom': 'Increase memory allocation',
-            'network_error': 'Add retry logic',
+            "npm_eresolve": "Add --legacy-peer-deps flag",
+            "npm_404": "Remove unavailable package",
+            "npm_peer": "Update peer dependencies",
+            "ts_error": "Fix TypeScript type errors",
+            "eslint_error": "Run ESLint auto-fix",
+            "test_failure": "Update test snapshots or assertions",
+            "python_import": "Install missing Python module",
+            "python_version": "Relax version constraints",
+            "timeout": "Increase timeout duration",
+            "oom": "Increase memory allocation",
+            "network_error": "Add retry logic",
         }
 
-        return defaults.get(error_type, 'Manual review required')
+        return defaults.get(error_type, "Manual review required")
 
     def get_confidence(self, error_type: str) -> float:
         """Get base confidence for error type."""
         if error_type in self.fixes:
-            return self.fixes[error_type].get('base_confidence', 0.5)
+            return self.fixes[error_type].get("base_confidence", 0.5)
         return 0.5
 
     def get_success_rate(self, error_type: str) -> float:
         """Get historical success rate for error type."""
         if error_type in self.fixes:
-            total = self.fixes[error_type].get('total_attempts', 0)
-            successes = self.fixes[error_type].get('successes', 0)
+            total = self.fixes[error_type].get("total_attempts", 0)
+            successes = self.fixes[error_type].get("successes", 0)
             return successes / total if total > 0 else 0.5
         return 0.5
 
@@ -647,33 +690,33 @@ class KnowledgeBase:
 
         if error_type not in self.fixes:
             self.fixes[error_type] = {
-                'base_confidence': 0.5,
-                'total_attempts': 0,
-                'successes': 0,
-                'strategies': []
+                "base_confidence": 0.5,
+                "total_attempts": 0,
+                "successes": 0,
+                "strategies": [],
             }
 
-        self.fixes[error_type]['total_attempts'] += 1
+        self.fixes[error_type]["total_attempts"] += 1
         if success:
-            self.fixes[error_type]['successes'] += 1
+            self.fixes[error_type]["successes"] += 1
 
         # Update base confidence
-        total = self.fixes[error_type]['total_attempts']
-        successes = self.fixes[error_type]['successes']
-        self.fixes[error_type]['base_confidence'] = successes / total
+        total = self.fixes[error_type]["total_attempts"]
+        successes = self.fixes[error_type]["successes"]
+        self.fixes[error_type]["base_confidence"] = successes / total
 
     def extract_error_type(self, fix: str) -> str:
         """Extract error type from fix description."""
         # Simple pattern matching
         patterns = {
-            'npm': 'npm_eresolve',
-            'package': 'npm_404',
-            'eslint': 'eslint_error',
-            'typescript': 'ts_error',
-            'python': 'python_import',
-            'test': 'test_failure',
-            'timeout': 'timeout',
-            'memory': 'oom',
+            "npm": "npm_eresolve",
+            "package": "npm_404",
+            "eslint": "eslint_error",
+            "typescript": "ts_error",
+            "python": "python_import",
+            "test": "test_failure",
+            "timeout": "timeout",
+            "memory": "oom",
         }
 
         fix_lower = fix.lower()
@@ -681,13 +724,13 @@ class KnowledgeBase:
             if keyword in fix_lower:
                 return error_type
 
-        return 'unknown'
+        return "unknown"
 
     def load(self):
         """Load knowledge base from file."""
         if self.kb_file.exists():
             try:
-                with open(self.kb_file, 'r') as f:
+                with open(self.kb_file, "r") as f:
                     self.fixes = json.load(f)
             except json.JSONDecodeError:
                 self.fixes = {}
@@ -697,16 +740,16 @@ class KnowledgeBase:
     def save(self):
         """Save knowledge base to file."""
         self.kb_file.parent.mkdir(parents=True, exist_ok=True)
-        with open(self.kb_file, 'w') as f:
+        with open(self.kb_file, "w") as f:
             json.dump(self.fixes, f, indent=2)
 
 
 # CLI Interface
-if __name__ == '__main__':
+if __name__ == "__main__":
     import argparse
 
     parser = argparse.ArgumentParser(
-        description='Iterative CI/CD Error Resolution Engine',
+        description="Iterative CI/CD Error Resolution Engine",
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="""
 Examples:
@@ -715,13 +758,17 @@ Examples:
 
   # With custom max iterations
   %(prog)s 12345678 --repo owner/repo --workflow "CI" --max-iterations 3
-        """
+        """,
     )
-    parser.add_argument('run_id', help='Initial workflow run ID to analyze')
-    parser.add_argument('--repo', required=True, help='Repository (owner/name)')
-    parser.add_argument('--workflow', required=True, help='Workflow name or file')
-    parser.add_argument('--max-iterations', type=int, default=5,
-                       help='Maximum fix iterations (default: 5)')
+    parser.add_argument("run_id", help="Initial workflow run ID to analyze")
+    parser.add_argument("--repo", required=True, help="Repository (owner/name)")
+    parser.add_argument("--workflow", required=True, help="Workflow name or file")
+    parser.add_argument(
+        "--max-iterations",
+        type=int,
+        default=5,
+        help="Maximum fix iterations (default: 5)",
+    )
 
     args = parser.parse_args()
 
@@ -730,19 +777,17 @@ Examples:
         print(f"Error: run_id must be numeric, got: {args.run_id}")
         sys.exit(1)
 
-    print("="*60)
+    print("=" * 60)
     print("Iterative CI/CD Error Resolution Engine")
-    print("="*60)
+    print("=" * 60)
     print(f"Repository: {args.repo}")
     print(f"Workflow: {args.workflow}")
     print(f"Initial Run ID: {args.run_id}")
     print(f"Max Iterations: {args.max_iterations}")
-    print("="*60 + "\n")
+    print("=" * 60 + "\n")
 
     engine = IterativeFixEngine(
-        repo=args.repo,
-        workflow=args.workflow,
-        max_iterations=args.max_iterations
+        repo=args.repo, workflow=args.workflow, max_iterations=args.max_iterations
     )
 
     success = engine.run(args.run_id)

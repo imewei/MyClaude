@@ -87,10 +87,12 @@ def main():
 
         if (step + 1) % 100 == 0:
             error = jnp.abs(energy - E_exact)
-            print(f"  Step {step+1}/{n_steps}: "
-                  f"E={energy:.6f} Ha, "
-                  f"Error={error:.6f} Ha, "
-                  f"|∇E|={grad_norm:.6f}")
+            print(
+                f"  Step {step+1}/{n_steps}: "
+                f"E={energy:.6f} Ha, "
+                f"Error={error:.6f} Ha, "
+                f"|∇E|={grad_norm:.6f}"
+            )
 
     print("✓ Optimization complete\n")
 
@@ -148,54 +150,70 @@ def main():
 
     # Energy convergence
     ax1 = axes[0, 0]
-    ax1.plot(energies, 'b-', linewidth=2, alpha=0.7, label='VQE Energy')
-    ax1.axhline(E_exact, color='r', linestyle='--', linewidth=2, label='Exact')
-    ax1.axhline(E_exact + chemical_accuracy, color='orange', linestyle=':',
-                linewidth=1, label='Chemical Accuracy')
-    ax1.axhline(E_exact - chemical_accuracy, color='orange', linestyle=':',
-                linewidth=1)
-    ax1.set_xlabel('Optimization Step')
-    ax1.set_ylabel('Energy (Hartree)')
-    ax1.set_title('VQE Energy Convergence')
+    ax1.plot(energies, "b-", linewidth=2, alpha=0.7, label="VQE Energy")
+    ax1.axhline(E_exact, color="r", linestyle="--", linewidth=2, label="Exact")
+    ax1.axhline(
+        E_exact + chemical_accuracy,
+        color="orange",
+        linestyle=":",
+        linewidth=1,
+        label="Chemical Accuracy",
+    )
+    ax1.axhline(E_exact - chemical_accuracy, color="orange", linestyle=":", linewidth=1)
+    ax1.set_xlabel("Optimization Step")
+    ax1.set_ylabel("Energy (Hartree)")
+    ax1.set_title("VQE Energy Convergence")
     ax1.legend()
     ax1.grid(True, alpha=0.3)
 
     # Energy error (log scale)
     ax2 = axes[0, 1]
     errors = jnp.abs(energies_array - E_exact)
-    ax2.semilogy(errors, 'g-', linewidth=2)
-    ax2.axhline(chemical_accuracy, color='r', linestyle='--',
-                linewidth=2, label='Chemical Accuracy')
-    ax2.set_xlabel('Optimization Step')
-    ax2.set_ylabel('|E_VQE - E_exact| (Ha)')
-    ax2.set_title('Energy Error (Log Scale)')
+    ax2.semilogy(errors, "g-", linewidth=2)
+    ax2.axhline(
+        chemical_accuracy,
+        color="r",
+        linestyle="--",
+        linewidth=2,
+        label="Chemical Accuracy",
+    )
+    ax2.set_xlabel("Optimization Step")
+    ax2.set_ylabel("|E_VQE - E_exact| (Ha)")
+    ax2.set_title("Energy Error (Log Scale)")
     ax2.legend()
     ax2.grid(True, alpha=0.3)
 
     # Gradient norm
     ax3 = axes[1, 0]
-    ax3.semilogy(gradients_norm, 'purple', linewidth=2)
-    ax3.set_xlabel('Optimization Step')
-    ax3.set_ylabel('||∇E||')
-    ax3.set_title('Gradient Norm Evolution')
+    ax3.semilogy(gradients_norm, "purple", linewidth=2)
+    ax3.set_xlabel("Optimization Step")
+    ax3.set_ylabel("||∇E||")
+    ax3.set_title("Gradient Norm Evolution")
     ax3.grid(True, alpha=0.3)
 
     # Convergence rate
     ax4 = axes[1, 1]
     window = 50
     if len(energies) >= window:
-        rolling_mean = jnp.convolve(energies_array, jnp.ones(window)/window, mode='valid')
-        ax4.plot(range(window-1, len(energies)), rolling_mean, 'b-',
-                 linewidth=2, label=f'{window}-step moving average')
-        ax4.axhline(E_exact, color='r', linestyle='--', linewidth=2, label='Exact')
-        ax4.set_xlabel('Optimization Step')
-        ax4.set_ylabel('Energy (Hartree)')
-        ax4.set_title('Convergence Smoothed')
+        rolling_mean = jnp.convolve(
+            energies_array, jnp.ones(window) / window, mode="valid"
+        )
+        ax4.plot(
+            range(window - 1, len(energies)),
+            rolling_mean,
+            "b-",
+            linewidth=2,
+            label=f"{window}-step moving average",
+        )
+        ax4.axhline(E_exact, color="r", linestyle="--", linewidth=2, label="Exact")
+        ax4.set_xlabel("Optimization Step")
+        ax4.set_ylabel("Energy (Hartree)")
+        ax4.set_title("Convergence Smoothed")
         ax4.legend()
         ax4.grid(True, alpha=0.3)
 
     plt.tight_layout()
-    plt.savefig('vqe_hydrogen_results.png', dpi=300, bbox_inches='tight')
+    plt.savefig("vqe_hydrogen_results.png", dpi=300, bbox_inches="tight")
     print("✓ Plots saved to: vqe_hydrogen_results.png")
 
     print("\n" + "=" * 60)
@@ -209,17 +227,17 @@ def h2_hamiltonian():
     Real H2 Hamiltonian has ~15 terms; this is illustrative
     """
     hamiltonian = {
-        'IIII': -0.8,    # Constant term
-        'ZIII': 0.2,     # Single-qubit Z terms
-        'IZII': 0.2,
-        'IIZI': -0.2,
-        'IIIZ': -0.2,
-        'ZZII': 0.1,     # Two-qubit ZZ terms
-        'ZIZI': 0.05,
-        'ZIIZ': -0.05,
-        'IZZI': -0.05,
-        'XXII': 0.05,    # Two-qubit XX terms (hopping)
-        'YYII': 0.05,    # Two-qubit YY terms
+        "IIII": -0.8,  # Constant term
+        "ZIII": 0.2,  # Single-qubit Z terms
+        "IZII": 0.2,
+        "IIZI": -0.2,
+        "IIIZ": -0.2,
+        "ZZII": 0.1,  # Two-qubit ZZ terms
+        "ZIZI": 0.05,
+        "ZIIZ": -0.05,
+        "IZZI": -0.05,
+        "XXII": 0.05,  # Two-qubit XX terms (hopping)
+        "YYII": 0.05,  # Two-qubit YY terms
     }
     return hamiltonian
 
@@ -288,11 +306,11 @@ def apply_pauli_operator(state, pauli_string, n_qubits):
     result = state
 
     for i, pauli in enumerate(pauli_string):
-        if pauli == 'X':
+        if pauli == "X":
             result = apply_pauli_x(result, i, n_qubits)
-        elif pauli == 'Y':
+        elif pauli == "Y":
             result = apply_pauli_y(result, i, n_qubits)
-        elif pauli == 'Z':
+        elif pauli == "Z":
             result = apply_pauli_z(result, i, n_qubits)
         # 'I' does nothing
 
@@ -383,5 +401,5 @@ def apply_pauli_z(state, qubit, n_qubits):
     return new_state
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

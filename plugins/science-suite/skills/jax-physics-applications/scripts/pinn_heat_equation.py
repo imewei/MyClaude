@@ -62,7 +62,7 @@ def main():
 
     # 3. Training loop
     print("Starting training...")
-    losses_history = {'total': [], 'pde': [], 'bc': [], 'ic': []}
+    losses_history = {"total": [], "pde": [], "bc": [], "ic": []}
 
     for epoch in range(n_epochs):
         # Sample collocation points
@@ -81,17 +81,19 @@ def main():
         optimizer.update(grads)
 
         # Record losses
-        losses_history['total'].append(total_loss)
-        losses_history['pde'].append(losses['pde'])
-        losses_history['bc'].append(losses['bc'])
-        losses_history['ic'].append(losses['ic'])
+        losses_history["total"].append(total_loss)
+        losses_history["pde"].append(losses["pde"])
+        losses_history["bc"].append(losses["bc"])
+        losses_history["ic"].append(losses["ic"])
 
         if (epoch + 1) % 1000 == 0:
-            print(f"  Epoch {epoch+1}/{n_epochs}: "
-                  f"Loss={total_loss:.6f}, "
-                  f"PDE={losses['pde']:.6f}, "
-                  f"BC={losses['bc']:.6f}, "
-                  f"IC={losses['ic']:.6f}")
+            print(
+                f"  Epoch {epoch+1}/{n_epochs}: "
+                f"Loss={total_loss:.6f}, "
+                f"PDE={losses['pde']:.6f}, "
+                f"BC={losses['bc']:.6f}, "
+                f"IC={losses['ic']:.6f}"
+            )
 
     print("✓ Training complete\n")
 
@@ -144,13 +146,14 @@ def main():
     # Validate PDE residual on test points
     print("\nPDE Residual Validation:")
     x_test_grid, t_test_grid = jnp.meshgrid(
-        jnp.linspace(0.1, 0.9, 20),
-        jnp.linspace(0.1, 0.9, 20)
+        jnp.linspace(0.1, 0.9, 20), jnp.linspace(0.1, 0.9, 20)
     )
     x_flat = x_test_grid.flatten()
     t_flat = t_test_grid.flatten()
 
-    residuals = jax.vmap(lambda x, t: compute_pde_residual(model, x, t, alpha))(x_flat, t_flat)
+    residuals = jax.vmap(lambda x, t: compute_pde_residual(model, x, t, alpha))(
+        x_flat, t_flat
+    )
     max_residual = jnp.max(jnp.abs(residuals))
     mean_residual = jnp.mean(jnp.abs(residuals))
 
@@ -170,13 +173,13 @@ def main():
 
     # Loss evolution
     ax1 = plt.subplot(2, 3, 1)
-    ax1.semilogy(losses_history['total'], 'b-', label='Total', linewidth=2)
-    ax1.semilogy(losses_history['pde'], 'r--', label='PDE', alpha=0.7)
-    ax1.semilogy(losses_history['bc'], 'g--', label='BC', alpha=0.7)
-    ax1.semilogy(losses_history['ic'], 'm--', label='IC', alpha=0.7)
-    ax1.set_xlabel('Epoch')
-    ax1.set_ylabel('Loss')
-    ax1.set_title('Training Loss Evolution')
+    ax1.semilogy(losses_history["total"], "b-", label="Total", linewidth=2)
+    ax1.semilogy(losses_history["pde"], "r--", label="PDE", alpha=0.7)
+    ax1.semilogy(losses_history["bc"], "g--", label="BC", alpha=0.7)
+    ax1.semilogy(losses_history["ic"], "m--", label="IC", alpha=0.7)
+    ax1.set_xlabel("Epoch")
+    ax1.set_ylabel("Loss")
+    ax1.set_title("Training Loss Evolution")
     ax1.legend()
     ax1.grid(True, alpha=0.3)
 
@@ -188,12 +191,14 @@ def main():
         u_pred = jax.vmap(lambda x: model(x, t_val))(x_plot)
         u_exact = analytical_solution(x_plot, t_val, alpha)
 
-        ax2.plot(x_plot, u_pred.squeeze(), '-', label=f't={t_val:.2f} (PINN)', alpha=0.7)
-        ax2.plot(x_plot, u_exact, '--', label=f't={t_val:.2f} (Exact)', alpha=0.7)
+        ax2.plot(
+            x_plot, u_pred.squeeze(), "-", label=f"t={t_val:.2f} (PINN)", alpha=0.7
+        )
+        ax2.plot(x_plot, u_exact, "--", label=f"t={t_val:.2f} (Exact)", alpha=0.7)
 
-    ax2.set_xlabel('x')
-    ax2.set_ylabel('u(x,t)')
-    ax2.set_title('Solution Comparison')
+    ax2.set_xlabel("x")
+    ax2.set_ylabel("u(x,t)")
+    ax2.set_title("Solution Comparison")
     ax2.legend(fontsize=8)
     ax2.grid(True, alpha=0.3)
 
@@ -207,41 +212,46 @@ def main():
     U_exact = analytical_solution(X, T, alpha)
     error_field = jnp.abs(U_pred - U_exact)
 
-    im = ax3.contourf(X, T, error_field, levels=20, cmap='hot')
-    ax3.set_xlabel('x')
-    ax3.set_ylabel('t')
-    ax3.set_title('Absolute Error |u_pred - u_exact|')
+    im = ax3.contourf(X, T, error_field, levels=20, cmap="hot")
+    ax3.set_xlabel("x")
+    ax3.set_ylabel("t")
+    ax3.set_title("Absolute Error |u_pred - u_exact|")
     plt.colorbar(im, ax=ax3)
 
     # Solution heatmap (PINN)
     ax4 = plt.subplot(2, 3, 4)
-    im = ax4.contourf(X, T, U_pred, levels=20, cmap='viridis')
-    ax4.set_xlabel('x')
-    ax4.set_ylabel('t')
-    ax4.set_title('PINN Solution u(x,t)')
+    im = ax4.contourf(X, T, U_pred, levels=20, cmap="viridis")
+    ax4.set_xlabel("x")
+    ax4.set_ylabel("t")
+    ax4.set_title("PINN Solution u(x,t)")
     plt.colorbar(im, ax=ax4)
 
     # Solution heatmap (Exact)
     ax5 = plt.subplot(2, 3, 5)
-    im = ax5.contourf(X, T, U_exact, levels=20, cmap='viridis')
-    ax5.set_xlabel('x')
-    ax5.set_ylabel('t')
-    ax5.set_title('Analytical Solution u(x,t)')
+    im = ax5.contourf(X, T, U_exact, levels=20, cmap="viridis")
+    ax5.set_xlabel("x")
+    ax5.set_ylabel("t")
+    ax5.set_title("Analytical Solution u(x,t)")
     plt.colorbar(im, ax=ax5)
 
     # PDE residual heatmap
     ax6 = plt.subplot(2, 3, 6)
-    residual_field = jnp.array([[compute_pde_residual(model, x, t, alpha)
-                                 for x in x_mesh[::5]] for t in t_mesh[::5]])
-    im = ax6.contourf(x_mesh[::5], t_mesh[::5], jnp.abs(residual_field),
-                      levels=20, cmap='hot')
-    ax6.set_xlabel('x')
-    ax6.set_ylabel('t')
-    ax6.set_title('PDE Residual |∂u/∂t - α∂²u/∂x²|')
+    residual_field = jnp.array(
+        [
+            [compute_pde_residual(model, x, t, alpha) for x in x_mesh[::5]]
+            for t in t_mesh[::5]
+        ]
+    )
+    im = ax6.contourf(
+        x_mesh[::5], t_mesh[::5], jnp.abs(residual_field), levels=20, cmap="hot"
+    )
+    ax6.set_xlabel("x")
+    ax6.set_ylabel("t")
+    ax6.set_title("PDE Residual |∂u/∂t - α∂²u/∂x²|")
     plt.colorbar(im, ax=ax6)
 
     plt.tight_layout()
-    plt.savefig('pinn_heat_equation_results.png', dpi=300, bbox_inches='tight')
+    plt.savefig("pinn_heat_equation_results.png", dpi=300, bbox_inches="tight")
     print("✓ Plots saved to: pinn_heat_equation_results.png")
 
     print("\n" + "=" * 60)
@@ -285,12 +295,14 @@ def pinn_loss(model, x_pde, t_pde, x_bc, t_bc, x_ic, t_ic, u_ic, alpha):
     """Physics-informed loss = PDE residual + BC + IC"""
 
     # PDE residual loss
-    residuals = jax.vmap(lambda x, t: compute_pde_residual(model, x, t, alpha))(x_pde, t_pde)
-    loss_pde = jnp.mean(residuals ** 2)
+    residuals = jax.vmap(lambda x, t: compute_pde_residual(model, x, t, alpha))(
+        x_pde, t_pde
+    )
+    loss_pde = jnp.mean(residuals**2)
 
     # Boundary condition loss: u(0,t) = 0, u(1,t) = 0
     u_bc = jax.vmap(model)(x_bc, t_bc)
-    loss_bc = jnp.mean(u_bc ** 2)
+    loss_bc = jnp.mean(u_bc**2)
 
     # Initial condition loss
     u_ic_pred = jax.vmap(model)(x_ic, t_ic)
@@ -299,11 +311,7 @@ def pinn_loss(model, x_pde, t_pde, x_bc, t_bc, x_ic, t_ic, u_ic, alpha):
     # Combined loss with weighting
     total_loss = loss_pde + 100 * loss_bc + 100 * loss_ic
 
-    losses = {
-        'pde': loss_pde,
-        'bc': loss_bc,
-        'ic': loss_ic
-    }
+    losses = {"pde": loss_pde, "bc": loss_bc, "ic": loss_ic}
 
     return total_loss, losses
 
@@ -339,13 +347,15 @@ def sample_collocation_points(key, n_points):
 def sample_boundary_points(key, n_points):
     """Sample boundary points: x=0 and x=1"""
     key1, key2 = jax.random.split(key)
-    t = jax.random.uniform(key1, (n_points//2,), minval=0.0, maxval=1.0)
+    t = jax.random.uniform(key1, (n_points // 2,), minval=0.0, maxval=1.0)
 
-    x_left = jnp.zeros(n_points//2)
-    x_right = jnp.ones(n_points//2)
+    x_left = jnp.zeros(n_points // 2)
+    x_right = jnp.ones(n_points // 2)
 
     x = jnp.concatenate([x_left, x_right])
-    t = jnp.concatenate([t, jax.random.uniform(key2, (n_points//2,), minval=0.0, maxval=1.0)])
+    t = jnp.concatenate(
+        [t, jax.random.uniform(key2, (n_points // 2,), minval=0.0, maxval=1.0)]
+    )
 
     return x, t
 
@@ -369,5 +379,5 @@ def count_parameters(model):
     return sum(p.size for p in jax.tree.leaves(params))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

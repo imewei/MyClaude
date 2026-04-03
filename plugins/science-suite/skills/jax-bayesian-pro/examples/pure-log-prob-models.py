@@ -11,30 +11,32 @@ from jax.scipy import stats
 from typing import Dict
 from functools import partial
 
-
 # =============================================================================
 # Pattern 1: Basic Pure Log-Prob Model
 # =============================================================================
 
-def simple_regression_log_prob(params: Dict[str, jnp.ndarray],
-                                data: Dict[str, jnp.ndarray]) -> float:
+
+def simple_regression_log_prob(
+    params: Dict[str, jnp.ndarray], data: Dict[str, jnp.ndarray]
+) -> float:
     """Pure log-probability for simple linear regression.
 
     No magic contexts, no hidden state. Just a function.
     """
     # Extract parameters
-    beta = params['beta']          # Regression coefficients
-    log_sigma = params['log_sigma']  # Log of noise std (unconstrained)
+    beta = params["beta"]  # Regression coefficients
+    log_sigma = params["log_sigma"]  # Log of noise std (unconstrained)
     sigma = jnp.exp(log_sigma)
 
     # Extract data
-    X, y = data['X'], data['y']
+    X, y = data["X"], data["y"]
 
     # Prior log-probabilities
-    log_prior = (
-        jnp.sum(stats.norm.logpdf(beta, 0, 10)) +  # beta ~ N(0, 10)
-        stats.norm.logpdf(log_sigma, 0, 2)          # log_sigma ~ N(0, 2)
-    )
+    log_prior = jnp.sum(
+        stats.norm.logpdf(beta, 0, 10)
+    ) + stats.norm.logpdf(  # beta ~ N(0, 10)
+        log_sigma, 0, 2
+    )  # log_sigma ~ N(0, 2)
 
     # Likelihood
     mu = X @ beta
@@ -47,8 +49,10 @@ def simple_regression_log_prob(params: Dict[str, jnp.ndarray],
 # Pattern 2: Hierarchical Model as Pure Function
 # =============================================================================
 
-def hierarchical_log_prob(params: Dict[str, jnp.ndarray],
-                          data: Dict[str, jnp.ndarray]) -> float:
+
+def hierarchical_log_prob(
+    params: Dict[str, jnp.ndarray], data: Dict[str, jnp.ndarray]
+) -> float:
     """Pure log-prob for hierarchical (random effects) model.
 
     Model:
@@ -59,18 +63,18 @@ def hierarchical_log_prob(params: Dict[str, jnp.ndarray],
         y[i] ~ N(mu_group[group[i]], sigma)
     """
     # Parameters
-    mu_0 = params['mu_0']
-    log_sigma_0 = params['log_sigma_0']
+    mu_0 = params["mu_0"]
+    log_sigma_0 = params["log_sigma_0"]
     sigma_0 = jnp.exp(log_sigma_0)
 
-    mu_group = params['mu_group']  # Shape: (n_groups,)
+    mu_group = params["mu_group"]  # Shape: (n_groups,)
 
-    log_sigma = params['log_sigma']
+    log_sigma = params["log_sigma"]
     sigma = jnp.exp(log_sigma)
 
     # Data
-    y = data['y']
-    group_idx = data['group_idx']
+    y = data["y"]
+    group_idx = data["group_idx"]
 
     # === PRIORS ===
     # Hyperpriors
@@ -93,11 +97,11 @@ def hierarchical_log_prob(params: Dict[str, jnp.ndarray],
 
     # Total log probability
     log_prob = (
-        log_prior_mu_0 +
-        log_prior_log_sigma_0 +
-        log_prior_mu_group +
-        log_prior_log_sigma +
-        log_lik
+        log_prior_mu_0
+        + log_prior_log_sigma_0
+        + log_prior_mu_group
+        + log_prior_log_sigma
+        + log_lik
     )
 
     return log_prob
@@ -107,9 +111,10 @@ def hierarchical_log_prob(params: Dict[str, jnp.ndarray],
 # Pattern 3: Vectorized Log-Prob for Batch Data
 # =============================================================================
 
+
 def single_observation_log_lik(params: Dict, obs: jnp.ndarray) -> float:
     """Log-likelihood for a single observation."""
-    mu, sigma = params['mu'], jnp.exp(params['log_sigma'])
+    mu, sigma = params["mu"], jnp.exp(params["log_sigma"])
     return stats.norm.logpdf(obs, mu, sigma)
 
 
@@ -119,9 +124,8 @@ def batched_log_prob(params: Dict, data: jnp.ndarray) -> float:
     This is efficient: vmap allows processing all data in parallel.
     """
     # Prior
-    log_prior = (
-        stats.norm.logpdf(params['mu'], 0, 10) +
-        stats.norm.logpdf(params['log_sigma'], 0, 2)
+    log_prior = stats.norm.logpdf(params["mu"], 0, 10) + stats.norm.logpdf(
+        params["log_sigma"], 0, 2
     )
 
     # Vectorized likelihood
@@ -135,9 +139,8 @@ def batched_log_prob(params: Dict, data: jnp.ndarray) -> float:
 # Pattern 4: Masked Log-Prob for Ragged Data
 # =============================================================================
 
-def masked_log_prob(params: Dict,
-                    padded_data: jnp.ndarray,
-                    mask: jnp.ndarray) -> float:
+
+def masked_log_prob(params: Dict, padded_data: jnp.ndarray, mask: jnp.ndarray) -> float:
     """Log-prob with masking for variable-length sequences.
 
     Args:
@@ -145,13 +148,12 @@ def masked_log_prob(params: Dict,
         padded_data: Shape (batch, max_len), padded with zeros
         mask: Shape (batch, max_len), True for valid entries
     """
-    mu = params['mu']
-    sigma = jnp.exp(params['log_sigma'])
+    mu = params["mu"]
+    sigma = jnp.exp(params["log_sigma"])
 
     # Prior
-    log_prior = (
-        stats.norm.logpdf(mu, 0, 10) +
-        stats.norm.logpdf(params['log_sigma'], 0, 2)
+    log_prior = stats.norm.logpdf(mu, 0, 10) + stats.norm.logpdf(
+        params["log_sigma"], 0, 2
     )
 
     # Compute log-lik for all entries (including padding)
@@ -170,15 +172,16 @@ def masked_log_prob(params: Dict,
 # Pattern 5: Mixture Model Log-Prob
 # =============================================================================
 
+
 def mixture_log_prob(params: Dict, data: jnp.ndarray) -> float:
     """Log-prob for Gaussian mixture model.
 
     Uses log-sum-exp trick for numerical stability.
     """
     # Parameters
-    log_weights = params['log_weights']  # (K,) unnormalized log weights
-    mus = params['mus']                   # (K,) component means
-    log_sigmas = params['log_sigmas']     # (K,) log component stds
+    log_weights = params["log_weights"]  # (K,) unnormalized log weights
+    mus = params["mus"]  # (K,) component means
+    log_sigmas = params["log_sigmas"]  # (K,) log component stds
 
     len(log_weights)
     sigmas = jnp.exp(log_sigmas)
@@ -187,9 +190,8 @@ def mixture_log_prob(params: Dict, data: jnp.ndarray) -> float:
     log_weights_normalized = log_weights - jax.scipy.special.logsumexp(log_weights)
 
     # Prior
-    log_prior = (
-        jnp.sum(stats.norm.logpdf(mus, 0, 10)) +
-        jnp.sum(stats.norm.logpdf(log_sigmas, 0, 2))
+    log_prior = jnp.sum(stats.norm.logpdf(mus, 0, 10)) + jnp.sum(
+        stats.norm.logpdf(log_sigmas, 0, 2)
     )
 
     # Likelihood with log-sum-exp
@@ -208,12 +210,13 @@ def mixture_log_prob(params: Dict, data: jnp.ndarray) -> float:
 # Pattern 6: Non-Centered Parameterization
 # =============================================================================
 
+
 def funnel_log_prob_centered(params: Dict) -> float:
     """Centered parameterization - has funnel geometry."""
-    tau = jnp.exp(params['log_tau'])  # tau > 0
-    x = params['x']  # (n,)
+    tau = jnp.exp(params["log_tau"])  # tau > 0
+    x = params["x"]  # (n,)
 
-    log_prior_tau = stats.halfnorm.logpdf(tau, scale=3) + params['log_tau']  # Jacobian
+    log_prior_tau = stats.halfnorm.logpdf(tau, scale=3) + params["log_tau"]  # Jacobian
     log_prior_x = jnp.sum(stats.norm.logpdf(x, 0, tau))
 
     return log_prior_tau + log_prior_x
@@ -221,9 +224,9 @@ def funnel_log_prob_centered(params: Dict) -> float:
 
 def funnel_log_prob_noncentered(params: Dict) -> float:
     """Non-centered parameterization - no funnel."""
-    log_tau = params['log_tau']
+    log_tau = params["log_tau"]
     jnp.exp(log_tau)
-    z = params['z']  # (n,) - standard normal latent
+    z = params["z"]  # (n,) - standard normal latent
 
     # Priors on transformed parameters
     log_prior_log_tau = stats.norm.logpdf(log_tau, 0, 1)
@@ -239,6 +242,7 @@ def funnel_log_prob_noncentered(params: Dict) -> float:
 # Pattern 7: Transformations and Jacobians
 # =============================================================================
 
+
 def transformed_params_log_prob(unconstrained_params: Dict, data: jnp.ndarray) -> float:
     """Log-prob with proper Jacobian corrections for transformations.
 
@@ -246,14 +250,14 @@ def transformed_params_log_prob(unconstrained_params: Dict, data: jnp.ndarray) -
     Must include Jacobian of transformation in log-prob.
     """
     # Unconstrained -> Constrained transformations
-    mu = unconstrained_params['mu']  # Already unconstrained
+    mu = unconstrained_params["mu"]  # Already unconstrained
 
     # sigma > 0: use exp transform
-    log_sigma = unconstrained_params['log_sigma']
+    log_sigma = unconstrained_params["log_sigma"]
     sigma = jnp.exp(log_sigma)
 
     # rho in (-1, 1): use tanh transform
-    unconstrained_rho = unconstrained_params['unconstrained_rho']
+    unconstrained_rho = unconstrained_params["unconstrained_rho"]
     jnp.tanh(unconstrained_rho)
 
     # === PRIORS IN CONSTRAINED SPACE ===
@@ -282,6 +286,7 @@ def transformed_params_log_prob(unconstrained_params: Dict, data: jnp.ndarray) -
 # Demo: Using with Blackjax
 # =============================================================================
 
+
 def demo_with_blackjax():
     """Show how to use pure log-prob with Blackjax."""
     import blackjax
@@ -297,16 +302,16 @@ def demo_with_blackjax():
 
     # Initial parameters
     initial_params = {
-        'mu': 0.0,
-        'log_sigma': 0.0,
+        "mu": 0.0,
+        "log_sigma": 0.0,
     }
 
     # Flatten for Blackjax (expects array, not dict)
     def pack(params):
-        return jnp.array([params['mu'], params['log_sigma']])
+        return jnp.array([params["mu"], params["log_sigma"]])
 
     def unpack(arr):
-        return {'mu': arr[0], 'log_sigma': arr[1]}
+        return {"mu": arr[0], "log_sigma": arr[1]}
 
     def packed_log_prob(arr):
         return log_prob(unpack(arr))
@@ -329,8 +334,12 @@ def demo_with_blackjax():
     mu_samples = samples[:, 0]
     sigma_samples = jnp.exp(samples[:, 1])
 
-    print(f"True mu: {true_mu}, Estimated: {jnp.mean(mu_samples):.3f} ± {jnp.std(mu_samples):.3f}")
-    print(f"True sigma: {true_sigma}, Estimated: {jnp.mean(sigma_samples):.3f} ± {jnp.std(sigma_samples):.3f}")
+    print(
+        f"True mu: {true_mu}, Estimated: {jnp.mean(mu_samples):.3f} ± {jnp.std(mu_samples):.3f}"
+    )
+    print(
+        f"True sigma: {true_sigma}, Estimated: {jnp.mean(sigma_samples):.3f} ± {jnp.std(sigma_samples):.3f}"
+    )
 
 
 if __name__ == "__main__":

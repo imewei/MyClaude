@@ -18,7 +18,9 @@ def main() -> None:
         }
         json.dump(result, sys.stdout)
     except Exception as e:
-        json.dump({"status": "error", "message": f"PostCompact hook error: {e}"}, sys.stdout)
+        json.dump(
+            {"status": "error", "message": f"PostCompact hook error: {e}"}, sys.stdout
+        )
 
 
 if __name__ == "__main__":

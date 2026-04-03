@@ -36,7 +36,9 @@ class ReportGenerator:
         if version:
             self.lines.append(f"**Version:** {version}")
         if include_timestamp:
-            self.lines.append(f"**Generated:** {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
+            self.lines.append(
+                f"**Generated:** {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}"
+            )
         self.lines.append("")
 
     def add_section(self, title: str, level: int = 2) -> None:
@@ -112,7 +114,9 @@ class ReportGenerator:
 
         self.add_section("Validation Summary")
         self.add_bullet(f"**Plugin:** {result.plugin_name}")
-        self.add_bullet(f"**Status:** {'\\u2705 PASS' if result.is_valid else '\\u274c FAIL'}")
+        self.add_bullet(
+            f"**Status:** {'\\u2705 PASS' if result.is_valid else '\\u274c FAIL'}"
+        )
         self.add_bullet(f"**Errors:** {counts['critical'] + counts['error']}")
         self.add_bullet(f"**Warnings:** {counts['warning']}")
         self.add_bullet(f"**Info:** {counts['info']}")

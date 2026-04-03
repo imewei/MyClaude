@@ -21,7 +21,6 @@ from dataclasses import dataclass, field
 from datetime import datetime
 from pathlib import Path
 
-
 # Approximate tokens per character ratio for English text
 CHARS_PER_TOKEN = 4.0
 
@@ -195,13 +194,17 @@ def generate_report(report: BudgetReport) -> str:
     ]
 
     if report.oversized_skills:
-        lines.extend([
-            "## Oversized Skills (exceed 200K budget)",
-            "",
-            "| Skill | Plugin | Est. Tokens | Budget | Over By |",
-            "|-------|--------|-------------|--------|---------|",
-        ])
-        for r in sorted(report.oversized_skills, key=lambda x: x.estimated_tokens, reverse=True):
+        lines.extend(
+            [
+                "## Oversized Skills (exceed 200K budget)",
+                "",
+                "| Skill | Plugin | Est. Tokens | Budget | Over By |",
+                "|-------|--------|-------------|--------|---------|",
+            ]
+        )
+        for r in sorted(
+            report.oversized_skills, key=lambda x: x.estimated_tokens, reverse=True
+        ):
             over_by = r.estimated_tokens - r.budget_200k
             lines.append(
                 f"| {r.skill_name} | {r.plugin_name} | "
@@ -210,13 +213,17 @@ def generate_report(report: BudgetReport) -> str:
         lines.append("")
 
     if report.headroom_warnings:
-        lines.extend([
-            "## Headroom Warnings (>75% of 200K budget)",
-            "",
-            "| Skill | Plugin | Est. Tokens | Budget | Usage |",
-            "|-------|--------|-------------|--------|-------|",
-        ])
-        for r in sorted(report.headroom_warnings, key=lambda x: x.estimated_tokens, reverse=True):
+        lines.extend(
+            [
+                "## Headroom Warnings (>75% of 200K budget)",
+                "",
+                "| Skill | Plugin | Est. Tokens | Budget | Usage |",
+                "|-------|--------|-------------|--------|-------|",
+            ]
+        )
+        for r in sorted(
+            report.headroom_warnings, key=lambda x: x.estimated_tokens, reverse=True
+        ):
             usage_pct = r.estimated_tokens / r.budget_200k * 100
             lines.append(
                 f"| {r.skill_name} | {r.plugin_name} | "
@@ -225,13 +232,17 @@ def generate_report(report: BudgetReport) -> str:
         lines.append("")
 
     # All skills table
-    lines.extend([
-        "## All Skills by Size",
-        "",
-        "| Skill | Plugin | Tokens | 200K | 1M | First Section |",
-        "|-------|--------|--------|------|-----|--------------|",
-    ])
-    for r in sorted(report.results, key=lambda x: x.estimated_tokens, reverse=True)[:30]:
+    lines.extend(
+        [
+            "## All Skills by Size",
+            "",
+            "| Skill | Plugin | Tokens | 200K | 1M | First Section |",
+            "|-------|--------|--------|------|-----|--------------|",
+        ]
+    )
+    for r in sorted(report.results, key=lambda x: x.estimated_tokens, reverse=True)[
+        :30
+    ]:
         status_200k = "pass" if r.fits_200k else "OVER"
         status_1m = "pass" if r.fits_1m else "OVER"
         lines.append(

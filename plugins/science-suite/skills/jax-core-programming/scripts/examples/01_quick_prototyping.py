@@ -24,11 +24,11 @@ def example_quick_prototyping():
 
     # Step 1: Pure function definition
     print("\nStep 1: Pure function definition")
-    params = {'w': jnp.ones((10, 1)), 'b': jnp.zeros((1,))}
+    params = {"w": jnp.ones((10, 1)), "b": jnp.zeros((1,))}
 
     def model_fn(params, x):
         """Simple linear model"""
-        return x @ params['w'] + params['b']
+        return x @ params["w"] + params["b"]
 
     # Test single example
     pred = model_fn(params, X[0])
@@ -113,7 +113,10 @@ def example_quick_prototyping():
     def fast_grad_fn(params, X_batch, y_batch):
         """Compiled gradient function with vectorization"""
         vectorized_loss = jax.vmap(loss_fn, in_axes=(None, 0, 0))
-        def batch_loss(p): return jnp.mean(vectorized_loss(p, X_batch, y_batch))
+
+        def batch_loss(p):
+            return jnp.mean(vectorized_loss(p, X_batch, y_batch))
+
         return jax.grad(batch_loss)(params)
 
     # Final benchmark
@@ -135,7 +138,7 @@ def example_quick_prototyping():
     print("\nStep 7: Quick training loop")
 
     learning_rate = 0.01
-    params = {'w': jnp.ones((10, 1)), 'b': jnp.zeros((1,))}
+    params = {"w": jnp.ones((10, 1)), "b": jnp.zeros((1,))}
 
     for step in range(10):
         grads = fast_grad_fn(params, X[:32], y[:32])
@@ -150,5 +153,5 @@ def example_quick_prototyping():
     print(f"Final parameters: w norm = {jnp.linalg.norm(params['w']):.4f}")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     example_quick_prototyping()

@@ -134,7 +134,7 @@ class CommandSuggestionAnalyzer:
                         description=cmd_data.get("description", ""),
                         status=cmd_data.get("status", "active"),
                         priority=cmd_data.get("priority", 5),
-                        plugin_name=plugin_name
+                        plugin_name=plugin_name,
                     )
 
                     # Extract keywords from command name and description
@@ -148,7 +148,9 @@ class CommandSuggestionAnalyzer:
 
                     self.commands.append(command)
 
-                print(f"  ✓ {plugin_name}: {len([c for c in self.commands if c.plugin_name == plugin_name])} commands")
+                print(
+                    f"  ✓ {plugin_name}: {len([c for c in self.commands if c.plugin_name == plugin_name])} commands"
+                )
 
             except Exception as e:
                 print(f"  ✗ Error loading {plugin_dir.name}: {e}")
@@ -161,12 +163,29 @@ class CommandSuggestionAnalyzer:
         text = text.replace("/", " ")
 
         # Split on non-alphanumeric characters
-        words = re.findall(r'\b[a-z]+\b', text.lower())
+        words = re.findall(r"\b[a-z]+\b", text.lower())
 
         # Filter out common words
         stopwords = {
-            "the", "a", "an", "and", "or", "but", "in", "on", "at", "to",
-            "for", "of", "with", "by", "from", "as", "is", "was", "are"
+            "the",
+            "a",
+            "an",
+            "and",
+            "or",
+            "but",
+            "in",
+            "on",
+            "at",
+            "to",
+            "for",
+            "of",
+            "with",
+            "by",
+            "from",
+            "as",
+            "is",
+            "was",
+            "are",
         }
 
         return {w for w in words if w not in stopwords and len(w) > 2}
@@ -181,8 +200,22 @@ class CommandSuggestionAnalyzer:
                 continue
 
             ext = file_path.suffix.lower()
-            if ext not in {".py", ".jl", ".js", ".ts", ".rs", ".cpp", ".c", ".go",
-                          ".java", ".toml", ".json", ".yaml", ".yml", ".md"}:
+            if ext not in {
+                ".py",
+                ".jl",
+                ".js",
+                ".ts",
+                ".rs",
+                ".cpp",
+                ".c",
+                ".go",
+                ".java",
+                ".toml",
+                ".json",
+                ".yaml",
+                ".yml",
+                ".md",
+            }:
                 continue
 
             try:
@@ -191,7 +224,7 @@ class CommandSuggestionAnalyzer:
                     file_path=file_path,
                     file_extension=ext,
                     file_content=content,
-                    keywords_present=self._extract_keywords(content)
+                    keywords_present=self._extract_keywords(content),
                 )
 
                 # Infer project type from directory structure
@@ -240,7 +273,9 @@ class CommandSuggestionAnalyzer:
         cmd_name_lower = command.name.lower()
 
         # Setup/scaffold commands are relevant at project start
-        if any(term in cmd_name_lower for term in ["setup", "scaffold", "init", "create"]):
+        if any(
+            term in cmd_name_lower for term in ["setup", "scaffold", "init", "create"]
+        ):
             # Check if context suggests early stage
             if context.file_content and len(context.file_content) < 500:
                 score += 0.2
@@ -264,7 +299,9 @@ class CommandSuggestionAnalyzer:
 
         # CI/CD commands are relevant for workflow contexts
         if "ci" in cmd_name_lower or "workflow" in cmd_name_lower:
-            if any("workflow" in p or ".github" in p for p in context.directory_structure):
+            if any(
+                "workflow" in p or ".github" in p for p in context.directory_structure
+            ):
                 score += 0.4
 
         return min(score, 1.0), matching_keywords
@@ -278,12 +315,15 @@ class CommandSuggestionAnalyzer:
         # Setup/scaffold commands should be suggested early
         if any(term in cmd_name for term in ["setup", "scaffold", "init"]):
             # Appropriate if project is new/small
-            return not context.directory_structure or len(context.directory_structure) < 5
+            return (
+                not context.directory_structure or len(context.directory_structure) < 5
+            )
 
         # Testing commands appropriate when tests exist or are being written
         if "test" in cmd_name:
-            return (context.file_path and "test" in str(context.file_path).lower()) or \
-                   any("test" in d for d in context.directory_structure)
+            return (
+                context.file_path and "test" in str(context.file_path).lower()
+            ) or any("test" in d for d in context.directory_structure)
 
         # Optimization commands appropriate for established projects
         if "optimize" in cmd_name or "profile" in cmd_name:
@@ -291,14 +331,14 @@ class CommandSuggestionAnalyzer:
 
         # CI/CD commands appropriate when workflows are present or being set up
         if "ci" in cmd_name or "workflow" in cmd_name:
-            return any("workflow" in p or ".github" in p for p in context.directory_structure)
+            return any(
+                "workflow" in p or ".github" in p for p in context.directory_structure
+            )
 
         # For other commands, timing is appropriate if relevance is high
         return relevance_score >= 0.4
 
-    def assess_priority(
-        self, command: Command, relevance_score: float
-    ) -> bool:
+    def assess_priority(self, command: Command, relevance_score: float) -> bool:
         """Assess if command priority is correctly set."""
         # High priority (1-3) should have high relevance
         if command.priority <= 3:
@@ -361,7 +401,7 @@ class CommandSuggestionAnalyzer:
                         matching_keywords=matching_keywords,
                         explanation=self._generate_explanation(
                             command, context, relevance_score
-                        )
+                        ),
                     )
 
                     self.results.append(result)
@@ -446,7 +486,7 @@ class CommandSuggestionAnalyzer:
                     "relevant": 0,
                     "timing_ok": 0,
                     "priority_ok": 0,
-                    "avg_score": 0.0
+                    "avg_score": 0.0,
                 }
 
             stats = command_stats[key]
@@ -467,7 +507,7 @@ class CommandSuggestionAnalyzer:
         sorted_commands = sorted(
             command_stats.items(),
             key=lambda x: x[1]["avg_score"] / x[1]["total"],
-            reverse=True
+            reverse=True,
         )
 
         for key, stats in sorted_commands[:10]:
@@ -484,7 +524,8 @@ class CommandSuggestionAnalyzer:
 
         # Find commands with poor performance
         poor_commands = [
-            (key, stats) for key, stats in sorted_commands
+            (key, stats)
+            for key, stats in sorted_commands
             if stats["relevant"] / stats["total"] < 0.5
         ]
 
@@ -501,7 +542,9 @@ class CommandSuggestionAnalyzer:
                 if stats["priority_ok"] / stats["total"] < 0.5:
                     issue = "Incorrect priority"
 
-                report += f"| {cmd_name} | {plugin_name} | {issue} | {relevance_pct:.0f}% |\n"
+                report += (
+                    f"| {cmd_name} | {plugin_name} | {issue} | {relevance_pct:.0f}% |\n"
+                )
         else:
             report += "No commands with poor performance detected.\n"
 
@@ -524,7 +567,9 @@ class CommandSuggestionAnalyzer:
 
 """
 
-        low_relevance = [r for r in self.results if r.is_relevant and r.relevance_score < 0.4]
+        low_relevance = [
+            r for r in self.results if r.is_relevant and r.relevance_score < 0.4
+        ]
         for result in low_relevance[:10]:
             report += f"- **{result.command_name}** ({result.plugin_name})\n"
             report += f"  - Context: {result.context_name}\n"
@@ -537,7 +582,9 @@ class CommandSuggestionAnalyzer:
 """
 
         if metrics.relevance_accuracy > 80 and metrics.timing_accuracy > 85:
-            report += "**Status:** ✅ EXCELLENT - Command suggestions are highly accurate\n\n"
+            report += (
+                "**Status:** ✅ EXCELLENT - Command suggestions are highly accurate\n\n"
+            )
         elif metrics.relevance_accuracy > 60 and metrics.timing_accuracy > 70:
             report += "**Status:** ⚠️ GOOD - Command suggestions are generally accurate but have room for improvement\n\n"
         else:
@@ -550,11 +597,17 @@ class CommandSuggestionAnalyzer:
             report += "showing room for improvement in relevance detection. "
 
         if metrics.timing_accuracy < 85:
-            report += "\n\n**Recommendation:** Review timing logic for commands to ensure "
-            report += "suggestions appear at appropriate points in the development workflow."
+            report += (
+                "\n\n**Recommendation:** Review timing logic for commands to ensure "
+            )
+            report += (
+                "suggestions appear at appropriate points in the development workflow."
+            )
 
         if metrics.priority_accuracy < 90:
-            report += "\n\n**Recommendation:** Review command priority assignments to better "
+            report += (
+                "\n\n**Recommendation:** Review command priority assignments to better "
+            )
             report += "reflect their importance in different contexts."
 
         return report
@@ -571,21 +624,18 @@ def main():
     parser.add_argument(
         "--plugins-dir",
         default="plugins",
-        help="Path to plugins directory (default: plugins)"
+        help="Path to plugins directory (default: plugins)",
     )
     parser.add_argument(
         "--corpus-dir",
         default="test-corpus",
-        help="Path to test corpus directory (default: test-corpus)"
+        help="Path to test corpus directory (default: test-corpus)",
     )
-    parser.add_argument(
-        "--plugin",
-        help="Analyze specific plugin only"
-    )
+    parser.add_argument("--plugin", help="Analyze specific plugin only")
     parser.add_argument(
         "--output",
         default="reports/command-analysis.md",
-        help="Output report file (default: reports/command-analysis.md)"
+        help="Output report file (default: reports/command-analysis.md)",
     )
 
     args = parser.parse_args()

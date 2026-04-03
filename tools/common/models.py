@@ -41,7 +41,9 @@ class ValidationIssue:
             "error": "\U0001f7e0",  # Orange circle
             "warning": "\U0001f7e1",  # Yellow circle
             "info": "\U0001f535",  # Blue circle
-        }.get(self.severity, "\u26aa")  # White circle
+        }.get(
+            self.severity, "\u26aa"
+        )  # White circle
 
 
 @dataclass
@@ -200,7 +202,9 @@ class ProfileMetric:
             "warn": "\u26a0\ufe0f",  # Warning sign
             "fail": "\u274c",  # Red X
             "error": "\U0001f534",  # Red circle
-        }.get(self.status, "\u2753")  # Question mark
+        }.get(
+            self.status, "\u2753"
+        )  # Question mark
 
     @classmethod
     def from_duration(

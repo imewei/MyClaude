@@ -65,19 +65,23 @@ def benchmark_comparison(sizes=[1000, 10_000, 100_000, 1_000_000]):
 
         start = time.time()
         # Use unified fit() with auto workflow
-        popt_nlsq, _ = fit(exponential_decay_jax, t_jax, y_jax, p0=p0_jax, workflow="auto")
+        popt_nlsq, _ = fit(
+            exponential_decay_jax, t_jax, y_jax, p0=p0_jax, workflow="auto"
+        )
         nlsq_time = time.time() - start
 
         # Calculate speedup
         speedup = scipy_time / nlsq_time
 
         # Store results
-        results.append({
-            'size': n,
-            'scipy_time': scipy_time,
-            'nlsq_time': nlsq_time,
-            'speedup': speedup
-        })
+        results.append(
+            {
+                "size": n,
+                "scipy_time": scipy_time,
+                "nlsq_time": nlsq_time,
+                "speedup": speedup,
+            }
+        )
 
         # Print results
         print(f"{n:10,d} | {scipy_time:10.3f} | {nlsq_time:10.3f} | {speedup:8.1f}x")
@@ -91,11 +95,13 @@ def benchmark_comparison(sizes=[1000, 10_000, 100_000, 1_000_000]):
 
     # Summary
     print("\nSummary:")
-    avg_speedup = np.mean([r['speedup'] for r in results if r['size'] >= 10_000])
+    avg_speedup = np.mean([r["speedup"] for r in results if r["size"] >= 10_000])
     print(f"  Average speedup (N≥10K): {avg_speedup:.1f}x")
 
-    max_speedup = max(results, key=lambda r: r['speedup'])
-    print(f"  Maximum speedup: {max_speedup['speedup']:.1f}x at N={max_speedup['size']:,}")
+    max_speedup = max(results, key=lambda r: r["speedup"])
+    print(
+        f"  Maximum speedup: {max_speedup['speedup']:.1f}x at N={max_speedup['size']:,}"
+    )
 
     print("\nRecommendation:")
     print("  N < 10K:      SciPy or NLSQ (similar performance)")

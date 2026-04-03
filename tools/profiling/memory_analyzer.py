@@ -27,6 +27,7 @@ from typing import Any
 @dataclass
 class MemoryMetric:
     """Memory metric for a specific operation."""
+
     name: str
     memory_kb: float
     status: str  # 'pass', 'warn', 'fail'
@@ -36,6 +37,7 @@ class MemoryMetric:
 @dataclass
 class MemoryProfile:
     """Complete memory profile for a plugin."""
+
     plugin_name: str
     plugin_path: Path
     baseline_memory_kb: float
@@ -54,23 +56,20 @@ class MemoryProfile:
     def status(self) -> str:
         """Overall status based on memory usage."""
         if self.errors:
-            return 'error'
+            return "error"
         elif self.peak_memory_kb > 10000:  # 10 MB
-            return 'fail'
+            return "fail"
         elif self.peak_memory_kb > 5000:  # 5 MB
-            return 'warn'
+            return "warn"
         else:
-            return 'pass'
+            return "pass"
 
     @property
     def status_emoji(self) -> str:
         """Visual status indicator."""
-        return {
-            'pass': '✅',
-            'warn': '⚠️',
-            'fail': '❌',
-            'error': '🔴'
-        }.get(self.status, '❓')
+        return {"pass": "✅", "warn": "⚠️", "fail": "❌", "error": "🔴"}.get(
+            self.status, "❓"
+        )
 
 
 def get_object_size(obj: Any) -> int:
@@ -114,7 +113,7 @@ class PluginMemoryAnalyzer:
             plugin_path=plugin_path,
             baseline_memory_kb=baseline_kb,
             peak_memory_kb=0,
-            average_memory_kb=0
+            average_memory_kb=0,
         )
 
         # Check if plugin exists
@@ -147,7 +146,11 @@ class PluginMemoryAnalyzer:
 
         # Calculate statistics
         profile.peak_memory_kb = max(memory_measurements)
-        profile.average_memory_kb = sum(memory_measurements) / len(memory_measurements) if memory_measurements else 0
+        profile.average_memory_kb = (
+            sum(memory_measurements) / len(memory_measurements)
+            if memory_measurements
+            else 0
+        )
 
         # Add overall assessment
         if profile.peak_memory_kb > 10000:
@@ -166,40 +169,48 @@ class PluginMemoryAnalyzer:
         json_path = profile.plugin_path / ".claude-plugin" / "plugin.json"
 
         try:
-            with open(json_path, 'r', encoding='utf-8') as f:
+            with open(json_path, "r", encoding="utf-8") as f:
                 data = json.load(f)
 
             # Calculate memory usage
             memory_bytes = get_object_size(data)
             memory_kb = memory_bytes / 1024
 
-            status = 'pass' if memory_kb < 10 else ('warn' if memory_kb < 50 else 'fail')
-            profile.metrics.append(MemoryMetric(
-                name="plugin.json",
-                memory_kb=memory_kb,
-                status=status,
-                details=f"{len(json.dumps(data))} characters"
-            ))
+            status = (
+                "pass" if memory_kb < 10 else ("warn" if memory_kb < 50 else "fail")
+            )
+            profile.metrics.append(
+                MemoryMetric(
+                    name="plugin.json",
+                    memory_kb=memory_kb,
+                    status=status,
+                    details=f"{len(json.dumps(data))} characters",
+                )
+            )
 
             return memory_kb
 
         except FileNotFoundError:
             profile.errors.append(f"plugin.json not found at {json_path}")
-            profile.metrics.append(MemoryMetric(
-                name="plugin.json",
-                memory_kb=0,
-                status='error',
-                details="File not found"
-            ))
+            profile.metrics.append(
+                MemoryMetric(
+                    name="plugin.json",
+                    memory_kb=0,
+                    status="error",
+                    details="File not found",
+                )
+            )
             return 0
         except json.JSONDecodeError as e:
             profile.errors.append(f"Invalid JSON in plugin.json: {e}")
-            profile.metrics.append(MemoryMetric(
-                name="plugin.json",
-                memory_kb=0,
-                status='error',
-                details="JSON decode error"
-            ))
+            profile.metrics.append(
+                MemoryMetric(
+                    name="plugin.json",
+                    memory_kb=0,
+                    status="error",
+                    details="JSON decode error",
+                )
+            )
             return 0
 
     def _measure_agents_memory(self, profile: MemoryProfile) -> float:
@@ -212,7 +223,7 @@ class PluginMemoryAnalyzer:
         if agents_dir.exists():
             for agent_file in agents_dir.glob("*.md"):
                 try:
-                    with open(agent_file, 'r', encoding='utf-8') as f:
+                    with open(agent_file, "r", encoding="utf-8") as f:
                         content = f.read()
                     total_memory_bytes += get_object_size(content)
                     file_count += 1
@@ -221,13 +232,15 @@ class PluginMemoryAnalyzer:
 
         memory_kb = total_memory_bytes / 1024
 
-        status = 'pass' if memory_kb < 100 else ('warn' if memory_kb < 500 else 'fail')
-        profile.metrics.append(MemoryMetric(
-            name="agents directory",
-            memory_kb=memory_kb,
-            status=status,
-            details=f"{file_count} agent files"
-        ))
+        status = "pass" if memory_kb < 100 else ("warn" if memory_kb < 500 else "fail")
+        profile.metrics.append(
+            MemoryMetric(
+                name="agents directory",
+                memory_kb=memory_kb,
+                status=status,
+                details=f"{file_count} agent files",
+            )
+        )
 
         return memory_kb
 
@@ -241,7 +254,7 @@ class PluginMemoryAnalyzer:
         if commands_dir.exists():
             for command_file in commands_dir.glob("*.md"):
                 try:
-                    with open(command_file, 'r', encoding='utf-8') as f:
+                    with open(command_file, "r", encoding="utf-8") as f:
                         content = f.read()
                     total_memory_bytes += get_object_size(content)
                     file_count += 1
@@ -250,13 +263,15 @@ class PluginMemoryAnalyzer:
 
         memory_kb = total_memory_bytes / 1024
 
-        status = 'pass' if memory_kb < 50 else ('warn' if memory_kb < 200 else 'fail')
-        profile.metrics.append(MemoryMetric(
-            name="commands directory",
-            memory_kb=memory_kb,
-            status=status,
-            details=f"{file_count} command files"
-        ))
+        status = "pass" if memory_kb < 50 else ("warn" if memory_kb < 200 else "fail")
+        profile.metrics.append(
+            MemoryMetric(
+                name="commands directory",
+                memory_kb=memory_kb,
+                status=status,
+                details=f"{file_count} command files",
+            )
+        )
 
         return memory_kb
 
@@ -270,7 +285,7 @@ class PluginMemoryAnalyzer:
         if skills_dir.exists():
             for skill_file in skills_dir.glob("*.md"):
                 try:
-                    with open(skill_file, 'r', encoding='utf-8') as f:
+                    with open(skill_file, "r", encoding="utf-8") as f:
                         content = f.read()
                     total_memory_bytes += get_object_size(content)
                     file_count += 1
@@ -279,13 +294,15 @@ class PluginMemoryAnalyzer:
 
         memory_kb = total_memory_bytes / 1024
 
-        status = 'pass' if memory_kb < 100 else ('warn' if memory_kb < 500 else 'fail')
-        profile.metrics.append(MemoryMetric(
-            name="skills directory",
-            memory_kb=memory_kb,
-            status=status,
-            details=f"{file_count} skill files"
-        ))
+        status = "pass" if memory_kb < 100 else ("warn" if memory_kb < 500 else "fail")
+        profile.metrics.append(
+            MemoryMetric(
+                name="skills directory",
+                memory_kb=memory_kb,
+                status=status,
+                details=f"{file_count} skill files",
+            )
+        )
 
         return memory_kb
 
@@ -295,27 +312,35 @@ class PluginMemoryAnalyzer:
 
         try:
             if readme_path.exists():
-                with open(readme_path, 'r', encoding='utf-8') as f:
+                with open(readme_path, "r", encoding="utf-8") as f:
                     content = f.read()
                 memory_bytes = get_object_size(content)
                 memory_kb = memory_bytes / 1024
 
-                status = 'pass' if memory_kb < 50 else ('warn' if memory_kb < 200 else 'fail')
-                profile.metrics.append(MemoryMetric(
-                    name="README.md",
-                    memory_kb=memory_kb,
-                    status=status,
-                    details=f"{len(content)} characters"
-                ))
+                status = (
+                    "pass"
+                    if memory_kb < 50
+                    else ("warn" if memory_kb < 200 else "fail")
+                )
+                profile.metrics.append(
+                    MemoryMetric(
+                        name="README.md",
+                        memory_kb=memory_kb,
+                        status=status,
+                        details=f"{len(content)} characters",
+                    )
+                )
 
                 return memory_kb
             else:
-                profile.metrics.append(MemoryMetric(
-                    name="README.md",
-                    memory_kb=0,
-                    status='warn',
-                    details="File not found"
-                ))
+                profile.metrics.append(
+                    MemoryMetric(
+                        name="README.md",
+                        memory_kb=0,
+                        status="warn",
+                        details="File not found",
+                    )
+                )
                 return 0
         except Exception as e:
             profile.warnings.append(f"Error reading README.md: {e}")
@@ -329,7 +354,10 @@ class PluginMemoryAnalyzer:
             return profiles
 
         for plugin_dir in sorted(self.plugins_root.iterdir()):
-            if plugin_dir.is_dir() and (plugin_dir / ".claude-plugin" / "plugin.json").exists():
+            if (
+                plugin_dir.is_dir()
+                and (plugin_dir / ".claude-plugin" / "plugin.json").exists()
+            ):
                 profile = self.profile_plugin(plugin_dir.name)
                 profiles.append(profile)
 
@@ -352,8 +380,12 @@ class MemoryProfileReporter:
         # Summary
         lines.append("## Summary")
         lines.append("")
-        lines.append(f"- **Peak Memory Usage:** {profile.peak_memory_kb:.2f}KB ({profile.peak_memory_kb/1024:.2f}MB)")
-        lines.append(f"- **Average Memory Usage:** {profile.average_memory_kb:.2f}KB ({profile.average_memory_kb/1024:.2f}MB)")
+        lines.append(
+            f"- **Peak Memory Usage:** {profile.peak_memory_kb:.2f}KB ({profile.peak_memory_kb/1024:.2f}MB)"
+        )
+        lines.append(
+            f"- **Average Memory Usage:** {profile.average_memory_kb:.2f}KB ({profile.average_memory_kb/1024:.2f}MB)"
+        )
         lines.append(f"- **Baseline Memory:** {profile.baseline_memory_kb:.2f}KB")
         lines.append(f"- **Memory Overhead:** {profile.memory_overhead_kb:.2f}KB")
         lines.append(f"- **Status:** {profile.status_emoji} {profile.status.upper()}")
@@ -371,11 +403,11 @@ class MemoryProfileReporter:
 
             for metric in profile.metrics:
                 status_icon = {
-                    'pass': '✅',
-                    'warn': '⚠️',
-                    'fail': '❌',
-                    'error': '🔴'
-                }.get(metric.status, '❓')
+                    "pass": "✅",
+                    "warn": "⚠️",
+                    "fail": "❌",
+                    "error": "🔴",
+                }.get(metric.status, "❓")
 
                 lines.append(
                     f"| {metric.name} | {metric.memory_kb:.2f} | {metric.memory_kb/1024:.2f} | "
@@ -388,11 +420,15 @@ class MemoryProfileReporter:
             lines.append("### Memory Distribution")
             lines.append("")
             total = sum(m.memory_kb for m in profile.metrics)
-            for metric in sorted(profile.metrics, key=lambda m: m.memory_kb, reverse=True):
+            for metric in sorted(
+                profile.metrics, key=lambda m: m.memory_kb, reverse=True
+            ):
                 percentage = (metric.memory_kb / total * 100) if total > 0 else 0
                 bar_length = int(percentage / 2)  # Scale to 50 chars max
-                bar = '█' * bar_length
-                lines.append(f"- {metric.name}: {metric.memory_kb:.2f}KB ({percentage:.1f}%) {bar}")
+                bar = "█" * bar_length
+                lines.append(
+                    f"- {metric.name}: {metric.memory_kb:.2f}KB ({percentage:.1f}%) {bar}"
+                )
             lines.append("")
 
         # Errors
@@ -415,31 +451,47 @@ class MemoryProfileReporter:
         lines.append("## Overall Assessment")
         lines.append("")
 
-        if profile.status == 'pass':
-            lines.append(f"**Status:** {profile.status_emoji} EXCELLENT - Memory usage is efficient")
+        if profile.status == "pass":
+            lines.append(
+                f"**Status:** {profile.status_emoji} EXCELLENT - Memory usage is efficient"
+            )
             lines.append("")
-            lines.append(f"Plugin uses {profile.peak_memory_kb:.2f}KB peak memory, which is well within acceptable limits.")
-        elif profile.status == 'warn':
-            lines.append(f"**Status:** {profile.status_emoji} WARNING - Memory usage is moderate")
+            lines.append(
+                f"Plugin uses {profile.peak_memory_kb:.2f}KB peak memory, which is well within acceptable limits."
+            )
+        elif profile.status == "warn":
+            lines.append(
+                f"**Status:** {profile.status_emoji} WARNING - Memory usage is moderate"
+            )
             lines.append("")
             lines.append(f"Plugin uses {profile.peak_memory_kb:.2f}KB peak memory.")
-            lines.append("Consider optimizing large components if memory becomes a constraint.")
-        elif profile.status == 'fail':
-            lines.append(f"**Status:** {profile.status_emoji} OPTIMIZATION NEEDED - Memory usage is high")
+            lines.append(
+                "Consider optimizing large components if memory becomes a constraint."
+            )
+        elif profile.status == "fail":
+            lines.append(
+                f"**Status:** {profile.status_emoji} OPTIMIZATION NEEDED - Memory usage is high"
+            )
             lines.append("")
             lines.append(f"Plugin uses {profile.peak_memory_kb:.2f}KB peak memory.")
             lines.append("")
             lines.append("**Recommended Actions:**")
             # Find largest components
-            large_metrics = sorted(profile.metrics, key=lambda m: m.memory_kb, reverse=True)[:3]
+            large_metrics = sorted(
+                profile.metrics, key=lambda m: m.memory_kb, reverse=True
+            )[:3]
             for metric in large_metrics:
-                lines.append(f"- Optimize {metric.name} (currently {metric.memory_kb:.2f}KB)")
+                lines.append(
+                    f"- Optimize {metric.name} (currently {metric.memory_kb:.2f}KB)"
+                )
         else:
-            lines.append(f"**Status:** {profile.status_emoji} ERROR - Unable to complete profiling")
+            lines.append(
+                f"**Status:** {profile.status_emoji} ERROR - Unable to complete profiling"
+            )
 
         lines.append("")
 
-        return '\n'.join(lines)
+        return "\n".join(lines)
 
     def generate_summary_report(self, profiles: list[MemoryProfile]) -> str:
         """Generate summary report for multiple plugins."""
@@ -453,25 +505,39 @@ class MemoryProfileReporter:
 
         # Overall Statistics
         total_plugins = len(profiles)
-        pass_count = sum(1 for p in profiles if p.status == 'pass')
-        warn_count = sum(1 for p in profiles if p.status == 'warn')
-        fail_count = sum(1 for p in profiles if p.status == 'fail')
-        error_count = sum(1 for p in profiles if p.status == 'error')
+        pass_count = sum(1 for p in profiles if p.status == "pass")
+        warn_count = sum(1 for p in profiles if p.status == "warn")
+        fail_count = sum(1 for p in profiles if p.status == "fail")
+        error_count = sum(1 for p in profiles if p.status == "error")
 
-        avg_memory = sum(p.peak_memory_kb for p in profiles) / total_plugins if total_plugins > 0 else 0
+        avg_memory = (
+            sum(p.peak_memory_kb for p in profiles) / total_plugins
+            if total_plugins > 0
+            else 0
+        )
         total_memory = sum(p.peak_memory_kb for p in profiles)
 
         lines.append("## Summary Statistics")
         lines.append("")
-        lines.append(f"- **Average Memory per Plugin:** {avg_memory:.2f}KB ({avg_memory/1024:.2f}MB)")
-        lines.append(f"- **Total Memory (all plugins):** {total_memory:.2f}KB ({total_memory/1024:.2f}MB)")
-        lines.append(f"- **Efficient Plugins:** {pass_count}/{total_plugins} ({pass_count/total_plugins*100:.1f}%)")
+        lines.append(
+            f"- **Average Memory per Plugin:** {avg_memory:.2f}KB ({avg_memory/1024:.2f}MB)"
+        )
+        lines.append(
+            f"- **Total Memory (all plugins):** {total_memory:.2f}KB ({total_memory/1024:.2f}MB)"
+        )
+        lines.append(
+            f"- **Efficient Plugins:** {pass_count}/{total_plugins} ({pass_count/total_plugins*100:.1f}%)"
+        )
         lines.append("")
         lines.append("**Status Distribution:**")
         lines.append(f"- ✅ Pass: {pass_count} ({pass_count/total_plugins*100:.1f}%)")
-        lines.append(f"- ⚠️ Warning: {warn_count} ({warn_count/total_plugins*100:.1f}%)")
+        lines.append(
+            f"- ⚠️ Warning: {warn_count} ({warn_count/total_plugins*100:.1f}%)"
+        )
         lines.append(f"- ❌ Fail: {fail_count} ({fail_count/total_plugins*100:.1f}%)")
-        lines.append(f"- 🔴 Error: {error_count} ({error_count/total_plugins*100:.1f}%)")
+        lines.append(
+            f"- 🔴 Error: {error_count} ({error_count/total_plugins*100:.1f}%)"
+        )
         lines.append("")
 
         # Per-Plugin Results
@@ -509,7 +575,7 @@ class MemoryProfileReporter:
 
         lines.append("")
 
-        return '\n'.join(lines)
+        return "\n".join(lines)
 
 
 def main() -> int:
@@ -551,9 +617,9 @@ def main() -> int:
             print(report)
 
         # Return exit code based on overall status
-        if any(p.status == 'error' for p in profiles):
+        if any(p.status == "error" for p in profiles):
             return 2
-        elif any(p.status == 'fail' for p in profiles):
+        elif any(p.status == "fail" for p in profiles):
             return 1
         else:
             return 0
@@ -566,9 +632,9 @@ def main() -> int:
         print(report)
 
         # Return exit code
-        if profile.status == 'error':
+        if profile.status == "error":
             return 2
-        elif profile.status == 'fail':
+        elif profile.status == "fail":
             return 1
         else:
             return 0

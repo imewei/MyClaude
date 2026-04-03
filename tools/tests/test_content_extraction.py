@@ -21,16 +21,18 @@ try:
 except ImportError:
     pass
 
+
 def extract_code_blocks(content: str) -> List[Dict[str, str]]:
     """Extract code blocks from markdown content (helper for tests)"""
     code_blocks = []
-    pattern = r'```(\w*)\n(.*?)```'
+    pattern = r"```(\w*)\n(.*?)```"
     matches = re.finditer(pattern, content, re.DOTALL)
     for match in matches:
-        language = match.group(1) if match.group(1) else ''
+        language = match.group(1) if match.group(1) else ""
         code = match.group(2).strip()
-        code_blocks.append({'language': language, 'code': code, 'context': ''})
+        code_blocks.append({"language": language, "code": code, "context": ""})
     return code_blocks
+
 
 class TestContentExtraction(unittest.TestCase):
     """Test suite for content extraction functionality"""
@@ -48,17 +50,18 @@ using DifferentialEquations
 """
         code_blocks = extract_code_blocks(readme_content)
         self.assertEqual(len(code_blocks), 1)
-        self.assertEqual(code_blocks[0]['language'], 'julia')
+        self.assertEqual(code_blocks[0]["language"], "julia")
 
     def test_code_block_language_detection(self):
         """Test 4.1.4: Test code block language detection"""
         test_cases = [
-            ("```bash\nls -la\n```", 'bash'),
-            ("```python\nprint('hello')\n```", 'python'),
+            ("```bash\nls -la\n```", "bash"),
+            ("```python\nprint('hello')\n```", "python"),
         ]
         for code_md, expected_lang in test_cases:
             blocks = extract_code_blocks(code_md)
-            self.assertEqual(blocks[0]['language'], expected_lang)
+            self.assertEqual(blocks[0]["language"], expected_lang)
+
 
 if __name__ == "__main__":
     unittest.main()

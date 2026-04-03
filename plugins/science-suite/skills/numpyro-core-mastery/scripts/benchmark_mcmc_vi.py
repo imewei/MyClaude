@@ -21,10 +21,10 @@ def benchmark_mcmc_vi(model, x, y, sizes=[1000, 10000, 100000]):
     Returns:
         dict: Benchmark results
     """
-    results = {'mcmc': {}, 'vi': {}}
+    results = {"mcmc": {}, "vi": {}}
 
     print("MCMC vs VI Benchmark")
-    print("="*70)
+    print("=" * 70)
 
     for n in sizes:
         if n > len(x):
@@ -45,11 +45,11 @@ def benchmark_mcmc_vi(model, x, y, sizes=[1000, 10000, 100000]):
             mcmc.run(random.PRNGKey(0), x_sub, y_sub)
             mcmc_time = time.time() - start
 
-            results['mcmc'][n] = mcmc_time
+            results["mcmc"][n] = mcmc_time
             print(f"MCMC: {mcmc_time:.2f}s")
         except Exception as e:
             print(f"MCMC failed: {e}")
-            results['mcmc'][n] = None
+            results["mcmc"][n] = None
 
         # VI (SVI)
         try:
@@ -61,22 +61,22 @@ def benchmark_mcmc_vi(model, x, y, sizes=[1000, 10000, 100000]):
             _ = svi.run(random.PRNGKey(1), 5000, x_sub, y_sub)
             vi_time = time.time() - start
 
-            results['vi'][n] = vi_time
+            results["vi"][n] = vi_time
             print(f"VI:   {vi_time:.2f}s")
 
             # Speedup
-            if results['mcmc'][n]:
-                speedup = results['mcmc'][n] / vi_time
+            if results["mcmc"][n]:
+                speedup = results["mcmc"][n] / vi_time
                 print(f"Speedup: {speedup:.1f}x")
         except Exception as e:
             print(f"VI failed: {e}")
-            results['vi'][n] = None
+            results["vi"][n] = None
 
-    print("\n" + "="*70)
+    print("\n" + "=" * 70)
     print("Recommendation:")
     print("  N < 10K:  MCMC (accurate, fast enough)")
     print("  N > 100K: VI (much faster)")
     print("  10K-100K: Try both, compare accuracy vs speed")
-    print("="*70)
+    print("=" * 70)
 
     return results

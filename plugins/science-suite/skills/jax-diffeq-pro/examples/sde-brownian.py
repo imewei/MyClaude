@@ -9,21 +9,21 @@ import jax
 import jax.numpy as jnp
 import diffrax
 
-
 # =============================================================================
 # Pattern 1: Basic SDE with VirtualBrownianTree
 # =============================================================================
+
 
 def basic_sde_example():
     """Simple SDE: dy = -k*y dt + sigma dW (Ornstein-Uhlenbeck process)."""
 
     def drift(t, y, args):
         """Deterministic part: mean-reversion."""
-        return -args['k'] * (y - args['mu'])
+        return -args["k"] * (y - args["mu"])
 
     def diffusion(t, y, args):
         """Noise coefficient: constant volatility."""
-        return args['sigma'] * jnp.ones_like(y)
+        return args["sigma"] * jnp.ones_like(y)
 
     # VirtualBrownianTree: reproducible Brownian motion path
     key = jax.random.PRNGKey(42)
@@ -46,10 +46,13 @@ def basic_sde_example():
     ts = jnp.linspace(0, 10, 100)
 
     solution = diffrax.diffeqsolve(
-        terms, solver,
-        t0=0.0, t1=10.0, dt0=0.01,
+        terms,
+        solver,
+        t0=0.0,
+        t1=10.0,
+        dt0=0.01,
         y0=jnp.array([1.0]),
-        args={'k': 0.5, 'mu': 0.0, 'sigma': 0.2},
+        args={"k": 0.5, "mu": 0.0, "sigma": 0.2},
         saveat=diffrax.SaveAt(ts=ts),
     )
 
@@ -59,6 +62,7 @@ def basic_sde_example():
 # =============================================================================
 # Pattern 2: Reproducible SDE Simulations
 # =============================================================================
+
 
 def reproducible_sde(seed: int, n_steps: int = 100):
     """Demonstrate VirtualBrownianTree reproducibility.
@@ -76,7 +80,8 @@ def reproducible_sde(seed: int, n_steps: int = 100):
 
     # Create Brownian tree
     brownian = diffrax.VirtualBrownianTree(
-        t0=0.0, t1=10.0,
+        t0=0.0,
+        t1=10.0,
         tol=1e-3,
         shape=(1,),
         key=key,
@@ -89,8 +94,11 @@ def reproducible_sde(seed: int, n_steps: int = 100):
 
     # Same Brownian path gives same result regardless of dt0
     solution = diffrax.diffeqsolve(
-        terms, diffrax.Euler(),
-        t0=0.0, t1=10.0, dt0=10.0 / n_steps,
+        terms,
+        diffrax.Euler(),
+        t0=0.0,
+        t1=10.0,
+        dt0=10.0 / n_steps,
         y0=jnp.array([1.0]),
         args=None,
     )
@@ -114,6 +122,7 @@ def test_reproducibility():
 # Pattern 3: Multi-Particle Brownian Motion
 # =============================================================================
 
+
 def multi_particle_brownian(n_particles: int, dim: int = 3):
     """Independent Brownian motion for multiple particles."""
 
@@ -125,12 +134,13 @@ def multi_particle_brownian(n_particles: int, dim: int = 3):
 
     def diffusion(t, positions, args):
         """Thermal diffusion: sqrt(2 * D)."""
-        D = args['D']
+        D = args["D"]
         return jnp.sqrt(2 * D) * jnp.ones_like(positions)
 
     # Shape: (n_particles, dim) for independent Brownian motion per particle
     brownian = diffrax.VirtualBrownianTree(
-        t0=0.0, t1=10.0,
+        t0=0.0,
+        t1=10.0,
         tol=1e-3,
         shape=(n_particles, dim),
         key=key,
@@ -147,16 +157,19 @@ def multi_particle_brownian(n_particles: int, dim: int = 3):
     ts = jnp.linspace(0, 10, 50)
 
     solution = diffrax.diffeqsolve(
-        terms, diffrax.Euler(),
-        t0=0.0, t1=10.0, dt0=0.01,
+        terms,
+        diffrax.Euler(),
+        t0=0.0,
+        t1=10.0,
+        dt0=0.01,
         y0=y0,
-        args={'D': 1.0},
+        args={"D": 1.0},
         saveat=diffrax.SaveAt(ts=ts),
     )
 
     # Verify Einstein relation: <r²> = 2*D*t*d
     final_positions = solution.ys[-1]
-    msd = jnp.mean(jnp.sum(final_positions ** 2, axis=1))
+    msd = jnp.mean(jnp.sum(final_positions**2, axis=1))
     expected_msd = 2 * 1.0 * 10.0 * dim  # 2*D*t*d
 
     print(f"Mean squared displacement: {msd:.2f}")
@@ -169,6 +182,7 @@ def multi_particle_brownian(n_particles: int, dim: int = 3):
 # Pattern 4: Overdamped Langevin Dynamics
 # =============================================================================
 
+
 def langevin_in_potential():
     """Overdamped Langevin dynamics in a double-well potential."""
 
@@ -176,19 +190,20 @@ def langevin_in_potential():
 
     def potential(x):
         """Double-well: U(x) = (x² - 1)²"""
-        return (x ** 2 - 1) ** 2
+        return (x**2 - 1) ** 2
 
     def drift(t, x, args):
         """Force = -dU/dx, divided by friction gamma."""
         force = -jax.grad(potential)(x)
-        return force / args['gamma']
+        return force / args["gamma"]
 
     def diffusion(t, x, args):
         """Thermal noise: sqrt(2 * kT / gamma)."""
-        return jnp.sqrt(2 * args['kT'] / args['gamma'])
+        return jnp.sqrt(2 * args["kT"] / args["gamma"])
 
     brownian = diffrax.VirtualBrownianTree(
-        t0=0.0, t1=100.0,
+        t0=0.0,
+        t1=100.0,
         tol=1e-3,
         shape=(),
         key=key,
@@ -202,10 +217,13 @@ def langevin_in_potential():
     ts = jnp.linspace(0, 100, 1000)
 
     solution = diffrax.diffeqsolve(
-        terms, diffrax.Euler(),
-        t0=0.0, t1=100.0, dt0=0.01,
+        terms,
+        diffrax.Euler(),
+        t0=0.0,
+        t1=100.0,
+        dt0=0.01,
         y0=jnp.array(0.0),  # Start at barrier top
-        args={'kT': 0.3, 'gamma': 1.0},
+        args={"kT": 0.3, "gamma": 1.0},
         saveat=diffrax.SaveAt(ts=ts),
     )
 
@@ -214,8 +232,9 @@ def langevin_in_potential():
     in_left_well = trajectory < -0.5
     in_right_well = trajectory > 0.5
 
-    transitions = jnp.sum(jnp.abs(jnp.diff(in_left_well.astype(int)))) + \
-                  jnp.sum(jnp.abs(jnp.diff(in_right_well.astype(int))))
+    transitions = jnp.sum(jnp.abs(jnp.diff(in_left_well.astype(int)))) + jnp.sum(
+        jnp.abs(jnp.diff(in_right_well.astype(int)))
+    )
 
     print(f"Number of well transitions: {int(transitions)}")
     print(f"Average position: {jnp.mean(trajectory):.3f}")
@@ -226,6 +245,7 @@ def langevin_in_potential():
 # =============================================================================
 # Pattern 5: Colloidal Particles with Interactions
 # =============================================================================
+
 
 def colloidal_dynamics(n_particles: int = 10):
     """Brownian dynamics with soft repulsive interactions."""
@@ -240,15 +260,13 @@ def colloidal_dynamics(n_particles: int = 10):
     def compute_forces(positions, args):
         """Compute pairwise forces on all particles."""
         n = positions.shape[0]
-        epsilon, sigma = args['epsilon'], args['sigma']
+        epsilon, sigma = args["epsilon"], args["sigma"]
 
         def pair_force(i, j):
             r_vec = positions[i] - positions[j]
             r = jnp.linalg.norm(r_vec) + 1e-10  # Avoid division by zero
             f_mag = jnp.where(
-                r < 2.5 * sigma,  # Cutoff
-                soft_repulsion_force(r, epsilon, sigma),
-                0.0
+                r < 2.5 * sigma, soft_repulsion_force(r, epsilon, sigma), 0.0  # Cutoff
             )
             return f_mag * r_vec / r
 
@@ -262,11 +280,11 @@ def colloidal_dynamics(n_particles: int = 10):
     def drift(t, positions, args):
         """Force-driven drift: dx/dt = F/gamma."""
         forces = compute_forces(positions, args)
-        return forces / args['gamma']
+        return forces / args["gamma"]
 
     def diffusion(t, positions, args):
         """Thermal diffusion."""
-        D = args['kT'] / args['gamma']
+        D = args["kT"] / args["gamma"]
         return jnp.sqrt(2 * D) * jnp.ones_like(positions)
 
     # Initialize particles on a grid
@@ -277,7 +295,8 @@ def colloidal_dynamics(n_particles: int = 10):
     y0 = grid[:n_particles]
 
     brownian = diffrax.VirtualBrownianTree(
-        t0=0.0, t1=50.0,
+        t0=0.0,
+        t1=50.0,
         tol=1e-3,
         shape=(n_particles, 2),
         key=key,
@@ -291,10 +310,13 @@ def colloidal_dynamics(n_particles: int = 10):
     ts = jnp.linspace(0, 50, 100)
 
     solution = diffrax.diffeqsolve(
-        terms, diffrax.Euler(),
-        t0=0.0, t1=50.0, dt0=0.01,
+        terms,
+        diffrax.Euler(),
+        t0=0.0,
+        t1=50.0,
+        dt0=0.01,
         y0=y0,
-        args={'epsilon': 1.0, 'sigma': 1.0, 'gamma': 1.0, 'kT': 0.5},
+        args={"epsilon": 1.0, "sigma": 1.0, "gamma": 1.0, "kT": 0.5},
         saveat=diffrax.SaveAt(ts=ts),
         max_steps=100000,
     )
@@ -306,18 +328,20 @@ def colloidal_dynamics(n_particles: int = 10):
 # Pattern 6: Ensemble SDE Simulations
 # =============================================================================
 
+
 def ensemble_sde(n_realizations: int = 100):
     """Run ensemble of SDE realizations with different random seeds."""
 
     def drift(t, y, args):
-        return -args['k'] * y
+        return -args["k"] * y
 
     def diffusion(t, y, args):
-        return args['sigma'] * jnp.ones_like(y)
+        return args["sigma"] * jnp.ones_like(y)
 
     def single_realization(key):
         brownian = diffrax.VirtualBrownianTree(
-            t0=0.0, t1=10.0,
+            t0=0.0,
+            t1=10.0,
             tol=1e-3,
             shape=(1,),
             key=key,
@@ -329,10 +353,13 @@ def ensemble_sde(n_realizations: int = 100):
         )
 
         solution = diffrax.diffeqsolve(
-            terms, diffrax.Euler(),
-            t0=0.0, t1=10.0, dt0=0.01,
+            terms,
+            diffrax.Euler(),
+            t0=0.0,
+            t1=10.0,
+            dt0=0.01,
             y0=jnp.array([1.0]),
-            args={'k': 0.5, 'sigma': 0.2},
+            args={"k": 0.5, "sigma": 0.2},
         )
 
         return solution.ys[-1, 0]
@@ -356,6 +383,7 @@ def ensemble_sde(n_realizations: int = 100):
 # Pattern 7: Higher-Order SDE Solvers
 # =============================================================================
 
+
 def sde_solver_comparison():
     """Compare different SDE solver schemes."""
 
@@ -368,15 +396,16 @@ def sde_solver_comparison():
     key = jax.random.PRNGKey(42)
 
     solvers = {
-        'Euler': diffrax.Euler(),
-        'Heun': diffrax.Heun(),
+        "Euler": diffrax.Euler(),
+        "Heun": diffrax.Heun(),
     }
 
     results = {}
 
     for name, solver in solvers.items():
         brownian = diffrax.VirtualBrownianTree(
-            t0=0.0, t1=1.0,
+            t0=0.0,
+            t1=1.0,
             tol=1e-3,
             shape=(1,),
             key=key,
@@ -388,8 +417,11 @@ def sde_solver_comparison():
         )
 
         solution = diffrax.diffeqsolve(
-            terms, solver,
-            t0=0.0, t1=1.0, dt0=0.01,
+            terms,
+            solver,
+            t0=0.0,
+            t1=1.0,
+            dt0=0.01,
             y0=jnp.array([1.0]),
             args=None,
         )
@@ -404,6 +436,7 @@ def sde_solver_comparison():
 # Pattern 8: Reproducible Simulation Configuration
 # =============================================================================
 
+
 def production_sde_config(seed: int, params: dict):
     """Production-ready SDE simulation with full reproducibility.
 
@@ -411,21 +444,21 @@ def production_sde_config(seed: int, params: dict):
     """
 
     config = {
-        'seed': seed,
-        'rtol': 1e-3,
-        'dt0': 0.001,
-        't_final': params.get('t_final', 100.0),
-        'n_save': params.get('n_save', 1000),
+        "seed": seed,
+        "rtol": 1e-3,
+        "dt0": 0.001,
+        "t_final": params.get("t_final", 100.0),
+        "n_save": params.get("n_save", 1000),
         **params,
     }
 
-    key = jax.random.PRNGKey(config['seed'])
+    key = jax.random.PRNGKey(config["seed"])
 
     brownian = diffrax.VirtualBrownianTree(
         t0=0.0,
-        t1=config['t_final'],
-        tol=config['rtol'],
-        shape=params['state_shape'],
+        t1=config["t_final"],
+        tol=config["rtol"],
+        shape=params["state_shape"],
         key=key,
     )
 
@@ -441,6 +474,7 @@ def production_sde_config(seed: int, params: dict):
 # =============================================================================
 # Demo
 # =============================================================================
+
 
 def demo():
     """Demonstrate SDE patterns with Diffrax."""

@@ -11,13 +11,14 @@ import jax.numpy as jnp
 import optax
 from typing import NamedTuple, Dict, Any
 
-
 # =============================================================================
 # Pattern 1: Explicit State Passing (No Globals)
 # =============================================================================
 
+
 class TrainState(NamedTuple):
     """Immutable training state - all state is explicit."""
+
     params: Dict[str, Any]
     opt_state: Any
     step: int
@@ -42,9 +43,7 @@ def train_step(state: TrainState, batch, optimizer, loss_fn):
     rng_key, dropout_key = jax.random.split(state.rng_key)
 
     # Compute loss and gradients
-    loss, grads = jax.value_and_grad(loss_fn)(
-        state.params, batch, dropout_key
-    )
+    loss, grads = jax.value_and_grad(loss_fn)(state.params, batch, dropout_key)
 
     # Update parameters
     updates, new_opt_state = optimizer.update(grads, state.opt_state, state.params)
@@ -55,27 +54,31 @@ def train_step(state: TrainState, batch, optimizer, loss_fn):
     new_history = state.loss_history.at[history_idx].set(loss)
 
     # Return new state (immutable)
-    return TrainState(
-        params=new_params,
-        opt_state=new_opt_state,
-        step=state.step + 1,
-        loss_history=new_history,
-        rng_key=rng_key,
-    ), loss
+    return (
+        TrainState(
+            params=new_params,
+            opt_state=new_opt_state,
+            step=state.step + 1,
+            loss_history=new_history,
+            rng_key=rng_key,
+        ),
+        loss,
+    )
 
 
 # =============================================================================
 # Pattern 2: PyTree Manipulation
 # =============================================================================
 
+
 def init_params(rng_key, layer_sizes):
     """Initialize nested parameter structure."""
     params = {}
     for i, (in_size, out_size) in enumerate(zip(layer_sizes[:-1], layer_sizes[1:])):
         rng_key, w_key, b_key = jax.random.split(rng_key, 3)
-        params[f'layer_{i}'] = {
-            'w': jax.random.normal(w_key, (in_size, out_size)) * 0.01,
-            'b': jnp.zeros(out_size),
+        params[f"layer_{i}"] = {
+            "w": jax.random.normal(w_key, (in_size, out_size)) * 0.01,
+            "b": jnp.zeros(out_size),
         }
     return params
 
@@ -90,7 +93,7 @@ def clip_gradients(grads, max_norm):
     """Clip gradients by global norm using PyTree operations."""
     # Compute global norm
     leaves = jax.tree.leaves(grads)
-    global_norm = jnp.sqrt(sum(jnp.sum(leaf ** 2) for leaf in leaves))
+    global_norm = jnp.sqrt(sum(jnp.sum(leaf**2) for leaf in leaves))
 
     # Clip factor
     clip_factor = jnp.minimum(1.0, max_norm / (global_norm + 1e-8))
@@ -106,11 +109,7 @@ def apply_weight_decay(params, decay_rate):
 
 def interpolate_params(params1, params2, alpha):
     """Linear interpolation between two parameter sets."""
-    return jax.tree.map(
-        lambda p1, p2: (1 - alpha) * p1 + alpha * p2,
-        params1,
-        params2
-    )
+    return jax.tree.map(lambda p1, p2: (1 - alpha) * p1 + alpha * p2, params1, params2)
 
 
 def flatten_params(params):
@@ -135,6 +134,7 @@ def unflatten_params(flat, structure):
 # Pattern 3: Explicit RNG Handling
 # =============================================================================
 
+
 def sample_batch(rng_key, data, batch_size):
     """Sample random batch without side effects."""
     n_samples = data.shape[0]
@@ -158,7 +158,7 @@ def forward_with_dropout(params, x, rng_key, training=True):
 
     for i, (layer_key, (name, layer_params)) in enumerate(zip(keys, params.items())):
         # Linear transformation
-        x = x @ layer_params['w'] + layer_params['b']
+        x = x @ layer_params["w"] + layer_params["b"]
 
         # Activation (except last layer)
         if i < len(params) - 1:
@@ -177,6 +177,7 @@ def parallel_random_init(rng_key, num_models, init_fn, *args):
 # =============================================================================
 # Pattern 4: Immutable Updates with .at[].set()
 # =============================================================================
+
 
 def update_row(matrix, idx, new_row):
     """Update single row immutably."""
@@ -203,6 +204,7 @@ def ring_buffer_append(buffer, idx, value):
 # =============================================================================
 # Pattern 5: Functional Data Pipelines
 # =============================================================================
+
 
 def create_batch_iterator(data, batch_size, rng_key):
     """Create shuffled batch iterator as pure function.
@@ -238,6 +240,7 @@ def augment_batch(rng_key, batch, augment_fns):
 # Example: Complete Training Loop (Functional Style)
 # =============================================================================
 
+
 def functional_training_loop(
     init_params_fn,
     loss_fn,
@@ -268,11 +271,7 @@ def functional_training_loop(
         new_state, loss = jit_train_step(state, batch)
         return new_state, loss
 
-    final_state, losses = jax.lax.scan(
-        scan_step,
-        state,
-        jnp.arange(num_steps)
-    )
+    final_state, losses = jax.lax.scan(scan_step, state, jnp.arange(num_steps))
 
     return final_state, losses
 

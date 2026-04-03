@@ -12,21 +12,23 @@ import numpyro
 import numpyro.distributions as dist
 from numpyro.infer import MCMC, NUTS
 
+
 def linear_model(x, y=None):
     """
     Standard Bayesian Linear Regression: y = alpha + beta * x + epsilon
     """
     # 1. Define priors
-    alpha = numpyro.sample('alpha', dist.Normal(0.0, 10.0))
-    beta = numpyro.sample('beta', dist.Normal(0.0, 10.0))
-    sigma = numpyro.sample('sigma', dist.HalfNormal(1.0))
+    alpha = numpyro.sample("alpha", dist.Normal(0.0, 10.0))
+    beta = numpyro.sample("beta", dist.Normal(0.0, 10.0))
+    sigma = numpyro.sample("sigma", dist.HalfNormal(1.0))
 
     # 2. Define likelihood
     mu = alpha + beta * x
 
     # "plate" for independent observations
-    with numpyro.plate('data', len(x)):
-        numpyro.sample('obs', dist.Normal(mu, sigma), obs=y)
+    with numpyro.plate("data", len(x)):
+        numpyro.sample("obs", dist.Normal(mu, sigma), obs=y)
+
 
 def main():
     print("Running NumPyro example...")
@@ -57,6 +59,7 @@ def main():
     print(f"Alpha: {jnp.mean(samples['alpha']):.3f} (True: {true_alpha})")
     print(f"Beta:  {jnp.mean(samples['beta']):.3f}  (True: {true_beta})")
     print(f"Sigma: {jnp.mean(samples['sigma']):.3f} (True: {true_sigma})")
+
 
 if __name__ == "__main__":
     main()

@@ -138,8 +138,10 @@ class PluginActivationTester:
                 data = json.loads(plugin_json.read_text())
                 patterns = self._extract_patterns(data, plugin_dir)
                 self.plugins[patterns.name] = patterns
-                print(f"  ✓ {patterns.name}: {len(patterns.keywords)} keywords, "
-                      f"{len(patterns.file_extensions)} extensions")
+                print(
+                    f"  ✓ {patterns.name}: {len(patterns.keywords)} keywords, "
+                    f"{len(patterns.file_extensions)} extensions"
+                )
             except Exception as e:
                 print(f"  ✗ Error loading {plugin_dir.name}: {e}")
 
@@ -201,18 +203,24 @@ class PluginActivationTester:
                 try:
                     content = agent_file.read_text().lower()
                     # Extract triggering criteria
-                    if "triggering criteria" in content or "use this agent when" in content:
+                    if (
+                        "triggering criteria" in content
+                        or "use this agent when" in content
+                    ):
                         # Extract terms from criteria section
                         lines = content.split("\n")
                         in_criteria = False
                         for line in lines:
-                            if "triggering criteria" in line or "use this agent when" in line:
+                            if (
+                                "triggering criteria" in line
+                                or "use this agent when" in line
+                            ):
                                 in_criteria = True
                             elif in_criteria and line.startswith("#"):
                                 break
                             elif in_criteria:
                                 # Extract technical terms
-                                words = re.findall(r'\b[a-z]+(?:\.[a-z]+)+\b', line)
+                                words = re.findall(r"\b[a-z]+(?:\.[a-z]+)+\b", line)
                                 patterns.content_patterns.update(words)
                 except Exception:
                     pass
@@ -287,8 +295,21 @@ class PluginActivationTester:
 
         for file_path in sample_path.rglob("*"):
             if file_path.is_file() and file_path.suffix in {
-                ".py", ".jl", ".js", ".ts", ".rs", ".cpp", ".c", ".go", ".java",
-                ".toml", ".json", ".yaml", ".yml", ".md", ".txt"
+                ".py",
+                ".jl",
+                ".js",
+                ".ts",
+                ".rs",
+                ".cpp",
+                ".c",
+                ".go",
+                ".java",
+                ".toml",
+                ".json",
+                ".yaml",
+                ".yml",
+                ".md",
+                ".txt",
             }:
                 try:
                     content = file_path.read_text(errors="ignore").lower()
@@ -312,7 +333,8 @@ class PluginActivationTester:
             sample_category=sample["category"],
             expected_plugins=sample["expected_plugins"],
             activated_plugins=[],
-            expected_trigger=sample["expected_trigger"], actual_trigger=False
+            expected_trigger=sample["expected_trigger"],
+            actual_trigger=False,
         )
 
         # Test each plugin
@@ -321,19 +343,25 @@ class PluginActivationTester:
             matching_patterns = []
 
             # Test file extensions
-            ext_match, ext_files = self.test_file_extension_matching(sample_path, plugin)
+            ext_match, ext_files = self.test_file_extension_matching(
+                sample_path, plugin
+            )
             if ext_match:
                 confidence_scores.append(0.4)
                 matching_patterns.extend([f"ext:{f}" for f in ext_files[:3]])
 
             # Test directory patterns
-            dir_match, dir_patterns = self.test_directory_pattern_matching(sample_path, plugin)
+            dir_match, dir_patterns = self.test_directory_pattern_matching(
+                sample_path, plugin
+            )
             if dir_match:
                 confidence_scores.append(0.3)
                 matching_patterns.extend([f"dir:{d}" for d in dir_patterns[:3]])
 
             # Test content patterns
-            content_match, content_patterns = self.test_content_pattern_matching(sample_path, plugin)
+            content_match, content_patterns = self.test_content_pattern_matching(
+                sample_path, plugin
+            )
             if content_match:
                 confidence_scores.append(0.3)
                 matching_patterns.extend([f"content:{p}" for p in content_patterns[:5]])
@@ -468,7 +496,9 @@ Samples that should have triggered plugins but didn't:
                 report += f"- **{result.sample_name}** ({result.sample_category})\n"
                 report += f"  - Expected: {', '.join(result.expected_plugins)}\n"
                 report += "  - Activated: None\n"
-                report += f"  - Missing plugins: {', '.join(result.expected_plugins)}\n\n"
+                report += (
+                    f"  - Missing plugins: {', '.join(result.expected_plugins)}\n\n"
+                )
 
         report += """
 ## Plugin Performance
@@ -494,8 +524,11 @@ Samples that should have triggered plugins but didn't:
         for plugin, stats in sorted(plugin_stats.items()):
             expected = stats["expected"]
             activated = stats["activated"]
-            accuracy = (min(expected, activated) / max(expected, activated) * 100
-                       if max(expected, activated) > 0 else 0)
+            accuracy = (
+                min(expected, activated) / max(expected, activated) * 100
+                if max(expected, activated) > 0
+                else 0
+            )
             report += f"| {plugin} | {expected} | {activated} | {accuracy:.1f}% |\n"
 
         report += """
@@ -504,7 +537,9 @@ Samples that should have triggered plugins but didn't:
 """
 
         if metrics.false_positive_rate < 5 and metrics.false_negative_rate < 5:
-            report += "**Status:** ✅ EXCELLENT - Both FP and FN rates below 5% target\n\n"
+            report += (
+                "**Status:** ✅ EXCELLENT - Both FP and FN rates below 5% target\n\n"
+            )
         elif metrics.false_positive_rate < 10 and metrics.false_negative_rate < 10:
             report += "**Status:** ⚠️ GOOD - FP and FN rates acceptable but could be improved\n\n"
         else:
@@ -535,6 +570,7 @@ Samples that should have triggered plugins but didn't:
     def _get_timestamp(self) -> str:
         """Get current timestamp."""
         from datetime import datetime
+
         return datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
 
@@ -545,21 +581,18 @@ def main():
     parser.add_argument(
         "--plugins-dir",
         default="plugins",
-        help="Path to plugins directory (default: plugins)"
+        help="Path to plugins directory (default: plugins)",
     )
     parser.add_argument(
         "--corpus-dir",
         default="test-corpus",
-        help="Path to test corpus directory (default: test-corpus)"
+        help="Path to test corpus directory (default: test-corpus)",
     )
-    parser.add_argument(
-        "--plugin",
-        help="Test specific plugin only"
-    )
+    parser.add_argument("--plugin", help="Test specific plugin only")
     parser.add_argument(
         "--output",
         default="reports/activation-accuracy.md",
-        help="Output report file (default: reports/activation-accuracy.md)"
+        help="Output report file (default: reports/activation-accuracy.md)",
     )
 
     args = parser.parse_args()

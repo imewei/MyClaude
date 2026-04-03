@@ -36,13 +36,13 @@ def example_multi_device_scaling():
     # Otherwise, create 1D mesh
     if n_devices >= 8:
         mesh_shape = (4, 2)
-        axis_names = ('data', 'model')
+        axis_names = ("data", "model")
     elif n_devices >= 4:
         mesh_shape = (2, 2)
-        axis_names = ('data', 'model')
+        axis_names = ("data", "model")
     else:
         mesh_shape = (n_devices,)
-        axis_names = ('data',)
+        axis_names = ("data",)
 
     devices_array = mesh_utils.create_device_mesh(mesh_shape)
     mesh = Mesh(devices_array, axis_names=axis_names)
@@ -55,14 +55,14 @@ def example_multi_device_scaling():
 
     if len(axis_names) == 2:
         # 2D mesh: data and model parallelism
-        data_sharding = NamedSharding(mesh, P('data', None))
-        model_sharding = NamedSharding(mesh, P(None, 'model'))
-        _ = NamedSharding(mesh, P('data', 'model'))
+        data_sharding = NamedSharding(mesh, P("data", None))
+        model_sharding = NamedSharding(mesh, P(None, "model"))
+        _ = NamedSharding(mesh, P("data", "model"))
     else:
         # 1D mesh: data parallelism only
-        data_sharding = NamedSharding(mesh, P('data'))
+        data_sharding = NamedSharding(mesh, P("data"))
         model_sharding = NamedSharding(mesh, P(None))
-        _ = NamedSharding(mesh, P('data'))
+        _ = NamedSharding(mesh, P("data"))
 
     print("Sharding strategies created:")
     print(f"  Data sharding: shard along {axis_names[0]}")
@@ -169,9 +169,9 @@ def example_multi_device_scaling():
             return jnp.mean((logits - y) ** 2)
 
         # Compute loss and gradients
-        loss, (grad_w1, grad_w2) = jax.value_and_grad(
-            loss_fn_inner, argnums=(0, 1)
-        )(w1, w2)
+        loss, (grad_w1, grad_w2) = jax.value_and_grad(loss_fn_inner, argnums=(0, 1))(
+            w1, w2
+        )
 
         # Update parameters (sharding preserved)
         w1 = w1 - learning_rate * grad_w1
@@ -232,5 +232,5 @@ def example_multi_device_scaling():
     print(f"Demonstrated {n_devices}-device parallelism with JAX Sharding API")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     example_multi_device_scaling()

@@ -10,10 +10,12 @@ import jax
 import jax.numpy as jnp
 from nlsq import CurveFit
 
+
 def decay_model(x, params):
     """Simple exponential decay model: A * exp(-lambda * x) + C"""
     A, lambda_, C = params
     return A * jnp.exp(-lambda_ * x) + C
+
 
 def main():
     print("Running NLSQ example...")
@@ -21,7 +23,7 @@ def main():
     # 1. Generate synthetic data
     key = jax.random.PRNGKey(0)
     x = jnp.linspace(0, 10, 100)
-    true_params = jnp.array([5.0, 0.5, 1.0]) # A, lambda, C
+    true_params = jnp.array([5.0, 0.5, 1.0])  # A, lambda, C
     y_clean = decay_model(x, true_params)
     y_noisy = y_clean + 0.1 * jax.random.normal(key, x.shape)
 
@@ -44,6 +46,7 @@ def main():
 
     if not result.success:
         print("Optimization failed.")
+
 
 if __name__ == "__main__":
     main()

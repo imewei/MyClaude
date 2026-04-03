@@ -43,10 +43,7 @@ def main():
 
     # 2. Define energy function (Lennard-Jones potential)
     energy_fn = energy.lennard_jones_pair(
-        displacement_fn,
-        species=None,
-        sigma=1.0,
-        epsilon=1.0
+        displacement_fn, species=None, sigma=1.0, epsilon=1.0
     )
 
     # 3. Initialize system
@@ -70,8 +67,10 @@ def main():
         if (step + 1) % 200 == 0:
             E = energy_fn(state.position)
             T = quantity.temperature(state, kB=1.0)
-            print(f"  Equilibration step {step+1}/{n_equilibration}: "
-                  f"E={E:.4f}, T={T:.4f}")
+            print(
+                f"  Equilibration step {step+1}/{n_equilibration}: "
+                f"E={E:.4f}, T={T:.4f}"
+            )
 
     print("✓ Equilibration complete\n")
 
@@ -93,8 +92,10 @@ def main():
             temperatures.append(T)
 
             if (step + 1) % 1000 == 0:
-                print(f"  Production step {step+1}/{n_production}: "
-                      f"E={E:.4f}, T={T:.4f}")
+                print(
+                    f"  Production step {step+1}/{n_production}: "
+                    f"E={E:.4f}, T={T:.4f}"
+                )
 
     print("✓ Production run complete\n")
 
@@ -138,7 +139,7 @@ def main():
 
     first_peak_idx = jnp.argmax(rdf[:20])
     first_peak_position = r_bins[first_peak_idx]
-    lj_minimum = 2**(1/6)  # Expected first peak for LJ potential
+    lj_minimum = 2 ** (1 / 6)  # Expected first peak for LJ potential
 
     print(f"  First peak position: {first_peak_position:.3f}")
     print(f"  Expected (LJ minimum): {lj_minimum:.3f}")
@@ -149,46 +150,48 @@ def main():
     fig, axes = plt.subplots(2, 2, figsize=(12, 10))
 
     # Energy time series
-    axes[0, 0].plot(energies, 'b-', linewidth=1, alpha=0.7)
-    axes[0, 0].axhline(energy_mean, color='r', linestyle='--', label='Mean')
-    axes[0, 0].set_xlabel('Sample')
-    axes[0, 0].set_ylabel('Total Energy')
-    axes[0, 0].set_title('Energy Conservation')
+    axes[0, 0].plot(energies, "b-", linewidth=1, alpha=0.7)
+    axes[0, 0].axhline(energy_mean, color="r", linestyle="--", label="Mean")
+    axes[0, 0].set_xlabel("Sample")
+    axes[0, 0].set_ylabel("Total Energy")
+    axes[0, 0].set_title("Energy Conservation")
     axes[0, 0].legend()
     axes[0, 0].grid(True, alpha=0.3)
 
     # Temperature time series
-    axes[0, 1].plot(temperatures, 'g-', linewidth=1, alpha=0.7)
-    axes[0, 1].axhline(temp_mean, color='r', linestyle='--', label='Mean')
-    axes[0, 1].set_xlabel('Sample')
-    axes[0, 1].set_ylabel('Temperature')
-    axes[0, 1].set_title('Temperature Fluctuations')
+    axes[0, 1].plot(temperatures, "g-", linewidth=1, alpha=0.7)
+    axes[0, 1].axhline(temp_mean, color="r", linestyle="--", label="Mean")
+    axes[0, 1].set_xlabel("Sample")
+    axes[0, 1].set_ylabel("Temperature")
+    axes[0, 1].set_title("Temperature Fluctuations")
     axes[0, 1].legend()
     axes[0, 1].grid(True, alpha=0.3)
 
     # Radial distribution function
-    axes[1, 0].plot(r_bins, rdf, 'k-', linewidth=2)
-    axes[1, 0].axvline(lj_minimum, color='r', linestyle='--',
-                       label=f'LJ minimum ({lj_minimum:.2f})')
-    axes[1, 0].set_xlabel('Distance r')
-    axes[1, 0].set_ylabel('g(r)')
-    axes[1, 0].set_title('Radial Distribution Function')
+    axes[1, 0].plot(r_bins, rdf, "k-", linewidth=2)
+    axes[1, 0].axvline(
+        lj_minimum, color="r", linestyle="--", label=f"LJ minimum ({lj_minimum:.2f})"
+    )
+    axes[1, 0].set_xlabel("Distance r")
+    axes[1, 0].set_ylabel("g(r)")
+    axes[1, 0].set_title("Radial Distribution Function")
     axes[1, 0].legend()
     axes[1, 0].grid(True, alpha=0.3)
     axes[1, 0].set_xlim(0, 5)
 
     # Energy histogram
-    axes[1, 1].hist(energies, bins=30, alpha=0.7, color='blue', edgecolor='black')
-    axes[1, 1].axvline(energy_mean, color='r', linestyle='--',
-                       linewidth=2, label='Mean')
-    axes[1, 1].set_xlabel('Energy')
-    axes[1, 1].set_ylabel('Frequency')
-    axes[1, 1].set_title('Energy Distribution')
+    axes[1, 1].hist(energies, bins=30, alpha=0.7, color="blue", edgecolor="black")
+    axes[1, 1].axvline(
+        energy_mean, color="r", linestyle="--", linewidth=2, label="Mean"
+    )
+    axes[1, 1].set_xlabel("Energy")
+    axes[1, 1].set_ylabel("Frequency")
+    axes[1, 1].set_title("Energy Distribution")
     axes[1, 1].legend()
     axes[1, 1].grid(True, alpha=0.3)
 
     plt.tight_layout()
-    plt.savefig('md_lennard_jones_results.png', dpi=300, bbox_inches='tight')
+    plt.savefig("md_lennard_jones_results.png", dpi=300, bbox_inches="tight")
     print("✓ Plots saved to: md_lennard_jones_results.png")
 
     print("\n" + "=" * 60)
@@ -208,7 +211,7 @@ def compute_rdf(positions, box_size, displacement_fn, n_bins=100, r_max=None):
     # Compute all pairwise distances
     distances = []
     for i in range(N):
-        for j in range(i+1, N):
+        for j in range(i + 1, N):
             dr_vec = displacement_fn(positions[i], positions[j])
             r = jnp.sqrt(jnp.sum(dr_vec**2))
             distances.append(r)
@@ -229,5 +232,5 @@ def compute_rdf(positions, box_size, displacement_fn, n_bins=100, r_max=None):
     return rdf, r_bins
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

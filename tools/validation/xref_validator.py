@@ -26,6 +26,7 @@ from tools.common.loader import PluginLoader
 @dataclass
 class CrossReference:
     """A cross-reference from one plugin to another"""
+
     source_plugin: str
     source_file: str
     source_line: int
@@ -40,6 +41,7 @@ class CrossReference:
 @dataclass
 class XrefResult:
     """Results of cross-reference validation"""
+
     total_references: int = 0
     valid_references: int = 0
     broken_references: List[CrossReference] = field(default_factory=list)
@@ -52,11 +54,11 @@ class CrossReferenceValidator:
 
     # Patterns for detecting cross-references
     REFERENCE_PATTERNS = {
-        'plugin_mention': r'\b([a-z]+-[a-z-]+)(?:\s+plugin)?\b',
-        'agent_reference': r'\bagent:\s*([a-z]+-[a-z-]+)\b',
-        'command_reference': r'/([a-z]+-[a-z-]+)\b',
-        'skill_reference': r'\bskill:\s*([a-z]+-[a-z-]+)\b',
-        'markdown_link': r'\[([^\]]+)\]\(([^\)]+)\)',
+        "plugin_mention": r"\b([a-z]+-[a-z-]+)(?:\s+plugin)?\b",
+        "agent_reference": r"\bagent:\s*([a-z]+-[a-z-]+)\b",
+        "command_reference": r"/([a-z]+-[a-z-]+)\b",
+        "skill_reference": r"\bskill:\s*([a-z]+-[a-z-]+)\b",
+        "markdown_link": r"\[([^\]]+)\]\(([^\)]+)\)",
     }
 
     def __init__(self, plugins_dir: Path):
@@ -77,18 +79,15 @@ class CrossReferenceValidator:
                 "version": metadata.version,
                 "category": metadata.category,
                 "agents": {
-                    a.get("name"): a.get("description", "")
-                    for a in metadata.agents
+                    a.get("name"): a.get("description", "") for a in metadata.agents
                 },
                 "commands": {
-                    c.get("name"): c.get("description", "")
-                    for c in metadata.commands
+                    c.get("name"): c.get("description", "") for c in metadata.commands
                 },
                 "skills": {
-                    s.get("name"): s.get("description", "")
-                    for s in metadata.skills
+                    s.get("name"): s.get("description", "") for s in metadata.skills
                 },
-                "path": str(metadata.path)
+                "path": str(metadata.path),
             }
 
         for error in loader.get_errors():
@@ -106,9 +105,7 @@ class CrossReferenceValidator:
 
         # Step 3: Calculate statistics
         self.result.total_references = len(self.references)
-        self.result.valid_references = sum(
-            1 for ref in self.references if ref.is_valid
-        )
+        self.result.valid_references = sum(1 for ref in self.references if ref.is_valid)
         self.result.broken_references = [
             ref for ref in self.references if not ref.is_valid
         ]
@@ -149,23 +146,19 @@ class CrossReferenceValidator:
     def _extract_from_file(self, file_path: Path, source_plugin: str):
         """Extract cross-references from a file"""
         try:
-            content = file_path.read_text(encoding='utf-8')
-            lines = content.split('\n')
+            content = file_path.read_text(encoding="utf-8")
+            lines = content.split("\n")
 
             for line_num, line in enumerate(lines, 1):
                 # Skip code blocks
-                if line.strip().startswith('```'):
+                if line.strip().startswith("```"):
                     continue
 
                 # Extract plugin mentions
-                self._extract_plugin_mentions(
-                    line, file_path, source_plugin, line_num
-                )
+                self._extract_plugin_mentions(line, file_path, source_plugin, line_num)
 
                 # Extract agent references
-                self._extract_agent_references(
-                    line, file_path, source_plugin, line_num
-                )
+                self._extract_agent_references(line, file_path, source_plugin, line_num)
 
                 # Extract command references
                 self._extract_command_references(
@@ -173,14 +166,10 @@ class CrossReferenceValidator:
                 )
 
                 # Extract skill references
-                self._extract_skill_references(
-                    line, file_path, source_plugin, line_num
-                )
+                self._extract_skill_references(line, file_path, source_plugin, line_num)
 
                 # Extract markdown links
-                self._extract_markdown_links(
-                    line, file_path, source_plugin, line_num
-                )
+                self._extract_markdown_links(line, file_path, source_plugin, line_num)
 
         except Exception as e:
             print(f"⚠️  Warning: Error extracting from {file_path}: {e}")
@@ -195,8 +184,8 @@ class CrossReferenceValidator:
 
             # Look for plugin name with optional "plugin" suffix
             patterns = [
-                rf'\b{re.escape(plugin_name)}\s+plugin\b',
-                rf'\b`{re.escape(plugin_name)}`\b',
+                rf"\b{re.escape(plugin_name)}\s+plugin\b",
+                rf"\b`{re.escape(plugin_name)}`\b",
             ]
 
             for pattern in patterns:
@@ -207,9 +196,9 @@ class CrossReferenceValidator:
                         source_file=str(file_path.relative_to(self.plugins_dir)),
                         source_line=line_num,
                         target_plugin=plugin_name,
-                        target_type='plugin',
+                        target_type="plugin",
                         target_name=plugin_name,
-                        context=context
+                        context=context,
                     )
                     self.references.append(ref)
                     break
@@ -220,9 +209,9 @@ class CrossReferenceValidator:
         """Extract agent references"""
         # Look for patterns like "agent: agent-name" or "@agent-name"
         patterns = [
-            r'\bagent:\s*([a-z]+-[a-z-]+)\b',
-            r'\b@([a-z]+-[a-z-]+)\b',
-            r'\bagent\s+`([a-z]+-[a-z-]+)`',
+            r"\bagent:\s*([a-z]+-[a-z-]+)\b",
+            r"\b@([a-z]+-[a-z-]+)\b",
+            r"\bagent\s+`([a-z]+-[a-z-]+)`",
         ]
 
         for pattern in patterns:
@@ -239,9 +228,9 @@ class CrossReferenceValidator:
                         source_file=str(file_path.relative_to(self.plugins_dir)),
                         source_line=line_num,
                         target_plugin=target_plugin,
-                        target_type='agent',
+                        target_type="agent",
                         target_name=agent_name,
-                        context=context
+                        context=context,
                     )
                     self.references.append(ref)
 
@@ -250,7 +239,7 @@ class CrossReferenceValidator:
     ):
         """Extract command references (slash commands)"""
         # Look for /command-name patterns
-        pattern = r'/([a-z]+-[a-z-]+)\b'
+        pattern = r"/([a-z]+-[a-z-]+)\b"
 
         for match in re.finditer(pattern, line):
             command_name = match.group(1)
@@ -265,9 +254,9 @@ class CrossReferenceValidator:
                     source_file=str(file_path.relative_to(self.plugins_dir)),
                     source_line=line_num,
                     target_plugin=target_plugin,
-                    target_type='command',
+                    target_type="command",
                     target_name=command_name,
-                    context=context
+                    context=context,
                 )
                 self.references.append(ref)
 
@@ -277,8 +266,8 @@ class CrossReferenceValidator:
         """Extract skill references"""
         # Look for patterns like "skill: skill-name"
         patterns = [
-            r'\bskill:\s*([a-z]+-[a-z-]+)\b',
-            r'\bskill\s+`([a-z]+-[a-z-]+)`',
+            r"\bskill:\s*([a-z]+-[a-z-]+)\b",
+            r"\bskill\s+`([a-z]+-[a-z-]+)`",
         ]
 
         for pattern in patterns:
@@ -295,9 +284,9 @@ class CrossReferenceValidator:
                         source_file=str(file_path.relative_to(self.plugins_dir)),
                         source_line=line_num,
                         target_plugin=target_plugin,
-                        target_type='skill',
+                        target_type="skill",
                         target_name=skill_name,
-                        context=context
+                        context=context,
                     )
                     self.references.append(ref)
 
@@ -305,7 +294,7 @@ class CrossReferenceValidator:
         self, line: str, file_path: Path, source_plugin: str, line_num: int
     ):
         """Extract and validate markdown links"""
-        pattern = r'\[([^\]]+)\]\(([^\)]+)\)'
+        pattern = r"\[([^\]]+)\]\(([^\)]+)\)"
 
         for match in re.finditer(pattern, line):
             link_text = match.group(1)
@@ -321,9 +310,9 @@ class CrossReferenceValidator:
                             source_file=str(file_path.relative_to(self.plugins_dir)),
                             source_line=line_num,
                             target_plugin=plugin_name,
-                            target_type='link',
+                            target_type="link",
                             target_name=link_url,
-                            context=context
+                            context=context,
                         )
                         self.references.append(ref)
                         break
@@ -361,17 +350,17 @@ class CrossReferenceValidator:
             # Validate based on type
             plugin_data = self.result.plugin_index[ref.target_plugin]
 
-            if ref.target_type == 'agent':
+            if ref.target_type == "agent":
                 if ref.target_name not in plugin_data["agents"]:
                     ref.is_valid = False
                     ref.error_message = f"Agent '{ref.target_name}' not found in plugin '{ref.target_plugin}'"
 
-            elif ref.target_type == 'command':
+            elif ref.target_type == "command":
                 if ref.target_name not in plugin_data["commands"]:
                     ref.is_valid = False
                     ref.error_message = f"Command '{ref.target_name}' not found in plugin '{ref.target_plugin}'"
 
-            elif ref.target_type == 'skill':
+            elif ref.target_type == "skill":
                 if ref.target_name not in plugin_data["skills"]:
                     ref.is_valid = False
                     ref.error_message = f"Skill '{ref.target_name}' not found in plugin '{ref.target_plugin}'"
@@ -389,9 +378,15 @@ class CrossReferenceValidator:
         # Summary
         lines.append("## Summary")
         lines.append("")
-        valid_pct = (self.result.valid_references / self.result.total_references * 100) if self.result.total_references > 0 else 0
+        valid_pct = (
+            (self.result.valid_references / self.result.total_references * 100)
+            if self.result.total_references > 0
+            else 0
+        )
         lines.append(f"- **Total References:** {self.result.total_references}")
-        lines.append(f"- **Valid References:** {self.result.valid_references} ({valid_pct:.1f}%)")
+        lines.append(
+            f"- **Valid References:** {self.result.valid_references} ({valid_pct:.1f}%)"
+        )
         lines.append(f"- **Broken References:** {len(self.result.broken_references)}")
         lines.append(f"- **Plugins Indexed:** {len(self.result.plugin_index)}")
         lines.append("")
@@ -415,18 +410,23 @@ class CrossReferenceValidator:
         for ref_type in sorted(type_counts.keys()):
             count = type_counts[ref_type]
             broken_count = sum(
-                1 for ref in self.result.broken_references
+                1
+                for ref in self.result.broken_references
                 if ref.target_type == ref_type
             )
             status = "✅" if broken_count == 0 else "❌"
-            lines.append(f"- **{ref_type}**: {count} total, {broken_count} broken {status}")
+            lines.append(
+                f"- **{ref_type}**: {count} total, {broken_count} broken {status}"
+            )
         lines.append("")
 
         # Broken references
         if self.result.broken_references:
             lines.append("## Broken References")
             lines.append("")
-            lines.append(f"Found {len(self.result.broken_references)} broken references:")
+            lines.append(
+                f"Found {len(self.result.broken_references)} broken references:"
+            )
             lines.append("")
 
             # Group by source plugin
@@ -441,7 +441,9 @@ class CrossReferenceValidator:
 
                 for ref in refs:
                     lines.append(f"**{ref.target_type}: `{ref.target_name}`**")
-                    lines.append(f"- File: `{ref.source_file}` (line {ref.source_line})")
+                    lines.append(
+                        f"- File: `{ref.source_file}` (line {ref.source_line})"
+                    )
                     lines.append(f"- Target Plugin: `{ref.target_plugin}`")
                     lines.append(f"- Error: {ref.error_message}")
                     lines.append(f"- Context: {ref.context}")
@@ -490,16 +492,24 @@ class CrossReferenceValidator:
             lines.append("### Fix Broken References")
             lines.append("")
             for ref in self.result.broken_references[:10]:  # Top 10
-                lines.append(f"- Fix `{ref.source_file}` line {ref.source_line}: {ref.error_message}")
+                lines.append(
+                    f"- Fix `{ref.source_file}` line {ref.source_line}: {ref.error_message}"
+                )
             if len(self.result.broken_references) > 10:
-                lines.append(f"- _(... and {len(self.result.broken_references) - 10} more)_")
+                lines.append(
+                    f"- _(... and {len(self.result.broken_references) - 10} more)_"
+                )
             lines.append("")
 
         lines.append("### Best Practices")
         lines.append("")
-        lines.append("- Always verify plugin/agent/command/skill names before referencing")
+        lines.append(
+            "- Always verify plugin/agent/command/skill names before referencing"
+        )
         lines.append("- Use backticks around technical names for clarity")
-        lines.append("- Include plugin name when referencing agents/commands/skills from other plugins")
+        lines.append(
+            "- Include plugin name when referencing agents/commands/skills from other plugins"
+        )
         lines.append("- Regularly run cross-reference validation during development")
         lines.append("")
 
@@ -508,7 +518,7 @@ class CrossReferenceValidator:
         # Write to file if output path provided
         if output_path:
             output_path.parent.mkdir(parents=True, exist_ok=True)
-            output_path.write_text(report, encoding='utf-8')
+            output_path.write_text(report, encoding="utf-8")
             print(f"✅ Validation report saved to: {output_path}")
 
         return report
@@ -520,7 +530,7 @@ class CrossReferenceValidator:
                 "total_references": self.result.total_references,
                 "valid_references": self.result.valid_references,
                 "broken_count": len(self.result.broken_references),
-                "plugins_indexed": len(self.result.plugin_index)
+                "plugins_indexed": len(self.result.plugin_index),
             },
             "broken_references": [
                 {
@@ -531,15 +541,15 @@ class CrossReferenceValidator:
                     "target_type": ref.target_type,
                     "target_name": ref.target_name,
                     "error": ref.error_message,
-                    "context": ref.context
+                    "context": ref.context,
                 }
                 for ref in self.result.broken_references
             ],
-            "plugin_index": self.result.plugin_index
+            "plugin_index": self.result.plugin_index,
         }
 
         output_path.parent.mkdir(parents=True, exist_ok=True)
-        with open(output_path, 'w', encoding='utf-8') as f:
+        with open(output_path, "w", encoding="utf-8") as f:
             json.dump(data, f, indent=2)
 
         print(f"✅ Validation data exported to: {output_path}")
@@ -556,18 +566,16 @@ def main():
         "--plugins-dir",
         type=Path,
         default=Path.cwd() / "plugins",
-        help="Path to plugins directory (default: ./plugins)"
+        help="Path to plugins directory (default: ./plugins)",
     )
     parser.add_argument(
         "--output",
         type=Path,
         default=Path("reports/xref-validation.md"),
-        help="Output file for validation report (default: reports/xref-validation.md)"
+        help="Output file for validation report (default: reports/xref-validation.md)",
     )
     parser.add_argument(
-        "--export-json",
-        type=Path,
-        help="Export validation results as JSON"
+        "--export-json", type=Path, help="Export validation results as JSON"
     )
 
     args = parser.parse_args()

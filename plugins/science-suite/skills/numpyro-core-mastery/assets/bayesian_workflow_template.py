@@ -18,10 +18,10 @@ from numpyro.diagnostics import summary
 import matplotlib.pyplot as plt
 import arviz as az
 
-
 # ============================================================================
 # STEP 1: DEFINE YOUR MODEL
 # ============================================================================
+
 
 def model(x, y=None):
     """
@@ -34,21 +34,22 @@ def model(x, y=None):
     TODO: Customize this function for your domain
     """
     # Priors (TODO: Adjust based on domain knowledge)
-    alpha = numpyro.sample('alpha', dist.Normal(0, 10))
-    beta = numpyro.sample('beta', dist.Normal(0, 10))
-    sigma = numpyro.sample('sigma', dist.HalfNormal(5))
+    alpha = numpyro.sample("alpha", dist.Normal(0, 10))
+    beta = numpyro.sample("beta", dist.Normal(0, 10))
+    sigma = numpyro.sample("sigma", dist.HalfNormal(5))
 
     # Expected value (TODO: Replace with your model equation)
     mu = alpha + beta * x
 
     # Likelihood (TODO: Choose appropriate distribution)
-    with numpyro.plate('data', len(x)):
-        numpyro.sample('obs', dist.Normal(mu, sigma), obs=y)
+    with numpyro.plate("data", len(x)):
+        numpyro.sample("obs", dist.Normal(mu, sigma), obs=y)
 
 
 # ============================================================================
 # STEP 2: LOAD YOUR DATA
 # ============================================================================
+
 
 def load_data():
     """
@@ -78,6 +79,7 @@ def load_data():
 # STEP 3: PRIOR PREDICTIVE CHECK
 # ============================================================================
 
+
 def prior_predictive_check(x, y):
     """
     Check if prior generates reasonable predictions.
@@ -86,14 +88,14 @@ def prior_predictive_check(x, y):
         x: Independent variable
         y: Observed data (for comparison)
     """
-    print("\n" + "="*70)
+    print("\n" + "=" * 70)
     print("PRIOR PREDICTIVE CHECK")
-    print("="*70)
+    print("=" * 70)
 
     prior_predictive = Predictive(model, num_samples=500)
     prior_samples = prior_predictive(random.PRNGKey(1), x, y=None)
 
-    y_prior = prior_samples['obs']
+    y_prior = prior_samples["obs"]
 
     print(f"Prior predictive range: [{y_prior.min():.2f}, {y_prior.max():.2f}]")
     print(f"Observed data range:    [{y.min():.2f}, {y.max():.2f}]")
@@ -103,29 +105,30 @@ def prior_predictive_check(x, y):
 
     plt.subplot(1, 2, 1)
     for i in range(min(100, len(y_prior))):
-        plt.plot(x, y_prior[i], 'C0', alpha=0.05)
-    plt.scatter(x, y, c='red', s=20, alpha=0.6, label='Observed')
-    plt.xlabel('x')
-    plt.ylabel('y')
-    plt.title('Prior Predictive Samples')
+        plt.plot(x, y_prior[i], "C0", alpha=0.05)
+    plt.scatter(x, y, c="red", s=20, alpha=0.6, label="Observed")
+    plt.xlabel("x")
+    plt.ylabel("y")
+    plt.title("Prior Predictive Samples")
     plt.legend()
 
     plt.subplot(1, 2, 2)
-    plt.hist(y_prior.flatten(), bins=50, alpha=0.5, density=True, label='Prior')
-    plt.hist(y, bins=30, alpha=0.5, density=True, label='Observed')
-    plt.xlabel('y')
-    plt.ylabel('Density')
-    plt.title('Prior vs Observed Distribution')
+    plt.hist(y_prior.flatten(), bins=50, alpha=0.5, density=True, label="Prior")
+    plt.hist(y, bins=30, alpha=0.5, density=True, label="Observed")
+    plt.xlabel("y")
+    plt.ylabel("Density")
+    plt.title("Prior vs Observed Distribution")
     plt.legend()
 
     plt.tight_layout()
-    plt.savefig('prior_predictive_check.png', dpi=150)
+    plt.savefig("prior_predictive_check.png", dpi=150)
     print("\n✓ Saved: prior_predictive_check.png")
 
 
 # ============================================================================
 # STEP 4: RUN MCMC INFERENCE
 # ============================================================================
+
 
 def run_inference(x, y):
     """
@@ -138,24 +141,24 @@ def run_inference(x, y):
     Returns:
         mcmc: MCMC object with results
     """
-    print("\n" + "="*70)
+    print("\n" + "=" * 70)
     print("RUNNING MCMC INFERENCE")
-    print("="*70)
+    print("=" * 70)
 
     # Configure NUTS kernel
     nuts_kernel = NUTS(
         model,
         target_accept_prob=0.8,  # TODO: Increase to 0.9-0.95 if divergences
-        max_tree_depth=10
+        max_tree_depth=10,
     )
 
     # Configure MCMC
     mcmc = MCMC(
         nuts_kernel,
-        num_warmup=1000,    # TODO: Adjust warmup
-        num_samples=2000,   # TODO: Adjust samples
-        num_chains=4,       # TODO: Adjust chains
-        progress_bar=True
+        num_warmup=1000,  # TODO: Adjust warmup
+        num_samples=2000,  # TODO: Adjust samples
+        num_chains=4,  # TODO: Adjust chains
+        progress_bar=True,
     )
 
     # Run inference
@@ -169,6 +172,7 @@ def run_inference(x, y):
 # STEP 5: DIAGNOSTICS
 # ============================================================================
 
+
 def check_diagnostics(mcmc):
     """
     Check convergence diagnostics.
@@ -179,9 +183,9 @@ def check_diagnostics(mcmc):
     Returns:
         bool: True if all diagnostics pass
     """
-    print("\n" + "="*70)
+    print("\n" + "=" * 70)
     print("CONVERGENCE DIAGNOSTICS")
-    print("="*70)
+    print("=" * 70)
 
     posterior_samples = mcmc.get_samples()
     summary_dict = summary(posterior_samples, prob=0.95)
@@ -194,7 +198,7 @@ def check_diagnostics(mcmc):
     # Check R-hat
     print("\nR-hat Check:")
     for param, stats in summary_dict.items():
-        r_hat = stats['r_hat']
+        r_hat = stats["r_hat"]
         status = "✓" if r_hat < 1.01 else "✗ FAIL"
         print(f"  {param}: {r_hat:.4f} {status}")
         if r_hat > 1.01:
@@ -203,7 +207,7 @@ def check_diagnostics(mcmc):
     # Check ESS
     print("\nEffective Sample Size Check:")
     for param, stats in summary_dict.items():
-        n_eff = stats['n_eff']
+        n_eff = stats["n_eff"]
         status = "✓" if n_eff > 400 else "⚠ LOW"
         print(f"  {param}: {n_eff:.0f} {status}")
         if n_eff < 400:
@@ -211,7 +215,7 @@ def check_diagnostics(mcmc):
 
     # Check divergences
     print("\nDivergences Check:")
-    divergences = mcmc.get_extra_fields()['diverging'].sum()
+    divergences = mcmc.get_extra_fields()["diverging"].sum()
     print(f"  Total divergences: {divergences}")
     if divergences > 0:
         print("  ✗ Found divergences - increase target_accept_prob to 0.9")
@@ -231,6 +235,7 @@ def check_diagnostics(mcmc):
 # STEP 6: TRACE PLOTS
 # ============================================================================
 
+
 def plot_traces(mcmc):
     """
     Plot trace plots for visual convergence check.
@@ -238,20 +243,21 @@ def plot_traces(mcmc):
     Args:
         mcmc: MCMC object after run()
     """
-    print("\n" + "="*70)
+    print("\n" + "=" * 70)
     print("GENERATING TRACE PLOTS")
-    print("="*70)
+    print("=" * 70)
 
     idata = az.from_numpyro(mcmc)
     az.plot_trace(idata)
     plt.tight_layout()
-    plt.savefig('trace_plots.png', dpi=150)
+    plt.savefig("trace_plots.png", dpi=150)
     print("✓ Saved: trace_plots.png")
 
 
 # ============================================================================
 # STEP 7: POSTERIOR PREDICTIVE CHECK
 # ============================================================================
+
 
 def posterior_predictive_check(mcmc, x, y):
     """
@@ -262,25 +268,25 @@ def posterior_predictive_check(mcmc, x, y):
         x: Independent variable
         y: Observed data
     """
-    print("\n" + "="*70)
+    print("\n" + "=" * 70)
     print("POSTERIOR PREDICTIVE CHECK")
-    print("="*70)
+    print("=" * 70)
 
     posterior_samples = mcmc.get_samples()
     posterior_predictive = Predictive(model, posterior_samples)
     ppc_samples = posterior_predictive(random.PRNGKey(2), x, y=None)
 
-    y_ppc = ppc_samples['obs']
+    y_ppc = ppc_samples["obs"]
 
     # Visualize
     plt.figure(figsize=(12, 4))
 
     plt.subplot(1, 2, 1)
-    plt.scatter(x, y, c='red', s=20, alpha=0.6, label='Observed')
+    plt.scatter(x, y, c="red", s=20, alpha=0.6, label="Observed")
 
     # Plot posterior predictive samples
     for i in range(min(100, len(y_ppc))):
-        plt.plot(x, y_ppc[i], 'C0', alpha=0.02)
+        plt.plot(x, y_ppc[i], "C0", alpha=0.02)
 
     # Plot mean and credible interval
     y_mean = y_ppc.mean(axis=0)
@@ -288,31 +294,40 @@ def posterior_predictive_check(mcmc, x, y):
     y_upper = jnp.percentile(y_ppc, 97.5, axis=0)
 
     sorted_idx = jnp.argsort(x)
-    plt.plot(x[sorted_idx], y_mean[sorted_idx], 'b-', linewidth=2, label='Mean')
-    plt.fill_between(x[sorted_idx], y_lower[sorted_idx], y_upper[sorted_idx],
-                     alpha=0.3, color='blue', label='95% CI')
+    plt.plot(x[sorted_idx], y_mean[sorted_idx], "b-", linewidth=2, label="Mean")
+    plt.fill_between(
+        x[sorted_idx],
+        y_lower[sorted_idx],
+        y_upper[sorted_idx],
+        alpha=0.3,
+        color="blue",
+        label="95% CI",
+    )
 
-    plt.xlabel('x')
-    plt.ylabel('y')
-    plt.title('Posterior Predictive Fit')
+    plt.xlabel("x")
+    plt.ylabel("y")
+    plt.title("Posterior Predictive Fit")
     plt.legend()
 
     plt.subplot(1, 2, 2)
-    plt.hist(y_ppc.flatten(), bins=50, alpha=0.5, density=True, label='Posterior Predictive')
-    plt.hist(y, bins=30, alpha=0.5, density=True, label='Observed')
-    plt.xlabel('y')
-    plt.ylabel('Density')
-    plt.title('Posterior Predictive Check')
+    plt.hist(
+        y_ppc.flatten(), bins=50, alpha=0.5, density=True, label="Posterior Predictive"
+    )
+    plt.hist(y, bins=30, alpha=0.5, density=True, label="Observed")
+    plt.xlabel("y")
+    plt.ylabel("Density")
+    plt.title("Posterior Predictive Check")
     plt.legend()
 
     plt.tight_layout()
-    plt.savefig('posterior_predictive_check.png', dpi=150)
+    plt.savefig("posterior_predictive_check.png", dpi=150)
     print("✓ Saved: posterior_predictive_check.png")
 
 
 # ============================================================================
 # STEP 8: EXTRACT RESULTS
 # ============================================================================
+
 
 def extract_results(mcmc):
     """
@@ -324,9 +339,9 @@ def extract_results(mcmc):
     Returns:
         dict: Results summary
     """
-    print("\n" + "="*70)
+    print("\n" + "=" * 70)
     print("RESULTS SUMMARY")
-    print("="*70)
+    print("=" * 70)
 
     posterior_samples = mcmc.get_samples()
 
@@ -339,10 +354,10 @@ def extract_results(mcmc):
         upper = jnp.percentile(samples, 97.5)
 
         results[param_name] = {
-            'mean': float(mean),
-            'std': float(std),
-            'ci_lower': float(lower),
-            'ci_upper': float(upper)
+            "mean": float(mean),
+            "std": float(std),
+            "ci_lower": float(lower),
+            "ci_upper": float(upper),
         }
 
         print(f"\n{param_name}:")
@@ -357,13 +372,14 @@ def extract_results(mcmc):
 # MAIN WORKFLOW
 # ============================================================================
 
+
 def main():
     """
     Complete Bayesian workflow.
     """
-    print("\n" + "="*70)
+    print("\n" + "=" * 70)
     print("BAYESIAN WORKFLOW WITH NUMPYRO")
-    print("="*70)
+    print("=" * 70)
 
     # Step 1: Load data
     print("\n1. Loading data...")
@@ -395,9 +411,9 @@ def main():
     _ = extract_results(mcmc)
 
     # Final summary
-    print("\n" + "="*70)
+    print("\n" + "=" * 70)
     print("WORKFLOW COMPLETE")
-    print("="*70)
+    print("=" * 70)
     print("\nGenerated files:")
     print("  - prior_predictive_check.png")
     print("  - trace_plots.png")
@@ -408,7 +424,7 @@ def main():
     else:
         print("\n⚠ Some diagnostics failed - review output above")
 
-    print("\n" + "="*70)
+    print("\n" + "=" * 70)
 
 
 if __name__ == "__main__":

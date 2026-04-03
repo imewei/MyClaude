@@ -9,6 +9,7 @@ tools_root = current_dir.parent
 project_root = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(project_root))
 
+
 class TestXrefValidator(unittest.TestCase):
     def test_import(self):
         try:
@@ -16,6 +17,6 @@ class TestXrefValidator(unittest.TestCase):
         except ImportError:
             self.fail("Could not import xref_validator")
 
+
 if __name__ == "__main__":
     unittest.main()
-

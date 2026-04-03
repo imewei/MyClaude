@@ -11,10 +11,10 @@ from jax.scipy import stats
 import diffrax
 import blackjax
 
-
 # =============================================================================
 # Pattern 1: Simple ODE Parameter Estimation
 # =============================================================================
+
 
 def exponential_decay_model():
     """Estimate decay rate from noisy observations.
@@ -34,7 +34,7 @@ def exponential_decay_model():
     observations = true_trajectory + jax.random.normal(rng, ts.shape) * true_sigma
 
     def ode_fn(t, y, args):
-        k = args['k']
+        k = args["k"]
         return -k * y
 
     def solve_ode(params, ts):
@@ -43,10 +43,13 @@ def exponential_decay_model():
         solver = diffrax.Tsit5()
 
         solution = diffrax.diffeqsolve(
-            term, solver,
-            t0=ts[0], t1=ts[-1], dt0=0.01,
-            y0=params['y0'],
-            args={'k': params['k']},
+            term,
+            solver,
+            t0=ts[0],
+            t1=ts[-1],
+            dt0=0.01,
+            y0=params["y0"],
+            args={"k": params["k"]},
             saveat=diffrax.SaveAt(ts=ts),
             adjoint=diffrax.RecursiveCheckpointAdjoint(),  # For gradient
         )
@@ -55,16 +58,16 @@ def exponential_decay_model():
 
     def log_prob(params):
         """Log probability: prior + likelihood."""
-        k = params['k']
-        y0 = params['y0']
-        log_sigma = params['log_sigma']
+        k = params["k"]
+        y0 = params["y0"]
+        log_sigma = params["log_sigma"]
         sigma = jnp.exp(log_sigma)
 
         # Priors
         log_prior = (
-            stats.lognorm.logpdf(k, s=1.0, scale=1.0) +  # k > 0
-            stats.norm.logpdf(y0, 10, 5) +
-            stats.norm.logpdf(log_sigma, 0, 1)
+            stats.lognorm.logpdf(k, s=1.0, scale=1.0)  # k > 0
+            + stats.norm.logpdf(y0, 10, 5)
+            + stats.norm.logpdf(log_sigma, 0, 1)
         )
 
         # Solve ODE
@@ -75,12 +78,13 @@ def exponential_decay_model():
 
         return log_prior + log_lik
 
-    return log_prob, ts, observations, {'true_k': true_k, 'true_y0': true_y0}
+    return log_prob, ts, observations, {"true_k": true_k, "true_y0": true_y0}
 
 
 # =============================================================================
 # Pattern 2: Lotka-Volterra (Predator-Prey) Model
 # =============================================================================
+
 
 def lotka_volterra_model():
     """Estimate predator-prey dynamics parameters.
@@ -91,16 +95,21 @@ def lotka_volterra_model():
 
     # True parameters
     true_params = {
-        'alpha': 1.1,   # Prey birth rate
-        'beta': 0.4,    # Predation rate
-        'delta': 0.1,   # Predator growth from predation
-        'gamma': 0.4,   # Predator death rate
+        "alpha": 1.1,  # Prey birth rate
+        "beta": 0.4,  # Predation rate
+        "delta": 0.1,  # Predator growth from predation
+        "gamma": 0.4,  # Predator death rate
     }
 
     # Generate synthetic data
     def true_ode(t, state, args):
         x, y = state
-        alpha, beta, delta, gamma = args['alpha'], args['beta'], args['delta'], args['gamma']
+        alpha, beta, delta, gamma = (
+            args["alpha"],
+            args["beta"],
+            args["delta"],
+            args["gamma"],
+        )
         dx = alpha * x - beta * x * y
         dy = delta * x * y - gamma * y
         return jnp.array([dx, dy])
@@ -111,8 +120,11 @@ def lotka_volterra_model():
     term = diffrax.ODETerm(true_ode)
     solver = diffrax.Tsit5()
     solution = diffrax.diffeqsolve(
-        term, solver,
-        t0=0, t1=20, dt0=0.01,
+        term,
+        solver,
+        t0=0,
+        t1=20,
+        dt0=0.01,
         y0=y0,
         args=true_params,
         saveat=diffrax.SaveAt(ts=ts),
@@ -125,19 +137,19 @@ def lotka_volterra_model():
         """Log-prob for Lotka-Volterra inference."""
 
         # Transform from unconstrained to constrained
-        alpha = jnp.exp(params['log_alpha'])
-        beta = jnp.exp(params['log_beta'])
-        delta = jnp.exp(params['log_delta'])
-        gamma = jnp.exp(params['log_gamma'])
-        sigma = jnp.exp(params['log_sigma'])
+        alpha = jnp.exp(params["log_alpha"])
+        beta = jnp.exp(params["log_beta"])
+        delta = jnp.exp(params["log_delta"])
+        gamma = jnp.exp(params["log_gamma"])
+        sigma = jnp.exp(params["log_sigma"])
 
         # Priors (log-normal for positive parameters)
         log_prior = (
-            stats.norm.logpdf(params['log_alpha'], 0, 1) +
-            stats.norm.logpdf(params['log_beta'], -1, 1) +
-            stats.norm.logpdf(params['log_delta'], -2, 1) +
-            stats.norm.logpdf(params['log_gamma'], -1, 1) +
-            stats.norm.logpdf(params['log_sigma'], 0, 1)
+            stats.norm.logpdf(params["log_alpha"], 0, 1)
+            + stats.norm.logpdf(params["log_beta"], -1, 1)
+            + stats.norm.logpdf(params["log_delta"], -2, 1)
+            + stats.norm.logpdf(params["log_gamma"], -1, 1)
+            + stats.norm.logpdf(params["log_sigma"], 0, 1)
         )
 
         # Solve ODE
@@ -152,8 +164,11 @@ def lotka_volterra_model():
 
         try:
             sol = diffrax.diffeqsolve(
-                term, solver,
-                t0=ts[0], t1=ts[-1], dt0=0.01,
+                term,
+                solver,
+                t0=ts[0],
+                t1=ts[-1],
+                dt0=0.01,
                 y0=y0,
                 args=None,
                 saveat=diffrax.SaveAt(ts=ts),
@@ -180,6 +195,7 @@ def lotka_volterra_model():
 # Pattern 3: Stiff ODE with Implicit Solver
 # =============================================================================
 
+
 def stiff_chemical_kinetics():
     """Chemical reaction network with stiff dynamics.
 
@@ -188,7 +204,7 @@ def stiff_chemical_kinetics():
 
     def robertson_ode(t, y, args):
         """Robertson chemical kinetics (stiff)."""
-        k1, k2, k3 = args['k1'], args['k2'], args['k3']
+        k1, k2, k3 = args["k1"], args["k2"], args["k3"]
         y1, y2, y3 = y
 
         dy1 = -k1 * y1 + k3 * y2 * y3
@@ -199,17 +215,17 @@ def stiff_chemical_kinetics():
 
     def log_prob(params):
         """Log-prob for stiff ODE system."""
-        k1 = jnp.exp(params['log_k1'])
-        k2 = jnp.exp(params['log_k2'])
-        k3 = jnp.exp(params['log_k3'])
-        jnp.exp(params['log_sigma'])
+        k1 = jnp.exp(params["log_k1"])
+        k2 = jnp.exp(params["log_k2"])
+        k3 = jnp.exp(params["log_k3"])
+        jnp.exp(params["log_sigma"])
 
         # Prior
         log_prior = (
-            stats.norm.logpdf(params['log_k1'], -2, 2) +
-            stats.norm.logpdf(params['log_k2'], 7, 2) +
-            stats.norm.logpdf(params['log_k3'], 4, 2) +
-            stats.norm.logpdf(params['log_sigma'], -2, 1)
+            stats.norm.logpdf(params["log_k1"], -2, 2)
+            + stats.norm.logpdf(params["log_k2"], 7, 2)
+            + stats.norm.logpdf(params["log_k3"], 4, 2)
+            + stats.norm.logpdf(params["log_sigma"], -2, 1)
         )
 
         # Solve with implicit solver for stiff ODE
@@ -220,10 +236,13 @@ def stiff_chemical_kinetics():
         y0 = jnp.array([1.0, 0.0, 0.0])
 
         diffrax.diffeqsolve(
-            term, solver,
-            t0=ts[0], t1=ts[-1], dt0=1e-6,
+            term,
+            solver,
+            t0=ts[0],
+            t1=ts[-1],
+            dt0=1e-6,
             y0=y0,
-            args={'k1': k1, 'k2': k2, 'k3': k3},
+            args={"k1": k1, "k2": k2, "k3": k3},
             saveat=diffrax.SaveAt(ts=ts),
             adjoint=diffrax.ImplicitAdjoint(),  # Implicit adjoint for stiff
             stepsize_controller=diffrax.PIDController(rtol=1e-6, atol=1e-8),
@@ -240,6 +259,7 @@ def stiff_chemical_kinetics():
 # Pattern 4: Neural ODE as Surrogate
 # =============================================================================
 
+
 def neural_ode_surrogate():
     """Use neural network as surrogate for expensive ODE simulation.
 
@@ -250,6 +270,7 @@ def neural_ode_surrogate():
 
     class NeuralODE(eqx.Module):
         """Neural network defining the ODE dynamics."""
+
         layers: list
 
         def __init__(self, key, hidden_dim=32):
@@ -271,8 +292,11 @@ def neural_ode_surrogate():
         solver = diffrax.Tsit5()
 
         sol = diffrax.diffeqsolve(
-            term, solver,
-            t0=ts[0], t1=ts[-1], dt0=0.01,
+            term,
+            solver,
+            t0=ts[0],
+            t1=ts[-1],
+            dt0=0.01,
             y0=y0,
             saveat=diffrax.SaveAt(ts=ts),
         )
@@ -294,7 +318,9 @@ def neural_ode_surrogate():
         def step(model, opt_state, batch):
             y0s, targets, ts = batch
             loss, grads = eqx.filter_value_and_grad(
-                lambda m: jnp.mean(jax.vmap(loss_fn, (None, 0, 0, None))(m, y0s, targets, ts))
+                lambda m: jnp.mean(
+                    jax.vmap(loss_fn, (None, 0, 0, None))(m, y0s, targets, ts)
+                )
             )(model)
             updates, opt_state = optimizer.update(grads, opt_state, model)
             model = eqx.apply_updates(model, updates)
@@ -307,13 +333,12 @@ def neural_ode_surrogate():
         """Log-prob using trained neural surrogate."""
 
         def log_prob(params):
-            y0 = params['y0']
-            sigma = jnp.exp(params['log_sigma'])
+            y0 = params["y0"]
+            sigma = jnp.exp(params["log_sigma"])
 
             # Prior
-            log_prior = (
-                jnp.sum(stats.norm.logpdf(y0, 0, 5)) +
-                stats.norm.logpdf(params['log_sigma'], 0, 1)
+            log_prior = jnp.sum(stats.norm.logpdf(y0, 0, 5)) + stats.norm.logpdf(
+                params["log_sigma"], 0, 1
             )
 
             # Fast surrogate prediction
@@ -333,6 +358,7 @@ def neural_ode_surrogate():
 # Pattern 5: Full Bayesian Workflow
 # =============================================================================
 
+
 def run_bayesian_ode_inference():
     """Complete workflow: define model, run inference, analyze results."""
 
@@ -348,18 +374,16 @@ def run_bayesian_ode_inference():
 
     # Pack/unpack for Blackjax
     def pack(params):
-        return jnp.array([
-            jnp.log(params['k']),  # log-transform for positivity
-            params['y0'],
-            params['log_sigma']
-        ])
+        return jnp.array(
+            [
+                jnp.log(params["k"]),  # log-transform for positivity
+                params["y0"],
+                params["log_sigma"],
+            ]
+        )
 
     def unpack(arr):
-        return {
-            'k': jnp.exp(arr[0]),
-            'y0': arr[1],
-            'log_sigma': arr[2]
-        }
+        return {"k": jnp.exp(arr[0]), "y0": arr[1], "log_sigma": arr[2]}
 
     def packed_log_prob(arr):
         params = unpack(arr)
@@ -367,7 +391,7 @@ def run_bayesian_ode_inference():
         return log_prob(params) + arr[0]  # Jacobian: d(k)/d(log_k) = k = exp(log_k)
 
     # Initial guess
-    initial = pack({'k': 1.0, 'y0': 8.0, 'log_sigma': 0.0})
+    initial = pack({"k": 1.0, "y0": 8.0, "log_sigma": 0.0})
 
     print("\nRunning NUTS inference...")
 
@@ -396,8 +420,12 @@ def run_bayesian_ode_inference():
     sigma_samples = jnp.exp(samples[:, 2])
 
     print("\nPosterior Summary:")
-    print(f"  k: {jnp.mean(k_samples):.3f} ± {jnp.std(k_samples):.3f} (true: {true_params['true_k']})")
-    print(f"  y0: {jnp.mean(y0_samples):.3f} ± {jnp.std(y0_samples):.3f} (true: {true_params['true_y0']})")
+    print(
+        f"  k: {jnp.mean(k_samples):.3f} ± {jnp.std(k_samples):.3f} (true: {true_params['true_k']})"
+    )
+    print(
+        f"  y0: {jnp.mean(y0_samples):.3f} ± {jnp.std(y0_samples):.3f} (true: {true_params['true_y0']})"
+    )
     print(f"  sigma: {jnp.mean(sigma_samples):.3f} ± {jnp.std(sigma_samples):.3f}")
 
     return samples

@@ -16,10 +16,10 @@ import time
 from functools import lru_cache
 from io import StringIO
 
-
 # ============================================================================
 # STEP 1: Baseline Implementation (Slow)
 # ============================================================================
+
 
 def fibonacci_slow(n: int) -> int:
     """Naive recursive Fibonacci - exponential time complexity O(2^n)."""
@@ -44,6 +44,7 @@ def process_data_slow(data: list[int]) -> list[int]:
 # ============================================================================
 # STEP 2: Optimized Implementation
 # ============================================================================
+
 
 @lru_cache(maxsize=None)
 def fibonacci_fast(n: int) -> int:
@@ -83,6 +84,7 @@ def process_data_fast(data: list[int]) -> list[int]:
 # STEP 3: Profiling Functions
 # ============================================================================
 
+
 def profile_function(func, *args, **kwargs):
     """Profile a function and return statistics."""
     profiler = cProfile.Profile()
@@ -93,7 +95,7 @@ def profile_function(func, *args, **kwargs):
     # Get statistics
     string_io = StringIO()
     stats = pstats.Stats(profiler, stream=string_io)
-    stats.sort_stats('cumulative')
+    stats.sort_stats("cumulative")
     stats.print_stats(10)  # Top 10 functions
 
     return result, string_io.getvalue()
@@ -112,17 +114,13 @@ def benchmark_function(func, *args, iterations=100, **kwargs):
     min_time = min(times)
     max_time = max(times)
 
-    return {
-        'average': avg_time,
-        'min': min_time,
-        'max': max_time,
-        'total': sum(times)
-    }
+    return {"average": avg_time, "min": min_time, "max": max_time, "total": sum(times)}
 
 
 # ============================================================================
 # STEP 4: Demonstration and Analysis
 # ============================================================================
+
 
 def demonstrate_fibonacci():
     """Demonstrate Fibonacci optimization."""
@@ -137,7 +135,7 @@ def demonstrate_fibonacci():
     result, profile_output = profile_function(fibonacci_slow, n)
     print(f"   Result: {result}")
     print("   Profile (top functions):")
-    for line in profile_output.split('\n')[5:10]:  # Show relevant lines
+    for line in profile_output.split("\n")[5:10]:  # Show relevant lines
         if line.strip():
             print(f"   {line}")
 
@@ -146,7 +144,7 @@ def demonstrate_fibonacci():
     result, profile_output = profile_function(fibonacci_fast, n)
     print(f"   Result: {result}")
     print("   Profile (top functions):")
-    for line in profile_output.split('\n')[5:10]:
+    for line in profile_output.split("\n")[5:10]:
         if line.strip():
             print(f"   {line}")
 
@@ -154,7 +152,7 @@ def demonstrate_fibonacci():
     result, profile_output = profile_function(fibonacci_iterative, n)
     print(f"   Result: {result}")
     print("   Profile (top functions):")
-    for line in profile_output.split('\n')[5:10]:
+    for line in profile_output.split("\n")[5:10]:
         if line.strip():
             print(f"   {line}")
 
@@ -173,8 +171,8 @@ def demonstrate_fibonacci():
     iter_bench = benchmark_function(fibonacci_iterative, n, iterations=10)
     print(f"Iterative:        {iter_bench['average']*1000:.2f}ms (avg)")
 
-    speedup_memo = slow_bench['average'] / fast_bench['average']
-    speedup_iter = slow_bench['average'] / iter_bench['average']
+    speedup_memo = slow_bench["average"] / fast_bench["average"]
+    speedup_iter = slow_bench["average"] / iter_bench["average"]
     print(f"\nSpeedup (memoized): {speedup_memo:.1f}x faster")
     print(f"Speedup (iterative): {speedup_iter:.1f}x faster")
 
@@ -194,7 +192,7 @@ def demonstrate_data_processing():
     result, profile_output = profile_function(process_data_slow, data)
     print(f"   Result length: {len(result)}")
     print("   Profile (top functions):")
-    for line in profile_output.split('\n')[5:10]:
+    for line in profile_output.split("\n")[5:10]:
         if line.strip():
             print(f"   {line}")
 
@@ -202,7 +200,7 @@ def demonstrate_data_processing():
     result, profile_output = profile_function(process_data_fast, data)
     print(f"   Result length: {len(result)}")
     print("   Profile (top functions):")
-    for line in profile_output.split('\n')[5:10]:
+    for line in profile_output.split("\n")[5:10]:
         if line.strip():
             print(f"   {line}")
 
@@ -217,7 +215,7 @@ def demonstrate_data_processing():
     fast_bench = benchmark_function(process_data_fast, data, iterations=10)
     print(f"Optimized:  {fast_bench['average']*1000:.2f}ms (avg)")
 
-    speedup = slow_bench['average'] / fast_bench['average']
+    speedup = slow_bench["average"] / fast_bench["average"]
     print(f"\nSpeedup: {speedup:.1f}x faster")
 
 
@@ -255,6 +253,7 @@ def demonstrate_memory_usage():
 # ============================================================================
 # MAIN WORKFLOW
 # ============================================================================
+
 
 def main():
     """Run complete performance optimization workflow."""
@@ -312,5 +311,5 @@ def main():
     print("=" * 70)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

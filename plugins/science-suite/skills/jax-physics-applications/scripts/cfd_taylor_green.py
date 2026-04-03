@@ -43,8 +43,7 @@ def main():
     print()
 
     # 1. Define computational grid
-    grid = grids.Grid((grid_size, grid_size),
-                      domain=((0, 2*jnp.pi), (0, 2*jnp.pi)))
+    grid = grids.Grid((grid_size, grid_size), domain=((0, 2 * jnp.pi), (0, 2 * jnp.pi)))
 
     # 2. Initial conditions (Taylor-Green vortex)
     print("Initializing Taylor-Green vortex...")
@@ -77,8 +76,10 @@ def main():
             max_divergences.append(div)
 
             if (step + 1) % 1000 == 0:
-                print(f"  Step {step+1}/{n_steps}: t={t:.3f}, "
-                      f"KE={ke:.6f}, Enstrophy={ens:.6f}, max|∇·u|={div:.2e}")
+                print(
+                    f"  Step {step+1}/{n_steps}: t={t:.3f}, "
+                    f"KE={ke:.6f}, Enstrophy={ens:.6f}, max|∇·u|={div:.2e}"
+                )
 
     print("✓ Time integration complete\n")
 
@@ -134,28 +135,28 @@ def main():
 
     # Energy decay comparison
     ax1 = plt.subplot(2, 3, 1)
-    ax1.plot(times, kinetic_energies, 'b-', linewidth=2, label='Numerical')
-    ax1.plot(times, analytical_energy, 'r--', linewidth=2, label='Analytical')
-    ax1.set_xlabel('Time')
-    ax1.set_ylabel('Kinetic Energy')
-    ax1.set_title('Energy Decay')
+    ax1.plot(times, kinetic_energies, "b-", linewidth=2, label="Numerical")
+    ax1.plot(times, analytical_energy, "r--", linewidth=2, label="Analytical")
+    ax1.set_xlabel("Time")
+    ax1.set_ylabel("Kinetic Energy")
+    ax1.set_title("Energy Decay")
     ax1.legend()
     ax1.grid(True, alpha=0.3)
 
     # Relative error
     ax2 = plt.subplot(2, 3, 2)
-    ax2.semilogy(times, energy_error, 'g-', linewidth=2)
-    ax2.set_xlabel('Time')
-    ax2.set_ylabel('Relative Error')
-    ax2.set_title('Energy Decay Error')
+    ax2.semilogy(times, energy_error, "g-", linewidth=2)
+    ax2.set_xlabel("Time")
+    ax2.set_ylabel("Relative Error")
+    ax2.set_title("Energy Decay Error")
     ax2.grid(True, alpha=0.3)
 
     # Enstrophy
     ax3 = plt.subplot(2, 3, 3)
-    ax3.plot(times, enstrophies, 'purple', linewidth=2)
-    ax3.set_xlabel('Time')
-    ax3.set_ylabel('Enstrophy')
-    ax3.set_title('Enstrophy Evolution')
+    ax3.plot(times, enstrophies, "purple", linewidth=2)
+    ax3.set_xlabel("Time")
+    ax3.set_ylabel("Enstrophy")
+    ax3.set_title("Enstrophy Evolution")
     ax3.grid(True, alpha=0.3)
 
     # Velocity field at final time
@@ -164,35 +165,35 @@ def main():
 
     ax4 = plt.subplot(2, 3, 4)
     speed = jnp.sqrt(u**2 + v**2)
-    im = ax4.contourf(x, y, speed, levels=20, cmap='viridis')
-    ax4.set_xlabel('x')
-    ax4.set_ylabel('y')
-    ax4.set_title('Final Velocity Magnitude')
-    ax4.set_aspect('equal')
+    im = ax4.contourf(x, y, speed, levels=20, cmap="viridis")
+    ax4.set_xlabel("x")
+    ax4.set_ylabel("y")
+    ax4.set_title("Final Velocity Magnitude")
+    ax4.set_aspect("equal")
     plt.colorbar(im, ax=ax4)
 
     # Vorticity field at final time
     ax5 = plt.subplot(2, 3, 5)
     vorticity = compute_vorticity(velocity, grid)
-    im = ax5.contourf(x, y, vorticity, levels=20, cmap='RdBu_r')
-    ax5.set_xlabel('x')
-    ax5.set_ylabel('y')
-    ax5.set_title('Final Vorticity Field')
-    ax5.set_aspect('equal')
+    im = ax5.contourf(x, y, vorticity, levels=20, cmap="RdBu_r")
+    ax5.set_xlabel("x")
+    ax5.set_ylabel("y")
+    ax5.set_title("Final Vorticity Field")
+    ax5.set_aspect("equal")
     plt.colorbar(im, ax=ax5)
 
     # Divergence check
     ax6 = plt.subplot(2, 3, 6)
-    ax6.semilogy(times, max_divergences, 'orange', linewidth=2)
-    ax6.axhline(1e-10, color='r', linestyle='--', label='Machine precision')
-    ax6.set_xlabel('Time')
-    ax6.set_ylabel('max|∇·u|')
-    ax6.set_title('Mass Conservation Check')
+    ax6.semilogy(times, max_divergences, "orange", linewidth=2)
+    ax6.axhline(1e-10, color="r", linestyle="--", label="Machine precision")
+    ax6.set_xlabel("Time")
+    ax6.set_ylabel("max|∇·u|")
+    ax6.set_title("Mass Conservation Check")
     ax6.legend()
     ax6.grid(True, alpha=0.3)
 
     plt.tight_layout()
-    plt.savefig('cfd_taylor_green_results.png', dpi=300, bbox_inches='tight')
+    plt.savefig("cfd_taylor_green_results.png", dpi=300, bbox_inches="tight")
     print("✓ Plots saved to: cfd_taylor_green_results.png")
 
     print("\n" + "=" * 60)
@@ -236,8 +237,12 @@ def advect_scalar(scalar, velocity, grid):
     dx, dy = grid.step
 
     # Central differences for gradients
-    dscalar_dx = (jnp.roll(scalar, -1, axis=0) - jnp.roll(scalar, 1, axis=0)) / (2 * dx[0])
-    dscalar_dy = (jnp.roll(scalar, -1, axis=1) - jnp.roll(scalar, 1, axis=1)) / (2 * dy[1])
+    dscalar_dx = (jnp.roll(scalar, -1, axis=0) - jnp.roll(scalar, 1, axis=0)) / (
+        2 * dx[0]
+    )
+    dscalar_dy = (jnp.roll(scalar, -1, axis=1) - jnp.roll(scalar, 1, axis=1)) / (
+        2 * dy[1]
+    )
 
     return u * dscalar_dx + v * dscalar_dy
 
@@ -246,8 +251,12 @@ def laplacian(scalar, grid):
     """Compute Laplacian ∇²φ using finite differences"""
     dx, dy = grid.step
 
-    d2scalar_dx2 = (jnp.roll(scalar, -1, axis=0) - 2*scalar + jnp.roll(scalar, 1, axis=0)) / dx[0]**2
-    d2scalar_dy2 = (jnp.roll(scalar, -1, axis=1) - 2*scalar + jnp.roll(scalar, 1, axis=1)) / dy[1]**2
+    d2scalar_dx2 = (
+        jnp.roll(scalar, -1, axis=0) - 2 * scalar + jnp.roll(scalar, 1, axis=0)
+    ) / dx[0] ** 2
+    d2scalar_dy2 = (
+        jnp.roll(scalar, -1, axis=1) - 2 * scalar + jnp.roll(scalar, 1, axis=1)
+    ) / dy[1] ** 2
 
     return d2scalar_dx2 + d2scalar_dy2
 
@@ -258,16 +267,21 @@ def pressure_projection(velocity, grid, dt):
     dx, dy = grid.step
 
     # Compute divergence
-    div = (jnp.roll(u, -1, axis=0) - jnp.roll(u, 1, axis=0)) / (2 * dx[0]) + \
-          (jnp.roll(v, -1, axis=1) - jnp.roll(v, 1, axis=1)) / (2 * dy[1])
+    div = (jnp.roll(u, -1, axis=0) - jnp.roll(u, 1, axis=0)) / (2 * dx[0]) + (
+        jnp.roll(v, -1, axis=1) - jnp.roll(v, 1, axis=1)
+    ) / (2 * dy[1])
 
     # Solve Poisson equation for pressure: ∇²p = ∇·u / dt
     # Using Jacobi iterations (simple solver)
     pressure = solve_poisson(div / dt, grid, n_iterations=100)
 
     # Correct velocity: u = u - dt·∇p
-    dp_dx = (jnp.roll(pressure, -1, axis=0) - jnp.roll(pressure, 1, axis=0)) / (2 * dx[0])
-    dp_dy = (jnp.roll(pressure, -1, axis=1) - jnp.roll(pressure, 1, axis=1)) / (2 * dy[1])
+    dp_dx = (jnp.roll(pressure, -1, axis=0) - jnp.roll(pressure, 1, axis=0)) / (
+        2 * dx[0]
+    )
+    dp_dy = (jnp.roll(pressure, -1, axis=1) - jnp.roll(pressure, 1, axis=1)) / (
+        2 * dy[1]
+    )
 
     u_corrected = u - dt * dp_dx
     v_corrected = v - dt * dp_dy
@@ -282,9 +296,11 @@ def solve_poisson(rhs, grid, n_iterations=100):
 
     for _ in range(n_iterations):
         p_new = 0.25 * (
-            jnp.roll(p, -1, axis=0) + jnp.roll(p, 1, axis=0) +
-            jnp.roll(p, -1, axis=1) + jnp.roll(p, 1, axis=1) -
-            dx[0]**2 * rhs
+            jnp.roll(p, -1, axis=0)
+            + jnp.roll(p, 1, axis=0)
+            + jnp.roll(p, -1, axis=1)
+            + jnp.roll(p, 1, axis=1)
+            - dx[0] ** 2 * rhs
         )
         p = p_new
 
@@ -319,11 +335,12 @@ def compute_divergence_max(velocity, grid):
     u, v = velocity
     dx, dy = grid.step
 
-    div = (jnp.roll(u, -1, axis=0) - jnp.roll(u, 1, axis=0)) / (2 * dx[0]) + \
-          (jnp.roll(v, -1, axis=1) - jnp.roll(v, 1, axis=1)) / (2 * dy[1])
+    div = (jnp.roll(u, -1, axis=0) - jnp.roll(u, 1, axis=0)) / (2 * dx[0]) + (
+        jnp.roll(v, -1, axis=1) - jnp.roll(v, 1, axis=1)
+    ) / (2 * dy[1])
 
     return jnp.max(jnp.abs(div))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

@@ -9,13 +9,16 @@ tools_root = current_dir.parent
 project_root = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(project_root))
 
+
 class TestMetadataValidator(unittest.TestCase):
     def test_import(self):
         try:
-            from tools.validation.metadata_validator import MetadataValidator  # noqa: F401
+            from tools.validation.metadata_validator import (  # noqa: F401
+                MetadataValidator,
+            )
         except ImportError:
             self.fail("Could not import MetadataValidator")
 
+
 if __name__ == "__main__":
     unittest.main()
-

@@ -52,11 +52,15 @@ class PluginLoader:
         plugin_json_path = plugin_path / ".claude-plugin" / "plugin.json"
 
         if not plugin_path.exists():
-            self._add_error(plugin_name, "path", f"Plugin directory not found: {plugin_path}")
+            self._add_error(
+                plugin_name, "path", f"Plugin directory not found: {plugin_path}"
+            )
             return None
 
         if not plugin_json_path.exists():
-            self._add_error(plugin_name, "plugin.json", f"plugin.json not found: {plugin_json_path}")
+            self._add_error(
+                plugin_name, "plugin.json", f"plugin.json not found: {plugin_json_path}"
+            )
             return None
 
         try:

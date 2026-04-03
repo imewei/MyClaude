@@ -29,6 +29,7 @@ from typing import Any
 @dataclass
 class ActivationMetric:
     """Timing metric for a specific activation operation."""
+
     name: str
     duration_ms: float
     status: str  # 'pass', 'warn', 'fail'
@@ -38,6 +39,7 @@ class ActivationMetric:
 @dataclass
 class ActivationProfile:
     """Complete activation performance profile for a plugin."""
+
     plugin_name: str
     plugin_path: Path
     total_activation_time_ms: float
@@ -51,23 +53,20 @@ class ActivationProfile:
     def status(self) -> str:
         """Overall status based on total activation time."""
         if self.errors:
-            return 'error'
+            return "error"
         elif self.total_activation_time_ms > 50:
-            return 'fail'
+            return "fail"
         elif self.total_activation_time_ms > 35:
-            return 'warn'
+            return "warn"
         else:
-            return 'pass'
+            return "pass"
 
     @property
     def status_emoji(self) -> str:
         """Visual status indicator."""
-        return {
-            'pass': '✅',
-            'warn': '⚠️',
-            'fail': '❌',
-            'error': '🔴'
-        }.get(self.status, '❓')
+        return {"pass": "✅", "warn": "⚠️", "fail": "❌", "error": "🔴"}.get(
+            self.status, "❓"
+        )
 
 
 class Timer:
@@ -78,7 +77,7 @@ class Timer:
         self.end_time: float = 0
         self.duration_ms: float = 0
 
-    def __enter__(self) -> 'Timer':
+    def __enter__(self) -> "Timer":
         self.start_time = time.perf_counter()
         return self
 
@@ -100,9 +99,7 @@ class AgentActivationProfiler:
         """Profile a single plugin's activation performance."""
         plugin_path = self.plugins_root / plugin_name
         profile = ActivationProfile(
-            plugin_name=plugin_name,
-            plugin_path=plugin_path,
-            total_activation_time_ms=0
+            plugin_name=plugin_name, plugin_path=plugin_path, total_activation_time_ms=0
         )
 
         # Check if plugin exists
@@ -143,12 +140,14 @@ class AgentActivationProfiler:
 
         return profile
 
-    def _load_plugin_metadata(self, profile: ActivationProfile) -> dict[str, Any] | None:
+    def _load_plugin_metadata(
+        self, profile: ActivationProfile
+    ) -> dict[str, Any] | None:
         """Load plugin.json metadata."""
         json_path = profile.plugin_path / ".claude-plugin" / "plugin.json"
 
         try:
-            with open(json_path, 'r', encoding='utf-8') as f:
+            with open(json_path, "r", encoding="utf-8") as f:
                 return json.load(f)
         except FileNotFoundError:
             profile.errors.append(f"plugin.json not found at {json_path}")
@@ -157,32 +156,42 @@ class AgentActivationProfiler:
             profile.errors.append(f"Invalid JSON in plugin.json: {e}")
             return None
 
-    def _measure_metadata_extraction(self, profile: ActivationProfile, plugin_data: dict[str, Any]) -> None:
+    def _measure_metadata_extraction(
+        self, profile: ActivationProfile, plugin_data: dict[str, Any]
+    ) -> None:
         """Measure metadata extraction time."""
         timer = Timer()
 
         with timer:
             # Extract key metadata fields
-            _ = plugin_data.get('name')
-            _ = plugin_data.get('category')
-            _ = plugin_data.get('description')
-            agents = plugin_data.get('agents', [])
-            keywords = plugin_data.get('keywords', [])
+            _ = plugin_data.get("name")
+            _ = plugin_data.get("category")
+            _ = plugin_data.get("description")
+            agents = plugin_data.get("agents", [])
+            keywords = plugin_data.get("keywords", [])
 
             profile.agent_count = len(agents)
             profile.keyword_count = len(keywords)
 
-        status = 'pass' if timer.duration_ms < 1 else ('warn' if timer.duration_ms < 3 else 'fail')
-        profile.metrics.append(ActivationMetric(
-            name="metadata extraction",
-            duration_ms=timer.duration_ms,
-            status=status,
-            details=f"{profile.agent_count} agents, {profile.keyword_count} keywords"
-        ))
+        status = (
+            "pass"
+            if timer.duration_ms < 1
+            else ("warn" if timer.duration_ms < 3 else "fail")
+        )
+        profile.metrics.append(
+            ActivationMetric(
+                name="metadata extraction",
+                duration_ms=timer.duration_ms,
+                status=status,
+                details=f"{profile.agent_count} agents, {profile.keyword_count} keywords",
+            )
+        )
 
-    def _measure_keyword_matching(self, profile: ActivationProfile, plugin_data: dict[str, Any]) -> None:
+    def _measure_keyword_matching(
+        self, profile: ActivationProfile, plugin_data: dict[str, Any]
+    ) -> None:
         """Measure keyword matching performance."""
-        keywords = plugin_data.get('keywords', [])
+        keywords = plugin_data.get("keywords", [])
 
         # Simulate context (file content and path)
         simulated_contexts = [
@@ -190,7 +199,7 @@ class AgentActivationProfiler:
             "using DifferentialEquations\nusing Plots",
             "const x = 42",
             "# Regular Python code",
-            "System.out.println('Hello');"
+            "System.out.println('Hello');",
         ]
 
         timer = Timer()
@@ -206,72 +215,104 @@ class AgentActivationProfiler:
         # Average time per context
         avg_time = timer.duration_ms / len(simulated_contexts)
 
-        status = 'pass' if avg_time < 5 else ('warn' if avg_time < 10 else 'fail')
-        profile.metrics.append(ActivationMetric(
-            name="keyword matching",
-            duration_ms=timer.duration_ms,
-            status=status,
-            details=f"{len(keywords)} keywords across {len(simulated_contexts)} contexts"
-        ))
+        status = "pass" if avg_time < 5 else ("warn" if avg_time < 10 else "fail")
+        profile.metrics.append(
+            ActivationMetric(
+                name="keyword matching",
+                duration_ms=timer.duration_ms,
+                status=status,
+                details=f"{len(keywords)} keywords across {len(simulated_contexts)} contexts",
+            )
+        )
 
-    def _measure_agent_selection(self, profile: ActivationProfile, plugin_data: dict[str, Any]) -> None:
+    def _measure_agent_selection(
+        self, profile: ActivationProfile, plugin_data: dict[str, Any]
+    ) -> None:
         """Measure agent selection time."""
-        agents = plugin_data.get('agents', [])
+        agents = plugin_data.get("agents", [])
 
         timer = Timer()
 
         with timer:
             # Simulate selecting relevant agents based on status and description
-            active_agents = [a for a in agents if a.get('status') == 'active']
+            active_agents = [a for a in agents if a.get("status") == "active"]
 
             # Simulate description analysis
             for agent in active_agents:
-                desc = agent.get('description', '').lower()
+                desc = agent.get("description", "").lower()
                 # Check for key terms (simulated pattern matching)
-                _ = 'expert' in desc
-                _ = 'specialist' in desc
-                _ = 'master' in desc
+                _ = "expert" in desc
+                _ = "specialist" in desc
+                _ = "master" in desc
 
-        status = 'pass' if timer.duration_ms < 3 else ('warn' if timer.duration_ms < 8 else 'fail')
-        profile.metrics.append(ActivationMetric(
-            name="agent selection",
-            duration_ms=timer.duration_ms,
-            status=status,
-            details=f"{len(active_agents)} active agents from {len(agents)} total"
-        ))
+        status = (
+            "pass"
+            if timer.duration_ms < 3
+            else ("warn" if timer.duration_ms < 8 else "fail")
+        )
+        profile.metrics.append(
+            ActivationMetric(
+                name="agent selection",
+                duration_ms=timer.duration_ms,
+                status=status,
+                details=f"{len(active_agents)} active agents from {len(agents)} total",
+            )
+        )
 
-    def _measure_agent_description_parsing(self, profile: ActivationProfile, plugin_data: dict[str, Any]) -> None:
+    def _measure_agent_description_parsing(
+        self, profile: ActivationProfile, plugin_data: dict[str, Any]
+    ) -> None:
         """Measure agent description parsing time."""
-        agents = plugin_data.get('agents', [])
+        agents = plugin_data.get("agents", [])
 
         timer = Timer()
 
         with timer:
             for agent in agents:
-                description = agent.get('description', '')
+                description = agent.get("description", "")
                 # Simulate NLP-style analysis
                 _ = len(description)
                 _ = description.split()
                 # Extract expertise indicators
-                _ = re.findall(r'\b(expert|specialist|master|proficient)\b', description, re.IGNORECASE)
+                _ = re.findall(
+                    r"\b(expert|specialist|master|proficient)\b",
+                    description,
+                    re.IGNORECASE,
+                )
 
-        status = 'pass' if timer.duration_ms < 5 else ('warn' if timer.duration_ms < 12 else 'fail')
-        profile.metrics.append(ActivationMetric(
-            name="agent description parsing",
-            duration_ms=timer.duration_ms,
-            status=status,
-            details=f"Parsed {len(agents)} agent descriptions"
-        ))
+        status = (
+            "pass"
+            if timer.duration_ms < 5
+            else ("warn" if timer.duration_ms < 12 else "fail")
+        )
+        profile.metrics.append(
+            ActivationMetric(
+                name="agent description parsing",
+                duration_ms=timer.duration_ms,
+                status=status,
+                details=f"Parsed {len(agents)} agent descriptions",
+            )
+        )
 
-    def _measure_context_scoring(self, profile: ActivationProfile, plugin_data: dict[str, Any]) -> None:
+    def _measure_context_scoring(
+        self, profile: ActivationProfile, plugin_data: dict[str, Any]
+    ) -> None:
         """Measure context relevance scoring time."""
-        agents = plugin_data.get('agents', [])
-        keywords = plugin_data.get('keywords', [])
+        agents = plugin_data.get("agents", [])
+        keywords = plugin_data.get("keywords", [])
 
         # Simulated file contexts
         file_contexts = [
-            {"path": "src/main.jl", "extension": ".jl", "content": "using DifferentialEquations"},
-            {"path": "test/test_model.py", "extension": ".py", "content": "import pytest"},
+            {
+                "path": "src/main.jl",
+                "extension": ".jl",
+                "content": "using DifferentialEquations",
+            },
+            {
+                "path": "test/test_model.py",
+                "extension": ".py",
+                "content": "import pytest",
+            },
             {"path": "README.md", "extension": ".md", "content": "# Documentation"},
         ]
 
@@ -282,29 +323,35 @@ class AgentActivationProfiler:
                 score = 0
 
                 # File extension matching
-                ext = context['extension']
+                ext = context["extension"]
                 if any(kw in ext for kw in keywords):
                     score += 10
 
                 # Content keyword matching
-                content_lower = context['content'].lower()
+                content_lower = context["content"].lower()
                 for keyword in keywords:
                     if keyword.lower() in content_lower:
                         score += 5
 
                 # Agent expertise matching
                 for agent in agents:
-                    desc = agent.get('description', '').lower()
+                    desc = agent.get("description", "").lower()
                     if any(kw.lower() in desc for kw in keywords[:3]):  # Top 3 keywords
                         score += 3
 
-        status = 'pass' if timer.duration_ms < 10 else ('warn' if timer.duration_ms < 20 else 'fail')
-        profile.metrics.append(ActivationMetric(
-            name="context relevance scoring",
-            duration_ms=timer.duration_ms,
-            status=status,
-            details=f"Scored {len(file_contexts)} contexts"
-        ))
+        status = (
+            "pass"
+            if timer.duration_ms < 10
+            else ("warn" if timer.duration_ms < 20 else "fail")
+        )
+        profile.metrics.append(
+            ActivationMetric(
+                name="context relevance scoring",
+                duration_ms=timer.duration_ms,
+                status=status,
+                details=f"Scored {len(file_contexts)} contexts",
+            )
+        )
 
     def profile_all_plugins(self) -> list[ActivationProfile]:
         """Profile all plugins in the marketplace."""
@@ -314,7 +361,10 @@ class AgentActivationProfiler:
             return profiles
 
         for plugin_dir in sorted(self.plugins_root.iterdir()):
-            if plugin_dir.is_dir() and (plugin_dir / ".claude-plugin" / "plugin.json").exists():
+            if (
+                plugin_dir.is_dir()
+                and (plugin_dir / ".claude-plugin" / "plugin.json").exists()
+            ):
                 profile = self.profile_plugin(plugin_dir.name)
                 profiles.append(profile)
 
@@ -337,8 +387,12 @@ class ActivationProfileReporter:
         # Summary
         lines.append("## Summary")
         lines.append("")
-        lines.append(f"- **Total Activation Time:** {profile.total_activation_time_ms:.2f}ms")
-        lines.append(f"- **Target Activation Time:** {AgentActivationProfiler.TARGET_ACTIVATION_TIME_MS}ms")
+        lines.append(
+            f"- **Total Activation Time:** {profile.total_activation_time_ms:.2f}ms"
+        )
+        lines.append(
+            f"- **Target Activation Time:** {AgentActivationProfiler.TARGET_ACTIVATION_TIME_MS}ms"
+        )
         lines.append(f"- **Status:** {profile.status_emoji} {profile.status.upper()}")
         lines.append(f"- **Agents:** {profile.agent_count}")
         lines.append(f"- **Keywords:** {profile.keyword_count}")
@@ -356,11 +410,11 @@ class ActivationProfileReporter:
 
             for metric in profile.metrics:
                 status_icon = {
-                    'pass': '✅',
-                    'warn': '⚠️',
-                    'fail': '❌',
-                    'error': '🔴'
-                }.get(metric.status, '❓')
+                    "pass": "✅",
+                    "warn": "⚠️",
+                    "fail": "❌",
+                    "error": "🔴",
+                }.get(metric.status, "❓")
 
                 lines.append(
                     f"| {metric.name} | {metric.duration_ms:.2f} | {status_icon} | {metric.details} |"
@@ -372,11 +426,15 @@ class ActivationProfileReporter:
             lines.append("### Time Distribution")
             lines.append("")
             total = sum(m.duration_ms for m in profile.metrics)
-            for metric in sorted(profile.metrics, key=lambda m: m.duration_ms, reverse=True):
+            for metric in sorted(
+                profile.metrics, key=lambda m: m.duration_ms, reverse=True
+            ):
                 percentage = (metric.duration_ms / total * 100) if total > 0 else 0
                 bar_length = int(percentage / 2)  # Scale to 50 chars max
-                bar = '█' * bar_length
-                lines.append(f"- {metric.name}: {metric.duration_ms:.2f}ms ({percentage:.1f}%) {bar}")
+                bar = "█" * bar_length
+                lines.append(
+                    f"- {metric.name}: {metric.duration_ms:.2f}ms ({percentage:.1f}%) {bar}"
+                )
             lines.append("")
 
         # Errors
@@ -399,35 +457,53 @@ class ActivationProfileReporter:
         lines.append("## Overall Assessment")
         lines.append("")
 
-        if profile.status == 'pass':
-            lines.append(f"**Status:** {profile.status_emoji} EXCELLENT - Activation time well below target")
+        if profile.status == "pass":
+            lines.append(
+                f"**Status:** {profile.status_emoji} EXCELLENT - Activation time well below target"
+            )
             lines.append("")
-            lines.append(f"Plugin activates in {profile.total_activation_time_ms:.2f}ms, well under the {AgentActivationProfiler.TARGET_ACTIVATION_TIME_MS}ms target.")
-        elif profile.status == 'warn':
-            lines.append(f"**Status:** {profile.status_emoji} WARNING - Activation time approaching target")
+            lines.append(
+                f"Plugin activates in {profile.total_activation_time_ms:.2f}ms, well under the {AgentActivationProfiler.TARGET_ACTIVATION_TIME_MS}ms target."
+            )
+        elif profile.status == "warn":
+            lines.append(
+                f"**Status:** {profile.status_emoji} WARNING - Activation time approaching target"
+            )
             lines.append("")
-            lines.append(f"Plugin activates in {profile.total_activation_time_ms:.2f}ms, approaching the {AgentActivationProfiler.TARGET_ACTIVATION_TIME_MS}ms target.")
+            lines.append(
+                f"Plugin activates in {profile.total_activation_time_ms:.2f}ms, approaching the {AgentActivationProfiler.TARGET_ACTIVATION_TIME_MS}ms target."
+            )
             lines.append("Consider optimizing slow components.")
-        elif profile.status == 'fail':
-            lines.append(f"**Status:** {profile.status_emoji} OPTIMIZATION NEEDED - Activation time exceeds target")
+        elif profile.status == "fail":
+            lines.append(
+                f"**Status:** {profile.status_emoji} OPTIMIZATION NEEDED - Activation time exceeds target"
+            )
             lines.append("")
-            lines.append(f"Plugin activates in {profile.total_activation_time_ms:.2f}ms, exceeding the {AgentActivationProfiler.TARGET_ACTIVATION_TIME_MS}ms target.")
+            lines.append(
+                f"Plugin activates in {profile.total_activation_time_ms:.2f}ms, exceeding the {AgentActivationProfiler.TARGET_ACTIVATION_TIME_MS}ms target."
+            )
             lines.append("")
             lines.append("**Recommended Actions:**")
             # Find slowest components
-            slow_metrics = [m for m in profile.metrics if m.status in ['warn', 'fail']]
+            slow_metrics = [m for m in profile.metrics if m.status in ["warn", "fail"]]
             for metric in slow_metrics:
-                lines.append(f"- Optimize {metric.name} (currently {metric.duration_ms:.2f}ms)")
+                lines.append(
+                    f"- Optimize {metric.name} (currently {metric.duration_ms:.2f}ms)"
+                )
 
             # Specific recommendations based on metrics
             if profile.keyword_count > 50:
-                lines.append(f"- Consider reducing keyword count (currently {profile.keyword_count})")
+                lines.append(
+                    f"- Consider reducing keyword count (currently {profile.keyword_count})"
+                )
         else:
-            lines.append(f"**Status:** {profile.status_emoji} ERROR - Unable to complete profiling")
+            lines.append(
+                f"**Status:** {profile.status_emoji} ERROR - Unable to complete profiling"
+            )
 
         lines.append("")
 
-        return '\n'.join(lines)
+        return "\n".join(lines)
 
     def generate_summary_report(self, profiles: list[ActivationProfile]) -> str:
         """Generate summary report for multiple plugins."""
@@ -441,24 +517,36 @@ class ActivationProfileReporter:
 
         # Overall Statistics
         total_plugins = len(profiles)
-        pass_count = sum(1 for p in profiles if p.status == 'pass')
-        warn_count = sum(1 for p in profiles if p.status == 'warn')
-        fail_count = sum(1 for p in profiles if p.status == 'fail')
-        error_count = sum(1 for p in profiles if p.status == 'error')
+        pass_count = sum(1 for p in profiles if p.status == "pass")
+        warn_count = sum(1 for p in profiles if p.status == "warn")
+        fail_count = sum(1 for p in profiles if p.status == "fail")
+        error_count = sum(1 for p in profiles if p.status == "error")
 
-        avg_activation_time = sum(p.total_activation_time_ms for p in profiles) / total_plugins if total_plugins > 0 else 0
+        avg_activation_time = (
+            sum(p.total_activation_time_ms for p in profiles) / total_plugins
+            if total_plugins > 0
+            else 0
+        )
 
         lines.append("## Summary Statistics")
         lines.append("")
         lines.append(f"- **Average Activation Time:** {avg_activation_time:.2f}ms")
-        lines.append(f"- **Target Activation Time:** {AgentActivationProfiler.TARGET_ACTIVATION_TIME_MS}ms")
-        lines.append(f"- **Pass Rate:** {pass_count}/{total_plugins} ({pass_count/total_plugins*100:.1f}%)")
+        lines.append(
+            f"- **Target Activation Time:** {AgentActivationProfiler.TARGET_ACTIVATION_TIME_MS}ms"
+        )
+        lines.append(
+            f"- **Pass Rate:** {pass_count}/{total_plugins} ({pass_count/total_plugins*100:.1f}%)"
+        )
         lines.append("")
         lines.append("**Status Distribution:**")
         lines.append(f"- ✅ Pass: {pass_count} ({pass_count/total_plugins*100:.1f}%)")
-        lines.append(f"- ⚠️ Warning: {warn_count} ({warn_count/total_plugins*100:.1f}%)")
+        lines.append(
+            f"- ⚠️ Warning: {warn_count} ({warn_count/total_plugins*100:.1f}%)"
+        )
         lines.append(f"- ❌ Fail: {fail_count} ({fail_count/total_plugins*100:.1f}%)")
-        lines.append(f"- 🔴 Error: {error_count} ({error_count/total_plugins*100:.1f}%)")
+        lines.append(
+            f"- 🔴 Error: {error_count} ({error_count/total_plugins*100:.1f}%)"
+        )
         lines.append("")
 
         # Per-Plugin Results
@@ -467,7 +555,9 @@ class ActivationProfileReporter:
         lines.append("| Plugin | Activation Time (ms) | Agents | Keywords | Status |")
         lines.append("|--------|---------------------|--------|----------|--------|")
 
-        for profile in sorted(profiles, key=lambda p: p.total_activation_time_ms, reverse=True):
+        for profile in sorted(
+            profiles, key=lambda p: p.total_activation_time_ms, reverse=True
+        ):
             lines.append(
                 f"| {profile.plugin_name} | {profile.total_activation_time_ms:.2f} | "
                 f"{profile.agent_count} | {profile.keyword_count} | {profile.status_emoji} |"
@@ -489,11 +579,13 @@ class ActivationProfileReporter:
         lines.append("| Plugin | Component | Time (ms) |")
         lines.append("|--------|-----------|-----------|")
         for plugin_name, metric in slowest:
-            lines.append(f"| {plugin_name} | {metric.name} | {metric.duration_ms:.2f} |")
+            lines.append(
+                f"| {plugin_name} | {metric.name} | {metric.duration_ms:.2f} |"
+            )
 
         lines.append("")
 
-        return '\n'.join(lines)
+        return "\n".join(lines)
 
 
 def main() -> int:
@@ -535,9 +627,9 @@ def main() -> int:
             print(report)
 
         # Return exit code based on overall status
-        if any(p.status == 'error' for p in profiles):
+        if any(p.status == "error" for p in profiles):
             return 2
-        elif any(p.status == 'fail' for p in profiles):
+        elif any(p.status == "fail" for p in profiles):
             return 1
         else:
             return 0
@@ -550,9 +642,9 @@ def main() -> int:
         print(report)
 
         # Return exit code
-        if profile.status == 'error':
+        if profile.status == "error":
             return 2
-        elif profile.status == 'fail':
+        elif profile.status == "fail":
             return 1
         else:
             return 0

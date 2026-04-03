@@ -13,7 +13,8 @@ import numpyro
 import numpyro.distributions as dist
 from numpyro.infer import MCMC, NUTS, Predictive
 import matplotlib
-matplotlib.use('Agg')  # Non-interactive backend
+
+matplotlib.use("Agg")  # Non-interactive backend
 
 
 def generate_synthetic_data(n=100):
@@ -37,14 +38,14 @@ def bayesian_linear_model(x, y=None):
     """Bayesian linear regression model"""
 
     # Priors
-    w = numpyro.sample('w', dist.Normal(0, 10))
-    b = numpyro.sample('b', dist.Normal(0, 10))
-    sigma = numpyro.sample('sigma', dist.HalfNormal(5))
+    w = numpyro.sample("w", dist.Normal(0, 10))
+    b = numpyro.sample("b", dist.Normal(0, 10))
+    sigma = numpyro.sample("sigma", dist.HalfNormal(5))
 
     # Likelihood
     mean = w * x + b
-    with numpyro.plate('data', len(x)):
-        numpyro.sample('y', dist.Normal(mean, sigma), obs=y)
+    with numpyro.plate("data", len(x)):
+        numpyro.sample("y", dist.Normal(mean, sigma), obs=y)
 
 
 def example_bayesian_inference():
@@ -70,10 +71,7 @@ def example_bayesian_inference():
 
     # MCMC sampler (JAX automatically parallelizes chains)
     mcmc = MCMC(
-        nuts_kernel,
-        num_warmup=500,
-        num_samples=1000,
-        num_chains=4  # Parallel chains
+        nuts_kernel, num_warmup=500, num_samples=1000, num_chains=4  # Parallel chains
     )
 
     # Run inference
@@ -90,14 +88,14 @@ def example_bayesian_inference():
     print("\nStep 3: Posterior analysis")
 
     # Posterior means
-    w_mean = jnp.mean(samples['w'])
-    b_mean = jnp.mean(samples['b'])
-    sigma_mean = jnp.mean(samples['sigma'])
+    w_mean = jnp.mean(samples["w"])
+    b_mean = jnp.mean(samples["b"])
+    sigma_mean = jnp.mean(samples["sigma"])
 
     # Posterior std
-    w_std = jnp.std(samples['w'])
-    b_std = jnp.std(samples['b'])
-    sigma_std = jnp.std(samples['sigma'])
+    w_std = jnp.std(samples["w"])
+    b_std = jnp.std(samples["b"])
+    sigma_std = jnp.std(samples["sigma"])
 
     print("Posterior means:")
     print(f"  w = {w_mean:.3f} ± {w_std:.3f} (true: {true_w:.2f})")
@@ -105,8 +103,8 @@ def example_bayesian_inference():
     print(f"  sigma = {sigma_mean:.3f} ± {sigma_std:.3f} (true: {true_sigma:.2f})")
 
     # 95% credible intervals
-    w_lower = jnp.percentile(samples['w'], 2.5)
-    w_upper = jnp.percentile(samples['w'], 97.5)
+    w_lower = jnp.percentile(samples["w"], 2.5)
+    w_upper = jnp.percentile(samples["w"], 97.5)
     print(f"\n95% credible interval for w: [{w_lower:.3f}, {w_upper:.3f}]")
     print(f"True w in interval: {w_lower <= true_w <= w_upper}")
 
@@ -128,12 +126,12 @@ def example_bayesian_inference():
     print("\nStep 5: Uncertainty quantification")
 
     # Predictive mean and uncertainty
-    y_pred_mean = jnp.mean(predictions['y'], axis=0)
-    y_pred_std = jnp.std(predictions['y'], axis=0)
+    y_pred_mean = jnp.mean(predictions["y"], axis=0)
+    y_pred_std = jnp.std(predictions["y"], axis=0)
 
     # Credible intervals
-    y_lower = jnp.percentile(predictions['y'], 2.5, axis=0)
-    y_upper = jnp.percentile(predictions['y'], 97.5, axis=0)
+    y_lower = jnp.percentile(predictions["y"], 2.5, axis=0)
+    y_upper = jnp.percentile(predictions["y"], 97.5, axis=0)
 
     print(f"Mean prediction at x=0: {y_pred_mean[25]:.3f} ± {y_pred_std[25]:.3f}")
     print(f"95% interval at x=0: [{y_lower[25]:.3f}, {y_upper[25]:.3f}]")
@@ -156,7 +154,7 @@ def example_bayesian_inference():
 
     # Fast predictions
     x_test_single = jnp.array(1.0)
-    predictions_fast = predict_sample(samples['w'], samples['b'], x_test_single)
+    predictions_fast = predict_sample(samples["w"], samples["b"], x_test_single)
 
     print(f"Prediction at x={x_test_single}:")
     print(f"  Mean: {jnp.mean(predictions_fast):.3f}")
@@ -174,6 +172,7 @@ def example_bayesian_inference():
 
     # Optimize
     import optax
+
     optimizer = optax.adam(learning_rate=0.1)
 
     params = jnp.array([0.0, 0.0])  # Initial guess
@@ -204,8 +203,8 @@ def example_bayesian_inference():
     ood_predictions = pred_ood(jax.random.PRNGKey(2), x_ood)
 
     for i, x_val in enumerate(x_ood):
-        ood_mean = jnp.mean(ood_predictions['y'][:, i])
-        ood_std = jnp.std(ood_predictions['y'][:, i])
+        ood_mean = jnp.mean(ood_predictions["y"][:, i])
+        ood_std = jnp.std(ood_predictions["y"][:, i])
         print(f"  x={x_val:.1f}: mean={ood_mean:.3f}, std={ood_std:.3f}")
 
     print("\nNote: Uncertainty increases far from training data!")
@@ -222,9 +221,10 @@ def example_bayesian_inference():
     print("\n✓ Bayesian inference workflow complete!")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     # Suppress NumPyro warnings for cleaner output
     import warnings
-    warnings.filterwarnings('ignore')
+
+    warnings.filterwarnings("ignore")
 
     example_bayesian_inference()

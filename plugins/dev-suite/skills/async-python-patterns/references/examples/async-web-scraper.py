@@ -21,6 +21,7 @@ from typing import List, Optional
 @dataclass
 class ScrapeResult:
     """Result of scraping a single URL"""
+
     url: str
     status_code: int
     content_length: int
@@ -46,7 +47,7 @@ class AsyncWebScraper:
         max_concurrent: int = 10,
         timeout: float = 30.0,
         max_retries: int = 3,
-        retry_delay: float = 1.0
+        retry_delay: float = 1.0,
     ):
         self.max_concurrent = max_concurrent
         self.timeout = aiohttp.ClientTimeout(total=timeout)
@@ -56,10 +57,7 @@ class AsyncWebScraper:
         self.results: List[ScrapeResult] = []
 
     async def fetch_url(
-        self,
-        session: aiohttp.ClientSession,
-        url: str,
-        retry_count: int = 0
+        self, session: aiohttp.ClientSession, url: str, retry_count: int = 0
     ) -> ScrapeResult:
         """
         Fetch a single URL with retry logic.
@@ -84,13 +82,17 @@ class AsyncWebScraper:
                         url=url,
                         status_code=response.status,
                         content_length=len(content),
-                        elapsed_ms=elapsed_ms
+                        elapsed_ms=elapsed_ms,
                     )
 
             except asyncio.TimeoutError:
                 if retry_count < self.max_retries:
-                    print(f"Timeout on {url}, retrying ({retry_count + 1}/{self.max_retries})...")
-                    await asyncio.sleep(self.retry_delay * (2 ** retry_count))  # Exponential backoff
+                    print(
+                        f"Timeout on {url}, retrying ({retry_count + 1}/{self.max_retries})..."
+                    )
+                    await asyncio.sleep(
+                        self.retry_delay * (2**retry_count)
+                    )  # Exponential backoff
                     return await self.fetch_url(session, url, retry_count + 1)
                 else:
                     elapsed_ms = (time.time() - start_time) * 1000
@@ -99,7 +101,7 @@ class AsyncWebScraper:
                         status_code=0,
                         content_length=0,
                         elapsed_ms=elapsed_ms,
-                        error="Timeout after retries"
+                        error="Timeout after retries",
                     )
 
             except Exception as e:
@@ -109,7 +111,7 @@ class AsyncWebScraper:
                     status_code=0,
                     content_length=0,
                     elapsed_ms=elapsed_ms,
-                    error=str(e)
+                    error=str(e),
                 )
 
     async def scrape_urls(self, urls: List[str]) -> List[ScrapeResult]:
@@ -130,20 +132,14 @@ class AsyncWebScraper:
         start_time = time.time()
 
         # Create session with proper headers
-        headers = {
-            'User-Agent': 'AsyncWebScraper/1.0 (+https://example.com/bot)'
-        }
+        headers = {"User-Agent": "AsyncWebScraper/1.0 (+https://example.com/bot)"}
 
         async with aiohttp.ClientSession(
-            timeout=self.timeout,
-            headers=headers
+            timeout=self.timeout, headers=headers
         ) as session:
 
             # Create tasks for all URLs
-            tasks = [
-                self.fetch_url(session, url)
-                for url in urls
-            ]
+            tasks = [self.fetch_url(session, url) for url in urls]
 
             # Progress tracking
             completed = 0
@@ -177,7 +173,9 @@ class AsyncWebScraper:
         print("SCRAPE SUMMARY")
         print("=" * 60)
         print(f"Total URLs: {len(self.results)}")
-        print(f"Successful: {len(successful)} ({len(successful)/len(self.results)*100:.1f}%)")
+        print(
+            f"Successful: {len(successful)} ({len(successful)/len(self.results)*100:.1f}%)"
+        )
         print(f"Failed: {len(failed)} ({len(failed)/len(self.results)*100:.1f}%)")
 
         if successful:
@@ -189,7 +187,9 @@ class AsyncWebScraper:
             # Status code distribution
             status_codes = {}
             for result in successful:
-                status_codes[result.status_code] = status_codes.get(result.status_code, 0) + 1
+                status_codes[result.status_code] = (
+                    status_codes.get(result.status_code, 0) + 1
+                )
 
             print("\nStatus code distribution:")
             for code, count in sorted(status_codes.items()):
@@ -210,11 +210,11 @@ async def demo_basic_usage():
     print("=" * 60)
 
     urls = [
-        'https://httpbin.org/delay/1',
-        'https://httpbin.org/delay/2',
-        'https://httpbin.org/status/200',
-        'https://httpbin.org/status/404',
-        'https://httpbin.org/status/500',
+        "https://httpbin.org/delay/1",
+        "https://httpbin.org/delay/2",
+        "https://httpbin.org/status/200",
+        "https://httpbin.org/status/404",
+        "https://httpbin.org/status/500",
     ]
 
     scraper = AsyncWebScraper(max_concurrent=3, timeout=10.0)
@@ -230,10 +230,10 @@ async def demo_large_scale():
 
     # Generate many URLs
     base_urls = [
-        'https://httpbin.org/delay/0.1',
-        'https://httpbin.org/delay/0.2',
-        'https://httpbin.org/status/200',
-        'https://httpbin.org/bytes/1024',
+        "https://httpbin.org/delay/0.1",
+        "https://httpbin.org/delay/0.2",
+        "https://httpbin.org/status/200",
+        "https://httpbin.org/bytes/1024",
     ]
 
     urls = [f"{url}?id={i}" for url in base_urls for i in range(25)]
@@ -250,18 +250,18 @@ async def demo_error_handling():
     print("=" * 60)
 
     urls = [
-        'https://httpbin.org/status/200',  # Success
-        'https://httpbin.org/status/500',  # Server error
-        'https://httpbin.org/delay/100',   # Timeout
-        'https://invalid-domain-xyz-123.com',  # DNS error
-        'https://httpbin.org/status/429',  # Rate limited
+        "https://httpbin.org/status/200",  # Success
+        "https://httpbin.org/status/500",  # Server error
+        "https://httpbin.org/delay/100",  # Timeout
+        "https://invalid-domain-xyz-123.com",  # DNS error
+        "https://httpbin.org/status/429",  # Rate limited
     ]
 
     scraper = AsyncWebScraper(
         max_concurrent=5,
         timeout=2.0,  # Short timeout to trigger retries
         max_retries=2,
-        retry_delay=0.5
+        retry_delay=0.5,
     )
     _ = await scraper.scrape_urls(urls)
     scraper.print_summary()

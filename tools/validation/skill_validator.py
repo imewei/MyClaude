@@ -193,7 +193,7 @@ class SkillApplicationValidator:
             name=skill_data["name"],
             description=skill_data.get("description", ""),
             status=skill_data.get("status", "active"),
-            plugin_name=plugin_name
+            plugin_name=plugin_name,
         )
 
         # Extract keywords from skill name and description
@@ -225,14 +225,46 @@ class SkillApplicationValidator:
     def _extract_keywords(self, text: str) -> Set[str]:
         """Extract keywords from text."""
         # Split on non-alphanumeric
-        words = re.findall(r'\b[a-z]+\b', text.lower())
+        words = re.findall(r"\b[a-z]+\b", text.lower())
 
         # Filter stopwords
         stopwords = {
-            "the", "a", "an", "and", "or", "but", "in", "on", "at", "to",
-            "for", "of", "with", "by", "from", "as", "is", "was", "are",
-            "this", "that", "these", "those", "be", "been", "being", "have",
-            "has", "had", "do", "does", "did", "will", "would", "could", "should"
+            "the",
+            "a",
+            "an",
+            "and",
+            "or",
+            "but",
+            "in",
+            "on",
+            "at",
+            "to",
+            "for",
+            "of",
+            "with",
+            "by",
+            "from",
+            "as",
+            "is",
+            "was",
+            "are",
+            "this",
+            "that",
+            "these",
+            "those",
+            "be",
+            "been",
+            "being",
+            "have",
+            "has",
+            "had",
+            "do",
+            "does",
+            "did",
+            "will",
+            "would",
+            "could",
+            "should",
         }
 
         return {w for w in words if w not in stopwords and len(w) > 2}
@@ -242,16 +274,16 @@ class SkillApplicationValidator:
         patterns: set[str] = set()
 
         # Extract package/module patterns (e.g., DifferentialEquations.jl)
-        packages = re.findall(r'\b[A-Z][a-zA-Z]+(?:\.[a-z]+)+\b', text)
+        packages = re.findall(r"\b[A-Z][a-zA-Z]+(?:\.[a-z]+)+\b", text)
         patterns.update(p.lower() for p in packages)
 
         # Extract API patterns (e.g., @code_warntype)
-        api_patterns = re.findall(r'@\w+|:\w+', text)
+        api_patterns = re.findall(r"@\w+|:\w+", text)
         patterns.update(p.lower() for p in api_patterns)
 
         # Extract common function patterns
-        func_patterns = re.findall(r'\b\w+\(\)', text)
-        patterns.update(p.lower().replace('()', '') for p in func_patterns)
+        func_patterns = re.findall(r"\b\w+\(\)", text)
+        patterns.update(p.lower().replace("()", "") for p in func_patterns)
 
         return patterns
 
@@ -289,9 +321,7 @@ class SkillApplicationValidator:
         ext = file_path.suffix.lower()
 
         context = SkillContext(
-            file_path=file_path,
-            file_extension=ext,
-            file_content=content
+            file_path=file_path, file_extension=ext, file_content=content
         )
 
         # Extract keywords
@@ -302,10 +332,10 @@ class SkillApplicationValidator:
 
         # Extract imports based on file type
         if ext == ".py":
-            imports = re.findall(r'import\s+(\w+)|from\s+(\w+)', content)
+            imports = re.findall(r"import\s+(\w+)|from\s+(\w+)", content)
             context.imports = {imp[0] or imp[1] for imp in imports}
         elif ext == ".jl":
-            imports = re.findall(r'using\s+(\w+)|import\s+(\w+)', content)
+            imports = re.findall(r"using\s+(\w+)|import\s+(\w+)", content)
             context.imports = {imp[0] or imp[1] for imp in imports}
         elif ext in {".js", ".ts", ".jsx", ".tsx"}:
             imports = re.findall(r'import.*from\s+[\'"](\w+)', content)
@@ -313,18 +343,18 @@ class SkillApplicationValidator:
 
         # Extract function definitions
         if ext == ".py":
-            functions = re.findall(r'def\s+(\w+)\s*\(', content)
+            functions = re.findall(r"def\s+(\w+)\s*\(", content)
             context.functions = set(functions)
         elif ext == ".jl":
-            functions = re.findall(r'function\s+(\w+)\s*\(', content)
+            functions = re.findall(r"function\s+(\w+)\s*\(", content)
             context.functions = set(functions)
         elif ext in {".js", ".ts"}:
-            functions = re.findall(r'function\s+(\w+)|const\s+(\w+)\s*=.*=>', content)
+            functions = re.findall(r"function\s+(\w+)|const\s+(\w+)\s*=.*=>", content)
             context.functions = {f[0] or f[1] for f in functions}
 
         # Extract class definitions
         if ext in {".py", ".js", ".ts"}:
-            classes = re.findall(r'class\s+(\w+)', content)
+            classes = re.findall(r"class\s+(\w+)", content)
             context.classes = set(classes)
 
         return context
@@ -341,21 +371,30 @@ class SkillApplicationValidator:
             if context.file_extension in skill.file_patterns:
                 score += self.SCORE_FILE_EXT_EXACT
                 matching_patterns.append(f"ext:{context.file_extension}")
-            elif any(pattern in str(context.file_path).lower() for pattern in skill.file_patterns):
+            elif any(
+                pattern in str(context.file_path).lower()
+                for pattern in skill.file_patterns
+            ):
                 score += self.SCORE_FILE_EXT_PARTIAL
                 matching_patterns.append("file_pattern")
 
         # Check keyword overlap
         keyword_overlap = skill.keywords & context.keywords
         if keyword_overlap:
-            keyword_score = min(len(keyword_overlap) * self.SCORE_KEYWORD_PER_MATCH, self.SCORE_KEYWORD_MAX)
+            keyword_score = min(
+                len(keyword_overlap) * self.SCORE_KEYWORD_PER_MATCH,
+                self.SCORE_KEYWORD_MAX,
+            )
             score += keyword_score
             matching_patterns.extend([f"kw:{kw}" for kw in list(keyword_overlap)[:3]])
 
         # Check pattern overlap (imports, functions, etc.)
         pattern_overlap = skill.patterns & context.patterns_found
         if pattern_overlap:
-            pattern_score = min(len(pattern_overlap) * self.SCORE_PATTERN_PER_MATCH, self.SCORE_PATTERN_MAX)
+            pattern_score = min(
+                len(pattern_overlap) * self.SCORE_PATTERN_PER_MATCH,
+                self.SCORE_PATTERN_MAX,
+            )
             score += pattern_score
             matching_patterns.extend([f"pat:{p}" for p in list(pattern_overlap)[:3]])
 
@@ -414,7 +453,12 @@ class SkillApplicationValidator:
 
         # JavaScript/TypeScript skills
         elif "javascript" in skill.plugin_name or "typescript" in skill.plugin_name:
-            plugin_context_match = context.file_extension in {".js", ".ts", ".jsx", ".tsx"}
+            plugin_context_match = context.file_extension in {
+                ".js",
+                ".ts",
+                ".jsx",
+                ".tsx",
+            }
 
         # Rust skills
         elif "rust" in skill.plugin_name or "systems" in skill.plugin_name:
@@ -450,11 +494,25 @@ class SkillApplicationValidator:
             print(f"  Analyzing {sample['name']}...")
 
             # Get all code files
-            code_extensions = {".py", ".jl", ".js", ".ts", ".jsx", ".tsx", ".rs",
-                              ".cpp", ".c", ".go", ".java"}
+            code_extensions = {
+                ".py",
+                ".jl",
+                ".js",
+                ".ts",
+                ".jsx",
+                ".tsx",
+                ".rs",
+                ".cpp",
+                ".c",
+                ".go",
+                ".java",
+            }
 
             for file_path in sample["path"].rglob("*"):
-                if not file_path.is_file() or file_path.suffix.lower() not in code_extensions:
+                if (
+                    not file_path.is_file()
+                    or file_path.suffix.lower() not in code_extensions
+                ):
                     continue
 
                 try:
@@ -467,7 +525,9 @@ class SkillApplicationValidator:
                         )
 
                         # Determine expected and actual application
-                        should_apply = self.determine_expected_application(skill, context)
+                        should_apply = self.determine_expected_application(
+                            skill, context
+                        )
                         did_apply = score >= self.APPLICATION_THRESHOLD
 
                         # Create result
@@ -479,7 +539,9 @@ class SkillApplicationValidator:
                             did_apply=did_apply,
                             confidence_score=score,
                             matching_patterns=matching_patterns,
-                            explanation=self._generate_explanation(skill, context, score)
+                            explanation=self._generate_explanation(
+                                skill, context, score
+                            ),
                         )
 
                         # Determine classification
@@ -567,8 +629,12 @@ class SkillApplicationValidator:
             key = f"{result.plugin_name}/{result.skill_name}"
             if key not in skill_stats:
                 skill_stats[key] = {
-                    "tp": 0, "tn": 0, "fp": 0, "fn": 0,
-                    "total": 0, "avg_score": 0.0
+                    "tp": 0,
+                    "tn": 0,
+                    "fp": 0,
+                    "fn": 0,
+                    "total": 0,
+                    "avg_score": 0.0,
                 }
 
             stats = skill_stats[key]
@@ -591,13 +657,17 @@ class SkillApplicationValidator:
         sorted_skills = sorted(
             skill_stats.items(),
             key=lambda x: (x[1]["tp"] + x[1]["tn"]) / x[1]["total"],
-            reverse=True
+            reverse=True,
         )
 
         for key, stats in sorted_skills[:10]:
             plugin_name, skill_name = key.split("/", 1)
             accuracy = (stats["tp"] + stats["tn"]) / stats["total"] * 100
-            precision = stats["tp"] / (stats["tp"] + stats["fp"]) * 100 if (stats["tp"] + stats["fp"]) > 0 else 0
+            precision = (
+                stats["tp"] / (stats["tp"] + stats["fp"]) * 100
+                if (stats["tp"] + stats["fp"]) > 0
+                else 0
+            )
             avg_score = stats["avg_score"] / stats["total"]
 
             report += f"| {skill_name} | {plugin_name} | {accuracy:.0f}% | "
@@ -607,8 +677,10 @@ class SkillApplicationValidator:
 
         # Find skills with high false positive rate
         over_trigger_skills = [
-            (key, stats) for key, stats in sorted_skills
-            if stats["fp"] / max(stats["fp"] + stats["tn"], 1) > self.OVER_TRIGGER_ALERT_RATE
+            (key, stats)
+            for key, stats in sorted_skills
+            if stats["fp"] / max(stats["fp"] + stats["tn"], 1)
+            > self.OVER_TRIGGER_ALERT_RATE
         ]
 
         if over_trigger_skills:
@@ -628,8 +700,10 @@ class SkillApplicationValidator:
 
         # Find skills with high false negative rate
         under_trigger_skills = [
-            (key, stats) for key, stats in sorted_skills
-            if stats["fn"] / max(stats["fn"] + stats["tp"], 1) > self.OVER_TRIGGER_ALERT_RATE
+            (key, stats)
+            for key, stats in sorted_skills
+            if stats["fn"] / max(stats["fn"] + stats["tp"], 1)
+            > self.OVER_TRIGGER_ALERT_RATE
         ]
 
         if under_trigger_skills:
@@ -650,9 +724,15 @@ class SkillApplicationValidator:
 
 """
 
-        if metrics.over_trigger_rate < self.TRIGGER_RATE_GOOD and metrics.under_trigger_rate < self.TRIGGER_RATE_GOOD:
+        if (
+            metrics.over_trigger_rate < self.TRIGGER_RATE_GOOD
+            and metrics.under_trigger_rate < self.TRIGGER_RATE_GOOD
+        ):
             report += "**Status:** ✅ EXCELLENT - Skill triggering is well-balanced\n\n"
-        elif metrics.over_trigger_rate < self.TRIGGER_RATE_ACCEPTABLE and metrics.under_trigger_rate < self.TRIGGER_RATE_ACCEPTABLE:
+        elif (
+            metrics.over_trigger_rate < self.TRIGGER_RATE_ACCEPTABLE
+            and metrics.under_trigger_rate < self.TRIGGER_RATE_ACCEPTABLE
+        ):
             report += "**Status:** ⚠️ GOOD - Skill triggering is acceptable but could be improved\n\n"
         else:
             report += "**Status:** ❌ NEEDS IMPROVEMENT - Skill triggering needs optimization\n\n"
@@ -681,21 +761,18 @@ def main():
     parser.add_argument(
         "--plugins-dir",
         default="plugins",
-        help="Path to plugins directory (default: plugins)"
+        help="Path to plugins directory (default: plugins)",
     )
     parser.add_argument(
         "--corpus-dir",
         default="test-corpus",
-        help="Path to test corpus directory (default: test-corpus)"
+        help="Path to test corpus directory (default: test-corpus)",
     )
-    parser.add_argument(
-        "--plugin",
-        help="Validate specific plugin only"
-    )
+    parser.add_argument("--plugin", help="Validate specific plugin only")
     parser.add_argument(
         "--output",
         default="reports/skill-validation.md",
-        help="Output report file (default: reports/skill-validation.md)"
+        help="Output report file (default: reports/skill-validation.md)",
     )
 
     args = parser.parse_args()
@@ -731,8 +808,10 @@ def main():
 
     # Determine exit code
     metrics = validator.calculate_metrics()
-    if (metrics.over_trigger_rate < validator.TRIGGER_RATE_GOOD
-            and metrics.under_trigger_rate < validator.TRIGGER_RATE_GOOD):
+    if (
+        metrics.over_trigger_rate < validator.TRIGGER_RATE_GOOD
+        and metrics.under_trigger_rate < validator.TRIGGER_RATE_GOOD
+    ):
         return 0
     else:
         return 1

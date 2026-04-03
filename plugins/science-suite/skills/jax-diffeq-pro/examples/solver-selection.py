@@ -9,10 +9,10 @@ import jax.numpy as jnp
 import diffrax
 from typing import Callable, Tuple
 
-
 # =============================================================================
 # Pattern 1: Basic Explicit Solver
 # =============================================================================
+
 
 def explicit_solver_example():
     """Non-stiff system with explicit solver (Tsit5)."""
@@ -20,8 +20,8 @@ def explicit_solver_example():
     def harmonic_oscillator(t, y, args):
         """Simple harmonic motion: d²x/dt² = -ω²x"""
         x, v = y
-        omega = args['omega']
-        return jnp.array([v, -omega**2 * x])
+        omega = args["omega"]
+        return jnp.array([v, -(omega**2) * x])
 
     term = diffrax.ODETerm(harmonic_oscillator)
     solver = diffrax.Tsit5()  # 5th order explicit Runge-Kutta
@@ -35,10 +35,13 @@ def explicit_solver_example():
     ts = jnp.linspace(0, 10, 100)
 
     solution = diffrax.diffeqsolve(
-        term, solver,
-        t0=0.0, t1=10.0, dt0=0.01,
+        term,
+        solver,
+        t0=0.0,
+        t1=10.0,
+        dt0=0.01,
         y0=y0,
-        args={'omega': 2.0},
+        args={"omega": 2.0},
         saveat=diffrax.SaveAt(ts=ts),
         stepsize_controller=stepsize_controller,
     )
@@ -50,12 +53,13 @@ def explicit_solver_example():
 # Pattern 2: Stiff System with Implicit Solver
 # =============================================================================
 
+
 def implicit_solver_example():
     """Stiff chemical kinetics requiring implicit solver."""
 
     def robertson_kinetics(t, y, args):
         """Robertson problem: widely separated rate constants."""
-        k1, k2, k3 = args['k1'], args['k2'], args['k3']
+        k1, k2, k3 = args["k1"], args["k2"], args["k3"]
         y1, y2, y3 = y
 
         dy1 = -k1 * y1 + k3 * y2 * y3
@@ -83,10 +87,13 @@ def implicit_solver_example():
     ts = jnp.logspace(-5, 5, 100)
 
     solution = diffrax.diffeqsolve(
-        term, solver,
-        t0=ts[0], t1=ts[-1], dt0=1e-6,
+        term,
+        solver,
+        t0=ts[0],
+        t1=ts[-1],
+        dt0=1e-6,
         y0=y0,
-        args={'k1': 0.04, 'k2': 3e7, 'k3': 1e4},
+        args={"k1": 0.04, "k2": 3e7, "k3": 1e4},
         saveat=diffrax.SaveAt(ts=ts),
         stepsize_controller=stepsize_controller,
         max_steps=100000,
@@ -98,6 +105,7 @@ def implicit_solver_example():
 # =============================================================================
 # Pattern 3: Stiffness Detection Heuristic
 # =============================================================================
+
 
 def detect_stiffness(jacobian_fn: Callable, y: jnp.ndarray) -> Tuple[float, str]:
     """Estimate stiffness from Jacobian eigenvalue spread.
@@ -112,11 +120,7 @@ def detect_stiffness(jacobian_fn: Callable, y: jnp.ndarray) -> Tuple[float, str]
     min_real = jnp.min(real_parts)
     max_real = jnp.max(real_parts)
 
-    ratio = jnp.where(
-        jnp.abs(min_real) > 1e-10,
-        jnp.abs(max_real / min_real),
-        1.0
-    )
+    ratio = jnp.where(jnp.abs(min_real) > 1e-10, jnp.abs(max_real / min_real), 1.0)
 
     if ratio > 1000:
         return float(ratio), "Kvaerno5 (highly stiff)"
@@ -134,11 +138,13 @@ def stiffness_detection_example():
         k1, k2, k3 = 0.04, 3e7, 1e4
         y1, y2, y3 = y
 
-        return jnp.array([
-            [-k1, k3 * y3, k3 * y2],
-            [k1, -2 * k2 * y2 - k3 * y3, -k3 * y2],
-            [0, 2 * k2 * y2, 0]
-        ])
+        return jnp.array(
+            [
+                [-k1, k3 * y3, k3 * y2],
+                [k1, -2 * k2 * y2 - k3 * y3, -k3 * y2],
+                [0, 2 * k2 * y2, 0],
+            ]
+        )
 
     y0 = jnp.array([1.0, 0.0, 0.0])
     ratio, recommendation = detect_stiffness(jacobian, y0)
@@ -153,6 +159,7 @@ def stiffness_detection_example():
 # Pattern 4: Solver Selection Function
 # =============================================================================
 
+
 def get_solver(stiffness: str = "auto", problem_type: str = "ode"):
     """Return appropriate solver for problem characteristics.
 
@@ -165,7 +172,6 @@ def get_solver(stiffness: str = "auto", problem_type: str = "ode"):
         ("ode", "non-stiff"): diffrax.Tsit5(),
         ("ode", "stiff"): diffrax.Kvaerno5(),
         ("ode", "mixed"): diffrax.KenCarp4(),  # IMEX solver
-
         # SDE solvers (need appropriate schemes)
         ("sde", "non-stiff"): diffrax.Euler(),
         ("sde", "stiff"): diffrax.Heun(),
@@ -178,6 +184,7 @@ def get_solver(stiffness: str = "auto", problem_type: str = "ode"):
 # =============================================================================
 # Pattern 5: Step Size Control Configurations
 # =============================================================================
+
 
 def stepsize_controller_configs():
     """Various step size controller configurations."""
@@ -212,10 +219,10 @@ def stepsize_controller_configs():
     fixed = diffrax.ConstantStepSize()
 
     return {
-        'standard': standard,
-        'aggressive': aggressive,
-        'conservative': conservative,
-        'fixed': fixed,
+        "standard": standard,
+        "aggressive": aggressive,
+        "conservative": conservative,
+        "fixed": fixed,
     }
 
 
@@ -223,16 +230,19 @@ def stepsize_controller_configs():
 # Pattern 6: Comparing Solvers
 # =============================================================================
 
+
 def compare_solvers():
     """Compare explicit vs implicit solver on same problem."""
 
     def vector_field(t, y, args):
         """Mildly stiff ODE."""
-        return jnp.array([
-            -0.04 * y[0] + 1e4 * y[1] * y[2],
-            0.04 * y[0] - 1e4 * y[1] * y[2] - 3e7 * y[1]**2,
-            3e7 * y[1]**2
-        ])
+        return jnp.array(
+            [
+                -0.04 * y[0] + 1e4 * y[1] * y[2],
+                0.04 * y[0] - 1e4 * y[1] * y[2] - 3e7 * y[1] ** 2,
+                3e7 * y[1] ** 2,
+            ]
+        )
 
     term = diffrax.ODETerm(vector_field)
     y0 = jnp.array([1.0, 0.0, 0.0])
@@ -245,36 +255,42 @@ def compare_solvers():
     # Try explicit solver
     try:
         sol_explicit = diffrax.diffeqsolve(
-            term, diffrax.Tsit5(),
-            t0=0.0, t1=1.0, dt0=0.001,
+            term,
+            diffrax.Tsit5(),
+            t0=0.0,
+            t1=1.0,
+            dt0=0.001,
             y0=y0,
             saveat=diffrax.SaveAt(ts=ts),
             stepsize_controller=controller,
             max_steps=100000,
         )
-        results['explicit'] = {
-            'success': True,
-            'num_steps': sol_explicit.stats['num_steps'],
+        results["explicit"] = {
+            "success": True,
+            "num_steps": sol_explicit.stats["num_steps"],
         }
     except Exception as e:
-        results['explicit'] = {'success': False, 'error': str(e)}
+        results["explicit"] = {"success": False, "error": str(e)}
 
     # Try implicit solver
     try:
         sol_implicit = diffrax.diffeqsolve(
-            term, diffrax.Kvaerno5(),
-            t0=0.0, t1=1.0, dt0=0.001,
+            term,
+            diffrax.Kvaerno5(),
+            t0=0.0,
+            t1=1.0,
+            dt0=0.001,
             y0=y0,
             saveat=diffrax.SaveAt(ts=ts),
             stepsize_controller=controller,
             max_steps=100000,
         )
-        results['implicit'] = {
-            'success': True,
-            'num_steps': sol_implicit.stats['num_steps'],
+        results["implicit"] = {
+            "success": True,
+            "num_steps": sol_implicit.stats["num_steps"],
         }
     except Exception as e:
-        results['implicit'] = {'success': False, 'error': str(e)}
+        results["implicit"] = {"success": False, "error": str(e)}
 
     return results
 
@@ -282,6 +298,7 @@ def compare_solvers():
 # =============================================================================
 # Pattern 7: Solver with Max Steps Protection
 # =============================================================================
+
 
 def solve_with_protection(vector_field, y0, t_span, args=None):
     """Solve ODE with graceful handling of solver failures."""
@@ -301,8 +318,11 @@ def solve_with_protection(vector_field, y0, t_span, args=None):
     t0, t1 = t_span
 
     solution = diffrax.diffeqsolve(
-        term, solver,
-        t0=t0, t1=t1, dt0=(t1 - t0) / 100,
+        term,
+        solver,
+        t0=t0,
+        t1=t1,
+        dt0=(t1 - t0) / 100,
         y0=y0,
         args=args,
         stepsize_controller=controller,
@@ -320,6 +340,7 @@ def solve_with_protection(vector_field, y0, t_span, args=None):
 # =============================================================================
 # Demo
 # =============================================================================
+
 
 def demo():
     """Demonstrate solver selection patterns."""
@@ -346,7 +367,7 @@ def demo():
     print("\n4. Solver Comparison")
     results = compare_solvers()
     for name, res in results.items():
-        if res['success']:
+        if res["success"]:
             print(f"   {name}: {res['num_steps']} steps")
         else:
             print(f"   {name}: FAILED - {res.get('error', 'unknown')}")

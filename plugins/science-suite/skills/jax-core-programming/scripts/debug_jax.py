@@ -21,6 +21,7 @@ def check_nan_inf(x: Any, name: str = "tensor") -> bool:
     Returns:
         True if no NaN/Inf found, False otherwise
     """
+
     def check_array(arr):
         has_nan = jnp.any(jnp.isnan(arr))
         has_inf = jnp.any(jnp.isinf(arr))
@@ -252,7 +253,7 @@ def check_device_placement(pytree: Any):
 
 
 # Example usage
-if __name__ == '__main__':
+if __name__ == "__main__":
     print("JAX Debugging Utilities Demo")
     print("=" * 60)
 
@@ -267,8 +268,8 @@ if __name__ == '__main__':
     # Example 2: PyTree structure
     print("\n2. PyTree Structure")
     params = {
-        'layer1': {'w': jnp.ones((10, 5)), 'b': jnp.zeros(10)},
-        'layer2': {'w': jnp.ones((10, 3)), 'b': jnp.zeros(3)},
+        "layer1": {"w": jnp.ones((10, 5)), "b": jnp.zeros(10)},
+        "layer2": {"w": jnp.ones((10, 3)), "b": jnp.zeros(3)},
     }
     print_pytree_structure(params, "model_params")
 
@@ -277,7 +278,7 @@ if __name__ == '__main__':
 
     @jax.jit
     def good_fn(x):
-        return x ** 2
+        return x**2
 
     debug_jit(good_fn, jnp.array([1.0, 2.0, 3.0]))
 
@@ -285,10 +286,10 @@ if __name__ == '__main__':
     print("\n4. Check Gradient Flow")
 
     def loss_fn(params, x):
-        h = params['layer1']['w'] @ x + params['layer1']['b']
+        h = params["layer1"]["w"] @ x + params["layer1"]["b"]
         h = jax.nn.relu(h)
-        out = params['layer2']['w'] @ h + params['layer2']['b']
-        return jnp.mean(out ** 2)
+        out = params["layer2"]["w"] @ h + params["layer2"]["b"]
+        return jnp.mean(out**2)
 
     x = jnp.ones(5)
     check_gradient_flow(loss_fn, params, x)

@@ -128,8 +128,9 @@ def compare_configs(configs: Dict[str, Dict]) -> Dict:
     return {"common": common, "different": different}
 
 
-def compare_metrics(metrics_dict: Dict[str, Dict[str, List[float]]],
-                   metric_name: str = "val_loss") -> Dict:
+def compare_metrics(
+    metrics_dict: Dict[str, Dict[str, List[float]]], metric_name: str = "val_loss"
+) -> Dict:
     """
     Compare specific metric across runs.
 
@@ -146,7 +147,7 @@ def compare_metrics(metrics_dict: Dict[str, Dict[str, List[float]]],
         if metric_name not in metrics:
             comparison[run_name] = {
                 "available": False,
-                "message": f"Metric '{metric_name}' not found"
+                "message": f"Metric '{metric_name}' not found",
             }
             continue
 
@@ -159,7 +160,7 @@ def compare_metrics(metrics_dict: Dict[str, Dict[str, List[float]]],
             "std": np.std(values),
             "num_epochs": len(values),
             "convergence_epoch": _find_convergence_epoch(values, metric_name),
-            "values": values
+            "values": values,
         }
 
     return comparison
@@ -189,10 +190,11 @@ def _find_convergence_epoch(values: List[float], metric_name: str) -> int:
     return len(values) - 1
 
 
-
-def print_comparison_report(configs: Dict[str, Dict],
-                            metrics_dict: Dict[str, Dict[str, List[float]]],
-                            primary_metric: str = "val_loss"):
+def print_comparison_report(
+    configs: Dict[str, Dict],
+    metrics_dict: Dict[str, Dict[str, List[float]]],
+    primary_metric: str = "val_loss",
+):
     """Print comprehensive comparison report."""
     _print_header()
 
@@ -202,34 +204,34 @@ def print_comparison_report(configs: Dict[str, Dict],
     config_comparison = compare_configs(configs)
     _print_config_comparison(run_names, config_comparison)
 
-    print("\n" + "-"*80)
+    print("\n" + "-" * 80)
     print(f"METRIC COMPARISON: {primary_metric}")
-    print("-"*80)
+    print("-" * 80)
 
     metric_comparison = compare_metrics(metrics_dict, primary_metric)
     _print_metric_comparison(run_names, metric_comparison, primary_metric)
-    
+
     _print_summary(run_names, config_comparison, metric_comparison, primary_metric)
-    
-    print("\n" + "="*80 + "\n")
+
+    print("\n" + "=" * 80 + "\n")
 
 
 def _print_header():
     """Print report header."""
-    print("\n" + "="*80)
+    print("\n" + "=" * 80)
     print("TRAINING RUN COMPARISON REPORT")
-    print("="*80)
+    print("=" * 80)
 
 
 def _print_config_comparison(run_names, config_comparison):
     """Print configuration differences table."""
-    print("\n" + "-"*80)
+    print("\n" + "-" * 80)
     print("CONFIGURATION DIFFERENCES:")
-    print("-"*80)
+    print("-" * 80)
 
     if config_comparison["different"]:
         print(f"\n{'Parameter':<30} {' '.join(f'{name:<15}' for name in run_names)}")
-        print("-"*80)
+        print("-" * 80)
 
         for param, values in sorted(config_comparison["different"].items()):
             value_strs = [str(values.get(name, "N/A"))[:15] for name in run_names]
@@ -238,14 +240,18 @@ def _print_config_comparison(run_names, config_comparison):
         print("\n✅ All configurations are identical")
 
     if config_comparison["common"]:
-        print(f"\n📋 Common parameters: {len(config_comparison['common'])} "
-              f"(use --verbose to see all)")
+        print(
+            f"\n📋 Common parameters: {len(config_comparison['common'])} "
+            f"(use --verbose to see all)"
+        )
 
 
 def _print_metric_comparison(run_names, metric_comparison, primary_metric):
     """Print metric comparison table."""
-    print(f"\n{'Run':<20} {'Final':>12} {'Best':>12} {'Mean±Std':>15} {'Converged':>12}")
-    print("-"*80)
+    print(
+        f"\n{'Run':<20} {'Final':>12} {'Best':>12} {'Mean±Std':>15} {'Converged':>12}"
+    )
+    print("-" * 80)
 
     for run_name in run_names:
         stats = metric_comparison.get(run_name, {})
@@ -263,35 +269,53 @@ def _print_metric_comparison(run_names, metric_comparison, primary_metric):
         indicator = ""
         is_loss = "loss" in primary_metric.lower()
         if is_loss:
-            best_val = min(s['best'] for s in metric_comparison.values() if s.get('available', False))
-            if stats['best'] == best_val:
+            best_val = min(
+                s["best"]
+                for s in metric_comparison.values()
+                if s.get("available", False)
+            )
+            if stats["best"] == best_val:
                 indicator = " 🏆"
         else:
-            best_val = max(s['best'] for s in metric_comparison.values() if s.get('available', False))
-            if stats['best'] == best_val:
+            best_val = max(
+                s["best"]
+                for s in metric_comparison.values()
+                if s.get("available", False)
+            )
+            if stats["best"] == best_val:
                 indicator = " 🏆"
 
-        print(f"{run_name:<20} {final:>12} {best:>12} {mean_std:>15} {converged:>12}{indicator}")
+        print(
+            f"{run_name:<20} {final:>12} {best:>12} {mean_std:>15} {converged:>12}{indicator}"
+        )
 
 
 def _print_summary(run_names, config_comparison, metric_comparison, primary_metric):
     """Print summary and recommendations."""
-    print("\n" + "="*80)
+    print("\n" + "=" * 80)
     print("SUMMARY & RECOMMENDATIONS:")
-    print("="*80)
+    print("=" * 80)
 
     # Find best run
     is_loss = "loss" in primary_metric.lower()
-    valid_runs = {name: stats for name, stats in metric_comparison.items()
-                  if stats.get("available", False)}
+    valid_runs = {
+        name: stats
+        for name, stats in metric_comparison.items()
+        if stats.get("available", False)
+    }
 
     if valid_runs:
-        best_run = min(valid_runs.items(), key=lambda x: x[1]['best']) if is_loss \
-                  else max(valid_runs.items(), key=lambda x: x[1]['best'])
+        best_run = (
+            min(valid_runs.items(), key=lambda x: x[1]["best"])
+            if is_loss
+            else max(valid_runs.items(), key=lambda x: x[1]["best"])
+        )
 
         print(f"\n🏆 BEST RUN: {best_run[0]}")
-        print(f"   {primary_metric}: {best_run[1]['best']:.4f} "
-              f"(converged at epoch {best_run[1]['convergence_epoch']})")
+        print(
+            f"   {primary_metric}: {best_run[1]['best']:.4f} "
+            f"(converged at epoch {best_run[1]['convergence_epoch']})"
+        )
 
         # Key differences for best run
         if config_comparison["different"]:
@@ -306,48 +330,44 @@ def _print_summary(run_names, config_comparison, metric_comparison, primary_metr
     # Check for overfitting
     for run_name, stats in metric_comparison.items():
         if stats.get("available"):
-            convergence_pct = 100 * stats['convergence_epoch'] / stats['num_epochs']
+            convergence_pct = 100 * stats["convergence_epoch"] / stats["num_epochs"]
             if convergence_pct < 50:
-                print(f"   ⚠️  {run_name}: Early convergence ({convergence_pct:.0f}% through training)")
+                print(
+                    f"   ⚠️  {run_name}: Early convergence ({convergence_pct:.0f}% through training)"
+                )
                 print("      → Consider increasing learning rate or model capacity")
 
     # Check for instability
     for run_name, stats in metric_comparison.items():
         if stats.get("available"):
             # High variance indicates instability (std > 10% of mean magnitude)
-            if stats['std'] > 0.1 * abs(stats['mean']):
+            if stats["std"] > 0.1 * abs(stats["mean"]):
                 print(f"   ⚠️  {run_name}: High variance in {primary_metric}")
-                print("      → Training may be unstable, consider reducing learning rate")
-
+                print(
+                    "      → Training may be unstable, consider reducing learning rate"
+                )
 
 
 def main():
-    parser = argparse.ArgumentParser(
-        description="Compare multiple training runs"
-    )
+    parser = argparse.ArgumentParser(description="Compare multiple training runs")
     parser.add_argument(
-        "--runs",
-        nargs="+",
-        required=True,
-        help="Paths to experiment directories"
+        "--runs", nargs="+", required=True, help="Paths to experiment directories"
     )
     parser.add_argument(
         "--metric",
         type=str,
         default="val_loss",
-        help="Primary metric to compare (default: val_loss)"
+        help="Primary metric to compare (default: val_loss)",
     )
     parser.add_argument(
-        "--verbose",
-        action="store_true",
-        help="Show detailed statistics"
+        "--verbose", action="store_true", help="Show detailed statistics"
     )
 
     parser.parse_args()
 
-    print("\n" + "="*80)
+    print("\n" + "=" * 80)
     print("TRAINING RUN COMPARISON TOOL")
-    print("="*80)
+    print("=" * 80)
 
     print("\nNote: This is a template script. Expected data format:")
     print("\nEach run directory should contain:")
@@ -367,9 +387,9 @@ def main():
     print("  )")
 
     # Example usage
-    print("\n" + "-"*80)
+    print("\n" + "-" * 80)
     print("EXAMPLE USAGE:")
-    print("-"*80)
+    print("-" * 80)
     print("\nIn your code:")
     print("""
     configs = {}
@@ -382,7 +402,7 @@ def main():
     print_comparison_report(configs, metrics, primary_metric='val_loss')
     """)
 
-    print("\n" + "="*80 + "\n")
+    print("\n" + "=" * 80 + "\n")
 
 
 if __name__ == "__main__":

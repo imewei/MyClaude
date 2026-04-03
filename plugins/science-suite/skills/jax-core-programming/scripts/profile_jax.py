@@ -13,7 +13,9 @@ from typing import Callable, Dict
 from functools import wraps
 
 
-def profile_function(fn: Callable, *args, n_warmup: int = 3, n_runs: int = 10, **kwargs) -> Dict[str, float]:
+def profile_function(
+    fn: Callable, *args, n_warmup: int = 3, n_runs: int = 10, **kwargs
+) -> Dict[str, float]:
     """
     Profile a JAX function with proper warmup and timing.
 
@@ -47,10 +49,10 @@ def profile_function(fn: Callable, *args, n_warmup: int = 3, n_runs: int = 10, *
 
     times_array = jnp.array(times)
     stats = {
-        'mean': float(jnp.mean(times_array)),
-        'std': float(jnp.std(times_array)),
-        'min': float(jnp.min(times_array)),
-        'max': float(jnp.max(times_array)),
+        "mean": float(jnp.mean(times_array)),
+        "std": float(jnp.std(times_array)),
+        "min": float(jnp.min(times_array)),
+        "max": float(jnp.max(times_array)),
     }
 
     print(f"  Results: {stats['mean']:.2f}ms ± {stats['std']:.2f}ms")
@@ -85,10 +87,10 @@ def compare_implementations(*fns, args=None, kwargs=None, n_runs=10):
     # Print comparison
     print("\nComparison Summary:")
     print("-" * 60)
-    baseline = results[fns[0].__name__]['mean']
+    baseline = results[fns[0].__name__]["mean"]
 
     for name, stats in results.items():
-        speedup = baseline / stats['mean']
+        speedup = baseline / stats["mean"]
         print(f"{name:30s}: {stats['mean']:8.2f}ms (speedup: {speedup:5.2f}x)")
 
     return results
@@ -107,11 +109,14 @@ def memory_profile(fn: Callable, *args, **kwargs):
 
     # Get memory before
     import subprocess
-    result = subprocess.run(['nvidia-smi', '--query-gpu=memory.used',
-                           '--format=csv,nounits,noheader'],
-                          capture_output=True, text=True)
+
+    result = subprocess.run(
+        ["nvidia-smi", "--query-gpu=memory.used", "--format=csv,nounits,noheader"],
+        capture_output=True,
+        text=True,
+    )
     if result.returncode == 0:
-        mem_before = int(result.stdout.strip().split('\n')[0])
+        mem_before = int(result.stdout.strip().split("\n")[0])
         print(f"  Memory before: {mem_before} MB")
     else:
         print("  nvidia-smi not available (CPU mode)")
@@ -123,10 +128,12 @@ def memory_profile(fn: Callable, *args, **kwargs):
 
     # Get memory after
     if mem_before is not None:
-        result = subprocess.run(['nvidia-smi', '--query-gpu=memory.used',
-                               '--format=csv,nounits,noheader'],
-                              capture_output=True, text=True)
-        mem_after = int(result.stdout.strip().split('\n')[0])
+        result = subprocess.run(
+            ["nvidia-smi", "--query-gpu=memory.used", "--format=csv,nounits,noheader"],
+            capture_output=True,
+            text=True,
+        )
+        mem_after = int(result.stdout.strip().split("\n")[0])
         mem_used = mem_after - mem_before
         print(f"  Memory after: {mem_after} MB")
         print(f"  Memory used: {mem_used} MB")
@@ -196,7 +203,9 @@ def profile_gradient(loss_fn: Callable, params, *args, **kwargs):
     print(f"  Forward only:     {forward_stats['mean']:.2f}ms")
     print(f"  Gradient only:    {grad_stats['mean']:.2f}ms")
     print(f"  Value + gradient: {combined_stats['mean']:.2f}ms")
-    print(f"  Overhead:         {(combined_stats['mean'] - forward_stats['mean']):.2f}ms")
+    print(
+        f"  Overhead:         {(combined_stats['mean'] - forward_stats['mean']):.2f}ms"
+    )
 
 
 def profile_decorator(n_warmup=3, n_runs=10):
@@ -208,18 +217,23 @@ def profile_decorator(n_warmup=3, n_runs=10):
         def my_function(x):
             return x ** 2
     """
+
     def decorator(fn):
         @wraps(fn)
         def wrapper(*args, **kwargs):
-            stats = profile_function(fn, *args, n_warmup=n_warmup, n_runs=n_runs, **kwargs)
+            stats = profile_function(
+                fn, *args, n_warmup=n_warmup, n_runs=n_runs, **kwargs
+            )
             result = fn(*args, **kwargs)
             return result, stats
+
         return wrapper
+
     return decorator
 
 
 # Example usage
-if __name__ == '__main__':
+if __name__ == "__main__":
     print("JAX Profiling Utilities Demo")
     print("=" * 60)
 
@@ -236,19 +250,14 @@ if __name__ == '__main__':
     A = jnp.ones((1000, 1000))
     B = jnp.ones((1000, 1000))
 
-    compare_implementations(
-        naive_matmul,
-        jit_matmul,
-        args=(A, B),
-        n_runs=20
-    )
+    compare_implementations(naive_matmul, jit_matmul, args=(A, B), n_runs=20)
 
     # Example 2: Recompilation check
     print("\n2. Recompilation Check")
 
     @jax.jit
     def dynamic_fn(x, n):
-        return jnp.sum(x ** n)
+        return jnp.sum(x**n)
 
     test_inputs = [
         (jnp.ones(100), 2),

@@ -26,17 +26,19 @@ def prior_predictive_check(model, x_data, y_data=None, num_samples=1000, rng_see
     prior_samples = prior_predictive(rng_key, x_data, y=None)
 
     # Extract predictions
-    y_prior = prior_samples['obs']
+    y_prior = prior_samples["obs"]
 
     print("Prior Predictive Check")
-    print("="*60)
+    print("=" * 60)
     print(f"Prior predictive range: [{y_prior.min():.2f}, {y_prior.max():.2f}]")
 
     if y_data is not None:
         print(f"Observed data range:    [{y_data.min():.2f}, {y_data.max():.2f}]")
 
         # Check if observed within reasonable prior range
-        within_range = (y_data.min() >= y_prior.min()) and (y_data.max() <= y_prior.max())
+        within_range = (y_data.min() >= y_prior.min()) and (
+            y_data.max() <= y_prior.max()
+        )
 
         if within_range:
             print("✓ Observed data within prior predictive range")
@@ -44,6 +46,6 @@ def prior_predictive_check(model, x_data, y_data=None, num_samples=1000, rng_see
             print("⚠ Observed data outside prior predictive range")
             print("  → Consider adjusting priors")
 
-    print("="*60)
+    print("=" * 60)
 
     return prior_samples

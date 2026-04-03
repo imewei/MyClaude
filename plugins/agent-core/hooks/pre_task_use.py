@@ -9,7 +9,6 @@ import json
 import os
 import sys
 
-
 AGENT_CAPABILITIES = {
     "orchestrator": "Workflow coordination, team assembly, dependency management",
     "context-specialist": "Context engineering, memory systems, token budget management",

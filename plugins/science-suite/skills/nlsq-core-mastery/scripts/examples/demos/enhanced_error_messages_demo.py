@@ -102,7 +102,9 @@ def example_3_diagnostic_analysis():
             print("\n🔧 Auto-fix strategy: Increase max_nfev")
             try:
                 # Automatically retry with higher max_nfev
-                popt, pcov = fit(gaussian, x, y, p0=[1, 0, 1], max_nfev=200, workflow="auto")
+                popt, pcov = fit(
+                    gaussian, x, y, p0=[1, 0, 1], max_nfev=200, workflow="auto"
+                )
                 print("  ✅ Auto-retry succeeded!")
                 print(
                     f"     Fitted: amp={popt[0]:.2f}, mu={popt[1]:.2f}, sigma={popt[2]:.2f}"

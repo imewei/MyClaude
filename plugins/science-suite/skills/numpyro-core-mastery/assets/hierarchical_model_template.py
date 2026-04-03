@@ -36,25 +36,25 @@ def hierarchical_model(group_idx, x, y=None):
     n_groups = len(jnp.unique(group_idx))
 
     # Global hyperpriors (population-level)
-    mu_alpha = numpyro.sample('mu_alpha', dist.Normal(0, 10))
-    sigma_alpha = numpyro.sample('sigma_alpha', dist.HalfNormal(5))
+    mu_alpha = numpyro.sample("mu_alpha", dist.Normal(0, 10))
+    sigma_alpha = numpyro.sample("sigma_alpha", dist.HalfNormal(5))
 
-    mu_beta = numpyro.sample('mu_beta', dist.Normal(0, 10))
-    sigma_beta = numpyro.sample('sigma_beta', dist.HalfNormal(5))
+    mu_beta = numpyro.sample("mu_beta", dist.Normal(0, 10))
+    sigma_beta = numpyro.sample("sigma_beta", dist.HalfNormal(5))
 
     # Group-level parameters (partial pooling)
-    with numpyro.plate('groups', n_groups):
-        alpha = numpyro.sample('alpha', dist.Normal(mu_alpha, sigma_alpha))
-        beta = numpyro.sample('beta', dist.Normal(mu_beta, sigma_beta))
+    with numpyro.plate("groups", n_groups):
+        alpha = numpyro.sample("alpha", dist.Normal(mu_alpha, sigma_alpha))
+        beta = numpyro.sample("beta", dist.Normal(mu_beta, sigma_beta))
 
     # Observation-level noise
-    sigma = numpyro.sample('sigma', dist.HalfNormal(5))
+    sigma = numpyro.sample("sigma", dist.HalfNormal(5))
 
     # Likelihood
     mu = alpha[group_idx] + beta[group_idx] * x
 
-    with numpyro.plate('data', len(x)):
-        numpyro.sample('obs', dist.Normal(mu, sigma), obs=y)
+    with numpyro.plate("data", len(x)):
+        numpyro.sample("obs", dist.Normal(mu, sigma), obs=y)
 
 
 def generate_hierarchical_data():
@@ -86,7 +86,9 @@ def generate_hierarchical_data():
     true_mu_alpha = 2.0
     true_sigma_alpha = 1.5
     key_alpha = random.split(rng_key)[1]
-    true_alpha = true_mu_alpha + true_sigma_alpha * random.normal(key_alpha, (n_groups,))
+    true_alpha = true_mu_alpha + true_sigma_alpha * random.normal(
+        key_alpha, (n_groups,)
+    )
 
     true_mu_beta = 3.0
     true_sigma_beta = 0.8
@@ -97,8 +99,11 @@ def generate_hierarchical_data():
 
     # Generate responses
     key_noise = random.split(rng_key)[3]
-    y = true_alpha[group_idx] + true_beta[group_idx] * x + \
-        true_sigma * random.normal(key_noise, (N,))
+    y = (
+        true_alpha[group_idx]
+        + true_beta[group_idx] * x
+        + true_sigma * random.normal(key_noise, (N,))
+    )
 
     print("Generated hierarchical data:")
     print(f"  Groups: {n_groups}")
@@ -114,7 +119,9 @@ def run_hierarchical_inference(group_idx, x, y):
     """Run MCMC inference for hierarchical model."""
     print("\nRunning hierarchical MCMC...")
 
-    nuts_kernel = NUTS(hierarchical_model, target_accept_prob=0.9)  # Higher for hierarchical
+    nuts_kernel = NUTS(
+        hierarchical_model, target_accept_prob=0.9
+    )  # Higher for hierarchical
     mcmc = MCMC(nuts_kernel, num_warmup=1000, num_samples=2000, num_chains=4)
 
     mcmc.run(random.PRNGKey(0), group_idx, x, y)
@@ -132,42 +139,52 @@ def visualize_shrinkage(mcmc, true_alpha, true_beta, n_groups):
     posterior_samples = mcmc.get_samples()
 
     # Extract estimates
-    alpha_samples = posterior_samples['alpha']  # (n_samples, n_groups)
-    beta_samples = posterior_samples['beta']
+    alpha_samples = posterior_samples["alpha"]  # (n_samples, n_groups)
+    beta_samples = posterior_samples["beta"]
 
     alpha_mean = alpha_samples.mean(axis=0)
     beta_mean = beta_samples.mean(axis=0)
 
-    mu_alpha_mean = posterior_samples['mu_alpha'].mean()
-    mu_beta_mean = posterior_samples['mu_beta'].mean()
+    mu_alpha_mean = posterior_samples["mu_alpha"].mean()
+    mu_beta_mean = posterior_samples["mu_beta"].mean()
 
     # Plot shrinkage
     fig, axes = plt.subplots(1, 2, figsize=(12, 5))
 
     # Intercept shrinkage
-    axes[0].scatter(true_alpha, alpha_mean, s=100, alpha=0.6, label='Group estimates')
-    axes[0].axhline(mu_alpha_mean, color='red', linestyle='--', linewidth=2,
-                   label=f'Population mean ({mu_alpha_mean:.2f})')
-    axes[0].plot([-5, 5], [-5, 5], 'k--', alpha=0.3, label='Perfect recovery')
-    axes[0].set_xlabel('True Group Intercept')
-    axes[0].set_ylabel('Estimated Group Intercept')
-    axes[0].set_title('Hierarchical Shrinkage: Intercepts')
+    axes[0].scatter(true_alpha, alpha_mean, s=100, alpha=0.6, label="Group estimates")
+    axes[0].axhline(
+        mu_alpha_mean,
+        color="red",
+        linestyle="--",
+        linewidth=2,
+        label=f"Population mean ({mu_alpha_mean:.2f})",
+    )
+    axes[0].plot([-5, 5], [-5, 5], "k--", alpha=0.3, label="Perfect recovery")
+    axes[0].set_xlabel("True Group Intercept")
+    axes[0].set_ylabel("Estimated Group Intercept")
+    axes[0].set_title("Hierarchical Shrinkage: Intercepts")
     axes[0].legend()
     axes[0].grid(alpha=0.3)
 
     # Slope shrinkage
-    axes[1].scatter(true_beta, beta_mean, s=100, alpha=0.6, label='Group estimates')
-    axes[1].axhline(mu_beta_mean, color='red', linestyle='--', linewidth=2,
-                   label=f'Population mean ({mu_beta_mean:.2f})')
-    axes[1].plot([0, 5], [0, 5], 'k--', alpha=0.3, label='Perfect recovery')
-    axes[1].set_xlabel('True Group Slope')
-    axes[1].set_ylabel('Estimated Group Slope')
-    axes[1].set_title('Hierarchical Shrinkage: Slopes')
+    axes[1].scatter(true_beta, beta_mean, s=100, alpha=0.6, label="Group estimates")
+    axes[1].axhline(
+        mu_beta_mean,
+        color="red",
+        linestyle="--",
+        linewidth=2,
+        label=f"Population mean ({mu_beta_mean:.2f})",
+    )
+    axes[1].plot([0, 5], [0, 5], "k--", alpha=0.3, label="Perfect recovery")
+    axes[1].set_xlabel("True Group Slope")
+    axes[1].set_ylabel("Estimated Group Slope")
+    axes[1].set_title("Hierarchical Shrinkage: Slopes")
     axes[1].legend()
     axes[1].grid(alpha=0.3)
 
     plt.tight_layout()
-    plt.savefig('hierarchical_shrinkage.png', dpi=150)
+    plt.savefig("hierarchical_shrinkage.png", dpi=150)
     print("✓ Saved: hierarchical_shrinkage.png")
 
 
@@ -175,8 +192,8 @@ def plot_group_fits(group_idx, x, y, mcmc, n_groups):
     """Plot fits for each group."""
     posterior_samples = mcmc.get_samples()
 
-    alpha_mean = posterior_samples['alpha'].mean(axis=0)
-    beta_mean = posterior_samples['beta'].mean(axis=0)
+    alpha_mean = posterior_samples["alpha"].mean(axis=0)
+    beta_mean = posterior_samples["beta"].mean(axis=0)
 
     fig, axes = plt.subplots(1, n_groups, figsize=(15, 3))
 
@@ -194,22 +211,22 @@ def plot_group_fits(group_idx, x, y, mcmc, n_groups):
 
         # Plot
         ax.scatter(x_group, y_group, alpha=0.6, s=30)
-        ax.plot(x_range, y_pred, 'r-', linewidth=2)
-        ax.set_xlabel('x')
-        ax.set_ylabel('y')
-        ax.set_title(f'Group {j}')
+        ax.plot(x_range, y_pred, "r-", linewidth=2)
+        ax.set_xlabel("x")
+        ax.set_ylabel("y")
+        ax.set_title(f"Group {j}")
         ax.grid(alpha=0.3)
 
     plt.tight_layout()
-    plt.savefig('group_fits.png', dpi=150)
+    plt.savefig("group_fits.png", dpi=150)
     print("✓ Saved: group_fits.png")
 
 
 def main():
     """Complete hierarchical modeling workflow."""
-    print("="*70)
+    print("=" * 70)
     print("HIERARCHICAL BAYESIAN MODELING WITH NUMPYRO")
-    print("="*70)
+    print("=" * 70)
 
     # Generate data
     group_idx, x, y, true_alpha, true_beta = generate_hierarchical_data()
@@ -226,9 +243,9 @@ def main():
     print("\nPlotting group-level fits...")
     plot_group_fits(group_idx, x, y, mcmc, n_groups)
 
-    print("\n" + "="*70)
+    print("\n" + "=" * 70)
     print("HIERARCHICAL MODELING COMPLETE")
-    print("="*70)
+    print("=" * 70)
     print("\nKey concepts demonstrated:")
     print("  1. Partial pooling - groups share information")
     print("  2. Shrinkage - estimates pulled toward population mean")
@@ -237,7 +254,7 @@ def main():
     print("\nGenerated files:")
     print("  - hierarchical_shrinkage.png")
     print("  - group_fits.png")
-    print("="*70)
+    print("=" * 70)
 
 
 if __name__ == "__main__":
