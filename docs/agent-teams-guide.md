@@ -1,6 +1,6 @@
 # Agent Teams Guide for MyClaude Plugin Suites
 
-> 34 ready-to-use team configurations leveraging 23 MyClaude agents + 20 official plugin agents across 3 suites.
+> 34 ready-to-use team configurations leveraging 24 MyClaude agents + 20 official plugin agents across 3 suites.
 
 ## Prerequisites
 
@@ -41,6 +41,7 @@ Enable agent teams (experimental) in your settings:
 | | statistical-physicist | `science-suite:statistical-physicist` | Stat mech, stochastic dynamics |
 | | nonlinear-dynamics-expert | `science-suite:nonlinear-dynamics-expert` | Bifurcation, chaos, SINDy/UDE |
 | | julia-pro | `science-suite:julia-pro` | Julia HPC, SciML |
+| | julia-ml-hpc | `science-suite:julia-ml-hpc` | Julia ML/DL/HPC, Lux.jl, CUDA.jl |
 | | prompt-engineer | `science-suite:prompt-engineer` | LLM optimization, eval |
 
 ### Official Plugin Agents
@@ -79,10 +80,10 @@ These agents come from [claude-plugins-official](https://github.com/anthropics/c
 |---|------|----------|-------------|-----------|
 | 2 | incident-response | Prod debugging | debugger + sre + devops | 3 |
 | 3 | quality-audit | Pre-release review | quality + architect + debugger + docs | 4 |
-| 4 | sci-pipeline | ML/JAX workflows | jax + ml + python + research | 4 |
+| 4 | sci-pipeline | ML/JAX/Julia workflows | jax + ml + julia-ml-hpc + python + research | 5 |
 | 5 | infra-setup | Cloud + CI/CD | devops + automation + sre | 3 |
 | 6 | modernization | Legacy migration | architect + app-dev + quality + docs | 4 |
-| 7 | dl-research | Neural networks | nn-master + jax + ml + research | 4 |
+| 7 | dl-research | Neural networks | nn-master + jax + julia-ml-hpc + ml + research | 5 |
 | 8 | api-design | API development | architect + app-dev + quality + docs | 4 |
 | 9 | pr-review | Critical PR review | quality + systems + debugger | 3 |
 | 10 | ai-engineering | AI/LLM/agents | ai-eng + prompt-eng + architect + reasoning | 4 |
@@ -91,7 +92,7 @@ These agents come from [claude-plugins-official](https://github.com/anthropics/c
 
 | # | Team | Best For | Agents Used | Teammates |
 |---|------|----------|-------------|-----------|
-| 11 | julia-sciml | Julia SciML / DiffEq | julia + simulation + research + python | 4 |
+| 11 | julia-sciml | Julia SciML / DiffEq | julia + julia-ml-hpc + simulation + research | 4 |
 | 12 | stat-phys | Phase transitions, dynamics | stat-phys + dynamics + jax + sim + research | 5 |
 | 13 | bayesian-pipeline | NumPyro / MCMC inference | jax + stat-phys + ml + research | 4 |
 | 14 | md-campaign | Molecular dynamics | simulation + jax + stat-phys + python | 4 |
@@ -103,7 +104,7 @@ These agents come from [claude-plugins-official](https://github.com/anthropics/c
 | # | Team | Best For | Agents Used | Teammates |
 |---|------|----------|-------------|-----------|
 | 17 | perf-optimize | Performance profiling | systems + jax + debugger + python | 4 |
-| 18 | hpc-interop | Cross-language HPC | julia + python + systems + jax | 4 |
+| 18 | hpc-interop | Cross-language HPC | julia + julia-ml-hpc + systems + jax | 4 |
 | 19 | reproducible-research | Open science, CI/CD for research | research + python + automation + docs | 4 |
 | 22 | data-pipeline | ETL, feature engineering, MLOps | python + ml + devops + quality | 4 |
 | 23 | security-harden | Security hardening | quality + devops + systems + automation | 4 |
@@ -230,6 +231,7 @@ a prioritized remediation plan with effort estimates.
 | Lead | `agent-core:orchestrator` | Pipeline coordination |
 | jax | `science-suite:jax-pro` | JAX core, GPU acceleration |
 | ml | `science-suite:ml-expert` | Model development, MLOps |
+| julia-hpc | `science-suite:julia-ml-hpc` | Julia GPU kernels, distributed training |
 | python | `science-suite:python-pro` | Systems integration, packaging |
 | research | `science-suite:research-expert` | Methodology validation |
 
@@ -239,7 +241,7 @@ a prioritized remediation plan with effort estimates.
 Create an agent team called "sci-pipeline" to build a scientific computing
 pipeline for [RESEARCH_PROBLEM].
 
-Spawn 4 specialist teammates:
+Spawn 5 specialist teammates:
 
 1. "jax-engineer" - JAX implementation specialist. Implement the core
    computational kernels using JAX with JIT compilation, vmap for
@@ -251,12 +253,17 @@ Spawn 4 specialist teammates:
    pipelines, and model versioning. Owns src/training/, src/data/,
    configs/.
 
-3. "python-architect" - Systems integration. Design the package structure
+3. "julia-hpc" - Julia ML/HPC specialist. Implement Julia GPU kernels
+   using CUDA.jl, distributed training with Lux.jl, and cross-language
+   interop via PythonCall.jl. Handle MPI-based parallelism and SLURM
+   job submission. Owns julia/, scripts/slurm/.
+
+4. "python-architect" - Systems integration. Design the package structure
    with proper typing (Protocols, Generics), CLI interface, configuration
    management, and test infrastructure. Owns src/__init__.py, setup files,
    src/cli/, pyproject.toml.
 
-4. "methodology" - Research methodology validator. Review the computational
+5. "methodology" - Research methodology validator. Review the computational
    approach for scientific correctness, reproducibility (explicit seeds,
    deterministic ops), and statistical validity. Validate against
    [REFERENCE_PAPERS]. Owns docs/, notebooks/.
@@ -369,6 +376,7 @@ implementer begins each module migration.
 | Lead | `agent-core:orchestrator` | Experiment coordination |
 | nn-architect | `science-suite:neural-network-master` | Architecture design |
 | jax-impl | `science-suite:jax-pro` | JAX/Flax implementation |
+| julia-dl | `science-suite:julia-ml-hpc` | Lux.jl architectures, Julia GPU training |
 | mlops | `science-suite:ml-expert` | Training pipeline, deployment |
 | researcher | `science-suite:research-expert` | Paper implementation, validation |
 
@@ -378,7 +386,7 @@ implementer begins each module migration.
 Create an agent team called "dl-research" to develop a neural network
 for [RESEARCH_TASK].
 
-Spawn 4 deep learning specialists:
+Spawn 5 deep learning specialists:
 
 1. "nn-architect" - Neural architecture designer. Design the model
    architecture considering: attention mechanisms, normalization strategies,
@@ -392,12 +400,17 @@ Spawn 4 deep learning specialists:
    training with pmap/sharding. Implement custom training loops with
    gradient clipping and mixed precision. Owns src/training/, src/utils/.
 
-3. "mlops-engineer" - Training infrastructure. Set up experiment tracking
+3. "julia-dl" - Julia deep learning specialist. Implement alternative
+   architectures using Lux.jl with Julia GPU training via CUDA.jl.
+   Handle Reactant.jl compilation, distributed training, and
+   performance benchmarking against JAX baselines. Owns julia/models/.
+
+4. "mlops-engineer" - Training infrastructure. Set up experiment tracking
    (W&B), hyperparameter sweeps, checkpoint management, and model
    evaluation pipelines. Configure data loading with proper prefetching
    and augmentation. Owns configs/, scripts/, src/data/.
 
-4. "researcher" - Scientific validation. Implement evaluation metrics
+5. "researcher" - Scientific validation. Implement evaluation metrics
    from the reference paper, set up ablation studies, analyze training
    diagnostics (loss landscapes, gradient norms, attention patterns).
    Ensure reproducibility with explicit seeds. Owns notebooks/,
@@ -573,9 +586,9 @@ rigor in evaluation experiments.
 |------|-----------|--------|
 | Lead | `agent-core:orchestrator` | Pipeline coordination |
 | julia | `science-suite:julia-pro` | Julia packages, DiffEq, SciML |
+| ml-hpc | `science-suite:julia-ml-hpc` | Lux.jl training, GPU kernels, distributed |
 | simulation | `science-suite:simulation-expert` | Physics models, numerical methods |
 | research | `science-suite:research-expert` | Methodology, validation |
-| python | `science-suite:python-pro` | Interop, data pipeline, packaging |
 
 ### Prompt
 
@@ -603,10 +616,10 @@ Spawn 4 specialist teammates:
    reproducibility with fixed seeds and version pinning. Owns docs/,
    notebooks/, test/.
 
-4. "python-bridge" - Interoperability engineer. Build Python-Julia bridges
-   using PythonCall.jl or PyJulia for data exchange. Set up data ingestion
-   pipelines, results export (HDF5/Arrow), and visualization (Makie.jl
-   for interactive, Plots.jl for publication). Owns scripts/, viz/.
+4. "julia-ml-hpc" - Julia ML/HPC specialist. Implement GPU-accelerated
+   training with Lux.jl and CUDA.jl, distributed computing with MPI.jl,
+   and neural ODE/UDE components via DiffEqFlux.jl. Handle Reactant.jl
+   compilation and multi-node SLURM workflows. Owns src/ml/, scripts/.
 
 Use Julia 1.10+ with strict type annotations at module boundaries.
 ```
@@ -938,7 +951,7 @@ Target: [SPEEDUP_TARGET] (e.g., 10x throughput improvement).
 |------|-----------|--------|
 | Lead | `agent-core:orchestrator` | Architecture coordination |
 | julia | `science-suite:julia-pro` | Julia performance, packages |
-| python | `science-suite:python-pro` | Python integration |
+| julia-hpc | `science-suite:julia-ml-hpc` | Julia GPU, MPI.jl, SLURM |
 | systems | `dev-suite:systems-engineer` | C/Rust FFI, memory |
 | jax | `science-suite:jax-pro` | GPU compute, JAX kernels |
 
@@ -956,11 +969,11 @@ Spawn 4 specialist teammates:
    Build Julia package with proper Project.toml and test suite.
    Owns julia/, Project.toml.
 
-2. "python-integrator" - Python ecosystem bridge. Build Python wrappers
-   using PythonCall.jl (Julia→Python) or juliacall (Python→Julia).
-   Handle data serialization (Arrow/HDF5 for zero-copy), memory
-   management across language boundaries, and error propagation.
-   Owns python/, src/bridge/.
+2. "julia-hpc" - Julia ML/HPC specialist. Implement GPU-accelerated
+   kernels with CUDA.jl, distributed training with Lux.jl, and
+   MPI-based parallelism via MPI.jl. Handle SLURM job orchestration,
+   multi-node scheduling, and PythonCall.jl interop. Owns julia/hpc/,
+   scripts/slurm/.
 
 3. "systems-engineer" - FFI and compiled extensions. Build C/Rust
    extensions for performance-critical inner loops using PyO3 (Rust)
