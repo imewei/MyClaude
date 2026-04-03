@@ -137,7 +137,7 @@ validate: ## Validate plugin metadata and configuration
 	@if [ -f "tools/validation/metadata_validator.py" ]; then \
 		for dir in plugins/*/; do \
 			if [ -d "$$dir" ]; then \
-				python3 tools/validation/metadata_validator.py "$$dir" || exit 1; \
+				PYTHONPATH=. python3 tools/validation/metadata_validator.py "$$dir" || exit 1; \
 			fi \
 		done; \
 	fi
@@ -195,7 +195,7 @@ plugin-count: ## Count plugins and show breakdown
 	@echo "Plugins with README: $$(find plugins -maxdepth 2 -name 'README.md' | wc -l | tr -d ' ')"
 	@echo ""
 	@echo "=== Category Breakdown ==="
-	@for json in plugins/*/plugin.json; do \
+	@for json in plugins/*/.claude-plugin/plugin.json; do \
 		grep -o '"category"[[:space:]]*:[[:space:]]*"[^"]*"' "$$json" 2>/dev/null; \
 	done | cut -d'"' -f4 | sort | uniq -c | sort -rn
 
@@ -203,15 +203,15 @@ plugin-list: ## List all plugins with their versions
 	@echo "=== Plugin List ==="
 	@for dir in plugins/*/; do \
 		plugin=$$(basename "$$dir"); \
-		if [ -f "$$dir/plugin.json" ]; then \
-			version=$$(grep '"version"' "$$dir/plugin.json" | head -1 | sed 's/.*: *"\([^"]*\)".*/\1/'); \
+		if [ -f "$$dir/.claude-plugin/plugin.json" ]; then \
+			version=$$(grep '"version"' "$$dir/.claude-plugin/plugin.json" | head -1 | sed 's/.*: *"\([^"]*\)".*/\1/'); \
 			printf "%-35s %s\n" "$$plugin" "v$$version"; \
 		fi \
 	done | sort
 
 plugin-enable-all: ## Enable all plugins in Claude Code (requires restart)
 	@echo "Enabling all plugins in Claude Code..."
-	@python3 tools/maintenance/enable_all_plugins.py
+	@PYTHONPATH=. python3 tools/maintenance/enable_all_plugins.py
 
 ##@ Information
 
