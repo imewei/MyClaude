@@ -5,6 +5,8 @@ description: Modern Julia SciML stack with Lux.jl neural networks, SciMLSensitiv
 
 # Modern SciML Stack
 
+> **⚠️ FROZEN (2026-04-02):** This skill is at 78% context budget. Do not add new content — create separate skills for new SciML topics instead.
+
 Build scientific machine learning workflows with Lux.jl explicit-parameter neural networks and SciMLSensitivity.jl automatic differentiation through differential equation solvers. This stack replaces Flux-based SciML patterns with composable, AD-friendly components.
 
 ---
