@@ -5,6 +5,15 @@ description: Guide for using integrated MCP servers (serena, github, sequential-
 
 # MCP Integration Guide
 
+## Expert Agent
+
+For MCP server integration and cross-tool coordination, delegate to:
+
+- **`context-specialist`**: Manages context retrieval via Context7, information synthesis, and memory systems.
+  - *Location*: `plugins/agent-core/agents/context-specialist.md`
+- **`orchestrator`**: Coordinates MCP tool usage across multiple agents and workflows.
+  - *Location*: `plugins/agent-core/agents/orchestrator.md`
+
 This skill documents the integrated MCP servers available across MyClaude plugins.
 
 ## Available MCP Servers
@@ -73,3 +82,8 @@ Examples:
 - `mcp__plugin_serena_serena__find_symbol`
 - `mcp__plugin_github_github__search_issues`
 - `mcp__plugin_context7_context7__query-docs`
+
+## Related Skills
+
+- `agent-orchestration` -- Workflow patterns for coordinating MCP tool usage across agents
+- `llm-application-patterns` -- RAG and prompt engineering patterns that leverage MCP retrieval

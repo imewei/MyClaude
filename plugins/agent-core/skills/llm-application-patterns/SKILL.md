@@ -5,6 +5,15 @@ description: Design and build robust LLM-powered applications. Covers advanced p
 
 # LLM Application Patterns
 
+## Expert Agent
+
+For advanced prompt engineering, RAG design, and LLM evaluation, delegate to:
+
+- **`reasoning-engine`**: Masters Chain-of-Thought, few-shot prompting, constitutional AI principles, and prompt optimization.
+  - *Location*: `plugins/agent-core/agents/reasoning-engine.md`
+- **`context-specialist`**: Architects RAG retrieval pipelines, vector database queries, and context injection strategies.
+  - *Location*: `plugins/agent-core/agents/context-specialist.md`
+
 Expert guide for building reliable, performant, and scalable applications on top of Large Language Models.
 
 ## 1. Advanced Prompt Engineering
@@ -33,3 +42,9 @@ Expert guide for building reliable, performant, and scalable applications on top
 - [ ] **Safety & Alignment**: Are there guardrails to prevent harmful or off-topic outputs?
 - [ ] **Observability**: Are latency, tokens, and success rates being monitored?
 - [ ] **Validation**: Is the output being validated against a schema or secondary model?
+
+## Related Skills
+
+- `reasoning-frameworks` -- Structured reasoning methods (CoT, First Principles) used in advanced prompting
+- `mcp-integration` -- Context7 and tool integration for RAG retrieval pipelines
+- `reflection-framework` -- Meta-cognitive evaluation of LLM output quality and reasoning

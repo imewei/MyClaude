@@ -7,6 +7,13 @@ description: Coordinate multiple AI agents through workflow orchestration, task 
 
 # Multi-Agent Coordination
 
+## Expert Agent
+
+For multi-agent workflow orchestration and distributed coordination, delegate to:
+
+- **`orchestrator`**: Designs execution DAGs, manages agent teams, handles inter-agent communication and fault recovery.
+  - *Location*: `plugins/agent-core/agents/orchestrator.md`
+
 Production-ready patterns for multi-agent orchestration and workflow management.
 
 ---
@@ -297,5 +304,10 @@ class Agent:
 - [ ] Support broadcast for status updates
 
 ---
+
+## Related Skills
+
+- `agent-orchestration` -- High-level coordination patterns and communication protocols
+- `agent-performance-optimization` -- Metrics, caching, and load balancing for production agent systems
 
 **Version**: 1.0.5

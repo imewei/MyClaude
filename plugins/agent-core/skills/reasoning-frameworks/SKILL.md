@@ -7,6 +7,13 @@ description: Unified reasoning skill combining structured reasoning frameworks, 
 
 # Reasoning Frameworks
 
+## Expert Agent
+
+For structured reasoning, cognitive frameworks, and meta-cognitive analysis, delegate to:
+
+- **`reasoning-engine`**: Applies First Principles, Root Cause Analysis, Tree-of-Thought, and systematic problem decomposition with confidence scoring.
+  - *Location*: `plugins/agent-core/agents/reasoning-engine.md`
+
 Unified guide for maximizing cognitive performance through systematic reasoning, structured thought processing, meta-cognitive reflection, and self-correction.
 
 ---
@@ -232,3 +239,8 @@ Confidence: +0.10 (0.75 -> 0.85)
 - [ ] Confidence levels assigned honestly
 - [ ] Contradictions checked and resolved
 - [ ] Conclusions synthesized with rationale
+
+## Related Skills
+
+- `reflection-framework` -- Meta-cognitive reflection and bias detection that extends reasoning analysis
+- `llm-application-patterns` -- Prompt engineering patterns (CoT, few-shot) that apply reasoning frameworks

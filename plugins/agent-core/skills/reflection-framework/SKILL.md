@@ -7,6 +7,13 @@ description: Unified reflection framework combining meta-cognitive analysis (rea
 
 # Reflection Framework
 
+## Expert Agent
+
+For meta-cognitive reflection, bias detection, and reasoning quality assessment, delegate to:
+
+- **`reasoning-engine`**: Performs self-critique, cognitive bias detection, reasoning chain verification, and constitutional AI evaluation.
+  - *Location*: `plugins/agent-core/agents/reasoning-engine.md`
+
 Unified framework for meta-cognitive reflection and multi-dimensional analysis, integrating reasoning evaluation, bias detection, and strategic assessment.
 
 ---
@@ -328,5 +335,10 @@ Reflect → Insights → Actions → Execute → Reflect
 - [ ] Meta-reflection on process quality
 
 ---
+
+## Related Skills
+
+- `reasoning-frameworks` -- Structured reasoning methods that reflection evaluates and improves
+- `llm-application-patterns` -- LLM evaluation techniques that complement meta-cognitive assessment
 
 **Version**: 2.2.1

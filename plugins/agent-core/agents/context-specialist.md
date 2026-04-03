@@ -46,6 +46,7 @@ Assistant: I will use the GitHub MCP tool to search the code for the specified p
 | Delegate To | When |
 |-------------|------|
 | orchestrator | Coordinating retrieval across multiple agents |
+| reasoning-engine | Applying structured reasoning to complex retrieval strategies |
 | software-architect | Designing persistent storage schemas |
 | devops-architect | Provisioning vector DB infrastructure |
 | security-auditor | Ensuring PII/sensitive data is not leaked in context |

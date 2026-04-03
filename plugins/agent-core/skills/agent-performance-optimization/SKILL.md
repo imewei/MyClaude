@@ -7,6 +7,13 @@ description: Optimize AI agent performance through monitoring, metrics collectio
 
 # Agent Performance Optimization
 
+## Expert Agent
+
+For agent performance tuning and production scaling, delegate to:
+
+- **`orchestrator`**: Manages agent load balancing, monitors execution metrics, and scales multi-agent systems for production throughput.
+  - *Location*: `plugins/agent-core/agents/orchestrator.md`
+
 Production-ready patterns for monitoring, caching, and load balancing agent systems.
 
 ---
@@ -316,5 +323,10 @@ lb.release(instance)
 - [ ] Retry logic with exponential backoff
 
 ---
+
+## Related Skills
+
+- `agent-orchestration` -- Coordination patterns and team assembly strategies that performance tuning supports
+- `multi-agent-coordination` -- DAG workflow engines and messaging systems that generate performance metrics
 
 **Version**: 1.0.5
