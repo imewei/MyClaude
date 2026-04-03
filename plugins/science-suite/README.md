@@ -1,6 +1,6 @@
 # Science Suite
 
-Domain-specific scientific computing suite for high-performance computing, specialized physics/chemistry simulations, and data science workflows. Agents primarily collaborate within the suite with only 2 outward delegation edges. Optimized for Claude Opus 4.6.
+Domain-specific scientific computing suite for high-performance computing, Julia ML/DL/HPC, specialized physics/chemistry simulations, and data science workflows. Agents primarily collaborate within the suite with only 2 outward delegation edges. Optimized for Claude Opus 4.6.
 
 ## Features
 
@@ -12,6 +12,7 @@ Domain-specific scientific computing suite for high-performance computing, speci
 - **Research**: Systematic literature reviews, evidence synthesis, and publication-quality visualization.
 - **Deep Learning**: Architecture design (Transformers, CNNs), training diagnostics, and neural network mathematics.
 - **AI Engineering**: RAG systems, agentic workflows, and LLM application architecture.
+- **Julia ML/DL/HPC**: Neural networks (Lux.jl/Flux.jl), ML pipelines (MLJ.jl), GPU kernels (CUDA.jl), and distributed HPC (MPI.jl).
 
 ## Agents
 
@@ -19,6 +20,7 @@ Domain-specific scientific computing suite for high-performance computing, speci
 |-------|-------|----------------|
 | `jax-pro` | sonnet | Core JAX, NumPyro, Diffrax, JAX-MD |
 | `julia-pro` | sonnet | Julia, SciML, DifferentialEquations.jl |
+| `julia-ml-hpc` | sonnet | Julia ML, Deep Learning, HPC (Lux.jl, CUDA.jl, MPI.jl) |
 | `ml-expert` | sonnet | Classical ML, MLOps, data engineering |
 | `simulation-expert` | sonnet | HPC, molecular dynamics, multiscale |
 | `statistical-physicist` | opus | Soft matter, non-equilibrium, correlations |
@@ -27,8 +29,9 @@ Domain-specific scientific computing suite for high-performance computing, speci
 | `ai-engineer` | sonnet | RAG, agents, LLM apps |
 | `prompt-engineer` | sonnet | Prompt optimization, safety, evaluation |
 | `neural-network-master` | sonnet | DL architecture, PINNs, theory, diagnostics |
+| `nonlinear-dynamics-expert` | opus | Bifurcation theory, chaos, network dynamics, pattern formation |
 
-## Skills (78)
+## Skills (96)
 
 Organized by domain:
 
@@ -40,6 +43,7 @@ Organized by domain:
 - **Research**: Methodology, evidence synthesis, scientific communication, visualization
 - **Python**: Type-driven design, Rust extensions (PyO3), modern concurrency, packaging
 - **Numerical Methods**: Solvers, parallel computing, GPU acceleration
+- **Julia ML/DL/HPC**: Neural networks, AD backends, ML pipelines, GPU kernels, HPC distributed computing, model deployment, GNNs, reinforcement learning
 
 ## Installation
 
