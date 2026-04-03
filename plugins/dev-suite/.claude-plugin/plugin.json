@@ -67,13 +67,18 @@
     "./commands/workflow-automate.md"
   ],
   "skills": [
+    "./skills/accessibility-testing",
     "./skills/airflow-scientific-workflows",
     "./skills/api-design-principles",
     "./skills/architecture-patterns",
     "./skills/async-python-patterns",
     "./skills/auth-implementation-patterns",
+    "./skills/caching-patterns",
+    "./skills/cloud-provider-patterns",
     "./skills/code-review",
     "./skills/comprehensive-validation",
+    "./skills/containerization-patterns",
+    "./skills/database-patterns",
     "./skills/debugging-toolkit",
     "./skills/deployment-pipeline-design",
     "./skills/distributed-tracing",
@@ -85,8 +90,11 @@
     "./skills/github-actions-templates",
     "./skills/gitlab-ci-patterns",
     "./skills/grafana-dashboards",
+    "./skills/graphql-patterns",
     "./skills/iterative-error-resolution",
+    "./skills/message-queue-patterns",
     "./skills/microservices-patterns",
+    "./skills/mobile-testing-patterns",
     "./skills/modern-javascript-patterns",
     "./skills/modernization-migration",
     "./skills/monorepo-management",
@@ -96,6 +104,7 @@
     "./skills/prometheus-configuration",
     "./skills/python-packaging",
     "./skills/python-performance-optimization",
+    "./skills/search-patterns",
     "./skills/secrets-management",
     "./skills/security-ci-template",
     "./skills/slo-implementation",
@@ -105,6 +114,7 @@
     "./skills/testing-patterns",
     "./skills/typescript-advanced-types",
     "./skills/typescript-project-scaffolding",
-    "./skills/uv-package-manager"
+    "./skills/uv-package-manager",
+    "./skills/websocket-patterns"
   ]
 }
