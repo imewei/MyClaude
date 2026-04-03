@@ -1,13 +1,40 @@
 # Changelog
 
-## v3.0.0 (2026-03-31)
+## v3.0.0 (2026-04-02)
+
+**Julia ML/DL/HPC Expansion**
+
+* Added `julia-ml-hpc` agent (sonnet) for Julia ML, Deep Learning, and HPC.
+  Covers Lux.jl/Flux.jl, MLJ.jl, CUDA.jl, KernelAbstractions.jl, MPI.jl,
+  GraphNeuralNetworks.jl, and ReinforcementLearning.jl.
+* Added 10 new Julia skills: `julia-neural-networks`, `julia-neural-architectures`,
+  `julia-training-diagnostics`, `julia-ad-backends`, `julia-ml-pipelines`,
+  `julia-gpu-kernels`, `julia-hpc-distributed`, `julia-model-deployment`,
+  `julia-graph-neural-networks`, `julia-reinforcement-learning`.
+* Updated 4 existing agents (julia-pro, neural-network-master, ml-expert,
+  simulation-expert) with julia-ml-hpc delegation rows.
+* Added Julia cross-references to 7 existing Python/JAX skills.
+
+**Nonlinear Dynamics Expansion (2026-03-31)**
+
+* Added `nonlinear-dynamics-expert` agent (opus) for bifurcation theory,
+  chaos analysis, network dynamics, and pattern formation.
+* Added 8 nonlinear dynamics skills: bifurcation-analysis, chaos-attractors,
+  pattern-formation, equation-discovery, network-coupled-dynamics, and more.
+
+**Agent-Skill Synergy (100% Coverage)**
+
+* Added Expert Agent pointers to all 142 skills (was 47% → now 100%).
+* Agent-core: 7/7 skills now reference their owning agent with cross-references.
+* Dev-suite: 39/39 skills now mapped to 9 domain agents.
+* Science-suite: 29 orphan skills assigned to correct agents.
 
 **Architecture Reorganization (5 suites -> 3 suites)**
 
 * Merged engineering-suite + infrastructure-suite + quality-suite into a single **dev-suite**.
 * Eliminates 27 cross-suite agent delegation edges — all now intra-suite.
-* New structure: agent-core (3 meta-agents), dev-suite (9 agents, 27 commands, 39 skills), science-suite (10 agents, 78 skills).
-* Total: 22 agents, 33 commands, 124 skills across 3 suites.
+* New structure: agent-core (3 meta-agents), dev-suite (9 agents, 27 commands, 39 skills), science-suite (12 agents, 96 skills).
+* Total: 24 agents, 33 commands, 142 skills across 3 suites.
 
 **Skill Consolidation (131 -> 124 skills)**
 
@@ -30,9 +57,9 @@
 
 **Agent Hardening**
 
-* Added `effort` field (low/medium/high) to all 22 agents.
-* Extended `memory: project` to all 22 agents (was 11).
-* Added explicit `tools` or `disallowedTools` to all 22 agents (was 1).
+* Added `effort` field (low/medium/high) to all 24 agents.
+* Extended `memory: project` to all 24 agents (was 11).
+* Added explicit `tools` or `disallowedTools` to all 24 agents (was 1).
 * Added `background: true` to 5 research-focused agents.
 * Added `isolation: worktree` to app-developer and automation-engineer.
 
