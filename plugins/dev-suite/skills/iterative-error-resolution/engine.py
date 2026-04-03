@@ -43,13 +43,40 @@ class IterationResult:
     success: bool
 
 
+_SAFE_NAME_RE = re.compile(r"^[@a-zA-Z0-9._/-]{1,200}$")
+
+
+def _validate_package_name(name: str) -> str:
+    """Validate a package name extracted from logs before passing to subprocess."""
+    if name.startswith("-"):
+        raise ValueError(f"Refusing package name that starts with '-': {name!r}")
+    if not _SAFE_NAME_RE.match(name):
+        raise ValueError(f"Invalid package name: {name!r}")
+    return name
+
+
+def _validate_gh_arg(value: str, label: str) -> str:
+    """Validate CLI arguments passed to gh subprocess calls."""
+    if not re.match(r"^[a-zA-Z0-9_\-./]+$", value):
+        raise ValueError(f"Invalid {label}: {value!r}")
+    return value
+
+
 class IterativeFixEngine:
-    def __init__(self, repo: str, workflow: str, max_iterations: int = 5):
-        self.repo = repo
-        self.workflow = workflow
+    def __init__(
+        self,
+        repo: str,
+        workflow: str,
+        max_iterations: int = 5,
+        auto_commit: bool = False,
+    ):
+        self.repo = _validate_gh_arg(repo, "repo")
+        self.workflow = _validate_gh_arg(workflow, "workflow")
         self.max_iterations = max_iterations
+        self.auto_commit = auto_commit
         self.knowledge_base = KnowledgeBase()
         self.iteration_history: List[IterationResult] = []
+        self._modified_files: List[str] = []
 
     def run(self, initial_run_id: str) -> bool:
         """
@@ -353,7 +380,12 @@ class IterativeFixEngine:
         if not match:
             return FixResult.NO_FIX_AVAILABLE
 
-        package = match.group(1)
+        try:
+            package = _validate_package_name(match.group(1))
+        except ValueError as e:
+            print(f"Skipping unsafe package name: {e}")
+            return FixResult.NO_FIX_AVAILABLE
+
         print(f"Removing unavailable package: {package}")
 
         try:
@@ -378,15 +410,31 @@ class IterativeFixEngine:
             "sklearn": "scikit-learn",
         }
 
-        package = package_map.get(module, module)
+        raw_package = package_map.get(module, module)
+        try:
+            package = _validate_package_name(raw_package)
+        except ValueError as e:
+            print(f"Skipping unsafe package name: {e}")
+            return FixResult.NO_FIX_AVAILABLE
+
         print(f"Installing missing module: {package}")
 
         try:
             subprocess.run(["pip", "install", package], check=True)
 
-            # Update requirements.txt
-            with open("requirements.txt", "a") as f:
-                f.write(f"\n{package}\n")
+            # Update requirements.txt with dedup check
+            req_path = Path.cwd() / "requirements.txt"
+            existing = set()
+            if req_path.exists():
+                existing = {
+                    line.strip()
+                    for line in req_path.read_text().splitlines()
+                    if line.strip() and not line.startswith("#")
+                }
+            if package not in existing:
+                with open(req_path, "a") as f:
+                    f.write(f"{package}\n")
+                self._modified_files.append(str(req_path))
 
             return FixResult.SUCCESS
         except subprocess.CalledProcessError:
@@ -477,15 +525,30 @@ class IterativeFixEngine:
             return FixResult.FAILED
 
     def commit_fixes(self, fixes: List[str], iteration: int):
-        """Commit all applied fixes."""
-        try:
-            subprocess.run(["git", "add", "."], check=True)
+        """Commit all applied fixes.
 
-            message = f"fix(ci): iteration {iteration} - automated error resolution\n\n"
-            message += "Applied fixes:\n"
-            for fix in fixes:
-                message += f"- {fix}\n"
-            message += "\n🤖 Generated with iterative-error-resolution"
+        Requires --auto-commit to actually commit and push.
+        Otherwise, shows a diff and exits for human review.
+        """
+        message = f"fix(ci): iteration {iteration} - automated error resolution\n\n"
+        message += "Applied fixes:\n"
+        for fix in fixes:
+            message += f"- {fix}\n"
+        message += "\n🤖 Generated with iterative-error-resolution"
+
+        if not self.auto_commit:
+            print("\n[DRY RUN] --auto-commit not set. Showing diff for review:\n")
+            subprocess.run(["git", "diff"], check=False)
+            print(f"\nProposed commit message:\n{message}")
+            print("\nRe-run with --auto-commit to apply and push these changes.")
+            sys.exit(0)
+
+        try:
+            # Stage only tracked modified files, not untracked files
+            subprocess.run(["git", "add", "--update"], check=True)
+            # Also stage any explicitly tracked new files from fixes
+            for path in self._modified_files:
+                subprocess.run(["git", "add", path], check=True)
 
             subprocess.run(["git", "commit", "-m", message], check=True)
             subprocess.run(["git", "push"], check=True)
@@ -769,6 +832,12 @@ Examples:
         default=5,
         help="Maximum fix iterations (default: 5)",
     )
+    parser.add_argument(
+        "--auto-commit",
+        action="store_true",
+        default=False,
+        help="Actually commit and push fixes (default: dry-run showing diff)",
+    )
 
     args = parser.parse_args()
 
@@ -787,7 +856,10 @@ Examples:
     print("=" * 60 + "\n")
 
     engine = IterativeFixEngine(
-        repo=args.repo, workflow=args.workflow, max_iterations=args.max_iterations
+        repo=args.repo,
+        workflow=args.workflow,
+        max_iterations=args.max_iterations,
+        auto_commit=args.auto_commit,
     )
 
     success = engine.run(args.run_id)
