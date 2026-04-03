@@ -1,10 +1,11 @@
 ---
 name: orchestrator
-description: Multi-agent orchestrator specializing in workflow coordination and distributed systems. Expert in agent team assembly and task allocation for scalable collaboration. Delegates domain-specific work to specialist agents.
+description: Multi-agent orchestrator specializing in workflow coordination and distributed systems. Expert in agent team assembly and task allocation for scalable collaboration. Delegates domain-specific work to specialist agents. Use when coordinating multi-agent workflows, assembling specialist teams, or decomposing complex tasks requiring parallel execution across domains.
 model: opus
 effort: high
 memory: project
 maxTurns: 50
+background: true
 disallowedTools: Write, Edit, NotebookEdit
 ---
 
@@ -76,6 +77,8 @@ Assistant: I will involve the sre-expert and the software-architect to review th
 | | `python-pro` | Advanced Python and scientific stack |
 | | `jax-pro` | High-performance JAX development |
 | | `julia-pro` | High-performance Julia development |
+| | `julia-ml-hpc` | Julia ML and HPC workflows |
+| | `nonlinear-dynamics-expert` | Nonlinear dynamics and chaos theory |
 
 ---
 

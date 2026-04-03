@@ -1,11 +1,12 @@
 ---
 name: prompt-engineer
-description: Expert prompt engineer specializing in LLM Optimization & Prompt Design. Masters chain-of-thought, constitutional AI, and production prompt strategies. Use when building AI features, improving agent performance, or crafting system prompts.
+description: Expert prompt engineer specializing in LLM Optimization & Prompt Design. Use when optimizing LLM prompts, designing system prompts, implementing chain-of-thought patterns, or evaluating prompt effectiveness. Masters chain-of-thought, constitutional AI, and production prompt strategies.
 model: sonnet
 effort: high
 memory: project
 maxTurns: 40
 tools: Read, Grep, Glob, WebSearch, WebFetch
+background: true
 ---
 
 # Prompt Engineer

@@ -1,11 +1,12 @@
 ---
 name: context-specialist
-description: Elite AI context engineering specialist mastering dynamic context management, vector databases, knowledge graphs, and intelligent memory systems. Orchestrates context across multi-agent workflows, enterprise AI systems, and long-running projects.
+description: Elite AI context engineering specialist mastering dynamic context management, vector databases, knowledge graphs, and intelligent memory systems. Orchestrates context across multi-agent workflows, enterprise AI systems, and long-running projects. Use when managing context windows, building knowledge bases, implementing vector search, or optimizing memory in multi-agent workflows.
 model: sonnet
-effort: medium
+effort: high
 memory: project
-maxTurns: 25
-tools: Read, Grep, Glob, Bash, Write, Edit
+maxTurns: 35
+background: true
+tools: Read, Grep, Glob, Bash
 ---
 
 # Context Specialist

@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-MyClaude is a Claude Code plugin marketplace: 3 plugin suites containing 24 agents, 33 commands, and 142 skills. It is **not** a runnable application — it's a collection of markdown-based plugin definitions with Python tooling for validation and maintenance.
+MyClaude is a Claude Code plugin marketplace: 3 plugin suites containing 24 agents, 36 commands, and 168 skills. It is **not** a runnable application — it's a collection of markdown-based plugin definitions with Python tooling for validation and maintenance.
 
 ## Commands
 
@@ -63,9 +63,9 @@ plugins/<suite-name>/
 Suite breakdown:
 | Suite | Agents | Commands | Skills | Hooks | Focus |
 |-------|--------|----------|--------|-------|-------|
-| agent-core | 3 | 6 | 7 | 8 events | Reasoning, orchestration, context engineering |
-| dev-suite | 9 | 27 | 39 | 2 events | Full SDLC: architecture, implementation, CI/CD, testing, debugging |
-| science-suite | 12 | 0 | 96 | 0 | JAX, Julia, physics, ML/DL/HPC, nonlinear dynamics, research |
+| agent-core | 3 | 6 | 13 | 8 events | Reasoning, orchestration, context engineering, safety |
+| dev-suite | 9 | 27 | 49 | 2 events | Full SDLC: architecture, implementation, CI/CD, testing, debugging |
+| science-suite | 12 | 3 | 106 | 0 | JAX, Julia, physics, ML/DL/HPC, nonlinear dynamics, research |
 
 ### Component File Formats
 
@@ -91,8 +91,9 @@ The manifest uses **file-path references** (not inline objects) to point to agen
 ## Key Conventions
 
 - **Version sync**: All `plugin.json` files must use the same version string. Version lives only in manifests, not in agent/command/skill frontmatter.
-- **Skill budget**: All 142 skills must fit within 2% of the context window. Run `context_budget_checker.py` after adding skills.
-- **Model tiers**: Agents use `opus` (deep reasoning: orchestrator, reasoning-engine, debugger-pro, software-architect, research-expert, statistical-physicist, nonlinear-dynamics-expert), `sonnet` (standard tasks), or `haiku` (fast/simple: documentation-expert).
+- **Skill budget**: All skills must fit within 2% of the context window. Run `context_budget_checker.py` after adding skills.
+- **Skill size governance**: Skills exceeding 3,000 bytes require review before merge. Skills at >80% of their context budget are flagged as at-risk. Skills at >90% should be refactored (split content to dedicated skills). Never add content to a frozen skill — create a new skill instead.
+- **Model tiers**: Agents use `opus` (deep reasoning: orchestrator, reasoning-engine, debugger-pro, software-architect, research-expert, statistical-physicist, nonlinear-dynamics-expert, neural-network-master, simulation-expert), `sonnet` (standard tasks), or `haiku` (fast/simple: documentation-expert).
 - **No wildcard imports**: `from module import *` is prohibited.
 - **Python 3.13+**: Required by `pyproject.toml`.
 - **uv only**: Use `uv` for all dependency management. Never install to global/user site-packages.

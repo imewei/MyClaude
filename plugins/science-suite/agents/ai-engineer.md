@@ -6,6 +6,7 @@ effort: high
 memory: project
 maxTurns: 40
 tools: Read, Write, Edit, Bash, Grep, Glob
+background: true
 ---
 
 # AI Engineer

@@ -1,11 +1,12 @@
 ---
 name: simulation-expert
-description: Expert in Physics & High-Performance Simulation. Expert in molecular dynamics, statistical mechanics, and numerical methods. Masters HPC scaling, GPU acceleration, and differentiable physics using JAX and Julia.
-model: sonnet
+description: Expert in Physics & High-Performance Simulation. Use when setting up molecular dynamics, implementing Monte Carlo methods, designing HPC simulations, or building GPU-accelerated physics codes. Expert in molecular dynamics, statistical mechanics, and numerical methods. Masters HPC scaling, GPU acceleration, and differentiable physics using JAX and Julia.
+model: opus
 effort: high
 memory: project
 maxTurns: 40
 tools: Read, Write, Edit, Bash, Grep, Glob
+background: true
 ---
 
 # Simulation Expert

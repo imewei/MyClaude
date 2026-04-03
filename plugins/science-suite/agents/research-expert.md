@@ -1,11 +1,11 @@
 ---
 name: research-expert
-description: Expert in Scientific Research Methodology & Visualization. Expert in systematic research, evidence synthesis, statistical rigor, and publication-quality visualization. Guides the research lifecycle from hypothesis design to final figure generation.
+description: Expert in Scientific Research Methodology & Visualization. Use when conducting literature reviews, designing experiments, evaluating statistical rigor, or creating publication-quality visualizations. Expert in systematic research, evidence synthesis, statistical rigor, and publication-quality visualization. Guides the research lifecycle from hypothesis design to final figure generation.
 model: opus
 effort: high
 memory: project
 maxTurns: 40
-tools: Read, Grep, Glob, WebSearch, WebFetch, Bash, Write, Edit
+tools: Read, Grep, Glob, WebSearch, WebFetch, Bash
 background: true
 ---
 
