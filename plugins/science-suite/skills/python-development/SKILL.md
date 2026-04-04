@@ -16,19 +16,19 @@ For all advanced Python development, architecture, and optimization tasks, deleg
 
 ## Core Skills
 
-### 1. [Type-Driven Design](./type-driven-design/SKILL.md)
+### 1. [Type-Driven Design](../type-driven-design/SKILL.md)
 Structural typing with Protocols, Generics for reusability, and strict static analysis with Pyright/Mypy.
 
-### 2. [Rust Extensions](./rust-extensions/SKILL.md)
+### 2. [Rust Extensions](../rust-extensions/SKILL.md)
 Writing performance-critical bottlenecks in Rust using PyO3 and Maturin for 100x speedups.
 
-### 3. [Modern Concurrency](./modern-concurrency/SKILL.md)
+### 3. [Modern Concurrency](../modern-concurrency/SKILL.md)
 Structured concurrency using `asyncio.TaskGroup` (Python 3.11+) for reliable task management and error propagation.
 
-### 4. [Robust Testing](./robust-testing/SKILL.md)
+### 4. [Robust Testing](../robust-testing/SKILL.md)
 Property-based testing with Hypothesis and advanced Pytest patterns to ensure algorithmic correctness.
 
-### 5. [Modern Packaging](./python-packaging/SKILL.md)
+### 5. [Modern Packaging](../python-packaging-advanced/SKILL.md)
 Using `uv` for blazing-fast dependency management, workspaces (monorepos), and reproducible environments.
 
 ## The Python Pro Mindset

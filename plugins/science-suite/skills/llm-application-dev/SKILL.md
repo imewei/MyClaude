@@ -1,6 +1,6 @@
 ---
 name: llm-application-dev
-description: Build production-ready LLM applications, RAG systems, and AI agents. Covers prompt engineering, LangChain/LangGraph architecture, and evaluation. Use when building RAG pipelines, designing agentic workflows, or implementing LLM evaluation frameworks.
+description: Production implementation of LLM applications using LangChain/LangGraph with code examples for RAG pipelines, agentic workflows, cost optimization, and deployment. Use when writing LLM application code, implementing retry logic, or deploying with monitoring. For architectural design patterns, see agent-core llm-application-patterns.
 ---
 
 # LLM Application Development
@@ -18,16 +18,16 @@ For LLM application development, delegate to:
 
 ## Core Skills
 
-### [RAG Implementation](./rag-implementation/SKILL.md)
+### [RAG Implementation](../rag-implementation/SKILL.md)
 Retrieval-Augmented Generation architectures and vector database integration.
 
-### [Prompt Engineering Patterns](./prompt-engineering-patterns/SKILL.md)
-Advanced prompting techniques including Chain-of-Thought and few-shot learning.
+### Prompt Engineering Patterns (agent-core)
+Advanced prompting techniques including Chain-of-Thought and few-shot learning. See `plugins/agent-core/skills/prompt-engineering-patterns/SKILL.md`.
 
-### [LangChain Architecture](./langchain-architecture/SKILL.md)
+### [LangChain Architecture](../langchain-architecture/SKILL.md)
 Building chains, agents, and custom tools with LangChain.
 
-### [LLM Evaluation](./llm-evaluation/SKILL.md)
+### [LLM Evaluation](../llm-evaluation/SKILL.md)
 Evaluating model performance, hallucination rates, and answer quality.
 
 ## Application Patterns

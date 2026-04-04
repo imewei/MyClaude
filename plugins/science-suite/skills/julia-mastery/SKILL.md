@@ -17,73 +17,73 @@ For complex Julia programming, SciML workflows, and performance optimization, de
 
 ## Core Skills
 
-### [Core Julia Patterns](./core-julia-patterns/SKILL.md)
+### [Core Julia Patterns](../core-julia-patterns/SKILL.md)
 Multiple dispatch, type stability, and functional programming.
 
-### [SciML Ecosystem](./sciml-ecosystem/SKILL.md)
+### [SciML Ecosystem](../sciml-ecosystem/SKILL.md)
 Unified framework for scientific machine learning and modeling.
 
-### [Differential Equations](./differential-equations/SKILL.md)
+### [Differential Equations](../differential-equations/SKILL.md)
 High-performance ODE, PDE, SDE, and DAE solvers.
 
-### [ModelingToolkit](./modeling-toolkit/SKILL.md)
+### [ModelingToolkit](../modeling-toolkit/SKILL.md)
 Symbolic-numeric modeling and acausal system design.
 
-### [Neural PDE](./neural-pde/SKILL.md)
+### [Neural PDE](../neural-pde/SKILL.md)
 Physics-informed neural networks (PINNs) in Julia.
 
-### [Turing Model Design](./turing-model-design/SKILL.md)
+### [Turing Model Design](../turing-model-design/SKILL.md)
 Bayesian inference and probabilistic programming.
 
-### [Performance Tuning](./performance-tuning/SKILL.md)
+### [Performance Tuning](../performance-tuning/SKILL.md)
 Memory optimization, type stability, and benchmarking.
 
-### [Package Development](./package-development-workflow/SKILL.md)
+### [Package Development](../package-development-workflow/SKILL.md)
 Scaffolding, testing, and CI/CD for Julia packages.
 
-### [Variational Inference Patterns](./variational-inference-patterns/SKILL.md)
+### [Variational Inference Patterns](../variational-inference-patterns/SKILL.md)
 ADVI and approximate inference with Turing.jl.
 
-### [Optimization Patterns](./optimization-patterns/SKILL.md)
+### [Optimization Patterns](../optimization-patterns/SKILL.md)
 Non-linear optimization and parameter estimation with Optimization.jl.
 
-### [Jump Optimization](./jump-optimization/SKILL.md)
+### [Jump Optimization](../jump-optimization/SKILL.md)
 Mathematical programming (LP, QP, MIP) with JuMP.jl.
 
-### [MCMC Diagnostics](./mcmc-diagnostics/SKILL.md)
+### [MCMC Diagnostics](../mcmc-diagnostics/SKILL.md)
 Convergence checking and chain analysis.
 
-### [Testing Patterns](./testing-patterns/SKILL.md)
+### [Julia Testing Patterns](../julia-testing-patterns/SKILL.md)
 Robust testing strategies with ReTestItems.jl and Aqua.jl.
 
-### [Package Management](./package-management/SKILL.md)
+### [Package Management](../package-management/SKILL.md)
 Environment management and Pkg.jl workflows.
 
-### [Catalyst Reactions](./catalyst-reactions/SKILL.md)
+### [Catalyst Reactions](../catalyst-reactions/SKILL.md)
 Chemical reaction network modeling.
 
-### [Visualization Patterns](./visualization-patterns/SKILL.md)
+### [Visualization Patterns](../visualization-patterns/SKILL.md)
 Data visualization with Makie.jl and Plots.jl.
 
-### [Web Development](./web-development-julia/SKILL.md)
+### [Web Development](../web-development-julia/SKILL.md)
 Building scientific web services with Genie.jl/Oxygen.jl.
 
-### [Modern SciML Stack](./sciml-modern-stack/SKILL.md)
+### [Modern SciML Stack](../sciml-modern-stack/SKILL.md)
 Lux.jl, Universal Differential Equations (UDEs), SciMLSensitivity.jl, NeuralPDE.jl v5+.
 
-### [Nonlinear Dynamics](./nonlinear-dynamics/SKILL.md)
+### [Nonlinear Dynamics](../nonlinear-dynamics/SKILL.md)
 Bifurcation analysis, chaos, network dynamics, pattern formation, equation discovery.
 
-### [Interop Patterns](./interop-patterns/SKILL.md)
+### [Interop Patterns](../interop-patterns/SKILL.md)
 Calling Python and R from Julia.
 
-### [CI/CD Patterns](./ci-cd-patterns/SKILL.md)
+### [CI/CD Patterns](../ci-cd-patterns/SKILL.md)
 GitHub Actions for Julia packages.
 
-### [Compiler Patterns](./compiler-patterns/SKILL.md)
+### [Compiler Patterns](../compiler-patterns/SKILL.md)
 PackageCompiler.jl and system images.
 
-### [Parallel Computing](./parallel-computing/SKILL.md)
+### [Parallel Computing](../parallel-computing/SKILL.md)
 Multi-threading and distributed computing patterns.
 
 ## 1. Multiple Dispatch & Type System

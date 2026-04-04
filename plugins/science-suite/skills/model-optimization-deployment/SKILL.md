@@ -2,7 +2,7 @@
 name: model-optimization-deployment
 maturity: "5-Expert"
 specialization: Neural Network Optimization
-description: Optimize and deploy neural networks with quantization, pruning, knowledge distillation, and production serving. Use when compressing models, converting between frameworks (ONNX, TFLite), or setting up TorchServe/Triton serving infrastructure.
+description: Neural network optimization techniques including quantization (INT8/FP16), pruning, knowledge distillation, and framework conversion (ONNX, TFLite, TensorRT). Use when compressing models for edge/mobile deployment or maximizing inference throughput. For serving infrastructure setup (APIs, Docker, K8s, cloud), see model-deployment-serving.
 ---
 
 # Model Optimization & Deployment

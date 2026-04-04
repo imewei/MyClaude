@@ -24,22 +24,22 @@ For deep learning tasks, delegate to the specialized experts:
 
 ## Core Skills
 
-### [Neural Architecture Patterns](./neural-architecture-patterns/SKILL.md)
+### [Neural Architecture Patterns](../neural-architecture-patterns/SKILL.md)
 Design patterns for Transformers, CNNs, ViTs, and hybrid architectures.
 
-### [Neural Network Mathematics](./neural-network-mathematics/SKILL.md)
+### [Neural Network Mathematics](../neural-network-mathematics/SKILL.md)
 Foundational math, calculus, optimization theory, and information theory.
 
-### [Training Diagnostics](./training-diagnostics/SKILL.md)
+### [Training Diagnostics](../training-diagnostics/SKILL.md)
 Debugging vanishing gradients, loss instability, dead ReLUs, and convergence issues.
 
-### [Model Optimization](./model-optimization-deployment/SKILL.md)
+### [Model Optimization](../model-optimization-deployment/SKILL.md)
 Quantization, pruning, knowledge distillation, and efficient inference.
 
-### [Research Paper Implementation](./research-paper-implementation/SKILL.md)
+### [Research Paper Implementation](../research-paper-implementation/SKILL.md)
 Translating academic papers into working code in JAX or PyTorch.
 
-### [Deep Learning Experimentation](./deep-learning-experimentation/SKILL.md)
+### [Deep Learning Experimentation](../deep-learning-experimentation/SKILL.md)
 Systematic workflows for training, ablation, and hyperparameter tuning.
 
 ## Frameworks

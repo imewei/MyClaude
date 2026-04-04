@@ -17,28 +17,28 @@ For complex statistical mechanics problems, active matter simulations, and theor
 
 ## Core Skills
 
-### [Stochastic Dynamics](./stochastic-dynamics/SKILL.md)
+### [Stochastic Dynamics](../stochastic-dynamics/SKILL.md)
 Langevin equations, Fokker-Planck modeling, and noise-driven systems.
 
-### [Non-Equilibrium Theory](./non-equilibrium-theory/SKILL.md)
+### [Non-Equilibrium Theory](../non-equilibrium-theory/SKILL.md)
 Fluctuation theorems, entropy production, and driven systems.
 
-### [Active Matter](./active-matter/SKILL.md)
+### [Active Matter](../active-matter/SKILL.md)
 Self-propelled particles, MIPS, and collective behavior.
 
-### [Correlation Analysis](./data-analysis/SKILL.md)
+### [Correlation Analysis](../data-analysis/SKILL.md)
 FFT-based analysis, structure factors, and dynamic heterogeneity.
 
-### [Correlation Math Foundations](./correlation-math-foundations/SKILL.md)
+### [Correlation Math Foundations](../correlation-math-foundations/SKILL.md)
 Mathematical basis for two-point and higher-order correlation functions.
 
-### [Correlation Physical Systems](./correlation-physical-systems/SKILL.md)
+### [Correlation Physical Systems](../correlation-physical-systems/SKILL.md)
 S(q), g(r), and χ₄(t) across different physical states.
 
-### [Correlation Computational Methods](./correlation-computational-methods/SKILL.md)
+### [Correlation Computational Methods](../correlation-computational-methods/SKILL.md)
 O(N log N) algorithms and multi-tau implementation.
 
-### [Correlation Experimental Data](./correlation-experimental-data/SKILL.md)
+### [Correlation Experimental Data](../correlation-experimental-data/SKILL.md)
 Extracting physical parameters from DLS, SAXS, and microscopy.
 
 ## 1. Equilibrium Statistical Mechanics

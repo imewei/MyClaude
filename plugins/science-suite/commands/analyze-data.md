@@ -1,6 +1,6 @@
 ---
 name: analyze-data
-description: Comprehensive data analysis workflow with statistical tests, visualization, and reproducible reporting
+description: Interactive workflow to analyze data files with statistical tests, visualization, and reproducible reporting
 argument-hint: "[data file or description]"
 ---
 

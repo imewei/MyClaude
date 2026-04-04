@@ -1,6 +1,6 @@
 ---
 name: model-deployment-serving
-description: Deploy ML models with FastAPI, TorchServe, BentoML, Docker, Kubernetes, and cloud platforms. Implement monitoring, A/B testing, and drift detection. Use when building model serving APIs, containerizing models, or setting up production ML infrastructure.
+description: Infrastructure patterns for ML model serving including FastAPI/TorchServe/BentoML APIs, Docker/Kubernetes deployment, cloud platforms (SageMaker, Vertex AI), and production monitoring (drift detection, A/B testing). Use when containerizing models or setting up serving infrastructure. For model compression and optimization before deployment, see model-optimization-deployment.
 ---
 
 # Model Deployment and Serving

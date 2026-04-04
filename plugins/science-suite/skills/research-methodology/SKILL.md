@@ -17,13 +17,13 @@ For systematic reviews, rigorous experimental design, and publication-quality re
 
 ## Core Skills
 
-### [Evidence Synthesis](./evidence-synthesis/SKILL.md)
+### [Evidence Synthesis](../evidence-synthesis/SKILL.md)
 Systematic reviews, meta-analyses, and GRADE evidence evaluation.
 
-### [Scientific Communication](./scientific-communication/SKILL.md)
+### [Scientific Communication](../scientific-communication/SKILL.md)
 IMRaD structuring, technical writing principles, and reporting standards.
 
-### [Research Quality Assessment](./research-quality-assessment/SKILL.md)
+### [Research Quality Assessment](../research-quality-assessment/SKILL.md)
 Evaluating rigor, reproducibility, and statistical validity.
 
 ## 1. Experimental Design

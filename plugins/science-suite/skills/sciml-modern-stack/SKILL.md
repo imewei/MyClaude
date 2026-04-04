@@ -330,39 +330,7 @@ y, st_new = model(x, ps, st)
 
 ## NeuralPDE.jl v5+
 
-Physics-informed neural networks (PINNs) with ModelingToolkit symbolic PDE definitions.
-
-```julia
-using NeuralPDE, ModelingToolkit, Lux, DomainSets
-import ModelingToolkit: Interval
-
-@parameters t x
-@variables u(..)
-Dt = Differential(t)
-Dx = Differential(x)
-Dxx = Differential(x)^2
-
-# Heat equation: du/dt = α * d²u/dx²
-α = 0.1
-eq = Dt(u(t, x)) ~ α * Dxx(u(t, x))
-
-# Boundary and initial conditions
-bcs = [
-    u(0, x) ~ sin(π * x),          # IC
-    u(t, 0) ~ 0.0,                  # BC left
-    u(t, 1) ~ 0.0                   # BC right
-]
-
-domains = [t ∈ Interval(0.0, 1.0), x ∈ Interval(0.0, 1.0)]
-
-# Neural network discretization
-chain = Chain(Dense(2 => 32, tanh), Dense(32 => 32, tanh), Dense(32 => 1))
-discretization = PhysicsInformedNN(chain, QuadratureTraining())
-
-@named pde_system = PDESystem(eq, bcs, domains, [t, x], [u(t, x)])
-prob = discretize(pde_system, discretization)
-sol = solve(prob, OptimizationOptimisers.Adam(1e-3); maxiters=5000)
-```
+For physics-informed neural networks (PINNs) with ModelingToolkit, see the dedicated `neural-pde` skill: [`../neural-pde/SKILL.md`](../neural-pde/SKILL.md).
 
 ---
 

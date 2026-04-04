@@ -17,24 +17,24 @@ For complex nonlinear dynamics problems requiring deep domain expertise, delegat
 
 ## Core Skills
 
-### [Bifurcation Analysis](./bifurcation-analysis/SKILL.md)
+### [Bifurcation Analysis](../bifurcation-analysis/SKILL.md)
 Parameter continuation, codimension-1/2 bifurcations, and stability diagrams. Primary ecosystem: Julia (BifurcationKit.jl) with JAX vmap for parameter sweeps.
 
-### [Chaos & Attractors](./chaos-attractors/SKILL.md)
+### [Chaos & Attractors](../chaos-attractors/SKILL.md)
 Lyapunov exponents, attractor reconstruction, fractal dimensions, and ergodic measures. Primary ecosystem: Julia (DynamicalSystems.jl) with JAX for parallel Lyapunov computation.
 
-### [Network-Coupled Dynamics](./network-coupled-dynamics/SKILL.md)
+### [Network-Coupled Dynamics](../network-coupled-dynamics/SKILL.md)
 Coupled oscillators, synchronization, master stability function, and chimera states. Primary ecosystem: Julia for small networks (<1K nodes), JAX for large-scale GPU-accelerated networks (>1K nodes).
 
-### [Pattern Formation](./pattern-formation/SKILL.md)
+### [Pattern Formation](../pattern-formation/SKILL.md)
 Turing patterns, reaction-diffusion systems, spatiotemporal chaos, and amplitude equations. Primary ecosystem: Julia for symbolic PDE analysis, JAX for GPU-accelerated spatial simulations.
 
-### [Equation Discovery](./equation-discovery/SKILL.md)
+### [Equation Discovery](../equation-discovery/SKILL.md)
 SINDy, symbolic regression, neural ODEs, and data-driven model identification. Primary ecosystem: Julia (DataDrivenDiffEq.jl) and Python (PySINDy).
 
 ## Related Skills
 
-### [JAX-Julia Interop](./jax-julia-interop/SKILL.md)
+### [JAX-Julia Interop](../jax-julia-interop/SKILL.md)
 Cross-language workflows for hybrid analysis pipelines. Use when a problem benefits from both Julia's symbolic tools and JAX's GPU acceleration.
 
 ## Routing Decision Tree

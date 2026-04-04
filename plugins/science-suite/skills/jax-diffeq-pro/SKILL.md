@@ -1,6 +1,6 @@
 ---
 name: jax-diffeq-pro
-description: This skill should be used when the user asks to "solve ODEs in JAX", "use Diffrax", "implement stiff solvers", "choose implicit vs explicit solvers", "backpropagate through ODEs", "use adjoint methods", "implement RecursiveCheckpointAdjoint", "solve SDEs", "use VirtualBrownianTree", "handle ODE events", "find steady states with Optimistix", "use Lineax for linear solves", or needs expert guidance on differentiable physics, neural ODEs, rheology simulations, or soft matter dynamics.
+description: This skill should be used when the user asks to "solve ODEs in JAX", "use Diffrax", "implement stiff solvers", "choose implicit vs explicit solvers", "backpropagate through ODEs", "use adjoint methods", "implement RecursiveCheckpointAdjoint", "solve SDEs", "use VirtualBrownianTree", "handle ODE events", "find steady states with Optimistix", "use Lineax for linear solves", or needs expert guidance on differentiable physics, neural ODEs, rheology simulations, or soft matter dynamics. Use when solving ODEs in JAX, using Diffrax, implementing stiff solvers, or backpropagating through ODEs with adjoint methods.
 ---
 
 # JAX DiffEq Pro: The Differentiable Physicist

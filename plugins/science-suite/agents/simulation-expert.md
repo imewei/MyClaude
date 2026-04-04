@@ -67,8 +67,8 @@ Differentiable physics task - triggers simulation-expert.
 | ml-expert | Integrating ML force fields or surrogates |
 | research-expert | Literature review, experimental validation |
 | python-pro | Low-level kernel optimization (C++/CUDA via Python extensions) |
-| ml-expert | Cloud HPC cluster provisioning |
-| julia-ml-hpc | Julia GPU kernels (CUDA.jl) and HPC distributed computing (MPI.jl) | "Write CUDA kernel in Julia", "Scale to SLURM cluster" |
+| devops-architect (dev-suite) | Cloud HPC cluster provisioning |
+| julia-ml-hpc | Julia GPU kernels (CUDA.jl) and HPC distributed computing (MPI.jl) |
 
 ---
 
