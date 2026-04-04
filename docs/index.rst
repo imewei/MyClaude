@@ -1,8 +1,8 @@
 Claude Code Plugin Marketplace
 ==============================
 
-Welcome to the documentation for the Claude Code Plugin Marketplace v3.0.0.
-This system has been consolidated into 3 focused suites to streamline your development workflow.
+Welcome to the documentation for the Claude Code Plugin Marketplace v3.1.0.
+This system uses a hub-skill architecture across 3 focused suites: 24 agents, 14 registered commands, and 26 hub skills routing to 167 sub-skills.
 
 .. toctree::
    :maxdepth: 2

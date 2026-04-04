@@ -2,6 +2,25 @@
 
 ## v3.1.0 (2026-04-03)
 
+**Hub-Skill Architecture**
+
+* Introduced hub-skill routing: 26 hub skills route to 167 sub-skills via
+  decision trees. Hubs are declared in plugin.json; sub-skills are discovered
+  through hub routing. Eliminates ambiguous flat-list skill matching.
+* agent-core: 3 hubs (agent-systems, reasoning-and-memory, llm-engineering) → 12 sub-skills.
+* dev-suite: 9 hubs (backend-patterns, frontend-and-mobile, architecture-and-infra,
+  testing-and-quality, ci-cd-pipelines, observability-and-sre, python-toolchain,
+  data-and-security, dev-workflows) → 49 sub-skills.
+* science-suite: 14 hubs (nonlinear-dynamics, jax-computing, julia-language,
+  julia-ml-and-dl, sciml-and-diffeq, correlation-analysis, statistical-physics-hub,
+  deep-learning-hub, ml-and-data-science, llm-and-ai, ml-deployment,
+  simulation-and-hpc, research-and-domains, bayesian-inference) → 106 sub-skills.
+* Each hub has: YAML frontmatter, Expert Agent reference, Core Skills with
+  relative links, Routing Decision Tree, and Checklist.
+* 14 registered commands (2 agent-core, 12 dev-suite, 0 science-suite).
+  22 additional commands on disk are skill-invoked, not user-facing.
+* Total: 24 agents, 14 registered commands, 26 hubs → 167 sub-skills (193 total).
+
 **Knowledge Gap Closure (+28 skills, +3 commands)**
 
 * Added 6 agent-core skills: prompt-engineering-patterns, memory-system-patterns,
@@ -17,28 +36,31 @@
 * Added 3 science-suite commands: run-experiment, analyze-data, paper-review.
 * Deduplicated prompt-engineering-patterns (removed science-suite copy,
   migrated resources to agent-core).
-* Total: 24 agents, 36 commands, 169 skills.
 
 **Agent Optimization (24 agents)**
 
 * Added `background: true` to 18 agents for parallel dispatch.
 * Upgraded neural-network-master and simulation-expert to opus model tier.
-* Upgraded context-specialist and automation-engineer effort to high.
+* 9 opus agents: orchestrator, reasoning-engine, software-architect, debugger-pro,
+  research-expert, statistical-physicist, nonlinear-dynamics-expert,
+  neural-network-master, simulation-expert.
 * Right-sized maxTurns on 4 agents.
-* Restricted tools on context-specialist and research-expert to read-only.
-* Added worktree isolation to systems-engineer and python-pro.
 * Added "Use when..." activation triggers to all 24 agent descriptions.
-* Added missing CoT frameworks (6 agents) and Constitutional AI principles (6 agents).
+* Fixed cross-suite delegation annotations (added `(dev-suite)` / `(science-suite)`).
+* Fixed invalid `security-auditor` → `quality-specialist` in context-specialist.
+* Fixed duplicate `ml-expert` row → `devops-architect (dev-suite)` in simulation-expert.
 
-**Skill Quality Improvements (170 skills)**
+**Skill Quality & Integrity**
 
-* Added "Use when..." trigger phrases to all 170 skill descriptions (was 143).
-* Expanded 9 thin skills from <200 words to 400-800 words.
-* Strengthened 27 weak descriptions with proactive trigger language.
-* Added domain-specific checklists to 23 skills that lacked them.
-* All 170 skills now have: trigger phrases, Expert Agent sections, and checklists.
+* All 193 skills have: trigger phrases, Expert Agent sections, and checklists.
+* Fixed 235 broken relative links (`./` → `../`, `.../` → `../`) across 38 files.
+* Zero orphaned skills — all 193 reachable via hub routing.
+* Resolved routing overlaps: ml-and-data-science/ml-deployment/deep-learning-hub
+  triangle disambiguated; error-handling-patterns scoped to Python;
+  iterative-error-resolution scoped to CI/CD.
+* Reduced sciml-modern-stack from 84% → 79% budget (NeuralPDE.jl dedup).
 * Refactored testing-patterns from 96% to under 75% context budget.
-* Froze sciml-modern-stack at 78% budget.
+* 193/193 skills within 2% context budget.
 
 **Security Fixes**
 
@@ -49,9 +71,16 @@
 * Added CLI argument validation for `gh` subprocess calls.
 * Anchored SessionStart hook matcher to `^(startup|resume)$`.
 
+**Documentation**
+
+* Rewrote all reference docs for hub architecture: agents.md, commands.md,
+  cheatsheet.md, 3 suite RST files, README.md, CLAUDE.md, index.rst, changelog.
+* Docs build with zero warnings. 60/60 tests pass.
+
 **Governance**
 
 * Added skill size governance policy to CLAUDE.md (>3000 bytes = review required).
+* 14 commands intentionally registered; 22 skill-invoked commands on disk by design.
 
 ## v3.0.0 (2026-04-02)
 

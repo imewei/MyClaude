@@ -1,60 +1,76 @@
-# Claude Code Plugin Marketplace - Complete Agent List
+# Agent Reference
 
-**Total Agents:** 24 across 3 focused suites
-**Format:** `suite:agent`
-**Version:** 3.1.0 | **Last Updated:** April 3, 2026
+**24 Agents** across 3 suites | **Version:** 3.1.0
 
----
-
-## 1. Agent Core Suite (`agent-core`)
-Consolidated suite for multi-agent coordination, deep reasoning, and specialized LLM application development.
-
-- **`orchestrator`** - Multi-agent orchestrator specializing in workflow coordination, agent team assembly, and task allocation.
-- **`reasoning-engine`** - Expert in advanced reasoning, prompt design, and cognitive tasks. Masters Chain-of-Thought and structured frameworks.
-- **`context-specialist`** - Elite AI context engineering specialist mastering dynamic context management, vector databases, and memory systems.
+Agents are specialized AI personas with defined model tiers, tool access, and domain expertise. Each agent runs at a specific model tier: **opus** (deep reasoning), **sonnet** (standard tasks), or **haiku** (fast/simple).
 
 ---
 
-## 2. Dev Suite (`dev-suite`)
-Consolidated suite for full-stack engineering, infrastructure, CI/CD, quality assurance, and debugging.
+## Agent Core Suite (`agent-core`) — 3 Agents
 
-- **`app-developer`** - Expert in building high-quality applications for Web, iOS, and Android (React, Next.js, Flutter).
-- **`automation-engineer`** - Expert in automating software delivery pipelines and optimizing Git collaboration workflows.
-- **`debugger-pro`** - Expert in AI-assisted debugging, log correlation, and complex root cause analysis across distributed systems.
-- **`devops-architect`** - Expert in multi-cloud architecture (AWS/Azure/GCP), Kubernetes orchestration, and Infrastructure as Code (Terraform).
-- **`documentation-expert`** - Expert in creating clear, comprehensive, and accurate technical documentation and tutorials.
-- **`quality-specialist`** - Expert in ensuring software quality through rigorous code reviews, security audits, and test automation.
-- **`software-architect`** - Expert in designing scalable backend systems, microservices, and high-performance APIs (REST/GraphQL/gRPC).
-- **`sre-expert`** - Expert in system reliability, observability (monitoring, logging, tracing), and incident response.
-- **`systems-engineer`** - Expert in low-level systems programming (C, C++, Rust, Go) and production-grade CLI tool design.
+Core orchestration, reasoning, and context engineering.
+
+| Agent | Model | Description |
+|-------|-------|-------------|
+| `orchestrator` | opus | Multi-agent orchestrator for workflow coordination, agent team assembly, and task allocation |
+| `reasoning-engine` | opus | Advanced reasoning, prompt design, and cognitive tasks. Masters Chain-of-Thought and structured frameworks |
+| `context-specialist` | sonnet | Context engineering specialist for dynamic context management, vector databases, and memory systems |
 
 ---
 
-## 3. Scientific Computing Suite (`science-suite`)
-Consolidated suite for high-performance computing, specialized physics/chemistry simulations, and data science workflows.
+## Dev Suite (`dev-suite`) — 9 Agents
 
-- **`jax-pro`** - Expert in JAX-based scientific computing, functional transformations, and high-performance numerical kernels.
-- **`julia-ml-hpc`** - Expert in Julia ML, Deep Learning, and HPC (Lux.jl, MLJ.jl, CUDA.jl, MPI.jl, GraphNeuralNetworks.jl).
-- **`julia-pro`** - Expert in Julia programming, Scientific Machine Learning (SciML), and DifferentialEquations.jl.
-- **`ml-expert`** - Expert in classical ML algorithms, MLOps pipelines, and data engineering.
-- **`neural-network-master`** - Deep learning authority specializing in theory and implementation (Transformers, CNNs, diagnostics).
-- **`nonlinear-dynamics-expert`** - Expert in bifurcation analysis, chaos, coupled networks, pattern formation, and equation discovery (SINDy/UDE).
-- **`prompt-engineer`** - Expert prompt engineer specializing in advanced techniques and performance optimization.
-- **`python-pro`** - Expert Python Systems Engineer specializing in type-driven development and performance.
-- **`research-expert`** - Expert in systematic research, evidence synthesis, and publication-quality visualization.
-- **`simulation-expert`** - Expert in molecular dynamics, statistical mechanics, and numerical methods (HPC/GPU).
-- **`statistical-physicist`** - Expert in correlation functions, non-equilibrium dynamics, and ensemble theory.
-- **`ai-engineer`** - Build production-ready LLM applications, advanced RAG systems, and intelligent agents.
+Full-stack engineering, infrastructure, CI/CD, quality assurance, and debugging.
+
+| Agent | Model | Description |
+|-------|-------|-------------|
+| `software-architect` | opus | Scalable backend systems, microservices, and high-performance APIs (REST/GraphQL/gRPC) |
+| `debugger-pro` | opus | AI-assisted debugging, log correlation, and complex root cause analysis across distributed systems |
+| `app-developer` | sonnet | Web, iOS, and Android applications. Masters React, Next.js, Flutter, and React Native |
+| `automation-engineer` | sonnet | Software delivery pipelines and Git collaboration. Masters GitHub Actions and GitLab CI |
+| `devops-architect` | sonnet | Multi-cloud architecture (AWS/Azure/GCP), Kubernetes, and Infrastructure as Code (Terraform/Pulumi) |
+| `quality-specialist` | sonnet | Code reviews, security audits, and test automation strategies |
+| `sre-expert` | sonnet | System reliability, observability (monitoring, logging, tracing), and incident response |
+| `systems-engineer` | sonnet | Low-level systems programming (C, C++, Rust, Go) and production-grade CLI tools |
+| `documentation-expert` | haiku | Technical documentation, manuals, and tutorials |
+
+---
+
+## Science Suite (`science-suite`) — 12 Agents
+
+Scientific computing, HPC, physics simulations, ML/DL, and research workflows.
+
+| Agent | Model | Description |
+|-------|-------|-------------|
+| `neural-network-master` | opus | Deep learning authority: architecture design, theory, and implementation (Transformers, CNNs, diagnostics) |
+| `nonlinear-dynamics-expert` | opus | Bifurcation analysis, chaos, coupled networks, pattern formation, and equation discovery (SINDy/UDE) |
+| `research-expert` | opus | Systematic research, evidence synthesis, and publication-quality visualization |
+| `simulation-expert` | opus | Molecular dynamics, statistical mechanics, and numerical methods (HPC/GPU) |
+| `statistical-physicist` | opus | Correlation functions, non-equilibrium dynamics, and ensemble theory |
+| `ai-engineer` | sonnet | Production-ready LLM applications, RAG systems, and intelligent agents |
+| `jax-pro` | sonnet | JAX-based scientific computing, functional transformations, and high-performance numerical kernels |
+| `julia-ml-hpc` | sonnet | Julia ML, Deep Learning, and HPC (Lux.jl, MLJ.jl, CUDA.jl, MPI.jl) |
+| `julia-pro` | sonnet | Julia programming, SciML (DifferentialEquations.jl, ModelingToolkit.jl), and Turing.jl |
+| `ml-expert` | sonnet | Classical ML algorithms, MLOps pipelines, and data engineering |
+| `prompt-engineer` | sonnet | Advanced prompt engineering techniques and LLM performance optimization |
+| `python-pro` | sonnet | Python systems engineering: type-driven development, Rust extensions, and performance |
+
+---
+
+## Model Tier Summary
+
+| Tier | Count | Agents |
+|------|-------|--------|
+| **opus** | 9 | orchestrator, reasoning-engine, software-architect, debugger-pro, neural-network-master, nonlinear-dynamics-expert, research-expert, simulation-expert, statistical-physicist |
+| **sonnet** | 14 | context-specialist, app-developer, automation-engineer, devops-architect, quality-specialist, sre-expert, systems-engineer, ai-engineer, jax-pro, julia-ml-hpc, julia-pro, ml-expert, prompt-engineer, python-pro |
+| **haiku** | 1 | documentation-expert |
 
 ---
 
 ## Resources
 
-- **Full Documentation:** [https://myclaude.readthedocs.io/en/latest/](https://myclaude.readthedocs.io/en/latest/)
-- **GitHub Repository:** [https://github.com/imewei/MyClaude](https://github.com/imewei/MyClaude)
-- **Commands List:** [commands.md](commands.md)
-- **Plugin Cheatsheet:** [cheatsheet.md](cheatsheet.md)
+- [Commands Reference](commands.md)
+- [Quick Reference Cheatsheet](cheatsheet.md)
+- [Full Documentation](https://myclaude.readthedocs.io/en/latest/)
 
----
-
-*Generated from v3.0.0 validated marketplace data.*
+*Generated from v3.1.0 validated marketplace data.*

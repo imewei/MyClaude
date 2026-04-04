@@ -1,73 +1,99 @@
 Agent Core Suite
 ================
 
-Consolidated suite for multi-agent coordination, deep reasoning, and specialized LLM application development. Optimized for Claude Opus 4.6 with adaptive thinking and Agent Teams support.
+Core orchestration, advanced reasoning, and context engineering. Optimized for Claude Opus 4.6 with adaptive thinking and Agent Teams support.
+
+**Version:** 3.1.0 | **3 Agents** | **2 Registered Commands** | **3 Hubs → 12 Sub-skills** | **8 Hook Events**
 
 Agents
 ------
 
-.. agent:: context-specialist
-   :description: Elite AI context engineering specialist mastering dynamic context management, vector databases, and memory systems.
-   :model: sonnet
-   :version: 3.0.0
-
 .. agent:: orchestrator
    :description: Multi-agent orchestrator specializing in workflow coordination, agent team assembly, and task allocation.
    :model: opus
-   :version: 3.0.0
+   :version: 3.1.0
 
 .. agent:: reasoning-engine
    :description: Expert in advanced reasoning, prompt design, and cognitive tasks. Masters Chain-of-Thought and structured frameworks.
    :model: opus
-   :version: 3.0.0
+   :version: 3.1.0
 
-Commands
---------
+.. agent:: context-specialist
+   :description: Elite AI context engineering specialist mastering dynamic context management, vector databases, and memory systems.
+   :model: sonnet
+   :version: 3.1.0
 
-.. command:: /agent-build
-   :description: Unified AI agent creation, optimization, and prompt engineering.
-
-.. command:: /ai-assistant
-   :description: Build production-ready AI assistants with NLU and intelligent response generation.
-
-.. command:: /docs-lookup
-   :description: Query library documentation using Context7 MCP for up-to-date API references.
-
-.. command:: /reflection
-   :description: Comprehensive meta-cognitive reflection framework execution.
+Registered Commands
+-------------------
 
 .. command:: /ultra-think
    :description: Comprehensive analysis with full reasoning framework execution.
 
 .. command:: /team-assemble
-   :description: Generate ready-to-use agent team configurations from 38 pre-built templates.
+   :description: Generate ready-to-use agent team configurations from pre-built templates.
 
-Skills
-------
+Skill-Invoked Commands
+----------------------
 
-.. skill:: reasoning-frameworks
-   :description: Unified advanced reasoning with structured thinking, systematic thought processing, and multi-framework analysis for complex problem solving.
-   :version: 3.0.0
+These commands are triggered by skills, not directly by users:
 
-.. skill:: agent-orchestration
-   :description: Coordinate multiple AI agents through workflow orchestration, task allocation, and inter-agent communication protocols. Masters DAG-based workflows and team assembly.
-   :version: 3.0.0
+.. command:: agent-build
+   :description: Unified AI agent creation, optimization, and prompt engineering.
 
-.. skill:: agent-performance-optimization
-   :description: Optimize AI agent performance through monitoring, metrics collection, caching, and load balancing. Use when analyzing agent execution bottlenecks, implementing latency percentiles (P50/P95/P99), setting up multi-tier caching, tracking success/failure rates, load balancing across agent instances, or scaling agent systems for production.
-   :version: 3.0.0
+.. command:: ai-assistant
+   :description: Build production-ready AI assistants with NLU and intelligent response generation.
 
-.. skill:: reflection-framework
-   :description: Unified reflection framework orchestrating cognitive, technical, scientific, and strategic dimensions with meta-cognitive analysis for integrated insights and cross-cutting patterns.
-   :version: 3.0.0
+.. command:: docs-lookup
+   :description: Query library documentation using Context7 MCP for up-to-date API references.
 
-.. skill:: llm-application-patterns
-   :description: Design and build robust LLM-powered applications. Covers advanced prompt engineering (CoT, few-shot), RAG implementation, and LLM evaluation.
-   :version: 3.0.0
+.. command:: reflection
+   :description: AI reasoning analysis, session retrospectives, and research optimization.
 
-.. skill:: mcp-integration
-   :description: Guide for using integrated MCP servers (serena, github, sequential-thinking, context7)
+Hub Skills
+----------
 
-.. skill:: multi-agent-coordination
-   :description: Coordinate multiple AI agents through workflow orchestration, task allocation, and distributed systems. Use when designing DAG-based workflows with task dependencies, building agent team assembly with capability matching, implementing inter-agent communication protocols, orchestrating parallel execution with synchronization, designing fault-tolerant systems with retry logic, or managing distributed agent teams.
-   :version: 3.0.0
+Skills use a hub architecture: 3 hub skills route to 12 specialized sub-skills.
+
+Hub: agent-systems
+^^^^^^^^^^^^^^^^^^
+
+Multi-agent coordination, performance optimization, evaluation, and tool use patterns.
+
+- ``agent-evaluation`` — Evaluate AI agent performance through systematic testing and benchmarking
+- ``agent-performance-optimization`` — Monitor, cache, and load-balance agent systems for production
+- ``multi-agent-coordination`` — Workflow orchestration, task allocation, and inter-agent communication
+- ``tool-use-patterns`` — Tool selection, chaining, error handling, and result synthesis
+
+Hub: reasoning-and-memory
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Reasoning frameworks, reflection, knowledge graphs, and memory systems.
+
+- ``reasoning-frameworks`` — First Principles, RCA, Decision Analysis, Systems Thinking, OODA Loop
+- ``reflection-framework`` — Meta-cognitive analysis, bias detection, and session reflection
+- ``knowledge-graph-patterns`` — Knowledge graphs for structured retrieval and semantic reasoning
+- ``memory-system-patterns`` — Persistent memory systems with vector stores and context management
+
+Hub: llm-engineering
+^^^^^^^^^^^^^^^^^^^^
+
+Prompt engineering, LLM application patterns, MCP integration, and safety.
+
+- ``llm-application-patterns`` — Prompt engineering principles (CoT, few-shot), RAG design, evaluation
+- ``mcp-integration`` — MCP server configuration, tool naming conventions, and cross-tool workflows
+- ``prompt-engineering-patterns`` — Advanced prompting with chain-of-thought and production templates
+- ``safety-guardrails`` — Content filtering, output validation, and responsible AI practices
+
+Hooks
+-----
+
+8 hook events with Python script implementations:
+
+- ``SessionStart`` — Session initialization
+- ``PreToolUse`` — Before tool execution
+- ``PostToolUse`` — After tool execution
+- ``PreCompact`` — Before context compaction
+- ``PostCompact`` — After context compaction
+- ``SubagentStop`` — When a subagent completes
+- ``PermissionDenied`` — When a tool call is denied
+- ``TaskCompleted`` — When a task finishes

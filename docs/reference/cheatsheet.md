@@ -1,67 +1,94 @@
-# Claude Code Plugin Marketplace - Quick Reference
+# Quick Reference Cheatsheet
 
-**Total Resources:** 3 Suites | 23 Expert Agents | 33 Slash Commands | 132 Skills
-**Version:** 2.2.1 | **Last Updated:** March 31, 2026
-
----
-
-## The 3-Suite System
-
-The MyClaude ecosystem is organized into three focused suites, consolidated from specialized legacy plugins.
-
-### 1. Agent Core Suite (`agent-core`)
-**Purpose:** Multi-agent coordination, advanced reasoning, and context engineering.
-- **Agents:** `@orchestrator`, `@reasoning-engine`, `@context-specialist`
-- **Commands:** `/agent-build`, `/ai-assistant`, `/docs-lookup`, `/reflection`, `/ultra-think`, `/team-assemble`
-- **Skills:** `agent-orchestration`, `agent-performance-optimization`, `llm-application-patterns`, `mcp-integration`, `multi-agent-coordination`, `reasoning-frameworks`, `reflection-framework`
-- **Use When:** Complex problem solving, building AI assistants, managing long-running project context.
-
-### 2. Dev Suite (`dev-suite`)
-**Purpose:** Full-stack engineering, infrastructure, CI/CD, quality assurance, and debugging.
-- **Agents:** `@app-developer`, `@automation-engineer`, `@debugger-pro`, `@devops-architect`, `@documentation-expert`, `@quality-specialist`, `@software-architect`, `@sre-expert`, `@systems-engineer`
-- **Commands:** `/adopt-code`, `/c-project`, `/code-analyze`, `/code-explain`, `/commit`, `/deps`, `/docs`, `/double-check`, `/eng-feature-dev`, `/fix-commit-errors`, `/fix-imports`, `/github-assist`, `/merge-all`, `/modernize`, `/monitor-setup`, `/multi-platform`, `/onboard`, `/profile-performance`, `/refactor-clean`, `/run-all-tests`, `/rust-project`, `/scaffold`, `/slo-implement`, `/smart-debug`, `/tech-debt`, `/test-generate`, `/workflow-automate`
-- **Skills:** `airflow-scientific-workflows`, `api-design-principles`, `architecture-patterns`, `async-python-patterns`, `auth-implementation-patterns`, `code-review`, `comprehensive-validation`, `debugging-toolkit`, `deployment-pipeline-design`, `distributed-tracing`, `documentation-standards`, `e2e-testing-patterns`, `error-handling-patterns`, `frontend-mobile-engineering`, `git-workflow`, `github-actions-templates`, `gitlab-ci-patterns`, `grafana-dashboards`, `iterative-error-resolution`, `microservices-patterns`, `modern-javascript-patterns`, `modernization-migration`, `monorepo-management`, `nodejs-backend-patterns`, `observability-sre-practices`, `plugin-syntax-validator`, `prometheus-configuration`, `python-packaging`, `python-performance-optimization`, `secrets-management`, `security-ci-template`, `slo-implementation`, `sql-optimization-patterns`, `systems-cli-engineering`, `test-automation`, `testing-patterns`, `typescript-advanced-types`, `typescript-project-scaffolding`, `uv-package-manager`
-- **Use When:** Building web/mobile apps, systems programming, backend architecture, CI/CD, monitoring, Git workflows, testing, debugging, code quality, documentation.
-
-### 3. Scientific Computing Suite (`science-suite`)
-**Purpose:** HPC, specialized simulations, and data science workflows.
-- **Agents:** `@ai-engineer`, `@jax-pro`, `@julia-pro`, `@ml-expert`, `@neural-network-master`, `@nonlinear-dynamics-expert`, `@prompt-engineer`, `@python-pro`, `@research-expert`, `@simulation-expert`, `@statistical-physicist`
-- **Commands:** *Specialized commands are planned for future releases. Use suite agents for guided execution.*
-- **Skills:** Extensive scientific skills including `jax-mastery`, `julia-mastery`, `deep-learning`, `statistical-physics`, `parallel-computing`, `machine-learning`, and 86 specialized domain skills.
-- **Use When:** HPC, JAX/Julia projects, physics simulations, ML engineering, scientific research.
+**3 Suites** | **24 Agents** | **14 Registered Commands** | **26 Hub Skills** (routing to 167 sub-skills)
+**Version:** 3.1.0
 
 ---
 
-## 🛠️ Common Workflows
+## The Hub Architecture
 
-### Engineering Feature Development
-1. Use `@software-architect` to design the system.
-2. Run `/dev-suite:eng-feature-dev` to implement the core logic.
-3. Use `/dev-suite:test-generate` to create tests.
-4. Run `/dev-suite:double-check` before submitting.
+MyClaude v3.1.0 uses a **hub-skill architecture**: skills are organized into hub skills (meta-orchestrators) that route to specialized sub-skills. Only hubs are declared in `plugin.json`; sub-skills are discovered through hub routing trees.
 
-### Scientific Simulation
-1. Use `@simulation-expert` to design the simulation.
-2. Use `@jax-pro` or `@julia-pro` to implement the numerical kernels.
-3. Use `@research-expert` to analyze and visualize results.
-
-### Agent Teams
-1. Run `/agent-core:team-assemble list` to see all 34 team templates.
-2. Run `/agent-core:team-assemble <type>` to generate a team prompt.
-3. Paste the prompt into Claude Code with agent teams enabled.
-4. See [Agent Teams Guide](../agent-teams-guide.md) for full details.
-
----
-
-## 📦 Installation
-
-### Step 1: Add the Marketplace
-```bash
-/plugin marketplace add imewei/MyClaude
+```
+plugin.json → hub skill → routing decision tree → sub-skill
 ```
 
-### Step 2: Install Suites
+---
+
+## Suite Overview
+
+### 1. Agent Core (`agent-core`)
+
+**Purpose:** Multi-agent coordination, advanced reasoning, and context engineering.
+
+| Component | Count | Details |
+|-----------|-------|---------|
+| Agents | 3 | orchestrator (opus), reasoning-engine (opus), context-specialist (sonnet) |
+| Commands | 2 registered | `/ultra-think`, `/team-assemble` |
+| Skills | 3 hubs → 12 sub | agent-systems, reasoning-and-memory, llm-engineering |
+| Hooks | 8 events | SessionStart, PreToolUse, PostToolUse, PreCompact, PostCompact, SubagentStop, PermissionDenied, TaskCompleted |
+
+### 2. Dev Suite (`dev-suite`)
+
+**Purpose:** Full-stack engineering, infrastructure, CI/CD, quality, and debugging.
+
+| Component | Count | Details |
+|-----------|-------|---------|
+| Agents | 9 | 2 opus, 6 sonnet, 1 haiku |
+| Commands | 12 registered | `/commit`, `/docs`, `/double-check`, `/eng-feature-dev`, `/fix-commit-errors`, `/merge-all`, `/modernize`, `/refactor-clean`, `/run-all-tests`, `/smart-debug`, `/test-generate`, `/workflow-automate` |
+| Skills | 9 hubs → 49 sub | backend-patterns, frontend-and-mobile, architecture-and-infra, testing-and-quality, ci-cd-pipelines, observability-and-sre, python-toolchain, data-and-security, dev-workflows |
+| Hooks | 2 events | PostToolUse, SubagentStop |
+
+### 3. Science Suite (`science-suite`)
+
+**Purpose:** HPC, physics simulations, ML/DL, Julia, JAX, and research workflows.
+
+| Component | Count | Details |
+|-----------|-------|---------|
+| Agents | 12 | 5 opus, 7 sonnet |
+| Commands | 0 registered | (3 skill-invoked: analyze-data, paper-review, run-experiment) |
+| Skills | 14 hubs → 106 sub | nonlinear-dynamics, jax-computing, julia-language, julia-ml-and-dl, sciml-and-diffeq, correlation-analysis, statistical-physics-hub, deep-learning-hub, ml-and-data-science, llm-and-ai, ml-deployment, simulation-and-hpc, research-and-domains, bayesian-inference |
+| Hooks | 0 | — |
+
+---
+
+## Common Workflows
+
+### Engineering Feature Development
+1. `@software-architect` — design the system
+2. `/eng-feature-dev` — implement the core logic
+3. `/test-generate` — create tests
+4. `/double-check` — validate before submitting
+
+### Scientific Simulation
+1. `@simulation-expert` — design the simulation
+2. `@jax-pro` or `@julia-pro` — implement numerical kernels
+3. `@research-expert` — analyze and visualize results
+
+### Agent Teams
+1. `/team-assemble list` — see all team templates
+2. `/team-assemble <type>` — generate a team prompt
+3. See [Agent Teams Guide](../agent-teams-guide.md) for details
+
+---
+
+## Model Tier Quick Reference
+
+| Tier | Use Case | Agents |
+|------|----------|--------|
+| **opus** (9) | Deep reasoning, architecture, research | orchestrator, reasoning-engine, software-architect, debugger-pro, neural-network-master, nonlinear-dynamics-expert, research-expert, simulation-expert, statistical-physicist |
+| **sonnet** (14) | Standard development and analysis | context-specialist, app-developer, automation-engineer, devops-architect, quality-specialist, sre-expert, systems-engineer, ai-engineer, jax-pro, julia-ml-hpc, julia-pro, ml-expert, prompt-engineer, python-pro |
+| **haiku** (1) | Fast, simple tasks | documentation-expert |
+
+---
+
+## Installation
+
 ```bash
+# Add the marketplace
+/plugin marketplace add imewei/MyClaude
+
+# Install suites
 /plugin install agent-core@marketplace
 /plugin install dev-suite@marketplace
 /plugin install science-suite@marketplace
@@ -70,10 +97,10 @@ The MyClaude ecosystem is organized into three focused suites, consolidated from
 ---
 
 ## Resources
-- **Full Documentation:** [https://myclaude.readthedocs.io/en/latest/](https://myclaude.readthedocs.io/en/latest/)
-- **Agent List:** [agents.md](agents.md)
-- **Commands List:** [commands.md](commands.md)
 
----
+- [Agent Reference](agents.md)
+- [Commands Reference](commands.md)
+- [Full Documentation](https://myclaude.readthedocs.io/en/latest/)
+- [GitHub Repository](https://github.com/imewei/MyClaude)
 
-*Generated from v2.2.1 validated marketplace data.*
+*Generated from v3.1.0 validated marketplace data.*

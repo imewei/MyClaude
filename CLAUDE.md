@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-MyClaude is a Claude Code plugin marketplace: 3 plugin suites containing 24 agents, 36 commands, and 169 skills. It is **not** a runnable application — it's a collection of markdown-based plugin definitions with Python tooling for validation and maintenance.
+MyClaude is a Claude Code plugin marketplace: 3 plugin suites containing 24 agents, 14 registered commands, and 26 hub skills (routing to 167 sub-skills). It is **not** a runnable application — it's a collection of markdown-based plugin definitions with Python tooling for validation and maintenance.
 
 ## Commands
 
@@ -61,11 +61,26 @@ plugins/<suite-name>/
 ```
 
 Suite breakdown:
-| Suite | Agents | Commands | Skills | Hooks | Focus |
-|-------|--------|----------|--------|-------|-------|
-| agent-core | 3 | 6 | 13 | 8 events | Reasoning, orchestration, context engineering, safety |
-| dev-suite | 9 | 27 | 49 | 2 events | Full SDLC: architecture, implementation, CI/CD, testing, debugging |
-| science-suite | 12 | 3 | 107 | 0 | JAX, Julia, physics, ML/DL/HPC, nonlinear dynamics, research |
+| Suite | Agents | Registered Cmds | Skills (hubs → sub) | Hooks | Focus |
+|-------|--------|-----------------|---------------------|-------|-------|
+| agent-core | 3 | 2 | 3 → 12 | 8 events | Reasoning, orchestration, context engineering, safety |
+| dev-suite | 9 | 12 | 9 → 49 | 2 events | Full SDLC: architecture, implementation, CI/CD, testing, debugging |
+| science-suite | 12 | 0 | 14 → 106 | 0 | JAX, Julia, physics, ML/DL/HPC, nonlinear dynamics, research |
+
+**Note:** 22 additional commands exist on disk but are not registered in `plugin.json`. These are **skill-invoked commands** — triggered by skills during workflows, not directly by users as `/slash-commands`.
+
+### Hub-Skill Architecture
+
+Skills use a two-tier **hub-skill routing** system:
+1. `plugin.json` declares only **hub skills** (meta-orchestrators).
+2. Each hub contains a **routing decision tree** that dispatches to specialized **sub-skills**.
+3. Sub-skills are discovered through hub references, not directly from the manifest.
+
+```
+plugin.json → hub SKILL.md → routing tree → ../sub-skill/SKILL.md
+```
+
+Each hub SKILL.md has a standard structure: YAML frontmatter, Expert Agent reference, Core Skills section with `../` relative links, Routing Decision Tree (code block), and Checklist.
 
 ### Component File Formats
 
@@ -73,7 +88,7 @@ Suite breakdown:
 
 **Commands** (`commands/<name>.md`): Markdown files with YAML frontmatter containing `name`, `description`, and optionally `argument-hint`, `allowed-tools`, `execution-modes`.
 
-**Skills** (`skills/<name>/SKILL.md`): Each skill lives in its own directory. The main file is always `SKILL.md` with frontmatter containing `name`, `description`.
+**Skills** (`skills/<name>/SKILL.md`): Each skill lives in its own directory. The main file is always `SKILL.md` with frontmatter containing `name`, `description`. Hub skills additionally contain: Expert Agent section, Core Skills with `../` relative links, Routing Decision Tree, and Checklist.
 
 **Hooks** (`hooks/hooks.json`): JSON object with `description` and `hooks` object keyed by event name. 8 events: SessionStart, PreToolUse, PostToolUse, PreCompact, PostCompact, SubagentStop, PermissionDenied, TaskCompleted. Python scripts implement hook logic.
 
@@ -94,6 +109,9 @@ The manifest uses **file-path references** (not inline objects) to point to agen
 - **Skill budget**: All skills must fit within 2% of the context window. Run `context_budget_checker.py` after adding skills.
 - **Skill size governance**: Skills exceeding 3,000 bytes require review before merge. Skills at >80% of their context budget are flagged as at-risk. Skills at >90% should be refactored (split content to dedicated skills). Never add content to a frozen skill — create a new skill instead.
 - **Model tiers**: Agents use `opus` (deep reasoning: orchestrator, reasoning-engine, debugger-pro, software-architect, research-expert, statistical-physicist, nonlinear-dynamics-expert, neural-network-master, simulation-expert), `sonnet` (standard tasks), or `haiku` (fast/simple: documentation-expert).
+- **Command registration**: Only 14 commands are registered in `plugin.json` manifests (2 agent-core, 12 dev-suite). The remaining 22 command files on disk are skill-invoked — do not add them to manifests.
+- **Hub routing**: When adding a new sub-skill, it must be referenced by at least one hub's Core Skills section and Routing Decision Tree. Run the orphan check to verify reachability.
+- **Cross-suite delegation**: Agent delegation tables referencing agents from other suites must include a `(suite-name)` annotation, e.g., `ml-expert (science-suite)`.
 - **No wildcard imports**: `from module import *` is prohibited.
 - **Python 3.13+**: Required by `pyproject.toml`.
 - **uv only**: Use `uv` for all dependency management. Never install to global/user site-packages.

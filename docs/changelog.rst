@@ -21,7 +21,8 @@ v3.1.0 (2026-04-03)
 
 **Skill Quality**
 
-* All 169 skills now have trigger phrases, Expert Agent sections, and checklists.
+* All skills now have trigger phrases, Expert Agent sections, and checklists.
+* Introduced hub-skill architecture: 26 hubs routing to 167 sub-skills (193 total).
 * Refactored testing-patterns from 96% to <75% context budget.
 
 **Security**

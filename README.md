@@ -2,44 +2,44 @@
 
 [![Plugins](https://img.shields.io/badge/Plugins-3-blue.svg)](https://myclaude.readthedocs.io/en/latest/plugins/)
 [![Agents](https://img.shields.io/badge/Agents-24-green.svg)](docs/reference/agents.md)
-[![Commands](https://img.shields.io/badge/Commands-33-orange.svg)](docs/reference/commands.md)
-[![Skills](https://img.shields.io/badge/Skills-142-purple.svg)](docs/reference/cheatsheet.md)
-[![Version](https://img.shields.io/badge/Version-3.0.0-red.svg)](https://github.com/imewei/MyClaude)
+[![Commands](https://img.shields.io/badge/Commands-14-orange.svg)](docs/reference/commands.md)
+[![Skills](https://img.shields.io/badge/Skills-26_hubs_→_167_sub-purple.svg)](docs/reference/cheatsheet.md)
+[![Version](https://img.shields.io/badge/Version-3.1.0-red.svg)](https://github.com/imewei/MyClaude)
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Docs](https://img.shields.io/badge/Docs-ReadTheDocs-brightgreen.svg)](https://myclaude.readthedocs.io/en/latest/)
 
-Claude Code plugin marketplace with **3 focused suites**, **24 expert agents**, **33 slash commands**, and **142 skills** optimized for AI-powered development, scientific computing, and research workflows. Built for Claude Opus 4.6 with tiered model assignments (Opus/Sonnet/Haiku), 10 lifecycle hooks, and full v2.1.88 spec compliance.
+Claude Code plugin marketplace with **3 focused suites**, **24 expert agents**, **14 registered commands**, and **26 hub skills** routing to **167 sub-skills**. Built for Claude Opus 4.6 with tiered model assignments (Opus/Sonnet/Haiku), 10 lifecycle hooks, and hub-skill architecture for zero-ambiguity skill routing.
 
-## The 3-Suite Architecture
+## The 3-Suite Hub Architecture
 
-The MyClaude ecosystem is organized into three suites by delegation topology:
+MyClaude v3.1.0 uses a **hub-skill architecture**: skills are organized into hub skills (meta-orchestrators) that route to specialized sub-skills via decision trees. Only hubs are declared in `plugin.json`; sub-skills are discovered through hub routing.
 
-1.  **[Agent Core](plugins/agent-core/)**: Meta-agents for orchestration, reasoning, and context engineering. Coordinates everything but is never delegated to from below.
-2.  **[Dev Suite](plugins/dev-suite/)**: The complete software development lifecycle — architecture, implementation, CI/CD, testing, debugging, and deployment. 9 agents that freely delegate to each other without cross-suite overhead.
-3.  **[Science Suite](plugins/science-suite/)**: Domain-specific scientific computing — JAX, Julia, ML/DL/HPC, physics, and research. Agents primarily collaborate within the suite.
+| Suite | Agents | Commands | Hubs → Sub-skills | Hooks | Focus |
+|-------|--------|----------|-------------------|-------|-------|
+| [Agent Core](plugins/agent-core/) | 3 | 2 | 3 → 12 | 8 events | Orchestration, reasoning, context engineering |
+| [Dev Suite](plugins/dev-suite/) | 9 | 12 | 9 → 49 | 2 events | Full SDLC: architecture, CI/CD, testing, debugging |
+| [Science Suite](plugins/science-suite/) | 12 | 0 | 14 → 106 | — | JAX, Julia, physics, ML/DL/HPC, research |
 
 ## Specialist Agents
 
-The system features 24 specialized agents across all suites, including:
+24 agents with tiered model assignments: **9 opus** (deep reasoning), **14 sonnet** (standard), **1 haiku** (fast).
 
-| Agent | Suite | Specialization |
-|-------|-------|----------------|
-| `@orchestrator` | Agent Core | Multi-agent coordination and task delegation |
-| `@software-architect` | Dev | Backend systems, microservices, and API design |
-| `@debugger-pro` | Dev | Root cause analysis, log correlation, memory profiling |
-| `@devops-architect` | Dev | Cloud infrastructure, Kubernetes, and IaC |
-| `@quality-specialist` | Dev | Code review, security auditing, and test automation |
-| `@jax-pro` | Science | Core JAX, Bayesian inference, and physics apps |
-| `@julia-ml-hpc` | Science | Julia ML, Deep Learning, and HPC (Lux.jl, MLJ.jl, CUDA.jl, MPI.jl) |
-| `@python-pro` | Science | Modern Python systems engineering and performance |
-| `@reasoning-engine` | Agent Core | Advanced reasoning and structured thinking |
-| `@app-developer` | Dev | Web, iOS, and Android development (React, Flutter) |
+| Agent | Suite | Model | Specialization |
+|-------|-------|-------|----------------|
+| `@orchestrator` | Agent Core | opus | Multi-agent coordination and task delegation |
+| `@reasoning-engine` | Agent Core | opus | Advanced reasoning and structured thinking |
+| `@software-architect` | Dev | opus | Backend systems, microservices, API design |
+| `@debugger-pro` | Dev | opus | Root cause analysis, log correlation |
+| `@neural-network-master` | Science | opus | Deep learning theory and architecture |
+| `@statistical-physicist` | Science | opus | Correlation functions, non-equilibrium dynamics |
+| `@simulation-expert` | Science | opus | Molecular dynamics, HPC, numerical methods |
+| `@jax-pro` | Science | sonnet | JAX, Bayesian inference, physics apps |
+| `@julia-pro` | Science | sonnet | Julia SciML, DifferentialEquations.jl |
+| `@python-pro` | Science | sonnet | Python systems engineering, performance |
 
 ## Installation
 
 ### Step 1: Add the Marketplace
-
-In Claude Code, add this marketplace:
 
 ```bash
 /plugin marketplace add imewei/MyClaude
@@ -48,7 +48,6 @@ In Claude Code, add this marketplace:
 ### Step 2: Install Suites
 
 ```bash
-# Install all suites
 /plugin install agent-core@marketplace
 /plugin install dev-suite@marketplace
 /plugin install science-suite@marketplace
@@ -57,8 +56,6 @@ In Claude Code, add this marketplace:
 **Note:** After installation, restart Claude Code for changes to take effect.
 
 ## Quick Start
-
-Once installed, suites provide agents, commands, and skills that are automatically available:
 
 **Using Specialized Agents**
 ```
