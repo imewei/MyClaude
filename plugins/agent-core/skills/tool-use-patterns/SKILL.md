@@ -149,5 +149,5 @@ Build a dependency graph of tool calls. Group calls with no unmet dependencies i
 
 ## Related Skills
 
-- `agent-orchestration` -- Agent workflows that coordinate complex tool chains across agents
+- `multi-agent-coordination` -- Agent workflows that coordinate complex tool chains across agents
 - `mcp-integration` -- MCP server integration for tool discovery and invocation

@@ -178,4 +178,4 @@ When new information contradicts stored memory:
 ## Related Skills
 
 - `llm-application-patterns` -- RAG implementation patterns that build on memory retrieval
-- `agent-orchestration` -- Multi-agent systems that share memory across agents
+- `multi-agent-coordination` -- Multi-agent systems that share memory across agents

@@ -1,6 +1,6 @@
 ---
 name: llm-application-patterns
-description: Design and build robust LLM-powered applications. Covers advanced prompt engineering (CoT, few-shot), RAG implementation, and LLM evaluation. Use when building LLM-powered features, designing RAG pipelines, optimizing prompts, or evaluating model outputs.
+description: Architectural patterns for LLM applications including prompt engineering principles (CoT, few-shot), RAG design, and evaluation strategies. Use when designing LLM system architecture, choosing RAG vs fine-tuning approaches, or establishing evaluation frameworks. For production implementation with LangChain/LangGraph code, see science-suite llm-application-dev.
 ---
 
 # LLM Application Patterns

@@ -307,7 +307,7 @@ class Agent:
 
 ## Related Skills
 
-- `agent-orchestration` -- High-level coordination patterns and communication protocols
+- `agent-performance-optimization` -- Metrics, caching, and load balancing for production agent systems
 - `agent-performance-optimization` -- Metrics, caching, and load balancing for production agent systems
 
 **Version**: 1.0.5

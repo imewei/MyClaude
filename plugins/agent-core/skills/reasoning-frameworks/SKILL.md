@@ -1,8 +1,6 @@
 ---
 name: reasoning-frameworks
-maturity: "5-Expert"
-specialization: Systematic Problem-Solving & Meta-Cognition
-description: Unified reasoning skill combining structured reasoning frameworks, systematic thought processing, branching exploration, multi-framework analysis (First Principles, Root Cause Analysis, Decision Analysis, Systems Thinking, OODA Loop), meta-cognitive reflection, and auditability. Use for complex debugging, architectural decisions, strategic planning, novel problems, and high-stakes decisions requiring explicit reasoning chains.
+description: Structured reasoning frameworks for complex problem-solving. Covers First Principles, Root Cause Analysis, Decision Analysis, Systems Thinking, and OODA Loop with branching exploration, confidence scoring, and meta-cognitive reflection. Use when applying systematic analysis to debugging, architectural decisions, strategic planning, or high-stakes decisions.
 ---
 
 # Reasoning Frameworks

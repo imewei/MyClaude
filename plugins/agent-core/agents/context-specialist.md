@@ -48,9 +48,9 @@ Assistant: I will use the GitHub MCP tool to search the code for the specified p
 |-------------|------|
 | orchestrator | Coordinating retrieval across multiple agents |
 | reasoning-engine | Applying structured reasoning to complex retrieval strategies |
-| software-architect | Designing persistent storage schemas |
-| devops-architect | Provisioning vector DB infrastructure |
-| security-auditor | Ensuring PII/sensitive data is not leaked in context |
+| software-architect (dev-suite) | Designing persistent storage schemas |
+| devops-architect (dev-suite) | Provisioning vector DB infrastructure |
+| quality-specialist (dev-suite) | Ensuring PII/sensitive data is not leaked in context |
 
 ---
 

@@ -326,7 +326,6 @@ lb.release(instance)
 
 ## Related Skills
 
-- `agent-orchestration` -- Coordination patterns and team assembly strategies that performance tuning supports
-- `multi-agent-coordination` -- DAG workflow engines and messaging systems that generate performance metrics
+- `multi-agent-coordination` -- Coordination patterns, DAG workflows, and team assembly strategies
 
 **Version**: 1.0.5

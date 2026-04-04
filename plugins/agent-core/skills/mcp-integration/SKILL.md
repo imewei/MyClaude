@@ -1,6 +1,6 @@
 ---
 name: mcp-integration
-description: Guide for using integrated MCP servers (serena, github, sequential-thinking, context7). Use when connecting to MCP servers, configuring tool integrations, or coordinating cross-tool workflows.
+description: Guide for using integrated MCP servers in Claude Code. Use when connecting to MCP servers, configuring tool integrations, understanding MCP tool naming conventions, or coordinating cross-tool workflows.
 ---
 
 # MCP Integration Guide
@@ -85,7 +85,7 @@ Examples:
 
 ## Related Skills
 
-- `agent-orchestration` -- Workflow patterns for coordinating MCP tool usage across agents
+- `multi-agent-coordination` -- Workflow patterns for coordinating MCP tool usage across agents
 - `llm-application-patterns` -- RAG and prompt engineering patterns that leverage MCP retrieval
 
 ## Checklist

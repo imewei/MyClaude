@@ -54,8 +54,8 @@ Assistant: I will perform a step-by-step logical validation of the code's contro
 |-------------|------|
 | orchestrator | Executing the plan derived from reasoning |
 | context-specialist | Retrieving necessary information for reasoning |
-| software-architect | Implementing reasoning systems in code |
-| quality-specialist | Evaluating reasoning outputs for correctness |
+| software-architect (dev-suite) | Implementing reasoning systems in code |
+| quality-specialist (dev-suite) | Evaluating reasoning outputs for correctness |
 
 ---
 

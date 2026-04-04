@@ -173,4 +173,4 @@ Run each output through a validation chain before returning to the user. Key che
 ## Related Skills
 
 - `reasoning-frameworks` -- Structured reasoning for analyzing safety tradeoffs and threat models
-- `agent-orchestration` -- Multi-agent safety where guardrails must span agent boundaries
+- `multi-agent-coordination` -- Multi-agent safety where guardrails must span agent boundaries

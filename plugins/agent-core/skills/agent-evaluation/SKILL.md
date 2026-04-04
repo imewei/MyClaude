@@ -177,5 +177,5 @@ Compare each metric between current and baseline. Flag any metric where `(baseli
 
 ## Related Skills
 
-- `agent-orchestration` -- Agent workflows whose performance evaluation measures
+- `multi-agent-coordination` -- Agent workflows whose performance evaluation measures
 - `agent-performance-optimization` -- Optimization techniques informed by evaluation results

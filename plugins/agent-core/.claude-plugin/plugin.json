@@ -1,6 +1,6 @@
 {
   "name": "agent-core",
-  "version": "3.0.0",
+  "version": "3.1.0",
   "description": "Core agent orchestration, multi-agent teams, adaptive reasoning, and workflow coordination for Claude Opus 4.6",
   "author": {
     "name": "Wei Chen",
@@ -34,26 +34,12 @@
     "./agents/reasoning-engine.md"
   ],
   "commands": [
-    "./commands/agent-build.md",
-    "./commands/ai-assistant.md",
-    "./commands/docs-lookup.md",
-    "./commands/reflection.md",
     "./commands/ultra-think.md",
     "./commands/team-assemble.md"
   ],
   "skills": [
-    "./skills/agent-evaluation",
-    "./skills/agent-orchestration",
-    "./skills/agent-performance-optimization",
-    "./skills/knowledge-graph-patterns",
-    "./skills/llm-application-patterns",
-    "./skills/mcp-integration",
-    "./skills/memory-system-patterns",
-    "./skills/multi-agent-coordination",
-    "./skills/prompt-engineering-patterns",
-    "./skills/reasoning-frameworks",
-    "./skills/reflection-framework",
-    "./skills/safety-guardrails",
-    "./skills/tool-use-patterns"
+    "./skills/agent-systems",
+    "./skills/reasoning-and-memory",
+    "./skills/llm-engineering"
   ]
 }
