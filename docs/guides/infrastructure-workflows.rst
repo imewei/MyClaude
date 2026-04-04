@@ -2,16 +2,22 @@ Infrastructure Workflows
 ========================
 
 Patterns for provisioning cloud infrastructure and managing platform
-operations with the **dev-suite**.
+operations with the **dev-suite** :term:`hub skills <Hub Skill>`.
+
+.. note::
+
+   Since v3.1.0, skills use a two-tier :term:`Hub Skill` architecture. The hub
+   skills listed below route to specialized sub-skills via their
+   :term:`Routing Decision Tree`.
 
 Cloud Infrastructure
 --------------------
 
 Use ``@devops-architect`` for multi-cloud architecture decisions.
 
-1. Define infrastructure with Terraform (skill: ``deployment-pipeline-design``).
+1. Define infrastructure with Terraform (hub: ``ci-cd-pipelines`` → sub: ``deployment-pipeline-design``).
 2. Configure Kubernetes clusters (agent: ``@devops-architect``).
-3. Implement secrets management (skill: ``secrets-management``).
+3. Implement secrets management (hub: ``data-and-security`` → sub: ``secrets-management``).
 4. Set up monitoring and alerting (command: ``/monitor-setup``).
 
 .. code-block:: hcl
@@ -36,9 +42,9 @@ Reliability Engineering
 Use ``@sre-expert`` for SLO-driven reliability.
 
 1. Define SLIs and SLOs (command: ``/slo-implement``).
-2. Set up error budgets and burn-rate alerts (skill: ``slo-implementation``).
+2. Set up error budgets and burn-rate alerts (hub: ``observability-and-sre`` → sub: ``slo-implementation``).
 3. Create incident response runbooks (agent: ``@sre-expert``).
-4. Implement Prometheus alerting (skill: ``prometheus-configuration``).
+4. Implement Prometheus alerting (hub: ``observability-and-sre`` → sub: ``prometheus-configuration``).
 
 Production Incident Response
 ----------------------------
@@ -52,4 +58,5 @@ coordinated multi-hypothesis investigation.
 Related
 -------
 
-- :doc:`/suites/dev-suite` — Full dev-suite reference (includes infrastructure and architecture)
+- :doc:`/suites/dev-suite` — Full dev-suite reference (9 hubs → 49 sub-skills)
+- :doc:`/glossary` — Hub Skill, Sub-Skill, and Routing Decision Tree definitions

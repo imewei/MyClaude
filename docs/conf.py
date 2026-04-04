@@ -7,8 +7,8 @@ sys.path.insert(0, os.path.abspath('_ext'))
 project = 'Claude Code Plugin Marketplace'
 copyright = '2026, Wei Chen'
 author = 'Wei Chen'
-version = '3.0'
-release = '3.0.0'
+version = '3.1'
+release = '3.1.0'
 
 # General configuration
 extensions = [

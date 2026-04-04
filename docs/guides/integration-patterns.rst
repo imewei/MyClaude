@@ -1,13 +1,19 @@
 Integration Patterns
 ====================
 
-Patterns for combining agents and skills across multiple suites to solve
+Patterns for combining agents and :term:`hub skills <Hub Skill>` across multiple suites to solve
 cross-cutting concerns.
+
+.. note::
+
+   Since v3.1.0, skills use a two-tier :term:`Hub Skill` architecture (26 hubs
+   routing to 167 sub-skills). Cross-suite workflows invoke hub skills which
+   automatically dispatch to the right sub-skill.
 
 Cross-Suite Agent Teams
 -----------------------
 
-The :doc:`Agent Teams Guide </agent-teams-guide>` provides 38 ready-to-use
+The :doc:`Agent Teams Guide </agent-teams-guide>` provides 34 ready-to-use
 team configurations. Teams 17-25 are specifically designed for cross-suite
 collaboration.
 
@@ -51,5 +57,7 @@ details.
 Related
 -------
 
-- :doc:`/suites/agent-core` — Orchestration and coordination
-- :doc:`/suites/dev-suite` — CI/CD and automation
+- :doc:`/integration-map` — Suite dependencies, MCP roles, and skill coverage
+- :doc:`/suites/agent-core` — Orchestration and coordination (3 hubs → 12 sub-skills)
+- :doc:`/suites/dev-suite` — CI/CD and automation (9 hubs → 49 sub-skills)
+- :doc:`/glossary` — Hub Skill, Sub-Skill, and Routing Decision Tree definitions

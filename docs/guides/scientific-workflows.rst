@@ -1,7 +1,14 @@
 Scientific Workflows
 ====================
 
-Patterns for using the **science-suite** agents and skills in research computing pipelines.
+Patterns for using the **science-suite** agents and :term:`hub skills <Hub Skill>` in research computing pipelines.
+
+.. note::
+
+   Since v3.1.0, skills use a two-tier :term:`Hub Skill` architecture. The hub
+   skills listed below route to specialized sub-skills via their
+   :term:`Routing Decision Tree`. You invoke the hub; it dispatches to the
+   right sub-skill automatically.
 
 Bayesian Inference Pipeline
 ---------------------------
@@ -9,10 +16,10 @@ Bayesian Inference Pipeline
 A typical Bayesian parameter estimation workflow combines ``@jax-pro`` for
 model implementation with ``@research-expert`` for methodology.
 
-1. Define the forward model with JAX (skill: ``jax-core-programming``).
-2. Build the probabilistic model in NumPyro (skill: ``numpyro-core-mastery``).
-3. Run NUTS sampling and diagnose convergence (skill: ``mcmc-diagnostics``).
-4. Visualize posteriors with ArviZ (skill: ``scientific-visualization``).
+1. Define the forward model with JAX (hub: ``jax-computing`` → sub: ``jax-core-programming``).
+2. Build the probabilistic model in NumPyro (hub: ``bayesian-inference`` → sub: ``numpyro-core-mastery``).
+3. Run NUTS sampling and diagnose convergence (hub: ``bayesian-inference`` → sub: ``mcmc-diagnostics``).
+4. Visualize posteriors with ArviZ (hub: ``research-and-domains`` → sub: ``scientific-visualization``).
 
 .. code-block:: python
 
@@ -47,10 +54,10 @@ Molecular Dynamics Campaign
 For MD simulation campaigns, combine ``@simulation-expert`` with ``@jax-pro``
 for differentiable physics.
 
-1. Set up force fields and initial configurations (skill: ``md-simulation-setup``).
-2. Run production simulations (skill: ``advanced-simulations``).
-3. Analyze trajectories: RDF, MSD, viscosity (skill: ``trajectory-analysis``).
-4. Compute correlation functions (skill: ``correlation-computational-methods``).
+1. Set up force fields and initial configurations (hub: ``simulation-and-hpc`` → sub: ``md-simulation-setup``).
+2. Run production simulations (hub: ``simulation-and-hpc`` → sub: ``advanced-simulations``).
+3. Analyze trajectories: RDF, MSD, viscosity (hub: ``simulation-and-hpc`` → sub: ``trajectory-analysis``).
+4. Compute correlation functions (hub: ``correlation-analysis`` → sub: ``correlation-computational-methods``).
 
 **Agent team:** Use :doc:`Team 14 (md-campaign) </agent-teams-guide>` for
 coordinated MD workflows.
@@ -60,10 +67,10 @@ Research Paper Implementation
 
 Reproducing results from published papers requires systematic methodology.
 
-1. Extract architecture and equations (skill: ``research-paper-implementation``).
-2. Implement in JAX or Julia (skills: ``jax-core-programming``, ``core-julia-patterns``).
-3. Validate against reported benchmarks (skill: ``research-quality-assessment``).
-4. Create publication-quality figures (skill: ``scientific-visualization``).
+1. Extract architecture and equations (hub: ``research-and-domains`` → sub: ``research-paper-implementation``).
+2. Implement in JAX or Julia (hubs: ``jax-computing``, ``julia-language``).
+3. Validate against reported benchmarks (hub: ``research-and-domains`` → sub: ``research-quality-assessment``).
+4. Create publication-quality figures (hub: ``research-and-domains`` → sub: ``scientific-visualization``).
 
 **Agent team:** Use :doc:`Team 16 (paper-implement) </agent-teams-guide>` for
 coordinated reproduction workflows.
@@ -71,5 +78,6 @@ coordinated reproduction workflows.
 Related
 -------
 
-- :doc:`/suites/science-suite` — Full science-suite reference
+- :doc:`/suites/science-suite` — Full science-suite reference (14 hubs → 106 sub-skills)
 - :doc:`/suites/agent-core` — Orchestration and reasoning agents
+- :doc:`/glossary` — Hub Skill, Sub-Skill, and Routing Decision Tree definitions
