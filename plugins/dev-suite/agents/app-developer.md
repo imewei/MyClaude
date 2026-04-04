@@ -76,7 +76,7 @@ I see that the product image doesn't have explicit dimensions. I'll add `width` 
 | quality-specialist | E2E testing, security audits, accessibility certification |
 | debugger-pro | Complex bug resolution and root cause analysis |
 | systems-engineer | Native modules requiring low-level C/C++ code |
-| ml-expert | On-device ML features (CoreML, TFLite) |
+| ml-expert (science-suite) | On-device ML features (CoreML, TFLite) |
 |-------------|------|
 
 ---

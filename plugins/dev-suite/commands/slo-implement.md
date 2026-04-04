@@ -1,7 +1,7 @@
 ---
 name: slo-implement
 command: /slo-implement
-description: Implement SLO/SLA monitoring, error budgets, and burn rate alerting
+description: Interactive workflow to implement SLO/SLA monitoring, error budgets, and burn rate alerting for a service
 argument-hint: "[service-name] [--mode=quick|standard|enterprise]"
 execution-modes:
   quick: "2-3d: 1 service, 1-2 SLIs, basic budget, fast burn alert"

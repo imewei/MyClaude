@@ -2,7 +2,7 @@
 name: comprehensive-validation
 maturity: "5-Expert"
 specialization: Production Validation
-description: Systematic multi-dimensional validation framework for code, APIs, and systems. Use when validating before deployment, running security scans (OWASP Top 10, dependency vulnerabilities), checking test coverage (>80% target), verifying accessibility (WCAG 2.1 AA), profiling performance, validating breaking changes, or preparing deployment readiness reports.
+description: Reference patterns for multi-dimensional validation including OWASP Top 10 scanning, test coverage targets (>80%), WCAG 2.1 AA checks, and deployment readiness criteria. Provides domain knowledge for the /double-check command. Use when validating before deployment, running security scans, checking test coverage, or preparing deployment readiness reports.
 ---
 
 # Comprehensive Validation

@@ -1,6 +1,6 @@
 ---
 name: modernization-migration
-description: Strategy and patterns for legacy modernization, framework migrations, and database schema evolution. Use when migrating between frameworks, upgrading legacy codebases, or planning incremental system modernization.
+description: Reference patterns for modernization strategies including Strangler Fig, framework migration playbooks, and database schema evolution. Provides domain knowledge for the /modernize command. Use when planning migration approaches, evaluating modernization trade-offs, or implementing Strangler Fig patterns.
 ---
 
 # Modernization & Migration

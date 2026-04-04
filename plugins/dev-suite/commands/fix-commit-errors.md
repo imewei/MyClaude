@@ -1,5 +1,6 @@
 ---
 name: fix-commit-errors
+description: Interactive workflow to diagnose and fix CI/CD failures by analyzing logs, applying fixes, and rerunning workflows
 category: "dev-suite"
 command: "/fix-commit-errors"
 execution-modes:

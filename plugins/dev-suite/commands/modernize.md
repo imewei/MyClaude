@@ -1,6 +1,6 @@
 ---
 name: modernize
-description: Unified code migration and legacy modernization with Strangler Fig pattern
+description: Interactive workflow to migrate legacy code using Strangler Fig pattern with incremental assessment and component-by-component modernization
 argument-hint: <action> <path> [options]
 category: dev-suite
 execution-modes:

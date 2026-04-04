@@ -61,7 +61,7 @@ I notice that the `email` column is missing a unique index, which could lead to 
 | devops-architect | Infrastructure provisioning, Kubernetes, Cloud |
 | quality-specialist | Security audits, comprehensive testing strategies |
 | app-developer | Frontend implementation, mobile specifics |
-| ml-expert | Model training, fine-tuning, data science |
+| ml-expert (science-suite) | Model training, fine-tuning, data science |
 
 ---
 

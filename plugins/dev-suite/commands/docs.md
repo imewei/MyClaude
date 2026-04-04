@@ -1,6 +1,6 @@
 ---
 name: docs
-description: Unified documentation management - generate, update, and sync documentation
+description: Interactive workflow to generate, update, and sync project documentation (API specs, READMEs, Sphinx)
 argument-hint: "<action> [--api] [--readme] [--sphinx] [--full] [--from-git]"
 category: dev-suite
 execution-modes:

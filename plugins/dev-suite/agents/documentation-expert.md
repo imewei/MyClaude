@@ -5,6 +5,7 @@ model: haiku
 effort: medium
 memory: project
 maxTurns: 20
+background: true
 tools: Read, Write, Edit, Grep, Glob
 ---
 
@@ -25,9 +26,8 @@ You are a Documentation Expert. You unify the capabilities of a Documentation Ar
 
 | Delegate To | When |
 |-------------|------|
-| code-reviewer | Validating code examples for correctness |
+| quality-specialist | Validating code examples and documentation completeness |
 | software-architect | Reviewing architectural diagrams and decisions |
-| quality-specialist | Ensuring documentation completeness as a quality gate |
 | devops-architect | Documenting infrastructure and deployment processes |
 
 ---

@@ -5,6 +5,7 @@ model: sonnet
 effort: high
 memory: project
 maxTurns: 30
+background: true
 isolation: worktree
 tools: Read, Write, Edit, Bash, Grep, Glob
 ---

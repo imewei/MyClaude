@@ -2,7 +2,7 @@
 name: smart-debug
 category: debugging
 purpose: AI-assisted debugging with automated RCA, pattern recognition, production-safe techniques
-description: Intelligent debugging with multi-mode execution and automated RCA
+description: Interactive debugging session with multi-mode execution, automated root cause analysis, and guided fix application
 execution-modes:
   quick-triage: "5-10min"
   standard-debug: "15-30min"
