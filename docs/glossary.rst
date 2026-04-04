@@ -1,9 +1,21 @@
 Glossary
 ========
 
-This glossary provides definitions for the key technical terms used throughout the Claude Code Plugin Marketplace. It is designed to help both new and experienced developers understand the concepts and tools involved in our 5-suite architecture.
+This glossary provides definitions for the key technical terms used throughout the Claude Code Plugin Marketplace. It is designed to help both new and experienced developers understand the concepts and tools involved in our 3-suite architecture.
 
 .. glossary::
+
+   Hub Skill
+      A meta-orchestrator skill registered in ``plugin.json`` that contains a routing decision tree dispatching to specialized sub-skills. Hub skills are the only skills visible in the manifest; sub-skills are discovered through hub references. See also :term:`Sub-Skill`.
+
+   Sub-Skill
+      A specialized skill directory containing a ``SKILL.md`` that is not directly registered in ``plugin.json``. Sub-skills are reached through a :term:`Hub Skill`'s routing decision tree via ``../`` relative links.
+
+   Routing Decision Tree
+      A code block inside a hub skill's ``SKILL.md`` that maps user intent to the appropriate sub-skill. The tree uses conditional logic (domain keywords, task type) to select the best sub-skill for a given request.
+
+   Agent Team
+      A pre-built configuration of 2-6 agents from one or more suites, coordinated by an orchestrator, designed for a specific workflow (e.g., incident response, Bayesian inference, PR review). See the :doc:`Agent Teams Guide <agent-teams-guide>` for all 34 templates.
 
    JAX
       JAX is a Python library for accelerator-oriented computing that combines Autograd and XLA for high-performance machine learning research. It provides a familiar NumPy-like API but with support for automatic differentiation, JIT compilation, and vectorization.

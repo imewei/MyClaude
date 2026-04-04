@@ -1,6 +1,8 @@
 # Agent Teams Guide for MyClaude Plugin Suites
 
 > 34 ready-to-use team configurations leveraging 24 MyClaude agents + 20 official plugin agents across 3 suites.
+>
+> **v3.1.0:** Skills now use a hub-skill routing architecture (26 hubs → 167 sub-skills). Agent teams reference agents directly and are unaffected by skill consolidation.
 
 ## Prerequisites
 
@@ -1941,3 +1943,5 @@ done until the reviewer's critical issues are addressed.
 - [Official Agent Teams Documentation](https://code.claude.com/docs/en/agent-teams)
 - [Claude Code Subagents](https://code.claude.com/docs/en/sub-agents)
 - [Claude Code Agent Teams Blog](https://addyosmani.com/blog/claude-code-agent-teams/)
+- [Integration Map](integration-map.rst) — Suite dependencies, MCP server roles, and skill coverage
+- [Glossary](glossary.rst) — Key terms including hub skills, sub-skills, and routing trees

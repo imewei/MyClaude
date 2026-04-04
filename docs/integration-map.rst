@@ -1,7 +1,7 @@
 Integration Map
 ===============
 
-How the 3 MyClaude suites (24 agents, 142 skills) connect to each other and to external tools.
+How the 3 MyClaude suites (24 agents, 26 hub skills routing to 167 sub-skills) connect to each other and to external tools.
 
 .. contents:: Table of Contents
    :depth: 2
@@ -20,7 +20,7 @@ Suite Dependencies
    * - **dev-suite**
      - Internal: all 9 agents cross-delegate freely. MCP: Serena, GitHub.
    * - **science-suite**
-     - agent-core (reasoning), dev-suite (packaging). Internal: julia-pro ↔ julia-ml-hpc (SciML vs ML/HPC boundary), neural-network-master ↔ julia-ml-hpc (theory vs Julia impl). MCP: Context7.
+     - agent-core (reasoning), dev-suite (packaging). Internal: julia-pro ↔ julia-ml-hpc (SciML vs ML/HPC boundary), neural-network-master ↔ julia-ml-hpc (theory vs Julia impl). 14 hub skills route to 106 sub-skills. MCP: Context7.
 
 MCP Server Roles
 ----------------
@@ -67,28 +67,32 @@ and context-specialist each delegate to the other two.
 Skill Coverage
 ~~~~~~~~~~~~~~
 
-All 142 skills have Expert Agent pointers (100% coverage):
+All 26 hub skills route to 167 sub-skills with 100% Expert Agent coverage:
 
 .. list-table::
    :header-rows: 1
-   :widths: 25 15 15 45
+   :widths: 25 15 15 15 30
 
    * - Suite
      - Agents
-     - Skills
+     - Hubs
+     - Sub-Skills
      - Coverage
    * - agent-core
      - 3
-     - 7
-     - 100% — all skills cross-referenced
+     - 3
+     - 12
+     - 100% — agent-systems, reasoning-and-memory, llm-engineering
    * - dev-suite
      - 9
-     - 39
+     - 9
+     - 49
      - 100% — mapped across 9 domain agents
    * - science-suite
      - 12
-     - 96
-     - 100% — including 10 new Julia ML/HPC skills
+     - 14
+     - 106
+     - 100% — including Julia ML/HPC and nonlinear dynamics hubs
 
 Official Plugin Agents
 ----------------------
