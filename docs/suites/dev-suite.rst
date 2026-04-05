@@ -1,7 +1,7 @@
 Dev Suite
 =========
 
-Full-stack engineering, infrastructure, CI/CD, quality assurance, and debugging. Merges engineering, infrastructure, and quality capabilities into a single development powerhouse.
+Full-stack engineering, infrastructure, CI/CD, quality assurance, and debugging. Uses the :term:`Hub Skill` architecture with 9 hubs routing to 49 sub-skills. Merges engineering, infrastructure, and quality capabilities into a single development powerhouse.
 
 **Version:** 3.1.0 | **9 Agents** | **12 Registered Commands** | **9 Hubs → 49 Sub-skills** | **2 Hook Events**
 

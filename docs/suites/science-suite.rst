@@ -1,7 +1,7 @@
 Scientific Computing Suite
 ==========================
 
-High-performance computing, physics/chemistry simulations, ML/DL, Julia, JAX, and data science workflows. Features 120 skills organized into 14 hubs with extended context and adaptive reasoning for Claude Opus 4.6.
+High-performance computing, physics/chemistry simulations, ML/DL, Julia, JAX, and data science workflows. Uses the :term:`Hub Skill` architecture with 14 hubs routing to 106 sub-skills. Optimized for Claude Opus 4.6 with extended context and adaptive reasoning.
 
 **Version:** 3.1.0 | **12 Agents** | **0 Registered Commands** | **14 Hubs → 106 Sub-skills**
 

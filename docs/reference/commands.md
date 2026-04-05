@@ -95,10 +95,17 @@ Most commands support three execution modes via `--mode=<mode>`:
 
 ---
 
+## Hub Skill Routing
+
+Commands often invoke hub skills, which route to specialized sub-skills automatically. For example, `/smart-debug` may trigger the `debugging-toolkit` sub-skill through the `dev-workflows` hub. See the suite reference docs for full hub → sub-skill mappings.
+
+---
+
 ## Resources
 
 - [Agent Reference](agents.md)
 - [Quick Reference Cheatsheet](cheatsheet.md)
-- [Full Documentation](https://myclaude.readthedocs.io/en/latest/)
+- [Integration Map](../integration-map.rst) — Suite dependencies and MCP server roles
+- [Glossary](../glossary.rst) — Key terms (Hub Skill, Sub-Skill, Routing Decision Tree)
 
 *Generated from v3.1.0 validated marketplace data.*

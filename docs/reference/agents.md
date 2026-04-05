@@ -67,10 +67,28 @@ Scientific computing, HPC, physics simulations, ML/DL, and research workflows.
 
 ---
 
+## Cross-Suite Delegation
+
+Agents delegate across suite boundaries when tasks require multiple domains. Key patterns:
+
+| From | To | Boundary |
+|------|----|----------|
+| `software-architect` | `devops-architect` | Architecture ↔ Infrastructure |
+| `julia-pro` | `julia-ml-hpc` | SciML/ODE ↔ ML training/GPU/HPC |
+| `neural-network-master` | `julia-ml-hpc` | DL theory ↔ Julia implementation |
+| `nonlinear-dynamics-expert` | `jax-pro` / `julia-pro` | Theory ↔ Implementation |
+| `statistical-physicist` | `jax-pro` | Theory ↔ JAX implementation |
+
+See the [Integration Map](../integration-map.rst) for full delegation patterns and MCP server roles.
+
+---
+
 ## Resources
 
 - [Commands Reference](commands.md)
 - [Quick Reference Cheatsheet](cheatsheet.md)
-- [Full Documentation](https://myclaude.readthedocs.io/en/latest/)
+- [Integration Map](../integration-map.rst) — Suite dependencies and skill coverage
+- [Agent Teams Guide](../agent-teams-guide.md) — 34 pre-built team configurations
+- [Glossary](../glossary.rst) — Key terms (Hub Skill, Sub-Skill, Agent Team)
 
 *Generated from v3.1.0 validated marketplace data.*
