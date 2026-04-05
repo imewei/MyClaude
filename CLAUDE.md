@@ -98,10 +98,18 @@ The manifest uses **file-path references** (not inline objects) to point to agen
 
 ### Python Tooling (`tools/`)
 
-- `tools/validation/` — Validators: metadata, skills, cross-references, context budget, docs
+- `tools/validation/` — Validators (run individually or via `make validate`):
+  - `metadata_validator.py` — Validate plugin.json structure: `python3 tools/validation/metadata_validator.py plugins/<suite>`
+  - `context_budget_checker.py` — Check skill sizes against 2% limit: `python3 tools/validation/context_budget_checker.py [--plugins-dir DIR] [--context-size N]`
+  - `skill_validator.py` — Test skill triggering patterns: `python3 tools/validation/skill_validator.py [--plugins-dir DIR] [--plugin NAME]`
+  - `xref_validator.py` — Validate cross-plugin references and broken links
+  - `doc_checker.py` — Check documentation completeness (README sections, markdown formatting)
+  - `plugin_review_script.py` — Full automated plugin review with structured markdown report
 - `tools/tests/` — Pytest suite: one integrity test per suite + validator tests
 - `tools/common/` — Shared utilities: loader, models, reporter, timer
-- `tools/maintenance/` — Maintenance scripts (e.g., `enable_all_plugins.py`)
+- `tools/maintenance/` — Maintenance scripts:
+  - `enable_all_plugins.py` — Enable all plugins in settings
+  - `analyze_ecosystem.py` — Analyze skill/agent ecosystem metrics
 
 ## Key Conventions
 
