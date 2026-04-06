@@ -119,6 +119,7 @@ The manifest uses **file-path references** (not inline objects) to point to agen
 - **Model tiers**: Agents use `opus` (deep reasoning: orchestrator, reasoning-engine, debugger-pro, software-architect, research-expert, statistical-physicist, nonlinear-dynamics-expert, neural-network-master, simulation-expert), `sonnet` (standard tasks), or `haiku` (fast/simple: documentation-expert).
 - **Command registration**: Only 14 commands are registered in `plugin.json` manifests (2 agent-core, 12 dev-suite). The remaining 22 command files on disk are skill-invoked — do not add them to manifests.
 - **Hub routing**: When adding a new sub-skill, it must be referenced by at least one hub's Core Skills section and Routing Decision Tree. Run the orphan check to verify reachability.
+- **Team templates**: 21 pre-built agent teams in `plugins/agent-core/commands/team-assemble.md`. Old team names work via alias table (Step 5). Before adding a new team, check for >70% agent overlap with existing teams — prefer extending placeholders over creating a new team. No duplicate agent types per team.
 - **Cross-suite delegation**: Agent delegation tables referencing agents from other suites must include a `(suite-name)` annotation, e.g., `ml-expert (science-suite)`.
 - **No wildcard imports**: `from module import *` is prohibited.
 - **Python 3.13+**: Required by `pyproject.toml`.

@@ -7,19 +7,19 @@
   },
   "metadata": {
     "description": "3-suite marketplace for agent orchestration, software development, and scientific computing",
-    "version": "3.0.0",
+    "version": "3.1.0",
     "based_on": "claude-code-workflows v2.0.0",
     "reorganization_date": "2026-03-31",
-    "last_updated": "2026-03-31",
+    "last_updated": "2026-04-06",
     "total_plugins": 3,
-    "note": "v3.0.0 architecture reorganization: 5→3 suites, v2.1.88 spec compliance, tiered model assignments"
+    "note": "v3.1.0: hub-skill routing (26 hubs → 167 sub-skills), 21 agent team templates, tiered model assignments"
   },
   "plugins": [
     {
       "name": "agent-core",
       "source": "./plugins/agent-core",
       "description": "Meta-agent orchestration, advanced reasoning, and context engineering",
-      "version": "3.0.0",
+      "version": "3.1.0",
       "author": {
         "name": "Wei Chen",
         "url": "https://myclaude.readthedocs.io/en/latest/"
@@ -54,7 +54,7 @@
       "name": "dev-suite",
       "source": "./plugins/dev-suite",
       "description": "Unified software development lifecycle: architecture, implementation, CI/CD, testing, debugging, and deployment",
-      "version": "3.0.0",
+      "version": "3.1.0",
       "author": {
         "name": "Wei Chen",
         "url": "https://myclaude.readthedocs.io/en/latest/"
@@ -118,7 +118,7 @@
       "name": "science-suite",
       "source": "./plugins/science-suite",
       "description": "Scientific computing, HPC, simulation, and data analysis workflows",
-      "version": "3.0.0",
+      "version": "3.1.0",
       "author": {
         "name": "Wei Chen",
         "url": "https://myclaude.readthedocs.io/en/latest/"
@@ -139,9 +139,11 @@
       "agents": [
         "./agents/ai-engineer.md",
         "./agents/jax-pro.md",
+        "./agents/julia-ml-hpc.md",
         "./agents/julia-pro.md",
         "./agents/ml-expert.md",
         "./agents/neural-network-master.md",
+        "./agents/nonlinear-dynamics-expert.md",
         "./agents/prompt-engineer.md",
         "./agents/python-pro.md",
         "./agents/research-expert.md",

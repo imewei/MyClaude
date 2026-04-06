@@ -141,10 +141,12 @@ v2.2.1 (2026-02-15)
 
 **Debugging Team Templates**
 
-* Added 5 debugging :term:`agent teams <Agent Team>` (teams 34-38): debug-gui, debug-numerical,
+* Added 5 debugging :term:`agent teams <Agent Team>`: debug-gui, debug-numerical,
   debug-schema, debug-triage, and debug-full-audit.
 * Teams use a Core Trio pattern (explorer → debugger → python-pro) plus rotating specialists.
-* Total: 34 team templates (later consolidated from 38).
+* Consolidated from 35 to 21 team templates (40% reduction): merged 5 overlapping pairs
+  (pr-review, quality-security, sci-compute, md-simulation, docs-publish), removed 7 niche
+  teams, added alias table for backward compatibility. Total: 21 team templates.
 
 **Agent Teams System**
 

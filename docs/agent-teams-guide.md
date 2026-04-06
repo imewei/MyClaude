@@ -70,7 +70,6 @@ These agents come from [claude-plugins-official](https://github.com/anthropics/c
 | | plugin-validator | `plugin-dev:plugin-validator` | Plugin structure validation |
 | **superpowers** | code-reviewer | `superpowers:code-reviewer` | Plan adherence review |
 | **hookify** | conversation-analyzer | `hookify:conversation-analyzer` | Behavior analysis for hooks |
-| **huggingface-skills** | AGENTS | `huggingface-skills:AGENTS` | HuggingFace Hub operations |
 
 ---
 
@@ -93,9 +92,9 @@ These agents come from [claude-plugins-official](https://github.com/anthropics/c
 | # | Team | Best For | Agents Used | Teammates |
 |---|------|----------|-------------|-----------|
 | 8 | sci-compute | JAX/ML/DL pipelines | jax + nn-master + ml + research | 4 |
-| 9 | bayesian-pipeline | NumPyro / MCMC inference | jax + stat-phys + ml + research | 4 |
+| 9 | bayesian-pipeline | NumPyro / MCMC inference | stat-physicist + jax + ml + research | 4 |
 | 10 | julia-sciml | Julia SciML / DiffEq | julia + simulation + research + julia-ml-hpc | 4 |
-| 11 | md-simulation | Molecular dynamics + ML FF | simulation + jax + stat-phys + research | 4 |
+| 11 | md-simulation | Molecular dynamics + ML FF | simulation + jax + stat-physicist + research | 4 |
 | 12 | paper-implement | Reproduce research papers | research + python + jax + ml | 4 |
 
 ### Cross-Cutting (Teams 13-16)

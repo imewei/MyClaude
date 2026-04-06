@@ -15,7 +15,7 @@ This glossary provides definitions for the key technical terms used throughout t
       A code block inside a hub skill's ``SKILL.md`` that maps user intent to the appropriate sub-skill. The tree uses conditional logic (domain keywords, task type) to select the best sub-skill for a given request.
 
    Agent Team
-      A pre-built configuration of 2-6 agents from one or more suites, coordinated by an orchestrator, designed for a specific workflow (e.g., incident response, Bayesian inference, PR review). See the :doc:`Agent Teams Guide <agent-teams-guide>` for all 34 templates.
+      A pre-built configuration of 2-6 agents from one or more suites, coordinated by an orchestrator, designed for a specific workflow (e.g., incident response, Bayesian inference, PR review). See the :doc:`Agent Teams Guide <agent-teams-guide>` for all 21 templates.
 
    JAX
       JAX is a Python library for accelerator-oriented computing that combines Autograd and XLA for high-performance machine learning research. It provides a familiar NumPy-like API but with support for automatic differentiation, JIT compilation, and vectorization.

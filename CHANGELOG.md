@@ -71,10 +71,25 @@
 * Added CLI argument validation for `gh` subprocess calls.
 * Anchored SessionStart hook matcher to `^(startup|resume)$`.
 
+**Team Consolidation (35 → 21 teams)**
+
+* Consolidated `/team-assemble` from 35 to 21 templates (40% reduction).
+* Merged 5 overlapping pairs: pr-review + full-pr-review, quality-audit +
+  security-harden + code-health, sci-pipeline + dl-research, md-campaign +
+  ml-forcefield, docs-sprint + reproducible-research.
+* Removed 7 niche/broken teams: duplicate feature-dev, hf-ml-publish (broken ref),
+  hpc-interop, monorepo-refactor, codebase-archaeology, agent-sdk-build,
+  stat-phys, debug-full-audit.
+* Added alias resolution table for backward compatibility with old team names.
+* Fixed duplicate agent types per team, sharpened role names, added debug
+  cross-references, improved placeholder specificity.
+
 **Documentation**
 
 * Rewrote all reference docs for hub architecture: agents.md, commands.md,
   cheatsheet.md, 3 suite RST files, README.md, CLAUDE.md, index.rst, changelog.
+* Rewrote agent-teams-guide.md for 21-team catalog with updated quick reference
+  and detailed sections.
 * Docs build with zero warnings. 60/60 tests pass.
 
 **Governance**
