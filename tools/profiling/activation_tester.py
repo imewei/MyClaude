@@ -222,8 +222,8 @@ class PluginActivationTester:
                                 # Extract technical terms
                                 words = re.findall(r"\b[a-z]+(?:\.[a-z]+)+\b", line)
                                 patterns.content_patterns.update(words)
-                except Exception:
-                    pass
+                except Exception as e:
+                    print(f"  Warning: failed to parse agent file '{agent_file}': {e}")
 
         return patterns
 
@@ -318,8 +318,8 @@ class PluginActivationTester:
                             match_count += 1
                             if pattern not in matching_patterns:
                                 matching_patterns.append(pattern)
-                except Exception:
-                    pass
+                except Exception as e:
+                    print(f"  Warning: failed to read '{file_path}': {e}")
 
         # Require multiple pattern matches for activation
         threshold = max(2, len(plugin.content_patterns) * 0.1)

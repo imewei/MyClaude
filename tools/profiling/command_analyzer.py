@@ -236,8 +236,8 @@ class CommandSuggestionAnalyzer:
 
                 contexts.append(context)
 
-            except Exception:
-                pass
+            except Exception as e:
+                print(f"  Warning: failed to analyze '{file_path}': {e}")
 
         return contexts
 

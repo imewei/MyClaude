@@ -219,8 +219,8 @@ class SkillApplicationValidator:
                 skill_content = skill_file.read_text().lower()
                 skill.keywords.update(self._extract_keywords(skill_content))
                 skill.patterns.update(self._extract_patterns(skill_content))
-            except Exception:
-                pass
+            except Exception as e:
+                print(f"  Warning: failed to enrich skill '{skill.name}': {e}")
 
     def _extract_keywords(self, text: str) -> Set[str]:
         """Extract keywords from text."""
@@ -556,8 +556,8 @@ class SkillApplicationValidator:
 
                         self.results.append(result)
 
-                except Exception:
-                    pass
+                except Exception as e:
+                    print(f"  Warning: failed to evaluate skill '{skill.name}' on context '{context.query[:50]}...': {e}")
 
         print(f"\n  Analyzed {len(self.results)} skill applications")
 
