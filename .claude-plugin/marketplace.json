@@ -35,7 +35,7 @@
         "context-engineering"
       ],
       "category": "core",
-      "strict": false,
+      "strict": true,
       "agents": [
         "./agents/orchestrator.md",
         "./agents/context-specialist.md",
@@ -72,7 +72,7 @@
         "deployment"
       ],
       "category": "dev",
-      "strict": false,
+      "strict": true,
       "agents": [
         "./agents/app-developer.md",
         "./agents/automation-engineer.md",
@@ -135,7 +135,7 @@
         "julia"
       ],
       "category": "science",
-      "strict": false,
+      "strict": true,
       "agents": [
         "./agents/ai-engineer.md",
         "./agents/jax-pro.md",
