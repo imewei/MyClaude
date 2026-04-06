@@ -1,6 +1,6 @@
 # Agent Teams Guide for MyClaude Plugin Suites
 
-> 34 ready-to-use team configurations leveraging 24 MyClaude agents + 20 official plugin agents across 3 suites.
+> 21 ready-to-use team configurations leveraging 24 MyClaude agents + 20 official plugin agents across 3 suites.
 >
 > **v3.1.0:** Skills now use a hub-skill routing architecture (26 hubs → 167 sub-skills). Agent teams reference agents directly and are unaffected by skill consolidation.
 
@@ -76,64 +76,97 @@ These agents come from [claude-plugins-official](https://github.com/anthropics/c
 
 ## Quick Reference
 
-### Development & Operations (Teams 2-10)
+### Development & Operations (Teams 1-7)
 
 | # | Team | Best For | Agents Used | Teammates |
 |---|------|----------|-------------|-----------|
-| 2 | incident-response | Prod debugging | debugger + sre + devops | 3 |
-| 3 | quality-audit | Pre-release review | quality + architect + debugger + docs | 4 |
-| 4 | sci-pipeline | ML/JAX/Julia workflows | jax + ml + julia-ml-hpc + python + research | 5 |
-| 5 | infra-setup | Cloud + CI/CD | devops + automation + sre | 3 |
-| 6 | modernization | Legacy migration | architect + app-dev + quality + docs | 4 |
-| 7 | dl-research | Neural networks | nn-master + jax + julia-ml-hpc + ml + research | 5 |
-| 8 | api-design | API development | architect + app-dev + quality + docs | 4 |
-| 9 | pr-review | Critical PR review | quality + systems + debugger | 3 |
-| 10 | ai-engineering | AI/LLM/agents | ai-eng + prompt-eng + architect + reasoning | 4 |
+| 1 | feature-dev | Feature build + review | code-architect + app-dev + architect + reviewer | 4 |
+| 2 | incident-response | Production debugging | debugger + sre + devops | 3 |
+| 3 | pr-review | Comprehensive PR review | 4 pr-review-toolkit analyzers | 4 |
+| 4 | quality-security | Quality + security audit | quality + architect + quality + automation | 4 |
+| 5 | api-design | API development | architect + app-dev + quality + docs | 4 |
+| 6 | infra-setup | Cloud + CI/CD setup | devops + automation + sre | 3 |
+| 7 | modernization | Legacy migration | architect + systems + quality + docs | 4 |
 
-### Scientific Computing (Teams 11-16)
+### Scientific Computing (Teams 8-12)
 
 | # | Team | Best For | Agents Used | Teammates |
 |---|------|----------|-------------|-----------|
-| 11 | julia-sciml | Julia SciML / DiffEq | julia + julia-ml-hpc + simulation + research | 4 |
-| 12 | stat-phys | Phase transitions, dynamics | stat-phys + dynamics + jax + sim + research | 5 |
-| 13 | bayesian-pipeline | NumPyro / MCMC inference | jax + stat-phys + ml + research | 4 |
-| 14 | md-campaign | Molecular dynamics | simulation + jax + stat-phys + python | 4 |
-| 15 | ml-forcefield | ML potentials (NequIP/MACE) | nn-master + simulation + jax + research | 4 |
-| 16 | paper-implement | Reproduce research papers | research + python + jax + nn-master | 4 |
+| 8 | sci-compute | JAX/ML/DL pipelines | jax + nn-master + ml + research | 4 |
+| 9 | bayesian-pipeline | NumPyro / MCMC inference | jax + stat-phys + ml + research | 4 |
+| 10 | julia-sciml | Julia SciML / DiffEq | julia + simulation + research + julia-ml-hpc | 4 |
+| 11 | md-simulation | Molecular dynamics + ML FF | simulation + jax + stat-phys + research | 4 |
+| 12 | paper-implement | Reproduce research papers | research + python + jax + ml | 4 |
 
-### Cross-Suite Specialized (Teams 17-25)
-
-| # | Team | Best For | Agents Used | Teammates |
-|---|------|----------|-------------|-----------|
-| 17 | perf-optimize | Performance profiling | systems + jax + debugger + python | 4 |
-| 18 | hpc-interop | Cross-language HPC | julia + julia-ml-hpc + systems + jax | 4 |
-| 19 | reproducible-research | Open science, CI/CD for research | research + python + automation + docs | 4 |
-| 22 | data-pipeline | ETL, feature engineering, MLOps | python + ml + devops + quality | 4 |
-| 23 | security-harden | Security hardening | quality + devops + systems + automation | 4 |
-| 24 | docs-sprint | Documentation overhaul | docs-expert + research + app-dev + architect | 4 |
-| 25 | monorepo-refactor | Monorepo restructuring | architect + automation + quality + systems | 4 |
-
-### Official Plugin Integration (Teams 26-32)
+### Cross-Cutting (Teams 13-16)
 
 | # | Team | Best For | Agents Used | Teammates |
 |---|------|----------|-------------|-----------|
-| 26 | full-pr-review | Maximum PR scrutiny | 4 pr-review-toolkit analyzers | 4 |
-| 27 | feature-dev | Feature + review pipeline (+ frontend variant) | code-architect + architect + app-dev + reviewer | 4 |
-| 28 | agent-sdk-build | Agent SDK applications | sdk-verifiers + ai-eng + prompt-eng | 4 |
-| 29 | plugin-forge | Claude Code extensions | plugin-dev + hookify + quality + validator | 4 |
-| 30 | codebase-archaeology | Codebase understanding | code-explorer + docs-expert + researcher | 3 |
-| 31 | code-health | Code quality + type safety | simplifier + type-eng + type-reviewer + quality | 4 |
-| 32 | hf-ml-publish | HuggingFace model publish | hf-agents + ml-expert + python-pro | 4 |
+| 13 | ai-engineering | AI/LLM apps + agents | ai-eng + prompt-eng + architect + reasoning | 4 |
+| 14 | perf-optimize | Performance profiling | systems + jax + debugger + python | 4 |
+| 15 | data-pipeline | ETL, feature engineering | ml + ml + devops + quality | 4 |
+| 16 | docs-publish | Documentation + reproducibility | docs + quality + research + automation | 4 |
 
-### Debugging (Teams 34-38)
+### Plugin Development (Team 17)
 
 | # | Team | Best For | Agents Used | Teammates |
 |---|------|----------|-------------|-----------|
-| 34 | debug-gui | GUI threading, signal safety | debugger + explorer + python-pro + sre | 4 |
-| 35 | debug-numerical | JAX/NaN, ODE solver, tracing | debugger + explorer + python-pro + jax-pro | 4 |
-| 36 | debug-schema | Schema/type drift, contracts | debugger + explorer + python-pro + type-analyzer | 4 |
-| 37 | debug-triage | Quick bug triage (lightweight) | debugger + explorer | 2 |
-| 38 | debug-full-audit | Comprehensive multi-phase audit | core trio + sre + jax-pro + type-analyzer | 6 |
+| 17 | plugin-forge | Claude Code extensions | plugin-dev + hookify + quality + validator | 4 |
+
+### Debugging (Teams 18-21)
+
+| # | Team | Best For | Agents Used | Teammates |
+|---|------|----------|-------------|-----------|
+| 18 | debug-triage | Quick bug triage (lightweight) | debugger + explorer | 2 |
+| 19 | debug-gui | GUI threading, signal safety | explorer + debugger + python-pro + sre | 4 |
+| 20 | debug-numerical | JAX/NaN, ODE solver, tracing | explorer + debugger + python-pro + jax-pro | 4 |
+| 21 | debug-schema | Schema/type drift, contracts | explorer + debugger + python-pro + type-analyzer | 4 |
+
+---
+
+## Team 1: Feature Development
+
+**When:** Building new features — full-stack, backend-only, or frontend-only — with a design-first pipeline and automated review gate.
+**Suites:** dev-suite, feature-dev plugin, pr-review-toolkit
+
+| Role | Agent Type | File Ownership |
+|------|-----------|----------------|
+| architect | `feature-dev:code-architect` | docs/design/, architecture decisions |
+| builder | `dev-suite:app-developer` | src/components/, src/pages/, src/hooks/ |
+| backend | `dev-suite:software-architect` | src/api/, src/services/, src/models/ |
+| reviewer | `pr-review-toolkit:code-reviewer` | Read-only review |
+
+### Prompt
+
+```
+Create an agent team called "feature-dev" to design, build, and review
+[FEATURE_NAME] for [PROJECT].
+
+Spawn 4 specialist teammates:
+
+1. "architect" (feature-dev:code-architect) - Analyze the existing
+   codebase patterns and conventions, then produce a comprehensive
+   implementation blueprint: files to create/modify, component designs,
+   data flows, and build sequence. Present the blueprint for approval
+   before any code is written. Owns docs/design/.
+
+2. "builder" (dev-suite:app-developer) - Implement the frontend
+   components following the architect's blueprint. Build with
+   [FRONTEND_STACK]. Focus on performance, accessibility, and
+   offline-first patterns. Owns src/components/, src/pages/, src/hooks/.
+
+3. "backend" (dev-suite:software-architect) - Implement the backend
+   services following the architect's blueprint. Build with
+   [BACKEND_STACK]. Design scalable APIs with proper error handling
+   and validation. Owns src/api/, src/services/, src/models/.
+
+4. "reviewer" (pr-review-toolkit:code-reviewer) - After builder and
+   backend complete their work, review all changes for adherence to
+   the architect's blueprint, project guidelines, and best practices.
+   Report only high-priority issues. Read-only.
+
+Workflow: architect → (builder + backend in parallel) → reviewer.
+```
 
 ---
 
@@ -144,7 +177,6 @@ These agents come from [claude-plugins-official](https://github.com/anthropics/c
 
 | Role | Agent Type | Focus Area |
 |------|-----------|------------|
-| Lead | `agent-core:orchestrator` | Triage, synthesis |
 | debugger | `dev-suite:debugger-pro` | Code-level root cause analysis |
 | sre | `dev-suite:sre-expert` | Metrics, logs, traces |
 | infra | `dev-suite:devops-architect` | Infrastructure investigation |
@@ -153,23 +185,24 @@ These agents come from [claude-plugins-official](https://github.com/anthropics/c
 
 ```
 Create an agent team called "incident-response" to investigate a production issue:
-[DESCRIBE_SYMPTOMS].
+[SYMPTOMS].
 
 Spawn 3 teammates to investigate different hypotheses in parallel:
 
-1. "debugger" - Root cause analyst. Examine the application code for bugs,
-   race conditions, or logic errors. Focus on [AFFECTED_MODULES]. Analyze
-   stack traces, reproduce the issue locally, and form hypotheses. Challenge
-   the other teammates' findings.
+1. "debugger" (dev-suite:debugger-pro) - Root cause analyst. Examine the
+   application code for bugs, race conditions, or logic errors. Focus on
+   [AFFECTED_MODULES]. Analyze stack traces, reproduce the issue locally,
+   and form hypotheses. Challenge the other teammates' findings.
 
-2. "sre" - Reliability investigator. Check observability data: metrics,
-   logs, distributed traces. Look for patterns in error rates, latency
-   spikes, resource exhaustion. Correlate timing with deployments or
-   config changes.
+2. "sre" (dev-suite:sre-expert) - Reliability investigator. Check
+   observability data: metrics, logs, distributed traces. Look for patterns
+   in error rates, latency spikes, resource exhaustion. Correlate timing
+   with deployments or config changes.
 
-3. "infra" - Infrastructure analyst. Investigate the deployment environment:
-   container health, network connectivity, database performance,
-   resource limits. Check if infrastructure changes correlate with the issue.
+3. "infra" (dev-suite:devops-architect) - Infrastructure analyst. Investigate
+   the deployment environment: container health, network connectivity,
+   database performance, resource limits. Check if infrastructure changes
+   correlate with the issue.
 
 Have teammates share findings with each other and challenge each other's
 theories. Synthesize into a root cause report with: confirmed root cause,
@@ -178,1082 +211,14 @@ evidence, recommended fix, and prevention measures.
 
 ---
 
-## Team 3: Code Quality & Security Audit
-
-**When:** Comprehensive codebase review before a release or compliance audit.
-**Suites:** dev-suite
-
-| Role | Agent Type | Review Lens |
-|------|-----------|-------------|
-| Lead | `agent-core:orchestrator` | Synthesis, prioritization |
-| security | `dev-suite:quality-specialist` | OWASP, vulnerabilities, auth |
-| architecture | `dev-suite:software-architect` | Design patterns, SOLID, complexity |
-| testing | `dev-suite:debugger-pro` | Test coverage gaps, edge cases |
-| docs | `dev-suite:documentation-expert` | API docs, runbooks, README |
-
-### Prompt
-
-```
-Create an agent team called "quality-audit" to perform a comprehensive
-code quality and security audit of [PROJECT_PATH].
-
-Spawn 4 reviewers, each with a distinct lens:
-
-1. "security" - Security auditor. Scan for OWASP Top 10 vulnerabilities:
-   injection, broken auth, data exposure, XSS, CSRF. Review authentication
-   flows, input validation, secret handling, and dependency vulnerabilities.
-   Rate each finding: Critical/High/Medium/Low.
-
-2. "architecture" - Architecture reviewer. Assess design patterns, SOLID
-   principles, coupling/cohesion, cyclomatic complexity, and code
-   duplication. Identify architectural anti-patterns and tech debt.
-   Produce an Architecture Decision Record for any major concerns.
-
-3. "testing" - Test coverage analyst. Map untested code paths, identify
-   missing edge cases, check for flaky tests, and assess the testing
-   pyramid (unit/integration/e2e ratio). Recommend specific tests to add.
-
-4. "docs" - Documentation reviewer. Audit API documentation completeness,
-   README accuracy, inline comment quality, and operational runbooks.
-   Identify undocumented public APIs and missing error documentation.
-
-Each reviewer works independently, then shares findings. Synthesize into
-a prioritized remediation plan with effort estimates.
-```
-
----
-
-## Team 4: Scientific Computing Pipeline
-
-**When:** Building ML/Bayesian/JAX-based scientific computing workflows.
-**Suites:** science-suite
-
-| Role | Agent Type | Domain |
-|------|-----------|--------|
-| Lead | `agent-core:orchestrator` | Pipeline coordination |
-| jax | `science-suite:jax-pro` | JAX core, GPU acceleration |
-| ml | `science-suite:ml-expert` | Model development, MLOps |
-| julia-hpc | `science-suite:julia-ml-hpc` | Julia GPU kernels, distributed training |
-| python | `science-suite:python-pro` | Systems integration, packaging |
-| research | `science-suite:research-expert` | Methodology validation |
-
-### Prompt
-
-```
-Create an agent team called "sci-pipeline" to build a scientific computing
-pipeline for [RESEARCH_PROBLEM].
-
-Spawn 5 specialist teammates:
-
-1. "jax-engineer" - JAX implementation specialist. Implement the core
-   computational kernels using JAX with JIT compilation, vmap for
-   batching, and pmap for multi-device parallelism. Handle GPU memory
-   management and custom VJPs. Owns src/core/, src/kernels/.
-
-2. "ml-engineer" - ML pipeline architect. Set up experiment tracking
-   (W&B/MLflow), hyperparameter optimization (Optuna), data loading
-   pipelines, and model versioning. Owns src/training/, src/data/,
-   configs/.
-
-3. "julia-hpc" - Julia ML/HPC specialist. Implement Julia GPU kernels
-   using CUDA.jl, distributed training with Lux.jl, and cross-language
-   interop via PythonCall.jl. Handle MPI-based parallelism and SLURM
-   job submission. Owns julia/, scripts/slurm/.
-
-4. "python-architect" - Systems integration. Design the package structure
-   with proper typing (Protocols, Generics), CLI interface, configuration
-   management, and test infrastructure. Owns src/__init__.py, setup files,
-   src/cli/, pyproject.toml.
-
-5. "methodology" - Research methodology validator. Review the computational
-   approach for scientific correctness, reproducibility (explicit seeds,
-   deterministic ops), and statistical validity. Validate against
-   [REFERENCE_PAPERS]. Owns docs/, notebooks/.
-
-Ensure JAX-first architecture: minimize host-device transfers, use
-interpax for interpolation, mandatory ArviZ diagnostics for Bayesian work.
-```
-
----
-
-## Team 5: Infrastructure & DevOps Setup
-
-**When:** Setting up cloud infrastructure, CI/CD, and observability from scratch.
-**Suites:** dev-suite
-
-| Role | Agent Type | Domain |
-|------|-----------|--------|
-| Lead | `agent-core:orchestrator` | Architecture decisions |
-| cloud | `dev-suite:devops-architect` | IaC, cloud resources |
-| cicd | `dev-suite:automation-engineer` | Pipelines, Git workflows |
-| monitoring | `dev-suite:sre-expert` | Observability stack |
-
-### Prompt
-
-```
-Create an agent team called "infra-setup" to build the infrastructure for
-[PROJECT_NAME] on [CLOUD_PROVIDER].
-
-Spawn 3 infrastructure specialists:
-
-1. "cloud-architect" - Platform engineer. Design and implement Infrastructure
-   as Code using Terraform/Pulumi. Set up: VPC/networking, compute
-   (EKS/ECS/Lambda), database (RDS/DynamoDB), storage (S3), and IAM
-   policies. Follow zero-trust networking and least-privilege principles.
-   Owns infra/, terraform/.
-
-2. "cicd-engineer" - Pipeline architect. Build GitHub Actions workflows
-   for: lint/test/build, container image builds, staged deployments
-   (dev->staging->prod), security scanning (SAST/DAST), and release
-   automation. Implement caching and artifact promotion. Owns
-   .github/workflows/, scripts/ci/.
-
-3. "sre-lead" - Observability architect. Set up Prometheus metrics
-   collection, Grafana dashboards, distributed tracing (OpenTelemetry),
-   structured logging, and alerting rules. Define SLIs/SLOs for key
-   services. Implement health checks and readiness probes. Owns
-   monitoring/, dashboards/.
-
-Dependencies: cloud-architect defines infrastructure first, then
-cicd-engineer configures deployment targets, then sre-lead instruments
-the services.
-```
-
----
-
-## Team 6: Legacy Modernization
-
-**When:** Migrating a legacy codebase to modern architecture.
-**Suites:** dev-suite
-
-| Role | Agent Type | Focus |
-|------|-----------|-------|
-| Lead | `agent-core:orchestrator` | Migration strategy |
-| architect | `dev-suite:software-architect` | Target architecture |
-| implementer | `dev-suite:app-developer` | Migration code |
-| qa | `dev-suite:quality-specialist` | Regression testing |
-| docs | `dev-suite:documentation-expert` | Migration documentation |
-
-### Prompt
-
-```
-Create an agent team called "modernization" to migrate [LEGACY_SYSTEM]
-from [OLD_STACK] to [NEW_STACK].
-
-Spawn 4 teammates:
-
-1. "architect" - Target architecture designer. Analyze the existing
-   codebase, identify migration boundaries (Strangler Fig pattern),
-   design the target architecture with clean module boundaries. Create
-   Architecture Decision Records for key choices. Require plan approval
-   before implementation.
-
-2. "implementer" - Migration developer. Execute the migration following
-   the architect's plan. Implement adapter layers for backward
-   compatibility during transition. Refactor module by module, ensuring
-   each module works independently before moving to the next. Owns
-   src/new/, src/adapters/.
-
-3. "qa-lead" - Regression guardian. Write comprehensive tests for existing
-   behavior BEFORE migration begins (characterization tests). Run tests
-   continuously during migration to catch regressions. Owns tests/.
-
-4. "docs-lead" - Migration documenter. Document the migration plan,
-   track progress, write runbooks for rollback procedures, and update
-   API documentation as interfaces change. Owns docs/migration/.
-
-Critical rule: QA must have characterization tests passing before
-implementer begins each module migration.
-```
-
----
-
-## Team 7: Deep Learning Research
-
-**When:** Developing and training neural network architectures.
-**Suites:** science-suite
-
-| Role | Agent Type | Domain |
-|------|-----------|--------|
-| Lead | `agent-core:orchestrator` | Experiment coordination |
-| nn-architect | `science-suite:neural-network-master` | Architecture design |
-| jax-impl | `science-suite:jax-pro` | JAX/Flax implementation |
-| julia-dl | `science-suite:julia-ml-hpc` | Lux.jl architectures, Julia GPU training |
-| mlops | `science-suite:ml-expert` | Training pipeline, deployment |
-| researcher | `science-suite:research-expert` | Paper implementation, validation |
-
-### Prompt
-
-```
-Create an agent team called "dl-research" to develop a neural network
-for [RESEARCH_TASK].
-
-Spawn 5 deep learning specialists:
-
-1. "nn-architect" - Neural architecture designer. Design the model
-   architecture considering: attention mechanisms, normalization strategies,
-   activation functions, and parameter efficiency. Analyze gradient flow
-   and provide theoretical justification. Reference [BASELINE_PAPER].
-   Owns src/models/.
-
-2. "jax-implementer" - JAX/Flax implementation engineer. Implement the
-   architecture using Flax Linen (or Equinox if functional style preferred).
-   Ensure JIT compatibility, efficient memory usage, and multi-device
-   training with pmap/sharding. Implement custom training loops with
-   gradient clipping and mixed precision. Owns src/training/, src/utils/.
-
-3. "julia-dl" - Julia deep learning specialist. Implement alternative
-   architectures using Lux.jl with Julia GPU training via CUDA.jl.
-   Handle Reactant.jl compilation, distributed training, and
-   performance benchmarking against JAX baselines. Owns julia/models/.
-
-4. "mlops-engineer" - Training infrastructure. Set up experiment tracking
-   (W&B), hyperparameter sweeps, checkpoint management, and model
-   evaluation pipelines. Configure data loading with proper prefetching
-   and augmentation. Owns configs/, scripts/, src/data/.
-
-5. "researcher" - Scientific validation. Implement evaluation metrics
-   from the reference paper, set up ablation studies, analyze training
-   diagnostics (loss landscapes, gradient norms, attention patterns).
-   Ensure reproducibility with explicit seeds. Owns notebooks/,
-   evaluation/.
-
-Use mandatory ArviZ diagnostics for any Bayesian components.
-```
-
----
-
-## Team 8: API Design & Integration
-
-**When:** Designing, building, and documenting a public or internal API.
-**Suites:** dev-suite
-
-| Role | Agent Type | Domain |
-|------|-----------|--------|
-| Lead | `agent-core:orchestrator` | API strategy |
-| designer | `dev-suite:software-architect` | API specification |
-| implementer | `dev-suite:app-developer` | Client SDKs |
-| tester | `dev-suite:quality-specialist` | Contract testing |
-| docs | `dev-suite:documentation-expert` | API documentation |
-
-### Prompt
-
-```
-Create an agent team called "api-design" to design and implement a
-[REST/GraphQL/gRPC] API for [SERVICE_NAME].
-
-Spawn 4 teammates:
-
-1. "api-designer" - API architect. Design the API specification following
-   REST best practices: resource naming, HTTP methods, status codes,
-   pagination, filtering, versioning strategy, and error response format.
-   Create OpenAPI/Swagger spec. Require plan approval before
-   implementation. Owns api/, specs/.
-
-2. "implementer" - API developer. Implement the endpoints following the
-   approved spec. Handle authentication (JWT/OAuth2), rate limiting,
-   input validation, and error handling. Implement database queries with
-   proper indexing. Owns src/routes/, src/middleware/, src/controllers/.
-
-3. "tester" - API test engineer. Write contract tests (Pact), integration
-   tests, load tests, and security tests (auth bypass, injection, rate
-   limit circumvention). Validate all error paths. Owns tests/.
-
-4. "docs-writer" - API documentation specialist. Generate comprehensive
-   API docs with: endpoint reference, authentication guide, code
-   examples in multiple languages, error handling guide, and migration
-   guide from previous versions. Owns docs/api/.
-
-Dependency: api-designer defines spec -> implementer + tester work in
-parallel -> docs-writer documents the final API.
-```
-
----
-
-## Team 9: PR Review Swarm
-
-**When:** Thorough multi-perspective review of a critical pull request.
-**Suites:** dev-suite
-**See also:** Team 26 uses pr-review-toolkit specialized analyzers for toolkit-driven review. Team 27 adds review gates to feature development.
-
-| Role | Agent Type | Review Lens |
-|------|-----------|-------------|
-| Lead | `agent-core:orchestrator` | Review synthesis |
-| security | `dev-suite:quality-specialist` | Vulnerabilities, auth |
-| performance | `dev-suite:systems-engineer` | Perf, memory, complexity |
-| correctness | `dev-suite:debugger-pro` | Bugs, edge cases, logic |
-
-### Prompt
-
-```
-Create an agent team called "pr-review" to review PR #[PR_NUMBER] from
-multiple perspectives.
-
-Spawn 3 specialized reviewers:
-
-1. "security-reviewer" - Security-focused review. Check for: injection
-   vulnerabilities, broken authentication, sensitive data exposure,
-   missing input validation, insecure defaults, and dependency
-   vulnerabilities. Rate each finding: Critical/High/Medium/Low.
-
-2. "performance-reviewer" - Performance-focused review. Check for:
-   O(n^2) algorithms, N+1 queries, unnecessary memory allocations,
-   missing caching opportunities, blocking operations, and resource
-   leaks. Profile hot paths and suggest optimizations.
-
-3. "correctness-reviewer" - Logic and correctness review. Check for:
-   off-by-one errors, race conditions, null/undefined handling, edge
-   cases, error propagation, and breaking changes to public APIs.
-   Verify test coverage for all new code paths.
-
-Each reviewer must:
-- Run `gh pr diff [PR_NUMBER]` to get the changes
-- Focus ONLY on changed files and their immediate dependencies
-- Provide specific line references for each finding
-- Suggest concrete fixes, not just problem descriptions
-
-Have reviewers share findings with each other and debate disagreements.
-Synthesize into a unified review with prioritized action items.
-```
-
----
-
-## Team 10: AI Engineering
-
-**When:** Building production AI applications — RAG systems, LLM-powered apps, multi-agent systems, or prompt R&D.
-**Suites:** science-suite, dev-suite, agent-core
-**Replaces:** Former Teams 10 (llm-app), 20 (prompt-lab), and 21 (ai-agent-dev).
-**See also:** Team 28 for Claude Agent SDK apps specifically.
-
-| Role | Agent Type | Domain |
-|------|-----------|--------|
-| Lead | `agent-core:orchestrator` | Architecture decisions |
-| ai-eng | `science-suite:ai-engineer` | RAG, vector search, agent framework |
-| prompt-eng | `science-suite:prompt-engineer` | Prompt design, evaluation |
-| backend | `dev-suite:software-architect` | API, infrastructure |
-| reasoning | `agent-core:reasoning-engine` | Cognitive architecture (agent systems) |
-
-### Prompt (LLM Application)
-
-```
-Create an agent team called "ai-engineering" to build a production LLM
-application for [USE_CASE].
-
-Spawn 4 specialists:
-
-1. "ai-engineer" (science-suite:ai-engineer) - LLM application architect.
-   Design and implement the core AI pipeline: document ingestion, chunking
-   strategy, embedding generation, vector store (Pinecone/Weaviate/pgvector),
-   retrieval logic, and LLM orchestration. For agent systems: design tool
-   definitions, state management, memory systems, and planning strategies
-   (ReAct, Plan-and-Execute). Implement guardrails, content filtering, and
-   hallucination detection. Owns src/ai/, src/retrieval/, src/agents/.
-
-2. "prompt-engineer" (science-suite:prompt-engineer) - Prompt design and
-   evaluation specialist. Design system prompts using zero-shot, few-shot,
-   chain-of-thought, and constitutional AI patterns. Build evaluation
-   framework: LLM-as-judge scoring, reference-based metrics, A/B testing,
-   and regression testing for prompt changes. Optimize for cost/latency/
-   quality trade-offs. Owns prompts/, evaluation/, benchmarks/.
-
-3. "backend-architect" (dev-suite:software-architect) - API and serving
-   infrastructure. Build streaming API endpoints, authentication, rate
-   limiting, semantic caching for LLM responses, session management, and
-   observability (token usage, latency, error rates). Design for horizontal
-   scaling. Owns src/api/, src/middleware/, infra/.
-
-4. "reasoning-architect" (agent-core:reasoning-engine) - Cognitive
-   architecture designer. Design reasoning scaffolds: when to use tools
-   vs direct response, multi-step planning, self-reflection checkpoints,
-   confidence calibration, and self-consistency checks. Implement error
-   correction loops and meta-cognitive reflection. Owns src/reasoning/.
-
-Key requirements: implement structured output parsing, retry logic with
-exponential backoff, cost tracking per request, and comprehensive logging
-of agent decision traces.
-
-For LLM-only apps (no agents): omit reasoning-architect, keep 3 teammates.
-For prompt R&D focus: add a research-expert teammate for statistical
-rigor in evaluation experiments.
-```
-
----
-
-## Team 11: Julia SciML Pipeline
-
-**When:** Building scientific computing workflows with Julia's SciML ecosystem (DifferentialEquations.jl, ModelingToolkit.jl, Turing.jl).
-**Suites:** science-suite
-
-| Role | Agent Type | Domain |
-|------|-----------|--------|
-| Lead | `agent-core:orchestrator` | Pipeline coordination |
-| julia | `science-suite:julia-pro` | Julia packages, DiffEq, SciML |
-| ml-hpc | `science-suite:julia-ml-hpc` | Lux.jl training, GPU kernels, distributed |
-| simulation | `science-suite:simulation-expert` | Physics models, numerical methods |
-| research | `science-suite:research-expert` | Methodology, validation |
-
-### Prompt
-
-```
-Create an agent team called "julia-sciml" to build a Julia SciML pipeline
-for [PROBLEM].
-
-Spawn 4 specialist teammates:
-
-1. "julia-engineer" - Julia SciML specialist. Implement the core solvers
-   using DifferentialEquations.jl with appropriate algorithm selection
-   (Tsit5, TRBDF2, SOSRI for SDEs). Use ModelingToolkit.jl for symbolic
-   model definition and automatic Jacobian generation. Set up Turing.jl
-   for Bayesian parameter estimation if needed. Owns src/, Project.toml.
-
-2. "simulation-architect" - Physics model designer. Define the physical
-   system, conservation laws, boundary conditions, and validation
-   benchmarks. Ensure numerical stability (CFL conditions, adaptive
-   stepping). Design parameter studies and sensitivity analyses.
-   Owns models/, benchmarks/.
-
-3. "methodology" - Research validator. Verify the mathematical formulation
-   against [REFERENCE_PAPERS]. Set up convergence tests, error analysis,
-   and comparison with analytical solutions where available. Ensure
-   reproducibility with fixed seeds and version pinning. Owns docs/,
-   notebooks/, test/.
-
-4. "julia-ml-hpc" - Julia ML/HPC specialist. Implement GPU-accelerated
-   training with Lux.jl and CUDA.jl, distributed computing with MPI.jl,
-   and neural ODE/UDE components via DiffEqFlux.jl. Handle Reactant.jl
-   compilation and multi-node SLURM workflows. Owns src/ml/, scripts/.
-
-Use Julia 1.10+ with strict type annotations at module boundaries.
-```
-
----
-
-## Team 12: Statistical Physics Research
-
-**When:** Studying phase transitions, correlation functions, non-equilibrium dynamics, bifurcations, or soft matter systems.
-**Suites:** science-suite
-
-| Role | Agent Type | Domain |
-|------|-----------|--------|
-| Lead | `agent-core:orchestrator` | Research coordination |
-| physicist | `science-suite:statistical-physicist` | Theory, ensemble methods |
-| dynamics | `science-suite:nonlinear-dynamics-expert` | Bifurcation, chaos, pattern formation |
-| jax | `science-suite:jax-pro` | GPU-accelerated computation |
-| simulation | `science-suite:simulation-expert` | MD/MC simulations |
-| research | `science-suite:research-expert` | Literature, methodology |
-
-### Prompt
-
-```
-Create an agent team called "stat-phys" to investigate [PHYSICAL_SYSTEM]
-with focus on [PHENOMENON] (e.g., phase transitions, correlation functions,
-non-equilibrium dynamics, bifurcations, pattern formation).
-
-Spawn 5 specialist teammates:
-
-1. "theorist" - Statistical physicist. Derive the theoretical framework:
-   partition function, order parameters, critical exponents, scaling
-   relations. Formulate the Langevin/Fokker-Planck equations if
-   non-equilibrium. Identify universality class and relevant symmetries.
-   Predict expected behavior to validate simulations. Owns theory/, docs/.
-
-2. "dynamics" (science-suite:nonlinear-dynamics-expert) - Nonlinear dynamics
-   specialist. Analyze bifurcation diagrams, Lyapunov exponents, strange
-   attractors, and pattern formation mechanisms. Apply SINDy for equation
-   discovery from simulation data. Identify universality in dynamical
-   transitions. Owns src/dynamics/, src/bifurcation/.
-
-3. "gpu-compute" - JAX computation specialist. Implement GPU-accelerated
-   Monte Carlo or molecular dynamics using JAX. Use vmap for ensemble
-   averaging, pmap for multi-GPU scaling. Implement efficient correlation
-   function computation (FFT-based), histogram reweighting, and
-   finite-size scaling analysis. Owns src/compute/, src/analysis/.
-
-4. "simulator" - Simulation architect. Design the simulation protocol:
-   equilibration criteria, production run lengths, sampling strategies
-   (replica exchange, Wang-Landau, umbrella sampling). Implement
-   observables: structure factor S(q), radial distribution g(r),
-   mean-square displacement, susceptibility. Owns src/simulation/.
-
-5. "researcher" - Methodology and literature. Survey existing results
-   for [PHYSICAL_SYSTEM], identify open questions, validate simulation
-   results against known benchmarks. Prepare publication-quality figures
-   using scientific visualization best practices. Owns papers/, figures/.
-
-Ensure: explicit random seeds, ArviZ diagnostics for any Bayesian
-components, proper error estimation (jackknife/bootstrap).
-```
-
----
-
-## Team 13: Bayesian Inference Pipeline
-
-**When:** Building rigorous Bayesian analysis with NumPyro, MCMC diagnostics, and model comparison.
-**Suites:** science-suite
-
-| Role | Agent Type | Domain |
-|------|-----------|--------|
-| Lead | `agent-core:orchestrator` | Pipeline coordination |
-| jax | `science-suite:jax-pro` | NumPyro, NUTS, GPU acceleration |
-| physicist | `science-suite:statistical-physicist` | Prior selection, model structure |
-| ml | `science-suite:ml-expert` | Model comparison, validation |
-| research | `science-suite:research-expert` | Methodology, reproducibility |
-
-### Prompt
-
-```
-Create an agent team called "bayesian-pipeline" to build a Bayesian
-inference pipeline for [DATA_TYPE] using [MODEL_CLASS].
-
-Spawn 4 specialist teammates:
-
-1. "bayesian-engineer" - NumPyro/JAX specialist. Implement the
-   probabilistic model in NumPyro. Set up NUTS sampler with
-   appropriate warmup, target accept probability, and mass matrix
-   adaptation. Implement warm-start from NLSQ point estimates.
-   Handle GPU memory for large datasets. Owns src/models/, src/inference/.
-
-2. "statistician" - Prior and model structure expert. Design informative
-   vs weakly informative priors with physical justification. Implement
-   hierarchical model structure if needed. Design posterior predictive
-   checks and prior predictive simulations. Handle model reparametrization
-   for sampling efficiency (non-centered parameterization). Owns
-   src/priors/, src/diagnostics/.
-
-3. "ml-validator" - Model comparison and validation. Implement model
-   comparison metrics: WAIC, LOO-CV (using ArviZ), Bayes factors.
-   Design cross-validation strategies. Build predictive performance
-   benchmarks against frequentist baselines (MLE, MAP). Owns
-   src/comparison/, src/validation/.
-
-4. "methodology" - Research methodology. Ensure MCMC convergence
-   diagnostics are comprehensive: R-hat (<1.01), ESS (>400/chain),
-   BFMI (>0.3), divergence checks, trace plots. Document all modeling
-   choices and sensitivity analyses. Owns docs/, notebooks/.
-
-Mandatory: ArviZ for all diagnostics. NLSQ warm-start before NUTS.
-Explicit seeds for reproducibility.
-```
-
----
-
-## Team 14: Molecular Dynamics Campaign
-
-**When:** Running MD simulation campaigns for soft matter, biomolecular, or materials science research.
-**Suites:** science-suite
-
-| Role | Agent Type | Domain |
-|------|-----------|--------|
-| Lead | `agent-core:orchestrator` | Campaign coordination |
-| simulation | `science-suite:simulation-expert` | MD setup, force fields |
-| jax | `science-suite:jax-pro` | JAX-MD, GPU acceleration |
-| physicist | `science-suite:statistical-physicist` | Thermodynamics, analysis |
-| python | `science-suite:python-pro` | Workflow automation, packaging |
-
-### Prompt
-
-```
-Create an agent team called "md-campaign" to run a molecular dynamics
-campaign for [SYSTEM] studying [PROPERTY].
-
-Spawn 4 specialist teammates:
-
-1. "md-architect" - Simulation setup specialist. Design the simulation
-   protocol: system construction (particle placement, box geometry),
-   force field selection ([FORCE_FIELD]), ensemble (NVT/NPT/NVE),
-   thermostat/barostat settings, integration timestep, and cutoff
-   schemes. Handle equilibration protocol with staged heating/cooling
-   if needed. Owns simulations/, configs/.
-
-2. "gpu-engine" - JAX-MD implementation. Implement the simulation engine
-   using JAX-MD or custom JAX kernels. Optimize neighbor list updates,
-   force computation (JIT-compiled), and trajectory output. Handle
-   multi-GPU scaling with pmap. Implement enhanced sampling methods
-   (metadynamics, replica exchange) if needed. Owns src/engine/, src/sampling/.
-
-3. "analyst" - Thermodynamic and structural analysis. Compute observables:
-   radial distribution function g(r), structure factor S(q), mean-square
-   displacement (diffusion), velocity autocorrelation, pressure tensor,
-   free energy profiles. Implement block averaging for error estimation.
-   Owns src/analysis/, results/.
-
-4. "workflow-engineer" - Pipeline automation. Build the campaign workflow:
-   parameter sweep management, job scheduling, trajectory storage
-   (HDF5/MDAnalysis), checkpoint/restart logic, and automated convergence
-   checking. Owns scripts/, workflows/, src/io/.
-
-Ensure: proper equilibration verification, production run length
-justified by autocorrelation analysis, explicit seeds.
-
-Optional: For systems with phase transitions or pattern formation, add
-a 5th teammate "dynamics" (science-suite:nonlinear-dynamics-expert) to
-analyze bifurcation diagrams and order parameter dynamics.
-```
-
----
-
-## Team 15: ML Force Field Development
-
-**When:** Developing machine learning interatomic potentials (NequIP, MACE, SchNet).
-**Suites:** science-suite
-
-| Role | Agent Type | Domain |
-|------|-----------|--------|
-| Lead | `agent-core:orchestrator` | Development coordination |
-| nn | `science-suite:neural-network-master` | Architecture design |
-| simulation | `science-suite:simulation-expert` | Training data, validation |
-| jax | `science-suite:jax-pro` | JAX/Flax implementation |
-| research | `science-suite:research-expert` | Benchmarks, paper comparison |
-
-### Prompt
-
-```
-Create an agent team called "ml-forcefield" to develop a machine learning
-force field for [CHEMICAL_SYSTEM].
-
-Spawn 4 specialist teammates:
-
-1. "nn-designer" - Neural network architect. Design the ML potential
-   architecture: equivariant message passing (E(3)-equivariant),
-   interaction layers, radial basis functions, and output heads
-   (energy, forces, stress). Choose between NequIP-style vs MACE-style
-   architectures based on accuracy/speed trade-offs. Owns src/models/.
-
-2. "data-engineer" - Training data specialist. Curate DFT training data:
-   structure selection (active learning, FPS), energy/force/stress labels,
-   train/val/test splits ensuring chemical diversity. Implement data
-   augmentation (rotation, translation). Design the training distribution
-   to cover relevant PES regions. Owns data/, src/datasets/.
-
-3. "jax-trainer" - Training engineer. Implement the training loop in
-   JAX/Flax with: per-atom energy loss + force matching loss (weighted),
-   learning rate scheduling (cosine with warmup), gradient clipping,
-   EMA weights. Multi-GPU training with sharding. Checkpoint management
-   and early stopping. Owns src/training/, configs/.
-
-4. "validator" - Scientific validation. Benchmark against DFT reference:
-   energy MAE, force MAE/RMSE, equation of state, phonon dispersion,
-   elastic constants. Run stability tests: NVE energy drift, radial
-   distribution function comparison, melting point prediction.
-   Owns evaluation/, benchmarks/, notebooks/.
-
-Ensure physical symmetries are built into architecture, not learned.
-```
-
----
-
-## Team 16: Scientific Paper Implementation
-
-**When:** Reproducing results from a research paper or implementing a published algorithm.
-**Suites:** science-suite
-
-| Role | Agent Type | Domain |
-|------|-----------|--------|
-| Lead | `agent-core:orchestrator` | Implementation coordination |
-| research | `science-suite:research-expert` | Paper analysis, methodology |
-| python | `science-suite:python-pro` | Clean implementation |
-| jax | `science-suite:jax-pro` | Numerical implementation |
-| nn | `science-suite:neural-network-master` | Neural architecture (if applicable) |
-
-### Prompt
-
-```
-Create an agent team called "paper-implement" to reproduce results from
-[PAPER_TITLE] ([PAPER_URL]).
-
-Spawn 4 specialist teammates:
-
-1. "paper-analyst" - Research methodology expert. Read and decompose the
-   paper: extract the core algorithm, mathematical formulation, key
-   equations, hyperparameters, dataset descriptions, and evaluation
-   metrics. Identify ambiguities or missing details that need resolution.
-   Create a structured implementation specification. Owns docs/spec/.
-
-2. "python-engineer" - Clean implementation. Build the codebase with
-   proper structure: typed interfaces, configuration management (hydra
-   or dataclasses), CLI entry points, and comprehensive logging. Handle
-   data loading, preprocessing, and results serialization. Owns src/,
-   pyproject.toml.
-
-3. "numerical-engineer" - Core algorithm implementation. Implement the
-   mathematical core in JAX: numerical kernels, optimization routines,
-   custom gradients if needed. Ensure numerical stability (log-space
-   computation, gradient clipping). Match the paper's convergence
-   criteria exactly. Owns src/core/, src/optim/.
-
-4. "reproducer" - Results reproduction. Run the experiments from the
-   paper with identical hyperparameters. Compare outputs: tables,
-   figures, metrics. Document any discrepancies and their likely causes.
-   Prepare reproduction report with side-by-side comparison.
-   Owns experiments/, results/, notebooks/.
-
-Goal: exact reproduction within reported error bars. Document ALL
-deviations from the paper.
-```
-
----
-
-## Team 17: Performance Optimization Swarm
-
-**When:** Profiling and optimizing computational code (Python, JAX, or systems-level).
-**Suites:** dev-suite, science-suite
-
-| Role | Agent Type | Focus |
-|------|-----------|-------|
-| Lead | `agent-core:orchestrator` | Optimization strategy |
-| systems | `dev-suite:systems-engineer` | Systems profiling, memory |
-| jax | `science-suite:jax-pro` | JIT, vectorization, GPU |
-| debugger | `dev-suite:debugger-pro` | Bottleneck identification |
-| python | `science-suite:python-pro` | Python optimization |
-
-### Prompt
-
-```
-Create an agent team called "perf-optimize" to profile and optimize
-[TARGET_CODE].
-
-Spawn 4 specialist teammates:
-
-1. "systems-profiler" - Low-level performance analyst. Profile CPU usage
-   (perf, py-spy), memory allocation (tracemalloc, memray), I/O patterns,
-   and cache behavior. Identify hot functions, memory leaks, and
-   unnecessary copies. Generate flamegraphs. Owns profiling/, reports/.
-
-2. "jax-optimizer" - GPU/vectorization specialist. Convert sequential
-   loops to vmap, identify JIT compilation opportunities, optimize
-   XLA compilation (avoid recompilation), minimize host-device transfers,
-   and implement efficient batching strategies. Profile with JAX's
-   built-in profiler. Owns src/optimized/.
-
-3. "bottleneck-hunter" - Root cause analyst. Investigate why specific
-   operations are slow: algorithmic complexity (O(n^2) → O(n log n)),
-   unnecessary recomputation, inefficient data structures, GIL
-   contention, or I/O bottlenecks. Propose and validate fixes with
-   micro-benchmarks. Owns benchmarks/.
-
-4. "python-optimizer" - Python-level optimization. Apply: Cython/mypyc
-   compilation for hot paths, asyncio for I/O-bound code, multiprocessing
-   for CPU-bound parallelism, efficient data structures (numpy structured
-   arrays, pandas optimizations), and Rust extensions via PyO3 if needed.
-   Owns src/extensions/.
-
-Protocol: Profile first (measure) → Identify top 3 bottlenecks →
-Optimize one at a time → Re-profile → Repeat.
-Target: [SPEEDUP_TARGET] (e.g., 10x throughput improvement).
-```
-
----
-
-## Team 18: HPC & Cross-Language Interop
-
-**When:** Building high-performance pipelines spanning Julia, Python, and compiled languages.
-**Suites:** science-suite, dev-suite
-
-| Role | Agent Type | Domain |
-|------|-----------|--------|
-| Lead | `agent-core:orchestrator` | Architecture coordination |
-| julia | `science-suite:julia-pro` | Julia performance, packages |
-| julia-hpc | `science-suite:julia-ml-hpc` | Julia GPU, MPI.jl, SLURM |
-| systems | `dev-suite:systems-engineer` | C/Rust FFI, memory |
-| jax | `science-suite:jax-pro` | GPU compute, JAX kernels |
-
-### Prompt
-
-```
-Create an agent team called "hpc-interop" to build a cross-language HPC
-pipeline for [COMPUTATIONAL_TASK].
-
-Spawn 4 specialist teammates:
-
-1. "julia-lead" - Julia performance engineer. Implement core numerical
-   algorithms in Julia for maximum performance: type-stable code,
-   @inbounds/@simd annotations, pre-allocation, and LoopVectorization.jl.
-   Build Julia package with proper Project.toml and test suite.
-   Owns julia/, Project.toml.
-
-2. "julia-hpc" - Julia ML/HPC specialist. Implement GPU-accelerated
-   kernels with CUDA.jl, distributed training with Lux.jl, and
-   MPI-based parallelism via MPI.jl. Handle SLURM job orchestration,
-   multi-node scheduling, and PythonCall.jl interop. Owns julia/hpc/,
-   scripts/slurm/.
-
-3. "systems-engineer" - FFI and compiled extensions. Build C/Rust
-   extensions for performance-critical inner loops using PyO3 (Rust)
-   or cffi (C). Handle memory layout compatibility (row vs column major),
-   thread safety, and SIMD intrinsics. Owns extensions/, src/native/.
-
-4. "gpu-architect" - GPU compute layer. Implement GPU kernels in JAX
-   for embarrassingly parallel operations. Handle CPU↔GPU data
-   transfer optimization, kernel fusion, and multi-GPU distribution.
-   Ensure numerical equivalence with CPU reference implementation.
-   Owns src/gpu/, benchmarks/.
-
-Key constraint: zero-copy data transfer between languages where possible.
-Benchmark each language boundary to quantify overhead.
-```
-
----
-
-## Team 19: Reproducible Research
-
-**When:** Setting up fully reproducible computational research with CI/CD, packaging, and documentation.
-**Suites:** science-suite, dev-suite
-
-| Role | Agent Type | Domain |
-|------|-----------|--------|
-| Lead | `agent-core:orchestrator` | Workflow design |
-| research | `science-suite:research-expert` | Methodology, documentation |
-| python | `science-suite:python-pro` | Package structure, environments |
-| cicd | `dev-suite:automation-engineer` | CI/CD, automation |
-| docs | `dev-suite:documentation-expert` | Documentation, notebooks |
-
-### Prompt
-
-```
-Create an agent team called "reproducible-research" to make [PROJECT_NAME]
-fully reproducible and publishable.
-
-Spawn 4 specialist teammates:
-
-1. "methodology" - Research reproducibility expert. Audit the current
-   codebase for reproducibility gaps: hardcoded paths, missing seeds,
-   undocumented parameters, version-dependent behavior. Create a
-   reproducibility checklist and ensure all experiments can be re-run
-   from a single command. Owns docs/methodology/.
-
-2. "packager" - Python packaging specialist. Structure the project as
-   an installable package with pyproject.toml, proper dependency
-   pinning (uv.lock), entry points for all scripts, and typed
-   configuration objects. Set up dev/test/docs dependency groups.
-   Owns pyproject.toml, src/__init__.py, configs/.
-
-3. "ci-engineer" - Automation specialist. Build GitHub Actions workflows:
-   automated testing on every push, notebook execution verification,
-   figure regeneration, dependency security scanning, and automated
-   release with changelog generation. Set up pre-commit hooks. Owns
-   .github/workflows/, .pre-commit-config.yaml.
-
-4. "doc-writer" - Research documentation. Create comprehensive docs:
-   installation guide, quickstart tutorial, API reference (autodoc),
-   mathematical derivation appendix, and a "reproducing our results"
-   guide. Convert key notebooks to Sphinx gallery examples. Owns
-   docs/, notebooks/.
-
-Goal: anyone should be able to clone, install, and reproduce all results
-with `uv sync && uv run reproduce-all`.
-```
-
----
-
-## Team 22: Data Pipeline & Feature Engineering
-
-**When:** Building ETL pipelines, feature stores, or MLOps data infrastructure.
-**Suites:** science-suite, dev-suite
-
-| Role | Agent Type | Domain |
-|------|-----------|--------|
-| Lead | `agent-core:orchestrator` | Pipeline architecture |
-| python | `science-suite:python-pro` | Data engineering |
-| ml | `science-suite:ml-expert` | Feature engineering, MLOps |
-| devops | `dev-suite:devops-architect` | Infrastructure, storage |
-| quality | `dev-suite:quality-specialist` | Data quality, testing |
-
-### Prompt
-
-```
-Create an agent team called "data-pipeline" to build a data pipeline
-for [DATA_SOURCE] feeding [ML_MODEL_OR_ANALYTICS].
-
-Spawn 4 specialist teammates:
-
-1. "data-engineer" - Pipeline architect. Build the ETL/ELT pipeline:
-   data ingestion (batch/streaming), transformation logic (pandas/polars/
-   dask), schema validation (pandera), and output sinks (parquet/Delta
-   Lake). Handle incremental processing and idempotency. Owns
-   src/pipeline/, src/transforms/.
-
-2. "feature-engineer" - ML feature specialist. Design and implement
-   the feature store: feature definitions, computation logic, online/
-   offline serving, feature versioning, and point-in-time correctness.
-   Implement feature monitoring for drift detection. Owns src/features/,
-   feature_store/.
-
-3. "infra-engineer" - Data infrastructure. Set up storage (S3/GCS),
-   orchestration (Airflow/Dagster), compute (Spark/Dask cluster),
-   and metadata management (data catalog). Configure data lineage
-   tracking and access controls. Owns infra/, dags/.
-
-4. "quality-engineer" - Data quality guardian. Implement data quality
-   checks: schema validation, statistical tests (Great Expectations),
-   freshness monitoring, completeness checks, and anomaly detection.
-   Build data quality dashboards. Owns tests/, quality_checks/.
-
-Key constraint: all transformations must be idempotent and testable
-with synthetic data.
-```
-
----
-
-## Team 23: Security Hardening
-
-**When:** Comprehensive security review and hardening of infrastructure and application code.
-**Suites:** dev-suite
-
-| Role | Agent Type | Focus |
-|------|-----------|-------|
-| Lead | `agent-core:orchestrator` | Security strategy |
-| security | `dev-suite:quality-specialist` | AppSec, OWASP |
-| infra | `dev-suite:devops-architect` | Infrastructure security |
-| systems | `dev-suite:systems-engineer` | Binary security, memory |
-| cicd | `dev-suite:automation-engineer` | Security automation |
-
-### Prompt
-
-```
-Create an agent team called "security-harden" to perform security
-hardening of [PROJECT_OR_INFRASTRUCTURE].
-
-Spawn 4 security specialists:
-
-1. "appsec" - Application security expert. Audit for OWASP Top 10:
-   injection, broken auth, sensitive data exposure, XXE, broken access
-   control, security misconfiguration, XSS, insecure deserialization,
-   vulnerable components, insufficient logging. Implement fixes with
-   defense-in-depth. Owns src/security/, src/middleware/.
-
-2. "infra-sec" - Infrastructure security. Harden: network segmentation,
-   firewall rules, TLS configuration, secrets management (Vault/SOPS),
-   IAM policies (least privilege), container security (distroless images,
-   read-only filesystem), and Kubernetes security policies (PSP/OPA).
-   Owns infra/security/, k8s/policies/.
-
-3. "systems-sec" - Systems-level security. Review: memory safety (buffer
-   overflows, use-after-free), privilege escalation vectors, file
-   permission hardening, syscall filtering (seccomp), and binary
-   protections (ASLR, stack canaries, PIE). Owns security/system/.
-
-4. "secops" - Security automation. Build security CI/CD: SAST (Semgrep/
-   CodeQL), DAST (OWASP ZAP), dependency scanning (Dependabot/Snyk),
-   container scanning (Trivy), secret detection (TruffleHog), and
-   compliance checks. Set up security alerts and incident runbooks.
-   Owns .github/workflows/security.yml, scripts/security/.
-
-Output: prioritized finding report with CVSS scores, remediation
-steps, and verification procedures.
-```
-
----
-
-## Team 24: Documentation Sprint
-
-**When:** Comprehensive documentation overhaul for a project or API.
-**Suites:** dev-suite, science-suite
-
-| Role | Agent Type | Domain |
-|------|-----------|--------|
-| Lead | `agent-core:orchestrator` | Documentation strategy |
-| docs | `dev-suite:documentation-expert` | Structure, standards |
-| research | `science-suite:research-expert` | Technical accuracy |
-| frontend | `dev-suite:app-developer` | Interactive examples |
-| architect | `dev-suite:software-architect` | Architecture docs |
-
-### Prompt
-
-```
-Create an agent team called "docs-sprint" to create comprehensive
-documentation for [PROJECT_NAME].
-
-Spawn 4 specialist teammates:
-
-1. "docs-architect" - Documentation structure designer. Design the
-   information architecture: getting started guide, tutorials (learning-
-   oriented), how-to guides (task-oriented), reference (API docs), and
-   explanation (understanding-oriented) following Diataxis framework.
-   Set up Sphinx/MkDocs with proper theme and navigation. Owns docs/.
-
-2. "technical-writer" - Content accuracy validator. Review all
-   documentation for technical accuracy by cross-referencing with source
-   code. Ensure code examples compile and run, CLI flags match actual
-   behavior, and configuration options are complete. Fix any stale or
-   misleading content. Owns docs/reference/.
-
-3. "tutorial-builder" - Interactive examples. Create tutorials with
-   runnable code examples, Jupyter notebooks for interactive exploration,
-   and a cookbook of common patterns. Build a docs testing harness that
-   validates all code snippets. Owns docs/tutorials/, notebooks/.
-
-4. "architecture-writer" - System documentation. Create architecture
-   decision records (ADRs), system diagrams (Mermaid), component
-   interaction documentation, deployment guides, and operational
-   runbooks. Document all configuration options with defaults and
-   examples. Owns docs/architecture/, docs/operations/.
-
-Standard: every public API must have docstring + reference page +
-at least one usage example.
-```
-
----
-
-## Team 25: Monorepo Refactoring
-
-**When:** Restructuring a monorepo, improving build systems, or splitting/merging repositories.
-**Suites:** dev-suite
-
-| Role | Agent Type | Focus |
-|------|-----------|-------|
-| Lead | `agent-core:orchestrator` | Refactoring strategy |
-| architect | `dev-suite:software-architect` | Module boundaries |
-| cicd | `dev-suite:automation-engineer` | Build system, CI |
-| quality | `dev-suite:quality-specialist` | Testing, code quality |
-| systems | `dev-suite:systems-engineer` | Build performance |
-
-### Prompt
-
-```
-Create an agent team called "monorepo-refactor" to restructure
-[REPOSITORY] into a well-organized monorepo (or split it into separate
-packages).
-
-Spawn 4 specialist teammates:
-
-1. "architect" - Module boundary designer. Analyze dependency graphs,
-   identify circular dependencies, define clean module boundaries with
-   explicit public APIs, and design the target directory structure.
-   Create a migration plan with atomic, reversible steps. Require plan
-   approval before implementation. Owns docs/architecture/.
-
-2. "build-engineer" - CI/CD and build system. Configure the build tool
-   (Turborepo/Nx/Pants/Bazel): task pipelines, caching, affected
-   detection (only build/test changed packages), and dependency
-   graph-based ordering. Optimize CI for monorepo: path filtering,
-   incremental builds, shared caches. Owns build configs, .github/workflows/.
-
-3. "quality-guard" - Testing and standards. Ensure test isolation (each
-   package testable independently), shared lint/format configurations,
-   consistent versioning strategy (independent or lockstep), and
-   cross-package integration tests. Set up git hooks for pre-commit
-   validation. Owns tests/, .eslintrc, .prettierrc.
-
-4. "systems-optimizer" - Build performance. Profile build times, optimize
-   dependency resolution, implement workspace caching strategies, and
-   minimize cold build times. Handle shared dependencies (hoisting vs
-   isolation trade-off). Owns performance benchmarks.
-
-Key constraint: migration must be atomic - the repo must build and pass
-tests at every intermediate step.
-```
-
----
-
-## Team 26: Full PR Review
-
-**When:** Critical PRs needing maximum scrutiny — security-sensitive changes, major refactors, or pre-release reviews.
-**Plugins:** pr-review-toolkit (4 specialized analyzers)
-**See also:** Team 9 uses MyClaude domain experts for perspective-based review.
+## Team 3: PR Review
+
+**When:** Critical PRs needing comprehensive, multi-perspective review — security-sensitive changes, major refactors, or pre-release reviews.
+**Suites:** pr-review-toolkit
+**Aliases:** `full-pr-review`
 
 | Role | Agent Type | Focus Area |
 |------|-----------|------------|
-| Lead | `agent-core:orchestrator` | Coordination only |
 | code-reviewer | `pr-review-toolkit:code-reviewer` | Style, guidelines, bugs, comments |
 | failure-hunter | `pr-review-toolkit:silent-failure-hunter` | Error handling, fallbacks |
 | test-analyzer | `pr-review-toolkit:pr-test-analyzer` | Test coverage gaps |
@@ -1262,7 +227,7 @@ tests at every intermediate step.
 ### Prompt
 
 ```
-Create an agent team called "full-pr-review" to perform an exhaustive
+Create an agent team called "pr-review" to perform a comprehensive
 review of [PR_OR_BRANCH].
 
 Spawn 4 specialist teammates:
@@ -1294,138 +259,676 @@ by severity. No file ownership conflicts since all agents are read-only.
 
 ---
 
-## Team 27: Feature Development
+## Team 4: Quality & Security Audit
 
-**When:** Building new features — full-stack, backend-only, or frontend-only — with a design-first pipeline and automated review gate.
-**Plugins:** feature-dev, pr-review-toolkit, dev-suite
-**Replaces:** Former Teams 1 (feature-dev) and 33 (frontend-excellence).
+**When:** Comprehensive codebase review before a release, compliance audit, or security hardening sprint.
+**Suites:** dev-suite
+**Aliases:** `quality-audit`, `security-harden`, `code-health`
 
-| Role | Agent Type | File Ownership |
-|------|-----------|----------------|
-| Lead | `agent-core:orchestrator` | Coordination only |
-| architect | `feature-dev:code-architect` | docs/design/, architecture decisions |
-| builder | `dev-suite:app-developer` | src/components/, src/pages/, src/hooks/ |
-| backend | `dev-suite:software-architect` | src/api/, src/services/, src/models/ |
-| reviewer | `pr-review-toolkit:code-reviewer` | Read-only review |
-
-### Prompt (Full-Stack)
-
-```
-Create an agent team called "feature-dev" to design, build, and review
-[FEATURE_NAME] for [PROJECT].
-
-Spawn 4 specialist teammates:
-
-1. "architect" (feature-dev:code-architect) - Analyze the existing
-   codebase patterns and conventions, then produce a comprehensive
-   implementation blueprint: files to create/modify, component designs,
-   data flows, and build sequence. Present the blueprint for approval
-   before any code is written. Owns docs/design/.
-
-2. "builder" (dev-suite:app-developer) - Implement the frontend
-   components following the architect's blueprint. Build with
-   [FRONTEND_STACK]. Focus on performance, accessibility, and
-   offline-first patterns. Owns src/components/, src/pages/, src/hooks/.
-
-3. "backend" (dev-suite:software-architect) - Implement the
-   backend services following the architect's blueprint. Build with
-   [BACKEND_STACK]. Design scalable APIs with proper error handling
-   and validation. Owns src/api/, src/services/, src/models/.
-
-4. "reviewer" (pr-review-toolkit:code-reviewer) - After builder and
-   backend complete their work, review all changes for adherence to
-   the architect's blueprint, project guidelines, and best practices.
-   Report only high-priority issues. Read-only.
-
-Workflow: architect → (builder + backend in parallel) → reviewer.
-```
-
-### Variant: Frontend-Only (with dual review gates)
-
-For frontend-only features, drop the backend agent and add a second reviewer for maximum quality:
-
-```
-Create an agent team called "frontend-dev" to build and review
-[FEATURE_NAME] using [FRONTEND_STACK].
-
-Spawn 3 specialist teammates:
-
-1. "builder" (dev-suite:app-developer) - Implement the frontend feature
-   with focus on performance, accessibility (WCAG 2.1 AA), responsive
-   design, and offline-first patterns. Write component and integration
-   tests. Owns src/components/, src/pages/, src/hooks/, tests/.
-
-2. "pr-reviewer" (pr-review-toolkit:code-reviewer) - After builder
-   completes, review all changes for adherence to project guidelines,
-   style violations, potential bugs, and accessibility issues. Read-only.
-
-3. "ai-reviewer" (coderabbit:code-reviewer) - Independently review the
-   same changes using CodeRabbit AI analysis. Provide a second opinion
-   on code quality and improvement suggestions. Read-only.
-
-Workflow: builder → (pr-reviewer + ai-reviewer in parallel).
-```
-
----
-
-## Team 28: Agent SDK Build
-
-**When:** Building AI agent applications using the Claude Agent SDK (TypeScript or Python).
-**Plugins:** agent-sdk-dev, science-suite, dev-suite
-
-| Role | Agent Type | File Ownership |
-|------|-----------|----------------|
-| Lead | `agent-core:orchestrator` | Coordination only |
-| ai-engineer | `science-suite:ai-engineer` | src/agents/, src/tools/ |
-| prompt-designer | `science-suite:prompt-engineer` | prompts/, system instructions |
-| api-architect | `dev-suite:software-architect` | src/api/, infrastructure |
-| verifier | `agent-sdk-dev:agent-sdk-verifier-[LANG]` | Read-only validation |
+| Role | Agent Type | Review Lens |
+|------|-----------|-------------|
+| security | `dev-suite:quality-specialist` | OWASP, vulnerabilities, auth |
+| architecture | `dev-suite:software-architect` | Design patterns, SOLID, complexity |
+| testing | `dev-suite:quality-specialist` | Test coverage, edge cases |
+| secops | `dev-suite:automation-engineer` | Security CI/CD automation |
 
 ### Prompt
 
 ```
-Create an agent team called "agent-sdk-build" to build a production
-Agent SDK application: [AGENT_DESCRIPTION].
+Create an agent team called "quality-security" to perform a comprehensive
+code quality, architecture, and security audit of [PROJECT_PATH].
 
-Target language: [LANGUAGE] (typescript or python)
+Spawn 4 reviewers, each with a distinct lens:
 
-Spawn 4 specialist teammates:
+1. "security" (dev-suite:quality-specialist) - Application security auditor.
+   Scan for OWASP Top 10 vulnerabilities: injection, broken auth, data
+   exposure, XSS, CSRF, insecure deserialization. Review authentication
+   flows, input validation, secret handling, and dependency vulnerabilities.
+   Check container security, TLS configuration, and IAM policies if
+   applicable. Rate each finding: Critical/High/Medium/Low with CVSS scores.
 
-1. "ai-engineer" (science-suite:ai-engineer) - Design the agent
-   architecture: tool definitions, agent orchestration patterns,
-   memory/context management, and multi-agent coordination if needed.
-   Implement the core agent logic using Claude Agent SDK patterns.
-   Owns src/agents/, src/tools/.
+2. "architecture" (dev-suite:software-architect) - Architecture reviewer.
+   Assess design patterns, SOLID principles, coupling/cohesion, cyclomatic
+   complexity, and code duplication. Identify architectural anti-patterns,
+   tech debt hotspots, and missing module boundaries. Produce Architecture
+   Decision Records for major concerns.
 
-2. "prompt-designer" (science-suite:prompt-engineer) - Craft production
-   system prompts using chain-of-thought, constitutional AI principles,
-   and few-shot examples. Optimize for accuracy and safety. Create
-   evaluation test cases. Owns prompts/, system instructions.
+3. "testing" (dev-suite:quality-specialist) - Test coverage analyst. Map
+   untested code paths, identify missing edge cases, check for flaky tests,
+   and assess the testing pyramid (unit/integration/e2e ratio). Verify
+   error path coverage and contract tests. Recommend specific tests to add.
 
-3. "api-architect" (dev-suite:software-architect) - Build the
-   API layer and infrastructure: REST/WebSocket endpoints, streaming
-   support, authentication, rate limiting, and deployment config.
-   Owns src/api/, infrastructure/.
+4. "secops" (dev-suite:automation-engineer) - Security automation engineer.
+   Build or verify security CI/CD: SAST (Semgrep/CodeQL), DAST (OWASP ZAP),
+   dependency scanning (Dependabot/Snyk), container scanning (Trivy), and
+   secret detection (TruffleHog). Set up pre-commit hooks for security
+   checks. Owns .github/workflows/security.yml, scripts/security/.
 
-4. "verifier" (agent-sdk-dev:agent-sdk-verifier-[LANGUAGE]) - After
-   implementation is complete, verify the application follows SDK best
-   practices, proper tool use patterns, and documentation
-   recommendations. Flag any misconfigurations. Read-only.
-
-Workflow: ai-engineer + prompt-designer + api-architect (parallel) → verifier.
+Each reviewer works independently, then shares findings. Synthesize into
+a prioritized remediation plan with effort estimates and CVSS severity.
 ```
 
 ---
 
-## Team 29: Plugin Forge
+## Team 5: API Design & Integration
+
+**When:** Designing, building, and documenting a public or internal API.
+**Suites:** dev-suite
+
+| Role | Agent Type | Domain |
+|------|-----------|--------|
+| api-designer | `dev-suite:software-architect` | API specification |
+| implementer | `dev-suite:app-developer` | Endpoint implementation |
+| tester | `dev-suite:quality-specialist` | Contract testing |
+| docs-writer | `dev-suite:documentation-expert` | API documentation |
+
+### Prompt
+
+```
+Create an agent team called "api-design" to design and implement a
+[API_TYPE] API for [SERVICE_NAME].
+
+Spawn 4 teammates:
+
+1. "api-designer" (dev-suite:software-architect) - API architect. Design
+   the API specification following REST best practices: resource naming,
+   HTTP methods, status codes, pagination, filtering, versioning strategy,
+   and error response format. Create OpenAPI/Swagger spec. Require plan
+   approval before implementation. Owns api/, specs/.
+
+2. "implementer" (dev-suite:app-developer) - API developer. Implement the
+   endpoints following the approved spec. Handle authentication (JWT/OAuth2),
+   rate limiting, input validation, and error handling. Implement database
+   queries with proper indexing. Owns src/routes/, src/middleware/,
+   src/controllers/.
+
+3. "tester" (dev-suite:quality-specialist) - API test engineer. Write
+   contract tests (Pact), integration tests, load tests, and security
+   tests (auth bypass, injection, rate limit circumvention). Validate all
+   error paths. Owns tests/.
+
+4. "docs-writer" (dev-suite:documentation-expert) - API documentation
+   specialist. Generate comprehensive API docs with: endpoint reference,
+   authentication guide, code examples in multiple languages, error
+   handling guide, and migration guide from previous versions.
+   Owns docs/api/.
+
+Dependency: api-designer defines spec -> implementer + tester work in
+parallel -> docs-writer documents the final API.
+```
+
+---
+
+## Team 6: Infrastructure & DevOps Setup
+
+**When:** Setting up cloud infrastructure, CI/CD, and observability from scratch.
+**Suites:** dev-suite
+
+| Role | Agent Type | Domain |
+|------|-----------|--------|
+| cloud-architect | `dev-suite:devops-architect` | IaC, cloud resources |
+| cicd-engineer | `dev-suite:automation-engineer` | Pipelines, Git workflows |
+| sre-lead | `dev-suite:sre-expert` | Observability stack |
+
+### Prompt
+
+```
+Create an agent team called "infra-setup" to build the infrastructure for
+[PROJECT_NAME] on [CLOUD_PROVIDER].
+
+Spawn 3 infrastructure specialists:
+
+1. "cloud-architect" (dev-suite:devops-architect) - Platform engineer. Design
+   and implement Infrastructure as Code using Terraform/Pulumi. Set up:
+   VPC/networking, compute (EKS/ECS/Lambda), database (RDS/DynamoDB),
+   storage (S3), and IAM policies. Follow zero-trust networking and
+   least-privilege principles. Owns infra/, terraform/.
+
+2. "cicd-engineer" (dev-suite:automation-engineer) - Pipeline architect.
+   Build GitHub Actions workflows for: lint/test/build, container image
+   builds, staged deployments (dev->staging->prod), security scanning
+   (SAST/DAST), and release automation. Implement caching and artifact
+   promotion. Owns .github/workflows/, scripts/ci/.
+
+3. "sre-lead" (dev-suite:sre-expert) - Observability architect. Set up
+   Prometheus metrics collection, Grafana dashboards, distributed tracing
+   (OpenTelemetry), structured logging, and alerting rules. Define
+   SLIs/SLOs for key services. Implement health checks and readiness
+   probes. Owns monitoring/, dashboards/.
+
+Dependencies: cloud-architect defines infrastructure first, then
+cicd-engineer configures deployment targets, then sre-lead instruments
+the services.
+```
+
+---
+
+## Team 7: Legacy Modernization
+
+**When:** Migrating a legacy codebase to modern architecture.
+**Suites:** dev-suite
+
+| Role | Agent Type | Focus |
+|------|-----------|-------|
+| architect | `dev-suite:software-architect` | Target architecture |
+| implementer | `dev-suite:systems-engineer` | Migration code |
+| qa-lead | `dev-suite:quality-specialist` | Regression testing |
+| docs-lead | `dev-suite:documentation-expert` | Migration documentation |
+
+### Prompt
+
+```
+Create an agent team called "modernization" to migrate [LEGACY_SYSTEM]
+from [OLD_STACK] to [NEW_STACK].
+
+Spawn 4 teammates:
+
+1. "architect" (dev-suite:software-architect) - Target architecture designer.
+   Analyze the existing codebase, identify migration boundaries (Strangler
+   Fig pattern), design the target architecture with clean module boundaries.
+   Create Architecture Decision Records for key choices. Require plan
+   approval before implementation.
+
+2. "implementer" (dev-suite:systems-engineer) - Migration developer. Execute
+   the migration following the architect's plan. Implement adapter layers
+   for backward compatibility during transition. Refactor module by module,
+   ensuring each module works independently before moving to the next.
+   Owns src/new/, src/adapters/.
+
+3. "qa-lead" (dev-suite:quality-specialist) - Regression guardian. Write
+   comprehensive tests for existing behavior BEFORE migration begins
+   (characterization tests). Run tests continuously during migration to
+   catch regressions. Owns tests/.
+
+4. "docs-lead" (dev-suite:documentation-expert) - Migration documenter.
+   Document the migration plan, track progress, write runbooks for rollback
+   procedures, and update API documentation as interfaces change.
+   Owns docs/migration/.
+
+Critical rule: QA must have characterization tests passing before
+implementer begins each module migration.
+```
+
+---
+
+## Team 8: Scientific Computing Pipeline
+
+**When:** Building ML/JAX/deep learning scientific computing workflows.
+**Suites:** science-suite
+**Aliases:** `sci-pipeline`, `dl-research`
+
+| Role | Agent Type | Domain |
+|------|-----------|--------|
+| jax-engineer | `science-suite:jax-pro` | JAX core, GPU acceleration |
+| architect | `science-suite:neural-network-master` | Model/algorithm design |
+| ml-engineer | `science-suite:ml-expert` | Experiment tracking, MLOps |
+| researcher | `science-suite:research-expert` | Methodology validation |
+
+### Prompt
+
+```
+Create an agent team called "sci-compute" to build a scientific computing
+or deep learning pipeline for [PROBLEM].
+
+Spawn 4 specialist teammates:
+
+1. "jax-engineer" (science-suite:jax-pro) - JAX implementation specialist.
+   Implement the core computational kernels using JAX with JIT compilation,
+   vmap for batching, pmap for multi-device parallelism, and custom VJPs
+   where needed. Handle GPU memory management, efficient batching, and
+   mixed precision training. For neural networks, implement training loops
+   with gradient clipping. Owns src/core/, src/kernels/, src/training/.
+
+2. "architect" (science-suite:neural-network-master) - Model and architecture
+   designer. For deep learning: design neural architectures considering
+   attention mechanisms, normalization, activation functions, and parameter
+   efficiency. Analyze gradient flow and provide theoretical justification.
+   For non-DL pipelines: design the computational graph, algorithm selection,
+   and numerical stability strategy. Reference [REFERENCE_PAPERS].
+   Owns src/models/.
+
+3. "ml-engineer" (science-suite:ml-expert) - ML pipeline architect. Set up
+   experiment tracking (W&B/MLflow), hyperparameter optimization (Optuna),
+   data loading pipelines, model versioning, and checkpoint management.
+   Configure data augmentation and preprocessing. Owns configs/, scripts/,
+   src/data/.
+
+4. "researcher" (science-suite:research-expert) - Research methodology
+   validator. Review the computational approach for scientific correctness,
+   reproducibility (explicit seeds, deterministic ops), and statistical
+   validity. Implement evaluation metrics, ablation studies, and training
+   diagnostics. Validate against [REFERENCE_PAPERS]. Owns docs/, notebooks/,
+   evaluation/.
+
+Ensure JAX-first architecture: minimize host-device transfers, use
+interpax for interpolation, mandatory ArviZ diagnostics for Bayesian work.
+```
+
+---
+
+## Team 9: Bayesian Inference Pipeline
+
+**When:** Building rigorous Bayesian analysis with NumPyro, MCMC diagnostics, and model comparison.
+**Suites:** science-suite
+
+| Role | Agent Type | Domain |
+|------|-----------|--------|
+| bayesian-engineer | `science-suite:statistical-physicist` | NumPyro, NUTS, GPU acceleration |
+| statistician | `science-suite:research-expert` | Prior selection, model structure |
+| ml-validator | `science-suite:ml-expert` | Model comparison, validation |
+| methodology | `science-suite:jax-pro` | MCMC diagnostics, reproducibility |
+
+### Prompt
+
+```
+Create an agent team called "bayesian-pipeline" to build a Bayesian
+inference pipeline for [DATA_TYPE] using [MODEL_CLASS].
+
+Spawn 4 specialist teammates:
+
+1. "bayesian-engineer" (science-suite:statistical-physicist) - NumPyro/JAX specialist. Implement the
+   probabilistic model in NumPyro. Set up NUTS sampler with
+   appropriate warmup, target accept probability, and mass matrix
+   adaptation. Implement warm-start from NLSQ point estimates.
+   Handle GPU memory for large datasets. Owns src/models/, src/inference/.
+
+2. "statistician" (science-suite:research-expert) - Prior and model structure expert. Design informative
+   vs weakly informative priors with physical justification. Implement
+   hierarchical model structure if needed. Design posterior predictive
+   checks and prior predictive simulations. Handle model reparametrization
+   for sampling efficiency (non-centered parameterization). Owns
+   src/priors/, src/diagnostics/.
+
+3. "ml-validator" (science-suite:ml-expert) - Model comparison and validation. Implement model
+   comparison metrics: WAIC, LOO-CV (using ArviZ), Bayes factors.
+   Design cross-validation strategies. Build predictive performance
+   benchmarks against frequentist baselines (MLE, MAP). Owns
+   src/comparison/, src/validation/.
+
+4. "methodology" (science-suite:jax-pro) - Research methodology. Ensure MCMC convergence
+   diagnostics are comprehensive: R-hat (<1.01), ESS (>400/chain),
+   BFMI (>0.3), divergence checks, trace plots. Document all modeling
+   choices and sensitivity analyses. Owns docs/, notebooks/.
+
+Mandatory: ArviZ for all diagnostics. NLSQ warm-start before NUTS.
+Explicit seeds for reproducibility.
+```
+
+---
+
+## Team 10: Julia SciML Pipeline
+
+**When:** Building scientific computing workflows with Julia's SciML ecosystem (DifferentialEquations.jl, ModelingToolkit.jl, Turing.jl).
+**Suites:** science-suite
+
+| Role | Agent Type | Domain |
+|------|-----------|--------|
+| julia-engineer | `science-suite:julia-pro` | Julia packages, DiffEq, SciML |
+| simulation-architect | `science-suite:simulation-expert` | Physics models, numerical methods |
+| methodology | `science-suite:research-expert` | Methodology, validation |
+| python-bridge | `science-suite:python-pro` | Interoperability, visualization |
+
+### Prompt
+
+```
+Create an agent team called "julia-sciml" to build a Julia SciML pipeline
+for [PROBLEM].
+
+Spawn 4 specialist teammates:
+
+1. "julia-engineer" (science-suite:julia-pro) - Julia SciML specialist. Implement the core solvers
+   using DifferentialEquations.jl with appropriate algorithm selection
+   (Tsit5, TRBDF2, SOSRI for SDEs). Use ModelingToolkit.jl for symbolic
+   model definition and automatic Jacobian generation. Set up Turing.jl
+   for Bayesian parameter estimation if needed. Owns src/, Project.toml.
+
+2. "simulation-architect" (science-suite:simulation-expert) - Physics model designer. Define the physical
+   system, conservation laws, boundary conditions, and validation
+   benchmarks. Ensure numerical stability (CFL conditions, adaptive
+   stepping). Design parameter studies and sensitivity analyses.
+   Owns models/, benchmarks/.
+
+3. "methodology" (science-suite:research-expert) - Research validator. Verify the mathematical formulation
+   against [REFERENCE_PAPERS]. Set up convergence tests, error analysis,
+   and comparison with analytical solutions where available. Ensure
+   reproducibility with fixed seeds and version pinning. Owns docs/,
+   notebooks/, test/.
+
+4. "python-bridge" (science-suite:python-pro) - Interoperability engineer. Build Python-Julia bridges
+   using PythonCall.jl or PyJulia for data exchange. Set up data ingestion
+   pipelines, results export (HDF5/Arrow), and visualization (Makie.jl
+   for interactive, Plots.jl for publication). Owns scripts/, viz/.
+
+Use Julia 1.10+ with strict type annotations at module boundaries.
+```
+
+---
+
+## Team 11: Molecular Dynamics & ML Force Fields
+
+**When:** Running MD simulation campaigns or developing machine learning interatomic potentials.
+**Suites:** science-suite
+**Aliases:** `md-campaign`, `ml-forcefield`
+
+| Role | Agent Type | Domain |
+|------|-----------|--------|
+| simulation-architect | `science-suite:simulation-expert` | MD setup, force fields, training data |
+| gpu-engine | `science-suite:jax-pro` | JAX-MD, GPU acceleration, ML FF training |
+| analyst | `science-suite:statistical-physicist` | Thermodynamics, structural analysis |
+| researcher | `science-suite:research-expert` | Validation, workflow automation |
+
+### Prompt
+
+```
+Create an agent team called "md-simulation" to run a molecular dynamics
+campaign for [SYSTEM] studying [PROPERTY].
+
+Spawn 4 specialist teammates:
+
+1. "simulation-architect" (science-suite:simulation-expert) - Simulation setup
+   and data specialist. Design the simulation protocol: system construction
+   (particle placement, box geometry), force field selection ([FORCE_FIELD]),
+   ensemble (NVT/NPT/NVE), thermostat/barostat settings, integration
+   timestep, and cutoff schemes. Handle equilibration protocol with staged
+   heating/cooling if needed. For ML force field workflows: curate DFT
+   training data with active learning, design the training distribution to
+   cover relevant PES regions. Owns simulations/, configs/, data/.
+
+2. "gpu-engine" (science-suite:jax-pro) - JAX-MD implementation and training
+   engineer. Implement the simulation engine using JAX-MD or custom JAX
+   kernels. Optimize neighbor list updates, force computation (JIT-compiled),
+   and trajectory output. Handle multi-GPU scaling with pmap. For ML force
+   fields: implement training loop with per-atom energy loss + force matching
+   loss, learning rate scheduling, gradient clipping, and EMA weights.
+   Implement enhanced sampling methods (metadynamics, replica exchange) if
+   needed. Owns src/engine/, src/sampling/, src/training/.
+
+3. "analyst" (science-suite:statistical-physicist) - Thermodynamic and
+   structural analysis. Compute observables: radial distribution function
+   g(r), structure factor S(q), mean-square displacement (diffusion),
+   velocity autocorrelation, pressure tensor, free energy profiles.
+   Implement block averaging for error estimation. For ML force fields:
+   benchmark against DFT reference (energy MAE, force MAE/RMSE, phonon
+   dispersion, elastic constants). Owns src/analysis/, results/, evaluation/.
+
+4. "researcher" (science-suite:research-expert) - Scientific validation and
+   workflow automation. Build the campaign workflow: parameter sweep
+   management, job scheduling, trajectory storage (HDF5/MDAnalysis),
+   checkpoint/restart logic, and automated convergence checking. Validate
+   results against known benchmarks. For ML force fields: run stability
+   tests (NVE energy drift, melting point prediction). Owns scripts/,
+   workflows/, notebooks/.
+
+Ensure: proper equilibration verification, production run length
+justified by autocorrelation analysis, explicit seeds. For ML force
+fields: ensure physical symmetries are built into architecture, not learned.
+```
+
+---
+
+## Team 12: Scientific Paper Implementation
+
+**When:** Reproducing results from a research paper or implementing a published algorithm.
+**Suites:** science-suite
+
+| Role | Agent Type | Domain |
+|------|-----------|--------|
+| paper-analyst | `science-suite:research-expert` | Paper analysis, methodology |
+| python-engineer | `science-suite:python-pro` | Clean implementation |
+| numerical-engineer | `science-suite:jax-pro` | Numerical implementation |
+| reproducer | `science-suite:ml-expert` | Results reproduction |
+
+### Prompt
+
+```
+Create an agent team called "paper-implement" to reproduce results from
+[PAPER_TITLE] ([PAPER_URL]).
+
+Spawn 4 specialist teammates:
+
+1. "paper-analyst" (science-suite:research-expert) - Research methodology expert. Read and decompose the
+   paper: extract the core algorithm, mathematical formulation, key
+   equations, hyperparameters, dataset descriptions, and evaluation
+   metrics. Identify ambiguities or missing details that need resolution.
+   Create a structured implementation specification. Owns docs/spec/.
+
+2. "python-engineer" (science-suite:python-pro) - Clean implementation. Build the codebase with
+   proper structure: typed interfaces, configuration management (hydra
+   or dataclasses), CLI entry points, and comprehensive logging. Handle
+   data loading, preprocessing, and results serialization. Owns src/,
+   pyproject.toml.
+
+3. "numerical-engineer" (science-suite:jax-pro) - Core algorithm implementation. Implement the
+   mathematical core in JAX: numerical kernels, optimization routines,
+   custom gradients if needed. Ensure numerical stability (log-space
+   computation, gradient clipping). Match the paper's convergence
+   criteria exactly. Owns src/core/, src/optim/.
+
+4. "reproducer" (science-suite:ml-expert) - Results reproduction. Run the experiments from the
+   paper with identical hyperparameters. Compare outputs: tables,
+   figures, metrics. Document any discrepancies and their likely causes.
+   Prepare reproduction report with side-by-side comparison.
+   Owns experiments/, results/, notebooks/.
+
+Goal: exact reproduction within reported error bars. Document ALL
+deviations from the paper.
+```
+
+---
+
+## Team 13: AI Engineering
+
+**When:** Building production AI applications — RAG systems, LLM-powered apps, multi-agent systems, or prompt R&D.
+**Suites:** science-suite, dev-suite, agent-core
+**Aliases:** `llm-app`, `ai-agent-dev`, `prompt-lab`
+
+| Role | Agent Type | Domain |
+|------|-----------|--------|
+| ai-engineer | `science-suite:ai-engineer` | RAG, vector search, agent framework |
+| prompt-engineer | `science-suite:prompt-engineer` | Prompt design, evaluation |
+| backend-architect | `dev-suite:software-architect` | API, infrastructure |
+| reasoning-architect | `agent-core:reasoning-engine` | Cognitive architecture (agent systems) |
+
+### Prompt
+
+```
+Create an agent team called "ai-engineering" to build a production LLM
+application for [USE_CASE].
+
+Spawn 4 specialists:
+
+1. "ai-engineer" (science-suite:ai-engineer) - LLM application architect.
+   Design and implement the core AI pipeline: document ingestion, chunking
+   strategy, embedding generation, vector store, retrieval logic, and LLM
+   orchestration. For agent systems: design tool definitions, state
+   management, memory systems, and planning strategies. Implement
+   guardrails, content filtering, and hallucination detection.
+   Owns src/ai/, src/retrieval/, src/agents/.
+
+2. "prompt-engineer" (science-suite:prompt-engineer) - Prompt design and
+   evaluation specialist. Design system prompts using chain-of-thought and
+   constitutional AI patterns. Build evaluation framework: LLM-as-judge
+   scoring, A/B testing, regression testing for prompt changes. Optimize
+   for cost/latency/quality trade-offs. Owns prompts/, evaluation/.
+
+3. "backend-architect" (dev-suite:software-architect) - API and serving
+   infrastructure. Build streaming API endpoints, authentication, rate
+   limiting, semantic caching, session management, and observability.
+   Design for horizontal scaling. Owns src/api/, src/middleware/, infra/.
+
+4. "reasoning-architect" (agent-core:reasoning-engine) - Cognitive
+   architecture designer. Design reasoning scaffolds, self-reflection
+   checkpoints, confidence calibration, and error correction loops.
+   Owns src/reasoning/.
+
+For LLM-only apps (no agents): omit reasoning-architect, keep 3 teammates.
+```
+
+---
+
+## Team 14: Performance Optimization
+
+**When:** Profiling and optimizing computational code (Python, JAX, or systems-level).
+**Suites:** dev-suite, science-suite
+
+| Role | Agent Type | Focus |
+|------|-----------|-------|
+| systems-profiler | `dev-suite:systems-engineer` | CPU, memory, I/O profiling |
+| jax-optimizer | `science-suite:jax-pro` | JIT, vectorization, GPU |
+| bottleneck-hunter | `dev-suite:debugger-pro` | Root cause, algorithmic complexity |
+| python-optimizer | `science-suite:python-pro` | Python-level optimization |
+
+### Prompt
+
+```
+Create an agent team called "perf-optimize" to profile and optimize
+[TARGET_CODE].
+
+Spawn 4 specialist teammates:
+
+1. "systems-profiler" (dev-suite:systems-engineer) - Low-level performance analyst. Profile CPU usage
+   (perf, py-spy), memory allocation (tracemalloc, memray), I/O patterns,
+   and cache behavior. Identify hot functions, memory leaks, and
+   unnecessary copies. Generate flamegraphs. Owns profiling/, reports/.
+
+2. "jax-optimizer" (science-suite:jax-pro) - GPU/vectorization specialist. Convert sequential
+   loops to vmap, identify JIT compilation opportunities, optimize
+   XLA compilation (avoid recompilation), minimize host-device transfers,
+   and implement efficient batching strategies. Profile with JAX's
+   built-in profiler. Owns src/optimized/.
+
+3. "bottleneck-hunter" (dev-suite:debugger-pro) - Root cause analyst. Investigate why specific
+   operations are slow: algorithmic complexity (O(n^2) to O(n log n)),
+   unnecessary recomputation, inefficient data structures, GIL
+   contention, or I/O bottlenecks. Propose and validate fixes with
+   micro-benchmarks. Owns benchmarks/.
+
+4. "python-optimizer" (science-suite:python-pro) - Python-level optimization. Apply: Cython/mypyc
+   compilation for hot paths, asyncio for I/O-bound code, multiprocessing
+   for CPU-bound parallelism, efficient data structures (numpy structured
+   arrays, pandas optimizations), and Rust extensions via PyO3 if needed.
+   Owns src/extensions/.
+
+Protocol: Profile first (measure) then Identify top 3 bottlenecks then
+Optimize one at a time then Re-profile then Repeat.
+Target: [SPEEDUP_TARGET] (e.g., 10x throughput improvement).
+```
+
+---
+
+## Team 15: Data Pipeline & Feature Engineering
+
+**When:** Building ETL pipelines, feature stores, or MLOps data infrastructure.
+**Suites:** science-suite, dev-suite
+
+| Role | Agent Type | Domain |
+|------|-----------|--------|
+| data-engineer | `science-suite:ml-expert` | ETL/ELT pipeline architect |
+| feature-engineer | `science-suite:ml-expert` | Feature store, drift detection |
+| infra-engineer | `dev-suite:devops-architect` | Storage, orchestration |
+| quality-engineer | `dev-suite:quality-specialist` | Data quality, testing |
+
+### Prompt
+
+```
+Create an agent team called "data-pipeline" to build a data pipeline
+for [DATA_SOURCE] feeding [ML_TARGET].
+
+Spawn 4 specialist teammates:
+
+1. "data-engineer" (science-suite:ml-expert) - Pipeline architect. Build the ETL/ELT pipeline:
+   data ingestion (batch/streaming), transformation logic (pandas/polars/
+   dask), schema validation (pandera), and output sinks (parquet/Delta
+   Lake). Handle incremental processing and idempotency. Owns
+   src/pipeline/, src/transforms/.
+
+2. "feature-engineer" (science-suite:ml-expert) - ML feature specialist. Design and implement
+   the feature store: feature definitions, computation logic, online/
+   offline serving, feature versioning, and point-in-time correctness.
+   Implement feature monitoring for drift detection. Owns src/features/,
+   feature_store/.
+
+3. "infra-engineer" (dev-suite:devops-architect) - Data infrastructure. Set up storage (S3/GCS),
+   orchestration (Airflow/Dagster), compute (Spark/Dask cluster),
+   and metadata management (data catalog). Configure data lineage
+   tracking and access controls. Owns infra/, dags/.
+
+4. "quality-engineer" (dev-suite:quality-specialist) - Data quality guardian. Implement data quality
+   checks: schema validation, statistical tests (Great Expectations),
+   freshness monitoring, completeness checks, and anomaly detection.
+   Build data quality dashboards. Owns tests/, quality_checks/.
+
+Key constraint: all transformations must be idempotent and testable
+with synthetic data.
+```
+
+---
+
+## Team 16: Documentation & Reproducibility
+
+**When:** Comprehensive documentation overhaul, open science packaging, or ensuring full research reproducibility.
+**Suites:** dev-suite, science-suite
+**Aliases:** `docs-sprint`, `reproducible-research`
+
+| Role | Agent Type | Domain |
+|------|-----------|--------|
+| docs-architect | `dev-suite:documentation-expert` | Information architecture, Diataxis |
+| content-writer | `dev-suite:quality-specialist` | Technical accuracy validation |
+| tutorial-builder | `science-suite:research-expert` | Interactive examples, notebooks |
+| ci-packager | `dev-suite:automation-engineer` | Automation, packaging, CI/CD |
+
+### Prompt
+
+```
+Create an agent team called "docs-publish" to create comprehensive
+documentation and ensure full reproducibility for [PROJECT_NAME].
+
+Spawn 4 specialist teammates:
+
+1. "docs-architect" (dev-suite:documentation-expert) - Documentation structure
+   designer. Design the information architecture following the Diataxis
+   framework: getting started guide, tutorials (learning-oriented), how-to
+   guides (task-oriented), reference (API docs), and explanation
+   (understanding-oriented). Set up Sphinx/MkDocs with proper theme and
+   navigation. Audit for reproducibility gaps: hardcoded paths, missing
+   seeds, undocumented parameters. Owns docs/.
+
+2. "content-writer" (dev-suite:quality-specialist) - Content accuracy
+   validator. Review all documentation for technical accuracy by
+   cross-referencing with source code. Ensure code examples compile and
+   run, CLI flags match actual behavior, and configuration options are
+   complete. Fix stale or misleading content. Verify all experiments can
+   be re-run from a single command. Owns docs/reference/.
+
+3. "tutorial-builder" (science-suite:research-expert) - Interactive examples
+   and methodology. Create tutorials with runnable code examples, Jupyter
+   notebooks for interactive exploration, and a cookbook of common patterns.
+   Build a docs testing harness that validates all code snippets. Create
+   a "reproducing our results" guide. Convert key notebooks to Sphinx
+   gallery examples. Owns docs/tutorials/, notebooks/.
+
+4. "ci-packager" (dev-suite:automation-engineer) - Automation and packaging
+   specialist. Structure the project as an installable package with
+   pyproject.toml, proper dependency pinning (uv.lock), and entry points.
+   Build GitHub Actions workflows: automated testing, notebook execution
+   verification, figure regeneration, dependency scanning, and release
+   automation. Set up pre-commit hooks. Owns .github/workflows/,
+   pyproject.toml, .pre-commit-config.yaml.
+
+Goal: anyone should be able to clone, install, and reproduce all results
+with: uv sync && uv run reproduce-all
+Standard: every public API must have docstring + reference page + example.
+```
+
+---
+
+## Team 17: Plugin Forge
 
 **When:** Building Claude Code extensions — plugins, hooks, agents, commands, skills, and SDK integrations.
-**Plugins:** plugin-dev, hookify, dev-suite, superpowers
-**See also:** For Agent SDK apps (not plugins), use Team 28 (agent-sdk-build).
+**Suites:** plugin-dev, hookify, dev-suite
 
 | Role | Agent Type | File Ownership |
 |------|-----------|----------------|
-| Lead | `agent-core:orchestrator` | Coordination only |
 | creator | `plugin-dev:agent-creator` | agents/, commands/, skills/, plugin.json |
 | hook-designer | `hookify:conversation-analyzer` | hooks/ |
 | quality | `dev-suite:quality-specialist` | tests/, .github/workflows/ |
@@ -1440,11 +943,11 @@ extension: [PLUGIN_NAME] — [PLUGIN_DESCRIPTION].
 Spawn 4 specialist teammates:
 
 1. "creator" (plugin-dev:agent-creator) - Generate the plugin structure:
-   .claude-plugin/plugin.json manifest, agent definitions (.md files with
-   frontmatter: name, description, model, effort, memory, tools),
+   plugin.json manifest, agent definitions (.md files with proper
+   frontmatter: name, version, color, description, model, memory),
    command definitions with argument hints and allowed-tools, and skill
    files. Follow MyClaude plugin conventions for file paths and
-   metadata. Owns agents/, commands/, skills/, .claude-plugin/plugin.json.
+   metadata. Owns agents/, commands/, skills/, plugin.json.
 
 2. "hook-designer" (hookify:conversation-analyzer) - Analyze conversation
    patterns to identify behaviors that should be prevented or enhanced
@@ -1465,164 +968,60 @@ Spawn 4 specialist teammates:
    Read-only.
 
 Workflow: creator + hook-designer (parallel) → quality → validator.
-Optional: For extensions with SDK components, add a 5th teammate
-"sdk-verifier" (agent-sdk-dev:agent-sdk-verifier-[LANGUAGE]) for
-SDK best practices validation.
 ```
 
 ---
 
-## Team 30: Codebase Archaeology
+## Team 18: Debug Triage
 
-**When:** Understanding unfamiliar codebases — onboarding, pre-refactor analysis, or architecture documentation.
-**Plugins:** feature-dev, dev-suite, science-suite
+**When:** Quick initial investigation to assess severity and route to the right specialist team.
+**Suites:** dev-suite, feature-dev
+**Pattern:** Lightweight 2-agent triage
+**Typical runtime:** 2-5 minutes
 
-| Role | Agent Type | Focus Area |
-|------|-----------|------------|
-| Lead | `agent-core:orchestrator` | Coordination only |
-| explorer | `feature-dev:code-explorer` | Execution paths, patterns |
-| documenter | `dev-suite:documentation-expert` | Architecture docs |
-| researcher | `science-suite:research-expert` | Methodology, synthesis |
+| Role | Agent Type | Focus |
+|------|-----------|-------|
+| explorer | `feature-dev:code-explorer` | Rapid architecture mapping (runs FIRST) |
+| debugger | `dev-suite:debugger-pro` | Severity assessment + team recommendation |
 
 ### Prompt
 
 ```
-Create an agent team called "codebase-archaeology" to deeply analyze
-and document [REPOSITORY].
+Create an agent team called "debug-triage" to quickly triage a bug:
+[SYMPTOMS].
 
-Focus areas: [FOCUS_AREAS]
+Spawn 2 lightweight teammates for fast initial investigation:
 
-Spawn 3 specialist teammates:
+1. "explorer" (feature-dev:code-explorer) - Run FIRST. Rapidly map the
+   execution path through [AFFECTED_MODULES]: trace from entry point to
+   failure site, identify the architectural layers involved, and document
+   key dependencies. Produce a focused component map of the affected area.
 
-1. "explorer" (feature-dev:code-explorer) - Trace execution paths
-   through the codebase starting from entry points. Map the architecture
-   layers, identify patterns and abstractions, document dependencies
-   between modules. Produce a component map with data flow diagrams.
+2. "debugger" (dev-suite:debugger-pro) - After explorer provides the
+   architecture map, perform targeted root cause analysis: examine the
+   specific failure path, check for obvious issues (null/undefined access,
+   off-by-one, missing error handling, type mismatches), and produce an
+   initial severity assessment (P0/P1/P2). Recommend whether the bug
+   needs escalation to a full debug team (debug-gui, debug-numerical,
+   or debug-schema).
 
-2. "documenter" (dev-suite:documentation-expert) - Transform the
-   explorer's findings into clear, comprehensive architecture
-   documentation. Create: system overview, component catalog, API
-   reference, dependency map, and onboarding guide. Write for a
-   developer joining the team.
-
-3. "researcher" (science-suite:research-expert) - Synthesize findings
-   into actionable insights: identify technical debt hotspots,
-   architectural anti-patterns, and modernization opportunities.
-   Produce a prioritized recommendations report with effort estimates.
-
-Workflow: explorer → documenter + researcher (parallel).
-Output: docs/architecture/ with overview, components, and recommendations.
+Workflow: explorer → debugger (sequential, not parallel).
+Use this team for: initial bug investigation, severity assessment, and
+routing to the appropriate specialist team. Typical runtime: 2-5 minutes.
+Escalation guide:
+- GUI threading bugs → /team-assemble debug-gui
+- JAX/numerical bugs → /team-assemble debug-numerical
+- Schema/type drift  → /team-assemble debug-schema
 ```
 
 ---
 
-## Team 31: Code Health Sprint
-
-**When:** Systematic code quality improvement — reducing complexity, improving types, cleaning up dead code, or strengthening type safety.
-**Plugins:** pr-review-toolkit, code-simplifier, dev-suite, science-suite
-**See also:** For type-safety-only focus, omit the simplifier and use the type-engineer + type-reviewer + tester trio.
-
-| Role | Agent Type | Focus Area |
-|------|-----------|------------|
-| Lead | `agent-core:orchestrator` | Coordination only |
-| simplifier | `code-simplifier:code-simplifier` | Clarity, maintainability |
-| type-engineer | `science-suite:python-pro` | Type annotations, strict typing |
-| type-reviewer | `pr-review-toolkit:type-design-analyzer` | Type quality analysis |
-| enforcer | `dev-suite:quality-specialist` | Standards, testing |
-
-### Prompt
-
-```
-Create an agent team called "code-health" to improve code quality in
-[TARGET_PATH] using [LANGUAGE] (Python/TypeScript).
-
-Spawn 4 specialist teammates:
-
-1. "simplifier" (code-simplifier:code-simplifier) - Review all files in
-   the target path. Simplify overly complex functions, remove dead code,
-   consolidate duplicate logic, and improve naming. Preserve all
-   functionality — every change must be behavior-preserving. Focus on
-   recently modified files first.
-
-2. "type-engineer" (science-suite:python-pro) - Add or improve type
-   annotations throughout the target path. For Python: use Protocols,
-   Generics, and strict typing patterns. For TypeScript: use branded
-   types, discriminated unions, and const assertions. Convert Any types
-   to specific types. Ensure all public APIs have complete type
-   signatures. Run mypy/tsc in strict mode.
-
-3. "type-reviewer" (pr-review-toolkit:type-design-analyzer) - Analyze
-   all type definitions (new and existing) for encapsulation quality,
-   invariant expression, and enforcement. Rate each type 1-5. Flag
-   types that leak implementation details or fail to express their
-   invariants. Read-only.
-
-4. "enforcer" (dev-suite:quality-specialist) - After simplifier and
-   type-engineer complete, run the full test suite and verify no
-   regressions. Review all changes for security implications. Add tests
-   for any uncovered edge cases discovered during the sprint.
-
-Workflow: (simplifier + type-engineer) in parallel → type-reviewer → enforcer.
-Constraint: all existing tests must pass after every change.
-Success criteria: zero type errors in strict mode, all tests pass.
-```
-
----
-
-## Team 32: HuggingFace ML Publish
-
-**When:** Training, evaluating, and publishing ML models to HuggingFace Hub.
-**Plugins:** huggingface-skills, science-suite
-
-| Role | Agent Type | File Ownership |
-|------|-----------|----------------|
-| Lead | `agent-core:orchestrator` | Coordination only |
-| ml-engineer | `science-suite:ml-expert` | src/training/, configs/ |
-| coder | `science-suite:python-pro` | src/data/, src/utils/ |
-| publisher | `huggingface-skills:AGENTS` | model cards, Hub uploads |
-| evaluator | `science-suite:research-expert` | evaluation/, benchmarks/ |
-
-### Prompt
-
-```
-Create an agent team called "hf-ml-publish" to train and publish
-[MODEL_TYPE] for [TASK_DESCRIPTION] to HuggingFace Hub.
-
-Spawn 4 specialist teammates:
-
-1. "ml-engineer" (science-suite:ml-expert) - Design the training
-   pipeline: model selection, hyperparameter configuration, data
-   preprocessing, training loop with proper logging, and checkpoint
-   management. Use [FRAMEWORK] (scikit-learn/XGBoost/PyTorch).
-   Owns src/training/, configs/.
-
-2. "coder" (science-suite:python-pro) - Build the data pipeline and
-   utilities: data loading, feature engineering, preprocessing
-   transforms, and evaluation metrics. Ensure type safety, proper
-   packaging with pyproject.toml, and clean module structure.
-   Owns src/data/, src/utils/.
-
-3. "publisher" (huggingface-skills:AGENTS) - After training completes,
-   publish to HuggingFace Hub: create model card with performance
-   metrics, upload model weights, create dataset card if applicable,
-   and set up inference endpoint. Handle versioning and metadata.
-
-4. "evaluator" (science-suite:research-expert) - Design and run
-   evaluation: benchmark selection, statistical significance testing,
-   comparison with baselines, and visualization of results. Produce
-   a reproducibility report. Owns evaluation/, benchmarks/.
-
-Workflow: coder → ml-engineer → (publisher + evaluator in parallel).
-```
-
----
-
-## Team 34: Debug GUI
+## Team 19: Debug GUI
 
 **When:** GUI threading bugs — signal safety, shiboken crashes, singleton races, Qt event loop issues.
 **Suites:** dev-suite, feature-dev, science-suite
 **Pattern:** Debugging Core Trio + SRE Expert
-**See also:** Team 37 for quick triage before committing to a full team.
+**See also:** Team 18 for quick triage before committing to a full team.
 
 | Role | Agent Type | Focus |
 |------|-----------|-------|
@@ -1667,7 +1066,7 @@ Parallelism cap: 3-4 agents max. More causes duplicate findings.
 
 ---
 
-## Team 35: Debug Numerical
+## Team 20: Debug Numerical
 
 **When:** JAX/numerical bugs — NaN gradients, ODE solver divergence, JIT tracing errors, shape mismatches.
 **Suites:** dev-suite, feature-dev, science-suite
@@ -1716,7 +1115,7 @@ Parallelism cap: 3-4 agents max. More causes duplicate findings.
 
 ---
 
-## Team 36: Debug Schema
+## Team 21: Debug Schema
 
 **When:** Schema/type drift — incompatible data classes across layers, field name mismatches, serialization errors.
 **Suites:** dev-suite, feature-dev, science-suite, pr-review-toolkit
@@ -1768,135 +1167,6 @@ Do NOT run type-analyzer and quality-specialist simultaneously — they overlap 
 
 ---
 
-## Team 37: Debug Triage
-
-**When:** Quick initial investigation to assess severity and route to the right specialist team.
-**Suites:** dev-suite, feature-dev
-**Pattern:** Lightweight 2-agent triage
-**Typical runtime:** 2-5 minutes
-
-| Role | Agent Type | Focus |
-|------|-----------|-------|
-| explorer | `feature-dev:code-explorer` | Rapid architecture mapping (runs FIRST) |
-| debugger | `dev-suite:debugger-pro` | Severity assessment + team recommendation |
-
-### Prompt
-
-```
-Create an agent team called "debug-triage" to quickly triage a bug:
-[SYMPTOMS].
-
-Spawn 2 lightweight teammates for fast initial investigation:
-
-1. "explorer" (feature-dev:code-explorer) - Run FIRST. Rapidly map the
-   execution path through [AFFECTED_MODULES]: trace from entry point to
-   failure site, identify the architectural layers involved, and document
-   key dependencies. Produce a focused component map of the affected area.
-
-2. "debugger" (dev-suite:debugger-pro) - After explorer provides the
-   architecture map, perform targeted root cause analysis: examine the
-   specific failure path, check for obvious issues (null/undefined access,
-   off-by-one, missing error handling, type mismatches), and produce an
-   initial severity assessment (P0/P1/P2). Recommend whether the bug
-   needs escalation to a full debug team (debug-gui, debug-numerical,
-   or debug-schema).
-
-Workflow: explorer → debugger (sequential, not parallel).
-Use this team for: initial bug investigation, severity assessment, and
-routing to the appropriate specialist team. Typical runtime: 2-5 minutes.
-Escalation guide:
-- GUI threading bugs → /team-assemble debug-gui
-- JAX/numerical bugs → /team-assemble debug-numerical
-- Schema/type drift  → /team-assemble debug-schema
-```
-
----
-
-## Team 38: Debug Full Audit
-
-**When:** Comprehensive investigation covering all bug categories — GUI threading, numerical/JAX, and schema drift — in a single coordinated audit.
-**Suites:** dev-suite, feature-dev, science-suite, pr-review-toolkit
-**Pattern:** Full Core Trio + all 3 specialists, phased sequentially (max 4 active at a time)
-**Note:** Specialists rotate through phases so parallelism stays at the 3-4 sweet spot. Type-analyzer runs last (needs findings from earlier phases). Never run type-analyzer and quality-specialist simultaneously.
-
-| Role | Agent Type | Phase | Focus |
-|------|-----------|-------|-------|
-| explorer | `feature-dev:code-explorer` | 1 (solo) | Full architecture mapping |
-| debugger | `dev-suite:debugger-pro` | 2-5 (ANCHOR) | Root cause synthesis, final report |
-| python-pro | `science-suite:python-pro` | 2-4 | Type/contract verification |
-| sre | `dev-suite:sre-expert` | 2 | Threading, deadlocks, resource leaks |
-| jax-pro | `science-suite:jax-pro` | 3 | JIT, NaN, gradient flow, vmap/pmap |
-| type-analyzer | `pr-review-toolkit:type-design-analyzer` | 4 (read-only) | Type design quality ratings |
-
-### Workflow
-
-```
-Phase 1: explorer (solo)                    → architecture map
-Phase 2: debugger + python-pro + sre        → threading/reliability findings
-Phase 3: debugger + python-pro + jax-pro    → numerical/JAX findings
-Phase 4: type-analyzer (read-only)          → type quality ratings
-Phase 5: debugger (solo)                    → final P0/P1/P2 synthesis
-```
-
-### Prompt
-
-```
-Create an agent team called "debug-full-audit" to perform a comprehensive
-multi-phase debugging audit: [SYMPTOMS].
-
-Spawn 6 specialist teammates — the full Debugging Core Trio plus all 3
-specialist angles. Strict phased workflow keeps active parallelism at 3-4
-agents per phase (the proven sweet spot).
-
-CORE TRIO (active in all phases):
-
-1. "explorer" (feature-dev:code-explorer) - Run in Phase 1 (solo). Map the
-   full architecture: execution paths, thread boundaries, data flow, schema
-   dependency graph, and JIT compilation boundaries across [AFFECTED_MODULES].
-   Produce a comprehensive component map that all other agents will reference.
-
-2. "debugger" (dev-suite:debugger-pro) - ANCHOR agent. Active from Phase 2
-   onward. Coordinates investigation, cross-references findings from all
-   specialists, and produces the final synthesized report. Owns the
-   prioritized fix list (P0/P1/P2) with evidence chains.
-
-3. "python-pro" (science-suite:python-pro) - Active from Phase 2 onward.
-   Type and contract verification across ALL boundaries: attribute mismatches,
-   Protocol compliance, dtype/shape errors, serialization round-trips, and
-   API contract consistency between layers.
-
-ROTATING SPECIALISTS (one per phase, sequential):
-
-4. "sre" (dev-suite:sre-expert) - Phase 2: Threading & reliability.
-   Qt event loop interactions, GIL contention, QThread lifecycle, cross-thread
-   signal/slot safety, resource leaks, deadlocks, and race conditions.
-
-5. "jax-pro" (science-suite:jax-pro) - Phase 3: Numerical & JAX. JIT tracing
-   errors, XLA compilation failures, NaN gradients, ODE solver divergence,
-   custom VJP correctness, host-device transfer overhead, non-JIT-safe
-   operations, and vmap/pmap sharding issues.
-
-6. "type-analyzer" (pr-review-toolkit:type-design-analyzer) - Phase 4: Schema
-   & type design. Analyze all types for encapsulation quality, invariant
-   expression, and enforcement. Rate each type 1-5. Flag types that leak
-   implementation details or fail to enforce contracts. Read-only.
-
-WORKFLOW (strict phasing):
-  Phase 1: explorer maps architecture (solo)
-  Phase 2: debugger + python-pro + sre investigate threading/reliability
-  Phase 3: debugger + python-pro + jax-pro investigate numerical/JAX
-  Phase 4: type-analyzer reviews all types identified in Phases 2-3 (read-only)
-  Phase 5: debugger produces final synthesis — unified P0/P1/P2 fix list
-
-CRITICAL RULES:
-- Never run more than 4 agents in parallel (diminishing returns above that)
-- type-analyzer runs AFTER code investigation phases (it needs their findings)
-- debugger is the single source of truth for the final report
-- Each specialist focuses on their domain — do not duplicate another's work
-```
-
----
-
 ## Quality Gate Enhancers
 
 Any team can be enhanced by adding official plugin agents as quality gates. Add these agents to any team's prompt to get automated review after implementation.
@@ -1905,13 +1175,13 @@ Any team can be enhanced by adding official plugin agents as quality gates. Add 
 
 | Enhancer | Agent Type | Add To Teams | What It Catches |
 |----------|-----------|--------------|-----------------|
-| Code Review | `pr-review-toolkit:code-reviewer` | 6, 8, 10 | Style, bugs, guidelines |
-| Silent Failures | `pr-review-toolkit:silent-failure-hunter` | 2, 5, 22 | Swallowed errors |
-| Test Gaps | `pr-review-toolkit:pr-test-analyzer` | 3, 6, 8 | Missing test coverage |
-| Type Quality | `pr-review-toolkit:type-design-analyzer` | 17, 22, 25 | Weak type invariants |
-| AI Review | `coderabbit:code-reviewer` | 6, 8, 9 | Second-opinion analysis |
-| Code Simplicity | `code-simplifier:code-simplifier` | 6, 17, 25 | Unnecessary complexity |
-| Plan Adherence | `superpowers:code-reviewer` | 6, 10, 25 | Drift from plan |
+| Code Review | `pr-review-toolkit:code-reviewer` | 1, 5, 7 | Style, bugs, guidelines |
+| Silent Failures | `pr-review-toolkit:silent-failure-hunter` | 2, 6, 15 | Swallowed errors |
+| Test Gaps | `pr-review-toolkit:pr-test-analyzer` | 4, 7, 5 | Missing test coverage |
+| Type Quality | `pr-review-toolkit:type-design-analyzer` | 14, 15, 8 | Weak type invariants |
+| AI Review | `coderabbit:code-reviewer` | 1, 5, 3 | Second-opinion analysis |
+| Code Simplicity | `code-simplifier:code-simplifier` | 7, 14, 4 | Unnecessary complexity |
+| Plan Adherence | `superpowers:code-reviewer` | 1, 7, 13 | Drift from plan |
 
 ### How to Add an Enhancer
 
@@ -1930,13 +1200,14 @@ done until the reviewer's critical issues are addressed.
 ## Usage Tips
 
 1. **Replace placeholders** (`[BRACKETS]`) with your project specifics before pasting
-2. **Start with Team 9** (PR Review) if new to agent teams - read-only, low-risk
+2. **Start with Team 3** (PR Review) if new to agent teams — read-only, low-risk
 3. **Use delegate mode** (`Shift+Tab`) to prevent the lead from implementing tasks itself
 4. **Monitor progress** with `Shift+Up/Down` (in-process) or click panes (tmux)
 5. **`Ctrl+T`** toggles the shared task list view
 6. **Prefer Sonnet** for most teammates (cost-effective); use Opus for architecture/design decisions
 7. **Avoid file conflicts** — ensure each teammate owns distinct directories
-8. **Read-only reviewers** (Teams 26, 33) have zero conflict risk — they never edit files
+8. **Read-only reviewers** (Teams 3, 17) have zero conflict risk — they never edit files
+9. **Use aliases** when you remember the old name — `/team-assemble quality-audit` resolves to `quality-security` automatically
 
 ## References
 

@@ -101,7 +101,7 @@ plugin.json → hub skill → routing decision tree → sub-skill
 - [Agent Reference](agents.md) — All 24 agents with model tiers and delegation patterns
 - [Commands Reference](commands.md) — 14 registered + 22 skill-invoked commands
 - [Integration Map](../integration-map.rst) — Suite dependencies, MCP server roles, skill coverage
-- [Agent Teams Guide](../agent-teams-guide.md) — 34 pre-built team configurations
+- [Agent Teams Guide](../agent-teams-guide.md) — 21 pre-built team configurations
 - [Glossary](../glossary.rst) — Hub Skill, Sub-Skill, Agent Team, Routing Decision Tree
 - [GitHub Repository](https://github.com/imewei/MyClaude)
 

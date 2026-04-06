@@ -27,7 +27,7 @@ Meta-agent suite for multi-agent orchestration, advanced reasoning, and context 
 | `/docs-lookup` | Query library documentation via Context7 MCP |
 | `/reflection` | Meta-cognitive reflection framework execution |
 | `/ultra-think` | Advanced structured reasoning with branching exploration |
-| `/team-assemble` | Generate agent team configs from 38 pre-built templates |
+| `/team-assemble` | Generate agent team configs from 21 pre-built templates |
 
 ## Skills (13)
 
