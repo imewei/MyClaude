@@ -1,6 +1,15 @@
 Changelog
 =========
 
+v3.1.1 (2026-04-06)
+-------------------
+
+**Bug Fixes**
+
+* Set ``strict: true`` in marketplace.json to resolve conflicting manifests
+  when both marketplace.json and individual plugin.json files declare components.
+* Fixed agent teams guide reference in README (34 → 21 teams).
+
 v3.1.0 (2026-04-03)
 -------------------
 
