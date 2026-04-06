@@ -1,6 +1,6 @@
 ---
 name: team-assemble
-description: Generate ready-to-use agent team configurations from 21 pre-built templates for MyClaude v3.1.1
+description: Generate ready-to-use agent team configurations from 21 pre-built templates for MyClaude v3.1.2
 argument-hint: <team-type> [--var KEY=VALUE]
 category: agent-core
 execution-modes:
@@ -49,7 +49,7 @@ You are a team assembly specialist. Your job is to generate a ready-to-use agent
 When `list` is invoked, display this table:
 
 ```
-Agent Team Catalog (MyClaude v3.1.1) — 21 Teams
+Agent Team Catalog (MyClaude v3.1.2) — 21 Teams
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 DEVELOPMENT & OPERATIONS

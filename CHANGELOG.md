@@ -1,5 +1,21 @@
 # Changelog
 
+## v3.1.2 (2026-04-06)
+
+**Bug Fixes**
+
+* Removed duplicate `hooks` manifest entries from agent-core and dev-suite
+  `plugin.json`. The `hooks/hooks.json` file is auto-discovered by convention;
+  declaring it explicitly caused duplicate-load errors at startup.
+* Fixed dev-suite `.lsp.json` structure to match expected schema.
+
+**Documentation**
+
+* Updated plugin READMEs to use hub→sub-skill notation matching CLAUDE.md
+  (agent-core 13→15, dev-suite 49→58, science-suite 107→120 total skills).
+* Rewrote `tools/README.md` to reflect current tooling (removed references to
+  deleted `tools/generation/` directory and pre-v3.0 plugin names).
+
 ## v3.1.1 (2026-04-06)
 
 **Bug Fixes**
