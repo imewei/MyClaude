@@ -25,7 +25,6 @@
     "documentation",
     "opus-4.6"
   ],
-  "hooks": "./hooks/hooks.json",
   "agents": [
     "./agents/app-developer.md",
     "./agents/automation-engineer.md",

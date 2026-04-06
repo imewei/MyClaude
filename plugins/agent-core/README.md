@@ -29,21 +29,17 @@ Meta-agent suite for multi-agent orchestration, advanced reasoning, and context 
 | `/ultra-think` | Advanced structured reasoning with branching exploration |
 | `/team-assemble` | Generate agent team configs from 21 pre-built templates |
 
-## Skills (13)
+## Skills (3 hubs → 12 sub-skills)
 
-- **Reasoning Frameworks**: Unified advanced reasoning and structured thinking
-- **Reflection Framework**: Meta-cognitive and comprehensive reflection
-- **Agent Orchestration**: Workflow coordination, DAG-based tasks, and team management
-- **Agent Performance Optimization**: Monitoring, metrics, caching, and load balancing
-- **Agent Evaluation**: Benchmark design, metrics collection, A/B testing, quality scoring
-- **LLM Application Patterns**: Prompt engineering (CoT, few-shot), RAG, and evaluation
-- **MCP Integration**: Guide for serena, github, sequential-thinking, and context7
-- **Multi-Agent Coordination**: Inter-agent communication and task allocation
-- **Prompt Engineering Patterns**: Chain-of-thought, few-shot learning, prompt versioning
-- **Memory System Patterns**: Vector databases, semantic memory, retrieval strategies
-- **Safety Guardrails**: Content filtering, constitutional AI, jailbreak detection
-- **Tool Use Patterns**: Function calling, tool selection, chaining, error recovery
-- **Knowledge Graph Patterns**: Entity modeling, graph databases, semantic search
+Hub skills route to specialized sub-skills via decision trees:
+
+| Hub | Sub-skills | Focus |
+|-----|------------|-------|
+| `agent-systems` | 4 | Orchestration, coordination, performance optimization, evaluation |
+| `reasoning-and-memory` | 4 | Reasoning frameworks, reflection, memory patterns, knowledge graphs |
+| `llm-engineering` | 4 | LLM app patterns, prompt engineering, MCP integration, safety guardrails |
+
+Sub-skills include: reasoning-frameworks, reflection-framework, agent-performance-optimization, agent-evaluation, multi-agent-coordination, llm-application-patterns, mcp-integration, prompt-engineering-patterns, memory-system-patterns, safety-guardrails, tool-use-patterns, knowledge-graph-patterns
 
 ## Hooks (8 events)
 

@@ -26,7 +26,6 @@
     "opus-4.6",
     "memory-system"
   ],
-  "hooks": "./hooks/hooks.json",
   "outputStyles": "./output-styles",
   "agents": [
     "./agents/orchestrator.md",

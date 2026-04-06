@@ -44,7 +44,7 @@ Unified software development lifecycle suite covering architecture, implementati
 | `/docs` | Documentation generation and sync |
 | *+ 15 more* | See plugin.json for full list |
 
-## Skills (49)
+## Skills (9 hubs → 49 sub-skills)
 
 Covers the complete SDLC:
 

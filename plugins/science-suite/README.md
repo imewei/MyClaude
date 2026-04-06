@@ -39,7 +39,7 @@ Domain-specific scientific computing suite for high-performance computing, Julia
 | `/analyze-data` | Comprehensive data analysis with statistical tests and visualization |
 | `/paper-review` | Systematic review of scientific papers |
 
-## Skills (107)
+## Skills (14 hubs → 106 sub-skills)
 
 Organized by domain:
 

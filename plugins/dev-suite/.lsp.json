@@ -1,14 +1,10 @@
 {
   "servers": {
-    "pyright": {
-      "command": "pyright-langserver",
-      "args": ["--stdio"],
-      "languages": ["python"]
-    },
-    "typescript": {
-      "command": "typescript-language-server",
-      "args": ["--stdio"],
-      "languages": ["typescript", "javascript"]
+    "command": "pyright-langserver",
+    "args": ["--stdio"],
+    "extensionToLanguage": {
+      ".py": "python",
+      ".pyi": "python"
     }
   }
 }
