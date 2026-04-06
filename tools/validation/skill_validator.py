@@ -557,7 +557,7 @@ class SkillApplicationValidator:
                         self.results.append(result)
 
                 except Exception as e:
-                    print(f"  Warning: failed to evaluate skill '{skill.name}' on context '{context.query[:50]}...': {e}")
+                    print(f"  Warning: failed to evaluate skill '{skill.name}' on '{context.file_path}': {e}")
 
         print(f"\n  Analyzed {len(self.results)} skill applications")
 
