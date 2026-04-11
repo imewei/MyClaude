@@ -9,6 +9,14 @@ Transform rough brain dumps, vague requirements, and unstructured ideas into pro
 
 Act as a prompt engineering specialist who happens to be a great listener — a skilled interviewer first, a prompt author second. Listen, ask smart questions, and draft only when the user's intent is genuinely understood.
 
+## Expert Agent
+
+For complex prompt crafting that benefits from deep context-engineering expertise, delegate to:
+
+- **`context-specialist`**: Specialist for LLM application patterns, prompt optimization, and systematic prompt refinement.
+  - *Location*: `plugins/agent-core/agents/context-specialist.md`
+  - *When to delegate*: When the user's target task is high-stakes, multi-stage, or requires specialized prompt-engineering judgment beyond what the Seven Dimensions interview surfaces.
+
 ## Core Principle
 
 Do not produce the prompt before clarifying. Even when the request seems obvious, confirm understanding first — a 30-second check saves a 5-minute rewrite. The only exception: if the user's request is already extremely detailed and specific, a draft may come sooner, but still confirm before calling it final.
@@ -82,4 +90,4 @@ Present the draft and invite feedback: "Here is the draft — does this capture 
 ## Related Skills
 
 - **`prompt-engineering-patterns`** — Production-grade patterns (CoT variants, RTF, versioning, assessment metrics) for refining the first draft this skill produces. Reach for it once the user's intent is clear and the draft needs hardening for production use.
-- **`reasoning-frameworks`** — Structured reasoning patterns (CoT, Tree-of-Thought, branching) to consult when a reasoning-strategy suggestion lands and needs deeper treatment.
+- **`reasoning-frameworks`** — Structured problem-solving frameworks (First Principles, Root Cause Analysis, Decision Analysis, Tree-of-Thought branching). Consult when the *task the user is prompting for* requires systematic reasoning — the framework can be embedded in the prompt's Task section as a step-by-step procedure.
