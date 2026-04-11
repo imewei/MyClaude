@@ -46,7 +46,13 @@ default-groups = ["dev", "docs", "science"]
 
 [tool.mypy]
 explicit_package_bases = true
-exclude = ["plugins/.*/hooks/"]
+exclude = ["plugins/.*/hooks/", "test-corpus/"]
+
+[tool.ruff]
+# Skill-validator fixtures import scientific libraries that aren't installed
+# in this project (jax, numpyro, optax, ...). The files exist as text patterns
+# for the validator's matcher, not as runnable code.
+exclude = ["test-corpus/"]
 
 [tool.setuptools]
 packages = ["tools"]

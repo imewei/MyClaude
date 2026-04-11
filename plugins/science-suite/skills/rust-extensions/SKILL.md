@@ -55,6 +55,10 @@ Use `maturin` as the build backend.
 
 ```toml
 [build-system]
+# Pin maturin to the 1.x series — maturin is the actual build backend, so a
+# future 2.x release with breaking changes must be an opt-in upgrade, not
+# silent. The other `dependencies = [...]` pins below are examples only and
+# can stay unpinned since they illustrate the packaging pattern.
 requires = ["maturin>=1.0,<2.0"]
 build-backend = "maturin"
 

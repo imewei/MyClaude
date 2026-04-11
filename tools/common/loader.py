@@ -12,10 +12,89 @@ Consolidates duplicate plugin loading logic from:
 """
 
 import json
+import re
 from pathlib import Path
-from typing import Optional
+from typing import Any, Optional
+
+import yaml
 
 from tools.common.models import PluginMetadata, ValidationIssue
+
+# YAML frontmatter delimiter pattern
+_FRONTMATTER_RE = re.compile(r"^---\s*\n(.*?)\n---\s*\n", re.DOTALL)
+
+
+def _read_frontmatter(file_path: Path) -> dict[str, Any]:
+    """Extract YAML frontmatter from a markdown file.
+
+    Returns an empty dict if the file is missing, has no frontmatter,
+    or the frontmatter cannot be parsed.
+    """
+    if not file_path.exists():
+        return {}
+    try:
+        text = file_path.read_text(encoding="utf-8")
+    except OSError:
+        return {}
+    match = _FRONTMATTER_RE.match(text)
+    if not match:
+        return {}
+    try:
+        data = yaml.safe_load(match.group(1))
+    except yaml.YAMLError:
+        return {}
+    return data if isinstance(data, dict) else {}
+
+
+def _normalize_component_entry(
+    entry: Any, plugin_path: Path, kind: str
+) -> dict[str, Any]:
+    """Normalize an agents/commands/skills entry to a dict.
+
+    plugin.json entries can be either:
+      - A file/directory path string (e.g. "./agents/foo.md", "./skills/foo")
+      - An inline dict with name/description fields
+
+    For path strings we read the target's YAML frontmatter and merge in
+    {name, description, path}. For inline dicts we pass them through and
+    just attach a path field if missing.
+    """
+    if isinstance(entry, dict):
+        # Already an inline dict; pass through.
+        return entry
+
+    if not isinstance(entry, str):
+        # Unknown shape — return a placeholder so callers don't crash.
+        return {"name": "", "description": "", "path": ""}
+
+    # Resolve relative path against the plugin directory.
+    rel_path = entry.lstrip("./")
+    target = (plugin_path / rel_path).resolve()
+
+    # Skills point to directories containing SKILL.md; agents/commands
+    # point directly to a markdown file.
+    if kind == "skills" and target.is_dir():
+        frontmatter_path = target / "SKILL.md"
+    else:
+        frontmatter_path = target
+
+    fm = _read_frontmatter(frontmatter_path)
+
+    name = fm.get("name") or target.stem
+    description = fm.get("description", "")
+
+    return {
+        "name": name,
+        "description": description,
+        "path": str(target),
+    }
+
+
+def _normalize_component_list(
+    entries: list[Any], plugin_path: Path, kind: str
+) -> list[dict[str, Any]]:
+    """Normalize a list of agents/commands/skills entries to dicts."""
+    return [_normalize_component_entry(e, plugin_path, kind) for e in entries]
 
 
 class PluginLoader:
@@ -73,9 +152,15 @@ class PluginLoader:
                 description=data.get("description", ""),
                 category=data.get("category", "uncategorized"),
                 path=plugin_path,
-                agents=data.get("agents", []),
-                commands=data.get("commands", []),
-                skills=data.get("skills", []),
+                agents=_normalize_component_list(
+                    data.get("agents", []), plugin_path, "agents"
+                ),
+                commands=_normalize_component_list(
+                    data.get("commands", []), plugin_path, "commands"
+                ),
+                skills=_normalize_component_list(
+                    data.get("skills", []), plugin_path, "skills"
+                ),
                 keywords=data.get("keywords", []),
             )
 

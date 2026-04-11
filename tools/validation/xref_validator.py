@@ -20,7 +20,13 @@ from dataclasses import dataclass, field
 from collections import defaultdict
 import sys
 
-from tools.common.loader import PluginLoader
+# Allow ad-hoc `python tools/validation/xref_validator.py` CLI runs by adding
+# the repo root to sys.path before resolving the `tools` package.
+_REPO_ROOT = Path(__file__).resolve().parents[2]
+if str(_REPO_ROOT) not in sys.path:
+    sys.path.insert(0, str(_REPO_ROOT))
+
+from tools.common.loader import PluginLoader  # noqa: E402
 
 
 @dataclass
@@ -59,6 +65,15 @@ class CrossReferenceValidator:
         "command_reference": r"/([a-z]+-[a-z-]+)\b",
         "skill_reference": r"\bskill:\s*([a-z]+-[a-z-]+)\b",
         "markdown_link": r"\[([^\]]+)\]\(([^\)]+)\)",
+        # Relative skill link inside a plugin: [Name](../sibling-skill/SKILL.md)
+        # The captured group is the sibling skill directory name.
+        "relative_skill_link": r"\(\.\./([a-z][a-z0-9-]+)/SKILL\.md\)",
+        # Absolute resource link via plugins/<plugin>/<kind>/<name>[.md]
+        # kind ∈ {agents, commands, skills}; name is the file or directory stem.
+        "absolute_resource_link": (
+            r"plugins/([a-z][a-z0-9-]+)/(agents|commands|skills)/"
+            r"([a-z][a-z0-9-]+)(?:\.md|/SKILL\.md)?"
+        ),
     }
 
     def __init__(self, plugins_dir: Path):
@@ -68,26 +83,63 @@ class CrossReferenceValidator:
         self._build_plugin_index()
 
     def _build_plugin_index(self):
-        """Build index of all plugins, agents, commands, and skills using PluginLoader"""
+        """Build index of all plugins, agents, commands, and skills.
+
+        Manifest-declared hubs come from PluginLoader (which also normalizes
+        path-string entries). Sub-skills are discovered from disk by scanning
+        ``plugins/<plugin>/skills/<name>/SKILL.md`` — they exist on the
+        filesystem but are intentionally absent from ``plugin.json`` per the
+        hub-skill routing architecture.
+        """
         print("📋 Building plugin index...")
 
         loader = PluginLoader(self.plugins_dir)
         all_plugins = loader.load_all_plugins()
 
         for plugin_name, metadata in all_plugins.items():
+            plugin_path = Path(metadata.path) if metadata.path else None
+
+            # Manifest-declared components (hubs only for skills).
+            agents = {
+                a.get("name"): a.get("description", "") for a in metadata.agents
+            }
+            commands = {
+                c.get("name"): c.get("description", "") for c in metadata.commands
+            }
+            skills = {
+                s.get("name"): s.get("description", "") for s in metadata.skills
+            }
+
+            # Disk-discovered sub-skills: any directory under skills/ with a
+            # SKILL.md file. Adds the directory name to the skills index so
+            # hub→sub-skill ../sibling/SKILL.md links validate cleanly.
+            if plugin_path is not None:
+                skills_dir = plugin_path / "skills"
+                if skills_dir.exists() and skills_dir.is_dir():
+                    for entry in skills_dir.iterdir():
+                        if entry.is_dir() and (entry / "SKILL.md").exists():
+                            skills.setdefault(entry.name, "")
+
+                # Disk-discovered agent and command files. Lets absolute-path
+                # references like plugins/<plugin>/agents/<name>.md resolve
+                # even when the manifest entry uses a different stem.
+                agents_dir = plugin_path / "agents"
+                if agents_dir.exists() and agents_dir.is_dir():
+                    for entry in agents_dir.glob("*.md"):
+                        agents.setdefault(entry.stem, "")
+
+                commands_dir = plugin_path / "commands"
+                if commands_dir.exists() and commands_dir.is_dir():
+                    for entry in commands_dir.glob("*.md"):
+                        commands.setdefault(entry.stem, "")
+
             self.result.plugin_index[plugin_name] = {
                 "version": metadata.version,
                 "category": metadata.category,
-                "agents": {
-                    a.get("name"): a.get("description", "") for a in metadata.agents
-                },
-                "commands": {
-                    c.get("name"): c.get("description", "") for c in metadata.commands
-                },
-                "skills": {
-                    s.get("name"): s.get("description", "") for s in metadata.skills
-                },
-                "path": str(metadata.path),
+                "agents": agents,
+                "commands": commands,
+                "skills": skills,
+                "path": str(metadata.path) if metadata.path else "",
             }
 
         for error in loader.get_errors():
@@ -170,6 +222,16 @@ class CrossReferenceValidator:
 
                 # Extract markdown links
                 self._extract_markdown_links(line, file_path, source_plugin, line_num)
+
+                # Extract intra-plugin relative skill links: ../sibling/SKILL.md
+                self._extract_relative_skill_links(
+                    line, file_path, source_plugin, line_num
+                )
+
+                # Extract absolute resource links: plugins/<plugin>/<kind>/<name>
+                self._extract_absolute_resource_links(
+                    line, file_path, source_plugin, line_num
+                )
 
         except Exception as e:
             print(f"⚠️  Warning: Error extracting from {file_path}: {e}")
@@ -316,6 +378,66 @@ class CrossReferenceValidator:
                         )
                         self.references.append(ref)
                         break
+
+    def _extract_relative_skill_links(
+        self, line: str, file_path: Path, source_plugin: str, line_num: int
+    ):
+        """Extract intra-plugin relative skill links: ``[Name](../sibling/SKILL.md)``.
+
+        Hub skills wire their sub-skills via ``../<sibling>/SKILL.md`` relative
+        links inside ``Core Skills`` sections. The plain markdown-link extractor
+        misses these because the URL never contains a plugin name. Treats the
+        captured directory name as a skill reference inside the *source* plugin.
+        """
+        pattern = self.REFERENCE_PATTERNS["relative_skill_link"]
+
+        for match in re.finditer(pattern, line):
+            skill_name = match.group(1)
+            context = line.strip()[:100]
+            ref = CrossReference(
+                source_plugin=source_plugin,
+                source_file=str(file_path.relative_to(self.plugins_dir)),
+                source_line=line_num,
+                target_plugin=source_plugin,  # intra-plugin
+                target_type="skill",
+                target_name=skill_name,
+                context=context,
+            )
+            self.references.append(ref)
+
+    def _extract_absolute_resource_links(
+        self, line: str, file_path: Path, source_plugin: str, line_num: int
+    ):
+        """Extract absolute resource paths: ``plugins/<plugin>/<kind>/<name>``.
+
+        Skill ``Expert Agent`` blocks point at agents using literal paths like
+        ``plugins/science-suite/agents/julia-pro.md``. Hub manifests and prose
+        sometimes refer to peer skills via the same form. The kind segment is
+        ``agents``, ``commands``, or ``skills``; the trailing ``.md`` (for
+        agent/command files) or ``/SKILL.md`` (for skill directories) is
+        optional in the regex so both shapes match.
+        """
+        pattern = self.REFERENCE_PATTERNS["absolute_resource_link"]
+
+        # Map manifest kind → CrossReference target type
+        kind_to_type = {"agents": "agent", "commands": "command", "skills": "skill"}
+
+        for match in re.finditer(pattern, line):
+            target_plugin = match.group(1)
+            kind = match.group(2)
+            target_name = match.group(3)
+            target_type = kind_to_type.get(kind, kind)
+            context = line.strip()[:100]
+            ref = CrossReference(
+                source_plugin=source_plugin,
+                source_file=str(file_path.relative_to(self.plugins_dir)),
+                source_line=line_num,
+                target_plugin=target_plugin,
+                target_type=target_type,
+                target_name=target_name,
+                context=context,
+            )
+            self.references.append(ref)
 
     def _find_agent_plugin(self, agent_name: str) -> str:
         """Find which plugin owns an agent"""

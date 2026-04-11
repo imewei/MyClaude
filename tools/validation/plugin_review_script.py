@@ -17,8 +17,14 @@ from typing import Dict, List, Optional
 import re
 from dataclasses import dataclass, field
 
-from tools.common.models import ValidationIssue, ValidationResult
-from tools.validation.metadata_validator import MetadataValidator
+# Allow ad-hoc `python tools/validation/plugin_review_script.py` CLI runs by
+# adding the repo root to sys.path before resolving the `tools` package.
+_REPO_ROOT = Path(__file__).resolve().parents[2]
+if str(_REPO_ROOT) not in sys.path:
+    sys.path.insert(0, str(_REPO_ROOT))
+
+from tools.common.models import ValidationIssue, ValidationResult  # noqa: E402
+from tools.validation.metadata_validator import MetadataValidator  # noqa: E402
 
 
 @dataclass

@@ -15,7 +15,14 @@ from pathlib import Path
 from typing import Dict, Any, List
 import re
 
-from tools.common.models import ValidationResult
+# Allow `python tools/validation/metadata_validator.py ...` CLI invocation by
+# adding the repo root to sys.path before resolving the `tools` package. The
+# Makefile already sets `PYTHONPATH=.`; this ensures ad-hoc CLI runs work too.
+_REPO_ROOT = Path(__file__).resolve().parents[2]
+if str(_REPO_ROOT) not in sys.path:
+    sys.path.insert(0, str(_REPO_ROOT))
+
+from tools.common.models import ValidationResult  # noqa: E402
 
 
 class MetadataValidator:

@@ -21,6 +21,14 @@ from datetime import datetime
 from pathlib import Path
 from typing import Dict, List, Set, Optional, Tuple
 
+# Allow ad-hoc `python tools/validation/skill_validator.py` CLI runs by adding
+# the repo root to sys.path before resolving the `tools` package.
+_REPO_ROOT = Path(__file__).resolve().parents[2]
+if str(_REPO_ROOT) not in sys.path:
+    sys.path.insert(0, str(_REPO_ROOT))
+
+from tools.common.loader import PluginLoader  # noqa: E402
+
 
 @dataclass
 class Skill:
@@ -138,59 +146,54 @@ class SkillApplicationValidator:
     TRIGGER_RATE_ACCEPTABLE = 20
     OVER_TRIGGER_ALERT_RATE = 0.2
 
-    def __init__(self, plugins_dir: str, corpus_dir: str):
+    def __init__(self, plugins_dir: str, corpus_dir: Optional[str] = None):
         self.plugins_dir = Path(plugins_dir)
-        self.corpus_dir = Path(corpus_dir)
+        self.corpus_dir = Path(corpus_dir) if corpus_dir else None
         self.skills: List[Skill] = []
         self.results: List[SkillApplicationResult] = []
 
     def load_skills(self, specific_plugin: Optional[str] = None) -> None:
-        """Load skills from all plugins."""
+        """Load skills from all plugins via the shared PluginLoader.
+
+        PluginLoader normalizes file-path entries (e.g. ``./skills/foo``) to
+        dicts by reading each ``SKILL.md``'s YAML frontmatter, so this method
+        no longer needs to know whether ``plugin.json`` uses the path-string
+        or inline-dict format.
+        """
         print("Loading plugin skills...")
 
-        plugin_dirs = self._get_plugin_dirs(specific_plugin)
-
-        for plugin_dir in plugin_dirs:
-            self._load_skills_from_plugin(plugin_dir)
-
-        print(f"\nLoaded {len(self.skills)} total skills")
-
-    def _get_plugin_dirs(self, specific_plugin: Optional[str]) -> List[Path]:
-        """Get list of plugin directories to process."""
+        loader = PluginLoader(self.plugins_dir)
         if specific_plugin:
-            plugin_path = self.plugins_dir / specific_plugin
-            if plugin_path.exists():
-                return [plugin_path]
-            return []
+            metadata = loader.load_plugin(specific_plugin)
+            plugins = {specific_plugin: metadata} if metadata else {}
+        else:
+            plugins = loader.load_all_plugins()
 
-        return [p for p in self.plugins_dir.iterdir() if p.is_dir()]
+        for plugin_name, metadata in plugins.items():
+            if metadata is None or not metadata.skills:
+                continue
 
-    def _load_skills_from_plugin(self, plugin_dir: Path) -> None:
-        """Load skills from a single plugin directory."""
-        plugin_json = plugin_dir / ".claude-plugin" / "plugin.json"
-        if not plugin_json.exists():
-            return
-
-        try:
-            data = json.loads(plugin_json.read_text())
-            plugin_name = data["name"]
-
-            if "skills" not in data or not data["skills"]:
-                return
-
-            for skill_data in data["skills"]:
-                self._add_skill(skill_data, plugin_name, plugin_dir)
+            for skill_dict in metadata.skills:
+                self._add_skill(skill_dict, plugin_name, metadata.path)
 
             count = len([s for s in self.skills if s.plugin_name == plugin_name])
             print(f"  ✓ {plugin_name}: {count} skills")
 
-        except Exception as e:
-            print(f"  ✗ Error loading {plugin_dir.name}: {e}")
+        for error in loader.get_errors():
+            print(f"  ⚠ {error.message}")
 
-    def _add_skill(self, skill_data: Dict, plugin_name: str, plugin_dir: Path) -> None:
-        """Create and add a skill object from data."""
+        print(f"\nLoaded {len(self.skills)} total skills")
+
+    def _add_skill(
+        self, skill_data: Dict, plugin_name: str, plugin_dir: Optional[Path]
+    ) -> None:
+        """Create and add a skill object from a normalized dict."""
+        name = skill_data.get("name", "")
+        if not name:
+            return
+
         skill = Skill(
-            name=skill_data["name"],
+            name=name,
             description=skill_data.get("description", ""),
             status=skill_data.get("status", "active"),
             plugin_name=plugin_name,
@@ -203,24 +206,41 @@ class SkillApplicationValidator:
         # Extract technical patterns
         skill.patterns = self._extract_patterns(text)
 
-        # Try to load skill documentation for more patterns
-        self._enrich_skill_from_docs(skill, plugin_dir)
+        # Try to load skill documentation for more patterns. PluginLoader
+        # populates ``skill_data["path"]`` with the resolved on-disk location
+        # (a directory for hub-style skills, a file for inline ones).
+        skill_path = skill_data.get("path")
+        if skill_path:
+            self._enrich_skill_from_docs(skill, Path(skill_path))
+        elif plugin_dir is not None:
+            # Fallback for inline-dict plugin.json entries that omit a path.
+            self._enrich_skill_from_docs(skill, plugin_dir / "skills" / skill.name)
 
         # Infer file patterns from skill name
         skill.file_patterns = self._infer_file_patterns(skill.name)
 
         self.skills.append(skill)
 
-    def _enrich_skill_from_docs(self, skill: Skill, plugin_dir: Path) -> None:
-        """Enrich skill keywords and patterns from documentation."""
-        skill_file = plugin_dir / "skills" / f"{skill.name}.md"
-        if skill_file.exists():
-            try:
-                skill_content = skill_file.read_text().lower()
-                skill.keywords.update(self._extract_keywords(skill_content))
-                skill.patterns.update(self._extract_patterns(skill_content))
-            except Exception as e:
-                print(f"  Warning: failed to enrich skill '{skill.name}': {e}")
+    def _enrich_skill_from_docs(self, skill: Skill, skill_target: Path) -> None:
+        """Enrich skill keywords and patterns from the SKILL.md document.
+
+        ``skill_target`` may be either a directory containing ``SKILL.md``
+        (the standard hub-skill layout) or a direct ``.md`` file path.
+        """
+        if skill_target.is_dir():
+            skill_file = skill_target / "SKILL.md"
+        else:
+            skill_file = skill_target
+
+        if not skill_file.exists():
+            return
+
+        try:
+            skill_content = skill_file.read_text().lower()
+            skill.keywords.update(self._extract_keywords(skill_content))
+            skill.patterns.update(self._extract_patterns(skill_content))
+        except Exception as e:
+            print(f"  Warning: failed to enrich skill '{skill.name}': {e}")
 
     def _extract_keywords(self, text: str) -> Set[str]:
         """Extract keywords from text."""
@@ -474,8 +494,18 @@ class SkillApplicationValidator:
         return plugin_context_match and score >= self.APPLICATION_THRESHOLD
 
     def test_skill_application(self) -> None:
-        """Test skill application across all contexts."""
+        """Test skill application across all contexts.
+
+        Iterates over the test corpus and evaluates every skill against every
+        code file. Silently no-ops when no corpus is configured — callers can
+        still use ``load_skills`` and ``generate_report`` to validate that the
+        loaded skills have correct frontmatter.
+        """
         print("\nTesting skill applications...")
+
+        if self.corpus_dir is None or not self.corpus_dir.exists():
+            print("  (no test corpus configured — skipping application tests)")
+            return
 
         # Load test corpus
         samples = []
@@ -557,7 +587,11 @@ class SkillApplicationValidator:
                         self.results.append(result)
 
                 except Exception as e:
-                    print(f"  Warning: failed to evaluate skill '{skill.name}' on '{context.file_path}': {e}")
+                    # ``skill`` and ``context`` may be unbound if
+                    # analyze_file_context() raised before the inner loop
+                    # started, so reference ``file_path`` instead — it is
+                    # always bound at this scope.
+                    print(f"  Warning: failed to evaluate '{file_path}': {e}")
 
         print(f"\n  Analyzed {len(self.results)} skill applications")
 
@@ -765,8 +799,12 @@ def main():
     )
     parser.add_argument(
         "--corpus-dir",
-        default="test-corpus",
-        help="Path to test corpus directory (default: test-corpus)",
+        default=None,
+        help=(
+            "Path to test corpus directory (optional). "
+            "When omitted, the validator only loads skills and verifies "
+            "their frontmatter; application/triggering tests are skipped."
+        ),
     )
     parser.add_argument("--plugin", help="Validate specific plugin only")
     parser.add_argument(
@@ -779,19 +817,21 @@ def main():
 
     # Resolve paths
     plugins_dir = Path(args.plugins_dir).absolute()
-    corpus_dir = Path(args.corpus_dir).absolute()
+    corpus_dir: Optional[str] = None
+    if args.corpus_dir:
+        corpus_path = Path(args.corpus_dir).absolute()
+        if not corpus_path.exists():
+            print(f"Warning: Test corpus directory not found: {corpus_path}")
+            print("Continuing in schema-only mode (no application testing).")
+        else:
+            corpus_dir = str(corpus_path)
 
     if not plugins_dir.exists():
         print(f"Error: Plugins directory not found: {plugins_dir}")
         return 1
 
-    if not corpus_dir.exists():
-        print(f"Error: Test corpus directory not found: {corpus_dir}")
-        print("Run test_corpus_generator.py first to create test samples")
-        return 1
-
     # Run validation
-    validator = SkillApplicationValidator(str(plugins_dir), str(corpus_dir))
+    validator = SkillApplicationValidator(str(plugins_dir), corpus_dir)
     validator.load_skills(args.plugin)
     validator.test_skill_application()
 
