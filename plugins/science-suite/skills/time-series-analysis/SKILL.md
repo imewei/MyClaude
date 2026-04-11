@@ -150,6 +150,8 @@ def neural_forecast(df: pd.DataFrame, horizon: int = 30) -> pd.DataFrame:
 
 For nonlinear dynamics, causality, and information flow — complementing the linear/ML methods above:
 
+> **Julia-first codebase?** All the Python packages below can be called from Julia via `PythonCall.jl` — see the handoff pattern in `chaos-attractors` for the canonical `pyimport` idiom, a concrete `nolds.lyap_r` example, and caveats (GIL, array marshaling, PyCall.jl vs PythonCall.jl).
+
 | Package | Role | Key API |
 |---------|------|---------|
 | **`arch`** | GARCH / ARCH / EGARCH / FIGARCH; ADF / DF-GLS / PhillipsPerron unit roots; Engle-Granger / Phillips-Ouliaris cointegration; stationary / moving-block bootstraps | `arch_model`, `ADF`, `engle_granger`, `IIDBootstrap`, `StationaryBootstrap` |

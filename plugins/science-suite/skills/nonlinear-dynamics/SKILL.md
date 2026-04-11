@@ -82,10 +82,10 @@ What is the analysis goal?
 | Small networks (<1K)        | DynamicalSystems.jl         | --                          | nolds + pyunicorn + antropy (fragmented)               |
 | Equation discovery          | DataDrivenDiffEq.jl         | --                          | PySINDy + PyDMD + PySR (PySR bridges to Julia)         |
 | Neural ODEs                 | DiffEqFlux.jl               | Diffrax                     | Diffrax (JAX-based)                                    |
-| Lyapunov / Hurst / DFA      | ChaosTools.jl               | vmap + scan                 | nolds                                                  |
+| Lyapunov / Hurst / DFA      | ChaosTools.jl               | vmap + scan                 | nolds (Julia-first codebase? → PythonCall.jl handoff in `chaos-attractors`) |
 | Recurrence analysis (RQA)   | RecurrenceAnalysis.jl       | --                          | pyunicorn.RecurrencePlot (pyRQA is stale)              |
-| Complexity / entropy        | ComplexityMeasures.jl       | --                          | antropy, EntropyHub (repo active, PyPI lags)           |
-| Transfer entropy / MI       | Associations.jl             | --                          | IDTxl (git-install only)                               |
+| Complexity / entropy        | ComplexityMeasures.jl       | --                          | antropy, EntropyHub (Julia? → PythonCall.jl in `chaos-attractors`) |
+| Transfer entropy / MI       | Associations.jl             | --                          | IDTxl (Julia? → PythonCall.jl in `chaos-attractors`)   |
 | Tipping indicators (EWS)    | TransitionsInTimeseries.jl  | --                          | ewstools (repo active, PyPI lags)                      |
 | CCM / empirical dynamics    | --                          | --                          | pyEDM                                                  |
 | GARCH / unit roots          | --                          | --                          | arch + statsmodels.tsa                                 |
