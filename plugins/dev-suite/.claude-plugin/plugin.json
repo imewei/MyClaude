@@ -1,6 +1,6 @@
 {
   "name": "dev-suite",
-  "version": "3.1.4",
+  "version": "3.1.5",
   "description": "Unified software development lifecycle: architecture, implementation, CI/CD, testing, debugging, and deployment. Merges engineering, infrastructure, and quality into one suite for zero-friction cross-concern delegation.",
   "author": {
     "name": "Wei Chen",
