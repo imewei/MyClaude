@@ -132,7 +132,7 @@ format: ## Format Python code with black and ruff
 	fi
 	@echo "✓ Formatting complete"
 
-validate: ## Validate plugin metadata and configuration
+validate: ## Validate plugin metadata, configuration, and command file structure
 	@echo "Validating plugins..."
 	@if [ -f "tools/validation/metadata_validator.py" ]; then \
 		for dir in plugins/*/; do \
@@ -140,6 +140,10 @@ validate: ## Validate plugin metadata and configuration
 				PYTHONPATH=. python3 tools/validation/metadata_validator.py "$$dir" || exit 1; \
 			fi \
 		done; \
+	fi
+	@if [ -f "tools/validation/command_file_linter.py" ]; then \
+		echo "Linting command files..."; \
+		PYTHONPATH=. python3 tools/validation/command_file_linter.py plugins/ || exit 1; \
 	fi
 	@echo "✓ Validation complete"
 
