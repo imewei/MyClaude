@@ -660,11 +660,29 @@ up(8080; async=false)
 | Scenario | Delegate To | Reason |
 |----------|-------------|--------|
 | UDEs, neural ODEs, SciML integration | `julia-pro` | SciML ecosystem specialization |
+| Bayesian neural ODEs, Bayesian UDEs | `julia-pro` | See `bayesian-ude-workflow` skill |
 | Framework-agnostic DL theory, architectures | `neural-network-master` | Deep learning theory and design patterns |
 | Chaos theory, bifurcation analysis, Lyapunov exponents | `nonlinear-dynamics-expert` | Dynamical systems theory |
 | Python ML/DL (PyTorch, JAX, scikit-learn) | `jax-pro` | Python scientific computing |
 | Python ML pipelines, MLOps | `ml-expert` | Python ML ecosystem |
 | Publication figures, complex visualization | `visualization-expert` | Matplotlib/Makie specialization |
+
+## Related Skills (Expert Agent For)
+
+Sub-skills in `science-suite` that name this agent as an expert reference:
+
+| Skill | When to Consult |
+|-------|-----------------|
+| `julia-neural-networks` | Lux.jl / Flux.jl model definition, training loops, callbacks |
+| `julia-neural-architectures` | CNN / RNN / Transformer / custom layers (with `neural-network-master` for theory) |
+| `julia-training-diagnostics` | Loss curves, gradient norms, learning rate finders |
+| `julia-ad-backends` | Zygote vs Enzyme vs ForwardDiff selection and debugging |
+| `julia-gpu-kernels` | CUDA.jl and KernelAbstractions.jl custom kernels |
+| `julia-graph-neural-networks` | GNNGraphs / GNNlib / GNNLux layers, MLDatasets benchmarks, GPU portability |
+| `julia-reinforcement-learning` | ReinforcementLearning.jl environments, policies, training loops |
+| `julia-ml-pipelines` | MLJ.jl pipelines, model composition, hyperparameter tuning |
+| `julia-model-deployment` | ONNX / TorchScript export, HTTP.jl serving |
+| `julia-hpc-distributed` | Distributed.jl, MPI.jl, SLURM job management |
 
 ---
 

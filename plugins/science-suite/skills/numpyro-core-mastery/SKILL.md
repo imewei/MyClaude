@@ -9,13 +9,16 @@ description: Master NumPyro for production Bayesian inference, MCMC sampling (NU
 
 Production Bayesian inference with JAX-accelerated probabilistic programming.
 
-## Expert Agent
+## Expert Agents
 
-For complex Bayesian modeling, hierarchical inference, and probabilistic programming tasks, delegate to the expert agent:
+For complex Bayesian modeling, hierarchical inference, and probabilistic programming tasks, delegate to:
 
-- **`jax-pro`**: Unified specialist for Bayesian inference (NumPyro), MCMC diagnostics, and differentiable physics integration.
+- **`jax-pro`** (primary): JAX-accelerated NumPyro implementation, NUTS/HMC tuning, SVI, AutoGuides, and differentiable physics integration.
   - *Location*: `plugins/science-suite/agents/jax-pro.md`
-  - *Capabilities*: Hierarchical models, NUTS/HMC tuning, SVI, and convergence diagnostics (R-hat, ESS).
+- **`statistical-physicist`** (secondary): Bayesian inference theory, prior elicitation, identifiability analysis, sampler geometry, PSIS-LOO model comparison.
+  - *Location*: `plugins/science-suite/agents/statistical-physicist.md`
+
+For the Julia counterpart (Turing.jl) see `turing-model-design`. For multimodal posteriors that defeat NUTS, see `consensus-mcmc-pigeons`. Convergence checks live in `mcmc-diagnostics`.
 
 ---
 
@@ -139,6 +142,24 @@ ess = az.ess(idata)
 loo = az.loo(idata, pointwise=True)
 waic = az.waic(idata)
 ```
+
+> **ArviZ v1.0 (2025) is a major-version bump.** Function names (`from_numpyro`, `rhat`, `ess`, `summary`, `loo`, `waic`, `plot_*`) are preserved but internal behavior changed — verify compatibility for pipelines written against `arviz<1.0` before upgrading. See `mcmc-diagnostics` for the full Python-workflow diagnostics block.
+
+---
+
+## Related JAX Bayesian Tools
+
+NumPyro is the default JAX PPL, but several neighboring libraries cover adjacent niches. Reach for them when NumPyro alone is the wrong shape:
+
+| Tool | When to use |
+|------|-------------|
+| **BlackJAX** | Hand-rolled sampler loops, composable kernels (NUTS, HMC, MALA, MCLMC, tempered SMC, Pathfinder, SVGD), and low-level `init`/`step` interfaces over any JAX `logdensity_fn` — including NumPyro models via `numpyro.infer.util.potential_energy` |
+| **GPJax** | Feature-rich JAX Gaussian processes (exact + sparse variational, Laplace / MCMC hyperpriors). Integrates with NumPyro for fully-Bayesian hyperparameters |
+| **tinygp** | Minimal JAX GP with celerite2-style quasi-separable O(N) kernels for 1D timeseries. Drop a `GaussianProcess(kernel, X).log_probability(y)` directly inside a `@numpyro.sample` block |
+| **emcee** | Goodman-Weare affine-invariant ensemble MCMC (NumPy). Use for legacy / black-box log-probs or when the overhead of NUTS warmup isn't worth it for cheap likelihoods |
+| **pocoMC** | Preconditioned tempered SMC with normalizing-flow reparameterization. Handles multimodal and strongly-correlated posteriors, and returns marginal likelihood (Z) alongside samples |
+| **corner** | Posterior corner plots from `(nsamples, ndim)` arrays or ArviZ `InferenceData` — use with `emcee` / `numpyro.infer.MCMC` for publication figures |
+| **Pigeons.jl** (via `juliacall`) | Non-Reversible Parallel Tempering for multimodal posteriors where NUTS / tempered SMC still fail to mix. See `consensus-mcmc-pigeons` for the Julia-native path |
 
 ---
 

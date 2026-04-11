@@ -26,8 +26,13 @@ def gaussian_model(x, amp, center, width):
     return amp * jnp.exp(-0.5 * ((x - center) / width) ** 2)
 
 
-def simulate_interruption(iteration, params, loss):
-    """Callback to simulate interruption after 5 iterations"""
+def simulate_interruption(iteration, _params, _loss):
+    """Callback to simulate interruption after 5 iterations.
+
+    ``params`` and ``loss`` are passed by the optimizer callback protocol
+    but unused by this demo interrupt logic — underscore-prefixed to
+    signal intentional non-use.
+    """
     if iteration == 5:
         print(f"\n  [SIMULATED INTERRUPTION at iteration {iteration}]")
         return False  # Stop optimization
@@ -101,7 +106,7 @@ def main():
     # Adapt to result structure from fit()
     # If fit returns tuple (popt, pcov), we might miss intermediate stats unless we check the object
     # fit() returns OptimizeResult if full_output is True or similar, or just tuple.
-    # In v0.6.6 fit() usually returns OptimizeResult or tuple.
+    # In the current NLSQ release, fit() usually returns OptimizeResult or tuple.
     # Let's assume result1 is OptimizeResult-like for now or handle tuple.
 
     # Actually, for this specific script which used StreamingOptimizer directly,
@@ -167,7 +172,7 @@ def main():
     print()
 
     # resume_from_checkpoint=True triggers auto-resume in HPC workflow
-    popt2, pcov2 = fit(
+    popt2, _pcov2 = fit(
         gaussian_model,
         x_data,
         y_data,
@@ -196,7 +201,7 @@ def main():
         print(f"Resuming from specific checkpoint: {specific_checkpoint.name}")
         print()
 
-        popt3, pcov3 = fit(
+        _popt3, _pcov3 = fit(
             gaussian_model,
             x_data,
             y_data,

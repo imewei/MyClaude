@@ -61,7 +61,7 @@ Performance optimization and type stability analysis triggers julia-pro.
 |--------|-----------|------------------|
 | **Core Julia** | Base/Core | Multiple dispatch, type system, metaprogramming, performance optimization |
 | **SciML** | DifferentialEquations.jl | ODE/PDE/SDE/DAE solvers, stiffness handling, sensitivity analysis |
-| **Bayesian** | Turing.jl | MCMC (NUTS/HMC), Variational Inference, hierarchical models |
+| **Bayesian** | Turing.jl + Pigeons.jl | MCMC (NUTS/HMC), non-reversible parallel tempering for multimodal posteriors, variational inference, hierarchical models, Bayesian UDEs |
 | **Modeling** | ModelingToolkit.jl | Acausal modeling, symbolic transformations, code generation |
 | **Optimization** | JuMP.jl / Optimization.jl | Mathematical programming (LP/QP/MIP) and scientific optimization |
 | **DevOps** | Pkg / Test / Aqua | Package development, CI/CD, registration, documentation |
@@ -394,11 +394,12 @@ println(result.basis)  # symbolic equations replacing the NN
 
 | Algorithm | Memory | Speed | Stiffness | Best For |
 |-----------|--------|-------|-----------|----------|
-| `ForwardDiffSensitivity()` | O(n*p) | Fast for p<100 | Any | Few parameters, stiff systems |
-| `InterpolatingAdjoint()` | O(n*T) | Fast for p>100 | Non-stiff preferred | Large parameter spaces (NNs) |
-| `BacksolveAdjoint()` | O(n) | Fastest | Non-stiff only | Memory-limited, non-stiff UDEs |
+| `ForwardDiff` AD (no sensealg) | O(n*p) | Fast for p<100 | Any | Few parameters, stiff systems. **Note**: `ForwardDiff` ignores `sensealg` and uses Dual numbers directly. |
+| `GaussAdjoint()` | O(n*T) checkpointable | **Preferred for p>100** | Stiff/implicit OK (O(n³+p)) | Large parameter spaces (NNs); modern default for adjoint paths. |
+| `InterpolatingAdjoint()` | O(n*T) checkpointable | Compute-heavy | Non-stiff preferred | Niche; only when benchmark beats GaussAdjoint. |
+| `BacksolveAdjoint()` | O(n) | Fastest forward | **Avoid stiff and DAEs** | Non-stiff small problems only. |
 
-See sciml-modern-stack skill for full details.
+**Modern recommendation**: ForwardDiff for ≤100 params; GaussAdjoint paired with Zygote/Enzyme for everything larger. See sciml-modern-stack and bayesian-ude-workflow skills for full details.
 
 ---
 
@@ -537,13 +538,16 @@ Problem Type?
 │   ├── Linear/Integer → JuMP.jl
 │   └── Nonlinear/Scientific → Optimization.jl
 ├── Bayesian Inference
-│   ├── Standard → Turing.jl
+│   ├── Standard → Turing.jl (see turing-model-design skill)
 │   ├── Simulation-Based → Turing.jl + DifferentialEquations.jl
-│   └── ODE Parameters → Bayesian ODE (remake + Turing)
+│   ├── ODE Parameters → Bayesian ODE (remake + Turing)
+│   ├── Multimodal Posteriors → Pigeons.jl NRPT (see consensus-mcmc-pigeons skill)
+│   └── Bayesian Neural ODE / UDE → bayesian-ude-workflow skill
 ├── Modern SciML / UDEs
 │   ├── Neural DEs → Lux.jl + DifferentialEquations.jl
 │   ├── UDE Training → Optimization.jl (ADAM → BFGS)
 │   ├── Sensitivity → SciMLSensitivity (select by parameter count)
+│   ├── Bayesian UDE → bayesian-ude-workflow skill (warm-start + NUTS/Pigeons)
 │   └── Symbolic Recovery → UDE + SINDy pipeline
 ├── Nonlinear Dynamics
 │   ├── Lyapunov / Chaos → DynamicalSystems.jl

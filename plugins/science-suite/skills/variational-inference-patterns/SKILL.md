@@ -7,14 +7,25 @@ description: Master ADVI variational inference with Turing.jl and Bijectors.jl f
 
 # Variational Inference
 
-## Expert Agent
+## Expert Agents
 
-For variational inference with Turing.jl and Bijectors.jl, delegate to:
+Variational inference is a cross-PPL technique — applicable to Turing.jl
+(`Turing.Variational`), NumPyro (`numpyro.infer.SVI` with AutoGuides), and
+custom JAX/PyTorch ELBO loops. Delegate to:
 
-- **`julia-pro`**: Julia Bayesian inference, Turing.jl, and approximate methods.
+- **`julia-pro`**: Turing.jl + Bijectors.jl ADVI workflows.
   - *Location*: `plugins/science-suite/agents/julia-pro.md`
+- **`statistical-physicist`**: VI theory, ELBO geometry, normalizing flow
+  design, and the VI-vs-MCMC trade-off across PPLs.
+  - *Location*: `plugins/science-suite/agents/statistical-physicist.md`
+- **`jax-pro`**: NumPyro SVI / AutoGuide / amortized inference and
+  JAX-based normalizing flow implementations.
+  - *Location*: `plugins/science-suite/agents/jax-pro.md`
 
-ADVI for scalable approximate Bayesian inference.
+VI is most useful as a warm-start for MCMC (see `bayesian-ude-workflow`,
+`consensus-mcmc-pigeons`) or as a fast posterior approximation when full
+sampling is too expensive. Always validate VI posteriors against a short
+NUTS run via `mcmc-diagnostics` before reporting.
 
 ---
 

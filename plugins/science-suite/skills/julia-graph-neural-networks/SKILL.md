@@ -9,7 +9,8 @@ description: Build graph neural networks in Julia with GraphNeuralNetworks.jl an
 
 For graph neural network architecture and training in Julia, delegate to:
 
-- **`julia-ml-hpc`** at `plugins/science-suite/agents/julia-ml-hpc.md`
+- **`julia-ml-hpc`**: Julia ML/HPC specialist for GraphNeuralNetworks.jl ecosystem (GNNGraphs / GNNlib / GNNLux), message passing, and GPU-portable graph training.
+  - *Location*: `plugins/science-suite/agents/julia-ml-hpc.md`
 
 ## Graph Construction
 
@@ -135,12 +136,13 @@ model = GNNChain(
 
 ## Mini-Batching
 
-Batch multiple graphs for efficient training:
+Batch multiple graphs for efficient training. The canonical batching function is `MLUtils.batch` (`GraphNeuralNetworks` re-exports it, but the namespace makes the dependency explicit and works on heterogeneous graph lists too):
 
 ```julia
-# Create a batch of graphs
+using MLUtils
+
 graphs = [rand_graph(n, 2n; ndata=(; x=randn(Float32, 16, n))) for n in [10, 20, 15]]
-batched_g = batch(graphs)
+batched_g = MLUtils.batch(graphs)
 
 # Forward pass on batch (nodes are concatenated, edges re-indexed)
 y, st = model(batched_g, batched_g.x, ps, st)
@@ -148,6 +150,38 @@ y, st = model(batched_g, batched_g.x, ps, st)
 # Unbatch results
 individual_graphs = unbatch(batched_g)
 ```
+
+## Canonical Lux training loop
+
+The cleanest GNNLux training pattern uses `Lux.Training.TrainState` plus `single_train_step!` — much shorter than rolling your own `Zygote.withgradient` and it threads `(ps, st)` through optimiser updates automatically:
+
+```julia
+using Lux, Optimisers, MLUtils
+
+train_state = Lux.Training.TrainState(model, ps, st, Adam(1e-2))
+
+custom_loss(model, ps, st, (g, x, y)) = let
+    ŷ, st_new = model(g, x, ps, st)
+    loss = logitcrossentropy(ŷ, y)
+    loss, st_new, (;)            # (loss, new_state, stats)
+end
+
+for epoch in 1:200
+    for (g, y) in train_loader
+        g = MLUtils.batch(g)
+        _, loss, _, train_state = Lux.Training.single_train_step!(
+            AutoZygote(), custom_loss, (g, g.ndata.x, y), train_state,
+        )
+    end
+
+    # Switch Dropout / BatchNorm into eval mode for validation
+    st_eval = Lux.testmode(train_state.states)
+    val_acc = evaluate(model, train_state.parameters, st_eval, val_loader)
+    train_state = @set train_state.states = Lux.trainmode(st_eval)
+end
+```
+
+`Lux.testmode(st)` and `Lux.trainmode(st)` flip stochastic regularizers (Dropout, BatchNorm running stats) on and off — required whenever a `GNNChain` contains `Dropout` or normalisation layers, otherwise validation metrics will be biased by training-mode noise.
 
 ## Custom Message Passing
 
@@ -198,12 +232,73 @@ mol_graph = GNNGraph(
 y_pred, st = mol_model(mol_graph, mol_graph.ndata.z, ps, st)
 ```
 
+## Package layering: GNNGraphs, GNNlib, GNNLux
+
+The Julia GNN ecosystem splits cleanly into three layers — pick the layer that matches your need:
+
+| Package | Layer | Use when |
+|---------|-------|----------|
+| `GNNGraphs` | Data structure | Building, batching, querying graphs. Provides `GNNGraph`, heterogeneous graphs (`GNNHeteroGraph`), temporal graphs (`TemporalSnapshotsGNNGraph`). No NN code. |
+| `GNNlib` | Low-level kernels | Writing custom message-passing layers. Provides `propagate`, aggregation primitives, sparse-matrix message kernels. Framework-agnostic. |
+| `GNNLux` | Lux-native layer collection | High-level GCN/GAT/SAGE/GIN/GatedGraph layers exposing Lux's explicit `(ps, st)` interface. Composable inside `GNNChain`. |
+
+Most application code lives in `GNNLux` + `GNNGraphs`. Drop into `GNNlib` only when an existing layer doesn't fit and you need custom message semantics.
+
+## Benchmark datasets
+
+Use `MLDatasets` for canonical graph benchmarks (Cora, CiteSeer, PubMed, OGB-arXiv, ZINC, QM9). Combine with `OneHotArrays` for label encoding:
+
+```julia
+using MLDatasets, OneHotArrays
+
+data = Cora()
+g = data[:]                                # GNNGraph with x, y, train_mask, val_mask, test_mask
+y_onehot = onehotbatch(g.y, 1:7)          # 7 classes for Cora
+
+# After model forward pass:
+preds = onecold(y_hat, 1:7)
+accuracy = mean(preds .== g.y)
+```
+
+`MLDatasets` returns ready-to-use `GNNGraph`s with feature matrices and split masks already attached.
+
+## GPU backend portability
+
+GNN training is GPU-portable through `CUDA.jl` (NVIDIA) and `KernelAbstractions.jl` (vendor-neutral). Move both the graph and parameters to the device:
+
+```julia
+using CUDA
+
+g_gpu  = g |> gpu
+ps_gpu = ps |> gpu
+```
+
+`GNNLux` layers dispatch through `KernelAbstractions.jl` for the message-passing kernels, so the same code runs on CUDA, ROCm, or oneAPI backends. CPU is the fallback when no GPU is available — useful for development and CI without changing the model code.
+
+## Extension sketches
+
+These compose `julia-graph-neural-networks` with neighboring skills for advanced workflows. Each is a pointer, not a recipe.
+
+- **Bayesian GNN** — wrap a `GNNLux` model in a `Turing.@model`, sample posterior over node embeddings or weights. For multimodal posteriors (expected with deep GNNs), use Pigeons. See `consensus-mcmc-pigeons`.
+- **Graph Neural ODE** — replace stacked GNN layers with a continuous-depth `ODEProblem` whose RHS is a single GNN layer; integrate with `OrdinaryDiffEq` and train through `SciMLSensitivity` adjoints. Useful for irregular time-step temporal graphs.
+- **Equivariant primitives** — `EquivariantTensors.jl` provides E(3)-equivariant tensor operations for molecular GNNs. For SchNet, DimeNet, or SE(3)-Transformer architectures (no native Julia implementation), bridge to `torch_geometric` + `e3nn` (PyTorch) via `PythonCall`. The **JAX-native counterpart** is `e3nn-jax` (Mario Geiger): `IrrepsArray`, `tensor_product`, `spherical_harmonics`, `gate`, Wigner-D / Clebsch-Gordan — fully `jit` / `vmap` / `grad` compatible. `e3nn-jax` is currently the only maintained JAX-native equivariant NN primitives library and the right target when the surrounding pipeline is already JAX. MACE / NequIP / Allegro remain PyTorch-first in both ecosystems.
+- **Plain message-passing GNNs in JAX** — `jraph` (DeepMind's original JAX GNN library) has been archived. The community successor is the unofficial `JraphX` (Flax NNX). For production plain GCN/GAT/SAGE work, `GNNLux` + `GNNGraphs` on the Julia side is arguably better-maintained today than any JAX option; reserve the JAX stack for equivariant / MLIP work where `e3nn-jax` shines.
+
+## Composition with neighboring skills
+
+- **Julia neural networks** — Lux fundamentals: `setup`, `(ps, st)` plumbing, training loops. See `julia-neural-networks`.
+- **Julia AD backends** — Zygote (default), Enzyme (faster on large GNNs). See `julia-ad-backends`.
+- **Julia GPU kernels** — custom CUDA / KernelAbstractions kernels for unsupported message-passing patterns. See `julia-gpu-kernels`.
+- **Bayesian UDE workflow** — pattern for Bayesian neural-physics models, transferable to Bayesian GNNs. See `bayesian-ude-workflow`.
+
 ## Checklist
 
-- [ ] Use `GNNGraph` for graph construction with node/edge features
-- [ ] Start with `GCNConv` before trying more complex layers
-- [ ] Use `GNNChain` for sequential GNN architectures
-- [ ] Apply `GlobalPool` for graph-level tasks
-- [ ] Use `batch`/`unbatch` for mini-batch training
-- [ ] Add dropout and skip connections for deeper GNNs
-- [ ] Profile with `@benchmark` to identify message-passing bottlenecks
+- [ ] Picked the layer (`GNNGraphs` data, `GNNLux` high-level, `GNNlib` custom kernels) that matches the task
+- [ ] Used `GNNGraph` for graph construction with node/edge features
+- [ ] Started with `GCNConv` before trying more complex layers
+- [ ] Used `GNNChain` for sequential GNN architectures and `GlobalPool` for graph-level tasks
+- [ ] Used `batch`/`unbatch` for mini-batch training
+- [ ] Loaded benchmark datasets via `MLDatasets`; encoded labels with `OneHotArrays`
+- [ ] Added dropout and skip connections for deeper GNNs
+- [ ] Profiled with `@benchmark` to identify message-passing bottlenecks
+- [ ] Verified GPU code path on a small graph before scaling up

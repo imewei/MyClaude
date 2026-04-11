@@ -96,10 +96,10 @@ class TestModel:
 ## Pre-commit Configuration
 
 ```yaml
-# .pre-commit-config.yaml
+# .pre-commit-config.yaml — pin `rev:` to the current release of each hook repo
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v4.5.0
+    rev: <current-release>
     hooks:
       - id: trailing-whitespace
       - id: check-yaml
@@ -107,12 +107,12 @@ repos:
         args: ['--maxkb=1000']
 
   - repo: https://github.com/psf/black
-    rev: 23.12.1
+    rev: <current-release>
     hooks:
       - id: black
 
   - repo: https://github.com/pre-commit/mirrors-mypy
-    rev: v1.8.0
+    rev: <current-release>
     hooks:
       - id: mypy
 ```

@@ -67,6 +67,21 @@ stages:
 | Data Validation | Great Expectations, TFX Data Validation |
 | Model Registry | MLflow Registry, Vertex AI, SageMaker |
 | Serving | TorchServe, TF Serving, Triton, KServe |
+| Data Loaders | `grain` (DeepMind JAX-friendly, deterministic + checkpointable), `tf.data`, `torch.utils.data`, HuggingFace `datasets` |
+
+### `grain` for JAX pipelines
+
+`grain` is DeepMind's JAX-first data loader with deterministic, checkpointable iteration:
+
+| API | Role |
+|-----|------|
+| `grain.MapDataset` | Random-access map-style dataset (index → example) |
+| `grain.IterDataset` | Streaming iterator-style dataset with chainable transforms |
+| `grain.DataLoader` | Multi-process loader that yields NumPy / `jax.Array` batches feeding `pmap` / `jit` steps |
+| `grain.transforms.Map` / `RandomMap` / `Batch` | Composable preprocessing stages |
+| `grain.sharding.ShardByJaxProcess` | Multi-host JAX sharding for data-parallel training |
+
+**Why grain over `tf.data` in a JAX pipeline**: deterministic iterator state, save/restore for preemption recovery, integration with Flax / Orbax checkpointing, and no TensorFlow runtime dependency when JAX is the only framework in scope.
 
 ---
 

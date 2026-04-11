@@ -123,9 +123,15 @@ params = jax.tree.unflatten(treedef, new_leaves)
 
 | Domain | Tool | Purpose |
 |--------|------|---------|
-| **Optimization** | Optax | Composable gradient transformations |
-| **Neural Networks** | Equinox / Flax | Stateful modules in functional style |
+| **Gradient-based optimization** | Optax | Composable gradient transformations (Adam, SGD, schedules, clipping, EMA); also hosts L-BFGS + losses/projections migrated from JAXopt |
+| **Root-finding / NLSQ / minimization** | Optimistix | `Newton`, `Chord`, `LevenbergMarquardt`, `Dogleg`, `GaussNewton`, `BFGS`, `NonlinearCG`, `NelderMead`, fixed-point with Anderson acceleration. JAXopt successor; used by Diffrax for implicit solver stages |
+| **Linear solvers** | Lineax | Operator-based linear algebra (`LU`, `Cholesky`, `QR`, `SVD`, `CG`, `GMRES`, `BiCGStab`). Implicit function-defined operators; JAXopt successor for linear solves |
+| **Differential equations** | Diffrax | ODEs/SDEs/CDEs with term-based abstraction; reverse-mode adjoints (`RecursiveCheckpointAdjoint`, `BacksolveAdjoint`, `ImplicitAdjoint`) |
+| **Neural Networks** | Equinox / Flax (NNX or Linen) | Stateful modules in functional style. Equinox pairs naturally with Diffrax (same author); Flax NNX is the Google production stack |
+| **Interpolation** | interpax | JAX-native JIT-safe interpolation — canonical replacement for non-JIT-safe SciPy splines |
 | **Profiling** | Perfetto / JAX profiler | Visualize trace events, identify bottlenecks |
+
+> **JAXopt is deprecated**. Google Research archived it. Features migrated to **Optax** (losses, projections, L-BFGS), **Optimistix** (root-finding, NLSQ, minimization, fixed-points), and **Lineax** (linear solvers). Use these successors in new code; do not start new projects on JAXopt.
 
 ## Debugging Checklist
 

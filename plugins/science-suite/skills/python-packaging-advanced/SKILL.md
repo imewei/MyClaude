@@ -35,7 +35,7 @@ members = ["packages/*"]
 name = "my-core"
 version = "0.1.0"
 dependencies = [
-    "numpy>=1.26.0",
+    "numpy",
 ]
 
 [build-system]
@@ -69,15 +69,15 @@ name = "science-tool"
 dynamic = ["version"]
 requires-python = ">=3.12"
 dependencies = [
-    "pydantic>=2.6.0",
-    "scipy>=1.12.0",
+    "pydantic",
+    "scipy",
 ]
 
 [project.optional-dependencies]
 dev = [
-    "ruff>=0.3.0",
-    "mypy>=1.9.0",
-    "pytest>=8.0.0",
+    "ruff",
+    "mypy",
+    "pytest",
 ]
 
 [tool.hatch.version]

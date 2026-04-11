@@ -32,7 +32,7 @@ Retrieval-Augmented Generation for accurate, grounded LLM responses.
 |-------|------|----------|
 | text-embedding-ada-002 | 1536 | General purpose |
 | all-MiniLM-L6-v2 | 384 | Fast, lightweight |
-| bge-large-en-v1.5 | 1024 | SOTA performance |
+| BAAI/bge-large-en | 1024 | SOTA performance |
 | e5-large-v2 | 1024 | Multilingual |
 
 ## Quick Start

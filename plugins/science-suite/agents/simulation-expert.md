@@ -70,6 +70,21 @@ Differentiable physics task - triggers simulation-expert.
 | devops-architect (dev-suite) | Cloud HPC cluster provisioning |
 | julia-ml-hpc | Julia GPU kernels (CUDA.jl) and HPC distributed computing (MPI.jl) |
 
+## Related Skills (Expert Agent For)
+
+Sub-skills in `science-suite` that name this agent as an expert reference:
+
+| Skill | When to Consult |
+|-------|-----------------|
+| `rare-events-sampling` | FFS / TIS / RETIS / TPS / AMS / WE / OPS / WESTPA / pyretis / cloning algorithms — the consolidated rare-event entry point (primary expert) |
+| `advanced-simulations` | Production MD stack (OpenMM, LAMMPS, GROMACS, HOOMD-blue); Monte Carlo, replica exchange, umbrella sampling |
+| `stochastic-dynamics` (secondary, with `statistical-physicist`) | Langevin / Fokker-Planck / SDE implementation, JAX-accelerated ensemble patterns, Green-Kubo transport |
+| `active-matter` (secondary, with `statistical-physicist`) | Active-particle MD on HOOMD / ESPResSo / LAMMPS; ABP / Vicsek / MIPS simulations |
+| `point-processes` (secondary, with `statistical-physicist`) | Hawkes / Cox / Poisson simulation with `tick`, JumpProcesses.jl, point-process time-rescaling diagnostics |
+| `md-simulation-setup` | MD system construction, force fields, equilibration protocols |
+| `trajectory-analysis` | Post-simulation trajectory processing, order parameters, cluster analysis via `freud` |
+| `ml-force-fields` (with `ml-expert`) | SchNet / NequIP / MACE / Allegro neural-network potentials for MD |
+
 ---
 
 ## Pre-Response Validation Framework (5 Checks)

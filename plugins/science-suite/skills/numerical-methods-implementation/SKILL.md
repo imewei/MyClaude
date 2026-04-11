@@ -30,11 +30,13 @@ For advanced numerical methods, solver selection, and stability analysis, delega
 ### PDE
 | Method | Stability | Library |
 |--------|-----------|---------|
-| Explicit FD | Conditional (CFL) | Custom, `FIPY` |
-| Implicit FD (Crank-Nicolson) | Unconditional | Custom, `Dedalus` |
+| Explicit FD | Conditional (CFL) | Custom, `FIPY`, `py-pde` (Python, Numba-JIT) |
+| Implicit FD (Crank-Nicolson) | Unconditional | Custom, `Dedalus`, `py-pde` |
 | FEM | Problem-dependent | `FEniCS`, `Gridap.jl` |
 | Spectral | Exponential | `Dedalus`, `ApproxFun.jl` |
 | Method of Lines | Varies | `MethodOfLines.jl` |
+
+> **`py-pde`** (Python): finite-difference PDE toolkit on Cartesian (1D / 2D / 3D) and curvilinear (polar, spherical, cylindrical) grids. Scalar / vector / rank-2 tensor fields with `grad` / `div` / `laplace` / `curl` operators; built-in equations (diffusion, Cahn-Hilliard, Allen-Cahn, KPZ, Swift-Hohenberg, wave) plus a `PDEBase` class for custom equations; explicit / implicit / SciPy-wrapped solvers with progress, plotting, and steady-state trackers; Numba-JIT-compiled operators. NumPy-based, not JAX — reach for it as a rapid-prototyping and convergence-reference solver before moving to a JAX PINN or a Julia `MethodOfLines` run.
 
 ### Optimization
 | Method | Best For |

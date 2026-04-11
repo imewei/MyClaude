@@ -179,6 +179,44 @@ model = ps.SINDy(feature_library=lib)
 model.fit(X, t=t)
 ```
 
+PySINDy ships `STLSQ`, `SR3`, `SSR`, `FROLS`, `ConstrainedSR3`, `MIOSR` optimizers; feature libraries include `Polynomial`, `Fourier`, `Custom`, `PDE`, `WeakForm`, `Generalized`, `Tensored`; differentiation methods cover finite difference, smoothed FD, spectral, Savitzky-Golay, and Kalman. Supports control inputs (SINDyc), implicit dynamics, trapping theorem, and ensemble/bagging methods for UQ. NumPy/scikit-learn based — **not JAX-native**.
+
+---
+
+## Related Python Packages
+
+PySINDy is the SINDy reference, but the data-driven dynamics landscape extends further:
+
+| Package | Role | Notes |
+|---------|------|-------|
+| **PySINDy** | Sparse regression (SINDy, PDE/weak-form, ensemble) | NumPy/sklearn |
+| **PyDMD** | DMD: standard, exact, FbDMD, CDMD, MrDMD, Hankel, EDMD, DMDc, Parametric, BOPDMD, PiDMD | Koopman operator approximation via DMD |
+| **PySR** | Symbolic regression via Julia `SymbolicRegression.jl` backend | sklearn-compat `.fit`/`.predict`; exports to SymPy/LaTeX/JAX/PyTorch |
+| **gplearn** | Classical genetic-programming symbolic regression | NumPy; `SymbolicRegressor`/`Classifier`/`Transformer` |
+
+```python
+# PyDMD — Koopman / dynamic mode decomposition
+from pydmd import DMD, EDMD
+dmd = DMD(svd_rank=10)
+dmd.fit(X.T)   # X: (n_features, n_snapshots)
+eigenvalues = dmd.eigs
+modes = dmd.modes
+reconstructed = dmd.reconstructed_data
+
+# PySR — symbolic regression via Julia backend
+from pysr import PySRRegressor
+model = PySRRegressor(
+    binary_operators=["+", "-", "*", "/"],
+    unary_operators=["sin", "exp", "log", "sqrt"],
+    maxsize=25, populations=30, niterations=100
+)
+model.fit(X, y)
+best = model.get_best()       # Pareto-front pick (complexity vs loss)
+jax_fn = model.jax()          # Export discovered equation to JAX
+```
+
+> **No mature JAX-native SINDy library exists.** For a JAX-first workflow, hand-roll STLSQ via `jax.lax.scan` over polynomial libraries — the regression step is trivially vectorizable. For symbolic regression in a JAX pipeline, PySR's `model.jax()` exporter is the cleanest bridge.
+
 ---
 
 ## Symbolic Regression

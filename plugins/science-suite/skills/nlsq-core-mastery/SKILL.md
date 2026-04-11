@@ -17,7 +17,7 @@ For complex optimization problems, GPU acceleration setup, and large-scale curve
   - *Location*: `plugins/science-suite/agents/jax-pro.md`
   - *Capabilities*: Large-scale fitting (100M+ points), hybrid streaming optimization, and custom loss functions.
 
-## Workflow Selection (v0.6.6)
+## Workflow Selection
 
 | Workflow | Description | Memory Strategy | Use Case |
 |----------|-------------|-----------------|----------|
@@ -113,6 +113,30 @@ diagnose_result(result)  # Check convergence metrics
 | JAX tracer errors | `jnp.where`, `lax.cond` |
 
 **Outcome**: Fast GPU/TPU curve fitting with automatic memory management
+
+## Related JAX Optimization Tools
+
+NLSQ is specialized for **large-scale curve fitting** (150–270× faster than SciPy). For other optimization tasks in JAX, use the following companion libraries — all three are Patrick Kidger / DeepMind successors to the now-archived JAXopt:
+
+| Task | Tool | Key API |
+|------|------|---------|
+| General root-finding / NLSQ / minimization | **Optimistix** | `optx.root_find`, `optx.least_squares`, `optx.minimise`; `Newton`, `LevenbergMarquardt`, `Dogleg`, `GaussNewton`, `BFGS`, `NonlinearCG`, `NelderMead` |
+| Gradient-based optimization (training) | **Optax** | `optax.adam`/`adamw`/`sgd`/`lbfgs`, `optax.chain`, schedules, clipping; also hosts losses/projections from JAXopt |
+| Linear solvers | **Lineax** | `lineax.linear_solve`, operator-based: `LU`, `Cholesky`, `QR`, `SVD`, `CG`, `GMRES`, `BiCGStab` |
+| ODE-constrained fitting | **Diffrax + Optimistix/NLSQ** | Fit parameters of a dynamical system via `diffeqsolve` inside the loss (Neural ODE / UDE style) |
+
+```python
+# NLSQ  = GPU curve fit (large data, a single model)
+from nlsq import fit
+result = fit(model, x, y, p0=p0, workflow="auto")
+
+# Optimistix  = general NLSQ / root-finding (arbitrary residual, small scale)
+import optimistix as optx
+solver = optx.LevenbergMarquardt(rtol=1e-6, atol=1e-8)
+sol = optx.least_squares(residual_fn, solver, y0=p0, args=(x, y))
+```
+
+> **Rule of thumb**: use NLSQ for ≥10⁴-point curve fits (hot GPU path). Use Optimistix when residuals are few but the Jacobian or constraints are complex. They compose — NLSQ for the outer data fit, Optimistix for inner sub-problems.
 
 ## Checklist
 

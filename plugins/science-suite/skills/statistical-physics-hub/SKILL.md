@@ -33,6 +33,9 @@ Coarse-graining, effective field theories, renormalization, and bridging micro t
 ### [Advanced Simulations](../advanced-simulations/SKILL.md)
 Monte Carlo methods, replica exchange, umbrella sampling, and free energy calculations.
 
+### [Rare Events Sampling](../rare-events-sampling/SKILL.md)
+FFS, TIS / RETIS, TPS, AMS, WE, OPS / WESTPA / pyretis, milestoning, and cloning algorithms for thermally-activated barriers, large-deviation statistics, and avalanche exponents.
+
 ## Routing Decision Tree
 
 ```
@@ -54,7 +57,10 @@ What is the statistical physics task?
 |   --> multiscale-modeling
 |
 +-- Advanced MC / free energy / enhanced sampling?
-    --> advanced-simulations
+|   --> advanced-simulations
+|
++-- Rare events / barrier crossings / large-deviation / avalanche statistics?
+    --> rare-events-sampling
 ```
 
 ## Skill Selection Table
@@ -67,6 +73,7 @@ What is the statistical physics task?
 | Active particles, MIPS, flocking | `active-matter` |
 | Coarse-graining, EFT | `multiscale-modeling` |
 | Replica exchange, umbrella sampling | `advanced-simulations` |
+| FFS / TIS / WE / cloning / rare events | `rare-events-sampling` |
 
 ## Checklist
 

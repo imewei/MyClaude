@@ -231,6 +231,38 @@ lyap_spectrum = jax.vmap(max_lyapunov)(rho_values)
 
 **Performance**: vmap compiles a single fused kernel; 10000 parameter values run in one GPU dispatch.
 
+## Python Counterparts
+
+Julia's `DynamicalSystems.jl` umbrella has no single Python equivalent — the ecosystem is a set of focused, NumPy-based libraries. Pick by task:
+
+| Task | Python package | Key API |
+|------|---------------|---------|
+| Lyapunov (Rosenstein / Eckmann), Hurst, DFA | **`nolds`** | `nolds.lyap_r`, `nolds.lyap_e`, `nolds.hurst_rs`, `nolds.dfa`, `nolds.sampen`, `nolds.corr_dim` |
+| Recurrence plots + RQA, recurrence networks, visibility graphs | **`pyunicorn`** | `RecurrencePlot`, `RecurrenceNetwork`, `VisibilityGraph`, `ClimateNetwork`, `EventSynchronization` |
+| Permutation / sample / SVD / spectral entropy, Higuchi / Katz / Petrosian fractal dim | **`antropy`** | `perm_entropy`, `sample_entropy`, `higuchi_fd`, `detrended_fluctuation`, `lziv_complexity` |
+| Multiscale / multivariate / bidimensional entropy | **`EntropyHub`** | `SampEn`, `PermEn`, `DispEn`, `MvMSEn`, `hXMSEn` |
+| Topological signal analysis (persistent homology on time series) | **`teaspoon`** (repo: `TeaspoonTDA/teaspoon`) | `SP`, `TDA`, `ML`, `DAF`, ordinal-partition networks |
+| Simplex / S-map / convergent cross mapping | **`pyEDM`** | `Simplex`, `SMap`, `CCM`, `Multiview`, `EmbedDimension` |
+
+```python
+# nolds: Lyapunov + DFA on a scalar time series
+import nolds
+lambda_max = nolds.lyap_r(x, emb_dim=5, lag=1)       # Rosenstein method
+alpha = nolds.dfa(x)                                  # DFA alpha exponent
+H = nolds.hurst_rs(x)                                 # Hurst exponent
+
+# pyunicorn: recurrence plot + RQA (PyRQA is unmaintained; use pyunicorn)
+from pyunicorn.timeseries import RecurrencePlot
+rp = RecurrencePlot(x, recurrence_rate=0.05)
+rqa = {"DET": rp.determinism(), "LAM": rp.laminarity(), "Lmax": rp.max_diaglength()}
+```
+
+> **Gaps and caveats**:
+> - **`pyRQA`** is effectively abandoned — use `pyunicorn.timeseries.RecurrencePlot` instead.
+> - **`PyDSTool`** (continuation/bifurcation) is unmaintained — for production bifurcation work call `BifurcationKit.jl` from Python via `juliacall`.
+> - **`EntropyHub`** PyPI wheels lag the repo; install from source for current features.
+> - None of these packages are JAX-native. For GPU-parallel Lyapunov sweeps use the JAX `vmap` pattern shown above.
+
 ## Chaos Classification
 
 | lambda_max | D_KY | Behavior |

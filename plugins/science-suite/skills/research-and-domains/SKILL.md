@@ -22,6 +22,9 @@ Orchestrator for research methodology and specialized scientific domains. Routes
 | Research | [Research Quality Assessment](../research-quality-assessment/SKILL.md) | Rigor, reproducibility, statistics |
 | Research | [Scientific Communication](../scientific-communication/SKILL.md) | Papers, reports, presentations |
 | Research | [Evidence Synthesis](../evidence-synthesis/SKILL.md) | Meta-analysis, systematic reviews |
+| Research | [Self-Improving AI](../self-improving-ai/SKILL.md) | DSPy, RLAIF, Self-Refine, test-time compute, autonomous research loops |
+| Research | [DSPy Basics](../dspy-basics/SKILL.md) | Programmatic prompts: Signatures, Modules, MIPROv2, BootstrapFewShot, ReAct |
+| Research | [RLAIF Training](../rlaif-training/SKILL.md) | DPO / KTO / PPO with `trl`; Constitutional AI; AI-as-judge preference generation |
 | Python | [Python Development](../python-development/SKILL.md) | Idiomatic Python, software engineering |
 | Python | [Python Packaging Advanced](../python-packaging-advanced/SKILL.md) | PyPI, build backends |
 | Python | [Rust Extensions](../rust-extensions/SKILL.md) | PyO3/maturin high-perf extensions |
@@ -42,6 +45,15 @@ What is the task category?
 |   --> research-methodology / research-paper-implementation
 |   --> research-quality-assessment / scientific-communication
 |   --> evidence-synthesis
+|
++-- Self-improving AI taxonomy / autonomous research loops / four-families overview?
+|   --> self-improving-ai
+|
++-- DSPy programmatic prompts / MIPROv2 / BootstrapFewShot / ReAct tools?
+|   --> dspy-basics
+|
++-- RLAIF / Constitutional AI / DPO / KTO / PPO with `trl`?
+|   --> rlaif-training
 |
 +-- Python systems / packaging / performance?
 |   (These are co-located here for scientific Python workflows;

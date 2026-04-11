@@ -132,6 +132,39 @@ class CorrelationAnalyzer:
 
 **Outcome**: Transform methods, FDT, Ornstein-Zernike, finite-size scaling, sum rules
 
+---
+
+## Python / JAX ecosystem
+
+Correlation-function theory is ecosystem-agnostic once the formalism is fixed, but the convenience layer differs significantly between Julia and Python for symbolic derivations, FFT conventions, and moment-integral validation:
+
+| Role | Package | Key API |
+|---|---|---|
+| Symbolic correlation algebra (derivations, character functions, sum rules) | **`sympy.stats`** | `Variance`, `Covariance`, `correlation`, `density`, `moment`, `cumulant`, `characteristic_function`, `mgf` |
+| Wiener-Khinchin via FFT | **`scipy.signal`**, **`numpy.fft`**, **`pyfftw`** | `correlate`, `fftconvolve`, `welch`, `csd`, `coherence`; `rfft` / `irfft` for real signals |
+| Cumulants and generating functions | **`mpmath`**, **`sympy`** | `bell_polynomial`, `cumulants_to_moments`, `partial_bell`, `hermite` |
+| FDT response from equilibrium correlations | hand-rolled **`jax.grad`** of equilibrium correlator | derivative-of-correlator → response function; composes with `stochastic-dynamics` JAX ensemble pattern |
+| Sum-rule / moment-integral validation | **`scipy.integrate`** | `quad`, `simpson`, `trapezoid` for moment integrals on fitted correlators |
+| Ornstein-Zernike closure solvers | **`PyOZ`** (community), **`pyOZ-integrate`** | numerical PY / HNC / RY closures for pair correlation functions |
+
+### Minimal pattern — Wiener-Khinchin in numpy + sympy
+
+```python
+import numpy as np
+from scipy.signal import welch
+import sympy as sp
+
+# Numerical Wiener-Khinchin: C(t) ↔ S(ω) via FFT
+f, S = welch(signal, fs=fs, nperseg=2048, return_onesided=False)
+C_t  = np.fft.ifft(S).real                    # inverse FFT recovers C(t)
+
+# Symbolic sanity check: cumulants of a sympy.stats variable
+x = sp.stats.Normal("x", 0, 1)
+print(sp.stats.cumulant(x, 4))                # Gaussian: kappa_4 = 0
+```
+
+> **Stay in symbolic Julia / DynamicalSystems** when the goal is closed-form Wiener-Khinchin, Ornstein-Zernike closures, or Green's-function algebra where MTK / Symbolics gives cleaner derivations. **Drop to `sympy.stats` + `scipy.signal`** when the formalism is well-defined and you need a numerical baseline or sum-rule validation against measured data. The JAX path is the right call only when the correlator itself is a `jit`-compiled callable downstream of a simulation (see `correlation-computational-methods` for the GPU pattern).
+
 ## Checklist
 
 - [ ] Verify C(r) normalization: C(0) = variance and C(r -> inf) -> 0

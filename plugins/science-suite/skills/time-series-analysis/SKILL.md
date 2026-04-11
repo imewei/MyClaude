@@ -146,6 +146,63 @@ def neural_forecast(df: pd.DataFrame, horizon: int = 30) -> pd.DataFrame:
     return nf.predict()
 ```
 
+## Nonlinear & Information-Theoretic Time Series
+
+For nonlinear dynamics, causality, and information flow — complementing the linear/ML methods above:
+
+| Package | Role | Key API |
+|---------|------|---------|
+| **`arch`** | GARCH / ARCH / EGARCH / FIGARCH; ADF / DF-GLS / PhillipsPerron unit roots; Engle-Granger / Phillips-Ouliaris cointegration; stationary / moving-block bootstraps | `arch_model`, `ADF`, `engle_granger`, `IIDBootstrap`, `StationaryBootstrap` |
+| **`statsmodels.tsa`** | State-space SARIMAX with missing-data handling, VAR / VARMAX, UnobservedComponents, DynamicFactor, Markov switching | `SARIMAX`, `VAR`, `VARMAX`, `UnobservedComponents`, `MarkovRegression` |
+| **`pyEDM`** | Empirical dynamic modeling: simplex projection, S-map (nonlinearity θ), convergent cross mapping for weak causality | `Simplex`, `SMap`, `CCM`, `EmbedDimension` |
+| **`IDTxl`** | Greedy multivariate transfer entropy, active information storage, partial information decomposition (KSG/Kraskov + discrete estimators) | `MultivariateTE`, `BivariateTE`, `ActiveInformationStorage`, `PartialInformationDecomposition` |
+| **`nolds`** | Largest Lyapunov (Rosenstein), full spectrum (Eckmann), Hurst, DFA, sample entropy, correlation dimension | `lyap_r`, `lyap_e`, `hurst_rs`, `dfa`, `sampen`, `corr_dim` |
+| **`antropy`** | Permutation / sample / spectral / SVD entropy, Higuchi / Katz fractal dimension, DFA, Lempel-Ziv complexity, Hjorth parameters — EEG-style feature set | `perm_entropy`, `higuchi_fd`, `detrended_fluctuation`, `lziv_complexity` |
+| **`EntropyHub`** | 40+ entropy estimators with multiscale (coarse / composite / refined), cross-entropy, multivariate multiscale, bidimensional entropy | `SampEn`, `PermEn`, `DispEn`, `MvMSEn` |
+| **`ewstools`** | Rolling variance / AC(1) / skewness as critical-slowing-down indicators, Kendall tau significance, deep-learning bifurcation classifiers | `TimeSeries`, `compute_var`, `compute_auto`, `compute_ktau`, `apply_classifier` |
+
+### Data assimilation / state estimation
+
+| Package | Role |
+|---------|------|
+| **`filterpy`** | Linear Kalman, EKF, UKF (Julier / Merwe sigma points), IMM, particle filter, H-infinity; `batch_filter` for offline sequences. NumPy, CPU. |
+| **`DAPPER`** | Benchmark harness for ensemble DA: stochastic / deterministic EnKF, ETKF, LETKF, iEnKS, PartFilt, 3D / 4D-Var; built-in toy models (Lorenz 63 / 84 / 96, QG); averaged diagnostics with confidence intervals. NumPy, CPU. |
+| **`dynamax`** | **JAX-native** state-space + HMM library (Kevin Murphy / Probabilistic ML group). `GaussianHMM`, `LinearGaussianSSM`, `NonlinearGaussianSSM`, `CategoricalHMM`, `PoissonHMM`, `AutoregressiveHMM`; Kalman filter / smoother, EKF, UKF, particle filter; `fit_em` / stochastic gradient / fully-Bayesian HMC parameter learning; Viterbi decoding; parallel-associative scan → **O(log T) on GPU / TPU** for long sequences. Integrates with NumPyro — the `dynamax` log-prob is a JAX callable, so it composes inside a `numpyro.sample` block for Bayesian hyperparameter inference. |
+
+```python
+# dynamax: LGSSM with Kalman smoother + EM
+import jax.random as jr
+from dynamax.linear_gaussian_ssm import LinearGaussianSSM
+
+state_dim, obs_dim = 2, 2
+ssm = LinearGaussianSSM(state_dim=state_dim, emission_dim=obs_dim)
+params, props = ssm.initialize(jr.PRNGKey(0))           # random init
+params, lps  = ssm.fit_em(params, props, emissions)     # EM parameter learning
+smoothed     = ssm.smoother(params, emissions)          # RTS smoother
+```
+
+> **Framework selection**: use `filterpy` for textbook Kalman / EKF / UKF / IMM on a single machine with NumPy arrays. Use `DAPPER` for research benchmarks on ensemble-DA methods with ready-made Lorenz / QG toy models. Use **`dynamax`** when the state-space inference is the hot path inside a JAX pipeline — it's the only JAX-native option, so the choice is made for you if the surrounding code already runs on GPU / TPU. For fully-Bayesian state-space inference, compose `dynamax` log-probs with a NumPyro model (see `numpyro-core-mastery`).
+
+```python
+# arch: GARCH volatility + unit root test
+from arch import arch_model
+from arch.unitroot import ADF
+am = arch_model(returns, vol="Garch", p=1, q=1, dist="skewt")
+res = am.fit(disp="off")
+adf = ADF(returns).summary()
+
+# pyEDM: convergent cross mapping to detect causality
+from pyEDM import CCM
+df = CCM(dataFrame=data, E=3, Tp=0, columns="X", target="Y",
+         libSizes="10 70 10", sample=100)
+```
+
+> **Install notes**: `EntropyHub`, `ewstools`, and `IDTxl` have active repos but out-of-date or absent PyPI wheels — prefer `pip install git+https://github.com/<org>/<repo>.git` for current features.
+
+## Point processes & self-exciting event data
+
+When the data is irregular event *timestamps* rather than a regular grid (earthquake aftershocks, trade arrivals, neuron spikes, social-media cascades), ARMA/GARCH don't apply. Reach for Hawkes / multivariate Hawkes / Bayesian HSGP-background Hawkes / Julia `PointProcesses.jl`. See the dedicated **[point-processes](../point-processes/SKILL.md)** skill for the `tick` reference stack, NumPyro + HSGP Bayesian pattern, Julia ecosystem, and rescaled-residuals diagnostics.
+
 ## Evaluation Metrics
 
 | Metric | Formula | When to Use |

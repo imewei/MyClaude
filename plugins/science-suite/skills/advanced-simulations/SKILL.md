@@ -56,7 +56,36 @@ Computing structural and dynamic properties from simulation data.
 ### Transition Paths
 - **Rare Events**: Forward Flux Sampling, Metadynamics, and Umbrella Sampling workflows.
 
-## 4. Performance & Convergence Checklist
+## 4. Rare-Event Samplers (Python reference stack)
+
+Neither JAX nor Julia has mature native forward-flux / weighted-ensemble samplers. The reference Python tools remain NumPy-era but actively maintained:
+
+| Framework | Methods | MD backends |
+|-----------|---------|-------------|
+| **WESTPA** (`westpa`) | Weighted Ensemble (WE), adaptive MAB binning, HaMSM/RED post-analysis, unbiased rate constants | AMBER, GROMACS, NAMD, OpenMM |
+| **OpenPathSampling** (`openpathsampling`) | TPS, TIS, RETIS, MSTIS, MISTIS, committor analysis, flux calculations | OpenMM (primary) |
+
+```bash
+# WESTPA typical workflow
+w_init         # create west.h5
+w_run          # run WE propagation
+w_assign       # assign segments to progress-coordinate bins
+w_direct       # direct rate analysis
+```
+
+Both support unbiased rate constants and path-ensemble analysis. WESTPA scales to HPC via MPI/ZMQ work managers; OPS stores full path ensembles in NetCDF.
+
+### Agent-based modeling (ABM) with cloning / branching populations
+
+| Framework | Role |
+|-----------|------|
+| **`mesa`** (`projectmesa/mesa`) | Python ABM reference: `mesa.Agent` / `mesa.Model`, spaces (`MultiGrid`, `SingleGrid`, `ContinuousSpace`, `NetworkGrid`, `HexGrid`, `OrthogonalMoore`), Mesa 3.x `AgentSet` API (`shuffle_do`, `do`, `agg`), `DataCollector` → pandas, and the SolaraViz browser front-end for interactive parameter sweeps |
+
+Use `mesa` for cloning-style rare-event sampling (agent = replica), population-level splitting, and coupled heterogeneous-agent models where WESTPA's flat weighted-ensemble formulation is the wrong shape. `mesa` is NumPy-based — pair with `numpy` / `polars` for analysis, not JAX.
+
+> **JAX-native gap**: A weighted-ensemble sampler leveraging `jax.vmap` for replica parallelism remains an open research opportunity — no mature JAX-native rare-event framework exists.
+
+## 5. Performance & Convergence Checklist
 
 - [ ] **Cell Lists**: Optimized neighbor search for $O(N)$ scaling.
 - [ ] **Symplectic Integration**: Energy conservation drift $< 10^{-4}$.

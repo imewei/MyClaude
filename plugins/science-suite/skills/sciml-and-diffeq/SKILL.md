@@ -1,6 +1,6 @@
 ---
 name: sciml-and-diffeq
-description: Meta-orchestrator for Scientific Machine Learning and differential equations in Julia. Routes to SciML ecosystem, DiffEq solvers, ModelingToolkit, optimization, neural PDE, reaction networks, and JuMP skills. Use when solving ODEs/PDEs/SDEs in Julia, using ModelingToolkit, fitting models with Optimization.jl, building neural PDEs, or modeling chemical reactions.
+description: Meta-orchestrator for Scientific Machine Learning and differential equations in Julia. Routes to SciML ecosystem, DiffEq solvers, ModelingToolkit, optimization, neural PDE, reaction networks, JuMP, SINDy equation discovery, bifurcation analysis, and Bayesian UDE skills. Use when solving ODEs/PDEs/SDEs in Julia, using ModelingToolkit, fitting models with Optimization.jl, building neural PDEs, modeling chemical reactions, discovering equations from data, computing bifurcation diagrams, or fitting Bayesian neural ODEs.
 ---
 
 # SciML and Differential Equations
@@ -31,13 +31,25 @@ ModelingToolkit.jl: symbolic-numeric modeling, structural simplification, and co
 Optimization.jl: unified interface for local/global optimizers and parameter estimation.
 
 ### [Neural PDE](../neural-pde/SKILL.md)
-NeuralPDE.jl: physics-informed neural networks (PINNs) and neural operators for PDEs.
+NeuralPDE.jl: physics-informed neural networks (PINNs) and neural operators for PDEs (deterministic).
+
+### [Bayesian PINN](../bayesian-pinn/SKILL.md)
+NeuralPDE.jl's BNNODE / BayesianPINN discretizers — credible intervals on PINN solutions via internal AdvancedHMC.
 
 ### [Catalyst Reactions](../catalyst-reactions/SKILL.md)
 Catalyst.jl: reaction network modeling, mass action kinetics, and stochastic simulations.
 
 ### [JuMP Optimization](../jump-optimization/SKILL.md)
 JuMP.jl: mathematical programming, LP/QP/MIP, and solver interfaces.
+
+### [Equation Discovery (SINDy)](../equation-discovery/SKILL.md)
+DataDrivenDiffEq.jl: sparse identification of nonlinear dynamics from time-series data.
+
+### [Bifurcation Analysis](../bifurcation-analysis/SKILL.md)
+Numerical continuation, branch tracking, and bifurcation diagrams for ODE/PDE systems.
+
+### [Bayesian UDE Workflow](../bayesian-ude-workflow/SKILL.md)
+End-to-end Bayesian Universal Differential Equations: hybrid physics + neural correction with posterior uncertainty.
 
 ## Routing Decision Tree
 
@@ -49,7 +61,7 @@ What is the SciML / DiffEq task?
 |
 +-- Solve ODE / SDE / DAE / DDE?
 |   --> differential-equations (solver selection, stiffness)
-|   --> sciml-modern-stack (SciMLBase v7+ interfaces)
+|   --> sciml-modern-stack (SciMLBase interfaces, sensealg)
 |
 +-- Symbolic modeling / structural analysis?
 |   --> modeling-toolkit
@@ -57,14 +69,26 @@ What is the SciML / DiffEq task?
 +-- Parameter estimation / inverse problems?
 |   --> optimization-patterns
 |
-+-- PDE with neural networks (PINNs)?
++-- PDE with neural networks (deterministic PINNs)?
 |   --> neural-pde
+|
++-- Bayesian PINN (credible intervals via BNNODE / BayesianPINN)?
+|   --> bayesian-pinn
 |
 +-- Chemical reaction networks?
 |   --> catalyst-reactions
 |
 +-- Linear/integer programming?
-    --> jump-optimization
+|   --> jump-optimization
+|
++-- Discover symbolic equations from time-series data (SINDy)?
+|   --> equation-discovery
+|
++-- Bifurcation diagrams / numerical continuation?
+|   --> bifurcation-analysis
+|
++-- Universal DE / neural ODE with posterior uncertainty?
+    --> bayesian-ude-workflow
 ```
 
 ## Checklist

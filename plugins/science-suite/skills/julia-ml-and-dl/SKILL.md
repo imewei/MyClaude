@@ -31,7 +31,7 @@ Zygote.jl, Enzyme.jl, ForwardDiff.jl: selecting and debugging AD backends.
 CUDA.jl and KernelAbstractions.jl: writing and profiling custom GPU kernels.
 
 ### [Julia Graph Neural Networks](../julia-graph-neural-networks/SKILL.md)
-GraphNeuralNetworks.jl: GCN, GAT, message passing, and graph-level tasks.
+GraphNeuralNetworks.jl ecosystem: `GNNGraphs` data structure, `GNNlib` low-level kernels, `GNNLux` Lux-native layers (GCN/GAT/SAGE/GIN), MLDatasets benchmarks, and Bayesian / Graph Neural ODE extension paths.
 
 ### [Julia Reinforcement Learning](../julia-reinforcement-learning/SKILL.md)
 ReinforcementLearning.jl: environments, policies, value functions, and training loops.
@@ -63,7 +63,7 @@ What is the Julia ML task?
 |   --> julia-gpu-kernels
 |
 +-- Graph-structured data / GNNs?
-|   --> julia-graph-neural-networks
+|   --> julia-graph-neural-networks (GNNGraphs / GNNlib / GNNLux layers)
 |
 +-- Reinforcement learning?
 |   --> julia-reinforcement-learning

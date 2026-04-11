@@ -7,14 +7,22 @@ description: Master MCMC convergence diagnostics with R-hat, ESS, trace plots, a
 
 # MCMC Diagnostics
 
-## Expert Agent
+## Expert Agents
 
-For MCMC convergence diagnostics and Bayesian validation with Turing.jl, delegate to:
+MCMC diagnostics applies to any Bayesian workflow — Turing.jl, NumPyro, or
+Pigeons-tempered chains. Delegate to:
 
-- **`julia-pro`**: Julia Bayesian inference, Turing.jl, and MCMC workflows.
+- **`julia-pro`**: Julia/Turing.jl + MCMCChains workflows.
   - *Location*: `plugins/science-suite/agents/julia-pro.md`
+- **`statistical-physicist`**: Bayesian inference theory, sampler geometry,
+  PSIS-LOO model comparison, ArviZ post-processing across PPLs.
+  - *Location*: `plugins/science-suite/agents/statistical-physicist.md`
+- **`jax-pro`**: NumPyro-side diagnostics and JAX-accelerated post-processing.
+  - *Location*: `plugins/science-suite/agents/jax-pro.md`
 
-Convergence diagnostics with MCMCChains.jl.
+Used by `turing-model-design`, `consensus-mcmc-pigeons`, `bayesian-ude-workflow`,
+`numpyro-core-mastery`, and `neural-pde` (BPINN section) — convergence checks
+are the common acceptance gate for every Bayesian workflow in this suite.
 
 ---
 
@@ -60,6 +68,37 @@ autocorplot(chain[:parameter])
 | Low ESS | More samples, thin chains |
 | Divergences | Non-centered parameterization |
 | Poor mixing | Adjust step size |
+
+---
+
+## Python / NumPyro Workflow
+
+```python
+import arviz as az
+import numpyro
+from numpyro.infer import MCMC, NUTS
+
+mcmc = MCMC(NUTS(model), num_warmup=1000, num_samples=2000, num_chains=4)
+mcmc.run(rng_key, data)
+
+# Convert to ArviZ InferenceData
+idata = az.from_numpyro(mcmc)
+
+az.summary(idata)                 # R-hat, ESS bulk/tail, MCSE, HDI
+az.rhat(idata)                    # Target < 1.01
+az.ess(idata, method="bulk")      # Target > 400 (also "tail")
+az.plot_trace(idata)
+az.plot_rank(idata)               # Rank plots — robust alternative to trace
+az.plot_energy(idata)             # HMC energy / BFMI
+```
+
+**Model comparison** (PSIS-LOO / WAIC):
+```python
+az.compare({"model_a": idata_a, "model_b": idata_b}, ic="loo")
+az.loo_pit(idata)                 # posterior-predictive uniformity check
+```
+
+> **ArviZ v1.0 (2025) is a major-version bump**. The `az.rhat`, `az.ess`, `az.summary`, and `from_numpyro` function names are preserved but internal behavior changed — verify compatibility of pipelines written against `arviz<1.0` before upgrading.
 
 ---
 

@@ -148,6 +148,43 @@ def transfer_entropy(X, Y, delay=1):
 | Experimental connection | Map theory to measurable quantities |
 | Model validation | Compare predictions with experimental data |
 
+---
+
+## Python / JAX ecosystem
+
+For physical-systems correlations computed from MD trajectories, scattering data, or particle ensembles, the Python side is dominated by the Glotzer-group `freud` toolkit plus the MDAnalysis / mdtraj trajectory readers:
+
+| Role | Package | Key API |
+|---|---|---|
+| RDF / pair correlation g(r) | **`freud.density.RDF`**, **`MDAnalysis.analysis.rdf`** | radial distribution, neighbor lists, bin centers |
+| Static structure factor S(q) | **`freud.diffraction.StaticStructureFactorDebye`**, **`freud.diffraction.StaticStructureFactorDirect`** | Debye formula (fast) vs direct (q-vector enumerated) |
+| Dynamic structure factor F(q,t) / S(q,ω) | **`freud.density.IntermediateScattering`**, **`MDAnalysis.analysis.waterdynamics`** | intermediate scattering, van Hove G_s(r,t) and G_d(r,t) |
+| Bond-orientational order Q_l / W_l | **`freud.order.Steinhardt`** | `Q_4`, `Q_6`, `W_6`, neighborhood-averaged Q̄_l, solid/liquid classifier |
+| Nematic / hexatic order | **`freud.order.Nematic`**, **`freud.order.Hexatic`** | scalar order parameter + director field |
+| Cluster analysis & percolation | **`freud.cluster.Cluster`** | connected components on a neighbor list, cluster-size distributions |
+| Time-correlation from trajectories | **`MDAnalysis.analysis.encore`**, **`mdtraj`**, hand-rolled on `numpy.fft` | VACF, stress autocorrelation for Green-Kubo |
+| GPU ensemble correlations | **`jax.vmap`** + **`jax.lax.scan`** over replica trajectories | pair-correlation across replicas with zero Python overhead |
+
+### Minimal pattern — g(r) and Q_6 via freud
+
+```python
+import freud
+
+box = freud.box.Box.cube(L)
+
+# Pair correlation
+rdf = freud.density.RDF(bins=200, r_max=L / 2)
+rdf.compute(system=(box, positions))
+g_r, r = rdf.rdf, rdf.bin_centers
+
+# Steinhardt bond-order parameter for solid/liquid detection
+q6 = freud.order.Steinhardt(l=6, average=True)
+q6.compute(system=(box, positions), neighbors={"num_neighbors": 12})
+solid_like = q6.particle_order > 0.35      # threshold per system
+```
+
+> **Stay in Julia / SciML** when the workflow drives both the trajectory generation and the correlator in one session (MTK → DiffEq → correlator), or when symbolic reaction-diffusion correlations need derivative-level composability. **Drop to `freud` + MDAnalysis / mdtraj** whenever the input is an existing MD trajectory file (LAMMPS dump, DCD, XTC, HOOMD GSD) or when GPU-/TBB-accelerated bond-order / cluster analysis is the bottleneck — `freud`'s C++ / TBB backend is hard to beat on CPU, and its neighbor-list reuse across observables is a significant win on long trajectories.
+
 ## Checklist
 
 - [ ] Physical observable identified

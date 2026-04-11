@@ -37,6 +37,9 @@ SINDy, symbolic regression, neural ODEs, and data-driven model identification. P
 ### [JAX-Julia Interop](../jax-julia-interop/SKILL.md)
 Cross-language workflows for hybrid analysis pipelines. Use when a problem benefits from both Julia's symbolic tools and JAX's GPU acceleration.
 
+### [Bayesian UDE Workflow](../bayesian-ude-workflow/SKILL.md)
+Hybrid physics + neural-network ODEs with posterior uncertainty. A UDE is a dynamical-systems technique as much as a SciML technique — reach for this when the goal is to *identify* the unknown part of a dynamical system from data while retaining known physics.
+
 ## Routing Decision Tree
 
 ```
@@ -57,21 +60,35 @@ What is the analysis goal?
 +-- Discover governing equations from data?
 |   --> equation-discovery (Julia DataDrivenDiffEq, Python PySINDy)
 |
-+-- Need both ecosystems in one workflow?
++-- Identify unknown dynamics as a hybrid physics + NN with uncertainty?
+|   --> bayesian-ude-workflow (Turing + DiffEq + Lux, NUTS/Pigeons)
+|
++-- Working inside the Python/NumPy ecosystem (nolds, pyunicorn, antropy,
+|   pyEDM, IDTxl, arch, statsmodels, ewstools)?
+|   --> See the Ecosystem Selection table below for package-to-task mapping
+|
++-- Need both Julia and JAX in one workflow?
     --> jax-julia-interop
 ```
 
 ## Ecosystem Selection
 
-| Task                     | Julia                        | JAX                          |
-|--------------------------|------------------------------|------------------------------|
-| Symbolic analysis        | ModelingToolkit.jl           | --                           |
-| Analytical continuation  | BifurcationKit.jl            | --                           |
-| GPU parameter sweeps     | --                           | vmap + JIT                   |
-| Large networks (>1K)     | --                           | sparse GPU graphs            |
-| Small networks (<1K)     | DynamicalSystems.jl          | --                           |
-| Equation discovery       | DataDrivenDiffEq.jl          | --                           |
-| Neural ODEs              | DiffEqFlux.jl                | Diffrax                      |
+| Task                        | Julia                       | JAX                         | Python (NumPy-based)                                   |
+|-----------------------------|-----------------------------|-----------------------------|--------------------------------------------------------|
+| Symbolic analysis           | ModelingToolkit.jl          | --                          | SymPy (no DAE/index reduction)                         |
+| Analytical continuation     | BifurcationKit.jl           | --                          | AUTO-07p via PyDSTool (PyDSTool is unmaintained)       |
+| GPU parameter sweeps        | --                          | vmap + JIT                  | --                                                     |
+| Large networks (>1K)        | --                          | sparse GPU graphs           | networkx (small-graph reference, not GPU)              |
+| Small networks (<1K)        | DynamicalSystems.jl         | --                          | nolds + pyunicorn + antropy (fragmented)               |
+| Equation discovery          | DataDrivenDiffEq.jl         | --                          | PySINDy + PyDMD + PySR (PySR bridges to Julia)         |
+| Neural ODEs                 | DiffEqFlux.jl               | Diffrax                     | Diffrax (JAX-based)                                    |
+| Lyapunov / Hurst / DFA      | ChaosTools.jl               | vmap + scan                 | nolds                                                  |
+| Recurrence analysis (RQA)   | RecurrenceAnalysis.jl       | --                          | pyunicorn.RecurrencePlot (pyRQA is stale)              |
+| Complexity / entropy        | ComplexityMeasures.jl       | --                          | antropy, EntropyHub (repo active, PyPI lags)           |
+| Transfer entropy / MI       | Associations.jl             | --                          | IDTxl (git-install only)                               |
+| Tipping indicators (EWS)    | TransitionsInTimeseries.jl  | --                          | ewstools (repo active, PyPI lags)                      |
+| CCM / empirical dynamics    | --                          | --                          | pyEDM                                                  |
+| GARCH / unit roots          | --                          | --                          | arch + statsmodels.tsa                                 |
 
 ## Checklist
 

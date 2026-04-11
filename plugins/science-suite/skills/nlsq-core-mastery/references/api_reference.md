@@ -1,4 +1,4 @@
-# API Reference: NLSQ v0.6.6
+# API Reference: NLSQ
 
 ## Core Function: `fit()`
 

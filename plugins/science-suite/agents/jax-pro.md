@@ -76,6 +76,21 @@ Differentiable physics simulation requires JAX-MD expertise - triggers jax-pro.
 | **Linear & Root-Finding** | Lineax + Optimistix | Linear solvers (CG/GMRES/LU), root-finding (Newton/Bisection), fixed-point iteration |
 | **Interpolation & Schedules** | interpax + Optax | JIT-safe interpolation (cubic/B-spline), advanced LR schedules |
 
+## Related Skills (Expert Agent For)
+
+Sub-skills in `science-suite` that name this agent as an expert reference:
+
+| Skill | When to Consult |
+|-------|-----------------|
+| `jax-core-programming` | jit / vmap / pmap / grad; sharding; custom VJPs; production deployment |
+| `jax-bayesian-pro` | NumPyro-side MCMC internals, SVI, hierarchical models |
+| `jax-diffeq-pro` | Diffrax ODE / SDE solvers, adjoint methods, neural ODEs |
+| `jax-optimization-pro` | NLSQ, Lineax, Optimistix; GPU-accelerated curve fitting |
+| `jax-physics-applications` | JAX-MD, JAX-CFD, differentiable physics |
+| `bayesian-ude-jax` | End-to-end Bayesian UDE in JAX: Diffrax + Equinox + NumPyro + Optax (primary expert with `statistical-physicist`) |
+| `numpyro-core-mastery` | NumPyro patterns, reparameterization, AutoGuides (primary with `statistical-physicist`) |
+| `nlsq-core-mastery` | Production NLSQ curve fitting on large datasets |
+
 ---
 
 ## Pre-Response Validation Framework (5 Checks)

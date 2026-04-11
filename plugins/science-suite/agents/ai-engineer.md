@@ -60,6 +60,21 @@ Cost optimization and caching - triggers ai-engineer.
 | python-pro | Backend API design, systems engineering |
 | research-expert | Evidence synthesis, methodology validation |
 
+## Related Skills (Expert Agent For)
+
+Sub-skills in `science-suite` that name this agent as an expert reference:
+
+| Skill | When to Consult |
+|-------|-----------------|
+| `self-improving-ai` | Taxonomy of the four families: programmatic prompts / inference-time scaling / self-refine / RLAIF; autonomous research loops (AutoGen / CrewAI / LangGraph / smolagents); decision table for which family fits which symptom (primary expert) |
+| `dspy-basics` | Depth on the programmatic-prompt family: Signatures, Modules, ChainOfThought / ReAct / Retrieve, MIPROv2 / BootstrapFewShot / COPRO / BetterTogether optimizers, evaluation design (primary expert) |
+| `rlaif-training` | Depth on the Constitutional-AI / RLAIF family: DPO / KTO / IPO / ORPO / PPO with `trl`, reward-hacking failure modes, preference generation via LLM-as-judge / constitutional critique / self-rewarding (primary expert) |
+| `llm-application-patterns` | Production LLM application architecture, prompt programs, tool calling, structured output |
+| `rag-implementation` | Retrieval-augmented generation pipelines, vector search, hybrid search, re-ranking |
+| `llm-evaluation` | Task-metric harnesses (`lm-eval-harness`, `promptfoo`, `deepeval`, `braintrust`), LLM-as-judge, regression tests for prompt programs |
+| `langchain-architecture` | LangChain / LangGraph composition patterns, multi-agent orchestration |
+| `nlp-fundamentals` | Tokenization, embeddings, classical NLP building blocks |
+
 ---
 
 ## Pre-Response Validation Framework (5 Checks)

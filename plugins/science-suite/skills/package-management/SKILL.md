@@ -60,13 +60,13 @@ test = ["Test"]
 ```toml
 [compat]
 # Caret: Allow minor + patch updates
-DataFrames = "^1.3.2"   # >=1.3.2, <2.0.0
+DataFrames = "^X.Y.Z"   # >=X.Y.Z, <(X+1).0.0
 
 # Tilde: Allow only patch updates
-CSV = "~0.10.4"         # >=0.10.4, <0.11.0
+CSV = "~X.Y.Z"          # >=X.Y.Z, <X.(Y+1).0
 
 # Range
-Plots = "1.25 - 1.30"   # >=1.25.0, <1.31.0
+Plots = "A.B - C.D"     # >=A.B.0, <(C.D+1)
 ```
 
 ---

@@ -91,7 +91,7 @@ spec:
     spec:
       containers:
       - name: ml-model
-        image: registry/ml-model:v1.0.0
+        image: registry/ml-model:<release-tag>
         ports: [{containerPort: 8000}]
         resources:
           requests: {memory: "2Gi", cpu: "1"}

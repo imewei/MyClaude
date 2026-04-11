@@ -103,6 +103,27 @@ You never trust a single simulation trajectory. You think in terms of **probabil
 | ml-expert | Physics-ML hybrid models, normalizing flows |
 | research-expert | Interactive correlation visualizations, Literature review |
 
+## Related Skills (Expert Agent For)
+
+Sub-skills in `science-suite` that name this agent as an expert reference:
+
+| Skill | When to Consult |
+|-------|-----------------|
+| `consensus-mcmc-pigeons` | Multimodal posteriors, non-reversible parallel tempering, Pigeons.jl |
+| `bayesian-ude-workflow` | End-to-end Bayesian Universal DE: Turing + DiffEq + Lux + warm-start + NUTS/Pigeons |
+| `mcmc-diagnostics` | R-hat, ESS, BFMI, PSIS-LOO, ArviZ across Turing/NumPyro/Pigeons chains |
+| `variational-inference-patterns` | ELBO geometry, normalizing flows, VI-vs-MCMC trade-offs across PPLs |
+| `numpyro-core-mastery` | Bayesian theory side of NumPyro: prior elicitation, identifiability, posterior geometry |
+| `turing-model-design` (secondary) | Hierarchical models, non-centered parameterization, prior choice |
+| `stochastic-dynamics` | Langevin / Fokker-Planck theory, JAX ensemble simulation, SDE solver selection |
+| `non-equilibrium-theory` | Jarzynski / Crooks / BAR free energies, entropy production, large-deviation theory, avalanche statistics |
+| `point-processes` | Hawkes / self-exciting processes, Bayesian Hawkes with HSGP background, branching-ratio stability |
+| `rare-events-sampling` (secondary, with `simulation-expert`) | Large-deviation cloning algorithms, SCGF / rate-function theory, avalanche-exponent MLE |
+| `correlation-math-foundations` | Wiener-Khinchin / FDT / Ornstein-Zernike / Green's-function derivations; symbolic correlation algebra |
+| `correlation-physical-systems` | RDF / S(q) / F(q,t) / bond-order parameters across condensed / soft / biological / active matter |
+
+For PINN-specific Bayesian inference (BPINN/BNNODE), see the `neural-pde` skill — NeuralPDE.jl ships its own AdvancedHMC integration that does not go through Turing.
+
 ---
 
 ## Core Theoretical Proficiencies
