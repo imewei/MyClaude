@@ -164,5 +164,6 @@ prompt:
 
 ## Related Skills
 
+- `thinkfirst` -- Upstream interview workflow for turning vague ideas or brain dumps into the structured requirements this skill then refines
 - `reasoning-frameworks` -- Structured reasoning patterns (CoT, branching) that prompts can invoke
 - `llm-application-patterns` -- Application-level patterns for RAG, agents, and tool use that consume prompts

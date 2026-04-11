@@ -17,6 +17,9 @@ For complex LLM engineering problems requiring deep context and safety expertise
 
 ## Core Skills
 
+### [thinkfirst — Interview-First Prompt Crafting](../thinkfirst/SKILL.md)
+Conversational interview workflow that transforms brain dumps, rough ideas, or unstructured notes into structured prompts. Use as the upstream step whenever the user arrives with a vague need — clarifies intent through the Seven Dimensions before any draft is written. Pairs with prompt-engineering-patterns for the production-grade refinement step.
+
 ### [LLM Application Patterns](../llm-application-patterns/SKILL.md)
 Architecture patterns, RAG pipelines, CoT integration, few-shot design, and evaluation harnesses. Use when designing the overall structure of an LLM-powered feature or application.
 
@@ -34,11 +37,14 @@ Content filtering, output validation, jailbreak mitigation, and responsible AI c
 ```
 What is the primary engineering concern?
 |
++-- Starting from a vague idea, brain dump, or unstructured requirements?
+|   --> thinkfirst (interview-first clarification, then draft)
+|
 +-- Designing the overall LLM application or RAG architecture?
 |   --> llm-application-patterns (architecture, RAG, evaluation)
 |
-+-- Writing or optimizing prompts for production use?
-|   --> prompt-engineering-patterns (templates, optimization)
++-- Writing or optimizing prompts for production use (already have requirements)?
+|   --> prompt-engineering-patterns (templates, optimization, versioning)
 |
 +-- Connecting the agent to external tools via MCP?
 |   --> mcp-integration (server config, tool coordination)
@@ -49,6 +55,7 @@ What is the primary engineering concern?
 
 ## Checklist
 
+- [ ] For vague or unstructured user requests, start with thinkfirst before reaching for templates
 - [ ] Identify the primary concern using the routing decision tree before selecting a sub-skill
 - [ ] Confirm RAG retrieval pipeline includes chunk size validation and relevance thresholds
 - [ ] Verify all production prompts are versioned and tested against a regression suite
