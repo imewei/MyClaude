@@ -211,6 +211,7 @@ agent-os/
 /reports/
 /reviews/
 /test-corpus/
+.audit/
 tools/maintenance/output/
 
 # ----------------
