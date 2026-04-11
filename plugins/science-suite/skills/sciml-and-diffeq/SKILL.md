@@ -19,7 +19,7 @@ Orchestrator for Scientific Machine Learning (SciML) and differential equations 
 Overview of the SciML organization: packages, interoperability, and when to use each.
 
 ### [SciML Modern Stack](../sciml-modern-stack/SKILL.md)
-DifferentialEquations.jl v7+, SciMLBase interfaces, and modern solver selection.
+Lux.jl explicit-parameter neural networks, SciMLSensitivity.jl adjoint/forward sensitivity, Universal Differential Equations (UDEs), UncertaintyQuantification.jl, DeepEquilibriumNetworks.jl. Use for neural-physics hybrids and AD-through-solvers. (Frozen at 78% budget — do not add new content; create a sibling skill instead.)
 
 ### [Differential Equations](../differential-equations/SKILL.md)
 ODE/SDE/DAE/DDE solvers: solver selection, stiffness detection, and error control.
@@ -60,8 +60,14 @@ What is the SciML / DiffEq task?
 |   --> sciml-ecosystem
 |
 +-- Solve ODE / SDE / DAE / DDE?
-|   --> differential-equations (solver selection, stiffness)
-|   --> sciml-modern-stack (SciMLBase interfaces, sensealg)
+|   --> differential-equations (solver selection, stiffness, error control)
+|
++-- Which SciML component / package to use at a glance?
+|   --> sciml-ecosystem (package map, when to use what)
+|
++-- UDE / neural ODE / Lux.jl / SciMLSensitivity adjoint / AD-through-solver / UQ on trained models?
+|   --> sciml-modern-stack (Lux + SciMLSensitivity + UncertaintyQuantification specifics)
+|   (for the end-to-end Bayesian UDE workflow with posterior sampling, use bayesian-ude-workflow instead)
 |
 +-- Symbolic modeling / structural analysis?
 |   --> modeling-toolkit

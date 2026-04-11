@@ -1,6 +1,6 @@
 ---
 name: stochastic-dynamics
-description: Model stochastic dynamics using master equations, Fokker-Planck, Langevin dynamics, and Green-Kubo transport theory. Use when simulating noise-driven systems, calculating transport coefficients, or modeling rare events.
+description: Model stochastic dynamics using master equations, Fokker-Planck, Langevin dynamics, Green-Kubo transport theory, and jump-diffusion SDEs (dx = f dt + g dW + J dN). Use when simulating noise-driven systems, calculating transport coefficients, modeling rare events, or simulating general physics jump-diffusion SDEs outside the reaction-network context (for biochemical reaction networks use catalyst-reactions instead).
 ---
 
 # Stochastic Dynamics & Transport
@@ -218,7 +218,7 @@ See `sciml-and-diffeq` for the surrounding SciML ecosystem and `jax-diffeq-pro` 
 
 - **Rare events from Langevin / SDE** — combine the ensemble pattern above with forward-flux sampling or weighted ensemble (see `advanced-simulations` for WESTPA / OPS).
 - **Learning the drift from data** — if the potential `U(x)` is unknown, fit it with a Lux/Equinox MLP and train against a trajectory log-likelihood. This overlaps with `bayesian-ude-workflow` when uncertainty on the learned drift is required.
-- **Jump-diffusion / PDMP** — SDEs with embedded jump events belong in `catalyst-reactions` alongside `JumpProcesses.jl` and PDMP.
+- **Jump-diffusion / PDMP** — General physics SDEs with embedded jump events (stick-slip, shot noise, Lévy flights, Markov-switching Langevin) are handled here using `JumpProcesses.jl` or `DiffEqJump` alongside a continuous Langevin drift. For **biochemical reaction networks** specifically (mass-action kinetics, Gillespie SSA on a species vector), route to `catalyst-reactions` — Catalyst.jl builds the jump problem from a symbolic `@reaction_network`. Use this skill when the jumps are physical (phase slips, pinning, regime switches) rather than chemical.
 
 ## Best Practices
 

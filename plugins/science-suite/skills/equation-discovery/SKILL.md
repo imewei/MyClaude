@@ -1,6 +1,6 @@
 ---
 name: equation-discovery
-description: Data-driven equation discovery with SINDy (Sparse Identification of Nonlinear Dynamics) using DataDrivenDiffEq.jl (Julia) and PySINDy (Python). Covers library construction, sparse regression (STLSQ, SR3), implicit SINDy, symbolic regression, and model validation. Use when identifying governing equations from trajectory data.
+description: Data-driven equation discovery with SINDy (Sparse Identification of Nonlinear Dynamics) using DataDrivenDiffEq.jl (Julia) and PySINDy (Python). Covers library construction, sparse regression (STLSQ, SR3), implicit SINDy, weak-form / integral SINDy, physics-constrained SINDy (conservation-law penalties), Bayesian SINDy (posterior over discovered coefficients via sparsifying priors or HMC on the coefficient vector), symbolic regression, and model validation. Use when identifying governing equations from trajectory data, including when uncertainty quantification on the discovered terms is required.
 ---
 
 # Equation Discovery
@@ -292,6 +292,42 @@ After training a Universal Differential Equation (UDE), use SINDy on the trained
 4. Validate the symbolic model against the original data
 
 This pipeline combines the flexibility of neural networks with the interpretability of symbolic equations.
+
+---
+
+## Bayesian SINDy — posterior over discovered coefficients
+
+Classic SINDy returns a point estimate `Xi` via sequentially-thresholded least squares. When measurement noise is non-trivial, library terms are correlated, or the application requires credible intervals on each coefficient, use a **Bayesian SINDy** formulation instead. Three practical routes:
+
+1. **Spike-and-slab / horseshoe prior on `Xi`** — place a sparsifying prior directly on the coefficient vector and sample with NUTS. Each library term gets a marginal posterior probability of inclusion and a coefficient credible interval.
+
+   ```python
+   import numpyro, numpyro.distributions as dist
+
+   def bayesian_sindy(Theta, dXdt):
+       # Theta : (n_samples, n_features) library
+       # dXdt  : (n_samples, n_states) measured derivatives
+       nfeat = Theta.shape[1]
+       tau = numpyro.sample("tau", dist.HalfCauchy(1.0))           # global shrinkage
+       lam = numpyro.sample("lam", dist.HalfCauchy(jnp.ones(nfeat)))  # local shrinkage
+       Xi = numpyro.sample("Xi", dist.Normal(0.0, tau * lam))      # horseshoe prior
+       sigma = numpyro.sample("sigma", dist.HalfNormal(1.0))
+       numpyro.sample("obs", dist.Normal(Theta @ Xi, sigma), obs=dXdt)
+   ```
+
+2. **Ensemble SINDy (PySINDy `EnsembleOptimizer`)** — bootstrap the data, run SINDy repeatedly, collect an empirical distribution over inclusion frequencies and coefficient values. Cheap, parallel, and good enough for exploratory uncertainty.
+
+3. **UQ-SINDy (DataDrivenDiffEq.jl `ImplicitOptimizer` + MCMC wrappers)** — Julia-side Bayesian posterior on the sparse coefficients through Turing `@model` wrappers.
+
+When to reach for which:
+
+| Goal | Method |
+|------|--------|
+| Credible intervals on active coefficients, proper inference | Horseshoe + NUTS (option 1) |
+| Quick sensitivity to noise / data subsetting | Ensemble SINDy (option 2) |
+| Julia-native, combined with `bayesian-ude-workflow` | UQ-SINDy via Turing (option 3) |
+
+For the full Bayesian workflow (priors, diagnostics, model comparison), cross-link to the `bayesian-inference` hub → `numpyro-core-mastery` / `turing-model-design` / `mcmc-diagnostics`.
 
 ---
 

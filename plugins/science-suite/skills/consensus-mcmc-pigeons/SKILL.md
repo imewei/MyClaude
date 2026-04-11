@@ -7,6 +7,15 @@ description: Sample multimodal posteriors with Pigeons.jl non-reversible paralle
 
 Non-Reversible Parallel Tempering (NRPT) for posteriors that defeat single-chain samplers.
 
+> **Two different things share the "Consensus MC" name — read this first.**
+>
+> | Flavor | Algorithm | When it helps | Where it lives |
+> |--------|-----------|---------------|-----------------|
+> | **Pigeons NRPT** (this skill) | Run `n_chains` tempered replicas of the *same* full-data posterior on one machine (or across MPI ranks); replicas swap non-reversibly along the temperature ladder. Cold chain samples the posterior. | Multimodal posteriors, weakly identified UDEs, label-switching, thin-neck posteriors. Data is not partitioned. | This skill. |
+> | **Scott-2016 Consensus Monte Carlo** (divide-and-conquer) | Shard the data into `K` pieces, run NUTS on each shard with a rescaled prior `p(θ)^{1/K}`, then combine the `K` sub-posteriors by weighted-average (or density-product) to approximate the full-data posterior. | Posterior is *unimodal* but the full dataset is too large to fit on one node; embarrassingly parallel is acceptable. | Not covered in depth here — the NumPyro / Turing `@model` is identical to the single-machine version; only the orchestration differs. Use `numpyro-core-mastery` + a thin sharding layer. |
+>
+> These solve different problems. If your issue is multimodality or a bad posterior geometry, you want Pigeons. If your issue is data volume and the posterior is well-behaved, you want Scott-2016 divide-and-conquer. The rest of this skill is about Pigeons NRPT.
+
 ## Expert Agent
 
 For multimodal Bayesian inference and parallel tempering workflows, delegate to:

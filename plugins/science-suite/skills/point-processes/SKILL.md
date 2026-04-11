@@ -1,6 +1,6 @@
 ---
 name: point-processes
-description: Model self-exciting event data with Hawkes processes, mutually exciting multivariate processes, and Bayesian Hawkes with non-parametric backgrounds. Use when the observations are irregular event timestamps rather than a regularly sampled series — earthquake aftershocks, trade arrivals, neuron spike trains, social-media cascades, infectious-disease events, or any clustered-in-time process. Use proactively when the user mentions Hawkes, self-exciting, point process, temporal point process, NRPP, branching ratio, excitation kernel, or the `tick` library.
+description: Model self-exciting event data with Hawkes processes (parametric and non-parametric EM/HawkesEM kernel estimation), mutually exciting multivariate processes, Bayesian Hawkes with non-parametric backgrounds (HSGP), renewal processes, and inhomogeneous Poisson / Cox processes with GP intensities. Use when the observations are irregular event timestamps rather than a regularly sampled series — earthquake aftershocks, trade arrivals, neuron spike trains, social-media cascades, infectious-disease events, or any clustered-in-time process. Use proactively when the user mentions Hawkes, self-exciting, point process, temporal point process, renewal process, inter-arrival, NRPP, branching ratio, excitation kernel, non-parametric Hawkes, EM Hawkes, or the `tick` library.
 ---
 
 # Point Processes & Self-Exciting Dynamics
@@ -128,7 +128,8 @@ Standard time-series diagnostics don't apply. The key tool is the **time-rescali
 - **Turing model design** — Julia-side Bayesian Hawkes via `@model`. See `turing-model-design`.
 - **Consensus MCMC with Pigeons** — multimodal escape hatch for Bayesian Hawkes. See `consensus-mcmc-pigeons`.
 - **MCMC diagnostics** — rescaled-residuals workflow post-fit. See `mcmc-diagnostics`.
-- **Catalyst reactions** — jump-process side (PDMP, Gillespie SSA, jump-diffusion) for reaction-network systems. See `catalyst-reactions`.
+- **Catalyst reactions** — Gillespie SSA on **biochemical reaction networks** specifically. See `catalyst-reactions`.
+- **Stochastic dynamics** — general physics **jump-diffusion SDEs** (dx = f dt + g dW + J dN) outside the reaction-network context (Lévy flights, shot noise, regime-switching Langevin). See `stochastic-dynamics`.
 - **Bayesian inference hub** — parent routing. See `bayesian-inference`.
 
 ---

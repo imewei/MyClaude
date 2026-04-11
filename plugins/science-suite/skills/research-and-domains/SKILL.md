@@ -30,6 +30,7 @@ Orchestrator for research methodology and specialized scientific domains. Routes
 | Python | [Rust Extensions](../rust-extensions/SKILL.md) | PyO3/maturin high-perf extensions |
 | Python | [Type-Driven Design](../type-driven-design/SKILL.md) | Type safety, protocols |
 | Python | [Modern Concurrency](../modern-concurrency/SKILL.md) | asyncio, threading, multiprocessing |
+| Python | [Robust Testing](../robust-testing/SKILL.md) | Property-based testing (Hypothesis), mutation testing, advanced pytest fixtures for scientific code |
 | Domain | [Quantum Computing](../quantum-computing/SKILL.md) | Qiskit, PennyLane, VQE/QAOA |
 | Domain | [Bioinformatics](../bioinformatics/SKILL.md) | Genomics, proteomics, BioPython |
 | Domain | [Computer Vision](../computer-vision/SKILL.md) | Image processing, detection |
@@ -60,6 +61,7 @@ What is the task category?
 |    for general Python toolchain, see dev-suite python-toolchain hub)
 |   --> python-development / python-packaging-advanced
 |   --> rust-extensions / type-driven-design / modern-concurrency
+|   --> robust-testing (Hypothesis property-based tests, mutation testing)
 |
 +-- Specialized scientific domain?
     +-- Quantum circuits / VQE / QAOA? --> quantum-computing

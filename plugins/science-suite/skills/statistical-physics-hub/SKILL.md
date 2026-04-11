@@ -1,6 +1,6 @@
 ---
 name: statistical-physics-hub
-description: Meta-orchestrator for statistical physics and soft matter. Routes to equilibrium/non-equilibrium theory, stochastic dynamics, active matter, multiscale modeling, and advanced simulation skills. Use when modeling equilibrium/non-equilibrium systems, simulating stochastic dynamics, studying active matter, implementing multiscale methods, or running advanced MD simulations.
+description: Meta-orchestrator for statistical physics and soft matter. Routes to equilibrium/non-equilibrium theory, stochastic dynamics, active matter, multiscale modeling, advanced simulation, rare-events sampling, and extreme-value-statistics skills. Use when modeling equilibrium/non-equilibrium systems, simulating stochastic dynamics, studying active matter, implementing multiscale methods, running advanced MD simulations, computing rare-event rates, or fitting extreme-value distributions to tail data (GEV/GPD/Hill/POT).
 ---
 
 # Statistical Physics Hub
@@ -34,7 +34,10 @@ Coarse-graining, effective field theories, renormalization, and bridging micro t
 Monte Carlo methods, replica exchange, umbrella sampling, and free energy calculations.
 
 ### [Rare Events Sampling](../rare-events-sampling/SKILL.md)
-FFS, TIS / RETIS, TPS, AMS, WE, OPS / WESTPA / pyretis, milestoning, and cloning algorithms for thermally-activated barriers, large-deviation statistics, and avalanche exponents.
+FFS, TIS / RETIS, TPS, AMS, WE, OPS / WESTPA / pyretis, milestoning, and cloning algorithms for thermally-activated barriers, large-deviation statistics, avalanche exponents, self-organized criticality, sandpile models, and crackling noise.
+
+### [Extreme Value Statistics](../extreme-value-statistics/SKILL.md)
+GEV (block-maxima) and GPD (peaks-over-threshold) fits, tail-index estimators (Hill / Pickands / moment), return-level plots, non-stationary EVT, and the boundary between power-law SOC and heavy-tail EVT analyses.
 
 ## Routing Decision Tree
 
@@ -60,8 +63,11 @@ What is the statistical physics task?
 +-- Advanced MC / free energy / enhanced sampling?
 |   --> advanced-simulations
 |
-+-- Rare events / barrier crossings / large-deviation / avalanche statistics?
-    --> rare-events-sampling
++-- Rare events / barrier crossings / large-deviation / avalanche statistics / SOC / crackling noise?
+|   --> rare-events-sampling
+|
++-- Extreme-value distributions on magnitudes (GEV, GPD, tail index, return level)?
+    --> extreme-value-statistics
 ```
 
 ## Skill Selection Table
@@ -74,7 +80,8 @@ What is the statistical physics task?
 | Active particles, MIPS, flocking | `active-matter` |
 | Coarse-graining, EFT | `multiscale-modeling` |
 | Replica exchange, umbrella sampling | `advanced-simulations` |
-| FFS / TIS / WE / cloning / rare events | `rare-events-sampling` |
+| FFS / TIS / WE / cloning / rare events / SOC / avalanche | `rare-events-sampling` |
+| GEV / GPD / Hill / POT / tail-index / return level | `extreme-value-statistics` |
 
 ## Checklist
 
