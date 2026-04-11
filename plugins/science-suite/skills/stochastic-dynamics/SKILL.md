@@ -216,7 +216,7 @@ See `sciml-and-diffeq` for the surrounding SciML ecosystem and `jax-diffeq-pro` 
 
 ## Research applications
 
-- **Rare events from Langevin / SDE** — combine the ensemble pattern above with forward-flux sampling or weighted ensemble (see `advanced-simulations` for WESTPA / OPS).
+- **Rare events from Langevin / SDE** — combine the ensemble pattern above with forward-flux sampling or weighted ensemble (see `advanced-simulations` for WESTPA / OPS). For BAR / Jarzynski / Crooks free-energy extraction from the same Langevin ensemble pattern, see the worked example in `non-equilibrium-theory`.
 - **Learning the drift from data** — if the potential `U(x)` is unknown, fit it with a Lux/Equinox MLP and train against a trajectory log-likelihood. This overlaps with `bayesian-ude-workflow` when uncertainty on the learned drift is required.
 - **Jump-diffusion / PDMP** — General physics SDEs with embedded jump events (stick-slip, shot noise, Lévy flights, Markov-switching Langevin) are handled here using `JumpProcesses.jl` or `DiffEqJump` alongside a continuous Langevin drift. For **biochemical reaction networks** specifically (mass-action kinetics, Gillespie SSA on a species vector), route to `catalyst-reactions` — Catalyst.jl builds the jump problem from a symbolic `@reaction_network`. Use this skill when the jumps are physical (phase slips, pinning, regime switches) rather than chemical.
 
