@@ -22,7 +22,27 @@ from __future__ import annotations
 
 import re
 from dataclasses import dataclass
-from typing import Final
+from typing import Final, Literal
+
+LanguageHint = Literal["latin", "non-latin", "mixed", "empty"]
+"""Coarse script-family classification of probe input.
+
+- ``latin``: predominantly ASCII-range text (English, most Western European languages)
+- ``non-latin``: predominantly non-ASCII code points (CJK, Arabic, Cyrillic, Devanagari, …)
+- ``mixed``: a blend — e.g., an English intro followed by Chinese
+- ``empty``: no characters to classify
+"""
+
+Confidence = Literal["standard", "low", "very_low"]
+"""Confidence that the probe should be trusted for auto-fill.
+
+- ``standard``: latin script, passes all safeguards. Suitable for inline
+  substitution (still wrapped and surfaced in the metadata block).
+- ``low``: mixed script, passes safeguards. User should double-check.
+- ``very_low``: non-latin script. The English-primary refusal patterns
+  may miss injection attempts in the target language, so the value is
+  emitted but the user MUST review before pasting.
+"""
 
 # Patterns that indicate a probe value is untrustworthy. Any match causes
 # the sanitizer to refuse the probe and downgrade the placeholder to
@@ -55,6 +75,41 @@ _DANGEROUS_CHARS: Final[dict[str, str]] = {
 # Matches the 300-character cap documented in Step 1.5 Tier 4.
 MAX_PROBE_LENGTH: Final[int] = 300
 
+# A probe with >= this fraction of non-ASCII characters is classified
+# as non-latin (strict threshold — CJK prose is effectively 100%).
+_NON_LATIN_THRESHOLD: Final[float] = 0.5
+
+# A probe with between _MIXED_LOW and _NON_LATIN_THRESHOLD non-ASCII
+# fraction is classified as mixed.
+_MIXED_LOW: Final[float] = 0.1
+
+
+def _classify_language(text: str) -> LanguageHint:
+    """Classify a probe paragraph by script family (ASCII-ratio heuristic).
+
+    Uses a cheap character-by-character check rather than a real NLP
+    language detector: the caller only needs to know whether to trust
+    English-primary refusal patterns, not the actual language.
+    """
+    if not text:
+        return "empty"
+    non_ascii = sum(1 for c in text if ord(c) > 127)
+    ratio = non_ascii / len(text)
+    if ratio >= _NON_LATIN_THRESHOLD:
+        return "non-latin"
+    if ratio >= _MIXED_LOW:
+        return "mixed"
+    return "latin"
+
+
+def _confidence_for(language_hint: LanguageHint) -> Confidence:
+    """Map a language hint to the auto-fill confidence tier."""
+    if language_hint == "non-latin":
+        return "very_low"
+    if language_hint == "mixed":
+        return "low"
+    return "standard"
+
 
 @dataclass(frozen=True)
 class SanitizedProbe:
@@ -72,6 +127,13 @@ class SanitizedProbe:
         raw_length: Length of the input text before any processing.
         truncated: ``True`` if the input exceeded :data:`MAX_PROBE_LENGTH`
             and was cut down.
+        language_hint: Coarse script-family classification of the input.
+            Always computed, regardless of refusal state.
+        confidence: Auto-fill confidence tier derived from
+            ``language_hint``. ``very_low`` for non-latin scripts —
+            callers MUST surface these with an explicit review prompt
+            since the English-primary refusal patterns may miss
+            injection attempts in the target language.
     """
 
     value: str
@@ -80,6 +142,8 @@ class SanitizedProbe:
     refusal_reason: str | None
     raw_length: int
     truncated: bool
+    language_hint: LanguageHint
+    confidence: Confidence
 
 
 def sanitize_readme_probe(text: str) -> SanitizedProbe:
@@ -107,6 +171,11 @@ def sanitize_readme_probe(text: str) -> SanitizedProbe:
     truncated = raw_length > MAX_PROBE_LENGTH
     working = text[:MAX_PROBE_LENGTH]
 
+    # Language classification runs on the *truncated* text so callers
+    # see the same fraction the sanitizer used for its own decisions.
+    language_hint = _classify_language(working)
+    confidence = _confidence_for(language_hint)
+
     for pattern in _REFUSAL_PATTERNS:
         if pattern.search(working):
             return SanitizedProbe(
@@ -116,6 +185,8 @@ def sanitize_readme_probe(text: str) -> SanitizedProbe:
                 refusal_reason=f"matched refusal pattern: {pattern.pattern}",
                 raw_length=raw_length,
                 truncated=truncated,
+                language_hint=language_hint,
+                confidence=confidence,
             )
 
     neutralized = working
@@ -131,4 +202,6 @@ def sanitize_readme_probe(text: str) -> SanitizedProbe:
         refusal_reason=None,
         raw_length=raw_length,
         truncated=truncated,
+        language_hint=language_hint,
+        confidence=confidence,
     )
