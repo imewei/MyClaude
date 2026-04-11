@@ -121,6 +121,7 @@ Sub-skills in `science-suite` that name this agent as an expert reference:
 | `rare-events-sampling` (secondary, with `simulation-expert`) | Large-deviation cloning algorithms, SCGF / rate-function theory, avalanche-exponent MLE |
 | `correlation-math-foundations` | Wiener-Khinchin / FDT / Ornstein-Zernike / Green's-function derivations; symbolic correlation algebra |
 | `correlation-physical-systems` | RDF / S(q) / F(q,t) / bond-order parameters across condensed / soft / biological / active matter |
+| `statistical-physics` | Equilibrium statistical mechanics, partition functions, phase transitions, RG, and the Monte Carlo sampler ecosystem (Metropolis / heat-bath / cluster / Wang-Landau / parallel tempering) with Julia idiomatic patterns and the Python production handoff |
 
 For PINN-specific Bayesian inference (BPINN/BNNODE), see the `neural-pde` skill — NeuralPDE.jl ships its own AdvancedHMC integration that does not go through Turing.
 

@@ -16,7 +16,7 @@ Orchestrator for statistical physics and soft matter. Routes problems to the app
 ## Core Skills
 
 ### [Statistical Physics](../statistical-physics/SKILL.md)
-Equilibrium statistical mechanics: partition functions, phase transitions, critical phenomena, and renormalization group.
+Equilibrium statistical mechanics: partition functions, phase transitions, critical phenomena, renormalization group, and Monte Carlo samplers (Metropolis / heat-bath / cluster / Wang-Landau / replica exchange) with Julia idiomatic patterns and the Python production handoff.
 
 ### [Stochastic Dynamics](../stochastic-dynamics/SKILL.md)
 Langevin equations, Fokker-Planck, Brownian motion, and stochastic differential equations.
@@ -41,7 +41,8 @@ FFS, TIS / RETIS, TPS, AMS, WE, OPS / WESTPA / pyretis, milestoning, and cloning
 ```
 What is the statistical physics task?
 |
-+-- Equilibrium thermodynamics / phase transitions?
++-- Equilibrium thermodynamics / phase transitions / Monte Carlo sampling
+|   (Metropolis / heat-bath / cluster / Wang-Landau / parallel tempering)?
 |   --> statistical-physics
 |
 +-- Stochastic processes / Langevin / FP equations?
@@ -67,7 +68,7 @@ What is the statistical physics task?
 
 | Task | Skill |
 |------|-------|
-| Partition functions, RG, criticality | `statistical-physics` |
+| Partition functions, RG, criticality, Metropolis / cluster / Wang-Landau / parallel tempering MC | `statistical-physics` |
 | Langevin, Fokker-Planck, SDEs | `stochastic-dynamics` |
 | Fluctuation theorems, entropy production | `non-equilibrium-theory` |
 | Active particles, MIPS, flocking | `active-matter` |
