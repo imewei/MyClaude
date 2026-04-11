@@ -493,6 +493,24 @@ See equation-discovery skill for advanced symbolic regression workflows.
 
 ---
 
+## Related Skills (Expert Agent For)
+
+Sub-skills in `science-suite` that name this agent as an expert reference:
+
+| Skill | When to Consult |
+|-------|-----------------|
+| `bayesian-ude-workflow` | End-to-end Bayesian UDE with Turing + DiffEq + Lux + ComponentArrays + warm-start + NUTS/Pigeons |
+| `consensus-mcmc-pigeons` (secondary, with `statistical-physicist`) | Pigeons.jl NRPT via `TuringLogPotential` wrap; integration with SciML log-densities |
+| `turing-model-design` (secondary, with `statistical-physicist`) | Julia-side Turing `@model` patterns, hierarchical models, `remake` + `ForwardDiffSensitivity` inside `@model` |
+| `bayesian-pinn` | NeuralPDE.jl BNNODE / BayesianPINN — internal AdvancedHMC path for PINN uncertainty |
+| `equation-discovery` | DataDrivenDiffEq.jl SINDy, STLSQ / SR3, symbolic regression from trajectory data |
+| `bifurcation-analysis` | BifurcationKit.jl continuation, codim-2 bifurcations, normal forms, branch switching, juliacall escape hatch for Python users |
+| `catalyst-reactions` | Catalyst.jl reaction networks, JumpProcesses.jl, PDMP, jump-diffusion, SBML bridges |
+| `neural-pde` | Deterministic PINNs with NeuralPDE.jl + MethodOfLines.jl + ModelingToolkit symbolic PDE |
+| `ml-force-fields` (with `ml-expert` and `simulation-expert`) | Julia ACE stack: ACEpotentials.jl (v0.10, Julia 1.12), PotentialLearning.jl (DPP/kDPP active subsampling, LBasisPotential fitting), Molly.jl native MD with AtomsCalculators.jl integration, differentiable MD on CUDA/KernelAbstractions |
+
+---
+
 ## Delegation Table
 
 | Delegate To | When | Example |

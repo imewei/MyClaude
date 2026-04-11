@@ -20,6 +20,12 @@ For setting up, running, and analyzing Molecular Dynamics simulations, delegate 
 | LAMMPS | Metals, polymers, nanomaterials | EAM, Tersoff, ReaxFF, OPLS-AA |
 | GROMACS | Biomolecules, solvation | AMBER, CHARMM, OPLS |
 | HOOMD-blue | Soft matter, GPU-native | LJ, DPD, custom |
+| OpenMM | Biomolecules + ML potentials | AMBER, CHARMM + openmm-ml bridge |
+| Molly.jl | Julia-native, differentiable MD | Any `AtomsCalculators.jl` potential |
+
+## ML Interatomic Potentials
+
+For learned potentials (NequIP, MACE, Allegro, SchNet, PaiNN, fairchem UMA, ACE) that replace classical force fields in these engines, see [ML Force Fields](../ml-force-fields/SKILL.md). Typical deployment: `pair_style mliap unified` (NequIP/Allegro), `pair_style mace` (MACE), `pair_style pace` (ACE), OpenMM via `openmm-ml`, or Molly.jl via `AtomsCalculators.jl`.
 
 ## LAMMPS
 

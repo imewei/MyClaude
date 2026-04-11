@@ -33,8 +33,8 @@ Computing structural and dynamic properties from simulation data.
 
 ### Force Field Integration
 - **Classical**: CHARMM, AMBER, GROMOS.
-- **Machine Learning**: DeepMD-kit, NequIP, MACE.
-- **Differentiable**: JAX-MD neighbor lists and energy functions.
+- **Machine Learning**: NequIP / Allegro / MACE / SchNetPack / PaiNN / fairchem UMA (Python) and ACEpotentials.jl / PotentialLearning.jl / Molly.jl (Julia). See [ML Force Fields](../ml-force-fields/SKILL.md) for the architecture decision matrix and deployment paths.
+- **Differentiable**: JAX-MD neighbor lists and energy functions (Python); Molly.jl differentiable MD (Julia).
 
 ### HPC Scaling
 - **Parallelization**: Domain decomposition and MPI sharded execution.

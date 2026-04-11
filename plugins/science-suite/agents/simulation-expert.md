@@ -83,7 +83,7 @@ Sub-skills in `science-suite` that name this agent as an expert reference:
 | `point-processes` (secondary, with `statistical-physicist`) | Hawkes / Cox / Poisson simulation with `tick`, JumpProcesses.jl, point-process time-rescaling diagnostics |
 | `md-simulation-setup` | MD system construction, force fields, equilibration protocols |
 | `trajectory-analysis` | Post-simulation trajectory processing, order parameters, cluster analysis via `freud` |
-| `ml-force-fields` (with `ml-expert`) | SchNet / NequIP / MACE / Allegro neural-network potentials for MD |
+| `ml-force-fields` (with `ml-expert`) | NequIP / Allegro / MACE / SchNet / PaiNN / fairchem UMA / ACEpotentials neural-network and ACE interatomic potentials for MD (training, fine-tuning, LAMMPS/OpenMM/Molly.jl deployment) |
 
 ---
 
