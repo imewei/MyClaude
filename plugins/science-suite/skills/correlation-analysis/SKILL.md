@@ -27,6 +27,8 @@ Numerical computation: FFT-based correlators, Monte Carlo estimators, and GPU-ac
 ### [Correlation Experimental Data](../correlation-experimental-data/SKILL.md)
 Experimental analysis: noise correction, resolution deconvolution, and fitting correlation models to scattering data.
 
+> **Python `freud` ecosystem** (RDF / S(q) / Steinhardt / F(q,t) / neighbor lists): see `correlation-physical-systems` for worked examples + `correlation-computational-methods` for algorithmic notes. No native Julia equivalent — Julia users go through `PythonCall.jl` per the handoff pattern in `chaos-attractors`.
+
 ## Routing Decision Tree
 
 ```

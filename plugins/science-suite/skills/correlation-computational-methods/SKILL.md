@@ -193,6 +193,53 @@ def robust_correlation(data):
 | Convergence | Compare N/2 vs N results |
 | Physical constraints | Check sum rules, positivity |
 
+## `freud` — algorithmic notes
+
+The Glotzer group's `freud` library is the production tool for trajectory correlation analysis. Its internals matter because the same neighbor-list infrastructure is reused across every analyzer (RDF, structure factor, Steinhardt) — building it once per frame amortizes the cost.
+
+### Neighbor-list construction
+
+`freud` uses a cell-list with O(N) build cost and O(N log N) query cost. The list supports:
+
+- **Periodic boundary handling** for triclinic boxes (correct minimum-image convention on any cell geometry)
+- **Reuse across analyses** — build once with `freud.locality.AABBQuery`, pass to downstream analyzers via the `neighbors` keyword
+- **k-nearest-neighbor queries** with `{"num_neighbors": K}` for bond-orientational analyses
+- **Cutoff-radius queries** with `{"mode": "ball", "r_max": R}` for RDF-type analyses
+
+```python
+# Reuse a single neighbor list across multiple analyses
+query = freud.locality.AABBQuery(box, points)
+q4 = freud.order.Steinhardt(l=4); q4.compute(system=query, neighbors={"num_neighbors": 12})
+q6 = freud.order.Steinhardt(l=6); q6.compute(system=query, neighbors={"num_neighbors": 12})
+```
+
+### Multi-frame averaging
+
+Across a trajectory, pass `reset=False` to accumulate statistics without zeroing the histogram:
+
+```python
+rdf = freud.density.RDF(bins=100, r_max=5.0)
+for frame_idx, (box_f, points_f) in enumerate(trajectory):
+    rdf.compute(system=(box_f, points_f), reset=(frame_idx == 0))
+# rdf.rdf is now the trajectory-averaged g(r)
+```
+
+### GPU acceleration
+
+`freud` supports a CuPy backend for neighbor-list construction and the heavier analyzers. Noticeable speedup at N ≥ 10⁴; below that, the CPU path is faster due to GPU launch overhead.
+
+### Comparison with alternatives
+
+| Tool | Strength | Weakness |
+|------|----------|----------|
+| **`freud`** | Fastest single-frame analysis, best neighbor-list infrastructure, GPU-ready | Does not read trajectory files itself |
+| **`MDAnalysis`** | Best trajectory-reader integration, broadest analysis catalog | Slower per-frame than `freud` for pure correlation tasks |
+| **`MDTraj`** | Fast frame iteration, Keras-compatible for ML, huge format support | Correlation analyses less comprehensive than `freud` |
+
+Typical production pattern: use `MDAnalysis` or `MDTraj` as the frame iterator, pass each frame's `(box, positions)` tuple to `freud` for the analysis.
+
+See `correlation-physical-systems` for the "what to compute" side (RDF, S(q), Steinhardt worked examples).
+
 ## Checklist
 
 - [ ] Appropriate algorithm for data size
