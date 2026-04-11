@@ -7,19 +7,19 @@
   },
   "metadata": {
     "description": "3-suite marketplace for agent orchestration, software development, and scientific computing",
-    "version": "3.1.5",
+    "version": "3.1.6",
     "based_on": "claude-code-workflows v2.0.0",
     "reorganization_date": "2026-03-31",
     "last_updated": "2026-04-11",
     "total_plugins": 3,
-    "note": "v3.1.5: Julia/Python parity pass on stat-phys + MD — Monte Carlo sampler idioms, Fokker-Planck direct PDE methods (py-pde + DOLFINx + generator eigenproblem), modern ML force fields (NequIP/MACE/Allegro/SchNet/PaiNN/fairchem + ACEpotentials.jl/PotentialLearning.jl/Molly.jl), Python bifurcation escape hatch via juliacall. types-PyYAML + self-improving-ai trigger tightening."
+    "note": "v3.1.6: Julia/Python parity polish — PythonCall.jl handoff for nonlinear time-series tools (nolds/antropy/IDTxl), BAR free-energy worked example bridging Langevin ensemble and non-equilibrium theory (pymbar + alchemlyb), freud ecosystem (RDF/S(q)/Steinhardt/hexatic/nematic) documented for soft-matter correlations with Julia handoff via PythonCall.jl."
   },
   "plugins": [
     {
       "name": "agent-core",
       "source": "./plugins/agent-core",
       "description": "Meta-agent orchestration, advanced reasoning, and context engineering",
-      "version": "3.1.5",
+      "version": "3.1.6",
       "author": {
         "name": "Wei Chen",
         "url": "https://myclaude.readthedocs.io/en/latest/"
@@ -54,7 +54,7 @@
       "name": "dev-suite",
       "source": "./plugins/dev-suite",
       "description": "Unified software development lifecycle: architecture, implementation, CI/CD, testing, debugging, and deployment",
-      "version": "3.1.5",
+      "version": "3.1.6",
       "author": {
         "name": "Wei Chen",
         "url": "https://myclaude.readthedocs.io/en/latest/"
@@ -118,7 +118,7 @@
       "name": "science-suite",
       "source": "./plugins/science-suite",
       "description": "Scientific computing, HPC, simulation, and data analysis workflows",
-      "version": "3.1.5",
+      "version": "3.1.6",
       "author": {
         "name": "Wei Chen",
         "url": "https://myclaude.readthedocs.io/en/latest/"
