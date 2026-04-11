@@ -26,6 +26,8 @@ Architecture patterns, RAG pipelines, CoT integration, few-shot design, and eval
 ### [Prompt Engineering Patterns](../prompt-engineering-patterns/SKILL.md)
 Production prompt design, reusable templates, and systematic prompt optimization. Use when crafting, refining, or standardizing prompts for reliability at scale.
 
+> For **closed-loop** prompt optimization (DSPy, TextGrad, evolutionary search, constitutional self-critique) see the sibling skill [`self-improving-agents`](../self-improving-agents/SKILL.md) in the reasoning-and-memory hub. This skill focuses on hand-authored production prompts; `self-improving-agents` is the programmatic / learned counterpart.
+
 ### [MCP Integration](../mcp-integration/SKILL.md)
 MCP server configuration, tool registration, and multi-tool coordination. Use when connecting an LLM agent to external tools or services via the Model Context Protocol.
 
