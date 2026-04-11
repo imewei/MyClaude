@@ -139,7 +139,7 @@ For rare events in driven systems — avalanches in sandpile / depinning models,
 | **Cloning algorithm** | Population Monte Carlo for rare-event rate functions. `ParRep` and `milestoning` variants. Julia reference: `RareEvents.jl`; Python: hand-rolled on `jax.vmap` replicas |
 | **Scaled Cumulant Generating Function (SCGF)** | `λ(k) = lim_T (1/T) log⟨exp(k · A_T)⟩` — fit from trajectory ensembles; Legendre-transform to `I(a)` |
 | **Giardinà-Kurchan-Lecomte-Tailleur cloning** | Canonical scheme for computing SCGF; biased dynamics + resampling |
-| **Tilted generator / Doob transform** | Exact optimal bias for rare events; numerical via principal eigenvector of tilted operator |
+| **Tilted generator / Doob transform** | Exact optimal bias for rare events; numerical via principal eigenvector of tilted operator — the machinery is the same as the Fokker-Planck stationary eigenproblem in `stochastic-dynamics` (discretize L†_tilted, solve `eigs` for the smallest eigenvalue). Use `scipy.sparse.linalg.eigs` / `slepc4py` in Python, `KrylovKit.jl` / `ArnoldiMethod.jl` in Julia |
 
 For **avalanche size / duration distributions** in self-organized-criticality models (BTW sandpile, Manna, Oslo rice-pile), the observables are the exponents `τ` (avalanche size), `α` (duration), and the avalanche-shape collapse `s(t/T)/T^γ`. Fit via maximum-likelihood power-law estimators — see `ewstools` and `powerlaw` (Alstott et al.) for Python, `HeavyTails.jl` for Julia.
 

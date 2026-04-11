@@ -101,15 +101,107 @@ See `jax-physics-applications` for the thermostat/integrator catalog and `advanc
 
 ## Numerical Fokker-Planck
 
-When the state space is 1-2D, solve the Fokker-Planck equation directly rather than sampling its stationary distribution via Langevin:
+When the state space is 1-2D (or 3D for simple geometries), solve the Fokker-Planck PDE directly rather than sampling its stationary distribution via Langevin. Two regimes: **time-dependent** propagation of P(x, t) and **stationary** solution via the zero-eigenvalue eigenvector of the generator.
 
-| Tool | Role |
-|------|------|
-| **`py-pde`** | Finite-difference / spectral PDE solver — define the Fokker-Planck operator as a `PDE` class; supports periodic, Dirichlet, Neumann boundaries. See `numerical-methods-implementation`. |
-| **`fenics` / `firedrake`** | Finite-element — use when the drift/diffusion structure is spatially complex or the geometry is non-rectangular |
-| **`DifferentialEquations.jl` + `MethodOfLines`** | Julia path — discretize ∂ₜP = -∇·(μFP) + ∇²(DP) via MOL. See `neural-pde` for the MOL pattern. |
+### Tool selection
 
-For the **stationary** distribution, bypass time integration entirely: discretize the generator and solve the eigenproblem Lφ = 0 for the zero-eigenvalue eigenvector.
+| Tool | Geometry | Use when |
+|------|----------|----------|
+| **`py-pde`** (Python) | Structured grids (Cartesian, cylindrical, spherical, polar) | Rapid prototyping of 1D/2D FP; define the operator as a `PDE` class with periodic / Dirichlet / Neumann / no-flux boundaries in a few lines |
+| **`DOLFINx`** (Python, modern FEniCSx) | Unstructured FEM, arbitrary geometry | Irregular domain, spatially-varying drift/diffusion, or when you need mass-conserving flux BCs that a grid can't express |
+| **`firedrake`** (Python) | Unstructured FEM, high-order | Same niche as DOLFINx; alternative form-language implementation |
+| **`MethodOfLines.jl`** (Julia) | Structured grids | MOL discretization feeding into any DifferentialEquations.jl solver — stiff implicit integration comes free |
+| **`Gridap.jl`** / **`Ferrite.jl`** (Julia) | Unstructured FEM | Julia-native FEM; pair with `DifferentialEquations.jl` for time integration |
+
+### Time-dependent FP with `py-pde`
+
+Overdamped FP in 2D: `∂ₜ P = -∇·(μF P) + D ∇²P` with a scalar drift `F = -∇U`.
+
+```python
+from pde import PDE, ScalarField, CartesianGrid
+
+grid = CartesianGrid([[-5, 5], [-5, 5]], [128, 128], periodic=False)
+P0   = ScalarField.from_expression(grid, "exp(-(x**2+y**2)/0.2) / (0.2*pi)")  # initial delta-ish
+
+# U(x,y) = 0.5*(x^2 + y^2) - double-well in x: -x^2/2 + x^4/4
+# F = -grad U; FP = -div(F*P) + D*lap(P)
+eq = PDE(
+    {"P": "-d_dx((-x + x**3) * P) - d_dy(y * P) + 0.1 * laplace(P)"},
+    bc=[{"value": 0}, {"value": 0}],   # Dirichlet=0 on all sides
+)
+result = eq.solve(P0, t_range=5.0, dt=1e-3, tracker=["progress"])
+```
+
+`py-pde` exposes `d_dx`, `d_dy`, `laplace`, `divergence`, `gradient` as operator shorthand. For non-Cartesian geometries use `PolarGrid`, `CylindricalSymGrid`, `SphericalSymGrid`. See `numerical-methods-implementation` for the full `py-pde` interface.
+
+### Irregular domains with `DOLFINx` (FEniCSx)
+
+For geometries that a structured grid cannot express — off-axis drifts, curved boundaries, species-specific reaction zones — use DOLFINx. The canonical pattern for a time-dependent FP on a rectangle, discretized by implicit Euler + Lagrange elements:
+
+```python
+from dolfinx import fem, mesh
+from dolfinx.fem.petsc import LinearProblem
+from mpi4py import MPI
+import ufl, numpy as np
+
+msh = mesh.create_rectangle(MPI.COMM_WORLD, ((-5, -5), (5, 5)), (64, 64))
+V   = fem.functionspace(msh, ("Lagrange", 1))
+
+P      = ufl.TrialFunction(V)
+v      = ufl.TestFunction(V)
+P_n    = fem.Function(V)              # previous time step
+dt     = fem.Constant(msh, 1e-2)
+D      = fem.Constant(msh, 0.1)
+x      = ufl.SpatialCoordinate(msh)
+drift  = ufl.as_vector((-x[0] + x[0]**3, -x[1]))   # F = -grad U
+
+# Implicit Euler weak form for ∂ₜP = -∇·(F P) + D ΔP
+a = (P * v + dt * ufl.inner(D * ufl.grad(P), ufl.grad(v))
+         - dt * P * ufl.dot(drift, ufl.grad(v))) * ufl.dx
+L = P_n * v * ufl.dx
+
+bcs = []    # supply zero-flux / Dirichlet here as needed
+problem = LinearProblem(a, L, bcs=bcs, u=fem.Function(V),
+                        petsc_options_prefix="fp_",
+                        petsc_options={"ksp_type": "preonly", "pc_type": "lu"})
+```
+
+Loop `problem.solve()` then `P_n.x.array[:] = uh.x.array` for each step. For reactive / non-conservative extensions, switch to `NonlinearProblem` + SNES. Full DOLFINx catalog: `numerical-methods-implementation`.
+
+### Stationary distribution via the generator eigenproblem
+
+The stationary Fokker-Planck solution is the zero-eigenvalue eigenvector of the adjoint generator `L†`. Discretize `L†` as a sparse matrix, then solve for the smallest-magnitude eigenvalue directly — no time integration.
+
+```python
+import numpy as np
+from scipy.sparse import diags, kron, eye
+from scipy.sparse.linalg import eigs
+
+# 1D FP generator on a uniform grid with no-flux BCs
+N, dx, D = 256, 10.0 / 256, 0.1
+x  = np.linspace(-5, 5, N)
+F  = -x + x**3                    # drift component
+# Discretize L† u = -∂_x(F u) + D ∂²_x u with centered differences
+upper = D / dx**2 - F[:-1] / (2 * dx)
+lower = D / dx**2 + F[1:]  / (2 * dx)
+main  = -2 * D / dx**2 * np.ones(N)
+Ldag  = diags([lower, main, upper], offsets=[-1, 0, 1], format="csr")
+# Solve for the smallest-magnitude eigenvalue — the stationary mode
+w, v  = eigs(Ldag, k=1, sigma=0.0)
+P_ss  = np.real(v[:, 0]); P_ss /= np.trapezoid(P_ss, x)
+```
+
+The same trick works in 2D via `kron` of 1D operators for separable drift, or via `DOLFINx` + `slepc4py.SLEPc.EPS` for unstructured meshes. In Julia, use `ArnoldiMethod.jl` or `KrylovKit.jl` `eigsolve` on a `SparseMatrixCSC` operator built the same way — stable and mass-conserving.
+
+### When to use FP-PDE vs Langevin ensemble
+
+| Regime | Prefer |
+|--------|--------|
+| High dimension (≥ 4) | Langevin ensemble — FP PDE discretization scales as N^d |
+| Want stationary distribution on a 1D/2D potential | Eigenproblem of `L†` — no time-to-equilibrium wait |
+| Rare-event tails matter | Langevin + forward-flux sampling (see `advanced-simulations`) |
+| Committor / reaction-coordinate PDE | FP PDE with Dirichlet BCs on the two basins; DOLFINx is the right tool |
+| Drift is learned from data | Langevin ensemble (grad via autodiff); see `bayesian-ude-workflow` for uncertainty
 
 ## Stochastic differential equations — library choices
 

@@ -76,7 +76,7 @@ What is the analysis goal?
 | Task                        | Julia                       | JAX                         | Python (NumPy-based)                                   |
 |-----------------------------|-----------------------------|-----------------------------|--------------------------------------------------------|
 | Symbolic analysis           | ModelingToolkit.jl          | --                          | SymPy (no DAE/index reduction)                         |
-| Analytical continuation     | BifurcationKit.jl           | --                          | AUTO-07p via PyDSTool (PyDSTool is unmaintained)       |
+| Analytical continuation     | BifurcationKit.jl           | --                          | **AUTO-07p** (Fortran + Python CLI, installation friction); **recommended practical path**: `juliacall` → `BifurcationKit.jl` — see `bifurcation-analysis` |
 | GPU parameter sweeps        | --                          | vmap + JIT                  | --                                                     |
 | Large networks (>1K)        | --                          | sparse GPU graphs           | networkx (small-graph reference, not GPU)              |
 | Small networks (<1K)        | DynamicalSystems.jl         | --                          | nolds + pyunicorn + antropy (fragmented)               |
