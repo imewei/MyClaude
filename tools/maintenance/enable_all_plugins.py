@@ -15,9 +15,9 @@ def enable_all_plugins():
 
     # Paths
     settings_path = Path.home() / ".claude" / "settings.json"
-    marketplace_path = (
-        Path(__file__).parent.parent / ".claude-plugin" / "marketplace.json"
-    )
+    # marketplace.json lives at project root, not under tools/
+    project_root = Path(__file__).parent.parent.parent
+    marketplace_path = project_root / ".claude-plugin" / "marketplace.json"
 
     # Read current settings
     with open(settings_path, "r") as f:

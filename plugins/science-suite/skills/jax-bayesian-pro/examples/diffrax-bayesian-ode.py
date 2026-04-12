@@ -273,7 +273,7 @@ def neural_ode_surrogate():
 
         layers: list
 
-        def __init__(self, key, hidden_dim=32):
+        def __init__(self, key: jax.Array, hidden_dim: int = 32) -> None:
             keys = jax.random.split(key, 3)
             self.layers = [
                 eqx.nn.Linear(2, hidden_dim, key=keys[0]),
@@ -281,7 +281,7 @@ def neural_ode_surrogate():
                 eqx.nn.Linear(hidden_dim, 2, key=keys[2]),
             ]
 
-        def __call__(self, t, y, args):
+        def __call__(self, t: float, y: jax.Array, args: object) -> jax.Array:
             for layer in self.layers[:-1]:
                 y = jax.nn.tanh(layer(y))
             return self.layers[-1](y)

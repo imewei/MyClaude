@@ -797,7 +797,7 @@ class SkillApplicationValidator:
         return "✅" if condition else "❌"
 
 
-def main():
+def main() -> int:
     parser = argparse.ArgumentParser(
         description="Validate skill pattern matching and application"
     )

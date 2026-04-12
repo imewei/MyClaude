@@ -701,7 +701,7 @@ class IterativeFixEngine:
 class KnowledgeBase:
     """Store and retrieve successful fix strategies."""
 
-    def __init__(self):
+    def __init__(self) -> None:
         self.kb_file = Path(".github/fix-knowledge-base.json")
         self.fixes: Dict[str, Dict] = {}
         self.load()
@@ -789,7 +789,7 @@ class KnowledgeBase:
 
         return "unknown"
 
-    def load(self):
+    def load(self) -> None:
         """Load knowledge base from file."""
         if self.kb_file.exists():
             try:

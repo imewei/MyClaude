@@ -48,13 +48,18 @@ default-groups = ["dev", "docs", "science"]
 
 [tool.mypy]
 explicit_package_bases = true
-exclude = ["plugins/.*/hooks/", "test-corpus/"]
+exclude = ["plugins/.*/hooks/", "plugins/.*/examples/", "test-corpus/"]
 
 [tool.ruff]
 # Skill-validator fixtures import scientific libraries that aren't installed
 # in this project (jax, numpyro, optax, ...). The files exist as text patterns
 # for the validator's matcher, not as runnable code.
 exclude = ["test-corpus/"]
+
+[tool.ruff.lint]
+# S602: subprocess call with shell=True (command injection risk)
+# S603: subprocess call without shell=True check (informational)
+extend-select = ["S602"]
 
 [tool.setuptools]
 packages = ["tools"]

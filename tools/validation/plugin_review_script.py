@@ -184,7 +184,12 @@ class PluginReviewer:
                     agents = plugin_data.get("agents", [])
 
                     for agent in agents:
-                        agent_name = agent.get("name")
+                        # Entries may be file-path strings or objects
+                        agent_name = (
+                            Path(agent).stem
+                            if isinstance(agent, str)
+                            else agent.get("name")
+                        )
                         if agent_name:
                             agent_file = agents_dir / f"{agent_name}.md"
                             if not agent_file.exists():
@@ -242,7 +247,11 @@ class PluginReviewer:
                     commands = plugin_data.get("commands", [])
 
                     for command in commands:
-                        command_name = command.get("name", "").lstrip("/")
+                        command_name = (
+                            Path(command).stem
+                            if isinstance(command, str)
+                            else command.get("name", "").lstrip("/")
+                        )
                         if command_name:
                             command_file = commands_dir / f"{command_name}.md"
                             if not command_file.exists():
@@ -300,14 +309,19 @@ class PluginReviewer:
                     skills = plugin_data.get("skills", [])
 
                     for skill in skills:
-                        skill_name = skill.get("name")
+                        skill_name = (
+                            Path(skill).stem
+                            if isinstance(skill, str)
+                            else skill.get("name")
+                        )
                         if skill_name:
-                            skill_file = skills_dir / f"{skill_name}.md"
+                            # Skills live in directories with SKILL.md
+                            skill_file = skills_dir / skill_name / "SKILL.md"
                             if not skill_file.exists():
                                 report.add_issue(
                                     "skills",
                                     "medium",
-                                    f"Skill documentation file not found: {skill_name}.md",
+                                    f"Skill documentation file not found: {skill_name}/SKILL.md",
                                 )
                             else:
                                 self._validate_skill_file(
