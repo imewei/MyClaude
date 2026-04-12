@@ -260,7 +260,7 @@ repos:
   - repo: local
     hooks:
       - id: doc-coverage
-        entry: docstr-coverage --fail-under 80
+        entry: docstr-coverage --fail-under 80 --exclude ".*/tests"
 ```
 
 ---

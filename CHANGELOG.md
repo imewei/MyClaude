@@ -1,5 +1,22 @@
 # Changelog
 
+## v3.1.8 (2026-04-11)
+
+**Dev-Tooling Polish**
+
+* Replaced `interrogate` with `docstr-coverage` as the docstring coverage
+  tool, dropping the archived `py` 1.11.0 transitive dependency and
+  resolving PYSEC-2022-42969 (CVE-2022-42969, ReDoS) without needing
+  the inline `--ignore-vuln` escape valve that v3.1.7 shipped with.
+  Bare `pip-audit` now reports clean with zero ignored vulnerabilities.
+* Added pip-audit CI gate via new `.github/workflows/audit.yml` workflow
+  and `make audit` Makefile target. Both use bare `uv run pip-audit`
+  with no inline ignores. The workflow triggers on push to main and on
+  PRs that modify `pyproject.toml`, `uv.lock`, or the workflow itself.
+* Surfaced `bayesian-sindy-workflow` in the `statistical-physicist` and
+  `julia-pro` agent Related Skills tables — deferred from v3.1.7 because
+  the skill itself was being extracted in the same release.
+
 ## v3.1.7 (2026-04-11)
 
 **Bayesian SINDy Extraction**
