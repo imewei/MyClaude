@@ -227,7 +227,7 @@ For crystalline/liquid phase classification, combine `Steinhardt` with `freud.or
 
 ### Intermediate scattering F(q, t)
 
-The dynamical counterpart to S(q) — key observable for glass relaxation and dynamic heterogeneity. freud v3.5.0 does **not** ship a dedicated `IntermediateScattering` analyzer in the `density` module [unverified — see upstream freud docs for any newer release]; roll F(q,t) by hand from trajectory `positions(t)` via density modes ρ(q,t) = Σ_j exp(iq·r_j(t)) with `numpy.fft`, or use `MDAnalysis.analysis.waterdynamics` for water-like systems. Use `F(q*, t)` at the peak of `S(q)` as the alpha relaxation probe and fit `exp(−(t/τ)^β)` for τ.
+The dynamical counterpart to S(q) — key observable for glass relaxation and dynamic heterogeneity. freud v3.5.0 does **not** ship a dedicated `IntermediateScattering` analyzer in the `density` module [re-verified absent 2026-04-11]; roll F(q,t) by hand from trajectory `positions(t)` via density modes ρ(q,t) = Σ_j exp(iq·r_j(t)) with `numpy.fft`, or use `MDAnalysis.analysis.waterdynamics` for water-like systems. Use `F(q*, t)` at the peak of `S(q)` as the alpha relaxation probe and fit `exp(−(t/τ)^β)` for τ.
 
 ### Calling freud from Julia via PythonCall.jl
 
