@@ -257,57 +257,19 @@ rp = RecurrencePlot(x, recurrence_rate=0.05)
 rqa = {"DET": rp.determinism(), "LAM": rp.laminarity(), "Lmax": rp.max_diaglength()}
 ```
 
-> **Gaps and caveats**:
-> - **`pyRQA`** is effectively abandoned — use `pyunicorn.timeseries.RecurrencePlot` instead.
-> - **`PyDSTool`** (continuation/bifurcation) is unmaintained — for production bifurcation work call `BifurcationKit.jl` from Python via `juliacall`.
-> - **`EntropyHub`** PyPI wheels lag the repo; install from source for current features.
-> - None of these packages are JAX-native. For GPU-parallel Lyapunov sweeps use the JAX `vmap` pattern shown above.
+**Notes**: `pyRQA` abandoned (use `pyunicorn`). `PyDSTool` unmaintained (use `juliacall` + BifurcationKit). `EntropyHub` install from source. None are JAX-native; use `vmap` pattern above for GPU sweeps.
 
-## Calling Python nonlinear-dynamics tools from Julia via PythonCall.jl
+## Julia → Python interop via PythonCall.jl
 
-When a Julia-first codebase needs computations that only live in `nolds` / `antropy` / `IDTxl` / `pyEDM` / `pyunicorn` / `teaspoon`, use `PythonCall.jl` — the same package whose Python-facing half (`juliacall`) handles the Python → Julia direction in `bifurcation-analysis`.
-
-### Canonical import pattern
-
-```julia
-using PythonCall
-
-# One-time setup: CondaPkg.jl manages the Python environment
-# pkg> add CondaPkg
-# julia> CondaPkg.add("nolds")
-# julia> CondaPkg.add("antropy")
-
-nolds   = pyimport("nolds")
-antropy = pyimport("antropy")
-idtxl   = pyimport("idtxl")           # via IDTxl's top-level package
-```
-
-### Concrete example — compute `lyap_r` from Julia
+For Julia codebases needing `nolds`/`antropy`/`pyEDM`/`pyunicorn`/`teaspoon`, use `PythonCall.jl` + `CondaPkg.jl`:
 
 ```julia
 using PythonCall
 nolds = pyimport("nolds")
-
-# Julia-side time series — logistic map in the chaotic regime
-N  = 10_000
-x  = Vector{Float64}(undef, N)
-x[1] = 0.1
-for t in 2:N
-    x[t] = 3.9 * x[t-1] * (1 - x[t-1])
-end
-
-# Marshal Julia vector → Python list → call nolds; convert result back
-py_x  = Py(x)
-lyap  = pyconvert(Float64, nolds.lyap_r(py_x, emb_dim=5, lag=1))
-println("Largest Lyapunov exponent ≈ $(lyap)")
+lyap  = pyconvert(Float64, nolds.lyap_r(Py(x), emb_dim=5, lag=1))
 ```
 
-The same `Py(x)` / `pyconvert` pattern works for `antropy.perm_entropy`, `antropy.higuchi_fd`, `idtxl` transfer-entropy, `pyEDM.Simplex`, `pyunicorn.RecurrencePlot`, and the rest of the packages in the counterparts table above.
-
-### Caveats
-
-- **Marshaling + GIL** — each `Py(x)` copies the Julia array to Python memory, and PythonCall.jl holds the GIL during every Python call, so `@threads` serializes. Call Python once over the full series (not per-window), and dispatch parallel workloads via `Distributed.jl` workers (one interpreter per worker).
-- **Prefer `PythonCall.jl` over legacy `PyCall.jl`** — it ships `CondaPkg.jl` for deterministic environments and pairs with `juliacall` for the reciprocal Python → Julia path (see `bifurcation-analysis`, "Python escape hatch").
+**Caveats**: `Py(x)` copies data; GIL serializes `@threads`. Call Python once per full series, use `Distributed.jl` for parallelism. Prefer `PythonCall.jl` over legacy `PyCall.jl`.
 
 ## Chaos Classification
 

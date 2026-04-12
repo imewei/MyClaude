@@ -134,28 +134,9 @@ using ACEpotentials
 
 [unverified API shape: exact symbol names for `acemodel` / `acefit!` / `export2lammps` in v0.10; consult `ACEpotentials.jl` docs before committing downstream code.]
 
-### Molly.jl — native Julia MD (Lennard-Jones shown; any AtomsCalculators-compatible ACE potential plugs in the same way)
+### Molly.jl — native Julia MD
 
-```julia
-using Molly
-
-n_atoms  = 100
-boundary = CubicBoundary(2.0u"nm")
-temp     = 298.0u"K"
-atoms    = [Atom(mass=10.0u"g/mol", σ=0.3u"nm", ϵ=0.2u"kJ * mol^-1") for _ in 1:n_atoms]
-coords   = place_atoms(n_atoms, boundary; min_dist=0.3u"nm")
-velocities = [random_velocity(10.0u"g/mol", temp) for _ in 1:n_atoms]
-
-sys = System(
-    atoms=atoms, coords=coords, velocities=velocities, boundary=boundary,
-    pairwise_inters=(LennardJones(),),
-    loggers=(temp=TemperatureLogger(100),),
-)
-simulate!(sys, VelocityVerlet(dt=0.002u"ps",
-    coupling=AndersenThermostat(temp, 1.0u"ps")), 10_000)
-```
-
-Molly runs on CUDA (and other KernelAbstractions backends), supports Float32/Float64, and treats differentiable MD as a first-class feature — suitable for gradient-based potential fitting and rare-event reweighting.
+Any `AtomsCalculators.jl`-compatible potential (including ACE) plugs into Molly. Supports CUDA via KernelAbstractions, Float32/Float64, and differentiable MD as a first-class feature for gradient-based potential fitting.
 
 ## Deployment matrix
 
@@ -200,30 +181,19 @@ Molly runs on CUDA (and other KernelAbstractions backends), supports Float32/Flo
 | Molecular QM properties (dipoles, polarizability) | SchNetPack with PaiNN |
 | Production LAMMPS with minimal fuss | MACE → `pair_style mace`, NequIP → `pair_style mliap`, ACE → `pair_style pace` |
 
-## Cross-language handoff pattern
+## Cross-language handoff
 
-Python has the richest training ecosystem; Julia has the cleanest differentiable-MD stack and the ACE basis. Honest state of the ecosystem:
-
-1. **Train in Python** (MACE / NequIP / fairchem) or **Julia** (ACEpotentials) depending on architecture choice.
-2. **Freeze** to a portable format (TorchScript, AOTInductor `.pt2`, ACE `.json` / LAMMPS `pace` file).
-3. **Deploy** in LAMMPS / OpenMM / HOOMD (production C++/CUDA performance) or Molly.jl (native Julia, differentiable).
-4. **Validate** structural and dynamical observables in the target engine, not just the training loss.
+1. **Train** in Python (MACE/NequIP/fairchem) or Julia (ACEpotentials).
+2. **Freeze** to portable format (TorchScript, `.pt2`, ACE `.json`/`pace`).
+3. **Deploy** in LAMMPS/OpenMM/HOOMD or Molly.jl.
+4. **Validate** observables in target engine, not just training loss.
 
 ## Uncertainty quantification
 
-- **Committee / deep ensemble** — train N seeds; σ(force) drives active learning queries.
-- **MC dropout** — cheaper proxy, works with any NN backbone.
-- **Bayesian linear last layer** — natural for ACE linear models; `PotentialLearning.jl` computes covariance estimates directly.
-- **Validation beyond training distribution** — probe elevated T, strained cells, defect configurations.
-
-## Parallelization
-
-| Stage | Strategy |
-|---|---|
-| Training | PyTorch DDP / NequIP `SimpleDDPStrategy` / multi-GPU Lightning |
-| Data generation | MPI-parallel VASP / Quantum ESPRESSO / CP2K |
-| Inference (production MD) | LAMMPS MPI + GPU domain decomposition; OpenMM CUDA; Molly.jl KernelAbstractions |
-| Active learning loop | Parallel candidate scoring + parallel DFT labeling |
+- **Committee/deep ensemble** — train N seeds; σ(force) drives active learning.
+- **MC dropout** — cheaper proxy for any NN backbone.
+- **Bayesian linear last layer** — natural for ACE; `PotentialLearning.jl` covariance.
+- **OOD validation** — probe elevated T, strained cells, defects.
 
 ## Checklist
 

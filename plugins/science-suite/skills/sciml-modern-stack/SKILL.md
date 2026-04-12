@@ -185,25 +185,18 @@ This pipeline: (1) train UDE on data, (2) evaluate trained NN on state-space gri
 | Missing physics | Known structure, unknown functional form | `du/dt = -k*u + NN(u,v)` |
 | Hybrid closure | Coarse-grained model with learned closure | `du/dt = f(u) + NN(u; subgrid)` |
 
-### UDE Practical Tips
-
-- **Network size:** Start small (2-3 hidden layers, 32-64 neurons each). Larger networks overfit noise and slow training.
-- **Regularization:** Add weight decay (`L2` penalty on `p_nn`) to prevent overfitting noisy data: `loss += 1e-4 * sum(abs2, p)`.
-- **Multiple trajectories:** Train on data from multiple initial conditions to improve generalization.
-- **Initial conditions:** Include IC as part of the optimization if uncertain: `u0_learned = p[end-1:end]`.
-- **Stiff UDEs:** Use implicit solvers (`TRBDF2`, `Rodas5P`) with `InterpolatingAdjoint` sensitivity. Avoid `BacksolveAdjoint` for stiff systems (numerical instability).
-- **Float32:** Use `Float32` throughout for faster training; promote to `Float64` only for final validation.
-
 ### UDE Pitfalls
 
-| Pitfall | Symptom | Fix |
-|---------|---------|-----|
-| NN too large | Loss drops fast then plateaus; poor generalization | Reduce to 2 layers, 32 neurons; add L2 regularization |
-| Wrong sensitivity algorithm | `NaN` gradients or excessive memory | Use `InterpolatingAdjoint(autojacvec=ZygoteVJP())` |
-| No regularization | Overfits noise; non-physical NN output | Add weight decay `1e-4 * sum(abs2, p)` to loss |
-| Single trajectory training | NN memorizes one IC; fails on others | Train on 5-10 trajectories from different ICs |
-| Ignoring physical constraints | NN violates conservation laws | Encode constraints in architecture (e.g., skew-symmetric Jacobian) |
-| Solver failures during training | `Inf` loss, `retcode != Success` | Add `retcode` check; reduce `dt` or switch solver |
+| Pitfall | Fix |
+|---------|-----|
+| NN too large (plateau, poor generalization) | 2 layers, 32 neurons + L2 reg |
+| `NaN` gradients / OOM | `InterpolatingAdjoint(autojacvec=ZygoteVJP())` |
+| Overfits noise | `1e-4 * sum(abs2, p)` weight decay |
+| Single trajectory memorization | Train on 5-10 ICs |
+| Conservation law violation | Encode in architecture (skew-symmetric J) |
+| Solver failures (`Inf` loss) | `retcode` check; implicit solver for stiff |
+
+**Tips**: Start 2-3 layers/32-64 neurons. Use `Float32` for training, `Float64` for validation. Stiff UDEs: `TRBDF2`/`Rodas5P` + `InterpolatingAdjoint`.
 
 ---
 
@@ -221,35 +214,13 @@ Compute gradients through differential equation solvers for parameter estimation
 | `QuadratureAdjoint()` | Any | O(T) | O(T) | High-accuracy gradient required |
 | `ForwardSensitivity()` | < 50 | O(p * T) | Low | Forward-mode, small parameter count |
 
-### Usage Examples
+### Usage
 
 ```julia
-using SciMLSensitivity
-
-# InterpolatingAdjoint (recommended default for UDEs)
-sol = solve(prob, Tsit5(),
-    sensealg=InterpolatingAdjoint(autojacvec=ZygoteVJP()),
-    saveat=0.1)
-
-# ForwardDiffSensitivity (few parameters)
-sol = solve(prob, Tsit5(),
-    sensealg=ForwardDiffSensitivity(),
-    saveat=0.1)
-
-# BacksolveAdjoint (memory-constrained, non-stiff only)
-sol = solve(prob, Tsit5(),
-    sensealg=BacksolveAdjoint(autojacvec=ZygoteVJP()),
-    saveat=0.1)
-
-# QuadratureAdjoint (high-accuracy gradients)
-sol = solve(prob, Tsit5(),
-    sensealg=QuadratureAdjoint(autojacvec=ReverseDiffVJP(true)),
-    saveat=0.1)
-
-# ForwardSensitivity (explicit forward sensitivity equations)
-sol = solve(prob, Tsit5(),
-    sensealg=ForwardSensitivity(),
-    saveat=0.1)
+# Default for UDEs:
+sol = solve(prob, Tsit5(), sensealg=InterpolatingAdjoint(autojacvec=ZygoteVJP()), saveat=0.1)
+# Few params: sensealg=ForwardDiffSensitivity()
+# Memory-constrained (non-stiff): sensealg=BacksolveAdjoint(autojacvec=ZygoteVJP())
 ```
 
 ---
@@ -361,12 +332,10 @@ Want to discover equations from trained NN?
 
 ## Checklist
 
-- [ ] Verify Lux.jl is used instead of Flux.jl for all new SciML work
-- [ ] Confirm explicit parameterization: `(ps, st)` tuple is passed to every model call
-- [ ] Check UDE neural network size is small (2-3 layers, 32-64 neurons) to avoid overfitting
-- [ ] Ensure sensitivity algorithm matches problem type: `InterpolatingAdjoint` for UDEs, `ForwardDiffSensitivity` for <100 parameters
-- [ ] Validate UDE training on multiple trajectories from different initial conditions
-- [ ] Add L2 regularization (`1e-4 * sum(abs2, p)`) to UDE loss to prevent overfitting noise
-- [ ] Confirm solver retcode check (`ReturnCode.Success`) in UDE loss function
-- [ ] Use two-phase optimization: ADAM for rough convergence, then BFGS for fine convergence
-- [ ] Verify SINDy extraction from trained NN produces physically interpretable equations
+- [ ] Lux.jl (not Flux) for all new SciML work
+- [ ] Explicit `(ps, st)` parameterization in every model call
+- [ ] UDE NN small (2-3 layers, 32-64 neurons) + L2 regularization
+- [ ] Sensitivity algorithm matches problem (`InterpolatingAdjoint` for UDEs)
+- [ ] Multiple-IC training + solver `retcode` check
+- [ ] Two-phase optimization: ADAM then BFGS
+- [ ] SINDy extraction produces interpretable equations

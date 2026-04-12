@@ -150,113 +150,38 @@ def transfer_entropy(X, Y, delay=1):
 
 ---
 
-## Python / JAX ecosystem
+## Python `freud` ecosystem
 
-For physical-systems correlations computed from MD trajectories, scattering data, or particle ensembles, the Python side is dominated by the Glotzer-group `freud` toolkit plus the MDAnalysis / mdtraj trajectory readers:
+The Glotzer group's `freud` (v3.5.0) is the production toolkit for physical-system correlations — RDF, structure factors, bond-orientational order. No native Julia equivalent; use `PythonCall.jl` (see `chaos-attractors`). Install: `pip install freud-analysis`.
 
-| Role | Package | Key API |
-|---|---|---|
-| RDF / pair correlation g(r) | **`freud.density.RDF`**, **`MDAnalysis.analysis.rdf`** | radial distribution, neighbor lists, bin centers |
-| Static structure factor S(q) | **`freud.diffraction.StaticStructureFactorDebye`**, **`freud.diffraction.StaticStructureFactorDirect`** | Debye formula (fast) vs direct (q-vector enumerated) |
-| Dynamic structure factor F(q,t) / S(q,ω) | **`freud.density.IntermediateScattering`**, **`MDAnalysis.analysis.waterdynamics`** | intermediate scattering, van Hove G_s(r,t) and G_d(r,t) |
-| Bond-orientational order Q_l / W_l | **`freud.order.Steinhardt`** | `Q_4`, `Q_6`, `W_6`, neighborhood-averaged Q̄_l, solid/liquid classifier |
-| Nematic / hexatic order | **`freud.order.Nematic`**, **`freud.order.Hexatic`** | scalar order parameter + director field |
-| Cluster analysis & percolation | **`freud.cluster.Cluster`** | connected components on a neighbor list, cluster-size distributions |
-| Time-correlation from trajectories | **`MDAnalysis.analysis.encore`**, **`mdtraj`**, hand-rolled on `numpy.fft` | VACF, stress autocorrelation for Green-Kubo |
-| GPU ensemble correlations | **`jax.vmap`** + **`jax.lax.scan`** over replica trajectories | pair-correlation across replicas with zero Python overhead |
-
-### Minimal pattern — g(r) and Q_6 via freud
-
-```python
-import freud
-
-box = freud.box.Box.cube(L)
-
-# Pair correlation
-rdf = freud.density.RDF(bins=200, r_max=L / 2)
-rdf.compute(system=(box, positions))
-g_r, r = rdf.rdf, rdf.bin_centers
-
-# Steinhardt bond-order parameter for solid/liquid detection
-q6 = freud.order.Steinhardt(l=6, average=True)
-q6.compute(system=(box, positions), neighbors={"num_neighbors": 12})
-solid_like = q6.particle_order > 0.35      # threshold per system
-```
-
-> **Stay in Julia / SciML** when the workflow drives both the trajectory generation and the correlator in one session (MTK → DiffEq → correlator), or when symbolic reaction-diffusion correlations need derivative-level composability. **Drop to `freud` + MDAnalysis / mdtraj** whenever the input is an existing MD trajectory file (LAMMPS dump, DCD, XTC, HOOMD GSD) or when GPU-/TBB-accelerated bond-order / cluster analysis is the bottleneck — `freud`'s C++ / TBB backend is hard to beat on CPU, and its neighbor-list reuse across observables is a significant win on long trajectories.
-
-## Python `freud` ecosystem — the soft-matter reference toolkit
-
-The Glotzer group's `freud` (v3.5.0) is the production tool for physical-system correlation analysis — RDF, structure factors, bond-orientational order, and higher-order correlations. No native Julia equivalent exists; Julia users go through `PythonCall.jl` (see `chaos-attractors`). Strengths: triclinic-box periodic boundaries, O(N log N) cell-list neighbor queries reusable across analyses, optional CuPy GPU backend, clean handoff from `MDAnalysis`/`MDTraj` frame iterators. Install with `pip install freud-analysis`.
-
-### Radial distribution function g(r)
+| Task | API |
+|---|---|
+| RDF g(r) | `freud.density.RDF(bins, r_max)` |
+| S(q) Debye | `freud.diffraction.StaticStructureFactorDebye(num_k_values, k_max)` |
+| S(q) Direct | `freud.diffraction.StaticStructureFactorDirect(bins, k_max)` |
+| Steinhardt Q_l | `freud.order.Steinhardt(l=6)` |
+| Hexatic / Nematic | `freud.order.Hexatic(k=6)` / `freud.order.Nematic()` |
+| F(q,t) | Roll by hand via density modes + `numpy.fft` (no freud builtin) |
 
 ```python
 import freud, numpy as np
-box    = freud.box.Box.cube(L=10.0)
-points = np.random.uniform(-5, 5, size=(1000, 3))
-rdf = freud.density.RDF(bins=100, r_max=4.5)    # r_min=0 default
-rdf.compute(system=(box, points))               # rdf.bin_centers, rdf.rdf
-```
+box = freud.box.Box.cube(L=10.0)
+rdf = freud.density.RDF(bins=100, r_max=4.5)
+rdf.compute(system=(box, points))  # rdf.bin_centers, rdf.rdf
 
-Chain `compute()` over frames with `reset=False` to accumulate trajectory statistics. Cross-check dilute-limit results against the Ornstein-Zernike closure in `correlation-math-foundations`.
-
-### Static structure factor S(q)
-
-- **`freud.diffraction.StaticStructureFactorDebye(num_k_values, k_max, k_min=0)`** — Debye formula, O(N²), works for non-periodic systems. Note the constructor takes `num_k_values`, **not** `bins`.
-- **`freud.diffraction.StaticStructureFactorDirect(bins, k_max, k_min=0, num_sampled_k_points=0)`** — direct reciprocal-space sum, requires periodic box, O(N·N_q), faster for dense systems.
-
-Cross-check S(q) against `g(r)` via the Fourier transform of `h(r) = g(r)−1` (the Wiener-Khinchin pair in `correlation-math-foundations`).
-
-### Bond-orientational order parameters
-
-```python
-# Steinhardt Q_l (l is a single unsigned int, not a list)
 q6 = freud.order.Steinhardt(l=6)
 q6.compute(system=(box, points), neighbors={"num_neighbors": 12})
-# q6.particle_order (N,), q6.order (scalar)
-
-hex_order = freud.order.Hexatic(k=6)            # 2D hexatic
-hex_order.compute(system=(box_2d, points_2d))
-
-nematic = freud.order.Nematic()                 # liquid-crystal S_2
-nematic.compute(orientations=director_vectors)
 ```
 
-For crystalline/liquid phase classification, combine `Steinhardt` with `freud.order.SolidLiquid` (Lechner-Dellago dot-product filter).
-
-### Intermediate scattering F(q, t)
-
-The dynamical counterpart to S(q) — key observable for glass relaxation and dynamic heterogeneity. freud v3.5.0 does **not** ship a dedicated `IntermediateScattering` analyzer in the `density` module [re-verified absent 2026-04-11]; roll F(q,t) by hand from trajectory `positions(t)` via density modes ρ(q,t) = Σ_j exp(iq·r_j(t)) with `numpy.fft`, or use `MDAnalysis.analysis.waterdynamics` for water-like systems. Use `F(q*, t)` at the peak of `S(q)` as the alpha relaxation probe and fit `exp(−(t/τ)^β)` for τ.
-
-### Calling freud from Julia via PythonCall.jl
-
-```julia
-using PythonCall
-freud = pyimport("freud"); np = pyimport("numpy")
-box    = freud.box.Box.cube(L=10.0)
-points = np.random.uniform(-5, 5, size=pytuple((1000, 3)))
-rdf = freud.density.RDF(bins=100, r_max=4.5)
-rdf.compute(system=pytuple((box, points)))
-g_of_r = pyconvert(Vector{Float64}, rdf.rdf)
-```
-
-`pytuple` wrapping is required because `freud` expects a Python tuple for `system=` and PythonCall.jl does not implicitly convert Julia tuples. See `chaos-attractors` for the general handoff pattern.
-
-### Caveats
-
-- **No native Julia equivalent (use `PythonCall.jl` → `freud`); GPU is CuPy-only** — no ROCm/JAX/PyTorch backend, plan a host-side handoff if the surrounding pipeline is JAX.
-- **Trajectory readers and box conventions** — freud does not read trajectory files (use `MDAnalysis`/`MDTraj` as frame iterator); `freud.box.Box` triclinic tilt-factor signs (`xy`, `xz`, `yz`) differ from LAMMPS/HOOMD defaults — double-check on import.
-
-See `correlation-computational-methods` for freud's algorithmic side.
+**Julia interop**: `pytuple` wrapping required for `system=` arg. `freud.box.Box` tilt-factor signs differ from LAMMPS/HOOMD defaults. See `correlation-computational-methods` for algorithmic details.
 
 ## Composition with neighboring skills
 
-- **Analytical correlation-function foundations** (Wiener-Khinchin theorem, Ornstein-Zernike closures, Green's-function derivations, Fourier-Laplace transforms) → `correlation-math-foundations`
-- **O(N log N) algorithms and neighbor-list infrastructure** (cell lists, Ewald summation, FFT-based structure factor) → `correlation-computational-methods`
-- **Experimental-data reduction** for DLS / SAXS / XPCS / microscopy → `correlation-experimental-data`
-- **Underlying stochastic dynamics** that generate the correlations you're measuring → `stochastic-dynamics` (Langevin, Fokker-Planck, SDE solvers)
-- **Julia → Python handoff for `freud`** (no native Julia equivalent) → `chaos-attractors` contains the canonical PythonCall.jl pattern added in v3.1.6 Commit B
+- Analytical foundations (Wiener-Khinchin, Ornstein-Zernike, Green's functions) → `correlation-math-foundations`
+- O(N log N) algorithms, neighbor lists, Ewald → `correlation-computational-methods`
+- Experimental data reduction (DLS/SAXS/XPCS) → `correlation-experimental-data`
+- Stochastic dynamics generating correlations → `stochastic-dynamics`
+- Julia→Python `freud` handoff pattern → `chaos-attractors`
 
 ## Checklist
 

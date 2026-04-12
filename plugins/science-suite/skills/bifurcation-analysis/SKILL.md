@@ -242,58 +242,17 @@ crossings = jnp.where(jnp.diff(jnp.sign(real_parts[:, 0])) != 0)[0]
 
 ---
 
-## Python escape hatch — there is no production-grade pure-Python alternative
+## Python escape hatch
 
-Python users in 2025 have no actively-maintained pure-Python numerical-continuation package for PDE or codimension-2 bifurcation work. The honest state of the ecosystem:
+No production-grade pure-Python continuation package exists for PDE/codim-2 work. Options:
 
-| Tool | Status | What it buys | Installation friction |
-|------|--------|--------------|----------------------|
-| **AUTO-07p** | Actively maintained (Doedel et al.), Fortran core with a thin Python CLI wrapper | Codim-1 + codim-2 continuation for ODEs, BVPs, periodic orbits, homoclinic/heteroclinic | Builds from source; macOS/Linux only; no pip wheel |
-| **PyDSTool** | Unmaintained since ~2019; several bitrotted dependencies | Legacy AUTO-07p wrapper + toolbox; historically the "Pythonic" entry point | `pip install` succeeds but critical modules fail at runtime on modern NumPy |
-| **MatCont** | MATLAB-native; community `pyMatCont` bindings are stale | Excellent codim-2 for ODEs | Requires MATLAB |
-| **scikit-bifurcation** / **bifpy** | Pedagogical / niche | Simple 1D continuation only | No; not a replacement |
-| **`juliacall` → BifurcationKit.jl** | **Recommended practical path** | Full BifurcationKit API from Python; PDE continuation, codim-2, branch switching, neural-network informed detection | `pip install juliacall` + one-time Julia install |
+| Tool | Status | Notes |
+|------|--------|-------|
+| **`juliacall` → BifurcationKit** | **Recommended** | Full API from Python via `pip install juliacall` |
+| **AUTO-07p** | Maintained, Fortran | Build from source; macOS/Linux only |
+| **PyDSTool** | Unmaintained (~2019) | Broken on modern NumPy |
 
-The `juliacall` path is the lowest-friction way to get production bifurcation continuation inside a Python codebase. The cleanest pattern defines the Julia vector field in a sibling `.jl` file and pulls it in via `Main.include`, then calls BifurcationKit through attribute-style access:
-
-```python
-# pip install juliacall
-from juliacall import Main as jl
-jl.using("BifurcationKit")
-jl.using("LinearAlgebra")
-
-# Define the system in a sibling file system.jl:
-#   F_py(u, p) = [p.mu - u[1]^2 + p.alpha*u[2]; u[1] - u[2]]
-jl.include("system.jl")
-
-# Build the problem and continuation options through attribute access
-# (no string-evaluation needed — juliacall exposes Julia objects directly)
-prob = jl.BifurcationKit.BifurcationProblem(
-    jl.F_py, jl.Vector[jl.Float64]([0.0, 0.0]),
-    jl.NamedTuple(mu=-1.0, alpha=0.5),
-    jl.Accessors.PropertyLens("mu"),
-)
-opts = jl.BifurcationKit.ContinuationPar(
-    p_min=-2.0, p_max=2.0, ds=0.01, dsmax=0.05,
-    detect_bifurcation=3,
-    newton_options=jl.BifurcationKit.NewtonPar(tol=1e-10),
-)
-br = jl.BifurcationKit.continuation(prob, jl.BifurcationKit.PALC(), opts, bothside=True)
-
-# Pull results back into Python
-import numpy as np
-params    = np.array([pt.param for pt in br.branch])
-solutions = np.array([list(pt.x) for pt in br.branch])
-for sp in br.specialpoint:
-    print(f"{sp.type} at mu={sp.param}")
-```
-
-**When to use juliacall vs native AUTO-07p**:
-- Need PDE continuation, Hopf→PO branch switching, or codim-2 tracking → `juliacall` + BifurcationKit.jl. AUTO-07p technically supports these but the Python interface is brittle.
-- Standalone ODE continuation on a target machine where installing Julia is a non-starter → native AUTO-07p, accept the installation work.
-- Legacy PyDSTool codebase → migrate to `juliacall` rather than patching.
-
-For sweeping parameter ranges *around* already-identified critical points — not for continuation itself — stay in JAX/Python with `jax.vmap` + numerical eigenvalue analysis. That's the JAX Integration section above.
+Use `juliacall`: define vector field in `.jl` file, call BifurcationKit through attribute-style access. For parameter sweeps *around* known critical points (not continuation), use JAX `vmap` + eigenvalue analysis (see JAX Integration above).
 
 ---
 
@@ -310,12 +269,11 @@ For sweeping parameter ranges *around* already-identified critical points — no
 
 ## Checklist
 
-- [ ] Verify analytical Jacobian `J` is supplied to `BifurcationProblem` (or use `AutoDiff()`)
-- [ ] Confirm `detect_bifurcation >= 2` for Hopf detection and `>= 3` for period-doubling
-- [ ] Set `bothside = true` in `continuation()` to compute the full branch
-- [ ] Check that `ds` and `dsmax` are small enough near expected critical points
-- [ ] Validate normal form coefficients (e.g., first Lyapunov coefficient sign for Hopf criticality)
-- [ ] Ensure `(@optic _.param)` lens targets the correct parameter for two-parameter continuation
-- [ ] Inspect all `br.specialpoint` entries for missed or spurious bifurcation detections
-- [ ] Cross-validate bifurcation points with JAX vmap eigenvalue sweeps around critical values
-- [ ] Confirm Newton solver convergence tolerance (`tol = 1e-10`) is sufficient for the problem scale
+- [ ] Analytical Jacobian supplied (or `AutoDiff()`)
+- [ ] `detect_bifurcation >= 2` (Hopf) / `>= 3` (period-doubling)
+- [ ] `bothside = true` for full branch
+- [ ] `ds`/`dsmax` small enough near critical points
+- [ ] Normal form coefficients validated (l1 sign for Hopf)
+- [ ] `(@optic _.param)` lens targets correct parameter
+- [ ] All `br.specialpoint` entries inspected
+- [ ] Cross-validated with JAX vmap eigenvalue sweeps

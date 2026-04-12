@@ -136,62 +136,11 @@ result = eq.solve(P0, t_range=5.0, dt=1e-3, tracker=["progress"])
 
 ### Irregular domains with `DOLFINx` (FEniCSx)
 
-For geometries that a structured grid cannot express — off-axis drifts, curved boundaries, species-specific reaction zones — use DOLFINx. The canonical pattern for a time-dependent FP on a rectangle, discretized by implicit Euler + Lagrange elements:
-
-```python
-from dolfinx import fem, mesh
-from dolfinx.fem.petsc import LinearProblem
-from mpi4py import MPI
-import ufl, numpy as np
-
-msh = mesh.create_rectangle(MPI.COMM_WORLD, ((-5, -5), (5, 5)), (64, 64))
-V   = fem.functionspace(msh, ("Lagrange", 1))
-
-P      = ufl.TrialFunction(V)
-v      = ufl.TestFunction(V)
-P_n    = fem.Function(V)              # previous time step
-dt     = fem.Constant(msh, 1e-2)
-D      = fem.Constant(msh, 0.1)
-x      = ufl.SpatialCoordinate(msh)
-drift  = ufl.as_vector((-x[0] + x[0]**3, -x[1]))   # F = -grad U
-
-# Implicit Euler weak form for ∂ₜP = -∇·(F P) + D ΔP
-a = (P * v + dt * ufl.inner(D * ufl.grad(P), ufl.grad(v))
-         - dt * P * ufl.dot(drift, ufl.grad(v))) * ufl.dx
-L = P_n * v * ufl.dx
-
-bcs = []    # supply zero-flux / Dirichlet here as needed
-problem = LinearProblem(a, L, bcs=bcs, u=fem.Function(V),
-                        petsc_options_prefix="fp_",
-                        petsc_options={"ksp_type": "preonly", "pc_type": "lu"})
-```
-
-Loop `problem.solve()` then `P_n.x.array[:] = uh.x.array` for each step. For reactive / non-conservative extensions, switch to `NonlinearProblem` + SNES. Full DOLFINx catalog: `numerical-methods-implementation`.
+For geometries that a structured grid cannot express — curved boundaries, spatially-varying drift/diffusion — use DOLFINx with implicit Euler + Lagrange elements. Weak form: `∂ₜP = -∇·(F P) + D ΔP`. For reactive extensions, switch to `NonlinearProblem` + SNES. Full DOLFINx catalog: `numerical-methods-implementation`.
 
 ### Stationary distribution via the generator eigenproblem
 
-The stationary Fokker-Planck solution is the zero-eigenvalue eigenvector of the adjoint generator `L†`. Discretize `L†` as a sparse matrix, then solve for the smallest-magnitude eigenvalue directly — no time integration.
-
-```python
-import numpy as np
-from scipy.sparse import diags, kron, eye
-from scipy.sparse.linalg import eigs
-
-# 1D FP generator on a uniform grid with no-flux BCs
-N, dx, D = 256, 10.0 / 256, 0.1
-x  = np.linspace(-5, 5, N)
-F  = -x + x**3                    # drift component
-# Discretize L† u = -∂_x(F u) + D ∂²_x u with centered differences
-upper = D / dx**2 - F[:-1] / (2 * dx)
-lower = D / dx**2 + F[1:]  / (2 * dx)
-main  = -2 * D / dx**2 * np.ones(N)
-Ldag  = diags([lower, main, upper], offsets=[-1, 0, 1], format="csr")
-# Solve for the smallest-magnitude eigenvalue — the stationary mode
-w, v  = eigs(Ldag, k=1, sigma=0.0)
-P_ss  = np.real(v[:, 0]); P_ss /= np.trapezoid(P_ss, x)
-```
-
-The same trick works in 2D via `kron` of 1D operators for separable drift, or via `DOLFINx` + `slepc4py.SLEPc.EPS` for unstructured meshes. In Julia, use `ArnoldiMethod.jl` or `KrylovKit.jl` `eigsolve` on a `SparseMatrixCSC` operator built the same way — stable and mass-conserving.
+The stationary FP solution is the zero-eigenvalue eigenvector of `L†`. Discretize as sparse matrix, solve for smallest-magnitude eigenvalue with `scipy.sparse.linalg.eigs(Ldag, k=1, sigma=0.0)`. Works in 2D via `kron` of 1D operators, or via `DOLFINx` + `slepc4py` for unstructured meshes. Julia: `ArnoldiMethod.jl` or `KrylovKit.jl` on `SparseMatrixCSC`.
 
 ### When to use FP-PDE vs Langevin ensemble
 
@@ -216,9 +165,9 @@ See `sciml-and-diffeq` for the surrounding SciML ecosystem and `jax-diffeq-pro` 
 
 ## Research applications
 
-- **Rare events from Langevin / SDE** — combine the ensemble pattern above with forward-flux sampling or weighted ensemble (see `advanced-simulations` for WESTPA / OPS). For BAR / Jarzynski / Crooks free-energy extraction from the same Langevin ensemble pattern, see the worked example in `non-equilibrium-theory`.
-- **Learning the drift from data** — if the potential `U(x)` is unknown, fit it with a Lux/Equinox MLP and train against a trajectory log-likelihood. This overlaps with `bayesian-ude-workflow` when uncertainty on the learned drift is required.
-- **Jump-diffusion / PDMP** — General physics SDEs with embedded jump events (stick-slip, shot noise, Lévy flights, Markov-switching Langevin) are handled here using `JumpProcesses.jl` or `DiffEqJump` alongside a continuous Langevin drift. For **biochemical reaction networks** specifically (mass-action kinetics, Gillespie SSA on a species vector), route to `catalyst-reactions` — Catalyst.jl builds the jump problem from a symbolic `@reaction_network`. Use this skill when the jumps are physical (phase slips, pinning, regime switches) rather than chemical.
+- **Rare events** — combine ensemble pattern with FFS or weighted ensemble (`advanced-simulations`). BAR/Jarzynski free-energy: `non-equilibrium-theory`.
+- **Learning drift from data** — fit U(x) with Lux/Equinox MLP; see `bayesian-ude-workflow` for uncertainty.
+- **Jump-diffusion / PDMP** — physical jumps (stick-slip, Levy, regime switches) via `JumpProcesses.jl`. For **biochemical reaction networks** (mass-action, Gillespie SSA) route to `catalyst-reactions`.
 
 ## Best Practices
 
@@ -232,11 +181,11 @@ See `sciml-and-diffeq` for the surrounding SciML ecosystem and `jax-diffeq-pro` 
 
 ## Composition with neighboring skills
 
-- **SDE / ODE numerics and sensitivity** → `sciml-and-diffeq` (Julia SciMLBase + DifferentialEquations.jl) and `jax-diffeq-pro` (Diffrax + Equinox + Optax integration)
-- **Bayesian UDE with posterior uncertainty on the drift** → `bayesian-ude-workflow` (Julia Turing + DiffEq + Lux) and `bayesian-ude-jax` (JAX counterpart)
-- **Production rare-event samplers** (WESTPA weighted ensemble, OpenPathSampling TPS/TIS, milestoning) → `advanced-simulations`
-- **Non-equilibrium fluctuation theorems** (Jarzynski / Crooks / BAR free energies, entropy production, large-deviation theory) → `non-equilibrium-theory`
-- **Chemical reaction jump processes** (Catalyst.jl symbolic reaction networks, Gillespie SSA, PDMP via `JumpProcesses.jl`) → `catalyst-reactions`
+- SDE/ODE numerics → `sciml-and-diffeq`, `jax-diffeq-pro`
+- Bayesian UDE posterior on drift → `bayesian-ude-workflow`, `bayesian-ude-jax`
+- Rare-event samplers (WESTPA, OPS, milestoning) → `advanced-simulations`
+- Fluctuation theorems (Jarzynski/Crooks/BAR) → `non-equilibrium-theory`
+- Chemical reaction jump processes → `catalyst-reactions`
 
 ## Checklist
 
