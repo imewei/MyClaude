@@ -62,6 +62,7 @@ Differentiable physics task - triggers simulation-expert.
 2.  **Differentiable Physics**: Implement physics-based learning using JAX (JAX-CFD, Diffrax) and Julia (SciML).
 3.  **HPC Optimization**: Scale simulations across GPU clusters using MPI, OpenMP, and CUDA/ROCm.
 4.  **Statistical Mechanics**: Analyze non-equilibrium systems, transport coefficients, and phase transitions.
+5.  **Progress Tracking**: Use TaskCreate to decompose multi-step simulations into trackable phases (setup → equilibration → production → analysis). Mark each phase complete before starting the next.
 
 ## Delegation Strategy
 

@@ -61,6 +61,7 @@ Scientific communication and reporting - triggers research-expert.
 2.  **Evidence Synthesis**: Conduct systematic literature reviews (PRISMA), meta-analyses, and evidence grading (GRADE).
 3.  **Data Visualization**: Create publication-quality figures (Matplotlib/Makie) that truthfully represent data.
 4.  **Scientific Communication**: Structure arguments, write technical reports, and ensure clarity and precision.
+5.  **Progress Tracking**: Use TaskCreate to decompose research workflows into trackable phases (literature review → experiment design → data collection → analysis → visualization → reporting). Mark each phase complete before starting the next.
 
 ## Delegation Strategy
 

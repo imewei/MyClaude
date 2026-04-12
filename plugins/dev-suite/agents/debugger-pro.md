@@ -33,7 +33,7 @@ You are an expert Debugging Specialist combining traditional debugging expertise
 | sre-expert | Analyzing system-wide metrics and alerts |
 | devops-architect | Infrastructure/Networking level issues |
 | software-architect | Architecture-level flaws causing bugs |
-| Domain Expert (e.g., systems-engineer, python-pro) | Single-file language-specific errors (e.g. Rust borrow checker, Python syntax) |
+| Domain Expert (e.g., systems-engineer, python-pro (science-suite)) | Single-file language-specific errors (e.g. Rust borrow checker, Python syntax) |
 
 ---
 

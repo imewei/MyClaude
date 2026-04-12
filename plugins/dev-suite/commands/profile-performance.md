@@ -69,8 +69,6 @@ Target for profiling: $ARGUMENTS
 | Flat tops | Direct CPU consumers | Optimize these first |
 | >5% CPU | Hotspot | Prioritize |
 
-**Reference:** [Profiling Tools Guide](../docs/profile-performance/profiling-tools-guide.md)
-
 ## Phase 4: Hardware Counter Analysis (Standard+)
 
 | Metric | Command | Target |
@@ -100,8 +98,6 @@ Target for profiling: $ARGUMENTS
 | Frequent small allocs | Optimization opportunity | Object pooling |
 | High peak usage | Temporary allocations | Reduce scope |
 
-**Reference:** [Profiling Tools - Valgrind](../docs/profile-performance/profiling-tools-guide.md#valgrind-tools)
-
 ## Phase 6: Optimization Strategy (Standard+)
 
 ### Priority by Impact
@@ -113,8 +109,6 @@ Target for profiling: $ARGUMENTS
 | Branch optimization | 1.5-3x | Reduce unpredictable branches |
 | SIMD | 2-8x | Vectorization |
 | Memory | 1.5-5x | Pooling, arena allocators |
-
-**Reference:** [Optimization Patterns Guide](../docs/profile-performance/optimization-patterns.md)
 
 ## Phase 7: Micro-Benchmarking (Enterprise)
 
@@ -152,13 +146,6 @@ cargo bench -- --baseline baseline
 | Quick | Flamegraph SVG, hot function list (>5% CPU), basic recommendations |
 | Standard | + perf report, massif data, cache analysis, optimization roadmap |
 | Enterprise | + benchmark suite, regression tests, CI/CD integration, full audit |
-
-## External Documentation
-
-| Document | Content | Lines |
-|----------|---------|-------|
-| [Profiling Tools Guide](../docs/profile-performance/profiling-tools-guide.md) | perf, flamegraph, valgrind, language profilers | ~527 |
-| [Optimization Patterns](../docs/profile-performance/optimization-patterns.md) | Algorithm, cache, memory, SIMD, parallelization | ~629 |
 
 ## Profiling Checklist
 

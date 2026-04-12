@@ -36,8 +36,6 @@ $ARGUMENTS
 | Web API | Axum services, REST APIs | Binary with Axum + tower |
 | WebAssembly | Browser applications | wasm-bindgen + wasm-pack |
 
-**Reference:** [Rust Project Structures](../docs/rust-project/rust-project-structures.md)
-
 ## Phase 2: Initialize with Cargo
 
 | Mode | Command | Notes |
@@ -67,8 +65,6 @@ $ARGUMENTS
 | `[profile.release]` | Optimization (lto, codegen-units) | Standard+ |
 | `[workspace]` | Multi-crate coordination | Enterprise |
 
-**Full reference:** [Rust Cargo Configuration](../docs/rust-project/rust-cargo-config.md)
-
 ## Phase 4: Source Code Generation
 
 ### Entry Point by Type
@@ -88,8 +84,6 @@ $ARGUMENTS
 | core | Business logic, domain types |
 | cli | Command-line interface |
 | types | Shared types across crates |
-
-**Templates:** [Rust Project Structures](../docs/rust-project/rust-project-structures.md)
 
 ## Phase 5: Testing and Benchmarks
 
@@ -113,8 +107,6 @@ name = "benchmark_name"
 harness = false
 ```
 
-**Reference:** [Rust Project Structures - Testing](../docs/rust-project/rust-project-structures.md#testing-structure)
-
 ## Phase 6: Async Patterns (Standard+)
 
 | Pattern | Use Case |
@@ -124,8 +116,6 @@ harness = false
 | `tokio::join!` | Concurrent operations |
 | `tokio::select!` | First-to-complete |
 | Channels | Message passing |
-
-**Comprehensive patterns:** [Rust Async Patterns](../docs/rust-project/rust-async-patterns.md)
 
 ## Phase 7: Documentation
 
@@ -142,14 +132,6 @@ harness = false
 | Quick | Working binary/library, basic Cargo.toml, README |
 | Standard | + Async setup, error handling, tests, benchmarks, examples |
 | Enterprise | + Workspace, multi-crate architecture, CI/CD, cross-compilation |
-
-## External Documentation
-
-| Document | Content | Lines |
-|----------|---------|-------|
-| [Rust Project Structures](../docs/rust-project/rust-project-structures.md) | Binary/library/workspace patterns, Axum | ~600 |
-| [Rust Cargo Configuration](../docs/rust-project/rust-cargo-config.md) | Cargo.toml, profiles, dependencies | ~567 |
-| [Rust Async Patterns](../docs/rust-project/rust-async-patterns.md) | Tokio, concurrency, channels | ~718 |
 
 ## Quality Checklist
 

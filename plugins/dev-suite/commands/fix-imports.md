@@ -18,7 +18,7 @@ agents:
     - code-quality
     - fullstack-developer
   conditional:
-    - agent: legacy-modernizer
+    - agent: systems-engineer
       trigger: pattern "migration|refactor|modernize"
     - agent: software-architect
       trigger: pattern "architecture|barrel.*export|module.*system"

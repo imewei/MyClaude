@@ -573,7 +573,7 @@ optimizer = optax.adam(learning_rate=schedule)
 |----------|-------------|--------|
 | Bifurcation diagrams, chaos analysis, strange attractors | `nonlinear-dynamics-expert` | Specialized dynamical systems theory |
 | Symbolic math, analytical derivations | `julia-pro` | Julia CAS ecosystem (Symbolics.jl) |
-| Publication figures, complex layouts | `visualization-expert` | Matplotlib/Makie specialization |
+| Publication figures, complex layouts | `research-expert` | Matplotlib/Makie visualization |
 | Pure statistics (no JAX needed) | `statistical-physicist` | Statistical theory focus |
 
 ---

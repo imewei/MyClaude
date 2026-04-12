@@ -55,7 +55,7 @@ ROI = (Impact × Affected × Team) / Hours
 | Outdated | `npm audit` / `pip list --outdated` |
 | Security | `bandit -r src/` / `safety check` |
 
-## Metrics
+## Assessment Metrics
 
 | Metric | Current | Target | Trend |
 |--------|---------|--------|-------|
@@ -125,7 +125,7 @@ ROI = (Impact × Affected × Team) / Hours
 4. **Quick Wins**: Immediate high-ROI
 5. **Prevention**: Gates, monitoring
 
-## Metrics
+## Remediation Metrics
 
 | Metric | Target |
 |--------|--------|

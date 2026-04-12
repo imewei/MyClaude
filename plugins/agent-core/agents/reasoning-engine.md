@@ -4,7 +4,7 @@ description: Expert in advanced reasoning, prompt design, and cognitive tasks. U
 model: opus
 effort: high
 memory: project
-maxTurns: 40
+maxTurns: 50
 background: true
 disallowedTools: Write, Edit, NotebookEdit
 skills:

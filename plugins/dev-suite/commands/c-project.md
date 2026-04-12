@@ -40,8 +40,6 @@ $ARGUMENTS
 - Standard: Modular src/include/tests
 - Enterprise: Multi-module with platform abstraction
 
-**Reference:** [C Project Structures](../docs/c-project/c-project-structures.md)
-
 ## Phase 2: Project Structure
 
 ### Quick Mode
@@ -88,8 +86,6 @@ project/
 | CTest | Testing framework |
 | CPack | Packaging |
 
-**Full reference:** [C Build Systems Guide](../docs/c-project/c-build-systems.md)
-
 ## Phase 4: Source Templates
 
 ### Core Components
@@ -101,8 +97,6 @@ project/
 | config.c/h | Configuration management | Standard+ |
 | error.h | Error handling macros | Standard+ |
 | utils/ | Memory pools, string utilities | Enterprise |
-
-**Templates:** [C Project Structures Guide](../docs/c-project/c-project-structures.md)
 
 ## Phase 5: Testing Setup
 
@@ -121,8 +115,6 @@ project/
 | ASan | `make asan` | Memory errors |
 | UBSan | Compiler flag | Undefined behavior |
 | TSan | Compiler flag | Data races |
-
-**Reference:** [C Build Systems - Testing](../docs/c-project/c-build-systems.md#testing-integration)
 
 ## Phase 6: Memory Safety Validation
 
@@ -145,8 +137,6 @@ project/
 | --track-origins=yes | Uninitialized value origins |
 | --error-exitcode=1 | CI/CD integration |
 
-**Comprehensive reference:** [C Memory Safety Guide](../docs/c-project/c-memory-safety.md)
-
 ## Phase 7: Documentation and Scripts
 
 | Mode | Documentation |
@@ -162,14 +152,6 @@ project/
 | Quick | Working executable, basic Makefile, logger, README |
 | Standard | + Modular structure, CMakeLists.txt, tests, Valgrind, API docs |
 | Enterprise | + Platform abstraction, CI/CD, cross-compilation, packaging |
-
-## External Documentation
-
-| Document | Content | Lines |
-|----------|---------|-------|
-| [C Project Structures](../docs/c-project/c-project-structures.md) | Application, library, embedded patterns | ~600 |
-| [C Build Systems](../docs/c-project/c-build-systems.md) | Makefile, CMake, sanitizers, CI/CD | ~500 |
-| [C Memory Safety](../docs/c-project/c-memory-safety.md) | Valgrind, ASan, best practices | ~450 |
 
 ## Quality Checklist
 
