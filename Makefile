@@ -2,7 +2,7 @@
 # Version: 3.0.0
 
 .PHONY: help clean clean-all clean-python clean-docs clean-cache clean-build clean-reports \
-        build docs docs-live test lint validate install dev-install plugin-enable-all
+        build docs docs-live test lint validate install dev-install plugin-enable-all audit
 
 # Default target
 .DEFAULT_GOAL := help
@@ -169,6 +169,17 @@ test-coverage: ## Run tests with coverage report
 	else \
 		echo "pytest-cov not installed. Install with: pip install pytest-cov"; \
 	fi
+
+##@ Security
+
+audit: ## Run pip-audit on dev dependencies for known CVEs
+	@echo "Running pip-audit on dev dependencies..."
+	@if command -v uv >/dev/null 2>&1; then \
+		uv run pip-audit; \
+	else \
+		pip-audit; \
+	fi
+	@echo "  ✓ pip-audit complete — no known vulnerabilities"
 
 ##@ Git Operations
 
