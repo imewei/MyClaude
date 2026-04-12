@@ -250,6 +250,14 @@ g_of_r = pyconvert(Vector{Float64}, rdf.rdf)
 
 See `correlation-computational-methods` for freud's algorithmic side.
 
+## Composition with neighboring skills
+
+- **Analytical correlation-function foundations** (Wiener-Khinchin theorem, Ornstein-Zernike closures, Green's-function derivations, Fourier-Laplace transforms) → `correlation-math-foundations`
+- **O(N log N) algorithms and neighbor-list infrastructure** (cell lists, Ewald summation, FFT-based structure factor) → `correlation-computational-methods`
+- **Experimental-data reduction** for DLS / SAXS / XPCS / microscopy → `correlation-experimental-data`
+- **Underlying stochastic dynamics** that generate the correlations you're measuring → `stochastic-dynamics` (Langevin, Fokker-Planck, SDE solvers)
+- **Julia → Python handoff for `freud`** (no native Julia equivalent) → `chaos-attractors` contains the canonical PythonCall.jl pattern added in v3.1.6 Commit B
+
 ## Checklist
 
 - [ ] Physical observable identified

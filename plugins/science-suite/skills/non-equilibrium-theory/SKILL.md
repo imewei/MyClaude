@@ -241,6 +241,15 @@ See `advanced-simulations` for rare-event sampler machinery (WESTPA, OpenPathSam
 | Prefer BAR over naive Jarzynski | Exponential average has catastrophic variance |
 | Fit avalanche exponents with MLE | Least-squares on log-log plots biases the exponent |
 
+## Composition with neighboring skills
+
+- **Langevin ensembles and SDE numerics** that generate the work samples for BAR/Jarzynski → `stochastic-dynamics`
+- **Equilibrium partition-function machinery** (ensembles, phase transitions, RG, Monte Carlo samplers) → `statistical-physics`
+- **Production rare-event samplers** (FFS, WESTPA, OPS, milestoning, cloning) → `advanced-simulations` and `rare-events-sampling`
+- **Power-law tail fitting** for avalanche-size distributions and SOC exponents → `extreme-value-statistics`
+- **Active-matter-specific entropy production** (active Brownian particles, run-and-tumble, motility-induced phase separation) → `active-matter`
+- **Discovering unknown dynamics from trajectories** (SINDy) → `equation-discovery`
+
 ## Checklist
 
 - [ ] Entropy production positive

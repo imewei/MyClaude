@@ -230,6 +230,14 @@ See `sciml-and-diffeq` for the surrounding SciML ecosystem and `jax-diffeq-pro` 
 | Validate Einstein | Check D = kT·μ relation |
 | Sample sufficiently | Long trajectories for statistics |
 
+## Composition with neighboring skills
+
+- **SDE / ODE numerics and sensitivity** → `sciml-and-diffeq` (Julia SciMLBase + DifferentialEquations.jl) and `jax-diffeq-pro` (Diffrax + Equinox + Optax integration)
+- **Bayesian UDE with posterior uncertainty on the drift** → `bayesian-ude-workflow` (Julia Turing + DiffEq + Lux) and `bayesian-ude-jax` (JAX counterpart)
+- **Production rare-event samplers** (WESTPA weighted ensemble, OpenPathSampling TPS/TIS, milestoning) → `advanced-simulations`
+- **Non-equilibrium fluctuation theorems** (Jarzynski / Crooks / BAR free energies, entropy production, large-deviation theory) → `non-equilibrium-theory`
+- **Chemical reaction jump processes** (Catalyst.jl symbolic reaction networks, Gillespie SSA, PDMP via `JumpProcesses.jl`) → `catalyst-reactions`
+
 ## Checklist
 
 - [ ] Appropriate framework selected
