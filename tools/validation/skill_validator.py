@@ -758,28 +758,37 @@ class SkillApplicationValidator:
 
 """
 
-        if (
+        if metrics.total_tests == 0:
+            report += "**Status:** ⚠️ NO DATA - No test corpus provided; "
+            report += "skill application was not tested\n\n"
+            report += (
+                "Run with `--corpus-dir <path>` to test skill triggering accuracy. "
+                "Without a corpus, only frontmatter validation is performed."
+            )
+        elif (
             metrics.over_trigger_rate < self.TRIGGER_RATE_GOOD
             and metrics.under_trigger_rate < self.TRIGGER_RATE_GOOD
         ):
             report += "**Status:** ✅ EXCELLENT - Skill triggering is well-balanced\n\n"
+            report += f"Skill pattern matching is performing at {metrics.accuracy:.1f}% accuracy. "
         elif (
             metrics.over_trigger_rate < self.TRIGGER_RATE_ACCEPTABLE
             and metrics.under_trigger_rate < self.TRIGGER_RATE_ACCEPTABLE
         ):
             report += "**Status:** ⚠️ GOOD - Skill triggering is acceptable but could be improved\n\n"
+            report += f"Skill pattern matching is performing at {metrics.accuracy:.1f}% accuracy. "
         else:
             report += "**Status:** ❌ NEEDS IMPROVEMENT - Skill triggering needs optimization\n\n"
+            report += f"Skill pattern matching is performing at {metrics.accuracy:.1f}% accuracy. "
 
-        report += f"Skill pattern matching is performing at {metrics.accuracy:.1f}% accuracy. "
+        if metrics.total_tests > 0:
+            if metrics.over_trigger_rate >= self.TRIGGER_RATE_GOOD:
+                report += f"\n\n**Action Required:** Over-trigger rate of {metrics.over_trigger_rate:.1f}% "
+                report += "indicates skills are applying too broadly. Review and tighten matching patterns."
 
-        if metrics.over_trigger_rate >= self.TRIGGER_RATE_GOOD:
-            report += f"\n\n**Action Required:** Over-trigger rate of {metrics.over_trigger_rate:.1f}% "
-            report += "indicates skills are applying too broadly. Review and tighten matching patterns."
-
-        if metrics.under_trigger_rate >= self.TRIGGER_RATE_GOOD:
-            report += f"\n\n**Action Required:** Under-trigger rate of {metrics.under_trigger_rate:.1f}% "
-            report += "indicates skills are not applying when needed. Expand matching patterns and keywords."
+            if metrics.under_trigger_rate >= self.TRIGGER_RATE_GOOD:
+                report += f"\n\n**Action Required:** Under-trigger rate of {metrics.under_trigger_rate:.1f}% "
+                report += "indicates skills are not applying when needed. Expand matching patterns and keywords."
 
         return report
 
