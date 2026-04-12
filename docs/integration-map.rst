@@ -99,7 +99,7 @@ Official Plugin Agents
 
 23 agents from `claude-plugins-official <https://github.com/anthropics/claude-plugins-official>`_
 complement the 24 MyClaude domain experts. See the :doc:`Agent Teams Guide <agent-teams-guide>`
-for teams 26-33 that integrate these agents.
+for team configurations that integrate these agents.
 
 Key integration patterns:
 

@@ -11,7 +11,7 @@ v3.3.0 (2026-04-12)
   CronCreate, ScheduleWakeup added to automation-engineer, devops-architect, sre-expert;
   Monitor added to smart-debug command
 * Hook expansion: agent-core 12→15 events (+PreSubagentUse, ExecutionError, PermissionPrompt),
-  dev-suite 0→7 events (new hooks/ directory), science-suite 0→5 events (new hooks/ directory)
+  dev-suite 0→8 events (new hooks/ directory), science-suite 0→6 events (new hooks/ directory)
 * Broken references fixed: 5 phantom agent references in ultra-think and reflection commands
   (research-intelligence, hpc-numerical-coordinator, ai-software-architect)
 * Settings harmonization: dev-suite default maxTurns 35→40
