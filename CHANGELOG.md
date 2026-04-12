@@ -3,13 +3,19 @@
 ## v3.3.0 (2026-04-12)
 
 ### CLI 2.1.104 Ecosystem Optimization
-- **Agent maxTurns standardization**: Raise 10 agents to model tier targets (opus=50, sonnet=35)
-- **Tool list enrichment**: Add CronCreate, ScheduleWakeup, Monitor to infrastructure and debugging agents/commands
-- **Hook expansion**: agent-core 12→15 events, dev-suite 2→7 events, science-suite 0→5 events
-- **Broken references fixed**: 5 phantom agent references in ultra-think and reflection commands resolved
+- **Agent maxTurns standardization**: Raise 10 agents to model tier targets (opus≥50, sonnet≥35)
+- **Tool list enrichment**: EnterPlanMode/ExitPlanMode added to all 7 allowlist-based opus agents; CronCreate, ScheduleWakeup added to automation-engineer, devops-architect, sre-expert; Monitor added to smart-debug command
+- **Hook expansion**: agent-core 12→15 events (+PreSubagentUse, ExecutionError, PermissionPrompt), dev-suite 0→7 events (new hooks/ directory), science-suite 0→5 events (new hooks/ directory)
+- **Broken references fixed**: 5 phantom agent references in ultra-think and reflection commands resolved (research-intelligence, hpc-numerical-coordinator, ai-software-architect)
 - **Settings harmonization**: dev-suite default maxTurns 35→40 to match other suites
-- **New test coverage**: 15 hook integrity tests (135 total, up from 120)
+- **New test coverage**: 15 hook integrity tests across all 3 suites (135 total, up from 120)
 - **Version bump**: Coordinated 3.2.0→3.3.0 across all 3 suites
+
+**Validator State**
+
+* metadata_validator 0/0/0; xref_validator all valid;
+  context_budget_checker 206/206 (no skill over 80%);
+  pytest 135/135; ruff + mypy clean; pip-audit clean.
 
 ## v3.2.0 (2026-04-12)
 

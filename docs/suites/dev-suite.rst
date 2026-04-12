@@ -3,7 +3,7 @@ Dev Suite
 
 Full-stack engineering, infrastructure, CI/CD, quality assurance, and debugging. Uses the :term:`Hub Skill` architecture with 9 hubs routing to 49 sub-skills. Merges engineering, infrastructure, and quality capabilities into a single development powerhouse.
 
-**Version:** 3.3.0 | **9 Agents** | **12 Registered Commands** | **9 Hubs → 49 Sub-skills** | **7 Hook Events**
+**Version:** 3.3.0 | **9 Agents** | **12 Registered Commands** | **9 Hubs → 49 Sub-skills** | **8 Hook Events**
 
 Agents
 ------
@@ -203,12 +203,13 @@ Git, documentation, Airflow pipelines, and debugging.
 Hooks
 -----
 
-7 hook events:
+8 hook events:
 
-- ``SessionStart`` — Session initialization
-- ``PreToolUse`` — Pre-tool-use validation
-- ``PostToolUse`` — Post-tool-use validation
-- ``SubagentStart`` — Subagent startup handling
-- ``SubagentStop`` — Subagent completion handling
-- ``TaskCreated`` — Task creation tracking
-- ``TaskCompleted`` — Task completion handling
+- ``SessionStart`` — Auto-detect project stack (language, framework, test runner)
+- ``PreToolUse`` — Guard destructive git ops (push --force, reset --hard, branch -D)
+- ``PostToolUse`` — Auto-lint after Write/Edit (ruff for Python, eslint for JS/TS)
+- ``SubagentStop`` — Collect subagent results for orchestrated workflows
+- ``ExecutionError`` — Capture build/test failures with structured diagnostics
+- ``TaskCompleted`` — Trigger validation checks on task completion
+- ``SessionEnd`` — Persist structured progress summary for next session *(new in v3.3.0)*
+- ``StopFailure`` — Capture context when /stop fails mid-operation

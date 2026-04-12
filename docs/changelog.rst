@@ -6,12 +6,22 @@ v3.3.0 (2026-04-12)
 
 **CLI 2.1.104 Ecosystem Optimization**
 
-* Agent maxTurns standardization: 10 agents raised to model tier targets (opus=50, sonnet=35)
-* Tool list enrichment: CronCreate, ScheduleWakeup, Monitor added to infrastructure and debugging agents/commands
-* Hook expansion: agent-core 12→15, dev-suite 2→7, science-suite 0→5 events
+* Agent maxTurns standardization: 10 agents raised to model tier targets (opus≥50, sonnet≥35)
+* Tool list enrichment: EnterPlanMode/ExitPlanMode added to all 7 allowlist-based opus agents;
+  CronCreate, ScheduleWakeup added to automation-engineer, devops-architect, sre-expert;
+  Monitor added to smart-debug command
+* Hook expansion: agent-core 12→15 events (+PreSubagentUse, ExecutionError, PermissionPrompt),
+  dev-suite 0→7 events (new hooks/ directory), science-suite 0→5 events (new hooks/ directory)
 * Broken references fixed: 5 phantom agent references in ultra-think and reflection commands
+  (research-intelligence, hpc-numerical-coordinator, ai-software-architect)
 * Settings harmonization: dev-suite default maxTurns 35→40
-* New test coverage: 15 hook integrity tests (135 total, up from 120)
+* New test coverage: 15 hook integrity tests across all 3 suites (135 total, up from 120)
+
+**Validator State**
+
+* metadata_validator 0/0/0; xref_validator all valid;
+  context_budget_checker 206/206 (no skill over 80%);
+  pytest 135/135; ruff + mypy clean; pip-audit clean.
 
 v3.2.0 (2026-04-12)
 --------------------

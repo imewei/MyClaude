@@ -12,7 +12,7 @@
     "reorganization_date": "2026-03-31",
     "last_updated": "2026-04-12",
     "total_plugins": 3,
-    "note": "v3.3.0: CLI 2.1.104 optimization — agent maxTurns standardization (10 agents raised to opus=50/sonnet=35 tier targets), tool list enrichment (CronCreate, ScheduleWakeup, Monitor added to infrastructure and debugging agents/commands), hook expansion (agent-core 12→15 events, dev-suite 2→7 events, science-suite 0→5 events), broken phantom agent references fixed, settings harmonization, and 15 new hook integrity tests (135 total)."
+    "note": "v3.3.0: CLI 2.1.104 optimization — agent maxTurns standardization (10 agents raised to opus≥50/sonnet≥35 tier targets), tool list enrichment (EnterPlanMode/ExitPlanMode for 7 opus agents, CronCreate/ScheduleWakeup for infra agents), hook expansion (agent-core 12→15 events, dev-suite 0→7 events, science-suite 0→5 events; 27 total), broken phantom agent references fixed, settings harmonization, and 15 new hook integrity tests (135 total)."
   },
   "plugins": [
     {

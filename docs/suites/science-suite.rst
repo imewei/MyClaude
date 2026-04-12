@@ -3,7 +3,7 @@ Scientific Computing Suite
 
 High-performance computing, physics/chemistry simulations, ML/DL, Julia, JAX, and data science workflows. Uses the :term:`Hub Skill` architecture with 14 hubs routing to 117 sub-skills. Optimized for Claude Opus 4.6 with extended context and adaptive reasoning.
 
-**Version:** 3.3.0 | **12 Agents** | **0 Registered Commands** | **14 Hubs → 118 Sub-skills** | **5 Hook Events**
+**Version:** 3.3.0 | **12 Agents** | **0 Registered Commands** | **14 Hubs → 117 Sub-skills** | **6 Hook Events**
 
 Agents
 ------
@@ -287,3 +287,15 @@ NumPyro, Turing.jl, variational inference, MCMC diagnostics, consensus / non-rev
 - ``bayesian-pinn`` — BNNODE / BayesianPINN (extracted from neural-pde for budget management) *(new in v3.1.4)*
 - ``point-processes`` — Hawkes processes, HSGP, Julia PointProcesses.jl, non-parametric Hawkes EM *(new in v3.1.4)*
 - ``bayesian-sindy-workflow`` — Horseshoe-prior Bayesian SINDy with 5-stage Lorenz-63 worked example (NumPyro + NUTS + ArviZ PSIS-LOO), prior-sensitivity analysis, and Turing UQ-SINDy sidebar *(new in v3.1.7 — extracted from equation-discovery to resolve 88% budget pressure)*
+
+Hooks
+-----
+
+6 hook events with Python script implementations *(new in v3.3.0)*:
+
+- ``SessionStart`` — Detect JAX devices, GPU availability, Julia env
+- ``PreToolUse`` — Warn before commands that could corrupt simulations
+- ``PostToolUse`` — NaN/Inf check on compute job output (numerical integrity)
+- ``ExecutionError`` — Capture JAX compile errors, OOM, numerical divergence
+- ``SessionEnd`` — Persist structured progress summary for next session
+- ``SubagentStop`` — Collect results from parallel science agents

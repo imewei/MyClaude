@@ -26,7 +26,7 @@ plugin.json → hub skill → routing decision tree → sub-skill
 | Agents | 3 | orchestrator (opus), reasoning-engine (opus), context-specialist (sonnet) |
 | Commands | 2 registered | `/ultra-think`, `/team-assemble` |
 | Skills | 3 hubs → 14 sub | agent-systems, reasoning-and-memory, llm-engineering |
-| Hooks | 8 events | SessionStart, PreToolUse, PostToolUse, PreCompact, PostCompact, SubagentStop, PermissionDenied, TaskCompleted |
+| Hooks | 15 events | SessionStart, SessionEnd, PreToolUse, PostToolUse, PreCompact, PostCompact, SubagentStart, SubagentStop, PermissionDenied, TaskCreated, TaskCompleted, StopFailure, PreSubagentUse, ExecutionError, PermissionPrompt |
 
 ### 2. Dev Suite (`dev-suite`)
 
@@ -37,7 +37,7 @@ plugin.json → hub skill → routing decision tree → sub-skill
 | Agents | 9 | 2 opus, 6 sonnet, 1 haiku |
 | Commands | 12 registered | `/commit`, `/docs`, `/double-check`, `/eng-feature-dev`, `/fix-commit-errors`, `/merge-all`, `/modernize`, `/refactor-clean`, `/run-all-tests`, `/smart-debug`, `/test-generate`, `/workflow-automate` |
 | Skills | 9 hubs → 49 sub | backend-patterns, frontend-and-mobile, architecture-and-infra, testing-and-quality, ci-cd-pipelines, observability-and-sre, python-toolchain, data-and-security, dev-workflows |
-| Hooks | 2 events | PostToolUse, SubagentStop |
+| Hooks | 8 events | SessionStart, PreToolUse, PostToolUse, SubagentStop, ExecutionError, TaskCompleted, SessionEnd, StopFailure |
 
 ### 3. Science Suite (`science-suite`)
 
@@ -48,7 +48,7 @@ plugin.json → hub skill → routing decision tree → sub-skill
 | Agents | 12 | 5 opus, 7 sonnet |
 | Commands | 0 registered | (3 skill-invoked: analyze-data, paper-review, run-experiment) |
 | Skills | 14 hubs → 117 sub | nonlinear-dynamics, jax-computing, julia-language, julia-ml-and-dl, sciml-and-diffeq, correlation-analysis, statistical-physics-hub, deep-learning-hub, ml-and-data-science, llm-and-ai, ml-deployment, simulation-and-hpc, research-and-domains, bayesian-inference |
-| Hooks | 0 | — |
+| Hooks | 6 events | SessionStart, PreToolUse, PostToolUse, ExecutionError, SessionEnd, SubagentStop |
 
 ---
 
@@ -101,7 +101,7 @@ plugin.json → hub skill → routing decision tree → sub-skill
 - [Agent Reference](agents.md) — All 24 agents with model tiers and delegation patterns
 - [Commands Reference](commands.md) — 14 registered + 22 skill-invoked commands
 - [Integration Map](../integration-map.rst) — Suite dependencies, MCP server roles, skill coverage
-- [Agent Teams Guide](../agent-teams-guide.md) — 25 pre-built team configurations (codebase-aware recommender)
+- [Agent Teams Guide](../agent-teams-guide.md) — 10 focused teams with 20 variants (codebase-aware recommender)
 - [Glossary](../glossary.rst) — Hub Skill, Sub-Skill, Agent Team, Routing Decision Tree
 - [GitHub Repository](https://github.com/imewei/MyClaude)
 

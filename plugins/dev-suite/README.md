@@ -2,6 +2,26 @@
 
 Unified software development lifecycle suite covering architecture, implementation, CI/CD, testing, debugging, and deployment. Merges engineering, infrastructure, and quality into one suite for zero-friction cross-concern agent delegation.
 
+## Overview
+
+Dev Suite covers the complete software development lifecycle with 9 specialized agents (2 opus, 6 sonnet, 1 haiku), 12 registered slash commands, and 9 hub skills routing to 49 sub-skills. From architecture design through CI/CD to production debugging, every engineering workflow is covered. Agents delegate across specializations automatically — debugger-pro hands off to sre-expert for reliability issues, software-architect delegates to devops-architect for infrastructure.
+
+## Quick Start
+
+```bash
+# End-to-end feature development with guided phases
+/eng-feature-dev "Add user authentication with OAuth2"
+
+# Run all tests and auto-fix failures
+/run-all-tests
+
+# Validate before shipping (10-dimension check)
+/double-check --deep --security
+
+# Ask the architect to design a system
+@software-architect "Design a microservice for payment processing"
+```
+
 ## Features
 
 - **Architecture & Design**: Scalable backend systems, microservices, REST/GraphQL/gRPC APIs, and modernization planning.
@@ -55,12 +75,18 @@ Covers the complete SDLC:
 - **Quality**: Code review, debugging toolkit, test automation, E2E testing, validation, accessibility (WCAG), mobile testing
 - **Documentation**: Standards and best practices
 
-## Hooks
+## Hooks (8 events)
 
 | Event | Purpose |
 |-------|---------|
+| SessionStart | Auto-detect project stack (language, framework, test runner) |
+| PreToolUse | Guard destructive git ops (push --force, reset --hard, branch -D) |
 | PostToolUse | Auto-lint suggestions after Write/Edit (Python, JS/TS) |
 | SubagentStop | Collect results from debugger-pro/quality-specialist |
+| ExecutionError | Capture build/test failures with structured diagnostics |
+| TaskCompleted | Trigger validation checks and suggest git commit |
+| SessionEnd | Persist structured progress summary for next session |
+| StopFailure | Capture context when /stop fails mid-operation |
 
 ## Installation
 

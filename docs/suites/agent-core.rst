@@ -103,6 +103,6 @@ Hooks
 - ``TaskCreated`` — When a task is created
 - ``TaskCompleted`` — When a task finishes
 - ``StopFailure`` — On agent stop failure
-- ``NotificationReceived`` — On incoming notification
-- ``ModelSwitch`` — On model tier change
-- ``ContextWindowWarning`` — On context window threshold
+- ``PreSubagentUse`` — Validate subagent dispatch, catch misrouted agents *(new in v3.3.0)*
+- ``ExecutionError`` — Structured error capture for reasoning chain failures *(new in v3.3.0)*
+- ``PermissionPrompt`` — Log permission dialog events for debugging *(new in v3.3.0)*

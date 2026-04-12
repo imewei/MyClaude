@@ -67,8 +67,8 @@ Suite breakdown:
 | Suite | Agents | Registered Cmds | Skills (hubs → sub) | Hooks | Focus |
 |-------|--------|-----------------|---------------------|-------|-------|
 | agent-core | 3 | 2 | 3 → 14 | 15 events | Reasoning, orchestration, context engineering, safety |
-| dev-suite | 9 | 12 | 9 → 49 | 7 events | Full SDLC: architecture, implementation, CI/CD, testing, debugging |
-| science-suite | 12 | 0 | 14 → 117 | 5 events | JAX, Julia, physics, ML/DL/HPC, nonlinear dynamics, research |
+| dev-suite | 9 | 12 | 9 → 49 | 8 events | Full SDLC: architecture, implementation, CI/CD, testing, debugging |
+| science-suite | 12 | 0 | 14 → 117 | 6 events | JAX, Julia, physics, ML/DL/HPC, nonlinear dynamics, research |
 
 **Note:** 22 additional commands exist on disk but are not registered in `plugin.json`. These are **skill-invoked commands** — triggered by skills during workflows, not directly by users as `/slash-commands`.
 
@@ -93,7 +93,7 @@ Each hub SKILL.md has a standard structure: YAML frontmatter, Expert Agent refer
 
 **Skills** (`skills/<name>/SKILL.md`): Each skill lives in its own directory. The main file is always `SKILL.md` with frontmatter containing `name`, `description`. Hub skills additionally contain: Expert Agent section, Core Skills with `../` relative links, Routing Decision Tree, and Checklist.
 
-**Hooks** (`hooks/hooks.json`): JSON object with `description` and `hooks` object keyed by event name. Claude Code CLI 2.1.x supports 25 hook events; we implement handlers for 15: SessionStart, SessionEnd, PreToolUse, PostToolUse, PreCompact, PostCompact, SubagentStart, SubagentStop, PermissionDenied, TaskCreated, TaskCompleted, StopFailure, and additional events added in v3.3.0. Handler types: command (shell), HTTP, prompt, agent. Python scripts implement hook logic.
+**Hooks** (`hooks/hooks.json`): JSON object with `description` and `hooks` object keyed by event name. Claude Code CLI 2.1.x supports 25 hook events; we implement 29 handlers across all suites (15 agent-core, 8 dev-suite, 6 science-suite). Events include SessionStart, SessionEnd, PreToolUse, PostToolUse, PreCompact, PostCompact, SubagentStart, SubagentStop, PermissionDenied, TaskCreated, TaskCompleted, StopFailure, PreSubagentUse, ExecutionError, PermissionPrompt. Handler types: command (shell), HTTP, prompt, agent. Python scripts implement hook logic.
 
 ### Plugin Manifest (`plugin.json`)
 
@@ -122,7 +122,7 @@ The manifest uses **file-path references** (not inline objects) to point to agen
 - **Model tiers**: Agents use `opus` (deep reasoning: orchestrator, reasoning-engine, debugger-pro, software-architect, research-expert, statistical-physicist, nonlinear-dynamics-expert, neural-network-master, simulation-expert), `sonnet` (standard tasks), or `haiku` (fast/simple: documentation-expert).
 - **Command registration**: Only 14 commands are registered in `plugin.json` manifests (2 agent-core, 12 dev-suite). The remaining 22 command files on disk are skill-invoked — do not add them to manifests.
 - **Hub routing**: When adding a new sub-skill, it must be referenced by at least one hub's Core Skills section and Routing Decision Tree. Run the orphan check to verify reachability.
-- **Team templates**: 21 pre-built agent teams in `plugins/agent-core/commands/team-assemble.md`. Old team names work via alias table (Step 5). Before adding a new team, check for >70% agent overlap with existing teams — prefer extending placeholders over creating a new team. No duplicate agent types per team.
+- **Team templates**: 10 focused agent teams with 20 variants in `plugins/agent-core/commands/team-assemble.md`. Teams use `--var MODE=x` for specialization. 20 aliases preserve backward compatibility (Step 5). No duplicate agent types per team.
 - **Cross-suite delegation**: Agent delegation tables referencing agents from other suites must include a `(suite-name)` annotation, e.g., `ml-expert (science-suite)`.
 - **No wildcard imports**: `from module import *` is prohibited.
 - **Python 3.13+**: Required by `pyproject.toml`.

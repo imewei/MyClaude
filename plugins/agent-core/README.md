@@ -2,6 +2,23 @@
 
 Meta-agent suite for multi-agent orchestration, advanced reasoning, and context engineering. Coordinates all other suites but is never delegated to from below. Optimized for Claude Opus 4.6.
 
+## Overview
+
+Agent Core is the coordination layer of MyClaude. Its 3 agents (orchestrator, reasoning-engine, context-specialist) manage multi-agent workflows, decompose complex problems, and maintain session context. It provides 3 hub skills routing to 14 sub-skills covering orchestration patterns, reasoning frameworks, and LLM engineering. Use agent-core when you need to coordinate multiple specialists or tackle problems requiring structured reasoning.
+
+## Quick Start
+
+```bash
+# Assemble a team for a complex task
+/team-assemble backend-dev
+
+# Deep structured reasoning on a hard problem
+/ultra-think "Analyze the trade-offs of event sourcing vs CRUD for this domain"
+
+# Ask the orchestrator to coordinate specialists
+@orchestrator "Coordinate a code review across architecture, security, and testing"
+```
+
 ## Features
 
 - **Multi-Agent Orchestration**: Expert coordination of specialized agent teams and complex distributed workflows.
@@ -27,7 +44,7 @@ Meta-agent suite for multi-agent orchestration, advanced reasoning, and context 
 | `/docs-lookup` | Query library documentation via Context7 MCP |
 | `/reflection` | Meta-cognitive reflection framework execution |
 | `/ultra-think` | Advanced structured reasoning with branching exploration |
-| `/team-assemble` | Codebase-aware recommender for 25 pre-built team templates (v3.1.4+) |
+| `/team-assemble` | Codebase-aware recommender with 10 focused teams (20 variants) + long-running workflow protocol (v3.3.0) |
 
 ## Skills (3 hubs → 14 sub-skills)
 
@@ -41,9 +58,9 @@ Hub skills route to specialized sub-skills via decision trees:
 
 Sub-skills include: reasoning-frameworks, reflection-framework, agent-performance-optimization, agent-evaluation, multi-agent-coordination, llm-application-patterns, mcp-integration, prompt-engineering-patterns, memory-system-patterns, safety-guardrails, tool-use-patterns, knowledge-graph-patterns, `thinkfirst` *(new in v3.1.3)*, `self-improving-agents` *(new in v3.1.4)*
 
-## Hooks (8 events)
+## Hooks (15 events)
 
-SessionStart, PreToolUse, PostToolUse, PreCompact, PostCompact, SubagentStop, PermissionDenied, TaskCompleted
+SessionStart, SessionEnd, PreToolUse, PostToolUse, PreCompact, PostCompact, SubagentStart, SubagentStop, PermissionDenied, TaskCreated, TaskCompleted, StopFailure, PreSubagentUse, ExecutionError, PermissionPrompt
 
 ## Installation
 

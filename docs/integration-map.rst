@@ -110,14 +110,18 @@ Key integration patterns:
 Agent Teams
 -----------
 
-25 pre-built team configurations span six categories (21 original + 4 added in v3.1.4):
+10 focused team configurations with 20 variants and long-running workflow protocol (v3.3.0):
 
-1. **Development & Operations** (1-7): Feature dev, incident response, PR review, quality/security, API design, infra, modernization
-2. **Scientific Computing** (8-12): JAX/ML/DL pipelines, Bayesian inference, Julia SciML, MD simulation, paper reproduction
-3. **Cross-Cutting** (13-16): AI/LLM engineering, performance optimization, data pipelines, documentation/reproducibility
-4. **Plugin Development** (17): Claude Code extension building
-5. **Debugging** (18-21): Triage, GUI threading, numerical/JAX, schema/type drift
-6. **Specialized (v3.1.4+)** (22-25): ``nonlinear-dynamics``, ``julia-ml``, ``multi-agent-systems``, ``sci-desktop``
+1. **feature-dev** — Build any feature end-to-end
+2. **debug** (5 variants) — All debugging + incident response
+3. **quality-gate** (2 variants) — Code review + security audit
+4. **api-infra** (2 variants) — APIs + cloud + CI/CD + config
+5. **sci-compute** (7 variants) — All scientific computing (auto-detects domain)
+6. **modernize** — Legacy migration + refactoring
+7. **ai-engineering** (1 variant) — LLM apps + RAG + multi-agent
+8. **ml-deploy** (2 variants) — Model deploy + data pipelines + performance
+9. **docs-publish** (1 variant) — Documentation + reproducibility
+10. **plugin-forge** — Claude Code extensions
 
-Use ``/agent-core:team-assemble list`` to browse all templates, or run it with no
-arguments in a project root for a codebase-aware recommendation (v3.1.4+).
+Use ``/agent-core:team-assemble list`` to browse all teams, or run it with no
+arguments in a project root for a codebase-aware recommendation.

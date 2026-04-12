@@ -2,6 +2,23 @@
 
 Domain-specific scientific computing suite for high-performance computing, Julia ML/DL/HPC, specialized physics/chemistry simulations, and data science workflows. Agents primarily collaborate within the suite with only 2 outward delegation edges. Optimized for Claude Opus 4.6.
 
+## Overview
+
+Science Suite provides 12 specialized agents (5 opus, 7 sonnet) covering JAX, Julia, physics, ML/DL, and research workflows. Its 14 hub skills route to 117 sub-skills spanning nonlinear dynamics, Bayesian inference, statistical physics, simulation, and more. Opus agents handle deep reasoning (simulation design, bifurcation theory, DL architecture) while sonnet agents handle implementation (JAX kernels, Julia code, Python systems). SessionStart hooks auto-detect JAX devices, GPU availability, and Julia environments.
+
+## Quick Start
+
+```bash
+# Ask JAX specialist to build a differentiable physics model
+@jax-pro "Implement a Bayesian neural ODE with NumPyro + Diffrax"
+
+# Nonlinear dynamics analysis
+@nonlinear-dynamics-expert "Analyze the Lorenz system for bifurcations near r=24.74"
+
+# Molecular dynamics simulation setup
+@simulation-expert "Set up a JAX-MD Lennard-Jones NVT simulation with 10k particles"
+```
+
 ## Features
 
 - **JAX Mastery**: High-performance numerical computing, differentiable physics, and Bayesian inference (NumPyro, Diffrax).
@@ -55,6 +72,17 @@ Organized by domain:
 - **Bayesian Inference**: NumPyro/Turing, MCMC diagnostics, consensus MC & Pigeons.jl non-reversible PT, Bayesian UDEs (Turing + Diffrax), Bayesian PINNs, Hawkes/point processes, Bayesian SINDy equation discovery (horseshoe + NumPyro + Lorenz-63 worked example)
 - **Nonlinear Dynamics**: Bifurcation (with Python escape hatch), chaos attractors, pattern formation, equation discovery (SINDy ecosystem), Julia ↔ Python handoff for nonlinear time-series tools (nolds, antropy, IDTxl, pyEDM)
 - **Other Domains**: Computer vision, NLP, bioinformatics, time series, control theory, symbolic math, quantum computing, federated learning, reinforcement learning
+
+## Hooks (6 events)
+
+| Event | Purpose |
+|-------|---------|
+| SessionStart | Detect JAX devices, GPU availability, Julia env |
+| PreToolUse | Warn before commands that could corrupt simulations |
+| PostToolUse | NaN/Inf check on compute job output (numerical integrity) |
+| ExecutionError | Capture JAX compile errors, OOM, numerical divergence |
+| SessionEnd | Persist structured progress summary for next session |
+| SubagentStop | Collect results from parallel science agents |
 
 ## Installation
 
