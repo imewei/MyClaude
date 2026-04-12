@@ -5,7 +5,6 @@ Detects computation environment: JAX devices, GPU, Julia env.
 """
 
 import json
-import os
 import shutil
 import subprocess
 import sys
@@ -13,7 +12,7 @@ import sys
 
 def detect_compute_env() -> dict:
     """Detect available compute resources."""
-    env = {"jax": False, "gpu": False, "julia": False}
+    env: dict[str, object] = {"jax": False, "gpu": False, "julia": False}
 
     try:
         result = subprocess.run(
