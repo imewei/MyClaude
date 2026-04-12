@@ -40,7 +40,7 @@ docs = [
     "sphinxcontrib-jsmath>=1.0.1",
     "sphinxcontrib-qthelp>=2.0.0",
     "sphinxcontrib-serializinghtml>=2.0.0",
-    "interrogate>=1.7.0",
+    "docstr-coverage>=2.3",
 ]
 
 [tool.uv]
