@@ -88,6 +88,7 @@ Sub-skills in `science-suite` that name this agent as an expert reference:
 | `jax-optimization-pro` | NLSQ, Lineax, Optimistix; GPU-accelerated curve fitting |
 | `jax-physics-applications` | JAX-MD, JAX-CFD, differentiable physics |
 | `bayesian-ude-jax` | End-to-end Bayesian UDE in JAX: Diffrax + Equinox + NumPyro + Optax (primary expert with `statistical-physicist`) |
+| `bayesian-sindy-workflow` (with `statistical-physicist`) | Horseshoe-prior SINDy via NumPyro NUTS — Lorenz-63 worked example with PSIS-LOO model selection. Python-primary with Turing Julia sidebar. |
 | `numpyro-core-mastery` | NumPyro patterns, reparameterization, AutoGuides (primary with `statistical-physicist`) |
 | `nlsq-core-mastery` | Production NLSQ curve fitting on large datasets |
 
