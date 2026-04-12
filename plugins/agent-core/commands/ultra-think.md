@@ -16,14 +16,14 @@ execution-modes:
 
 agents:
   primary:
-    - research-intelligence
+    - research-expert (science-suite)
     - orchestrator
   conditional:
-    - agent: software-architect
+    - agent: software-architect (dev-suite)
       trigger: pattern "architecture|design|system"
-    - agent: hpc-numerical-coordinator
+    - agent: simulation-expert (science-suite)
       trigger: pattern "scientific|numerical|computing"
-    - agent: ai-software-architect
+    - agent: neural-network-master (science-suite)
       trigger: pattern "llm|ai|ml|neural"
   orchestrated: true
 ---

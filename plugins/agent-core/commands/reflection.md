@@ -14,11 +14,11 @@ execution-modes:
 
 agents:
   primary:
-    - research-intelligence
+    - research-expert (science-suite)
   conditional:
-    - agent: software-architect
+    - agent: software-architect (dev-suite)
       trigger: pattern "architecture|design|system" OR argument "code"
-    - agent: code-quality
+    - agent: quality-specialist (dev-suite)
       trigger: pattern "quality|test|lint" OR argument "workflow"
   orchestrated: true
 ---
