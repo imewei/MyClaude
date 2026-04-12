@@ -8,6 +8,9 @@ maxTurns: 35
 isolation: worktree
 background: true
 tools: Read, Write, Edit, Bash, Grep, Glob
+skills:
+  - frontend-and-mobile
+  - backend-patterns
 ---
 
 # App Developer

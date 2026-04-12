@@ -7,6 +7,8 @@ memory: project
 maxTurns: 40
 tools: Read, Write, Edit, Bash, Grep, Glob
 background: true
+skills:
+  - julia-ml-and-dl
 ---
 
 # Julia ML/HPC - Machine Learning & High-Performance Computing Specialist

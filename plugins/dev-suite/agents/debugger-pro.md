@@ -7,6 +7,9 @@ memory: project
 maxTurns: 40
 background: true
 tools: Read, Edit, Bash, Grep, Glob
+skills:
+  - dev-workflows
+  - testing-and-quality
 ---
 
 # Debugger Pro

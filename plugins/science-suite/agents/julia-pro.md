@@ -7,6 +7,9 @@ memory: project
 maxTurns: 40
 tools: Read, Write, Edit, Bash, Grep, Glob
 background: true
+skills:
+  - julia-language
+  - sciml-and-diffeq
 ---
 
 # Julia Pro - Unified Scientific Computing Specialist

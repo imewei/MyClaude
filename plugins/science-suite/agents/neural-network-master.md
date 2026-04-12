@@ -7,6 +7,8 @@ memory: project
 maxTurns: 40
 tools: Read, Write, Edit, Bash, Grep, Glob
 background: true
+skills:
+  - deep-learning-hub
 ---
 
 # Neural Network Master

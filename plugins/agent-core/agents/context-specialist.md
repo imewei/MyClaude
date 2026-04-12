@@ -7,6 +7,8 @@ memory: project
 maxTurns: 35
 background: true
 tools: Read, Grep, Glob, Bash
+skills:
+  - llm-engineering
 ---
 
 # Context Specialist

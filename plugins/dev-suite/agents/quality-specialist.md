@@ -7,6 +7,9 @@ memory: project
 maxTurns: 35
 tools: Read, Grep, Glob, Bash
 background: true
+skills:
+  - testing-and-quality
+  - data-and-security
 ---
 
 # Quality Specialist

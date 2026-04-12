@@ -8,6 +8,9 @@ maxTurns: 30
 background: true
 isolation: worktree
 tools: Read, Write, Edit, Bash, Grep, Glob
+skills:
+  - ci-cd-pipelines
+  - dev-workflows
 ---
 
 # Automation Engineer

@@ -7,6 +7,8 @@ memory: project
 maxTurns: 40
 tools: Read, Write, Edit, Bash, Grep, Glob
 background: true
+skills:
+  - llm-and-ai
 ---
 
 # AI Engineer

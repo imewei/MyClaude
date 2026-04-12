@@ -7,6 +7,8 @@ memory: project
 maxTurns: 25
 background: true
 tools: Read, Grep, Glob, Bash
+skills:
+  - observability-and-sre
 ---
 
 # SRE Expert (Reliability Consultant)

@@ -7,6 +7,9 @@ memory: project
 maxTurns: 25
 background: true
 tools: Read, Write, Edit, Bash, Grep, Glob
+skills:
+  - architecture-and-infra
+  - ci-cd-pipelines
 ---
 
 # DevOps Architect (Platform Owner)

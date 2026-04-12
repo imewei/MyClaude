@@ -7,6 +7,8 @@ memory: project
 maxTurns: 20
 background: true
 tools: Read, Write, Edit, Grep, Glob
+skills:
+  - dev-workflows
 ---
 
 # Documentation Expert

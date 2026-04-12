@@ -7,6 +7,8 @@ memory: project
 maxTurns: 40
 tools: Read, Write, Edit, Bash, Grep, Glob, WebSearch
 background: true
+skills:
+  - nonlinear-dynamics
 ---
 
 # Nonlinear Dynamics Expert

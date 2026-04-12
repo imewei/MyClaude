@@ -8,6 +8,8 @@ maxTurns: 40
 tools: Read, Write, Edit, Bash, Grep, Glob
 background: true
 isolation: worktree
+skills:
+  - jax-computing
 ---
 
 # Python Pro - Systems Engineer

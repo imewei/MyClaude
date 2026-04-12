@@ -7,6 +7,8 @@ memory: project
 maxTurns: 40
 background: true
 disallowedTools: Write, Edit, NotebookEdit
+skills:
+  - reasoning-and-memory
 ---
 
 # Reasoning Engine

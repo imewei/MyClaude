@@ -7,6 +7,8 @@ memory: project
 maxTurns: 50
 background: true
 disallowedTools: Write, Edit, NotebookEdit
+skills:
+  - agent-systems
 ---
 
 # Orchestrator

@@ -7,6 +7,8 @@ memory: project
 maxTurns: 40
 tools: Read, Grep, Glob, WebSearch, WebFetch
 background: true
+skills:
+  - llm-and-ai
 ---
 
 # Prompt Engineer

@@ -7,6 +7,8 @@ memory: project
 maxTurns: 40
 tools: Read, Write, Edit, Bash, Grep, Glob
 background: true
+skills:
+  - simulation-and-hpc
 ---
 
 # Simulation Expert

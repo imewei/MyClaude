@@ -7,6 +7,10 @@ memory: project
 maxTurns: 40
 tools: Read, Grep, Glob, Bash, WebSearch
 background: true
+skills:
+  - statistical-physics-hub
+  - correlation-analysis
+  - bayesian-inference
 ---
 
 # Statistical Physicist

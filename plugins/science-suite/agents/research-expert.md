@@ -7,6 +7,8 @@ memory: project
 maxTurns: 40
 tools: Read, Grep, Glob, WebSearch, WebFetch, Bash
 background: true
+skills:
+  - research-and-domains
 ---
 
 # Research Expert
