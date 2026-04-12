@@ -4,7 +4,7 @@ description: Expert in Scientific Research Methodology & Visualization. Use when
 model: opus
 effort: high
 memory: project
-maxTurns: 40
+maxTurns: 50
 tools: Read, Grep, Glob, WebSearch, WebFetch, Bash
 background: true
 skills:

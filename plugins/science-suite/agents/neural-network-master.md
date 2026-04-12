@@ -4,7 +4,7 @@ description: Expert deep learning authority specializing in Deep Learning Archit
 model: opus
 effort: high
 memory: project
-maxTurns: 40
+maxTurns: 50
 tools: Read, Write, Edit, Bash, Grep, Glob
 background: true
 permissionMode: acceptEdits

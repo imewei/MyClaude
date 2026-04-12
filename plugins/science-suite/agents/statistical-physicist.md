@@ -4,7 +4,7 @@ description: Expert in Computational Statistical Physics & Soft Matter. Use when
 model: opus
 effort: high
 memory: project
-maxTurns: 40
+maxTurns: 50
 tools: Read, Grep, Glob, Bash, WebSearch
 background: true
 skills:

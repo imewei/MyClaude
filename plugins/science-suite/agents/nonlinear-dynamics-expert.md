@@ -4,7 +4,7 @@ description: Expert in nonlinear dynamics, bifurcation theory, chaos, network dy
 model: opus
 effort: high
 memory: project
-maxTurns: 40
+maxTurns: 50
 tools: Read, Write, Edit, Bash, Grep, Glob, WebSearch
 background: true
 skills:
