@@ -87,13 +87,13 @@ Each hub SKILL.md has a standard structure: YAML frontmatter, Expert Agent refer
 
 ### Component File Formats
 
-**Agents** (`agents/<name>.md`): Markdown files with YAML frontmatter containing `name`, `description`, `model` (opus/sonnet/haiku), `effort` (low/medium/high), `memory` (user/project/local), `maxTurns`, and optionally `tools`, `background`, `isolation`, `disallowedTools`.
+**Agents** (`agents/<name>.md`): Markdown files with YAML frontmatter containing `name`, `description`, `model` (opus/sonnet/haiku/inherit), `effort` (low/medium/high), `memory` (user/project/local), `maxTurns`, and optionally `tools`, `background`, `isolation`, `disallowedTools`, `skills` (list of hub skill names to preload), `permissionMode` (default/acceptEdits/auto/dontAsk/bypassPermissions/plan), `hooks`, `color`.
 
 **Commands** (`commands/<name>.md`): Markdown files with YAML frontmatter containing `name`, `description`, and optionally `argument-hint`, `allowed-tools`, `execution-modes`.
 
 **Skills** (`skills/<name>/SKILL.md`): Each skill lives in its own directory. The main file is always `SKILL.md` with frontmatter containing `name`, `description`. Hub skills additionally contain: Expert Agent section, Core Skills with `../` relative links, Routing Decision Tree, and Checklist.
 
-**Hooks** (`hooks/hooks.json`): JSON object with `description` and `hooks` object keyed by event name. 8 events: SessionStart, PreToolUse, PostToolUse, PreCompact, PostCompact, SubagentStop, PermissionDenied, TaskCompleted. Python scripts implement hook logic.
+**Hooks** (`hooks/hooks.json`): JSON object with `description` and `hooks` object keyed by event name. Claude Code CLI 2.1.x supports 25 hook events; we implement handlers for 12: SessionStart, SessionEnd, PreToolUse, PostToolUse, PreCompact, PostCompact, SubagentStart, SubagentStop, PermissionDenied, TaskCreated, TaskCompleted, StopFailure. Handler types: command (shell), HTTP, prompt, agent. Python scripts implement hook logic.
 
 ### Plugin Manifest (`plugin.json`)
 
