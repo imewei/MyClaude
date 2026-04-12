@@ -3,6 +3,6 @@
     "model": "sonnet",
     "effort": "high",
     "memory": "project",
-    "maxTurns": 35
+    "maxTurns": 40
   }
 }
