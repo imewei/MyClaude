@@ -441,7 +441,7 @@ class TestTeamAssembleSafeguardsPresent:
         assert "private npm registries" in command_text
 
     def test_p5_debug_team_exclusion_present(self, command_text: str) -> None:
-        assert "Debugging-team exclusion rule" in command_text
+        assert "Debug-team exclusion rule" in command_text
         assert "Mode-A exclusion filter" in command_text
 
     def test_tier_0_session_cache_present(self, command_text: str) -> None:
@@ -467,7 +467,7 @@ class TestTeamAssembleSafeguardsPresent:
         section_count = sum(
             1 for line in templates.splitlines() if line.startswith("### ")
         )
-        assert section_count == 25, f"expected 25 team templates, found {section_count}"
+        assert section_count == 10, f"expected 10 team templates, found {section_count}"
 
     def test_all_25_teams_have_signal_row(self, command_text: str) -> None:
         start = command_text.find("## Step 2.5: Signal → Team Mapping")
@@ -482,7 +482,7 @@ class TestTeamAssembleSafeguardsPresent:
             cells = [c.strip() for c in stripped.strip("|").split("|")]
             if cells and cells[0].isdigit():
                 row_count += 1
-        assert row_count == 25, f"expected 25 signal table rows, found {row_count}"
+        assert row_count == 10, f"expected 10 signal table rows, found {row_count}"
 
 
 # ---------------------------------------------------------------------------
