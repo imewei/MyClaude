@@ -1,5 +1,28 @@
 # Changelog
 
+## v3.2.0 (2026-04-12)
+
+**Skill Validator Vacuous-Pass Fix**
+
+* Fixed a vacuous-truth bug in `skill_validator.py` where the Overall
+  Assessment reported "EXCELLENT" when no test corpus was provided.
+  With `total_tests == 0`, all rate metrics returned `0.0%` via
+  division guards, which satisfied the `< 10%` threshold — a classic
+  vacuous pass. The validator now reports "NO DATA" when no corpus is
+  configured, and gates action-required messages behind `total_tests > 0`.
+* Added two regression tests to `test_skill_validator.py`:
+  `test_no_corpus_reports_no_data` (end-to-end: load plugins without
+  corpus, verify report contains "NO DATA" and not "EXCELLENT") and
+  `test_zero_tests_metrics_accuracy` (unit: verify all
+  `SkillValidationMetrics` properties return `0.0` when `total_tests == 0`).
+
+**Validator State**
+
+* metadata_validator 0/0/0; xref_validator 523/523 valid;
+  context_budget_checker 206/206 (no skill over 80%);
+  skill_validator NO DATA (no corpus — by design); pytest 120/120
+  (+2 regression tests); ruff + mypy clean; pip-audit clean.
+
 ## v3.1.8 (2026-04-11)
 
 **Dev-Tooling Polish**

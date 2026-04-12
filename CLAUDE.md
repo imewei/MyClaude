@@ -12,7 +12,7 @@ MyClaude is a Claude Code plugin marketplace: 3 plugin suites containing 24 agen
 # Install dependencies
 uv sync
 
-# Run tests (118 tests covering plugin integrity and validation)
+# Run tests (120 tests covering plugin integrity and validation)
 uv run pytest tools/tests/ -v
 
 # Run a single test file
@@ -104,7 +104,7 @@ The manifest uses **file-path references** (not inline objects) to point to agen
 - `tools/validation/` — Validators (run individually or via `make validate`):
   - `metadata_validator.py` — Validate plugin.json structure: `python3 tools/validation/metadata_validator.py plugins/<suite>`
   - `context_budget_checker.py` — Check skill sizes against 2% limit: `python3 tools/validation/context_budget_checker.py [--plugins-dir DIR] [--context-size N]`
-  - `skill_validator.py` — Test skill triggering patterns: `python3 tools/validation/skill_validator.py [--plugins-dir DIR] [--plugin NAME]`
+  - `skill_validator.py` — Test skill triggering patterns: `python3 tools/validation/skill_validator.py [--plugins-dir DIR] [--plugin NAME] [--corpus-dir DIR]`
   - `xref_validator.py` — Validate cross-plugin references and broken links
   - `doc_checker.py` — Check documentation completeness (README sections, markdown formatting)
   - `plugin_review_script.py` — Full automated plugin review with structured markdown report
