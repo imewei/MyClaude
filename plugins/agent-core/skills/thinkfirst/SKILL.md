@@ -1,9 +1,9 @@
 ---
 name: thinkfirst
-description: This skill should be used when the user asks to "help me write a prompt", "turn this into a prompt", shares a "brain dump", "rough idea", or unstructured notes about what they need from AI, says "I want to build/create X" (when the goal is to craft the prompt), wants to prepare for a work session, or invokes /thinkfirst. Transforms rough ideas into professional, well-structured prompts through a clarifying interview before drafting. This is the recommended starting point before any significant AI-assisted work — use it even when the user has not explicitly asked for "a prompt."
+description: Use this skill whenever the user wants to write, improve, or optimize a prompt. Trigger on "help me write a prompt", "turn this into a prompt", "optimize this prompt", "make this prompt better", "my prompt isn't working", brain dumps and rough ideas about what they need from AI, "I want to build/create X" (when the goal is crafting the prompt), unstructured notes or vague requirements, requests to prepare for an AI work session, or /thinkfirst. This skill has two modes — Craft (build from a brain dump) and Optimize (rewrite an existing prompt) — and selects the right one automatically. Use it even when the user has not explicitly asked for "a prompt."
 ---
 
-# thinkfirst — Prompt Crafter
+# thinkfirst — Prompt Crafter & Optimizer
 
 Transform rough brain dumps, vague requirements, and unstructured ideas into professional prompts through a structured listen-first workflow. The skill exists because AI is the most articulate thing — it will never pause, never stumble, never say "let me think about that" — and if the user has not figured out what they think before writing the prompt, they will end up thinking what the AI thinks.
 
@@ -17,15 +17,27 @@ For complex prompt crafting that benefits from deep context-engineering expertis
   - *Location*: `plugins/agent-core/agents/context-specialist.md`
   - *When to delegate*: When the user's target task is high-stakes, multi-stage, or requires specialized prompt-engineering judgment beyond what the Seven Dimensions interview surfaces.
 
-## Core Principle
+## Mode Selection
+
+On receiving the first message, select a mode:
+
+| Signal | Mode |
+|---|---|
+| User shares a rough idea, brain dump, or vague goal — no existing prompt | **Craft Mode** |
+| User pastes an existing prompt and asks to improve, fix, or rewrite it | **Optimize Mode** |
+| Ambiguous | Default to **Craft Mode**; a 30-second check is cheaper than a bad rewrite |
+
+## Craft Mode
+
+For brain dumps, rough ideas, and "I want to create X" requests. Full four-phase process.
+
+### Core Principle
 
 Do not produce the prompt before clarifying. Even when the request seems obvious, confirm understanding first — a 30-second check saves a 5-minute rewrite. The only exception: if the user's request is already extremely detailed and specific, a draft may come sooner, but still confirm before calling it final.
 
-## Calibrate Before Responding
+### Calibrate Before Responding
 
 Before replying to the first user message, consider skimming `examples/worked-example.md`. It shows an end-to-end transcript — brain dump, clarifying turns, reasoning-strategy suggestion, final prompt — and is the fastest way to calibrate the conversational pacing, question style, and voice this skill should produce. The example loads only when actually read, so the cost is paid only when it helps.
-
-## The Four-Phase Process
 
 ### Phase 1 — Receive the Brain Dump
 
@@ -65,7 +77,53 @@ Once the user accepts (or declines) strategy suggestions, announce readiness to 
 
 Present the draft and invite feedback: "Here is the draft — does this capture what you are going for? Anything feel off or missing?" Be ready to iterate. Most prompts benefit from 1–2 rounds of refinement. Common adjustments: tone, added or refined examples, tightened or loosened constraints, newly surfaced edge cases. When the user is satisfied, present the final prompt in a clean, copyable code block.
 
-## Non-Negotiable Rules
+## Optimize Mode
+
+For users who paste a prompt and want it improved. Faster, more direct — but still confirm intent before delivering.
+
+### Step 1: Diagnose
+
+Read the prompt and internally check for these weaknesses:
+
+| Weakness | Check |
+|---|---|
+| Vague task (no specifics on output, length, format) | |
+| Missing audience or context | |
+| No tone or style guidance | |
+| No output structure defined | |
+| No examples where they would help | |
+| Complex task that would benefit from step-by-step thinking | |
+| Missing role or persona | |
+| Failure modes not addressed | |
+
+If the user's intent is unclear from the prompt alone, ask **one** clarifying question before rewriting. Do not ask multiple.
+
+### Step 2: Apply Optimization Techniques
+
+Apply whichever techniques improve the prompt. Not every prompt needs all of them.
+
+**For the full technique guide with before/after examples, consult `references/prompt-structure.md` — see the "Optimization Techniques" section.**
+
+### Step 3: Deliver
+
+Output the rewritten prompt in a clearly labeled code block, followed by a brief explanation of what changed and why (3–5 bullets, concise). Close with an offer to iterate.
+
+**Output format:**
+
+```
+## Optimized Prompt
+
+[rewritten prompt in a code block]
+
+**What changed:**
+- [change and reason]
+- [change and reason]
+- ...
+
+*Want me to adjust anything — tone, length, format, or add an example?*
+```
+
+## Non-Negotiable Rules (both modes)
 
 1. **Do not produce the prompt before clarifying.** Confirm understanding first, even when the request seems obvious. The only exception is a request that is already extremely detailed — and even then, confirm before finalizing.
 2. **Ask one question at a time.** The user wants a conversation, not a questionnaire. Ask one question, wait for the answer, then decide what to ask next based on what was said.
@@ -80,7 +138,7 @@ Present the draft and invite feedback: "Here is the draft — does this capture 
 ### Reference Files (loaded on demand)
 
 - **`references/seven-dimensions.md`** — Full guide to the seven clarification dimensions: Outcome, Stakes, Success Criteria, Failure Modes, Hidden Context, Components, The Hard Part. Includes conversational phrasing, completion signals, and the lack-of-technical-knowledge rule. Load this when entering Phase 2.
-- **`references/prompt-structure.md`** — Standard prompt sections, best-practices checklist, dimension-to-section mapping, and the final-draft checklist. Load this when entering Phase 3 to draft.
+- **`references/prompt-structure.md`** — Standard prompt sections, best-practices checklist, dimension-to-section mapping, optimization techniques with before/after examples, and the final-draft checklist. Load this when entering Craft Mode Phase 3 (to draft) or Optimize Mode Step 2 (to rewrite).
 - **`references/reasoning-strategies.md`** — When and how to suggest Chain of Thought, Validation Gates, Confidence Signaling, and advanced techniques; scripts for embedding each strategy into the draft. Load this before drafting whenever the task looks non-trivial.
 
 ### Example
