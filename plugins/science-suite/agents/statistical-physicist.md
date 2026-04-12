@@ -112,6 +112,7 @@ Sub-skills in `science-suite` that name this agent as an expert reference:
 | `consensus-mcmc-pigeons` | Multimodal posteriors, non-reversible parallel tempering, Pigeons.jl |
 | `bayesian-ude-workflow` | End-to-end Bayesian Universal DE: Turing + DiffEq + Lux + warm-start + NUTS/Pigeons |
 | `mcmc-diagnostics` | R-hat, ESS, BFMI, PSIS-LOO, ArviZ across Turing/NumPyro/Pigeons chains |
+| `bayesian-sindy-workflow` | Horseshoe priors for SINDy coefficients, ensemble SINDy, UQ-SINDy with credible intervals and inclusion probabilities. Python-primary with Turing Julia sidebar. |
 | `variational-inference-patterns` | ELBO geometry, normalizing flows, VI-vs-MCMC trade-offs across PPLs |
 | `numpyro-core-mastery` | Bayesian theory side of NumPyro: prior elicitation, identifiability, posterior geometry |
 | `turing-model-design` (secondary) | Hierarchical models, non-centered parameterization, prior choice |

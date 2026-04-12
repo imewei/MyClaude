@@ -504,6 +504,7 @@ Sub-skills in `science-suite` that name this agent as an expert reference:
 | `turing-model-design` (secondary, with `statistical-physicist`) | Julia-side Turing `@model` patterns, hierarchical models, `remake` + `ForwardDiffSensitivity` inside `@model` |
 | `bayesian-pinn` | NeuralPDE.jl BNNODE / BayesianPINN — internal AdvancedHMC path for PINN uncertainty |
 | `equation-discovery` | DataDrivenDiffEq.jl SINDy, STLSQ / SR3, symbolic regression from trajectory data |
+| `bayesian-sindy-workflow` (with `statistical-physicist`) | Bayesian sparse regression for equation discovery — Python-primary NumPyro NUTS worked example with a short Turing sidebar covering the UQ-SINDy pattern via DataDrivenDiffEq.jl. Cross-linked to `bayesian-ude-workflow` for combined Bayesian UDE + SINDy symbolic extraction. |
 | `bifurcation-analysis` | BifurcationKit.jl continuation, codim-2 bifurcations, normal forms, branch switching, juliacall escape hatch for Python users |
 | `catalyst-reactions` | Catalyst.jl reaction networks, JumpProcesses.jl, PDMP, jump-diffusion, SBML bridges |
 | `neural-pde` | Deterministic PINNs with NeuralPDE.jl + MethodOfLines.jl + ModelingToolkit symbolic PDE |
