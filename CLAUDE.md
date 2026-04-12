@@ -12,7 +12,7 @@ MyClaude is a Claude Code plugin marketplace: 3 plugin suites containing 24 agen
 # Install dependencies
 uv sync
 
-# Run tests (120 tests covering plugin integrity and validation)
+# Run tests (135 tests covering plugin integrity and validation)
 uv run pytest tools/tests/ -v
 
 # Run a single test file
@@ -66,9 +66,9 @@ plugins/<suite-name>/
 Suite breakdown:
 | Suite | Agents | Registered Cmds | Skills (hubs → sub) | Hooks | Focus |
 |-------|--------|-----------------|---------------------|-------|-------|
-| agent-core | 3 | 2 | 3 → 14 | 8 events | Reasoning, orchestration, context engineering, safety |
-| dev-suite | 9 | 12 | 9 → 49 | 2 events | Full SDLC: architecture, implementation, CI/CD, testing, debugging |
-| science-suite | 12 | 0 | 14 → 117 | 0 | JAX, Julia, physics, ML/DL/HPC, nonlinear dynamics, research |
+| agent-core | 3 | 2 | 3 → 14 | 15 events | Reasoning, orchestration, context engineering, safety |
+| dev-suite | 9 | 12 | 9 → 49 | 7 events | Full SDLC: architecture, implementation, CI/CD, testing, debugging |
+| science-suite | 12 | 0 | 14 → 117 | 5 events | JAX, Julia, physics, ML/DL/HPC, nonlinear dynamics, research |
 
 **Note:** 22 additional commands exist on disk but are not registered in `plugin.json`. These are **skill-invoked commands** — triggered by skills during workflows, not directly by users as `/slash-commands`.
 
@@ -93,7 +93,7 @@ Each hub SKILL.md has a standard structure: YAML frontmatter, Expert Agent refer
 
 **Skills** (`skills/<name>/SKILL.md`): Each skill lives in its own directory. The main file is always `SKILL.md` with frontmatter containing `name`, `description`. Hub skills additionally contain: Expert Agent section, Core Skills with `../` relative links, Routing Decision Tree, and Checklist.
 
-**Hooks** (`hooks/hooks.json`): JSON object with `description` and `hooks` object keyed by event name. Claude Code CLI 2.1.x supports 25 hook events; we implement handlers for 12: SessionStart, SessionEnd, PreToolUse, PostToolUse, PreCompact, PostCompact, SubagentStart, SubagentStop, PermissionDenied, TaskCreated, TaskCompleted, StopFailure. Handler types: command (shell), HTTP, prompt, agent. Python scripts implement hook logic.
+**Hooks** (`hooks/hooks.json`): JSON object with `description` and `hooks` object keyed by event name. Claude Code CLI 2.1.x supports 25 hook events; we implement handlers for 15: SessionStart, SessionEnd, PreToolUse, PostToolUse, PreCompact, PostCompact, SubagentStart, SubagentStop, PermissionDenied, TaskCreated, TaskCompleted, StopFailure, and additional events added in v3.3.0. Handler types: command (shell), HTTP, prompt, agent. Python scripts implement hook logic.
 
 ### Plugin Manifest (`plugin.json`)
 

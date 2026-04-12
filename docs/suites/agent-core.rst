@@ -89,13 +89,20 @@ Intent clarification, prompt engineering, LLM application patterns, MCP integrat
 Hooks
 -----
 
-8 hook events with Python script implementations:
+15 hook events with Python script implementations:
 
 - ``SessionStart`` — Session initialization
+- ``SessionEnd`` — Session teardown
 - ``PreToolUse`` — Before tool execution
 - ``PostToolUse`` — After tool execution
 - ``PreCompact`` — Before context compaction
 - ``PostCompact`` — After context compaction
+- ``SubagentStart`` — When a subagent starts
 - ``SubagentStop`` — When a subagent completes
 - ``PermissionDenied`` — When a tool call is denied
+- ``TaskCreated`` — When a task is created
 - ``TaskCompleted`` — When a task finishes
+- ``StopFailure`` — On agent stop failure
+- ``NotificationReceived`` — On incoming notification
+- ``ModelSwitch`` — On model tier change
+- ``ContextWindowWarning`` — On context window threshold

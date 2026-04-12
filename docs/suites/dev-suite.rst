@@ -203,7 +203,12 @@ Git, documentation, Airflow pipelines, and debugging.
 Hooks
 -----
 
-2 hook events:
+7 hook events:
 
+- ``SessionStart`` — Session initialization
+- ``PreToolUse`` — Pre-tool-use validation
 - ``PostToolUse`` — Post-tool-use validation
+- ``SubagentStart`` — Subagent startup handling
 - ``SubagentStop`` — Subagent completion handling
+- ``TaskCreated`` — Task creation tracking
+- ``TaskCompleted`` — Task completion handling
