@@ -97,9 +97,9 @@ All 26 hub skills route to 180 sub-skills with 100% Expert Agent coverage:
 Official Plugin Agents
 ----------------------
 
-23 agents from `claude-plugins-official <https://github.com/anthropics/claude-plugins-official>`_
-complement the 24 MyClaude domain experts. See the :doc:`Agent Teams Guide <agent-teams-guide>`
-for team configurations that integrate these agents.
+19 agents from 9 official plugins complement the 24 MyClaude domain experts.
+See the :doc:`Agent Teams Guide <agent-teams-guide>` for team configurations
+that integrate these agents.
 
 Key integration patterns:
 
