@@ -39,20 +39,22 @@ Domain-specific scientific computing suite for high-performance computing, Julia
 | `/analyze-data` | Comprehensive data analysis with statistical tests and visualization |
 | `/paper-review` | Systematic review of scientific papers |
 
-## Skills (14 hubs → 106 sub-skills)
+## Skills (14 hubs → 116 sub-skills)
 
 Organized by domain:
 
 - **JAX**: Core programming, Bayesian inference, DiffEq, optimization, physics applications
 - **Julia**: Core patterns, SciML ecosystem, performance tuning, package development
 - **Machine Learning**: Algorithm selection, pipelines, deployment, deep learning, neural architectures, experiment tracking
-- **Statistical Physics**: Correlation functions, stochastic dynamics, active matter, non-equilibrium theory
-- **Simulation**: MD setup, ML force fields, multiscale modeling, trajectory analysis
-- **Research**: Methodology, evidence synthesis, scientific communication, visualization
+- **Statistical Physics**: Correlation functions, stochastic dynamics (Fokker-Planck PDE), active matter, non-equilibrium theory (BAR/Jarzynski/MBAR), rare events / avalanche statistics, extreme-value statistics
+- **Simulation**: MD setup, ML force fields (equivariant GNNs, Julia ACE), multiscale modeling, trajectory analysis, freud physical correlations
+- **Research**: Methodology, evidence synthesis, scientific communication, visualization, robust testing, autonomous self-improvement research (DSPy, RLAIF)
 - **Python**: Type-driven design, Rust extensions (PyO3), modern concurrency, packaging
 - **Numerical Methods**: Solvers, parallel computing, GPU acceleration, signal processing
 - **Julia ML/DL/HPC**: Neural networks, AD backends, ML pipelines, GPU kernels, HPC distributed computing, model deployment, GNNs, reinforcement learning
-- **New Domains**: Computer vision, NLP fundamentals, bioinformatics, time series analysis, control theory, symbolic math, quantum computing, federated learning, advanced optimization, reinforcement learning
+- **Bayesian Inference**: NumPyro/Turing, MCMC diagnostics, consensus MC & Pigeons.jl non-reversible PT, Bayesian UDEs (Turing + Diffrax), Bayesian PINNs, Hawkes/point processes
+- **Nonlinear Dynamics**: Bifurcation (with Python escape hatch), chaos attractors, pattern formation, equation discovery (SINDy ecosystem), Julia ↔ Python handoff for nonlinear time-series tools (nolds, antropy, IDTxl, pyEDM)
+- **Other Domains**: Computer vision, NLP, bioinformatics, time series, control theory, symbolic math, quantum computing, federated learning, reinforcement learning
 
 ## Installation
 

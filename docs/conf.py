@@ -8,7 +8,7 @@ project = 'Claude Code Plugin Marketplace'
 copyright = '2026, Wei Chen'
 author = 'Wei Chen'
 version = '3.1'
-release = '3.1.2'
+release = '3.1.6'
 
 # General configuration
 extensions = [

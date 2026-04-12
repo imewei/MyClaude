@@ -1,7 +1,7 @@
 Integration Map
 ===============
 
-How the 3 MyClaude suites (24 agents, 26 hub skills routing to 167 sub-skills) connect to each other and to external tools.
+How the 3 MyClaude suites (24 agents, 26 hub skills routing to 179 sub-skills) connect to each other and to external tools.
 
 .. contents:: Table of Contents
    :depth: 2
@@ -20,7 +20,7 @@ Suite Dependencies
    * - **dev-suite**
      - Internal: all 9 agents cross-delegate freely. MCP: Serena, GitHub.
    * - **science-suite**
-     - agent-core (reasoning), dev-suite (packaging). Internal: julia-pro ↔ julia-ml-hpc (SciML vs ML/HPC boundary), neural-network-master ↔ julia-ml-hpc (theory vs Julia impl). 14 hub skills route to 106 sub-skills. MCP: Context7.
+     - agent-core (reasoning), dev-suite (packaging). Internal: julia-pro ↔ julia-ml-hpc (SciML vs ML/HPC boundary), neural-network-master ↔ julia-ml-hpc (theory vs Julia impl). 14 hub skills route to 116 sub-skills. MCP: Context7.
 
 MCP Server Roles
 ----------------
@@ -67,7 +67,7 @@ and context-specialist each delegate to the other two.
 Skill Coverage
 ~~~~~~~~~~~~~~
 
-All 26 hub skills route to 167 sub-skills with 100% Expert Agent coverage:
+All 26 hub skills route to 179 sub-skills with 100% Expert Agent coverage:
 
 .. list-table::
    :header-rows: 1
@@ -81,7 +81,7 @@ All 26 hub skills route to 167 sub-skills with 100% Expert Agent coverage:
    * - agent-core
      - 3
      - 3
-     - 12
+     - 14
      - 100% — agent-systems, reasoning-and-memory, llm-engineering
    * - dev-suite
      - 9
@@ -91,7 +91,7 @@ All 26 hub skills route to 167 sub-skills with 100% Expert Agent coverage:
    * - science-suite
      - 12
      - 14
-     - 106
+     - 116
      - 100% — including Julia ML/HPC and nonlinear dynamics hubs
 
 Official Plugin Agents
@@ -110,12 +110,14 @@ Key integration patterns:
 Agent Teams
 -----------
 
-21 pre-built team configurations span five categories:
+25 pre-built team configurations span six categories (21 original + 4 added in v3.1.4):
 
 1. **Development & Operations** (1-7): Feature dev, incident response, PR review, quality/security, API design, infra, modernization
 2. **Scientific Computing** (8-12): JAX/ML/DL pipelines, Bayesian inference, Julia SciML, MD simulation, paper reproduction
 3. **Cross-Cutting** (13-16): AI/LLM engineering, performance optimization, data pipelines, documentation/reproducibility
 4. **Plugin Development** (17): Claude Code extension building
 5. **Debugging** (18-21): Triage, GUI threading, numerical/JAX, schema/type drift
+6. **Specialized (v3.1.4+)** (22-25): ``nonlinear-dynamics``, ``julia-ml``, ``multi-agent-systems``, ``sci-desktop``
 
-Use ``/agent-core:team-assemble list`` to browse all templates.
+Use ``/agent-core:team-assemble list`` to browse all templates, or run it with no
+arguments in a project root for a codebase-aware recommendation (v3.1.4+).

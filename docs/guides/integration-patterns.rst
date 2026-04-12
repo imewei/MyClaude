@@ -7,15 +7,15 @@ cross-cutting concerns.
 .. note::
 
    Since v3.1.0, skills use a two-tier :term:`Hub Skill` architecture (26 hubs
-   routing to 167 sub-skills). Cross-suite workflows invoke hub skills which
+   routing to 179 sub-skills as of v3.1.6). Cross-suite workflows invoke hub skills which
    automatically dispatch to the right sub-skill.
 
 Cross-Suite Agent Teams
 -----------------------
 
-The :doc:`Agent Teams Guide </agent-teams-guide>` provides 34 ready-to-use
-team configurations. Teams 17-25 are specifically designed for cross-suite
-collaboration.
+The :doc:`Agent Teams Guide </agent-teams-guide>` provides 25 ready-to-use
+team configurations (v3.1.4+). Teams 13-16 and 22-25 are specifically designed
+for cross-suite collaboration.
 
 Key cross-suite patterns:
 

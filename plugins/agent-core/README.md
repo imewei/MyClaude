@@ -27,19 +27,19 @@ Meta-agent suite for multi-agent orchestration, advanced reasoning, and context 
 | `/docs-lookup` | Query library documentation via Context7 MCP |
 | `/reflection` | Meta-cognitive reflection framework execution |
 | `/ultra-think` | Advanced structured reasoning with branching exploration |
-| `/team-assemble` | Generate agent team configs from 21 pre-built templates |
+| `/team-assemble` | Codebase-aware recommender for 25 pre-built team templates (v3.1.4+) |
 
-## Skills (3 hubs → 12 sub-skills)
+## Skills (3 hubs → 14 sub-skills)
 
 Hub skills route to specialized sub-skills via decision trees:
 
 | Hub | Sub-skills | Focus |
 |-----|------------|-------|
 | `agent-systems` | 4 | Orchestration, coordination, performance optimization, evaluation |
-| `reasoning-and-memory` | 4 | Reasoning frameworks, reflection, memory patterns, knowledge graphs |
-| `llm-engineering` | 4 | LLM app patterns, prompt engineering, MCP integration, safety guardrails |
+| `reasoning-and-memory` | 5 | Reasoning frameworks, reflection, memory patterns, knowledge graphs, self-improving agents |
+| `llm-engineering` | 5 | Intent clarification (thinkfirst), LLM app patterns, prompt engineering, MCP integration, safety guardrails |
 
-Sub-skills include: reasoning-frameworks, reflection-framework, agent-performance-optimization, agent-evaluation, multi-agent-coordination, llm-application-patterns, mcp-integration, prompt-engineering-patterns, memory-system-patterns, safety-guardrails, tool-use-patterns, knowledge-graph-patterns
+Sub-skills include: reasoning-frameworks, reflection-framework, agent-performance-optimization, agent-evaluation, multi-agent-coordination, llm-application-patterns, mcp-integration, prompt-engineering-patterns, memory-system-patterns, safety-guardrails, tool-use-patterns, knowledge-graph-patterns, `thinkfirst` *(new in v3.1.3)*, `self-improving-agents` *(new in v3.1.4)*
 
 ## Hooks (8 events)
 

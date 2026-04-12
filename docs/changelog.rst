@@ -1,6 +1,228 @@
 Changelog
 =========
 
+v3.1.6 (2026-04-11)
+-------------------
+
+**Julia ↔ Python Parity Polish**
+
+* **Julia → Python handoff for nonlinear time-series tools.** New section
+  in ``chaos-attractors`` covering ``nolds``, ``antropy``, ``IDTxl``,
+  ``pyEDM``, ``pyunicorn``, ``teaspoon`` (no native Julia equivalents)
+  via the canonical ``PythonCall.jl`` + ``CondaPkg.jl`` import pattern
+  with a concrete ``lyap_r`` example and GIL-under-``@threads`` caveats.
+  Pointer edits in ``nonlinear-dynamics`` hub ecosystem-selection table
+  and ``time-series-analysis``. Completes the Julia ↔ Python interop
+  story with v3.1.5's reciprocal ``juliacall`` bifurcation path.
+* **BAR free-energy worked example** bridging Langevin ensemble and
+  non-equilibrium theory. Added a 4-stage pipeline to
+  ``non-equilibrium-theory``: (1) JAX Langevin ensemble + ``jax.lax.scan``
+  to accumulate forward/reverse work samples, (2) BAR fit via
+  ``pymbar.other_estimators.bar`` (Context7-verified — pymbar 4.0 moved
+  it out of top level), (3) variance comparison vs Jarzynski cumulant
+  expansion, (4) multi-state MBAR pointer with ``alchemlyb`` ecosystem
+  wrapper. One-sentence cross-link added to ``stochastic-dynamics`` to
+  preserve its 74% budget cap.
+* **freud ecosystem for physical correlations.** Added a "Python freud
+  ecosystem" section to ``correlation-physical-systems`` covering
+  ``freud.density.RDF``, ``StaticStructureFactorDebye`` /
+  ``StaticStructureFactorDirect`` (with API-drift warning:
+  ``StaticStructureFactorDebye`` takes ``num_k_values``, not ``bins``),
+  Steinhardt ``Q_l``, Hexatic, Nematic, and ``SolidLiquid`` phase
+  classifier. ``freud.density.IntermediateScattering`` tagged
+  ``[unverified]`` (absent in freud 3.5.0) with a ``numpy.fft`` +
+  MDAnalysis fallback. Algorithmic notes in
+  ``correlation-computational-methods`` (AABBQuery neighbor-list reuse,
+  ``reset=False`` multi-frame averaging, CuPy breakeven N ≈ 10⁴,
+  "MDAnalysis/MDTraj as iterator, freud as analyzer" production
+  pattern). One-line hub pointer in ``correlation-analysis`` with a
+  ``PythonCall.jl`` handoff note for Julia users.
+
+**Deferred**
+
+* Item A (ML-FF CLI spot-check) — explicitly deferred until the user
+  resumes active MLIP training.
+
+**Validator State**
+
+* metadata_validator: 0/0/0 across all 3 plugins.
+* xref_validator: 519/519 references valid.
+* context_budget_checker: 205/205 skills fit.
+  ``non-equilibrium-theory`` at 73.8% (under 75% Commit C gate),
+  ``correlation-physical-systems`` at 74.45% (under 75% Commit D
+  gate), ``chaos-attractors`` at 79% (under 80% at-risk line).
+* skill_validator EXCELLENT; pytest 118/118; ruff clean; mypy 0 errors.
+
+**Known forward items for v3.1.7+**
+
+* ``equation-discovery`` at 88% — flagged for Bayesian SINDy
+  extraction split.
+* ``freud.density.IntermediateScattering`` presence in newer freud
+  releases — re-verify when correlation skills are next touched.
+
+v3.1.5 (2026-04-11)
+-------------------
+
+**Julia/Python Parity Pass**
+
+* **Fokker-Planck direct PDE methods** in ``stochastic-dynamics``:
+  finite-difference / spectral discretization, boundary-condition
+  patterns, cross-links to Langevin sampling.
+* **Python bifurcation continuation escape hatch** in
+  ``bifurcation-analysis`` and ``nonlinear-dynamics``: documented the
+  ``juliacall`` path to Julia bifurcation routines (since
+  ``BifurcationKit.jl`` is blocked on Julia 1.12), plus PyDSTool and
+  AUTO-07p as Python-native alternatives.
+* **Modern ML force fields** expansion in ``ml-force-fields``:
+  equivariant GNNs (NequIP, MACE, Allegro), Julia ACE stack
+  (``ACEpotentials.jl``), training loops, active learning,
+  energy-and-force loss balance. Budget-tight at 78%.
+* **Julia Monte Carlo idioms** in ``statistical-physics``: Metropolis
+  sampler patterns with ``@inbounds`` / ``@fastmath``, SIMD inner
+  loops, parallel tempering via ``Distributed.jl``, tuning heuristics.
+
+**Tooling**
+
+* Added ``types-PyYAML`` dev dependency for mypy stubs.
+* Tightened ``self-improving-ai`` triggers so they no longer overlap
+  with ``dspy-basics``.
+* Added ``tools/validation/command_file_linter.py`` — a targeted
+  structural linter for Claude Code command files with 5 stable
+  rule IDs (``fence-unbalanced``, ``heading-skip``, ``step-ref-broken``,
+  ``trailing-whitespace``, ``heading-duplicate``). Importable API +
+  standalone CLI, wired into ``make validate`` (errors block, warnings
+  non-blocking). Caught a pre-existing duplicate ``## Metrics`` H2
+  in ``dev-suite/commands/tech-debt.md``. 15 new tests.
+
+**Validator State**
+
+* metadata 0/0/0; xref 515/515 valid (+3 from v3.1.4); context budget
+  204/204 (``bifurcation-analysis`` 79%, ``ml-force-fields`` 78%,
+  both under 80%). pytest 103 passing, ruff clean, mypy 0 errors.
+
+v3.1.4 (2026-04-11)
+-------------------
+
+**Research-Focus Optimization Pass (science-suite)**
+
+* Aligned agents and skills with research in Bayesian MCMC
+  (NUTS / Consensus MC / Pigeons), Universal Differential Equations,
+  SINDy, nonlinear dynamics, time series, rare events / avalanche
+  dynamics, non-equilibrium statistical physics, and point / jump
+  processes.
+* **9 new sub-skills** (hub-discovered, not registered in
+  ``plugin.json``): ``consensus-mcmc-pigeons`` (non-reversible
+  parallel tempering via Pigeons.jl, now distinguished from Scott-2016
+  divide-and-conquer Consensus Monte Carlo), ``bayesian-ude-workflow``
+  (Turing + DiffEq + Lux staged pipeline), ``bayesian-ude-jax``
+  (Python/JAX counterpart via Diffrax + Equinox + NumPyro),
+  ``bayesian-pinn`` (BNNODE/BayesianPINN extracted from ``neural-pde``
+  which drops from 78% → 65% of budget), ``point-processes``
+  (Hawkes / HSGP / Julia PointProcesses.jl), ``rare-events-sampling``
+  (large-deviation / cloning / avalanche statistics),
+  ``self-improving-ai`` (research overview), ``dspy-basics``
+  (DSPy programmatic prompts depth-skill), ``rlaif-training``
+  (Constitutional AI / RLAIF / DPO depth-skill).
+* **1 new agent-core skill**: ``self-improving-agents`` under the
+  ``reasoning-and-memory`` hub — operational counterpart to
+  science-suite's ``self-improving-ai`` (agents inside Claude Code
+  vs research framework overview). Covers closed-loop
+  reflection-refine-validate, self-consistency ensembles, DSPy and
+  TextGrad automatic prompt optimization, evolutionary prompt
+  search, and constitutional self-critique.
+
+**Research Audit Remediation**
+
+* Added ``extreme-value-statistics`` skill (GEV/GPD/Hill/Pickands/POT,
+  return levels, non-stationary EVT) and wired into
+  ``statistical-physics-hub``.
+* Wired the orphaned ``robust-testing`` sub-skill into the
+  ``research-and-domains`` hub (was on disk but unreachable).
+* Extended ``rare-events-sampling`` triggers to cover SOC, sandpile /
+  Bak-Tang-Wiesenfeld, crackling noise, and avalanche-size
+  distributions; cross-linked to ``extreme-value-statistics``.
+* Resolved jump-diffusion routing: ``stochastic-dynamics`` owns
+  general physics jump-diffusion SDEs (Lévy flights, shot noise,
+  regime-switching Langevin); ``catalyst-reactions`` stays scoped
+  to biochemical reaction networks.
+* Added Bayesian SINDy coverage to ``equation-discovery``
+  (horseshoe-prior NumPyro, ensemble SINDy, UQ-SINDy via Turing) —
+  pushed to 88% budget and flagged for v3.1.7 extraction.
+* Disambiguated ``sciml-modern-stack`` vs ``sciml-and-diffeq`` by
+  rewriting hub routing without touching the frozen
+  ``sciml-modern-stack`` body.
+* Added missing trigger keywords (ADF, KPSS, Phillips-Perron, PELT,
+  BinSeg, renewal processes, non-parametric Hawkes EM) to
+  ``time-series-analysis`` and ``point-processes``.
+
+**Agent Updates**
+
+* ``julia-pro``: Bayesian stack upgraded to Turing + Pigeons;
+  sensealg table rewritten with ``GaussAdjoint`` as modern default
+  and the ForwardDiff-bypasses-sensealg factual fix; decision tree
+  adds UDE and multimodal branches.
+* ``julia-ml-hpc``, ``statistical-physicist``, ``ai-engineer``,
+  ``jax-pro``, ``simulation-expert`` also aligned with research-focus
+  delegation updates.
+
+**Codebase-Aware /team-assemble (agent-core)**
+
+* Major rework: static catalog → codebase-aware recommender /
+  adapter / validator. **21 → 25 team templates.**
+* **4 new teams**: ``nonlinear-dynamics`` (bifurcation, chaos,
+  coupled oscillators, pattern formation — first wiring of
+  ``nonlinear-dynamics-expert`` to its documented delegation
+  targets), ``julia-ml`` (Lux.jl/Flux.jl/MLJ.jl + CUDA.jl/MPI.jl
+  distributed training), ``multi-agent-systems``, ``sci-desktop``
+  (PyQt6/PySide6 + JAX scientific desktop apps).
+* ``ai-engineering`` team swaps ``reasoning-architect`` for
+  ``context-architect`` as default 4th teammate.
+* Closed drift: **0 unused local agents** (down from 4).
+* New capabilities: Step 1.5 codebase detection (4-tier signal
+  gathering with efficiency gates), Step 2.5 fingerprint table,
+  Step 2.6 rule-based ranking with confidence labels, Step 2.6a/b
+  validation + auto-fill, five new invocation modes.
+* **Session cache**: Tier 0 cache at
+  ``/tmp/team-assemble-cache/<sanitized-abspath>.json`` with
+  mtime-based invalidation (15 min TTL); ``--no-cache`` bypass flag.
+* **S1 prompt-injection safeguards** for README probes (HIGH):
+  character neutralization, ``<untrusted_readme_excerpt>`` wrapping,
+  9 refusal-trigger patterns. Non-English README hardening via
+  ``language_hint`` classification and auto-fill trust tiers.
+
+**Tooling Hardening**
+
+* Added ``sys.path.insert`` to 5 validators so CLI invocation
+  works without ``PYTHONPATH=.``.
+* ``PluginLoader`` consolidates YAML frontmatter parsing via
+  normalized component helpers.
+* ``xref_validator`` gains disk-discovery of sub-skills so
+  hub-architecture sub-skills no longer false-positive as broken
+  references.
+* Restored ``requires = ["maturin>=1.0,<2.0"]`` in rust-extensions
+  scaffold (maturin is the real PEP 517 build backend for PyO3).
+* ``pyproject.toml``: excluded ``test-corpus/`` from mypy and ruff.
+
+**Validator State**
+
+* metadata 0/0/0; xref 512/512 valid; context budget 204/204;
+  pytest 60/60; ruff clean.
+
+v3.1.3 (2026-04-10)
+-------------------
+
+**New Skill: thinkfirst (agent-core)**
+
+* Added ``thinkfirst`` as a sub-skill under the ``llm-engineering`` hub.
+  Interview-first workflow that clarifies vague user intent through
+  a Seven Dimensions framework before any prompt is drafted.
+* Positioned as the first branch in the ``llm-engineering`` routing
+  tree so users with brain dumps hit clarification before reaching
+  for production templates.
+* Cross-linked with ``prompt-engineering-patterns``: ``thinkfirst``
+  handles intent clarification, ``prompt-engineering-patterns``
+  handles production-grade refinement.
+
 v3.1.2 (2026-04-06)
 -------------------
 

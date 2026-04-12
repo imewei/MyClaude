@@ -1,9 +1,9 @@
 Scientific Computing Suite
 ==========================
 
-High-performance computing, physics/chemistry simulations, ML/DL, Julia, JAX, and data science workflows. Uses the :term:`Hub Skill` architecture with 14 hubs routing to 106 sub-skills. Optimized for Claude Opus 4.6 with extended context and adaptive reasoning.
+High-performance computing, physics/chemistry simulations, ML/DL, Julia, JAX, and data science workflows. Uses the :term:`Hub Skill` architecture with 14 hubs routing to 116 sub-skills. Optimized for Claude Opus 4.6 with extended context and adaptive reasoning.
 
-**Version:** 3.1.2 | **12 Agents** | **0 Registered Commands** | **14 Hubs → 106 Sub-skills**
+**Version:** 3.1.6 | **12 Agents** | **0 Registered Commands** | **14 Hubs → 116 Sub-skills**
 
 Agents
 ------
@@ -11,62 +11,62 @@ Agents
 .. agent:: neural-network-master
    :description: Deep learning authority specializing in architecture design, theory, and implementation (Transformers, CNNs, diagnostics).
    :model: opus
-   :version: 3.1.2
+   :version: 3.1.6
 
 .. agent:: nonlinear-dynamics-expert
    :description: Expert in bifurcation analysis, chaos, coupled networks, pattern formation, and equation discovery (SINDy/UDE).
    :model: opus
-   :version: 3.1.2
+   :version: 3.1.6
 
 .. agent:: research-expert
    :description: Expert in systematic research, evidence synthesis, and publication-quality visualization.
    :model: opus
-   :version: 3.1.2
+   :version: 3.1.6
 
 .. agent:: simulation-expert
    :description: Expert in molecular dynamics, statistical mechanics, and numerical methods (HPC/GPU).
    :model: opus
-   :version: 3.1.2
+   :version: 3.1.6
 
 .. agent:: statistical-physicist
    :description: Expert in correlation functions, non-equilibrium dynamics, and ensemble theory.
    :model: opus
-   :version: 3.1.2
+   :version: 3.1.6
 
 .. agent:: ai-engineer
    :description: Build production-ready LLM applications, advanced RAG systems, and intelligent agents.
    :model: sonnet
-   :version: 3.1.2
+   :version: 3.1.6
 
 .. agent:: jax-pro
    :description: Expert in JAX-based scientific computing, functional transformations, and high-performance numerical kernels.
    :model: sonnet
-   :version: 3.1.2
+   :version: 3.1.6
 
 .. agent:: julia-ml-hpc
    :description: Expert in Julia ML, Deep Learning, and HPC (Lux.jl, MLJ.jl, CUDA.jl, MPI.jl, GraphNeuralNetworks.jl).
    :model: sonnet
-   :version: 3.1.2
+   :version: 3.1.6
 
 .. agent:: julia-pro
    :description: Expert in Julia programming, SciML (DifferentialEquations.jl, ModelingToolkit.jl), and Turing.jl.
    :model: sonnet
-   :version: 3.1.2
+   :version: 3.1.6
 
 .. agent:: ml-expert
    :description: Expert in classical ML algorithms, MLOps pipelines, and data engineering.
    :model: sonnet
-   :version: 3.1.2
+   :version: 3.1.6
 
 .. agent:: prompt-engineer
    :description: Expert prompt engineer specializing in advanced techniques and LLM performance optimization.
    :model: sonnet
-   :version: 3.1.2
+   :version: 3.1.6
 
 .. agent:: python-pro
    :description: Expert Python Systems Engineer specializing in type-driven development, Rust extensions, and performance.
    :model: sonnet
-   :version: 3.1.2
+   :version: 3.1.6
 
 Skill-Invoked Commands
 ----------------------
@@ -85,7 +85,7 @@ These commands are triggered by skills, not directly by users:
 Hub Skills
 ----------
 
-Skills use a hub architecture: 14 hub skills route to 106 specialized sub-skills.
+Skills use a hub architecture: 14 hub skills route to 116 specialized sub-skills.
 
 Hub: nonlinear-dynamics (6 sub-skills)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -169,17 +169,19 @@ Mathematical foundations, physical systems, computational methods, and experimen
 - ``correlation-computational-methods`` — FFT-based autocorrelation, multi-tau correlators, JAX-accelerated GPU
 - ``correlation-experimental-data`` — DLS, SAXS/SANS, XPCS, FCS, rheology data interpretation
 
-Hub: statistical-physics-hub (6 sub-skills)
+Hub: statistical-physics-hub (8 sub-skills)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Equilibrium/non-equilibrium statistical mechanics, active matter, stochastic dynamics.
+Equilibrium/non-equilibrium statistical mechanics, stochastic dynamics, active matter, rare events, and extremes.
 
-- ``statistical-physics`` — Ensemble theory, partition functions, phase transitions
-- ``stochastic-dynamics`` — Master equations, Fokker-Planck, Langevin, Green-Kubo
-- ``non-equilibrium-theory`` — Fluctuation theorems, entropy production, linear response
+- ``statistical-physics`` — Ensemble theory, partition functions, phase transitions; Julia Monte Carlo idioms *(v3.1.5)*
+- ``stochastic-dynamics`` — Master equations, Fokker-Planck direct PDE methods, Langevin, Green-Kubo, jump-diffusion SDEs *(Fokker-Planck v3.1.5)*
+- ``non-equilibrium-theory`` — Fluctuation theorems, entropy production, linear response, BAR/Jarzynski/MBAR with pymbar worked example *(BAR example v3.1.6)*
 - ``active-matter`` — Self-propelled particles, flocking, MIPS, bio-inspired materials
 - ``multiscale-modeling`` — Coarse-graining, DPD, nanoscale DEM
 - ``advanced-simulations`` — Non-equilibrium thermodynamics, multiscale bridging
+- ``rare-events-sampling`` — Large-deviation theory, cloning / importance splitting, SOC / sandpile / avalanche statistics *(new in v3.1.4)*
+- ``extreme-value-statistics`` — GEV/GPD/Hill/Pickands/POT, return levels, non-stationary EVT *(new in v3.1.4)*
 
 Hub: deep-learning-hub (6 sub-skills)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -245,16 +247,17 @@ MD simulations, trajectory analysis, ML force fields, parallel computing, GPU, n
 - ``advanced-optimization`` — Genetic algorithms, simulated annealing, basin hopping
 - ``control-theory`` — PID, LQR, MPC, stability analysis
 
-Hub: research-and-domains (15 sub-skills)
+Hub: research-and-domains (18 sub-skills)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Research methodology, paper implementation, scientific writing, Python systems, and specialized domains.
+Research methodology, paper implementation, scientific writing, Python systems, specialized domains, and autonomous self-improvement research.
 
 - ``research-methodology`` — Study design, literature review, experimental protocols
 - ``research-paper-implementation`` — Reproduce academic paper results systematically
 - ``research-quality-assessment`` — Rigor, reproducibility, statistics (CONSORT/STROBE/PRISMA)
 - ``scientific-communication`` — Papers, reports, presentations (IMRaD)
 - ``evidence-synthesis`` — Meta-analysis, systematic reviews (PRISMA/GRADE)
+- ``robust-testing`` — Property-based, metamorphic, and tolerance-aware testing for scientific code
 - ``python-development`` — Idiomatic Python, software engineering for science
 - ``python-packaging-advanced`` — uv workspaces, monorepos, reproducible builds
 - ``rust-extensions`` — PyO3/maturin high-performance Python extensions
@@ -265,13 +268,21 @@ Research methodology, paper implementation, scientific writing, Python systems, 
 - ``computer-vision`` — Image processing, detection, Vision Transformers
 - ``reinforcement-learning`` — Gymnasium, Stable-Baselines3, RLlib
 - ``symbolic-math`` — SymPy, CAS, algebraic solvers
+- ``self-improving-ai`` — Research overview for autonomous self-improvement (research-framework counterpart to agent-core's self-improving-agents) *(new in v3.1.4)*
+- ``dspy-basics`` — Depth-skill companion for DSPy programmatic prompt optimization *(new in v3.1.4)*
+- ``rlaif-training`` — Depth-skill companion for Constitutional AI / RLAIF / DPO *(new in v3.1.4)*
 
-Hub: bayesian-inference (4 sub-skills)
+Hub: bayesian-inference (9 sub-skills)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-NumPyro, Turing.jl, variational inference, and MCMC diagnostics.
+NumPyro, Turing.jl, variational inference, MCMC diagnostics, consensus / non-reversible tempering, Bayesian UDEs, Bayesian PINNs, and point processes.
 
 - ``numpyro-core-mastery`` — NumPyro: NUTS/HMC, SVI, hierarchical models, GPU inference
 - ``turing-model-design`` — Turing.jl: probabilistic models, Julia-native Bayesian workflows
 - ``variational-inference-patterns`` — ELBO, mean-field, normalizing flows, amortized inference
 - ``mcmc-diagnostics`` — R-hat, ESS, BFMI, trace plots, ArviZ convergence diagnostics
+- ``consensus-mcmc-pigeons`` — Scott-2016 divide-and-conquer Consensus MC and Pigeons.jl non-reversible parallel tempering *(new in v3.1.4)*
+- ``bayesian-ude-workflow`` — Turing + DiffEq + Lux staged pipeline for Bayesian Universal Differential Equations *(new in v3.1.4)*
+- ``bayesian-ude-jax`` — Python/JAX counterpart to Bayesian UDE via Diffrax + Equinox + NumPyro *(new in v3.1.4)*
+- ``bayesian-pinn`` — BNNODE / BayesianPINN (extracted from neural-pde for budget management) *(new in v3.1.4)*
+- ``point-processes`` — Hawkes processes, HSGP, Julia PointProcesses.jl, non-parametric Hawkes EM *(new in v3.1.4)*
