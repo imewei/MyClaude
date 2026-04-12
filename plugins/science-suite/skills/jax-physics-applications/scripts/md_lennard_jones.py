@@ -68,7 +68,7 @@ def main():
             E = energy_fn(state.position)
             T = quantity.temperature(state, kB=1.0)
             print(
-                f"  Equilibration step {step+1}/{n_equilibration}: "
+                f"  Equilibration step {step + 1}/{n_equilibration}: "
                 f"E={E:.4f}, T={T:.4f}"
             )
 
@@ -93,8 +93,7 @@ def main():
 
             if (step + 1) % 1000 == 0:
                 print(
-                    f"  Production step {step+1}/{n_production}: "
-                    f"E={E:.4f}, T={T:.4f}"
+                    f"  Production step {step + 1}/{n_production}: E={E:.4f}, T={T:.4f}"
                 )
 
     print("✓ Production run complete\n")
@@ -115,7 +114,7 @@ def main():
     print("\nEnergy Statistics:")
     print(f"  Mean energy: {energy_mean:.6f}")
     print(f"  Std deviation: {energy_std:.6f}")
-    print(f"  Relative drift: {energy_drift:.6f} ({energy_drift*100:.4f}%)")
+    print(f"  Relative drift: {energy_drift:.6f} ({energy_drift * 100:.4f}%)")
 
     if energy_drift < 1e-4:
         print("  ✓ Energy conservation: EXCELLENT (drift < 0.01%)")
@@ -131,7 +130,7 @@ def main():
     print("\nTemperature Statistics:")
     print(f"  Mean temperature: {temp_mean:.6f}")
     print(f"  Std deviation: {temp_std:.6f}")
-    print(f"  Relative fluctuation: {temp_std/temp_mean*100:.2f}%")
+    print(f"  Relative fluctuation: {temp_std / temp_mean * 100:.2f}%")
 
     # Compute radial distribution function
     print("\nComputing radial distribution function...")

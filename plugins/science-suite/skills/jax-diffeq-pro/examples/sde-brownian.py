@@ -266,7 +266,9 @@ def colloidal_dynamics(n_particles: int = 10):
             r_vec = positions[i] - positions[j]
             r = jnp.linalg.norm(r_vec) + 1e-10  # Avoid division by zero
             f_mag = jnp.where(
-                r < 2.5 * sigma, soft_repulsion_force(r, epsilon, sigma), 0.0  # Cutoff
+                r < 2.5 * sigma,
+                soft_repulsion_force(r, epsilon, sigma),
+                0.0,  # Cutoff
             )
             return f_mag * r_vec / r
 

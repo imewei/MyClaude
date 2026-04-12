@@ -239,9 +239,9 @@ def profile_compilation(fn, *args):
     result2.block_until_ready()
     exec_time = time.perf_counter() - start
 
-    print(f"First call (compile + exec): {compile_time*1000:.2f}ms")
-    print(f"Second call (exec only): {exec_time*1000:.2f}ms")
-    print(f"Compilation overhead: {(compile_time - exec_time)*1000:.2f}ms")
+    print(f"First call (compile + exec): {compile_time * 1000:.2f}ms")
+    print(f"Second call (exec only): {exec_time * 1000:.2f}ms")
+    print(f"Compilation overhead: {(compile_time - exec_time) * 1000:.2f}ms")
 
     return result1
 

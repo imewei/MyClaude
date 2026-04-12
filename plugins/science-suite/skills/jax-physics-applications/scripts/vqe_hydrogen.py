@@ -88,7 +88,7 @@ def main():
         if (step + 1) % 100 == 0:
             error = jnp.abs(energy - E_exact)
             print(
-                f"  Step {step+1}/{n_steps}: "
+                f"  Step {step + 1}/{n_steps}: "
                 f"E={energy:.6f} Ha, "
                 f"Error={error:.6f} Ha, "
                 f"|∇E|={grad_norm:.6f}"
@@ -108,7 +108,7 @@ def main():
     print(f"  VQE energy: {final_energy:.6f} Ha")
     print(f"  Exact energy: {E_exact:.6f} Ha")
     print(f"  Absolute error: {energy_error:.6f} Ha")
-    print(f"  Relative error: {energy_error/jnp.abs(E_exact)*100:.4f}%")
+    print(f"  Relative error: {energy_error / jnp.abs(E_exact) * 100:.4f}%")
 
     # Chemical accuracy threshold
     chemical_accuracy = 0.001  # 1 mHa = 0.627 kcal/mol

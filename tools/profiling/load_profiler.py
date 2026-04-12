@@ -470,17 +470,21 @@ class LoadProfileReporter:
             f"- **Target Load Time:** {PluginLoadProfiler.TARGET_LOAD_TIME_MS}ms"
         )
         lines.append(
-            f"- **Pass Rate:** {pass_count}/{total_plugins} ({pass_count/total_plugins*100:.1f}%)"
+            f"- **Pass Rate:** {pass_count}/{total_plugins} ({pass_count / total_plugins * 100:.1f}%)"
         )
         lines.append("")
         lines.append("**Status Distribution:**")
-        lines.append(f"- ✅ Pass: {pass_count} ({pass_count/total_plugins*100:.1f}%)")
         lines.append(
-            f"- ⚠️ Warning: {warn_count} ({warn_count/total_plugins*100:.1f}%)"
+            f"- ✅ Pass: {pass_count} ({pass_count / total_plugins * 100:.1f}%)"
         )
-        lines.append(f"- ❌ Fail: {fail_count} ({fail_count/total_plugins*100:.1f}%)")
         lines.append(
-            f"- 🔴 Error: {error_count} ({error_count/total_plugins*100:.1f}%)"
+            f"- ⚠️ Warning: {warn_count} ({warn_count / total_plugins * 100:.1f}%)"
+        )
+        lines.append(
+            f"- ❌ Fail: {fail_count} ({fail_count / total_plugins * 100:.1f}%)"
+        )
+        lines.append(
+            f"- 🔴 Error: {error_count} ({error_count / total_plugins * 100:.1f}%)"
         )
         lines.append("")
 

@@ -100,15 +100,11 @@ class CrossReferenceValidator:
             plugin_path = Path(metadata.path) if metadata.path else None
 
             # Manifest-declared components (hubs only for skills).
-            agents = {
-                a.get("name"): a.get("description", "") for a in metadata.agents
-            }
+            agents = {a.get("name"): a.get("description", "") for a in metadata.agents}
             commands = {
                 c.get("name"): c.get("description", "") for c in metadata.commands
             }
-            skills = {
-                s.get("name"): s.get("description", "") for s in metadata.skills
-            }
+            skills = {s.get("name"): s.get("description", "") for s in metadata.skills}
 
             # Disk-discovered sub-skills: any directory under skills/ with a
             # SKILL.md file. Adds the directory name to the skills index so

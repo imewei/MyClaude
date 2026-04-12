@@ -231,7 +231,7 @@ def print_gradient_report(
             print(f"  Norm: {stats['norm']:.6e}")
             print(
                 f"  Zeros: {stats['num_zeros']}/{stats['total_params']} "
-                f"({100*stats['num_zeros']/stats['total_params']:.1f}%)"
+                f"({100 * stats['num_zeros'] / stats['total_params']:.1f}%)"
             )
 
     # Recommendations

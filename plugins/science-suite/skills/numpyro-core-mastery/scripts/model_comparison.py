@@ -40,7 +40,7 @@ def compare_models(models_dict, data_x, data_y):
 
     # Best model (lowest LOO)
     best_model = min(results.items(), key=lambda x: x[1]["loo"])
-    print(f"\n{'='*60}")
+    print(f"\n{'=' * 60}")
     print(f"Best model: {best_model[0]} (LOO={best_model[1]['loo']:.2f})")
     print("=" * 60)
 

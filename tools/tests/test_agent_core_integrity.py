@@ -61,12 +61,12 @@ def test_agent_frontmatter_validity():
 
     for agent_file in AGENTS_DIR.glob("*.md"):
         frontmatter = load_frontmatter(agent_file)
-        assert (
-            frontmatter is not None
-        ), f"Invalid or missing YAML frontmatter in {agent_file.name}"
-        assert (
-            "description" in frontmatter
-        ), f"Missing 'description' in frontmatter of {agent_file.name}"
+        assert frontmatter is not None, (
+            f"Invalid or missing YAML frontmatter in {agent_file.name}"
+        )
+        assert "description" in frontmatter, (
+            f"Missing 'description' in frontmatter of {agent_file.name}"
+        )
 
 
 def test_skill_frontmatter_validity():
@@ -78,9 +78,9 @@ def test_skill_frontmatter_validity():
         # but typically SKILL.md is the standard
         if skill_file.name == "SKILL.md":
             frontmatter = load_frontmatter(skill_file)
-            assert (
-                frontmatter is not None
-            ), f"Invalid or missing YAML frontmatter in {skill_file}"
-            assert (
-                "name" in frontmatter or "description" in frontmatter
-            ), f"Missing required fields in frontmatter of {skill_file}"
+            assert frontmatter is not None, (
+                f"Invalid or missing YAML frontmatter in {skill_file}"
+            )
+            assert "name" in frontmatter or "description" in frontmatter, (
+                f"Missing required fields in frontmatter of {skill_file}"
+            )

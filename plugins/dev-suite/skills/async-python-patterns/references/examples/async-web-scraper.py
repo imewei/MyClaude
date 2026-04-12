@@ -137,7 +137,6 @@ class AsyncWebScraper:
         async with aiohttp.ClientSession(
             timeout=self.timeout, headers=headers
         ) as session:
-
             # Create tasks for all URLs
             tasks = [self.fetch_url(session, url) for url in urls]
 
@@ -174,9 +173,9 @@ class AsyncWebScraper:
         print("=" * 60)
         print(f"Total URLs: {len(self.results)}")
         print(
-            f"Successful: {len(successful)} ({len(successful)/len(self.results)*100:.1f}%)"
+            f"Successful: {len(successful)} ({len(successful) / len(self.results) * 100:.1f}%)"
         )
-        print(f"Failed: {len(failed)} ({len(failed)/len(self.results)*100:.1f}%)")
+        print(f"Failed: {len(failed)} ({len(failed) / len(self.results) * 100:.1f}%)")
 
         if successful:
             avg_time = sum(r.elapsed_ms for r in successful) / len(successful)

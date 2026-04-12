@@ -187,9 +187,9 @@ def generate_report(report: BudgetReport) -> str:
         "",
         "| Metric | Count | Rate |",
         "|--------|-------|------|",
-        f"| Fits 200K budget | {report.fits_200k_count}/{report.total_skills} | {report.fits_200k_count/max(report.total_skills,1)*100:.0f}% |",
-        f"| Fits 1M budget | {report.fits_1m_count}/{report.total_skills} | {report.fits_1m_count/max(report.total_skills,1)*100:.0f}% |",
-        f"| Oversized (200K) | {len(report.oversized_skills)}/{report.total_skills} | {len(report.oversized_skills)/max(report.total_skills,1)*100:.0f}% |",
+        f"| Fits 200K budget | {report.fits_200k_count}/{report.total_skills} | {report.fits_200k_count / max(report.total_skills, 1) * 100:.0f}% |",
+        f"| Fits 1M budget | {report.fits_1m_count}/{report.total_skills} | {report.fits_1m_count / max(report.total_skills, 1) * 100:.0f}% |",
+        f"| Oversized (200K) | {len(report.oversized_skills)}/{report.total_skills} | {len(report.oversized_skills) / max(report.total_skills, 1) * 100:.0f}% |",
         "",
     ]
 

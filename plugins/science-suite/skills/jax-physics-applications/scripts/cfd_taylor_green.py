@@ -77,7 +77,7 @@ def main():
 
             if (step + 1) % 1000 == 0:
                 print(
-                    f"  Step {step+1}/{n_steps}: t={t:.3f}, "
+                    f"  Step {step + 1}/{n_steps}: t={t:.3f}, "
                     f"KE={ke:.6f}, Enstrophy={ens:.6f}, max|∇·u|={div:.2e}"
                 )
 
@@ -107,8 +107,8 @@ def main():
     print(f"  Initial KE: {E0:.6f}")
     print(f"  Final KE: {kinetic_energies[-1]:.6f}")
     print(f"  Analytical final KE: {analytical_energy[-1]:.6f}")
-    print(f"  Max relative error: {max_error:.6f} ({max_error*100:.4f}%)")
-    print(f"  Mean relative error: {mean_error:.6f} ({mean_error*100:.4f}%)")
+    print(f"  Max relative error: {max_error:.6f} ({max_error * 100:.4f}%)")
+    print(f"  Mean relative error: {mean_error:.6f} ({mean_error * 100:.4f}%)")
 
     if max_error < 0.01:
         print("  ✓ Energy decay validation: EXCELLENT (error < 1%)")

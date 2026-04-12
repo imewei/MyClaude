@@ -71,7 +71,10 @@ def example_bayesian_inference():
 
     # MCMC sampler (JAX automatically parallelizes chains)
     mcmc = MCMC(
-        nuts_kernel, num_warmup=500, num_samples=1000, num_chains=4  # Parallel chains
+        nuts_kernel,
+        num_warmup=500,
+        num_samples=1000,
+        num_chains=4,  # Parallel chains
     )
 
     # Run inference

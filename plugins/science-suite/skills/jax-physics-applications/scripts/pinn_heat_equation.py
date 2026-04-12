@@ -88,7 +88,7 @@ def main():
 
         if (epoch + 1) % 1000 == 0:
             print(
-                f"  Epoch {epoch+1}/{n_epochs}: "
+                f"  Epoch {epoch + 1}/{n_epochs}: "
                 f"Loss={total_loss:.6f}, "
                 f"PDE={losses['pde']:.6f}, "
                 f"BC={losses['bc']:.6f}, "

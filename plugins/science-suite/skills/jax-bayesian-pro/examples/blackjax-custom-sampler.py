@@ -206,9 +206,9 @@ def run_pmap_chains(
         initial_positions: Shape (n_devices, param_dim)
     """
     n_devices = jax.device_count()
-    assert (
-        initial_positions.shape[0] == n_devices
-    ), f"Need {n_devices} initial positions for {n_devices} devices"
+    assert initial_positions.shape[0] == n_devices, (
+        f"Need {n_devices} initial positions for {n_devices} devices"
+    )
 
     if rng_key is None:
         rng_key = jax.random.PRNGKey(0)

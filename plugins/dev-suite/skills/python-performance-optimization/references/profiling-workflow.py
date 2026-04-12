@@ -162,14 +162,14 @@ def demonstrate_fibonacci():
     print("-" * 70)
 
     slow_bench = benchmark_function(fibonacci_slow, n, iterations=10)
-    print(f"\nNaive Recursive:  {slow_bench['average']*1000:.2f}ms (avg)")
+    print(f"\nNaive Recursive:  {slow_bench['average'] * 1000:.2f}ms (avg)")
 
     fibonacci_fast.cache_clear()
     fast_bench = benchmark_function(fibonacci_fast, n, iterations=10)
-    print(f"Memoized:         {fast_bench['average']*1000:.2f}ms (avg)")
+    print(f"Memoized:         {fast_bench['average'] * 1000:.2f}ms (avg)")
 
     iter_bench = benchmark_function(fibonacci_iterative, n, iterations=10)
-    print(f"Iterative:        {iter_bench['average']*1000:.2f}ms (avg)")
+    print(f"Iterative:        {iter_bench['average'] * 1000:.2f}ms (avg)")
 
     speedup_memo = slow_bench["average"] / fast_bench["average"]
     speedup_iter = slow_bench["average"] / iter_bench["average"]
@@ -210,10 +210,10 @@ def demonstrate_data_processing():
     print("-" * 70)
 
     slow_bench = benchmark_function(process_data_slow, data, iterations=10)
-    print(f"\nSlow:       {slow_bench['average']*1000:.2f}ms (avg)")
+    print(f"\nSlow:       {slow_bench['average'] * 1000:.2f}ms (avg)")
 
     fast_bench = benchmark_function(process_data_fast, data, iterations=10)
-    print(f"Optimized:  {fast_bench['average']*1000:.2f}ms (avg)")
+    print(f"Optimized:  {fast_bench['average'] * 1000:.2f}ms (avg)")
 
     speedup = slow_bench["average"] / fast_bench["average"]
     print(f"\nSpeedup: {speedup:.1f}x faster")

@@ -128,9 +128,7 @@ class TestHeadingSkip:
         issues = lint_command_file(path)
         assert RULE_HEADING_SKIP not in _rules(issues)
 
-    def test_headings_inside_fences_are_ignored(
-        self, tmp_path: pathlib.Path
-    ) -> None:
+    def test_headings_inside_fences_are_ignored(self, tmp_path: pathlib.Path) -> None:
         path = _write(
             tmp_path,
             """
@@ -201,9 +199,7 @@ class TestBrokenStepReference:
         issues = lint_command_file(path)
         assert RULE_BROKEN_STEP_REF not in _rules(issues)
 
-    def test_file_without_any_steps_skips_check(
-        self, tmp_path: pathlib.Path
-    ) -> None:
+    def test_file_without_any_steps_skips_check(self, tmp_path: pathlib.Path) -> None:
         """The step-ref check only activates when the file has at least
         one Step heading. Prose about 'Step 3' in a file without Steps
         must not false-positive."""
@@ -225,13 +221,13 @@ class TestBrokenStepReference:
 
 
 class TestTrailingWhitespace:
-    def test_trailing_space_on_prose_is_flagged(
-        self, tmp_path: pathlib.Path
-    ) -> None:
+    def test_trailing_space_on_prose_is_flagged(self, tmp_path: pathlib.Path) -> None:
         # Write bytes directly to guarantee the trailing space survives
         # (textwrap.dedent preserves it, but some editors don't).
         path = tmp_path / "fixture.md"
-        path.write_text("# Title\n\nA line with a trailing space.   \n", encoding="utf-8")
+        path.write_text(
+            "# Title\n\nA line with a trailing space.   \n", encoding="utf-8"
+        )
         issues = lint_command_file(path)
         assert RULE_TRAILING_WS in _rules(issues)
 
@@ -273,9 +269,7 @@ class TestDuplicateHeading:
         issues = lint_command_file(path)
         assert RULE_DUPLICATE_HEADING in _rules(issues)
 
-    def test_same_h3_under_different_h2_passes(
-        self, tmp_path: pathlib.Path
-    ) -> None:
+    def test_same_h3_under_different_h2_passes(self, tmp_path: pathlib.Path) -> None:
         path = _write(
             tmp_path,
             """
@@ -314,8 +308,7 @@ class TestRealCommandFiles:
         if errors:
             formatted = "\n".join(i.format() for i in errors)
             pytest.fail(
-                f"Command file linter found {len(errors)} hard error(s):\n"
-                f"{formatted}"
+                f"Command file linter found {len(errors)} hard error(s):\n{formatted}"
             )
 
     def test_team_assemble_has_zero_errors_and_warnings(self) -> None:
@@ -328,6 +321,5 @@ class TestRealCommandFiles:
         if hard:
             formatted = "\n".join(i.format() for i in hard)
             pytest.fail(
-                f"team-assemble.md has {len(hard)} error/warning issue(s):\n"
-                f"{formatted}"
+                f"team-assemble.md has {len(hard)} error/warning issue(s):\n{formatted}"
             )

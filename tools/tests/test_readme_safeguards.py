@@ -220,25 +220,20 @@ class TestSanitizerBenign:
         BENIGN_FIXTURES,
         ids=[f[0] for f in BENIGN_FIXTURES],
     )
-    def test_benign_fixture_is_accepted_and_wrapped(
-        self, name: str, text: str
-    ) -> None:
+    def test_benign_fixture_is_accepted_and_wrapped(self, name: str, text: str) -> None:
         result = sanitize_readme_probe(text)
         assert result.safe is True, (
-            f"Benign fixture {name!r} was refused. "
-            f"Reason: {result.refusal_reason!r}"
+            f"Benign fixture {name!r} was refused. Reason: {result.refusal_reason!r}"
         )
         assert result.refused is False
         assert result.refusal_reason is None
         assert result.value.startswith("<untrusted_readme_excerpt>")
         assert result.value.endswith("</untrusted_readme_excerpt>")
 
-        inner = result.value.removeprefix(
-            "<untrusted_readme_excerpt>"
-        ).removesuffix("</untrusted_readme_excerpt>")
-        assert inner.strip(), (
-            f"Benign fixture {name!r} produced an empty wrapped body"
+        inner = result.value.removeprefix("<untrusted_readme_excerpt>").removesuffix(
+            "</untrusted_readme_excerpt>"
         )
+        assert inner.strip(), f"Benign fixture {name!r} produced an empty wrapped body"
 
 
 # ---------------------------------------------------------------------------
@@ -259,9 +254,9 @@ class TestSanitizerMechanics:
         # real XML tags.
         result = sanitize_readme_probe("A generic container Box<T> for typed values.")
         assert result.safe is True
-        inner = result.value.removeprefix(
-            "<untrusted_readme_excerpt>"
-        ).removesuffix("</untrusted_readme_excerpt>")
+        inner = result.value.removeprefix("<untrusted_readme_excerpt>").removesuffix(
+            "</untrusted_readme_excerpt>"
+        )
         assert "<T>" not in inner
         assert "&lt;T&gt;" in inner
 
@@ -270,9 +265,9 @@ class TestSanitizerMechanics:
         result = sanitize_readme_probe(long_text)
         assert result.truncated is True
         assert result.raw_length == 1000
-        inner = result.value.removeprefix(
-            "<untrusted_readme_excerpt>"
-        ).removesuffix("</untrusted_readme_excerpt>")
+        inner = result.value.removeprefix("<untrusted_readme_excerpt>").removesuffix(
+            "</untrusted_readme_excerpt>"
+        )
         assert len(inner) <= MAX_PROBE_LENGTH
 
     def test_short_input_is_not_flagged_truncated(self) -> None:
@@ -472,9 +467,7 @@ class TestTeamAssembleSafeguardsPresent:
         section_count = sum(
             1 for line in templates.splitlines() if line.startswith("### ")
         )
-        assert section_count == 25, (
-            f"expected 25 team templates, found {section_count}"
-        )
+        assert section_count == 25, f"expected 25 team templates, found {section_count}"
 
     def test_all_25_teams_have_signal_row(self, command_text: str) -> None:
         start = command_text.find("## Step 2.5: Signal → Team Mapping")

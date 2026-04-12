@@ -129,18 +129,14 @@ def _check_heading_skips(lines: list[str], path: pathlib.Path) -> list[LintIssue
     return issues
 
 
-def _check_step_references(
-    text: str, path: pathlib.Path
-) -> list[LintIssue]:
+def _check_step_references(text: str, path: pathlib.Path) -> list[LintIssue]:
     """Report dispatch-tree references to Step sections that don't exist.
 
     Only active if the file has at least one ``## Step`` heading.
     """
     existing = set(
         re.findall(r"^## Step (\d+(?:\.\d+)?[a-z]?):", text, re.MULTILINE)
-    ) | set(
-        re.findall(r"^### Step (\d+(?:\.\d+)?[a-z]?):", text, re.MULTILINE)
-    )
+    ) | set(re.findall(r"^### Step (\d+(?:\.\d+)?[a-z]?):", text, re.MULTILINE))
     if not existing:
         return []
 
@@ -180,9 +176,7 @@ def _check_step_references(
     return issues
 
 
-def _check_trailing_whitespace(
-    lines: list[str], path: pathlib.Path
-) -> list[LintIssue]:
+def _check_trailing_whitespace(lines: list[str], path: pathlib.Path) -> list[LintIssue]:
     """Report trailing whitespace on non-code, non-empty lines."""
     issues: list[LintIssue] = []
     in_fence = False
@@ -208,9 +202,7 @@ def _check_trailing_whitespace(
     return issues
 
 
-def _check_duplicate_headings(
-    lines: list[str], path: pathlib.Path
-) -> list[LintIssue]:
+def _check_duplicate_headings(lines: list[str], path: pathlib.Path) -> list[LintIssue]:
     """Report duplicate headings at the same level within the same parent.
 
     Two H3 sections under the same H2 parent with identical text are
@@ -353,10 +345,7 @@ def main(argv: list[str] | None = None) -> int:
     hard_issues = sum(
         1 for issue in issues if severity_order[issue.severity] >= threshold
     )
-    print(
-        f"\n{len(issues)} total issue(s); "
-        f"{hard_issues} at >= {args.max_severity}"
-    )
+    print(f"\n{len(issues)} total issue(s); {hard_issues} at >= {args.max_severity}")
     return 1 if hard_issues else 0
 
 

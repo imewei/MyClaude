@@ -300,10 +300,10 @@ class ReportGenerator:
                 f"- **Average Activation Time:** {report.summary['avg_activation_time_ms']:.2f}ms"
             )
             lines.append(
-                f"- **Average Memory Usage:** {report.summary['avg_memory_usage_kb']:.2f}KB ({report.summary['avg_memory_usage_kb']/1024:.2f}MB)"
+                f"- **Average Memory Usage:** {report.summary['avg_memory_usage_kb']:.2f}KB ({report.summary['avg_memory_usage_kb'] / 1024:.2f}MB)"
             )
             lines.append(
-                f"- **Total Memory Usage:** {report.summary['total_memory_kb']:.2f}KB ({report.summary['total_memory_kb']/1024:.2f}MB)"
+                f"- **Total Memory Usage:** {report.summary['total_memory_kb']:.2f}KB ({report.summary['total_memory_kb'] / 1024:.2f}MB)"
             )
             lines.append("")
             lines.append("**Pass Rates:**")
@@ -319,7 +319,7 @@ class ReportGenerator:
                 f"- Max Activation Time: {report.summary['max_activation_time_ms']:.2f}ms"
             )
             lines.append(
-                f"- Max Memory Usage: {report.summary['max_memory_usage_kb']:.2f}KB ({report.summary['max_memory_usage_kb']/1024:.2f}MB)"
+                f"- Max Memory Usage: {report.summary['max_memory_usage_kb']:.2f}KB ({report.summary['max_memory_usage_kb'] / 1024:.2f}MB)"
             )
             lines.append("")
 
@@ -389,7 +389,7 @@ class ReportGenerator:
             report.metrics, key=lambda m: m.memory_usage_kb, reverse=True
         )[:10]:
             lines.append(
-                f"- {metric.plugin_name}: {metric.memory_usage_kb:.2f}KB ({metric.memory_usage_kb/1024:.2f}MB)"
+                f"- {metric.plugin_name}: {metric.memory_usage_kb:.2f}KB ({metric.memory_usage_kb / 1024:.2f}MB)"
             )
         lines.append("")
 

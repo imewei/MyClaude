@@ -89,9 +89,9 @@ class IterativeFixEngine:
         print(f"Initial run ID: {current_run_id}\n")
 
         for iteration in range(1, self.max_iterations + 1):
-            print(f"{'='*60}")
+            print(f"{'=' * 60}")
             print(f"ITERATION {iteration}/{self.max_iterations}")
-            print(f"{'='*60}\n")
+            print(f"{'=' * 60}\n")
 
             # Analyze current run
             errors = self.analyze_run(current_run_id)
@@ -694,7 +694,7 @@ class IterativeFixEngine:
         print(f"Total errors encountered: {total_errors}")
         print(f"Total errors fixed: {total_fixed}")
         print(
-            f"Success rate: {(total_fixed/total_errors*100) if total_errors > 0 else 0:.1f}%"
+            f"Success rate: {(total_fixed / total_errors * 100) if total_errors > 0 else 0:.1f}%"
         )
 
 

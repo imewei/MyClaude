@@ -58,14 +58,14 @@ def enable_all_plugins():
     with open(settings_path, "w") as f:
         json.dump(settings, f, indent=2)
 
-    print(f"\n{'='*60}")
+    print(f"\n{'=' * 60}")
     print("✅ Configuration updated!")
     print(f"   Newly enabled: {newly_enabled}")
     print(f"   Already enabled: {already_enabled}")
     print(f"   Total plugins in marketplace: {len(plugins)}")
     print(f"   Total enabled plugins: {len(enabled_plugins)}")
     print("\n🔄 Please restart Claude Code for changes to take effect.")
-    print(f"{'='*60}")
+    print(f"{'=' * 60}")
 
 
 if __name__ == "__main__":

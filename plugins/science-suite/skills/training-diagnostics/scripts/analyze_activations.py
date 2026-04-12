@@ -260,7 +260,7 @@ def print_activation_report(
             )
             print(
                 f"  Zero: {stats['num_zeros']}/{stats['total_activations']} "
-                f"({100*stats['num_zeros']/stats['total_activations']:.1f}%)"
+                f"({100 * stats['num_zeros'] / stats['total_activations']:.1f}%)"
             )
             if "dead_neuron_percent" in stats:
                 print(f"  Dead neurons: {stats['dead_neuron_percent']:.1f}%")

@@ -321,21 +321,18 @@ def main():
     print("-" * 50)
 
     print(
-        f"{'hybrid_streaming':<20} {elapsed1:<12.2f} "
-        f"{popt1[0]:<15.4f} {popt1[1]:.6f}"
+        f"{'hybrid_streaming':<20} {elapsed1:<12.2f} {popt1[0]:<15.4f} {popt1[1]:.6f}"
     )
 
     if trf_success:
         print(
-            f"{'TRF':<20} {elapsed_trf:<12.2f} "
-            f"{popt_trf[0]:<15.4f} {popt_trf[1]:.6f}"
+            f"{'TRF':<20} {elapsed_trf:<12.2f} {popt_trf[0]:<15.4f} {popt_trf[1]:.6f}"
         )
     else:
         print(f"{'TRF':<20} {'FAILED':<12}")
 
     print(
-        f"{'True values':<20} {'-':<12} "
-        f"{true_amplitude:<15.4f} {true_decay_rate:.6f}"
+        f"{'True values':<20} {'-':<12} {true_amplitude:<15.4f} {true_decay_rate:.6f}"
     )
     print()
 

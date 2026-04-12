@@ -163,9 +163,9 @@ def check_recompilation(fn: Callable, test_inputs: list):
         # First call or slow call indicates compilation
         if i == 0 or elapsed > 0.1:
             compilation_count += 1
-            print(f"  Input {i}: {elapsed*1000:.2f}ms (COMPILED)")
+            print(f"  Input {i}: {elapsed * 1000:.2f}ms (COMPILED)")
         else:
-            print(f"  Input {i}: {elapsed*1000:.2f}ms (cached)")
+            print(f"  Input {i}: {elapsed * 1000:.2f}ms (cached)")
 
     print(f"\nTotal compilations: {compilation_count}/{len(test_inputs)}")
     if compilation_count > 1:

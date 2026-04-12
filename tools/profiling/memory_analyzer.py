@@ -381,10 +381,10 @@ class MemoryProfileReporter:
         lines.append("## Summary")
         lines.append("")
         lines.append(
-            f"- **Peak Memory Usage:** {profile.peak_memory_kb:.2f}KB ({profile.peak_memory_kb/1024:.2f}MB)"
+            f"- **Peak Memory Usage:** {profile.peak_memory_kb:.2f}KB ({profile.peak_memory_kb / 1024:.2f}MB)"
         )
         lines.append(
-            f"- **Average Memory Usage:** {profile.average_memory_kb:.2f}KB ({profile.average_memory_kb/1024:.2f}MB)"
+            f"- **Average Memory Usage:** {profile.average_memory_kb:.2f}KB ({profile.average_memory_kb / 1024:.2f}MB)"
         )
         lines.append(f"- **Baseline Memory:** {profile.baseline_memory_kb:.2f}KB")
         lines.append(f"- **Memory Overhead:** {profile.memory_overhead_kb:.2f}KB")
@@ -410,7 +410,7 @@ class MemoryProfileReporter:
                 }.get(metric.status, "❓")
 
                 lines.append(
-                    f"| {metric.name} | {metric.memory_kb:.2f} | {metric.memory_kb/1024:.2f} | "
+                    f"| {metric.name} | {metric.memory_kb:.2f} | {metric.memory_kb / 1024:.2f} | "
                     f"{status_icon} | {metric.details} |"
                 )
 
@@ -520,23 +520,27 @@ class MemoryProfileReporter:
         lines.append("## Summary Statistics")
         lines.append("")
         lines.append(
-            f"- **Average Memory per Plugin:** {avg_memory:.2f}KB ({avg_memory/1024:.2f}MB)"
+            f"- **Average Memory per Plugin:** {avg_memory:.2f}KB ({avg_memory / 1024:.2f}MB)"
         )
         lines.append(
-            f"- **Total Memory (all plugins):** {total_memory:.2f}KB ({total_memory/1024:.2f}MB)"
+            f"- **Total Memory (all plugins):** {total_memory:.2f}KB ({total_memory / 1024:.2f}MB)"
         )
         lines.append(
-            f"- **Efficient Plugins:** {pass_count}/{total_plugins} ({pass_count/total_plugins*100:.1f}%)"
+            f"- **Efficient Plugins:** {pass_count}/{total_plugins} ({pass_count / total_plugins * 100:.1f}%)"
         )
         lines.append("")
         lines.append("**Status Distribution:**")
-        lines.append(f"- ✅ Pass: {pass_count} ({pass_count/total_plugins*100:.1f}%)")
         lines.append(
-            f"- ⚠️ Warning: {warn_count} ({warn_count/total_plugins*100:.1f}%)"
+            f"- ✅ Pass: {pass_count} ({pass_count / total_plugins * 100:.1f}%)"
         )
-        lines.append(f"- ❌ Fail: {fail_count} ({fail_count/total_plugins*100:.1f}%)")
         lines.append(
-            f"- 🔴 Error: {error_count} ({error_count/total_plugins*100:.1f}%)"
+            f"- ⚠️ Warning: {warn_count} ({warn_count / total_plugins * 100:.1f}%)"
+        )
+        lines.append(
+            f"- ❌ Fail: {fail_count} ({fail_count / total_plugins * 100:.1f}%)"
+        )
+        lines.append(
+            f"- 🔴 Error: {error_count} ({error_count / total_plugins * 100:.1f}%)"
         )
         lines.append("")
 
@@ -549,7 +553,7 @@ class MemoryProfileReporter:
         for profile in sorted(profiles, key=lambda p: p.peak_memory_kb, reverse=True):
             lines.append(
                 f"| {profile.plugin_name} | {profile.peak_memory_kb:.2f} | "
-                f"{profile.peak_memory_kb/1024:.2f} | {profile.status_emoji} |"
+                f"{profile.peak_memory_kb / 1024:.2f} | {profile.status_emoji} |"
             )
 
         lines.append("")
@@ -570,7 +574,7 @@ class MemoryProfileReporter:
         for plugin_name, metric in largest:
             lines.append(
                 f"| {plugin_name} | {metric.name} | {metric.memory_kb:.2f} | "
-                f"{metric.memory_kb/1024:.2f} |"
+                f"{metric.memory_kb / 1024:.2f} |"
             )
 
         lines.append("")
