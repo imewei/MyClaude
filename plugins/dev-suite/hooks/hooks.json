@@ -1,6 +1,31 @@
 {
-  "description": "Dev-suite hooks for auto-linting and subagent coordination",
+  "description": "Dev-suite hooks for auto-linting, git safety, subagent coordination, and build diagnostics",
   "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "^(startup|resume)$",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 ${CLAUDE_PLUGIN_ROOT}/hooks/session_start.py",
+            "async": false,
+            "timeout": 10
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "prompt",
+            "prompt": "If this Bash command contains 'git push --force', 'git reset --hard', 'git branch -D', 'git checkout -- .', 'git clean -f', or 'rm -rf', warn the user and require explicit confirmation before proceeding. Otherwise, allow it.",
+            "timeout": 10
+          }
+        ]
+      }
+    ],
     "PostToolUse": [
       {
         "matcher": "Write|Edit",
@@ -21,6 +46,45 @@
           {
             "type": "command",
             "command": "python3 ${CLAUDE_PLUGIN_ROOT}/hooks/subagent_stop.py",
+            "async": true,
+            "timeout": 10
+          }
+        ]
+      }
+    ],
+    "ExecutionError": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 ${CLAUDE_PLUGIN_ROOT}/hooks/execution_error.py",
+            "async": true,
+            "timeout": 10
+          }
+        ]
+      }
+    ],
+    "TaskCompleted": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 ${CLAUDE_PLUGIN_ROOT}/hooks/task_completed.py",
+            "async": true,
+            "timeout": 10
+          }
+        ]
+      }
+    ],
+    "StopFailure": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 ${CLAUDE_PLUGIN_ROOT}/hooks/stop_failure.py",
             "async": true,
             "timeout": 10
           }
