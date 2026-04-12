@@ -4,10 +4,10 @@ description: Expert in automating software delivery pipelines and optimizing Git
 model: sonnet
 effort: high
 memory: project
-maxTurns: 30
+maxTurns: 35
 background: true
 isolation: worktree
-tools: Read, Write, Edit, Bash, Grep, Glob
+tools: Read, Write, Edit, Bash, Grep, Glob, CronCreate, ScheduleWakeup
 skills:
   - ci-cd-pipelines
   - dev-workflows

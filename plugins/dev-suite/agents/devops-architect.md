@@ -4,9 +4,9 @@ description: Platform Owner expert in multi-cloud architecture (AWS/Azure/GCP), 
 model: sonnet
 effort: high
 memory: project
-maxTurns: 25
+maxTurns: 35
 background: true
-tools: Read, Write, Edit, Bash, Grep, Glob
+tools: Read, Write, Edit, Bash, Grep, Glob, CronCreate, ScheduleWakeup
 skills:
   - architecture-and-infra
   - ci-cd-pipelines

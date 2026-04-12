@@ -4,9 +4,9 @@ description: Expert in AI-assisted debugging, log correlation, and complex root 
 model: opus
 effort: high
 memory: project
-maxTurns: 40
+maxTurns: 50
 background: true
-tools: Read, Edit, Bash, Grep, Glob
+tools: Read, Write, Edit, Bash, Grep, Glob
 skills:
   - dev-workflows
   - testing-and-quality

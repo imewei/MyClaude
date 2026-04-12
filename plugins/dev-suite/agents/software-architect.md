@@ -4,9 +4,9 @@ description: Expert in designing scalable backend systems, microservices, and hi
 model: opus
 effort: high
 memory: project
-maxTurns: 35
+maxTurns: 50
 background: true
-tools: Read, Grep, Glob, Bash
+tools: Read, Write, Edit, Grep, Glob, Bash
 skills:
   - backend-patterns
   - architecture-and-infra

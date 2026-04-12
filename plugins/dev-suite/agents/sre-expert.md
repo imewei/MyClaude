@@ -4,9 +4,9 @@ description: Reliability Consultant expert in system reliability, observability 
 model: sonnet
 effort: high
 memory: project
-maxTurns: 25
+maxTurns: 35
 background: true
-tools: Read, Grep, Glob, Bash
+tools: Read, Write, Edit, Grep, Glob, Bash, CronCreate, ScheduleWakeup
 skills:
   - observability-and-sre
 ---
