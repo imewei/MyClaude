@@ -6,7 +6,7 @@ effort: high
 memory: project
 maxTurns: 50
 background: true
-tools: Read, Write, Edit, Grep, Glob, Bash
+tools: Read, Write, Edit, Grep, Glob, Bash, EnterPlanMode, ExitPlanMode
 skills:
   - backend-patterns
   - architecture-and-infra

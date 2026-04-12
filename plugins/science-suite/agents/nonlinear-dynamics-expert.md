@@ -5,7 +5,7 @@ model: opus
 effort: high
 memory: project
 maxTurns: 50
-tools: Read, Write, Edit, Bash, Grep, Glob, WebSearch
+tools: Read, Write, Edit, Bash, Grep, Glob, WebSearch, EnterPlanMode, ExitPlanMode
 background: true
 skills:
   - nonlinear-dynamics

@@ -5,7 +5,7 @@ model: opus
 effort: high
 memory: project
 maxTurns: 50
-tools: Read, Grep, Glob, WebSearch, WebFetch, Bash
+tools: Read, Grep, Glob, WebSearch, WebFetch, Bash, EnterPlanMode, ExitPlanMode
 background: true
 skills:
   - research-and-domains

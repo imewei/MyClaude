@@ -5,7 +5,7 @@ model: opus
 effort: high
 memory: project
 maxTurns: 50
-tools: Read, Grep, Glob, Bash, WebSearch
+tools: Read, Grep, Glob, Bash, WebSearch, EnterPlanMode, ExitPlanMode
 background: true
 skills:
   - statistical-physics-hub

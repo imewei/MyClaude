@@ -5,7 +5,7 @@ model: opus
 effort: high
 memory: project
 maxTurns: 50
-tools: Read, Write, Edit, Bash, Grep, Glob
+tools: Read, Write, Edit, Bash, Grep, Glob, EnterPlanMode, ExitPlanMode
 background: true
 permissionMode: acceptEdits
 skills:

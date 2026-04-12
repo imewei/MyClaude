@@ -6,7 +6,7 @@ effort: high
 memory: project
 maxTurns: 50
 background: true
-tools: Read, Write, Edit, Bash, Grep, Glob
+tools: Read, Write, Edit, Bash, Grep, Glob, EnterPlanMode, ExitPlanMode
 skills:
   - dev-workflows
   - testing-and-quality
