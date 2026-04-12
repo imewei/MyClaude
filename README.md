@@ -4,7 +4,7 @@
 [![Agents](https://img.shields.io/badge/Agents-24-green.svg)](docs/reference/agents.md)
 [![Commands](https://img.shields.io/badge/Commands-14-orange.svg)](docs/reference/commands.md)
 [![Skills](https://img.shields.io/badge/Skills-26_hubs_→_180_sub-purple.svg)](docs/reference/cheatsheet.md)
-[![Version](https://img.shields.io/badge/Version-3.1.7-red.svg)](https://github.com/imewei/MyClaude)
+[![Version](https://img.shields.io/badge/Version-3.1.9-red.svg)](https://github.com/imewei/MyClaude)
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Docs](https://img.shields.io/badge/Docs-ReadTheDocs-brightgreen.svg)](https://myclaude.readthedocs.io/en/latest/)
 
@@ -12,7 +12,7 @@ Claude Code plugin marketplace with **3 focused suites**, **24 expert agents**, 
 
 ## The 3-Suite Hub Architecture
 
-MyClaude v3.1.7 uses a **hub-skill architecture**: skills are organized into hub skills (meta-orchestrators) that route to specialized sub-skills via decision trees. Only hubs are declared in `plugin.json`; sub-skills are discovered through hub routing.
+MyClaude v3.1.9 uses a **hub-skill architecture**: skills are organized into hub skills (meta-orchestrators) that route to specialized sub-skills via decision trees. Only hubs are declared in `plugin.json`; sub-skills are discovered through hub routing.
 
 | Suite | Agents | Commands | Hubs → Sub-skills | Hooks | Focus |
 |-------|--------|----------|-------------------|-------|-------|
@@ -77,7 +77,7 @@ Ask Claude: "@jax-pro implement this differentiable physics model"
 - **[Plugin Cheatsheet](docs/reference/cheatsheet.md)**
 - **[Complete Agents List](docs/reference/agents.md)**
 - **[Complete Commands List](docs/reference/commands.md)**
-- **[Agent Teams Guide](docs/agent-teams-guide.md)** — 25 ready-to-use team configurations (codebase-aware recommender since v3.1.4)
+- **[Agent Teams Guide](docs/agent-teams-guide.md)** — 21 ready-to-use team configurations (codebase-aware recommender since v3.1.4)
 
 ## License
 
