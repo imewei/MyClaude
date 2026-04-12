@@ -248,7 +248,7 @@ See `advanced-simulations` for rare-event sampler machinery (WESTPA, OpenPathSam
 - **Production rare-event samplers** (FFS, WESTPA, OPS, milestoning, cloning) → `advanced-simulations` and `rare-events-sampling`
 - **Power-law tail fitting** for avalanche-size distributions and SOC exponents → `extreme-value-statistics`
 - **Active-matter-specific entropy production** (active Brownian particles, run-and-tumble, motility-induced phase separation) → `active-matter`
-- **Discovering unknown dynamics from trajectories** (SINDy) → `equation-discovery`
+- **Discovering unknown dynamics from trajectories** (SINDy, Bayesian SINDy with inclusion probabilities) → `equation-discovery` + `bayesian-sindy-workflow`
 
 ## Checklist
 

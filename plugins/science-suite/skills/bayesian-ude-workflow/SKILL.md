@@ -164,7 +164,7 @@ A Bayesian UDE often pays off twice. First, the trained neural correction tells 
 3. Feed the median correction to `DataDrivenDiffEq` SINDy to recover sparse symbolic terms
 4. Refit the symbolic UDE (no NN) and compare posteriors — if narrower, the symbolic form is preferred
 
-See `equation-discovery` for the SINDy machinery.
+See `equation-discovery` for the classical SINDy machinery, or `bayesian-sindy-workflow` when you need credible intervals and inclusion probabilities on the extracted symbolic coefficients (the natural match for a Bayesian UDE pipeline).
 
 ---
 
@@ -179,7 +179,8 @@ For a JAX-first Bayesian UDE workflow — Diffrax + Equinox + NumPyro + Optax �
 - **Turing model design** — `@model` patterns, priors, hierarchical structure. See `turing-model-design`.
 - **Consensus MCMC with Pigeons** — multimodal escape hatch. See `consensus-mcmc-pigeons`.
 - **MCMC diagnostics** — Stage 4. See `mcmc-diagnostics`.
-- **Equation discovery** — symbolic extraction from trained UDE residuals. See `equation-discovery`.
+- **Equation discovery** — classical SINDy machinery for symbolic extraction from trained UDE residuals. See `equation-discovery`.
+- **Bayesian SINDy** — credible intervals and inclusion probabilities on the extracted symbolic coefficients. See `bayesian-sindy-workflow`.
 - **Differential equations** — solver selection, stiffness handling. See `differential-equations`.
 
 ---

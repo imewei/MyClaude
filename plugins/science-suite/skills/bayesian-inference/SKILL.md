@@ -28,6 +28,9 @@ Non-reversible parallel tempering for multimodal posteriors where NUTS fails to 
 ### [Bayesian UDE Workflow](../bayesian-ude-workflow/SKILL.md)
 End-to-end Bayesian Universal Differential Equations in Julia: Turing + DiffEq + Lux + warm-start + NUTS/Pigeons.
 
+### [Bayesian SINDy Workflow](../bayesian-sindy-workflow/SKILL.md)
+Sparse Bayesian regression for discovering governing equations with horseshoe priors, ensemble SINDy, and UQ-SINDy. Credible intervals on coefficients, inclusion probabilities for library terms, and Bayesian model comparison via PSIS-LOO. Full Lorenz-63 worked example with NumPyro + NUTS.
+
 ### [Bayesian UDE in JAX](../bayesian-ude-jax/SKILL.md)
 Python / JAX counterpart: Diffrax + Equinox + NumPyro + Optax. Same staged pipeline, GPU-vectorized chain sampling.
 
@@ -81,6 +84,9 @@ What is the Bayesian inference task?
 +-- Neural ODE / UDE with posterior uncertainty (Python/JAX Diffrax+Equinox+NumPyro)?
 |   --> bayesian-ude-jax
 |
++-- Sparse Bayesian regression / credible intervals on SINDy coefficients?
+|   --> bayesian-sindy-workflow (horseshoe prior, ensemble SINDy, UQ-SINDy)
+|
 +-- Bayesian PINN (BPINN / BNNODE)?
 |   --> bayesian-pinn (internal AdvancedHMC, not Turing)
 |
@@ -103,6 +109,7 @@ What is the Bayesian inference task?
 | Multimodal posterior, parallel tempering | `consensus-mcmc-pigeons` |
 | Bayesian neural ODE / UDE (Julia) | `bayesian-ude-workflow` |
 | Bayesian neural ODE / UDE (Python / JAX) | `bayesian-ude-jax` |
+| Bayesian SINDy with credible intervals | `bayesian-sindy-workflow` |
 | Bayesian PINN (BPINN / BNNODE) | `bayesian-pinn` |
 | Hawkes / self-exciting event data | `point-processes` |
 | ELBO, flows, amortized VI | `variational-inference-patterns` |

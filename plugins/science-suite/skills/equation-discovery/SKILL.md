@@ -185,37 +185,14 @@ PySINDy ships `STLSQ`, `SR3`, `SSR`, `FROLS`, `ConstrainedSR3`, `MIOSR` optimize
 
 ## Related Python Packages
 
-PySINDy is the SINDy reference, but the data-driven dynamics landscape extends further:
-
 | Package | Role | Notes |
 |---------|------|-------|
-| **PySINDy** | Sparse regression (SINDy, PDE/weak-form, ensemble) | NumPy/sklearn |
-| **PyDMD** | DMD: standard, exact, FbDMD, CDMD, MrDMD, Hankel, EDMD, DMDc, Parametric, BOPDMD, PiDMD | Koopman operator approximation via DMD |
-| **PySR** | Symbolic regression via Julia `SymbolicRegression.jl` backend | sklearn-compat `.fit`/`.predict`; exports to SymPy/LaTeX/JAX/PyTorch |
+| **PySINDy** | Sparse regression (SINDy, PDE/weak-form, ensemble) | NumPy/sklearn — see above |
+| **PyDMD** | DMD family (exact, FbDMD, CDMD, MrDMD, Hankel, EDMD, DMDc, BOPDMD, PiDMD) | Koopman operator approximation; complementary to SINDy |
+| **PySR** | Symbolic regression via Julia `SymbolicRegression.jl` backend | sklearn-compat; exports to SymPy/LaTeX/JAX/PyTorch via `model.jax()` |
 | **gplearn** | Classical genetic-programming symbolic regression | NumPy; `SymbolicRegressor`/`Classifier`/`Transformer` |
 
-```python
-# PyDMD — Koopman / dynamic mode decomposition
-from pydmd import DMD, EDMD
-dmd = DMD(svd_rank=10)
-dmd.fit(X.T)   # X: (n_features, n_snapshots)
-eigenvalues = dmd.eigs
-modes = dmd.modes
-reconstructed = dmd.reconstructed_data
-
-# PySR — symbolic regression via Julia backend
-from pysr import PySRRegressor
-model = PySRRegressor(
-    binary_operators=["+", "-", "*", "/"],
-    unary_operators=["sin", "exp", "log", "sqrt"],
-    maxsize=25, populations=30, niterations=100
-)
-model.fit(X, y)
-best = model.get_best()       # Pareto-front pick (complexity vs loss)
-jax_fn = model.jax()          # Export discovered equation to JAX
-```
-
-> **No mature JAX-native SINDy library exists.** For a JAX-first workflow, hand-roll STLSQ via `jax.lax.scan` over polynomial libraries — the regression step is trivially vectorizable. For symbolic regression in a JAX pipeline, PySR's `model.jax()` exporter is the cleanest bridge.
+> **No mature JAX-native SINDy library exists.** For a JAX-first workflow, hand-roll STLSQ via `jax.lax.scan` over polynomial libraries — the regression step is trivially vectorizable. PySR's `model.jax()` exporter is the cleanest bridge into a JAX pipeline.
 
 ---
 
@@ -295,39 +272,9 @@ This pipeline combines the flexibility of neural networks with the interpretabil
 
 ---
 
-## Bayesian SINDy — posterior over discovered coefficients
+## Bayesian SINDy — posterior uncertainty on discovered coefficients
 
-Classic SINDy returns a point estimate `Xi` via sequentially-thresholded least squares. When measurement noise is non-trivial, library terms are correlated, or the application requires credible intervals on each coefficient, use a **Bayesian SINDy** formulation instead. Three practical routes:
-
-1. **Spike-and-slab / horseshoe prior on `Xi`** — place a sparsifying prior directly on the coefficient vector and sample with NUTS. Each library term gets a marginal posterior probability of inclusion and a coefficient credible interval.
-
-   ```python
-   import numpyro, numpyro.distributions as dist
-
-   def bayesian_sindy(Theta, dXdt):
-       # Theta : (n_samples, n_features) library
-       # dXdt  : (n_samples, n_states) measured derivatives
-       nfeat = Theta.shape[1]
-       tau = numpyro.sample("tau", dist.HalfCauchy(1.0))           # global shrinkage
-       lam = numpyro.sample("lam", dist.HalfCauchy(jnp.ones(nfeat)))  # local shrinkage
-       Xi = numpyro.sample("Xi", dist.Normal(0.0, tau * lam))      # horseshoe prior
-       sigma = numpyro.sample("sigma", dist.HalfNormal(1.0))
-       numpyro.sample("obs", dist.Normal(Theta @ Xi, sigma), obs=dXdt)
-   ```
-
-2. **Ensemble SINDy (PySINDy `EnsembleOptimizer`)** — bootstrap the data, run SINDy repeatedly, collect an empirical distribution over inclusion frequencies and coefficient values. Cheap, parallel, and good enough for exploratory uncertainty.
-
-3. **UQ-SINDy (DataDrivenDiffEq.jl `ImplicitOptimizer` + MCMC wrappers)** — Julia-side Bayesian posterior on the sparse coefficients through Turing `@model` wrappers.
-
-When to reach for which:
-
-| Goal | Method |
-|------|--------|
-| Credible intervals on active coefficients, proper inference | Horseshoe + NUTS (option 1) |
-| Quick sensitivity to noise / data subsetting | Ensemble SINDy (option 2) |
-| Julia-native, combined with `bayesian-ude-workflow` | UQ-SINDy via Turing (option 3) |
-
-For the full Bayesian workflow (priors, diagnostics, model comparison), cross-link to the `bayesian-inference` hub → `numpyro-core-mastery` / `turing-model-design` / `mcmc-diagnostics`.
+Bayesian SINDy with horseshoe priors, ensemble SINDy, and UQ-SINDy are covered in the dedicated **[bayesian-sindy-workflow](../bayesian-sindy-workflow/SKILL.md)** skill. That skill contains a full Lorenz-63 worked example (generate data → build candidate library → fit horseshoe prior with NumPyro + NUTS → diagnose with ArviZ PSIS-LOO → extract inclusion probabilities with credible intervals), a prior-sensitivity sweep, and a Julia Turing sidebar. Use it when you need credible intervals on SINDy coefficients, inclusion probabilities for library terms, or Bayesian model comparison between candidate libraries.
 
 ---
 
