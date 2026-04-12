@@ -10,7 +10,7 @@ execution-modes:
 external-docs: [debugging-patterns-library.md, rca-frameworks-guide.md, observability-integration-guide.md]
 tags: [debugging, rca, observability, production]
 argument-hint: <error-description> [--quick-triage|--standard-debug|--deep-rca] [--production]
-allowed-tools: [Read, Bash, Edit, Task]
+allowed-tools: [Read, Bash, Edit, Task, Monitor]
 ---
 
 # AI-Assisted Debugging

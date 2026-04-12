@@ -14,7 +14,7 @@ documentation:
   gitlab-ci: "${CLAUDE_PLUGIN_ROOT}/docs/dev-suite/gitlab-ci-reference.md"
   terraform-integration: "${CLAUDE_PLUGIN_ROOT}/docs/dev-suite/terraform-cicd-integration.md"
   security-workflows: "${CLAUDE_PLUGIN_ROOT}/docs/dev-suite/security-automation-workflows.md"
-allowed-tools: [Write, Bash, Read, Task]
+allowed-tools: [Read, Write, Edit, Bash, Grep, Glob, Task, CronCreate, ScheduleWakeup]
 ---
 
 # Workflow Automation

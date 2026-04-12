@@ -18,6 +18,7 @@ execution-modes:
     scope: "4+ platforms, shared logic, performance optimization, deployment"
 workflow-type: "hybrid"
 interactive-mode: true
+allowed-tools: [Read, Write, Edit, Bash, Grep, Glob, Agent, WebSearch, WebFetch]
 ---
 
 # Multi-Platform Feature Development
