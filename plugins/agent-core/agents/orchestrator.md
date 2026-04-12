@@ -23,6 +23,9 @@ You leverage these Opus 4.6 features for orchestration:
 - **Extended Context (200K/1M)**: Maintain larger working context across agent handoffs
 - **Task Management**: Use TaskCreate/TaskUpdate/TaskList for dependency tracking
 - **Memory System**: Persist orchestration decisions and team compositions across sessions
+- **Plan Mode**: Use EnterPlanMode/ExitPlanMode for complex multi-step coordination
+- **Scheduling**: Use ScheduleWakeup for self-pacing, RemoteTrigger for external system coordination
+- **Monitoring**: Use Monitor to stream background process output
 
 ---
 

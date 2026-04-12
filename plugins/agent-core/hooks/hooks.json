@@ -155,6 +155,45 @@
           }
         ]
       }
+    ],
+    "PreSubagentUse": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 ${CLAUDE_PLUGIN_ROOT}/hooks/pre_subagent_use.py",
+            "async": false,
+            "timeout": 10
+          }
+        ]
+      }
+    ],
+    "ExecutionError": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 ${CLAUDE_PLUGIN_ROOT}/hooks/execution_error.py",
+            "async": true,
+            "timeout": 10
+          }
+        ]
+      }
+    ],
+    "PermissionPrompt": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 ${CLAUDE_PLUGIN_ROOT}/hooks/permission_prompt.py",
+            "async": true,
+            "timeout": 10
+          }
+        ]
+      }
     ]
   }
 }
