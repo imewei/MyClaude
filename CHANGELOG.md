@@ -1,5 +1,16 @@
 # Changelog
 
+## v3.3.0 (2026-04-12)
+
+### CLI 2.1.104 Ecosystem Optimization
+- **Agent maxTurns standardization**: Raise 10 agents to model tier targets (opus=50, sonnet=35)
+- **Tool list enrichment**: Add CronCreate, ScheduleWakeup, Monitor to infrastructure and debugging agents/commands
+- **Hook expansion**: agent-core 12→15 events, dev-suite 2→7 events, science-suite 0→5 events
+- **Broken references fixed**: 5 phantom agent references in ultra-think and reflection commands resolved
+- **Settings harmonization**: dev-suite default maxTurns 35→40 to match other suites
+- **New test coverage**: 15 hook integrity tests (135 total, up from 120)
+- **Version bump**: Coordinated 3.2.0→3.3.0 across all 3 suites
+
 ## v3.2.0 (2026-04-12)
 
 **Skill Validator Vacuous-Pass Fix**

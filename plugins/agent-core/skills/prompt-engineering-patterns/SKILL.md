@@ -99,7 +99,7 @@ Rules:
 ```yaml
 prompt:
   id: "code-review-v3.2"
-  version: "3.2.0"  # semver: major.minor.patch
+  version: "3.3.0"  # semver: major.minor.patch
   model: "claude-sonnet-4-20250514"
   temperature: 0.2
   created: "2026-03-15"

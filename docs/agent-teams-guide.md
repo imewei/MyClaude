@@ -2,7 +2,7 @@
 
 > 25 ready-to-use team configurations leveraging 24 MyClaude agents + 20 official plugin agents across 3 suites.
 >
-> **v3.1.0:** Skills use a hub-skill routing architecture (26 hubs → 180 sub-skills as of v3.2.0). Agent teams reference agents directly and are unaffected by skill consolidation.
+> **v3.1.0:** Skills use a hub-skill routing architecture (26 hubs → 180 sub-skills as of v3.3.0). Agent teams reference agents directly and are unaffected by skill consolidation.
 >
 > **v3.1.4:** `/team-assemble` is now a codebase-aware recommender — run it with no arguments in a project root to get team suggestions. Four new teams added: `nonlinear-dynamics`, `julia-ml`, `multi-agent-systems`, `sci-desktop`.
 
