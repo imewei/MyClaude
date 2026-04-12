@@ -1,9 +1,9 @@
 Scientific Computing Suite
 ==========================
 
-High-performance computing, physics/chemistry simulations, ML/DL, Julia, JAX, and data science workflows. Uses the :term:`Hub Skill` architecture with 14 hubs routing to 116 sub-skills. Optimized for Claude Opus 4.6 with extended context and adaptive reasoning.
+High-performance computing, physics/chemistry simulations, ML/DL, Julia, JAX, and data science workflows. Uses the :term:`Hub Skill` architecture with 14 hubs routing to 117 sub-skills. Optimized for Claude Opus 4.6 with extended context and adaptive reasoning.
 
-**Version:** 3.1.6 | **12 Agents** | **0 Registered Commands** | **14 Hubs → 116 Sub-skills**
+**Version:** 3.1.7 | **12 Agents** | **0 Registered Commands** | **14 Hubs → 117 Sub-skills**
 
 Agents
 ------
@@ -11,62 +11,62 @@ Agents
 .. agent:: neural-network-master
    :description: Deep learning authority specializing in architecture design, theory, and implementation (Transformers, CNNs, diagnostics).
    :model: opus
-   :version: 3.1.6
+   :version: 3.1.7
 
 .. agent:: nonlinear-dynamics-expert
    :description: Expert in bifurcation analysis, chaos, coupled networks, pattern formation, and equation discovery (SINDy/UDE).
    :model: opus
-   :version: 3.1.6
+   :version: 3.1.7
 
 .. agent:: research-expert
    :description: Expert in systematic research, evidence synthesis, and publication-quality visualization.
    :model: opus
-   :version: 3.1.6
+   :version: 3.1.7
 
 .. agent:: simulation-expert
    :description: Expert in molecular dynamics, statistical mechanics, and numerical methods (HPC/GPU).
    :model: opus
-   :version: 3.1.6
+   :version: 3.1.7
 
 .. agent:: statistical-physicist
    :description: Expert in correlation functions, non-equilibrium dynamics, and ensemble theory.
    :model: opus
-   :version: 3.1.6
+   :version: 3.1.7
 
 .. agent:: ai-engineer
    :description: Build production-ready LLM applications, advanced RAG systems, and intelligent agents.
    :model: sonnet
-   :version: 3.1.6
+   :version: 3.1.7
 
 .. agent:: jax-pro
    :description: Expert in JAX-based scientific computing, functional transformations, and high-performance numerical kernels.
    :model: sonnet
-   :version: 3.1.6
+   :version: 3.1.7
 
 .. agent:: julia-ml-hpc
    :description: Expert in Julia ML, Deep Learning, and HPC (Lux.jl, MLJ.jl, CUDA.jl, MPI.jl, GraphNeuralNetworks.jl).
    :model: sonnet
-   :version: 3.1.6
+   :version: 3.1.7
 
 .. agent:: julia-pro
    :description: Expert in Julia programming, SciML (DifferentialEquations.jl, ModelingToolkit.jl), and Turing.jl.
    :model: sonnet
-   :version: 3.1.6
+   :version: 3.1.7
 
 .. agent:: ml-expert
    :description: Expert in classical ML algorithms, MLOps pipelines, and data engineering.
    :model: sonnet
-   :version: 3.1.6
+   :version: 3.1.7
 
 .. agent:: prompt-engineer
    :description: Expert prompt engineer specializing in advanced techniques and LLM performance optimization.
    :model: sonnet
-   :version: 3.1.6
+   :version: 3.1.7
 
 .. agent:: python-pro
    :description: Expert Python Systems Engineer specializing in type-driven development, Rust extensions, and performance.
    :model: sonnet
-   :version: 3.1.6
+   :version: 3.1.7
 
 Skill-Invoked Commands
 ----------------------
@@ -85,7 +85,7 @@ These commands are triggered by skills, not directly by users:
 Hub Skills
 ----------
 
-Skills use a hub architecture: 14 hub skills route to 116 specialized sub-skills.
+Skills use a hub architecture: 14 hub skills route to 117 specialized sub-skills.
 
 Hub: nonlinear-dynamics (6 sub-skills)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -176,7 +176,7 @@ Equilibrium/non-equilibrium statistical mechanics, stochastic dynamics, active m
 
 - ``statistical-physics`` — Ensemble theory, partition functions, phase transitions; Julia Monte Carlo idioms *(v3.1.5)*
 - ``stochastic-dynamics`` — Master equations, Fokker-Planck direct PDE methods, Langevin, Green-Kubo, jump-diffusion SDEs *(Fokker-Planck v3.1.5)*
-- ``non-equilibrium-theory`` — Fluctuation theorems, entropy production, linear response, BAR/Jarzynski/MBAR with pymbar worked example *(BAR example v3.1.6)*
+- ``non-equilibrium-theory`` — Fluctuation theorems, entropy production, linear response, BAR/Jarzynski/MBAR with pymbar worked example *(BAR example v3.1.7)*
 - ``active-matter`` — Self-propelled particles, flocking, MIPS, bio-inspired materials
 - ``multiscale-modeling`` — Coarse-graining, DPD, nanoscale DEM
 - ``advanced-simulations`` — Non-equilibrium thermodynamics, multiscale bridging
@@ -272,10 +272,10 @@ Research methodology, paper implementation, scientific writing, Python systems, 
 - ``dspy-basics`` — Depth-skill companion for DSPy programmatic prompt optimization *(new in v3.1.4)*
 - ``rlaif-training`` — Depth-skill companion for Constitutional AI / RLAIF / DPO *(new in v3.1.4)*
 
-Hub: bayesian-inference (9 sub-skills)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Hub: bayesian-inference (10 sub-skills)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-NumPyro, Turing.jl, variational inference, MCMC diagnostics, consensus / non-reversible tempering, Bayesian UDEs, Bayesian PINNs, and point processes.
+NumPyro, Turing.jl, variational inference, MCMC diagnostics, consensus / non-reversible tempering, Bayesian UDEs, Bayesian PINNs, point processes, and Bayesian SINDy equation discovery.
 
 - ``numpyro-core-mastery`` — NumPyro: NUTS/HMC, SVI, hierarchical models, GPU inference
 - ``turing-model-design`` — Turing.jl: probabilistic models, Julia-native Bayesian workflows
@@ -286,3 +286,4 @@ NumPyro, Turing.jl, variational inference, MCMC diagnostics, consensus / non-rev
 - ``bayesian-ude-jax`` — Python/JAX counterpart to Bayesian UDE via Diffrax + Equinox + NumPyro *(new in v3.1.4)*
 - ``bayesian-pinn`` — BNNODE / BayesianPINN (extracted from neural-pde for budget management) *(new in v3.1.4)*
 - ``point-processes`` — Hawkes processes, HSGP, Julia PointProcesses.jl, non-parametric Hawkes EM *(new in v3.1.4)*
+- ``bayesian-sindy-workflow`` — Horseshoe-prior Bayesian SINDy with 5-stage Lorenz-63 worked example (NumPyro + NUTS + ArviZ PSIS-LOO), prior-sensitivity analysis, and Turing UQ-SINDy sidebar *(new in v3.1.7 — extracted from equation-discovery to resolve 88% budget pressure)*

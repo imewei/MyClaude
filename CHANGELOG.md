@@ -1,5 +1,95 @@
 # Changelog
 
+## v3.1.7 (2026-04-11)
+
+**Bayesian SINDy Extraction**
+
+* **New skill `bayesian-sindy-workflow`** extracted from the
+  `equation-discovery` skill. The latter was at 88% of its context
+  budget after a prior external Bayesian SINDy section pushed it
+  over the 75% gate. Per CLAUDE.md, skills over 80% are at-risk and
+  over 90% must be refactored — extraction resolves this.
+* New skill lands at ~68.55% of budget with headroom for v3.1.8+
+  growth. Structure:
+  - When-to-prefer decision table: Bayesian vs classical SINDy
+  - Three routes: horseshoe+NUTS, ensemble SINDy, UQ-SINDy (Julia)
+  - Full 5-stage Lorenz-63 worked example:
+    (1) `scipy.integrate.solve_ivp` + noise + central-difference,
+    (2) 10-term second-order polynomial library,
+    (3) NumPyro horseshoe prior + NUTS (4 chains, 1000 warmup, 2000 samples), funnel-reparam pointer,
+    (4) ArviZ diagnostics (R-hat, ESS, PSIS-LOO),
+    (5) Extract inclusion probabilities + credible intervals.
+  - Prior-sensitivity analysis (HalfCauchy τ scale sweep,
+    Piironen-Vehtari p0 parameterization pointer).
+  - Julia sidebar using Turing + DataDrivenDiffEq with the
+    Turing 0.37+ `truncated(...; lower=0)` keyword form (API drift
+    caught via Context7 during verification).
+* `equation-discovery` dropped from 3535 → 2984 tokens
+  (88% → 74.6%, under the 75% Commit D gate). Removed the Bayesian
+  SINDy H2 section (replaced with short pointer) and compressed
+  "Related Python Packages" to a single table plus JAX-native caveat.
+* Science-suite now has **117 sub-skills** (up from 116). The
+  `bayesian-inference` hub grows from 9 → 10 sub-skills.
+
+**Composition Headers**
+
+* Added `## Composition with neighboring skills` section headers to
+  three science-suite skills that had prose cross-references but
+  lacked the canonical section header for discoverability:
+  - `stochastic-dynamics` (5 bullets): SDE/ODE numerics via
+    sciml-and-diffeq + jax-diffeq-pro; Bayesian UDE via
+    bayesian-ude-workflow + bayesian-ude-jax; rare events via
+    advanced-simulations; fluctuation theorems via
+    non-equilibrium-theory; chemical jumps via catalyst-reactions.
+  - `non-equilibrium-theory` (6 bullets): Langevin numerics,
+    equilibrium theory, rare events, power-law tails, active matter,
+    equation discovery.
+  - `correlation-physical-systems` (5 bullets): analytical
+    foundations, algorithms, experimental reduction, underlying
+    dynamics, Julia↔Python freud handoff.
+
+**freud IntermediateScattering Re-verification**
+
+* Re-verified `freud.density.IntermediateScattering` against the
+  current freud release via Context7 on 2026-04-11 — the analyzer is
+  STILL NOT shipped in the density module. The `numpy.fft` +
+  MDAnalysis fallback in `correlation-physical-systems` remains the
+  recommended approach.
+* Inline tag updated from `[unverified — see upstream freud docs for
+  any newer release]` to `[re-verified absent 2026-04-11]`. Next
+  re-verification scheduled for v3.1.8+.
+
+**Tooling — pip-audit**
+
+* Added `pip-audit 2.10+` to the dev dependency group for automated
+  CVE scanning of Python dependencies. Wired into the v3.1.7
+  per-commit validator gate as a new security dimension. Pass
+  criterion: no HIGH or CRITICAL findings.
+* **One HIGH finding ignored:** PYSEC-2022-42969 / CVE-2022-42969
+  (ReDoS in `py.path.svnwc.InfoSvnCommand` regex). Reaches the repo
+  via `interrogate 1.7.0 → py 1.11.0` transitive. The `py` library
+  has been archived/unmaintained by pytest-dev since 2022 — no
+  patched release exists. `interrogate` upstream tracks removal at
+  `econchick/interrogate#142` but the fix is unreleased. In-repo
+  exposure is **zero**: `interrogate` (a docstring-coverage tool)
+  only imports `py` for file-path handling, never touching the
+  vulnerable `svnwc` code path. Exception will be revisited in
+  v3.1.8+ when `interrogate` can be replaced or removed.
+
+**Validator State**
+
+* metadata_validator: 0 errors / 0 warnings on all 3 plugins.
+* xref_validator: 523/523 references valid (+4 from the new
+  `bayesian-sindy-workflow` skill).
+* context_budget_checker: 206/206 skills fit. `equation-discovery`
+  74.6% (down from 88%, no longer in headroom warnings);
+  `bayesian-sindy-workflow` 68.55% (new, under 70% Commit D gate);
+  `non-equilibrium-theory` 78.98% (under 80%). No skill over 80%.
+* skill_validator: EXCELLENT on science-suite + agent-core.
+* pytest: 118/118 passing. ruff + mypy clean.
+* pip-audit: no known vulnerabilities found, 1 ignored
+  (PYSEC-2022-42969, rationale above).
+
 ## v3.1.6 (2026-04-11)
 
 **Julia ↔ Python Parity Polish**

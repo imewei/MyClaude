@@ -1,6 +1,68 @@
 Changelog
 =========
 
+v3.1.7 (2026-04-11)
+-------------------
+
+**Bayesian SINDy Extraction**
+
+* **New skill** ``bayesian-sindy-workflow`` extracted from
+  ``equation-discovery`` which was at 88% of its context budget after
+  a prior external Bayesian SINDy section. Lands at ~68.55% budget
+  with headroom for v3.1.8+ growth.
+* Structure: when-to-prefer decision table (Bayesian vs classical
+  SINDy); three routes (horseshoe+NUTS, ensemble SINDy, Julia
+  UQ-SINDy); full 5-stage Lorenz-63 worked example —
+  ``scipy.integrate.solve_ivp`` + noise + central-difference,
+  10-term second-order polynomial library, NumPyro horseshoe prior +
+  NUTS (4 chains, 1000 warmup, 2000 samples), ArviZ diagnostics
+  (R-hat, ESS, PSIS-LOO), inclusion probabilities + credible
+  intervals; prior-sensitivity analysis; Julia sidebar using
+  Turing + DataDrivenDiffEq with ``truncated(...; lower=0)`` keyword
+  form (Turing 0.37+ API drift caught via Context7).
+* ``equation-discovery`` dropped from 3535 → 2984 tokens
+  (88% → 74.6%, under the 75% Commit D gate).
+* Science-suite now at **117 sub-skills** (from 116);
+  ``bayesian-inference`` hub grows from 9 → 10 sub-skills.
+
+**Composition Headers**
+
+* Added ``## Composition with neighboring skills`` section headers to
+  three science-suite skills that had prose cross-references but
+  lacked the canonical header: ``stochastic-dynamics`` (5 bullets),
+  ``non-equilibrium-theory`` (6 bullets), ``correlation-physical-systems``
+  (5 bullets).
+
+**freud IntermediateScattering Re-verification**
+
+* Re-verified ``freud.density.IntermediateScattering`` against the
+  current freud release via Context7 on 2026-04-11: still not
+  shipped in the density module. The ``numpy.fft`` + MDAnalysis
+  fallback remains the recommended approach. Inline tag updated to
+  ``[re-verified absent 2026-04-11]``.
+
+**Tooling — pip-audit**
+
+* Added ``pip-audit 2.10+`` dev dependency for automated CVE scanning.
+  Wired into the per-commit validator gate.
+* **One HIGH finding ignored** — PYSEC-2022-42969 / CVE-2022-42969
+  (ReDoS in ``py.path.svnwc.InfoSvnCommand`` regex, reaches repo via
+  ``interrogate 1.7.0 → py 1.11.0`` transitive). The ``py`` library
+  is archived and unmaintained since 2022; ``interrogate`` upstream
+  tracks removal at ``econchick/interrogate#142``, unreleased.
+  In-repo exposure is zero (``interrogate`` only imports ``py`` for
+  file-path handling, never reaching the vulnerable ``svnwc`` code
+  path). Revisit in v3.1.8+ when ``interrogate`` can be replaced.
+
+**Validator State**
+
+* metadata_validator 0/0/0; xref_validator 523/523 valid (+4 from the
+  new skill); context_budget_checker 206/206 (``equation-discovery``
+  74.6%, ``bayesian-sindy-workflow`` 68.55%, ``non-equilibrium-theory``
+  78.98%, no skill over 80%); skill_validator EXCELLENT; pytest
+  118/118; ruff + mypy clean; pip-audit clean with one ignore as
+  documented above.
+
 v3.1.6 (2026-04-11)
 -------------------
 

@@ -39,7 +39,7 @@ Domain-specific scientific computing suite for high-performance computing, Julia
 | `/analyze-data` | Comprehensive data analysis with statistical tests and visualization |
 | `/paper-review` | Systematic review of scientific papers |
 
-## Skills (14 hubs → 116 sub-skills)
+## Skills (14 hubs → 117 sub-skills)
 
 Organized by domain:
 
@@ -52,7 +52,7 @@ Organized by domain:
 - **Python**: Type-driven design, Rust extensions (PyO3), modern concurrency, packaging
 - **Numerical Methods**: Solvers, parallel computing, GPU acceleration, signal processing
 - **Julia ML/DL/HPC**: Neural networks, AD backends, ML pipelines, GPU kernels, HPC distributed computing, model deployment, GNNs, reinforcement learning
-- **Bayesian Inference**: NumPyro/Turing, MCMC diagnostics, consensus MC & Pigeons.jl non-reversible PT, Bayesian UDEs (Turing + Diffrax), Bayesian PINNs, Hawkes/point processes
+- **Bayesian Inference**: NumPyro/Turing, MCMC diagnostics, consensus MC & Pigeons.jl non-reversible PT, Bayesian UDEs (Turing + Diffrax), Bayesian PINNs, Hawkes/point processes, Bayesian SINDy equation discovery (horseshoe + NumPyro + Lorenz-63 worked example)
 - **Nonlinear Dynamics**: Bifurcation (with Python escape hatch), chaos attractors, pattern formation, equation discovery (SINDy ecosystem), Julia ↔ Python handoff for nonlinear time-series tools (nolds, antropy, IDTxl, pyEDM)
 - **Other Domains**: Computer vision, NLP, bioinformatics, time series, control theory, symbolic math, quantum computing, federated learning, reinforcement learning
 

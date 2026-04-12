@@ -78,6 +78,6 @@ coordinated reproduction workflows.
 Related
 -------
 
-- :doc:`/suites/science-suite` — Full science-suite reference (14 hubs → 116 sub-skills)
+- :doc:`/suites/science-suite` — Full science-suite reference (14 hubs → 117 sub-skills)
 - :doc:`/suites/agent-core` — Orchestration and reasoning agents
 - :doc:`/glossary` — Hub Skill, Sub-Skill, and Routing Decision Tree definitions

@@ -1,13 +1,13 @@
 # Quick Reference Cheatsheet
 
-**3 Suites** | **24 Agents** | **14 Registered Commands** | **26 Hub Skills** (routing to 179 sub-skills)
-**Version:** 3.1.6
+**3 Suites** | **24 Agents** | **14 Registered Commands** | **26 Hub Skills** (routing to 180 sub-skills)
+**Version:** 3.1.7
 
 ---
 
 ## The Hub Architecture
 
-MyClaude v3.1.6 uses a **hub-skill architecture**: skills are organized into hub skills (meta-orchestrators) that route to specialized sub-skills. Only hubs are declared in `plugin.json`; sub-skills are discovered through hub routing trees.
+MyClaude v3.1.7 uses a **hub-skill architecture**: skills are organized into hub skills (meta-orchestrators) that route to specialized sub-skills. Only hubs are declared in `plugin.json`; sub-skills are discovered through hub routing trees.
 
 ```
 plugin.json → hub skill → routing decision tree → sub-skill
@@ -47,7 +47,7 @@ plugin.json → hub skill → routing decision tree → sub-skill
 |-----------|-------|---------|
 | Agents | 12 | 5 opus, 7 sonnet |
 | Commands | 0 registered | (3 skill-invoked: analyze-data, paper-review, run-experiment) |
-| Skills | 14 hubs → 116 sub | nonlinear-dynamics, jax-computing, julia-language, julia-ml-and-dl, sciml-and-diffeq, correlation-analysis, statistical-physics-hub, deep-learning-hub, ml-and-data-science, llm-and-ai, ml-deployment, simulation-and-hpc, research-and-domains, bayesian-inference |
+| Skills | 14 hubs → 117 sub | nonlinear-dynamics, jax-computing, julia-language, julia-ml-and-dl, sciml-and-diffeq, correlation-analysis, statistical-physics-hub, deep-learning-hub, ml-and-data-science, llm-and-ai, ml-deployment, simulation-and-hpc, research-and-domains, bayesian-inference |
 | Hooks | 0 | — |
 
 ---
@@ -105,4 +105,4 @@ plugin.json → hub skill → routing decision tree → sub-skill
 - [Glossary](../glossary.rst) — Hub Skill, Sub-Skill, Agent Team, Routing Decision Tree
 - [GitHub Repository](https://github.com/imewei/MyClaude)
 
-*Generated from v3.1.6 validated marketplace data.*
+*Generated from v3.1.7 validated marketplace data.*

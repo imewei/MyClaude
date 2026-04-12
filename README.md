@@ -3,22 +3,22 @@
 [![Plugins](https://img.shields.io/badge/Plugins-3-blue.svg)](https://myclaude.readthedocs.io/en/latest/plugins/)
 [![Agents](https://img.shields.io/badge/Agents-24-green.svg)](docs/reference/agents.md)
 [![Commands](https://img.shields.io/badge/Commands-14-orange.svg)](docs/reference/commands.md)
-[![Skills](https://img.shields.io/badge/Skills-26_hubs_→_179_sub-purple.svg)](docs/reference/cheatsheet.md)
-[![Version](https://img.shields.io/badge/Version-3.1.6-red.svg)](https://github.com/imewei/MyClaude)
+[![Skills](https://img.shields.io/badge/Skills-26_hubs_→_180_sub-purple.svg)](docs/reference/cheatsheet.md)
+[![Version](https://img.shields.io/badge/Version-3.1.7-red.svg)](https://github.com/imewei/MyClaude)
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Docs](https://img.shields.io/badge/Docs-ReadTheDocs-brightgreen.svg)](https://myclaude.readthedocs.io/en/latest/)
 
-Claude Code plugin marketplace with **3 focused suites**, **24 expert agents**, **14 registered commands**, and **26 hub skills** routing to **179 sub-skills**. Built for Claude Opus 4.6 with tiered model assignments (Opus/Sonnet/Haiku), 10 lifecycle hooks, and hub-skill architecture for zero-ambiguity skill routing.
+Claude Code plugin marketplace with **3 focused suites**, **24 expert agents**, **14 registered commands**, and **26 hub skills** routing to **180 sub-skills**. Built for Claude Opus 4.6 with tiered model assignments (Opus/Sonnet/Haiku), 10 lifecycle hooks, and hub-skill architecture for zero-ambiguity skill routing.
 
 ## The 3-Suite Hub Architecture
 
-MyClaude v3.1.6 uses a **hub-skill architecture**: skills are organized into hub skills (meta-orchestrators) that route to specialized sub-skills via decision trees. Only hubs are declared in `plugin.json`; sub-skills are discovered through hub routing.
+MyClaude v3.1.7 uses a **hub-skill architecture**: skills are organized into hub skills (meta-orchestrators) that route to specialized sub-skills via decision trees. Only hubs are declared in `plugin.json`; sub-skills are discovered through hub routing.
 
 | Suite | Agents | Commands | Hubs → Sub-skills | Hooks | Focus |
 |-------|--------|----------|-------------------|-------|-------|
 | [Agent Core](plugins/agent-core/) | 3 | 2 | 3 → 14 | 8 events | Orchestration, reasoning, context engineering |
 | [Dev Suite](plugins/dev-suite/) | 9 | 12 | 9 → 49 | 2 events | Full SDLC: architecture, CI/CD, testing, debugging |
-| [Science Suite](plugins/science-suite/) | 12 | 0 | 14 → 116 | — | JAX, Julia, physics, ML/DL/HPC, research |
+| [Science Suite](plugins/science-suite/) | 12 | 0 | 14 → 117 | — | JAX, Julia, physics, ML/DL/HPC, research |
 
 ## Specialist Agents
 
