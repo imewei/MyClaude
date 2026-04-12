@@ -47,8 +47,22 @@ def detect_stack(cwd: str) -> dict:
     return stack
 
 
+def read_progress_file(cwd: str) -> str:
+    """Read prior session progress summary if it exists."""
+    progress_path = Path(cwd) / ".claude-progress.md"
+    if progress_path.exists():
+        try:
+            text = progress_path.read_text(encoding="utf-8").strip()
+            if len(text) > 500:
+                text = text[-500:]
+            return text
+        except OSError:
+            pass
+    return ""
+
+
 def main() -> None:
-    """Detect and report project stack."""
+    """Detect project stack and read prior session progress."""
     try:
         cwd = os.environ.get("PWD", os.getcwd())
         stack = detect_stack(cwd)
@@ -62,6 +76,11 @@ def main() -> None:
             parts.append(f"Test runners: {', '.join(stack['test_runners'])}")
 
         context = ". ".join(parts) if parts else "No specific stack detected"
+
+        # Read prior session progress
+        progress = read_progress_file(cwd)
+        if progress:
+            context += f"\n\nPrior session progress:\n{progress}"
 
         result = {
             "status": "success",

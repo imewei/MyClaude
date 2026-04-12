@@ -5,9 +5,11 @@ Detects computation environment: JAX devices, GPU, Julia env.
 """
 
 import json
+import os
 import shutil
 import subprocess
 import sys
+from pathlib import Path
 
 
 def detect_compute_env() -> dict:
@@ -46,8 +48,22 @@ def detect_compute_env() -> dict:
     return env
 
 
+def read_progress_file(cwd: str) -> str:
+    """Read prior session progress summary if it exists."""
+    progress_path = Path(cwd) / ".claude-progress.md"
+    if progress_path.exists():
+        try:
+            text = progress_path.read_text(encoding="utf-8").strip()
+            if len(text) > 500:
+                text = text[-500:]
+            return text
+        except OSError:
+            pass
+    return ""
+
+
 def main() -> None:
-    """Detect and report compute environment."""
+    """Detect compute environment and read prior session progress."""
     try:
         env = detect_compute_env()
 
@@ -62,6 +78,12 @@ def main() -> None:
             parts.append(f"Julia {version}")
 
         context = ". ".join(parts) if parts else "No scientific compute stack detected"
+
+        # Read prior session progress
+        cwd = os.environ.get("PWD", os.getcwd())
+        progress = read_progress_file(cwd)
+        if progress:
+            context += f"\n\nPrior session progress:\n{progress}"
 
         result = {
             "status": "success",
