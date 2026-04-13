@@ -67,7 +67,7 @@ python analyze_coverage_gaps.py coverage.json
 
 ## Test Organization
 
-```
+```text
 tests/
 ├── unit/test_module1.py, test_module2.py
 ├── integration/test_workflow.py

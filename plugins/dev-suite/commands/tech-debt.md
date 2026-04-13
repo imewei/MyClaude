@@ -33,7 +33,7 @@ $ARGUMENTS
 
 ## Scoring
 
-```
+```text
 Score = Severity × Impact × (1 + Interest × Months) × ModuleCount
 ROI = (Impact × Affected × Team) / Hours
 ```

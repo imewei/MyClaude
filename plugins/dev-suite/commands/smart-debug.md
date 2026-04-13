@@ -25,6 +25,19 @@ $ARGUMENTS
 | standard | 15-30min | Root cause + fix |
 | `--deep-rca` | 30-60min | Full RCA + prevention |
 
+## Examples
+
+```bash
+# Quick triage of a specific error
+/smart-debug "TypeError: Cannot read property 'id' of undefined in UserService.getProfile" --quick-triage
+
+# Standard debug with production context
+/smart-debug "API latency spike on /api/orders endpoint, p99 jumped from 200ms to 3s" --standard-debug --production
+
+# Deep root cause analysis
+/smart-debug "Intermittent 502 errors under load, ~5% of requests fail" --deep-rca --production
+```
+
 ## Workflow
 
 ### 1. Triage

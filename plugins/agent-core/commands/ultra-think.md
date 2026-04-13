@@ -123,7 +123,7 @@ Each thought uses hierarchical ID: `T[phase].[step].[branch]`
 - Exploring alternatives
 
 **Revision format:**
-```
+```text
 T3.3: Original (confidence: 0.70)
 T3.3.1 [Revision]: Corrected (confidence: 0.90)
   - Reason: Found contradictory evidence
@@ -156,7 +156,7 @@ When detected:
 
 ## Quick Mode Output
 
-```
+```text
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 Ultra-Think Quick Analysis
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
