@@ -83,15 +83,20 @@ class TestAgentModelTier:
         if not agents_dir.exists():
             pytest.skip(f"{suite} has no agents directory")
 
+        broken_yaml = []
         invalid = []
         for agent_file in agents_dir.glob("*.md"):
             fm = load_frontmatter(agent_file)
             if fm is None:
+                broken_yaml.append(agent_file.name)
                 continue
             model = fm.get("model")
             if model is not None and model not in VALID_MODEL_TIERS:
                 invalid.append(f"{agent_file.name}: model='{model}'")
 
+        assert not broken_yaml, (
+            f"{suite} agents with broken YAML frontmatter: {broken_yaml}"
+        )
         assert not invalid, (
             f"{suite} agents with invalid model tier: {invalid}"
         )
@@ -120,7 +125,11 @@ class TestHubRoutingTree:
 
             content = skill_md.read_text(encoding="utf-8")
             has_routing = "## Routing Decision Tree" in content or "## Routing" in content
-            has_code_block = "```" in content.split("## Routing")[1] if "## Routing" in content else False
+            has_code_block = False
+            if has_routing:
+                parts = content.split("## Routing", 1)
+                if len(parts) > 1:
+                    has_code_block = "```" in parts[1]
 
             if not (has_routing and has_code_block):
                 missing_tree.append(skill_path)

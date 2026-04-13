@@ -93,7 +93,7 @@ Each hub SKILL.md has a standard structure: YAML frontmatter, Expert Agent refer
 
 **Skills** (`skills/<name>/SKILL.md`): Each skill lives in its own directory. The main file is always `SKILL.md` with frontmatter containing `name`, `description`. Hub skills additionally contain: Expert Agent section, Core Skills with `../` relative links, Routing Decision Tree, and Checklist.
 
-**Hooks** (`hooks/hooks.json`): JSON object with `description` and `hooks` object keyed by event name. Claude Code CLI 2.1.x supports 25 hook events; we implement 29 handlers across all suites (15 agent-core, 8 dev-suite, 6 science-suite). Events include SessionStart, SessionEnd, PreToolUse, PostToolUse, PreCompact, PostCompact, SubagentStart, SubagentStop, PermissionDenied, TaskCreated, TaskCompleted, StopFailure, PreSubagentUse, ExecutionError, PermissionPrompt. Handler types: command (shell), HTTP, prompt, agent. Python scripts implement hook logic.
+**Hooks** (`hooks/hooks.json`): JSON object with `description` and `hooks` object keyed by event name. Claude Code CLI 2.1.x supports 25 hook events; we implement 31 handlers across all suites (17 agent-core, 8 dev-suite, 6 science-suite). Events include SessionStart, SessionEnd, PreToolUse, PostToolUse, PreCompact, PostCompact, SubagentStart, SubagentStop, PermissionDenied, TaskCreated, TaskCompleted, StopFailure, PreSubagentUse, ExecutionError, PermissionPrompt. Agent-core also registers ContextOverflow and CostThreshold as forward-looking handlers for future CLI versions (these will not fire on CLI 2.1.x). Handler types: command (shell), HTTP, prompt, agent. Python scripts implement hook logic.
 
 ### Plugin Manifest (`plugin.json`)
 

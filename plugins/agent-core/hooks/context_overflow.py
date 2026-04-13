@@ -17,15 +17,20 @@ logger = logging.getLogger(__name__)
 def main() -> None:
     """Handle context overflow event."""
     try:
-        usage_pct = os.environ.get("CONTEXT_USAGE_PCT", "unknown")
-        tokens_used = os.environ.get("TOKENS_USED", "unknown")
-        tokens_limit = os.environ.get("TOKENS_LIMIT", "unknown")
+        usage_pct = os.environ.get("CONTEXT_USAGE_PCT")
+        tokens_used = os.environ.get("TOKENS_USED")
+        tokens_limit = os.environ.get("TOKENS_LIMIT")
+
+        if usage_pct and tokens_used and tokens_limit:
+            detail = f"at {usage_pct}% ({tokens_used}/{tokens_limit} tokens)"
+        else:
+            detail = "(usage details unavailable)"
+            logger.warning("ContextOverflow fired without usage env vars")
 
         result = {
             "status": "success",
             "additionalContext": (
-                f"CONTEXT OVERFLOW WARNING: Context window at {usage_pct}% "
-                f"({tokens_used}/{tokens_limit} tokens). "
+                f"CONTEXT OVERFLOW WARNING: Context window {detail}. "
                 "Prioritize: (1) complete current task, (2) save progress to "
                 ".claude-progress.md, (3) trigger compaction if possible. "
                 "Avoid starting new multi-turn investigations."
@@ -34,10 +39,11 @@ def main() -> None:
         json.dump(result, sys.stdout)
     except Exception as e:
         logger.exception("ContextOverflow hook failed")
-        json.dump(
-            {"status": "error", "message": f"ContextOverflow hook error: {e}"},
-            sys.stdout,
-        )
+        error = {"status": "error", "message": f"ContextOverflow hook error: {e}"}
+        try:
+            json.dump(error, sys.stdout)
+        except Exception:
+            sys.stderr.write(f"ContextOverflow hook fatal: {e}\n")
 
 
 if __name__ == "__main__":
