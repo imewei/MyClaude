@@ -47,8 +47,8 @@ MyClaude agents can leverage MCP servers for enhanced capabilities:
 Official Plugin Integration
 ---------------------------
 
-Teams 26-33 integrate official plugin agents (pr-review-toolkit, feature-dev,
-coderabbit, plugin-dev) as quality gates alongside MyClaude domain experts.
+Teams integrate official plugin agents (pr-review-toolkit, feature-dev,
+plugin-dev) as quality gates alongside MyClaude domain experts.
 
 The **Quality Gate Enhancers** pattern lets you add review agents to any
 existing team. See the :doc:`Agent Teams Guide </agent-teams-guide>` for

@@ -104,7 +104,7 @@ that integrate these agents.
 Key integration patterns:
 
 - **Build + Review**: MyClaude agents produce code, official plugin agents validate it.
-- **Quality Gate Enhancers**: Add pr-review-toolkit or coderabbit agents to any team.
+- **Quality Gate Enhancers**: Add pr-review-toolkit agents to any team for automated review.
 - **Agent SDK**: Use agent-sdk-dev verifiers alongside ``@ai-engineer`` for SDK projects.
 
 Agent Teams
