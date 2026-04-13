@@ -66,9 +66,9 @@ plugins/<suite-name>/
 Suite breakdown:
 | Suite | Agents | Registered Cmds | Skills (hubs → sub) | Hooks | Focus |
 |-------|--------|-----------------|---------------------|-------|-------|
-| agent-core | 3 | 2 | 3 → 14 | 17 events | Reasoning, orchestration, context engineering, safety |
-| dev-suite | 9 | 12 | 9 → 49 | 8 events | Full SDLC: architecture, implementation, CI/CD, testing, debugging |
-| science-suite | 12 | 0 | 14 → 117 | 6 events | JAX, Julia, physics, ML/DL/HPC, nonlinear dynamics, research |
+| agent-core | 3 | 2 | 3 → 14 | 12 events | Reasoning, orchestration, context engineering, safety |
+| dev-suite | 9 | 12 | 9 → 49 | 7 events | Full SDLC: architecture, implementation, CI/CD, testing, debugging |
+| science-suite | 12 | 0 | 14 → 117 | 5 events | JAX, Julia, physics, ML/DL/HPC, nonlinear dynamics, research |
 
 **Note:** 22 additional commands exist on disk but are not registered in `plugin.json`. These are **skill-invoked commands** — triggered by skills during workflows, not directly by users as `/slash-commands`.
 
@@ -93,7 +93,7 @@ Each hub SKILL.md has a standard structure: YAML frontmatter, Expert Agent refer
 
 **Skills** (`skills/<name>/SKILL.md`): Each skill lives in its own directory. The main file is always `SKILL.md` with frontmatter containing `name`, `description`. Hub skills additionally contain: Expert Agent section, Core Skills with `../` relative links, Routing Decision Tree, and Checklist.
 
-**Hooks** (`hooks/hooks.json`): JSON object with `description` and `hooks` object keyed by event name. Claude Code CLI 2.1.x supports 25 hook events; we implement 31 handlers across all suites (17 agent-core, 8 dev-suite, 6 science-suite). Events include SessionStart, SessionEnd, PreToolUse, PostToolUse, PreCompact, PostCompact, SubagentStart, SubagentStop, PermissionDenied, TaskCreated, TaskCompleted, StopFailure, PreSubagentUse, ExecutionError, PermissionPrompt. Agent-core also registers ContextOverflow and CostThreshold as forward-looking handlers for future CLI versions (these will not fire on CLI 2.1.x). Handler types: command (shell), HTTP, prompt, agent. Python scripts implement hook logic.
+**Hooks** (`hooks/hooks.json`): JSON object with `description` and `hooks` object keyed by event name. We implement 24 handlers across all suites (12 agent-core, 7 dev-suite, 5 science-suite). Events include SessionStart, SessionEnd, PreToolUse, PostToolUse, PreCompact, PostCompact, SubagentStart, SubagentStop, PermissionDenied, TaskCreated, TaskCompleted, StopFailure. Handler types: command (shell), HTTP, prompt, agent. Python scripts implement hook logic. Note: PreSubagentUse, ExecutionError, PermissionPrompt, ContextOverflow, and CostThreshold were removed — not yet supported by the CLI event schema.
 
 ### Plugin Manifest (`plugin.json`)
 

@@ -39,19 +39,6 @@
         ]
       }
     ],
-    "ExecutionError": [
-      {
-        "matcher": "",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "python3 ${CLAUDE_PLUGIN_ROOT}/hooks/execution_error.py",
-            "async": true,
-            "timeout": 10
-          }
-        ]
-      }
-    ],
     "SessionEnd": [
       {
         "matcher": "",
