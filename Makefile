@@ -245,7 +245,7 @@ info: ## Show repository information
 	@echo "Total Lines of Code: $$(find . -name '*.py' -o -name '*.md' -o -name '*.rst' | xargs wc -l 2>/dev/null | tail -1 | awk '{print $$1}')"
 
 version: ## Show current version
-	@echo "v3.0.0"
+	@echo "v$$(grep '^version' pyproject.toml | head -1 | sed 's/.*"\(.*\)"/\1/')"
 
 ##@ Advanced Cleaning
 
