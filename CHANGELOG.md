@@ -1,5 +1,13 @@
 # Changelog
 
+## v3.3.1 (2026-04-13)
+
+### Skill Registration
+- **thinkfirst skill**: Register prompt-engineering skill in agent-core plugin manifest for user discoverability
+
+### Maintenance
+- **Version bump**: Coordinated 3.3.0→3.3.1 across all 3 suites
+
 ## v3.3.0 (2026-04-12)
 
 ### CLI 2.1.104 Ecosystem Optimization
