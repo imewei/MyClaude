@@ -12,7 +12,7 @@ MyClaude is a Claude Code plugin marketplace: 3 plugin suites containing 24 agen
 # Install dependencies
 uv sync
 
-# Run tests (135 tests covering plugin integrity and validation)
+# Run tests (154 tests covering plugin integrity and validation)
 uv run pytest tools/tests/ -v
 
 # Run a single test file
@@ -66,7 +66,7 @@ plugins/<suite-name>/
 Suite breakdown:
 | Suite | Agents | Registered Cmds | Skills (hubs → sub) | Hooks | Focus |
 |-------|--------|-----------------|---------------------|-------|-------|
-| agent-core | 3 | 2 | 3 → 14 | 15 events | Reasoning, orchestration, context engineering, safety |
+| agent-core | 3 | 2 | 3 → 14 | 17 events | Reasoning, orchestration, context engineering, safety |
 | dev-suite | 9 | 12 | 9 → 49 | 8 events | Full SDLC: architecture, implementation, CI/CD, testing, debugging |
 | science-suite | 12 | 0 | 14 → 117 | 6 events | JAX, Julia, physics, ML/DL/HPC, nonlinear dynamics, research |
 

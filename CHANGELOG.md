@@ -5,17 +5,28 @@
 ### CLI 2.1.104 Ecosystem Optimization
 - **Agent maxTurns standardization**: Raise 10 agents to model tier targets (opus≥50, sonnet≥35)
 - **Tool list enrichment**: EnterPlanMode/ExitPlanMode added to all 7 allowlist-based opus agents; CronCreate, ScheduleWakeup added to automation-engineer, devops-architect, sre-expert; Monitor added to smart-debug command
-- **Hook expansion**: agent-core 12→15 events (+PreSubagentUse, ExecutionError, PermissionPrompt), dev-suite 0→8 events (new hooks/ directory), science-suite 0→6 events (new hooks/ directory)
+- **Hook expansion**: agent-core 12→17 events (+PreSubagentUse, ExecutionError, PermissionPrompt, ContextOverflow, CostThreshold), dev-suite 0→8 events (new hooks/ directory), science-suite 0→6 events (new hooks/ directory)
+- **Forward-looking hooks**: ContextOverflow and CostThreshold handlers registered in agent-core for future CLI versions (will not fire on CLI 2.1.x)
 - **Broken references fixed**: 5 phantom agent references in ultra-think and reflection commands resolved (research-intelligence, hpc-numerical-coordinator, ai-software-architect)
 - **Settings harmonization**: dev-suite default maxTurns 35→40 to match other suites
-- **New test coverage**: 15 hook integrity tests across all 3 suites (135 total, up from 120)
 - **Version bump**: Coordinated 3.2.0→3.3.0 across all 3 suites
+
+### Agent & Skill Polish
+- **Agent color scheme**: Added `color:` frontmatter field to all 24 agents for statusline differentiation (blue/cyan/green/magenta/red/yellow)
+- **Abstract model tiers**: Replaced hardcoded model version strings with abstract tier names (opus/sonnet/haiku) across agent frontmatter
+- **Hub skill triggers**: Improved skill description triggering patterns for better routing accuracy
+- **CodeRabbit cleanup**: Removed uninstalled coderabbit agent from inventory and quality gate references
+
+### Testing & CI
+- **Cross-suite invariant tests**: 19 new tests in `test_cross_suite_invariants.py` covering 7 coverage gaps (color field presence, model tier validity, hook event naming, skill budget, version sync, agent-skill cross-refs, command registration)
+- **CI quality gate**: New GitHub Actions workflow (`ci.yml`) running pytest, ruff, and mypy on PRs
+- **Test count**: 135→154 total tests across the suite
 
 **Validator State**
 
 * metadata_validator 0/0/0; xref_validator all valid;
   context_budget_checker 206/206 (no skill over 80%);
-  pytest 135/135; ruff + mypy clean; pip-audit clean.
+  pytest 154/154; ruff + mypy clean; pip-audit clean.
 
 ## v3.2.0 (2026-04-12)
 

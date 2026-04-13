@@ -58,9 +58,9 @@ Hub skills route to specialized sub-skills via decision trees:
 
 Sub-skills include: reasoning-frameworks, reflection-framework, agent-performance-optimization, agent-evaluation, multi-agent-coordination, llm-application-patterns, mcp-integration, prompt-engineering-patterns, memory-system-patterns, safety-guardrails, tool-use-patterns, knowledge-graph-patterns, `thinkfirst` *(new in v3.1.3)*, `self-improving-agents` *(new in v3.1.4)*
 
-## Hooks (15 events)
+## Hooks (17 events)
 
-SessionStart, SessionEnd, PreToolUse, PostToolUse, PreCompact, PostCompact, SubagentStart, SubagentStop, PermissionDenied, TaskCreated, TaskCompleted, StopFailure, PreSubagentUse, ExecutionError, PermissionPrompt
+SessionStart, SessionEnd, PreToolUse, PostToolUse, PreCompact, PostCompact, SubagentStart, SubagentStop, PermissionDenied, TaskCreated, TaskCompleted, StopFailure, PreSubagentUse, ExecutionError, PermissionPrompt, ContextOverflow, CostThreshold
 
 ## Installation
 

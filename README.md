@@ -8,7 +8,7 @@
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Docs](https://img.shields.io/badge/Docs-ReadTheDocs-brightgreen.svg)](https://myclaude.readthedocs.io/en/latest/)
 
-Claude Code plugin marketplace with **3 focused suites**, **24 expert agents**, **14 registered commands**, and **26 hub skills** routing to **180 sub-skills**. Built for Claude Opus 4.6 with tiered model assignments (Opus/Sonnet/Haiku), 29 lifecycle hooks across all suites, and hub-skill architecture for zero-ambiguity skill routing.
+Claude Code plugin marketplace with **3 focused suites**, **24 expert agents**, **14 registered commands**, and **26 hub skills** routing to **180 sub-skills**. Built for Claude Opus 4.6 with tiered model assignments (Opus/Sonnet/Haiku), 31 lifecycle hooks across all suites, and hub-skill architecture for zero-ambiguity skill routing.
 
 ## The 3-Suite Hub Architecture
 
@@ -16,7 +16,7 @@ MyClaude v3.3.0 uses a **hub-skill architecture**: skills are organized into hub
 
 | Suite | Agents | Commands | Hubs → Sub-skills | Hooks | Focus |
 |-------|--------|----------|-------------------|-------|-------|
-| [Agent Core](plugins/agent-core/) | 3 | 2 | 3 → 14 | 15 events | Orchestration, reasoning, context engineering |
+| [Agent Core](plugins/agent-core/) | 3 | 2 | 3 → 14 | 17 events | Orchestration, reasoning, context engineering |
 | [Dev Suite](plugins/dev-suite/) | 9 | 12 | 9 → 49 | 8 events | Full SDLC: architecture, CI/CD, testing, debugging |
 | [Science Suite](plugins/science-suite/) | 12 | 0 | 14 → 117 | 6 events | JAX, Julia, physics, ML/DL/HPC, research |
 
