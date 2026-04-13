@@ -1,6 +1,6 @@
 ---
 name: fix-commit-errors
-description: Interactive workflow to diagnose and fix CI/CD failures by analyzing logs, applying fixes, and rerunning workflows
+description: Automatically analyzes GitHub Actions failures, identifies root causes, applies intelligent solutions, validates, and reruns workflows with adaptive learning.
 category: "dev-suite"
 command: "/fix-commit-errors"
 execution-modes:
@@ -11,7 +11,6 @@ documentation:
   multi-agent-system: "${CLAUDE_PLUGIN_ROOT}/docs/dev-suite/multi-agent-error-analysis.md"
   error-patterns: "${CLAUDE_PLUGIN_ROOT}/docs/dev-suite/error-pattern-library.md"
   fix-strategies: "${CLAUDE_PLUGIN_ROOT}/docs/dev-suite/fix-strategies.md"
-description: Automatically analyzes GitHub Actions failures, identifies root causes, applies intelligent solutions, validates, and reruns workflows with adaptive learning.
 allowed-tools: Bash(gh:*), Bash(git:*), Bash(npm:*), Bash(yarn:*), Bash(uv:*), Bash(cargo:*), Bash(go:*), Read, Edit, ScheduleWakeup
 argument-hint: "[workflow-id|commit-sha|pr-number] [--auto-fix] [--learn] [--mode=quick-fix|standard|comprehensive]"
 ---

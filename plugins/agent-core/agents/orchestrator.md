@@ -2,6 +2,7 @@
 name: orchestrator
 description: Multi-agent orchestrator specializing in workflow coordination and distributed systems. Expert in agent team assembly and task allocation for scalable collaboration. Delegates domain-specific work to specialist agents. Use when coordinating multi-agent workflows, assembling specialist teams, or decomposing complex tasks requiring parallel execution across domains.
 model: opus
+color: blue
 effort: high
 memory: project
 maxTurns: 50
@@ -159,7 +160,7 @@ When orchestrating complex tasks, leverage Agent Teams for true parallel executi
 ## Coordination
 - Use TaskCreate with dependencies to sequence work
 - Each agent has independent context and memory
-- TeammmateIdle event signals when an agent is available
+- TeammateIdle event signals when an agent is available
 - TaskCompleted event signals handoff points
 ```
 
