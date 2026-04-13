@@ -76,7 +76,7 @@ Build production-ready AI agents with LangChain/LangGraph.
 
 | Component | Recommended |
 |-----------|-------------|
-| Primary LLM | Claude Sonnet 4.5 (`claude-sonnet-4-5`) |
+| Primary LLM | Claude Sonnet (`sonnet`) |
 | Embeddings | Voyage AI (`voyage-3-large`) |
 | Code | `voyage-code-3` |
 | Finance | `voyage-finance-2` |
@@ -110,7 +110,7 @@ Build production-ready AI agents with LangChain/LangGraph.
 
 ### Production Checklist
 
-- [ ] Initialize LLM with Claude Sonnet 4.5
+- [ ] Initialize LLM with Claude Sonnet
 - [ ] Setup Voyage AI embeddings
 - [ ] Create tools with async + error handling
 - [ ] Implement memory system

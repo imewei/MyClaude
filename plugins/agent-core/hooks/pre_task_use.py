@@ -53,7 +53,7 @@ def main() -> None:
             result["additionalContext"] = (
                 f"Agent '{subagent_type}' specializes in: "
                 f"{AGENT_CAPABILITIES[subagent_type]}. "
-                f"Leverage Opus 4.6 adaptive thinking for complex sub-tasks."
+                f"Leverage Opus adaptive thinking for complex sub-tasks."
             )
 
         json.dump(result, sys.stdout)

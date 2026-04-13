@@ -1,6 +1,6 @@
 # Agent Core
 
-Meta-agent suite for multi-agent orchestration, advanced reasoning, and context engineering. Coordinates all other suites but is never delegated to from below. Optimized for Claude Opus 4.6.
+Meta-agent suite for multi-agent orchestration, advanced reasoning, and context engineering. Coordinates all other suites but is never delegated to from below. Optimized for Claude Opus.
 
 ## Overview
 

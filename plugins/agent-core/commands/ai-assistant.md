@@ -34,7 +34,7 @@ Build AI assistant: $ARGUMENTS
 
 1. **NLU Pipeline**: Intent, entities, sentiment with parallel processing, fallback handling
 2. **Conversation Flows**: State machine (greeting, task_completion, error, farewell) with slot filling
-3. **LLM Integration**: Claude Sonnet 4.5 (primary) → GPT-4 (fallback) → Ollama (local) → static
+3. **LLM Integration**: Claude Sonnet (primary) → GPT-4 (fallback) → Ollama (local) → static
 4. **Context**: Working (request) → Short-term (session) → Long-term (persistent) with pruning
 5. **Testing**: Unit, integration, conversation, performance
 6. **Deployment**: Docker/K8s/Serverless

@@ -217,7 +217,7 @@ class RAGService:
     async def generate(self, query: str, context: list[dict]):
         context_text = "\n".join([c['content'] for c in context])
         async with self.client.messages.stream(
-            model="claude-3-5-sonnet-20241022",
+            model="sonnet",
             max_tokens=1024,
             messages=[{"role": "user", "content": f"Context:\n{context_text}\n\nQ: {query}"}]
         ) as stream:
@@ -229,8 +229,8 @@ class RAGService:
 ```python
 class CostOptimizedPipeline:
     COSTS = {
-        "claude-3-haiku-20240307": (0.00025, 0.00125),
-        "claude-3-5-sonnet-20241022": (0.003, 0.015),
+        "haiku": (0.0008, 0.004),
+        "sonnet": (0.003, 0.015),
     }
 
     async def process(self, query: str) -> tuple[str, float]:
@@ -240,7 +240,7 @@ class CostOptimizedPipeline:
 
         # Route by complexity
         complexity = await self._classify(query)
-        model = "claude-3-haiku-20240307" if complexity == "simple" else "claude-3-5-sonnet-20241022"
+        model = "haiku" if complexity == "simple" else "sonnet"
 
         response = await self._generate(query, model)
         await self._cache_response(query, response)

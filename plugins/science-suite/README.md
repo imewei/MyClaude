@@ -1,6 +1,6 @@
 # Science Suite
 
-Domain-specific scientific computing suite for high-performance computing, Julia ML/DL/HPC, specialized physics/chemistry simulations, and data science workflows. Agents primarily collaborate within the suite with only 2 outward delegation edges. Optimized for Claude Opus 4.6.
+Domain-specific scientific computing suite for high-performance computing, Julia ML/DL/HPC, specialized physics/chemistry simulations, and data science workflows. Agents primarily collaborate within the suite with only 2 outward delegation edges. Optimized for Claude Opus.
 
 ## Overview
 

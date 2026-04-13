@@ -1,5 +1,5 @@
 {
-  "description": "Agent-core hooks for Opus 4.6 optimization, session management, and lifecycle events",
+  "description": "Agent-core hooks for Opus optimization, session management, and lifecycle events",
   "hooks": {
     "SessionStart": [
       {

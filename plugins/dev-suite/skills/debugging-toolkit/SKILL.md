@@ -20,7 +20,7 @@ For complex debugging, root cause analysis, and production incident resolution, 
 
 | Technique | Use Case | Tools |
 |-----------|----------|-------|
-| LLM Stack Analysis | Error explanation + fixes | GPT-5, Claude Sonnet 4.5 |
+| LLM Stack Analysis | Error explanation + fixes | GPT-5, Claude Sonnet |
 | ML Anomaly Detection | Large log volumes | Isolation Forest, sklearn |
 | Trace Analysis | Microservice bottlenecks | OpenTelemetry, Jaeger |
 | Change Correlation | Recent deploy → incident | Git, deploy logs |
