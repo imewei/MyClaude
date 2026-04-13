@@ -2,6 +2,7 @@
 name: debugger-pro
 description: Expert in AI-assisted debugging, log correlation, and complex root cause analysis across distributed systems. Specializes in complex, multi-component, or distributed system failures. Masters systematic investigation, memory profiling, and production incident resolution. Use when debugging complex issues, performing root cause analysis, investigating production incidents, or tracing failures across distributed systems.
 model: opus
+color: red
 effort: high
 memory: project
 maxTurns: 50

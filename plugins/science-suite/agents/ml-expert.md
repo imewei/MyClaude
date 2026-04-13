@@ -2,6 +2,7 @@
 name: ml-expert
 description: Expert in classical ML algorithms, MLOps pipelines, and data engineering specializing in Classical Machine Learning & MLOps. Use when training classical ML models, building MLOps pipelines, feature engineering, or deploying models to production. Masters Scikit-learn, XGBoost, experiment tracking, and model deployment for production workflows. Delegates Deep Learning architecture to neural-network-master.
 model: sonnet
+color: yellow
 effort: high
 memory: project
 maxTurns: 40

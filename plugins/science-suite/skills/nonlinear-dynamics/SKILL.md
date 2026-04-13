@@ -1,6 +1,6 @@
 ---
 name: nonlinear-dynamics
-description: Meta-orchestrator for nonlinear dynamics analysis. Routes to specialized skills for bifurcation analysis, chaos/attractors, network dynamics, pattern formation, and equation discovery. Use when analyzing dynamical systems, coupled oscillators, spatiotemporal chaos, or data-driven model discovery.
+description: Meta-orchestrator for nonlinear dynamics analysis. Routes to specialized skills for bifurcation analysis, chaos/attractors, network dynamics, pattern formation, and equation discovery. Use when analyzing dynamical systems, computing Lyapunov exponents, discovering governing equations from data (SINDy), reconstructing attractors, studying coupled oscillators, spatiotemporal chaos, or data-driven model discovery.
 ---
 
 # Nonlinear Dynamics
@@ -65,7 +65,7 @@ What is the analysis goal?
 |
 +-- Working inside the Python/NumPy ecosystem (nolds, pyunicorn, antropy,
 |   pyEDM, IDTxl, arch, statsmodels, ewstools)?
-|   --> See the Ecosystem Selection table below for package-to-task mapping
+|   --> chaos-attractors (Python alternatives documented in Ecosystem Selection below)
 |
 +-- Need both Julia and JAX in one workflow?
     --> jax-julia-interop

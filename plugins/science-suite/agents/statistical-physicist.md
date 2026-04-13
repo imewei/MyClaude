@@ -2,6 +2,7 @@
 name: statistical-physicist
 description: Expert in Computational Statistical Physics & Soft Matter. Use when analyzing phase transitions, computing correlation functions, modeling non-equilibrium dynamics, or bridging microscopic and macroscopic descriptions. Specializes in correlation functions, non-equilibrium dynamics, JAX-accelerated simulations, ensemble theory, stochastic calculus (Langevin/Fokker-Planck), phase transitions, fluctuation theorems, and AI-physics integration (normalizing flows, ML coarse-graining). Delegates JAX optimization to jax-pro.
 model: opus
+color: blue
 effort: high
 memory: project
 maxTurns: 50

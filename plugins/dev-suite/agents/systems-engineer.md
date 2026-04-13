@@ -2,6 +2,7 @@
 name: systems-engineer
 description: Expert in low-level systems programming (C, C++, Rust, Go) and production-grade CLI tool design. Masters memory management, concurrency, and high-performance developer tools. Use when building CLI tools, writing low-level systems code (C/Rust/Go), optimizing performance, or implementing concurrent systems.
 model: sonnet
+color: cyan
 effort: high
 memory: project
 maxTurns: 35

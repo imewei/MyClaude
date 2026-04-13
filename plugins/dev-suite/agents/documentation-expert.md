@@ -2,6 +2,7 @@
 name: documentation-expert
 description: Expert in creating clear, comprehensive, and accurate technical documentation, manuals, and tutorials. Unifies capabilities of documentation architecture and tutorial engineering. Use when creating API docs, README files, tutorials, architecture decision records, or improving existing documentation.
 model: haiku
+color: yellow
 effort: medium
 memory: project
 maxTurns: 20

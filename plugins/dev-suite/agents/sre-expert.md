@@ -2,6 +2,7 @@
 name: sre-expert
 description: Reliability Consultant expert in system reliability, observability (monitoring, logging, tracing), and incident response. Masters SLO/SLI frameworks and root cause analysis. Use when defining SLOs/SLIs, investigating reliability issues, setting up monitoring, or designing incident response processes.
 model: sonnet
+color: green
 effort: high
 memory: project
 maxTurns: 35

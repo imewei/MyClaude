@@ -1,6 +1,6 @@
 ---
 name: agent-systems
-description: Meta-orchestrator for multi-agent systems. Routes to specialized skills for agent coordination, performance optimization, evaluation, and tool use patterns. Use when designing multi-agent workflows, optimizing agent performance, or implementing tool chains.
+description: Meta-orchestrator for multi-agent systems. Routes to specialized skills for agent coordination, performance optimization, evaluation, and tool use patterns. Use when designing multi-agent workflows, optimizing agent performance, implementing tool chains, agent delegation, or task handoff patterns.
 ---
 
 # Agent Systems
@@ -46,6 +46,15 @@ What is the primary concern?
 +-- Designing how an agent selects or chains tools?
     --> tool-use-patterns (selection, chaining, error handling)
 ```
+
+## Skill Selection Table
+
+| Task | Skill |
+|------|-------|
+| DAG workflows, team assembly, messaging | `multi-agent-coordination` |
+| Caching, load balancing, latency | `agent-performance-optimization` |
+| Benchmarks, scoring, regression | `agent-evaluation` |
+| Tool selection, chaining, retries | `tool-use-patterns` |
 
 ## Checklist
 

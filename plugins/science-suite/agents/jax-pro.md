@@ -2,6 +2,7 @@
 name: jax-pro
 description: Expert JAX scientific computing agent. Use when writing JAX code, implementing JIT compilation, vectorization with vmap, parallel computing with pmap, or building neural networks with Flax/Equinox. Also covers NumPyro, NLSQ, JAX-MD/CFD, Lineax/Optimistix solvers, and interpax interpolation. Handles distributed training, custom VJPs, and GPU kernels. Delegates bifurcation/chaos theory to nonlinear-dynamics-expert.
 model: sonnet
+color: green
 effort: high
 memory: project
 maxTurns: 40

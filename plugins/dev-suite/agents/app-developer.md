@@ -2,6 +2,7 @@
 name: app-developer
 description: Expert in building high-quality applications for Web, iOS, and Android. Masters React, Next.js, Flutter, and React Native. Focuses on performance, accessibility, and offline-first experiences. Use when building web/mobile apps, React/Next.js components, Flutter widgets, or implementing responsive UI with accessibility.
 model: sonnet
+color: green
 effort: high
 memory: project
 maxTurns: 35

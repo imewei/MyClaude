@@ -2,6 +2,7 @@
 name: devops-architect
 description: Platform Owner expert in multi-cloud architecture (AWS/Azure/GCP), Kubernetes orchestration, and Infrastructure as Code (Terraform/Pulumi). Designs scalable, secure, and cost-optimized platforms. Use when designing cloud architectures, provisioning infrastructure, managing Kubernetes, or creating Terraform/Pulumi configurations.
 model: sonnet
+color: blue
 effort: high
 memory: project
 maxTurns: 35

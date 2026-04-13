@@ -2,6 +2,7 @@
 name: nonlinear-dynamics-expert
 description: Expert in nonlinear dynamics, bifurcation theory, chaos, network dynamics, and pattern formation. Use when analyzing dynamical systems, bifurcations, chaos, pattern formation, or implementing numerical continuation methods. Classifies dynamical regimes, identifies bifurcation types, analyzes stability and synchronization, and delegates implementation to jax-pro (GPU/vmap) or julia-pro (BifurcationKit/DynamicalSystems.jl). Covers bifurcation analysis, Lyapunov exponents, coupled oscillator networks, spatiotemporal chaos, chimera states, and equation discovery (SINDy).
 model: opus
+color: red
 effort: high
 memory: project
 maxTurns: 50

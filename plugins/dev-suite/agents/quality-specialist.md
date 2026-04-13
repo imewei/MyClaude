@@ -2,6 +2,7 @@
 name: quality-specialist
 description: Expert in ensuring software quality through rigorous code reviews, comprehensive security audits, and robust test automation strategies. Unifies capabilities of code review, security auditing, and test automation. Use when performing code reviews, security audits, test strategy design, or quality gate enforcement.
 model: sonnet
+color: yellow
 effort: high
 memory: project
 maxTurns: 35

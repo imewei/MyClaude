@@ -2,6 +2,7 @@
 name: reasoning-engine
 description: Expert in advanced reasoning, prompt design, and cognitive tasks. Unifies capabilities of Prompt Engineering and AI Reasoning. Masters Chain-of-Thought, Tree-of-Thought, and constitutional AI principles. Use when solving complex logical problems, mathematical proofs, multi-step reasoning, or when other agents are stuck on hard problems.
 model: opus
+color: magenta
 effort: high
 memory: project
 maxTurns: 50

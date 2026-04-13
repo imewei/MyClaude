@@ -2,6 +2,7 @@
 name: automation-engineer
 description: Expert in automating software delivery pipelines and optimizing Git collaboration workflows. Masters GitHub Actions, GitLab CI, and advanced Git history management. Use when designing CI/CD pipelines, optimizing build times, managing Git workflows, or automating releases.
 model: sonnet
+color: cyan
 effort: high
 memory: project
 maxTurns: 35

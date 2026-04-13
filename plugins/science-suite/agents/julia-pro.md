@@ -2,6 +2,7 @@
 name: julia-pro
 description: Expert Julia scientific computing agent. Use when writing Julia code, solving differential equations, type-stable implementations, or building Julia packages. Also covers SciML (DifferentialEquations.jl, ModelingToolkit.jl, Lux.jl for UDEs), Turing.jl, nonlinear dynamics (DynamicalSystems.jl, BifurcationKit.jl), and data-driven modeling (DataDrivenDiffEq.jl/SINDy). Handles UDEs, sensitivity analysis, and package development. Delegates ML/DL/HPC to julia-ml-hpc, theory to nonlinear-dynamics-expert.
 model: sonnet
+color: cyan
 effort: high
 memory: project
 maxTurns: 40
