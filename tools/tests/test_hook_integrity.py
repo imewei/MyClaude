@@ -30,6 +30,8 @@ VALID_HOOK_EVENTS = {
     "ElicitationDialog",
     "StopFailure",
     "ExecutionError",
+    "ContextOverflow",
+    "CostThreshold",
 }
 
 VALID_HANDLER_TYPES = {"command", "http", "prompt", "agent"}

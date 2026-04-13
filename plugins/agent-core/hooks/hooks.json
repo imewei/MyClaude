@@ -194,6 +194,32 @@
           }
         ]
       }
+    ],
+    "ContextOverflow": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 ${CLAUDE_PLUGIN_ROOT}/hooks/context_overflow.py",
+            "async": false,
+            "timeout": 10
+          }
+        ]
+      }
+    ],
+    "CostThreshold": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 ${CLAUDE_PLUGIN_ROOT}/hooks/cost_threshold.py",
+            "async": false,
+            "timeout": 10
+          }
+        ]
+      }
     ]
   }
 }
