@@ -1,6 +1,6 @@
 # Agent Teams Guide for MyClaude Plugin Suites
 
-> 10 ready-to-use team configurations with 20 variants, leveraging 24 MyClaude agents + 19 official plugin agents across 3 suites.
+> 10 ready-to-use team configurations with 20 variants, leveraging 24 MyClaude agents + 18 official plugin agents across 3 suites.
 >
 > **v3.4.0:** Consolidated from 27 teams to 10 teams with a variant system (`--var MODE=x`). Zero function loss — every capability from every absorbed team is reachable via a variant. 20 aliases provide backward compatibility.
 
@@ -59,7 +59,6 @@ Enable agent teams (experimental) in your settings:
 | **feature-dev** | code-explorer | `feature-dev:code-explorer` | Execution path tracing |
 | | code-architect | `feature-dev:code-architect` | Feature architecture blueprints |
 | | code-reviewer | `feature-dev:code-reviewer` | Bug, logic, security review |
-| **coderabbit** *(optional)* | code-reviewer | `coderabbit:code-reviewer` | AI-powered code review (requires separate install) |
 | **code-simplifier** | code-simplifier | `code-simplifier:code-simplifier` | Code clarity and refinement |
 | **agent-sdk-dev** | agent-sdk-verifier-ts | `agent-sdk-dev:agent-sdk-verifier-ts` | TS Agent SDK validation |
 | | agent-sdk-verifier-py | `agent-sdk-dev:agent-sdk-verifier-py` | Python Agent SDK validation |
@@ -483,7 +482,6 @@ Any team can be enhanced by adding official plugin agents as quality gates. Appe
 | Silent Failures | `pr-review-toolkit:silent-failure-hunter` | debug, api-infra:infra, docs-publish | Swallowed errors |
 | Test Gaps | `pr-review-toolkit:pr-test-analyzer` | quality-gate, modernize, api-infra | Missing test coverage |
 | Type Quality | `pr-review-toolkit:type-design-analyzer` | ml-deploy:data, docs-publish, sci-compute | Weak type invariants |
-| AI Review *(optional)* | `coderabbit:code-reviewer` | feature-dev, api-infra, quality-gate | Second-opinion analysis (requires separate install) |
 | Code Simplicity | `code-simplifier:code-simplifier` | modernize, ml-deploy:data, quality-gate | Unnecessary complexity |
 | Plan Adherence | `superpowers:code-reviewer` | feature-dev, modernize, ml-deploy:perf | Drift from plan |
 

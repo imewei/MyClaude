@@ -97,7 +97,7 @@ All 26 hub skills route to 180 sub-skills with 100% Expert Agent coverage:
 Official Plugin Agents
 ----------------------
 
-19 agents from 9 official plugins complement the 24 MyClaude domain experts.
+18 agents from 8 official plugins complement the 24 MyClaude domain experts.
 See the :doc:`Agent Teams Guide <agent-teams-guide>` for team configurations
 that integrate these agents.
 
