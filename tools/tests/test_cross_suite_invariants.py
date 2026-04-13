@@ -105,6 +105,14 @@ class TestAgentModelTier:
 # --- Hub Skill Routing Tree ---
 
 
+def _is_hub_skill(skill_md: Path) -> bool:
+    """A hub skill routes to sub-skills via ``../`` relative links."""
+    if not skill_md.exists():
+        return False
+    content = skill_md.read_text(encoding="utf-8")
+    return "../" in content
+
+
 class TestHubRoutingTree:
     """Hub skills must contain a Routing Decision Tree code block and Checklist."""
 
@@ -120,7 +128,7 @@ class TestHubRoutingTree:
             # skill_ref is a path like "./skills/backend-patterns"
             skill_path = skill_ref if isinstance(skill_ref, str) else skill_ref.get("name", "")
             skill_md = PLUGINS_ROOT / suite / skill_path / "SKILL.md"
-            if not skill_md.exists():
+            if not _is_hub_skill(skill_md):
                 continue
 
             content = skill_md.read_text(encoding="utf-8")
@@ -149,7 +157,7 @@ class TestHubRoutingTree:
         for skill_ref in skills:
             skill_path = skill_ref if isinstance(skill_ref, str) else skill_ref.get("name", "")
             skill_md = PLUGINS_ROOT / suite / skill_path / "SKILL.md"
-            if not skill_md.exists():
+            if not _is_hub_skill(skill_md):
                 continue
 
             content = skill_md.read_text(encoding="utf-8")

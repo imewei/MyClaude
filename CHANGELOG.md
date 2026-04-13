@@ -1,5 +1,16 @@
 # Changelog
 
+## v3.3.2 (2026-04-13)
+
+### Bug Fix
+- **Hub routing tests**: Distinguish hub skills (with `../` sub-skill references) from standalone skills in `test_cross_suite_invariants.py` so non-hub skills like `thinkfirst` are not required to have Routing Decision Tree or Checklist sections
+
+### Skill Registration
+- **thinkfirst skill**: Register prompt-engineering skill in agent-core plugin manifest for user discoverability
+
+### Maintenance
+- **Version bump**: Coordinated 3.3.1→3.3.2 across all 3 suites
+
 ## v3.3.1 (2026-04-13)
 
 ### Skill Registration
