@@ -26,7 +26,7 @@ plugin.json → hub skill → routing decision tree → sub-skill
 | Agents | 3 | orchestrator (opus), reasoning-engine (opus), context-specialist (sonnet) |
 | Commands | 2 registered | `/ultra-think`, `/team-assemble` |
 | Skills | 3 hubs → 14 sub | agent-systems, reasoning-and-memory, llm-engineering |
-| Hooks | 15 events | SessionStart, SessionEnd, PreToolUse, PostToolUse, PreCompact, PostCompact, SubagentStart, SubagentStop, PermissionDenied, TaskCreated, TaskCompleted, StopFailure, PreSubagentUse, ExecutionError, PermissionPrompt |
+| Hooks | 17 events | SessionStart, SessionEnd, PreToolUse, PostToolUse, PreCompact, PostCompact, SubagentStart, SubagentStop, PermissionDenied, TaskCreated, TaskCompleted, StopFailure, PreSubagentUse, ExecutionError, PermissionPrompt, ContextOverflow, CostThreshold |
 
 ### 2. Dev Suite (`dev-suite`)
 

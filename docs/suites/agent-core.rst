@@ -3,7 +3,7 @@ Agent Core Suite
 
 Core orchestration, advanced reasoning, and context engineering. Uses the :term:`Hub Skill` architecture with 3 hubs routing to 14 sub-skills. Optimized for Claude Opus 4.6 with adaptive thinking and :term:`Agent Team` support.
 
-**Version:** 3.3.0 | **3 Agents** | **2 Registered Commands** | **3 Hubs → 14 Sub-skills** | **15 Hook Events**
+**Version:** 3.3.0 | **3 Agents** | **2 Registered Commands** | **3 Hubs → 14 Sub-skills** | **17 Hook Events**
 
 Agents
 ------
@@ -89,7 +89,7 @@ Intent clarification, prompt engineering, LLM application patterns, MCP integrat
 Hooks
 -----
 
-15 hook events with Python script implementations:
+17 hook events with Python script implementations:
 
 - ``SessionStart`` — Session initialization
 - ``SessionEnd`` — Session teardown
@@ -106,3 +106,5 @@ Hooks
 - ``PreSubagentUse`` — Validate subagent dispatch, catch misrouted agents *(new in v3.3.0)*
 - ``ExecutionError`` — Structured error capture for reasoning chain failures *(new in v3.3.0)*
 - ``PermissionPrompt`` — Log permission dialog events for debugging *(new in v3.3.0)*
+- ``ContextOverflow`` — Forward-looking handler for context window exhaustion *(new in v3.3.0)*
+- ``CostThreshold`` — Forward-looking handler for cost limit triggers *(new in v3.3.0)*

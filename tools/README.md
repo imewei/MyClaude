@@ -8,7 +8,7 @@ Automated tools for plugin validation, performance profiling, triggering pattern
 # Validate all plugins
 make validate
 
-# Run all tests (60 tests)
+# Run all tests (154 tests)
 uv run pytest tools/tests/ -v
 
 # Check skill context budget
@@ -45,17 +45,21 @@ tools/
 ├── maintenance/           # Ecosystem maintenance
 │   ├── analyze_ecosystem.py       # Skill/agent ecosystem metrics
 │   └── enable_all_plugins.py      # Enable all plugins in settings
-├── tests/                 # Pytest suite (60 tests)
+├── tests/                 # Pytest suite (154 tests)
 │   ├── test_agent_core_integrity.py
-│   ├── test_dev_suite_integrity.py
-│   ├── test_science_suite_integrity.py
-│   ├── test_science_suite_functionality.py
 │   ├── test_build_automation.py
 │   ├── test_category_pages.py
+│   ├── test_command_file_linter.py
 │   ├── test_content_extraction.py
+│   ├── test_cross_suite_invariants.py
+│   ├── test_dev_suite_integrity.py
 │   ├── test_doc_checker.py
+│   ├── test_hook_integrity.py
 │   ├── test_plugin_review.py
+│   ├── test_readme_safeguards.py
 │   ├── test_refactor_validator.py
+│   ├── test_science_suite_functionality.py
+│   ├── test_science_suite_integrity.py
 │   ├── test_skill_validator.py
 │   ├── test_supplementary_docs.py
 │   └── test_xref_validator.py
