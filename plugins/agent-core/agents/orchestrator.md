@@ -64,27 +64,27 @@ Assistant: I will involve the sre-expert and the software-architect to review th
 | **Core** | `orchestrator` | Workflow coordination and team assembly |
 | | `context-specialist` | Managing shared context and memory |
 | | `reasoning-engine` | Solving complex logical blockers |
-| **Engineering** | `software-architect` | System design and technical strategy |
-| | `app-developer` | Web/Mobile application development |
-| | `systems-engineer` | Low-level systems and performance |
-| **Infrastructure** | `devops-architect` | Platform Owner: Cloud & IaC |
-| | `sre-expert` | Reliability Consultant: Observability & SLOs |
-| | `automation-engineer` | CI/CD and workflow automation |
-| **Quality** | `quality-specialist` | Testing, validation, and compliance |
-| | `debugger-pro` | Root cause analysis and bug fixing |
-| | `documentation-expert` | Technical writing and knowledge base |
-| **Science** | `ai-engineer` | AI/ML application development |
-| | `ml-expert` | Classical ML and MLOps pipelines |
-| | `neural-network-master` | Deep Learning and neural architectures |
-| | `research-expert` | Literature review and scientific rigor |
-| | `prompt-engineer` | LLM communication and evaluation |
-| | `simulation-expert` | Physics-based modeling and synthetic data |
-| | `statistical-physicist` | Complex systems and statistical analysis |
-| | `python-pro` | Advanced Python and scientific stack |
-| | `jax-pro` | High-performance JAX development |
-| | `julia-pro` | High-performance Julia development |
-| | `julia-ml-hpc` | Julia ML and HPC workflows |
-| | `nonlinear-dynamics-expert` | Nonlinear dynamics and chaos theory |
+| **Engineering** | `software-architect` (dev-suite) | System design and technical strategy |
+| | `app-developer` (dev-suite) | Web/Mobile application development |
+| | `systems-engineer` (dev-suite) | Low-level systems and performance |
+| **Infrastructure** | `devops-architect` (dev-suite) | Platform Owner: Cloud & IaC |
+| | `sre-expert` (dev-suite) | Reliability Consultant: Observability & SLOs |
+| | `automation-engineer` (dev-suite) | CI/CD and workflow automation |
+| **Quality** | `quality-specialist` (dev-suite) | Testing, validation, and compliance |
+| | `debugger-pro` (dev-suite) | Root cause analysis and bug fixing |
+| | `documentation-expert` (dev-suite) | Technical writing and knowledge base |
+| **Science** | `ai-engineer` (science-suite) | AI/ML application development |
+| | `ml-expert` (science-suite) | Classical ML and MLOps pipelines |
+| | `neural-network-master` (science-suite) | Deep Learning and neural architectures |
+| | `research-expert` (science-suite) | Literature review and scientific rigor |
+| | `prompt-engineer` (science-suite) | LLM communication and evaluation |
+| | `simulation-expert` (science-suite) | Physics-based modeling and synthetic data |
+| | `statistical-physicist` (science-suite) | Complex systems and statistical analysis |
+| | `python-pro` (science-suite) | Advanced Python and scientific stack |
+| | `jax-pro` (science-suite) | High-performance JAX development |
+| | `julia-pro` (science-suite) | High-performance Julia development |
+| | `julia-ml-hpc` (science-suite) | Julia ML and HPC workflows |
+| | `nonlinear-dynamics-expert` (science-suite) | Nonlinear dynamics and chaos theory |
 
 ---
 
@@ -127,12 +127,12 @@ Assistant: I will involve the sre-expert and the software-architect to review th
 - **Phase 3**: Integration and review.
 
 ### Step 3: Agent Assignment
-- **Backend/Systems Task** -> `software-architect` / `systems-engineer`
-- **Frontend/Mobile Task** -> `app-developer`
-- **Infra/Platform Task** -> `devops-architect`
-- **Reliability Task** -> `sre-expert`
-- **QA/Testing Task** -> `quality-specialist` / `debugger-pro`
-- **Science/ML Task** -> `ml-expert` / `neural-network-master` / `ai-engineer`
+- **Backend/Systems Task** -> `software-architect` (dev-suite) / `systems-engineer` (dev-suite)
+- **Frontend/Mobile Task** -> `app-developer` (dev-suite)
+- **Infra/Platform Task** -> `devops-architect` (dev-suite)
+- **Reliability Task** -> `sre-expert` (dev-suite)
+- **QA/Testing Task** -> `quality-specialist` (dev-suite) / `debugger-pro` (dev-suite)
+- **Science/ML Task** -> `ml-expert` (science-suite) / `neural-network-master` (science-suite) / `ai-engineer` (science-suite)
 
 ### Step 4: Workflow Construction
 - **Sequential**: A output -> B input.
