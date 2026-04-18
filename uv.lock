@@ -45,6 +45,21 @@ wheels = [
 ]
 
 [[package]]
+name = "bandit"
+version = "1.9.4"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "colorama", marker = "sys_platform == 'win32'" },
+    { name = "pyyaml" },
+    { name = "rich" },
+    { name = "stevedore" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/aa/c3/0cb80dfe0f3076e5da7e4c5ad8e57bac6ac357ff4a6406205501cade4965/bandit-1.9.4.tar.gz", hash = "sha256:b589e5de2afe70bd4d53fa0c1da6199f4085af666fde00e8a034f152a52cd628", size = 4242677, upload-time = "2026-02-25T06:44:15.503Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/05/a4/a26d5b25671d27e03afb5401a0be5899d94ff8fab6a698b1ac5be3ec29ef/bandit-1.9.4-py3-none-any.whl", hash = "sha256:f89ffa663767f5a0585ea075f01020207e966a9c0f2b9ef56a57c7963a3f6f8e", size = 134741, upload-time = "2026-02-25T06:44:13.694Z" },
+]
+
+[[package]]
 name = "beautifulsoup4"
 version = "4.14.3"
 source = { registry = "https://pypi.org/simple" }
@@ -787,6 +802,7 @@ dependencies = [
 
 [package.dev-dependencies]
 dev = [
+    { name = "bandit" },
     { name = "black" },
     { name = "mypy" },
     { name = "pip-audit" },
@@ -794,6 +810,7 @@ dev = [
     { name = "pytest-cov" },
     { name = "ruff" },
     { name = "types-pyyaml" },
+    { name = "vulture" },
 ]
 docs = [
     { name = "docstr-coverage" },
@@ -825,6 +842,7 @@ requires-dist = [{ name = "pyyaml", specifier = ">=6.0.3" }]
 
 [package.metadata.requires-dev]
 dev = [
+    { name = "bandit", specifier = ">=1.9.4" },
     { name = "black", specifier = ">=26.1.0" },
     { name = "mypy", specifier = ">=1.19.1" },
     { name = "pip-audit", specifier = ">=2.10.0" },
@@ -832,6 +850,7 @@ dev = [
     { name = "pytest-cov", specifier = ">=7.0.0" },
     { name = "ruff", specifier = ">=0.14.13" },
     { name = "types-pyyaml", specifier = ">=6.0.12.20260408" },
+    { name = "vulture", specifier = ">=2.16" },
 ]
 docs = [
     { name = "docstr-coverage", specifier = ">=2.3" },
@@ -868,6 +887,7 @@ dependencies = [
     { name = "pathspec" },
     { name = "typing-extensions" },
 ]
+sdist = { url = "https://files.pythonhosted.org/packages/0b/3d/5b373635b3146264eb7a68d09e5ca11c305bbb058dfffbb47c47daf4f632/mypy-1.20.1.tar.gz", hash = "sha256:6fc3f4ecd52de81648fed1945498bf42fa2993ddfad67c9056df36ae5757f804", size = 3815892, upload-time = "2026-04-13T02:46:51.474Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/21/e8/ef0991aa24c8f225df10b034f3c2681213cb54cf247623c6dec9a5744e70/mypy-1.20.1-cp313-cp313-macosx_10_13_x86_64.whl", hash = "sha256:8f3886c03e40afefd327bd70b3f634b39ea82e87f314edaa4d0cce4b927ddcc1", size = 14500739, upload-time = "2026-04-13T02:46:05.442Z" },
     { url = "https://files.pythonhosted.org/packages/23/73/416ebec3047636ed89fa871dc8c54bf05e9e20aa9499da59790d7adb312d/mypy-1.20.1-cp313-cp313-macosx_11_0_arm64.whl", hash = "sha256:e860eb3904f9764e83bafd70c8250bdffdc7dde6b82f486e8156348bf7ceb184", size = 13314735, upload-time = "2026-04-13T02:46:47.154Z" },
@@ -1571,6 +1591,15 @@ wheels = [
 ]
 
 [[package]]
+name = "stevedore"
+version = "5.7.0"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/a2/6d/90764092216fa560f6587f83bb70113a8ba510ba436c6476a2b47359057c/stevedore-5.7.0.tar.gz", hash = "sha256:31dd6fe6b3cbe921e21dcefabc9a5f1cf848cf538a1f27543721b8ca09948aa3", size = 516200, upload-time = "2026-02-20T13:27:06.765Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/69/06/36d260a695f383345ab5bbc3fd447249594ae2fa8dfd19c533d5ae23f46b/stevedore-5.7.0-py3-none-any.whl", hash = "sha256:fd25efbb32f1abb4c9e502f385f0018632baac11f9ee5d1b70f88cc5e22ad4ed", size = 54483, upload-time = "2026-02-20T13:27:05.561Z" },
+]
+
+[[package]]
 name = "tomli"
 version = "2.4.1"
 source = { registry = "https://pypi.org/simple" }
@@ -1665,6 +1694,15 @@ dependencies = [
 sdist = { url = "https://files.pythonhosted.org/packages/5e/da/6eee1ff8b6cbeed47eeb5229749168e81eb4b7b999a1a15a7176e51410c9/uvicorn-0.44.0.tar.gz", hash = "sha256:6c942071b68f07e178264b9152f1f16dfac5da85880c4ce06366a96d70d4f31e", size = 86947, upload-time = "2026-04-06T09:23:22.826Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/b7/23/a5bbd9600dd607411fa644c06ff4951bec3a4d82c4b852374024359c19c0/uvicorn-0.44.0-py3-none-any.whl", hash = "sha256:ce937c99a2cc70279556967274414c087888e8cec9f9c94644dfca11bd3ced89", size = 69425, upload-time = "2026-04-06T09:23:21.524Z" },
+]
+
+[[package]]
+name = "vulture"
+version = "2.16"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/66/3e/4d08c5903b2c0c70cad583c170cc4a663fc6a61e2ad00b711fcda61358cd/vulture-2.16.tar.gz", hash = "sha256:f8d9f6e2af03011664a3c6c240c9765b3f392917d3135fddca6d6a68d359f717", size = 52680, upload-time = "2026-03-25T14:41:27.141Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/f5/be/f935130312330614811dae2ea9df3f395f6d63889eb6c2e68c14507152ee/vulture-2.16-py3-none-any.whl", hash = "sha256:6e0f1c312cef1c87856957e5c2ca9608834a7c794c2180477f30bf0e4cc58eee", size = 26993, upload-time = "2026-03-25T14:41:26.21Z" },
 ]
 
 [[package]]

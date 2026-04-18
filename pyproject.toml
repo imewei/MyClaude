@@ -17,6 +17,8 @@ dev = [
     "black>=26.1.0",
     "types-pyyaml>=6.0.12.20260408",
     "pip-audit>=2.10.0",
+    "bandit>=1.9.4",
+    "vulture>=2.16",
 ]
 science = [
     "numpy>=2.4.1",

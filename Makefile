@@ -2,7 +2,8 @@
 # Version: 3.0.0
 
 .PHONY: help clean clean-all clean-python clean-docs clean-cache clean-build clean-reports \
-        build docs docs-live test lint validate install dev-install plugin-enable-all audit
+        build docs docs-live test lint validate install dev-install plugin-enable-all \
+        audit audit-deps audit-sast audit-secrets audit-deadcode
 
 # Default target
 .DEFAULT_GOAL := help
@@ -172,14 +173,52 @@ test-coverage: ## Run tests with coverage report
 
 ##@ Security
 
-audit: ## Run pip-audit on dev dependencies for known CVEs
-	@echo "Running pip-audit on dev dependencies..."
+audit: audit-deps audit-secrets audit-sast audit-deadcode ## Run full audit (deps + secrets + SAST + dead code)
+	@echo "✓ Full audit complete"
+
+audit-deps: ## pip-audit: known CVEs in Python dependencies
+	@echo "[1/4] pip-audit (dependency CVEs)..."
 	@if command -v uv >/dev/null 2>&1; then \
 		uv run pip-audit; \
 	else \
 		pip-audit; \
 	fi
-	@echo "  ✓ pip-audit complete — no known vulnerabilities"
+	@echo "  ✓ no known vulnerabilities"
+
+audit-secrets: ## gitleaks: secret-scan working tree (history skipped — see notes/security.md)
+	@echo "[2/4] gitleaks (working-tree secret scan)..."
+	@if command -v gitleaks >/dev/null 2>&1; then \
+		gitleaks detect --no-banner --no-git --report-format=json --report-path=reports/gitleaks-tree.json && \
+		echo "  ✓ no secrets in working tree"; \
+	else \
+		echo "  ⊘ gitleaks not installed; install with 'brew install gitleaks'"; \
+	fi
+
+audit-sast: ## bandit: static security analysis on production Python sources (tests/ excluded — test code legitimately uses /tmp)
+	@echo "[3/4] bandit (Python SAST, severity Medium+)..."
+	@if command -v uv >/dev/null 2>&1; then \
+		uv run bandit -r tools/validation/ tools/maintenance/ tools/common/ plugins/*/hooks/ \
+			--severity-level medium -q 2>/dev/null && \
+		echo "  ✓ no Medium/High severity issues in production sources"; \
+	elif command -v bandit >/dev/null 2>&1; then \
+		bandit -r tools/validation/ tools/maintenance/ tools/common/ plugins/*/hooks/ \
+			--severity-level medium -q 2>/dev/null && \
+		echo "  ✓ no Medium/High severity issues in production sources"; \
+	else \
+		echo "  ⊘ bandit not installed; install with 'uv add --dev bandit'"; \
+	fi
+
+audit-deadcode: ## vulture: dead-code detection (--min-confidence 80)
+	@echo "[4/4] vulture (dead-code detection, min confidence 80%)..."
+	@if command -v uv >/dev/null 2>&1; then \
+		uv run vulture tools/ plugins/*/hooks/ --min-confidence 80 || \
+		echo "  ℹ findings are advisory; review individually"; \
+	elif command -v vulture >/dev/null 2>&1; then \
+		vulture tools/ plugins/*/hooks/ --min-confidence 80 || \
+		echo "  ℹ findings are advisory; review individually"; \
+	else \
+		echo "  ⊘ vulture not installed; install with 'uv add --dev vulture'"; \
+	fi
 
 ##@ Git Operations
 

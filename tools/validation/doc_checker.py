@@ -410,7 +410,17 @@ class DocumentationChecker:
     def _check_links(
         self, file_path: Path, content: str, lines: List[str], result: DocCheckResult
     ):
-        """Check links and cross-references"""
+        """Check links and cross-references in body markdown AND YAML frontmatter.
+
+        Body scan: markdown `[text](url)` links, with code-block stripping to
+        avoid false positives on Python `f(x)` expressions and
+        markdown-about-markdown examples.
+
+        Frontmatter scan: any string value that looks like a file reference
+        (starts with `${CLAUDE_PLUGIN_ROOT}` or `./` or `../`). Frontmatter
+        fields like `documentation:` and `references:` historically held
+        broken paths that the body-only scan missed.
+        """
         file_name = file_path.name
         plugin_path = (
             file_path.parent
@@ -418,43 +428,90 @@ class DocumentationChecker:
             else file_path.parent.parent
         )
 
+        # --- Body scan ---
         # Strip fenced code blocks and inline code spans before scanning for
         # links. Otherwise Python expressions like `self.layers[-1](x)` and
         # markdown-about-markdown examples like `[text](url)` get false-flagged.
         # Order matters: triple-fenced first, then double-backtick spans (which
         # may contain literal single backticks), then single-backtick spans.
-        stripped = re.sub(r"```.*?```", "", content, flags=re.DOTALL)
+        body_for_links = content
+        if content.startswith("---\n"):
+            # Skip YAML frontmatter for the body scan — it's handled separately
+            # below. Without this, frontmatter values that happen to contain
+            # markdown-link-shaped text would be double-counted.
+            end = content.find("\n---\n", 4)
+            if end != -1:
+                body_for_links = content[end + 5 :]
+
+        stripped = re.sub(r"```.*?```", "", body_for_links, flags=re.DOTALL)
         stripped = re.sub(r"``[^\n]+?``", "", stripped)
         stripped = re.sub(r"`[^`\n]+`", "", stripped)
 
-        # Find all markdown links in the stripped content
-        links = re.finditer(r"\[([^\]]+)\]\(([^)]+)\)", stripped)
-
-        for match in links:
+        for match in re.finditer(r"\[([^\]]+)\]\(([^)]+)\)", stripped):
             link_text = match.group(1)
             link_url = match.group(2)
+            self._validate_path_ref(
+                file_name,
+                link_url,
+                f"Broken link: {link_url}",
+                f"Link text: '{link_text}' - file not found",
+                plugin_path,
+                result,
+            )
 
-            # Skip external URLs and anchors
-            if link_url.startswith(("http://", "https://", "mailto:", "#")):
-                continue
-
-            # Resolve ${CLAUDE_PLUGIN_ROOT} to the plugin root before existence
-            # check — this is how Claude Code resolves the variable at runtime.
-            resolved = link_url.replace("${CLAUDE_PLUGIN_ROOT}", str(plugin_path))
-
-            # Determine the on-disk path
-            if resolved.startswith("/"):
-                link_path = Path(resolved)
-            else:
-                link_path = plugin_path / resolved
-
-            if not link_path.exists():
-                result.add_issue(
-                    file_name,
-                    "error",
-                    f"Broken link: {link_url}",
-                    suggestion=f"Link text: '{link_text}' - file not found",
+        # --- Frontmatter scan ---
+        # Walk YAML frontmatter for string values that look like on-disk paths
+        # (using ${CLAUDE_PLUGIN_ROOT}, ./, or ../ prefix). Catches the
+        # historical pattern where a `documentation:` or `references:` field
+        # listed unwritten doc paths.
+        if content.startswith("---\n"):
+            end = content.find("\n---\n", 4)
+            if end != -1:
+                frontmatter_text = content[4:end]
+                # Match any quoted-or-unquoted string value that starts with
+                # one of the path-reference prefixes. Captures up to a closing
+                # quote, comma, or end-of-line.
+                fm_path_re = re.compile(
+                    r"""[:\-]\s*['"]?(\$\{CLAUDE_PLUGIN_ROOT\}/[^'",\n]+|\.\.?/[^'",\n\s]+)['"]?"""
                 )
+                for m in fm_path_re.finditer(frontmatter_text):
+                    ref = m.group(1).strip()
+                    self._validate_path_ref(
+                        file_name,
+                        ref,
+                        f"Broken frontmatter reference: {ref}",
+                        "frontmatter path does not exist on disk",
+                        plugin_path,
+                        result,
+                    )
+
+    def _validate_path_ref(
+        self,
+        file_name: str,
+        ref: str,
+        message: str,
+        suggestion: str,
+        plugin_path: Path,
+        result: DocCheckResult,
+    ) -> None:
+        """Resolve a file reference and emit an error if the target is missing.
+
+        Skips external URLs, mailto, and in-page anchors.
+        """
+        if ref.startswith(("http://", "https://", "mailto:", "#")):
+            return
+
+        # Resolve ${CLAUDE_PLUGIN_ROOT} to the plugin root before existence
+        # check — this is how Claude Code resolves the variable at runtime.
+        resolved = ref.replace("${CLAUDE_PLUGIN_ROOT}", str(plugin_path))
+
+        if resolved.startswith("/"):
+            link_path = Path(resolved)
+        else:
+            link_path = plugin_path / resolved
+
+        if not link_path.exists():
+            result.add_issue(file_name, "error", message, suggestion=suggestion)
 
     def _check_common_issues(
         self, file_path: Path, content: str, lines: List[str], result: DocCheckResult
