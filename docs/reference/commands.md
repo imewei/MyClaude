@@ -1,6 +1,6 @@
 # Command Reference
 
-**14 Registered Commands** | **22 Skill-Invoked Commands** | **Version:** 3.3.0
+**14 Registered Commands** | **21 Skill-Invoked Commands** | **Version:** 3.4.0
 
 Commands fall into two categories:
 - **Registered commands** are declared in `plugin.json` and available as user-facing `/slash-commands`.
@@ -34,9 +34,13 @@ Commands fall into two categories:
 | `/test-generate` | Generate comprehensive test suites with scientific computing support |
 | `/workflow-automate` | Automated CI/CD workflow generation for GitHub Actions and GitLab CI |
 
+### Research Suite (`research-suite`) — 0 Commands
+
+No registered commands. Workflows are skill-driven (`scientific-review`, `research-spark`, `research-practice`). The legacy `/paper-review` was removed in v3.4.0 because `scientific-review` produces a strictly better `.docx` deliverable with journal-specific adaptation.
+
 ### Science Suite (`science-suite`) — 0 Commands
 
-No registered commands. All 3 science-suite commands are skill-invoked.
+No registered commands. All 2 science-suite commands are skill-invoked.
 
 ---
 
@@ -73,13 +77,16 @@ These commands exist on disk and are triggered by skills during workflows. They 
 | `slo-implement` | SLO/SLA monitoring, error budgets, and burn rate alerting |
 | `tech-debt` | Technical debt analysis with ROI-based roadmaps |
 
-### Science Suite — 3 Skill-Invoked
+### Science Suite — 2 Skill-Invoked
 
 | Command | Description |
 |---------|-------------|
 | `analyze-data` | Analyze data files with statistical tests, visualization, and reporting |
-| `paper-review` | Scientific paper review with methodology and reproducibility assessment |
 | `run-experiment` | Design and execute computational experiments with hypothesis tracking |
+
+### Research Suite — 0 Skill-Invoked
+
+No on-disk command files. All workflows live entirely in skills (`scientific-review`, the 8-stage `research-spark` pipeline, and the `research-practice` hub).
 
 ---
 

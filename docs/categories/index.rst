@@ -6,4 +6,5 @@ Categories
 
    core
    dev
+   research
    science

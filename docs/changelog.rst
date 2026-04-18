@@ -1,6 +1,46 @@
 Changelog
 =========
 
+v3.4.0 (2026-04-18)
+--------------------
+
+**New Plugin: research-suite**
+
+* New 4th plugin suite extracted from ``science-suite``. Contains:
+
+  - **2 agents:** ``research-expert`` (moved from science-suite, unified methodology specialist) and ``research-spark-orchestrator`` (new, drives the 8-stage refinement pipeline)
+  - **3 workflow tracks:**
+
+    - ``scientific-review`` — journal-ready peer review producing a ``.docx`` referee report with Six-Lens analysis and Confidential Comments to Editor (standalone skill).
+    - ``research-spark`` — 8-stage artifact-gated refinement of a rough research idea into a fundable plan. Stages: ``spark-articulator`` → ``landscape-scanner`` → ``falsifiable-claim`` → ``theory-scaffold`` (Stages 4-5) → ``numerical-prototype`` → ``experiment-designer`` → ``premortem-critique``. State tracked in ``_state.yaml``.
+    - ``research-practice`` — methodology hub routing to ``research-methodology``, ``research-quality-assessment``, ``research-paper-implementation``, ``scientific-communication``, ``evidence-synthesis`` (all moved from ``science-suite``'s ``research-and-domains`` hub).
+
+  - **Three adversarial patterns enforced:** Reviewer 2 persona (Stages 2-3), stepwise derivation protocol (Stages 4-5), instrument capability 3× margin rule (Stage 7).
+  - **0 registered commands** (workflows are skill-driven). The legacy ``/paper-review`` command was removed in favor of ``scientific-review``.
+
+* **science-suite** now focuses purely on computational work (JAX, Julia, HPC, ML/DL, physics, nonlinear dynamics): 11 agents (was 12), 14 hubs → 112 sub-skills (was 117).
+
+**research-suite optimization pass (same release)**
+
+* **Description normalization:** 5 methodology skills and 1 agent converted from weak "Use when..." form to strong third-person "This skill should be used when..." with 8-10 verbatim trigger phrases each (evidence-synthesis, scientific-communication, research-paper-implementation, research-quality-assessment, research-methodology, research-practice, research-expert).
+* **Non-standard frontmatter cleanup:** dropped ``maturity`` / ``specialization`` / inline ``Version:`` footers from research-paper-implementation and research-quality-assessment (version lives only in ``plugin.json`` per convention).
+* **Cross-skill linkage:** every methodology skill now points to its research-spark pipeline counterpart (e.g., ``research-methodology`` ↔ Stage 7 ``experiment-designer``; ``evidence-synthesis`` ↔ Stage 2 ``landscape-scanner``). Added phase↔stage mapping table to ``research-practice`` hub.
+* **Plugin metadata:** sharper ``plugin.json`` description; 10 new discoverability keywords (``power-analysis``, ``prisma``, ``grade``, ``consort``, ``strobe``, ``reproducibility``, ``paper-implementation``, ``statistical-rigor``, ``pre-registration``, ``doe``).
+
+**Documentation**
+
+* New ``docs/suites/research-suite.rst`` with full skill/agent coverage.
+* Updated ``docs/index.rst``, ``docs/categories/index.rst``, ``docs/reference/agents.md``, ``docs/reference/commands.md``, ``docs/integration-map.rst``, ``docs/guides/scientific-workflows.rst``, and ``docs/suites/science-suite.rst`` to reflect the split.
+* CLAUDE.md suite table updated: 3→4 suites, 24→25 agents, suite counts refreshed.
+
+**Validation**
+
+* metadata_validator: 0 errors on all 4 suites.
+* xref_validator: 523/523 cross-references valid.
+* doc_checker: 0 errors on research-suite.
+* context_budget_checker: 217/217 skills fit 2% budget on both 200K and 1M context windows.
+* pytest: 180/180 passing (was 154 in v3.3.0 — 26 new hook-integrity tests from the bandit/vulture/gitleaks audit addition).
+
 v3.3.0 (2026-04-12)
 --------------------
 

@@ -1,6 +1,6 @@
 # Agent Reference
 
-**24 Agents** across 3 suites | **Version:** 3.3.0
+**25 Agents** across 4 suites | **Version:** 3.4.0
 
 Agents are specialized AI personas with defined model tiers, tool access, and domain expertise. Each agent runs at a specific model tier: **opus** (deep reasoning), **sonnet** (standard tasks), or **haiku** (fast/simple).
 
@@ -36,15 +36,25 @@ Full-stack engineering, infrastructure, CI/CD, quality assurance, and debugging.
 
 ---
 
-## Science Suite (`science-suite`) — 12 Agents
+## Research Suite (`research-suite`) — 2 Agents
 
-Scientific computing, HPC, physics simulations, ML/DL, and research workflows.
+Scientific research workflows: peer review, idea-to-plan refinement, and methodology orchestration. New in v3.4.0 (split from `science-suite`).
+
+| Agent | Model | Description |
+|-------|-------|-------------|
+| `research-expert` | opus | Unified specialist for research methodology, evidence synthesis (PRISMA/GRADE), statistical rigor, IMRaD structuring, paper-to-code reproduction, and publication-quality visualization (one-off tasks) |
+| `research-spark-orchestrator` | opus | Autonomous driver for the 8-stage research-spark refinement pipeline; owns `_state.yaml`, enforces artifact contract, fans out to sub-agents at Stages 2/6/8 |
+
+---
+
+## Science Suite (`science-suite`) — 11 Agents
+
+Scientific computing, HPC, physics simulations, ML/DL, and nonlinear dynamics. `research-expert` moved to `research-suite` in v3.4.0.
 
 | Agent | Model | Description |
 |-------|-------|-------------|
 | `neural-network-master` | opus | Deep learning authority: architecture design, theory, and implementation (Transformers, CNNs, diagnostics) |
 | `nonlinear-dynamics-expert` | opus | Bifurcation analysis, chaos, coupled networks, pattern formation, and equation discovery (SINDy/UDE) |
-| `research-expert` | opus | Systematic research, evidence synthesis, and publication-quality visualization |
 | `simulation-expert` | opus | Molecular dynamics, statistical mechanics, and numerical methods (HPC/GPU) |
 | `statistical-physicist` | opus | Correlation functions, non-equilibrium dynamics, and ensemble theory |
 | `ai-engineer` | sonnet | Production-ready LLM applications, RAG systems, and intelligent agents |
@@ -61,8 +71,8 @@ Scientific computing, HPC, physics simulations, ML/DL, and research workflows.
 
 | Tier | Count | Agents |
 |------|-------|--------|
-| **opus** | 9 | orchestrator, reasoning-engine, software-architect, debugger-pro, neural-network-master, nonlinear-dynamics-expert, research-expert, simulation-expert, statistical-physicist |
-| **sonnet** | 14 | context-specialist, app-developer, automation-engineer, devops-architect, quality-specialist, sre-expert, systems-engineer, ai-engineer, jax-pro, julia-ml-hpc, julia-pro, ml-expert, prompt-engineer, python-pro |
+| **opus** | 11 | orchestrator, reasoning-engine, context-specialist, software-architect, debugger-pro, neural-network-master, nonlinear-dynamics-expert, research-expert, research-spark-orchestrator, simulation-expert, statistical-physicist |
+| **sonnet** | 13 | app-developer, automation-engineer, devops-architect, quality-specialist, sre-expert, systems-engineer, ai-engineer, jax-pro, julia-ml-hpc, julia-pro, ml-expert, prompt-engineer, python-pro |
 | **haiku** | 1 | documentation-expert |
 
 ---
@@ -91,4 +101,4 @@ See the [Integration Map](../integration-map.rst) for full delegation patterns a
 - [Agent Teams Guide](../agent-teams-guide.md) — 10 focused team configurations with 20 variants
 - [Glossary](../glossary.rst) — Key terms (Hub Skill, Sub-Skill, Agent Team)
 
-*Generated from v3.3.0 validated marketplace data.*
+*Generated from v3.4.0 validated marketplace data.*
