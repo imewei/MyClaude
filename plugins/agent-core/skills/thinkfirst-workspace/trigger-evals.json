@@ -1,0 +1,82 @@
+[
+  {
+    "query": "ok so I need to build an AI assistant for our customer support team, it needs to handle refund requests and also escalate angry customers to humans but I'm not sure how to structure the system prompt, right now I have like half a paragraph and the output is all over the place. We use Claude via the API, gpt-4o as backup.",
+    "should_trigger": true
+  },
+  {
+    "query": "I wrote this prompt for summarizing user interviews and it keeps giving me 5 paragraph essays when I want a tight structured summary. Here it is: 'Summarize this user interview and list the key pain points and insights. Be thorough.' Can you fix it?",
+    "should_trigger": true
+  },
+  {
+    "query": "我想让Claude帮我写一个技术博客的大纲，主题是向量数据库的选型，但我不知道怎么让它理解我想要的风格（偏深度技术，不要营销腔）",
+    "should_trigger": true
+  },
+  {
+    "query": "my boss wants me to put together a prompt for our legal team that reviews contracts — like it should flag unusual clauses and compare against our template. I have some example contracts and a template but I have no idea how to turn this into a prompt that would actually be reliable",
+    "should_trigger": true
+  },
+  {
+    "query": "I'm starting a long session with Claude tomorrow to brainstorm product names for a new B2B SaaS we're launching. Want to think through how to frame this conversation so I get genuinely good suggestions and not the usual marketing-fluff stuff",
+    "should_trigger": true
+  },
+  {
+    "query": "help me turn this into a prompt: I need to analyze my company's slack messages from the last quarter and find recurring themes around team morale, but handle the edge case where someone just posts a meme or a gif (right now my draft confuses emoji-only messages for sentiment signals)",
+    "should_trigger": true
+  },
+  {
+    "query": "I've been trying to get Claude to act like a code reviewer for our go codebase. my prompt says 'you are a senior go reviewer, review this code for style and bugs' but it's super generic and doesn't catch things our actual team cares about like context.Context passing patterns. Can you help me improve this?",
+    "should_trigger": true
+  },
+  {
+    "query": "ideas brain dump — I want to create something that takes a transcript from a 1-on-1 meeting and produces action items, follow-ups, and a 'mood read' for the person. my first draft of the prompt gave me the action items fine but the mood read was so hedged it was useless",
+    "should_trigger": true
+  },
+  {
+    "query": "how do I write a prompt that gets Claude to push back on me when my assumptions are bad? Every time I ask it 'is this plan good?' it just agrees with me. I want something more rigorous",
+    "should_trigger": true
+  },
+  {
+    "query": "rough idea — i want to use an LLM to help me plan my week but every time I tell it my goals it just makes a generic schedule. i have 3 kids, my wife works shifts, and i'm training for a half marathon. none of that ever seems to stick in the output",
+    "should_trigger": true
+  },
+  {
+    "query": "help me write a python function that deduplicates entries in a list of dicts based on the 'email' field, case-insensitive. Our data has like 50k rows in the users.csv and some emails have trailing whitespace",
+    "should_trigger": false
+  },
+  {
+    "query": "optimize this SQL query — it's taking 40+ seconds. SELECT * FROM orders o JOIN users u ON o.user_id = u.id WHERE o.created_at > '2024-01-01' AND u.country = 'US'. We have like 10M orders.",
+    "should_trigger": false
+  },
+  {
+    "query": "can you explain what chain-of-thought prompting actually is? I keep seeing it mentioned in papers but I want to understand the mechanism, not write one",
+    "should_trigger": false
+  },
+  {
+    "query": "translate this paragraph to Mandarin, it's for our company's announcement blog: 'We are excited to announce the launch of our new platform that helps teams collaborate more effectively across timezones...'",
+    "should_trigger": false
+  },
+  {
+    "query": "generate API documentation for this TypeScript file, it has 4 exported functions and needs JSDoc-style docs. The repo is at github.com/acme/api-core and we follow the internal style guide in CONTRIBUTING.md",
+    "should_trigger": false
+  },
+  {
+    "query": "can you improve my cover letter? I'm applying for a senior PM role at Stripe and my current draft sounds too generic. It's about 400 words and focuses on my time at a fintech startup",
+    "should_trigger": false
+  },
+  {
+    "query": "build me a dashboard showing our weekly active users from the events table in our postgres — the one called user_events with columns user_id, event_name, timestamp. I want it to update hourly and be readable on mobile",
+    "should_trigger": false
+  },
+  {
+    "query": "summarize this 4-page article about the history of the transistor — just the key inventions and the companies involved, no more than 300 words",
+    "should_trigger": false
+  },
+  {
+    "query": "I have a prompt that's working fine and I want to run it on 500 customer reviews. What's the best way to batch-process it through the Claude API without hitting rate limits? I'm using python with the anthropic SDK",
+    "should_trigger": false
+  },
+  {
+    "query": "what's the difference between prompt engineering and context engineering? I've seen both terms thrown around in recent papers and threads and I'm trying to figure out if they're just buzzwords for the same thing",
+    "should_trigger": false
+  }
+]
