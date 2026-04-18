@@ -202,6 +202,7 @@ temp/
 
 # Claude Code guidance file (auto-generated)
 CLAUDE.md
+.claude-progress.md
 memory/
 
 # Agent-OS development framework (internal use)
