@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-MyClaude is a Claude Code plugin marketplace: 3 plugin suites containing 24 agents, 14 registered commands, and 26 hub skills (routing to 180 sub-skills). It is **not** a runnable application — it's a collection of markdown-based plugin definitions with Python tooling for validation and maintenance.
+MyClaude is a Claude Code plugin marketplace: 4 plugin suites containing 25 agents, 14 registered commands, and 38 registered hub/standalone skills (routing to 179 sub-skills; 217 SKILL.md files total on disk). It is **not** a runnable application — it's a collection of markdown-based plugin definitions with Python tooling for validation and maintenance.
 
 ## Commands
 
@@ -12,7 +12,7 @@ MyClaude is a Claude Code plugin marketplace: 3 plugin suites containing 24 agen
 # Install dependencies
 uv sync
 
-# Run tests (154 tests covering plugin integrity and validation)
+# Run tests (180 tests covering plugin integrity and validation)
 uv run pytest tools/tests/ -v
 
 # Run a single test file
@@ -64,11 +64,12 @@ plugins/<suite-name>/
 ```
 
 Suite breakdown:
-| Suite | Agents | Registered Cmds | Skills (hubs → sub) | Hooks | Focus |
-|-------|--------|-----------------|---------------------|-------|-------|
-| agent-core | 3 | 2 | 3 → 14 | 12 events | Reasoning, orchestration, context engineering, safety |
+| Suite | Agents | Registered Cmds | Skills (registered → sub) | Hooks | Focus |
+|-------|--------|-----------------|---------------------------|-------|-------|
+| agent-core | 3 | 2 | 4 → 13 | 12 events | Reasoning, orchestration, context engineering, safety |
 | dev-suite | 9 | 12 | 9 → 49 | 7 events | Full SDLC: architecture, implementation, CI/CD, testing, debugging |
-| science-suite | 12 | 0 | 14 → 117 | 5 events | JAX, Julia, physics, ML/DL/HPC, nonlinear dynamics, research |
+| research-suite | 2 | 0 | 11 → 5 | 0 events | Peer review (`scientific-review`), 8-stage `research-spark` pipeline, methodology hub (`research-practice`) |
+| science-suite | 11 | 0 | 14 → 112 | 5 events | JAX, Julia, physics, ML/DL/HPC, nonlinear dynamics (pure computational — research methodology moved to research-suite) |
 
 **Note:** 22 additional commands exist on disk but are not registered in `plugin.json`. They split into two categories:
 
@@ -122,7 +123,7 @@ The manifest uses **file-path references** (not inline objects) to point to agen
 - **Version sync**: All `plugin.json` files must use the same version string. Version lives only in manifests, not in agent/command/skill frontmatter.
 - **Skill budget**: All skills must fit within 2% of the context window. Run `context_budget_checker.py` after adding skills.
 - **Skill size governance**: Skills exceeding 3,000 bytes require review before merge. Skills at >80% of their context budget are flagged as at-risk. Skills at >90% should be refactored (split content to dedicated skills). Never add content to a frozen skill — create a new skill instead.
-- **Model tiers**: Agents use `opus` (deep reasoning: orchestrator, reasoning-engine, debugger-pro, software-architect, research-expert, statistical-physicist, nonlinear-dynamics-expert, neural-network-master, simulation-expert), `sonnet` (standard tasks), or `haiku` (fast/simple: documentation-expert).
+- **Model tiers**: Agents use `opus` (deep reasoning: orchestrator, reasoning-engine, context-specialist, debugger-pro, software-architect, research-expert, research-spark-orchestrator, statistical-physicist, nonlinear-dynamics-expert, neural-network-master, simulation-expert), `sonnet` (standard tasks), or `haiku` (fast/simple: documentation-expert).
 - **Command registration**: Only 14 commands are registered in `plugin.json` manifests (2 agent-core, 12 dev-suite). The remaining 22 command files on disk are skill-invoked — do not add them to manifests.
 - **Hub routing**: When adding a new sub-skill, it must be referenced by at least one hub's Core Skills section and Routing Decision Tree. Run the orphan check to verify reachability.
 - **Team templates**: 10 focused agent teams with 20 variants in `plugins/agent-core/commands/team-assemble.md`. Teams use `--var MODE=x` for specialization. 20 aliases preserve backward compatibility (Step 5). No duplicate agent types per team.

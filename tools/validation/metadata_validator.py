@@ -72,7 +72,7 @@ class MetadataValidator:
             },
             "category": {
                 "type": "string",
-                "enum": ["core", "dev", "science"],
+                "enum": ["core", "dev", "science", "research"],
                 "description": "Plugin category",
             },
         },

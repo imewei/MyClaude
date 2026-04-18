@@ -6,20 +6,20 @@
     "url": "https://myclaude.readthedocs.io/en/latest/"
   },
   "metadata": {
-    "description": "3-suite marketplace for agent orchestration, software development, and scientific computing",
-    "version": "3.3.0",
+    "description": "4-suite marketplace for agent orchestration, scientific research, software development, and scientific computing",
+    "version": "3.4.0",
     "based_on": "claude-code-workflows v2.0.0",
     "reorganization_date": "2026-03-31",
-    "last_updated": "2026-04-12",
-    "total_plugins": 3,
-    "note": "v3.3.0: CLI 2.1.104 optimization — agent maxTurns standardization (10 agents raised to opus≥50/sonnet≥35 tier targets), tool list enrichment (EnterPlanMode/ExitPlanMode for 7 opus agents, CronCreate/ScheduleWakeup for infra agents), hook expansion (agent-core 12→15 events, dev-suite 0→7 events, science-suite 0→5 events; 27 total), broken phantom agent references fixed, settings harmonization, and 15 new hook integrity tests (135 total)."
+    "last_updated": "2026-04-18",
+    "total_plugins": 4,
+    "note": "v3.4.0: Research-suite split out from science-suite (scientific-review peer-review track, research-spark 8-stage refinement pipeline, research-practice methodology hub). Opus 4.7 sweep: context-specialist elevated to opus, 7 hook orphans removed, doc_checker repaired, 26 new unit tests. All 4 plugins synced at v3.4.0."
   },
   "plugins": [
     {
       "name": "agent-core",
       "source": "./plugins/agent-core",
       "description": "Meta-agent orchestration, advanced reasoning, and context engineering",
-      "version": "3.3.0",
+      "version": "3.4.0",
       "author": {
         "name": "Wei Chen",
         "url": "https://myclaude.readthedocs.io/en/latest/"
@@ -42,19 +42,21 @@
         "./agents/reasoning-engine.md"
       ],
       "commands": [
-        "./commands/agent-build.md",
-        "./commands/ai-assistant.md",
-        "./commands/docs-lookup.md",
-        "./commands/reflection.md",
         "./commands/ultra-think.md",
         "./commands/team-assemble.md"
+      ],
+      "skills": [
+        "./skills/agent-systems",
+        "./skills/reasoning-and-memory",
+        "./skills/llm-engineering",
+        "./skills/thinkfirst"
       ]
     },
     {
       "name": "dev-suite",
       "source": "./plugins/dev-suite",
       "description": "Unified software development lifecycle: architecture, implementation, CI/CD, testing, debugging, and deployment",
-      "version": "3.3.0",
+      "version": "3.4.0",
       "author": {
         "name": "Wei Chen",
         "url": "https://myclaude.readthedocs.io/en/latest/"
@@ -85,40 +87,36 @@
         "./agents/systems-engineer.md"
       ],
       "commands": [
-        "./commands/adopt-code.md",
-        "./commands/c-project.md",
-        "./commands/code-analyze.md",
-        "./commands/code-explain.md",
         "./commands/commit.md",
-        "./commands/deps.md",
         "./commands/docs.md",
         "./commands/double-check.md",
         "./commands/eng-feature-dev.md",
         "./commands/fix-commit-errors.md",
-        "./commands/fix-imports.md",
-        "./commands/github-assist.md",
         "./commands/merge-all.md",
         "./commands/modernize.md",
-        "./commands/monitor-setup.md",
-        "./commands/multi-platform.md",
-        "./commands/onboard.md",
-        "./commands/profile-performance.md",
         "./commands/refactor-clean.md",
         "./commands/run-all-tests.md",
-        "./commands/rust-project.md",
-        "./commands/scaffold.md",
-        "./commands/slo-implement.md",
         "./commands/smart-debug.md",
-        "./commands/tech-debt.md",
         "./commands/test-generate.md",
         "./commands/workflow-automate.md"
+      ],
+      "skills": [
+        "./skills/backend-patterns",
+        "./skills/frontend-and-mobile",
+        "./skills/architecture-and-infra",
+        "./skills/testing-and-quality",
+        "./skills/ci-cd-pipelines",
+        "./skills/observability-and-sre",
+        "./skills/python-toolchain",
+        "./skills/data-and-security",
+        "./skills/dev-workflows"
       ]
     },
     {
       "name": "science-suite",
       "source": "./plugins/science-suite",
       "description": "Scientific computing, HPC, simulation, and data analysis workflows",
-      "version": "3.3.0",
+      "version": "3.4.0",
       "author": {
         "name": "Wei Chen",
         "url": "https://myclaude.readthedocs.io/en/latest/"
@@ -146,9 +144,90 @@
         "./agents/nonlinear-dynamics-expert.md",
         "./agents/prompt-engineer.md",
         "./agents/python-pro.md",
-        "./agents/research-expert.md",
         "./agents/simulation-expert.md",
         "./agents/statistical-physicist.md"
+      ],
+      "skills": [
+        "./skills/nonlinear-dynamics",
+        "./skills/jax-computing",
+        "./skills/julia-language",
+        "./skills/julia-ml-and-dl",
+        "./skills/sciml-and-diffeq",
+        "./skills/correlation-analysis",
+        "./skills/statistical-physics-hub",
+        "./skills/deep-learning-hub",
+        "./skills/ml-and-data-science",
+        "./skills/llm-and-ai",
+        "./skills/ml-deployment",
+        "./skills/simulation-and-hpc",
+        "./skills/research-and-domains",
+        "./skills/bayesian-inference"
+      ]
+    },
+    {
+      "name": "research-suite",
+      "source": "./plugins/research-suite",
+      "description": "Scientific research workflows — three tracks: scientific-review (peer review of other people's manuscripts → .docx), research-spark (8-stage artifact-gated refinement of your own rough idea), and research-practice (methodology hub: study design, paper reproduction, quality assessment, scientific writing, evidence synthesis)",
+      "version": "3.4.0",
+      "author": {
+        "name": "Wei Chen",
+        "url": "https://myclaude.readthedocs.io/en/latest/"
+      },
+      "homepage": "https://github.com/imewei/MyClaude",
+      "repository": "https://github.com/imewei/MyClaude",
+      "license": "MIT",
+      "keywords": [
+        "research",
+        "peer-review",
+        "scientific-review",
+        "manuscript",
+        "referee-report",
+        "integrity",
+        "methodology",
+        "research-spark",
+        "pipeline",
+        "orchestrator",
+        "falsifiable-claim",
+        "theory",
+        "jax",
+        "experiment-design",
+        "power-analysis",
+        "doe",
+        "pre-registration",
+        "premortem",
+        "reviewer-2",
+        "evidence-synthesis",
+        "meta-analysis",
+        "prisma",
+        "grade",
+        "consort",
+        "strobe",
+        "reproducibility",
+        "paper-implementation",
+        "imrad",
+        "scientific-writing",
+        "statistical-rigor",
+        "claude-code"
+      ],
+      "category": "research",
+      "strict": true,
+      "agents": [
+        "./agents/research-expert.md",
+        "./agents/research-spark-orchestrator.md"
+      ],
+      "commands": [],
+      "skills": [
+        "./skills/scientific-review",
+        "./skills/research-spark",
+        "./skills/spark-articulator",
+        "./skills/landscape-scanner",
+        "./skills/falsifiable-claim",
+        "./skills/theory-scaffold",
+        "./skills/numerical-prototype",
+        "./skills/experiment-designer",
+        "./skills/premortem-critique",
+        "./skills/_research-commons",
+        "./skills/research-practice"
       ]
     }
   ]

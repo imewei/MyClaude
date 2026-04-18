@@ -177,7 +177,7 @@ find . -name "*test*" | wc -l
 | Dimension | Skill | Output |
 |-----------|-------|--------|
 | Meta-Cognitive | reflection-framework | Reasoning report |
-| Research | research-quality-assessment | Quality report |
+| Research | research-quality-assessment (research-suite) | Quality report |
 | Technical | Code analysis tools | Technical report |
 | Strategic | Goal tracking | Progress report |
 
