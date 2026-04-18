@@ -4,7 +4,11 @@ Context Budget Checker for Skills (v2.2.1+)
 
 Claude Code v2.1.32+ allocates 2% of the context window for skill content.
 With Opus 4.6's 200K context, that's ~4,000 tokens (~3,000 words).
-With the 1M beta context, that's ~20,000 tokens (~15,000 words).
+With Opus 4.7's 1M context, that's ~20,000 tokens (~15,000 words).
+
+The checker reports both budgets so MyClaude stays compatible with users on
+older Opus tiers. The 4K (200K) budget remains the conservative floor;
+the 20K (1M) budget is informational headroom.
 
 This tool checks if SKILL.md files fit within the context budget and
 identifies skills that should front-load critical information.
@@ -12,7 +16,7 @@ identifies skills that should front-load critical information.
 Usage:
     python3 tools/validation/context_budget_checker.py
     python3 tools/validation/context_budget_checker.py --plugins-dir /path/to/plugins
-    python3 tools/validation/context_budget_checker.py --context-size 200000
+    python3 tools/validation/context_budget_checker.py --output report.md
 """
 
 import argparse

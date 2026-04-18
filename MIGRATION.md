@@ -93,9 +93,65 @@ branches on model ID — nothing to update.
 
 ---
 
-## Task 3 — (pending)
+## Task 3 — Skill budgets & hub→sub-skill reachability
 
-Skill context budgets, hub→sub-skill reachability.
+**Skill-reviewer (`plugin-dev:skill-reviewer`).** Orchestrator-driven
+because the audit is mechanical — run the validators and report.
+
+### Budget audit (under both 200K and 1M context windows)
+
+`context_budget_checker.py` reports against both window sizes simultaneously:
+
+| Metric | Result |
+|---|---|
+| Total skills checked | 206 |
+| Fits 200K budget (4,000 tokens) | 206/206 (100%) |
+| Fits 1M budget (20,000 tokens) | 206/206 (100%) |
+| Skills oversized at 200K | 0 |
+| Skills oversized at 1M | 0 |
+
+**Headroom warnings (>75% of 200K budget):**
+
+| Skill | Plugin | Tokens | 200K usage | 1M usage |
+|---|---|---|---|---|
+| `thinkfirst` | agent-core | 3,040 | 76% | 15% |
+
+Only one skill brushes the 75% headroom threshold under the 200K window;
+under 1M it sits at 15% — comfortable.
+
+### Budget policy decision
+
+**Keep the 4 KB (200K) absolute byte limit, NOT the 20 KB scaled limit.**
+
+Rationale:
+- Many MyClaude users still run Opus 4.6 (200K) for cost reasons. Bloating
+  skills to 20 KB would silently break those users by overflowing their
+  skill listing budget.
+- The 4 KB ceiling forces tight, front-loaded prose — a quality property
+  worth preserving regardless of model tier.
+- The checker already reports BOTH budgets, so headroom under 1M is
+  visible without lowering the gate.
+
+This decision is durable: future skills added to MyClaude must continue to
+fit the 4 KB budget. The 1M column is informational only.
+
+### Hub → sub-skill reachability
+
+`xref_validator.py` results: **526 cross-references validated, 0 broken.**
+All 27 hub skills route correctly into the 179 sub-skills. No orphans.
+
+### Stale prose audit
+
+Grep across all 206 `SKILL.md` files for `200K context | 200,000 |
+opus-4\.6 | claude-opus-4-6 | Opus 4\.6` returned **zero matches**. Skill
+prose is model-agnostic and forward-compatible.
+
+### Tooling fix
+
+Updated `tools/validation/context_budget_checker.py` docstring:
+- Added Opus 4.7 reference for 1M context (was "1M beta", now standard).
+- Added explicit policy note that 4K is the gate, 20K is informational.
+- Removed stale `--context-size 200000` usage example (flag not implemented).
 
 ---
 
