@@ -1,30 +1,21 @@
 ---
 name: research-and-domains
-description: Meta-orchestrator for research methodology and specialized domains. Routes to research methods, paper implementation, quality assessment, scientific writing, evidence synthesis, Python systems, and domain-specific skills (quantum, bio, CV, RL, symbolic math). Use when conducting systematic research, implementing papers, assessing research quality, writing scientific reports, or working with specialized domains (quantum, bio, CV, RL).
+description: Meta-orchestrator for scientific Python systems, self-improving-AI research patterns, and specialized scientific domains. Routes to Python engineering skills (packaging, Rust extensions, type design, concurrency, testing), LLM research methods (self-improving AI, DSPy, RLAIF), and domain-specific skills (quantum computing, bioinformatics, computer vision, reinforcement learning, symbolic math). For general research methodology (study design, paper implementation, scientific writing, evidence synthesis), use `research-practice` in research-suite instead.
 ---
 
 # Research and Domains
 
-Orchestrator for research methodology and specialized scientific domains. Routes problems to the appropriate specialized skill.
+Orchestrator for scientific Python systems, LLM self-improvement research, and specialized scientific domains. Routes problems to the appropriate specialized skill.
 
-## Expert Agent
-
-- **`research-expert`**: Specialist for research methodology, literature synthesis, and domain-specific scientific computing.
-  - *Location*: `plugins/science-suite/agents/research-expert.md`
-  - *Capabilities*: Research design, paper implementation, quality assessment, scientific communication, and domain expertise.
+> **General research methodology has moved.** Study design, paper implementation, quality assessment, scientific writing (IMRaD), and evidence synthesis (PRISMA, meta-analysis, GRADE) now live in the `research-practice` hub in `research-suite`. This hub retains only the self-improving-AI research thread (autonomous agents, programmatic prompting, RLAIF) and the Python + domain specializations that pair naturally with scientific computing.
 
 ## Core Skills
 
 | Category | Skill | Purpose |
 |----------|-------|---------|
-| Research | [Research Methodology](../research-methodology/SKILL.md) | Study design, literature review |
-| Research | [Research Paper Implementation](../research-paper-implementation/SKILL.md) | Reproduce academic paper results |
-| Research | [Research Quality Assessment](../research-quality-assessment/SKILL.md) | Rigor, reproducibility, statistics |
-| Research | [Scientific Communication](../scientific-communication/SKILL.md) | Papers, reports, presentations |
-| Research | [Evidence Synthesis](../evidence-synthesis/SKILL.md) | Meta-analysis, systematic reviews |
-| Research | [Self-Improving AI](../self-improving-ai/SKILL.md) | DSPy, RLAIF, Self-Refine, test-time compute, autonomous research loops |
-| Research | [DSPy Basics](../dspy-basics/SKILL.md) | Programmatic prompts: Signatures, Modules, MIPROv2, BootstrapFewShot, ReAct |
-| Research | [RLAIF Training](../rlaif-training/SKILL.md) | DPO / KTO / PPO with `trl`; Constitutional AI; AI-as-judge preference generation |
+| AI Research | [Self-Improving AI](../self-improving-ai/SKILL.md) | Four families: inference-time scaling, self-refinement, autonomous research loops, evolutionary search |
+| AI Research | [DSPy Basics](../dspy-basics/SKILL.md) | Programmatic prompts: Signatures, Modules, MIPROv2, BootstrapFewShot, ReAct |
+| AI Research | [RLAIF Training](../rlaif-training/SKILL.md) | DPO / KTO / PPO with `trl`; Constitutional AI; AI-as-judge preference generation |
 | Python | [Python Development](../python-development/SKILL.md) | Idiomatic Python, software engineering |
 | Python | [Python Packaging Advanced](../python-packaging-advanced/SKILL.md) | PyPI, build backends |
 | Python | [Rust Extensions](../rust-extensions/SKILL.md) | PyO3/maturin high-perf extensions |
@@ -42,10 +33,8 @@ Orchestrator for research methodology and specialized scientific domains. Routes
 ```
 What is the task category?
 |
-+-- Research process (design, review, write, evaluate)?
-|   --> research-methodology / research-paper-implementation
-|   --> research-quality-assessment / scientific-communication
-|   --> evidence-synthesis
++-- General research methodology (study design, paper write-up, lit review, meta-analysis)?
+|   --> (out of hub) research-practice in research-suite
 |
 +-- Self-improving AI taxonomy / autonomous research loops / four-families overview?
 |   --> self-improving-ai
@@ -74,7 +63,7 @@ What is the task category?
 ## Checklist
 
 - [ ] Use routing tree to identify task category before selecting a sub-skill
-- [ ] For paper implementation: read methods section fully before coding
+- [ ] For general research methodology questions, delegate to `research-practice` in research-suite
 - [ ] Validate Python packaging locally with `pip install -e .` before publishing
 - [ ] Test Rust extensions with `cargo test` before building Python wheels
 - [ ] Check quantum circuit depth and gate count against target hardware limits

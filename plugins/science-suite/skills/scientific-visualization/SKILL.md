@@ -12,7 +12,7 @@ Expert guide for creating research-grade figures that meet international publica
 For creating publication-quality figures, complex multi-dimensional plots, and interactive visualizations, delegate to the expert agent:
 
 - **`research-expert`**: Unified specialist for Scientific Visualization and Communication.
-  - *Location*: `plugins/science-suite/agents/research-expert.md`
+  - *Location*: `plugins/research-suite/agents/research-expert.md`
   - *Capabilities*: Matplotlib/Makie styling, domain-specific plotting, and adherence to publication standards.
 
 ## 1. Uncertainty & Statistical Visualization

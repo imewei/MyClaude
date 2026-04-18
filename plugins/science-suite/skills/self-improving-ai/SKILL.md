@@ -16,7 +16,7 @@ For self-improving AI system design, prompt optimization, and autonomous researc
 - **`prompt-engineer`** (secondary): Prompt technique, chain-of-thought, constitutional principles, evaluation harnesses.
   - *Location*: `plugins/science-suite/agents/prompt-engineer.md`
 - **`research-expert`** (tertiary): Autonomous-research-loop design, experiment-planning agents, literature-synthesis pipelines.
-  - *Location*: `plugins/science-suite/agents/research-expert.md`
+  - *Location*: `plugins/research-suite/agents/research-expert.md`
 
 ---
 
@@ -125,7 +125,7 @@ The other two families (inference-time scaling and autonomous research loops) ar
 - **Prompt engineering** — the atomic-level technique side; DSPy / RLAIF sit on top of it. See the `prompt-engineer` agent.
 - **LLM applications** — RAG, agentic, multi-modal patterns that self-improving AI enhances. See `llm-application-patterns`.
 - **Agent systems** — multi-agent coordination primitives that autonomous research loops build on. See `multi-agent-coordination`.
-- **Research methodology** — applying self-improving AI to literature review, hypothesis generation, experiment design. See `research-methodology`.
+- **Research methodology** — applying self-improving AI to literature review, hypothesis generation, experiment design. See `research-methodology` in the `research-suite` plugin (or its hub `research-practice`).
 
 ---
 

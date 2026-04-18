@@ -36,8 +36,8 @@ Debugging vanishing gradients, loss instability, dead ReLUs, and convergence iss
 ### [Model Optimization](../model-optimization-deployment/SKILL.md)
 Quantization, pruning, knowledge distillation, and efficient inference.
 
-### [Research Paper Implementation](../research-paper-implementation/SKILL.md)
-Translating academic papers into working code in JAX or PyTorch.
+### Research Paper Implementation *(moved to research-suite)*
+Translating academic papers into working code in JAX or PyTorch. See `research-paper-implementation` in the `research-suite` plugin (`plugins/research-suite/skills/research-paper-implementation/`).
 
 ### [Deep Learning Experimentation](../deep-learning-experimentation/SKILL.md)
 Systematic workflows for training, ablation, and hyperparameter tuning.
