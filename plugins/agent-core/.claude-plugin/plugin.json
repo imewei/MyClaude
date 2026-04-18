@@ -23,7 +23,7 @@
     "chain-of-thought",
     "agent-teams",
     "adaptive-thinking",
-    "opus-4.6",
+    "opus-4.7",
     "memory-system"
   ],
   "outputStyles": "./output-styles",
