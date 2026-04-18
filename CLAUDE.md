@@ -70,7 +70,10 @@ Suite breakdown:
 | dev-suite | 9 | 12 | 9 → 49 | 7 events | Full SDLC: architecture, implementation, CI/CD, testing, debugging |
 | science-suite | 12 | 0 | 14 → 117 | 5 events | JAX, Julia, physics, ML/DL/HPC, nonlinear dynamics, research |
 
-**Note:** 22 additional commands exist on disk but are not registered in `plugin.json`. These are **skill-invoked commands** — triggered by skills during workflows, not directly by users as `/slash-commands`.
+**Note:** 22 additional commands exist on disk but are not registered in `plugin.json`. They split into two categories:
+
+- **~10 are skill-invoked**: referenced from a skill's routing tree or an agent's body and triggered during workflows, not directly by users as `/slash-commands`.
+- **12 are intentional reference templates**: substantial command files (29-318 lines) that are kept on disk for reference and for users to copy/adapt, but are NOT currently invoked from any skill, agent, or other command. The list (verified 2026-04-18 via grep across `plugins/`): `adopt-code`, `agent-build`, `ai-assistant`, `c-project`, `deps`, `monitor-setup`, `onboard`, `paper-review`, `profile-performance`, `run-experiment`, `rust-project`, `scaffold`. To make any of these user-invocable, add `"./commands/<name>.md"` to the suite's `plugin.json` `commands` array.
 
 ### Hub-Skill Architecture
 

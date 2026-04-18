@@ -166,6 +166,24 @@ Updated `tools/validation/context_budget_checker.py` docstring:
 
 ---
 
+## Follow-up audit (2026-04-18) — orphan-command policy clarified
+
+`/dev-suite:double-check --deep` surfaced that 12 of the 22 unregistered
+commands are NOT invoked anywhere in `plugins/` (CLAUDE.md previously
+claimed all 22 were skill-invoked). Substantial files (29-318 lines),
+not stubs.
+
+**Decision: option (D) — keep them as intentional reference templates,
+update CLAUDE.md to be accurate.** No commands deleted, no commands
+registered. The 12 commands stay on disk for reference and for users
+to copy/adapt; CLAUDE.md `Plugin Suites` section now documents this
+explicitly. Net effect: zero functions lost, zero functions added,
+documentation now matches reality.
+
+The 12 reference templates: `adopt-code`, `agent-build`, `ai-assistant`,
+`c-project`, `deps`, `monitor-setup`, `onboard`, `paper-review`,
+`profile-performance`, `run-experiment`, `rust-project`, `scaffold`.
+
 ## Task 4 — Regression gate, version bump, UPGRADE_REPORT.md
 
 **Validator (`plugin-dev:plugin-validator`).** Orchestrator-driven.
