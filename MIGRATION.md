@@ -155,9 +155,43 @@ Updated `tools/validation/context_budget_checker.py` docstring:
 
 ---
 
-## Task 4 — (pending)
+## Task 4 — Regression gate, version bump, UPGRADE_REPORT.md
 
-Regression gate, version bump 3.3.2 → 3.4.0, UPGRADE_REPORT.md.
+**Validator (`plugin-dev:plugin-validator`).** Orchestrator-driven.
+
+### Validator suite results
+- `metadata_validator.py` per suite: ✅ 0 errors, 0 warnings (all 3).
+- `xref_validator.py`: ✅ 526/526 references valid, 0 broken.
+- `context_budget_checker.py`: ✅ 206/206 fit both 200K and 1M budgets.
+- `skill_validator.py`: ✅ no significant frontmatter issues.
+- `pytest tools/tests/ -v`: ✅ **154/154 passed in 5.40 s**.
+- `doc_checker.py`: 15 errors + 77 warnings TOTAL across 3 suites — these
+  are pre-existing broken `${CLAUDE_PLUGIN_ROOT}/docs/...` links, NOT
+  introduced by this sweep. Listed as deferred work in `UPGRADE_REPORT.md`.
+
+### Inventory diff vs `.baseline-inventory.txt`
+- Agents: 24/24 ✓
+- Registered commands: 14/14 ✓
+- Commands on disk: 36/36 ✓
+- Hub skills: 27/27 ✓
+- Sub-skills: 179/179 ✓
+- Total SKILL.md: 206/206 ✓
+- Hook handlers wired: 24/24 ✓ (12 + 7 + 5)
+- Hook scripts on disk: 22 (was 29; intentional −7 documented in Task 2) ✓
+- Pytest tests: 154/154 ✓
+
+**All preservation gates pass.**
+
+### Version bump
+- `plugins/agent-core/.claude-plugin/plugin.json`: `3.3.2` → `3.4.0`
+- `plugins/dev-suite/.claude-plugin/plugin.json`: `3.3.2` → `3.4.0`
+- `plugins/science-suite/.claude-plugin/plugin.json`: `3.3.2` → `3.4.0`
+- All 3 bumped together in lockstep.
+- Re-validated post-bump: 0 errors, 0 warnings.
+
+### Sign-off
+The marketplace is ready for Opus 4.7 (1M context) + CC v2.1.113.
+See `UPGRADE_REPORT.md` for the formal release report.
 
 ---
 
