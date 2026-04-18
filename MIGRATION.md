@@ -22,12 +22,23 @@ Format: each section corresponds to one task in the workflow.
 - No agent uses `model: inherit` — nothing to make explicit.
 - Schema clean across all 3 manifests; no deprecated fields.
 
-### Deferred (open question)
-- `context-specialist` is currently on `sonnet`. With Opus 4.7's 1M context
-  window, a case can be made to elevate it to `opus` (the agent owns memory
-  systems, vector search, and multi-agent context management). Not changed
-  in this sweep — flagged here for a follow-up decision after validator
-  benchmarks in Task 4.
+### Deferred (open question) — RESOLVED in follow-up
+
+- `context-specialist` was on `sonnet`. **Elevated to `opus`** in a follow-up
+  commit after the v3.4.0 release (see git log for the elevation commit).
+  Rationale:
+  - The agent already declares `effort: high`, `maxTurns: 35`,
+    `background: true`, `memory: project` — every signal points to a
+    deep-reasoning workload, not a routine task.
+  - Its scope ("dynamic context management, vector databases, knowledge
+    graphs, intelligent memory systems, multi-agent workflow orchestration")
+    is decision-heavy infrastructure that other agents depend on.
+  - Other foundational agents — `orchestrator` and `reasoning-engine` —
+    are already on `opus` in agent-core. Keeping `context-specialist` on
+    `sonnet` was inconsistent with the same-suite peer pattern.
+  - Under Opus 4.7's 1M context, the design space for memory and retrieval
+    strategies expands; sub-optimal context-specialist decisions cascade
+    to every agent that depends on it.
 
 ---
 

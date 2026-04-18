@@ -121,15 +121,16 @@ This commit (Task 4) bumps the version and produces this report.
 
 ## Deferred work (not blocking the v3.4.0 release)
 
-1. **`context-specialist` tier review**: currently `sonnet`, could be
-   elevated to `opus` under 1M context. Flagged in `MIGRATION.md` Task 1.
-   Deferred for a benchmark-driven decision.
-2. **`doc_checker.py` broken-link errors (15 total, pre-existing)**:
-   broken `${CLAUDE_PLUGIN_ROOT}/docs/<command>/<page>.md` links in
-   `dev-suite` (13) and 1 each in `agent-core` and `science-suite`.
-   The referenced docs/ pages do not exist on disk. Decision needed:
-   create the referenced pages, or update the command/agent prose to
-   stop referencing them. Out of scope for this modernization sweep.
+1. ~~**`context-specialist` tier review**~~ — **RESOLVED.** Elevated
+   `sonnet` → `opus` in a follow-up commit. See `MIGRATION.md` Task 1
+   "Deferred (open question) — RESOLVED in follow-up" for rationale.
+2. ~~**`doc_checker.py` broken-link errors (15 total, pre-existing)**~~ —
+   **RESOLVED** in commit `8e8b8641 fix(docs): resolve all 15 broken-link
+   errors flagged by doc_checker`. Two false positives fixed via
+   doc_checker code-block stripping; 13 real broken refs (plus 8
+   additional broken frontmatter refs that doc_checker had missed)
+   eliminated by removing the unwritten-doc references from the source
+   files.
 3. **`disableAllHooks: true` in `.claude/settings.local.json`** — set
    temporarily during this sweep so the dev-suite/science-suite
    PreToolUse safety hooks would not block dead-code deletion. **REMOVE

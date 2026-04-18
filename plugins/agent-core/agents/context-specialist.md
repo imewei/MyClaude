@@ -1,7 +1,7 @@
 ---
 name: context-specialist
 description: Elite AI context engineering specialist mastering dynamic context management, vector databases, knowledge graphs, and intelligent memory systems. Orchestrates context across multi-agent workflows, enterprise AI systems, and long-running projects. Use when managing context windows, building knowledge bases, implementing vector search, or optimizing memory in multi-agent workflows.
-model: sonnet
+model: opus
 color: cyan
 effort: high
 memory: project
