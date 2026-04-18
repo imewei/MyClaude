@@ -16,9 +16,9 @@ allowed-tools: [Bash, Write, Read, Task]
 
 $ARGUMENTS
 
-## External Docs
+## Topics covered
 
-[Prometheus Setup](${CLAUDE_PLUGIN_ROOT}/docs/monitor-setup/prometheus-setup.md) (~1,220 lines), [Grafana Dashboards](${CLAUDE_PLUGIN_ROOT}/docs/monitor-setup/grafana-dashboards.md) (~1,470), [Distributed Tracing](${CLAUDE_PLUGIN_ROOT}/docs/monitor-setup/distributed-tracing.md) (~1,368), [Log Aggregation](${CLAUDE_PLUGIN_ROOT}/docs/monitor-setup/log-aggregation.md) (~1,200), [Alerting Strategies](${CLAUDE_PLUGIN_ROOT}/docs/monitor-setup/alerting-strategies.md) (~1,327), [Infrastructure Code](${CLAUDE_PLUGIN_ROOT}/docs/monitor-setup/infrastructure-code.md) (~1,200)
+Prometheus setup, Grafana dashboards, distributed tracing, log aggregation, alerting strategies, infrastructure-as-code for monitoring stacks.
 
 ## Phase 1: Planning
 

@@ -16,9 +16,9 @@ allowed-tools: [Bash, Read, Write, Edit, Task, Glob, Grep]
 
 $ARGUMENTS
 
-## External Docs
+## Topics covered
 
-[SLO Framework](${CLAUDE_PLUGIN_ROOT}/docs/slo-implement/slo-framework.md) (~1,680 lines), [SLI Measurement](${CLAUDE_PLUGIN_ROOT}/docs/slo-implement/sli-measurement.md) (~1,538), [Error Budgets](${CLAUDE_PLUGIN_ROOT}/docs/slo-implement/error-budgets.md) (~1,500), [SLO Monitoring](${CLAUDE_PLUGIN_ROOT}/docs/slo-implement/slo-monitoring.md) (~1,545), [SLO Reporting](${CLAUDE_PLUGIN_ROOT}/docs/slo-implement/slo-reporting.md) (~1,450), [SLO Automation](${CLAUDE_PLUGIN_ROOT}/docs/slo-implement/slo-automation.md) (~1,450), [SLO Governance](${CLAUDE_PLUGIN_ROOT}/docs/slo-implement/slo-governance.md) (~1,420)
+SLO framework design, SLI measurement, error-budget tracking, SLO monitoring/alerting, reporting, automation (SLO-as-code), governance.
 
 ## Phase 1: Analysis & Design
 

@@ -418,8 +418,17 @@ class DocumentationChecker:
             else file_path.parent.parent
         )
 
-        # Find all markdown links
-        links = re.finditer(r"\[([^\]]+)\]\(([^)]+)\)", content)
+        # Strip fenced code blocks and inline code spans before scanning for
+        # links. Otherwise Python expressions like `self.layers[-1](x)` and
+        # markdown-about-markdown examples like `[text](url)` get false-flagged.
+        # Order matters: triple-fenced first, then double-backtick spans (which
+        # may contain literal single backticks), then single-backtick spans.
+        stripped = re.sub(r"```.*?```", "", content, flags=re.DOTALL)
+        stripped = re.sub(r"``[^\n]+?``", "", stripped)
+        stripped = re.sub(r"`[^`\n]+`", "", stripped)
+
+        # Find all markdown links in the stripped content
+        links = re.finditer(r"\[([^\]]+)\]\(([^)]+)\)", stripped)
 
         for match in links:
             link_text = match.group(1)
@@ -429,17 +438,23 @@ class DocumentationChecker:
             if link_url.startswith(("http://", "https://", "mailto:", "#")):
                 continue
 
-            # Check local file references
-            if not link_url.startswith("/"):
-                # Relative link
-                link_path = plugin_path / link_url
-                if not link_path.exists():
-                    result.add_issue(
-                        file_name,
-                        "error",
-                        f"Broken link: {link_url}",
-                        suggestion=f"Link text: '{link_text}' - file not found",
-                    )
+            # Resolve ${CLAUDE_PLUGIN_ROOT} to the plugin root before existence
+            # check — this is how Claude Code resolves the variable at runtime.
+            resolved = link_url.replace("${CLAUDE_PLUGIN_ROOT}", str(plugin_path))
+
+            # Determine the on-disk path
+            if resolved.startswith("/"):
+                link_path = Path(resolved)
+            else:
+                link_path = plugin_path / resolved
+
+            if not link_path.exists():
+                result.add_issue(
+                    file_name,
+                    "error",
+                    f"Broken link: {link_url}",
+                    suggestion=f"Link text: '{link_text}' - file not found",
+                )
 
     def _check_common_issues(
         self, file_path: Path, content: str, lines: List[str], result: DocCheckResult

@@ -8,12 +8,6 @@ execution-modes:
   quick-start: "10-15m: Single workflow (GitHub/GitLab)"
   standard: "30-45m: Full pipeline + security + monitoring"
   enterprise: "60-120m: Multi-platform + IaC + compliance"
-documentation:
-  analysis-framework: "${CLAUDE_PLUGIN_ROOT}/docs/dev-suite/workflow-analysis-framework.md"
-  github-actions: "${CLAUDE_PLUGIN_ROOT}/docs/dev-suite/github-actions-reference.md"
-  gitlab-ci: "${CLAUDE_PLUGIN_ROOT}/docs/dev-suite/gitlab-ci-reference.md"
-  terraform-integration: "${CLAUDE_PLUGIN_ROOT}/docs/dev-suite/terraform-cicd-integration.md"
-  security-workflows: "${CLAUDE_PLUGIN_ROOT}/docs/dev-suite/security-automation-workflows.md"
 allowed-tools: [Read, Write, Edit, Bash, Grep, Glob, Task, CronCreate, ScheduleWakeup]
 ---
 

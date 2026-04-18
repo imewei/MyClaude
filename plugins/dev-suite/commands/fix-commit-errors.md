@@ -7,10 +7,6 @@ execution-modes:
   quick-fix: "5-10m: Discovery + Fix"
   standard: "15-30m: Full resolution + learning"
   comprehensive: "30-60m: Deep analysis + correlation"
-documentation:
-  multi-agent-system: "${CLAUDE_PLUGIN_ROOT}/docs/dev-suite/multi-agent-error-analysis.md"
-  error-patterns: "${CLAUDE_PLUGIN_ROOT}/docs/dev-suite/error-pattern-library.md"
-  fix-strategies: "${CLAUDE_PLUGIN_ROOT}/docs/dev-suite/fix-strategies.md"
 allowed-tools: Bash(gh:*), Bash(git:*), Bash(npm:*), Bash(yarn:*), Bash(uv:*), Bash(cargo:*), Bash(go:*), Read, Edit, ScheduleWakeup
 argument-hint: "[workflow-id|commit-sha|pr-number] [--auto-fix] [--learn] [--mode=quick-fix|standard|comprehensive]"
 ---
