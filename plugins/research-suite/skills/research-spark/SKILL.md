@@ -11,15 +11,43 @@ The dispatcher for an eight-stage research-refinement pipeline. Detects stage, l
 
 | Stage | Skill | Artifact |
 |-------|-------|----------|
-| 1 | spark-articulator | `01_spark.md` |
-| 2 | landscape-scanner | `02_landscape.md` |
-| 3 | falsifiable-claim | `03_claim.md` |
-| 4-5 | theory-scaffold | `04_theory.md` + `05_formalism.tex` |
-| 6 | numerical-prototype | `06_prototype.md` + `code/` |
-| 7 | experiment-designer | `07_plan.md` |
-| 8 | premortem-critique | `08_premortem.md` |
+| 1 | [spark-articulator](../spark-articulator/SKILL.md) | `01_spark.md` |
+| 2 | [landscape-scanner](../landscape-scanner/SKILL.md) | `02_landscape.md` |
+| 3 | [falsifiable-claim](../falsifiable-claim/SKILL.md) | `03_claim.md` |
+| 4-5 | [theory-scaffold](../theory-scaffold/SKILL.md) | `04_theory.md` + `05_formalism.tex` |
+| 6 | [numerical-prototype](../numerical-prototype/SKILL.md) | `06_prototype.md` + `code/` |
+| 7 | [experiment-designer](../experiment-designer/SKILL.md) | `07_plan.md` |
+| 8 | [premortem-critique](../premortem-critique/SKILL.md) | `08_premortem.md` |
 
 Each artifact filename is canonical. Specialists write to these paths; they do not invent new names. This is the single most important thing to preserve, because downstream stages read by path.
+
+## Routing Decision Tree
+
+```
+What triggered the invocation?
+|
++-- Rough new idea (no prior artifacts)?
+|   --> Stage 1: ../spark-articulator/SKILL.md
+|
++-- Resuming a project (explicit "back to X" or implicit mid-conversation)?
+|   --> Read _state.yaml, summarize state, ask whether to continue or jump
+|
++-- User names a stage directly ("redo Stage 3", "premortem the plan")?
+|   +-- Prior-stage artifact exists?   --> Load named specialist; log jump
+|   +-- Prior-stage artifact missing?  --> Refuse; offer to run missing stage
+|
++-- Stage N complete, advancing to N+1?
+|   --> Verify N's canonical artifact exists; load next specialist
+|
+By stage (canonical dispatch table):
+  1   -> ../spark-articulator/SKILL.md     (elicit 3-line spark)
+  2   -> ../landscape-scanner/SKILL.md     (prior art + gap + Reviewer 2 pass)
+  3   -> ../falsifiable-claim/SKILL.md     (testable claim + kill criterion)
+  4-5 -> ../theory-scaffold/SKILL.md       (narrative theory + formalism.tex)
+  6   -> ../numerical-prototype/SKILL.md   (computational existence check)
+  7   -> ../experiment-designer/SKILL.md   (DoE, power, pre-registration)
+  8   -> ../premortem-critique/SKILL.md    (red-team before execution)
+```
 
 ## How routing works
 
