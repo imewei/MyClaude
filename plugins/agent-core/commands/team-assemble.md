@@ -589,7 +589,7 @@ Spawn 4 specialist teammates:
    (W&B/MLflow), Optuna HPO, data loading, model versioning, checkpoints.
    Owns configs/, scripts/, src/data/.
 
-4. "researcher" (science-suite:research-expert) - Methodology validation:
+4. "researcher" (research-suite:research-expert) - Methodology validation:
    correctness, reproducibility (seeds, deterministic ops), evaluation
    metrics, ablation studies. Validate vs [REFERENCE_PAPERS]. Owns docs/.
 
@@ -761,7 +761,7 @@ Spawn 4 specialist teammates:
 2. "architect" (dev-suite:software-architect) - Technical accuracy: verify
    docs match code, flag undocumented APIs and missing ADRs.
 
-3. "researcher" (science-suite:research-expert) - Scientific docs:
+3. "researcher" (research-suite:research-expert) - Scientific docs:
    methodology, algorithms, math notation, reproducibility.
 
 4. "implementer" (dev-suite:python-pro) - Doc tooling: autodoc, broken

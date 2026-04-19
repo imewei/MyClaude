@@ -669,7 +669,7 @@ up(8080; async=false)
 | Chaos theory, bifurcation analysis, Lyapunov exponents | `nonlinear-dynamics-expert` | Dynamical systems theory |
 | Python ML/DL (PyTorch, JAX, scikit-learn) | `jax-pro` | Python scientific computing |
 | Python ML pipelines, MLOps | `ml-expert` | Python ML ecosystem |
-| Publication figures, complex visualization | `research-expert` | Matplotlib/Makie visualization |
+| Publication figures, complex visualization | `research-expert` (research-suite) | Matplotlib/Makie visualization |
 
 ## Related Skills (Expert Agent For)
 

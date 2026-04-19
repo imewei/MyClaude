@@ -68,7 +68,7 @@ Structured concurrency - triggers python-pro.
 |-------------|------|
 | jax-pro | Numerical heavy lifting on GPU |
 | ml-expert | Integrating ML models into systems |
-| research-expert | Documenting system architecture or methodology |
+| research-expert (research-suite) | Documenting system architecture or methodology |
 
 ---
 

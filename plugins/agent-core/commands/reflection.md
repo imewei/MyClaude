@@ -14,7 +14,7 @@ execution-modes:
 
 agents:
   primary:
-    - research-expert (science-suite)
+    - research-expert (research-suite)
   conditional:
     - agent: software-architect (dev-suite)
       trigger: pattern "architecture|design|system" OR argument "code"

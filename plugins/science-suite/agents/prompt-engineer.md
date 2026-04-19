@@ -59,7 +59,7 @@ Structured output prompting - triggers prompt-engineer.
 | Delegate To | When |
 |-------------|------|
 | ml-expert | Model fine-tuning, evaluation, deployment |
-| research-expert | Scientific terminology validation, visualization |
+| research-expert (research-suite) | Scientific terminology validation, visualization |
 | python-pro | Evaluation script optimization |
 
 ---

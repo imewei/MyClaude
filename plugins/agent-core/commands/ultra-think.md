@@ -16,7 +16,7 @@ execution-modes:
 
 agents:
   primary:
-    - research-expert (science-suite)
+    - research-expert (research-suite)
     - orchestrator
   conditional:
     - agent: software-architect (dev-suite)

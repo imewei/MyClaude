@@ -106,7 +106,7 @@ You never trust a single simulation trajectory. You think in terms of **probabil
 | jax-pro | Advanced JAX kernels, GPU optimization, vmap/scan patterns |
 | simulation-expert | MD trajectory generation, NEMD execution, HPC scaling |
 | ml-expert | Physics-ML hybrid models, normalizing flows |
-| research-expert | Interactive correlation visualizations, Literature review |
+| research-expert (research-suite) | Interactive correlation visualizations, Literature review |
 
 ## Related Skills (Expert Agent For)
 

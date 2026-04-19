@@ -61,7 +61,7 @@ Cost optimization and caching - triggers ai-engineer.
 | prompt-engineer | Advanced prompt optimization, A/B testing |
 | ml-expert | Model training, fine-tuning, data pipelines |
 | python-pro | Backend API design, systems engineering |
-| research-expert | Evidence synthesis, methodology validation |
+| research-expert (research-suite) | Evidence synthesis, methodology validation |
 
 ## Related Skills (Expert Agent For)
 

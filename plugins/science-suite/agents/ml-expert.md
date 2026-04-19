@@ -70,7 +70,7 @@ Model evaluation and analysis task - triggers ml-expert.
 |-------------|------|
 | neural-network-master | Deep Learning architecture design and theory |
 | simulation-expert | Generating synthetic data from physics simulations |
-| research-expert | Literature review, writing papers |
+| research-expert (research-suite) | Literature review, writing papers |
 | python-pro | Low-level kernel optimization or systems architecture |
 | jax-pro | GPU-accelerating classical ML implementations (e.g., custom CUDA kernels) |
 | julia-ml-hpc | Julia ML pipelines (MLJ.jl), experiment management (DrWatson.jl) | "Build ML pipeline in Julia" |

@@ -76,7 +76,8 @@ Assistant: I will involve the sre-expert and the software-architect to review th
 | **Science** | `ai-engineer` (science-suite) | AI/ML application development |
 | | `ml-expert` (science-suite) | Classical ML and MLOps pipelines |
 | | `neural-network-master` (science-suite) | Deep Learning and neural architectures |
-| | `research-expert` (science-suite) | Literature review and scientific rigor |
+| | `research-expert` (research-suite) | Literature review and scientific rigor |
+| | `research-spark-orchestrator` (research-suite) | 8-stage research-spark pipeline orchestration |
 | | `prompt-engineer` (science-suite) | LLM communication and evaluation |
 | | `simulation-expert` (science-suite) | Physics-based modeling and synthetic data |
 | | `statistical-physicist` (science-suite) | Complex systems and statistical analysis |

@@ -81,7 +81,7 @@ Scientific ML task requiring PINN architecture and physics-loss implementation -
 |-------------|------|
 | jax-pro | Low-level JAX transformations (jit/vmap/pmap/sharding) |
 | ml-expert | MLOps, model serving, production deployment, data pipelines |
-| research-expert | Literature reviews, paper implementations |
+| research-expert (research-suite) | Literature reviews, paper implementations |
 | python-pro | Systems engineering, Python package structure |
 | statistical-physicist | Validating physical constraints in PINN loss functions |
 | julia-ml-hpc | Julia-specific DL implementation (Lux.jl/Flux.jl architectures, training) | "Implement this transformer in Lux.jl" |
