@@ -629,6 +629,30 @@ class SkillApplicationValidator:
     def generate_report(self) -> str:
         """Generate skill validation report."""
         metrics = self.calculate_metrics()
+        no_corpus = len(self.results) == 0
+
+        if no_corpus:
+            summary_table = (
+                "| Metric | Value | Target | Status |\n"
+                "|--------|-------|--------|--------|\n"
+                "| Overall Accuracy | n/a | >90% | ⚪ no corpus |\n"
+                "| Precision | n/a | >85% | ⚪ no corpus |\n"
+                "| Recall | n/a | >85% | ⚪ no corpus |\n"
+                f"| Over-Trigger Rate | n/a | <{self.TRIGGER_RATE_GOOD}% | ⚪ no corpus |\n"
+                f"| Under-Trigger Rate | n/a | <{self.TRIGGER_RATE_GOOD}% | ⚪ no corpus |\n"
+                "\n_No test corpus loaded — populate `test-corpus/` fixtures "
+                "or pass `--corpus-dir PATH` to enable classification metrics._"
+            )
+        else:
+            summary_table = (
+                "| Metric | Value | Target | Status |\n"
+                "|--------|-------|--------|--------|\n"
+                f"| Overall Accuracy | {metrics.accuracy:.1f}% | >90% | {self._status_icon(metrics.accuracy > 90)} |\n"
+                f"| Precision | {metrics.precision:.1f}% | >85% | {self._status_icon(metrics.precision > 85)} |\n"
+                f"| Recall | {metrics.recall:.1f}% | >85% | {self._status_icon(metrics.recall > 85)} |\n"
+                f"| Over-Trigger Rate | {metrics.over_trigger_rate:.1f}% | <{self.TRIGGER_RATE_GOOD}% | {self._status_icon(metrics.over_trigger_rate < self.TRIGGER_RATE_GOOD)} |\n"
+                f"| Under-Trigger Rate | {metrics.under_trigger_rate:.1f}% | <{self.TRIGGER_RATE_GOOD}% | {self._status_icon(metrics.under_trigger_rate < self.TRIGGER_RATE_GOOD)} |"
+            )
 
         report = f"""# Skill Application Validation Report
 
@@ -638,13 +662,7 @@ class SkillApplicationValidator:
 
 ## Summary Metrics
 
-| Metric | Value | Target | Status |
-|--------|-------|--------|--------|
-| Overall Accuracy | {metrics.accuracy:.1f}% | >90% | {self._status_icon(metrics.accuracy > 90)} |
-| Precision | {metrics.precision:.1f}% | >85% | {self._status_icon(metrics.precision > 85)} |
-| Recall | {metrics.recall:.1f}% | >85% | {self._status_icon(metrics.recall > 85)} |
-| Over-Trigger Rate | {metrics.over_trigger_rate:.1f}% | <{self.TRIGGER_RATE_GOOD}% | {self._status_icon(metrics.over_trigger_rate < self.TRIGGER_RATE_GOOD)} |
-| Under-Trigger Rate | {metrics.under_trigger_rate:.1f}% | <{self.TRIGGER_RATE_GOOD}% | {self._status_icon(metrics.under_trigger_rate < self.TRIGGER_RATE_GOOD)} |
+{summary_table}
 
 ## Classification Results
 
