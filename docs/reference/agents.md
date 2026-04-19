@@ -14,7 +14,7 @@ Core orchestration, reasoning, and context engineering.
 |-------|-------|-------------|
 | `orchestrator` | opus | Multi-agent orchestrator for workflow coordination, agent team assembly, and task allocation |
 | `reasoning-engine` | opus | Advanced reasoning, prompt design, and cognitive tasks. Masters Chain-of-Thought and structured frameworks |
-| `context-specialist` | sonnet | Context engineering specialist for dynamic context management, vector databases, and memory systems |
+| `context-specialist` | opus | Context engineering specialist for dynamic context management, vector databases, and memory systems |
 
 ---
 

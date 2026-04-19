@@ -115,4 +115,4 @@ Commands often invoke hub skills, which route to specialized sub-skills automati
 - [Integration Map](../integration-map.rst) — Suite dependencies and MCP server roles
 - [Glossary](../glossary.rst) — Key terms (Hub Skill, Sub-Skill, Routing Decision Tree)
 
-*Generated from v3.3.0 validated marketplace data.*
+*Generated from v3.4.0 validated marketplace data.*
