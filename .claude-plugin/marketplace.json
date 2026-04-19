@@ -219,13 +219,6 @@
       "skills": [
         "./skills/scientific-review",
         "./skills/research-spark",
-        "./skills/spark-articulator",
-        "./skills/landscape-scanner",
-        "./skills/falsifiable-claim",
-        "./skills/theory-scaffold",
-        "./skills/numerical-prototype",
-        "./skills/experiment-designer",
-        "./skills/premortem-critique",
         "./skills/_research-commons",
         "./skills/research-practice"
       ]
