@@ -1,7 +1,5 @@
 ---
 name: gitlab-ci-patterns
-maturity: "5-Expert"
-specialization: GitLab CI/CD
 description: Build GitLab CI/CD pipelines with multi-stage workflows, caching, Docker builds, Kubernetes deployments, and security scanning. Use when creating .gitlab-ci.yml pipelines, setting up runners, implementing Terraform/IaC, or configuring GitOps workflows.
 ---
 

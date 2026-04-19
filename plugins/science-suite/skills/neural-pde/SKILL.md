@@ -1,7 +1,5 @@
 ---
 name: neural-pde
-maturity: "5-Expert"
-specialization: Physics-Informed Neural Networks
 description: Solve PDEs with NeuralPDE.jl using physics-informed neural networks (PINNs) and method-of-lines discretization. Use when solving forward or inverse PDE problems with neural networks, enforcing boundary conditions, training neural surrogates for expensive simulations, or applying physics-informed loss functions. Use proactively when the user mentions PINNs, physics-informed learning, neural operators, or wants to solve high-dimensional or irregular-domain PDEs where mesh-based methods fail. For credible intervals on PINN solutions (BPINN / BNNODE), see the sibling `bayesian-pinn` skill.
 ---
 

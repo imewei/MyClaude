@@ -1,7 +1,5 @@
 ---
 name: reflection-framework
-maturity: "5-Expert"
-specialization: AI Reasoning & Multi-Dimensional Analysis
 description: Reference framework for meta-cognitive analysis dimensions including reasoning patterns, cognitive biases, and multi-dimensional assessment rubrics. Provides domain knowledge for the /reflection command. Use when performing reasoning audits, bias detection, or structuring comprehensive project health assessments.
 ---
 

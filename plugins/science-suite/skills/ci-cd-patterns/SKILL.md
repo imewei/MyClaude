@@ -1,7 +1,5 @@
 ---
 name: ci-cd-patterns
-maturity: "5-Expert"
-specialization: Julia CI/CD
 description: Master GitHub Actions for Julia packages with test matrices, CompatHelper, TagBot, and documentation deployment. Use when setting up CI workflows for Julia packages. Also use when configuring multi-platform test matrices, adding code coverage with Codecov, auto-deploying Documenter.jl docs, or automating release tagging. Use proactively when the user mentions Julia CI, GitHub Actions for Julia, or wants automated testing and dependency updates for a Julia project.
 ---
 

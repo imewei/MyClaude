@@ -1,7 +1,5 @@
 ---
 name: visualization-patterns
-maturity: "5-Expert"
-specialization: Julia Visualization
 description: Master Plots.jl and Makie.jl for data visualization in Julia. Use when creating plots, selecting backends, building statistical visualizations, or making publication-quality figures. Also use when choosing between Plots.jl and Makie.jl for specific use cases, creating heatmaps, animations, 3D surface plots, or interactive dashboards in Julia. Use proactively when the user wants to visualize simulation results, plot data in Julia, or needs guidance on Julia plotting libraries and their ecosystems.
 ---
 

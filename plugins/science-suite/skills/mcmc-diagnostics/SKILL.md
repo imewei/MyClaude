@@ -1,7 +1,5 @@
 ---
 name: mcmc-diagnostics
-maturity: "5-Expert"
-specialization: Bayesian Diagnostics
 description: Master MCMC convergence diagnostics with R-hat, ESS, trace plots, and divergence checking. Use when validating Bayesian inference results from Turing.jl. Also use when chains look poorly mixed, R-hat is too high, effective sample size is low, or divergent transitions appear. Use proactively when interpreting posterior samples, debugging sampler performance, or deciding whether to reparameterize a model, even if the user only mentions "my MCMC isn't converging."
 ---
 

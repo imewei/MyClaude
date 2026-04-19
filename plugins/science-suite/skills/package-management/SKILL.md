@@ -1,7 +1,5 @@
 ---
 name: package-management
-maturity: "5-Expert"
-specialization: Julia Package Management
 description: Master Julia package management with Pkg.jl, Project.toml, and Manifest.toml for reproducible environments. Use when managing dependencies, specifying compatibility bounds, or setting up project environments. Also use when adding/removing packages, pinning versions, creating stacked environments, resolving dependency conflicts, or understanding the difference between Project.toml and Manifest.toml. Use proactively when the user mentions Julia dependency issues, environment setup, or asks how to make Julia projects reproducible.
 ---
 

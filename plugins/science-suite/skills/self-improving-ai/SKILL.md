@@ -15,7 +15,7 @@ For self-improving AI system design, prompt optimization, and autonomous researc
   - *Location*: `plugins/science-suite/agents/ai-engineer.md`
 - **`prompt-engineer`** (secondary): Prompt technique, chain-of-thought, constitutional principles, evaluation harnesses.
   - *Location*: `plugins/science-suite/agents/prompt-engineer.md`
-- **`research-expert`** (tertiary): Autonomous-research-loop design, experiment-planning agents, literature-synthesis pipelines.
+- **`research-expert`** (research-suite, tertiary): Autonomous-research-loop design, experiment-planning agents, literature-synthesis pipelines.
   - *Location*: `plugins/research-suite/agents/research-expert.md`
 
 ---

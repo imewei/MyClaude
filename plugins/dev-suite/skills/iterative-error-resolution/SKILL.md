@@ -1,7 +1,5 @@
 ---
 name: iterative-error-resolution
-maturity: "5-Expert"
-specialization: CI/CD Error Resolution & Knowledge-Based Fixing
 description: Reference patterns for CI/CD error classification, fix strategies, and resolution loops. Provides domain knowledge for the /fix-commit-errors command. Use when analyzing GitHub Actions failures, dependency conflicts, or build/test error patterns.
 ---
 

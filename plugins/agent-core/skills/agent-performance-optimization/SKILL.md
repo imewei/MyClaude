@@ -1,7 +1,5 @@
 ---
 name: agent-performance-optimization
-maturity: "5-Expert"
-specialization: Agent Performance Tuning
 description: Optimize AI agent performance through monitoring, metrics collection, caching, and load balancing. Use when analyzing agent execution bottlenecks, implementing latency percentiles (P50/P95/P99), setting up multi-tier caching, tracking success/failure rates, load balancing across agent instances, or scaling agent systems for production.
 ---
 

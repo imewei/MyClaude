@@ -1,7 +1,5 @@
 ---
 name: plugin-syntax-validator
-maturity: "5-Expert"
-specialization: Claude Code Plugin Validation
 description: Validates plugin structure, manifest correctness, and component syntax against official standards. Checks for required files (plugin.json, README.md, LICENSE), validates YAML frontmatter in agents/commands/skills, and ensures directory compliance. Use when creating, modifying, or reviewing Claude Code plugins, or validating plugin.json manifests before publishing.
 ---
 

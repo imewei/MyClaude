@@ -11,7 +11,7 @@ Analyze biological sequences, build genomics pipelines, and process bioinformati
 
 For rigorous scientific methodology in bioinformatics research, delegate to the expert agent:
 
-- **`research-expert`**: Research methodology specialist for experimental design, statistical rigor, and reproducibility.
+- **`research-expert`** (research-suite): Research methodology specialist for experimental design, statistical rigor, and reproducibility.
   - *Location*: `plugins/research-suite/agents/research-expert.md`
   - *Capabilities*: Experimental design, literature review, statistical analysis, publication workflow.
 
