@@ -66,7 +66,9 @@ class ObservableBuilder:
         self.data = {"name": self.name, "uncertainty": {}}
 
     def set_type(self, type_: str) -> "ObservableBuilder":
-        assert type_ in {"time_series", "spectrum", "scalar", "tensor", "distribution"}
+        allowed = {"time_series", "spectrum", "scalar", "tensor", "distribution"}
+        if type_ not in allowed:
+            raise ValueError(f"type_ must be one of {sorted(allowed)}, got {type_!r}")
         self.data["type"] = type_
         return self
 
@@ -118,8 +120,16 @@ class ObservableBuilder:
     ) -> "ObservableBuilder":
         """source: 'numerical', 'parametric', or 'statistical'.
         type_: 'relative' or 'absolute'."""
-        assert source in {"numerical", "parametric", "statistical"}
-        assert type_ in {"relative", "absolute"}
+        allowed_sources = {"numerical", "parametric", "statistical"}
+        if source not in allowed_sources:
+            raise ValueError(
+                f"source must be one of {sorted(allowed_sources)}, got {source!r}"
+            )
+        allowed_types = {"relative", "absolute"}
+        if type_ not in allowed_types:
+            raise ValueError(
+                f"type_ must be one of {sorted(allowed_types)}, got {type_!r}"
+            )
         self.data["uncertainty"][source] = {
             "type": type_,
             "value": float(value),

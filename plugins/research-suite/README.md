@@ -10,7 +10,10 @@ Scientific research workflows for Claude Code. Three complementary tracks:
 
 All three prioritize domain rigor, adversarial critique, and explicit handoffs over freeform chat.
 
-## Quick Start
+## Quick Start / Usage Examples
+
+Each of the three tracks is skill-driven — no slash commands. Just describe the task
+and the matching skill auto-triggers.
 
 ```bash
 # Peer review (scientific-review skill, one-shot)
@@ -40,7 +43,12 @@ Use `research-expert` for discrete methodology tasks (power analysis, systematic
 
 ## Commands
 
-This plugin ships **zero registered slash commands** — every workflow is skill-driven. The legacy `/paper-review` command was removed because `scientific-review` auto-triggers on "review this paper" phrasings and produces a strictly better deliverable (.docx with journal-specific adaptation, Six-Lens analysis, Confidential Comments to Editor). If a new command ever gets added, it will appear here.
+This plugin ships **zero registered slash commands** — every workflow is
+skill-driven. The legacy `/paper-review` command was removed because
+`scientific-review` auto-triggers on "review this paper" phrasings and produces a
+strictly better deliverable (.docx with journal-specific adaptation, Six-Lens
+analysis, Confidential Comments to Editor). If a new command ever gets added, it
+will appear here.
 
 ## Skills
 
@@ -95,9 +103,15 @@ State lives in `_state.yaml` at the project root; the orchestrator reads it befo
 
 ## Three adversarial patterns worth knowing
 
-- **Reviewer 2 persona** (stages 2 and 3): an adversarial reviewer argues the gap isn't real / tractable / impact-bearing, or the claim is physically impossible / mathematically unsound / already solved. Each rebuttal must cite a specific paper.
-- **Stepwise derivation protocol** (stages 4–5): one conceptual step per invocation, with a verification pass (dimensional check, limit check, sanity argument) before the next step. Blocks multi-step symbolic leaps where errors concentrate.
-- **Instrument capability margin** (stage 7): for each measurable quantity, compute the margin between the predicted signal and instrument capability on each axis. Margin < 3× → high-risk measurement requiring explicit mitigation before the plan advances.
+- **Reviewer 2 persona** (stages 2 and 3): an adversarial reviewer argues the gap
+  isn't real / tractable / impact-bearing, or the claim is physically impossible /
+  mathematically unsound / already solved. Each rebuttal must cite a specific paper.
+- **Stepwise derivation protocol** (stages 4–5): one conceptual step per invocation,
+  with a verification pass (dimensional check, limit check, sanity argument) before
+  the next step. Blocks multi-step symbolic leaps where errors concentrate.
+- **Instrument capability margin** (stage 7): for each measurable quantity, compute
+  the margin between the predicted signal and instrument capability on each axis.
+  Margin < 3× → high-risk measurement requiring explicit mitigation before the plan advances.
 
 ## Requirements
 
@@ -133,13 +147,39 @@ State lives in `_state.yaml` at the project root; the orchestrator reads it befo
 
 ## Design notes
 
-- **Three tracks, one plugin.** `scientific-review` evaluates *other people's* work; `research-spark` refines *your own* idea into a scoped project; `research-practice` covers the broader research lifecycle (design, reproduce, assess, write, synthesize). All three require the same mental discipline — adversarial critique, explicit falsifiability, artifact-gated handoffs.
-- **One agent, zero commands.** The `research-expert` agent handles multi-step research delegations. Skills drive everything else — the old `/paper-review` command was removed because `scientific-review` auto-triggers on "review this paper" phrasings and produces a strictly better deliverable (.docx with journal-specific adaptation, Six-Lens analysis, Confidential Comments to Editor).
-- **Phase-aligned sub-skills under `research-practice`.** Each methodology sub-skill owns one phase (design / evaluate / reproduce / write / synthesize) with explicit scope boundaries. See each skill's "Scope boundary" section to understand why the splits are drawn where they are.
-- **Sub-agent fan-out.** The research-spark orchestrator can parallelize across Claude Code sub-agents at natural points: Stage 2 literature layers, Stage 6 validation passes, Stage 8 reviewer archetypes. The orchestrator itself is a skill, not an agent.
-- **Style enforcement.** Every emitted markdown passes `../_research-commons/scripts/style_lint.py`: no em dashes, no banned vocabulary (*innovative, state-of-the-art, transformative, novel, groundbreaking*, etc.), quantified language preferred.
-- **Trust the model, explain the why.** The skills lean on theory of mind rather than rigid MUSTs; they explain *why* a step matters so Claude can apply judgment at the edges.
-- **Moved from science-suite (2026-04-18).** The `research-expert` agent and 5 methodology skills originated in `science-suite`. They moved here because peer review / methodology / writing are *evaluative* research activities, whereas `science-suite` focuses on *computational* work (JAX, Julia, simulations, ML).
+- **Three tracks, one plugin.** `scientific-review` evaluates *other people's* work;
+  `research-spark` refines *your own* idea into a scoped project; `research-practice`
+  covers the broader research lifecycle (design, reproduce, assess, write, synthesize).
+  All three require the same mental discipline — adversarial critique, explicit
+  falsifiability, artifact-gated handoffs.
+- **One agent, zero commands.** The `research-expert` agent handles multi-step
+  research delegations. Skills drive everything else — the old `/paper-review`
+  command was removed because `scientific-review` auto-triggers on "review this
+  paper" phrasings and produces a strictly better deliverable (.docx with
+  journal-specific adaptation, Six-Lens analysis, Confidential Comments to Editor).
+- **Phase-aligned sub-skills under `research-practice`.** Each methodology sub-skill
+  owns one phase (design / evaluate / reproduce / write / synthesize) with explicit
+  scope boundaries. See each skill's "Scope boundary" section to understand why the
+  splits are drawn where they are.
+- **Sub-agent fan-out.** The research-spark orchestrator can parallelize across
+  Claude Code sub-agents at natural points: Stage 2 literature layers, Stage 6
+  validation passes, Stage 8 reviewer archetypes. The orchestrator itself is a
+  skill, not an agent.
+- **Style enforcement.** Every emitted markdown passes
+  `../_research-commons/scripts/style_lint.py`: no em dashes, no banned vocabulary
+  (*innovative, state-of-the-art, transformative, novel, groundbreaking*, etc.),
+  quantified language preferred.
+- **Trust the model, explain the why.** The skills lean on theory of mind rather
+  than rigid MUSTs; they explain *why* a step matters so Claude can apply judgment
+  at the edges.
+- **Moved from science-suite (2026-04-18).** The `research-expert` agent and 5
+  methodology skills originated in `science-suite`. They moved here because peer
+  review / methodology / writing are *evaluative* research activities, whereas
+  `science-suite` focuses on *computational* work (JAX, Julia, simulations, ML).
+
+## Integration / Workflow
+
+The `research-spark-orchestrator` delegates across suite boundaries at natural fan-out points: Stage 6 JAX implementation → `jax-pro` (science-suite); SciML/DifferentialEquations.jl → `julia-pro` (science-suite); bifurcation/chaos theory at Stages 4–5 → `nonlinear-dynamics-expert` (science-suite); correlation functions / Langevin / critical phenomena → `statistical-physicist` (science-suite); MD or Monte Carlo prototypes at Stage 6 → `simulation-expert` (science-suite). Off-pipeline methodology questions route to `research-expert` (this suite). See `docs/integration-map.rst` for the full delegation graph.
 
 ## License
 
