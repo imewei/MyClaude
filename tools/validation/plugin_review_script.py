@@ -467,13 +467,13 @@ class PluginReviewer:
         lines.append(f"- **Successes:** {len(report.successes)}\n")
 
         # Reverse severity map for display
-        display_severity = {
+        display_severity: Dict[str, str] = {
             "critical": "critical",
             "error": "high",
             "warning": "medium",
             "info": "low",
         }
-        severity_emoji_map = {
+        severity_emoji_map: Dict[str, str] = {
             "critical": "\U0001f534",
             "error": "\U0001f7e0",
             "warning": "\U0001f7e1",
@@ -496,9 +496,8 @@ class PluginReviewer:
                 lines.append(f"### {section}\n")
                 for issue in issues:
                     emoji = severity_emoji_map.get(issue.severity, "\u26aa")
-                    display_sev = display_severity.get(
-                        issue.severity, issue.severity
-                    ).upper()
+                    display_sev = display_severity.get(issue.severity) or issue.severity
+                    display_sev = display_sev.upper()
 
                     lines.append(f"{emoji} **{display_sev}**: {issue.message}")
                     if issue.suggestion:
@@ -546,7 +545,12 @@ def main():
         print("  python plugin_review_script.py julia-development /path/to/plugins")
         sys.exit(1)
 
-    plugin_name = sys.argv[1]
+    plugin_arg = sys.argv[1]
+    # Accept both "dev-suite" and "plugins/dev-suite" forms for CLI convenience.
+    if plugin_arg.startswith("plugins/") or plugin_arg.startswith("plugins\\"):
+        plugin_name = Path(plugin_arg).name
+    else:
+        plugin_name = plugin_arg
     plugins_root = Path(sys.argv[2]) if len(sys.argv) > 2 else Path.cwd() / "plugins"
 
     if not plugins_root.exists():

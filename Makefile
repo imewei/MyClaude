@@ -3,7 +3,7 @@
 
 .PHONY: help clean clean-all clean-python clean-docs clean-cache clean-build clean-reports \
         build docs docs-live test lint validate install dev-install plugin-enable-all \
-        audit audit-deps audit-sast audit-secrets audit-deadcode
+        audit audit-deps audit-sast audit-secrets audit-deadcode verify verify-fast
 
 # Default target
 .DEFAULT_GOAL := help
@@ -170,6 +170,41 @@ test-coverage: ## Run tests with coverage report
 	else \
 		echo "pytest-cov not installed. Install with: pip install pytest-cov"; \
 	fi
+
+##@ Pre-push Verification
+
+verify: ## Full local CI (lint + validate + tests) — run before push
+	@echo "\033[1;34m======================================\033[0m"
+	@echo "\033[1;34m  FULL LOCAL CI VERIFICATION\033[0m"
+	@echo "\033[1;34m======================================\033[0m"
+	@echo ""
+	@echo "\033[1mStep 1/3: Linting (ruff + mypy)\033[0m"
+	@$(MAKE) --no-print-directory lint || (echo "\033[31mLint failed!\033[0m" && exit 1)
+	@echo ""
+	@echo "\033[1mStep 2/3: Plugin metadata validation\033[0m"
+	@$(MAKE) --no-print-directory validate || (echo "\033[31mValidation failed!\033[0m" && exit 1)
+	@echo ""
+	@echo "\033[1mStep 3/3: Test suite\033[0m"
+	@$(MAKE) --no-print-directory test || (echo "\033[31mTests failed!\033[0m" && exit 1)
+	@echo ""
+	@echo "\033[1;32m======================================\033[0m"
+	@echo "\033[1;32m  ALL CHECKS PASSED - SAFE TO PUSH\033[0m"
+	@echo "\033[1;32m======================================\033[0m"
+
+verify-fast: ## Quick verification (lint + validate only, no tests)
+	@echo "\033[1;34m======================================\033[0m"
+	@echo "\033[1;34m  QUICK LOCAL CI VERIFICATION\033[0m"
+	@echo "\033[1;34m======================================\033[0m"
+	@echo ""
+	@echo "\033[1mStep 1/2: Linting (ruff + mypy)\033[0m"
+	@$(MAKE) --no-print-directory lint || (echo "\033[31mLint failed!\033[0m" && exit 1)
+	@echo ""
+	@echo "\033[1mStep 2/2: Plugin metadata validation\033[0m"
+	@$(MAKE) --no-print-directory validate || (echo "\033[31mValidation failed!\033[0m" && exit 1)
+	@echo ""
+	@echo "\033[1;32m======================================\033[0m"
+	@echo "\033[1;32m  QUICK CHECKS PASSED\033[0m"
+	@echo "\033[1;32m======================================\033[0m"
 
 ##@ Security
 
