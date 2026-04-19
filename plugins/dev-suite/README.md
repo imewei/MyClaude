@@ -6,7 +6,7 @@ Unified software development lifecycle suite covering architecture, implementati
 
 Dev Suite covers the complete software development lifecycle with 9 specialized agents (2 opus, 6 sonnet, 1 haiku), 12 registered slash commands, and 9 hub skills routing to 49 sub-skills. From architecture design through CI/CD to production debugging, every engineering workflow is covered. Agents delegate across specializations automatically — debugger-pro hands off to sre-expert for reliability issues, software-architect delegates to devops-architect for infrastructure.
 
-## Quick Start
+## Quick Start / Usage Examples
 
 ```bash
 # End-to-end feature development with guided phases
@@ -75,7 +75,7 @@ Covers the complete SDLC:
 - **Quality**: Code review, debugging toolkit, test automation, E2E testing, validation, accessibility (WCAG), mobile testing
 - **Documentation**: Standards and best practices
 
-## Hooks (8 events)
+## Hooks (7 events)
 
 | Event | Purpose |
 |-------|---------|
@@ -83,10 +83,15 @@ Covers the complete SDLC:
 | PreToolUse | Guard destructive git ops (push --force, reset --hard, branch -D) |
 | PostToolUse | Auto-lint suggestions after Write/Edit (Python, JS/TS) |
 | SubagentStop | Collect results from debugger-pro/quality-specialist |
-| ExecutionError | Capture build/test failures with structured diagnostics |
 | TaskCompleted | Trigger validation checks and suggest git commit |
 | SessionEnd | Persist structured progress summary for next session |
 | StopFailure | Capture context when /stop fails mid-operation |
+
+(`ExecutionError` was removed in v3.4.0 — not supported by the CC v2.1.113 CLI event schema.)
+
+## Integration / Workflow
+
+Dev Suite agents delegate across specializations automatically: `debugger-pro` hands off to `sre-expert` for reliability issues, `software-architect` delegates to `devops-architect` for infrastructure, `quality-specialist` coordinates with `systems-engineer` on low-level review. Cross-suite, dev-suite delegates *up* to `agent-core/orchestrator` for multi-agent coordination and *out* to `science-suite` when ML/DL/physics expertise is needed. See `docs/integration-map.rst` for the full delegation graph.
 
 ## Installation
 

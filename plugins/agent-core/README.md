@@ -4,9 +4,9 @@ Meta-agent suite for multi-agent orchestration, advanced reasoning, and context 
 
 ## Overview
 
-Agent Core is the coordination layer of MyClaude. Its 3 agents (orchestrator, reasoning-engine, context-specialist) manage multi-agent workflows, decompose complex problems, and maintain session context. It provides 3 hub skills routing to 14 sub-skills covering orchestration patterns, reasoning frameworks, and LLM engineering. Use agent-core when you need to coordinate multiple specialists or tackle problems requiring structured reasoning.
+Agent Core is the coordination layer of MyClaude. Its 3 agents (orchestrator, reasoning-engine, context-specialist) manage multi-agent workflows, decompose complex problems, and maintain session context. It provides 4 hub skills routing to 13 sub-skills covering orchestration patterns, reasoning frameworks, LLM engineering, and intent clarification. Use agent-core when you need to coordinate multiple specialists or tackle problems requiring structured reasoning.
 
-## Quick Start
+## Quick Start / Usage Examples
 
 ```bash
 # Assemble a team for a complex task
@@ -33,7 +33,7 @@ Agent Core is the coordination layer of MyClaude. Its 3 agents (orchestrator, re
 |-------|-------|----------------|
 | `orchestrator` | opus | Multi-agent coordination, team assembly, task delegation |
 | `reasoning-engine` | opus | Advanced reasoning, prompt design, cognitive tasks |
-| `context-specialist` | sonnet | Context engineering, memory systems, knowledge graphs |
+| `context-specialist` | opus | Context engineering, memory systems, knowledge graphs |
 
 ## Commands
 
@@ -46,7 +46,7 @@ Agent Core is the coordination layer of MyClaude. Its 3 agents (orchestrator, re
 | `/ultra-think` | Advanced structured reasoning with branching exploration |
 | `/team-assemble` | Codebase-aware recommender with 10 focused teams (20 variants) + long-running workflow protocol (v3.4.0) |
 
-## Skills (3 hubs → 14 sub-skills)
+## Skills (4 hubs → 13 sub-skills)
 
 Hub skills route to specialized sub-skills via decision trees:
 
@@ -54,13 +54,20 @@ Hub skills route to specialized sub-skills via decision trees:
 |-----|------------|-------|
 | `agent-systems` | 4 | Orchestration, coordination, performance optimization, evaluation |
 | `reasoning-and-memory` | 5 | Reasoning frameworks, reflection, memory patterns, knowledge graphs, self-improving agents |
-| `llm-engineering` | 5 | Intent clarification (thinkfirst), LLM app patterns, prompt engineering, MCP integration, safety guardrails |
+| `llm-engineering` | 4 | LLM app patterns, prompt engineering, MCP integration, safety guardrails |
+| `thinkfirst` | 0 (standalone) | Interview-first intent clarification via Seven Dimensions framework |
 
-Sub-skills include: reasoning-frameworks, reflection-framework, agent-performance-optimization, agent-evaluation, multi-agent-coordination, llm-application-patterns, mcp-integration, prompt-engineering-patterns, memory-system-patterns, safety-guardrails, tool-use-patterns, knowledge-graph-patterns, `thinkfirst` *(new in v3.1.3)*, `self-improving-agents` *(new in v3.1.4)*
+Sub-skills include: reasoning-frameworks, reflection-framework, agent-performance-optimization, agent-evaluation, multi-agent-coordination, llm-application-patterns, mcp-integration, prompt-engineering-patterns, memory-system-patterns, safety-guardrails, tool-use-patterns, knowledge-graph-patterns, `self-improving-agents` *(new in v3.1.4)*
 
-## Hooks (17 events)
+## Hooks (12 events)
 
-SessionStart, SessionEnd, PreToolUse, PostToolUse, PreCompact, PostCompact, SubagentStart, SubagentStop, PermissionDenied, TaskCreated, TaskCompleted, StopFailure, PreSubagentUse, ExecutionError, PermissionPrompt, ContextOverflow, CostThreshold
+SessionStart, SessionEnd, PreToolUse, PostToolUse, PreCompact, PostCompact, SubagentStart, SubagentStop, PermissionDenied, TaskCreated, TaskCompleted, StopFailure
+
+(PreSubagentUse, ExecutionError, PermissionPrompt, ContextOverflow, and CostThreshold handlers were removed in v3.4.0 — not supported by the CC v2.1.113 CLI event schema.)
+
+## Integration / Workflow
+
+Agent-core is the **coordination layer** — other suites delegate *up* to it when they need multi-agent orchestration or structured reasoning, and agent-core delegates *down* to them when a domain specialist is needed. See `docs/integration-map.rst` for the full delegation graph.
 
 ## Installation
 

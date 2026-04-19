@@ -4,9 +4,9 @@ Domain-specific scientific computing suite for high-performance computing, Julia
 
 ## Overview
 
-Science Suite provides 12 specialized agents (5 opus, 7 sonnet) covering JAX, Julia, physics, ML/DL, and research workflows. Its 14 hub skills route to 117 sub-skills spanning nonlinear dynamics, Bayesian inference, statistical physics, simulation, and more. Opus agents handle deep reasoning (simulation design, bifurcation theory, DL architecture) while sonnet agents handle implementation (JAX kernels, Julia code, Python systems). SessionStart hooks auto-detect JAX devices, GPU availability, and Julia environments.
+Science Suite provides 11 specialized agents (4 opus, 7 sonnet) covering JAX, Julia, physics, ML/DL, and nonlinear dynamics. Its 14 hub skills route to 112 sub-skills spanning nonlinear dynamics, Bayesian inference, statistical physics, simulation, and more. Opus agents handle deep reasoning (simulation design, bifurcation theory, DL architecture) while sonnet agents handle implementation (JAX kernels, Julia code, Python systems). SessionStart hooks auto-detect JAX devices, GPU availability, and Julia environments. *(Research methodology moved to `research-suite` in v3.4.0.)*
 
-## Quick Start
+## Quick Start / Usage Examples
 
 ```bash
 # Ask JAX specialist to build a differentiable physics model
@@ -47,15 +47,11 @@ Science Suite provides 12 specialized agents (5 opus, 7 sonnet) covering JAX, Ju
 | `neural-network-master` | opus | DL architecture, PINNs, theory, diagnostics |
 | `nonlinear-dynamics-expert` | opus | Bifurcation theory, chaos, network dynamics, pattern formation |
 
-## Commands (3)
+## Commands
 
-| Command | Description |
-|---------|-------------|
-| `/run-experiment` | Design and execute reproducible scientific experiments |
-| `/analyze-data` | Comprehensive data analysis with statistical tests and visualization |
-| `/paper-review` | Systematic review of scientific papers |
+This suite registers **zero slash commands** — every workflow is skill- or agent-driven. Reference command templates (`/run-experiment`, `/analyze-data`, `/adopt-code`) exist on disk for users to copy and adapt, but are not invoked directly. `/paper-review` was removed in v3.4.0; use `scientific-review` in `research-suite` instead.
 
-## Skills (14 hubs → 117 sub-skills)
+## Skills (14 hubs → 112 sub-skills)
 
 Organized by domain:
 
@@ -72,16 +68,21 @@ Organized by domain:
 - **Nonlinear Dynamics**: Bifurcation (with Python escape hatch), chaos attractors, pattern formation, equation discovery (SINDy ecosystem), Julia ↔ Python handoff for nonlinear time-series tools (nolds, antropy, IDTxl, pyEDM)
 - **Other Domains**: Computer vision, NLP, bioinformatics, time series, control theory, symbolic math, quantum computing, federated learning, reinforcement learning
 
-## Hooks (6 events)
+## Hooks (5 events)
 
 | Event | Purpose |
 |-------|---------|
 | SessionStart | Detect JAX devices, GPU availability, Julia env |
 | PreToolUse | Warn before commands that could corrupt simulations |
 | PostToolUse | NaN/Inf check on compute job output (numerical integrity) |
-| ExecutionError | Capture JAX compile errors, OOM, numerical divergence |
 | SessionEnd | Persist structured progress summary for next session |
 | SubagentStop | Collect results from parallel science agents |
+
+(`ExecutionError` was removed in v3.4.0 — not supported by the CC v2.1.113 CLI event schema.)
+
+## Integration / Workflow
+
+Science Suite agents primarily collaborate within the suite (e.g., `simulation-expert` delegates to `jax-pro` for JAX-MD kernels, `neural-network-master` delegates to `julia-ml-hpc` for Lux.jl implementations). Cross-suite, science-suite delegates *up* to `agent-core/orchestrator` for multi-agent work and *out* to `research-suite` for methodology (power analysis, IMRaD writing, peer review). See `docs/integration-map.rst` for the full delegation graph.
 
 ## Installation
 
