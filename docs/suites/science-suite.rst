@@ -3,7 +3,7 @@ Scientific Computing Suite
 
 High-performance computing, physics/chemistry simulations, ML/DL, Julia, JAX, and data science workflows. Uses the :term:`Hub Skill` architecture with 14 hubs routing to 112 sub-skills. Optimized for Claude Opus 4.7 with extended context and adaptive reasoning.
 
-**Version:** 3.4.0 | **11 Agents** | **0 Registered Commands** | **14 Hubs → 112 Sub-skills** | **5 Hook Events**
+**Version:** 3.4.1 | **11 Agents** | **0 Registered Commands** | **14 Hubs → 112 Sub-skills** | **5 Hook Events**
 
 .. note::
 
@@ -15,57 +15,57 @@ Agents
 .. agent:: neural-network-master
    :description: Deep learning authority specializing in architecture design, theory, and implementation (Transformers, CNNs, diagnostics).
    :model: opus
-   :version: 3.4.0
+   :version: 3.4.1
 
 .. agent:: nonlinear-dynamics-expert
    :description: Expert in bifurcation analysis, chaos, coupled networks, pattern formation, and equation discovery (SINDy/UDE).
    :model: opus
-   :version: 3.4.0
+   :version: 3.4.1
 
 .. agent:: simulation-expert
    :description: Expert in molecular dynamics, statistical mechanics, and numerical methods (HPC/GPU).
    :model: opus
-   :version: 3.4.0
+   :version: 3.4.1
 
 .. agent:: statistical-physicist
    :description: Expert in correlation functions, non-equilibrium dynamics, and ensemble theory.
    :model: opus
-   :version: 3.4.0
+   :version: 3.4.1
 
 .. agent:: ai-engineer
    :description: Build production-ready LLM applications, advanced RAG systems, and intelligent agents.
    :model: sonnet
-   :version: 3.4.0
+   :version: 3.4.1
 
 .. agent:: jax-pro
    :description: Expert in JAX-based scientific computing, functional transformations, and high-performance numerical kernels.
    :model: sonnet
-   :version: 3.4.0
+   :version: 3.4.1
 
 .. agent:: julia-ml-hpc
    :description: Expert in Julia ML, Deep Learning, and HPC (Lux.jl, MLJ.jl, CUDA.jl, MPI.jl, GraphNeuralNetworks.jl).
    :model: sonnet
-   :version: 3.4.0
+   :version: 3.4.1
 
 .. agent:: julia-pro
    :description: Expert in Julia programming, SciML (DifferentialEquations.jl, ModelingToolkit.jl), and Turing.jl.
    :model: sonnet
-   :version: 3.4.0
+   :version: 3.4.1
 
 .. agent:: ml-expert
    :description: Expert in classical ML algorithms, MLOps pipelines, and data engineering.
    :model: sonnet
-   :version: 3.4.0
+   :version: 3.4.1
 
 .. agent:: prompt-engineer
    :description: Expert prompt engineer specializing in advanced techniques and LLM performance optimization.
    :model: sonnet
-   :version: 3.4.0
+   :version: 3.4.1
 
 .. agent:: python-pro
    :description: Expert Python Systems Engineer specializing in type-driven development, Rust extensions, and performance.
    :model: sonnet
-   :version: 3.4.0
+   :version: 3.4.1
 
 Skill-Invoked Commands
 ----------------------

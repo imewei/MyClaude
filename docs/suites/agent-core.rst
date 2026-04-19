@@ -3,7 +3,7 @@ Agent Core Suite
 
 Core orchestration, advanced reasoning, and context engineering. Uses the :term:`Hub Skill` architecture with 4 hubs routing to 13 sub-skills. Optimized for Claude Opus 4.7 with adaptive thinking and :term:`Agent Team` support.
 
-**Version:** 3.4.0 | **3 Agents** | **2 Registered Commands** | **4 Hubs → 13 Sub-skills** | **12 Hook Events**
+**Version:** 3.4.1 | **3 Agents** | **2 Registered Commands** | **4 Hubs → 13 Sub-skills** | **12 Hook Events**
 
 Agents
 ------
@@ -11,17 +11,17 @@ Agents
 .. agent:: orchestrator
    :description: Multi-agent orchestrator specializing in workflow coordination, agent team assembly, and task allocation.
    :model: opus
-   :version: 3.4.0
+   :version: 3.4.1
 
 .. agent:: reasoning-engine
    :description: Expert in advanced reasoning, prompt design, and cognitive tasks. Masters Chain-of-Thought and structured frameworks.
    :model: opus
-   :version: 3.4.0
+   :version: 3.4.1
 
 .. agent:: context-specialist
    :description: Elite AI context engineering specialist mastering dynamic context management, vector databases, and memory systems.
    :model: opus
-   :version: 3.4.0
+   :version: 3.4.1
 
 Registered Commands
 -------------------

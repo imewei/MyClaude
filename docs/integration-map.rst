@@ -124,7 +124,7 @@ Key integration patterns:
 Agent Teams
 -----------
 
-10 focused team configurations with 20 variants and long-running workflow protocol (v3.4.0):
+10 focused team configurations with 20 variants and long-running workflow protocol (v3.4.1):
 
 1. **feature-dev** — Build any feature end-to-end
 2. **debug** (5 variants) — All debugging + incident response

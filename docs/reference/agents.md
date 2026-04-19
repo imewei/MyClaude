@@ -1,6 +1,6 @@
 # Agent Reference
 
-**25 Agents** across 4 suites | **Version:** 3.4.0
+**25 Agents** across 4 suites | **Version:** 3.4.1
 
 Agents are specialized AI personas with defined model tiers, tool access, and domain expertise. Each agent runs at a specific model tier: **opus** (deep reasoning), **sonnet** (standard tasks), or **haiku** (fast/simple).
 
@@ -101,4 +101,4 @@ See the [Integration Map](../integration-map.rst) for full delegation patterns a
 - [Agent Teams Guide](../agent-teams-guide.md) — 10 focused team configurations with 20 variants
 - [Glossary](../glossary.rst) — Key terms (Hub Skill, Sub-Skill, Agent Team)
 
-*Generated from v3.4.0 validated marketplace data.*
+*Generated from v3.4.1 validated marketplace data.*
