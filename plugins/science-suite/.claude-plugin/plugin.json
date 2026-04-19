@@ -1,6 +1,6 @@
 {
   "name": "science-suite",
-  "version": "3.4.0",
+  "version": "3.4.1",
   "description": "Scientific computing, HPC, physics/chemistry simulations, and data science workflows with extended context and adaptive reasoning for Claude Opus",
   "author": {
     "name": "Wei Chen",

@@ -1,6 +1,17 @@
 Changelog
 =========
 
+v3.4.1 (2026-04-19)
+--------------------
+
+**Hotfix**
+
+* **research-suite hook loading:** removed the redundant ``"hooks": "./hooks/hooks.json"`` key from ``plugins/research-suite/.claude-plugin/plugin.json``. The Claude Code harness auto-loads ``hooks/hooks.json`` from every plugin, so the explicit manifest reference caused a "Duplicate hooks file detected" load error on plugin reload. Matches the pattern used by agent-core / dev-suite / science-suite (none of which declare ``hooks`` in their manifest). Version bump forces plugin-cache refresh so users who installed v3.4.0 pick up the fix automatically on ``/plugin update``.
+
+**Validation**
+
+* All other v3.4.0 validator numbers unchanged: metadata 0/0 on all 4 suites; doc_checker 0 warnings across all 4 suites; xref 531/531 valid; context budget 217/217 fit 200K; pytest 188/188 passing.
+
 v3.4.0 (2026-04-18)
 --------------------
 
