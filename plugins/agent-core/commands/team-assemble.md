@@ -1,6 +1,6 @@
 ---
 name: team-assemble
-description: Generate ready-to-use agent team configurations from 10 pre-built templates (with variants), with optional codebase-aware recommendation, placeholder auto-fill, and fit validation. MyClaude v3.3.0.
+description: Generate ready-to-use agent team configurations from 10 pre-built templates (with variants), with optional codebase-aware recommendation, placeholder auto-fill, and fit validation. MyClaude v3.4.0.
 argument-hint: <team-type> [--var KEY=VALUE]
 category: agent-core
 execution-modes:
@@ -238,7 +238,7 @@ SIGNAL BAG:
 When `list` is invoked, display this table:
 
 ```
-Agent Team Catalog (MyClaude v3.3.0) — 10 Teams
+Agent Team Catalog (MyClaude v3.4.0) — 10 Teams
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
  #  Type             Variants  Suites Used              Best For
