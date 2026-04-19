@@ -1,6 +1,6 @@
 # Agent Teams Guide for MyClaude Plugin Suites
 
-> 10 ready-to-use team configurations with 20 variants, leveraging 24 MyClaude agents + 18 official plugin agents across 3 suites.
+> 10 ready-to-use team configurations with 20 variants, leveraging 25 MyClaude agents + 18 official plugin agents across 4 suites.
 >
 > **v3.3.0:** Consolidated from 27 teams to 10 teams with a variant system (`--var MODE=x`). Zero function loss — every capability from every absorbed team is reachable via a variant. 20 aliases provide backward compatibility.
 

@@ -36,10 +36,17 @@ v3.4.0 (2026-04-18)
 **Validation**
 
 * metadata_validator: 0 errors on all 4 suites.
-* xref_validator: 523/523 cross-references valid.
+* xref_validator: 530/530 cross-references valid.
 * doc_checker: 0 errors on research-suite.
 * context_budget_checker: 217/217 skills fit 2% budget on both 200K and 1M context windows.
 * pytest: 180/180 passing (was 154 in v3.3.0 — 26 new hook-integrity tests from the bandit/vulture/gitleaks audit addition).
+
+**v3.4.0 polish (2026-04-19)**
+
+* **research-suite hooks:** added 3 hook events (``SessionStart`` artifact-resume, ``TaskCompleted`` audit logging, ``SubagentStop`` prompt-based stage-artifact verification) + 2 command handler scripts. Brings hook event total across suites from 24 → 27.
+* **Version consistency sweep:** ``pyproject.toml`` bumped 3.3.0 → 3.4.0; ``docs/conf.py`` release 3.3.0 → 3.4.0; ``Makefile`` header 3.0.0 → 3.4.0; README badges + overview prose synchronized; agent-core ``commands/team-assemble.md`` "MyClaude v3.3.0" → "v3.4.0". All 13 canonical version surfaces now match.
+* **Trigger-phrase parity:** final ``SKILL.md`` (``science-suite/skills/research-and-domains``) gained "Use when..." trigger — 217/217 skills now conform.
+* **Tooling polish:** ``skill_validator.py`` now reports ``n/a ⚪ no corpus`` instead of misleading ``0.0% ❌`` when no test corpus is loaded; ``doc_checker.py`` wired into ``make validate`` (per-plugin iteration).
 
 v3.3.0 (2026-04-12)
 --------------------
