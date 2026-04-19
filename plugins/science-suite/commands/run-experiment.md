@@ -27,3 +27,10 @@ Design and execute a reproducible scientific experiment.
 - [ ] Results saved with timestamps and metadata
 - [ ] Statistical significance assessed correctly
 - [ ] Figures are publication-quality
+
+## Examples
+
+```text
+/run-experiment "Effect of learning rate on convergence for ResNet-50 on CIFAR-10"
+/run-experiment "Bayesian UDE fit to Lorenz-63 with varying observation noise"
+```

@@ -51,3 +51,11 @@ Use `list_*` tools for broad retrieval with basic filtering:
 ## User Request
 
 $ARGUMENTS
+
+## Examples
+
+```text
+/github-assist "memory leak" --type=issue --org=anthropics
+/github-assist --type=pr --label=needs-review
+/github-assist "retry with exponential backoff" --type=code
+```

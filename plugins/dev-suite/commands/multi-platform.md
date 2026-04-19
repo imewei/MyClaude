@@ -99,3 +99,11 @@ Interactive OpenAPI/Swagger, platform integration guides, SDK examples, auth flo
 - **Desktop**: Code signing, auto-updates, installers (DMG, MSI, AppImage)
 
 $ARGUMENTS
+
+## Examples
+
+```text
+/multi-platform web
+/multi-platform "web, ios, android"
+/multi-platform "web, ios, android, desktop" --mode=enterprise
+```

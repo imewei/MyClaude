@@ -28,3 +28,10 @@ Comprehensive data analysis workflow from raw data to publishable results.
 - [ ] Effect sizes reported alongside p-values
 - [ ] Figures have proper axis labels, units, and legends
 - [ ] Analysis is reproducible (seeds, versions logged)
+
+## Examples
+
+```text
+/analyze-data experiments/spectra.csv
+/analyze-data "RNA-seq counts in ./data/counts.tsv, compare WT vs KO"
+```

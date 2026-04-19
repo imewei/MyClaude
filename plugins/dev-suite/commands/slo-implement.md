@@ -54,3 +54,10 @@ Metric instrumentation → Recording rules (5m, 1h, 24h, 30d) → Error budget t
 **Standard:** All Quick + 3-5 services, multi-window alerts, monthly reports, release framework, weekly reviews
 
 **Enterprise:** All Standard + SLO-as-code, auto-generation, progressive roadmap, governance, stakeholder automation, toil integration, maturity assessment
+
+## Examples
+
+```text
+/slo-implement checkout-api --mode=quick
+/slo-implement payments-service --mode=enterprise
+```

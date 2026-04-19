@@ -117,3 +117,10 @@ $ARGUMENTS
 6. Validate numerical accuracy
 7. Benchmark performance
 8. Document findings
+
+## Examples
+
+```text
+/adopt-code ./legacy_fortran_mhd jax
+/adopt-code ./numpy_simulations julia --mode=comprehensive
+```

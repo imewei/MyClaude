@@ -75,3 +75,10 @@ Prometheus setup, Grafana dashboards, distributed tracing, log aggregation, aler
 
 **Enterprise:**
 - All Standard + multi-cluster federation, metrics/logs/traces correlated, SLO tracking, 30%+ cost optimization, security integrated
+
+## Examples
+
+```text
+/monitor-setup --mode=quick --platform=kubernetes
+/monitor-setup --mode=enterprise --platform=bare-metal
+```

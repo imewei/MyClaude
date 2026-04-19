@@ -44,3 +44,10 @@ Build AI assistant: $ARGUMENTS
 Architecture, NLP pipeline, conversation flows, LLM with fallbacks, context management, testing, deployment, monitoring
 
 Refs: ai-assistant-architecture.md, llm-integration-patterns.md, ai-testing-deployment.md
+
+## Examples
+
+```text
+/ai-assistant customer support bot with ticket routing and FAQ retrieval
+/ai-assistant --mode=comprehensive research copilot with paper-citation grounding
+```

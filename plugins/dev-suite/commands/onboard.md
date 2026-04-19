@@ -189,3 +189,10 @@ Parse: Role title, level, start date, location, team context, technical requirem
 3. **Measure** metrics and gather feedback
 4. **Prioritize connection** over pure technical skills
 5. **Maintain momentum** with daily engagement
+
+## Examples
+
+```text
+/onboard "Senior ML Engineer" --level=senior --location=remote
+/onboard "Frontend Developer" --level=junior --location=hybrid
+```
