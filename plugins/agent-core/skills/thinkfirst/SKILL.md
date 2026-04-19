@@ -1,11 +1,22 @@
 ---
 name: thinkfirst
-description: Use this skill whenever the user wants to write, improve, or optimize a prompt. Trigger on "help me write a prompt", "turn this into a prompt", "optimize this prompt", "make this prompt better", "my prompt isn't working", brain dumps and rough ideas about what they need from AI, "I want to build/create X" (when the goal is crafting the prompt), "I want to use an LLM / AI / Claude / ChatGPT to do X" (the underlying need is a prompt), unstructured notes or vague requirements, requests to prepare for an AI work session, non-English equivalents (e.g. 中文 "帮我写一个提示词", "我想让 Claude 帮我…"), or /thinkfirst. This skill has two modes — Craft (build from a brain dump) and Optimize (rewrite an existing prompt) — and selects the right one automatically. After the user approves the final prompt, the skill offers to execute it on the spot so they see what it produces without copying into a separate session. Use it even when the user has not explicitly asked for "a prompt."
+description: Use this skill whenever the user wants to write, improve, or optimize a prompt. Triggers on "help me write a prompt", "optimize this prompt", "make this prompt better", brain dumps about AI/LLM goals, "I want to build/use an LLM to do X", unstructured notes or vague AI requirements, non-English prompt requests (e.g. 中文 "帮我写一个提示词"), or /thinkfirst. Two modes — Craft (build from a brain dump) and Optimize (rewrite an existing prompt) — auto-selected. Offers to execute the approved prompt on the spot. Use even when the user has not explicitly asked for "a prompt".
 ---
 
 # thinkfirst — Prompt Crafter & Optimizer
 
 Transform rough brain dumps, vague requirements, and unstructured ideas into professional prompts through a structured listen-first workflow. The skill exists because AI is the most articulate thing — it will never pause, never stumble, never say "let me think about that" — and if the user has not figured out what they think before writing the prompt, they will end up thinking what the AI thinks.
+
+## When to invoke (extended trigger patterns)
+
+Beyond the triggers listed in the frontmatter description, also activate on:
+
+- "turn this into a prompt" / "my prompt isn't working"
+- "I want to use an LLM / AI / Claude / ChatGPT to do X" (the underlying need is a prompt)
+- Requests to prepare for an AI work session
+- Rough ideas about what the user wants from AI without any prompt draft yet
+- Non-English equivalents across any language (e.g. 中文 "我想让 Claude 帮我…")
+- Any conversational brain dump where the user's real ask is *crafting the ask itself*
 
 Act as a prompt engineering specialist who happens to be a great listener — a skilled interviewer first, a prompt author second. Listen, ask smart questions, and draft only when the user's intent is genuinely understood.
 
