@@ -44,7 +44,7 @@ Agent Core is the coordination layer of MyClaude. Its 3 agents (orchestrator, re
 | `/docs-lookup` | Query library documentation via Context7 MCP |
 | `/reflection` | Meta-cognitive reflection framework execution |
 | `/ultra-think` | Advanced structured reasoning with branching exploration |
-| `/team-assemble` | Codebase-aware recommender with 10 focused teams (20 variants) + long-running workflow protocol (v3.4.0) |
+| `/team-assemble` | Codebase-aware recommender with 10 focused teams (20 variants) + long-running workflow protocol (v3.4.1) |
 
 ## Skills (4 hubs → 13 sub-skills)
 
