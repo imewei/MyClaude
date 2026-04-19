@@ -1,5 +1,5 @@
 # Makefile for Claude Code Plugin Marketplace (MyClaude)
-# Version: 3.0.0
+# Version: 3.4.0
 
 .PHONY: help clean clean-all clean-python clean-docs clean-cache clean-build clean-reports \
         build docs docs-live test lint validate install dev-install plugin-enable-all \
@@ -145,6 +145,14 @@ validate: ## Validate plugin metadata, configuration, and command file structure
 	@if [ -f "tools/validation/command_file_linter.py" ]; then \
 		echo "Linting command files..."; \
 		PYTHONPATH=. python3 tools/validation/command_file_linter.py plugins/ || exit 1; \
+	fi
+	@if [ -f "tools/validation/doc_checker.py" ]; then \
+		echo "Checking documentation (README + cross-plugin links)..."; \
+		for dir in plugins/*/; do \
+			if [ -d "$$dir" ]; then \
+				PYTHONPATH=. python3 tools/validation/doc_checker.py "$$dir" || exit 1; \
+			fi \
+		done; \
 	fi
 	@echo "✓ Validation complete"
 
@@ -307,7 +315,7 @@ plugin-enable-all: ## Enable all plugins in Claude Code (requires restart)
 info: ## Show repository information
 	@echo "=== Repository Information ==="
 	@echo "Name: Claude Code Plugin Marketplace (MyClaude)"
-	@echo "Version: 3.0.0"
+	@echo "Version: 3.4.0"
 	@echo "Author: Wei Chen"
 	@echo "Documentation: https://myclaude.readthedocs.io/en/latest/"
 	@echo "Repository: https://github.com/imewei/MyClaude"
