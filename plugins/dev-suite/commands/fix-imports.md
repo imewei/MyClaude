@@ -142,7 +142,7 @@ npm run build                         # Build verification
 ```
 
 ### Final Status Output
-```
+```text
 Total Fixed:         47/47 (100%)
 High Confidence:     28
 Medium Confidence:   15

@@ -44,7 +44,7 @@ $ARGUMENTS
 
 ## Quick Check Output
 
-```
+```text
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 Reflection Quick Check
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━

@@ -147,7 +147,7 @@ Systematic agent improvement through performance analysis and prompt engineering
 
 ## Health Report Format
 
-```
+```text
 Agent Health Report: <name>
 Overall Score: X/100
 ├─ Success Rate: X% (target: >85%)
@@ -258,7 +258,7 @@ Transform basic instructions into production-ready prompts.
 ## Model-Specific Formats
 
 ### GPT-4 Style
-```
+```text
 ##CONTEXT##
 ##OBJECTIVE##
 ##INSTRUCTIONS## (numbered)

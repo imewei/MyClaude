@@ -43,7 +43,7 @@ $ARGUMENTS
 ## Phase 2: Project Structure
 
 ### Quick Mode
-```
+```text
 project/
 ├── Makefile
 ├── main.c
@@ -52,7 +52,7 @@ project/
 ```
 
 ### Standard/Enterprise Mode
-```
+```text
 project/
 ├── Makefile
 ├── CMakeLists.txt

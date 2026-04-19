@@ -109,7 +109,7 @@ Create comprehensive documentation from scratch using AI-powered code analysis.
 ### Output Structure
 
 **API Projects:**
-```
+```text
 docs/
 ├── README.md
 ├── API.md
@@ -119,7 +119,7 @@ docs/
 ```
 
 **Python with Sphinx:**
-```
+```text
 docs/
 ├── source/ (index.rst, api/, examples/)
 ├── conf.py

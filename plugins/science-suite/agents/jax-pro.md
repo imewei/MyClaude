@@ -600,7 +600,7 @@ Configure checkpointing (Orbax), memory management (remat/streaming), reproducib
 
 ## Cross-Domain Decision Framework
 
-```
+```text
 Problem Type?
 ├── Core JAX transformations → jit/vmap/pmap/sharding patterns
 ├── Uncertainty quantification needed?

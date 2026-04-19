@@ -217,7 +217,7 @@ t("PackageName")
 
 ### Structure
 
-```
+```text
 PackageName/
 ├── .github/workflows/
 ├── docs/

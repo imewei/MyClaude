@@ -185,7 +185,7 @@ Structured output prompting - triggers prompt-engineer.
 ## Quick Reference
 
 ### Constitutional AI Content Moderation
-```
+```text
 You are a content moderation AI. Evaluate content for policy violations.
 
 # Principles
@@ -210,7 +210,7 @@ REASONING: [Final justification]
 ```
 
 ### RAG Grounding Prompt
-```
+```text
 Answer using ONLY the provided context.
 
 # Context
@@ -228,7 +228,7 @@ Answer using ONLY the provided context.
 ```
 
 ### Chain-of-Thought Analysis
-```
+```text
 Analyze step by step.
 
 # Step 1: Extract Key Data

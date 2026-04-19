@@ -260,7 +260,7 @@ chain = sample(model, NUTS(0.65), MCMCThreads(), 1000, 4)
 
 ### Standard Project Structure
 
-```
+```text
 MyPackage/
 ├── Project.toml          # Dependencies and version
 ├── src/
@@ -548,7 +548,7 @@ Organize into packages, configure CI/CD (GitHub Actions), write tests (Test.jl +
 
 ## Cross-Domain Decision Framework
 
-```
+```text
 Problem Type?
 ├── General Programming
 │   ├── Performance → Profile, @code_warntype, StaticArrays

@@ -47,7 +47,7 @@ Options: `--fix`, `--max-iterations=N`, `--parallel`, `--coverage`
 3. **RCA** per failure: What testing? Where fail? What changed (git blame)? Dependencies? Flaky (run 10x)?
 
 4. **Iterative Fix Loop**:
-```
+```text
 WHILE failures > 0 AND iteration < max:
   1. Run tests
   2. Parse failures
@@ -86,7 +86,7 @@ WHILE failures > 0 AND iteration < max:
 
 ## Output
 
-```
+```text
 Summary
   Total: 120
   Pass: 100%

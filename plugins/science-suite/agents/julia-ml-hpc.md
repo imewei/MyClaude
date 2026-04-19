@@ -711,7 +711,7 @@ Configure checkpointing (JLD2), build sysimage (PackageCompiler.jl), set up REST
 
 ## Cross-Domain Decision Framework
 
-```
+```text
 Problem Type?
 ├── Neural network in Julia?
 │   ├── New project / SciML → Lux.jl

@@ -85,7 +85,7 @@ If not atomic, suggest `--split` flag and show file groupings.
 ### Phase 5: Message Generation
 
 **Format:**
-```
+```text
 type(scope): imperative description (≤50 chars)
 
 Body explaining WHY (wrapped at 72 chars).
@@ -136,7 +136,7 @@ Focus on motivation, not what (code shows that).
 
 ## Output Format
 
-```
+```text
 📊 Analysis Complete:
 - X files staged (Y additions, Z deletions)
 - Branch: feature/name

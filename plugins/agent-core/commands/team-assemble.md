@@ -182,7 +182,7 @@ Run when the selected/recommended team has at least one placeholder marked `← 
    - Cap at 300 characters (truncate at last sentence boundary if possible).
 
 3. **Probe result format:**
-   ```
+   ```text
    README_PROBE:
      source:      <path to README file>
      h1_title:    <first H1 text, if any>
@@ -212,7 +212,7 @@ Run when the selected/recommended team has at least one placeholder marked `← 
 
 Assemble a compact summary:
 
-```
+```text
 SIGNAL BAG:
   language:        <primary: python|typescript|julia|rust|go|jvm|mixed|unknown>
   secondary_langs: [...]
@@ -237,7 +237,7 @@ SIGNAL BAG:
 
 When `list` is invoked, display this table:
 
-```
+```text
 Agent Team Catalog (MyClaude v3.4.0) — 10 Teams
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
@@ -298,7 +298,7 @@ Given the signal bag from Step 1.5 and the fingerprint table from Step 2.5:
 0. **Mode-A exclusion filter** — drop the `debug` team (all variants) from consideration entirely in no-arg recommendation mode. The debug team only appears when the user explicitly names it in Mode B+D (see "Debug-team exclusion rule" in Step 2.5). This prevents false-positive debug-team recommendations on healthy codebases.
 1. **Eligibility filter** — drop every team whose `Required` column is not satisfied by the signal bag.
 2. **Score each eligible team**:
-   ```
+   ```text
    score(team) = 2                                # base for eligibility
               + count(strong_signals ∩ signal_bag)  # each +1
               − count(counter_signals ∩ signal_bag) # each −1
@@ -318,13 +318,13 @@ When the user passes a team name explicitly:
 1. Look up the team's fingerprint row.
 2. Check `Required` against the signal bag.
 3. If **required signal missing** → emit a **hard warning** (severity: ⚠️ high):
-   ```
+   ```text
    ⚠️  Fit warning: <team> requires <missing-signal> but none was detected in this codebase.
        Detected: <project_type> with <frameworks>.
        Consider: <top-ranked-alternative> instead, or re-run with --no-detect to bypass this check.
    ```
 4. Check for **strong counter-signals**. If any present → emit a **soft note** (severity: ℹ️ low):
-   ```
+   ```text
    ℹ️  Fit note: <team> typically doesn't fit codebases with <counter-signal>. Proceeding anyway.
    ```
 5. Clean match → no warning.
@@ -376,7 +376,7 @@ These rules apply only to README-derived content, not to deterministic signal-ba
 **Placeholders:** `FEATURE_NAME`, `PROJECT`, `FRONTEND_STACK`, `BACKEND_STACK`
 **Aliases:** (none)
 
-```
+```text
 Create an agent team called "feature-dev" to design, build, and review
 [FEATURE_NAME] for [PROJECT].
 
@@ -426,7 +426,7 @@ Workflow: architect → (builder + backend in parallel) → reviewer.
 **Placeholders:** `SYMPTOMS`, `AFFECTED_MODULES`
 **Aliases:** `incident`, `debug-triage`, `debug-gui`, `debug-numerical`, `debug-schema`
 
-```
+```text
 Create an agent team called "debug" to investigate and fix: [SYMPTOMS].
 
 Spawn specialist teammates:
@@ -473,7 +473,7 @@ debugger synthesizes. Cross-variant escalation supported.
 **Placeholders:** `PR_OR_BRANCH` (default), `PROJECT_PATH` (security)
 **Aliases:** `pr-review`, `security`
 
-```
+```text
 Create an agent team called "quality-gate" to review [PR_OR_BRANCH].
 
 Spawn 4 specialist teammates:
@@ -516,7 +516,7 @@ All agents read-only. Unified review sorted by severity.
 **Placeholders:** `SERVICE_NAME`, `API_PROTOCOL` (api) | `PROJECT_NAME`, `CLOUD_PROVIDER` (infra) | `PROJECT_NAME` (config)
 **Aliases:** `api-design`, `infra-setup`
 
-```
+```text
 Create an agent team called "api-infra" to design and build
 [SERVICE_NAME] using [API_PROTOCOL].
 
@@ -571,7 +571,7 @@ Workflow: architect → implementer → (quality + ops parallel) → architect r
 
 **Aliases:** `bayesian`, `julia-sciml`, `julia-ml`, `nonlinear-dynamics`, `md-simulation`, `paper-implement`, `sci-desktop`
 
-```
+```text
 Create an agent team called "sci-compute" to build a scientific computing
 or deep learning pipeline for [PROBLEM].
 
@@ -628,7 +628,7 @@ mandatory ArviZ for Bayesian work.
 **Placeholders:** `LEGACY_SYSTEM`, `OLD_STACK`, `NEW_STACK`
 **Aliases:** (none)
 
-```
+```text
 Create an agent team called "modernize" to migrate [LEGACY_SYSTEM]
 from [OLD_STACK] to [NEW_STACK] using the Strangler Fig pattern.
 
@@ -666,7 +666,7 @@ parallel) → legacy-analyst reviews.
 **Placeholders:** `USE_CASE`
 **Aliases:** `llm-app`, `multi-agent`
 
-```
+```text
 Create an agent team called "ai-engineering" to build an AI-powered
 application for [USE_CASE].
 
@@ -707,7 +707,7 @@ parallel) → ai-engineer reviews.
 **Placeholders:** `MODEL_TYPE`, `SERVING_FRAMEWORK` (deploy) | `DATA_SOURCE`, `ML_TARGET` (data) | `TARGET_CODE`, `SPEEDUP_TARGET` (perf)
 **Aliases:** `data-pipeline`, `perf-optimize`
 
-```
+```text
 Create an agent team called "ml-deploy" to deploy and serve
 [MODEL_TYPE] using [SERVING_FRAMEWORK].
 
@@ -749,7 +749,7 @@ ml-engineer validates e2e.
 **Placeholders:** `PROJECT_NAME` (docs) | `PROJECT_NAME`, `RESEARCH_GOAL` (research)
 **Aliases:** (none — use `docs-publish --var MODE=research` for research variant)
 
-```
+```text
 Create an agent team called "docs-publish" to build documentation
 for [PROJECT_NAME].
 
@@ -783,7 +783,7 @@ docs-lead reviews.
 **Placeholders:** `PLUGIN_NAME`, `PLUGIN_DESCRIPTION`
 **Aliases:** (none)
 
-```
+```text
 Create an agent team called "plugin-forge" to build a Claude Code
 plugin for [PLUGIN_NAME]: [PLUGIN_DESCRIPTION].
 
@@ -812,7 +812,7 @@ Workflow: plugin-architect → hook-engineer → skill-reviewer → validator.
 
 All teams above follow this protocol for multi-session work. Each agent in the team reads this on startup and follows it throughout execution.
 
-```
+```text
 Long-Running Workflow Protocol (all teams):
 1. SESSION INIT — First agent reads PROGRESS.md + `git log --oneline -20`.
    If PROGRESS.md doesn't exist, create it as a JSON checklist from the task prompt.
@@ -853,7 +853,7 @@ Three output shapes depending on dispatch path:
 
 Used when Step 2.6 produced a ranked list of top 3 teams.
 
-```
+```text
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 Codebase Detection — <project_type>  (<confidence>)
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
