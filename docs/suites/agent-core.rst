@@ -1,9 +1,9 @@
 Agent Core Suite
 ================
 
-Core orchestration, advanced reasoning, and context engineering. Uses the :term:`Hub Skill` architecture with 3 hubs routing to 14 sub-skills. Optimized for Claude Opus 4.6 with adaptive thinking and :term:`Agent Team` support.
+Core orchestration, advanced reasoning, and context engineering. Uses the :term:`Hub Skill` architecture with 4 hubs routing to 13 sub-skills. Optimized for Claude Opus 4.7 with adaptive thinking and :term:`Agent Team` support.
 
-**Version:** 3.3.0 | **3 Agents** | **2 Registered Commands** | **3 Hubs → 14 Sub-skills** | **17 Hook Events**
+**Version:** 3.4.0 | **3 Agents** | **2 Registered Commands** | **4 Hubs → 13 Sub-skills** | **12 Hook Events**
 
 Agents
 ------
@@ -11,17 +11,17 @@ Agents
 .. agent:: orchestrator
    :description: Multi-agent orchestrator specializing in workflow coordination, agent team assembly, and task allocation.
    :model: opus
-   :version: 3.3.0
+   :version: 3.4.0
 
 .. agent:: reasoning-engine
    :description: Expert in advanced reasoning, prompt design, and cognitive tasks. Masters Chain-of-Thought and structured frameworks.
    :model: opus
-   :version: 3.3.0
+   :version: 3.4.0
 
 .. agent:: context-specialist
    :description: Elite AI context engineering specialist mastering dynamic context management, vector databases, and memory systems.
-   :model: sonnet
-   :version: 3.3.0
+   :model: opus
+   :version: 3.4.0
 
 Registered Commands
 -------------------
@@ -52,7 +52,7 @@ These commands are triggered by skills, not directly by users:
 Hub Skills
 ----------
 
-Skills use a hub architecture: 3 hub skills route to 14 specialized sub-skills.
+Skills use a hub architecture: 4 hub skills route to 13 specialized sub-skills.
 
 Hub: agent-systems
 ^^^^^^^^^^^^^^^^^^
@@ -89,7 +89,7 @@ Intent clarification, prompt engineering, LLM application patterns, MCP integrat
 Hooks
 -----
 
-17 hook events with Python script implementations:
+12 hook events with Python script implementations:
 
 - ``SessionStart`` — Session initialization
 - ``SessionEnd`` — Session teardown
@@ -103,8 +103,5 @@ Hooks
 - ``TaskCreated`` — When a task is created
 - ``TaskCompleted`` — When a task finishes
 - ``StopFailure`` — On agent stop failure
-- ``PreSubagentUse`` — Validate subagent dispatch, catch misrouted agents *(new in v3.3.0)*
-- ``ExecutionError`` — Structured error capture for reasoning chain failures *(new in v3.3.0)*
-- ``PermissionPrompt`` — Log permission dialog events for debugging *(new in v3.3.0)*
-- ``ContextOverflow`` — Forward-looking handler for context window exhaustion *(new in v3.3.0)*
-- ``CostThreshold`` — Forward-looking handler for cost limit triggers *(new in v3.3.0)*
+
+(``PreSubagentUse``, ``ExecutionError``, ``PermissionPrompt``, ``ContextOverflow``, and ``CostThreshold`` handlers were removed in v3.4.0 — not supported by the CC v2.1.113 CLI event schema.)

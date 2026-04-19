@@ -3,7 +3,7 @@ Dev Suite
 
 Full-stack engineering, infrastructure, CI/CD, quality assurance, and debugging. Uses the :term:`Hub Skill` architecture with 9 hubs routing to 49 sub-skills. Merges engineering, infrastructure, and quality capabilities into a single development powerhouse.
 
-**Version:** 3.3.0 | **9 Agents** | **12 Registered Commands** | **9 Hubs → 49 Sub-skills** | **8 Hook Events**
+**Version:** 3.4.0 | **9 Agents** | **12 Registered Commands** | **9 Hubs → 49 Sub-skills** | **7 Hook Events**
 
 Agents
 ------
@@ -11,47 +11,47 @@ Agents
 .. agent:: software-architect
    :description: Expert in designing scalable backend systems, microservices, and high-performance APIs (REST/GraphQL/gRPC).
    :model: opus
-   :version: 3.3.0
+   :version: 3.4.0
 
 .. agent:: debugger-pro
    :description: Expert in AI-assisted debugging, log correlation, and complex root cause analysis across distributed systems.
    :model: opus
-   :version: 3.3.0
+   :version: 3.4.0
 
 .. agent:: app-developer
    :description: Expert in building high-quality applications for Web, iOS, and Android. Masters React, Next.js, Flutter, and React Native.
    :model: sonnet
-   :version: 3.3.0
+   :version: 3.4.0
 
 .. agent:: automation-engineer
    :description: Expert in automating software delivery pipelines and optimizing Git collaboration workflows.
    :model: sonnet
-   :version: 3.3.0
+   :version: 3.4.0
 
 .. agent:: devops-architect
    :description: Platform Owner expert in multi-cloud architecture (AWS/Azure/GCP), Kubernetes orchestration, and Infrastructure as Code.
    :model: sonnet
-   :version: 3.3.0
+   :version: 3.4.0
 
 .. agent:: quality-specialist
    :description: Expert in ensuring software quality through rigorous code reviews, security audits, and test automation strategies.
    :model: sonnet
-   :version: 3.3.0
+   :version: 3.4.0
 
 .. agent:: sre-expert
    :description: Reliability Consultant expert in system reliability, observability, and incident response.
    :model: sonnet
-   :version: 3.3.0
+   :version: 3.4.0
 
 .. agent:: systems-engineer
    :description: Expert in low-level systems programming (C, C++, Rust, Go) and production-grade CLI tool design.
    :model: sonnet
-   :version: 3.3.0
+   :version: 3.4.0
 
 .. agent:: documentation-expert
    :description: Expert in creating clear, comprehensive, and accurate technical documentation and tutorials.
    :model: haiku
-   :version: 3.3.0
+   :version: 3.4.0
 
 Registered Commands
 -------------------
@@ -203,13 +203,14 @@ Git, documentation, Airflow pipelines, and debugging.
 Hooks
 -----
 
-8 hook events:
+7 hook events:
 
 - ``SessionStart`` — Auto-detect project stack (language, framework, test runner)
 - ``PreToolUse`` — Guard destructive git ops (push --force, reset --hard, branch -D)
 - ``PostToolUse`` — Auto-lint after Write/Edit (ruff for Python, eslint for JS/TS)
 - ``SubagentStop`` — Collect subagent results for orchestrated workflows
-- ``ExecutionError`` — Capture build/test failures with structured diagnostics
 - ``TaskCompleted`` — Trigger validation checks on task completion
-- ``SessionEnd`` — Persist structured progress summary for next session *(new in v3.3.0)*
+- ``SessionEnd`` — Persist structured progress summary for next session
 - ``StopFailure`` — Capture context when /stop fails mid-operation
+
+(``ExecutionError`` was removed in v3.4.0 — not supported by the CC v2.1.113 CLI event schema.)

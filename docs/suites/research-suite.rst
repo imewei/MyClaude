@@ -3,7 +3,7 @@ Research Suite
 
 Scientific research workflows: peer review, idea-to-plan refinement, and methodology orchestration. Three complementary tracks — ``scientific-review`` (manuscripts from other authors → .docx referee report), ``research-spark`` (own rough idea → 8-stage artifact-gated plan), and ``research-practice`` (general methodology hub).
 
-**Version:** 3.4.0 | **2 Agents** | **0 Registered Commands** | **11 Registered Skills (6 pipeline stages + 2 hubs + 2 standalones + 1 resource) → 5 methodology sub-skills** | **0 Hook Events**
+**Version:** 3.4.0 | **2 Agents** | **0 Registered Commands** | **4 Registered Hubs (scientific-review + research-spark + research-practice + _research-commons) → 12 sub-skills** | **3 Hook Events**
 
 Created in v3.4.0 by extracting ``research-expert`` plus 5 methodology skills from ``science-suite`` and adding the research-spark pipeline (new 8-stage orchestrator + 7 stage-specialist skills + ``_research-commons`` resource hub).
 
@@ -132,7 +132,13 @@ The ``research-spark-orchestrator`` delegates across suite boundaries at natural
 Hooks
 -----
 
-This suite ships **zero hook events**. Adversarial patterns and style linting are enforced inside skill workflows rather than via harness hooks, so they run deterministically without depending on CLI event schemas.
+3 hook events supporting the research-spark pipeline:
+
+- ``SessionStart`` — Detect research-spark stage artifacts (``01_spark.md`` through ``08_premortem.md``) and resume at the latest completed stage
+- ``TaskCompleted`` — Log research tasks to ``.research-log.jsonl`` (audit trail) and prompt stage-artifact commit before advancing
+- ``SubagentStop`` *(prompt-based)* — LLM-driven verification that stage artifacts (research-spark) or referee-report sections (scientific-review) are present before the orchestrator advances
+
+Beyond these, adversarial patterns and style linting remain enforced inside skill workflows (``_research-commons/scripts/style_lint.py``), so they run deterministically without depending on CLI event schemas.
 
 Requirements
 ------------
