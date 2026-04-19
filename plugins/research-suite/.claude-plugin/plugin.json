@@ -53,5 +53,6 @@
     "./skills/research-spark",
     "./skills/_research-commons",
     "./skills/research-practice"
-  ]
+  ],
+  "hooks": "./hooks/hooks.json"
 }
