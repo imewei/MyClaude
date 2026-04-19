@@ -328,8 +328,19 @@ class DocumentationChecker:
                 suggestion="Use at most 2 consecutive blank lines",
             )
 
-        # Check heading formatting
+        # Check heading formatting — skip content inside fenced code blocks.
+        # Without this guard, prompt-syntax examples like ##CONTEXT## or Julia
+        # #= docstrings inside ```julia ... ``` blocks get flagged as malformed
+        # markdown headings. Fence-state tracking matches the long-lines check
+        # in _check_common_issues for consistency.
+        in_code_block = False
         for i, line in enumerate(lines, 1):
+            if line.strip().startswith("```"):
+                in_code_block = not in_code_block
+                continue
+            if in_code_block:
+                continue
+
             # Check for heading without space after #
             if re.match(r"^#{1,6}[^#\s]", line):
                 result.add_issue(
@@ -530,10 +541,14 @@ class DocumentationChecker:
                 suggestion="Consider completing or removing TODO items before release",
             )
 
-        # Check for placeholder text
+        # Check for placeholder text. Patterns are chosen to be specific enough
+        # that they don't flag legitimate technical vocabulary. Bare "placeholder"
+        # was removed in v3.4.0 because it is a common domain term (HTML `img`
+        # placeholders, prompt-template placeholders, "placeholder auto-fill"
+        # feature names). Use `<placeholder>` / `[placeholder]` / literal
+        # `YOUR_VALUE_HERE` if you need to flag a fill-me slot.
         placeholders = [
             "lorem ipsum",
-            "placeholder",
             "example text",
             "TODO:",
             "FIXME:",

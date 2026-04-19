@@ -96,6 +96,122 @@ class TestCheckLinksClaudePluginRoot(unittest.TestCase):
         self.assertIn("${CLAUDE_PLUGIN_ROOT}/docs/missing.md", errors[0])
 
 
+def _check_formatting(content: str, *, name: str = "cmd.md") -> list[tuple[str, str]]:
+    """Run _check_markdown_formatting on `content` and return (severity, message) pairs."""
+    with tempfile.TemporaryDirectory() as td:
+        plugin = Path(td) / "test-plugin"
+        (plugin / "commands").mkdir(parents=True)
+        fp = plugin / "commands" / name
+        fp.write_text(content)
+        checker = DocumentationChecker()
+        result = DocCheckResult(plugin_name="test", plugin_path=plugin)
+        checker._check_markdown_formatting(fp, content, content.splitlines(), result)
+        return [(i.severity, i.message) for i in result.issues]
+
+
+class TestHeadingSpaceInsideCodeBlocks(unittest.TestCase):
+    """Regression: heading-space check must skip content inside fenced code blocks.
+
+    Pre-fix, prompt-syntax examples like ##CONTEXT## inside ```text ... ```
+    blocks and Julia docstring markers like #= inside ```julia ... ``` blocks
+    were flagged as malformed markdown headings.
+    """
+
+    def test_prompt_syntax_in_code_block_not_flagged(self):
+        content = (
+            "### GPT-4 Style\n"
+            "```\n"
+            "##CONTEXT##\n"
+            "##OBJECTIVE##\n"
+            "##INSTRUCTIONS## (numbered)\n"
+            "##OUTPUT FORMAT## (JSON/structured)\n"
+            "```\n"
+        )
+        issues = _check_formatting(content)
+        heading_warnings = [m for _, m in issues if "Heading should have space" in m]
+        self.assertEqual(heading_warnings, [])
+
+    def test_julia_docstring_marker_in_code_block_not_flagged(self):
+        content = (
+            "Example:\n"
+            "```julia\n"
+            "#= block docstring\n"
+            "   describing the function\n"
+            "=#\n"
+            "function foo() end\n"
+            "```\n"
+        )
+        issues = _check_formatting(content)
+        heading_warnings = [m for _, m in issues if "Heading should have space" in m]
+        self.assertEqual(heading_warnings, [])
+
+    def test_real_malformed_heading_outside_code_block_still_flagged(self):
+        content = (
+            "##NotAHeadingWithoutSpace\n"
+            "\n"
+            "```\n"
+            "##AlsoInsideBlockButWeIgnore\n"
+            "```\n"
+        )
+        issues = _check_formatting(content)
+        heading_warnings = [m for _, m in issues if "Heading should have space" in m]
+        # Only the one outside the code block should be flagged.
+        self.assertEqual(len(heading_warnings), 1)
+        self.assertIn("Line 1", heading_warnings[0])
+
+    def test_proper_heading_with_space_never_flagged(self):
+        content = "## Proper Heading\n\nBody text.\n"
+        issues = _check_formatting(content)
+        heading_warnings = [m for _, m in issues if "Heading should have space" in m]
+        self.assertEqual(heading_warnings, [])
+
+
+def _check_common(content: str, *, name: str = "cmd.md") -> list[tuple[str, str]]:
+    """Run _check_common_issues on `content` and return (severity, message) pairs."""
+    with tempfile.TemporaryDirectory() as td:
+        plugin = Path(td) / "test-plugin"
+        (plugin / "commands").mkdir(parents=True)
+        fp = plugin / "commands" / name
+        fp.write_text(content)
+        checker = DocumentationChecker()
+        result = DocCheckResult(plugin_name="test", plugin_path=plugin)
+        checker._check_common_issues(fp, content, content.splitlines(), result)
+        return [(i.severity, i.message) for i in result.issues]
+
+
+class TestPlaceholderWordFalsePositives(unittest.TestCase):
+    """Regression: bare word 'placeholder' should not trigger placeholder-text warning.
+
+    It is a common domain term (HTML img placeholders, prompt-template
+    placeholders, the 'placeholder auto-fill' team-assemble feature name).
+    Specific patterns like 'lorem ipsum', 'TODO:', 'work in progress' still fire.
+    """
+
+    def test_bare_placeholder_not_flagged(self):
+        content = "Use a placeholder image to reserve layout space.\n"
+        issues = _check_common(content)
+        flagged = [m for _, m in issues if "placeholder text" in m.lower()]
+        self.assertEqual(flagged, [])
+
+    def test_placeholder_auto_fill_feature_name_not_flagged(self):
+        content = "Team assembly does placeholder auto-fill from signals.\n"
+        issues = _check_common(content)
+        flagged = [m for _, m in issues if "placeholder text" in m.lower()]
+        self.assertEqual(flagged, [])
+
+    def test_lorem_ipsum_still_flagged(self):
+        content = "Intro: Lorem ipsum dolor sit amet.\n"
+        issues = _check_common(content)
+        flagged = [m for _, m in issues if "placeholder text" in m.lower()]
+        self.assertEqual(len(flagged), 1)
+
+    def test_work_in_progress_still_flagged(self):
+        content = "Status: work in progress — more details soon.\n"
+        issues = _check_common(content)
+        flagged = [m for _, m in issues if "placeholder text" in m.lower()]
+        self.assertEqual(len(flagged), 1)
+
+
 class TestCheckLinksFrontmatter(unittest.TestCase):
     """New behavior added by Task 6 — frontmatter path scanning."""
 
