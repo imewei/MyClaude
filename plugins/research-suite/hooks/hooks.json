@@ -7,7 +7,7 @@
         "hooks": [
           {
             "type": "prompt",
-            "prompt": "A research-spark or scientific-review subagent just finished. If its transcript shows a research-spark stage completion (Stage 1-8 marker like '## Stage N:' or 'artifact:'), verify the stage artifact (problem statement, falsifiable claim, pre-registration, experimental plan, analysis plan, results, discussion, manuscript) is present and named per convention. If the subagent was scientific-review, verify the referee report has all required sections (summary, strengths, weaknesses, major concerns, minor concerns, recommendation). Report any missing artifacts so the orchestrator can regenerate them before advancing.",
+            "prompt": "Check the subagent transcript. If the agent is NOT research-spark-orchestrator or scientific-review, respond only with 'N/A' and stop. Otherwise: for research-spark, verify a stage artifact is present (Stage 1-8 marker '## Stage N:' or 'artifact:') covering the expected output (problem statement, falsifiable claim, pre-registration, experimental plan, analysis plan, results, discussion, or manuscript), named per convention. For scientific-review, verify the referee report has all required sections (summary, strengths, weaknesses, major concerns, minor concerns, recommendation). Report any missing artifacts so the orchestrator can regenerate them before advancing.",
             "timeout": 30
           }
         ]
