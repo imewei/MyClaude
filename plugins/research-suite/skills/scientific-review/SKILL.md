@@ -5,158 +5,90 @@ description: "Use this skill whenever the user wants to review a scientific manu
 
 # Scientific Manuscript Review
 
-Produce a rigorous peer review as a downloadable `.docx`. The skill covers six competencies:
-domain expertise, methodological rigor, critical thinking, constructive communication,
-ethical integrity, and time-efficient delivery. The output is a thorough first-pass draft the
-reviewer refines with their own judgment — not a replacement for the reviewer's professional
-responsibility.
+Produce a rigorous peer review as a downloadable `.docx` (fallback: `.md`, convert with `pandoc review.md -o review.docx`).
 
-## Reference files to load when relevant
+## Mode
 
-- `references/review_structure.md` — report template, section guidance, tone examples. Load
-  before composing the report.
-- `references/integrity_checks.md` — specific red flags for plagiarism, data/image
-  manipulation, and other integrity concerns. Load during Phase 3, Lens 6.
+Pass `--mode` to control depth. Default: `standard`.
 
-Document generation uses `python-docx` (`pip install python-docx` or `uv add python-docx`
-if missing). If the user's environment cannot install it, fall back to a markdown
-`.md` file with the same structure and tell the user to convert via `pandoc review.md -o
-review.docx` at their convenience.
-
-PDF ingestion uses `pdftotext` (poppler) for plain text or `pypdf` / `pymupdf` when figure
-captions and layout matter. DOCX ingestion uses `pandoc <path> -t markdown`.
+| `--mode`        | Loads additionally                      | Use when                        |
+|-----------------|-----------------------------------------|---------------------------------|
+| `simple`        | nothing                                 | quick triage, short papers      |
+| `standard`      | `references/review_structure.md`        | typical review work             |
+| `comprehensive` | + `references/integrity_checks.md`      | integrity-sensitive reviews     |
 
 ## Phase 0: Reviewer responsibilities
 
-Before analyzing, surface a short checklist and wait for confirmation. Ask the three
-questions below in a single message so the user can answer them together. Skip re-asking on
-subsequent uses in the same session when context is already clear.
+Ask all three in one message; skip if already answered this session:
 
-1. **Conflict of interest.** Recent co-authorship (3–5 years), current collaboration,
-   advisor–advisee relationship, direct competition on the same question, or financial stake
-   typically requires recusal. If a COI exists, recommend declining the review.
-2. **Confidentiality and AI-assistance policy.** Manuscripts under review are privileged —
-   the reviewer should not share contents or use them to inform unpublished research. Journal
-   policies on AI-assisted review vary (some permit, some prohibit, some require disclosure).
-   If the user names a journal, fold this check into the Phase 2 web search.
-3. **Expertise match.** Areas the reviewer flags as outside their competence get noted in the
-   review as requiring additional human expertise rather than given confident critique.
+- **COI.** Co-authorship ≤5 yr, active collaboration, advisor–advisee, direct competitor, or financial stake → recommend declining.
+- **Confidentiality & AI policy.** Manuscript is privileged. Journal AI policies vary; check if user names a journal (fold into Phase 2 search).
+- **Expertise match.** Flag areas outside reviewer's competence; note them in the review rather than critique confidently.
 
 ## Phase 1: Ingest
 
-Extract the full text. For DOCX, `pandoc <path> -t markdown`. For PDF, start with
-`pdftotext` and escalate to `pypdf` / `pymupdf` if figures matter. Build a mental inventory:
-title, authors (redacted?), target journal, section structure, figures/tables/equations, and
-the field/sub-field for applying domain norms. Note what's missing — Limitations section?
-Data availability statement? Funding disclosure?
+Extract full text: DOCX → `pandoc <path> -t markdown`; PDF → `pdftotext` first, escalate to `pypdf`/`pymupdf` if figures matter. Build inventory: title, authors (redacted?), journal, section structure, field/sub-field, and what is missing (Limitations? Data availability? Funding disclosure?).
 
-## Phase 2: Journal-specific adaptation
+## Phase 2: Journal adaptation
 
-If the user names a journal, search for its current reviewer guidelines (WebSearch or
-Context7 for well-documented publishers). Look for: review structure (free-form vs.
-structured fields; separate Comments-to-Editor field?), recommendation categories,
-journal-specific criteria (*Cell* weights broad impact, *PRL* weights surprise and brevity,
-clinical journals weight CONSORT-style reporting), ethics requirements, and AI-assistance
-policy. Adapt the output to match. Without a named journal, use the default structure in
-`references/review_structure.md`.
+If journal named, search current reviewer guidelines (WebSearch or Context7). Check: structure (free-form vs. structured fields), recommendation categories, journal-specific criteria, ethics requirements, AI policy.
+
+Without a journal — `standard`/`comprehensive`: load `references/review_structure.md` for the full template. `simple`: use default section order: Summary → Overall Assessment → Major Issues → Minor Issues → Questions for Authors → Statistical Notes → Recommendation → Confidential Comments to Editor (if needed).
 
 ## Phase 3: Six-lens analysis
 
-Work through all six lenses. Observations should be specific — tied to a particular section,
-figure, equation, or claim. Generic comments are the hallmark of a lazy review; the
-difference between a useful review and a weak one is whether the authors can act on each
-point.
+All lenses run in every mode. Tie every observation to a specific section, figure, equation, or claim — generic comments are useless.
 
-**Lens 1 — Domain expertise.** Is the contribution genuinely new or derivative? Is the
-literature coverage comprehensive? Any obvious missing citations or competing frameworks the
-authors ignored? Engage with the sub-field's actual vocabulary: use the correct terms-of-art
-("Manning condensation," "Voigt viscoelastic model") rather than generic paraphrases, check
-notation consistency, verify dimensional balance in equations. A review that reads as
-written by a peer in the sub-field carries more weight than a generic one. Search recent
-literature when unsure about current usage.
+**Lens 1 — Domain expertise.**
+- Contribution genuinely new, or derivative of prior work?
+- Literature comprehensive; missing citations or competing frameworks?
+- Notation consistent; dimensional balance correct in equations?
+- Vocabulary matches sub-field terms-of-art.
 
-**Lens 2 — Methodological rigor.** Are controls adequate and variables isolated? Could the
-effect arise from confounds? Are statistical tests appropriate for the data type and
-distribution? Is sample size justified? Multiple-comparison corrections where needed? Do
-reported statistics actually support the conclusions? Are error bars defined (SD vs. SEM vs.
-CI)? Could a competent peer replicate the work from the Methods section alone — reagents
-with vendor/catalog, instrument models, software versions, parameters, code and data
-availability?
+**Lens 2 — Methodological rigor.**
+- Controls adequate; variables isolated; confounds addressed?
+- Statistical tests appropriate; sample size justified; multiple-comparison corrections applied?
+- Error bars defined (SD/SEM/CI); reported statistics support stated conclusions?
+- Methods reproducible: reagents (vendor/catalog), instruments, software versions, code/data links.
 
-**Lens 3 — Critical thinking.** Does the conclusion follow from the data or is there a leap?
-Are alternative explanations addressed or silently ignored? Does the abstract match the
-paper? Is the claimed impact proportionate to the evidence? Is the motivation clear in the
-introduction and revisited in the conclusion?
+**Lens 3 — Critical thinking.**
+- Conclusion follows from data, or is there an unsupported leap?
+- Alternative explanations addressed or silently ignored?
+- Abstract matches paper; claimed impact proportionate to evidence?
 
-**Lens 4 — Results and data presentation.** Figures clear and properly labeled? Axis units
-complete? Error bars and significance indicators where expected? Raw or supplementary data
-accessible? Do numbers in the text match the tables?
+**Lens 4 — Results and data presentation.**
+- Figures clear, labeled, axis units complete, significance indicators present?
+- Numbers in text match tables?
+- Raw or supplementary data accessible?
 
-**Lens 5 — Writing quality.** Organization, clarity, terminology consistency, notation
-discipline, abbreviations defined on first use. Flag serious issues but don't drift into
-copy-editing.
+**Lens 5 — Writing quality.**
+- Organization, clarity, notation discipline, abbreviations defined on first use.
+- Flag serious issues only; do not copy-edit.
 
-**Lens 6 — Ethical integrity.** Load `references/integrity_checks.md`. At minimum, assess:
-plagiarism and self-plagiarism (stylistic shifts, uncited passages that track a specific
-prior paper), data/image integrity (gel splicing artifacts, repeated background texture,
-implausible precision), selective reporting and p-hacking, dual submission, ethics approvals
-(IRB/IACUC/trial registration where applicable), COI and funding disclosure, authorship
-statements. Integrity concerns go to the *editor* (Confidential Comments to Editor), not to
-the authors. Phrase as "features that may warrant the editor's attention," not accusations —
-the reviewer surfaces concerns; the editor adjudicates.
+**Lens 6 — Ethical integrity.**
+- `comprehensive` mode: load `references/integrity_checks.md` now for full red-flag checklist.
+- All modes: verify IRB/IACUC approval, COI disclosure, funding statement, data availability statement.
+- Integrity concerns → Confidential Comments to Editor only. Phrase as "features that may warrant the editor's attention."
 
 ## Phase 4: Quantitative verification
 
-Use the Bash tool or a short Python script. This is one of the highest-value contributions
-a careful reviewer can make. Two modes:
+- **Direct:** Recompute reported statistics, percentages, derived quantities, unit conversions. Show the arithmetic.
+- **Flagging:** Note missing error bars, unreported sample sizes, unspecified fitting method, "significantly different" without stated tests or corrections.
 
-**Direct verification.** Do reported statistics match given the stated df? Do percentages,
-ratios, derived quantities recompute correctly? Do unit conversions and dimensional analyses
-check out? For regression/fit exponents, are uncertainties and R² reported with the fitting
-method and data range? Show the work in the review (e.g., *"Recomputing from Δm = 35 ng/cm²
-and Mₙ ≈ 12,700 g/mol gives Γ ≈ 0.017 chains/nm², consistent with the authors' value"*).
-
-**Flagging.** Missing error bars, unreported sample sizes, unspecified fitting methodology,
-"significantly different" without stated tests or corrections.
-
-Frame apparent discrepancies diplomatically. You're working from the manuscript alone —
-*"The reported p = 0.03 appears inconsistent with t = 1.8 at n = 15; the authors may wish to
-verify"* is right; *"The p-value is wrong"* is not.
+Frame discrepancies diplomatically: *"The reported p = 0.03 appears inconsistent with t = 1.8 at n = 15; the authors may wish to verify."*
 
 ## Phase 5: Compose the report
 
-Load `references/review_structure.md` for the template and tone.
+`standard`/`comprehensive`: load `references/review_structure.md` for the full template, section guidance, format spec, and tone examples.
 
-Format: Arial 11pt body, Heading 1 for title, Heading 2 for sections, small metadata table
-at the top (Title, Date, Reviewer, Journal), numbered issues with a bolded short label line
-followed by prose, black body text with restrained color on headings, US Letter with 1-inch
-margins.
+Save to `./reviews/<short-title>.docx`. Keep the chat message to one paragraph: main issues + recommendation only. If `python-docx` is unavailable, save as `.md`.
 
-If integrity concerns surfaced in Lens 6, place them in a clearly labeled "Confidential
-Comments to Editor" section at the end, visually separated. Most journals treat this as a
-separate submission field.
+## Principles
 
-Save to the user's working directory (or a subdirectory like `./reviews/`) with a
-descriptive filename (e.g., `Peer_Review_<short-title>.docx`) and report the absolute path
-to the user. Keep the chat message brief: a one-paragraph summary of the main issues and
-the recommendation — not a recap.
-
-## Principles that matter more than the template
-
-- **Specific beats comprehensive.** Five sharp observations beat twenty generic ones. If a
-  comment can't be tied to a section, figure, or equation, reconsider whether it's useful.
-- **Separate the paper's logic from your preferences.** The question is whether the authors'
-  framework is internally consistent and defensible, not whether it matches yours.
-  Disagreements with framing go in Questions or Discussion, not Major Issues — unless the
-  framing actually breaks the argument. Guard against the bias of rejecting work that
-  challenges your own.
-- **Every problem gets a path forward.** "This section is weak" is useless; "this section
-  would be strengthened by adding a control at condition X" is actionable.
-- **Acknowledge strengths honestly.** A review that is all criticism signals disengagement.
-- **Distinguish publication-blocking from publication-improving.** Don't lump minor issues
-  into Major.
-- **Time is finite.** Typical budget is 3–6 hours. Focus on what affects whether the work
-  should be published, not every typographical imperfection. This skill exists to produce a
-  thorough first-pass draft so the reviewer spends their time on high-judgment refinement.
-- **The reviewer is not a lawyer; the manuscript is not a contract.** Flag concerns, suggest
-  improvements, trust the editor.
+- Specific beats comprehensive — five sharp observations over twenty generic ones.
+- Separate the paper's logic from your own preferences.
+- Every problem identified needs a path forward.
+- Acknowledge genuine strengths.
+- Distinguish publication-blocking from publication-improving issues.
+- Time budget ~3–6 hours; focus on what affects publishability.
+- Surface concerns to the editor; do not pronounce guilt.
