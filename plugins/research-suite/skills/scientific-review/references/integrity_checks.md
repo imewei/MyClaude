@@ -18,7 +18,7 @@ Most journals run similarity software (iThenticate, Turnitin) on submissions, bu
 - Results that appear in the manuscript and also in a recently published paper by the same group, without clear differentiation
 - Figures that appear similar or identical to figures in the authors' prior work
 
-How to flag: identify the specific passage and the suspected source (if known) in Confidential Comments to Editor. Suggest the editor run similarity software on the passage. Do not claim plagiarism in Comments to Authors.
+How to flag: name the passage and suspected source in Confidential Comments to Editor; suggest similarity-software check. Never claim plagiarism in Comments to Authors.
 
 ## Data and image integrity
 
@@ -42,7 +42,7 @@ Image-based fabrication and duplication are among the most common forms of resea
 - Data points that cluster too tightly on theoretical curves (can indicate model-fitting rather than measurement)
 - Last-digit distributions that violate Benford's law in numerical tables (possible fabrication indicator, but only suggestive)
 
-How to flag: describe what you see and where (figure and panel), and ask the editor to request raw data or source files. Phrase as "features worth verifying" rather than "evidence of manipulation."
+How to flag: describe what you see and where (figure/panel); ask editor to request raw data or source files. Phrase as "features worth verifying."
 
 ## Selective reporting and p-hacking
 
@@ -84,15 +84,3 @@ These are checklist items, but commonly forgotten. Absence is not proof of wrong
 - Senior authors whose stated contribution is limited to "supervision" on a highly technical paper — this can be normal but is sometimes a tell
 
 These are hard to judge from the manuscript alone; flag only if something is notably off.
-
-## How to write integrity concerns in the report
-
-The Confidential Comments to Editor section is where these go. Three principles:
-
-1. **Describe what you observed, not what you conclude.** "Figure 3B shows a vertical discontinuity between lanes 4 and 5 that may indicate splicing" is verifiable. "The authors have fabricated data" is an accusation the reviewer cannot support.
-
-2. **Cite the specific location.** Page, figure, panel, paragraph. The editor may not see what you see without direction.
-
-3. **Suggest the next step.** "The editor may wish to request original source files for Figure 3" or "The editor may wish to run similarity software on the Introduction, particularly the passage on p. 2."
-
-Keep this section measured. Over-zealous integrity accusations from reviewers harm the system as much as under-vigilant ones.
