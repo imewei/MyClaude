@@ -372,3 +372,4 @@ junit.xml
 *.toc
 *.synctex.gz
 .serena/
+.research-log.jsonl
