@@ -2,6 +2,10 @@
 
 This is the default report template. Use it unless the user has specified a journal whose guidelines differ, in which case adapt accordingly.
 
+## Document format
+
+Arial 11pt body, Heading 1 for the report title, Heading 2 for each section. Small metadata table at the top: Title, Date, Reviewer (leave blank), Journal. Numbered issues with a bolded short label line followed by prose. US Letter, 1-inch margins, restrained color on headings only. If `python-docx` is unavailable, produce `.md` with identical structure.
+
 ## Section order
 
 1. **Metadata header** — Manuscript title, review date, reviewer (leave blank for the user to fill), journal
@@ -21,20 +25,15 @@ Sections 3–9 are the "Comments to Authors" block. Section 10, if present, must
 
 ### Reviewer's statement (optional)
 
-A one- or two-sentence statement on the reviewer's expertise relative to the manuscript. Useful when the manuscript spans multiple methodologies — it tells the editor which parts of the critique carry the most weight.
-
-**Example:**
-> "This review focuses primarily on the experimental polymer physics and surface force measurements, which are within the reviewer's core expertise. The statistical treatment of the QCM-D data was assessed to the best of the reviewer's ability but may benefit from additional input from a reviewer with specific QCM-D modeling expertise."
-
-Omit if the manuscript is entirely within the reviewer's area.
+One or two sentences on expertise match relative to the manuscript. Omit if the manuscript is entirely within the reviewer's area.
 
 ### Summary of the Manuscript
 
-One or two tight paragraphs. Cover: what the authors did, what they found, and what they claim it means. This demonstrates to the editor that the reviewer has genuinely read and understood the paper, and gives the authors a chance to correct you if your summary reveals a misread. Do not editorialize — save judgment for later sections.
+One or two tight paragraphs: what the authors did, what they found, what they claim it means. Do not editorialize — save judgment for later sections.
 
 ### Overall Assessment
 
-A short paragraph (3–6 sentences) giving the headline verdict. Lead with strengths briefly, then the most significant concerns. The editor often reads only this section before triaging the paper, so it should stand on its own.
+3–6 sentences: strengths briefly, then the most significant concerns. Stands alone — the editor often reads only this section before triaging.
 
 **Good example:**
 > "This is a well-conceived study that addresses a genuine gap in the literature on X. The experimental design is thoughtful and the combination of techniques A, B, and C provides complementary evidence for the central claim. However, the manuscript has significant issues that must be addressed: the characterization of the key reagent is incomplete, the power-law fit lacks theoretical grounding, and several conclusions are asserted rather than demonstrated."
@@ -44,19 +43,9 @@ A short paragraph (3–6 sentences) giving the headline verdict. Lead with stren
 
 ### Major Issues
 
-Numbered list. Each item has:
-- A **bolded short label** (5–10 words) identifying the issue
-- A paragraph explaining (a) what the problem is, (b) why it matters, and (c) what the authors could do about it
+Numbered list. Each item: **bolded short label** (5–10 words) + paragraph covering (a) what the problem is, (b) why it matters, (c) what the authors can do. Aim for 3–7 items. More than 7 usually means minor issues are being lumped in.
 
-Major issues threaten the paper's validity or core claims. Examples:
-- Missing controls
-- Statistical analysis that doesn't support the stated conclusion
-- Alternative explanations that haven't been addressed
-- Reagents or methods that aren't adequately characterized
-- Reproducibility gaps severe enough that the work can't be replicated
-- Overreaching conclusions not supported by the data
-
-Aim for 3–7 major issues. Fewer than 3 is rare for a paper that needs review at all; more than 7 usually indicates the reviewer is lumping minor issues into the major category.
+Major issues threaten validity or core claims: missing controls, unsupported statistical conclusions, unaddressed alternative explanations, inadequate characterization, reproducibility gaps, overreaching conclusions.
 
 **Good example of a major issue:**
 
@@ -64,22 +53,11 @@ Aim for 3–7 major issues. Fewer than 3 is rare for a paper that needs review a
 
 ### Minor Issues
 
-Same numbered format. Minor issues are improvements that should be made but don't threaten the paper's validity. Examples:
-- Typos, grammatical errors, notation inconsistencies
-- Figures with missing axis labels or units
-- Abbreviations not defined on first use
-- References in the wrong format
-- A paragraph that would read better reorganized
-- A small piece of characterization data that should be reported
-
-Don't exhaustively catalogue every typo — editors have copy-editors for that. Flag representative examples and suggest a proofreading pass if the writing needs broader attention.
+Same numbered format. Improvements that don't threaten validity: typos, missing axis labels/units, undefined abbreviations, wrong reference format, reorganization suggestions. Don't catalogue every typo — flag representative examples and suggest a proofreading pass.
 
 ### Questions for the Authors
 
-Genuine questions, not rhetorical ones. If the paper leaves you uncertain about something, ask. Authors often clarify in the response, and sometimes the clarification reveals that the manuscript itself needs revision. Good question topics:
-- Reversibility, temperature sensitivity, or other parameter dependencies not explored
-- Physical or biological interpretation of a parameter or plateau
-- Relationship between different experimental conditions
+Genuine questions only. Good topics: parameter dependencies not explored, physical or biological interpretation of a result, relationship between experimental conditions.
 
 ### Statistical and Quantitative Notes
 
@@ -95,46 +73,32 @@ If the manuscript provides nothing quantitative to check, omit this section enti
 
 ### Recommendation
 
-A single line stating the recommendation, followed by a short paragraph of justification that ties back to the major issues. The four standard categories:
+One line + short justification tied to the major issues. Four categories:
 
-- **Accept** — The paper is ready for publication as-is. Rare on first review; signal a high bar.
-- **Minor Revision** — The work is sound and the claims are supported; some clarifications, added references, or figure improvements are needed.
-- **Major Revision** — The core work is valuable but significant issues must be addressed. The reviewer should be willing to re-review.
-- **Reject** — Either the work has fatal flaws that cannot be addressed without a fundamentally different study, or it is not appropriate for this journal.
+- **Accept** — Ready as-is. Rare on first review.
+- **Minor Revision** — Sound work; clarifications or figure improvements needed.
+- **Major Revision** — Valuable but significant issues must be addressed; reviewer willing to re-review.
+- **Reject** — Fatal flaws or wrong journal.
 
-Don't hedge the recommendation itself. Editors want a clear call even if the reasoning is nuanced.
+Don't hedge. Editors want a clear call.
 
 ### Confidential Comments to Editor (if needed)
 
-This section is for things the reviewer wants the editor to see but not the authors. Most journals have a separate field for this — format it as a visually distinct block at the end of the report so the reviewer can easily copy-paste into that field.
-
-Appropriate content:
-- Integrity concerns identified in Lens 6 (see `integrity_checks.md` for specific framings)
-- Observations about the reviewer's expertise that would be inappropriate in the authors-facing review
-- A stronger or weaker recommendation than the authors-facing review implies, if the reviewer feels the tone for the authors should be gentler than the substantive judgment
-- Potential conflicts of interest the reviewer wants to disclose
-- Suggestions about which other reviewers or expertise areas would be valuable
-
-Do not use this section to:
-- Insult the authors personally
-- Register general gripes unrelated to the specific manuscript
-- Speculate about authors' motivations
-
-If no integrity or editor-specific concerns exist, omit the section entirely.
+Visually distinct block at the end — most journals have a separate submission field for this. Include: integrity concerns from Lens 6, expertise caveats inappropriate for the authors, a stronger/weaker recommendation if warranted, COI disclosures, suggestions for other reviewers. Do not insult authors or speculate about motives. Omit entirely if nothing editor-specific to say.
 
 ## Tone principles
 
-**Write as a colleague, not a judge.** The reviewer is a peer trying to help produce better science — not a gatekeeper rendering verdicts. Treat the authors as capable scientists who can respond to specific, well-reasoned feedback.
+**Colleague, not judge.** Treat the authors as capable scientists; you are helping produce better science, not rendering a verdict.
 
-**Hedge appropriately.** The reviewer is working from a manuscript, not a complete record of the work. "This appears to be" and "the reviewer notes that" are honest acknowledgments of limited information, not weakness.
+**Hedge appropriately.** "This appears to be" and "the reviewer notes that" are honest, not weak — you are working from a manuscript, not a complete record.
 
-**Be concrete.** Every observation should be specific enough that the authors know exactly what section, figure, or sentence you're referring to. Page numbers, figure numbers, and equation numbers are your friends.
+**Be concrete.** Every observation must name a section, figure, equation, or page number. Authors cannot act on "Section 3 is weak."
 
-**Don't demand rewrites of what isn't yours to rewrite.** Suggest changes; don't dictate them. "The authors may wish to consider reorganizing Section 3.2" is better than "Section 3.2 must be reorganized."
+**Suggest, don't dictate.** "The authors may wish to consider" not "Section 3.2 must be reorganized."
 
-**Acknowledge your own uncertainty.** If a claim is in a sub-field where you're less expert, say so. Editors weight reviews by expertise.
+**Acknowledge uncertainty.** Flag sub-fields outside your expertise; editors weight reviews by expertise.
 
-**Use field-appropriate technical language.** A review that reads as though written by a peer in the sub-field carries more weight than one that reads as generic. This means using the correct terms-of-art ("Manning condensation" rather than "some counterions sticking to the chain"), referencing the right classical results ("this is inconsistent with the Milner–Witten–Cates prediction" rather than "this doesn't match theory"), and matching the notation conventions of the field. When unsure, search recent literature for current usage.
+**Use field-appropriate language.** Use correct terms-of-art and cite the right classical results — a review that reads as written by a sub-field peer carries more weight.
 
 ## Tone examples
 
@@ -143,18 +107,6 @@ If no integrity or editor-specific concerns exist, omit the section entirely.
 
 **Better:**
 > "The interpretation on p. 8 appears to conflict with the predictions of Alexander–de Gennes theory for brushes in this regime. The authors should either reconcile their interpretation with existing theory or explicitly argue why it does not apply here."
-
-**Too vague:**
-> "The statistics need work."
-
-**Better:**
-> "The reported p-values in Table 2 are given without stated tests, degrees of freedom, or effect sizes. For the key comparisons in rows 3 and 7, please specify the test used and report the effect size so the practical significance can be assessed."
-
-**Too deferential:**
-> "I may be missing something, but perhaps the authors could possibly consider, if they think it appropriate, clarifying the methods slightly."
-
-**Better:**
-> "The Methods section does not specify the PVBTMAC concentration used in the QCM-D measurements (Figure 5). Please state the concentration explicitly."
 
 **Too accusatory (integrity):**
 > "Figure 3B has been fabricated."
