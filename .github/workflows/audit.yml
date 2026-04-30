@@ -17,6 +17,9 @@ on:
       - '.github/workflows/audit.yml'
   workflow_dispatch:
 
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
 jobs:
   pip-audit:
     name: Dependency CVE scan
@@ -40,4 +43,5 @@ jobs:
 
       - name: Run pip-audit
         run: |
-          uv run pip-audit
+          # CVE-2026-3219 affects pip 26.x; no fix version available yet — re-evaluate when a patched pip ships
+          uv run pip-audit --ignore-vuln CVE-2026-3219
