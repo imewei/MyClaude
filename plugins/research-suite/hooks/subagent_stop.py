@@ -1,12 +1,13 @@
 #!/usr/bin/env python3
 """SubagentStop hook for research-suite.
 
-Gates on agent_type: only fires artifact-check logic for
+Gates on the STOPPED subagent's identity. Only fires artifact-check logic for
 research-spark-orchestrator or scientific-review subagents.
 All other agent types exit silently with no output.
 """
 
 import json
+import os
 import sys
 
 RESEARCH_AGENT_TYPES = {"research-spark-orchestrator", "scientific-review"}
@@ -23,21 +24,42 @@ ARTIFACT_CHECK_PROMPT = (
     "them before advancing."
 )
 
+LOG_PATH = os.path.expanduser("~/.claude/research-suite-subagent-stop-debug.jsonl")
+
 
 def main() -> None:
+    raw = sys.stdin.read()
+    parse_error = None
     try:
-        data = json.load(sys.stdin)
-    except (json.JSONDecodeError, ValueError):
+        data = json.loads(raw)
+    except (json.JSONDecodeError, ValueError) as exc:
+        data = {}
+        parse_error = exc.__class__.__name__
+
+    # Log full payload for diagnosis.
+    try:
+        entry = {
+            "stdin_empty": raw == "",
+            "stdin_keys": list(data.keys()) if isinstance(data, dict) else repr(type(data)),
+            "stdin_data": data,
+            "parse_error": parse_error,
+        }
+        with open(LOG_PATH, "a") as fh:
+            fh.write(json.dumps(entry) + "\n")
+    except Exception:
+        pass
+
+    if not isinstance(data, dict):
         sys.exit(0)
 
-    agent_type = (data.get("agent_type") or "").strip()
-    if agent_type not in RESEARCH_AGENT_TYPES:
-        # Not a research agent — exit silently, no output.
+    agent_type = data.get("agent_type")
+    if not isinstance(agent_type, str) or not agent_type.strip():
         sys.exit(0)
 
-    # Research agent: emit the artifact-check prompt as a systemMessage
-    # so the orchestrator performs the verification.
-    json.dump({"systemMessage": ARTIFACT_CHECK_PROMPT}, sys.stdout)
+    if agent_type.strip() in RESEARCH_AGENT_TYPES:
+        json.dump({"systemMessage": ARTIFACT_CHECK_PROMPT}, sys.stdout)
+    else:
+        sys.exit(0)
 
 
 if __name__ == "__main__":

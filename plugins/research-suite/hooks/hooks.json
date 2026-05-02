@@ -1,18 +1,6 @@
 {
-  "description": "Research-suite hooks for research-spark 8-stage pipeline gating (command-based agent-type gating + artifact checks) and scientific-review integrity tracking (command-based logging).",
+  "description": "Research-suite hooks for scientific-review integrity tracking (command-based logging) and session initialization.",
   "hooks": {
-    "SubagentStop": [
-      {
-        "matcher": "",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "python3 ${CLAUDE_PLUGIN_ROOT}/hooks/subagent_stop.py",
-            "timeout": 10
-          }
-        ]
-      }
-    ],
     "TaskCompleted": [
       {
         "matcher": "",
