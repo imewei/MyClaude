@@ -1,14 +1,14 @@
 {
-  "description": "Research-suite hooks for research-spark 8-stage pipeline gating (prompt-based artifact checks) and scientific-review integrity tracking (command-based logging).",
+  "description": "Research-suite hooks for research-spark 8-stage pipeline gating (command-based agent-type gating + artifact checks) and scientific-review integrity tracking (command-based logging).",
   "hooks": {
     "SubagentStop": [
       {
         "matcher": "",
         "hooks": [
           {
-            "type": "prompt",
-            "prompt": "Check the subagent transcript. If the agent is NOT research-spark-orchestrator or scientific-review, respond only with 'N/A' and stop. Otherwise: for research-spark, verify a stage artifact is present (Stage 1-8 marker '## Stage N:' or 'artifact:') covering the expected output (problem statement, falsifiable claim, pre-registration, experimental plan, analysis plan, results, discussion, or manuscript), named per convention. For scientific-review, verify the referee report has all required sections (summary, strengths, weaknesses, major concerns, minor concerns, recommendation). Report any missing artifacts so the orchestrator can regenerate them before advancing.",
-            "timeout": 30
+            "type": "command",
+            "command": "python3 ${CLAUDE_PLUGIN_ROOT}/hooks/subagent_stop.py",
+            "timeout": 10
           }
         ]
       }
