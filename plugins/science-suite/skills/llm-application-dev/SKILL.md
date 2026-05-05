@@ -16,19 +16,7 @@ For LLM application development, delegate to:
 - **`prompt-engineer`**: Prompt optimization, safety, and evaluation.
   - *Location*: `plugins/science-suite/agents/prompt-engineer.md`
 
-## Core Skills
-
-### [RAG Implementation](../rag-implementation/SKILL.md)
-Retrieval-Augmented Generation architectures and vector database integration.
-
-### Prompt Engineering Patterns (agent-core)
-Advanced prompting techniques including Chain-of-Thought and few-shot learning. See `plugins/agent-core/skills/prompt-engineering-patterns/SKILL.md`.
-
-### [LangChain Architecture](../langchain-architecture/SKILL.md)
-Building chains, agents, and custom tools with LangChain.
-
-### [LLM Evaluation](../llm-evaluation/SKILL.md)
-Evaluating model performance, hallucination rates, and answer quality.
+> For RAG, LangChain, and evaluation routing, use the parent hub: `science-suite:llm-and-ai`.
 
 ## Application Patterns
 

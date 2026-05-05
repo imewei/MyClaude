@@ -5,6 +5,12 @@ description: Build graph neural networks in Julia with GraphNeuralNetworks.jl an
 
 # Julia Graph Neural Networks
 
+## Mode Flag
+
+- `--mode quick`: routing table + agent delegation only
+- `--mode standard` (default): task types, architecture overview, framework comparison
+- `--mode deep`: canonical Lux training loop and custom message passing code
+
 ## Expert Agent
 
 For graph neural network architecture and training in Julia, delegate to:
@@ -150,6 +156,8 @@ y, st = model(batched_g, batched_g.x, ps, st)
 # Unbatch results
 individual_graphs = unbatch(batched_g)
 ```
+
+> **--mode deep required** for training loop and message passing code below.
 
 ## Canonical Lux training loop
 

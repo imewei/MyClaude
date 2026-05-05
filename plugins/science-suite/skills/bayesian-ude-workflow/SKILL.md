@@ -7,6 +7,14 @@ description: Build end-to-end Bayesian Universal Differential Equation (UDE) wor
 
 End-to-end recipe for fitting a Universal Differential Equation (UDE) — an ODE whose right-hand side mixes known physics with a neural network correction — and obtaining a posterior over both the physical parameters and the neural network weights.
 
+## Mode Flag
+
+- `--mode quick`: routing table + agent delegation only
+- `--mode standard` (default): stage outline + sampler selection table
+- `--mode deep`: full Stage 2 Turing model code block
+
+---
+
 ## Expert Agent
 
 For Bayesian UDE workflows in Julia, delegate to:
@@ -66,6 +74,8 @@ map_estimate = solve(opt_prob, BFGS(), maxiters = 500)
 `ComponentArray` is critical: it gives the optimizer (and later, Turing) a flat parameter vector while preserving the structured `(α, β, nn)` view that the ODE function consumes. See `optimization-patterns` for the full Optimization.jl interface and `sciml-modern-stack` for sensealg selection.
 
 ---
+
+> **--mode deep required** for the full Turing model code block below.
 
 ## Stage 2 — Turing model with embedded ODE
 

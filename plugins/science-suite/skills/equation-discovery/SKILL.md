@@ -18,6 +18,14 @@ Discover governing equations directly from trajectory data using sparse regressi
 
 ---
 
+## Mode Flag
+
+- `--mode quick`: routing table + agent delegation only
+- `--mode standard` (default): overview, thresholding strategies, and routing
+- `--mode deep`: full DataDrivenDiffEq.jl API tables and PySINDy code blocks
+
+---
+
 ## SINDy Overview
 
 SINDy (Sparse Identification of Nonlinear Dynamics) recovers governing equations from data:
@@ -34,6 +42,8 @@ dX/dt = Theta(X) * Xi
 The key insight: most dynamical systems have **sparse** representations in a suitable function basis. Sparsity-promoting regression recovers the few active terms.
 
 ---
+
+> **--mode deep required** for full library API reference below.
 
 ## DataDrivenDiffEq.jl (Julia)
 
@@ -152,6 +162,8 @@ error = norm(sol(t_test) .- X_test) / norm(X_test)
 > **Rule:** Always validate on held-out data not used in the SINDy fit. In-sample error is misleading for sparse models.
 
 ---
+
+> **--mode deep required** for full PySINDy code blocks below.
 
 ## PySINDy (Python)
 

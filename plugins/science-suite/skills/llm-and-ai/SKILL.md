@@ -69,6 +69,8 @@ What is the LLM / AI task?
 - [ ] Use routing tree to select the most specific sub-skill
 - [ ] Define evaluation metrics before building the application
 - [ ] Prototype prompts with `prompt-engineering-patterns` before full implementation
+
+> For prompt engineering patterns, chain-of-thought design, and MCP integration, see `agent-core:llm-engineering`.
 - [ ] Benchmark RAG retrieval recall before optimizing generation
 - [ ] Validate LLM outputs against ground truth with `llm-evaluation`
 - [ ] Use structured outputs (JSON mode / function calling) to reduce parsing failures
