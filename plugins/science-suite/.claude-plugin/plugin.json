@@ -1,6 +1,6 @@
 {
   "name": "science-suite",
-  "version": "3.4.1",
+  "version": "3.5.0",
   "description": "Scientific computing, HPC, physics/chemistry simulations, and data science workflows with extended context and adaptive reasoning for Claude Opus",
   "author": {
     "name": "Wei Chen",
@@ -29,19 +29,22 @@
     "agent-teams"
   ],
   "agents": [
-    "./agents/ai-engineer.md",
     "./agents/jax-pro.md",
     "./agents/julia-ml-hpc.md",
     "./agents/julia-pro.md",
     "./agents/ml-expert.md",
     "./agents/neural-network-master.md",
     "./agents/nonlinear-dynamics-expert.md",
-    "./agents/prompt-engineer.md",
+    "./agents/pinn-engineer.md",
     "./agents/python-pro.md",
+    "./agents/sci-workflow-engineer.md",
     "./agents/simulation-expert.md",
     "./agents/statistical-physicist.md"
   ],
-  "commands": [],
+  "commands": [
+    "./commands/md-sim.md",
+    "./commands/benchmark.md"
+  ],
   "skills": [
     "./skills/nonlinear-dynamics",
     "./skills/jax-computing",
