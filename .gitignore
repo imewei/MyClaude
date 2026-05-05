@@ -210,7 +210,6 @@ agent-os/
 # Plugin review and analysis outputs (auto-generated)
 /reports/
 /reviews/
-/test-corpus/
 .audit/
 tools/maintenance/output/
 
