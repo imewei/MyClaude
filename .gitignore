@@ -201,7 +201,6 @@ temp/
 .claude-context/
 
 # Claude Code guidance file (auto-generated)
-CLAUDE.md
 .claude-progress.md
 memory/
 

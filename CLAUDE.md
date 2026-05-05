@@ -131,3 +131,12 @@ The manifest uses **file-path references** (not inline objects) to point to agen
 - **No wildcard imports**: `from module import *` is prohibited.
 - **Python 3.13+**: Required by `pyproject.toml`.
 - **uv only**: Use `uv` for all dependency management. Never install to global/user site-packages.
+
+## graphify
+
+This project has a graphify knowledge graph at graphify-out/.
+
+Rules:
+- **Before any file exploration, multi-file search, or codebase question**, read graphify-out/GRAPH_REPORT.md. Focus on: "God Nodes" (most-connected abstractions), "Community Hubs" (navigation entry points), and "Surprising Connections" (non-obvious cross-module relationships).
+- Prefer `graphify query "<question>"`, `graphify path "<A>" "<B>"`, or `graphify explain "<concept>"` over grep/find for any cross-module question — these traverse EXTRACTED + INFERRED edges instead of scanning files.
+- After modifying code files in this session, run `graphify update .` to keep the graph current (AST-only, no API cost).
