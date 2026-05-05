@@ -1,6 +1,6 @@
 ---
 name: agent-systems
-description: Meta-orchestrator for multi-agent systems. Routes to specialized skills for agent coordination, performance optimization, evaluation, and tool use patterns. Use when designing multi-agent workflows, optimizing agent performance, implementing tool chains, agent delegation, or task handoff patterns.
+description: Meta-orchestrator for multi-agent systems. Routes to specialized skills for agent coordination, performance optimization, evaluation, and agent tool-use patterns. Use when designing multi-agent workflows, optimizing agent performance, implementing agent tool-calling chains, agent delegation, or task handoff patterns.
 ---
 
 # Agent Systems

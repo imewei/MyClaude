@@ -1,6 +1,6 @@
 ---
 name: thinkfirst
-description: Use this skill whenever the user wants to write, improve, or optimize a prompt. Triggers on "help me write a prompt", "optimize this prompt", "make this prompt better", brain dumps about AI/LLM goals, "I want to build/use an LLM to do X", unstructured notes or vague AI requirements, non-English prompt requests (e.g. 中文 "帮我写一个提示词"), or /thinkfirst. Two modes — Craft (build from a brain dump) and Optimize (rewrite an existing prompt) — auto-selected. Offers to execute the approved prompt on the spot. Use even when the user has not explicitly asked for "a prompt".
+description: Use this skill whenever the user wants to write, improve, or optimize a prompt. Triggers on "help me write a prompt", "optimize this prompt", "make this prompt better", brain dumps where the immediate deliverable is a prompt, unstructured notes that need conversion into a prompt, non-English prompt requests (e.g. 中文 "帮我写一个提示词"), or /thinkfirst. Two modes — Craft (build from a brain dump) and Optimize (rewrite an existing prompt) — auto-selected. Offers to execute the approved prompt on the spot. Do not trigger for full LLM application architecture or implementation requests; route those to llm-engineering.
 ---
 
 # thinkfirst — Prompt Crafter & Optimizer

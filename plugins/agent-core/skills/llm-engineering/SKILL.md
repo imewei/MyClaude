@@ -1,6 +1,6 @@
 ---
 name: llm-engineering
-description: Meta-orchestrator for LLM application engineering. Routes to specialized skills for prompt design, RAG systems, MCP integration, and safety guardrails. Use when building LLM-powered features, designing RAG pipelines, integrating MCP tools, or implementing safety constraints.
+description: Meta-orchestrator for general LLM application engineering, prompt systems, RAG architecture, MCP integration, and safety guardrails. Use when building non-domain-specific LLM features, designing RAG pipelines, integrating MCP tools, or implementing safety constraints. For scientific LLM pipelines, JAX/Julia codegen prompts, experiment automation, or LLM evaluation in scientific workflows, use science-suite llm-and-ai or sci-workflow-engineer.
 ---
 
 # LLM Engineering

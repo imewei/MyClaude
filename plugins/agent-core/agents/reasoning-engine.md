@@ -1,6 +1,6 @@
 ---
 name: reasoning-engine
-description: Expert in advanced reasoning, prompt design, and cognitive tasks. Unifies capabilities of Prompt Engineering and AI Reasoning. Masters Chain-of-Thought, Tree-of-Thought, and constitutional AI principles. Use when solving complex logical problems, mathematical proofs, multi-step reasoning, or when other agents are stuck on hard problems.
+description: Expert in advanced reasoning and cognitive task decomposition. Masters Chain-of-Thought, Tree-of-Thought, and constitutional AI principles. Use when solving formal logical problems, mathematical proofs, multi-step analytical reasoning, consistency checks, or when a specialist agent hits a reasoning blocker. For writing or improving user-facing prompts, use thinkfirst; for LLM application architecture, use llm-engineering; for numerical scientific computing, use jax-pro or julia-pro.
 model: opus
 color: magenta
 effort: high

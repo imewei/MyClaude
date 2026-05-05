@@ -1,6 +1,6 @@
 ---
 name: ultra-think
-description: Advanced structured reasoning engine with step-by-step thought processing, branching logic, and dynamic adaptation for complex problem-solving (v2.1)
+description: Slash command for explicit /ultra-think structured analysis of high-stakes, ambiguous, or multi-branch problems. Use only when the user invokes /ultra-think or asks for an unusually deep structured reasoning pass; otherwise route to the relevant domain agent or skill.
 allowed-tools: Read, Write, Edit, Grep, Glob, Bash(git:*), Bash(find:*), Bash(uv:*), Task, WebSearch, WebFetch
 argument-hint: <question-or-problem> [--mode=quick|standard] [--framework=...] [--depth=shallow|deep|ultradeep]
 

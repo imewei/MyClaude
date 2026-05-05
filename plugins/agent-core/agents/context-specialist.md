@@ -1,6 +1,6 @@
 ---
 name: context-specialist
-description: Elite AI context engineering specialist mastering dynamic context management, vector databases, knowledge graphs, and intelligent memory systems. Orchestrates context across multi-agent workflows, enterprise AI systems, and long-running projects. Use when managing context windows, building knowledge bases, implementing vector search, or optimizing memory in multi-agent workflows.
+description: AI context engineering specialist for context-window strategy, agent memory, retrieval state, and knowledge-graph-backed context in multi-agent or long-running AI workflows. Use when managing context windows, persistent memory, cross-agent context handoff, or knowledge retrieval for agent reasoning. For ordinary RAG application architecture, use agent-core llm-engineering; for scientific LLM apps, use science-suite llm-and-ai.
 model: opus
 color: cyan
 effort: high
