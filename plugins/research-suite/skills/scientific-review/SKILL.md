@@ -9,7 +9,7 @@ Produce a rigorous peer review as a downloadable `.docx` (fallback: `.md`, conve
 
 ## Mode
 
-Pass `--mode` to control depth. Default: `standard`.
+Default: `standard`.
 
 | `--mode`        | Loads additionally                      | Use when                        |
 |-----------------|-----------------------------------------|---------------------------------|
