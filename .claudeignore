@@ -1,0 +1,18 @@
+# Build artifacts
+graphify-out/
+docs/_build/
+
+# Python bytecode
+**/__pycache__/
+**/*.pyc
+**/*.pyo
+tools/tests/__pycache__/
+
+# Plugin metadata caches (not source)
+plugins/*/skills/**/*.json
+
+# Data files too large for context
+**/*.csv
+**/*.parquet
+**/*.h5
+**/*.hdf5
