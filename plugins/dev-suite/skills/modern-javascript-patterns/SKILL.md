@@ -1,6 +1,6 @@
 ---
 name: modern-javascript-patterns
-description: Master modern JavaScript (ES6-ES2024) including async/await, destructuring, spread operators, arrow functions, modules, optional chaining, nullish coalescing, and functional programming patterns. Use when writing ES6+ code, refactoring legacy JS, implementing async patterns, or applying functional programming with map/filter/reduce.
+description: "Modern JavaScript patterns (ES6-ES2024): async/await, modules, optional chaining, functional patterns. For scientific UI development, scientific apps use PyQt/PySide6 not JS — this skill applies when building Jupyter Lab extensions, Observable-based scientific dashboards, or TypeScript data-viz tooling. For general web dev, use frontend-design:frontend-design."
 ---
 
 # Modern JavaScript Patterns

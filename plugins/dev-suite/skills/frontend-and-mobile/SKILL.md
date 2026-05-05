@@ -1,11 +1,14 @@
 ---
 name: frontend-and-mobile
-description: Meta-orchestrator for frontend and mobile development. Routes to React/Flutter, JavaScript, TypeScript, accessibility, and mobile testing skills. Use when building React/Flutter apps, writing modern JavaScript/TypeScript, scaffolding frontend projects, implementing accessibility, or testing mobile apps.
+description: "Frontend concerns for scientific applications: accessibility compliance for scientific GUIs, visualization widget patterns, and cross-platform testing. For general web/mobile apps (React, Flutter, Next.js), use frontend-design:frontend-design or ui-ux-pro-max. Use when implementing WCAG compliance for scientific UIs or testing PyQt/Makie interfaces."
 ---
 
 # Frontend and Mobile
 
-Orchestrator for frontend and mobile development across web and native ecosystems. Routes to the appropriate specialized skill based on the platform, language, or quality concern.
+> **SEE ALSO:** For general web/mobile development (React, Next.js, Flutter, TypeScript apps), use `frontend-design:frontend-design` or `ui-ux-pro-max`. For React/Next.js performance, use `vercel-react-best-practices`.
+> This hub handles **scientific application frontend concerns**: WCAG accessibility for scientific GUIs, visualization widget patterns for PyQt/Makie interfaces, and cross-platform testing for scientific desktop tools.
+
+Orchestrator for frontend concerns in scientific application development. Routes to accessibility, visualization, and testing skills relevant to scientific software UIs.
 
 ## Expert Agent
 

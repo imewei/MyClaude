@@ -2,7 +2,7 @@
 name: smart-debug
 category: debugging
 purpose: AI-assisted debugging with automated RCA, pattern recognition, production-safe techniques
-description: Interactive debugging session with multi-mode execution, automated root cause analysis, and guided fix application
+description: Scientific computing debugger for NaN/inf propagation, JAX JIT trace failures, Julia dispatch ambiguities, shape mismatches, numerical instability. For general software bugs, use superpowers:systematic-debugging first.
 execution-modes:
   quick-triage: "5-10min"
   standard-debug: "15-30min"
@@ -13,7 +13,10 @@ argument-hint: <error-description> [--quick-triage|--standard-debug|--deep-rca] 
 allowed-tools: [Read, Bash, Edit, Task, Monitor]
 ---
 
-# AI-Assisted Debugging
+# AI-Assisted Debugging (Scientific)
+
+> **SEE ALSO:** For general software bugs (null pointer, timeout, auth failures, race conditions), use `superpowers:systematic-debugging` — it enforces structured pre-fix root-cause discipline.
+> Use this command for **scientific computing failures**: NaN/inf propagation, JAX JIT compilation errors (`TracerBoolConversionError`, `ConcretizationTypeError`), Julia dispatch ambiguities, numerical instability, shape/dtype mismatches, MCMC divergence, gradient explosion, GPU OOM errors, and domain-specific correctness failures.
 
 $ARGUMENTS
 
@@ -43,6 +46,7 @@ $ARGUMENTS
 ### 1. Triage
 Parse error, reproduction, environment (dev/prod), pattern (flaky/consistent)
 Match: NullPointer, Timeout, MemLeak, Race, Deadlock, Auth, RateLimit, JSON, FileIO, InfiniteLoop, Injection, TypeCoercion, Config, Async, CORS
+Scientific: NaN/Inf, ShapeMismatch, TypeInstability, JITTraceError, DispatchAmbiguity, NumericalOverflow, MCMCDivergence, GradientExplosion, OOMError, SeedNonReproducibility
 Output: Severity (P0-P3), top 3 causes, strategy
 
 ### 2. Observability (Production)

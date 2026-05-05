@@ -27,6 +27,9 @@ Airflow DAG design, task dependencies, sensor patterns, and data pipeline orches
 ### [Debugging Toolkit](../debugging-toolkit/SKILL.md)
 Systematic debugging methodology, profiler-guided diagnosis, and root cause analysis frameworks.
 
+### [Three-Brain Router](../three-brain/SKILL.md)
+Multi-model routing between Claude, Codex, and Gemini. Use for second-opinion code review, high-risk path scrutiny, repeated-failure rescue, multimodal analysis (video/audio/PDF/images), and long-context repository scans.
+
 ## Routing Decision Tree
 
 ```
@@ -42,17 +45,21 @@ What is the workflow concern?
 |   --> airflow-scientific-workflows
 |
 +-- Bug diagnosis / profiler / root cause?
-    --> debugging-toolkit
+|   --> debugging-toolkit
+|
++-- Second opinion / Codex review / Gemini scan / cross-model?
+    --> three-brain
 ```
 
 ## Routing Table
 
-| Trigger                                   | Sub-skill                       |
-|-------------------------------------------|---------------------------------|
-| Git branch, rebase, merge, conflict, tags | git-workflow                    |
-| README, ADR, docstring, Sphinx, MkDocs    | documentation-standards         |
-| Airflow, DAG, task, XCom, sensor          | airflow-scientific-workflows    |
-| Debugger, pdb, breakpoint, root cause     | debugging-toolkit               |
+| Trigger                                               | Sub-skill                       |
+|-------------------------------------------------------|---------------------------------|
+| Git branch, rebase, merge, conflict, tags             | git-workflow                    |
+| README, ADR, docstring, Sphinx, MkDocs                | documentation-standards         |
+| Airflow, DAG, task, XCom, sensor                      | airflow-scientific-workflows    |
+| Debugger, pdb, breakpoint, root cause                 | debugging-toolkit               |
+| Codex, Gemini, second opinion, sanity check, all three | three-brain                    |
 
 ## Checklist
 
@@ -62,3 +69,4 @@ What is the workflow concern?
 - [ ] Check Airflow DAGs have idempotent tasks before scheduling in production
 - [ ] Validate debugging sessions start with hypothesis formation, not random changes
 - [ ] Ensure debugging findings are documented to prevent regression
+- [ ] For high-risk paths (auth, billing, migrations, infra) or repeated failures, route via three-brain

@@ -1,14 +1,17 @@
 ---
 name: test-generate
 command: /test-generate
-description: Generate comprehensive test suites with scientific computing support, numerical validation, property-based testing, benchmarks
+description: Generate scientific test suites — numerical precision, property-based mathematical invariants, JAX vmap/jit correctness, Julia @inferred type-stability. For general TDD workflow, use superpowers:test-driven-development. Use --scientific flag for domain-specific tests.
 argument-hint: <source> [--coverage] [--property-based] [--benchmarks] [--scientific]
 execution-modes: {quick: "30min-1h", standard: "2-4h", enterprise: "1-2d"}
 workflow-type: generative
 allowed-tools: [Read, Write, Bash, Task]
 ---
 
-# Automated Test Generation
+# Scientific Test Generation
+
+> **SEE ALSO:** For the TDD discipline (write tests before implementation), use `superpowers:test-driven-development`. For reviewing test coverage on a PR, use `pr-review-toolkit:pr-test-analyzer`.
+> This command generates **scientific test suites**: numerical precision assertions (`assert_allclose`, `≈`), property-based tests for mathematical invariants (commutativity, linearity, idempotence), JAX JIT/vmap equivalence and gradient-correctness tests, Julia `@inferred` / `@test_nowarn` type-stability checks, and benchmark suites for performance regression.
 
 $ARGUMENTS
 

@@ -1,6 +1,6 @@
 ---
 name: eng-feature-dev
-description: Unified end-to-end feature development with customizable methodologies and deployment strategies
+description: Scientific feature development orchestrator. Coordinates science-suite and research-suite resources for numerical, ML, SciML, and simulation features. For general software features, use feature-dev:feature-dev with superpowers workflow skills.
 argument-hint: <action> <feature-name> [options]
 category: dev-suite
 execution-modes:
@@ -16,7 +16,10 @@ external-docs:
 tags: [full-stack, orchestration, api-first, feature-development]
 ---
 
-# Engineering Feature Development
+# Scientific Feature Development
+
+> **SEE ALSO:** For general software feature development (web, mobile, microservices), use `feature-dev:feature-dev` combined with `superpowers:writing-plans` and `superpowers:executing-plans`.
+> This command orchestrates **scientific feature development**: coordinates `science-suite` agents (`jax-pro`, `julia-pro`, `ml-expert`, `simulation-expert`, `statistical-physicist`), integrates `research-suite` methodology (correctness gates, literature grounding), and handles reproducibility requirements, JAX/Julia deployment constraints, and numerical correctness SLOs.
 
 $ARGUMENTS
 
