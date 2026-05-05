@@ -75,14 +75,11 @@ When to use: factual / numerical / logical tasks where the right answer is uniqu
 ```python
 import dspy
 
-# 1. Declare a Signature — typed input/output contract
 class Fact(dspy.Signature):
-    """Answer a factual question with a source citation."""
-    question: str   = dspy.InputField()
-    answer:   str   = dspy.OutputField()
-    source:   str   = dspy.OutputField()
+    question: str = dspy.InputField()
+    answer:   str = dspy.OutputField()
+    source:   str = dspy.OutputField()
 
-# 2. A Module uses Predict / ChainOfThought / ReAct on the signature
 class FactPipeline(dspy.Module):
     def __init__(self):
         super().__init__()
@@ -90,16 +87,11 @@ class FactPipeline(dspy.Module):
     def forward(self, question):
         return self.qa(question=question)
 
-# 3. A metric turns outputs + gold labels into a scalar
 def metric(gold, pred, trace=None):
     return int(pred.answer.strip().lower() == gold.answer.strip().lower())
 
-# 4. An Optimizer searches over few-shot demos and instructions
 from dspy.teleprompt import MIPROv2
-optimizer = MIPROv2(metric=metric, auto="medium")
-compiled  = optimizer.compile(FactPipeline(), trainset=train_examples)
-
-# 5. The compiled module has optimized prompt + few-shot selection frozen in
+compiled = MIPROv2(metric=metric, auto="medium").compile(FactPipeline(), trainset=train_examples)
 compiled.save("fact_pipeline.json")
 ```
 
@@ -124,35 +116,24 @@ DSPy's key insight: the compiled artifact is a *program*, not a prompt string. Y
 ```python
 import textgrad as tg
 
-engine = tg.get_engine("gpt-4o-mini")
+engine = tg.get_engine("claude-sonnet-4-6")
 tg.set_backward_engine(engine, override=True)
 
-# Wrap a prompt as a trainable Variable
-sys_prompt = tg.Variable(
-    "You are a careful scientific reasoner.",
-    requires_grad=True,
-    role_description="system prompt for scientific QA",
-)
+sys_prompt = tg.Variable("You are a careful scientific reasoner.",
+                          requires_grad=True, role_description="system prompt")
 
 def forward(question, answer_gold):
-    model      = tg.BlackboxLLM(engine, system_prompt=sys_prompt)
-    pred       = model(tg.Variable(question, requires_grad=False,
-                                   role_description="question"))
-    loss_fn    = tg.TextLoss(
-        "Critique this answer vs. the gold answer. Be specific and terse.",
-        engine=engine,
-    )
-    return loss_fn(pred, tg.Variable(answer_gold, requires_grad=False,
-                                     role_description="gold answer"))
+    pred    = tg.BlackboxLLM(engine, system_prompt=sys_prompt)(
+                  tg.Variable(question, requires_grad=False, role_description="question"))
+    loss_fn = tg.TextLoss("Critique vs gold answer — specific and terse.", engine=engine)
+    return loss_fn(pred, tg.Variable(answer_gold, requires_grad=False, role_description="gold"))
 
 optimizer = tg.TGD(parameters=[sys_prompt])
 for question, gold in train_pairs:
-    loss = forward(question, gold)
-    loss.backward()
-    optimizer.step()
-    optimizer.zero_grad()
+    loss = forward(question, gold); loss.backward()
+    optimizer.step(); optimizer.zero_grad()
 
-print(sys_prompt.value)     # the evolved prompt
+print(sys_prompt.value)   # the evolved prompt
 ```
 
 TextGrad is most effective when the "loss" is qualitative (style, coverage, coherence) rather than exact-match accuracy — that's where scalar metrics fail and DSPy's discrete search is awkward.
