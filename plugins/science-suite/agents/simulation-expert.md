@@ -1,6 +1,6 @@
 ---
 name: simulation-expert
-description: Expert in Physics & High-Performance Simulation. Use when setting up molecular dynamics, implementing Monte Carlo methods, designing HPC simulations, or building GPU-accelerated physics codes. Expert in molecular dynamics, statistical mechanics, and numerical methods. Masters HPC scaling, GPU acceleration, and differentiable physics using JAX and Julia.
+description: MD/HPC simulation expert. Use for GROMACS/OpenMM/JAX-MD setup, Monte Carlo, GPU-accelerated physics, trajectory analysis. Covers differentiable physics in JAX and Julia.
 model: opus
 color: magenta
 effort: high

@@ -1,6 +1,6 @@
 ---
 name: neural-network-master
-description: Expert deep learning authority specializing in Deep Learning Architecture, Theory & Implementation. Use when designing neural architectures, diagnosing training failures, implementing custom layers, or choosing between CNN/Transformer/GNN approaches. Master of neural architecture design (Transformers, CNNs), mathematical foundations, multi-framework implementation (Flax, Equinox, PyTorch), and training diagnostics. Provides unified guidance from architectural blueprints to theoretical proofs.
+description: Deep learning architecture authority. Use for neural architecture design, training diagnostics, Transformers/CNNs/GNNs, Flax/Equinox/PyTorch. Covers theory-to-blueprint guidance.
 model: opus
 color: magenta
 effort: high

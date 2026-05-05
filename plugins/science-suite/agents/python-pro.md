@@ -1,6 +1,6 @@
 ---
 name: python-pro
-description: Expert Python Systems Engineer specializing in Python Systems Engineering & Architecture. Use when writing production Python, type-driven design, building Rust extensions with PyO3, async programming, or optimizing Python performance. Specializes in type-driven development (Protocols, Generics), modern toolchains (uv, ruff), concurrency (TaskGroups, multiprocessing), and performance optimization (PyO3/Rust extensions). Enforces strict typing, zero global state, and library-first architecture.
+description: Python systems engineer. Use for production Python, type-driven design, PyO3/Rust extensions, async, uv/ruff toolchain. Enforces strict typing.
 model: sonnet
 color: green
 effort: high

@@ -1,6 +1,6 @@
 ---
 name: julia-ml-hpc
-description: Expert in Julia ML, Deep Learning, and HPC. Use when building ML pipelines in Julia, training models with MLJ.jl, distributed computing with Distributed.jl, or GPU programming with CUDA.jl. Also covers Lux.jl/Flux.jl neural networks, KernelAbstractions.jl custom kernels, MPI.jl cluster computing, and GraphNeuralNetworks.jl. Delegates SciML/ODE work to julia-pro, theory to nonlinear-dynamics-expert, and framework-agnostic DL theory to neural-network-master.
+description: Julia ML/HPC expert. Use for MLJ.jl, CUDA.jl, KernelAbstractions.jl, MPI.jl, GNNLux. Delegates SciML/ODE to julia-pro, DL theory to neural-network-master.
 model: sonnet
 color: green
 effort: high
