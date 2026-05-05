@@ -1,6 +1,6 @@
 {
   "name": "research-suite",
-  "version": "3.4.1",
+  "version": "3.5.0",
   "description": "Scientific research workflows — three tracks: scientific-review (peer review of other people's manuscripts → .docx), research-spark (8-stage artifact-gated refinement of your own rough idea), and research-practice (methodology hub: study design, paper reproduction, quality assessment, scientific writing, evidence synthesis)",
   "author": {
     "name": "Wei Chen",
@@ -47,7 +47,11 @@
     "./agents/research-expert.md",
     "./agents/research-spark-orchestrator.md"
   ],
-  "commands": [],
+  "commands": [
+    "./commands/paper-implement.md",
+    "./commands/lit-review.md",
+    "./commands/replicate.md"
+  ],
   "skills": [
     "./skills/scientific-review",
     "./skills/research-spark",
