@@ -37,14 +37,12 @@
     "./agents/systems-engineer.md"
   ],
   "commands": [
-    "./commands/commit.md",
     "./commands/docs.md",
     "./commands/double-check.md",
     "./commands/eng-feature-dev.md",
     "./commands/fix-commit-errors.md",
     "./commands/merge-all.md",
     "./commands/modernize.md",
-    "./commands/refactor-clean.md",
     "./commands/run-all-tests.md",
     "./commands/smart-debug.md",
     "./commands/test-generate.md",

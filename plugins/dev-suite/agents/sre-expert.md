@@ -1,6 +1,6 @@
 ---
 name: sre-expert
-description: Reliability Consultant expert in system reliability, observability (monitoring, logging, tracing), and incident response. Masters SLO/SLI frameworks and root cause analysis. Use when defining SLOs/SLIs, investigating reliability issues, setting up monitoring, or designing incident response processes.
+description: Scientific computing reliability specialist. Designs SLOs for long-running simulations (MCMC, MD, PDE solving), GPU job uptime monitoring, JAX compilation health, and incident response for numerical workflow failures. Use when defining reliability targets for scientific pipelines, setting up simulation monitoring, or writing runbooks for HPC/GPU workflow failures.
 model: sonnet
 color: green
 effort: high

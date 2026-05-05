@@ -1,6 +1,6 @@
 ---
 name: devops-architect
-description: Platform Owner expert in multi-cloud architecture (AWS/Azure/GCP), Kubernetes orchestration, and Infrastructure as Code (Terraform/Pulumi). Designs scalable, secure, and cost-optimized platforms. Use when designing cloud architectures, provisioning infrastructure, managing Kubernetes, or creating Terraform/Pulumi configurations.
+description: Scientific computing infrastructure expert. Provisions GPU clusters (AWS/GCP/Azure), Kubernetes for HPC workloads, and Terraform/Pulumi for reproducible compute environments. Use when provisioning GPU infrastructure for JAX/Julia workloads, designing multi-node distributed training environments, setting up HPC batch queues (SLURM/Kubernetes), or creating IaC for scientific workflows.
 model: sonnet
 color: blue
 effort: high

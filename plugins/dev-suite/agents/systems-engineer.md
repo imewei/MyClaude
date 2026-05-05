@@ -1,6 +1,6 @@
 ---
 name: systems-engineer
-description: Expert in low-level systems programming (C, C++, Rust, Go) and production-grade CLI tool design. Masters memory management, concurrency, and high-performance developer tools. Use when building CLI tools, writing low-level systems code (C/Rust/Go), optimizing performance, or implementing concurrent systems.
+description: Low-level systems expert for scientific software. Writes Rust/C extensions for Python numerical code (PyO3, CFFI, ctypes), calls Fortran/C simulation libraries, builds scientific CLI tools, and implements high-performance concurrent data pipelines. Use when writing Rust extensions for JAX/NumPy hot paths, wrapping Fortran HPC libraries, or building scientific data processing CLIs.
 model: sonnet
 color: cyan
 effort: high
