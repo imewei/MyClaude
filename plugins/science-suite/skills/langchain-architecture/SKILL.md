@@ -5,12 +5,12 @@ description: Design LLM applications with LangChain agents, chains, memory, and 
 
 # LangChain Architecture
 
-For LLM application development with LangChain, delegate to the `ai-engineer` agent.
+For LLM application development with LangChain, delegate to the `sci-workflow-engineer` agent.
 
 ## Expert Agent
 
-- **`ai-engineer`**: LLM applications, RAG systems, and agentic AI
-  - *Location*: `plugins/science-suite/agents/ai-engineer.md`
+- **`sci-workflow-engineer`**: LLM applications, RAG systems, and agentic AI
+  - *Location*: `plugins/science-suite/agents/sci-workflow-engineer.md`
 
 ## Quick Reference
 

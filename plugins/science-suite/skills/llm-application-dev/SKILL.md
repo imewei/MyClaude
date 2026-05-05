@@ -11,10 +11,8 @@ Building robust applications with Large Language Models.
 
 For LLM application development, delegate to:
 
-- **`ai-engineer`**: RAG systems, agentic workflows, and application architecture.
-  - *Location*: `plugins/science-suite/agents/ai-engineer.md`
-- **`prompt-engineer`**: Prompt optimization, safety, and evaluation.
-  - *Location*: `plugins/science-suite/agents/prompt-engineer.md`
+- **`sci-workflow-engineer`**: RAG systems, agentic workflows, and application architecture.
+  - *Location*: `plugins/science-suite/agents/sci-workflow-engineer.md`
 
 > For RAG, LangChain, and evaluation routing, use the parent hub: `science-suite:llm-and-ai`.
 

@@ -70,7 +70,7 @@ Scientific communication and reporting - triggers research-expert.
 |-------------|------|
 | ml-expert | Implementing advanced ML models for analysis |
 | simulation-expert | Generating data from physics simulations, HPC experiments |
-| ai-engineer | Building interactive research dashboards, LLM synthesis |
+| sci-workflow-engineer | Building interactive research dashboards, LLM synthesis |
 | python-pro | Performance optimization, systems architecture |
 
 ---

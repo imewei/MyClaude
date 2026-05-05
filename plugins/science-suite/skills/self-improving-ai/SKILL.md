@@ -11,11 +11,9 @@ Frameworks and techniques that let an LLM system get better at a task without a 
 
 For self-improving AI system design, prompt optimization, and autonomous research loops, delegate to:
 
-- **`ai-engineer`** (primary): Production LLM applications, RAG, agentic AI, prompt programs.
-  - *Location*: `plugins/science-suite/agents/ai-engineer.md`
-- **`prompt-engineer`** (secondary): Prompt technique, chain-of-thought, constitutional principles, evaluation harnesses.
-  - *Location*: `plugins/science-suite/agents/prompt-engineer.md`
-- **`research-expert`** (research-suite, tertiary): Autonomous-research-loop design, experiment-planning agents, literature-synthesis pipelines.
+- **`sci-workflow-engineer`** (primary): LLM pipelines, agentic AI, prompt programs, and self-refinement loops.
+  - *Location*: `plugins/science-suite/agents/sci-workflow-engineer.md`
+- **`research-expert`** (research-suite, secondary): Autonomous-research-loop design, experiment-planning agents, literature-synthesis pipelines.
   - *Location*: `plugins/research-suite/agents/research-expert.md`
 
 ---
@@ -122,7 +120,7 @@ The other two families (inference-time scaling and autonomous research loops) ar
 ## Composition with neighboring skills
 
 - **LLM evaluation** — every self-improving system needs a metric; design the evaluation harness before the optimizer. See `llm-evaluation`.
-- **Prompt engineering** — the atomic-level technique side; DSPy / RLAIF sit on top of it. See the `prompt-engineer` agent.
+- **Prompt engineering** — the atomic-level technique side; DSPy / RLAIF sit on top of it. Use `sci-workflow-engineer` for prompt codegen workflows.
 - **LLM applications** — RAG, agentic, multi-modal patterns that self-improving AI enhances. See `llm-application-patterns`.
 - **Agent systems** — multi-agent coordination primitives that autonomous research loops build on. See `multi-agent-coordination`.
 - **Research methodology** — applying self-improving AI to literature review, hypothesis generation, experiment design. See `research-methodology` in the `research-suite` plugin (or its hub `research-practice`).

@@ -9,8 +9,8 @@ Orchestrator for LLM application development and AI engineering. Routes problems
 
 ## Expert Agent
 
-- **`ai-engineer`**: Specialist for LLM applications, RAG systems, and AI product development.
-  - *Location*: `plugins/science-suite/agents/ai-engineer.md`
+- **`sci-workflow-engineer`**: Specialist for LLM integration into scientific pipelines, RAG systems, and AI product development.
+  - *Location*: `plugins/science-suite/agents/sci-workflow-engineer.md`
   - *Capabilities*: LLM APIs, LangChain, RAG pipelines, prompt engineering, evaluation frameworks, and NLP.
 
 ## Core Skills

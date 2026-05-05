@@ -42,8 +42,8 @@ Science Suite provides 11 specialized agents (4 opus, 7 sonnet) covering JAX, Ju
 | `simulation-expert` | opus | HPC, molecular dynamics, multiscale |
 | `statistical-physicist` | opus | Soft matter, non-equilibrium, correlations |
 | `python-pro` | sonnet | Python systems engineering, performance |
-| `ai-engineer` | sonnet | RAG, agents, LLM apps |
-| `prompt-engineer` | sonnet | Prompt optimization, safety, evaluation |
+| `pinn-engineer` | sonnet | Physics-informed neural networks, NeuralPDE.jl, DeepXDE |
+| `sci-workflow-engineer` | sonnet | LLM integration into scientific pipelines, codegen, automation |
 | `neural-network-master` | opus | DL architecture, PINNs, theory, diagnostics |
 | `nonlinear-dynamics-expert` | opus | Bifurcation theory, chaos, network dynamics, pattern formation |
 

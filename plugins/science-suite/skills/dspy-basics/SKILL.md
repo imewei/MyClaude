@@ -9,10 +9,8 @@ The depth-skill companion to `self-improving-ai` for the **programmatic prompt o
 
 ## Expert Agents
 
-- **`ai-engineer`** (primary): Production LLM applications, prompt programs, tool calling.
-  - *Location*: `plugins/science-suite/agents/ai-engineer.md`
-- **`prompt-engineer`** (secondary): Prompt technique, chain-of-thought, evaluation design.
-  - *Location*: `plugins/science-suite/agents/prompt-engineer.md`
+- **`sci-workflow-engineer`**: LLM pipelines, prompt programs, tool calling, and codegen.
+  - *Location*: `plugins/science-suite/agents/sci-workflow-engineer.md`
 
 ---
 
@@ -158,7 +156,7 @@ The optimizer is only as good as the metric. Before reaching for any compiler:
 - **RLAIF training** — peer depth-skill covering the Constitutional AI / RLAIF family. See `rlaif-training`.
 - **LLM evaluation** — build the metric harness before reaching for any compiler. See `llm-evaluation`.
 - **RAG implementation** — DSPy's `Retrieve` primitive drops into RAG pipelines. See `rag-implementation`.
-- **Prompt engineer** — atomic-level technique side; DSPy sits on top of it. See the `prompt-engineer` agent.
+- **Prompt workflows** — atomic-level technique side; DSPy sits on top of it. Use `sci-workflow-engineer` for codegen prompts.
 
 ---
 
