@@ -1,0 +1,110 @@
+{
+  "/Users/b80985/Projects/MyClaude/docs/conf.py": {
+    "mtime": 1776622345.3095279,
+    "hash": "7337952ef464ee07a675fb56d5c31d31"
+  },
+  "/Users/b80985/Projects/MyClaude/docs/_ext/plugin_directives.py": {
+    "mtime": 1775976464.7411113,
+    "hash": "c113fc04324dad64dbb3df52e138bffe"
+  },
+  "/Users/b80985/Projects/MyClaude/docs/index.rst": {
+    "mtime": 1777731840.7154372,
+    "hash": "325c4adc37ef54ce1ea81d1d58d318fd"
+  },
+  "/Users/b80985/Projects/MyClaude/docs/agent-teams-guide.md": {
+    "mtime": 1776607923.4080582,
+    "hash": "18a9ea5ac049bee948d28f351a2d4279"
+  },
+  "/Users/b80985/Projects/MyClaude/docs/integration-map.rst": {
+    "mtime": 1776622957.715285,
+    "hash": "b0c4c68fb6221ed8ceb0e15913dbc9df"
+  },
+  "/Users/b80985/Projects/MyClaude/docs/changelog.rst": {
+    "mtime": 1776622389.6521394,
+    "hash": "d17f5c295170c6f70dc808653264d357"
+  },
+  "/Users/b80985/Projects/MyClaude/docs/claude-code-spec-compliance.md": {
+    "mtime": 1777731786.6959705,
+    "hash": "2ff2af888b227778855dac65608202ff"
+  },
+  "/Users/b80985/Projects/MyClaude/docs/glossary.rst": {
+    "mtime": 1775463061.8369648,
+    "hash": "ea60ec869ceb053d8ec12648460be321"
+  },
+  "/Users/b80985/Projects/MyClaude/docs/suites/science-suite.rst": {
+    "mtime": 1776623015.6530898,
+    "hash": "04250fe7ebc7fe2a3d0603879010478b"
+  },
+  "/Users/b80985/Projects/MyClaude/docs/suites/dev-suite.rst": {
+    "mtime": 1776622965.37198,
+    "hash": "ed5efde02d839cfcedae06d348c19cf7"
+  },
+  "/Users/b80985/Projects/MyClaude/docs/suites/agent-core.rst": {
+    "mtime": 1776622962.8030784,
+    "hash": "897379e4f6d846f1e1d647cc2e563400"
+  },
+  "/Users/b80985/Projects/MyClaude/docs/guides/devops-workflows.rst": {
+    "mtime": 1775313784.4897168,
+    "hash": "d3e52f759a80ad0938277ebc3c52075f"
+  },
+  "/Users/b80985/Projects/MyClaude/docs/guides/infrastructure-workflows.rst": {
+    "mtime": 1775313800.6943362,
+    "hash": "b583df6f9ac3e374f4f6644be4dd6b67"
+  },
+  "/Users/b80985/Projects/MyClaude/docs/guides/scientific-workflows.rst": {
+    "mtime": 1776541667.2643607,
+    "hash": "e04dd9cac47a7d9a81162f6a25162023"
+  },
+  "/Users/b80985/Projects/MyClaude/docs/guides/integration-patterns.rst": {
+    "mtime": 1776622959.6775768,
+    "hash": "0f6146671e01a91b79d6ee4c64a693a3"
+  },
+  "/Users/b80985/Projects/MyClaude/docs/guides/development-workflows.rst": {
+    "mtime": 1775313771.0995505,
+    "hash": "eaa79f35e22818bc0c2100cc2ceb0f7f"
+  },
+  "/Users/b80985/Projects/MyClaude/docs/superpowers/plans/2026-04-30-scientific-review-mode-flag.md": {
+    "mtime": 1777571954.7702203,
+    "hash": "51d8bbc646ac4921b8a337d4d4c484a0"
+  },
+  "/Users/b80985/Projects/MyClaude/docs/superpowers/specs/2026-04-30-scientific-review-mode-flag-design.md": {
+    "mtime": 1777571427.952713,
+    "hash": "9a3ea8022959df60995f89ba8e61c6f5"
+  },
+  "/Users/b80985/Projects/MyClaude/docs/categories/index.rst": {
+    "mtime": 1776541520.262288,
+    "hash": "dcdaa0d01ef5a196d51130481a47e8df"
+  },
+  "/Users/b80985/Projects/MyClaude/docs/categories/science.rst": {
+    "mtime": 1768951284.0247185,
+    "hash": "16a00142f9799abd63d3665e86751640"
+  },
+  "/Users/b80985/Projects/MyClaude/docs/categories/dev.rst": {
+    "mtime": 1774945609.555685,
+    "hash": "ca754024dee9d1af30fe4c433025b4ac"
+  },
+  "/Users/b80985/Projects/MyClaude/docs/categories/research.rst": {
+    "mtime": 1776541514.0331316,
+    "hash": "a11e267d3ebbe15f7d69748bd9857455"
+  },
+  "/Users/b80985/Projects/MyClaude/docs/categories/core.rst": {
+    "mtime": 1775400884.0210526,
+    "hash": "25c5080ea0f055270820bb096bde52ba"
+  },
+  "/Users/b80985/Projects/MyClaude/docs/reference/commands.md": {
+    "mtime": 1776622950.7900078,
+    "hash": "87ac0b5608fe9d9ca0bd6fb567492e6e"
+  },
+  "/Users/b80985/Projects/MyClaude/docs/reference/cheatsheet.md": {
+    "mtime": 1776622954.3025405,
+    "hash": "7cc027721d8bf520bfd304fafffee07f"
+  },
+  "/Users/b80985/Projects/MyClaude/docs/reference/agents.md": {
+    "mtime": 1776622956.6004786,
+    "hash": "7404ae2e63a8a29fe703261295765e45"
+  },
+  "/Users/b80985/Projects/MyClaude/docs/suites/research-suite.rst": {
+    "mtime": 1776622968.7830637,
+    "hash": "1d4607ec4d9439cd726b4555f7e21383"
+  }
+}
