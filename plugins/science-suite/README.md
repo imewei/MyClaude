@@ -78,7 +78,7 @@ Organized by domain:
 | SessionEnd | Persist structured progress summary for next session |
 | SubagentStop | Collect results from parallel science agents |
 
-(`ExecutionError` was removed in v3.4.0 — not supported by the CC v2.1.113 CLI event schema.)
+(`ExecutionError` was removed in v3.4.0 — not supported by the CC v2.1.126 CLI event schema.)
 
 ## Integration / Workflow
 

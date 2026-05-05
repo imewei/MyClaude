@@ -38,6 +38,7 @@ This system uses a hub-skill architecture across 4 focused suites: 25 agents, 14
 
    glossary
    changelog
+   
    guides/scientific-workflows
    guides/development-workflows
    guides/devops-workflows

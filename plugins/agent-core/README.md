@@ -63,7 +63,7 @@ Sub-skills include: reasoning-frameworks, reflection-framework, agent-performanc
 
 SessionStart, SessionEnd, PreToolUse, PostToolUse, PreCompact, PostCompact, SubagentStart, SubagentStop, PermissionDenied, TaskCreated, TaskCompleted, StopFailure
 
-(PreSubagentUse, ExecutionError, PermissionPrompt, ContextOverflow, and CostThreshold handlers were removed in v3.4.0 — not supported by the CC v2.1.113 CLI event schema.)
+(PreSubagentUse, ExecutionError, PermissionPrompt, ContextOverflow, and CostThreshold handlers were removed in v3.4.0 — not supported by the CC v2.1.126 CLI event schema.)
 
 ## Integration / Workflow
 

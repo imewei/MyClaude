@@ -87,7 +87,7 @@ Covers the complete SDLC:
 | SessionEnd | Persist structured progress summary for next session |
 | StopFailure | Capture context when /stop fails mid-operation |
 
-(`ExecutionError` was removed in v3.4.0 — not supported by the CC v2.1.113 CLI event schema.)
+(`ExecutionError` was removed in v3.4.0 — not supported by the CC v2.1.126 CLI event schema.)
 
 ## Integration / Workflow
 
