@@ -1,5 +1,43 @@
 # Changelog
 
+## v3.5.0 (2026-05-05)
+
+### Science Suite — Scicomp Redesign
+
+- **Agent model tier promotion**: `jax-pro` and `julia-pro` elevated from sonnet → opus (deep reasoning tier) to reflect their role as primary expert agents for GPU-accelerated scientific computing
+- **Agent model tier demotion**: `ml-expert` demoted from sonnet → haiku (fast/simple tier) to align with its lightweight classical ML role
+- **New agent — `pinn-engineer`** (sonnet): replaces `ai-engineer`; specializes in Physics-Informed Neural Networks (PINNs), BPINNs, NeuralPDE.jl, and MethodOfLines.jl
+- **New agent — `sci-workflow-engineer`** (sonnet): replaces `prompt-engineer`; orchestrates end-to-end scientific computation workflows
+- **New commands**: `/science-suite:md-sim` (molecular dynamics simulation) and `/science-suite:benchmark` (computational benchmarking) — both registered in `plugin.json`
+- **Agent description trim**: 6 science-suite agent descriptions trimmed to ≤180 chars for context budget compliance
+
+### Research Suite — Command Expansion
+
+- **New commands**: `/research-suite:paper-implement`, `/research-suite:lit-review`, `/research-suite:replicate` — all three registered in `plugin.json` (research-suite goes from 0 → 3 registered commands)
+
+### Dev Suite
+
+- **New skill**: `three-brain` skill added with hub routing wired into `dev-workflows`
+- **Command cleanup**: `commit` and `refactor-clean` commands unregistered from `plugin.json` (moved to skill-invoked / external plugin delegation); registered command count 12 → 10
+- **Hub routing**: `dev-workflows` hub updated with routing for new agents and `three-brain` skill
+
+### Agent Core
+
+- **PreCompact hook**: priority skill logging added — logs active skills to context before compaction
+- **Gemini WS-1 compression**: mode-flag gating applied across skill corpus; redundant hub routing prose stripped
+
+### Tooling & Infrastructure
+
+- **`.claudeignore`**: added for context pruning (excludes graphify outputs, test artifacts, cache dirs)
+- **TDD test suite**: `test_scicomp_redesign.py` added covering v3.5.0 redesign invariants
+- **Spec & plan docs**: `docs/superpowers/specs/2026-05-05-plugin-scicomp-redesign.md` and matching implementation plan added
+
+### Validator State
+
+* All 4 plugin.json manifests at v3.5.0; 25 agents (13 opus / 10 sonnet / 2 haiku);
+  17 registered commands (2+10+3+2); 31 hub skills → 187 sub-skills (218 SKILL.md on disk);
+  24 hook events (12 agent-core + 7 dev-suite + 5 science-suite).
+
 ## v3.3.2 (2026-04-13)
 
 ### Bug Fix

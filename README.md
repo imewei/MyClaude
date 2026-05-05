@@ -2,28 +2,28 @@
 
 [![Plugins](https://img.shields.io/badge/Plugins-4-blue.svg)](https://myclaude.readthedocs.io/en/latest/plugins/)
 [![Agents](https://img.shields.io/badge/Agents-25-green.svg)](docs/reference/agents.md)
-[![Commands](https://img.shields.io/badge/Commands-14-orange.svg)](docs/reference/commands.md)
-[![Skills](https://img.shields.io/badge/Skills-31_hubs_→_186_sub-purple.svg)](docs/reference/cheatsheet.md)
-[![Version](https://img.shields.io/badge/Version-3.4.1-red.svg)](https://github.com/imewei/MyClaude)
+[![Commands](https://img.shields.io/badge/Commands-17-orange.svg)](docs/reference/commands.md)
+[![Skills](https://img.shields.io/badge/Skills-31_hubs_→_187_sub-purple.svg)](docs/reference/cheatsheet.md)
+[![Version](https://img.shields.io/badge/Version-3.5.0-red.svg)](https://github.com/imewei/MyClaude)
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Docs](https://img.shields.io/badge/Docs-ReadTheDocs-brightgreen.svg)](https://myclaude.readthedocs.io/en/latest/)
 
-Claude Code plugin marketplace with **4 focused suites**, **25 expert agents**, **14 registered commands**, and **31 hub skills** routing to **186 sub-skills**. Built for Claude Opus 4.7 with tiered model assignments (Opus/Sonnet/Haiku), 27 lifecycle hook events across all suites, and hub-skill architecture for zero-ambiguity skill routing.
+Claude Code plugin marketplace with **4 focused suites**, **25 expert agents**, **17 registered commands**, and **31 hub skills** routing to **187 sub-skills**. Built for Claude Opus 4.7 with tiered model assignments (Opus/Sonnet/Haiku), 24 lifecycle hook events across all suites, and hub-skill architecture for zero-ambiguity skill routing.
 
 ## The 4-Suite Hub Architecture
 
-MyClaude v3.4.1 uses a **hub-skill architecture**: skills are organized into hub skills (meta-orchestrators) that route to specialized sub-skills via decision trees. Only hubs are declared in `plugin.json`; sub-skills are discovered through hub routing.
+MyClaude v3.5.0 uses a **hub-skill architecture**: skills are organized into hub skills (meta-orchestrators) that route to specialized sub-skills via decision trees. Only hubs are declared in `plugin.json`; sub-skills are discovered through hub routing.
 
 | Suite | Agents | Commands | Hubs → Sub-skills | Hooks | Focus |
 |-------|--------|----------|-------------------|-------|-------|
 | [Agent Core](plugins/agent-core/) | 3 | 2 | 4 → 13 | 12 events | Orchestration, reasoning, context engineering |
-| [Dev Suite](plugins/dev-suite/) | 9 | 12 | 9 → 49 | 7 events | Full SDLC: architecture, CI/CD, testing, debugging |
-| [Research Suite](plugins/research-suite/) | 2 | 0 | 4 → 12 | 3 events | Peer review, 8-stage research-spark pipeline, methodology |
-| [Science Suite](plugins/science-suite/) | 11 | 0 | 14 → 112 | 5 events | JAX, Julia, physics, ML/DL/HPC, nonlinear dynamics |
+| [Dev Suite](plugins/dev-suite/) | 9 | 10 | 9 → 50 | 7 events | Full SDLC: architecture, CI/CD, testing, debugging |
+| [Research Suite](plugins/research-suite/) | 2 | 3 | 4 → 12 | 0 events | Peer review, 8-stage research-spark pipeline, methodology |
+| [Science Suite](plugins/science-suite/) | 11 | 2 | 14 → 112 | 5 events | JAX, Julia, physics, ML/DL/HPC, nonlinear dynamics |
 
 ## Specialist Agents
 
-25 agents with tiered model assignments: **11 opus** (deep reasoning), **13 sonnet** (standard), **1 haiku** (fast).
+25 agents with tiered model assignments: **13 opus** (deep reasoning), **10 sonnet** (standard), **2 haiku** (fast).
 
 | Agent | Suite | Model | Specialization |
 |-------|-------|-------|----------------|
@@ -34,12 +34,15 @@ MyClaude v3.4.1 uses a **hub-skill architecture**: skills are organized into hub
 | `@debugger-pro` | Dev | opus | Root cause analysis, log correlation |
 | `@research-expert` | Research | opus | Literature reviews, experiment design, statistical rigor |
 | `@research-spark-orchestrator` | Research | opus | 8-stage artifact-gated refinement pipeline |
+| `@jax-pro` | Science | opus | JAX/JIT, vmap/pmap, Flax NNX, NumPyro, physics apps |
+| `@julia-pro` | Science | opus | Julia SciML, DifferentialEquations.jl, Turing.jl |
 | `@neural-network-master` | Science | opus | Deep learning theory and architecture |
 | `@statistical-physicist` | Science | opus | Correlation functions, non-equilibrium dynamics |
 | `@simulation-expert` | Science | opus | Molecular dynamics, HPC, numerical methods |
 | `@nonlinear-dynamics-expert` | Science | opus | Bifurcations, chaos, network dynamics, pattern formation |
-| `@jax-pro` | Science | sonnet | JAX, Bayesian inference, physics apps |
-| `@julia-pro` | Science | sonnet | Julia SciML, DifferentialEquations.jl |
+| `@pinn-engineer` | Science | sonnet | PINNs, BPINNs, NeuralPDE, MethodOfLines |
+| `@sci-workflow-engineer` | Science | sonnet | Scientific workflow design and optimization |
+| `@julia-ml-hpc` | Science | sonnet | Julia ML, Lux.jl, distributed/GPU computing |
 | `@python-pro` | Science | sonnet | Python systems engineering, performance |
 
 See [complete agent list](docs/reference/agents.md) for all 25 agents.

@@ -1,8 +1,8 @@
 Claude Code Plugin Marketplace
 ==============================
 
-Welcome to the documentation for the Claude Code Plugin Marketplace v3.4.1.
-This system uses a hub-skill architecture across 4 focused suites: 25 agents, 14 registered commands, and 31 registered hub skills routing to 186 sub-skills (217 SKILL.md files total on disk).
+Welcome to the documentation for the Claude Code Plugin Marketplace v3.5.0.
+This system uses a hub-skill architecture across 4 focused suites: 25 agents, 17 registered commands, and 31 registered hub skills routing to 187 sub-skills (218 SKILL.md files total on disk).
 
 .. toctree::
    :maxdepth: 2
