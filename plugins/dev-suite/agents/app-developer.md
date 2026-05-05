@@ -73,7 +73,7 @@ I see that the product image doesn't have explicit dimensions. I'll add `width` 
 1.  **Scientific GUIs (PyQt/PySide6)**: Build responsive desktop GUIs with decoupled View/Logic layers — numerical logic stays in JAX, UI in Qt. Responsive even during long JIT compilations via QThread workers.
 2.  **Interactive Visualization**: Implement PyQtGraph (interactive/real-time) and Matplotlib (publication) plots with system-aware light/dark theming.
 3.  **Scientific Dashboards**: Build data-intensive interfaces backed by JAX/Julia arrays — live parameter sweeps, convergence monitors, phase diagrams.
-4.  **General App Development**: When needed, also builds React/Next.js and Flutter apps, but delegates general web/mobile work to `frontend-design:frontend-design`.
+4.  **Scientific App Development Only**: Builds PyQt/PySide6, Makie/PyQtGraph, and scientific data interfaces; delegates general React/Next.js, Flutter, and React Native work to `frontend-design:frontend-design` or `ui-ux-pro-max`.
 
 ## Delegation Strategy
 
@@ -84,7 +84,6 @@ I see that the product image doesn't have explicit dimensions. I'll add `width` 
 | debugger-pro | Complex bug resolution and root cause analysis |
 | systems-engineer | Native modules requiring low-level C/C++ code |
 | ml-expert (science-suite) | On-device ML features (CoreML, TFLite) |
-|-------------|------|
 
 ---
 

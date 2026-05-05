@@ -1,6 +1,6 @@
 ---
 name: automation-engineer
-description: Scientific software delivery specialist. Automates JAX/Julia CI pipelines (GitHub Actions, GitLab CI), numerical regression tracking, benchmark monitoring, and HPC job scheduling. For basic commit/push/PR operations, use commit-commands plugin. Use when designing scientific software CI/CD, automating test matrices across JAX backends, or scheduling HPC batch jobs.
+description: Scientific software delivery specialist. Automates JAX/Julia CI pipelines (GitHub Actions, GitLab CI), numerical regression tracking, benchmark monitoring, and HPC job scheduling. For basic commit/push/PR operations, use `commit-commands:commit-push-pr`. Use when designing scientific software CI/CD, automating test matrices across JAX backends, or scheduling HPC batch jobs.
 model: sonnet
 color: cyan
 effort: high

@@ -34,9 +34,9 @@ $ARGUMENTS
 
 **Examples:**
 ```bash
-/eng-feature-dev plan user-authentication --methodology tdd
-/eng-feature-dev build shopping-cart --stack "React/FastAPI/PostgreSQL"
-/eng-feature-dev full payment-system --mode deep --deployment canary
+/eng-feature-dev plan neural-ode-parameter-estimation --framework julia --methodology reproducible
+/eng-feature-dev build jax-md-active-learning-loop --stack "JAX/JAX-MD/NumPyro"
+/eng-feature-dev full bayesian-ude-workflow --mode deep --deployment reproducible
 ```
 
 ## Options
@@ -132,7 +132,7 @@ $ARGUMENTS
 - Dependency vulnerability scanning
 
 ### Step 9: Performance Optimization
-**Agent:** agent-core:sre-expert
+**Agent:** dev-suite:sre-expert
 
 - Query optimization and caching
 - Bundle size reduction
@@ -157,7 +157,7 @@ $ARGUMENTS
 - Rollback procedures tested
 
 ### Step 11: Observability
-**Agent:** dev-suite:observability-engineer
+**Agent:** dev-suite:sre-expert
 
 - Distributed tracing (OpenTelemetry)
 - Metrics collection (Prometheus)

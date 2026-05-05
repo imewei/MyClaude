@@ -1,6 +1,11 @@
 ---
 name: frontend-and-mobile
-description: "Frontend concerns for scientific applications: accessibility compliance for scientific GUIs, visualization widget patterns, and cross-platform testing. For general web/mobile apps (React, Flutter, Next.js), use frontend-design:frontend-design or ui-ux-pro-max. Use when implementing WCAG compliance for scientific UIs or testing PyQt/Makie interfaces."
+description: >
+  Meta-orchestrator for scientific frontend concerns: accessibility compliance for scientific GUIs,
+  visualization widget patterns, scientific dashboards, and cross-platform testing. Use when
+  implementing WCAG compliance for PyQt/PySide6/Makie/PyQtGraph interfaces, testing scientific
+  visualization UIs, or building scientific dashboards coupled to numerical backends. For general
+  web/mobile apps (React, Flutter, Next.js), use frontend-design:frontend-design or ui-ux-pro-max.
 ---
 
 # Frontend and Mobile

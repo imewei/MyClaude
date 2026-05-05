@@ -1,6 +1,6 @@
 ---
 name: dev-workflows
-description: Meta-orchestrator for development workflows and tooling. Routes to Git workflow, documentation standards, data pipeline orchestration (Airflow), and systematic debugging skills. Use when managing Git branches and commits, writing technical documentation, orchestrating data pipelines with Airflow, or systematically debugging runtime issues.
+description: Meta-orchestrator for development workflows and tooling. Routes to Git workflow, documentation standards, data pipeline orchestration (Airflow), and systematic debugging skills. Use when managing Git branches and commits, maintaining documentation workflow standards, orchestrating data pipelines with Airflow, or systematically debugging runtime issues. For writing scientific software docs or tutorials, use documentation-expert or /docs.
 ---
 
 # Dev Workflows
@@ -30,6 +30,9 @@ Systematic debugging methodology, profiler-guided diagnosis, and root cause anal
 ### [Three-Brain Router](../three-brain/SKILL.md)
 Multi-model routing between Claude, Codex, and Gemini. Use for second-opinion code review, high-risk path scrutiny, repeated-failure rescue, multimodal analysis (video/audio/PDF/images), and long-context repository scans.
 
+### [AI Pair](../ai-pair/SKILL.md)
+Persistent three-model team (Claude developer/author + Codex reviewer + Gemini reviewer) for iterative code development or content creation. Use for ongoing multi-round projects where creation + dual-perspective review repeats across tasks. Distinct from three-brain: ai-pair runs a sustained team through multiple tasks; three-brain routes a single request.
+
 ## Routing Decision Tree
 
 ```
@@ -47,8 +50,11 @@ What is the workflow concern?
 +-- Bug diagnosis / profiler / root cause?
 |   --> debugging-toolkit
 |
-+-- Second opinion / Codex review / Gemini scan / cross-model?
-    --> three-brain
++-- Second opinion / Codex review / Gemini scan (one-shot)?
+|   --> three-brain
+|
++-- /ai-pair / dev-team / content-team / multi-round team review?
+    --> ai-pair
 ```
 
 ## Routing Table
@@ -59,7 +65,8 @@ What is the workflow concern?
 | README, ADR, docstring, Sphinx, MkDocs                | documentation-standards         |
 | Airflow, DAG, task, XCom, sensor                      | airflow-scientific-workflows    |
 | Debugger, pdb, breakpoint, root cause                 | debugging-toolkit               |
-| Codex, Gemini, second opinion, sanity check, all three | three-brain                    |
+| Codex, Gemini, second opinion, sanity check, all three (one-shot) | three-brain        |
+| /ai-pair, dev-team, content-team, team-stop, multi-round review   | ai-pair            |
 
 ## Checklist
 
@@ -70,3 +77,4 @@ What is the workflow concern?
 - [ ] Validate debugging sessions start with hypothesis formation, not random changes
 - [ ] Ensure debugging findings are documented to prevent regression
 - [ ] For high-risk paths (auth, billing, migrations, infra) or repeated failures, route via three-brain
+- [ ] For sustained multi-task projects needing iterative creation + dual review, use ai-pair

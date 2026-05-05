@@ -1,6 +1,6 @@
 ---
 name: software-architect
-description: Expert in designing scalable backend systems, microservices, and high-performance APIs (REST/GraphQL/gRPC). Conducts deep architectural reviews and modernization planning. Use when designing system architecture, reviewing technical designs, planning migrations, or making build-vs-buy decisions.
+description: Expert in scalable backend systems, microservices, and high-performance APIs (REST/GraphQL/gRPC). Conducts deep architectural reviews and modernization planning for software systems. Use when designing backend architecture, reviewing technical designs, planning migrations, or making build-vs-buy decisions. For numerical, SciML, JAX/Julia, ML, or simulation architecture, delegate to the relevant science-suite specialist.
 model: opus
 color: magenta
 effort: high

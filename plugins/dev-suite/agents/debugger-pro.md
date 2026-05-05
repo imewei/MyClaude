@@ -1,6 +1,6 @@
 ---
 name: debugger-pro
-description: Expert in distributed system debugging, multi-component failure analysis, and production incident resolution. Specializes in cross-service RCA, memory profiling, and infrastructure failures. For scientific computing failures (NaN/inf, JAX JIT errors, Julia dispatch ambiguity, MCMC divergence), use smart-debug instead. Use when debugging microservice failures, memory leaks, or cross-service trace analysis.
+description: Expert in distributed system debugging, multi-component failure analysis, and production incident resolution. Specializes in cross-service RCA, memory profiling, and infrastructure failures. For scientific computing failures (NaN/inf, JAX JIT errors, Julia dispatch ambiguity, MCMC divergence), use the /smart-debug command instead. Use when debugging microservice failures, memory leaks, or cross-service trace analysis.
 model: opus
 color: red
 effort: high

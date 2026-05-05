@@ -57,6 +57,8 @@
     "./skills/observability-and-sre",
     "./skills/python-toolchain",
     "./skills/data-and-security",
-    "./skills/dev-workflows"
+    "./skills/dev-workflows",
+    "./skills/three-brain",
+    "./skills/ai-pair"
   ]
 }
