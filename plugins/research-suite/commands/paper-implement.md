@@ -1,6 +1,6 @@
 ---
 name: paper-implement
-description: Reproduce a paper's core methods in JAX or Julia — parse equations, scaffold implementation, wire up experiment, validate outputs.
+description: Implement a paper's core method in JAX or Julia — parse equations, scaffold the algorithm, wire up a minimal experiment, and run smoke validation. For full claim extraction and tolerance-based replication against reported numbers, use /replicate.
 argument-hint: "[--paper path/to/pdf|arxiv-id] [--framework jax|julia] [--section methods|experiments|all]"
 allowed-tools: ["Read", "Write", "Edit", "Bash", "WebFetch"]
 ---

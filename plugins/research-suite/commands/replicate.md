@@ -7,7 +7,7 @@ allowed-tools: ["Read", "Write", "Edit", "Bash", "WebFetch", "WebSearch"]
 
 # /replicate — End-to-End Paper Replication
 
-Routes to `research-expert` (claim extraction) → `research-spark-orchestrator` (pipeline) → `jax-pro` or `julia-pro` (implementation).
+Routes to `research-expert` (claim extraction and replication design) → `jax-pro` or `julia-pro` (implementation) → `quality-specialist` (numerical validation gates).
 
 ## Usage
 
@@ -19,11 +19,10 @@ Routes to `research-expert` (claim extraction) → `research-spark-orchestrator`
 ## What This Does
 
 1. Fetches paper via arXiv ID or DOI
-2. `research-expert` extracts falsifiable claims and key numerical results
-3. `research-spark-orchestrator` structures the replication as a staged pipeline
-4. `jax-pro` / `julia-pro` implement the core method
-5. Runs experiment and compares outputs to reported numbers within `--tolerance`
-6. Produces a replication report noting exact match, within-tolerance match, or deviation
+2. `research-expert` extracts falsifiable claims, key numerical results, and designs the replication plan
+3. `jax-pro` / `julia-pro` implement the core method
+4. `quality-specialist` validates numerical outputs against reported numbers within `--tolerance`
+5. Produces a replication report noting exact match, within-tolerance match, or deviation
 
 ## Tolerance
 

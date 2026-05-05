@@ -1,6 +1,15 @@
 ---
 name: scientific-review
-description: "Use this skill whenever the user wants to review a scientific manuscript, write peer review comments, prepare a referee report, or critique a research paper. Trigger on phrases like 'review this paper', 'review this manuscript', 'peer review', 'referee report', 'reviewer comments', 'critique this paper', 'evaluate this manuscript', or when the user provides a scientific paper (PDF, DOCX, or pasted text) and asks for feedback, assessment, or structured comments. Also trigger when the user asks to assess novelty, check experimental design, verify statistical claims, check for plagiarism or data integrity concerns, or produce a formal review for a journal submission. If the user names a specific journal, this skill performs a web search for that journal's reviewer guidelines before structuring the output. The final deliverable is a downloadable .docx review report (markdown fallback if python-docx is unavailable)."
+description: |
+  Use this skill whenever the user wants a formal peer review of a scientific manuscript, journal-style
+  referee comments, reviewer recommendations, or structured review feedback on someone else's paper.
+  Trigger on phrases like 'review this paper', 'review this manuscript', 'peer review', 'referee report',
+  'reviewer comments', 'critique this paper', 'evaluate this manuscript', or when the user provides a
+  scientific paper (PDF, DOCX, or pasted text) and asks for formal feedback, novelty assessment,
+  experimental design check, statistical-claim verification, or a review for journal submission.
+  If the user names a specific journal, performs a web search for that journal's reviewer guidelines.
+  For literature reviews or methodology assessment, use research-practice instead.
+  The final deliverable is a downloadable .docx review report (markdown fallback if python-docx is unavailable).
 ---
 
 # Scientific Manuscript Review

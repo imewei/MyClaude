@@ -1,6 +1,6 @@
 ---
 name: _research-commons
-description: Shared assets for the research-spark skill stack. This is a resource directory, not a standalone workflow. Other skills in the stack (research-spark, spark-articulator, landscape-scanner, falsifiable-claim, theory-scaffold, numerical-prototype, experiment-designer, premortem-critique) reference files here for writing style, code architecture rules, shared templates, and utility scripts. This skill is not meant to trigger on user prompts directly; it loads only when another research-spark skill references its files.
+description: Internal-only resource directory for the research-spark skill stack. Do not select this skill directly for user prompts. Load it only when another research-spark skill (spark-articulator, landscape-scanner, falsifiable-claim, theory-scaffold, numerical-prototype, experiment-designer, premortem-critique) explicitly references its files for writing style, code architecture rules, shared templates, or utility scripts.
 ---
 
 # research-commons
