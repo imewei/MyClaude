@@ -3,7 +3,7 @@ name: ml-expert
 description: Classical ML/MLOps specialist. Use for scikit-learn, XGBoost pipelines, feature engineering, MLflow tracking, model deployment. Delegates deep learning to neural-network-master.
 model: haiku
 color: yellow
-effort: medium
+effort: low
 memory: project
 maxTurns: 30
 tools: Read, Write, Edit, Bash, Grep, Glob
