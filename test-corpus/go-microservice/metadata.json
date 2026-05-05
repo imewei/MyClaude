@@ -1,0 +1,6 @@
+{
+  "name": "go-microservice",
+  "language": "go",
+  "domain": "microservice",
+  "description": "Go HTTP microservice with goroutines, channels, graceful shutdown, and health checks"
+}

@@ -1,0 +1,6 @@
+{
+  "name": "julia-gnn",
+  "language": "julia",
+  "domain": "graph-neural-networks",
+  "description": "GCN node classification on Cora using GNNLux + MLDatasets"
+}

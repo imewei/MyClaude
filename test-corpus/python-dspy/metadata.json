@@ -1,0 +1,6 @@
+{
+  "name": "python-dspy",
+  "language": "python",
+  "domain": "self-improving-ai",
+  "description": "DSPy RAG program with MIPROv2 optimizer, ChainOfThought module, and Evaluate metric harness"
+}

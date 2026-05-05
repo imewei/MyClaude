@@ -1,0 +1,6 @@
+{
+  "name": "julia-bayesian",
+  "language": "julia",
+  "domain": "bayesian-inference",
+  "description": "Turing.jl hierarchical model with NUTS sampler, prior predictive checks, and ArviZ diagnostics"
+}

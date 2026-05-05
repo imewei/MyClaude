@@ -1,0 +1,6 @@
+{
+  "name": "python-nonlinear-dynamics",
+  "language": "python",
+  "domain": "nonlinear-dynamics",
+  "description": "Lorenz attractor ODE integration with Lyapunov exponent estimation using SciPy"
+}

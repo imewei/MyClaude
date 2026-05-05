@@ -1,0 +1,6 @@
+{
+  "name": "julia-sciml",
+  "language": "julia",
+  "domain": "scientific-machine-learning",
+  "description": "Universal Differential Equation training with Lux + DifferentialEquations + Turing"
+}

@@ -1,0 +1,6 @@
+{
+  "name": "python-jax-physics",
+  "language": "python",
+  "domain": "differentiable-physics",
+  "description": "JAX-based ODE simulation with vmap, jit, and gradient-based parameter estimation"
+}

@@ -1,0 +1,6 @@
+{
+  "name": "github-actions-ci",
+  "language": "yaml",
+  "domain": "ci-cd",
+  "description": "GitHub Actions CI/CD workflow for Python with linting, testing, coverage, and deployment stages"
+}

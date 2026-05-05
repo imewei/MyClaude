@@ -1,0 +1,6 @@
+{
+  "name": "python-ml-pipeline",
+  "language": "python",
+  "domain": "machine-learning",
+  "description": "Scikit-learn pipeline with cross-validation, hyperparameter tuning, and MLflow experiment tracking"
+}

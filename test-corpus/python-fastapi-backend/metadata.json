@@ -1,0 +1,6 @@
+{
+  "name": "python-fastapi-backend",
+  "language": "python",
+  "domain": "web-backend",
+  "description": "FastAPI REST API with Pydantic models, async SQLAlchemy database access, and CRUD endpoints"
+}

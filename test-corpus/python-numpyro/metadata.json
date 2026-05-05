@@ -1,0 +1,6 @@
+{
+  "name": "python-numpyro",
+  "language": "python",
+  "domain": "bayesian-inference",
+  "description": "Hierarchical NumPyro model with NUTS sampling and ArviZ diagnostics"
+}

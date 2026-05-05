@@ -1,0 +1,6 @@
+{
+  "name": "python-pytorch-training",
+  "language": "python",
+  "domain": "deep-learning",
+  "description": "PyTorch CNN training loop with DataLoader, optimizer, learning rate scheduling, and checkpointing"
+}

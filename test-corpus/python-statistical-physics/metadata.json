@@ -1,0 +1,6 @@
+{
+  "name": "python-statistical-physics",
+  "language": "python",
+  "domain": "statistical-physics",
+  "description": "Monte Carlo Ising model simulation with Metropolis algorithm and thermodynamic observables"
+}
