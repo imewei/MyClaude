@@ -94,7 +94,10 @@ What is the SciML / DiffEq task?
 |   --> bifurcation-analysis
 |
 +-- Universal DE / neural ODE with posterior uncertainty?
-    --> bayesian-ude-workflow
+|   --> bayesian-ude-workflow
+|
++-- PINN / NeuralPDE / physics-constrained loss / NeuralPDE.jl end-to-end project?
+    --> pinn-engineer (agent)
 ```
 
 ## Checklist

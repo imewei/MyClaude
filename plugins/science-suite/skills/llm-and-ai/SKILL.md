@@ -48,7 +48,10 @@ What is the LLM / AI task?
 |   --> rag-implementation
 |
 +-- NLP text processing / embeddings?
-    --> nlp-fundamentals
+|   --> nlp-fundamentals
+|
++-- LLM-driven scientific pipeline / codegen prompt / experiment template / research workflow automation?
+    --> sci-workflow-engineer (agent)
 ```
 
 ## Skill Selection Table

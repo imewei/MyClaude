@@ -27,7 +27,7 @@ VALID_MODEL_TIERS = {"opus", "sonnet", "haiku", "inherit"}
 EXPECTED_REGISTERED_COMMANDS = {
     "agent-core": 2,
     "dev-suite": 10,
-    "science-suite": 0,
+    "science-suite": 2,
 }
 
 
