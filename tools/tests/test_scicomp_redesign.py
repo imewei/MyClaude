@@ -25,6 +25,8 @@ DEV_SUITE = PLUGINS / "dev-suite"
 
 def _frontmatter(path: Path) -> dict:
     """Parse YAML frontmatter delimited by --- from a markdown file."""
+    if not path.exists():
+        return {}
     text = path.read_text(encoding="utf-8")
     if not text.startswith("---"):
         return {}
@@ -83,11 +85,11 @@ class TestAgentRepurposing:
 
     def test_pinn_engineer_model(self):
         fm = _frontmatter(SCIENCE / "agents/pinn-engineer.md")
-        assert fm.get("model") in ("sonnet", "opus")
+        assert fm.get("model") == "sonnet", "pinn-engineer must use sonnet (implementation-heavy, not theory-heavy)"
 
     def test_sci_workflow_engineer_model(self):
         fm = _frontmatter(SCIENCE / "agents/sci-workflow-engineer.md")
-        assert fm.get("model") in ("sonnet", "opus")
+        assert fm.get("model") == "sonnet", "sci-workflow-engineer must use sonnet"
 
 
 # ---------------------------------------------------------------------------
@@ -170,6 +172,11 @@ class TestResearchSuiteCommands:
         fm = _frontmatter(RESEARCH / f"commands/{cmd}.md")
         assert fm.get("description"), f"{cmd} must have a description"
 
+    @pytest.mark.parametrize("cmd", ["paper-implement", "lit-review", "replicate"])
+    def test_command_has_argument_hint(self, cmd):
+        fm = _frontmatter(RESEARCH / f"commands/{cmd}.md")
+        assert fm.get("argument-hint"), f"{cmd} must have an argument-hint"
+
 
 # ---------------------------------------------------------------------------
 # Plugin Manifest (plugin.json) Changes
@@ -231,12 +238,14 @@ class TestInfrastructure:
             ".claudeignore must exist at repo root"
 
     def test_claudeignore_has_graphify_out(self):
-        content = (REPO / ".claudeignore").read_text()
-        assert "graphify-out/" in content
+        p = REPO / ".claudeignore"
+        assert p.exists(), ".claudeignore missing"
+        assert "graphify-out/" in p.read_text()
 
     def test_claudeignore_has_pycache(self):
-        content = (REPO / ".claudeignore").read_text()
-        assert "__pycache__" in content
+        p = REPO / ".claudeignore"
+        assert p.exists(), ".claudeignore missing"
+        assert "__pycache__" in p.read_text()
 
     def test_pre_compact_has_priority_skills(self):
         script = (AGENT_CORE / "hooks/pre_compact.py").read_text()
