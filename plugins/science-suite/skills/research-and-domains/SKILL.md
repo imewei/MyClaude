@@ -1,6 +1,6 @@
 ---
 name: research-and-domains
-description: Meta-orchestrator for scientific Python systems, self-improving-AI research patterns, and specialized scientific domains. Routes to Python engineering skills (packaging, Rust extensions, type design, concurrency, testing), LLM research methods (self-improving AI, DSPy, RLAIF), and domain-specific skills (quantum computing, bioinformatics, computer vision, reinforcement learning, symbolic math). Use when building scientific Python systems, designing self-improving AI agents, working with DSPy/RLAIF, or tackling domain-specific problems in quantum, bioinformatics, computer vision, RL, or symbolic math. For general research methodology (study design, paper implementation, scientific writing, evidence synthesis), use `research-practice` in research-suite instead.
+description: Meta-orchestrator for specialized scientific domains and scientific Python systems not covered by the main JAX, Julia, ML, simulation, or research methodology hubs. Routes to domain-specific skills (quantum computing, bioinformatics, computer vision, RL, symbolic math) and Python engineering skills (packaging, Rust extensions, type design, concurrency, testing). For self-improving AI, DSPy, and RLAIF, use agent-core reasoning-and-memory hub. For general research methodology, use research-practice in research-suite.
 ---
 
 # Research and Domains

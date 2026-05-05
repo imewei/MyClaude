@@ -1,6 +1,6 @@
 ---
 name: simulation-and-hpc
-description: Meta-orchestrator for simulation, HPC, and computational methods. Routes to MD setup, trajectory analysis, ML force fields, parallel computing, GPU acceleration, numerical methods, and applied math methods (signal processing, time series, optimization, control theory). Use when setting up MD simulations, analyzing trajectories, training ML force fields, implementing parallel computing, writing GPU kernels, solving numerical problems, or applying computational methods.
+description: Meta-orchestrator for simulation, HPC, and computational methods. Routes to MD setup, trajectory analysis, ML force fields, parallel computing, GPU acceleration, numerical methods, and applied math methods (signal processing, time series, optimization, control theory). Use when setting up MD simulations, analyzing trajectories, training ML force fields, implementing parallel/HPC computing, writing GPU kernels, or applying numerical methods in simulation/HPC contexts. For JAX-specific implementation use jax-computing; for Julia DiffEq/SciML use sciml-and-diffeq; for general data analysis use ml-and-data-science.
 ---
 
 # Simulation and HPC

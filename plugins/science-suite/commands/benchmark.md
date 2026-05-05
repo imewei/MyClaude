@@ -7,7 +7,7 @@ allowed-tools: ["Read", "Bash", "Glob"]
 
 # /benchmark — Scientific Code Benchmarking
 
-Routes to `jax-pro` (JAX/CUDA), `julia-pro` (Julia), or `systems-engineer` (C/Fortran/HPC) based on `--backend`.
+Routes to `jax-pro` for JAX-on-GPU profiling, `julia-pro` / `julia-ml-hpc` for Julia or CUDA.jl profiling, and `systems-engineer` for raw CUDA/C/Fortran/HPC binaries based on `--backend`.
 
 ## Usage
 

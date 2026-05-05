@@ -1,6 +1,6 @@
 ---
 name: python-pro
-description: Python systems engineer. Use for production Python, type-driven design, PyO3/Rust extensions, async, uv/ruff toolchain. Enforces strict typing.
+description: Scientific Python engineer. Use for typed APIs, PyO3/Rust extensions for numerical code, uv/ruff. For general Python packaging, use dev-suite python-toolchain or systems-engineer.
 model: sonnet
 color: green
 effort: high

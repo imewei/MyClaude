@@ -1,6 +1,6 @@
 ---
 name: pinn-engineer
-description: "Physics-informed AI: NeuralPDE.jl, DeepXDE, BPINN/BNNODE, physics-constrained losses, inverse problems. Delegates JAX to jax-pro, NeuralPDE.jl to julia-pro."
+description: Physics-informed AI engineer for NeuralPDE.jl, DeepXDE, BPINN/BNNODE, physics-constrained losses, inverse problems. Delegates JAX to jax-pro, NeuralPDE.jl to julia-pro.
 model: sonnet
 color: cyan
 effort: high

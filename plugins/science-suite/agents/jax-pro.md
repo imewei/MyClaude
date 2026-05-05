@@ -1,6 +1,6 @@
 ---
 name: jax-pro
-description: JAX/JIT/vmap/pmap expert. Use for GPU kernels, custom VJPs, NumPyro, JAX-MD, Optimistix, distributed training. Delegates bifurcation theory to nonlinear-dynamics-expert.
+description: JAX/JIT/vmap/pmap expert for GPU kernels, VJPs, Optimistix. Delegate Bayesian to statistical-physicist, JAX-MD to simulation-expert, bifurcations to nonlinear-dynamics-expert.
 model: opus
 color: green
 effort: high

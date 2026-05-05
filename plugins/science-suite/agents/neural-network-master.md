@@ -1,6 +1,6 @@
 ---
 name: neural-network-master
-description: Deep learning architecture authority. Use for neural architecture design, training diagnostics, Transformers/CNNs/GNNs, Flax/Equinox/PyTorch. Covers theory-to-blueprint guidance.
+description: Deep learning authority for architecture, diagnostics, Transformers/CNNs/GNNs, Flax/Equinox/PyTorch. Delegates JAX to jax-pro, Julia to julia-ml-hpc, classical ML to ml-expert.
 model: opus
 color: magenta
 effort: high
