@@ -1,55 +1,5 @@
 {
-  "runs": [
-    {
-      "date": "2026-05-04T22:17:39.127369+00:00",
-      "input_tokens": 0,
-      "output_tokens": 0,
-      "files": 574
-    },
-    {
-      "date": "2026-05-04T23:09:59.365542+00:00",
-      "input_tokens": 0,
-      "output_tokens": 0,
-      "files": 27,
-      "path": "docs/"
-    },
-    {
-      "date": "2026-05-05T02:31:27.516087+00:00",
-      "input_tokens": 0,
-      "output_tokens": 0,
-      "files": 603
-    },
-    {
-      "date": "2026-05-05T22:41:43.826500+00:00",
-      "input_tokens": 0,
-      "output_tokens": 0,
-      "files": 13
-    },
-    {
-      "date": "2026-05-06T01:28:28.143083+00:00",
-      "input_tokens": 0,
-      "output_tokens": 0,
-      "files": 35
-    },
-    {
-      "date": "2026-05-06T02:05:18.538711+00:00",
-      "input_tokens": 0,
-      "output_tokens": 0,
-      "files": 22
-    },
-    {
-      "date": "2026-05-06T16:44:40.132270+00:00",
-      "input_tokens": 180839,
-      "output_tokens": 0,
-      "files": 38
-    },
-    {
-      "date": "2026-05-06T17:14:11.593654+00:00",
-      "input_tokens": 1000,
-      "output_tokens": 500,
-      "files": 540
-    }
-  ],
-  "total_input_tokens": 181839,
-  "total_output_tokens": 500
+  "input_tokens": 1500,
+  "output_tokens": 2000,
+  "total_cost_usd": 0.0
 }

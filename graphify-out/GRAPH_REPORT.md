@@ -1,325 +1,255 @@
-# Graph Report - .  (2026-05-06)
+# Graph Report - /Users/b80985/Projects/MyClaude  (2026-05-06)
 
 ## Corpus Check
 - Large corpus: 540 files · ~434,291 words. Semantic extraction will be expensive (many Claude tokens). Consider running on a subfolder, or use --no-semantic to run AST-only.
 
 ## Summary
-- 3241 nodes · 4577 edges · 295 communities (215 shown, 80 thin omitted)
-- Extraction: 93% EXTRACTED · 7% INFERRED · 0% AMBIGUOUS · INFERRED: 340 edges (avg confidence: 0.79)
-- Token cost: 1,000 input · 500 output
+- 1724 nodes · 2385 edges · 217 communities (118 shown, 99 thin omitted)
+- Extraction: 95% EXTRACTED · 5% INFERRED · 0% AMBIGUOUS · INFERRED: 120 edges (avg confidence: 0.8)
+- Token cost: 0 input · 0 output
 
 ## Community Hubs (Navigation)
-- [[_COMMUNITY_Agent Core Infrastructure|Agent Core Infrastructure]]
-- [[_COMMUNITY_README Sanitization & Quality|README Sanitization & Quality]]
-- [[_COMMUNITY_Command File Linting Tests|Command File Linting Tests]]
-- [[_COMMUNITY_SciComp Redesign Tests|SciComp Redesign Tests]]
-- [[_COMMUNITY_Research Methodology & Evidence|Research Methodology & Evidence]]
-- [[_COMMUNITY_Skill Activation Profiling|Skill Activation Profiling]]
-- [[_COMMUNITY_JAX Adjoint Methods|JAX Adjoint Methods]]
-- [[_COMMUNITY_Activation Profiler Engine|Activation Profiler Engine]]
-- [[_COMMUNITY_Documentation Quality Tests|Documentation Quality Tests]]
-- [[_COMMUNITY_Plugin Load Profiling|Plugin Load Profiling]]
-- [[_COMMUNITY_Performance Reporter|Performance Reporter]]
-- [[_COMMUNITY_HSGP Gaussian Process|HSGP Gaussian Process]]
-- [[_COMMUNITY_XLA Optimization Examples|XLA Optimization Examples]]
-- [[_COMMUNITY_Memory Profiling|Memory Profiling]]
-- [[_COMMUNITY_Science Hub Routing|Science Hub Routing]]
-- [[_COMMUNITY_Dev Suite Agents|Dev Suite Agents]]
-- [[_COMMUNITY_REST API Templates|REST API Templates]]
-- [[_COMMUNITY_Dev Workflow Commands|Dev Workflow Commands]]
-- [[_COMMUNITY_JAX Functional Patterns|JAX Functional Patterns]]
-- [[_COMMUNITY_Agent Core Agents|Agent Core Agents]]
-- [[_COMMUNITY_Plugin Loader|Plugin Loader]]
-- [[_COMMUNITY_Science Suite Agents|Science Suite Agents]]
-- [[_COMMUNITY_Cross-Suite Invariant Tests|Cross-Suite Invariant Tests]]
-- [[_COMMUNITY_Command Suggestion Analyzer|Command Suggestion Analyzer]]
-- [[_COMMUNITY_Common Reporter|Common Reporter]]
-- [[_COMMUNITY_Training Callbacks|Training Callbacks]]
-- [[_COMMUNITY_ML & Deep Learning Hub|ML & Deep Learning Hub]]
-- [[_COMMUNITY_Session Start Hooks|Session Start Hooks]]
-- [[_COMMUNITY_Probabilistic Topic Models|Probabilistic Topic Models]]
-- [[_COMMUNITY_Community 29|Community 29]]
-- [[_COMMUNITY_Community 30|Community 30]]
-- [[_COMMUNITY_Community 31|Community 31]]
-- [[_COMMUNITY_Observable Extraction Scripts|Observable Extraction Scripts]]
-- [[_COMMUNITY_Community 33|Community 33]]
-- [[_COMMUNITY_Community 34|Community 34]]
-- [[_COMMUNITY_Community 35|Community 35]]
-- [[_COMMUNITY_Community 36|Community 36]]
-- [[_COMMUNITY_Community 37|Community 37]]
-- [[_COMMUNITY_Community 38|Community 38]]
-- [[_COMMUNITY_Community 39|Community 39]]
-- [[_COMMUNITY_Community 40|Community 40]]
-- [[_COMMUNITY_Community 41|Community 41]]
-- [[_COMMUNITY_Community 42|Community 42]]
-- [[_COMMUNITY_Community 43|Community 43]]
-- [[_COMMUNITY_Community 44|Community 44]]
-- [[_COMMUNITY_Community 45|Community 45]]
-- [[_COMMUNITY_Community 46|Community 46]]
-- [[_COMMUNITY_Community 47|Community 47]]
-- [[_COMMUNITY_Community 48|Community 48]]
-- [[_COMMUNITY_Community 49|Community 49]]
-- [[_COMMUNITY_Community 50|Community 50]]
-- [[_COMMUNITY_Community 51|Community 51]]
-- [[_COMMUNITY_Community 52|Community 52]]
-- [[_COMMUNITY_Community 53|Community 53]]
-- [[_COMMUNITY_Community 54|Community 54]]
-- [[_COMMUNITY_Community 55|Community 55]]
-- [[_COMMUNITY_Community 56|Community 56]]
-- [[_COMMUNITY_Community 57|Community 57]]
-- [[_COMMUNITY_Community 58|Community 58]]
-- [[_COMMUNITY_Community 59|Community 59]]
-- [[_COMMUNITY_Community 60|Community 60]]
-- [[_COMMUNITY_Community 61|Community 61]]
-- [[_COMMUNITY_Community 62|Community 62]]
-- [[_COMMUNITY_Community 63|Community 63]]
-- [[_COMMUNITY_Community 64|Community 64]]
-- [[_COMMUNITY_Community 65|Community 65]]
-- [[_COMMUNITY_Community 66|Community 66]]
-- [[_COMMUNITY_Community 67|Community 67]]
-- [[_COMMUNITY_Community 68|Community 68]]
-- [[_COMMUNITY_Community 69|Community 69]]
-- [[_COMMUNITY_Community 70|Community 70]]
-- [[_COMMUNITY_Community 71|Community 71]]
-- [[_COMMUNITY_Community 72|Community 72]]
-- [[_COMMUNITY_Community 73|Community 73]]
-- [[_COMMUNITY_Community 74|Community 74]]
-- [[_COMMUNITY_Community 75|Community 75]]
-- [[_COMMUNITY_Community 76|Community 76]]
-- [[_COMMUNITY_Community 77|Community 77]]
-- [[_COMMUNITY_Community 78|Community 78]]
-- [[_COMMUNITY_Community 79|Community 79]]
-- [[_COMMUNITY_Community 80|Community 80]]
-- [[_COMMUNITY_Community 81|Community 81]]
-- [[_COMMUNITY_Community 82|Community 82]]
-- [[_COMMUNITY_Community 83|Community 83]]
-- [[_COMMUNITY_Community 84|Community 84]]
-- [[_COMMUNITY_Community 85|Community 85]]
-- [[_COMMUNITY_Community 86|Community 86]]
-- [[_COMMUNITY_Community 87|Community 87]]
-- [[_COMMUNITY_Community 88|Community 88]]
-- [[_COMMUNITY_Community 89|Community 89]]
-- [[_COMMUNITY_Community 90|Community 90]]
-- [[_COMMUNITY_Community 91|Community 91]]
-- [[_COMMUNITY_Community 92|Community 92]]
-- [[_COMMUNITY_Community 93|Community 93]]
-- [[_COMMUNITY_Community 94|Community 94]]
-- [[_COMMUNITY_Community 95|Community 95]]
-- [[_COMMUNITY_Community 96|Community 96]]
-- [[_COMMUNITY_Community 97|Community 97]]
-- [[_COMMUNITY_Community 98|Community 98]]
-- [[_COMMUNITY_Community 99|Community 99]]
-- [[_COMMUNITY_Community 100|Community 100]]
-- [[_COMMUNITY_Community 101|Community 101]]
-- [[_COMMUNITY_Community 102|Community 102]]
-- [[_COMMUNITY_Community 103|Community 103]]
-- [[_COMMUNITY_Community 104|Community 104]]
-- [[_COMMUNITY_Community 105|Community 105]]
-- [[_COMMUNITY_Community 106|Community 106]]
-- [[_COMMUNITY_Community 107|Community 107]]
-- [[_COMMUNITY_Community 108|Community 108]]
-- [[_COMMUNITY_Community 109|Community 109]]
-- [[_COMMUNITY_Community 110|Community 110]]
-- [[_COMMUNITY_Community 111|Community 111]]
-- [[_COMMUNITY_Community 112|Community 112]]
-- [[_COMMUNITY_Community 113|Community 113]]
-- [[_COMMUNITY_Community 114|Community 114]]
-- [[_COMMUNITY_Community 115|Community 115]]
-- [[_COMMUNITY_Community 116|Community 116]]
-- [[_COMMUNITY_Community 117|Community 117]]
-- [[_COMMUNITY_Community 118|Community 118]]
-- [[_COMMUNITY_Community 119|Community 119]]
-- [[_COMMUNITY_Community 120|Community 120]]
-- [[_COMMUNITY_Community 121|Community 121]]
-- [[_COMMUNITY_Community 122|Community 122]]
-- [[_COMMUNITY_Community 123|Community 123]]
-- [[_COMMUNITY_Community 124|Community 124]]
-- [[_COMMUNITY_Community 125|Community 125]]
-- [[_COMMUNITY_Community 126|Community 126]]
-- [[_COMMUNITY_Community 127|Community 127]]
-- [[_COMMUNITY_Community 128|Community 128]]
-- [[_COMMUNITY_Community 129|Community 129]]
-- [[_COMMUNITY_Community 130|Community 130]]
-- [[_COMMUNITY_Community 131|Community 131]]
-- [[_COMMUNITY_Community 132|Community 132]]
-- [[_COMMUNITY_Community 133|Community 133]]
-- [[_COMMUNITY_Community 134|Community 134]]
-- [[_COMMUNITY_Community 135|Community 135]]
-- [[_COMMUNITY_Community 136|Community 136]]
-- [[_COMMUNITY_Community 137|Community 137]]
-- [[_COMMUNITY_Community 138|Community 138]]
-- [[_COMMUNITY_Community 139|Community 139]]
-- [[_COMMUNITY_Community 140|Community 140]]
-- [[_COMMUNITY_Community 141|Community 141]]
-- [[_COMMUNITY_Community 142|Community 142]]
-- [[_COMMUNITY_Community 143|Community 143]]
-- [[_COMMUNITY_Community 144|Community 144]]
-- [[_COMMUNITY_Community 145|Community 145]]
-- [[_COMMUNITY_Community 146|Community 146]]
-- [[_COMMUNITY_Community 147|Community 147]]
-- [[_COMMUNITY_Community 148|Community 148]]
-- [[_COMMUNITY_Community 149|Community 149]]
-- [[_COMMUNITY_Community 150|Community 150]]
-- [[_COMMUNITY_Community 151|Community 151]]
-- [[_COMMUNITY_Community 152|Community 152]]
-- [[_COMMUNITY_Community 153|Community 153]]
-- [[_COMMUNITY_Community 154|Community 154]]
-- [[_COMMUNITY_Community 155|Community 155]]
-- [[_COMMUNITY_Community 156|Community 156]]
-- [[_COMMUNITY_Community 157|Community 157]]
-- [[_COMMUNITY_Community 158|Community 158]]
-- [[_COMMUNITY_Community 159|Community 159]]
-- [[_COMMUNITY_Community 160|Community 160]]
-- [[_COMMUNITY_Community 161|Community 161]]
-- [[_COMMUNITY_Community 162|Community 162]]
-- [[_COMMUNITY_Community 163|Community 163]]
-- [[_COMMUNITY_Community 164|Community 164]]
-- [[_COMMUNITY_Community 165|Community 165]]
-- [[_COMMUNITY_Community 166|Community 166]]
-- [[_COMMUNITY_Community 167|Community 167]]
-- [[_COMMUNITY_Community 168|Community 168]]
-- [[_COMMUNITY_Community 170|Community 170]]
-- [[_COMMUNITY_Community 171|Community 171]]
-- [[_COMMUNITY_Community 172|Community 172]]
-- [[_COMMUNITY_Community 173|Community 173]]
-- [[_COMMUNITY_Community 174|Community 174]]
-- [[_COMMUNITY_Community 175|Community 175]]
-- [[_COMMUNITY_Community 176|Community 176]]
-- [[_COMMUNITY_Community 177|Community 177]]
-- [[_COMMUNITY_Community 178|Community 178]]
-- [[_COMMUNITY_Community 179|Community 179]]
-- [[_COMMUNITY_Community 180|Community 180]]
-- [[_COMMUNITY_Community 181|Community 181]]
-- [[_COMMUNITY_Community 182|Community 182]]
-- [[_COMMUNITY_Community 183|Community 183]]
-- [[_COMMUNITY_Community 184|Community 184]]
-- [[_COMMUNITY_Community 185|Community 185]]
-- [[_COMMUNITY_Community 186|Community 186]]
-- [[_COMMUNITY_Community 187|Community 187]]
-- [[_COMMUNITY_Community 188|Community 188]]
-- [[_COMMUNITY_Community 189|Community 189]]
-- [[_COMMUNITY_Community 190|Community 190]]
-- [[_COMMUNITY_Community 191|Community 191]]
-- [[_COMMUNITY_Community 192|Community 192]]
-- [[_COMMUNITY_Community 193|Community 193]]
-- [[_COMMUNITY_Community 194|Community 194]]
-- [[_COMMUNITY_Community 195|Community 195]]
-- [[_COMMUNITY_Community 196|Community 196]]
-- [[_COMMUNITY_Community 197|Community 197]]
-- [[_COMMUNITY_Community 198|Community 198]]
-- [[_COMMUNITY_Community 199|Community 199]]
-- [[_COMMUNITY_Community 200|Community 200]]
-- [[_COMMUNITY_Community 201|Community 201]]
-- [[_COMMUNITY_Community 202|Community 202]]
-- [[_COMMUNITY_Community 203|Community 203]]
-- [[_COMMUNITY_Community 204|Community 204]]
-- [[_COMMUNITY_Community 205|Community 205]]
-- [[_COMMUNITY_Community 206|Community 206]]
-- [[_COMMUNITY_Community 207|Community 207]]
-- [[_COMMUNITY_Community 208|Community 208]]
-- [[_COMMUNITY_Community 209|Community 209]]
-- [[_COMMUNITY_Community 210|Community 210]]
-- [[_COMMUNITY_Community 211|Community 211]]
-- [[_COMMUNITY_Community 212|Community 212]]
-- [[_COMMUNITY_Community 213|Community 213]]
-- [[_COMMUNITY_Community 214|Community 214]]
-- [[_COMMUNITY_Community 215|Community 215]]
-- [[_COMMUNITY_Community 216|Community 216]]
-- [[_COMMUNITY_Community 217|Community 217]]
-- [[_COMMUNITY_Community 218|Community 218]]
-- [[_COMMUNITY_Community 219|Community 219]]
-- [[_COMMUNITY_Community 220|Community 220]]
-- [[_COMMUNITY_Community 221|Community 221]]
-- [[_COMMUNITY_Community 222|Community 222]]
-- [[_COMMUNITY_Community 223|Community 223]]
-- [[_COMMUNITY_Community 224|Community 224]]
-- [[_COMMUNITY_Community 225|Community 225]]
-- [[_COMMUNITY_Community 226|Community 226]]
-- [[_COMMUNITY_Community 227|Community 227]]
-- [[_COMMUNITY_Community 228|Community 228]]
-- [[_COMMUNITY_Community 229|Community 229]]
-- [[_COMMUNITY_Community 230|Community 230]]
-- [[_COMMUNITY_Community 231|Community 231]]
-- [[_COMMUNITY_Community 232|Community 232]]
-- [[_COMMUNITY_Community 233|Community 233]]
-- [[_COMMUNITY_Community 234|Community 234]]
-- [[_COMMUNITY_Community 235|Community 235]]
-- [[_COMMUNITY_Community 236|Community 236]]
-- [[_COMMUNITY_Community 237|Community 237]]
-- [[_COMMUNITY_Community 238|Community 238]]
-- [[_COMMUNITY_Community 241|Community 241]]
-- [[_COMMUNITY_Community 243|Community 243]]
-- [[_COMMUNITY_Community 244|Community 244]]
-- [[_COMMUNITY_Community 245|Community 245]]
-- [[_COMMUNITY_Community 246|Community 246]]
-- [[_COMMUNITY_Community 247|Community 247]]
-- [[_COMMUNITY_Community 248|Community 248]]
-- [[_COMMUNITY_Community 249|Community 249]]
-- [[_COMMUNITY_Community 251|Community 251]]
-- [[_COMMUNITY_Community 252|Community 252]]
-- [[_COMMUNITY_Community 253|Community 253]]
-- [[_COMMUNITY_Community 254|Community 254]]
-- [[_COMMUNITY_Community 255|Community 255]]
-- [[_COMMUNITY_Community 256|Community 256]]
-- [[_COMMUNITY_Community 257|Community 257]]
-- [[_COMMUNITY_Community 258|Community 258]]
-- [[_COMMUNITY_Community 259|Community 259]]
-- [[_COMMUNITY_Community 260|Community 260]]
-- [[_COMMUNITY_Community 261|Community 261]]
-- [[_COMMUNITY_Community 262|Community 262]]
-- [[_COMMUNITY_Community 263|Community 263]]
-- [[_COMMUNITY_Community 264|Community 264]]
-- [[_COMMUNITY_Community 265|Community 265]]
-- [[_COMMUNITY_Community 266|Community 266]]
-- [[_COMMUNITY_Community 270|Community 270]]
-- [[_COMMUNITY_Community 271|Community 271]]
-- [[_COMMUNITY_Community 272|Community 272]]
-- [[_COMMUNITY_Community 273|Community 273]]
-- [[_COMMUNITY_Community 274|Community 274]]
-- [[_COMMUNITY_Community 275|Community 275]]
-- [[_COMMUNITY_Community 276|Community 276]]
-- [[_COMMUNITY_Community 277|Community 277]]
-- [[_COMMUNITY_Community 278|Community 278]]
-- [[_COMMUNITY_Community 279|Community 279]]
-- [[_COMMUNITY_Community 280|Community 280]]
-- [[_COMMUNITY_Community 281|Community 281]]
-- [[_COMMUNITY_Community 282|Community 282]]
-- [[_COMMUNITY_Community 283|Community 283]]
-- [[_COMMUNITY_Community 284|Community 284]]
-- [[_COMMUNITY_Community 285|Community 285]]
-- [[_COMMUNITY_Community 286|Community 286]]
-- [[_COMMUNITY_Community 287|Community 287]]
-- [[_COMMUNITY_Community 288|Community 288]]
-- [[_COMMUNITY_Community 289|Community 289]]
-- [[_COMMUNITY_Community 290|Community 290]]
-- [[_COMMUNITY_Community 291|Community 291]]
-- [[_COMMUNITY_Community 292|Community 292]]
-- [[_COMMUNITY_Community 293|Community 293]]
-- [[_COMMUNITY_Community 294|Community 294]]
+- [[_COMMUNITY_model, run_inference, Sparse Regression|model, run_inference, Sparse Regression]]
+- [[_COMMUNITY_main, hmcecs.py, mortality.py|main, hmcecs.py, mortality.py]]
+- [[_COMMUNITY_Greeter, TestGreet, TestGreeter|Greeter, TestGreet, TestGreeter]]
+- [[_COMMUNITY_Research Spark Orchestrator, _research-commons, Research Practice Hub|Research Spark Orchestrator, _research-commons, Research Practice Hub]]
+- [[_COMMUNITY_Hsgp, hsgp.py, get_floating_days_indicators|Hsgp, hsgp.py, get_floating_days_indicators]]
+- [[_COMMUNITY_Profiling Workflow, Profile Jax, profile_function|Profiling Workflow, Profile Jax, profile_function]]
+- [[_COMMUNITY_Callbacks Demo, exponential_decay(), BestParameterTracker|Callbacks Demo, exponential_decay(), BestParameterTracker]]
+- [[_COMMUNITY__cli, Limit Recovery Check, _as_array|_cli, Limit Recovery Check, _as_array]]
+- [[_COMMUNITY_Julia ML and Deep Learning Hub, Machine Learning Sub-Skill, ML and Data Science Hub|Julia ML and Deep Learning Hub, Machine Learning Sub-Skill, ML and Data Science Hub]]
+- [[_COMMUNITY_Simulation and HPC Hub, Parallel Computing, Simulation Expert Agent|Simulation and HPC Hub, Parallel Computing, Simulation Expert Agent]]
+- [[_COMMUNITY_numpyro-core-mastery skill (JAX Bayesian inference, NUTSHMC, SVI, ArviZ diagnostics), Neural Network Mathematics References README (Index of 8 reference documents), nlsq-core-mastery (sub-skill ref)|numpyro-core-mastery skill (JAX Bayesian inference, NUTS/HMC, SVI, ArviZ diagnostics), Neural Network Mathematics References README (Index of 8 reference documents), nlsq-core-mastery (sub-skill ref)]]
+- [[_COMMUNITY_Rest Api Template, BaseModel, list_users|Rest Api Template, BaseModel, list_users]]
+- [[_COMMUNITY_IterativeFixEngine, .apply_fix(), .fix_dependency_error()|IterativeFixEngine, .apply_fix(), .fix_dependency_error()]]
+- [[_COMMUNITY_Spmd Parallelism, pmap_train_step, run_pmap_example|Spmd Parallelism, pmap_train_step, run_pmap_example]]
+- [[_COMMUNITY_Pure Log Prob Models, funnel_log_prob_centered, batched_log_prob|Pure Log Prob Models, funnel_log_prob_centered, batched_log_prob]]
+- [[_COMMUNITY_str, Compare Training Runs, print_comparison_report|str, Compare Training Runs, print_comparison_report]]
+- [[_COMMUNITY_Sde Brownian, test_reproducibility, basic_sde_example|Sde Brownian, test_reproducibility, basic_sde_example]]
+- [[_COMMUNITY_print_summary, Async Web Scraper, .scrape_urls()|print_summary, Async Web Scraper, .scrape_urls()]]
+- [[_COMMUNITY_Cfd Taylor Green, navier_stokes_step, compute_enstrophy|Cfd Taylor Green, navier_stokes_step, compute_enstrophy]]
+- [[_COMMUNITY_Latex Sanity, load_tex_with_includes, check_citations|Latex Sanity, load_tex_with_includes, check_citations]]
+- [[_COMMUNITY_Prompt Engineering Patterns Sub-Skill, ThinkFirst Skill, Chain-of-Thought (CoT)|Prompt Engineering Patterns Sub-Skill, ThinkFirst Skill, Chain-of-Thought (CoT)]]
+- [[_COMMUNITY_LLM Engineering Hub (agent-core), MCP Integration Skill, Agent Hub (agent-core)|LLM Engineering Hub (agent-core), MCP Integration Skill, Agent Hub (agent-core)]]
+- [[_COMMUNITY_04 Interpreting Diagnostics, analyze_aggregate_statistics, analyze_checkpoint_info|04 Interpreting Diagnostics, analyze_aggregate_statistics, analyze_checkpoint_info]]
+- [[_COMMUNITY_Result Enhancements Demo, example1_statistical_properties(), example2_backward_compatibility()|Result Enhancements Demo, example1_statistical_properties(), example2_backward_compatibility()]]
+- [[_COMMUNITY_KnowledgeBase, .calculate_confidence(), .update_knowledge_base()|KnowledgeBase, .calculate_confidence(), .update_knowledge_base()]]
+- [[_COMMUNITY_Prototype Skeleton, _self_test, step|Prototype Skeleton, _self_test, step]]
+- [[_COMMUNITY_Adjoint Methods, NeuralODE, train_neural_ode|Adjoint Methods, NeuralODE, train_neural_ode]]
+- [[_COMMUNITY_demo, ObservableBuilder, .set_uncertainty()|demo, ObservableBuilder, .set_uncertainty()]]
+- [[_COMMUNITY_Solver Selection, compare_solvers, stiffness_detection_example|Solver Selection, compare_solvers, stiffness_detection_example]]
+- [[_COMMUNITY_Pinn Heat Equation, count_parameters, HeatPINN|Pinn Heat Equation, count_parameters, HeatPINN]]
+- [[_COMMUNITY_Vqe Hydrogen, create_circuit_state, apply_pauli_operator|Vqe Hydrogen, create_circuit_state, apply_pauli_operator]]
+- [[_COMMUNITY_PromptOptimizer, .evaluate_prompt(), .generate_variations()|PromptOptimizer, .evaluate_prompt(), .generate_variations()]]
+- [[_COMMUNITY_Dev Hub (Top-Level Router), Dev Suite README, Dev Workflows Hub|Dev Hub (Top-Level Router), Dev Suite README, Dev Workflows Hub]]
+- [[_COMMUNITY_Julia Mastery Hub, CICD Patterns (Julia), Compiler Patterns (Julia)|Julia Mastery Hub, CI/CD Patterns (Julia), Compiler Patterns (Julia)]]
+- [[_COMMUNITY_statistical-physicist agent (opus, soft matternon-equilibriumcorrelations), Bayesian Inference Hub, MCMC Diagnostics|statistical-physicist agent (opus, soft matter/non-equilibrium/correlations), Bayesian Inference Hub, MCMC Diagnostics]]
+- [[_COMMUNITY_Debug Jax, check_nan_inf, debug_jit|Debug Jax, check_nan_inf, debug_jit]]
+- [[_COMMUNITY_Session Start, get_session_context, read_progress_file|Session Start, get_session_context, read_progress_file]]
+- [[_COMMUNITY_diagnose_result, Diagnose Optimization, _analyze_convergence|diagnose_result, Diagnose Optimization, _analyze_convergence]]
+- [[_COMMUNITY_Function Library Demo, demo_comparison(), demo_exponential_decay()|Function Library Demo, demo_comparison(), demo_exponential_decay()]]
+- [[_COMMUNITY_.run(), .analyze_run(), .get_run_status()|.run(), .analyze_run(), .get_run_status()]]
+- [[_COMMUNITY_Blackjax Custom Sampler, custom_nuts_sampler, run_parallel_chains|Blackjax Custom Sampler, custom_nuts_sampler, run_parallel_chains]]
+- [[_COMMUNITY_Xla Optimization, check_fusion, inspect_hlo|Xla Optimization, check_fusion, inspect_hlo]]
+- [[_COMMUNITY_sci-workflow-engineer agent (LLM-assisted scientific pipelines, JAXJulia codegen), DSPy Basics skill, Self-Improving AI skill|sci-workflow-engineer agent (LLM-assisted scientific pipelines, JAX/Julia codegen), DSPy Basics skill, Self-Improving AI skill]]
+- [[_COMMUNITY_Reflection Framework Sub-Skill, Self-Improving Agents Sub-Skill, Cognitive Bias Detection|Reflection Framework Sub-Skill, Self-Improving Agents Sub-Skill, Cognitive Bias Detection]]
+- [[_COMMUNITY_Statistical Physics Sub-Skill, Statistical Physics Hub, statistical-physicist agent (science-suite)|Statistical Physics Sub-Skill, Statistical Physics Hub, statistical-physicist agent (science-suite)]]
+- [[_COMMUNITY_Julia Pro Agent, JAX Pro Agent, Nonlinear Dynamics Hub|Julia Pro Agent, JAX Pro Agent, Nonlinear Dynamics Hub]]
+- [[_COMMUNITY_Pure Functional Patterns, apply_weight_decay, augment_batch|Pure Functional Patterns, apply_weight_decay, augment_batch]]
+- [[_COMMUNITY_Python Toolchain Hub, Python Systems Engineering Hub, Modern Packaging (Advanced) Sub-skill|Python Toolchain Hub, Python Systems Engineering Hub, Modern Packaging (Advanced) Sub-skill]]
+- [[_COMMUNITY_SciML and DiffEq Hub, Bayesian PINN Sub-skill, Bayesian UDE Workflow Sub-skill|SciML and DiffEq Hub, Bayesian PINN Sub-skill, Bayesian UDE Workflow Sub-skill]]
+- [[_COMMUNITY_Science Hub (Top-Level Router), Deep Learning Hub, Neural Network Master Agent|Science Hub (Top-Level Router), Deep Learning Hub, Neural Network Master Agent]]
+- [[_COMMUNITY_Julia Language Hub, Julia CICD Patterns Sub-skill, Julia Compiler Patterns Sub-skill|Julia Language Hub, Julia CI/CD Patterns Sub-skill, Julia Compiler Patterns Sub-skill]]
+- [[_COMMUNITY_Doe Generator, fractional_factorial, full_factorial|Doe Generator, fractional_factorial, full_factorial]]
+- [[_COMMUNITY_Bayesian Workflow Template, Prior Predictive Check, check_diagnostics|Bayesian Workflow Template, Prior Predictive Check, check_diagnostics]]
+- [[_COMMUNITY_Generate Diagrams, generate_batch_size_scaling, generate_memory_optimization_chart|Generate Diagrams, generate_batch_size_scaling, generate_memory_optimization_chart]]
+- [[_COMMUNITY_first_author_surname, key_for_entry, Bib To Steelman|first_author_surname, key_for_entry, Bib To Steelman]]
+- [[_COMMUNITY_Sensor Calibration, linear_model, numpyro_example.py|Sensor Calibration, linear_model, numpyro_example.py]]
+- [[_COMMUNITY_Hierarchical Model Template, generate_hierarchical_data, plot_group_fits|Hierarchical Model Template, generate_hierarchical_data, plot_group_fits]]
+- [[_COMMUNITY_engine.py, Engine, _validate_package_name|engine.py, Engine, _validate_package_name]]
+- [[_COMMUNITY_Analyze Activations, ActivationHook, register_activation_hooks|Analyze Activations, ActivationHook, register_activation_hooks]]
+- [[_COMMUNITY_Reaction Kinetics, first_order_decay, pseudo_first_order|Reaction Kinetics, first_order_decay, pseudo_first_order]]
+- [[_COMMUNITY_Enzyme Kinetics, competitive_inhibition, competitive_inh_fit|Enzyme Kinetics, competitive_inhibition, competitive_inh_fit]]
+- [[_COMMUNITY_Frontend and Mobile Hub, App Developer Agent, scaffold Command|Frontend and Mobile Hub, App Developer Agent, scaffold Command]]
+- [[_COMMUNITY_Reasoning Engine Agent, Reasoning Frameworks Sub-Skill, ultra-think Command|Reasoning Engine Agent, Reasoning Frameworks Sub-Skill, ultra-think Command]]
+- [[_COMMUNITY_Enhanced Error Messages Demo, example_1_max_iterations, example_2_auto_recovery|Enhanced Error Messages Demo, example_1_max_iterations, example_2_auto_recovery]]
+- [[_COMMUNITY_Titration Curves, buffer_capacity, diprotic_titration|Titration Curves, buffer_capacity, diprotic_titration]]
+- [[_COMMUNITY_print_results, Hmm, hmm.py|print_results, Hmm, hmm.py]]
+- [[_COMMUNITY_Materials Characterization, linear_elastic, power_law_hardening|Materials Characterization, linear_elastic, power_law_hardening]]
+- [[_COMMUNITY_Architecture and Infrastructure Hub, Software Architect Agent, Architecture Patterns Sub-skill|Architecture and Infrastructure Hub, Software Architect Agent, Architecture Patterns Sub-skill]]
+- [[_COMMUNITY_Research and Domains Hub, Bioinformatics, Modern Concurrency|Research and Domains Hub, Bioinformatics, Modern Concurrency]]
+- [[_COMMUNITY_analyze, Readability Check, extract_prose|analyze, Readability Check, extract_prose]]
+- [[_COMMUNITY_Growth Curves, exponential_phase, gompertz_model|Growth Curves, exponential_phase, gompertz_model]]
+- [[_COMMUNITY_Session End, write_progress, Get recent git commits.|Session End, write_progress, Get recent git commits.]]
+- [[_COMMUNITY_Observable Extractor, _to_list, load_predicted_observable|Observable Extractor, _to_list, load_predicted_observable]]
+- [[_COMMUNITY_train_step, TrainState, MixedSamplerState|train_step, TrainState, MixedSamplerState]]
+- [[_COMMUNITY_Team Assemble, Actions, Agent Team Assembly|Team Assemble, Actions, Agent Team Assembly]]
+- [[_COMMUNITY_Testing and Quality Hub, Quality Specialist Agent, Code Review Sub-skill|Testing and Quality Hub, Quality Specialist Agent, Code Review Sub-skill]]
+- [[_COMMUNITY_LLM Application Patterns Skill, Reasoning and Memory Hub, Memory System Patterns|LLM Application Patterns Skill, Reasoning and Memory Hub, Memory System Patterns]]
+- [[_COMMUNITY_multi_peak_model, Spectroscopy Peaks, gaussian|multi_peak_model, Spectroscopy Peaks, gaussian]]
+- [[_COMMUNITY_.categorize_errors(), .calculate_priority(), .get_category()|.categorize_errors(), .calculate_priority(), .get_category()]]
+- [[_COMMUNITY_Init  , GaussianShell, DualMoonDistribution|  Init  , GaussianShell, DualMoonDistribution]]
+- [[_COMMUNITY_example_bayesian_inference, generate_synthetic_data, 04 Bayesian Inference|example_bayesian_inference, generate_synthetic_data, 04 Bayesian Inference]]
+- [[_COMMUNITY_Radioactive Decay, half_life_from_lambda, propagate_uncertainty|Radioactive Decay, half_life_from_lambda, propagate_uncertainty]]
+- [[_COMMUNITY_four_parameter_logistic, inhibition_model, dose_response.py|four_parameter_logistic, inhibition_model, dose_response.py]]
+- [[_COMMUNITY_capture_recapture.py, Hmm Enum, hmm_enum.py|capture_recapture.py, Hmm Enum, hmm_enum.py]]
+- [[_COMMUNITY_Diagnose Gradients, compute_gradient_stats, diagnose_gradient_pathology|Diagnose Gradients, compute_gradient_stats, diagnose_gradient_pathology]]
+- [[_COMMUNITY_Data and Security Hub, Auth Implementation Patterns Sub-skill, Caching Patterns Sub-skill|Data and Security Hub, Auth Implementation Patterns Sub-skill, Caching Patterns Sub-skill]]
+- [[_COMMUNITY_Backend Patterns Hub, API Design Principles Sub-skill, Async Python Patterns Sub-skill|Backend Patterns Hub, API Design Principles Sub-skill, Async Python Patterns Sub-skill]]
+- [[_COMMUNITY_JAX Computing Hub, JAX DiffEq Pro Sub-skill, JAX Bayesian Pro Sub-skill|JAX Computing Hub, JAX DiffEq Pro Sub-skill, JAX Bayesian Pro Sub-skill]]
+- [[_COMMUNITY_Damped Oscillation, damping_time, quality_factor|Damped Oscillation, damping_time, quality_factor]]
+- [[_COMMUNITY_example_production_training, MLP, create_dataset|example_production_training, MLP, create_dataset]]
+- [[_COMMUNITY_System Identification, first_order_step_response, second_order_step_response|System Identification, first_order_step_response, second_order_step_response]]
+- [[_COMMUNITY_CICD Pipelines Hub, Deployment Pipeline Design Sub-skill, GitHub Actions Templates Sub-skill|CI/CD Pipelines Hub, Deployment Pipeline Design Sub-skill, GitHub Actions Templates Sub-skill]]
+- [[_COMMUNITY_Observability and SRE Hub, Distributed Tracing Sub-skill, Grafana Dashboards Sub-skill|Observability and SRE Hub, Distributed Tracing Sub-skill, Grafana Dashboards Sub-skill]]
+- [[_COMMUNITY_workflow-automate command, GitHub Actions CICD workflows, deps command|workflow-automate command, GitHub Actions CI/CD workflows, deps command]]
+- [[_COMMUNITY_JAX Physics Applications API Quick Reference, Advanced PINN Techniques, Advanced JAX-CFD Patterns|JAX Physics Applications API Quick Reference, Advanced PINN Techniques, Advanced JAX-CFD Patterns]]
+- [[_COMMUNITY_Style Lint, lint_file, lint_text|Style Lint, lint_file, lint_text]]
+- [[_COMMUNITY_Artifact Diff, section_summary, split_into_sections|Artifact Diff, section_summary, split_into_sections]]
+- [[_COMMUNITY_02 Checkpoint Resume, gaussian_model, simulate_interruption|02 Checkpoint Resume, gaussian_model, simulate_interruption]]
+- [[_COMMUNITY_03 Custom Retry Settings, inject_noise_into_data, noisy_exponential|03 Custom Retry Settings, inject_noise_into_data, noisy_exponential]]
+- [[_COMMUNITY_Formalism Code Reconcile, normalize_name, reconcile|Formalism Code Reconcile, normalize_name, reconcile]]
+- [[_COMMUNITY_create_train_state, functional_training_loop, create_batch_iterator|create_train_state, functional_training_loop, create_batch_iterator]]
+- [[_COMMUNITY_Research Quality Assessment Report Template, Experimental Design Checklist, Methodology Evaluation Framework|Research Quality Assessment Report Template, Experimental Design Checklist, Methodology Evaluation Framework]]
+- [[_COMMUNITY_C project memory safety with ValgrindAddressSanitizer, adopt-code command, c-project command|C project memory safety with Valgrind/AddressSanitizer, adopt-code command, c-project command]]
+- [[_COMMUNITY_Strangler Fig migration pattern, Technical debt ROI-based scoring and roadmap, modernize command|Strangler Fig migration pattern, Technical debt ROI-based scoring and roadmap, modernize command]]
+- [[_COMMUNITY_multi_scale_model(), Hybrid Streaming Demo, Example Adaptive Hybrid Streaming Optimizer with Parameter Normalization  This|multi_scale_model(), Hybrid Streaming Demo, Example: Adaptive Hybrid Streaming Optimizer with Parameter Normalization  This]]
+- [[_COMMUNITY_dropout, forward_with_dropout, Dropout with explicit RNG.|dropout, forward_with_dropout, Dropout with explicit RNG.]]
+- [[_COMMUNITY_demonstrate_donation, inplace_update, Donate `state` buffer - allows XLA to reuse memory.      The original `state` ar|demonstrate_donation, inplace_update, Donate `state` buffer - allows XLA to reuse memory.      The original `state` ar]]
+- [[_COMMUNITY___init__.py, Example Package - A modern Python package template.  This package demonstrates b, Tests for the example package.|__init__.py, Example Package - A modern Python package template.  This package demonstrates b, Tests for the example package.]]
+- [[_COMMUNITY_compare_models(), model_comparison.py, Compare multiple models using WAIC and LOO.      Args         models_dict {nam|compare_models(), model_comparison.py, Compare multiple models using WAIC and LOO.      Args:         models_dict: {nam]]
+- [[_COMMUNITY_run-all-tests Command, double-check Command, test-generate Command|run-all-tests Command, double-check Command, test-generate Command]]
+- [[_COMMUNITY_refactor-clean command (retired), code-simplifiercode-simplifier skill (external), global simplify skill (external)|refactor-clean command (retired), code-simplifier:code-simplifier skill (external), global simplify skill (external)]]
+- [[_COMMUNITY_research-quality-assessment (evaluate phase CONSORTSTROBEPRISMA scoring + red flags), research-methodology (design phase power analysis, DoE, hypothesis, pre-registration), research-paper-implementation (reproduce phase 6-step paper-to-code translation)|research-quality-assessment (evaluate phase: CONSORT/STROBE/PRISMA scoring + red flags), research-methodology (design phase: power analysis, DoE, hypothesis, pre-registration), research-paper-implementation (reproduce phase: 6-step paper-to-code translation)]]
+- [[_COMMUNITY_scientific-communication Sub-Skill (research-suite), lit-review Command (research-suite), paper-implement Command (research-suite)|scientific-communication Sub-Skill (research-suite), /lit-review Command (research-suite), /paper-implement Command (research-suite)]]
+- [[_COMMUNITY_APS Rheo-XPCS Capability Baseline (8-ID-I beamline), Instrument Capability Map Template (capability vs signal margins), Multimodal Sequencing Reference (rheologyscatteringsimulation ordering)|APS Rheo-XPCS Capability Baseline (8-ID-I beamline), Instrument Capability Map Template (capability vs signal margins), Multimodal Sequencing Reference (rheology/scattering/simulation ordering)]]
+- [[_COMMUNITY_JAX Training Pipeline Architecture (ASCII diagram), Flax NNX Guide, Orbax Checkpointing Reference|JAX Training Pipeline Architecture (ASCII diagram), Flax NNX Guide, Orbax Checkpointing Reference]]
+- [[_COMMUNITY_gradient-pathologies-reference, loss-curve-interpretation (reference), training-diagnostics scripts README|gradient-pathologies-reference, loss-curve-interpretation (reference), training-diagnostics scripts README]]
+- [[_COMMUNITY_Physics Validation Checklists (Asset), Physics Validation Checklists (Reference), Physics Workflow Diagrams|Physics Validation Checklists (Asset), Physics Validation Checklists (Reference), Physics Workflow Diagrams]]
+- [[_COMMUNITY_example_quick_prototyping, 01 Quick Prototyping, Complete example of quick JAX prototyping workflow|example_quick_prototyping, 01 Quick Prototyping, Complete example of quick JAX prototyping workflow]]
+- [[_COMMUNITY_example_multi_device_scaling, 03 Multi Device Scaling, Complete multi-device scaling example|example_multi_device_scaling, 03 Multi Device Scaling, Complete multi-device scaling example]]
+- [[_COMMUNITY_inspect_jaxpr, Print the JAX intermediate representation., Inspect the JAX intermediate representation (jaxpr) of a function.      Args|inspect_jaxpr, Print the JAX intermediate representation., Inspect the JAX intermediate representation (jaxpr) of a function.      Args:]]
+- [[_COMMUNITY_benchmark_mcmc_vi(), Compare MCMC vs VI performance across dataset sizes.      Args         model N|benchmark_mcmc_vi(), Compare MCMC vs VI performance across dataset sizes.      Args:         model: N]]
+- [[_COMMUNITY_terse output style, verbose output style|terse output style, verbose output style]]
+- [[_COMMUNITY_code-analyze Command, code-explain Command|code-analyze Command, code-explain Command]]
+- [[_COMMUNITY_monitor-setup Command, slo-implement Command|monitor-setup Command, slo-implement Command]]
+- [[_COMMUNITY_commit command (retired), commit-commandscommit skill (external)|commit command (retired), commit-commands:commit skill (external)]]
+- [[_COMMUNITY_Async Python Anti-Patterns, Event Loop Architecture - Visual Guide|Async Python Anti-Patterns, Event Loop Architecture - Visual Guide]]
+- [[_COMMUNITY_Claim Schema Template (mechanismpredictiondesignmeasurement), Pre-registered Success Metrics Template|Claim Schema Template (mechanism/prediction/design/measurement), Pre-registered Success Metrics Template]]
+- [[_COMMUNITY_Example Package CHANGELOG, Example Package README|Example Package CHANGELOG, Example Package README]]
+- [[_COMMUNITY_GNN Package Layering Rationale GNNGraphs (data)  GNNlib (kernels)  GNNLux (high-level layers), julia-graph-neural-networks Sub-Skill (GNNLux  GNNGraphs  GNNlib)|GNN Package Layering Rationale: GNNGraphs (data) / GNNlib (kernels) / GNNLux (high-level layers), julia-graph-neural-networks Sub-Skill (GNNLux / GNNGraphs / GNNlib)]]
+- [[_COMMUNITY_JAX Transformation Flow (ASCII diagram), JAX Transformations — Comprehensive Reference|JAX Transformation Flow (ASCII diagram), JAX Transformations — Comprehensive Reference]]
+- [[_COMMUNITY_JAX Device Sharding Patterns (ASCII diagram), JAX Performance Optimization Reference|JAX Device Sharding Patterns (ASCII diagram), JAX Performance Optimization Reference]]
+- [[_COMMUNITY_JAX Transformation Stack (grad→vmap→jit→pmap), JAX Core Programming Assets (transformation diagrams, performance charts)|JAX Transformation Stack (grad→vmap→jit→pmap), JAX Core Programming Assets (transformation diagrams, performance charts)]]
+- [[_COMMUNITY_scientific-visualization (sub-skill ref), statistical-analysis-fundamentals (sub-skill ref)|scientific-visualization (sub-skill ref), statistical-analysis-fundamentals (sub-skill ref)]]
+- [[_COMMUNITY_Neal's Funnel Reparameterization, UCB Admit GLMM|Neal's Funnel Reparameterization, UCB Admit GLMM]]
+- [[_COMMUNITY_ring_buffer_append, Append to ring buffer at current position.|ring_buffer_append, Append to ring buffer at current position.]]
+- [[_COMMUNITY_update_row, Update single row immutably.|update_row, Update single row immutably.]]
+- [[_COMMUNITY_init_params, Initialize nested parameter structure.|init_params, Initialize nested parameter structure.]]
+- [[_COMMUNITY_unflatten_params, Restore nested structure from flat vector.|unflatten_params, Restore nested structure from flat vector.]]
+- [[_COMMUNITY_flatten_params, Flatten nested params to single vector.|flatten_params, Flatten nested params to single vector.]]
+- [[_COMMUNITY_sample_batch, Sample random batch without side effects.|sample_batch, Sample random batch without side effects.]]
+- [[_COMMUNITY_parallel_random_init, Initialize multiple models in parallel with different seeds.|parallel_random_init, Initialize multiple models in parallel with different seeds.]]
+- [[_COMMUNITY_bad_variable_shapes, This recompiles for each unique shape.|bad_variable_shapes, This recompiles for each unique shape.]]
+- [[_COMMUNITY_good_fixed_shapes, Pad all inputs to same shape - single compilation.|good_fixed_shapes, Pad all inputs to same shape - single compilation.]]
+- [[_COMMUNITY_memory_inefficient, Stores all intermediate activations.|memory_inefficient, Stores all intermediate activations.]]
+- [[_COMMUNITY_setup_compilation_cache, Enable persistent compilation cache.|setup_compilation_cache, Enable persistent compilation cache.]]
+- [[_COMMUNITY_gradient_checkpointing, Recompute activations during backward pass.|gradient_checkpointing, Recompute activations during backward pass.]]
+- [[_COMMUNITY_memory_efficient_scan, Uses scan - only stores current activation.|memory_efficient_scan, Uses scan - only stores current activation.]]
+- [[_COMMUNITY_enable_xla_dump, Enable XLA dump for detailed analysis.|enable_xla_dump, Enable XLA dump for detailed analysis.]]
+- [[_COMMUNITY_Science Suite Plugin Review Report|Science Suite Plugin Review Report]]
+- [[_COMMUNITY_merge-all Command|merge-all Command]]
+- [[_COMMUNITY_github-assist command|github-assist command]]
+- [[_COMMUNITY_multi-platform command|multi-platform command]]
+- [[_COMMUNITY_onboard command|onboard command]]
+- [[_COMMUNITY_Scientific Feature Development|Scientific Feature Development]]
+- [[_COMMUNITY_docs command|docs command]]
+- [[_COMMUNITY_GraphQL Schema Design Patterns|GraphQL Schema Design Patterns]]
+- [[_COMMUNITY_REST API Best Practices|REST API Best Practices]]
+- [[_COMMUNITY_API design checklist asset|API design checklist asset]]
+- [[_COMMUNITY_AI Pair Agent Prompt Templates|AI Pair Agent Prompt Templates]]
+- [[_COMMUNITY_iterative-error-resolution README|iterative-error-resolution README]]
+- [[_COMMUNITY_uv-quick-reference|uv-quick-reference]]
+- [[_COMMUNITY_Async Python Patterns - Reference Materials|Async Python Patterns - Reference Materials]]
+- [[_COMMUNITY_Paper Replication|Paper Replication]]
+- [[_COMMUNITY_Predicted Observable Template (Stage 6→7 handoff format)|Predicted Observable Template (Stage 6→7 handoff format)]]
+- [[_COMMUNITY_Validation Report Template (3 passes analytic limit  synthetic benchmark  convergence)|Validation Report Template (3 passes: analytic limit / synthetic benchmark / convergence)]]
+- [[_COMMUNITY_Falsifiability Checklist (4-property kill-criterion audit)|Falsifiability Checklist (4-property kill-criterion audit)]]
+- [[_COMMUNITY_spark_template (01_spark.md artifact template)|spark_template (01_spark.md artifact template)]]
+- [[_COMMUNITY_framing_variants (mechanisticpredictivedesign-oriented examples)|framing_variants (mechanistic/predictive/design-oriented examples)]]
+- [[_COMMUNITY_stepwise_derivation_protocol (atomic step discipline)|stepwise_derivation_protocol (atomic step discipline)]]
+- [[_COMMUNITY_graybox_boundary template (SciML physicslearned boundary spec)|graybox_boundary template (SciML physics/learned boundary spec)]]
+- [[_COMMUNITY_dimensional_analysis template (Buckingham Pi worksheet)|dimensional_analysis template (Buckingham Pi worksheet)]]
+- [[_COMMUNITY_Three-Layer Search Strategy (foundational  recent  adjacent)|Three-Layer Search Strategy (foundational / recent / adjacent)]]
+- [[_COMMUNITY_Gap Matrix Template (phenomena × methods)|Gap Matrix Template (phenomena × methods)]]
+- [[_COMMUNITY_Steelman Note Template (strongest claim + break conditions)|Steelman Note Template (strongest claim + break conditions)]]
+- [[_COMMUNITY_scientific-review SKILL.md (file)|scientific-review SKILL.md (file)]]
+- [[_COMMUNITY_scientific-review referencesintegrity_checks|scientific-review references/integrity_checks.md]]
+- [[_COMMUNITY_scientific-review referencesreview_structure|scientific-review references/review_structure.md]]
+- [[_COMMUNITY_Simulated Reviewer Prompts (theorist  experimentalist  applications  statistician)|Simulated Reviewer Prompts (theorist / experimentalist / applications / statistician)]]
+- [[_COMMUNITY_Premortem Failure Narrative Template (past-tense, 5-section structure)|Premortem Failure Narrative Template (past-tense, 5-section structure)]]
+- [[_COMMUNITY_Risk Register Template (P×I×mitigation×early-signal)|Risk Register Template (P×I×mitigation×early-signal)]]
+- [[_COMMUNITY_Design-of-Experiments Matrix Template (fullfractional factorial, RSM, LHS)|Design-of-Experiments Matrix Template (full/fractional factorial, RSM, LHS)]]
+- [[_COMMUNITY_ml-expert|ml-expert]]
+- [[_COMMUNITY_run-experiment command|run-experiment command]]
+- [[_COMMUNITY_analyze-data command|analyze-data command]]
+- [[_COMMUNITY_Scientific Code Benchmarking|Scientific Code Benchmarking]]
+- [[_COMMUNITY_jax-julia-interop (sub-skill)|jax-julia-interop (sub-skill)]]
+- [[_COMMUNITY_numpyro-blackjax reference|numpyro-blackjax reference]]
+- [[_COMMUNITY_advanced-inference reference|advanced-inference reference]]
+- [[_COMMUNITY_Optax Optimizers Reference|Optax Optimizers Reference]]
+- [[_COMMUNITY_JAX Core Programming References README|JAX Core Programming References README]]
+- [[_COMMUNITY_NumPyro Bayesian Reference|NumPyro Bayesian Reference]]
+- [[_COMMUNITY_variational-inference-patterns sub-skill|variational-inference-patterns sub-skill]]
+- [[_COMMUNITY_correlation-math-foundations sub-skill|correlation-math-foundations sub-skill]]
+- [[_COMMUNITY_correlation-physical-systems sub-skill|correlation-physical-systems sub-skill]]
+- [[_COMMUNITY_point-processes sub-skill|point-processes sub-skill]]
+- [[_COMMUNITY_correlation-computational-methods sub-skill|correlation-computational-methods sub-skill]]
+- [[_COMMUNITY_NLSQ Examples Collection README (20 scripts + 3 notebooks)|NLSQ Examples Collection README (20 scripts + 3 notebooks)]]
+- [[_COMMUNITY_NLSQ Core Mastery Assets (Jupyter notebooks quickstart, tutorial, advanced)|NLSQ Core Mastery Assets (Jupyter notebooks: quickstart, tutorial, advanced)]]
+- [[_COMMUNITY_numpyro-core-mastery sub-skill|numpyro-core-mastery sub-skill]]
+- [[_COMMUNITY_SDE Soft Matter Reference|SDE Soft Matter Reference]]
+- [[_COMMUNITY_Diffrax Deep Dive Reference|Diffrax Deep Dive Reference]]
+- [[_COMMUNITY_turing-model-design sub-skill|turing-model-design sub-skill]]
+- [[_COMMUNITY_Advanced Optimization Reference|Advanced Optimization Reference]]
+- [[_COMMUNITY_Scientific Numerical Methods Reference|Scientific Numerical Methods Reference]]
+- [[_COMMUNITY_Evidence Synthesis Skill (PRISMA, meta-analysis, GRADE)|Evidence Synthesis Skill (PRISMA, meta-analysis, GRADE)]]
+- [[_COMMUNITY_Stochastic Volatility Hierarchical Model|Stochastic Volatility Hierarchical Model]]
+- [[_COMMUNITY_Capture-Recapture CJS Model|Capture-Recapture CJS Model]]
+- [[_COMMUNITY_Hierarchical Mortality Model|Hierarchical Mortality Model]]
+- [[_COMMUNITY_Baseball Hierarchical Pooling|Baseball Hierarchical Pooling]]
+- [[_COMMUNITY_ProdLDA Topic Modeling|ProdLDA Topic Modeling]]
+- [[_COMMUNITY_Gaussian Shells Nested Sampling|Gaussian Shells Nested Sampling]]
+- [[_COMMUNITY_Gaussian Process Regression|Gaussian Process Regression]]
+- [[_COMMUNITY_Bayesian Neural Network|Bayesian Neural Network]]
+- [[_COMMUNITY_Conditional VAE|Conditional VAE]]
+- [[_COMMUNITY_HMC with Energy Conserving Subsampling|HMC with Energy Conserving Subsampling]]
+- [[_COMMUNITY_Differentiable Annealed Importance Sampling|Differentiable Annealed Importance Sampling]]
+- [[_COMMUNITY_Example Asset|Example Asset]]
 
 ## God Nodes (most connected - your core abstractions)
-1. `Julia Pro Agent` - 38 edges
-2. `fit()` - 32 edges
-3. `Science Suite` - 30 edges
-4. `Software Architect Agent` - 30 edges
-5. `JAX Pro Agent` - 30 edges
-6. `IterativeFixEngine` - 29 edges
-7. `statistical-physicist agent (opus, soft matter/non-equilibrium/correlations)` - 26 edges
-8. `Julia Mastery Hub` - 26 edges
-9. `Agent Reference` - 25 edges
-10. `Dev Suite` - 23 edges
+1. `main` - 248 edges
+2. `demo` - 33 edges
+3. `IterativeFixEngine` - 30 edges
+4. `Hsgp` - 28 edges
+5. `Julia Mastery Hub` - 25 edges
+6. `model` - 23 edges
+7. `Pure Functional Patterns` - 22 edges
+8. `Dev Hub (Top-Level Router)` - 21 edges
+9. `Xla Optimization` - 20 edges
+10. `Rest Api Template` - 18 edges
 
 ## Surprising Connections (you probably didn't know these)
-- `jax-mastery skill (JAX functional transformations, Flax NNX, NumPyro)` --semantically_similar_to--> `hierarchical.jl (Julia Turing hierarchical Bayesian model)`  [INFERRED] [semantically similar]
-  plugins/science-suite/skills/jax-mastery/SKILL.md → test-corpus/julia-bayesian/hierarchical.jl
-- `llm-engineering hub skill (agent-core)` --semantically_similar_to--> `Hub: llm-and-ai (science-suite)`  [INFERRED] [semantically similar]
-  plugins/agent-core/skills/llm-engineering/SKILL.md → docs/suites/science-suite.rst
-- `research-practice hub skill` --semantically_similar_to--> `Hub: research-and-domains (science-suite)`  [INFERRED] [semantically similar]
-  plugins/research-suite/skills/research-practice/SKILL.md → docs/suites/science-suite.rst
-- `dev-workflows Hub Skill (dev-suite)` --semantically_similar_to--> `Python CI/CD Pipeline (GitHub Actions: lint/test/security/deploy)`  [INFERRED] [semantically similar]
-  plugins/dev-suite/skills/dev-workflows/SKILL.md → test-corpus/github-actions-ci/ci.yml
-- `julia-graph-neural-networks Sub-Skill (GNNLux / GNNGraphs / GNNlib)` --implements--> `Cora GCN (Julia: GNNLux 2-layer GCN node classification)`  [INFERRED]
-  plugins/science-suite/skills/julia-graph-neural-networks/SKILL.md → test-corpus/julia-gnn/cora_gcn.jl
+- `Debugging Toolkit Sub-skill` --semantically_similar_to--> `Advanced Simulations`  [AMBIGUOUS] [semantically similar]
+  plugins/dev-suite/skills/debugging-toolkit/SKILL.md → plugins/science-suite/skills/statistical-physics-hub/SKILL.md
+- `Quick check if tests were last passing.` --rationale_for--> `main`  [EXTRACTED]
+  dev-suite/hooks/session_end.py → plugins/science-suite/skills/numpyro-core-mastery/scripts/examples/advanced/vae.py
+- `Test greeter with default prefix.` --calls--> `Greeter`  [INFERRED]
+  science-suite/skills/python-packaging-advanced/references/example-package/tests/test_core.py → plugins/science-suite/skills/python-packaging-advanced/references/example-package/src/example_package/core.py
+- `main` --calls--> `plot_word_cloud()`  [EXTRACTED]
+  plugins/science-suite/skills/numpyro-core-mastery/scripts/examples/advanced/vae.py → science-suite/skills/numpyro-core-mastery/scripts/examples/advanced/prodlda.py
+- `main` --calls--> `run_svi()`  [EXTRACTED]
+  plugins/science-suite/skills/numpyro-core-mastery/scripts/examples/advanced/vae.py → science-suite/skills/numpyro-core-mastery/scripts/examples/advanced/dais_demo.py
 
 ## Hyperedges (group relationships)
 - **Opus-tier agents handling deep reasoning (software-architect, debugger-pro)** — agent_software_architect, agent_debugger_pro [EXTRACTED 1.00]
@@ -353,860 +283,506 @@
 - **Prompt Crafting Triad: thinkfirst → prompt-engineering-patterns → reasoning-frameworks** — thinkfirst_skill, prompt_engineering_patterns_skill, reasoning_frameworks_skill [EXTRACTED 0.95]
 - **Agent Core Orchestration: Hub + Systems + Reasoning** — skill_agent_hub, skill_agent_systems, skill_reasoning_and_memory [EXTRACTED 0.95]
 - **Safety & Alignment Cluster: safety-guardrails + constitutional AI + alignment evaluation** — safety_guardrails_skill, concept_constitutional_ai, concept_alignment_evaluation, concept_content_filtering [EXTRACTED 0.90]
+- **NumPyro Hierarchical Model Examples** — stochastic_volatility_script, capture_recapture_script, ucbadmit_script, mortality_script, funnel_script, baseball_script [INFERRED 0.85]
+- **NumPyro Advanced Model Examples** — prodlda_script, gaussian_shells_script, gp_script, bnn_script, cvae_script, hmcecs_script, dais_demo_script [INFERRED 0.85]
 
-## Communities (295 total, 80 thin omitted)
+## Communities (217 total, 99 thin omitted)
 
-### Community 0 - "Agent Core Infrastructure"
-Cohesion: 0.06
-Nodes (69): agent-build Command, Agent Core README, Agent Evaluation Skill, Agent Performance Optimization Skill, Agent Systems Hub Skill, ai-assistant Command, Chain-of-Thought Reasoning Concept, Chain-of-Thought Reference (+61 more)
-
-### Community 1 - "README Sanitization & Quality"
+### Community 0 - "model, run_inference, Sparse Regression"
 Cohesion: 0.05
-Nodes (29): _classify_language(), _confidence_for(), README probe sanitizer for the /team-assemble codebase-detection path.  This mod, Map a language hint to the auto-fill confidence tier., Result of sanitizing a README probe paragraph.      Attributes:         value: F, Apply the Step 2.6b prompt-injection safeguards to a probe paragraph.      The o, Classify a probe paragraph by script family (ASCII-ratio heuristic).      Uses a, sanitize_readme_probe() (+21 more)
+Nodes (60): nonlin(), run_nuts(), run_svi(), kernel(), predict(), __call__(), FlaxDecoder, FlaxEncoder (+52 more)
 
-### Community 2 - "Command File Linting Tests"
-Cohesion: 0.09
-Nodes (32): Tests for the Claude Code command file structural linter.  Two test groups:  1., Step 2.6 should resolve when the file defines Step 2.6a., The step-ref check only activates when the file has at least         one Step he, Run the linter over every ``plugins/*/commands/*.md`` file.      If this test st, team-assemble.md is the canonical command file that we just         hardened. It, Write content to a temp file and return its path.      Uses ``textwrap.dedent``, _rules(), TestBrokenStepReference (+24 more)
+### Community 1 - "main, hmcecs.py, mortality.py"
+Cohesion: 0.04
+Nodes (62): run_hmc(), run_hmcecs(), summary_plot(), Complete Bayesian workflow., Generate all diagrams, Complete hierarchical modeling workflow., extract_candidates, Concept Extractor (+54 more)
 
-### Community 3 - "SciComp Redesign Tests"
-Cohesion: 0.05
-Nodes (48): Bayesian Inference Hub, Bayesian PINN, Bayesian SINDy Workflow, Bayesian UDE in JAX, Bayesian UDE Workflow, Bifurcation Analysis, Catalyst Reactions, Chaos and Attractors (+40 more)
-
-### Community 4 - "Research Methodology & Evidence"
+### Community 2 - "Greeter, TestGreet, TestGreeter"
 Cohesion: 0.06
-Nodes (46): Agent Core Suite, Command: /ultra-think, Three Adversarial Patterns (Reviewer 2, Stepwise Derivation, Instrument Margin), 2% Context Budget Rule per Skill, Research-Spark 8-Stage Pipeline, v3.4.0 Research-Suite Extraction from Science-Suite: research-expert + 5 methodology skills split out so science-suite stays purely computational, Skill Size Governance (>3000 bytes = review required, >80% = at-risk, >90% = refactor), Style Enforcement via style_lint.py (no em dashes, no banned vocabulary, quantified language) (+38 more)
+Nodes (36): greet, greet_multiple, Greeter, Core, Core functionality for the example package.  This module provides basic greeting, Generate greeting messages for multiple names.      Args:         names: List of, A class-based greeter with customizable prefix.      Attributes:         prefix:, Generate a greeting message using the configured prefix.          Args: (+28 more)
 
-### Community 5 - "Skill Activation Profiling"
+### Community 3 - "Research Spark Orchestrator, _research-commons, Research Practice Hub"
 Cohesion: 0.06
-Nodes (16): _frontmatter(), _plugin_json(), Parse YAML frontmatter delimited by --- from a markdown file., test_command_has_argument_hint(), test_command_has_description(), test_command_has_name(), test_description_at_most_180_chars(), test_description_not_empty() (+8 more)
+Nodes (39): @research-expert agent, bioinformatics skill, Citation Style (in-text format, BibTeX hygiene, journal abbreviations), Artifact Trail Integrity Principle, Research Spark State File (_state.yaml), Environment Conventions (Python 3.12+, uv, pyproject.toml), Figure Standards (fonts, colormaps, resolution, captions), IMRaD Scientific Report Structure (+31 more)
 
-### Community 6 - "JAX Adjoint Methods"
-Cohesion: 0.1
-Nodes (41): advanced-ml-systems skill, ml-expert Agent, data-wrangling-communication, deep-learning-experimentation, deep-learning-hub, deep-learning, devops-ml-infrastructure, experiment-tracking (+33 more)
+### Community 4 - "Hsgp, hsgp.py, get_floating_days_indicators"
+Cohesion: 0.12
+Nodes (36): The first `M` eigenfunctions of the laplacian operator in `[-L, L]`     evaluate, Not actually a spectral density but these are used in the same     way. These ar, Basis functions for the approximation of the periodic kernel., Hilbert space approximation for the squared     exponential kernel in the non-ce, Low rank approximation for the periodic squared     exponential kernel in the no, First monday of September, Third thursday of November, Load your data here.      TODO: Replace with your data loading logic      Return (+28 more)
 
-### Community 7 - "Activation Profiler Engine"
-Cohesion: 0.06
-Nodes (36): backsolve_adjoint_example(), checkpoint_adjoint_example(), checkpoint_memory_tradeoff(), demo(), direct_adjoint_example(), get_adjoint_method(), implicit_adjoint_example(), NeuralODE (+28 more)
+### Community 5 - "Profiling Workflow, Profile Jax, profile_function"
+Cohesion: 0.07
+Nodes (33): check_recompilation, compare_implementations, memory_profile, profile_decorator, profile_function, profile_gradient, Profile Jax, benchmark_function (+25 more)
 
-### Community 8 - "Documentation Quality Tests"
-Cohesion: 0.09
-Nodes (22): ActivationMetric, ActivationProfile, ActivationProfileReporter, AgentActivationProfiler, main(), Load plugin.json metadata., Measure metadata extraction time., Measure keyword matching performance. (+14 more)
+### Community 6 - "Callbacks Demo, exponential_decay(), BestParameterTracker"
+Cohesion: 0.07
+Nodes (35): 01 Basic Fault Tolerance, Benchmark Comparison, CallbackBase, Callbacks Demo, BestParameterTracker, example1_progress_bar(), example2_iteration_logging(), example3_early_stopping() (+27 more)
 
-### Community 9 - "Plugin Load Profiling"
-Cohesion: 0.08
-Nodes (16): _check(), _check_common(), _check_formatting(), Run _check_markdown_formatting on `content` and return (severity, message) pairs, Regression: heading-space check must skip content inside fenced code blocks., Run _check_common_issues on `content` and return (severity, message) pairs., Regression: bare word 'placeholder' should not trigger placeholder-text warning., New behavior added by Task 6 — frontmatter path scanning. (+8 more)
+### Community 7 - "_cli, Limit Recovery Check, _as_array"
+Cohesion: 0.11
+Nodes (26): ConvergenceResult, run_convergence, Convergence Study, _cli, check_limit, Limit Check, _absolute_max, _as_array (+18 more)
 
-### Community 10 - "Performance Reporter"
+### Community 8 - "Julia ML and Deep Learning Hub, Machine Learning Sub-Skill, ML and Data Science Hub"
+Cohesion: 0.14
+Nodes (25): Julia ML HPC Agent, ml-expert Agent, data-wrangling-communication, devops-ml-infrastructure, federated-learning, julia-training-diagnostics, ml-engineering-production, ml-pipeline-workflow (+17 more)
+
+### Community 9 - "Simulation and HPC Hub, Parallel Computing, Simulation Expert Agent"
+Cohesion: 0.11
+Nodes (24): MD Simulation Setup Sub-skill, ML Force Fields Sub-skill, Multiscale Modeling Sub-skill, Trajectory Analysis Sub-skill, Simulation Expert Agent, /md-sim command (molecular dynamics simulation), control-theory skill, extreme-value-statistics (+16 more)
+
+### Community 10 - "numpyro-core-mastery skill (JAX Bayesian inference, NUTS/HMC, SVI, ArviZ diagnostics), Neural Network Mathematics References README (Index of 8 reference documents), nlsq-core-mastery (sub-skill ref)"
+Cohesion: 0.14
+Nodes (23): nlp-fundamentals (sub-skill ref), NLSQ API Reference (fit() function, workflow parameter, backends), NLSQ Convergence Diagnostics Reference, nlsq-core-mastery (sub-skill ref), NLSQ Loss Functions Reference (linear, soft_l1, huber, cauchy, arctan), Advanced Mathematical Topics Reference (Differential Geometry, Functional Analysis, GNNs, SDEs, TDA, Measure Theory), Architecture-Specific Mathematics Reference (CNN, RNN, Transformer, Generative Models), Calculus and Backpropagation Reference (+15 more)
+
+### Community 11 - "Rest Api Template, BaseModel, list_users"
 Cohesion: 0.16
-Nodes (37): App Developer Agent, Automation Engineer Agent, Debugger Pro Agent, DevOps Architect Agent, Documentation Expert Agent, Agent: prompt-engineer (science-suite), Python Pro Agent, Quality Specialist Agent (+29 more)
+Nodes (22): Config, Production-ready REST API template using FastAPI. Includes pagination, filtering, Partially update user., List users with pagination and filtering., BaseModel, Enum, create_user, delete_user (+14 more)
 
-### Community 11 - "HSGP Gaussian Process"
-Cohesion: 0.09
-Nodes (21): LoadMetric, LoadProfileReporter, main(), PluginLoadProfile, PluginLoadProfiler, Measure plugin.json parsing time., Measure agents directory scanning time., Measure commands directory scanning time. (+13 more)
+### Community 12 - "IterativeFixEngine, .apply_fix(), .fix_dependency_error()"
+Cohesion: 0.14
+Nodes (10): IterativeFixEngine, Execute fix strategy., Fix dependency-related errors., Fix npm ERESOLVE conflicts., Fix npm 404 package not found., Fix Python import errors., Fix build-related errors., Fix test-related errors. (+2 more)
 
-### Community 12 - "XLA Optimization Examples"
-Cohesion: 0.09
-Nodes (23): ComparisonAnalyzer, main(), PerformanceAggregator, PerformanceMetrics, PerformanceReport, Run activation profiler and parse results., Run memory analyzer and parse results., Collect metrics for all plugins. (+15 more)
-
-### Community 13 - "Memory Profiling"
-Cohesion: 0.09
-Nodes (29): approx_periodic_gp_ncp(), approx_se_ncp(), diag_spectral_density(), diag_spectral_density_periodic(), eigenfunctions(), eigenfunctions_periodic(), get_floating_days_indicators(), get_labour_days() (+21 more)
-
-### Community 14 - "Science Hub Routing"
-Cohesion: 0.06
-Nodes (31): bad_variable_shapes(), check_fusion(), demonstrate_donation(), enable_xla_dump(), good_fixed_shapes(), gradient_checkpointing(), inplace_update(), inspect_hlo() (+23 more)
-
-### Community 15 - "Dev Suite Agents"
+### Community 13 - "Spmd Parallelism, pmap_train_step, run_pmap_example"
 Cohesion: 0.1
-Nodes (21): get_object_size(), main(), MemoryMetric, MemoryProfile, MemoryProfileReporter, PluginMemoryAnalyzer, Profile a single plugin's memory usage., Measure plugin.json memory usage. (+13 more)
+Nodes (22): SPMD Parallelism Patterns for JAX  Demonstrates sharding, mesh configuration, an, Different mesh configurations., Demonstrate different sharding patterns., Distribute matrix multiplication across devices., Display available devices., Use sharding constraints to guide XLA partitioning., Explicitly place data on specific devices., Print sharding information for debugging. (+14 more)
 
-### Community 16 - "REST API Templates"
-Cohesion: 0.07
-Nodes (34): Bayesian Inference Pipeline Workflow, /md-sim command (molecular dynamics simulation), Hub: bayesian-inference (science-suite), Hub: correlation-analysis (science-suite), Hub: deep-learning-hub (science-suite), jax-computing hub skill, Hub: julia-language (science-suite), Hub: julia-ml-and-dl (science-suite) (+26 more)
-
-### Community 17 - "Dev Workflow Commands"
+### Community 14 - "Pure Log Prob Models, funnel_log_prob_centered, batched_log_prob"
 Cohesion: 0.1
-Nodes (28): Config, create_user(), delete_user(), ErrorDetail, ErrorResponse, get_user(), http_exception_handler(), list_users() (+20 more)
+Nodes (21): Pure Log-Prob Models for JAX  Demonstrates how to write Bayesian models as pure, Log-likelihood for a single observation., Log-prob vectorized over batch dimension.      This is efficient: vmap allows pr, Log-prob with masking for variable-length sequences.      Args:         params:, Log-prob for Gaussian mixture model.      Uses log-sum-exp trick for numerical s, Centered parameterization - has funnel geometry., Pure log-probability for simple linear regression.      No magic contexts, no hi, Non-centered parameterization - no funnel. (+13 more)
 
-### Community 18 - "JAX Functional Patterns"
-Cohesion: 0.07
-Nodes (29): apply_weight_decay(), augment_batch(), clip_gradients(), count_params(), flatten_params(), init_params(), interpolate_params(), masked_update() (+21 more)
+### Community 15 - "str, Compare Training Runs, print_comparison_report"
+Cohesion: 0.14
+Nodes (20): _find_convergence_epoch, _print_config_comparison, _print_header, compare_configs, compare_metrics, extract_config, extract_metrics, load_training_log (+12 more)
 
-### Community 19 - "Agent Core Agents"
-Cohesion: 0.09
-Nodes (13): Base class for markdown report generation.  Provides common report formatting ut, Add a validation result summary., Add a table of validation issues., Base class for generating markdown reports.      Provides common formatting meth, Add a table of profiling metrics., Add a fenced code block., Add a status badge line., Clear the report content. (+5 more)
-
-### Community 20 - "Plugin Loader"
+### Community 16 - "Sde Brownian, test_reproducibility, basic_sde_example"
 Cohesion: 0.11
-Nodes (15): main(), PluginActivationTester, Tests plugin activation accuracy using test corpus., Load plugin triggering patterns., Extract triggering patterns from plugin metadata., Load test corpus samples., Test if plugin should activate based on file extensions., Test if plugin should activate based on directory patterns. (+7 more)
+Nodes (20): Stochastic Differential Equations with Diffrax  Demonstrates VirtualBrownianTree, Show that same seed gives same result., Independent Brownian motion for multiple particles., Simple SDE: dy = -k*y dt + sigma dW (Ornstein-Uhlenbeck process)., Overdamped Langevin dynamics in a double-well potential., Brownian dynamics with soft repulsive interactions., Run ensemble of SDE realizations with different random seeds., Compare different SDE solver schemes. (+12 more)
 
-### Community 21 - "Science Suite Agents"
-Cohesion: 0.1
-Nodes (25): _is_hub_skill(), load_frontmatter(), load_plugin_json(), Cross-suite invariant tests.  Validates constraints that span all plugin suites:, A hub skill routes to sub-skills via ``../`` relative links., Hub skills must contain a Routing Decision Tree code block and Checklist., Every sub-skill directory must be referenced by at least one hub., Registered command counts must match documented expectations. (+17 more)
-
-### Community 22 - "Cross-Suite Invariant Tests"
-Cohesion: 0.12
-Nodes (14): CommandSuggestionAnalyzer, main(), Load commands from all plugins., Extract keywords from text., Analyze contexts within a sample project., Calculate relevance score for command in given context., Assess if command suggestion timing is appropriate., Assess if command priority is correctly set. (+6 more)
-
-### Community 23 - "Command Suggestion Analyzer"
-Cohesion: 0.11
-Nodes (22): CallbackBase, BestParameterTracker, example1_progress_bar(), example2_iteration_logging(), example3_early_stopping(), example4_callback_chain(), example5_custom_callback(), exponential_decay() (+14 more)
-
-### Community 24 - "Common Reporter"
+### Community 17 - "print_summary, Async Web Scraper, .scrape_urls()"
 Cohesion: 0.15
-Nodes (25): advanced-optimization skill, JAX Pro Agent, Julia Pro Agent, nonlinear-dynamics-expert agent (opus, bifurcation/chaos/network dynamics), research-spark-orchestrator Agent, bifurcation-analysis skill (BifurcationKit.jl), catalyst-reactions skill (Catalyst.jl), chaos-attractors skill (DynamicalSystems.jl) (+17 more)
+Nodes (17): print_summary, demo_basic_usage, demo_error_handling, demo_large_scale, ScrapeResult, Async Web Scraper, Scrape multiple URLs concurrently.          Args:             urls: List of URLs, Print summary statistics (+9 more)
 
-### Community 25 - "Training Callbacks"
-Cohesion: 0.1
-Nodes (25): commit command (retired), docs command, double-check Command, eng-feature-dev command, modernize command, refactor-clean command (retired), run-all-tests Command, smart-debug Command (+17 more)
-
-### Community 26 - "ML & Deep Learning Hub"
-Cohesion: 0.1
-Nodes (24): advanced-simulations skill (hub), MD Simulation Setup Sub-skill, ML Force Fields Sub-skill, Multiscale Modeling Sub-skill, Trajectory Analysis Sub-skill, Julia ML HPC Agent, Simulation Expert Agent, control-theory skill (+16 more)
-
-### Community 27 - "Session Start Hooks"
-Cohesion: 0.12
-Nodes (20): detect_compute_env(), detect_research_artifacts(), detect_stack(), get_session_context(), main(), Detect project stack from file presence., Detect available compute resources., Get recent git activity summary. (+12 more)
-
-### Community 28 - "Probabilistic Topic Models"
+### Community 18 - "Cfd Taylor Green, navier_stokes_step, compute_enstrophy"
 Cohesion: 0.13
-Nodes (17): FlaxDecoder, FlaxEncoder, guide(), HaikuDecoder, HaikuEncoder, load_data(), main(), model() (+9 more)
+Nodes (19): advect_scalar, compute_divergence_max, compute_enstrophy, compute_vorticity, laplacian, navier_stokes_step, pressure_projection, Cfd Taylor Green (+11 more)
 
-### Community 29 - "Community 29"
-Cohesion: 0.13
-Nodes (23): pinn-engineer agent (physics-informed neural networks, NeuralPDE), Staged Bayesian UDE Pipeline Rationale (MAP warm-start → NUTS → diagnostics → tempering escape), bayesian-ude-workflow Sub-Skill (Julia Bayesian UDE pipeline), Python CI/CD Pipeline (GitHub Actions: lint/test/security/deploy), /lit-review Command (research-suite), /paper-implement Command (research-suite), /replicate Command (research-suite), GNNChain (cora_gcn.jl model definition) (+15 more)
-
-### Community 30 - "Community 30"
-Cohesion: 0.1
-Nodes (20): MyClaude CLAUDE.md, /benchmark command (scientific code benchmarking), fit_model() — NUTS hierarchical sampling with ArviZ diagnostics, hierarchical.jl (Julia Turing hierarchical Bayesian model), bayesian_ude() — Turing model for Bayesian UDE inference, loss() — ODE solve + sum-of-squares for UDE warm-start, nn_model — Lux Chain for UDE correction term, ude_train.jl (Julia Universal Differential Equation with Bayesian inference) (+12 more)
-
-### Community 31 - "Community 31"
-Cohesion: 0.14
-Nodes (14): Issue, main(), Load command suggestion analysis report., Load skill validation report., Aggregated triggering pattern metrics., Calculate overall triggering pattern quality score., Generate prioritized recommendations., Generate comprehensive triggering pattern report. (+6 more)
-
-### Community 32 - "Observable Extraction Scripts"
+### Community 19 - "Latex Sanity, load_tex_with_includes, check_citations"
 Cohesion: 0.11
-Nodes (22): benchmark_function(), demonstrate_data_processing(), demonstrate_fibonacci(), demonstrate_memory_usage(), fibonacci_fast(), fibonacci_iterative(), fibonacci_slow(), main() (+14 more)
+Nodes (19): check_citations, check_common_typos, check_environments, check_math_delimiters, check_references, format_report, load_tex_with_includes, run_pdflatex (+11 more)
 
-### Community 33 - "Community 33"
-Cohesion: 0.12
-Nodes (10): _demo(), load_predicted_observable(), ObservableBuilder, source: 'numerical', 'parametric', or 'statistical'.         type_: 'relative' o, Best-effort conversion to a plain Python list for YAML/JSON serialization., Write the observable record to YAML (preferred) or JSON based on extension., Load a predicted observable record from YAML or JSON., Fluent builder that produces a predicted-observable record matching     template (+2 more)
-
-### Community 34 - "Community 34"
-Cohesion: 0.11
-Nodes (21): compare_configs(), compare_metrics(), extract_config(), extract_metrics(), _find_convergence_epoch(), load_training_log(), print_comparison_report(), _print_config_comparison() (+13 more)
-
-### Community 35 - "Community 35"
-Cohesion: 0.09
-Nodes (21): batched_log_prob(), demo_with_blackjax(), funnel_log_prob_centered(), funnel_log_prob_noncentered(), hierarchical_log_prob(), masked_log_prob(), mixture_log_prob(), Pure Log-Prob Models for JAX  Demonstrates how to write Bayesian models as pure (+13 more)
-
-### Community 36 - "Community 36"
-Cohesion: 0.12
-Nodes (21): basic_sde_example(), colloidal_dynamics(), demo(), ensemble_sde(), langevin_in_potential(), multi_particle_brownian(), production_sde_config(), Stochastic Differential Equations with Diffrax  Demonstrates VirtualBrownianTree (+13 more)
-
-### Community 37 - "Community 37"
+### Community 20 - "Prompt Engineering Patterns Sub-Skill, ThinkFirst Skill, Chain-of-Thought (CoT)"
 Cohesion: 0.14
-Nodes (21): advect_scalar(), compute_divergence_max(), compute_enstrophy(), compute_kinetic_energy(), compute_vorticity(), laplacian(), main(), navier_stokes_step() (+13 more)
+Nodes (18): agent-build Command, Chain-of-Thought Reference, Chain-of-Thought (CoT), Few-Shot Learning, Self-Consistency Prompting, Seven Dimensions of Clarification, Few-Shot Learning Reference, Prompt Engineering Patterns Sub-Skill (+10 more)
 
-### Community 38 - "Community 38"
-Cohesion: 0.1
-Nodes (21): create_mesh_examples(), debug_sharding(), explicit_device_placement(), model_parallel_matmul(), pmap_train_step(), SPMD Parallelism Patterns for JAX  Demonstrates sharding, mesh configuration, an, Different mesh configurations., Demonstrate different sharding patterns. (+13 more)
-
-### Community 39 - "Community 39"
-Cohesion: 0.13
-Nodes (22): advanced-inference reference, Advanced Optimization Reference, JAX Device Sharding Patterns (ASCII diagram), Diffrax Deep Dive Reference, Flax NNX Guide, jax-bayesian-pro, jax-computing (hub skill), jax-core-programming (sub-skill) (+14 more)
-
-### Community 40 - "Community 40"
+### Community 21 - "LLM Engineering Hub (agent-core), MCP Integration Skill, Agent Hub (agent-core)"
 Cohesion: 0.15
-Nodes (22): nlp-fundamentals (sub-skill ref), NLSQ API Reference (fit() function, workflow parameter, backends), NLSQ Convergence Diagnostics Reference, nlsq-core-mastery (sub-skill ref), NLSQ Loss Functions Reference (linear, soft_l1, huber, cauchy, arctan), Advanced Mathematical Topics Reference (Differential Geometry, Functional Analysis, GNNs, SDEs, TDA, Measure Theory), Architecture-Specific Mathematics Reference (CNN, RNN, Transformer, Generative Models), Calculus and Backpropagation Reference (+14 more)
+Nodes (18): context-specialist Agent, Agent Evaluation Skill, orchestrator Agent, Context7 MCP Server, DAG Workflow Concept, docs-lookup Command, GitHub MCP Server, MCP Integration Skill (+10 more)
 
-### Community 41 - "Community 41"
-Cohesion: 0.14
-Nodes (21): CI/CD Pipeline Setup Workflow, deps command, fix-commit-errors command, merge-all Command, workflow-automate command, GitHub Actions CI/CD workflows, GitLab CI pipeline, Terraform IaC enterprise workflow (+13 more)
+### Community 22 - "04 Interpreting Diagnostics, analyze_aggregate_statistics, analyze_checkpoint_info"
+Cohesion: 0.11
+Nodes (18): analyze_aggregate_statistics, analyze_checkpoint_info, analyze_failure_patterns, analyze_recent_batches, analyze_success_metrics, export_diagnostics_json, polynomial_model, print_diagnostics_structure (+10 more)
 
-### Community 42 - "Community 42"
-Cohesion: 0.1
-Nodes (10): Test that category pages build with Sphinx without errors, Test that navigation structure creates proper sidebar hierarchy, Tests for category landing pages and navigation structure, Test that categories directory exists, Test that all required category pages are created, Test that category pages have required RST structure, Test that category TOC tree includes plugin references, Test that main index.rst exists (+2 more)
+### Community 23 - "Result Enhancements Demo, example1_statistical_properties(), example2_backward_compatibility()"
+Cohesion: 0.11
+Nodes (18): example1_statistical_properties(), example2_backward_compatibility(), example3_confidence_intervals(), example4_prediction_intervals(), example5_visualization(), example6_summary_report(), example7_model_comparison(), example8_residuals_predictions() (+10 more)
 
-### Community 43 - "Community 43"
-Cohesion: 0.1
-Nodes (11): PluginLoader, Loads and caches plugin metadata from plugin.json files.      Usage:         loa, Get all currently cached plugins., Get load errors for a plugin, or all errors if no name specified., Clear the plugin cache., Get list of all loaded plugin names., Group plugins by category., Find which plugin contains an agent by name.          Returns (plugin_name, agen (+3 more)
-
-### Community 44 - "Community 44"
-Cohesion: 0.1
-Nodes (18): check_device_placement(), check_gradient_flow(), check_nan_inf(), debug_jit(), disable_nan_checking(), enable_nan_checking(), inspect_jaxpr(), monitor_training_step() (+10 more)
-
-### Community 45 - "Community 45"
+### Community 24 - "KnowledgeBase, .calculate_confidence(), .update_knowledge_base()"
 Cohesion: 0.13
-Nodes (18): analytical_solution(), compute_pde_residual(), count_parameters(), HeatPINN, main(), pinn_loss(), Physics-Informed Neural Network for Heat Equation, Forward pass: (x, t) -> u(x, t) (+10 more)
+Nodes (10): KnowledgeBase, Calculate confidence score for fix., Update knowledge base with fix results., Store and retrieve successful fix strategies., Get base confidence for error type., Get historical success rate for error type., Record fix attempt result., Extract error type from fix description. (+2 more)
 
-### Community 46 - "Community 46"
+### Community 25 - "Prototype Skeleton, _self_test, step"
 Cohesion: 0.14
-Nodes (20): apply_cnot(), apply_pauli_operator(), apply_pauli_x(), apply_pauli_y(), apply_pauli_z(), apply_ry(), apply_rz(), compute_energy() (+12 more)
+Nodes (18): _self_test, _single_particle_update, extract_observable, integrate, Params, Prototype Skeleton, State, step (+10 more)
 
-### Community 47 - "Community 47"
-Cohesion: 0.14
-Nodes (11): main(), PromptOptimizer, Generate prompt variations to test., Remove redundant words to make prompt more concise., Add example section to prompt., A/B test two prompts., Export optimization results to JSON., Evaluate a prompt template against test cases. (+3 more)
+### Community 26 - "Adjoint Methods, NeuralODE, train_neural_ode"
+Cohesion: 0.12
+Nodes (18): backsolve_adjoint_example, checkpoint_adjoint_example, checkpoint_memory_tradeoff, direct_adjoint_example, get_adjoint_method, implicit_adjoint_example, NeuralODE, Adjoint Methods (+10 more)
 
-### Community 48 - "Community 48"
+### Community 27 - "demo, ObservableBuilder, .set_uncertainty()"
+Cohesion: 0.15
+Nodes (8): Demonstrate adjoint methods for ODE gradients., Demonstrate custom MCMC patterns., Demonstrate SDE patterns with Diffrax., Demonstrate solver selection patterns., ObservableBuilder, source: 'numerical', 'parametric', or 'statistical'.         type_: 'relative' o, Fluent builder that produces a predicted-observable record matching     template, demo
+
+### Community 28 - "Solver Selection, compare_solvers, stiffness_detection_example"
+Cohesion: 0.12
+Nodes (18): Solver Selection Patterns for Diffrax  Demonstrates choosing between explicit an, Estimate stiffness from Jacobian eigenvalue spread.      Returns stiffness ratio, Demonstrate stiffness detection on Robertson problem., Return appropriate solver for problem characteristics.      Args:         stiffn, Non-stiff system with explicit solver (Tsit5)., Various step size controller configurations., Compare explicit vs implicit solver on same problem., Solve ODE with graceful handling of solver failures. (+10 more)
+
+### Community 29 - "Pinn Heat Equation, count_parameters, HeatPINN"
+Cohesion: 0.12
+Nodes (17): Count total parameters in nested structure., analytical_solution, compute_pde_residual, count_parameters, HeatPINN, pinn_loss, sample_collocation_points, sample_initial_conditions (+9 more)
+
+### Community 30 - "Vqe Hydrogen, create_circuit_state, apply_pauli_operator"
 Cohesion: 0.18
-Nodes (20): active-matter skill, statistical-physicist agent (opus, soft matter/non-equilibrium/correlations), bayesian-inference skill (hub), bayesian-pinn skill (BNNODE/BayesianPINN), bayesian-sindy-workflow skill, bayesian-ude-jax skill (Diffrax+Equinox+NumPyro), consensus-mcmc-pigeons skill (Pigeons.jl NRPT), extreme-value-statistics (+12 more)
+Nodes (17): Simplified H2 Hamiltonian in Pauli basis     Real H2 Hamiltonian has ~15 terms;, Create quantum state from variational circuit     Simplified simulation using st, Compute expectation value E = ⟨ψ(θ)|H|ψ(θ)⟩, Compute ⟨ψ|P|ψ⟩ for Pauli operator P, Apply Pauli operator to state, Apply Ry(θ) rotation to specified qubit, Apply CNOT gate with specified control and target qubits, apply_cnot (+9 more)
 
-### Community 49 - "Community 49"
-Cohesion: 0.11
-Nodes (20): JAX Bayesian Pro Sub-skill, JAX Core Programming Sub-skill, JAX DiffEq Pro Sub-skill, JAX Mastery Sub-skill, JAX Optimization Pro Sub-skill, JAX Physics Applications Sub-skill, JAX Computing Hub, SciML and DiffEq Hub (+12 more)
+### Community 31 - "PromptOptimizer, .evaluate_prompt(), .generate_variations()"
+Cohesion: 0.16
+Nodes (9): PromptOptimizer, Generate prompt variations to test., Remove redundant words to make prompt more concise., Add example section to prompt., A/B test two prompts., Export optimization results to JSON., Evaluate a prompt template against test cases., Calculate accuracy score between response and expected output. (+1 more)
 
-### Community 50 - "Community 50"
-Cohesion: 0.15
-Nodes (20): app-developer agent, Architecture and Infrastructure (hub), Architecture Patterns, Cloud Provider Patterns, Containerization Patterns, Deployment Pipeline Design, Distributed Tracing, error-handling-patterns (+12 more)
-
-### Community 51 - "Community 51"
-Cohesion: 0.1
-Nodes (11): Test that sphinx-autobuild watches the correct file patterns., Test that documentation builds successfully without errors., Test that documentation builds without significant warnings., Test GitHub Actions workflow and build automation., Set up test environment., Test that GitHub Actions workflow file exists., Test that GitHub Actions workflow has valid YAML syntax., Test that GitHub Actions workflow has all required steps. (+3 more)
-
-### Community 52 - "Community 52"
-Cohesion: 0.15
-Nodes (19): check_citations(), check_common_typos(), check_environments(), check_math_delimiters(), check_references(), format_report(), load_tex_with_includes(), main() (+11 more)
-
-### Community 53 - "Community 53"
-Cohesion: 0.14
-Nodes (19): example1_statistical_properties(), example2_backward_compatibility(), example3_confidence_intervals(), example4_prediction_intervals(), example5_visualization(), example6_summary_report(), example7_model_comparison(), example8_residuals_predictions() (+11 more)
-
-### Community 54 - "Community 54"
-Cohesion: 0.13
-Nodes (19): compare_solvers(), demo(), detect_stiffness(), explicit_solver_example(), get_solver(), implicit_solver_example(), Solver Selection Patterns for Diffrax  Demonstrates choosing between explicit an, Estimate stiffness from Jacobian eigenvalue spread.      Returns stiffness ratio (+11 more)
-
-### Community 55 - "Community 55"
-Cohesion: 0.12
-Nodes (19): Python Toolchain Hub, Testing and Quality Hub, Modern Concurrency Sub-skill, Modern Packaging (Advanced) Sub-skill, Robust Testing Sub-skill, Rust Extensions Sub-skill, Type-Driven Design Sub-skill, Python Systems Engineering Hub (+11 more)
-
-### Community 56 - "Community 56"
-Cohesion: 0.11
-Nodes (9): Test that guide code examples use proper RST code-block syntax., Test that changelog follows semantic versioning structure., Test that guides include multi-plugin workflow descriptions., Test that guides include cross-references to plugin pages., Test that glossary includes all required technical terms from spec., Test that glossary includes at least 20 technical terms., Test that at least 5 quick-start guides exist., Test that glossary uses proper :term: directive syntax. (+1 more)
-
-### Community 57 - "Community 57"
+### Community 32 - "Dev Hub (Top-Level Router), Dev Suite README, Dev Workflows Hub"
 Cohesion: 0.19
-Nodes (14): AsyncWebScraper, demo_basic_usage(), demo_error_handling(), demo_large_scale(), main(), Scrape multiple URLs concurrently.          Args:             urls: List of URLs, Print summary statistics, Basic usage demonstration (+6 more)
+Nodes (17): Automation Engineer Agent, Debugger Pro Agent, DevOps Architect Agent, Documentation Expert Agent, SRE Expert Agent, Systems Engineer Agent, fix-imports command, smart-debug Command (+9 more)
 
-### Community 58 - "Community 58"
+### Community 33 - "Julia Mastery Hub, CI/CD Patterns (Julia), Compiler Patterns (Julia)"
+Cohesion: 0.12
+Nodes (17): CI/CD Patterns (Julia), Compiler Patterns (Julia), Core Julia Patterns, Differential Equations (Julia), Interop Patterns (Julia), Julia Mastery Hub, Julia Testing Patterns, ModelingToolkit (+9 more)
+
+### Community 34 - "statistical-physicist agent (opus, soft matter/non-equilibrium/correlations), Bayesian Inference Hub, MCMC Diagnostics"
+Cohesion: 0.21
+Nodes (16): statistical-physicist agent (opus, soft matter/non-equilibrium/correlations), bayesian-sindy-workflow skill, bayesian-ude-jax skill (Diffrax+Equinox+NumPyro), MCMC vs VI Benchmark, consensus-mcmc-pigeons skill (Pigeons.jl NRPT), Model Comparison Diagnostic, diagnose_mcmc(), Bayesian Inference Hub (+8 more)
+
+### Community 35 - "Debug Jax, check_nan_inf, debug_jit"
+Cohesion: 0.14
+Nodes (16): check_device_placement, check_gradient_flow, check_nan_inf, debug_jit, disable_nan_checking, enable_nan_checking, monitor_training_step, print_pytree_structure (+8 more)
+
+### Community 36 - "Session Start, get_session_context, read_progress_file"
 Cohesion: 0.15
-Nodes (18): _analyze_convergence(), _analyze_cost_function(), _analyze_gradient(), _analyze_jacobian(), _analyze_parameters(), _analyze_residuals(), diagnose_result(), _print_summary() (+10 more)
+Nodes (16): Detect project stack from file presence., Detect available compute resources., Get recent git activity summary., Detect research-spark stage artifacts present in the working tree., Read the most recent session progress summary if it exists., Check for uncommitted changes., Read prior session progress summary if it exists., Build session context with orientation from prior work. (+8 more)
 
-### Community 59 - "Community 59"
-Cohesion: 0.15
-Nodes (18): analyze_aggregate_statistics(), analyze_checkpoint_info(), analyze_failure_patterns(), analyze_recent_batches(), analyze_success_metrics(), export_diagnostics_json(), main(), polynomial_model() (+10 more)
+### Community 37 - "diagnose_result, Diagnose Optimization, _analyze_convergence"
+Cohesion: 0.17
+Nodes (16): _analyze_convergence, _analyze_cost_function, _analyze_gradient, _analyze_jacobian, _analyze_parameters, _analyze_residuals, diagnose_result, Diagnose Optimization (+8 more)
 
-### Community 60 - "Community 60"
-Cohesion: 0.15
-Nodes (16): check_diagnostics(), extract_results(), load_data(), main(), model(), plot_traces(), posterior_predictive_check(), prior_predictive_check() (+8 more)
+### Community 38 - "Function Library Demo, demo_comparison(), demo_exponential_decay()"
+Cohesion: 0.12
+Nodes (16): demo_comparison(), demo_exponential_decay(), demo_gaussian(), demo_linear(), demo_polynomial(), demo_power_law(), demo_sigmoid(), Demonstration of NLSQ Common Function Library  This script demonstrates the pre- (+8 more)
 
-### Community 61 - "Community 61"
+### Community 39 - ".run(), .analyze_run(), .get_run_status()"
+Cohesion: 0.13
+Nodes (8): Fetch and parse workflow run logs., Extract error patterns from logs., Sort fixes by priority (high confidence, blocking errors first)., Commit all applied fixes.          Requires --auto-commit to actually commit and, Trigger workflow and return new run ID., Wait for workflow run to complete., Get current status of workflow run., Main iterative fix loop.         Returns True if all errors resolved, False othe
+
+### Community 40 - "Blackjax Custom Sampler, custom_nuts_sampler, run_parallel_chains"
+Cohesion: 0.12
+Nodes (16): create_mixed_sampler, custom_nuts_sampler, dual_averaging_step_size, parallel_tempering_step, run_parallel_chains, run_pmap_chains, Blackjax Custom Sampler, tempered_log_prob (+8 more)
+
+### Community 41 - "Xla Optimization, check_fusion, inspect_hlo"
+Cohesion: 0.12
+Nodes (15): XLA Optimization Patterns for JAX  Demonstrates techniques for analyzing and opt, Multiple operations that should fuse., Check if operations are fused in HLO., Enable compilation logging., Profile JIT compilation time., Get the HLO (XLA) representation., bad_dynamic_layers, check_fusion (+7 more)
+
+### Community 42 - "sci-workflow-engineer agent (LLM-assisted scientific pipelines, JAX/Julia codegen), DSPy Basics skill, Self-Improving AI skill"
+Cohesion: 0.29
+Nodes (15): pinn-engineer agent (physics-informed neural networks, NeuralPDE), sci-workflow-engineer agent (LLM-assisted scientific pipelines, JAX/Julia codegen), DSPy Programmatic Prompt Optimization, RLAIF / Constitutional AI Training, Four Families of Self-Improvement, DSPy Basics skill, LangChain Architecture, LLM and AI Hub (+7 more)
+
+### Community 43 - "Reflection Framework Sub-Skill, Self-Improving Agents Sub-Skill, Cognitive Bias Detection"
+Cohesion: 0.19
+Nodes (14): Cognitive Biases Checklist, Comprehensive Reflection Template, Alignment Evaluation, Cognitive Bias Detection, Constitutional AI / Self-Critique, Content Filtering / Jailbreak Detection, DSPy / TextGrad Automatic Prompt Optimization, Meta-Cognitive Analysis (+6 more)
+
+### Community 44 - "Statistical Physics Sub-Skill, Statistical Physics Hub, statistical-physicist agent (science-suite)"
+Cohesion: 0.33
+Nodes (14): correlation-computational-methods, correlation-experimental-data, correlation-math-foundations, correlation-physical-systems, data-analysis, Active Matter, Correlation Analysis Hub, Multiscale Modeling (+6 more)
+
+### Community 45 - "Julia Pro Agent, JAX Pro Agent, Nonlinear Dynamics Hub"
 Cohesion: 0.2
-Nodes (19): sci-workflow-engineer agent (LLM-assisted scientific pipelines, JAX/Julia codegen), DSPy Programmatic Prompt Optimization, llm-engineering hub skill (agent-core), Hub: reasoning-and-memory (agent-core), Hub: thinkfirst (agent-core, sub-skill of llm-engineering), langchain-architecture, llm-application-dev Sub-Skill (LangChain/LangGraph, RAG, agentic workflows), RLAIF / Constitutional AI Training (+11 more)
+Nodes (14): advanced-optimization skill, JAX Pro Agent, Julia Pro Agent, nonlinear-dynamics-expert agent (opus, bifurcation/chaos/network dynamics), chaos-attractors skill (DynamicalSystems.jl), network-coupled-dynamics, pattern-formation sub-skill (referenced by nonlinear-dynamics hub), Science Suite README (+6 more)
 
-### Community 62 - "Community 62"
-Cohesion: 0.11
-Nodes (3): ProfileMetric, Shared data models for plugin validation tools.  Consolidates duplicate dataclas, Timing metric for profiling operations.      Consolidates LoadMetric and Activat
-
-### Community 63 - "Community 63"
-Cohesion: 0.16
-Nodes (17): demo_comparison(), demo_exponential_decay(), demo_gaussian(), demo_linear(), demo_polynomial(), demo_power_law(), demo_sigmoid(), main() (+9 more)
-
-### Community 64 - "Community 64"
-Cohesion: 0.15
-Nodes (16): example_1_max_iterations(), example_2_auto_recovery(), example_3_diagnostic_analysis(), example_4_comparison(), Demonstration of Enhanced Error Messages in NLSQ  This example shows how NLSQ pr, Example 4: Compare old vs new error messages., Example 1: Max iterations reached., Example 2: Successful fit after applying recommendations. (+8 more)
-
-### Community 65 - "Community 65"
-Cohesion: 0.12
-Nodes (17): create_mixed_sampler(), custom_nuts_sampler(), demo(), dual_averaging_step_size(), parallel_tempering_step(), Custom MCMC Samplers with Blackjax  Demonstrates low-level control over MCMC inf, Create sampler that mixes HMC (continuous) with Gibbs (discrete).      Args:, Run multiple chains in parallel using vmap.      Args:         initial_positions (+9 more)
-
-### Community 66 - "Community 66"
-Cohesion: 0.13
-Nodes (12): check_recompilation(), compare_implementations(), memory_profile(), profile_decorator(), profile_function(), profile_gradient(), Profile memory usage of a JAX function.      Args:         fn: Function to profi, Check if function recompiles for different inputs.      Args:         fn: JIT-co (+4 more)
-
-### Community 67 - "Community 67"
-Cohesion: 0.12
-Nodes (11): AnswerWithContext, bootstrap_fewshot(), GroundedRAG, DSPy RAG program compiled with MIPROv2 on a labelled trainset., Produce a grounded rationale citing context passages by index., Multi-step RAG with retrieval, citation-grounded rationale, and answer., Cheaper fallback: BootstrapFewShot as a smoke-test before MIPROv2., ReAct module with a safe definition-lookup tool. (+3 more)
-
-### Community 68 - "Community 68"
-Cohesion: 0.15
-Nodes (7): str, import_from_path(), TestCompareTrainingRuns, TestDiagnoseOptimization, Regression: validator must NOT report EXCELLENT when no tests ran., Verify accuracy is 0.0% with no tests, not a false positive., TestSkillValidator
-
-### Community 69 - "Community 69"
-Cohesion: 0.22
-Nodes (13): get_recent_commits(), get_test_status(), get_uncommitted_files(), main(), Get recent git commits., Get commits made during this session (last N)., List uncommitted changes., List uncommitted changes. (+5 more)
-
-### Community 70 - "Community 70"
-Cohesion: 0.17
-Nodes (10): Greeter, A class-based greeter with customizable prefix.      Attributes:         prefix:, Initialize the greeter.          Args:             prefix: The greeting prefix t, Tests for the Greeter class., Test greeter with default prefix., Test greeter with custom prefix., Test multiple greeters with different prefixes., Test that empty name raises ValueError. (+2 more)
-
-### Community 71 - "Community 71"
-Cohesion: 0.13
-Nodes (15): dawid_skene(), get_data(), hierarchical_dawid_skene(), item_difficulty(), logistic_random_effects(), mace(), main(), multinomial() (+7 more)
-
-### Community 72 - "Community 72"
-Cohesion: 0.17
-Nodes (16): Evidence Synthesis Skill (PRISMA, meta-analysis, GRADE), Falsifiability Checklist (4-property kill-criterion audit), Gap Matrix Template (phenomena × methods), Landscape Scanner Skill (research-spark Stage 2), Three-Layer Search Strategy (foundational / recent / adjacent), Steelman Note Template (strongest claim + break conditions), Predicted Observable Template (Stage 6→7 handoff format), numerical-prototype (Stage 6: JAX solver + 3 validation passes) (+8 more)
-
-### Community 73 - "Community 73"
-Cohesion: 0.21
-Nodes (15): ai-engineer agent (LLM apps, RAG, NLP) — being renamed to pinn-engineer, context-specialist Agent, orchestrator Agent, reasoning-engine Agent, Quick Reference Cheatsheet, llm-evaluation, rag-implementation (sub-skill ref), Agent Evaluation (+7 more)
-
-### Community 74 - "Community 74"
-Cohesion: 0.19
-Nodes (14): generate_batch_size_scaling(), generate_memory_optimization_chart(), generate_optimizer_comparison(), generate_speedup_chart(), generate_training_progress(), main(), Generate batch size scaling efficiency chart, Configure matplotlib for professional-looking plots (+6 more)
-
-### Community 75 - "Community 75"
+### Community 46 - "Pure Functional Patterns, apply_weight_decay, augment_batch"
 Cohesion: 0.14
-Nodes (11): ActivationHook, analyze_activation_statistics(), diagnose_activation_pathologies(), print_activation_report(), Diagnose activation pathologies.      Args:         activation_stats: Dictionary, Print comprehensive activation analysis report., Hook to capture activations from intermediate layers., Store activation output. (+3 more)
+Nodes (14): Pure Functional Patterns for JAX  Demonstrates JAX-first patterns for state mana, Apply weight decay to all parameters., Linear interpolation between two parameter sets., Scatter-add updates at indices., Update only where mask is True., Apply random augmentations functionally., Clip gradients by global norm using PyTree operations., apply_weight_decay (+6 more)
 
-### Community 76 - "Community 76"
-Cohesion: 0.16
-Nodes (14): ARIA landmark and interactive patterns, axe-core with Playwright automated scanning, WCAG 2.1/2.2 AA compliance, Frontend and Mobile Hub, frontend-and-mobile (hub), frontend-mobile-engineering, mobile-testing-patterns, modern-javascript-patterns (+6 more)
-
-### Community 77 - "Community 77"
-Cohesion: 0.21
-Nodes (4): _make_skill(), Lock in the policy: 4KB at 200K, 20KB at 1M (both = 2%)., Create a SKILL.md file with `body_chars` characters of body content., TestCheckSkillBudget
-
-### Community 78 - "Community 78"
-Cohesion: 0.16
-Nodes (9): Add a load error for a plugin., Add an informational message., Count issues by severity level., Represents a validation issue (error or warning).      Consolidates ValidationEr, Standardized validation result for all validators.      Consolidates ValidationR, Add a validation error., Add a validation warning., ValidationIssue (+1 more)
-
-### Community 79 - "Community 79"
-Cohesion: 0.22
-Nodes (6): IterativeFixEngine, Execute fix strategy., Fix build-related errors., Fix test-related errors., Update test snapshots., Fix out of memory errors.
-
-### Community 80 - "Community 80"
-Cohesion: 0.15
-Nodes (7): Sort fixes by priority (high confidence, blocking errors first)., Commit all applied fixes.          Requires --auto-commit to actually commit and, Trigger workflow and return new run ID., Wait for workflow run to complete., Get current status of workflow run., Print iteration history summary., Main iterative fix loop.         Returns True if all errors resolved, False othe
-
-### Community 81 - "Community 81"
-Cohesion: 0.23
-Nodes (13): central_composite(), fractional_factorial(), full_factorial(), latin_hypercube(), main(), randomize(), Central composite design: factorial cube + axial stars + center.      Only suppo, Return each run repeated n times. (+5 more)
-
-### Community 82 - "Community 82"
-Cohesion: 0.23
-Nodes (14): Active Matter, Advanced Simulations, Correlation Analysis Hub, Correlation Computational Methods, Correlation Experimental Data, Correlation Math Foundations, Correlation Physical Systems, Extreme Value Statistics (+6 more)
-
-### Community 83 - "Community 83"
+### Community 47 - "Python Toolchain Hub, Python Systems Engineering Hub, Modern Packaging (Advanced) Sub-skill"
 Cohesion: 0.18
-Nodes (14): @research-expert agent, bioinformatics skill, IMRaD Scientific Report Structure, Paper Replication, Research Expert Agent Definition, Evidence Synthesis, Research Hub (research-suite), Research Methodology (+6 more)
+Nodes (13): Python Pro Agent, Python Toolchain Hub, Modern Concurrency Sub-skill, Modern Packaging (Advanced) Sub-skill, Robust Testing Sub-skill, Rust Extensions Sub-skill, Python Systems Engineering Hub, Error Handling Patterns Sub-skill (+5 more)
 
-### Community 84 - "Community 84"
+### Community 48 - "SciML and DiffEq Hub, Bayesian PINN Sub-skill, Bayesian UDE Workflow Sub-skill"
+Cohesion: 0.17
+Nodes (13): SciML and DiffEq Hub, Bayesian PINN Sub-skill, Bayesian UDE Workflow Sub-skill, Bifurcation Analysis Sub-skill, Catalyst Reactions Sub-skill, Differential Equations Sub-skill, Equation Discovery (SINDy) Sub-skill, Modeling Toolkit Sub-skill (+5 more)
+
+### Community 49 - "Science Hub (Top-Level Router), Deep Learning Hub, Neural Network Master Agent"
+Cohesion: 0.17
+Nodes (13): Neural Network Master Agent, computer-vision skill, Hub-Skill Routing Pattern, Advanced ML Systems Sub-skill, Deep Learning Core Sub-skill, Deep Learning Experimentation Sub-skill, Neural Architecture Patterns Sub-skill, Neural Network Mathematics Sub-skill (+5 more)
+
+### Community 50 - "Julia Language Hub, Julia CI/CD Patterns Sub-skill, Julia Compiler Patterns Sub-skill"
 Cohesion: 0.15
 Nodes (13): Julia CI/CD Patterns Sub-skill, Julia Compiler Patterns Sub-skill, Core Julia Patterns Sub-skill, Julia Interop Patterns Sub-skill, Julia HPC Distributed Sub-skill, Julia Mastery Sub-skill, Julia Testing Patterns Sub-skill, Julia Package Development Workflow Sub-skill (+5 more)
 
-### Community 85 - "Community 85"
-Cohesion: 0.23
-Nodes (13): CI/CD Pipelines (hub), Code Review Excellence, Comprehensive Validation, e2e-testing-patterns, GitHub Actions Templates (sub-skill stub), GitLab CI Patterns (sub-skill stub), iterative-error-resolution README, Iterative Error Resolution (sub-skill stub) (+5 more)
+### Community 51 - "Doe Generator, fractional_factorial, full_factorial"
+Cohesion: 0.17
+Nodes (13): central_composite, fractional_factorial, full_factorial, latin_hypercube, randomize, replicate, Doe Generator, write_csv (+5 more)
 
-### Community 86 - "Community 86"
+### Community 52 - "Bayesian Workflow Template, Prior Predictive Check, check_diagnostics"
 Cohesion: 0.15
-Nodes (7): hooks_data(), Hook integrity tests across all plugin suites.  Validates hooks.json structure a, Test that command-type hooks reference existing scripts., Load all hooks.json files., Test hooks.json structure for all suites., TestHandlerScripts, TestHookStructure
+Nodes (11): Plot trace plots for visual convergence check.      Args:         mcmc: MCMC obj, Check model fit with posterior predictive.      Args:         mcmc: MCMC object, Check if prior generates reasonable predictions.      Args:         x: Independe, check_diagnostics, extract_results, plot_traces, posterior_predictive_check, Bayesian Workflow Template (+3 more)
 
-### Community 87 - "Community 87"
+### Community 53 - "Generate Diagrams, generate_batch_size_scaling, generate_memory_optimization_chart"
 Cohesion: 0.15
-Nodes (6): ActivationMetrics, ActivationTestResult, PluginTriggeringPatterns, Triggering patterns extracted from a plugin., Result of activation test for a sample., Aggregated activation accuracy metrics.
+Nodes (13): Generate batch size scaling efficiency chart, Configure matplotlib for professional-looking plots, Generate optimizer performance comparison, Generate typical training progress curves, Generate JAX transformation speedup comparison chart, Generate memory optimization techniques comparison, generate_batch_size_scaling, generate_memory_optimization_chart (+5 more)
 
-### Community 88 - "Community 88"
-Cohesion: 0.19
-Nodes (7): KnowledgeBase, Update knowledge base with fix results., Store and retrieve successful fix strategies., Record fix attempt result., Extract error type from fix description., Load knowledge base from file., Save knowledge base to file.
-
-### Community 89 - "Community 89"
-Cohesion: 0.19
-Nodes (12): fully_pooled(), main(), not_pooled(), partially_pooled(), partially_pooled_with_logit(), predict(), print_results(), r"""     Number of hits has a Binomial distribution with independent     probabi (+4 more)
-
-### Community 90 - "Community 90"
-Cohesion: 0.36
-Nodes (12): analyze_dimension(), analyze_pair_of_dimensions(), compute_pairwise_mean_variance(), compute_singleton_mean_variance(), dot(), gaussian_mixture_stats(), get_data(), kernel() (+4 more)
-
-### Community 91 - "Community 91"
-Cohesion: 0.21
-Nodes (12): generate_hierarchical_data(), hierarchical_model(), main(), plot_group_fits(), Run MCMC inference for hierarchical model., Visualize hierarchical shrinkage effect.      Shows how group estimates are "shr, Plot fits for each group., Hierarchical linear regression with partial pooling.      Model:         y_ij ~ (+4 more)
-
-### Community 92 - "Community 92"
-Cohesion: 0.18
-Nodes (10): create_dataset(), example_production_training(), MLP, Multi-layer perceptron for classification, Create synthetic dataset, Complete production training example, Pure training step - no side effects, all state explicit., train_step() (+2 more)
-
-### Community 93 - "Community 93"
-Cohesion: 0.21
-Nodes (13): REST API Best Practices, Authentication & Authorization Patterns, automation-engineer agent, Caching Patterns, Data and Security (hub), Database Patterns, devops-architect agent, Search Patterns (sub-skill stub) (+5 more)
-
-### Community 94 - "Community 94"
-Cohesion: 0.19
-Nodes (13): Python Systems Engineering Skill, Bioinformatics, Computer Vision, Modern Concurrency, Python Development, Python Packaging Advanced, Quantum Computing, Reinforcement Learning (+5 more)
-
-### Community 95 - "Community 95"
-Cohesion: 0.18
-Nodes (12): Neural Network Master Agent, computer-vision skill, Advanced ML Systems Sub-skill, Deep Learning Core Sub-skill, Deep Learning Experimentation Sub-skill, Neural Architecture Patterns Sub-skill, Neural Network Mathematics Sub-skill, Training Diagnostics Sub-skill (+4 more)
-
-### Community 96 - "Community 96"
-Cohesion: 0.17
-Nodes (7): Test that documentation content meets requirements., Set up test environment., Test that glossary.rst exists., Test that glossary has substantial content., Test that guides directory exists with quick-start guides., Test that changelog.rst exists., TestDocumentationContent
-
-### Community 97 - "Community 97"
-Cohesion: 0.17
-Nodes (8): Command, CommandAnalysisMetrics, CommandContext, CommandSuggestionResult, Represents a plugin command., Context information for command suggestion., Result of command suggestion analysis., Aggregated command suggestion metrics.
-
-### Community 98 - "Community 98"
-Cohesion: 0.18
-Nodes (11): exponential_decay_model(), lotka_volterra_model(), neural_ode_surrogate(), Bayesian Parameter Estimation with Differentiable ODE Solvers  Demonstrates inte, Estimate decay rate from noisy observations.      True model: dy/dt = -k * y, Chemical reaction network with stiff dynamics.      Robertson problem: A -> B ->, Use neural network as surrogate for expensive ODE simulation.      Train on simu, Complete workflow: define model, run inference, analyze results. (+3 more)
-
-### Community 99 - "Community 99"
-Cohesion: 0.17
-Nodes (7): Test basic greeting functionality., Test greeting with different names., Test greeting with names containing spaces., Test that empty name raises ValueError., Test that whitespace-only name raises ValueError., Tests for the greet function., TestGreet
-
-### Community 100 - "Community 100"
-Cohesion: 0.2
-Nodes (8): greet_multiple(), Generate greeting messages for multiple names.      Args:         names: List of, Generate a greeting message using the configured prefix.          Args:, Tests for the greet_multiple function., Test greeting multiple names., Test greeting an empty list., Test greeting a single name in a list., TestGreetMultiple
-
-### Community 101 - "Community 101"
-Cohesion: 0.2
-Nodes (11): find_fixed_points(), integrate_lorenz(), lorenz_jacobian(), lorenz_rhs(), maximal_lyapunov_exponent(), Lorenz attractor integration and Lyapunov exponent estimation., Right-hand side of the Lorenz system: dx/dt = f(x)., Jacobian matrix of the Lorenz system at a given state. (+3 more)
-
-### Community 102 - "Community 102"
+### Community 54 - "first_author_surname, key_for_entry, Bib To Steelman"
 Cohesion: 0.23
-Nodes (11): compute_energy(), compute_magnetization(), initialize_lattice(), metropolis_step(), 2D Ising model Monte Carlo simulation using the Metropolis algorithm., Compute total Hamiltonian H = -J sum_{<ij>} s_i s_j., Compute magnetization per spin m = (1/N) sum_i s_i., Perform one full Metropolis sweep over the lattice. (+3 more)
+Nodes (12): parse_bibfile, parse_entry, render_stub, Bib To Steelman, first_author_surname, key_for_entry, normalize_title, Dedupe Refs (+4 more)
 
-### Community 103 - "Community 103"
-Cohesion: 0.24
-Nodes (11): GraphQL Schema Design Patterns, API Design Principles (sub-skill stub), Async Python Anti-Patterns, Event Loop Architecture - Visual Guide, Async Python Patterns, Async Python Patterns - Reference Materials, Backend Patterns (hub), Debugging Toolkit (+3 more)
+### Community 55 - "Sensor Calibration, linear_model, numpyro_example.py"
+Cohesion: 0.18
+Nodes (10): Sensor Calibration: Non-Linear Temperature Sensor ==============================, Steinhart-Hart equation for thermistors.      1/T = A + B*ln(R) + C*(ln(R))³, Polynomial calibration model.      y = c0 + c1*x + c2*x² + c3*x³ + ...      Para, Standard Bayesian Linear Regression: y = alpha + beta * x + epsilon, cubic_model, linear_model, polynomial_calibration, quadratic_model (+2 more)
 
-### Community 104 - "Community 104"
+### Community 56 - "Hierarchical Model Template, generate_hierarchical_data, plot_group_fits"
+Cohesion: 0.18
+Nodes (11): Run MCMC inference for hierarchical model., Visualize hierarchical shrinkage effect.      Shows how group estimates are "shr, Plot fits for each group., Hierarchical linear regression with partial pooling.      Model:         y_ij ~, Generate synthetic hierarchical data.      TODO: Replace with your actual data l, generate_hierarchical_data, hierarchical_model, plot_group_fits (+3 more)
+
+### Community 57 - "engine.py, Engine, _validate_package_name"
+Cohesion: 0.25
+Nodes (9): _validate_gh_arg, _validate_package_name, ErrorAnalysis, FixResult, IterationResult, Engine, Validate a package name extracted from logs before passing to subprocess., Validate CLI arguments passed to gh subprocess calls. (+1 more)
+
+### Community 58 - "Analyze Activations, ActivationHook, register_activation_hooks"
+Cohesion: 0.2
+Nodes (11): ActivationHook, analyze_activation_statistics, diagnose_activation_pathologies, print_activation_report, register_activation_hooks, Analyze Activations, Diagnose activation pathologies.      Args:         activation_stats: Dictionary, Print comprehensive activation analysis report. (+3 more)
+
+### Community 59 - "Reaction Kinetics, first_order_decay, pseudo_first_order"
+Cohesion: 0.2
+Nodes (10): Chemical Reaction Kinetics: Rate Constant Determination ========================, First-order reaction kinetics.      [A](t) = [A]₀ * exp(-kt)      Integrated rat, Second-order reaction kinetics (single reactant).      [A](t) = [A]₀ / (1 + k*[A, Pseudo-first-order kinetics.      Same form as first-order, but k_obs = k[B]₀ wh, first_order_decay, linear_1st_order, linear_2nd_order, pseudo_first_order (+2 more)
+
+### Community 60 - "Enzyme Kinetics, competitive_inhibition, competitive_inh_fit"
+Cohesion: 0.22
+Nodes (10): Enzyme Kinetics: Michaelis-Menten Analysis =====================================, Michaelis-Menten enzyme kinetics model.      v = V_max * [S] / (K_M + [S]), Competitive inhibition model.      v = V_max * [S] / (K_M(1 + [I]/K_i) + [S]), Hill equation for cooperative binding.      v = V_max * [S]^n / (K_50^n + [S]^n), competitive_inh_fit, competitive_inhibition, hill_equation, linear_lb (+2 more)
+
+### Community 61 - "Frontend and Mobile Hub, App Developer Agent, scaffold Command"
+Cohesion: 0.2
+Nodes (10): App Developer Agent, rust-project Command, scaffold Command, Frontend and Mobile Hub, Accessibility Testing Sub-skill, Frontend Mobile Engineering Sub-skill, Mobile Testing Patterns Sub-skill, Modern JavaScript Patterns Sub-skill (+2 more)
+
+### Community 62 - "Reasoning Engine Agent, Reasoning Frameworks Sub-Skill, ultra-think Command"
 Cohesion: 0.27
-Nodes (4): _make_plugin(), Create a minimal plugin tree for index-builder testing., TestBuildPluginIndex, TestImport
+Nodes (10): Agent Core README, ai-assistant Command, Chain-of-Thought Reasoning Concept, First Principles Decomposition, Root Cause Analysis, Tree-of-Thought, Reasoning Engine Agent, Reasoning Frameworks Sub-Skill (+2 more)
 
-### Community 105 - "Community 105"
-Cohesion: 0.31
-Nodes (10): _absolute_max(), _as_array(), check_limit_recovery(), _cli(), _ks_distance(), LimitRecoveryResult, Run sim and reference, compute the chosen metric, compare to tolerance.      Bot, CLI variant: import user's Python file, look for sim() and ref() callables. (+2 more)
-
-### Community 106 - "Community 106"
-Cohesion: 0.18
-Nodes (11): MixedSamplerState, State for mixed Gibbs/HMC sampler., create_batch_iterator(), create_train_state(), functional_training_loop(), Immutable training state - all state is explicit., Create shuffled batch iterator as pure function.      Returns a function that ta, Complete training loop with no side effects. (+3 more)
-
-### Community 107 - "Community 107"
-Cohesion: 0.25
-Nodes (11): Citation Style (in-text format, BibTeX hygiene, journal abbreviations), Environment Conventions (Python 3.12+, uv, pyproject.toml), Figure Standards (fonts, colormaps, resolution, captions), JAX-First Code Architecture Rules, Repository Layout Conventions, _research-commons, Abstract Template (length variants, claim-type variants), One-Page Summary Template (+3 more)
-
-### Community 108 - "Community 108"
-Cohesion: 0.25
-Nodes (11): APS Rheo-XPCS Capability Baseline (8-ID-I beamline), Claim Schema Template (mechanism/prediction/design/measurement), Design-of-Experiments Matrix Template (full/fractional factorial, RSM, LHS), Experiment Designer Skill (Stage 7 research-spark), Falsifiable Claim Skill (Stage 3 research-spark), Instrument Capability Map Template (capability vs signal margins), Pre-registered Success Metrics Template, Multimodal Sequencing Reference (rheology/scattering/simulation ordering) (+3 more)
-
-### Community 109 - "Community 109"
-Cohesion: 0.24
-Nodes (11): differential-equations, ecosystem-selection, gpu-acceleration, interop-patterns, jax-pro agent (science-suite), julia-ml-hpc agent, julia-pro agent (science-suite), turing-model-design (+3 more)
-
-### Community 110 - "Community 110"
+### Community 63 - "Enhanced Error Messages Demo, example_1_max_iterations, example_2_auto_recovery"
 Cohesion: 0.2
-Nodes (10): Artifact Trail Integrity Principle, Research Spark State File (_state.yaml), Experiment Designer Stage-7 Skill, Falsifiable Claim Stage-3 Skill, Landscape Scanner Stage-2 Skill, Numerical Prototype Stage-6 Skill, Premortem Critique Stage-8 Skill, Spark Articulator Stage-1 Skill (+2 more)
+Nodes (10): Demonstration of Enhanced Error Messages in NLSQ  This example shows how NLSQ pr, Example 4: Compare old vs new error messages., Example 1: Max iterations reached., Example 2: Successful fit after applying recommendations., Example 3: Using diagnostic information programmatically., example_1_max_iterations, example_2_auto_recovery, example_3_diagnostic_analysis (+2 more)
 
-### Community 111 - "Community 111"
+### Community 64 - "Titration Curves, buffer_capacity, diprotic_titration"
 Cohesion: 0.2
-Nodes (10): Advanced Optimization, Control Theory, MD Simulation Setup, ML Force Fields, Numerical Methods Implementation, Parallel Computing, Signal Processing, Simulation and HPC Hub (+2 more)
+Nodes (10): Acid-Base Titration Curve Analysis ===================================  This exa, Diprotic acid titration model (e.g., H2CO3, H2SO3).      Parameters     --------, Calculate buffer capacity as a function of pH.      β = 2.303 * C_total * ([H⁺]K, Monoprotic weak acid titration model.      Parameters     ----------     V : arr, Simplified titration model for curve fitting.      Parameters     ----------, buffer_capacity, diprotic_titration, monoprotic_titration (+2 more)
 
-### Community 112 - "Community 112"
+### Community 65 - "print_results, Hmm, hmm.py"
+Cohesion: 0.33
+Nodes (6): forward_log_prob, forward_one_step, print_results, Hmm, semi_supervised_hmm, simulate_data
+
+### Community 66 - "Materials Characterization, linear_elastic, power_law_hardening"
+Cohesion: 0.22
+Nodes (8): Materials Characterization: Stress-Strain Curve Analysis =======================, Linear elastic stress-strain relationship (Hooke's Law).      σ = E * ε  # noqa:, Ramberg-Osgood model for elastoplastic behavior.      ε = σ/E + (σ/K)^n      Rea, Power law strain hardening model (Hollomon equation).      σ = K * ε^n  # noqa:, linear_elastic, power_law_hardening, ramberg_osgood, Materials Characterization
+
+### Community 67 - "Architecture and Infrastructure Hub, Software Architect Agent, Architecture Patterns Sub-skill"
+Cohesion: 0.22
+Nodes (9): Software Architect Agent, Architecture and Infrastructure Hub, Architecture Patterns Sub-skill, Cloud Provider Patterns Sub-skill, Containerization Patterns Sub-skill, Microservices Patterns Sub-skill, Monorepo Management Sub-skill, Systems and CLI Engineering Sub-skill (+1 more)
+
+### Community 68 - "Research and Domains Hub, Bioinformatics, Modern Concurrency"
+Cohesion: 0.22
+Nodes (9): Bioinformatics, Modern Concurrency, Python Development, Python Packaging Advanced, Quantum Computing, Research and Domains Hub, Robust Testing, Rust Extensions (+1 more)
+
+### Community 69 - "analyze, Readability Check, extract_prose"
 Cohesion: 0.36
-Nodes (10): AI Pair Agent Prompt Templates, Dev Workflows Hub, Multi-Model Review Pattern (Claude + Codex + Gemini), AI Pair Programming Skill, Airflow Scientific Workflows Sub-skill, Debugging Toolkit Sub-skill, Dev Workflows hub skill, Documentation Standards Sub-skill (+2 more)
+Nodes (9): analyze, count_jargon, extract_prose, is_passive, Readability Check, split_sentences, word_count, Remove YAML frontmatter, code blocks, and markdown headers. (+1 more)
 
-### Community 113 - "Community 113"
-Cohesion: 0.2
-Nodes (6): Test navigation sidebar and hierarchical structure., Set up test environment., Test that index.rst has a toctree directive., Test that index.rst links to category pages., Test that hierarchical structure is present in documentation., TestNavigationStructure
-
-### Community 114 - "Community 114"
-Cohesion: 0.2
-Nodes (6): Test cross-references and documentation integrity., Set up test environment., Test that referenced documents exist., Test that all 31 plugin documentation pages exist., Test that category pages exist., TestCrossReferences
-
-### Community 115 - "Community 115"
+### Community 70 - "Growth Curves, exponential_phase, gompertz_model"
 Cohesion: 0.22
-Nodes (7): UserStatus, Enum, FixResult, IterationResult, Validate CLI arguments passed to gh subprocess calls., Record iteration results., _validate_gh_arg()
+Nodes (8): Bacterial Growth Curves: Logistic Growth Model =================================, Logistic growth model (Verhulst equation).      N(t) = K / (1 + ((K - N0)/N0) *, Modified Gompertz model for bacterial growth with lag phase.      N(t) = A * exp, Exponential growth (no lag, no saturation).      N(t) = N0 * exp(μ*t)      Param, exponential_phase, gompertz_model, logistic_growth, Growth Curves
 
-### Community 116 - "Community 116"
-Cohesion: 0.22
-Nodes (6): Fix dependency-related errors., Fix npm ERESOLVE conflicts., Fix npm 404 package not found., Fix Python import errors., Validate a package name extracted from logs before passing to subprocess., _validate_package_name()
-
-### Community 117 - "Community 117"
-Cohesion: 0.2
-Nodes (9): buffer_capacity(), diprotic_titration(), monoprotic_titration(), Acid-Base Titration Curve Analysis ===================================  This exa, Diprotic acid titration model (e.g., H2CO3, H2SO3).      Parameters     --------, Calculate buffer capacity as a function of pH.      β = 2.303 * C_total * ([H⁺]K, Monoprotic weak acid titration model.      Parameters     ----------     V : arr, Simplified titration model for curve fitting.      Parameters     ---------- (+1 more)
-
-### Community 118 - "Community 118"
-Cohesion: 0.2
-Nodes (7): first_order_decay(), pseudo_first_order(), Chemical Reaction Kinetics: Rate Constant Determination ========================, First-order reaction kinetics.      [A](t) = [A]₀ * exp(-kt)      Integrated rat, Second-order reaction kinetics (single reactant).      [A](t) = [A]₀ / (1 + k*[A, Pseudo-first-order kinetics.      Same form as first-order, but k_obs = k[B]₀ wh, second_order_decay()
-
-### Community 119 - "Community 119"
-Cohesion: 0.22
-Nodes (8): competitive_inh_fit(), competitive_inhibition(), hill_equation(), michaelis_menten(), Enzyme Kinetics: Michaelis-Menten Analysis =====================================, Michaelis-Menten enzyme kinetics model.      v = V_max * [S] / (K_M + [S]), Competitive inhibition model.      v = V_max * [S] / (K_M(1 + [I]/K_i) + [S]), Hill equation for cooperative binding.      v = V_max * [S]^n / (K_50^n + [S]^n)
-
-### Community 120 - "Community 120"
-Cohesion: 0.36
-Nodes (10): JAX Physics Applications API Quick Reference, Advanced JAX-CFD Patterns, Advanced JAX-MD Patterns, Multiphysics Coupling (Asset), Physics Validation Checklists (Reference), Physics Workflow Diagrams, Advanced PINN Techniques, Quantum Computing with JAX (+2 more)
-
-### Community 121 - "Community 121"
-Cohesion: 0.31
-Nodes (9): Observability and SRE Hub, grafana-dashboards, observability-and-sre (hub), observability-sre-practices, Distributed Tracing Sub-skill, Grafana Dashboards Sub-skill, Observability SRE Practices Sub-skill, Prometheus Configuration Sub-skill (+1 more)
-
-### Community 122 - "Community 122"
-Cohesion: 0.31
-Nodes (9): Command: /team-assemble, Agent Team Configuration System, Hub Skill Architecture, Hub-Skill Routing Pattern, Routing Decision Tree, Sub-Skill, Team Variant System (--var MODE=x), Glossary (+1 more)
-
-### Community 123 - "Community 123"
+### Community 71 - "Session End, write_progress, Get recent git commits."
 Cohesion: 0.28
-Nodes (6): extract_code_blocks(), Extract code blocks from markdown content (helper for tests), Test suite for content extraction functionality, Test 4.1.1: Test code example extraction from README.md files (Julia), Test 4.1.4: Test code block language detection, TestContentExtraction
+Nodes (9): Get recent git commits., Get commits made during this session (last N)., List uncommitted changes., Quick check if tests were last passing., Write structured progress summary for next session., get_test_status, get_uncommitted_files, Session End (+1 more)
 
-### Community 124 - "Community 124"
+### Community 72 - "Observable Extractor, _to_list, load_predicted_observable"
 Cohesion: 0.22
-Nodes (5): ErrorAnalysis, Categorize errors and assign fix strategies., Map error type to category., Calculate priority score (higher = more important)., Get best fix strategy based on historical success.
+Nodes (7): _to_list, load_predicted_observable, Observable Extractor, write_predicted_observable, Best-effort conversion to a plain Python list for YAML/JSON serialization., Write the observable record to YAML (preferred) or JSON based on extension., Load a predicted observable record from YAML or JSON.
 
-### Community 125 - "Community 125"
+### Community 73 - "train_step, TrainState, MixedSamplerState"
+Cohesion: 0.22
+Nodes (9): MixedSamplerState, State for mixed Gibbs/HMC sampler., Immutable training state - all state is explicit., Pure training step - no side effects, all state explicit., Full SPMD training loop with proper sharding., NamedTuple, train_step, TrainState (+1 more)
+
+### Community 74 - "Team Assemble, Actions, Agent Team Assembly"
+Cohesion: 0.22
+Nodes (9): Actions, Agent Team Assembly, Team Assemble, Step 1.5: Codebase Detection, Step 1: Parse the Command, Tier 0 — Cache lookup (always, before any scanning), Tier 1 — Manifests (always), Tier 2 — Directory shape (Glob, near-free) (+1 more)
+
+### Community 75 - "Testing and Quality Hub, Quality Specialist Agent, Code Review Sub-skill"
+Cohesion: 0.25
+Nodes (8): Quality Specialist Agent, Testing and Quality Hub, Code Review Sub-skill, Comprehensive Validation Sub-skill, E2E Testing Patterns Sub-skill, Plugin Syntax Validator Sub-skill, Test Automation Sub-skill, Testing Patterns Sub-skill
+
+### Community 76 - "LLM Application Patterns Skill, Reasoning and Memory Hub, Memory System Patterns"
+Cohesion: 0.36
+Nodes (8): LLM Application Patterns Skill, RAG Pipeline Concept, Knowledge Graph Patterns, Memory System Patterns, Reasoning and Memory Hub, Reasoning Frameworks, Reflection Framework, Vector Database Concept
+
+### Community 77 - "multi_peak_model, Spectroscopy Peaks, gaussian"
+Cohesion: 0.32
+Nodes (8): Spectroscopy Peak Fitting: Multi-Peak Deconvolution ============================, Gaussian peak profile.      Parameters     ----------     x : array_like, Lorentzian peak profile (Cauchy distribution).      Common in spectroscopy for b, Model with 3 peaks (2 Gaussian + 1 Lorentzian) and linear background.      Param, gaussian, lorentzian, multi_peak_model, Spectroscopy Peaks
+
+### Community 78 - ".categorize_errors(), .calculate_priority(), .get_category()"
+Cohesion: 0.25
+Nodes (4): Categorize errors and assign fix strategies., Map error type to category., Calculate priority score (higher = more important)., Get best fix strategy based on historical success.
+
+### Community 79 - "  Init  , GaussianShell, DualMoonDistribution"
 Cohesion: 0.39
-Nodes (8): analyze(), count_jargon(), extract_prose(), is_passive(), main(), Strip markdown headers, code blocks, and metadata lines., split_sentences(), word_count()
+Nodes (6):   Init  , GaussianShell, Initialize the greeter.          Args:             prefix: The greeting prefix t, dual_moon_model, DualMoonDistribution, Neutra
 
-### Community 126 - "Community 126"
-Cohesion: 0.22
-Nodes (5): polynomial_calibration(), Sensor Calibration: Non-Linear Temperature Sensor ==============================, Steinhart-Hart equation for thermistors.      1/T = A + B*ln(R) + C*(ln(R))³, Polynomial calibration model.      y = c0 + c1*x + c2*x² + c3*x³ + ...      Para, steinhart_hart()
+### Community 80 - "example_bayesian_inference, generate_synthetic_data, 04 Bayesian Inference"
+Cohesion: 0.33
+Nodes (7): bayesian_linear_model, example_bayesian_inference, generate_synthetic_data, 04 Bayesian Inference, Generate synthetic regression data, Bayesian linear regression model, Complete Bayesian inference workflow with NumPyro
 
-### Community 127 - "Community 127"
-Cohesion: 0.22
-Nodes (7): linear_elastic(), power_law_hardening(), ramberg_osgood(), Materials Characterization: Stress-Strain Curve Analysis =======================, Linear elastic stress-strain relationship (Hooke's Law).      σ = E * ε  # noqa:, Ramberg-Osgood model for elastoplastic behavior.      ε = σ/E + (σ/K)^n      Rea, Power law strain hardening model (Hollomon equation).      σ = K * ε^n  # noqa:
+### Community 81 - "Radioactive Decay, half_life_from_lambda, propagate_uncertainty"
+Cohesion: 0.33
+Nodes (7): Radioactive Decay: Half-Life Calculation =======================================, Radioactive decay model: N(t) = N0 * exp(-lambda * t)      Parameters     ------, Calculate half-life from decay constant.      t_half = ln(2) / lambda      Param, Propagate uncertainty from decay constant to half-life.      Using error propaga, half_life_from_lambda, propagate_uncertainty, Radioactive Decay
 
-### Community 128 - "Community 128"
-Cohesion: 0.22
-Nodes (7): exponential_phase(), gompertz_model(), logistic_growth(), Bacterial Growth Curves: Logistic Growth Model =================================, Logistic growth model (Verhulst equation).      N(t) = K / (1 + ((K - N0)/N0) *, Modified Gompertz model for bacterial growth with lag phase.      N(t) = A * exp, Exponential growth (no lag, no saturation).      N(t) = N0 * exp(μ*t)      Param
+### Community 82 - "four_parameter_logistic, inhibition_model, dose_response.py"
+Cohesion: 0.33
+Nodes (6): Dose-Response Curves: EC50 and IC50 Determination ==============================, 4-parameter logistic (4PL) dose-response model.      Response = Bottom + (Top -, Inhibition dose-response model (3-parameter).      Response = Top / (1 + (dose/I, four_parameter_logistic, inhibition_model, Dose Response
 
-### Community 130 - "Community 130"
-Cohesion: 0.31
-Nodes (9): App Developer, Scientific Feature Development, JAX/JIT Safety, Julia Type Stability, Orchestrator, quality-specialist, Scientific GUI Architecture, Dev Hub (+1 more)
+### Community 83 - "capture_recapture.py, Hmm Enum, hmm_enum.py"
+Cohesion: 0.48
+Nodes (4): model_1, model_2, model_4, Hmm Enum
 
-### Community 131 - "Community 131"
-Cohesion: 0.36
-Nodes (5): AgentDirective, BasePluginDirective, CommandDirective, SkillDirective, SphinxDirective
-
-### Community 132 - "Community 132"
-Cohesion: 0.32
-Nodes (4): load_frontmatter(), Extract and parse YAML frontmatter from a markdown file., test_agent_frontmatter_validity(), test_skill_frontmatter_validity()
-
-### Community 133 - "Community 133"
-Cohesion: 0.32
-Nodes (4): load_frontmatter(), Extract and parse YAML frontmatter from a markdown file., test_agent_frontmatter_validity(), test_skill_frontmatter_validity()
-
-### Community 134 - "Community 134"
-Cohesion: 0.25
-Nodes (5): Test versioned documentation support., Set up test environment., Test that conf.py has version information., Test that sphinx-multiversion settings are present., TestVersioningSupport
-
-### Community 135 - "Community 135"
-Cohesion: 0.25
-Nodes (4): Test search index generation and functionality., Set up test environment., Test that search index generates successfully., TestSearchFunctionality
-
-### Community 136 - "Community 136"
-Cohesion: 0.25
-Nodes (5): Load a single plugin's metadata.          Returns None if plugin doesn't exist o, Load all plugins from the plugins directory.          Returns dict mapping plugi, Get plugin from cache, or load it if not cached., PluginMetadata, Plugin metadata extracted from plugin.json.      Consolidates PluginMetadata fro
-
-### Community 137 - "Community 137"
-Cohesion: 0.32
-Nodes (7): _normalize_component_entry(), _normalize_component_list(), Unified plugin.json loader with caching.  Consolidates duplicate plugin loading, Extract YAML frontmatter from a markdown file.      Returns an empty dict if the, Normalize an agents/commands/skills entry to a dict.      plugin.json entries ca, Normalize a list of agents/commands/skills entries to dicts., _read_frontmatter()
-
-### Community 139 - "Community 139"
-Cohesion: 0.39
-Nodes (7): main(), print_summary(), print_unified_diff(), Return a list of (heading, body) tuples. Text before first heading gets '(preamb, Per-section summary: added / removed / modified heading lists., section_summary(), split_into_sections()
-
-### Community 140 - "Community 140"
+### Community 84 - "Diagnose Gradients, compute_gradient_stats, diagnose_gradient_pathology"
 Cohesion: 0.29
-Nodes (5): has_uncommitted_changes(), main(), Acknowledge task completion., Check if there are uncommitted changes to suggest committing., Remind about validation and suggest commit after task completion.
+Nodes (7): compute_gradient_stats, diagnose_gradient_pathology, print_gradient_report, Diagnose Gradients, Print comprehensive gradient analysis report., Compute comprehensive gradient statistics for all model parameters.      Args:, Diagnose gradient pathologies (vanishing, exploding, dead neurons).      Args:
 
-### Community 141 - "Community 141"
-Cohesion: 0.36
-Nodes (7): first_author_surname(), key_for_entry(), main(), normalize_title(), Lower-case, strip punctuation, collapse whitespace., Extract first author's surname. Handles 'Surname, Given' and 'Given Surname'., Return (kind, key) where kind is 'doi' or 'fuzzy'.
-
-### Community 142 - "Community 142"
-Cohesion: 0.36
-Nodes (7): _cli(), Required N for detecting an R^2 of a given effect size in linear regression., Required N per group for a two-sample t-test.      effect_size: Cohen's d (diffe, Required N per group for a one-way ANOVA.      effect_size: Cohen's f (SD of gro, required_n_anova(), required_n_regression(), required_n_two_sample()
-
-### Community 143 - "Community 143"
-Cohesion: 0.32
-Nodes (5): check_numerical_integrity(), main(), Suggest linting after file modifications., Log file modifications for potential auto-linting., Check Bash output for numerical issues.
-
-### Community 144 - "Community 144"
-Cohesion: 0.25
-Nodes (7): damped_oscillator(), damping_time(), quality_factor(), Damped Oscillation: Pendulum Damping Analysis ==================================, Damped harmonic oscillator model.      x(t) = A0 * exp(-γt) * cos(ωt + φ)      P, Calculate quality factor Q.      Q = ω / (2γ)      Higher Q means less damping (, Calculate damping time constant (1/e decay time).      τ = 1/γ      Parameters
-
-### Community 145 - "Community 145"
-Cohesion: 0.29
-Nodes (7): half_life_from_lambda(), propagate_uncertainty(), radioactive_decay(), Radioactive Decay: Half-Life Calculation =======================================, Radioactive decay model: N(t) = N0 * exp(-lambda * t)      Parameters     ------, Calculate half-life from decay constant.      t_half = ln(2) / lambda      Param, Propagate uncertainty from decay constant to half-life.      Using error propaga
-
-### Community 146 - "Community 146"
-Cohesion: 0.32
-Nodes (7): gaussian(), lorentzian(), multi_peak_model(), Spectroscopy Peak Fitting: Multi-Peak Deconvolution ============================, Gaussian peak profile.      Parameters     ----------     x : array_like, Lorentzian peak profile (Cauchy distribution).      Common in spectroscopy for b, Model with 3 peaks (2 Gaussian + 1 Lorentzian) and linear background.      Param
-
-### Community 148 - "Community 148"
-Cohesion: 0.36
-Nodes (4): GaussianShell, main(), model(), run_inference()
-
-### Community 149 - "Community 149"
-Cohesion: 0.25
-Nodes (6): compute_gradient_stats(), diagnose_gradient_pathology(), print_gradient_report(), Print comprehensive gradient analysis report., Compute comprehensive gradient statistics for all model parameters.      Args:, Diagnose gradient pathologies (vanishing, exploding, dead neurons).      Args:
-
-### Community 150 - "Community 150"
-Cohesion: 0.25
-Nodes (7): fit_nuts(), fit_svi(), hierarchical_model(), Hierarchical Bayesian regression with NumPyro and JAX., Two-level hierarchical model with non-centered parameterization., Run NUTS inference and return an ArviZ-friendly chain., Variational inference fallback for large datasets.
-
-### Community 151 - "Community 151"
-Cohesion: 0.36
-Nodes (6): getEnv(), main(), processHandler(), worker(), Result, WorkItem
-
-### Community 152 - "Community 152"
-Cohesion: 0.29
-Nodes (7): Backend Patterns Hub, API Design Principles Sub-skill, Async Python Patterns Sub-skill, GraphQL Patterns Sub-skill, Message Queue Patterns Sub-skill, Node.js Backend Patterns Sub-skill, WebSocket Patterns Sub-skill
-
-### Community 153 - "Community 153"
+### Community 85 - "Data and Security Hub, Auth Implementation Patterns Sub-skill, Caching Patterns Sub-skill"
 Cohesion: 0.29
 Nodes (7): Data and Security Hub, Auth Implementation Patterns Sub-skill, Caching Patterns Sub-skill, Database Patterns Sub-skill, Search Patterns Sub-skill, Secrets Management Sub-skill, SQL Optimization Patterns Sub-skill
 
-### Community 154 - "Community 154"
+### Community 86 - "Backend Patterns Hub, API Design Principles Sub-skill, Async Python Patterns Sub-skill"
 Cohesion: 0.29
-Nodes (7): Architecture and Infrastructure Hub, Architecture Patterns Sub-skill, Cloud Provider Patterns Sub-skill, Containerization Patterns Sub-skill, Microservices Patterns Sub-skill, Monorepo Management Sub-skill, Systems and CLI Engineering Sub-skill
+Nodes (7): Backend Patterns Hub, API Design Principles Sub-skill, Async Python Patterns Sub-skill, GraphQL Patterns Sub-skill, Message Queue Patterns Sub-skill, Node.js Backend Patterns Sub-skill, WebSocket Patterns Sub-skill
 
-### Community 155 - "Community 155"
-Cohesion: 0.33
-Nodes (3): load_frontmatter(), Extract and parse YAML frontmatter from a markdown file., test_agent_frontmatter_validity()
-
-### Community 156 - "Community 156"
-Cohesion: 0.33
-Nodes (6): gaussian_model(), main(), Example 2: Checkpoint Save and Resume  This example demonstrates checkpoint save, Gaussian model: y = amp * exp(-0.5 * ((x - center) / width)^2), Callback to simulate interruption after 5 iterations.      ``params`` and ``loss, simulate_interruption()
-
-### Community 157 - "Community 157"
-Cohesion: 0.43
-Nodes (5): collect_files(), lint_file(), lint_text(), main(), Return a list of issue lines for the given text.
-
-### Community 158 - "Community 158"
+### Community 87 - "JAX Computing Hub, JAX DiffEq Pro Sub-skill, JAX Bayesian Pro Sub-skill"
 Cohesion: 0.29
-Nodes (3): main(), Log science subagent completion., Log subagent completion for orchestration tracking.
+Nodes (7): JAX Bayesian Pro Sub-skill, JAX Core Programming Sub-skill, JAX DiffEq Pro Sub-skill, JAX Mastery Sub-skill, JAX Optimization Pro Sub-skill, JAX Physics Applications Sub-skill, JAX Computing Hub
 
-### Community 159 - "Community 159"
-Cohesion: 0.48
-Nodes (6): first_author_surname(), main(), parse_bibfile(), parse_entry(), Return a dict of BibTeX fields., render_stub()
+### Community 88 - "Damped Oscillation, damping_time, quality_factor"
+Cohesion: 0.29
+Nodes (7): damping_time, quality_factor, Damped Oscillation, Damped Oscillation: Pendulum Damping Analysis ==================================, Damped harmonic oscillator model.      x(t) = A0 * exp(-γt) * cos(ωt + φ)      P, Calculate quality factor Q.      Q = ω / (2γ)      Higher Q means less damping (, Calculate damping time constant (1/e decay time).      τ = 1/γ      Parameters
 
-### Community 160 - "Community 160"
-Cohesion: 0.48
-Nodes (6): extract_latex_symbols(), extract_python_symbols(), main(), normalize_name(), Strip LaTeX backslashes and braces for comparison., reconcile()
-
-### Community 161 - "Community 161"
-Cohesion: 0.33
-Nodes (6): bayesian_linear_model(), example_bayesian_inference(), generate_synthetic_data(), Generate synthetic regression data, Bayesian linear regression model, Complete Bayesian inference workflow with NumPyro
-
-### Community 162 - "Community 162"
-Cohesion: 0.33
-Nodes (6): benchmark_comparison(), exponential_decay_jax(), exponential_decay_numpy(), Exponential decay model (NumPy)., Exponential decay model (JAX)., Compare SciPy vs NLSQ across dataset sizes.
-
-### Community 163 - "Community 163"
+### Community 89 - "example_production_training, MLP, create_dataset"
 Cohesion: 0.38
-Nodes (6): inject_noise_into_data(), main(), noisy_exponential(), Example 3: Custom Retry Settings for Noisy Data  This example demonstrates how t, Exponential model with potential numerical issues, Inject NaN values into data to simulate noisy sensors
+Nodes (7): create_dataset, example_production_training, MLP, 02 Production Training, Multi-layer perceptron for classification, Create synthetic dataset, Complete production training example
 
-### Community 164 - "Community 164"
-Cohesion: 0.43
-Nodes (5): create_lookup(), main(), print_model_shape(), Create a map between s1 indices and unique s2 indices, run_inference()
-
-### Community 165 - "Community 165"
-Cohesion: 0.52
-Nodes (6): get_data(), kernel(), main(), model(), predict(), run_inference()
-
-### Community 166 - "Community 166"
-Cohesion: 0.48
-Nodes (6): get_data(), main(), model(), nonlin(), predict(), run_inference()
-
-### Community 167 - "Community 167"
-Cohesion: 0.48
-Nodes (6): get_data(), kernel(), main(), model(), run_nuts(), run_svi()
-
-### Community 168 - "Community 168"
-Cohesion: 0.52
-Nodes (3): dual_moon_model(), DualMoonDistribution, main()
-
-### Community 170 - "Community 170"
-Cohesion: 0.48
-Nodes (6): forward_log_prob(), forward_one_step(), main(), print_results(), semi_supervised_hmm(), simulate_data()
-
-### Community 171 - "Community 171"
-Cohesion: 0.38
-Nodes (7): signal-processing, simulation-and-hpc (hub), statistical-physics-hub, statistical-physics, stochastic-dynamics, time-series-analysis, trajectory-analysis
-
-### Community 172 - "Community 172"
-Cohesion: 0.67
-Nodes (7): correlation-analysis hub, correlation-computational-methods, correlation-experimental-data, correlation-math-foundations, correlation-physical-systems, data-analysis, statistical-physicist agent (science-suite)
-
-### Community 173 - "Community 173"
-Cohesion: 0.29
-Nodes (7): dimensional_analysis template (Buckingham Pi worksheet), framing_variants (mechanistic/predictive/design-oriented examples), graybox_boundary template (SciML physics/learned boundary spec), spark-articulator skill (research-spark Stage 1), spark_template (01_spark.md artifact template), stepwise_derivation_protocol (atomic step discipline), theory-scaffold skill (research-spark Stages 4-5)
-
-### Community 174 - "Community 174"
-Cohesion: 0.29
-Nodes (7): Deep Learning, LLM Application Patterns, LLM Engineering Hub (agent-core), MCP Integration, Prompt Engineering Patterns, Safety Guardrails, ThinkFirst
-
-### Community 175 - "Community 175"
+### Community 90 - "System Identification, first_order_step_response, second_order_step_response"
 Cohesion: 0.33
-Nodes (6): analyze-data command, correlation-analysis skill (hub), correlation-computational-methods sub-skill, correlation-experimental-data sub-skill, correlation-math-foundations sub-skill, correlation-physical-systems sub-skill
+Nodes (6): System Identification: First-Order System Step Response ========================, First-order system step response with time delay.      y(t) = K * (1 - exp(-(t -, Second-order system step response (underdamped).      For ζ < 1 (underdamped):, first_order_step_response, System Identification, second_order_step_response
 
-### Community 176 - "Community 176"
+### Community 91 - "CI/CD Pipelines Hub, Deployment Pipeline Design Sub-skill, GitHub Actions Templates Sub-skill"
 Cohesion: 0.33
 Nodes (6): CI/CD Pipelines Hub, Deployment Pipeline Design Sub-skill, GitHub Actions Templates Sub-skill, GitLab CI Patterns Sub-skill, Iterative Error Resolution Sub-skill, Security CI Template Sub-skill
 
-### Community 177 - "Community 177"
+### Community 92 - "Observability and SRE Hub, Distributed Tracing Sub-skill, Grafana Dashboards Sub-skill"
 Cohesion: 0.33
-Nodes (3): Calculate confidence score for fix., Get base confidence for error type., Get historical success rate for error type.
+Nodes (6): Observability and SRE Hub, Distributed Tracing Sub-skill, Grafana Dashboards Sub-skill, Observability SRE Practices Sub-skill, Prometheus Configuration Sub-skill, SLO Implementation Sub-skill
 
-### Community 178 - "Community 178"
-Cohesion: 0.53
-Nodes (4): _cli(), ConvergenceResult, Run the callable at each resolution in param_values, estimate the converged, run_convergence()
-
-### Community 179 - "Community 179"
-Cohesion: 0.47
-Nodes (5): extract_candidates(), extract_prose(), main(), Remove YAML frontmatter, code blocks, and markdown headers., Return a Counter mapping candidate concepts to frequency.
-
-### Community 180 - "Community 180"
+### Community 93 - "workflow-automate command, GitHub Actions CI/CD workflows, deps command"
 Cohesion: 0.33
-Nodes (4): Test that fixture can be reused across tests., Tests demonstrating pytest fixture usage., Test using the greeter fixture., TestGreeterFixture
+Nodes (6): deps command, fix-commit-errors command, workflow-automate command, GitHub Actions CI/CD workflows, GitLab CI pipeline, Terraform IaC enterprise workflow
 
-### Community 181 - "Community 181"
+### Community 94 - "JAX Physics Applications API Quick Reference, Advanced PINN Techniques, Advanced JAX-CFD Patterns"
 Cohesion: 0.33
-Nodes (5): Tests for the core module., Test greet function with parametrized inputs., Fixture providing a sample greeter instance., sample_greeter(), test_greet_parametrized()
+Nodes (6): JAX Physics Applications API Quick Reference, Advanced JAX-CFD Patterns, Advanced JAX-MD Patterns, Multiphysics Coupling (Asset), Advanced PINN Techniques, Quantum Computing with JAX
 
-### Community 182 - "Community 182"
-Cohesion: 0.33
-Nodes (5): first_order_step_response(), System Identification: First-Order System Step Response ========================, First-order system step response with time delay.      y(t) = K * (1 - exp(-(t -, Second-order system step response (underdamped).      For ζ < 1 (underdamped):, second_order_step_response()
-
-### Community 183 - "Community 183"
-Cohesion: 0.33
-Nodes (5): four_parameter_logistic(), inhibition_model(), Dose-Response Curves: EC50 and IC50 Determination ==============================, 4-parameter logistic (4PL) dose-response model.      Response = Bottom + (Top -, Inhibition dose-response model (3-parameter).      Response = Top / (1 + (dose/I
-
-### Community 184 - "Community 184"
-Cohesion: 0.53
-Nodes (4): main(), run_hmc(), run_hmcecs(), summary_plot()
-
-### Community 185 - "Community 185"
-Cohesion: 0.47
-Nodes (3): get_data(), main(), run_inference()
-
-### Community 186 - "Community 186"
-Cohesion: 0.33
-Nodes (4): dz_dt(), model(), Lotka–Volterra equations. Real positive parameters `alpha`, `beta`, `gamma`, `de, :param int N: number of measurement times     :param numpy.ndarray y: measured p
-
-### Community 187 - "Community 187"
+### Community 95 - "Style Lint, lint_file, lint_text"
 Cohesion: 0.4
-Nodes (5): build_preprocessor(), ML pipeline with scikit-learn and MLflow experiment tracking., Build column transformer for mixed feature types., Train a gradient boosting classifier with cross-validation and MLflow logging., train_and_evaluate()
+Nodes (6): Return a list of issue lines for the given text., _banned_pattern, collect_files, lint_file, lint_text, Style Lint
 
-### Community 188 - "Community 188"
-Cohesion: 0.47
-Nodes (5): cat_files(), Cli, Command, count_lines(), main()
-
-### Community 189 - "Community 189"
-Cohesion: 0.47
-Nodes (6): API design checklist asset, multi-platform command, API versioning strategies, GraphQL schema design and DataLoader N+1 prevention, REST resource-oriented design, api-design-principles skill
-
-### Community 190 - "Community 190"
-Cohesion: 0.47
-Nodes (6): nonlinear-dynamics-expert agent (science-suite), research-expert agent, research-spark-orchestrator agent, research-spark skill, research-suite README, simulation-expert agent (science-suite)
-
-### Community 191 - "Community 191"
-Cohesion: 0.73
-Nodes (6): scientific-review references/integrity_checks.md, scientific-review --mode flag design pattern, Scientific Review Mode Flag Design Spec, Scientific Review Mode Flag Implementation Plan, scientific-review references/review_structure.md, scientific-review SKILL.md (file)
-
-### Community 192 - "Community 192"
-Cohesion: 0.5
-Nodes (4): check_limit(), _cli(), CLI entry point for simple cases defined in a JSON spec.      JSON schema:     {, Evaluate `expression` in the limit where each variable in `limits` approaches
-
-### Community 193 - "Community 193"
+### Community 96 - "Artifact Diff, section_summary, split_into_sections"
 Cohesion: 0.4
-Nodes (3): main(), Capture stop failure context., Classify and log stop failure event.
+Nodes (6): print_unified_diff, Artifact Diff, section_summary, split_into_sections, Return a list of (heading, body) tuples. Text before first heading gets '(preamb, Per-section summary: added / removed / modified heading lists.
 
-### Community 194 - "Community 194"
-Cohesion: 0.6
-Nodes (4): extract_equations(), format_annotation(), main(), Return a list of dicts with env, label, body, line_start.
+### Community 97 - "02 Checkpoint Resume, gaussian_model, simulate_interruption"
+Cohesion: 0.33
+Nodes (6): gaussian_model, 02 Checkpoint Resume, simulate_interruption, Example 2: Checkpoint Save and Resume  This example demonstrates checkpoint save, Gaussian model: y = amp * exp(-0.5 * ((x - center) / width)^2), Callback to simulate interruption after 5 iterations.      ``params`` and ``loss
 
-### Community 195 - "Community 195"
-Cohesion: 0.5
-Nodes (4): exponential_decay(), main(), Example 1: Basic Fault Tolerance with Streaming Optimizer  This example demonstr, Exponential decay model: y = a * exp(-b * x)
+### Community 98 - "03 Custom Retry Settings, inject_noise_into_data, noisy_exponential"
+Cohesion: 0.33
+Nodes (6): inject_noise_into_data, noisy_exponential, 03 Custom Retry Settings, Example 3: Custom Retry Settings for Noisy Data  This example demonstrates how t, Exponential model with potential numerical issues, Inject NaN values into data to simulate noisy sensors
 
-### Community 196 - "Community 196"
-Cohesion: 0.5
-Nodes (4): main(), multi_scale_model(), Example: Adaptive Hybrid Streaming Optimizer with Parameter Normalization  This, Model with parameters spanning 6 orders of magnitude.      This model is challen
+### Community 99 - "Formalism Code Reconcile, normalize_name, reconcile"
+Cohesion: 0.4
+Nodes (6): extract_latex_symbols, extract_python_symbols, normalize_name, reconcile, Formalism Code Reconcile, Strip LaTeX backslashes and braces for comparison.
 
-### Community 197 - "Community 197"
-Cohesion: 0.6
-Nodes (3): main(), print_results(), run_inference()
+### Community 100 - "create_train_state, functional_training_loop, create_batch_iterator"
+Cohesion: 0.33
+Nodes (6): Create shuffled batch iterator as pure function.      Returns a function that ta, Complete training loop with no side effects., Create initial training state., create_batch_iterator, create_train_state, functional_training_loop
 
-### Community 199 - "Community 199"
-Cohesion: 0.6
-Nodes (3): main(), predict(), run_inference()
-
-### Community 200 - "Community 200"
+### Community 101 - "Research Quality Assessment Report Template, Experimental Design Checklist, Methodology Evaluation Framework"
 Cohesion: 0.6
 Nodes (5): Experimental Design Checklist, Methodology Evaluation Framework, Publication Readiness Checklist, Statistical Rigor Guide, Research Quality Assessment Report Template
 
-### Community 201 - "Community 201"
-Cohesion: 0.4
-Nodes (5): Knowledge Graph Patterns, Memory System Patterns, Reasoning and Memory Hub, Reasoning Frameworks, Reflection Framework
-
-### Community 204 - "Community 204"
-Cohesion: 0.5
-Nodes (3): greet(), Core functionality for the example package.  This module provides basic greeting, Generate a greeting message.      Args:         name: The name to greet. Must be
-
-### Community 205 - "Community 205"
-Cohesion: 0.67
-Nodes (3): decay_model(), main(), Simple exponential decay model: A * exp(-lambda * x) + C
-
-### Community 210 - "Community 210"
-Cohesion: 0.67
-Nodes (3): compute_rdf(), main(), Compute radial distribution function g(r)
-
-### Community 211 - "Community 211"
-Cohesion: 0.5
-Nodes (4): dropout(), forward_with_dropout(), Dropout with explicit RNG., Forward pass with multiple dropout layers, each with unique RNG.
-
-### Community 212 - "Community 212"
+### Community 102 - "C project memory safety with Valgrind/AddressSanitizer, adopt-code command, c-project command"
 Cohesion: 0.5
 Nodes (4): adopt-code command, c-project command, profile-performance command, C project memory safety with Valgrind/AddressSanitizer
 
-### Community 226 - "Community 226"
-Cohesion: 1.0
-Nodes (3): Airflow DAG scientific pipeline patterns, TimescaleDB integration for time-series, airflow-scientific-workflows skill
+### Community 103 - "Strangler Fig migration pattern, Technical debt ROI-based scoring and roadmap, modernize command"
+Cohesion: 0.5
+Nodes (4): modernize command, tech-debt command, Strangler Fig migration pattern, Technical debt ROI-based scoring and roadmap
 
-### Community 227 - "Community 227"
-Cohesion: 1.0
-Nodes (3): prometheus-configuration, slo-implementation, sre-expert agent
+### Community 104 - "multi_scale_model(), Hybrid Streaming Demo, Example: Adaptive Hybrid Streaming Optimizer with Parameter Normalization  This"
+Cohesion: 0.5
+Nodes (4): multi_scale_model(), Example: Adaptive Hybrid Streaming Optimizer with Parameter Normalization  This, Model with parameters spanning 6 orders of magnitude.      This model is challen, Hybrid Streaming Demo
 
-### Community 228 - "Community 228"
+### Community 105 - "dropout, forward_with_dropout, Dropout with explicit RNG."
+Cohesion: 0.5
+Nodes (4): Dropout with explicit RNG., Forward pass with multiple dropout layers, each with unique RNG., dropout, forward_with_dropout
+
+### Community 106 - "demonstrate_donation, inplace_update, Donate `state` buffer - allows XLA to reuse memory.      The original `state` ar"
+Cohesion: 0.5
+Nodes (4): Donate `state` buffer - allows XLA to reuse memory.      The original `state` ar, Show buffer donation pattern., demonstrate_donation, inplace_update
+
+### Community 109 - "run-all-tests Command, double-check Command, test-generate Command"
 Cohesion: 0.67
-Nodes (3): Claude Code Plugin Spec Compliance Audit v3.4.1, Hook Event Compliance (12/28 used — PreToolUse, PostToolUse, SessionStart/End, etc.), New Claude Code Capabilities v2.1.113-2.1.126 (mcp_tool hook, themes/, updatedToolOutput, OTel skill_activated)
+Nodes (3): double-check Command, run-all-tests Command, test-generate Command
 
-### Community 229 - "Community 229"
-Cohesion: 1.0
-Nodes (3): UserProfile (UserProfile.tsx React component), fetchUser (UserProfile.tsx async fetch function), UserProfile React Component (TypeScript/React with hooks)
+### Community 110 - "refactor-clean command (retired), code-simplifier:code-simplifier skill (external), global simplify skill (external)"
+Cohesion: 0.67
+Nodes (3): refactor-clean command (retired), code-simplifier:code-simplifier skill (external), global simplify skill (external)
 
-### Community 230 - "Community 230"
+### Community 111 - "research-quality-assessment (evaluate phase: CONSORT/STROBE/PRISMA scoring + red flags), research-methodology (design phase: power analysis, DoE, hypothesis, pre-registration), research-paper-implementation (reproduce phase: 6-step paper-to-code translation)"
+Cohesion: 0.67
+Nodes (3): research-methodology (design phase: power analysis, DoE, hypothesis, pre-registration), research-paper-implementation (reproduce phase: 6-step paper-to-code translation), research-quality-assessment (evaluate phase: CONSORT/STROBE/PRISMA scoring + red flags)
+
+### Community 112 - "scientific-communication Sub-Skill (research-suite), /lit-review Command (research-suite), /paper-implement Command (research-suite)"
+Cohesion: 0.67
+Nodes (3): /lit-review Command (research-suite), /paper-implement Command (research-suite), scientific-communication Sub-Skill (research-suite)
+
+### Community 113 - "APS Rheo-XPCS Capability Baseline (8-ID-I beamline), Instrument Capability Map Template (capability vs signal margins), Multimodal Sequencing Reference (rheology/scattering/simulation ordering)"
+Cohesion: 0.67
+Nodes (3): APS Rheo-XPCS Capability Baseline (8-ID-I beamline), Instrument Capability Map Template (capability vs signal margins), Multimodal Sequencing Reference (rheology/scattering/simulation ordering)
+
+### Community 114 - "JAX Training Pipeline Architecture (ASCII diagram), Flax NNX Guide, Orbax Checkpointing Reference"
+Cohesion: 0.67
+Nodes (3): Flax NNX Guide, Orbax Checkpointing Reference, JAX Training Pipeline Architecture (ASCII diagram)
+
+### Community 115 - "gradient-pathologies-reference, loss-curve-interpretation (reference), training-diagnostics scripts README"
 Cohesion: 1.0
-Nodes (3): Python Packaging with uv (Advanced) Skill, Example Package CHANGELOG, Example Package README
+Nodes (3): gradient-pathologies-reference, loss-curve-interpretation (reference), training-diagnostics scripts README
+
+### Community 116 - "Physics Validation Checklists (Asset), Physics Validation Checklists (Reference), Physics Workflow Diagrams"
+Cohesion: 0.67
+Nodes (3): Physics Validation Checklists (Reference), Physics Workflow Diagrams, Physics Validation Checklists (Asset)
+
+### Community 117 - "example_quick_prototyping, 01 Quick Prototyping, Complete example of quick JAX prototyping workflow"
+Cohesion: 0.67
+Nodes (3): example_quick_prototyping, 01 Quick Prototyping, Complete example of quick JAX prototyping workflow
+
+### Community 118 - "example_multi_device_scaling, 03 Multi Device Scaling, Complete multi-device scaling example"
+Cohesion: 0.67
+Nodes (3): example_multi_device_scaling, 03 Multi Device Scaling, Complete multi-device scaling example
+
+### Community 119 - "inspect_jaxpr, Print the JAX intermediate representation., Inspect the JAX intermediate representation (jaxpr) of a function.      Args:"
+Cohesion: 0.67
+Nodes (3): inspect_jaxpr, Print the JAX intermediate representation., Inspect the JAX intermediate representation (jaxpr) of a function.      Args:
 
 ## Ambiguous Edges - Review These
-- `Debugging Toolkit Sub-skill` → `Advanced Simulations Hub`  [AMBIGUOUS]
+- `Debugging Toolkit Sub-skill` → `Advanced Simulations`  [AMBIGUOUS]
   plugins/dev-suite/skills/dev-workflows/SKILL.md · relation: semantically_similar_to
 
 ## Knowledge Gaps
-- **1202 isolated node(s):** `Quality Gate Enhancers (append official plugin agents to any team)`, `Three Adversarial Patterns (Reviewer 2, Stepwise Derivation, Instrument Margin)`, `Hub: agent-systems (agent-core)`, `Hub: thinkfirst (agent-core, sub-skill of llm-engineering)`, `Hub: frontend-and-mobile (dev-suite)` (+1197 more)
+- **824 isolated node(s):** `Suggest linting after file modifications.`, `List uncommitted changes.`, `Persist dev session progress.`, `Detect project stack from file presence.`, `Read prior session progress summary if it exists.` (+819 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **80 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **99 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **What is the exact relationship between `Debugging Toolkit Sub-skill` and `Advanced Simulations Hub`?**
+- **What is the exact relationship between `Debugging Toolkit Sub-skill` and `Advanced Simulations`?**
   _Edge tagged AMBIGUOUS (relation: semantically_similar_to) - confidence is low._
-- **Why does `Software Architect Agent` connect `Performance Reporter` to `Agent Core Infrastructure`, `Community 153`, `Research Methodology & Evidence`, `Community 103`, `Community 73`, `Community 50`, `Community 152`, `Common Reporter`, `Training Callbacks`, `Community 154`, `Community 189`?**
-  _High betweenness centrality (0.026) - this node is a cross-community bridge._
-- **Why does `Agent Reference` connect `Performance Reporter` to `JAX Adjoint Methods`, `Community 73`, `Community 48`, `Community 83`, `Common Reporter`, `ML & Deep Learning Hub`, `Community 95`?**
-  _High betweenness centrality (0.021) - this node is a cross-community bridge._
-- **Why does `Julia Pro Agent` connect `Common Reporter` to `SciComp Redesign Tests`, `Performance Reporter`, `REST API Templates`, `Community 48`, `Community 49`, `Community 84`, `ML & Deep Learning Hub`, `Community 30`, `Community 95`?**
-  _High betweenness centrality (0.018) - this node is a cross-community bridge._
-- **Are the 30 inferred relationships involving `fit()` (e.g. with `benchmark_comparison()` and `main()`) actually correct?**
-  _`fit()` has 30 INFERRED edges - model-reasoned connections that need verification._
-- **Are the 3 inferred relationships involving `Software Architect Agent` (e.g. with `Systems Engineer Agent` and `eng-feature-dev command`) actually correct?**
-  _`Software Architect Agent` has 3 INFERRED edges - model-reasoned connections that need verification._
-- **Are the 2 inferred relationships involving `JAX Pro Agent` (e.g. with `Simulation Expert Agent` and `Three-Brain Multi-Model Router`) actually correct?**
-  _`JAX Pro Agent` has 2 INFERRED edges - model-reasoned connections that need verification._
+- **Why does `main` connect `main, hmcecs.py, mortality.py` to `model, run_inference, Sparse Regression`, `Hsgp, hsgp.py, get_floating_days_indicators`, `Profiling Workflow, Profile Jax, profile_function`, `Callbacks Demo, exponential_decay(), BestParameterTracker`, `str, Compare Training Runs, print_comparison_report`, `print_summary, Async Web Scraper, .scrape_urls()`, `Cfd Taylor Green, navier_stokes_step, compute_enstrophy`, `Latex Sanity, load_tex_with_includes, check_citations`, `04 Interpreting Diagnostics, analyze_aggregate_statistics, analyze_checkpoint_info`, `Result Enhancements Demo, example1_statistical_properties(), example2_backward_compatibility()`, `Pinn Heat Equation, count_parameters, HeatPINN`, `Vqe Hydrogen, create_circuit_state, apply_pauli_operator`, `PromptOptimizer, .evaluate_prompt(), .generate_variations()`, `statistical-physicist agent (opus, soft matter/non-equilibrium/correlations), Bayesian Inference Hub, MCMC Diagnostics`, `Session Start, get_session_context, read_progress_file`, `Function Library Demo, demo_comparison(), demo_exponential_decay()`, `Doe Generator, fractional_factorial, full_factorial`, `Bayesian Workflow Template, Prior Predictive Check, check_diagnostics`, `Generate Diagrams, generate_batch_size_scaling, generate_memory_optimization_chart`, `first_author_surname, key_for_entry, Bib To Steelman`, `Sensor Calibration, linear_model, numpyro_example.py`, `Hierarchical Model Template, generate_hierarchical_data, plot_group_fits`, `Analyze Activations, ActivationHook, register_activation_hooks`, `print_results, Hmm, hmm.py`, `analyze, Readability Check, extract_prose`, `Session End, write_progress, Get recent git commits.`, `  Init  , GaussianShell, DualMoonDistribution`, `capture_recapture.py, Hmm Enum, hmm_enum.py`, `Diagnose Gradients, compute_gradient_stats, diagnose_gradient_pathology`, `Style Lint, lint_file, lint_text`, `Artifact Diff, section_summary, split_into_sections`, `02 Checkpoint Resume, gaussian_model, simulate_interruption`, `03 Custom Retry Settings, inject_noise_into_data, noisy_exponential`, `Formalism Code Reconcile, normalize_name, reconcile`, `multi_scale_model(), Hybrid Streaming Demo, Example: Adaptive Hybrid Streaming Optimizer with Parameter Normalization  This`?**
+  _High betweenness centrality (0.581) - this node is a cross-community bridge._
+- **Why does `MCMC Diagnostics` connect `statistical-physicist agent (opus, soft matter/non-equilibrium/correlations), Bayesian Inference Hub, MCMC Diagnostics` to `main, hmcecs.py, mortality.py`, `Julia Pro Agent, JAX Pro Agent, Nonlinear Dynamics Hub`, `Julia Mastery Hub, CI/CD Patterns (Julia), Compiler Patterns (Julia)`?**
+  _High betweenness centrality (0.265) - this node is a cross-community bridge._
+- **Why does `JAX Pro Agent` connect `Julia Pro Agent, JAX Pro Agent, Nonlinear Dynamics Hub` to `Simulation and HPC Hub, Parallel Computing, Simulation Expert Agent`, `statistical-physicist agent (opus, soft matter/non-equilibrium/correlations), Bayesian Inference Hub, MCMC Diagnostics`, `Science Hub (Top-Level Router), Deep Learning Hub, Neural Network Master Agent`, `JAX Computing Hub, JAX DiffEq Pro Sub-skill, JAX Bayesian Pro Sub-skill`?**
+  _High betweenness centrality (0.121) - this node is a cross-community bridge._
+- **What connects `Suggest linting after file modifications.`, `List uncommitted changes.`, `Persist dev session progress.` to the rest of the system?**
+  _824 weakly-connected nodes found - possible documentation gaps or missing edges._
+- **Should `model, run_inference, Sparse Regression` be split into smaller, more focused modules?**
+  _Cohesion score 0.05 - nodes in this community are weakly interconnected._
+- **Should `main, hmcecs.py, mortality.py` be split into smaller, more focused modules?**
+  _Cohesion score 0.04 - nodes in this community are weakly interconnected._
