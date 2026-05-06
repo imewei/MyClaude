@@ -1,0 +1,1 @@
+{"nodes": [{"id": "benchmark_benchmark", "label": "Scientific Code Benchmarking", "file_type": "document", "source_file": "plugins/science-suite/commands/benchmark.md", "rationale": "Profiles scientific code (JAX, Julia, HPC) for time, memory, and GPU utilization, suggesting optimizations."}], "edges": [], "hyperedges": []}

@@ -1,0 +1,228 @@
+{
+  "nodes": [
+    {
+      "id": "app_developer_app_developer",
+      "label": "App Developer",
+      "file_type": "document",
+      "source_file": "plugins/dev-suite/agents/app-developer.md",
+      "rationale": "Specializes in scientific application UIs (PyQt/PySide6, Makie/PyQtGraph) tightly coupled to numerical or scientific backends (JAX/Julia)."
+    },
+    {
+      "id": "quality_specialist_quality_specialist",
+      "label": "Quality Specialist",
+      "file_type": "document",
+      "source_file": "plugins/dev-suite/agents/quality-specialist.md",
+      "rationale": "Specializes in scientific software quality, including numerical accuracy, JAX/JIT-safety, and Julia type-stability."
+    },
+    {
+      "id": "eng_feature_dev_eng_feature_dev",
+      "label": "Scientific Feature Development",
+      "file_type": "document",
+      "source_file": "plugins/dev-suite/commands/eng-feature-dev.md",
+      "rationale": "Orchestrates scientific feature development by coordinating science-suite and research-suite resources for numerical and ML features."
+    },
+    {
+      "id": "skill_dev_hub",
+      "label": "Dev Suite Hub",
+      "file_type": "document",
+      "source_file": "plugins/dev-suite/skills/dev-hub/SKILL.md",
+      "rationale": "Top-level router for software development lifecycle topics, routing to specific specialist agents and hub skills."
+    },
+    {
+      "id": "replicate_replicate",
+      "label": "Paper Replication",
+      "file_type": "document",
+      "source_file": "plugins/research-suite/commands/replicate.md",
+      "rationale": "End-to-end pipeline for replicating research papers, extracting claims, implementing them, and validating numerical outputs."
+    },
+    {
+      "id": "skill_research_hub",
+      "label": "Research Suite Hub",
+      "file_type": "document",
+      "source_file": "plugins/research-suite/skills/research-hub/SKILL.md",
+      "rationale": "Meta-router for scientific research workflows, delegating to methodology, review, or implementation specialists."
+    },
+    {
+      "id": "benchmark_benchmark",
+      "label": "Scientific Code Benchmarking",
+      "file_type": "document",
+      "source_file": "plugins/science-suite/commands/benchmark.md",
+      "rationale": "Profiles scientific code (JAX, Julia, HPC) for time, memory, and GPU utilization, suggesting optimizations."
+    },
+    {
+      "id": "skill_science_hub",
+      "label": "Science Suite Hub",
+      "file_type": "document",
+      "source_file": "plugins/science-suite/skills/science-hub/SKILL.md",
+      "rationale": "Top-level router for all scientific computing topics, including JAX, Julia, ML, and physics simulations."
+    },
+    {
+      "id": "orchestrator_orchestrator",
+      "label": "Orchestrator",
+      "file_type": "document",
+      "source_file": "plugins/agent-core/agents/orchestrator.md",
+      "rationale": "Multi-agent orchestration specialist that coordinates complex workflows by assembling specialist teams and managing handoffs."
+    },
+    {
+      "id": "skill_agent_hub",
+      "label": "Agent Core Hub",
+      "file_type": "document",
+      "source_file": "plugins/agent-core/skills/agent-hub/SKILL.md",
+      "rationale": "Top-level router for agent orchestration, reasoning pipelines, and LLM engineering."
+    },
+    {
+      "id": "jax_jit_safety",
+      "label": "JAX/JIT Safety",
+      "file_type": "rationale",
+      "source_file": "plugins/dev-suite/agents/quality-specialist.md"
+    },
+    {
+      "id": "julia_type_stability",
+      "label": "Julia Type Stability",
+      "file_type": "rationale",
+      "source_file": "plugins/dev-suite/agents/quality-specialist.md"
+    },
+    {
+      "id": "scientific_gui_architecture",
+      "label": "Scientific GUI Architecture",
+      "file_type": "rationale",
+      "source_file": "plugins/dev-suite/agents/app-developer.md"
+    }
+  ],
+  "edges": [
+    {
+      "source": "eng_feature_dev_eng_feature_dev",
+      "target": "quality_specialist_quality_specialist",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "plugins/dev-suite/commands/eng-feature-dev.md"
+    },
+    {
+      "source": "eng_feature_dev_eng_feature_dev",
+      "target": "app_developer_app_developer",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "plugins/dev-suite/commands/eng-feature-dev.md"
+    },
+    {
+      "source": "replicate_replicate",
+      "target": "quality_specialist_quality_specialist",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "plugins/research-suite/commands/replicate.md"
+    },
+    {
+      "source": "skill_dev_hub",
+      "target": "app_developer_app_developer",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "plugins/dev-suite/skills/dev-hub/SKILL.md"
+    },
+    {
+      "source": "skill_dev_hub",
+      "target": "quality_specialist_quality_specialist",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "plugins/dev-suite/skills/dev-hub/SKILL.md"
+    },
+    {
+      "source": "skill_research_hub",
+      "target": "replicate_replicate",
+      "relation": "references",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "plugins/research-suite/skills/research-hub/SKILL.md"
+    },
+    {
+      "source": "skill_science_hub",
+      "target": "benchmark_benchmark",
+      "relation": "references",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "plugins/science-suite/skills/science-hub/SKILL.md"
+    },
+    {
+      "source": "skill_agent_hub",
+      "target": "orchestrator_orchestrator",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "plugins/agent-core/skills/agent-hub/SKILL.md"
+    },
+    {
+      "source": "orchestrator_orchestrator",
+      "target": "app_developer_app_developer",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "plugins/agent-core/agents/orchestrator.md"
+    },
+    {
+      "source": "orchestrator_orchestrator",
+      "target": "quality_specialist_quality_specialist",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "plugins/agent-core/agents/orchestrator.md"
+    },
+    {
+      "source": "quality_specialist_quality_specialist",
+      "target": "jax_jit_safety",
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "plugins/dev-suite/agents/quality-specialist.md"
+    },
+    {
+      "source": "quality_specialist_quality_specialist",
+      "target": "julia_type_stability",
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "plugins/dev-suite/agents/quality-specialist.md"
+    },
+    {
+      "source": "app_developer_app_developer",
+      "target": "scientific_gui_architecture",
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "plugins/dev-suite/agents/app-developer.md"
+    }
+  ],
+  "hyperedges": [
+    {
+      "id": "scientific_quality_assurance",
+      "label": "Scientific Quality Assurance",
+      "nodes": [
+        "quality_specialist_quality_specialist",
+        "jax_jit_safety",
+        "julia_type_stability"
+      ],
+      "relation": "implement",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "plugins/dev-suite/agents/quality-specialist.md"
+    },
+    {
+      "id": "scientific_development_team",
+      "label": "Scientific Development Team",
+      "nodes": [
+        "app_developer_app_developer",
+        "quality_specialist_quality_specialist",
+        "orchestrator_orchestrator"
+      ],
+      "relation": "participate_in",
+      "confidence": "INFERRED",
+      "confidence_score": 0.9,
+      "source_file": "plugins/agent-core/agents/orchestrator.md"
+    }
+  ],
+  "input_tokens": 0,
+  "output_tokens": 0
+}
