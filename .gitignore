@@ -192,6 +192,7 @@ temp/
 # ----------------
 # Local Claude configuration (user-specific, entire directory)
 .claude/
+.gemini/
 
 # Serena IDE integration
 .serena/
