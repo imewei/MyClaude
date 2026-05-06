@@ -3,7 +3,7 @@ Research Suite
 
 Scientific research workflows: peer review, idea-to-plan refinement, and methodology orchestration. Three complementary tracks — ``scientific-review`` (manuscripts from other authors → .docx referee report), ``research-spark`` (own rough idea → 8-stage artifact-gated plan), and ``research-practice`` (general methodology hub).
 
-**Version:** 3.4.1 | **2 Agents** | **0 Registered Commands** | **4 Registered Hubs (scientific-review + research-spark + research-practice + _research-commons) → 12 sub-skills** | **3 Hook Events**
+**Version:** 3.5.0 | **2 Agents** | **3 Registered Commands** | **3 Hubs (research-hub → research-spark + research-practice + _research-commons) → 14 sub-skills** | **3 Hook Events**
 
 Created in v3.4.0 by extracting ``research-expert`` plus 5 methodology skills from ``science-suite`` and adding the research-spark pipeline (new 8-stage orchestrator + 7 stage-specialist skills + ``_research-commons`` resource hub).
 
@@ -13,17 +13,28 @@ Agents
 .. agent:: research-expert
    :description: Unified specialist for research methodology, evidence synthesis (PRISMA/GRADE), statistical-rigor assessment, IMRaD structuring, paper-to-code reproduction, and publication-quality visualization. For one-off methodology tasks, not pipeline-driven work.
    :model: opus
-   :version: 3.4.1
+   :version: 3.5.0
 
 .. agent:: research-spark-orchestrator
    :description: Autonomous driver for the 8-stage research-spark refinement pipeline. Owns ``_state.yaml``, enforces the artifact contract, fans out to parallel sub-agents at Stage 2 (literature layers), Stage 6 (validation passes), and Stage 8 (reviewer archetypes).
    :model: opus
-   :version: 3.4.1
+   :version: 3.5.0
 
 Commands
 --------
 
-This suite registers **zero slash commands** — every workflow is skill-driven. The legacy ``/paper-review`` command was removed because ``scientific-review`` auto-triggers on "review this paper" phrasings and produces a strictly better ``.docx`` deliverable (journal-adapted Six-Lens analysis with Confidential Comments to Editor).
+Three slash commands registered in v3.5.0:
+
+.. command:: lit-review
+   :description: Systematic literature review with PRISMA-compliant search, evidence synthesis, and gap analysis.
+
+.. command:: paper-implement
+   :description: Reproduce a research paper end-to-end — theory parsing, code implementation, and validation against published results.
+
+.. command:: replicate
+   :description: Computational replication of published experiments with statistical deviation analysis and reproducibility report.
+
+The legacy ``/paper-review`` command was removed in v3.4.0 because ``scientific-review`` produces a strictly better ``.docx`` deliverable (journal-adapted Six-Lens analysis with Confidential Comments to Editor).
 
 Stand-alone Workflows
 ---------------------

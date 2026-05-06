@@ -1,6 +1,6 @@
 # Command Reference
 
-**14 Registered Commands** | **21 Skill-Invoked Commands** | **Version:** 3.4.1
+**17 Registered Commands** | **19 Skill-Invoked Commands** | **Version:** 3.5.0
 
 Commands fall into two categories:
 - **Registered commands** are declared in `plugin.json` and available as user-facing `/slash-commands`.
@@ -17,30 +17,35 @@ Commands fall into two categories:
 | `/ultra-think` | Comprehensive analysis with full reasoning framework execution |
 | `/team-assemble` | Generate ready-to-use agent team configurations from pre-built templates |
 
-### Dev Suite (`dev-suite`) — 12 Commands
+### Dev Suite (`dev-suite`) — 10 Commands
 
 | Command | Description |
 |---------|-------------|
-| `/commit` | Intelligent git commit with automated analysis and quality validation |
 | `/docs` | Unified documentation management — generate, update, and sync |
 | `/double-check` | Multi-dimensional validation with automated testing and security scanning |
 | `/eng-feature-dev` | End-to-end feature development with customizable methodologies |
 | `/fix-commit-errors` | Diagnose and fix CI/CD failures by analyzing logs and rerunning workflows |
 | `/merge-all` | Merge all local branches into main and clean up |
 | `/modernize` | Legacy code migration using Strangler Fig pattern |
-| `/refactor-clean` | Analyze and refactor code for quality and maintainability |
 | `/run-all-tests` | Iteratively run and fix all tests until zero failures |
 | `/smart-debug` | Intelligent debugging with multi-mode execution and automated RCA |
 | `/test-generate` | Generate comprehensive test suites with scientific computing support |
 | `/workflow-automate` | Automated CI/CD workflow generation for GitHub Actions and GitLab CI |
 
-### Research Suite (`research-suite`) — 0 Commands
+### Research Suite (`research-suite`) — 3 Commands
 
-No registered commands. Workflows are skill-driven (`scientific-review`, `research-spark`, `research-practice`). The legacy `/paper-review` was removed in v3.4.0 because `scientific-review` produces a strictly better `.docx` deliverable with journal-specific adaptation.
+| Command | Description |
+|---------|-------------|
+| `/lit-review` | Systematic literature review with PRISMA-compliant search and evidence synthesis |
+| `/paper-implement` | Reproduce a research paper end-to-end: theory → code → validation |
+| `/replicate` | Computational replication of published experiments with deviation analysis |
 
-### Science Suite (`science-suite`) — 0 Commands
+### Science Suite (`science-suite`) — 2 Commands
 
-No registered commands. All 2 science-suite commands are skill-invoked.
+| Command | Description |
+|---------|-------------|
+| `/md-sim` | Molecular dynamics simulation setup, running, and trajectory analysis |
+| `/benchmark` | Scientific code benchmarking across backends and hardware targets |
 
 ---
 
@@ -57,7 +62,7 @@ These commands exist on disk and are triggered by skills during workflows. They 
 | `docs-lookup` | Query library documentation using Context7 MCP |
 | `reflection` | AI reasoning analysis, session retrospectives, and research optimization |
 
-### Dev Suite — 15 Skill-Invoked
+### Dev Suite — 13 Skill-Invoked
 
 | Command | Description |
 |---------|-------------|
@@ -72,9 +77,7 @@ These commands exist on disk and are triggered by skills during workflows. They 
 | `multi-platform` | Build and deploy features across web, mobile, and desktop |
 | `onboard` | Onboarding orchestration with 30/60/90 day plans |
 | `profile-performance` | Performance profiling with perf, flamegraph, and valgrind |
-| `rust-project` | Scaffold production-ready Rust projects |
 | `scaffold` | Project and component scaffolding for TypeScript, Python, React, Julia |
-| `slo-implement` | SLO/SLA monitoring, error budgets, and burn rate alerting |
 | `tech-debt` | Technical debt analysis with ROI-based roadmaps |
 
 ### Science Suite — 2 Skill-Invoked
@@ -86,7 +89,7 @@ These commands exist on disk and are triggered by skills during workflows. They 
 
 ### Research Suite — 0 Skill-Invoked
 
-No on-disk command files. All workflows live entirely in skills (`scientific-review`, the 8-stage `research-spark` pipeline, and the `research-practice` hub).
+No on-disk command files. All research workflows are skill-driven (`scientific-review`, the 8-stage `research-spark` pipeline, `research-practice` hub, and the 3 registered slash commands above).
 
 ---
 
@@ -115,4 +118,4 @@ Commands often invoke hub skills, which route to specialized sub-skills automati
 - [Integration Map](../integration-map.rst) — Suite dependencies and MCP server roles
 - [Glossary](../glossary.rst) — Key terms (Hub Skill, Sub-Skill, Routing Decision Tree)
 
-*Generated from v3.4.1 validated marketplace data.*
+*Generated from v3.5.0 validated marketplace data.*

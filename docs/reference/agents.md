@@ -1,6 +1,6 @@
 # Agent Reference
 
-**25 Agents** across 4 suites | **Version:** 3.4.1
+**25 Agents** across 4 suites | **Version:** 3.5.0
 
 Agents are specialized AI personas with defined model tiers, tool access, and domain expertise. Each agent runs at a specific model tier: **opus** (deep reasoning), **sonnet** (standard tasks), or **haiku** (fast/simple).
 
@@ -49,21 +49,21 @@ Scientific research workflows: peer review, idea-to-plan refinement, and methodo
 
 ## Science Suite (`science-suite`) — 11 Agents
 
-Scientific computing, HPC, physics simulations, ML/DL, and nonlinear dynamics. `research-expert` moved to `research-suite` in v3.4.0.
+Scientific computing, HPC, physics simulations, ML/DL, and nonlinear dynamics. `research-expert` moved to `research-suite` in v3.4.0. In v3.5.0, `jax-pro` and `julia-pro` upgraded to opus; `ai-engineer` renamed to `pinn-engineer`; `prompt-engineer` renamed to `sci-workflow-engineer`; `ml-expert` moved to haiku.
 
 | Agent | Model | Description |
 |-------|-------|-------------|
+| `jax-pro` | opus | JAX expert for jit/vmap/pmap, sharding, custom VJP/JVP, XLA/HLO, Optax/Optimistix, Diffrax, Pallas, and NumPyro-in-JAX |
+| `julia-pro` | opus | Julia/SciML expert for DiffEq.jl, ModelingToolkit.jl, Turing.jl, UDEs, SINDy, and sensitivity analysis |
 | `neural-network-master` | opus | Deep learning authority: architecture design, theory, and implementation (Transformers, CNNs, diagnostics) |
 | `nonlinear-dynamics-expert` | opus | Bifurcation analysis, chaos, coupled networks, pattern formation, and equation discovery (SINDy/UDE) |
 | `simulation-expert` | opus | Molecular dynamics, statistical mechanics, and numerical methods (HPC/GPU) |
 | `statistical-physicist` | opus | Correlation functions, non-equilibrium dynamics, and ensemble theory |
-| `ai-engineer` | sonnet | Production-ready LLM applications, RAG systems, and intelligent agents |
-| `jax-pro` | sonnet | JAX-based scientific computing, functional transformations, and high-performance numerical kernels |
-| `julia-ml-hpc` | sonnet | Julia ML, Deep Learning, and HPC (Lux.jl, MLJ.jl, CUDA.jl, MPI.jl) |
-| `julia-pro` | sonnet | Julia programming, SciML (DifferentialEquations.jl, ModelingToolkit.jl), and Turing.jl |
-| `ml-expert` | sonnet | Classical ML algorithms, MLOps pipelines, and data engineering |
-| `prompt-engineer` | sonnet | Advanced prompt engineering techniques and LLM performance optimization |
+| `julia-ml-hpc` | sonnet | Julia ML, Deep Learning, and HPC (Lux.jl, MLJ.jl, CUDA.jl, MPI.jl, GNNLux) |
+| `pinn-engineer` | sonnet | Physics-informed AI for PINNs, NeuralPDE.jl, DeepXDE, BPINN/BNNODE, and inverse PDEs |
 | `python-pro` | sonnet | Python systems engineering: type-driven development, Rust extensions, and performance |
+| `sci-workflow-engineer` | sonnet | Scientific LLM workflows: JAX/Julia codegen prompts, experiment templates, and AI-assisted pipelines |
+| `ml-expert` | haiku | Classical ML/MLOps with scikit-learn, XGBoost/LightGBM, Optuna, SHAP, and MLflow/W&B |
 
 ---
 
@@ -71,9 +71,9 @@ Scientific computing, HPC, physics simulations, ML/DL, and nonlinear dynamics. `
 
 | Tier | Count | Agents |
 |------|-------|--------|
-| **opus** | 11 | orchestrator, reasoning-engine, context-specialist, software-architect, debugger-pro, neural-network-master, nonlinear-dynamics-expert, research-expert, research-spark-orchestrator, simulation-expert, statistical-physicist |
-| **sonnet** | 13 | app-developer, automation-engineer, devops-architect, quality-specialist, sre-expert, systems-engineer, ai-engineer, jax-pro, julia-ml-hpc, julia-pro, ml-expert, prompt-engineer, python-pro |
-| **haiku** | 1 | documentation-expert |
+| **opus** | 13 | orchestrator, reasoning-engine, context-specialist, software-architect, debugger-pro, research-expert, research-spark-orchestrator, jax-pro, julia-pro, neural-network-master, nonlinear-dynamics-expert, simulation-expert, statistical-physicist |
+| **sonnet** | 10 | app-developer, automation-engineer, devops-architect, quality-specialist, sre-expert, systems-engineer, julia-ml-hpc, pinn-engineer, python-pro, sci-workflow-engineer |
+| **haiku** | 2 | documentation-expert, ml-expert |
 
 ---
 
@@ -101,4 +101,4 @@ See the [Integration Map](../integration-map.rst) for full delegation patterns a
 - [Agent Teams Guide](../agent-teams-guide.md) — 10 focused team configurations with 20 variants
 - [Glossary](../glossary.rst) — Key terms (Hub Skill, Sub-Skill, Agent Team)
 
-*Generated from v3.4.1 validated marketplace data.*
+*Generated from v3.5.0 validated marketplace data.*

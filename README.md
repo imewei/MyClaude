@@ -3,12 +3,12 @@
 [![Plugins](https://img.shields.io/badge/Plugins-4-blue.svg)](https://myclaude.readthedocs.io/en/latest/plugins/)
 [![Agents](https://img.shields.io/badge/Agents-25-green.svg)](docs/reference/agents.md)
 [![Commands](https://img.shields.io/badge/Commands-17-orange.svg)](docs/reference/commands.md)
-[![Skills](https://img.shields.io/badge/Skills-31_hubs_→_187_sub-purple.svg)](docs/reference/cheatsheet.md)
+[![Skills](https://img.shields.io/badge/Skills-34_hubs_→_189_sub-purple.svg)](docs/reference/cheatsheet.md)
 [![Version](https://img.shields.io/badge/Version-3.5.0-red.svg)](https://github.com/imewei/MyClaude)
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Docs](https://img.shields.io/badge/Docs-ReadTheDocs-brightgreen.svg)](https://myclaude.readthedocs.io/en/latest/)
 
-Claude Code plugin marketplace with **4 focused suites**, **25 expert agents**, **17 registered commands**, and **31 hub skills** routing to **187 sub-skills**. Built for Claude Opus 4.7 with tiered model assignments (Opus/Sonnet/Haiku), 24 lifecycle hook events across all suites, and hub-skill architecture for zero-ambiguity skill routing.
+Claude Code plugin marketplace with **4 focused suites**, **25 expert agents**, **17 registered commands**, and **34 hub skills** routing to **189 sub-skills**. Built for Claude Opus 4.7 with tiered model assignments (Opus/Sonnet/Haiku), 24 lifecycle hook events across all suites, and hub-skill architecture for zero-ambiguity skill routing.
 
 ## The 4-Suite Hub Architecture
 
@@ -16,10 +16,10 @@ MyClaude v3.5.0 uses a **hub-skill architecture**: skills are organized into hub
 
 | Suite | Agents | Commands | Hubs → Sub-skills | Hooks | Focus |
 |-------|--------|----------|-------------------|-------|-------|
-| [Agent Core](plugins/agent-core/) | 3 | 2 | 4 → 13 | 12 events | Orchestration, reasoning, context engineering |
-| [Dev Suite](plugins/dev-suite/) | 9 | 10 | 9 → 50 | 7 events | Full SDLC: architecture, CI/CD, testing, debugging |
-| [Research Suite](plugins/research-suite/) | 2 | 3 | 4 → 12 | 0 events | Peer review, 8-stage research-spark pipeline, methodology |
-| [Science Suite](plugins/science-suite/) | 11 | 2 | 14 → 112 | 5 events | JAX, Julia, physics, ML/DL/HPC, nonlinear dynamics |
+| [Agent Core](plugins/agent-core/) | 3 | 2 | 4 → 14 | 12 events | Orchestration, reasoning, context engineering |
+| [Dev Suite](plugins/dev-suite/) | 9 | 10 | 10 → 51 | 7 events | Full SDLC: architecture, CI/CD, testing, debugging |
+| [Research Suite](plugins/research-suite/) | 2 | 3 | 3 → 14 | 0 events | Peer review, 8-stage research-spark pipeline, methodology |
+| [Science Suite](plugins/science-suite/) | 11 | 2 | 17 → 110 | 5 events | JAX, Julia, physics, ML/DL/HPC, nonlinear dynamics |
 
 ## Specialist Agents
 

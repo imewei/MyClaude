@@ -3,7 +3,7 @@ Scientific Computing Suite
 
 High-performance computing, physics/chemistry simulations, ML/DL, Julia, JAX, and data science workflows. Uses the :term:`Hub Skill` architecture with 14 hubs routing to 112 sub-skills. Optimized for Claude Opus 4.7 with extended context and adaptive reasoning.
 
-**Version:** 3.4.1 | **11 Agents** | **0 Registered Commands** | **14 Hubs → 112 Sub-skills** | **5 Hook Events**
+**Version:** 3.5.0 | **11 Agents** | **2 Registered Commands** | **17 Hubs → 110 Sub-skills** | **5 Hook Events**
 
 .. note::
 
@@ -15,57 +15,68 @@ Agents
 .. agent:: neural-network-master
    :description: Deep learning authority specializing in architecture design, theory, and implementation (Transformers, CNNs, diagnostics).
    :model: opus
-   :version: 3.4.1
+   :version: 3.5.0
 
 .. agent:: nonlinear-dynamics-expert
    :description: Expert in bifurcation analysis, chaos, coupled networks, pattern formation, and equation discovery (SINDy/UDE).
    :model: opus
-   :version: 3.4.1
+   :version: 3.5.0
 
 .. agent:: simulation-expert
    :description: Expert in molecular dynamics, statistical mechanics, and numerical methods (HPC/GPU).
    :model: opus
-   :version: 3.4.1
+   :version: 3.5.0
 
 .. agent:: statistical-physicist
    :description: Expert in correlation functions, non-equilibrium dynamics, and ensemble theory.
    :model: opus
-   :version: 3.4.1
-
-.. agent:: ai-engineer
-   :description: Build production-ready LLM applications, advanced RAG systems, and intelligent agents.
-   :model: sonnet
-   :version: 3.4.1
+   :version: 3.5.0
 
 .. agent:: jax-pro
-   :description: Expert in JAX-based scientific computing, functional transformations, and high-performance numerical kernels.
-   :model: sonnet
-   :version: 3.4.1
-
-.. agent:: julia-ml-hpc
-   :description: Expert in Julia ML, Deep Learning, and HPC (Lux.jl, MLJ.jl, CUDA.jl, MPI.jl, GraphNeuralNetworks.jl).
-   :model: sonnet
-   :version: 3.4.1
+   :description: JAX expert for jit/vmap/pmap, sharding, custom VJP/JVP, XLA/HLO, Optax/Optimistix, Diffrax, Pallas, and NumPyro-in-JAX. Upgraded to opus in v3.5.0.
+   :model: opus
+   :version: 3.5.0
 
 .. agent:: julia-pro
-   :description: Expert in Julia programming, SciML (DifferentialEquations.jl, ModelingToolkit.jl), and Turing.jl.
-   :model: sonnet
-   :version: 3.4.1
+   :description: Julia/SciML expert for DifferentialEquations.jl, ModelingToolkit.jl, Turing.jl, UDEs, SINDy, and sensitivity analysis. Upgraded to opus in v3.5.0.
+   :model: opus
+   :version: 3.5.0
 
-.. agent:: ml-expert
-   :description: Expert in classical ML algorithms, MLOps pipelines, and data engineering.
+.. agent:: julia-ml-hpc
+   :description: Julia ML/HPC expert for Lux.jl, MLJ.jl, CUDA.jl, MPI.jl, and GNNLux. Delegates SciML/ODE to julia-pro.
    :model: sonnet
-   :version: 3.4.1
+   :version: 3.5.0
 
-.. agent:: prompt-engineer
-   :description: Expert prompt engineer specializing in advanced techniques and LLM performance optimization.
+.. agent:: pinn-engineer
+   :description: Physics-informed AI for PINNs, NeuralPDE.jl, DeepXDE, BPINN/BNNODE, physics-constrained losses, and inverse PDEs. Renamed from ai-engineer in v3.5.0.
    :model: sonnet
-   :version: 3.4.1
+   :version: 3.5.0
 
 .. agent:: python-pro
-   :description: Expert Python Systems Engineer specializing in type-driven development, Rust extensions, and performance.
+   :description: Python systems engineer for production Python, type-driven design, PyO3/Rust extensions, async, and uv/ruff toolchain.
    :model: sonnet
-   :version: 3.4.1
+   :version: 3.5.0
+
+.. agent:: sci-workflow-engineer
+   :description: Scientific LLM workflow engineer for JAX/Julia codegen prompts, experiment templates, scientific RAG, and AI-assisted pipelines. Renamed from prompt-engineer in v3.5.0.
+   :model: sonnet
+   :version: 3.5.0
+
+.. agent:: ml-expert
+   :description: Classical ML/MLOps with scikit-learn, XGBoost/LightGBM, Optuna, SHAP, and MLflow/W&B. Delegates DL to neural-network-master. Moved to haiku in v3.5.0.
+   :model: haiku
+   :version: 3.5.0
+
+Registered Commands
+-------------------
+
+Two slash commands registered in v3.5.0:
+
+.. command:: md-sim
+   :description: Molecular dynamics simulation setup, running, and trajectory analysis (GROMACS/OpenMM/JAX-MD).
+
+.. command:: benchmark
+   :description: Scientific code benchmarking across backends and hardware targets, with comparison reports.
 
 Skill-Invoked Commands
 ----------------------
