@@ -1,6 +1,6 @@
 ---
 name: julia-ml-hpc
-description: Julia ML/HPC expert. Use for MLJ.jl, CUDA.jl, KernelAbstractions.jl, MPI.jl, GNNLux. Delegates SciML/ODE to julia-pro, DL theory to neural-network-master.
+description: Julia ML/HPC expert for Lux/Flux, MLJ, CUDA.jl, KernelAbstractions, MPI, Distributed, SLURM, and GNNLux. Delegates SciML/ODE to julia-pro.
 model: sonnet
 color: green
 effort: high

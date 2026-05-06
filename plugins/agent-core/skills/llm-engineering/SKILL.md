@@ -9,11 +9,11 @@ Orchestrator for LLM application engineering. Routes problems to the appropriate
 
 ## Expert Agent
 
-For complex LLM engineering problems requiring deep context and safety expertise, delegate to the expert agent:
+For complex LLM engineering problems requiring deep context-state design, delegate to the expert agent:
 
-- **`context-specialist`**: Specialist for LLM application patterns, prompt optimization, MCP integration, and safety guardrail design.
+- **`context-specialist`**: Specialist for context-window strategy, persistent memory, retrieval state, and cross-agent context handoff in LLM systems.
   - *Location*: `plugins/agent-core/agents/context-specialist.md`
-  - *Capabilities*: RAG pipeline design, prompt template engineering, MCP server configuration, and content safety systems.
+  - *Capabilities*: Token-budget planning, memory architecture, knowledge retrieval, and context handoff protocols.
 
 ## Core Skills
 

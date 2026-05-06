@@ -1,6 +1,6 @@
 ---
 name: nonlinear-dynamics-expert
-description: Nonlinear dynamics expert. Use for bifurcations, chaos, Lyapunov, SINDy, chimera states. Delegates JAX to jax-pro, Julia continuation to julia-pro.
+description: Nonlinear dynamics expert for bifurcations, chaos, Lyapunov spectra, attractors, SINDy, coupled oscillators, chimera states, and pattern formation.
 model: opus
 color: red
 effort: high

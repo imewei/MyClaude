@@ -10,7 +10,7 @@ Top-level entry point consolidating all dev-suite hub skills into a single route
 
 ## Expert Agents
 
-- **`app-developer`** — Full-stack feature implementation and product engineering
+- **`app-developer`** — Scientific GUI and data-interface implementation
 - **`automation-engineer`** — CI/CD pipelines, scripting, and workflow automation
 - **`debugger-pro`** — Root-cause analysis and systematic bug resolution
 - **`devops-architect`** — Infrastructure, Kubernetes, Terraform, and cloud design
@@ -78,7 +78,7 @@ What is the primary concern?
 | Trigger | Hub skill |
 |---|---|
 | REST, GraphQL, Node.js, FastAPI, queues | backend-patterns |
-| React, Vue, Svelte, React Native, Flutter | frontend-and-mobile |
+| React, Vue, Svelte, React Native, Flutter, TypeScript UI engineering | frontend-and-mobile |
 | Microservices, Terraform, K8s, clean arch | architecture-and-infra |
 | TDD, pytest, Playwright, coverage, linting | testing-and-quality |
 | GitHub Actions, GitLab CI, deploy pipeline | ci-cd-pipelines |

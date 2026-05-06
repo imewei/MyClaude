@@ -1,6 +1,6 @@
 ---
 name: neural-network-master
-description: Deep learning authority for architecture, diagnostics, Transformers/CNNs/GNNs, Flax/Equinox/PyTorch. Delegates JAX to jax-pro, Julia to julia-ml-hpc, classical ML to ml-expert.
+description: Deep learning authority for architecture, diagnostics, math, Transformers/CNNs/GNNs/diffusion, and loss design. Delegates JAX, Julia, and classical ML to peers.
 model: opus
 color: magenta
 effort: high

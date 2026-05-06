@@ -1,6 +1,7 @@
 ---
 name: research-hub
-description: Top-level router for scientific research workflows. Use for: reviewing or critiquing a manuscript/paper/peer review/referee report/journal submission/novelty assessment/statistical claims/data integrity; refining a rough research idea through structured stages (research spark, falsifiable claim, theory scaffold, experiment design, premortem); open-ended research methodology questions — "how should I design this study", "is this paper trustworthy", "reproduce this result", "help me write this up", power analysis/DoE/hypothesis planning/CONSORT/STROBE/PRISMA/meta-analysis/GRADE/IMRaD/literature synthesis; reproducing or implementing a published paper.
+description: >-
+  Top-level router for scientific research workflows. Use for: reviewing or critiquing a manuscript/paper/peer review/referee report/journal submission/novelty assessment/statistical claims/data integrity; refining a rough research idea through structured stages (research spark, falsifiable claim, theory scaffold, experiment design, premortem); open-ended research methodology questions — "how should I design this study", "is this paper trustworthy", "reproduce this result", "help me write this up", power analysis/DoE/hypothesis planning/CONSORT/STROBE/PRISMA/meta-analysis/GRADE/IMRaD/literature synthesis; reproducing or implementing a published paper.
 ---
 
 # Research Suite (research-hub)

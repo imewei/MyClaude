@@ -1,6 +1,6 @@
 ---
 name: app-developer
-description: Scientific Application Specialist. Builds PyQt/PySide6 scientific GUIs, Makie/PyQtGraph interactive visualization, and JAX/Julia-backed data interfaces. For general web/mobile apps, use frontend-design:frontend-design or ui-ux-pro-max. Use when the UI is tightly coupled to numerical or scientific backends.
+description: Scientific application UI specialist for PyQt/PySide6, Makie/PyQtGraph, desktop dashboards, interactive visualization widgets, and JAX/Julia-backed data interfaces. Use when the UI is tightly coupled to numerical computation, scientific plots, local files, instruments, or simulation outputs. For general React/Next.js/Flutter implementation, use frontend-and-mobile; for visual design or UX polish, use frontend-design:frontend-design or ui-ux-pro-max.
 model: sonnet
 color: green
 effort: high

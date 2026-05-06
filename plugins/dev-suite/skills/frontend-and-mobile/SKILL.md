@@ -1,25 +1,27 @@
 ---
 name: frontend-and-mobile
 description: >
-  Meta-orchestrator for scientific frontend concerns: accessibility compliance for scientific GUIs,
-  visualization widget patterns, scientific dashboards, and cross-platform testing. Use when
-  implementing WCAG compliance for PyQt/PySide6/Makie/PyQtGraph interfaces, testing scientific
-  visualization UIs, or building scientific dashboards coupled to numerical backends. For general
-  web/mobile apps (React, Flutter, Next.js), use frontend-design:frontend-design or ui-ux-pro-max.
+  Meta-orchestrator for implementation-focused frontend and mobile engineering. Routes to
+  React/Flutter/cross-platform UI architecture, modern JavaScript, TypeScript typing and
+  scaffolding, WCAG/ARIA accessibility testing, and mobile E2E test patterns. Use when building
+  or testing web/mobile UI code, configuring TypeScript frontend projects, implementing accessible
+  components, or validating React Native/Flutter apps. For visual design, UX shaping, or high-polish
+  landing pages, use frontend-design:frontend-design or ui-ux-pro-max; for scientific desktop GUIs
+  backed by JAX/Julia/PyQt/Makie, use app-developer.
 ---
 
 # Frontend and Mobile
 
-> **SEE ALSO:** For general web/mobile development (React, Next.js, Flutter, TypeScript apps), use `frontend-design:frontend-design` or `ui-ux-pro-max`. For React/Next.js performance, use `vercel-react-best-practices`.
-> This hub handles **scientific application frontend concerns**: WCAG accessibility for scientific GUIs, visualization widget patterns for PyQt/Makie interfaces, and cross-platform testing for scientific desktop tools.
+> **SEE ALSO:** For visual design, UX shaping, or polished React/Next.js pages, use `frontend-design:frontend-design` or `ui-ux-pro-max`. For React/Next.js performance, use `vercel-react-best-practices`. For scientific desktop GUIs coupled to numerical backends, use `app-developer`.
+> This hub handles **implementation patterns**: component architecture, JavaScript/TypeScript structure, accessibility validation, and mobile test strategy.
 
-Orchestrator for frontend concerns in scientific application development. Routes to accessibility, visualization, and testing skills relevant to scientific software UIs.
+Orchestrator for frontend and mobile engineering. Routes to the correct implementation skill based on platform, language concern, accessibility requirement, or test scope.
 
 ## Expert Agent
 
-- **`app-developer`**: Specialist for cross-platform UI, component architecture, and mobile performance.
+- **`app-developer`**: Specialist for scientific application UIs tightly coupled to numerical backends.
   - *Location*: `plugins/dev-suite/agents/app-developer.md`
-  - *Capabilities*: React, Flutter, responsive design, accessibility, and mobile testing strategies.
+  - *Capabilities*: PyQt/PySide6, Makie/PyQtGraph, scientific dashboards, accessibility, and data-interface patterns.
 
 ## Core Skills
 

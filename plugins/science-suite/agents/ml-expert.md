@@ -1,6 +1,6 @@
 ---
 name: ml-expert
-description: Classical ML/MLOps specialist. Use for scikit-learn, XGBoost pipelines, feature engineering, MLflow tracking, model deployment. Delegates deep learning to neural-network-master.
+description: Classical ML/MLOps expert for scikit-learn, XGBoost/LightGBM, feature engineering, CV, Optuna, SHAP, MLflow/W&B, and serving. Delegates DL to neural-network-master.
 model: haiku
 color: yellow
 effort: low

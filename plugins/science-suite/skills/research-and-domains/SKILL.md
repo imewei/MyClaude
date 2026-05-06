@@ -1,13 +1,13 @@
 ---
 name: research-and-domains
-description: Meta-orchestrator for specialized scientific domains and scientific Python systems not covered by the main JAX, Julia, ML, simulation, or research methodology hubs. Routes to domain-specific skills (quantum computing, bioinformatics, computer vision, RL, symbolic math) and Python engineering skills (packaging, Rust extensions, type design, concurrency, testing). For self-improving AI, DSPy, and RLAIF, use agent-core reasoning-and-memory hub. For general research methodology, use research-practice in research-suite.
+description: Meta-orchestrator for specialized scientific domains, scientific Python systems, and AI-research methods not covered by the main JAX, Julia, ML, simulation, or research methodology hubs. Routes to self-improving-AI research surveys, DSPy scientific prompt programs, RLAIF training, Python packaging/Rust/type/concurrency/testing patterns, and domain skills such as quantum computing, bioinformatics, computer vision, reinforcement learning, and symbolic math. Use when the user asks about AI-research techniques or scientific Python/domain work; for operational agent self-improvement loops with persistent prompt/policy updates, use agent-core reasoning-and-memory; for general study design, literature synthesis, or paper methodology, use research-suite research-practice.
 ---
 
 # Research and Domains
 
-Orchestrator for scientific Python systems, LLM self-improvement research, and specialized scientific domains. Routes problems to the appropriate specialized skill.
+Orchestrator for scientific Python systems, AI-research methods, and specialized scientific domains. Routes problems to the appropriate specialized skill.
 
-> **General research methodology has moved.** Study design, paper implementation, quality assessment, scientific writing (IMRaD), and evidence synthesis (PRISMA, meta-analysis, GRADE) now live in the `research-practice` hub in `research-suite`. This hub retains only the self-improving-AI research thread (autonomous agents, programmatic prompting, RLAIF) and the Python + domain specializations that pair naturally with scientific computing.
+> **General research methodology has moved.** Study design, paper implementation, quality assessment, scientific writing (IMRaD), and evidence synthesis (PRISMA, meta-analysis, GRADE) now live in the `research-practice` hub in `research-suite`. This hub retains AI-research methods (autonomous-agent research, scientific DSPy programs, RLAIF training) and Python/domain specializations that pair naturally with scientific computing.
 
 ## Core Skills
 
@@ -38,8 +38,9 @@ What is the task category?
 |
 +-- Self-improving AI taxonomy / autonomous research loops / four-families overview?
 |   --> self-improving-ai
+|   (for persistent agent prompt/policy optimization, use agent-core reasoning-and-memory)
 |
-+-- DSPy programmatic prompts / MIPROv2 / BootstrapFewShot / ReAct tools?
++-- DSPy scientific prompt programs / MIPROv2 / BootstrapFewShot / ReAct tools?
 |   --> dspy-basics
 |
 +-- RLAIF / Constitutional AI / DPO / KTO / PPO with `trl`?

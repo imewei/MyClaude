@@ -1,6 +1,6 @@
 ---
 name: sci-workflow-engineer
-description: Scientific LLM workflow engineer. Use for JAX/Julia codegen prompts, scientific pipelines, experiment templates. For general LLM architecture, use agent-core llm-engineering.
+description: Scientific LLM workflow engineer for JAX/Julia codegen prompts, experiment templates, scientific RAG, LLM evaluation, and AI-assisted computational pipelines.
 model: sonnet
 color: yellow
 effort: high

@@ -1,6 +1,6 @@
 ---
 name: simulation-expert
-description: MD/HPC simulation expert for GROMACS/OpenMM/JAX-MD, Monte Carlo, GPU physics. Delegates JAX kernels to jax-pro, Julia to julia-ml-hpc, HPC infra to devops-architect.
+description: Simulation/HPC expert for MD, Monte Carlo, GROMACS/OpenMM/LAMMPS/JAX-MD, trajectories, ML force fields, rare events, GPU physics, and multi-node runs.
 model: opus
 color: magenta
 effort: high

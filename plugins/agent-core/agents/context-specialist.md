@@ -1,6 +1,6 @@
 ---
 name: context-specialist
-description: AI context engineering specialist for context-window strategy, agent memory, retrieval state, and knowledge-graph-backed context in multi-agent or long-running AI workflows. Use when managing context windows, persistent memory, cross-agent context handoff, or knowledge retrieval for agent reasoning. For ordinary RAG application architecture, use agent-core llm-engineering; for scientific LLM apps, use science-suite llm-and-ai.
+description: AI context engineering specialist for context-window strategy, token-budget planning, persistent memory, retrieval state, knowledge-graph-backed context, and cross-agent handoff in long-running AI workflows. Use when the task is keeping the right information available to agents across turns, sessions, tools, or teams. For ordinary RAG product architecture, use agent-core llm-engineering; for scientific LLM apps and codegen pipelines, use science-suite llm-and-ai.
 model: opus
 color: cyan
 effort: high

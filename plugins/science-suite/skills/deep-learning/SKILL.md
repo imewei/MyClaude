@@ -1,6 +1,6 @@
 ---
 name: deep-learning
-description: Master deep learning architecture design, theory, and implementation. Covers neural network mathematics, training diagnostics, PyTorch/JAX frameworks, and advanced patterns. Use when designing neural network architectures, diagnosing training failures, or implementing custom layers and loss functions.
+description: Core deep-learning implementation skill for standard neural networks, training loops, regularization, loss selection, and framework-neutral PyTorch/JAX/TensorFlow patterns. Use when building baseline models, implementing custom layers or losses, validating data/shape flow, or explaining feedforward/backprop training mechanics. For architecture selection, math derivations, diagnostics, experiments, or distributed training, enter through deep-learning-hub.
 ---
 
 # Deep Learning Mastery
@@ -41,6 +41,30 @@ Translating academic papers into working code in JAX or PyTorch. See `research-p
 
 ### [Deep Learning Experimentation](../deep-learning-experimentation/SKILL.md)
 Systematic workflows for training, ablation, and hyperparameter tuning.
+
+## Routing Decision Tree
+
+```
+What is the deep-learning need?
+|
++-- Build a baseline model, layer, loss, or training loop?
+|   --> stay in deep-learning
+|
++-- Choose CNN/Transformer/GNN/diffusion architecture?
+|   --> neural-architecture-patterns
+|
++-- Derive backpropagation, Jacobians, Hessians, or convergence math?
+|   --> neural-network-mathematics
+|
++-- Diagnose NaN loss, gradient explosion/vanishing, dead ReLUs, or plateaus?
+|   --> training-diagnostics
+|
++-- Plan ablations, hyperparameter search, or reproducible runs?
+|   --> deep-learning-experimentation
+|
++-- Optimize inference with quantization/pruning/ONNX/TensorRT?
+    --> model-optimization-deployment
+```
 
 ## Frameworks
 

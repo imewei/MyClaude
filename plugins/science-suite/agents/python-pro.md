@@ -1,6 +1,6 @@
 ---
 name: python-pro
-description: Scientific Python engineer. Use for typed APIs, PyO3/Rust extensions for numerical code, uv/ruff. For general Python packaging, use dev-suite python-toolchain or systems-engineer.
+description: Scientific Python engineer for typed numerical APIs, uv/ruff/mypy, PyO3/Rust extensions, asyncio concurrency, and NumPy/JAX glue. Use jax-pro for JAX semantics.
 model: sonnet
 color: green
 effort: high
@@ -12,6 +12,7 @@ permissionMode: acceptEdits
 isolation: worktree
 skills:
   - jax-computing
+  - research-and-domains
 ---
 
 # Python Pro - Systems Engineer

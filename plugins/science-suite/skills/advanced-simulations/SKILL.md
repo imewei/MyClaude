@@ -1,6 +1,6 @@
 ---
 name: advanced-simulations
-description: Master advanced simulation techniques including non-equilibrium thermodynamics, stochastic dynamics, and multiscale modeling. Bridge scales from atomistic to mesoscale. Use when running molecular dynamics, designing multiscale simulations, or computing non-equilibrium transport properties.
+description: Hub for advanced simulation workflows that combine MD setup, ML force fields, multiscale modeling, trajectory analysis, rare-event sampling, and non-equilibrium transport. Use when setting up molecular dynamics, choosing or training force fields, bridging atomistic-to-mesoscale models, analyzing trajectories, computing transport properties, or planning rare-event/weighted-ensemble simulations. For general HPC/GPU/numerical-method routing, use simulation-and-hpc.
 ---
 
 # Advanced Simulations
@@ -28,6 +28,37 @@ Bridging scales from atomistic MD to mesoscopic continuum models.
 
 ### [Trajectory Analysis](../trajectory-analysis/SKILL.md)
 Computing structural and dynamic properties from simulation data.
+
+## Routing Decision Tree
+
+```
+What is the simulation concern?
+|
++-- Preparing a classical MD system / topology / ensemble?
+|   --> md-simulation-setup
+|
++-- Choosing, training, or deploying ML interatomic potentials?
+|   --> ml-force-fields
+|
++-- Bridging atomistic, coarse-grained, mesoscale, or continuum models?
+|   --> multiscale-modeling
+|
++-- Extracting RDF/MSD/transport/mechanical observables from trajectories?
+|   --> trajectory-analysis
+|
++-- Rare-event sampling / weighted ensemble / path sampling?
+    --> advanced-simulations rare-event sampler guidance
+```
+
+## Skill Selection Table
+
+| Trigger | Skill |
+|---|---|
+| LAMMPS, GROMACS, OpenMM setup, topology, ensemble | `md-simulation-setup` |
+| MLIP, MLFF, MACE, NequIP, ACE, active learning | `ml-force-fields` |
+| coarse-graining, MARTINI, DPD, QM/MM, mesoscale | `multiscale-modeling` |
+| trajectory post-processing, RDF, MSD, viscosity | `trajectory-analysis` |
+| WESTPA, weighted ensemble, TPS/TIS, rare event | `advanced-simulations` |
 
 ## 1. Molecular Dynamics Workflows
 

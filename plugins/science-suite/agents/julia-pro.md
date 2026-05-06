@@ -1,6 +1,6 @@
 ---
 name: julia-pro
-description: Julia/SciML expert. Use for DiffEq.jl, ModelingToolkit.jl, UDEs, SINDy, Turing.jl. Handles sensitivity analysis and package dev. Delegates ML/HPC to julia-ml-hpc.
+description: Julia/SciML expert for dispatch, type stability, packages, DiffEq.jl, ModelingToolkit, SciMLSensitivity, UDE, SINDy, Turing, Optimization.jl. Delegates ML/HPC.
 model: opus
 color: cyan
 effort: high

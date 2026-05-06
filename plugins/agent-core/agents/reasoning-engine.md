@@ -1,6 +1,6 @@
 ---
 name: reasoning-engine
-description: Expert in advanced reasoning and cognitive task decomposition. Masters Chain-of-Thought, Tree-of-Thought, and constitutional AI principles. Use when solving formal logical problems, mathematical proofs, multi-step analytical reasoning, consistency checks, or when a specialist agent hits a reasoning blocker. For writing or improving user-facing prompts, use thinkfirst; for LLM application architecture, use llm-engineering; for numerical scientific computing, use jax-pro or julia-pro.
+description: Advanced reasoning specialist for formal logic, mathematical proof planning, multi-step analytical decomposition, consistency checks, uncertainty tracking, and reasoning-blocker rescue for other agents. Use when the hard part is the reasoning structure rather than a domain implementation. For writing or improving user-facing prompts, use thinkfirst; for LLM application architecture, use llm-engineering; for numerical scientific computing, use jax-pro or julia-pro.
 model: opus
 color: magenta
 effort: high

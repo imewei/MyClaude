@@ -1,6 +1,6 @@
 ---
 name: statistical-physicist
-description: Statistical physics expert. Use for phase transitions, Langevin/Fokker-Planck, fluctuation theorems, normalizing flows. Delegates JAX optimization to jax-pro.
+description: Statistical physics/Bayesian soft-matter expert for phase transitions, Langevin/Fokker-Planck, fluctuation theorems, correlations, rare events, and MCMC diagnostics.
 model: opus
 color: blue
 effort: high
