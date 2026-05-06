@@ -1,9 +1,9 @@
 ---
-name: agent-core
+name: agent-hub
 description: Top-level router for agent orchestration, reasoning, and LLM engineering. Use for: multi-agent workflow design/agent coordination/tool chains/task handoff/delegation patterns/agent evaluation/performance optimization; reasoning pipelines/reflection/self-improvement loops/DSPy/TextGrad/knowledge graphs/memory-augmented agents; LLM feature implementation/prompt design patterns/RAG systems/MCP tool integration/safety guardrails; writing or optimizing prompts — "help me write a prompt", "optimize this prompt", "make this prompt better", brain dumps for LLM goals, "I want to build an LLM to do X", non-English prompt requests, or /thinkfirst.
 ---
 
-# Agent Core
+# Agent Core (agent-hub)
 
 ## Expert Agents
 

@@ -37,6 +37,6 @@
     "./commands/team-assemble.md"
   ],
   "skills": [
-    "./skills/agent-core"
+    "./skills/agent-hub"
   ]
 }
