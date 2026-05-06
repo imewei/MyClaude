@@ -41,6 +41,40 @@ O(N log N) algorithms and multi-tau implementation.
 ### [Correlation Experimental Data](../correlation-experimental-data/SKILL.md)
 Extracting physical parameters from DLS, SAXS, and microscopy.
 
+## Routing Decision Tree
+
+```
+What is the primary statistical physics concern?
+|
++-- Langevin equations, Fokker-Planck modeling, or noise-driven dynamics?
+|   --> stochastic-dynamics
+|
++-- Fluctuation theorems, entropy production, or driven non-equilibrium systems?
+|   --> non-equilibrium-theory
+|
++-- Self-propelled particles, MIPS, or collective active-matter behavior?
+|   --> active-matter
+|
++-- Correlation function analysis (FFT correlators, structure factors, dynamic heterogeneity)?
+|   --> correlation-analysis (science-suite hub: ../correlation-analysis/SKILL.md)
+|
++-- Mathematical foundations of two-point or higher-order correlation functions?
+|   --> correlation-math-foundations
+|
++-- S(q), g(r), or χ₄(t) across physical states?
+|   --> correlation-physical-systems
+|
++-- O(N log N) algorithms or multi-tau correlator implementation?
+|   --> correlation-computational-methods
+|
++-- Extracting parameters from DLS, SAXS, or microscopy data?
+|   --> correlation-experimental-data
+|
++-- None of the above / concern is ambiguous or spans multiple areas?
+    --> Delegate to statistical-physicist for open-ended triage, or clarify
+        the primary concern and re-enter the routing decision tree.
+```
+
 ## 1. Equilibrium Statistical Mechanics
 
 - **Ensembles**: Microcanonical (NVE), Canonical (NVT), Grand Canonical (μVT).

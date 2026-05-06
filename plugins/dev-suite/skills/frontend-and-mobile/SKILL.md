@@ -64,7 +64,11 @@ What is the frontend or mobile concern?
 |   --> accessibility-testing
 |
 +-- Mobile unit / integration / E2E tests?
-    --> mobile-testing-patterns
+|   --> mobile-testing-patterns
+|
++-- None of the above / concern is ambiguous or spans multiple areas?
+    --> Delegate to app-developer for open-ended triage, or clarify the
+        primary concern and re-enter the routing decision tree.
 ```
 
 ## Routing Table

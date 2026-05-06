@@ -90,7 +90,11 @@ What is the Julia task?
 |   --> interop-patterns
 |
 +-- Which package to use?
-    --> ecosystem-selection
+|   --> ecosystem-selection
+|
++-- None of the above / concern is ambiguous?
+    --> Delegate to julia-pro for open-ended triage, or clarify the
+        primary concern and re-enter the routing decision tree.
 ```
 
 ## Checklist

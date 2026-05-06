@@ -63,7 +63,11 @@ What is the ML / data science task?
 |   --> nlsq-core-mastery
 |
 +-- Track experiments and artifacts?
-    --> experiment-tracking
+|   --> experiment-tracking
+|
++-- None of the above / concern is ambiguous?
+    --> Delegate to ml-expert for open-ended triage, or clarify the
+        primary concern and re-enter the routing decision tree.
 ```
 
 ## Checklist

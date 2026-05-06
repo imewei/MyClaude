@@ -54,7 +54,11 @@ What is the quality concern?
 |   --> code-review
 |
 +-- Plugin frontmatter / manifest integrity?
-    --> plugin-syntax-validator
+|   --> plugin-syntax-validator
+|
++-- None of the above / concern is ambiguous or spans multiple areas?
+    --> Delegate to quality-specialist for open-ended triage, or clarify the
+        primary concern and re-enter the routing decision tree.
 ```
 
 ## Routing Table

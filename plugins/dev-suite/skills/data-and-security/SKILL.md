@@ -54,7 +54,11 @@ What is the data or security concern?
 |   --> auth-implementation-patterns
 |
 +-- Secrets injection / rotation / Vault?
-    --> secrets-management
+|   --> secrets-management
+|
++-- None of the above / concern is ambiguous or spans multiple areas?
+    --> Delegate to software-architect for open-ended triage, or clarify the
+        primary concern and re-enter the routing decision tree.
 ```
 
 ## Routing Table

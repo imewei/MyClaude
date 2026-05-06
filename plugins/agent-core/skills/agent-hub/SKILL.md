@@ -27,24 +27,28 @@ What is the primary task?
 +-- Write, improve, or optimize a prompt?
 |   --> thinkfirst
 |
-+-- Build an LLM app, RAG pipeline, eval system, or safety layer?
++-- Build an LLM app, RAG pipeline, eval system, safety layer, production prompts, or integrate MCP tools?
 |   --> llm-engineering
 |
-+-- Design reasoning chains, reflection loops, or memory systems?
++-- Design reasoning chains, reflection loops, memory systems, or knowledge graphs?
 |   --> reasoning-and-memory
 |
-+-- Coordinate multiple agents, evaluate agent output, or design tool chains?
-    --> agent-systems
++-- Coordinate multiple agents, evaluate agent output, design tool chains, or optimize agent performance / latency?
+|   --> agent-systems
+|
++-- None of the above / concern is ambiguous or spans multiple areas?
+    --> Delegate to orchestrator for open-ended triage, or clarify the
+        primary concern and re-enter the routing decision tree.
 ```
 
 ## Routing Table
 
 | Trigger | Hub skill |
 |---|---|
-| Multi-agent design, tool chaining, agent evaluation | `agent-systems` |
-| Reasoning frameworks, memory, self-improvement | `reasoning-and-memory` |
-| LLM apps, RAG, evals, safety, prompt systems | `llm-engineering` |
-| Writing or optimizing a prompt | `thinkfirst` |
+| Multi-agent design, tool chaining, agent evaluation, agent performance optimization, latency, caching | `agent-systems` |
+| Reasoning frameworks, memory, self-improvement, DSPy, TextGrad, knowledge graphs, entity resolution, vector stores | `reasoning-and-memory` |
+| LLM apps, RAG, evals, safety, prompt systems, MCP integration, production prompt engineering | `llm-engineering` |
+| Writing or optimizing a prompt, /thinkfirst, brain dump, "help me write a prompt" | `thinkfirst` |
 
 ## Checklist
 

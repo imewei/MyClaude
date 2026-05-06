@@ -48,7 +48,11 @@ What is the observability concern?
 |   --> distributed-tracing
 |
 +-- SLI definition / burn rate / error budget?
-    --> slo-implementation
+|   --> slo-implementation
+|
++-- None of the above / concern is ambiguous or spans multiple areas?
+    --> Delegate to sre-expert for open-ended triage, or clarify the
+        primary concern and re-enter the routing decision tree.
 ```
 
 ## Routing Table

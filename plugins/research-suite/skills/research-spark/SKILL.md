@@ -30,14 +30,21 @@ What triggered the invocation?
 |   --> Stage 1: ../spark-articulator/SKILL.md
 |
 +-- Resuming a project (explicit "back to X" or implicit mid-conversation)?
-|   --> Read _state.yaml, summarize state, ask whether to continue or jump
+|   --> Read _state.yaml; summarize state; ask whether to continue or jump.
+|       Then dispatch to the current stage's skill using the dispatch table below.
 |
 +-- User names a stage directly ("redo Stage 3", "premortem the plan")?
-|   +-- Prior-stage artifact exists?   --> Load named specialist; log jump
-|   +-- Prior-stage artifact missing?  --> Refuse; offer to run missing stage
+|   +-- Prior-stage artifact exists?
+|   |   --> Load named specialist per dispatch table below; log jump.
+|   +-- Prior-stage artifact missing?
+|       --> Refuse; offer to run the missing stage first.
 |
 +-- Stage N complete, advancing to N+1?
-|   --> Verify N's canonical artifact exists; load next specialist
+|   --> Verify N's canonical artifact exists; load next specialist per dispatch table.
+|
++-- None of the above / invocation is ambiguous?
+|   --> Delegate to research-spark-orchestrator for open-ended triage, or clarify
+|       the current stage and re-enter the routing decision tree.
 |
 By stage (canonical dispatch table):
   1   -> ../spark-articulator/SKILL.md     (elicit 3-line spark)

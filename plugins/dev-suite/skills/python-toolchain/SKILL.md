@@ -48,7 +48,11 @@ What is the Python toolchain concern?
 |   --> error-handling-patterns
 |
 +-- Legacy upgrade / Python version migration?
-    --> modernization-migration
+|   --> modernization-migration
+|
++-- None of the above / concern is ambiguous or spans multiple areas?
+    --> Delegate to systems-engineer for open-ended triage, or clarify the
+        primary concern and re-enter the routing decision tree.
 ```
 
 ## Routing Table

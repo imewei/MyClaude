@@ -44,7 +44,11 @@ What is the primary concern?
 |   --> agent-evaluation (benchmarks, scoring, regression)
 |
 +-- Designing how an agent selects or chains tools?
-    --> tool-use-patterns (selection, chaining, error handling)
+|   --> tool-use-patterns (selection, chaining, error handling)
+|
++-- None of the above / concern is ambiguous or spans multiple areas?
+    --> Delegate to orchestrator for open-ended triage, or clarify the
+        primary concern and re-enter the routing decision tree.
 ```
 
 ## Skill Selection Table

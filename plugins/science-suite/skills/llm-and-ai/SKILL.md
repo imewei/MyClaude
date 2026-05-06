@@ -51,7 +51,11 @@ What is the LLM / AI task?
 |   --> nlp-fundamentals
 |
 +-- LLM-driven scientific pipeline / codegen prompt / experiment template / research workflow automation?
-    --> sci-workflow-engineer (agent)
+|   --> [delegate to sci-workflow-engineer agent] — no sub-skill covers this; route directly to the agent
+|
++-- None of the above / concern is ambiguous?
+    --> Delegate to sci-workflow-engineer for open-ended triage, or clarify the
+        primary concern and re-enter the routing decision tree.
 ```
 
 ## Skill Selection Table

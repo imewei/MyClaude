@@ -86,6 +86,85 @@ PackageCompiler.jl and system images.
 ### [Parallel Computing](../parallel-computing/SKILL.md)
 Multi-threading and distributed computing patterns.
 
+## Routing Decision Tree
+
+```
+What is the primary Julia task?
+|
++-- Core language: dispatch, type system, metaprogramming, or functional patterns?
+|   --> core-julia-patterns
+|
++-- SciML ecosystem overview or package selection?
+|   --> sciml-ecosystem
+|
++-- ODE / PDE / SDE / DAE solvers?
+|   --> differential-equations
+|
++-- Symbolic-numeric modeling with ModelingToolkit?
+|   --> modeling-toolkit
+|
++-- Physics-informed neural networks (PINNs) in Julia?
+|   --> neural-pde
+|
++-- Bayesian inference or probabilistic programming with Turing.jl?
+|   --> turing-model-design
+|
++-- Memory, type-stability, benchmarking, or allocation profiling?
+|   --> performance-tuning
+|
++-- Package scaffolding, testing, or CI/CD setup?
+|   --> package-development-workflow
+|
++-- Variational inference or ADVI with Turing.jl?
+|   --> variational-inference-patterns
+|
++-- Non-linear optimization or parameter estimation with Optimization.jl?
+|   --> optimization-patterns
+|
++-- Mathematical programming (LP / QP / MIP) with JuMP.jl?
+|   --> jump-optimization
+|
++-- MCMC diagnostics, R-hat, ESS, or chain convergence?
+|   --> mcmc-diagnostics
+|
++-- Writing tests with ReTestItems.jl or Aqua.jl?
+|   --> julia-testing-patterns
+|
++-- Environment management or Pkg.jl workflows?
+|   --> package-management
+|
++-- Chemical reaction network modeling with Catalyst.jl?
+|   --> catalyst-reactions
+|
++-- Data visualization with Makie.jl or Plots.jl?
+|   --> visualization-patterns
+|
++-- Scientific web services with Genie.jl or Oxygen.jl?
+|   --> web-development-julia
+|
++-- Lux.jl neural networks, UDEs, or SciMLSensitivity?
+|   --> sciml-modern-stack
+|
++-- Bifurcation analysis, chaos, network dynamics, or equation discovery?
+|   --> nonlinear-dynamics
+|
++-- Calling Python or R from Julia?
+|   --> interop-patterns
+|
++-- GitHub Actions for Julia packages?
+|   --> ci-cd-patterns
+|
++-- PackageCompiler.jl or system images?
+|   --> compiler-patterns
+|
++-- Multi-threading or distributed computing patterns?
+|   --> parallel-computing
+|
++-- None of the above / concern is ambiguous or spans multiple areas?
+    --> Delegate to julia-pro for open-ended triage, or clarify the
+        primary concern and re-enter the routing decision tree.
+```
+
 ## 1. Multiple Dispatch & Type System
 
 - **Multiple Dispatch**: Design functions that specialize based on all argument types.

@@ -47,7 +47,12 @@ What is the simulation concern?
 |   --> trajectory-analysis
 |
 +-- Rare-event sampling / weighted ensemble / path sampling?
-    --> advanced-simulations rare-event sampler guidance
+|   --> [cross-hub] statistical-physics-hub → rare-events-sampling
+|       (FFS, TIS/RETIS, WE/WESTPA, OPS, AMS, milestoning; see Section 4 here for Python reference stack)
+|
++-- None of the above / concern is ambiguous?
+    --> Delegate to simulation-expert for open-ended triage, or clarify the
+        primary concern and re-enter the routing decision tree.
 ```
 
 ## Skill Selection Table
@@ -58,7 +63,7 @@ What is the simulation concern?
 | MLIP, MLFF, MACE, NequIP, ACE, active learning | `ml-force-fields` |
 | coarse-graining, MARTINI, DPD, QM/MM, mesoscale | `multiscale-modeling` |
 | trajectory post-processing, RDF, MSD, viscosity | `trajectory-analysis` |
-| WESTPA, weighted ensemble, TPS/TIS, rare event | `advanced-simulations` |
+| WESTPA, weighted ensemble, TPS/TIS, rare event | `statistical-physics-hub → rare-events-sampling` |
 
 ## 1. Molecular Dynamics Workflows
 

@@ -54,8 +54,12 @@ What is the deep learning task?
 |   --> deep-learning-experimentation
 |
 +-- Scale to multi-GPU / distributed training?
-    --> advanced-ml-systems
-    (for post-training inference optimization, see ml-deployment hub)
+|   --> advanced-ml-systems
+|   (for post-training inference optimization, see ml-deployment hub)
+|
++-- None of the above / concern is ambiguous?
+    --> Delegate to neural-network-master for open-ended triage, or clarify the
+        primary concern and re-enter the routing decision tree.
 ```
 
 ## Skill Selection Table

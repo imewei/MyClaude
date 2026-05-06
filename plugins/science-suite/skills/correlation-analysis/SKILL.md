@@ -44,7 +44,11 @@ What is the correlation analysis task?
 |   --> correlation-computational-methods
 |
 +-- Analyze experimental scattering / spectroscopy data?
-    --> correlation-experimental-data
+|   --> correlation-experimental-data
+|
++-- None of the above / concern is ambiguous?
+    --> Delegate to statistical-physicist for open-ended triage, or clarify the
+        primary concern and re-enter the routing decision tree.
 ```
 
 ## Skill Selection Table

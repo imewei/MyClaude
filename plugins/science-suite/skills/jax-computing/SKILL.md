@@ -55,7 +55,11 @@ What is the JAX task?
 |   --> jax-diffeq-pro
 |
 +-- Physics simulations / MD / field theory?
-    --> jax-physics-applications
+|   --> jax-physics-applications
+|
++-- None of the above / concern is ambiguous?
+    --> Delegate to jax-pro for open-ended triage, or clarify the
+        primary concern and re-enter the routing decision tree.
 ```
 
 ## Skill Selection Table

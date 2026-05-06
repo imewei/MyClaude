@@ -54,7 +54,11 @@ What is the workflow concern?
 |   --> three-brain
 |
 +-- /ai-pair / dev-team / content-team / multi-round team review?
-    --> ai-pair
+|   --> ai-pair
+|
++-- None of the above / concern is ambiguous or spans multiple areas?
+    --> Delegate to debugger-pro for open-ended triage, or clarify the
+        primary concern and re-enter the routing decision tree.
 ```
 
 ## Routing Table

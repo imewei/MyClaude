@@ -52,7 +52,11 @@ What is the primary engineering concern?
 |   --> mcp-integration (server config, tool coordination)
 |
 +-- Enforcing content or behavioral safety constraints?
-    --> safety-guardrails (filtering, validation, responsible AI)
+|   --> safety-guardrails (filtering, validation, responsible AI)
+|
++-- None of the above / concern is ambiguous or spans multiple areas?
+    --> Delegate to context-specialist for open-ended triage, or clarify the
+        primary concern and re-enter the routing decision tree.
 ```
 
 ## Checklist

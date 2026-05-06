@@ -54,7 +54,11 @@ What is the ML deployment task?
 |   --> devops-ml-infrastructure
 |
 +-- Privacy-preserving / distributed training?
-    --> federated-learning
+|   --> federated-learning
+|
++-- None of the above / concern is ambiguous?
+    --> Delegate to ml-expert for open-ended triage, or clarify the
+        primary concern and re-enter the routing decision tree.
 ```
 
 ## Skill Selection Table

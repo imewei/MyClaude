@@ -67,7 +67,11 @@ What is the statistical physics task?
 |   --> rare-events-sampling
 |
 +-- Extreme-value distributions on magnitudes (GEV, GPD, tail index, return level)?
-    --> extreme-value-statistics
+|   --> extreme-value-statistics
+|
++-- None of the above / concern is ambiguous?
+    --> Delegate to statistical-physicist for open-ended triage, or clarify the
+        primary concern and re-enter the routing decision tree.
 ```
 
 ## Skill Selection Table

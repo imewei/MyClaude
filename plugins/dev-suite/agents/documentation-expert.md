@@ -10,6 +10,7 @@ background: true
 tools: Read, Write, Edit, Grep, Glob
 skills:
   - dev-workflows
+  - testing-and-quality
 ---
 
 # Documentation Expert

@@ -46,7 +46,7 @@ Located in `plugins/science-suite/agents/`:
 ```
 What is the primary task?
 |
-+-- Dynamical systems / chaos / SINDy / bifurcation?
++-- Dynamical systems / chaos / SINDy / bifurcation / coupled oscillators / pattern formation / synchronization?
 |   --> nonlinear-dynamics
 |
 +-- JAX code, JIT, vmap, pmap, custom VJP, JAX-MD?
@@ -61,10 +61,10 @@ What is the primary task?
 +-- DiffEq.jl, ModelingToolkit, UDEs, Turing, SciML?
 |   --> sciml-and-diffeq
 |
-+-- Correlation functions (MSD, VACFs, g(r), DLS, DDM)?
++-- Correlation functions (MSD, VACFs, g(r), DLS, DDM, SAXS, XPCS, scattering, spectroscopy)?
 |   --> correlation-analysis
 |
-+-- Phase transitions, Langevin, stat mech, soft matter?
++-- Phase transitions / Langevin / Fokker-Planck / stochastic dynamics / non-equilibrium / active matter / rare events / extreme value statistics / soft matter?
 |   --> statistical-physics-hub
 |
 +-- Neural architecture, CNNs/Transformers/GNNs, training?
@@ -79,34 +79,38 @@ What is the primary task?
 +-- Serving, ONNX, TensorRT, deployment pipeline?
 |   --> ml-deployment
 |
-+-- MD, Monte Carlo, GROMACS/OpenMM, GPU physics, HPC?
++-- MD / Monte Carlo / GROMACS/OpenMM / GPU physics / HPC / signal processing / FFT / time series / control theory / numerical methods?
 |   --> simulation-and-hpc
 |
-+-- Bioinformatics, quantum, control theory, signal proc?
++-- Bioinformatics / quantum computing / computer vision / RL / symbolic math / DSPy / RLAIF / self-improving AI / scientific Python / Rust extensions?
 |   --> research-and-domains
 |
 +-- MCMC, NUTS, variational inference, posterior diagnostics?
-    --> bayesian-inference
+|   --> bayesian-inference
+|
++-- None of the above / concern is ambiguous?
+    --> Identify whether the task is Python/JAX or Julia, then re-enter the
+        routing tree. If still unclear, delegate to `jax-pro` or `julia-pro`.
 ```
 
 ## Routing Table
 
 | Trigger | Hub skill |
 |---|---|
-| bifurcation, chaos, Lyapunov, SINDy, attractor, chimera | nonlinear-dynamics |
-| JAX, JIT, vmap, pmap, custom_vjp, JAX-MD, Diffrax | jax-computing |
-| Julia basics, dispatch, type stability, packaging, Pkg | julia-language |
-| Lux, MLJ, CUDA.jl, GNNLux, Julia neural network | julia-ml-and-dl |
-| DiffEq.jl, MTK, ModelingToolkit, UDE, Turing, SciML | sciml-and-diffeq |
-| correlation function, MSD, VACF, g(r), DLS, DDM, rheology | correlation-analysis |
-| phase transition, Langevin, stat mech, free energy, soft matter | statistical-physics-hub |
-| Transformer, CNN, GNN, neural architecture, training diagnostics | deep-learning-hub |
-| scikit-learn, XGBoost, feature engineering, MLflow, pandas | ml-and-data-science |
-| LLM, RAG, Claude API, AI workflow, codegen, embeddings | llm-and-ai |
-| ONNX, TensorRT, model serving, deployment, inference server | ml-deployment |
-| GROMACS, OpenMM, molecular dynamics, Monte Carlo, HPC, MPI | simulation-and-hpc |
-| bioinformatics, quantum, control theory, signal processing, EEG | research-and-domains |
-| NUTS, MCMC, NumPyro, Turing, ArviZ, variational inference | bayesian-inference |
+| bifurcation, chaos, Lyapunov, SINDy, attractor, chimera, coupled oscillators, synchronization, Turing patterns, pattern formation, network dynamics | nonlinear-dynamics |
+| JAX, JIT, vmap, pmap, custom_vjp, JAX-MD, Diffrax, optax, NumPyro JAX, JAX physics, XLA | jax-computing |
+| Julia basics, dispatch, type stability, packaging, Pkg, Makie, Plots.jl, visualization, Julia CI/CD, Julia testing, Julia HPC, MPI.jl, Distributed.jl, PyCall, interop, Genie.jl | julia-language |
+| Lux, Flux.jl, MLJ, CUDA.jl, GNNLux, Julia neural network, Enzyme, Zygote, KernelAbstractions, Julia RL, Julia model export, ONNX Julia | julia-ml-and-dl |
+| DiffEq.jl, MTK, ModelingToolkit, UDE, Turing, SciML, NeuralPDE, PINN, Catalyst.jl, JuMP, DataDrivenDiffEq, SINDy Julia, bifurcation Julia | sciml-and-diffeq |
+| correlation function, MSD, VACF, g(r), DLS, DDM, SAXS, XPCS, scattering, structure factor, spectroscopy, rheology, Green's function, FDT | correlation-analysis |
+| phase transition, Langevin, stat mech, free energy, soft matter, Fokker-Planck, stochastic dynamics, non-equilibrium, entropy production, active matter, MIPS, flocking, coarse-graining, rare events, FFS, TIS, extreme value, GEV, GPD, SOC, avalanche | statistical-physics-hub |
+| Transformer, CNN, GNN, neural architecture, training diagnostics, backpropagation, loss divergence, gradient explosion, gradient vanishing, ablation, hyperparameter search, distributed training, multi-GPU | deep-learning-hub |
+| scikit-learn, XGBoost, feature engineering, MLflow, pandas, curve fitting, NLSQ, EDA, statistical tests, hypothesis testing, scientific visualization, matplotlib, seaborn, W&B | ml-and-data-science |
+| LLM, RAG, Claude API, AI workflow, codegen, embeddings, LangChain, LangGraph, NLP, tokenization, NER, LLM evaluation, LLM-as-judge | llm-and-ai |
+| ONNX, TensorRT, model serving, deployment, inference server, FastAPI serving, TorchServe, Triton, BentoML, quantization, pruning, Airflow ML, Prefect, K8s GPU, federated learning, differential privacy | ml-deployment |
+| GROMACS, OpenMM, LAMMPS, molecular dynamics, Monte Carlo, HPC, MPI, trajectory analysis, MDAnalysis, ML force fields, NequIP, MACE, signal processing, FFT, filtering, time series, ARIMA, changepoint detection, control theory, PID, LQR, MPC, numerical methods, FEM | simulation-and-hpc |
+| bioinformatics, genomics, quantum computing, VQE, QAOA, computer vision, reinforcement learning, symbolic math, SymPy, DSPy, RLAIF, self-improving AI, Rust extensions, type-driven design, scientific Python packaging | research-and-domains |
+| NUTS, MCMC, NumPyro, Turing, ArviZ, variational inference, Pigeons, parallel tempering, multimodal posterior, Hawkes process, point processes, Bayesian SINDy, credible intervals, BlackJAX, R-hat, ESS | bayesian-inference |
 
 ## Checklist
 

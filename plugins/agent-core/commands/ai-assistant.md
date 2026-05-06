@@ -10,7 +10,7 @@ execution-modes:
   standard: "15-25 minutes"
   comprehensive: "30-45 minutes"
 agents:
-  primary: [ai-engineer]
+  primary: [sci-workflow-engineer]
   conditional: [{agent: reasoning-engine, trigger: pattern "prompt|llm.*prompt|response.*generation"}]
 ---
 

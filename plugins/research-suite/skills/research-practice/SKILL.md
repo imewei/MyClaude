@@ -81,6 +81,10 @@ What is the task category?
 |
 +-- Systematic review / meta-analysis / GRADE evidence grading?
 |   --> evidence-synthesis
+|
++-- None of the above / concern is ambiguous?
+    --> Delegate to research-expert for open-ended triage, or clarify the
+        primary concern and re-enter the routing decision tree.
 ```
 
 ## Checklist

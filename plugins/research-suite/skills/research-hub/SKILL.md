@@ -33,22 +33,26 @@ Whose manuscript / whose idea?
 |   --> research-spark
 |
 +-- Methodology help (design, reproduce, evaluate, write, synthesize)?
-    --> research-practice
-        |
-        +-- Design a study before data collection      → research-methodology
-        +-- Evaluate an existing paper / grant         → research-quality-assessment
-        +-- Reproduce a published paper in code        → research-paper-implementation
-        +-- Draft a manuscript / report / poster       → scientific-communication
-        +-- Systematic review / meta-analysis / GRADE  → evidence-synthesis
+|   --> research-practice
+|       |
+|       +-- Design a study before data collection      → research-methodology
+|       +-- Evaluate an existing paper / grant         → research-quality-assessment
+|       +-- Reproduce a published paper in code        → research-paper-implementation
+|       +-- Draft a manuscript / report / poster       → scientific-communication
+|       +-- Systematic review / meta-analysis / GRADE  → evidence-synthesis
+|
++-- None of the above / concern is ambiguous?
+    --> Delegate to research-expert for open-ended triage, or clarify the
+        primary concern and re-enter the routing decision tree.
 ```
 
 ## Routing Table
 
 | Trigger | Skill |
 |---|---|
-| Peer review, referee report, review someone's paper | `scientific-review` |
-| Refine my idea, fundable plan, research spark pipeline | `research-spark` |
-| Study design, reproduce paper, write manuscript, evidence synthesis | `research-practice` |
+| Peer review, referee report, review someone's paper, critique manuscript, novelty assessment, statistical claims, data integrity check, journal submission, assess preprint | `scientific-review` |
+| Refine my idea, fundable plan, research spark pipeline, continue project, resume stage, back to X work, redo stage N, premortem the plan | `research-spark` |
+| Study design, reproduce paper, write manuscript, evidence synthesis, "is this trustworthy", CONSORT, STROBE, PRISMA, p-hacking, HARKing, power analysis, IMRaD, GRADE, meta-analysis, literature review | `research-practice` |
 
 ## Checklist
 

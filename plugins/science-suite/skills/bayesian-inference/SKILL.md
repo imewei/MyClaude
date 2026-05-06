@@ -97,7 +97,11 @@ What is the Bayesian inference task?
 |   --> variational-inference-patterns
 |
 +-- Diagnose MCMC convergence / posterior quality?
-    --> mcmc-diagnostics
+|   --> mcmc-diagnostics
+|
++-- None of the above / concern is ambiguous?
+    --> Delegate to statistical-physicist for open-ended triage, or clarify the
+        primary concern and re-enter the routing decision tree.
 ```
 
 ## Skill Selection Table

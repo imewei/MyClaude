@@ -31,6 +31,31 @@ Property-based testing with Hypothesis and advanced Pytest patterns to ensure al
 ### 5. [Modern Packaging](../python-packaging-advanced/SKILL.md)
 Using `uv` for blazing-fast dependency management, workspaces (monorepos), and reproducible environments.
 
+## Routing Decision Tree
+
+```
+What is the primary Python engineering concern?
+|
++-- Structural typing, Protocols, Generics, or strict static analysis?
+|   --> type-driven-design
+|
++-- Writing Rust extensions with PyO3 / Maturin for performance-critical code?
+|   --> rust-extensions
+|
++-- Structured concurrency with asyncio.TaskGroup or async patterns?
+|   --> modern-concurrency
+|
++-- Property-based testing with Hypothesis or advanced Pytest patterns?
+|   --> robust-testing
+|
++-- Dependency management, uv workspaces, or reproducible packaging?
+|   --> python-packaging-advanced
+|
++-- None of the above / concern is ambiguous or spans multiple areas?
+    --> Delegate to python-pro for open-ended triage, or clarify the
+        primary concern and re-enter the routing decision tree.
+```
+
 ## The Python Pro Mindset
 
 1.  **Strict Typing**: `mypy --strict` or `pyright` strict mode must always pass.

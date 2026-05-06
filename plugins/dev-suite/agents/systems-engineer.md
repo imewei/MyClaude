@@ -11,6 +11,7 @@ isolation: worktree
 tools: Read, Write, Edit, Bash, Grep, Glob
 skills:
   - python-toolchain
+  - architecture-and-infra
 ---
 
 # Systems Engineer

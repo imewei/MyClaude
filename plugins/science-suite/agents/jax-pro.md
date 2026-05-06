@@ -1,6 +1,6 @@
 ---
 name: jax-pro
-description: JAX expert for jit/vmap/pmap, sharding, custom VJP/JVP, XLA/HLO, Optax/Optimistix, Diffrax, Pallas, and NumPyro-in-JAX. Delegates MD, bifurcation, general Bayes.
+description: "JAX expert: jit/vmap/pmap, sharding, VJP/JVP, XLA/HLO, Optax, Diffrax, Pallas, NumPyro. Delegates MD, bifurcation, general Bayes, productionization to peers."
 model: opus
 color: green
 effort: high

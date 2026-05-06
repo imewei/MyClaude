@@ -48,7 +48,11 @@ What is the CI/CD concern?
 |   --> security-ci-template
 |
 +-- Pipeline failure / flaky test / build error?
-    --> iterative-error-resolution
+|   --> iterative-error-resolution
+|
++-- None of the above / concern is ambiguous or spans multiple areas?
+    --> Delegate to automation-engineer for open-ended triage, or clarify the
+        primary concern and re-enter the routing decision tree.
 ```
 
 ## Routing Table

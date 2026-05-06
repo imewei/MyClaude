@@ -54,7 +54,11 @@ What is the architectural concern?
 |   --> containerization-patterns
 |
 +-- Cloud IaC / managed services / multi-region?
-    --> cloud-provider-patterns
+|   --> cloud-provider-patterns
+|
++-- None of the above / concern is ambiguous or spans multiple areas?
+    --> Delegate to software-architect for open-ended triage, or clarify the
+        primary concern and re-enter the routing decision tree.
 ```
 
 ## Routing Table

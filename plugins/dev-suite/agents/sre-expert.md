@@ -10,6 +10,7 @@ background: true
 tools: Read, Write, Edit, Grep, Glob, Bash, CronCreate, ScheduleWakeup
 skills:
   - observability-and-sre
+  - ci-cd-pipelines
 ---
 
 # SRE Expert (Reliability Consultant)

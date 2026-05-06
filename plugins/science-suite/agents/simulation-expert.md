@@ -11,6 +11,7 @@ background: true
 permissionMode: acceptEdits
 skills:
   - simulation-and-hpc
+  - statistical-physics-hub
 ---
 
 # Simulation Expert

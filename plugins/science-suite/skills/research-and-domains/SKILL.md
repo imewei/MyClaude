@@ -59,6 +59,12 @@ What is the task category?
     +-- Images / detection?            --> computer-vision
     +-- RL agents / environments?      --> reinforcement-learning
     +-- Symbolic / algebraic math?     --> symbolic-math
+|
++-- None of the above / concern is ambiguous?
+    --> Delegate to the most domain-relevant expert agent (e.g., `jax-pro` for
+        Python AI research, `julia-pro` for Julia domains, `simulation-expert`
+        for quantum/bioinformatics) for open-ended triage, or clarify the
+        primary concern and re-enter the routing decision tree.
 ```
 
 ## Checklist

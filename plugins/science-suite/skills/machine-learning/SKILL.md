@@ -41,6 +41,37 @@ FastAPI, Triton, and cloud-native deployment.
 ### [DevOps & ML Infrastructure](../devops-ml-infrastructure/SKILL.md)
 Docker, Kubernetes, and cluster management.
 
+## Routing Decision Tree
+
+```
+What is the primary ML task?
+|
++-- Advanced boosting models (XGBoost / LightGBM) or deep tabular architectures?
+|   --> advanced-ml-systems
+|
++-- Data preprocessing, feature engineering, or reporting/communication?
+|   --> data-wrangling-communication
+|
++-- Hypothesis testing, uncertainty quantification, or statistical analysis?
+|   --> statistical-analysis-fundamentals
+|
++-- Pipeline orchestration or reproducibility (Airflow / Dagster)?
+|   --> ml-pipeline-workflow
+|
++-- Serialization, scaling, or high-performance inference engineering?
+|   --> ml-engineering-production
+|
++-- Model serving with FastAPI, Triton, or cloud-native deployment?
+|   --> model-deployment-serving
+|
++-- Docker, Kubernetes, or cluster infrastructure for ML?
+|   --> devops-ml-infrastructure
+|
++-- None of the above / concern is ambiguous or spans multiple areas?
+    --> Delegate to ml-expert for open-ended triage, or clarify the
+        primary concern and re-enter the routing decision tree.
+```
+
 ## 1. Algorithm Selection
 
 | Task | Algorithm | When to Use |

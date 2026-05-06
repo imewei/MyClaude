@@ -78,7 +78,11 @@ What is the simulation / HPC task?
 |   --> advanced-optimization
 |
 +-- Control systems / MPC / stability?
-    --> control-theory
+|   --> control-theory
+|
++-- None of the above / concern is ambiguous?
+    --> Delegate to simulation-expert for open-ended triage, or clarify the
+        primary concern and re-enter the routing decision tree.
 ```
 
 ## Checklist

@@ -10,6 +10,8 @@ background: true
 disallowedTools: Write, Edit, NotebookEdit
 skills:
   - agent-systems
+  - llm-engineering
+  - reasoning-and-memory
 ---
 
 # Orchestrator

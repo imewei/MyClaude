@@ -68,7 +68,11 @@ What is the analysis goal?
 |   --> chaos-attractors (Python alternatives documented in Ecosystem Selection below)
 |
 +-- Need both Julia and JAX in one workflow?
-    --> jax-julia-interop
+|   --> jax-julia-interop
+|
++-- None of the above / concern is ambiguous?
+    --> Delegate to nonlinear-dynamics-expert for open-ended triage, or clarify the
+        primary concern and re-enter the routing decision tree.
 ```
 
 ## Ecosystem Selection

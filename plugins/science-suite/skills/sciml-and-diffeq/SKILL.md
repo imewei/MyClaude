@@ -96,8 +96,15 @@ What is the SciML / DiffEq task?
 +-- Universal DE / neural ODE with posterior uncertainty?
 |   --> bayesian-ude-workflow
 |
-+-- PINN / NeuralPDE / physics-constrained loss / NeuralPDE.jl end-to-end project?
-    --> pinn-engineer (agent)
++-- Deterministic PINN / NeuralPDE.jl / physics-constrained loss?
+|   --> neural-pde
+|
++-- Complex end-to-end NeuralPDE.jl project requiring deep domain expertise?
+|   --> [delegate to pinn-engineer agent]
+|
++-- None of the above / concern is ambiguous?
+    --> Delegate to julia-pro for open-ended triage, or clarify the
+        primary concern and re-enter the routing decision tree.
 ```
 
 ## Checklist

@@ -72,7 +72,11 @@ What is the Julia ML task?
 |   --> julia-ml-pipelines
 |
 +-- Export or serve a trained model?
-    --> julia-model-deployment
+|   --> julia-model-deployment
+|
++-- None of the above / concern is ambiguous?
+    --> Delegate to julia-ml-hpc for open-ended triage, or clarify the
+        primary concern and re-enter the routing decision tree.
 ```
 
 ## Checklist

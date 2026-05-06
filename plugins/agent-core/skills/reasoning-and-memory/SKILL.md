@@ -50,7 +50,11 @@ What is the primary need?
 |   --> knowledge-graph-patterns (entity resolution, graph traversal)
 |
 +-- Information must persist or be retrieved across turns?
-    --> memory-system-patterns (vector stores, conversation history)
+|   --> memory-system-patterns (vector stores, conversation history)
+|
++-- None of the above / concern is ambiguous or spans multiple areas?
+    --> Delegate to reasoning-engine for open-ended triage, or clarify the
+        primary concern and re-enter the routing decision tree.
 ```
 
 ## Checklist

@@ -11,6 +11,7 @@ background: true
 permissionMode: acceptEdits
 skills:
   - deep-learning-hub
+  - ml-deployment
 ---
 
 # Neural Network Master
