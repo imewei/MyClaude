@@ -372,3 +372,9 @@ junit.xml
 *.synctex.gz
 .serena/
 .research-log.jsonl
+
+# Graphify semantic cache (ephemeral build artifacts)
+graphify-out/cache/
+
+# Claude session scratch files in docs
+docs/.claude-progress.md

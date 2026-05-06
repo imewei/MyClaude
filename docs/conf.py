@@ -20,7 +20,7 @@ extensions = [
 ]
 
 templates_path = ["_templates"]
-exclude_patterns = ["_build", "Thumbs.db", ".DS_Store", "superpowers"]
+exclude_patterns = ["_build", "Thumbs.db", ".DS_Store", "superpowers", ".claude-progress.md"]
 
 # Options for HTML output
 html_theme = "furo"  # Using Furo as per previous setup

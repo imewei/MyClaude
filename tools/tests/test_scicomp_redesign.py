@@ -1,5 +1,5 @@
 # tools/tests/test_scicomp_redesign.py
-"""Tests for the scientific computing plugin redesign (v3.5.0).
+"""Tests for the scientific computing plugin redesign (v3.5.1).
 
 All tests are written before implementation. Run with:
   uv run pytest tools/tests/test_scicomp_redesign.py -v
@@ -186,10 +186,10 @@ class TestManifests:
     @pytest.mark.parametrize("suite_dir", [
         AGENT_CORE, DEV_SUITE, RESEARCH, SCIENCE
     ], ids=["agent-core", "dev-suite", "research-suite", "science-suite"])
-    def test_version_is_350(self, suite_dir):
+    def test_version_is_351(self, suite_dir):
         plugin = _plugin_json(suite_dir)
-        assert plugin["version"] == "3.5.0", \
-            f"{suite_dir.name} version must be 3.5.0, got {plugin['version']}"
+        assert plugin["version"] == "3.5.1", \
+            f"{suite_dir.name} version must be 3.5.1, got {plugin['version']}"
 
     def test_science_suite_has_md_sim_command(self):
         plugin = _plugin_json(SCIENCE)
