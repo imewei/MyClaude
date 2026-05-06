@@ -532,8 +532,8 @@
     "hash": "19167809988c1b9060810d2b2f7d93e3"
   },
   "/Users/b80985/Projects/MyClaude/plugins/dev-suite/agents/documentation-expert.md": {
-    "mtime": 1777947343.7735605,
-    "hash": "b7ed6b17d0747e03acf6acded01794b3"
+    "mtime": 1778086589.907082,
+    "hash": "4c4579e4e99bfcc0dc29dd441fbcfe27"
   },
   "/Users/b80985/Projects/MyClaude/plugins/dev-suite/agents/debugger-pro.md": {
     "mtime": 1778022326.8473613,
@@ -552,12 +552,12 @@
     "hash": "250d10e3ac60559c2bb25c13af9a6100"
   },
   "/Users/b80985/Projects/MyClaude/plugins/dev-suite/agents/sre-expert.md": {
-    "mtime": 1777947343.77512,
-    "hash": "14d845817545ce88b10a0eb419892124"
+    "mtime": 1778086588.355845,
+    "hash": "8da6ac52065428d7c0dacc182c641360"
   },
   "/Users/b80985/Projects/MyClaude/plugins/dev-suite/agents/systems-engineer.md": {
-    "mtime": 1777947343.775481,
-    "hash": "e32633887cceac0c1f512ffd00c9f704"
+    "mtime": 1778086589.0959752,
+    "hash": "1d6cf3496404281cbf8fcf6d902c9d1b"
   },
   "/Users/b80985/Projects/MyClaude/plugins/dev-suite/commands/merge-all.md": {
     "mtime": 1777947343.7803254,
@@ -1188,8 +1188,8 @@
     "hash": "888e1dcd75810280962855c185168eb5"
   },
   "/Users/b80985/Projects/MyClaude/plugins/science-suite/agents/jax-pro.md": {
-    "mtime": 1778031574.2852457,
-    "hash": "4f429901db6228a0b50c8311369a183b"
+    "mtime": 1778087127.6901326,
+    "hash": "825f89d94aa9db23bafd365f219f967f"
   },
   "/Users/b80985/Projects/MyClaude/plugins/science-suite/agents/nonlinear-dynamics-expert.md": {
     "mtime": 1778031607.5210972,
@@ -1208,20 +1208,20 @@
     "hash": "5395fac141e92d68b9bddd6c20ab2173"
   },
   "/Users/b80985/Projects/MyClaude/plugins/science-suite/agents/simulation-expert.md": {
-    "mtime": 1778031633.8659422,
-    "hash": "d53072b4f5c81567175cadfb5853019e"
+    "mtime": 1778086574.9165487,
+    "hash": "429b82b2217ac1abee288ca2f13de446"
   },
   "/Users/b80985/Projects/MyClaude/plugins/science-suite/agents/python-pro.md": {
     "mtime": 1778031622.819477,
     "hash": "a74c2901772b0518b572e21757b002f6"
   },
   "/Users/b80985/Projects/MyClaude/plugins/science-suite/agents/neural-network-master.md": {
-    "mtime": 1778031601.622358,
-    "hash": "4d8536a5d8dac6662c153513c389598a"
+    "mtime": 1778086587.378249,
+    "hash": "bb483dba7e3674f5f0f3d8239e543f30"
   },
   "/Users/b80985/Projects/MyClaude/plugins/science-suite/agents/julia-pro.md": {
-    "mtime": 1778031580.4332712,
-    "hash": "0c2b3d55aed76b495ab70738ecbd3711"
+    "mtime": 1778087132.0120022,
+    "hash": "faec5381c67abcbafccb0cfe4716534d"
   },
   "/Users/b80985/Projects/MyClaude/plugins/science-suite/commands/run-experiment.md": {
     "mtime": 1777947343.822829,
@@ -1972,8 +1972,8 @@
     "hash": "7eb4fbbb6304b1f4cc4129dddbd269f9"
   },
   "/Users/b80985/Projects/MyClaude/plugins/agent-core/agents/orchestrator.md": {
-    "mtime": 1778022206.057475,
-    "hash": "ce5e94b1505b80c7a4e56a2ffd5b45c1"
+    "mtime": 1778086574.1170402,
+    "hash": "a30944ea91eef582a297b386dcd4fb24"
   },
   "/Users/b80985/Projects/MyClaude/plugins/agent-core/agents/context-specialist.md": {
     "mtime": 1778031444.7357001,
@@ -1988,8 +1988,8 @@
     "hash": "4945a2b14b72e8956337898a66933a4f"
   },
   "/Users/b80985/Projects/MyClaude/plugins/agent-core/commands/ai-assistant.md": {
-    "mtime": 1777947343.7611816,
-    "hash": "ec3226aabaf9295b6b9b2721ce59d524"
+    "mtime": 1778086573.406354,
+    "hash": "4332cfcef52f715f4722e720d774981f"
   },
   "/Users/b80985/Projects/MyClaude/plugins/agent-core/commands/agent-build.md": {
     "mtime": 1777947343.760396,
