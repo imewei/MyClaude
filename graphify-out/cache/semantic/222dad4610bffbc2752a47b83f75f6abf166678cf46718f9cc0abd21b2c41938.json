@@ -1,1 +1,1 @@
-{"nodes": [{"id": "devops_architect_devops_architect", "label": "devops-architect", "file_type": "code", "source_file": "plugins/dev-suite/agents/devops-architect.md"}], "edges": [], "hyperedges": []}
+{"nodes": [{"id": "agent_devops_architect", "label": "DevOps Architect Agent", "file_type": "document", "source_file": "plugins/dev-suite/agents/devops-architect.md", "source_location": null, "source_url": null, "captured_at": null, "author": null, "contributor": null}], "edges": [], "hyperedges": []}
