@@ -33,14 +33,14 @@ Agents
    :version: 3.5.0
 
 .. agent:: jax-pro
-   :description: JAX expert for jit/vmap/pmap, sharding, custom VJP/JVP, XLA/HLO, Optax/Optimistix, Diffrax, Pallas, and NumPyro-in-JAX. Upgraded to opus in v3.5.0.
+   :description: JAX expert — jit/vmap/pmap, sharding, VJP/JVP, XLA/HLO, Optax, Diffrax, Pallas, NumPyro. Delegates MD, bifurcation, general Bayes, and productionization to peers. Upgraded to opus in v3.5.0.
    :model: opus
-   :version: 3.5.0
+   :version: 3.5.1
 
 .. agent:: julia-pro
-   :description: Julia/SciML expert for DifferentialEquations.jl, ModelingToolkit.jl, Turing.jl, UDEs, SINDy, and sensitivity analysis. Upgraded to opus in v3.5.0.
+   :description: Julia/SciML expert — dispatch, type stability, DiffEq.jl, ModelingToolkit, SciMLSensitivity, UDE, SINDy, Turing, Optimization.jl. Delegates ML/HPC and productionization to peers. Upgraded to opus in v3.5.0.
    :model: opus
-   :version: 3.5.0
+   :version: 3.5.1
 
 .. agent:: julia-ml-hpc
    :description: Julia ML/HPC expert for Lux.jl, MLJ.jl, CUDA.jl, MPI.jl, and GNNLux. Delegates SciML/ODE to julia-pro.

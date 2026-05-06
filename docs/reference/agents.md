@@ -53,8 +53,8 @@ Scientific computing, HPC, physics simulations, ML/DL, and nonlinear dynamics. `
 
 | Agent | Model | Description |
 |-------|-------|-------------|
-| `jax-pro` | opus | JAX expert for jit/vmap/pmap, sharding, custom VJP/JVP, XLA/HLO, Optax/Optimistix, Diffrax, Pallas, and NumPyro-in-JAX |
-| `julia-pro` | opus | Julia/SciML expert for DiffEq.jl, ModelingToolkit.jl, Turing.jl, UDEs, SINDy, and sensitivity analysis |
+| `jax-pro` | opus | JAX expert — jit/vmap/pmap, sharding, VJP/JVP, XLA/HLO, Optax, Diffrax, Pallas, NumPyro. Delegates MD, bifurcation, general Bayes, and productionization to peers |
+| `julia-pro` | opus | Julia/SciML expert — dispatch, type stability, DiffEq.jl, ModelingToolkit, SciMLSensitivity, UDE, SINDy, Turing, Optimization.jl. Delegates ML/HPC and productionization to peers |
 | `neural-network-master` | opus | Deep learning authority: architecture design, theory, and implementation (Transformers, CNNs, diagnostics) |
 | `nonlinear-dynamics-expert` | opus | Bifurcation analysis, chaos, coupled networks, pattern formation, and equation discovery (SINDy/UDE) |
 | `simulation-expert` | opus | Molecular dynamics, statistical mechanics, and numerical methods (HPC/GPU) |
@@ -85,6 +85,8 @@ Agents delegate across suite boundaries when tasks require multiple domains. Key
 |------|----|----------|
 | `software-architect` | `devops-architect` | Architecture ↔ Infrastructure |
 | `julia-pro` | `julia-ml-hpc` | SciML/ODE ↔ ML training/GPU/HPC |
+| `julia-pro` | `software-architect` (dev-suite) | Scientific computing ↔ Productionization/API design |
+| `jax-pro` | `software-architect` (dev-suite) | JAX implementation ↔ Productionization/API design |
 | `neural-network-master` | `julia-ml-hpc` | DL theory ↔ Julia implementation |
 | `nonlinear-dynamics-expert` | `jax-pro` / `julia-pro` | Theory ↔ Implementation |
 | `statistical-physicist` | `jax-pro` | Theory ↔ JAX implementation |

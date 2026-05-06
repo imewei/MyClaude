@@ -1,6 +1,66 @@
 Changelog
 =========
 
+v3.5.1 (2026-05-06)
+--------------------
+
+**3-Layer Routing Audit (Codex-assisted)**
+
+* Full 3-layer (router → hub → sub-hub) routing audit across all 4 plugins using Codex.
+  Science-suite: **FAIL** (3 confirmed defects); agent-core, dev-suite, research-suite: **WARN**
+  (34 missing fallback branches).
+* **Wrong-route fixes (3):**
+
+  - ``advanced-simulations`` self-routed rare-event sampling — corrected to cross-hub route
+    ``statistical-physics-hub → rare-events-sampling``.
+  - ``sciml-and-diffeq`` routed PINN/NeuralPDE to ``pinn-engineer`` agent instead of
+    ``neural-pde`` skill — fixed; agent delegation annotated separately.
+  - ``llm-and-ai`` routed scientific-pipeline automation to ``sci-workflow-engineer`` agent
+    without annotation — annotated clearly as agent delegation.
+
+* **Routing trees added to 5 sub-hub skills** that had Core Skills but no dispatch tree:
+  ``julia-mastery``, ``machine-learning``, ``parallel-computing``, ``python-development``,
+  ``statistical-physics``.
+* **Fallback branches added to all 34 routing trees** across all 4 plugins. Each terminal
+  branch now names the appropriate expert agent for open-ended triage instead of silently
+  dropping unmatched queries.
+* **Routing trigger/table expansions**: dev-hub, agent-hub, research-hub, and science-hub
+  routing tables now enumerate concrete invocation phrases for every hub (e.g. control-theory
+  and signal-processing corrected from ``research-and-domains`` to ``simulation-and-hpc``).
+
+**Agent Skills Array Expansions**
+
+* ``orchestrator`` (agent-core): added ``llm-engineering``, ``reasoning-and-memory`` — now
+  preloads the full agent-core hub toolkit on activation.
+* ``simulation-expert``: added ``statistical-physics-hub`` — aligns with the expert-agent
+  relationship already documented in statistical-physics-hub.
+* ``neural-network-master``: added ``ml-deployment`` — natural progression from architecture
+  to production serving.
+* ``sre-expert``: added ``ci-cd-pipelines`` — SRE and CI/CD share deployment pipeline context.
+* ``systems-engineer``: added ``architecture-and-infra`` — systems programming and cloud infra
+  are tightly coupled.
+* ``documentation-expert``: added ``testing-and-quality`` — documentation standards align with
+  code review and quality gates.
+
+**Cross-Suite Delegation**
+
+* ``jax-pro`` and ``julia-pro`` descriptions updated to document delegation boundary with
+  dev-suite ``software-architect`` for productionization, REST API design, and deployment.
+* Stale ``ai-engineer`` reference in ``ai-assistant`` command fixed to ``sci-workflow-engineer``.
+
+**Knowledge Graph Update**
+
+* Incremental graphify update: 3023 → **3238 nodes**, 4232 → **4569 edges**, 269 → **293 communities**.
+* +215 new nodes from routing tree and fallback additions; +338 new edges (routing links);
+  6 hyperedges extracted including Dev Hub Two-Tier Routing System and Research Spark
+  Eight-Stage Pipeline.
+
+**Validation**
+
+* pytest: 258/258 passing (was 256; +2 from new ``TestDescriptionTrimming`` parametrizations).
+* All 4 plugins validate clean post-audit.
+* ``tools/README.md`` test count updated: 154 → 258.
+
 v3.5.0 (2026-05-05)
 --------------------
 
