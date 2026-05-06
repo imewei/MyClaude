@@ -1,4 +1,5 @@
 {
+  "skillListingBudgetFraction": 0.08,
   "defaults": {
     "model": "sonnet",
     "effort": "high",
