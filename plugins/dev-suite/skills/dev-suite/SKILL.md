@@ -1,6 +1,6 @@
 ---
 name: dev-suite
-description: Meta-router for all software engineering and development tasks. Routes to backend, frontend, architecture, testing, CI/CD, observability, Python toolchain, data/security, dev workflows, AI pair programming, and internal orchestration skills. Use for any coding, infrastructure, DevOps, testing, debugging, documentation, or deployment task.
+description: Top-level router for all software development lifecycle topics. Use for: REST APIs/Node.js/Express/Fastify/FastAPI/asyncio/GraphQL/WebSockets/message queues; frontend accessibility/scientific GUIs/PyQt/cross-platform testing; system architecture/microservices/monorepo/containers/cloud/CLI tools/Terraform/K8s; test automation/TDD/E2E/coverage/code review/plugin validation; GitHub Actions/GitLab CI/deployment pipelines/security scanning/CI errors; Prometheus/Grafana/distributed tracing/SLOs/monitoring/observability/incident response; Python packaging/uv/ruff/mypy/performance profiling/error handling/legacy migration; database schema/SQL optimization/caching/search/authentication/secrets management; Git workflow/technical documentation/Airflow data pipelines/systematic debugging.
 ---
 
 # Dev Suite

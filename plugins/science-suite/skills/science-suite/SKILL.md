@@ -1,6 +1,6 @@
 ---
 name: science-suite
-description: Meta-router for all scientific computing tasks — JAX, Julia, SciML, nonlinear dynamics, Bayesian inference, statistical physics, deep learning, ML, simulation, HPC, LLM integration, and research domains. Use when any scientific, computational, or ML task is requested.
+description: Top-level router for all scientific computing topics. Use for: JAX/NumPyro/Diffrax/JIT/vmap/pmap/custom-VJP/optax; Julia language/packages/SciML/DiffEq.jl/Lux/ModelingToolkit; nonlinear dynamics/bifurcation/chaos/Lyapunov/SINDy/attractors/coupled oscillators/pattern formation; correlation functions/DLS/SAXS/XPCS/FFT correlators/MSD/VACF/g(r); statistical physics/non-equilibrium/stochastic dynamics/active matter/multiscale/rare-event sampling/extreme-value statistics; deep learning architecture/transformers/CNNs/GNNs/training diagnostics/gradient explosion; classical ML/scikit-learn/XGBoost/data analysis/wrangling/scientific visualization; LLM applications/RAG/LangChain/NLP/evaluation; ML deployment/FastAPI/TorchServe/MLOps/quantization/federated learning; MD simulation/HPC/GPU kernels/GROMACS/OpenMM/numerical methods/trajectory analysis/ML force fields; scientific Python packaging/Rust extensions/type-driven design/quantum computing/bioinformatics/RL/symbolic math; Bayesian inference/MCMC/NumPyro/Turing.jl/Pigeons/consensus MCMC/Bayesian UDE/PINNs/variational inference/MCMC diagnostics.
 ---
 
 # Science Suite
