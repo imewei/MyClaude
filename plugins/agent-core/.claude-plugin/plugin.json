@@ -37,9 +37,6 @@
     "./commands/team-assemble.md"
   ],
   "skills": [
-    "./skills/agent-systems",
-    "./skills/reasoning-and-memory",
-    "./skills/llm-engineering",
-    "./skills/thinkfirst"
+    "./skills/agent-core"
   ]
 }

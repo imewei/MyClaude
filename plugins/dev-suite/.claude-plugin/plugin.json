@@ -49,16 +49,6 @@
     "./commands/workflow-automate.md"
   ],
   "skills": [
-    "./skills/backend-patterns",
-    "./skills/frontend-and-mobile",
-    "./skills/architecture-and-infra",
-    "./skills/testing-and-quality",
-    "./skills/ci-cd-pipelines",
-    "./skills/observability-and-sre",
-    "./skills/python-toolchain",
-    "./skills/data-and-security",
-    "./skills/dev-workflows",
-    "./skills/three-brain",
-    "./skills/ai-pair"
+    "./skills/dev-suite"
   ]
 }

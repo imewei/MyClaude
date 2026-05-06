@@ -46,19 +46,6 @@
     "./commands/benchmark.md"
   ],
   "skills": [
-    "./skills/nonlinear-dynamics",
-    "./skills/jax-computing",
-    "./skills/julia-language",
-    "./skills/julia-ml-and-dl",
-    "./skills/sciml-and-diffeq",
-    "./skills/correlation-analysis",
-    "./skills/statistical-physics-hub",
-    "./skills/deep-learning-hub",
-    "./skills/ml-and-data-science",
-    "./skills/llm-and-ai",
-    "./skills/ml-deployment",
-    "./skills/simulation-and-hpc",
-    "./skills/research-and-domains",
-    "./skills/bayesian-inference"
+    "./skills/science-suite"
   ]
 }

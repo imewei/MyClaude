@@ -189,16 +189,23 @@ class TestSubSkillReachability:
             # Extract just the directory name from path like "./skills/foo"
             hub_names.add(Path(name).name)
 
-        # Collect all references from hub SKILL.md files
-        referenced_skills = set()
-        for hub_name in hub_names:
-            hub_md = skills_dir / hub_name / "SKILL.md"
-            if not hub_md.exists():
-                continue
-            content = hub_md.read_text(encoding="utf-8")
-            # Find relative references like ../sub-skill-name/SKILL.md
-            refs = re.findall(r"\.\./([^/]+)/SKILL\.md", content)
-            referenced_skills.update(refs)
+        # Transitively collect all references reachable from registered hubs.
+        # Handles multi-level chains: meta-router → hub → sub-skill.
+        referenced_skills: set = set(hub_names)
+        frontier = set(hub_names)
+        while frontier:
+            next_frontier: set = set()
+            for skill_name in frontier:
+                skill_md = skills_dir / skill_name / "SKILL.md"
+                if not skill_md.exists():
+                    continue
+                content = skill_md.read_text(encoding="utf-8")
+                refs = re.findall(r"\.\./([^/]+)/SKILL\.md", content)
+                for r in refs:
+                    if r not in referenced_skills:
+                        referenced_skills.add(r)
+                        next_frontier.add(r)
+            frontier = next_frontier
 
         # All skill dirs on disk
         all_skill_dirs = {
@@ -206,9 +213,6 @@ class TestSubSkillReachability:
             for d in skills_dir.iterdir()
             if d.is_dir() and (d / "SKILL.md").exists()
         }
-
-        # Hub skills reference themselves implicitly
-        referenced_skills.update(hub_names)
 
         orphans = all_skill_dirs - referenced_skills
         assert not orphans, (
