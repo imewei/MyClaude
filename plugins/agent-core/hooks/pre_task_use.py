@@ -22,7 +22,6 @@ AGENT_CAPABILITIES = {
     "quality-specialist": "Code review, security audit, test automation",
     "debugger-pro": "Root cause analysis, log correlation, memory profiling",
     "documentation-expert": "Technical docs, manuals, tutorials",
-    "ai-engineer": "LLM apps, RAG systems, agent orchestration",
     "ml-expert": "Classical ML, MLOps, scikit-learn, XGBoost",
     "neural-network-master": "Deep learning, Transformers, CNNs, training diagnostics",
     "python-pro": "Python systems, type-driven design, uv/ruff, PyO3",
@@ -31,7 +30,8 @@ AGENT_CAPABILITIES = {
     "research-expert": "Research methodology, evidence synthesis, visualization",
     "simulation-expert": "MD simulations, statistical mechanics, HPC",
     "statistical-physicist": "Statistical physics, correlation functions, phase transitions",
-    "prompt-engineer": "Prompt design, LLM optimization, evaluation",
+    "sci-workflow-engineer": "Scientific LLM workflows, codegen prompts, experiment templates, scientific RAG",
+    "pinn-engineer": "Physics-informed neural networks, PINNs, neural operators, inverse PDEs",
 }
 
 

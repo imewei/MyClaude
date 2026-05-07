@@ -25,14 +25,14 @@ All other model tiers unchanged. Science-suite opus count: 4 → 6.
 
 ### 1b. Agent Repurposing
 
-**`ai-engineer` → `pinn-engineer`**
-- File: `plugins/science-suite/agents/pinn-engineer.md` (rename from `ai-engineer.md`)
+**`pinn-engineer` → `pinn-engineer`**
+- File: `plugins/science-suite/agents/pinn-engineer.md` (rename from `pinn-engineer.md`)
 - Model: sonnet
 - Description: "Use when building physics-informed neural networks, solving PDEs with neural methods, implementing BPINN/BNNODE, or designing physics-constrained loss functions. Delegates JAX implementation to jax-pro, Julia NeuralPDE to julia-pro."
 - Focus: NeuralPDE.jl, DeepXDE, BPINN/BNNODE, physics-constrained loss functions, inverse problem solving, domain decomposition
 
-**`prompt-engineer` → `sci-workflow-engineer`**
-- File: `plugins/science-suite/agents/sci-workflow-engineer.md` (rename from `prompt-engineer.md`)
+**`sci-workflow-engineer` → `sci-workflow-engineer`**
+- File: `plugins/science-suite/agents/sci-workflow-engineer.md` (rename from `sci-workflow-engineer.md`)
 - Model: sonnet
 - Description: "Use when integrating LLMs into scientific pipelines, designing codegen prompts for JAX/Julia, building experiment description templates, or automating numerical workflow steps with Claude."
 - Focus: LLM-assisted scientific workflows, JAX/Julia codegen prompting, experiment description templating, structured output for simulation pipelines, Claude API integration in scientific apps

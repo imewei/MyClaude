@@ -100,7 +100,7 @@ plugin.json → hub skill → routing decision tree → sub-skill
 | Tier | Count | Use Case | Agents |
 |------|-------|----------|--------|
 | **opus** | 11 | Deep reasoning, architecture, research | orchestrator, reasoning-engine, context-specialist, software-architect, debugger-pro, research-expert, research-spark-orchestrator, neural-network-master, nonlinear-dynamics-expert, simulation-expert, statistical-physicist |
-| **sonnet** | 13 | Standard development and analysis | app-developer, automation-engineer, devops-architect, quality-specialist, sre-expert, systems-engineer, ai-engineer, jax-pro, julia-ml-hpc, julia-pro, ml-expert, prompt-engineer, python-pro |
+| **sonnet** | 13 | Standard development and analysis | app-developer, automation-engineer, devops-architect, quality-specialist, sre-expert, systems-engineer, jax-pro, julia-ml-hpc, julia-pro, ml-expert, pinn-engineer, python-pro, sci-workflow-engineer |
 | **haiku** | 1 | Fast, simple tasks | documentation-expert |
 
 ---

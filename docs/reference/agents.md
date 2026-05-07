@@ -49,7 +49,7 @@ Scientific research workflows: peer review, idea-to-plan refinement, and methodo
 
 ## Science Suite (`science-suite`) — 11 Agents
 
-Scientific computing, HPC, physics simulations, ML/DL, and nonlinear dynamics. `research-expert` moved to `research-suite` in v3.4.0. In v3.5.2, `jax-pro` and `julia-pro` upgraded to opus; `ai-engineer` renamed to `pinn-engineer`; `prompt-engineer` renamed to `sci-workflow-engineer`; `ml-expert` moved to haiku.
+Scientific computing, HPC, physics simulations, ML/DL, and nonlinear dynamics. `research-expert` moved to `research-suite` in v3.4.0. In v3.5.2, `jax-pro` and `julia-pro` upgraded to opus; `ml-expert` moved to haiku.
 
 | Agent | Model | Description |
 |-------|-------|-------------|

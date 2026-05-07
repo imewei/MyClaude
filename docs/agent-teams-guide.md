@@ -36,7 +36,7 @@ Enable agent teams (experimental) in your settings:
 | **science** | jax-pro | `science-suite:jax-pro` | JAX, NumPyro, Bayesian inference |
 | | neural-network-master | `science-suite:neural-network-master` | Deep learning, Transformers, Flax |
 | | ml-expert | `science-suite:ml-expert` | Scikit-learn, MLOps, XGBoost |
-| | ai-engineer | `science-suite:ai-engineer` | LLM apps, RAG, agents |
+| | pinn-engineer | `science-suite:pinn-engineer` | PINNs, neural operators, inverse PDEs |
 | | python-pro | `science-suite:python-pro` | Python systems, packaging |
 | | research-expert | `science-suite:research-expert` | Scientific methodology, papers |
 | | simulation-expert | `science-suite:simulation-expert` | Physics simulation, MD |
@@ -44,7 +44,7 @@ Enable agent teams (experimental) in your settings:
 | | nonlinear-dynamics-expert | `science-suite:nonlinear-dynamics-expert` | Bifurcation, chaos, SINDy/UDE |
 | | julia-pro | `science-suite:julia-pro` | Julia HPC, SciML |
 | | julia-ml-hpc | `science-suite:julia-ml-hpc` | Julia ML/DL/HPC, Lux.jl, CUDA.jl |
-| | prompt-engineer | `science-suite:prompt-engineer` | LLM optimization, eval |
+| | sci-workflow-engineer | `science-suite:sci-workflow-engineer` | Scientific LLM workflows, RAG, codegen |
 
 ### Official Plugin Agents
 
@@ -332,14 +332,14 @@ Build production AI applications -- RAG systems, LLM-powered apps, multi-agent o
 
 | Variant | MODE | Agent 1 | Agent 2 | Agent 3 | Agent 4 |
 |---------|------|---------|---------|---------|---------|
-| *default* (llm-app) | -- | `science-suite:ai-engineer` | `science-suite:prompt-engineer` | `dev-suite:software-architect` | `science-suite:python-pro` |
-| multi-agent | `multi-agent` | `agent-core:orchestrator` | `agent-core:reasoning-engine` | `agent-core:context-specialist` | `science-suite:ai-engineer` |
+| *default* (llm-app) | -- | `science-suite:sci-workflow-engineer` | `agent-core:context-specialist` | `dev-suite:software-architect` | `science-suite:python-pro` |
+| multi-agent | `multi-agent` | `agent-core:orchestrator` | `agent-core:reasoning-engine` | `agent-core:context-specialist` | `science-suite:sci-workflow-engineer` |
 
 ### Variant Details
 
-**Default (LLM app):** Build RAG systems, LLM-powered apps, and tool-use agents. AI-engineer designs the core pipeline (ingestion, chunking, embedding, retrieval, LLM orchestration, guardrails). Prompt-engineer designs system prompts and builds evaluation frameworks (LLM-as-judge, A/B testing). Software-architect builds streaming API endpoints, caching, and observability. Python-pro handles Python systems integration.
+**Default (LLM app):** Build RAG systems, LLM-powered apps, and tool-use agents. Sci-workflow-engineer designs the core pipeline (ingestion, chunking, embedding, retrieval, LLM orchestration, prompt templates, evaluation). Context-specialist handles memory systems, token budget, prompt caching, and knowledge persistence. Software-architect builds streaming API endpoints, caching, and observability. Python-pro handles Python systems integration.
 
-**Multi-Agent (`--var MODE=multi-agent`):** Build multi-agent orchestration systems with 2+ coordinated agents. Orchestrator designs the agent topology (hub-spoke, pipeline, blackboard), task decomposition, and coordination protocol. Reasoning-engine reviews agent prompts for chain-of-thought quality and error recovery. Context-specialist implements shared memory, context passing, and knowledge persistence. AI-engineer builds the agent runtime with tool definitions, state machines, and evaluation.
+**Multi-Agent (`--var MODE=multi-agent`):** Build multi-agent orchestration systems with 2+ coordinated agents. Orchestrator designs the agent topology (hub-spoke, pipeline, blackboard), task decomposition, and coordination protocol. Reasoning-engine reviews agent prompts for chain-of-thought quality and error recovery. Context-specialist implements shared memory, context passing, and knowledge persistence. Sci-workflow-engineer builds the agent runtime with tool definitions, LLM pipeline design, and evaluation frameworks.
 
 ### Placeholders
 

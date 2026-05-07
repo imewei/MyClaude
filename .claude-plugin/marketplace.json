@@ -135,15 +135,15 @@
       "category": "science",
       "strict": true,
       "agents": [
-        "./agents/ai-engineer.md",
         "./agents/jax-pro.md",
         "./agents/julia-ml-hpc.md",
         "./agents/julia-pro.md",
         "./agents/ml-expert.md",
         "./agents/neural-network-master.md",
         "./agents/nonlinear-dynamics-expert.md",
-        "./agents/prompt-engineer.md",
+        "./agents/pinn-engineer.md",
         "./agents/python-pro.md",
+        "./agents/sci-workflow-engineer.md",
         "./agents/simulation-expert.md",
         "./agents/statistical-physicist.md"
       ],

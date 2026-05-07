@@ -13,8 +13,8 @@
 ## File Map
 
 **CREATE:**
-- `plugins/science-suite/agents/pinn-engineer.md` — physics-informed AI agent (replaces ai-engineer.md)
-- `plugins/science-suite/agents/sci-workflow-engineer.md` — scientific LLM workflow agent (replaces prompt-engineer.md)
+- `plugins/science-suite/agents/pinn-engineer.md` — physics-informed AI agent (replaces pinn-engineer.md)
+- `plugins/science-suite/agents/sci-workflow-engineer.md` — scientific LLM workflow agent (replaces sci-workflow-engineer.md)
 - `plugins/science-suite/commands/md-sim.md` — MD simulation entry point
 - `plugins/science-suite/commands/benchmark.md` — HPC benchmarking entry point
 - `plugins/research-suite/commands/paper-implement.md` — paper reproduction command
@@ -41,8 +41,8 @@
 - Various `plugins/science-suite/skills/**/SKILL.md` — compression (Gemini WS-1 targets, Task 15-16)
 
 **DELETE:**
-- `plugins/science-suite/agents/ai-engineer.md`
-- `plugins/science-suite/agents/prompt-engineer.md`
+- `plugins/science-suite/agents/pinn-engineer.md`
+- `plugins/science-suite/agents/sci-workflow-engineer.md`
 
 ---
 
@@ -148,12 +148,12 @@ class TestAgentRepurposing:
         assert (SCIENCE / "agents/sci-workflow-engineer.md").exists()
 
     def test_ai_engineer_deleted(self):
-        assert not (SCIENCE / "agents/ai-engineer.md").exists(), \
-            "ai-engineer.md must be deleted (replaced by pinn-engineer.md)"
+        assert not (SCIENCE / "agents/pinn-engineer.md").exists(), \
+            "pinn-engineer.md must be deleted (replaced by pinn-engineer.md)"
 
     def test_prompt_engineer_deleted(self):
-        assert not (SCIENCE / "agents/prompt-engineer.md").exists(), \
-            "prompt-engineer.md must be deleted (replaced by sci-workflow-engineer.md)"
+        assert not (SCIENCE / "agents/sci-workflow-engineer.md").exists(), \
+            "sci-workflow-engineer.md must be deleted (replaced by sci-workflow-engineer.md)"
 
     def test_pinn_engineer_name_field(self):
         fm = _frontmatter(SCIENCE / "agents/pinn-engineer.md")
@@ -296,11 +296,11 @@ class TestManifests:
 
     def test_science_suite_ai_engineer_not_registered(self):
         plugin = _plugin_json(SCIENCE)
-        assert "./agents/ai-engineer.md" not in plugin.get("agents", [])
+        assert "./agents/pinn-engineer.md" not in plugin.get("agents", [])
 
     def test_science_suite_prompt_engineer_not_registered(self):
         plugin = _plugin_json(SCIENCE)
-        assert "./agents/prompt-engineer.md" not in plugin.get("agents", [])
+        assert "./agents/sci-workflow-engineer.md" not in plugin.get("agents", [])
 
 
 # ---------------------------------------------------------------------------
@@ -507,7 +507,7 @@ git commit -m "feat(science-suite): trim agent descriptions to ≤180 chars"
 
 **Files:**
 - Create: `plugins/science-suite/agents/pinn-engineer.md`
-- Delete: `plugins/science-suite/agents/ai-engineer.md`
+- Delete: `plugins/science-suite/agents/pinn-engineer.md`
 
 - [ ] **Step 1: Create pinn-engineer.md**
 
@@ -634,10 +634,10 @@ NeuralPDE.jl — triggers pinn-engineer, delegates to julia-pro.
 - Use `### Step N` headers for multi-step derivations (loss derivation, architecture, training loop).
 ```
 
-- [ ] **Step 2: Delete ai-engineer.md**
+- [ ] **Step 2: Delete pinn-engineer.md**
 
 ```bash
-git rm plugins/science-suite/agents/ai-engineer.md
+git rm plugins/science-suite/agents/pinn-engineer.md
 ```
 
 - [ ] **Step 3: Run agent repurposing tests**
@@ -653,7 +653,7 @@ Expected: all pinn-related tests PASS.
 
 ```bash
 git add plugins/science-suite/agents/pinn-engineer.md
-git commit -m "feat(science-suite): add pinn-engineer agent (replaces ai-engineer)"
+git commit -m "feat(science-suite): add pinn-engineer agent (replaces pinn-engineer)"
 ```
 
 ---
@@ -662,7 +662,7 @@ git commit -m "feat(science-suite): add pinn-engineer agent (replaces ai-enginee
 
 **Files:**
 - Create: `plugins/science-suite/agents/sci-workflow-engineer.md`
-- Delete: `plugins/science-suite/agents/prompt-engineer.md`
+- Delete: `plugins/science-suite/agents/sci-workflow-engineer.md`
 
 - [ ] **Step 1: Create sci-workflow-engineer.md**
 
@@ -732,7 +732,7 @@ Claude API in scientific pipeline — triggers sci-workflow-engineer.
 |---|---|
 | jax-pro | Actual JAX implementation of generated code |
 | julia-pro | Actual Julia/SciML implementation |
-| ai-engineer (agent-core) | General-purpose RAG/chatbot LLM app (not scientific context) |
+| pinn-engineer (agent-core) | General-purpose RAG/chatbot LLM app (not scientific context) |
 | pinn-engineer | Physics-constrained LLM-assisted PDE solving |
 
 ## Related Skills (Expert Agent For)
@@ -768,10 +768,10 @@ Claude API in scientific pipeline — triggers sci-workflow-engineer.
 - Use `### Step N` headers for multi-step workflow designs.
 ```
 
-- [ ] **Step 2: Delete prompt-engineer.md**
+- [ ] **Step 2: Delete sci-workflow-engineer.md**
 
 ```bash
-git rm plugins/science-suite/agents/prompt-engineer.md
+git rm plugins/science-suite/agents/sci-workflow-engineer.md
 ```
 
 - [ ] **Step 3: Run agent tests**
@@ -787,7 +787,7 @@ Expected: all TestAgentRepurposing tests PASS, sci-workflow-engineer description
 
 ```bash
 git add plugins/science-suite/agents/sci-workflow-engineer.md
-git commit -m "feat(science-suite): add sci-workflow-engineer agent (replaces prompt-engineer)"
+git commit -m "feat(science-suite): add sci-workflow-engineer agent (replaces sci-workflow-engineer)"
 ```
 
 ---
@@ -1479,7 +1479,7 @@ for a in sorted(agents): print(' ', a)
 "
 ```
 
-Expected: 11 agents, including `pinn-engineer` and `sci-workflow-engineer`, excluding `ai-engineer` and `prompt-engineer`.
+Expected: 11 agents, including `pinn-engineer` and `sci-workflow-engineer`, excluding `pinn-engineer` and `sci-workflow-engineer`.
 
 - [ ] **Step 5: Final commit**
 
@@ -1489,8 +1489,8 @@ git commit -m "$(cat <<'EOF'
 feat: plugin scientific computing redesign v3.5.0
 
 - science-suite: jax-pro + julia-pro promoted to opus; ml-expert → haiku
-- science-suite: ai-engineer → pinn-engineer (physics-informed AI)
-- science-suite: prompt-engineer → sci-workflow-engineer (scientific LLM workflows)
+- science-suite: pinn-engineer → pinn-engineer (physics-informed AI)
+- science-suite: sci-workflow-engineer → sci-workflow-engineer (scientific LLM workflows)
 - science-suite: all 11 agent descriptions trimmed to ≤180 chars
 - science-suite: /md-sim + /benchmark commands added
 - research-suite: /paper-implement + /lit-review + /replicate commands added
@@ -1512,8 +1512,8 @@ EOF
 | jax-pro → opus | Task 3 |
 | julia-pro → opus | Task 3 |
 | ml-expert → haiku | Task 3 |
-| ai-engineer → pinn-engineer | Task 5 |
-| prompt-engineer → sci-workflow-engineer | Task 6 |
+| pinn-engineer → pinn-engineer | Task 5 |
+| sci-workflow-engineer → sci-workflow-engineer | Task 6 |
 | Description trimming ≤180 chars | Tasks 3, 4, 5, 6 |
 | Mode-flag gating for heavy skills | Task 14 |
 | Routing tree compression | Task 14 |

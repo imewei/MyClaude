@@ -770,8 +770,8 @@ old tests.
 
 | MODE value | Agents | Use Case |
 |-----------|--------|----------|
-| *(default/llm-app)* | ai-engineer + prompt-engineer + software-architect + python-pro | LLM apps, RAG, tool use, streaming |
-| `multi-agent` | orchestrator + reasoning-engine + context-specialist + ai-engineer | Multi-agent system design |
+| *(default/llm-app)* | sci-workflow-engineer + context-specialist + software-architect + python-pro | LLM apps, RAG, tool use, streaming |
+| `multi-agent` | orchestrator + reasoning-engine + context-specialist + sci-workflow-engineer | Multi-agent system design |
 
 **Placeholders:** `USE_CASE`
 **Aliases:** `llm-app`, `multi-agent`
@@ -782,11 +782,11 @@ application for [USE_CASE].
 
 Spawn 4 specialist teammates:
 
-1. "ai-engineer" (science-suite:ai-engineer) - Agent pipeline: tool
-   selection, context management, streaming, error recovery, fallbacks.
+1. "llm-workflow" (science-suite:sci-workflow-engineer) - Agent pipeline:
+   tool selection, RAG design, streaming, prompt templates, LLM evaluation.
 
-2. "prompt-engineer" (science-suite:prompt-engineer) - Prompts: system,
-   few-shot, CoT, tool descriptions. Prompt versioning and A/B testing.
+2. "context-eng" (agent-core:context-specialist) - Context management,
+   memory systems, token budget, knowledge persistence, prompt caching.
 
 3. "architect" (dev-suite:software-architect) - App architecture: API
    layer, DB schema, caching, rate limiting, LLM/app separation.
@@ -794,14 +794,15 @@ Spawn 4 specialist teammates:
 4. "implementer" (dev-suite:python-pro) - API endpoints, data models,
    background jobs, integration tests. Type safety and observability.
 
-Workflow: ai-engineer → prompt-engineer → (architect + implementer
-parallel) → ai-engineer reviews.
+Workflow: llm-workflow → context-eng → (architect + implementer
+parallel) → llm-workflow reviews.
 ```
 
 **Variant: multi-agent** (`--var MODE=multi-agent`) — Multi-agent system design: orchestrator (coordination patterns,
 task decomposition, conflict resolution) + reasoning-engine (reasoning chain validation, evaluation frameworks) +
-context-specialist (memory systems, context management, knowledge persistence) + ai-engineer (agent implementations,
-tool integrations). Workflow: orchestrator → (reasoning + context parallel) → ai-engineer → orchestrator reviews.
+context-specialist (memory systems, context management, knowledge persistence) + sci-workflow-engineer (agent
+implementations, tool integrations, LLM pipeline design). Workflow: orchestrator → (reasoning + context parallel)
+→ sci-workflow-engineer → orchestrator reviews.
 
 **Key invariants:** Default: RAG requires retrieval eval metrics; prompt versioning mandatory. Multi-agent: orchestrator
 designs before implementation; reasoning-engine validates all chains.

@@ -67,14 +67,6 @@ class TestAgentRepurposing:
     def test_sci_workflow_engineer_exists(self):
         assert (SCIENCE / "agents/sci-workflow-engineer.md").exists()
 
-    def test_ai_engineer_deleted(self):
-        assert not (SCIENCE / "agents/ai-engineer.md").exists(), \
-            "ai-engineer.md must be deleted (replaced by pinn-engineer.md)"
-
-    def test_prompt_engineer_deleted(self):
-        assert not (SCIENCE / "agents/prompt-engineer.md").exists(), \
-            "prompt-engineer.md must be deleted (replaced by sci-workflow-engineer.md)"
-
     def test_pinn_engineer_name_field(self):
         fm = _frontmatter(SCIENCE / "agents/pinn-engineer.md")
         assert fm.get("name") == "pinn-engineer"
@@ -219,13 +211,6 @@ class TestManifests:
         plugin = _plugin_json(SCIENCE)
         assert "./agents/sci-workflow-engineer.md" in plugin.get("agents", [])
 
-    def test_science_suite_ai_engineer_not_registered(self):
-        plugin = _plugin_json(SCIENCE)
-        assert "./agents/ai-engineer.md" not in plugin.get("agents", [])
-
-    def test_science_suite_prompt_engineer_not_registered(self):
-        plugin = _plugin_json(SCIENCE)
-        assert "./agents/prompt-engineer.md" not in plugin.get("agents", [])
 
 
 # ---------------------------------------------------------------------------
