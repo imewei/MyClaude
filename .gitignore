@@ -241,20 +241,20 @@ trajectories/
 # AI Agent Configuration (local, not shared)
 # ----------------
 # Tool configuration directories
-.claude/
-.gemini/
-.agents/
-.codex/
-.serena/
+/.claude/
+/.gemini/
+/.agents/
+/.codex/
+/.serena/
 
 # Persistent memory / context files
-.remember
+/.remember
 memory/
 
 # AI agent instruction files (local overrides)
-AGENTS.md
-CLAUDE.md
-GEMINI.md
+/AGENTS.md
+/CLAUDE.md
+/GEMINI.md
 
 # Claude session data
 .claude-sessions/
