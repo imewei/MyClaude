@@ -472,8 +472,8 @@
     "hash": "98b81c4d511558fd58656b6691bde560"
   },
   "/Users/b80985/Projects/MyClaude/plugins/agent-core/hooks/pre_task_use.py": {
-    "mtime": 1776045603.7636178,
-    "hash": "ed8dd45f87d4329f75df415846c6dc65"
+    "mtime": 1778123729.7985096,
+    "hash": "447097e3a8e22dc76011a12e820cfdcb"
   },
   "/Users/b80985/Projects/MyClaude/plugins/agent-core/hooks/permission_denied.py": {
     "mtime": 1775193584.7243118,
@@ -512,8 +512,8 @@
     "hash": "42b5e0c666a3022052f7f421e7ca82b3"
   },
   "/Users/b80985/Projects/MyClaude/plugins/dev-suite/README.md": {
-    "mtime": 1777731801.2034914,
-    "hash": "4f6576732a0b158c01f331ca99da1c6d"
+    "mtime": 1778121596.9651906,
+    "hash": "817b19266c6273e701b50b0f62093521"
   },
   "/Users/b80985/Projects/MyClaude/plugins/dev-suite/output-styles/terse.md": {
     "mtime": 1774945609.5859482,
@@ -624,8 +624,8 @@
     "hash": "e75fb8b12d9461b8da4220d735e43955"
   },
   "/Users/b80985/Projects/MyClaude/plugins/dev-suite/commands/refactor-clean.md": {
-    "mtime": 1777947343.7826424,
-    "hash": "20196e069baf071cc9381460b018c30f"
+    "mtime": 1778121803.6761057,
+    "hash": "51e64b7cba2471575fa9c77c8e3deb17"
   },
   "/Users/b80985/Projects/MyClaude/plugins/dev-suite/commands/multi-platform.md": {
     "mtime": 1777947343.781588,
@@ -656,8 +656,8 @@
     "hash": "62341fe3714ff690d21acabba6c046d5"
   },
   "/Users/b80985/Projects/MyClaude/plugins/dev-suite/commands/commit.md": {
-    "mtime": 1777947343.7777033,
-    "hash": "65c1440fd813a4599215c9ea7b9d4a84"
+    "mtime": 1778121802.0960057,
+    "hash": "6c30928dee76c6fde8c65cf1a8bf7fe4"
   },
   "/Users/b80985/Projects/MyClaude/plugins/dev-suite/commands/tech-debt.md": {
     "mtime": 1777947343.7849917,
@@ -676,16 +676,16 @@
     "hash": "5caa974b2ce26c15f886be62a2c5c18a"
   },
   "/Users/b80985/Projects/MyClaude/plugins/dev-suite/skills/data-and-security/SKILL.md": {
-    "mtime": 1778084901.5028183,
-    "hash": "859dbf9b363482d801271b1b51ac302a"
+    "mtime": 1778130982.2412124,
+    "hash": "3edebe4d80c2d10fe88a815c65944c7a"
   },
   "/Users/b80985/Projects/MyClaude/plugins/dev-suite/skills/dev-hub/SKILL.md": {
-    "mtime": 1778084889.2253644,
-    "hash": "2c20d239b6ae0ff1042e9aa4449be930"
+    "mtime": 1778131087.400109,
+    "hash": "0da9e897ad16d2306c5c03acc1ff9b02"
   },
   "/Users/b80985/Projects/MyClaude/plugins/dev-suite/skills/architecture-and-infra/SKILL.md": {
-    "mtime": 1778084893.9362943,
-    "hash": "6b0fea09170a4c14a9fd9a25490d283d"
+    "mtime": 1778130946.9175396,
+    "hash": "6d2c0f486167f707bbf223de293d1258"
   },
   "/Users/b80985/Projects/MyClaude/plugins/dev-suite/skills/api-design-principles/SKILL.md": {
     "mtime": 1777947343.7871594,
@@ -728,12 +728,12 @@
     "hash": "154f499bee77b1a337767ee4f504b7ce"
   },
   "/Users/b80985/Projects/MyClaude/plugins/dev-suite/skills/testing-and-quality/SKILL.md": {
-    "mtime": 1778084895.413815,
-    "hash": "54467952565c258a0ec38057ac877c6c"
+    "mtime": 1778131052.5549967,
+    "hash": "1aea6d380781b02c2b2315159cf43d39"
   },
   "/Users/b80985/Projects/MyClaude/plugins/dev-suite/skills/observability-and-sre/SKILL.md": {
-    "mtime": 1778084898.50208,
-    "hash": "663c43859f1e2daf29611ed8f9dc248a"
+    "mtime": 1778131029.0172844,
+    "hash": "5e78e27d9e4bd0fa2c9951e5778fd308"
   },
   "/Users/b80985/Projects/MyClaude/plugins/dev-suite/skills/three-brain/SKILL.md": {
     "mtime": 1777947343.8036256,
@@ -788,8 +788,8 @@
     "hash": "ab18b9d9665ab8885cf260c889eb67b7"
   },
   "/Users/b80985/Projects/MyClaude/plugins/dev-suite/skills/dev-workflows/SKILL.md": {
-    "mtime": 1778084903.1915817,
-    "hash": "443729ad4c449bdd83b7acfba43b3b17"
+    "mtime": 1778131003.0116365,
+    "hash": "48826596ff448b326e76bf2d7e9ee370"
   },
   "/Users/b80985/Projects/MyClaude/plugins/dev-suite/skills/git-workflow/SKILL.md": {
     "mtime": 1777947343.7947133,
@@ -828,8 +828,8 @@
     "hash": "1319f7369b089e4e99074296c111bd81"
   },
   "/Users/b80985/Projects/MyClaude/plugins/dev-suite/skills/backend-patterns/SKILL.md": {
-    "mtime": 1778084890.8383195,
-    "hash": "d79fbac06e916a8f61068d235dd6dcb0"
+    "mtime": 1778130959.094289,
+    "hash": "7d8d0ad9f276127992187ad7db42207e"
   },
   "/Users/b80985/Projects/MyClaude/plugins/dev-suite/skills/mobile-testing-patterns/SKILL.md": {
     "mtime": 1777947343.7980456,
@@ -876,8 +876,8 @@
     "hash": "ee57b31fb01cf8472dff65ec1abacfd5"
   },
   "/Users/b80985/Projects/MyClaude/plugins/dev-suite/skills/ci-cd-pipelines/SKILL.md": {
-    "mtime": 1778084897.1101491,
-    "hash": "624d7b0ef5e2e428aad83d794ff885b4"
+    "mtime": 1778130970.1941278,
+    "hash": "694938db376cff7daf8c19413070ee39"
   },
   "/Users/b80985/Projects/MyClaude/plugins/dev-suite/skills/modern-javascript-patterns/SKILL.md": {
     "mtime": 1777947343.798594,
@@ -908,12 +908,12 @@
     "hash": "809eb91ef24323c9f05b2b88fad0441a"
   },
   "/Users/b80985/Projects/MyClaude/plugins/dev-suite/skills/frontend-and-mobile/SKILL.md": {
-    "mtime": 1778084892.399431,
-    "hash": "2913b2d18d6f631d08da79176c96bfd2"
+    "mtime": 1778131017.062711,
+    "hash": "f661f3f60319bb2e28d1020d2ae3a608"
   },
   "/Users/b80985/Projects/MyClaude/plugins/dev-suite/skills/python-toolchain/SKILL.md": {
-    "mtime": 1778084899.9974873,
-    "hash": "be5f99eb9f5df7fc7463cdd42ef5128d"
+    "mtime": 1778131040.5849922,
+    "hash": "daa79976d47e53fc6624fe73e5ac9411"
   },
   "/Users/b80985/Projects/MyClaude/plugins/dev-suite/skills/distributed-tracing/SKILL.md": {
     "mtime": 1777947343.793427,
@@ -967,9 +967,13 @@
     "mtime": 1778022211.0188353,
     "hash": "b39ed11273fd47a632bb0d45a37c1b10"
   },
+  "/Users/b80985/Projects/MyClaude/plugins/research-suite/skills/research-hub/SKILL.md": {
+    "mtime": 1778131138.2319813,
+    "hash": "ad3d15232099118f062687dae4f98872"
+  },
   "/Users/b80985/Projects/MyClaude/plugins/research-suite/skills/research-spark/SKILL.md": {
-    "mtime": 1778084946.6058412,
-    "hash": "b6c6f2c77007938a7d237189bc83e704"
+    "mtime": 1778131118.133478,
+    "hash": "695a9088737be4681fb9b10d7bf9b897"
   },
   "/Users/b80985/Projects/MyClaude/plugins/research-suite/skills/numerical-prototype/SKILL.md": {
     "mtime": 1777947343.8090103,
@@ -1248,12 +1252,12 @@
     "hash": "6cdc92aa939c7951a1e66f6a4ccbd764"
   },
   "/Users/b80985/Projects/MyClaude/plugins/science-suite/skills/sciml-modern-stack/SKILL.md": {
-    "mtime": 1778114272.1154668,
-    "hash": "b42a4675706a1aa873403a2891118a98"
+    "mtime": 1778131462.641712,
+    "hash": "71a4cb9378c680c2eef6bcd2113b1959"
   },
   "/Users/b80985/Projects/MyClaude/plugins/science-suite/skills/sciml-and-diffeq/SKILL.md": {
-    "mtime": 1778084971.7271538,
-    "hash": "bf4a9811949b797d233dc6c718e73185"
+    "mtime": 1778131453.704896,
+    "hash": "f8fda71d3f1cdaf71acf20c4ea48e94a"
   },
   "/Users/b80985/Projects/MyClaude/plugins/science-suite/skills/jax-bayesian-pro/SKILL.md": {
     "mtime": 1777947343.8378994,
@@ -1268,12 +1272,12 @@
     "hash": "d85e29ab86641edcdca4c1fca368825f"
   },
   "/Users/b80985/Projects/MyClaude/plugins/science-suite/skills/deep-learning-hub/SKILL.md": {
-    "mtime": 1778084983.6673641,
-    "hash": "65a16faf1bcf230807e5baecce5db570"
+    "mtime": 1778131292.401248,
+    "hash": "71c8ad1f0ac3491262fd996995714c3b"
   },
   "/Users/b80985/Projects/MyClaude/plugins/science-suite/skills/deep-learning/SKILL.md": {
-    "mtime": 1778031356.4857588,
-    "hash": "8f86ef25d4830b542765b1db750d5bae"
+    "mtime": 1778131278.9950075,
+    "hash": "d68015aeced0745401dbb64e40229db6"
   },
   "/Users/b80985/Projects/MyClaude/plugins/science-suite/skills/bayesian-ude-jax/SKILL.md": {
     "mtime": 1777947343.8260999,
@@ -1284,8 +1288,8 @@
     "hash": "2385d6af240e1217eb897f092211afb3"
   },
   "/Users/b80985/Projects/MyClaude/plugins/science-suite/skills/advanced-simulations/SKILL.md": {
-    "mtime": 1778114282.6852732,
-    "hash": "8c4abf9c915c3a4582b43dc52d651be0"
+    "mtime": 1778131260.0055547,
+    "hash": "5cb919203e226668355fc6779b39d449"
   },
   "/Users/b80985/Projects/MyClaude/plugins/science-suite/skills/gpu-acceleration/SKILL.md": {
     "mtime": 1777947343.8375487,
@@ -1344,8 +1348,8 @@
     "hash": "87559d08140f9b50638e0f5cdfa62ecd"
   },
   "/Users/b80985/Projects/MyClaude/plugins/science-suite/skills/jax-computing/SKILL.md": {
-    "mtime": 1778084959.113345,
-    "hash": "78912fabc8b6fc61f7923178381158e6"
+    "mtime": 1778131152.3798375,
+    "hash": "6ee0b99cc96f5efbedf5c0cb089dbc91"
   },
   "/Users/b80985/Projects/MyClaude/plugins/science-suite/skills/dspy-basics/SKILL.md": {
     "mtime": 1777999891.4266706,
@@ -1364,12 +1368,12 @@
     "hash": "8b49bc696344162a70a03940a2114614"
   },
   "/Users/b80985/Projects/MyClaude/plugins/science-suite/skills/self-improving-ai/SKILL.md": {
-    "mtime": 1778114342.2804198,
-    "hash": "b99f05f747204aec0377e73de17876b5"
+    "mtime": 1778131472.5053115,
+    "hash": "0d5135e4593da1806fe92eeea60a68fa"
   },
   "/Users/b80985/Projects/MyClaude/plugins/science-suite/skills/python-development/SKILL.md": {
-    "mtime": 1778084922.7928054,
-    "hash": "a8b61cdc0981f8e9a83abb9a5e95b050"
+    "mtime": 1778131417.2449796,
+    "hash": "a497379461b319db894272485507ae19"
   },
   "/Users/b80985/Projects/MyClaude/plugins/science-suite/skills/julia-graph-neural-networks/SKILL.md": {
     "mtime": 1777947343.841672,
@@ -1392,16 +1396,16 @@
     "hash": "2fe8c66815b9fef3d7602e796d406c65"
   },
   "/Users/b80985/Projects/MyClaude/plugins/science-suite/skills/bayesian-ude-workflow/SKILL.md": {
-    "mtime": 1778114331.3284187,
-    "hash": "d0fd8b5426e0543101a9827713376dff"
+    "mtime": 1778131558.500682,
+    "hash": "c43636455e46d94e0f6130429f102bf9"
   },
   "/Users/b80985/Projects/MyClaude/plugins/science-suite/skills/bifurcation-analysis/SKILL.md": {
     "mtime": 1777947343.8277857,
     "hash": "8ddae59aaf60986583a994d23bb3836b"
   },
   "/Users/b80985/Projects/MyClaude/plugins/science-suite/skills/julia-language/SKILL.md": {
-    "mtime": 1778084962.3722644,
-    "hash": "46e74cfda9e692676f7663cf8c0c1869"
+    "mtime": 1778131161.7732792,
+    "hash": "56ff1e141d70b0c98cb1e4971aff73d0"
   },
   "/Users/b80985/Projects/MyClaude/plugins/science-suite/skills/multiscale-modeling/SKILL.md": {
     "mtime": 1777947343.8505251,
@@ -1428,16 +1432,16 @@
     "hash": "aa5e9425434b97e5500ff1ca96536d2f"
   },
   "/Users/b80985/Projects/MyClaude/plugins/science-suite/skills/md-simulation-setup/SKILL.md": {
-    "mtime": 1778114336.187124,
-    "hash": "3725549e95c7df216ae8913fd75ae77d"
+    "mtime": 1778131538.699716,
+    "hash": "22367104f2e07f00236236b2b3e38fec"
   },
   "/Users/b80985/Projects/MyClaude/plugins/science-suite/skills/parallel-computing/SKILL.md": {
-    "mtime": 1778114283.51194,
-    "hash": "fa10f41c4e1e0197833ad1896c37c957"
+    "mtime": 1778131401.9184802,
+    "hash": "62f542fe2100372b099dbb81e8c8a5a2"
   },
   "/Users/b80985/Projects/MyClaude/plugins/science-suite/skills/science-hub/SKILL.md": {
-    "mtime": 1778084951.580072,
-    "hash": "e989262257fba50bd57e0fb4e9fceea6"
+    "mtime": 1778131242.9368243,
+    "hash": "11832ac3132e71a4f842882fe53b0a84"
   },
   "/Users/b80985/Projects/MyClaude/plugins/science-suite/skills/jax-core-programming/SKILL.md": {
     "mtime": 1777947343.838292,
@@ -1500,16 +1504,16 @@
     "hash": "2a56c4d7a43613d67d849e988a63ac7b"
   },
   "/Users/b80985/Projects/MyClaude/plugins/science-suite/skills/statistical-physics-hub/SKILL.md": {
-    "mtime": 1778084979.134028,
-    "hash": "13875c6b14c973aff76653f5a8bf0b59"
+    "mtime": 1778131513.4107084,
+    "hash": "0c5479e08416edb8048f16ac9dd39bb0"
   },
   "/Users/b80985/Projects/MyClaude/plugins/science-suite/skills/advanced-ml-systems/SKILL.md": {
     "mtime": 1777947343.8233526,
     "hash": "5b76606a510619526f6ff5b61bad15df"
   },
   "/Users/b80985/Projects/MyClaude/plugins/science-suite/skills/time-series-analysis/SKILL.md": {
-    "mtime": 1778114346.5599744,
-    "hash": "efce4fab5173e4742573ac3b7a5d5bf2"
+    "mtime": 1778131520.5590305,
+    "hash": "63b008655a34ba351189fe5d1d17fbd8"
   },
   "/Users/b80985/Projects/MyClaude/plugins/science-suite/skills/catalyst-reactions/SKILL.md": {
     "mtime": 1777947343.8284068,
@@ -1528,20 +1532,20 @@
     "hash": "2a95cbcea3b9e29c5aeac7c72a205593"
   },
   "/Users/b80985/Projects/MyClaude/plugins/science-suite/skills/julia-mastery/SKILL.md": {
-    "mtime": 1778084905.2146745,
-    "hash": "617cb098b34f2e24256d96c904d5f7be"
+    "mtime": 1778131320.7121358,
+    "hash": "130c1ab80bee96a6d53b7cdaa1bf0650"
   },
   "/Users/b80985/Projects/MyClaude/plugins/science-suite/skills/package-development-workflow/SKILL.md": {
     "mtime": 1777947343.8541262,
     "hash": "6294022814e7940e01c248a02b1be82a"
   },
   "/Users/b80985/Projects/MyClaude/plugins/science-suite/skills/llm-and-ai/SKILL.md": {
-    "mtime": 1778084992.2637818,
-    "hash": "e0e7a3f754b4a159efa77d240e15a239"
+    "mtime": 1778131342.6768854,
+    "hash": "d5ff53200871d1368aa1de09c83a5286"
   },
   "/Users/b80985/Projects/MyClaude/plugins/science-suite/skills/neural-pde/SKILL.md": {
-    "mtime": 1778114339.8261178,
-    "hash": "434574c71a5c4d4e4eaf5785f2ae1aae"
+    "mtime": 1778131380.983229,
+    "hash": "c641df5d56fadc3cd08efdf02e3c2140"
   },
   "/Users/b80985/Projects/MyClaude/plugins/science-suite/skills/correlation-physical-systems/SKILL.md": {
     "mtime": 1777947343.8329732,
@@ -1624,8 +1628,8 @@
     "hash": "3498d5abb0913d2aa94ef1dfc5e08f3e"
   },
   "/Users/b80985/Projects/MyClaude/plugins/science-suite/skills/equation-discovery/SKILL.md": {
-    "mtime": 1778114333.7572038,
-    "hash": "6f40ce0a08dcce600ee7d64536e99f9e"
+    "mtime": 1778131300.1507735,
+    "hash": "0af50314cbba60e343e7aeba2e1e3f21"
   },
   "/Users/b80985/Projects/MyClaude/plugins/science-suite/skills/numpyro-core-mastery/SKILL.md": {
     "mtime": 1777947343.8535957,
@@ -1684,8 +1688,8 @@
     "hash": "ecaa9cec516ef9bd49973ae9c2bfc4fe"
   },
   "/Users/b80985/Projects/MyClaude/plugins/science-suite/skills/ml-deployment/SKILL.md": {
-    "mtime": 1778084995.5341609,
-    "hash": "37260783525d9cd3e94c891f65a5f274"
+    "mtime": 1778131372.5792878,
+    "hash": "7566433975b3e5a9cea41560b155afff"
   },
   "/Users/b80985/Projects/MyClaude/plugins/science-suite/skills/control-theory/SKILL.md": {
     "mtime": 1777947343.8301518,
@@ -1720,8 +1724,8 @@
     "hash": "1cd408af0bcb71e2d4def71dd0b646b9"
   },
   "/Users/b80985/Projects/MyClaude/plugins/science-suite/skills/ml-and-data-science/SKILL.md": {
-    "mtime": 1778084986.8851814,
-    "hash": "84fa26bde435ab45d93704425e0dccbf"
+    "mtime": 1778131358.8006425,
+    "hash": "a98066edba716a462ee42b64da7f5618"
   },
   "/Users/b80985/Projects/MyClaude/plugins/science-suite/skills/experiment-tracking/SKILL.md": {
     "mtime": 1777947343.8368173,
@@ -1804,16 +1808,16 @@
     "hash": "c70b2bea3d6c6efd736400e8d361b350"
   },
   "/Users/b80985/Projects/MyClaude/plugins/science-suite/skills/julia-ml-and-dl/SKILL.md": {
-    "mtime": 1778084967.6852272,
-    "hash": "83c4ddd010479788c4a74cffe041d420"
+    "mtime": 1778131332.2148662,
+    "hash": "e31d8eba0f072217366d872b7dd8d99b"
   },
   "/Users/b80985/Projects/MyClaude/plugins/science-suite/skills/bayesian-inference/SKILL.md": {
-    "mtime": 1778085007.344537,
-    "hash": "2c44d056a1f359b87379b457a1a03eb1"
+    "mtime": 1778131193.6365974,
+    "hash": "2e07126b6d4b4ca909177f3f1d632eaf"
   },
   "/Users/b80985/Projects/MyClaude/plugins/science-suite/skills/simulation-and-hpc/SKILL.md": {
-    "mtime": 1778084999.2119484,
-    "hash": "13131638cdd700a397b21616965c36ad"
+    "mtime": 1778131483.5232596,
+    "hash": "3a5b107e7f248a55655c3b9dd7a6aa87"
   },
   "/Users/b80985/Projects/MyClaude/plugins/science-suite/skills/neural-network-mathematics/SKILL.md": {
     "mtime": 1777947343.8513868,
@@ -1860,20 +1864,20 @@
     "hash": "9c49c3ebd3c07b2b146536bba655a0b8"
   },
   "/Users/b80985/Projects/MyClaude/plugins/science-suite/skills/research-and-domains/SKILL.md": {
-    "mtime": 1778085003.9567716,
-    "hash": "202d847b21b0085a10157d8ed6046f45"
+    "mtime": 1778131437.4353542,
+    "hash": "4c1f32e0ecead979ed1aae5aa925963a"
   },
   "/Users/b80985/Projects/MyClaude/plugins/science-suite/skills/correlation-analysis/SKILL.md": {
-    "mtime": 1778084975.4007592,
-    "hash": "5b843518f102dbb05141e5161c2e58a1"
+    "mtime": 1778131270.3288004,
+    "hash": "39871ced24502309eff63448e8b52227"
   },
   "/Users/b80985/Projects/MyClaude/plugins/science-suite/skills/mcmc-diagnostics/SKILL.md": {
     "mtime": 1777947343.847717,
     "hash": "4ac85a51faa24faf86bbef16485577e4"
   },
   "/Users/b80985/Projects/MyClaude/plugins/science-suite/skills/machine-learning/SKILL.md": {
-    "mtime": 1778084911.2627144,
-    "hash": "cfaf65e515f3ff086836dc1354fb4b7c"
+    "mtime": 1778131351.3004658,
+    "hash": "b621489bcb8a48a88d379d0a3a8f541f"
   },
   "/Users/b80985/Projects/MyClaude/plugins/science-suite/skills/consensus-mcmc-pigeons/SKILL.md": {
     "mtime": 1777947343.8298962,
@@ -1916,8 +1920,8 @@
     "hash": "cf26a05532d9a4a261bd2799fdcbc2ef"
   },
   "/Users/b80985/Projects/MyClaude/plugins/science-suite/skills/statistical-physics/SKILL.md": {
-    "mtime": 1778084933.5844183,
-    "hash": "bfe6f8e09690da77f7b911ff1aef3ed7"
+    "mtime": 1778131494.3480551,
+    "hash": "5919f1e55acd78f6d9fe77065f43dc09"
   },
   "/Users/b80985/Projects/MyClaude/plugins/science-suite/skills/neural-architecture-patterns/SKILL.md": {
     "mtime": 1777947343.8511252,
@@ -1928,8 +1932,8 @@
     "hash": "57040b06612ce4ed7c80799c70ea9a73"
   },
   "/Users/b80985/Projects/MyClaude/plugins/science-suite/skills/nonlinear-dynamics/SKILL.md": {
-    "mtime": 1778084955.3267205,
-    "hash": "c7b6ea3f38ab9e273178b4c6ff1afb3c"
+    "mtime": 1778131396.6667726,
+    "hash": "2d1120201d60383cb848f8a2060119bb"
   },
   "/Users/b80985/Projects/MyClaude/plugins/science-suite/skills/stochastic-dynamics/SKILL.md": {
     "mtime": 1777947343.8633933,
@@ -1960,8 +1964,8 @@
     "hash": "d0a35caaa25a5aba5dc3401dc4f41894"
   },
   "/Users/b80985/Projects/MyClaude/plugins/agent-core/README.md": {
-    "mtime": 1777731801.2028816,
-    "hash": "93a91ddf58b0ef8364ace9bf70fe794f"
+    "mtime": 1778121576.893616,
+    "hash": "fdedb2db0f955fb635758b8a6464e7c9"
   },
   "/Users/b80985/Projects/MyClaude/plugins/agent-core/output-styles/terse.md": {
     "mtime": 1774945609.5692647,
@@ -1996,8 +2000,8 @@
     "hash": "588e694f6cf83ced94242106b8479db9"
   },
   "/Users/b80985/Projects/MyClaude/plugins/agent-core/commands/team-assemble.md": {
-    "mtime": 1778088272.6165962,
-    "hash": "fc3e1a2b5d8bede1a8630b099884fbd4"
+    "mtime": 1778123749.3298395,
+    "hash": "7a883588eecbc59e1860ef135e0c736e"
   },
   "/Users/b80985/Projects/MyClaude/plugins/agent-core/commands/ultra-think.md": {
     "mtime": 1778022322.613303,
@@ -2072,16 +2076,16 @@
     "hash": "e0e37bf7a6e4cad19646e353c248d8f9"
   },
   "/Users/b80985/Projects/MyClaude/plugins/agent-core/skills/agent-hub/SKILL.md": {
-    "mtime": 1778084938.2018056,
-    "hash": "baf551dc3afd269bc89b0f0bbe0b64e1"
+    "mtime": 1778130933.5027208,
+    "hash": "b71b079bb1f3e45a9dbbdba08a28b881"
   },
   "/Users/b80985/Projects/MyClaude/plugins/agent-core/skills/reasoning-and-memory/SKILL.md": {
-    "mtime": 1778084950.7915184,
-    "hash": "078252322d413298d6f2292fa702e8b2"
+    "mtime": 1778130914.43976,
+    "hash": "c8ced4dd9926c0ddb4af6822d523837a"
   },
   "/Users/b80985/Projects/MyClaude/plugins/agent-core/skills/agent-systems/SKILL.md": {
-    "mtime": 1778084942.7375762,
-    "hash": "fcacb6fd5c7c2ca7d8078f2a91314a35"
+    "mtime": 1778130898.0554602,
+    "hash": "72e2ad3c0c298e9321cdecf93d7f3fd4"
   },
   "/Users/b80985/Projects/MyClaude/plugins/agent-core/skills/reflection-framework/SKILL.md": {
     "mtime": 1777947343.7687707,
@@ -2136,24 +2140,20 @@
     "hash": "ffcfcfa67261e5e8ac13023e5dd32bb8"
   },
   "/Users/b80985/Projects/MyClaude/plugins/agent-core/skills/llm-engineering/SKILL.md": {
-    "mtime": 1778084946.7692528,
-    "hash": "49e744276f5874c85968284ab67dc2fb"
+    "mtime": 1778130906.652204,
+    "hash": "3c1b9c1a3c52d855273ea91405db2d26"
   },
   "/Users/b80985/Projects/MyClaude/plugins/research-suite/README.md": {
     "mtime": 1776613317.9981034,
     "hash": "3071cfe80f9bd6870eceba1550701793"
-  },
-  "/Users/b80985/Projects/MyClaude/plugins/research-suite/skills/research-hub/SKILL.md": {
-    "mtime": 1778084926.4201198,
-    "hash": "6ae7c4b495d98b3937782192a5ae505c"
   },
   "/Users/b80985/Projects/MyClaude/plugins/research-suite/skills/evidence-synthesis/SKILL.md": {
     "mtime": 1777947343.8079157,
     "hash": "34e2a61709a8ded797eee068af9bba5d"
   },
   "/Users/b80985/Projects/MyClaude/plugins/research-suite/skills/research-practice/SKILL.md": {
-    "mtime": 1778084930.6739464,
-    "hash": "fcc76975f202573a068a909a18dd2dc0"
+    "mtime": 1778131098.2389855,
+    "hash": "17eee3a68199ac848eb48761e6663e24"
   },
   "/Users/b80985/Projects/MyClaude/plugins/research-suite/skills/_research-commons/style/citation_style.md": {
     "mtime": 1776528120.686521,

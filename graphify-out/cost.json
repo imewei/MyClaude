@@ -1,5 +1,13 @@
 {
-  "input_tokens": 1500,
-  "output_tokens": 2000,
-  "total_cost_usd": 0.0
+  "runs": [
+    {
+      "date": "2026-05-07T11:31:11.984336+00:00",
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "files": 52,
+      "mode": "incremental"
+    }
+  ],
+  "total_input_tokens": 0,
+  "total_output_tokens": 0
 }
