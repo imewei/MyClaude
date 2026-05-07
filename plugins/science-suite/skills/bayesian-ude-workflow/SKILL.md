@@ -193,6 +193,23 @@ For a JAX-first Bayesian UDE workflow — Diffrax + Equinox + NumPyro + Optax �
 - **Bayesian SINDy** — credible intervals and inclusion probabilities on the extracted symbolic coefficients. See `bayesian-sindy-workflow`.
 - **Differential equations** — solver selection, stiffness handling. See `differential-equations`.
 
+## Routing Decision Tree
+
+```
+Julia + Turing + DiffEq.jl UDE with posterior uncertainty?
+  → This skill (Bayesian UDE workflow)
+
+Surrounding code is already JAX / Diffrax / NumPyro / Optax?
+  → bayesian-ude-jax (../bayesian-ude-jax/SKILL.md)
+
+NUTS R-hat elevated or posterior is multimodal?
+  → consensus-mcmc-pigeons (../consensus-mcmc-pigeons/SKILL.md)
+
+Extract symbolic equations from trained UDE residuals?
+  → equation-discovery (../equation-discovery/SKILL.md)
+  → bayesian-sindy-workflow for credible intervals on coefficients
+```
+
 ---
 
 ## Checklist

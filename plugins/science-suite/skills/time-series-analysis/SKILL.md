@@ -214,7 +214,23 @@ When the data is irregular event *timestamps* rather than a regular grid (earthq
 | MAPE | mean(\|y - y_hat\| / \|y\|) | Scale-independent |
 | sMAPE | mean(2\|y - y_hat\| / (\|y\| + \|y_hat\|)) | Symmetric percentage |
 
-## Forecasting Checklist
+## Routing Decision Tree
+
+```
+Regularly-sampled time series (ARIMA, Prophet, N-BEATS, anomaly detection)?
+  → This skill (time-series-analysis)
+
+Irregular event timestamps (Hawkes, Cox, renewal, spike trains)?
+  → point-processes (../point-processes/SKILL.md)
+
+Change-point detection on regularly-sampled series?
+  → This skill — ruptures / PELT / BinSeg section
+
+Extreme-value tail analysis on time series maxima?
+  → extreme-value-statistics (../extreme-value-statistics/SKILL.md)
+```
+
+## Checklist
 
 - [ ] Check stationarity (ADF test, KPSS test)
 - [ ] Examine ACF/PACF plots for model order selection

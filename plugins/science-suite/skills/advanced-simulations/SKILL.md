@@ -121,7 +121,7 @@ Use `mesa` for cloning-style rare-event sampling (agent = replica), population-l
 
 > **JAX-native gap**: A weighted-ensemble sampler leveraging `jax.vmap` for replica parallelism remains an open research opportunity — no mature JAX-native rare-event framework exists.
 
-## 5. Performance & Convergence Checklist
+## Checklist
 
 - [ ] **Cell Lists**: Optimized neighbor search for $O(N)$ scaling.
 - [ ] **Symplectic Integration**: Energy conservation drift $< 10^{-4}$.

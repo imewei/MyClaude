@@ -301,6 +301,19 @@ Bayesian SINDy with horseshoe priors, ensemble SINDy, and UQ-SINDy are covered i
 | Wrong coordinate system | Complex equations with many terms | Transform to physically meaningful coordinates before SINDy |
 | Threshold too aggressive | Missing true dynamics terms | Sweep thresholds and inspect Pareto front for elbow |
 
+## Routing Decision Tree
+
+```
+Data-driven equation discovery from trajectory data (SINDy / PySINDy)?
+  → This skill (equation-discovery)
+
+Need posterior uncertainty / inclusion probabilities on discovered terms?
+  → bayesian-sindy-workflow (../bayesian-sindy-workflow/SKILL.md)
+
+Discovering residual dynamics inside a physics-based ODE?
+  → UDE + SINDy pipeline — start with bayesian-ude-workflow
+```
+
 ## Checklist
 
 - [ ] Verify derivative estimation method matches data noise level (finite difference for clean, smoothed/integral for noisy)

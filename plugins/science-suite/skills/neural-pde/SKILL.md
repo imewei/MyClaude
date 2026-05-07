@@ -213,6 +213,22 @@ Sobol_first = cp.Sens_m(fitted, dist)      # first-order indices
 - **SciML modern stack** — sensealg and SciMLBase interfaces. See `sciml-modern-stack`.
 - **Bayesian UDE workflow** — hybrid physics + NN with Turing. See `bayesian-ude-workflow`.
 
+## Routing Decision Tree
+
+```
+Forward or inverse PDE with physics-informed neural network (NeuralPDE.jl)?
+  → This skill (neural-pde)
+
+Need posterior uncertainty on PINN solution (BPINN / BNNODE / HMC)?
+  → bayesian-pinn (../bayesian-pinn/SKILL.md)
+
+Purely data-driven neural ODE / UDE inside Julia SciML stack?
+  → sciml-modern-stack (../sciml-modern-stack/SKILL.md)
+
+PDE on a regular grid where MOL + DiffEq.jl would work?
+  → differential-equations via MethodOfLines.jl
+```
+
 ---
 
 ## Checklist

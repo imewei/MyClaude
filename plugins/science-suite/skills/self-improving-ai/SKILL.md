@@ -135,6 +135,19 @@ The other two families (inference-time scaling and autonomous research loops) ar
 - **RLAIF reward gaming** — DPO is more stable than PPO on AI-generated labels; prefer DPO / KTO when starting.
 - **Autonomous-loop cost blowup** — multi-agent loops can burn enormous token budgets in a single task. Set a hard turn and token cap per session.
 
+## Routing Decision Tree
+
+```
+Choosing a self-improvement family or surveying the field?
+  → This skill (self-improving-ai router)
+
+Programmatic prompt optimization (MIPROv2, BootstrapFewShot, ChainOfThought)?
+  → dspy-basics (../dspy-basics/SKILL.md)
+
+Fine-tuning with AI-generated preference labels (DPO, KTO, PPO, RLAIF)?
+  → rlaif-training (../rlaif-training/SKILL.md)
+```
+
 ---
 
 ## Checklist

@@ -305,7 +305,7 @@ For physics-informed neural networks (PINNs) with ModelingToolkit, see the dedic
 
 ---
 
-## Decision Framework
+## Routing Decision Tree
 
 ```
 Need neural network inside ODE/SDE?

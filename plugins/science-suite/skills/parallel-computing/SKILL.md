@@ -215,7 +215,7 @@ result = ((x + x.T) / 2).sum().compute()
 - **Weak**: Problem scales with processors. Goal: Constant runtime
 - **Amdahl's Law**: Speedup = 1 / (s + (1-s)/n), s = serial fraction
 
-## Performance & Optimization Checklist
+## Checklist
 
 - [ ] **Memory Management**: Minimize host-to-device transfers. Use pinned memory for faster I/O.
 - [ ] **Coalescing**: Ensure threads access contiguous memory locations.
