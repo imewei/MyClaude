@@ -39,6 +39,7 @@ jobs:
       - name: Install dependencies
         run: |
           uv sync
+          uv pip install "pip>=26.1"
           echo "$PWD/.venv/bin" >> $GITHUB_PATH
 
       - name: Run pip-audit
