@@ -51,34 +51,34 @@ Control systems: PID, LQR, MPC, stability analysis, and reinforcement learning f
 What is the simulation / HPC task?
 |
 +-- Set up or run MD simulations?
-|   --> md-simulation-setup
+|   --> science-suite:md-simulation-setup
 |
 +-- Analyze MD trajectories?
-|   --> trajectory-analysis
+|   --> science-suite:trajectory-analysis
 |
 +-- ML-based interatomic potentials?
-|   --> ml-force-fields
+|   --> science-suite:ml-force-fields
 |
 +-- MPI / multi-node parallelism?
-|   --> parallel-computing
+|   --> science-suite:parallel-computing
 |
 +-- GPU kernel / device programming?
-|   --> gpu-acceleration
+|   --> science-suite:gpu-acceleration
 |
 +-- FD / FE / spectral numerical algorithms?
-|   --> numerical-methods-implementation
+|   --> science-suite:numerical-methods-implementation
 |
 +-- FFT / filtering / spectral analysis?
-|   --> signal-processing
+|   --> science-suite:signal-processing
 |
 +-- Time series modeling / forecasting?
-|   --> time-series-analysis
+|   --> science-suite:time-series-analysis
 |
 +-- Global / combinatorial optimization?
-|   --> advanced-optimization
+|   --> science-suite:advanced-optimization
 |
 +-- Control systems / MPC / stability?
-|   --> control-theory
+|   --> science-suite:control-theory
 |
 +-- None of the above / concern is ambiguous?
     --> Delegate to simulation-expert for open-ended triage, or clarify the

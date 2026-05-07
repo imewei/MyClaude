@@ -309,7 +309,7 @@ For physics-informed neural networks (PINNs) with ModelingToolkit, see the dedic
 
 ```
 Need neural network inside ODE/SDE?
-  → UDE (this skill: UDE section)
+  → UDE (this skill: science-suite:sciml-modern-stack)
 
 Need gradients through a solver?
   → SciMLSensitivity.jl (algorithm selection table above)
@@ -321,13 +321,13 @@ Need implicit/fixed-point layer?
   → DeepEquilibriumNetworks.jl (DEQ)
 
 Need to solve PDE with neural network?
-  → NeuralPDE.jl (PINN with ModelingToolkit)
+  → science-suite:neural-pde (PINN with ModelingToolkit)
 
 Have known physics + unknown terms?
   → UDE with additive/multiplicative correction pattern
 
 Want to discover equations from trained NN?
-  → UDE + SINDy pipeline (DataDrivenDiffEq.jl)
+  → UDE + SINDy pipeline (science-suite:equation-discovery via DataDrivenDiffEq.jl)
 ```
 
 ## Checklist

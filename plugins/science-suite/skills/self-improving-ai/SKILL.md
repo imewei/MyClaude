@@ -139,13 +139,13 @@ The other two families (inference-time scaling and autonomous research loops) ar
 
 ```
 Choosing a self-improvement family or surveying the field?
-  → This skill (self-improving-ai router)
+  → This skill (science-suite:self-improving-ai router)
 
 Programmatic prompt optimization (MIPROv2, BootstrapFewShot, ChainOfThought)?
-  → dspy-basics (../dspy-basics/SKILL.md)
+  → science-suite:dspy-basics (../dspy-basics/SKILL.md)
 
 Fine-tuning with AI-generated preference labels (DPO, KTO, PPO, RLAIF)?
-  → rlaif-training (../rlaif-training/SKILL.md)
+  → science-suite:rlaif-training (../rlaif-training/SKILL.md)
 ```
 
 ---

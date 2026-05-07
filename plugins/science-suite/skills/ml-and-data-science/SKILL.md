@@ -42,28 +42,28 @@ MLflow, Weights & Biases, DVC: logging metrics, artifacts, and reproducible expe
 What is the ML / data science task?
 |
 +-- Train classical ML models?
-|   --> machine-learning
+|   --> science-suite:machine-learning
 |
 +-- Deploy / monitor / serve ML in production?
-|   --> (see ml-deployment hub instead)
+|   --> (see science-suite:ml-deployment hub instead)
 |
 +-- Explore and understand data?
-|   --> data-analysis
+|   --> science-suite:data-analysis
 |
 +-- Clean, transform, or merge datasets?
-|   --> data-wrangling-communication
+|   --> science-suite:data-wrangling-communication
 |
 +-- Statistical tests / inference?
-|   --> statistical-analysis-fundamentals
+|   --> science-suite:statistical-analysis-fundamentals
 |
 +-- Create plots / figures?
-|   --> scientific-visualization
+|   --> science-suite:scientific-visualization
 |
 +-- Fit curves / non-linear models to data?
-|   --> nlsq-core-mastery
+|   --> science-suite:nlsq-core-mastery
 |
 +-- Track experiments and artifacts?
-|   --> experiment-tracking
+|   --> science-suite:experiment-tracking
 |
 +-- None of the above / concern is ambiguous?
     --> Delegate to ml-expert for open-ended triage, or clarify the

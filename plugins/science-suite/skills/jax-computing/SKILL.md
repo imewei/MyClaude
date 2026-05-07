@@ -39,23 +39,23 @@ GPU-accelerated physics: MD simulations, field theory, and lattice models using 
 What is the JAX task?
 |
 +-- General JAX patterns / transformations?
-|   --> jax-mastery
+|   --> science-suite:jax-mastery
 |
 +-- Low-level XLA / custom primitives / memory?
-|   --> jax-core-programming
+|   --> science-suite:jax-core-programming
 |
 +-- Gradient optimization / NLSQ / schedules?
-|   --> jax-optimization-pro
+|   --> science-suite:jax-optimization-pro
 |
 +-- JAX-specific NumPyro / GPU sampling patterns?
-|   --> jax-bayesian-pro
+|   --> science-suite:jax-bayesian-pro
 |   (for general Bayesian modeling, see bayesian-inference hub)
 |
 +-- Differential equations / neural ODEs?
-|   --> jax-diffeq-pro
+|   --> science-suite:jax-diffeq-pro
 |
 +-- Physics simulations / MD / field theory?
-|   --> jax-physics-applications
+|   --> science-suite:jax-physics-applications
 |
 +-- None of the above / concern is ambiguous?
     --> Delegate to jax-pro for open-ended triage, or clarify the
@@ -66,12 +66,12 @@ What is the JAX task?
 
 | Task | Skill |
 |------|-------|
-| vmap/pmap, JIT patterns | `jax-mastery` |
-| Custom VJP, pytrees, XLA | `jax-core-programming` |
-| optax, NLSQ, schedules | `jax-optimization-pro` |
-| NumPyro, NUTS, ArviZ | `jax-bayesian-pro` |
-| Diffrax, neural ODEs | `jax-diffeq-pro` |
-| MD, lattice, field theory | `jax-physics-applications` |
+| vmap/pmap, JIT patterns | `science-suite:jax-mastery` |
+| Custom VJP, pytrees, XLA | `science-suite:jax-core-programming` |
+| optax, NLSQ, schedules | `science-suite:jax-optimization-pro` |
+| NumPyro, NUTS, ArviZ | `science-suite:jax-bayesian-pro` |
+| Diffrax, neural ODEs | `science-suite:jax-diffeq-pro` |
+| MD, lattice, field theory | `science-suite:jax-physics-applications` |
 
 ## Checklist
 

@@ -48,22 +48,22 @@ Systematic workflows for training, ablation, and hyperparameter tuning.
 What is the deep-learning need?
 |
 +-- Build a baseline model, layer, loss, or training loop?
-|   --> stay in deep-learning
+|   --> stay in science-suite:deep-learning
 |
 +-- Choose CNN/Transformer/GNN/diffusion architecture?
-|   --> neural-architecture-patterns
+|   --> science-suite:neural-architecture-patterns
 |
 +-- Derive backpropagation, Jacobians, Hessians, or convergence math?
-|   --> neural-network-mathematics
+|   --> science-suite:neural-network-mathematics
 |
 +-- Diagnose NaN loss, gradient explosion/vanishing, dead ReLUs, or plateaus?
-|   --> training-diagnostics
+|   --> science-suite:training-diagnostics
 |
 +-- Plan ablations, hyperparameter search, or reproducible runs?
-|   --> deep-learning-experimentation
+|   --> science-suite:deep-learning-experimentation
 |
 +-- Optimize inference with quantization/pruning/ONNX/TensorRT?
-    --> model-optimization-deployment
+    --> science-suite:model-optimization-deployment
 ```
 
 ## Frameworks

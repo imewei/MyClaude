@@ -39,22 +39,22 @@ Vault, AWS Secrets Manager, environment injection, and secret rotation strategie
 What is the data or security concern?
 |
 +-- Schema design / migrations / connection pools?
-|   --> database-patterns
+|   --> dev-suite:database-patterns
 |
 +-- Slow queries / index tuning / N+1?
-|   --> sql-optimization-patterns
+|   --> dev-suite:sql-optimization-patterns
 |
 +-- Cache invalidation / TTL / Redis config?
-|   --> caching-patterns
+|   --> dev-suite:caching-patterns
 |
 +-- Full-text or vector search / relevance?
-|   --> search-patterns
+|   --> dev-suite:search-patterns
 |
 +-- Login / OAuth2 / JWT / RBAC?
-|   --> auth-implementation-patterns
+|   --> dev-suite:auth-implementation-patterns
 |
 +-- Secrets injection / rotation / Vault?
-|   --> secrets-management
+|   --> dev-suite:secrets-management
 |
 +-- None of the above / concern is ambiguous or spans multiple areas?
     --> Delegate to software-architect for open-ended triage, or clarify the
@@ -65,12 +65,12 @@ What is the data or security concern?
 
 | Trigger                                  | Sub-skill                      |
 |------------------------------------------|--------------------------------|
-| ORM, migrations, indexes, pooling        | database-patterns              |
-| EXPLAIN, slow query, N+1, partition      | sql-optimization-patterns      |
-| Redis, TTL, cache-aside, invalidation    | caching-patterns               |
-| Elasticsearch, vector search, DSL        | search-patterns                |
-| OAuth2, OIDC, JWT, RBAC, session         | auth-implementation-patterns   |
-| Vault, AWS SM, .env, secret rotation     | secrets-management             |
+| ORM, migrations, indexes, pooling        | dev-suite:database-patterns              |
+| EXPLAIN, slow query, N+1, partition      | dev-suite:sql-optimization-patterns      |
+| Redis, TTL, cache-aside, invalidation    | dev-suite:caching-patterns               |
+| Elasticsearch, vector search, DSL        | dev-suite:search-patterns                |
+| OAuth2, OIDC, JWT, RBAC, session         | dev-suite:auth-implementation-patterns   |
+| Vault, AWS SM, .env, secret rotation     | dev-suite:secrets-management             |
 
 ## Checklist
 

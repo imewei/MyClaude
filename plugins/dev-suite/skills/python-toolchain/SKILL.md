@@ -36,19 +36,19 @@ Python 2→3 migration, dependency upgrades, and legacy Python codebase moderniz
 What is the Python toolchain concern?
 |
 +-- Package metadata / build backend / PyPI publish?
-|   --> python-packaging
+|   --> dev-suite:python-packaging
 |
 +-- Profiling / Cython / speed bottleneck?
-|   --> python-performance-optimization
+|   --> dev-suite:python-performance-optimization
 |
 +-- uv workspace / lockfile / venv management?
-|   --> uv-package-manager
+|   --> dev-suite:uv-package-manager
 |
 +-- Python exception design / retry / error propagation?
-|   --> error-handling-patterns
+|   --> dev-suite:error-handling-patterns
 |
 +-- Legacy upgrade / Python version migration?
-|   --> modernization-migration
+|   --> dev-suite:modernization-migration
 |
 +-- None of the above / concern is ambiguous or spans multiple areas?
     --> Delegate to systems-engineer for open-ended triage, or clarify the
@@ -59,11 +59,11 @@ What is the Python toolchain concern?
 
 | Trigger                                    | Sub-skill                         |
 |--------------------------------------------|-----------------------------------|
-| pyproject.toml, hatch, flit, PyPI          | python-packaging                  |
-| cProfile, Cython, ctypes, perf bottleneck  | python-performance-optimization   |
-| uv add, uv sync, uv.lock, workspace        | uv-package-manager                |
-| Python try/except, retry, circuit breaker   | error-handling-patterns          |
-| 2to3, deprecated APIs, version upgrade     | modernization-migration           |
+| pyproject.toml, hatch, flit, PyPI          | dev-suite:python-packaging                  |
+| cProfile, Cython, ctypes, perf bottleneck  | dev-suite:python-performance-optimization   |
+| uv add, uv sync, uv.lock, workspace        | dev-suite:uv-package-manager                |
+| Python try/except, retry, circuit breaker   | dev-suite:error-handling-patterns          |
+| 2to3, deprecated APIs, version upgrade     | dev-suite:modernization-migration           |
 
 ## Checklist
 

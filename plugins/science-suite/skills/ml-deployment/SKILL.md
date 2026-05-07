@@ -39,22 +39,22 @@ Privacy-preserving ML: federated averaging, differential privacy, secure aggrega
 What is the ML deployment task?
 |
 +-- Expose a model via an API endpoint?
-|   --> model-deployment-serving
+|   --> science-suite:model-deployment-serving
 |
 +-- Reduce model size / latency for inference?
-|   --> model-optimization-deployment
+|   --> science-suite:model-optimization-deployment
 |
 +-- Production ML code quality / monitoring / drift?
-|   --> ml-engineering-production
+|   --> science-suite:ml-engineering-production
 |
 +-- Automate training / retraining pipelines?
-|   --> ml-pipeline-workflow
+|   --> science-suite:ml-pipeline-workflow
 |
 +-- Container / Kubernetes / cloud infrastructure?
-|   --> devops-ml-infrastructure
+|   --> science-suite:devops-ml-infrastructure
 |
 +-- Privacy-preserving / distributed training?
-|   --> federated-learning
+|   --> science-suite:federated-learning
 |
 +-- None of the above / concern is ambiguous?
     --> Delegate to ml-expert for open-ended triage, or clarify the
@@ -65,12 +65,12 @@ What is the ML deployment task?
 
 | Task | Skill |
 |------|-------|
-| REST/gRPC serving, Triton | `model-deployment-serving` |
-| Quantization, ONNX, TensorRT | `model-optimization-deployment` |
-| ML code quality, drift, monitoring | `ml-engineering-production` |
-| Airflow, Prefect, retraining | `ml-pipeline-workflow` |
-| Docker, K8s, GPU cloud | `devops-ml-infrastructure` |
-| FedAvg, DP, secure aggregation | `federated-learning` |
+| REST/gRPC serving, Triton | `science-suite:model-deployment-serving` |
+| Quantization, ONNX, TensorRT | `science-suite:model-optimization-deployment` |
+| ML code quality, drift, monitoring | `science-suite:ml-engineering-production` |
+| Airflow, Prefect, retraining | `science-suite:ml-pipeline-workflow` |
+| Docker, K8s, GPU cloud | `science-suite:devops-ml-infrastructure` |
+| FedAvg, DP, secure aggregation | `science-suite:federated-learning` |
 
 ## Checklist
 

@@ -47,25 +47,25 @@ Docker, Kubernetes, and cluster management.
 What is the primary ML task?
 |
 +-- Advanced boosting models (XGBoost / LightGBM) or deep tabular architectures?
-|   --> advanced-ml-systems
+|   --> science-suite:advanced-ml-systems
 |
 +-- Data preprocessing, feature engineering, or reporting/communication?
-|   --> data-wrangling-communication
+|   --> science-suite:data-wrangling-communication
 |
 +-- Hypothesis testing, uncertainty quantification, or statistical analysis?
-|   --> statistical-analysis-fundamentals
+|   --> science-suite:statistical-analysis-fundamentals
 |
 +-- Pipeline orchestration or reproducibility (Airflow / Dagster)?
-|   --> ml-pipeline-workflow
+|   --> science-suite:ml-pipeline-workflow
 |
 +-- Serialization, scaling, or high-performance inference engineering?
-|   --> ml-engineering-production
+|   --> science-suite:ml-engineering-production
 |
 +-- Model serving with FastAPI, Triton, or cloud-native deployment?
-|   --> model-deployment-serving
+|   --> science-suite:model-deployment-serving
 |
 +-- Docker, Kubernetes, or cluster infrastructure for ML?
-|   --> devops-ml-infrastructure
+|   --> science-suite:devops-ml-infrastructure
 |
 +-- None of the above / concern is ambiguous or spans multiple areas?
     --> Delegate to ml-expert for open-ended triage, or clarify the

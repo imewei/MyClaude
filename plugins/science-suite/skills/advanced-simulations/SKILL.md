@@ -35,19 +35,19 @@ Computing structural and dynamic properties from simulation data.
 What is the simulation concern?
 |
 +-- Preparing a classical MD system / topology / ensemble?
-|   --> md-simulation-setup
+|   --> science-suite:md-simulation-setup
 |
 +-- Choosing, training, or deploying ML interatomic potentials?
-|   --> ml-force-fields
+|   --> science-suite:ml-force-fields
 |
 +-- Bridging atomistic, coarse-grained, mesoscale, or continuum models?
-|   --> multiscale-modeling
+|   --> science-suite:multiscale-modeling
 |
 +-- Extracting RDF/MSD/transport/mechanical observables from trajectories?
-|   --> trajectory-analysis
+|   --> science-suite:trajectory-analysis
 |
 +-- Rare-event sampling / weighted ensemble / path sampling?
-|   --> [cross-hub] statistical-physics-hub → rare-events-sampling
+|   --> [cross-hub] science-suite:statistical-physics-hub → science-suite:rare-events-sampling
 |       (FFS, TIS/RETIS, WE/WESTPA, OPS, AMS, milestoning; see Section 4 here for Python reference stack)
 |
 +-- None of the above / concern is ambiguous?
@@ -59,11 +59,11 @@ What is the simulation concern?
 
 | Trigger | Skill |
 |---|---|
-| LAMMPS, GROMACS, OpenMM setup, topology, ensemble | `md-simulation-setup` |
-| MLIP, MLFF, MACE, NequIP, ACE, active learning | `ml-force-fields` |
-| coarse-graining, MARTINI, DPD, QM/MM, mesoscale | `multiscale-modeling` |
-| trajectory post-processing, RDF, MSD, viscosity | `trajectory-analysis` |
-| WESTPA, weighted ensemble, TPS/TIS, rare event | `statistical-physics-hub → rare-events-sampling` |
+| LAMMPS, GROMACS, OpenMM setup, topology, ensemble | `science-suite:md-simulation-setup` |
+| MLIP, MLFF, MACE, NequIP, ACE, active learning | `science-suite:ml-force-fields` |
+| coarse-graining, MARTINI, DPD, QM/MM, mesoscale | `science-suite:multiscale-modeling` |
+| trajectory post-processing, RDF, MSD, viscosity | `science-suite:trajectory-analysis` |
+| WESTPA, weighted ensemble, TPS/TIS, rare event | `science-suite:statistical-physics-hub → science-suite:rare-events-sampling` |
 
 ## 1. Molecular Dynamics Workflows
 

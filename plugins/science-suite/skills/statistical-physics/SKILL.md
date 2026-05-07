@@ -47,28 +47,28 @@ Extracting physical parameters from DLS, SAXS, and microscopy.
 What is the primary statistical physics concern?
 |
 +-- Langevin equations, Fokker-Planck modeling, or noise-driven dynamics?
-|   --> stochastic-dynamics
+|   --> science-suite:stochastic-dynamics
 |
 +-- Fluctuation theorems, entropy production, or driven non-equilibrium systems?
-|   --> non-equilibrium-theory
+|   --> science-suite:non-equilibrium-theory
 |
 +-- Self-propelled particles, MIPS, or collective active-matter behavior?
-|   --> active-matter
+|   --> science-suite:active-matter
 |
 +-- Correlation function analysis (FFT correlators, structure factors, dynamic heterogeneity)?
-|   --> correlation-analysis (science-suite hub: ../correlation-analysis/SKILL.md)
+|   --> science-suite:correlation-analysis (science-suite hub: ../correlation-analysis/SKILL.md)
 |
 +-- Mathematical foundations of two-point or higher-order correlation functions?
-|   --> correlation-math-foundations
+|   --> science-suite:correlation-math-foundations
 |
 +-- S(q), g(r), or χ₄(t) across physical states?
-|   --> correlation-physical-systems
+|   --> science-suite:correlation-physical-systems
 |
 +-- O(N log N) algorithms or multi-tau correlator implementation?
-|   --> correlation-computational-methods
+|   --> science-suite:correlation-computational-methods
 |
 +-- Extracting parameters from DLS, SAXS, or microscopy data?
-|   --> correlation-experimental-data
+|   --> science-suite:correlation-experimental-data
 |
 +-- None of the above / concern is ambiguous or spans multiple areas?
     --> Delegate to statistical-physicist for open-ended triage, or clarify

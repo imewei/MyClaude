@@ -35,16 +35,16 @@ Experimental analysis: noise correction, resolution deconvolution, and fitting c
 What is the correlation analysis task?
 |
 +-- Derive or understand correlation formalism?
-|   --> correlation-math-foundations
+|   --> science-suite:correlation-math-foundations
 |
 +-- Compute correlations for a physical model?
-|   --> correlation-physical-systems
+|   --> science-suite:correlation-physical-systems
 |
 +-- Implement numerical correlation computation?
-|   --> correlation-computational-methods
+|   --> science-suite:correlation-computational-methods
 |
 +-- Analyze experimental scattering / spectroscopy data?
-|   --> correlation-experimental-data
+|   --> science-suite:correlation-experimental-data
 |
 +-- None of the above / concern is ambiguous?
     --> Delegate to statistical-physicist for open-ended triage, or clarify the
@@ -55,10 +55,10 @@ What is the correlation analysis task?
 
 | Task | Skill |
 |------|-------|
-| Green's functions, FDT, spectral rep. | `correlation-math-foundations` |
-| Structure factor, critical exponents | `correlation-physical-systems` |
-| FFT correlators, MC estimators | `correlation-computational-methods` |
-| Noise correction, model fitting | `correlation-experimental-data` |
+| Green's functions, FDT, spectral rep. | `science-suite:correlation-math-foundations` |
+| Structure factor, critical exponents | `science-suite:correlation-physical-systems` |
+| FFT correlators, MC estimators | `science-suite:correlation-computational-methods` |
+| Noise correction, model fitting | `science-suite:correlation-experimental-data` |
 
 ## Checklist
 

@@ -40,19 +40,19 @@ Content filtering, output validation, jailbreak mitigation, and responsible AI c
 What is the primary engineering concern?
 |
 +-- Starting from a vague idea, brain dump, or unstructured requirements?
-|   --> thinkfirst (interview-first clarification, then draft)
+|   --> agent-core:thinkfirst (interview-first clarification, then draft)
 |
 +-- Designing the overall LLM application or RAG architecture?
-|   --> llm-application-patterns (architecture, RAG, evaluation)
+|   --> agent-core:llm-application-patterns (architecture, RAG, evaluation)
 |
 +-- Writing or optimizing prompts for production use (already have requirements)?
-|   --> prompt-engineering-patterns (templates, optimization, versioning)
+|   --> agent-core:prompt-engineering-patterns (templates, optimization, versioning)
 |
 +-- Connecting the agent to external tools via MCP?
-|   --> mcp-integration (server config, tool coordination)
+|   --> agent-core:mcp-integration (server config, tool coordination)
 |
 +-- Enforcing content or behavioral safety constraints?
-|   --> safety-guardrails (filtering, validation, responsible AI)
+|   --> agent-core:safety-guardrails (filtering, validation, responsible AI)
 |
 +-- None of the above / concern is ambiguous or spans multiple areas?
     --> Delegate to context-specialist for open-ended triage, or clarify the

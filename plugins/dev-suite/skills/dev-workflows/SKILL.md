@@ -39,22 +39,22 @@ Persistent three-model team (Claude developer/author + Codex reviewer + Gemini r
 What is the workflow concern?
 |
 +-- Branch strategy / commits / merge conflicts?
-|   --> git-workflow
+|   --> dev-suite:git-workflow
 |
 +-- README / API docs / ADRs / doc-as-code?
-|   --> documentation-standards
+|   --> dev-suite:documentation-standards
 |
 +-- Airflow DAG / task / sensor / pipeline?
-|   --> airflow-scientific-workflows
+|   --> dev-suite:airflow-scientific-workflows
 |
 +-- Bug diagnosis / profiler / root cause?
-|   --> debugging-toolkit
+|   --> dev-suite:debugging-toolkit
 |
 +-- Second opinion / Codex review / Gemini scan (one-shot)?
-|   --> three-brain
+|   --> dev-suite:three-brain
 |
 +-- /ai-pair / dev-team / content-team / multi-round team review?
-|   --> ai-pair
+|   --> dev-suite:ai-pair
 |
 +-- None of the above / concern is ambiguous or spans multiple areas?
     --> Delegate to debugger-pro for open-ended triage, or clarify the
@@ -65,12 +65,12 @@ What is the workflow concern?
 
 | Trigger                                               | Sub-skill                       |
 |-------------------------------------------------------|---------------------------------|
-| Git branch, rebase, merge, conflict, tags             | git-workflow                    |
-| README, ADR, docstring, Sphinx, MkDocs                | documentation-standards         |
-| Airflow, DAG, task, XCom, sensor                      | airflow-scientific-workflows    |
-| Debugger, pdb, breakpoint, root cause                 | debugging-toolkit               |
-| Codex, Gemini, second opinion, sanity check, all three (one-shot) | three-brain        |
-| /ai-pair, dev-team, content-team, team-stop, multi-round review   | ai-pair            |
+| Git branch, rebase, merge, conflict, tags             | dev-suite:git-workflow                    |
+| README, ADR, docstring, Sphinx, MkDocs                | dev-suite:documentation-standards         |
+| Airflow, DAG, task, XCom, sensor                      | dev-suite:airflow-scientific-workflows    |
+| Debugger, pdb, breakpoint, root cause                 | dev-suite:debugging-toolkit               |
+| Codex, Gemini, second opinion, sanity check, all three (one-shot) | dev-suite:three-brain        |
+| /ai-pair, dev-team, content-team, team-stop, multi-round review   | dev-suite:ai-pair            |
 
 ## Checklist
 
@@ -80,5 +80,5 @@ What is the workflow concern?
 - [ ] Check Airflow DAGs have idempotent tasks before scheduling in production
 - [ ] Validate debugging sessions start with hypothesis formation, not random changes
 - [ ] Ensure debugging findings are documented to prevent regression
-- [ ] For high-risk paths (auth, billing, migrations, infra) or repeated failures, route via three-brain
-- [ ] For sustained multi-task projects needing iterative creation + dual review, use ai-pair
+- [ ] For high-risk paths (auth, billing, migrations, infra) or repeated failures, route via dev-suite:three-brain
+- [ ] For sustained multi-task projects needing iterative creation + dual review, use dev-suite:ai-pair

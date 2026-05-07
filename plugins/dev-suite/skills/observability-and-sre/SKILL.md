@@ -36,19 +36,19 @@ SLI definition, error budget calculation, burn rate alerts, and SLO reporting.
 What is the observability concern?
 |
 +-- Overall strategy / runbooks / error budgets?
-|   --> observability-sre-practices
+|   --> dev-suite:observability-sre-practices
 |
 +-- Prometheus scrape / rules / alertmanager?
-|   --> prometheus-configuration
+|   --> dev-suite:prometheus-configuration
 |
 +-- Grafana panels / dashboards / alerts?
-|   --> grafana-dashboards
+|   --> dev-suite:grafana-dashboards
 |
 +-- Request tracing / spans / context propagation?
-|   --> distributed-tracing
+|   --> dev-suite:distributed-tracing
 |
 +-- SLI definition / burn rate / error budget?
-|   --> slo-implementation
+|   --> dev-suite:slo-implementation
 |
 +-- None of the above / concern is ambiguous or spans multiple areas?
     --> Delegate to sre-expert for open-ended triage, or clarify the
@@ -59,11 +59,11 @@ What is the observability concern?
 
 | Trigger                                   | Sub-skill                    |
 |-------------------------------------------|------------------------------|
-| Runbook, on-call, error budget policy     | observability-sre-practices  |
-| prometheus.yml, scrape, PromQL, rules     | prometheus-configuration     |
-| Grafana, dashboard, panel, Loki query     | grafana-dashboards           |
-| OpenTelemetry, spans, Jaeger, Tempo       | distributed-tracing          |
-| SLO, SLI, burn rate, availability target | slo-implementation           |
+| Runbook, on-call, error budget policy     | dev-suite:observability-sre-practices  |
+| prometheus.yml, scrape, PromQL, rules     | dev-suite:prometheus-configuration     |
+| Grafana, dashboard, panel, Loki query     | dev-suite:grafana-dashboards           |
+| OpenTelemetry, spans, Jaeger, Tempo       | dev-suite:distributed-tracing          |
+| SLO, SLI, burn rate, availability target | dev-suite:slo-implementation           |
 
 ## Checklist
 

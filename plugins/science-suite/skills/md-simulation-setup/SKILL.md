@@ -105,16 +105,16 @@ gmx grompp -f md.mdp -o md.tpr && gmx mdrun -deffnm md -nb gpu
 
 ```
 Set up classical MD (LAMMPS / GROMACS / HOOMD-blue / OpenMM)?
-  → This skill (md-simulation-setup)
+  → This skill (science-suite:md-simulation-setup)
 
 Replace classical force field with ML potential (NequIP, MACE, ACE)?
-  → ml-force-fields (../ml-force-fields/SKILL.md)
+  → science-suite:ml-force-fields (../ml-force-fields/SKILL.md)
 
 Analyze trajectory after the simulation?
-  → trajectory-analysis (../trajectory-analysis/SKILL.md)
+  → science-suite:trajectory-analysis (../trajectory-analysis/SKILL.md)
 
 Bridge atomistic → mesoscale / coarse-grained model?
-  → multiscale-modeling (../multiscale-modeling/SKILL.md)
+  → science-suite:multiscale-modeling (../multiscale-modeling/SKILL.md)
 ```
 
 ## Checklist

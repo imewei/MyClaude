@@ -36,19 +36,19 @@ Systematic diagnosis of CI/CD pipeline failures, flaky CI tests, and build envir
 What is the CI/CD concern?
 |
 +-- GitHub Actions workflow / composite action?
-|   --> github-actions-templates
+|   --> dev-suite:github-actions-templates
 |
 +-- GitLab CI YAML / DAG / runner config?
-|   --> gitlab-ci-patterns
+|   --> dev-suite:gitlab-ci-patterns
 |
 +-- Deployment strategy / rollback / promotion?
-|   --> deployment-pipeline-design
+|   --> dev-suite:deployment-pipeline-design
 |
 +-- SAST / dependency scan / secrets detection?
-|   --> security-ci-template
+|   --> dev-suite:security-ci-template
 |
 +-- Pipeline failure / flaky test / build error?
-|   --> iterative-error-resolution
+|   --> dev-suite:iterative-error-resolution
 |
 +-- None of the above / concern is ambiguous or spans multiple areas?
     --> Delegate to automation-engineer for open-ended triage, or clarify the
@@ -59,11 +59,11 @@ What is the CI/CD concern?
 
 | Trigger                               | Sub-skill                      |
 |---------------------------------------|--------------------------------|
-| .github/workflows, actions, matrix    | github-actions-templates       |
-| .gitlab-ci.yml, stages, needs, DAG    | gitlab-ci-patterns             |
-| Blue/green, canary, rollback, deploy  | deployment-pipeline-design     |
-| SAST, Snyk, Trivy, SBOM, secrets scan | security-ci-template           |
-| CI pipeline error, flaky CI, timeout  | iterative-error-resolution     |
+| .github/workflows, actions, matrix    | dev-suite:github-actions-templates       |
+| .gitlab-ci.yml, stages, needs, DAG    | dev-suite:gitlab-ci-patterns             |
+| Blue/green, canary, rollback, deploy  | dev-suite:deployment-pipeline-design     |
+| SAST, Snyk, Trivy, SBOM, secrets scan | dev-suite:security-ci-template           |
+| CI pipeline error, flaky CI, timeout  | dev-suite:iterative-error-resolution     |
 
 ## Checklist
 

@@ -46,29 +46,29 @@ Hybrid physics + neural-network ODEs with posterior uncertainty. A UDE is a dyna
 What is the analysis goal?
 |
 +-- Parameter dependence / stability boundaries?
-|   --> bifurcation-analysis (Julia BifurcationKit, JAX vmap sweeps)
+|   --> science-suite:bifurcation-analysis (Julia BifurcationKit, JAX vmap sweeps)
 |
 +-- Long-term chaotic behavior / attractor geometry?
-|   --> chaos-attractors (Julia DynamicalSystems.jl, JAX parallel Lyapunov)
+|   --> science-suite:chaos-attractors (Julia DynamicalSystems.jl, JAX parallel Lyapunov)
 |
 +-- Coupled network / synchronization?
-|   --> network-coupled-dynamics (Julia <1K nodes, JAX >1K nodes)
+|   --> science-suite:network-coupled-dynamics (Julia <1K nodes, JAX >1K nodes)
 |
 +-- Spatial or temporal pattern emergence?
-|   --> pattern-formation (Julia symbolic PDE, JAX GPU simulations)
+|   --> science-suite:pattern-formation (Julia symbolic PDE, JAX GPU simulations)
 |
 +-- Discover governing equations from data?
-|   --> equation-discovery (Julia DataDrivenDiffEq, Python PySINDy)
+|   --> science-suite:equation-discovery (Julia DataDrivenDiffEq, Python PySINDy)
 |
 +-- Identify unknown dynamics as a hybrid physics + NN with uncertainty?
-|   --> bayesian-ude-workflow (Turing + DiffEq + Lux, NUTS/Pigeons)
+|   --> science-suite:bayesian-ude-workflow (Turing + DiffEq + Lux, NUTS/Pigeons)
 |
 +-- Working inside the Python/NumPy ecosystem (nolds, pyunicorn, antropy,
 |   pyEDM, IDTxl, arch, statsmodels, ewstools)?
-|   --> chaos-attractors (Python alternatives documented in Ecosystem Selection below)
+|   --> science-suite:chaos-attractors (Python alternatives documented in Ecosystem Selection below)
 |
 +-- Need both Julia and JAX in one workflow?
-|   --> jax-julia-interop
+|   --> science-suite:jax-julia-interop
 |
 +-- None of the above / concern is ambiguous?
     --> Delegate to nonlinear-dynamics-expert for open-ended triage, or clarify the

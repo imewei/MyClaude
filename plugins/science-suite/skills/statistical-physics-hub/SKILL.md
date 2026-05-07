@@ -46,28 +46,28 @@ What is the statistical physics task?
 |
 +-- Equilibrium thermodynamics / phase transitions / Monte Carlo sampling
 |   (Metropolis / heat-bath / cluster / Wang-Landau / parallel tempering)?
-|   --> statistical-physics
+|   --> science-suite:statistical-physics
 |
 +-- Stochastic processes / Langevin / FP equations?
-|   --> stochastic-dynamics
+|   --> science-suite:stochastic-dynamics
 |
 +-- Driven / non-equilibrium systems?
-|   --> non-equilibrium-theory
+|   --> science-suite:non-equilibrium-theory
 |
 +-- Self-propelled particles / biological active systems?
-|   --> active-matter
+|   --> science-suite:active-matter
 |
 +-- Coarse-graining / bridging scales?
-|   --> multiscale-modeling
+|   --> science-suite:multiscale-modeling
 |
 +-- Advanced MC / free energy / enhanced sampling?
-|   --> advanced-simulations
+|   --> science-suite:advanced-simulations
 |
 +-- Rare events / barrier crossings / large-deviation / avalanche statistics / SOC / crackling noise?
-|   --> rare-events-sampling
+|   --> science-suite:rare-events-sampling
 |
 +-- Extreme-value distributions on magnitudes (GEV, GPD, tail index, return level)?
-|   --> extreme-value-statistics
+|   --> science-suite:extreme-value-statistics
 |
 +-- None of the above / concern is ambiguous?
     --> Delegate to statistical-physicist for open-ended triage, or clarify the
@@ -78,14 +78,14 @@ What is the statistical physics task?
 
 | Task | Skill |
 |------|-------|
-| Partition functions, RG, criticality, Metropolis / cluster / Wang-Landau / parallel tempering MC | `statistical-physics` |
-| Langevin, Fokker-Planck, SDEs | `stochastic-dynamics` |
-| Fluctuation theorems, entropy production | `non-equilibrium-theory` |
-| Active particles, MIPS, flocking | `active-matter` |
-| Coarse-graining, EFT | `multiscale-modeling` |
-| Replica exchange, umbrella sampling | `advanced-simulations` |
-| FFS / TIS / WE / cloning / rare events / SOC / avalanche | `rare-events-sampling` |
-| GEV / GPD / Hill / POT / tail-index / return level | `extreme-value-statistics` |
+| Partition functions, RG, criticality, Metropolis / cluster / Wang-Landau / parallel tempering MC | `science-suite:statistical-physics` |
+| Langevin, Fokker-Planck, SDEs | `science-suite:stochastic-dynamics` |
+| Fluctuation theorems, entropy production | `science-suite:non-equilibrium-theory` |
+| Active particles, MIPS, flocking | `science-suite:active-matter` |
+| Coarse-graining, EFT | `science-suite:multiscale-modeling` |
+| Replica exchange, umbrella sampling | `science-suite:advanced-simulations` |
+| FFS / TIS / WE / cloning / rare events / SOC / avalanche | `science-suite:rare-events-sampling` |
+| GEV / GPD / Hill / POT / tail-index / return level | `science-suite:extreme-value-statistics` |
 
 ## Checklist
 

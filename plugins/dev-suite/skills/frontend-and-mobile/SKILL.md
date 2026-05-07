@@ -49,22 +49,22 @@ Unit, integration, and E2E testing for React Native and Flutter applications.
 What is the frontend or mobile concern?
 |
 +-- Component design / UI architecture / Flutter widgets?
-|   --> frontend-mobile-engineering
+|   --> dev-suite:frontend-mobile-engineering
 |
 +-- Modern JS syntax / async / module bundling?
-|   --> modern-javascript-patterns
+|   --> dev-suite:modern-javascript-patterns
 |
 +-- TypeScript type-level programming?
-|   --> typescript-advanced-types
+|   --> dev-suite:typescript-advanced-types
 |
 +-- Project setup / tsconfig / build pipeline?
-|   --> typescript-project-scaffolding
+|   --> dev-suite:typescript-project-scaffolding
 |
 +-- WCAG compliance / screen readers / ARIA?
-|   --> accessibility-testing
+|   --> dev-suite:accessibility-testing
 |
 +-- Mobile unit / integration / E2E tests?
-|   --> mobile-testing-patterns
+|   --> dev-suite:mobile-testing-patterns
 |
 +-- None of the above / concern is ambiguous or spans multiple areas?
     --> Delegate to app-developer for open-ended triage, or clarify the
@@ -75,12 +75,12 @@ What is the frontend or mobile concern?
 
 | Trigger                              | Sub-skill                       |
 |--------------------------------------|---------------------------------|
-| React, Flutter, components, widgets  | frontend-mobile-engineering     |
-| ES2024, modules, async/await, bundler| modern-javascript-patterns      |
-| Generics, conditional types, utility | typescript-advanced-types       |
-| tsconfig, paths, composite projects  | typescript-project-scaffolding  |
-| WCAG, ARIA, axe, screen reader       | accessibility-testing           |
-| Detox, Flutter test, Maestro, mocks  | mobile-testing-patterns         |
+| React, Flutter, components, widgets  | dev-suite:frontend-mobile-engineering     |
+| ES2024, modules, async/await, bundler| dev-suite:modern-javascript-patterns      |
+| Generics, conditional types, utility | dev-suite:typescript-advanced-types       |
+| tsconfig, paths, composite projects  | dev-suite:typescript-project-scaffolding  |
+| WCAG, ARIA, axe, screen reader       | dev-suite:accessibility-testing           |
+| Detox, Flutter test, Maestro, mocks  | dev-suite:mobile-testing-patterns         |
 
 ## Checklist
 

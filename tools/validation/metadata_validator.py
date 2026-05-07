@@ -291,7 +291,7 @@ class MetadataValidator:
             self._validate_commands(metadata["commands"], result)
 
         if "skills" in metadata and isinstance(metadata["skills"], list):
-            self._validate_skills(metadata["skills"], result)
+            self._validate_skills(metadata["skills"], result, plugin_path)
 
         return result
 
@@ -567,12 +567,41 @@ class MetadataValidator:
                         result,
                     )
 
-    def _validate_skills(self, skills: List[Dict[str, Any]], result: ValidationResult):
-        """Validate skills array (supports both directory paths and inline objects)"""
+    # Skills that lack a routing tree but are explicitly approved as user-facing standalones.
+    # These may be added to plugin.json without triggering the tier-compliance warning.
+    _TIER2_STANDALONE_WHITELIST: set = {
+        "thinkfirst",       # agent-core: user-invoked prompt optimizer
+        "ai-pair",          # dev-suite: three-model collaboration
+        "three-brain",      # dev-suite: second-opinion routing
+        "scientific-review",  # research-suite: peer-review deliverable
+        "research-spark",     # research-suite: 8-stage pipeline orchestrator
+        "spark-articulator",  # research-suite: stage 1
+        "landscape-scanner",  # research-suite: stage 2
+        "falsifiable-claim",  # research-suite: stage 3
+        "theory-scaffold",    # research-suite: stages 4-5
+        "numerical-prototype",  # research-suite: stage 6
+        "experiment-designer",  # research-suite: stage 7
+        "premortem-critique",   # research-suite: stage 8
+    }
+
+    def _validate_skills(
+        self,
+        skills: List[Dict[str, Any]],
+        result: ValidationResult,
+        plugin_path: Path | None = None,
+    ):
+        """Validate skills array (supports both directory paths and inline objects).
+
+        Tier-compliance: registered skills should be routing hubs (have a
+        '## Routing Decision Tree' section) or appear in the standalone whitelist.
+        Sub-skills that are only reachable via hub routing trees must NOT be
+        registered here — they inflate the session context budget.
+        """
         for idx, skill in enumerate(skills):
             if isinstance(skill, str):
                 # Directory path reference format: "./skills/advanced-reasoning"
                 # Skills reference directories, not .md files
+                self._check_skill_tier_compliance(skill, idx, result, plugin_path)
                 continue
 
             if not isinstance(skill, dict):
@@ -595,6 +624,42 @@ class MetadataValidator:
                         field_schema,
                         result,
                     )
+
+    def _check_skill_tier_compliance(
+        self,
+        skill_path: str,
+        idx: int,
+        result: ValidationResult,
+        plugin_path: Path | None,
+    ) -> None:
+        """Warn when a Tier-3 sub-skill (no routing tree) is registered in plugin.json.
+
+        A registered skill must either:
+        - Have a '## Routing Decision Tree' header in its SKILL.md, OR
+        - Be in the _TIER2_STANDALONE_WHITELIST
+        """
+        if plugin_path is None:
+            return
+
+        # Derive skill name from path like "./skills/jax-mastery"
+        skill_name = skill_path.rstrip("/").split("/")[-1]
+        if skill_name in self._TIER2_STANDALONE_WHITELIST:
+            return
+
+        skill_md = plugin_path / skill_path.lstrip("./") / "SKILL.md"
+        if not skill_md.exists():
+            return  # Missing file handled elsewhere
+
+        content = skill_md.read_text(encoding="utf-8")
+        if "## Routing Decision Tree" not in content:
+            result.add_warning(
+                f"skills[{idx}]",
+                f"'{skill_name}' appears to be a Tier-3 sub-skill (no routing decision "
+                f"tree). Registering sub-skills inflates the session context budget. "
+                f"Remove it from plugin.json — hubs will route to it via the Skill tool.",
+                "Only register hub skills (meta-orchestrators with routing trees) "
+                "and approved standalones in plugin.json.",
+            )
 
     def generate_report(self, result: ValidationResult) -> str:
         """Generate validation report"""

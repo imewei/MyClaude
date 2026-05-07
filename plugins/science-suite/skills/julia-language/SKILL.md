@@ -60,37 +60,37 @@ Choosing the right Julia packages for a given domain or task.
 What is the Julia task?
 |
 +-- Language patterns / type system / dispatch?
-|   --> julia-mastery or core-julia-patterns
+|   --> science-suite:julia-mastery or science-suite:core-julia-patterns
 |
 +-- Package environment / dependency management?
-|   --> package-management
+|   --> science-suite:package-management
 |
 +-- Creating or publishing a package?
-|   --> package-development-workflow
+|   --> science-suite:package-development-workflow
 |
 +-- Compiler / type inference / specialization?
-|   --> compiler-patterns
+|   --> science-suite:compiler-patterns
 |
 +-- Profiling / allocation / SIMD?
-|   --> performance-tuning
+|   --> science-suite:performance-tuning
 |
 +-- Testing / CI?
-|   --> julia-testing-patterns / ci-cd-patterns
+|   --> science-suite:julia-testing-patterns / science-suite:ci-cd-patterns
 |
 +-- Plotting / visualization?
-|   --> visualization-patterns
+|   --> science-suite:visualization-patterns
 |
 +-- Web services?
-|   --> web-development-julia
+|   --> science-suite:web-development-julia
 |
 +-- Multi-node / MPI / SLURM / distributed?
-|   --> julia-hpc-distributed
+|   --> science-suite:julia-hpc-distributed
 |
 +-- Cross-language interop?
-|   --> interop-patterns
+|   --> science-suite:interop-patterns
 |
 +-- Which package to use?
-|   --> ecosystem-selection
+|   --> science-suite:ecosystem-selection
 |
 +-- None of the above / concern is ambiguous?
     --> Delegate to julia-pro for open-ended triage, or clarify the

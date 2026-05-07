@@ -70,34 +70,34 @@ The analysis-doc-aligned picture of the active Python / JAX Bayesian stack — e
 What is the Bayesian inference task?
 |
 +-- Python / JAX-based Bayesian modeling?
-|   --> numpyro-core-mastery
+|   --> science-suite:numpyro-core-mastery
 |
 +-- Julia-based Bayesian modeling?
-|   --> turing-model-design
+|   --> science-suite:turing-model-design
 |
 +-- Multimodal posterior / NUTS R-hat stays > 1.01?
-|   --> consensus-mcmc-pigeons
+|   --> science-suite:consensus-mcmc-pigeons
 |
 +-- Neural ODE / UDE with posterior uncertainty (Julia Turing+DiffEq+Lux)?
-|   --> bayesian-ude-workflow
+|   --> science-suite:bayesian-ude-workflow
 |
 +-- Neural ODE / UDE with posterior uncertainty (Python/JAX Diffrax+Equinox+NumPyro)?
-|   --> bayesian-ude-jax
+|   --> science-suite:bayesian-ude-jax
 |
 +-- Sparse Bayesian regression / credible intervals on SINDy coefficients?
-|   --> bayesian-sindy-workflow (horseshoe prior, ensemble SINDy, UQ-SINDy)
+|   --> science-suite:bayesian-sindy-workflow (horseshoe prior, ensemble SINDy, UQ-SINDy)
 |
 +-- Bayesian PINN (BPINN / BNNODE)?
-|   --> bayesian-pinn (internal AdvancedHMC, not Turing)
+|   --> science-suite:bayesian-pinn (internal AdvancedHMC, not Turing)
 |
 +-- Event-time / self-exciting / Hawkes data?
-|   --> point-processes
+|   --> science-suite:point-processes
 |
 +-- Approximate inference / scalable VI?
-|   --> variational-inference-patterns
+|   --> science-suite:variational-inference-patterns
 |
 +-- Diagnose MCMC convergence / posterior quality?
-|   --> mcmc-diagnostics
+|   --> science-suite:mcmc-diagnostics
 |
 +-- None of the above / concern is ambiguous?
     --> Delegate to statistical-physicist for open-ended triage, or clarify the
@@ -108,26 +108,26 @@ What is the Bayesian inference task?
 
 | Task | Skill |
 |------|-------|
-| NumPyro models, NUTS, SVI | `numpyro-core-mastery` |
-| Turing.jl, Julia samplers | `turing-model-design` |
-| Multimodal posterior, parallel tempering | `consensus-mcmc-pigeons` |
-| Bayesian neural ODE / UDE (Julia) | `bayesian-ude-workflow` |
-| Bayesian neural ODE / UDE (Python / JAX) | `bayesian-ude-jax` |
-| Bayesian SINDy with credible intervals | `bayesian-sindy-workflow` |
-| Bayesian PINN (BPINN / BNNODE) | `bayesian-pinn` |
-| Hawkes / self-exciting event data | `point-processes` |
-| ELBO, flows, amortized VI | `variational-inference-patterns` |
-| R-hat, ESS, ArviZ plots | `mcmc-diagnostics` |
+| NumPyro models, NUTS, SVI | `science-suite:numpyro-core-mastery` |
+| Turing.jl, Julia samplers | `science-suite:turing-model-design` |
+| Multimodal posterior, parallel tempering | `science-suite:consensus-mcmc-pigeons` |
+| Bayesian neural ODE / UDE (Julia) | `science-suite:bayesian-ude-workflow` |
+| Bayesian neural ODE / UDE (Python / JAX) | `science-suite:bayesian-ude-jax` |
+| Bayesian SINDy with credible intervals | `science-suite:bayesian-sindy-workflow` |
+| Bayesian PINN (BPINN / BNNODE) | `science-suite:bayesian-pinn` |
+| Hawkes / self-exciting event data | `science-suite:point-processes` |
+| ELBO, flows, amortized VI | `science-suite:variational-inference-patterns` |
+| R-hat, ESS, ArviZ plots | `science-suite:mcmc-diagnostics` |
 
 ## Checklist
 
-- [ ] Run MCMC diagnostics (`mcmc-diagnostics`) on every posterior before interpreting results
+- [ ] Run MCMC diagnostics (`science-suite:mcmc-diagnostics`) on every posterior before interpreting results
 - [ ] Verify R-hat < 1.01 and ESS > 400 per parameter before reporting
 - [ ] Use NLSQ warm-start to initialize MCMC chains near the posterior mode
 - [ ] Check prior predictive distribution before running inference
 - [ ] Validate posterior predictive against held-out data
 - [ ] Prefer NumPyro for GPU-accelerated large-scale inference; Turing.jl for Julia workflows
-- [ ] Use VI (`variational-inference-patterns`) for exploratory modeling; NUTS for final results
-- [ ] If R-hat persists above 1.01, switch to Pigeons via `consensus-mcmc-pigeons` before tweaking priors
-- [ ] For neural ODEs / UDEs with uncertainty, follow the staged pipeline in `bayesian-ude-workflow`
+- [ ] Use VI (`science-suite:variational-inference-patterns`) for exploratory modeling; NUTS for final results
+- [ ] If R-hat persists above 1.01, switch to Pigeons via `science-suite:consensus-mcmc-pigeons` before tweaking priors
+- [ ] For neural ODEs / UDEs with uncertainty, follow the staged pipeline in `science-suite:bayesian-ude-workflow`
 - [ ] Document model assumptions, priors, and likelihood choices explicitly

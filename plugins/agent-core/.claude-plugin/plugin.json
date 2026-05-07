@@ -38,22 +38,9 @@
   ],
   "skills": [
     "./skills/agent-hub",
-    "./skills/agent-evaluation",
-    "./skills/agent-performance-optimization",
     "./skills/agent-systems",
-    "./skills/knowledge-graph-patterns",
-    "./skills/llm-application-patterns",
     "./skills/llm-engineering",
-    "./skills/mcp-integration",
-    "./skills/memory-system-patterns",
-    "./skills/multi-agent-coordination",
-    "./skills/prompt-engineering-patterns",
     "./skills/reasoning-and-memory",
-    "./skills/reasoning-frameworks",
-    "./skills/reflection-framework",
-    "./skills/safety-guardrails",
-    "./skills/self-improving-agents",
-    "./skills/thinkfirst",
-    "./skills/tool-use-patterns"
+    "./skills/thinkfirst"
   ]
 }

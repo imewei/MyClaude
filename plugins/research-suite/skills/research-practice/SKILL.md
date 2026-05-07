@@ -61,26 +61,26 @@ Publication-quality scientific visualization is provided by `scientific-visualiz
 What is the task category?
 |
 +-- Writing a journal peer-review report (.docx)?
-|   --> (out of hub) scientific-review
+|   --> (out of hub) research-suite:scientific-review
 |
 +-- Refining a rough idea into a fundable plan with artifact handoffs?
-|   --> (out of hub) research-spark
+|   --> (out of hub) research-suite:research-spark
 |
 +-- Designing an experiment before data collection?
-|   --> research-methodology
+|   --> research-suite:research-methodology
 |
 +-- Evaluating existing work (manuscript, grant, preprint)?
-|   +-- Need a scored rubric / red-flag audit?    --> research-quality-assessment
-|   +-- Need a journal peer-review .docx?         --> scientific-review
+|   +-- Need a scored rubric / red-flag audit?    --> research-suite:research-quality-assessment
+|   +-- Need a journal peer-review .docx?         --> research-suite:scientific-review
 |
 +-- Translating a published paper into code?
-|   --> research-paper-implementation
+|   --> research-suite:research-paper-implementation
 |
 +-- Drafting a manuscript / report / poster?
-|   --> scientific-communication
+|   --> research-suite:scientific-communication
 |
 +-- Systematic review / meta-analysis / GRADE evidence grading?
-|   --> evidence-synthesis
+|   --> research-suite:evidence-synthesis
 |
 +-- None of the above / concern is ambiguous?
     --> Delegate to research-expert for open-ended triage, or clarify the

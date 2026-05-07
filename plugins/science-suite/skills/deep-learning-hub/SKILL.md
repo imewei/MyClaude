@@ -39,22 +39,22 @@ Large-scale systems: distributed training, mixed precision, gradient checkpointi
 What is the deep learning task?
 |
 +-- Build a standard neural network / training loop?
-|   --> deep-learning
+|   --> science-suite:deep-learning
 |
 +-- Design or choose an architecture?
-|   --> neural-architecture-patterns
+|   --> science-suite:neural-architecture-patterns
 |
 +-- Understand the math behind a method?
-|   --> neural-network-mathematics
+|   --> science-suite:neural-network-mathematics
 |
 +-- Diagnose training instability / poor convergence?
-|   --> training-diagnostics
+|   --> science-suite:training-diagnostics
 |
 +-- Design experiments / ablations / hyperparameter search?
-|   --> deep-learning-experimentation
+|   --> science-suite:deep-learning-experimentation
 |
 +-- Scale to multi-GPU / distributed training?
-|   --> advanced-ml-systems
+|   --> science-suite:advanced-ml-systems
 |   (for post-training inference optimization, see ml-deployment hub)
 |
 +-- None of the above / concern is ambiguous?
@@ -66,12 +66,12 @@ What is the deep learning task?
 
 | Task | Skill |
 |------|-------|
-| Standard training workflows | `deep-learning` |
-| CNN, Transformer, diffusion | `neural-architecture-patterns` |
-| Optimization landscapes, generalization | `neural-network-mathematics` |
-| Loss divergence, gradient issues | `training-diagnostics` |
-| Ablations, HPO, benchmarks | `deep-learning-experimentation` |
-| Distributed training, multi-GPU scaling | `advanced-ml-systems` |
+| Standard training workflows | `science-suite:deep-learning` |
+| CNN, Transformer, diffusion | `science-suite:neural-architecture-patterns` |
+| Optimization landscapes, generalization | `science-suite:neural-network-mathematics` |
+| Loss divergence, gradient issues | `science-suite:training-diagnostics` |
+| Ablations, HPO, benchmarks | `science-suite:deep-learning-experimentation` |
+| Distributed training, multi-GPU scaling | `science-suite:advanced-ml-systems` |
 
 ## Checklist
 

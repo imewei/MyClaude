@@ -92,73 +92,73 @@ Multi-threading and distributed computing patterns.
 What is the primary Julia task?
 |
 +-- Core language: dispatch, type system, metaprogramming, or functional patterns?
-|   --> core-julia-patterns
+|   --> science-suite:core-julia-patterns
 |
 +-- SciML ecosystem overview or package selection?
-|   --> sciml-ecosystem
+|   --> science-suite:sciml-ecosystem
 |
 +-- ODE / PDE / SDE / DAE solvers?
-|   --> differential-equations
+|   --> science-suite:differential-equations
 |
 +-- Symbolic-numeric modeling with ModelingToolkit?
-|   --> modeling-toolkit
+|   --> science-suite:modeling-toolkit
 |
 +-- Physics-informed neural networks (PINNs) in Julia?
-|   --> neural-pde
+|   --> science-suite:neural-pde
 |
 +-- Bayesian inference or probabilistic programming with Turing.jl?
-|   --> turing-model-design
+|   --> science-suite:turing-model-design
 |
 +-- Memory, type-stability, benchmarking, or allocation profiling?
-|   --> performance-tuning
+|   --> science-suite:performance-tuning
 |
 +-- Package scaffolding, testing, or CI/CD setup?
-|   --> package-development-workflow
+|   --> science-suite:package-development-workflow
 |
 +-- Variational inference or ADVI with Turing.jl?
-|   --> variational-inference-patterns
+|   --> science-suite:variational-inference-patterns
 |
 +-- Non-linear optimization or parameter estimation with Optimization.jl?
-|   --> optimization-patterns
+|   --> science-suite:optimization-patterns
 |
 +-- Mathematical programming (LP / QP / MIP) with JuMP.jl?
-|   --> jump-optimization
+|   --> science-suite:jump-optimization
 |
 +-- MCMC diagnostics, R-hat, ESS, or chain convergence?
-|   --> mcmc-diagnostics
+|   --> science-suite:mcmc-diagnostics
 |
 +-- Writing tests with ReTestItems.jl or Aqua.jl?
-|   --> julia-testing-patterns
+|   --> science-suite:julia-testing-patterns
 |
 +-- Environment management or Pkg.jl workflows?
-|   --> package-management
+|   --> science-suite:package-management
 |
 +-- Chemical reaction network modeling with Catalyst.jl?
-|   --> catalyst-reactions
+|   --> science-suite:catalyst-reactions
 |
 +-- Data visualization with Makie.jl or Plots.jl?
-|   --> visualization-patterns
+|   --> science-suite:visualization-patterns
 |
 +-- Scientific web services with Genie.jl or Oxygen.jl?
-|   --> web-development-julia
+|   --> science-suite:web-development-julia
 |
 +-- Lux.jl neural networks, UDEs, or SciMLSensitivity?
-|   --> sciml-modern-stack
+|   --> science-suite:sciml-modern-stack
 |
 +-- Bifurcation analysis, chaos, network dynamics, or equation discovery?
-|   --> nonlinear-dynamics
+|   --> science-suite:nonlinear-dynamics
 |
 +-- Calling Python or R from Julia?
-|   --> interop-patterns
+|   --> science-suite:interop-patterns
 |
 +-- GitHub Actions for Julia packages?
-|   --> ci-cd-patterns
+|   --> science-suite:ci-cd-patterns
 |
 +-- PackageCompiler.jl or system images?
-|   --> compiler-patterns
+|   --> science-suite:compiler-patterns
 |
 +-- Multi-threading or distributed computing patterns?
-|   --> parallel-computing
+|   --> science-suite:parallel-computing
 |
 +-- None of the above / concern is ambiguous or spans multiple areas?
     --> Delegate to julia-pro for open-ended triage, or clarify the

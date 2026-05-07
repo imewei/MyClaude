@@ -35,16 +35,16 @@ Tool selection heuristics, chaining strategies, error handling, and retry logic.
 What is the primary concern?
 |
 +-- Designing how agents collaborate or communicate?
-|   --> multi-agent-coordination (DAG workflows, team assembly)
+|   --> agent-core:multi-agent-coordination (DAG workflows, team assembly)
 |
 +-- System is too slow or uses too many resources?
-|   --> agent-performance-optimization (caching, load balancing)
+|   --> agent-core:agent-performance-optimization (caching, load balancing)
 |
 +-- Measuring or improving output quality?
-|   --> agent-evaluation (benchmarks, scoring, regression)
+|   --> agent-core:agent-evaluation (benchmarks, scoring, regression)
 |
 +-- Designing how an agent selects or chains tools?
-|   --> tool-use-patterns (selection, chaining, error handling)
+|   --> agent-core:tool-use-patterns (selection, chaining, error handling)
 |
 +-- None of the above / concern is ambiguous or spans multiple areas?
     --> Delegate to orchestrator for open-ended triage, or clarify the
@@ -55,10 +55,10 @@ What is the primary concern?
 
 | Task | Skill |
 |------|-------|
-| DAG workflows, team assembly, messaging | `multi-agent-coordination` |
-| Caching, load balancing, latency | `agent-performance-optimization` |
-| Benchmarks, scoring, regression | `agent-evaluation` |
-| Tool selection, chaining, retries | `tool-use-patterns` |
+| DAG workflows, team assembly, messaging | `agent-core:multi-agent-coordination` |
+| Caching, load balancing, latency | `agent-core:agent-performance-optimization` |
+| Benchmarks, scoring, regression | `agent-core:agent-evaluation` |
+| Tool selection, chaining, retries | `agent-core:tool-use-patterns` |
 
 ## Checklist
 

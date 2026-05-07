@@ -37,19 +37,19 @@ Using `uv` for blazing-fast dependency management, workspaces (monorepos), and r
 What is the primary Python engineering concern?
 |
 +-- Structural typing, Protocols, Generics, or strict static analysis?
-|   --> type-driven-design
+|   --> science-suite:type-driven-design
 |
 +-- Writing Rust extensions with PyO3 / Maturin for performance-critical code?
-|   --> rust-extensions
+|   --> science-suite:rust-extensions
 |
 +-- Structured concurrency with asyncio.TaskGroup or async patterns?
-|   --> modern-concurrency
+|   --> science-suite:modern-concurrency
 |
 +-- Property-based testing with Hypothesis or advanced Pytest patterns?
-|   --> robust-testing
+|   --> science-suite:robust-testing
 |
 +-- Dependency management, uv workspaces, or reproducible packaging?
-|   --> python-packaging-advanced
+|   --> science-suite:python-packaging-advanced
 |
 +-- None of the above / concern is ambiguous or spans multiple areas?
     --> Delegate to python-pro for open-ended triage, or clarify the

@@ -34,31 +34,31 @@ Orchestrator for scientific Python systems, AI-research methods, and specialized
 What is the task category?
 |
 +-- General research methodology (study design, paper write-up, lit review, meta-analysis)?
-|   --> (out of hub) research-practice in research-suite
+|   --> (out of hub) research-suite:research-practice
 |
 +-- Self-improving AI taxonomy / autonomous research loops / four-families overview?
-|   --> self-improving-ai
-|   (for persistent agent prompt/policy optimization, use agent-core reasoning-and-memory)
+|   --> science-suite:self-improving-ai
+|   (for persistent agent prompt/policy optimization, use agent-core:reasoning-and-memory)
 |
 +-- DSPy scientific prompt programs / MIPROv2 / BootstrapFewShot / ReAct tools?
-|   --> dspy-basics
+|   --> science-suite:dspy-basics
 |
 +-- RLAIF / Constitutional AI / DPO / KTO / PPO with `trl`?
-|   --> rlaif-training
+|   --> science-suite:rlaif-training
 |
 +-- Python systems / packaging / performance?
 |   (These are co-located here for scientific Python workflows;
 |    for general Python toolchain, see dev-suite python-toolchain hub)
-|   --> python-development / python-packaging-advanced
-|   --> rust-extensions / type-driven-design / modern-concurrency
-|   --> robust-testing (Hypothesis property-based tests, mutation testing)
+|   --> science-suite:python-development / science-suite:python-packaging-advanced
+|   --> science-suite:rust-extensions / science-suite:type-driven-design / science-suite:modern-concurrency
+|   --> science-suite:robust-testing (Hypothesis property-based tests, mutation testing)
 |
 +-- Specialized scientific domain?
-    +-- Quantum circuits / VQE / QAOA? --> quantum-computing
-    +-- Genomics / proteomics?         --> bioinformatics
-    +-- Images / detection?            --> computer-vision
-    +-- RL agents / environments?      --> reinforcement-learning
-    +-- Symbolic / algebraic math?     --> symbolic-math
+    +-- Quantum circuits / VQE / QAOA? --> science-suite:quantum-computing
+    +-- Genomics / proteomics?         --> science-suite:bioinformatics
+    +-- Images / detection?            --> science-suite:computer-vision
+    +-- RL agents / environments?      --> science-suite:reinforcement-learning
+    +-- Symbolic / algebraic math?     --> science-suite:symbolic-math
 |
 +-- None of the above / concern is ambiguous?
     --> Delegate to the most domain-relevant expert agent (e.g., `jax-pro` for
@@ -70,7 +70,7 @@ What is the task category?
 ## Checklist
 
 - [ ] Use routing tree to identify task category before selecting a sub-skill
-- [ ] For general research methodology questions, delegate to `research-practice` in research-suite
+- [ ] For general research methodology questions, delegate to `research-suite:research-practice`
 - [ ] Validate Python packaging locally with `pip install -e .` before publishing
 - [ ] Test Rust extensions with `cargo test` before building Python wheels
 - [ ] Check quantum circuit depth and gate count against target hardware limits

@@ -48,31 +48,31 @@ Exporting models: ONNX, TorchScript, and serving via HTTP.jl endpoints.
 What is the Julia ML task?
 |
 +-- Build / train neural networks?
-|   --> julia-neural-networks
+|   --> science-suite:julia-neural-networks
 |
 +-- Design specific architectures (CNN/RNN/Transformer)?
-|   --> julia-neural-architectures
+|   --> science-suite:julia-neural-architectures
 |
 +-- Diagnose training instability / slow convergence?
-|   --> julia-training-diagnostics
+|   --> science-suite:julia-training-diagnostics
 |
 +-- AD backend errors / gradient issues?
-|   --> julia-ad-backends
+|   --> science-suite:julia-ad-backends
 |
 +-- Write custom GPU kernels?
-|   --> julia-gpu-kernels
+|   --> science-suite:julia-gpu-kernels
 |
 +-- Graph-structured data / GNNs?
-|   --> julia-graph-neural-networks (GNNGraphs / GNNlib / GNNLux layers)
+|   --> science-suite:julia-graph-neural-networks (GNNGraphs / GNNlib / GNNLux layers)
 |
 +-- Reinforcement learning?
-|   --> julia-reinforcement-learning
+|   --> science-suite:julia-reinforcement-learning
 |
 +-- Data pipelines / MLJ workflows?
-|   --> julia-ml-pipelines
+|   --> science-suite:julia-ml-pipelines
 |
 +-- Export or serve a trained model?
-|   --> julia-model-deployment
+|   --> science-suite:julia-model-deployment
 |
 +-- None of the above / concern is ambiguous?
     --> Delegate to julia-ml-hpc for open-ended triage, or clarify the

@@ -38,19 +38,19 @@ Vector stores, conversation history management, and context window optimization.
 What is the primary need?
 |
 +-- Agent needs to reason through a problem step-by-step?
-|   --> reasoning-frameworks (CoT, First Principles, structured analysis)
+|   --> agent-core:reasoning-frameworks (CoT, First Principles, structured analysis)
 |
 +-- Agent needs to evaluate its own reasoning (one-shot critique)?
-|   --> reflection-framework (meta-cognition, bias detection)
+|   --> agent-core:reflection-framework (meta-cognition, bias detection)
 |
 +-- Agent needs to improve its own prompt / policy / chain (persistent)?
-|   --> self-improving-agents (DSPy, TextGrad, self-consistency, constitutional)
+|   --> agent-core:self-improving-agents (DSPy, TextGrad, self-consistency, constitutional)
 |
 +-- Knowledge must be stored as structured relationships?
-|   --> knowledge-graph-patterns (entity resolution, graph traversal)
+|   --> agent-core:knowledge-graph-patterns (entity resolution, graph traversal)
 |
 +-- Information must persist or be retrieved across turns?
-|   --> memory-system-patterns (vector stores, conversation history)
+|   --> agent-core:memory-system-patterns (vector stores, conversation history)
 |
 +-- None of the above / concern is ambiguous or spans multiple areas?
     --> Delegate to reasoning-engine for open-ended triage, or clarify the

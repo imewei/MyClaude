@@ -40,13 +40,13 @@ High-performance solvers for ODEs, PDEs, and linear systems.
 What is the primary parallel computing concern?
 |
 +-- Choosing the right framework or language (Python vs Julia)?
-|   --> ecosystem-selection
+|   --> science-suite:ecosystem-selection
 |
 +-- GPU acceleration with CUDA, CuPy, or CUDA.jl?
-|   --> gpu-acceleration
+|   --> science-suite:gpu-acceleration
 |
 +-- High-performance ODE / PDE / linear-system solvers?
-|   --> numerical-methods-implementation
+|   --> science-suite:numerical-methods-implementation
 |
 +-- None of the above / concern is ambiguous or spans multiple areas?
     --> Delegate to jax-pro (Python/JAX), julia-pro (Julia), or

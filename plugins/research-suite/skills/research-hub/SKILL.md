@@ -27,19 +27,19 @@ Meta-router. Identifies the user's research task and delegates to the correct sp
 Whose manuscript / whose idea?
 |
 +-- Reviewing SOMEONE ELSE's paper → referee report needed?
-|   --> scientific-review
+|   --> research-suite:scientific-review
 |
 +-- Developing YOUR OWN research idea into a fundable plan?
-|   --> research-spark
+|   --> research-suite:research-spark
 |
 +-- Methodology help (design, reproduce, evaluate, write, synthesize)?
-|   --> research-practice
+|   --> research-suite:research-practice
 |       |
-|       +-- Design a study before data collection      → research-methodology
-|       +-- Evaluate an existing paper / grant         → research-quality-assessment
-|       +-- Reproduce a published paper in code        → research-paper-implementation
-|       +-- Draft a manuscript / report / poster       → scientific-communication
-|       +-- Systematic review / meta-analysis / GRADE  → evidence-synthesis
+|       +-- Design a study before data collection      → research-suite:research-methodology
+|       +-- Evaluate an existing paper / grant         → research-suite:research-quality-assessment
+|       +-- Reproduce a published paper in code        → research-suite:research-paper-implementation
+|       +-- Draft a manuscript / report / poster       → research-suite:scientific-communication
+|       +-- Systematic review / meta-analysis / GRADE  → research-suite:evidence-synthesis
 |
 +-- None of the above / concern is ambiguous?
     --> Delegate to research-expert for open-ended triage, or clarify the
@@ -50,14 +50,14 @@ Whose manuscript / whose idea?
 
 | Trigger | Skill |
 |---|---|
-| Peer review, referee report, review someone's paper, critique manuscript, novelty assessment, statistical claims, data integrity check, journal submission, assess preprint | `scientific-review` |
-| Refine my idea, fundable plan, research spark pipeline, continue project, resume stage, back to X work, redo stage N, premortem the plan | `research-spark` |
-| Study design, reproduce paper, write manuscript, evidence synthesis, "is this trustworthy", CONSORT, STROBE, PRISMA, p-hacking, HARKing, power analysis, IMRaD, GRADE, meta-analysis, literature review | `research-practice` |
+| Peer review, referee report, review someone's paper, critique manuscript, novelty assessment, statistical claims, data integrity check, journal submission, assess preprint | `research-suite:scientific-review` |
+| Refine my idea, fundable plan, research spark pipeline, continue project, resume stage, back to X work, redo stage N, premortem the plan | `research-suite:research-spark` |
+| Study design, reproduce paper, write manuscript, evidence synthesis, "is this trustworthy", CONSORT, STROBE, PRISMA, p-hacking, HARKing, power analysis, IMRaD, GRADE, meta-analysis, literature review | `research-suite:research-practice` |
 
 ## Checklist
 
-- [ ] Confirm whose work is in focus: *other people's manuscript* → `scientific-review`; *user's own idea* → `research-spark`.
-- [ ] If the user is mid-pipeline in `research-spark`, resume at the correct stage rather than restarting.
-- [ ] For `research-practice`, identify the lifecycle phase (design / evaluate / reproduce / write / synthesize) before loading a sub-skill.
+- [ ] Confirm whose work is in focus: *other people's manuscript* → `research-suite:scientific-review`; *user's own idea* → `research-suite:research-spark`.
+- [ ] If the user is mid-pipeline in `research-suite:research-spark`, resume at the correct stage rather than restarting.
+- [ ] For `research-suite:research-practice`, identify the lifecycle phase (design / evaluate / reproduce / write / synthesize) before loading a sub-skill.
 - [ ] Never route to `_research-commons` directly — it is an internal shared resource, not a user-facing skill.
 - [ ] For any figures or visualization needs, defer to `scientific-visualization` in `science-suite`.

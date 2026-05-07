@@ -36,19 +36,19 @@ NLP foundations: tokenization, embeddings, text classification, NER, and sequenc
 What is the LLM / AI task?
 |
 +-- Build an LLM-powered application?
-|   --> llm-application-dev
+|   --> science-suite:llm-application-dev
 |
 +-- Evaluate LLM output quality?
-|   --> llm-evaluation
+|   --> science-suite:llm-evaluation
 |
 +-- Use LangChain / LangGraph agents?
-|   --> langchain-architecture
+|   --> science-suite:langchain-architecture
 |
 +-- Build a RAG system?
-|   --> rag-implementation
+|   --> science-suite:rag-implementation
 |
 +-- NLP text processing / embeddings?
-|   --> nlp-fundamentals
+|   --> science-suite:nlp-fundamentals
 |
 +-- LLM-driven scientific pipeline / codegen prompt / experiment template / research workflow automation?
 |   --> [delegate to sci-workflow-engineer agent] — no sub-skill covers this; route directly to the agent
@@ -62,11 +62,11 @@ What is the LLM / AI task?
 
 | Task | Skill |
 |------|-------|
-| API integration, streaming, tool use | `llm-application-dev` |
-| Benchmarks, LLM-as-judge | `llm-evaluation` |
-| Chains, agents, memory | `langchain-architecture` |
-| Vector stores, re-ranking | `rag-implementation` |
-| Tokenization, embeddings, NER | `nlp-fundamentals` |
+| API integration, streaming, tool use | `science-suite:llm-application-dev` |
+| Benchmarks, LLM-as-judge | `science-suite:llm-evaluation` |
+| Chains, agents, memory | `science-suite:langchain-architecture` |
+| Vector stores, re-ranking | `science-suite:rag-implementation` |
+| Tokenization, embeddings, NER | `science-suite:nlp-fundamentals` |
 
 ## Checklist
 

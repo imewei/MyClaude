@@ -57,47 +57,47 @@ End-to-end Bayesian Universal Differential Equations: hybrid physics + neural co
 What is the SciML / DiffEq task?
 |
 +-- Which SciML package to use?
-|   --> sciml-ecosystem
+|   --> science-suite:sciml-ecosystem
 |
 +-- Solve ODE / SDE / DAE / DDE?
-|   --> differential-equations (solver selection, stiffness, error control)
+|   --> science-suite:differential-equations (solver selection, stiffness, error control)
 |
 +-- Which SciML component / package to use at a glance?
-|   --> sciml-ecosystem (package map, when to use what)
+|   --> science-suite:sciml-ecosystem (package map, when to use what)
 |
 +-- UDE / neural ODE / Lux.jl / SciMLSensitivity adjoint / AD-through-solver / UQ on trained models?
-|   --> sciml-modern-stack (Lux + SciMLSensitivity + UncertaintyQuantification specifics)
-|   (for the end-to-end Bayesian UDE workflow with posterior sampling, use bayesian-ude-workflow instead)
+|   --> science-suite:sciml-modern-stack (Lux + SciMLSensitivity + UncertaintyQuantification specifics)
+|   (for the end-to-end Bayesian UDE workflow with posterior sampling, use science-suite:bayesian-ude-workflow instead)
 |
 +-- Symbolic modeling / structural analysis?
-|   --> modeling-toolkit
+|   --> science-suite:modeling-toolkit
 |
 +-- Parameter estimation / inverse problems?
-|   --> optimization-patterns
+|   --> science-suite:optimization-patterns
 |
 +-- PDE with neural networks (deterministic PINNs)?
-|   --> neural-pde
+|   --> science-suite:neural-pde
 |
 +-- Bayesian PINN (credible intervals via BNNODE / BayesianPINN)?
-|   --> bayesian-pinn
+|   --> science-suite:bayesian-pinn
 |
 +-- Chemical reaction networks?
-|   --> catalyst-reactions
+|   --> science-suite:catalyst-reactions
 |
 +-- Linear/integer programming?
-|   --> jump-optimization
+|   --> science-suite:jump-optimization
 |
 +-- Discover symbolic equations from time-series data (SINDy)?
-|   --> equation-discovery
+|   --> science-suite:equation-discovery
 |
 +-- Bifurcation diagrams / numerical continuation?
-|   --> bifurcation-analysis
+|   --> science-suite:bifurcation-analysis
 |
 +-- Universal DE / neural ODE with posterior uncertainty?
-|   --> bayesian-ude-workflow
+|   --> science-suite:bayesian-ude-workflow
 |
 +-- Deterministic PINN / NeuralPDE.jl / physics-constrained loss?
-|   --> neural-pde
+|   --> science-suite:neural-pde
 |
 +-- Complex end-to-end NeuralPDE.jl project requiring deep domain expertise?
 |   --> [delegate to pinn-engineer agent]

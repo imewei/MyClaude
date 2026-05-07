@@ -25,16 +25,16 @@ description: >-
 What is the primary task?
 |
 +-- Write, improve, or optimize a prompt?
-|   --> thinkfirst
+|   --> agent-core:thinkfirst
 |
 +-- Build an LLM app, RAG pipeline, eval system, safety layer, production prompts, or integrate MCP tools?
-|   --> llm-engineering
+|   --> agent-core:llm-engineering
 |
 +-- Design reasoning chains, reflection loops, memory systems, or knowledge graphs?
-|   --> reasoning-and-memory
+|   --> agent-core:reasoning-and-memory
 |
 +-- Coordinate multiple agents, evaluate agent output, design tool chains, or optimize agent performance / latency?
-|   --> agent-systems
+|   --> agent-core:agent-systems
 |
 +-- None of the above / concern is ambiguous or spans multiple areas?
     --> Delegate to orchestrator for open-ended triage, or clarify the
@@ -45,16 +45,16 @@ What is the primary task?
 
 | Trigger | Hub skill |
 |---|---|
-| Multi-agent design, tool chaining, agent evaluation, agent performance optimization, latency, caching | `agent-systems` |
-| Reasoning frameworks, memory, self-improvement, DSPy, TextGrad, knowledge graphs, entity resolution, vector stores | `reasoning-and-memory` |
-| LLM apps, RAG, evals, safety, prompt systems, MCP integration, production prompt engineering | `llm-engineering` |
-| Writing or optimizing a prompt, /thinkfirst, brain dump, "help me write a prompt" | `thinkfirst` |
+| Multi-agent design, tool chaining, agent evaluation, agent performance optimization, latency, caching | `agent-core:agent-systems` |
+| Reasoning frameworks, memory, self-improvement, DSPy, TextGrad, knowledge graphs, entity resolution, vector stores | `agent-core:reasoning-and-memory` |
+| LLM apps, RAG, evals, safety, prompt systems, MCP integration, production prompt engineering | `agent-core:llm-engineering` |
+| Writing or optimizing a prompt, /thinkfirst, brain dump, "help me write a prompt" | `agent-core:thinkfirst` |
 
 ## Checklist
 
 - [ ] Identify the primary concern using the routing decision tree before selecting a hub
-- [ ] For prompt tasks, always route to `thinkfirst` even if other agent topics are mentioned
-- [ ] For multi-agent + reasoning overlap, prefer `agent-systems` (reasoning is a sub-concern)
+- [ ] For prompt tasks, always route to `agent-core:thinkfirst` even if other agent topics are mentioned
+- [ ] For multi-agent + reasoning overlap, prefer `agent-core:agent-systems` (reasoning is a sub-concern)
 - [ ] Confirm the selected hub skill is invoked — do not answer from the meta-router alone
 - [ ] Escalate to an expert agent for deep orchestration, context, or reasoning problems
 - [ ] Validate that the chosen hub covers the full scope before starting implementation

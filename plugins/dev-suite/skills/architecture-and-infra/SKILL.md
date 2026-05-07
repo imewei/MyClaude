@@ -39,22 +39,22 @@ AWS, GCP, and Azure infrastructure-as-code, managed services, and cost optimizat
 What is the architectural concern?
 |
 +-- Layering, boundaries, DDD, CQRS?
-|   --> architecture-patterns
+|   --> dev-suite:architecture-patterns
 |
 +-- Service decomposition / distributed transactions?
-|   --> microservices-patterns
+|   --> dev-suite:microservices-patterns
 |
 +-- Multi-package repo / build caching / workspaces?
-|   --> monorepo-management
+|   --> dev-suite:monorepo-management
 |
 +-- CLI tools / systems programming / IPC?
-|   --> systems-cli-engineering
+|   --> dev-suite:systems-cli-engineering
 |
 +-- Docker / compose / image builds?
-|   --> containerization-patterns
+|   --> dev-suite:containerization-patterns
 |
 +-- Cloud IaC / managed services / multi-region?
-|   --> cloud-provider-patterns
+|   --> dev-suite:cloud-provider-patterns
 |
 +-- None of the above / concern is ambiguous or spans multiple areas?
     --> Delegate to software-architect for open-ended triage, or clarify the
@@ -65,12 +65,12 @@ What is the architectural concern?
 
 | Trigger                              | Sub-skill                    |
 |--------------------------------------|------------------------------|
-| Layers, ports/adapters, DDD, CQRS    | architecture-patterns        |
-| Services, sagas, circuit breaker     | microservices-patterns       |
-| Nx, Turborepo, pnpm workspaces       | monorepo-management          |
-| CLI, argparse, IPC, syscalls         | systems-cli-engineering      |
-| Dockerfile, compose, OCI images      | containerization-patterns    |
-| Terraform, CDK, CloudFormation, IaC  | cloud-provider-patterns      |
+| Layers, ports/adapters, DDD, CQRS    | dev-suite:architecture-patterns        |
+| Services, sagas, circuit breaker     | dev-suite:microservices-patterns       |
+| Nx, Turborepo, pnpm workspaces       | dev-suite:monorepo-management          |
+| CLI, argparse, IPC, syscalls         | dev-suite:systems-cli-engineering      |
+| Dockerfile, compose, OCI images      | dev-suite:containerization-patterns    |
+| Terraform, CDK, CloudFormation, IaC  | dev-suite:cloud-provider-patterns      |
 
 ## Checklist
 

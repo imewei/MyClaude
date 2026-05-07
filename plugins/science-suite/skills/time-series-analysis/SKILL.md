@@ -218,16 +218,16 @@ When the data is irregular event *timestamps* rather than a regular grid (earthq
 
 ```
 Regularly-sampled time series (ARIMA, Prophet, N-BEATS, anomaly detection)?
-  → This skill (time-series-analysis)
+  → This skill (science-suite:time-series-analysis)
 
 Irregular event timestamps (Hawkes, Cox, renewal, spike trains)?
-  → point-processes (../point-processes/SKILL.md)
+  → science-suite:point-processes (../point-processes/SKILL.md)
 
 Change-point detection on regularly-sampled series?
   → This skill — ruptures / PELT / BinSeg section
 
 Extreme-value tail analysis on time series maxima?
-  → extreme-value-statistics (../extreme-value-statistics/SKILL.md)
+  → science-suite:extreme-value-statistics (../extreme-value-statistics/SKILL.md)
 ```
 
 ## Checklist

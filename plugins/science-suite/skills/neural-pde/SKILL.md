@@ -217,16 +217,16 @@ Sobol_first = cp.Sens_m(fitted, dist)      # first-order indices
 
 ```
 Forward or inverse PDE with physics-informed neural network (NeuralPDE.jl)?
-  → This skill (neural-pde)
+  → This skill (science-suite:neural-pde)
 
 Need posterior uncertainty on PINN solution (BPINN / BNNODE / HMC)?
-  → bayesian-pinn (../bayesian-pinn/SKILL.md)
+  → science-suite:bayesian-pinn (../bayesian-pinn/SKILL.md)
 
 Purely data-driven neural ODE / UDE inside Julia SciML stack?
-  → sciml-modern-stack (../sciml-modern-stack/SKILL.md)
+  → science-suite:sciml-modern-stack (../sciml-modern-stack/SKILL.md)
 
 PDE on a regular grid where MOL + DiffEq.jl would work?
-  → differential-equations via MethodOfLines.jl
+  → science-suite:differential-equations via MethodOfLines.jl
 ```
 
 ---

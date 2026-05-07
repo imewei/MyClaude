@@ -305,13 +305,13 @@ Bayesian SINDy with horseshoe priors, ensemble SINDy, and UQ-SINDy are covered i
 
 ```
 Data-driven equation discovery from trajectory data (SINDy / PySINDy)?
-  → This skill (equation-discovery)
+  → This skill (science-suite:equation-discovery)
 
 Need posterior uncertainty / inclusion probabilities on discovered terms?
-  → bayesian-sindy-workflow (../bayesian-sindy-workflow/SKILL.md)
+  → science-suite:bayesian-sindy-workflow (../bayesian-sindy-workflow/SKILL.md)
 
 Discovering residual dynamics inside a physics-based ODE?
-  → UDE + SINDy pipeline — start with bayesian-ude-workflow
+  → UDE + SINDy pipeline — start with science-suite:bayesian-ude-workflow
 ```
 
 ## Checklist

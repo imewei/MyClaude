@@ -47,46 +47,46 @@ Located in `plugins/science-suite/agents/`:
 What is the primary task?
 |
 +-- Dynamical systems / chaos / SINDy / bifurcation / coupled oscillators / pattern formation / synchronization?
-|   --> nonlinear-dynamics
+|   --> science-suite:nonlinear-dynamics
 |
 +-- JAX code, JIT, vmap, pmap, custom VJP, JAX-MD?
-|   --> jax-computing
+|   --> science-suite:jax-computing
 |
 +-- Julia language, packaging, dispatch, type stability?
-|   --> julia-language
+|   --> science-suite:julia-language
 |
 +-- Julia ML/DL: Lux, MLJ, CUDA.jl, GNN?
-|   --> julia-ml-and-dl
+|   --> science-suite:julia-ml-and-dl
 |
 +-- DiffEq.jl, ModelingToolkit, UDEs, Turing, SciML?
-|   --> sciml-and-diffeq
+|   --> science-suite:sciml-and-diffeq
 |
 +-- Correlation functions (MSD, VACFs, g(r), DLS, DDM, SAXS, XPCS, scattering, spectroscopy)?
-|   --> correlation-analysis
+|   --> science-suite:correlation-analysis
 |
 +-- Phase transitions / Langevin / Fokker-Planck / stochastic dynamics / non-equilibrium / active matter / rare events / extreme value statistics / soft matter?
-|   --> statistical-physics-hub
+|   --> science-suite:statistical-physics-hub
 |
 +-- Neural architecture, CNNs/Transformers/GNNs, training?
-|   --> deep-learning-hub
+|   --> science-suite:deep-learning-hub
 |
 +-- scikit-learn, XGBoost, feature engineering, MLflow?
-|   --> ml-and-data-science
+|   --> science-suite:ml-and-data-science
 |
 +-- LLM integration, RAG, AI-assisted science, codegen?
-|   --> llm-and-ai
+|   --> science-suite:llm-and-ai
 |
 +-- Serving, ONNX, TensorRT, deployment pipeline?
-|   --> ml-deployment
+|   --> science-suite:ml-deployment
 |
 +-- MD / Monte Carlo / GROMACS/OpenMM / GPU physics / HPC / signal processing / FFT / time series / control theory / numerical methods?
-|   --> simulation-and-hpc
+|   --> science-suite:simulation-and-hpc
 |
 +-- Bioinformatics / quantum computing / computer vision / RL / symbolic math / DSPy / RLAIF / self-improving AI / scientific Python / Rust extensions?
-|   --> research-and-domains
+|   --> science-suite:research-and-domains
 |
 +-- MCMC, NUTS, variational inference, posterior diagnostics?
-|   --> bayesian-inference
+|   --> science-suite:bayesian-inference
 |
 +-- None of the above / concern is ambiguous?
     --> Identify whether the task is Python/JAX or Julia, then re-enter the
@@ -97,20 +97,20 @@ What is the primary task?
 
 | Trigger | Hub skill |
 |---|---|
-| bifurcation, chaos, Lyapunov, SINDy, attractor, chimera, coupled oscillators, synchronization, Turing patterns, pattern formation, network dynamics | nonlinear-dynamics |
-| JAX, JIT, vmap, pmap, custom_vjp, JAX-MD, Diffrax, optax, NumPyro JAX, JAX physics, XLA | jax-computing |
-| Julia basics, dispatch, type stability, packaging, Pkg, Makie, Plots.jl, visualization, Julia CI/CD, Julia testing, Julia HPC, MPI.jl, Distributed.jl, PyCall, interop, Genie.jl | julia-language |
-| Lux, Flux.jl, MLJ, CUDA.jl, GNNLux, Julia neural network, Enzyme, Zygote, KernelAbstractions, Julia RL, Julia model export, ONNX Julia | julia-ml-and-dl |
-| DiffEq.jl, MTK, ModelingToolkit, UDE, Turing, SciML, NeuralPDE, PINN, Catalyst.jl, JuMP, DataDrivenDiffEq, SINDy Julia, bifurcation Julia | sciml-and-diffeq |
-| correlation function, MSD, VACF, g(r), DLS, DDM, SAXS, XPCS, scattering, structure factor, spectroscopy, rheology, Green's function, FDT | correlation-analysis |
-| phase transition, Langevin, stat mech, free energy, soft matter, Fokker-Planck, stochastic dynamics, non-equilibrium, entropy production, active matter, MIPS, flocking, coarse-graining, rare events, FFS, TIS, extreme value, GEV, GPD, SOC, avalanche | statistical-physics-hub |
-| Transformer, CNN, GNN, neural architecture, training diagnostics, backpropagation, loss divergence, gradient explosion, gradient vanishing, ablation, hyperparameter search, distributed training, multi-GPU | deep-learning-hub |
-| scikit-learn, XGBoost, feature engineering, MLflow, pandas, curve fitting, NLSQ, EDA, statistical tests, hypothesis testing, scientific visualization, matplotlib, seaborn, W&B | ml-and-data-science |
-| LLM, RAG, Claude API, AI workflow, codegen, embeddings, LangChain, LangGraph, NLP, tokenization, NER, LLM evaluation, LLM-as-judge | llm-and-ai |
-| ONNX, TensorRT, model serving, deployment, inference server, FastAPI serving, TorchServe, Triton, BentoML, quantization, pruning, Airflow ML, Prefect, K8s GPU, federated learning, differential privacy | ml-deployment |
-| GROMACS, OpenMM, LAMMPS, molecular dynamics, Monte Carlo, HPC, MPI, trajectory analysis, MDAnalysis, ML force fields, NequIP, MACE, signal processing, FFT, filtering, time series, ARIMA, changepoint detection, control theory, PID, LQR, MPC, numerical methods, FEM | simulation-and-hpc |
-| bioinformatics, genomics, quantum computing, VQE, QAOA, computer vision, reinforcement learning, symbolic math, SymPy, DSPy, RLAIF, self-improving AI, Rust extensions, type-driven design, scientific Python packaging | research-and-domains |
-| NUTS, MCMC, NumPyro, Turing, ArviZ, variational inference, Pigeons, parallel tempering, multimodal posterior, Hawkes process, point processes, Bayesian SINDy, credible intervals, BlackJAX, R-hat, ESS | bayesian-inference |
+| bifurcation, chaos, Lyapunov, SINDy, attractor, chimera, coupled oscillators, synchronization, Turing patterns, pattern formation, network dynamics | science-suite:nonlinear-dynamics |
+| JAX, JIT, vmap, pmap, custom_vjp, JAX-MD, Diffrax, optax, NumPyro JAX, JAX physics, XLA | science-suite:jax-computing |
+| Julia basics, dispatch, type stability, packaging, Pkg, Makie, Plots.jl, visualization, Julia CI/CD, Julia testing, Julia HPC, MPI.jl, Distributed.jl, PyCall, interop, Genie.jl | science-suite:julia-language |
+| Lux, Flux.jl, MLJ, CUDA.jl, GNNLux, Julia neural network, Enzyme, Zygote, KernelAbstractions, Julia RL, Julia model export, ONNX Julia | science-suite:julia-ml-and-dl |
+| DiffEq.jl, MTK, ModelingToolkit, UDE, Turing, SciML, NeuralPDE, PINN, Catalyst.jl, JuMP, DataDrivenDiffEq, SINDy Julia, bifurcation Julia | science-suite:sciml-and-diffeq |
+| correlation function, MSD, VACF, g(r), DLS, DDM, SAXS, XPCS, scattering, structure factor, spectroscopy, rheology, Green's function, FDT | science-suite:correlation-analysis |
+| phase transition, Langevin, stat mech, free energy, soft matter, Fokker-Planck, stochastic dynamics, non-equilibrium, entropy production, active matter, MIPS, flocking, coarse-graining, rare events, FFS, TIS, extreme value, GEV, GPD, SOC, avalanche | science-suite:statistical-physics-hub |
+| Transformer, CNN, GNN, neural architecture, training diagnostics, backpropagation, loss divergence, gradient explosion, gradient vanishing, ablation, hyperparameter search, distributed training, multi-GPU | science-suite:deep-learning-hub |
+| scikit-learn, XGBoost, feature engineering, MLflow, pandas, curve fitting, NLSQ, EDA, statistical tests, hypothesis testing, scientific visualization, matplotlib, seaborn, W&B | science-suite:ml-and-data-science |
+| LLM, RAG, Claude API, AI workflow, codegen, embeddings, LangChain, LangGraph, NLP, tokenization, NER, LLM evaluation, LLM-as-judge | science-suite:llm-and-ai |
+| ONNX, TensorRT, model serving, deployment, inference server, FastAPI serving, TorchServe, Triton, BentoML, quantization, pruning, Airflow ML, Prefect, K8s GPU, federated learning, differential privacy | science-suite:ml-deployment |
+| GROMACS, OpenMM, LAMMPS, molecular dynamics, Monte Carlo, HPC, MPI, trajectory analysis, MDAnalysis, ML force fields, NequIP, MACE, signal processing, FFT, filtering, time series, ARIMA, changepoint detection, control theory, PID, LQR, MPC, numerical methods, FEM | science-suite:simulation-and-hpc |
+| bioinformatics, genomics, quantum computing, VQE, QAOA, computer vision, reinforcement learning, symbolic math, SymPy, DSPy, RLAIF, self-improving AI, Rust extensions, type-driven design, scientific Python packaging | science-suite:research-and-domains |
+| NUTS, MCMC, NumPyro, Turing, ArviZ, variational inference, Pigeons, parallel tempering, multimodal posterior, Hawkes process, point processes, Bayesian SINDy, credible intervals, BlackJAX, R-hat, ESS | science-suite:bayesian-inference |
 
 ## Checklist
 

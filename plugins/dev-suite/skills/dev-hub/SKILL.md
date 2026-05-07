@@ -40,40 +40,40 @@ Top-level entry point consolidating all dev-suite hub skills into a single route
 What is the primary concern?
 |
 +-- Server-side API / async service / messaging?
-|   --> backend-patterns
+|   --> dev-suite:backend-patterns
 |
 +-- UI components / mobile app / frontend framework / TypeScript project / WCAG / accessibility?
-|   --> frontend-and-mobile
+|   --> dev-suite:frontend-and-mobile
 |
 +-- System design / infra / cloud / containers?
-|   --> architecture-and-infra
+|   --> dev-suite:architecture-and-infra
 |
 +-- Tests / quality gates / coverage / PR review / schema validation?
-|   --> testing-and-quality
+|   --> dev-suite:testing-and-quality
 |
 +-- Build pipelines / deployment automation / SAST / security scanning / CI failure / flaky test?
-|   --> ci-cd-pipelines
+|   --> dev-suite:ci-cd-pipelines
 |
 +-- Metrics / alerting / SLOs / incidents?
-|   --> observability-and-sre
+|   --> dev-suite:observability-and-sre
 |
 +-- Python packaging / uv / typing / profiling / error handling / legacy migration?
-|   --> python-toolchain
+|   --> dev-suite:python-toolchain
 |
 +-- Database / SQL / caching / search / secrets / auth?
-|   --> data-and-security
+|   --> dev-suite:data-and-security
 |
 +-- Git workflow / docs / debugging / Airflow?
-|   --> dev-workflows
+|   --> dev-suite:dev-workflows
 |
 +-- AI pair programming / multi-model team / Codex+Gemini review?
 |   Triggers: /ai-pair, "start dev team", "start content team", "team-stop",
 |   "pair with codex and gemini", "multi-model review", "three-model team",
 |   "dual-model review", "ongoing review pipeline", "content team"
-|   --> ai-pair
+|   --> dev-suite:ai-pair
 |
 +-- Second opinion / ask Codex / ask Gemini / sanity check / multimodal / long-context scan (one-shot)?
-|   --> three-brain
+|   --> dev-suite:three-brain
 |
 +-- None of the above / concern is ambiguous or spans multiple areas?
     --> Delegate to software-architect for open-ended triage, or clarify the
@@ -84,17 +84,17 @@ What is the primary concern?
 
 | Trigger | Hub skill |
 |---|---|
-| REST, GraphQL, Node.js, FastAPI, queues | backend-patterns |
-| React, Vue, Svelte, React Native, Flutter, TypeScript, tsconfig, WCAG, ARIA, accessibility, mobile testing | frontend-and-mobile |
-| Microservices, Terraform, K8s, clean arch | architecture-and-infra |
-| TDD, pytest, Playwright, Cypress, coverage, PR review, code review, schema validation, Pydantic, Zod, plugin manifest | testing-and-quality |
-| GitHub Actions, GitLab CI, deploy pipeline, SAST, Snyk, Trivy, SBOM, secrets scan, CI failure, flaky test, build error | ci-cd-pipelines |
-| Prometheus, Grafana, tracing, SLOs, oncall | observability-and-sre |
-| uv, ruff, mypy, packaging, type hints, pyproject.toml, PyPI, profiling, Cython, try/except, retry, Python migration | python-toolchain |
-| SQL, database design, migrations, Redis, caching, Elasticsearch, vector search, secrets, JWT, OAuth, RBAC, Vault | data-and-security |
-| Git branching, docs, debugging, Airflow | dev-workflows |
-| /ai-pair, dev team, content team, team-stop, Codex+Gemini review, multi-model review, three-model team, dual reviewer, ongoing iterative review, pair programming with AI models | ai-pair |
-| Second opinion, sanity check, ask Codex, ask Gemini, review your work, cross-check, multimodal analysis, long-context scan, repeated failure (one-shot) | three-brain |
+| REST, GraphQL, Node.js, FastAPI, queues | dev-suite:backend-patterns |
+| React, Vue, Svelte, React Native, Flutter, TypeScript, tsconfig, WCAG, ARIA, accessibility, mobile testing | dev-suite:frontend-and-mobile |
+| Microservices, Terraform, K8s, clean arch | dev-suite:architecture-and-infra |
+| TDD, pytest, Playwright, Cypress, coverage, PR review, code review, schema validation, Pydantic, Zod, plugin manifest | dev-suite:testing-and-quality |
+| GitHub Actions, GitLab CI, deploy pipeline, SAST, Snyk, Trivy, SBOM, secrets scan, CI failure, flaky test, build error | dev-suite:ci-cd-pipelines |
+| Prometheus, Grafana, tracing, SLOs, oncall | dev-suite:observability-and-sre |
+| uv, ruff, mypy, packaging, type hints, pyproject.toml, PyPI, profiling, Cython, try/except, retry, Python migration | dev-suite:python-toolchain |
+| SQL, database design, migrations, Redis, caching, Elasticsearch, vector search, secrets, JWT, OAuth, RBAC, Vault | dev-suite:data-and-security |
+| Git branching, docs, debugging, Airflow | dev-suite:dev-workflows |
+| /ai-pair, dev team, content team, team-stop, Codex+Gemini review, multi-model review, three-model team, dual reviewer, ongoing iterative review, pair programming with AI models | dev-suite:ai-pair |
+| Second opinion, sanity check, ask Codex, ask Gemini, review your work, cross-check, multimodal analysis, long-context scan, repeated failure (one-shot) | dev-suite:three-brain |
 
 ## Checklist
 
@@ -105,5 +105,5 @@ What is the primary concern?
 - [ ] Ensure tests are planned or updated whenever implementation changes
 - [ ] Confirm observability hooks (logs, metrics, traces) are in scope for production changes
 - [ ] Check CI/CD pipeline is updated when new build steps or env vars are introduced
-- [ ] Use `three-brain` for one-shot second opinions, high-risk path scrutiny, repeated failures, or multimodal/long-context review
-- [ ] Use `ai-pair` (not `three-brain`) for sustained multi-task projects needing iterative creation + dual review
+- [ ] Use `dev-suite:three-brain` for one-shot second opinions, high-risk path scrutiny, repeated failures, or multimodal/long-context review
+- [ ] Use `dev-suite:ai-pair` (not `dev-suite:three-brain`) for sustained multi-task projects needing iterative creation + dual review

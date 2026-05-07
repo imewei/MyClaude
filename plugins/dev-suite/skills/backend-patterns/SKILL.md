@@ -39,22 +39,22 @@ Producer/consumer workflows, dead-letter queues, and at-least-once delivery guar
 What is the backend concern?
 |
 +-- Node.js server / middleware / runtime performance?
-|   --> nodejs-backend-patterns
+|   --> dev-suite:nodejs-backend-patterns
 |
 +-- Python async service / FastAPI / asyncio?
-|   --> async-python-patterns
+|   --> dev-suite:async-python-patterns
 |
 +-- REST API design / versioning / contract?
-|   --> api-design-principles
+|   --> dev-suite:api-design-principles
 |
 +-- GraphQL schema / resolvers / federation?
-|   --> graphql-patterns
+|   --> dev-suite:graphql-patterns
 |
 +-- Real-time connections / live updates?
-|   --> websocket-patterns
+|   --> dev-suite:websocket-patterns
 |
 +-- Async messaging / queues / events?
-|   --> message-queue-patterns
+|   --> dev-suite:message-queue-patterns
 |
 +-- None of the above / concern is ambiguous or spans multiple areas?
     --> Delegate to software-architect for open-ended triage, or clarify the
@@ -65,12 +65,12 @@ What is the backend concern?
 
 | Trigger                        | Sub-skill                    |
 |--------------------------------|------------------------------|
-| Express, Fastify, Node streams | nodejs-backend-patterns      |
-| FastAPI, asyncio, aiohttp      | async-python-patterns        |
-| REST, OpenAPI, versioning      | api-design-principles        |
-| GraphQL, Apollo, federation    | graphql-patterns             |
-| WebSocket, SSE, real-time      | websocket-patterns           |
-| RabbitMQ, Kafka, SQS, queues  | message-queue-patterns       |
+| Express, Fastify, Node streams | dev-suite:nodejs-backend-patterns      |
+| FastAPI, asyncio, aiohttp      | dev-suite:async-python-patterns        |
+| REST, OpenAPI, versioning      | dev-suite:api-design-principles        |
+| GraphQL, Apollo, federation    | dev-suite:graphql-patterns             |
+| WebSocket, SSE, real-time      | dev-suite:websocket-patterns           |
+| RabbitMQ, Kafka, SQS, queues  | dev-suite:message-queue-patterns       |
 
 ## Checklist
 

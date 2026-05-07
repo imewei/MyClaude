@@ -27,7 +27,7 @@ Each artifact filename is canonical. Specialists write to these paths; they do n
 What triggered the invocation?
 |
 +-- Rough new idea (no prior artifacts)?
-|   --> Stage 1: ../spark-articulator/SKILL.md
+|   --> Stage 1: research-suite:spark-articulator
 |
 +-- Resuming a project (explicit "back to X" or implicit mid-conversation)?
 |   --> Read _state.yaml; summarize state; ask whether to continue or jump.
@@ -47,13 +47,13 @@ What triggered the invocation?
 |       the current stage and re-enter the routing decision tree.
 |
 By stage (canonical dispatch table):
-  1   -> ../spark-articulator/SKILL.md     (elicit 3-line spark)
-  2   -> ../landscape-scanner/SKILL.md     (prior art + gap + Reviewer 2 pass)
-  3   -> ../falsifiable-claim/SKILL.md     (testable claim + kill criterion)
-  4-5 -> ../theory-scaffold/SKILL.md       (narrative theory + formalism.tex)
-  6   -> ../numerical-prototype/SKILL.md   (computational existence check)
-  7   -> ../experiment-designer/SKILL.md   (DoE, power, pre-registration)
-  8   -> ../premortem-critique/SKILL.md    (red-team before execution)
+  1   -> research-suite:spark-articulator     (elicit 3-line spark)
+  2   -> research-suite:landscape-scanner     (prior art + gap + Reviewer 2 pass)
+  3   -> research-suite:falsifiable-claim     (testable claim + kill criterion)
+  4-5 -> research-suite:theory-scaffold       (narrative theory + formalism.tex)
+  6   -> research-suite:numerical-prototype   (computational existence check)
+  7   -> research-suite:experiment-designer   (DoE, power, pre-registration)
+  8   -> research-suite:premortem-critique    (red-team before execution)
 ```
 
 ## How routing works
