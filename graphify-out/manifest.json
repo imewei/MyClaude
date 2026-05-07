@@ -640,7 +640,7 @@
     "hash": "0d7c2e8e0d7d4e52c3be8327cd2a92a1"
   },
   "/Users/b80985/Projects/MyClaude/plugins/dev-suite/commands/deps.md": {
-    "mtime": 1777947343.7780037,
+    "mtime": 1778088304.7546558,
     "hash": "7e9533e1c345db6dba8f6e3c9839bf41"
   },
   "/Users/b80985/Projects/MyClaude/plugins/dev-suite/commands/eng-feature-dev.md": {
@@ -1248,8 +1248,8 @@
     "hash": "6cdc92aa939c7951a1e66f6a4ccbd764"
   },
   "/Users/b80985/Projects/MyClaude/plugins/science-suite/skills/sciml-modern-stack/SKILL.md": {
-    "mtime": 1777947343.8613808,
-    "hash": "19979d067339dd2a5d09a977f60df340"
+    "mtime": 1778114272.1154668,
+    "hash": "b42a4675706a1aa873403a2891118a98"
   },
   "/Users/b80985/Projects/MyClaude/plugins/science-suite/skills/sciml-and-diffeq/SKILL.md": {
     "mtime": 1778084971.7271538,
@@ -1284,8 +1284,8 @@
     "hash": "2385d6af240e1217eb897f092211afb3"
   },
   "/Users/b80985/Projects/MyClaude/plugins/science-suite/skills/advanced-simulations/SKILL.md": {
-    "mtime": 1778085013.830139,
-    "hash": "7f6fc453554d50f85feb57ef7516d3cf"
+    "mtime": 1778114282.6852732,
+    "hash": "8c4abf9c915c3a4582b43dc52d651be0"
   },
   "/Users/b80985/Projects/MyClaude/plugins/science-suite/skills/gpu-acceleration/SKILL.md": {
     "mtime": 1777947343.8375487,
@@ -1364,8 +1364,8 @@
     "hash": "8b49bc696344162a70a03940a2114614"
   },
   "/Users/b80985/Projects/MyClaude/plugins/science-suite/skills/self-improving-ai/SKILL.md": {
-    "mtime": 1777999899.5850255,
-    "hash": "e3f2e80edb02a9cd920b622083181d0c"
+    "mtime": 1778114342.2804198,
+    "hash": "b99f05f747204aec0377e73de17876b5"
   },
   "/Users/b80985/Projects/MyClaude/plugins/science-suite/skills/python-development/SKILL.md": {
     "mtime": 1778084922.7928054,
@@ -1392,8 +1392,8 @@
     "hash": "2fe8c66815b9fef3d7602e796d406c65"
   },
   "/Users/b80985/Projects/MyClaude/plugins/science-suite/skills/bayesian-ude-workflow/SKILL.md": {
-    "mtime": 1777947343.827335,
-    "hash": "18b9b82af4e4bd2fb2b09dfe1b3d085a"
+    "mtime": 1778114331.3284187,
+    "hash": "d0fd8b5426e0543101a9827713376dff"
   },
   "/Users/b80985/Projects/MyClaude/plugins/science-suite/skills/bifurcation-analysis/SKILL.md": {
     "mtime": 1777947343.8277857,
@@ -1428,12 +1428,12 @@
     "hash": "aa5e9425434b97e5500ff1ca96536d2f"
   },
   "/Users/b80985/Projects/MyClaude/plugins/science-suite/skills/md-simulation-setup/SKILL.md": {
-    "mtime": 1777947343.8479662,
-    "hash": "cf05d6fc8fee44f36be935b7acfa31ba"
+    "mtime": 1778114336.187124,
+    "hash": "3725549e95c7df216ae8913fd75ae77d"
   },
   "/Users/b80985/Projects/MyClaude/plugins/science-suite/skills/parallel-computing/SKILL.md": {
-    "mtime": 1778084916.5598314,
-    "hash": "2e6e63c26a97e4ddd47b2abb45b4114f"
+    "mtime": 1778114283.51194,
+    "hash": "fa10f41c4e1e0197833ad1896c37c957"
   },
   "/Users/b80985/Projects/MyClaude/plugins/science-suite/skills/science-hub/SKILL.md": {
     "mtime": 1778084951.580072,
@@ -1508,8 +1508,8 @@
     "hash": "5b76606a510619526f6ff5b61bad15df"
   },
   "/Users/b80985/Projects/MyClaude/plugins/science-suite/skills/time-series-analysis/SKILL.md": {
-    "mtime": 1777947343.8650792,
-    "hash": "4fbd2523ed5922200b24a9720f27e77d"
+    "mtime": 1778114346.5599744,
+    "hash": "efce4fab5173e4742573ac3b7a5d5bf2"
   },
   "/Users/b80985/Projects/MyClaude/plugins/science-suite/skills/catalyst-reactions/SKILL.md": {
     "mtime": 1777947343.8284068,
@@ -1540,8 +1540,8 @@
     "hash": "e0e7a3f754b4a159efa77d240e15a239"
   },
   "/Users/b80985/Projects/MyClaude/plugins/science-suite/skills/neural-pde/SKILL.md": {
-    "mtime": 1777947343.8517258,
-    "hash": "52b4afdb85771416d18d1982996a5b18"
+    "mtime": 1778114339.8261178,
+    "hash": "434574c71a5c4d4e4eaf5785f2ae1aae"
   },
   "/Users/b80985/Projects/MyClaude/plugins/science-suite/skills/correlation-physical-systems/SKILL.md": {
     "mtime": 1777947343.8329732,
@@ -1624,8 +1624,8 @@
     "hash": "3498d5abb0913d2aa94ef1dfc5e08f3e"
   },
   "/Users/b80985/Projects/MyClaude/plugins/science-suite/skills/equation-discovery/SKILL.md": {
-    "mtime": 1777947343.835981,
-    "hash": "ed689841bff2b93ce5d7f7538dccf112"
+    "mtime": 1778114333.7572038,
+    "hash": "6f40ce0a08dcce600ee7d64536e99f9e"
   },
   "/Users/b80985/Projects/MyClaude/plugins/science-suite/skills/numpyro-core-mastery/SKILL.md": {
     "mtime": 1777947343.8535957,
@@ -1996,8 +1996,8 @@
     "hash": "588e694f6cf83ced94242106b8479db9"
   },
   "/Users/b80985/Projects/MyClaude/plugins/agent-core/commands/team-assemble.md": {
-    "mtime": 1778022212.204629,
-    "hash": "7cd63dcaf7992e7e8e3a1d1672d14b4c"
+    "mtime": 1778088272.6165962,
+    "hash": "fc3e1a2b5d8bede1a8630b099884fbd4"
   },
   "/Users/b80985/Projects/MyClaude/plugins/agent-core/commands/ultra-think.md": {
     "mtime": 1778022322.613303,
@@ -2032,7 +2032,7 @@
     "hash": "108d438550b453be32c963d13ec881d4"
   },
   "/Users/b80985/Projects/MyClaude/plugins/agent-core/skills/prompt-engineering-patterns/SKILL.md": {
-    "mtime": 1777947343.7678587,
+    "mtime": 1778088316.5255282,
     "hash": "b5e1adb9778f150eb384d28f602724d3"
   },
   "/Users/b80985/Projects/MyClaude/plugins/agent-core/skills/prompt-engineering-patterns/references/prompt-templates.md": {
@@ -2158,8 +2158,5 @@
   "/Users/b80985/Projects/MyClaude/plugins/research-suite/skills/_research-commons/style/citation_style.md": {
     "mtime": 1776528120.686521,
     "hash": "0eb2c2caa7977fdd651617fd5afbc8c4"
-  },
-  "node_count": 1724,
-  "edge_count": 2385,
-  "community_count": 220
+  }
 }
