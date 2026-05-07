@@ -10,6 +10,21 @@ v3.5.2 (2026-05-06)
 * **Documentation audit:** All suite reference pages (agent-core.rst, dev-suite.rst, research-suite.rst, science-suite.rst), cheatsheets, and integration guides updated to reflect the latest release.
 * **Metadata Alignment:** Synced version strings in ``pyproject.toml``, ``Makefile``, and ``marketplace.json`` to ensure unified deployment and update signaling.
 
+**Science-Suite Hub Integrity (test-driven)**
+
+* **Routing Decision Tree added to 7 science-suite skills** that contained ``../`` cross-references
+  but were missing a ``## Routing Decision Tree`` code block (a hub-skill structural requirement):
+  ``bayesian-ude-workflow``, ``equation-discovery``, ``md-simulation-setup``, ``neural-pde``,
+  ``sciml-modern-stack`` (renamed ``## Decision Framework``), ``self-improving-ai``,
+  ``time-series-analysis``.
+* **Checklist headings normalised to** ``## Checklist`` **in 3 skills** whose qualified headings
+  (``## Forecasting Checklist``, ``## 5. Performance & Convergence Checklist``,
+  ``## Performance & Optimization Checklist``) caused the cross-suite invariant tests to fail:
+  ``time-series-analysis``, ``advanced-simulations``, ``parallel-computing``.
+* **Sphinx short version fixed:** ``conf.py`` ``version`` field updated from stale ``"3.4"``
+  to ``"3.5"`` to match the ``release = "3.5.2"`` label.
+* **Test suite:** 258/258 pass.
+
 v3.5.1 (2026-05-06)
 --------------------
 
