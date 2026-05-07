@@ -6,7 +6,7 @@ orphan: true
 
 **Audited against:** Claude Code v2.1.126 (full settings schema)
 **Audit method:** Gemini changelog search (4 tool uses) + Codex file audit (1 tool use) + settings schema inspection
-**Plugin suite version:** 3.4.1
+**Plugin suite version:** 3.5.2
 **Date:** 2026-05-04
 
 ---
@@ -18,7 +18,7 @@ orphan: true
 | 1 | Hook events — deprecated events absent from hooks.json | ✅ Compliant | PreSubagentUse, ExecutionError, PermissionPrompt, ContextOverflow, CostThreshold only appear in README docs, never in hooks.json |
 | 2 | Hook events — all active events are valid | ✅ Compliant | All 12 events in use (SessionStart/End, PreToolUse, PostToolUse, PreCompact, PostCompact, SubagentStart/Stop, PermissionDenied, TaskCreated, TaskCompleted, StopFailure) are confirmed valid in schema |
 | 3 | plugin.json required fields present | ✅ Compliant | name, version, description, author, homepage, repository, license, category, keywords present in all 4 manifests |
-| 4 | Version consistency across all plugin.json | ✅ Compliant | All at 3.4.1 |
+| 4 | Version consistency across all plugin.json | ✅ Compliant | All at 3.5.2 |
 | 5 | Agent frontmatter — only valid fields used | ✅ Compliant | All fields confirmed valid by Codex audit; no unknown fields |
 | 6 | SKILL.md frontmatter — required fields only | ✅ Compliant | All skills use only name + description; no unknown fields |
 | 7 | Command frontmatter — core fields valid | ✅ Compliant | Standard fields valid; extra fields (category, purpose, tags, external-docs) are unrecognized but benign |

@@ -1,5 +1,22 @@
 # Changelog
 
+## v3.5.2 (2026-05-06)
+
+### Marketplace & Consistency
+
+- **Version synchronization**: Enforced absolute version consistency (v3.5.2) across all 4 plugins, marketplace manifest, project metadata (pyproject.toml, Makefile), and documentation
+- **Documentation audit**: Updated all suite reference pages, cheatsheets, and integration guides to reflect the latest release
+- **Metadata Alignment**: Synced version strings in `pyproject.toml`, `Makefile`, and `marketplace.json` for unified deployment
+
+## v3.5.1 (2026-05-06)
+
+### Routing & Expert Delegation
+
+- **3-Layer Routing Audit**: Full routing audit across all 4 plugins; added fallback branches to all 34 routing trees to ensure expert agents are invoked for unmatched queries
+- **Routing fixes**: Corrected wrong-route defects in `advanced-simulations` and `sciml-and-diffeq`
+- **Agent Skill Array Expansion**: Updated agents (orchestrator, simulation-expert, neural-network-master, etc.) with expanded hub toolkit preloading on activation
+- **Knowledge Graph**: Incremental graphify update: 3238 nodes and 4569 edges (+215 nodes and +338 edges from routing additions)
+
 ## v3.5.0 (2026-05-05)
 
 ### Science Suite — Scicomp Redesign
@@ -34,8 +51,8 @@
 
 ### Validator State
 
-* All 4 plugin.json manifests at v3.5.0; 25 agents (13 opus / 10 sonnet / 2 haiku);
-  17 registered commands (2+10+3+2); 31 hub skills → 187 sub-skills (218 SKILL.md on disk);
+* All 4 plugin.json manifests at v3.5.2; 25 agents (13 opus / 10 sonnet / 2 haiku);
+  17 registered commands (2+10+3+2); 31 hub skills → 189 sub-skills (223 SKILL.md on disk);
   24 hook events (12 agent-core + 7 dev-suite + 5 science-suite).
 
 ## v3.3.2 (2026-04-13)

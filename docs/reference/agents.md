@@ -1,6 +1,6 @@
 # Agent Reference
 
-**25 Agents** across 4 suites | **Version:** 3.5.0
+**25 Agents** across 4 suites | **Version:** 3.5.2
 
 Agents are specialized AI personas with defined model tiers, tool access, and domain expertise. Each agent runs at a specific model tier: **opus** (deep reasoning), **sonnet** (standard tasks), or **haiku** (fast/simple).
 
@@ -49,7 +49,7 @@ Scientific research workflows: peer review, idea-to-plan refinement, and methodo
 
 ## Science Suite (`science-suite`) — 11 Agents
 
-Scientific computing, HPC, physics simulations, ML/DL, and nonlinear dynamics. `research-expert` moved to `research-suite` in v3.4.0. In v3.5.0, `jax-pro` and `julia-pro` upgraded to opus; `ai-engineer` renamed to `pinn-engineer`; `prompt-engineer` renamed to `sci-workflow-engineer`; `ml-expert` moved to haiku.
+Scientific computing, HPC, physics simulations, ML/DL, and nonlinear dynamics. `research-expert` moved to `research-suite` in v3.4.0. In v3.5.2, `jax-pro` and `julia-pro` upgraded to opus; `ai-engineer` renamed to `pinn-engineer`; `prompt-engineer` renamed to `sci-workflow-engineer`; `ml-expert` moved to haiku.
 
 | Agent | Model | Description |
 |-------|-------|-------------|
@@ -103,4 +103,4 @@ See the [Integration Map](../integration-map.rst) for full delegation patterns a
 - [Agent Teams Guide](../agent-teams-guide.md) — 10 focused team configurations with 20 variants
 - [Glossary](../glossary.rst) — Key terms (Hub Skill, Sub-Skill, Agent Team)
 
-*Generated from v3.5.0 validated marketplace data.*
+*Generated from v3.5.2 validated marketplace data.*

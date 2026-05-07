@@ -1,6 +1,15 @@
 Changelog
 =========
 
+v3.5.2 (2026-05-06)
+--------------------
+
+**Marketplace and Suite Consistency Sync**
+
+* **Version synchronization:** Enforced absolute version consistency (v3.5.2) across all 4 plugins (agent-core, dev-suite, science-suite, research-suite), the marketplace manifest, project metadata (pyproject.toml, Makefile), and the entire documentation suite.
+* **Documentation audit:** All suite reference pages (agent-core.rst, dev-suite.rst, research-suite.rst, science-suite.rst), cheatsheets, and integration guides updated to reflect the latest release.
+* **Metadata Alignment:** Synced version strings in ``pyproject.toml``, ``Makefile``, and ``marketplace.json`` to ensure unified deployment and update signaling.
+
 v3.5.1 (2026-05-06)
 --------------------
 
