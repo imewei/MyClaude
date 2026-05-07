@@ -15,12 +15,14 @@ v3.5.2 (2026-05-06)
 * **Routing Decision Tree added to 7 science-suite skills** that contained ``../`` cross-references
   but were missing a ``## Routing Decision Tree`` code block (a hub-skill structural requirement):
   ``bayesian-ude-workflow``, ``equation-discovery``, ``md-simulation-setup``, ``neural-pde``,
-  ``sciml-modern-stack`` (renamed ``## Decision Framework``), ``self-improving-ai``,
-  ``time-series-analysis``.
-* **Checklist headings normalised to** ``## Checklist`` **in 3 skills** whose qualified headings
+  ``sciml-modern-stack``, ``self-improving-ai``, ``time-series-analysis``.
+* **Checklist headings normalized to** ``## Checklist`` **in 3 skills** whose qualified headings
   (``## Forecasting Checklist``, ``## 5. Performance & Convergence Checklist``,
   ``## Performance & Optimization Checklist``) caused the cross-suite invariant tests to fail:
   ``time-series-analysis``, ``advanced-simulations``, ``parallel-computing``.
+* **Pytest collection fixed:** Updated ``pyproject.toml`` to set ``testpaths = ["tools/tests"]``
+  and exclude ``plugins/`` and ``test-corpus/`` from recursion, resolving an ``ImportError``
+  during test discovery on reference projects.
 * **Sphinx short version fixed:** ``conf.py`` ``version`` field updated from stale ``"3.4"``
   to ``"3.5"`` to match the ``release = "3.5.2"`` label.
 * **Test suite:** 258/258 pass.

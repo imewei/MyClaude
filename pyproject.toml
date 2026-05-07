@@ -63,5 +63,9 @@ exclude = ["test-corpus/"]
 # S603: subprocess call without shell=True check (informational)
 extend-select = ["S602"]
 
+[tool.pytest.ini_options]
+testpaths = ["tools/tests"]
+norecursedirs = ["plugins", "test-corpus", ".*"]
+
 [tool.setuptools]
 packages = ["tools"]
