@@ -11,7 +11,7 @@ __pycache__/
 *.so
 .Python
 
-# Python build artifacts
+# Build artifacts
 build/
 develop-eggs/
 dist/
@@ -31,7 +31,7 @@ share/python-wheels/
 *.egg
 MANIFEST
 
-# Python testing
+# Testing
 .pytest_cache/
 .coverage
 .coverage.*
@@ -41,7 +41,7 @@ htmlcov/
 .hypothesis/
 pytestdebug.log
 
-# Python profiling
+# Profiling
 *.prof
 *.lprof
 
@@ -61,19 +61,12 @@ venv.bak/
 # ----------------
 # Julia
 # ----------------
-# Julia compiled files
 *.jl.*.cov
 *.jl.cov
 *.jl.mem
-
-# Julia artifacts (don't ignore Manifest.toml in published packages)
 Manifest.toml
 LocalPreferences.toml
-
-# Julia REPL history
 .julia_history
-
-# Julia depot (if accidentally created in project)
 .julia/
 
 # ----------------
@@ -92,11 +85,8 @@ yarn.lock
 pnpm-lock.yaml
 
 # Build outputs
-dist/
-build/
 .next/
 .nuxt/
-.cache/
 .parcel-cache/
 
 # ----------------
@@ -118,18 +108,15 @@ Cargo.lock
 *.iml
 *.iws
 *.ipr
-out/
 
 # Vim
 *.swp
 *.swo
-*~
 .*.sw[a-z]
 *.un~
 Session.vim
 
 # Emacs
-*~
 \#*\#
 /.emacs.desktop
 /.emacs.desktop.lock
@@ -173,9 +160,10 @@ $RECYCLE.BIN/
 *.sqlite
 *.sqlite3
 *.db
+*.jsonl
 
 # ----------------
-# Temporary Files
+# Temporary Files and Cache
 # ----------------
 *.tmp
 *.temp
@@ -185,74 +173,16 @@ $RECYCLE.BIN/
 .cache/
 tmp/
 temp/
-.serena/
 
 # ----------------
-# Claude Code Specific
+# Archives and Compressed Files
 # ----------------
-# Local Claude configuration (user-specific, entire directory)
-.claude/
-.gemini/
-
-# Serena IDE integration
-.serena/
-
-# Claude session data
-.claude-sessions/
-.claude-context/
-
-# Claude Code guidance file (auto-generated)
-.claude-progress.md
-memory/
-
-# Agent-OS development framework (internal use)
-agent-os/
-
-# Plugin review and analysis outputs (auto-generated)
-/reports/
-/reviews/
-.audit/
-tools/maintenance/output/
-
-# ----------------
-# Plugin Development
-# ----------------
-# Plugin testing and development artifacts
-plugins/*/test-output/
-plugins/*/coverage/
-plugins/*/.pytest_cache/
-plugins/*/node_modules/
-
-# Draft plugins (unpublished)
-plugins/draft-*/
-plugins/experimental-*/
-plugins/_*/
-
-# Plugin backups
-plugins/*.backup/
-Backup/
-
-# ----------------
-# Documentation Build
-# ----------------
-# Sphinx documentation
-docs/_build/
-docs/.doctrees/
-docs/_static/generated/
-
-# Documentation development utilities (testing/fixing tools)
-# tools/test_*.py
-# tools/fix_*.py
-# tools/generate_*.py
-# tools/readme_regenerator.py
-# test_gen.py
-
-# MkDocs
-site/
-
-# Jupyter Notebook
-.ipynb_checkpoints/
-*.ipynb
+*.zip
+*.tar
+*.tar.gz
+*.tgz
+*.rar
+*.7z
 
 # ----------------
 # Environment and Secrets
@@ -269,7 +199,7 @@ secrets.json
 config.local.*
 
 # ----------------
-# Scientific Computing Artifacts
+# Scientific Computing
 # ----------------
 # HDF5 data files (large binary)
 *.h5
@@ -289,8 +219,7 @@ datasets/
 checkpoints/
 models/saved/
 
-# Profiling outputs
-*.prof
+# Profiling and tracing outputs
 *.perf
 *.trace
 
@@ -300,6 +229,90 @@ models/saved/
 *.dcd
 *.xtc
 trajectories/
+
+# LaTeX generated files
+*.pdf
+*.aux
+*.out
+*.toc
+*.synctex.gz
+
+# ----------------
+# AI Agent Configuration (local, not shared)
+# ----------------
+# Tool configuration directories
+.claude/
+.gemini/
+.agents/
+.codex/
+.serena/
+
+# Persistent memory / context files
+.remember
+memory/
+
+# AI agent instruction files (local overrides)
+AGENTS.md
+CLAUDE.md
+GEMINI.md
+
+# Claude session data
+.claude-sessions/
+.claude-context/
+.claude-progress.md
+docs/.claude-progress.md
+
+# Agent-OS development framework (internal use)
+agent-os/
+
+# ----------------
+# Graphify Knowledge Graph
+# ----------------
+# Ephemeral build artifacts and cache
+graphify-out/cache/
+graphify-out/.graphify_*.json
+graphify-out/.graphify_*.txt
+graphify-out/.obsidian/
+graphify-out/_COMMUNITY_*.md
+
+# ----------------
+# Plugin Development
+# ----------------
+# Plugin testing and development artifacts
+plugins/*/test-output/
+plugins/*/coverage/
+plugins/*/.pytest_cache/
+plugins/*/node_modules/
+
+# Draft plugins (unpublished)
+plugins/draft-*/
+plugins/experimental-*/
+plugins/_*/
+
+# Plugin backups
+plugins/*.backup/
+Backup/
+
+# Plugin review and analysis outputs (auto-generated)
+/reports/
+/reviews/
+.audit/
+tools/maintenance/output/
+
+# ----------------
+# Documentation Build
+# ----------------
+# Sphinx
+docs/_build/
+docs/.doctrees/
+docs/_static/generated/
+
+# MkDocs
+site/
+
+# Jupyter Notebook
+.ipynb_checkpoints/
+*.ipynb
 
 # ----------------
 # Personal Notes and Planning
@@ -316,36 +329,22 @@ drafts/
 # ----------------
 .github/workflows/*.local.yml
 .gitlab-ci.local.yml
-
-# Test reports
 test-results/
 test-reports/
 coverage.xml
 junit.xml
 
 # ----------------
-# Git and Version Control
+# Git
 # ----------------
-# Git patches and diffs
 *.patch
 *.diff
 *.orig
 *.rej
 
-# ----------------
-# Archives and Compressed Files
-# ----------------
-*.zip
-*.tar
-*.tar.gz
-*.tgz
-*.rar
-*.7z
-
-# ----------------
-# KEEP THESE FILES (document exceptions)
-# ----------------
-# Keep important configuration files
+# ============================================
+# KEEP THESE FILES (explicit exceptions)
+# ============================================
 !.gitignore
 !.github/
 !.gitlab-ci.yml
@@ -362,25 +361,3 @@ junit.xml
 # Keep marketplace metadata
 !.claude-plugin/
 !.claude-plugin/marketplace.json
-
-# LaTeX generated files
-*.pdf
-*.aux
-*.log
-*.out
-*.toc
-*.synctex.gz
-.serena/
-.research-log.jsonl
-
-# Graphify semantic cache (ephemeral build artifacts)
-graphify-out/cache/
-
-# Claude session scratch files in docs
-docs/.claude-progress.md
-
-# Graphify internal working state files
-graphify-out/.graphify_*.json
-graphify-out/.graphify_*.txt
-graphify-out/.obsidian/
-graphify-out/_COMMUNITY_*.md
