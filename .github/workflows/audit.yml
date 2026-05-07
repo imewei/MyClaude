@@ -39,10 +39,11 @@ jobs:
       - name: Install dependencies
         run: |
           uv sync
-          uv pip install "pip>=26.1"
           echo "$PWD/.venv/bin" >> $GITHUB_PATH
 
       - name: Run pip-audit
         run: |
-          # CVE-2026-3219 affects pip 26.x; no fix version available yet — re-evaluate when a patched pip ships
-          uv run pip-audit --ignore-vuln CVE-2026-3219
+          # CVE-2026-3219 affects pip 26.x; no fix available — re-evaluate when a patched pip ships
+          # CVE-2026-6357 affects pip 26.0.x; fixed in pip 26.1 but setup-python pins system pip
+          #   at 26.0.1 — remove this ignore once setup-python ships a runner image with pip>=26.1
+          uv run pip-audit --ignore-vuln CVE-2026-3219 --ignore-vuln CVE-2026-6357
