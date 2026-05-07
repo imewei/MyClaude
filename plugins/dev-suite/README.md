@@ -1,10 +1,17 @@
 # Dev Suite
 
-Unified software development lifecycle suite covering architecture, implementation, CI/CD, testing, debugging, and deployment. Merges engineering, infrastructure, and quality into one suite for zero-friction cross-concern agent delegation.
+Unified software development lifecycle suite covering architecture, implementation, CI/CD,
+testing, debugging, and deployment. Merges engineering, infrastructure, and quality into one
+suite for zero-friction cross-concern agent delegation.
 
 ## Overview
 
-Dev Suite covers the complete software development lifecycle with 9 specialized agents (2 opus, 6 sonnet, 1 haiku), 12 registered slash commands, and 9 hub skills routing to 49 sub-skills. From architecture design through CI/CD to production debugging, every engineering workflow is covered. Agents delegate across specializations automatically — debugger-pro hands off to sre-expert for reliability issues, software-architect delegates to devops-architect for infrastructure.
+Dev Suite covers the complete software development lifecycle with 9 specialized agents
+(2 opus, 6 sonnet, 1 haiku), 12 registered slash commands, and 9 hub skills routing to
+49 sub-skills. From architecture design through CI/CD to production debugging, every
+engineering workflow is covered. Agents delegate across specializations automatically —
+debugger-pro hands off to sre-expert for reliability issues, software-architect delegates
+to devops-architect for infrastructure.
 
 ## Quick Start / Usage Examples
 
@@ -24,8 +31,10 @@ Dev Suite covers the complete software development lifecycle with 9 specialized 
 
 ## Features
 
-- **Architecture & Design**: Scalable backend systems, microservices, REST/GraphQL/gRPC APIs, and modernization planning.
-- **Full-Stack Implementation**: Web, iOS, Android (React, Next.js, Flutter), systems programming (C/C++/Rust/Go), and CLI tools.
+- **Architecture & Design**: Scalable backend systems, microservices, REST/GraphQL/gRPC APIs,
+  and modernization planning.
+- **Full-Stack Implementation**: Web, iOS, Android (React, Next.js, Flutter),
+  systems programming (C/C++/Rust/Go), and CLI tools.
 - **CI/CD & DevOps**: GitHub Actions, GitLab CI, Kubernetes, Terraform, and multi-cloud (AWS/Azure/GCP) infrastructure.
 - **Testing & Quality**: Comprehensive test automation, code review, security auditing, and E2E testing with Playwright.
 - **Debugging**: AI-assisted root cause analysis, log correlation, memory profiling, and production incident resolution.
@@ -71,8 +80,10 @@ Covers the complete SDLC:
 - **Architecture**: API design, auth patterns, microservices, monorepo management, GraphQL
 - **Data & Storage**: Database patterns (ORMs, migrations), caching (Redis), search (Elasticsearch)
 - **Implementation**: TypeScript, Python, async patterns, SQL optimization, error handling, WebSocket
-- **Infrastructure**: Git workflows, GitHub Actions, GitLab CI, Prometheus, Grafana, secrets management, Docker/K8s, cloud providers (AWS/GCP/Azure), message queues
-- **Quality**: Code review, debugging toolkit, test automation, E2E testing, validation, accessibility (WCAG), mobile testing
+- **Infrastructure**: Git workflows, GitHub Actions, GitLab CI, Prometheus, Grafana,
+  secrets management, Docker/K8s, cloud providers (AWS/GCP/Azure), message queues
+- **Quality**: Code review, debugging toolkit, test automation, E2E testing, validation,
+  accessibility (WCAG), mobile testing
 - **Documentation**: Standards and best practices
 
 ## Hooks (7 events)
@@ -91,7 +102,12 @@ Covers the complete SDLC:
 
 ## Integration / Workflow
 
-Dev Suite agents delegate across specializations automatically: `debugger-pro` hands off to `sre-expert` for reliability issues, `software-architect` delegates to `devops-architect` for infrastructure, `quality-specialist` coordinates with `systems-engineer` on low-level review. Cross-suite, dev-suite delegates *up* to `agent-core/orchestrator` for multi-agent coordination and *out* to `science-suite` when ML/DL/physics expertise is needed. See `docs/integration-map.rst` for the full delegation graph.
+Dev Suite agents delegate across specializations automatically: `debugger-pro` hands off to
+`sre-expert` for reliability issues, `software-architect` delegates to `devops-architect` for
+infrastructure, `quality-specialist` coordinates with `systems-engineer` on low-level review.
+Cross-suite, dev-suite delegates *up* to `agent-core/orchestrator` for multi-agent coordination
+and *out* to `science-suite` when ML/DL/physics expertise is needed. See
+`docs/integration-map.rst` for the full delegation graph.
 
 ## Installation
 

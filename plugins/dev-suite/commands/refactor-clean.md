@@ -4,8 +4,17 @@ description: Retired — use code-simplifier:code-simplifier or the global simpl
 allowed-tools: [Read, Edit]
 ---
 
+## Migration
+
 > **Retired.** Superseded by dedicated simplification tools (installed via `claude-plugins-official`).
->
-> - Code simplification / SOLID refactoring → `code-simplifier:code-simplifier`
-> - Quick cleanup of recently changed code → global `simplify` skill
-> - PR-scoped simplification → `pr-review-toolkit:code-simplifier`
+
+```bash
+# Code simplification / SOLID refactoring
+/code-simplifier:code-simplifier
+
+# Quick cleanup of recently changed code
+/simplify
+
+# PR-scoped simplification
+/pr-review-toolkit:code-simplifier
+```
