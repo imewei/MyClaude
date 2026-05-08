@@ -46,7 +46,7 @@ clean-cache: ## Remove all cache directories (.DS_Store, .cache, etc.)
 	@echo "Cleaning cache files..."
 	@find . -type f -name '.DS_Store' -delete 2>/dev/null || true
 	@find . -type d -name '.cache' -exec rm -rf {} + 2>/dev/null || true
-	@find . -type d -name '.venv' -prune -o -type d -name 'node_modules' -prune -o -type f -name '*.log' -delete
+	@find . -type d -name '.venv' -prune -o -type d -name 'node_modules' -prune -o -type f -name '*.log' -exec rm -f {} +
 	@echo "  ✓ Cache files cleaned"
 
 clean-build: ## Remove build artifacts (dist, build directories)

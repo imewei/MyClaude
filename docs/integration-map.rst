@@ -1,7 +1,7 @@
 Integration Map
 ===============
 
-How the 4 MyClaude suites (25 agents, 38 registered hub/standalone skills routing to 179 sub-skills) connect to each other and to external tools.
+How the 4 MyClaude suites (25 agents, 31 registered hub skills routing to 189 sub-skills) connect to each other and to external tools.
 
 .. contents:: Table of Contents
    :depth: 2

@@ -3,7 +3,7 @@ Dev Suite
 
 Full-stack engineering, infrastructure, CI/CD, quality assurance, and debugging. Uses the :term:`Hub Skill` architecture with 9 hubs routing to 49 sub-skills. Merges engineering, infrastructure, and quality capabilities into a single development powerhouse.
 
-**Version:** 3.5.2 | **9 Agents** | **12 Registered Commands** | **9 Hubs → 49 Sub-skills** | **7 Hook Events**
+**Version:** 3.5.2 | **9 Agents** | **10 Registered Commands** | **9 Hubs → 49 Sub-skills** | **7 Hook Events**
 
 Agents
 ------
@@ -56,9 +56,6 @@ Agents
 Registered Commands
 -------------------
 
-.. command:: /commit
-   :description: Intelligent git commit with automated analysis and quality validation.
-
 .. command:: /docs
    :description: Unified documentation management — generate, update, and sync.
 
@@ -76,9 +73,6 @@ Registered Commands
 
 .. command:: /modernize
    :description: Legacy code migration using Strangler Fig pattern with incremental modernization.
-
-.. command:: /refactor-clean
-   :description: Analyze and refactor code to improve quality and maintainability.
 
 .. command:: /run-all-tests
    :description: Iteratively run and fix all tests until zero failures with AI-driven RCA.
