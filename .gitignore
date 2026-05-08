@@ -244,6 +244,7 @@ trajectories/
 /.claude/
 /.gemini/
 /.agents/
+/.agent/
 /.codex/
 /.serena/
 
