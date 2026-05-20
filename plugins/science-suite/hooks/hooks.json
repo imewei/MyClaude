@@ -14,18 +14,6 @@
         ]
       }
     ],
-    "PreToolUse": [
-      {
-        "matcher": "Bash",
-        "hooks": [
-          {
-            "type": "prompt",
-            "prompt": "If this Bash command could kill background simulation processes (kill, pkill, killall targeting python/julia/jax), overwrite .h5/.hdf5/.npy/.npz/.jld2 data files, or delete simulation output directories, warn the user about potential data loss and require confirmation. Otherwise, allow it.",
-            "timeout": 10
-          }
-        ]
-      }
-    ],
     "PostToolUse": [
       {
         "matcher": "Bash",
