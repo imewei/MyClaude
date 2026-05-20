@@ -14,18 +14,6 @@
         ]
       }
     ],
-    "PreToolUse": [
-      {
-        "matcher": "Bash",
-        "hooks": [
-          {
-            "type": "prompt",
-            "prompt": "If this Bash command contains 'git push --force', 'git reset --hard', 'git branch -D', 'git checkout -- .', 'git clean -f', or 'rm -rf', warn the user and require explicit confirmation before proceeding. Otherwise, allow it.",
-            "timeout": 10
-          }
-        ]
-      }
-    ],
     "PostToolUse": [
       {
         "matcher": "Write|Edit",
