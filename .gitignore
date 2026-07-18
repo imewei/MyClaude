@@ -206,9 +206,7 @@ config.local.*
 *.hdf5
 
 # Large data directories
-data/raw/
-data/processed/
-data/external/
+data/
 datasets/
 
 # Model checkpoints (large files)
@@ -262,6 +260,10 @@ memory/
 .claude-context/
 .claude-progress.md
 docs/.claude-progress.md
+
+# claude-flow daemon/runtime state
+.claude-flow/
+claude-flow.config.json
 
 # Agent-OS development framework (internal use)
 agent-os/
