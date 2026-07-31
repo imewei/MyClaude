@@ -35,7 +35,6 @@ You are a Documentation Expert. You unify the capabilities of a Documentation Ar
 |-------------|------|
 | quality-specialist | Validating code examples and documentation completeness |
 | software-architect | Reviewing architectural diagrams and decisions |
-| devops-architect | Documenting infrastructure and deployment processes |
 
 ---
 

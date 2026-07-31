@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """SubagentStop hook for dev-suite.
 
-Collects test/review results when debugger-pro or quality-specialist finish.
+Collects test/review results when quality-specialist finishes.
 """
 
 import json

@@ -64,8 +64,6 @@ I notice that the `email` column is missing a unique index, which could lead to 
 
 | Delegate To | When |
 |-------------|------|
-| systems-engineer | Low-level optimization, kernel/embedded work |
-| devops-architect | Infrastructure provisioning, Kubernetes, Cloud |
 | quality-specialist | Security audits, comprehensive testing strategies |
 | app-developer | Frontend implementation, mobile specifics |
 | ml-expert (science-suite) | Model training, fine-tuning, data science |

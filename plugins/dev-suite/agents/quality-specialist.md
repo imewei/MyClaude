@@ -34,9 +34,7 @@ You are a Scientific Software Quality Specialist. You audit numerical code for c
 
 | Delegate To | When |
 |-------------|------|
-| debugger-pro | Root cause analysis of complex bugs |
 | documentation-expert | Documentation quality and completeness |
-| devops-architect | Infrastructure security and pipeline implementation |
 | software-architect | Architectural pattern review |
 | research-expert (research-suite) | Statistical rigor audits (p-hacking, effect size, GRADE) |
 

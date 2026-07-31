@@ -12,13 +12,10 @@ Top-level entry point consolidating all dev-suite hub skills into a single route
 
 - **`app-developer`** — Scientific GUI and data-interface implementation
 - **`automation-engineer`** — CI/CD pipelines, scripting, and workflow automation
-- **`debugger-pro`** — Root-cause analysis and systematic bug resolution
-- **`devops-architect`** — Infrastructure, Kubernetes, Terraform, and cloud design
 - **`documentation-expert`** — API docs, READMEs, and technical writing
 - **`quality-specialist`** — Test strategy, coverage, and code quality gates
 - **`software-architect`** — System design, service decomposition, and contracts
 - **`sre-expert`** — SLOs, incident response, and reliability engineering
-- **`systems-engineer`** — Low-level systems, performance, and OS-level concerns
 
 ## Hub Skills
 

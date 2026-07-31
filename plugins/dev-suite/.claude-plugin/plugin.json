@@ -28,13 +28,10 @@
   "agents": [
     "./agents/app-developer.md",
     "./agents/automation-engineer.md",
-    "./agents/debugger-pro.md",
-    "./agents/devops-architect.md",
     "./agents/documentation-expert.md",
     "./agents/quality-specialist.md",
     "./agents/software-architect.md",
-    "./agents/sre-expert.md",
-    "./agents/systems-engineer.md"
+    "./agents/sre-expert.md"
   ],
   "commands": [
     "./commands/docs.md",
