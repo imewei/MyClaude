@@ -23,9 +23,12 @@ Two threads, per explicit user direction:
    against the user's pinned toolchain (global CLAUDE.md), and new coverage
    for a specific, user-identified gap cluster: continuum mechanics,
    rheology/DMA, FEM/FEA, constitutive equations, harmonic
-   response/superposition, engineering mathematics, and data-driven
-   modeling for materials — plus cooperative dynamics/collective
-   phenomena/glass problems in soft matter, and graph theory.
+   response/superposition, engineering mathematics, data-driven modeling
+   for materials, transient networks (physical and covalent adaptable
+   networks), and adaptive materials/nanocomposites — plus cooperative
+   dynamics/collective phenomena/glass problems and physical/energy-based
+   learning problems in disordered and soft-matter systems, and graph
+   theory.
 
 ## 2. Scope
 
@@ -80,17 +83,28 @@ viscoelasticity, stress-strain relations), Dynamic Mechanical Analysis
 (DMA), rheology (shear and extensional), harmonic response, time-temperature
 superposition, Finite Element Modeling/Analysis (FEM/FEA — weak forms, mesh
 considerations, convergence), engineering mathematics, and data-driven/
-hybrid (physics + ML) modeling for materials. Delegates neural-PDE/
+hybrid (physics + ML) modeling for materials — including **transient
+networks** (physical networks and covalent adaptable networks/vitrimers:
+bond-exchange kinetics, sticky Rouse and Green-Tobolsky transient-network
+rheology, stress relaxation via reversible/exchangeable crosslinks) and
+**adaptive materials/nanocomposites** (filler-matrix constitutive modeling,
+effective-medium theory, percolation-based property prediction,
+self-healing/responsive composite behavior). Delegates neural-PDE/
 physics-informed approaches to `pinn-engineer`, particle/MD methods to
-`simulation-expert`, pure JAX numerics to `jax-pro`.
+`simulation-expert`, pure JAX numerics to `jax-pro`; cross-references
+`statistical-physicist`'s percolation/correlation content (§6) for the
+microstructure-statistics side of nanocomposite filler networks rather than
+duplicating it.
 
 New hub skill: `continuum-mechanics-and-rheology` (registered in
 `plugin.json`, following the existing hub pattern), with sub-skills for
-FEM/FEA, constitutive-equations, DMA/rheology, and
-harmonic-response-superposition (discovered via the hub's routing table,
-not individually registered — per the manifest rule in root CLAUDE.md).
+FEM/FEA, constitutive-equations, DMA/rheology,
+harmonic-response-superposition, transient-networks-and-can (covalent
+adaptable networks), and nanocomposites-and-adaptive-materials (discovered
+via the hub's routing table, not individually registered — per the manifest
+rule in root CLAUDE.md).
 
-## 6. Extend `statistical-physicist` — glass & collective phenomena
+## 6. Extend `statistical-physicist` — glass, collective phenomena & physical learning
 
 Cooperative dynamics, collective phenomena, and glass problems (jamming,
 aging, random landscapes) in soft matter fit `statistical-physicist`'s
@@ -99,7 +113,22 @@ theorems, soft matter) — no new agent. Extend its `statistical-physics-hub`
 and/or `active-matter` skill routing to cover these explicitly; check for
 overlap with existing `correlation-*` skill family before adding new
 sub-skill files (avoid re-creating content that already exists under a
-different name).
+different name). Nanocomposite filler-network percolation/correlation
+statistics (§5) live here too, cross-referenced from
+`continuum-mechanics-and-rheology`.
+
+Also extend to **physical/energy-based learning problems in disordered and
+soft-matter systems** — not limited to soft matter, per user clarification:
+coupled learning and contrastive Hebbian learning in physical (mechanical/
+electrical) networks, plasticity and memory formation in disordered
+materials, energy-based learning frameworks (Hopfield-style) applied to
+physical substrates. This is "learning" as a physical/statistical-mechanics
+phenomenon (a material or network adapting its own structure), distinct
+from classical ML — keep it out of `ml-expert`/`neural-network-master`'s
+scope, which cover learning *algorithms*, not learning *as physics*.
+Cross-reference `nonlinear-dynamics-expert` for the network-dynamics side of
+physical learning substrates (attractor formation, plasticity rules as
+dynamical systems).
 
 ## 7. New skill: graph theory
 
