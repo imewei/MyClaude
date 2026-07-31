@@ -7,10 +7,9 @@ description: Design high-performance systems and production-grade CLI tools. Cov
 
 ## Expert Agent
 
-For systems programming, CLI tool design, and low-level performance optimization, delegate to:
-
-- **`systems-engineer`**: Masters C, C++, Rust, and Go for high-performance systems, CLI tools, and memory-safe concurrency.
-  - *Location*: `plugins/dev-suite/agents/systems-engineer.md`
+No dev-suite agent specializes in systems/CLI programming directly. For language-specific
+patterns and build fixes, defer to ecc's toolchain skills (e.g. `ecc:rust-patterns`,
+`ecc:golang-patterns`, `ecc:cpp-coding-standards`, `ecc:build-fix`).
 
 Expert guide for building low-level systems and developer-facing command-line tools.
 

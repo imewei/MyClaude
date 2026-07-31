@@ -11,8 +11,6 @@ For testing strategy and quality gates across Python and JS/TS ecosystems, deleg
 
 - **`quality-specialist`**: Designs comprehensive test strategies and enforces quality gates.
   - *Location*: `plugins/dev-suite/agents/quality-specialist.md`
-- **`systems-engineer`**: Implements testing across Python, JavaScript, and TypeScript.
-  - *Location*: `plugins/dev-suite/agents/systems-engineer.md`
 
 ## Framework Selection
 

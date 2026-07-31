@@ -7,10 +7,9 @@ description: Design cloud-native architectures across AWS, GCP, and Azure includ
 
 ## Expert Agent
 
-For cloud architecture, infrastructure as code, and managed service selection, delegate to:
-
-- **`devops-architect`**: Designs cloud-native platform architecture with IaC, serverless, and multi-cloud strategies.
-  - *Location*: `plugins/dev-suite/agents/devops-architect.md`
+No dev-suite agent specializes in cloud architecture directly. For general cloud/IaC and
+Kubernetes patterns, defer to `ecc:kubernetes-patterns`; `software-architect` can review
+cross-cutting infrastructure design for scientific-computing workloads.
 
 
 ## Service Comparison

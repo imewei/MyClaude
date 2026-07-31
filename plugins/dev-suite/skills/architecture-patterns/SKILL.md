@@ -9,8 +9,6 @@ description: Master Clean Architecture, Hexagonal Architecture, and DDD patterns
 
 For Clean Architecture, DDD, and scalable backend system design, delegate to:
 
-- **`devops-architect`**: Designs cloud-native platform architecture with IaC and Kubernetes orchestration.
-  - *Location*: `plugins/dev-suite/agents/devops-architect.md`
 - **`software-architect`**: Designs end-to-end system architecture with service boundaries and API contracts.
   - *Location*: `plugins/dev-suite/agents/software-architect.md`
 

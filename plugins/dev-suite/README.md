@@ -10,8 +10,8 @@ Dev Suite covers the complete software development lifecycle with 9 specialized 
 (2 opus, 6 sonnet, 1 haiku), 12 registered slash commands, and 9 hub skills routing to
 49 sub-skills. From architecture design through CI/CD to production debugging, every
 engineering workflow is covered. Agents delegate across specializations automatically —
-debugger-pro hands off to sre-expert for reliability issues, software-architect delegates
-to devops-architect for infrastructure.
+software-architect delegates to quality-specialist for security audits, sre-expert hands
+off to automation-engineer for pipeline fixes.
 
 ## Quick Start / Usage Examples
 
@@ -47,11 +47,8 @@ to devops-architect for infrastructure.
 |-------|-------|----------------|
 | `software-architect` | opus | Backend systems, microservices, API design |
 | `app-developer` | sonnet | Web/mobile apps, React, Next.js, Flutter |
-| `systems-engineer` | sonnet | C/C++/Rust/Go, CLI tools, low-level systems |
-| `devops-architect` | sonnet | Cloud (AWS/Azure/GCP), Kubernetes, IaC |
 | `automation-engineer` | sonnet | CI/CD pipelines, GitHub Actions, Git workflows |
 | `sre-expert` | sonnet | Reliability, observability, SLO/SLI, incidents |
-| `debugger-pro` | opus | Root cause analysis, log correlation, profiling |
 | `quality-specialist` | sonnet | Code review, security audit, test automation |
 | `documentation-expert` | haiku | Technical docs, manuals, tutorials |
 
@@ -93,7 +90,7 @@ Covers the complete SDLC:
 | SessionStart | Auto-detect project stack (language, framework, test runner) |
 | PreToolUse | Guard destructive git ops (push --force, reset --hard, branch -D) |
 | PostToolUse | Auto-lint suggestions after Write/Edit (Python, JS/TS) |
-| SubagentStop | Collect results from debugger-pro/quality-specialist |
+| SubagentStop | Collect results from quality-specialist |
 | TaskCompleted | Trigger validation checks and suggest git commit |
 | SessionEnd | Persist structured progress summary for next session |
 | StopFailure | Capture context when /stop fails mid-operation |
@@ -102,9 +99,9 @@ Covers the complete SDLC:
 
 ## Integration / Workflow
 
-Dev Suite agents delegate across specializations automatically: `debugger-pro` hands off to
-`sre-expert` for reliability issues, `software-architect` delegates to `devops-architect` for
-infrastructure, `quality-specialist` coordinates with `systems-engineer` on low-level review.
+Dev Suite agents delegate across specializations automatically: `software-architect` delegates
+to `quality-specialist` for security audits, `sre-expert` hands off to `automation-engineer` for
+pipeline fixes, `quality-specialist` coordinates with `documentation-expert` on documentation quality.
 Cross-suite, dev-suite delegates *out* to `science-suite` when ML/DL/physics expertise is needed.
 See `docs/integration-map.rst` for the full delegation graph.
 

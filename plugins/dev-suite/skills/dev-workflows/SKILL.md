@@ -9,9 +9,9 @@ Orchestrator for day-to-day development workflows and tooling. Routes to the app
 
 ## Expert Agent
 
-- **`debugger-pro`**: Specialist for systematic debugging, workflow root cause analysis, and pipeline failure diagnosis.
-  - *Location*: `plugins/dev-suite/agents/debugger-pro.md`
-  - *Capabilities*: Git conflict resolution, documentation audits, Airflow DAG debugging, and structured debugging methodology.
+No dev-suite agent specializes in general debugging directly. For systematic pre-fix
+debugging, defer to `superpowers:systematic-debugging` or `mattpocock-skills:diagnosing-bugs`;
+for scientific-computing-specific debugging, see [Debugging Toolkit](../debugging-toolkit/SKILL.md).
 
 ## Core Skills
 
@@ -57,7 +57,7 @@ What is the workflow concern?
 |   --> dev-suite:ai-pair
 |
 +-- None of the above / concern is ambiguous or spans multiple areas?
-    --> Delegate to debugger-pro for open-ended triage, or clarify the
+    --> Delegate to software-architect for open-ended triage, or clarify the
         primary concern and re-enter the routing decision tree.
 ```
 
