@@ -1,7 +1,7 @@
 ---
 name: simulation-expert
 description: Simulation/HPC expert for MD, Monte Carlo, GROMACS/OpenMM/LAMMPS/JAX-MD, trajectories, ML force fields, rare events, GPU physics, and multi-node runs.
-model: opus
+model: sonnet
 color: magenta
 effort: high
 memory: project

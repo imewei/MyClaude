@@ -1,7 +1,7 @@
 ---
 name: pinn-engineer
 description: Physics-informed AI engineer for PINNs, NeuralPDE.jl, DeepXDE, BPINN/BNNODE, neural operators, constrained losses, boundary conditions, and inverse PDEs.
-model: sonnet
+model: opus
 color: cyan
 effort: high
 memory: project
