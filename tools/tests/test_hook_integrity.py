@@ -36,7 +36,7 @@ VALID_HOOK_EVENTS = {
 
 VALID_HANDLER_TYPES = {"command", "http", "prompt", "agent"}
 
-SUITES_WITH_HOOKS = ["agent-core", "dev-suite", "science-suite"]
+SUITES_WITH_HOOKS = ["dev-suite", "science-suite"]
 
 
 @pytest.fixture

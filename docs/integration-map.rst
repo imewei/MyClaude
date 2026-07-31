@@ -1,7 +1,7 @@
 Integration Map
 ===============
 
-How the 4 MyClaude suites (25 agents, 31 registered hub skills routing to 189 sub-skills) connect to each other and to external tools.
+How the 3 MyClaude suites (22 agents, 27 registered hub skills routing to 175 sub-skills) connect to each other and to external tools.
 
 .. contents:: Table of Contents
    :depth: 2
@@ -15,14 +15,12 @@ Suite Dependencies
 
    * - Suite
      - Integrates With
-   * - **agent-core**
-     - All suites (orchestration layer). MCP: Sequential Thinking, Context7.
    * - **dev-suite**
      - Internal: all 9 agents cross-delegate freely. MCP: Serena, GitHub.
    * - **research-suite**
-     - agent-core (reasoning), science-suite (Stage 6 JAX/Julia/MD delegation from research-spark-orchestrator). 11 registered skills (8-stage pipeline + 2 hubs + standalone ``scientific-review``) route to 5 methodology sub-skills. MCP: Context7 for journal guideline lookups.
+     - science-suite (Stage 6 JAX/Julia/MD delegation from research-spark-orchestrator). 11 registered skills (8-stage pipeline + 2 hubs + standalone ``scientific-review``) route to 5 methodology sub-skills. MCP: Context7 for journal guideline lookups.
    * - **science-suite**
-     - agent-core (reasoning), dev-suite (packaging), research-suite (invoked for Stage 6 implementation). Internal: julia-pro ↔ julia-ml-hpc (SciML vs ML/HPC boundary), neural-network-master ↔ julia-ml-hpc (theory vs Julia impl). 14 hub skills route to 112 sub-skills. MCP: Context7.
+     - dev-suite (packaging), research-suite (invoked for Stage 6 implementation). Internal: julia-pro ↔ julia-ml-hpc (SciML vs ML/HPC boundary), neural-network-master ↔ julia-ml-hpc (theory vs Julia impl). 14 hub skills route to 112 sub-skills. MCP: Context7.
 
 MCP Server Roles
 ----------------
@@ -40,15 +38,9 @@ MCP Server Roles
    * - **Context7**
      - ``/docs-lookup``
      - All agents for up-to-date library documentation
-   * - **Sequential Thinking**
-     - ``/ultra-think``
-     - ``@reasoning-engine`` for structured multi-step analysis
 
 Intra-Suite Delegation Patterns
 -------------------------------
-
-**agent-core** (3 agents): Fully connected triangle — orchestrator, reasoning-engine,
-and context-specialist each delegate to the other two.
 
 **dev-suite** (9 agents): Free internal delegation with key edges:
 
@@ -76,7 +68,7 @@ and context-specialist each delegate to the other two.
 Skill Coverage
 ~~~~~~~~~~~~~~
 
-All 38 registered skills route to 179 sub-skills with 100% Expert Agent coverage:
+All 34 registered skills route to 166 sub-skills with 100% Expert Agent coverage:
 
 .. list-table::
    :header-rows: 1
@@ -87,11 +79,6 @@ All 38 registered skills route to 179 sub-skills with 100% Expert Agent coverage
      - Registered Skills
      - Sub-Skills
      - Coverage
-   * - agent-core
-     - 3
-     - 4
-     - 13
-     - 100% — agent-systems, reasoning-and-memory, llm-engineering, thinkfirst
    * - dev-suite
      - 9
      - 9
@@ -111,7 +98,7 @@ All 38 registered skills route to 179 sub-skills with 100% Expert Agent coverage
 Official Plugin Agents
 ----------------------
 
-18 agents from 8 official plugins complement the 25 MyClaude domain experts.
+18 agents from 8 official plugins complement the 22 MyClaude domain experts.
 See the :doc:`Agent Teams Guide <agent-teams-guide>` for team configurations
 that integrate these agents.
 
@@ -124,7 +111,7 @@ Key integration patterns:
 Agent Teams
 -----------
 
-10 focused team configurations with 20 variants and long-running workflow protocol (v3.5.2):
+10 focused team configurations with 19 variants and long-running workflow protocol (v3.5.2):
 
 1. **feature-dev** — Build any feature end-to-end
 2. **debug** (5 variants) — All debugging + incident response
@@ -132,10 +119,10 @@ Agent Teams
 4. **api-infra** (2 variants) — APIs + cloud + CI/CD + config
 5. **sci-compute** (7 variants) — All scientific computing (auto-detects domain)
 6. **modernize** — Legacy migration + refactoring
-7. **ai-engineering** (1 variant) — LLM apps + RAG + multi-agent
+7. **ai-engineering** — LLM apps + RAG
 8. **ml-deploy** (2 variants) — Model deploy + data pipelines + performance
 9. **docs-publish** (1 variant) — Documentation + reproducibility
 10. **plugin-forge** — Claude Code extensions
 
-Use ``/agent-core:team-assemble list`` to browse all teams, or run it with no
-arguments in a project root for a codebase-aware recommendation.
+See the :doc:`Agent Teams Guide <agent-teams-guide>` for the full agent
+composition of each team and variant.

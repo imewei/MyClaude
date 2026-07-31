@@ -1,35 +1,31 @@
 # MyClaude
 
-[![Plugins](https://img.shields.io/badge/Plugins-4-blue.svg)](https://myclaude.readthedocs.io/en/latest/plugins/)
-[![Agents](https://img.shields.io/badge/Agents-25-green.svg)](docs/reference/agents.md)
-[![Commands](https://img.shields.io/badge/Commands-17-orange.svg)](docs/reference/commands.md)
-[![Skills](https://img.shields.io/badge/Skills-34_hubs_→_189_sub-purple.svg)](docs/reference/cheatsheet.md)
+[![Plugins](https://img.shields.io/badge/Plugins-3-blue.svg)](https://myclaude.readthedocs.io/en/latest/plugins/)
+[![Agents](https://img.shields.io/badge/Agents-22-green.svg)](docs/reference/agents.md)
+[![Commands](https://img.shields.io/badge/Commands-15-orange.svg)](docs/reference/commands.md)
+[![Skills](https://img.shields.io/badge/Skills-30_hubs_→_175_sub-purple.svg)](docs/reference/cheatsheet.md)
 [![Version](https://img.shields.io/badge/Version-3.5.2-red.svg)](https://github.com/imewei/MyClaude)
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Docs](https://img.shields.io/badge/Docs-ReadTheDocs-brightgreen.svg)](https://myclaude.readthedocs.io/en/latest/)
 
-Claude Code plugin marketplace with **4 focused suites**, **25 expert agents**, **17 registered commands**, and **34 hub skills** routing to **189 sub-skills**. Built for Claude Opus 4.7 with tiered model assignments (Opus/Sonnet/Haiku), 24 lifecycle hook events across all suites, and hub-skill architecture for zero-ambiguity skill routing.
+Claude Code plugin marketplace with **3 focused suites**, **22 expert agents**, **15 registered commands**, and **30 hub skills** routing to **175 sub-skills**. Built for Claude Opus 4.7 with tiered model assignments (Opus/Sonnet/Haiku), 12 lifecycle hook events across all suites, and hub-skill architecture for zero-ambiguity skill routing.
 
-## The 4-Suite Hub Architecture
+## The 3-Suite Hub Architecture
 
 MyClaude v3.5.2 uses a **hub-skill architecture**: skills are organized into hub skills (meta-orchestrators) that route to specialized sub-skills via decision trees. Only hubs are declared in `plugin.json`; sub-skills are discovered through hub routing.
 
 | Suite | Agents | Commands | Hubs → Sub-skills | Hooks | Focus |
 |-------|--------|----------|-------------------|-------|-------|
-| [Agent Core](plugins/agent-core/) | 3 | 2 | 4 → 14 | 12 events | Orchestration, reasoning, context engineering |
 | [Dev Suite](plugins/dev-suite/) | 9 | 10 | 10 → 51 | 7 events | Full SDLC: architecture, CI/CD, testing, debugging |
 | [Research Suite](plugins/research-suite/) | 2 | 3 | 3 → 14 | 0 events | Peer review, 8-stage research-spark pipeline, methodology |
 | [Science Suite](plugins/science-suite/) | 11 | 2 | 17 → 110 | 5 events | JAX, Julia, physics, ML/DL/HPC, nonlinear dynamics |
 
 ## Specialist Agents
 
-25 agents with tiered model assignments: **13 opus** (deep reasoning), **10 sonnet** (standard), **2 haiku** (fast).
+22 agents with tiered model assignments: **10 opus** (deep reasoning), **10 sonnet** (standard), **2 haiku** (fast).
 
 | Agent | Suite | Model | Specialization |
 |-------|-------|-------|----------------|
-| `@orchestrator` | Agent Core | opus | Multi-agent coordination and task delegation |
-| `@reasoning-engine` | Agent Core | opus | Advanced reasoning and structured thinking |
-| `@context-specialist` | Agent Core | opus | Dynamic context management, vector/memory systems |
 | `@software-architect` | Dev | opus | Backend systems, microservices, API design |
 | `@debugger-pro` | Dev | opus | Root cause analysis, log correlation |
 | `@research-expert` | Research | opus | Literature reviews, experiment design, statistical rigor |
@@ -45,7 +41,7 @@ MyClaude v3.5.2 uses a **hub-skill architecture**: skills are organized into hub
 | `@julia-ml-hpc` | Science | sonnet | Julia ML, Lux.jl, distributed/GPU computing |
 | `@python-pro` | Science | sonnet | Python systems engineering, performance |
 
-See [complete agent list](docs/reference/agents.md) for all 25 agents.
+See [complete agent list](docs/reference/agents.md) for all 22 agents.
 
 ## Installation
 
@@ -58,7 +54,6 @@ See [complete agent list](docs/reference/agents.md) for all 25 agents.
 ### Step 2: Install Suites
 
 ```bash
-/plugin install agent-core@marketplace
 /plugin install dev-suite@marketplace
 /plugin install research-suite@marketplace
 /plugin install science-suite@marketplace
@@ -71,15 +66,12 @@ See [complete agent list](docs/reference/agents.md) for all 25 agents.
 **Using Specialized Agents**
 ```
 Ask Claude: "@python-pro help me optimize this async function"
-Ask Claude: "@orchestrator coordinate a team for this new feature"
 Ask Claude: "@jax-pro implement this differentiable physics model"
 Ask Claude: "@research-expert design a power analysis for this experiment"
 ```
 
 **Running Commands**
 ```bash
-/agent-core:ultra-think "Analyze the architecture of this system"
-/agent-core:team-assemble scientific-computing-team
 /dev-suite:double-check my-feature
 /dev-suite:fix-commit-errors
 ```

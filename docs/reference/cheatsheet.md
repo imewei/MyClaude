@@ -1,6 +1,6 @@
 # Quick Reference Cheatsheet
 
-**4 Suites** | **25 Agents** | **14 Registered Commands** | **31 Hub Skills** (routing to 186 sub-skills; 217 SKILL.md on disk)
+**3 Suites** | **22 Agents** | **12 Registered Commands** | **27 Hub Skills** (routing to 173 sub-skills; 199 SKILL.md on disk)
 **Version:** 3.5.2
 
 ---
@@ -17,18 +17,7 @@ plugin.json → hub skill → routing decision tree → sub-skill
 
 ## Suite Overview
 
-### 1. Agent Core (`agent-core`)
-
-**Purpose:** Multi-agent coordination, advanced reasoning, and context engineering.
-
-| Component | Count | Details |
-|-----------|-------|---------|
-| Agents | 3 | orchestrator (opus), reasoning-engine (opus), context-specialist (opus) |
-| Commands | 2 registered | `/ultra-think`, `/team-assemble` |
-| Skills | 4 hubs → 13 sub | agent-systems, reasoning-and-memory, llm-engineering, thinkfirst |
-| Hooks | 12 events | SessionStart, SessionEnd, PreToolUse, PostToolUse, PreCompact, PostCompact, SubagentStart, SubagentStop, PermissionDenied, TaskCreated, TaskCompleted, StopFailure |
-
-### 2. Dev Suite (`dev-suite`)
+### 1. Dev Suite (`dev-suite`)
 
 **Purpose:** Full-stack engineering, infrastructure, CI/CD, quality, and debugging.
 
@@ -39,7 +28,7 @@ plugin.json → hub skill → routing decision tree → sub-skill
 | Skills | 9 hubs → 49 sub | backend-patterns, frontend-and-mobile, architecture-and-infra, testing-and-quality, ci-cd-pipelines, observability-and-sre, python-toolchain, data-and-security, dev-workflows |
 | Hooks | 7 events | SessionStart, PreToolUse, PostToolUse, SubagentStop, TaskCompleted, SessionEnd, StopFailure |
 
-### 3. Research Suite (`research-suite`)
+### 2. Research Suite (`research-suite`)
 
 **Purpose:** Peer review, 8-stage research-spark pipeline, and methodology orchestration.
 
@@ -50,7 +39,7 @@ plugin.json → hub skill → routing decision tree → sub-skill
 | Skills | 4 hubs → 12 sub | scientific-review, research-spark, research-practice, _research-commons |
 | Hooks | 3 events | SessionStart (artifact-resume), TaskCompleted (audit log), SubagentStop (prompt-based artifact gating) |
 
-### 4. Science Suite (`science-suite`)
+### 3. Science Suite (`science-suite`)
 
 **Purpose:** HPC, physics simulations, ML/DL, Julia, JAX, and nonlinear dynamics.
 
@@ -112,7 +101,6 @@ plugin.json → hub skill → routing decision tree → sub-skill
 /plugin marketplace add imewei/MyClaude
 
 # Install suites
-/plugin install agent-core@marketplace
 /plugin install dev-suite@marketplace
 /plugin install research-suite@marketplace
 /plugin install science-suite@marketplace

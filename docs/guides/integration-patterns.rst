@@ -58,6 +58,5 @@ Related
 -------
 
 - :doc:`/integration-map` — Suite dependencies, MCP roles, and skill coverage
-- :doc:`/suites/agent-core` — Orchestration and coordination (3 hubs → 12 sub-skills)
 - :doc:`/suites/dev-suite` — CI/CD and automation (9 hubs → 49 sub-skills)
 - :doc:`/glossary` — Hub Skill, Sub-Skill, and Routing Decision Tree definitions

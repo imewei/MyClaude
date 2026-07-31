@@ -1,22 +1,12 @@
-"""Tests for README probe sanitization and /team-assemble S1 safeguards.
+"""Tests for README probe sanitization.
 
-This module covers two testing concerns that share fixtures:
-
-1. **Adversarial + benign behavior** of the sanitizer in
-   :mod:`tools.common.readme_sanitizer`. This is the closest thing to
-   an integration test we can write while the codebase detection path
-   lives entirely in prompt instructions. When the detection path
-   eventually gets automated (Python helper, MCP tool, hook), that
-   automation should call ``sanitize_readme_probe`` and these same
-   fixtures will cover the real path end-to-end.
-
-2. **Doc-drift regression guards** for the safeguard clauses in
-   ``plugins/agent-core/commands/team-assemble.md``. If a future edit
-   silently strips the S1/S3/P5 mitigations, these tests fail loudly.
-
-See also: ``plugins/agent-core/commands/team-assemble.md`` Step 1.5 Tier 4
-(the extractor that feeds this sanitizer) and Step 2.6b (the safeguard
-rules that the sanitizer implements).
+This module covers the **adversarial + benign behavior** of the sanitizer in
+:mod:`tools.common.readme_sanitizer`. This is the closest thing to
+an integration test we can write while the codebase detection path
+lives entirely in prompt instructions. When the detection path
+eventually gets automated (Python helper, MCP tool, hook), that
+automation should call ``sanitize_readme_probe`` and these same
+fixtures will cover the real path end-to-end.
 """
 
 from __future__ import annotations
@@ -34,7 +24,6 @@ from tools.common.readme_sanitizer import (
 )
 
 REPO_ROOT = pathlib.Path(__file__).resolve().parents[2]
-TEAM_ASSEMBLE_PATH = REPO_ROOT / "plugins/agent-core/commands/team-assemble.md"
 
 
 # ---------------------------------------------------------------------------
@@ -401,88 +390,6 @@ class TestSanitizerLanguageHint:
         assert result.refused is True
         assert result.language_hint == "latin"
         assert result.confidence == "standard"
-
-
-# ---------------------------------------------------------------------------
-# Group 4 — Doc-drift regression guards for team-assemble.md
-# ---------------------------------------------------------------------------
-
-
-class TestTeamAssembleSafeguardsPresent:
-    """Fail loudly if any future edit silently strips the S1/S3/P5 clauses.
-
-    These are string-presence checks, not behavior tests. They are the
-    cheapest way to catch a common regression: "someone refactored the
-    command file and accidentally removed the safeguard section."
-    """
-
-    @pytest.fixture(scope="class")
-    def command_text(self) -> str:
-        return TEAM_ASSEMBLE_PATH.read_text(encoding="utf-8")
-
-    def test_file_exists(self) -> None:
-        assert TEAM_ASSEMBLE_PATH.exists(), (
-            f"team-assemble.md is missing at {TEAM_ASSEMBLE_PATH}"
-        )
-
-    def test_s1_prompt_injection_section_present(self, command_text: str) -> None:
-        assert "Prompt-injection safeguards (mandatory for README-probe" in command_text
-
-    def test_s1_untrusted_wrapper_tag_documented(self, command_text: str) -> None:
-        assert "<untrusted_readme_excerpt>" in command_text
-
-    def test_s1_refusal_triggers_documented(self, command_text: str) -> None:
-        assert "Refusal triggers" in command_text
-        for phrase in ("ignore previous", "system:", "You are now"):
-            assert phrase in command_text, f"missing refusal trigger phrase: {phrase!r}"
-
-    def test_s3_secret_redaction_rule_present(self, command_text: str) -> None:
-        assert "Secret-redaction rule (mandatory)" in command_text
-        assert "private npm registries" in command_text
-
-    def test_p5_debug_team_exclusion_present(self, command_text: str) -> None:
-        assert "Debug-team exclusion rule" in command_text
-        assert "Mode-A exclusion filter" in command_text
-
-    def test_tier_0_session_cache_present(self, command_text: str) -> None:
-        """Fix 1 regression guard: caching instructions survive future edits."""
-        assert "Tier 0 — Cache lookup" in command_text
-        assert "/tmp/team-assemble-cache/" in command_text
-        assert "manifest_mtimes" in command_text
-        assert "--no-cache" in command_text
-        assert "900 seconds" in command_text or "15 minutes" in command_text
-
-    def test_non_english_handling_documented(self, command_text: str) -> None:
-        """Fix 3 regression guard: Tier 4 non-English rules survive future edits."""
-        assert "Non-English handling" in command_text
-        assert "language_hint" in command_text
-        assert "non-latin" in command_text
-        assert "very_low" in command_text
-
-    def test_all_25_teams_have_template_section(self, command_text: str) -> None:
-        start = command_text.find("## Step 3: Team Templates")
-        end = command_text.find("## Step 4:")
-        assert start != -1 and end != -1, "Step 3/4 section boundaries not found"
-        templates = command_text[start:end]
-        section_count = sum(
-            1 for line in templates.splitlines() if line.startswith("### ")
-        )
-        assert section_count == 10, f"expected 10 team templates, found {section_count}"
-
-    def test_all_25_teams_have_signal_row(self, command_text: str) -> None:
-        start = command_text.find("## Step 2.5: Signal → Team Mapping")
-        end = command_text.find("## Step 2.6:")
-        assert start != -1 and end != -1, "Step 2.5/2.6 section boundaries not found"
-        section = command_text[start:end]
-        row_count = 0
-        for line in section.splitlines():
-            stripped = line.lstrip()
-            if not stripped.startswith("|"):
-                continue
-            cells = [c.strip() for c in stripped.strip("|").split("|")]
-            if cells and cells[0].isdigit():
-                row_count += 1
-        assert row_count == 10, f"expected 10 signal table rows, found {row_count}"
 
 
 # ---------------------------------------------------------------------------

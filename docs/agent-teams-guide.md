@@ -1,6 +1,6 @@
 # Agent Teams Guide for MyClaude Plugin Suites
 
-> 10 ready-to-use team configurations with 20 variants, leveraging 25 MyClaude agents + 18 official plugin agents across 4 suites.
+> 10 ready-to-use team configurations with 20 variants, leveraging 22 MyClaude agents + 18 official plugin agents across 3 suites.
 >
 > **v3.3.0:** Consolidated from 27 teams to 10 teams with a variant system (`--var MODE=x`). Zero function loss — every capability from every absorbed team is reachable via a variant. 20 aliases provide backward compatibility.
 
@@ -21,9 +21,6 @@ Enable agent teams (experimental) in your settings:
 
 | Suite | Agent | `subagent_type` | Specialization |
 |-------|-------|-----------------|----------------|
-| **agent-core** | orchestrator | `agent-core:orchestrator` | Workflow coordination, team assembly |
-| | reasoning-engine | `agent-core:reasoning-engine` | Chain-of-Thought, prompt design |
-| | context-specialist | `agent-core:context-specialist` | Memory, context management |
 | **dev** | software-architect | `dev-suite:software-architect` | Backend, API, microservices |
 | | app-developer | `dev-suite:app-developer` | Frontend, mobile, React/Next.js |
 | | systems-engineer | `dev-suite:systems-engineer` | C/C++/Rust, CLI tools, low-level |
@@ -330,16 +327,13 @@ Build production AI applications -- RAG systems, LLM-powered apps, multi-agent o
 
 ### Agents (by variant)
 
-| Variant | MODE | Agent 1 | Agent 2 | Agent 3 | Agent 4 |
-|---------|------|---------|---------|---------|---------|
-| *default* (llm-app) | -- | `science-suite:sci-workflow-engineer` | `agent-core:context-specialist` | `dev-suite:software-architect` | `science-suite:python-pro` |
-| multi-agent | `multi-agent` | `agent-core:orchestrator` | `agent-core:reasoning-engine` | `agent-core:context-specialist` | `science-suite:sci-workflow-engineer` |
+| Variant | MODE | Agent 1 | Agent 2 | Agent 3 |
+|---------|------|---------|---------|---------|
+| *default* (llm-app) | -- | `science-suite:sci-workflow-engineer` | `dev-suite:software-architect` | `science-suite:python-pro` |
 
 ### Variant Details
 
-**Default (LLM app):** Build RAG systems, LLM-powered apps, and tool-use agents. Sci-workflow-engineer designs the core pipeline (ingestion, chunking, embedding, retrieval, LLM orchestration, prompt templates, evaluation). Context-specialist handles memory systems, token budget, prompt caching, and knowledge persistence. Software-architect builds streaming API endpoints, caching, and observability. Python-pro handles Python systems integration.
-
-**Multi-Agent (`--var MODE=multi-agent`):** Build multi-agent orchestration systems with 2+ coordinated agents. Orchestrator designs the agent topology (hub-spoke, pipeline, blackboard), task decomposition, and coordination protocol. Reasoning-engine reviews agent prompts for chain-of-thought quality and error recovery. Context-specialist implements shared memory, context passing, and knowledge persistence. Sci-workflow-engineer builds the agent runtime with tool definitions, LLM pipeline design, and evaluation frameworks.
+**Default (LLM app):** Build RAG systems, LLM-powered apps, and tool-use agents. Sci-workflow-engineer designs the core pipeline (ingestion, chunking, embedding, retrieval, LLM orchestration, prompt templates, evaluation). Software-architect builds streaming API endpoints, caching, and observability. Python-pro handles Python systems integration.
 
 ### Placeholders
 
@@ -347,7 +341,7 @@ Build production AI applications -- RAG systems, LLM-powered apps, multi-agent o
 
 ### Aliases
 
-`llm-app` -> `ai-engineering`, `multi-agent` -> `ai-engineering --var MODE=multi-agent`
+`llm-app` -> `ai-engineering`
 
 ### Signals
 
@@ -398,13 +392,13 @@ Documentation overhaul and reproducible research infrastructure.
 | Variant | MODE | Agent 1 | Agent 2 | Agent 3 | Agent 4 |
 |---------|------|---------|---------|---------|---------|
 | *default* (docs) | -- | `dev-suite:documentation-expert` | `dev-suite:software-architect` | `science-suite:research-expert` | `science-suite:python-pro` |
-| research | `research` | `science-suite:research-expert` | `agent-core:context-specialist` | `science-suite:python-pro` | `dev-suite:automation-engineer` |
+| research | `research` | `science-suite:research-expert` | `science-suite:python-pro` | `dev-suite:automation-engineer` | |
 
 ### Variant Details
 
 **Default (docs):** Comprehensive documentation overhaul. Documentation-expert designs the information architecture following Diataxis (tutorials, how-tos, reference, explanation) and sets up Sphinx/MkDocs. Software-architect reviews technical accuracy by cross-referencing source code. Research-expert creates interactive tutorials, Jupyter notebooks, and Sphinx gallery examples. Python-pro structures the project as an installable package with proper CI. Goal: every public API must have docstring + reference page + example.
 
-**Research (`--var MODE=research`):** Reproducible research infrastructure bridging science-suite and agent-core. Research-expert defines reproducibility requirements: experiment tracking, artifact versioning, data provenance. Context-specialist implements research knowledge graphs, paper reference management, and cross-project context sharing. Python-pro builds experiment runners, artifact storage (HDF5/Arrow), and CLI tools. Automation-engineer wires automated experiment scheduling, notebook execution, and reproducibility CI.
+**Research (`--var MODE=research`):** Reproducible research infrastructure for science-suite. Research-expert defines reproducibility requirements: experiment tracking, artifact versioning, data provenance. Python-pro builds experiment runners, artifact storage (HDF5/Arrow), and CLI tools. Automation-engineer wires automated experiment scheduling, notebook execution, and reproducibility CI.
 
 ### Placeholders
 

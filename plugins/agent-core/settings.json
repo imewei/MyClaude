@@ -1,9 +1,0 @@
-{
-  "skillListingBudgetFraction": 0.08,
-  "defaults": {
-    "model": "sonnet",
-    "effort": "high",
-    "memory": "project",
-    "maxTurns": 40
-  }
-}

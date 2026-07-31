@@ -15,7 +15,6 @@ REPO = Path(__file__).parent.parent.parent
 PLUGINS = REPO / "plugins"
 SCIENCE = PLUGINS / "science-suite"
 RESEARCH = PLUGINS / "research-suite"
-AGENT_CORE = PLUGINS / "agent-core"
 DEV_SUITE = PLUGINS / "dev-suite"
 
 
@@ -176,8 +175,8 @@ class TestResearchSuiteCommands:
 
 class TestManifests:
     @pytest.mark.parametrize("suite_dir", [
-        AGENT_CORE, DEV_SUITE, RESEARCH, SCIENCE
-    ], ids=["agent-core", "dev-suite", "research-suite", "science-suite"])
+        DEV_SUITE, RESEARCH, SCIENCE
+    ], ids=["dev-suite", "research-suite", "science-suite"])
     def test_version_is_351(self, suite_dir):
         plugin = _plugin_json(suite_dir)
         assert plugin["version"] == "3.5.2", \
@@ -231,10 +230,3 @@ class TestInfrastructure:
         p = REPO / ".claudeignore"
         assert p.exists(), ".claudeignore missing"
         assert "__pycache__" in p.read_text()
-
-    def test_pre_compact_has_priority_skills(self):
-        script = (AGENT_CORE / "hooks/pre_compact.py").read_text()
-        assert "PRIORITY_SKILLS" in script, \
-            "pre_compact.py must define PRIORITY_SKILLS list"
-        assert "jax-computing" in script
-        assert "simulation-and-hpc" in script

@@ -15,7 +15,7 @@ uv run pytest tools/tests/ -v
 python3 tools/validation/context_budget_checker.py
 
 # Validate a single plugin
-python3 tools/validation/metadata_validator.py plugins/agent-core
+python3 tools/validation/metadata_validator.py plugins/dev-suite
 ```
 
 ## Directory Structure
@@ -209,7 +209,6 @@ uv run pytest tools/tests/ --cov=tools -v
 
 | Test File | Scope |
 |-----------|-------|
-| `test_agent_core_integrity.py` | agent-core plugin structure and metadata |
 | `test_dev_suite_integrity.py` | dev-suite plugin structure and metadata |
 | `test_science_suite_integrity.py` | science-suite plugin structure and metadata |
 | `test_science_suite_functionality.py` | science-suite agent/skill functional checks |

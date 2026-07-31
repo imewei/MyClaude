@@ -82,7 +82,7 @@ Organized by domain:
 
 ## Integration / Workflow
 
-Science Suite agents primarily collaborate within the suite (e.g., `simulation-expert` delegates to `jax-pro` for JAX-MD kernels, `neural-network-master` delegates to `julia-ml-hpc` for Lux.jl implementations). Cross-suite, science-suite delegates *up* to `agent-core/orchestrator` for multi-agent work and *out* to `research-suite` for methodology (power analysis, IMRaD writing, peer review). See `docs/integration-map.rst` for the full delegation graph.
+Science Suite agents primarily collaborate within the suite (e.g., `simulation-expert` delegates to `jax-pro` for JAX-MD kernels, `neural-network-master` delegates to `julia-ml-hpc` for Lux.jl implementations). Cross-suite, science-suite delegates *out* to `research-suite` for methodology (power analysis, IMRaD writing, peer review). See `docs/integration-map.rst` for the full delegation graph.
 
 ## Installation
 

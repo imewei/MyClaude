@@ -1,6 +1,6 @@
 # Command Reference
 
-**17 Registered Commands** | **19 Skill-Invoked Commands** | **Version:** 3.5.2
+**15 Registered Commands** | **19 Skill-Invoked Commands** | **Version:** 3.5.2
 
 Commands fall into two categories:
 - **Registered commands** are declared in `plugin.json` and available as user-facing `/slash-commands`.
@@ -9,13 +9,6 @@ Commands fall into two categories:
 ---
 
 ## Registered Commands
-
-### Agent Core Suite (`agent-core`) — 2 Commands
-
-| Command | Description |
-|---------|-------------|
-| `/ultra-think` | Comprehensive analysis with full reasoning framework execution |
-| `/team-assemble` | Generate ready-to-use agent team configurations from pre-built templates |
 
 ### Dev Suite (`dev-suite`) — 10 Commands
 

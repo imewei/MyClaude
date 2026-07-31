@@ -1,20 +1,8 @@
 # Agent Reference
 
-**25 Agents** across 4 suites | **Version:** 3.5.2
+**22 Agents** across 3 suites | **Version:** 3.5.2
 
 Agents are specialized AI personas with defined model tiers, tool access, and domain expertise. Each agent runs at a specific model tier: **opus** (deep reasoning), **sonnet** (standard tasks), or **haiku** (fast/simple).
-
----
-
-## Agent Core Suite (`agent-core`) — 3 Agents
-
-Core orchestration, reasoning, and context engineering.
-
-| Agent | Model | Description |
-|-------|-------|-------------|
-| `orchestrator` | opus | Multi-agent orchestrator for workflow coordination, agent team assembly, and task allocation |
-| `reasoning-engine` | opus | Advanced reasoning, prompt design, and cognitive tasks. Masters Chain-of-Thought and structured frameworks |
-| `context-specialist` | opus | Context engineering specialist for dynamic context management, vector databases, and memory systems |
 
 ---
 

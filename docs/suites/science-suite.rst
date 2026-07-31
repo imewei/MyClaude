@@ -276,7 +276,7 @@ Scientific software engineering, specialized computational domains, and autonomo
 - ``computer-vision`` — Image processing, detection, Vision Transformers
 - ``reinforcement-learning`` — Gymnasium, Stable-Baselines3, RLlib
 - ``symbolic-math`` — SymPy, CAS, algebraic solvers
-- ``self-improving-ai`` — Research overview for autonomous self-improvement (research-framework counterpart to agent-core's self-improving-agents)
+- ``self-improving-ai`` — Research overview for autonomous self-improvement
 - ``dspy-basics`` — Depth-skill companion for DSPy programmatic prompt optimization
 - ``rlaif-training`` — Depth-skill companion for Constitutional AI / RLAIF / DPO
 

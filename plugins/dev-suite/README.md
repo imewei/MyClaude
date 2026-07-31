@@ -105,9 +105,8 @@ Covers the complete SDLC:
 Dev Suite agents delegate across specializations automatically: `debugger-pro` hands off to
 `sre-expert` for reliability issues, `software-architect` delegates to `devops-architect` for
 infrastructure, `quality-specialist` coordinates with `systems-engineer` on low-level review.
-Cross-suite, dev-suite delegates *up* to `agent-core/orchestrator` for multi-agent coordination
-and *out* to `science-suite` when ML/DL/physics expertise is needed. See
-`docs/integration-map.rst` for the full delegation graph.
+Cross-suite, dev-suite delegates *out* to `science-suite` when ML/DL/physics expertise is needed.
+See `docs/integration-map.rst` for the full delegation graph.
 
 ## Installation
 

@@ -1,6 +1,6 @@
 ---
 name: llm-and-ai
-description: Meta-orchestrator for LLM integration into scientific workflows and AI engineering. Routes to scientific RAG pipelines, LLM-powered discovery, LLM evaluation, LangChain, and NLP for research. Use when building LLM tools for scientists, evaluating model outputs for scientific workflows, implementing RAG over scientific corpora, or integrating LLMs with experiments and numerical code. For general prompt engineering, MCP integration, safety guardrails, or non-scientific RAG, use agent-core llm-engineering hub.
+description: Meta-orchestrator for LLM integration into scientific workflows and AI engineering. Routes to scientific RAG pipelines, LLM-powered discovery, LLM evaluation, LangChain, and NLP for research. Use when building LLM tools for scientists, evaluating model outputs for scientific workflows, implementing RAG over scientific corpora, or integrating LLMs with experiments and numerical code.
 ---
 
 # LLM and AI
@@ -73,8 +73,6 @@ What is the LLM / AI task?
 - [ ] Use routing tree to select the most specific sub-skill
 - [ ] Define evaluation metrics before building the application
 - [ ] Prototype prompts with `prompt-engineering-patterns` before full implementation
-
-> For prompt engineering patterns, chain-of-thought design, and MCP integration, see `agent-core:llm-engineering`.
 - [ ] Benchmark RAG retrieval recall before optimizing generation
 - [ ] Validate LLM outputs against ground truth with `llm-evaluation`
 - [ ] Use structured outputs (JSON mode / function calling) to reduce parsing failures

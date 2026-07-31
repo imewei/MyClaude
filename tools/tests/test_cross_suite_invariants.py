@@ -19,13 +19,12 @@ import yaml  # type: ignore
 
 REPO_ROOT = Path(__file__).parent.parent.parent
 PLUGINS_ROOT = REPO_ROOT / "plugins"
-SUITES = ["agent-core", "dev-suite", "science-suite"]
+SUITES = ["dev-suite", "science-suite"]
 
 VALID_MODEL_TIERS = {"opus", "sonnet", "haiku", "inherit"}
 
 # Expected registered command counts per CLAUDE.md
 EXPECTED_REGISTERED_COMMANDS = {
-    "agent-core": 2,
     "dev-suite": 10,
     "science-suite": 2,
 }
