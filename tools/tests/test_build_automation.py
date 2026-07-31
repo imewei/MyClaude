@@ -200,7 +200,7 @@ class TestCrossReferences(unittest.TestCase):
 
         rst_files = list(plugins_dir.glob("*.rst"))
 
-        # Should have 3 suite pages (agent-core, dev-suite, science-suite)
+        # Should have at least 3 suite pages (dev-suite, science-suite, research-suite)
         self.assertGreaterEqual(
             len(rst_files),
             3,

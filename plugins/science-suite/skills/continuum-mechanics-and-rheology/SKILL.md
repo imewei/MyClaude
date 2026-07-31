@@ -70,6 +70,7 @@ What is the continuum-mechanics task?
 | WLF equation, master curves | `science-suite:harmonic-response-superposition` |
 | Vitrimer, bond exchange, sticky Rouse | `science-suite:transient-networks-and-can` |
 | Halpin-Tsai, Mori-Tanaka, percolation | `science-suite:nanocomposites-and-adaptive-materials` |
+| Mesh-connectivity graph representations, spectral graph theory | `science-suite:graph-theory` |
 
 ## Checklist
 

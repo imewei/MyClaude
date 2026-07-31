@@ -528,7 +528,7 @@ All 19 aliases for backward compatibility with previous team names:
 6. **Prefer Sonnet** for most teammates (cost-effective); use Opus for architecture/design decisions
 7. **Avoid file conflicts** -- ensure each teammate owns distinct directories
 8. **Use variants** (`--var MODE=x`) to specialize a team without remembering separate team names
-9. **Use aliases** when you remember the old name -- `/team-assemble bayesian` resolves to `sci-compute --var MODE=bayesian` automatically
+9. **Use the alias table above** as a naming-migration reference if you remember an old team name
 10. **Default variants** (no MODE) cover 80% of use cases -- variants are optional specializations
 
 ## References

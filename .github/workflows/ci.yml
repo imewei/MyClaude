@@ -82,9 +82,9 @@ jobs:
 
       - name: Validate plugin metadata
         run: |
-          python3 tools/validation/metadata_validator.py plugins/agent-core
-          python3 tools/validation/metadata_validator.py plugins/dev-suite
-          python3 tools/validation/metadata_validator.py plugins/science-suite
+          for plugin in plugins/*/; do
+            python3 tools/validation/metadata_validator.py "${plugin%/}"
+          done
 
       - name: Check skill context budget
         run: python3 tools/validation/context_budget_checker.py
