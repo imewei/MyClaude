@@ -5,6 +5,9 @@ description: Stage 2 of the research-spark pipeline. Conducts a structured three
 
 # landscape-scanner
 
+> **SEE ALSO:** For general multi-source research synthesis outside an active research-spark project, use `ruflo-goals:deep-researcher` or `ruflo-goals:research-synthesize`.
+> Use this skill for Stage 2 of the research-spark pipeline specifically — the three-layer scan, steelmanning, and Reviewer 2 pass tied to that pipeline's artifact contract.
+
 Stage 2. Three-layer literature scan with mandatory steelmanning and an adversarial reviewer pass.
 
 ## Why this stage exists and why it is structured this way
