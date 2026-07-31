@@ -81,8 +81,6 @@ my-package/
 | `flit` | Pure-Python packages with minimal metadata. |
 | `maturin` | Rust extensions — see [Rust Extensions](../rust-extensions/SKILL.md). |
 
-Use `hatchling` as the build backend for modern performance.
-
 ```toml
 [build-system]
 requires = ["hatchling"]
