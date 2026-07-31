@@ -211,7 +211,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: astral-sh/setup-uv@v2
+      - uses: astral-sh/setup-uv@v5
         with: { enable-cache: true }
       - run: uv python install 3.12
       - run: uv sync --frozen --all-extras
@@ -223,8 +223,9 @@ FROM python:3.12-slim
 COPY --from=ghcr.io/astral-sh/uv:latest /uv /usr/local/bin/uv
 WORKDIR /app
 COPY pyproject.toml uv.lock ./
-RUN uv sync --frozen --no-dev          # cached layer: deps only
+RUN uv sync --frozen --no-install-project --no-dev   # cached layer: deps only
 COPY . .
+RUN uv sync --frozen --no-dev                        # now install the project itself
 CMD ["uv", "run", "python", "-m", "science_tool"]
 ```
 
