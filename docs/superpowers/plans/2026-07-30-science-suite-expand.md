@@ -10,7 +10,7 @@
 
 ## Global Constraints
 
-- Scope is `plugins/science-suite/` only, plus the one confirmed cross-reference fix in `research-and-domains/SKILL.md`. Do not touch `plugins/dev-suite/` deletions (that's the sibling trim plan's Task 8) or `plugins/research-suite/` (separate plan). (Spec §2)
+- Scope is `plugins/science-suite/` only, plus the two repo-wide reference docs Task 10 updates per spec §10 (`docs/suites/science-suite.rst`, `docs/agent-teams-guide.md` — these describe science-suite's public surface, they aren't another suite's plugin content). The `research-and-domains/SKILL.md` cross-reference fix (Task 8) is already inside `plugins/science-suite/`, not a separate exception. Do not touch `plugins/dev-suite/` deletions (that's the sibling trim plan's Task 8) or `plugins/research-suite/` (separate plan). (Spec §2, §10)
 - This plan's Task 8 (Python-tooling consolidation) must complete and be committed **before** the trim plan's Task 8 runs (which deletes the source directories this task reads from). Coordinate execution order across the two plans — this plan's Task 8 has no dependency on anything in the trim plan, so it's safe to run first.
 - Every new hub skill/sub-skill follows this repo's convention: only top-level hubs go in `plugin.json`'s `skills` array; sub-skills are discovered via the hub's own routing table. (Root CLAUDE.md)
 - Target ≤4,000 tokens (~3,000 words) per skill file — the repo's 200K-context 2% budget. Check with `context_budget_checker.py` after adding each new file.
@@ -25,7 +25,7 @@
 - Modify: `plugins/science-suite/README.md` (description framing, agent tier table, command count, hub/sub-skill count)
 
 **Interfaces:**
-- Produces: no `opus-4.7` string anywhere in `plugins/science-suite/`; README's agent tier table and summary counts match the actual current (pre-this-plan) state as a starting point — later tasks in this plan will update the counts again as they add content.
+- Produces: no `opus-4.7` string anywhere in `plugins/science-suite/`; README's per-agent tier labels (`jax-pro`/`julia-pro`/`ml-expert` rows) are corrected to the actual current state. The agent-count/opus-sonnet-split summary line (`README.md:7`, "11 specialized agents (4 opus, 7 sonnet)") is deliberately NOT touched in this task — it's already wrong today (actual current split is 6 opus/4 sonnet/1 haiku) and will change again once Tasks 2-3 land, so Task 10 corrects it once, to the final post-plan numbers, instead of twice.
 
 - [ ] **Step 1: Confirm current README staleness**
 
@@ -898,7 +898,7 @@ In `## Routing Table`, add:
 
 - [ ] **Step 5: Update the description field**
 
-Append to the end of the `description` block (before the closing quote/dash): `; continuum mechanics/FEM/FEA/constitutive equations/DMA/rheology/transient networks/vitrimers/nanocomposites`.
+Append to the end of the `description` block (before the closing quote/dash): `; continuum-mechanics/FEM/FEA/constitutive equations/DMA/rheology/transient networks/vitrimers/nanocomposites`. Use the hyphenated form `continuum-mechanics` (not "continuum mechanics") so it counts toward Step 6's grep verification below.
 
 - [ ] **Step 6: Verify**
 
@@ -1091,19 +1091,21 @@ EOF
 
 **Files:**
 - Create: `plugins/science-suite/skills/graph-theory/SKILL.md`
-- Modify: `plugins/science-suite/skills/nonlinear-dynamics/SKILL.md` (routing reference — this hub covers `network-coupled-dynamics`, confirm exact sub-skill location before editing)
+- Modify: `plugins/science-suite/skills/network-coupled-dynamics/SKILL.md` (routing reference — this is its own standalone skill file; `nonlinear-dynamics/SKILL.md` is a separate hub that only links to it from a routing table, it does not contain the content)
+- Modify: `plugins/science-suite/skills/neural-network-mathematics/SKILL.md` (routing reference — spec §7 requires wiring from this hub too; it currently has zero graph-theory/spectral content)
 
 **Interfaces:**
-- Produces: `graph-theory` is a discoverable sub-skill (not registered in `plugin.json`), referenced from at least 2 existing hubs (`continuum-mechanics-and-rheology` already references it from Task 4's Step 1/2 content).
+- Produces: `graph-theory` is a discoverable sub-skill (not registered in `plugin.json`), referenced from at least 4 existing hubs (`continuum-mechanics-and-rheology` and `fem-fea` already reference it from Task 4's content; `network-coupled-dynamics` and `neural-network-mathematics` wired in this task per spec §7).
 
-- [ ] **Step 1: Locate the exact home of network-coupled-dynamics content**
+- [ ] **Step 1: Confirm network-coupled-dynamics and neural-network-mathematics are the wiring targets**
 
 ```bash
 cd /home/wei/Documents/GitHub/MyClaude
 find plugins/science-suite/skills -iname "*network-coupled*"
 grep -rl "network-coupled-dynamics" plugins/science-suite/skills/*/SKILL.md
+grep -c "graph-theory\|Laplacian\|spectral" plugins/science-suite/skills/neural-network-mathematics/SKILL.md
 ```
-Expected: confirms whether `network-coupled-dynamics` is its own top-level skill directory or a section within another file (e.g. `nonlinear-dynamics`). Use whichever is confirmed as the target for Step 3.
+Expected: confirms `network-coupled-dynamics` is its own top-level skill directory (`plugins/science-suite/skills/network-coupled-dynamics/SKILL.md`) — `nonlinear-dynamics/SKILL.md` only links to it from a routing table, so Step 3a edits `network-coupled-dynamics/SKILL.md` directly, not `nonlinear-dynamics/SKILL.md`. The `neural-network-mathematics` grep should show no existing graph-theory/spectral content (if the repo has changed and it already has some, adapt Step 3b's wording accordingly rather than duplicating it).
 
 - [ ] **Step 2: Create the graph-theory skill**
 
@@ -1151,11 +1153,18 @@ Consulted by multiple agents depending on the application: `neural-network-maste
 This skill is deliberately thin — it holds the shared mathematical vocabulary so the 4 application-specific agents above don't each re-explain spectral graph theory independently. Route here first when a question is about the graph structure itself, then to the application-specific agent for what to do with it.
 ```
 
-- [ ] **Step 3: Wire into the network-dynamics hub**
+- [ ] **Step 3a: Wire into network-coupled-dynamics**
 
-Based on Step 1's finding, add one line to the relevant file (either `plugins/science-suite/skills/nonlinear-dynamics/SKILL.md` if `network-coupled-dynamics` is a section there, or the standalone `network-coupled-dynamics/SKILL.md` if it's its own file) referencing `science-suite:graph-theory` for the underlying spectral-graph-theory formalism, e.g.:
+Read `plugins/science-suite/skills/network-coupled-dynamics/SKILL.md`. Add, near its existing "Graph Laplacian Construction" section:
 ```markdown
-For the underlying spectral graph theory (Laplacian eigenvalues, algebraic connectivity), see `science-suite:graph-theory`.
+For the underlying spectral graph theory (Laplacian eigenvalues, algebraic connectivity, Fiedler vector), see `science-suite:graph-theory`.
+```
+
+- [ ] **Step 3b: Wire into neural-network-mathematics**
+
+Read `plugins/science-suite/skills/neural-network-mathematics/SKILL.md` (spec §7 explicitly requires this hub as a wiring target, alongside `network-coupled-dynamics`). Add, near its existing linear-algebra/spectral content:
+```markdown
+For the graph-theoretic foundations underlying GNN message passing (adjacency/Laplacian matrices, spectral graph theory), see `science-suite:graph-theory`.
 ```
 
 - [ ] **Step 4: Confirm the continuum-mechanics-and-rheology reference from Task 4 resolves**
@@ -1173,20 +1182,21 @@ PYTHONPATH=. python3 tools/validation/skill_validator.py plugins/science-suite 2
 PYTHONPATH=. python3 tools/validation/context_budget_checker.py 2>&1 | grep "graph-theory"
 grep -rc "science-suite:graph-theory" plugins/science-suite/skills/*/SKILL.md | grep -v ":0" | wc -l
 ```
-Expected: no validator errors; `graph-theory` passes the context budget; at least `3` files reference it (`continuum-mechanics-and-rheology`, `fem-fea` from Task 4, plus the network-dynamics file from Step 3).
+Expected: no validator errors; `graph-theory` passes the context budget; at least `4` files reference it (`continuum-mechanics-and-rheology` and `fem-fea` from Task 4, `network-coupled-dynamics` from Step 3a, `neural-network-mathematics` from Step 3b).
 
 - [ ] **Step 6: Commit**
 
 ```bash
 git add plugins/science-suite/skills/graph-theory/
-git status --short plugins/science-suite/skills/nonlinear-dynamics/ plugins/science-suite/skills/network-coupled-dynamics/ 2>/dev/null
-git add -u
+git add plugins/science-suite/skills/network-coupled-dynamics/SKILL.md plugins/science-suite/skills/neural-network-mathematics/SKILL.md
 git commit -m "$(cat <<'EOF'
 feat(science-suite): add graph-theory skill, wire into GNN/network/FEM hubs
 
 Cross-cutting spectral-graph-theory vocabulary shared by GNN architecture
-work, coupled-oscillator synchronization analysis, and FEM mesh
-connectivity -- added as a sub-skill, not a new top-level hub.
+work (neural-network-mathematics), coupled-oscillator synchronization
+analysis (network-coupled-dynamics), and FEM mesh connectivity -- added
+as a sub-skill, not a new top-level hub. Wires all 3 hubs named in spec
+section 7, not just the network-dynamics one.
 
 Co-Authored-By: Claude Sonnet 5 <noreply@anthropic.com>
 EOF
@@ -1305,9 +1315,13 @@ EOF
 - Modify: `plugins/science-suite/skills/point-processes/SKILL.md` (or wherever the `PointProcesses.jl` recommendation lives — confirm exact filename first)
 - Check (no guaranteed edit): `plugins/science-suite/skills/julia-hpc-distributed/SKILL.md` (or `parallel-computing/SKILL.md`) for `SequentialMonteCarlo` mentions
 - Check (no guaranteed edit): any Flux.jl recommendation for new SciML neural closures
+- Modify: `plugins/science-suite/skills/consensus-mcmc-pigeons/SKILL.md` (Pigeons DEV override / DynamicPPL v0.40 accuracy check — spec §9)
+- Modify: `plugins/science-suite/skills/modeling-toolkit/SKILL.md` (MTK v9/v11 split accuracy check — spec §9)
+- Check (no guaranteed edit): `plugins/science-suite/skills/sciml-modern-stack/SKILL.md` — this file's own header marks it FROZEN at 78% context budget ("Do not add new content"); route any correction to `modeling-toolkit` instead, don't add to this file
+- Modify: `plugins/science-suite/skills/julia-graph-neural-networks/SKILL.md` (GNNLux/GNNGraphs/GNNlib DEV-override accuracy check — spec §9)
 
 **Interfaces:**
-- Produces: zero recommendations of `BifurcationKit` as "Recommended" for the `juliacall` escape hatch; zero unhedged `PointProcesses.jl` recommendations; zero `SequentialMonteCarlo` recommendations in multi-package Julia envs; zero Flux.jl recommendations for new SciML neural closures (Lux.jl only).
+- Produces: zero recommendations of `BifurcationKit` as "Recommended" for the `juliacall` escape hatch; zero unhedged `PointProcesses.jl` recommendations; zero `SequentialMonteCarlo` recommendations in multi-package Julia envs; zero Flux.jl recommendations for new SciML neural closures (Lux.jl only); `consensus-mcmc-pigeons` states the Pigeons DEV override (PR #409, `4d981068`) / DynamicPPL v0.40 pairing; `modeling-toolkit` states the MTK v9 (`@sciml`/`@bayes`) vs MTK v11 (`@pinn`) split; `julia-graph-neural-networks` states the GNNLux/GNNGraphs/GNNlib DEV-override-against-monorepo-master status.
 
 - [ ] **Step 1: Fix bifurcation-analysis.md's BifurcationKit recommendation**
 
@@ -1379,19 +1393,65 @@ Read each hit's context. `julia-ml-hpc.md`'s own description explicitly says "Lu
 
 Verify: re-run the same grep after any fix and confirm remaining hits are legitimate (general ML context, not new-SciML-closure context).
 
-- [ ] **Step 6: Commit**
+- [ ] **Step 6: Check Pigeons DEV override / DynamicPPL v0.40 accuracy (spec §9)**
+
+```bash
+cd /home/wei/Documents/GitHub/MyClaude
+grep -n "Pigeons\|PR #409\|4d981068\|DynamicPPL" plugins/science-suite/skills/consensus-mcmc-pigeons/SKILL.md plugins/science-suite/skills/turing-model-design/SKILL.md
+```
+Read `consensus-mcmc-pigeons/SKILL.md`. Per this repo's global CLAUDE.md (§2b), the `@bayes` env runs a Pigeons DEV override (PR #409, commit `4d981068`) paired with DynamicPPL v0.40 — the skill currently states neither, so a reader could assume a stock released Pigeons version. Add a brief note (e.g. near the top, alongside the existing "When to use Pigeons" framing) stating this skill targets the `@bayes` env's Pigeons DEV override / DynamicPPL v0.40 pairing, not a released Pigeons version, since a DEV branch's API can drift from the last tagged release. Do not fabricate detail beyond what CLAUDE.md states.
+
+Verify:
+```bash
+grep -c "DEV override\|4d981068\|DynamicPPL v0.40\|@bayes" plugins/science-suite/skills/consensus-mcmc-pigeons/SKILL.md
+```
+Expected: at least `1`.
+
+- [ ] **Step 7: Check MTK v9/v11 split accuracy (spec §9)**
+
+```bash
+cd /home/wei/Documents/GitHub/MyClaude
+grep -n "v9\|v11\|@sciml\|@bayes\|@pinn\|Symbolics" plugins/science-suite/skills/modeling-toolkit/SKILL.md
+```
+Read `modeling-toolkit/SKILL.md`. Per CLAUDE.md §2b, MTK content spans two incompatible generations: MTK v9/Symbolics v6 in `@sciml`/`@bayes`, and MTK v11/Symbolics v7 in `@pinn` (isolated because NeuralPDE needs the newer MTK). The skill currently names neither version, so a reader could assume one MTK version applies everywhere. Add a short note (e.g. after the intro paragraph) naming both versions and which env each lives in. Do NOT add this to `sciml-modern-stack/SKILL.md` — its own header marks it FROZEN at 78% context budget ("Do not add new content"); leave that file alone even though it also touches the Lux/SciML stack.
+
+Verify:
+```bash
+grep -c "MTK v9\|MTK v11\|@pinn" plugins/science-suite/skills/modeling-toolkit/SKILL.md
+```
+Expected: at least `1`.
+
+- [ ] **Step 8: Check GNNLux/GNNGraphs/GNNlib DEV-override accuracy (spec §9)**
+
+```bash
+cd /home/wei/Documents/GitHub/MyClaude
+grep -n "GNNLux\|GNNGraphs\|GNNlib\|monorepo\|DEV override" plugins/science-suite/skills/julia-graph-neural-networks/SKILL.md
+```
+Read `julia-graph-neural-networks/SKILL.md`. Per CLAUDE.md §2b, the `@gnn` env runs GNNLux/GNNGraphs/GNNlib as DEV overrides against the monorepo `master` (commit `493a3f8`), not released versions — the skill currently presents them as ordinary packages with no such caveat. Add a brief note (e.g. near the existing "Package layering" section) stating these are DEV-override dependencies tracking monorepo master, so API details may drift from the last tagged release.
+
+Verify:
+```bash
+grep -c "DEV override\|monorepo master\|493a3f8" plugins/science-suite/skills/julia-graph-neural-networks/SKILL.md
+```
+Expected: at least `1`.
+
+- [ ] **Step 9: Commit**
 
 ```bash
 git add -u plugins/science-suite/
 git commit -m "$(cat <<'EOF'
-fix(science-suite): correct prohibited-package recommendations
+fix(science-suite): correct prohibited-package recommendations and
+accuracy-audit staleness
 
 bifurcation-analysis and julia-pro both recommended BifurcationKit as
 primary despite it being blocked on Julia 1.12 (MiniQhull build failure) --
 demoted in favor of the already-documented AUTO-07p fallback.
 point-processes lacked the required PointProcesses.jl unavailability
 caveat. Checked for SequentialMonteCarlo and Flux-for-new-SciML-closures
-per CLAUDE.md's prohibited list.
+per CLAUDE.md's prohibited list. Also covers the 3 remaining spec section 9
+audit items: Pigeons DEV override/DynamicPPL v0.40 (consensus-mcmc-pigeons),
+MTK v9/v11 split (modeling-toolkit), and GNNLux/GNNGraphs/GNNlib DEV
+overrides against monorepo master (julia-graph-neural-networks).
 
 Co-Authored-By: Claude Sonnet 5 <noreply@anthropic.com>
 EOF
@@ -1404,8 +1464,8 @@ EOF
 
 **Files:**
 - Modify: `plugins/science-suite/README.md` (finalize agent count, hub/sub-skill counts, command count)
-- Modify: `docs/suites/science-suite.rst` (add `continuum-mechanics-engineer` `.. agent::` entry, fix "11 Agents ... 17 Hubs → 110 Sub-skills" summary line)
-- Modify: `docs/agent-teams-guide.md` (add `continuum-mechanics-engineer` to its per-agent routing table)
+- Modify: `docs/suites/science-suite.rst` (add `continuum-mechanics-engineer` `.. agent::` entry; sync `simulation-expert`/`pinn-engineer` `:model:` fields with Task 2's swap; fix the "11 Agents ... 17 Hubs → 110 Sub-skills" summary line; fix the separately-stale "14 hubs routing to 112 sub-skills. Optimized for Claude Opus 4.7" sentence near the top of the file)
+- Modify: `docs/agent-teams-guide.md` (add `continuum-mechanics-engineer` to the science-suite rows of the Agent Inventory table — columns are `Suite | Agent | subagent_type | Specialization`, not a model-tier table)
 
 **Interfaces:**
 - Produces: all doc counts match the final state — 12 agents (7 opus / 4 sonnet / 1 haiku), 30 hub skills, 2 commands.
@@ -1426,7 +1486,7 @@ grep -c "^model: sonnet" plugins/science-suite/agents/*.md | grep -v ":0" | wc -
 grep -c "^model: haiku" plugins/science-suite/agents/*.md | grep -v ":0" | wc -l
 ls -d plugins/science-suite/skills/*/ | wc -l
 ```
-Expected: `agents: 12`, `commands: 2`, `hub skills: 30`; opus count `7`, sonnet count `4`, haiku count `1`; total skill directories `127 + 9 (7 continuum + 2 statistical-physics extensions) + 1 (graph-theory) = 137`.
+Expected: `agents: 12`, `commands: 2`, `hub skills: 30`; opus count `7`, sonnet count `4`, haiku count `1`; total skill directories `127 + 9 (7 continuum + 2 statistical-physics extensions) + 1 (graph-theory) = 137`. Note: this arithmetic assumes Task 8's Step 7 context-budget fallback (splitting oversized profiling/async content into a new sub-skill) was NOT triggered — that fallback would add sub-skill directories not counted here without changing the hub-skill count (`plugin.json`'s `skills` array only tracks hubs). Trust the actual `ls` output over this arithmetic if they disagree.
 
 - [ ] **Step 2: Finalize README.md**
 
@@ -1440,17 +1500,34 @@ Expected: shows the corrected line.
 
 - [ ] **Step 3: Update docs/suites/science-suite.rst**
 
-Read `docs/suites/science-suite.rst`. Find the existing `.. agent::` directives (one per agent) and add a new one for `continuum-mechanics-engineer` following the same directive format as the existing entries. Find and fix the summary line matching "11 Agents" / "17 Hubs → 110 Sub-skills" (or whatever the current actual text is per a fresh grep) to the Step 1 counts.
+Read `docs/suites/science-suite.rst`. Four fixes in this file (confirm exact current text with a fresh grep first, since the plan may have gone stale — the repo state quoted below is what was confirmed when this plan was written):
+
+1. Add a new `.. agent::` directive for `continuum-mechanics-engineer`, following the existing format (each entry has `:description:`, `:model:`, `:version:`):
+```rst
+.. agent:: continuum-mechanics-engineer
+   :description: Expert in FEM/FEA, constitutive modeling, DMA/rheology, transient networks (CAN/vitrimers), and nanocomposites.
+   :model: opus
+   :version: <current version string, from pyproject.toml/plugin.json>
+```
+2. Sync the `simulation-expert` directive's `:model: opus` to `:model: sonnet`, and the `pinn-engineer` directive's `:model: sonnet` to `:model: opus`, matching Task 2's swap — these directives currently still show the pre-swap tiers and this task is the only one that touches this file.
+3. Fix the summary line currently reading `**Version:** 3.5.2 | **11 Agents** | **2 Registered Commands** | **17 Hubs → 110 Sub-skills** | **5 Hook Events**` to the Step 1 counts (12 agents, 30 hubs, sub-skill count = total dirs minus 30).
+4. Fix the separate, independently-stale sentence near the top of the file — `Uses the :term:`Hub Skill` architecture with 14 hubs routing to 112 sub-skills. Optimized for Claude Opus 4.7 with extended context and adaptive reasoning.` — this states a *different* wrong hub/sub-skill count than item 3's line and repeats the same stale "Opus 4.7" framing fixed in Task 1's README pass. Update the counts and drop the version-pinned "Opus 4.7" language here too.
 
 Verify:
 ```bash
 grep -c "continuum-mechanics-engineer" docs/suites/science-suite.rst
+grep -A2 "agent:: simulation-expert" docs/suites/science-suite.rst | grep ":model:"
+grep -A2 "agent:: pinn-engineer" docs/suites/science-suite.rst | grep ":model:"
+grep -c "Opus 4.7\|14 hubs\|112 sub-skills\|17 Hubs\|110 Sub-skills" docs/suites/science-suite.rst
 ```
-Expected: at least `1`.
+Expected: first grep at least `1`; `simulation-expert` shows `:model: sonnet`; `pinn-engineer` shows `:model: opus`; last grep `0`.
 
 - [ ] **Step 4: Update docs/agent-teams-guide.md**
 
-Read `docs/agent-teams-guide.md`. Find its per-agent routing table (science-suite section) and add a `continuum-mechanics-engineer` row following the existing table's column format (agent name, model tier, trigger domain).
+Read `docs/agent-teams-guide.md`. Find the "Agent Inventory" table's `**science**` rows — the table's columns are `Suite | Agent | subagent_type | Specialization` (there is no model-tier column) — and add:
+```markdown
+| | continuum-mechanics-engineer | `science-suite:continuum-mechanics-engineer` | FEM/FEA, constitutive modeling, DMA/rheology, transient networks, nanocomposites |
+```
 
 Verify:
 ```bash

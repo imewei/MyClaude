@@ -78,10 +78,10 @@ grep -c "SEE ALSO" plugins/research-suite/commands/lit-review.md \
 Expected: `1` for each of the 4 files.
 
 ```bash
-PYTHONPATH=. python3 tools/validation/command_file_linter.py plugins/research-suite/commands/lit-review.md 2>&1 || true
-PYTHONPATH=. python3 tools/validation/skill_validator.py plugins/research-suite 2>&1 | grep -A3 -E "research-quality-assessment|evidence-synthesis|landscape-scanner"
+PYTHONPATH=. python3 tools/validation/command_file_linter.py plugins/research-suite/commands/lit-review.md
+PYTHONPATH=. python3 tools/validation/skill_validator.py --plugin research-suite 2>&1 | grep -A3 -E "research-quality-assessment|evidence-synthesis|landscape-scanner"
 ```
-Expected: no new errors on any of the 4 files.
+Expected: `command_file_linter.py` exits 0 (do not suppress its exit status with `|| true` — a real lint failure must be visible). `skill_validator.py` takes `--plugin <name>`, not a positional path — it exits 2 with "unrecognized arguments" otherwise. No new errors on any of the 4 files.
 
 - [ ] **Step 6: Commit**
 
@@ -111,7 +111,8 @@ EOF
 ```bash
 cd /home/wei/Documents/GitHub/MyClaude
 test -f plugins/science-suite/agents/continuum-mechanics-engineer.md && echo "continuum-mechanics-engineer: EXISTS" || echo "continuum-mechanics-engineer: MISSING -- STOP, run the science-suite plan first"
-test -f plugins/science-suite/skills/glass-and-collective-dynamics/SKILL.md && echo "statistical-physicist extension: EXISTS" || echo "statistical-physicist extension: MISSING -- STOP, run the science-suite plan first"
+test -f plugins/science-suite/skills/glass-and-collective-dynamics/SKILL.md && echo "statistical-physicist extension (glass-and-collective-dynamics): EXISTS" || echo "statistical-physicist extension (glass-and-collective-dynamics): MISSING -- STOP, run the science-suite plan first"
+test -f plugins/science-suite/skills/physical-learning-systems/SKILL.md && echo "statistical-physicist extension (physical-learning-systems): EXISTS" || echo "statistical-physicist extension (physical-learning-systems): MISSING -- STOP, run the science-suite plan first"
 ```
 
 **Files:**
@@ -187,7 +188,7 @@ Replace with (adding 4 new rows for paper-implementation routing, since this tab
 | Delegate To | When |
 |-------------|------|
 | ml-expert | Implementing advanced ML models for analysis |
-| simulation-expert | Generating data from physics simulations, HPC experiments; or implementing a paper's MD/HPC particle-simulation method for /paper-implement or /replicate |
+| agent `simulation-expert` | Generating data from physics simulations, HPC experiments; or implementing a paper's MD/HPC particle-simulation method for /paper-implement or /replicate |
 | sci-workflow-engineer | Building interactive research dashboards, LLM synthesis |
 | python-pro | Performance optimization, systems architecture |
 | agent `jax-pro` | Implementing a paper's method in JAX (general numerics) for /paper-implement or /replicate |
@@ -203,10 +204,14 @@ Replace with (adding 4 new rows for paper-implementation routing, since this tab
 cd /home/wei/Documents/GitHub/MyClaude
 for f in plugins/research-suite/commands/paper-implement.md plugins/research-suite/commands/replicate.md plugins/research-suite/agents/research-expert.md; do
   echo "=== $f ==="
-  grep -c -E "jax-pro|julia-pro|continuum-mechanics-engineer|statistical-physicist|pinn-engineer|simulation-expert" "$f"
+  for name in jax-pro julia-pro continuum-mechanics-engineer statistical-physicist pinn-engineer simulation-expert; do
+    count=$(grep -c -- "$name" "$f")
+    echo "  $name: $count"
+    if [ "$count" -eq 0 ]; then echo "  MISSING: $name not found in $f"; fi
+  done
 done
 ```
-Expected: non-zero counts in all 3 files, with all 6 names present in each (spot-check with individual greps if the combined count looks low).
+Expected: a non-zero count for each of the 6 names in each of the 3 files (18 checks total, none reporting MISSING). A combined `grep -c -E "name1|name2|..."` only proves *some* specialist name occurs per line and cannot prove all six are present, so this checks each name individually instead.
 
 - [ ] **Step 5: Confirm the reference form matches xref_validator's patterns**
 
@@ -220,11 +225,12 @@ Expected: at least `1` in each of the 3 files (confirms the `` agent `name` `` f
 
 ```bash
 cd /home/wei/Documents/GitHub/MyClaude
+set -o pipefail
 PYTHONPATH=. python3 tools/validation/xref_validator.py 2>&1 | grep -A10 "research-suite\|continuum-mechanics-engineer"
 make validate
 uv run pytest 2>&1 | tail -20
 ```
-Expected: `xref_validator.py` shows the new `continuum-mechanics-engineer` references resolving (not dangling) — this only passes if the science-suite plan's Task 3 has actually landed, per this task's opening check. `make validate` exits 0. `uv run pytest` passes.
+Expected: `xref_validator.py` shows the new `continuum-mechanics-engineer` references resolving (not dangling) — this only passes if the science-suite plan's Task 3 has actually landed, per this task's opening check. `make validate` exits 0. `uv run pytest` passes — `set -o pipefail` is required so a real pytest failure isn't masked by `tail`'s own (always-zero) exit status.
 
 - [ ] **Step 7: Commit**
 

@@ -4,7 +4,7 @@
 
 **Goal:** Delete the `agent-core` plugin, trim `dev-suite`'s command/agent/skill surface to what's actually used and not duplicated by the installed plugin ecosystem, and reposition the 6 surviving agents around scientific-computing specificity.
 
-**Architecture:** This is a plugin-content repo, not an application — there is no traditional unit-test suite for this work. "Tests" are the repo's own validation tooling (`make validate`, `context_budget_checker.py`, `xref_validator.py`) plus exact `grep`/`git status` checks with expected output. Every task ends with a concrete, runnable verification command and its expected result.
+**Architecture:** This is a plugin-content repo, not an application — this work itself has no new unit tests to write. But the repo DOES have a real 20-file `pytest` suite under `tools/tests/` that asserts structural facts about the plugin content (file existence, registered-command counts, version strings) — 5 of those files hardcode `agent-core` paths/counts or the pre-bump version and must be updated as part of Tasks 1 and 7 respectively, or `uv run pytest` breaks. Beyond that suite, "tests" are the repo's own validation tooling (`make validate`, `context_budget_checker.py`, `xref_validator.py`) plus exact `grep`/`git status` checks with expected output. Every task ends with a concrete, runnable verification command and its expected result.
 
 **Tech Stack:** Markdown (agent/command/skill files), JSON (`plugin.json` manifests), the repo's Python validation tooling under `tools/validation/`.
 
@@ -14,7 +14,8 @@
 - Only edit `plugins/agent-core/`, `plugins/dev-suite/`, and cross-reference sites outside them (docs, `.claude-plugin/marketplace.json`, science-suite skill files that reference agent-core). Do not touch `plugins/science-suite/` or `plugins/research-suite/` content otherwise — those are separate plans. (Spec §2)
 - `uv.lock`'s pre-existing modification (present before this work started) must stay out of every commit in this plan — never `git add uv.lock`. (Spec §8)
 - **Task 8 in this plan has a cross-plan dependency**: it must not run until the science-suite plan's Python-consolidation task (which reads content from the 5 directories Task 8 deletes) has been committed. See Task 8's header for the exact check to run first.
-- Version bump is repo-wide (all 4 `plugin.json` + `pyproject.toml` share one synced version, enforced by `make validate`), and this is a breaking removal, so it's a **major** bump, not minor. (Spec §8)
+- Version bump is repo-wide (all 3 remaining `plugin.json` files, post-`agent-core`-deletion, + `pyproject.toml` share one synced version, enforced by `make validate`), and this is a breaking removal, so it's a **major** bump, not minor. (Spec §8)
+- `uv run pytest` is a real, currently-passing 20-file suite, not a no-op — 5 files (`test_agent_core_integrity.py`, `test_cross_suite_invariants.py`, `test_hook_integrity.py`, `test_readme_safeguards.py`, `test_scicomp_redesign.py`) hardcode `agent-core` paths or the pre-bump version string and will fail the moment Task 1/Task 7 land unless updated in the same commit. See Task 1 Step 8 and Task 7 Step 2.
 
 ---
 
@@ -26,22 +27,26 @@
 - Modify: `plugins/science-suite/skills/research-and-domains/SKILL.md` — remove the dangling `agent-core:reasoning-and-memory` reference
 - Modify: `plugins/science-suite/skills/llm-application-dev/SKILL.md`, `plugins/science-suite/skills/llm-and-ai/SKILL.md` — check for and remove/update agent-core references
 - Modify: `README.md`, `CHANGELOG.md`, `docs/index.rst`, `docs/integration-map.rst`, `docs/claude-code-spec-compliance.md`, `docs/guides/integration-patterns.rst`, `docs/reference/agents.md`, `docs/agent-teams-guide.md`, `docs/reference/cheatsheet.md`, `docs/categories/core.rst`, `docs/changelog.rst`, `docs/suites/science-suite.rst`, `docs/guides/scientific-workflows.rst`, `docs/reference/commands.md`, `tools/README.md`, `plugins/dev-suite/README.md`, `plugins/science-suite/README.md` — remove/update agent-core mentions
+- Modify: `tools/validation/metadata_validator.py` — remove the stale `"thinkfirst"` entry (with its `# agent-core: ...` comment) from `_TIER2_STANDALONE_WHITELIST`
+- Modify: `tools/tests/test_agent_core_integrity.py` (delete — entire file targets the deleted plugin), `tools/tests/test_cross_suite_invariants.py`, `tools/tests/test_hook_integrity.py`, `tools/tests/test_readme_safeguards.py`, `tools/tests/test_scicomp_redesign.py` (the `agent-core`-specific parametrize entry only — its hardcoded `3.5.2` version assertion is Task 7's concern, not this task's) — see Step 8
 
 **Interfaces:**
-- Produces: `plugins/agent-core/` no longer exists on disk; zero repo-wide matches for the string `agent-core` outside `docs/superpowers/specs/` and `docs/superpowers/plans/` (historical planning docs are allowed to keep the reference).
+- Produces: `plugins/agent-core/` no longer exists on disk; zero repo-wide matches for the string `agent-core` outside `docs/superpowers/specs/`, `docs/superpowers/plans/` (historical planning docs are allowed to keep the reference), and `CHANGELOG.md`/`docs/changelog.rst` (historical release notes about *past* releases are never rewritten — see Step 6); `uv run pytest` passes with no test referencing `plugins/agent-core` or `agent-core`'s registered-command count.
 
 - [ ] **Step 1: Confirm the exact current cross-reference list**
 
 Run:
 ```bash
 cd /home/wei/Documents/GitHub/MyClaude
-grep -rl "agent-core" --include="*.md" --include="*.json" --include="*.rst" . \
-  | grep -v "^./plugins/agent-core/" \
+git grep -l "agent-core" -- '*.md' '*.json' '*.rst' \
+  | grep -v "^plugins/agent-core/" \
   | grep -v "docs/superpowers/specs/" \
   | grep -v "docs/superpowers/plans/" \
   | grep -v "graphify-out/"
 ```
-Expected: the 17 files listed above (README.md, CHANGELOG.md, the 12 docs/* files, tools/README.md, plugins/dev-suite/README.md, plugins/science-suite/README.md, and the 3 science-suite skill files). If the list differs from this plan's Files section, use the actual current output as the authoritative list for the rest of this task — the repo may have changed since this plan was written.
+Note: this uses `git grep` (tracked files only), not a plain recursive `grep`, deliberately — this repo has untracked, gitignored local files (root `CLAUDE.md`, `reports/`) that also happen to contain the string `agent-core` (confirmed via `git ls-files` / `git log -- CLAUDE.md`, both intentionally untracked per commit `94df6fa1`). They are not part of the shipped marketplace content this task edits, are never staged by `git add -A -- ':!uv.lock'` in Step 9's commit, and must NOT be added to this task's file list — a plain `grep -r` (or a shell alias that ignores `.gitignore`) will over-report them. If your shell's `grep` is aliased to something that already respects `.gitignore` (e.g. via `--ignore-files`), plain `grep -r` with the same excludes gives the same 21-file result as `git grep`.
+
+Expected: 21 files — the 17 doc files listed above (README.md, CHANGELOG.md, the 12 docs/* files, tools/README.md, plugins/dev-suite/README.md, plugins/science-suite/README.md), the 3 science-suite skill files, and `.claude-plugin/marketplace.json` (handled separately in Step 3, not part of the doc-sweep in Step 6). If the list differs from this, use the actual current output as the authoritative list for the rest of this task — the repo may have changed since this plan was written.
 
 - [ ] **Step 2: Delete the plugin directory**
 
@@ -54,19 +59,32 @@ Expected: `rm 'plugins/agent-core/...'` lines for every file in the directory, n
 
 Read `.claude-plugin/marketplace.json`, find the JSON object/entry for `"agent-core"` (matching the pattern used for the other 3 plugin entries in the same file), and delete that entire entry, keeping the JSON valid (correct comma placement on the entry before/after it).
 
+Also update the file's summary metadata, which currently says (confirmed current content):
+```
+"description": "4-suite marketplace for agent orchestration, scientific research, software development, and scientific computing",
+...
+"total_plugins": 4,
+"note": "v3.5.2: Full marketplace consistency sync across all 4 plugins, documentation, and project metadata. ..."
+```
+Change `"description"` to a 3-suite description dropping "agent orchestration" (that was agent-core's role), `"total_plugins"` to `3`, and prepend a new note entry for this change (e.g. `"v4.0.0: agent-core plugin retired (see CHANGELOG); marketplace reduced to 3 plugins. "` before the existing note text) rather than rewriting the historical part of the note string.
+
 Verify:
 ```bash
 python3 -c "import json; d = json.load(open('.claude-plugin/marketplace.json')); assert 'agent-core' not in json.dumps(d), 'agent-core still present'; print('OK:', len(d.get('plugins', d)), 'plugins remain')"
+grep -n '"total_plugins"\|"description"' .claude-plugin/marketplace.json
 ```
-Expected: `OK: 3 plugins remain` (or however the manifest structures the count — the assertion passing with no `AssertionError` is what matters).
+Expected: `OK: 3 plugins remain` (or however the manifest structures the count — the assertion passing with no `AssertionError` is what matters); `total_plugins` shows `3`; `description` no longer says "4-suite".
 
-- [ ] **Step 4: Fix the dangling `agent-core:reasoning-and-memory` reference in research-and-domains**
+- [ ] **Step 4: Fix the dangling `agent-core` references in research-and-domains**
 
-Read `plugins/science-suite/skills/research-and-domains/SKILL.md`. Find the line:
+This file has **two** hits, not one — confirmed via `grep -c "agent-core"` = `2` against current content. Read `plugins/science-suite/skills/research-and-domains/SKILL.md` and fix both:
+
+1. The frontmatter `description:` field (line 3) ends with: `...for operational agent self-improvement loops with persistent prompt/policy updates, use agent-core reasoning-and-memory; for general study design, literature synthesis, or paper methodology, use research-suite research-practice.` Delete the clause `for operational agent self-improvement loops with persistent prompt/policy updates, use agent-core reasoning-and-memory; ` (keep the `for general study design...` clause and the sentence's grammar/punctuation intact).
+2. The routing-tree line (under the `self-improving-ai` branch):
 ```
 |   (for persistent agent prompt/policy optimization, use agent-core:reasoning-and-memory)
 ```
-Delete this line entirely (it's a parenthetical aside under the `self-improving-ai` routing branch — removing it doesn't break the branch's structure, just drops the now-invalid pointer).
+Delete this line entirely (it's a parenthetical aside — removing it doesn't break the branch's structure, just drops the now-invalid pointer).
 
 Verify:
 ```bash
@@ -98,8 +116,8 @@ For each file in the Step 1 list not already handled (README.md, CHANGELOG.md, t
 
 Verify:
 ```bash
-grep -rl "agent-core" --include="*.md" --include="*.json" --include="*.rst" . \
-  | grep -v "^./plugins/agent-core/" \
+git grep -l "agent-core" -- '*.md' '*.json' '*.rst' \
+  | grep -v "^plugins/agent-core/" \
   | grep -v "docs/superpowers/specs/" \
   | grep -v "docs/superpowers/plans/" \
   | grep -v "graphify-out/" \
@@ -108,7 +126,56 @@ grep -rl "agent-core" --include="*.md" --include="*.json" --include="*.rst" . \
 ```
 Expected: empty output (CHANGELOG.md and docs/changelog.rst are intentionally excluded per the historical-record rule in this step).
 
-- [ ] **Step 7: Commit**
+- [ ] **Step 7: Remove the stale `thinkfirst` whitelist entry from metadata_validator.py**
+
+`thinkfirst` was an agent-core skill (registered hub with no routing tree, hence the whitelist entry). Read `tools/validation/metadata_validator.py`, find `_TIER2_STANDALONE_WHITELIST` (currently at line 572-585), and delete this line from the set literal:
+```python
+        "thinkfirst",       # agent-core: user-invoked prompt optimizer
+```
+
+Verify:
+```bash
+grep -c "agent-core" tools/validation/metadata_validator.py
+```
+Expected: `0`
+
+- [ ] **Step 8: Fix the pytest suite for the agent-core deletion**
+
+Confirmed via direct inspection: 5 files under `tools/tests/` hardcode `plugins/agent-core` paths or its registered-command count and will fail `uv run pytest` the moment Step 2's `git rm -r plugins/agent-core` lands. Fix each in this same task/commit (not deferred to Task 7) so no task ever leaves the suite red:
+
+1. **`tools/tests/test_agent_core_integrity.py`** — the entire file (all tests) targets `plugins/agent-core/.claude-plugin/plugin.json`, its `agents/`, and its `skills/`. Delete the file: `git rm tools/tests/test_agent_core_integrity.py`.
+
+2. **`tools/tests/test_cross_suite_invariants.py`** — line 22: `SUITES = ["agent-core", "dev-suite", "science-suite"]` → remove `"agent-core"` from the list. Line 28: `EXPECTED_REGISTERED_COMMANDS` has an `"agent-core": 2` entry → delete that dict entry. (Confirm exact line numbers with `grep -n "agent-core" tools/tests/test_cross_suite_invariants.py` before editing — they may have shifted.)
+
+3. **`tools/tests/test_hook_integrity.py`** — line 39: `SUITES_WITH_HOOKS = ["agent-core", "dev-suite", "science-suite"]` → remove `"agent-core"` from the list.
+
+4. **`tools/tests/test_readme_safeguards.py`** — this file is mostly about `tools.common.readme_sanitizer` (keep that; do not delete the file). Only its `TestTeamAssembleSafeguardsPresent` class is agent-core-specific (doc-drift guard for `plugins/agent-core/commands/team-assemble.md`, which no longer exists after Step 2). Remove:
+   - The `TEAM_ASSEMBLE_PATH = REPO_ROOT / "plugins/agent-core/commands/team-assemble.md"` constant (currently line 37).
+   - The `# Group 4 — Doc-drift regression guards for team-assemble.md` comment block and the entire `TestTeamAssembleSafeguardsPresent` class (currently lines 406-487 inclusive — verify boundaries with `grep -n "Group 4\|^class Test\|^def test_sanitizing_a_wrapped" tools/tests/test_readme_safeguards.py` since the smoke test at the end of the file must survive).
+   - The module docstring's paragraph 2 (the "Doc-drift regression guards" bullet and the "See also" line referencing `team-assemble.md`), keeping paragraph 1 (the sanitizer description).
+
+5. **`tools/tests/test_scicomp_redesign.py`** — only the `agent-core` parametrize entry belongs to this task; its hardcoded `3.5.2` version assertion is Task 7's concern (that constant is correct until Task 7's bump). In `TestManifests.test_version_is_351` (currently lines 177-184), change:
+```python
+    @pytest.mark.parametrize("suite_dir", [
+        AGENT_CORE, DEV_SUITE, RESEARCH, SCIENCE
+    ], ids=["agent-core", "dev-suite", "research-suite", "science-suite"])
+```
+to:
+```python
+    @pytest.mark.parametrize("suite_dir", [
+        DEV_SUITE, RESEARCH, SCIENCE
+    ], ids=["dev-suite", "research-suite", "science-suite"])
+```
+Leave the `AGENT_CORE = PLUGINS / "agent-core"` module-level constant and its use at line 236 (`(AGENT_CORE / "hooks/pre_compact.py")`, inside a different test) alone for now if any other test in the file still references it after this edit — re-check with `grep -n "AGENT_CORE" tools/tests/test_scicomp_redesign.py` and remove the constant only if nothing else uses it.
+
+Verify:
+```bash
+cd /home/wei/Documents/GitHub/MyClaude
+uv run pytest tools/tests/test_cross_suite_invariants.py tools/tests/test_hook_integrity.py tools/tests/test_readme_safeguards.py tools/tests/test_scicomp_redesign.py -v 2>&1 | tail -30
+```
+Expected: all pass, no `agent-core`/`AGENT_CORE` related failures. (`test_agent_core_integrity.py` no longer exists so it won't appear.)
+
+- [ ] **Step 9: Commit**
 
 ```bash
 git add -A -- ':!uv.lock'
@@ -122,8 +189,9 @@ chore: retire agent-core plugin
 
 Fully covered by ruflo-core, ruflo-swarm, superpowers, and ecc's agent-*
 skill family on this install. Removes the plugin directory, its
-marketplace.json entry, and dangling cross-references from science-suite
-skills and top-level docs.
+marketplace.json entry, dangling cross-references from science-suite
+skills and top-level docs, the stale metadata_validator.py whitelist
+entry, and the 5 pytest files that hardcoded agent-core paths/counts.
 
 Co-Authored-By: Claude Sonnet 5 <noreply@anthropic.com>
 EOF
@@ -196,9 +264,11 @@ EOF
 - Delete: `plugins/dev-suite/agents/debugger-pro.md`, `devops-architect.md`, `systems-engineer.md`
 - Modify: `plugins/dev-suite/.claude-plugin/plugin.json` (the `agents` array)
 - Modify: `plugins/dev-suite/skills/dev-hub/SKILL.md` — remove the 3 agents from the "Expert Agents" bullet list (full dev-hub rewrite happens in Task 6; this step only removes the 3 dead bullets so the file isn't briefly wrong between commits)
+- Modify: `plugins/dev-suite/agents/app-developer.md`, `automation-engineer.md`, `software-architect.md`, `quality-specialist.md`, `sre-expert.md`, `documentation-expert.md` — remove dangling "Delegation Strategy" table rows that route to the 3 deleted agents (confirmed present in all 6 surviving agents by direct grep; Task 4's later rewrite only touches the frontmatter `description` and opening paragraph, not these tables, so this cleanup must happen here)
+- Modify: `plugins/dev-suite/hooks/subagent_stop.py` — fix the docstring/comment mentioning `debugger-pro`
 
 **Interfaces:**
-- Produces: `plugins/dev-suite/.claude-plugin/plugin.json`'s `agents` array contains exactly 6 entries: `app-developer.md`, `automation-engineer.md`, `documentation-expert.md`, `quality-specialist.md`, `software-architect.md`, `sre-expert.md`.
+- Produces: `plugins/dev-suite/.claude-plugin/plugin.json`'s `agents` array contains exactly 6 entries: `app-developer.md`, `automation-engineer.md`, `documentation-expert.md`, `quality-specialist.md`, `software-architect.md`, `sre-expert.md`; zero matches for `debugger-pro|devops-architect|systems-engineer` anywhere under `plugins/dev-suite/` outside historical CHANGELOG-style content (there is none in this suite).
 
 - [ ] **Step 1: Confirm zero references from the 10 kept commands**
 
@@ -265,7 +335,28 @@ grep -c -E "debugger-pro|devops-architect|systems-engineer" plugins/dev-suite/sk
 ```
 Expected: `0`
 
-- [ ] **Step 5: Run the plugin metadata validator**
+- [ ] **Step 5: Fix dangling references to the 3 deleted agents in the surviving agents and the hook**
+
+Confirmed via direct grep: all 6 surviving agents have a "Delegation Strategy" markdown table with a row routing to one or more of the 3 deleted agents, and `plugins/dev-suite/hooks/subagent_stop.py`'s docstring mentions `debugger-pro`. Task 4 does not cover this (it only touches each agent's frontmatter `description` and opening paragraph). Fix each:
+
+- `app-developer.md`: delete the `| debugger-pro | Complex bug resolution and root cause analysis |` and `| systems-engineer | Native modules requiring low-level C/C++ code |` rows.
+- `automation-engineer.md`: delete the `| devops-architect | Infrastructure provisioning strategies |` and `| systems-engineer | Build tool (CLI) development |` rows.
+- `software-architect.md`: delete the `| systems-engineer | Low-level optimization, kernel/embedded work |` and `| devops-architect | Infrastructure provisioning, Kubernetes, Cloud |` rows.
+- `quality-specialist.md`: delete the `| debugger-pro | Root cause analysis of complex bugs |` and `| devops-architect | Infrastructure security and pipeline implementation |` rows.
+- `sre-expert.md`: delete the `| devops-architect | Requesting platform-level infrastructure changes from the Platform Owner |` row.
+- `documentation-expert.md`: delete the `| devops-architect | Documenting infrastructure and deployment processes |` row.
+- `plugins/dev-suite/hooks/subagent_stop.py`: the docstring reads `Collects test/review results when debugger-pro or quality-specialist finish.` — remove the `debugger-pro or ` clause, leaving `Collects test/review results when quality-specialist finishes.` (adjust the verb to match; check the rest of the docstring/file for any other logic keyed on the literal string `debugger-pro` before assuming this is comment-only).
+
+Do not restructure the surrounding Delegation Strategy tables beyond removing these specific rows — other rows (e.g. `software-architect`, `quality-specialist`, `ml-expert (science-suite)`) stay as-is.
+
+Verify:
+```bash
+cd /home/wei/Documents/GitHub/MyClaude
+grep -rc -E "debugger-pro|devops-architect|systems-engineer" plugins/dev-suite/agents/*.md plugins/dev-suite/hooks/subagent_stop.py
+```
+Expected: `0` for every file listed.
+
+- [ ] **Step 6: Run the plugin metadata validator**
 
 ```bash
 cd /home/wei/Documents/GitHub/MyClaude
@@ -273,17 +364,19 @@ PYTHONPATH=. python3 tools/validation/metadata_validator.py plugins/dev-suite
 ```
 Expected: exits 0, no errors about the `agents` array or missing files.
 
-- [ ] **Step 6: Commit**
+- [ ] **Step 7: Commit**
 
 ```bash
-git add plugins/dev-suite/agents/ plugins/dev-suite/.claude-plugin/plugin.json plugins/dev-suite/skills/dev-hub/SKILL.md
+git add plugins/dev-suite/agents/ plugins/dev-suite/.claude-plugin/plugin.json plugins/dev-suite/skills/dev-hub/SKILL.md plugins/dev-suite/hooks/subagent_stop.py
 git commit -m "$(cat <<'EOF'
 chore(dev-suite): delete 3 agents with zero command references
 
 debugger-pro, devops-architect, systems-engineer aren't wired into any of
 the 10 kept commands. Generic ground already covered by
 mattpocock-skills:diagnosing-bugs, ecc:build-fix family, and
-ecc:homelab-*/ecc:kubernetes-patterns.
+ecc:homelab-*/ecc:kubernetes-patterns. Also cleans up dangling
+Delegation Strategy table rows in the 6 surviving agents and the
+subagent_stop.py hook that referenced the 3 deleted agents.
 
 Co-Authored-By: Claude Sonnet 5 <noreply@anthropic.com>
 EOF
@@ -393,9 +486,10 @@ EOF
 **Files:**
 - Delete: `plugins/dev-suite/skills/frontend-and-mobile/`, `frontend-mobile-engineering/`, `graphql-patterns/`, `mobile-testing-patterns/`, `modern-javascript-patterns/`, `nodejs-backend-patterns/`, `typescript-advanced-types/`, `typescript-project-scaffolding/`, `websocket-patterns/`, `plugin-syntax-validator/` (10 directories)
 - Modify: `plugins/dev-suite/.claude-plugin/plugin.json` — remove `./skills/frontend-and-mobile` from the `skills` array (the only one of these 10 that's a registered hub)
+- Modify: `plugins/dev-suite/agents/app-developer.md` — remove `frontend-and-mobile` from the frontmatter `skills:` list (confirmed present: `skills:` block currently lists `frontend-and-mobile` and `backend-patterns`; no other agent's `skills:` frontmatter references any of the 10 cut skills)
 
 **Interfaces:**
-- Produces: `plugins/dev-suite/.claude-plugin/plugin.json`'s `skills` array shrinks from 12 to 11 entries (only `frontend-and-mobile` was registered; the other 9 are unregistered sub-skills reachable only through hub routing, so removing their directories requires no manifest edit).
+- Produces: `plugins/dev-suite/.claude-plugin/plugin.json`'s `skills` array shrinks from 12 to 11 entries (only `frontend-and-mobile` was registered; the other 9 are unregistered sub-skills reachable only through hub routing, so removing their directories requires no manifest edit); `app-developer.md`'s `skills:` frontmatter no longer lists a deleted skill.
 
 - [ ] **Step 1: Confirm which of the 10 are registered hubs**
 
@@ -455,7 +549,23 @@ grep -c -E "frontend-and-mobile|frontend-mobile-engineering|graphql-patterns|mob
 ```
 Expected: `0` for both files.
 
-- [ ] **Step 5: Run validators**
+- [ ] **Step 5: Remove `frontend-and-mobile` from app-developer.md's `skills:` frontmatter**
+
+`plugins/dev-suite/agents/app-developer.md`'s frontmatter has (confirmed current content):
+```yaml
+skills:
+  - frontend-and-mobile
+  - backend-patterns
+```
+Delete the `- frontend-and-mobile` line, leaving only `- backend-patterns`. (Its `description:` field's own `frontend-and-mobile` mention is separately superseded by Task 4's full description rewrite — if Task 4 hasn't run yet when this step executes, this step only touches the `skills:` list, not `description:`.)
+
+Verify:
+```bash
+grep -c "frontend-and-mobile" plugins/dev-suite/agents/app-developer.md
+```
+Expected: `0` once Task 4 has also landed (Task 4's description rewrite drops the other mention); `0` in the `skills:` block regardless of Task 4's status.
+
+- [ ] **Step 6: Run validators**
 
 ```bash
 cd /home/wei/Documents/GitHub/MyClaude
@@ -464,17 +574,19 @@ PYTHONPATH=. python3 tools/validation/xref_validator.py 2>&1 | tail -30
 ```
 Expected: `metadata_validator.py` exits 0. `xref_validator.py` shows no new dangling references introduced by this task (compare against the baseline count noted in the science-suite spec's validation section — 564 valid references — a drop is expected since references into deleted files are gone; new *dangling* references are the failure signal, not a lower total).
 
-- [ ] **Step 6: Commit**
+- [ ] **Step 7: Commit**
 
 ```bash
-git add -A -- plugins/dev-suite/skills/ plugins/dev-suite/.claude-plugin/plugin.json
+git add -A -- plugins/dev-suite/skills/ plugins/dev-suite/.claude-plugin/plugin.json plugins/dev-suite/agents/app-developer.md
 git commit -m "$(cat <<'EOF'
 chore(dev-suite): delete 10 skills duplicated by ecc/plugin-dev
 
 9 stack-specific skills (frontend/mobile/GraphQL/Node/TypeScript/WebSocket)
 fully covered by ecc's per-language reviewers and patterns; this user's
 actual stack is Python/JAX + Julia, not general web/mobile.
-plugin-syntax-validator duplicates plugin-dev:plugin-validator.
+plugin-syntax-validator duplicates plugin-dev:plugin-validator. Also
+drops app-developer.md's now-dangling frontend-and-mobile skills-list
+entry.
 
 Co-Authored-By: Claude Sonnet 5 <noreply@anthropic.com>
 EOF
@@ -638,27 +750,38 @@ EOF
 
 ---
 
-### Task 7: Version bump and final validation
+### Task 7: Version bump and validation checkpoint
+
+**Note on "final":** this task is a validation *checkpoint*, not the last word — Task 8 is blocked on an external cross-plan dependency and may land well after this task, and Task 8 Step 6 re-runs the exact same full validation suite as its own final gate once its deletions land. Treat this task's validation as "everything through Task 7 is clean," not "the repo's final state is clean."
 
 **Files:**
 - Modify: `plugins/dev-suite/.claude-plugin/plugin.json`, `plugins/science-suite/.claude-plugin/plugin.json`, `plugins/research-suite/.claude-plugin/plugin.json`, `pyproject.toml` — bump `version` field
+- Modify: `docs/conf.py` (Sphinx `version`/`release` vars, currently `"3.5"`/`"3.5.2"`), `Makefile` (2 occurrences of the literal string `3.5.2`, currently at the top-of-file header comment and in a `make version`-style echo target), `tools/tests/test_scicomp_redesign.py` (the `test_version_is_351` assertion and its docstring, currently hardcoding `3.5.2`) — same version bump, different file formats, easy to miss since they're outside `plugin.json`/`pyproject.toml`
 
 **Interfaces:**
 - Consumes: nothing new.
-- Produces: all 3 remaining `plugin.json` files and `pyproject.toml` share one new version string (major bump from `3.5.2` — e.g. `4.0.0`, confirm the exact next value follows this repo's semver convention by checking `CHANGELOG.md`'s most recent entries before picking the number).
+- Produces: all 3 remaining `plugin.json` files, `pyproject.toml`, `docs/conf.py`, `Makefile`, and `test_scicomp_redesign.py`'s assertion all agree on one new version string (major bump from `3.5.2` — e.g. `4.0.0`, confirm the exact next value follows this repo's semver convention by checking `CHANGELOG.md`'s most recent entries before picking the number).
 
 - [ ] **Step 1: Determine the exact next version**
 
 ```bash
 cd /home/wei/Documents/GitHub/MyClaude
 head -20 CHANGELOG.md
-grep '"version"' pyproject.toml plugins/dev-suite/.claude-plugin/plugin.json
+grep '"version"' plugins/dev-suite/.claude-plugin/plugin.json
+grep '^version' pyproject.toml
 ```
+Note: `pyproject.toml` is TOML, not JSON — its line reads `version = "3.5.2"` (unquoted key, no colon), so `grep '"version"'` never matches it. Use `grep '^version'` for `pyproject.toml` specifically (as above); the two files need different grep patterns.
+
 Confirm current version is `3.5.2` everywhere and that a major bump means `4.0.0` per standard semver (breaking removal of agents/commands/skills = major). If `CHANGELOG.md` shows a different convention in use (e.g. suite-specific major numbers), follow that instead — this step exists to catch drift between this plan (written before implementation) and the actual repo state.
 
-- [ ] **Step 2: Bump all 3 plugin.json files and pyproject.toml**
+- [ ] **Step 2: Bump all 3 plugin.json files, pyproject.toml, docs/conf.py, Makefile, and test_scicomp_redesign.py**
 
 Read and Edit `plugins/dev-suite/.claude-plugin/plugin.json`, `plugins/science-suite/.claude-plugin/plugin.json`, `plugins/research-suite/.claude-plugin/plugin.json`: change `"version": "3.5.2"` to `"version": "4.0.0"` (or the version confirmed in Step 1) in each. Read and Edit `pyproject.toml`'s `version = "3.5.2"` line the same way.
+
+Also bump the 3 files confirmed to hardcode `3.5.2`/`3.5` outside the manifests:
+- `docs/conf.py`: `version = "3.5"` → `version = "4.0"`; `release = "3.5.2"` → `release = "4.0.0"`.
+- `Makefile`: 2 occurrences of the literal `3.5.2` (a header comment and a `make`-target echo string) → `4.0.0`.
+- `tools/tests/test_scicomp_redesign.py`: the module docstring's `(v3.5.2)` and the `test_version_is_351` assertion `assert plugin["version"] == "3.5.2"` (plus its f-string message) → `4.0.0`. (The test's *name* references the old version number and reads oddly post-bump; renaming it is optional polish, not required for correctness — the assertion body is what pytest checks.)
 
 Note: science-suite and research-suite plugin.json will get further content changes from their own plans — this version bump can land now and those plans should NOT bump the version again, just add their content changes on top of `4.0.0`.
 
@@ -666,9 +789,10 @@ Note: science-suite and research-suite plugin.json will get further content chan
 
 ```bash
 grep -h '"version"' plugins/*/.claude-plugin/plugin.json
-grep '^version' pyproject.toml
+grep '^version\|^release' pyproject.toml docs/conf.py
+grep '3\.5\.2' Makefile tools/tests/test_scicomp_redesign.py
 ```
-Expected: every line shows the same version string (`4.0.0` or whatever was confirmed in Step 1).
+Expected: every `plugin.json`/`pyproject.toml`/`docs/conf.py` line shows the same new version string (`4.0.0` or whatever was confirmed in Step 1, `4.0` for `docs/conf.py`'s short `version` var per Sphinx convention); the `Makefile`/`test_scicomp_redesign.py` grep for the old string returns empty.
 
 - [ ] **Step 4: Run the full validation suite**
 
@@ -679,19 +803,22 @@ PYTHONPATH=. python3 tools/validation/context_budget_checker.py 2>&1 | tail -20
 PYTHONPATH=. python3 tools/validation/xref_validator.py 2>&1 | tail -20
 uv run pytest 2>&1 | tail -20
 ```
-Expected: `make validate` exits 0 (warnings acceptable, no errors). `context_budget_checker.py` shows a lower total skill count than the pre-trim baseline (223 across all plugins, minus the deletions from Tasks 1/5/8 once all land) with 0 oversized. `xref_validator.py` shows no dangling references. `uv run pytest` passes.
+Expected: `make validate` exits 0 (warnings acceptable, no errors). `context_budget_checker.py` shows a lower total skill count than the pre-trim baseline (223 across all plugins) reflecting Tasks 1/5's deletions — Task 8's 5 further deletions are NOT yet reflected here if Task 8 is still blocked on its cross-plan dependency, so don't treat this count as final (see the note at the top of this task). `xref_validator.py` shows no dangling references. `uv run pytest` passes.
 
 - [ ] **Step 5: Commit**
 
 ```bash
 git add plugins/dev-suite/.claude-plugin/plugin.json plugins/science-suite/.claude-plugin/plugin.json \
-  plugins/research-suite/.claude-plugin/plugin.json pyproject.toml
+  plugins/research-suite/.claude-plugin/plugin.json pyproject.toml docs/conf.py Makefile \
+  tools/tests/test_scicomp_redesign.py
 git commit -m "$(cat <<'EOF'
 chore: bump version to 4.0.0 for breaking agent-core/dev-suite trim
 
 agent-core removed; dev-suite's command/agent/skill surface reduced. All
-4 plugin manifests and pyproject.toml stay version-synced per this repo's
-make validate drift check.
+3 remaining plugin manifests, pyproject.toml, docs/conf.py, and the
+Makefile's version string stay synced per this repo's make validate
+drift check; test_scicomp_redesign.py's hardcoded version assertion
+updated to match.
 
 Co-Authored-By: Claude Sonnet 5 <noreply@anthropic.com>
 EOF
@@ -715,9 +842,12 @@ If science-suite's `python-development`/`python-packaging-advanced` files show n
 **Files:**
 - Delete: `plugins/dev-suite/skills/async-python-patterns/`, `python-packaging/`, `python-performance-optimization/`, `python-toolchain/`, `uv-package-manager/` (5 directories)
 - Modify: `plugins/dev-suite/.claude-plugin/plugin.json` — remove `./skills/python-toolchain` from the `skills` array
+- Modify: `plugins/dev-suite/skills/backend-patterns/SKILL.md` — fix 3 dangling links/routes to the deleted `async-python-patterns` (confirmed present at lines 21, 45, 69; not covered by Task 6, which only rewrites `dev-hub`)
+
+**Known out-of-scope dangling reference (not fixed by this task):** `plugins/science-suite/commands/benchmark.md` (lines 10, 33) and `plugins/science-suite/agents/simulation-expert.md` (line 76) reference `systems-engineer`/`devops-architect` (dev-suite agents deleted in Task 3, not this task's skills — flagged here since it's adjacent). Confirmed these are bare markdown-table/backtick mentions that `xref_validator.py`'s `_extract_agent_references` regexes (`agent:\s*name`, `@name`, `` agent `name` ``) do NOT match, so `xref_validator.py` will NOT flag them and this task's/Task 7's "zero dangling references" expectation is not contradicted by leaving them. Editing `plugins/science-suite/` is out of scope for this plan (Global Constraints, spec §2) — pass this file+line list to the science-suite expand plan as a known cleanup item.
 
 **Interfaces:**
-- Produces: `plugins/dev-suite/.claude-plugin/plugin.json`'s `skills` array shrinks from 11 (after Task 5) to 10 entries.
+- Produces: `plugins/dev-suite/.claude-plugin/plugin.json`'s `skills` array shrinks from 11 (after Task 5) to 10 entries; `backend-patterns/SKILL.md` has zero remaining links to `async-python-patterns`.
 
 - [ ] **Step 1: Confirm which of the 5 is the registered hub**
 
@@ -765,7 +895,21 @@ grep -c -E "async-python-patterns|python-packaging|python-performance-optimizati
 ```
 Expected: `0`. If non-zero, apply the same fix pattern as Task 6 Steps 3-5 now.
 
-- [ ] **Step 5: Full validation pass**
+- [ ] **Step 5: Fix backend-patterns' dangling links to async-python-patterns**
+
+Confirmed present, not touched by any earlier task:
+```bash
+grep -n "async-python-patterns" plugins/dev-suite/skills/backend-patterns/SKILL.md
+```
+Expected before fix: 3 hits — a `### [Async Python Patterns](../async-python-patterns/SKILL.md)` section heading/link (~line 21), a routing-tree line `--> dev-suite:async-python-patterns` (~line 45), and a routing-table row `| FastAPI, asyncio, aiohttp | dev-suite:async-python-patterns |` (~line 69). Read the file and: delete the `### [Async Python Patterns](...)` subsection heading and its body content (the async-Python content it pointed to no longer exists in dev-suite — it moved to science-suite per spec §6, out of this task's scope to re-target); delete the routing-tree line; delete the routing-table row (or fold the "FastAPI, asyncio, aiohttp" keywords into the FastAPI-related row that survives, if one exists in the same table, rather than dropping FastAPI coverage from `backend-patterns` entirely — check the table's other rows before deciding).
+
+Verify:
+```bash
+grep -c "async-python-patterns" plugins/dev-suite/skills/backend-patterns/SKILL.md
+```
+Expected: `0`
+
+- [ ] **Step 6: Full validation pass**
 
 ```bash
 cd /home/wei/Documents/GitHub/MyClaude
@@ -781,7 +925,7 @@ ls -d plugins/dev-suite/skills/*/ | wc -l
 ```
 Expected: `46`
 
-- [ ] **Step 6: Commit**
+- [ ] **Step 7: Commit**
 
 ```bash
 git add -A -- plugins/dev-suite/skills/ plugins/dev-suite/.claude-plugin/plugin.json
@@ -790,7 +934,8 @@ chore(dev-suite): delete 5 Python-tooling skills absorbed by science-suite
 
 Content already folded into science-suite's python-development and
 python-packaging-advanced (see the science-suite expand plan's Python
-consolidation task). This is the deletion half of that move.
+consolidation task). This is the deletion half of that move. Also fixes
+backend-patterns/SKILL.md's now-dangling links to async-python-patterns.
 
 Co-Authored-By: Claude Sonnet 5 <noreply@anthropic.com>
 EOF
@@ -801,6 +946,6 @@ EOF
 
 ## Self-Review Notes
 
-- **Spec coverage:** §3 (agent-core retire) → Task 1. §4 (command surface) → Task 2. §5 (agent surface) → Tasks 3-4. §6 (skill surface) → Tasks 5, 6, 8. §7 (cross-reference check) → folded into Tasks 1, 5, 8 (checked before/after each deletion rather than as one giant end-of-plan task, since each task's deletions create their own dangling-reference risk). §8 (validation criteria) → Task 7 (version bump + full suite) plus per-task validator runs. §9 (out of scope) → not actioned, correctly.
-- **Placeholder scan:** every deletion lists exact paths; every content rewrite gives exact before/after text; the doc-sweep steps (Task 1 Step 6, Task 5 Step 4) use a concrete grep-classify-fix loop with an exact verification command rather than "update docs appropriately."
+- **Spec coverage:** §3 (agent-core retire) → Task 1 (including the pytest suite and `metadata_validator.py` whitelist cleanup Step 1's "remove all references... from any xref_validator target lists" language implies but didn't originally enumerate). §4 (command surface) → Task 2. §5 (agent surface) → Tasks 3-4 (Task 3 also sweeps the dangling Delegation Strategy table references Task 4's narrower scope can't reach). §6 (skill surface) → Tasks 5, 6, 8 (Task 5 also fixes app-developer.md's frontmatter; Task 8 also fixes backend-patterns.md). §7 (cross-reference check) → folded into Tasks 1, 3, 5, 8 (checked before/after each deletion rather than as one giant end-of-plan task, since each task's deletions create their own dangling-reference risk); one known exception left for the science-suite plan to pick up (Task 8's out-of-scope note) since it isn't reachable via `xref_validator.py`'s matched patterns and isn't in this plan's edit scope. §8 (validation criteria, including "uv run pytest passes unchanged") → Task 1 Step 8 (agent-core test fixes) + Task 7 (version bump touching all version-bearing files including docs/conf.py, Makefile, and the one test file with a hardcoded version) + per-task validator runs. §9 (out of scope) → not actioned, correctly.
+- **Placeholder scan:** every deletion lists exact paths; the frontmatter/table/manifest rewrites give exact before/after text. A few steps deliberately use bounded judgment rather than a byte-exact script, because the target text is either open-ended prose or requires reading context that varies per file: Task 1 Step 5 (classify llm-application-dev/llm-and-ai hits as functional vs. incidental), Task 1 Step 6 (classify each of the 14 doc-sweep hits per the 3-category rule), Task 4 Step 4 (each agent's 1-3 sentence opening-paragraph rewrite — the frontmatter `description` itself IS exact), and Task 8 Step 5 (backend-patterns' `async-python-patterns` section removal). Each of these gives an exact verification command (`grep -c ... ` → `0`) so a wrong judgment call is caught immediately even though the prose itself isn't pre-written.
 - **Type consistency:** N/A (no code interfaces cross task boundaries in this plan — all interfaces are file/directory existence and `plugin.json` array contents, verified by the exact `python3 -c` assertions in each task).
