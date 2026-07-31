@@ -36,7 +36,7 @@ MCP Server Roles
      - ``/code-analyze``
      - engineering, infrastructure, quality agents for symbol navigation
    * - **Context7**
-     - ``/docs-lookup``
+     - --
      - All agents for up-to-date library documentation
 
 Intra-Suite Delegation Patterns

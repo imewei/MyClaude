@@ -38,11 +38,8 @@ MyClaude agents can leverage MCP servers for enhanced capabilities:
 - **Serena** — Semantic code analysis via ``/code-analyze`` command.
   Used by engineering and quality agents for symbol-level navigation.
 
-- **Context7** — Library documentation lookup via ``/docs-lookup`` command.
-  Used by all agents to access up-to-date API references.
-
-- **Sequential Thinking** — Structured reasoning via ``/ultra-think`` command.
-  Used by ``@reasoning-engine`` for multi-step analysis.
+- **Context7** — Library documentation lookup. Used by all agents to
+  access up-to-date API references.
 
 Official Plugin Integration
 ---------------------------

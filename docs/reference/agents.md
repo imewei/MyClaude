@@ -59,7 +59,7 @@ Scientific computing, HPC, physics simulations, ML/DL, and nonlinear dynamics. `
 
 | Tier | Count | Agents |
 |------|-------|--------|
-| **opus** | 13 | orchestrator, reasoning-engine, context-specialist, software-architect, debugger-pro, research-expert, research-spark-orchestrator, jax-pro, julia-pro, neural-network-master, nonlinear-dynamics-expert, simulation-expert, statistical-physicist |
+| **opus** | 10 | software-architect, debugger-pro, research-expert, research-spark-orchestrator, jax-pro, julia-pro, neural-network-master, nonlinear-dynamics-expert, simulation-expert, statistical-physicist |
 | **sonnet** | 10 | app-developer, automation-engineer, devops-architect, quality-specialist, sre-expert, systems-engineer, julia-ml-hpc, pinn-engineer, python-pro, sci-workflow-engineer |
 | **haiku** | 2 | documentation-expert, ml-expert |
 

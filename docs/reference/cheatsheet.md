@@ -78,9 +78,7 @@ plugin.json → hub skill → routing decision tree → sub-skill
 3. Output: `.docx` (with `python-docx`) or markdown fallback
 
 ### Agent Teams
-1. `/team-assemble list` — see all team templates
-2. `/team-assemble <type>` — generate a team prompt
-3. See [Agent Teams Guide](../agent-teams-guide.md) for details
+See [Agent Teams Guide](../agent-teams-guide.md) for the full agent composition of each team and variant.
 
 ---
 
@@ -88,7 +86,7 @@ plugin.json → hub skill → routing decision tree → sub-skill
 
 | Tier | Count | Use Case | Agents |
 |------|-------|----------|--------|
-| **opus** | 11 | Deep reasoning, architecture, research | orchestrator, reasoning-engine, context-specialist, software-architect, debugger-pro, research-expert, research-spark-orchestrator, neural-network-master, nonlinear-dynamics-expert, simulation-expert, statistical-physicist |
+| **opus** | 8 | Deep reasoning, architecture, research | software-architect, debugger-pro, research-expert, research-spark-orchestrator, neural-network-master, nonlinear-dynamics-expert, simulation-expert, statistical-physicist |
 | **sonnet** | 13 | Standard development and analysis | app-developer, automation-engineer, devops-architect, quality-specialist, sre-expert, systems-engineer, jax-pro, julia-ml-hpc, julia-pro, ml-expert, pinn-engineer, python-pro, sci-workflow-engineer |
 | **haiku** | 1 | Fast, simple tasks | documentation-expert |
 
@@ -110,10 +108,10 @@ plugin.json → hub skill → routing decision tree → sub-skill
 
 ## Resources
 
-- [Agent Reference](agents.md) — All 25 agents with model tiers and delegation patterns
+- [Agent Reference](agents.md) — All 22 agents with model tiers and delegation patterns
 - [Commands Reference](commands.md) — 14 registered + 21 skill-invoked commands
 - [Integration Map](../integration-map.rst) — Suite dependencies, MCP server roles, skill coverage
-- [Agent Teams Guide](../agent-teams-guide.md) — 10 focused teams with 20 variants (codebase-aware recommender)
+- [Agent Teams Guide](../agent-teams-guide.md) — 10 focused teams with 19 variants (codebase-aware recommender)
 - [Glossary](../glossary.rst) — Hub Skill, Sub-Skill, Agent Team, Routing Decision Tree
 - [GitHub Repository](https://github.com/imewei/MyClaude)
 

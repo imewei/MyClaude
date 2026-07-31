@@ -121,8 +121,7 @@ The other two families (inference-time scaling and autonomous research loops) ar
 
 - **LLM evaluation** — every self-improving system needs a metric; design the evaluation harness before the optimizer. See `llm-evaluation`.
 - **Prompt engineering** — the atomic-level technique side; DSPy / RLAIF sit on top of it. Use `sci-workflow-engineer` for prompt codegen workflows.
-- **LLM applications** — RAG, agentic, multi-modal patterns that self-improving AI enhances. See `llm-application-patterns`.
-- **Agent systems** — multi-agent coordination primitives that autonomous research loops build on. See `multi-agent-coordination`.
+- **LLM applications** — RAG, agentic, multi-modal patterns that self-improving AI enhances. See `llm-application-dev`.
 - **Research methodology** — applying self-improving AI to literature review, hypothesis generation, experiment design. See `research-methodology` in the `research-suite` plugin (or its hub `research-practice`).
 
 ---

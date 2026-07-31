@@ -1,6 +1,6 @@
 # Command Reference
 
-**15 Registered Commands** | **19 Skill-Invoked Commands** | **Version:** 3.5.2
+**15 Registered Commands** | **15 Skill-Invoked Commands** | **Version:** 3.5.2
 
 Commands fall into two categories:
 - **Registered commands** are declared in `plugin.json` and available as user-facing `/slash-commands`.
@@ -45,15 +45,6 @@ Commands fall into two categories:
 ## Skill-Invoked Commands
 
 These commands exist on disk and are triggered by skills during workflows. They are **not** available as direct `/slash-commands`.
-
-### Agent Core — 4 Skill-Invoked
-
-| Command | Description |
-|---------|-------------|
-| `agent-build` | AI agent creation, optimization, and prompt engineering |
-| `ai-assistant` | Build production-ready AI assistants with NLU and response generation |
-| `docs-lookup` | Query library documentation using Context7 MCP |
-| `reflection` | AI reasoning analysis, session retrospectives, and research optimization |
 
 ### Dev Suite — 13 Skill-Invoked
 

@@ -1,8 +1,8 @@
 # Agent Teams Guide for MyClaude Plugin Suites
 
-> 10 ready-to-use team configurations with 20 variants, leveraging 22 MyClaude agents + 18 official plugin agents across 3 suites.
+> 10 ready-to-use team configurations with 19 variants, leveraging 22 MyClaude agents + 18 official plugin agents across 3 suites.
 >
-> **v3.3.0:** Consolidated from 27 teams to 10 teams with a variant system (`--var MODE=x`). Zero function loss — every capability from every absorbed team is reachable via a variant. 20 aliases provide backward compatibility.
+> **v3.3.0:** Consolidated from 27 teams to 10 teams with a variant system (`--var MODE=x`). Zero function loss — every capability from every absorbed team is reachable via a variant. 19 aliases provide backward compatibility.
 
 ## Prerequisites
 
@@ -78,7 +78,7 @@ Enable agent teams (experimental) in your settings:
 | 4 | api-infra | infra, config | APIs + cloud + CI/CD + config | 3-4 |
 | 5 | sci-compute | bayesian, julia-sciml, julia-ml, dynamics, md-sim, desktop, reproduce | All scientific computing | 4 |
 | 6 | modernize | -- | Legacy migration + refactoring | 4 |
-| 7 | ai-engineering | multi-agent | LLM apps + RAG + multi-agent | 4 |
+| 7 | ai-engineering | -- | LLM apps + RAG | 3 |
 | 8 | ml-deploy | data, perf | Model deploy + data + performance | 4 |
 | 9 | docs-publish | research | Documentation + reproducibility | 4 |
 | 10 | plugin-forge | -- | Claude Code extensions | 4 |
@@ -323,7 +323,7 @@ Legacy migration, technology modernization, or major refactoring where the exist
 
 ## Team 7: AI Engineering
 
-Build production AI applications -- RAG systems, LLM-powered apps, multi-agent orchestration, and prompt R&D.
+Build production AI applications -- RAG systems, LLM-powered apps, and prompt R&D.
 
 ### Agents (by variant)
 
@@ -345,7 +345,7 @@ Build production AI applications -- RAG systems, LLM-powered apps, multi-agent o
 
 ### Signals
 
-Required: python + llm-libs. Strong: `prompts/`, `rag/`, vector DB. Auto-variant: multi-agent if `agents/` + `tools/` + langgraph.
+Required: python + llm-libs. Strong: `prompts/`, `rag/`, vector DB.
 
 ---
 
@@ -493,7 +493,7 @@ done until the reviewer's critical issues are addressed.
 
 ## Alias Table
 
-All 20 aliases for backward compatibility with previous team names:
+All 19 aliases for backward compatibility with previous team names:
 
 | # | Alias | Resolves To |
 |---|-------|-------------|
@@ -514,9 +514,8 @@ All 20 aliases for backward compatibility with previous team names:
 | 15 | `debug-numerical` | `debug --var MODE=numerical` |
 | 16 | `debug-schema` | `debug --var MODE=schema` |
 | 17 | `llm-app` | `ai-engineering` |
-| 18 | `multi-agent` | `ai-engineering --var MODE=multi-agent` |
-| 19 | `data-pipeline` | `ml-deploy --var MODE=data` |
-| 20 | `perf-optimize` | `ml-deploy --var MODE=perf` |
+| 18 | `data-pipeline` | `ml-deploy --var MODE=data` |
+| 19 | `perf-optimize` | `ml-deploy --var MODE=perf` |
 
 ---
 
