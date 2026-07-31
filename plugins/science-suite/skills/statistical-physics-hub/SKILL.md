@@ -39,6 +39,12 @@ FFS, TIS / RETIS, TPS, AMS, WE, OPS / WESTPA / pyretis, milestoning, and cloning
 ### [Extreme Value Statistics](../extreme-value-statistics/SKILL.md)
 GEV (block-maxima) and GPD (peaks-over-threshold) fits, tail-index estimators (Hill / Pickands / moment), return-level plots, non-stationary EVT, and the boundary between power-law SOC and heavy-tail EVT analyses.
 
+### [Glass & Collective Dynamics](../glass-and-collective-dynamics/SKILL.md)
+Glass transition, jamming, aging, dynamical heterogeneity, and percolation theory.
+
+### [Physical Learning Systems](../physical-learning-systems/SKILL.md)
+Coupled learning, contrastive Hebbian learning in physical networks, and plasticity/memory in disordered materials.
+
 ## Routing Decision Tree
 
 ```
@@ -69,6 +75,12 @@ What is the statistical physics task?
 +-- Extreme-value distributions on magnitudes (GEV, GPD, tail index, return level)?
 |   --> science-suite:extreme-value-statistics
 |
++-- Glass transition / jamming / aging / dynamical heterogeneity / percolation?
+|   --> science-suite:glass-and-collective-dynamics
+|
++-- Physical/energy-based learning / coupled learning / contrastive Hebbian learning in physical networks?
+|   --> science-suite:physical-learning-systems
+|
 +-- None of the above / concern is ambiguous?
     --> Delegate to statistical-physicist for open-ended triage, or clarify the
         primary concern and re-enter the routing decision tree.
@@ -86,6 +98,8 @@ What is the statistical physics task?
 | Replica exchange, umbrella sampling | `science-suite:advanced-simulations` |
 | FFS / TIS / WE / cloning / rare events / SOC / avalanche | `science-suite:rare-events-sampling` |
 | GEV / GPD / Hill / POT / tail-index / return level | `science-suite:extreme-value-statistics` |
+| Glass transition, jamming, aging, percolation | `science-suite:glass-and-collective-dynamics` |
+| Coupled learning, physical/energy-based learning, plasticity in disordered materials | `science-suite:physical-learning-systems` |
 
 ## Checklist
 
