@@ -16,7 +16,7 @@ Orchestrator for continuum-scale materials engineering. Routes problems to the a
 ## Core Skills
 
 ### [FEM/FEA](../fem-fea/SKILL.md)
-Weak-form formulation, mesh convergence, element selection, nonlinear solvers. For mesh-connectivity graph representations, see `science-suite:graph-theory`.
+Weak-form formulation, mesh convergence, element selection, nonlinear solvers. For mesh-connectivity graph representations, see [Graph Theory](../graph-theory/SKILL.md).
 
 ### [Constitutive Equations](../constitutive-equations/SKILL.md)
 Linear/nonlinear viscoelasticity, hyperelastic models (Neo-Hookean, Mooney-Rivlin), Prony series fitting.

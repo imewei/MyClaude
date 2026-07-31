@@ -42,6 +42,7 @@ Enable agent teams (experimental) in your settings:
 | | julia-pro | `science-suite:julia-pro` | Julia HPC, SciML |
 | | julia-ml-hpc | `science-suite:julia-ml-hpc` | Julia ML/DL/HPC, Lux.jl, CUDA.jl |
 | | sci-workflow-engineer | `science-suite:sci-workflow-engineer` | Scientific LLM workflows, RAG, codegen |
+| | continuum-mechanics-engineer | `science-suite:continuum-mechanics-engineer` | FEM/FEA, constitutive modeling, DMA/rheology, transient networks, nanocomposites |
 
 ### Official Plugin Agents
 

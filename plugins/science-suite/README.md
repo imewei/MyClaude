@@ -4,7 +4,7 @@ Domain-specific scientific computing suite for high-performance computing, Julia
 
 ## Overview
 
-Science Suite provides 11 specialized agents (4 opus, 7 sonnet) covering JAX, Julia, physics, ML/DL, and nonlinear dynamics. Its 14 hub skills route to 112 sub-skills spanning nonlinear dynamics, Bayesian inference, statistical physics, simulation, and more. Opus agents handle deep reasoning (simulation design, bifurcation theory, DL architecture) while sonnet agents handle implementation (JAX kernels, Julia code, Python systems). SessionStart hooks auto-detect JAX devices, GPU availability, and Julia environments. *(Research methodology moved to `research-suite` in v3.4.0.)*
+Science Suite provides 12 specialized agents (7 opus, 4 sonnet, 1 haiku) covering JAX, Julia, physics, ML/DL, continuum mechanics, and nonlinear dynamics. Its 30 hub skills route to 107 sub-skills spanning nonlinear dynamics, Bayesian inference, statistical physics, simulation, and more. Opus agents handle deep reasoning (simulation design, bifurcation theory, DL architecture) while sonnet agents handle implementation (JAX kernels, Julia code, Python systems). SessionStart hooks auto-detect JAX devices, GPU availability, and Julia environments. *(Research methodology moved to `research-suite` in v3.4.0.)*
 
 ## Quick Start / Usage Examples
 
@@ -46,12 +46,13 @@ Science Suite provides 11 specialized agents (4 opus, 7 sonnet) covering JAX, Ju
 | `sci-workflow-engineer` | sonnet | LLM integration into scientific pipelines, codegen, automation |
 | `neural-network-master` | opus | DL architecture, PINNs, theory, diagnostics |
 | `nonlinear-dynamics-expert` | opus | Bifurcation theory, chaos, network dynamics, pattern formation |
+| `continuum-mechanics-engineer` | opus | FEM/FEA, constitutive modeling, DMA/rheology, transient networks, nanocomposites |
 
 ## Commands
 
 This suite registers **2 slash commands**: `/md-sim` (molecular dynamics simulation setup) and `/benchmark` (performance benchmarking). Reference command templates (`/run-experiment`, `/analyze-data`, `/adopt-code`) exist on disk for users to copy and adapt, but are not invoked directly. `/paper-review` was removed in v3.4.0; use `scientific-review` in `research-suite` instead.
 
-## Skills (14 hubs → 112 sub-skills)
+## Skills (30 hubs → 107 sub-skills)
 
 Organized by domain:
 

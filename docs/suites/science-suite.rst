@@ -1,9 +1,9 @@
 Scientific Computing Suite
 ==========================
 
-High-performance computing, physics/chemistry simulations, ML/DL, Julia, JAX, and data science workflows. Uses the :term:`Hub Skill` architecture with 14 hubs routing to 112 sub-skills. Optimized for Claude Opus 4.7 with extended context and adaptive reasoning.
+High-performance computing, physics/chemistry simulations, ML/DL, Julia, JAX, and data science workflows. Uses the :term:`Hub Skill` architecture with 30 hubs routing to 107 sub-skills.
 
-**Version:** 3.5.2 | **11 Agents** | **2 Registered Commands** | **17 Hubs → 110 Sub-skills** | **5 Hook Events**
+**Version:** 3.5.2 | **12 Agents** | **2 Registered Commands** | **30 Hubs → 107 Sub-skills** | **5 Hook Events**
 
 .. note::
 
@@ -24,7 +24,7 @@ Agents
 
 .. agent:: simulation-expert
    :description: Expert in molecular dynamics, statistical mechanics, and numerical methods (HPC/GPU).
-   :model: opus
+   :model: sonnet
    :version: 3.5.2
 
 .. agent:: statistical-physicist
@@ -49,7 +49,7 @@ Agents
 
 .. agent:: pinn-engineer
    :description: Physics-informed AI for PINNs, NeuralPDE.jl, DeepXDE, BPINN/BNNODE, physics-constrained losses, and inverse PDEs. Renamed from ai-engineer in v3.5.2.
-   :model: sonnet
+   :model: opus
    :version: 3.5.2
 
 .. agent:: python-pro
@@ -66,6 +66,11 @@ Agents
    :description: Classical ML/MLOps with scikit-learn, XGBoost/LightGBM, Optuna, SHAP, and MLflow/W&B. Delegates DL to neural-network-master. Moved to haiku in v3.5.2.
    :model: haiku
    :version: 3.5.2
+
+.. agent:: continuum-mechanics-engineer
+   :description: Expert in FEM/FEA, constitutive modeling, DMA/rheology, transient networks (CAN/vitrimers), and nanocomposites.
+   :model: opus
+   :version: 4.0.0
 
 Registered Commands
 -------------------

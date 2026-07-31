@@ -76,7 +76,7 @@ class TestAgentRepurposing:
 
     def test_pinn_engineer_model(self):
         fm = _frontmatter(SCIENCE / "agents/pinn-engineer.md")
-        assert fm.get("model") == "sonnet", "pinn-engineer must use sonnet (implementation-heavy, not theory-heavy)"
+        assert fm.get("model") == "opus", "pinn-engineer must use opus (theory-heavy PINN/inverse-PDE work, swapped in the science-suite expand plan)"
 
     def test_sci_workflow_engineer_model(self):
         fm = _frontmatter(SCIENCE / "agents/sci-workflow-engineer.md")
