@@ -4,7 +4,7 @@ Domain-specific scientific computing suite for high-performance computing, Julia
 
 ## Overview
 
-Science Suite provides 12 specialized agents (7 opus, 4 sonnet, 1 haiku) covering JAX, Julia, physics, ML/DL, continuum mechanics, and nonlinear dynamics. Its 30 hub skills route to 107 sub-skills spanning nonlinear dynamics, Bayesian inference, statistical physics, simulation, and more. Opus agents handle deep reasoning (simulation design, bifurcation theory, DL architecture) while sonnet agents handle implementation (JAX kernels, Julia code, Python systems). SessionStart hooks auto-detect JAX devices, GPU availability, and Julia environments. *(Research methodology moved to `research-suite` in v3.4.0.)*
+Science Suite provides 12 specialized agents (7 opus, 4 sonnet, 1 haiku) covering JAX, Julia, physics, ML/DL, continuum mechanics, and nonlinear dynamics. Its 30 hub skills route to 107 sub-skills spanning nonlinear dynamics, Bayesian inference, statistical physics, simulation, and more. Opus agents handle deep reasoning (PINN/inverse-PDE theory, bifurcation theory, DL architecture) while sonnet agents handle implementation (JAX kernels, Julia code, Python systems, MD/HPC simulation). SessionStart hooks auto-detect JAX devices, GPU availability, and Julia environments. *(Research methodology moved to `research-suite` in v3.4.0.)*
 
 ## Quick Start / Usage Examples
 
@@ -39,10 +39,10 @@ Science Suite provides 12 specialized agents (7 opus, 4 sonnet, 1 haiku) coverin
 | `julia-pro` | opus | Julia, SciML, DifferentialEquations.jl |
 | `julia-ml-hpc` | sonnet | Julia ML, Deep Learning, HPC (Lux.jl, CUDA.jl, MPI.jl) |
 | `ml-expert` | haiku | Classical ML, MLOps, data engineering |
-| `simulation-expert` | opus | HPC, molecular dynamics, multiscale |
+| `simulation-expert` | sonnet | HPC, molecular dynamics, multiscale |
 | `statistical-physicist` | opus | Soft matter, non-equilibrium, correlations |
 | `python-pro` | sonnet | Python systems engineering, performance |
-| `pinn-engineer` | sonnet | Physics-informed neural networks, NeuralPDE.jl, DeepXDE |
+| `pinn-engineer` | opus | Physics-informed neural networks, NeuralPDE.jl, DeepXDE |
 | `sci-workflow-engineer` | sonnet | LLM integration into scientific pipelines, codegen, automation |
 | `neural-network-master` | opus | DL architecture, PINNs, theory, diagnostics |
 | `nonlinear-dynamics-expert` | opus | Bifurcation theory, chaos, network dynamics, pattern formation |

@@ -1,6 +1,6 @@
 # Agent Reference
 
-**22 Agents** across 3 suites | **Version:** 3.5.2
+**23 Agents** across 3 suites | **Version:** 3.5.2
 
 Agents are specialized AI personas with defined model tiers, tool access, and domain expertise. Each agent runs at a specific model tier: **opus** (deep reasoning), **sonnet** (standard tasks), or **haiku** (fast/simple).
 
@@ -35,7 +35,7 @@ Scientific research workflows: peer review, idea-to-plan refinement, and methodo
 
 ---
 
-## Science Suite (`science-suite`) — 11 Agents
+## Science Suite (`science-suite`) — 12 Agents
 
 Scientific computing, HPC, physics simulations, ML/DL, and nonlinear dynamics. `research-expert` moved to `research-suite` in v3.4.0. In v3.5.2, `jax-pro` and `julia-pro` upgraded to opus; `ml-expert` moved to haiku.
 
@@ -45,10 +45,11 @@ Scientific computing, HPC, physics simulations, ML/DL, and nonlinear dynamics. `
 | `julia-pro` | opus | Julia/SciML expert — dispatch, type stability, DiffEq.jl, ModelingToolkit, SciMLSensitivity, UDE, SINDy, Turing, Optimization.jl. Delegates ML/HPC and productionization to peers |
 | `neural-network-master` | opus | Deep learning authority: architecture design, theory, and implementation (Transformers, CNNs, diagnostics) |
 | `nonlinear-dynamics-expert` | opus | Bifurcation analysis, chaos, coupled networks, pattern formation, and equation discovery (SINDy/UDE) |
-| `simulation-expert` | opus | Molecular dynamics, statistical mechanics, and numerical methods (HPC/GPU) |
+| `simulation-expert` | sonnet | Molecular dynamics, statistical mechanics, and numerical methods (HPC/GPU) |
 | `statistical-physicist` | opus | Correlation functions, non-equilibrium dynamics, and ensemble theory |
+| `pinn-engineer` | opus | Physics-informed AI for PINNs, NeuralPDE.jl, DeepXDE, BPINN/BNNODE, and inverse PDEs |
+| `continuum-mechanics-engineer` | opus | FEM/FEA, constitutive modeling, DMA/rheology, transient networks (CAN/vitrimers), and nanocomposites |
 | `julia-ml-hpc` | sonnet | Julia ML, Deep Learning, and HPC (Lux.jl, MLJ.jl, CUDA.jl, MPI.jl, GNNLux) |
-| `pinn-engineer` | sonnet | Physics-informed AI for PINNs, NeuralPDE.jl, DeepXDE, BPINN/BNNODE, and inverse PDEs |
 | `python-pro` | sonnet | Python systems engineering: type-driven development, Rust extensions, and performance |
 | `sci-workflow-engineer` | sonnet | Scientific LLM workflows: JAX/Julia codegen prompts, experiment templates, and AI-assisted pipelines |
 | `ml-expert` | haiku | Classical ML/MLOps with scikit-learn, XGBoost/LightGBM, Optuna, SHAP, and MLflow/W&B |
@@ -59,8 +60,8 @@ Scientific computing, HPC, physics simulations, ML/DL, and nonlinear dynamics. `
 
 | Tier | Count | Agents |
 |------|-------|--------|
-| **opus** | 10 | software-architect, debugger-pro, research-expert, research-spark-orchestrator, jax-pro, julia-pro, neural-network-master, nonlinear-dynamics-expert, simulation-expert, statistical-physicist |
-| **sonnet** | 10 | app-developer, automation-engineer, devops-architect, quality-specialist, sre-expert, systems-engineer, julia-ml-hpc, pinn-engineer, python-pro, sci-workflow-engineer |
+| **opus** | 11 | software-architect, debugger-pro, research-expert, research-spark-orchestrator, jax-pro, julia-pro, neural-network-master, nonlinear-dynamics-expert, statistical-physicist, pinn-engineer, continuum-mechanics-engineer |
+| **sonnet** | 10 | app-developer, automation-engineer, devops-architect, quality-specialist, sre-expert, systems-engineer, julia-ml-hpc, simulation-expert, python-pro, sci-workflow-engineer |
 | **haiku** | 2 | documentation-expert, ml-expert |
 
 ---
