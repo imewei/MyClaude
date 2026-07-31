@@ -46,8 +46,9 @@ What is the task category?
 |   --> science-suite:rlaif-training
 |
 +-- Python systems / packaging / performance?
-|   (These are co-located here for scientific Python workflows;
-|    for general Python toolchain, see dev-suite python-toolchain hub)
+|   (Canonical Python-tooling home for this marketplace as of the
+|    dev-suite trim -- covers general uv/packaging/async/profiling
+|    as well as scientific-specific concerns)
 |   --> science-suite:python-development / science-suite:python-packaging-advanced
 |   --> science-suite:rust-extensions / science-suite:type-driven-design / science-suite:modern-concurrency
 |   --> science-suite:robust-testing (Hypothesis property-based tests, mutation testing)
