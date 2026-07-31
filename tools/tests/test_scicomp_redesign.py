@@ -1,5 +1,5 @@
 # tools/tests/test_scicomp_redesign.py
-"""Tests for the scientific computing plugin redesign (v3.5.2).
+"""Tests for the scientific computing plugin redesign (v4.0.0).
 
 All tests are written before implementation. Run with:
   uv run pytest tools/tests/test_scicomp_redesign.py -v
@@ -179,8 +179,8 @@ class TestManifests:
     ], ids=["dev-suite", "research-suite", "science-suite"])
     def test_version_is_351(self, suite_dir):
         plugin = _plugin_json(suite_dir)
-        assert plugin["version"] == "3.5.2", \
-            f"{suite_dir.name} version must be 3.5.2, got {plugin['version']}"
+        assert plugin["version"] == "4.0.0", \
+            f"{suite_dir.name} version must be 4.0.0, got {plugin['version']}"
 
     def test_science_suite_has_md_sim_command(self):
         plugin = _plugin_json(SCIENCE)

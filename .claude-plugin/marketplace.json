@@ -7,7 +7,7 @@
   },
   "metadata": {
     "description": "3-suite marketplace for scientific research, software development, and scientific computing",
-    "version": "3.5.2",
+    "version": "4.0.0",
     "based_on": "claude-code-workflows v2.0.0",
     "reorganization_date": "2026-03-31",
     "last_updated": "2026-04-19",
@@ -19,7 +19,7 @@
       "name": "dev-suite",
       "source": "./plugins/dev-suite",
       "description": "Unified software development lifecycle: architecture, implementation, CI/CD, testing, debugging, and deployment",
-      "version": "3.5.2",
+      "version": "4.0.0",
       "author": {
         "name": "Wei Chen",
         "url": "https://myclaude.readthedocs.io/en/latest/"
@@ -77,7 +77,7 @@
       "name": "science-suite",
       "source": "./plugins/science-suite",
       "description": "Scientific computing, HPC, simulation, and data analysis workflows",
-      "version": "3.5.2",
+      "version": "4.0.0",
       "author": {
         "name": "Wei Chen",
         "url": "https://myclaude.readthedocs.io/en/latest/"
@@ -129,7 +129,7 @@
       "name": "research-suite",
       "source": "./plugins/research-suite",
       "description": "Scientific research workflows — three tracks: scientific-review (peer review of other people's manuscripts → .docx), research-spark (8-stage artifact-gated refinement of your own rough idea), and research-practice (methodology hub: study design, paper reproduction, quality assessment, scientific writing, evidence synthesis)",
-      "version": "3.5.2",
+      "version": "4.0.0",
       "author": {
         "name": "Wei Chen",
         "url": "https://myclaude.readthedocs.io/en/latest/"
