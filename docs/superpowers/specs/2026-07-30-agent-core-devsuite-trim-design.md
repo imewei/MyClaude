@@ -38,23 +38,29 @@ decision.
 
 In scope: `plugins/agent-core/`, `plugins/dev-suite/`.
 Out of scope: `plugins/science-suite/`, `plugins/research-suite/` (separate
-expand specs), version bump coordination beyond these two plugins (handled
-at execution time via `make validate`).
+expand specs); deciding a version-numbering policy beyond recording the
+required bump (§8) — the mechanics are handled at execution time via
+`make validate`.
 
 ## 3. agent-core: retire
 
 Delete `plugins/agent-core/` entirely. Rationale:
 
 - Its 2 registered commands (`ultra-think`, `team-assemble`) are not part of
-  the user's actual workflow (confirmed — not selected as in-use).
+  the user's actual workflow (confirmed — not selected as in-use). 4 more
+  command files exist on disk but were never registered in `plugin.json`
+  (`agent-build`, `ai-assistant`, `docs-lookup`, `reflection`) — same
+  zero-risk-deletion logic as the unregistered dev-suite commands in §4, and
+  removed by the same `git rm -r`.
 - Its 3 agents (orchestrator, context-specialist, reasoning-engine) and 18
-  sub-skills (agent-hub, agent-systems, llm-engineering, reasoning-and-memory,
-  thinkfirst, multi-agent-coordination, reflection-framework,
-  self-improving-agents, memory-system-patterns, etc.) are fully covered by
-  `ruflo-core`, `ruflo-swarm`, `superpowers`, and ecc's `agent-*` skill
-  family (`agent-architecture-audit`, `agent-eval`,
+  skill directories — 5 registered hubs (`agent-hub`, `agent-systems`,
+  `llm-engineering`, `reasoning-and-memory`, `thinkfirst`) plus 13 sub-skills
+  (`multi-agent-coordination`, `reflection-framework`,
+  `self-improving-agents`, `memory-system-patterns`, etc.) — are fully
+  covered by `ruflo-core`, `ruflo-swarm`, `superpowers`, and ecc's `agent-*`
+  skill family (`agent-architecture-audit`, `agent-eval`,
   `agent-harness-construction`, `agentic-engineering`, `agentic-os`,
-  `harness-optimizer`, `continuous-learning-v2`, `prompt-optimizer`).
+  `harness-audit`, `continuous-learning-v2`, `prompt-optimizer`).
 - No content from agent-core is scientific-computing-specific, so there is
   nothing to migrate into science-suite or dev-suite.
 
@@ -86,16 +92,16 @@ equivalent (ecc's per-language `*-build-resolver` agents, `api-connector-builder
 | Agent | New scope |
 |---|---|
 | `documentation-expert` | Docs for numerical/ML/SciML codebases — API specs for JAX/Julia interfaces, Sphinx integration, notebook-to-doc pipelines. For general documentation, defer to `ecc:update-docs`. |
-| `software-architect` | Numerical/ML/simulation system architecture — JAX pipeline boundaries, SciML module design, data/compute separation for scientific workloads. For general system architecture, defer to `ecc:architect`. |
+| `software-architect` | Numerical/ML/simulation system architecture — JAX pipeline boundaries, SciML module design, data/compute separation for scientific workloads. For general system architecture, defer to `ecc`'s architecture skills. |
 | `app-developer` | Scientific application development — PyQt/PySide6 scientific GUIs, JAX/Julia app integration. For general app development, defer to `ecc` per-framework reviewers. |
 | `automation-engineer` | Scientific workflow automation — experiment pipelines, Airflow/data-pipeline orchestration for numerical workloads. For general CI/CD automation, defer to `ecc:deployment-patterns`/`ecc:docker-patterns`. |
 | `quality-specialist` | Scientific-computing validation — numerical precision, property-based mathematical invariants, reproducibility checks. For general test coverage, defer to `ecc:test-coverage`. |
-| `sre-expert` | Reliability for long-running scientific workloads — HPC job monitoring, GPU/cluster observability, simulation checkpoint/resume. For general SRE, defer to `ecc:observability`. |
+| `sre-expert` | Reliability for long-running scientific workloads — HPC job monitoring, GPU/cluster observability, simulation checkpoint/resume. For general SRE, defer to `ruflo-observability:observe`. |
 
 **Cut (3, zero command references found in any of the 10 kept commands):**
 `debugger-pro`, `devops-architect`, `systems-engineer`. Generic ground
 already covered by `mattpocock-skills:diagnosing-bugs`, `ecc:build-fix`
-family, `ruflo-core:coder`, `ecc:homelab-*`/`ecc:kubernetes-patterns`.
+family, `ecc:homelab-*`/`ecc:kubernetes-patterns`.
 
 Rewrite is scoped to each agent's frontmatter `description` and system
 prompt intro — not a full rewrite of technical content, which may already be
@@ -108,22 +114,33 @@ scientific-computing-adjacent.
 `frontend-and-mobile`, `frontend-mobile-engineering`, `graphql-patterns`,
 `mobile-testing-patterns`, `modern-javascript-patterns`,
 `nodejs-backend-patterns`, `typescript-advanced-types`,
-`typescript-project-scaffolding`, `websocket-patterns`.
+`typescript-project-scaffolding`, `websocket-patterns`. Of these,
+`frontend-and-mobile` is one of dev-suite's 12 registered hub entries in
+`plugin.json`'s `skills` array — its removal means deleting that manifest
+entry directly. The other 8 are unregistered sub-skill directories, reachable
+only through hub routing per this repo's manifest convention, so their
+removal touches no manifest.
 
 **Cut — duplicate of an actively maintained equivalent (1):**
-`plugin-syntax-validator` (near-identical to `plugin-dev:plugin-validator`).
+`plugin-syntax-validator` (near-identical to
+`ruflo-plugin-creator:validate-plugin`).
 
 **Move to science-suite, merging with existing overlap rather than
 duplicating (5):** `async-python-patterns`, `python-packaging`,
 `python-performance-optimization`, `python-toolchain`,
-`uv-package-manager`. science-suite already has `python-development` and
+`uv-package-manager`. Of these, `python-toolchain` is likewise one of
+dev-suite's 12 registered hubs — moving it requires deleting its
+`plugin.json` entry, not just relocating a directory; the other 4 are
+unregistered sub-skills. science-suite already has `python-development` and
 `python-packaging-advanced` — the science-suite expand spec must reconcile
 these into one Python-tooling home rather than landing 5 more files
 alongside near-duplicates. Tracked as an input to that spec, not resolved
 here.
 
 **Keep as-is, backs kept commands/agents, no clean 1:1 ecosystem
-duplicate identified (remaining ~35 skills):** e.g. `debugging-toolkit`,
+duplicate identified (remaining ~46 skills — 10 hubs + ~36 sub-skills, i.e.
+the 61 skill directories on disk minus the 9+1 cuts and 5 moves above):**
+e.g. `debugging-toolkit`,
 `comprehensive-validation`, `git-workflow`, `ci-cd-pipelines`,
 `architecture-and-infra`, `testing-and-quality`, `observability-and-sre`,
 `database-patterns`, `security-ci-template`, `documentation-standards`,
@@ -163,12 +180,21 @@ the reference removed as part of the same change, not left dangling.
   dangling cross-references into deleted agent-core/dev-suite paths.
 - `uv run pytest` passes unchanged (no test currently targets agent-core or
   the cut dev-suite surface by name — verify during implementation).
-- `plugins/dev-suite/.claude-plugin/plugin.json` commands/agents/skills
-  arrays match the keep-lists in §4–§6 exactly.
+- `plugins/dev-suite/.claude-plugin/plugin.json` `commands`/`agents` arrays
+  match the §4/§5 keep-lists exactly. The `skills` array (which per this
+  repo's convention lists hub skills only, never sub-skills) drops exactly
+  the two cut/moved entries that are registered hubs — `frontend-and-mobile`
+  and `python-toolchain` — leaving 10 of the original 12; the remaining §6
+  cuts and moves are unregistered sub-skill directories and require no
+  array edit.
 - Root README and any doc cross-links to `agent-core` removed.
-- Version bump: `dev-suite` gets a minor bump (breaking removal of agents/
-  commands/skills); `plugin.json`, `pyproject.toml`, and README version
-  references stay in sync per existing `make validate` drift check.
+- Version bump: this is a breaking removal of agents/commands/skills, which
+  warrants a major bump under semver, not the minor bump originally proposed
+  here. `agent-core`, `dev-suite`, `science-suite`, and `research-suite`
+  currently share one synced version (`3.5.2` in every `plugin.json` and in
+  `pyproject.toml` today) enforced by `make validate`'s drift check, so the
+  bump is repo-wide — there is no independent "`dev-suite`-only" version to
+  bump.
 - `uv.lock`'s pre-existing modification (present before this session) stays
   out of any commit this spec produces.
 
@@ -176,7 +202,7 @@ the reference removed as part of the same change, not left dangling.
 
 - `three-brain` vs `ecc:multi-*` vs `ccg` routing comparison — separate
   follow-up, not blocking.
-- Itemized audit of the remaining ~35 "keep as-is" dev-suite skills against
+- Itemized audit of the remaining ~46 "keep as-is" dev-suite skills against
   every installed ecc equivalent — optional deeper pass if the user wants it
   after this spec ships.
 - science-suite Python-tooling consolidation (receiving the 5 moved skills)

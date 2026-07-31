@@ -33,8 +33,12 @@ Two threads, per explicit user direction:
 ## 2. Scope
 
 In scope: `plugins/science-suite/` only. Absorbing the 5 Python-tooling
-skills displaced from dev-suite (§3) is in scope; re-litigating dev-suite's
-own trim is not (already specced separately).
+skills displaced from dev-suite (§8) is in scope; re-litigating dev-suite's
+own trim is not (already specced separately). Ownership split: this spec
+owns folding the incoming content into science-suite; physical removal of
+the 5 directories under `plugins/dev-suite/skills/` and the
+`python-toolchain` manifest entry are executed by the sibling trim spec
+(`2026-07-30-agent-core-devsuite-trim-design.md`), not duplicated here.
 
 ## 3. Model-version staleness fix
 
@@ -47,6 +51,18 @@ own trim is not (already specced separately).
   language reflecting the actual per-agent opus/sonnet/haiku split (§4) —
   the suite is multi-tier, not opus-only, and hasn't been since the
   2026-05-05 redesign.
+- Same README pass, independent staleness to fix while the file is open:
+  the agent table currently mislabels `jax-pro`/`julia-pro` as sonnet
+  (actually opus) and `ml-expert` as sonnet (actually haiku), and the
+  summary line "11 specialized agents (4 opus, 7 sonnet)" is wrong today
+  (actual current split is 6 opus / 4 sonnet / 1 haiku). Rewrite both to
+  the **post-change** state (12 agents: 7 opus / 4 sonnet / 1 haiku, per
+  §4/§5/§10) rather than restoring today's already-incorrect numbers. Also
+  fix "This suite registers zero slash commands" (README.md:52 — false;
+  `plugin.json` registers 2) and "14 hubs → 112 sub-skills" (README.md:54
+  — doesn't match `plugin.json`'s 29 registered hubs); update both to
+  actual counts at implementation time, since §5/§7 will shift the totals
+  again.
 
 ## 4. Model-tier re-audit (11 agents)
 
@@ -94,7 +110,10 @@ physics-informed approaches to `pinn-engineer`, particle/MD methods to
 `simulation-expert`, pure JAX numerics to `jax-pro`; cross-references
 `statistical-physicist`'s percolation/correlation content (§6) for the
 microstructure-statistics side of nanocomposite filler networks rather than
-duplicating it.
+duplicating it. Note: no percolation content currently exists anywhere in
+science-suite (checked the `correlation-*` family and
+`statistical-physics-hub` — zero matches) — §6 must author this content,
+not merely cross-reference existing material.
 
 New hub skill: `continuum-mechanics-and-rheology` (registered in
 `plugin.json`, following the existing hub pattern), with sub-skills for
@@ -115,7 +134,9 @@ overlap with existing `correlation-*` skill family before adding new
 sub-skill files (avoid re-creating content that already exists under a
 different name). Nanocomposite filler-network percolation/correlation
 statistics (§5) live here too, cross-referenced from
-`continuum-mechanics-and-rheology`.
+`continuum-mechanics-and-rheology` — this is new content to author (no
+existing skill currently covers percolation thresholds or filler-network
+statistics), not a routing-only change.
 
 Also extend to **physical/energy-based learning problems in disordered and
 soft-matter systems** — not limited to soft matter, per user clarification:
@@ -142,20 +163,38 @@ follow-on plan, not a further design decision.
 
 ## 8. Python-tooling consolidation (absorbing dev-suite's 5 skills)
 
-Checked against existing science-suite skills — this is a **merge-and-delete**,
-not a copy-in; no new files needed:
+Checked against existing science-suite skills — this is a **merge**, not a
+copy-in: content folds into existing science-suite skills; the source
+directories under `plugins/dev-suite/skills/` are removed by the sibling
+trim spec (§2), not by this task:
 
 | Incoming (from dev-suite trim) | Existing science-suite home | Action |
 |---|---|---|
-| `async-python-patterns` | `python-development` (already covers TaskGroups/structured concurrency) | Fold any unique content in, delete incoming file |
-| `python-toolchain` | `python-development` (already covers uv-based packaging) | Fold any unique content in, delete incoming file |
-| `python-packaging` | `python-packaging-advanced` (already covers uv/pyproject.toml/workspaces) | Fold any unique content in, delete incoming file |
-| `uv-package-manager` | `python-packaging-advanced` | Fold any unique content in, delete incoming file |
-| `python-performance-optimization` | `performance-tuning` (existing science-suite skill) | Fold any unique content in, delete incoming file |
+| `async-python-patterns` | `python-development` (already covers TaskGroups/structured concurrency) | Fold any unique content in |
+| `python-toolchain` | `python-development` (already covers uv-based packaging) | Fold any unique content in |
+| `python-packaging` | `python-packaging-advanced` (already covers uv/pyproject.toml/workspaces) | Fold any unique content in |
+| `uv-package-manager` | `python-packaging-advanced` | Fold any unique content in |
+| `python-performance-optimization` | No clean match — see note below | Add a new Python-profiling section to `python-development`; do not fold into `performance-tuning` |
 
 Diff each incoming/existing pair during implementation — only port content
 that's genuinely additive (e.g. a specific flag or workflow the existing
 skill doesn't mention). Do not blindly concatenate.
+
+`performance-tuning`'s title ("Julia Performance Tuning"), description
+(`@code_warntype`, `@profview`, BenchmarkTools.jl), and Expert Agent
+pointer (`julia-pro`) are Julia-specific throughout — folding
+`python-performance-optimization`'s Python profiling content
+(`cProfile`, `line_profiler`, `py-spy`, `memory_profiler`) there would
+contradict its own framing and confuse skill-matching. `python-development`
+only briefly mentions `py-spy` in a checklist item, with no profiling
+depth — it's the correct destination, but needs a real new section, not a
+one-line fold.
+
+Also: the one confirmed cross-reference to an absorbed name —
+`research-and-domains/SKILL.md:51` names "dev-suite python-toolchain
+hub" — must be repointed at the new science-suite home as part of this
+task (a repo-wide check found no other cross-references to the remaining
+4 incoming names inside science-suite).
 
 ## 9. Accuracy audit against CLAUDE.md toolchain
 
@@ -169,37 +208,61 @@ targeted verification):
   `@bayes`) vs MTK v11 (`@pinn`) split accurately, not a single version.
 - `julia-graph-neural-networks`: reflect GNNLux/GNNGraphs/GNNlib DEV
   overrides against monorepo master, not a released version.
-- `bifurcation-analysis`: must NOT recommend `BifurcationKit` (blocked on
-  Julia 1.12, per CLAUDE.md prohibited list) — confirm it correctly routes
-  to Python `tick` or existing skill guidance instead.
-- `point-processes` equivalent content: confirm no reference to a Julia
-  `PointProcesses` package (registry tagging pending, not usable) without
-  the caveat.
+- `bifurcation-analysis`: currently recommends `BifurcationKit.jl` as
+  primary throughout (description line, Quick Start section, and its
+  Python-escape-hatch table, which marks `juliacall` → `BifurcationKit` as
+  "Recommended") — this needs actual correction, not just confirmation,
+  since BifurcationKit is blocked on Julia 1.12 (per CLAUDE.md prohibited
+  list). The skill's own escape-hatch table already lists the right
+  fallback: demote the `juliacall → BifurcationKit` row from "Recommended"
+  and promote `AUTO-07p` (Fortran, already documented, Julia-free)
+  instead — Python `tick` is a Hawkes/point-process library, not a
+  numerical-continuation substitute, and should not be the routing target
+  here. `julia-pro.md` carries the same BifurcationKit-as-primary content
+  in several places (domain capability table, Domain 6 continuation
+  section, skill-routing table, decision tree) and needs the same
+  correction throughout; §4's "confirmed unchanged" list is about model
+  tier only, not skill/agent content, so this is a separate content fix.
+- `point-processes`: currently lists `PointProcesses.jl` as "Best starting
+  point in Julia" with no caveat that it isn't usable (registry tagging
+  pending, per CLAUDE.md prohibited list) — add the caveat or demote the
+  recommendation; confirming the absence of a caveat isn't sufficient,
+  since one is in fact missing today.
 - `julia-hpc-distributed` / `parallel-computing`: confirm no
   `SequentialMonteCarlo` recommendation in any multi-package Julia env
   (RNGPool SIGABRT on 1.12, per CLAUDE.md prohibited list).
 - Any Flux.jl recommendation for new SciML neural closures should be
   flagged/corrected to Lux.jl per CLAUDE.md.
 
-## 10. plugin.json updates
+## 10. plugin.json & doc updates
 
 - Add `continuum-mechanics-engineer` to `agents` array.
 - Add `continuum-mechanics-and-rheology` to `skills` array (new hub).
-- Remove the 5 absorbed dev-suite skill names if they were ever
-  cross-referenced by name anywhere in science-suite docs (they weren't
-  registered here before, so likely a no-op, but check).
+- The `research-and-domains/SKILL.md:51` cross-reference to the absorbed
+  `python-toolchain` name is handled in §8, not repeated here — it is not
+  a no-op (a repo-wide check confirmed the hit).
 - Update `keywords` (drop `opus-4.7`, add nothing that pins a version
   number).
-- Agent count: 11 → 12. Version bump: minor (new agent + new hub skill +
-  tier changes).
+- Agent count: 11 → 12. Version bump: per repo convention all 4 plugin
+  manifests and `pyproject.toml` stay version-synced (`make validate`
+  enforces this) — this is one coordinated minor bump shared with the
+  sibling trim spec's changes, not a science-suite-only bump.
+- Sphinx docs enumerating science-suite agents and skill/hub counts
+  (`docs/suites/science-suite.rst`, which has an `.. agent::` directive per
+  agent plus a summary line currently reading "11 Agents ... 17 Hubs → 110
+  Sub-skills"; `docs/agent-teams-guide.md`, which has a per-agent routing
+  table) need a new `continuum-mechanics-engineer` entry and corrected
+  counts — locate the exact tables at implementation time.
 
 ## 11. Validation / acceptance criteria
 
 - `make validate` passes with zero new errors.
 - `PYTHONPATH=. python3 tools/validation/context_budget_checker.py` — new
   `continuum-mechanics-and-rheology` sub-skills stay under the 4,000-token
-  (200K/2%) budget per file, consistent with all 223 currently-checked
-  skills passing.
+  (200K/2%) budget per file, consistent with the checker's current
+  repo-wide baseline of 223/223 passing (223 is the total across all 4
+  plugins, not science-suite alone — science-suite alone currently has 127
+  skill files).
 - `PYTHONPATH=. python3 tools/validation/xref_validator.py` — no dangling
   references from the 5 deleted dev-suite-origin skill names.
 - `uv run pytest` passes unchanged.

@@ -4,9 +4,11 @@
 **Status:** Draft — pending user review
 **Builds on:** `2026-05-05-plugin-scicomp-redesign.md` (implemented — 3
 research-suite commands already landed) and
-`2026-07-30-science-suite-expand-design.md` (approved, adds
-`continuum-mechanics-engineer` and extends `statistical-physicist`, both of
-which this spec wires into research-suite's cross-suite routing).
+`2026-07-30-science-suite-expand-design.md` (Draft — pending user review,
+same as this spec; proposes adding `continuum-mechanics-engineer` and
+extending `statistical-physicist`, both of which this spec wires into
+research-suite's cross-suite routing once that spec ships — see §6 for
+sequencing).
 **Third and final sub-project** of the marketplace redesign.
 
 ---
@@ -55,14 +57,25 @@ pass without a note of why it was already considered.
 
 ## 3. Overlap framing additions
 
-Add a "SEE ALSO" line (matching the exact pattern in
-`plugins/dev-suite/commands/smart-debug.md`) to:
+Add a "SEE ALSO" block in the exact two-line blockquote format used by
+`plugins/dev-suite/commands/smart-debug.md`:
+
+```
+> **SEE ALSO:** <one-line contrast with the generic tool>
+> Use this command/skill for <one-line positive scope statement>.
+```
+
+to:
 
 - `plugins/research-suite/commands/lit-review.md`: "For a general literature
-  search without the structured evidence-grading/citation-check pipeline,
-  use `ecc:scientific-thinking-literature-review` or `ecc:deep-research`.
-  This command produces a structured, artifact-gated review tied to
-  research-suite's methodology hub."
+  search without structured claim extraction or PRISMA/GRADE synthesis, use
+  `ecc:scientific-thinking-literature-review` or `ecc:deep-research`. Use
+  this command for research-suite's structured topic-scan pipeline
+  (claim extraction, evidence synthesis, gap identification) via the
+  `research-practice` hub." (Do not describe `lit-review` as
+  "artifact-gated" — that term applies to the separate `research-spark`
+  pipeline, not this command; `research-practice`'s own description
+  explicitly distinguishes the two.)
 - `plugins/research-suite/skills/research-quality-assessment/SKILL.md`: "For
   general scholarly-work feedback, use
   `ecc:scientific-thinking-scholar-evaluation`. This skill applies
@@ -73,17 +86,45 @@ Add a "SEE ALSO" line (matching the exact pattern in
   research synthesis outside the research-spark pipeline's artifact
   contract.
 
+`ecc:*` and `ruflo-goals:*` are external plugins from other marketplaces —
+not part of this repo's `.claude-plugin/marketplace.json` (which lists only
+`agent-core`, `dev-suite`, `science-suite`, `research-suite`). Their
+names/availability cannot be repo-validated; the SEE ALSO text is
+informational framing for environments where they happen to be installed,
+not a hard dependency.
+
 No functional change — description/routing text only, same pattern already
 proven in dev-suite.
 
 ## 4. Cross-suite routing tie-in to science-suite's new domains
 
-Update the routing lines identified in `paper-implement.md` and
-`replicate.md` (currently: "Routes to `research-expert` ... then
-cross-delegates to `jax-pro` (JAX) or `julia-pro` (Julia) for
-implementation") to include the two new/extended science-suite
-specialists:
+The binary JAX-or-Julia framing lives in `paper-implement.md`/`replicate.md`
+today — both commands' routing prose ("cross-delegates to `jax-pro` (JAX) or
+`julia-pro` (Julia)") and their `argument-hint`/`description` frontmatter
+constrain `--framework` to `jax|julia`. (`research-expert.md`'s own
+delegation table currently lists `ml-expert`/`simulation-expert`/
+`sci-workflow-engineer`/`python-pro` and doesn't mention `jax-pro`/
+`julia-pro` at all — it has no existing JAX/Julia framing to fix; this spec
+is the first time its delegation list gains implementation-specialist
+entries.)
 
+**Framework-independent routing** (no frontmatter/interface change): keep
+`--framework` meaning "implementation language for the chosen specialist,"
+not "which specialist." `research-expert`'s methodology-parsing step (already
+part of its job) determines the paper's *domain* and picks the specialist;
+`--framework` (where applicable) only disambiguates JAX vs. Julia within a
+numerics-based specialist. This keeps §5's "routing text only, no structural
+additions" true — no `argument-hint`/`description` edits to
+`paper-implement.md`/`replicate.md` are needed, only their routing-prose
+lines and `research-expert.md`'s delegation table.
+
+Update the routing lines in `paper-implement.md` and `replicate.md` (and add
+a new delegation table to `research-expert.md`, which has none of these
+entries today) to route implementation to whichever specialist matches the
+paper's method:
+
+- **`jax-pro`** / **`julia-pro`** — general JAX/Julia numerics papers
+  (existing routing, unchanged).
 - **`continuum-mechanics-engineer`** — for papers whose core method is FEM/
   FEA, constitutive modeling, rheology/DMA, transient-network (CAN/vitrimer)
   theory, or nanocomposite mechanics.
@@ -91,26 +132,34 @@ specialists:
   jamming/collective phenomena or physical/energy-based learning in
   disordered systems, in addition to its existing phase-transition/
   correlation/MCMC-diagnostics routing.
-
-Update `research-expert`'s own delegation list (methodology parsing already
-identifies the paper's domain) to route implementation to whichever of
-`jax-pro`/`julia-pro`/`continuum-mechanics-engineer`/`statistical-physicist`/
-`pinn-engineer`/`simulation-expert` actually matches the paper's method,
-rather than the current binary JAX-or-Julia framing which assumes every
-reproduced paper is a JAX/Julia numerics paper.
+- **`pinn-engineer`** — for papers whose core method is a physics-informed
+  neural network or NeuralPDE-style solve.
+- **`simulation-expert`** — for papers whose core method is a physics/HPC
+  simulation (MD, agent-based, or similar) rather than a differentiable-
+  programming implementation.
 
 `replicate.md`'s third routing hop (`quality-specialist` for numerical
-validation gates) is unaffected — that's a dev-suite agent kept in the trim
-spec, still valid regardless of which science-suite specialist did the
-implementation.
+validation gates — confirmed present in `dev-suite`'s `plugin.json`) is
+unaffected — that's a dev-suite agent kept in the trim spec, still valid
+regardless of which science-suite specialist did the implementation.
 
 ## 5. Validation / acceptance criteria
 
-- `make validate` passes with zero new errors.
+- `make validate` passes with zero new errors. Note: neither `make validate`
+  nor `make verify`/`verify-fast` invoke `xref_validator.py` — it is a
+  separate, not-currently-make-wired check and must be run explicitly (next
+  bullet); passing `make validate` alone does not confirm the new
+  cross-references resolve.
 - `PYTHONPATH=. python3 tools/validation/xref_validator.py` — new
   cross-references to `continuum-mechanics-engineer` resolve (agent exists
   once the science-suite spec ships; sequence implementation accordingly —
-  see §6).
+  see §6). Reference it in a form the validator's regexes actually match
+  (e.g. `` agent `continuum-mechanics-engineer` `` or the absolute path
+  `plugins/science-suite/agents/continuum-mechanics-engineer.md`) — a bare
+  `` `continuum-mechanics-engineer` `` mention does not match any of
+  `xref_validator.py`'s agent-reference patterns (`agent:\s*name`, `@name`,
+  `` agent `name` ``) and will silently fail to register as a
+  cross-reference at all, let alone fail loudly.
 - `uv run pytest` passes unchanged.
 - `paper-implement.md`/`replicate.md`/`research-expert.md` routing tables
   list all 6 candidate implementation specialists (not just
@@ -122,12 +171,15 @@ implementation.
 ## 6. Implementation sequencing note
 
 This spec's §4 changes depend on `continuum-mechanics-engineer` actually
-existing (from the science-suite spec). Implementation order: science-suite
-spec ships first, then this spec's routing updates, or both land in the same
-implementation pass with science-suite's agent file created before
-research-suite's routing tables reference it — either works, but
-`xref_validator` will correctly fail if research-suite's edits land first in
-isolation.
+existing (from the science-suite spec, itself still Draft as of this
+writing). Implementation order: science-suite spec ships first, then this
+spec's routing updates, or both land in the same implementation pass with
+science-suite's agent file created before research-suite's routing tables
+reference it — either works, but only if the references use a form
+`xref_validator` actually recognizes (see §5's note on reference form). Using
+a bare backtick mention instead would not "fail loudly" if research-suite's
+edits land first in isolation — the validator simply wouldn't register it as
+a cross-reference to check, so the dangling reference would pass silently.
 
 ## 7. Out of scope / follow-ups
 
