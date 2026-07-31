@@ -29,6 +29,7 @@
     "agent-teams"
   ],
   "agents": [
+    "./agents/continuum-mechanics-engineer.md",
     "./agents/jax-pro.md",
     "./agents/julia-ml-hpc.md",
     "./agents/julia-pro.md",
