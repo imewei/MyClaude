@@ -252,6 +252,8 @@ The Julia GNN ecosystem splits cleanly into three layers — pick the layer that
 
 Most application code lives in `GNNLux` + `GNNGraphs`. Drop into `GNNlib` only when an existing layer doesn't fit and you need custom message semantics.
 
+> **DEV-override note**: in the `@gnn` env, `GNNLux`/`GNNGraphs`/`GNNlib` are **DEV overrides tracking the GraphNeuralNetworks.jl monorepo `master`** (commit `493a3f8`), not released versions. API details in this skill may drift from the last tagged release -- verify against the installed `@gnn` environment rather than published package docs if something doesn't match.
+
 ## Benchmark datasets
 
 Use `MLDatasets` for canonical graph benchmarks (Cora, CiteSeer, PubMed, OGB-arXiv, ZINC, QM9). Combine with `OneHotArrays` for label encoding:

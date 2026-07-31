@@ -29,6 +29,8 @@ For multimodal Bayesian inference and parallel tempering workflows, delegate to:
 
 ## When to use Pigeons (symptom-driven)
 
+> **Version note**: this skill targets the `@bayes` env's **Pigeons DEV override** (PR #409, commit `4d981068`), paired with **DynamicPPL v0.40** -- not a released Pigeons version. A DEV branch's API can drift from the last tagged release, so verify against the installed `@bayes` environment rather than published Pigeons.jl docs if something doesn't match.
+
 Reach for Pigeons when one or more of these holds:
 
 | Symptom | Why NUTS fails | Why Pigeons helps |

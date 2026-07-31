@@ -14,6 +14,8 @@ For symbolic differential equation modeling with ModelingToolkit.jl, delegate to
 
 Symbolic modeling with automatic equation simplification.
 
+> **Version split across envs**: this repo runs two incompatible MTK generations. `@sciml` and `@bayes` pin **MTK v9 / Symbolics v6**. `@pinn` is isolated on **MTK v11 / Symbolics v7** (required by NeuralPDE). Code and API details below may not transfer as-is between the two -- check which env you're targeting before assuming an API surface.
+
 ---
 
 ## Basic Pattern

@@ -102,10 +102,10 @@ Sample with NUTS from `numpyro-core-mastery`, diagnose with `mcmc-diagnostics`. 
 
 | Package | Role |
 |---------|------|
-| **`PointProcesses.jl`** | Unified `AbstractPointProcess` interface — Poisson, Hawkes, marked processes; `simulate`, `logdensity`, `fit_mle`. Best starting point in Julia. |
+| **`PointProcesses.jl`** | Unified `AbstractPointProcess` interface — Poisson, Hawkes, marked processes; `simulate`, `logdensity`, `fit_mle`. Best starting point in Julia -- **caveat: registry tagging is pending** (per this repo's CLAUDE.md prohibited-package list), so it is **not currently installable/usable**. Use Python `tick` (above) or this skill's other Julia packages instead. |
 | **`HawkesProcesses.jl`** | Lightweight Hawkes simulation and MLE fitting; focused on univariate / low-dimensional multivariate cases. |
 | **`MultivariateHawkesProcesses.jl`** | Large-dimensional mutually exciting Hawkes; branching-ratio estimation on graphs. |
-| **`Turing.jl` + `PointProcesses.jl`** | Fully-Bayesian Hawkes by wrapping the log-density in a `Turing.@model`. Compose with `consensus-mcmc-pigeons` for multimodal posteriors. |
+| **`Turing.jl` + `PointProcesses.jl`** | Fully-Bayesian Hawkes by wrapping the log-density in a `Turing.@model`. Compose with `consensus-mcmc-pigeons` for multimodal posteriors. **Blocked** while `PointProcesses.jl` registry tagging is pending -- see caveat above. |
 
 ---
 

@@ -1,11 +1,11 @@
 ---
 name: bifurcation-analysis
-description: Numerical continuation and bifurcation analysis with BifurcationKit.jl. Covers codimension-1 (saddle-node, Hopf, pitchfork, period-doubling) and codimension-2 (Bogdanov-Takens, cusp, Bautin) bifurcations, normal forms, branch switching, and periodic orbit continuation. Julia-first; use JAX vmap for parameter sweeps around critical points. Use when computing bifurcation diagrams, tracking steady-state branches, or identifying critical transitions in dynamical systems.
+description: Numerical continuation and bifurcation analysis. Covers codimension-1 (saddle-node, Hopf, pitchfork, period-doubling) and codimension-2 (Bogdanov-Takens, cusp, Bautin) bifurcations, normal forms, branch switching, and periodic orbit continuation. BifurcationKit.jl is blocked on Julia 1.12 (MiniQhull >=0.4 build failure) -- use AUTO-07p (Fortran) as the working continuation engine, with JAX vmap for parameter sweeps around critical points. Use when computing bifurcation diagrams, tracking steady-state branches, or identifying critical transitions in dynamical systems.
 ---
 
 # Bifurcation Analysis
 
-Numerical continuation and bifurcation detection using BifurcationKit.jl. Julia-first workflow with JAX vmap for parameter sweeps around identified critical points.
+Numerical continuation and bifurcation detection. **BifurcationKit.jl is blocked on Julia 1.12** (`MiniQhull >=0.4` build failure across all OSes, per this repo's CLAUDE.md prohibited-package list) -- use **AUTO-07p** (Fortran) as the working continuation engine instead, with JAX vmap for parameter sweeps around identified critical points.
 
 ---
 
@@ -21,6 +21,8 @@ For complex bifurcation problems requiring deep domain expertise, delegate to:
 ---
 
 ## BifurcationKit.jl Quick Start
+
+> **Blocked on Julia 1.12**: `BifurcationKit.jl` cannot currently be installed -- its `MiniQhull >=0.4` dependency fails to build on Julia 1.12 across all OSes (per this repo's CLAUDE.md prohibited-package list). The API below is retained for reference and for environments pinned to an older Julia. For working continuation today, use **AUTO-07p** (Fortran) -- see the Python escape hatch table below.
 
 ```julia
 using BifurcationKit, LinearAlgebra, Plots
@@ -248,11 +250,11 @@ No production-grade pure-Python continuation package exists for PDE/codim-2 work
 
 | Tool | Status | Notes |
 |------|--------|-------|
-| **`juliacall` → BifurcationKit** | **Recommended** | Full API from Python via `pip install juliacall` |
-| **AUTO-07p** | Maintained, Fortran | Build from source; macOS/Linux only |
+| **AUTO-07p** | **Recommended**, Fortran | Build from source; macOS/Linux only |
+| **`juliacall` → BifurcationKit** | Blocked (`MiniQhull >=0.4` build failure on Julia 1.12) | Full API from Python via `pip install juliacall`, but not installable until BifurcationKit's Julia 1.12 support lands |
 | **PyDSTool** | Unmaintained (~2019) | Broken on modern NumPy |
 
-Use `juliacall`: define vector field in `.jl` file, call BifurcationKit through attribute-style access. For parameter sweeps *around* known critical points (not continuation), use JAX `vmap` + eigenvalue analysis (see JAX Integration above).
+Use **AUTO-07p**: build from source (Fortran, macOS/Linux only) and drive it via its CLI/file-based interface. `juliacall` → BifurcationKit is not currently usable on Julia 1.12 (see caveat above); revisit once upstream fixes the `MiniQhull` build. For parameter sweeps *around* known critical points (not continuation), use JAX `vmap` + eigenvalue analysis (see JAX Integration above).
 
 ---
 

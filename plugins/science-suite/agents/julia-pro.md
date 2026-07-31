@@ -70,7 +70,7 @@ Performance optimization and type stability analysis triggers julia-pro.
 | **Optimization** | JuMP.jl / Optimization.jl | Mathematical programming (LP/QP/MIP) and scientific optimization |
 | **DevOps** | Pkg / Test / Aqua | Package development, CI/CD, registration, documentation |
 | **Modern SciML** | Lux.jl + SciMLSensitivity | Neural DEs, adjoint sensitivity, UDEs, explicit parameterization |
-| **Nonlinear Dynamics** | DynamicalSystems.jl + BifurcationKit | Bifurcation continuation, Lyapunov spectra, attractor reconstruction |
+| **Nonlinear Dynamics** | DynamicalSystems.jl + AUTO-07p (Fortran) | Bifurcation continuation, Lyapunov spectra, attractor reconstruction -- BifurcationKit.jl blocked on Julia 1.12 (MiniQhull build failure) |
 | **Data-Driven Modeling** | DataDrivenDiffEq + Symbolics | SINDy, symbolic regression, equation discovery |
 
 ---
@@ -407,7 +407,7 @@ println(result.basis)  # symbolic equations replacing the NN
 
 ---
 
-## Domain 6: Nonlinear Dynamics (DynamicalSystems.jl + BifurcationKit.jl)
+## Domain 6: Nonlinear Dynamics (DynamicalSystems.jl + AUTO-07p)
 
 ### DynamicalSystems.jl — Chaos Analysis
 
@@ -431,6 +431,8 @@ D_corr = correlationdimension(emb)
 
 ### BifurcationKit.jl — Continuation & Bifurcation Analysis
 
+**Blocked on Julia 1.12**: `BifurcationKit.jl` cannot currently be installed -- its `MiniQhull >=0.4` dependency fails to build on Julia 1.12 across all OSes (per this repo's CLAUDE.md prohibited-package list). Use **AUTO-07p** (Fortran, build from source) for working continuation today. The API below is retained for reference / older Julia installs only.
+
 ```julia
 using BifurcationKit
 
@@ -449,7 +451,7 @@ opts = ContinuationPar(p_min=-2.0, p_max=2.0, ds=0.01, max_steps=500)
 br = continuation(prob_bif, PALC(), opts)
 ```
 
-See bifurcation-analysis and chaos-attractors skills for advanced workflows.
+See bifurcation-analysis and chaos-attractors skills for advanced workflows, including the AUTO-07p escape hatch.
 
 ---
 
@@ -509,7 +511,7 @@ Sub-skills in `science-suite` that name this agent as an expert reference:
 | `bayesian-pinn` | NeuralPDE.jl BNNODE / BayesianPINN — internal AdvancedHMC path for PINN uncertainty |
 | `equation-discovery` | DataDrivenDiffEq.jl SINDy, STLSQ / SR3, symbolic regression from trajectory data |
 | `bayesian-sindy-workflow` (with `statistical-physicist`) | Bayesian sparse regression for equation discovery — Python-primary NumPyro NUTS worked example with a short Turing sidebar covering the UQ-SINDy pattern via DataDrivenDiffEq.jl. Cross-linked to `bayesian-ude-workflow` for combined Bayesian UDE + SINDy symbolic extraction. |
-| `bifurcation-analysis` | BifurcationKit.jl continuation, codim-2 bifurcations, normal forms, branch switching, juliacall escape hatch for Python users |
+| `bifurcation-analysis` | Continuation, codim-2 bifurcations, normal forms, branch switching; AUTO-07p (Fortran) recommended -- BifurcationKit.jl/juliacall escape hatch blocked on Julia 1.12 (MiniQhull build failure) |
 | `catalyst-reactions` | Catalyst.jl reaction networks, JumpProcesses.jl, PDMP, jump-diffusion, SBML bridges |
 | `neural-pde` | Deterministic PINNs with NeuralPDE.jl + MethodOfLines.jl + ModelingToolkit symbolic PDE |
 | `ml-force-fields` (with `ml-expert` and `simulation-expert`) | Julia ACE stack: ACEpotentials.jl (v0.10, Julia 1.12), PotentialLearning.jl (DPP/kDPP active subsampling, LBasisPotential fitting), Molly.jl native MD with AtomsCalculators.jl integration, differentiable MD on CUDA/KernelAbstractions |
@@ -574,7 +576,7 @@ Problem Type?
 │   └── Symbolic Recovery → UDE + SINDy pipeline
 ├── Nonlinear Dynamics
 │   ├── Lyapunov / Chaos → DynamicalSystems.jl
-│   ├── Bifurcation Diagrams → BifurcationKit.jl
+│   ├── Bifurcation Diagrams → AUTO-07p (BifurcationKit.jl blocked on Julia 1.12)
 │   ├── Attractor Reconstruction → embed() + delay estimation
 │   └── Theory/Classification → DELEGATE to nonlinear-dynamics-expert
 ├── Data-Driven Modeling
