@@ -451,7 +451,7 @@ opts = ContinuationPar(p_min=-2.0, p_max=2.0, ds=0.01, max_steps=500)
 br = continuation(prob_bif, PALC(), opts)
 ```
 
-See bifurcation-analysis and chaos-attractors skills for advanced workflows, including the AUTO-07p escape hatch.
+See bifurcation-analysis skill for advanced workflows, including the AUTO-07p escape hatch.
 
 ---
 

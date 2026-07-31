@@ -85,7 +85,7 @@ sol = solve(ensemble_prob, Tsit5(), EnsembleThreads(), trajectories=100)
 
 ## Continuation Methods
 
-Use [BifurcationKit.jl](https://github.com/bifurcationkit/BifurcationKit.jl) for parameter continuation and bifurcation analysis. See the `bifurcation-analysis` skill for advanced workflows.
+**Blocked on Julia 1.12**: [BifurcationKit.jl](https://github.com/bifurcationkit/BifurcationKit.jl) cannot currently be installed -- its `MiniQhull >=0.4` dependency fails to build on Julia 1.12 across all OSes. Use **AUTO-07p** (Fortran) for working continuation today. The code below is retained for reference / older Julia installs. See the `bifurcation-analysis` skill for the full picture and advanced workflows.
 
 ```julia
 using BifurcationKit

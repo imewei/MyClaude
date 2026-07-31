@@ -257,7 +257,7 @@ rp = RecurrencePlot(x, recurrence_rate=0.05)
 rqa = {"DET": rp.determinism(), "LAM": rp.laminarity(), "Lmax": rp.max_diaglength()}
 ```
 
-**Notes**: `pyRQA` abandoned (use `pyunicorn`). `PyDSTool` unmaintained (use `juliacall` + BifurcationKit). `EntropyHub` install from source. None are JAX-native; use `vmap` pattern above for GPU sweeps.
+**Notes**: `pyRQA` abandoned (use `pyunicorn`). `PyDSTool` unmaintained (use **AUTO-07p**; `juliacall` + BifurcationKit is blocked on Julia 1.12 -- see `bifurcation-analysis`). `EntropyHub` install from source. None are JAX-native; use `vmap` pattern above for GPU sweeps.
 
 ## Julia → Python interop via PythonCall.jl
 

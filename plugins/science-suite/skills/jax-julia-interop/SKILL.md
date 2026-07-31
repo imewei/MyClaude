@@ -1,6 +1,6 @@
 ---
 name: jax-julia-interop
-description: Bridge JAX (Python) and Julia SciML ecosystems using PythonCall.jl and juliacall. Use when combining BifurcationKit with JAX vmap, calling Julia solvers from Python, or exchanging arrays between ecosystems.
+description: Bridge JAX (Python) and Julia SciML ecosystems using PythonCall.jl and juliacall. Use when combining Julia continuation/DiffEq solvers with JAX vmap, calling Julia solvers from Python, or exchanging arrays between ecosystems. Note: the BifurcationKit examples below are blocked on Julia 1.12 (MiniQhull build failure) -- see bifurcation-analysis skill for the AUTO-07p alternative.
 ---
 
 # JAX-Julia Interop
@@ -12,7 +12,7 @@ Bridge JAX Python and Julia SciML ecosystems for hybrid scientific computing wor
 ## Expert Agents
 
 - **jax-pro** (`plugins/science-suite/agents/jax-pro.md`): JAX optimization, JIT compilation, vmap/pmap transformations
-- **julia-pro** (`plugins/science-suite/agents/julia-pro.md`): Julia SciML, DifferentialEquations.jl, BifurcationKit
+- **julia-pro** (`plugins/science-suite/agents/julia-pro.md`): Julia SciML, DifferentialEquations.jl, AUTO-07p continuation (BifurcationKit blocked on Julia 1.12)
 
 ---
 
@@ -264,7 +264,7 @@ for step in range(5000):
 
 | Task | Best Ecosystem | Reason |
 |------|---------------|--------|
-| Bifurcation continuation | Julia (BifurcationKit) | Mature continuation algorithms, deflation |
+| Bifurcation continuation | Julia (AUTO-07p; BifurcationKit blocked on Julia 1.12) | Mature continuation algorithms, deflation |
 | Lyapunov spectrum | Julia (DynamicalSystems.jl) | Purpose-built, validated implementations |
 | Parameter sweep >10K points | JAX (vmap) | GPU-parallel vectorization |
 | Network simulation >1K nodes | JAX (jit + vmap) | GPU memory and SIMD parallelism |

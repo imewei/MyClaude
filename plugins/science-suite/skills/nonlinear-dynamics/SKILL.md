@@ -18,7 +18,7 @@ For complex nonlinear dynamics problems requiring deep domain expertise, delegat
 ## Core Skills
 
 ### [Bifurcation Analysis](../bifurcation-analysis/SKILL.md)
-Parameter continuation, codimension-1/2 bifurcations, and stability diagrams. Primary ecosystem: Julia (BifurcationKit.jl) with JAX vmap for parameter sweeps.
+Parameter continuation, codimension-1/2 bifurcations, and stability diagrams. Primary ecosystem: Julia (AUTO-07p; BifurcationKit.jl is blocked on Julia 1.12) with JAX vmap for parameter sweeps.
 
 ### [Chaos & Attractors](../chaos-attractors/SKILL.md)
 Lyapunov exponents, attractor reconstruction, fractal dimensions, and ergodic measures. Primary ecosystem: Julia (DynamicalSystems.jl) with JAX for parallel Lyapunov computation.
@@ -46,7 +46,7 @@ Hybrid physics + neural-network ODEs with posterior uncertainty. A UDE is a dyna
 What is the analysis goal?
 |
 +-- Parameter dependence / stability boundaries?
-|   --> science-suite:bifurcation-analysis (Julia BifurcationKit, JAX vmap sweeps)
+|   --> science-suite:bifurcation-analysis (Julia AUTO-07p -- BifurcationKit blocked on Julia 1.12, JAX vmap sweeps)
 |
 +-- Long-term chaotic behavior / attractor geometry?
 |   --> science-suite:chaos-attractors (Julia DynamicalSystems.jl, JAX parallel Lyapunov)
@@ -80,7 +80,7 @@ What is the analysis goal?
 | Task                        | Julia                       | JAX                         | Python (NumPy-based)                                   |
 |-----------------------------|-----------------------------|-----------------------------|--------------------------------------------------------|
 | Symbolic analysis           | ModelingToolkit.jl          | --                          | SymPy (no DAE/index reduction)                         |
-| Analytical continuation     | BifurcationKit.jl           | --                          | **AUTO-07p** (Fortran + Python CLI, installation friction); **recommended practical path**: `juliacall` → `BifurcationKit.jl` — see `bifurcation-analysis` |
+| Analytical continuation     | BifurcationKit.jl (blocked on Julia 1.12, MiniQhull build failure) | --  | **AUTO-07p** (Fortran) — **recommended practical path**; `juliacall` → `BifurcationKit.jl` is blocked until upstream fixes Julia 1.12 support — see `bifurcation-analysis` |
 | GPU parameter sweeps        | --                          | vmap + JIT                  | --                                                     |
 | Large networks (>1K)        | --                          | sparse GPU graphs           | networkx (small-graph reference, not GPU)              |
 | Small networks (<1K)        | DynamicalSystems.jl         | --                          | nolds + pyunicorn + antropy (fragmented)               |
