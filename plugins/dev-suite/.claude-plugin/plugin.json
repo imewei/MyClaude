@@ -55,7 +55,6 @@
     "./skills/data-and-security",
     "./skills/dev-workflows",
     "./skills/observability-and-sre",
-    "./skills/python-toolchain",
     "./skills/testing-and-quality"
   ]
 }

@@ -15,28 +15,28 @@ Orchestrator for backend development across Node.js and Python ecosystems. Route
 
 ## Core Skills
 
-### [Async Python Patterns](../async-python-patterns/SKILL.md)
-FastAPI, asyncio concurrency, and async I/O optimization for Python backends.
-
 ### [API Design Principles](../api-design-principles/SKILL.md)
 REST resource modeling, versioning strategies, pagination, and contract-first design.
 
 ### [Message Queue Patterns](../message-queue-patterns/SKILL.md)
 Producer/consumer workflows, dead-letter queues, and at-least-once delivery guarantees.
 
+### [Error Handling Patterns](../error-handling-patterns/SKILL.md)
+Exception hierarchies, Result types, retry with exponential backoff, circuit breakers, and structured error responses.
+
 ## Routing Decision Tree
 
 ```
 What is the backend concern?
-|
-+-- Python async service / FastAPI / asyncio?
-|   --> dev-suite:async-python-patterns
 |
 +-- REST API design / versioning / contract?
 |   --> dev-suite:api-design-principles
 |
 +-- Async messaging / queues / events?
 |   --> dev-suite:message-queue-patterns
+|
++-- Exception design / retry / circuit breaker / error responses?
+|   --> dev-suite:error-handling-patterns
 |
 +-- None of the above / concern is ambiguous or spans multiple areas?
     --> Delegate to software-architect for open-ended triage, or clarify the
@@ -47,9 +47,9 @@ What is the backend concern?
 
 | Trigger                        | Sub-skill                    |
 |--------------------------------|------------------------------|
-| FastAPI, asyncio, aiohttp      | dev-suite:async-python-patterns        |
 | REST, OpenAPI, versioning      | dev-suite:api-design-principles        |
 | RabbitMQ, Kafka, SQS, queues  | dev-suite:message-queue-patterns       |
+| try/except, retry, circuit breaker | dev-suite:error-handling-patterns  |
 
 ## Checklist
 
