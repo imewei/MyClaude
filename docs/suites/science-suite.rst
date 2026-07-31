@@ -99,7 +99,7 @@ The legacy ``paper-review`` command moved to ``research-suite`` and was then rem
 Hub Skills
 ----------
 
-Skills use a hub architecture: 14 hub skills route to 117 specialized sub-skills.
+Skills use a hub architecture: 30 hub skills route to 107 specialized sub-skills.
 
 Hub: nonlinear-dynamics (6 sub-skills)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
