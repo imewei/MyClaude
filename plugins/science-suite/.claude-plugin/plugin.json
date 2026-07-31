@@ -1,7 +1,7 @@
 {
   "name": "science-suite",
   "version": "4.0.0",
-  "description": "Scientific computing, HPC, physics/chemistry simulations, and data science workflows with extended context and adaptive reasoning for Claude Opus",
+  "description": "Scientific computing, HPC, physics/chemistry simulations, and data science workflows with extended context and adaptive multi-tier model reasoning",
   "author": {
     "name": "Wei Chen",
     "url": "https://myclaude.readthedocs.io/en/latest/"
@@ -23,7 +23,7 @@
     "julia",
     "parallel-computing",
     "claude-code",
-    "opus-4.7",
+    "adaptive-model-tiering",
     "adaptive-thinking",
     "extended-context",
     "agent-teams"

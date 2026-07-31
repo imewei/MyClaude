@@ -1,6 +1,6 @@
 # Science Suite
 
-Domain-specific scientific computing suite for high-performance computing, Julia ML/DL/HPC, specialized physics/chemistry simulations, and data science workflows. Agents primarily collaborate within the suite with only 2 outward delegation edges. Optimized for Claude Opus.
+Domain-specific scientific computing suite for high-performance computing, Julia ML/DL/HPC, specialized physics/chemistry simulations, and data science workflows. Agents primarily collaborate within the suite with only 2 outward delegation edges. Multi-tier model routing: opus for deep-math specialists, sonnet for engineering-heavy work, haiku for mechanical MLOps.
 
 ## Overview
 
@@ -35,10 +35,10 @@ Science Suite provides 11 specialized agents (4 opus, 7 sonnet) covering JAX, Ju
 
 | Agent | Model | Specialization |
 |-------|-------|----------------|
-| `jax-pro` | sonnet | Core JAX, NumPyro, Diffrax, JAX-MD |
-| `julia-pro` | sonnet | Julia, SciML, DifferentialEquations.jl |
+| `jax-pro` | opus | Core JAX, NumPyro, Diffrax, JAX-MD |
+| `julia-pro` | opus | Julia, SciML, DifferentialEquations.jl |
 | `julia-ml-hpc` | sonnet | Julia ML, Deep Learning, HPC (Lux.jl, CUDA.jl, MPI.jl) |
-| `ml-expert` | sonnet | Classical ML, MLOps, data engineering |
+| `ml-expert` | haiku | Classical ML, MLOps, data engineering |
 | `simulation-expert` | opus | HPC, molecular dynamics, multiscale |
 | `statistical-physicist` | opus | Soft matter, non-equilibrium, correlations |
 | `python-pro` | sonnet | Python systems engineering, performance |
@@ -49,7 +49,7 @@ Science Suite provides 11 specialized agents (4 opus, 7 sonnet) covering JAX, Ju
 
 ## Commands
 
-This suite registers **zero slash commands** — every workflow is skill- or agent-driven. Reference command templates (`/run-experiment`, `/analyze-data`, `/adopt-code`) exist on disk for users to copy and adapt, but are not invoked directly. `/paper-review` was removed in v3.4.0; use `scientific-review` in `research-suite` instead.
+This suite registers **2 slash commands**: `/md-sim` (molecular dynamics simulation setup) and `/benchmark` (performance benchmarking). Reference command templates (`/run-experiment`, `/analyze-data`, `/adopt-code`) exist on disk for users to copy and adapt, but are not invoked directly. `/paper-review` was removed in v3.4.0; use `scientific-review` in `research-suite` instead.
 
 ## Skills (14 hubs → 112 sub-skills)
 
