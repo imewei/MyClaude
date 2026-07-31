@@ -20,6 +20,8 @@ For network-coupled dynamics tasks, delegate to the appropriate expert agent:
 
 ## Graph Laplacian Construction
 
+For the underlying spectral graph theory (Laplacian eigenvalues, algebraic connectivity, Fiedler vector), see `science-suite:graph-theory`.
+
 ### Julia (Graphs.jl)
 
 ```julia
