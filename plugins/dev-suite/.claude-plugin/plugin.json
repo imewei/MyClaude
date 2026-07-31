@@ -54,7 +54,6 @@
     "./skills/ci-cd-pipelines",
     "./skills/data-and-security",
     "./skills/dev-workflows",
-    "./skills/frontend-and-mobile",
     "./skills/observability-and-sre",
     "./skills/python-toolchain",
     "./skills/testing-and-quality"
