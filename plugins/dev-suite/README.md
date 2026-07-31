@@ -6,9 +6,9 @@ suite for zero-friction cross-concern agent delegation.
 
 ## Overview
 
-Dev Suite covers the complete software development lifecycle with 9 specialized agents
-(2 opus, 6 sonnet, 1 haiku), 12 registered slash commands, and 9 hub skills routing to
-49 sub-skills. From architecture design through CI/CD to production debugging, every
+Dev Suite covers the complete software development lifecycle with 6 specialized agents
+(1 opus, 4 sonnet, 1 haiku), 10 registered slash commands, and 10 hub skills routing to
+35 sub-skills. From architecture design through CI/CD to production debugging, every
 engineering workflow is covered. Agents delegate across specializations automatically —
 software-architect delegates to quality-specialist for security audits, sre-expert hands
 off to automation-engineer for pipeline fixes.
@@ -52,25 +52,22 @@ off to automation-engineer for pipeline fixes.
 | `quality-specialist` | sonnet | Code review, security audit, test automation |
 | `documentation-expert` | haiku | Technical docs, manuals, tutorials |
 
-## Commands (27)
+## Commands (10 registered)
 
 | Command | Description |
 |---------|-------------|
-| `/scaffold` | TypeScript/Python/React/Julia project scaffolding |
-| `/eng-feature-dev` | End-to-end guided feature development |
-| `/commit` | Intelligent git commit with analysis |
-| `/fix-commit-errors` | Auto-fix GitHub Actions failures |
-| `/double-check` | Multi-dimensional validation (security, perf, a11y) |
-| `/run-all-tests` | Iterative test-and-fix until green |
-| `/test-generate` | Generate comprehensive test suites |
-| `/smart-debug` | Intelligent debugging with multi-mode RCA |
-| `/refactor-clean` | Code quality and SOLID refactoring |
-| `/deps` | Dependency auditing and safe upgrades |
-| `/code-analyze` | Semantic code analysis via Serena MCP |
 | `/docs` | Documentation generation and sync |
-| *+ 15 more* | See plugin.json for full list |
+| `/double-check` | Multi-dimensional validation (security, perf, a11y) |
+| `/eng-feature-dev` | End-to-end guided feature development |
+| `/fix-commit-errors` | Auto-fix GitHub Actions failures |
+| `/merge-all` | Batch-merge and reconcile open branches |
+| `/modernize` | Legacy modernization and migration planning |
+| `/run-all-tests` | Iterative test-and-fix until green |
+| `/smart-debug` | Intelligent debugging with multi-mode RCA |
+| `/test-generate` | Generate comprehensive test suites |
+| `/workflow-automate` | Automate repeatable engineering workflows |
 
-## Skills (9 hubs → 49 sub-skills)
+## Skills (10 hubs → 35 sub-skills)
 
 Covers the complete SDLC:
 
@@ -83,12 +80,11 @@ Covers the complete SDLC:
   accessibility (WCAG), mobile testing
 - **Documentation**: Standards and best practices
 
-## Hooks (7 events)
+## Hooks (6 events)
 
 | Event | Purpose |
 |-------|---------|
 | SessionStart | Auto-detect project stack (language, framework, test runner) |
-| PreToolUse | Guard destructive git ops (push --force, reset --hard, branch -D) |
 | PostToolUse | Auto-lint suggestions after Write/Edit (Python, JS/TS) |
 | SubagentStop | Collect results from quality-specialist |
 | TaskCompleted | Trigger validation checks and suggest git commit |

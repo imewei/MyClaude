@@ -1,13 +1,13 @@
 # Quick Reference Cheatsheet
 
-**3 Suites** | **22 Agents** | **12 Registered Commands** | **27 Hub Skills** (routing to 173 sub-skills; 199 SKILL.md on disk)
-**Version:** 3.5.2
+**3 Suites** | **20 Agents** | **15 Registered Commands** | **51 Hub Skills** (routing to 148 sub-skills; 199 SKILL.md on disk)
+**Version:** 4.0.0
 
 ---
 
 ## The Hub Architecture
 
-MyClaude v3.5.2 uses a **hub-skill architecture**: skills are organized into hub skills (meta-orchestrators) that route to specialized sub-skills. Only hubs are declared in `plugin.json`; sub-skills are discovered through hub routing trees.
+MyClaude v4.0.0 uses a **hub-skill architecture**: skills are organized into hub skills (meta-orchestrators) that route to specialized sub-skills. Only hubs are declared in `plugin.json`; sub-skills are discovered through hub routing trees.
 
 ```
 plugin.json → hub skill → routing decision tree → sub-skill
@@ -23,10 +23,10 @@ plugin.json → hub skill → routing decision tree → sub-skill
 
 | Component | Count | Details |
 |-----------|-------|---------|
-| Agents | 9 | 2 opus, 6 sonnet, 1 haiku |
-| Commands | 12 registered | `/commit`, `/docs`, `/double-check`, `/eng-feature-dev`, `/fix-commit-errors`, `/merge-all`, `/modernize`, `/refactor-clean`, `/run-all-tests`, `/smart-debug`, `/test-generate`, `/workflow-automate` |
-| Skills | 9 hubs → 49 sub | backend-patterns, frontend-and-mobile, architecture-and-infra, testing-and-quality, ci-cd-pipelines, observability-and-sre, python-toolchain, data-and-security, dev-workflows |
-| Hooks | 7 events | SessionStart, PreToolUse, PostToolUse, SubagentStop, TaskCompleted, SessionEnd, StopFailure |
+| Agents | 6 | 1 opus, 4 sonnet, 1 haiku |
+| Commands | 10 registered | `/docs`, `/double-check`, `/eng-feature-dev`, `/fix-commit-errors`, `/merge-all`, `/modernize`, `/run-all-tests`, `/smart-debug`, `/test-generate`, `/workflow-automate` |
+| Skills | 10 hubs → 35 sub | dev-hub, ai-pair, three-brain, architecture-and-infra, backend-patterns, ci-cd-pipelines, data-and-security, dev-workflows, observability-and-sre, testing-and-quality |
+| Hooks | 6 events | SessionStart, PostToolUse, SubagentStop, TaskCompleted, SessionEnd, StopFailure |
 
 ### 2. Research Suite (`research-suite`)
 
@@ -35,9 +35,9 @@ plugin.json → hub skill → routing decision tree → sub-skill
 | Component | Count | Details |
 |-----------|-------|---------|
 | Agents | 2 | research-expert (opus), research-spark-orchestrator (opus) |
-| Commands | 0 registered | (all workflows are skill-driven) |
-| Skills | 4 hubs → 12 sub | scientific-review, research-spark, research-practice, _research-commons |
-| Hooks | 3 events | SessionStart (artifact-resume), TaskCompleted (audit log), SubagentStop (prompt-based artifact gating) |
+| Commands | 3 registered | `/lit-review`, `/paper-implement`, `/replicate` |
+| Skills | 11 hubs → 6 sub | research-hub, experiment-designer, falsifiable-claim, landscape-scanner, numerical-prototype, premortem-critique, research-practice, research-spark, scientific-review, spark-articulator, theory-scaffold |
+| Hooks | 2 events | SessionStart (artifact-resume), TaskCompleted (audit log) |
 
 ### 3. Science Suite (`science-suite`)
 
@@ -45,12 +45,12 @@ plugin.json → hub skill → routing decision tree → sub-skill
 
 | Component | Count | Details |
 |-----------|-------|---------|
-| Agents | 11 | 4 opus, 7 sonnet |
-| Commands | 0 registered | (skill-invoked reference templates on disk) |
-| Skills | 14 hubs → 112 sub | nonlinear-dynamics, jax-computing, julia-language, julia-ml-and-dl, sciml-and-diffeq, correlation-analysis, statistical-physics-hub, deep-learning-hub, ml-and-data-science, llm-and-ai, ml-deployment, simulation-and-hpc, research-and-domains, bayesian-inference |
-| Hooks | 5 events | SessionStart, PreToolUse, PostToolUse, SessionEnd, SubagentStop |
+| Agents | 12 | 7 opus, 4 sonnet, 1 haiku |
+| Commands | 2 registered | `/md-sim`, `/benchmark` (plus `analyze-data`, `run-experiment` on disk, skill-invoked) |
+| Skills | 30 hubs → 107 sub | science-hub, advanced-simulations, bayesian-inference, bayesian-ude-workflow, continuum-mechanics-and-rheology, correlation-analysis, deep-learning, deep-learning-hub, equation-discovery, jax-computing, julia-language, julia-mastery, julia-ml-and-dl, llm-and-ai, machine-learning, md-simulation-setup, ml-and-data-science, ml-deployment, neural-pde, nonlinear-dynamics, parallel-computing, python-development, research-and-domains, sciml-and-diffeq, sciml-modern-stack, self-improving-ai, simulation-and-hpc, statistical-physics, statistical-physics-hub, time-series-analysis |
+| Hooks | 4 events | SessionStart, PostToolUse, SessionEnd, SubagentStop |
 
-**Total hook events across all suites:** 27
+**Total hook events across all suites:** 12
 
 ---
 
@@ -86,9 +86,9 @@ See [Agent Teams Guide](../agent-teams-guide.md) for the full agent composition 
 
 | Tier | Count | Use Case | Agents |
 |------|-------|----------|--------|
-| **opus** | 8 | Deep reasoning, architecture, research | software-architect, debugger-pro, research-expert, research-spark-orchestrator, neural-network-master, nonlinear-dynamics-expert, simulation-expert, statistical-physicist |
-| **sonnet** | 13 | Standard development and analysis | app-developer, automation-engineer, devops-architect, quality-specialist, sre-expert, systems-engineer, jax-pro, julia-ml-hpc, julia-pro, ml-expert, pinn-engineer, python-pro, sci-workflow-engineer |
-| **haiku** | 1 | Fast, simple tasks | documentation-expert |
+| **opus** | 10 | Deep reasoning, architecture, research | software-architect, research-expert, research-spark-orchestrator, continuum-mechanics-engineer, jax-pro, julia-pro, neural-network-master, nonlinear-dynamics-expert, pinn-engineer, statistical-physicist |
+| **sonnet** | 8 | Standard development and analysis | app-developer, automation-engineer, quality-specialist, sre-expert, julia-ml-hpc, python-pro, sci-workflow-engineer, simulation-expert |
+| **haiku** | 2 | Fast, simple tasks | documentation-expert, ml-expert |
 
 ---
 
@@ -108,11 +108,11 @@ See [Agent Teams Guide](../agent-teams-guide.md) for the full agent composition 
 
 ## Resources
 
-- [Agent Reference](agents.md) — All 22 agents with model tiers and delegation patterns
-- [Commands Reference](commands.md) — 14 registered + 21 skill-invoked commands
+- [Agent Reference](agents.md) — All 20 agents with model tiers and delegation patterns
+- [Commands Reference](commands.md) — 15 registered + 2 skill-invoked commands
 - [Integration Map](../integration-map.rst) — Suite dependencies, MCP server roles, skill coverage
 - [Agent Teams Guide](../agent-teams-guide.md) — 10 focused teams with 19 variants (codebase-aware recommender)
 - [Glossary](../glossary.rst) — Hub Skill, Sub-Skill, Agent Team, Routing Decision Tree
 - [GitHub Repository](https://github.com/imewei/MyClaude)
 
-*Generated from v3.5.2 validated marketplace data.*
+*Generated from v4.0.0 validated marketplace data.*

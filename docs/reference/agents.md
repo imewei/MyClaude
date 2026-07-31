@@ -1,25 +1,22 @@
 # Agent Reference
 
-**23 Agents** across 3 suites | **Version:** 3.5.2
+**20 Agents** across 3 suites | **Version:** 4.0.0
 
 Agents are specialized AI personas with defined model tiers, tool access, and domain expertise. Each agent runs at a specific model tier: **opus** (deep reasoning), **sonnet** (standard tasks), or **haiku** (fast/simple).
 
 ---
 
-## Dev Suite (`dev-suite`) — 9 Agents
+## Dev Suite (`dev-suite`) — 6 Agents
 
 Full-stack engineering, infrastructure, CI/CD, quality assurance, and debugging.
 
 | Agent | Model | Description |
 |-------|-------|-------------|
 | `software-architect` | opus | Scalable backend systems, microservices, and high-performance APIs (REST/GraphQL/gRPC) |
-| `debugger-pro` | opus | AI-assisted debugging, log correlation, and complex root cause analysis across distributed systems |
 | `app-developer` | sonnet | Web, iOS, and Android applications. Masters React, Next.js, Flutter, and React Native |
 | `automation-engineer` | sonnet | Software delivery pipelines and Git collaboration. Masters GitHub Actions and GitLab CI |
-| `devops-architect` | sonnet | Multi-cloud architecture (AWS/Azure/GCP), Kubernetes, and Infrastructure as Code (Terraform/Pulumi) |
 | `quality-specialist` | sonnet | Code reviews, security audits, and test automation strategies |
 | `sre-expert` | sonnet | System reliability, observability (monitoring, logging, tracing), and incident response |
-| `systems-engineer` | sonnet | Low-level systems programming (C, C++, Rust, Go) and production-grade CLI tools |
 | `documentation-expert` | haiku | Technical documentation, manuals, and tutorials |
 
 ---
@@ -37,7 +34,7 @@ Scientific research workflows: peer review, idea-to-plan refinement, and methodo
 
 ## Science Suite (`science-suite`) — 12 Agents
 
-Scientific computing, HPC, physics simulations, ML/DL, and nonlinear dynamics. `research-expert` moved to `research-suite` in v3.4.0. In v3.5.2, `jax-pro` and `julia-pro` upgraded to opus; `ml-expert` moved to haiku.
+Scientific computing, HPC, physics simulations, ML/DL, and nonlinear dynamics. `research-expert` moved to `research-suite` in v3.4.0. In v4.0.0, `jax-pro` and `julia-pro` run at opus; `ml-expert` runs at haiku.
 
 | Agent | Model | Description |
 |-------|-------|-------------|
@@ -60,8 +57,8 @@ Scientific computing, HPC, physics simulations, ML/DL, and nonlinear dynamics. `
 
 | Tier | Count | Agents |
 |------|-------|--------|
-| **opus** | 11 | software-architect, debugger-pro, research-expert, research-spark-orchestrator, jax-pro, julia-pro, neural-network-master, nonlinear-dynamics-expert, statistical-physicist, pinn-engineer, continuum-mechanics-engineer |
-| **sonnet** | 10 | app-developer, automation-engineer, devops-architect, quality-specialist, sre-expert, systems-engineer, julia-ml-hpc, simulation-expert, python-pro, sci-workflow-engineer |
+| **opus** | 10 | software-architect, research-expert, research-spark-orchestrator, jax-pro, julia-pro, neural-network-master, nonlinear-dynamics-expert, statistical-physicist, pinn-engineer, continuum-mechanics-engineer |
+| **sonnet** | 8 | app-developer, automation-engineer, quality-specialist, sre-expert, julia-ml-hpc, simulation-expert, python-pro, sci-workflow-engineer |
 | **haiku** | 2 | documentation-expert, ml-expert |
 
 ---
@@ -72,7 +69,7 @@ Agents delegate across suite boundaries when tasks require multiple domains. Key
 
 | From | To | Boundary |
 |------|----|----------|
-| `software-architect` | `devops-architect` | Architecture ↔ Infrastructure |
+| `software-architect` | `sre-expert` | Architecture ↔ Reliability/Infrastructure |
 | `julia-pro` | `julia-ml-hpc` | SciML/ODE ↔ ML training/GPU/HPC |
 | `julia-pro` | `software-architect` (dev-suite) | Scientific computing ↔ Productionization/API design |
 | `jax-pro` | `software-architect` (dev-suite) | JAX implementation ↔ Productionization/API design |
@@ -89,7 +86,7 @@ See the [Integration Map](../integration-map.rst) for full delegation patterns a
 - [Commands Reference](commands.md)
 - [Quick Reference Cheatsheet](cheatsheet.md)
 - [Integration Map](../integration-map.rst) — Suite dependencies and skill coverage
-- [Agent Teams Guide](../agent-teams-guide.md) — 10 focused team configurations with 20 variants
+- [Agent Teams Guide](../agent-teams-guide.md) — 10 focused team configurations with 19 variants
 - [Glossary](../glossary.rst) — Key terms (Hub Skill, Sub-Skill, Agent Team)
 
-*Generated from v3.5.2 validated marketplace data.*
+*Generated from v4.0.0 validated marketplace data.*

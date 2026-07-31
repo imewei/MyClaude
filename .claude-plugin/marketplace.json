@@ -10,7 +10,7 @@
     "version": "4.0.0",
     "based_on": "claude-code-workflows v2.0.0",
     "reorganization_date": "2026-03-31",
-    "last_updated": "2026-04-19",
+    "last_updated": "2026-07-31",
     "total_plugins": 3,
     "note": "v4.0.0: meta-agent orchestration plugin retired (see CHANGELOG); marketplace reduced to 3 plugins. v3.5.2: Full marketplace consistency sync across all 4 plugins, documentation, and project metadata. v3.4.1: Remove redundant `hooks` key from research-suite plugin.json. v3.4.0: Research-suite split out from science-suite; Opus 4.7 sweep; context-specialist elevated to opus. All 4 plugins synced at v3.5.2."
   },
@@ -41,13 +41,10 @@
       "agents": [
         "./agents/app-developer.md",
         "./agents/automation-engineer.md",
-        "./agents/debugger-pro.md",
-        "./agents/devops-architect.md",
         "./agents/documentation-expert.md",
         "./agents/quality-specialist.md",
         "./agents/software-architect.md",
-        "./agents/sre-expert.md",
-        "./agents/systems-engineer.md"
+        "./agents/sre-expert.md"
       ],
       "commands": [
         "./commands/docs.md",
@@ -62,15 +59,16 @@
         "./commands/workflow-automate.md"
       ],
       "skills": [
-        "./skills/backend-patterns",
-        "./skills/frontend-and-mobile",
+        "./skills/dev-hub",
+        "./skills/ai-pair",
+        "./skills/three-brain",
         "./skills/architecture-and-infra",
-        "./skills/testing-and-quality",
+        "./skills/backend-patterns",
         "./skills/ci-cd-pipelines",
-        "./skills/observability-and-sre",
-        "./skills/python-toolchain",
         "./skills/data-and-security",
-        "./skills/dev-workflows"
+        "./skills/dev-workflows",
+        "./skills/observability-and-sre",
+        "./skills/testing-and-quality"
       ]
     },
     {

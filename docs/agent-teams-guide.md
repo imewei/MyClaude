@@ -1,6 +1,6 @@
 # Agent Teams Guide for MyClaude Plugin Suites
 
-> 10 ready-to-use team configurations with 19 variants, leveraging 22 MyClaude agents + 18 official plugin agents across 3 suites.
+> 10 ready-to-use team configurations with 19 variants, leveraging 20 MyClaude agents + 18 official plugin agents across 3 suites.
 >
 > **v3.3.0:** Consolidated from 27 teams to 10 teams with a variant system (`--var MODE=x`). Zero function loss — every capability from every absorbed team is reachable via a variant. 19 aliases provide backward compatibility.
 
@@ -23,11 +23,8 @@ Enable agent teams (experimental) in your settings:
 |-------|-------|-----------------|----------------|
 | **dev** | software-architect | `dev-suite:software-architect` | Backend, API, microservices |
 | | app-developer | `dev-suite:app-developer` | Frontend, mobile, React/Next.js |
-| | systems-engineer | `dev-suite:systems-engineer` | C/C++/Rust, CLI tools, low-level |
-| | devops-architect | `dev-suite:devops-architect` | Cloud, K8s, Terraform |
-| | sre-expert | `dev-suite:sre-expert` | Observability, SLOs, incidents |
-| | automation-engineer | `dev-suite:automation-engineer` | CI/CD, GitHub Actions, Git |
-| | debugger-pro | `dev-suite:debugger-pro` | Root cause analysis, log correlation |
+| | sre-expert | `dev-suite:sre-expert` | Observability, SLOs, incidents, HPC/GPU reliability |
+| | automation-engineer | `dev-suite:automation-engineer` | CI/CD, workflow/pipeline orchestration |
 | | documentation-expert | `dev-suite:documentation-expert` | Tech writing, API docs |
 | | quality-specialist | `dev-suite:quality-specialist` | Code review, security audit, testing |
 | **science** | jax-pro | `science-suite:jax-pro` | JAX, NumPyro, Bayesian inference |
@@ -35,7 +32,6 @@ Enable agent teams (experimental) in your settings:
 | | ml-expert | `science-suite:ml-expert` | Scikit-learn, MLOps, XGBoost |
 | | pinn-engineer | `science-suite:pinn-engineer` | PINNs, neural operators, inverse PDEs |
 | | python-pro | `science-suite:python-pro` | Python systems, packaging |
-| | research-expert | `science-suite:research-expert` | Scientific methodology, papers |
 | | simulation-expert | `science-suite:simulation-expert` | Physics simulation, MD |
 | | statistical-physicist | `science-suite:statistical-physicist` | Stat mech, stochastic dynamics |
 | | nonlinear-dynamics-expert | `science-suite:nonlinear-dynamics-expert` | Bifurcation, chaos, SINDy/UDE |
@@ -43,6 +39,8 @@ Enable agent teams (experimental) in your settings:
 | | julia-ml-hpc | `science-suite:julia-ml-hpc` | Julia ML/DL/HPC, Lux.jl, CUDA.jl |
 | | sci-workflow-engineer | `science-suite:sci-workflow-engineer` | Scientific LLM workflows, RAG, codegen |
 | | continuum-mechanics-engineer | `science-suite:continuum-mechanics-engineer` | FEM/FEA, constitutive modeling, DMA/rheology, transient networks, nanocomposites |
+| **research** | research-expert | `research-suite:research-expert` | Scientific methodology, evidence synthesis, papers |
+| | research-spark-orchestrator | `research-suite:research-spark-orchestrator` | 8-stage artifact-gated idea-to-plan pipeline |
 
 ### Official Plugin Agents
 
@@ -75,13 +73,13 @@ Enable agent teams (experimental) in your settings:
 |---|------|----------|----------|--------|
 | 1 | feature-dev | -- | Feature build + review | 4 |
 | 2 | debug | triage, gui, numerical, schema, incident | All debugging + incident response | 2-4 |
-| 3 | quality-gate | security, full | PR review + security audit | 4 |
+| 3 | quality-gate | security, full | PR review + security audit | 3-4 |
 | 4 | api-infra | infra, config | APIs + cloud + CI/CD + config | 3-4 |
 | 5 | sci-compute | bayesian, julia-sciml, julia-ml, dynamics, md-sim, desktop, reproduce | All scientific computing | 4 |
 | 6 | modernize | -- | Legacy migration + refactoring | 4 |
 | 7 | ai-engineering | -- | LLM apps + RAG | 3 |
-| 8 | ml-deploy | data, perf | Model deploy + data + performance | 4 |
-| 9 | docs-publish | research | Documentation + reproducibility | 4 |
+| 8 | ml-deploy | data, perf | Model deploy + data + performance | 3-4 |
+| 9 | docs-publish | research | Documentation + reproducibility | 3-4 |
 | 10 | plugin-forge | -- | Claude Code extensions | 4 |
 
 ---
@@ -121,18 +119,18 @@ Consolidated debugging team covering all bug categories: general triage, GUI thr
 
 | Variant | MODE | Agent 1 | Agent 2 | Agent 3 | Agent 4 |
 |---------|------|---------|---------|---------|---------|
-| *default* | -- | `feature-dev:code-explorer` | `dev-suite:debugger-pro` | `science-suite:python-pro` | (auto-selected specialist) |
-| triage | `triage` | `feature-dev:code-explorer` | `dev-suite:debugger-pro` | -- | -- |
-| gui | `gui` | `feature-dev:code-explorer` | `dev-suite:debugger-pro` | `science-suite:python-pro` | `dev-suite:sre-expert` |
-| numerical | `numerical` | `feature-dev:code-explorer` | `dev-suite:debugger-pro` | `science-suite:python-pro` | `science-suite:jax-pro` |
-| schema | `schema` | `feature-dev:code-explorer` | `dev-suite:debugger-pro` | `science-suite:python-pro` | `pr-review-toolkit:type-design-analyzer` |
-| incident | `incident` | `dev-suite:debugger-pro` | `dev-suite:sre-expert` | `dev-suite:devops-architect` | -- |
+| *default* | -- | `feature-dev:code-explorer` | `dev-suite:quality-specialist` | `science-suite:python-pro` | (auto-selected specialist) |
+| triage | `triage` | `feature-dev:code-explorer` | `dev-suite:quality-specialist` | -- | -- |
+| gui | `gui` | `feature-dev:code-explorer` | `dev-suite:quality-specialist` | `science-suite:python-pro` | `dev-suite:sre-expert` |
+| numerical | `numerical` | `feature-dev:code-explorer` | `dev-suite:quality-specialist` | `science-suite:python-pro` | `science-suite:jax-pro` |
+| schema | `schema` | `feature-dev:code-explorer` | `dev-suite:quality-specialist` | `science-suite:python-pro` | `pr-review-toolkit:type-design-analyzer` |
+| incident | `incident` | `dev-suite:sre-expert` | `dev-suite:quality-specialist` | -- | -- |
 
 ### Variant Details
 
-**Default (auto-detect):** The explorer maps the architecture first, then debugger-pro and python-pro investigate in parallel. A fourth specialist is auto-selected based on symptoms: SRE for threading issues, jax-pro for numerical bugs, type-design-analyzer for schema drift.
+**Default (auto-detect):** The explorer maps the architecture first, then quality-specialist and python-pro investigate in parallel. A fourth specialist is auto-selected based on symptoms: SRE for threading issues, jax-pro for numerical bugs, type-design-analyzer for schema drift.
 
-**Triage (`--var MODE=triage`):** Lightweight 2-agent team for quick initial investigation (2-5 min). Explorer maps the execution path, then debugger-pro assesses severity (P0/P1/P2) and recommends whether to escalate to a full variant.
+**Triage (`--var MODE=triage`):** Lightweight 2-agent team for quick initial investigation (2-5 min). Explorer maps the execution path, then quality-specialist assesses severity (P0/P1/P2) and recommends whether to escalate to a full variant.
 
 **GUI (`--var MODE=gui`):** Targets Qt threading bugs -- signal safety, shiboken crashes, singleton races, event loop issues. SRE investigates GIL contention, QThread lifecycle, and cross-thread signal/slot safety. Python-pro checks attribute mismatches and Protocol compliance across abstraction boundaries.
 
@@ -140,13 +138,13 @@ Consolidated debugging team covering all bug categories: general triage, GUI thr
 
 **Schema (`--var MODE=schema`):** Targets schema/type drift -- incompatible data classes, field name mismatches, serialization errors. Type-design-analyzer rates types 1-5 and recommends canonical definitions. Note: do NOT run type-analyzer and quality-specialist simultaneously (they overlap on interface contract checking).
 
-**Incident (`--var MODE=incident`):** 3-agent parallel-hypothesis investigation for production issues. Debugger examines application code, SRE checks observability data (metrics, logs, traces), and devops-architect investigates infrastructure. Agents share findings and challenge each other's theories.
+**Incident (`--var MODE=incident`):** 2-agent parallel-hypothesis investigation for production issues. SRE checks observability data (metrics, logs, traces) and infrastructure state, while quality-specialist examines application code and recent changes. Agents share findings and challenge each other's theories.
 
 ### Workflow
 
-All variants except incident: `explorer` first (architecture mapping) then remaining agents in parallel, then `debugger-pro` synthesizes findings into a prioritized fix list.
+All variants except incident: `explorer` first (architecture mapping) then remaining agents in parallel, then `quality-specialist` synthesizes findings into a prioritized fix list.
 
-Incident variant: all 3 agents investigate simultaneously, then synthesize into a root cause report.
+Incident variant: both agents investigate simultaneously, then synthesize into a root cause report.
 
 **Cross-variant escalation:** If root cause points to a different domain, switch variant (e.g., "if root cause is GUI -> `--var MODE=gui`").
 
@@ -173,14 +171,14 @@ Comprehensive code review and security audit with PR-specific analyzers and code
 | Variant | MODE | Agents |
 |---------|------|--------|
 | *default* | -- | `pr-review-toolkit:silent-failure-hunter` + `pr-review-toolkit:pr-test-analyzer` + `pr-review-toolkit:type-design-analyzer` + `pr-review-toolkit:code-reviewer` |
-| security | `security` | `dev-suite:software-architect` + `dev-suite:quality-specialist` + `dev-suite:sre-expert` + `dev-suite:debugger-pro` |
+| security | `security` | `dev-suite:software-architect` + `dev-suite:quality-specialist` + `dev-suite:sre-expert` |
 | full | `full` | Run default + security sequentially |
 
 ### Variant Details
 
 **Default:** PR-focused review using the quality-gate-toolkit's 4 specialized analyzers. Each reviewer works independently on the same diff: code-reviewer checks style/guidelines/bugs, silent-failure-hunter flags swallowed errors, pr-test-analyzer identifies coverage gaps, type-design-analyzer reviews type quality. Lead collects all findings sorted by severity.
 
-**Security (`--var MODE=security`):** Codebase-wide security and architecture audit. Software-architect assesses design patterns, SOLID, and complexity. Quality-specialist scans for OWASP Top 10 vulnerabilities. SRE reviews operational security. Debugger-pro investigates runtime security concerns. Produces a prioritized remediation plan with CVSS severity.
+**Security (`--var MODE=security`):** Codebase-wide security and architecture audit. Software-architect assesses design patterns, SOLID, and complexity. Quality-specialist scans for OWASP Top 10 vulnerabilities. SRE reviews operational security and runtime exposure. Produces a prioritized remediation plan with CVSS severity.
 
 **Full (`--var MODE=full`):** Runs both the default PR review pass and the security audit pass sequentially.
 
@@ -207,14 +205,14 @@ API design, cloud infrastructure, CI/CD, and configuration management.
 | Variant | MODE | Agent 1 | Agent 2 | Agent 3 | Agent 4 |
 |---------|------|---------|---------|---------|---------|
 | *default* (api) | -- | `dev-suite:software-architect` | `dev-suite:app-developer` | `dev-suite:quality-specialist` | `dev-suite:sre-expert` |
-| infra | `infra` | `dev-suite:devops-architect` | `dev-suite:automation-engineer` | `dev-suite:sre-expert` | -- |
+| infra | `infra` | `dev-suite:sre-expert` | `dev-suite:automation-engineer` | `dev-suite:software-architect` | -- |
 | config | `config` | `dev-suite:software-architect` | `dev-suite:automation-engineer` | `dev-suite:sre-expert` | `science-suite:python-pro` |
 
 ### Variant Details
 
 **Default (API):** Full API design-build-test-observe pipeline. Architect designs the API spec (REST/GraphQL/gRPC), app-developer implements endpoints with auth and rate limiting, quality-specialist writes contract/integration/security tests, SRE adds observability. Workflow: architect defines spec -> implementer + tester in parallel -> SRE instruments.
 
-**Infra (`--var MODE=infra`):** Cloud infrastructure and CI/CD from scratch. Devops-architect provisions IaC (Terraform/Pulumi) with zero-trust networking. Automation-engineer builds GitHub Actions pipelines for staged deployments. SRE sets up Prometheus, Grafana, OpenTelemetry, and alerting. Workflow: devops-architect first -> automation-engineer -> SRE.
+**Infra (`--var MODE=infra`):** Cluster and CI/CD infrastructure from scratch. SRE provisions the compute/observability substrate (HPC job scheduling, GPU/cluster monitoring, Prometheus/Grafana/OpenTelemetry, alerting). Automation-engineer builds GitHub Actions pipelines for staged deployments. Software-architect defines the deployment topology and service boundaries. Workflow: architect defines topology -> SRE provisions -> automation-engineer wires pipelines.
 
 **Config (`--var MODE=config`):** Configuration management, caching, and job scheduling. Architect designs config hierarchy and cache invalidation. Automation-engineer builds GitOps deployment pipelines. SRE monitors config propagation and cache hit rates. Python-pro implements typed config models and CLI tools.
 
@@ -240,14 +238,14 @@ Consolidated team for all scientific computing: JAX/ML/DL pipelines, Bayesian in
 
 | Variant | MODE | Agent 1 | Agent 2 | Agent 3 | Agent 4 |
 |---------|------|---------|---------|---------|---------|
-| *default* (jax/ml) | -- | `science-suite:jax-pro` | `science-suite:neural-network-master` | `science-suite:ml-expert` | `science-suite:research-expert` |
-| bayesian | `bayesian` | `science-suite:jax-pro` | `science-suite:statistical-physicist` | `science-suite:ml-expert` | `science-suite:research-expert` |
-| julia-sciml | `julia-sciml` | `science-suite:julia-pro` | `science-suite:simulation-expert` | `science-suite:jax-pro` | `science-suite:research-expert` |
-| julia-ml | `julia-ml` | `science-suite:julia-ml-hpc` | `science-suite:neural-network-master` | `science-suite:ml-expert` | `science-suite:research-expert` |
-| dynamics | `dynamics` | `science-suite:nonlinear-dynamics-expert` | `science-suite:jax-pro` | `science-suite:julia-pro` | `science-suite:research-expert` |
-| md-sim | `md-sim` | `science-suite:simulation-expert` | `science-suite:jax-pro` | `science-suite:ml-expert` | `science-suite:research-expert` |
-| desktop | `desktop` | `dev-suite:app-developer` | `science-suite:jax-pro` | `science-suite:python-pro` | `science-suite:research-expert` |
-| reproduce | `reproduce` | `science-suite:research-expert` | `science-suite:python-pro` | `science-suite:jax-pro` | `science-suite:ml-expert` |
+| *default* (jax/ml) | -- | `science-suite:jax-pro` | `science-suite:neural-network-master` | `science-suite:ml-expert` | `research-suite:research-expert` |
+| bayesian | `bayesian` | `science-suite:jax-pro` | `science-suite:statistical-physicist` | `science-suite:ml-expert` | `research-suite:research-expert` |
+| julia-sciml | `julia-sciml` | `science-suite:julia-pro` | `science-suite:simulation-expert` | `science-suite:jax-pro` | `research-suite:research-expert` |
+| julia-ml | `julia-ml` | `science-suite:julia-ml-hpc` | `science-suite:neural-network-master` | `science-suite:ml-expert` | `research-suite:research-expert` |
+| dynamics | `dynamics` | `science-suite:nonlinear-dynamics-expert` | `science-suite:jax-pro` | `science-suite:julia-pro` | `research-suite:research-expert` |
+| md-sim | `md-sim` | `science-suite:simulation-expert` | `science-suite:jax-pro` | `science-suite:ml-expert` | `research-suite:research-expert` |
+| desktop | `desktop` | `dev-suite:app-developer` | `science-suite:jax-pro` | `science-suite:python-pro` | `research-suite:research-expert` |
+| reproduce | `reproduce` | `research-suite:research-expert` | `science-suite:python-pro` | `science-suite:jax-pro` | `science-suite:ml-expert` |
 
 ### Variant Details
 
@@ -302,9 +300,9 @@ Migrate a legacy codebase to modern architecture using the Strangler Fig pattern
 | Role | Agent | Suite | Responsibility |
 |------|-------|-------|----------------|
 | legacy-analyst | `dev-suite:software-architect` | dev-suite | Map legacy architecture, identify strangler boundaries, design target architecture with ADRs |
-| migration-engineer | `dev-suite:systems-engineer` | dev-suite | Execute module-by-module migration with adapter layers for backward compatibility |
+| migration-engineer | `science-suite:python-pro` | science-suite | Execute module-by-module migration with adapter layers for backward compatibility |
 | quality-gate | `dev-suite:quality-specialist` | dev-suite | Write characterization tests BEFORE migration, run continuously to catch regressions |
-| test-engineer | `dev-suite:debugger-pro` | dev-suite | Build migration test harness, validate feature parity |
+| test-engineer | `dev-suite:automation-engineer` | dev-suite | Build migration test harness and pipeline, validate feature parity |
 
 ### Workflow
 
@@ -358,17 +356,17 @@ Model deployment, data pipeline engineering, and performance optimization.
 
 | Variant | MODE | Agent 1 | Agent 2 | Agent 3 | Agent 4 |
 |---------|------|---------|---------|---------|---------|
-| *default* (deploy) | -- | `science-suite:ml-expert` | `dev-suite:devops-architect` | `dev-suite:sre-expert` | `science-suite:jax-pro` |
-| data | `data` | `science-suite:ml-expert` | `science-suite:python-pro` | `dev-suite:automation-engineer` | `science-suite:research-expert` |
-| perf | `perf` | `dev-suite:debugger-pro` | `science-suite:python-pro` | `science-suite:jax-pro` | `dev-suite:systems-engineer` |
+| *default* (deploy) | -- | `science-suite:ml-expert` | `dev-suite:automation-engineer` | `dev-suite:sre-expert` | `science-suite:jax-pro` |
+| data | `data` | `science-suite:ml-expert` | `science-suite:python-pro` | `dev-suite:automation-engineer` | `research-suite:research-expert` |
+| perf | `perf` | `science-suite:python-pro` | `science-suite:jax-pro` | `dev-suite:sre-expert` | -- |
 
 ### Variant Details
 
-**Default (deploy):** Deploy ML models to production. ML-expert handles model export (ONNX/SavedModel, quantization), model cards, and validation datasets. Devops-architect builds serving infrastructure (FastAPI/TorchServe/Triton), container packaging, autoscaling, and canary deployments. SRE sets up prediction drift detection, latency SLOs, and automated rollback. Jax-pro optimizes inference latency (XLA AOT, batch scheduling, model sharding).
+**Default (deploy):** Deploy ML models to production. ML-expert handles model export (ONNX/SavedModel, quantization), model cards, and validation datasets. Automation-engineer builds serving infrastructure (FastAPI/TorchServe/Triton), container packaging, autoscaling, and canary deployments. SRE sets up prediction drift detection, latency SLOs, and automated rollback. Jax-pro optimizes inference latency (XLA AOT, batch scheduling, model sharding).
 
 **Data (`--var MODE=data`):** ETL pipelines, feature stores, and MLOps data infrastructure. ML-expert architects the ETL/ELT pipeline with schema validation (pandera) and incremental processing. Python-pro implements the feature store with online/offline serving and drift detection. Automation-engineer sets up orchestration (Airflow/Dagster) and data lineage. Research-expert implements data quality checks (Great Expectations) and anomaly detection. Key constraint: all transformations must be idempotent.
 
-**Perf (`--var MODE=perf`):** CPU/GPU profiling and performance optimization. Debugger-pro investigates algorithmic bottlenecks, GIL contention, and I/O issues. Python-pro applies Cython/mypyc compilation, asyncio, and Rust extensions via PyO3. Jax-pro converts sequential loops to vmap, optimizes XLA compilation, and minimizes host-device transfers. Systems-engineer profiles CPU/memory/cache with perf, flamegraphs, and tracemalloc. Protocol: profile -> identify top 3 bottlenecks -> optimize one at a time -> re-profile.
+**Perf (`--var MODE=perf`):** CPU/GPU profiling and performance optimization. Python-pro investigates algorithmic bottlenecks and GIL contention, then applies Cython/mypyc compilation, asyncio, and Rust extensions via PyO3, profiling CPU/memory/cache with perf, flamegraphs, and tracemalloc. Jax-pro converts sequential loops to vmap, optimizes XLA compilation, and minimizes host-device transfers. SRE instruments GPU/cluster utilization and long-running job telemetry. Protocol: profile -> identify top 3 bottlenecks -> optimize one at a time -> re-profile.
 
 ### Placeholders
 
@@ -392,8 +390,8 @@ Documentation overhaul and reproducible research infrastructure.
 
 | Variant | MODE | Agent 1 | Agent 2 | Agent 3 | Agent 4 |
 |---------|------|---------|---------|---------|---------|
-| *default* (docs) | -- | `dev-suite:documentation-expert` | `dev-suite:software-architect` | `science-suite:research-expert` | `science-suite:python-pro` |
-| research | `research` | `science-suite:research-expert` | `science-suite:python-pro` | `dev-suite:automation-engineer` | |
+| *default* (docs) | -- | `dev-suite:documentation-expert` | `dev-suite:software-architect` | `research-suite:research-expert` | `science-suite:python-pro` |
+| research | `research` | `research-suite:research-expert` | `science-suite:python-pro` | `dev-suite:automation-engineer` | |
 
 ### Variant Details
 

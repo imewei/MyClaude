@@ -44,9 +44,9 @@ Observability Stack
 
 Use ``@sre-expert`` to set up monitoring and alerting.
 
-1. Deploy Prometheus + Grafana (command: ``/monitor-setup``).
+1. Deploy Prometheus + Grafana (hub: ``observability-and-sre`` → sub: ``prometheus-configuration``).
 2. Create dashboards (hub: ``observability-and-sre`` → sub: ``grafana-dashboards``).
-3. Define SLOs and error budgets (command: ``/slo-implement``).
+3. Define SLOs and error budgets (hub: ``observability-and-sre`` → sub: ``slo-implementation``).
 4. Add distributed tracing (hub: ``observability-and-sre`` → sub: ``distributed-tracing``).
 
 **Agent team:** Use :doc:`Team 5 (infra-setup) </agent-teams-guide>` with
@@ -59,9 +59,6 @@ Streamline Git operations with ``@automation-engineer``.
 
 .. code-block:: bash
 
-   # Intelligent commit with analysis
-   /dev-suite:commit
-
    # Fix CI failures automatically
    /dev-suite:fix-commit-errors
 
@@ -71,5 +68,5 @@ Streamline Git operations with ``@automation-engineer``.
 Related
 -------
 
-- :doc:`/suites/dev-suite` — Full dev-suite reference (9 hubs → 49 sub-skills)
+- :doc:`/suites/dev-suite` — Full dev-suite reference (10 hubs → 35 sub-skills)
 - :doc:`/glossary` — Hub Skill, Sub-Skill, and Routing Decision Tree definitions

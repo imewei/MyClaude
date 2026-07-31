@@ -7,7 +7,7 @@ allowed-tools: ["Read", "Bash", "Glob"]
 
 # /benchmark — Scientific Code Benchmarking
 
-Routes to `jax-pro` for JAX-on-GPU profiling, `julia-pro` / `julia-ml-hpc` for Julia or CUDA.jl profiling, and `systems-engineer` for raw CUDA/C/Fortran/HPC binaries based on `--backend`.
+Routes to `jax-pro` for JAX-on-GPU profiling, `julia-pro` / `julia-ml-hpc` for Julia or CUDA.jl profiling, and `python-pro` for raw CUDA/C/Fortran/HPC binaries driven through Python extensions, based on `--backend`.
 
 ## Usage
 
@@ -30,7 +30,7 @@ Routes to `jax-pro` for JAX-on-GPU profiling, `julia-pro` / `julia-ml-hpc` for J
 |---|---|---|
 | `jax` | jax-pro | `jax.profiler`, `jax.make_jaxpr`, nvtx |
 | `julia` | julia-pro | `@btime`, `@profile`, `Cthulhu.jl` |
-| `cuda` | systems-engineer | `nvprof`, `Nsight Compute` |
+| `cuda` | python-pro | `nvprof`, `Nsight Compute` |
 
 ## Token Strategy
 

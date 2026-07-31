@@ -17,11 +17,10 @@ The standard feature workflow uses ``@software-architect`` for design and
 ``@app-developer`` for implementation.
 
 1. Design the API contract (hub: ``backend-patterns`` → sub: ``api-design-principles``).
-2. Scaffold the project structure (skill: ``engineering-suite:scaffold``).
-3. Implement backend logic (hub: ``architecture-and-infra`` → sub: ``architecture-patterns``).
-4. Build the frontend (hub: ``frontend-and-mobile`` → sub: ``frontend-mobile-engineering``).
-5. Write tests (hub: ``testing-and-quality`` → sub: ``javascript-testing-patterns`` or ``python-testing-patterns``).
-6. Validate with ``/double-check``.
+2. Implement backend logic (hub: ``architecture-and-infra`` → sub: ``architecture-patterns``).
+3. Build the application layer with ``@app-developer`` (PyQt/PySide6 scientific GUIs, JAX/Julia app integration).
+4. Write tests (hub: ``testing-and-quality`` → sub: ``testing-patterns``).
+5. Validate with ``/double-check``.
 
 **Agent team:** Use :doc:`Team 27 (feature-dev) </agent-teams-guide>` for
 multi-agent feature development with review gates.
@@ -61,5 +60,5 @@ coordinated migration.
 Related
 -------
 
-- :doc:`/suites/dev-suite` — Full dev-suite reference (9 hubs → 49 sub-skills)
+- :doc:`/suites/dev-suite` — Full dev-suite reference (10 hubs → 35 sub-skills)
 - :doc:`/glossary` — Hub Skill, Sub-Skill, and Routing Decision Tree definitions

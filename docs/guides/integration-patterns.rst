@@ -6,8 +6,8 @@ cross-cutting concerns.
 
 .. note::
 
-   Since v3.1.0, skills use a two-tier :term:`Hub Skill` architecture (31 hubs
-   routing to 186 sub-skills as of v3.5.2). Cross-suite workflows invoke hub skills which
+   Since v3.1.0, skills use a two-tier :term:`Hub Skill` architecture (51 hubs
+   routing to 148 sub-skills as of v4.0.0). Cross-suite workflows invoke hub skills which
    automatically dispatch to the right sub-skill.
 
 Cross-Suite Agent Teams
@@ -19,12 +19,11 @@ for cross-suite collaboration.
 
 Key cross-suite patterns:
 
-- **Performance optimization** (Team 17): Combines ``@systems-engineer``
-  from dev-suite with ``@jax-pro`` from science-suite and
-  ``@debugger-pro`` from dev-suite.
+- **Performance optimization** (Team 17): Combines ``@python-pro`` and
+  ``@jax-pro`` from science-suite with ``@sre-expert`` from dev-suite.
 
 - **HPC interoperability** (Team 18): Bridges ``@julia-pro`` and
-  ``@python-pro`` from science-suite with ``@systems-engineer`` from
+  ``@python-pro`` from science-suite with ``@software-architect`` from
   dev-suite.
 
 - **Reproducible research** (Team 19): Connects ``@research-expert`` from
@@ -35,8 +34,8 @@ MCP Server Integration
 
 MyClaude agents can leverage MCP servers for enhanced capabilities:
 
-- **Serena** — Semantic code analysis via ``/code-analyze`` command.
-  Used by engineering and quality agents for symbol-level navigation.
+- **Serena** — Semantic code analysis via its MCP tools.
+  Used by dev-suite agents for symbol-level navigation.
 
 - **Context7** — Library documentation lookup. Used by all agents to
   access up-to-date API references.
@@ -55,5 +54,5 @@ Related
 -------
 
 - :doc:`/integration-map` — Suite dependencies, MCP roles, and skill coverage
-- :doc:`/suites/dev-suite` — CI/CD and automation (9 hubs → 49 sub-skills)
+- :doc:`/suites/dev-suite` — CI/CD and automation (10 hubs → 35 sub-skills)
 - :doc:`/glossary` — Hub Skill, Sub-Skill, and Routing Decision Tree definitions

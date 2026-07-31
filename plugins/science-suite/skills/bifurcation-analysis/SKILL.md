@@ -260,7 +260,7 @@ Use **AUTO-07p**: build from source (Fortran, macOS/Linux only) and drive it via
 
 - Source: <https://github.com/auto-07p/auto-07p> — clone and run `./configure && make` (Fortran + Python toolchain required).
 - Define the vector field in a Fortran file (`<name>.f90`) implementing `FUNC(NDIM, U, ICP, PAR, IJAC, F, DFDU, DFDP)`, plus a constants file `c.<name>` setting continuation parameters (`NDIM`, `IPS`, `ICP`, `NMX`, `DS`, ...).
-- Drive it from AUTO's own Python shell (started via the `auto` command it installs): `auto(name)` to run continuation, `plot(name)` to inspect the resulting branch diagram.
+- Drive it from AUTO's own Python shell (started via the `auto` command it installs): `run(name)` to run continuation, `plot(name)` to inspect the resulting branch diagram. (`auto(...)` is the shell's command-script runner, not a continuation call.)
 - This is a sketch, not a full worked example — see the [AUTO-07p manual](https://github.com/auto-07p/auto-07p/tree/master/doc) for the FUNC signature and constants-file reference before porting a real model.
 
 ---

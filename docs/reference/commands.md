@@ -1,6 +1,6 @@
 # Command Reference
 
-**15 Registered Commands** | **15 Skill-Invoked Commands** | **Version:** 3.5.2
+**15 Registered Commands** | **2 Skill-Invoked Commands** | **Version:** 4.0.0
 
 Commands fall into two categories:
 - **Registered commands** are declared in `plugin.json` and available as user-facing `/slash-commands`.
@@ -46,23 +46,9 @@ Commands fall into two categories:
 
 These commands exist on disk and are triggered by skills during workflows. They are **not** available as direct `/slash-commands`.
 
-### Dev Suite — 13 Skill-Invoked
+### Dev Suite — 0 Skill-Invoked
 
-| Command | Description |
-|---------|-------------|
-| `adopt-code` | Analyze and modernize scientific computing codebases |
-| `c-project` | Scaffold production-ready C projects with Makefile/CMake |
-| `code-analyze` | Semantic code analysis using Serena MCP for symbol navigation |
-| `code-explain` | Detailed code explanation with visual aids |
-| `deps` | Dependency management — security auditing and safe upgrades |
-| `fix-imports` | Fix broken imports across the codebase |
-| `github-assist` | GitHub operations using GitHub MCP for issues, PRs, repos |
-| `monitor-setup` | Set up Prometheus, Grafana, and distributed tracing |
-| `multi-platform` | Build and deploy features across web, mobile, and desktop |
-| `onboard` | Onboarding orchestration with 30/60/90 day plans |
-| `profile-performance` | Performance profiling with perf, flamegraph, and valgrind |
-| `scaffold` | Project and component scaffolding for TypeScript, Python, React, Julia |
-| `tech-debt` | Technical debt analysis with ROI-based roadmaps |
+No unregistered command files on disk. All 10 dev-suite commands are registered slash commands.
 
 ### Science Suite — 2 Skill-Invoked
 
@@ -102,4 +88,4 @@ Commands often invoke hub skills, which route to specialized sub-skills automati
 - [Integration Map](../integration-map.rst) — Suite dependencies and MCP server roles
 - [Glossary](../glossary.rst) — Key terms (Hub Skill, Sub-Skill, Routing Decision Tree)
 
-*Generated from v3.5.2 validated marketplace data.*
+*Generated from v4.0.0 validated marketplace data.*
