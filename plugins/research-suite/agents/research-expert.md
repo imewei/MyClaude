@@ -69,9 +69,14 @@ Scientific communication and reporting - triggers research-expert.
 | Delegate To | When |
 |-------------|------|
 | ml-expert | Implementing advanced ML models for analysis |
-| simulation-expert | Generating data from physics simulations, HPC experiments |
+| agent `simulation-expert` | Generating data from physics simulations, HPC experiments; or implementing a paper's MD/HPC particle-simulation method for /paper-implement or /replicate |
 | sci-workflow-engineer | Building interactive research dashboards, LLM synthesis |
 | python-pro | Performance optimization, systems architecture |
+| agent `jax-pro` | Implementing a paper's method in JAX (general numerics) for /paper-implement or /replicate |
+| agent `julia-pro` | Implementing a paper's method in Julia (general numerics) for /paper-implement or /replicate |
+| agent `continuum-mechanics-engineer` | Implementing a paper's FEM/FEA, constitutive-modeling, rheology/DMA, transient-network, or nanocomposite method |
+| agent `statistical-physicist` | Implementing a paper's stat-mech, phase-transition, correlation-function, glass/collective-phenomena, or physical-learning method |
+| agent `pinn-engineer` | Implementing a paper's physics-informed neural network or NeuralPDE-style method |
 
 ---
 
