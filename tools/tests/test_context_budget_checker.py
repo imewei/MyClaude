@@ -15,7 +15,7 @@ from pathlib import Path
 project_root = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(project_root))
 
-from tools.validation.context_budget_checker import (  # noqa: E402
+from tools.validation.context_budget_checker import (
     CHARS_PER_TOKEN,
     CONTEXT_SIZES,
     SKILL_BUDGET_PERCENT,

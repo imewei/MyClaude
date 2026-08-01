@@ -9,10 +9,10 @@ Note: For comprehensive NumPyro workflows, see the 'numpyro-core-mastery' skill.
 
 import jax
 import jax.numpy as jnp
+import matplotlib
 import numpyro
 import numpyro.distributions as dist
 from numpyro.infer import MCMC, NUTS, Predictive
-import matplotlib
 
 matplotlib.use("Agg")  # Non-interactive backend
 
@@ -190,7 +190,7 @@ def example_bayesian_inference():
 
     # Run optimization
     for _ in range(100):
-        params, opt_state, loss = mle_step(params, opt_state, x_train, y_train)
+        params, opt_state, _loss = mle_step(params, opt_state, x_train, y_train)
 
     mle_w, mle_b = params
     print(f"MLE estimates: w={mle_w:.3f}, b={mle_b:.3f}")

@@ -12,10 +12,10 @@ Demonstrates:
 """
 
 import asyncio
-import aiohttp
 import time
 from dataclasses import dataclass
-from typing import List, Optional
+
+import aiohttp
 
 
 @dataclass
@@ -26,7 +26,7 @@ class ScrapeResult:
     status_code: int
     content_length: int
     elapsed_ms: float
-    error: Optional[str] = None
+    error: str | None = None
 
 
 class AsyncWebScraper:
@@ -54,7 +54,7 @@ class AsyncWebScraper:
         self.max_retries = max_retries
         self.retry_delay = retry_delay
         self.semaphore = asyncio.Semaphore(max_concurrent)
-        self.results: List[ScrapeResult] = []
+        self.results: list[ScrapeResult] = []
 
     async def fetch_url(
         self, session: aiohttp.ClientSession, url: str, retry_count: int = 0
@@ -85,7 +85,7 @@ class AsyncWebScraper:
                         elapsed_ms=elapsed_ms,
                     )
 
-            except asyncio.TimeoutError:
+            except TimeoutError:
                 if retry_count < self.max_retries:
                     print(
                         f"Timeout on {url}, retrying ({retry_count + 1}/{self.max_retries})..."
@@ -104,7 +104,7 @@ class AsyncWebScraper:
                         error="Timeout after retries",
                     )
 
-            except Exception as e:
+            except (aiohttp.ClientError, OSError) as e:
                 elapsed_ms = (time.time() - start_time) * 1000
                 return ScrapeResult(
                     url=url,
@@ -114,7 +114,7 @@ class AsyncWebScraper:
                     error=str(e),
                 )
 
-    async def scrape_urls(self, urls: List[str]) -> List[ScrapeResult]:
+    async def scrape_urls(self, urls: list[str]) -> list[ScrapeResult]:
         """
         Scrape multiple URLs concurrently.
 
@@ -141,10 +141,8 @@ class AsyncWebScraper:
             tasks = [self.fetch_url(session, url) for url in urls]
 
             # Progress tracking
-            completed = 0
-            for coro in asyncio.as_completed(tasks):
+            for completed, coro in enumerate(asyncio.as_completed(tasks), start=1):
                 result = await coro
-                completed += 1
 
                 # Progress update
                 if completed % 10 == 0 or completed == len(urls):

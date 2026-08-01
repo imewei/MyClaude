@@ -15,7 +15,6 @@ Run this example:
 
 import jax.numpy as jnp
 import numpy as np
-
 from nlsq import fit
 
 

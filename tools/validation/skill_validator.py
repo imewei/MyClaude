@@ -17,9 +17,8 @@ import json
 import re
 import sys
 from dataclasses import dataclass, field
-from datetime import datetime
+from datetime import UTC, datetime
 from pathlib import Path
-from typing import Dict, List, Set, Optional, Tuple
 
 # Allow ad-hoc `python tools/validation/skill_validator.py` CLI runs by adding
 # the repo root to sys.path before resolving the `tools` package.
@@ -27,7 +26,7 @@ _REPO_ROOT = Path(__file__).resolve().parents[2]
 if str(_REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(_REPO_ROOT))
 
-from tools.common.loader import PluginLoader  # noqa: E402
+from tools.common.loader import PluginLoader
 
 
 @dataclass
@@ -38,9 +37,9 @@ class Skill:
     description: str
     status: str
     plugin_name: str
-    keywords: Set[str] = field(default_factory=set)
-    patterns: Set[str] = field(default_factory=set)
-    file_patterns: Set[str] = field(default_factory=set)
+    keywords: set[str] = field(default_factory=set)
+    patterns: set[str] = field(default_factory=set)
+    file_patterns: set[str] = field(default_factory=set)
 
 
 @dataclass
@@ -50,11 +49,11 @@ class SkillContext:
     file_path: Path
     file_extension: str
     file_content: str
-    imports: Set[str] = field(default_factory=set)
-    functions: Set[str] = field(default_factory=set)
-    classes: Set[str] = field(default_factory=set)
-    keywords: Set[str] = field(default_factory=set)
-    patterns_found: Set[str] = field(default_factory=set)
+    imports: set[str] = field(default_factory=set)
+    functions: set[str] = field(default_factory=set)
+    classes: set[str] = field(default_factory=set)
+    keywords: set[str] = field(default_factory=set)
+    patterns_found: set[str] = field(default_factory=set)
 
 
 @dataclass
@@ -71,7 +70,7 @@ class SkillApplicationResult:
     true_negative: bool = False
     false_positive: bool = False
     false_negative: bool = False
-    matching_patterns: List[str] = field(default_factory=list)
+    matching_patterns: list[str] = field(default_factory=list)
     explanation: str = ""
 
 
@@ -146,13 +145,13 @@ class SkillApplicationValidator:
     TRIGGER_RATE_ACCEPTABLE = 20
     OVER_TRIGGER_ALERT_RATE = 0.2
 
-    def __init__(self, plugins_dir: str, corpus_dir: Optional[str] = None):
+    def __init__(self, plugins_dir: str, corpus_dir: str | None = None):
         self.plugins_dir = Path(plugins_dir)
         self.corpus_dir = Path(corpus_dir) if corpus_dir else None
-        self.skills: List[Skill] = []
-        self.results: List[SkillApplicationResult] = []
+        self.skills: list[Skill] = []
+        self.results: list[SkillApplicationResult] = []
 
-    def load_skills(self, specific_plugin: Optional[str] = None) -> None:
+    def load_skills(self, specific_plugin: str | None = None) -> None:
         """Load skills from all plugins via the shared PluginLoader.
 
         PluginLoader normalizes file-path entries (e.g. ``./skills/foo``) to
@@ -185,7 +184,7 @@ class SkillApplicationValidator:
         print(f"\nLoaded {len(self.skills)} total skills")
 
     def _add_skill(
-        self, skill_data: Dict, plugin_name: str, plugin_dir: Optional[Path]
+        self, skill_data: dict, plugin_name: str, plugin_dir: Path | None
     ) -> None:
         """Create and add a skill object from a normalized dict."""
         name = skill_data.get("name", "")
@@ -239,10 +238,10 @@ class SkillApplicationValidator:
             skill_content = skill_file.read_text().lower()
             skill.keywords.update(self._extract_keywords(skill_content))
             skill.patterns.update(self._extract_patterns(skill_content))
-        except Exception as e:
+        except (OSError, UnicodeDecodeError) as e:
             print(f"  Warning: failed to enrich skill '{skill.name}': {e}")
 
-    def _extract_keywords(self, text: str) -> Set[str]:
+    def _extract_keywords(self, text: str) -> set[str]:
         """Extract keywords from text."""
         # Split on non-alphanumeric
         words = re.findall(r"\b[a-z]+\b", text.lower())
@@ -289,7 +288,7 @@ class SkillApplicationValidator:
 
         return {w for w in words if w not in stopwords and len(w) > 2}
 
-    def _extract_patterns(self, text: str) -> Set[str]:
+    def _extract_patterns(self, text: str) -> set[str]:
         """Extract technical patterns from text."""
         patterns: set[str] = set()
 
@@ -307,7 +306,7 @@ class SkillApplicationValidator:
 
         return patterns
 
-    def _infer_file_patterns(self, skill_name: str) -> Set[str]:
+    def _infer_file_patterns(self, skill_name: str) -> set[str]:
         """Infer file patterns from skill name."""
         patterns = set()
 
@@ -381,7 +380,7 @@ class SkillApplicationValidator:
 
     def calculate_skill_match_score(
         self, skill: Skill, context: SkillContext
-    ) -> Tuple[float, List[str]]:
+    ) -> tuple[float, list[str]]:
         """Calculate how well a skill matches the given context."""
         score = 0.0
         matching_patterns = []
@@ -427,9 +426,10 @@ class SkillApplicationValidator:
         skill_name_lower = skill.name.lower()
 
         # Testing skills need test-related context
-        if "test" in skill_name_lower:
-            if "test" in str(context.file_path).lower() or "test" in context.keywords:
-                score += self.SCORE_CONTEXT_BONUS
+        if "test" in skill_name_lower and (
+            "test" in str(context.file_path).lower() or "test" in context.keywords
+        ):
+            score += self.SCORE_CONTEXT_BONUS
 
         # Optimization skills need performance context
         if "optim" in skill_name_lower or "performance" in skill_name_lower:
@@ -586,7 +586,7 @@ class SkillApplicationValidator:
 
                         self.results.append(result)
 
-                except Exception as e:
+                except Exception as e:  # noqa: BLE001  # keep evaluating other corpus files even if one context/scoring step fails unexpectedly
                     # ``skill`` and ``context`` may be unbound if
                     # analyze_file_context() raised before the inner loop
                     # started, so reference ``file_path`` instead — it is
@@ -656,7 +656,7 @@ class SkillApplicationValidator:
 
         report = f"""# Skill Application Validation Report
 
-**Validation Date:** {datetime.now().strftime("%Y-%m-%d %H:%M:%S")}
+**Validation Date:** {datetime.now(UTC).strftime("%Y-%m-%d %H:%M:%S")}
 **Total Skills:** {len(self.skills)}
 **Total Applications Tested:** {len(self.results)}
 
@@ -844,7 +844,7 @@ def main() -> int:
 
     # Resolve paths
     plugins_dir = Path(args.plugins_dir).absolute()
-    corpus_dir: Optional[str] = None
+    corpus_dir: str | None = None
     if args.corpus_dir:
         corpus_path = Path(args.corpus_dir).absolute()
         if not corpus_path.exists():

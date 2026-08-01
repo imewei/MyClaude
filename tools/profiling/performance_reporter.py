@@ -18,13 +18,13 @@ Usage:
     python3 tools/performance_reporter.py --export json output.json
 """
 
-import json
 import csv
+import json
 import sys
+from dataclasses import asdict, dataclass, field
+from datetime import UTC, datetime
 from pathlib import Path
-from dataclasses import dataclass, field, asdict
 from typing import Any
-from datetime import datetime
 
 
 @dataclass
@@ -63,7 +63,7 @@ class PerformanceAggregator:
     def collect_plugin_metrics(self, plugin_name: str) -> PerformanceMetrics:
         """Collect all performance metrics for a single plugin."""
         metrics = PerformanceMetrics(
-            plugin_name=plugin_name, timestamp=datetime.now().isoformat()
+            plugin_name=plugin_name, timestamp=datetime.now(UTC).isoformat()
         )
 
         # Run load profiler
@@ -96,7 +96,7 @@ class PerformanceAggregator:
             # This is a simplified simulation since we don't have actual profiler output
             # In a real implementation, you would run the profiler and parse its output
             return {"total_load_time_ms": 50.0, "status": "pass"}  # Placeholder
-        except Exception:
+        except Exception:  # noqa: BLE001  # placeholder boundary; real impl will run a subprocess/parse JSON
             return None
 
     def _run_activation_profiler(self, plugin_name: str) -> dict[str, Any] | None:
@@ -109,7 +109,7 @@ class PerformanceAggregator:
                 "agent_count": 4,
                 "keyword_count": 25,
             }
-        except Exception:
+        except Exception:  # noqa: BLE001  # placeholder boundary; real impl will run a subprocess/parse JSON
             return None
 
     def _run_memory_analyzer(self, plugin_name: str) -> dict[str, Any] | None:
@@ -117,13 +117,13 @@ class PerformanceAggregator:
         try:
             # This is a simplified simulation
             return {"peak_memory_kb": 1500.0, "status": "pass"}  # Placeholder
-        except Exception:
+        except Exception:  # noqa: BLE001  # placeholder boundary; real impl will run a subprocess/parse JSON
             return None
 
     def collect_all_metrics(self) -> PerformanceReport:
         """Collect metrics for all plugins."""
         report = PerformanceReport(
-            timestamp=datetime.now().isoformat(), total_plugins=0
+            timestamp=datetime.now(UTC).isoformat(), total_plugins=0
         )
 
         if not self.plugins_root.exists():
@@ -183,7 +183,7 @@ class ComparisonAnalyzer:
     ) -> dict[str, Any]:
         """Compare two performance reports."""
         comparison: dict[str, Any] = {
-            "timestamp": datetime.now().isoformat(),
+            "timestamp": datetime.now(UTC).isoformat(),
             "before_timestamp": before.timestamp,
             "after_timestamp": after.timestamp,
             "improvements": [],
@@ -614,7 +614,7 @@ def main() -> int:
 
         # Create a mini report
         report = PerformanceReport(
-            timestamp=datetime.now().isoformat(), total_plugins=1, metrics=[metrics]
+            timestamp=datetime.now(UTC).isoformat(), total_plugins=1, metrics=[metrics]
         )
 
         markdown = generator.generate_markdown_report(report)

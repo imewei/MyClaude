@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Model comparison using WAIC and LOO."""
 
-from numpyro.diagnostics import waic, loo
+from numpyro.diagnostics import loo, waic
 
 
 def compare_models(models_dict, data_x, data_y):

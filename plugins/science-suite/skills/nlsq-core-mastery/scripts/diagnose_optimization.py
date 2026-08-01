@@ -232,7 +232,7 @@ def _print_summary(diagnostics, verbose):
         if diagnostics["recommendations"]:
             print("\nRecommendations:")
             # Use set to remove duplicates, but need to preserve order roughly or just sort
-            unique_recs = sorted(list(set(diagnostics["recommendations"])))
+            unique_recs = sorted(set(diagnostics["recommendations"]))
             for rec in unique_recs:
                 print(f"  • {rec}")
 

@@ -125,8 +125,8 @@ def main() -> int:
     header = [
         "# Steelman notes",
         "",
-        f"_Generated from `{args.input.name}` by `bib_to_steelman.py`. "
-        "Every TODO must be filled in before the Stage 2 artifact is considered complete._",
+        (f"_Generated from `{args.input.name}` by `bib_to_steelman.py`. "
+        "Every TODO must be filled in before the Stage 2 artifact is considered complete._"),
         "",
     ]
     body = [render_stub(e) for e in entries]

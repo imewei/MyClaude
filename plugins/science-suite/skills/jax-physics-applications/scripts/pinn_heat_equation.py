@@ -25,9 +25,9 @@ Requirements:
 
 import jax
 import jax.numpy as jnp
-import flax.nnx as nnx
-import optax
 import matplotlib.pyplot as plt
+import optax
+from flax import nnx
 
 
 def main():
@@ -112,7 +112,7 @@ def main():
 
     for t_val in t_test:
         # Predict with PINN
-        u_pred = jax.vmap(lambda x: model(x, t_val))(x_test)
+        u_pred = jax.vmap(lambda x, t_val=t_val: model(x, t_val))(x_test)
 
         # Analytical solution
         u_exact = analytical_solution(x_test, t_val, alpha)
@@ -188,7 +188,7 @@ def main():
     x_plot = jnp.linspace(0, 1, 200)
 
     for t_val in [0.0, 0.25, 0.5, 0.75, 1.0]:
-        u_pred = jax.vmap(lambda x: model(x, t_val))(x_plot)
+        u_pred = jax.vmap(lambda x, t_val=t_val: model(x, t_val))(x_plot)
         u_exact = analytical_solution(x_plot, t_val, alpha)
 
         ax2.plot(

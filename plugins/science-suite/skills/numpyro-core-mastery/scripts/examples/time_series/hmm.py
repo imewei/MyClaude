@@ -33,17 +33,15 @@ import argparse
 import os
 import time
 
+import jax.numpy as jnp
 import matplotlib.pyplot as plt
 import numpy as np
-from scipy.stats import gaussian_kde
-
-from jax import lax, random
-import jax.numpy as jnp
-from jax.scipy.special import logsumexp
-
 import numpyro
 import numpyro.distributions as dist
+from jax import lax, random
+from jax.scipy.special import logsumexp
 from numpyro.infer import MCMC, NUTS
+from scipy.stats import gaussian_kde
 
 
 def simulate_data(
@@ -184,7 +182,7 @@ def print_results(posterior, transition_prob, emission_prob):
     quantiles = np.quantile(posterior["transition_prob"], [0.25, 0.5, 0.75], axis=0)
     for i in range(transition_prob.shape[0]):
         for j in range(transition_prob.shape[1]):
-            idx = "transition[{},{}]".format(i, j)
+            idx = f"transition[{i},{j}]"
             print(
                 row_format.format(idx, transition_prob[i, j], *quantiles[:, i, j]), "\n"
             )
@@ -192,7 +190,7 @@ def print_results(posterior, transition_prob, emission_prob):
     quantiles = np.quantile(posterior["emission_prob"], [0.25, 0.5, 0.75], axis=0)
     for i in range(emission_prob.shape[0]):
         for j in range(emission_prob.shape[1]):
-            idx = "emission[{},{}]".format(i, j)
+            idx = f"emission[{i},{j}]"
             print(
                 row_format.format(idx, emission_prob[i, j], *quantiles[:, i, j]), "\n"
             )
@@ -224,7 +222,7 @@ def main(args):
         num_warmup=args.num_warmup,
         num_samples=args.num_samples,
         num_chains=args.num_chains,
-        progress_bar=False if "NUMPYRO_SPHINXBUILD" in os.environ else True,
+        progress_bar=not "NUMPYRO_SPHINXBUILD" in os.environ,
     )
     mcmc.run(
         rng_key,
@@ -240,7 +238,7 @@ def main(args):
     print("\nMCMC elapsed time:", time.time() - start)
 
     # make plots
-    fig, ax = plt.subplots(figsize=(8, 6), constrained_layout=True)
+    _fig, ax = plt.subplots(figsize=(8, 6), constrained_layout=True)
 
     x = np.linspace(0, 1, 101)
     for i in range(transition_prob.shape[0]):
@@ -248,9 +246,7 @@ def main(args):
             ax.plot(
                 x,
                 gaussian_kde(samples["transition_prob"][:, i, j])(x),
-                label="trans_prob[{}, {}], true value = {:.2f}".format(
-                    i, j, transition_prob[i, j]
-                ),
+                label=f"trans_prob[{i}, {j}], true value = {transition_prob[i, j]:.2f}",
             )
     ax.set(
         xlabel="Probability",

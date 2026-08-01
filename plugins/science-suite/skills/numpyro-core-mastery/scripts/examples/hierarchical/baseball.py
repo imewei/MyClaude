@@ -56,11 +56,10 @@ import argparse
 import os
 
 import jax.numpy as jnp
-import jax.random as random
-from jax.scipy.special import logsumexp
-
 import numpyro
 import numpyro.distributions as dist
+from jax import random
+from jax.scipy.special import logsumexp
 from numpyro.examples.datasets import BASEBALL, load_dataset
 from numpyro.infer import HMC, MCMC, NUTS, SA, Predictive, log_likelihood
 
@@ -149,9 +148,7 @@ def run_inference(model, at_bats, hits, rng_key, args):
         num_samples=args.num_samples,
         num_chains=args.num_chains,
         progress_bar=(
-            False
-            if ("NUMPYRO_SPHINXBUILD" in os.environ or args.disable_progbar)
-            else True
+            not ("NUMPYRO_SPHINXBUILD" in os.environ or args.disable_progbar)
         ),
     )
     mcmc.run(rng_key, at_bats, hits)
@@ -172,7 +169,7 @@ def predict(model, at_bats, hits, z, rng_key, player_names, train=True):
         )
         # reports log predictive density of all test points
         print(
-            "\nLog pointwise predictive density: {:.2f}\n".format(exp_log_density.sum())
+            f"\nLog pointwise predictive density: {exp_log_density.sum():.2f}\n"
         )
 
 

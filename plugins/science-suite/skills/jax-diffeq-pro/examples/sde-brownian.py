@@ -5,9 +5,9 @@ Demonstrates VirtualBrownianTree, Itō vs Stratonovich interpretation,
 and soft matter applications including Langevin dynamics and colloidal systems.
 """
 
+import diffrax
 import jax
 import jax.numpy as jnp
-import diffrax
 
 # =============================================================================
 # Pattern 1: Basic SDE with VirtualBrownianTree
@@ -251,7 +251,7 @@ def colloidal_dynamics(n_particles: int = 10):
     """Brownian dynamics with soft repulsive interactions."""
 
     key = jax.random.PRNGKey(123)
-    key, init_key = jax.random.split(key)
+    key, _init_key = jax.random.split(key)
 
     def soft_repulsion_force(r, epsilon=1.0, sigma=1.0):
         """Soft sphere repulsion: F = epsilon * (sigma/r)^12."""
@@ -486,7 +486,7 @@ def demo():
 
     print("\n1. Basic SDE (Ornstein-Uhlenbeck)")
     print("-" * 40)
-    ts, ys = basic_sde_example()
+    _ts, ys = basic_sde_example()
     print(f"   Final value: {ys[-1, 0]:.4f}")
 
     print("\n2. Reproducibility Test")

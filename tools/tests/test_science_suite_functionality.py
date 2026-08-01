@@ -1,8 +1,8 @@
+import importlib.util
 import sys
 import unittest
-from unittest.mock import MagicMock, patch
 from pathlib import Path
-import importlib.util
+from unittest.mock import MagicMock, patch
 
 
 # Helper to import source files from arbitrary paths

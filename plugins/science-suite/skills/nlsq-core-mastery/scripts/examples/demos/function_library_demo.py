@@ -13,9 +13,7 @@ No manual parameter guessing needed!
 
 import matplotlib.pyplot as plt
 import numpy as np
-
-from nlsq import fit
-from nlsq import functions
+from nlsq import fit, functions
 
 
 def demo_linear():
@@ -31,7 +29,7 @@ def demo_linear():
     y = y_true + np.random.normal(0, 1.0, len(x))
 
     # Fit without specifying p0 - automatic estimation!
-    popt, pcov = fit(functions.linear, x, y, p0="auto", workflow="auto")
+    popt, _pcov = fit(functions.linear, x, y, p0="auto", workflow="auto")
 
     print(f"\n✓ Fitted: slope={popt[0]:.2f}, intercept={popt[1]:.2f}")
     print("  True:   slope=2.50, intercept=3.00")
@@ -65,7 +63,7 @@ def demo_exponential_decay():
     y = y_true + np.random.normal(0, 2.0, len(x))
 
     # Fit with automatic p0
-    popt, pcov = fit(functions.exponential_decay, x, y, p0="auto", workflow="auto")
+    popt, _pcov = fit(functions.exponential_decay, x, y, p0="auto", workflow="auto")
 
     # Calculate half-life
     half_life_fitted = np.log(2) / popt[1]
@@ -109,7 +107,7 @@ def demo_gaussian():
     y = y_true + np.random.normal(0, 1.0, len(x))
 
     # Fit with automatic p0
-    popt, pcov = fit(functions.gaussian, x, y, p0="auto", workflow="auto")
+    popt, _pcov = fit(functions.gaussian, x, y, p0="auto", workflow="auto")
 
     # Calculate FWHM (Full Width at Half Maximum)
     fwhm_fitted = 2.355 * popt[2]
@@ -155,7 +153,7 @@ def demo_sigmoid():
     y = y_true + np.random.normal(0, 3.0, len(x))
 
     # Fit with automatic p0
-    popt, pcov = fit(functions.sigmoid, x, y, p0="auto", workflow="auto")
+    popt, _pcov = fit(functions.sigmoid, x, y, p0="auto", workflow="auto")
 
     print(
         f"\n✓ Fitted: max={popt[0]:.1f}, EC50={popt[1]:.2f}, steepness={popt[2]:.2f}, baseline={popt[3]:.1f}"
@@ -201,7 +199,7 @@ def demo_power_law():
     y = y_true + np.random.normal(0, 0.5 * np.sqrt(y_true), len(x))
 
     # Fit with automatic p0
-    popt, pcov = fit(functions.power_law, x, y, p0="auto", workflow="auto")
+    popt, _pcov = fit(functions.power_law, x, y, p0="auto", workflow="auto")
 
     print(f"\n✓ Fitted: prefactor={popt[0]:.2f}, exponent={popt[1]:.3f}")
     print(f"  True:   prefactor={a_true:.2f}, exponent={b_true:.3f}")
@@ -239,7 +237,7 @@ def demo_polynomial():
     y = y_true + np.random.normal(0, 1.0, len(x))
 
     # Fit with automatic p0
-    popt, pcov = fit(quadratic, x, y, p0="auto", workflow="auto")
+    popt, _pcov = fit(quadratic, x, y, p0="auto", workflow="auto")
 
     print(f"\n✓ Fitted: coeffs = [{popt[0]:.2f}, {popt[1]:.2f}, {popt[2]:.2f}]")
     print("  True:   coeffs = [0.50, -2.00, 3.00]")
@@ -283,7 +281,7 @@ def demo_comparison():
 
     # Method 1: Manual p0 (old way)
     start = time.time()
-    popt_manual, pcov_manual = fit(
+    popt_manual, _pcov_manual = fit(
         functions.exponential_decay,
         x,
         y,
@@ -294,7 +292,7 @@ def demo_comparison():
 
     # Method 2: Auto p0 (new way)
     start = time.time()
-    popt_auto, pcov_auto = fit(
+    popt_auto, _pcov_auto = fit(
         functions.exponential_decay,
         x,
         y,

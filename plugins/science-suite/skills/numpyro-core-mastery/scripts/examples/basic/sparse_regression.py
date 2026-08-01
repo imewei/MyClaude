@@ -26,15 +26,12 @@ import itertools
 import os
 import time
 
-import numpy as np
-
-from jax import vmap
 import jax.numpy as jnp
-import jax.random as random
-from jax.scipy.linalg import cho_factor, cho_solve, solve_triangular
-
+import numpy as np
 import numpyro
 import numpyro.distributions as dist
+from jax import random, vmap
+from jax.scipy.linalg import cho_factor, cho_solve, solve_triangular
 from numpyro.infer import MCMC, NUTS
 
 
@@ -216,7 +213,7 @@ def run_inference(model, args, rng_key, X, Y, hypers):
         num_warmup=args.num_warmup,
         num_samples=args.num_samples,
         num_chains=args.num_chains,
-        progress_bar=False if "NUMPYRO_SPHINXBUILD" in os.environ else True,
+        progress_bar=not "NUMPYRO_SPHINXBUILD" in os.environ,
     )
     mcmc.run(rng_key, X, Y, hypers)
     mcmc.print_summary()
@@ -320,8 +317,7 @@ def main(args):
     )
 
     print(
-        "Coefficients theta_1 to theta_%d used to generate the data:"
-        % args.active_dimensions,
+        f"Coefficients theta_1 to theta_{args.active_dimensions} used to generate the data:",
         expected_thetas,
     )
     print(
@@ -337,13 +333,12 @@ def main(args):
         if inactive == "active":
             active_dimensions.append(dim)
         print(
-            "[dimension %02d/%02d]  %s:\t%.2e +- %.2e"
-            % (dim + 1, args.num_dimensions, inactive, mean, std)
+            f"[dimension {dim + 1:02d}/{args.num_dimensions:02d}]  {inactive}:\t{mean:.2e} +- {std:.2e}"
         )
 
     print(
-        "Identified a total of %d active dimensions; expected %d."
-        % (len(active_dimensions), args.active_dimensions)
+        f"Identified a total of {len(active_dimensions)} active dimensions; "
+        f"expected {args.active_dimensions}."
     )
 
     # Compute the mean and square root variance of coefficients theta_ij for i,j active dimensions.

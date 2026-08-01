@@ -5,12 +5,13 @@ Workflow Pattern 2: Production Flax NNX Training
 Complete production-ready training pipeline with Flax NNX, Optax, and Orbax.
 """
 
+import tempfile
+
 import jax
 import jax.numpy as jnp
-from flax import nnx
 import optax
 import orbax.checkpoint as ocp
-import tempfile
+from flax import nnx
 
 
 class MLP(nnx.Module):

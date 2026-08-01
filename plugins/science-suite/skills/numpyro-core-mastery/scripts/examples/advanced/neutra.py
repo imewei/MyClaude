@@ -20,18 +20,16 @@ Gaussian-like one. The transform will be used to get better mixing rate for NUTS
 import argparse
 import os
 
-from matplotlib.gridspec import GridSpec
-import matplotlib.pyplot as plt
-import seaborn as sns
-
-from jax import random
 import jax.numpy as jnp
-from jax.scipy.special import logsumexp
-
+import matplotlib.pyplot as plt
 import numpyro
+import numpyro.distributions as dist
+import seaborn as sns
+from jax import random
+from jax.scipy.special import logsumexp
+from matplotlib.gridspec import GridSpec
 from numpyro import optim
 from numpyro.diagnostics import print_summary
-import numpyro.distributions as dist
 from numpyro.distributions import constraints
 from numpyro.infer import MCMC, NUTS, SVI, Trace_ELBO
 from numpyro.infer.autoguide import AutoBNAFNormal
@@ -42,7 +40,7 @@ class DualMoonDistribution(dist.Distribution):
     support = constraints.real_vector
 
     def __init__(self):
-        super(DualMoonDistribution, self).__init__(event_shape=(2,))
+        super().__init__(event_shape=(2,))
 
     def sample(self, key, sample_shape=()):
         # it is enough to return an arbitrary sample with correct shape
@@ -67,7 +65,7 @@ def main(args):
         num_warmup=args.num_warmup,
         num_samples=args.num_samples,
         num_chains=args.num_chains,
-        progress_bar=False if "NUMPYRO_SPHINXBUILD" in os.environ else True,
+        progress_bar=not "NUMPYRO_SPHINXBUILD" in os.environ,
     )
     mcmc.run(random.PRNGKey(0))
     mcmc.print_summary()
@@ -94,7 +92,7 @@ def main(args):
         num_warmup=args.num_warmup,
         num_samples=args.num_samples,
         num_chains=args.num_chains,
-        progress_bar=False if "NUMPYRO_SPHINXBUILD" in os.environ else True,
+        progress_bar=not "NUMPYRO_SPHINXBUILD" in os.environ,
     )
     mcmc.run(random.PRNGKey(3))
     mcmc.print_summary()

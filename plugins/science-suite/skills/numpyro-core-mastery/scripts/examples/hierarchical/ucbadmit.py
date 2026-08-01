@@ -56,15 +56,13 @@ found in Chapter 10 (Counting and Classification) and Chapter 13 (Adventures in 
 import argparse
 import os
 
+import jax.numpy as jnp
 import matplotlib.pyplot as plt
 import numpy as np
-
-from jax import random
-import jax.numpy as jnp
-from jax.scipy.special import expit
-
 import numpyro
 import numpyro.distributions as dist
+from jax import random
+from jax.scipy.special import expit
 from numpyro.examples.datasets import UCBADMIT, load_dataset
 from numpyro.infer import MCMC, NUTS, Predictive
 
@@ -95,7 +93,7 @@ def run_inference(dept, male, applications, admit, rng_key, args):
         num_warmup=args.num_warmup,
         num_samples=args.num_samples,
         num_chains=args.num_chains,
-        progress_bar=False if "NUMPYRO_SPHINXBUILD" in os.environ else True,
+        progress_bar=not "NUMPYRO_SPHINXBUILD" in os.environ,
     )
     mcmc.run(rng_key, dept, male, applications, admit)
     return mcmc.get_samples()
@@ -124,7 +122,7 @@ def main(args):
     print_results(header, pred_probs, dept, male, admit / applications)
 
     # make plots
-    fig, ax = plt.subplots(figsize=(8, 6), constrained_layout=True)
+    _fig, ax = plt.subplots(figsize=(8, 6), constrained_layout=True)
 
     ax.plot(range(1, 13), admit / applications, "o", ms=7, label="actual rate")
     ax.errorbar(

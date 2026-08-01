@@ -11,11 +11,10 @@ Automates the comprehensive review of Claude Code plugins by validating:
 """
 
 import json
-import sys
-from pathlib import Path
-from typing import Dict, List, Optional
 import re
+import sys
 from dataclasses import dataclass, field
+from pathlib import Path
 
 # Allow ad-hoc `python tools/validation/plugin_review_script.py` CLI runs by
 # adding the repo root to sys.path before resolving the `tools` package.
@@ -23,8 +22,8 @@ _REPO_ROOT = Path(__file__).resolve().parents[2]
 if str(_REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(_REPO_ROOT))
 
-from tools.common.models import ValidationIssue, ValidationResult  # noqa: E402
-from tools.validation.metadata_validator import MetadataValidator  # noqa: E402
+from tools.common.models import ValidationIssue, ValidationResult
+from tools.validation.metadata_validator import MetadataValidator
 
 
 @dataclass
@@ -34,10 +33,10 @@ class ReviewReport:
     plugin_name: str
     plugin_path: Path
     _result: ValidationResult = field(init=False)
-    successes: List[str] = field(default_factory=list)
+    successes: list[str] = field(default_factory=list)
 
     # Severity mapping: review severities → shared model severities
-    _SEVERITY_MAP: Dict[str, str] = field(default_factory=dict, init=False, repr=False)
+    _SEVERITY_MAP: dict[str, str] = field(default_factory=dict, init=False, repr=False)
 
     def __post_init__(self) -> None:
         self._result = ValidationResult(
@@ -52,7 +51,7 @@ class ReviewReport:
         }
 
     def add_issue(
-        self, section: str, severity: str, message: str, details: Optional[str] = None
+        self, section: str, severity: str, message: str, details: str | None = None
     ) -> None:
         """Add an issue to the report"""
         mapped_severity = self._SEVERITY_MAP.get(severity, "warning")
@@ -84,7 +83,7 @@ class ReviewReport:
     def warnings(self) -> list[ValidationIssue]:
         return self._result.warnings
 
-    def get_issue_count_by_severity(self) -> Dict[str, int]:
+    def get_issue_count_by_severity(self) -> dict[str, int]:
         """Count issues by severity (using original review severity names)"""
         # Map back from shared severities to review severities for report compatibility
         reverse_map = {
@@ -202,7 +201,7 @@ class PluginReviewer:
                                 self._validate_agent_file(
                                     agent_file, agent_name, report
                                 )
-            except Exception as e:
+            except (OSError, json.JSONDecodeError) as e:
                 report.add_warning(f"Failed to validate agent files: {e}")
 
     def _validate_agent_file(
@@ -227,7 +226,7 @@ class PluginReviewer:
                     report.add_warning(
                         f"Agent {agent_name}.md: No markdown headings found"
                     )
-        except Exception as e:
+        except (OSError, UnicodeDecodeError) as e:
             report.add_warning(f"Failed to read agent file {agent_name}.md: {e}")
 
     def _review_commands(self, plugin_path: Path, report: ReviewReport):
@@ -264,7 +263,7 @@ class PluginReviewer:
                                 self._validate_command_file(
                                     command_file, command_name, report
                                 )
-            except Exception as e:
+            except (OSError, json.JSONDecodeError) as e:
                 report.add_warning(f"Failed to validate command files: {e}")
 
     def _validate_command_file(
@@ -289,7 +288,7 @@ class PluginReviewer:
                     report.add_warning(
                         f"Command {command_name}.md: No code examples found"
                     )
-        except Exception as e:
+        except (OSError, UnicodeDecodeError) as e:
             report.add_warning(f"Failed to read command file {command_name}.md: {e}")
 
     def _review_skills(self, plugin_path: Path, report: ReviewReport):
@@ -327,7 +326,7 @@ class PluginReviewer:
                                 self._validate_skill_file(
                                     skill_file, skill_name, report
                                 )
-            except Exception as e:
+            except (OSError, json.JSONDecodeError) as e:
                 report.add_warning(f"Failed to validate skill files: {e}")
 
     def _validate_skill_file(
@@ -350,7 +349,7 @@ class PluginReviewer:
                 # Check for code blocks (skills should have examples)
                 if "```" not in content:
                     report.add_warning(f"Skill {skill_name}.md: No code examples found")
-        except Exception as e:
+        except (OSError, UnicodeDecodeError) as e:
             report.add_warning(f"Failed to read skill file {skill_name}.md: {e}")
 
     def _review_readme(self, plugin_path: Path, report: ReviewReport):
@@ -393,7 +392,7 @@ class PluginReviewer:
 
             report.add_success("README.md found and contains documentation")
 
-        except Exception as e:
+        except (OSError, UnicodeDecodeError) as e:
             report.add_issue("README", "medium", "Failed to read README.md", str(e))
 
     def _review_file_structure(self, plugin_path: Path, report: ReviewReport):
@@ -442,7 +441,7 @@ class PluginReviewer:
                         f"Link text: '{link_text}'",
                     )
 
-        except Exception as e:
+        except (OSError, UnicodeDecodeError) as e:
             report.add_warning(f"Failed to check cross-references: {e}")
 
     def generate_markdown_report(self, report: ReviewReport) -> str:
@@ -467,13 +466,13 @@ class PluginReviewer:
         lines.append(f"- **Successes:** {len(report.successes)}\n")
 
         # Reverse severity map for display
-        display_severity: Dict[str, str] = {
+        display_severity: dict[str, str] = {
             "critical": "critical",
             "error": "high",
             "warning": "medium",
             "info": "low",
         }
-        severity_emoji_map: Dict[str, str] = {
+        severity_emoji_map: dict[str, str] = {
             "critical": "\U0001f534",
             "error": "\U0001f7e0",
             "warning": "\U0001f7e1",
@@ -486,7 +485,7 @@ class PluginReviewer:
             lines.append("## Issues Found\n")
 
             # Group issues by field (section)
-            issues_by_section: Dict[str, list] = {}
+            issues_by_section: dict[str, list] = {}
             for issue in section_issues:
                 if issue.field not in issues_by_section:
                     issues_by_section[issue.field] = []
@@ -547,7 +546,7 @@ def main():
 
     plugin_arg = sys.argv[1]
     # Accept both "dev-suite" and "plugins/dev-suite" forms for CLI convenience.
-    if plugin_arg.startswith("plugins/") or plugin_arg.startswith("plugins\\"):
+    if plugin_arg.startswith(("plugins/", "plugins\\")):
         plugin_name = Path(plugin_arg).name
     else:
         plugin_name = plugin_arg

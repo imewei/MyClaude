@@ -17,7 +17,6 @@ Key Concepts:
 import jax.numpy as jnp
 import matplotlib.pyplot as plt
 import numpy as np
-
 from nlsq import fit
 
 # Set random seed
@@ -134,7 +133,7 @@ stress_elastic = E_true * 1000 * strain[mask_elastic]
 # 2. Plastic region (yield to UTS) - strain hardening
 mask_plastic = (strain > epsilon_y_true) & (strain <= 0.08)
 strain_plastic = strain[mask_plastic] - epsilon_y_true
-# Power law hardening: σ = σ_y + K * ε_p^n  # noqa: RUF003
+# Power law hardening: σ = σ_y + K * ε_p^n
 K_hardening = 450.0  # MPa
 n_hardening = 0.3
 stress_plastic = sigma_y_true + K_hardening * strain_plastic**n_hardening
@@ -199,7 +198,7 @@ print("\n" + "-" * 70)
 print("YIELD STRENGTH DETERMINATION (0.2% Offset Method)")
 print("-" * 70)
 
-# 0.2% offset line: σ = E * (ε - 0.002)  # noqa: RUF003
+# 0.2% offset line: σ = E * (ε - 0.002)
 offset = 0.002
 offset_line = E_fit * 1000 * (strain_measured - offset)
 
@@ -239,7 +238,7 @@ if np.sum(mask_fit_plastic) > 10:
     strain_plastic_fit = strain_measured[mask_fit_plastic] - epsilon_y_fit
     stress_plastic_fit = stress_measured[mask_fit_plastic]
 
-    # Hollomon model: σ = K * ε^n  # noqa: RUF003
+    # Hollomon model: σ = K * ε^n
     def hollomon_model(eps, K, n):
         return K * jnp.power(eps + 1e-6, n)  # Add small offset to avoid log(0)
 
@@ -263,7 +262,7 @@ if np.sum(mask_fit_plastic) > 10:
     print(f"True values:              K={K_hardening:.1f} MPa, n={n_hardening:.3f}")
 
     # Strain hardening rate
-    # dσ/dε = n*K*ε^(n-1)  # noqa: RUF003
+    # dσ/dε = n*K*ε^(n-1)
     eps_avg = np.mean(strain_plastic_fit)
     hardening_rate = n_fit * K_fit * eps_avg ** (n_fit - 1)
     print(

@@ -2,13 +2,14 @@
 """Benchmark MCMC vs VI inference."""
 
 import time
-import jax.random as random
-from numpyro.infer import NUTS, MCMC, SVI, Trace_ELBO
+
+from jax import random
+from numpyro import optim
+from numpyro.infer import MCMC, NUTS, SVI, Trace_ELBO
 from numpyro.infer.autoguide import AutoNormal
-import numpyro.optim as optim
 
 
-def benchmark_mcmc_vi(model, x, y, sizes=[1000, 10000, 100000]):
+def benchmark_mcmc_vi(model, x, y, sizes=None):
     """
     Compare MCMC vs VI performance across dataset sizes.
 
@@ -21,6 +22,8 @@ def benchmark_mcmc_vi(model, x, y, sizes=[1000, 10000, 100000]):
     Returns:
         dict: Benchmark results
     """
+    if sizes is None:
+        sizes = [1000, 10000, 100000]
     results = {"mcmc": {}, "vi": {}}
 
     print("MCMC vs VI Benchmark")
@@ -47,7 +50,7 @@ def benchmark_mcmc_vi(model, x, y, sizes=[1000, 10000, 100000]):
 
             results["mcmc"][n] = mcmc_time
             print(f"MCMC: {mcmc_time:.2f}s")
-        except Exception as e:
+        except Exception as e:  # noqa: BLE001 - keep benchmarking remaining sizes on any inference failure
             print(f"MCMC failed: {e}")
             results["mcmc"][n] = None
 
@@ -68,7 +71,7 @@ def benchmark_mcmc_vi(model, x, y, sizes=[1000, 10000, 100000]):
             if results["mcmc"][n]:
                 speedup = results["mcmc"][n] / vi_time
                 print(f"Speedup: {speedup:.1f}x")
-        except Exception as e:
+        except Exception as e:  # noqa: BLE001 - keep benchmarking remaining sizes on any inference failure
             print(f"VI failed: {e}")
             results["vi"][n] = None
 

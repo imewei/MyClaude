@@ -83,13 +83,11 @@ The original implementation in nimble is at [3].
 import argparse
 import os
 
-import numpy as np
-
-from jax import random
 import jax.numpy as jnp
-
+import numpy as np
 import numpyro
 import numpyro.distributions as dist
+from jax import random
 from numpyro.examples.datasets import MORTALITY, load_dataset
 from numpyro.infer import MCMC, NUTS
 from numpyro.infer.reparam import LocScaleReparam
@@ -197,7 +195,7 @@ def run_inference(model, age, space, time, lookup, population, deaths, rng_key, 
         num_warmup=args.num_warmup,
         num_samples=args.num_samples,
         num_chains=args.num_chains,
-        progress_bar=False if "NUMPYRO_SPHINXBUILD" in os.environ else True,
+        progress_bar=not "NUMPYRO_SPHINXBUILD" in os.environ,
     )
     mcmc.run(rng_key, age, space, time, lookup, population, deaths)
     mcmc.print_summary()

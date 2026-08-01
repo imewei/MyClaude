@@ -9,10 +9,11 @@ Outputs performance metrics showing speedup of NLSQ over SciPy.
 """
 
 import time
-import numpy as np
-from scipy.optimize import curve_fit
+
 import jax.numpy as jnp
+import numpy as np
 from nlsq import fit
+from scipy.optimize import curve_fit
 
 
 def exponential_decay_numpy(t, A, lambda_, c):
@@ -26,10 +27,12 @@ def exponential_decay_jax(t, params):
     return A * jnp.exp(-lambda_ * t) + c
 
 
-def benchmark_comparison(sizes=[1000, 10_000, 100_000, 1_000_000]):
+def benchmark_comparison(sizes=None):
     """Compare SciPy vs NLSQ across dataset sizes."""
 
     # True parameters
+    if sizes is None:
+        sizes = [1000, 10000, 100000, 1000000]
     true_params = [5.0, 0.5, 1.0]
 
     # Generate full dataset

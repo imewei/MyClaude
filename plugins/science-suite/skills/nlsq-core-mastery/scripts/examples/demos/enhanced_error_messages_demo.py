@@ -7,7 +7,6 @@ when optimization fails, helping users debug issues quickly.
 
 import jax.numpy as jnp
 import numpy as np
-
 from nlsq import fit
 from nlsq.error_messages import OptimizationError
 
@@ -27,7 +26,7 @@ def example_1_max_iterations():
 
     try:
         # Force failure with very low max_nfev
-        popt, pcov = fit(exponential, x, y, p0=[1, 1], max_nfev=3, workflow="auto")
+        _popt, _pcov = fit(exponential, x, y, p0=[1, 1], max_nfev=3, workflow="auto")
     except OptimizationError as e:
         print("\n❌ Optimization Failed!")
         print("\n" + str(e))
@@ -58,7 +57,7 @@ def example_2_auto_recovery():
     # First attempt: fails
     print("\n🔴 First attempt (max_nfev=3):")
     try:
-        popt, pcov = fit(exponential, x, y, p0=[1, 1], max_nfev=3, workflow="auto")
+        popt, _pcov = fit(exponential, x, y, p0=[1, 1], max_nfev=3, workflow="auto")
         print("  ✅ Succeeded (unexpected)")
     except OptimizationError as e:
         print(f"  ❌ Failed: {e.reasons[0] if e.reasons else 'Unknown'}")
@@ -69,7 +68,7 @@ def example_2_auto_recovery():
     # Second attempt: apply recommendation
     print("\n🟢 Second attempt (max_nfev=100):")
     try:
-        popt, pcov = fit(exponential, x, y, p0=[1, 1], max_nfev=100, workflow="auto")
+        popt, _pcov = fit(exponential, x, y, p0=[1, 1], max_nfev=100, workflow="auto")
         print(f"  ✅ Success! Fitted parameters: a={popt[0]:.3f}, b={popt[1]:.3f}")
         print("  📈 True parameters:           a=3.000, b=0.500")
     except OptimizationError as e:
@@ -91,7 +90,7 @@ def example_3_diagnostic_analysis():
     y = 2 * np.exp(-((x - 1) ** 2) / (2 * 0.5**2))
 
     try:
-        popt, pcov = fit(gaussian, x, y, p0=[1, 0, 1], max_nfev=2, workflow="auto")
+        popt, _pcov = fit(gaussian, x, y, p0=[1, 0, 1], max_nfev=2, workflow="auto")
     except OptimizationError as e:
         print("\n📊 Analyzing Error Diagnostics:")
         print(f"  • Number of reasons: {len(e.reasons)}")
@@ -102,7 +101,7 @@ def example_3_diagnostic_analysis():
             print("\n🔧 Auto-fix strategy: Increase max_nfev")
             try:
                 # Automatically retry with higher max_nfev
-                popt, pcov = fit(
+                popt, _pcov = fit(
                     gaussian, x, y, p0=[1, 0, 1], max_nfev=200, workflow="auto"
                 )
                 print("  ✅ Auto-retry succeeded!")
@@ -134,7 +133,7 @@ def example_4_comparison():
 
     print("\n🟢 NEW ERROR (with enhancement):")
     try:
-        popt, pcov = fit(difficult, x, y, p0=[1, 1, 1], max_nfev=3, workflow="auto")
+        _popt, _pcov = fit(difficult, x, y, p0=[1, 1, 1], max_nfev=3, workflow="auto")
     except OptimizationError as e:
         print(f"\n{e}")
 

@@ -5,10 +5,10 @@ Demonstrates memory-efficient backpropagation through ODE solvers
 using checkpointing and adjoint methods.
 """
 
-import jax
-import jax.numpy as jnp
 import diffrax
 import equinox as eqx
+import jax
+import jax.numpy as jnp
 import optax
 
 # =============================================================================
@@ -119,7 +119,7 @@ def checkpoint_memory_tradeoff():
     checkpoint_configs = [4, 8, 16, 32, None]  # None = auto
 
     for n in checkpoint_configs:
-        grad_fn = jax.grad(lambda k: jnp.sum(simulate(y0, k, n)))
+        grad_fn = jax.grad(lambda k, n=n: jnp.sum(simulate(y0, k, n)))
         grad = grad_fn(0.5)
         print(f"Checkpoints={n}: gradient = {grad:.6f}")
 
@@ -253,7 +253,7 @@ def train_neural_ode():
     """Train Neural ODE with memory-efficient gradients."""
 
     key = jax.random.PRNGKey(42)
-    key, model_key, data_key = jax.random.split(key, 3)
+    key, model_key, _data_key = jax.random.split(key, 3)
 
     # Create model
     model = NeuralODE(hidden_dim=32, state_dim=2, key=model_key)

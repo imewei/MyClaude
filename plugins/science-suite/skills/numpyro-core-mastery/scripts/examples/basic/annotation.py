@@ -35,14 +35,12 @@ Switching" issue (mentioned in section 6.2 of [1]).
 import argparse
 import os
 
-import numpy as np
-
-from jax import nn, random, vmap
 import jax.numpy as jnp
-
+import numpy as np
 import numpyro
-from numpyro import handlers
 import numpyro.distributions as dist
+from jax import nn, random, vmap
+from numpyro import handlers
 from numpyro.infer import MCMC, NUTS, Predictive
 from numpyro.infer.reparam import LocScaleReparam
 from numpyro.ops.indexing import Vindex
@@ -106,9 +104,10 @@ def dawid_skene(positions, annotations):
     num_classes = int(np.max(annotations)) + 1
     num_items, num_positions = annotations.shape
 
-    with numpyro.plate("annotator", num_annotators, dim=-2):
-        with numpyro.plate("class", num_classes):
-            beta = numpyro.sample("beta", dist.Dirichlet(jnp.ones(num_classes)))
+    with numpyro.plate("annotator", num_annotators, dim=-2), numpyro.plate(
+        "class", num_classes
+    ):
+        beta = numpyro.sample("beta", dist.Dirichlet(jnp.ones(num_classes)))
 
     pi = numpyro.sample("pi", dist.Dirichlet(jnp.ones(num_classes)))
 
@@ -173,13 +172,15 @@ def hierarchical_dawid_skene(positions, annotations):
             "Omega", dist.HalfNormal(1).expand([num_classes - 1]).to_event(1)
         )
 
-    with numpyro.plate("annotator", num_annotators, dim=-2):
-        with numpyro.plate("class", num_classes):
-            # non-centered parameterization
-            with handlers.reparam(config={"beta": LocScaleReparam(0)}):
-                beta = numpyro.sample("beta", dist.Normal(zeta, omega).to_event(1))
-            # pad 0 to the last item
-            beta = jnp.pad(beta, [(0, 0)] * (jnp.ndim(beta) - 1) + [(0, 1)])
+    # non-centered parameterization
+    with (
+        numpyro.plate("annotator", num_annotators, dim=-2),
+        numpyro.plate("class", num_classes),
+        handlers.reparam(config={"beta": LocScaleReparam(0)}),
+    ):
+        beta = numpyro.sample("beta", dist.Normal(zeta, omega).to_event(1))
+        # pad 0 to the last item
+        beta = jnp.pad(beta, [(0, 0)] * (jnp.ndim(beta) - 1) + [(0, 1)])
 
     pi = numpyro.sample("pi", dist.Dirichlet(jnp.ones(num_classes)))
 
@@ -196,7 +197,7 @@ def item_difficulty(annotations):
     This model corresponds to the plate diagram in Figure 5 of reference [1].
     """
     num_classes = int(np.max(annotations)) + 1
-    num_items, num_positions = annotations.shape
+    num_items, _num_positions = annotations.shape
 
     with numpyro.plate("class", num_classes):
         eta = numpyro.sample(
@@ -238,11 +239,13 @@ def logistic_random_effects(positions, annotations):
             "Chi", dist.HalfNormal(1).expand([num_classes - 1]).to_event(1)
         )
 
-    with numpyro.plate("annotator", num_annotators, dim=-2):
-        with numpyro.plate("class", num_classes):
-            with handlers.reparam(config={"beta": LocScaleReparam(0)}):
-                beta = numpyro.sample("beta", dist.Normal(zeta, omega).to_event(1))
-                beta = jnp.pad(beta, [(0, 0)] * (jnp.ndim(beta) - 1) + [(0, 1)])
+    with (
+        numpyro.plate("annotator", num_annotators, dim=-2),
+        numpyro.plate("class", num_classes),
+        handlers.reparam(config={"beta": LocScaleReparam(0)}),
+    ):
+        beta = numpyro.sample("beta", dist.Normal(zeta, omega).to_event(1))
+        beta = jnp.pad(beta, [(0, 0)] * (jnp.ndim(beta) - 1) + [(0, 1)])
 
     pi = numpyro.sample("pi", dist.Dirichlet(jnp.ones(num_classes)))
 
@@ -282,7 +285,7 @@ def main(args):
         num_warmup=args.num_warmup,
         num_samples=args.num_samples,
         num_chains=args.num_chains,
-        progress_bar=False if "NUMPYRO_SPHINXBUILD" in os.environ else True,
+        progress_bar=not "NUMPYRO_SPHINXBUILD" in os.environ,
     )
     mcmc.run(random.PRNGKey(0), *data)
     mcmc.print_summary()
@@ -296,7 +299,7 @@ def main(args):
     )
     print("Histogram of the predicted class of each item:")
     row_format = "{:>10}" * 5
-    print(row_format.format("", *["c={}".format(i) for i in range(4)]))
+    print(row_format.format("", *[f"c={i}" for i in range(4)]))
     for i, row in enumerate(item_class):
         print(row_format.format(f"item[{i}]", *row))
 

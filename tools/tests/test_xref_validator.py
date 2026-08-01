@@ -13,7 +13,7 @@ from pathlib import Path
 project_root = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(project_root))
 
-from tools.validation.xref_validator import CrossReferenceValidator  # noqa: E402
+from tools.validation.xref_validator import CrossReferenceValidator
 
 
 def _make_plugin(

@@ -13,13 +13,12 @@ Usage:
 import argparse
 
 # pathlib.Path unused
-from typing import Any, Dict, List
+from typing import Any
 
 # Optional, Tuple unused
-
 import numpy as np
 import torch
-import torch.nn as nn
+from torch import nn
 
 
 class ActivationHook:
@@ -34,7 +33,7 @@ class ActivationHook:
         self.activations = output.detach()
 
 
-def register_activation_hooks(model: nn.Module) -> Dict[str, ActivationHook]:
+def register_activation_hooks(model: nn.Module) -> dict[str, ActivationHook]:
     """
     Register forward hooks on all modules to capture activations.
 
@@ -64,7 +63,7 @@ def register_activation_hooks(model: nn.Module) -> Dict[str, ActivationHook]:
 
 def analyze_activation_statistics(
     activations: torch.Tensor, layer_name: str, activation_type: str = "unknown"
-) -> Dict[str, Any]:
+) -> dict[str, Any]:
     """
     Compute statistics for activation tensor.
 
@@ -78,7 +77,7 @@ def analyze_activation_statistics(
     """
     acts = activations.detach().cpu().numpy()
 
-    stats: Dict[str, Any] = {
+    stats: dict[str, Any] = {
         "mean": float(np.mean(acts)),
         "std": float(np.std(acts)),
         "min": float(np.min(acts)),
@@ -120,8 +119,8 @@ def analyze_activation_statistics(
 
 
 def diagnose_activation_pathologies(
-    activation_stats: Dict[str, Dict], model: nn.Module
-) -> Dict[str, List[str]]:
+    activation_stats: dict[str, dict], model: nn.Module
+) -> dict[str, list[str]]:
     """
     Diagnose activation pathologies.
 
@@ -193,8 +192,8 @@ def diagnose_activation_pathologies(
 
 
 def print_activation_report(
-    activation_stats: Dict[str, Dict],
-    diagnosis: Dict[str, List[str]],
+    activation_stats: dict[str, dict],
+    diagnosis: dict[str, list[str]],
     verbose: bool = False,
 ):
     """Print comprehensive activation analysis report."""

@@ -1,11 +1,12 @@
 import json
-import yaml  # type: ignore
 import re
 from pathlib import Path
-from typing import Any, Dict, List, Set, Union
+from typing import Any
+
+import yaml  # type: ignore
 
 # Functional domain mapping rules (keywords -> domain)
-DOMAIN_MAP: Dict[str, str] = {
+DOMAIN_MAP: dict[str, str] = {
     "testing": "Quality Engineering",
     "validation": "Quality Engineering",
     "qa": "Quality Engineering",
@@ -26,7 +27,7 @@ DOMAIN_MAP: Dict[str, str] = {
 }
 
 
-def parse_frontmatter(content: str) -> Dict[str, Any]:
+def parse_frontmatter(content: str) -> dict[str, Any]:
     """Parses YAML frontmatter from a markdown string."""
     match = re.match(r"^---\n(.*?)\n---", content, re.DOTALL)
     if match:
@@ -38,9 +39,9 @@ def parse_frontmatter(content: str) -> Dict[str, Any]:
     return {}
 
 
-def extract_domains(texts: List[str], domain_map: Dict[str, str]) -> Set[str]:
+def extract_domains(texts: list[str], domain_map: dict[str, str]) -> set[str]:
     """Extracts domains from a list of texts based on a mapping of keywords."""
-    found_domains: Set[str] = set()
+    found_domains: set[str] = set()
     for text in texts:
         if not text:
             continue
@@ -51,11 +52,11 @@ def extract_domains(texts: List[str], domain_map: Dict[str, str]) -> Set[str]:
     return found_domains
 
 
-def analyze_ecosystem(base_path: Union[str, Path]) -> Dict[str, Any]:
+def analyze_ecosystem(base_path: str | Path) -> dict[str, Any]:
     """Analyzes the plugin ecosystem and extracts capabilities."""
     base_path = Path(base_path)
     plugins_dir = base_path / "plugins"
-    capabilities: Dict[str, Any] = {"plugins": [], "capability_matrix": {}}
+    capabilities: dict[str, Any] = {"plugins": [], "capability_matrix": {}}
 
     if not plugins_dir.exists():
         print(f"Directory {plugins_dir} not found.")
@@ -65,7 +66,7 @@ def analyze_ecosystem(base_path: Union[str, Path]) -> Dict[str, Any]:
         if not plugin_path.is_dir() or plugin_path.name.startswith("."):
             continue
 
-        plugin_info: Dict[str, Any] = {
+        plugin_info: dict[str, Any] = {
             "name": plugin_path.name,
             "path": str(plugin_path),
             "agents": [],
@@ -148,7 +149,7 @@ def analyze_ecosystem(base_path: Union[str, Path]) -> Dict[str, Any]:
                     except (yaml.YAMLError, OSError) as e:
                         print(f"Error parsing skill {skill_file}: {e}")
 
-        plugin_info["domains"] = sorted(list(plugin_info["domains"]))
+        plugin_info["domains"] = sorted(plugin_info["domains"])
         capabilities["plugins"].append(plugin_info)
 
         # Update capability matrix

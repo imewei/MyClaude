@@ -22,7 +22,7 @@ Usage:
 import argparse
 import sys
 from dataclasses import dataclass, field
-from datetime import datetime
+from datetime import UTC, datetime
 from pathlib import Path
 
 # Approximate tokens per character ratio for English text
@@ -95,7 +95,7 @@ def get_first_section_size(content: str) -> int:
         if line.startswith("## ") and first_heading_found:
             break
 
-        if line.startswith("# ") or line.startswith("## "):
+        if line.startswith(("# ", "## ")):
             first_heading_found = True
 
         first_section_lines.append(line)
@@ -177,7 +177,7 @@ def generate_report(report: BudgetReport) -> str:
     lines = [
         "# Skill Context Budget Report (v2.2.1+)",
         "",
-        f"**Date:** {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}",
+        f"**Date:** {datetime.now(UTC).strftime('%Y-%m-%d %H:%M:%S')}",
         f"**Total Skills Checked:** {report.total_skills}",
         "",
         "## Context Budget Reference",

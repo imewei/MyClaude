@@ -11,7 +11,6 @@ Consolidates duplicate dataclass definitions from:
 
 from dataclasses import dataclass, field
 from pathlib import Path
-from typing import Optional
 
 
 @dataclass
@@ -24,8 +23,8 @@ class ValidationIssue:
     field: str
     severity: str  # 'critical', 'error', 'warning', 'info'
     message: str
-    suggestion: Optional[str] = None
-    file_path: Optional[str] = None
+    suggestion: str | None = None
+    file_path: str | None = None
     line_number: int = 0
 
     @property
@@ -53,7 +52,7 @@ class ValidationResult:
     """
 
     plugin_name: str
-    plugin_path: Optional[Path] = None
+    plugin_path: Path | None = None
     is_valid: bool = True
     issues: list[ValidationIssue] = field(default_factory=list)
 
@@ -61,8 +60,8 @@ class ValidationResult:
         self,
         field: str,
         message: str,
-        suggestion: Optional[str] = None,
-        file_path: Optional[str] = None,
+        suggestion: str | None = None,
+        file_path: str | None = None,
         line_number: int = 0,
     ) -> None:
         """Add a validation error."""
@@ -82,8 +81,8 @@ class ValidationResult:
         self,
         field: str,
         message: str,
-        suggestion: Optional[str] = None,
-        file_path: Optional[str] = None,
+        suggestion: str | None = None,
+        file_path: str | None = None,
         line_number: int = 0,
     ) -> None:
         """Add a validation warning."""
@@ -143,7 +142,7 @@ class PluginMetadata:
     version: str
     description: str
     category: str
-    path: Optional[Path] = None
+    path: Path | None = None
     agents: list[dict] = field(default_factory=list)
     commands: list[dict] = field(default_factory=list)
     skills: list[dict] = field(default_factory=list)

@@ -14,12 +14,11 @@ Key Concepts:
 - Comparison with theoretical models
 """
 
-from scipy import signal
 import jax.numpy as jnp
 import matplotlib.pyplot as plt
 import numpy as np
-
 from nlsq import fit
+from scipy import signal
 
 # Set random seed
 np.random.seed(42)

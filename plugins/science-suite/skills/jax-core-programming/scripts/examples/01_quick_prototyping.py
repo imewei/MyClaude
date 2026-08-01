@@ -5,9 +5,10 @@ Workflow Pattern 1: Quick JAX Prototyping
 Demonstrates incremental addition of JAX transformations for rapid experimentation.
 """
 
+import time
+
 import jax
 import jax.numpy as jnp
-import time
 
 
 def example_quick_prototyping():

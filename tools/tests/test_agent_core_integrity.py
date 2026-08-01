@@ -1,8 +1,9 @@
 import json
-import yaml  # type: ignore
-import pytest
 import re
 from pathlib import Path
+
+import pytest
+import yaml  # type: ignore
 
 # Paths
 # tools/tests/test_agent_core_integrity.py -> .../tools/tests -> .../tools -> .../ (root) -> .../plugins/agent-core

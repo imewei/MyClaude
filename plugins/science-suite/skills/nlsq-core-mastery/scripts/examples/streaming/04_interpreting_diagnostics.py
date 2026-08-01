@@ -17,7 +17,6 @@ Run this example:
 import json
 
 import numpy as np
-
 from nlsq import fit
 
 

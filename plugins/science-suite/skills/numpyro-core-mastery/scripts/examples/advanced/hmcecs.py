@@ -20,14 +20,12 @@ is applicable when the likelihood factorizes as a product of N terms.
 import argparse
 import time
 
+import jax.numpy as jnp
 import matplotlib.pyplot as plt
 import numpy as np
-
-from jax import random
-import jax.numpy as jnp
-
 import numpyro
 import numpyro.distributions as dist
+from jax import random
 from numpyro.examples.datasets import HIGGS, load_dataset
 from numpyro.infer import HMC, HMCECS, MCMC, NUTS, SVI, Trace_ELBO, autoguide
 

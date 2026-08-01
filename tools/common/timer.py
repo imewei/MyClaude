@@ -5,7 +5,7 @@ Used by load_profiler.py, activation_profiler.py, and other profiling tools.
 """
 
 import time
-from typing import Any
+from typing import Self
 
 
 class Timer:
@@ -23,11 +23,11 @@ class Timer:
         self.end_time: float = 0
         self.duration_ms: float = 0
 
-    def __enter__(self) -> "Timer":
+    def __enter__(self) -> Self:
         self.start_time = time.perf_counter()
         return self
 
-    def __exit__(self, *args: Any) -> None:
+    def __exit__(self, *args: object) -> None:
         self.end_time = time.perf_counter()
         self.duration_ms = (self.end_time - self.start_time) * 1000
 

@@ -19,11 +19,11 @@ Usage:
 
 import json
 import re
-import time
 import sys
-from pathlib import Path
+import time
 from dataclasses import dataclass, field
-from typing import Any
+from pathlib import Path
+from typing import Any, Self
 
 
 @dataclass
@@ -77,11 +77,11 @@ class Timer:
         self.end_time: float = 0
         self.duration_ms: float = 0
 
-    def __enter__(self) -> "Timer":
+    def __enter__(self) -> Self:
         self.start_time = time.perf_counter()
         return self
 
-    def __exit__(self, *args: Any) -> None:
+    def __exit__(self, *args: object) -> None:
         self.end_time = time.perf_counter()
         self.duration_ms = (self.end_time - self.start_time) * 1000
 

@@ -13,7 +13,7 @@ Run: python3 profiling-workflow.py
 import cProfile
 import pstats
 import time
-from functools import lru_cache
+from functools import cache
 from io import StringIO
 
 # ============================================================================
@@ -46,7 +46,7 @@ def process_data_slow(data: list[int]) -> list[int]:
 # ============================================================================
 
 
-@lru_cache(maxsize=None)
+@cache
 def fibonacci_fast(n: int) -> int:
     """Memoized Fibonacci - linear time complexity O(n)."""
     if n <= 1:

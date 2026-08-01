@@ -25,7 +25,6 @@ modeled using the equilibrium expressions for acid-base reactions.
 import matplotlib.pyplot as plt
 import numpy as np
 from jax import numpy as jnp
-
 from nlsq import fit
 
 

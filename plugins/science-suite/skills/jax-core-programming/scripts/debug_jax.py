@@ -5,9 +5,11 @@ JAX Debugging Utilities
 Tools for debugging JAX code, identifying issues, and understanding errors.
 """
 
+from collections.abc import Callable
+from typing import Any
+
 import jax
 import jax.numpy as jnp
-from typing import Any, Callable
 
 
 def check_nan_inf(x: Any, name: str = "tensor") -> bool:

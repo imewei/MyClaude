@@ -9,14 +9,14 @@ Usage:
     python bayesian_workflow_template.py
 """
 
+import arviz as az
 import jax.numpy as jnp
-import jax.random as random
+import matplotlib.pyplot as plt
 import numpyro
 import numpyro.distributions as dist
-from numpyro.infer import NUTS, MCMC, Predictive
+from jax import random
 from numpyro.diagnostics import summary
-import matplotlib.pyplot as plt
-import arviz as az
+from numpyro.infer import MCMC, NUTS, Predictive
 
 # ============================================================================
 # STEP 1: DEFINE YOUR MODEL

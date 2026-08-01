@@ -11,16 +11,14 @@ import inspect
 import os
 import time
 
+import jax.numpy as jnp
 import matplotlib.pyplot as plt
-
+import numpyro
+import numpyro.distributions as dist
 from jax import jit, lax, random
 from jax.example_libraries import stax
-import jax.numpy as jnp
 from jax.random import PRNGKey
-
-import numpyro
 from numpyro import optim
-import numpyro.distributions as dist
 from numpyro.examples.datasets import MNIST, load_dataset
 from numpyro.infer import SVI, Trace_ELBO
 
@@ -123,7 +121,7 @@ def main(args):
     def reconstruct_img(epoch, rng_key):
         img = test_fetch(0, test_idx)[0][0]
         plt.imsave(
-            os.path.join(RESULTS_DIR, "original_epoch={}.png".format(epoch)),
+            os.path.join(RESULTS_DIR, f"original_epoch={epoch}.png"),
             img,
             cmap="gray",
         )
@@ -136,7 +134,7 @@ def main(args):
         z = dist.Normal(z_mean, z_var).sample(rng_key_sample)
         img_loc = decoder_nn[1](params["decoder$params"], z).reshape([28, 28])
         plt.imsave(
-            os.path.join(RESULTS_DIR, "recons_epoch={}.png".format(epoch)),
+            os.path.join(RESULTS_DIR, f"recons_epoch={epoch}.png"),
             img_loc,
             cmap="gray",
         )
@@ -153,9 +151,7 @@ def main(args):
         test_loss = eval_test(svi_state, rng_key_test, test_idx)
         reconstruct_img(i, rng_key_reconstruct)
         print(
-            "Epoch {}: loss = {} ({:.2f} s.)".format(
-                i, test_loss, time.time() - t_start
-            )
+            f"Epoch {i}: loss = {test_loss} ({time.time() - t_start:.2f} s.)"
         )
 
 

@@ -43,7 +43,7 @@ def enable_all_plugins():
         plugin_name = plugin["name"]
         plugin_key = f"{plugin_name}@{marketplace_name}"
 
-        if plugin_key in enabled_plugins and enabled_plugins[plugin_key]:
+        if enabled_plugins.get(plugin_key):
             print(f"  ✓ {plugin_name} (already enabled)")
             already_enabled += 1
         else:

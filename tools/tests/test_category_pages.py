@@ -5,12 +5,12 @@ Tests for category page generation and navigation structure.
 Task Group 5.1: Focused tests for category pages and navigation.
 """
 
-import unittest
-import tempfile
 import shutil
-from pathlib import Path
 import subprocess
 import sys
+import tempfile
+import unittest
+from pathlib import Path
 
 
 class TestCategoryPages(unittest.TestCase):
@@ -117,7 +117,11 @@ class TestCategoryPages(unittest.TestCase):
         # Only test if sphinx-build is available
         try:
             result = subprocess.run(
-                ["sphinx-build", "--version"], capture_output=True, text=True, timeout=5
+                ["sphinx-build", "--version"],
+                capture_output=True,
+                text=True,
+                timeout=5,
+                check=False,
             )
             if result.returncode != 0:
                 self.skipTest("sphinx-build not available")
@@ -140,6 +144,7 @@ class TestCategoryPages(unittest.TestCase):
                 capture_output=True,
                 text=True,
                 timeout=60,
+                check=False,
             )
 
             # Check for specific category pages in output

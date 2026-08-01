@@ -14,12 +14,11 @@ Key Concepts:
 - Rise time and settling time calculation
 """
 
-from scipy import stats
 import jax.numpy as jnp
 import matplotlib.pyplot as plt
 import numpy as np
-
 from nlsq import fit
+from scipy import stats
 
 # Set random seed
 np.random.seed(42)

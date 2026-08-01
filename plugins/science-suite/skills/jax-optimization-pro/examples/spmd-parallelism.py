@@ -7,8 +7,9 @@ for scaling JAX programs across GPUs and TPUs.
 
 import jax
 import jax.numpy as jnp
-from jax.sharding import Mesh, PartitionSpec as P, NamedSharding
 from jax.experimental import mesh_utils
+from jax.sharding import Mesh, NamedSharding
+from jax.sharding import PartitionSpec as P
 
 # =============================================================================
 # Pattern 1: Basic Device Placement

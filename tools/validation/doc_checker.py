@@ -9,11 +9,11 @@ Validates plugin documentation for:
 - Cross-reference accuracy
 """
 
-import sys
 import re
-from pathlib import Path
-from typing import Dict, List, Optional, Tuple
+import sys
 from dataclasses import dataclass, field
+from pathlib import Path
+from typing import ClassVar
 
 # Allow ad-hoc `python tools/validation/doc_checker.py` CLI runs by adding
 # the repo root to sys.path before resolving the `tools` package.
@@ -21,7 +21,7 @@ _REPO_ROOT = Path(__file__).resolve().parents[2]
 if str(_REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(_REPO_ROOT))
 
-from tools.common.models import ValidationResult  # noqa: E402
+from tools.common.models import ValidationResult
 
 
 @dataclass
@@ -31,7 +31,7 @@ class DocCheckResult:
     plugin_name: str
     plugin_path: Path
     _result: ValidationResult = field(init=False)
-    stats: Dict[str, int] = field(default_factory=dict)
+    stats: dict[str, int] = field(default_factory=dict)
 
     def __post_init__(self) -> None:
         self._result = ValidationResult(
@@ -44,8 +44,8 @@ class DocCheckResult:
         file: str,
         severity: str,
         message: str,
-        line: Optional[int] = None,
-        suggestion: Optional[str] = None,
+        line: int | None = None,
+        suggestion: str | None = None,
     ) -> None:
         """Add a documentation issue"""
         if severity == "error":
@@ -71,7 +71,7 @@ class DocCheckResult:
     def issues(self) -> list:
         return self._result.issues
 
-    def get_issue_count_by_severity(self) -> Dict[str, int]:
+    def get_issue_count_by_severity(self) -> dict[str, int]:
         """Count issues by severity"""
         counts = {"error": 0, "warning": 0, "info": 0}
         for issue in self._result.issues:
@@ -83,7 +83,7 @@ class DocumentationChecker:
     """Documentation completeness checker"""
 
     # Required sections in README.md
-    REQUIRED_README_SECTIONS = [
+    REQUIRED_README_SECTIONS: ClassVar[list[tuple[str, str]]] = [
         (r"#.*overview", "Overview"),
         (r"#.*(agent|expert)", "Agents"),
         (r"#.*command", "Commands"),
@@ -91,7 +91,7 @@ class DocumentationChecker:
     ]
 
     # Recommended sections
-    RECOMMENDED_README_SECTIONS = [
+    RECOMMENDED_README_SECTIONS: ClassVar[list[tuple[str, str]]] = [
         (r"#.*(quick\s*start|getting\s*started)", "Quick Start / Getting Started"),
         (r"#.*(install|setup)", "Installation / Setup"),
         (r"#.*(example|usage)", "Examples / Usage"),
@@ -100,7 +100,7 @@ class DocumentationChecker:
     ]
 
     # Code block language identifiers
-    VALID_CODE_LANGUAGES = {
+    VALID_CODE_LANGUAGES: ClassVar[set[str]] = {
         "julia",
         "python",
         "javascript",
@@ -134,7 +134,6 @@ class DocumentationChecker:
 
     def __init__(self):
         """Initialize the documentation checker"""
-        pass
 
     def check_plugin_documentation(self, plugin_path: Path) -> DocCheckResult:
         """Check all documentation for a plugin"""
@@ -187,7 +186,7 @@ class DocumentationChecker:
             with open(readme_path, "r", encoding="utf-8") as f:
                 content = f.read()
                 lines = content.split("\n")
-        except Exception as e:
+        except (OSError, UnicodeDecodeError) as e:
             result.add_issue("README.md", "error", f"Failed to read file: {e}")
             return
 
@@ -210,7 +209,7 @@ class DocumentationChecker:
             with open(file_path, "r", encoding="utf-8") as f:
                 content = f.read()
                 lines = content.split("\n")
-        except Exception as e:
+        except (OSError, UnicodeDecodeError) as e:
             result.add_issue(file_path.name, "error", f"Failed to read file: {e}")
             return
 
@@ -228,20 +227,19 @@ class DocumentationChecker:
             )
 
         # Check for code examples
-        if doc_type in ["command", "skill"]:
-            if "```" not in content:
-                result.add_issue(
-                    file_path.name,
-                    "warning",
-                    f"No code examples found in {doc_type} documentation",
-                    suggestion="Add code examples to illustrate usage",
-                )
+        if doc_type in ["command", "skill"] and "```" not in content:
+            result.add_issue(
+                file_path.name,
+                "warning",
+                f"No code examples found in {doc_type} documentation",
+                suggestion="Add code examples to illustrate usage",
+            )
 
         # Run common checks
         self._run_common_checks(file_path, content, lines, result)
 
     def _run_common_checks(
-        self, file_path: Path, content: str, lines: List[str], result: DocCheckResult
+        self, file_path: Path, content: str, lines: list[str], result: DocCheckResult
     ):
         """Run checks common to all markdown files"""
         self._check_markdown_formatting(file_path, content, lines, result)
@@ -275,7 +273,7 @@ class DocumentationChecker:
         self,
         filename: str,
         content: str,
-        sections: List[Tuple[str, str]],
+        sections: list[tuple[str, str]],
         result: DocCheckResult,
     ):
         """Check for presence of required sections"""
@@ -296,7 +294,7 @@ class DocumentationChecker:
         self,
         filename: str,
         content: str,
-        sections: List[Tuple[str, str]],
+        sections: list[tuple[str, str]],
         result: DocCheckResult,
     ):
         """Check for presence of recommended sections"""
@@ -314,7 +312,7 @@ class DocumentationChecker:
             )
 
     def _check_markdown_formatting(
-        self, file_path: Path, content: str, lines: List[str], result: DocCheckResult
+        self, file_path: Path, content: str, lines: list[str], result: DocCheckResult
     ):
         """Check markdown formatting issues"""
         file_name = file_path.name
@@ -369,7 +367,7 @@ class DocumentationChecker:
             )
 
     def _check_code_blocks(
-        self, file_path: Path, content: str, lines: List[str], result: DocCheckResult
+        self, file_path: Path, content: str, lines: list[str], result: DocCheckResult
     ):
         """Check code block formatting and syntax"""
         file_name = file_path.name
@@ -377,9 +375,7 @@ class DocumentationChecker:
         # Find all code blocks
         code_blocks = re.finditer(r"```(\w*)\n(.*?)```", content, re.DOTALL)
 
-        code_block_count = 0
-        for match in code_blocks:
-            code_block_count += 1
+        for code_block_count, match in enumerate(code_blocks, start=1):
             language = match.group(1).lower()
             code = match.group(2)
 
@@ -419,7 +415,7 @@ class DocumentationChecker:
             )
 
     def _check_links(
-        self, file_path: Path, content: str, lines: List[str], result: DocCheckResult
+        self, file_path: Path, content: str, lines: list[str], result: DocCheckResult
     ):
         """Check links and cross-references in body markdown AND YAML frontmatter.
 
@@ -525,7 +521,7 @@ class DocumentationChecker:
             result.add_issue(file_name, "error", message, suggestion=suggestion)
 
     def _check_common_issues(
-        self, file_path: Path, content: str, lines: List[str], result: DocCheckResult
+        self, file_path: Path, content: str, lines: list[str], result: DocCheckResult
     ):
         """Check for common documentation issues"""
         file_name = file_path.name
@@ -622,7 +618,7 @@ class DocumentationChecker:
             lines.append("## Issues by File\n")
 
             # Group issues by file
-            issues_by_file: Dict[str, list] = {}
+            issues_by_file: dict[str, list] = {}
             for issue in result.issues:
                 file_key = issue.file_path or issue.field
                 if file_key not in issues_by_file:

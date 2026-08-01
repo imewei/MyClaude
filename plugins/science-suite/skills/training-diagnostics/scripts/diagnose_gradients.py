@@ -12,13 +12,12 @@ Usage:
 
 import argparse
 import sys
-from typing import Dict, List, Optional
 
 import numpy as np
 
 try:
     import torch
-    import torch.nn as nn
+    from torch import nn
 except ImportError:
     print("Error: PyTorch is required. Install with: pip install torch")
     sys.exit(1)
@@ -26,11 +25,11 @@ except ImportError:
 
 def compute_gradient_stats(
     model: nn.Module,
-    data_loader: Optional[torch.utils.data.DataLoader] = None,
-    inputs: Optional[torch.Tensor] = None,
-    targets: Optional[torch.Tensor] = None,
-    criterion: Optional[nn.Module] = None,
-) -> Dict[str, Dict[str, float]]:
+    data_loader: torch.utils.data.DataLoader | None = None,
+    inputs: torch.Tensor | None = None,
+    targets: torch.Tensor | None = None,
+    criterion: nn.Module | None = None,
+) -> dict[str, dict[str, float]]:
     """
     Compute comprehensive gradient statistics for all model parameters.
 
@@ -91,8 +90,8 @@ def compute_gradient_stats(
 
 
 def diagnose_gradient_pathology(
-    grad_stats: Dict[str, Dict[str, float]],
-) -> Dict[str, List[str]]:
+    grad_stats: dict[str, dict[str, float]],
+) -> dict[str, list[str]]:
     """
     Diagnose gradient pathologies (vanishing, exploding, dead neurons).
 
@@ -169,8 +168,8 @@ def diagnose_gradient_pathology(
 
 
 def print_gradient_report(
-    grad_stats: Dict[str, Dict[str, float]],
-    diagnosis: Dict[str, List[str]],
+    grad_stats: dict[str, dict[str, float]],
+    diagnosis: dict[str, list[str]],
     verbose: bool = False,
 ):
     """Print comprehensive gradient analysis report."""

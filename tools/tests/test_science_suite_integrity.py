@@ -1,8 +1,9 @@
 import json
-import pytest
 import re
-import yaml  # type: ignore
 from pathlib import Path
+
+import pytest
+import yaml  # type: ignore
 
 # Paths adjustment: .../tools/tests -> .../tools -> .../ (root) -> .../plugins/science-suite
 PLUGIN_ROOT = Path(__file__).parent.parent.parent / "plugins" / "science-suite"

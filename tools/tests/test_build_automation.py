@@ -120,7 +120,7 @@ class TestBuildAutomation(unittest.TestCase):
 
             # Run make html
             result = subprocess.run(
-                ["make", "html"], capture_output=True, text=True, timeout=120
+                ["make", "html"], capture_output=True, text=True, timeout=120, check=False
             )
 
             # Check for errors in output
@@ -151,7 +151,7 @@ class TestBuildAutomation(unittest.TestCase):
 
             # Run make html
             result = subprocess.run(
-                ["make", "html"], capture_output=True, text=True, timeout=120
+                ["make", "html"], capture_output=True, text=True, timeout=120, check=False
             )
 
             output = result.stdout + result.stderr
@@ -239,7 +239,7 @@ class TestSearchFunctionality(unittest.TestCase):
             os.chdir(self.docs_dir)
 
             result = subprocess.run(
-                ["make", "html"], capture_output=True, text=True, timeout=120
+                ["make", "html"], capture_output=True, text=True, timeout=120, check=False
             )
 
             self.assertEqual(result.returncode, 0, "Build failed")

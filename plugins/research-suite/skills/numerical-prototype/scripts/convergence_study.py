@@ -117,12 +117,11 @@ def run_convergence(
 
     converged = rel_errors[-1] < convergence_tol
     messages = []
-    if expected_order is not None:
-        if abs(empirical_order - expected_order) > 0.5:
-            messages.append(
-                f"empirical order ({empirical_order:.2f}) differs from expected "
-                f"({expected_order:.2f}); investigate"
-            )
+    if expected_order is not None and abs(empirical_order - expected_order) > 0.5:
+        messages.append(
+            f"empirical order ({empirical_order:.2f}) differs from expected "
+            f"({expected_order:.2f}); investigate"
+        )
     messages.append(f"finest-resolution relative error: {rel_errors[-1]:.2%}")
     messages.append("converged" if converged else "NOT converged (refine further)")
 

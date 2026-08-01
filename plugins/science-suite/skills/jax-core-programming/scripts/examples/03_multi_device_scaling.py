@@ -7,8 +7,9 @@ Demonstrates data and model parallelism using JAX Sharding API.
 
 import jax
 import jax.numpy as jnp
-from jax.sharding import Mesh, PartitionSpec as P, NamedSharding
 from jax.experimental import mesh_utils
+from jax.sharding import Mesh, NamedSharding
+from jax.sharding import PartitionSpec as P
 
 
 def example_multi_device_scaling():
@@ -135,7 +136,7 @@ def example_multi_device_scaling():
 
     # Compute gradients (sharded automatically)
     grad_fn = jax.grad(loss_fn, argnums=(0, 1))
-    grad_w1, grad_w2 = grad_fn(w1_sharded, w2_sharded, x_sharded, y_sharded)
+    grad_w1, _grad_w2 = grad_fn(w1_sharded, w2_sharded, x_sharded, y_sharded)
 
     print(f"Gradient w1 shape: {grad_w1.shape}")
     print(f"Gradient w1 sharding: {grad_w1.sharding}")
@@ -180,7 +181,7 @@ def example_multi_device_scaling():
         return w1, w2, loss
 
     # Run training step
-    w1_new, w2_new, loss = sharded_train_step(
+    w1_new, _w2_new, loss = sharded_train_step(
         w1_sharded, w2_sharded, x_sharded, y_sharded
     )
 

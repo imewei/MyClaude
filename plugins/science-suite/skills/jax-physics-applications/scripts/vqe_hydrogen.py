@@ -23,8 +23,8 @@ Note: This uses a simplified simulation without actual Cirq dependency
 
 import jax
 import jax.numpy as jnp
-import optax
 import matplotlib.pyplot as plt
+import optax
 
 
 def main():
@@ -146,7 +146,7 @@ def main():
 
     # 6. Visualization
     print("\nGenerating plots...")
-    fig, axes = plt.subplots(2, 2, figsize=(12, 10))
+    _fig, axes = plt.subplots(2, 2, figsize=(12, 10))
 
     # Energy convergence
     ax1 = axes[0, 0]

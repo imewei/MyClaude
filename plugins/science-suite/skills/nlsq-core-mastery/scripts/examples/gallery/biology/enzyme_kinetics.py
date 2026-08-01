@@ -16,7 +16,6 @@ Key Concepts:
 
 import matplotlib.pyplot as plt
 import numpy as np
-
 from nlsq import fit
 
 # Set random seed

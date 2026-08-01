@@ -16,17 +16,14 @@ import argparse
 import os
 import time
 
+import jax
+import jax.numpy as jnp
 import matplotlib
 import matplotlib.pyplot as plt
 import numpy as np
-
-import jax
-from jax import vmap
-import jax.numpy as jnp
-import jax.random as random
-
 import numpyro
 import numpyro.distributions as dist
+from jax import random, vmap
 from numpyro.infer import (
     MCMC,
     NUTS,
@@ -37,7 +34,7 @@ from numpyro.infer import (
     init_to_value,
 )
 
-matplotlib.use("Agg")  # noqa: E402
+matplotlib.use("Agg")
 
 
 # squared exponential kernel with diagonal noise term
@@ -89,7 +86,7 @@ def run_inference(model, args, rng_key, X, Y):
         num_samples=args.num_samples,
         num_chains=args.num_chains,
         thinning=args.thinning,
-        progress_bar=False if "NUMPYRO_SPHINXBUILD" in os.environ else True,
+        progress_bar=not "NUMPYRO_SPHINXBUILD" in os.environ,
     )
     mcmc.run(rng_key, X, Y)
     mcmc.print_summary()
@@ -166,7 +163,7 @@ def main(args):
     percentiles = np.percentile(predictions, [5.0, 95.0], axis=0)
 
     # make plots
-    fig, ax = plt.subplots(figsize=(8, 6), constrained_layout=True)
+    _fig, ax = plt.subplots(figsize=(8, 6), constrained_layout=True)
 
     # plot training data
     ax.plot(X, Y, "kx")
