@@ -46,6 +46,20 @@ def get_field(
     return default
 
 
+def wrap_context(event_name: str, additional_context: str) -> dict[str, Any]:
+    """Correct Claude Code hook-output shape for injecting context.
+
+    A top-level "additionalContext" key is silently ignored by Claude Code —
+    only ``hookSpecificOutput.additionalContext`` actually reaches the model.
+    """
+    return {
+        "hookSpecificOutput": {
+            "hookEventName": event_name,
+            "additionalContext": additional_context,
+        }
+    }
+
+
 def find_state_files(cwd: str) -> list[Path]:
     """Locate research-spark `_state.yaml` files.
 

@@ -45,7 +45,9 @@ def main() -> None:
                     "Read the file itself before acting; it is the single source of truth."
                 )
 
-        json.dump({"status": "success", "additionalContext": ctx}, sys.stdout)
+        result = {"status": "success", "additionalContext": ctx}
+        result.update(_hook_io.wrap_context("SessionStart", ctx))
+        json.dump(result, sys.stdout)
     except Exception as e:
         json.dump(
             {"status": "error", "message": f"SessionStart hook error: {e}"},

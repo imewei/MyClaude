@@ -32,16 +32,13 @@ def main() -> None:
 
         states = _hook_io.find_state_files(cwd)
         if not states:
-            json.dump(
-                {
-                    "status": "success",
-                    "additionalContext": (
-                        f"Task completed: '{task_subject}'. No research-spark "
-                        "workspace here, so nothing was logged."
-                    ),
-                },
-                sys.stdout,
+            ctx = (
+                f"Task completed: '{task_subject}'. No research-spark "
+                "workspace here, so nothing was logged."
             )
+            result = {"status": "success", "additionalContext": ctx}
+            result.update(_hook_io.wrap_context("TaskCompleted", ctx))
+            json.dump(result, sys.stdout)
             return
 
         log_path = states[0].parent / LOG_FILENAME
@@ -65,7 +62,9 @@ def main() -> None:
                 f"Could not write audit log at {log_path} (non-fatal)."
             )
 
-        json.dump({"status": "success", "additionalContext": advice}, sys.stdout)
+        result = {"status": "success", "additionalContext": advice}
+        result.update(_hook_io.wrap_context("TaskCompleted", advice))
+        json.dump(result, sys.stdout)
     except Exception as e:
         json.dump(
             {"status": "error", "message": f"TaskCompleted hook error: {e}"},

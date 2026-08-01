@@ -38,10 +38,9 @@ def main() -> None:
     ).strip()
 
     if agent_type in RESEARCH_AGENT_TYPES:
-        json.dump(
-            {"status": "success", "additionalContext": ARTIFACT_CHECK_PROMPT},
-            sys.stdout,
-        )
+        result = {"status": "success", "additionalContext": ARTIFACT_CHECK_PROMPT}
+        result.update(_hook_io.wrap_context("SubagentStop", ARTIFACT_CHECK_PROMPT))
+        json.dump(result, sys.stdout)
     else:
         sys.exit(0)
 
