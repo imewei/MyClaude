@@ -11,7 +11,7 @@ Routes to `jax-pro` for JAX-on-GPU profiling, `julia-pro` / `julia-ml-hpc` for J
 
 ## Usage
 
-```
+```bash
 /benchmark --target src/train.py --backend jax --profile both
 /benchmark --target scripts/simulate.jl --backend julia --profile time
 /benchmark --target src/md_kernel.cu --backend cuda --profile memory

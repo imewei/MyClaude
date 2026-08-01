@@ -92,10 +92,3 @@ Naming: `test_{module}.py`, `Test{Class}`, `test_{function}_{scenario}`
 | Type-aware assertions | Based on return types |
 | Async handling | Appropriate async patterns |
 | Consistency | Match existing patterns |
-
-## External Docs
-
-- `test-generation-patterns.md` - AST parsing, algorithms, templates
-- `scientific-testing-guide.md` - Numerical correctness, tolerances
-- `property-based-testing.md` - Hypothesis patterns, stateful
-- `coverage-analysis-guide.md` - Gap ID, prioritization

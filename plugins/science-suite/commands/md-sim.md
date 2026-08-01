@@ -11,7 +11,7 @@ Routes to `simulation-expert` via `science-suite:simulation-and-hpc`.
 
 ## Usage
 
-```
+```bash
 /md-sim --engine gromacs --system protein.pdb --steps 50000
 /md-sim --engine jax-md --system lj_fluid.pdb --steps 100000
 /md-sim --engine openmm --system membrane.pdb --steps 200000

@@ -11,7 +11,7 @@ Routes to `research-expert` for methodology parsing, then cross-delegates to the
 
 ## Usage
 
-```
+```bash
 /paper-implement --paper 2301.04567 --framework jax --section methods
 /paper-implement --paper /path/to/diffusion_model.pdf --framework julia --section all
 ```

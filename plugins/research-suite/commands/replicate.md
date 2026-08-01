@@ -11,7 +11,7 @@ Routes to `research-expert` (claim extraction and replication design) → the sp
 
 ## Usage
 
-```
+```bash
 /replicate --paper 2301.04567 --framework jax --tolerance 0.01
 /replicate --paper 10.1038/s41586-021-03819-2 --framework julia --tolerance 0.05
 ```

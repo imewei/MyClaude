@@ -105,6 +105,8 @@ class DocumentationChecker:
         "python",
         "javascript",
         "typescript",
+        "jsx",
+        "tsx",
         "bash",
         "shell",
         "sh",
@@ -130,6 +132,9 @@ class DocumentationChecker:
         "text",
         "console",
         "terminal",
+        "swift",
+        "dart",
+        "mermaid",
     }
 
     def __init__(self):

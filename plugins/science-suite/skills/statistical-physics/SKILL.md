@@ -26,7 +26,7 @@ Fluctuation theorems, entropy production, and driven systems.
 ### [Active Matter](../active-matter/SKILL.md)
 Self-propelled particles, MIPS, and collective behavior.
 
-### [Correlation Analysis](../data-analysis/SKILL.md)
+### [Correlation Analysis](../correlation-analysis/SKILL.md)
 FFT-based analysis, structure factors, and dynamic heterogeneity.
 
 ### [Correlation Math Foundations](../correlation-math-foundations/SKILL.md)

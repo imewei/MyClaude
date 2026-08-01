@@ -21,7 +21,7 @@ For classical ML workflows, MLOps, and deployment, delegate to the expert agent:
 ## Core Skills
 
 ### [Advanced ML Systems](../advanced-ml-systems/SKILL.md)
-Boosting (XGBoost/LightGBM) and deep tabular models.
+Distributed deep learning (PyTorch/TensorFlow/JAX): DDP/FSDP/DeepSpeed, hyperparameter optimization, model compression. Classical boosting (XGBoost/LightGBM) is covered inline in this hub.
 
 ### [Data Wrangling & Communication](../data-wrangling-communication/SKILL.md)
 Preprocessing, feature engineering, and reporting.
@@ -46,8 +46,9 @@ Docker, Kubernetes, and cluster management.
 ```
 What is the primary ML task?
 |
-+-- Advanced boosting models (XGBoost / LightGBM) or deep tabular architectures?
++-- Distributed / large-scale deep learning training (PyTorch/TensorFlow/JAX, multi-GPU)?
 |   --> science-suite:advanced-ml-systems
+|   (Classical boosting — XGBoost/LightGBM — is covered inline in this hub, not a separate skill)
 |
 +-- Data preprocessing, feature engineering, or reporting/communication?
 |   --> science-suite:data-wrangling-communication

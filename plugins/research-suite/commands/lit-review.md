@@ -14,7 +14,7 @@ Routes to `research-expert` via `research-suite:research-practice` hub.
 
 ## Usage
 
-```
+```bash
 /lit-review --topic "physics-informed neural networks for fluid dynamics" --scope broad --output table
 /lit-review --topic "Bayesian UDE parameter estimation" --scope narrow --output annotated-bib
 /lit-review --topic "JAX-MD molecular dynamics" --scope narrow --output summary
