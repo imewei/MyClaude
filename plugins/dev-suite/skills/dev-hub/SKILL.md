@@ -10,12 +10,12 @@ Top-level entry point consolidating all dev-suite hub skills into a single route
 
 ## Expert Agents
 
-- **`app-developer`** — Scientific application development: PyQt/PySide6 GUIs, JAX/Julia app integration
-- **`automation-engineer`** — Scientific workflow automation: experiment pipelines, Airflow/data-pipeline orchestration
+- **`app-developer`** — Full-stack application development: React/Next.js web, Flutter/React Native/Swift/Kotlin mobile, performance & accessibility
+- **`automation-engineer`** — CI/CD pipeline architecture: GitHub Actions/GitLab CI, git workflow automation, release engineering, build optimization
 - **`documentation-expert`** — Docs for numerical/ML/SciML codebases: API specs, Sphinx, notebook-to-doc pipelines
 - **`quality-specialist`** — Scientific-computing validation: numerical precision, property-based invariants, reproducibility
-- **`software-architect`** — Numerical/ML/simulation system architecture: JAX pipeline boundaries, SciML module design
-- **`sre-expert`** — Reliability for long-running scientific workloads: HPC job monitoring, GPU/cluster observability
+- **`software-architect`** — System and backend architecture: service boundaries, REST/GraphQL/gRPC API strategy, technical governance
+- **`sre-expert`** — Site reliability engineering: observability (metrics/logs/traces), SLOs/error budgets, incident response, capacity engineering
 
 ## Hub Skills
 

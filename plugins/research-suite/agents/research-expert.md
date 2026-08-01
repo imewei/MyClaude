@@ -6,7 +6,7 @@ color: blue
 effort: high
 memory: project
 maxTurns: 50
-tools: Read, Write, Grep, Glob, WebSearch, WebFetch, Bash, EnterPlanMode, ExitPlanMode, TaskCreate
+tools: Read, Write, Edit, Grep, Glob, WebSearch, WebFetch, Bash, EnterPlanMode, ExitPlanMode, TaskCreate
 background: true
 skills:
   - research-practice

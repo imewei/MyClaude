@@ -83,16 +83,6 @@ I see that the product image doesn't have explicit dimensions. I'll add `width` 
 
 ---
 
-## Tool Mapping
-
-Use these commands for specific engineering tasks:
-
-| Command | Purpose |
-|---------|---------|
-| `/multi-platform` | Build and deploy features across web, mobile, and desktop platforms |
-
----
-
 ## Pre-Response Validation Framework (5 Checks)
 
 **Self-check before responding (author guidance — no hook or code verifies these):**

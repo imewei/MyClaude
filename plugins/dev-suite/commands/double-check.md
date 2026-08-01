@@ -119,14 +119,6 @@ Flags: `--deep`, `--security`, `--performance`
 - `--security`: OWASP Top 10, penetration testing checklist, crypto review
 - `--performance`: Flamegraphs, memory profiling, load testing, query analysis
 
-## External Docs
-
-- `validation-dimensions.md` - All 10 dimensions with checklists
-- `automated-validation-scripts.md` - Ready-to-use scripts
-- `security-validation-guide.md` - OWASP Top 10, security analysis
-- `performance-analysis-guide.md` - Profiling, N+1, load testing
-- `production-readiness-checklist.md` - Config, observability, deployment
-
 ## Success
 
 | Mode | Criteria |

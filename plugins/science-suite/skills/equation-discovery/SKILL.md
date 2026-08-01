@@ -22,7 +22,7 @@ Discover governing equations directly from trajectory data using sparse regressi
 
 - `--mode quick`: routing table + agent delegation only
 - `--mode standard` (default): overview, thresholding strategies, and routing
-- `--mode deep`: full DataDrivenDiffEq.jl API tables and PySINDy code blocks
+- `--mode deep`: full DataDrivenDiffEq.jl / PySINDy API — see Reference Files below
 
 ---
 
@@ -43,59 +43,6 @@ The key insight: most dynamical systems have **sparse** representations in a sui
 
 ---
 
-> **--mode deep required** for full library API reference below.
-
-## DataDrivenDiffEq.jl (Julia)
-
-```julia
-using DataDrivenDiffEq, ModelingToolkit
-
-# Define symbolic variables
-@variables x y
-
-# Build candidate library (polynomial basis up to degree 3)
-basis = Basis(polynomial_basis([x, y], 3), [x, y])
-
-# Create problem from data
-prob = DataDrivenProblem(X, DX=DX)  # X: state data, DX: derivative data
-
-# Solve with STLSQ sparse regression
-result = solve(prob, basis, STLSQ(threshold=0.1))
-
-# Extract discovered equations
-system = result.basis        # Symbolic equations
-coefficients = result.coeff  # Sparse coefficient matrix
-```
-
----
-
-## Custom Library Functions
-
-Extend the basis beyond polynomials for domain-specific dynamics:
-
-```julia
-@variables x y
-
-# Trigonometric terms
-trig_terms = [sin(x), cos(x), sin(y), cos(y)]
-
-# Exponential terms
-exp_terms = [exp(-x), exp(-y)]
-
-# Cross terms
-cross_terms = [x * sin(y), y * cos(x), x * exp(-y)]
-
-# Combined custom basis
-custom_basis = Basis(
-    vcat(polynomial_basis([x, y], 2), trig_terms, exp_terms, cross_terms),
-    [x, y]
-)
-```
-
-> **Rule:** Start with a polynomial basis. Add domain-specific terms only when polynomial SINDy fails or physics suggests oscillatory/exponential behavior.
-
----
-
 ## Thresholding Strategies
 
 | Algorithm | Best For | Key Parameter | Notes |
@@ -104,138 +51,7 @@ custom_basis = Basis(
 | **SR3** | Noisy data, relaxed sparsity | `threshold`, `relaxation` | Sparse relaxed regularized regression; more robust to noise |
 | **ADMM** | Constrained problems | `threshold`, `rho` | Alternating direction method of multipliers; enforces constraints |
 
-```julia
-# STLSQ — default for clean data
-result_stlsq = solve(prob, basis, STLSQ(threshold=0.1))
-
-# SR3 — noisy data
-result_sr3 = solve(prob, basis, SR3(threshold=0.05, relaxation=1.0))
-
-# ADMM — constrained
-result_admm = solve(prob, basis, ADMM(threshold=0.1, rho=1.0))
-```
-
----
-
-## Implicit SINDy
-
-For dynamics that cannot be written as explicit `dX/dt = f(X)` (e.g., implicit ODEs, DAEs):
-
-```julia
-# Implicit formulation: F(X, dX/dt) = 0
-# Augment library with derivative terms
-@variables x dx
-
-implicit_basis = Basis(
-    vcat(polynomial_basis([x, dx], 3), [sin(x) * dx, x^2 * dx]),
-    [x, dx]
-)
-
-# Solve with implicit flag
-prob_implicit = DataDrivenProblem(X, DX=DX)
-result = solve(prob_implicit, implicit_basis, ImplicitOptimizer(STLSQ(threshold=0.1)))
-```
-
----
-
-## DifferentialEquations.jl Integration
-
-Discover-simulate-validate loop:
-
-```julia
-using DifferentialEquations, DataDrivenDiffEq, ModelingToolkit
-
-# 1. Discover equations from data
-result = solve(prob, basis, STLSQ(threshold=0.1))
-
-# 2. Convert to ODESystem for simulation
-@named discovered_sys = ODESystem(result.basis)
-
-# 3. Simulate discovered model
-ode_prob = ODEProblem(discovered_sys, u0, tspan)
-sol = solve(ode_prob, Tsit5())
-
-# 4. Validate: compare simulation vs held-out data
-error = norm(sol(t_test) .- X_test) / norm(X_test)
-```
-
-> **Rule:** Always validate on held-out data not used in the SINDy fit. In-sample error is misleading for sparse models.
-
----
-
-> **--mode deep required** for full PySINDy code blocks below.
-
-## PySINDy (Python)
-
-```python
-import pysindy as ps
-import numpy as np
-
-# Basic SINDy
-model = ps.SINDy(
-    optimizer=ps.STLSQ(threshold=0.1),
-    feature_library=ps.PolynomialLibrary(degree=3),
-    feature_names=["x", "y"]
-)
-model.fit(X, t=t)
-model.print()  # Display discovered equations
-
-# Custom library with GeneralizedLibrary
-lib = ps.GeneralizedLibrary(
-    [ps.PolynomialLibrary(degree=2),
-     ps.FourierLibrary(n_frequencies=3),
-     ps.CustomLibrary(library_functions=[lambda x: np.exp(-x)],
-                       function_names=[lambda x: f"exp(-{x})"])]
-)
-model = ps.SINDy(feature_library=lib)
-model.fit(X, t=t)
-```
-
-PySINDy ships `STLSQ`, `SR3`, `SSR`, `FROLS`, `ConstrainedSR3`, `MIOSR` optimizers; feature libraries include `Polynomial`, `Fourier`, `Custom`, `PDE`, `WeakForm`, `Generalized`, `Tensored`; differentiation methods cover finite difference, smoothed FD, spectral, Savitzky-Golay, and Kalman. Supports control inputs (SINDyc), implicit dynamics, trapping theorem, and ensemble/bagging methods for UQ. NumPy/scikit-learn based — **not JAX-native**.
-
----
-
-## Related Python Packages
-
-| Package | Role | Notes |
-|---------|------|-------|
-| **PySINDy** | Sparse regression (SINDy, PDE/weak-form, ensemble) | NumPy/sklearn — see above |
-| **PyDMD** | DMD family (exact, FbDMD, CDMD, MrDMD, Hankel, EDMD, DMDc, BOPDMD, PiDMD) | Koopman operator approximation; complementary to SINDy |
-| **PySR** | Symbolic regression via Julia `SymbolicRegression.jl` backend | sklearn-compat; exports to SymPy/LaTeX/JAX/PyTorch via `model.jax()` |
-| **gplearn** | Classical genetic-programming symbolic regression | NumPy; `SymbolicRegressor`/`Classifier`/`Transformer` |
-
-> **No mature JAX-native SINDy library exists.** For a JAX-first workflow, hand-roll STLSQ via `jax.lax.scan` over polynomial libraries — the regression step is trivially vectorizable. PySR's `model.jax()` exporter is the cleanest bridge into a JAX pipeline.
-
----
-
-## Symbolic Regression
-
-When SINDy's predefined basis is too restrictive, use evolutionary symbolic regression:
-
-```julia
-using SymbolicRegression
-
-# Search for symbolic expressions
-options = SymbolicRegression.Options(
-    binary_operators=[+, -, *, /],
-    unary_operators=[sin, cos, exp, sqrt],
-    populations=30,
-    maxsize=25
-)
-
-hall_of_fame = equation_search(X, y;
-    options=options,
-    niterations=100
-)
-
-# Pareto front: complexity vs accuracy
-for member in hall_of_fame
-    println("Complexity: $(member.complexity), Loss: $(member.loss)")
-    println("  Equation: $(member.equation)")
-end
-```
-
-> **Rule:** Use the Pareto front (complexity vs loss) to select models. Prefer the simplest equation whose loss is within 5% of the best.
+Full solver calls for each algorithm are in `references/julia-datadriven-diffeq.md`.
 
 ---
 
@@ -246,16 +62,7 @@ end
 3. **Multi-trajectory validation**: Fit on one trajectory, validate on independent initial conditions
 4. **Long-time stability**: Simulate discovered equations well beyond the training time horizon
 
-```julia
-# Pareto front sweep over thresholds
-thresholds = [0.01, 0.05, 0.1, 0.2, 0.5]
-for thresh in thresholds
-    res = solve(prob_train, basis, STLSQ(threshold=thresh))
-    err = validate_on_test(res, X_test, t_test)
-    n_terms = count(!iszero, res.coeff)
-    println("Threshold=$thresh, Terms=$n_terms, Error=$err")
-end
-```
+> **Rule:** Always validate on held-out data not used in the SINDy fit. In-sample error is misleading for sparse models. The threshold-sweep script lives in `references/julia-datadriven-diffeq.md`.
 
 ---
 
@@ -280,8 +87,6 @@ After training a Universal Differential Equation (UDE), use SINDy on the trained
 3. Apply SINDy to the neural network output to recover interpretable equations
 4. Validate the symbolic model against the original data
 
-This pipeline combines the flexibility of neural networks with the interpretability of symbolic equations.
-
 ---
 
 ## Bayesian SINDy — posterior uncertainty on discovered coefficients
@@ -300,6 +105,13 @@ Bayesian SINDy with horseshoe priors, ensemble SINDy, and UQ-SINDy are covered i
 | Insufficient data | Underdetermined system | Collect longer trajectories or multiple initial conditions |
 | Wrong coordinate system | Complex equations with many terms | Transform to physically meaningful coordinates before SINDy |
 | Threshold too aggressive | Missing true dynamics terms | Sweep thresholds and inspect Pareto front for elbow |
+
+## Additional Resources
+
+### Reference Files
+
+- **`references/julia-datadriven-diffeq.md`** - Basis construction, thresholding algorithm calls, implicit SINDy, DifferentialEquations.jl discover-simulate-validate loop, threshold sweep script
+- **`references/pysindy-and-symbolic-regression.md`** - Full PySINDy API, related Python packages (PyDMD, PySR, gplearn), Julia `SymbolicRegression.jl` symbolic regression
 
 ## Routing Decision Tree
 

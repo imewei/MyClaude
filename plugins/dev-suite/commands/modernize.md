@@ -8,11 +8,6 @@ execution-modes:
   standard: "1-2w: Component migration"
   deep: "2-6mo: Enterprise transformation"
 allowed-tools: [Bash, Read, Write, Edit, Task, Glob, Grep, WebFetch, Bash(uv:*)]
-external-docs:
-  - migration-patterns-library.md
-  - strangler-fig-playbook.md
-  - testing-strategies.md
-  - rollback-procedures.md
 tags: [migration, modernization, strangler-fig, refactoring, technical-debt]
 ---
 

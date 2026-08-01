@@ -11,7 +11,7 @@ End-to-end recipe for fitting a Universal Differential Equation (UDE) — an ODE
 
 - `--mode quick`: routing table + agent delegation only
 - `--mode standard` (default): stage outline + sampler selection table
-- `--mode deep`: full Stage 2 Turing model code block
+- `--mode deep`: full Stage 1/Stage 2 code — see `references/turing-ude-stage-code.md`
 
 ---
 
@@ -41,72 +41,15 @@ Initializing a sampler at the prior mean almost never converges. The fix is a **
 
 ## Stage 1 — Deterministic warm-start
 
-Find a maximum a posteriori (MAP) or maximum likelihood point with `Optimization.jl` driving `SciMLSensitivity` adjoints. This gives the sampler a sensible initial position and surfaces obvious problems (stiff solver failures, unbounded gradients) before you commit to MCMC.
-
-```julia
-using OrdinaryDiffEq, Lux, ComponentArrays, Optimization, OptimizationOptimJL, SciMLSensitivity, Zygote, Random
-
-# Define the UDE: known physics + Lux neural correction
-nn = Chain(Dense(2, 16, tanh), Dense(16, 2))
-ps_init, st = Lux.setup(Random.default_rng(), nn)
-ps_ca = ComponentArray(ps_init)             # contiguous, AD-friendly packing
-
-function ude!(du, u, p, t)
-    correction, _ = nn(u, p.nn, st)
-    du[1] = p.α * u[1] - correction[1]
-    du[2] = -p.β * u[2] + correction[2]
-end
-
-p0 = ComponentArray(α = 1.0, β = 1.0, nn = ps_ca)
-prob = ODEProblem(ude!, u0, tspan, p0)
-
-function loss(p)
-    sol = solve(prob, Tsit5(); p = p, saveat = t_obs,
-                sensealg = GaussAdjoint(autojacvec = ZygoteVJP()))
-    sum(abs2, Array(sol) .- y_obs)
-end
-
-opt_prob = OptimizationProblem(OptimizationFunction((p, _) -> loss(p),
-                                                    Optimization.AutoZygote()), p0)
-map_estimate = solve(opt_prob, BFGS(), maxiters = 500)
-```
-
-`ComponentArray` is critical: it gives the optimizer (and later, Turing) a flat parameter vector while preserving the structured `(α, β, nn)` view that the ODE function consumes. See `optimization-patterns` for the full Optimization.jl interface and `sciml-modern-stack` for sensealg selection.
+Find a maximum a posteriori (MAP) or maximum likelihood point with `Optimization.jl` driving `SciMLSensitivity` adjoints. This gives the sampler a sensible initial position and surfaces obvious problems (stiff solver failures, unbounded gradients) before you commit to MCMC. `ComponentArray` is critical: it gives the optimizer (and later, Turing) a flat parameter vector while preserving the structured `(α, β, nn)` view that the ODE function consumes. See `optimization-patterns` for the full Optimization.jl interface and `sciml-modern-stack` for sensealg selection.
 
 ---
 
-> **--mode deep required** for the full Turing model code block below.
+> **--mode deep required** for the full Stage 1/Stage 2 code — see `references/turing-ude-stage-code.md`.
 
 ## Stage 2 — Turing model with embedded ODE
 
-Wrap the same `prob` in a `Turing.@model`. Use `remake` to inject sampled parameters without rebuilding the problem each step.
-
-```julia
-using Turing
-
-@model function bayesian_ude(y_obs, t_obs, prob, p_template)
-    # Priors over physical parameters
-    α ~ truncated(Normal(1.0, 0.5), 0, Inf)
-    β ~ truncated(Normal(1.0, 0.5), 0, Inf)
-
-    # Prior over neural network weights (flat vector)
-    nn_dim = length(p_template.nn)
-    nn_flat ~ MvNormal(zeros(nn_dim), 0.5 * I)
-
-    # Repack into ComponentArray with the same structure
-    p = ComponentArray(α = α, β = β,
-                       nn = reshape(nn_flat, axes(p_template.nn)))
-
-    # Solve and condition on observations
-    sol = solve(remake(prob; p = p), Tsit5();
-                saveat = t_obs,
-                sensealg = ForwardDiffSensitivity())
-    σ ~ truncated(Normal(0, 0.1), 0, Inf)
-    y_obs .~ Normal.(Array(sol), σ)
-end
-
-model = bayesian_ude(y_obs, t_obs, prob, p0)
-```
+Wrap the `ODEProblem` from Stage 1 in a `Turing.@model`. Use `remake` to inject sampled parameters without rebuilding the problem each step. Priors go over both the physical parameters and the flat neural-network weight vector; the likelihood conditions on observations via the ODE solve.
 
 **Sensealg selection in one breath**:
 
@@ -192,6 +135,12 @@ For a JAX-first Bayesian UDE workflow — Diffrax + Equinox + NumPyro + Optax �
 - **Equation discovery** — classical SINDy machinery for symbolic extraction from trained UDE residuals. See `equation-discovery`.
 - **Bayesian SINDy** — credible intervals and inclusion probabilities on the extracted symbolic coefficients. See `bayesian-sindy-workflow`.
 - **Differential equations** — solver selection, stiffness handling. See `differential-equations`.
+
+## Additional Resources
+
+### Reference Files
+
+- **`references/turing-ude-stage-code.md`** - Full Stage 1 (Optimization.jl MAP warm-start) and Stage 2 (Turing `@model` with embedded ODE) code
 
 ## Routing Decision Tree
 

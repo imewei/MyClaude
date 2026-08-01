@@ -9,7 +9,7 @@ description: Build graph neural networks in Julia with GraphNeuralNetworks.jl an
 
 - `--mode quick`: routing table + agent delegation only
 - `--mode standard` (default): task types, architecture overview, framework comparison
-- `--mode deep`: canonical Lux training loop and custom message passing code
+- `--mode deep`: canonical Lux training loop, custom message passing, molecular GNN example — see `references/lux-training-and-message-passing.md`
 
 ## Expert Agent
 
@@ -157,88 +157,11 @@ y, st = model(batched_g, batched_g.x, ps, st)
 individual_graphs = unbatch(batched_g)
 ```
 
-> **--mode deep required** for training loop and message passing code below.
+> **--mode deep required** for the full training loop, custom message passing, and molecular GNN example — see `references/lux-training-and-message-passing.md`.
 
-## Canonical Lux training loop
+## Training and Custom Message Passing
 
-The cleanest GNNLux training pattern uses `Lux.Training.TrainState` plus `single_train_step!` — much shorter than rolling your own `Zygote.withgradient` and it threads `(ps, st)` through optimiser updates automatically:
-
-```julia
-using Lux, Optimisers, MLUtils
-
-train_state = Lux.Training.TrainState(model, ps, st, Adam(1e-2))
-
-custom_loss(model, ps, st, (g, x, y)) = let
-    ŷ, st_new = model(g, x, ps, st)
-    loss = logitcrossentropy(ŷ, y)
-    loss, st_new, (;)            # (loss, new_state, stats)
-end
-
-for epoch in 1:200
-    for (g, y) in train_loader
-        g = MLUtils.batch(g)
-        _, loss, _, train_state = Lux.Training.single_train_step!(
-            AutoZygote(), custom_loss, (g, g.ndata.x, y), train_state,
-        )
-    end
-
-    # Switch Dropout / BatchNorm into eval mode for validation
-    st_eval = Lux.testmode(train_state.states)
-    val_acc = evaluate(model, train_state.parameters, st_eval, val_loader)
-    train_state = @set train_state.states = Lux.trainmode(st_eval)
-end
-```
-
-`Lux.testmode(st)` and `Lux.trainmode(st)` flip stochastic regularizers (Dropout, BatchNorm running stats) on and off — required whenever a `GNNChain` contains `Dropout` or normalisation layers, otherwise validation metrics will be biased by training-mode noise.
-
-## Custom Message Passing
-
-Implement custom message functions with `propagate`:
-
-```julia
-using GraphNeuralNetworks: propagate
-
-function custom_conv(g::GNNGraph, x)
-    # Message function: applied to each edge
-    message(xi, xj, e) = xj .* e  # Weight neighbor features by edge attr
-
-    # Aggregate messages at each node
-    m = propagate(message, g, +, xj=x, e=g.edata.w)
-
-    return relu.(m)
-end
-```
-
-## Molecular Property Prediction
-
-End-to-end example for molecular graphs:
-
-```julia
-using GraphNeuralNetworks, Lux
-
-# Molecular GNN: atoms as nodes, bonds as edges
-mol_model = GNNChain(
-    # Atom embedding
-    Embedding(118, 64),           # 118 elements
-    # Message passing
-    GCNConv(64 => 128, relu),
-    GCNConv(128 => 128, relu),
-    GCNConv(128 => 64, relu),
-    # Readout
-    GlobalPool(mean),             # Graph-level representation
-    Dense(64, 32, relu),
-    Dense(32, 1)                  # Scalar property prediction
-)
-
-# Build molecular graph
-mol_graph = GNNGraph(
-    bond_src, bond_dst;
-    ndata=(; z=atomic_numbers),    # Atomic numbers as node features
-    edata=(; bond_type=bond_types) # Bond types as edge features
-)
-
-y_pred, st = mol_model(mol_graph, mol_graph.ndata.z, ps, st)
-```
+Train with `Lux.Training.TrainState` + `single_train_step!` (threads `(ps, st)` through optimiser updates automatically; remember to flip `Lux.testmode`/`Lux.trainmode` around validation when the chain has `Dropout` or normalisation layers). Implement custom aggregation with `GraphNeuralNetworks.propagate(message_fn, g, aggr; xj=x, e=edge_features)`. A full molecular-property-prediction example (atom embedding → message passing → `GlobalPool` readout) is in the reference file.
 
 ## Package layering: GNNGraphs, GNNlib, GNNLux
 
@@ -300,6 +223,12 @@ These compose `julia-graph-neural-networks` with neighboring skills for advanced
 - **Julia AD backends** — Zygote (default), Enzyme (faster on large GNNs). See `julia-ad-backends`.
 - **Julia GPU kernels** — custom CUDA / KernelAbstractions kernels for unsupported message-passing patterns. See `julia-gpu-kernels`.
 - **Bayesian UDE workflow** — pattern for Bayesian neural-physics models, transferable to Bayesian GNNs. See `bayesian-ude-workflow`.
+
+## Additional Resources
+
+### Reference Files
+
+- **`references/lux-training-and-message-passing.md`** - Full `Lux.Training.TrainState` training loop, custom `propagate` message passing, end-to-end molecular property prediction example
 
 ## Checklist
 

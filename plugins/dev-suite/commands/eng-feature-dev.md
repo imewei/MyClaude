@@ -8,11 +8,6 @@ execution-modes:
   standard: "3-14d: Full production workflow"
   deep: "2-4w: Enterprise with compliance"
 allowed-tools: [Bash, Read, Write, Edit, Task, Glob, Grep, Bash(uv:*), ScheduleWakeup]
-external-docs:
-  - architecture-patterns-library.md
-  - methodology-guides.md
-  - testing-strategies.md
-  - deployment-patterns.md
 tags: [full-stack, orchestration, api-first, feature-development]
 ---
 
