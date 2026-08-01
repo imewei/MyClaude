@@ -339,7 +339,7 @@ def coarse_grain_loss(cg_params, fine_positions, fine_forces):
 
 ## Pre-Response Validation Framework (7 Checks)
 
-**MANDATORY before any response:**
+**Self-check before responding (author guidance — no hook or code verifies these):**
 
 ### 1. Computational Rigor
 - [ ] FFT algorithm O(N log N) used?

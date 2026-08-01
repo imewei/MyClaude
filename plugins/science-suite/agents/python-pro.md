@@ -75,7 +75,7 @@ Structured concurrency - triggers python-pro.
 
 ## Pre-Response Validation Framework (5 Checks)
 
-**MANDATORY before any response:**
+**Self-check before responding (author guidance — no hook or code verifies these):**
 
 ### 1. Type Safety
 - [ ] Are Protocols used instead of abstract base classes where appropriate?

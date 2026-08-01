@@ -103,14 +103,14 @@ What is the primary task?
 | Trigger | Hub skill |
 |---|---|
 | bifurcation, chaos, Lyapunov, SINDy, attractor, chimera, coupled oscillators, synchronization, Turing patterns, pattern formation, network dynamics | science-suite:nonlinear-dynamics |
-| JAX, JIT, vmap, pmap, custom_vjp, JAX-MD, Diffrax, optax, NumPyro JAX, JAX physics, XLA | science-suite:jax-computing |
+| JAX, JIT, vmap, pmap, custom_vjp, JAX-MD, Diffrax, optax, NumPyro JAX, JAX physics, XLA, NLSQ, GPU-accelerated curve fitting | science-suite:jax-computing |
 | Julia basics, dispatch, type stability, packaging, Pkg, Makie, Plots.jl, visualization, Julia CI/CD, Julia testing, Julia HPC, MPI.jl, Distributed.jl, PyCall, interop, Genie.jl | science-suite:julia-language |
 | Lux, Flux.jl, MLJ, CUDA.jl, GNNLux, Julia neural network, Enzyme, Zygote, KernelAbstractions, Julia RL, Julia model export, ONNX Julia | science-suite:julia-ml-and-dl |
 | DiffEq.jl, MTK, ModelingToolkit, UDE, Turing, SciML, NeuralPDE, PINN, Catalyst.jl, JuMP, DataDrivenDiffEq, SINDy Julia, bifurcation Julia | science-suite:sciml-and-diffeq |
 | correlation function, MSD, VACF, g(r), DLS, DDM, SAXS, XPCS, scattering, structure factor, spectroscopy, rheology, Green's function, FDT | science-suite:correlation-analysis |
 | phase transition, Langevin, stat mech, free energy, soft matter, Fokker-Planck, stochastic dynamics, non-equilibrium, entropy production, active matter, MIPS, flocking, coarse-graining, rare events, FFS, TIS, extreme value, GEV, GPD, SOC, avalanche | science-suite:statistical-physics-hub |
 | Transformer, CNN, GNN, neural architecture, training diagnostics, backpropagation, loss divergence, gradient explosion, gradient vanishing, ablation, hyperparameter search, distributed training, multi-GPU | science-suite:deep-learning-hub |
-| scikit-learn, XGBoost, feature engineering, MLflow, pandas, curve fitting, NLSQ, EDA, statistical tests, hypothesis testing, scientific visualization, matplotlib, seaborn, W&B | science-suite:ml-and-data-science |
+| scikit-learn, XGBoost, feature engineering, MLflow, pandas, classical/CPU curve fitting (scipy.optimize), EDA, statistical tests, hypothesis testing, scientific visualization, matplotlib, seaborn, W&B | science-suite:ml-and-data-science |
 | LLM, RAG, Claude API, AI workflow, codegen, embeddings, LangChain, LangGraph, NLP, tokenization, NER, LLM evaluation, LLM-as-judge | science-suite:llm-and-ai |
 | ONNX, TensorRT, model serving, deployment, inference server, FastAPI serving, TorchServe, Triton, BentoML, quantization, pruning, Airflow ML, Prefect, K8s GPU, federated learning, differential privacy | science-suite:ml-deployment |
 | GROMACS, OpenMM, LAMMPS, molecular dynamics, Monte Carlo, HPC, MPI, trajectory analysis, MDAnalysis, ML force fields, NequIP, MACE, signal processing, FFT, filtering, time series, ARIMA, changepoint detection, control theory, PID, LQR, MPC, numerical methods | science-suite:simulation-and-hpc |

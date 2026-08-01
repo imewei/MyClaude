@@ -343,13 +343,86 @@ def test_subagent_stop_is_registered():
     assert cmd.endswith("subagent_stop.py")
 
 
-def test_subagent_stop_fires_on_research_agent():
-    out = run_hook("subagent_stop.py", {"subagent_type": "research-spark-orchestrator"})
-    assert "stage artifact" in out["additionalContext"]
+def test_subagent_stop_flags_missing_artifact_on_disk(tmp_path):
+    """Real filesystem check, not self-attestation: the stage artifact the
+    orchestrator claims to have produced must actually exist on disk."""
+    proj = tmp_path / "my-idea"
+    proj.mkdir()
+    (proj / "_state.yaml").write_text("current_stage: 3\n", encoding="utf-8")
+    (proj / "artifacts").mkdir()
+
+    out = run_hook(
+        "subagent_stop.py",
+        {"subagent_type": "research-spark-orchestrator", "cwd": str(tmp_path)},
+    )
+
+    assert "03_claim.md" in out["additionalContext"]
+    assert "not found" in out["additionalContext"]
+
+
+def test_subagent_stop_confirms_artifact_present_on_disk(tmp_path):
+    proj = tmp_path / "my-idea"
+    (proj / "artifacts").mkdir(parents=True)
+    (proj / "_state.yaml").write_text("current_stage: 3\n", encoding="utf-8")
+    (proj / "artifacts" / "03_claim.md").write_text("claim\n", encoding="utf-8")
+
+    out = run_hook(
+        "subagent_stop.py",
+        {"subagent_type": "research-spark-orchestrator", "cwd": str(tmp_path)},
+    )
+
+    assert "verified present" in out["additionalContext"]
 
 
 def test_subagent_stop_silent_for_other_agents():
     assert run_hook("subagent_stop.py", {"subagent_type": "code-reviewer"}) == {}
+
+
+def test_subagent_stop_silent_for_scientific_review():
+    """scientific-review is a skill, not an agent — it never spawns a Task
+    subagent, so SubagentStop must never claim to gate it (that branch used
+    to be dead code; removed rather than left unreachable)."""
+    assert run_hook("subagent_stop.py", {"subagent_type": "scientific-review"}) == {}
+
+
+# --- post_tool_use: scientific-review deliverable completeness ------------
+
+
+def test_post_tool_use_is_registered():
+    hooks = json.loads((HOOKS / "hooks.json").read_text(encoding="utf-8"))
+    events = hooks["hooks"]
+    assert "PostToolUse" in events
+    cmd = events["PostToolUse"][0]["hooks"][0]["command"]
+    assert cmd.endswith("post_tool_use.py")
+
+
+def test_post_tool_use_flags_incomplete_review(tmp_path):
+    reviews = tmp_path / "reviews"
+    reviews.mkdir()
+    review = reviews / "paper.md"
+    review.write_text("# Notes\nLooks fine.\n", encoding="utf-8")
+
+    out = run_hook("post_tool_use.py", {"tool_input": {"file_path": str(review)}})
+
+    assert "missing required section" in out["additionalContext"]
+    assert "summary" in out["additionalContext"]
+    assert "recommendation" in out["additionalContext"]
+
+
+def test_post_tool_use_silent_for_complete_review(tmp_path):
+    reviews = tmp_path / "reviews"
+    reviews.mkdir()
+    review = reviews / "paper.md"
+    review.write_text("# Summary\nGood.\n# Recommendation\nAccept.\n", encoding="utf-8")
+
+    assert run_hook("post_tool_use.py", {"tool_input": {"file_path": str(review)}}) == {}
+
+
+def test_post_tool_use_silent_for_non_review_writes(tmp_path):
+    other = tmp_path / "notes.md"
+    other.write_text("# Summary\n# Recommendation\n", encoding="utf-8")
+
+    assert run_hook("post_tool_use.py", {"tool_input": {"file_path": str(other)}}) == {}
 
 
 def test_subagent_stop_writes_no_debug_log():

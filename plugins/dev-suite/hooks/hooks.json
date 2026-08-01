@@ -1,5 +1,5 @@
 {
-  "description": "Dev-suite hooks for auto-linting, git safety, subagent coordination, and build diagnostics",
+  "description": "Dev-suite hooks for lint-suggestion advisories, subagent/session coordination, and progress tracking. None of these hooks block or gate git operations — command safety for destructive git ops (merge-all, etc.) is enforced in-command via confirmation prompts, not by a hook.",
   "hooks": {
     "SessionStart": [
       {

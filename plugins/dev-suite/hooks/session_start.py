@@ -7,6 +7,7 @@ Auto-detects project stack: language, framework, test runner, package manager.
 import json
 import os
 import re
+import subprocess
 import sys
 from datetime import UTC, datetime, timedelta
 from pathlib import Path
@@ -55,6 +56,23 @@ MAX_PROGRESS_CHARS = 500
 MAX_PROGRESS_AGE = timedelta(hours=24)
 
 
+def get_current_head(cwd: str) -> str:
+    try:
+        result = subprocess.run(
+            ["git", "rev-parse", "--short", "HEAD"],
+            capture_output=True,
+            text=True,
+            timeout=5,
+            cwd=cwd,
+            check=False,
+        )
+        if result.returncode == 0 and result.stdout.strip():
+            return result.stdout.strip()
+    except (subprocess.TimeoutExpired, FileNotFoundError):
+        pass
+    return ""
+
+
 def read_progress_file(cwd: str) -> str:
     """Read prior session progress, skipping it if stale or undated."""
     progress_path = Path(cwd) / ".claude" / "progress" / "dev-suite.md"
@@ -74,6 +92,18 @@ def read_progress_file(cwd: str) -> str:
 
     if len(text) > MAX_PROGRESS_CHARS:
         text = text[:MAX_PROGRESS_CHARS] + "\n... (truncated)"
+
+    # Recorded HEAD vs live HEAD: don't silently reinject progress against a
+    # branch/HEAD that has since moved (e.g. another session merged/rebased).
+    head_match = re.search(r"^HEAD: (\S+)$", text, re.MULTILINE)
+    if head_match and head_match.group(1) != "unknown":
+        current_head = get_current_head(cwd)
+        if current_head and current_head != head_match.group(1):
+            text = (
+                f"[STALE — recorded at HEAD {head_match.group(1)}, "
+                f"now at {current_head}; branch has moved since this was written]\n"
+                + text
+            )
     return text
 
 

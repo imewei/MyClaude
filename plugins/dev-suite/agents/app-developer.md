@@ -96,7 +96,7 @@ Use these commands for specific engineering tasks:
 
 ## Pre-Response Validation Framework (5 Checks)
 
-**MANDATORY before any response:**
+**Self-check before responding (author guidance — no hook or code verifies these):**
 
 ### 1. Platform & Stack
 - [ ] Correct platform (Web/iOS/Android) identified?
