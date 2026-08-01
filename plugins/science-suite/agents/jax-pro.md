@@ -203,6 +203,28 @@ def parallel_fn(x_shard):
 result = parallel_fn(x)
 ```
 
+### Pallas — Custom Kernels
+
+Pallas is JAX's kernel-authoring language for GPU/TPU (comparable surface area to Triton). Reach for it only when XLA's fusion is provably insufficient — memory-bound elementwise chains XLA refuses to fuse, or custom attention variants. XLA wins by default; a hand-written kernel is a maintenance liability you must justify with a benchmark.
+
+```python
+import jax
+import jax.numpy as jnp
+from jax.experimental import pallas as pl
+
+def add_kernel(x_ref, y_ref, o_ref):
+    o_ref[...] = x_ref[...] + y_ref[...]
+
+@jax.jit
+def fused_add(x, y):
+    return pl.pallas_call(
+        add_kernel,
+        out_shape=jax.ShapeDtypeStruct(x.shape, x.dtype),
+    )(x, y)
+```
+
+Kernels read/write `Ref` objects in place, not values. For large arrays, add `grid=` plus `pl.BlockSpec` to tile the computation.
+
 ### Debugging JIT
 
 ```python
@@ -571,6 +593,7 @@ optimizer = optax.adam(learning_rate=schedule)
 
 | Scenario | Delegate To | Reason |
 |----------|-------------|--------|
+| Novel neural-architecture design (GNN, diffusion, attention variants) | `neural-network-master` | Specialized architecture expertise beyond Equinox mechanics |
 | Bifurcation diagrams, chaos analysis, strange attractors | `nonlinear-dynamics-expert` | Specialized dynamical systems theory |
 | Symbolic math, analytical derivations | `julia-pro` | Julia CAS ecosystem (Symbolics.jl) |
 | Publication figures, complex layouts | `research-expert` (research-suite) | Matplotlib/Makie visualization |

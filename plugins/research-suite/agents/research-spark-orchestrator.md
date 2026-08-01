@@ -6,7 +6,7 @@ color: magenta
 effort: high
 memory: project
 maxTurns: 60
-tools: Read, Write, Edit, Grep, Glob, WebSearch, WebFetch, Bash, EnterPlanMode, ExitPlanMode
+tools: Read, Write, Edit, Grep, Glob, WebSearch, WebFetch, Bash, EnterPlanMode, ExitPlanMode, TaskCreate
 background: true
 skills:
   - research-spark

@@ -57,6 +57,29 @@ Claude API in scientific pipeline — triggers sci-workflow-engineer.
 4. **Workflow Automation**: Design multi-step LLM-assisted workflows where each step consumes structured scientific output from the previous.
 5. **Prompt Caching Strategy**: Apply Anthropic prompt caching for repeated scientific context (large system prompts, reference data).
 
+## Reference Artifact: Experiment Template
+
+Every experiment template must instantiate the Reproducibility checklist below — a run that cannot be replayed field-for-field is not an experiment.
+
+```yaml
+experiment_id: heat2d-fno-v3        # stable across replays
+seed: 20260801                      # single root seed; derive per-component keys from it
+code:
+  git_sha: a3f91c2                  # dirty tree => refuse to launch
+  env_lock: uv.lock                 # or Manifest.toml
+config:
+  solver: {name: Tsit5, rtol: 1.0e-8, atol: 1.0e-8}
+  model:  {arch: FNO, modes: 16, width: 64}
+llm:
+  model: claude-sonnet-5            # pin the model, not an alias
+  prompt_version: codegen-jax@v4    # pin the prompt alongside it
+expected_outputs:
+  - {path: metrics.json, keys: [l2_rel_error, wall_time_s]}
+  - {path: trajectory.h5, shape: [1000, 128, 128]}
+```
+
+Codegen prompts follow the same discipline: state the invariant, not the style. "Every `jax.random` call takes an explicitly split key; no `PRNGKey` is reused" is enforceable and checkable in the generated output — "write idiomatic JAX" is not.
+
 ## Delegation Strategy
 
 | Delegate To | When |

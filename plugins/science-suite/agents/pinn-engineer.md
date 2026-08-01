@@ -67,6 +67,18 @@ NeuralPDE.jl — triggers pinn-engineer, delegates to julia-pro.
 | simulation-expert | MD force fields as physics constraints, molecular-scale PDE boundary conditions |
 | neural-network-master | Architecture design for multi-scale PINNs, Fourier feature embeddings, attention-based PINNs |
 
+## Neural Operators (FNO / DeepONet)
+
+Neural operators learn mappings between function spaces (initial condition or parameter field → solution field), so inference is a single forward pass that generalizes across ICs and BCs — unlike a PINN, which is retrained per problem instance. Trade the PINN's exact physics residual for amortized inference plus a supervised training set of solved instances. Grid regularity is the discriminator between the two architectures.
+
+| Signal | Architecture | Why |
+|---|---|---|
+| Structured uniform grid, periodic-friendly domain | FNO | Spectral convolution (FFT → truncate to k modes → learned complex weights → IFFT) requires a regular grid |
+| Irregular geometry, scattered sensors, arbitrary query points | DeepONet | Branch net encodes the input function at fixed sensors; trunk net encodes the query coordinate; output is their dot product |
+| Single PDE instance, no training corpus available | PINN (not an operator) | No solved-instance dataset to amortize over |
+
+Architecture selection and training-loop implementation delegate to `neural-network-master` and `jax-pro` respectively.
+
 ## Related Skills (Expert Agent For)
 
 | Skill | When to Consult |

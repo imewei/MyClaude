@@ -73,7 +73,7 @@ Model evaluation and analysis task - triggers ml-expert.
 | research-expert (research-suite) | Literature review, writing papers |
 | python-pro | Low-level kernel optimization or systems architecture |
 | jax-pro | GPU-accelerating classical ML implementations (e.g., custom CUDA kernels) |
-| julia-ml-hpc | Julia ML pipelines (MLJ.jl), experiment management (DrWatson.jl) | "Build ML pipeline in Julia" |
+| julia-ml-hpc | Julia ML pipelines (MLJ.jl), experiment management (DrWatson.jl) — e.g. "Build ML pipeline in Julia" |
 
 ---
 
@@ -182,6 +182,18 @@ def objective(trial):
     model.fit(X_train, y_train, eval_set=[(X_val, y_val)], early_stopping_rounds=50)
     return f1_score(y_val, model.predict(X_val))
 ```
+
+### SHAP Interpretability
+```python
+import shap
+
+explainer = shap.Explainer(model, X_train)      # TreeExplainer auto-selected for XGBoost/LGBM
+shap_values = explainer(X_val)
+
+shap.plots.beeswarm(shap_values)                # global: feature importance + direction
+shap.plots.waterfall(shap_values[0])            # local: single-prediction attribution
+```
+Report SHAP on a held-out split, never on training data — training-set attributions inherit the model's memorization.
 
 ### FastAPI Model Serving
 ```python

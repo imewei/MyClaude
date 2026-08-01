@@ -134,6 +134,26 @@ distance(p1::Point{T}, p2::Point{T}) where T = sqrt((p1.x - p2.x)^2 + (p1.y - p2
 | `x = zeros(100)` (pre-alloc) | `x = []` (push!) | Avoid dynamic resizing in loops |
 | `@view A[1:10]` | `A[1:10]` | Avoid allocating copies for slices |
 
+### Mathematical Optimization (JuMP.jl)
+
+Use JuMP.jl for structured mathematical programming (LP/QP/MIP) where the solver exploits problem structure. Use Optimization.jl instead for black-box scientific objectives (parameter fitting, UDE training) that need AD through a simulation.
+
+```julia
+using JuMP, HiGHS
+
+model = Model(HiGHS.Optimizer)
+@variable(model, 0 <= x[1:2] <= 10)
+@constraint(model, capacity, 3x[1] + 2x[2] <= 12)
+@objective(model, Max, 5x[1] + 4x[2])
+
+optimize!(model)
+
+# Never read values without checking status first
+if termination_status(model) == OPTIMAL
+    println(value.(x), " → ", objective_value(model))
+end
+```
+
 ---
 
 ## Domain 2: Scientific Machine Learning (SciML)
