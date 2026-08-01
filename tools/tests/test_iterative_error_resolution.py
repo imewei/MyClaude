@@ -100,18 +100,60 @@ class TestSuppressionGate:
 
 
 class TestConfidenceGate:
-    """H1: the documented threshold is actually enforced."""
+    """H1: the documented threshold is actually enforced for non-low-risk types.
+
+    npm_eresolve was reclassified into LOW_RISK_TYPES (see TestRiskTierBypass)
+    because a fresh knowledge base's confidence formula could never earn it
+    AUTO_APPLY_CONFIDENCE — this class now covers a type NOT in that set, so
+    it still exercises the confidence gate itself.
+    """
 
     def test_low_confidence_is_not_dispatched(self, repo: Path) -> None:
-        low = analysis("npm_eresolve", confidence=0.3)
+        low = analysis("ts_error", confidence=0.3)
         actionable, skipped = make_engine().plan_fixes([low])
         assert actionable == []
         assert "below the" in skipped[0][1]
 
     def test_high_confidence_passes(self, repo: Path) -> None:
-        high = analysis("npm_eresolve", confidence=0.95)
+        high = analysis("ts_error", confidence=0.95)
         actionable, skipped = make_engine().plan_fixes([high])
         assert actionable == [high]
+        assert skipped == []
+
+
+class TestRiskTierBypass:
+    """H1b: LOW_RISK_TYPES auto-apply on their own safety net, not confidence.
+
+    Regression guard for the original confidence-gate deadlock: a fresh
+    knowledge base's calculate_confidence formula caps at ~0.6 for most
+    types, permanently below AUTO_APPLY_CONFIDENCE (0.7), which made
+    fix_eslint_errors/fix_oom_error/fix_timeout_error unreachable regardless
+    of how safe their actual implementation is. Confidence still orders
+    within the actionable set (prioritize_fixes); it no longer gates
+    eligibility for these five types.
+    """
+
+    @pytest.mark.parametrize(
+        "error_type", ["npm_eresolve", "python_import", "eslint_error", "oom", "timeout"]
+    )
+    def test_low_risk_type_dispatches_regardless_of_low_confidence(
+        self, repo: Path, error_type: str
+    ) -> None:
+        low = analysis(error_type, confidence=0.0)
+        actionable, skipped = make_engine().plan_fixes([low])
+        assert actionable == [low], f"{error_type} should bypass the confidence gate"
+        assert skipped == []
+
+    def test_allow_suppression_is_reachable_regardless_of_confidence(
+        self, repo: Path
+    ) -> None:
+        """Regression guard: --allow-suppression used to be dead code — a
+        test_failure error still needed confidence >= 0.7 to reach
+        actionable, which it structurally could never earn (test_failure
+        gets no clarity_bonus). The explicit opt-in must itself be the gate."""
+        err = analysis("test_failure", confidence=0.0)
+        actionable, skipped = make_engine(allow_suppression=True).plan_fixes([err])
+        assert actionable == [err]
         assert skipped == []
 
 
@@ -278,12 +320,169 @@ class TestKnowledgeBaseSampleFloor:
 
     def test_single_success_is_not_trusted(self, repo: Path) -> None:
         kb = engine.KnowledgeBase()
-        kb.record_fix("npm fix", True)
+        kb.record_fix("npm_eresolve", True)
         assert kb.get_success_rate("npm_eresolve") == engine.NEUTRAL_CONFIDENCE
         assert kb.get_confidence("npm_eresolve") == engine.NEUTRAL_CONFIDENCE
 
     def test_rate_is_trusted_once_sampled(self, repo: Path) -> None:
         kb = engine.KnowledgeBase()
         for _ in range(engine.MIN_SAMPLES):
-            kb.record_fix("npm fix", True)
+            kb.record_fix("npm_eresolve", True)
         assert kb.get_success_rate("npm_eresolve") == 1.0
+
+
+class TestKnowledgeBaseKeyedByRealErrorType:
+    """M4: record_fix must key by the actual error type, not a re-derived guess.
+
+    Regression guard: record_fix used to call extract_error_type(fix) — a
+    keyword search over the fix's prose description — to guess the error
+    type, independently of the error_type the parser and calculate_confidence
+    already agree on. "Add --legacy-peer-deps flag" matched no keyword and
+    landed under "unknown", so npm_eresolve's learned confidence could never
+    accumulate even after real, successful fixes.
+    """
+
+    def test_record_fix_takes_error_type_directly(self, repo: Path) -> None:
+        kb = engine.KnowledgeBase()
+        kb.record_fix("npm_eresolve", True)
+        assert "npm_eresolve" in kb.fixes
+        assert "unknown" not in kb.fixes
+
+    def test_confidence_accumulates_for_the_recorded_type(self, repo: Path) -> None:
+        kb = engine.KnowledgeBase()
+        for _ in range(engine.MIN_SAMPLES):
+            kb.record_fix("oom", True)
+        assert kb.get_confidence("oom") == 1.0
+        # A different type must not have been touched by the above.
+        assert kb.get_success_rate("timeout") == engine.NEUTRAL_CONFIDENCE
+
+
+class TestParseLogsDedup:
+    """M5: one entry per distinct error type, not one per regex match.
+
+    Regression guard: a log with 300 identical ESLint violations used to
+    produce 300 ErrorAnalysis entries, applying the same fix 300 times and
+    inflating errors_fixed / the printed "success rate" without changing
+    what actually got fixed.
+    """
+
+    def test_dedups_repeated_matches_by_type(self, repo: Path) -> None:
+        logs = "\n".join(f"12:{i}  error  no-unused-vars" for i in range(300))
+        errors = make_engine().parse_logs(logs)
+        assert len(errors) == 1
+        assert errors[0]["type"] == "eslint_error"
+
+    def test_distinct_types_each_produce_one_entry(self, repo: Path) -> None:
+        logs = "npm ERR! code ERESOLVE\nModuleNotFoundError: no module named 'x'"
+        errors = make_engine().parse_logs(logs)
+        assert {e["type"] for e in errors} == {"npm_eresolve", "python_import"}
+
+
+class TestEslintExitCode:
+    """H4: only exit 0 is a real success — 1 leaves errors, >=2 means eslint itself failed."""
+
+    def test_exit_0_is_success(self, repo: Path, monkeypatch: pytest.MonkeyPatch) -> None:
+        monkeypatch.setattr(
+            engine.subprocess, "run", lambda *a, **k: type("R", (), {"returncode": 0})()
+        )
+        assert make_engine().fix_eslint_errors() is engine.FixResult.SUCCESS
+
+    def test_exit_1_unfixable_is_partial_not_success(
+        self, repo: Path, monkeypatch: pytest.MonkeyPatch
+    ) -> None:
+        monkeypatch.setattr(
+            engine.subprocess, "run", lambda *a, **k: type("R", (), {"returncode": 1})()
+        )
+        assert make_engine().fix_eslint_errors() is engine.FixResult.PARTIAL
+
+    def test_exit_2_config_error_is_failed_not_success(
+        self, repo: Path, monkeypatch: pytest.MonkeyPatch
+    ) -> None:
+        monkeypatch.setattr(
+            engine.subprocess, "run", lambda *a, **k: type("R", (), {"returncode": 2})()
+        )
+        assert make_engine().fix_eslint_errors() is engine.FixResult.FAILED
+
+
+class TestTerminalStatusSet:
+    """M6: any non-in-progress status stops the wait, not just success/failure/cancelled."""
+
+    @pytest.mark.parametrize(
+        "status",
+        ["timed_out", "neutral", "skipped", "action_required", "startup_failure", "unknown"],
+    )
+    def test_non_legacy_terminal_statuses_stop_the_wait(
+        self, repo: Path, monkeypatch: pytest.MonkeyPatch, status: str
+    ) -> None:
+        eng = make_engine()
+        monkeypatch.setattr(eng, "get_run_status", lambda run_id: status)
+        assert eng.wait_for_completion("123", timeout=5) is True
+
+    def test_in_progress_keeps_waiting_until_timeout(
+        self, repo: Path, monkeypatch: pytest.MonkeyPatch
+    ) -> None:
+        eng = make_engine()
+        monkeypatch.setattr(eng, "get_run_status", lambda run_id: "in_progress")
+        monkeypatch.setattr(engine.time, "sleep", lambda _: None)
+        assert eng.wait_for_completion("123", timeout=0.01) is False
+
+
+class TestMaskedFailureIsNotSuccess:
+    """C3: a log-fetch failure must abort, not read as 'zero errors detected'."""
+
+    def test_fetch_failure_returns_none_not_empty_list(
+        self, repo: Path, monkeypatch: pytest.MonkeyPatch
+    ) -> None:
+        def raise_called_process_error(*a: Any, **k: Any) -> Any:
+            raise engine.subprocess.CalledProcessError(1, ["gh"])
+
+        monkeypatch.setattr(engine.subprocess, "run", raise_called_process_error)
+        assert make_engine().analyze_run("123") is None
+
+    def test_run_aborts_rather_than_claiming_success_on_fetch_failure(
+        self, repo: Path, monkeypatch: pytest.MonkeyPatch
+    ) -> None:
+        eng = make_engine()
+        monkeypatch.setattr(eng, "analyze_run", lambda run_id: None)
+        assert eng.run("123") is False
+
+    def test_empty_errors_only_succeed_if_run_status_agrees(
+        self, repo: Path, monkeypatch: pytest.MonkeyPatch
+    ) -> None:
+        eng = make_engine()
+        monkeypatch.setattr(eng, "analyze_run", lambda run_id: [])
+        monkeypatch.setattr(eng, "get_run_status", lambda run_id: "failure")
+        assert eng.run("123") is False
+
+
+class TestCommitPushFailurePropagates:
+    """C4: a failed push must not trigger CI against unpushed code."""
+
+    def test_commit_fixes_returns_false_on_git_failure(
+        self, repo: Path, monkeypatch: pytest.MonkeyPatch
+    ) -> None:
+        def raise_called_process_error(cmd: list[str], **k: Any) -> Any:
+            raise engine.subprocess.CalledProcessError(1, cmd)
+
+        monkeypatch.setattr(engine.subprocess, "run", raise_called_process_error)
+        assert make_engine().commit_fixes(["fix"], 1) is False
+
+    def test_run_does_not_trigger_workflow_after_commit_failure(
+        self, repo: Path, monkeypatch: pytest.MonkeyPatch
+    ) -> None:
+        eng = make_engine(auto_commit=True)
+        monkeypatch.setattr(
+            eng,
+            "analyze_run",
+            lambda run_id: [
+                {"type": "npm_eresolve", "pattern": "p", "match": "m", "context": ""}
+            ],
+        )
+        monkeypatch.setattr(eng, "apply_fix", lambda err: engine.FixResult.SUCCESS)
+        monkeypatch.setattr(eng, "commit_fixes", lambda fixes, it: False)
+
+        def boom() -> None:
+            raise AssertionError("trigger_workflow ran after commit_fixes failed")
+
+        monkeypatch.setattr(eng, "trigger_workflow", boom)
+        assert eng.run("123") is False

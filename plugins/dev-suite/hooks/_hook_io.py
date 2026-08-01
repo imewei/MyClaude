@@ -35,3 +35,17 @@ def get_field(
         if value.strip():
             return value
     return default
+
+
+def wrap_context(event_name: str, additional_context: str) -> dict:
+    """Correct Claude Code hook-output shape for injecting context.
+
+    A top-level "additionalContext" key is silently ignored by Claude Code —
+    only ``hookSpecificOutput.additionalContext`` actually reaches the model.
+    """
+    return {
+        "hookSpecificOutput": {
+            "hookEventName": event_name,
+            "additionalContext": additional_context,
+        }
+    }

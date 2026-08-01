@@ -34,11 +34,14 @@ the user asks for:
 1. **User assigns task** → Team Lead routes to developer/author
 2. **Creator completes** → Team Lead shows result to user
 3. **User approves** → Team Lead dispatches both reviewers in parallel
-4. **Reviewers report** → Team Lead consolidates and presents:
+4. **Reviewers report** → Team Lead consolidates and presents, with the
+   actual effort/degradation level each reviewer landed on in its own
+   heading — a `low`-effort retry must not read as indistinguishable from an
+   `xhigh` first-pass review:
    ```
-   ## Codex Review
+   ## Codex Review [effort: {level} — {N} retries]
    {findings}
-   ## Gemini Review
+   ## Gemini Review [degradation: {level}]
    {findings}
    ```
 5. **User decides** → "Revise" (loop to step 1) or "Pass" (next task or end)
@@ -79,7 +82,11 @@ TaskCreate: "Awaiting review" — gemini-reviewer, status: pending, blockedBy: t
 
 Read `references/agent-prompts.md` for the startup prompt templates. The **CLI Invocation Protocol** block below must be included verbatim in each reviewer agent's startup prompt.
 
-Spawn 3 agents via Agent tool with `subagent_type: "general-purpose"` and `mode: "bypassPermissions"` (required — reviewers must execute external CLI commands and read project files).
+Spawn 3 agents via Agent tool with `subagent_type: "general-purpose"`. Do not
+set `mode: "bypassPermissions"` — a skill is not a consent channel, and
+reviewers only need Bash (to shell out to codex/gemini) and Read (project
+files), both of which the normal permission system already grants or prompts
+for. Let the user's own permission settings govern these agents like any other.
 
 ### 6. Confirm to User
 
@@ -109,7 +116,7 @@ Never pipe via stdin — pipes can truncate or mishandle large inputs.
 
 **[Gemini degradation]** Retry in order: simplify prompt → reduce analysis dimensions → Claude fallback.
 
-**[Hard rules]** Never skip the CLI call. Never silently self-review. If the CLI is not found, report immediately. Only label `[Claude Fallback — [CLI] four retries all failed]` after all retries are exhausted. Set `NO_COLOR=1` if output has ANSI artifacts.
+**[Hard rules]** Never skip the CLI call. Never silently self-review. If the CLI is not found, report immediately. Only label `[Claude Fallback — [CLI] four retries all failed]` after all retries are exhausted. Every report — including a first-pass success — states its effort/degradation level in the section heading (see step 4); an unlabeled heading defaults to reading as the highest effort, so omitting the label is not a neutral shortcut. Set `NO_COLOR=1` if output has ANSI artifacts.
 
 ---
 

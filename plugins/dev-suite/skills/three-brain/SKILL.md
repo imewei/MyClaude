@@ -42,7 +42,12 @@ For tracked repository changes:
 
 ```bash
 git diff --stat
-git diff | codex exec --skip-git-repo-check "Review this change. Focus on bugs, regressions, security risks, missing tests, and unclear assumptions. Return findings first with file/line references when possible."
+# Exclude secret-bearing paths from content — see Forced Risk Review below.
+# These are exactly the files that must never leave the machine, so the
+# trigger list that flags them for review must not also be what pipes their
+# contents to an external CLI.
+git diff -- . ':(exclude).env*' ':(exclude)secrets/**' \
+  | codex exec --skip-git-repo-check "Review this change. Focus on bugs, regressions, security risks, missing tests, and unclear assumptions. Return findings first with file/line references when possible."
 ```
 
 For untracked files or non-code output, pipe only the relevant file(s) or excerpt. Keep the prompt narrow. Ask Codex for findings, evidence, and recommended fixes; do not ask it to rewrite everything unless that is the task.
@@ -91,7 +96,10 @@ Route to Codex when active work touches high-risk targets:
 - `src/billing/**`, `**/*Stripe*`
 - `migrations/**`
 - `deploy/**`, `infra/**`
-- `.env*`, `secrets/**`
+- `.env*`, `secrets/**` — send **filenames and `git diff --stat` only, never
+  content**. These paths are flagged for review precisely because they hold
+  secrets; sending their diff content to an external CLI is the one thing
+  this rule must not do. Describe the change in prose instead.
 - `policy/**`, permissions, roles, or ACL logic
 
 Announce forced routes in one short line before calling the tool so the user can interrupt:

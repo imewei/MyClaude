@@ -7,7 +7,7 @@ Collects test/review results when debugger-pro or quality-specialist finish.
 import json
 import sys
 
-from _hook_io import get_field, read_payload
+from _hook_io import get_field, read_payload, wrap_context
 
 
 def main() -> None:
@@ -22,10 +22,9 @@ def main() -> None:
             env_fallback="AGENT_NAME",
         )
 
-        result = {
-            "status": "success",
-            "additionalContext": f"Dev-suite agent '{agent_name}' completed.",
-        }
+        ctx = f"Dev-suite agent '{agent_name}' completed."
+        result = {"status": "success", "additionalContext": ctx}
+        result.update(wrap_context("SubagentStop", ctx))
         json.dump(result, sys.stdout)
     except Exception as e:
         json.dump(

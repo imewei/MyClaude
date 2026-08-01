@@ -7,7 +7,7 @@ Captures context when /stop fails mid-operation.
 import json
 import sys
 
-from _hook_io import get_field, read_payload
+from _hook_io import get_field, read_payload, wrap_context
 
 
 def main() -> None:
@@ -20,13 +20,12 @@ def main() -> None:
             "message",
             env_fallback="ERROR_MESSAGE",
         )
-        result = {
-            "status": "success",
-            "additionalContext": (
-                f"Stop command failed: {error_message}. "
-                "Check for long-running processes or locked resources."
-            ),
-        }
+        ctx = (
+            f"Stop command failed: {error_message}. "
+            "Check for long-running processes or locked resources."
+        )
+        result = {"status": "success", "additionalContext": ctx}
+        result.update(wrap_context("StopFailure", ctx))
         json.dump(result, sys.stdout)
     except Exception as e:
         json.dump(

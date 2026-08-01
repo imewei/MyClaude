@@ -7,7 +7,7 @@ execution-modes:
   quick-fix: "5-10m: Discovery + Fix"
   standard: "15-30m: Full resolution + learning"
   comprehensive: "30-60m: Deep analysis + correlation"
-allowed-tools: Bash(gh:*), Bash(git:*), Bash(npm:*), Bash(yarn:*), Bash(uv:*), Bash(cargo:*), Bash(go:*), Read, Edit, ScheduleWakeup
+allowed-tools: Bash(gh:*), Bash(git:*), Bash(npm:*), Bash(yarn:*), Bash(uv:*), Bash(cargo:*), Bash(go:*), Bash(python3:*), Read, Edit, ScheduleWakeup
 argument-hint: "[workflow-id|commit-sha|pr-number] [--auto-fix] [--learn] [--mode=quick-fix|standard|comprehensive]"
 ---
 
@@ -43,56 +43,57 @@ gh run view $RUN_ID --log-failed > error_logs.txt
 
 ## Phase 3: Solution Selection
 
-**Confidence Scoring** (enforced in `engine.py` as `AUTO_APPLY_CONFIDENCE`):
-- ≥70%: eligible for auto-apply
-- <70%: reported in the plan as manual review, never dispatched
+Selection is entirely `engine.py`'s job — this phase is descriptive, not a
+separate step to perform by hand:
 
-**Risk Levels:**
-- L1 (Safe): Config, `go mod tidy`, raising CI timeouts → Auto-apply
-- L2 (Moderate): Code fixes, dependency installs → Allowlisted targets only
-- L3 (Risky): Dependency removal, major upgrades, API changes → Manual only
+**Auto-apply eligibility** (`plan_fixes` in `engine.py`):
+- `npm_eresolve`, `python_import`, `eslint_error`, `oom`, `timeout` (`LOW_RISK_TYPES`):
+  auto-applied by risk tier — each carries its own internal safety net
+  (closed allowlists, parse/reparse verification, `max()`-never-lowers), so
+  a fresh knowledge base cannot veto them.
+- Everything else: needs `AUTO_APPLY_CONFIDENCE` (≥70%) learned confidence to
+  auto-apply; below that it is reported in the plan as manual review, never
+  dispatched.
+- `npm_404` (`MANUAL_REVIEW_TYPES`): always manual — a 404 in a log is also
+  what a registry outage or auth failure looks like; never auto-uninstalled.
+- `test_failure` (`SUPPRESSION_TYPES`): snapshot regeneration suppresses the
+  failure rather than fixing it. Gated behind explicit `--allow-suppression`,
+  never reported as SUCCESS, and downgrades the final "all errors resolved"
+  claim when used.
 
-**Suppression** — strategies that stop a check failing without addressing the
-cause (regenerating snapshots, `--legacy-peer-deps`) are not "safe" merely
-because they are low-effort: they make CI green by changing what CI asks.
-Snapshot regeneration requires an explicit `--allow-suppression` opt-in, is
-never reported as SUCCESS, and downgrades the final "all errors resolved"
-claim when used.
+## Phase 4: Apply, Commit, Push, Re-trigger
 
-## Phase 4: Apply & Validate
-
-```bash
-npm test && npm run build && npm run lint
-# Pass → commit/push | Fail → rollback, try next
-```
-
-## Phase 5: Re-run
+Run the engine directly — it plans, applies, commits, pushes, triggers a new
+workflow run, and waits for completion, repeating up to `--max-iterations`:
 
 ```bash
-git push origin $(git branch --show-current)
-gh run watch
+python3 ${CLAUDE_PLUGIN_ROOT}/skills/iterative-error-resolution/engine.py "$RUN_ID" \
+  --repo "$REPO" \
+  --workflow "$WORKFLOW" \
+  --max-iterations 5 \
+  # --auto-commit only with --auto-fix; omit for a plan-only dry run that
+  # writes/installs/commits nothing
+  # --allow-suppression only if the user explicitly asked to allow snapshot
+  # regeneration as a fix
 ```
 
-**Auto-fix loop (max 5 iterations):**
-1. Analyze errors
-2. Apply highest-confidence fix
-3. Trigger run
-4. Monitor result
-5. Update knowledge base
+There is no separate local-validation-then-rollback step — see Safety below
+for what "not implemented" actually means here.
 
-## Phase 6: Knowledge Base
+## Phase 5: Knowledge Base
 
-**Location:** `.github/fix-knowledge-base.json`
-
-A strategy's recorded success rate is ignored until it has at least 3 attempts,
-so a single lucky result cannot pin it at 100%.
+**Location:** `.github/fix-knowledge-base.json`, keyed by error type (the same
+key `parse_logs` assigns and `plan_fixes` gates on). A strategy's recorded
+success rate is ignored until it has at least 3 attempts (`MIN_SAMPLES`), so a
+single lucky result cannot pin it at 100%.
 
 ```json
 {
-  "error_patterns": [{
-    "pattern": "ERESOLVE.*peer dependency",
-    "solutions": [{"action": "npm_install_legacy_peer_deps", "success_rate": 0.85}]
-  }]
+  "npm_eresolve": {
+    "base_confidence": 0.85,
+    "total_attempts": 4,
+    "successes": 3
+  }
 }
 ```
 

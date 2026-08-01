@@ -37,6 +37,17 @@ SUPPRESSION_TYPES = frozenset({"test_failure"})
 # take on the word of a log line that a registry outage can also produce.
 MANUAL_REVIEW_TYPES = frozenset({"npm_404"})
 
+# Error types whose fix strategy carries its own internal safety net (closed
+# allowlists, parse/reparse verification, max()-never-lowers, linter auto-fix)
+# and is auto-applied by risk tier rather than by learned confidence. A fresh
+# knowledge base's confidence score starts under-sampled and cannot earn
+# AUTO_APPLY_CONFIDENCE for years, which made these strategies unreachable
+# regardless of how safe they actually are. Anything not listed here still
+# falls through to the confidence gate below.
+LOW_RISK_TYPES = frozenset(
+    {"npm_eresolve", "python_import", "eslint_error", "oom", "timeout"}
+)
+
 # Only these modules may be auto-installed. Not a lookup table with a fallback:
 # an unmapped module is reported, never installed.
 PYTHON_MODULE_PACKAGES = {
@@ -120,10 +131,27 @@ class IterativeFixEngine:
             # Analyze current run
             errors = self.analyze_run(current_run_id)
 
+            if errors is None:
+                print(
+                    "✗ Could not fetch or parse the run's logs — aborting rather "
+                    "than reporting a false success."
+                )
+                self.record_iteration(iteration, 0, 0, 0, [], None, False)
+                return False
+
             if not errors:
-                print("✓ SUCCESS: Zero errors detected!")
-                self.record_iteration(iteration, 0, 0, 0, [], None, True)
-                return True
+                # An empty error list also means "no known pattern matched" —
+                # only trust it as clean if the run's own status agrees.
+                if self.get_run_status(current_run_id) == "success":
+                    print("✓ SUCCESS: Zero errors detected!")
+                    self.record_iteration(iteration, 0, 0, 0, [], None, True)
+                    return True
+                print(
+                    "✗ No known error pattern matched the logs, but the run did "
+                    "not report success either — treating as unresolved."
+                )
+                self.record_iteration(iteration, 0, 0, 0, [], None, False)
+                return False
 
             print(f"Found {len(errors)} error(s) to fix\n")
 
@@ -155,6 +183,7 @@ class IterativeFixEngine:
             errors_fixed = 0
             errored = 0
 
+            applied_error_types: list[str] = []
             for error_analysis in actionable:
                 print(f"Fixing: {error_analysis.pattern[:80]}...")
                 print(f"Strategy: {error_analysis.suggested_fix}\n")
@@ -163,6 +192,7 @@ class IterativeFixEngine:
 
                 if result in [FixResult.SUCCESS, FixResult.PARTIAL]:
                     fixes_applied.append(error_analysis.suggested_fix)
+                    applied_error_types.append(error_analysis.error_type)
                     errors_fixed += 1
                     print("✓ Fix applied successfully\n")
                 else:
@@ -180,7 +210,21 @@ class IterativeFixEngine:
                 return False
 
             # Commit fixes
-            self.commit_fixes(fixes_applied, iteration)
+            if not self.commit_fixes(fixes_applied, iteration):
+                print(
+                    "Commit/push failed — not triggering a CI run against "
+                    "unpushed code."
+                )
+                self.record_iteration(
+                    iteration,
+                    len(errors),
+                    errors_fixed,
+                    len(errors) - errors_fixed,
+                    fixes_applied,
+                    None,
+                    False,
+                )
+                return False
 
             # Trigger new workflow run
             print("Triggering new workflow run...")
@@ -239,11 +283,11 @@ class IterativeFixEngine:
                     )
                 else:
                     print("\n✓ SUCCESS: All errors resolved!")
-                self.update_knowledge_base(fixes_applied, True)
+                self.update_knowledge_base(applied_error_types, True)
                 return True
 
             # Update knowledge base with partial success
-            self.update_knowledge_base(fixes_applied, False)
+            self.update_knowledge_base(applied_error_types, False)
 
             # Prepare for next iteration
             current_run_id = new_run_id
@@ -254,20 +298,32 @@ class IterativeFixEngine:
         self.print_summary()
         return False
 
-    def analyze_run(self, run_id: str) -> list[dict]:
-        """Fetch and parse workflow run logs."""
+    def analyze_run(self, run_id: str) -> list[dict] | None:
+        """Fetch and parse workflow run logs.
+
+        None means the fetch itself failed (auth, rate limit, deleted run) —
+        distinct from an empty list, which means the fetch succeeded and no
+        known error pattern matched. Collapsing these let a fetch failure
+        read as "zero errors detected".
+        """
         cmd = ["gh", "run", "view", run_id, "--repo", self.repo, "--log-failed"]
 
         try:
             result = subprocess.run(cmd, capture_output=True, text=True, check=True)
         except subprocess.CalledProcessError as e:
             print(f"Error fetching logs: {e}")
-            return []
+            return None
 
         return self.parse_logs(result.stdout)
 
     def parse_logs(self, logs: str) -> list[dict]:
-        """Extract error patterns from logs."""
+        """Extract error patterns from logs, one entry per distinct error type.
+
+        A single log can contain hundreds of matches for the same pattern
+        (e.g. 300 ESLint violations); applying the same fix strategy 300
+        times inflates errors_fixed and the printed "success rate" without
+        changing what actually gets fixed.
+        """
         errors = []
 
         patterns = {
@@ -286,21 +342,23 @@ class IterativeFixEngine:
         }
 
         for name, pattern in patterns.items():
-            matches = re.finditer(pattern, logs, re.MULTILINE)
-            for match in matches:
-                # Extract context (5 lines before and after)
-                lines = logs[: match.end()].split("\n")
-                context_start = max(0, len(lines) - 5)
-                context = "\n".join(lines[context_start:])
+            match = re.search(pattern, logs, re.MULTILINE)
+            if not match:
+                continue
 
-                errors.append(
-                    {
-                        "type": name,
-                        "pattern": pattern,
-                        "match": match.group(),
-                        "context": context,
-                    }
-                )
+            # Extract context (5 lines before the first match)
+            lines = logs[: match.end()].split("\n")
+            context_start = max(0, len(lines) - 5)
+            context = "\n".join(lines[context_start:])
+
+            errors.append(
+                {
+                    "type": name,
+                    "pattern": pattern,
+                    "match": match.group(),
+                    "context": context,
+                }
+            )
 
         return errors
 
@@ -391,20 +449,30 @@ class IterativeFixEngine:
         skipped: list[tuple[ErrorAnalysis, str]] = []
 
         for error in analyses:
-            if error.error_type in SUPPRESSION_TYPES and not self.allow_suppression:
-                skipped.append(
-                    (
-                        error,
+            if error.error_type in SUPPRESSION_TYPES:
+                # --allow-suppression IS the gate here — the user already opted
+                # in explicitly, so it must not also need to clear the
+                # confidence bar (which it structurally never can; see below).
+                if self.allow_suppression:
+                    actionable.append(error)
+                else:
+                    skipped.append(
                         (
-                            "suppresses the failure rather than fixing it — "
-                            "requires explicit --allow-suppression"
-                        ),
+                            error,
+                            (
+                                "suppresses the failure rather than fixing it — "
+                                "requires explicit --allow-suppression"
+                            ),
+                        )
                     )
-                )
             elif error.error_type in MANUAL_REVIEW_TYPES:
                 skipped.append(
                     (error, "removes a real dependency — manual confirmation required")
                 )
+            elif error.error_type in LOW_RISK_TYPES:
+                # Risk tier, not learned confidence, gates these — see
+                # LOW_RISK_TYPES for why.
+                actionable.append(error)
             elif error.confidence < AUTO_APPLY_CONFIDENCE:
                 skipped.append(
                     (
@@ -558,12 +626,20 @@ class IterativeFixEngine:
         return FixResult.NO_FIX_AVAILABLE
 
     def fix_eslint_errors(self) -> FixResult:
-        """Run ESLint auto-fix."""
+        """Run ESLint auto-fix.
+
+        Exit 0 = clean, 1 = unfixable errors remain, >=2 = eslint itself
+        errored (bad config, crash) — only exit 0 is actually a success.
+        """
         try:
-            subprocess.run(["npx", "eslint", ".", "--fix"], check=False)
-            return FixResult.SUCCESS
+            result = subprocess.run(["npx", "eslint", ".", "--fix"], check=False)
         except OSError:
+            return FixResult.ERRORED
+        if result.returncode == 0:
+            return FixResult.SUCCESS
+        if result.returncode == 1:
             return FixResult.PARTIAL
+        return FixResult.FAILED
 
     def fix_test_error(self, error: ErrorAnalysis) -> FixResult:
         """Fix test-related errors."""
@@ -695,8 +771,10 @@ class IterativeFixEngine:
 
         return FixResult.SUCCESS if changed else FixResult.NO_FIX_AVAILABLE
 
-    def commit_fixes(self, fixes: list[str], iteration: int):
-        """Commit and push the applied fixes.
+    def commit_fixes(self, fixes: list[str], iteration: int) -> bool:
+        """Commit and push the applied fixes. Returns False on any git failure
+        (including an empty diff) so the caller does not trigger a CI run
+        against code that was never actually pushed.
 
         Only reached with --auto-commit set; the plan gate in run() exits before
         any strategy executes otherwise.
@@ -716,47 +794,78 @@ class IterativeFixEngine:
 
             subprocess.run(["git", "commit", "-m", message], check=True)
             subprocess.run(["git", "push"], check=True)
+            return True
         except subprocess.CalledProcessError as e:
             print(f"Error committing fixes: {e}")
+            return False
 
     def trigger_workflow(self) -> str | None:
-        """Trigger workflow and return new run ID."""
+        """Trigger workflow and return the new run's ID.
+
+        Matches on the pushed commit's SHA rather than "most recent run" — a
+        plain `gh run list --limit 1` taken a fixed few seconds after
+        triggering can return the run that was already being analyzed if the
+        new one hasn't registered yet, silently re-analyzing stale results
+        and burning an iteration.
+        """
         try:
-            result = subprocess.run(
+            head_sha = subprocess.run(
+                ["git", "rev-parse", "HEAD"],
+                capture_output=True,
+                text=True,
+                check=True,
+            ).stdout.strip()
+
+            subprocess.run(
                 ["gh", "workflow", "run", self.workflow, "--repo", self.repo],
                 capture_output=True,
                 text=True,
                 check=True,
             )
 
-            # Wait for run to appear
-            time.sleep(5)
+            deadline = time.time() + 60
+            while time.time() < deadline:
+                result = subprocess.run(
+                    [
+                        "gh",
+                        "run",
+                        "list",
+                        "--workflow",
+                        self.workflow,
+                        "--repo",
+                        self.repo,
+                        "--limit",
+                        "10",
+                        "--json",
+                        "databaseId,headSha",
+                    ],
+                    capture_output=True,
+                    text=True,
+                    check=True,
+                )
+                runs = json.loads(result.stdout)
+                matches = [r for r in runs if r.get("headSha") == head_sha]
+                if matches:
+                    return str(matches[0]["databaseId"])
+                time.sleep(3)
 
-            # Get latest run ID
-            result = subprocess.run(
-                [
-                    "gh",
-                    "run",
-                    "list",
-                    "--workflow",
-                    self.workflow,
-                    "--repo",
-                    self.repo,
-                    "--limit",
-                    "1",
-                    "--json",
-                    "databaseId",
-                ],
-                capture_output=True,
-                text=True,
-                check=True,
+            print(
+                f"Error triggering workflow: no run matching HEAD "
+                f"{head_sha[:8]} appeared within 60s"
             )
-
-            runs = json.loads(result.stdout)
-            return str(runs[0]["databaseId"]) if runs else None
+            return None
         except (subprocess.CalledProcessError, json.JSONDecodeError, KeyError) as e:
             print(f"Error triggering workflow: {e}")
             return None
+
+    # Statuses gh reports while a run is still going. Anything else — success,
+    # failure, cancelled, timed_out, neutral, skipped, action_required,
+    # startup_failure — is terminal. The previous allowlist of exactly three
+    # terminal values busy-waited the full timeout on the others and then
+    # misreported them as "Workflow timeout".
+    IN_PROGRESS_STATUSES = frozenset(
+        {"queued", "in_progress", "requested", "waiting", "pending"}
+    )
 
     def wait_for_completion(self, run_id: str, timeout: int = 600) -> bool:
         """Wait for workflow run to complete."""
@@ -765,7 +874,7 @@ class IterativeFixEngine:
         while time.time() - start_time < timeout:
             status = self.get_run_status(run_id)
 
-            if status in ["success", "failure", "cancelled"]:
+            if status not in self.IN_PROGRESS_STATUSES:
                 return True
 
             print(".", end="", flush=True)
@@ -825,10 +934,10 @@ class IterativeFixEngine:
 
         self.iteration_history.append(result)
 
-    def update_knowledge_base(self, fixes: list[str], success: bool):
-        """Update knowledge base with fix results."""
-        for fix in fixes:
-            self.knowledge_base.record_fix(fix, success)
+    def update_knowledge_base(self, error_types: list[str], success: bool):
+        """Update knowledge base with fix results, keyed by error type."""
+        for error_type in error_types:
+            self.knowledge_base.record_fix(error_type, success)
         self.knowledge_base.save()
 
     def print_summary(self):
@@ -930,11 +1039,15 @@ class KnowledgeBase:
             return False
         return entry.get("total_attempts", 0) >= MIN_SAMPLES
 
-    def record_fix(self, fix: str, success: bool):
-        """Record fix attempt result."""
-        # Extract error type from fix description
-        error_type = self.extract_error_type(fix)
+    def record_fix(self, error_type: str, success: bool):
+        """Record a fix attempt result, keyed by the error type it targeted.
 
+        Keyed by the same error_type the parser and calculate_confidence use
+        — previously this re-derived a type from the fix's prose description
+        via keyword matching, which mismatched the parser's key for most
+        fixes (e.g. "Add --legacy-peer-deps flag" matched no keyword and
+        landed under "unknown"), so learned confidence never accumulated.
+        """
         if error_type not in self.fixes:
             self.fixes[error_type] = {
                 "base_confidence": 0.5,
@@ -951,27 +1064,6 @@ class KnowledgeBase:
         total = self.fixes[error_type]["total_attempts"]
         successes = self.fixes[error_type]["successes"]
         self.fixes[error_type]["base_confidence"] = successes / total
-
-    def extract_error_type(self, fix: str) -> str:
-        """Extract error type from fix description."""
-        # Simple pattern matching
-        patterns = {
-            "npm": "npm_eresolve",
-            "package": "npm_404",
-            "eslint": "eslint_error",
-            "typescript": "ts_error",
-            "python": "python_import",
-            "test": "test_failure",
-            "timeout": "timeout",
-            "memory": "oom",
-        }
-
-        fix_lower = fix.lower()
-        for keyword, error_type in patterns.items():
-            if keyword in fix_lower:
-                return error_type
-
-        return "unknown"
 
     def load(self) -> None:
         """Load knowledge base from file."""

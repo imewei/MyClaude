@@ -12,6 +12,8 @@ import sys
 from datetime import UTC, datetime
 from pathlib import Path
 
+from _hook_io import get_field, read_payload
+
 
 def get_recent_commits(cwd: str, limit: int = 5) -> str:
     """Get recent git commits."""
@@ -58,9 +60,9 @@ def get_uncommitted_files(cwd: str) -> str:
 def main() -> None:
     """Persist dev session progress."""
     try:
-        input_data = json.load(sys.stdin)
-        end_reason = input_data.get("matcher_input", "unknown")
-        cwd = os.environ.get("PWD", os.getcwd())
+        payload = read_payload()
+        end_reason = get_field(payload, "reason", "matcher_input")
+        cwd = get_field(payload, "cwd", env_fallback="PWD", default=os.getcwd())
 
         timestamp = datetime.now(UTC).strftime("%Y-%m-%d %H:%M UTC")
         commits = get_recent_commits(cwd)

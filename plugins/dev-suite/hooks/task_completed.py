@@ -11,7 +11,7 @@ import os
 import subprocess
 import sys
 
-from _hook_io import get_field, read_payload
+from _hook_io import get_field, read_payload, wrap_context
 
 
 def has_uncommitted_changes(cwd: str) -> bool:
@@ -54,10 +54,9 @@ def main() -> None:
                 "progress with a descriptive message before starting the next task."
             )
 
-        result = {
-            "status": "success",
-            "additionalContext": " ".join(advice),
-        }
+        ctx = " ".join(advice)
+        result = {"status": "success", "additionalContext": ctx}
+        result.update(wrap_context("TaskCompleted", ctx))
         json.dump(result, sys.stdout)
     except Exception as e:
         json.dump(

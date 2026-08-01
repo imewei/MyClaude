@@ -11,6 +11,8 @@ import sys
 from datetime import UTC, datetime, timedelta
 from pathlib import Path
 
+from _hook_io import get_field, read_payload, wrap_context
+
 
 def detect_stack(cwd: str) -> dict:
     """Detect project stack from file presence."""
@@ -78,7 +80,7 @@ def read_progress_file(cwd: str) -> str:
 def main() -> None:
     """Detect project stack and read prior session progress."""
     try:
-        cwd = os.environ.get("PWD", os.getcwd())
+        cwd = get_field(read_payload(), "cwd", env_fallback="PWD", default=os.getcwd())
         stack = detect_stack(cwd)
 
         parts = []
@@ -96,10 +98,9 @@ def main() -> None:
         if progress:
             context += f"\n\nPrior session progress:\n{progress}"
 
-        result = {
-            "status": "success",
-            "additionalContext": f"Dev environment detected: {context}",
-        }
+        ctx = f"Dev environment detected: {context}"
+        result = {"status": "success", "additionalContext": ctx}
+        result.update(wrap_context("SessionStart", ctx))
         json.dump(result, sys.stdout)
     except Exception as e:
         json.dump(
