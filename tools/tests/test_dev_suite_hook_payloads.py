@@ -255,8 +255,16 @@ def test_subagent_stop_logs_when_transcript_path_missing(tmp_path):
 # --- HEAD staleness (session_end.py -> session_start.py) ------------------
 
 
+def git_init_repo(cwd) -> None:
+    """git init with a repo-local (not --global) identity — CI runners have
+    no git user.name/user.email configured, which real commits require."""
+    subprocess.run(["git", "init", "-q", "."], cwd=cwd, check=True)
+    subprocess.run(["git", "config", "user.email", "test@example.com"], cwd=cwd, check=True)
+    subprocess.run(["git", "config", "user.name", "Test"], cwd=cwd, check=True)
+
+
 def test_stale_head_marker_appears_after_new_commit(tmp_path):
-    subprocess.run(["git", "init", "-q", "."], cwd=tmp_path, check=True)
+    git_init_repo(tmp_path)
     subprocess.run(
         ["git", "commit", "--allow-empty", "-q", "-m", "a"], cwd=tmp_path, check=True
     )
@@ -273,7 +281,7 @@ def test_stale_head_marker_appears_after_new_commit(tmp_path):
 
 
 def test_head_unchanged_no_stale_marker(tmp_path):
-    subprocess.run(["git", "init", "-q", "."], cwd=tmp_path, check=True)
+    git_init_repo(tmp_path)
     subprocess.run(
         ["git", "commit", "--allow-empty", "-q", "-m", "a"], cwd=tmp_path, check=True
     )
