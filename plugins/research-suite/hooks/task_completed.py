@@ -1,28 +1,52 @@
 #!/usr/bin/env python3
 """TaskCompleted hook for research-suite.
 
-Deterministic logging of completed research tasks to .research-log.jsonl
-for audit trails and pipeline stage tracking.
+Logs completed research tasks to .research-log.jsonl inside the research-spark
+workspace. Projects with no `_state.yaml` are left alone — an audit trail
+dropped into an unrelated repository is pollution, not provenance.
 """
 
 import json
 import os
 import sys
-from datetime import datetime, timezone
-from pathlib import Path
+from datetime import UTC, datetime
 
+import _hook_io
 
 LOG_FILENAME = ".research-log.jsonl"
 
 
 def main() -> None:
     try:
-        task_subject = os.environ.get("TASK_SUBJECT", "unknown task")
-        cwd = os.environ.get("PWD", os.getcwd())
-        log_path = Path(cwd) / LOG_FILENAME
+        payload = _hook_io.read_payload()
+        task_subject = _hook_io.get_field(
+            payload,
+            "task",
+            "subject",
+            "description",
+            "task_subject",
+            env_fallback="TASK_SUBJECT",
+            default="unknown task",
+        )
+        cwd = _hook_io.get_field(payload, "cwd", env_fallback="PWD", default=os.getcwd())
 
+        states = _hook_io.find_state_files(cwd)
+        if not states:
+            json.dump(
+                {
+                    "status": "success",
+                    "additionalContext": (
+                        f"Task completed: '{task_subject}'. No research-spark "
+                        "workspace here, so nothing was logged."
+                    ),
+                },
+                sys.stdout,
+            )
+            return
+
+        log_path = states[0].parent / LOG_FILENAME
         entry = {
-            "ts": datetime.now(timezone.utc).isoformat(timespec="seconds"),
+            "ts": datetime.now(UTC).isoformat(timespec="seconds"),
             "task": task_subject,
         }
 
@@ -31,14 +55,14 @@ def main() -> None:
                 f.write(json.dumps(entry) + "\n")
             advice = (
                 f"Research task logged: '{task_subject}'. "
-                f"Audit trail at {LOG_FILENAME}. "
+                f"Audit trail at {log_path}. "
                 "If this concludes a research-spark stage, verify the stage artifact "
                 "is committed before advancing."
             )
         except OSError:
             advice = (
                 f"Research task completed: '{task_subject}'. "
-                "Could not write audit log (non-fatal)."
+                f"Could not write audit log at {log_path} (non-fatal)."
             )
 
         json.dump({"status": "success", "additionalContext": advice}, sys.stdout)

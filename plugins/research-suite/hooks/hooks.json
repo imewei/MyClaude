@@ -1,6 +1,19 @@
 {
-  "description": "Research-suite hooks for scientific-review integrity tracking (command-based logging) and session initialization.",
+  "description": "Research-suite hooks for scientific-review integrity tracking (command-based logging), session initialization, and subagent stage-artifact gating.",
   "hooks": {
+    "SubagentStop": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 ${CLAUDE_PLUGIN_ROOT}/hooks/subagent_stop.py",
+            "async": false,
+            "timeout": 10
+          }
+        ]
+      }
+    ],
     "TaskCompleted": [
       {
         "matcher": "",

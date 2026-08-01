@@ -22,7 +22,6 @@ import re
 import sys
 from pathlib import Path
 
-
 HEADING_RE = re.compile(r"^(#{1,6})\s+(.*)$", re.MULTILINE)
 
 

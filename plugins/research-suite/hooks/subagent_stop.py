@@ -7,8 +7,9 @@ All other agent types exit silently with no output.
 """
 
 import json
-import os
 import sys
+
+import _hook_io
 
 RESEARCH_AGENT_TYPES = {"research-spark-orchestrator", "scientific-review"}
 
@@ -24,40 +25,23 @@ ARTIFACT_CHECK_PROMPT = (
     "them before advancing."
 )
 
-LOG_PATH = os.path.expanduser("~/.claude/research-suite-subagent-stop-debug.jsonl")
-
 
 def main() -> None:
-    raw = sys.stdin.read()
-    parse_error = None
-    try:
-        data = json.loads(raw)
-    except (json.JSONDecodeError, ValueError) as exc:
-        data = {}
-        parse_error = exc.__class__.__name__
+    payload = _hook_io.read_payload()
+    agent_type = _hook_io.get_field(
+        payload,
+        "subagent_type",
+        "agent_type",
+        "agent_name",
+        "matcher_input",
+        default="",
+    ).strip()
 
-    # Log full payload for diagnosis.
-    try:
-        entry = {
-            "stdin_empty": raw == "",
-            "stdin_keys": list(data.keys()) if isinstance(data, dict) else repr(type(data)),
-            "stdin_data": data,
-            "parse_error": parse_error,
-        }
-        with open(LOG_PATH, "a") as fh:
-            fh.write(json.dumps(entry) + "\n")
-    except Exception:
-        pass
-
-    if not isinstance(data, dict):
-        sys.exit(0)
-
-    agent_type = data.get("agent_type")
-    if not isinstance(agent_type, str) or not agent_type.strip():
-        sys.exit(0)
-
-    if agent_type.strip() in RESEARCH_AGENT_TYPES:
-        json.dump({"systemMessage": ARTIFACT_CHECK_PROMPT}, sys.stdout)
+    if agent_type in RESEARCH_AGENT_TYPES:
+        json.dump(
+            {"status": "success", "additionalContext": ARTIFACT_CHECK_PROMPT},
+            sys.stdout,
+        )
     else:
         sys.exit(0)
 

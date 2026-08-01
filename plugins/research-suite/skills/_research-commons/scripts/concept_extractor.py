@@ -23,7 +23,6 @@ import sys
 from collections import Counter
 from pathlib import Path
 
-
 # Matches compound technical terms: 2+ words, each starting with a capital,
 # or mid-word hyphens/underscores signaling a technical name.
 CAPITALIZED_PHRASE_RE = re.compile(

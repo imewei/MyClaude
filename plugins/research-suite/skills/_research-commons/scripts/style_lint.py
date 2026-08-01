@@ -80,14 +80,15 @@ def lint_text(text: str, path: str) -> list[str]:
 IGNORE_MARKER = "style_lint:ignore-file"
 
 
-def lint_file(path: Path) -> list[str]:
+def lint_file(path: Path) -> list[str] | None:
+    """Issue list, or None if the file opted out via the ignore marker."""
     try:
         text = path.read_text(encoding="utf-8")
     except UnicodeDecodeError:
         return [f"{path}: could not read as UTF-8; skipped"]
     # Files can opt out by including the marker anywhere (usually in an HTML comment).
     if IGNORE_MARKER in text:
-        return []
+        return None
     return lint_text(text, str(path))
 
 
@@ -118,14 +119,27 @@ def main(argv: list[str] | None = None) -> int:
         return 0
 
     all_issues: list[str] = []
+    skipped: list[Path] = []
     for f in files:
-        all_issues.extend(lint_file(f))
+        issues = lint_file(f)
+        if issues is None:
+            skipped.append(f)
+            continue
+        all_issues.extend(issues)
 
     for issue in all_issues:
         print(issue)
+    for f in skipped:
+        print(f"{f}: skipped via '{IGNORE_MARKER}' marker; NOT linted")
 
+    linted = len(files) - len(skipped)
+    if skipped:
+        print(
+            f"\n{len(skipped)} file(s) skipped via ignore marker, not counted as linted",
+            file=sys.stderr,
+        )
     if all_issues:
-        print(f"\n{len(all_issues)} issue(s) across {len(files)} file(s)", file=sys.stderr)
+        print(f"\n{len(all_issues)} issue(s) across {linted} linted file(s)", file=sys.stderr)
         if args.strict:
             return 1
     return 0
