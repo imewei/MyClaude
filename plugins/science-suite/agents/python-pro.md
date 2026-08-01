@@ -162,6 +162,26 @@ async def process_batch(items: list[str]):
     # All tasks done, or exception raised and others cancelled
 ```
 
+### NumPy ↔ JAX Glue
+```python
+import jax, jax.numpy as jnp, numpy as np
+from scipy.optimize import linear_sum_assignment
+
+x = jnp.asarray(np_array)          # host → device, one copy
+y = np.asarray(jax_array)          # device → host, blocks — never inside a hot loop
+
+# Wrap a NumPy-only library call so it survives jit
+def _solve(cost: np.ndarray) -> np.ndarray:  # square cost only: col_ind is min(n, m) long
+    return np.asarray(linear_sum_assignment(cost)[1], dtype=np.int32)
+
+@jax.jit
+def assign(cost):
+    return jax.pure_callback(
+        _solve, jax.ShapeDtypeStruct((cost.shape[0],), jnp.int32), cost
+    )
+```
+`pure_callback` is not differentiable and forces a host round-trip — use it only when no JAX-native equivalent exists.
+
 ---
 
 ## Skills Matrix: Junior vs Pro

@@ -6,7 +6,7 @@ color: magenta
 effort: high
 memory: project
 maxTurns: 50
-tools: Read, Write, Edit, Bash, Grep, Glob, EnterPlanMode, ExitPlanMode
+tools: Read, Write, Edit, Bash, Grep, Glob, EnterPlanMode, ExitPlanMode, TaskCreate
 background: true
 permissionMode: acceptEdits
 skills:
@@ -28,6 +28,30 @@ assistant: "I'll use the simulation-expert agent to write the LAMMPS input scrip
 MD simulation setup task - triggers simulation-expert.
 </commentary>
 </example>
+
+Input deck for that example — NVE equilibration, then NVT production:
+
+```lammps
+units           lj
+atom_style      atomic
+lattice         fcc 0.8442
+region          box block 0 10 0 10 0 25   # 10*10*25 cells x 4 atoms/cell = 10000
+create_box      1 box
+create_atoms    1 box
+mass            1 1.0
+velocity        all create 1.44 87287 loop geom
+pair_style      lj/cut 2.5
+pair_coeff      1 1 1.0 1.0 2.5
+neighbor        0.3 bin
+neigh_modify    every 1 delay 0 check yes   # rebuild whenever any atom moved > skin/2, not on a fixed cadence
+timestep        0.005                        # explicit — thermal displacement at T=1.0 is skin-order over ~20 steps
+thermo          500
+fix             1 all nve
+run             5000                        # equilibrate
+unfix           1
+fix             2 all nvt temp 1.0 1.0 0.1
+run             50000                       # production
+```
 
 <example>
 Context: User needs to analyze simulation trajectories.

@@ -85,7 +85,7 @@ Scientific ML task requiring PINN architecture and physics-loss implementation -
 | research-expert (research-suite) | Literature reviews, paper implementations |
 | python-pro | Systems engineering, Python package structure |
 | statistical-physicist | Validating physical constraints in PINN loss functions |
-| julia-ml-hpc | Julia-specific DL implementation (Lux.jl/Flux.jl architectures, training) | "Implement this transformer in Lux.jl" |
+| julia-ml-hpc | Julia-specific DL implementation (Lux.jl/Flux.jl architectures, training) — e.g. "Implement this transformer in Lux.jl" |
 
 ---
 
@@ -190,6 +190,39 @@ class Linear(eqx.Module):
 
     def __call__(self, x):
         return self.weight @ x + self.bias
+```
+
+### Graph Neural Network Reference
+
+Message passing: each node aggregates transformed neighbor messages, then updates its own state — `h_i' = phi(h_i, AGG_{j in N(i)} psi(h_i, h_j))`. The permutation-invariant aggregator is the inductive bias (sum preserves neighbor-count information, mean is scale-robust). Each layer adds one hop of receptive field, so watch for over-smoothing beyond ~3-4 layers. The reference below uses the common sender-only simplification `psi(h_j)` (plain GCN); concatenate `nodes[senders]` with `nodes[receivers]` first if the edge-conditioned form is needed.
+
+```python
+import jax.numpy as jnp
+from flax import linen as nn
+
+class GraphConv(nn.Module):
+    features: int
+
+    @nn.compact
+    def __call__(self, nodes, senders, receivers):  # edge list, both shape (E,)
+        msgs = nn.Dense(self.features)(nodes)[senders]                            # psi(h_j) — sender-only
+        agg = jnp.zeros((nodes.shape[0], self.features)).at[receivers].add(msgs)  # sum-aggregate
+        return nn.relu(nn.Dense(self.features)(nodes) + agg)                      # phi
+```
+
+For Julia GNN stacks (GNNLux.jl / GNNGraphs.jl) delegate to `julia-ml-hpc`.
+
+### Denoising Diffusion Reference
+
+Diffusion models learn to reverse a fixed Gaussian corruption. Forward process: `x_t = sqrt(a_bar_t) * x_0 + sqrt(1 - a_bar_t) * eps` with `eps ~ N(0, I)` and `a_bar_t` a decreasing noise schedule. The network predicts the added noise, so training is plain MSE on `eps`. Sampling walks `t: T -> 0`, subtracting predicted noise each step (DDPM ancestral sampling, or DDIM for fewer deterministic steps).
+
+```python
+def diffusion_loss(params, model, x0, t, key, alpha_bar):
+    eps = jax.random.normal(key, x0.shape)
+    a = alpha_bar[t].reshape(-1, *([1] * (x0.ndim - 1)))  # per-sample, broadcasts over any rank (images, sequences)
+    x_t = jnp.sqrt(a) * x0 + jnp.sqrt(1.0 - a) * eps
+    eps_hat = model.apply(params, x_t, t)
+    return jnp.mean((eps - eps_hat) ** 2)              # simplified objective (Ho et al. 2020)
 ```
 
 ---
