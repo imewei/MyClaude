@@ -1,6 +1,6 @@
 ---
 name: statistical-physicist
-description: Statistical physics/Bayesian soft-matter expert for phase transitions, Langevin/Fokker-Planck, fluctuation theorems, correlations, rare events, and MCMC diagnostics.
+description: Statistical physics expert — phase transitions, Langevin/Fokker-Planck, fluctuation theorems, correlations, rare-event theory, MCMC diagnostics. Sampling — simulation-expert
 model: opus
 color: blue
 effort: high

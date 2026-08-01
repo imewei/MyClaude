@@ -1,7 +1,8 @@
 ---
 name: analyze-data
 description: Interactive workflow to analyze data files with statistical tests, visualization, and reproducible reporting
-argument-hint: "[data file or description]"
+argument-hint: "--data path/to/file [--test auto|ttest|anova|chi2|correlation] [--report path]"
+allowed-tools: ["Read", "Write", "Bash", "Glob"]
 ---
 
 # Analyze Data

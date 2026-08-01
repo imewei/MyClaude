@@ -27,22 +27,29 @@ ARTIFACT_CHECK_PROMPT = (
 
 
 def main() -> None:
-    payload = _hook_io.read_payload()
-    agent_type = _hook_io.get_field(
-        payload,
-        "subagent_type",
-        "agent_type",
-        "agent_name",
-        "matcher_input",
-        default="",
-    ).strip()
+    try:
+        payload = _hook_io.read_payload()
+        agent_type = _hook_io.get_field(
+            payload,
+            "subagent_type",
+            "agent_type",
+            "agent_name",
+            "matcher_input",
+            default="",
+        ).strip()
 
-    if agent_type in RESEARCH_AGENT_TYPES:
-        result = {"status": "success", "additionalContext": ARTIFACT_CHECK_PROMPT}
-        result.update(_hook_io.wrap_context("SubagentStop", ARTIFACT_CHECK_PROMPT))
-        json.dump(result, sys.stdout)
-    else:
-        sys.exit(0)
+        if agent_type in RESEARCH_AGENT_TYPES:
+            result = {"status": "success", "additionalContext": ARTIFACT_CHECK_PROMPT}
+            result.update(_hook_io.wrap_context("SubagentStop", ARTIFACT_CHECK_PROMPT))
+            json.dump(result, sys.stdout)
+        else:
+            sys.exit(0)
+    except Exception as e:
+        print(f"SubagentStop hook error: {e}", file=sys.stderr)
+        json.dump(
+            {"status": "error", "message": f"SubagentStop hook error: {e}"},
+            sys.stdout,
+        )
 
 
 if __name__ == "__main__":

@@ -1,7 +1,8 @@
 ---
 name: run-experiment
 description: Design and execute a reproducible scientific experiment with proper controls, logging, and analysis
-argument-hint: "[experiment description]"
+argument-hint: "--hypothesis \"description\" [--seed N] [--trials N]"
+allowed-tools: ["Read", "Write", "Bash", "Glob"]
 ---
 
 # Run Experiment

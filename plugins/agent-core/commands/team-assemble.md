@@ -6,7 +6,7 @@ category: agent-core
 execution-modes:
   quick: "1-2 minutes"
   standard: "2-5 minutes"
-allowed-tools: [Read, Glob, Grep, Bash, Task, Write, Edit]
+allowed-tools: [Read, Glob, Grep, Bash(mkdir:*), Task, Write, Edit]
 tags: [agent-teams, orchestration, multi-agent, collaboration, parallel]
 ---
 

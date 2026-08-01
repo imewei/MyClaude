@@ -34,6 +34,7 @@ def main() -> None:
         }
         json.dump(result, sys.stdout)
     except Exception as e:
+        print(f"SubagentStart hook error: {e}", file=sys.stderr)
         error_result = {
             "status": "error",
             "message": f"SubagentStart hook error: {e}",

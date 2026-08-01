@@ -80,19 +80,33 @@ def main() -> None:
             lines.extend(["", "### Uncommitted changes", uncommitted])
 
         progress_path = Path(cwd) / PROGRESS_RELPATH
+        saved = False
         try:
             progress_path.parent.mkdir(parents=True, exist_ok=True)
             progress_path.write_text("\n".join(lines) + "\n", encoding="utf-8")
+            saved = True
         except OSError as e:
             print(f"SessionEnd hook: could not write {progress_path}: {e}", file=sys.stderr)
 
-        json.dump(
-            {
-                "status": "success",
-                "message": f"Session ended: {end_reason}. Progress saved.",
-            },
-            sys.stdout,
-        )
+        if saved:
+            json.dump(
+                {
+                    "status": "success",
+                    "message": f"Session ended: {end_reason}. Progress saved.",
+                },
+                sys.stdout,
+            )
+        else:
+            json.dump(
+                {
+                    "status": "warning",
+                    "message": (
+                        f"Session ended: {end_reason}. "
+                        f"Progress NOT saved (could not write {progress_path})."
+                    ),
+                },
+                sys.stdout,
+            )
     except Exception as e:
         print(f"SessionEnd hook error: {e}", file=sys.stderr)
         json.dump(

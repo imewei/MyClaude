@@ -33,6 +33,7 @@ def main() -> None:
             result.update(_hook_io.wrap_context("PermissionDenied", ctx))
         json.dump(result, sys.stdout)
     except Exception as e:
+        print(f"PermissionDenied hook error: {e}", file=sys.stderr)
         json.dump(
             {"status": "error", "message": f"PermissionDenied hook error: {e}"},
             sys.stdout,

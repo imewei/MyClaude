@@ -7,7 +7,7 @@ effort: high
 memory: project
 maxTurns: 50
 background: true
-disallowedTools: Write, Edit, NotebookEdit
+tools: Read, Grep, Glob, Task
 skills:
   - reasoning-and-memory
 ---

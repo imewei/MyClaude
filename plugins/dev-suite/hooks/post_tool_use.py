@@ -33,6 +33,7 @@ def main() -> None:
 
         json.dump(result, sys.stdout)
     except Exception as e:
+        print(f"PostToolUse hook error: {e}", file=sys.stderr)
         json.dump(
             {"status": "error", "message": f"PostToolUse hook error: {e}"}, sys.stdout
         )

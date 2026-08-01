@@ -132,6 +132,7 @@ def main() -> None:
         result = get_session_context(cwd)
         json.dump(result, sys.stdout)
     except Exception as e:
+        print(f"SessionStart hook error: {e}", file=sys.stderr)
         error_result = {
             "status": "error",
             "message": f"SessionStart hook error: {e}",

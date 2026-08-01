@@ -59,6 +59,7 @@ def main() -> None:
         result.update(wrap_context("TaskCompleted", ctx))
         json.dump(result, sys.stdout)
     except Exception as e:
+        print(f"TaskCompleted hook error: {e}", file=sys.stderr)
         json.dump(
             {"status": "error", "message": f"TaskCompleted hook error: {e}"},
             sys.stdout,

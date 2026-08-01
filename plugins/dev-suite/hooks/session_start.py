@@ -103,6 +103,7 @@ def main() -> None:
         result.update(wrap_context("SessionStart", ctx))
         json.dump(result, sys.stdout)
     except Exception as e:
+        print(f"SessionStart hook error: {e}", file=sys.stderr)
         json.dump(
             {"status": "error", "message": f"SessionStart hook error: {e}"},
             sys.stdout,

@@ -24,16 +24,18 @@ def main() -> None:
             default="",
         )
 
-        result = {"status": "success"}
-        ctx = (
-            f"Subagent '{agent_name}' completed. Check task list for updates."
-            if agent_name
-            else "A subagent completed. Check task list for updates."
-        )
-        result["additionalContext"] = ctx
-        result.update(_hook_io.wrap_context("SubagentStop", ctx))
-        json.dump(result, sys.stdout)
+        if agent_name:
+            result = {"status": "success"}
+            ctx = f"Subagent '{agent_name}' completed. Check task list for updates."
+            result["additionalContext"] = ctx
+            result.update(_hook_io.wrap_context("SubagentStop", ctx))
+            json.dump(result, sys.stdout)
+        else:
+            # No identifiable agent — "a subagent completed, check task list" carries
+            # no signal the caller can act on, so stay silent rather than add noise.
+            json.dump({"status": "success"}, sys.stdout)
     except Exception as e:
+        print(f"SubagentStop hook error: {e}", file=sys.stderr)
         json.dump(
             {"status": "error", "message": f"SubagentStop hook error: {e}"}, sys.stdout
         )

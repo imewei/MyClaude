@@ -33,6 +33,7 @@ def main() -> None:
         result = {"status": "success", "message": message}
         json.dump(result, sys.stdout)
     except Exception as e:
+        print(f"StopFailure hook error: {e}", file=sys.stderr)
         error_result = {
             "status": "error",
             "message": f"StopFailure hook error: {e}",

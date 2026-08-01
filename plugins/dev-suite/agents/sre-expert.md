@@ -1,6 +1,6 @@
 ---
 name: sre-expert
-description: Scientific computing reliability specialist. Designs SLOs for long-running simulations (MCMC, MD, PDE solving), GPU job uptime monitoring, JAX compilation health, and incident response for numerical workflow failures. Use when defining reliability targets for scientific pipelines, setting up simulation monitoring, or writing runbooks for HPC/GPU workflow failures.
+description: Scientific computing reliability specialist. Designs SLOs for long-running simulations (MCMC, MD, PDE solving), GPU job uptime monitoring, JAX compilation health, and incident response for numerical workflow failures. For cross-service RCA and general production incident debugging outside SLO/runbook scope, use debugger-pro instead. Use when defining reliability targets for scientific pipelines, setting up simulation monitoring, or writing runbooks for HPC/GPU workflow failures.
 model: sonnet
 color: green
 effort: high
