@@ -6,9 +6,9 @@ All tests are written before implementation. Run with:
 """
 
 import json
-import pytest
 from pathlib import Path
 
+import pytest
 import yaml
 
 REPO = Path(__file__).parent.parent.parent
@@ -233,8 +233,11 @@ class TestInfrastructure:
         assert "__pycache__" in p.read_text()
 
     def test_pre_compact_has_priority_skills(self):
+        # agent-core's hook may only claim priority for agent-core's own skills;
+        # science-suite skills used to be hardcoded here and fired in every project.
         script = (AGENT_CORE / "hooks/pre_compact.py").read_text()
         assert "PRIORITY_SKILLS" in script, \
             "pre_compact.py must define PRIORITY_SKILLS list"
-        assert "jax-computing" in script
-        assert "simulation-and-hpc" in script
+        assert "agent-systems" in script
+        assert "jax-computing" not in script
+        assert "simulation-and-hpc" not in script

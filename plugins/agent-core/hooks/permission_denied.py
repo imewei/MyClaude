@@ -6,22 +6,30 @@ actions to surface patterns and help the user adjust permissions.
 """
 
 import json
-import os
 import sys
+
+import _hook_io
 
 
 def main() -> None:
     """Log permission denial for audit trail."""
     try:
-        tool_name = os.environ.get("TOOL_NAME", "unknown")
+        payload = _hook_io.read_payload()
+        tool_name = _hook_io.get_field(
+            payload,
+            "tool_name",
+            "matcher_input",
+            env_fallback="TOOL_NAME",
+            default="",
+        )
 
-        result = {
-            "status": "success",
-            "additionalContext": (
+        result = {"status": "success"}
+        # Naming no tool is more honest than asserting a denial for tool 'unknown'.
+        if tool_name:
+            result["additionalContext"] = (
                 f"Permission denied for tool '{tool_name}'. "
                 "If this is expected, consider adjusting permission mode."
-            ),
-        }
+            )
         json.dump(result, sys.stdout)
     except Exception as e:
         json.dump(

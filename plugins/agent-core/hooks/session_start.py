@@ -10,7 +10,12 @@ import json
 import os
 import subprocess
 import sys
+from datetime import UTC, datetime, timedelta
 from pathlib import Path
+
+PROGRESS_HEADER = "## Session ended: "
+MAX_PROGRESS_CHARS = 800
+MAX_PROGRESS_AGE = timedelta(hours=24)
 
 
 def read_git_summary(cwd: str) -> str:
@@ -22,6 +27,7 @@ def read_git_summary(cwd: str) -> str:
             text=True,
             timeout=5,
             cwd=cwd,
+            check=False,
         )
         if result.returncode == 0 and result.stdout.strip():
             return result.stdout.strip()
@@ -30,19 +36,38 @@ def read_git_summary(cwd: str) -> str:
     return ""
 
 
+def parse_progress_timestamp(text: str) -> datetime | None:
+    """Read the `## Session ended: <ts> UTC` header written by session_end."""
+    first_line = text.splitlines()[0] if text else ""
+    if not first_line.startswith(PROGRESS_HEADER):
+        return None
+    stamp = first_line[len(PROGRESS_HEADER) :].strip().removesuffix(" UTC").strip()
+    try:
+        return datetime.strptime(stamp, "%Y-%m-%d %H:%M").replace(tzinfo=UTC)
+    except ValueError:
+        return None
+
+
 def read_progress_file(cwd: str) -> str:
-    """Read the most recent session progress summary if it exists."""
-    progress_path = Path(cwd) / ".claude-progress.md"
-    if progress_path.exists():
-        try:
-            text = progress_path.read_text(encoding="utf-8").strip()
-            # Limit to last 500 chars to stay within context budget
-            if len(text) > 500:
-                text = text[-500:]
-            return text
-        except OSError:
-            pass
-    return ""
+    """Read the prior session's progress summary, if present and recent."""
+    progress_path = Path(cwd) / ".claude" / "progress" / "agent-core.md"
+    if not progress_path.exists():
+        return ""
+    try:
+        text = progress_path.read_text(encoding="utf-8").strip()
+    except OSError as e:
+        sys.stderr.write(f"[SessionStart] Could not read {progress_path}: {e}\n")
+        return ""
+
+    written_at = parse_progress_timestamp(text)
+    # No parsable timestamp means we can't tell how old this is — treat as stale.
+    if written_at is None or datetime.now(UTC) - written_at > MAX_PROGRESS_AGE:
+        return ""
+
+    # Truncate from the head so the timestamp header always survives.
+    if len(text) > MAX_PROGRESS_CHARS:
+        text = text[:MAX_PROGRESS_CHARS].rsplit("\n", 1)[0] + "\n... (truncated)"
+    return text
 
 
 def read_uncommitted_status(cwd: str) -> str:
@@ -54,6 +79,7 @@ def read_uncommitted_status(cwd: str) -> str:
             text=True,
             timeout=5,
             cwd=cwd,
+            check=False,
         )
         if result.returncode == 0 and result.stdout.strip():
             lines = result.stdout.strip().splitlines()
@@ -74,15 +100,17 @@ def get_session_context() -> dict:
     if git_log:
         parts.append(f"Recent commits:\n{git_log}")
 
-    # Uncommitted work
-    uncommitted = read_uncommitted_status(cwd)
-    if uncommitted:
-        parts.append(f"Working tree: {uncommitted}")
-
-    # Progress file from prior session
+    # The progress file already lists uncommitted files, so the separate
+    # working-tree count is only added when there is no progress block.
     progress = read_progress_file(cwd)
     if progress:
-        parts.append(f"Prior session progress:\n{progress}")
+        parts.append(
+            "Prior session (agent-core, historical — verify before acting):\n" + progress
+        )
+    else:
+        uncommitted = read_uncommitted_status(cwd)
+        if uncommitted:
+            parts.append(f"Working tree: {uncommitted}")
 
     if parts:
         context = "\n---\n".join(parts)

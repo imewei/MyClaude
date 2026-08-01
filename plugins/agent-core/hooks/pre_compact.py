@@ -8,11 +8,13 @@ stderr so the user knows which skills to reinvoke after compaction.
 import json
 import sys
 
+# agent-core's own hub skills only — other suites declare their own priorities.
 PRIORITY_SKILLS = [
+    "agent-hub",
     "agent-systems",
-    "jax-computing",
-    "julia-language",
-    "simulation-and-hpc",
+    "llm-engineering",
+    "reasoning-and-memory",
+    "thinkfirst",
 ]
 
 

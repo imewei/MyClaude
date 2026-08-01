@@ -1,18 +1,23 @@
 #!/usr/bin/env python3
 """SessionEnd hook for agent-core plugin.
 
-Persists a structured progress summary to .claude-progress.md so the next
-session can quickly orient itself. Inspired by Anthropic's "Effective
+Persists a structured progress summary to .claude/progress/agent-core.md so the
+next session can quickly orient itself. Inspired by Anthropic's "Effective
 harnesses for long-running agents" — each session should leave clear
 artifacts for the next.
+
+The path is namespaced per suite: agent-core, dev-suite, and science-suite all
+write progress files, and an unnamespaced path made them overwrite each other.
 """
 
 import json
 import os
 import subprocess
 import sys
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from pathlib import Path
+
+import _hook_io
 
 
 def get_recent_commits(cwd: str, limit: int = 5) -> str:
@@ -24,6 +29,7 @@ def get_recent_commits(cwd: str, limit: int = 5) -> str:
             text=True,
             timeout=5,
             cwd=cwd,
+            check=False,
         )
         if result.returncode == 0 and result.stdout.strip():
             return result.stdout.strip()
@@ -32,8 +38,11 @@ def get_recent_commits(cwd: str, limit: int = 5) -> str:
     return "No git history available"
 
 
+MAX_UNCOMMITTED_CHARS = 2000
+
+
 def get_uncommitted_files(cwd: str) -> str:
-    """List uncommitted changes."""
+    """List uncommitted changes, capped so the progress file stays small."""
     try:
         result = subprocess.run(
             ["git", "status", "--short"],
@@ -41,9 +50,16 @@ def get_uncommitted_files(cwd: str) -> str:
             text=True,
             timeout=5,
             cwd=cwd,
+            check=False,
         )
         if result.returncode == 0 and result.stdout.strip():
-            return result.stdout.strip()
+            text = result.stdout.strip()
+            if len(text) > MAX_UNCOMMITTED_CHARS:
+                kept = text[:MAX_UNCOMMITTED_CHARS].rsplit("\n", 1)[0]
+                total = len(text.splitlines())
+                shown = len(kept.splitlines())
+                return f"{kept}\n... ({total - shown} more file(s) truncated)"
+            return text
     except (subprocess.TimeoutExpired, FileNotFoundError):
         pass
     return ""
@@ -51,7 +67,7 @@ def get_uncommitted_files(cwd: str) -> str:
 
 def write_progress(cwd: str, end_reason: str) -> None:
     """Write structured progress summary for next session."""
-    timestamp = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
+    timestamp = datetime.now(UTC).strftime("%Y-%m-%d %H:%M UTC")
     commits = get_recent_commits(cwd)
     uncommitted = get_uncommitted_files(cwd)
 
@@ -66,25 +82,30 @@ def write_progress(cwd: str, end_reason: str) -> None:
     if uncommitted:
         lines.extend(["", "### Uncommitted changes", uncommitted])
 
-    progress_path = Path(cwd) / ".claude-progress.md"
+    progress_path = Path(cwd) / ".claude" / "progress" / "agent-core.md"
     try:
+        progress_path.parent.mkdir(parents=True, exist_ok=True)
         progress_path.write_text("\n".join(lines) + "\n", encoding="utf-8")
-    except OSError:
-        pass  # Non-fatal — don't block session end
+    except OSError as e:
+        # Non-fatal — don't block session end, but don't fail silently either.
+        sys.stderr.write(f"[SessionEnd] Could not write {progress_path}: {e}\n")
 
 
 def main() -> None:
     """Persist progress summary and log session end."""
     try:
-        input_data = json.load(sys.stdin)
-        end_reason = input_data.get("matcher_input", "unknown")
+        payload = _hook_io.read_payload()
+        end_reason = _hook_io.get_field(payload, "reason", "matcher_input")
         cwd = os.environ.get("PWD", os.getcwd())
 
         write_progress(cwd, end_reason)
 
         result = {
             "status": "success",
-            "message": f"Session ended: {end_reason}. Progress saved to .claude-progress.md",
+            "message": (
+                f"Session ended: {end_reason}. "
+                "Progress saved to .claude/progress/agent-core.md"
+            ),
         }
         json.dump(result, sys.stdout)
     except Exception as e:

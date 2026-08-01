@@ -8,11 +8,13 @@ task creation patterns and enforcing task hygiene.
 import json
 import sys
 
+import _hook_io
+
 
 def main() -> None:
     """Log task creation event."""
     try:
-        json.load(sys.stdin)  # consume stdin
+        _hook_io.read_payload()  # consume stdin
         result = {
             "status": "success",
             "message": "Task created",

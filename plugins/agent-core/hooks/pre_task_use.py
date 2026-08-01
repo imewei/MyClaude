@@ -3,56 +3,69 @@
 
 Injects additional context about available agent types and their capabilities
 when the Task tool is invoked, helping the orchestrator make better routing decisions.
+
+Capabilities are read from each agent's own frontmatter (plugins/*/agents/*.md)
+so this hook can never drift from the agent roster.
 """
 
 import json
 import os
 import sys
+from pathlib import Path
 
-AGENT_CAPABILITIES = {
-    "orchestrator": "Workflow coordination, team assembly, dependency management",
-    "context-specialist": "Context engineering, memory systems, token budget management",
-    "reasoning-engine": "Advanced reasoning, CoT/ToT, logical analysis",
-    "software-architect": "System design, API architecture, technical strategy",
-    "app-developer": "Web/mobile apps, React, Next.js, Flutter",
-    "systems-engineer": "Low-level systems, C/C++/Rust/Go, CLI tools",
-    "devops-architect": "Cloud (AWS/Azure/GCP), Kubernetes, IaC",
-    "sre-expert": "Reliability, observability, SLO/SLI, incident response",
-    "automation-engineer": "CI/CD, GitHub Actions, GitLab CI, Git workflows",
-    "quality-specialist": "Code review, security audit, test automation",
-    "debugger-pro": "Root cause analysis, log correlation, memory profiling",
-    "documentation-expert": "Technical docs, manuals, tutorials",
-    "ml-expert": "Classical ML, MLOps, scikit-learn, XGBoost",
-    "neural-network-master": "Deep learning, Transformers, CNNs, training diagnostics",
-    "python-pro": "Python systems, type-driven design, uv/ruff, PyO3",
-    "jax-pro": "JAX transformations, NumPyro, NLSQ, GPU computing",
-    "julia-pro": "Julia, SciML, DifferentialEquations.jl",
-    "research-expert": "Research methodology, evidence synthesis, visualization",
-    "simulation-expert": "MD simulations, statistical mechanics, HPC",
-    "statistical-physicist": "Statistical physics, correlation functions, phase transitions",
-    "sci-workflow-engineer": "Scientific LLM workflows, codegen prompts, experiment templates, scientific RAG",
-    "pinn-engineer": "Physics-informed neural networks, PINNs, neural operators, inverse PDEs",
-}
+import _hook_io
+
+PLUGINS_ROOT = Path(__file__).resolve().parents[2]
+
+
+def load_agent_capabilities() -> dict[str, str]:
+    """Map agent name -> first sentence of its frontmatter description."""
+    capabilities = {}
+    for agent_file in PLUGINS_ROOT.glob("*/agents/*.md"):
+        name = ""
+        description = ""
+        try:
+            with agent_file.open(encoding="utf-8") as fh:
+                for line in fh:
+                    if line.startswith("name:"):
+                        name = line[5:].strip()
+                    elif line.startswith("description:"):
+                        description = line[12:].strip()
+                    if name and description:
+                        break
+        except OSError as e:
+            sys.stderr.write(f"[PreToolUse] Could not read {agent_file}: {e}\n")
+            continue
+        if name and description:
+            capabilities[name] = description.split(". ")[0].rstrip(".")
+    return capabilities
+
+
+def get_tool_input(payload: dict) -> dict:
+    """Extract tool_input from the payload, falling back to the TOOL_INPUT env var."""
+    tool_input = payload.get("tool_input")
+    if isinstance(tool_input, dict):
+        return tool_input
+    try:
+        legacy = json.loads(os.environ.get("TOOL_INPUT", "{}"))
+    except json.JSONDecodeError:
+        return {}
+    return legacy if isinstance(legacy, dict) else {}
 
 
 def main() -> None:
     """Provide agent routing context for Task tool calls."""
     try:
-        tool_input = os.environ.get("TOOL_INPUT", "{}")
-
-        try:
-            input_data = json.loads(tool_input)
-        except json.JSONDecodeError:
-            input_data = {}
-
-        subagent_type = input_data.get("subagent_type", "")
+        payload = _hook_io.read_payload()
+        subagent_type = get_tool_input(payload).get("subagent_type", "")
 
         result = {"status": "success"}
 
-        if subagent_type and subagent_type in AGENT_CAPABILITIES:
+        capabilities = load_agent_capabilities()
+        if subagent_type and subagent_type in capabilities:
             result["additionalContext"] = (
                 f"Agent '{subagent_type}' specializes in: "
-                f"{AGENT_CAPABILITIES[subagent_type]}. "
+                f"{capabilities[subagent_type]}. "
                 f"Leverage Opus adaptive thinking for complex sub-tasks."
             )
 

@@ -1,8 +1,7 @@
 #!/usr/bin/env python3
 """PostCompact hook for agent-core plugin.
 
-Fires after context compaction completes. Persists a brief summary
-of pre-compact state to help maintain continuity.
+Fires after context compaction completes.
 """
 
 import json
@@ -14,7 +13,7 @@ def main() -> None:
     try:
         result = {
             "status": "success",
-            "message": "PostCompact: context compaction complete. Key state preserved in tasks.",
+            "message": "PostCompact: context compaction complete.",
         }
         json.dump(result, sys.stdout)
     except Exception as e:

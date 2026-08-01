@@ -9,18 +9,22 @@ import json
 import os
 import sys
 
+import _hook_io
+
 
 def main() -> None:
     """Log file modifications for potential auto-linting."""
     try:
-        tool_input = os.environ.get("TOOL_INPUT", "{}")
+        payload = _hook_io.read_payload()
+        tool_input = payload.get("tool_input")
 
-        try:
-            input_data = json.loads(tool_input)
-        except json.JSONDecodeError:
-            input_data = {}
+        if not isinstance(tool_input, dict):
+            try:
+                tool_input = json.loads(os.environ.get("TOOL_INPUT", "{}"))
+            except json.JSONDecodeError:
+                tool_input = {}
 
-        file_path = input_data.get("file_path", "")
+        file_path = tool_input.get("file_path", "") if isinstance(tool_input, dict) else ""
 
         result = {"status": "success"}
 

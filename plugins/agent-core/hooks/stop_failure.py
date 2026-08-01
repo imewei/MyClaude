@@ -10,19 +10,27 @@ Useful for error classification and notification routing.
 import json
 import sys
 
+import _hook_io
+
+RETRIABLE_ERRORS = ("rate_limit", "server_error")
+
 
 def main() -> None:
     """Classify and log stop failure event."""
     try:
-        input_data = json.load(sys.stdin)
-        error_type = input_data.get("matcher_input", "unknown")
+        payload = _hook_io.read_payload()
+        error_type = _hook_io.get_field(
+            payload, "error_type", "reason", "matcher_input", default=""
+        )
 
-        # Classify severity based on error type
-        retriable = error_type in ("rate_limit", "server_error")
-        result = {
-            "status": "success",
-            "message": f"Stop failure: {error_type} (retriable={retriable})",
-        }
+        if not error_type:
+            message = "Stop failure: error type not reported"
+        elif error_type in RETRIABLE_ERRORS:
+            message = f"Stop failure: {error_type} (retriable)"
+        else:
+            message = f"Stop failure: {error_type} (not a known retriable error)"
+
+        result = {"status": "success", "message": message}
         json.dump(result, sys.stdout)
     except Exception as e:
         error_result = {

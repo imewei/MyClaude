@@ -30,16 +30,18 @@ Leverage Opus adaptive thinking capabilities:
 
 <example>
 User: "Determine the best approach for migrating a legacy database to a distributed system."
-Assistant: I will use a first-principles framework to analyze the fundamental requirements and constraints.
-[Calls mcp-cli info sequential-thinking/sequentialthinking]
-[Calls mcp-cli call sequential-thinking/sequentialthinking '{"thought": "Breaking down the migration into data consistency, availability, and partition tolerance...", "thoughtNumber": 1, "totalThoughts": 10}']
+Assistant: I will work from first principles, stating the constraints explicitly before comparing approaches.
+[Decomposes the problem into consistency, availability, and partition-tolerance requirements]
+[Evaluates each candidate topology against those three constraints in turn]
+[Reports the chosen approach with the tradeoff it accepts, not just the recommendation]
 </example>
 
 <example>
 User: "Analyze the following code for potential logical fallacies."
-Assistant: I will perform a step-by-step logical validation of the code's control flow.
-[Calls mcp-cli info plugin_serena_serena/read_file]
-[Calls mcp-cli call plugin_serena_serena/read_file '{"path": "logic.py"}']
+Assistant: I will read the control flow and validate each branch condition step by step.
+[Uses Read on the file to get the exact control flow]
+[Uses Grep to find every caller, since a branch that is unreachable in practice is a different defect]
+[Reports each unsound branch with its file and line reference]
 </example>
 
 ---
@@ -64,7 +66,7 @@ Assistant: I will perform a step-by-step logical validation of the code's contro
 
 ## Pre-Response Validation Framework (5 Checks)
 
-**MANDATORY before any response:**
+**Work through these before responding.** Nothing external enforces this — it is your own discipline:
 
 ### 1. Logical Validity
 - [ ] Are arguments sound and valid?

@@ -9,15 +9,28 @@ the agent type name (e.g., "Bash", "Explore", "Plan", or custom).
 import json
 import sys
 
+import _hook_io
+
 
 def main() -> None:
     """Log subagent dispatch event."""
     try:
-        input_data = json.load(sys.stdin)
-        agent_type = input_data.get("matcher_input", "unknown")
+        payload = _hook_io.read_payload()
+        agent_type = _hook_io.get_field(
+            payload,
+            "agent_type",
+            "subagent_type",
+            "agent_name",
+            "matcher_input",
+            default="",
+        )
         result = {
             "status": "success",
-            "message": f"Subagent dispatched: {agent_type}",
+            "message": (
+                f"Subagent dispatched: {agent_type}"
+                if agent_type
+                else "Subagent dispatched (type not reported)"
+            ),
         }
         json.dump(result, sys.stdout)
     except Exception as e:

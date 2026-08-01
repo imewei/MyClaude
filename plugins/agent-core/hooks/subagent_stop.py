@@ -6,19 +6,32 @@ summaries for orchestration awareness.
 """
 
 import json
-import os
 import sys
+
+import _hook_io
 
 
 def main() -> None:
     """Log subagent completion for orchestration tracking."""
     try:
-        agent_name = os.environ.get("AGENT_NAME", "unknown")
+        payload = _hook_io.read_payload()
+        agent_name = _hook_io.get_field(
+            payload,
+            "agent_name",
+            "subagent_type",
+            "agent_type",
+            "matcher_input",
+            env_fallback="AGENT_NAME",
+            default="",
+        )
 
-        result = {
-            "status": "success",
-            "additionalContext": f"Subagent '{agent_name}' completed. Check task list for updates.",
-        }
+        result = {"status": "success"}
+        if agent_name:
+            result["additionalContext"] = (
+                f"Subagent '{agent_name}' completed. Check task list for updates."
+            )
+        else:
+            result["additionalContext"] = "A subagent completed. Check task list for updates."
         json.dump(result, sys.stdout)
     except Exception as e:
         json.dump(
