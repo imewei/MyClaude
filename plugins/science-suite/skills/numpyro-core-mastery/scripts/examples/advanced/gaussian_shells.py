@@ -20,14 +20,12 @@ NUTS sampler.
 
 import argparse
 
-import matplotlib.pyplot as plt
-
-from jax import random
 import jax.numpy as jnp
-
+import matplotlib.pyplot as plt
 import numpyro
-from numpyro.contrib.nested_sampling import NestedSampler
 import numpyro.distributions as dist
+from jax import random
+from numpyro.contrib.nested_sampling import NestedSampler
 from numpyro.infer import MCMC, NUTS, DiscreteHMCGibbs
 
 
@@ -86,16 +84,16 @@ def run_inference(args, data):
 
 
 def main(args):
-    data = dict(
-        radius=2.0,
-        width=0.1,
-        center1=jnp.array([-3.5, 0.0]),
-        center2=jnp.array([3.5, 0.0]),
-    )
+    data = {
+        "radius": 2.0,
+        "width": 0.1,
+        "center1": jnp.array([-3.5, 0.0]),
+        "center2": jnp.array([3.5, 0.0]),
+    }
     ns_samples, mcmc_samples = run_inference(args, data)
 
     # plotting
-    fig, (ax1, ax2) = plt.subplots(
+    _fig, (ax1, ax2) = plt.subplots(
         2, 1, sharex=True, figsize=(8, 8), constrained_layout=True
     )
 

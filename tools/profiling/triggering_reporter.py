@@ -15,9 +15,8 @@ import argparse
 import re
 import sys
 from dataclasses import dataclass, field
-from datetime import datetime
+from datetime import UTC, datetime
 from pathlib import Path
-from typing import Dict, List, Optional
 
 
 @dataclass
@@ -43,7 +42,7 @@ class TriggeringMetrics:
     skill_under_trigger_rate: float = 0.0
 
     # Plugin-specific metrics
-    plugin_metrics: Dict[str, Dict[str, float]] = field(default_factory=dict)
+    plugin_metrics: dict[str, dict[str, float]] = field(default_factory=dict)
 
 
 @dataclass
@@ -52,7 +51,7 @@ class Issue:
 
     severity: str  # critical, high, medium, low
     category: str  # activation, command, skill
-    plugin: Optional[str]
+    plugin: str | None
     description: str
     impact: str
     recommendation: str
@@ -64,7 +63,7 @@ class TriggeringPatternReporter:
     def __init__(self, reports_dir: str):
         self.reports_dir = Path(reports_dir)
         self.metrics = TriggeringMetrics()
-        self.issues: List[Issue] = []
+        self.issues: list[Issue] = []
 
     def load_activation_report(self) -> bool:
         """Load activation accuracy report."""
@@ -150,7 +149,7 @@ class TriggeringPatternReporter:
             )
             return True
 
-        except Exception as e:
+        except (OSError, ValueError) as e:
             print(f"✗ Error loading activation report: {e}")
             return False
 
@@ -231,7 +230,7 @@ class TriggeringPatternReporter:
             )
             return True
 
-        except Exception as e:
+        except (OSError, ValueError) as e:
             print(f"✗ Error loading command report: {e}")
             return False
 
@@ -319,7 +318,7 @@ class TriggeringPatternReporter:
             )
             return True
 
-        except Exception as e:
+        except (OSError, ValueError) as e:
             print(f"✗ Error loading skill report: {e}")
             return False
 
@@ -363,7 +362,7 @@ class TriggeringPatternReporter:
 
         return total_score / total_weight if total_weight > 0 else 0.0
 
-    def generate_recommendations(self) -> List[str]:
+    def generate_recommendations(self) -> list[str]:
         """Generate prioritized recommendations."""
         recommendations = []
 
@@ -414,7 +413,7 @@ class TriggeringPatternReporter:
 
         report = f"""# Comprehensive Triggering Pattern Analysis Report
 
-**Report Date:** {datetime.now().strftime("%Y-%m-%d %H:%M:%S")}
+**Report Date:** {datetime.now(UTC).strftime("%Y-%m-%d %H:%M:%S")}
 **Overall Triggering Quality Score:** {overall_score:.1f}/100
 
 ## Executive Summary

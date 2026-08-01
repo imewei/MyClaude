@@ -19,8 +19,8 @@ Requirements:
 """
 
 import jax.numpy as jnp
-from jax_cfd import grids
 import matplotlib.pyplot as plt
+from jax_cfd import grids
 
 
 def main():
@@ -291,7 +291,7 @@ def pressure_projection(velocity, grid, dt):
 
 def solve_poisson(rhs, grid, n_iterations=100):
     """Solve ∇²p = rhs using Jacobi iterations"""
-    dx, dy = grid.step
+    dx, _dy = grid.step
     p = jnp.zeros_like(rhs)
 
     for _ in range(n_iterations):

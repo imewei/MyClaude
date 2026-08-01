@@ -9,8 +9,10 @@ import json
 import os
 import subprocess
 import sys
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from pathlib import Path
+
+from _hook_io import get_field, read_payload
 
 
 def get_recent_commits(cwd: str, limit: int = 5) -> str:
@@ -22,6 +24,7 @@ def get_recent_commits(cwd: str, limit: int = 5) -> str:
             text=True,
             timeout=5,
             cwd=cwd,
+            check=False,
         )
         if result.returncode == 0 and result.stdout.strip():
             return result.stdout.strip()
@@ -30,8 +33,11 @@ def get_recent_commits(cwd: str, limit: int = 5) -> str:
     return "No git history available"
 
 
+MAX_UNCOMMITTED_CHARS = 2000
+
+
 def get_uncommitted_files(cwd: str) -> str:
-    """List uncommitted changes."""
+    """List uncommitted changes, capped so it cannot crowd out the header."""
     try:
         result = subprocess.run(
             ["git", "status", "--short"],
@@ -39,34 +45,28 @@ def get_uncommitted_files(cwd: str) -> str:
             text=True,
             timeout=5,
             cwd=cwd,
+            check=False,
         )
         if result.returncode == 0 and result.stdout.strip():
-            return result.stdout.strip()
+            text = result.stdout.strip()
+            if len(text) > MAX_UNCOMMITTED_CHARS:
+                text = text[:MAX_UNCOMMITTED_CHARS] + "\n... (truncated)"
+            return text
     except (subprocess.TimeoutExpired, FileNotFoundError):
         pass
-    return ""
-
-
-def get_test_status(cwd: str) -> str:
-    """Quick check if tests were last passing."""
-    # Check for common test result indicators without running tests
-    for marker in [".pytest_cache", "node_modules/.cache/jest"]:
-        if (Path(cwd) / marker).exists():
-            return "Test cache present (run tests to verify)"
     return ""
 
 
 def main() -> None:
     """Persist dev session progress."""
     try:
-        input_data = json.load(sys.stdin)
-        end_reason = input_data.get("matcher_input", "unknown")
-        cwd = os.environ.get("PWD", os.getcwd())
+        payload = read_payload()
+        end_reason = get_field(payload, "reason", "matcher_input")
+        cwd = get_field(payload, "cwd", env_fallback="PWD", default=os.getcwd())
 
-        timestamp = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
+        timestamp = datetime.now(UTC).strftime("%Y-%m-%d %H:%M UTC")
         commits = get_recent_commits(cwd)
         uncommitted = get_uncommitted_files(cwd)
-        test_status = get_test_status(cwd)
 
         lines = [
             f"## Session ended: {timestamp}",
@@ -78,23 +78,37 @@ def main() -> None:
 
         if uncommitted:
             lines.extend(["", "### Uncommitted changes", uncommitted])
-        if test_status:
-            lines.extend(["", "### Test status", test_status])
 
-        progress_path = Path(cwd) / ".claude-progress.md"
+        progress_path = Path(cwd) / ".claude" / "progress" / "dev-suite.md"
+        saved = False
         try:
+            progress_path.parent.mkdir(parents=True, exist_ok=True)
             progress_path.write_text("\n".join(lines) + "\n", encoding="utf-8")
-        except OSError:
-            pass
+            saved = True
+        except OSError as e:
+            print(f"SessionEnd hook: could not write {progress_path}: {e}", file=sys.stderr)
 
-        json.dump(
-            {
-                "status": "success",
-                "message": f"Session ended: {end_reason}. Progress saved.",
-            },
-            sys.stdout,
-        )
+        if saved:
+            json.dump(
+                {
+                    "status": "success",
+                    "message": f"Session ended: {end_reason}. Progress saved.",
+                },
+                sys.stdout,
+            )
+        else:
+            json.dump(
+                {
+                    "status": "warning",
+                    "message": (
+                        f"Session ended: {end_reason}. "
+                        f"Progress NOT saved (could not write {progress_path})."
+                    ),
+                },
+                sys.stdout,
+            )
     except Exception as e:
+        print(f"SessionEnd hook error: {e}", file=sys.stderr)
         json.dump(
             {"status": "error", "message": f"SessionEnd hook error: {e}"},
             sys.stdout,

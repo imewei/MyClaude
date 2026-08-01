@@ -21,16 +21,14 @@ import argparse
 import os
 import time
 
-import numpy as np
-from scipy.special import expit
-
 import jax.numpy as jnp
-import jax.random as random
-
+import numpy as np
 import numpyro
-from numpyro.diagnostics import summary
 import numpyro.distributions as dist
+from jax import random
+from numpyro.diagnostics import summary
 from numpyro.infer import MCMC, NUTS
+from scipy.special import expit
 
 
 # regression model with continuous-valued outputs/responses
@@ -87,7 +85,7 @@ def run_inference(model, args, rng_key, X, Y):
         num_warmup=args.num_warmup,
         num_samples=args.num_samples,
         num_chains=args.num_chains,
-        progress_bar=False if "NUMPYRO_SPHINXBUILD" in os.environ else True,
+        progress_bar=not "NUMPYRO_SPHINXBUILD" in os.environ,
     )
 
     mcmc.run(rng_key, X, Y)
@@ -133,7 +131,7 @@ def main(args):
     X, Y = get_data(N=N, D_X=D_X, response="continuous")
 
     # do inference
-    rng_key, rng_key_predict = random.split(random.PRNGKey(0))
+    rng_key, _rng_key_predict = random.split(random.PRNGKey(0))
     summary = run_inference(model_normal_likelihood, args, rng_key, X, Y)
 
     # lambda should only be large for the first 3 dimensions, which
@@ -150,7 +148,7 @@ def main(args):
     X, Y = get_data(N=4 * N, D_X=D_X, response="binary")
 
     # do inference
-    rng_key, rng_key_predict = random.split(random.PRNGKey(0))
+    rng_key, _rng_key_predict = random.split(random.PRNGKey(0))
     summary = run_inference(model_bernoulli_likelihood, args, rng_key, X, Y)
 
     # lambda should only be large for the first 3 dimensions, which

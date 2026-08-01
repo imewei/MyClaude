@@ -5,21 +5,29 @@ Collects test/review results when quality-specialist finishes.
 """
 
 import json
-import os
 import sys
+
+from _hook_io import get_field, read_payload, wrap_context
 
 
 def main() -> None:
     """Log subagent completion for dev workflow tracking."""
     try:
-        agent_name = os.environ.get("AGENT_NAME", "unknown")
+        agent_name = get_field(
+            read_payload(),
+            "agent_name",
+            "subagent_type",
+            "agent",
+            "name",
+            env_fallback="AGENT_NAME",
+        )
 
-        result = {
-            "status": "success",
-            "additionalContext": f"Dev-suite agent '{agent_name}' completed.",
-        }
+        ctx = f"Dev-suite agent '{agent_name}' completed."
+        result = {"status": "success", "additionalContext": ctx}
+        result.update(wrap_context("SubagentStop", ctx))
         json.dump(result, sys.stdout)
     except Exception as e:
+        print(f"SubagentStop hook error: {e}", file=sys.stderr)
         json.dump(
             {"status": "error", "message": f"SubagentStop hook error: {e}"}, sys.stdout
         )

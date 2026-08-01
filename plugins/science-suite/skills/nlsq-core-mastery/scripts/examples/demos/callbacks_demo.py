@@ -7,7 +7,6 @@ optimization progress with progress bars, logging, and early stopping.
 
 import jax.numpy as jnp
 import numpy as np
-
 from nlsq import fit
 from nlsq.callbacks import (
     CallbackBase,
@@ -45,13 +44,13 @@ def example1_progress_bar():
     print("=" * 70)
     print("\nMonitoring optimization with a progress bar...\n")
 
-    x, y, y_true = generate_sample_data()
+    x, y, _y_true = generate_sample_data()
 
     # Create progress bar callback
     callback = ProgressBar(max_nfev=50, desc="Fitting exponential")
 
     # Fit with progress bar
-    popt, pcov = fit(
+    popt, _pcov = fit(
         exponential_decay,
         x,
         y,
@@ -81,7 +80,7 @@ def example2_iteration_logging():
     print("=" * 70)
     print("\nLogging optimization details to file...\n")
 
-    x, y, y_true = generate_sample_data()
+    x, y, _y_true = generate_sample_data()
 
     # Create logging callback
     callback = IterationLogger(
@@ -91,7 +90,7 @@ def example2_iteration_logging():
     )
 
     # Fit with logging
-    popt, pcov = fit(
+    popt, _pcov = fit(
         exponential_decay,
         x,
         y,
@@ -125,7 +124,7 @@ def example3_early_stopping():
     print("=" * 70)
     print("\nUsing early stopping to prevent wasted iterations...\n")
 
-    x, y, y_true = generate_sample_data()
+    x, y, _y_true = generate_sample_data()
 
     # Create early stopping callback
     callback = EarlyStopping(
@@ -135,7 +134,7 @@ def example3_early_stopping():
     )
 
     # Fit with early stopping
-    popt, pcov = fit(
+    popt, _pcov = fit(
         exponential_decay,
         x,
         y,
@@ -163,7 +162,7 @@ def example4_callback_chain():
     print("=" * 70)
     print("\nCombining multiple callbacks together...\n")
 
-    x, y, y_true = generate_sample_data()
+    x, y, _y_true = generate_sample_data()
 
     # Combine multiple callbacks
     callback = CallbackChain(
@@ -173,7 +172,7 @@ def example4_callback_chain():
     )
 
     # Fit with callback chain
-    popt, pcov = fit(
+    popt, _pcov = fit(
         exponential_decay,
         x,
         y,
@@ -226,13 +225,13 @@ def example5_custom_callback():
     print("=" * 70)
     print("\nTracking best parameters with custom callback...\n")
 
-    x, y, y_true = generate_sample_data()
+    x, y, _y_true = generate_sample_data()
 
     # Create custom callback
     tracker = BestParameterTracker()
 
     # Fit with custom callback
-    popt, pcov = fit(
+    popt, _pcov = fit(
         exponential_decay,
         x,
         y,

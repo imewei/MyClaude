@@ -3,12 +3,13 @@ Production-ready REST API template using FastAPI.
 Includes pagination, filtering, error handling, and best practices.
 """
 
-from fastapi import FastAPI, HTTPException, Query, Path, status
-from fastapi.responses import JSONResponse
-from pydantic import BaseModel, Field, EmailStr
-from typing import Optional, List, Any
-from datetime import datetime
+from datetime import UTC, datetime
 from enum import Enum
+from typing import Any
+
+from fastapi import FastAPI, HTTPException, Path, Query, status
+from fastapi.responses import JSONResponse
+from pydantic import BaseModel, EmailStr, Field
 
 app = FastAPI(title="API Template", version="1.0.0", docs_url="/api/docs")
 
@@ -31,9 +32,9 @@ class UserCreate(UserBase):
 
 
 class UserUpdate(BaseModel):
-    email: Optional[EmailStr] = None
-    name: Optional[str] = Field(None, min_length=1, max_length=100)
-    status: Optional[UserStatus] = None
+    email: EmailStr | None = None
+    name: str | None = Field(None, min_length=1, max_length=100)
+    status: UserStatus | None = None
 
 
 class User(UserBase):
@@ -52,7 +53,7 @@ class PaginationParams(BaseModel):
 
 
 class PaginatedResponse(BaseModel):
-    items: List[Any]
+    items: list[Any]
     total: int
     page: int
     page_size: int
@@ -61,7 +62,7 @@ class PaginatedResponse(BaseModel):
 
 # Error handling
 class ErrorDetail(BaseModel):
-    field: Optional[str] = None
+    field: str | None = None
     message: str
     code: str
 
@@ -69,7 +70,7 @@ class ErrorDetail(BaseModel):
 class ErrorResponse(BaseModel):
     error: str
     message: str
-    details: Optional[List[ErrorDetail]] = None
+    details: list[ErrorDetail] | None = None
 
 
 @app.exception_handler(HTTPException)
@@ -93,8 +94,8 @@ async def http_exception_handler(request, exc):
 async def list_users(
     page: int = Query(1, ge=1),
     page_size: int = Query(20, ge=1, le=100),
-    status: Optional[UserStatus] = Query(None),
-    search: Optional[str] = Query(None),
+    status: UserStatus | None = Query(None),  # noqa: B008 — FastAPI requires calling Query() as the parameter default for request binding
+    search: str | None = Query(None),
 ):
     """List users with pagination and filtering."""
     # Mock implementation
@@ -105,8 +106,8 @@ async def list_users(
             email=f"user{i}@example.com",
             name=f"User {i}",
             status=UserStatus.ACTIVE,
-            created_at=datetime.now(),
-            updated_at=datetime.now(),
+            created_at=datetime.now(UTC),
+            updated_at=datetime.now(UTC),
         ).dict()
         for i in range((page - 1) * page_size, min(page * page_size, total))
     ]
@@ -134,8 +135,8 @@ async def create_user(user: UserCreate):
         email=user.email,
         name=user.name,
         status=user.status,
-        created_at=datetime.now(),
-        updated_at=datetime.now(),
+        created_at=datetime.now(UTC),
+        updated_at=datetime.now(UTC),
     )
 
 
@@ -154,8 +155,8 @@ async def get_user(user_id: str = Path(..., description="User ID")):
         email="user@example.com",
         name="User Name",
         status=UserStatus.ACTIVE,
-        created_at=datetime.now(),
-        updated_at=datetime.now(),
+        created_at=datetime.now(UTC),
+        updated_at=datetime.now(UTC),
     )
 
 
@@ -170,7 +171,7 @@ async def update_user(user_id: str, update: UserUpdate):
     for field, value in update_data.items():
         setattr(existing, field, value)
 
-    existing.updated_at = datetime.now()
+    existing.updated_at = datetime.now(UTC)
     return existing
 
 
@@ -180,7 +181,6 @@ async def update_user(user_id: str, update: UserUpdate):
 async def delete_user(user_id: str):
     """Delete user."""
     await get_user(user_id)  # Verify exists
-    return None
 
 
 if __name__ == "__main__":

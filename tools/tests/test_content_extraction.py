@@ -10,7 +10,6 @@ import re
 import sys
 import unittest
 from pathlib import Path
-from typing import List, Dict
 
 # Add project root to path for imports
 project_root = Path(__file__).resolve().parent.parent.parent
@@ -22,7 +21,7 @@ except ImportError:
     pass
 
 
-def extract_code_blocks(content: str) -> List[Dict[str, str]]:
+def extract_code_blocks(content: str) -> list[dict[str, str]]:
     """Extract code blocks from markdown content (helper for tests)"""
     code_blocks = []
     pattern = r"```(\w*)\n(.*?)```"

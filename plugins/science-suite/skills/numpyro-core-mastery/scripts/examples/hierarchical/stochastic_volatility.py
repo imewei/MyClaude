@@ -38,21 +38,19 @@ and has more features supported.
 import argparse
 import os
 
+import jax.numpy as jnp
 import matplotlib
 import matplotlib.dates as mdates
 import matplotlib.pyplot as plt
-
-import jax.numpy as jnp
-import jax.random as random
-
 import numpyro
 import numpyro.distributions as dist
+from jax import random
 from numpyro.examples.datasets import SP500, load_dataset
 from numpyro.infer.hmc import hmc
 from numpyro.infer.util import initialize_model
 from numpyro.util import fori_collect
 
-matplotlib.use("Agg")  # noqa: E402
+matplotlib.use("Agg")
 
 
 def model(returns):
@@ -72,7 +70,7 @@ def print_results(posterior, dates):
         row_name_fmt = "{:>8}"
         header_format = row_name_fmt + "{:>12}" * 5
         row_format = row_name_fmt + "{:>12.3f}" * 5
-        columns = ["(p{})".format(int(q * 100)) for q in quantiles]
+        columns = [f"(p{int(q * 100)})" for q in quantiles]
         q_values = jnp.quantile(values, quantiles, axis=0)
         print(header_format.format("", *columns))
         print(row_format.format(row_name, *q_values))
@@ -102,11 +100,11 @@ def main(args):
         sample_kernel,
         hmc_state,
         transform=lambda hmc_state: model_info.postprocess_fn(hmc_state.z),
-        progbar=False if "NUMPYRO_SPHINXBUILD" in os.environ else True,
+        progbar=not "NUMPYRO_SPHINXBUILD" in os.environ,
     )
     print_results(hmc_states, dates)
 
-    fig, ax = plt.subplots(figsize=(8, 6), constrained_layout=True)
+    _fig, ax = plt.subplots(figsize=(8, 6), constrained_layout=True)
     dates = mdates.num2date(mdates.datestr2num(dates))
     ax.plot(dates, returns, lw=0.5)
     # format the ticks

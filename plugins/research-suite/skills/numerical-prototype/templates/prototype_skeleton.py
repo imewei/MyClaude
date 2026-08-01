@@ -19,7 +19,6 @@ import jax
 import jax.numpy as jnp
 from jax import Array
 
-
 # --- Dtype policy ------------------------------------------------------------
 # Pick one and document the reason. Mixed-precision requires an explicit policy
 # in a separate module-level comment.
@@ -38,7 +37,7 @@ class Params:
     dt: float = 1e-3
 
     @classmethod
-    def default(cls) -> "Params":
+    def default(cls) -> Params:
         return cls()
 
 
@@ -52,7 +51,7 @@ class State:
     t: Array                # scalar
 
     @classmethod
-    def initial(cls, n_particles: int, dim: int, key: Array) -> "State":
+    def initial(cls, n_particles: int, dim: int, key: Array) -> State:
         k1, k2 = jax.random.split(key)
         positions = jax.random.normal(k1, (n_particles, dim), dtype=DTYPE)
         velocities = jax.random.normal(k2, (n_particles, dim), dtype=DTYPE)

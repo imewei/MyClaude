@@ -13,12 +13,11 @@ Usage:
 import argparse
 import json
 from pathlib import Path
-from typing import Dict, List, Optional
 
 import numpy as np
 
 
-def load_training_log(log_path: Path) -> Optional[Dict]:
+def load_training_log(log_path: Path) -> dict | None:
     """
     Load training log from various formats (JSON, TensorBoard, W&B).
 
@@ -36,7 +35,8 @@ def load_training_log(log_path: Path) -> Optional[Dict]:
                 with open(json_file) as f:
                     data = json.load(f)
                 return data
-            except Exception:
+            except (OSError, json.JSONDecodeError) as e:
+                print(f"Warning: Could not parse {json_file}: {e}")
                 continue
 
     # Try config.json + metrics.json pattern
@@ -50,15 +50,15 @@ def load_training_log(log_path: Path) -> Optional[Dict]:
             with open(metrics_file) as f:
                 metrics = json.load(f)
             return {"config": config, "metrics": metrics}
-        except Exception:
-            pass
+        except (OSError, json.JSONDecodeError) as e:
+            print(f"Warning: Could not parse config/metrics in {log_path}: {e}")
 
     # Could add TensorBoard, W&B parsing here
     print(f"Warning: Could not load training log from {log_path}")
     return None
 
 
-def extract_config(run_data: Dict) -> Dict:
+def extract_config(run_data: dict) -> dict:
     """Extract configuration/hyperparameters from run data."""
     if "config" in run_data:
         return run_data["config"]
@@ -75,7 +75,7 @@ def extract_config(run_data: Dict) -> Dict:
         return config
 
 
-def extract_metrics(run_data: Dict) -> Dict[str, List[float]]:
+def extract_metrics(run_data: dict) -> dict[str, list[float]]:
     """Extract training metrics time series."""
     if "metrics" in run_data:
         return run_data["metrics"]
@@ -85,13 +85,12 @@ def extract_metrics(run_data: Dict) -> Dict[str, List[float]]:
         # Try to find metric-like keys
         metrics = {}
         for key, value in run_data.items():
-            if isinstance(value, list) and len(value) > 0:
-                if isinstance(value[0], (int, float)):
-                    metrics[key] = value
+            if isinstance(value, list) and len(value) > 0 and isinstance(value[0], (int, float)):
+                metrics[key] = value
         return metrics
 
 
-def compare_configs(configs: Dict[str, Dict]) -> Dict:
+def compare_configs(configs: dict[str, dict]) -> dict:
     """
     Compare configurations across runs to identify differences.
 
@@ -119,9 +118,9 @@ def compare_configs(configs: Dict[str, Dict]) -> Dict:
                 values[run_name] = config[key]
 
         # Check if all values are the same
-        unique_values = set(str(v) for v in values.values())
+        unique_values = {str(v) for v in values.values()}
         if len(unique_values) == 1 and len(values) == len(configs):
-            common[key] = list(values.values())[0]
+            common[key] = next(iter(values.values()))
         else:
             different[key] = values
 
@@ -129,8 +128,8 @@ def compare_configs(configs: Dict[str, Dict]) -> Dict:
 
 
 def compare_metrics(
-    metrics_dict: Dict[str, Dict[str, List[float]]], metric_name: str = "val_loss"
-) -> Dict:
+    metrics_dict: dict[str, dict[str, list[float]]], metric_name: str = "val_loss"
+) -> dict:
     """
     Compare specific metric across runs.
 
@@ -166,7 +165,7 @@ def compare_metrics(
     return comparison
 
 
-def _find_convergence_epoch(values: List[float], metric_name: str) -> int:
+def _find_convergence_epoch(values: list[float], metric_name: str) -> int:
     """Find epoch where metric converged (no improvement for 5 epochs)."""
     if len(values) < 6:
         return len(values) - 1
@@ -191,8 +190,8 @@ def _find_convergence_epoch(values: List[float], metric_name: str) -> int:
 
 
 def print_comparison_report(
-    configs: Dict[str, Dict],
-    metrics_dict: Dict[str, Dict[str, List[float]]],
+    configs: dict[str, dict],
+    metrics_dict: dict[str, dict[str, list[float]]],
     primary_metric: str = "val_loss",
 ):
     """Print comprehensive comparison report."""
@@ -339,13 +338,10 @@ def _print_summary(run_names, config_comparison, metric_comparison, primary_metr
 
     # Check for instability
     for run_name, stats in metric_comparison.items():
-        if stats.get("available"):
-            # High variance indicates instability (std > 10% of mean magnitude)
-            if stats["std"] > 0.1 * abs(stats["mean"]):
-                print(f"   ⚠️  {run_name}: High variance in {primary_metric}")
-                print(
-                    "      → Training may be unstable, consider reducing learning rate"
-                )
+        # High variance indicates instability (std > 10% of mean magnitude)
+        if stats.get("available") and stats["std"] > 0.1 * abs(stats["mean"]):
+            print(f"   ⚠️  {run_name}: High variance in {primary_metric}")
+            print("      → Training may be unstable, consider reducing learning rate")
 
 
 def main():

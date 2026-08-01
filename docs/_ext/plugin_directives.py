@@ -1,3 +1,6 @@
+from collections.abc import Callable
+from typing import ClassVar
+
 from docutils import nodes
 from docutils.parsers.rst import directives
 from sphinx.util.docutils import SphinxDirective
@@ -7,7 +10,7 @@ class BasePluginDirective(SphinxDirective):
     required_arguments = 1
     optional_arguments = 0
     final_argument_whitespace = True
-    option_spec = {
+    option_spec: ClassVar[dict[str, Callable[[str], object]]] = {
         "description": directives.unchanged,
         "model": directives.unchanged,
         "version": directives.unchanged,

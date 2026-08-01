@@ -50,18 +50,16 @@ for installation instructions.
 import argparse
 import os
 
-import matplotlib.pyplot as plt
-import pandas as pd
-
 import jax
 import jax.numpy as jnp
-from tensorflow_probability.substrates import jax as tfp
-
+import matplotlib.pyplot as plt
 import numpyro
-from numpyro import deterministic, plate, sample
 import numpyro.distributions as dist
+import pandas as pd
+from numpyro import deterministic, plate, sample
 from numpyro.handlers import scope
 from numpyro.infer import MCMC, NUTS, init_to_median
+from tensorflow_probability.substrates import jax as tfp
 
 
 # --- Data processing functions
@@ -341,8 +339,8 @@ def birthdays_model(
 
 
 # --- plotting function --- #
-DATA_STYLE = dict(marker=".", alpha=0.8, lw=0, label="data", c="lightgray")
-MODEL_STYLE = dict(lw=2, color="k")
+DATA_STYLE = {"marker": ".", "alpha": 0.8, "lw": 0, "label": "data", "c": "lightgray"}
+MODEL_STYLE = {"lw": 2, "color": "k"}
 
 
 def plot_trend(data, samples, ax=None):
@@ -468,7 +466,7 @@ def plot_1988(data, samples, ax=None):
         xs = pd.to_datetime(date).day_of_year - 1
         ys = f_median[xs]
         text = ax.text(xs - 3, ys, name, horizontalalignment="right")
-        text.set_bbox(dict(facecolor="white", alpha=0.5, edgecolor="none"))
+        text.set_bbox({"facecolor": "white", "alpha": 0.5, "edgecolor": "none"})
 
     is_day_13 = data["date"].dt.day == 13
     bad_luck_days = data.loc[is_1988 & is_day_13, "day_of_year"] - 1

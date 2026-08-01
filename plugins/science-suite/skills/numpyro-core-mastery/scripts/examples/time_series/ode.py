@@ -24,19 +24,17 @@ inferences about parameters of the differential equation governing the dynamics.
 import argparse
 import os
 
+import jax.numpy as jnp
 import matplotlib
 import matplotlib.pyplot as plt
-
-from jax.experimental.ode import odeint
-import jax.numpy as jnp
-from jax.random import PRNGKey
-
 import numpyro
 import numpyro.distributions as dist
+from jax.experimental.ode import odeint
+from jax.random import PRNGKey
 from numpyro.examples.datasets import LYNXHARE, load_dataset
 from numpyro.infer import MCMC, NUTS, Predictive
 
-matplotlib.use("Agg")  # noqa: E402
+matplotlib.use("Agg")
 
 
 def dz_dt(z, t, theta):
@@ -93,7 +91,7 @@ def main(args):
         num_warmup=args.num_warmup,
         num_samples=args.num_samples,
         num_chains=args.num_chains,
-        progress_bar=False if "NUMPYRO_SPHINXBUILD" in os.environ else True,
+        progress_bar=not "NUMPYRO_SPHINXBUILD" in os.environ,
     )
     mcmc.run(PRNGKey(1), N=data.shape[0], y=data)
     mcmc.print_summary()

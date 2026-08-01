@@ -14,7 +14,7 @@ Consolidates duplicate plugin loading logic from:
 import json
 import re
 from pathlib import Path
-from typing import Any, Optional
+from typing import Any
 
 import yaml
 
@@ -118,7 +118,7 @@ class PluginLoader:
         self._cache: dict[str, PluginMetadata] = {}
         self._load_errors: dict[str, list[ValidationIssue]] = {}
 
-    def load_plugin(self, plugin_name: str) -> Optional[PluginMetadata]:
+    def load_plugin(self, plugin_name: str) -> PluginMetadata | None:
         """Load a single plugin's metadata.
 
         Returns None if plugin doesn't exist or has invalid JSON.
@@ -193,7 +193,7 @@ class PluginLoader:
 
         return dict(self._cache)
 
-    def get_plugin(self, plugin_name: str) -> Optional[PluginMetadata]:
+    def get_plugin(self, plugin_name: str) -> PluginMetadata | None:
         """Get plugin from cache, or load it if not cached."""
         if plugin_name in self._cache:
             return self._cache[plugin_name]
@@ -203,7 +203,7 @@ class PluginLoader:
         """Get all currently cached plugins."""
         return dict(self._cache)
 
-    def get_errors(self, plugin_name: Optional[str] = None) -> list[ValidationIssue]:
+    def get_errors(self, plugin_name: str | None = None) -> list[ValidationIssue]:
         """Get load errors for a plugin, or all errors if no name specified."""
         if plugin_name:
             return self._load_errors.get(plugin_name, [])
@@ -241,7 +241,7 @@ class PluginLoader:
             by_category[category].append(metadata)
         return by_category
 
-    def find_agent(self, agent_name: str) -> Optional[tuple[str, dict]]:
+    def find_agent(self, agent_name: str) -> tuple[str, dict] | None:
         """Find which plugin contains an agent by name.
 
         Returns (plugin_name, agent_dict) or None if not found.
@@ -252,7 +252,7 @@ class PluginLoader:
                     return (plugin_name, agent)
         return None
 
-    def find_command(self, command_name: str) -> Optional[tuple[str, dict]]:
+    def find_command(self, command_name: str) -> tuple[str, dict] | None:
         """Find which plugin contains a command by name."""
         for plugin_name, metadata in self._cache.items():
             for command in metadata.commands:
@@ -260,7 +260,7 @@ class PluginLoader:
                     return (plugin_name, command)
         return None
 
-    def find_skill(self, skill_name: str) -> Optional[tuple[str, dict]]:
+    def find_skill(self, skill_name: str) -> tuple[str, dict] | None:
         """Find which plugin contains a skill by name."""
         for plugin_name, metadata in self._cache.items():
             for skill in metadata.skills:

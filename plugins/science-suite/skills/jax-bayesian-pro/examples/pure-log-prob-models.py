@@ -5,11 +5,11 @@ Demonstrates how to write Bayesian models as pure functions without
 any probabilistic programming language syntax - just vanilla JAX.
 """
 
+from functools import partial
+
 import jax
 import jax.numpy as jnp
 from jax.scipy import stats
-from typing import Dict
-from functools import partial
 
 # =============================================================================
 # Pattern 1: Basic Pure Log-Prob Model
@@ -17,7 +17,7 @@ from functools import partial
 
 
 def simple_regression_log_prob(
-    params: Dict[str, jnp.ndarray], data: Dict[str, jnp.ndarray]
+    params: dict[str, jnp.ndarray], data: dict[str, jnp.ndarray]
 ) -> float:
     """Pure log-probability for simple linear regression.
 
@@ -51,7 +51,7 @@ def simple_regression_log_prob(
 
 
 def hierarchical_log_prob(
-    params: Dict[str, jnp.ndarray], data: Dict[str, jnp.ndarray]
+    params: dict[str, jnp.ndarray], data: dict[str, jnp.ndarray]
 ) -> float:
     """Pure log-prob for hierarchical (random effects) model.
 
@@ -112,13 +112,13 @@ def hierarchical_log_prob(
 # =============================================================================
 
 
-def single_observation_log_lik(params: Dict, obs: jnp.ndarray) -> float:
+def single_observation_log_lik(params: dict, obs: jnp.ndarray) -> float:
     """Log-likelihood for a single observation."""
     mu, sigma = params["mu"], jnp.exp(params["log_sigma"])
     return stats.norm.logpdf(obs, mu, sigma)
 
 
-def batched_log_prob(params: Dict, data: jnp.ndarray) -> float:
+def batched_log_prob(params: dict, data: jnp.ndarray) -> float:
     """Log-prob vectorized over batch dimension.
 
     This is efficient: vmap allows processing all data in parallel.
@@ -140,7 +140,7 @@ def batched_log_prob(params: Dict, data: jnp.ndarray) -> float:
 # =============================================================================
 
 
-def masked_log_prob(params: Dict, padded_data: jnp.ndarray, mask: jnp.ndarray) -> float:
+def masked_log_prob(params: dict, padded_data: jnp.ndarray, mask: jnp.ndarray) -> float:
     """Log-prob with masking for variable-length sequences.
 
     Args:
@@ -173,7 +173,7 @@ def masked_log_prob(params: Dict, padded_data: jnp.ndarray, mask: jnp.ndarray) -
 # =============================================================================
 
 
-def mixture_log_prob(params: Dict, data: jnp.ndarray) -> float:
+def mixture_log_prob(params: dict, data: jnp.ndarray) -> float:
     """Log-prob for Gaussian mixture model.
 
     Uses log-sum-exp trick for numerical stability.
@@ -211,7 +211,7 @@ def mixture_log_prob(params: Dict, data: jnp.ndarray) -> float:
 # =============================================================================
 
 
-def funnel_log_prob_centered(params: Dict) -> float:
+def funnel_log_prob_centered(params: dict) -> float:
     """Centered parameterization - has funnel geometry."""
     tau = jnp.exp(params["log_tau"])  # tau > 0
     x = params["x"]  # (n,)
@@ -222,7 +222,7 @@ def funnel_log_prob_centered(params: Dict) -> float:
     return log_prior_tau + log_prior_x
 
 
-def funnel_log_prob_noncentered(params: Dict) -> float:
+def funnel_log_prob_noncentered(params: dict) -> float:
     """Non-centered parameterization - no funnel."""
     log_tau = params["log_tau"]
     jnp.exp(log_tau)
@@ -243,7 +243,7 @@ def funnel_log_prob_noncentered(params: Dict) -> float:
 # =============================================================================
 
 
-def transformed_params_log_prob(unconstrained_params: Dict, data: jnp.ndarray) -> float:
+def transformed_params_log_prob(unconstrained_params: dict, data: jnp.ndarray) -> float:
     """Log-prob with proper Jacobian corrections for transformations.
 
     We sample unconstrained parameters and transform to constrained space.
@@ -324,7 +324,7 @@ def demo_with_blackjax():
     kernel = blackjax.nuts(packed_log_prob, **params).step
 
     def step(state, key):
-        state, info = kernel(key, state)
+        state, _info = kernel(key, state)
         return state, state.position
 
     keys = jax.random.split(rng_key, 1000)

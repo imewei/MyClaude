@@ -33,22 +33,20 @@ generate a better representation of the encoded latent vector.
 
 import argparse
 
-import matplotlib.pyplot as plt
-import pandas as pd
-from sklearn.datasets import fetch_20newsgroups
-from sklearn.feature_extraction.text import CountVectorizer
-from wordcloud import WordCloud
-
 import flax.linen as nn
 import haiku as hk
 import jax
-from jax import device_put, random
 import jax.numpy as jnp
-
+import matplotlib.pyplot as plt
 import numpyro
-from numpyro.contrib.module import flax_module, haiku_module
 import numpyro.distributions as dist
+import pandas as pd
+from jax import device_put, random
+from numpyro.contrib.module import flax_module, haiku_module
 from numpyro.infer import SVI, TraceMeanField_ELBO
+from sklearn.datasets import fetch_20newsgroups
+from sklearn.feature_extraction.text import CountVectorizer
+from wordcloud import WordCloud
 
 
 class HaikuEncoder:
@@ -246,13 +244,13 @@ def run_inference(docs, args):
     rng_key = random.PRNGKey(0)
     docs = device_put(docs)
 
-    hyperparams = dict(
-        vocab_size=docs.shape[1],
-        num_topics=args.num_topics,
-        hidden=args.hidden,
-        dropout_rate=args.dropout_rate,
-        batch_size=args.batch_size,
-    )
+    hyperparams = {
+        "vocab_size": docs.shape[1],
+        "num_topics": args.num_topics,
+        "hidden": args.hidden,
+        "dropout_rate": args.dropout_rate,
+        "batch_size": args.batch_size,
+    }
 
     optimizer = numpyro.optim.Adam(args.learning_rate)
     svi = SVI(model, guide, optimizer, loss=TraceMeanField_ELBO())

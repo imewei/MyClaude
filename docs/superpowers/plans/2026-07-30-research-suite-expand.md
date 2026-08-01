@@ -45,7 +45,7 @@ Read `plugins/research-suite/skills/research-quality-assessment/SKILL.md`. After
 
 ```markdown
 > **SEE ALSO:** For general scholarly-work feedback, use `ecc:scientific-thinking-scholar-evaluation`.
-> Use this skill for research-suite's specific quality rubrics (PRISMA/GRADE/CONSORT/STROBE) and red-flag detection.
+> Use this skill for research-suite's specific quality rubrics (PRISMA/GRADE/CONSORT/STROBE).
 ```
 
 - [ ] **Step 3: Add SEE ALSO to evidence-synthesis**
@@ -70,18 +70,22 @@ Read `plugins/research-suite/skills/landscape-scanner/SKILL.md`. After the `# la
 
 ```bash
 cd /home/wei/Documents/GitHub/MyClaude
-grep -c "SEE ALSO" plugins/research-suite/commands/lit-review.md \
+for f in plugins/research-suite/commands/lit-review.md \
   plugins/research-suite/skills/research-quality-assessment/SKILL.md \
   plugins/research-suite/skills/evidence-synthesis/SKILL.md \
-  plugins/research-suite/skills/landscape-scanner/SKILL.md
+  plugins/research-suite/skills/landscape-scanner/SKILL.md; do
+  count=$(grep -c "SEE ALSO" "$f")
+  echo "$f: $count"
+  [ "$count" -eq 1 ] || { echo "FAIL: expected exactly 1 SEE ALSO block in $f, got $count"; exit 1; }
+done
 ```
-Expected: `1` for each of the 4 files.
+Expected: `1` printed for each of the 4 files; the loop exits nonzero (not just prints a mismatched number) if any file is missing its block or has it duplicated.
 
 ```bash
 PYTHONPATH=. python3 tools/validation/command_file_linter.py plugins/research-suite/commands/lit-review.md
-PYTHONPATH=. python3 tools/validation/skill_validator.py --plugin research-suite 2>&1 | grep -A3 -E "research-quality-assessment|evidence-synthesis|landscape-scanner"
+PYTHONPATH=. python3 tools/validation/skill_validator.py --plugin research-suite
 ```
-Expected: `command_file_linter.py` exits 0 (do not suppress its exit status with `|| true` — a real lint failure must be visible). `skill_validator.py` takes `--plugin <name>`, not a positional path — it exits 2 with "unrecognized arguments" otherwise. No new errors on any of the 4 files.
+Expected: `command_file_linter.py` exits 0 (do not suppress its exit status with `|| true` — a real lint failure must be visible). `skill_validator.py` takes `--plugin <name>`, not a positional path — it exits 2 with "unrecognized arguments" otherwise. `skill_validator.py` itself exits 0 and prints `✓ research-suite: N skills` with no `⚠` warning lines — do not pipe its output through a `grep -A3` for individual skill names: without `--corpus-dir` (not used here) it only ever prints the aggregate schema-load summary, never per-skill lines, so such a grep matches nothing and exits 1 on every run, including a fully passing one (confirmed by direct execution against this repo).
 
 - [ ] **Step 6: Commit**
 
@@ -110,9 +114,12 @@ EOF
 
 ```bash
 cd /home/wei/Documents/GitHub/MyClaude
-test -f plugins/science-suite/agents/continuum-mechanics-engineer.md && echo "continuum-mechanics-engineer: EXISTS" || echo "continuum-mechanics-engineer: MISSING -- STOP, run the science-suite plan first"
-test -f plugins/science-suite/skills/glass-and-collective-dynamics/SKILL.md && echo "statistical-physicist extension (glass-and-collective-dynamics): EXISTS" || echo "statistical-physicist extension (glass-and-collective-dynamics): MISSING -- STOP, run the science-suite plan first"
-test -f plugins/science-suite/skills/physical-learning-systems/SKILL.md && echo "statistical-physicist extension (physical-learning-systems): EXISTS" || echo "statistical-physicist extension (physical-learning-systems): MISSING -- STOP, run the science-suite plan first"
+test -f plugins/science-suite/agents/continuum-mechanics-engineer.md || { echo "continuum-mechanics-engineer: MISSING -- STOP, run the science-suite plan first"; exit 1; }
+echo "continuum-mechanics-engineer: EXISTS"
+test -f plugins/science-suite/skills/glass-and-collective-dynamics/SKILL.md || { echo "statistical-physicist extension (glass-and-collective-dynamics): MISSING -- STOP, run the science-suite plan first"; exit 1; }
+echo "statistical-physicist extension (glass-and-collective-dynamics): EXISTS"
+test -f plugins/science-suite/skills/physical-learning-systems/SKILL.md || { echo "statistical-physicist extension (physical-learning-systems): MISSING -- STOP, run the science-suite plan first"; exit 1; }
+echo "statistical-physicist extension (physical-learning-systems): EXISTS"
 ```
 
 **Files:**
@@ -132,7 +139,7 @@ Routes to `research-expert` for methodology parsing, then cross-delegates to `ja
 ```
 Replace with:
 ```markdown
-Routes to `research-expert` for methodology parsing, then cross-delegates to the specialist matching the paper's method: agent `jax-pro` (general JAX numerics), agent `julia-pro` (general Julia numerics), agent `continuum-mechanics-engineer` (FEM/FEA, constitutive modeling, rheology/DMA, transient networks, nanocomposites), agent `statistical-physicist` (phase transitions, correlations, glass/collective phenomena, physical learning), agent `pinn-engineer` (physics-informed neural networks, NeuralPDE), or agent `simulation-expert` (MD/HPC particle simulation).
+Routes to `research-expert` for methodology parsing, then cross-delegates to the specialist matching the paper's method: agent `jax-pro` (general JAX numerics), agent `julia-pro` (general Julia numerics), agent `continuum-mechanics-engineer` (FEM/FEA, constitutive modeling, rheology/DMA, transient networks, nanocomposites), agent `statistical-physicist` (phase transitions, correlations, MCMC diagnostics, glass/jamming/collective phenomena, physical learning), agent `pinn-engineer` (physics-informed neural networks, NeuralPDE), or agent `simulation-expert` (MD/HPC/agent-based simulation, as distinct from the differentiable-programming implementations that route to `jax-pro`/`julia-pro`/`continuum-mechanics-engineer`).
 ```
 
 Also find, further down:
@@ -165,7 +172,7 @@ Also find, in "## What This Does":
 ```
 Replace with:
 ```markdown
-3. The specialist matching the paper's method implements the core method (agent `jax-pro`/agent `julia-pro` for general numerics, agent `continuum-mechanics-engineer` for FEM/rheology/materials, agent `statistical-physicist` for stat-mech/glass/physical-learning, agent `pinn-engineer` for physics-informed neural PDEs, agent `simulation-expert` for MD/HPC particle simulation)
+3. The specialist matching the paper's method implements the core method (agent `jax-pro`/agent `julia-pro` for general numerics, agent `continuum-mechanics-engineer` for FEM/FEA, constitutive modeling, rheology/DMA, transient-network (CAN/vitrimer) theory, or nanocomposite mechanics, agent `statistical-physicist` for phase transitions, correlations, MCMC diagnostics, glass/jamming/disordered systems, or physical learning, agent `pinn-engineer` for physics-informed neural PDEs, agent `simulation-expert` for MD/HPC/agent-based simulation as distinct from differentiable-programming implementations)
 ```
 
 - [ ] **Step 3: Add the delegation table entries to research-expert.md**
@@ -188,13 +195,13 @@ Replace with (adding 4 new rows for paper-implementation routing, since this tab
 | Delegate To | When |
 |-------------|------|
 | ml-expert | Implementing advanced ML models for analysis |
-| agent `simulation-expert` | Generating data from physics simulations, HPC experiments; or implementing a paper's MD/HPC particle-simulation method for /paper-implement or /replicate |
+| agent `simulation-expert` | Generating data from physics simulations, HPC experiments; or implementing a paper's MD/HPC/agent-based simulation method for /paper-implement or /replicate (distinct from differentiable-programming implementations, which route to jax-pro/julia-pro/continuum-mechanics-engineer) |
 | sci-workflow-engineer | Building interactive research dashboards, LLM synthesis |
 | python-pro | Performance optimization, systems architecture |
 | agent `jax-pro` | Implementing a paper's method in JAX (general numerics) for /paper-implement or /replicate |
 | agent `julia-pro` | Implementing a paper's method in Julia (general numerics) for /paper-implement or /replicate |
 | agent `continuum-mechanics-engineer` | Implementing a paper's FEM/FEA, constitutive-modeling, rheology/DMA, transient-network, or nanocomposite method |
-| agent `statistical-physicist` | Implementing a paper's stat-mech, phase-transition, correlation-function, glass/collective-phenomena, or physical-learning method |
+| agent `statistical-physicist` | Implementing a paper's stat-mech, phase-transition, correlation-function, MCMC-diagnostics, glass/jamming/collective-phenomena, or physical-learning method |
 | agent `pinn-engineer` | Implementing a paper's physics-informed neural network or NeuralPDE-style method |
 ```
 
@@ -202,35 +209,46 @@ Replace with (adding 4 new rows for paper-implementation routing, since this tab
 
 ```bash
 cd /home/wei/Documents/GitHub/MyClaude
+fail=0
 for f in plugins/research-suite/commands/paper-implement.md plugins/research-suite/commands/replicate.md plugins/research-suite/agents/research-expert.md; do
   echo "=== $f ==="
   for name in jax-pro julia-pro continuum-mechanics-engineer statistical-physicist pinn-engineer simulation-expert; do
     count=$(grep -c -- "$name" "$f")
     echo "  $name: $count"
-    if [ "$count" -eq 0 ]; then echo "  MISSING: $name not found in $f"; fi
+    if [ "$count" -eq 0 ]; then echo "  MISSING: $name not found in $f"; fail=1; fi
   done
 done
+[ "$fail" -eq 0 ] || { echo "FAIL: one or more specialist names missing — see MISSING lines above"; exit 1; }
 ```
-Expected: a non-zero count for each of the 6 names in each of the 3 files (18 checks total, none reporting MISSING). A combined `grep -c -E "name1|name2|..."` only proves *some* specialist name occurs per line and cannot prove all six are present, so this checks each name individually instead.
+Expected: a non-zero count for each of the 6 names in each of the 3 files (18 checks total, none reporting MISSING, loop exits 0). A combined `grep -c -E "name1|name2|..."` only proves *some* specialist name occurs per line and cannot prove all six are present, so this checks each name individually instead — and now actually fails the step (`exit 1`) if any is absent, rather than only printing a MISSING line.
 
 - [ ] **Step 5: Confirm the reference form matches xref_validator's patterns**
 
 ```bash
-grep -c 'agent `continuum-mechanics-engineer`' plugins/research-suite/commands/paper-implement.md \
-  plugins/research-suite/commands/replicate.md plugins/research-suite/agents/research-expert.md
+cd /home/wei/Documents/GitHub/MyClaude
+for f in plugins/research-suite/commands/paper-implement.md \
+  plugins/research-suite/commands/replicate.md \
+  plugins/research-suite/agents/research-expert.md; do
+  count=$(grep -c 'agent `continuum-mechanics-engineer`' "$f")
+  echo "$f: $count"
+  [ "$count" -ge 1 ] || { echo "FAIL: $f has no \`agent \`continuum-mechanics-engineer\`\` reference in the xref_validator-recognized form"; exit 1; }
+done
 ```
-Expected: at least `1` in each of the 3 files (confirms the `` agent `name` `` form, not a bare backtick mention, per Spec §5's warning).
+Expected: at least `1` in each of the 3 files (confirms the `` agent `name` `` form, not a bare backtick mention, per Spec §5's warning). Checked per-file in a loop rather than one combined multi-file `grep -c` — a combined grep's exit status only reflects whether *any* of the three files matched, not whether *each* one did, and would silently pass if one file's reference form were wrong.
 
 - [ ] **Step 6: Run xref_validator and full validation**
 
 ```bash
 cd /home/wei/Documents/GitHub/MyClaude
 set -o pipefail
-PYTHONPATH=. python3 tools/validation/xref_validator.py 2>&1 | grep -A10 "research-suite\|continuum-mechanics-engineer"
+PYTHONPATH=. python3 tools/validation/xref_validator.py | tee /tmp/xref-out.txt
+grep -q "Broken: 0" /tmp/xref-out.txt || { echo "FAIL: xref_validator.py reported broken references — see reports/xref-validation.md"; exit 1; }
+plugin_json_diff=$(git diff --stat -- plugins/research-suite/.claude-plugin/plugin.json)
+[ -z "$plugin_json_diff" ] || { echo "FAIL: plugin.json changed — violates the no-structural-additions invariant:"; echo "$plugin_json_diff"; exit 1; }
 make validate
-uv run pytest 2>&1 | tail -20
+uv run pytest 2>&1 | tee /tmp/pytest-out.txt | tail -20
 ```
-Expected: `xref_validator.py` shows the new `continuum-mechanics-engineer` references resolving (not dangling) — this only passes if the science-suite plan's Task 3 has actually landed, per this task's opening check. `make validate` exits 0. `uv run pytest` passes — `set -o pipefail` is required so a real pytest failure isn't masked by `tail`'s own (always-zero) exit status.
+Expected: `xref_validator.py`'s stdout summary line reads `Broken: 0` — this is the only reliable pass/fail signal the tool exposes on stdout (it never prints individual reference names, agent or otherwise, to stdout or to `reports/xref-validation.md`; both only ever show aggregate Total/Valid/Broken counts and per-plugin totals, confirmed by direct execution against this repo). `Broken: 0` only holds if the science-suite plan's Task 3 has actually landed, per this task's opening check — if `continuum-mechanics-engineer` doesn't exist yet, the new agent references in these 3 files become the broken references this check catches. `$plugin_json_diff` must be empty (asserted, not just printed) — confirms the Global Constraint / Spec §5 "no structural additions" invariant: this task only edits routing prose, never `plugin.json`'s agent/command/skill arrays. `make validate` exits 0. `uv run pytest` passes — piped through `tee` (not just `tail`) with `set -o pipefail` already active from the top of this block, so a real pytest failure fails the script instead of being masked by `tail`'s own (always-zero) exit status.
 
 - [ ] **Step 7: Commit**
 
@@ -256,6 +274,6 @@ EOF
 
 ## Self-Review Notes
 
-- **Spec coverage:** §1/§3 (overlap framing) → Task 1. §1/§4 (cross-suite routing) → Task 2. §2 (no tier changes) → correctly not actioned. §5/§6 (validation, sequencing) → Task 2's opening dependency check and Step 6. §7 (out of scope) → correctly not actioned (no new domains/agents/commands, no tier changes).
+- **Spec coverage:** §1/§3 (overlap framing) → Task 1. §1/§4 (cross-suite routing) → Task 2. §2 (no tier changes) → correctly not actioned. §5/§6 (validation, sequencing) → Task 2's opening dependency check and Step 6, including the §5 "no `plugin.json` structural change" invariant check added to Step 6. §7 (out of scope) → correctly not actioned (no new domains/agents/commands, no tier changes).
 - **Placeholder scan:** every SEE ALSO insertion and every routing-line replacement gives exact before/after text; the cross-plan dependency check is a runnable `test -f` command, not a vague "make sure science-suite is done" instruction.
 - **Type consistency:** the 6 specialist names (`jax-pro`, `julia-pro`, `continuum-mechanics-engineer`, `statistical-physicist`, `pinn-engineer`, `simulation-expert`) are spelled identically across all 3 modified files in Task 2, matching exactly the names used in the science-suite plan (verified against that plan's Task 3/Task 2 content).

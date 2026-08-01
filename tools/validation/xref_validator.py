@@ -14,11 +14,11 @@ Part of: Plugin Review and Optimization - Task Group 0.4
 
 import json
 import re
-from pathlib import Path
-from typing import Dict, List, Optional
-from dataclasses import dataclass, field
-from collections import defaultdict
 import sys
+from collections import defaultdict
+from dataclasses import dataclass, field
+from pathlib import Path
+from typing import ClassVar
 
 # Allow ad-hoc `python tools/validation/xref_validator.py` CLI runs by adding
 # the repo root to sys.path before resolving the `tools` package.
@@ -26,7 +26,7 @@ _REPO_ROOT = Path(__file__).resolve().parents[2]
 if str(_REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(_REPO_ROOT))
 
-from tools.common.loader import PluginLoader  # noqa: E402
+from tools.common.loader import PluginLoader
 
 
 @dataclass
@@ -50,16 +50,16 @@ class XrefResult:
 
     total_references: int = 0
     valid_references: int = 0
-    broken_references: List[CrossReference] = field(default_factory=list)
-    warnings: List[CrossReference] = field(default_factory=list)
-    plugin_index: Dict[str, dict] = field(default_factory=dict)
+    broken_references: list[CrossReference] = field(default_factory=list)
+    warnings: list[CrossReference] = field(default_factory=list)
+    plugin_index: dict[str, dict] = field(default_factory=dict)
 
 
 class CrossReferenceValidator:
     """Validates cross-references between plugins"""
 
     # Patterns for detecting cross-references
-    REFERENCE_PATTERNS = {
+    REFERENCE_PATTERNS: ClassVar[dict[str, str]] = {
         "plugin_mention": r"\b([a-z]+-[a-z-]+)(?:\s+plugin)?\b",
         "agent_reference": r"\bagent:\s*([a-z]+-[a-z-]+)\b",
         "command_reference": r"/([a-z]+-[a-z-]+)\b",
@@ -79,7 +79,7 @@ class CrossReferenceValidator:
     def __init__(self, plugins_dir: Path):
         self.plugins_dir = plugins_dir
         self.result = XrefResult()
-        self.references: List[CrossReference] = []
+        self.references: list[CrossReference] = []
         self._build_plugin_index()
 
     def _build_plugin_index(self):
@@ -162,7 +162,7 @@ class CrossReferenceValidator:
 
     def _extract_all_references(self):
         """Extract all cross-references from all plugins"""
-        for plugin_name in self.result.plugin_index.keys():
+        for plugin_name in self.result.plugin_index:
             plugin_dir = Path(self.result.plugin_index[plugin_name]["path"])
 
             # Check README
@@ -229,14 +229,14 @@ class CrossReferenceValidator:
                     line, file_path, source_plugin, line_num
                 )
 
-        except Exception as e:
+        except (OSError, UnicodeDecodeError) as e:
             print(f"⚠️  Warning: Error extracting from {file_path}: {e}")
 
     def _extract_plugin_mentions(
         self, line: str, file_path: Path, source_plugin: str, line_num: int
     ):
         """Extract plugin name mentions"""
-        for plugin_name in self.result.plugin_index.keys():
+        for plugin_name in self.result.plugin_index:
             if plugin_name == source_plugin:
                 continue
 
@@ -359,21 +359,22 @@ class CrossReferenceValidator:
             link_url = match.group(2)
 
             # Check if link is to another plugin
-            for plugin_name in self.result.plugin_index.keys():
-                if plugin_name in link_url or plugin_name in link_text:
-                    if plugin_name != source_plugin:
-                        context = line.strip()[:100]
-                        ref = CrossReference(
-                            source_plugin=source_plugin,
-                            source_file=str(file_path.relative_to(self.plugins_dir)),
-                            source_line=line_num,
-                            target_plugin=plugin_name,
-                            target_type="link",
-                            target_name=link_url,
-                            context=context,
-                        )
-                        self.references.append(ref)
-                        break
+            for plugin_name in self.result.plugin_index:
+                if (
+                    plugin_name in link_url or plugin_name in link_text
+                ) and plugin_name != source_plugin:
+                    context = line.strip()[:100]
+                    ref = CrossReference(
+                        source_plugin=source_plugin,
+                        source_file=str(file_path.relative_to(self.plugins_dir)),
+                        source_line=line_num,
+                        target_plugin=plugin_name,
+                        target_type="link",
+                        target_name=link_url,
+                        context=context,
+                    )
+                    self.references.append(ref)
+                    break
 
     def _extract_relative_skill_links(
         self, line: str, file_path: Path, source_plugin: str, line_num: int
@@ -468,22 +469,28 @@ class CrossReferenceValidator:
             # Validate based on type
             plugin_data = self.result.plugin_index[ref.target_plugin]
 
-            if ref.target_type == "agent":
-                if ref.target_name not in plugin_data["agents"]:
-                    ref.is_valid = False
-                    ref.error_message = f"Agent '{ref.target_name}' not found in plugin '{ref.target_plugin}'"
+            if (
+                ref.target_type == "agent"
+                and ref.target_name not in plugin_data["agents"]
+            ):
+                ref.is_valid = False
+                ref.error_message = f"Agent '{ref.target_name}' not found in plugin '{ref.target_plugin}'"
 
-            elif ref.target_type == "command":
-                if ref.target_name not in plugin_data["commands"]:
-                    ref.is_valid = False
-                    ref.error_message = f"Command '{ref.target_name}' not found in plugin '{ref.target_plugin}'"
+            elif (
+                ref.target_type == "command"
+                and ref.target_name not in plugin_data["commands"]
+            ):
+                ref.is_valid = False
+                ref.error_message = f"Command '{ref.target_name}' not found in plugin '{ref.target_plugin}'"
 
-            elif ref.target_type == "skill":
-                if ref.target_name not in plugin_data["skills"]:
-                    ref.is_valid = False
-                    ref.error_message = f"Skill '{ref.target_name}' not found in plugin '{ref.target_plugin}'"
+            elif (
+                ref.target_type == "skill"
+                and ref.target_name not in plugin_data["skills"]
+            ):
+                ref.is_valid = False
+                ref.error_message = f"Skill '{ref.target_name}' not found in plugin '{ref.target_plugin}'"
 
-    def generate_report(self, output_path: Optional[Path] = None) -> str:
+    def generate_report(self, output_path: Path | None = None) -> str:
         """Generate validation report"""
         lines = []
 
@@ -521,7 +528,7 @@ class CrossReferenceValidator:
         # Reference type breakdown
         lines.append("## Reference Type Distribution")
         lines.append("")
-        type_counts: Dict[str, int] = defaultdict(int)
+        type_counts: dict[str, int] = defaultdict(int)
         for ref in self.references:
             type_counts[ref.target_type] += 1
 

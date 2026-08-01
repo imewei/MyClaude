@@ -6,9 +6,9 @@ All tests are written before implementation. Run with:
 """
 
 import json
-import pytest
 from pathlib import Path
 
+import pytest
 import yaml
 
 REPO = Path(__file__).parent.parent.parent

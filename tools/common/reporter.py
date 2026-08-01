@@ -4,10 +4,9 @@ Base class for markdown report generation.
 Provides common report formatting utilities used by multiple tools.
 """
 
-from datetime import datetime
-from typing import Optional
+from datetime import UTC, datetime
 
-from tools.common.models import ValidationResult, ProfileMetric
+from tools.common.models import ProfileMetric, ValidationResult
 
 
 class ReportGenerator:
@@ -26,8 +25,8 @@ class ReportGenerator:
 
     def add_header(
         self,
-        title: Optional[str] = None,
-        version: Optional[str] = None,
+        title: str | None = None,
+        version: str | None = None,
         include_timestamp: bool = True,
     ) -> None:
         """Add report header with title and metadata."""
@@ -37,7 +36,7 @@ class ReportGenerator:
             self.lines.append(f"**Version:** {version}")
         if include_timestamp:
             self.lines.append(
-                f"**Generated:** {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}"
+                f"**Generated:** {datetime.now(UTC).strftime('%Y-%m-%d %H:%M:%S')}"
             )
         self.lines.append("")
 
@@ -73,7 +72,7 @@ class ReportGenerator:
         self,
         headers: list[str],
         rows: list[list[str]],
-        alignments: Optional[list[str]] = None,
+        alignments: list[str] | None = None,
     ) -> None:
         """Add a markdown table.
 

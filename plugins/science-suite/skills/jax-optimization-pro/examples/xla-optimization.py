@@ -5,10 +5,11 @@ Demonstrates techniques for analyzing and optimizing XLA compilation,
 avoiding recompilation, and understanding HLO output.
 """
 
-import jax
-import jax.numpy as jnp
 import os
 from functools import partial
+
+import jax
+import jax.numpy as jnp
 
 # =============================================================================
 # Pattern 1: Avoiding Recompilation

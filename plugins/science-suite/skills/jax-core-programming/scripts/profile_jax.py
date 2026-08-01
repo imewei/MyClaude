@@ -6,16 +6,17 @@ Tools for profiling JAX code performance, identifying bottlenecks,
 and optimizing computational efficiency.
 """
 
+import time
+from collections.abc import Callable
+from functools import wraps
+
 import jax
 import jax.numpy as jnp
-import time
-from typing import Callable, Dict
-from functools import wraps
 
 
 def profile_function(
     fn: Callable, *args, n_warmup: int = 3, n_runs: int = 10, **kwargs
-) -> Dict[str, float]:
+) -> dict[str, float]:
     """
     Profile a JAX function with proper warmup and timing.
 
@@ -114,6 +115,7 @@ def memory_profile(fn: Callable, *args, **kwargs):
         ["nvidia-smi", "--query-gpu=memory.used", "--format=csv,nounits,noheader"],
         capture_output=True,
         text=True,
+        check=False,
     )
     if result.returncode == 0:
         mem_before = int(result.stdout.strip().split("\n")[0])
@@ -132,6 +134,7 @@ def memory_profile(fn: Callable, *args, **kwargs):
             ["nvidia-smi", "--query-gpu=memory.used", "--format=csv,nounits,noheader"],
             capture_output=True,
             text=True,
+            check=False,
         )
         mem_after = int(result.stdout.strip().split("\n")[0])
         mem_used = mem_after - mem_before

@@ -25,7 +25,6 @@ import time
 import jax
 import jax.numpy as jnp
 import numpy as np
-
 from nlsq import HybridStreamingConfig, fit
 from nlsq.parameter_normalizer import NormalizedModelWrapper, ParameterNormalizer
 
@@ -141,7 +140,7 @@ def main():
     config = HybridStreamingConfig.conservative()
 
     start_time = time.time()
-    popt2, pcov2 = fit(
+    popt2, _pcov2 = fit(
         multi_scale_model,
         x_data,
         y_data,
@@ -195,7 +194,7 @@ def main():
     print()
 
     start_time = time.time()
-    popt3, pcov3 = fit(
+    popt3, _pcov3 = fit(
         multi_scale_model,
         x_data,
         y_data,
@@ -297,7 +296,7 @@ def main():
     print("Fitting with TRF (no automatic normalization)...")
     start_time = time.time()
     try:
-        popt_trf, pcov_trf = fit(
+        popt_trf, _pcov_trf = fit(
             multi_scale_model,
             x_data,
             y_data,
@@ -309,7 +308,7 @@ def main():
         )
         elapsed_trf = time.time() - start_time
         trf_success = True
-    except Exception as e:
+    except Exception as e:  # noqa: BLE001 - demo continues to comparison table on any fit failure
         elapsed_trf = time.time() - start_time
         trf_success = False
         print(f"  TRF failed: {e}")

@@ -30,154 +30,85 @@ Systematic framework for analyzing failures, applying intelligent fixes, and ite
 
 ## Fix Patterns
 
-### npm Dependency Fixes
+These are what `engine.py`'s `fix_*` methods actually do — not runnable
+snippets, since every one of these has a safety detail a naive `sed`/`jq`
+one-liner gets wrong (silently removing a real dependency on a registry
+outage, lowering a deliberately-raised timeout, corrupting YAML). Call the
+engine; do not hand-reimplement these.
 
-```bash
-# ERESOLVE conflicts
-sed -i 's/npm install/npm install --legacy-peer-deps/g' .github/workflows/*.yml
-
-# 404 package
-npm uninstall "$package_name"
-jq "del(.dependencies[\"$package_name\"])" package.json > temp.json && mv temp.json package.json
-```
-
-### Python Dependency Fixes
-
-```bash
-# Version conflict - relax constraint
-sed -i "s/${package}==.*/${package}/g" requirements.txt
-
-# Missing module
-uv uv pip install "$missing_module" && pip freeze | grep -i "$missing_module" >> requirements.txt
-```
-
-### TypeScript Fixes
-
-```typescript
-// Object possibly undefined -> add optional chaining
-fixed = content.replace(/(\w+)\.(\w+)/g, '$1?.$2');
-
-// Type assertion for unknown properties
-fixed = addTypeAssertion(content, line);
-```
-
-### Runtime Fixes
-
-```bash
-# OOM - increase heap
-sed -i '/env:/a\        NODE_OPTIONS: "--max-old-space-size=4096"' .github/workflows/*.yml
-
-# Timeout - increase limit
-sed -i 's/timeout-minutes: [0-9]*/timeout-minutes: 60/' .github/workflows/*.yml
-
-# Network - add retry
-# Use nick-invision/retry@v2 action with max_attempts: 3
-```
+| Error type | What the engine does | Why it's not simpler |
+|---|---|---|
+| `npm_eresolve` | Appends `--legacy-peer-deps` to `npm install`/`npm ci` in workflow files | Masks the conflict rather than resolving it — treated as a stopgap, not a fix |
+| `npm_404` | **Never auto-removes.** Reports the package for manual confirmation | A 404 is also what a registry outage or private-scope auth failure looks like |
+| `python_import` | Installs from a closed module→package allowlist (`cv2`→`opencv-python`, `PIL`→`Pillow`, `sklearn`→`scikit-learn`) and appends to `requirements.txt` with a dedup check | An unmapped module name goes to a human — a well-formed name from CI log text is not evidence it's the real package |
+| `eslint_error` | Runs `npx eslint . --fix`, reads the real exit code (0=success, 1=partial, ≥2=failed) | Exit 1 means unfixable errors remain; reporting that as SUCCESS anyway is how a broken run gets committed |
+| `oom` | Injects `NODE_OPTIONS` into the workflow's top-level `env:` block, parsing and re-parsing the YAML to verify the edit actually landed before writing | A blind `sed -i '/env:/a...'` can append after the wrong `env:` or produce invalid YAML with no verification |
+| `timeout` | Raises `timeout-minutes` via `max(existing, 60)` — never lowers a deliberately-set higher value | A flat `sed -i 's/timeout-minutes: [0-9]*/timeout-minutes: 60/'` silently *lowers* an intentional 120 |
+| `test_failure` (snapshot) | Regenerates snapshots **only** with `--allow-suppression`, never reports SUCCESS, sets a flag that downgrades the run's final claim | Suppresses the failure rather than fixing it — a rewritten expectation makes the loop's own exit condition true regardless of whether the change was correct |
 
 ---
 
 ## Iterative Fix Engine
 
-```python
-class IterativeFixEngine:
-    def __init__(self, repo: str, workflow: str, max_iterations: int = 5):
-        self.repo = repo
-        self.workflow = workflow
-        self.max_iterations = max_iterations
+The real loop lives in `engine.py`'s `IterativeFixEngine.run()`. Its actual
+shape, not a simplified re-derivation:
 
-    def run(self, initial_run_id: str) -> bool:
-        current_run_id = initial_run_id
-
-        for iteration in range(1, self.max_iterations + 1):
-            errors = self.analyze_run(current_run_id)
-
-            if not errors:
-                return True  # Zero errors!
-
-            fixes_applied = []
-            for error in self.prioritize_fixes(errors):
-                if self.apply_fix(error):
-                    fixes_applied.append(error.suggested_fix)
-
-            if not fixes_applied:
-                return False  # Manual intervention needed
-
-            self.commit_and_push(fixes_applied, iteration)
-            new_run_id = self.trigger_workflow()
-            self.wait_for_completion(new_run_id)
-
-            if self.get_run_status(new_run_id) == "success":
-                return True
-
-            current_run_id = new_run_id
-
-        return False  # Max iterations reached
-```
-
----
+1. `analyze_run` fetches and parses logs. A fetch failure returns `None`
+   (distinct from an empty list) so it aborts rather than reporting a false
+   "zero errors" success; an empty list is only trusted as clean if the run's
+   own status also says `success`.
+2. `plan_fixes` decides what may be touched **before anything is touched** —
+   see Fix Patterns above for the per-type gating — and the plan is printed.
+3. Without `--auto-commit`, the loop stops here: nothing was written,
+   installed, or run.
+4. Applied fixes are committed and pushed; a push failure aborts the
+   iteration rather than triggering CI against unpushed code.
+5. A new run is triggered and matched by the pushed commit's SHA (not "most
+   recent run" — that can return the run already being analyzed), then
+   awaited to any terminal status (not just success/failure/cancelled).
+6. Iterates up to `--max-iterations`, updating the knowledge base after each
+   attempt.
 
 ## Knowledge Base
 
-```python
-class KnowledgeBase:
-    def get_fix_strategy(self, error_type: str) -> str:
-        defaults = {
-            'npm_eresolve': 'Add --legacy-peer-deps flag',
-            'npm_404': 'Remove unavailable package',
-            'ts_error': 'Fix TypeScript type errors',
-            'eslint_error': 'Run ESLint auto-fix',
-            'test_failure': 'Update test snapshots',
-            'python_import': 'Install missing module',
-            'timeout': 'Increase timeout duration',
-            'oom': 'Increase memory allocation'
-        }
-        return defaults.get(error_type, 'Manual review required')
+The real `KnowledgeBase` in `engine.py` is a flat per-error-type running
+average, not a recency-weighted history:
 
-    def calculate_confidence(self, error_type: str, fix: str) -> float:
-        # Recency-weighted success rate
-        history = self.success_history.get(f"{error_type}:{fix}", [])
-        if len(history) < 3:
-            return 0.5
-        weights = [2 ** i for i in range(len(history))]
-        return sum(w * s for w, s in zip(weights, history)) / sum(weights)
-```
-
----
+- Keyed by error type (`npm_eresolve`, `oom`, ...) — the same key
+  `parse_logs` assigns, so recording a fix and reading its confidence back
+  never mismatch.
+- `base_confidence` = `successes / total_attempts`.
+- A type's recorded confidence is ignored until it has `MIN_SAMPLES = 3`
+  attempts — under that, `calculate_confidence` treats it as neutral (0.5) so
+  a single lucky result cannot pin it at 100%.
+- Persisted to `.github/fix-knowledge-base.json` after every iteration.
 
 ## Validation & Rollback
 
-```bash
-validate_fix() {
-    git tag "checkpoint-$(date +%s)"
-    npm test || { rollback_fix; return 1; }
-    npm run build || { rollback_fix; return 1; }
-    return 0
-}
-
-rollback_fix() {
-    git revert --no-commit HEAD
-    git commit -m "fix(ci): rollback failed fix"
-    git push
-}
-```
+**Not implemented.** There is no local-validation-before-push step and no
+automated rollback — `/fix-commit-errors`' own Safety section says so
+explicitly. The plan-before-mutation gate (step 3 above) is the actual safety
+mechanism: review the printed plan, then opt in with `--auto-commit`. Review
+the diff yourself before trusting a run.
 
 ---
 
 ## Integration with /fix-commit-errors
 
 ```bash
-python3 engine.py "$RUN_ID" \
+python3 ${CLAUDE_PLUGIN_ROOT}/skills/iterative-error-resolution/engine.py "$RUN_ID" \
     --repo "$REPO" \
     --workflow "$WORKFLOW" \
     --max-iterations 5
 
 # Engine will:
-# 1. Analyze errors from failed run
-# 2. Apply fixes automatically
-# 3. Trigger new workflow
-# 4. Wait for completion
-# 5. Repeat until zero errors or max iterations
-# 6. Learn from outcomes
+# 1. Analyze errors from failed run (aborts, not "zero errors", if the fetch itself fails)
+# 2. Print the plan; apply fixes only if --auto-commit was passed
+# 3. Commit and push (aborts the iteration on push failure)
+# 4. Trigger new workflow, matched by pushed commit SHA
+# 5. Wait for completion (any terminal status, not just success/failure/cancelled)
+# 6. Repeat until zero errors or max iterations
+# 7. Learn from outcomes, keyed by error type
 ```
 
 ---
@@ -186,11 +117,11 @@ python3 engine.py "$RUN_ID" \
 
 | Practice | Rationale |
 |----------|-----------|
-| High-confidence first | Apply >80% confidence fixes first |
-| Validate locally | Run tests before pushing |
+| Risk-tier before confidence | `LOW_RISK_TYPES` auto-apply on their own safety net; everything else needs learned confidence |
+| Review the plan first | `plan_fixes` prints what will run before `--auto-commit` touches anything |
 | Limit iterations | 3-5 max to prevent infinite loops |
-| Learn from failures | Record failed fixes to avoid repeating |
-| Rollback on regression | Auto-revert if new errors introduced |
+| Learn from failures | Record every attempt (keyed by error type) to avoid repeating what doesn't work |
+| Review the diff yourself | No local validation or rollback is implemented — a green run after `--auto-commit` is not itself proof; check the diff |
 | Manual threshold | Escalate if confidence <50% |
 
 ---
@@ -211,7 +142,6 @@ python3 engine.py "$RUN_ID" \
 | Metric | Target |
 |--------|--------|
 | Resolution rate | >80% per iteration |
-| Rollback rate | <10% |
 | Time to resolution | <30 min |
 | Zero-error achievement | >90% of runs |
 
@@ -220,9 +150,9 @@ python3 engine.py "$RUN_ID" \
 ## Error Resolution Checklist
 
 - [ ] Errors categorized by type
-- [ ] Fix strategies prioritized by confidence
-- [ ] Local validation before push
-- [ ] Rollback mechanism ready
+- [ ] Fix strategies prioritized by confidence/risk tier
+- [ ] Plan reviewed before `--auto-commit`
+- [ ] Diff reviewed after the run (no automated validation or rollback exists)
 - [ ] Knowledge base updated
 - [ ] Iteration limit set
 - [ ] Success metrics tracked

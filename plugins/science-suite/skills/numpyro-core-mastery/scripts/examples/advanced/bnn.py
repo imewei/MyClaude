@@ -16,20 +16,17 @@ import argparse
 import os
 import time
 
+import jax.numpy as jnp
 import matplotlib
 import matplotlib.pyplot as plt
 import numpy as np
-
-from jax import vmap
-import jax.numpy as jnp
-import jax.random as random
-
 import numpyro
-from numpyro import handlers
 import numpyro.distributions as dist
+from jax import random, vmap
+from numpyro import handlers
 from numpyro.infer import MCMC, NUTS
 
-matplotlib.use("Agg")  # noqa: E402
+matplotlib.use("Agg")
 
 
 # the non-linearity we use in our neural network
@@ -83,7 +80,7 @@ def run_inference(model, args, rng_key, X, Y, D_H):
         num_warmup=args.num_warmup,
         num_samples=args.num_samples,
         num_chains=args.num_chains,
-        progress_bar=False if "NUMPYRO_SPHINXBUILD" in os.environ else True,
+        progress_bar=not "NUMPYRO_SPHINXBUILD" in os.environ,
     )
     mcmc.run(rng_key, X, Y, D_H)
     mcmc.print_summary()
@@ -144,7 +141,7 @@ def main(args):
     percentiles = np.percentile(predictions, [5.0, 95.0], axis=0)
 
     # make plots
-    fig, ax = plt.subplots(figsize=(8, 6), constrained_layout=True)
+    _fig, ax = plt.subplots(figsize=(8, 6), constrained_layout=True)
 
     # plot training data
     ax.plot(X[:, 1], Y[:, 0], "kx")

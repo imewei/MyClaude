@@ -37,9 +37,8 @@ import argparse
 import re
 import subprocess
 import sys
-from pathlib import Path
 from collections import Counter
-
+from pathlib import Path
 
 LABEL_RE = re.compile(r"\\label\{([^}]+)\}")
 REF_RE = re.compile(r"\\(?:ref|cref|Cref|eqref|autoref|pageref)\*?\{([^}]+)\}")
@@ -49,6 +48,11 @@ END_RE = re.compile(r"\\end\{([^}]+)\}")
 BIB_KEY_RE = re.compile(r"@\w+\{([^,\n]+),")
 COMMENT_RE = re.compile(r"(?<!\\)%.*$", re.MULTILINE)
 INCLUDE_RE = re.compile(r"\\(?:input|include)\{([^}]+)\}")
+# Matches only genuine undefined-ref/citation warnings. A bare log.count("undefined")
+# also hits package names and prose, which would fail every compile.
+UNDEF_WARNING_RE = re.compile(
+    r"Warning:\s+(?:Reference|Citation)\s+`[^']*'[^.]{0,120}?undefined", re.DOTALL
+)
 
 
 def strip_comments(text: str) -> str:
@@ -198,11 +202,16 @@ def check_common_typos(text: str) -> list[tuple[int, str]]:
     return findings
 
 
-def run_pdflatex(tex_path: Path) -> tuple[bool, str]:
-    """Invoke pdflatex twice and return (succeeded, log tail)."""
+def run_pdflatex(tex_path: Path) -> tuple[str, str, int]:
+    """Invoke pdflatex twice.
+
+    Returns (status, info, undefined_count) where status is "ok", "fail", or
+    "skipped". "skipped" means the check never ran and must not be scored as a
+    failure — a machine without TeX is not a broken document.
+    """
     import shutil
     if not shutil.which("pdflatex"):
-        return (False, "pdflatex not on PATH; skipping compilation")
+        return ("skipped", "pdflatex not on PATH; compilation not attempted", 0)
 
     workdir = tex_path.parent
     base = tex_path.stem
@@ -212,17 +221,23 @@ def run_pdflatex(tex_path: Path) -> tuple[bool, str]:
             cwd=workdir,
             capture_output=True,
             text=True,
+            check=False,
         )
         if result.returncode != 0:
-            return (False, result.stdout[-2000:] if result.stdout else result.stderr[-2000:])
+            tail = result.stdout[-2000:] if result.stdout else result.stderr[-2000:]
+            return ("fail", tail, 0)
 
     log_path = workdir / f"{base}.log"
     if log_path.exists():
         log = log_path.read_text(encoding="utf-8", errors="replace")
         warn_count = log.count("Warning")
-        undef_count = log.count("undefined")
-        return (True, f"compile ok ({warn_count} warnings, {undef_count} undefined-like entries in log)")
-    return (True, "compile ok")
+        undef = UNDEF_WARNING_RE.findall(log)
+        info = (
+            f"compile ok ({warn_count} warnings, "
+            f"{len(undef)} undefined reference/citation warning(s))"
+        )
+        return ("ok", info, len(undef))
+    return ("ok", "compile ok", 0)
 
 
 def format_report(
@@ -232,7 +247,7 @@ def format_report(
     envs: dict,
     math: dict,
     typos: list,
-    compile_result: tuple[bool, str] | None,
+    compile_result: tuple[str, str, int] | None,
 ) -> tuple[str, int]:
     """Return (report_text, total_findings)."""
     lines = [f"=== latex_sanity report for {tex_path} ==="]
@@ -291,11 +306,16 @@ def format_report(
             lines.append(f"  ... {len(typos) - 20} more")
 
     if compile_result is not None:
-        ok, info = compile_result
-        status = "ok" if ok else "FAIL"
-        lines.append(f"\n[compile:{status}] {info}")
-        if not ok:
+        status, info, undef_refs = compile_result
+        lines.append(f"\n[compile:{'FAIL' if status == 'fail' else status}] {info}")
+        if status == "fail":
             total += 1
+        elif undef_refs:
+            total += undef_refs
+            lines.append(
+                f"[FAIL] pdflatex reported {undef_refs} undefined "
+                "reference/citation warning(s)"
+            )
 
     if total == 0:
         lines.append("\n[PASS] no blocking findings")
@@ -313,6 +333,11 @@ def main() -> int:
 
     if not args.tex.exists():
         print(f"error: {args.tex} not found", file=sys.stderr)
+        return 2
+    # An explicitly named --bib that does not exist is a broken request, not a
+    # reason to silently report "no .bib file checked".
+    if args.bib is not None and not args.bib.exists():
+        print(f"error: --bib {args.bib} not found", file=sys.stderr)
         return 2
 
     text = load_tex_with_includes(args.tex)

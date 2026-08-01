@@ -52,7 +52,10 @@ LATEX_MATH_BLOCK = re.compile(
     re.DOTALL,
 )
 LATEX_CMD = re.compile(r"\\([a-zA-Z]+)(?![a-zA-Z])")
-LATEX_ID = re.compile(r"\b([A-Za-z][A-Za-z_]*)(?:_\{?([A-Za-z0-9]+)\}?)?")
+# The base identifier must exclude `_`: a greedy `[A-Za-z_]*` swallows the
+# underscore, so `D_{eff}` splits into two bogus tokens instead of matching the
+# subscript group and yielding `D_eff`.
+LATEX_ID = re.compile(r"\b([A-Za-z][A-Za-z0-9]*)(?:_\{?([A-Za-z0-9]+)\}?)?")
 
 # Standard LaTeX commands that are not physics symbols; ignore these.
 LATEX_STDLIB = {
@@ -67,11 +70,9 @@ LATEX_STDLIB = {
     "epsilon", "varepsilon", "phi", "varphi", "psi", "chi", "theta", "vartheta",
     "lambda", "mu", "nu", "alpha", "beta", "gamma", "delta", "sigma", "tau",
     "omega", "Omega", "Phi", "Psi", "Gamma", "Delta", "Lambda", "Sigma", "Theta",
-    # Note: Greek letters are included here because they are syntax, but physics
-    # code often uses variables named 'phi', 'mu' etc. The reconciliation pass
-    # will match those against Python identifiers of the same name anyway.
-    # We keep Greek in STDLIB so "\phi {command}" doesn't pollute the symbol
-    # set twice; the bare "phi" string can still be tracked via LATEX_ID.
+    # Greek letters live here so a bare "\phi" is not reported as an unimplemented
+    # symbol. Subscripted forms (\tau_R, phi_0) bypass this filter and are still
+    # tracked, since those name specific quantities the code should define.
     "textrm", "rm", "mathit", "operatorname", "displaystyle", "textstyle",
     "scriptstyle", "mathop", "limits", "nolimits", "boldsymbol",
 }
@@ -95,9 +96,10 @@ def extract_latex_symbols(text: str) -> set[str]:
                 # with subscript but not bare
                 if sub:
                     symbols.add(f"{ident}_{sub}")
-            else:
-                base = ident if not sub else f"{ident}_{sub}"
-                symbols.add(base)
+            elif sub:
+                symbols.add(f"{ident}_{sub}")
+            elif ident not in LATEX_STDLIB:
+                symbols.add(ident)
     return symbols
 
 
@@ -161,9 +163,8 @@ def reconcile(
     for sym in py_syms:
         if sym in ignore_python:
             continue
-        if normalize_name(sym) not in norm_mapped:
-            if len(sym) > 1 and not sym.startswith("_"):
-                in_code_not_latex.append(sym)
+        if normalize_name(sym) not in norm_mapped and len(sym) > 1 and not sym.startswith("_"):
+            in_code_not_latex.append(sym)
 
     return sorted(in_latex_not_code), sorted(in_code_not_latex)
 

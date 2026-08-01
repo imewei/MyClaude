@@ -5,36 +5,35 @@ Suggests linting after Python/TypeScript file modifications.
 """
 
 import json
-import os
 import sys
+
+from _hook_io import read_payload, wrap_context
 
 
 def main() -> None:
     """Suggest linting after file modifications."""
     try:
-        tool_input = os.environ.get("TOOL_INPUT", "{}")
+        payload = read_payload()
 
-        try:
-            input_data = json.loads(tool_input)
-        except json.JSONDecodeError:
-            input_data = {}
+        tool_input = payload.get("tool_input")
+        if not isinstance(tool_input, dict):
+            tool_input = {}
 
-        file_path = input_data.get("file_path", "")
+        file_path = tool_input.get("file_path") or payload.get("file_path") or ""
         result = {"status": "success"}
 
         if file_path.endswith(".py"):
-            result["additionalContext"] = (
-                f"Python file modified: {file_path}. "
-                "Consider running ruff check on this file."
-            )
+            ctx = f"Python file modified: {file_path}. Consider running ruff check on this file."
+            result["additionalContext"] = ctx
+            result.update(wrap_context("PostToolUse", ctx))
         elif file_path.endswith((".ts", ".tsx", ".js", ".jsx")):
-            result["additionalContext"] = (
-                f"JS/TS file modified: {file_path}. "
-                "Consider running eslint on this file."
-            )
+            ctx = f"JS/TS file modified: {file_path}. Consider running eslint on this file."
+            result["additionalContext"] = ctx
+            result.update(wrap_context("PostToolUse", ctx))
 
         json.dump(result, sys.stdout)
     except Exception as e:
+        print(f"PostToolUse hook error: {e}", file=sys.stderr)
         json.dump(
             {"status": "error", "message": f"PostToolUse hook error: {e}"}, sys.stdout
         )

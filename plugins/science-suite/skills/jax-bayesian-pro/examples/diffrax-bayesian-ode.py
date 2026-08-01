@@ -5,11 +5,11 @@ Demonstrates integrating Diffrax with Bayesian inference to fit
 physical models to experimental data.
 """
 
+import blackjax
+import diffrax
 import jax
 import jax.numpy as jnp
 from jax.scipy import stats
-import diffrax
-import blackjax
 
 # =============================================================================
 # Pattern 1: Simple ODE Parameter Estimation
@@ -176,7 +176,7 @@ def lotka_volterra_model():
                 max_steps=10000,
             )
             predicted = sol.ys
-        except Exception:
+        except Exception:  # noqa: BLE001 -- diffrax raises varied solver failures; any of them means "reject this sample"
             return -jnp.inf  # Failed integration
 
         # Check for NaN/Inf
@@ -304,7 +304,7 @@ def neural_ode_surrogate():
 
     def train_surrogate(model, training_data):
         """Train neural ODE on simulation data."""
-        ts, trajectories = training_data  # (n_sims, n_times, dim)
+        _ts, _trajectories = training_data  # (n_sims, n_times, dim)
 
         optimizer = optax.adam(1e-3)
         optimizer.init(eqx.filter(model, eqx.is_array))
@@ -367,7 +367,7 @@ def run_bayesian_ode_inference():
     print("=" * 60)
 
     # Get model
-    log_prob, ts, observations, true_params = exponential_decay_model()
+    log_prob, ts, _observations, true_params = exponential_decay_model()
 
     print(f"\nTrue parameters: k={true_params['true_k']}, y0={true_params['true_y0']}")
     print(f"Observations: {len(ts)} time points")

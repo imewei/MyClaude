@@ -5,10 +5,12 @@ Demonstrates low-level control over MCMC inference including
 custom kernels, mixed samplers, and parallel chains.
 """
 
+from collections.abc import Callable
+from typing import Any, NamedTuple
+
+import blackjax
 import jax
 import jax.numpy as jnp
-import blackjax
-from typing import Any, Callable, Dict, NamedTuple, Tuple
 
 # =============================================================================
 # Pattern 1: Basic Custom NUTS Loop
@@ -21,7 +23,7 @@ def custom_nuts_sampler(
     num_warmup: int = 500,
     num_samples: int = 1000,
     rng_key: jnp.ndarray = None,
-) -> Dict[str, Any]:
+) -> dict[str, Any]:
     """Full custom NUTS implementation with diagnostics."""
 
     if rng_key is None:
@@ -38,7 +40,7 @@ def custom_nuts_sampler(
         target_acceptance_rate=0.8,
     )
 
-    (state, kernel_params), warmup_info = warmup.run(
+    (state, kernel_params), _warmup_info = warmup.run(
         warmup_key, initial_position, num_steps=num_warmup
     )
 
@@ -63,7 +65,7 @@ def custom_nuts_sampler(
         }
 
     sample_keys = jax.random.split(sample_key, num_samples)
-    final_state, samples = jax.lax.scan(step_fn, state, sample_keys)
+    _final_state, samples = jax.lax.scan(step_fn, state, sample_keys)
 
     # Compute diagnostics
     n_divergent = jnp.sum(samples["is_divergent"])
@@ -97,7 +99,7 @@ class MixedSamplerState(NamedTuple):
 
 
 def create_mixed_sampler(
-    continuous_log_prob: Callable, discrete_update: Callable, hmc_params: Dict
+    continuous_log_prob: Callable, discrete_update: Callable, hmc_params: dict
 ) -> Callable:
     """Create sampler that mixes HMC (continuous) with Gibbs (discrete).
 
@@ -111,7 +113,7 @@ def create_mixed_sampler(
 
     def mixed_step(
         state: MixedSamplerState, key: jnp.ndarray
-    ) -> Tuple[MixedSamplerState, Any]:
+    ) -> tuple[MixedSamplerState, Any]:
         key1, key2 = jax.random.split(key)
 
         # Step 1: HMC update for continuous parameters
@@ -145,7 +147,7 @@ def run_parallel_chains(
     num_warmup: int = 500,
     num_samples: int = 1000,
     rng_key: jnp.ndarray = None,
-) -> Dict:
+) -> dict:
     """Run multiple chains in parallel using vmap.
 
     Args:

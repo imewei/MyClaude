@@ -28,21 +28,19 @@ References:
 
 import argparse
 
+import jax.numpy as jnp
 import matplotlib
 import matplotlib.pyplot as plt
 import numpy as np
-from scipy.special import expit
-import seaborn as sns
-
-from jax import random
-import jax.numpy as jnp
-
 import numpyro
 import numpyro.distributions as dist
+import seaborn as sns
+from jax import random
 from numpyro.infer import MCMC, NUTS, SVI, Trace_ELBO, autoguide
 from numpyro.util import enable_x64
+from scipy.special import expit
 
-matplotlib.use("Agg")  # noqa: E402
+matplotlib.use("Agg")
 
 
 # squared exponential kernel
@@ -102,9 +100,9 @@ def run_svi(rng_key, X, Y, guide_family="AutoDiagonalNormal", K=8):
 
     guide_name = guide_family
     if guide_family == "AutoDAIS":
-        guide_name += "-{}".format(K)
+        guide_name += f"-{K}"
 
-    print("[{}] final elbo: {:.2f}".format(guide_name, final_elbo))
+    print(f"[{guide_name}] final elbo: {final_elbo:.2f}")
 
     return guide.sample_posterior(
         random.PRNGKey(1), params, sample_shape=(args.num_samples,)
@@ -140,7 +138,7 @@ def main(args):
 
         coord1, coord2 = 0, 1
 
-        fig, axes = plt.subplots(
+        _fig, axes = plt.subplots(
             2, 2, sharex=True, figsize=(6, 6), constrained_layout=True
         )
 

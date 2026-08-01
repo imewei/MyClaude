@@ -42,14 +42,13 @@ Compare to the Stan implementations in [7].
 import argparse
 import os
 
-from jax import random
 import jax.numpy as jnp
-from jax.scipy.special import expit, logit
-
 import numpyro
+import numpyro.distributions as dist
+from jax import random
+from jax.scipy.special import expit, logit
 from numpyro import handlers
 from numpyro.contrib.control_flow import scan
-import numpyro.distributions as dist
 from numpyro.examples.datasets import DIPPER_VOLE, load_dataset
 from numpyro.infer import HMC, MCMC, NUTS
 from numpyro.infer.reparam import LocScaleReparam
@@ -62,25 +61,22 @@ from numpyro.infer.reparam import LocScaleReparam
 
 
 def model_1(capture_history, sex):
-    N, T = capture_history.shape
+    N, _T = capture_history.shape
     phi = numpyro.sample("phi", dist.Uniform(0.0, 1.0))  # survival probability
     rho = numpyro.sample("rho", dist.Uniform(0.0, 1.0))  # recapture probability
 
     def transition_fn(carry, y):
         first_capture_mask, z = carry
-        with numpyro.plate("animals", N, dim=-1):
-            with handlers.mask(mask=first_capture_mask):
-                mu_z_t = first_capture_mask * phi * z + (1 - first_capture_mask)
-                # NumPyro exactly sums out the discrete states z_t.
-                z = numpyro.sample(
-                    "z",
-                    dist.Bernoulli(dist.util.clamp_probs(mu_z_t)),
-                    infer={"enumerate": "parallel"},
-                )
-                mu_y_t = rho * z
-                numpyro.sample(
-                    "y", dist.Bernoulli(dist.util.clamp_probs(mu_y_t)), obs=y
-                )
+        with numpyro.plate("animals", N, dim=-1), handlers.mask(mask=first_capture_mask):
+            mu_z_t = first_capture_mask * phi * z + (1 - first_capture_mask)
+            # NumPyro exactly sums out the discrete states z_t.
+            z = numpyro.sample(
+                "z",
+                dist.Bernoulli(dist.util.clamp_probs(mu_z_t)),
+                infer={"enumerate": "parallel"},
+            )
+            mu_y_t = rho * z
+            numpyro.sample("y", dist.Bernoulli(dist.util.clamp_probs(mu_y_t)), obs=y)
 
         first_capture_mask = first_capture_mask | y.astype(bool)
         return (first_capture_mask, z), None
@@ -103,7 +99,7 @@ def model_1(capture_history, sex):
 
 
 def model_2(capture_history, sex):
-    N, T = capture_history.shape
+    N, _T = capture_history.shape
     rho = numpyro.sample("rho", dist.Uniform(0.0, 1.0))  # recapture probability
 
     def transition_fn(carry, y):
@@ -112,19 +108,16 @@ def model_2(capture_history, sex):
         # phi_t is shared across all N individuals
         phi_t = numpyro.sample("phi", dist.Uniform(0.0, 1.0))
 
-        with numpyro.plate("animals", N, dim=-1):
-            with handlers.mask(mask=first_capture_mask):
-                mu_z_t = first_capture_mask * phi_t * z + (1 - first_capture_mask)
-                # NumPyro exactly sums out the discrete states z_t.
-                z = numpyro.sample(
-                    "z",
-                    dist.Bernoulli(dist.util.clamp_probs(mu_z_t)),
-                    infer={"enumerate": "parallel"},
-                )
-                mu_y_t = rho * z
-                numpyro.sample(
-                    "y", dist.Bernoulli(dist.util.clamp_probs(mu_y_t)), obs=y
-                )
+        with numpyro.plate("animals", N, dim=-1), handlers.mask(mask=first_capture_mask):
+            mu_z_t = first_capture_mask * phi_t * z + (1 - first_capture_mask)
+            # NumPyro exactly sums out the discrete states z_t.
+            z = numpyro.sample(
+                "z",
+                dist.Bernoulli(dist.util.clamp_probs(mu_z_t)),
+                infer={"enumerate": "parallel"},
+            )
+            mu_y_t = rho * z
+            numpyro.sample("y", dist.Bernoulli(dist.util.clamp_probs(mu_y_t)), obs=y)
 
         first_capture_mask = first_capture_mask | y.astype(bool)
         return (first_capture_mask, z), None
@@ -148,7 +141,7 @@ def model_2(capture_history, sex):
 
 
 def model_3(capture_history, sex):
-    N, T = capture_history.shape
+    N, _T = capture_history.shape
     phi_mean = numpyro.sample(
         "phi_mean", dist.Uniform(0.0, 1.0)
     )  # mean survival probability
@@ -164,19 +157,16 @@ def model_3(capture_history, sex):
                 "phi_logit", dist.Normal(phi_logit_mean, phi_sigma)
             )
         phi_t = expit(phi_logit_t)
-        with numpyro.plate("animals", N, dim=-1):
-            with handlers.mask(mask=first_capture_mask):
-                mu_z_t = first_capture_mask * phi_t * z + (1 - first_capture_mask)
-                # NumPyro exactly sums out the discrete states z_t.
-                z = numpyro.sample(
-                    "z",
-                    dist.Bernoulli(dist.util.clamp_probs(mu_z_t)),
-                    infer={"enumerate": "parallel"},
-                )
-                mu_y_t = rho * z
-                numpyro.sample(
-                    "y", dist.Bernoulli(dist.util.clamp_probs(mu_y_t)), obs=y
-                )
+        with numpyro.plate("animals", N, dim=-1), handlers.mask(mask=first_capture_mask):
+            mu_z_t = first_capture_mask * phi_t * z + (1 - first_capture_mask)
+            # NumPyro exactly sums out the discrete states z_t.
+            z = numpyro.sample(
+                "z",
+                dist.Bernoulli(dist.util.clamp_probs(mu_z_t)),
+                infer={"enumerate": "parallel"},
+            )
+            mu_y_t = rho * z
+            numpyro.sample("y", dist.Bernoulli(dist.util.clamp_probs(mu_y_t)), obs=y)
 
         first_capture_mask = first_capture_mask | y.astype(bool)
         return (first_capture_mask, z), None
@@ -199,7 +189,7 @@ def model_3(capture_history, sex):
 
 
 def model_4(capture_history, sex):
-    N, T = capture_history.shape
+    N, _T = capture_history.shape
     # survival probabilities for males/females
     phi_male = numpyro.sample("phi_male", dist.Uniform(0.0, 1.0))
     phi_female = numpyro.sample("phi_female", dist.Uniform(0.0, 1.0))
@@ -210,19 +200,16 @@ def model_4(capture_history, sex):
 
     def transition_fn(carry, y):
         first_capture_mask, z = carry
-        with numpyro.plate("animals", N, dim=-1):
-            with handlers.mask(mask=first_capture_mask):
-                mu_z_t = first_capture_mask * phi * z + (1 - first_capture_mask)
-                # NumPyro exactly sums out the discrete states z_t.
-                z = numpyro.sample(
-                    "z",
-                    dist.Bernoulli(dist.util.clamp_probs(mu_z_t)),
-                    infer={"enumerate": "parallel"},
-                )
-                mu_y_t = rho * z
-                numpyro.sample(
-                    "y", dist.Bernoulli(dist.util.clamp_probs(mu_y_t)), obs=y
-                )
+        with numpyro.plate("animals", N, dim=-1), handlers.mask(mask=first_capture_mask):
+            mu_z_t = first_capture_mask * phi * z + (1 - first_capture_mask)
+            # NumPyro exactly sums out the discrete states z_t.
+            z = numpyro.sample(
+                "z",
+                dist.Bernoulli(dist.util.clamp_probs(mu_z_t)),
+                infer={"enumerate": "parallel"},
+            )
+            mu_y_t = rho * z
+            numpyro.sample("y", dist.Bernoulli(dist.util.clamp_probs(mu_y_t)), obs=y)
 
         first_capture_mask = first_capture_mask | y.astype(bool)
         return (first_capture_mask, z), None
@@ -249,7 +236,7 @@ def model_4(capture_history, sex):
 
 
 def model_5(capture_history, sex):
-    N, T = capture_history.shape
+    N, _T = capture_history.shape
 
     # phi_beta controls the survival probability differential
     # for males versus females (in logit space)
@@ -261,19 +248,16 @@ def model_5(capture_history, sex):
         first_capture_mask, z = carry
         phi_gamma_t = numpyro.sample("phi_gamma", dist.Normal(0.0, 10.0))
         phi_t = expit(phi_beta + phi_gamma_t)
-        with numpyro.plate("animals", N, dim=-1):
-            with handlers.mask(mask=first_capture_mask):
-                mu_z_t = first_capture_mask * phi_t * z + (1 - first_capture_mask)
-                # NumPyro exactly sums out the discrete states z_t.
-                z = numpyro.sample(
-                    "z",
-                    dist.Bernoulli(dist.util.clamp_probs(mu_z_t)),
-                    infer={"enumerate": "parallel"},
-                )
-                mu_y_t = rho * z
-                numpyro.sample(
-                    "y", dist.Bernoulli(dist.util.clamp_probs(mu_y_t)), obs=y
-                )
+        with numpyro.plate("animals", N, dim=-1), handlers.mask(mask=first_capture_mask):
+            mu_z_t = first_capture_mask * phi_t * z + (1 - first_capture_mask)
+            # NumPyro exactly sums out the discrete states z_t.
+            z = numpyro.sample(
+                "z",
+                dist.Bernoulli(dist.util.clamp_probs(mu_z_t)),
+                infer={"enumerate": "parallel"},
+            )
+            mu_y_t = rho * z
+            numpyro.sample("y", dist.Bernoulli(dist.util.clamp_probs(mu_y_t)), obs=y)
 
         first_capture_mask = first_capture_mask | y.astype(bool)
         return (first_capture_mask, z), None
@@ -311,7 +295,7 @@ def run_inference(model, capture_history, sex, rng_key, args):
         num_warmup=args.num_warmup,
         num_samples=args.num_samples,
         num_chains=args.num_chains,
-        progress_bar=False if "NUMPYRO_SPHINXBUILD" in os.environ else True,
+        progress_bar=not "NUMPYRO_SPHINXBUILD" in os.environ,
     )
     mcmc.run(rng_key, capture_history, sex)
     mcmc.print_summary()
@@ -327,8 +311,8 @@ def main(args):
     elif args.dataset == "vole":
         if args.model in ["4", "5"]:
             raise ValueError(
-                "Cannot run model_{} on meadow voles data, since we lack sex "
-                "information for these animals.".format(args.model)
+                f"Cannot run model_{args.model} on meadow voles data, since we lack sex "
+                "information for these animals."
             )
         (capture_history,) = load_dataset(DIPPER_VOLE, split="vole", shuffle=False)[1]()
         sex = None
@@ -337,9 +321,7 @@ def main(args):
 
     N, T = capture_history.shape
     print(
-        "Loaded {} capture history for {} individuals collected over {} time periods.".format(
-            args.dataset, N, T
-        )
+        f"Loaded {args.dataset} capture history for {N} individuals collected over {T} time periods."
     )
 
     model = models[args.model]

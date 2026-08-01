@@ -11,9 +11,10 @@ This script generates visual charts and diagrams for:
 Requirements: matplotlib, numpy
 """
 
+from pathlib import Path
+
 import matplotlib.pyplot as plt
 import numpy as np
-from pathlib import Path
 
 
 def setup_plot_style():
@@ -40,7 +41,7 @@ def generate_speedup_chart(output_dir):
     speedups = [1, 50, 5, 250, 1000]
     colors = ["#d62728", "#ff7f0e", "#2ca02c", "#1f77b4", "#9467bd"]
 
-    fig, ax = plt.subplots(figsize=(12, 7))
+    _fig, ax = plt.subplots(figsize=(12, 7))
     bars = ax.bar(
         transformations,
         speedups,
@@ -106,7 +107,7 @@ def generate_memory_optimization_chart(output_dir):
     x = np.arange(len(techniques))
     width = 0.35
 
-    fig, ax = plt.subplots(figsize=(14, 7))
+    _fig, ax = plt.subplots(figsize=(14, 7))
 
     bars1 = ax.bar(
         x - width / 2,
@@ -171,7 +172,7 @@ def generate_batch_size_scaling(output_dir):
     throughput_single = [100, 190, 350, 620, 1100, 1800, 2200, 2400]  # samples/sec
     throughput_multi = [800, 1520, 2800, 4960, 8800, 14400, 17600, 19200]  # 8 GPUs
 
-    fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(16, 6))
+    _fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(16, 6))
 
     # Left plot: Throughput
     ax1.plot(
@@ -255,7 +256,7 @@ def generate_optimizer_comparison(output_dir):
     x = np.arange(len(optimizers))
     width = 0.25
 
-    fig, ax = plt.subplots(figsize=(14, 7))
+    _fig, ax = plt.subplots(figsize=(14, 7))
 
     ax.bar(
         x - width,
@@ -331,7 +332,7 @@ def generate_training_progress(output_dir):
         / 2,
     )
 
-    fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(16, 6))
+    _fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(16, 6))
 
     # Loss curves
     ax1.plot(steps, train_loss, linewidth=2, label="Training Loss", color="#1f77b4")
@@ -400,7 +401,7 @@ def main():
         print("  - training_progress.png")
         print("=" * 60 + "\n")
 
-    except Exception as e:
+    except Exception as e:  # noqa: BLE001 -- CLI entry point; any failure should print a friendly message, not a traceback
         print(f"\n✗ Error generating diagrams: {e}")
         print("\nMake sure matplotlib and numpy are installed:")
         print("  uv pip install matplotlib numpy")

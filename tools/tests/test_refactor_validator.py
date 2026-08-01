@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
-import unittest
 import sys
+import unittest
 from pathlib import Path
 
 # Add tools directory to path

@@ -14,7 +14,8 @@
 - This plan's Task 8 (Python-tooling consolidation) must complete and be committed **before** the trim plan's Task 8 runs (which deletes the source directories this task reads from). Coordinate execution order across the two plans — this plan's Task 8 has no dependency on anything in the trim plan, so it's safe to run first.
 - Every new hub skill/sub-skill follows this repo's convention: only top-level hubs go in `plugin.json`'s `skills` array; sub-skills are discovered via the hub's own routing table. (Root CLAUDE.md)
 - Target ≤4,000 tokens (~3,000 words) per skill file — the repo's 200K-context 2% budget. Check with `context_budget_checker.py` after adding each new file.
-- Version bump for this plan's changes lands on top of whatever version the trim plan's Task 7 already set (do not re-bump independently — verify current version first).
+- Version bump for this plan's changes lands on top of whatever version the trim plan's Task 7 already set (do not re-bump independently — verify current version first). **Dependency checkpoint:** before Task 10 Step 1, confirm the sibling trim plan's version-bump task has already landed (`git log --oneline --all | grep -i "version bump\|chore.*version"` or check `pyproject.toml`'s version against the pre-plan baseline) — if it hasn't, block on it rather than proceeding with a stale version string, since Task 10's five-file sync check depends on it.
+- All piped validation commands (`validator.py | grep ...`, `validator.py | tail ...`) MUST be preceded by `set -o pipefail` (or use `tee` plus an explicit `$PIPESTATUS`/exit-code check) so a validator/test failure upstream of the pipe isn't masked by the downstream `grep`/`tail` succeeding. Apply this to every `Verify` step in this plan that pipes a validator or `pytest` output, not just the ones spelled out explicitly.
 
 ---
 
@@ -169,7 +170,7 @@ Write `plugins/science-suite/agents/continuum-mechanics-engineer.md`:
 ```markdown
 ---
 name: continuum-mechanics-engineer
-description: "Continuum mechanics & FEM specialist: constitutive modeling, DMA/rheology, transient networks (CAN/vitrimers), nanocomposites. Delegates neural-PDE to pinn-engineer, MD to simulation-expert, JAX numerics to jax-pro."
+description: "Continuum mechanics & FEM specialist: constitutive modeling, DMA/rheology, engineering mathematics, transient networks (CAN/vitrimers), nanocomposites. Delegates neural-PDE to pinn-engineer, MD to simulation-expert, JAX numerics to jax-pro."
 model: opus
 color: orange
 effort: high
@@ -235,6 +236,7 @@ Nanocomposite constitutive modeling - triggers continuum-mechanics-engineer, cro
 3. **Experimental Characterization**: Interpret DMA (storage modulus E', loss modulus E'', tan δ) and rheological data (shear/extensional flow curves, oscillatory sweeps) to parameterize constitutive models.
 4. **Transient & Adaptive Networks**: Model physical gels and covalent adaptable networks (vitrimers) via bond-exchange kinetics and transient-network rheology (sticky Rouse, Green-Tobolsky).
 5. **Composite & Adaptive Materials**: Predict nanocomposite effective properties via effective-medium theory and percolation-aware filler-network modeling.
+6. **Engineering Mathematics**: Apply the applied-math machinery that underlies all five domains above — tensor calculus (stress/strain tensors), ODE/PDE solution methods, perturbation and asymptotic analysis, and dimensional analysis — as a common toolkit woven through FEM formulation, constitutive-law derivation, and bond-kinetics modeling, not a separate standalone domain.
 
 ## Core Competencies
 
@@ -246,6 +248,7 @@ Nanocomposite constitutive modeling - triggers continuum-mechanics-engineer, cro
 | **Transient Networks** | Reaction-kinetics-coupled viscoelasticity | Bond-exchange rate models, stress relaxation prediction |
 | **Composites** | Effective-medium theory | Halpin-Tsai, Mori-Tanaka, percolation-threshold cross-check |
 | **Data-Driven Modeling** | JAX/Equinox (via `jax-pro`), SciML (via `julia-pro`) | Hybrid physics+ML constitutive surrogate models |
+| **Engineering Mathematics** | Tensor calculus, ODE/PDE solution methods, perturbation/asymptotic analysis, dimensional analysis | The shared applied-math toolkit underlying FEM weak-form derivation, constitutive-equation formulation, and transient-network bond-kinetics — not a separate domain, applied throughout |
 
 ## Domain 1: Finite Element Modeling (FEM/FEA)
 
@@ -324,7 +327,7 @@ Match material behavior to the simplest constitutive law that captures it — do
 Fit model parameters against experimental data (DMA, rheology, or FEM validation data), reporting residuals and confidence intervals.
 
 ### Step 4: Validation
-Verify energy/momentum conservation for FEM solutions, check constitutive model against limiting cases (e.g. Neo-Hookean reduces to linear elasticity at small strain).
+Universally required for every FEM solution: residual/equilibrium convergence (Newton residual norm decreasing to tolerance), correct boundary-work accounting, constitutive-model consistency (matches the material law used in assembly), and mesh convergence. Verify energy/momentum conservation only where the governing model actually conserves that quantity — appropriate for elastodynamic/undamped problems, but not a valid check for static, dissipative (viscoelastic, plastic), driven, or reaction-coupled (transient-network, bond-exchange) problems, where dissipation or external work is expected and "non-conservation" is correct physics, not an error. Check the constitutive model against limiting cases (e.g. Neo-Hookean reduces to linear elasticity at small strain) regardless of conservation applicability.
 
 ## Production Checklist
 
@@ -423,12 +426,14 @@ Write `plugins/science-suite/skills/continuum-mechanics-and-rheology/SKILL.md`:
 ```markdown
 ---
 name: continuum-mechanics-and-rheology
-description: Meta-orchestrator for continuum mechanics, FEM/FEA, constitutive modeling, rheology/DMA, transient networks, and nanocomposites. Use when formulating finite element models, fitting viscoelastic/hyperelastic constitutive laws, interpreting DMA or rheology data, modeling covalent adaptable networks (vitrimers) or physical gels, or predicting nanocomposite effective properties.
+description: Meta-orchestrator for continuum mechanics, FEM/FEA, constitutive modeling, engineering mathematics, rheology/DMA, transient networks, and nanocomposites. Use when formulating finite element models, fitting viscoelastic/hyperelastic constitutive laws, interpreting DMA or rheology data, modeling covalent adaptable networks (vitrimers) or physical gels, or predicting nanocomposite effective properties.
 ---
 
 # Continuum Mechanics & Rheology Hub
 
 Orchestrator for continuum-scale materials engineering. Routes problems to the appropriate specialized skill.
+
+Engineering mathematics (tensor calculus, ODE/PDE solution methods, perturbation/asymptotic analysis, dimensional analysis) is intentionally not a separate 7th sub-skill — spec §5 lists it as part of this cluster, but it's the applied-math toolkit woven through all 6 sub-skills below (most concentrated in `fem-fea`'s weak-form derivation and `constitutive-equations`' tensor stress-strain relations) rather than a standalone topic with its own routing entry.
 
 ## Expert Agent
 
@@ -538,7 +543,7 @@ Weak-form PDE discretization for continuum mechanics problems.
 
 ## Convergence & Correctness Checklist
 
-- [ ] Mesh convergence study: halve characteristic element size, confirm error decreases at the expected order for the chosen element (e.g. O(h²) for linear elements in energy norm)
+- [ ] Mesh convergence study: halve characteristic element size, confirm error decreases at the expected order for the chosen element and norm — for standard conforming linear (P1) elements under sufficient solution regularity, O(h) in the energy/H¹ norm and O(h²) in the L² norm; state which norm is being checked, since the two rates differ
 - [ ] Boundary conditions correctly classified and imposed (Dirichlet — essential, imposed on the function space; Neumann — natural, appears in the weak form's boundary integral)
 - [ ] Locking checked for nearly-incompressible materials (pure displacement formulation with low-order elements locks — use a mixed formulation or reduced integration)
 - [ ] Nonlinear problems: Newton-Raphson residual norm decreasing each iteration, tangent stiffness matrix correctly linearized
@@ -941,6 +946,15 @@ EOF
 - Consumes: nothing from earlier tasks (independent of Tasks 3-5, but shares the `statistical-physicist` agent).
 - Produces: 2 new sub-skills discoverable via `statistical-physics-hub`'s routing table; `nanocomposites-and-adaptive-materials` (Task 4) cross-references `glass-and-collective-dynamics` for percolation content — confirm that reference resolves once this task lands.
 
+- [ ] **Step 0: Check for overlap with the existing `correlation-*` skill family**
+
+```bash
+cd /home/wei/Documents/GitHub/MyClaude
+ls plugins/science-suite/skills | grep -i correlation
+grep -l "percolation\|jamming\|glass transition\|aging\|dynamical heterogeneity\|coupled learning\|contrastive Hebbian" plugins/science-suite/skills/correlation-*/SKILL.md 2>/dev/null
+```
+Expected: shows the 5 existing `correlation-*` files (`correlation-analysis`, `correlation-computational-methods`, `correlation-experimental-data`, `correlation-math-foundations`, `correlation-physical-systems`). Read each. Per spec §5's finding (checked at design time: zero percolation matches in the `correlation-*` family or `statistical-physics-hub`), these should show no overlap with glass/jamming/aging/percolation/physical-learning content — but re-confirm at implementation time rather than trusting the design-time check, since the corpus may have changed. Document the outcome (overlap found vs. none) in the Task 6 commit message. If genuine overlap is found, fold the new content into the existing `correlation-*` file instead of creating a duplicate.
+
 - [ ] **Step 1: Create glass-and-collective-dynamics**
 
 Write `plugins/science-suite/skills/glass-and-collective-dynamics/SKILL.md`:
@@ -969,6 +983,10 @@ Cooperative and collective phenomena in disordered and glassy soft-matter system
 
 Dynamics in dense/disordered systems are often dominated by cooperative rearrangements (groups of particles moving together) rather than independent single-particle motion — this is the microscopic origin of the dramatic slowdown near the glass transition despite only modest structural changes. Dynamical heterogeneity (spatially varying local relaxation rates) is the key diagnostic, measured via multi-point correlation functions (e.g. the four-point susceptibility χ₄).
 
+## Random (Rugged) Energy Landscapes
+
+Glassy and jammed systems are naturally described as slow dynamics on a rugged, high-dimensional energy landscape with an exponentially large number of local minima separated by barriers — rather than a single well-defined ground state. Two conceptual pictures recur: (1) mean-field spin-glass models (random-energy model, p-spin models), where the landscape structure connects directly to replica-symmetry-breaking (RSB) — the free-energy landscape itself splits into a hierarchy of metastable states below a dynamical transition temperature; (2) the potential-energy-landscape (inherent-structure) framework for structural glasses, where aging and slow relaxation correspond to the system searching a landscape whose accessible minima become progressively deeper/rarer as temperature or waiting time increases. Both pictures explain why glassy relaxation is non-exponential and history-dependent (aging) rather than a simple activated process over a single barrier.
+
 ## Percolation Theory
 
 - **Percolation threshold `pc`**: the critical occupation/connection probability at which a system-spanning cluster first appears.
@@ -983,6 +1001,7 @@ Dynamics in dense/disordered systems are often dominated by cooperative rearrang
 | "What's the jamming point for this packing?" | Jamming transition, random close packing |
 | "Why hasn't this system's properties stabilized?" | Aging, breaking of time-translation invariance |
 | "Are these particles moving cooperatively?" | Dynamical heterogeneity, four-point susceptibility |
+| "Why does this system have so many metastable states?" | Rugged energy landscapes, RSB, inherent-structure framework |
 | "What filler fraction gives a percolating network?" | Percolation threshold, critical exponents |
 
 ## Delegation
@@ -1091,11 +1110,12 @@ EOF
 
 **Files:**
 - Create: `plugins/science-suite/skills/graph-theory/SKILL.md`
-- Modify: `plugins/science-suite/skills/network-coupled-dynamics/SKILL.md` (routing reference — this is its own standalone skill file; `nonlinear-dynamics/SKILL.md` is a separate hub that only links to it from a routing table, it does not contain the content)
+- Modify: `plugins/science-suite/skills/network-coupled-dynamics/SKILL.md` (routing reference — direct content edit; this is its own standalone skill file, discovered via `nonlinear-dynamics/SKILL.md`'s routing table)
+- Modify: `plugins/science-suite/skills/nonlinear-dynamics/SKILL.md` (routing-table entry — **this is the actual registered hub** in `plugin.json`'s `skills` array; `network-coupled-dynamics` is a sub-skill reached through this hub's routing table, not a hub itself, so wiring only the sub-skill file leaves the hub's own routing table undiscoverable for graph-theory queries that land on the hub first)
 - Modify: `plugins/science-suite/skills/neural-network-mathematics/SKILL.md` (routing reference — spec §7 requires wiring from this hub too; it currently has zero graph-theory/spectral content)
 
 **Interfaces:**
-- Produces: `graph-theory` is a discoverable sub-skill (not registered in `plugin.json`), referenced from at least 4 existing hubs (`continuum-mechanics-and-rheology` and `fem-fea` already reference it from Task 4's content; `network-coupled-dynamics` and `neural-network-mathematics` wired in this task per spec §7).
+- Produces: `graph-theory` is a discoverable sub-skill (not registered in `plugin.json`), referenced from at least 4 existing files (`continuum-mechanics-and-rheology` and `fem-fea` already reference it from Task 4's content; `network-coupled-dynamics`, `nonlinear-dynamics` (its parent hub), and `neural-network-mathematics` wired in this task per spec §7).
 
 - [ ] **Step 1: Confirm network-coupled-dynamics and neural-network-mathematics are the wiring targets**
 
@@ -1103,9 +1123,10 @@ EOF
 cd /home/wei/Documents/GitHub/MyClaude
 find plugins/science-suite/skills -iname "*network-coupled*"
 grep -rl "network-coupled-dynamics" plugins/science-suite/skills/*/SKILL.md
+grep -n "network-coupled-dynamics\|nonlinear-dynamics" plugins/science-suite/.claude-plugin/plugin.json
 grep -c "graph-theory\|Laplacian\|spectral" plugins/science-suite/skills/neural-network-mathematics/SKILL.md
 ```
-Expected: confirms `network-coupled-dynamics` is its own top-level skill directory (`plugins/science-suite/skills/network-coupled-dynamics/SKILL.md`) — `nonlinear-dynamics/SKILL.md` only links to it from a routing table, so Step 3a edits `network-coupled-dynamics/SKILL.md` directly, not `nonlinear-dynamics/SKILL.md`. The `neural-network-mathematics` grep should show no existing graph-theory/spectral content (if the repo has changed and it already has some, adapt Step 3b's wording accordingly rather than duplicating it).
+Expected: confirms `network-coupled-dynamics` is its own top-level skill directory (`plugins/science-suite/skills/network-coupled-dynamics/SKILL.md`), but `plugin.json`'s `skills` array registers only `./skills/nonlinear-dynamics` as the hub — `network-coupled-dynamics` is discovered through `nonlinear-dynamics/SKILL.md`'s routing table, not registered itself. Spec §7 names `network-coupled-dynamics` as a wiring target, but per this repo's own hub convention (root CLAUDE.md) the routing table that actually needs the new entry lives in the hub file, `nonlinear-dynamics/SKILL.md` — so Step 3a wires the sub-skill file directly (cheap, harmless) AND Step 3a2 adds the routing-table entry in `nonlinear-dynamics/SKILL.md` (the file a top-level query actually resolves through first). The `neural-network-mathematics` grep should show no existing graph-theory/spectral content (if the repo has changed and it already has some, adapt Step 3b's wording accordingly rather than duplicating it).
 
 - [ ] **Step 2: Create the graph-theory skill**
 
@@ -1137,7 +1158,7 @@ Consulted by multiple agents depending on the application: `neural-network-maste
 
 ## Spectral Graph Theory Quick Reference
 
-- The Laplacian `L`'s smallest eigenvalue is always 0 (with eigenvector = all-ones); the number of zero eigenvalues equals the number of connected components.
+- For the combinatorial Laplacian `L = D - A` of an undirected graph, the smallest eigenvalue is always 0 (with eigenvector = all-ones); the number of zero eigenvalues equals the number of connected components. This does not hold unqualified for directed graphs or normalized-Laplacian variants (`L_sym`, `L_rw`) — state the convention being used before relying on this property.
 - The second-smallest eigenvalue (algebraic connectivity, "Fiedler value") governs how well-connected a graph is — small values indicate near-disconnection or bottlenecks; its eigenvector (Fiedler vector) gives a natural graph bipartition for spectral clustering.
 - For coupled-oscillator networks, the Laplacian eigenvalue spectrum directly determines synchronization stability (via the master stability function) — this is the graph-theory input `nonlinear-dynamics-expert` needs for synchronization analysis.
 
@@ -1159,6 +1180,19 @@ Read `plugins/science-suite/skills/network-coupled-dynamics/SKILL.md`. Add, near
 ```markdown
 For the underlying spectral graph theory (Laplacian eigenvalues, algebraic connectivity, Fiedler vector), see `science-suite:graph-theory`.
 ```
+
+- [ ] **Step 3a2: Wire into nonlinear-dynamics (the actual registered hub)**
+
+Read `plugins/science-suite/skills/nonlinear-dynamics/SKILL.md`. This is the hub registered in `plugin.json` — `network-coupled-dynamics` is one of its routed sub-skills, so the hub's own routing table also needs a graph-theory entry for queries that resolve to the hub first. Add a row to its routing table (near the existing `network-coupled-dynamics` entry):
+```markdown
+| Graph/network spectral properties (Laplacian eigenvalues, algebraic connectivity, Fiedler vector) underlying coupled-network dynamics | `science-suite:graph-theory` |
+```
+
+Verify:
+```bash
+grep -c "graph-theory" plugins/science-suite/skills/nonlinear-dynamics/SKILL.md
+```
+Expected: at least `1`.
 
 - [ ] **Step 3b: Wire into neural-network-mathematics**
 
@@ -1182,21 +1216,24 @@ PYTHONPATH=. python3 tools/validation/skill_validator.py plugins/science-suite 2
 PYTHONPATH=. python3 tools/validation/context_budget_checker.py 2>&1 | grep "graph-theory"
 grep -rc "science-suite:graph-theory" plugins/science-suite/skills/*/SKILL.md | grep -v ":0" | wc -l
 ```
-Expected: no validator errors; `graph-theory` passes the context budget; at least `4` files reference it (`continuum-mechanics-and-rheology` and `fem-fea` from Task 4, `network-coupled-dynamics` from Step 3a, `neural-network-mathematics` from Step 3b).
+Expected: no validator errors; `graph-theory` passes the context budget; at least `5` files reference it (`continuum-mechanics-and-rheology` and `fem-fea` from Task 4, `network-coupled-dynamics` from Step 3a, `nonlinear-dynamics` from Step 3a2, `neural-network-mathematics` from Step 3b).
 
 - [ ] **Step 6: Commit**
 
 ```bash
 git add plugins/science-suite/skills/graph-theory/
-git add plugins/science-suite/skills/network-coupled-dynamics/SKILL.md plugins/science-suite/skills/neural-network-mathematics/SKILL.md
+git add plugins/science-suite/skills/network-coupled-dynamics/SKILL.md plugins/science-suite/skills/nonlinear-dynamics/SKILL.md plugins/science-suite/skills/neural-network-mathematics/SKILL.md
 git commit -m "$(cat <<'EOF'
 feat(science-suite): add graph-theory skill, wire into GNN/network/FEM hubs
 
 Cross-cutting spectral-graph-theory vocabulary shared by GNN architecture
 work (neural-network-mathematics), coupled-oscillator synchronization
-analysis (network-coupled-dynamics), and FEM mesh connectivity -- added
-as a sub-skill, not a new top-level hub. Wires all 3 hubs named in spec
-section 7, not just the network-dynamics one.
+analysis (network-coupled-dynamics, wired both directly and via its actual
+parent hub nonlinear-dynamics), and FEM mesh connectivity -- added as a
+sub-skill, not a new top-level hub. Wires the hub named in spec section 7
+as network-coupled-dynamics via its actual plugin.json-registered parent
+(nonlinear-dynamics), plus neural-network-mathematics and
+continuum-mechanics-and-rheology.
 
 Co-Authored-By: Claude Sonnet 5 <noreply@anthropic.com>
 EOF
@@ -1282,7 +1319,7 @@ cd /home/wei/Documents/GitHub/MyClaude
 PYTHONPATH=. python3 tools/validation/skill_validator.py plugins/science-suite 2>&1 | grep -A3 -E "python-development|python-packaging-advanced|research-and-domains"
 PYTHONPATH=. python3 tools/validation/context_budget_checker.py 2>&1 | grep -E "python-development|python-packaging-advanced"
 ```
-Expected: no validator errors; both destination files still pass the context budget after the merge (if either now exceeds 4,000 tokens, split the newly-added profiling/async content into a small new sub-skill rather than leaving the hub oversized — check the checker's output before deciding).
+Expected: no validator errors; both destination files still pass the context budget after the merge (if either now exceeds 4,000 tokens, split the newly-added profiling/async content into a small new sub-skill rather than leaving the hub oversized — check the checker's output before deciding). If the fallback triggers: split `python-development/SKILL.md`'s new `## Python Profiling` section into `plugins/science-suite/skills/python-profiling/SKILL.md` (frontmatter `name: python-profiling`, `description:` summarizing cProfile/line_profiler/py-spy/memory_profiler usage, discovered via a routing-table line added to `python-development/SKILL.md`: `For deep Python profiling workflows (cProfile, line_profiler, py-spy, memory_profiler), see `science-suite:python-profiling`.`) rather than `python-packaging-advanced`'s content, since profiling is the section most likely to push the token count over budget. If this fallback fires, also add `python-profiling` to Task 10 Step 1's directory recount so the final `ls`-based count includes it (the `plugin.json` hub-skill count is unaffected either way, since sub-skills aren't registered there).
 
 - [ ] **Step 8: Commit**
 
@@ -1312,16 +1349,19 @@ EOF
 **Files:**
 - Modify: `plugins/science-suite/skills/bifurcation-analysis/SKILL.md`
 - Modify: `plugins/science-suite/agents/julia-pro.md`
+- Modify: `plugins/science-suite/agents/nonlinear-dynamics-expert.md` (BifurcationKit-as-primary content — confirmed present in decision tree, capability table, and skill-selection table)
+- Check/modify: `plugins/science-suite/skills/nonlinear-dynamics/SKILL.md`, `plugins/science-suite/skills/chaos-attractors/SKILL.md`, `plugins/science-suite/skills/differential-equations/SKILL.md`, `plugins/science-suite/skills/julia-mastery/SKILL.md`, `plugins/science-suite/skills/jax-julia-interop/SKILL.md` (repo-wide BifurcationKit audit — confirmed present in all 5, not just `bifurcation-analysis`/`julia-pro`)
 - Modify: `plugins/science-suite/skills/point-processes/SKILL.md` (or wherever the `PointProcesses.jl` recommendation lives — confirm exact filename first)
 - Check (no guaranteed edit): `plugins/science-suite/skills/julia-hpc-distributed/SKILL.md` (or `parallel-computing/SKILL.md`) for `SequentialMonteCarlo` mentions
-- Check (no guaranteed edit): any Flux.jl recommendation for new SciML neural closures
+- Check (no guaranteed edit): any Flux.jl recommendation for new SciML neural closures, including in `julia-ml-hpc.md` (do not blanket-exclude this file)
 - Modify: `plugins/science-suite/skills/consensus-mcmc-pigeons/SKILL.md` (Pigeons DEV override / DynamicPPL v0.40 accuracy check — spec §9)
+- Modify: `plugins/science-suite/skills/turing-model-design/SKILL.md` (same Pigeons DEV override / DynamicPPL v0.40 accuracy check — spec §9 names both files explicitly)
 - Modify: `plugins/science-suite/skills/modeling-toolkit/SKILL.md` (MTK v9/v11 split accuracy check — spec §9)
-- Check (no guaranteed edit): `plugins/science-suite/skills/sciml-modern-stack/SKILL.md` — this file's own header marks it FROZEN at 78% context budget ("Do not add new content"); route any correction to `modeling-toolkit` instead, don't add to this file
+- Check + correct-if-needed: `plugins/science-suite/skills/sciml-modern-stack/SKILL.md` — spec §9 names this file explicitly alongside `modeling-toolkit`; this file's own header marks it FROZEN at 78% context budget ("Do not add new content"), which blocks *additions* but not *corrections* to existing wrong text — read it and fix any existing MTK-version claim that contradicts the v9/v11 split in place (edit, don't append); if no existing claim needs correction, leave the file untouched and note that explicitly in the commit message rather than silently skipping it
 - Modify: `plugins/science-suite/skills/julia-graph-neural-networks/SKILL.md` (GNNLux/GNNGraphs/GNNlib DEV-override accuracy check — spec §9)
 
 **Interfaces:**
-- Produces: zero recommendations of `BifurcationKit` as "Recommended" for the `juliacall` escape hatch; zero unhedged `PointProcesses.jl` recommendations; zero `SequentialMonteCarlo` recommendations in multi-package Julia envs; zero Flux.jl recommendations for new SciML neural closures (Lux.jl only); `consensus-mcmc-pigeons` states the Pigeons DEV override (PR #409, `4d981068`) / DynamicPPL v0.40 pairing; `modeling-toolkit` states the MTK v9 (`@sciml`/`@bayes`) vs MTK v11 (`@pinn`) split; `julia-graph-neural-networks` states the GNNLux/GNNGraphs/GNNlib DEV-override-against-monorepo-master status.
+- Produces: zero recommendations of `BifurcationKit` as "Recommended"/primary anywhere in science-suite (not just the `juliacall` escape hatch in 2 files — 7 files total carry BifurcationKit-as-primary content); zero unhedged `PointProcesses.jl` recommendations; zero `SequentialMonteCarlo` recommendations in multi-package Julia envs; zero Flux.jl recommendations for new SciML neural closures (Lux.jl only), audited across all files including `julia-ml-hpc.md`; `consensus-mcmc-pigeons` AND `turing-model-design` both state the Pigeons DEV override (PR #409, `4d981068`) / DynamicPPL v0.40 pairing; `modeling-toolkit` states the MTK v9 (`@sciml`/`@bayes`) vs MTK v11 (`@pinn`) split, and `sciml-modern-stack` is confirmed free of a contradicting version claim (or corrected in place); `julia-graph-neural-networks` states the GNNLux/GNNGraphs/GNNlib DEV-override-against-monorepo-master status.
 
 - [ ] **Step 1: Fix bifurcation-analysis.md's BifurcationKit recommendation**
 
@@ -1355,6 +1395,22 @@ grep -n "BifurcationKit" plugins/science-suite/agents/julia-pro.md
 ```
 Expected: every remaining mention (if any) is in a context explicitly marked as blocked/not-recommended, not presented as the primary tool.
 
+- [ ] **Step 2b: Repo-wide BifurcationKit audit — 6 more files beyond bifurcation-analysis and julia-pro**
+
+Confirmed at plan-authoring time (`grep -rl "BifurcationKit" plugins/science-suite/`) that BifurcationKit-as-primary content also exists in: `nonlinear-dynamics/SKILL.md` (description line, routing table, and an escape-hatch table row explicitly marking `juliacall → BifurcationKit.jl` as the "**recommended practical path**"), `chaos-attractors/SKILL.md` (a "Notes" line recommending `juliacall` + BifurcationKit as the replacement for unmaintained `PyDSTool`), `differential-equations/SKILL.md` (a direct "Use BifurcationKit.jl for parameter continuation" recommendation with a code sample), `julia-mastery/SKILL.md` (lists BifurcationKit.jl among `julia-pro`'s core tools, no caveat), `jax-julia-interop/SKILL.md` (multiple mentions including a worked JAX/BifurcationKit interop example), and `nonlinear-dynamics-expert.md` (decision tree step "Is the task symbolic continuation or branch tracking? --> Julia-first (BifurcationKit.jl)", plus a capability table and workflow table). Re-run the grep at implementation time to confirm this list is current (files may have changed), then read each hit's context and apply the same correction pattern as Steps 1-2: demote BifurcationKit from "recommended"/primary status, note the Julia 1.12 MiniQhull build-failure block, and point to `AUTO-07p` (or, where a Julia-free path isn't the point of the passage — e.g. `julia-mastery`'s tool inventory — simply add a caveat rather than restructuring the whole entry). Allowlist exception: a mention that is explicitly historical/contextual (e.g. "BifurcationKit.jl exists but is currently blocked on Julia 1.12") needs no further correction — the goal is zero *unqualified* recommendations, not zero mentions of the package name.
+
+```bash
+cd /home/wei/Documents/GitHub/MyClaude
+grep -rln "BifurcationKit" plugins/science-suite/
+```
+Expected: same 8 files as the plan-authoring-time check (2 already fixed in Steps 1-2, 6 fixed in this step) — investigate any new hit not in that list.
+
+Verify:
+```bash
+grep -rn "BifurcationKit" plugins/science-suite/ | grep -iE "recommended|primary|best|use.*for parameter continuation" | grep -v "AUTO-07p\|blocked\|Julia 1.12\|MiniQhull"
+```
+Expected: no output (any remaining "recommended"/"primary"/"use X" language attached to BifurcationKit is now paired with the blocked/Julia-1.12 caveat on the same line or immediately adjacent).
+
 - [ ] **Step 3: Fix the point-processes PointProcesses.jl caveat**
 
 ```bash
@@ -1387,9 +1443,9 @@ Expected: any remaining mention is accompanied by the warning (empty output if t
 
 ```bash
 cd /home/wei/Documents/GitHub/MyClaude
-grep -rn "Flux\.jl\|Flux\b" plugins/science-suite/skills/*/SKILL.md plugins/science-suite/agents/*.md | grep -v "GNNLux\|julia-ml-hpc"
+grep -rn "Flux\.jl\|Flux\b" plugins/science-suite/skills/*/SKILL.md plugins/science-suite/agents/*.md | grep -v "GNNLux"
 ```
-Read each hit's context. `julia-ml-hpc.md`'s own description explicitly says "Lux/Flux" — that's fine (Flux is a legitimate part of its broader ML/HPC coverage, not specifically "new SciML neural closures"). Flag and fix only cases where Flux is recommended specifically for a *new* SciML neural closure (UDE/neural-ODE right-hand-side network) rather than general Julia ML — per CLAUDE.md, those should recommend Lux.jl instead.
+Read every hit's context, **including all hits in `julia-ml-hpc.md`** — do not filter that file out of the search entirely (a blanket `grep -v julia-ml-hpc` would hide every Flux mention in that file, not just the acceptable general-ML ones, and would miss a genuine new-SciML-closure recommendation if one exists there). `julia-ml-hpc.md`'s own description explicitly says "Lux/Flux" as general ML/HPC coverage — that specific mention is fine as-is. Flag and fix only cases, in any file including `julia-ml-hpc.md`, where Flux is recommended specifically for a *new* SciML neural closure (UDE/neural-ODE right-hand-side network) rather than general Julia ML — per CLAUDE.md, those should recommend Lux.jl instead.
 
 Verify: re-run the same grep after any fix and confirm remaining hits are legitimate (general ML context, not new-SciML-closure context).
 
@@ -1407,13 +1463,27 @@ grep -c "DEV override\|4d981068\|DynamicPPL v0.40\|@bayes" plugins/science-suite
 ```
 Expected: at least `1`.
 
+Spec §9 names `turing-model-design` alongside `consensus-mcmc-pigeons` for this same check — apply the identical fix there, not just a read. Read `plugins/science-suite/skills/turing-model-design/SKILL.md` and add the same brief DEV-override/DynamicPPL v0.40 note (adapted to Turing.jl model-design framing rather than Pigeons-specific framing, e.g. near any existing version/environment context in the file).
+
+Verify:
+```bash
+grep -c "DEV override\|4d981068\|DynamicPPL v0.40\|@bayes" plugins/science-suite/skills/turing-model-design/SKILL.md
+```
+Expected: at least `1`.
+
 - [ ] **Step 7: Check MTK v9/v11 split accuracy (spec §9)**
 
 ```bash
 cd /home/wei/Documents/GitHub/MyClaude
 grep -n "v9\|v11\|@sciml\|@bayes\|@pinn\|Symbolics" plugins/science-suite/skills/modeling-toolkit/SKILL.md
 ```
-Read `modeling-toolkit/SKILL.md`. Per CLAUDE.md §2b, MTK content spans two incompatible generations: MTK v9/Symbolics v6 in `@sciml`/`@bayes`, and MTK v11/Symbolics v7 in `@pinn` (isolated because NeuralPDE needs the newer MTK). The skill currently names neither version, so a reader could assume one MTK version applies everywhere. Add a short note (e.g. after the intro paragraph) naming both versions and which env each lives in. Do NOT add this to `sciml-modern-stack/SKILL.md` — its own header marks it FROZEN at 78% context budget ("Do not add new content"); leave that file alone even though it also touches the Lux/SciML stack.
+Read `modeling-toolkit/SKILL.md`. Per CLAUDE.md §2b, MTK content spans two incompatible generations: MTK v9/Symbolics v6 in `@sciml`/`@bayes`, and MTK v11/Symbolics v7 in `@pinn` (isolated because NeuralPDE needs the newer MTK). The skill currently names neither version, so a reader could assume one MTK version applies everywhere. Add a short note (e.g. after the intro paragraph) naming both versions and which env each lives in.
+
+Spec §9 names `sciml-modern-stack` alongside `modeling-toolkit` for this same check — its own header marks it FROZEN at 78% context budget ("Do not add new content"), which blocks additive new sections but does not exempt it from the audit. Read `sciml-modern-stack/SKILL.md` and grep it for any MTK version claim:
+```bash
+grep -n "MTK\|ModelingToolkit\|v9\|v11" plugins/science-suite/skills/sciml-modern-stack/SKILL.md
+```
+If it states or implies a single MTK version without the v9/v11 split (i.e. contains a factual claim that contradicts the split), correct that existing line in place — an in-place correction of already-wrong text is not the "new content" the freeze forbids. If it makes no MTK-version claim at all (most likely, given the freeze), leave the file untouched and note in the Step 9 commit message that `sciml-modern-stack` was checked and required no change, so the deferral is an explicit, verified decision rather than a silent skip.
 
 Verify:
 ```bash
@@ -1443,15 +1513,19 @@ git commit -m "$(cat <<'EOF'
 fix(science-suite): correct prohibited-package recommendations and
 accuracy-audit staleness
 
-bifurcation-analysis and julia-pro both recommended BifurcationKit as
-primary despite it being blocked on Julia 1.12 (MiniQhull build failure) --
-demoted in favor of the already-documented AUTO-07p fallback.
-point-processes lacked the required PointProcesses.jl unavailability
-caveat. Checked for SequentialMonteCarlo and Flux-for-new-SciML-closures
-per CLAUDE.md's prohibited list. Also covers the 3 remaining spec section 9
-audit items: Pigeons DEV override/DynamicPPL v0.40 (consensus-mcmc-pigeons),
-MTK v9/v11 split (modeling-toolkit), and GNNLux/GNNGraphs/GNNlib DEV
-overrides against monorepo master (julia-graph-neural-networks).
+8 files (bifurcation-analysis, julia-pro, nonlinear-dynamics-expert,
+nonlinear-dynamics, chaos-attractors, differential-equations, julia-mastery,
+jax-julia-interop) recommended BifurcationKit as primary despite it being
+blocked on Julia 1.12 (MiniQhull build failure) -- demoted in favor of the
+already-documented AUTO-07p fallback across all of them. point-processes
+lacked the required PointProcesses.jl unavailability caveat. Checked for
+SequentialMonteCarlo and Flux-for-new-SciML-closures (including
+julia-ml-hpc, not blanket-excluded) per CLAUDE.md's prohibited list. Also
+covers the remaining spec section 9 audit items: Pigeons DEV
+override/DynamicPPL v0.40 (consensus-mcmc-pigeons AND turing-model-design),
+MTK v9/v11 split (modeling-toolkit, plus a verified check of
+sciml-modern-stack), and GNNLux/GNNGraphs/GNNlib DEV overrides against
+monorepo master (julia-graph-neural-networks).
 
 Co-Authored-By: Claude Sonnet 5 <noreply@anthropic.com>
 EOF
@@ -1469,6 +1543,27 @@ EOF
 
 **Interfaces:**
 - Produces: all doc counts match the final state — 12 agents (7 opus / 4 sonnet / 1 haiku), 30 hub skills, 2 commands.
+
+- [ ] **Step 0: Verify the five-file version sync landed**
+
+Per Global Constraints' dependency checkpoint: this plan does not itself bump the version — the sibling trim plan does, and this plan's changes ride on top of it. Confirm that bump actually happened and is synced across all 4 plugin manifests and `pyproject.toml` before proceeding:
+```bash
+cd /home/wei/Documents/GitHub/MyClaude
+set -o pipefail
+grep -h '"version"' plugins/*/.claude-plugin/plugin.json
+grep -n "^version" pyproject.toml
+python3 -c "
+import json, re
+versions = set()
+for p in ['plugins/agent-core/.claude-plugin/plugin.json', 'plugins/dev-suite/.claude-plugin/plugin.json', 'plugins/research-suite/.claude-plugin/plugin.json', 'plugins/science-suite/.claude-plugin/plugin.json']:
+    versions.add(json.load(open(p))['version'])
+pyproject_version = re.search(r'^version\s*=\s*\"([^\"]+)\"', open('pyproject.toml').read(), re.M).group(1)
+versions.add(pyproject_version)
+assert len(versions) == 1, f'version drift across manifests: {versions}'
+print('OK: all 5 files synced at', versions.pop())
+"
+```
+Expected: all 5 version strings match. If they don't, STOP — do not proceed with Task 10 until the sibling trim plan's version-bump task has landed and synced; do not bump the version from this plan to paper over the mismatch (spec §10 requires one coordinated bump, not a science-suite-only one).
 
 - [ ] **Step 1: Recount the final state**
 
@@ -1539,12 +1634,15 @@ Expected: at least `1`.
 
 ```bash
 cd /home/wei/Documents/GitHub/MyClaude
+set -o pipefail
 make validate
 PYTHONPATH=. python3 tools/validation/context_budget_checker.py 2>&1 | tail -30
 PYTHONPATH=. python3 tools/validation/xref_validator.py 2>&1 | tail -30
 uv run pytest 2>&1 | tail -20
 ```
-Expected: `make validate` exits 0. `context_budget_checker.py` shows all science-suite skills passing (0 oversized), with a higher total skill count than the 223-file baseline (9 new science-suite files added this plan, 0 removed here — the 5 dev-suite files removed are the sibling trim plan's concern). `xref_validator.py` shows no dangling references, including the forward-reference from `nanocomposites-and-adaptive-materials` to `glass-and-collective-dynamics` (now resolved since Task 6 landed) and the `research-and-domains` fix from Task 8. `uv run pytest` passes.
+`set -o pipefail` ensures a failure in `context_budget_checker.py`, `xref_validator.py`, or `pytest` is not masked by `tail`'s own success — check `$?` after each piped command, not just that `tail` printed something.
+
+Expected: `make validate` exits 0. `context_budget_checker.py` shows all science-suite skills passing (0 oversized), with a higher total skill count than the 223-file baseline (10 new science-suite skill files added this plan — 7 from Task 4, 2 from Task 6, 1 from Task 7, matching the `127 + 7 + 2 + 1 = 137` arithmetic in Step 1, plus the Task 8 fallback's `python-profiling` if it triggered; 0 removed here — the 5 dev-suite files removed are the sibling trim plan's concern). `xref_validator.py` shows no dangling references, including the forward-reference from `nanocomposites-and-adaptive-materials` to `glass-and-collective-dynamics` (now resolved since Task 6 landed) and the `research-and-domains` fix from Task 8. `uv run pytest` passes.
 
 - [ ] **Step 6: Commit**
 

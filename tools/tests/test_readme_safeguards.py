@@ -12,6 +12,7 @@ fixtures will cover the real path end-to-end.
 from __future__ import annotations
 
 import pathlib
+from dataclasses import FrozenInstanceError
 
 import pytest
 
@@ -272,7 +273,7 @@ class TestSanitizerMechanics:
 
     def test_sanitized_probe_is_frozen_dataclass(self) -> None:
         result = sanitize_readme_probe("Clean README text.")
-        with pytest.raises(Exception):  # FrozenInstanceError at runtime
+        with pytest.raises(FrozenInstanceError):
             result.value = "mutated"  # type: ignore[misc]
 
 
@@ -309,22 +310,22 @@ LANGUAGE_FIXTURES: list[tuple[str, str, LanguageHint, Confidence]] = [
     ),
     (
         "pure_russian",
-        "Это научная вычислительная среда для байесовской оценки параметров, "
-        "построенная на JAX и NumPyro. Работает с большими данными.",
+        ("Это научная вычислительная среда для байесовской оценки параметров, "
+        "построенная на JAX и NumPyro. Работает с большими данными."),
         "non-latin",
         "very_low",
     ),
     (
         "pure_arabic",
-        "هذا إطار عمل للحوسبة العلمية مصمم لتقدير المعلمات البايزية، مبني "
-        "باستخدام JAX و NumPyro. يعمل مع البيانات الكبيرة.",
+        ("هذا إطار عمل للحوسبة العلمية مصمم لتقدير المعلمات البايزية، مبني "
+        "باستخدام JAX و NumPyro. يعمل مع البيانات الكبيرة."),
         "non-latin",
         "very_low",
     ),
     (
         "mixed_english_chinese",
-        "A Bayesian framework (贝叶斯参数估计框架) built on JAX. "
-        "使用 NumPyro 进行高性能 MCMC 采样与后验推断.",
+        ("A Bayesian framework (贝叶斯参数估计框架) built on JAX. "
+        "使用 NumPyro 进行高性能 MCMC 采样与后验推断."),
         "mixed",
         "low",
     ),

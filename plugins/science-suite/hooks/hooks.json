@@ -21,7 +21,7 @@
           {
             "type": "command",
             "command": "python3 ${CLAUDE_PLUGIN_ROOT}/hooks/post_tool_use.py",
-            "async": true,
+            "async": false,
             "timeout": 15
           }
         ]
@@ -47,7 +47,7 @@
           {
             "type": "command",
             "command": "python3 ${CLAUDE_PLUGIN_ROOT}/hooks/subagent_stop.py",
-            "async": true,
+            "async": false,
             "timeout": 10
           }
         ]

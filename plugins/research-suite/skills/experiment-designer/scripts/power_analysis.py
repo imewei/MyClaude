@@ -32,10 +32,10 @@ from __future__ import annotations
 import argparse
 import sys
 
-
 try:
-    from scipy import stats
     import math
+
+    from scipy import stats
 except ImportError:
     print(
         "error: scipy required. Add 'scipy>=1.14' to pyproject.toml.",

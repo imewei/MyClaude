@@ -63,6 +63,11 @@ exclude = ["test-corpus/"]
 # S603: subprocess call without shell=True check (informational)
 extend-select = ["S602"]
 
+[tool.ruff.lint.per-file-ignores]
+# Hook entrypoints must always emit valid JSON to stdout and never crash the
+# hook process, so the outermost handler intentionally catches Exception.
+"plugins/*/hooks/*.py" = ["BLE001"]
+
 [tool.pytest.ini_options]
 testpaths = ["tools/tests"]
 norecursedirs = ["plugins", "test-corpus", ".*"]

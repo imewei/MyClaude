@@ -4,8 +4,9 @@ Validates hooks.json structure and handler script existence.
 """
 
 import json
-import pytest
 from pathlib import Path
+
+import pytest
 
 PLUGINS_ROOT = Path(__file__).parent.parent.parent / "plugins"
 
@@ -36,7 +37,7 @@ VALID_HOOK_EVENTS = {
 
 VALID_HANDLER_TYPES = {"command", "http", "prompt", "agent"}
 
-SUITES_WITH_HOOKS = ["dev-suite", "science-suite"]
+SUITES_WITH_HOOKS = ["dev-suite", "research-suite", "science-suite"]
 
 
 @pytest.fixture

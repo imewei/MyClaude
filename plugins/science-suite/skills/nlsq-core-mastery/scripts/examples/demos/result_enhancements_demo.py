@@ -7,7 +7,6 @@ to access statistical properties, confidence intervals, and visualization.
 
 import jax.numpy as jnp
 import numpy as np
-
 from nlsq import fit
 
 # ============================================================================
@@ -84,7 +83,7 @@ def example2_backward_compatibility():
     print(f"  result.r_squared = {result.r_squared:.6f}")
 
     # Pattern 3: Can still unpack enhanced result
-    popt2, pcov2 = result
+    popt2, _pcov2 = result
     print("\nPattern 3 (unpack enhanced result):")
     print(f"  popt = {popt2}")
     print(f"  Same as Pattern 1? {np.allclose(popt, popt2)}")
@@ -217,7 +216,7 @@ def example5_visualization():
 
     # Plot without residuals
     print("\nGenerating plot without residuals...")
-    fig, ax = plt.subplots(figsize=(8, 6))
+    _fig, ax = plt.subplots(figsize=(8, 6))
     result.plot(ax=ax, show_residuals=False, color="blue", alpha=0.5)
     plt.savefig("curve_fit_result_no_residuals.png", dpi=150, bbox_inches="tight")
     print("  ✓ Plot saved to 'curve_fit_result_no_residuals.png'")

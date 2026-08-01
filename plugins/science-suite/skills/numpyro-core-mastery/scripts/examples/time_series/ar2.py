@@ -34,15 +34,13 @@ import argparse
 import os
 import time
 
-import matplotlib.pyplot as plt
-
 import jax
-from jax import random
 import jax.numpy as jnp
-
+import matplotlib.pyplot as plt
 import numpyro
-from numpyro.contrib.control_flow import scan
 import numpyro.distributions as dist
+from jax import random
+from numpyro.contrib.control_flow import scan
 
 
 def ar2_scan(y):
@@ -79,7 +77,7 @@ def ar2_for_loop(y):
     for i in range(2, len(y)):
         m_t = const + alpha_1 * y_prev + alpha_2 * y_prev_prev
         mu.append(m_t)
-        y_t = numpyro.sample("y_{}".format(i), dist.Normal(m_t, sigma), obs=y[i])
+        y_t = numpyro.sample(f"y_{i}", dist.Normal(m_t, sigma), obs=y[i])
         y_prev_prev = y_prev
         y_prev = y_t
 
@@ -94,7 +92,7 @@ def run_inference(model, args, rng_key, y):
         num_warmup=args.num_warmup,
         num_samples=args.num_samples,
         num_chains=args.num_chains,
-        progress_bar=False if "NUMPYRO_SPHINXBUILD" in os.environ else True,
+        progress_bar=not "NUMPYRO_SPHINXBUILD" in os.environ,
     )
     mcmc.run(rng_key, y=y)
     mcmc.print_summary()
@@ -123,7 +121,7 @@ def main(args):
     mean_prediction = samples["mu"].mean(axis=0)
 
     # make plots
-    fig, ax = plt.subplots(figsize=(8, 6), constrained_layout=True)
+    _fig, ax = plt.subplots(figsize=(8, 6), constrained_layout=True)
 
     # plot training data
     ax.plot(t, y, color="blue", label="True values")

@@ -17,9 +17,8 @@ import json
 import re
 import sys
 from dataclasses import dataclass, field
-from datetime import datetime
+from datetime import UTC, datetime
 from pathlib import Path
-from typing import List, Set, Optional, Tuple
 
 
 @dataclass
@@ -31,19 +30,19 @@ class Command:
     status: str
     priority: int = 5
     plugin_name: str = ""
-    keywords: Set[str] = field(default_factory=set)
+    keywords: set[str] = field(default_factory=set)
 
 
 @dataclass
 class CommandContext:
     """Context information for command suggestion."""
 
-    file_path: Optional[Path] = None
-    file_extension: Optional[str] = None
-    file_content: Optional[str] = None
-    directory_structure: List[str] = field(default_factory=list)
-    project_type: Optional[str] = None
-    keywords_present: Set[str] = field(default_factory=set)
+    file_path: Path | None = None
+    file_extension: str | None = None
+    file_content: str | None = None
+    directory_structure: list[str] = field(default_factory=list)
+    project_type: str | None = None
+    keywords_present: set[str] = field(default_factory=set)
 
 
 @dataclass
@@ -57,7 +56,7 @@ class CommandSuggestionResult:
     relevance_score: float
     timing_appropriate: bool
     priority_correct: bool
-    matching_keywords: List[str] = field(default_factory=list)
+    matching_keywords: list[str] = field(default_factory=list)
     explanation: str = ""
 
 
@@ -101,10 +100,10 @@ class CommandSuggestionAnalyzer:
     def __init__(self, plugins_dir: str, corpus_dir: str):
         self.plugins_dir = Path(plugins_dir)
         self.corpus_dir = Path(corpus_dir)
-        self.commands: List[Command] = []
-        self.results: List[CommandSuggestionResult] = []
+        self.commands: list[Command] = []
+        self.results: list[CommandSuggestionResult] = []
 
-    def load_commands(self, specific_plugin: Optional[str] = None) -> None:
+    def load_commands(self, specific_plugin: str | None = None) -> None:
         """Load commands from all plugins."""
         print("Loading plugin commands...")
 
@@ -152,12 +151,12 @@ class CommandSuggestionAnalyzer:
                     f"  ✓ {plugin_name}: {len([c for c in self.commands if c.plugin_name == plugin_name])} commands"
                 )
 
-            except Exception as e:
+            except (OSError, json.JSONDecodeError, KeyError) as e:
                 print(f"  ✗ Error loading {plugin_dir.name}: {e}")
 
         print(f"\nLoaded {len(self.commands)} total commands")
 
-    def _extract_keywords(self, text: str) -> Set[str]:
+    def _extract_keywords(self, text: str) -> set[str]:
         """Extract keywords from text."""
         # Remove slash prefix from commands
         text = text.replace("/", " ")
@@ -190,7 +189,7 @@ class CommandSuggestionAnalyzer:
 
         return {w for w in words if w not in stopwords and len(w) > 2}
 
-    def analyze_context(self, sample_path: Path) -> List[CommandContext]:
+    def analyze_context(self, sample_path: Path) -> list[CommandContext]:
         """Analyze contexts within a sample project."""
         contexts = []
 
@@ -236,14 +235,14 @@ class CommandSuggestionAnalyzer:
 
                 contexts.append(context)
 
-            except Exception as e:
+            except OSError as e:
                 print(f"  Warning: failed to analyze '{file_path}': {e}")
 
         return contexts
 
     def calculate_relevance_score(
         self, command: Command, context: CommandContext
-    ) -> Tuple[float, List[str]]:
+    ) -> tuple[float, list[str]]:
         """Calculate relevance score for command in given context."""
         score = 0.0
         matching_keywords = []
@@ -273,17 +272,23 @@ class CommandSuggestionAnalyzer:
         cmd_name_lower = command.name.lower()
 
         # Setup/scaffold commands are relevant at project start
-        if any(
-            term in cmd_name_lower for term in ["setup", "scaffold", "init", "create"]
+        if (
+            any(
+                term in cmd_name_lower
+                for term in ["setup", "scaffold", "init", "create"]
+            )
+            and context.file_content
+            and len(context.file_content) < 500
         ):
-            # Check if context suggests early stage
-            if context.file_content and len(context.file_content) < 500:
-                score += 0.2
+            score += 0.2
 
         # Test commands are relevant for test files
-        if "test" in cmd_name_lower:
-            if context.file_path and "test" in str(context.file_path).lower():
-                score += 0.3
+        if (
+            "test" in cmd_name_lower
+            and context.file_path
+            and "test" in str(context.file_path).lower()
+        ):
+            score += 0.3
 
         # Optimize commands are relevant for performance contexts
         if "optimize" in cmd_name_lower or "profile" in cmd_name_lower:
@@ -298,11 +303,10 @@ class CommandSuggestionAnalyzer:
                 score += 0.3
 
         # CI/CD commands are relevant for workflow contexts
-        if "ci" in cmd_name_lower or "workflow" in cmd_name_lower:
-            if any(
-                "workflow" in p or ".github" in p for p in context.directory_structure
-            ):
-                score += 0.4
+        if ("ci" in cmd_name_lower or "workflow" in cmd_name_lower) and any(
+            "workflow" in p or ".github" in p for p in context.directory_structure
+        ):
+            score += 0.4
 
         return min(score, 1.0), matching_keywords
 
@@ -451,7 +455,7 @@ class CommandSuggestionAnalyzer:
 
         report = f"""# Command Suggestion Analysis Report
 
-**Analysis Date:** {datetime.now().strftime("%Y-%m-%d %H:%M:%S")}
+**Analysis Date:** {datetime.now(UTC).strftime("%Y-%m-%d %H:%M:%S")}
 **Total Commands:** {len(self.commands)}
 **Total Suggestions Analyzed:** {len(self.results)}
 

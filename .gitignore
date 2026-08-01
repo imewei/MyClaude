@@ -260,10 +260,13 @@ memory/
 .claude-context/
 .claude-progress.md
 docs/.claude-progress.md
+.claude/progress/
 
 # claude-flow daemon/runtime state
 .claude-flow/
 claude-flow.config.json
+agentdb.rvf
+agentdb.rvf.*
 
 # Agent-OS development framework (internal use)
 agent-os/

@@ -17,7 +17,6 @@ from pathlib import Path
 
 import jax.numpy as jnp
 import numpy as np
-
 from nlsq import fit
 
 
@@ -155,7 +154,6 @@ def main():
     # Let's stick with fit() and accept we might print less info from the result object itself,
     # or just assume for the demo that we care about the checkpoint files.
 
-    pass
 
     # Check saved checkpoints
     checkpoints = list(checkpoint_dir.glob("checkpoint_iter_*.h5"))

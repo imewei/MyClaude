@@ -16,11 +16,11 @@ Usage:
     python3 tools/memory_analyzer.py --all  # Profile all plugins
 """
 
+import gc
 import json
 import sys
-import gc
-from pathlib import Path
 from dataclasses import dataclass, field
+from pathlib import Path
 from typing import Any
 
 
@@ -227,7 +227,7 @@ class PluginMemoryAnalyzer:
                         content = f.read()
                     total_memory_bytes += get_object_size(content)
                     file_count += 1
-                except Exception as e:
+                except (OSError, UnicodeDecodeError) as e:
                     profile.warnings.append(f"Error reading {agent_file.name}: {e}")
 
         memory_kb = total_memory_bytes / 1024
@@ -258,7 +258,7 @@ class PluginMemoryAnalyzer:
                         content = f.read()
                     total_memory_bytes += get_object_size(content)
                     file_count += 1
-                except Exception as e:
+                except (OSError, UnicodeDecodeError) as e:
                     profile.warnings.append(f"Error reading {command_file.name}: {e}")
 
         memory_kb = total_memory_bytes / 1024
@@ -289,7 +289,7 @@ class PluginMemoryAnalyzer:
                         content = f.read()
                     total_memory_bytes += get_object_size(content)
                     file_count += 1
-                except Exception as e:
+                except (OSError, UnicodeDecodeError) as e:
                     profile.warnings.append(f"Error reading {skill_file.name}: {e}")
 
         memory_kb = total_memory_bytes / 1024
@@ -342,7 +342,7 @@ class PluginMemoryAnalyzer:
                     )
                 )
                 return 0
-        except Exception as e:
+        except (OSError, UnicodeDecodeError) as e:
             profile.warnings.append(f"Error reading README.md: {e}")
             return 0
 

@@ -10,11 +10,11 @@ Usage:
 """
 
 import jax.numpy as jnp
-import jax.random as random
+import matplotlib.pyplot as plt
 import numpyro
 import numpyro.distributions as dist
-from numpyro.infer import NUTS, MCMC
-import matplotlib.pyplot as plt
+from jax import random
+from numpyro.infer import MCMC, NUTS
 
 
 def hierarchical_model(group_idx, x, y=None):
@@ -149,7 +149,7 @@ def visualize_shrinkage(mcmc, true_alpha, true_beta, n_groups):
     mu_beta_mean = posterior_samples["mu_beta"].mean()
 
     # Plot shrinkage
-    fig, axes = plt.subplots(1, 2, figsize=(12, 5))
+    _fig, axes = plt.subplots(1, 2, figsize=(12, 5))
 
     # Intercept shrinkage
     axes[0].scatter(true_alpha, alpha_mean, s=100, alpha=0.6, label="Group estimates")
@@ -195,7 +195,7 @@ def plot_group_fits(group_idx, x, y, mcmc, n_groups):
     alpha_mean = posterior_samples["alpha"].mean(axis=0)
     beta_mean = posterior_samples["beta"].mean(axis=0)
 
-    fig, axes = plt.subplots(1, n_groups, figsize=(15, 3))
+    _fig, axes = plt.subplots(1, n_groups, figsize=(15, 3))
 
     for j in range(n_groups):
         ax = axes[j] if n_groups > 1 else axes

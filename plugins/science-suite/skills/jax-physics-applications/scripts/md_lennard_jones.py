@@ -17,8 +17,8 @@ Requirements:
 
 import jax
 import jax.numpy as jnp
-from jax_md import space, energy, simulate, quantity
 import matplotlib.pyplot as plt
+from jax_md import energy, quantity, simulate, space
 
 
 def main():
@@ -146,7 +146,7 @@ def main():
 
     # 8. Visualization
     print("\nGenerating plots...")
-    fig, axes = plt.subplots(2, 2, figsize=(12, 10))
+    _fig, axes = plt.subplots(2, 2, figsize=(12, 10))
 
     # Energy time series
     axes[0, 0].plot(energies, "b-", linewidth=1, alpha=0.7)

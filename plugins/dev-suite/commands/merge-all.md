@@ -41,10 +41,16 @@ Parse output to get: current branch, dirty status, main branch name, other branc
 ### 2. Commit Changes (if dirty and no --skip-commit)
 
 ```bash
-git add -A && git diff --cached --stat
+git add -u && git diff --cached --stat
 ```
 
-Generate conventional commit message from changed files. Commit without AI attribution.
+Stages only already-tracked modifications. If untracked files exist
+(`git status --short` shows `??` entries), list them and ask before adding
+any of them — even under `--force`, which skips the merge-plan confirmation
+in step 4 but must not silently sweep up `.env`, keys, or build artifacts
+that were never meant to be committed.
+
+Generate conventional commit message from changed files.
 
 ### 3. Show Plan
 
@@ -81,6 +87,9 @@ Show: branches merged, branches skipped, branches deleted, next steps (push).
 
 ## Rollback
 
-- Undo merge: `git reset --hard HEAD~1`
+- `git reset --hard HEAD~1` only undoes the single most recent merge, and
+  discards any uncommitted work — after N merges, find the commit `main` was
+  at before this run started via `git reflog show main` and
+  `git reset --hard <that-hash>` instead.
 - Restore branch: `git checkout -b <name> <hash>` (find via `git reflog`)
-- Abort merge: `git merge --abort`
+- Abort a merge still in conflict: `git merge --abort`

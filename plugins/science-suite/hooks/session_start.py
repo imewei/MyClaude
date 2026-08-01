@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """SessionStart hook for science-suite.
 
-Detects computation environment: JAX devices, GPU, Julia env.
+Detects computation environment: JAX, GPU, Julia env.
 """
 
 import json
@@ -9,7 +9,22 @@ import os
 import shutil
 import subprocess
 import sys
+from datetime import UTC, datetime, timedelta
 from pathlib import Path
+
+from _hook_io import get_field, read_payload, wrap_context
+
+PROGRESS_RELPATH = Path(".claude") / "progress" / "science-suite.md"
+PROGRESS_MAX_CHARS = 1500
+PROGRESS_MAX_AGE = timedelta(hours=24)
+TIMESTAMP_PREFIX = "## Session ended: "
+TIMESTAMP_FORMAT = "%Y-%m-%d %H:%M UTC"
+# Both probes must fit inside the hook's own 10s budget declared in hooks.json.
+PROBE_TIMEOUT = 3
+JAX_PROBE = (
+    "import importlib.util,sys; "
+    "sys.exit(0 if importlib.util.find_spec('jax') else 1)"
+)
 
 
 def detect_compute_env() -> dict:
@@ -17,19 +32,20 @@ def detect_compute_env() -> dict:
     env: dict[str, object] = {"jax": False, "gpu": False, "julia": False}
 
     try:
+        # find_spec, not jax.devices() — presence detection must not initialize
+        # a CUDA context. Run out-of-process to probe the same python3 as before.
         result = subprocess.run(
-            ["python3", "-c", "import jax; print(jax.devices())"],
+            ["python3", "-c", JAX_PROBE],
             capture_output=True,
             text=True,
-            timeout=10,
+            timeout=PROBE_TIMEOUT,
+            check=False,
         )
-        if result.returncode == 0:
-            env["jax"] = True
-            env["jax_devices"] = result.stdout.strip()
-            if "gpu" in result.stdout.lower() or "cuda" in result.stdout.lower():
-                env["gpu"] = True
+        env["jax"] = result.returncode == 0
     except (subprocess.TimeoutExpired, FileNotFoundError):
         pass
+
+    env["gpu"] = shutil.which("nvidia-smi") is not None
 
     if shutil.which("julia"):
         env["julia"] = True
@@ -38,7 +54,8 @@ def detect_compute_env() -> dict:
                 ["julia", "-e", "println(VERSION)"],
                 capture_output=True,
                 text=True,
-                timeout=10,
+                timeout=PROBE_TIMEOUT,
+                check=False,
             )
             if result.returncode == 0:
                 env["julia_version"] = result.stdout.strip()
@@ -49,28 +66,40 @@ def detect_compute_env() -> dict:
 
 
 def read_progress_file(cwd: str) -> str:
-    """Read prior session progress summary if it exists."""
-    progress_path = Path(cwd) / ".claude-progress.md"
-    if progress_path.exists():
-        try:
-            text = progress_path.read_text(encoding="utf-8").strip()
-            if len(text) > 500:
-                text = text[-500:]
-            return text
-        except OSError:
-            pass
-    return ""
+    """Read prior session progress if it exists and is less than a day old."""
+    progress_path = Path(cwd) / PROGRESS_RELPATH
+    try:
+        text = progress_path.read_text(encoding="utf-8").strip()
+    except OSError:
+        return ""
+
+    first_line = text.split("\n", 1)[0]
+    if not first_line.startswith(TIMESTAMP_PREFIX):
+        return ""
+    try:
+        saved_at = datetime.strptime(
+            first_line[len(TIMESTAMP_PREFIX) :].strip(), TIMESTAMP_FORMAT
+        ).replace(tzinfo=UTC)
+    except ValueError:
+        return ""
+    if datetime.now(UTC) - saved_at > PROGRESS_MAX_AGE:
+        return ""
+
+    # Truncate from the head so the timestamp line always survives.
+    if len(text) > PROGRESS_MAX_CHARS:
+        text = text[:PROGRESS_MAX_CHARS].rsplit("\n", 1)[0] + "\n... (truncated)"
+    return text
 
 
 def main() -> None:
     """Detect compute environment and read prior session progress."""
     try:
+        payload = read_payload()
         env = detect_compute_env()
 
         parts = []
         if env["jax"]:
-            devices = env.get("jax_devices", "unknown")
-            parts.append(f"JAX available (devices: {devices})")
+            parts.append("JAX available")
         if env["gpu"]:
             parts.append("GPU detected")
         if env["julia"]:
@@ -78,19 +107,22 @@ def main() -> None:
             parts.append(f"Julia {version}")
 
         context = ". ".join(parts) if parts else "No scientific compute stack detected"
+        sections = [f"Science compute env: {context}"]
 
-        # Read prior session progress
-        cwd = os.environ.get("PWD", os.getcwd())
+        cwd = get_field(payload, "cwd", env_fallback="PWD", default=os.getcwd())
         progress = read_progress_file(cwd)
         if progress:
-            context += f"\n\nPrior session progress:\n{progress}"
+            sections.append(
+                "Prior science-suite session summary (from "
+                f"{PROGRESS_RELPATH.as_posix()}, may be stale):\n{progress}"
+            )
 
-        result = {
-            "status": "success",
-            "additionalContext": f"Science compute env: {context}",
-        }
+        ctx = "\n\n".join(sections)
+        result = {"status": "success", "additionalContext": ctx}
+        result.update(wrap_context("SessionStart", ctx))
         json.dump(result, sys.stdout)
     except Exception as e:
+        print(f"SessionStart hook error: {e}", file=sys.stderr)
         json.dump(
             {"status": "error", "message": f"SessionStart hook error: {e}"},
             sys.stdout,

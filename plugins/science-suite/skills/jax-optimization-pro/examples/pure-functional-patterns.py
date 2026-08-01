@@ -6,10 +6,12 @@ and explicit RNG handling. These patterns are essential for writing
 JIT-compatible, parallelizable code.
 """
 
+import itertools
+from typing import Any, NamedTuple
+
 import jax
 import jax.numpy as jnp
 import optax
-from typing import NamedTuple, Dict, Any
 
 # =============================================================================
 # Pattern 1: Explicit State Passing (No Globals)
@@ -19,7 +21,7 @@ from typing import NamedTuple, Dict, Any
 class TrainState(NamedTuple):
     """Immutable training state - all state is explicit."""
 
-    params: Dict[str, Any]
+    params: dict[str, Any]
     opt_state: Any
     step: int
     loss_history: jnp.ndarray
@@ -74,8 +76,8 @@ def train_step(state: TrainState, batch, optimizer, loss_fn):
 def init_params(rng_key, layer_sizes):
     """Initialize nested parameter structure."""
     params = {}
-    for i, (in_size, out_size) in enumerate(zip(layer_sizes[:-1], layer_sizes[1:])):
-        rng_key, w_key, b_key = jax.random.split(rng_key, 3)
+    for i, (in_size, out_size) in enumerate(itertools.pairwise(layer_sizes)):
+        rng_key, w_key, _b_key = jax.random.split(rng_key, 3)
         params[f"layer_{i}"] = {
             "w": jax.random.normal(w_key, (in_size, out_size)) * 0.01,
             "b": jnp.zeros(out_size),

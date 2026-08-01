@@ -5,9 +5,10 @@ Demonstrates choosing between explicit and implicit solvers,
 detecting stiffness, and configuring step size control.
 """
 
-import jax.numpy as jnp
+from collections.abc import Callable
+
 import diffrax
-from typing import Callable, Tuple
+import jax.numpy as jnp
 
 # =============================================================================
 # Pattern 1: Basic Explicit Solver
@@ -107,7 +108,7 @@ def implicit_solver_example():
 # =============================================================================
 
 
-def detect_stiffness(jacobian_fn: Callable, y: jnp.ndarray) -> Tuple[float, str]:
+def detect_stiffness(jacobian_fn: Callable, y: jnp.ndarray) -> tuple[float, str]:
     """Estimate stiffness from Jacobian eigenvalue spread.
 
     Returns stiffness ratio and recommended solver.
@@ -136,7 +137,7 @@ def stiffness_detection_example():
     def jacobian(y):
         """Jacobian of Robertson kinetics."""
         k1, k2, k3 = 0.04, 3e7, 1e4
-        y1, y2, y3 = y
+        _y1, y2, y3 = y
 
         return jnp.array(
             [
@@ -269,7 +270,7 @@ def compare_solvers():
             "success": True,
             "num_steps": sol_explicit.stats["num_steps"],
         }
-    except Exception as e:
+    except Exception as e:  # noqa: BLE001 -- comparing solver robustness; any failure mode should record as "explicit solver failed"
         results["explicit"] = {"success": False, "error": str(e)}
 
     # Try implicit solver
@@ -289,7 +290,7 @@ def compare_solvers():
             "success": True,
             "num_steps": sol_implicit.stats["num_steps"],
         }
-    except Exception as e:
+    except Exception as e:  # noqa: BLE001 -- comparing solver robustness; any failure mode should record as "implicit solver failed"
         results["implicit"] = {"success": False, "error": str(e)}
 
     return results

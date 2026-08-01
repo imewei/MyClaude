@@ -10,10 +10,10 @@ Validates plugin.json metadata against schema requirements:
 """
 
 import json
+import re
 import sys
 from pathlib import Path
-from typing import Dict, Any, List
-import re
+from typing import Any, ClassVar
 
 # Allow `python tools/validation/metadata_validator.py ...` CLI invocation by
 # adding the repo root to sys.path before resolving the `tools` package. The
@@ -22,14 +22,14 @@ _REPO_ROOT = Path(__file__).resolve().parents[2]
 if str(_REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(_REPO_ROOT))
 
-from tools.common.models import ValidationResult  # noqa: E402
+from tools.common.models import ValidationResult
 
 
 class MetadataValidator:
     """Plugin metadata validator"""
 
     # Schema definition
-    SCHEMA: Dict[str, Dict[str, Any]] = {
+    SCHEMA: ClassVar[dict[str, dict[str, Any]]] = {
         "required": {
             "name": {
                 "type": "string",
@@ -108,7 +108,7 @@ class MetadataValidator:
     }
 
     # Agent schema — aligned with Claude Code v2.1.88 subagent frontmatter spec
-    AGENT_SCHEMA: Dict[str, Dict[str, Any]] = {
+    AGENT_SCHEMA: ClassVar[dict[str, dict[str, Any]]] = {
         "required": {
             "name": {
                 "type": "string",
@@ -188,7 +188,7 @@ class MetadataValidator:
     }
 
     # Command schema
-    COMMAND_SCHEMA: Dict[str, Dict[str, Any]] = {
+    COMMAND_SCHEMA: ClassVar[dict[str, dict[str, Any]]] = {
         "required": {
             "name": {
                 "type": "string",
@@ -218,7 +218,7 @@ class MetadataValidator:
     }
 
     # Skill schema
-    SKILL_SCHEMA: Dict[str, Dict[str, Any]] = {
+    SKILL_SCHEMA: ClassVar[dict[str, dict[str, Any]]] = {
         "required": {
             "name": {
                 "type": "string",
@@ -243,7 +243,6 @@ class MetadataValidator:
 
     def __init__(self):
         """Initialize the validator"""
-        pass
 
     def validate_plugin_json(self, plugin_path: Path) -> ValidationResult:
         """Validate plugin.json file"""
@@ -264,7 +263,7 @@ class MetadataValidator:
         except json.JSONDecodeError as e:
             result.add_error("json", f"Invalid JSON syntax: {e}")
             return result
-        except Exception as e:
+        except OSError as e:
             result.add_error("file", f"Failed to read plugin.json: {e}")
             return result
 
@@ -297,8 +296,8 @@ class MetadataValidator:
 
     def _validate_fields(
         self,
-        metadata: Dict[str, Any],
-        schema: Dict[str, Any],
+        metadata: dict[str, Any],
+        schema: dict[str, Any],
         result: ValidationResult,
         required: bool,
     ):
@@ -326,7 +325,7 @@ class MetadataValidator:
         self,
         field_name: str,
         value: Any,
-        schema: Dict[str, Any],
+        schema: dict[str, Any],
         result: ValidationResult,
     ):
         """Validate a single field"""
@@ -344,7 +343,7 @@ class MetadataValidator:
         self,
         field_name: str,
         value: Any,
-        schema: Dict[str, Any],
+        schema: dict[str, Any],
         result: ValidationResult,
     ) -> bool:
         """Validate type constraint. Returns False if type check fails."""
@@ -379,7 +378,7 @@ class MetadataValidator:
         self,
         field_name: str,
         value: Any,
-        schema: Dict[str, Any],
+        schema: dict[str, Any],
         result: ValidationResult,
     ):
         """Validate regex pattern constraint for strings"""
@@ -396,7 +395,7 @@ class MetadataValidator:
         self,
         field_name: str,
         value: Any,
-        schema: Dict[str, Any],
+        schema: dict[str, Any],
         result: ValidationResult,
     ):
         """Validate string length constraints"""
@@ -418,39 +417,41 @@ class MetadataValidator:
         self,
         field_name: str,
         value: Any,
-        schema: Dict[str, Any],
+        schema: dict[str, Any],
         result: ValidationResult,
     ):
         """Validate enum constraints"""
-        if "enum" in schema:
-            if value not in schema["enum"]:
-                result.add_error(
-                    field_name,
-                    f"Invalid value: '{value}'",
-                    f"Allowed values: {', '.join(map(str, schema['enum']))}",
-                )
+        if "enum" in schema and value not in schema["enum"]:
+            result.add_error(
+                field_name,
+                f"Invalid value: '{value}'",
+                f"Allowed values: {', '.join(map(str, schema['enum']))}",
+            )
 
     def _validate_array_constraint(
         self,
         field_name: str,
         value: Any,
-        schema: Dict[str, Any],
+        schema: dict[str, Any],
         result: ValidationResult,
     ):
         """Validate array constraints"""
-        if isinstance(value, list):
-            if "min_items" in schema and len(value) < schema["min_items"]:
-                result.add_warning(
-                    field_name,
-                    f"Should have at least {schema['min_items']} items",
-                    f"Current count: {len(value)}",
-                )
+        if (
+            isinstance(value, list)
+            and "min_items" in schema
+            and len(value) < schema["min_items"]
+        ):
+            result.add_warning(
+                field_name,
+                f"Should have at least {schema['min_items']} items",
+                f"Current count: {len(value)}",
+            )
 
     def _validate_numeric_constraint(
         self,
         field_name: str,
         value: Any,
-        schema: Dict[str, Any],
+        schema: dict[str, Any],
         result: ValidationResult,
     ):
         """Validate numeric min/max constraints"""
@@ -470,7 +471,7 @@ class MetadataValidator:
 
     def _check_type(self, value: Any, expected_type: str) -> bool:
         """Check if value matches expected type"""
-        type_mapping: Dict[str, Any] = {
+        type_mapping: dict[str, Any] = {
             "string": str,
             "integer": int,
             "number": (int, float),
@@ -485,7 +486,7 @@ class MetadataValidator:
 
         return isinstance(value, expected)
 
-    def _validate_agents(self, agents: List[Dict[str, Any]], result: ValidationResult):
+    def _validate_agents(self, agents: list[dict[str, Any]], result: ValidationResult):
         """Validate agents array (supports both file paths and inline objects)"""
         if not agents:
             result.add_warning("agents", "Agents array is empty")
@@ -523,7 +524,7 @@ class MetadataValidator:
                     )
 
     def _validate_commands(
-        self, commands: List[Dict[str, Any]], result: ValidationResult
+        self, commands: list[dict[str, Any]], result: ValidationResult
     ):
         """Validate commands array (supports both file paths and inline objects)"""
         for idx, command in enumerate(commands):
@@ -569,7 +570,7 @@ class MetadataValidator:
 
     # Skills that lack a routing tree but are explicitly approved as user-facing standalones.
     # These may be added to plugin.json without triggering the tier-compliance warning.
-    _TIER2_STANDALONE_WHITELIST: set = {
+    _TIER2_STANDALONE_WHITELIST: ClassVar[set[str]] = {
         "ai-pair",          # dev-suite: three-model collaboration
         "three-brain",      # dev-suite: second-opinion routing
         "scientific-review",  # research-suite: peer-review deliverable
@@ -585,7 +586,7 @@ class MetadataValidator:
 
     def _validate_skills(
         self,
-        skills: List[Dict[str, Any]],
+        skills: list[dict[str, Any]],
         result: ValidationResult,
         plugin_path: Path | None = None,
     ):

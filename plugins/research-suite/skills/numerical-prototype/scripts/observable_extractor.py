@@ -65,14 +65,14 @@ class ObservableBuilder:
     def __post_init__(self):
         self.data = {"name": self.name, "uncertainty": {}}
 
-    def set_type(self, type_: str) -> "ObservableBuilder":
+    def set_type(self, type_: str) -> ObservableBuilder:
         allowed = {"time_series", "spectrum", "scalar", "tensor", "distribution"}
         if type_ not in allowed:
             raise ValueError(f"type_ must be one of {sorted(allowed)}, got {type_!r}")
         self.data["type"] = type_
         return self
 
-    def set_physical_meaning(self, meaning: str) -> "ObservableBuilder":
+    def set_physical_meaning(self, meaning: str) -> ObservableBuilder:
         self.data["physical_meaning"] = meaning
         return self
 
@@ -82,7 +82,7 @@ class ObservableBuilder:
         values,
         t_units: str = "seconds",
         value_units: str = "",
-    ) -> "ObservableBuilder":
+    ) -> ObservableBuilder:
         self.data["predicted_values"] = {
             "t": _to_list(t),
             "values": _to_list(values),
@@ -90,7 +90,7 @@ class ObservableBuilder:
         }
         return self
 
-    def set_scalar(self, value: float, units: str = "") -> "ObservableBuilder":
+    def set_scalar(self, value: float, units: str = "") -> ObservableBuilder:
         self.data["predicted_values"] = {
             "value": float(value),
             "units": units,
@@ -103,7 +103,7 @@ class ObservableBuilder:
         amplitude,
         freq_units: str = "Hz",
         amp_units: str = "",
-    ) -> "ObservableBuilder":
+    ) -> ObservableBuilder:
         self.data["predicted_values"] = {
             "freq": _to_list(freq),
             "amplitude": _to_list(amplitude),
@@ -117,7 +117,7 @@ class ObservableBuilder:
         type_: str,
         value: float,
         origin: str,
-    ) -> "ObservableBuilder":
+    ) -> ObservableBuilder:
         """source: 'numerical', 'parametric', or 'statistical'.
         type_: 'relative' or 'absolute'."""
         allowed_sources = {"numerical", "parametric", "statistical"}
@@ -142,7 +142,7 @@ class ObservableBuilder:
         characteristic_timescale_s: float | None = None,
         min_sampling_rate_hz: float | None = None,
         total_duration_s: float | None = None,
-    ) -> "ObservableBuilder":
+    ) -> ObservableBuilder:
         if characteristic_timescale_s is not None and min_sampling_rate_hz is None:
             min_sampling_rate_hz = 10.0 / characteristic_timescale_s
         entry = {}
@@ -160,7 +160,7 @@ class ObservableBuilder:
         characteristic_length_m: float | None = None,
         min_resolution_m: float | None = None,
         extent_m: float | None = None,
-    ) -> "ObservableBuilder":
+    ) -> ObservableBuilder:
         entry = {}
         if characteristic_length_m is not None:
             entry["characteristic_length_m"] = float(characteristic_length_m)
@@ -173,11 +173,11 @@ class ObservableBuilder:
         self.data["spatial_structure"] = entry
         return self
 
-    def set_noise_model(self, type_: str, **kwargs) -> "ObservableBuilder":
+    def set_noise_model(self, type_: str, **kwargs) -> ObservableBuilder:
         self.data["noise_model"] = {"type": type_, **kwargs}
         return self
 
-    def set_expected_snr(self, snr: float) -> "ObservableBuilder":
+    def set_expected_snr(self, snr: float) -> ObservableBuilder:
         self.data["expected_snr_at_typical_conditions"] = float(snr)
         return self
 

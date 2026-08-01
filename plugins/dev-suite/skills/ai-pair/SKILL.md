@@ -1,7 +1,7 @@
 ---
 name: ai-pair
 description: |
-  AI Pair Collaboration — orchestrate a persistent three-model team (Claude developer/author + Codex reviewer + Gemini reviewer) for iterative code development or content creation with dual-perspective review. Use when: user types /ai-pair, asks to start a "dev team" or "content team", wants an ongoing multi-model review pipeline for a project, or says "team-stop". Also trigger when the user wants Codex + Gemini to collaboratively review ongoing work through multiple iterations — not one-shot review (use three-brain for that). Requires codex and gemini CLIs; degrades gracefully to Claude-only review if either is absent.
+  AI Pair Collaboration — orchestrate a persistent three-model team (Claude developer/author + Codex reviewer + Gemini reviewer) for iterative code development or content creation with dual-perspective review. Use when the user asks to start a "dev team" or "content team", wants an ongoing multi-model review pipeline for a project, or asks to stop/shut down such a team. Also trigger when the user wants Codex + Gemini to collaboratively review ongoing work through multiple iterations — not one-shot review (use three-brain for that). Requires codex and gemini CLIs; degrades gracefully to Claude-only review if either is absent.
 ---
 
 # AI Pair Collaboration
@@ -10,13 +10,16 @@ Coordinate a persistent, semi-automatic team: one creator (developer or author) 
 
 Different AI models look at completely different dimensions. Codex catches bugs, security issues, and edge cases. Gemini surfaces architectural and readability concerns. Running both maximizes coverage without relying on a single model's blind spots.
 
-## Commands
+## When to use
 
-```bash
-/ai-pair dev-team [project]     # Code team: developer + codex-reviewer + gemini-reviewer
-/ai-pair content-team [topic]   # Content team: author + codex-reviewer + gemini-reviewer
-/ai-pair team-stop              # Shut down team and clean up
-```
+This is a skill, not a slash command — there is nothing to type. Route here when
+the user asks for:
+
+| Request | Mode |
+|---------|------|
+| "start a dev team", "pair on this project" | **Dev team** — developer + codex-reviewer + gemini-reviewer |
+| "start a content team", "help me write this with reviewers" | **Content team** — author + codex-reviewer + gemini-reviewer |
+| "stop the team", "we're done with the team" | **Shut down** — see team-stop flow below |
 
 ## Team Roles
 
@@ -31,11 +34,14 @@ Different AI models look at completely different dimensions. Codex catches bugs,
 1. **User assigns task** → Team Lead routes to developer/author
 2. **Creator completes** → Team Lead shows result to user
 3. **User approves** → Team Lead dispatches both reviewers in parallel
-4. **Reviewers report** → Team Lead consolidates and presents:
+4. **Reviewers report** → Team Lead consolidates and presents, with the
+   actual effort/degradation level each reviewer landed on in its own
+   heading — a `low`-effort retry must not read as indistinguishable from an
+   `xhigh` first-pass review:
    ```
-   ## Codex Review
+   ## Codex Review [effort: {level} — {N} retries]
    {findings}
-   ## Gemini Review
+   ## Gemini Review [degradation: {level}]
    {findings}
    ```
 5. **User decides** → "Revise" (loop to step 1) or "Pass" (next task or end)
@@ -76,7 +82,11 @@ TaskCreate: "Awaiting review" — gemini-reviewer, status: pending, blockedBy: t
 
 Read `references/agent-prompts.md` for the startup prompt templates. The **CLI Invocation Protocol** block below must be included verbatim in each reviewer agent's startup prompt.
 
-Spawn 3 agents via Agent tool with `subagent_type: "general-purpose"` and `mode: "bypassPermissions"` (required — reviewers must execute external CLI commands and read project files).
+Spawn 3 agents via Agent tool with `subagent_type: "general-purpose"`. Do not
+set `mode: "bypassPermissions"` — a skill is not a consent channel, and
+reviewers only need Bash (to shell out to codex/gemini) and Read (project
+files), both of which the normal permission system already grants or prompts
+for. Let the user's own permission settings govern these agents like any other.
 
 ### 6. Confirm to User
 
@@ -106,7 +116,7 @@ Never pipe via stdin — pipes can truncate or mishandle large inputs.
 
 **[Gemini degradation]** Retry in order: simplify prompt → reduce analysis dimensions → Claude fallback.
 
-**[Hard rules]** Never skip the CLI call. Never silently self-review. If the CLI is not found, report immediately. Only label `[Claude Fallback — [CLI] four retries all failed]` after all retries are exhausted. Set `NO_COLOR=1` if output has ANSI artifacts.
+**[Hard rules]** Never skip the CLI call. Never silently self-review. If the CLI is not found, report immediately. Only label `[Claude Fallback — [CLI] four retries all failed]` after all retries are exhausted. Every report — including a first-pass success — states its effort/degradation level in the section heading (see step 4); an unlabeled heading defaults to reading as the highest effort, so omitting the label is not a neutral shortcut. Set `NO_COLOR=1` if output has ANSI artifacts.
 
 ---
 

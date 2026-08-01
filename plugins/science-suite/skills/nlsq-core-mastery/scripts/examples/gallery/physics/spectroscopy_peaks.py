@@ -17,7 +17,6 @@ Key Concepts:
 import jax.numpy as jnp
 import matplotlib.pyplot as plt
 import numpy as np
-
 from nlsq import fit
 
 # Set random seed
@@ -127,7 +126,7 @@ energy = np.linspace(5, 15, 500)  # 500 channels
 bg_slope_true = 2.0
 bg_offset_true = 50.0
 
-# Peak 1: Kα line (Gaussian, strong)  # noqa: RUF003
+# Peak 1: Kα line (Gaussian, strong)
 amp1_true, cen1_true, width1_true = 800, 7.5, 0.3
 
 # Peak 2: Kβ line (Gaussian, weaker, overlapping)
@@ -265,7 +264,7 @@ print("\nPeak 1 (Kα, Gaussian):")
 print(f"  Amplitude: {amp1_fit:.1f} ± {amp1_err:.1f} counts")
 print(f"  Center:    {cen1_fit:.3f} ± {cen1_err:.3f} keV")
 print(f"  Width:     {width1_fit:.3f} ± {width1_err:.3f} keV")
-print(f"  FWHM:      {2.355 * width1_fit:.3f} keV")  # FWHM = 2.355 * σ  # noqa: RUF003
+print(f"  FWHM:      {2.355 * width1_fit:.3f} keV")  # FWHM = 2.355 * σ
 # Peak area (Gaussian)
 area1 = amp1_fit * width1_fit * np.sqrt(2 * np.pi)
 print(f"  Area:      {area1:.0f} counts·keV")

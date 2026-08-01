@@ -5,23 +5,43 @@ Collects results from parallel science agents (parameter sweeps, etc.).
 """
 
 import json
-import os
 import sys
+
+from _hook_io import get_field, read_payload, wrap_context
+
+# Agents that produce numerical results worth validating. sci-workflow-engineer
+# (LLM/RAG tooling) and python-pro (packaging, typing, glue) are excluded.
+NUMERICAL_AGENTS = {
+    "jax-pro",
+    "julia-ml-hpc",
+    "julia-pro",
+    "ml-expert",
+    "neural-network-master",
+    "nonlinear-dynamics-expert",
+    "pinn-engineer",
+    "simulation-expert",
+    "statistical-physicist",
+}
 
 
 def main() -> None:
     """Log science subagent completion."""
     try:
-        agent_name = os.environ.get("AGENT_NAME", "unknown")
-        result = {
-            "status": "success",
-            "additionalContext": (
+        payload = read_payload()
+        agent_name = get_field(payload, "agent_name", "subagent_type", "agent_type")
+
+        result: dict = {"status": "success"}
+        if agent_name in NUMERICAL_AGENTS:
+            ctx = (
                 f"Science agent '{agent_name}' completed. "
                 "Check output for numerical validity before proceeding."
-            ),
-        }
+            )
+            result["additionalContext"] = ctx
+            result.update(wrap_context("SubagentStop", ctx))
+
         json.dump(result, sys.stdout)
     except Exception as e:
+        print(f"SubagentStop hook error: {e}", file=sys.stderr)
         json.dump(
             {"status": "error", "message": f"SubagentStop hook error: {e}"},
             sys.stdout,

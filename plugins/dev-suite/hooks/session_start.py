@@ -6,8 +6,12 @@ Auto-detects project stack: language, framework, test runner, package manager.
 
 import json
 import os
+import re
 import sys
+from datetime import UTC, datetime, timedelta
 from pathlib import Path
+
+from _hook_io import get_field, read_payload, wrap_context
 
 
 def detect_stack(cwd: str) -> dict:
@@ -47,24 +51,36 @@ def detect_stack(cwd: str) -> dict:
     return stack
 
 
+MAX_PROGRESS_CHARS = 500
+MAX_PROGRESS_AGE = timedelta(hours=24)
+
+
 def read_progress_file(cwd: str) -> str:
-    """Read prior session progress summary if it exists."""
-    progress_path = Path(cwd) / ".claude-progress.md"
-    if progress_path.exists():
-        try:
-            text = progress_path.read_text(encoding="utf-8").strip()
-            if len(text) > 500:
-                text = text[-500:]
-            return text
-        except OSError:
-            pass
-    return ""
+    """Read prior session progress, skipping it if stale or undated."""
+    progress_path = Path(cwd) / ".claude" / "progress" / "dev-suite.md"
+    try:
+        text = progress_path.read_text(encoding="utf-8").strip()
+    except OSError:
+        return ""
+
+    # First line is "## Session ended: YYYY-MM-DD HH:MM UTC" — no parseable
+    # timestamp means we cannot tell how old this is, so don't inject it.
+    match = re.match(r"## Session ended: (\d{4}-\d{2}-\d{2} \d{2}:\d{2}) UTC", text)
+    if not match:
+        return ""
+    written = datetime.strptime(match.group(1), "%Y-%m-%d %H:%M").replace(tzinfo=UTC)
+    if datetime.now(UTC) - written > MAX_PROGRESS_AGE:
+        return ""
+
+    if len(text) > MAX_PROGRESS_CHARS:
+        text = text[:MAX_PROGRESS_CHARS] + "\n... (truncated)"
+    return text
 
 
 def main() -> None:
     """Detect project stack and read prior session progress."""
     try:
-        cwd = os.environ.get("PWD", os.getcwd())
+        cwd = get_field(read_payload(), "cwd", env_fallback="PWD", default=os.getcwd())
         stack = detect_stack(cwd)
 
         parts = []
@@ -82,12 +98,12 @@ def main() -> None:
         if progress:
             context += f"\n\nPrior session progress:\n{progress}"
 
-        result = {
-            "status": "success",
-            "additionalContext": f"Dev environment detected: {context}",
-        }
+        ctx = f"Dev environment detected: {context}"
+        result = {"status": "success", "additionalContext": ctx}
+        result.update(wrap_context("SessionStart", ctx))
         json.dump(result, sys.stdout)
     except Exception as e:
+        print(f"SessionStart hook error: {e}", file=sys.stderr)
         json.dump(
             {"status": "error", "message": f"SessionStart hook error: {e}"},
             sys.stdout,

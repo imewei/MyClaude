@@ -52,18 +52,16 @@ import argparse
 import os
 import time
 
+import jax
+import jax.numpy as jnp
 import matplotlib
 import matplotlib.pyplot as plt
 import numpy as np
-
-import jax
-from jax import random
-import jax.numpy as jnp
-
 import numpyro
+import numpyro.distributions as dist
+from jax import random
 from numpyro.contrib.control_flow import scan
 from numpyro.diagnostics import hpdi
-import numpyro.distributions as dist
 from numpyro.infer import MCMC, NUTS, Predictive
 
 matplotlib.use("Agg")
@@ -131,7 +129,7 @@ def run_inference(model, args, rng_key, y, n_seasons):
         num_warmup=args.num_warmup,
         num_samples=args.num_samples,
         num_chains=args.num_chains,
-        progress_bar=False if "NUMPYRO_SPHINXBUILD" in os.environ else True,
+        progress_bar=not "NUMPYRO_SPHINXBUILD" in os.environ,
     )
     mcmc.run(rng_key, y=y, n_seasons=n_seasons)
     mcmc.print_summary()
@@ -167,7 +165,7 @@ def main(args):
     hpdi_preds = hpdi(preds)
 
     # make plots
-    fig, ax = plt.subplots(figsize=(8, 6), constrained_layout=True)
+    _fig, ax = plt.subplots(figsize=(8, 6), constrained_layout=True)
 
     # plot true data and predictions
     ax.plot(t, y, color="blue", label="True values")

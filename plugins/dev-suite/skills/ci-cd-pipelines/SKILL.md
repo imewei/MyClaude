@@ -28,7 +28,7 @@ Blue/green, canary, and rolling deployments with rollback strategies.
 SAST, dependency scanning, secrets detection, and SBOM generation in CI pipelines.
 
 ### [Iterative Error Resolution](../iterative-error-resolution/SKILL.md)
-Systematic diagnosis of CI/CD pipeline failures, flaky CI tests, and build environment issues. Scoped to pipeline-level errors — for runtime application debugging, see `dev-workflows/debugging-toolkit`.
+Systematic diagnosis of CI/CD pipeline failures, flaky CI tests, and build environment issues. Scoped to pipeline-level errors — for runtime application debugging, see `debugging-toolkit`.
 
 ## Routing Decision Tree
 

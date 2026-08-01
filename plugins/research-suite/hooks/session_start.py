@@ -1,57 +1,55 @@
 #!/usr/bin/env python3
 """SessionStart hook for research-suite.
 
-Detects research-spark/scientific-review artifacts in the working directory
-so the orchestrator resumes where the previous session left off.
+Reports the research-spark stage from `_state.yaml`, the pipeline's declared
+single source of truth. Says nothing when no research-spark workspace is
+present — an absence claim injected before any file is read would be a
+confident guess, not evidence.
 """
 
 import json
 import os
 import sys
-from pathlib import Path
 
-
-STAGE_MARKERS = {
-    "stage_1_problem": ["problem_statement.md", "problem.md"],
-    "stage_2_claim": ["falsifiable_claim.md", "claims.md"],
-    "stage_3_prereg": ["pre_registration.md", "prereg.md"],
-    "stage_4_plan": ["experimental_plan.md", "plan.md"],
-    "stage_5_analysis": ["analysis_plan.md"],
-    "stage_6_results": ["results.md", "results.ipynb"],
-    "stage_7_discussion": ["discussion.md"],
-    "stage_8_manuscript": ["manuscript.md", "paper.md", "paper.tex"],
-}
-
-
-def detect_research_artifacts(cwd: str) -> dict:
-    """Detect research-spark stage artifacts present in the working tree."""
-    root = Path(cwd)
-    present: list[str] = []
-    for stage, filenames in STAGE_MARKERS.items():
-        if any((root / name).exists() or any(root.rglob(name)) for name in filenames):
-            present.append(stage)
-    return {"stages_present": present, "latest_stage": present[-1] if present else None}
+import _hook_io
 
 
 def main() -> None:
     try:
-        cwd = os.environ.get("PWD", os.getcwd())
-        artifacts = detect_research_artifacts(cwd)
+        payload = _hook_io.read_payload()
+        cwd = _hook_io.get_field(payload, "cwd", env_fallback="PWD", default=os.getcwd())
+        states = _hook_io.find_state_files(cwd)
 
-        if artifacts["latest_stage"]:
+        if not states:
+            json.dump({"status": "success"}, sys.stdout)
+            return
+
+        if len(states) > 1:
             ctx = (
-                f"Research-suite resume: detected artifacts up to "
-                f"{artifacts['latest_stage']}. Stages present: "
-                f"{', '.join(artifacts['stages_present'])}."
+                f"Research-suite: {len(states)} _state.yaml files found "
+                f"({', '.join(str(p) for p in states)}). Read the relevant one "
+                "before assuming any stage."
             )
         else:
-            ctx = (
-                "Research-suite session start: no research-spark artifacts detected. "
-                "Start at Stage 1 (problem statement) if using /research-spark."
-            )
+            state = states[0]
+            stage = _hook_io.read_current_stage(state)
+            if stage is None:
+                ctx = (
+                    f"Research-suite: found {state} but could not read "
+                    "`current_stage` from it. Surface this to the user rather "
+                    "than overwriting the file."
+                )
+            else:
+                ctx = (
+                    f"Research-suite resume: {state} reports current_stage: {stage}. "
+                    "Read the file itself before acting; it is the single source of truth."
+                )
 
-        json.dump({"status": "success", "additionalContext": ctx}, sys.stdout)
+        result = {"status": "success", "additionalContext": ctx}
+        result.update(_hook_io.wrap_context("SessionStart", ctx))
+        json.dump(result, sys.stdout)
     except Exception as e:
+        print(f"SessionStart hook error: {e}", file=sys.stderr)
         json.dump(
             {"status": "error", "message": f"SessionStart hook error: {e}"},
             sys.stdout,

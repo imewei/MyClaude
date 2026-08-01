@@ -18,7 +18,6 @@ import re
 import sys
 from dataclasses import dataclass, field
 from pathlib import Path
-from typing import Dict, List, Set, Optional, Tuple
 
 
 @dataclass
@@ -26,11 +25,11 @@ class PluginTriggeringPatterns:
     """Triggering patterns extracted from a plugin."""
 
     name: str
-    keywords: Set[str] = field(default_factory=set)
-    file_extensions: Set[str] = field(default_factory=set)
-    directory_patterns: Set[str] = field(default_factory=set)
-    content_patterns: Set[str] = field(default_factory=set)
-    category: Optional[str] = None
+    keywords: set[str] = field(default_factory=set)
+    file_extensions: set[str] = field(default_factory=set)
+    directory_patterns: set[str] = field(default_factory=set)
+    content_patterns: set[str] = field(default_factory=set)
+    category: str | None = None
 
 
 @dataclass
@@ -39,8 +38,8 @@ class ActivationTestResult:
 
     sample_name: str
     sample_category: str
-    expected_plugins: List[str]
-    activated_plugins: List[str]
+    expected_plugins: list[str]
+    activated_plugins: list[str]
     expected_trigger: bool
     actual_trigger: bool
     true_positive: bool = False
@@ -48,7 +47,7 @@ class ActivationTestResult:
     false_positive: bool = False
     false_negative: bool = False
     confidence_score: float = 0.0
-    matching_patterns: Dict[str, List[str]] = field(default_factory=dict)
+    matching_patterns: dict[str, list[str]] = field(default_factory=dict)
 
 
 @dataclass
@@ -114,10 +113,10 @@ class PluginActivationTester:
     def __init__(self, plugins_dir: str, corpus_dir: str):
         self.plugins_dir = Path(plugins_dir)
         self.corpus_dir = Path(corpus_dir)
-        self.plugins: Dict[str, PluginTriggeringPatterns] = {}
-        self.results: List[ActivationTestResult] = []
+        self.plugins: dict[str, PluginTriggeringPatterns] = {}
+        self.results: list[ActivationTestResult] = []
 
-    def load_plugins(self, specific_plugin: Optional[str] = None) -> None:
+    def load_plugins(self, specific_plugin: str | None = None) -> None:
         """Load plugin triggering patterns."""
         print("Loading plugin triggering patterns...")
 
@@ -142,20 +141,20 @@ class PluginActivationTester:
                     f"  ✓ {patterns.name}: {len(patterns.keywords)} keywords, "
                     f"{len(patterns.file_extensions)} extensions"
                 )
-            except Exception as e:
+            except (OSError, json.JSONDecodeError, KeyError) as e:
                 print(f"  ✗ Error loading {plugin_dir.name}: {e}")
 
         print(f"\nLoaded {len(self.plugins)} plugins")
 
     def _extract_patterns(
-        self, data: Dict, plugin_dir: Path
+        self, data: dict, plugin_dir: Path
     ) -> PluginTriggeringPatterns:
         """Extract triggering patterns from plugin metadata."""
         patterns = PluginTriggeringPatterns(name=data["name"])
 
         # Extract keywords
         if "keywords" in data:
-            patterns.keywords = set(kw.lower() for kw in data["keywords"])
+            patterns.keywords = {kw.lower() for kw in data["keywords"]}
 
         # Extract category
         if "category" in data:
@@ -222,12 +221,12 @@ class PluginActivationTester:
                                 # Extract technical terms
                                 words = re.findall(r"\b[a-z]+(?:\.[a-z]+)+\b", line)
                                 patterns.content_patterns.update(words)
-                except Exception as e:
+                except OSError as e:
                     print(f"  Warning: failed to parse agent file '{agent_file}': {e}")
 
         return patterns
 
-    def load_test_corpus(self) -> List[Dict]:
+    def load_test_corpus(self) -> list[dict]:
         """Load test corpus samples."""
         print("\nLoading test corpus...")
 
@@ -243,7 +242,7 @@ class PluginActivationTester:
                 metadata = json.loads(metadata_file.read_text())
                 metadata["path"] = sample_dir
                 samples.append(metadata)
-            except Exception as e:
+            except (OSError, json.JSONDecodeError) as e:
                 print(f"  ✗ Error loading {sample_dir.name}: {e}")
 
         print(f"  Loaded {len(samples)} test samples")
@@ -251,7 +250,7 @@ class PluginActivationTester:
 
     def test_file_extension_matching(
         self, sample_path: Path, plugin: PluginTriggeringPatterns
-    ) -> Tuple[bool, List[str]]:
+    ) -> tuple[bool, list[str]]:
         """Test if plugin should activate based on file extensions."""
         if not plugin.file_extensions:
             return False, []
@@ -267,7 +266,7 @@ class PluginActivationTester:
 
     def test_directory_pattern_matching(
         self, sample_path: Path, plugin: PluginTriggeringPatterns
-    ) -> Tuple[bool, List[str]]:
+    ) -> tuple[bool, list[str]]:
         """Test if plugin should activate based on directory patterns."""
         if not plugin.directory_patterns:
             return False, []
@@ -285,7 +284,7 @@ class PluginActivationTester:
 
     def test_content_pattern_matching(
         self, sample_path: Path, plugin: PluginTriggeringPatterns
-    ) -> Tuple[bool, List[str]]:
+    ) -> tuple[bool, list[str]]:
         """Test if plugin should activate based on content patterns."""
         if not plugin.content_patterns:
             return False, []
@@ -318,14 +317,14 @@ class PluginActivationTester:
                             match_count += 1
                             if pattern not in matching_patterns:
                                 matching_patterns.append(pattern)
-                except Exception as e:
+                except OSError as e:
                     print(f"  Warning: failed to read '{file_path}': {e}")
 
         # Require multiple pattern matches for activation
         threshold = max(2, len(plugin.content_patterns) * 0.1)
         return match_count >= threshold, matching_patterns
 
-    def test_sample(self, sample: Dict) -> ActivationTestResult:
+    def test_sample(self, sample: dict) -> ActivationTestResult:
         """Test plugin activation for a single sample."""
         sample_path = sample["path"]
         result = ActivationTestResult(
@@ -569,9 +568,9 @@ Samples that should have triggered plugins but didn't:
 
     def _get_timestamp(self) -> str:
         """Get current timestamp."""
-        from datetime import datetime
+        from datetime import UTC, datetime
 
-        return datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        return datetime.now(UTC).strftime("%Y-%m-%d %H:%M:%S")
 
 
 def main():
