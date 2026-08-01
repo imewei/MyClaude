@@ -96,7 +96,7 @@ def main() -> None:
     try:
         payload = _hook_io.read_payload()
         end_reason = _hook_io.get_field(payload, "reason", "matcher_input")
-        cwd = os.environ.get("PWD", os.getcwd())
+        cwd = _hook_io.get_field(payload, "cwd", env_fallback="PWD", default=os.getcwd())
 
         write_progress(cwd, end_reason)
 

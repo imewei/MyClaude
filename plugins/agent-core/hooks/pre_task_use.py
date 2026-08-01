@@ -9,7 +9,6 @@ so this hook can never drift from the agent roster.
 """
 
 import json
-import os
 import sys
 from pathlib import Path
 
@@ -42,15 +41,9 @@ def load_agent_capabilities() -> dict[str, str]:
 
 
 def get_tool_input(payload: dict) -> dict:
-    """Extract tool_input from the payload, falling back to the TOOL_INPUT env var."""
+    """Extract tool_input from the payload."""
     tool_input = payload.get("tool_input")
-    if isinstance(tool_input, dict):
-        return tool_input
-    try:
-        legacy = json.loads(os.environ.get("TOOL_INPUT", "{}"))
-    except json.JSONDecodeError:
-        return {}
-    return legacy if isinstance(legacy, dict) else {}
+    return tool_input if isinstance(tool_input, dict) else {}
 
 
 def main() -> None:
@@ -63,11 +56,13 @@ def main() -> None:
 
         capabilities = load_agent_capabilities()
         if subagent_type and subagent_type in capabilities:
-            result["additionalContext"] = (
+            ctx = (
                 f"Agent '{subagent_type}' specializes in: "
                 f"{capabilities[subagent_type]}. "
                 f"Leverage Opus adaptive thinking for complex sub-tasks."
             )
+            result["additionalContext"] = ctx
+            result.update(_hook_io.wrap_context("PreToolUse", ctx))
 
         json.dump(result, sys.stdout)
     except Exception as e:

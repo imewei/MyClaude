@@ -103,6 +103,15 @@ def test_hook_resolves_payload_fields(script, payload, expected):
     assert output.get("status") == "success", output
     assert expected in text, f"{script} did not resolve payload field: {text}"
     assert "unknown" not in text, f"{script} emitted a placeholder despite a valid payload: {text}"
+    # A top-level "additionalContext" key is silently ignored by Claude Code —
+    # only hookSpecificOutput.additionalContext actually reaches the model.
+    if "additionalContext" in output:
+        nested = output.get("hookSpecificOutput", {})
+        assert nested.get("additionalContext") == output["additionalContext"], (
+            f"{script} emits additionalContext but not the nested shape Claude "
+            f"Code actually reads: {text}"
+        )
+        assert nested.get("hookEventName"), f"{script} nested output missing hookEventName: {text}"
 
 
 @pytest.mark.parametrize("script", ALL_HOOKS)

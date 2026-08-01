@@ -19,17 +19,18 @@ def main() -> None:
             payload,
             "tool_name",
             "matcher_input",
-            env_fallback="TOOL_NAME",
             default="",
         )
 
         result = {"status": "success"}
         # Naming no tool is more honest than asserting a denial for tool 'unknown'.
         if tool_name:
-            result["additionalContext"] = (
+            ctx = (
                 f"Permission denied for tool '{tool_name}'. "
                 "If this is expected, consider adjusting permission mode."
             )
+            result["additionalContext"] = ctx
+            result.update(_hook_io.wrap_context("PermissionDenied", ctx))
         json.dump(result, sys.stdout)
     except Exception as e:
         json.dump(

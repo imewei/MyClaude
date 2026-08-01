@@ -21,17 +21,17 @@ def main() -> None:
             "subagent_type",
             "agent_type",
             "matcher_input",
-            env_fallback="AGENT_NAME",
             default="",
         )
 
         result = {"status": "success"}
-        if agent_name:
-            result["additionalContext"] = (
-                f"Subagent '{agent_name}' completed. Check task list for updates."
-            )
-        else:
-            result["additionalContext"] = "A subagent completed. Check task list for updates."
+        ctx = (
+            f"Subagent '{agent_name}' completed. Check task list for updates."
+            if agent_name
+            else "A subagent completed. Check task list for updates."
+        )
+        result["additionalContext"] = ctx
+        result.update(_hook_io.wrap_context("SubagentStop", ctx))
         json.dump(result, sys.stdout)
     except Exception as e:
         json.dump(

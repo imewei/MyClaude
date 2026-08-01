@@ -13,6 +13,8 @@ import sys
 from datetime import UTC, datetime, timedelta
 from pathlib import Path
 
+import _hook_io
+
 PROGRESS_HEADER = "## Session ended: "
 MAX_PROGRESS_CHARS = 800
 MAX_PROGRESS_AGE = timedelta(hours=24)
@@ -89,9 +91,8 @@ def read_uncommitted_status(cwd: str) -> str:
     return ""
 
 
-def get_session_context() -> dict:
+def get_session_context(cwd: str) -> dict:
     """Build session context with orientation from prior work."""
-    cwd = os.environ.get("PWD", os.getcwd())
 
     parts = []
 
@@ -117,16 +118,18 @@ def get_session_context() -> dict:
     else:
         context = "Fresh session — no prior work context found."
 
-    return {
-        "status": "success",
-        "additionalContext": f"Session orientation:\n{context}",
-    }
+    ctx = f"Session orientation:\n{context}"
+    result = {"status": "success", "additionalContext": ctx}
+    result.update(_hook_io.wrap_context("SessionStart", ctx))
+    return result
 
 
 def main() -> None:
     """Output session context as JSON."""
     try:
-        result = get_session_context()
+        payload = _hook_io.read_payload()
+        cwd = _hook_io.get_field(payload, "cwd", env_fallback="PWD", default=os.getcwd())
+        result = get_session_context(cwd)
         json.dump(result, sys.stdout)
     except Exception as e:
         error_result = {
