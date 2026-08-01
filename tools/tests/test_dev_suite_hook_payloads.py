@@ -177,3 +177,146 @@ def test_session_start_reads_payload_cwd_not_just_pwd(tmp_path):
     output = json.loads(result.stdout)
     context = hook_context(output)
     assert "python" in context.lower(), f"did not detect stack from payload cwd: {context}"
+
+
+# --- ai-pair fabrication check (subagent_stop.py) -------------------------
+
+
+def test_subagent_stop_catches_real_reviewer_heading(tmp_path):
+    """The reviewer subagent's OWN transcript uses 'Codex Code Review' /
+    'Codex Content Review' (agent-prompts.md), never the bare 'Codex Review'
+    heading — that only appears in the Team Lead's later consolidation."""
+    transcript = tmp_path / "t.jsonl"
+    transcript.write_text(
+        '{"type":"assistant","content":"## Codex Code Review\\nFabricated, no CLI call."}\n'
+    )
+    out = run_hook(
+        "subagent_stop.py",
+        {"agent_name": "codex-reviewer", "transcript_path": str(transcript)},
+    )
+    assert "integrity check" in hook_context(out)
+
+
+def test_subagent_stop_case_insensitive_heading_match(tmp_path):
+    transcript = tmp_path / "t.jsonl"
+    transcript.write_text("## CODEX CODE REVIEW\nno bash call to codex anywhere\n")
+    out = run_hook(
+        "subagent_stop.py",
+        {"agent_name": "x", "transcript_path": str(transcript)},
+    )
+    assert "integrity check" in hook_context(out)
+
+
+def test_subagent_stop_does_not_false_flag_on_escaped_quotes(tmp_path):
+    """A real codex invocation preceded by a quoted echo/arg must not trip
+    the CLI-invocation regex just because an escaped quote appears first."""
+    transcript = tmp_path / "t.jsonl"
+    transcript.write_text(
+        '{"input": {"command": "echo \\"note\\" && codex exec --prompt \\"review\\""}}\n'
+        "## Codex Code Review\nfindings here\n"
+    )
+    out = run_hook(
+        "subagent_stop.py",
+        {"agent_name": "codex-reviewer", "transcript_path": str(transcript)},
+    )
+    assert "integrity check" not in hook_context(out)
+
+
+def test_subagent_stop_clean_when_cli_actually_invoked(tmp_path):
+    transcript = tmp_path / "t.jsonl"
+    transcript.write_text(
+        '{"input": {"command": "codex exec --full-auto review.txt"}}\n'
+        "## Codex Code Review\nfindings here\n"
+    )
+    out = run_hook(
+        "subagent_stop.py",
+        {"agent_name": "codex-reviewer", "transcript_path": str(transcript)},
+    )
+    assert "integrity check" not in hook_context(out)
+
+
+def test_subagent_stop_logs_when_transcript_path_missing(tmp_path):
+    """A stale/wrong transcript_path must not silently no-op with zero trail."""
+    result = subprocess.run(
+        [sys.executable, str(HOOKS_DIR / "subagent_stop.py")],
+        input=json.dumps(
+            {"agent_name": "x", "transcript_path": str(tmp_path / "does-not-exist.jsonl")}
+        ),
+        capture_output=True,
+        text=True,
+        timeout=15,
+        cwd=tmp_path,
+        check=False,
+    )
+    assert result.returncode == 0
+    assert "transcript_path not found" in result.stderr
+
+
+# --- HEAD staleness (session_end.py -> session_start.py) ------------------
+
+
+def test_stale_head_marker_appears_after_new_commit(tmp_path):
+    subprocess.run(["git", "init", "-q", "."], cwd=tmp_path, check=True)
+    subprocess.run(
+        ["git", "commit", "--allow-empty", "-q", "-m", "a"], cwd=tmp_path, check=True
+    )
+
+    end = run_hook("session_end.py", {"reason": "clear"}, cwd=tmp_path)
+    assert end["status"] == "success"
+
+    subprocess.run(
+        ["git", "commit", "--allow-empty", "-q", "-m", "b"], cwd=tmp_path, check=True
+    )
+
+    start = run_hook("session_start.py", cwd=tmp_path)
+    assert "STALE" in hook_context(start)
+
+
+def test_head_unchanged_no_stale_marker(tmp_path):
+    subprocess.run(["git", "init", "-q", "."], cwd=tmp_path, check=True)
+    subprocess.run(
+        ["git", "commit", "--allow-empty", "-q", "-m", "a"], cwd=tmp_path, check=True
+    )
+
+    end = run_hook("session_end.py", {"reason": "clear"}, cwd=tmp_path)
+    assert end["status"] == "success"
+
+    start = run_hook("session_start.py", cwd=tmp_path)
+    assert "STALE" not in hook_context(start)
+
+
+def test_head_check_fails_open_when_not_a_git_repo(tmp_path):
+    """Deliberate design choice, pinned down: if HEAD can't be verified (no
+    git repo here), show the recorded progress unmodified rather than
+    guessing staleness — see the comment in session_start.py."""
+    from datetime import UTC, datetime
+
+    progress_dir = tmp_path / ".claude" / "progress"
+    progress_dir.mkdir(parents=True)
+    ts = datetime.now(UTC).strftime("%Y-%m-%d %H:%M")
+    (progress_dir / "dev-suite.md").write_text(
+        f"## Session ended: {ts} UTC\nReason: clear\nHEAD: abc1234\n\n### Recent commits\nx\n"
+    )
+    # tmp_path is NOT a git repository at this point.
+
+    start = run_hook("session_start.py", cwd=tmp_path)
+    assert "STALE" not in hook_context(start)
+    assert "HEAD: abc1234" in hook_context(start)
+
+
+def test_progress_file_without_head_line_degrades_gracefully(tmp_path):
+    """Backward compatibility: progress files written before this HEAD-check
+    feature existed have no HEAD: line — must not crash or false-flag."""
+    from datetime import UTC, datetime
+
+    progress_dir = tmp_path / ".claude" / "progress"
+    progress_dir.mkdir(parents=True)
+    ts = datetime.now(UTC).strftime("%Y-%m-%d %H:%M")
+    (progress_dir / "dev-suite.md").write_text(
+        f"## Session ended: {ts} UTC\nReason: clear\n\n### Recent commits\nx\n"
+    )
+
+    start = run_hook("session_start.py", cwd=tmp_path)
+    assert start["status"] == "success"
+    assert "STALE" not in hook_context(start)
+    assert "Reason: clear" in hook_context(start)

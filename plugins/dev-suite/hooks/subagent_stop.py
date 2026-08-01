@@ -21,8 +21,18 @@ from pathlib import Path
 
 from _hook_io import get_field, read_payload, wrap_context
 
-CODEX_CMD_RE = re.compile(r'"command"\s*:\s*"[^"]*\bcodex\b', re.IGNORECASE)
-GEMINI_CMD_RE = re.compile(r'"command"\s*:\s*"[^"]*\bgemini\b', re.IGNORECASE)
+# The reviewer subagent's own transcript contains "Codex Code Review" or
+# "Codex Content Review" (agent-prompts.md:80,119,168,206 — what the reviewer
+# is instructed to write). The bare "Codex Review" heading only appears in
+# SKILL.md's Team-Lead *consolidation* format, never in the reviewer
+# subagent's own transcript — matching on that string would never fire.
+CLAIMS_CODEX_RE = re.compile(r"\bCodex (?:Code|Content) Review\b", re.IGNORECASE)
+CLAIMS_GEMINI_RE = re.compile(r"\bGemini (?:Code|Content) Review\b", re.IGNORECASE)
+# `(?:[^"\\]|\\.)*` (not `[^"]*`) so a JSON-escaped quote inside an earlier
+# argument (e.g. `codex exec --prompt \"review\"`) doesn't terminate the
+# match before reaching "codex"/"gemini".
+CODEX_CMD_RE = re.compile(r'"command"\s*:\s*"(?:[^"\\]|\\.)*\bcodex\b', re.IGNORECASE)
+GEMINI_CMD_RE = re.compile(r'"command"\s*:\s*"(?:[^"\\]|\\.)*\bgemini\b', re.IGNORECASE)
 
 
 def check_ai_pair_transcript(transcript_path: str) -> str | None:
@@ -32,14 +42,16 @@ def check_ai_pair_transcript(transcript_path: str) -> str | None:
         return None
     path = Path(transcript_path)
     if not path.is_file():
+        print(f"SubagentStop: transcript_path not found: {path}", file=sys.stderr)
         return None
     try:
         text = path.read_text(encoding="utf-8", errors="ignore")
-    except OSError:
+    except OSError as e:
+        print(f"SubagentStop: could not read transcript {path}: {e}", file=sys.stderr)
         return None
 
-    claims_codex = "Codex Review" in text
-    claims_gemini = "Gemini Review" in text
+    claims_codex = CLAIMS_CODEX_RE.search(text) is not None
+    claims_gemini = CLAIMS_GEMINI_RE.search(text) is not None
     if not (claims_codex or claims_gemini):
         return None
 

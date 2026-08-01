@@ -17,9 +17,15 @@ import sys
 
 import _hook_io
 
-# Canonical artifact(s) expected once the stage NUMBER recorded as
-# current_stage in _state.yaml has been completed. Stage 4-5 share
-# theory-scaffold; 05 only exists once stage 5 itself is done.
+# Canonical artifact(s) expected once a stage NUMBER appears in
+# stages_completed in _state.yaml. Stage 4-5 share theory-scaffold; 05 only
+# exists once stage 5 itself is in stages_completed.
+#
+# NOTE: current_stage is the stage IN PROGRESS, not yet done — SKILL.md's own
+# documented example pairs `current_stage: 4` with `stages_completed: [1, 2,
+# 3]`, where stage 4's artifact does not exist yet. Checking current_stage's
+# artifact (an earlier version of this function did) would false-flag every
+# normal mid-pipeline advance. stages_completed is the actual "done" set.
 STAGE_ARTIFACTS = {
     1: ["01_spark.md"],
     2: ["02_landscape.md"],
@@ -35,14 +41,17 @@ STAGE_ARTIFACTS = {
 def check_artifacts(cwd: str) -> str | None:
     """Real filesystem check replacing self-attestation.
 
-    Reads the actual current_stage from each _state.yaml found under cwd and
-    stats the canonical artifact path directly, instead of asking the model
-    to eyeball its own transcript for a stage-completion marker.
+    Reads the actual stages_completed from each _state.yaml found under cwd
+    and stats the canonical artifact path directly, instead of asking the
+    model to eyeball its own transcript for a stage-completion marker.
     """
     lines = []
     for state_path in _hook_io.find_state_files(cwd):
-        stage = _hook_io.read_current_stage(state_path)
-        if stage is None or stage not in STAGE_ARTIFACTS:
+        completed = _hook_io.read_stages_completed(state_path)
+        if not completed:
+            continue
+        stage = max(completed)
+        if stage not in STAGE_ARTIFACTS:
             continue
         artifacts_dir = state_path.parent / "artifacts"
         missing = [
@@ -51,7 +60,7 @@ def check_artifacts(cwd: str) -> str | None:
         project = state_path.parent.name or str(state_path.parent)
         if missing:
             lines.append(
-                f"{project}: _state.yaml reports stage {stage} but "
+                f"{project}: _state.yaml lists stage {stage} as completed but "
                 f"{', '.join(missing)} not found in {artifacts_dir}/ — "
                 "do not report this stage complete until the artifact exists on disk."
             )

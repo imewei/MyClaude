@@ -74,7 +74,9 @@ def get_current_head(cwd: str) -> str:
 
 
 def read_progress_file(cwd: str) -> str:
-    """Read prior session progress, skipping it if stale or undated."""
+    """Read prior session progress. Drops it entirely if undated or older
+    than MAX_PROGRESS_AGE. If HEAD has moved since it was written, keeps the
+    text but prepends a `[STALE ...]` warning rather than dropping it."""
     progress_path = Path(cwd) / ".claude" / "progress" / "dev-suite.md"
     try:
         text = progress_path.read_text(encoding="utf-8").strip()
@@ -95,6 +97,9 @@ def read_progress_file(cwd: str) -> str:
 
     # Recorded HEAD vs live HEAD: don't silently reinject progress against a
     # branch/HEAD that has since moved (e.g. another session merged/rebased).
+    # Deliberately fails OPEN, not closed: if we can't determine the current
+    # HEAD (git missing, not a repo, transient error), we show the progress
+    # unmodified rather than guessing staleness we can't actually verify.
     head_match = re.search(r"^HEAD: (\S+)$", text, re.MULTILINE)
     if head_match and head_match.group(1) != "unknown":
         current_head = get_current_head(cwd)

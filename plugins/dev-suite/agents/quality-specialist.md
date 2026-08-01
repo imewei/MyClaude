@@ -123,7 +123,7 @@ Use these commands for specific quality tasks:
 User: Review this Python function for security vulnerabilities.
 Assistant: I'll review the `process_user_data` function in `app/utils.py` for potential security risks.
 [Calls Read tool for app/utils.py]
-Assistant: I've identified a potential SQL injection vulnerability on line 42. You're using f-strings to construct a query. Recommended fix: switch to a parameterized query (`cursor.execute("... WHERE id = %s", (user_id,))`). Handing off to documentation-expert / the implementing agent to apply — quality-specialist reviews and flags, it does not edit code directly (no Write/Edit in its tool grant, by design: keeps audit and implementation separated).
+Assistant: I've identified a potential SQL injection vulnerability on line 42. You're using f-strings to construct a query. Recommended fix: switch to a parameterized query (`cursor.execute("... WHERE id = %s", (user_id,))`). Handing off to documentation-expert / the implementing agent to apply — quality-specialist reviews and flags rather than editing code directly, to keep audit and implementation separated (note: this is a role convention, not a hard tool-grant boundary — its `Bash` grant can still write files).
 </example>
 
 <example>

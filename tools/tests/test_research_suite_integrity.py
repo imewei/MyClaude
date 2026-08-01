@@ -344,11 +344,17 @@ def test_subagent_stop_is_registered():
 
 
 def test_subagent_stop_flags_missing_artifact_on_disk(tmp_path):
-    """Real filesystem check, not self-attestation: the stage artifact the
-    orchestrator claims to have produced must actually exist on disk."""
+    """Real filesystem check, not self-attestation: the stage artifact
+    stages_completed claims exists must actually be present on disk.
+    current_stage is deliberately left at the in-progress value (4) with no
+    stage-4 artifact anywhere — that must NOT be flagged (see the sibling
+    in-progress test below); only the completed stage's missing artifact
+    should be."""
     proj = tmp_path / "my-idea"
     proj.mkdir()
-    (proj / "_state.yaml").write_text("current_stage: 3\n", encoding="utf-8")
+    (proj / "_state.yaml").write_text(
+        "current_stage: 4\nstages_completed: [3]\n", encoding="utf-8"
+    )
     (proj / "artifacts").mkdir()
 
     out = run_hook(
@@ -363,7 +369,9 @@ def test_subagent_stop_flags_missing_artifact_on_disk(tmp_path):
 def test_subagent_stop_confirms_artifact_present_on_disk(tmp_path):
     proj = tmp_path / "my-idea"
     (proj / "artifacts").mkdir(parents=True)
-    (proj / "_state.yaml").write_text("current_stage: 3\n", encoding="utf-8")
+    (proj / "_state.yaml").write_text(
+        "current_stage: 4\nstages_completed: [1, 2, 3]\n", encoding="utf-8"
+    )
     (proj / "artifacts" / "03_claim.md").write_text("claim\n", encoding="utf-8")
 
     out = run_hook(
@@ -372,6 +380,64 @@ def test_subagent_stop_confirms_artifact_present_on_disk(tmp_path):
     )
 
     assert "verified present" in out["additionalContext"]
+
+
+def test_subagent_stop_does_not_flag_in_progress_stage(tmp_path):
+    """current_stage is the stage IN PROGRESS — its artifact legitimately
+    doesn't exist yet. Only stages_completed's artifacts are checked."""
+    proj = tmp_path / "my-idea"
+    proj.mkdir()
+    (proj / "_state.yaml").write_text(
+        "current_stage: 4\nstages_completed: [1, 2, 3]\n", encoding="utf-8"
+    )
+    (proj / "artifacts").mkdir()
+    for name in ("01_spark.md", "02_landscape.md", "03_claim.md"):
+        (proj / "artifacts" / name).write_text("x\n", encoding="utf-8")
+
+    out = run_hook(
+        "subagent_stop.py",
+        {"subagent_type": "research-spark-orchestrator", "cwd": str(tmp_path)},
+    )
+
+    assert "04_theory.md" not in out.get("additionalContext", "")
+    assert "verified present" in out["additionalContext"]
+
+
+def test_subagent_stop_silent_with_no_stages_completed_yet(tmp_path):
+    """Fresh project, stage 1 in progress, nothing completed yet — nothing
+    to verify, must stay silent rather than false-flag stage 1's artifact."""
+    proj = tmp_path / "my-idea"
+    proj.mkdir()
+    (proj / "_state.yaml").write_text(
+        "current_stage: 1\nstages_completed: []\n", encoding="utf-8"
+    )
+
+    out = run_hook(
+        "subagent_stop.py",
+        {"subagent_type": "research-spark-orchestrator", "cwd": str(tmp_path)},
+    )
+
+    assert out == {}
+
+
+def test_subagent_stop_finds_default_workspace_layout(tmp_path):
+    """research-spark-orchestrator's own documented default workspace is
+    ./research-spark/<idea-slug>/ relative to cwd — that layout must be
+    checked too, not just cwd/<idea-slug>/."""
+    proj = tmp_path / "research-spark" / "my-idea"
+    proj.mkdir(parents=True)
+    (proj / "_state.yaml").write_text(
+        "current_stage: 4\nstages_completed: [3]\n", encoding="utf-8"
+    )
+    (proj / "artifacts").mkdir()
+
+    out = run_hook(
+        "subagent_stop.py",
+        {"subagent_type": "research-spark-orchestrator", "cwd": str(tmp_path)},
+    )
+
+    assert "03_claim.md" in out["additionalContext"]
+    assert "not found" in out["additionalContext"]
 
 
 def test_subagent_stop_silent_for_other_agents():
@@ -423,6 +489,85 @@ def test_post_tool_use_silent_for_non_review_writes(tmp_path):
     other.write_text("# Summary\n# Recommendation\n", encoding="utf-8")
 
     assert run_hook("post_tool_use.py", {"tool_input": {"file_path": str(other)}}) == {}
+
+
+def test_post_tool_use_heading_anchored_not_incidental_prose(tmp_path):
+    """'in summary, ...' as prose must NOT satisfy the Summary requirement —
+    the check is anchored to markdown headings, not a bare substring scan."""
+    reviews = tmp_path / "reviews"
+    reviews.mkdir()
+    review = reviews / "paper.md"
+    review.write_text(
+        "# Notes\nIn summary, this paper has issues. My recommendation is unclear.\n",
+        encoding="utf-8",
+    )
+
+    out = run_hook("post_tool_use.py", {"tool_input": {"file_path": str(review)}})
+
+    assert "missing required section" in out["additionalContext"]
+
+
+def test_post_tool_use_accepts_journal_adapted_recommendation_synonym(tmp_path):
+    """SKILL.md Phase 2 explicitly allows journal-specific field names for a
+    named-journal review — 'Decision'/'Verdict' must count as equivalent to
+    'Recommendation', not be flagged as missing."""
+    reviews = tmp_path / "reviews"
+    reviews.mkdir()
+    review = reviews / "paper.md"
+    review.write_text("# Summary\nGood paper.\n# Decision\nAccept.\n", encoding="utf-8")
+
+    assert run_hook("post_tool_use.py", {"tool_input": {"file_path": str(review)}}) == {}
+
+
+def test_post_tool_use_malformed_docx_reports_parse_failure(tmp_path):
+    """A corrupt/unparsable .docx must surface a warning, not silently no-op
+    as if the review were complete — the exact failure mode this PR exists
+    to close. Skips if python-docx isn't installed (nothing to parse with)."""
+    pytest.importorskip("docx")
+    reviews = tmp_path / "reviews"
+    reviews.mkdir()
+    bad = reviews / "paper.docx"
+    bad.write_bytes(b"not a real docx file")
+
+    out = run_hook("post_tool_use.py", {"tool_input": {"file_path": str(bad)}})
+
+    assert "could not be parsed" in out["additionalContext"]
+
+
+def test_post_tool_use_bash_fallback_finds_recent_docx(tmp_path):
+    """python-docx/pandoc writes a .docx via Bash, not the Write tool — the
+    hook must still catch it via the reviews/ mtime-based fallback scan."""
+    reviews = tmp_path / "reviews"
+    reviews.mkdir()
+    (reviews / "paper.docx").write_bytes(b"not a real docx file")
+
+    out = run_hook(
+        "post_tool_use.py",
+        {"tool_name": "Bash", "tool_input": {"command": "echo done"}, "cwd": str(tmp_path)},
+    )
+
+    assert "additionalContext" in out
+
+
+def test_post_tool_use_bash_fallback_ignores_old_docx(tmp_path):
+    """A .docx untouched for a while must not be re-flagged on every
+    unrelated Bash call — only recently-modified files count."""
+    import os
+    import time
+
+    reviews = tmp_path / "reviews"
+    reviews.mkdir()
+    old = reviews / "paper.docx"
+    old.write_bytes(b"not a real docx file")
+    old_time = time.time() - 999
+    os.utime(old, (old_time, old_time))
+
+    out = run_hook(
+        "post_tool_use.py",
+        {"tool_name": "Bash", "tool_input": {"command": "echo done"}, "cwd": str(tmp_path)},
+    )
+
+    assert out == {}
 
 
 def test_subagent_stop_writes_no_debug_log():

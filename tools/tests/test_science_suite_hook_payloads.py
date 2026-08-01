@@ -151,6 +151,17 @@ class TestSubagentStop:
         assert "additionalContext" not in out, f"nudge fired on advisory agent: {out}"
         assert "hookSpecificOutput" not in out, f"nudge fired on advisory agent: {out}"
 
+    def test_resolves_continuum_mechanics_engineer(self):
+        """continuum-mechanics-engineer (FEM/FEA, constitutive modeling) is
+        clearly numerical but was missing from NUMERICAL_AGENTS — allowlist
+        gap fixed alongside the audit's other findings."""
+        out = run_hook(
+            "subagent_stop.py",
+            {"hook_event_name": "SubagentStop", "agent_name": "continuum-mechanics-engineer"},
+        )
+        context = hook_context(out)
+        assert "continuum-mechanics-engineer" in context, f"agent name not resolved: {out}"
+
 
 class TestSessionRoundTrip:
     """SessionEnd writes a namespaced summary that SessionStart reads back."""
