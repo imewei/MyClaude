@@ -33,6 +33,9 @@ Docker multi-stage builds, compose orchestration, and image optimization.
 ### [Cloud Provider Patterns](../cloud-provider-patterns/SKILL.md)
 AWS, GCP, and Azure infrastructure-as-code, managed services, and cost optimization.
 
+### [Modernization & Migration](../modernization-migration/SKILL.md)
+Strangler Fig, framework migration playbooks, and database schema evolution.
+
 ## Routing Decision Tree
 
 ```
@@ -56,6 +59,9 @@ What is the architectural concern?
 +-- Cloud IaC / managed services / multi-region?
 |   --> dev-suite:cloud-provider-patterns
 |
++-- Legacy modernization / Strangler Fig / framework migration?
+|   --> dev-suite:modernization-migration
+|
 +-- None of the above / concern is ambiguous or spans multiple areas?
     --> Delegate to software-architect for open-ended triage, or clarify the
         primary concern and re-enter the routing decision tree.
@@ -71,6 +77,7 @@ What is the architectural concern?
 | CLI, argparse, IPC, syscalls         | dev-suite:systems-cli-engineering      |
 | Dockerfile, compose, OCI images      | dev-suite:containerization-patterns    |
 | Terraform, CDK, CloudFormation, IaC  | dev-suite:cloud-provider-patterns      |
+| Strangler Fig, legacy migration, 2to3 | dev-suite:modernization-migration     |
 
 ## Checklist
 

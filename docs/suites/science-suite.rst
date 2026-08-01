@@ -1,9 +1,9 @@
 Scientific Computing Suite
 ==========================
 
-High-performance computing, physics/chemistry simulations, ML/DL, Julia, JAX, and data science workflows. Uses the :term:`Hub Skill` architecture with 14 hubs routing to 112 sub-skills. Optimized for Claude Opus 4.7 with extended context and adaptive reasoning.
+High-performance computing, physics/chemistry simulations, ML/DL, Julia, JAX, and data science workflows. Uses the :term:`Hub Skill` architecture with 30 hubs routing to 107 sub-skills.
 
-**Version:** 3.5.2 | **11 Agents** | **2 Registered Commands** | **17 Hubs → 110 Sub-skills** | **5 Hook Events**
+**Version:** 4.0.0 | **12 Agents** | **2 Registered Commands** | **30 Hubs → 107 Sub-skills** | **4 Hook Events**
 
 .. note::
 
@@ -15,62 +15,67 @@ Agents
 .. agent:: neural-network-master
    :description: Deep learning authority specializing in architecture design, theory, and implementation (Transformers, CNNs, diagnostics).
    :model: opus
-   :version: 3.5.2
+   :version: 4.0.0
 
 .. agent:: nonlinear-dynamics-expert
    :description: Expert in bifurcation analysis, chaos, coupled networks, pattern formation, and equation discovery (SINDy/UDE).
    :model: opus
-   :version: 3.5.2
+   :version: 4.0.0
 
 .. agent:: simulation-expert
    :description: Expert in molecular dynamics, statistical mechanics, and numerical methods (HPC/GPU).
-   :model: opus
-   :version: 3.5.2
+   :model: sonnet
+   :version: 4.0.0
 
 .. agent:: statistical-physicist
    :description: Expert in correlation functions, non-equilibrium dynamics, and ensemble theory.
    :model: opus
-   :version: 3.5.2
+   :version: 4.0.0
 
 .. agent:: jax-pro
-   :description: JAX expert — jit/vmap/pmap, sharding, VJP/JVP, XLA/HLO, Optax, Diffrax, Pallas, NumPyro. Delegates MD, bifurcation, general Bayes, and productionization to peers. Upgraded to opus in v3.5.2.
+   :description: JAX expert — jit/vmap/pmap, sharding, VJP/JVP, XLA/HLO, Optax, Diffrax, Pallas, NumPyro. Delegates MD, bifurcation, general Bayes, and productionization to peers.
    :model: opus
-   :version: 3.5.2
+   :version: 4.0.0
 
 .. agent:: julia-pro
-   :description: Julia/SciML expert — dispatch, type stability, DiffEq.jl, ModelingToolkit, SciMLSensitivity, UDE, SINDy, Turing, Optimization.jl. Delegates ML/HPC and productionization to peers. Upgraded to opus in v3.5.2.
+   :description: Julia/SciML expert — dispatch, type stability, DiffEq.jl, ModelingToolkit, SciMLSensitivity, UDE, SINDy, Turing, Optimization.jl. Delegates ML/HPC and productionization to peers.
    :model: opus
-   :version: 3.5.2
+   :version: 4.0.0
 
 .. agent:: julia-ml-hpc
    :description: Julia ML/HPC expert for Lux.jl, MLJ.jl, CUDA.jl, MPI.jl, and GNNLux. Delegates SciML/ODE to julia-pro.
    :model: sonnet
-   :version: 3.5.2
+   :version: 4.0.0
 
 .. agent:: pinn-engineer
-   :description: Physics-informed AI for PINNs, NeuralPDE.jl, DeepXDE, BPINN/BNNODE, physics-constrained losses, and inverse PDEs. Renamed from ai-engineer in v3.5.2.
-   :model: sonnet
-   :version: 3.5.2
+   :description: Physics-informed AI for PINNs, NeuralPDE.jl, DeepXDE, BPINN/BNNODE, physics-constrained losses, and inverse PDEs.
+   :model: opus
+   :version: 4.0.0
 
 .. agent:: python-pro
    :description: Python systems engineer for production Python, type-driven design, PyO3/Rust extensions, async, and uv/ruff toolchain.
    :model: sonnet
-   :version: 3.5.2
+   :version: 4.0.0
 
 .. agent:: sci-workflow-engineer
-   :description: Scientific LLM workflow engineer for JAX/Julia codegen prompts, experiment templates, scientific RAG, and AI-assisted pipelines. Renamed from prompt-engineer in v3.5.2.
+   :description: Scientific LLM workflow engineer for JAX/Julia codegen prompts, experiment templates, scientific RAG, and AI-assisted pipelines.
    :model: sonnet
-   :version: 3.5.2
+   :version: 4.0.0
 
 .. agent:: ml-expert
-   :description: Classical ML/MLOps with scikit-learn, XGBoost/LightGBM, Optuna, SHAP, and MLflow/W&B. Delegates DL to neural-network-master. Moved to haiku in v3.5.2.
+   :description: Classical ML/MLOps with scikit-learn, XGBoost/LightGBM, Optuna, SHAP, and MLflow/W&B. Delegates DL to neural-network-master.
    :model: haiku
-   :version: 3.5.2
+   :version: 4.0.0
+
+.. agent:: continuum-mechanics-engineer
+   :description: Expert in FEM/FEA, constitutive modeling, DMA/rheology, transient networks (CAN/vitrimers), and nanocomposites.
+   :model: opus
+   :version: 4.0.0
 
 Registered Commands
 -------------------
 
-Two slash commands registered in v3.5.2:
+Two slash commands registered in v3.5.0:
 
 .. command:: md-sim
    :description: Molecular dynamics simulation setup, running, and trajectory analysis (GROMACS/OpenMM/JAX-MD).
@@ -94,7 +99,7 @@ The legacy ``paper-review`` command moved to ``research-suite`` and was then rem
 Hub Skills
 ----------
 
-Skills use a hub architecture: 14 hub skills route to 117 specialized sub-skills.
+Skills use a hub architecture: 30 hub skills route to 107 specialized sub-skills.
 
 Hub: nonlinear-dynamics (6 sub-skills)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -276,7 +281,7 @@ Scientific software engineering, specialized computational domains, and autonomo
 - ``computer-vision`` — Image processing, detection, Vision Transformers
 - ``reinforcement-learning`` — Gymnasium, Stable-Baselines3, RLlib
 - ``symbolic-math`` — SymPy, CAS, algebraic solvers
-- ``self-improving-ai`` — Research overview for autonomous self-improvement (research-framework counterpart to agent-core's self-improving-agents)
+- ``self-improving-ai`` — Research overview for autonomous self-improvement
 - ``dspy-basics`` — Depth-skill companion for DSPy programmatic prompt optimization
 - ``rlaif-training`` — Depth-skill companion for Constitutional AI / RLAIF / DPO
 
@@ -299,10 +304,9 @@ NumPyro, Turing.jl, variational inference, MCMC diagnostics, consensus / non-rev
 Hooks
 -----
 
-5 hook events with Python script implementations:
+4 hook events with Python script implementations:
 
 - ``SessionStart`` — Detect JAX devices, GPU availability, Julia env
-- ``PreToolUse`` — Warn before commands that could corrupt simulations
 - ``PostToolUse`` — NaN/Inf check on compute job output (numerical integrity)
 - ``SessionEnd`` — Persist structured progress summary for next session
 - ``SubagentStop`` — Collect results from parallel science agents

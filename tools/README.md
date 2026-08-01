@@ -15,7 +15,7 @@ uv run pytest tools/tests/ -v
 python3 tools/validation/context_budget_checker.py
 
 # Validate a single plugin
-python3 tools/validation/metadata_validator.py plugins/agent-core
+python3 tools/validation/metadata_validator.py plugins/dev-suite
 ```
 
 ## Directory Structure
@@ -46,7 +46,6 @@ tools/
 │   ├── analyze_ecosystem.py       # Skill/agent ecosystem metrics
 │   └── enable_all_plugins.py      # Enable all plugins in settings
 ├── tests/                 # Pytest suite (258 tests)
-│   ├── test_agent_core_integrity.py
 │   ├── test_build_automation.py
 │   ├── test_category_pages.py
 │   ├── test_command_file_linter.py
@@ -199,7 +198,7 @@ python3 tools/maintenance/enable_all_plugins.py
 uv run pytest tools/tests/ -v
 
 # Run a single test file
-uv run pytest tools/tests/test_agent_core_integrity.py -v
+uv run pytest tools/tests/test_dev_suite_integrity.py -v
 
 # Run with coverage
 uv run pytest tools/tests/ --cov=tools -v
@@ -209,7 +208,6 @@ uv run pytest tools/tests/ --cov=tools -v
 
 | Test File | Scope |
 |-----------|-------|
-| `test_agent_core_integrity.py` | agent-core plugin structure and metadata |
 | `test_dev_suite_integrity.py` | dev-suite plugin structure and metadata |
 | `test_science_suite_integrity.py` | science-suite plugin structure and metadata |
 | `test_science_suite_functionality.py` | science-suite agent/skill functional checks |

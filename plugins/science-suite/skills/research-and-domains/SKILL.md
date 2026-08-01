@@ -1,6 +1,6 @@
 ---
 name: research-and-domains
-description: Meta-orchestrator for specialized scientific domains, scientific Python systems, and AI-research methods not covered by the main JAX, Julia, ML, simulation, or research methodology hubs. Routes to self-improving-AI research surveys, DSPy scientific prompt programs, RLAIF training, Python packaging/Rust/type/concurrency/testing patterns, and domain skills such as quantum computing, bioinformatics, computer vision, reinforcement learning, and symbolic math. Use when the user asks about AI-research techniques or scientific Python/domain work; for operational agent self-improvement loops with persistent prompt/policy updates, use agent-core reasoning-and-memory; for general study design, literature synthesis, or paper methodology, use research-suite research-practice.
+description: Meta-orchestrator for specialized scientific domains, scientific Python systems, and AI-research methods not covered by the main JAX, Julia, ML, simulation, or research methodology hubs. Routes to self-improving-AI research surveys, DSPy scientific prompt programs, RLAIF training, Python packaging/Rust/type/concurrency/testing patterns, and domain skills such as quantum computing, bioinformatics, computer vision, reinforcement learning, and symbolic math. Use when the user asks about AI-research techniques or scientific Python/domain work; for general study design, literature synthesis, or paper methodology, use research-suite research-practice.
 ---
 
 # Research and Domains
@@ -38,7 +38,6 @@ What is the task category?
 |
 +-- Self-improving AI taxonomy / autonomous research loops / four-families overview?
 |   --> science-suite:self-improving-ai
-|   (for persistent agent prompt/policy optimization, use agent-core:reasoning-and-memory)
 |
 +-- DSPy scientific prompt programs / MIPROv2 / BootstrapFewShot / ReAct tools?
 |   --> science-suite:dspy-basics
@@ -47,8 +46,9 @@ What is the task category?
 |   --> science-suite:rlaif-training
 |
 +-- Python systems / packaging / performance?
-|   (These are co-located here for scientific Python workflows;
-|    for general Python toolchain, see dev-suite python-toolchain hub)
+|   (Canonical Python-tooling home for this marketplace as of the
+|    dev-suite trim -- covers general uv/packaging/async/profiling
+|    as well as scientific-specific concerns)
 |   --> science-suite:python-development / science-suite:python-packaging-advanced
 |   --> science-suite:rust-extensions / science-suite:type-driven-design / science-suite:modern-concurrency
 |   --> science-suite:robust-testing (Hypothesis property-based tests, mutation testing)

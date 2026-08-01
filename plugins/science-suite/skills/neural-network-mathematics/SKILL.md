@@ -48,6 +48,8 @@ def analyze_gradient_flow(W):
     }
 ```
 
+For the graph-theoretic foundations underlying GNN message passing (adjacency/Laplacian matrices, spectral graph theory), see `science-suite:graph-theory`.
+
 ### Einstein Notation
 ```python
 # Matrix multiplication: C_ij = Σ_k A_ik B_kj

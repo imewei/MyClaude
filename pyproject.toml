@@ -1,6 +1,6 @@
 [project]
 name = "myclaude"
-version = "3.5.2"
+version = "4.0.0"
 description = "Claude Code plugin suite with 25 expert agents, 17 registered commands, and 31 hub skills routing to 189 sub-skills for AI-powered development, scientific computing, and research workflows"
 readme = "README.md"
 requires-python = ">=3.13"

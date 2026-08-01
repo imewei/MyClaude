@@ -3,7 +3,7 @@ Research Suite
 
 Scientific research workflows: peer review, idea-to-plan refinement, and methodology orchestration. Three complementary tracks — ``scientific-review`` (manuscripts from other authors → .docx referee report), ``research-spark`` (own rough idea → 8-stage artifact-gated plan), and ``research-practice`` (general methodology hub).
 
-**Version:** 3.5.2 | **2 Agents** | **3 Registered Commands** | **3 Hubs (research-hub → research-spark + research-practice + _research-commons) → 14 sub-skills** | **3 Hook Events**
+**Version:** 4.0.0 | **2 Agents** | **3 Registered Commands** | **11 Hubs → 6 Sub-skills** | **2 Hook Events**
 
 Created in v3.4.0 by extracting ``research-expert`` plus 5 methodology skills from ``science-suite`` and adding the research-spark pipeline (new 8-stage orchestrator + 7 stage-specialist skills + ``_research-commons`` resource hub).
 
@@ -13,17 +13,17 @@ Agents
 .. agent:: research-expert
    :description: Unified specialist for research methodology, evidence synthesis (PRISMA/GRADE), statistical-rigor assessment, IMRaD structuring, paper-to-code reproduction, and publication-quality visualization. For one-off methodology tasks, not pipeline-driven work.
    :model: opus
-   :version: 3.5.2
+   :version: 4.0.0
 
 .. agent:: research-spark-orchestrator
    :description: Autonomous driver for the 8-stage research-spark refinement pipeline. Owns ``_state.yaml``, enforces the artifact contract, fans out to parallel sub-agents at Stage 2 (literature layers), Stage 6 (validation passes), and Stage 8 (reviewer archetypes).
    :model: opus
-   :version: 3.5.2
+   :version: 4.0.0
 
 Commands
 --------
 
-Three slash commands registered in v3.5.2:
+Three slash commands registered in v3.5.0:
 
 .. command:: lit-review
    :description: Systematic literature review with PRISMA-compliant search, evidence synthesis, and gap analysis.
@@ -143,11 +143,10 @@ The ``research-spark-orchestrator`` delegates across suite boundaries at natural
 Hooks
 -----
 
-3 hook events supporting the research-spark pipeline:
+2 hook events supporting the research-spark pipeline:
 
 - ``SessionStart`` — Detect research-spark stage artifacts (``01_spark.md`` through ``08_premortem.md``) and resume at the latest completed stage
 - ``TaskCompleted`` — Log research tasks to ``.research-log.jsonl`` (audit trail) and prompt stage-artifact commit before advancing
-- ``SubagentStop`` *(prompt-based)* — LLM-driven verification that stage artifacts (research-spark) or referee-report sections (scientific-review) are present before the orchestrator advances
 
 Beyond these, adversarial patterns and style linting remain enforced inside skill workflows (``_research-commons/scripts/style_lint.py``), so they run deterministically without depending on CLI event schemas.
 

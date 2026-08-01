@@ -5,6 +5,9 @@ description: Evaluate scientific research quality against CONSORT/STROBE/PRISMA/
 
 # Research Quality Assessment
 
+> **SEE ALSO:** For general scholarly-work feedback, use `ecc:scientific-thinking-scholar-evaluation`.
+> Use this skill for research-suite's specific quality rubrics (PRISMA/GRADE/CONSORT/STROBE) and red-flag detection.
+
 Systematic framework for evaluating research quality *after* the work exists — manuscripts, grant proposals, preprints, or internal review. Design-phase planning belongs in `research-methodology`; journal peer-review reports with .docx output belong in `scientific-review`.
 
 ## Expert Agent

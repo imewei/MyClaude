@@ -310,16 +310,3 @@ class TestRealCommandFiles:
             pytest.fail(
                 f"Command file linter found {len(errors)} hard error(s):\n{formatted}"
             )
-
-    def test_team_assemble_has_zero_errors_and_warnings(self) -> None:
-        """team-assemble.md is the canonical command file that we just
-        hardened. It must pass both errors AND warnings (we can tolerate
-        info-level trailing whitespace)."""
-        target = PLUGINS_ROOT / "agent-core/commands/team-assemble.md"
-        issues = lint_command_file(target)
-        hard = [i for i in issues if i.severity in ("error", "warning")]
-        if hard:
-            formatted = "\n".join(i.format() for i in hard)
-            pytest.fail(
-                f"team-assemble.md has {len(hard)} error/warning issue(s):\n{formatted}"
-            )

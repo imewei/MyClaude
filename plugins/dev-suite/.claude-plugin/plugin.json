@@ -1,6 +1,6 @@
 {
   "name": "dev-suite",
-  "version": "3.5.2",
+  "version": "4.0.0",
   "description": "Unified software development lifecycle: architecture, implementation, CI/CD, testing, debugging, and deployment. Merges engineering, infrastructure, and quality into one suite for zero-friction cross-concern delegation.",
   "author": {
     "name": "Wei Chen",
@@ -28,13 +28,10 @@
   "agents": [
     "./agents/app-developer.md",
     "./agents/automation-engineer.md",
-    "./agents/debugger-pro.md",
-    "./agents/devops-architect.md",
     "./agents/documentation-expert.md",
     "./agents/quality-specialist.md",
     "./agents/software-architect.md",
-    "./agents/sre-expert.md",
-    "./agents/systems-engineer.md"
+    "./agents/sre-expert.md"
   ],
   "commands": [
     "./commands/docs.md",
@@ -57,9 +54,7 @@
     "./skills/ci-cd-pipelines",
     "./skills/data-and-security",
     "./skills/dev-workflows",
-    "./skills/frontend-and-mobile",
     "./skills/observability-and-sre",
-    "./skills/python-toolchain",
     "./skills/testing-and-quality"
   ]
 }

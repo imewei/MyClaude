@@ -36,7 +36,6 @@ class TestCategoryPages(unittest.TestCase):
     def test_all_category_pages_exist(self):
         """Test that all required category pages are created"""
         expected_categories = [
-            "core.rst",
             "dev.rst",
             "science.rst",
         ]
@@ -181,7 +180,6 @@ class TestCategoryPages(unittest.TestCase):
 
         # Check that categories are included
         category_references = [
-            "categories/core",
             "categories/dev",
             "categories/science",
         ]

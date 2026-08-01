@@ -5,6 +5,9 @@ description: Conduct systematic literature reviews (PRISMA), meta-analyses, and 
 
 # Evidence Synthesis
 
+> **SEE ALSO:** For general multi-source research synthesis outside the research-spark pipeline's artifact contract, use `ruflo-goals:deep-researcher` or `ruflo-goals:research-synthesize`.
+> Use this skill for systematic reviews (PRISMA), meta-analyses, and formal evidence grading (GRADE).
+
 Systematic methods for aggregating and evaluating scientific evidence.
 
 ## Expert Agent

@@ -1,6 +1,17 @@
 Changelog
 =========
 
+v4.0.0 (2026-07-31)
+--------------------
+
+**Breaking: Marketplace Redesign**
+
+* **agent-core retired:** Fully covered by ruflo-core/ruflo-swarm/superpowers/ecc's agent-* skills on the maintainer's install; plugin, its 3 agents, 6 commands, and 18 skill directories removed.
+* **dev-suite trimmed** (9 -> 6 agents, 10 hubs -> 35 sub-skills): removed 15 unregistered commands, 3 unused agents, and 10 duplicate/stack-specific skills (frontend/mobile/GraphQL/Node/TypeScript/WebSocket, fully covered by ecc's per-language skills); 5 Python-tooling skills absorbed into science-suite. Surviving 6 agents repositioned to a scientific-computing scope.
+* **science-suite expanded** (11 -> 12 agents, 29 -> 30 hubs -> 107 sub-skills): added ``continuum-mechanics-engineer`` agent + ``continuum-mechanics-and-rheology`` hub (FEM/FEA, constitutive equations, DMA/rheology, transient networks, nanocomposites); extended ``statistical-physicist`` with glass/collective-dynamics and physical-learning-systems skills; added a cross-cutting ``graph-theory`` skill; re-tiered ``simulation-expert`` (opus->sonnet) and ``pinn-engineer`` (sonnet->opus); corrected factually-wrong package recommendations (BifurcationKit blocked on Julia 1.12, PointProcesses.jl unavailable).
+* **research-suite:** added SEE ALSO overlap framing against ecc/ruflo-goals generic research tools; wired ``paper-implement``/``replicate`` routing to the 4 new/extended science-suite specialists.
+* **Marketplace-wide:** 20 agents (10 opus / 8 sonnet / 2 haiku), 15 registered commands, 51 hubs -> 148 sub-skills.
+
 v3.5.2 (2026-05-06)
 --------------------
 

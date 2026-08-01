@@ -1,5 +1,5 @@
 # tools/tests/test_scicomp_redesign.py
-"""Tests for the scientific computing plugin redesign (v3.5.2).
+"""Tests for the scientific computing plugin redesign (v4.0.0).
 
 All tests are written before implementation. Run with:
   uv run pytest tools/tests/test_scicomp_redesign.py -v
@@ -15,7 +15,6 @@ REPO = Path(__file__).parent.parent.parent
 PLUGINS = REPO / "plugins"
 SCIENCE = PLUGINS / "science-suite"
 RESEARCH = PLUGINS / "research-suite"
-AGENT_CORE = PLUGINS / "agent-core"
 DEV_SUITE = PLUGINS / "dev-suite"
 
 
@@ -77,7 +76,7 @@ class TestAgentRepurposing:
 
     def test_pinn_engineer_model(self):
         fm = _frontmatter(SCIENCE / "agents/pinn-engineer.md")
-        assert fm.get("model") == "sonnet", "pinn-engineer must use sonnet (implementation-heavy, not theory-heavy)"
+        assert fm.get("model") == "opus", "pinn-engineer must use opus (theory-heavy PINN/inverse-PDE work, swapped in the science-suite expand plan)"
 
     def test_sci_workflow_engineer_model(self):
         fm = _frontmatter(SCIENCE / "agents/sci-workflow-engineer.md")
@@ -176,12 +175,12 @@ class TestResearchSuiteCommands:
 
 class TestManifests:
     @pytest.mark.parametrize("suite_dir", [
-        AGENT_CORE, DEV_SUITE, RESEARCH, SCIENCE
-    ], ids=["agent-core", "dev-suite", "research-suite", "science-suite"])
+        DEV_SUITE, RESEARCH, SCIENCE
+    ], ids=["dev-suite", "research-suite", "science-suite"])
     def test_version_is_351(self, suite_dir):
         plugin = _plugin_json(suite_dir)
-        assert plugin["version"] == "3.5.2", \
-            f"{suite_dir.name} version must be 3.5.2, got {plugin['version']}"
+        assert plugin["version"] == "4.0.0", \
+            f"{suite_dir.name} version must be 4.0.0, got {plugin['version']}"
 
     def test_science_suite_has_md_sim_command(self):
         plugin = _plugin_json(SCIENCE)
@@ -231,13 +230,3 @@ class TestInfrastructure:
         p = REPO / ".claudeignore"
         assert p.exists(), ".claudeignore missing"
         assert "__pycache__" in p.read_text()
-
-    def test_pre_compact_has_priority_skills(self):
-        # agent-core's hook may only claim priority for agent-core's own skills;
-        # science-suite skills used to be hardcoded here and fired in every project.
-        script = (AGENT_CORE / "hooks/pre_compact.py").read_text()
-        assert "PRIORITY_SKILLS" in script, \
-            "pre_compact.py must define PRIORITY_SKILLS list"
-        assert "agent-systems" in script
-        assert "jax-computing" not in script
-        assert "simulation-and-hpc" not in script

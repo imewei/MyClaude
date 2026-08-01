@@ -9,8 +9,6 @@ description: Design microservices with proper service boundaries, event-driven c
 
 For microservice architecture, infrastructure design, and cloud platform strategy, delegate to:
 
-- **`devops-architect`**: Designs scalable multi-cloud infrastructure, Kubernetes orchestration, and service mesh patterns.
-  - *Location*: `plugins/dev-suite/agents/devops-architect.md`
 - **`software-architect`**: Defines service boundaries, API contracts, and distributed system architecture.
   - *Location*: `plugins/dev-suite/agents/software-architect.md`
 

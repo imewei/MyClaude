@@ -7,10 +7,9 @@ description: Build and optimize Docker containers and Kubernetes deployments inc
 
 ## Expert Agent
 
-For container architecture, Kubernetes deployments, and orchestration design, delegate to:
-
-- **`devops-architect`**: Designs cloud-native platform architecture with container orchestration and IaC.
-  - *Location*: `plugins/dev-suite/agents/devops-architect.md`
+No dev-suite agent specializes in container orchestration directly. For general Kubernetes
+deployment and orchestration design, defer to `ecc:kubernetes-patterns`; `software-architect`
+can review cross-cutting infrastructure design for scientific-computing workloads.
 
 
 ## Dockerfile Best Practices

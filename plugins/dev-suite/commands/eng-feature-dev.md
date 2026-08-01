@@ -64,7 +64,7 @@ $ARGUMENTS
 - Risk assessment and stakeholder sign-off
 
 ### Step 2: Technical Architecture
-**Agent:** dev-suite:architect-review
+**Agent:** dev-suite:software-architect
 
 - Database: Entity relationship model, schemas, indexing, migrations (zero-downtime)
 - Backend: API contracts (OpenAPI/GraphQL), auth flows, caching, resilience patterns

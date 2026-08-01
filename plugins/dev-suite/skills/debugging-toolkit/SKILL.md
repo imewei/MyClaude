@@ -11,8 +11,8 @@ description: Scientific computing debugging patterns — JAX TracerBoolConversio
 
 | Failure Type | Agent |
 |---|---|
-| NaN/inf, JAX JIT errors, Julia dispatch, MCMC divergence | `debugger-pro` + `dev-suite:smart-debug` |
-| Distributed system, microservice, K8s, production incident | `debugger-pro` |
+| NaN/inf, JAX JIT errors, Julia dispatch, MCMC divergence | `dev-suite:smart-debug` |
+| Distributed system, microservice, K8s, production incident | `mattpocock-skills:diagnosing-bugs` |
 
 ---
 

@@ -1,7 +1,7 @@
 ---
 name: dev-hub
 description: >-
-  Top-level router for all software development lifecycle topics. Use for: REST APIs/Node.js/Express/Fastify/FastAPI/asyncio/GraphQL/WebSockets/message queues; frontend accessibility/scientific GUIs/PyQt/cross-platform testing; system architecture/microservices/monorepo/containers/cloud/CLI tools/Terraform/K8s; test automation/TDD/E2E/coverage/code review/plugin validation; GitHub Actions/GitLab CI/deployment pipelines/security scanning/CI errors; Prometheus/Grafana/distributed tracing/SLOs/monitoring/observability/incident response; Python packaging/uv/ruff/mypy/performance profiling/error handling/legacy migration; database schema/SQL optimization/caching/search/authentication/secrets management; Git workflow/technical documentation/Airflow data pipelines/systematic debugging; AI pair programming/multi-model dev team/Codex+Gemini review pipeline/content team/team-stop/ai-pair/start dev team/start content team/three-model collaboration/dual-model review/ongoing iterative review.
+  Top-level router for scientific-computing software development lifecycle topics. Use for: FastAPI/asyncio scientific services; scientific GUIs (PyQt/PySide6); system architecture for numerical/ML/simulation systems, microservices/containers/cloud/CLI tools/Terraform/K8s; test automation/TDD/E2E/coverage/code review/plugin validation for scientific codebases; GitHub Actions/GitLab CI/deployment pipelines/security scanning/CI errors; Prometheus/Grafana/distributed tracing/SLOs/monitoring/observability/incident response for long-running scientific workloads; database schema/SQL optimization/caching/search/authentication/secrets management; Git workflow/technical documentation for numerical/ML codebases/Airflow data pipelines/systematic debugging for scientific computing; AI pair programming/multi-model dev team/Codex+Gemini review pipeline/content team/team-stop/ai-pair/start dev team/start content team/three-model collaboration/dual-model review/ongoing iterative review.
 ---
 
 # Dev Suite (dev-hub)
@@ -10,25 +10,20 @@ Top-level entry point consolidating all dev-suite hub skills into a single route
 
 ## Expert Agents
 
-- **`app-developer`** — Scientific GUI and data-interface implementation
-- **`automation-engineer`** — CI/CD pipelines, scripting, and workflow automation
-- **`debugger-pro`** — Root-cause analysis and systematic bug resolution
-- **`devops-architect`** — Infrastructure, Kubernetes, Terraform, and cloud design
-- **`documentation-expert`** — API docs, READMEs, and technical writing
-- **`quality-specialist`** — Test strategy, coverage, and code quality gates
-- **`software-architect`** — System design, service decomposition, and contracts
-- **`sre-expert`** — SLOs, incident response, and reliability engineering
-- **`systems-engineer`** — Low-level systems, performance, and OS-level concerns
+- **`app-developer`** — Scientific application development: PyQt/PySide6 GUIs, JAX/Julia app integration
+- **`automation-engineer`** — Scientific workflow automation: experiment pipelines, Airflow/data-pipeline orchestration
+- **`documentation-expert`** — Docs for numerical/ML/SciML codebases: API specs, Sphinx, notebook-to-doc pipelines
+- **`quality-specialist`** — Scientific-computing validation: numerical precision, property-based invariants, reproducibility
+- **`software-architect`** — Numerical/ML/simulation system architecture: JAX pipeline boundaries, SciML module design
+- **`sre-expert`** — Reliability for long-running scientific workloads: HPC job monitoring, GPU/cluster observability
 
 ## Hub Skills
 
-- [backend-patterns](../backend-patterns/SKILL.md) — Node.js, async Python, REST/GraphQL/WebSocket, message queues
-- [frontend-and-mobile](../frontend-and-mobile/SKILL.md) — React/Vue/Svelte, React Native/Flutter, UI patterns
+- [backend-patterns](../backend-patterns/SKILL.md) — Async Python/FastAPI services for scientific workflows, REST, message queues
 - [architecture-and-infra](../architecture-and-infra/SKILL.md) — System design, microservices, clean architecture, Terraform/K8s
 - [testing-and-quality](../testing-and-quality/SKILL.md) — TDD, test automation, e2e testing, code quality
 - [ci-cd-pipelines](../ci-cd-pipelines/SKILL.md) — GitHub Actions, GitLab CI, deployment pipelines
 - [observability-and-sre](../observability-and-sre/SKILL.md) — Prometheus, Grafana, SLOs, distributed tracing, incident response
-- [python-toolchain](../python-toolchain/SKILL.md) — uv/ruff/mypy, packaging, performance optimization, type hints
 - [data-and-security](../data-and-security/SKILL.md) — Databases, SQL optimization, secrets management, auth patterns
 - [dev-workflows](../dev-workflows/SKILL.md) — Git workflow, documentation, debugging, Airflow pipelines
 - [three-brain](../three-brain/SKILL.md) — Second-opinion review via Codex/Gemini, multimodal analysis, long-context scan (one-shot)
@@ -42,9 +37,6 @@ What is the primary concern?
 +-- Server-side API / async service / messaging?
 |   --> dev-suite:backend-patterns
 |
-+-- UI components / mobile app / frontend framework / TypeScript project / WCAG / accessibility?
-|   --> dev-suite:frontend-and-mobile
-|
 +-- System design / infra / cloud / containers?
 |   --> dev-suite:architecture-and-infra
 |
@@ -56,9 +48,6 @@ What is the primary concern?
 |
 +-- Metrics / alerting / SLOs / incidents?
 |   --> dev-suite:observability-and-sre
-|
-+-- Python packaging / uv / typing / profiling / error handling / legacy migration?
-|   --> dev-suite:python-toolchain
 |
 +-- Database / SQL / caching / search / secrets / auth?
 |   --> dev-suite:data-and-security
@@ -84,13 +73,11 @@ What is the primary concern?
 
 | Trigger | Hub skill |
 |---|---|
-| REST, GraphQL, Node.js, FastAPI, queues | dev-suite:backend-patterns |
-| React, Vue, Svelte, React Native, Flutter, TypeScript, tsconfig, WCAG, ARIA, accessibility, mobile testing | dev-suite:frontend-and-mobile |
+| REST APIs, FastAPI, async Python services, message queues | dev-suite:backend-patterns |
 | Microservices, Terraform, K8s, clean arch | dev-suite:architecture-and-infra |
 | TDD, pytest, Playwright, Cypress, coverage, PR review, code review, schema validation, Pydantic, Zod, plugin manifest | dev-suite:testing-and-quality |
 | GitHub Actions, GitLab CI, deploy pipeline, SAST, Snyk, Trivy, SBOM, secrets scan, CI failure, flaky test, build error | dev-suite:ci-cd-pipelines |
 | Prometheus, Grafana, tracing, SLOs, oncall | dev-suite:observability-and-sre |
-| uv, ruff, mypy, packaging, type hints, pyproject.toml, PyPI, profiling, Cython, try/except, retry, Python migration | dev-suite:python-toolchain |
 | SQL, database design, migrations, Redis, caching, Elasticsearch, vector search, secrets, JWT, OAuth, RBAC, Vault | dev-suite:data-and-security |
 | Git branching, docs, debugging, Airflow | dev-suite:dev-workflows |
 | /ai-pair, dev team, content team, team-stop, Codex+Gemini review, multi-model review, three-model team, dual reviewer, ongoing iterative review, pair programming with AI models | dev-suite:ai-pair |

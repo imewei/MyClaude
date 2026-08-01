@@ -30,9 +30,6 @@ Schema validation, data integrity checks, and runtime assertion strategies.
 ### [Code Review](../code-review/SKILL.md)
 Structured review checklists, PR feedback standards, and automated linting gates.
 
-### [Plugin Syntax Validator](../plugin-syntax-validator/SKILL.md)
-Frontmatter parsing, manifest cross-reference checks, and plugin integrity validation.
-
 ## Routing Decision Tree
 
 ```
@@ -53,9 +50,6 @@ What is the quality concern?
 +-- PR review / linting / feedback standards?
 |   --> dev-suite:code-review
 |
-+-- Plugin frontmatter / manifest integrity?
-|   --> dev-suite:plugin-syntax-validator
-|
 +-- None of the above / concern is ambiguous or spans multiple areas?
     --> Delegate to quality-specialist for open-ended triage, or clarify the
         primary concern and re-enter the routing decision tree.
@@ -70,7 +64,6 @@ What is the quality concern?
 | Playwright, Cypress, E2E, browser    | dev-suite:e2e-testing-patterns         |
 | Pydantic, zod, JSON schema, asserts  | dev-suite:comprehensive-validation     |
 | PR review, lint, code standards      | dev-suite:code-review                  |
-| Plugin YAML, manifest, frontmatter   | dev-suite:plugin-syntax-validator      |
 
 ## Checklist
 

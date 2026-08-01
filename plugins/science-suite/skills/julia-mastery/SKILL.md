@@ -11,7 +11,7 @@ Expert guide for writing high-performance, idiomatic Julia code for scientific a
 
 For complex Julia programming, SciML workflows, and performance optimization, delegate to the expert agent:
 
-- **`julia-pro`**: Unified specialist for Julia optimization, including Core Julia, SciML (Lux.jl, UDEs), nonlinear dynamics (DynamicalSystems.jl, BifurcationKit.jl), Turing.jl, and Package Development.
+- **`julia-pro`**: Unified specialist for Julia optimization, including Core Julia, SciML (Lux.jl, UDEs), nonlinear dynamics (DynamicalSystems.jl, AUTO-07p -- BifurcationKit.jl blocked on Julia 1.12), Turing.jl, and Package Development.
   - *Location*: `plugins/science-suite/agents/julia-pro.md`
   - *Capabilities*: Performance tuning, stiff ODE solvers, Bayesian inference, UDEs, bifurcation analysis, equation discovery, and CI/CD setup.
 

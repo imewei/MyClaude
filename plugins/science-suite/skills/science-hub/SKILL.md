@@ -1,7 +1,7 @@
 ---
 name: science-hub
 description: >-
-  Top-level router for all scientific computing topics. Use for: JAX/NumPyro/Diffrax/JIT/vmap/pmap/custom-VJP/optax; Julia language/packages/SciML/DiffEq.jl/Lux/ModelingToolkit; nonlinear dynamics/bifurcation/chaos/Lyapunov/SINDy/attractors/coupled oscillators/pattern formation; correlation functions/DLS/SAXS/XPCS/FFT correlators/MSD/VACF/g(r); statistical physics/non-equilibrium/stochastic dynamics/active matter/multiscale/rare-event sampling/extreme-value statistics; deep learning architecture/transformers/CNNs/GNNs/training diagnostics/gradient explosion; classical ML/scikit-learn/XGBoost/data analysis/wrangling/scientific visualization; LLM applications/RAG/LangChain/NLP/evaluation; ML deployment/FastAPI/TorchServe/MLOps/quantization/federated learning; MD simulation/HPC/GPU kernels/GROMACS/OpenMM/numerical methods/trajectory analysis/ML force fields; scientific Python packaging/Rust extensions/type-driven design/quantum computing/bioinformatics/RL/symbolic math; Bayesian inference/MCMC/NumPyro/Turing.jl/Pigeons/consensus MCMC/Bayesian UDE/PINNs/variational inference/MCMC diagnostics.
+  Top-level router for all scientific computing topics. Use for: JAX/NumPyro/Diffrax/JIT/vmap/pmap/custom-VJP/optax; Julia language/packages/SciML/DiffEq.jl/Lux/ModelingToolkit; nonlinear dynamics/bifurcation/chaos/Lyapunov/SINDy/attractors/coupled oscillators/pattern formation; correlation functions/DLS/SAXS/XPCS/FFT correlators/MSD/VACF/g(r); statistical physics/non-equilibrium/stochastic dynamics/active matter/multiscale/rare-event sampling/extreme-value statistics; deep learning architecture/transformers/CNNs/GNNs/training diagnostics/gradient explosion; classical ML/scikit-learn/XGBoost/data analysis/wrangling/scientific visualization; LLM applications/RAG/LangChain/NLP/evaluation; ML deployment/FastAPI/TorchServe/MLOps/quantization/federated learning; MD simulation/HPC/GPU kernels/GROMACS/OpenMM/numerical methods/trajectory analysis/ML force fields; scientific Python packaging/Rust extensions/type-driven design/quantum computing/bioinformatics/RL/symbolic math; Bayesian inference/MCMC/NumPyro/Turing.jl/Pigeons/consensus MCMC/Bayesian UDE/PINNs/variational inference/MCMC diagnostics; continuum-mechanics/FEM/FEA/constitutive equations/DMA/rheology/transient networks/vitrimers/nanocomposites.
 ---
 
 # Science Suite (science-hub)
@@ -12,6 +12,7 @@ Top-level entry point for the science-suite plugin. Identifies the correct hub s
 
 Located in `plugins/science-suite/agents/`:
 
+- **`continuum-mechanics-engineer`** — FEM/FEA, constitutive modeling, DMA/rheology, transient networks, nanocomposites
 - **`jax-pro`** — JAX/XLA expert: JIT, vmap, pmap, custom VJPs, NumPyro
 - **`julia-pro`** — Core Julia: type stability, packaging, dispatch, interop
 - **`julia-ml-hpc`** — Julia ML + HPC: Lux, GNNLux, CUDA.jl, distributed
@@ -38,6 +39,7 @@ Located in `plugins/science-suite/agents/`:
 - [LLM & AI](../llm-and-ai/SKILL.md) — LLM integration into scientific workflows, RAG, codegen
 - [ML Deployment](../ml-deployment/SKILL.md) — Model serving, optimization, deployment pipelines
 - [Simulation & HPC](../simulation-and-hpc/SKILL.md) — MD (GROMACS/OpenMM/JAX-MD), Monte Carlo, GPU physics
+- [Continuum Mechanics & Rheology](../continuum-mechanics-and-rheology/SKILL.md) — FEM/FEA, constitutive modeling, DMA/rheology, transient networks, nanocomposites
 - [Research & Domains](../research-and-domains/SKILL.md) — Bioinformatics, quantum, control theory, signal processing
 - [Bayesian Inference](../bayesian-inference/SKILL.md) — NumPyro NUTS, Turing, MCMC diagnostics, variational inference
 
@@ -82,6 +84,9 @@ What is the primary task?
 +-- MD / Monte Carlo / GROMACS/OpenMM / GPU physics / HPC / signal processing / FFT / time series / control theory / numerical methods?
 |   --> science-suite:simulation-and-hpc
 |
++-- FEM/FEA, constitutive modeling, DMA/rheology, transient networks, nanocomposites?
+|   --> science-suite:continuum-mechanics-and-rheology
+|
 +-- Bioinformatics / quantum computing / computer vision / RL / symbolic math / DSPy / RLAIF / self-improving AI / scientific Python / Rust extensions?
 |   --> science-suite:research-and-domains
 |
@@ -108,7 +113,8 @@ What is the primary task?
 | scikit-learn, XGBoost, feature engineering, MLflow, pandas, curve fitting, NLSQ, EDA, statistical tests, hypothesis testing, scientific visualization, matplotlib, seaborn, W&B | science-suite:ml-and-data-science |
 | LLM, RAG, Claude API, AI workflow, codegen, embeddings, LangChain, LangGraph, NLP, tokenization, NER, LLM evaluation, LLM-as-judge | science-suite:llm-and-ai |
 | ONNX, TensorRT, model serving, deployment, inference server, FastAPI serving, TorchServe, Triton, BentoML, quantization, pruning, Airflow ML, Prefect, K8s GPU, federated learning, differential privacy | science-suite:ml-deployment |
-| GROMACS, OpenMM, LAMMPS, molecular dynamics, Monte Carlo, HPC, MPI, trajectory analysis, MDAnalysis, ML force fields, NequIP, MACE, signal processing, FFT, filtering, time series, ARIMA, changepoint detection, control theory, PID, LQR, MPC, numerical methods, FEM | science-suite:simulation-and-hpc |
+| GROMACS, OpenMM, LAMMPS, molecular dynamics, Monte Carlo, HPC, MPI, trajectory analysis, MDAnalysis, ML force fields, NequIP, MACE, signal processing, FFT, filtering, time series, ARIMA, changepoint detection, control theory, PID, LQR, MPC, numerical methods | science-suite:simulation-and-hpc |
+| FEM, FEA, finite element, weak form, constitutive equation, hyperelastic, viscoelastic, DMA, storage modulus, loss modulus, rheology, shear rheology, extensional rheology, WLF, time-temperature superposition, master curve, vitrimer, covalent adaptable network, transient network, nanocomposite, Halpin-Tsai, Mori-Tanaka, percolation composite | science-suite:continuum-mechanics-and-rheology |
 | bioinformatics, genomics, quantum computing, VQE, QAOA, computer vision, reinforcement learning, symbolic math, SymPy, DSPy, RLAIF, self-improving AI, Rust extensions, type-driven design, scientific Python packaging | science-suite:research-and-domains |
 | NUTS, MCMC, NumPyro, Turing, ArviZ, variational inference, Pigeons, parallel tempering, multimodal posterior, Hawkes process, point processes, Bayesian SINDy, credible intervals, BlackJAX, R-hat, ESS | science-suite:bayesian-inference |
 

@@ -15,46 +15,28 @@ Orchestrator for backend development across Node.js and Python ecosystems. Route
 
 ## Core Skills
 
-### [Node.js Backend Patterns](../nodejs-backend-patterns/SKILL.md)
-Express/Fastify servers, middleware chains, and Node.js runtime patterns. For language-agnostic REST API design (versioning, pagination, contracts), see `api-design-principles`.
-
-### [Async Python Patterns](../async-python-patterns/SKILL.md)
-FastAPI, asyncio concurrency, and async I/O optimization for Python backends.
-
 ### [API Design Principles](../api-design-principles/SKILL.md)
 REST resource modeling, versioning strategies, pagination, and contract-first design.
 
-### [GraphQL Patterns](../graphql-patterns/SKILL.md)
-Schema design, resolvers, DataLoader batching, and federation.
-
-### [WebSocket Patterns](../websocket-patterns/SKILL.md)
-Real-time bidirectional communication, connection lifecycle, and pub/sub over WebSockets.
-
 ### [Message Queue Patterns](../message-queue-patterns/SKILL.md)
 Producer/consumer workflows, dead-letter queues, and at-least-once delivery guarantees.
+
+### [Error Handling Patterns](../error-handling-patterns/SKILL.md)
+Exception hierarchies, Result types, retry with exponential backoff, circuit breakers, and structured error responses.
 
 ## Routing Decision Tree
 
 ```
 What is the backend concern?
 |
-+-- Node.js server / middleware / runtime performance?
-|   --> dev-suite:nodejs-backend-patterns
-|
-+-- Python async service / FastAPI / asyncio?
-|   --> dev-suite:async-python-patterns
-|
 +-- REST API design / versioning / contract?
 |   --> dev-suite:api-design-principles
 |
-+-- GraphQL schema / resolvers / federation?
-|   --> dev-suite:graphql-patterns
-|
-+-- Real-time connections / live updates?
-|   --> dev-suite:websocket-patterns
-|
 +-- Async messaging / queues / events?
 |   --> dev-suite:message-queue-patterns
+|
++-- Exception design / retry / circuit breaker / error responses?
+|   --> dev-suite:error-handling-patterns
 |
 +-- None of the above / concern is ambiguous or spans multiple areas?
     --> Delegate to software-architect for open-ended triage, or clarify the
@@ -65,12 +47,9 @@ What is the backend concern?
 
 | Trigger                        | Sub-skill                    |
 |--------------------------------|------------------------------|
-| Express, Fastify, Node streams | dev-suite:nodejs-backend-patterns      |
-| FastAPI, asyncio, aiohttp      | dev-suite:async-python-patterns        |
 | REST, OpenAPI, versioning      | dev-suite:api-design-principles        |
-| GraphQL, Apollo, federation    | dev-suite:graphql-patterns             |
-| WebSocket, SSE, real-time      | dev-suite:websocket-patterns           |
 | RabbitMQ, Kafka, SQS, queues  | dev-suite:message-queue-patterns       |
+| try/except, retry, circuit breaker | dev-suite:error-handling-patterns  |
 
 ## Checklist
 

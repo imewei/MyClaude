@@ -1,10 +1,10 @@
 # Science Suite
 
-Domain-specific scientific computing suite for high-performance computing, Julia ML/DL/HPC, specialized physics/chemistry simulations, and data science workflows. Agents primarily collaborate within the suite with only 2 outward delegation edges. Optimized for Claude Opus.
+Domain-specific scientific computing suite for high-performance computing, Julia ML/DL/HPC, specialized physics/chemistry simulations, and data science workflows. Agents primarily collaborate within the suite with only 2 outward delegation edges. Multi-tier model routing: opus for deep-math specialists, sonnet for engineering-heavy work, haiku for mechanical MLOps.
 
 ## Overview
 
-Science Suite provides 11 specialized agents (4 opus, 7 sonnet) covering JAX, Julia, physics, ML/DL, and nonlinear dynamics. Its 14 hub skills route to 112 sub-skills spanning nonlinear dynamics, Bayesian inference, statistical physics, simulation, and more. Opus agents handle deep reasoning (simulation design, bifurcation theory, DL architecture) while sonnet agents handle implementation (JAX kernels, Julia code, Python systems). SessionStart hooks auto-detect JAX devices, GPU availability, and Julia environments. *(Research methodology moved to `research-suite` in v3.4.0.)*
+Science Suite provides 12 specialized agents (7 opus, 4 sonnet, 1 haiku) covering JAX, Julia, physics, ML/DL, continuum mechanics, and nonlinear dynamics. Its 30 hub skills route to 107 sub-skills spanning nonlinear dynamics, Bayesian inference, statistical physics, simulation, and more. Opus agents handle deep reasoning (PINN/inverse-PDE theory, bifurcation theory, DL architecture) while sonnet agents handle implementation (JAX kernels, Julia code, Python systems, MD/HPC simulation). SessionStart hooks auto-detect JAX devices, GPU availability, and Julia environments. *(Research methodology moved to `research-suite` in v3.4.0.)*
 
 ## Quick Start / Usage Examples
 
@@ -35,23 +35,24 @@ Science Suite provides 11 specialized agents (4 opus, 7 sonnet) covering JAX, Ju
 
 | Agent | Model | Specialization |
 |-------|-------|----------------|
-| `jax-pro` | sonnet | Core JAX, NumPyro, Diffrax, JAX-MD |
-| `julia-pro` | sonnet | Julia, SciML, DifferentialEquations.jl |
+| `jax-pro` | opus | Core JAX, NumPyro, Diffrax, JAX-MD |
+| `julia-pro` | opus | Julia, SciML, DifferentialEquations.jl |
 | `julia-ml-hpc` | sonnet | Julia ML, Deep Learning, HPC (Lux.jl, CUDA.jl, MPI.jl) |
-| `ml-expert` | sonnet | Classical ML, MLOps, data engineering |
-| `simulation-expert` | opus | HPC, molecular dynamics, multiscale |
+| `ml-expert` | haiku | Classical ML, MLOps, data engineering |
+| `simulation-expert` | sonnet | HPC, molecular dynamics, multiscale |
 | `statistical-physicist` | opus | Soft matter, non-equilibrium, correlations |
 | `python-pro` | sonnet | Python systems engineering, performance |
-| `pinn-engineer` | sonnet | Physics-informed neural networks, NeuralPDE.jl, DeepXDE |
+| `pinn-engineer` | opus | Physics-informed neural networks, NeuralPDE.jl, DeepXDE |
 | `sci-workflow-engineer` | sonnet | LLM integration into scientific pipelines, codegen, automation |
 | `neural-network-master` | opus | DL architecture, PINNs, theory, diagnostics |
 | `nonlinear-dynamics-expert` | opus | Bifurcation theory, chaos, network dynamics, pattern formation |
+| `continuum-mechanics-engineer` | opus | FEM/FEA, constitutive modeling, DMA/rheology, transient networks, nanocomposites |
 
 ## Commands
 
-This suite registers **zero slash commands** — every workflow is skill- or agent-driven. Reference command templates (`/run-experiment`, `/analyze-data`, `/adopt-code`) exist on disk for users to copy and adapt, but are not invoked directly. `/paper-review` was removed in v3.4.0; use `scientific-review` in `research-suite` instead.
+This suite registers **2 slash commands**: `/md-sim` (molecular dynamics simulation setup) and `/benchmark` (performance benchmarking). Reference command templates (`/run-experiment`, `/analyze-data`, `/adopt-code`) exist on disk for users to copy and adapt, but are not invoked directly. `/paper-review` was removed in v3.4.0; use `scientific-review` in `research-suite` instead.
 
-## Skills (14 hubs → 112 sub-skills)
+## Skills (30 hubs → 107 sub-skills)
 
 Organized by domain:
 
@@ -82,7 +83,7 @@ Organized by domain:
 
 ## Integration / Workflow
 
-Science Suite agents primarily collaborate within the suite (e.g., `simulation-expert` delegates to `jax-pro` for JAX-MD kernels, `neural-network-master` delegates to `julia-ml-hpc` for Lux.jl implementations). Cross-suite, science-suite delegates *up* to `agent-core/orchestrator` for multi-agent work and *out* to `research-suite` for methodology (power analysis, IMRaD writing, peer review). See `docs/integration-map.rst` for the full delegation graph.
+Science Suite agents primarily collaborate within the suite (e.g., `simulation-expert` delegates to `jax-pro` for JAX-MD kernels, `neural-network-master` delegates to `julia-ml-hpc` for Lux.jl implementations). Cross-suite, science-suite delegates *out* to `research-suite` for methodology (power analysis, IMRaD writing, peer review). See `docs/integration-map.rst` for the full delegation graph.
 
 ## Installation
 
