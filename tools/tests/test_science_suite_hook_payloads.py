@@ -32,6 +32,16 @@ def run_hook(script: str, payload: dict, cwd: Path | None = None) -> dict:
     return json.loads(result.stdout)
 
 
+def hook_context(out: dict) -> str:
+    """Pull additionalContext from the shape Claude Code actually consumes.
+
+    A top-level "additionalContext" key is silently ignored by Claude Code —
+    only hookSpecificOutput.additionalContext reaches the model, so that is
+    the shape tests must assert against, not the hook's own convention.
+    """
+    return out.get("hookSpecificOutput", {}).get("additionalContext", "")
+
+
 class TestPostToolUse:
     """PostToolUse must read tool_response and only flag numeric NaN/Inf."""
 
@@ -45,9 +55,45 @@ class TestPostToolUse:
                 "tool_response": {"stdout": "loss = nan\ngrad = inf"},
             },
         )
-        context = out.get("additionalContext", "")
+        context = hook_context(out)
         assert "nan" in context.lower(), f"no NaN warning in {out}"
         assert "inf" in context.lower(), f"no Inf warning in {out}"
+
+    @pytest.mark.parametrize(
+        "stdout",
+        [
+            "[ 1.  nan  2.]",
+            "3-element Vector{Float64}:\n 1.0\n  nan\n 2.0",
+            "mean     nan\nstd      nan",
+            "100   nan    inf",
+            "r_hat  nan",
+            "nan",
+            "energy=nan",
+        ],
+        ids=[
+            "numpy-1d-repr",
+            "julia-vector-display",
+            "pandas-describe",
+            "whitespace-table",
+            "arviz-rhat",
+            "bare-nan-line",
+            "key-equals-nan",
+        ],
+    )
+    def test_warns_on_real_diverged_output_formats(self, stdout):
+        """Regression guard: the regex must catch the formats this suite actually emits."""
+        out = run_hook(
+            "post_tool_use.py",
+            {
+                "hook_event_name": "PostToolUse",
+                "tool_name": "Bash",
+                "tool_response": {"stdout": stdout},
+            },
+        )
+        context = hook_context(out)
+        assert "nan" in context.lower() or "inf" in context.lower(), (
+            f"missed real diverged-output format {stdout!r}: {out}"
+        )
 
     @pytest.mark.parametrize(
         "stdout",
@@ -66,12 +112,13 @@ class TestPostToolUse:
                 "tool_response": {"stdout": stdout},
             },
         )
-        context = out.get("additionalContext", "")
+        context = hook_context(out)
         assert "verify the computation" not in context, (
             f"false positive on {stdout!r}: {out}"
         )
 
-    def test_reports_clean_check_on_normal_output(self):
+    def test_no_context_on_clean_output(self):
+        """A regex scan can warn on a hit; it must not assert cleanliness on a miss."""
         out = run_hook(
             "post_tool_use.py",
             {
@@ -80,7 +127,8 @@ class TestPostToolUse:
                 "tool_response": {"stdout": "loss = 0.031\naccuracy = 0.98"},
             },
         )
-        assert "no NaN/Inf" in out.get("additionalContext", "")
+        assert "additionalContext" not in out
+        assert "hookSpecificOutput" not in out
 
 
 class TestSubagentStop:
@@ -91,7 +139,7 @@ class TestSubagentStop:
         out = run_hook(
             "subagent_stop.py", {"hook_event_name": "SubagentStop", key: "jax-pro"}
         )
-        context = out.get("additionalContext", "")
+        context = hook_context(out)
         assert "jax-pro" in context, f"agent name not resolved: {out}"
         assert "unknown" not in context
 
@@ -101,6 +149,7 @@ class TestSubagentStop:
             {"hook_event_name": "SubagentStop", "agent_name": "sci-workflow-engineer"},
         )
         assert "additionalContext" not in out, f"nudge fired on advisory agent: {out}"
+        assert "hookSpecificOutput" not in out, f"nudge fired on advisory agent: {out}"
 
 
 class TestSessionRoundTrip:
@@ -120,7 +169,7 @@ class TestSessionRoundTrip:
             "session_start.py",
             {"hook_event_name": "SessionStart", "source": "startup", "cwd": str(tmp_path)},
         )
-        context = start.get("additionalContext", "")
+        context = hook_context(start)
         assert "## Session ended:" in context, f"timestamp truncated away: {context}"
         assert "Science compute env:" in context
 
@@ -133,7 +182,7 @@ class TestSessionRoundTrip:
         start = run_hook(
             "session_start.py", {"hook_event_name": "SessionStart", "cwd": str(tmp_path)}
         )
-        assert "## Session ended:" not in start.get("additionalContext", "")
+        assert "## Session ended:" not in hook_context(start)
 
     def test_unparseable_progress_is_not_injected(self, tmp_path):
         progress_file = tmp_path / PROGRESS_RELPATH
@@ -142,7 +191,7 @@ class TestSessionRoundTrip:
         start = run_hook(
             "session_start.py", {"hook_event_name": "SessionStart", "cwd": str(tmp_path)}
         )
-        assert "stale/git/status" not in start.get("additionalContext", "")
+        assert "stale/git/status" not in hook_context(start)
 
 
 class TestNoEnvVarDependency:

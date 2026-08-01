@@ -12,7 +12,7 @@ import sys
 from datetime import UTC, datetime, timedelta
 from pathlib import Path
 
-from _hook_io import get_field, read_payload
+from _hook_io import get_field, read_payload, wrap_context
 
 PROGRESS_RELPATH = Path(".claude") / "progress" / "science-suite.md"
 PROGRESS_MAX_CHARS = 1500
@@ -117,10 +117,9 @@ def main() -> None:
                 f"{PROGRESS_RELPATH.as_posix()}, may be stale):\n{progress}"
             )
 
-        result = {
-            "status": "success",
-            "additionalContext": "\n\n".join(sections),
-        }
+        ctx = "\n\n".join(sections)
+        result = {"status": "success", "additionalContext": ctx}
+        result.update(wrap_context("SessionStart", ctx))
         json.dump(result, sys.stdout)
     except Exception as e:
         print(f"SessionStart hook error: {e}", file=sys.stderr)

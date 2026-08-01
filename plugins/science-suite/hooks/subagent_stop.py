@@ -7,7 +7,7 @@ Collects results from parallel science agents (parameter sweeps, etc.).
 import json
 import sys
 
-from _hook_io import get_field, read_payload
+from _hook_io import get_field, read_payload, wrap_context
 
 # Agents that produce numerical results worth validating. sci-workflow-engineer
 # (LLM/RAG tooling) and python-pro (packaging, typing, glue) are excluded.
@@ -30,12 +30,14 @@ def main() -> None:
         payload = read_payload()
         agent_name = get_field(payload, "agent_name", "subagent_type", "agent_type")
 
-        result: dict[str, str] = {"status": "success"}
+        result: dict = {"status": "success"}
         if agent_name in NUMERICAL_AGENTS:
-            result["additionalContext"] = (
+            ctx = (
                 f"Science agent '{agent_name}' completed. "
                 "Check output for numerical validity before proceeding."
             )
+            result["additionalContext"] = ctx
+            result.update(wrap_context("SubagentStop", ctx))
 
         json.dump(result, sys.stdout)
     except Exception as e:
