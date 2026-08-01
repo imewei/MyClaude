@@ -36,6 +36,24 @@ def get_recent_commits(cwd: str, limit: int = 5) -> str:
 MAX_UNCOMMITTED_CHARS = 2000
 
 
+def get_head(cwd: str) -> str:
+    """Short HEAD hash, so session_start can detect a moved-on branch."""
+    try:
+        result = subprocess.run(
+            ["git", "rev-parse", "--short", "HEAD"],
+            capture_output=True,
+            text=True,
+            timeout=5,
+            cwd=cwd,
+            check=False,
+        )
+        if result.returncode == 0 and result.stdout.strip():
+            return result.stdout.strip()
+    except (subprocess.TimeoutExpired, FileNotFoundError):
+        pass
+    return ""
+
+
 def get_uncommitted_files(cwd: str) -> str:
     """List uncommitted changes, capped so it cannot crowd out the header."""
     try:
@@ -67,10 +85,12 @@ def main() -> None:
         timestamp = datetime.now(UTC).strftime("%Y-%m-%d %H:%M UTC")
         commits = get_recent_commits(cwd)
         uncommitted = get_uncommitted_files(cwd)
+        head = get_head(cwd)
 
         lines = [
             f"## Session ended: {timestamp}",
             f"Reason: {end_reason}",
+            f"HEAD: {head}" if head else "HEAD: unknown",
             "",
             "### Recent commits",
             commits,

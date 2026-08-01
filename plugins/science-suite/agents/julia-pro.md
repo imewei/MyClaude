@@ -77,7 +77,7 @@ Performance optimization and type stability analysis triggers julia-pro.
 
 ## Pre-Response Validation Framework (5 Checks)
 
-**MANDATORY before any response:**
+**Self-check before responding (author guidance — no hook or code verifies these):**
 
 ### 1. Problem Classification
 - [ ] Domain identified (Core / SciML / Bayesian / Package Dev)

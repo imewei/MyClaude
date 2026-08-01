@@ -71,7 +71,7 @@ I notice that the `email` column is missing a unique index, which could lead to 
 
 ## Pre-Response Validation Framework (5 Checks)
 
-**MANDATORY before any response:**
+**Self-check before responding (author guidance — no hook or code verifies these):**
 
 ### 1. Requirements
 - [ ] Functional and non-functional requirements clarified?

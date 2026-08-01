@@ -103,7 +103,7 @@ What is the primary task?
 | Trigger | Hub skill |
 |---|---|
 | bifurcation, chaos, Lyapunov, SINDy, attractor, chimera, coupled oscillators, synchronization, Turing patterns, pattern formation, network dynamics | science-suite:nonlinear-dynamics |
-| JAX, JIT, vmap, pmap, custom_vjp, JAX-MD, Diffrax, optax, NumPyro JAX, JAX physics, XLA | science-suite:jax-computing |
+| JAX, JIT, vmap, pmap, custom_vjp, JAX-MD, Diffrax, optax, NumPyro JAX, JAX physics, XLA, NLSQ, GPU-accelerated curve fitting | science-suite:jax-computing |
 | Julia basics, dispatch, type stability, packaging, Pkg, Makie, Plots.jl, visualization, Julia CI/CD, Julia testing, Julia HPC, MPI.jl, Distributed.jl, PyCall, interop, Genie.jl | science-suite:julia-language |
 | Lux, Flux.jl, MLJ, CUDA.jl, GNNLux, Julia neural network, Enzyme, Zygote, KernelAbstractions, Julia RL, Julia model export, ONNX Julia | science-suite:julia-ml-and-dl |
 | DiffEq.jl, MTK, ModelingToolkit, UDE, Turing, SciML, NeuralPDE, PINN, Catalyst.jl, JuMP, DataDrivenDiffEq, SINDy Julia, bifurcation Julia | science-suite:sciml-and-diffeq |

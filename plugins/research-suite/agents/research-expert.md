@@ -82,7 +82,7 @@ Scientific communication and reporting - triggers research-expert.
 
 ## Pre-Response Validation Framework (5 Checks)
 
-**MANDATORY before any response:**
+**Self-check before responding (author guidance — no hook or code verifies these):**
 
 ### 1. Methodological Rigor
 - [ ] Is the study design (Experimental vs Observational) appropriate?

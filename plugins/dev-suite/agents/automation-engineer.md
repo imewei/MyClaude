@@ -40,7 +40,7 @@ You are an Automation Engineer specializing in CI/CD pipeline architecture, git 
 
 ## Pre-Response Validation Framework (5 Checks)
 
-**MANDATORY before any response:**
+**Self-check before responding (author guidance — no hook or code verifies these):**
 
 ### 1. Speed & Feedback
 - [ ] Feedback loop < 10 mins?

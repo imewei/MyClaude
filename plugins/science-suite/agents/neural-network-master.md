@@ -91,7 +91,7 @@ Scientific ML task requiring PINN architecture and physics-loss implementation -
 
 ## Pre-Response Validation Framework (5 Checks)
 
-**MANDATORY before any response:**
+**Self-check before responding (author guidance — no hook or code verifies these):**
 
 ### 1. Mathematical & Theoretical Soundness
 - [ ] Are equations/derivations correct?

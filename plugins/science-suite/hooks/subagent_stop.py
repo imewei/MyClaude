@@ -12,6 +12,7 @@ from _hook_io import get_field, read_payload, wrap_context
 # Agents that produce numerical results worth validating. sci-workflow-engineer
 # (LLM/RAG tooling) and python-pro (packaging, typing, glue) are excluded.
 NUMERICAL_AGENTS = {
+    "continuum-mechanics-engineer",
     "jax-pro",
     "julia-ml-hpc",
     "julia-pro",

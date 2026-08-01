@@ -7,6 +7,7 @@ Auto-detects project stack: language, framework, test runner, package manager.
 import json
 import os
 import re
+import subprocess
 import sys
 from datetime import UTC, datetime, timedelta
 from pathlib import Path
@@ -55,8 +56,27 @@ MAX_PROGRESS_CHARS = 500
 MAX_PROGRESS_AGE = timedelta(hours=24)
 
 
+def get_current_head(cwd: str) -> str:
+    try:
+        result = subprocess.run(
+            ["git", "rev-parse", "--short", "HEAD"],
+            capture_output=True,
+            text=True,
+            timeout=5,
+            cwd=cwd,
+            check=False,
+        )
+        if result.returncode == 0 and result.stdout.strip():
+            return result.stdout.strip()
+    except (subprocess.TimeoutExpired, FileNotFoundError):
+        pass
+    return ""
+
+
 def read_progress_file(cwd: str) -> str:
-    """Read prior session progress, skipping it if stale or undated."""
+    """Read prior session progress. Drops it entirely if undated or older
+    than MAX_PROGRESS_AGE. If HEAD has moved since it was written, keeps the
+    text but prepends a `[STALE ...]` warning rather than dropping it."""
     progress_path = Path(cwd) / ".claude" / "progress" / "dev-suite.md"
     try:
         text = progress_path.read_text(encoding="utf-8").strip()
@@ -74,6 +94,21 @@ def read_progress_file(cwd: str) -> str:
 
     if len(text) > MAX_PROGRESS_CHARS:
         text = text[:MAX_PROGRESS_CHARS] + "\n... (truncated)"
+
+    # Recorded HEAD vs live HEAD: don't silently reinject progress against a
+    # branch/HEAD that has since moved (e.g. another session merged/rebased).
+    # Deliberately fails OPEN, not closed: if we can't determine the current
+    # HEAD (git missing, not a repo, transient error), we show the progress
+    # unmodified rather than guessing staleness we can't actually verify.
+    head_match = re.search(r"^HEAD: (\S+)$", text, re.MULTILINE)
+    if head_match and head_match.group(1) != "unknown":
+        current_head = get_current_head(cwd)
+        if current_head and current_head != head_match.group(1):
+            text = (
+                f"[STALE — recorded at HEAD {head_match.group(1)}, "
+                f"now at {current_head}; branch has moved since this was written]\n"
+                + text
+            )
     return text
 
 

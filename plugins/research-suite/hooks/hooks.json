@@ -1,5 +1,5 @@
 {
-  "description": "Research-suite hooks for scientific-review integrity tracking (command-based logging), session initialization, and subagent stage-artifact gating.",
+  "description": "Research-suite hooks for research-spark stage-artifact verification (filesystem-checked, SubagentStop), scientific-review deliverable completeness (PostToolUse on Write), and session initialization.",
   "hooks": {
     "SubagentStop": [
       {
@@ -9,6 +9,19 @@
             "type": "command",
             "command": "python3 ${CLAUDE_PLUGIN_ROOT}/hooks/subagent_stop.py",
             "async": false,
+            "timeout": 10
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Write|Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 ${CLAUDE_PLUGIN_ROOT}/hooks/post_tool_use.py",
+            "async": true,
             "timeout": 10
           }
         ]
