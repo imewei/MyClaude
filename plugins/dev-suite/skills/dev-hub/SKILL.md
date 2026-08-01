@@ -1,7 +1,7 @@
 ---
 name: dev-hub
 description: >-
-  Top-level router for scientific-computing software development lifecycle topics. Use for: FastAPI/asyncio scientific services; scientific GUIs (PyQt/PySide6); system architecture for numerical/ML/simulation systems, microservices/containers/cloud/CLI tools/Terraform/K8s; test automation/TDD/E2E/coverage/code review/plugin validation for scientific codebases; GitHub Actions/GitLab CI/deployment pipelines/security scanning/CI errors; Prometheus/Grafana/distributed tracing/SLOs/monitoring/observability/incident response for long-running scientific workloads; database schema/SQL optimization/caching/search/authentication/secrets management; Git workflow/technical documentation for numerical/ML codebases/Airflow data pipelines/systematic debugging for scientific computing; AI pair programming/multi-model dev team/Codex+Gemini review pipeline/content team/team-stop/ai-pair/start dev team/start content team/three-model collaboration/dual-model review/ongoing iterative review.
+  Top-level router for software development lifecycle topics, with a dedicated track for scientific-computing code quality. Use for: FastAPI/asyncio backend services; full-stack web/mobile app development; system architecture (microservices/containers/cloud/CLI tools/Terraform/K8s); test automation/TDD/E2E/coverage/code review/plugin validation; numerical-precision and reproducibility validation for JAX/Julia scientific codebases; GitHub Actions/GitLab CI/deployment pipelines/security scanning/CI errors; Prometheus/Grafana/distributed tracing/SLOs/monitoring/observability/incident response; database schema/SQL optimization/caching/search/authentication/secrets management; Git workflow/technical documentation/Airflow data pipelines/systematic debugging; AI pair programming/multi-model dev team/Codex+Gemini review pipeline/content team/team-stop/ai-pair/start dev team/start content team/three-model collaboration/dual-model review/ongoing iterative review.
 ---
 
 # Dev Suite (dev-hub)
@@ -12,8 +12,8 @@ Top-level entry point consolidating all dev-suite hub skills into a single route
 
 - **`app-developer`** — Full-stack application development: React/Next.js web, Flutter/React Native/Swift/Kotlin mobile, performance & accessibility
 - **`automation-engineer`** — CI/CD pipeline architecture: GitHub Actions/GitLab CI, git workflow automation, release engineering, build optimization
-- **`documentation-expert`** — Docs for numerical/ML/SciML codebases: API specs, Sphinx, notebook-to-doc pipelines
-- **`quality-specialist`** — Scientific-computing validation: numerical precision, property-based invariants, reproducibility
+- **`documentation-expert`** — Technical documentation architecture: API references, ADRs, tutorials, docs-as-code (Diátaxis framework)
+- **`quality-specialist`** — Code quality & scientific-computing validation: numerical precision/reproducibility audits (JAX/Julia), plus OWASP security review and test strategy design
 - **`software-architect`** — System and backend architecture: service boundaries, REST/GraphQL/gRPC API strategy, technical governance
 - **`sre-expert`** — Site reliability engineering: observability (metrics/logs/traces), SLOs/error budgets, incident response, capacity engineering
 

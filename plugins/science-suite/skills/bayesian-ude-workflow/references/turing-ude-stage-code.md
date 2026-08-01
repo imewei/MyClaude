@@ -67,9 +67,4 @@ end
 model = bayesian_ude(y_obs, t_obs, prob, p0)
 ```
 
-**Sensealg selection in one breath**:
-
-- **`ForwardDiff` AD**: bypasses `sensealg` entirely (uses Dual numbers for `u0` and `p`). The safe default for ≤100 parameters and stiff systems. Just pass `Optimization.AutoForwardDiff()` to the optimizer or let Turing pick ForwardDiff — no `sensealg` keyword needed.
-- **Reverse-mode AD** (`Zygote`, `Enzyme`, `ReverseDiff`) for many parameters: pair with **`GaussAdjoint()`** — the SciMLSensitivity team's current general recommendation. It is `O(n³ + p)` for stiff/implicit problems vs `O((n+p)³)` for `BacksolveAdjoint`/`InterpolatingAdjoint`, supports checkpointing, and avoids the backwards-solve instability that breaks `BacksolveAdjoint` on stiff systems and DAEs.
-- **`InterpolatingAdjoint`** / **`QuadratureAdjoint`**: now niche, useful only in benchmarking scenarios where you can prove an advantage.
-- **`BacksolveAdjoint`**: lowest memory but **avoid for stiff systems and DAEs** — backwards-solution accuracy degrades fast.
+Sensealg selection for this model is covered in `bayesian-ude-workflow/SKILL.md`'s Stage 2 section — see that file, not duplicated here, to avoid the two copies drifting apart.

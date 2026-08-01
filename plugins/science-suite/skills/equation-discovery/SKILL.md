@@ -106,6 +106,8 @@ Bayesian SINDy with horseshoe priors, ensemble SINDy, and UQ-SINDy are covered i
 | Wrong coordinate system | Complex equations with many terms | Transform to physically meaningful coordinates before SINDy |
 | Threshold too aggressive | Missing true dynamics terms | Sweep thresholds and inspect Pareto front for elbow |
 
+> **--mode deep required** for the full API reference below.
+
 ## Additional Resources
 
 ### Reference Files
