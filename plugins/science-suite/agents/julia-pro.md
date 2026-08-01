@@ -1,6 +1,6 @@
 ---
 name: julia-pro
-description: "Julia/SciML: dispatch, type stability, DiffEq.jl, ModelingToolkit, SciMLSensitivity, UDE, SINDy, Turing, Optimization.jl. Delegates ML/HPC, productionization to peers."
+description: "Julia/SciML: dispatch, type stability, DiffEq.jl, ModelingToolkit, SciMLSensitivity, UDE, SINDy, Turing, Optimization.jl, JuMP.jl. Delegates ML/HPC, productionization to peers."
 model: opus
 color: cyan
 effort: high

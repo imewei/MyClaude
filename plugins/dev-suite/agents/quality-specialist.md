@@ -1,6 +1,6 @@
 ---
 name: quality-specialist
-description: Code quality and scientific-computing validation — numerical precision, JAX/JIT safety, Julia type stability, and reproducibility audits, plus general security review (OWASP) and test strategy design.
+description: Code quality and scientific-computing validation — numerical precision, JAX/JIT safety, Julia type stability, and reproducibility audits, plus general security review (OWASP) and test strategy design. Reviews/audits existing code; for authoring new JAX/Julia, use jax-pro/julia-pro.
 model: sonnet
 color: yellow
 effort: high

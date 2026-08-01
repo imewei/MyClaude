@@ -209,7 +209,6 @@ Pallas is JAX's kernel-authoring language for GPU/TPU (comparable surface area t
 
 ```python
 import jax
-import jax.numpy as jnp
 from jax.experimental import pallas as pl
 
 def add_kernel(x_ref, y_ref, o_ref):

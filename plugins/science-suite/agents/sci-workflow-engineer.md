@@ -65,7 +65,7 @@ Every experiment template must instantiate the Reproducibility checklist below â
 experiment_id: heat2d-fno-v3        # stable across replays
 seed: 20260801                      # single root seed; derive per-component keys from it
 code:
-  git_sha: a3f91c2                  # dirty tree => refuse to launch
+  git_sha: "a3f91c2"                # dirty tree => refuse to launch (quoted: an all-digit SHA parses as int otherwise)
   env_lock: uv.lock                 # or Manifest.toml
 config:
   solver: {name: Tsit5, rtol: 1.0e-8, atol: 1.0e-8}
