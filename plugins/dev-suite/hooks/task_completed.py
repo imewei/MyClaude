@@ -11,6 +11,8 @@ import os
 import subprocess
 import sys
 
+from _hook_io import get_field, read_payload
+
 
 def has_uncommitted_changes(cwd: str) -> bool:
     """Check if there are uncommitted changes to suggest committing."""
@@ -21,6 +23,7 @@ def has_uncommitted_changes(cwd: str) -> bool:
             text=True,
             timeout=5,
             cwd=cwd,
+            check=False,
         )
         return result.returncode == 0 and bool(result.stdout.strip())
     except (subprocess.TimeoutExpired, FileNotFoundError):
@@ -30,8 +33,17 @@ def has_uncommitted_changes(cwd: str) -> bool:
 def main() -> None:
     """Remind about validation and suggest commit after task completion."""
     try:
-        task_subject = os.environ.get("TASK_SUBJECT", "unknown task")
-        cwd = os.environ.get("PWD", os.getcwd())
+        payload = read_payload()
+        task_subject = get_field(
+            payload,
+            "task_subject",
+            "subject",
+            "description",
+            "prompt",
+            env_fallback="TASK_SUBJECT",
+            default="unknown task",
+        )
+        cwd = get_field(payload, "cwd", env_fallback="PWD", default=os.getcwd())
 
         advice = [f"Task completed: {task_subject}."]
         advice.append("Consider running tests and linting before moving on.")

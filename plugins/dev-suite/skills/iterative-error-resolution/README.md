@@ -32,13 +32,13 @@ You can also call the engine directly:
 
 ```bash
 # Basic usage
-python3 plugins/cicd-automation/skills/iterative-error-resolution/engine.py \
+python3 plugins/dev-suite/skills/iterative-error-resolution/engine.py \
   12345678 \
   --repo owner/repo \
   --workflow "CI"
 
 # With custom max iterations
-python3 plugins/cicd-automation/skills/iterative-error-resolution/engine.py \
+python3 plugins/dev-suite/skills/iterative-error-resolution/engine.py \
   12345678 \
   --repo owner/repo \
   --workflow "CI" \
@@ -397,7 +397,7 @@ jobs:
       - uses: actions/checkout@v4
       - name: Auto-fix errors
         run: |
-          python3 plugins/cicd-automation/skills/iterative-error-resolution/engine.py \
+          python3 plugins/dev-suite/skills/iterative-error-resolution/engine.py \
             ${{ github.event.workflow_run.id }} \
             --repo ${{ github.repository }} \
             --workflow "CI" \

@@ -5,14 +5,22 @@ Collects test/review results when debugger-pro or quality-specialist finish.
 """
 
 import json
-import os
 import sys
+
+from _hook_io import get_field, read_payload
 
 
 def main() -> None:
     """Log subagent completion for dev workflow tracking."""
     try:
-        agent_name = os.environ.get("AGENT_NAME", "unknown")
+        agent_name = get_field(
+            read_payload(),
+            "agent_name",
+            "subagent_type",
+            "agent",
+            "name",
+            env_fallback="AGENT_NAME",
+        )
 
         result = {
             "status": "success",

@@ -8,18 +8,24 @@ import json
 import os
 import sys
 
+from _hook_io import read_payload
+
 
 def main() -> None:
     """Suggest linting after file modifications."""
     try:
-        tool_input = os.environ.get("TOOL_INPUT", "{}")
+        payload = read_payload()
 
-        try:
-            input_data = json.loads(tool_input)
-        except json.JSONDecodeError:
-            input_data = {}
+        tool_input = payload.get("tool_input")
+        if not isinstance(tool_input, dict):
+            try:
+                tool_input = json.loads(os.environ.get("TOOL_INPUT", "{}"))
+            except json.JSONDecodeError:
+                tool_input = {}
+            if not isinstance(tool_input, dict):
+                tool_input = {}
 
-        file_path = input_data.get("file_path", "")
+        file_path = tool_input.get("file_path") or payload.get("file_path") or ""
         result = {"status": "success"}
 
         if file_path.endswith(".py"):

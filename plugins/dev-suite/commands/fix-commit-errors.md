@@ -43,15 +43,21 @@ gh run view $RUN_ID --log-failed > error_logs.txt
 
 ## Phase 3: Solution Selection
 
-**Confidence Scoring:**
-- HIGH (>80% success): Auto-apply
-- MEDIUM (>50%): Test branch first
-- LOW (<50%): Manual review
+**Confidence Scoring** (enforced in `engine.py` as `AUTO_APPLY_CONFIDENCE`):
+- ≥70%: eligible for auto-apply
+- <70%: reported in the plan as manual review, never dispatched
 
 **Risk Levels:**
-- L1 (Safe): Config, `--legacy-peer-deps`, `go mod tidy` → Auto-apply
-- L2 (Moderate): Code fixes, tests → Validate first
-- L3 (Risky): Major upgrades, API changes → PR only
+- L1 (Safe): Config, `go mod tidy`, raising CI timeouts → Auto-apply
+- L2 (Moderate): Code fixes, dependency installs → Allowlisted targets only
+- L3 (Risky): Dependency removal, major upgrades, API changes → Manual only
+
+**Suppression** — strategies that stop a check failing without addressing the
+cause (regenerating snapshots, `--legacy-peer-deps`) are not "safe" merely
+because they are low-effort: they make CI green by changing what CI asks.
+Snapshot regeneration requires an explicit `--allow-suppression` opt-in, is
+never reported as SUCCESS, and downgrades the final "all errors resolved"
+claim when used.
 
 ## Phase 4: Apply & Validate
 
@@ -76,7 +82,10 @@ gh run watch
 
 ## Phase 6: Knowledge Base
 
-**Location:** `.github/fix-commit-errors/knowledge.json`
+**Location:** `.github/fix-knowledge-base.json`
+
+A strategy's recorded success rate is ignored until it has at least 3 attempts,
+so a single lucky result cannot pin it at 100%.
 
 ```json
 {
@@ -87,19 +96,23 @@ gh run watch
 }
 ```
 
-## Success Criteria
-
-- Resolution rate: >65%
-- Time to fix: <15 min
-- Confidence accuracy: >80%
-- Regressions: 0
-
 ## Safety
 
-- Validate locally before push
-- Rollback available for all changes
-- Confidence threshold enforcement
-- Transparent commit messages
+Implemented in `engine.py`:
+
+- **Plan before mutation** — without `--auto-commit` the engine prints what it
+  would do and exits having written nothing, installed nothing, and run nothing.
+- **Confidence threshold** — errors below `AUTO_APPLY_CONFIDENCE` are not dispatched.
+- **Suppression opt-in** — failure-silencing strategies require `--allow-suppression`.
+- **No automated dependency removal** — an npm 404 is reported, never uninstalled,
+  since registry outages and auth failures produce the same log line.
+- **Allowlisted installs** — a missing Python module is only installed if its
+  module→package mapping is explicitly known; unmapped names go to a human.
+- **Timeouts only increase** — an existing higher `timeout-minutes` is preserved.
+- Transparent commit messages.
+
+Not implemented — do not rely on these: automatic local validation before push,
+and automatic rollback of applied changes. Review the diff yourself.
 
 ## Examples
 

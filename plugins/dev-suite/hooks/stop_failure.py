@@ -5,14 +5,21 @@ Captures context when /stop fails mid-operation.
 """
 
 import json
-import os
 import sys
+
+from _hook_io import get_field, read_payload
 
 
 def main() -> None:
     """Capture stop failure context."""
     try:
-        error_message = os.environ.get("ERROR_MESSAGE", "unknown")
+        error_message = get_field(
+            read_payload(),
+            "error_message",
+            "error",
+            "message",
+            env_fallback="ERROR_MESSAGE",
+        )
         result = {
             "status": "success",
             "additionalContext": (

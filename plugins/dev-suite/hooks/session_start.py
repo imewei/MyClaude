@@ -6,7 +6,9 @@ Auto-detects project stack: language, framework, test runner, package manager.
 
 import json
 import os
+import re
 import sys
+from datetime import UTC, datetime, timedelta
 from pathlib import Path
 
 
@@ -47,18 +49,30 @@ def detect_stack(cwd: str) -> dict:
     return stack
 
 
+MAX_PROGRESS_CHARS = 500
+MAX_PROGRESS_AGE = timedelta(hours=24)
+
+
 def read_progress_file(cwd: str) -> str:
-    """Read prior session progress summary if it exists."""
-    progress_path = Path(cwd) / ".claude-progress.md"
-    if progress_path.exists():
-        try:
-            text = progress_path.read_text(encoding="utf-8").strip()
-            if len(text) > 500:
-                text = text[-500:]
-            return text
-        except OSError:
-            pass
-    return ""
+    """Read prior session progress, skipping it if stale or undated."""
+    progress_path = Path(cwd) / ".claude" / "progress" / "dev-suite.md"
+    try:
+        text = progress_path.read_text(encoding="utf-8").strip()
+    except OSError:
+        return ""
+
+    # First line is "## Session ended: YYYY-MM-DD HH:MM UTC" — no parseable
+    # timestamp means we cannot tell how old this is, so don't inject it.
+    match = re.match(r"## Session ended: (\d{4}-\d{2}-\d{2} \d{2}:\d{2}) UTC", text)
+    if not match:
+        return ""
+    written = datetime.strptime(match.group(1), "%Y-%m-%d %H:%M").replace(tzinfo=UTC)
+    if datetime.now(UTC) - written > MAX_PROGRESS_AGE:
+        return ""
+
+    if len(text) > MAX_PROGRESS_CHARS:
+        text = text[:MAX_PROGRESS_CHARS] + "\n... (truncated)"
+    return text
 
 
 def main() -> None:

@@ -1,7 +1,7 @@
 ---
 name: ai-pair
 description: |
-  AI Pair Collaboration — orchestrate a persistent three-model team (Claude developer/author + Codex reviewer + Gemini reviewer) for iterative code development or content creation with dual-perspective review. Use when: user types /ai-pair, asks to start a "dev team" or "content team", wants an ongoing multi-model review pipeline for a project, or says "team-stop". Also trigger when the user wants Codex + Gemini to collaboratively review ongoing work through multiple iterations — not one-shot review (use three-brain for that). Requires codex and gemini CLIs; degrades gracefully to Claude-only review if either is absent.
+  AI Pair Collaboration — orchestrate a persistent three-model team (Claude developer/author + Codex reviewer + Gemini reviewer) for iterative code development or content creation with dual-perspective review. Use when the user asks to start a "dev team" or "content team", wants an ongoing multi-model review pipeline for a project, or asks to stop/shut down such a team. Also trigger when the user wants Codex + Gemini to collaboratively review ongoing work through multiple iterations — not one-shot review (use three-brain for that). Requires codex and gemini CLIs; degrades gracefully to Claude-only review if either is absent.
 ---
 
 # AI Pair Collaboration
@@ -10,13 +10,16 @@ Coordinate a persistent, semi-automatic team: one creator (developer or author) 
 
 Different AI models look at completely different dimensions. Codex catches bugs, security issues, and edge cases. Gemini surfaces architectural and readability concerns. Running both maximizes coverage without relying on a single model's blind spots.
 
-## Commands
+## When to use
 
-```bash
-/ai-pair dev-team [project]     # Code team: developer + codex-reviewer + gemini-reviewer
-/ai-pair content-team [topic]   # Content team: author + codex-reviewer + gemini-reviewer
-/ai-pair team-stop              # Shut down team and clean up
-```
+This is a skill, not a slash command — there is nothing to type. Route here when
+the user asks for:
+
+| Request | Mode |
+|---------|------|
+| "start a dev team", "pair on this project" | **Dev team** — developer + codex-reviewer + gemini-reviewer |
+| "start a content team", "help me write this with reviewers" | **Content team** — author + codex-reviewer + gemini-reviewer |
+| "stop the team", "we're done with the team" | **Shut down** — see team-stop flow below |
 
 ## Team Roles
 
