@@ -24,7 +24,7 @@ Both modes call the same two CLIs the same way. Route mode: Claude runs these Ba
 
 **[Timeout]** All Bash tool calls to codex/agy MUST set `timeout: 600000` (10 min). External CLIs need 10-15 s to load plus model reasoning time — the default 2-min timeout always fails.
 
-**[Bypass flags]** Codex calls use `codex exec --dangerously-bypass-approvals-and-sandbox` (add `--skip-git-repo-check` when piping a diff outside a confirmed repo, or `review --commit <SHA>` / `--base <branch>` / `--uncommitted` in place of a free-form prompt). Agy calls use `agy --dangerously-skip-permissions --print-timeout 9m -p` — kept under the 10-minute Bash `timeout: 600000` so a slow analysis fails with a clean CLI timeout instead of a hard Bash kill. Both flags are required — without them the CLI stops on an interactive confirmation prompt that never resolves in a non-interactive call, and it hangs to timeout instead of failing fast.
+**[Bypass flags]** Codex calls use `codex exec --dangerously-bypass-approvals-and-sandbox` (add `--skip-git-repo-check` when piping a diff outside a confirmed repo, or `review --commit <SHA>` / `--base <branch>` / `--uncommitted` in place of a free-form prompt). Agy calls use `agy --dangerously-skip-permissions --print-timeout 9m -p` (under the 10-min Bash timeout). Both flags are required — without them the CLI stops on an interactive confirmation prompt that never resolves in a non-interactive call, and it hangs to timeout instead of failing fast.
 
 **[Agy has no @file syntax]** Agy is agentic — it reads files itself once given a path. Name the exact path in the prompt text ("Read and analyze the video at /path/to/video.mp4...") rather than appending `@path` the way gemini did. Use `--add-dir <path>` to widen its workspace when the target lives outside the current directory.
 
@@ -40,7 +40,7 @@ Never pipe via stdin — pipes can truncate or mishandle large inputs.
 
 **[Agy degradation]** Retry in order: simplify prompt → reduce analysis dimensions → Claude fallback.
 
-**[Hard rules]** Never skip the CLI call. Never silently self-review. If the CLI is not found, report immediately. Only label a result `[Claude Fallback — [CLI] retries all failed]` after all retries in that CLI's degradation ladder are exhausted (four for Codex, two for Agy) — an unlabeled result otherwise reads as a full first-pass review, which is misleading when it's actually a degraded retry. Set `NO_COLOR=1` if output has ANSI artifacts.
+**[Hard rules]** Never skip the CLI call. Never silently self-review. If the CLI is not found, report immediately. Only label a result `[Claude Fallback — [CLI] retries all failed]` after that CLI's ladder is exhausted (Codex: four, Agy: two). Set `NO_COLOR=1` if output has ANSI artifacts.
 
 ---
 
