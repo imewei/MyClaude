@@ -24,7 +24,7 @@ Both modes call the same two CLIs the same way. Route mode: Claude runs these Ba
 
 **[Timeout]** All Bash tool calls to codex/agy MUST set `timeout: 600000` (10 min). External CLIs need 10-15 s to load plus model reasoning time — the default 2-min timeout always fails.
 
-**[Bypass flags]** Codex calls use `codex exec --dangerously-bypass-approvals-and-sandbox` (add `--skip-git-repo-check` when piping a diff outside a confirmed repo, or `review --commit <SHA>` / `--base <branch>` / `--uncommitted` in place of a free-form prompt). Agy calls use `agy --dangerously-skip-permissions --print-timeout 20m -p`. Both flags are required — without them the CLI stops on an interactive confirmation prompt that never resolves in a non-interactive call, and it hangs to timeout instead of failing fast.
+**[Bypass flags]** Codex calls use `codex exec --dangerously-bypass-approvals-and-sandbox` (add `--skip-git-repo-check` when piping a diff outside a confirmed repo, or `review --commit <SHA>` / `--base <branch>` / `--uncommitted` in place of a free-form prompt). Agy calls use `agy --dangerously-skip-permissions --print-timeout 9m -p` — kept under the 10-minute Bash `timeout: 600000` so a slow analysis fails with a clean CLI timeout instead of a hard Bash kill. Both flags are required — without them the CLI stops on an interactive confirmation prompt that never resolves in a non-interactive call, and it hangs to timeout instead of failing fast.
 
 **[Agy has no @file syntax]** Agy is agentic — it reads files itself once given a path. Name the exact path in the prompt text ("Read and analyze the video at /path/to/video.mp4...") rather than appending `@path` the way gemini did. Use `--add-dir <path>` to widen its workspace when the target lives outside the current directory.
 
@@ -40,7 +40,7 @@ Never pipe via stdin — pipes can truncate or mishandle large inputs.
 
 **[Agy degradation]** Retry in order: simplify prompt → reduce analysis dimensions → Claude fallback.
 
-**[Hard rules]** Never skip the CLI call. Never silently self-review. If the CLI is not found, report immediately. Only label a result `[Claude Fallback — [CLI] four retries all failed]` after all retries are exhausted — an unlabeled result otherwise reads as a full first-pass review, which is misleading when it's actually a degraded retry. Set `NO_COLOR=1` if output has ANSI artifacts.
+**[Hard rules]** Never skip the CLI call. Never silently self-review. If the CLI is not found, report immediately. Only label a result `[Claude Fallback — [CLI] retries all failed]` after all retries in that CLI's degradation ladder are exhausted (four for Codex, two for Agy) — an unlabeled result otherwise reads as a full first-pass review, which is misleading when it's actually a degraded retry. Set `NO_COLOR=1` if output has ANSI artifacts.
 
 ---
 
@@ -102,25 +102,25 @@ Use Agy for perception-heavy and long-context tasks. Ask for structured evidence
 Video:
 
 ```bash
-agy --dangerously-skip-permissions --print-timeout 20m -p "Read and analyze the video at /path/to/video.mp4. Return timestamped findings as [MM:SS] event. Cover visible content, on-screen text, speaker/action changes, transitions, and notable issues. Cap at 800 words."
+agy --dangerously-skip-permissions --print-timeout 9m -p "Read and analyze the video at /path/to/video.mp4. Return timestamped findings as [MM:SS] event. Cover visible content, on-screen text, speaker/action changes, transitions, and notable issues. Cap at 800 words."
 ```
 
 Audio:
 
 ```bash
-agy --dangerously-skip-permissions --print-timeout 20m -p "Read and analyze the audio at /path/to/audio.wav. Return timestamped findings as [MM:SS] event, including speakers if distinguishable, key claims, action items, and uncertainty. Cap at 800 words."
+agy --dangerously-skip-permissions --print-timeout 9m -p "Read and analyze the audio at /path/to/audio.wav. Return timestamped findings as [MM:SS] event, including speakers if distinguishable, key claims, action items, and uncertainty. Cap at 800 words."
 ```
 
 PDF or document:
 
 ```bash
-agy --dangerously-skip-permissions --print-timeout 20m -p "Read /path/to/file.pdf. Extract key claims, tables, chart findings, contradictions, and action items with page-number citations. Cap at 1000 words."
+agy --dangerously-skip-permissions --print-timeout 9m -p "Read /path/to/file.pdf. Extract key claims, tables, chart findings, contradictions, and action items with page-number citations. Cap at 1000 words."
 ```
 
 Repository or large directory scan:
 
 ```bash
-agy --dangerously-skip-permissions --print-timeout 20m -p "Search /path/or/directory for every place related to <topic>. Return file:line citations, short purpose, and confidence. Avoid broad summaries."
+agy --dangerously-skip-permissions --print-timeout 9m -p "Search /path/or/directory for every place related to <topic>. Return file:line citations, short purpose, and confidence. Avoid broad summaries."
 ```
 
 Prefer file, page, or timestamp citations in every Agy prompt.

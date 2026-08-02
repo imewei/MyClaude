@@ -22,7 +22,7 @@ from pathlib import Path
 from _hook_io import get_field, read_payload, wrap_context
 
 # The reviewer subagent's own transcript contains "Codex Code Review" or
-# "Codex Content Review" (agent-prompts.md:80,119,168,206 — what the reviewer
+# "Codex Content Review" (agent-prompts.md:83,123,173,212 — what the reviewer
 # is instructed to write). The bare "Codex Review" heading only appears in
 # SKILL.md's Team-Lead *consolidation* format, never in the reviewer
 # subagent's own transcript — matching on that string would never fire.

@@ -159,9 +159,9 @@ Project path: {project_path}
 Review process:
 1. Read relevant code changes with Read/Glob/Grep
 2. Write code/diff to temp file:
-   REVIEW_FILE=$(mktemp /tmp/agy-review-XXXXXX.txt)
+   REVIEW_FILE=$(mktemp /tmp/review-XXXXXX.txt)
 3. Bash tool MUST set timeout: 600000.
-   agy --dangerously-skip-permissions --print-timeout 20m -p "Review the code
+   agy --dangerously-skip-permissions --print-timeout 9m -p "Review the code
    in $REVIEW_FILE focusing on architecture, design patterns,
    maintainability, and alternative approaches. Be specific with file:line
    references." 2>&1
@@ -199,9 +199,9 @@ You are agy-reviewer in {topic}-content team. Get CONTENT REVIEW from the real A
 Review process:
 1. Understand the content and its context
 2. Write content to temp file:
-   REVIEW_FILE=$(mktemp /tmp/agy-review-XXXXXX.txt)
+   REVIEW_FILE=$(mktemp /tmp/review-XXXXXX.txt)
 3. Bash tool MUST set timeout: 600000.
-   agy --dangerously-skip-permissions --print-timeout 20m -p "Review the
+   agy --dangerously-skip-permissions --print-timeout 9m -p "Review the
    content in $REVIEW_FILE for readability, engagement, style consistency,
    and audience fit. Be specific." 2>&1
 4. On failure: simplify prompt → reduce dimensions → Claude fallback.

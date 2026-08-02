@@ -159,7 +159,7 @@ Databases, SQL, caching, search, authentication, and secrets.
 - ``auth-implementation-patterns`` — JWT, OAuth2, RBAC/ABAC, session management
 - ``secrets-management`` — Vault, AWS Secrets Manager, Azure Key Vault
 
-Hub: dev-workflows (4 sub-skills + 2 hubs)
+Hub: dev-workflows (4 sub-skills + 1 hub)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Git, documentation, Airflow pipelines, and debugging. Also routes to the
