@@ -9,7 +9,7 @@ test-corpus/
 ├── README.md                  (this file)
 ├── <sample-name>/
 │   ├── metadata.json          required: at least {"name": "..."}
-│   └── <code-files>           any .py/.jl/.js/.ts/.rs/.cpp/.c/.go/.java files
+│   └── <code-files>           any .py/.jl/.js/.ts/.jsx/.tsx/.rs/.cpp/.c/.go/.java/.yml/.yaml files
 ```
 
 The validator walks every code file in every sample subdirectory, runs skill matching against each file, and reports per-skill precision / recall / over-triggering rates.

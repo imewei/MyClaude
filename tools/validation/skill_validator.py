@@ -536,6 +536,8 @@ class SkillApplicationValidator:
                 ".c",
                 ".go",
                 ".java",
+                ".yml",
+                ".yaml",
             }
 
             for file_path in sample["path"].rglob("*"):
