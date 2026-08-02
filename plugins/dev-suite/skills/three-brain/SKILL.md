@@ -1,13 +1,13 @@
 ---
 name: three-brain
 description: |
-  Route work between Claude, Codex, and Gemini when another model is likely to improve correctness, coverage, or perception. Use this skill for second-opinion reviews of Claude's own work, high-risk code paths, repeated failures, video/audio/PDF/image inspection, long-context repository or document scans, and explicit requests like "ask Codex", "ask Gemini", "second opinion", "sanity check", "review your work", or "use all three". Prefer not to trigger for ordinary Q&A, simple edits, or reviewing user-authored non-code drafts unless the user explicitly asks for another model.
-compatibility: Requires `codex` for Codex routes and `gemini` for Gemini routes. Falls back gracefully when either CLI is missing.
+  Route work between Claude, Codex, and Agy when another model is likely to improve correctness, coverage, or perception. Use this skill for second-opinion reviews of Claude's own work, high-risk code paths, repeated failures, video/audio/PDF/image inspection, long-context repository or document scans, and explicit requests like "ask Codex", "ask Agy", "second opinion", "sanity check", "review your work", or "use all three". Prefer not to trigger for ordinary Q&A, simple edits, or reviewing user-authored non-code drafts unless the user explicitly asks for another model.
+compatibility: Requires `codex` for Codex routes and `agy` for Agy routes. Falls back gracefully when either CLI is missing.
 ---
 
 # Three-Brain Router
 
-Use Claude as the driver. Call Codex or Gemini only when their different strengths materially improve the result. Keep routes bounded, cite evidence from returned output, and preserve the user's workflow.
+Use Claude as the driver. Call Codex or Agy only when their different strengths materially improve the result. Keep routes bounded, cite evidence from returned output, and preserve the user's workflow.
 
 ## Fast Decision Table
 
@@ -16,9 +16,9 @@ Use Claude as the driver. Call Codex or Gemini only when their different strengt
 | User asks to review/check/sanity-check work Claude just produced | Codex review | Avoid same-model blind spots |
 | Active edits touch auth, billing, migrations, deployment, secrets, permissions, or infra | Codex review | High blast radius deserves independent scrutiny |
 | Same test, command, or bug fails twice on the same path | Codex rescue | Stop repeating the same local approach |
-| User provides video, audio, image, scanned PDF, charts, or visual layout to inspect | Gemini analysis | Use stronger multimodal perception |
-| User asks for broad repository/document discovery over lots of files | Gemini long-context scan | Reduce token-heavy local reading |
-| User explicitly says ask Codex/Gemini/all three/cross-check | Requested model(s) | Follow the user's routing request |
+| User provides video, audio, image, scanned PDF, charts, or visual layout to inspect | Agy analysis | Use stronger multimodal perception |
+| User asks for broad repository/document discovery over lots of files | Agy long-context scan | Reduce token-heavy local reading |
+| User explicitly says ask Codex/Agy/all three/cross-check | Requested model(s) | Follow the user's routing request |
 | Ordinary explanation, writing, small edit, local file operation, or user-authored tone review | Claude direct | Extra routing adds cost without clear value |
 
 When uncertain about review of Claude's own output, route to Codex. When uncertain about ordinary user-authored content, stay direct unless the user asked for a second model.
@@ -29,7 +29,7 @@ Run this once per session, only before the first route that needs the tool:
 
 ```bash
 codex --version 2>&1 | head -1
-gemini --version 2>&1 | head -1
+agy --version 2>&1 | head -1
 ```
 
 If a CLI is missing, tell the user once and continue with the available route or Claude direct. Do not recheck every turn.
@@ -47,7 +47,7 @@ git diff --stat
 # trigger list that flags them for review must not also be what pipes their
 # contents to an external CLI.
 git diff -- . ':(exclude).env*' ':(exclude)secrets/**' \
-  | codex exec --skip-git-repo-check "Review this change. Focus on bugs, regressions, security risks, missing tests, and unclear assumptions. Return findings first with file/line references when possible."
+  | codex exec --dangerously-bypass-approvals-and-sandbox --skip-git-repo-check "Review this change. Focus on bugs, regressions, security risks, missing tests, and unclear assumptions. Return findings first with file/line references when possible."
 ```
 
 For untracked files or non-code output, pipe only the relevant file(s) or excerpt. Keep the prompt narrow. Ask Codex for findings, evidence, and recommended fixes; do not ask it to rewrite everything unless that is the task.
@@ -58,35 +58,35 @@ After Codex returns:
 - If there are no actionable findings, say so.
 - End the response with `(Routed via three-brain -> Codex review.)` when the route was triggered by this skill.
 
-## Gemini Routes
+## Agy Routes
 
-Use Gemini for perception-heavy and long-context tasks. Ask for structured evidence, not a flat summary.
+Use Agy for perception-heavy and long-context tasks. Agy is agentic — it reads files itself once given a path, there is no `@file` attachment syntax — so name the exact path(s) in the prompt text and let it use its own tools. Always set `timeout: 600000` on the Bash call and use `--dangerously-skip-permissions --print-timeout 20m -p` so the non-interactive run never stalls on a tool-permission prompt. Ask for structured evidence, not a flat summary.
 
 Video:
 
 ```bash
-gemini -p "Analyze this video. Return timestamped findings as [MM:SS] event. Cover visible content, on-screen text, speaker/action changes, transitions, and notable issues. Cap at 800 words." @/path/to/video.mp4
+agy --dangerously-skip-permissions --print-timeout 20m -p "Read and analyze the video at /path/to/video.mp4. Return timestamped findings as [MM:SS] event. Cover visible content, on-screen text, speaker/action changes, transitions, and notable issues. Cap at 800 words."
 ```
 
 Audio:
 
 ```bash
-gemini -p "Analyze this audio. Return timestamped findings as [MM:SS] event, including speakers if distinguishable, key claims, action items, and uncertainty. Cap at 800 words." @/path/to/audio.wav
+agy --dangerously-skip-permissions --print-timeout 20m -p "Read and analyze the audio at /path/to/audio.wav. Return timestamped findings as [MM:SS] event, including speakers if distinguishable, key claims, action items, and uncertainty. Cap at 800 words."
 ```
 
 PDF or document:
 
 ```bash
-gemini -p "Extract key claims, tables, chart findings, contradictions, and action items with page-number citations. Cap at 1000 words." @/path/to/file.pdf
+agy --dangerously-skip-permissions --print-timeout 20m -p "Read /path/to/file.pdf. Extract key claims, tables, chart findings, contradictions, and action items with page-number citations. Cap at 1000 words."
 ```
 
 Repository or large directory scan:
 
 ```bash
-gemini -p "Find every place related to <topic>. Return file:line citations, short purpose, and confidence. Avoid broad summaries." @/path/or/archive
+agy --dangerously-skip-permissions --print-timeout 20m -p "Search /path/or/directory for every place related to <topic>. Return file:line citations, short purpose, and confidence. Avoid broad summaries."
 ```
 
-If Gemini cannot ingest a directory directly, archive or narrow the relevant files first. Prefer file, page, or timestamp citations in every Gemini prompt.
+Use `--add-dir <path>` to widen the workspace when the target lives outside the current directory. Prefer file, page, or timestamp citations in every Agy prompt.
 
 ## Forced Risk Review
 
@@ -155,14 +155,14 @@ Use only the files that apply:
 
 - `input.txt` - user request or routed subquestion
 - `codex-review.md` - Codex findings
-- `gemini-analysis.md` - Gemini findings
+- `agy-analysis.md` - Agy findings
 - `consensus.md` - cross-model comparison
 - `log.md` - run-specific summary
 
 Append one root-level line to `./three-brain-out/log.md` for every route:
 
 ```text
-[YYYY-MM-DD HH:MM] route=<codex-review|codex-rescue|gemini-analysis|consensus> target=<short target> status=<ok|partial|failed> duration=<seconds>s outputs=<N> summary="<plain-language result>"
+[YYYY-MM-DD HH:MM] route=<codex-review|codex-rescue|agy-analysis|consensus> target=<short target> status=<ok|partial|failed> duration=<seconds>s outputs=<N> summary="<plain-language result>"
 ```
 
 Example:

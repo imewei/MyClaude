@@ -1,14 +1,14 @@
 ---
 name: ai-pair
 description: |
-  AI Pair Collaboration — orchestrate a persistent three-model team (Claude developer/author + Codex reviewer + Gemini reviewer) for iterative code development or content creation with dual-perspective review. Use when the user asks to start a "dev team" or "content team", wants an ongoing multi-model review pipeline for a project, or asks to stop/shut down such a team. Also trigger when the user wants Codex + Gemini to collaboratively review ongoing work through multiple iterations — not one-shot review (use three-brain for that). Requires codex and gemini CLIs; degrades gracefully to Claude-only review if either is absent.
+  AI Pair Collaboration — orchestrate a persistent three-model team (Claude developer/author + Codex reviewer + Agy reviewer) for iterative code development or content creation with dual-perspective review. Use when the user asks to start a "dev team" or "content team", wants an ongoing multi-model review pipeline for a project, or asks to stop/shut down such a team. Also trigger when the user wants Codex + Agy to collaboratively review ongoing work through multiple iterations — not one-shot review (use three-brain for that). Requires codex and agy CLIs; degrades gracefully to Claude-only review if either is absent.
 ---
 
 # AI Pair Collaboration
 
-Coordinate a persistent, semi-automatic team: one creator (developer or author) + two reviewers (Codex + Gemini). The current Claude session acts as Team Lead.
+Coordinate a persistent, semi-automatic team: one creator (developer or author) + two reviewers (Codex + Agy). The current Claude session acts as Team Lead.
 
-Different AI models look at completely different dimensions. Codex catches bugs, security issues, and edge cases. Gemini surfaces architectural and readability concerns. Running both maximizes coverage without relying on a single model's blind spots.
+Different AI models look at completely different dimensions. Codex catches bugs, security issues, and edge cases. Agy surfaces architectural and readability concerns. Running both maximizes coverage without relying on a single model's blind spots.
 
 ## When to use
 
@@ -17,8 +17,8 @@ the user asks for:
 
 | Request | Mode |
 |---------|------|
-| "start a dev team", "pair on this project" | **Dev team** — developer + codex-reviewer + gemini-reviewer |
-| "start a content team", "help me write this with reviewers" | **Content team** — author + codex-reviewer + gemini-reviewer |
+| "start a dev team", "pair on this project" | **Dev team** — developer + codex-reviewer + agy-reviewer |
+| "start a content team", "help me write this with reviewers" | **Content team** — author + codex-reviewer + agy-reviewer |
 | "stop the team", "we're done with the team" | **Shut down** — see team-stop flow below |
 
 ## Team Roles
@@ -27,7 +27,7 @@ the user asks for:
 |----------------|---------------------------------------------|-------------------------------------------------|
 | Creator        | developer — implements features/fixes       | author — writes articles, scripts, newsletters  |
 | Codex reviewer | bugs, security, concurrency, edge cases     | logic, accuracy, structure, fact-checking       |
-| Gemini reviewer| architecture, design patterns, alternatives | readability, engagement, style, audience fit    |
+| Agy reviewer   | architecture, design patterns, alternatives | readability, engagement, style, audience fit    |
 
 ## Workflow Loop (Semi-Automatic)
 
@@ -41,7 +41,7 @@ the user asks for:
    ```
    ## Codex Review [effort: {level} — {N} retries]
    {findings}
-   ## Gemini Review [degradation: {level}]
+   ## Agy Review [degradation: {level}]
    {findings}
    ```
 5. **User decides** → "Revise" (loop to step 1) or "Pass" (next task or end)
@@ -59,7 +59,7 @@ User controls every transition. No autonomous loops.
 
 ```bash
 command -v codex && codex --version || echo "CODEX_MISSING"
-command -v gemini && gemini --version || echo "GEMINI_MISSING"
+command -v agy && agy --version || echo "AGY_MISSING"
 ```
 
 If either CLI is missing: warn user, offer degraded mode (Claude-only review, clearly labeled) or abort.
@@ -75,7 +75,7 @@ TeamCreate: team_name = "{project}-dev" or "{topic}-content"
 ```
 TaskCreate: "Awaiting task assignment" — creator, status: pending
 TaskCreate: "Awaiting review" — codex-reviewer, status: pending, blockedBy: task-1
-TaskCreate: "Awaiting review" — gemini-reviewer, status: pending, blockedBy: task-1
+TaskCreate: "Awaiting review" — agy-reviewer, status: pending, blockedBy: task-1
 ```
 
 ### 5. Launch Agents
@@ -84,7 +84,7 @@ Read `references/agent-prompts.md` for the startup prompt templates. The **CLI I
 
 Spawn 3 agents via Agent tool with `subagent_type: "general-purpose"`. Do not
 set `mode: "bypassPermissions"` — a skill is not a consent channel, and
-reviewers only need Bash (to shell out to codex/gemini) and Read (project
+reviewers only need Bash (to shell out to codex/agy) and Read (project
 files), both of which the normal permission system already grants or prompts
 for. Let the user's own permission settings govern these agents like any other.
 
@@ -93,7 +93,7 @@ for. Let the user's own permission settings govern these agents like any other.
 ```
 Team ready.
 Team: {team_name}  Type: {Dev / Content}
-Members: developer/author ✓  codex-reviewer ✓  gemini-reviewer ✓
+Members: developer/author ✓  codex-reviewer ✓  agy-reviewer ✓
 Awaiting your first task.
 ```
 
@@ -102,7 +102,9 @@ Awaiting your first task.
 Include this block verbatim in each reviewer agent's startup prompt:
 
 ---
-**[Timeout]** All Bash tool calls to codex/gemini MUST set `timeout: 600000` (10 min). External CLIs need 10-15 s to load plus model reasoning time — the default 2-min timeout always fails.
+**[Timeout]** All Bash tool calls to codex/agy MUST set `timeout: 600000` (10 min). External CLIs need 10-15 s to load plus model reasoning time — the default 2-min timeout always fails.
+
+**[Bypass flags]** Codex calls use `codex exec --dangerously-bypass-approvals-and-sandbox`. Agy calls use `agy --dangerously-skip-permissions --print-timeout 20m -p`. Both flags are required — without them the CLI stops on an interactive confirmation prompt that never resolves inside a non-interactive subagent, and the call hangs to timeout instead of failing fast.
 
 **[File-based content passing]** Write content to a unique temp file before calling the CLI:
 ```bash
@@ -114,7 +116,7 @@ Never pipe via stdin — pipes can truncate or mishandle large inputs.
 
 **[Codex degradation on timeout/failure]** Retry in order: xhigh → high → medium → low → Claude fallback. Append reasoning effort hint to prompt on each retry. Report the current degradation level to team-lead.
 
-**[Gemini degradation]** Retry in order: simplify prompt → reduce analysis dimensions → Claude fallback.
+**[Agy degradation]** Retry in order: simplify prompt → reduce analysis dimensions → Claude fallback.
 
 **[Hard rules]** Never skip the CLI call. Never silently self-review. If the CLI is not found, report immediately. Only label `[Claude Fallback — [CLI] four retries all failed]` after all retries are exhausted. Every report — including a first-pass success — states its effort/degradation level in the section heading (see step 4); an unlabeled heading defaults to reading as the highest effort, so omitting the label is not a neutral shortcut. Set `NO_COLOR=1` if output has ANSI artifacts.
 
@@ -124,4 +126,4 @@ Never pipe via stdin — pipes can truncate or mishandle large inputs.
 
 1. `SendMessage` shutdown_request to all agents; wait for confirmations
 2. `TeamDelete` to clean up team resources
-3. Report: `Team shut down. Closed: developer/author, codex-reviewer, gemini-reviewer. Resources cleaned up.`
+3. Report: `Team shut down. Closed: developer/author, codex-reviewer, agy-reviewer. Resources cleaned up.`
