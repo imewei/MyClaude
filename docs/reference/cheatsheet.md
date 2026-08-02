@@ -25,7 +25,7 @@ plugin.json → hub skill → routing decision tree → sub-skill
 |-----------|-------|---------|
 | Agents | 6 | 1 opus, 4 sonnet, 1 haiku |
 | Commands | 10 registered | `/docs`, `/double-check`, `/eng-feature-dev`, `/fix-commit-errors`, `/merge-all`, `/modernize`, `/run-all-tests`, `/smart-debug`, `/test-generate`, `/workflow-automate` |
-| Skills | 10 hubs → 35 sub | dev-hub, ai-pair, three-brain, architecture-and-infra, backend-patterns, ci-cd-pipelines, data-and-security, dev-workflows, observability-and-sre, testing-and-quality |
+| Skills | 9 hubs → 35 sub | dev-hub, three-brain, architecture-and-infra, backend-patterns, ci-cd-pipelines, data-and-security, dev-workflows, observability-and-sre, testing-and-quality |
 | Hooks | 6 events | SessionStart, PostToolUse, SubagentStop, TaskCompleted, SessionEnd, StopFailure |
 
 ### 2. Research Suite (`research-suite`)

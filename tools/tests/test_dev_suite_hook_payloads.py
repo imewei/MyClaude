@@ -179,7 +179,7 @@ def test_session_start_reads_payload_cwd_not_just_pwd(tmp_path):
     assert "python" in context.lower(), f"did not detect stack from payload cwd: {context}"
 
 
-# --- ai-pair fabrication check (subagent_stop.py) -------------------------
+# --- three-brain Team-mode fabrication check (subagent_stop.py) -----------
 
 
 def test_subagent_stop_catches_real_reviewer_heading(tmp_path):
@@ -193,6 +193,21 @@ def test_subagent_stop_catches_real_reviewer_heading(tmp_path):
     out = run_hook(
         "subagent_stop.py",
         {"agent_name": "codex-reviewer", "transcript_path": str(transcript)},
+    )
+    assert "integrity check" in hook_context(out)
+
+
+def test_subagent_stop_catches_agy_heading_without_cli_call(tmp_path):
+    """Regression guard: the Agy check was a stale 'Gemini' regex until this
+    skill's CLI was renamed — assert the Agy path actually fires, not just
+    the Codex path the older tests already covered."""
+    transcript = tmp_path / "t.jsonl"
+    transcript.write_text(
+        '{"type":"assistant","content":"## Agy Code Review\\nFabricated, no CLI call."}\n'
+    )
+    out = run_hook(
+        "subagent_stop.py",
+        {"agent_name": "agy-reviewer", "transcript_path": str(transcript)},
     )
     assert "integrity check" in hook_context(out)
 

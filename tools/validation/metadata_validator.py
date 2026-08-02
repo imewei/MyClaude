@@ -571,8 +571,7 @@ class MetadataValidator:
     # Skills that lack a routing tree but are explicitly approved as user-facing standalones.
     # These may be added to plugin.json without triggering the tier-compliance warning.
     _TIER2_STANDALONE_WHITELIST: ClassVar[set[str]] = {
-        "ai-pair",          # dev-suite: three-model collaboration
-        "three-brain",      # dev-suite: second-opinion routing
+        "three-brain",      # dev-suite: multi-model routing (one-shot review or persistent team)
         "scientific-review",  # research-suite: peer-review deliverable
         "research-spark",     # research-suite: 8-stage pipeline orchestrator
         "spark-articulator",  # research-suite: stage 1

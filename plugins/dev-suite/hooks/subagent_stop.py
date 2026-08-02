@@ -5,10 +5,10 @@ Logs subagent completion for dev workflow tracking (agent_name only — this
 hook does not parse or validate any test/review payload; no such payload
 is available at SubagentStop).
 
-Also does a real check against ai-pair's "MUST use the Bash tool to invoke
-codex/gemini" rule (skills/ai-pair/references/agent-prompts.md): if the
-subagent's own transcript presents itself as a Codex or Gemini review but the
-transcript contains no Bash invocation of that CLI, flag it — the CLI
+Also does a real check against three-brain Team mode's "MUST use the Bash
+tool to invoke codex/agy" rule (skills/three-brain/references/agent-prompts.md):
+if the subagent's own transcript presents itself as a Codex or Agy review but
+the transcript contains no Bash invocation of that CLI, flag it — the CLI
 requirement was previously prose-only (SKILL.md text, no PreToolUse gate).
 This is a text-scan heuristic on the transcript, not a structured tool-call
 ledger; upgrade if false negatives show up in practice.
@@ -27,16 +27,16 @@ from _hook_io import get_field, read_payload, wrap_context
 # SKILL.md's Team-Lead *consolidation* format, never in the reviewer
 # subagent's own transcript — matching on that string would never fire.
 CLAIMS_CODEX_RE = re.compile(r"\bCodex (?:Code|Content) Review\b", re.IGNORECASE)
-CLAIMS_GEMINI_RE = re.compile(r"\bGemini (?:Code|Content) Review\b", re.IGNORECASE)
+CLAIMS_AGY_RE = re.compile(r"\bAgy (?:Code|Content) Review\b", re.IGNORECASE)
 # `(?:[^"\\]|\\.)*` (not `[^"]*`) so a JSON-escaped quote inside an earlier
 # argument (e.g. `codex exec --prompt \"review\"`) doesn't terminate the
-# match before reaching "codex"/"gemini".
+# match before reaching "codex"/"agy".
 CODEX_CMD_RE = re.compile(r'"command"\s*:\s*"(?:[^"\\]|\\.)*\bcodex\b', re.IGNORECASE)
-GEMINI_CMD_RE = re.compile(r'"command"\s*:\s*"(?:[^"\\]|\\.)*\bgemini\b', re.IGNORECASE)
+AGY_CMD_RE = re.compile(r'"command"\s*:\s*"(?:[^"\\]|\\.)*\bagy\b', re.IGNORECASE)
 
 
-def check_ai_pair_transcript(transcript_path: str) -> str | None:
-    """Flag a reviewer transcript that claims a Codex/Gemini review without
+def check_reviewer_transcript(transcript_path: str) -> str | None:
+    """Flag a reviewer transcript that claims a Codex/Agy review without
     ever calling the CLI. Returns None if unreadable, irrelevant, or clean."""
     if not transcript_path:
         return None
@@ -51,21 +51,21 @@ def check_ai_pair_transcript(transcript_path: str) -> str | None:
         return None
 
     claims_codex = CLAIMS_CODEX_RE.search(text) is not None
-    claims_gemini = CLAIMS_GEMINI_RE.search(text) is not None
-    if not (claims_codex or claims_gemini):
+    claims_agy = CLAIMS_AGY_RE.search(text) is not None
+    if not (claims_codex or claims_agy):
         return None
 
     missing = []
     if claims_codex and not CODEX_CMD_RE.search(text):
         missing.append("Codex")
-    if claims_gemini and not GEMINI_CMD_RE.search(text):
-        missing.append("Gemini")
+    if claims_agy and not AGY_CMD_RE.search(text):
+        missing.append("Agy")
     if not missing:
         return None
 
     names = "/".join(missing)
     return (
-        f"ai-pair integrity check: this subagent's transcript presents a {names} "
+        f"three-brain integrity check: this subagent's transcript presents a {names} "
         f"Review section, but no Bash call to the {names.lower()} CLI was found "
         "in its transcript. Do not present this as an external-model review — "
         "relabel it '[Claude Fallback]' unless the CLI invocation is confirmed."
@@ -87,7 +87,7 @@ def main() -> None:
         transcript_path = get_field(payload, "transcript_path", default="")
 
         ctx = f"Dev-suite agent '{agent_name}' completed."
-        flag = check_ai_pair_transcript(transcript_path)
+        flag = check_reviewer_transcript(transcript_path)
         if flag:
             ctx += f"\n\n{flag}"
 

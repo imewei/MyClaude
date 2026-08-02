@@ -1,7 +1,7 @@
 ---
 name: dev-hub
 description: >-
-  Top-level router for software development lifecycle topics, with a dedicated track for scientific-computing code quality. Use for: FastAPI/asyncio backend services; full-stack web/mobile app development; system architecture (microservices/containers/cloud/CLI tools/Terraform/K8s); test automation/TDD/E2E/coverage/code review/plugin validation; numerical-precision and reproducibility validation for JAX/Julia scientific codebases; GitHub Actions/GitLab CI/deployment pipelines/security scanning/CI errors; Prometheus/Grafana/distributed tracing/SLOs/monitoring/observability/incident response; database schema/SQL optimization/caching/search/authentication/secrets management; Git workflow/technical documentation/Airflow data pipelines/systematic debugging; AI pair programming/multi-model dev team/Codex+Gemini review pipeline/content team/team-stop/ai-pair/start dev team/start content team/three-model collaboration/dual-model review/ongoing iterative review.
+  Top-level router for software development lifecycle topics, with a dedicated track for scientific-computing code quality. Use for: FastAPI/asyncio backend services; full-stack web/mobile app development; system architecture (microservices/containers/cloud/CLI tools/Terraform/K8s); test automation/TDD/E2E/coverage/code review/plugin validation; numerical-precision and reproducibility validation for JAX/Julia scientific codebases; GitHub Actions/GitLab CI/deployment pipelines/security scanning/CI errors; Prometheus/Grafana/distributed tracing/SLOs/monitoring/observability/incident response; database schema/SQL optimization/caching/search/authentication/secrets management; Git workflow/technical documentation/Airflow data pipelines/systematic debugging; multi-model Codex+Agy review (one-shot second opinion or a persistent dev team/content team)/team-stop/ai pair programming/start dev team/start content team/three-model collaboration/dual-model review/ongoing iterative review.
 ---
 
 # Dev Suite (dev-hub)
@@ -26,8 +26,7 @@ Top-level entry point consolidating all dev-suite hub skills into a single route
 - [observability-and-sre](../observability-and-sre/SKILL.md) — Prometheus, Grafana, SLOs, distributed tracing, incident response
 - [data-and-security](../data-and-security/SKILL.md) — Databases, SQL optimization, secrets management, auth patterns
 - [dev-workflows](../dev-workflows/SKILL.md) — Git workflow, documentation, debugging, Airflow pipelines
-- [three-brain](../three-brain/SKILL.md) — Second-opinion review via Codex/Gemini, multimodal analysis, long-context scan (one-shot)
-- [ai-pair](../ai-pair/SKILL.md) — AI pair programming patterns
+- [three-brain](../three-brain/SKILL.md) — Multi-model Codex/Agy review: one-shot second opinion, multimodal/long-context scan (Route mode), or a persistent dev/content team (Team mode)
 
 ## Routing Decision Tree
 
@@ -55,13 +54,11 @@ What is the primary concern?
 +-- Git workflow / docs / debugging / Airflow?
 |   --> dev-suite:dev-workflows
 |
-+-- AI pair programming / multi-model team / Codex+Gemini review?
-|   Triggers: /ai-pair, "start dev team", "start content team", "team-stop",
-|   "pair with codex and gemini", "multi-model review", "three-model team",
-|   "dual-model review", "ongoing review pipeline", "content team"
-|   --> dev-suite:ai-pair
-|
-+-- Second opinion / ask Codex / ask Gemini / sanity check / multimodal / long-context scan (one-shot)?
++-- Multi-model Codex+Agy review — one-shot or persistent team?
+|   Triggers: second opinion, ask Codex, ask Agy, sanity check, multimodal,
+|   long-context scan (Route mode) — OR /ai-pair, "start dev team",
+|   "start content team", "team-stop", "pair with codex and agy",
+|   "multi-model review", "three-model team", "content team" (Team mode)
 |   --> dev-suite:three-brain
 |
 +-- None of the above / concern is ambiguous or spans multiple areas?
@@ -80,8 +77,7 @@ What is the primary concern?
 | Prometheus, Grafana, tracing, SLOs, oncall | dev-suite:observability-and-sre |
 | SQL, database design, migrations, Redis, caching, Elasticsearch, vector search, secrets, JWT, OAuth, RBAC, Vault | dev-suite:data-and-security |
 | Git branching, docs, debugging, Airflow | dev-suite:dev-workflows |
-| /ai-pair, dev team, content team, team-stop, Codex+Gemini review, multi-model review, three-model team, dual reviewer, ongoing iterative review, pair programming with AI models | dev-suite:ai-pair |
-| Second opinion, sanity check, ask Codex, ask Gemini, review your work, cross-check, multimodal analysis, long-context scan, repeated failure (one-shot) | dev-suite:three-brain |
+| Second opinion, sanity check, ask Codex, ask Agy, review your work, cross-check, multimodal analysis, long-context scan, repeated failure (one-shot Route mode); dev team, content team, team-stop, Codex+Agy review, multi-model review, three-model team, dual reviewer, ongoing iterative review, pair programming with AI models (persistent Team mode) | dev-suite:three-brain |
 
 ## Checklist
 
@@ -92,5 +88,5 @@ What is the primary concern?
 - [ ] Ensure tests are planned or updated whenever implementation changes
 - [ ] Confirm observability hooks (logs, metrics, traces) are in scope for production changes
 - [ ] Check CI/CD pipeline is updated when new build steps or env vars are introduced
-- [ ] Use `dev-suite:three-brain` for one-shot second opinions, high-risk path scrutiny, repeated failures, or multimodal/long-context review
-- [ ] Use `dev-suite:ai-pair` (not `dev-suite:three-brain`) for sustained multi-task projects needing iterative creation + dual review
+- [ ] Use `dev-suite:three-brain` Route mode for one-shot second opinions, high-risk path scrutiny, repeated failures, or multimodal/long-context review
+- [ ] Use `dev-suite:three-brain` Team mode for sustained multi-task projects needing iterative creation + dual review
