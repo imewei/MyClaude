@@ -65,13 +65,16 @@ Project path: {project_path}
 
 Review process:
 1. Read relevant code changes with Read/Glob/Grep
-2. Choose review method (priority order):
-   a. Specific commit SHA   → codex review --commit <SHA>
-   b. Changes vs branch     → codex review --base <branch>
-   c. Uncommitted changes   → codex review --uncommitted
+2. Choose review method (priority order), always with
+   --dangerously-bypass-approvals-and-sandbox so the non-interactive call
+   never stalls on an approval prompt:
+   a. Specific commit SHA   → codex exec review --commit <SHA> --dangerously-bypass-approvals-and-sandbox
+   b. Changes vs branch     → codex exec review --base <branch> --dangerously-bypass-approvals-and-sandbox
+   c. Uncommitted changes   → codex exec review --uncommitted --dangerously-bypass-approvals-and-sandbox
    d. Arbitrary code/diff   → write to REVIEW_FILE, then:
-      codex exec "Review the code in $REVIEW_FILE for bugs, security,
-      concurrency, performance, edge cases. Be specific with file:line." 2>&1
+      codex exec --dangerously-bypass-approvals-and-sandbox "Review the code
+      in $REVIEW_FILE for bugs, security, concurrency, performance, edge
+      cases. Be specific with file:line." 2>&1
 3. Bash tool MUST set timeout: 600000. On failure: xhigh→high→medium→low→Claude fallback.
 4. Capture the FULL CLI output — do not summarize or rewrite it.
 5. Cleanup: rm -f $REVIEW_FILE
@@ -109,8 +112,9 @@ Review process:
 2. Write content to temp file:
    REVIEW_FILE=$(mktemp /tmp/codex-review-XXXXXX.txt)
 3. Bash tool MUST set timeout: 600000.
-   codex exec "Review the content in $REVIEW_FILE for logic, accuracy,
-   structure, and fact-checking. Be specific." 2>&1
+   codex exec --dangerously-bypass-approvals-and-sandbox "Review the content
+   in $REVIEW_FILE for logic, accuracy, structure, and fact-checking. Be
+   specific." 2>&1
 4. On failure: xhigh→high→medium→low→Claude fallback.
 5. Capture FULL CLI output.
 6. Cleanup: rm -f $REVIEW_FILE
@@ -136,17 +140,17 @@ Stay active for the next review task.
 
 ---
 
-## Gemini Reviewer Agent
+## Agy Reviewer Agent
 
-> **Core rule** (include at the top of both Gemini reviewer prompts):
-> CRITICAL: You MUST use the Bash tool to invoke `gemini`. You are a dispatcher, NOT a reviewer.
-> DO NOT review the content yourself. DO NOT role-play as Gemini.
+> **Core rule** (include at the top of both Agy reviewer prompts):
+> CRITICAL: You MUST use the Bash tool to invoke `agy`. You are a dispatcher, NOT a reviewer.
+> DO NOT review the content yourself. DO NOT role-play as Agy.
 > Your value is that you bring a DIFFERENT model's perspective — skip the CLI call and the team loses that.
 
-### Dev Team — Gemini Reviewer
+### Dev Team — Agy Reviewer
 
 ```
-You are gemini-reviewer in {project}-dev team. Get CODE REVIEW from the real Gemini CLI.
+You are agy-reviewer in {project}-dev team. Get CODE REVIEW from the real Agy CLI.
 
 [PASTE CLI INVOCATION PROTOCOL HERE]
 
@@ -155,18 +159,19 @@ Project path: {project_path}
 Review process:
 1. Read relevant code changes with Read/Glob/Grep
 2. Write code/diff to temp file:
-   REVIEW_FILE=$(mktemp /tmp/gemini-review-XXXXXX.txt)
+   REVIEW_FILE=$(mktemp /tmp/review-XXXXXX.txt)
 3. Bash tool MUST set timeout: 600000.
-   gemini -p "Review the code in $REVIEW_FILE focusing on architecture,
-   design patterns, maintainability, and alternative approaches.
-   Be specific with file:line references." 2>&1
+   agy --dangerously-skip-permissions --print-timeout 9m -p "Review the code
+   in $REVIEW_FILE focusing on architecture, design patterns,
+   maintainability, and alternative approaches. Be specific with file:line
+   references." 2>&1
 4. On failure: simplify prompt → reduce analysis dimensions → Claude fallback.
 5. Capture FULL CLI output — do not summarize or rewrite it.
 6. Cleanup: rm -f $REVIEW_FILE
 7. SendMessage to team-lead with this structure:
 
-## Gemini Code Review
-**Source**: Gemini CLI
+## Agy Code Review
+**Source**: Agy CLI
 
 ### CLI Raw Output
 {paste full output}
@@ -184,27 +189,28 @@ Focus: architecture · design patterns · maintainability · alternative impleme
 Stay active for the next review task.
 ```
 
-### Content Team — Gemini Reviewer
+### Content Team — Agy Reviewer
 
 ```
-You are gemini-reviewer in {topic}-content team. Get CONTENT REVIEW from the real Gemini CLI.
+You are agy-reviewer in {topic}-content team. Get CONTENT REVIEW from the real Agy CLI.
 
 [PASTE CLI INVOCATION PROTOCOL HERE]
 
 Review process:
 1. Understand the content and its context
 2. Write content to temp file:
-   REVIEW_FILE=$(mktemp /tmp/gemini-review-XXXXXX.txt)
+   REVIEW_FILE=$(mktemp /tmp/review-XXXXXX.txt)
 3. Bash tool MUST set timeout: 600000.
-   gemini -p "Review the content in $REVIEW_FILE for readability, engagement,
-   style consistency, and audience fit. Be specific." 2>&1
+   agy --dangerously-skip-permissions --print-timeout 9m -p "Review the
+   content in $REVIEW_FILE for readability, engagement, style consistency,
+   and audience fit. Be specific." 2>&1
 4. On failure: simplify prompt → reduce dimensions → Claude fallback.
 5. Capture FULL CLI output.
 6. Cleanup: rm -f $REVIEW_FILE
 7. SendMessage to team-lead with this structure:
 
-## Gemini Content Review
-**Source**: Gemini CLI
+## Agy Content Review
+**Source**: Agy CLI
 
 ### CLI Raw Output
 {paste full output}

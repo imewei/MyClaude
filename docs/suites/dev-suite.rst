@@ -1,9 +1,9 @@
 Dev Suite
 =========
 
-Full-stack engineering, infrastructure, CI/CD, quality assurance, and debugging. Uses the :term:`Hub Skill` architecture with 10 hubs routing to 35 sub-skills. Merges engineering, infrastructure, and quality capabilities into a single development powerhouse.
+Full-stack engineering, infrastructure, CI/CD, quality assurance, and debugging. Uses the :term:`Hub Skill` architecture with 9 hubs routing to 35 sub-skills. Merges engineering, infrastructure, and quality capabilities into a single development powerhouse.
 
-**Version:** 4.0.0 | **6 Agents** | **10 Registered Commands** | **10 Hubs → 35 Sub-skills** | **6 Hook Events**
+**Version:** 4.0.0 | **6 Agents** | **10 Registered Commands** | **9 Hubs → 35 Sub-skills** | **6 Hook Events**
 
 Agents
 ------
@@ -74,27 +74,23 @@ Registered Commands
 Hub Skills
 ----------
 
-Skills use a hub architecture: 10 hub skills route to 35 specialized sub-skills.
+Skills use a hub architecture: 9 hub skills route to 35 specialized sub-skills.
 
 Hub: dev-hub (top-level router)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Entry-point router for the whole suite. Dispatches to the 9 domain hubs below
-(``ai-pair``, ``architecture-and-infra``, ``backend-patterns``, ``ci-cd-pipelines``,
+Entry-point router for the whole suite. Dispatches to the 8 domain hubs below
+(``architecture-and-infra``, ``backend-patterns``, ``ci-cd-pipelines``,
 ``data-and-security``, ``dev-workflows``, ``observability-and-sre``,
 ``testing-and-quality``, ``three-brain``).
-
-Hub: ai-pair (leaf hub)
-^^^^^^^^^^^^^^^^^^^^^^^^
-
-AI pair-programming workflows: delegation patterns, prompt scaffolding, and
-review-in-the-loop collaboration. Also reachable from ``dev-workflows``.
 
 Hub: three-brain (leaf hub)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Three-perspective reasoning protocol (builder / critic / integrator) for high-stakes
-design and debugging decisions. Also reachable from ``dev-workflows``.
+Multi-model routing between Claude, Codex, and Agy: a one-shot second opinion
+(Route mode — code review, multimodal analysis, long-context scans) or a
+persistent dev/content team that stays alive across a multi-round project
+(Team mode). Also reachable from ``dev-workflows``.
 
 Hub: backend-patterns (3 sub-skills)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -163,11 +159,11 @@ Databases, SQL, caching, search, authentication, and secrets.
 - ``auth-implementation-patterns`` — JWT, OAuth2, RBAC/ABAC, session management
 - ``secrets-management`` — Vault, AWS Secrets Manager, Azure Key Vault
 
-Hub: dev-workflows (4 sub-skills + 2 hubs)
+Hub: dev-workflows (4 sub-skills + 1 hub)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Git, documentation, Airflow pipelines, and debugging. Also routes to the
-``ai-pair`` and ``three-brain`` hubs.
+``three-brain`` hub.
 
 - ``git-workflow`` — Branch strategies, commit conventions, conflict resolution
 - ``documentation-standards`` — README structure, API docs, ADRs

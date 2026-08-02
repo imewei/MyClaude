@@ -27,11 +27,8 @@ Airflow DAG design, task dependencies, sensor patterns, and data pipeline orches
 ### [Debugging Toolkit](../debugging-toolkit/SKILL.md)
 Systematic debugging methodology, profiler-guided diagnosis, and root cause analysis frameworks.
 
-### [Three-Brain Router](../three-brain/SKILL.md)
-Multi-model routing between Claude, Codex, and Gemini. Use for second-opinion code review, high-risk path scrutiny, repeated-failure rescue, multimodal analysis (video/audio/PDF/images), and long-context repository scans.
-
-### [AI Pair](../ai-pair/SKILL.md)
-Persistent three-model team (Claude developer/author + Codex reviewer + Gemini reviewer) for iterative code development or content creation. Use for ongoing multi-round projects where creation + dual-perspective review repeats across tasks. Distinct from three-brain: ai-pair runs a sustained team through multiple tasks; three-brain routes a single request.
+### [Three-Brain](../three-brain/SKILL.md)
+Multi-model routing between Claude, Codex, and Agy, in two modes. Route mode (default, one-shot): second-opinion code review, high-risk path scrutiny, repeated-failure rescue, multimodal analysis (video/audio/PDF/images), and long-context repository scans. Team mode (persistent): a Claude developer/author plus a Codex reviewer and Agy reviewer stay alive across an ongoing multi-round project, where creation + dual-perspective review repeats across tasks.
 
 ## Routing Decision Tree
 
@@ -50,11 +47,8 @@ What is the workflow concern?
 +-- Bug diagnosis / profiler / root cause?
 |   --> dev-suite:debugging-toolkit
 |
-+-- Second opinion / Codex review / Gemini scan (one-shot)?
++-- Second opinion / Codex review / Agy scan (one-shot) / dev-team / content-team / multi-round team review?
 |   --> dev-suite:three-brain
-|
-+-- /ai-pair / dev-team / content-team / multi-round team review?
-|   --> dev-suite:ai-pair
 |
 +-- None of the above / concern is ambiguous or spans multiple areas?
     --> Delegate to software-architect for open-ended triage, or clarify the
@@ -69,8 +63,7 @@ What is the workflow concern?
 | README, ADR, docstring, Sphinx, MkDocs                | dev-suite:documentation-standards         |
 | Airflow, DAG, task, XCom, sensor                      | dev-suite:airflow-scientific-workflows    |
 | Debugger, pdb, breakpoint, root cause                 | dev-suite:debugging-toolkit               |
-| Codex, Gemini, second opinion, sanity check, all three (one-shot) | dev-suite:three-brain        |
-| /ai-pair, dev-team, content-team, team-stop, multi-round review   | dev-suite:ai-pair            |
+| Codex, Agy, second opinion, sanity check, all three (one-shot); /ai-pair, dev-team, content-team, team-stop, multi-round review (persistent) | dev-suite:three-brain |
 
 ## Checklist
 
@@ -80,5 +73,5 @@ What is the workflow concern?
 - [ ] Check Airflow DAGs have idempotent tasks before scheduling in production
 - [ ] Validate debugging sessions start with hypothesis formation, not random changes
 - [ ] Ensure debugging findings are documented to prevent regression
-- [ ] For high-risk paths (auth, billing, migrations, infra) or repeated failures, route via dev-suite:three-brain
-- [ ] For sustained multi-task projects needing iterative creation + dual review, use dev-suite:ai-pair
+- [ ] For high-risk paths (auth, billing, migrations, infra) or repeated failures, route via dev-suite:three-brain (Route mode)
+- [ ] For sustained multi-task projects needing iterative creation + dual review, use dev-suite:three-brain (Team mode)

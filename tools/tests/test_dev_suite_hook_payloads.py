@@ -179,7 +179,7 @@ def test_session_start_reads_payload_cwd_not_just_pwd(tmp_path):
     assert "python" in context.lower(), f"did not detect stack from payload cwd: {context}"
 
 
-# --- ai-pair fabrication check (subagent_stop.py) -------------------------
+# --- three-brain Team-mode fabrication check (subagent_stop.py) -----------
 
 
 def test_subagent_stop_catches_real_reviewer_heading(tmp_path):
@@ -193,6 +193,21 @@ def test_subagent_stop_catches_real_reviewer_heading(tmp_path):
     out = run_hook(
         "subagent_stop.py",
         {"agent_name": "codex-reviewer", "transcript_path": str(transcript)},
+    )
+    assert "integrity check" in hook_context(out)
+
+
+def test_subagent_stop_catches_agy_heading_without_cli_call(tmp_path):
+    """Regression guard: the Agy check was a stale 'Gemini' regex until this
+    skill's CLI was renamed — assert the Agy path actually fires, not just
+    the Codex path the older tests already covered."""
+    transcript = tmp_path / "t.jsonl"
+    transcript.write_text(
+        '{"type":"assistant","content":"## Agy Code Review\\nFabricated, no CLI call."}\n'
+    )
+    out = run_hook(
+        "subagent_stop.py",
+        {"agent_name": "agy-reviewer", "transcript_path": str(transcript)},
     )
     assert "integrity check" in hook_context(out)
 
@@ -233,6 +248,39 @@ def test_subagent_stop_clean_when_cli_actually_invoked(tmp_path):
         {"agent_name": "codex-reviewer", "transcript_path": str(transcript)},
     )
     assert "integrity check" not in hook_context(out)
+
+
+def test_subagent_stop_clean_when_agy_cli_actually_invoked(tmp_path):
+    transcript = tmp_path / "t.jsonl"
+    transcript.write_text(
+        '{"input": {"command": "agy --dangerously-skip-permissions -p review.txt"}}\n'
+        "## Agy Code Review\nfindings here\n"
+    )
+    out = run_hook(
+        "subagent_stop.py",
+        {"agent_name": "agy-reviewer", "transcript_path": str(transcript)},
+    )
+    assert "integrity check" not in hook_context(out)
+
+
+def test_subagent_stop_catches_fabrication_despite_review_file_mktemp(tmp_path):
+    """Regression guard: agent-prompts.md's own REVIEW_FILE=$(mktemp
+    /tmp/review-XXXXXX.txt) / rm -f $REVIEW_FILE boilerplate must never
+    itself satisfy AGY_CMD_RE/CODEX_CMD_RE — those commands never contain
+    the literal word 'agy' or 'codex', only the generic $REVIEW_FILE
+    variable. A subagent that runs just the temp-file prep and fabricates
+    the review section must still be flagged."""
+    transcript = tmp_path / "t.jsonl"
+    transcript.write_text(
+        '{"input": {"command": "REVIEW_FILE=$(mktemp /tmp/review-XXXXXX.txt)"}}\n'
+        '{"input": {"command": "rm -f $REVIEW_FILE"}}\n'
+        "## Agy Code Review\nFabricated, no real CLI call.\n"
+    )
+    out = run_hook(
+        "subagent_stop.py",
+        {"agent_name": "agy-reviewer", "transcript_path": str(transcript)},
+    )
+    assert "integrity check" in hook_context(out)
 
 
 def test_subagent_stop_logs_when_transcript_path_missing(tmp_path):
