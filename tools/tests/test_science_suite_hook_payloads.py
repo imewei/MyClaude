@@ -42,6 +42,32 @@ def hook_context(out: dict) -> str:
     return out.get("hookSpecificOutput", {}).get("additionalContext", "")
 
 
+class TestUserPromptSubmit:
+    """skill-comply (results/plugins-batch-clean/) found science-suite hub
+    skills fail their own routing steps (classify_task, route_to_specialized_
+    skill, consult_routing_tree) under neutral/competing prompts — this hook
+    re-injects a routing reminder every turn, regardless of what the prompt
+    says, so it can't be silently skipped mid-session."""
+
+    def test_emits_routing_reminder(self):
+        out = run_hook(
+            "user_prompt_submit.py",
+            {"hook_event_name": "UserPromptSubmit", "prompt": "train a small CNN on MNIST"},
+        )
+        assert out["status"] == "success"
+        context = hook_context(out)
+        assert "hub skill" in context
+        assert "science-hub" in context
+
+    def test_fires_regardless_of_prompt_content(self):
+        out = run_hook(
+            "user_prompt_submit.py",
+            {"hook_event_name": "UserPromptSubmit", "prompt": "what time is it"},
+        )
+        assert out["status"] == "success"
+        assert "hub skill" in hook_context(out)
+
+
 class TestPostToolUse:
     """PostToolUse must read tool_response and only flag numeric NaN/Inf."""
 

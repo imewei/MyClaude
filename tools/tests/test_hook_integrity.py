@@ -13,6 +13,7 @@ PLUGINS_ROOT = Path(__file__).parent.parent.parent / "plugins"
 VALID_HOOK_EVENTS = {
     "SessionStart",
     "SessionEnd",
+    "UserPromptSubmit",
     "PreToolUse",
     "PostToolUse",
     "PreCompact",
