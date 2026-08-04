@@ -146,7 +146,7 @@
     {
       "name": "research-suite",
       "source": "./plugins/research-suite",
-      "description": "Scientific research workflows — three tracks: scientific-review (peer review of other people's manuscripts → .docx), research-spark (8-stage artifact-gated refinement of your own rough idea), and research-practice (methodology hub: study design, paper reproduction, quality assessment, scientific writing, evidence synthesis)",
+      "description": "Scientific research workflows — three tracks: scientific-review (peer review of other people's manuscripts → .docx), research-spark (artifact-gated refinement of your own rough idea into a fundable proposal: 5-stage core + optional extension), and research-practice (methodology hub: study design, paper reproduction, quality assessment, scientific writing, evidence synthesis)",
       "version": "4.0.0",
       "author": {
         "name": "Wei Chen",

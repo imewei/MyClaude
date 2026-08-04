@@ -15,7 +15,7 @@ Suite Dependencies
    * - **dev-suite**
      - Internal: all 6 agents cross-delegate freely. MCP: GitHub.
    * - **research-suite**
-     - science-suite (Stage 6 JAX/Julia/MD delegation from research-spark-orchestrator). 11 registered skills (8-stage pipeline + 2 hubs + standalone ``scientific-review``) route to 6 sub-skills (5 methodology specialists + the ``_research-commons`` resource hub). MCP: Context7 for journal guideline lookups.
+     - science-suite (Stage 6 JAX/Julia/MD delegation from research-spark-orchestrator, optional extension only). 11 registered skills (research-spark pipeline + 2 hubs + standalone ``scientific-review``) route to 6 sub-skills (5 methodology specialists + the ``_research-commons`` resource hub). MCP: Context7 for journal guideline lookups.
    * - **science-suite**
      - dev-suite (packaging), research-suite (invoked for Stage 6 implementation). Internal: julia-pro <-> julia-ml-hpc (SciML vs ML/HPC boundary), neural-network-master <-> julia-ml-hpc (theory vs Julia impl). 30 hub skills route to 107 sub-skills. MCP: Context7.
 
@@ -82,7 +82,7 @@ All 50 registered hub skills route to 148 sub-skills with 100% Expert Agent cove
      - 2
      - 11
      - 6
-     - 100% — scientific-review standalone + 8-stage pipeline + research-practice hub
+     - 100% — scientific-review standalone + research-spark pipeline + research-practice hub
    * - science-suite
      - 12
      - 30

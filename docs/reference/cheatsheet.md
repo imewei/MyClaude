@@ -30,7 +30,7 @@ plugin.json → hub skill → routing decision tree → sub-skill
 
 ### 2. Research Suite (`research-suite`)
 
-**Purpose:** Peer review, 8-stage research-spark pipeline, and methodology orchestration.
+**Purpose:** Peer review, research-spark pipeline (5-stage core + optional extension), and methodology orchestration.
 
 | Component | Count | Details |
 |-----------|-------|---------|
@@ -68,8 +68,8 @@ plugin.json → hub skill → routing decision tree → sub-skill
 3. `@research-expert` — analyze and visualize results
 
 ### Research (idea to plan)
-1. `@research-spark-orchestrator` — drive the 8-stage pipeline
-2. Stages 1-8 emit `01_spark.md` → `08_premortem.md` into `artifacts/`
+1. `@research-spark-orchestrator` — drive the pipeline
+2. Stages 1-5 (core) emit `01_spark.md` → `05_formalism.tex` into `artifacts/`, ending in a fundable proposal; Stages 6-8 (optional) continue to `08_premortem.md` only on request
 3. `SubagentStop` hook verifies each stage artifact before advancing
 
 ### Peer Review (manuscript to .docx)

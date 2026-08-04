@@ -1,11 +1,11 @@
 Research Suite
 ==============
 
-Scientific research workflows: peer review, idea-to-plan refinement, and methodology orchestration. Three complementary tracks — ``scientific-review`` (manuscripts from other authors → .docx referee report), ``research-spark`` (own rough idea → 8-stage artifact-gated plan), and ``research-practice`` (general methodology hub).
+Scientific research workflows: peer review, idea-to-plan refinement, and methodology orchestration. Three complementary tracks — ``scientific-review`` (manuscripts from other authors → .docx referee report), ``research-spark`` (own rough idea → fundable proposal, 5-stage core + optional extension), and ``research-practice`` (general methodology hub).
 
 **Version:** 4.0.0 | **2 Agents** | **3 Registered Commands** | **11 Hubs → 6 Sub-skills** | **2 Hook Events**
 
-Created in v3.4.0 by extracting ``research-expert`` plus 5 methodology skills from ``science-suite`` and adding the research-spark pipeline (new 8-stage orchestrator + 7 stage-specialist skills + ``_research-commons`` resource hub).
+Created in v3.4.0 by extracting ``research-expert`` plus 5 methodology skills from ``science-suite`` and adding the research-spark pipeline (new orchestrator + 7 stage-specialist skills + ``_research-commons`` resource hub).
 
 Agents
 ------
@@ -16,7 +16,7 @@ Agents
    :version: 4.0.0
 
 .. agent:: research-spark-orchestrator
-   :description: Autonomous driver for the 8-stage research-spark refinement pipeline. Owns ``_state.yaml``, enforces the artifact contract, fans out to parallel sub-agents at Stage 2 (literature layers), Stage 6 (validation passes), and Stage 8 (reviewer archetypes).
+   :description: Autonomous driver for the research-spark refinement pipeline (5-stage core to a fundable proposal + optional extension). Owns ``_state.yaml``, enforces the artifact contract, fans out to parallel sub-agents at Stage 2 (literature layers), Stage 6 (validation passes), and Stage 8 (reviewer archetypes).
    :model: opus
    :version: 4.0.0
 
@@ -51,23 +51,23 @@ Skill: _research-commons
 
 Shared assets for the research-spark skill stack — not a standalone workflow. Other skills reference files here for writing style (``style/writing_constraints.md`` with banned-vocabulary list), code architecture rules (``code_architecture/jax_first_rules.md``), shared templates (``templates/heilmeier.md``, ``templates/reviewer2_persona.md``, ``templates/abstract.md``, ``templates/onepage.md``, ``templates/project_log.md``), and utility scripts (``scripts/style_lint.py``, ``scripts/formalism_code_reconcile.py``, ``scripts/concept_extractor.py``, ``scripts/latex_sanity.py``, ``scripts/artifact_diff.py``).
 
-research-spark Pipeline (8 stages)
-----------------------------------
+research-spark Pipeline (5-stage core + optional extension)
+-------------------------------------------------------------
 
-Pipeline orchestrator plus seven stage-specialist skills. Each stage writes one canonical artifact at a canonical path; the next stage consumes it as authoritative input. State lives in ``_state.yaml`` at the project root.
+Pipeline orchestrator plus seven stage-specialist skills. Each stage writes one canonical artifact at a canonical path; the next stage consumes it as authoritative input. State lives in ``_state.yaml`` at the project root. Stages 1-5 are the core — they produce a testable, fundable research proposal, and the pipeline's job is done there. Stages 6-8 are an optional extension toward execution, entered only on explicit request.
 
 Hub: research-spark
 ^^^^^^^^^^^^^^^^^^^
 
-Orchestrator for the 8-stage refinement pipeline. Detects current stage from ``_state.yaml`` + user cue, loads the right stage specialist, enforces canonical paths, preserves prior-stage artifacts when a completed stage is re-entered, and logs depth-gate overrides (e.g., the 8-steelmanned-papers rule in Stage 2).
+Orchestrator for the refinement pipeline. Detects current stage from ``_state.yaml`` + user cue, loads the right stage specialist, enforces canonical paths, preserves prior-stage artifacts when a completed stage is re-entered, and logs depth-gate overrides (e.g., the 8-steelmanned-papers rule in Stage 2).
 
 - ``spark-articulator`` — **Stage 1.** Rough idea → 3-5 sentence articulation naming the spark, its novelty, and the observation that would confirm it. Writes ``01_spark.md``.
 - ``landscape-scanner`` — **Stage 2.** Three-layer literature scan (foundational / recent / adjacent), steelmanning each paper, gap matrix, Reviewer 2 adversarial pass. Writes ``02_landscape.md``.
 - ``falsifiable-claim`` — **Stage 3.** Claim + Heilmeier catechism + kill criterion + Reviewer 2 challenge. Writes ``03_claim.md``.
 - ``theory-scaffold`` — **Stages 4-5** (merged). Stepwise derivation protocol → LaTeX formalism. Blocks multi-step symbolic leaps, identifies governing dimensionless groups, checks known limits. Writes ``04_theory.md`` + ``05_formalism.tex``.
-- ``numerical-prototype`` — **Stage 6.** JAX-based solver + three validation passes (analytic-limit recovery, synthetic benchmark, convergence study) → concrete predicted observable. Writes ``06_prototype.md`` + ``code/``.
-- ``experiment-designer`` — **Stage 7.** Instrument capability map (3x margin rule per dimension), DoE matrix, formal power analysis, pre-registered success metrics, risk register. Writes ``07_plan.md``.
-- ``premortem-critique`` — **Stage 8.** Failure narrative, root-cause clustering, cheapest early-warning signals fed back into Stage 7, simulated-reviewer critique across archetypes. Writes ``08_premortem.md``.
+- ``numerical-prototype`` — **Stage 6 (optional).** JAX-based solver + three validation passes (analytic-limit recovery, synthetic benchmark, convergence study) → concrete predicted observable. Writes ``06_prototype.md`` + ``code/``.
+- ``experiment-designer`` — **Stage 7 (optional).** Instrument capability map (3x margin rule per dimension), DoE matrix, formal power analysis, pre-registered success metrics, risk register. Writes ``07_plan.md``.
+- ``premortem-critique`` — **Stage 8 (optional).** Failure narrative, root-cause clustering, cheapest early-warning signals fed back into Stage 7, simulated-reviewer critique across archetypes. Writes ``08_premortem.md``.
 
 research-practice Hub (methodology)
 -----------------------------------

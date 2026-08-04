@@ -37,7 +37,7 @@ PRISMA systematic reviews, meta-analysis (effect-size pooling, heterogeneity via
 Two stand-alone workflows sit *outside* this hub's routing because they are complete pipelines, not single-phase specialists:
 
 - **`scientific-review`** — peer-review workflow for reviewing *other people's* manuscripts. Produces a .docx referee report with Confidential Comments to Editor. Use this instead of research-quality-assessment when the deliverable is a journal peer-review report.
-- **`research-spark` pipeline** — eight-stage artifact-gated refinement of your own rough research idea into a fundable plan. Use this instead of research-methodology when you want structured handoffs (spark → landscape → claim → theory → prototype → plan → premortem) with state tracked in `_state.yaml`.
+- **`research-spark` pipeline** — artifact-gated refinement of your own rough research idea into a fundable proposal: a five-stage core (spark → landscape → claim → theory) that is done at Stage 5, plus an optional extension (prototype → plan → premortem) only on explicit request. Use this instead of research-methodology when you want structured handoffs with state tracked in `_state.yaml`.
 
 ### Phase ↔ research-spark stage mapping
 

@@ -39,9 +39,9 @@ direct invocation instead of relying on skill auto-trigger.
 | Agent | Model | Specialization |
 |-------|-------|----------------|
 | `research-expert` | opus | Research methodology, literature synthesis, scientific communication — one-off tasks |
-| `research-spark-orchestrator` | opus | Autonomous driver for the 8-stage research-spark pipeline; owns state, enforces artifact contract, fans out to sub-agents |
+| `research-spark-orchestrator` | opus | Autonomous driver for the research-spark pipeline (5-stage core to a fundable proposal + optional extension); owns state, enforces artifact contract, fans out to sub-agents |
 
-Use `research-expert` for discrete methodology tasks (power analysis, systematic review, IMRaD structuring). Use `research-spark-orchestrator` when you have a rough research idea you want to walk through the full articulation → premortem pipeline with artifact-gated handoffs.
+Use `research-expert` for discrete methodology tasks (power analysis, systematic review, IMRaD structuring). Use `research-spark-orchestrator` when you have a rough research idea you want to walk through articulation → theory with artifact-gated handoffs; the pipeline is done at Stage 5 (a fundable proposal) unless you ask to continue into the optional extension (prototype → experiment design → premortem).
 
 ## Commands
 
@@ -69,14 +69,14 @@ research-practice) stays skill-driven — no command needed.
 
 | Skill | Role |
 |-------|------|
-| `research-spark` | Orchestrator for the 8-stage refinement pipeline |
-| `spark-articulator` | **Stage 1** — rough idea → 3-to-5-sentence articulation |
-| `landscape-scanner` | **Stage 2** — three-layer literature scan + Reviewer 2 pass |
-| `falsifiable-claim` | **Stage 3** — claim + Heilmeier doc + kill criterion |
-| `theory-scaffold` | **Stages 4–5** — stepwise derivation → LaTeX formalism |
-| `numerical-prototype` | **Stage 6** — JAX prototype + three validation passes |
-| `experiment-designer` | **Stage 7** — DoE + instrument capability map + power analysis |
-| `premortem-critique` | **Stage 8** — failure narratives + simulated reviewers |
+| `research-spark` | Orchestrator for the refinement pipeline (5-stage core + optional extension) |
+| `spark-articulator` | **Stage 1 (core)** — rough idea → 3-to-5-sentence articulation |
+| `landscape-scanner` | **Stage 2 (core)** — three-layer literature scan + Reviewer 2 pass |
+| `falsifiable-claim` | **Stage 3 (core)** — claim + Heilmeier doc + kill criterion |
+| `theory-scaffold` | **Stages 4–5 (core)** — stepwise derivation → LaTeX formalism; ends with a fundable proposal |
+| `numerical-prototype` | **Stage 6 (optional)** — JAX prototype + three validation passes |
+| `experiment-designer` | **Stage 7 (optional)** — DoE + instrument capability map + power analysis |
+| `premortem-critique` | **Stage 8 (optional)** — failure narratives + simulated reviewers |
 | `_research-commons` | Shared style, code architecture, templates, scripts (not invoked directly) |
 
 ### research-practice hub (methodology)
@@ -160,7 +160,7 @@ State lives in `_state.yaml` at the project root; the orchestrator reads it befo
   All three require the same mental discipline — adversarial critique, explicit
   falsifiability, artifact-gated handoffs.
 - **Two agents, three commands.** The `research-expert` agent handles multi-step
-  research delegations; `research-spark-orchestrator` drives the 8-stage pipeline.
+  research delegations; `research-spark-orchestrator` drives the pipeline (5-stage core + optional extension).
   Paper reproduction (`/paper-implement`, `/replicate`, `/lit-review`) is
   command-driven for explicit invocation — everything else is skill-driven. The old
   `/paper-review` command was removed because `scientific-review` auto-triggers on

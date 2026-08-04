@@ -28,7 +28,7 @@ Scientific research workflows: peer review, idea-to-plan refinement, and methodo
 | Agent | Model | Description |
 |-------|-------|-------------|
 | `research-expert` | opus | Unified specialist for research methodology, evidence synthesis (PRISMA/GRADE), statistical rigor, IMRaD structuring, paper-to-code reproduction, and publication-quality visualization (one-off tasks) |
-| `research-spark-orchestrator` | opus | Autonomous driver for the 8-stage research-spark refinement pipeline; owns `_state.yaml`, enforces artifact contract, fans out to sub-agents at Stages 2/6/8 |
+| `research-spark-orchestrator` | opus | Autonomous driver for the research-spark refinement pipeline (5-stage core to a fundable proposal + optional extension); owns `_state.yaml`, enforces artifact contract, fans out to sub-agents at Stages 2/6/8 |
 
 ---
 

@@ -26,7 +26,7 @@ This skill covers the *design* phase — what to plan before running the experim
 | **Synthesize** (PRISMA, meta-analysis) | evidence-synthesis |
 | **Reproduce a paper** | research-paper-implementation |
 
-The research-spark stack (`research-spark` → 8 stages) is a structured pipeline that embeds these phases; use it when you want artifact-gated handoffs between stages rather than free-form methodology guidance.
+The research-spark stack (`research-spark` — 5-stage core + optional extension) is a structured pipeline that embeds these phases; use it when you want artifact-gated handoffs between stages rather than free-form methodology guidance.
 
 ## 1. Experimental Design
 
