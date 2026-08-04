@@ -198,7 +198,7 @@ v3.4.0 (2026-04-18)
     - ``research-spark`` — 8-stage artifact-gated refinement of a rough research idea into a fundable plan. Stages: ``spark-articulator`` → ``landscape-scanner`` → ``falsifiable-claim`` → ``theory-scaffold`` (Stages 4-5) → ``numerical-prototype`` → ``experiment-designer`` → ``premortem-critique``. State tracked in ``_state.yaml``.
     - ``research-practice`` — methodology hub routing to ``research-methodology``, ``research-quality-assessment``, ``research-paper-implementation``, ``scientific-communication``, ``evidence-synthesis`` (all moved from ``science-suite``'s ``research-and-domains`` hub).
 
-  - **Three adversarial patterns enforced:** Reviewer 2 persona (Stages 2-3), stepwise derivation protocol (Stages 4-5), instrument capability 3× margin rule (Stage 7).
+  - **Three adversarial patterns enforced:** Reviewer 2 persona (Stages 2-3), stepwise derivation protocol (Stages 4-5), instrument capability 3x margin rule (Stage 7).
   - **0 registered commands** (workflows are skill-driven). The legacy ``/paper-review`` command was removed in favor of ``scientific-review``.
 
 * **science-suite** now focuses purely on computational work (JAX, Julia, HPC, ML/DL, physics, nonlinear dynamics): 11 agents (was 12), 14 hubs → 112 sub-skills (was 117).
@@ -207,7 +207,7 @@ v3.4.0 (2026-04-18)
 
 * **Description normalization:** 5 methodology skills and 1 agent converted from weak "Use when..." form to strong third-person "This skill should be used when..." with 8-10 verbatim trigger phrases each (evidence-synthesis, scientific-communication, research-paper-implementation, research-quality-assessment, research-methodology, research-practice, research-expert).
 * **Non-standard frontmatter cleanup:** dropped ``maturity`` / ``specialization`` / inline ``Version:`` footers from research-paper-implementation and research-quality-assessment (version lives only in ``plugin.json`` per convention).
-* **Cross-skill linkage:** every methodology skill now points to its research-spark pipeline counterpart (e.g., ``research-methodology`` ↔ Stage 7 ``experiment-designer``; ``evidence-synthesis`` ↔ Stage 2 ``landscape-scanner``). Added phase↔stage mapping table to ``research-practice`` hub.
+* **Cross-skill linkage:** every methodology skill now points to its research-spark pipeline counterpart (e.g., ``research-methodology`` <-> Stage 7 ``experiment-designer``; ``evidence-synthesis`` <-> Stage 2 ``landscape-scanner``). Added phase<->stage mapping table to ``research-practice`` hub.
 * **Plugin metadata:** sharper ``plugin.json`` description; 10 new discoverability keywords (``power-analysis``, ``prisma``, ``grade``, ``consort``, ``strobe``, ``reproducibility``, ``paper-implementation``, ``statistical-rigor``, ``pre-registration``, ``doe``).
 
 **Documentation**
@@ -229,14 +229,14 @@ v3.4.0 (2026-04-18)
 * **research-suite hooks:** added 3 hook events (``SessionStart`` artifact-resume, ``TaskCompleted`` audit logging, ``SubagentStop`` prompt-based stage-artifact verification) + 2 command handler scripts. Brings hook event total across suites from 24 → 27.
 * **Version consistency sweep:** ``pyproject.toml`` bumped 3.3.0 → 3.4.0; ``docs/conf.py`` release 3.3.0 → 3.4.0; ``Makefile`` header 3.0.0 → 3.4.0; README badges + overview prose synchronized; agent-core ``commands/team-assemble.md`` "MyClaude v3.3.0" → "v3.4.0". All 13 canonical version surfaces now match.
 * **Trigger-phrase parity:** final ``SKILL.md`` (``science-suite/skills/research-and-domains``) gained "Use when..." trigger — 217/217 skills now conform.
-* **Tooling polish:** ``skill_validator.py`` now reports ``n/a ⚪ no corpus`` instead of misleading ``0.0% ❌`` when no test corpus is loaded; ``doc_checker.py`` wired into ``make validate`` (per-plugin iteration).
+* **Tooling polish:** ``skill_validator.py`` now reports *n/a (no corpus)* instead of a misleading *0.0%* when no test corpus is loaded; ``doc_checker.py`` wired into ``make validate`` (per-plugin iteration).
 
 v3.3.0 (2026-04-12)
 --------------------
 
 **CLI 2.1.104 Ecosystem Optimization**
 
-* Agent maxTurns standardization: 10 agents raised to model tier targets (opus≥50, sonnet≥35)
+* Agent maxTurns standardization: 10 agents raised to model tier targets (opus>=50, sonnet>=35)
 * Tool list enrichment: EnterPlanMode/ExitPlanMode added to all 7 allowlist-based opus agents;
   CronCreate, ScheduleWakeup added to automation-engineer, devops-architect, sre-expert;
   Monitor added to smart-debug command
@@ -363,7 +363,7 @@ v3.1.7 (2026-04-11)
 v3.1.6 (2026-04-11)
 -------------------
 
-**Julia ↔ Python Parity Polish**
+**Julia <-> Python Parity Polish**
 
 * **Julia → Python handoff for nonlinear time-series tools.** New section
   in ``chaos-attractors`` covering ``nolds``, ``antropy``, ``IDTxl``,
@@ -371,7 +371,7 @@ v3.1.6 (2026-04-11)
   via the canonical ``PythonCall.jl`` + ``CondaPkg.jl`` import pattern
   with a concrete ``lyap_r`` example and GIL-under-``@threads`` caveats.
   Pointer edits in ``nonlinear-dynamics`` hub ecosystem-selection table
-  and ``time-series-analysis``. Completes the Julia ↔ Python interop
+  and ``time-series-analysis``. Completes the Julia <-> Python interop
   story with v3.1.5's reciprocal ``juliacall`` bifurcation path.
 * **BAR free-energy worked example** bridging Langevin ensemble and
   non-equilibrium theory. Added a 4-stage pipeline to
@@ -392,7 +392,7 @@ v3.1.6 (2026-04-11)
   ``[unverified]`` (absent in freud 3.5.0) with a ``numpy.fft`` +
   MDAnalysis fallback. Algorithmic notes in
   ``correlation-computational-methods`` (AABBQuery neighbor-list reuse,
-  ``reset=False`` multi-frame averaging, CuPy breakeven N ≈ 10⁴,
+  ``reset=False`` multi-frame averaging, CuPy breakeven N ~= 10^4,
   "MDAnalysis/MDTraj as iterator, freud as analyzer" production
   pattern). One-line hub pointer in ``correlation-analysis`` with a
   ``PythonCall.jl`` handoff note for Julia users.

@@ -67,12 +67,12 @@ plugin.json → hub skill → routing decision tree → sub-skill
 2. `@jax-pro` or `@julia-pro` — implement numerical kernels
 3. `@research-expert` — analyze and visualize results
 
-### Research (idea → plan)
+### Research (idea to plan)
 1. `@research-spark-orchestrator` — drive the 8-stage pipeline
 2. Stages 1-8 emit `01_spark.md` → `08_premortem.md` into `artifacts/`
 3. `SubagentStop` hook verifies each stage artifact before advancing
 
-### Peer Review (manuscript → .docx)
+### Peer Review (manuscript to .docx)
 1. Skill auto-triggers on "review this paper" phrasings
 2. `scientific-review` produces a journal-adapted Six-Lens referee report
 3. Output: `.docx` (with `python-docx`) or markdown fallback

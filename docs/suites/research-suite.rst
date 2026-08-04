@@ -66,7 +66,7 @@ Orchestrator for the 8-stage refinement pipeline. Detects current stage from ``_
 - ``falsifiable-claim`` — **Stage 3.** Claim + Heilmeier catechism + kill criterion + Reviewer 2 challenge. Writes ``03_claim.md``.
 - ``theory-scaffold`` — **Stages 4-5** (merged). Stepwise derivation protocol → LaTeX formalism. Blocks multi-step symbolic leaps, identifies governing dimensionless groups, checks known limits. Writes ``04_theory.md`` + ``05_formalism.tex``.
 - ``numerical-prototype`` — **Stage 6.** JAX-based solver + three validation passes (analytic-limit recovery, synthetic benchmark, convergence study) → concrete predicted observable. Writes ``06_prototype.md`` + ``code/``.
-- ``experiment-designer`` — **Stage 7.** Instrument capability map (3× margin rule per dimension), DoE matrix, formal power analysis, pre-registered success metrics, risk register. Writes ``07_plan.md``.
+- ``experiment-designer`` — **Stage 7.** Instrument capability map (3x margin rule per dimension), DoE matrix, formal power analysis, pre-registered success metrics, risk register. Writes ``07_plan.md``.
 - ``premortem-critique`` — **Stage 8.** Failure narrative, root-cause clustering, cheapest early-warning signals fed back into Stage 7, simulated-reviewer critique across archetypes. Writes ``08_premortem.md``.
 
 research-practice Hub (methodology)
@@ -83,9 +83,9 @@ Meta-orchestrator for the research lifecycle. Routes to the appropriate phase-al
 - ``research-quality-assessment`` — **Evaluate phase.** Score existing work against CONSORT/STROBE/PRISMA/MOOSE, detect red flags (p-hacking, HARKing, selective reporting, circular analysis). Not a .docx deliverable — use ``scientific-review`` for that.
 - ``research-paper-implementation`` — **Reproduce phase.** Translate a published paper's methods + appendix into runnable code.
 - ``scientific-communication`` — **Write-up phase.** IMRaD structure, abstracts (see ``_research-commons/templates/abstract.md``), posters, technical reports.
-- ``evidence-synthesis`` — **Synthesize phase.** PRISMA systematic reviews, meta-analysis (effect-size pooling, I²/Q heterogeneity), GRADE evidence grading.
+- ``evidence-synthesis`` — **Synthesize phase.** PRISMA systematic reviews, meta-analysis (effect-size pooling, I^2/Q heterogeneity), GRADE evidence grading.
 
-Phase ↔ research-spark stage mapping
+Phase to research-spark stage mapping
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 When the user is inside an active research-spark project, the pipeline stage supersedes the generic methodology sub-skill — the stage version enforces tighter artifact contracts.
@@ -111,7 +111,7 @@ These exist because they catch failures the non-adversarial workflow misses.
 
 - **Reviewer 2 persona** (Stages 2-3). Adversarial reviewer argues the gap isn't real / tractable / impact-bearing, or the claim is physically impossible / mathematically unsound / already solved. Each rebuttal must cite a specific paper.
 - **Stepwise derivation protocol** (Stages 4-5). One conceptual step per invocation, with a verification pass (dimensional check, limit check, sanity argument) before the next step. Blocks multi-step symbolic leaps.
-- **Instrument capability margin** (Stage 7). For each measurable quantity, compute the margin between predicted signal and instrument capability on each axis. Margin < 3× → high-risk measurement requiring explicit mitigation.
+- **Instrument capability margin** (Stage 7). For each measurable quantity, compute the margin between predicted signal and instrument capability on each axis. Margin < 3x → high-risk measurement requiring explicit mitigation.
 
 Style enforcement
 -----------------
@@ -165,12 +165,12 @@ Project directory layout (research-spark)
 .. code-block:: text
 
    <workspace>/<idea-slug>/
-   ├── _state.yaml
-   ├── project_log.md
-   ├── artifacts/
-   │   ├── 01_spark.md
-   │   └── ... 08_premortem.md
-   └── code/                    # emerges at Stage 6
-       ├── pyproject.toml
-       ├── src/<slug>/
-       └── tests/
+   |-- _state.yaml
+   |-- project_log.md
+   |-- artifacts/
+   |   |-- 01_spark.md
+   |   `-- ... 08_premortem.md
+   `-- code/                    # emerges at Stage 6
+       |-- pyproject.toml
+       |-- src/<slug>/
+       `-- tests/

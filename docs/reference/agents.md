@@ -69,13 +69,13 @@ Agents delegate across suite boundaries when tasks require multiple domains. Key
 
 | From | To | Boundary |
 |------|----|----------|
-| `software-architect` | `sre-expert` | Architecture ↔ Reliability/Infrastructure |
-| `julia-pro` | `julia-ml-hpc` | SciML/ODE ↔ ML training/GPU/HPC |
-| `julia-pro` | `software-architect` (dev-suite) | Scientific computing ↔ Productionization/API design |
-| `jax-pro` | `software-architect` (dev-suite) | JAX implementation ↔ Productionization/API design |
-| `neural-network-master` | `julia-ml-hpc` | DL theory ↔ Julia implementation |
-| `nonlinear-dynamics-expert` | `jax-pro` / `julia-pro` | Theory ↔ Implementation |
-| `statistical-physicist` | `jax-pro` | Theory ↔ JAX implementation |
+| `software-architect` | `sre-expert` | Architecture <-> Reliability/Infrastructure |
+| `julia-pro` | `julia-ml-hpc` | SciML/ODE <-> ML training/GPU/HPC |
+| `julia-pro` | `software-architect` (dev-suite) | Scientific computing <-> Productionization/API design |
+| `jax-pro` | `software-architect` (dev-suite) | JAX implementation <-> Productionization/API design |
+| `neural-network-master` | `julia-ml-hpc` | DL theory <-> Julia implementation |
+| `nonlinear-dynamics-expert` | `jax-pro` / `julia-pro` | Theory <-> Implementation |
+| `statistical-physicist` | `jax-pro` | Theory <-> JAX implementation |
 
 See the [Integration Map](../integration-map.rst) for full delegation patterns and MCP server roles.
 

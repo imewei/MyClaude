@@ -1,9 +1,4 @@
 Categories
 ==========
 
-.. toctree::
-   :maxdepth: 2
-
-   dev
-   research
-   science
+Browse suites by category: :doc:`dev`, :doc:`research`, :doc:`science`.
