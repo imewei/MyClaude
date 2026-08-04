@@ -131,6 +131,7 @@ function _self_test()
     println("observable '", obs.name, "' final value: ", round(obs.values[end], digits=4))
     @assert length(obs.t) == length(trajectory)
     @assert all(isfinite, obs.values)
+    @assert all(v -> v >= 0, obs.values)  # mean-square displacement is non-negative by construction
 end
 
 if abspath(PROGRAM_FILE) == @__FILE__

@@ -9,6 +9,7 @@ through subprocess rather than imported.
 """
 
 import json
+import re
 import shutil
 import subprocess
 import sys
@@ -578,10 +579,13 @@ def test_subagent_stop_writes_no_debug_log():
 
 
 def test_julia_prototype_skeleton_self_test_runs():
-    """numerical-prototype's Julia scaffold has no corpus/validator coverage
-    (skill_validator.py's ground truth is self-referential for research-suite,
-    see test-corpus/README.md discussion), so its own runnable self-check is
-    the only thing that would catch a future edit breaking it."""
+    """skill_validator.py never executes template files (it only scores skill
+    *triggering* against the corpus), so nothing else in the repo would catch
+    a future edit that breaks this scaffold at runtime. This asserts on the
+    parsed observable value rather than just stdout substrings: a wrong-but-
+    finite result (e.g. a sign error turning mean-square displacement
+    negative) would print successfully and exit 0, so a substring-only check
+    would miss it even though the physics is wrong."""
     julia = shutil.which("julia")
     if julia is None:
         pytest.skip("julia not installed")
@@ -598,5 +602,10 @@ def test_julia_prototype_skeleton_self_test_runs():
     )
 
     assert result.returncode == 0, result.stderr
-    assert "trajectory length" in result.stdout
-    assert "observable" in result.stdout
+
+    match = re.search(r"final value: (-?[\d.]+)", result.stdout)
+    assert match, f"could not find the observable's final value in stdout:\n{result.stdout}"
+    final_value = float(match.group(1))
+    assert final_value >= 0, (
+        f"mean-square displacement must be non-negative, got {final_value}"
+    )
