@@ -1,6 +1,6 @@
 # Quick Reference Cheatsheet
 
-**3 Suites** | **20 Agents** | **15 Registered Commands** | **51 Hub Skills** (routing to 148 sub-skills; 199 SKILL.md on disk)
+**3 Suites** | **20 Agents** | **15 Registered Commands** | **50 Hub Skills** (routing to 148 sub-skills; 199 SKILL.md on disk)
 **Version:** 4.0.0
 
 ---
