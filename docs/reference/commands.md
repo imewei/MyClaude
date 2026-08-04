@@ -59,7 +59,7 @@ No unregistered command files on disk. All 10 dev-suite commands are registered 
 
 ### Research Suite — 0 Skill-Invoked
 
-No on-disk command files. All research workflows are skill-driven (`scientific-review`, the 8-stage `research-spark` pipeline, `research-practice` hub, and the 3 registered slash commands above).
+No unregistered command files on disk. All 3 research-suite commands are registered slash commands (see above); everything else (`scientific-review`, the 8-stage `research-spark` pipeline, `research-practice` hub) is skill-driven.
 
 ---
 

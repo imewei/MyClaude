@@ -12,8 +12,10 @@ All three prioritize domain rigor, adversarial critique, and explicit handoffs o
 
 ## Quick Start / Usage Examples
 
-Each of the three tracks is skill-driven — no slash commands. Just describe the task
-and the matching skill auto-triggers.
+research-spark and research-practice are skill-driven — just describe the task and
+the matching skill auto-triggers. Paper reproduction and literature review also have
+dedicated commands (`/paper-implement`, `/replicate`, `/lit-review`) for explicit,
+direct invocation instead of relying on skill auto-trigger.
 
 ```bash
 # Peer review (scientific-review skill, one-shot)
@@ -43,12 +45,17 @@ Use `research-expert` for discrete methodology tasks (power analysis, systematic
 
 ## Commands
 
-This plugin ships **zero registered slash commands** — every workflow is
-skill-driven. The legacy `/paper-review` command was removed because
-`scientific-review` auto-triggers on "review this paper" phrasings and produces a
-strictly better deliverable (.docx with journal-specific adaptation, Six-Lens
-analysis, Confidential Comments to Editor). If a new command ever gets added, it
-will appear here.
+| Command | Purpose |
+|---------|---------|
+| `/paper-implement` | Implement a paper's core method in JAX or Julia — parse equations, scaffold the algorithm, wire up a minimal experiment, run smoke validation |
+| `/lit-review` | Structured literature review — topic scan, claim extraction, evidence synthesis, gap identification; output as summary, table, or annotated bibliography |
+| `/replicate` | End-to-end replication pipeline — fetch paper, extract claims, implement in JAX or Julia, validate outputs against reported numbers within tolerance |
+
+The legacy `/paper-review` command was removed because `scientific-review`
+auto-triggers on "review this paper" phrasings and produces a strictly better
+deliverable (.docx with journal-specific adaptation, Six-Lens analysis,
+Confidential Comments to Editor). Everything else (research-spark,
+research-practice) stays skill-driven — no command needed.
 
 ## Skills
 
@@ -152,19 +159,22 @@ State lives in `_state.yaml` at the project root; the orchestrator reads it befo
   covers the broader research lifecycle (design, reproduce, assess, write, synthesize).
   All three require the same mental discipline — adversarial critique, explicit
   falsifiability, artifact-gated handoffs.
-- **One agent, zero commands.** The `research-expert` agent handles multi-step
-  research delegations. Skills drive everything else — the old `/paper-review`
-  command was removed because `scientific-review` auto-triggers on "review this
-  paper" phrasings and produces a strictly better deliverable (.docx with
-  journal-specific adaptation, Six-Lens analysis, Confidential Comments to Editor).
+- **Two agents, three commands.** The `research-expert` agent handles multi-step
+  research delegations; `research-spark-orchestrator` drives the 8-stage pipeline.
+  Paper reproduction (`/paper-implement`, `/replicate`, `/lit-review`) is
+  command-driven for explicit invocation — everything else is skill-driven. The old
+  `/paper-review` command was removed because `scientific-review` auto-triggers on
+  "review this paper" phrasings and produces a strictly better deliverable (.docx
+  with journal-specific adaptation, Six-Lens analysis, Confidential Comments to
+  Editor).
 - **Phase-aligned sub-skills under `research-practice`.** Each methodology sub-skill
   owns one phase (design / evaluate / reproduce / write / synthesize) with explicit
   scope boundaries. See each skill's "Scope boundary" section to understand why the
   splits are drawn where they are.
-- **Sub-agent fan-out.** The research-spark orchestrator can parallelize across
-  Claude Code sub-agents at natural points: Stage 2 literature layers, Stage 6
-  validation passes, Stage 8 reviewer archetypes. The orchestrator itself is a
-  skill, not an agent.
+- **Sub-agent fan-out.** The `research-spark-orchestrator` agent can parallelize
+  across Claude Code sub-agents at natural points: Stage 2 literature layers,
+  Stage 6 validation passes, Stage 8 reviewer archetypes. Don't confuse it with
+  the `research-spark` skill, which is the stage-1 entry point that triggers it.
 - **Style enforcement.** Every emitted markdown passes
   `../_research-commons/scripts/style_lint.py`: no em dashes, no banned vocabulary
   (*innovative, state-of-the-art, transformative, novel, groundbreaking*, etc.),

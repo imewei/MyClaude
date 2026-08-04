@@ -3,12 +3,12 @@
 [![Plugins](https://img.shields.io/badge/Plugins-3-blue.svg)](https://myclaude.readthedocs.io/en/latest/plugins/)
 [![Agents](https://img.shields.io/badge/Agents-20-green.svg)](docs/reference/agents.md)
 [![Commands](https://img.shields.io/badge/Commands-15-orange.svg)](docs/reference/commands.md)
-[![Skills](https://img.shields.io/badge/Skills-51_hubs_→_148_sub-purple.svg)](docs/reference/cheatsheet.md)
+[![Skills](https://img.shields.io/badge/Skills-50_hubs_→_148_sub-purple.svg)](docs/reference/cheatsheet.md)
 [![Version](https://img.shields.io/badge/Version-4.0.0-red.svg)](https://github.com/imewei/MyClaude)
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Docs](https://img.shields.io/badge/Docs-ReadTheDocs-brightgreen.svg)](https://myclaude.readthedocs.io/en/latest/)
 
-Claude Code plugin marketplace with **3 focused suites**, **20 expert agents**, **15 registered commands**, and **51 hub skills** routing to **148 sub-skills**. Built for Claude Opus 4.7 with tiered model assignments (Opus/Sonnet/Haiku), 12 lifecycle hook events across all suites, and hub-skill architecture for zero-ambiguity skill routing.
+Claude Code plugin marketplace with **3 focused suites**, **20 expert agents**, **15 registered commands**, and **50 hub skills** routing to **148 sub-skills**. Built for Claude Opus 4.7 with tiered model assignments (Opus/Sonnet/Haiku), 12 lifecycle hook events across all suites, and hub-skill architecture for zero-ambiguity skill routing.
 
 ## The 3-Suite Hub Architecture
 

@@ -6,7 +6,7 @@ cross-cutting concerns.
 
 .. note::
 
-   Since v3.1.0, skills use a two-tier :term:`Hub Skill` architecture (51 hubs
+   Since v3.1.0, skills use a two-tier :term:`Hub Skill` architecture (50 hubs
    routing to 148 sub-skills as of v4.0.0). Cross-suite workflows invoke hub skills which
    automatically dispatch to the right sub-skill.
 
@@ -54,5 +54,5 @@ Related
 -------
 
 - :doc:`/integration-map` — Suite dependencies, MCP roles, and skill coverage
-- :doc:`/suites/dev-suite` — CI/CD and automation (10 hubs → 35 sub-skills)
+- :doc:`/suites/dev-suite` — CI/CD and automation (9 hubs → 35 sub-skills)
 - :doc:`/glossary` — Hub Skill, Sub-Skill, and Routing Decision Tree definitions
