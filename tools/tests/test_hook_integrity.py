@@ -124,3 +124,32 @@ class TestHandlerScripts:
                             assert script_path.exists(), (
                                 f"{suite}/{event_name}: Script missing: {script_name}"
                             )
+
+
+class TestUserPromptSubmitWiring:
+    """The routing-reminder hook only reaches the model if hooks.json wires it
+    correctly — a payload test that invokes the script directly (as every
+    other hook-payload test here does) can't catch a wiring regression, since
+    it never goes through hooks.json at all. Pin the two fields that matter:
+    async must be false (a context-injecting hook has to block until its
+    output is captured, unlike the fire-and-forget PostToolUse/SubagentStop
+    entries elsewhere in the same files) and matcher must be "" (unconditional
+    — this is a standing nudge, not a conditional match)."""
+
+    @pytest.mark.parametrize("suite", ["dev-suite", "science-suite"])
+    def test_async_false_and_matcher_empty(self, suite):
+        hooks_file = PLUGINS_ROOT / suite / "hooks" / "hooks.json"
+        with open(hooks_file, "r", encoding="utf-8") as f:
+            data = json.load(f)
+
+        entries = data["hooks"]["UserPromptSubmit"]
+        assert len(entries) == 1, f"{suite}: expected exactly one UserPromptSubmit entry"
+        assert entries[0]["matcher"] == "", (
+            f"{suite}: UserPromptSubmit matcher must be unconditional, got {entries[0]['matcher']!r}"
+        )
+        hooks = entries[0]["hooks"]
+        assert len(hooks) == 1
+        assert hooks[0]["async"] is False, (
+            f"{suite}: UserPromptSubmit must be synchronous (async: false) to reach the "
+            f"model before the prompt is processed, got {hooks[0]['async']!r}"
+        )

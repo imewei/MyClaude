@@ -80,11 +80,12 @@ Covers the complete SDLC:
   accessibility (WCAG), mobile testing
 - **Documentation**: Standards and best practices
 
-## Hooks (6 events)
+## Hooks (7 events)
 
 | Event | Purpose |
 |-------|---------|
 | SessionStart | Auto-detect project stack (language, framework, test runner) |
+| UserPromptSubmit | Remind agent to route through the matching hub skill before implementing |
 | PostToolUse | Auto-lint suggestions after Write/Edit (Python, JS/TS) |
 | SubagentStop | Collect results from quality-specialist |
 | TaskCompleted | Trigger validation checks and suggest git commit |
