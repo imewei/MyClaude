@@ -77,9 +77,6 @@ plugin.json → hub skill → routing decision tree → sub-skill
 2. `scientific-review` produces a journal-adapted Six-Lens referee report
 3. Output: `.docx` (with `python-docx`) or markdown fallback
 
-### Agent Teams
-See [Agent Teams Guide](../agent-teams-guide.md) for the full agent composition of each team and variant.
-
 ---
 
 ## Model Tier Quick Reference
@@ -111,8 +108,7 @@ See [Agent Teams Guide](../agent-teams-guide.md) for the full agent composition 
 - [Agent Reference](agents.md) — All 20 agents with model tiers and delegation patterns
 - [Commands Reference](commands.md) — 15 registered + 2 skill-invoked commands
 - [Integration Map](../integration-map.rst) — Suite dependencies, MCP server roles, skill coverage
-- [Agent Teams Guide](../agent-teams-guide.md) — 10 focused teams with 19 variants (codebase-aware recommender)
-- [Glossary](../glossary.rst) — Hub Skill, Sub-Skill, Agent Team, Routing Decision Tree
+- [Glossary](../glossary.rst) — Hub Skill, Sub-Skill, Routing Decision Tree
 - [GitHub Repository](https://github.com/imewei/MyClaude)
 
 *Generated from v4.0.0 validated marketplace data.*

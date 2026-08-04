@@ -82,7 +82,6 @@ Ask Claude: "@research-expert design a power analysis for this experiment"
 - **[Plugin Cheatsheet](docs/reference/cheatsheet.md)**
 - **[Complete Agents List](docs/reference/agents.md)**
 - **[Complete Commands List](docs/reference/commands.md)**
-- **[Agent Teams Guide](docs/agent-teams-guide.md)** — 10 focused team templates with 19 variants (codebase-aware recommender since v3.1.4)
 
 ## License
 

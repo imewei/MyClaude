@@ -6,15 +6,6 @@ This system uses a hub-skill architecture across 3 focused suites: 20 agents, 15
 
 .. toctree::
    :maxdepth: 2
-   :caption: Categories
-
-   categories/index
-   categories/dev
-   categories/science
-   categories/research
-
-.. toctree::
-   :maxdepth: 2
    :caption: Suites
 
    suites/dev-suite
@@ -44,7 +35,6 @@ This system uses a hub-skill architecture across 3 focused suites: 20 agents, 15
    guides/devops-workflows
    guides/infrastructure-workflows
    guides/integration-patterns
-   agent-teams-guide
 
 Indices and tables
 ==================

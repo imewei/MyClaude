@@ -86,7 +86,6 @@ See the [Integration Map](../integration-map.rst) for full delegation patterns a
 - [Commands Reference](commands.md)
 - [Quick Reference Cheatsheet](cheatsheet.md)
 - [Integration Map](../integration-map.rst) — Suite dependencies and skill coverage
-- [Agent Teams Guide](../agent-teams-guide.md) — 10 focused team configurations with 19 variants
-- [Glossary](../glossary.rst) — Key terms (Hub Skill, Sub-Skill, Agent Team)
+- [Glossary](../glossary.rst) — Key terms (Hub Skill, Sub-Skill)
 
 *Generated from v4.0.0 validated marketplace data.*

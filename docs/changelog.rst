@@ -666,7 +666,7 @@ v3.1.0 (2026-04-03)
 
 * Rewrote all reference docs for hub architecture.
 * Added :term:`Hub Skill`, :term:`Sub-Skill`, :term:`Routing Decision Tree`, and
-  :term:`Agent Team` to glossary.
+  Agent Team to glossary.
 * Updated all workflow guides with hub → sub notation.
 * Docs build with zero warnings. 60/60 tests pass.
 
@@ -746,7 +746,7 @@ v2.2.1 (2026-02-15)
 
 **Debugging Team Templates**
 
-* Added 5 debugging :term:`agent teams <Agent Team>`: debug-gui, debug-numerical,
+* Added 5 debugging agent teams: debug-gui, debug-numerical,
   debug-schema, debug-triage, and debug-full-audit.
 * Teams use a Core Trio pattern (explorer → debugger → python-pro) plus rotating specialists.
 * Consolidated from 35 to 21 team templates (40% reduction): merged 5 overlapping pairs
