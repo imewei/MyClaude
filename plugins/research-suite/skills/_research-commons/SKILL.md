@@ -26,6 +26,8 @@ Shared assets for the research-spark skill stack. Not a standalone workflow.
   - `onepage.md`: one-page summary format (used by premortem-critique)
   - `abstract.md`: shared abstract structure with length variants (used anywhere an abstract is written)
   - `project_log.md`: orchestrator's log format
+  - `hostile_self_audit.md`: solo adversarial audit (kill switch, artifact check, bottleneck route), used at the core-completion checkpoint
+  - `proposal_assembly.md`: reverse-order draft assembly into `proposal_draft.md` (used at the core-completion checkpoint)
 
 - `scripts/`: utilities invoked by multiple skills
   - `style_lint.py`: flags banned vocabulary and em dashes in emitted markdown
