@@ -60,5 +60,5 @@ coordinated migration.
 Related
 -------
 
-- :doc:`/suites/dev-suite` — Full dev-suite reference (10 hubs → 35 sub-skills)
+- :doc:`/suites/dev-suite` — Full dev-suite reference (9 hubs → 35 sub-skills)
 - :doc:`/glossary` — Hub Skill, Sub-Skill, and Routing Decision Tree definitions

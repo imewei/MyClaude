@@ -8,7 +8,6 @@ Prerequisites: Python 3.13+, [`uv`](https://docs.astral.sh/uv/).
 uv sync            # installs dev + docs + science dependency groups
 ```
 
-<!-- AUTO-GENERATED: scripts table (source: Makefile, pyproject.toml) -->
 ## Available Commands
 
 | Command | Description |
@@ -17,7 +16,7 @@ uv sync            # installs dev + docs + science dependency groups
 | `uv run pytest` | Run test suite (tests live in `tools/tests/`) |
 | `uv run pytest tools/tests/test_x.py -v` | Run a single test file |
 | `uv run ruff check .` | Lint (excludes `test-corpus/`) |
-| `uv run mypy tools/` | Type-check (excludes `plugins/*/hooks/` and `plugins/*/examples/`) |
+| `uv run mypy tools/` | Type-check (excludes `plugins/*/hooks/`, `plugins/*/examples/`, `test-corpus/`) |
 | `make format` | Format with black + `ruff --fix` |
 | `make validate` | Validate plugin metadata, command lint, doc cross-links |
 | `make verify-fast` | Quick gate: lint + validate |
@@ -35,7 +34,6 @@ Run validation against one plugin directly:
 ```bash
 PYTHONPATH=. python3 tools/validation/metadata_validator.py plugins/dev-suite/
 ```
-<!-- /AUTO-GENERATED -->
 
 ## Testing
 
@@ -53,12 +51,12 @@ PYTHONPATH=. python3 tools/validation/metadata_validator.py plugins/dev-suite/
 
 - Each suite under `plugins/<suite>/` follows the layout documented in the root `CLAUDE.md`.
 - `plugin.json` registers only top-level hub skills — adding a sub-skill does not require a manifest edit.
-- Plugin version must stay in sync across `plugin.json`, `pyproject.toml`, and READMEs; `make validate` catches drift.
+- Plugin version must stay in sync across `plugin.json`, `pyproject.toml`, and READMEs. No tooling checks this across files — `make validate` only checks semver format within each `plugin.json` independently — so verify by hand.
 - Do not add `.. contents::` to RST docs — the Furo Sphinx theme auto-generates the sidebar TOC.
 
 ## PR Checklist
 
 - [ ] `make verify` passes locally
-- [ ] Plugin version bumped everywhere required if you touched a plugin (`make validate` confirms)
+- [ ] Plugin version bumped everywhere required if you touched a plugin (checked by hand — no tooling verifies this)
 - [ ] New sub-skills are *not* added to `plugin.json` (hub-skill routing only)
 - [ ] `CHANGELOG.md` updated for user-visible changes

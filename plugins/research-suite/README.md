@@ -13,8 +13,9 @@ All three prioritize domain rigor, adversarial critique, and explicit handoffs o
 ## Quick Start / Usage Examples
 
 research-spark and research-practice are skill-driven — just describe the task and
-the matching skill auto-triggers. Paper reproduction has dedicated commands
-(`/paper-implement`, `/replicate`, `/lit-review`) for explicit invocation.
+the matching skill auto-triggers. Paper reproduction and literature review also have
+dedicated commands (`/paper-implement`, `/replicate`, `/lit-review`) for explicit,
+direct invocation instead of relying on skill auto-trigger.
 
 ```bash
 # Peer review (scientific-review skill, one-shot)
@@ -170,10 +171,10 @@ State lives in `_state.yaml` at the project root; the orchestrator reads it befo
   owns one phase (design / evaluate / reproduce / write / synthesize) with explicit
   scope boundaries. See each skill's "Scope boundary" section to understand why the
   splits are drawn where they are.
-- **Sub-agent fan-out.** The research-spark orchestrator can parallelize across
-  Claude Code sub-agents at natural points: Stage 2 literature layers, Stage 6
-  validation passes, Stage 8 reviewer archetypes. The orchestrator itself is a
-  skill, not an agent.
+- **Sub-agent fan-out.** The `research-spark-orchestrator` agent can parallelize
+  across Claude Code sub-agents at natural points: Stage 2 literature layers,
+  Stage 6 validation passes, Stage 8 reviewer archetypes. Don't confuse it with
+  the `research-spark` skill, which is the stage-1 entry point that triggers it.
 - **Style enforcement.** Every emitted markdown passes
   `../_research-commons/scripts/style_lint.py`: no em dashes, no banned vocabulary
   (*innovative, state-of-the-art, transformative, novel, groundbreaking*, etc.),

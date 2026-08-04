@@ -4,31 +4,29 @@ This repo ships a Claude Code plugin marketplace, not a deployed service — the
 
 ## Release Procedure
 
-1. Bump the version in every location `make validate` checks for consistency:
+1. Bump the version everywhere it's tracked — no tooling checks cross-file consistency, so do this by hand:
    - `pyproject.toml` → `[project].version`
    - `Makefile` → header comment (`# Version: X.Y.Z`) and `info` target
-   - `plugins/*/.claude-plugin/plugin.json` → `version` (only plugins whose contents changed, per the versioning convention in `CHANGELOG.md`)
+   - `plugins/*/.claude-plugin/plugin.json` → `version` (only plugins whose contents changed)
    - `.claude-plugin/marketplace.json` (root manifest)
 2. Add a new section to `CHANGELOG.md` describing user-visible changes (see prior entries for format/tone).
 3. Run the full gate: `make verify` (lint + validate + tests). Fix anything red before proceeding.
 4. Run `make audit` if the release touches dependencies, hooks, or anything security-sensitive.
 5. Commit, tag, and push per normal git workflow (not automated by any script in `tools/`).
 
-<!-- AUTO-GENERATED: health/verification commands (source: Makefile) -->
 ## "Health Checks" (pre-release verification)
 
 | Command | What it checks |
 |---------|-----------------|
-| `make validate` | Plugin metadata schema, version consistency across `plugin.json`/`pyproject.toml`, command file frontmatter, doc cross-links |
+| `make validate` | Per-plugin `plugin.json` schema, required fields, semver format (each file checked independently — no cross-file comparison), command file frontmatter, doc cross-links |
 | `make verify-fast` | Lint + validate only (quick gate) |
 | `make verify` | Lint + validate + full test suite (run before every push) |
 | `make audit` | `pip-audit` (dependency CVEs) + `bandit` (SAST) + `vulture` (dead code) + `gitleaks` (secret scan) |
-| `make plugin-count` | Plugin/agent/skill counts — sanity-check against the numbers claimed in `README.md`/`CLAUDE.md` |
-<!-- /AUTO-GENERATED -->
+| `make plugin-count` | Total plugin count, `plugin.json`/README presence, category breakdown — does not count agents, commands, or hub skills |
 
 ## Common Issues and Fixes
 
-- **`make validate` fails on version mismatch** — a `plugin.json` or `pyproject.toml` version wasn't bumped; grep all four locations listed under Release Procedure above.
+- **Version drift across files** — no tooling catches this; `make validate` only checks semver *format* within each `plugin.json` independently. Grep all four locations listed under Release Procedure above before every release.
 - **`pytest` finds no tests / fails to collect** — tests live under `tools/tests/`, not the repo root; run `uv run pytest` (respects `testpaths` in `pyproject.toml`), not a bare `pytest` from an unexpected `cwd`.
 - **mypy errors inside `plugins/*/hooks/` or `plugins/*/examples/`** — these paths are intentionally excluded (`pyproject.toml` `[tool.mypy].exclude`); if mypy is still flagging them, check the invocation isn't overriding the config.
 - **ruff flags files under `test-corpus/`** — that directory is fixture content for the skill validator and is excluded in `[tool.ruff].exclude`; don't "fix" imports there.
