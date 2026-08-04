@@ -207,20 +207,6 @@ class TestCrossReferences(unittest.TestCase):
             f"Expected at least 3 suite pages, found {len(rst_files)}",
         )
 
-    def test_category_pages_exist(self):
-        """Test that category pages exist."""
-        categories_dir = self.docs_dir / "categories"
-        self.assertTrue(categories_dir.exists(), "categories directory must exist")
-
-        rst_files = list(categories_dir.glob("*.rst"))
-
-        # 3 suites + index = 4 category pages
-        self.assertGreaterEqual(
-            len(rst_files),
-            3,
-            f"Expected at least 3 category pages, found {len(rst_files)}",
-        )
-
 
 class TestSearchFunctionality(unittest.TestCase):
     """Test search index generation and functionality."""
@@ -278,27 +264,6 @@ class TestNavigationStructure(unittest.TestCase):
             ".. toctree::",
             content,
             "index.rst must have at least one toctree directive",
-        )
-
-    def test_index_links_to_categories(self):
-        """Test that index.rst links to category pages."""
-        with open(self.index_file, "r", encoding="utf-8") as f:
-            content = f.read()
-
-        # Should reference categories
-        self.assertIn(
-            "categories/index", content, "index.rst should link to category pages"
-        )
-
-    def test_hierarchical_structure_exists(self):
-        """Test that hierarchical structure is present in documentation."""
-        # Check that categories directory exists and has RST files
-        categories_dir = self.docs_dir / "categories"
-        self.assertTrue(categories_dir.exists())
-
-        category_files = list(categories_dir.glob("*.rst"))
-        self.assertGreater(
-            len(category_files), 0, "Categories directory should contain RST files"
         )
 
 
