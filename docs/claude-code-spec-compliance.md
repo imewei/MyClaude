@@ -16,7 +16,7 @@ orphan: true
 | # | Item | Status | Notes |
 |---|------|--------|-------|
 | 1 | Hook events — deprecated events absent from hooks.json | ✅ Compliant | PreSubagentUse, ExecutionError, PermissionPrompt, ContextOverflow, CostThreshold only appear in README docs, never in hooks.json |
-| 2 | Hook events — all active events are valid | ✅ Compliant | All 12 events in use (SessionStart/End, PreToolUse, PostToolUse, PreCompact, PostCompact, SubagentStart/Stop, PermissionDenied, TaskCreated, TaskCompleted, StopFailure) are confirmed valid in schema |
+| 2 | Hook events — all active events are valid | ✅ Compliant | All 13 events in use (SessionStart/End, UserPromptSubmit, PreToolUse, PostToolUse, PreCompact, PostCompact, SubagentStart/Stop, PermissionDenied, TaskCreated, TaskCompleted, StopFailure) are confirmed valid in schema |
 | 3 | plugin.json required fields present | ✅ Compliant | name, version, description, author, homepage, repository, license, category, keywords present in all 3 manifests |
 | 4 | Version consistency across all plugin.json | ✅ Compliant | All at 4.0.0 |
 | 5 | Agent frontmatter — only valid fields used | ✅ Compliant | All fields confirmed valid by Codex audit; no unknown fields |
@@ -53,7 +53,7 @@ Currently used events marked ✅. Unused but available marked ○.
 | `Stop` | ○ Available | Fires when Claude stops (including /clear, /compact) |
 | `PostToolUseFailure` | ○ Available | Fires when a tool call fails — useful for logging/recovery |
 | `PostToolBatch` | ○ Available | Fires after a batch of parallel tool calls completes |
-| `UserPromptSubmit` | ○ Available | Fires when user submits a prompt — can inject context |
+| `UserPromptSubmit` | ✅ Used | dev-suite and science-suite inject a hub-skill routing reminder on every prompt |
 | `UserPromptExpansion` | ○ Available | |
 | `PermissionRequest` | ○ Available | Fires before permission prompt — can auto-allow/deny |
 | `Notification` | ○ Available | |
@@ -91,5 +91,6 @@ Currently used events marked ✅. Unused but available marked ○.
 
 1. **Add `$schema` to `.claude/settings.json`** — enables IDE autocomplete for the settings schema
 2. **`PostToolUseFailure` hook** — add to science-suite for JAX/Julia tool failures (currently unhandled)
+   - ~~`UserPromptSubmit`~~ — done: dev-suite and science-suite both now use it for hub-skill routing reminders
 3. **`WorktreeCreate` hook** — auto-set up Julia environments in worktrees (useful for science-suite isolation)
 4. **`skillOverrides`** — evaluate hiding general-purpose sub-skills that have been superseded by external plugins

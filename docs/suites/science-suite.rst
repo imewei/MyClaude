@@ -304,9 +304,11 @@ NumPyro, Turing.jl, variational inference, MCMC diagnostics, consensus / non-rev
 Hooks
 -----
 
-4 hook events with Python script implementations:
+6 hook events with Python script implementations:
 
 - ``SessionStart`` — Detect JAX devices, GPU availability, Julia env
+- ``UserPromptSubmit`` — Remind agent to route through the matching hub skill before implementing
+- ``PreToolUse`` — Warn before commands that could corrupt simulations
 - ``PostToolUse`` — NaN/Inf check on compute job output (numerical integrity)
 - ``SessionEnd`` — Persist structured progress summary for next session
 - ``SubagentStop`` — Collect results from parallel science agents

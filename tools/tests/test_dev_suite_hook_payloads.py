@@ -23,6 +23,7 @@ HOOKS_DIR = Path(__file__).parent.parent.parent / "plugins" / "dev-suite" / "hoo
 
 ALL_HOOKS = [
     "session_start.py",
+    "user_prompt_submit.py",
     "post_tool_use.py",
     "subagent_stop.py",
     "task_completed.py",
@@ -122,6 +123,49 @@ def test_hook_survives_malformed_stdin(script, tmp_path):
     assert result.returncode == 0, f"{script} crashed on malformed stdin: {result.stderr}"
     output = json.loads(result.stdout)
     assert output.get("status") == "success", output
+
+
+def test_user_prompt_submit_emits_routing_reminder():
+    """An external skill-comply plugin run (not checked into this repo) found
+    dev-suite hub skills fail to classify-then-route to a specialized skill
+    before acting, under neutral/competing prompts — this hook re-injects a
+    routing reminder every turn so it can't be silently skipped."""
+    output = run_hook("user_prompt_submit.py", {"hook_event_name": "UserPromptSubmit"})
+    assert output["status"] == "success"
+    assert output["hookSpecificOutput"]["hookEventName"] == "UserPromptSubmit", (
+        f"wrong hookEventName, a typo here would silently disable delivery: {output}"
+    )
+    context = hook_context(output)
+    assert "hub skill" in context
+    assert "dev-hub" in context
+
+
+class TestUserPromptSubmitAlwaysFires:
+    """Unlike PostToolUse hooks that key off tool_input, this one must emit
+    the same reminder regardless of what the prompt says — it's a standing
+    nudge, not a conditional match."""
+
+    def test_fires_on_arbitrary_prompt_text(self):
+        output = run_hook(
+            "user_prompt_submit.py",
+            {"hook_event_name": "UserPromptSubmit", "prompt": "fix this typo in the readme"},
+        )
+        assert output["status"] == "success"
+        assert "hub skill" in hook_context(output)
+
+    def test_output_is_identical_regardless_of_prompt_content(self):
+        """The reminder is a static, input-independent nudge — assert exact
+        equality across unrelated prompts, not just a shared substring, so
+        prompt text leaking into the context or partial truncation would fail."""
+        first = run_hook(
+            "user_prompt_submit.py",
+            {"hook_event_name": "UserPromptSubmit", "prompt": "add a caching layer to the API"},
+        )
+        second = run_hook(
+            "user_prompt_submit.py",
+            {"hook_event_name": "UserPromptSubmit", "prompt": "what's 2+2"},
+        )
+        assert hook_context(first) == hook_context(second)
 
 
 def test_session_end_resolves_real_reason_not_matcher_input_only(tmp_path):

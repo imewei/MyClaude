@@ -173,9 +173,10 @@ Git, documentation, Airflow pipelines, and debugging. Also routes to the
 Hooks
 -----
 
-6 hook events:
+7 hook events:
 
 - ``SessionStart`` — Auto-detect project stack (language, framework, test runner)
+- ``UserPromptSubmit`` — Remind agent to route through the matching hub skill before implementing
 - ``PostToolUse`` — Auto-lint after Write/Edit (ruff for Python, eslint for JS/TS)
 - ``SubagentStop`` — Collect subagent results for orchestrated workflows
 - ``TaskCompleted`` — Trigger validation checks on task completion

@@ -42,6 +42,80 @@ def hook_context(out: dict) -> str:
     return out.get("hookSpecificOutput", {}).get("additionalContext", "")
 
 
+class TestUserPromptSubmit:
+    """An external skill-comply plugin run (not checked into this repo) found
+    science-suite hub skills fail to classify-then-route to a specialized
+    skill before acting, under neutral/competing prompts. (classify_task/
+    route_to_specialized_skill/consult_routing_tree were skill-comply's own
+    step labels for that behavior, not identifiers defined in this codebase.)
+    This hook re-injects a routing reminder every turn, regardless of what
+    the prompt says, so it can't be silently skipped mid-session."""
+
+    def test_emits_routing_reminder(self):
+        out = run_hook(
+            "user_prompt_submit.py",
+            {"hook_event_name": "UserPromptSubmit", "prompt": "train a small CNN on MNIST"},
+        )
+        assert out["status"] == "success"
+        assert out["hookSpecificOutput"]["hookEventName"] == "UserPromptSubmit", (
+            f"wrong hookEventName, a typo here would silently disable delivery: {out}"
+        )
+        context = hook_context(out)
+        assert "hub skill" in context
+        assert "science-hub" in context
+
+    def test_fires_regardless_of_prompt_content(self):
+        out = run_hook(
+            "user_prompt_submit.py",
+            {"hook_event_name": "UserPromptSubmit", "prompt": "what time is it"},
+        )
+        assert out["status"] == "success"
+        assert "hub skill" in hook_context(out)
+
+    def test_output_is_identical_regardless_of_prompt_content(self):
+        """The reminder is a static, input-independent nudge — assert exact
+        equality across unrelated prompts, not just a shared substring, so
+        prompt text leaking into the context or partial truncation would fail."""
+        first = run_hook(
+            "user_prompt_submit.py",
+            {"hook_event_name": "UserPromptSubmit", "prompt": "optimize this MCMC sampler"},
+        )
+        second = run_hook(
+            "user_prompt_submit.py",
+            {"hook_event_name": "UserPromptSubmit", "prompt": "what time is it"},
+        )
+        assert hook_context(first) == hook_context(second)
+
+    def test_survives_absent_stdin(self, tmp_path):
+        """No stdin must not hang or crash — the timeout below is the assertion."""
+        result = subprocess.run(
+            ["python3", str(HOOKS_DIR / "user_prompt_submit.py")],
+            stdin=subprocess.DEVNULL,
+            capture_output=True,
+            text=True,
+            timeout=15,
+            cwd=str(tmp_path),
+            check=False,
+        )
+        assert result.returncode == 0, f"crashed on absent stdin: {result.stderr}"
+        assert json.loads(result.stdout)["status"] == "success"
+
+    def test_survives_malformed_stdin(self, tmp_path):
+        """Malformed JSON on stdin must degrade to defaults, not crash — this
+        hook never reads its payload, but nothing currently pins that down."""
+        result = subprocess.run(
+            ["python3", str(HOOKS_DIR / "user_prompt_submit.py")],
+            input="{not valid json",
+            capture_output=True,
+            text=True,
+            timeout=15,
+            cwd=str(tmp_path),
+            check=False,
+        )
+        assert result.returncode == 0, f"crashed on malformed stdin: {result.stderr}"
+        assert json.loads(result.stdout)["status"] == "success"
+
+
 class TestPostToolUse:
     """PostToolUse must read tool_response and only flag numeric NaN/Inf."""
 
