@@ -850,9 +850,9 @@
     "semantic_hash": "80c2db5fc949e9826a7db31616975fa2"
   },
   "plugins/dev-suite/README.md": {
-    "mtime": 1785605375.5317383,
-    "ast_hash": "d1243acb455e0709510fe2d77d2055f2",
-    "semantic_hash": "d1243acb455e0709510fe2d77d2055f2"
+    "mtime": 1785827232.8590806,
+    "ast_hash": "818b2a0f17af866e9096b314b5ab0a5b",
+    "semantic_hash": "818b2a0f17af866e9096b314b5ab0a5b"
   },
   "plugins/dev-suite/skills/distributed-tracing/SKILL.md": {
     "mtime": 1777045632.8823717,
@@ -1185,9 +1185,9 @@
     "semantic_hash": "ed53781932c39dc219c35250ef006ea3"
   },
   "plugins/science-suite/README.md": {
-    "mtime": 1785605375.5337381,
-    "ast_hash": "44e67d26c83d88f457337fdee7ccf4b6",
-    "semantic_hash": "44e67d26c83d88f457337fdee7ccf4b6"
+    "mtime": 1785818026.258511,
+    "ast_hash": "85c24b01c0a15dfc329cce66d65133c5",
+    "semantic_hash": "85c24b01c0a15dfc329cce66d65133c5"
   },
   "plugins/science-suite/skills/julia-ml-pipelines/SKILL.md": {
     "mtime": 1777045632.8953717,
@@ -2165,9 +2165,9 @@
     "semantic_hash": "95383c944880ce662b612e0738ece23e"
   },
   "plugins/research-suite/README.md": {
-    "mtime": 1777045632.8853717,
-    "ast_hash": "3071cfe80f9bd6870eceba1550701793",
-    "semantic_hash": "3071cfe80f9bd6870eceba1550701793"
+    "mtime": 1785827232.8590806,
+    "ast_hash": "9967b6db3e6780416b116644663a816a",
+    "semantic_hash": "9967b6db3e6780416b116644663a816a"
   },
   "plugins/research-suite/skills/_research-commons/style/citation_style.md": {
     "mtime": 1777045632.8853717,
@@ -2195,9 +2195,9 @@
     "semantic_hash": "1e5df6432fbeca75f557853bc9ae729c"
   },
   "plugins/dev-suite/hooks/hooks.json": {
-    "mtime": 1785612359.483863,
-    "ast_hash": "01aa03a4351e0d074cb5c6d969a17b7e",
-    "semantic_hash": "01aa03a4351e0d074cb5c6d969a17b7e"
+    "mtime": 1785818026.2575111,
+    "ast_hash": "176e48776a0bf26b5a712905e9614d4b",
+    "semantic_hash": "176e48776a0bf26b5a712905e9614d4b"
   },
   "plugins/dev-suite/settings.json": {
     "mtime": 1778104147.7531784,
@@ -2245,9 +2245,9 @@
     "semantic_hash": "f54fea2fb3f3d67c8a862c070984cdf1"
   },
   "plugins/science-suite/hooks/hooks.json": {
-    "mtime": 1785600355.66848,
-    "ast_hash": "1cc825088bd5a4be98d326f2e2a1b57e",
-    "semantic_hash": "1cc825088bd5a4be98d326f2e2a1b57e"
+    "mtime": 1785818026.258511,
+    "ast_hash": "aceb40b740bca63d0bc800c927a2190c",
+    "semantic_hash": "aceb40b740bca63d0bc800c927a2190c"
   },
   "plugins/science-suite/settings.json": {
     "mtime": 1778104147.7561781,
@@ -2338,5 +2338,15 @@
     "mtime": 1785605375.5367382,
     "ast_hash": "efe71de696080bd1f9100a4f4bcf73a4",
     "semantic_hash": "efe71de696080bd1f9100a4f4bcf73a4"
+  },
+  "plugins/dev-suite/hooks/user_prompt_submit.py": {
+    "mtime": 1785818026.2575111,
+    "ast_hash": "ae7d9a1678d79329e181bd229effc6b4",
+    "semantic_hash": "ae7d9a1678d79329e181bd229effc6b4"
+  },
+  "plugins/science-suite/hooks/user_prompt_submit.py": {
+    "mtime": 1785818026.258511,
+    "ast_hash": "d6bc5b29cfdd1a539b9dde04ee125d99",
+    "semantic_hash": "d6bc5b29cfdd1a539b9dde04ee125d99"
   }
 }
