@@ -19,7 +19,7 @@ REMINDER = (
     "dev-suite routes domain-specific work through hub skills before "
     "implementation (architecture-and-infra, backend-patterns, "
     "testing-and-quality, ci-cd-pipelines, observability-and-sre, "
-    "data-and-security, dev-workflows, ai-pair/three-brain). If this request "
+    "data-and-security, dev-workflows, three-brain). If this request "
     "matches one of those domains, invoke the matching hub skill (or dev-hub "
     "if ambiguous) before jumping to Bash/Write/Edit."
 )
