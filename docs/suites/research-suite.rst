@@ -49,7 +49,7 @@ Peer review of a single manuscript (PDF / DOCX / pasted text) with six competenc
 Skill: _research-commons
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-Shared assets for the research-spark skill stack — not a standalone workflow. Other skills reference files here for writing style (``style/writing_constraints.md`` with banned-vocabulary list), code architecture rules (``code_architecture/jax_first_rules.md``), shared templates (``templates/heilmeier.md``, ``templates/reviewer2_persona.md``, ``templates/abstract.md``, ``templates/onepage.md``, ``templates/project_log.md``), and utility scripts (``scripts/style_lint.py``, ``scripts/formalism_code_reconcile.py``, ``scripts/concept_extractor.py``, ``scripts/latex_sanity.py``, ``scripts/artifact_diff.py``).
+Shared assets for the research-spark skill stack — not a standalone workflow. Other skills reference files here for writing style (``style/writing_constraints.md`` with banned-vocabulary list), code architecture rules (``code_architecture/jax_first_rules.md``, plus ``code_architecture/julia_first_rules.md`` when Stage 6 picks Julia), shared templates (``templates/heilmeier.md``, ``templates/reviewer2_persona.md``, ``templates/abstract.md``, ``templates/onepage.md``, ``templates/project_log.md``, ``templates/hostile_self_audit.md``, ``templates/proposal_assembly.md``), and utility scripts (``scripts/style_lint.py``, ``scripts/formalism_code_reconcile.py``, ``scripts/concept_extractor.py``, ``scripts/latex_sanity.py``, ``scripts/artifact_diff.py``).
 
 research-spark Pipeline (5-stage core + optional extension)
 -------------------------------------------------------------
@@ -65,7 +65,7 @@ Orchestrator for the refinement pipeline. Detects current stage from ``_state.ya
 - ``landscape-scanner`` — **Stage 2.** Three-layer literature scan (foundational / recent / adjacent), steelmanning each paper, gap matrix, Reviewer 2 adversarial pass. Writes ``02_landscape.md``.
 - ``falsifiable-claim`` — **Stage 3.** Claim + Heilmeier catechism + kill criterion + Reviewer 2 challenge. Writes ``03_claim.md``.
 - ``theory-scaffold`` — **Stages 4-5** (merged). Stepwise derivation protocol → LaTeX formalism. Blocks multi-step symbolic leaps, identifies governing dimensionless groups, checks known limits. Writes ``04_theory.md`` + ``05_formalism.tex``.
-- ``numerical-prototype`` — **Stage 6 (optional).** JAX-based solver + three validation passes (analytic-limit recovery, synthetic benchmark, convergence study) → concrete predicted observable. Writes ``06_prototype.md`` + ``code/``.
+- ``numerical-prototype`` — **Stage 6 (optional).** JAX or Julia solver (chosen per physical system) + three validation passes (analytic-limit recovery, synthetic benchmark, convergence study) → concrete predicted observable. Writes ``06_prototype.md`` + ``code/``.
 - ``experiment-designer`` — **Stage 7 (optional).** Instrument capability map (3x margin rule per dimension), DoE matrix, formal power analysis, pre-registered success metrics, risk register. Writes ``07_plan.md``.
 - ``premortem-critique`` — **Stage 8 (optional).** Failure narrative, root-cause clustering, cheapest early-warning signals fed back into Stage 7, simulated-reviewer critique across archetypes. Writes ``08_premortem.md``.
 
@@ -157,7 +157,7 @@ Requirements
    ``python-docx`` for .docx generation (markdown fallback), ``pandoc`` for DOCX ingestion, ``pdftotext`` / ``pypdf`` / ``pymupdf`` for PDF.
 
 **research-spark stack**
-   Python 3.12+, ``uv`` for dependency resolution. Stage-specific: ``sympy`` (theory-scaffold), ``scipy`` + ``pyyaml`` (experiment-designer), ``jax`` + ``jaxlib`` (numerical-prototype), ``pdflatex`` (latex_compile_check.sh). All scripts install locally via ``uv add``, never globally.
+   Python 3.12+, ``uv`` for dependency resolution. Stage-specific: ``sympy`` (theory-scaffold), ``scipy`` + ``pyyaml`` (experiment-designer), ``jax`` + ``jaxlib`` or a Julia environment (``@sciml``/``@bayes``/``@pinn``, ``Project.toml`` + ``Manifest.toml``) for numerical-prototype, ``pdflatex`` (latex_compile_check.sh). All scripts install locally via ``uv add``, never globally.
 
 Project directory layout (research-spark)
 ------------------------------------------

@@ -14,7 +14,7 @@ Activate with `julia --project=@sciml` (or `@bayes` / `@pinn` / `@gnn`) before w
 ## Core rules
 
 1. **Type stability.** Every hot-path function must be type-stable: no `Union` return types, no abstract fields in structs used inside a loop, no `Any`. Check with `@code_warntype` before declaring the prototype done.
-2. **Allocation-free hot loops.** The inner time-stepping loop should not allocate. Preallocate buffers outside the loop and mutate in place: `step!(state, params)` mutates `state`, the Julia analog of JAX's pure `step(state, ...) -> new_state`.
+2. **Allocation-free hot loops.** The physics kernel (`step!`) should not allocate: preallocate buffers outside the loop and mutate in place, the Julia analog of JAX's pure `step(state, ...) -> new_state`. This applies to the kernel itself, not the outer trajectory-capture loop around it (`integrate!` allocating one `State` snapshot per recorded step is expected and fine; only the per-step physics update is held to the zero-allocation bar).
 3. **Multiple dispatch over conditionals.** Prefer separate methods on concrete types over `if`/`elseif` branching on a type flag.
 4. **Explicit RNG discipline.** Every stochastic function takes an `AbstractRNG` as an explicit argument, never a hidden global. Mirrors JAX's PRNGKey discipline.
 5. **DifferentialEquations.jl for anything stiff.** If the governing equation is a stiff ODE, DAE, or PDE (likely the reason Julia was chosen), use `OrdinaryDiffEq.jl`'s implicit solvers (`Rodas5`, `TRBDF2`, and similar) rather than hand-rolling an explicit integrator.
@@ -46,16 +46,23 @@ Same four mandatory tests as `testing_conventions.md` (invariant, limit recovery
 ```julia
 using Test, Random
 
-@testset "mass conservation" begin
-    state = initial_state(100, MersenneTwister(0))
-    evolved = integrate(state, default_params(), 100)
-    @test sum(evolved.mass) ≈ sum(state.mass) rtol=1e-10
+@testset "time advances by n_steps * dt" begin
+    rng = MersenneTwister(0)
+    params = Params(dt=1e-3)
+    state = State(100, 3, rng)
+    trajectory = integrate!(state, params, 1000, rng)
+    @test trajectory[end].t ≈ 1000 * params.dt rtol=1e-10
 end
 
 @testset "recovers free diffusion (limit)" begin
-    params = merge(default_params(), (interaction_strength=0.0,))
-    result = run(params)
-    @test result ≈ free_diffusion_reference(params) rtol=1e-3
+    rng = MersenneTwister(0)
+    params = Params(interaction_strength=0.0, diffusion=1.0, dt=1e-3)
+    state = State(500, 3, rng)
+    trajectory = integrate!(state, params, 2000, rng)
+    obs = extract_observable(trajectory, params)
+    dims = size(state.positions, 1)
+    expected_msd = dims * 2 * params.diffusion * obs.t[end]
+    @test obs.values[end] ≈ expected_msd rtol=0.3  # loose: illustrative tolerance, tune per problem
 end
 ```
 
@@ -63,7 +70,7 @@ Run with `] test` from the activated environment.
 
 ## Bridging to the Python validation harness
 
-`scripts/convergence_study.py` and `scripts/limit_recovery_check.py` are language-agnostic: they call a Python callable and compare array-likes. Bridge Julia into them with a thin `juliacall` shim instead of reimplementing the scripts:
+`../../numerical-prototype/scripts/convergence_study.py` and `../../numerical-prototype/scripts/limit_recovery_check.py` are language-agnostic: they call a Python callable and compare array-likes. Bridge Julia into them with a thin `juliacall` shim instead of reimplementing the scripts:
 
 ```python
 # bridge.py - imported by convergence_study.py / limit_recovery_check.py
@@ -78,7 +85,7 @@ No changes to the validation scripts are needed. `observable_extractor.py`'s arr
 
 ## Reconciling code against the formalism
 
-`../_research-commons/scripts/formalism_code_reconcile.py` parses Python via `ast` and does not read Julia. Reconcile a Julia prototype manually: read the labeled equations in `05_formalism.tex`, check each symbol appears in the Julia source (function arguments, struct fields, or named constants), and record any mismatches in `06_prototype.md`'s reconciliation section.
+`../scripts/formalism_code_reconcile.py` parses Python via `ast` and does not read Julia. Reconcile a Julia prototype manually: read the labeled equations in `05_formalism.tex`, check each symbol appears in the Julia source (function arguments, struct fields, or named constants), and record any mismatches in `06_prototype.md`'s reconciliation section.
 
 ## Why these rules
 

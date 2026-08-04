@@ -7,7 +7,7 @@ once the claim is fixed. Budget minutes, not hours.
 
 ## Fermi table
 
-Three to four back-of-the-envelope estimates, whichever the question type
+Two to four back-of-the-envelope estimates, whichever the question type
 calls for:
 
 | Quantity | Estimate | Method |

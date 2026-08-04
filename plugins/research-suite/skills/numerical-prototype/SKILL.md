@@ -54,7 +54,7 @@ Load only the set matching the choice, not both. Code that ignores these convent
 - **Forward operator.** `step(state, key, params) -> new_state`. Pure, jit-able, no Python loops. `jax.vmap` for batching, `jax.lax.scan` for time integration.
 - **Observable extractor.** `extract_observable(trajectory, params) -> Observable` in the format Stage 7 expects (see `templates/predicted_observable.md`).
 
-**Julia:** `templates/prototype_skeleton.jl`. Same shape: a `Params` struct, a `State` struct, a type-stable `step!` that mutates state in place, an `integrate` loop (swap in `OrdinaryDiffEq.jl`'s `ODEProblem`/`SDEProblem` if the equation is stiff), and an `extract_observable` returning the same schema `templates/predicted_observable.md` expects.
+**Julia:** `templates/prototype_skeleton.jl`. Same shape: a `Params` struct, a `State` struct, a type-stable `step!` that mutates state in place, an `integrate!` loop (swap in `OrdinaryDiffEq.jl`'s `ODEProblem`/`SDEProblem` if the equation is stiff), and an `extract_observable` returning the identity/values subset of the schema `templates/predicted_observable.md` expects (combine with uncertainty and units via `observable_extractor.py` before the write-up).
 
 Keep v1 minimal either way. Adaptive timestepping, multi-device parallelism, exotic boundary conditions: all deferred. The goal is to run the theory and produce an observable.
 

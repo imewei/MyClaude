@@ -2,7 +2,11 @@
 prototype_skeleton.jl
 
 Starting scaffold for Stage 6 numerical prototypes implemented in Julia. Copy
-into src/<PackageName>.jl and fill in the physics for your specific formalism.
+into src/<PackageName>.jl, rename `module PrototypeSkeleton` to match the
+package name, and fill in the physics for your specific formalism. The
+`_self_test` block below the module is for running this file standalone
+(`julia prototype_skeleton.jl`) during development; once copied into a real
+package, move it into test/runtests.jl per julia_first_rules.md's layout.
 
 Conventions (see _research-commons/code_architecture/julia_first_rules.md):
 - Params and State are concrete, type-stable structs
@@ -14,7 +18,7 @@ module PrototypeSkeleton
 
 using Random
 
-export Params, State, step!, integrate, extract_observable
+export Params, State, step!, integrate!, extract_observable
 
 # --- Dtype policy -------------------------------------------------------
 # Pick one and document the reason. Mixed precision requires an explicit
@@ -40,6 +44,12 @@ mutable struct State
     positions::Matrix{T}   # (D, N): one particle per column
     velocities::Matrix{T}
     t::T
+
+    function State(positions::Matrix{T}, velocities::Matrix{T}, t::T)
+        size(positions) == size(velocities) || throw(DimensionMismatch(
+            "positions $(size(positions)) and velocities $(size(velocities)) must match"))
+        new(positions, velocities, t)
+    end
 end
 
 function State(n_particles::Int, dim::Int, rng::AbstractRNG)
@@ -71,13 +81,14 @@ end
 
 # --- Time integration -----------------------------------------------------
 """
-    integrate(state, params, n_steps, rng) -> trajectory
+    integrate!(state, params, n_steps, rng) -> trajectory
 
-Roll out `n_steps`, returning the stacked trajectory (a State per step). For
-stiff governing equations, replace this loop with `OrdinaryDiffEq.jl`'s
+Roll out `n_steps`, mutating `state` to its final value (the `!` suffix marks
+this) and returning the stacked trajectory (a State per step). For stiff
+governing equations, replace this loop with `OrdinaryDiffEq.jl`'s
 `solve(ODEProblem(...))` instead.
 """
-function integrate(state::State, params::Params, n_steps::Int, rng::AbstractRNG)
+function integrate!(state::State, params::Params, n_steps::Int, rng::AbstractRNG)
     trajectory = Vector{State}(undef, n_steps)
     for k in 1:n_steps
         step!(state, params, rng)
@@ -92,7 +103,9 @@ end
 
 Convert the trajectory into the predicted observable that Stage 7 will design
 a measurement for. Replace with the problem-specific observable from
-04_theory.md. Shape matches templates/predicted_observable.md.
+04_theory.md. Returns the identity/values subset of the schema in
+templates/predicted_observable.md; combine with uncertainty and units via
+scripts/observable_extractor.py's ObservableBuilder before the Stage 6 write-up.
 """
 function extract_observable(trajectory::Vector{State}, params::Params)
     t = [s.t for s in trajectory]
@@ -112,7 +125,7 @@ function _self_test()
     rng = Random.MersenneTwister(0)
     params = Params()
     state = State(100, 3, rng)
-    trajectory = integrate(state, params, 1000, rng)
+    trajectory = integrate!(state, params, 1000, rng)
     obs = extract_observable(trajectory, params)
     println("trajectory length: ", length(trajectory))
     println("observable '", obs.name, "' final value: ", round(obs.values[end], digits=4))
