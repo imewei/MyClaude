@@ -1,6 +1,6 @@
 ---
 name: numerical-prototype
-description: Stage 6 of the research-spark pipeline. Converts the Stage 4-5 formalism into a running JAX-based numerical prototype and produces a concrete predicted observable, after passing three required validation passes (analytic-limit recovery, synthetic benchmark, convergence study). Triggers when the user has a formalized theory and wants to turn it into code, or on phrases like "prototype the model", "build a JAX simulation of the theory", "produce the predicted observable", "validate the solver against analytic limits", "do the convergence study", "implement the formalism from Stage 4", or after Stage 4-5 completes. The predicted observable this emits is the direct input to Stage 7 experimental design. Catches pathologies the analytics hide (stiffness, IC sensitivity, narrow validity) by running the math instead of just staring at it.
+description: Stage 6 of the research-spark pipeline. Converts the Stage 4-5 formalism into a running numerical prototype (JAX or Julia, chosen per physical system) and produces a concrete predicted observable, after passing three required validation passes (analytic-limit recovery, synthetic benchmark, convergence study). Triggers when the user has a formalized theory and wants to turn it into code, or on phrases like "prototype the model", "build a JAX or Julia simulation of the theory", "produce the predicted observable", "validate the solver against analytic limits", "do the convergence study", "implement the formalism from Stage 4", or after Stage 4-5 completes. The predicted observable this emits is the direct input to Stage 7 experimental design. Catches pathologies the analytics hide (stiffness, IC sensitivity, narrow validity) by running the math instead of just staring at it.
 ---
 
 # numerical-prototype
@@ -24,32 +24,45 @@ Splitting prototyping from experimental design also creates a clean interface: t
 
 ## Workflow
 
-### 1. Load inputs and the code architecture rules
+### 1. Load inputs and choose the language
 
 Read `04_theory.md` and `05_formalism.tex`. Pull out: equations to solve, state variables, parameters with physical ranges (usually from the dimensionless-groups section), boundary and initial conditions.
 
-Before writing any code, load `../_research-commons/code_architecture/` in full. Every file there is part of the contract:
-- `jax_first_rules.md` (no Python loops in physics cores, vmap/jit discipline, PRNGkey handling, dtype policy)
-- `env_conventions.md` (Python 3.12+, uv, pyproject.toml layout)
-- `testing_conventions.md` (pytest structure, property tests, limit tests, shape tests, convergence tests)
-- `repo_layout.md` (directory structure matching homodyne / heterodyne / RheoJax)
+**Choose JAX or Julia**, and record the choice with a one-line rationale in `06_prototype.md`. Prefer **Julia** (`@sciml` environment unless noted) when any of these fire:
 
-Code that ignores these conventions fragments the ecosystem and makes future integration painful. The rules are consistent across the stack deliberately.
+- Stage 4-5 wrote a `graybox_boundary.md` (SciML gray-box spec)
+- The governing equations are stiff ODEs, DAEs, or PDEs
+- The claim involves bifurcation, chaos, or pattern formation (DynamicalSystems.jl)
+- The claim requires equation discovery (SINDy) rather than a fixed governing equation
+- The primary uncertainty quantification needs NUTS, Consensus MC, or NRPT (`@bayes`, Turing + Pigeons) rather than NumPyro
+- The theory is naturally posed as a PDE solved by a physics-informed neural net (`@pinn`, NeuralPDE)
 
-### 2. Build the minimal JAX implementation
+**Default to JAX** otherwise: general stochastic or particle simulations, GPU-batched Monte Carlo (vmap/pmap), or continuity with an existing JAX-based lab pipeline (homodyne, heterodyne, RheoJax). If none of the Julia triggers fire, JAX is the default, not an open choice to re-litigate each time.
 
-`templates/prototype_skeleton.py` is the starting scaffold. In order:
+Before writing any code, load the matching code architecture rules in full:
+- **JAX:** `../_research-commons/code_architecture/jax_first_rules.md`, `env_conventions.md`, `testing_conventions.md`, `repo_layout.md`.
+- **Julia:** `../_research-commons/code_architecture/julia_first_rules.md` (env choice, type stability, Project.toml/Manifest.toml, `@testset`, package layout, the juliacall bridge to the Python validation scripts).
+
+Load only the set matching the choice, not both. Code that ignores these conventions fragments the ecosystem and makes future integration painful.
+
+### 2. Build the minimal implementation
+
+**JAX:** `templates/prototype_skeleton.py`. In order:
 
 - **State.** A registered-pytree dataclass holding state variables. Dtype consistent per module policy.
 - **Params.** Separate from state. Physical parameters that do not vary during integration.
 - **Forward operator.** `step(state, key, params) -> new_state`. Pure, jit-able, no Python loops. `jax.vmap` for batching, `jax.lax.scan` for time integration.
 - **Observable extractor.** `extract_observable(trajectory, params) -> Observable` in the format Stage 7 expects (see `templates/predicted_observable.md`).
 
-Keep v1 minimal. Adaptive timestepping, multi-device parallelism, exotic boundary conditions: all deferred. The goal is to run the theory and produce an observable.
+**Julia:** `templates/prototype_skeleton.jl`. Same shape: a `Params` struct, a `State` struct, a type-stable `step!` that mutates state in place, an `integrate` loop (swap in `OrdinaryDiffEq.jl`'s `ODEProblem`/`SDEProblem` if the equation is stiff), and an `extract_observable` returning the same schema `templates/predicted_observable.md` expects.
+
+Keep v1 minimal either way. Adaptive timestepping, multi-device parallelism, exotic boundary conditions: all deferred. The goal is to run the theory and produce an observable.
 
 ### 3. Run the three validation passes
 
 None can be skipped. Each catches a different failure mode.
+
+Both scripts below are language-agnostic: they call a Python callable and compare array-likes. For a Julia prototype, write a thin `juliacall` shim exposing `run()`/`sim()`/`ref()` functions that call into the Julia module and return the result (juliacall arrays convert to NumPy automatically); the scripts themselves need no changes.
 
 **Pass 1: analytic-limit recovery.** Switch off the new physics (set the new-physics parameter to zero, or take a known limit) and verify the solver reproduces the analytic reference within documented tolerance. `scripts/limit_recovery_check.py`.
 
@@ -69,7 +82,9 @@ Stage 7 reads these fields directly. A predicted observable without uncertainty 
 
 ### 5. Reconcile code against formalism
 
-`../_research-commons/scripts/formalism_code_reconcile.py` compares symbols in `05_formalism.tex` against symbols in the code. Flags symbols in the LaTeX that do not appear in code (forgot to implement), and vice versa (implemented but not documented). Resolve mismatches before finalizing.
+**JAX:** `../_research-commons/scripts/formalism_code_reconcile.py` compares symbols in `05_formalism.tex` against symbols in the code. Flags symbols in the LaTeX that do not appear in code (forgot to implement), and vice versa (implemented but not documented). Resolve mismatches before finalizing.
+
+**Julia:** the script parses Python via `ast` and does not read `.jl` files. Reconcile manually: read the labeled equations in `05_formalism.tex`, check each symbol appears in the Julia source (function arguments, struct fields, or named constants), and record any mismatches in `06_prototype.md`'s reconciliation section.
 
 ### 6. Write `06_prototype.md`, lint, hand off
 
@@ -80,17 +95,19 @@ Structure: summary of what was implemented; validation results for all three pas
 - **Skipping validation because "the code looks right."** Visual inspection misses sign errors and dropped terms consistently. The passes catch what the eyes do not.
 - **Running the convergence study at one resolution and declaring convergence.** Richardson needs three. A single run tells you nothing about whether the result is a numerical artifact.
 - **Emitting a scalar predicted observable with no uncertainty.** Stage 7 has nothing to plan against. Worst case, uncertainty is "large and hard to quantify"; that is still more informative than silence.
-- **Python loops in the jit-compiled physics core.** If vmap and scan cannot express the computation, the state representation probably needs redesigning. Fix the data layout, not the integrator.
+- **Python loops in the jit-compiled physics core (JAX), or type-unstable hot loops (Julia).** If vmap and scan cannot express the computation, or `@code_warntype` shows `Any`/`Union` in the step function, the state representation probably needs redesigning. Fix the data layout, not the integrator.
+- **Defaulting to JAX or Julia out of habit rather than the Step 1 criteria.** The wrong language for a stiff system or a gray-box UDE costs more time fighting the tooling than the prototype itself takes.
 
 ## Templates and scripts
 
 - `templates/prototype_skeleton.py`: JAX scaffold
+- `templates/prototype_skeleton.jl`: Julia scaffold
 - `templates/validation_report.md`: structure for the three passes
 - `templates/predicted_observable.md`: standardized handoff format for Stage 7
-- `scripts/convergence_study.py`: Richardson-extrapolation driver
-- `scripts/limit_recovery_check.py`: limit-recovery runner
+- `scripts/convergence_study.py`: Richardson-extrapolation driver (language-agnostic; bridge Julia via juliacall)
+- `scripts/limit_recovery_check.py`: limit-recovery runner (language-agnostic)
 - `scripts/observable_extractor.py`: pulls observables from trajectory in canonical format
-- Shared: `../_research-commons/code_architecture/`
+- Shared: `../_research-commons/code_architecture/` (JAX quartet plus `julia_first_rules.md`)
 
 ## Fan-out (Claude Code multi-agent)
 

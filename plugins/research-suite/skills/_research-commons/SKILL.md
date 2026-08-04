@@ -19,6 +19,7 @@ Shared assets for the research-spark skill stack. Not a standalone workflow.
   - `env_conventions.md`: Python 3.12+, uv, pyproject.toml layout
   - `testing_conventions.md`: pytest, property-based tests for invariants
   - `repo_layout.md`: standard directory structure matching homodyne/heterodyne/RheoJax
+  - `julia_first_rules.md`: Julia counterpart to the four files above (env choice, type stability, package layout, testing, juliacall bridge), used when Stage 6 picks Julia over JAX
 
 - `templates/`: cross-cutting templates used by more than one skill
   - `reviewer2_persona.md`: adversarial-reviewer prompt pattern (used by landscape-scanner and falsifiable-claim)

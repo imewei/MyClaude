@@ -2,6 +2,8 @@
 
 Generated code repos follow this structure. It matches the `homodyne`, `heterodyne`, and `RheoJax` pattern so that code from the research-spark stack drops into familiar scaffolding.
 
+Julia counterpart: see `julia_first_rules.md`'s package-layout section if Julia was chosen for the Stage 6 prototype instead.
+
 ```
 <repo-root>/
 ├── pyproject.toml

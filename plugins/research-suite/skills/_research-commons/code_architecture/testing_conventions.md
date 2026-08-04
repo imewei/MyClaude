@@ -2,6 +2,8 @@
 
 Every code module emitted by the research-spark stack has a matching test file. The test file structure is fixed so that the reconciliation scripts and the Stage 6 validation passes can locate tests automatically.
 
+Julia counterpart: see `julia_first_rules.md` if Julia was chosen for the Stage 6 prototype instead.
+
 ## Test file layout
 
 ```
