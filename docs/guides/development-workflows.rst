@@ -43,10 +43,9 @@ Legacy Modernization
 
 Modernize legacy codebases with the Strangler Fig pattern.
 
-1. Analyze the existing codebase (command: ``/adopt-code``).
-2. Plan the migration strategy (command: ``/modernize``).
-3. Implement incrementally with backward compatibility.
-4. Validate each phase with ``/double-check``.
+1. Assess the existing codebase and plan the migration strategy (command: ``/modernize``, quick mode covers assessment + strategy).
+2. Implement incrementally with backward compatibility.
+3. Validate each phase with ``/double-check``.
 
 Related
 -------
