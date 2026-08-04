@@ -56,11 +56,12 @@ class TestCategoryPages(unittest.TestCase):
 
         content = category_file.read_text()
 
-        # Check for required sections
+        # Check for required sections. Category pages are thin pointer pages
+        # (nav lives in the root docs/index.rst toctree) — a per-page toctree
+        # here would duplicate sidebar entries, so it is deliberately not required.
         required_elements = [
             "Science Suite",  # Title
-            ".. toctree::",  # TOC tree directive
-            ":maxdepth:",  # TOC tree option
+            ":doc:",  # Link to the full suite reference
         ]
 
         for element in required_elements:
