@@ -229,7 +229,7 @@ v3.4.0 (2026-04-18)
 * **research-suite hooks:** added 3 hook events (``SessionStart`` artifact-resume, ``TaskCompleted`` audit logging, ``SubagentStop`` prompt-based stage-artifact verification) + 2 command handler scripts. Brings hook event total across suites from 24 → 27.
 * **Version consistency sweep:** ``pyproject.toml`` bumped 3.3.0 → 3.4.0; ``docs/conf.py`` release 3.3.0 → 3.4.0; ``Makefile`` header 3.0.0 → 3.4.0; README badges + overview prose synchronized; agent-core ``commands/team-assemble.md`` "MyClaude v3.3.0" → "v3.4.0". All 13 canonical version surfaces now match.
 * **Trigger-phrase parity:** final ``SKILL.md`` (``science-suite/skills/research-and-domains``) gained "Use when..." trigger — 217/217 skills now conform.
-* **Tooling polish:** ``skill_validator.py`` now reports ``n/a - no corpus`` instead of misleading ``0.0%`` when no test corpus is loaded; ``doc_checker.py`` wired into ``make validate`` (per-plugin iteration).
+* **Tooling polish:** ``skill_validator.py`` now reports *n/a (no corpus)* instead of a misleading *0.0%* when no test corpus is loaded; ``doc_checker.py`` wired into ``make validate`` (per-plugin iteration).
 
 v3.3.0 (2026-04-12)
 --------------------
