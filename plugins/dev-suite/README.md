@@ -7,7 +7,7 @@ suite for zero-friction cross-concern agent delegation.
 ## Overview
 
 Dev Suite covers the complete software development lifecycle with 6 specialized agents
-(1 opus, 4 sonnet, 1 haiku), 10 registered slash commands, and 10 hub skills routing to
+(1 opus, 4 sonnet, 1 haiku), 10 registered slash commands, and 9 hub skills routing to
 35 sub-skills. From architecture design through CI/CD to production debugging, every
 engineering workflow is covered. Agents delegate across specializations automatically —
 software-architect delegates to quality-specialist for security audits, sre-expert hands
@@ -67,7 +67,7 @@ off to automation-engineer for pipeline fixes.
 | `/test-generate` | Generate comprehensive test suites |
 | `/workflow-automate` | Automate repeatable engineering workflows |
 
-## Skills (10 hubs → 35 sub-skills)
+## Skills (9 hubs → 35 sub-skills)
 
 Covers the complete SDLC:
 
