@@ -106,21 +106,41 @@
         "./agents/simulation-expert.md",
         "./agents/statistical-physicist.md"
       ],
+      "commands": [
+        "./commands/md-sim.md",
+        "./commands/benchmark.md"
+      ],
       "skills": [
-        "./skills/nonlinear-dynamics",
+        "./skills/science-hub",
+        "./skills/advanced-simulations",
+        "./skills/bayesian-inference",
+        "./skills/bayesian-ude-workflow",
+        "./skills/continuum-mechanics-and-rheology",
+        "./skills/correlation-analysis",
+        "./skills/deep-learning",
+        "./skills/deep-learning-hub",
+        "./skills/equation-discovery",
         "./skills/jax-computing",
         "./skills/julia-language",
+        "./skills/julia-mastery",
         "./skills/julia-ml-and-dl",
-        "./skills/sciml-and-diffeq",
-        "./skills/correlation-analysis",
-        "./skills/statistical-physics-hub",
-        "./skills/deep-learning-hub",
-        "./skills/ml-and-data-science",
         "./skills/llm-and-ai",
+        "./skills/machine-learning",
+        "./skills/md-simulation-setup",
+        "./skills/ml-and-data-science",
         "./skills/ml-deployment",
-        "./skills/simulation-and-hpc",
+        "./skills/neural-pde",
+        "./skills/nonlinear-dynamics",
+        "./skills/parallel-computing",
+        "./skills/python-development",
         "./skills/research-and-domains",
-        "./skills/bayesian-inference"
+        "./skills/sciml-and-diffeq",
+        "./skills/sciml-modern-stack",
+        "./skills/self-improving-ai",
+        "./skills/simulation-and-hpc",
+        "./skills/statistical-physics",
+        "./skills/statistical-physics-hub",
+        "./skills/time-series-analysis"
       ]
     },
     {
@@ -174,12 +194,23 @@
         "./agents/research-expert.md",
         "./agents/research-spark-orchestrator.md"
       ],
-      "commands": [],
+      "commands": [
+        "./commands/paper-implement.md",
+        "./commands/lit-review.md",
+        "./commands/replicate.md"
+      ],
       "skills": [
-        "./skills/scientific-review",
+        "./skills/research-hub",
+        "./skills/experiment-designer",
+        "./skills/falsifiable-claim",
+        "./skills/landscape-scanner",
+        "./skills/numerical-prototype",
+        "./skills/premortem-critique",
+        "./skills/research-practice",
         "./skills/research-spark",
-        "./skills/_research-commons",
-        "./skills/research-practice"
+        "./skills/scientific-review",
+        "./skills/spark-articulator",
+        "./skills/theory-scaffold"
       ]
     }
   ]
