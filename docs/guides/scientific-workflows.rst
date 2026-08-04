@@ -94,7 +94,7 @@ Refining a rough research idea into a scoped, testable, fundable program. Eight-
 3. Stage 3 — ``falsifiable-claim``: claim + Heilmeier catechism + kill criterion.
 4. Stages 4-5 — ``theory-scaffold``: stepwise derivation → LaTeX formalism (delegates to ``nonlinear-dynamics-expert`` or ``statistical-physicist`` in science-suite when applicable).
 5. Stage 6 — ``numerical-prototype``: JAX solver + three validation passes (delegates to ``jax-pro`` / ``julia-pro`` / ``simulation-expert`` in science-suite).
-6. Stage 7 — ``experiment-designer``: DoE + instrument capability map (3× margin rule).
+6. Stage 7 — ``experiment-designer``: DoE + instrument capability map (3x margin rule).
 7. Stage 8 — ``premortem-critique``: failure narratives + simulated reviewers.
 
 The ``research-spark-orchestrator`` agent drives the pipeline, owns ``_state.yaml``, and fans out to parallel sub-agents at natural stage boundaries.

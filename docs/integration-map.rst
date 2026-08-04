@@ -20,7 +20,7 @@ Suite Dependencies
    * - **research-suite**
      - science-suite (Stage 6 JAX/Julia/MD delegation from research-spark-orchestrator). 11 registered skills (8-stage pipeline + 2 hubs + standalone ``scientific-review``) route to 6 sub-skills (5 methodology specialists + the ``_research-commons`` resource hub). MCP: Context7 for journal guideline lookups.
    * - **science-suite**
-     - dev-suite (packaging), research-suite (invoked for Stage 6 implementation). Internal: julia-pro ↔ julia-ml-hpc (SciML vs ML/HPC boundary), neural-network-master ↔ julia-ml-hpc (theory vs Julia impl). 30 hub skills route to 107 sub-skills. MCP: Context7.
+     - dev-suite (packaging), research-suite (invoked for Stage 6 implementation). Internal: julia-pro <-> julia-ml-hpc (SciML vs ML/HPC boundary), neural-network-master <-> julia-ml-hpc (theory vs Julia impl). 30 hub skills route to 107 sub-skills. MCP: Context7.
 
 MCP Server Roles
 ----------------
@@ -44,10 +44,10 @@ Intra-Suite Delegation Patterns
 
 **dev-suite** (6 agents): Free internal delegation with key edges:
 
-- software-architect ↔ sre-expert (architecture ↔ reliability/infrastructure)
-- quality-specialist ↔ software-architect (validation ↔ design)
-- automation-engineer ↔ sre-expert (CI/CD ↔ deployment and monitoring)
-- documentation-expert ↔ software-architect (docs ↔ interface design)
+- software-architect <-> sre-expert (architecture <-> reliability/infrastructure)
+- quality-specialist <-> software-architect (validation <-> design)
+- automation-engineer <-> sre-expert (CI/CD <-> deployment and monitoring)
+- documentation-expert <-> software-architect (docs <-> interface design)
 
 **research-suite** (2 agents): Pipeline-gated with optional cross-suite fan-out.
 
@@ -58,7 +58,7 @@ Intra-Suite Delegation Patterns
 
 **science-suite** (12 agents): Hub-and-spoke with domain boundaries.
 
-- julia-pro ↔ julia-ml-hpc: SciML/ODE boundary — julia-pro owns UDEs and Lux.jl-for-physics; julia-ml-hpc owns ML training, GPU, and HPC
+- julia-pro <-> julia-ml-hpc: SciML/ODE boundary — julia-pro owns UDEs and Lux.jl-for-physics; julia-ml-hpc owns ML training, GPU, and HPC
 - neural-network-master → julia-ml-hpc: DL theory → Julia implementation
 - ml-expert → julia-ml-hpc: Python ML → Julia ML pipelines
 - simulation-expert → julia-ml-hpc: HPC → Julia GPU kernels
