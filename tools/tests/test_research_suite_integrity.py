@@ -9,6 +9,7 @@ through subprocess rather than imported.
 """
 
 import json
+import shutil
 import subprocess
 import sys
 from pathlib import Path
@@ -574,3 +575,28 @@ def test_subagent_stop_writes_no_debug_log():
     source = (HOOKS / "subagent_stop.py").read_text(encoding="utf-8")
     assert "jsonl" not in source
     assert "expanduser" not in source
+
+
+def test_julia_prototype_skeleton_self_test_runs():
+    """numerical-prototype's Julia scaffold has no corpus/validator coverage
+    (skill_validator.py's ground truth is self-referential for research-suite,
+    see test-corpus/README.md discussion), so its own runnable self-check is
+    the only thing that would catch a future edit breaking it."""
+    julia = shutil.which("julia")
+    if julia is None:
+        pytest.skip("julia not installed")
+
+    skeleton = (
+        SUITE / "skills" / "numerical-prototype" / "templates" / "prototype_skeleton.jl"
+    )
+    result = subprocess.run(
+        [julia, str(skeleton)],
+        capture_output=True,
+        text=True,
+        timeout=60,
+        check=False,
+    )
+
+    assert result.returncode == 0, result.stderr
+    assert "trajectory length" in result.stdout
+    assert "observable" in result.stdout
