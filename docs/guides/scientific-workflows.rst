@@ -45,9 +45,6 @@ model implementation with ``@research-expert`` (research-suite) for methodology.
    mcmc = MCMC(kernel, num_warmup=500, num_samples=2000, num_chains=4)
    mcmc.run(jax.random.PRNGKey(42), x_data, y_obs=y_data)
 
-**Agent team:** Use :doc:`Team 13 (bayesian-pipeline) </agent-teams-guide>` for
-multi-agent Bayesian workflows.
-
 Molecular Dynamics Campaign
 ---------------------------
 
@@ -59,9 +56,6 @@ for differentiable physics.
 3. Analyze trajectories: RDF, MSD, viscosity (hub: ``simulation-and-hpc`` → sub: ``trajectory-analysis``).
 4. Compute correlation functions (hub: ``correlation-analysis`` → sub: ``correlation-computational-methods``).
 
-**Agent team:** Use :doc:`Team 14 (md-campaign) </agent-teams-guide>` for
-coordinated MD workflows.
-
 Research Paper Implementation
 -----------------------------
 
@@ -71,9 +65,6 @@ Reproducing results from published papers requires systematic methodology. In v3
 2. Implement in JAX or Julia (science-suite hubs: ``jax-computing``, ``julia-language``).
 3. Validate against reported benchmarks (``research-suite`` skill: ``research-quality-assessment``).
 4. Create publication-quality figures (science-suite hub: ``ml-and-data-science`` → sub: ``scientific-visualization``).
-
-**Agent team:** Use :doc:`Team 16 (paper-implement) </agent-teams-guide>` for
-coordinated reproduction workflows.
 
 Peer Review of a Manuscript
 ---------------------------

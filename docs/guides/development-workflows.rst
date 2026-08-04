@@ -22,9 +22,6 @@ The standard feature workflow uses ``@software-architect`` for design and
 4. Write tests (hub: ``testing-and-quality`` → sub: ``testing-patterns``).
 5. Validate with ``/double-check``.
 
-**Agent team:** Use :doc:`Team 27 (feature-dev) </agent-teams-guide>` for
-multi-agent feature development with review gates.
-
 Code Quality Pipeline
 ---------------------
 
@@ -41,21 +38,14 @@ Maintain code quality with the **dev-suite** agents.
    # Full validation before merge
    /dev-suite:double-check --deep
 
-**Agent team:** Use :doc:`Team 3 (quality-audit) </agent-teams-guide>` for
-pre-release quality gates.
-
 Legacy Modernization
 --------------------
 
 Modernize legacy codebases with the Strangler Fig pattern.
 
-1. Analyze the existing codebase (command: ``/adopt-code``).
-2. Plan the migration strategy (command: ``/modernize``).
-3. Implement incrementally with backward compatibility.
-4. Validate each phase with ``/double-check``.
-
-**Agent team:** Use :doc:`Team 6 (modernization) </agent-teams-guide>` for
-coordinated migration.
+1. Assess the existing codebase and plan the migration strategy (command: ``/modernize``, quick mode covers assessment + strategy).
+2. Implement incrementally with backward compatibility.
+3. Validate each phase with ``/double-check``.
 
 Related
 -------

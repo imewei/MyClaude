@@ -10,23 +10,19 @@ cross-cutting concerns.
    routing to 148 sub-skills as of v4.0.0). Cross-suite workflows invoke hub skills which
    automatically dispatch to the right sub-skill.
 
-Cross-Suite Agent Teams
+Cross-Suite Delegation
 -----------------------
-
-The :doc:`Agent Teams Guide </agent-teams-guide>` provides 25 ready-to-use
-team configurations (v3.1.4+). Teams 13-16 and 22-25 are specifically designed
-for cross-suite collaboration.
 
 Key cross-suite patterns:
 
-- **Performance optimization** (Team 17): Combines ``@python-pro`` and
+- **Performance optimization**: Combines ``@python-pro`` and
   ``@jax-pro`` from science-suite with ``@sre-expert`` from dev-suite.
 
-- **HPC interoperability** (Team 18): Bridges ``@julia-pro`` and
+- **HPC interoperability**: Bridges ``@julia-pro`` and
   ``@python-pro`` from science-suite with ``@software-architect`` from
   dev-suite.
 
-- **Reproducible research** (Team 19): Connects ``@research-expert`` from
+- **Reproducible research**: Connects ``@research-expert`` from
   science-suite with ``@automation-engineer`` from dev-suite.
 
 MCP Server Integration
@@ -34,21 +30,17 @@ MCP Server Integration
 
 MyClaude agents can leverage MCP servers for enhanced capabilities:
 
-- **Serena** — Semantic code analysis via its MCP tools.
-  Used by dev-suite agents for symbol-level navigation.
-
 - **Context7** — Library documentation lookup. Used by all agents to
   access up-to-date API references.
 
 Official Plugin Integration
 ---------------------------
 
-Teams integrate official plugin agents (pr-review-toolkit, feature-dev,
+MyClaude agents integrate official plugin agents (pr-review-toolkit, feature-dev,
 plugin-dev) as quality gates alongside MyClaude domain experts.
 
 The **Quality Gate Enhancers** pattern lets you add review agents to any
-existing team. See the :doc:`Agent Teams Guide </agent-teams-guide>` for
-details.
+existing workflow.
 
 Related
 -------

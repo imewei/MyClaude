@@ -573,7 +573,7 @@ class MetadataValidator:
     _TIER2_STANDALONE_WHITELIST: ClassVar[set[str]] = {
         "three-brain",      # dev-suite: multi-model routing (one-shot review or persistent team)
         "scientific-review",  # research-suite: peer-review deliverable
-        "research-spark",     # research-suite: 8-stage pipeline orchestrator
+        "research-spark",     # research-suite: 5-stage core + optional extension orchestrator
         "spark-articulator",  # research-suite: stage 1
         "landscape-scanner",  # research-suite: stage 2
         "falsifiable-claim",  # research-suite: stage 3

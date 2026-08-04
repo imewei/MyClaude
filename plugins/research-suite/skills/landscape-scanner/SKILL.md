@@ -44,6 +44,8 @@ Rows are phenomena or sub-questions; columns are methods or approaches; cells de
 
 The matrix is a tool for spotting where the user's spark fits. Intersection of an empty row and an empty column is a candidate research question. Verify it is real (not just underreported), tractable (some route to a measurement exists), and impact-bearing (resolving it changes something downstream).
 
+**Exit gate: state the gap as a failure, not an absence.** You must be able to say the core problem *is* a failure or limitation of an existing theoretical framework (a governing equation that does not apply in this regime, a model that breaks at a specific boundary, a bound the literature has not reached), rather than "nobody has measured this yet." An absence of data is not a gap; a framework that cannot explain the phenomenon is. This is also where Layer 3 (adjacent fields) earns its keep: check the empty cell is not simply the same problem solved under different terminology in a neighboring subfield before calling it a gap.
+
 ### 5. Reviewer 2 pass against the proposed gap
 
 Use the Stage 2 variant in `../_research-commons/templates/reviewer2_persona.md`. The reviewer argues one of three positions: gap is not real (already filled in the cited literature), not tractable (no route with current tools), or not impact-bearing (resolving it changes nothing downstream).

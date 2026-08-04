@@ -2,6 +2,8 @@
 
 Every code artifact produced by the research-spark stack uses the same environment contract.
 
+Julia counterpart: see `julia_first_rules.md` if Julia was chosen for the Stage 6 prototype instead.
+
 ## Python version
 
 Python 3.12 or later. Skills should generate `pyproject.toml` with `requires-python = ">=3.12"`.

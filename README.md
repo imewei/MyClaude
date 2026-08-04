@@ -17,7 +17,7 @@ MyClaude v4.0.0 uses a **hub-skill architecture**: skills are organized into hub
 | Suite | Agents | Commands | Hubs → Sub-skills | Hooks | Focus |
 |-------|--------|----------|-------------------|-------|-------|
 | [Dev Suite](plugins/dev-suite/) | 6 | 10 | 10 → 35 | 6 events | Full SDLC: architecture, CI/CD, testing, debugging |
-| [Research Suite](plugins/research-suite/) | 2 | 3 | 11 → 6 | 2 events | Peer review, 8-stage research-spark pipeline, methodology |
+| [Research Suite](plugins/research-suite/) | 2 | 3 | 11 → 6 | 2 events | Peer review, research-spark pipeline (5-stage core + optional extension), methodology |
 | [Science Suite](plugins/science-suite/) | 12 | 2 | 30 → 107 | 4 events | JAX, Julia, physics, ML/DL/HPC, nonlinear dynamics |
 
 ## Specialist Agents
@@ -28,7 +28,7 @@ MyClaude v4.0.0 uses a **hub-skill architecture**: skills are organized into hub
 |-------|-------|-------|----------------|
 | `@software-architect` | Dev | opus | Backend systems, microservices, API design |
 | `@research-expert` | Research | opus | Literature reviews, experiment design, statistical rigor |
-| `@research-spark-orchestrator` | Research | opus | 8-stage artifact-gated refinement pipeline |
+| `@research-spark-orchestrator` | Research | opus | Artifact-gated refinement pipeline (5-stage core + optional extension) |
 | `@jax-pro` | Science | opus | JAX/JIT, vmap/pmap, Flax NNX, NumPyro, physics apps |
 | `@julia-pro` | Science | opus | Julia SciML, DifferentialEquations.jl, Turing.jl |
 | `@neural-network-master` | Science | opus | Deep learning theory and architecture |
@@ -82,7 +82,6 @@ Ask Claude: "@research-expert design a power analysis for this experiment"
 - **[Plugin Cheatsheet](docs/reference/cheatsheet.md)**
 - **[Complete Agents List](docs/reference/agents.md)**
 - **[Complete Commands List](docs/reference/commands.md)**
-- **[Agent Teams Guide](docs/agent-teams-guide.md)** — 10 focused team templates with 19 variants (codebase-aware recommender since v3.1.4)
 
 ## License
 

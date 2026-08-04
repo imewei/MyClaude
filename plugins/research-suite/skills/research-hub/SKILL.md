@@ -12,7 +12,7 @@ Meta-router. Identifies the user's research task and delegates to the correct sp
 
 - **`research-expert`**: Methodology, literature synthesis, scientific communication.
   - *Location*: `plugins/research-suite/agents/research-expert.md`
-- **`research-spark-orchestrator`**: Artifact-gated eight-stage pipeline from rough idea to fundable plan.
+- **`research-spark-orchestrator`**: Artifact-gated pipeline from rough idea to fundable proposal — 5-stage core + optional extension.
   - *Location*: `plugins/research-suite/agents/research-spark-orchestrator.md`
 
 ## Hub Skills

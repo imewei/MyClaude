@@ -2,6 +2,8 @@
 
 Every skill that emits Python code (theory-scaffold for symbolic work, numerical-prototype for simulations, experiment-designer for analysis scripts) must follow these conventions. Load this file before writing code.
 
+Julia counterpart: see `julia_first_rules.md` if Julia was chosen for the Stage 6 prototype instead.
+
 ## Core rules
 
 1. **No Python loops in the physics core.** The inner computational kernel must be pure JAX. Use `jax.vmap` for batching over particles, samples, or trajectories. Use `jax.lax.scan` for time integration when state must carry across steps.

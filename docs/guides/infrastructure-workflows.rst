@@ -53,9 +53,6 @@ Production Incident Response
 When production issues arise, use ``@sre-expert`` and ``@quality-specialist``
 together for rapid resolution.
 
-**Agent team:** Use :doc:`Team 2 (incident-response) </agent-teams-guide>` for
-coordinated multi-hypothesis investigation.
-
 Related
 -------
 

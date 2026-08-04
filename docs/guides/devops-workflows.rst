@@ -36,9 +36,6 @@ Use ``@automation-engineer`` to create production CI/CD pipelines.
          - uses: actions/checkout@v4
          - run: uv run ruff check . && uv run pip-audit
 
-**Agent team:** Use :doc:`Team 5 (infra-setup) </agent-teams-guide>` for
-full infrastructure provisioning.
-
 Observability Stack
 -------------------
 
@@ -48,9 +45,6 @@ Use ``@sre-expert`` to set up monitoring and alerting.
 2. Create dashboards (hub: ``observability-and-sre`` → sub: ``grafana-dashboards``).
 3. Define SLOs and error budgets (hub: ``observability-and-sre`` → sub: ``slo-implementation``).
 4. Add distributed tracing (hub: ``observability-and-sre`` → sub: ``distributed-tracing``).
-
-**Agent team:** Use :doc:`Team 5 (infra-setup) </agent-teams-guide>` with
-``@sre-expert`` leading the observability track.
 
 Git Workflow Automation
 -----------------------

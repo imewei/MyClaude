@@ -1,13 +1,15 @@
 ---
 name: research-spark
-description: Orchestrator for a structured research-refinement pipeline. Moves a research spark through eight stages from rough idea to executable plan, each stage producing a canonical artifact the next consumes. Triggers on phrases like "work on my idea about X", "refine this research spark", "let's scope this project", "continue the project on Y", "turn this into a fundable plan", "walk this idea through research-spark", or any description of a rough research idea the user wants to sharpen into a testable program. Also triggers when the user resumes work on a prior project (even implicitly, by saying "back to the X work") or asks to enter a specific stage by name. The orchestrator itself does not do the stage work; it figures out where the user is and loads the right specialist skill (spark-articulator, landscape-scanner, falsifiable-claim, theory-scaffold, numerical-prototype, experiment-designer, or premortem-critique).
+description: Orchestrator for a research-refinement pipeline. A five-stage core (spark, landscape, claim, theory) turns a rough idea into a testable, fundable research proposal; three further stages (numerical prototype, experiment design, premortem) are an optional extension toward execution, not required for the proposal itself. Triggers on phrases like "work on my idea about X", "refine this research spark", "let's scope this project", "continue the project on Y", "turn this into a fundable plan", "walk this idea through research-spark", or any description of a rough research idea the user wants to sharpen into a testable proposal. Also triggers when the user resumes work on a prior project (even implicitly, by saying "back to the X work") or asks to enter a specific stage by name. The orchestrator itself does not do the stage work; it figures out where the user is, loads the right specialist skill (spark-articulator, landscape-scanner, falsifiable-claim, theory-scaffold, numerical-prototype, experiment-designer, or premortem-critique), and at Stage 5 runs a hostile self-audit and assembles a proposal draft before asking whether to stop or continue into the optional extension.
 ---
 
 # research-spark
 
-The dispatcher for an eight-stage research-refinement pipeline. Detects stage, loads specialist, enforces the artifact contract, keeps state.
+The dispatcher for the research-refinement pipeline. Detects stage, loads specialist, enforces the artifact contract, keeps state. A five-stage **core** turns a rough idea into a testable, fundable proposal; three further stages are an **optional extension** toward execution.
 
 ## The pipeline at a glance
+
+**Core (required).** The pipeline's job is done here: a Stage 5 artifact plus a passed checkpoint is a complete, testable, fundable research proposal.
 
 | Stage | Skill | Artifact |
 |-------|-------|----------|
@@ -15,6 +17,11 @@ The dispatcher for an eight-stage research-refinement pipeline. Detects stage, l
 | 2 | [landscape-scanner](../landscape-scanner/SKILL.md) | `02_landscape.md` |
 | 3 | [falsifiable-claim](../falsifiable-claim/SKILL.md) | `03_claim.md` |
 | 4-5 | [theory-scaffold](../theory-scaffold/SKILL.md) | `04_theory.md` + `05_formalism.tex` |
+
+**Extension (optional).** Only for users who want to carry the proposal toward execution: numerical validation, experiment design, red-teaming. Never auto-entered; the orchestrator asks first.
+
+| Stage | Skill | Artifact |
+|-------|-------|----------|
 | 6 | [numerical-prototype](../numerical-prototype/SKILL.md) | `06_prototype.md` + `code/` |
 | 7 | [experiment-designer](../experiment-designer/SKILL.md) | `07_plan.md` |
 | 8 | [premortem-critique](../premortem-critique/SKILL.md) | `08_premortem.md` |
@@ -39,7 +46,15 @@ What triggered the invocation?
 |   +-- Prior-stage artifact missing?
 |       --> Refuse; offer to run the missing stage first.
 |
-+-- Stage N complete, advancing to N+1?
++-- Stage 5 complete (theory exists, proposal not yet assembled)?
+|   --> Core-completion checkpoint: run the hostile self-audit, then
+|       assemble proposal_draft.md (reverse-order draft). Only then ask:
+|       stop here with the proposal, or continue into the optional
+|       extension (Stage 6)? Record `core_complete: true` in _state.yaml.
+|       Never auto-advance into Stage 6 the way Stages 1-5 auto-advance
+|       into each other.
+|
++-- Stage N complete, advancing to N+1 (N != 5)?
 |   --> Verify N's canonical artifact exists; load next specialist per dispatch table.
 |
 +-- None of the above / invocation is ambiguous?
@@ -47,18 +62,25 @@ What triggered the invocation?
 |       the current stage and re-enter the routing decision tree.
 |
 By stage (canonical dispatch table):
-  1   -> research-suite:spark-articulator     (elicit 3-line spark)
-  2   -> research-suite:landscape-scanner     (prior art + gap + Reviewer 2 pass)
-  3   -> research-suite:falsifiable-claim     (testable claim + kill criterion)
-  4-5 -> research-suite:theory-scaffold       (narrative theory + formalism.tex)
-  6   -> research-suite:numerical-prototype   (computational existence check)
-  7   -> research-suite:experiment-designer   (DoE, power, pre-registration)
-  8   -> research-suite:premortem-critique    (red-team before execution)
+  1   -> research-suite:spark-articulator     (elicit 3-line spark)               [core]
+  2   -> research-suite:landscape-scanner     (prior art + gap + Reviewer 2 pass) [core]
+  3   -> research-suite:falsifiable-claim     (testable claim + kill criterion)   [core]
+  4-5 -> research-suite:theory-scaffold       (narrative theory + formalism.tex)  [core]
+  6   -> research-suite:numerical-prototype   (computational existence check)     [optional]
+  7   -> research-suite:experiment-designer   (DoE, power, pre-registration)      [optional]
+  8   -> research-suite:premortem-critique    (red-team before execution)         [optional]
 ```
 
 ## How routing works
 
-Three situations cover almost all invocations.
+Four situations cover almost all invocations.
+
+**Completing the core.** When Stage 5 finishes, the theory exists but the proposal is not yet assembled. Two required passes close the core, in order:
+
+1. **Hostile self-audit**: `../_research-commons/templates/hostile_self_audit.md`. Reasoning-only: the $100k Kill Switch, the Artifact Check, the Bottleneck Route. Exit gate: no aim may rest on a single unvalidated technique without a documented fallback.
+2. **Proposal assembly**: `../_research-commons/templates/proposal_assembly.md`. Synthesizes `01_spark.md` through `05_formalism.tex` plus the audit into `proposal_draft.md`, drafted in reverse order (Aims → Methods & Risk → Background → Abstract). Exit gate: every paragraph traces to a specific aim (line-of-sight check).
+
+Only after both pass is the core complete. Record `core_complete: true` in `_state.yaml`, then ask explicitly: stop here, or continue into the optional extension (Stage 6 onward)? Do not auto-advance into Stage 6 the way Stages 1-5 advance into each other, and do not treat stopping here as unfinished work: a proposal that passed both gates is done, not partial.
 
 **New spark.** The user describes a rough idea with no prior artifacts in the conversation. Propose a short slug from the user's phrasing, create a project directory, initialize `_state.yaml` at stage 1, and load spark-articulator. Ask if the proposed location and slug are fine before creating files.
 
@@ -77,6 +99,7 @@ idea_slug: rheox_spectral_gap
 title: "Spectral gap early warning for rheological transitions"
 current_stage: 4
 stages_completed: [1, 2, 3]
+core_complete: false   # set true once the hostile audit passes AND proposal_draft.md is assembled, not just when Stage 5 finishes
 artifacts:
   stage_1: artifacts/01_spark.md
   stage_2: artifacts/02_landscape.md
@@ -92,6 +115,8 @@ overrides:
 The state file is the single source of truth. If in-memory stage tracking disagrees with `_state.yaml`, trust the file.
 
 ## Principles the orchestrator upholds
+
+**The core is a valid endpoint.** A Stage 5 theory plus a passed hostile audit plus an assembled `proposal_draft.md` is a complete research proposal. Stopping there is success, not a partial run. Only enter Stage 6 onward after the user explicitly asks to continue.
 
 **Artifact trail integrity.** Each stage requires its prior-stage artifact as input. If the user tries to skip, name the missing stage and offer to run it. A stage started without its input is cargo-culting the pipeline.
 
@@ -109,10 +134,11 @@ If the user has not specified one, use `./research-spark/<idea-slug>/`. Default 
 <workspace>/
 ├── _state.yaml
 ├── project_log.md
+├── proposal_draft.md   # written at the core-completion checkpoint, after Stage 5
 ├── artifacts/
 │   ├── 01_spark.md
 │   └── ...
-└── code/          # emerges at Stage 6
+└── code/          # emerges only if the optional extension (Stage 6) runs
 ```
 
 ## First-run example

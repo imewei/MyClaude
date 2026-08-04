@@ -30,7 +30,7 @@ plugin.json → hub skill → routing decision tree → sub-skill
 
 ### 2. Research Suite (`research-suite`)
 
-**Purpose:** Peer review, 8-stage research-spark pipeline, and methodology orchestration.
+**Purpose:** Peer review, research-spark pipeline (5-stage core + optional extension), and methodology orchestration.
 
 | Component | Count | Details |
 |-----------|-------|---------|
@@ -68,17 +68,14 @@ plugin.json → hub skill → routing decision tree → sub-skill
 3. `@research-expert` — analyze and visualize results
 
 ### Research (idea to plan)
-1. `@research-spark-orchestrator` — drive the 8-stage pipeline
-2. Stages 1-8 emit `01_spark.md` → `08_premortem.md` into `artifacts/`
+1. `@research-spark-orchestrator` — drive the pipeline
+2. Stages 1-5 (core) emit `01_spark.md` → `05_formalism.tex` into `artifacts/`, ending in a fundable proposal; Stages 6-8 (optional) continue to `08_premortem.md` only on request
 3. `SubagentStop` hook verifies each stage artifact before advancing
 
 ### Peer Review (manuscript to .docx)
 1. Skill auto-triggers on "review this paper" phrasings
 2. `scientific-review` produces a journal-adapted Six-Lens referee report
 3. Output: `.docx` (with `python-docx`) or markdown fallback
-
-### Agent Teams
-See [Agent Teams Guide](../agent-teams-guide.md) for the full agent composition of each team and variant.
 
 ---
 
@@ -111,8 +108,7 @@ See [Agent Teams Guide](../agent-teams-guide.md) for the full agent composition 
 - [Agent Reference](agents.md) — All 20 agents with model tiers and delegation patterns
 - [Commands Reference](commands.md) — 15 registered + 2 skill-invoked commands
 - [Integration Map](../integration-map.rst) — Suite dependencies, MCP server roles, skill coverage
-- [Agent Teams Guide](../agent-teams-guide.md) — 10 focused teams with 19 variants (codebase-aware recommender)
-- [Glossary](../glossary.rst) — Hub Skill, Sub-Skill, Agent Team, Routing Decision Tree
+- [Glossary](../glossary.rst) — Hub Skill, Sub-Skill, Routing Decision Tree
 - [GitHub Repository](https://github.com/imewei/MyClaude)
 
 *Generated from v4.0.0 validated marketplace data.*
