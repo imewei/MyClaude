@@ -54,9 +54,9 @@ See [complete agent list](docs/reference/agents.md) for all 20 agents.
 ### Step 2: Install Suites
 
 ```bash
-/plugin install dev-suite@marketplace
-/plugin install research-suite@marketplace
-/plugin install science-suite@marketplace
+/plugin install dev-suite@scientific-computing-workflows
+/plugin install research-suite@scientific-computing-workflows
+/plugin install science-suite@scientific-computing-workflows
 ```
 
 **Note:** After installation, restart Claude Code for changes to take effect.
