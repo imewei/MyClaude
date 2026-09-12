@@ -28,6 +28,34 @@ Unreleased
   research-suite 11 -> 10 hubs (6 -> 7 sub-skills). Roughly 4,263 chars (~1,065 tokens) of always-loaded
   skill descriptions removed in total.
 
+**Agents: 27% smaller system prompts, per plugin-dev's budget**
+
+* Agent bodies total 233,157 -> 169,494 chars (-63,663). Agents exceeding plugin-dev's 10,000-char
+  system-prompt maximum: 8 of 20 -> 4 of 20. Descriptions are untouched and all sit inside plugin-dev's
+  200-1,000 char "best" range, so dispatch sensitivity is unchanged.
+* **Duplicated trigger scenarios removed (20,703 chars across 13 agents).** Commit 40a230c8 added a
+  ``## When to invoke`` section to each agent while a legacy ``## Examples`` section listed the same
+  scenarios as ``<example>`` blocks. Verified 1:1 topic coverage before removing the latter — e.g.
+  ``nonlinear-dynamics-expert`` had four When-to-invoke bullets against four Example contexts on the same
+  four topics.
+* **Inlined reference code replaced with skill pointers in julia-ml-hpc, julia-pro and jax-pro.** These
+  carried ``Domain 1..8`` sections of worked code (45%, 35% and 33% of their bodies) duplicating the
+  sub-skills each agent already lists under "Related Skills" — confirmed present in every target skill
+  before removal. Replaced with a domain map naming the skill that owns each one, so there is a single
+  place to fix when an API moves. julia-ml-hpc 24,997 -> 8,869 chars, julia-pro 22,800 -> 9,197,
+  jax-pro 22,055 -> 8,826.
+* Also folded away sections that restated the "Pre-Response Validation Framework" in a second format
+  (``Chain-of-Thought Decision Framework``, ``Constitutional AI Principles``, ``Production Checklist``)
+  where they added nothing, merging their unique items into the surviving checklist.
+* Four agents remain over the 10,000-char guideline — ``statistical-physicist`` (18,942),
+  ``research-spark-orchestrator`` (15,759), ``nonlinear-dynamics-expert`` (13,412) and
+  ``neural-network-master`` (10,432). What is left in them is domain content, not boilerplate:
+  ``nonlinear-dynamics-expert``'s decision framework carries a method-to-ecosystem table, key formulas,
+  and validation checks found nowhere else. Cutting those is a quality judgement, not deduplication, and
+  was left alone.
+* Skills needed no body trimming: no SKILL.md exceeds plugin-dev's 5,000-word maximum and only one
+  (``three-brain``, 3,807 words, which already has ``references/``) exceeds 3,000.
+
 **Tooling: metadata_validator enforces routing reach**
 
 * ``metadata_validator.py`` gains a redundancy check: a registered hub is warned about when every skill it
