@@ -43,8 +43,10 @@
     "./agents/statistical-physicist.md"
   ],
   "commands": [
+    "./commands/analyze-data.md",
+    "./commands/benchmark.md",
     "./commands/md-sim.md",
-    "./commands/benchmark.md"
+    "./commands/run-experiment.md"
   ],
   "skills": [
     "./skills/science-hub",

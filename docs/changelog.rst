@@ -64,9 +64,12 @@ Unreleased
 * Also from the review: ``pyproject.toml``'s description still said 50 hubs / 148 sub-skills (now
   42 / 156), and the ``pickle.load`` in ``mcmc_diagnostics.py`` now documents its trust boundary
   (local diagnostic on the user's own file; never on an untrusted pickle).
-* Not changed, deliberately: ``/analyze-data`` and ``/run-experiment`` stay unregistered — the review
-  flagged them as advertised-but-undiscoverable, and the science-suite README documents them as
-  copy-and-adapt templates. Registering them is a product decision, recorded here rather than made.
+* ``/analyze-data`` and ``/run-experiment`` registered in science-suite's ``plugin.json`` — the review
+  flagged them as advertised-but-undiscoverable, and they already carried full frontmatter and a
+  ``Routes to`` line, so the "copy-and-adapt template" framing in the README no longer described them.
+  Marketplace-wide registered commands 15 -> 17; science-suite 2 -> 4. Counts updated in
+  ``README.md``, ``docs/index.rst``, ``pyproject.toml``, ``CLAUDE.md``, the science-suite README, and
+  the cross-suite invariant test's expected command count.
 
 **Tooling: agent system-prompt size is gated**
 

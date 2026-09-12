@@ -50,7 +50,7 @@ Science Suite provides 12 specialized agents (7 opus, 4 sonnet, 1 haiku) coverin
 
 ## Commands
 
-This suite registers **2 slash commands**: `/md-sim` (molecular dynamics simulation setup) and `/benchmark` (performance benchmarking). Reference command templates (`/run-experiment`, `/analyze-data`) exist on disk for users to copy and adapt, but are not invoked directly. `/paper-review` was removed in v3.4.0; use `scientific-review` in `research-suite` instead. `/adopt-code` was removed along with 14 other unregistered dev-suite commands; use `/modernize` for codebase adoption/migration.
+This suite registers **4 slash commands**: `/md-sim` (molecular dynamics simulation setup), `/benchmark` (performance benchmarking), `/run-experiment` (reproducible experiment design and execution), and `/analyze-data` (experimental correlation-data analysis). The latter two were previously shipped as unregistered templates; they are now first-class commands, each routing to `ml-expert` via `science-suite:ml-and-data-science`. `/paper-review` was removed in v3.4.0; use `scientific-review` in `research-suite` instead. `/adopt-code` was removed along with 14 other unregistered dev-suite commands; use `/modernize` for codebase adoption/migration.
 
 ## Skills (23 hubs → 114 sub-skills)
 

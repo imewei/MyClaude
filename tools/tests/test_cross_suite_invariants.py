@@ -26,7 +26,7 @@ VALID_MODEL_TIERS = {"opus", "sonnet", "haiku", "inherit"}
 # Expected registered command counts per CLAUDE.md
 EXPECTED_REGISTERED_COMMANDS = {
     "dev-suite": 10,
-    "science-suite": 2,
+    "science-suite": 4,
 }
 
 
