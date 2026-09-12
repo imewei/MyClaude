@@ -46,6 +46,19 @@ Unreleased
   re-breaking that line. An arrow may point to an agent — ``/replicate`` ends
   ``→ `quality-specialist``` — so agents are accepted there too.
 
+**Docs: counts resynced after the demotions**
+
+* The 8 skill demotions moved the marketplace from 50 registered hubs to 42, and sub-skills from 148 to
+  156 (198 SKILL.md files on disk, unchanged). Corrected in ``README.md``, ``docs/index.rst``,
+  ``docs/integration-map.rst`` (three places) and ``plugins/science-suite/README.md``
+  (30 -> 23 hubs, 107 -> 114 sub-skills).
+* ``CLAUDE.md``'s validation table described ``skill_validator.py`` as checking "triggering language",
+  which it no longer does after the tautological metrics were removed; now described as a
+  registered-skill inventory with frontmatter checks.
+* ``docs/integration-map.rst`` called ``research-practice`` a hub; it is reached via ``research-hub``
+  since 88316997.
+* Sphinx build succeeds with no warnings.
+
 **Routing: every command and agent now names where work goes next**
 
 * **9 of 17 commands named no agent and no hub** — ``/double-check``, ``/fix-commit-errors``, ``/merge-all``,
@@ -95,8 +108,9 @@ Unreleased
   ``nonlinear-dynamics-expert``'s decision framework carries a method-to-ecosystem table, key formulas,
   and validation checks found nowhere else. Cutting those is a quality judgement, not deduplication, and
   was left alone.
-* Skills needed no body trimming: no SKILL.md exceeds plugin-dev's 5,000-word maximum and only one
-  (``three-brain``, 3,807 words, which already has ``references/``) exceeds 3,000.
+* Skills needed no body trimming against plugin-dev's 5,000-word maximum — no SKILL.md exceeded it.
+  ``three-brain`` (then 3,807 words) was the only one past 3,000, and it was later trimmed anyway for a
+  different reason: it breached the repository's own context-budget gate. See the CI entry below.
 
 **Tooling: metadata_validator enforces routing reach**
 

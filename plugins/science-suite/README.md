@@ -4,7 +4,7 @@ Domain-specific scientific computing suite for high-performance computing, Julia
 
 ## Overview
 
-Science Suite provides 12 specialized agents (7 opus, 4 sonnet, 1 haiku) covering JAX, Julia, physics, ML/DL, continuum mechanics, and nonlinear dynamics. Its 30 hub skills route to 107 sub-skills spanning nonlinear dynamics, Bayesian inference, statistical physics, simulation, and more. Opus agents handle deep reasoning (PINN/inverse-PDE theory, bifurcation theory, DL architecture) while sonnet agents handle implementation (JAX kernels, Julia code, Python systems, MD/HPC simulation). SessionStart hooks auto-detect JAX devices, GPU availability, and Julia environments. *(Research methodology moved to `research-suite` in v3.4.0.)*
+Science Suite provides 12 specialized agents (7 opus, 4 sonnet, 1 haiku) covering JAX, Julia, physics, ML/DL, continuum mechanics, and nonlinear dynamics. Its 23 hub skills route to 114 sub-skills spanning nonlinear dynamics, Bayesian inference, statistical physics, simulation, and more. Opus agents handle deep reasoning (PINN/inverse-PDE theory, bifurcation theory, DL architecture) while sonnet agents handle implementation (JAX kernels, Julia code, Python systems, MD/HPC simulation). SessionStart hooks auto-detect JAX devices, GPU availability, and Julia environments. *(Research methodology moved to `research-suite` in v3.4.0.)*
 
 ## Quick Start / Usage Examples
 
