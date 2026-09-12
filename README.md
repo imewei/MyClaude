@@ -2,8 +2,8 @@
 
 [![Plugins](https://img.shields.io/badge/Plugins-3-blue.svg)](https://myclaude.readthedocs.io/en/latest/plugins/)
 [![Agents](https://img.shields.io/badge/Agents-20-green.svg)](docs/reference/agents.md)
-[![Commands](https://img.shields.io/badge/Commands-15-orange.svg)](docs/reference/commands.md)
-[![Skills](https://img.shields.io/badge/Skills-50_hubs_→_148_sub-purple.svg)](docs/reference/cheatsheet.md)
+[![Commands](https://img.shields.io/badge/Commands-17-orange.svg)](docs/reference/commands.md)
+[![Skills](https://img.shields.io/badge/Skills-42_hubs_→_156_sub-purple.svg)](docs/reference/cheatsheet.md)
 [![Version](https://img.shields.io/badge/Version-4.0.0-red.svg)](https://github.com/imewei/MyClaude)
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Docs](https://img.shields.io/badge/Docs-ReadTheDocs-brightgreen.svg)](https://myclaude.readthedocs.io/en/latest/)
@@ -16,9 +16,9 @@ MyClaude v4.0.0 uses a **hub-skill architecture**: skills are organized into hub
 
 | Suite | Agents | Commands | Hubs → Sub-skills | Hooks | Focus |
 |-------|--------|----------|-------------------|-------|-------|
-| [Dev Suite](plugins/dev-suite/) | 6 | 10 | 10 → 35 | 6 events | Full SDLC: architecture, CI/CD, testing, debugging |
-| [Research Suite](plugins/research-suite/) | 2 | 3 | 11 → 6 | 2 events | Peer review, research-spark pipeline (5-stage core + optional extension), methodology |
-| [Science Suite](plugins/science-suite/) | 12 | 2 | 30 → 107 | 4 events | JAX, Julia, physics, ML/DL/HPC, nonlinear dynamics |
+| [Dev Suite](plugins/dev-suite/) | 6 | 10 | 9 → 35 | 7 events | Full SDLC: architecture, CI/CD, testing, debugging |
+| [Research Suite](plugins/research-suite/) | 2 | 3 | 10 → 7 | 4 events | Peer review, research-spark pipeline (5-stage core + optional extension), methodology |
+| [Science Suite](plugins/science-suite/) | 12 | 4 | 23 → 114 | 5 events | JAX, Julia, physics, ML/DL/HPC, nonlinear dynamics |
 
 ## Specialist Agents
 

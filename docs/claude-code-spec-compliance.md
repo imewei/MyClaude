@@ -81,8 +81,8 @@ Currently used events marked ✅. Unused but available marked ○.
 | Hook `if` conditional filter | schema | Permission-rule syntax filter before subprocess spawns | Reduce hook overhead for non-matching commands |
 | Hook `once` option | schema | Hook auto-removes after first execution | One-shot setup hooks |
 | Hook `async` / `asyncRewake` | schema | Background hook execution; `asyncRewake` can re-wake model | Long-running post-processing without blocking |
-| `skillListingMaxDescChars` setting | schema | Caps description length in skill listing (default: 1536) | All 217 MyClaude skills are within limit ✅ |
-| `skillListingBudgetFraction` setting | schema | Context fraction for skill listing (default: 0.01) | Could raise slightly given 217 skills compete for 1% |
+| `skillListingMaxDescChars` setting | schema | Caps description length in skill listing (default: 1536) | All 198 MyClaude skills are within limit ✅ |
+| `skillListingBudgetFraction` setting | schema | Context fraction for skill listing (default: 0.01) | Could raise slightly given 198 skills compete for 1% |
 | `skillOverrides` setting | schema | Per-skill: "name-only", "user-invocable-only", "off" | Could hide rarely-used sub-skills from model routing |
 
 ---

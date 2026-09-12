@@ -94,13 +94,12 @@ Organized by domain:
 - **Other Domains**: Computer vision, NLP, bioinformatics, time series, control theory, symbolic math, quantum
   computing, federated learning, reinforcement learning
 
-## Hooks (6 events)
+## Hooks (5 events)
 
 | Event | Purpose |
 |-------|---------|
 | SessionStart | Detect JAX devices, GPU availability, Julia env |
 | UserPromptSubmit | Remind agent to route through the matching hub skill before implementing |
-| PreToolUse | Warn before commands that could corrupt simulations |
 | PostToolUse | NaN/Inf check on compute job output (numerical integrity) |
 | SessionEnd | Persist structured progress summary for next session |
 | SubagentStop | Collect results from parallel science agents |

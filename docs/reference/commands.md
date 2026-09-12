@@ -1,6 +1,6 @@
 # Command Reference
 
-**15 Registered Commands** | **2 Skill-Invoked Commands** | **Version:** 4.0.0
+**17 Registered Commands** | **0 Skill-Invoked Commands** | **Version:** 4.0.0
 
 Commands fall into two categories:
 - **Registered commands** are declared in `plugin.json` and available as user-facing `/slash-commands`.
@@ -33,12 +33,14 @@ Commands fall into two categories:
 | `/paper-implement` | Reproduce a research paper end-to-end: theory → code → validation |
 | `/replicate` | Computational replication of published experiments with deviation analysis |
 
-### Science Suite (`science-suite`) — 2 Commands
+### Science Suite (`science-suite`) — 4 Commands
 
 | Command | Description |
 |---------|-------------|
 | `/md-sim` | Molecular dynamics simulation setup, running, and trajectory analysis |
 | `/benchmark` | Scientific code benchmarking across backends and hardware targets |
+| `/analyze-data` | Analyze data files with statistical tests, visualization, and reporting |
+| `/run-experiment` | Design and execute computational experiments with hypothesis tracking |
 
 ---
 
@@ -50,12 +52,9 @@ These commands exist on disk and are triggered by skills during workflows. They 
 
 No unregistered command files on disk. All 10 dev-suite commands are registered slash commands.
 
-### Science Suite — 2 Skill-Invoked
+### Science Suite — 0 Skill-Invoked
 
-| Command | Description |
-|---------|-------------|
-| `analyze-data` | Analyze data files with statistical tests, visualization, and reporting |
-| `run-experiment` | Design and execute computational experiments with hypothesis tracking |
+No unregistered command files on disk. `analyze-data` and `run-experiment` were registered in v4.0.0; all 4 science-suite commands are registered slash commands.
 
 ### Research Suite — 0 Skill-Invoked
 

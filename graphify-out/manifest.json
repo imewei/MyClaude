@@ -1422,9 +1422,9 @@
     "semantic_hash": "ed53781932c39dc219c35250ef006ea3"
   },
   "plugins/science-suite/README.md": {
-    "mtime": 1789246718.9438767,
-    "seen": 1789246984.7106516,
-    "ast_hash": "6360a99d828b755ccc0808482a2609e6",
+    "mtime": 1789247436.3685646,
+    "seen": 1789247535.1170826,
+    "ast_hash": "cf887e4d578a0471c80b562f17243900",
     "semantic_hash": ""
   },
   "plugins/science-suite/skills/julia-ml-pipelines/SKILL.md": {

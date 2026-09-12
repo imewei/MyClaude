@@ -3,7 +3,7 @@ Research Suite
 
 Scientific research workflows: peer review, idea-to-plan refinement, and methodology orchestration. Three complementary tracks — ``scientific-review`` (manuscripts from other authors → .docx referee report), ``research-spark`` (own rough idea → fundable proposal, 5-stage core + optional extension), and ``research-practice`` (general methodology hub).
 
-**Version:** 4.0.0 | **2 Agents** | **3 Registered Commands** | **11 Hubs → 6 Sub-skills** | **2 Hook Events**
+**Version:** 4.0.0 | **2 Agents** | **3 Registered Commands** | **10 Hubs → 7 Sub-skills** | **4 Hook Events**
 
 Created in v3.4.0 by extracting ``research-expert`` plus 5 methodology skills from ``science-suite`` and adding the research-spark pipeline (new orchestrator + 7 stage-specialist skills + ``_research-commons`` resource hub).
 
@@ -143,9 +143,11 @@ The ``research-spark-orchestrator`` delegates across suite boundaries at natural
 Hooks
 -----
 
-2 hook events supporting the research-spark pipeline:
+4 hook events (``hooks/hooks.json``):
 
 - ``SessionStart`` — Detect research-spark stage artifacts (``01_spark.md`` through ``08_premortem.md``) and resume at the latest completed stage
+- ``PostToolUse`` — Completeness check on ``scientific-review`` deliverables (``reviews/*.md`` / ``*.docx``) after Write or Bash
+- ``SubagentStop`` — Verify stage artifacts when ``research-spark-orchestrator`` stops; silent for other agents
 - ``TaskCompleted`` — Log research tasks to ``.research-log.jsonl`` (audit trail) and prompt stage-artifact commit before advancing
 
 Beyond these, adversarial patterns and style linting remain enforced inside skill workflows (``_research-commons/scripts/style_lint.py``), so they run deterministically without depending on CLI event schemas.

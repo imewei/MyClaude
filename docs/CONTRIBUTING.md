@@ -18,7 +18,7 @@ uv sync            # installs dev + docs + science dependency groups
 | `uv run ruff check .` | Lint |
 | `uv run mypy tools/` | Type-check (excludes `plugins/*/hooks/`, `plugins/*/examples/`) |
 | `make format` | Format with black + `ruff --fix` |
-| `make validate` | Validate plugin metadata, command lint, doc cross-links |
+| `make validate` | Validate plugin metadata, command lint, doc cross-links, skill context budget + agent prompt size |
 | `make verify-fast` | Quick gate: lint + validate |
 | `make verify` | Full local CI: lint + validate + tests — run before every push |
 | `make audit` | pip-audit + bandit + vulture + gitleaks |
@@ -50,7 +50,7 @@ PYTHONPATH=. python3 tools/validation/metadata_validator.py plugins/dev-suite/
 
 - Each suite under `plugins/<suite>/` follows the layout documented in the root `CLAUDE.md`.
 - `plugin.json` registers only top-level hub skills — adding a sub-skill does not require a manifest edit.
-- Plugin version must stay in sync across `plugin.json`, `pyproject.toml`, and READMEs. No tooling checks this across files — `make validate` only checks semver format within each `plugin.json` independently — so verify by hand.
+- Plugin version must stay in sync across `plugin.json`, `pyproject.toml`, and READMEs. `make validate` only checks semver format within each `plugin.json`; `tools/tests/test_cross_suite_invariants.py` (run by `make verify`) checks the three `plugin.json` versions agree. pyproject.toml and README references are not checked — verify by hand.
 - Do not add `.. contents::` to RST docs — the Furo Sphinx theme auto-generates the sidebar TOC.
 
 ## PR Checklist

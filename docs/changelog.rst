@@ -4,6 +4,29 @@ Changelog
 Unreleased
 ----------
 
+**Docs: full resync against plugin.json, hooks.json, and SKILL.md routing**
+
+* ``docs/suites/science-suite.rst`` hub section regenerated from the 23 registered hubs and their
+  ``../<skill>/SKILL.md`` routing links (was 14 hand-maintained sections, still listing the demoted
+  ``correlation-analysis`` as a hub and missing 10 registered hubs). Per-hub counts are routing fan-out,
+  so overlapping hubs list shared sub-skills more than once; the section says so.
+* ``analyze-data`` and ``run-experiment`` reclassified from "skill-invoked" to registered in
+  ``docs/suites/science-suite.rst``, ``docs/reference/commands.md`` (15 + 2 -> 17 + 0),
+  ``docs/reference/cheatsheet.md``, and the README badge/table.
+* Hook-event counts corrected from ``hooks/hooks.json``: dev-suite 6 -> 7 (``UserPromptSubmit`` was
+  missing), research-suite 2 -> 4 (``PostToolUse``, ``SubagentStop`` were missing), science-suite 4/6 -> 5
+  (``PreToolUse`` listed but never wired). Total 12 -> 16.
+* Remaining stale hub/sub-skill totals (50/148, 30/107, 11/6, 217 skills) fixed in ``README.md``,
+  ``docs/reference/cheatsheet.md``, ``docs/guides/integration-patterns.rst``,
+  ``docs/guides/scientific-workflows.rst``, ``docs/integration-map.rst``,
+  ``docs/claude-code-spec-compliance.md``, ``docs/suites/{dev,research}-suite.rst``.
+* ``CLAUDE.md``, ``docs/CONTRIBUTING.md``, ``docs/RUNBOOK.md``: ``make validate`` does not catch
+  cross-file version drift — ``test_cross_suite_invariants.py`` checks the three ``plugin.json`` agree;
+  pyproject/READMEs are unchecked. ``make validate`` description now includes the context-budget /
+  agent-prompt-size gate; ``command_file_linter.py`` described by what it checks (fences, headings, Step refs).
+* ``tools/README.md`` tree resynced: added ``command_file_linter.py``, ``readme_sanitizer.py``, and 7
+  missing test files; removed nonexistent ``test_category_pages.py``.
+
 **science-suite: six second-level routers demoted to sub-skills (30 -> 24 hubs)**
 
 * ``bayesian-ude-workflow``, ``equation-discovery``, ``md-simulation-setup``, ``neural-pde``,

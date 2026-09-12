@@ -25,11 +25,13 @@ tools/
 ├── common/                # Shared utilities
 │   ├── loader.py          # Plugin loading and parsing
 │   ├── models.py          # Data models (dataclasses)
+│   ├── readme_sanitizer.py # README probe sanitizer (prompt-injection safeguards)
 │   ├── reporter.py        # Markdown report generation
 │   └── timer.py           # Performance timing utilities
 ├── validation/            # Plugin validation tools
 │   ├── metadata_validator.py      # plugin.json schema validation
-│   ├── context_budget_checker.py  # Skill size budget enforcement (2% limit)
+│   ├── command_file_linter.py     # Command .md structural lint (fences, headings, Step refs)
+│   ├── context_budget_checker.py  # Skill context budget (2%) + agent prompt size (10k chars)
 │   ├── skill_validator.py         # Skill triggering pattern validation
 │   ├── xref_validator.py          # Cross-plugin reference validation
 │   ├── doc_checker.py             # Documentation completeness checker
@@ -47,17 +49,23 @@ tools/
 │   └── enable_all_plugins.py      # Enable all plugins in settings
 ├── tests/                 # Pytest suite (258 tests)
 │   ├── test_build_automation.py
-│   ├── test_category_pages.py
 │   ├── test_command_file_linter.py
 │   ├── test_content_extraction.py
+│   ├── test_context_budget_checker.py
 │   ├── test_cross_suite_invariants.py
+│   ├── test_dev_suite_hook_payloads.py
 │   ├── test_dev_suite_integrity.py
 │   ├── test_doc_checker.py
 │   ├── test_hook_integrity.py
+│   ├── test_iterative_error_resolution.py
+│   ├── test_metadata_validator.py
 │   ├── test_plugin_review.py
 │   ├── test_readme_safeguards.py
 │   ├── test_refactor_validator.py
+│   ├── test_research_suite_integrity.py
+│   ├── test_scicomp_redesign.py
 │   ├── test_science_suite_functionality.py
+│   ├── test_science_suite_hook_payloads.py
 │   ├── test_science_suite_integrity.py
 │   ├── test_skill_validator.py
 │   ├── test_supplementary_docs.py

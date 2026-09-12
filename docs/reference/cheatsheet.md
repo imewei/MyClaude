@@ -1,6 +1,6 @@
 # Quick Reference Cheatsheet
 
-**3 Suites** | **20 Agents** | **15 Registered Commands** | **50 Hub Skills** (routing to 148 sub-skills; 198 SKILL.md on disk)
+**3 Suites** | **20 Agents** | **17 Registered Commands** | **42 Hub Skills** (routing to 156 sub-skills; 198 SKILL.md on disk)
 **Version:** 4.0.0
 
 ---
@@ -26,7 +26,7 @@ plugin.json → hub skill → routing decision tree → sub-skill
 | Agents | 6 | 1 opus, 4 sonnet, 1 haiku |
 | Commands | 10 registered | `/docs`, `/double-check`, `/eng-feature-dev`, `/fix-commit-errors`, `/merge-all`, `/modernize`, `/run-all-tests`, `/smart-debug`, `/test-generate`, `/workflow-automate` |
 | Skills | 9 hubs → 35 sub | dev-hub, three-brain, architecture-and-infra, backend-patterns, ci-cd-pipelines, data-and-security, dev-workflows, observability-and-sre, testing-and-quality |
-| Hooks | 6 events | SessionStart, PostToolUse, SubagentStop, TaskCompleted, SessionEnd, StopFailure |
+| Hooks | 7 events | SessionStart, UserPromptSubmit, PostToolUse, SubagentStop, TaskCompleted, SessionEnd, StopFailure |
 
 ### 2. Research Suite (`research-suite`)
 
@@ -36,8 +36,8 @@ plugin.json → hub skill → routing decision tree → sub-skill
 |-----------|-------|---------|
 | Agents | 2 | research-expert (opus), research-spark-orchestrator (opus) |
 | Commands | 3 registered | `/lit-review`, `/paper-implement`, `/replicate` |
-| Skills | 11 hubs → 6 sub | research-hub, experiment-designer, falsifiable-claim, landscape-scanner, numerical-prototype, premortem-critique, research-practice, research-spark, scientific-review, spark-articulator, theory-scaffold |
-| Hooks | 2 events | SessionStart (artifact-resume), TaskCompleted (audit log) |
+| Skills | 10 hubs → 7 sub | research-hub, research-spark, scientific-review, spark-articulator, landscape-scanner, falsifiable-claim, theory-scaffold, numerical-prototype, experiment-designer, premortem-critique (research-practice is a sub-skill reached via research-hub) |
+| Hooks | 4 events | SessionStart (artifact-resume), PostToolUse (scientific-review deliverable check), SubagentStop (research-spark artifact check), TaskCompleted (audit log) |
 
 ### 3. Science Suite (`science-suite`)
 
@@ -46,11 +46,11 @@ plugin.json → hub skill → routing decision tree → sub-skill
 | Component | Count | Details |
 |-----------|-------|---------|
 | Agents | 12 | 7 opus, 4 sonnet, 1 haiku |
-| Commands | 2 registered | `/md-sim`, `/benchmark` (plus `analyze-data`, `run-experiment` on disk, skill-invoked) |
-| Skills | 30 hubs → 107 sub | science-hub, advanced-simulations, bayesian-inference, bayesian-ude-workflow, continuum-mechanics-and-rheology, correlation-analysis, deep-learning, deep-learning-hub, equation-discovery, jax-computing, julia-language, julia-mastery, julia-ml-and-dl, llm-and-ai, machine-learning, md-simulation-setup, ml-and-data-science, ml-deployment, neural-pde, nonlinear-dynamics, parallel-computing, python-development, research-and-domains, sciml-and-diffeq, sciml-modern-stack, self-improving-ai, simulation-and-hpc, statistical-physics, statistical-physics-hub, time-series-analysis |
-| Hooks | 4 events | SessionStart, PostToolUse, SessionEnd, SubagentStop |
+| Commands | 4 registered | `/md-sim`, `/benchmark`, `/analyze-data`, `/run-experiment` |
+| Skills | 23 hubs → 114 sub | science-hub, advanced-simulations, bayesian-inference, continuum-mechanics-and-rheology, deep-learning, deep-learning-hub, jax-computing, julia-language, julia-mastery, julia-ml-and-dl, llm-and-ai, machine-learning, ml-and-data-science, ml-deployment, nonlinear-dynamics, parallel-computing, python-development, research-and-domains, sciml-and-diffeq, simulation-and-hpc, statistical-physics, statistical-physics-hub, time-series-analysis |
+| Hooks | 5 events | SessionStart, UserPromptSubmit, PostToolUse, SessionEnd, SubagentStop |
 
-**Total hook events across all suites:** 12
+**Total hook events across all suites:** 16
 
 ---
 
@@ -106,7 +106,7 @@ plugin.json → hub skill → routing decision tree → sub-skill
 ## Resources
 
 - [Agent Reference](agents.md) — All 20 agents with model tiers and delegation patterns
-- [Commands Reference](commands.md) — 15 registered + 2 skill-invoked commands
+- [Commands Reference](commands.md) — 17 registered commands
 - [Integration Map](../integration-map.rst) — Suite dependencies, MCP server roles, skill coverage
 - [Glossary](../glossary.rst) — Hub Skill, Sub-Skill, Routing Decision Tree
 - [GitHub Repository](https://github.com/imewei/MyClaude)

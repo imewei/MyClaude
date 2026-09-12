@@ -94,5 +94,5 @@ Related
 -------
 
 - :doc:`/suites/research-suite` — Full research-suite reference (2 agents, 3 workflow tracks)
-- :doc:`/suites/science-suite` — Full science-suite reference (30 hubs → 107 sub-skills)
+- :doc:`/suites/science-suite` — Full science-suite reference (23 hubs → 114 sub-skills)
 - :doc:`/glossary` — Hub Skill, Sub-Skill, and Routing Decision Tree definitions
