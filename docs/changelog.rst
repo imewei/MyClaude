@@ -46,6 +46,30 @@ Unreleased
   re-breaking that line. An arrow may point to an agent — ``/replicate`` ends
   ``→ `quality-specialist``` — so agents are accepted there too.
 
+**Routing: every command and agent now names where work goes next**
+
+* **9 of 17 commands named no agent and no hub** — ``/double-check``, ``/fix-commit-errors``, ``/merge-all``,
+  ``/modernize``, ``/run-all-tests``, ``/smart-debug``, ``/test-generate``, ``/workflow-automate``,
+  plus the two science-suite templates. Each now carries a
+  ``Routes to `<agent>` via `<suite>:<hub>` → `<sub-skill>``` line in the grammar ``/md-sim`` already used.
+  The mapping was not invented: five of the skills already declared the reverse edge in their own
+  descriptions ("Provides domain knowledge for the /double-check command"), and every hub-to-sub-skill
+  pairing was verified against the hub's routing tree before being written down. Now 0 of 17.
+* **11 of 20 agents named no skill at all** — all six dev-suite agents plus
+  ``continuum-mechanics-engineer``, ``ml-expert``, ``neural-network-master``,
+  ``nonlinear-dynamics-expert`` and ``python-pro``. Each gained a compact ``## Related Skills`` section
+  built from the reverse edge (which skills name that agent as their expert reference), splitting
+  "route in via" hubs from "depth lives in" sub-skills. Now 0 of 20. Kept to ~300-700 chars each rather
+  than the 1,000-2,000 char tables the older agents carry, so agent bodies land at 175,067 chars —
+  still 25% below the 233,157 baseline.
+* ``/lit-review`` rewritten to the same grammar; ``research-practice`` is no longer a registered hub, so
+  the route now names ``research-hub`` as the hub and ``research-practice`` as the sub-skill.
+* **Both edges are now enforced.** ``command_file_linter.py`` gains a ``route-target-unresolved`` rule
+  that resolves each route's hub against the manifests and its sub-skill against disk, so a demoted hub
+  or renamed skill fails lint instead of silently rotting. Three cross-suite invariant tests assert every
+  command names an agent or hub, every agent names at least one skill, and every ``Related Skills``
+  pointer resolves. All four checks were verified to fire by temporarily breaking a command and an agent.
+
 **Agents: 27% smaller system prompts, per plugin-dev's budget**
 
 * Agent bodies total 233,157 -> 169,494 chars (-63,663). Agents exceeding plugin-dev's 10,000-char
