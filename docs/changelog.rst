@@ -18,9 +18,15 @@ Unreleased
 * ``time-series-analysis`` was examined with them but **kept registered**: it is the only one of the seven
   that adds unique reach (``extreme-value-statistics``, ``point-processes`` are not covered by its parent
   ``simulation-and-hpc``).
-* ``correlation-analysis`` and ``research-practice`` also fail the redundancy test but were left alone as
-  out of scope for this pass.
-* science-suite README skill count updated 30 -> 24 hubs, 107 -> 113 sub-skills.
+* ``correlation-analysis`` (science-suite) and ``research-practice`` (research-suite) fail the same
+  redundancy test and were demoted in a follow-up pass. Both stay reachable —
+  ``correlation-analysis`` from ``science-hub`` and ``statistical-physics``, ``research-practice`` from
+  ``research-hub`` and ``research-and-domains``. ``/lit-review`` still routes through
+  ``research-suite:research-practice``; its wording was updated since that skill is no longer a
+  registered hub.
+* Registered skills across the marketplace: 50 -> 42. science-suite 30 -> 23 hubs (107 -> 114 sub-skills),
+  research-suite 11 -> 10 hubs (6 -> 7 sub-skills). Roughly 4,263 chars (~1,065 tokens) of always-loaded
+  skill descriptions removed in total.
 
 **Tooling: removed the tautological skill-triggering metrics**
 

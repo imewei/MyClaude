@@ -8,9 +8,10 @@ allowed-tools: ["Read", "Write", "WebSearch", "WebFetch"]
 # /lit-review — Literature Review
 
 > **SEE ALSO:** For a general literature search without structured claim extraction or PRISMA/GRADE synthesis, use `ecc:scientific-thinking-literature-review` or `ecc:deep-research`.
-> Use this command for research-suite's structured topic-scan pipeline (claim extraction, evidence synthesis, gap identification) via the `research-practice` hub.
+> Use this command for research-suite's structured topic-scan pipeline (claim extraction, evidence synthesis, gap identification) via the `research-practice` skill.
 
-Routes to `research-expert` via `research-suite:research-practice` hub.
+Routes to `research-expert` via `research-suite:research-practice`, reached through the
+`research-hub` routing tree.
 
 ## Usage
 
