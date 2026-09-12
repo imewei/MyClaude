@@ -28,6 +28,24 @@ Unreleased
   research-suite 11 -> 10 hubs (6 -> 7 sub-skills). Roughly 4,263 chars (~1,065 tokens) of always-loaded
   skill descriptions removed in total.
 
+**Routing: every command names its first hop, and the linter now enforces it**
+
+* All 17 slash commands carry an explicit ``Routes to <agent> via <suite>:<hub> → <sub-skill>`` line.
+  Nine previously named no target at all, leaving the first hop to inference: ``/smart-debug``,
+  ``/test-generate``, ``/double-check``, ``/run-all-tests``, ``/modernize``, ``/merge-all``,
+  ``/workflow-automate``, ``/analyze-data`` and ``/run-experiment``.
+* ``/lit-review`` pointed at ``research-suite:research-practice``, which stopped being a registered hub
+  when it was demoted. Rewritten to ``research-suite:research-hub → research-practice``.
+* The six dev-suite agents gained a ``## Related Skills`` section naming the hub that routes to them and
+  the sub-skills that name them as expert — the convention science-suite agents already used. Every claim
+  was verified in both directions: the hub names the agent, and each listed skill names it too.
+  ``app-developer`` has no "Route in via" line because no dev-suite hub claims it.
+* ``command_file_linter.py`` gains a ``route-target-unresolved`` rule checking that the hub in a route
+  line is registered and the arrow target is a real skill directory or agent. This is the check that
+  would have caught ``/lit-review`` at lint time instead of at the next audit; verified to fire by
+  re-breaking that line. An arrow may point to an agent — ``/replicate`` ends
+  ``→ `quality-specialist``` — so agents are accepted there too.
+
 **Agents: 27% smaller system prompts, per plugin-dev's budget**
 
 * Agent bodies total 233,157 -> 169,494 chars (-63,663). Agents exceeding plugin-dev's 10,000-char

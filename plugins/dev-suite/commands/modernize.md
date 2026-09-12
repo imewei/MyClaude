@@ -13,6 +13,8 @@ tags: [migration, modernization, strangler-fig, refactoring, technical-debt]
 
 # Code Modernization
 
+Routes to `software-architect` via `dev-suite:architecture-and-infra` → `modernization-migration`.
+
 $ARGUMENTS
 
 ## Actions

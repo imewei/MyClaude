@@ -13,6 +13,8 @@ allowed-tools: [Read, Write, Edit, Bash, Grep, Glob, Task, CronCreate, ScheduleW
 
 # Workflow Automation
 
+Routes to `automation-engineer` via `dev-suite:ci-cd-pipelines` → `github-actions-templates`.
+
 $ARGUMENTS
 
 ## Mode Coverage

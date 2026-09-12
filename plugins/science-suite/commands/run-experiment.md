@@ -7,6 +7,8 @@ allowed-tools: ["Read", "Write", "Bash", "Glob"]
 
 # Run Experiment
 
+Routes to `ml-expert` via `science-suite:ml-and-data-science` → `experiment-tracking`.
+
 Design and execute a reproducible scientific experiment.
 
 ## Workflow

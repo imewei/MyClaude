@@ -10,6 +10,8 @@ allowed-tools: [Bash, Read, Edit, Task, Bash(uv:*), ScheduleWakeup]
 
 # Iterative Test Execution & Auto-Fix
 
+Routes to `quality-specialist` via `dev-suite:testing-and-quality` → `test-automation`.
+
 $ARGUMENTS
 
 ## Modes

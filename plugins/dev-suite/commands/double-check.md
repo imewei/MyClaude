@@ -10,6 +10,8 @@ allowed-tools: [Bash, Read, Task, Grep]
 
 # Comprehensive Validation
 
+Routes to `quality-specialist` via `dev-suite:testing-and-quality` → `comprehensive-validation`.
+
 $ARGUMENTS
 
 ## Modes

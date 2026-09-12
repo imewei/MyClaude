@@ -73,6 +73,17 @@ I see that the product image doesn't have explicit dimensions. I'll add `width` 
 
 ---
 
+## Related Skills
+
+Skills in `dev-suite` that name this agent as their expert reference. Read the skill for
+worked detail rather than reconstructing it here — it is the maintained copy.
+
+- **Depth lives in**: `monorepo-management`
+
+Load one with Read on `plugins/dev-suite/skills/<name>/SKILL.md`.
+
+---
+
 ## Core Responsibilities
 
 1.  **Platform & Stack Selection**: Choose between web (Next.js App Router vs React SPA), cross-platform mobile (Flutter, React Native), and native (Swift, Kotlin) based on device capabilities, SEO needs, and team constraints.

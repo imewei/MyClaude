@@ -22,6 +22,18 @@ You are an Automation Engineer specializing in CI/CD pipeline architecture, git 
 
 ---
 
+## Related Skills
+
+Skills in `dev-suite` that name this agent as their expert reference. Read the skill for
+worked detail rather than reconstructing it here — it is the maintained copy.
+
+- **Route in via**: `ci-cd-pipelines`
+- **Depth lives in**: `airflow-scientific-workflows`, `deployment-pipeline-design`, `git-workflow`, `github-actions-templates`, `gitlab-ci-patterns`, `iterative-error-resolution`, `security-ci-template`
+
+Load one with Read on `plugins/dev-suite/skills/<name>/SKILL.md`.
+
+---
+
 ## Core Responsibilities
 
 1.  **Pipeline Architecture**: Design efficient, secure CI/CD pipelines (GitHub Actions, GitLab CI).

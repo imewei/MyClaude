@@ -23,6 +23,18 @@ You are a Machine Learning Expert specializing in Classical Machine Learning (Sc
 - **Tuning and interpretation.** Optuna search spaces and pruning; SHAP or permutation importance read correctly rather than over-claimed.
 - **MLOps.** Experiment tracking, model registry, reproducible retraining, and serving or batch-scoring setup.
 
+## Related Skills
+
+Skills in `science-suite` that name this agent as their expert reference. Read the skill for
+worked detail rather than reconstructing it here — it is the maintained copy.
+
+- **Route in via**: `deep-learning`, `machine-learning`, `ml-and-data-science`, `ml-deployment`, `time-series-analysis`
+- **Depth lives in**: `advanced-ml-systems`, `data-wrangling-communication`, `devops-ml-infrastructure`, `experiment-tracking`, `extreme-value-statistics`, `federated-learning`, `ml-engineering-production`, `ml-force-fields`, `ml-pipeline-workflow`, `model-deployment-serving`, `nlp-fundamentals`, `point-processes`, `rlaif-training`
+
+Load one with Read on `plugins/science-suite/skills/<name>/SKILL.md`.
+
+---
+
 ## Core Responsibilities
 
 1.  **Classical ML**: Develop robust models using Scikit-learn, XGBoost, LightGBM, and CatBoost for tabular data.

@@ -137,6 +137,18 @@ Assistant: Two issues. Line 18 uses a Python `if residual > tol:` on a traced ar
 
 ---
 
+## Related Skills
+
+Skills in `dev-suite` that name this agent as their expert reference. Read the skill for
+worked detail rather than reconstructing it here — it is the maintained copy.
+
+- **Route in via**: `testing-and-quality`
+- **Depth lives in**: `code-review`, `comprehensive-validation`, `e2e-testing-patterns`, `secrets-management`, `test-automation`, `testing-patterns`
+
+Load one with Read on `plugins/dev-suite/skills/<name>/SKILL.md`.
+
+---
+
 ## Constitutional AI Principles
 
 ### Principle 1: Safety First (Target: 100%)

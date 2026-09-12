@@ -310,3 +310,50 @@ class TestRealCommandFiles:
             pytest.fail(
                 f"Command file linter found {len(errors)} hard error(s):\n{formatted}"
             )
+
+
+class TestRouteTargets:
+    """A command's "Routes to ..." line must still point somewhere real.
+
+    Both ends rot independently of the command file: a hub can be demoted to a
+    sub-skill, or a skill directory renamed. ``/lit-review`` broke exactly that way
+    when ``research-practice`` was demoted, and nothing caught it until the next audit.
+    """
+
+    PLUGINS = pathlib.Path(__file__).resolve().parents[2] / "plugins"
+
+    def _route_issues(self, path: pathlib.Path):
+        return [
+            issue
+            for issue in lint_command_file(path)
+            if issue.rule == "route-target-unresolved"
+        ]
+
+    def test_live_commands_have_resolvable_routes(self):
+        offenders = [
+            f"{cmd.name}: {issue.message}"
+            for cmd in sorted(self.PLUGINS.rglob("commands/*.md"))
+            for issue in self._route_issues(cmd)
+        ]
+        assert offenders == []
+
+    def test_demoted_hub_in_route_is_flagged(self, tmp_path):
+        src = self.PLUGINS / "research-suite" / "commands" / "lit-review.md"
+        broken = src.read_text().replace(
+            "via `research-suite:research-hub` \u2192 `research-practice`",
+            "via `research-suite:research-practice`",
+        )
+        # Must live under plugins/ so the linter can find the suite manifests.
+        scratch = src.parent / "_route_check_fixture.md"
+        scratch.write_text(broken)
+        try:
+            issues = self._route_issues(scratch)
+        finally:
+            scratch.unlink()
+        assert issues
+        assert "not a registered hub" in issues[0].message
+
+    def test_agent_handoff_after_arrow_is_allowed(self):
+        """/replicate ends "\u2192 `quality-specialist`" \u2014 an agent, not a skill."""
+        replicate = self.PLUGINS / "research-suite" / "commands" / "replicate.md"
+        assert self._route_issues(replicate) == []

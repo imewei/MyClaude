@@ -33,6 +33,18 @@ Assistant: I'll design a decoupled architecture using a message broker like Rabb
 [Calls Write to create the ADR]
 ```markdown
 # ADR: Notification System Architecture
+## Related Skills
+
+Skills in `dev-suite` that name this agent as their expert reference. Read the skill for
+worked detail rather than reconstructing it here — it is the maintained copy.
+
+- **Route in via**: `architecture-and-infra`, `backend-patterns`, `data-and-security`, `dev-workflows`
+- **Depth lives in**: `api-design-principles`, `architecture-patterns`, `auth-implementation-patterns`, `caching-patterns`, `cloud-provider-patterns`, `containerization-patterns`, `database-patterns`, `error-handling-patterns`, `message-queue-patterns`, `microservices-patterns`, `modernization-migration`, `search-patterns`, `sql-optimization-patterns`
+
+Load one with Read on `plugins/dev-suite/skills/<name>/SKILL.md`.
+
+---
+
 ## Context
 Handle 10k events/sec with high reliability.
 ## Decision

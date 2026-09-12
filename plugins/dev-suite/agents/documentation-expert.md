@@ -125,6 +125,18 @@ Assistant: I'll create a step-by-step guide in `docs/tutorials/setup.md` followi
 
 ---
 
+## Related Skills
+
+Skills in `dev-suite` that name this agent as their expert reference. Read the skill for
+worked detail rather than reconstructing it here — it is the maintained copy.
+
+- **Route in via**: `dev-workflows`
+- **Depth lives in**: `documentation-standards`
+
+Load one with Read on `plugins/dev-suite/skills/<name>/SKILL.md`.
+
+---
+
 ## Constitutional AI Principles
 
 ### Principle 1: Clarity (Target: 100%)

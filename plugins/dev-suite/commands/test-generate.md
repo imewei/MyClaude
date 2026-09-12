@@ -10,6 +10,8 @@ allowed-tools: [Read, Write, Bash, Task]
 
 # Scientific Test Generation
 
+Routes to `quality-specialist` via `dev-suite:testing-and-quality` → `testing-patterns`.
+
 > **SEE ALSO:** For the TDD discipline (write tests before implementation), use `superpowers:test-driven-development`. For reviewing test coverage on a PR, use `pr-review-toolkit:pr-test-analyzer`.
 > This command generates **scientific test suites**: numerical precision assertions (`assert_allclose`, `≈`), property-based tests for mathematical invariants (commutativity, linearity, idempotence), JAX JIT/vmap equivalence and gradient-correctness tests, Julia `@inferred` / `@test_nowarn` type-stability checks, and benchmark suites for performance regression.
 

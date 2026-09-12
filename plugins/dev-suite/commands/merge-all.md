@@ -9,6 +9,8 @@ agents:
 
 # Merge All Branches
 
+Routes to `automation-engineer` via `dev-suite:dev-workflows` → `git-workflow`.
+
 Commit changes, merge all local branches into main, delete merged branches.
 
 **Arguments:** $ARGUMENTS

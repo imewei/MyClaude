@@ -7,6 +7,8 @@ allowed-tools: ["Read", "Write", "Bash", "Glob"]
 
 # Analyze Data
 
+Routes to `ml-expert` via `science-suite:ml-and-data-science` → `data-analysis`.
+
 Comprehensive data analysis workflow from raw data to publishable results.
 
 ## Workflow

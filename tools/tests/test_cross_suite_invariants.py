@@ -259,3 +259,91 @@ class TestHookScriptSyntax:
         assert not syntax_errors, (
             f"{suite} hook scripts with syntax errors: {syntax_errors}"
         )
+
+
+ALL_SUITES = ["dev-suite", "research-suite", "science-suite"]
+
+
+def _all_skill_names() -> set[str]:
+    return {
+        p.parent.name
+        for suite in ALL_SUITES
+        for p in (PLUGINS_ROOT / suite / "skills").rglob("SKILL.md")
+    }
+
+
+def _registered_skill_names() -> set[str]:
+    names: set[str] = set()
+    for suite in ALL_SUITES:
+        data = json.loads(
+            (PLUGINS_ROOT / suite / ".claude-plugin" / "plugin.json").read_text()
+        )
+        names |= {Path(ref).name for ref in data.get("skills", [])}
+    return names
+
+
+def _agent_names() -> set[str]:
+    return {
+        a.stem for suite in ALL_SUITES for a in (PLUGINS_ROOT / suite / "agents").glob("*.md")
+    }
+
+
+class TestDispatchEdgesAreDeclared:
+    """Every command and agent must name where work goes next.
+
+    Routing here is carried by prose, not by a manifest field: a command says which
+    agent or hub handles it, and an agent names the skills holding the worked detail.
+    Nothing else in the toolchain checks those edges, so a command that names no
+    target reads as a dead end and an agent that names no skill invites rewriting from
+    memory what a skill already maintains.
+    """
+
+    @pytest.mark.parametrize("suite", ALL_SUITES)
+    def test_every_command_names_an_agent_or_hub(self, suite: str):
+        agents = _agent_names()
+        hubs = _registered_skill_names()
+        orphans = []
+        for command in sorted((PLUGINS_ROOT / suite / "commands").glob("*.md")):
+            text = command.read_text(encoding="utf-8")
+            named = any(re.search(rf"\b{re.escape(n)}\b", text) for n in agents | hubs)
+            if not named:
+                orphans.append(command.stem)
+        assert not orphans, (
+            f"{suite} commands naming no agent and no registered hub: {orphans}. "
+            "Add a 'Routes to `<agent>` via `<suite>:<hub>`' line."
+        )
+
+    @pytest.mark.parametrize("suite", ALL_SUITES)
+    def test_every_agent_names_at_least_one_skill(self, suite: str):
+        skills = _all_skill_names()
+        orphans = []
+        for agent in sorted((PLUGINS_ROOT / suite / "agents").glob("*.md")):
+            text = agent.read_text(encoding="utf-8")
+            if not any(re.search(rf"`{re.escape(s)}`", text) for s in skills):
+                orphans.append(agent.stem)
+        assert not orphans, (
+            f"{suite} agents naming no skill: {orphans}. Add a 'Related Skills' "
+            "section pointing at the skills that carry the worked detail."
+        )
+
+    @pytest.mark.parametrize("suite", ALL_SUITES)
+    def test_agent_skill_references_resolve(self, suite: str):
+        """A pointer to a skill that does not exist is worse than no pointer."""
+        skills = _all_skill_names()
+        agents = _agent_names()
+        broken = []
+        for agent in sorted((PLUGINS_ROOT / suite / "agents").glob("*.md")):
+            section = re.search(
+                r"## Related Skills(.*?)(?=\n## |\Z)", agent.read_text(), re.DOTALL
+            )
+            if not section:
+                continue
+            for name in re.findall(r"`([a-z0-9][a-z0-9-]{3,})`", section.group(1)):
+                # Backticks in these sections also wrap suite names and library
+                # names (`remake`, `tick`, `freud`). Skill and agent names are
+                # always hyphenated, so require a hyphen and skip the suites.
+                if "-" not in name or name in ALL_SUITES:
+                    continue
+                if name not in skills and name not in agents:
+                    broken.append(f"{agent.stem} -> {name}")
+        assert not broken, f"{suite} agents pointing at non-existent skills: {broken}"

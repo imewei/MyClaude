@@ -34,6 +34,7 @@ Usage (importable):
 from __future__ import annotations
 
 import argparse
+import json
 import pathlib
 import re
 import sys
@@ -48,6 +49,7 @@ RULE_HEADING_SKIP = "heading-skip"
 RULE_BROKEN_STEP_REF = "step-ref-broken"
 RULE_TRAILING_WS = "trailing-whitespace"
 RULE_DUPLICATE_HEADING = "heading-duplicate"
+RULE_ROUTE_TARGET = "route-target-unresolved"
 
 
 @dataclass(frozen=True)
@@ -263,6 +265,101 @@ def _check_duplicate_headings(lines: list[str], path: pathlib.Path) -> list[Lint
 # ---------------------------------------------------------------------------
 
 
+# ---------------------------------------------------------------------------
+# Routing targets
+# ---------------------------------------------------------------------------
+
+_ROUTE_LINE = re.compile(r"^Routes? to .+$", re.MULTILINE)
+_ROUTE_HUB = re.compile(r"`([a-z-]+-suite):([a-z0-9-]+)`")
+_ROUTE_SUBSKILL = re.compile(r"→ `([a-z0-9-]+)`")
+
+
+def _plugins_root(path: pathlib.Path) -> pathlib.Path | None:
+    """Walk up from a command file to the directory holding the suites."""
+    for parent in path.parents:
+        if parent.name == "plugins":
+            return parent
+    return None
+
+
+def _registered_hubs(plugins_root: pathlib.Path) -> dict[str, str]:
+    """Map each registered hub name to the suite that registers it."""
+    hubs: dict[str, str] = {}
+    for manifest in sorted(plugins_root.glob("*/.claude-plugin/plugin.json")):
+        try:
+            skills = json.loads(manifest.read_text(encoding="utf-8")).get("skills", [])
+        except (OSError, json.JSONDecodeError):
+            continue
+        for ref in skills:
+            if isinstance(ref, str):
+                hubs[pathlib.Path(ref).name] = manifest.parent.parent.name
+    return hubs
+
+
+def _check_route_targets(text: str, path: pathlib.Path) -> list[LintIssue]:
+    """Verify a command's "Routes to ..." line still points somewhere real.
+
+    A command names its first hop as ``<agent> via <suite>:<hub> → <sub-skill>``.
+    Both ends can rot independently of the command file: a hub can be demoted to a
+    sub-skill, or a skill directory can be renamed. Either leaves the command naming
+    a route that no longer exists, which is invisible until someone runs it. Checking
+    the hub is registered and the sub-skill exists on disk catches that at lint time.
+    """
+    plugins_root = _plugins_root(path)
+    if plugins_root is None:
+        return []
+
+    issues: list[LintIssue] = []
+    hubs = _registered_hubs(plugins_root)
+    skill_dirs = {d.name for d in plugins_root.glob("*/skills/*") if d.is_dir()}
+    # A chain may hand off to an agent rather than a skill --
+    # /replicate ends "→ `quality-specialist` (numerical validation gates)".
+    agent_names = {a.stem for a in plugins_root.glob("*/agents/*.md")}
+
+    for match in _ROUTE_LINE.finditer(text):
+        line_no = text[: match.start()].count("\n") + 1
+        line = match.group(0)
+
+        for suite, hub in _ROUTE_HUB.findall(line):
+            if hub in hubs:
+                continue
+            detail = (
+                f"'{hub}' is a sub-skill, not a registered hub"
+                if hub in skill_dirs
+                else f"'{hub}' does not exist"
+            )
+            issues.append(
+                LintIssue(
+                    path=path,
+                    line=line_no,
+                    rule=RULE_ROUTE_TARGET,
+                    severity="error",
+                    message=(
+                        f"route names `{suite}:{hub}` but {detail}. "
+                        f"Name a registered hub, and put the sub-skill after the arrow."
+                    ),
+                )
+            )
+
+        for sub in _ROUTE_SUBSKILL.findall(line):
+            if sub in skill_dirs or sub in hubs or sub in agent_names:
+                continue
+            issues.append(
+                LintIssue(
+                    path=path,
+                    line=line_no,
+                    rule=RULE_ROUTE_TARGET,
+                    severity="error",
+                    message=(
+                        f"route ends at `{sub}`, which is neither a skill "
+                        f"directory nor an agent."
+                    ),
+                )
+            )
+
+    return issues
+
+
 def lint_command_file(path: pathlib.Path) -> list[LintIssue]:
     """Run all structural checks on a single command file.
 
@@ -281,6 +378,7 @@ def lint_command_file(path: pathlib.Path) -> list[LintIssue]:
     issues.extend(_check_step_references(text, path))
     issues.extend(_check_trailing_whitespace(lines, path))
     issues.extend(_check_duplicate_headings(lines, path))
+    issues.extend(_check_route_targets(text, path))
 
     return sorted(issues, key=lambda issue: (issue.line, issue.rule))
 

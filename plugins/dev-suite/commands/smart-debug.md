@@ -14,6 +14,8 @@ allowed-tools: [Read, Bash, Edit, Task, Monitor]
 
 # AI-Assisted Debugging (Scientific)
 
+Routes to `quality-specialist` via `dev-suite:dev-workflows` → `debugging-toolkit`.
+
 > **SEE ALSO:** For general software bugs (null pointer, timeout, auth failures, race conditions), use `superpowers:systematic-debugging` — it enforces structured pre-fix root-cause discipline.
 > Use this command for **scientific computing failures**: NaN/inf propagation, JAX JIT compilation errors (`TracerBoolConversionError`, `ConcretizationTypeError`), Julia dispatch ambiguities, numerical instability, shape/dtype mismatches, MCMC divergence, gradient explosion, GPU OOM errors, and domain-specific correctness failures.
 

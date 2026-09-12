@@ -13,6 +13,8 @@ argument-hint: "[workflow-id|commit-sha|pr-number] [--auto-fix] [--learn] [--mod
 
 # Intelligent GitHub Actions Failure Resolution
 
+Routes to `automation-engineer` via `dev-suite:ci-cd-pipelines` → `iterative-error-resolution`.
+
 $ARGUMENTS
 
 **Flags:** `--auto-fix`, `--learn`, `--mode=quick-fix|standard|comprehensive`
