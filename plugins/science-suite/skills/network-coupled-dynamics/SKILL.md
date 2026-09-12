@@ -1,7 +1,14 @@
 ---
+disable-model-invocation: true
 name: network-coupled-dynamics
 description: Coupled dynamics on networks with NetworkDynamics.jl (Julia) and JAX sparse graph operations. Covers Kuramoto synchronization, master stability function, chimera states, epidemic models (SIR/SIS), graph Laplacian dynamics, and synchronization order parameters. Use Julia for small networks (<1K nodes), JAX for large-scale GPU simulation (>1K nodes). Use when modeling coupled oscillators on graphs, analyzing synchronization transitions, or simulating epidemic spreading on networks.
 ---
+
+> **Loading a routing target.** `dev-suite:*`, `research-suite:*`, and `science-suite:*` targets below
+> are slash-only (`disable-model-invocation: true`) — the Skill tool will not fire them. Load one by
+> reading its file with the Read tool: `plugins/<suite>/skills/<name>/SKILL.md` (e.g.
+> `dev-suite:backend-patterns` → `plugins/dev-suite/skills/backend-patterns/SKILL.md`). Targets from
+> other plugins (`superpowers:*`, `ecc:*`, …) are unaffected and invoke normally.
 
 # Network-Coupled Dynamics
 

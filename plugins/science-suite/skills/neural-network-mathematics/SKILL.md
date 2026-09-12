@@ -1,7 +1,14 @@
 ---
+disable-model-invocation: true
 name: neural-network-mathematics
 description: Apply mathematical foundations of neural networks including linear algebra, calculus, probability theory, optimization, and information theory. Use when deriving backpropagation for custom layers, computing Jacobians/Hessians, implementing automatic differentiation, analyzing gradient flow, proving convergence, working with Bayesian deep learning, deriving loss functions from MLE principles, or understanding PAC learning theory.
 ---
+
+> **Loading a routing target.** `dev-suite:*`, `research-suite:*`, and `science-suite:*` targets below
+> are slash-only (`disable-model-invocation: true`) — the Skill tool will not fire them. Load one by
+> reading its file with the Read tool: `plugins/<suite>/skills/<name>/SKILL.md` (e.g.
+> `dev-suite:backend-patterns` → `plugins/dev-suite/skills/backend-patterns/SKILL.md`). Targets from
+> other plugins (`superpowers:*`, `ecc:*`, …) are unaffected and invoke normally.
 
 # Neural Network Mathematics
 

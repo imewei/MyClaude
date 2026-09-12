@@ -1,7 +1,14 @@
 ---
+disable-model-invocation: true
 name: bayesian-inference
 description: Meta-orchestrator for Bayesian inference and probabilistic programming. Routes to NumPyro, Turing.jl, Pigeons consensus MCMC, Bayesian UDE workflows, Bayesian PINNs, point-process / Hawkes inference, variational inference, and MCMC diagnostics skills. Use when building probabilistic models with NumPyro or Turing.jl, sampling multimodal posteriors with parallel tempering, fitting Bayesian neural ODEs or PINNs, modeling self-exciting event data, running MCMC inference, implementing variational inference, or diagnosing sampler convergence.
 ---
+
+> **Loading a routing target.** `dev-suite:*`, `research-suite:*`, and `science-suite:*` targets below
+> are slash-only (`disable-model-invocation: true`) — the Skill tool will not fire them. Load one by
+> reading its file with the Read tool: `plugins/<suite>/skills/<name>/SKILL.md` (e.g.
+> `dev-suite:backend-patterns` → `plugins/dev-suite/skills/backend-patterns/SKILL.md`). Targets from
+> other plugins (`superpowers:*`, `ecc:*`, …) are unaffected and invoke normally.
 
 # Bayesian Inference
 

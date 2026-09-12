@@ -1,4 +1,5 @@
 ---
+disable-model-invocation: true
 name: bayesian-ude-jax
 description: Build Bayesian Universal Differential Equations end-to-end in JAX with Diffrax + Equinox + NumPyro + Optax. Use when the surrounding training loop is already JAX, when GPU vmap-parallel chain sampling dominates wall-clock, when tight integration with Optax schedulers / HuggingFace models matters more than Julia SciML tooling, or when the team's codebase is Python-first. Covers differentiable ODE solves, Lux-equivalent NN modules, NUTS posterior sampling, warm-start MAP optimization, and the Python analog of Julia's ComponentArrays parameter packing. Use proactively when the user mentions Diffrax, Equinox, neural ODE, Bayesian neural ODE, NumPyro factor, Optax lbfgs, or JAX-first UDE workflow.
 ---

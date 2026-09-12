@@ -1,4 +1,5 @@
 ---
+disable-model-invocation: true
 name: modernization-migration
 description: Reference patterns for modernization strategies including Strangler Fig, framework migration playbooks, and database schema evolution. Provides domain knowledge for the /modernize command. Use when planning migration approaches, evaluating modernization trade-offs, or implementing Strangler Fig patterns.
 ---

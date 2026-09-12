@@ -1,7 +1,14 @@
 ---
+disable-model-invocation: true
 name: equation-discovery
 description: Data-driven equation discovery with SINDy (Sparse Identification of Nonlinear Dynamics) using DataDrivenDiffEq.jl (Julia) and PySINDy (Python). Covers library construction, sparse regression (STLSQ, SR3), implicit SINDy, weak-form / integral SINDy, physics-constrained SINDy (conservation-law penalties), Bayesian SINDy (posterior over discovered coefficients via sparsifying priors or HMC on the coefficient vector), symbolic regression, and model validation. Use when identifying governing equations from trajectory data, including when uncertainty quantification on the discovered terms is required.
 ---
+
+> **Loading a routing target.** `dev-suite:*`, `research-suite:*`, and `science-suite:*` targets below
+> are slash-only (`disable-model-invocation: true`) — the Skill tool will not fire them. Load one by
+> reading its file with the Read tool: `plugins/<suite>/skills/<name>/SKILL.md` (e.g.
+> `dev-suite:backend-patterns` → `plugins/dev-suite/skills/backend-patterns/SKILL.md`). Targets from
+> other plugins (`superpowers:*`, `ecc:*`, …) are unaffected and invoke normally.
 
 # Equation Discovery
 

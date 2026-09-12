@@ -1,7 +1,14 @@
 ---
+disable-model-invocation: true
 name: self-improving-ai
 description: Research-framework overview of self-improving AI systems — a routing skill that surveys four improvement families (inference-time scaling, self-refinement loops, autonomous research agents, evolutionary program search) and routes to depth-skill companions for tool-specific details. Use when choosing between approaches, when the user is surveying the field, or when an LLM system must improve its own outputs but the right family is not yet decided. Use proactively when the user mentions self-improving AI, test-time compute, inference-time scaling, best-of-N, tree-of-thoughts, MCTS for reasoning, Self-Refine, STaR, Reflexion, AlphaEvolve, autonomous research agents, or multi-agent research loops (AutoGen, CrewAI, LangGraph, smolagents). For the DSPy programmatic-prompt-optimization path specifically, see `dspy-basics`. For Constitutional AI / RLAIF / DPO / KTO / PPO training specifically, see `rlaif-training`.
 ---
+
+> **Loading a routing target.** `dev-suite:*`, `research-suite:*`, and `science-suite:*` targets below
+> are slash-only (`disable-model-invocation: true`) — the Skill tool will not fire them. Load one by
+> reading its file with the Read tool: `plugins/<suite>/skills/<name>/SKILL.md` (e.g.
+> `dev-suite:backend-patterns` → `plugins/dev-suite/skills/backend-patterns/SKILL.md`). Targets from
+> other plugins (`superpowers:*`, `ecc:*`, …) are unaffected and invoke normally.
 
 # Self-Improving AI
 

@@ -1,7 +1,14 @@
 ---
+disable-model-invocation: true
 name: python-development
 description: Master modern Python systems engineering for scientific computing. Covers type-driven design, Rust extensions (PyO3), structured concurrency (TaskGroups), async patterns (async context managers, async generators, pytest-asyncio), profiling (cProfile, line_profiler, memory_profiler, py-spy, tracemalloc), robust testing (Hypothesis), and uv-based packaging. Use when architecting Python packages, writing Rust extensions with PyO3, implementing async concurrency, profiling slow Python code, or setting up property-based testing.
 ---
+
+> **Loading a routing target.** `dev-suite:*`, `research-suite:*`, and `science-suite:*` targets below
+> are slash-only (`disable-model-invocation: true`) — the Skill tool will not fire them. Load one by
+> reading its file with the Read tool: `plugins/<suite>/skills/<name>/SKILL.md` (e.g.
+> `dev-suite:backend-patterns` → `plugins/dev-suite/skills/backend-patterns/SKILL.md`). Targets from
+> other plugins (`superpowers:*`, `ecc:*`, …) are unaffected and invoke normally.
 
 # Python Systems Engineering
 

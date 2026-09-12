@@ -1,4 +1,5 @@
 ---
+disable-model-invocation: true
 name: correlation-experimental-data
 description: Interpret experimental correlation data from DLS (g₂(τ), Siegert relation, Stokes-Einstein), SAXS/SANS (S(q), g(r), Guinier/Porod analysis), XPCS (two-time correlation, aging), FCS (diffusion time, binding kinetics), and rheology (Green-Kubo, microrheology). Extract physical parameters, perform Bayesian model fitting, and validate against theoretical predictions. Use when analyzing scattering data, fitting correlation functions, or extracting transport coefficients from experimental measurements.
 ---

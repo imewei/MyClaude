@@ -1,4 +1,5 @@
 ---
+disable-model-invocation: true
 name: slo-implementation
 description: Reference patterns for SLI/SLO definitions, error budget policies, and burn rate alerting following SRE best practices. Provides domain knowledge for the /slo-implement command. Use when establishing reliability targets or designing multi-window burn rate alerts.
 ---

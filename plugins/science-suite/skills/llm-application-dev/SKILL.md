@@ -1,7 +1,14 @@
 ---
+disable-model-invocation: true
 name: llm-application-dev
 description: Production implementation of LLM applications using LangChain/LangGraph with code examples for RAG pipelines, agentic workflows, cost optimization, and deployment. Use when writing LLM application code, implementing retry logic, or deploying with monitoring.
 ---
+
+> **Loading a routing target.** `dev-suite:*`, `research-suite:*`, and `science-suite:*` targets below
+> are slash-only (`disable-model-invocation: true`) — the Skill tool will not fire them. Load one by
+> reading its file with the Read tool: `plugins/<suite>/skills/<name>/SKILL.md` (e.g.
+> `dev-suite:backend-patterns` → `plugins/dev-suite/skills/backend-patterns/SKILL.md`). Targets from
+> other plugins (`superpowers:*`, `ecc:*`, …) are unaffected and invoke normally.
 
 # LLM Application Development
 

@@ -1,4 +1,5 @@
 ---
+disable-model-invocation: true
 name: gitlab-ci-patterns
 description: Build GitLab CI/CD pipelines with multi-stage workflows, caching, Docker builds, Kubernetes deployments, and security scanning. Use when creating .gitlab-ci.yml pipelines, setting up runners, implementing Terraform/IaC, or configuring GitOps workflows.
 ---

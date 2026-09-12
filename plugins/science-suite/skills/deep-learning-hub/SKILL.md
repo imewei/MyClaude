@@ -1,7 +1,14 @@
 ---
+disable-model-invocation: true
 name: deep-learning-hub
 description: Meta-orchestrator for deep learning. Routes to architecture design, mathematical foundations, training diagnostics, experimentation, and advanced systems skills. Use when designing neural architectures, deriving backpropagation, diagnosing training failures (loss divergence, gradient explosion/vanishing), running ablation studies, hyperparameter search, or building large-scale distributed DL systems.
 ---
+
+> **Loading a routing target.** `dev-suite:*`, `research-suite:*`, and `science-suite:*` targets below
+> are slash-only (`disable-model-invocation: true`) — the Skill tool will not fire them. Load one by
+> reading its file with the Read tool: `plugins/<suite>/skills/<name>/SKILL.md` (e.g.
+> `dev-suite:backend-patterns` → `plugins/dev-suite/skills/backend-patterns/SKILL.md`). Targets from
+> other plugins (`superpowers:*`, `ecc:*`, …) are unaffected and invoke normally.
 
 # Deep Learning Hub
 

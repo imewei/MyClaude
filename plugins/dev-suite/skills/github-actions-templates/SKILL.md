@@ -1,4 +1,5 @@
 ---
+disable-model-invocation: true
 name: github-actions-templates
 description: Create production GitHub Actions workflows for testing, building, and deploying. Use when setting up CI pipelines, Docker builds, Kubernetes deployments, matrix builds, security scans, or reusable workflows.
 ---

@@ -1,4 +1,5 @@
 ---
+disable-model-invocation: true
 name: julia-graph-neural-networks
 description: Build graph neural networks in Julia with GraphNeuralNetworks.jl and Lux.jl. Covers GCN, GAT, GraphSAGE, message passing neural networks, node/edge/graph-level tasks, heterogeneous graphs, temporal graphs (TemporalGNNs), and mini-batch training on large graphs. Use when working with graph-structured data in Julia.
 ---

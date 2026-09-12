@@ -1,4 +1,5 @@
 ---
+disable-model-invocation: true
 name: llm-evaluation
 description: Implement LLM evaluation with automated metrics (BLEU, ROUGE, BERTScore), LLM-as-judge patterns (pointwise, pairwise), human evaluation frameworks, A/B testing with statistical significance, and regression detection. Use when measuring LLM performance, comparing prompts/models, or setting up CI/CD quality gates.
 ---

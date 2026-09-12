@@ -1,4 +1,5 @@
 ---
+disable-model-invocation: true
 name: package-development-workflow
 description: Create Julia packages following community standards with proper structure, exports, and PkgTemplates.jl. Use when creating new packages, organizing source code, setting up Project.toml with compat entries, configuring Documenter.jl, registering packages with JuliaRegistrator, or adding TagBot/CompatHelper CI workflows. Also use when scaffolding module exports, writing doc strings, or preparing a Julia package for the General registry, even if the user just says "make a Julia package."
 ---

@@ -1,4 +1,5 @@
 ---
+disable-model-invocation: true
 name: secrets-management
 description: Implement secrets management with HashiCorp Vault, AWS Secrets Manager, Azure Key Vault, or platform-native solutions with encryption, rotation, and access control. Use when storing API keys, database passwords, TLS certificates, or implementing secret rotation.
 ---

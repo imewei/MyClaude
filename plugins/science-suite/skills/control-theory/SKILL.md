@@ -1,4 +1,5 @@
 ---
+disable-model-invocation: true
 name: control-theory
 description: "Design control systems with python-control and Julia ControlSystems.jl including PID tuning, state-space models, transfer functions, Bode/Nyquist analysis, stability analysis, and optimal control (LQR/MPC). Use when designing controllers, analyzing system stability, or implementing feedback control loops."
 ---

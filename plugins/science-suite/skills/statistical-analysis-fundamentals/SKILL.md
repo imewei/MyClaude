@@ -1,4 +1,5 @@
 ---
+disable-model-invocation: true
 name: statistical-analysis-fundamentals
 description: Comprehensive statistical analysis with scipy.stats, statsmodels, and PyMC3 including hypothesis testing, Bayesian methods, regression, experimental design, and causal inference. Use when conducting A/B tests, power analysis, or treatment effect estimation.
 ---

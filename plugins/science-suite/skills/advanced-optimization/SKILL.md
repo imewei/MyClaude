@@ -1,4 +1,5 @@
 ---
+disable-model-invocation: true
 name: advanced-optimization
 description: "Solve complex optimization problems with convex optimization (CVXPY), integer programming, constraint satisfaction, Bayesian optimization, and surrogate-based methods. Use when formulating optimization problems, implementing convex programs, or building surrogate models for expensive objective functions."
 ---

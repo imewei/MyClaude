@@ -1,7 +1,14 @@
 ---
+disable-model-invocation: true
 name: nonlinear-dynamics
 description: Meta-orchestrator for nonlinear dynamics analysis. Routes to specialized skills for bifurcation analysis, chaos/attractors, network dynamics, pattern formation, and equation discovery. Use when analyzing dynamical systems, computing Lyapunov exponents, discovering governing equations from data (SINDy), reconstructing attractors, studying coupled oscillators, spatiotemporal chaos, or data-driven model discovery.
 ---
+
+> **Loading a routing target.** `dev-suite:*`, `research-suite:*`, and `science-suite:*` targets below
+> are slash-only (`disable-model-invocation: true`) — the Skill tool will not fire them. Load one by
+> reading its file with the Read tool: `plugins/<suite>/skills/<name>/SKILL.md` (e.g.
+> `dev-suite:backend-patterns` → `plugins/dev-suite/skills/backend-patterns/SKILL.md`). Targets from
+> other plugins (`superpowers:*`, `ecc:*`, …) are unaffected and invoke normally.
 
 # Nonlinear Dynamics
 

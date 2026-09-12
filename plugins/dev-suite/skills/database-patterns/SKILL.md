@@ -1,4 +1,5 @@
 ---
+disable-model-invocation: true
 name: database-patterns
 description: Master database design patterns including ORM usage (SQLAlchemy, Prisma, TypeORM), schema migrations (Alembic, Flyway), query optimization, connection pooling, and data modeling. Use when designing database schemas, writing migrations, optimizing queries, or integrating ORMs.
 ---

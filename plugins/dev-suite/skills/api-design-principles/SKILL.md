@@ -1,4 +1,5 @@
 ---
+disable-model-invocation: true
 name: api-design-principles
 description: Master REST and GraphQL API design including resource-oriented architecture, HTTP semantics, pagination (cursor/offset), versioning strategies, error handling, HATEOAS, DataLoader patterns, and documentation. Use when designing new APIs, implementing pagination, handling errors, or establishing API standards.
 ---

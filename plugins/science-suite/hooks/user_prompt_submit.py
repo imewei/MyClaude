@@ -22,12 +22,16 @@ from _hook_io import wrap_context
 
 REMINDER = (
     "science-suite routes domain-specific work through hub skills before "
-    "implementation (deep-learning-hub, statistical-physics-hub, "
-    "sciml-modern-stack, jax-computing, julia-mastery, bayesian-inference, "
-    "neural-pde, simulation-and-hpc, and the rest of the science-hub tree). "
-    "If this request matches one of those domains, invoke the matching hub "
-    "skill (science-hub if ambiguous or it spans multiple dev-suite/"
-    "research-suite domains too) before jumping to Bash/Write/Edit."
+    "implementation. The hubs are slash-invocable only "
+    "(disable-model-invocation: true), so run one explicitly: "
+    "/science-suite:deep-learning-hub, /science-suite:statistical-physics-hub, "
+    "/science-suite:sciml-modern-stack, /science-suite:jax-computing, "
+    "/science-suite:julia-mastery, /science-suite:bayesian-inference, "
+    "/science-suite:neural-pde, /science-suite:simulation-and-hpc, and the "
+    "rest of the science-hub tree. If this request matches one of those "
+    "domains, run the matching hub command (/science-suite:science-hub if "
+    "ambiguous or it spans multiple dev-suite/research-suite domains too) "
+    "before jumping to Bash/Write/Edit."
 )
 
 

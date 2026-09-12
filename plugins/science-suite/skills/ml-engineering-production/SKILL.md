@@ -1,4 +1,5 @@
 ---
+disable-model-invocation: true
 name: ml-engineering-production
 description: Software and data engineering best practices for production ML. Type-safe code, pytest testing, pre-commit hooks, pandas/SQL pipelines, and modern project structure. Use when building maintainable ML systems.
 ---

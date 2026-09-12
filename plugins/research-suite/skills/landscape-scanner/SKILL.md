@@ -1,4 +1,5 @@
 ---
+disable-model-invocation: true
 name: landscape-scanner
 description: Stage 2 of the research-spark pipeline. Conducts a structured three-layer literature scan (foundational / recent / adjacent), steelmanner each paper, builds a gap matrix mapping phenomena against methods, and runs a Reviewer 2 adversarial pass against the proposed research gap. Triggers when the user has a Stage 1 articulation and needs to survey the field, or on phrases like "map the literature on X", "survey what's known about Y", "what's the state of the field on Z", "steelman the prior work on W", "find the gap", or "gap analysis for [project]". Also triggers when the orchestrator advances to Stage 2. The output is not a paper pile but a defendable synthesis, specifically a document the user could hand to the researcher who wrote one of the cited papers.
 ---

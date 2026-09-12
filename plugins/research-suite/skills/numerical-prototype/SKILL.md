@@ -1,4 +1,5 @@
 ---
+disable-model-invocation: true
 name: numerical-prototype
 description: Stage 6 of the research-spark pipeline. Converts the Stage 4-5 formalism into a running numerical prototype (JAX or Julia, chosen per physical system) and produces a concrete predicted observable, after passing three required validation passes (analytic-limit recovery, synthetic benchmark, convergence study). Triggers when the user has a formalized theory and wants to turn it into code, or on phrases like "prototype the model", "build a JAX or Julia simulation of the theory", "produce the predicted observable", "validate the solver against analytic limits", "do the convergence study", "implement the formalism from Stage 4", or after Stage 4-5 completes. The predicted observable this emits is the direct input to Stage 7 experimental design. Catches pathologies the analytics hide (stiffness, IC sensitivity, narrow validity) by running the math instead of just staring at it.
 ---

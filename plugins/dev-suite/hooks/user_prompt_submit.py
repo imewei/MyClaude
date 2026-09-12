@@ -21,12 +21,16 @@ from _hook_io import wrap_context
 
 REMINDER = (
     "dev-suite routes domain-specific work through hub skills before "
-    "implementation (architecture-and-infra, backend-patterns, "
-    "testing-and-quality, ci-cd-pipelines, observability-and-sre, "
-    "data-and-security, dev-workflows, three-brain). If this request "
-    "matches one of those domains, invoke the matching hub skill (dev-hub "
-    "if ambiguous or it spans multiple science-suite/research-suite domains "
-    "too) before jumping to Bash/Write/Edit."
+    "implementation. The hubs are slash-invocable only "
+    "(disable-model-invocation: true), so run one explicitly: "
+    "/dev-suite:architecture-and-infra, /dev-suite:backend-patterns, "
+    "/dev-suite:testing-and-quality, /dev-suite:ci-cd-pipelines, "
+    "/dev-suite:observability-and-sre, /dev-suite:data-and-security, "
+    "/dev-suite:dev-workflows, /dev-suite:three-brain. If this request "
+    "matches one of those domains, run the matching hub command "
+    "(/dev-suite:dev-hub if ambiguous or it spans multiple "
+    "science-suite/research-suite domains too) before jumping to "
+    "Bash/Write/Edit."
 )
 
 

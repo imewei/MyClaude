@@ -1,4 +1,5 @@
 ---
+disable-model-invocation: true
 name: extreme-value-statistics
 description: Fit extreme-value distributions to tail data with block-maxima GEV (Gumbel / Fréchet / Weibull) and peaks-over-threshold GPD models. Covers maximum-likelihood, L-moments, Hill, Pickands, and moment estimators for the tail index; return-level and return-period computation; threshold selection via mean-residual-life and parameter-stability plots; non-stationary EVT with covariate-dependent parameters; and the boundary between power-law (SOC) analyses and heavy-tail EVT analyses. Use when fitting tail distributions to extreme magnitudes (floods, gusts, earthquake magnitudes, financial drawdowns, material failure stresses, avalanche sizes in the heavy-tail regime), estimating return levels, computing exceedance probabilities, or quantifying tail index. Use proactively when the user mentions extreme value, EVT, GEV, GPD, generalized Pareto, generalized extreme value, Gumbel, Fréchet, Weibull, block maxima, peaks over threshold, POT, return level, return period, tail index, Hill estimator, Pickands, exceedance, heavy tail, Pareto tail, or `pyextremes`.
 ---

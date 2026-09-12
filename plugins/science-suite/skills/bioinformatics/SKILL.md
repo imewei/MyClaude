@@ -1,4 +1,5 @@
 ---
+disable-model-invocation: true
 name: bioinformatics
 description: "Implement bioinformatics workflows including sequence alignment (BLAST, Smith-Waterman), genomics pipelines, phylogenetic analysis, protein structure prediction, and biological data visualization with Biopython. Use when analyzing biological sequences, building genomics pipelines, or processing bioinformatics data."
 ---

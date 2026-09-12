@@ -1,7 +1,14 @@
 ---
+disable-model-invocation: true
 name: sciml-and-diffeq
 description: Meta-orchestrator for Scientific Machine Learning and differential equations in Julia. Routes to SciML ecosystem, DiffEq solvers, ModelingToolkit, optimization, neural PDE, reaction networks, JuMP, SINDy equation discovery, bifurcation analysis, and Bayesian UDE skills. Use when solving ODEs/PDEs/SDEs in Julia, using ModelingToolkit, fitting models with Optimization.jl, building neural PDEs, modeling chemical reactions, discovering equations from data, computing bifurcation diagrams, or fitting Bayesian neural ODEs.
 ---
+
+> **Loading a routing target.** `dev-suite:*`, `research-suite:*`, and `science-suite:*` targets below
+> are slash-only (`disable-model-invocation: true`) — the Skill tool will not fire them. Load one by
+> reading its file with the Read tool: `plugins/<suite>/skills/<name>/SKILL.md` (e.g.
+> `dev-suite:backend-patterns` → `plugins/dev-suite/skills/backend-patterns/SKILL.md`). Targets from
+> other plugins (`superpowers:*`, `ecc:*`, …) are unaffected and invoke normally.
 
 # SciML and Differential Equations
 

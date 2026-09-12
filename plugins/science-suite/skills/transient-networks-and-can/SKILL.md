@@ -1,7 +1,14 @@
 ---
+disable-model-invocation: true
 name: transient-networks-and-can
 description: Transient network rheology — physical gels (reversible non-covalent crosslinks) and covalent adaptable networks (vitrimers) with bond-exchange kinetics. Use when modeling stress relaxation in self-healing gels, vitrimers, or any material with reversible/exchangeable crosslinks, including sticky Rouse and Green-Tobolsky models.
 ---
+
+> **Loading a routing target.** `dev-suite:*`, `research-suite:*`, and `science-suite:*` targets below
+> are slash-only (`disable-model-invocation: true`) — the Skill tool will not fire them. Load one by
+> reading its file with the Read tool: `plugins/<suite>/skills/<name>/SKILL.md` (e.g.
+> `dev-suite:backend-patterns` → `plugins/dev-suite/skills/backend-patterns/SKILL.md`). Targets from
+> other plugins (`superpowers:*`, `ecc:*`, …) are unaffected and invoke normally.
 
 # Transient Networks & Covalent Adaptable Networks (CAN)
 

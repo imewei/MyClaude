@@ -1,4 +1,5 @@
 ---
+disable-model-invocation: true
 name: scientific-communication
 description: Structure scientific arguments and write technical reports (IMRaD), abstracts, posters, and grant-style one-pagers. This skill should be used when the user asks to "structure the Introduction", "write the abstract", "IMRaD outline", "turn this into a paper", "draft the methods section", "make a one-pager", "Heilmeier catechism", "tighten the writing", "write a poster", or any request to organize or clarify scientific prose. For peer-review reports targeting a specific journal, use `scientific-review`; for designing the study the methods section will describe, use `research-methodology`; for the Stage 1 compression inside a research-spark project, use `spark-articulator`.
 ---

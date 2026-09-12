@@ -1,4 +1,5 @@
 ---
+disable-model-invocation: true
 name: research-paper-implementation
 description: Translate published papers into working code by extracting architecture specs, hyperparameters, and training procedures from methods + appendix + supplementary material. This skill should be used when the user asks to "reproduce this paper", "implement the architecture from X", "extract hyperparameters from this paper", "map the notation to code", "recover missing details from the appendix", "rebuild the baseline from [paper]", "port this algorithm to PyTorch / JAX / Julia", or provides a paper reference and wants a runnable implementation. For translating the user's own Stage 4-5 formalism into a JAX prototype inside an active research-spark project, use `numerical-prototype` instead.
 ---

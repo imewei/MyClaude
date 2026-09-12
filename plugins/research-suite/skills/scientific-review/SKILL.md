@@ -1,4 +1,5 @@
 ---
+disable-model-invocation: true
 name: scientific-review
 description: |
   Use this skill whenever the user wants a formal peer review of a scientific manuscript, journal-style

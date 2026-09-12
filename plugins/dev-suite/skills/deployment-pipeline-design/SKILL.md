@@ -1,4 +1,5 @@
 ---
+disable-model-invocation: true
 name: deployment-pipeline-design
 description: Design multi-stage CI/CD pipelines with approval gates, security checks, and progressive delivery (rolling, blue-green, canary, feature flags). Use when architecting deployment workflows, implementing GitOps, or establishing multi-environment promotion strategies.
 ---

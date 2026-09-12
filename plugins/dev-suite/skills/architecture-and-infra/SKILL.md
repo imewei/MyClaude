@@ -1,7 +1,14 @@
 ---
+disable-model-invocation: true
 name: architecture-and-infra
 description: Meta-orchestrator for software architecture and infrastructure. Routes to clean architecture, microservices, monorepo, systems/CLI, containers, and cloud patterns. Use when designing system architecture, implementing microservices, managing monorepos, building CLI tools, containerizing services, or deploying to cloud.
 ---
+
+> **Loading a routing target.** `dev-suite:*`, `research-suite:*`, and `science-suite:*` targets below
+> are slash-only (`disable-model-invocation: true`) — the Skill tool will not fire them. Load one by
+> reading its file with the Read tool: `plugins/<suite>/skills/<name>/SKILL.md` (e.g.
+> `dev-suite:backend-patterns` → `plugins/dev-suite/skills/backend-patterns/SKILL.md`). Targets from
+> other plugins (`superpowers:*`, `ecc:*`, …) are unaffected and invoke normally.
 
 # Architecture and Infrastructure
 

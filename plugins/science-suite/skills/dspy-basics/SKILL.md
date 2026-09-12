@@ -1,4 +1,5 @@
 ---
+disable-model-invocation: true
 name: dspy-basics
 description: Build programmatic prompt pipelines with DSPy — Signatures, Modules, ChainOfThought, ReAct, Retrieve, and optimizers (MIPROv2, BootstrapFewShot, COPRO, BetterTogether). Use when hand-tuning prompts is eating dev time, when you need a labelled-metric-driven optimizer to improve prompts, when the pipeline has multiple LLM calls that should compose as typed modules, or when you need deterministic regression tests on prompt programs. Use proactively when the user mentions DSPy, dspy.Signature, dspy.Module, ChainOfThought, ReAct, MIPRO, MIPROv2, BootstrapFewShot, COPRO, BetterTogether, programmatic prompts, or prompt compilation.
 ---

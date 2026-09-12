@@ -1,4 +1,5 @@
 ---
+disable-model-invocation: true
 name: rlaif-training
 description: Train LLMs with AI-generated preference labels via RLAIF, Constitutional AI, DPO, KTO, and PPO using the trl library. Covers AI-as-judge label generation, constitutional critique loops, reward model training, DPO vs KTO vs PPO trade-offs, and common failure modes (reward hacking, preference collapse, reference-model drift). Use when human preference labels are too expensive, when you have a trusted judge LLM, when a constitution (principle list) can express the desired behaviour, or when fine-tuning an open-weight model on AI-generated pairs. Use proactively when the user mentions RLAIF, Constitutional AI, DPO, KTO, IPO, PPO, trl, trlx, reward model, AI-as-judge, preference optimization, or self-rewarding.
 ---

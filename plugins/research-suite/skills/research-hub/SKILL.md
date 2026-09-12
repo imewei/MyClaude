@@ -1,8 +1,15 @@
 ---
+disable-model-invocation: true
 name: research-hub
 description: >-
   Top-level router for scientific research workflows. Use for: reviewing or critiquing a manuscript/paper/peer review/referee report/journal submission/novelty assessment/statistical claims/data integrity; refining a rough research idea through structured stages (research spark, falsifiable claim, theory scaffold, experiment design, premortem); open-ended research methodology questions — "how should I design this study", "is this paper trustworthy", "reproduce this result", "help me write this up", power analysis/DoE/hypothesis planning/CONSORT/STROBE/PRISMA/meta-analysis/GRADE/IMRaD/literature synthesis; reproducing or implementing a published paper.
 ---
+
+> **Loading a routing target.** `dev-suite:*`, `research-suite:*`, and `science-suite:*` targets below
+> are slash-only (`disable-model-invocation: true`) — the Skill tool will not fire them. Load one by
+> reading its file with the Read tool: `plugins/<suite>/skills/<name>/SKILL.md` (e.g.
+> `dev-suite:backend-patterns` → `plugins/dev-suite/skills/backend-patterns/SKILL.md`). Targets from
+> other plugins (`superpowers:*`, `ecc:*`, …) are unaffected and invoke normally.
 
 # Research Suite (research-hub)
 

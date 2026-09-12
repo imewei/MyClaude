@@ -1,7 +1,14 @@
 ---
+disable-model-invocation: true
 name: ci-cd-pipelines
 description: Meta-orchestrator for CI/CD pipeline design. Routes to GitHub Actions, GitLab CI, pipeline design, security scanning, and error resolution skills. Use when setting up GitHub Actions, GitLab CI, designing deployment pipelines, adding security scanning, or resolving CI/CD errors.
 ---
+
+> **Loading a routing target.** `dev-suite:*`, `research-suite:*`, and `science-suite:*` targets below
+> are slash-only (`disable-model-invocation: true`) — the Skill tool will not fire them. Load one by
+> reading its file with the Read tool: `plugins/<suite>/skills/<name>/SKILL.md` (e.g.
+> `dev-suite:backend-patterns` → `plugins/dev-suite/skills/backend-patterns/SKILL.md`). Targets from
+> other plugins (`superpowers:*`, `ecc:*`, …) are unaffected and invoke normally.
 
 # CI/CD Pipelines
 

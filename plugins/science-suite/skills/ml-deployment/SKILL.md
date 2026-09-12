@@ -1,7 +1,14 @@
 ---
+disable-model-invocation: true
 name: ml-deployment
 description: Meta-orchestrator for ML model deployment and operations. Routes to model serving, optimization, production engineering, pipelines, DevOps infrastructure, and federated learning skills. Use when deploying ML models with FastAPI/TorchServe, optimizing with quantization/pruning, building production ML systems, building MLOps pipelines, or implementing federated learning.
 ---
+
+> **Loading a routing target.** `dev-suite:*`, `research-suite:*`, and `science-suite:*` targets below
+> are slash-only (`disable-model-invocation: true`) — the Skill tool will not fire them. Load one by
+> reading its file with the Read tool: `plugins/<suite>/skills/<name>/SKILL.md` (e.g.
+> `dev-suite:backend-patterns` → `plugins/dev-suite/skills/backend-patterns/SKILL.md`). Targets from
+> other plugins (`superpowers:*`, `ecc:*`, …) are unaffected and invoke normally.
 
 # ML Deployment
 

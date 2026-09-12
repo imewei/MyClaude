@@ -1,4 +1,5 @@
 ---
+disable-model-invocation: true
 name: model-optimization-deployment
 description: Neural network optimization techniques including quantization (INT8/FP16), pruning, knowledge distillation, and framework conversion (ONNX, TFLite, TensorRT). Use when compressing models for edge/mobile deployment or maximizing inference throughput. For serving infrastructure setup (APIs, Docker, K8s, cloud), see model-deployment-serving.
 ---

@@ -1,4 +1,5 @@
 ---
+disable-model-invocation: true
 name: falsifiable-claim
 description: Stage 3 of the research-spark pipeline. Converts the Stage 1 articulation plus the Stage 2 landscape into a falsifiable claim with an explicit kill criterion, shaped by a Fermi feasibility screen, the Heilmeier catechism, and a Reviewer 2 adversarial pass. Triggers on phrases like "sharpen the hypothesis", "write the Heilmeier", "state what we're actually claiming", "what would falsify this", "tighten the research question", "turn this into something testable", "make this a pre-registerable claim", "is this even measurable", "order-of-magnitude check", or after Stage 2 completes. The output is a claim that names a single measurement that could kill it, pre-specified before any data is taken, on a physically or computationally reachable effect size.
 ---

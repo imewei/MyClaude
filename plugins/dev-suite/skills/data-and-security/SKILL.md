@@ -1,7 +1,14 @@
 ---
+disable-model-invocation: true
 name: data-and-security
 description: Meta-orchestrator for data layer and security patterns. Routes to database, SQL, caching, search, authentication, and secrets management skills. Use when designing database schemas, optimizing SQL queries, implementing caching, building search, adding authentication, or managing secrets.
 ---
+
+> **Loading a routing target.** `dev-suite:*`, `research-suite:*`, and `science-suite:*` targets below
+> are slash-only (`disable-model-invocation: true`) — the Skill tool will not fire them. Load one by
+> reading its file with the Read tool: `plugins/<suite>/skills/<name>/SKILL.md` (e.g.
+> `dev-suite:backend-patterns` → `plugins/dev-suite/skills/backend-patterns/SKILL.md`). Targets from
+> other plugins (`superpowers:*`, `ecc:*`, …) are unaffected and invoke normally.
 
 # Data and Security
 

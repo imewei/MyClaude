@@ -1,4 +1,5 @@
 ---
+disable-model-invocation: true
 name: type-driven-design
 description: Master type-driven design in Python using Protocols, Generics, and static analysis. Use when designing library interfaces, implementing structural typing, using Generic types for reusable components, or enforcing strict type safety with pyright/mypy.
 ---

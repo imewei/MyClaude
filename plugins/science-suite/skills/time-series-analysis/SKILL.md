@@ -1,7 +1,14 @@
 ---
+disable-model-invocation: true
 name: time-series-analysis
 description: "Analyze and forecast time series data with statsmodels, Prophet, and neural methods including ARIMA/SARIMA, GARCH, STL decomposition, stationarity testing (ADF, KPSS, Phillips-Perron), change-point detection (PELT, BinSeg, dynamic programming via `ruptures`), anomaly detection, and deep learning forecasting (N-BEATS, TFT). Use when building forecasting models, testing stationarity, detecting change points or anomalies in regularly-sampled temporal data, or analyzing seasonal patterns. For irregular event timestamps (Hawkes, Cox, renewal), route to point-processes."
 ---
+
+> **Loading a routing target.** `dev-suite:*`, `research-suite:*`, and `science-suite:*` targets below
+> are slash-only (`disable-model-invocation: true`) — the Skill tool will not fire them. Load one by
+> reading its file with the Read tool: `plugins/<suite>/skills/<name>/SKILL.md` (e.g.
+> `dev-suite:backend-patterns` → `plugins/dev-suite/skills/backend-patterns/SKILL.md`). Targets from
+> other plugins (`superpowers:*`, `ecc:*`, …) are unaffected and invoke normally.
 
 # Time Series Analysis
 

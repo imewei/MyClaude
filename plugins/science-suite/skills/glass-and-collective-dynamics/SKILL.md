@@ -1,7 +1,14 @@
 ---
+disable-model-invocation: true
 name: glass-and-collective-dynamics
 description: Glass physics, jamming, and collective phenomena in disordered/soft-matter systems — random landscapes, aging, cooperative dynamics, and percolation theory. Use when analyzing glassy relaxation, jamming transitions, aging dynamics, cooperative/collective particle motion, or percolation thresholds in filler networks or disordered media.
 ---
+
+> **Loading a routing target.** `dev-suite:*`, `research-suite:*`, and `science-suite:*` targets below
+> are slash-only (`disable-model-invocation: true`) — the Skill tool will not fire them. Load one by
+> reading its file with the Read tool: `plugins/<suite>/skills/<name>/SKILL.md` (e.g.
+> `dev-suite:backend-patterns` → `plugins/dev-suite/skills/backend-patterns/SKILL.md`). Targets from
+> other plugins (`superpowers:*`, `ecc:*`, …) are unaffected and invoke normally.
 
 # Glass & Collective Dynamics
 

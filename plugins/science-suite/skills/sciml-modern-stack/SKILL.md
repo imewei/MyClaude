@@ -1,7 +1,14 @@
 ---
+disable-model-invocation: true
 name: sciml-modern-stack
 description: Modern Julia SciML stack with Lux.jl neural networks, SciMLSensitivity.jl adjoint/forward sensitivity, Universal Differential Equations (UDEs), UncertaintyQuantification.jl, and DeepEquilibriumNetworks.jl. Use when building neural ODEs, performing sensitivity analysis, quantifying uncertainty, or combining physics with ML in Julia SciML workflows.
 ---
+
+> **Loading a routing target.** `dev-suite:*`, `research-suite:*`, and `science-suite:*` targets below
+> are slash-only (`disable-model-invocation: true`) — the Skill tool will not fire them. Load one by
+> reading its file with the Read tool: `plugins/<suite>/skills/<name>/SKILL.md` (e.g.
+> `dev-suite:backend-patterns` → `plugins/dev-suite/skills/backend-patterns/SKILL.md`). Targets from
+> other plugins (`superpowers:*`, `ecc:*`, …) are unaffected and invoke normally.
 
 # Modern SciML Stack
 

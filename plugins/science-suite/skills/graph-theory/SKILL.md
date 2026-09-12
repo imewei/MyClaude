@@ -1,7 +1,14 @@
 ---
+disable-model-invocation: true
 name: graph-theory
 description: Graph theory foundations — spectral graph theory, graph algorithms, and network topology metrics. Use when the task requires reasoning about a graph/network structure itself (spectral properties, centrality, connectivity, community structure) rather than a specific application domain (GNNs, coupled oscillators, FEM meshes) that happens to use a graph representation.
 ---
+
+> **Loading a routing target.** `dev-suite:*`, `research-suite:*`, and `science-suite:*` targets below
+> are slash-only (`disable-model-invocation: true`) — the Skill tool will not fire them. Load one by
+> reading its file with the Read tool: `plugins/<suite>/skills/<name>/SKILL.md` (e.g.
+> `dev-suite:backend-patterns` → `plugins/dev-suite/skills/backend-patterns/SKILL.md`). Targets from
+> other plugins (`superpowers:*`, `ecc:*`, …) are unaffected and invoke normally.
 
 # Graph Theory
 

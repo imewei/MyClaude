@@ -1,7 +1,14 @@
 ---
+disable-model-invocation: true
 name: research-practice
 description: Meta-orchestrator for the research lifecycle. Routes to specialized skills for *designing* experiments (power analysis, DoE, hypothesis planning), *evaluating* existing work (CONSORT/STROBE/PRISMA, red-flag detection), *reproducing* published papers, *writing* manuscripts (IMRaD, reports), and *synthesizing* literature (PRISMA, meta-analysis, GRADE). This skill should be used when the user asks any open-ended methodology question — "how should I design this study", "is this paper trustworthy", "reproduce this result", "help me write this up", "what does the literature say on X" — and the task is neither a structured artifact-gated pipeline (use `research-spark`) nor a formal journal peer review (use `scientific-review`).
 ---
+
+> **Loading a routing target.** `dev-suite:*`, `research-suite:*`, and `science-suite:*` targets below
+> are slash-only (`disable-model-invocation: true`) — the Skill tool will not fire them. Load one by
+> reading its file with the Read tool: `plugins/<suite>/skills/<name>/SKILL.md` (e.g.
+> `dev-suite:backend-patterns` → `plugins/dev-suite/skills/backend-patterns/SKILL.md`). Targets from
+> other plugins (`superpowers:*`, `ecc:*`, …) are unaffected and invoke normally.
 
 # Research Practice
 

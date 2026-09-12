@@ -1,4 +1,5 @@
 ---
+disable-model-invocation: true
 name: julia-gpu-kernels
 description: Write high-performance GPU code in Julia with CUDA.jl and KernelAbstractions.jl. Covers custom kernel writing, shared memory optimization, multi-GPU data parallelism, memory management (unified/pinned), profiling with NVTX.jl, and portable kernels across CUDA/ROCm/oneAPI/Metal backends. Use when writing custom GPU kernels or optimizing GPU performance in Julia.
 ---

@@ -1,4 +1,5 @@
 ---
+disable-model-invocation: true
 name: ml-force-fields
 description: Design, train, and deploy ML interatomic potentials (MLIPs) including equivariant GNNs (NequIP, MACE, Allegro, SchNet, PaiNN, TensorNet), Julia ACE potentials (ACEpotentials.jl, PotentialLearning.jl), and foundation/universal potentials (MACE-MP, fairchem UMA). Use when training neural network potentials on DFT data, fine-tuning a foundation MLIP, running active learning loops, deploying potentials in LAMMPS (pair_style mliap / pace / mace), OpenMM, HOOMD-blue, or Molly.jl, quantifying ensemble uncertainty, or choosing between equivariant GNN and linear ACE architectures. Use proactively when the user mentions MLIP, MLFF, neural network potential, machine learning force field, foundation potential, or wants DFT-quality forces at classical MD speed.
 ---

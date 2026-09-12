@@ -1,7 +1,14 @@
 ---
+disable-model-invocation: true
 name: parallel-computing
 description: Implement high-performance parallel computing across CPUs and GPUs using Python (CUDA/CuPy) and Julia (CUDA.jl/Distributed.jl). Design parallel strategies with MPI (distributed memory), OpenMP (shared memory), hybrid MPI+OpenMP, SLURM scheduling, Dask/Dagger.jl workflows, and load balancing. Master multi-threading, distributed systems, and kernel optimization. Use when the user needs to speed up scientific code, submit HPC cluster jobs, write CUDA kernels, parallelize loops, or scale computations across multiple nodes, even if they just say "this is too slow" or "how do I use the GPU."
 ---
+
+> **Loading a routing target.** `dev-suite:*`, `research-suite:*`, and `science-suite:*` targets below
+> are slash-only (`disable-model-invocation: true`) — the Skill tool will not fire them. Load one by
+> reading its file with the Read tool: `plugins/<suite>/skills/<name>/SKILL.md` (e.g.
+> `dev-suite:backend-patterns` → `plugins/dev-suite/skills/backend-patterns/SKILL.md`). Targets from
+> other plugins (`superpowers:*`, `ecc:*`, …) are unaffected and invoke normally.
 
 # Parallel Computing Suite
 

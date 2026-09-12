@@ -1,4 +1,5 @@
 ---
+disable-model-invocation: true
 name: research-methodology
 description: Design-phase guide for scientific research — experimental design, hypothesis formulation, power analysis, sample-size justification, ablation planning, and statistical-test selection *before* data collection. This skill should be used when the user asks to "run a power analysis", "justify this sample size", "pick a statistical test", "design an ablation study", "pre-register this experiment", "how many samples do I need", "is a t-test or Mann-Whitney right here", "plan a randomized design", or any design-phase methodology question asked before data is collected. For evaluating existing work, use `research-quality-assessment`; for writing up the finished study, use `scientific-communication`; for systematic reviews or meta-analysis, use `evidence-synthesis`; for reproducing a specific paper, use `research-paper-implementation`. Inside an active research-spark project, Stage 7's `experiment-designer` handles DoE, instrument capability mapping, and pre-registered metrics under stricter artifact conventions.
 ---

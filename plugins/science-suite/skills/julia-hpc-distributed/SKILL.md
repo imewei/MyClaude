@@ -1,4 +1,5 @@
 ---
+disable-model-invocation: true
 name: julia-hpc-distributed
 description: Scale Julia computations across clusters with Distributed.jl, MPI.jl, and SLURM job management. Covers multi-node data parallelism, AllReduce for gradient aggregation, pmap/remotecall patterns, Dagger.jl task DAGs, and SLURM batch scripting for HPC facilities. Use when scaling Julia beyond a single node.
 ---

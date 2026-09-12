@@ -1,7 +1,14 @@
 ---
+disable-model-invocation: true
 name: constitutive-equations
 description: Constitutive modeling — linear elasticity, hyperelasticity (Neo-Hookean, Mooney-Rivlin, Ogden), and viscoelasticity (Maxwell, Kelvin-Voigt, generalized Maxwell/Prony series). Use when selecting or fitting a stress-strain relation, choosing between hyperelastic strain-energy functions, or fitting a Prony series to relaxation/DMA data.
 ---
+
+> **Loading a routing target.** `dev-suite:*`, `research-suite:*`, and `science-suite:*` targets below
+> are slash-only (`disable-model-invocation: true`) — the Skill tool will not fire them. Load one by
+> reading its file with the Read tool: `plugins/<suite>/skills/<name>/SKILL.md` (e.g.
+> `dev-suite:backend-patterns` → `plugins/dev-suite/skills/backend-patterns/SKILL.md`). Targets from
+> other plugins (`superpowers:*`, `ecc:*`, …) are unaffected and invoke normally.
 
 # Constitutive Equations
 

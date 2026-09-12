@@ -1,4 +1,5 @@
 ---
+disable-model-invocation: true
 name: rust-extensions
 description: Build high-performance Python extensions using Rust, PyO3, and Maturin. Use when optimizing performance-critical bottlenecks, implementing native modules, or bridging Rust libraries to Python.
 ---

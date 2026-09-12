@@ -1,4 +1,5 @@
 ---
+disable-model-invocation: true
 name: testing-patterns
 description: Cross-language testing strategy guide covering framework selection, test pyramid design, CI/CD integration, and parallel execution for Python (pytest) and JavaScript/TypeScript (Jest/Vitest). Use when choosing testing frameworks, designing test architecture, or setting up test infrastructure across ecosystems.
 ---

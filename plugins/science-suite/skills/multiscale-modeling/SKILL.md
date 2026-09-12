@@ -1,4 +1,5 @@
 ---
+disable-model-invocation: true
 name: multiscale-modeling
 description: Bridge atomistic MD to mesoscale using coarse-graining, DPD, and nanoscale DEM. Use when developing CG models, implementing DPD simulations, or coupling scales. Also use when building MARTINI models, performing force matching, running QM/MM simulations, designing sequential or concurrent multiscale workflows, or simulating soft matter and polymers at mesoscale. Use proactively when the user needs to connect molecular-level detail to larger-scale behavior, even if they only mention "coarse-graining" or "mesoscale."
 ---

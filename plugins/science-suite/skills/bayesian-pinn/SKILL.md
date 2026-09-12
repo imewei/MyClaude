@@ -1,4 +1,5 @@
 ---
+disable-model-invocation: true
 name: bayesian-pinn
 description: Put posterior uncertainty on PINN / neural-ODE solutions using NeuralPDE.jl's BNNODE (ODEs) and BayesianPINN (PDEs) discretizers. Use when you need credible intervals on a learned PDE solution, an inverse problem with uncertainty on the physical parameters, or HMC sampling over neural-network weights driving a physics residual. Use proactively when the user mentions BPINN, BNNODE, Bayesian PINN, Bayesian neural ODE with NeuralPDE, or wants uncertainty on a neural surrogate of a known ODE/PDE.
 ---

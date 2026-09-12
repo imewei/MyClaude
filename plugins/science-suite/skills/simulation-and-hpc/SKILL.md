@@ -1,7 +1,14 @@
 ---
+disable-model-invocation: true
 name: simulation-and-hpc
 description: Meta-orchestrator for simulation, HPC, and computational methods. Routes to MD setup, trajectory analysis, ML force fields, parallel computing, GPU acceleration, numerical methods, and applied math methods (signal processing, time series, optimization, control theory). Use when setting up MD simulations, analyzing trajectories, training ML force fields, implementing parallel/HPC computing, writing GPU kernels, or applying numerical methods in simulation/HPC contexts. For JAX-specific implementation use jax-computing; for Julia DiffEq/SciML use sciml-and-diffeq; for general data analysis use ml-and-data-science.
 ---
+
+> **Loading a routing target.** `dev-suite:*`, `research-suite:*`, and `science-suite:*` targets below
+> are slash-only (`disable-model-invocation: true`) — the Skill tool will not fire them. Load one by
+> reading its file with the Read tool: `plugins/<suite>/skills/<name>/SKILL.md` (e.g.
+> `dev-suite:backend-patterns` → `plugins/dev-suite/skills/backend-patterns/SKILL.md`). Targets from
+> other plugins (`superpowers:*`, `ecc:*`, …) are unaffected and invoke normally.
 
 # Simulation and HPC
 

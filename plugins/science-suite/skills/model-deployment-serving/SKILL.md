@@ -1,4 +1,5 @@
 ---
+disable-model-invocation: true
 name: model-deployment-serving
 description: Infrastructure patterns for ML model serving including FastAPI/TorchServe/BentoML APIs, Docker/Kubernetes deployment, cloud platforms (SageMaker, Vertex AI), and production monitoring (drift detection, A/B testing). Use when containerizing models or setting up serving infrastructure. For model compression and optimization before deployment, see model-optimization-deployment.
 ---

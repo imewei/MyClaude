@@ -1,8 +1,15 @@
 ---
+disable-model-invocation: true
 name: science-hub
 description: >-
   Top-level router for all scientific computing topics. Use for: JAX/NumPyro/Diffrax/JIT/vmap/pmap/custom-VJP/optax; Julia language/packages/SciML/DiffEq.jl/Lux/ModelingToolkit; nonlinear dynamics/bifurcation/chaos/Lyapunov/SINDy/attractors/coupled oscillators/pattern formation; correlation functions/DLS/SAXS/XPCS/FFT correlators/MSD/VACF/g(r); statistical physics/non-equilibrium/stochastic dynamics/active matter/multiscale/rare-event sampling/extreme-value statistics; deep learning architecture/transformers/CNNs/GNNs/training diagnostics/gradient explosion; classical ML/scikit-learn/XGBoost/data analysis/wrangling/scientific visualization; LLM applications/RAG/LangChain/NLP/evaluation; ML deployment/FastAPI/TorchServe/MLOps/quantization/federated learning; MD simulation/HPC/GPU kernels/GROMACS/OpenMM/numerical methods/trajectory analysis/ML force fields; scientific Python packaging/Rust extensions/type-driven design/quantum computing/bioinformatics/RL/symbolic math; Bayesian inference/MCMC/NumPyro/Turing.jl/Pigeons/consensus MCMC/Bayesian UDE/PINNs/variational inference/MCMC diagnostics; continuum-mechanics/FEM/FEA/constitutive equations/DMA/rheology/transient networks/vitrimers/nanocomposites.
 ---
+
+> **Loading a routing target.** `dev-suite:*`, `research-suite:*`, and `science-suite:*` targets below
+> are slash-only (`disable-model-invocation: true`) — the Skill tool will not fire them. Load one by
+> reading its file with the Read tool: `plugins/<suite>/skills/<name>/SKILL.md` (e.g.
+> `dev-suite:backend-patterns` → `plugins/dev-suite/skills/backend-patterns/SKILL.md`). Targets from
+> other plugins (`superpowers:*`, `ecc:*`, …) are unaffected and invoke normally.
 
 # Science Suite (science-hub)
 

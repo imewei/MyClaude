@@ -1,4 +1,5 @@
 ---
+disable-model-invocation: true
 name: point-processes
 description: Model self-exciting event data with Hawkes processes (parametric and non-parametric EM/HawkesEM kernel estimation), mutually exciting multivariate processes, Bayesian Hawkes with non-parametric backgrounds (HSGP), renewal processes, and inhomogeneous Poisson / Cox processes with GP intensities. Use when the observations are irregular event timestamps rather than a regularly sampled series — earthquake aftershocks, trade arrivals, neuron spike trains, social-media cascades, infectious-disease events, or any clustered-in-time process. Use proactively when the user mentions Hawkes, self-exciting, point process, temporal point process, renewal process, inter-arrival, NRPP, branching ratio, excitation kernel, non-parametric Hawkes, EM Hawkes, or the `tick` library.
 ---

@@ -1,7 +1,14 @@
 ---
+disable-model-invocation: true
 name: advanced-simulations
 description: Hub for advanced simulation workflows that combine MD setup, ML force fields, multiscale modeling, trajectory analysis, rare-event sampling, and non-equilibrium transport. Use when setting up molecular dynamics, choosing or training force fields, bridging atomistic-to-mesoscale models, analyzing trajectories, computing transport properties, or planning rare-event/weighted-ensemble simulations. For general HPC/GPU/numerical-method routing, use simulation-and-hpc.
 ---
+
+> **Loading a routing target.** `dev-suite:*`, `research-suite:*`, and `science-suite:*` targets below
+> are slash-only (`disable-model-invocation: true`) — the Skill tool will not fire them. Load one by
+> reading its file with the Read tool: `plugins/<suite>/skills/<name>/SKILL.md` (e.g.
+> `dev-suite:backend-patterns` → `plugins/dev-suite/skills/backend-patterns/SKILL.md`). Targets from
+> other plugins (`superpowers:*`, `ecc:*`, …) are unaffected and invoke normally.
 
 # Advanced Simulations
 

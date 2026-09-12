@@ -1,8 +1,15 @@
 ---
+disable-model-invocation: true
 name: dev-hub
 description: >-
   Top-level router for software development lifecycle topics, with a dedicated track for scientific-computing code quality. Use for: FastAPI/asyncio backend services; full-stack web/mobile app development; system architecture (microservices/containers/cloud/CLI tools/Terraform/K8s); test automation/TDD/E2E/coverage/code review/plugin validation; numerical-precision and reproducibility validation for JAX/Julia scientific codebases; GitHub Actions/GitLab CI/deployment pipelines/security scanning/CI errors; Prometheus/Grafana/distributed tracing/SLOs/monitoring/observability/incident response; database schema/SQL optimization/caching/search/authentication/secrets management; Git workflow/technical documentation/Airflow data pipelines/systematic debugging; multi-model Codex+Agy review (one-shot second opinion or a persistent dev team/content team)/team-stop/ai pair programming/start dev team/start content team/three-model collaboration/dual-model review/ongoing iterative review.
 ---
+
+> **Loading a routing target.** `dev-suite:*`, `research-suite:*`, and `science-suite:*` targets below
+> are slash-only (`disable-model-invocation: true`) — the Skill tool will not fire them. Load one by
+> reading its file with the Read tool: `plugins/<suite>/skills/<name>/SKILL.md` (e.g.
+> `dev-suite:backend-patterns` → `plugins/dev-suite/skills/backend-patterns/SKILL.md`). Targets from
+> other plugins (`superpowers:*`, `ecc:*`, …) are unaffected and invoke normally.
 
 # Dev Suite (dev-hub)
 

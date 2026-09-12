@@ -1,4 +1,5 @@
 ---
+disable-model-invocation: true
 name: spark-articulator
 description: Stage 1 of the research-spark pipeline. Compresses a rough research idea into a 3-5 sentence articulation that names what the idea is, what is surprising about it, and what observation would confirm it. Triggers on early-stage phrases like "I had this thought about...", "rough idea:", "what if we could...", "I've been wondering whether...", "I want to explore whether X might...", or any time a user shares a research hunch that is not yet tightly scoped. Also triggers when the orchestrator advances to Stage 1. The compression itself is the work; most sparks die here because they will not survive it, which is the point.
 ---

@@ -1,7 +1,14 @@
 ---
+disable-model-invocation: true
 name: julia-language
 description: Meta-orchestrator for Julia language and ecosystem. Routes to core patterns, packages, compilation, performance, testing, CI/CD, visualization, and interop skills. Use when writing Julia code, managing packages, optimizing performance, writing tests, setting up CI/CD, or building cross-language workflows.
 ---
+
+> **Loading a routing target.** `dev-suite:*`, `research-suite:*`, and `science-suite:*` targets below
+> are slash-only (`disable-model-invocation: true`) — the Skill tool will not fire them. Load one by
+> reading its file with the Read tool: `plugins/<suite>/skills/<name>/SKILL.md` (e.g.
+> `dev-suite:backend-patterns` → `plugins/dev-suite/skills/backend-patterns/SKILL.md`). Targets from
+> other plugins (`superpowers:*`, `ecc:*`, …) are unaffected and invoke normally.
 
 # Julia Language
 

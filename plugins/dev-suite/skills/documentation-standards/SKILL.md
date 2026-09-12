@@ -1,4 +1,5 @@
 ---
+disable-model-invocation: true
 name: documentation-standards
 description: Reference standards and templates for technical documentation including API spec formats, README structure, and runbook conventions. Provides domain knowledge for the /docs command. Use when writing API documentation, creating runbooks, structuring READMEs, or reviewing documentation quality.
 ---

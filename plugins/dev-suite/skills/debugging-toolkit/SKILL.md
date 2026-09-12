@@ -1,7 +1,14 @@
 ---
+disable-model-invocation: true
 name: debugging-toolkit
 description: Scientific computing debugging patterns — JAX TracerBoolConversionError/ConcretizationTypeError, Julia @code_warntype type-stability, NaN/inf hunting, numerical reproducibility isolation, and memory profiling for JAX/Julia. For the structured pre-fix debugging workflow, use superpowers:systematic-debugging. Provides domain knowledge for /smart-debug.
 ---
+
+> **Loading a routing target.** `dev-suite:*`, `research-suite:*`, and `science-suite:*` targets below
+> are slash-only (`disable-model-invocation: true`) — the Skill tool will not fire them. Load one by
+> reading its file with the Read tool: `plugins/<suite>/skills/<name>/SKILL.md` (e.g.
+> `dev-suite:backend-patterns` → `plugins/dev-suite/skills/backend-patterns/SKILL.md`). Targets from
+> other plugins (`superpowers:*`, `ecc:*`, …) are unaffected and invoke normally.
 
 # Debugging Toolkit
 

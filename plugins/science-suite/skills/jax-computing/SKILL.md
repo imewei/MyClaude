@@ -1,7 +1,14 @@
 ---
+disable-model-invocation: true
 name: jax-computing
 description: Meta-orchestrator for JAX scientific computing. Routes to core JAX, optimization, Bayesian inference, differential equations, and physics application skills. Use when writing JAX code, optimizing JIT compilation, implementing Bayesian models with NumPyro, solving ODEs with Diffrax, or running physics simulations.
 ---
+
+> **Loading a routing target.** `dev-suite:*`, `research-suite:*`, and `science-suite:*` targets below
+> are slash-only (`disable-model-invocation: true`) — the Skill tool will not fire them. Load one by
+> reading its file with the Read tool: `plugins/<suite>/skills/<name>/SKILL.md` (e.g.
+> `dev-suite:backend-patterns` → `plugins/dev-suite/skills/backend-patterns/SKILL.md`). Targets from
+> other plugins (`superpowers:*`, `ecc:*`, …) are unaffected and invoke normally.
 
 # JAX Computing
 
