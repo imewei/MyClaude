@@ -1,46 +1,149 @@
 ---
+disable-model-invocation: true
 name: three-brain
 description: |
-  Route work between Claude, Codex, and Agy — either as a single one-shot second opinion, or as a persistent semi-automatic team that stays alive across a multi-round project. Use Route mode (default, one-shot) for second-opinion reviews of Claude's own work, high-risk code paths (auth/billing/migrations/secrets/infra), repeated failures on the same bug, video/audio/PDF/image inspection, long-context repository or document scans, and explicit requests like "ask Codex", "ask Agy", "second opinion", "sanity check", "review your work", or "use all three". Use Team mode (persistent) when the user asks to start a "dev team" or "content team", wants an ongoing multi-model review pipeline for a project, or asks to stop/shut down such a team — also trigger for "pair with codex and agy" or requests for Codex + Agy to collaboratively review ongoing work through multiple iterations. Prefer not to trigger for ordinary Q&A, simple edits, or reviewing user-authored non-code drafts unless the user explicitly asks for another model.
-compatibility: Requires `codex` for Codex routes and `agy` for Agy routes. Falls back gracefully — to Claude-only review in Route mode, to a clearly-labeled degraded team in Team mode — when either CLI is missing.
+  Route work between Claude, Codex, and Agy as live Herdr panes — either as a single one-shot second opinion, or as a persistent semi-automatic team that stays alive across a multi-round project. Use Route mode (default, one-shot) for second-opinion reviews of Claude's own work, high-risk code paths (auth/billing/migrations/secrets/infra), repeated failures on the same bug, video/audio/PDF/image inspection, long-context repository or document scans, and explicit requests like "ask Codex", "ask Agy", "second opinion", "sanity check", "review your work", or "use all three". Use Team mode (persistent) when the user asks to start a "dev team" or "content team", wants an ongoing multi-model review pipeline for a project, or asks to stop/shut down such a team — also trigger for "pair with codex and agy" or requests for Codex + Agy to collaboratively review ongoing work through multiple iterations. Prefer not to trigger for ordinary Q&A, simple edits, or reviewing user-authored non-code drafts unless the user explicitly asks for another model.
+compatibility: Requires Herdr — this skill runs only inside a Herdr-managed pane (`HERDR_ENV=1`) and drives Codex and Agy as named Herdr agents. See https://herdr.dev/docs/agent-skill/. Outside Herdr it stops at the preflight gate.
 ---
 
 # Three-Brain
 
 Use Claude as the driver. Call Codex or Agy only when their different strengths materially improve the result — Codex catches bugs, security issues, concurrency, and edge cases; Agy surfaces architecture, design-pattern, and readability concerns, plus multimodal and long-context perception Claude can't do locally. Keep routes bounded, cite evidence from returned output, and preserve the user's workflow.
 
+Both modes reach the other models the same way: as **live, named Herdr agents in sibling panes**, prompted through `herdr agent prompt` and read through `herdr agent read`. A pane keeps its context across rounds, so the second review of a file costs far less than the first.
+
+> **This skill is slash-only** (`disable-model-invocation: true`). Nothing here self-fires — including Forced Risk Review and the Failure Counter below. Those describe what to do *once someone has typed* `/dev-suite:three-brain`; they are not ambient triggers.
+
 ## Two Modes
 
 | Mode | Shape | Trigger |
 |---|---|---|
-| **Route** (default) | One-shot: Claude calls Codex/Agy directly for a single question, then integrates the answer | "ask Codex", "second opinion", "sanity check", high-risk path touched, repeated failure, multimodal/long-context input, explicit "use all three" |
-| **Team** | Persistent: a creator (developer/author) plus a codex-reviewer and agy-reviewer stay alive across many tasks via `TeamCreate`/`TaskCreate` | "start a dev team", "start a content team", "pair on this project", "team-stop" |
+| **Route** (default) | One-shot: Claude prompts a Codex/Agy pane for a single question, then integrates the answer | "ask Codex", "second opinion", "sanity check", high-risk path touched, repeated failure, multimodal/long-context input, explicit "use all three" |
+| **Team** | Persistent: the live `claude`, `codex`, and `agy` panes take creator and reviewer roles across many tasks | "start a dev team", "start a content team", "pair on this project", "team-stop" |
 
-The dividing line is duration, not model choice — both modes call the same two CLIs. A one-off "does this look right?" is Route. "Keep reviewing everything I build for this project" is Team. If a Team is already active (see below) and a Route-mode trigger fires on the same project, prefer routing through the existing team's reviewer dispatch over spawning a second, uncoordinated Codex/Agy call — two independent reviews of the same change waste tokens and can disagree with no one to reconcile them.
+The dividing line is duration, not model choice — both modes drive the same agent kinds. A one-off "does this look right?" is Route. "Keep reviewing everything I build for this project" is Team. Both modes target the same live panes, so a Route-mode trigger during an active Team just prompts the reviewer that is already there. Never start a second agent of a kind that is already running in this directory.
 
-## CLI Invocation Protocol
+---
 
-Both modes call the same two CLIs the same way. Route mode: Claude runs these Bash calls itself. Team mode: paste this whole section verbatim into each reviewer subagent's startup prompt, since a subagent needs the rules self-contained.
+## Transport: Herdr
 
-**[Timeout]** All Bash tool calls to codex/agy MUST set `timeout: 600000` (10 min). External CLIs need 10-15 s to load plus model reasoning time — the default 2-min timeout always fails.
+Herdr is the only transport. The Team Lead (this Claude session) is the sole caller — it owns every pane and every prompt. Do not delegate `herdr` commands to subagents: `--current` resolves against the *calling* pane, and a subagent is not a Herdr-managed pane, so its splits land in the wrong place and it cannot answer a `blocked` approval dialog.
 
-**[Bypass flags]** Codex calls use `codex exec --dangerously-bypass-approvals-and-sandbox` (add `--skip-git-repo-check` when piping a diff outside a confirmed repo, or `review --commit <SHA>` / `--base <branch>` / `--uncommitted` in place of a free-form prompt). Agy calls use `agy --dangerously-skip-permissions --print-timeout 9m -p` (under the 10-min Bash timeout). Both flags are required — without them the CLI stops on an interactive confirmation prompt that never resolves in a non-interactive call, and it hangs to timeout instead of failing fast.
+### 1. Preflight and discovery
 
-**[Agy has no @file syntax]** Agy is agentic — it reads files itself once given a path. Name the exact path in the prompt text ("Read and analyze the video at /path/to/video.mp4...") rather than appending `@path` the way gemini did. Use `--add-dir <path>` to widen its workspace when the target lives outside the current directory.
-
-**[File-based content passing]** For arbitrary code/content (not a file that already exists on disk), write it to a unique temp file before calling the CLI:
 ```bash
-REVIEW_FILE=$(mktemp /tmp/review-XXXXXX.txt)
-# write content to $REVIEW_FILE, then reference its path in the CLI prompt
-rm -f $REVIEW_FILE  # cleanup after capturing output
+test "${HERDR_ENV:-}" = 1
 ```
-Never pipe via stdin — pipes can truncate or mishandle large inputs.
 
-**[Codex degradation on timeout/failure]** Retry in order: xhigh → high → medium → low → Claude fallback. Append a reasoning-effort hint to the prompt on each retry.
+If this fails, say you are not running inside Herdr and stop. Do not fall back to shelling out to `codex` or `agy` directly — this skill has no non-Herdr path.
 
-**[Agy degradation]** Retry in order: simplify prompt → reduce analysis dimensions → Claude fallback.
+**Normally Claude, Codex, and Agy are already running in the session.** Discovery is the main path; starting an agent is the exception. Find what is live and hand it work:
 
-**[Hard rules]** Never skip the CLI call. Never silently self-review. If the CLI is not found, report immediately. Only label a result `[Claude Fallback — [CLI] retries all failed]` after that CLI's ladder is exhausted (Codex: four, Agy: two). Set `NO_COLOR=1` if output has ANSI artifacts.
+```bash
+herdr agent list
+```
+
+Each entry is an `AgentInfo`. Four fields decide everything:
+
+| Field | Use |
+|---|---|
+| `agent` | The **kind** — `codex`, `agy`, `claude`. Match on this, never on the name |
+| `name` | The assigned name, **or `null`** for an agent the user started themselves |
+| `pane_id` | Always present. The fallback target, and the only target for an unnamed agent |
+| `agent_status` | `idle` / `working` / `blocked` / `done` / `unknown` |
+
+Select by kind, then by working directory — one Herdr session often hosts agents for several repos, and `cwd` / `foreground_cwd` are what keep a review pointed at the right one:
+
+```bash
+herdr agent list | jq -r --arg cwd "$PWD" '
+  .result.agents[]
+  | select(.agent == "codex")
+  | select((.cwd // .foreground_cwd // "") | startswith($cwd))
+  | .name // .pane_id'
+```
+
+Use whatever that prints as the target for every later command — **agent commands accept a unique live name or the pane ID hosting the agent**, so an unnamed pane is fully usable as `w1:p3`. Do not rename someone else's agent to make it fit a naming scheme; only name agents you start.
+
+Match `agent_status` before sending:
+
+| Status | Do |
+|---|---|
+| `idle` / `done` | Ready. Prompt it |
+| `working` | Busy on someone else's turn. Wait (`herdr agent wait <target> --timeout …`) or pick another; do not queue a prompt on top |
+| `blocked` | An approval dialog is open. Read it, show the user, ask. Never auto-answer |
+| `unknown` | Herdr can't classify it. This is **not** proof it is free — `agent read` before assuming |
+
+### 2. Start an agent only when its kind is missing
+
+If no agent of the needed kind is live in this working directory, create one — and record that you created it, because team-stop closes only those.
+
+```bash
+herdr pane split --current --direction right --cwd "$PWD" --no-focus
+# read the new id from .result.pane.pane_id
+herdr agent start cdx-<slug> --kind codex --pane <returned-pane-id>
+herdr agent start agy-<slug> --kind agy   --pane <returned-pane-id>
+```
+
+Split a wide pane `right` and a narrow or tall pane `down`; check with `herdr pane layout --pane "$HERDR_PANE_ID"`. Always `--no-focus` — the user's focus stays where it was.
+
+**Name scoping applies only to agents you start.** Names are unique among live agents on the server, so a bare `codex-reviewer` collides the moment a second team starts. Suffix a short project slug and stay inside `[a-z][a-z0-9_-]{0,31}`: `cdx-payments`, `agy-payments`, `dev-payments`.
+
+`agent start` requires a pane already sitting at an interactive shell prompt, and never creates layout itself. It returns `agent_not_ready` if the agent is blocked during startup — the name still works for `agent read` and `agent send-keys`, so inspect before re-issuing.
+
+### 3. Prompt and wait
+
+```bash
+herdr agent prompt $CODEX "<prompt text>" --wait --timeout 600000
+```
+
+`--wait` blocks until the first settled `idle`, `done`, or `blocked`. Do not add `--until` for ordinary work; it is only for waiting on a state-specific condition such as an already-running agent asking for input.
+
+Prompt text goes straight through — no temp file, no stdin pipe, no shell quoting of a diff into an argv. To review a diff, tell the agent where to look (`Review the uncommitted changes in this repo`); these are agentic CLIs sitting in the working directory and they read files themselves.
+
+Distinguish the failure returns, because they mean different things:
+
+| Return | Meaning | Do |
+|---|---|---|
+| `agent_blocked` | An approval/question dialog was already open; **nothing was sent** | `agent read` the dialog, show it to the user, ask. Never auto-answer |
+| `agent_prompt_stalled` | Submitted, but no `working`/`blocked` activity within 5 s | Inspect with `agent get` before deciding; do not blind-resubmit |
+| `timeout` | Your timeout expired (submission time counts toward it) | Same — the prompt may well have landed |
+
+A timeout or stall is not proof the prompt was never delivered. Re-sending a review prompt twice gets you two turns of work and a confused pane.
+
+### 4. Read the result — expect two rounds
+
+```bash
+herdr agent read $CODEX --source recent-unwrapped --lines 200
+```
+
+`recent-unwrapped` joins soft wraps and is the right source for transcripts.
+
+**Codex and Agy render on the terminal's alternate screen, so this often returns a truncated response, and raising `--lines` cannot recover it** — rows that leave the alternate screen never enter Herdr's host scrollback. That is a property of the TUI, not a misconfiguration, so budget for the second round rather than treating it as an error:
+
+```bash
+# only after a first read came back truncated
+herdr agent prompt $CODEX "Write your complete response as Markdown to a file under /tmp and reply with only the file path." --wait --timeout 300000
+herdr agent read $CODEX --source recent-unwrapped --lines 20   # capture just the path
+```
+
+Then Read that file directly. Do **not** ask for file output in the initial prompt — first try the direct read, since a short answer comes back whole and one round is cheaper than two.
+
+### 5. Degradation
+
+**Codex effort ladder** — xhigh → high → medium → low. Retry by **re-prompting the same live pane** with a reasoning-effort hint appended, never by restarting the agent: effort is fixed at `agent start` via `-- <agent-args>`, so a restart throws away the context the pane has already built.
+
+**Agy** — simplify prompt → reduce analysis dimensions.
+
+Only after a ladder is exhausted (Codex: four rungs, Agy: two) label the result `[Claude Fallback — <agent> retries all failed]`.
+
+### 6. Hard rules
+
+- Never skip the agent prompt and review it yourself. A same-model review is the one thing this skill exists to avoid.
+- Never auto-answer a `blocked` dialog. Surface it and ask.
+- Never close a pane, tab, or workspace you did not create. If you reused an existing agent, it is not yours to shut down.
+- Never run bare `herdr` (it launches the TUI) and never `herdr server stop`.
+- Parse IDs out of the JSON responses. Do not guess `w1:p2` from position.
+- Use `--format ansi` only when colour is itself the evidence.
 
 ---
 
@@ -60,34 +163,17 @@ Never pipe via stdin — pipes can truncate or mishandle large inputs.
 
 When uncertain about review of Claude's own output, route to Codex. When uncertain about ordinary user-authored content, stay direct unless the user asked for a second model.
 
-### Startup Check
-
-Run this once per session, only before the first route that needs the tool:
-
-```bash
-codex --version 2>&1 | head -1
-agy --version 2>&1 | head -1
-```
-
-If a CLI is missing, tell the user once and continue with the available route or Claude direct. Do not recheck every turn.
-
 ### Codex Routes
 
-Use Codex for independent code review, adversarial reasoning, and rescue after repeated failures.
+`$CODEX` and `$AGY` below are the handles discovered in Transport step 1 — a live agent name, or a `pane_id` when the user's agent is unnamed.
 
-For tracked repository changes:
+Use Codex for independent code review, adversarial reasoning, and rescue after repeated failures. The pane is already in the working directory, so point it at the change rather than shipping content:
 
 ```bash
-git diff --stat
-# Exclude secret-bearing paths from content — see Forced Risk Review below.
-# These are exactly the files that must never leave the machine, so the
-# trigger list that flags them for review must not also be what pipes their
-# contents to an external CLI.
-git diff -- . ':(exclude).env*' ':(exclude)secrets/**' \
-  | codex exec --dangerously-bypass-approvals-and-sandbox --skip-git-repo-check "Review this change. Focus on bugs, regressions, security risks, missing tests, and unclear assumptions. Return findings first with file/line references when possible."
+herdr agent prompt $CODEX "Review the uncommitted changes in this repository. Focus on bugs, regressions, security risks, missing tests, and unclear assumptions. Report findings first, with file:line references. Do not modify any files." --wait --timeout 600000
 ```
 
-For untracked files or non-code output, pipe only the relevant file(s) or excerpt. Keep the prompt narrow. Ask Codex for findings, evidence, and recommended fixes; do not ask it to rewrite everything unless that is the task.
+For a specific range, name it in the prompt (`Review commit <SHA>`, `Review this branch against main`). Ask for findings, evidence, and recommended fixes; do not ask for a rewrite unless that is the task.
 
 After Codex returns:
 
@@ -97,59 +183,52 @@ After Codex returns:
 
 ### Agy Routes
 
-Use Agy for perception-heavy and long-context tasks. Ask for structured evidence, not a flat summary.
-
-Video:
+Use Agy for perception-heavy and long-context tasks. Ask for structured evidence, not a flat summary. Agy reads files itself once given a path — name the exact path in the prompt text.
 
 ```bash
-agy --dangerously-skip-permissions --print-timeout 9m -p "Read and analyze the video at /path/to/video.mp4. Return timestamped findings as [MM:SS] event. Cover visible content, on-screen text, speaker/action changes, transitions, and notable issues. Cap at 800 words."
+# video
+herdr agent prompt $AGY "Read and analyze the video at /path/to/video.mp4. Return timestamped findings as [MM:SS] event. Cover visible content, on-screen text, speaker/action changes, transitions, and notable issues. Cap at 800 words." --wait --timeout 600000
+
+# audio
+herdr agent prompt $AGY "Read and analyze the audio at /path/to/audio.wav. Return timestamped findings as [MM:SS] event, including speakers if distinguishable, key claims, action items, and uncertainty. Cap at 800 words." --wait --timeout 600000
+
+# document
+herdr agent prompt $AGY "Read /path/to/file.pdf. Extract key claims, tables, chart findings, contradictions, and action items with page-number citations. Cap at 1000 words." --wait --timeout 600000
+
+# repository scan
+herdr agent prompt $AGY "Search /path/or/directory for every place related to <topic>. Return file:line citations, short purpose, and confidence. Avoid broad summaries." --wait --timeout 600000
 ```
 
-Audio:
-
-```bash
-agy --dangerously-skip-permissions --print-timeout 9m -p "Read and analyze the audio at /path/to/audio.wav. Return timestamped findings as [MM:SS] event, including speakers if distinguishable, key claims, action items, and uncertainty. Cap at 800 words."
-```
-
-PDF or document:
-
-```bash
-agy --dangerously-skip-permissions --print-timeout 9m -p "Read /path/to/file.pdf. Extract key claims, tables, chart findings, contradictions, and action items with page-number citations. Cap at 1000 words."
-```
-
-Repository or large directory scan:
-
-```bash
-agy --dangerously-skip-permissions --print-timeout 9m -p "Search /path/or/directory for every place related to <topic>. Return file:line citations, short purpose, and confidence. Avoid broad summaries."
-```
+If the target lives outside the pane's working directory, start that pane with `--cwd` at a parent, or pass Agy's own `--add-dir` after `--` at `agent start`.
 
 Prefer file, page, or timestamp citations in every Agy prompt.
 
 ### Forced Risk Review
 
-Route to Codex when active work touches high-risk targets:
+Once this skill is active, route to Codex when active work touches high-risk targets:
 
 - `src/auth/**`, `**/*OAuth*`
 - `src/billing/**`, `**/*Stripe*`
 - `migrations/**`
 - `deploy/**`, `infra/**`
-- `.env*`, `secrets/**` — send **filenames and `git diff --stat` only, never
-  content**. These paths are flagged for review precisely because they hold
-  secrets; sending their diff content to an external CLI is the one thing
-  this rule must not do. Describe the change in prose instead.
+- `.env*`, `secrets/**` — describe the change in **prose only, never content**.
+  These paths are flagged for review precisely because they hold secrets.
+  A Herdr agent pane runs in your working directory and can open any file it
+  is pointed at, so "don't paste the diff" is not sufficient here: do not
+  name these paths to the agent at all. Summarize what changed instead.
 - `policy/**`, permissions, roles, or ACL logic
 
-Announce forced routes in one short line before calling the tool so the user can interrupt:
+Announce forced routes in one short line before prompting so the user can interrupt:
 
 ```text
 [three-brain] routing to Codex review - risk path: src/auth/
 ```
 
-Do not announce when the user explicitly asked for the route. If a Team is currently active for this project, send the finding to the team's reviewers via the normal workflow loop instead of firing this route standalone — see "Two Modes" above.
+Do not announce when the user explicitly asked for the route.
 
 ### Failure Counter
 
-Track repeated failures deterministically. If the same command, test, or bug fails twice on the same code path after Claude has attempted a fix, route to Codex rescue:
+If the same command, test, or bug fails twice on the same code path after Claude has attempted a fix, route to Codex rescue:
 
 ```text
 [three-brain] routing to Codex rescue - same failure repeated twice
@@ -159,7 +238,7 @@ Give Codex the failing command, exact error, relevant diff, and what was already
 
 ### Parallel Consensus
 
-Use all three only when the user explicitly requests cross-model consensus or when the decision is high-stakes and the user agrees. Ask each model the same question and require this structure:
+Use all three only when the user explicitly requests cross-model consensus or when the decision is high-stakes and the user agrees. Prompt both panes with the same question — they run concurrently, so send both before waiting on either — and require this structure:
 
 ```text
 Recommendation: <one line>
@@ -174,10 +253,11 @@ Compare the answers by evidence. Do not average opinions.
 ### Token And Stability Rules
 
 - Route late enough to have a concrete artifact, error, file, or question.
-- Send the smallest useful context: diffs over whole files, exact files over whole repos, bounded excerpts over dumps.
+- Send the smallest useful context: name a diff or path rather than pasting a dump.
 - Cap model outputs in the prompt when the route is exploratory.
 - Prefer citations and findings over rewrites.
 - Keep Claude responsible for final integration, user communication, and filesystem changes.
+- Reuse a warm pane across rounds — its retained context is the main saving Herdr buys over one-shot invocation.
 - If a route fails, report the failure briefly and continue with the best available local approach.
 
 ### Output Filing
@@ -212,12 +292,12 @@ Example:
 
 ## Team Mode
 
-Coordinate a persistent, semi-automatic team: one creator (developer or author) + two reviewers (Codex + Agy). The current Claude session acts as Team Lead. This is a skill, not a slash command — there is nothing to type. Route here when the user asks for:
+Coordinate a persistent, semi-automatic team of three Herdr panes: one creator (`claude`) plus two reviewers (`codex`, `agy`). The current Claude session is the Team Lead and the only caller. This is a skill, not a slash command beyond the entry point — there is nothing further to type.
 
 | Request | Setup |
 |---------|-------|
-| "start a dev team", "pair on this project" | **Dev team** — developer + codex-reviewer + agy-reviewer |
-| "start a content team", "help me write this with reviewers" | **Content team** — author + codex-reviewer + agy-reviewer |
+| "start a dev team", "pair on this project" | **Dev team** — adopt the live `claude` + `codex` + `agy` agents; start only a missing kind |
+| "start a content team", "help me write this with reviewers" | **Content team** — same three agents, content-focused prompts |
 | "stop the team", "we're done with the team" | **Shut down** — see team-stop flow below |
 
 ### Team Roles
@@ -230,13 +310,10 @@ Coordinate a persistent, semi-automatic team: one creator (developer or author) 
 
 ### Workflow Loop (Semi-Automatic)
 
-1. **User assigns task** → Team Lead routes to developer/author
-2. **Creator completes** → Team Lead shows result to user
-3. **User approves** → Team Lead dispatches both reviewers in parallel
-4. **Reviewers report** → Team Lead consolidates and presents, with the
-   actual effort/degradation level each reviewer landed on in its own
-   heading — a `low`-effort retry must not read as indistinguishable from an
-   `xhigh` first-pass review:
+1. **User assigns task** → Team Lead prompts the creator pane
+2. **Creator completes** → Team Lead reads the pane and shows the result to the user
+3. **User approves** → Team Lead prompts both reviewer panes (send both, then wait — they work concurrently)
+4. **Reviewers report** → Team Lead reads both panes and consolidates, naming the effort/degradation level each landed on so a `low`-effort retry never reads like an `xhigh` first pass:
    ```
    ## Codex Review [effort: {level} — {N} retries]
    {findings}
@@ -249,55 +326,54 @@ User controls every transition. No autonomous loops.
 
 ### Execution Steps
 
-#### 1. Project Detection
+#### 1. Project detection
+
 1. Explicitly specified → use as-is
-2. CWD is inside a project → extract project name from path
+2. CWD is inside a project → derive the name, lowercase it, and cut a `<slug>` that keeps every agent name inside 32 characters
 3. Ambiguous → ask the user
 
-#### 2. Pre-flight CLI Check
+#### 2. Preflight
 
 ```bash
-command -v codex && codex --version || echo "CODEX_MISSING"
-command -v agy && agy --version || echo "AGY_MISSING"
+test "${HERDR_ENV:-}" = 1 || echo "NOT_IN_HERDR"
+herdr agent list
 ```
 
-If either CLI is missing: warn user, offer degraded mode (Claude-only review, clearly labeled) or abort.
+Not in Herdr → say so and stop. Otherwise resolve one handle per kind (`claude`, `codex`, `agy`) scoped to this working directory, exactly as in Transport step 1. Adopted agents are **not yours to close at team-stop** — only ones you start are.
 
-#### 3. Create Team
+#### 3. Adopt what is live; start only what is missing
 
-```
-TeamCreate: team_name = "{project}-dev" or "{topic}-content"
-```
+For each of the three kinds, take the handle discovery returned. Start a pane **only** for a kind with no live agent in this working directory, and record which ones you created — team-stop closes only those.
 
-#### 4. Create Initial Tasks
-
-```
-TaskCreate: "Awaiting task assignment" — creator, status: pending
-TaskCreate: "Awaiting review" — codex-reviewer, status: pending, blockedBy: task-1
-TaskCreate: "Awaiting review" — agy-reviewer, status: pending, blockedBy: task-1
+```bash
+herdr pane split --current --direction right --cwd "$PWD" --no-focus
+herdr agent start dev-<slug> --kind claude --pane <id-from-.result.pane.pane_id>
 ```
 
-#### 5. Launch Agents
+Repeat per missing kind (`--kind codex`, `--kind agy`), alternating `right`/`down` per `herdr pane layout` rather than splitting the same direction three times, which leaves unusably narrow columns.
 
-Read `references/agent-prompts.md` for the startup prompt templates. The **CLI Invocation Protocol** section above must be included verbatim in each reviewer agent's startup prompt.
+In the common case all three are already running and this step does nothing.
 
-Spawn 3 agents via Agent tool with `subagent_type: "general-purpose"`. Do not
-set `mode: "bypassPermissions"` — a skill is not a consent channel, and
-reviewers only need Bash (to shell out to codex/agy) and Read (project
-files), both of which the normal permission system already grants or prompts
-for. Let the user's own permission settings govern these agents like any other.
+#### 4. Seed each pane with its role
 
-#### 6. Confirm to User
+Read `references/agent-prompts.md` for the role-seeding text. Seed a pane you just started. For an **adopted** agent, `herdr agent read <target> --source recent-unwrapped --lines 40` first — it may be mid-conversation on unrelated work, in which case say so and ask the user before repurposing it. Send the seed with `herdr agent prompt <name> "<role text>" --wait --timeout 300000`. There are no reviewer subagents to spawn — the panes *are* the reviewers, and Herdr's own `idle`/`working`/`blocked`/`done` states replace the dispatcher bookkeeping a wrapper agent used to do.
+
+#### 5. Confirm to user
 
 ```
-Team ready.
-Team: {team_name}  Type: {Dev / Content}
-Members: developer/author ✓  codex-reviewer ✓  agy-reviewer ✓
+Team ready (Herdr).
+Team: {slug}  Type: {Dev / Content}
+claude → {handle}  codex → {handle}  agy → {handle}
+Adopted: {list}   Started this session: {list}
 Awaiting your first task.
 ```
 
 ### team-stop Flow
 
-1. `SendMessage` shutdown_request to all agents; wait for confirmations
-2. `TeamDelete` to clean up team resources
-3. Report: `Team shut down. Closed: developer/author, codex-reviewer, agy-reviewer. Resources cleaned up.`
+1. For each agent **you started this session**, tell it to wrap up, then `herdr pane close <pane_id>` on the pane you split for it.
+2. Leave every adopted agent running and say so — it was the user's before this team existed. In the common all-adopted case, team-stop closes nothing.
+3. Report:
+
+```text
+Team shut down. Closed: {panes you started}. Left running: {agents you adopted}.
+```
