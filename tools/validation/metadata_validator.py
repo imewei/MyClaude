@@ -650,7 +650,7 @@ class MetadataValidator:
             return  # Missing file handled elsewhere
 
         content = skill_md.read_text(encoding="utf-8")
-        if "## Routing Decision Tree" not in content:
+        if not self._has_routing_targets(content):
             result.add_warning(
                 f"skills[{idx}]",
                 f"'{skill_name}' appears to be a Tier-3 sub-skill (no routing decision "
@@ -659,6 +659,23 @@ class MetadataValidator:
                 "Only register hub skills (meta-orchestrators with routing trees) "
                 "and approved standalones in plugin.json.",
             )
+
+    # A routing tree earns its name by naming somewhere to go, so a bare heading
+    # over an empty code fence should not satisfy the tier check. Hubs write their
+    # targets in several equivalent styles -- ASCII "-->" arrows, Unicode "\u2192"
+    # arrows, relative "../<skill>/SKILL.md" links, or bare "<suite>:<skill>"
+    # references -- and all four are valid, so accept any of them. Recognising only
+    # one style would flag working hubs as sub-skills.
+    _ROUTING_FENCE = re.compile(r"## Routing Decision Tree\s*\n+```(.*?)```", re.DOTALL)
+    _ROUTING_TARGET = re.compile(r"-->|\u2192|\.\./[a-z0-9-]+/SKILL|[a-z-]+-suite:[a-z0-9-]+")
+
+    @classmethod
+    def _has_routing_targets(cls, content: str) -> bool:
+        """True when the skill has a routing tree that names at least one target."""
+        match = cls._ROUTING_FENCE.search(content)
+        if match is None:
+            return False
+        return bool(cls._ROUTING_TARGET.search(match.group(1)))
 
     def generate_report(self, result: ValidationResult) -> str:
         """Generate validation report"""
