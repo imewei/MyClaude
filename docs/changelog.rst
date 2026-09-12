@@ -46,6 +46,19 @@ Unreleased
   re-breaking that line. An arrow may point to an agent — ``/replicate`` ends
   ``→ `quality-specialist``` — so agents are accepted there too.
 
+**three-brain: trimmed to 2,483 tokens (62% of budget)**
+
+* A second pass moved the remaining reference material out of ``SKILL.md``, after the CI fix left it at
+  3,735 tokens — under the 4,000 gate but at 93% of it, so any growth would have re-broken the build.
+* ``references/model-routes.md`` — the Codex and Agy route recipes (what to send for a review, a rescue,
+  multimodal analysis, or a long-context scan, and what each returns). The Fast Decision Table stays in
+  ``SKILL.md`` and is sufficient to pick the route on its own; these are the instructions for carrying
+  the decision out.
+* ``references/team-mode.md`` — team roles, the semi-automatic workflow loop, and the team-stop flow.
+* ``SKILL.md`` 14,942 -> 9,932 chars; 3,735 -> 2,483 tokens. Off the >75% headroom warning list.
+  What stays is what a routing decision needs: the two modes, the decision table, forced risk review,
+  the failure counter, parallel consensus, token/stability rules, and output filing.
+
 **Docs: counts resynced after the demotions**
 
 * The 8 skill demotions moved the marketplace from 50 registered hubs to 42, and sub-skills from 148 to

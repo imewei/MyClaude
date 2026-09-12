@@ -50,47 +50,9 @@ below do not need it.
 
 When uncertain about review of Claude's own output, route to Codex. When uncertain about ordinary user-authored content, stay direct unless the user asked for a second model.
 
-### Codex Routes
-
-`$CODEX` and `$AGY` below are the handles discovered in Transport step 1 — a live agent name, or a `pane_id` when the user's agent is unnamed.
-
-Use Codex for independent code review, adversarial reasoning, and rescue after repeated failures. The pane is already in the working directory, so point it at the change rather than shipping content:
-
-```bash
-herdr agent prompt $CODEX "Review the uncommitted changes in this repository, EXCLUDING these paths: .env*, secrets/**, **/*credential*, **/*.pem, **/*.key. Do not open, diff, grep, or quote any file under those paths, and do not report their contents. Focus on bugs, regressions, security risks, missing tests, and unclear assumptions. Report findings first, with file:line references. Do not modify any files." --wait --timeout 600000
-```
-
-The exclusion list is **part of the prompt, not a shell filter**. An agent pane runs in your working directory and reads files itself, so `git diff -- ':(exclude)…'` on your side excludes nothing on its side. If the change under review is entirely inside a secret-bearing path, do not send this route at all — see Forced Risk Review.
-
-For a specific range, name it in the prompt (`Review commit <SHA>`, `Review this branch against main`). Ask for findings, evidence, and recommended fixes; do not ask for a rewrite unless that is the task.
-
-After Codex returns:
-
-- Integrate only findings supported by evidence.
-- If there are no actionable findings, say so.
-- End the response with `(Routed via three-brain -> Codex review.)` when the route was triggered by this skill.
-
-### Agy Routes
-
-Use Agy for perception-heavy and long-context tasks. Ask for structured evidence, not a flat summary. Agy reads files itself once given a path — name the exact path in the prompt text.
-
-```bash
-# video
-herdr agent prompt $AGY "Read and analyze the video at /path/to/video.mp4. Return timestamped findings as [MM:SS] event. Cover visible content, on-screen text, speaker/action changes, transitions, and notable issues. Cap at 800 words." --wait --timeout 600000
-
-# audio
-herdr agent prompt $AGY "Read and analyze the audio at /path/to/audio.wav. Return timestamped findings as [MM:SS] event, including speakers if distinguishable, key claims, action items, and uncertainty. Cap at 800 words." --wait --timeout 600000
-
-# document
-herdr agent prompt $AGY "Read /path/to/file.pdf. Extract key claims, tables, chart findings, contradictions, and action items with page-number citations. Cap at 1000 words." --wait --timeout 600000
-
-# repository scan
-herdr agent prompt $AGY "Search /path/or/directory for every place related to <topic>. Return file:line citations, short purpose, and confidence. Avoid broad summaries." --wait --timeout 600000
-```
-
-If the target lives outside the pane's working directory, start that pane with `--cwd` at a parent, or pass Agy's own `--add-dir` after `--` at `agent start`.
-
-Prefer file, page, or timestamp citations in every Agy prompt.
+The per-model recipes — what to send Codex for a review or a rescue, what to send Agy for
+multimodal analysis or a long-context scan, and what each returns — are in
+`references/model-routes.md`. The table above is enough to pick the route.
 
 ### Forced Risk Review
 
@@ -200,44 +162,5 @@ Coordinate a persistent, semi-automatic team of three Herdr panes: one creator (
 | "start a content team", "help me write this with reviewers" | **Content team** — same three agents, content-focused prompts |
 | "stop the team", "we're done with the team" | **Shut down** — see team-stop flow below |
 
-### Team Roles
-
-| Role           | Dev Team                                    | Content Team                                    |
-|----------------|---------------------------------------------|-------------------------------------------------|
-| Creator        | developer — implements features/fixes       | author — writes articles, scripts, newsletters  |
-| Codex reviewer | bugs, security, concurrency, edge cases     | logic, accuracy, structure, fact-checking       |
-| Agy reviewer   | architecture, design patterns, alternatives | readability, engagement, style, audience fit    |
-
-### Workflow Loop (Semi-Automatic)
-
-1. **User assigns task** → Team Lead prompts the creator pane
-2. **Creator completes** → Team Lead reads the pane and shows the result to the user
-3. **User approves** → Team Lead submits to both reviewer panes **without** `--wait`, then `herdr agent wait` on each (a `prompt --wait` on the first blocks the second from ever starting — see Parallel Consensus)
-4. **Reviewers report** → Team Lead reads both panes and consolidates, naming the effort/degradation level each landed on so a `low`-effort retry never reads like an `xhigh` first pass:
-   ```
-   ## Codex Review [effort: {level} — {N} retries]
-   {findings}
-   ## Agy Review [degradation: {level}]
-   {findings}
-   ```
-5. **User decides** → "Revise" (loop to step 1) or "Pass" (next task or end)
-
-User controls every transition. No autonomous loops.
-
-### Execution Steps
-
-The five steps — project detection, preflight, adopting what is live,
-seeding each pane with its role, and confirming to the user — are in
-`references/team-mode-execution.md`.
-
-### team-stop Flow
-
-1. Read `.three-brain/owned-panes.jsonl`. **If it is missing or empty, close nothing** and say so — with no ownership record you cannot prove any pane is yours, and guessing risks killing the user's own agent.
-2. For each recorded pane, confirm it still hosts the agent you started (`herdr agent get <pane_id>` — pane IDs are never reused, but the occupant may have been replaced). Tell it to wrap up, then `herdr pane close <pane_id>`.
-3. Delete `.three-brain/owned-panes.jsonl` after the closures succeed, so a re-run does not try again.
-4. Leave every adopted agent running and say so — it was the user's before this team existed. In the common all-adopted case, team-stop closes nothing.
-5. Report:
-
-```text
-Team shut down. Closed: {panes you started}. Left running: {agents you adopted}.
-```
+Roles for each pane, the semi-automatic workflow loop, the execution steps, and the
+team-stop flow are in `references/team-mode.md` and `references/team-mode-execution.md`.
