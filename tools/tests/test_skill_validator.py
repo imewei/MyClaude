@@ -17,30 +17,47 @@ class TestSkillValidator(unittest.TestCase):
         except ImportError:
             self.fail("Could not import skill_validator")
 
-    def test_no_corpus_reports_no_data(self):
-        """Regression: validator must NOT report EXCELLENT when no tests ran."""
-        from tools.validation.skill_validator import SkillApplicationValidator
+    def test_reports_registered_skill_inventory(self):
+        from tools.validation.skill_validator import SkillInventoryValidator
 
-        validator = SkillApplicationValidator(
-            str(project_root / "plugins"), corpus_dir=None
-        )
+        validator = SkillInventoryValidator(str(project_root / "plugins"))
         validator.load_skills()
-        validator.test_skill_application()
         report = validator.generate_report()
-        self.assertIn("NO DATA", report)
-        self.assertNotIn("EXCELLENT", report)
 
-    def test_zero_tests_metrics_accuracy(self):
-        """Verify accuracy is 0.0% with no tests, not a false positive."""
-        from tools.validation.skill_validator import SkillValidationMetrics
+        self.assertGreater(len(validator.skills), 0)
+        self.assertIn("Skill Inventory Report", report)
+        for plugin in ("dev-suite", "research-suite", "science-suite"):
+            self.assertIn(plugin, report)
 
-        metrics = SkillValidationMetrics()
-        self.assertEqual(metrics.total_tests, 0)
-        self.assertEqual(metrics.accuracy, 0.0)
-        self.assertEqual(metrics.precision, 0.0)
-        self.assertEqual(metrics.recall, 0.0)
-        self.assertEqual(metrics.over_trigger_rate, 0.0)
-        self.assertEqual(metrics.under_trigger_rate, 0.0)
+    def test_flags_missing_description(self):
+        from tools.validation.skill_validator import SkillInventoryValidator
+
+        validator = SkillInventoryValidator(str(project_root / "plugins"))
+        validator._add_skill({"name": "bare-skill"}, "test-plugin")
+
+        self.assertTrue(
+            any("missing `description`" in issue for issue in validator.issues)
+        )
+        self.assertIn("❌", validator.generate_report())
+
+    def test_no_triggering_metrics_are_reported(self):
+        """Regression: the accuracy/precision table derived its ground truth
+        from the score it was testing, so it reported 100% for any input.
+        It must not come back."""
+        from tools.validation.skill_validator import SkillInventoryValidator
+
+        validator = SkillInventoryValidator(str(project_root / "plugins"))
+        validator.load_skills()
+        report = validator.generate_report()
+
+        for banned in (
+            "Overall Accuracy",
+            "Over-Trigger Rate",
+            "Under-Trigger Rate",
+            "Precision",
+            "EXCELLENT",
+        ):
+            self.assertNotIn(banned, report)
 
 
 if __name__ == "__main__":
