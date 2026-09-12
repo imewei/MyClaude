@@ -1,6 +1,6 @@
 # MyClaude Plugin Tools
 
-Automated tools for plugin validation, performance profiling, triggering pattern analysis, and ecosystem maintenance. All tools use Python standard library only — no external dependencies.
+Automated tools for plugin validation and ecosystem maintenance. All tools use Python standard library only — no external dependencies.
 
 ## Quick Reference
 
@@ -25,9 +25,7 @@ tools/
 ├── common/                # Shared utilities
 │   ├── loader.py          # Plugin loading and parsing
 │   ├── models.py          # Data models (dataclasses)
-│   ├── readme_sanitizer.py # README probe sanitizer (prompt-injection safeguards)
-│   ├── reporter.py        # Markdown report generation
-│   └── timer.py           # Performance timing utilities
+│   └── readme_sanitizer.py # README probe sanitizer (prompt-injection safeguards)
 ├── validation/            # Plugin validation tools
 │   ├── metadata_validator.py      # plugin.json schema validation
 │   ├── command_file_linter.py     # Command .md structural lint (fences, headings, Step refs)
@@ -36,14 +34,6 @@ tools/
 │   ├── xref_validator.py          # Cross-plugin reference validation
 │   ├── doc_checker.py             # Documentation completeness checker
 │   └── plugin_review_script.py    # Full automated plugin review
-├── profiling/             # Performance and triggering profiling
-│   ├── load_profiler.py           # Plugin load time measurement
-│   ├── activation_profiler.py     # Agent activation performance
-│   ├── activation_tester.py       # Activation accuracy (FP/FN rates)
-│   ├── command_analyzer.py        # Command suggestion analysis
-│   ├── memory_analyzer.py         # Memory usage analysis
-│   ├── performance_reporter.py    # Aggregated performance reports
-│   └── triggering_reporter.py     # Comprehensive triggering reports
 ├── maintenance/           # Ecosystem maintenance
 │   ├── analyze_ecosystem.py       # Skill/agent ecosystem metrics
 │   └── enable_all_plugins.py      # Enable all plugins in settings
@@ -135,50 +125,6 @@ python3 tools/validation/plugin_review_script.py <suite-name>
 
 Runs all validation checks and produces a severity-categorized report (critical/high/medium/low).
 
-## Profiling Tools
-
-### load_profiler.py
-
-Measures plugin loading performance. Target: <100ms per plugin.
-
-```bash
-python3 tools/profiling/load_profiler.py <suite-name> [--all]
-```
-
-### activation_profiler.py / activation_tester.py
-
-Profile agent activation performance (target: <50ms) and test activation accuracy (FP/FN rates <5%).
-
-```bash
-python3 tools/profiling/activation_profiler.py <suite-name> [--all]
-python3 tools/profiling/activation_tester.py [--plugin NAME]
-```
-
-### command_analyzer.py
-
-Analyzes command suggestion relevance and timing accuracy.
-
-```bash
-python3 tools/profiling/command_analyzer.py [--plugin NAME]
-```
-
-### memory_analyzer.py
-
-Measures plugin memory consumption. Target: <10MB per plugin.
-
-```bash
-python3 tools/profiling/memory_analyzer.py <suite-name> [--all]
-```
-
-### performance_reporter.py / triggering_reporter.py
-
-Aggregate performance metrics and triggering pattern reports.
-
-```bash
-python3 tools/profiling/performance_reporter.py [--all] [--export json output.json]
-python3 tools/profiling/triggering_reporter.py [--reports-dir DIR]
-```
-
 ## Maintenance Tools
 
 ### analyze_ecosystem.py
@@ -233,7 +179,7 @@ uv run pytest tools/tests/ --cov=tools -v
 
 Tools generate output in gitignored directories:
 
-- **`/reports/`** — Validation and profiling reports
+- **`/reports/`** — Validation reports
 - **`/reviews/`** — Individual plugin review reports
 
 ## CI/CD Integration
