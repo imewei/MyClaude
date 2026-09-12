@@ -96,13 +96,35 @@ SCIENCE_AGENTS = [
 
 
 class TestDescriptionTrimming:
+    # The v4.0.0 redesign capped agent descriptions at 180 chars purely for
+    # context budget. That cap traded away dispatch sensitivity: a bare
+    # capability list gives the harness nothing to match a user request
+    # against. The plugin-dev agent spec asks for 200-1000 chars of explicit
+    # triggering conditions. 500 keeps the budget bounded (~9.3 KB across all
+    # 20 agents) while leaving room for "Use this agent when ..." triggers.
+    # Worked scenarios live in the body's "When to invoke" section, which
+    # costs nothing until the agent is dispatched.
     @pytest.mark.parametrize("agent", SCIENCE_AGENTS)
-    def test_description_at_most_180_chars(self, agent):
+    def test_description_at_most_500_chars(self, agent):
         path = SCIENCE / f"agents/{agent}.md"
         fm = _frontmatter(path)
         desc = fm.get("description", "")
-        assert len(desc) <= 180, (
-            f"{agent} description is {len(desc)} chars (max 180): {desc!r}"
+        assert len(desc) <= 500, (
+            f"{agent} description is {len(desc)} chars (max 500): {desc!r}"
+        )
+
+    @pytest.mark.parametrize("agent", SCIENCE_AGENTS)
+    def test_description_states_trigger_conditions(self, agent):
+        path = SCIENCE / f"agents/{agent}.md"
+        fm = _frontmatter(path)
+        desc = fm.get("description", "")
+        assert desc.startswith("Use this agent"), (
+            f"{agent} description must open with an explicit trigger "
+            f"condition: {desc!r}"
+        )
+        body = path.read_text(encoding="utf-8")
+        assert "## When to invoke" in body, (
+            f"{agent} body is missing a '## When to invoke' section"
         )
 
     @pytest.mark.parametrize("agent", SCIENCE_AGENTS)

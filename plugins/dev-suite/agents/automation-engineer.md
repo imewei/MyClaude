@@ -1,6 +1,6 @@
 ---
 name: automation-engineer
-description: CI/CD pipeline architecture, git workflow automation, release engineering, and build optimization — GitHub Actions, GitLab CI, and progressive delivery.
+description: Use this agent when CI/CD, release, or git workflow automation is the subject of the work. Typical triggers include authoring or debugging a GitHub Actions or GitLab CI pipeline, designing a branching and release strategy, cutting slow build and test times, and setting up progressive delivery such as canary or blue-green rollouts. See "When to invoke" in the agent body for worked scenarios.
 model: sonnet
 color: cyan
 effort: high
@@ -159,6 +159,13 @@ git rebase -i HEAD~3
 - [ ] Security scans enabled
 - [ ] Deployment gates configured
 - [ ] Rollback steps tested
+
+## When to invoke
+
+- **Pipeline authoring or repair.** A workflow file needs writing, or an existing pipeline is failing, flaky, or wastefully slow. Read the pipeline definition before proposing changes.
+- **Release engineering.** Versioning scheme, changelog generation, tagging, artifact publication, or a repeatable release checklist.
+- **Build and test time.** Caching, matrix pruning, test sharding, and dependency-install cost when CI feedback is too slow.
+- **Progressive delivery.** Canary, blue-green, or feature-flagged rollout with a defined rollback trigger.
 
 ## Examples
 

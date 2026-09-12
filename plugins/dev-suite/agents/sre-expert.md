@@ -1,6 +1,6 @@
 ---
 name: sre-expert
-description: Site reliability engineering — observability (metrics/logs/traces), SLO and error-budget management, incident response, and performance/capacity engineering.
+description: Use this agent when production reliability is the subject. Typical triggers include instrumenting metrics, logs, or traces, defining SLOs and error budgets, running or writing up an incident and its postmortem, and diagnosing latency or capacity problems under load. See "When to invoke" in the agent body for worked scenarios.
 model: sonnet
 color: green
 effort: high
@@ -155,6 +155,13 @@ WHERE seq_scan > 1000 AND (seq_scan*100/idx_scan) > 5;
 - [ ] Database performance analyzed
 - [ ] Network latency baselined
 - [ ] Post-mortem template ready
+
+## When to invoke
+
+- **Observability gaps.** The user cannot answer what is wrong in production — missing metrics, unstructured logs, or no distributed tracing.
+- **SLO and error budget.** Defining what reliable means for a service, choosing indicators, and deciding what the budget gates.
+- **Incident response.** An outage is live or just ended and needs triage, mitigation, or a blameless postmortem with concrete follow-ups.
+- **Performance and capacity.** Tail latency, saturation, autoscaling policy, or headroom planning ahead of a traffic event.
 
 ## Examples
 
