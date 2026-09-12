@@ -28,6 +28,19 @@ Unreleased
   research-suite 11 -> 10 hubs (6 -> 7 sub-skills). Roughly 4,263 chars (~1,065 tokens) of always-loaded
   skill descriptions removed in total.
 
+**Tooling: metadata_validator enforces routing reach**
+
+* ``metadata_validator.py`` gains a redundancy check: a registered hub is warned about when every skill it
+  routes to is already reachable from a hub that routes *to* it. Having a routing tree is not by itself a
+  reason to be registered — reach is. This is the rule that identified the eight demotions above; it now
+  holds on its own instead of living in a one-off script.
+* Parents are resolved across every suite, not just the one under validation, because they cross suite
+  boundaries (research-suite's ``research-practice`` was reached from science-suite's
+  ``research-and-domains``). The cross-suite index is cached per plugins root.
+* Root hubs (``dev-hub``, ``research-hub``, ``science-hub``) have no parent and are never flagged.
+* Verified to fire: temporarily re-registering ``neural-pde`` reproduces the warning naming
+  ``bayesian-inference, julia-mastery, sciml-and-diffeq`` as the hubs that already cover it.
+
 **Tooling: removed the tautological skill-triggering metrics**
 
 * ``skill_validator.py`` rewritten as a skill *inventory* validator. The previous version reported

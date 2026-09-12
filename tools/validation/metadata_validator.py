@@ -659,6 +659,104 @@ class MetadataValidator:
                 "Only register hub skills (meta-orchestrators with routing trees) "
                 "and approved standalones in plugin.json.",
             )
+            return
+
+        self._check_routing_redundancy(skill_name, content, idx, result, plugin_path)
+
+    def _check_routing_redundancy(
+        self,
+        skill_name: str,
+        content: str,
+        idx: int,
+        result: ValidationResult,
+        plugin_path: Path,
+    ) -> None:
+        """Warn when a registered hub routes nowhere its own parents cannot already reach.
+
+        Having a routing tree is not by itself a reason to be registered. What earns
+        registration is reach: a hub should be able to send work somewhere that a user
+        arriving through the hubs above it could not already get to. When every target a
+        hub names is also named by a hub that routes *to* it, the entry only adds an
+        always-loaded description for a decision some parent already offers.
+
+        Roots (dev-hub, research-hub, science-hub) have no parent and are always kept.
+        Parents are looked up across every suite, not just this one, because they cross
+        suite boundaries -- research-suite's `research-practice` was reached from
+        science-suite's `research-and-domains`.
+        """
+        own_targets = self._routing_targets(content)
+        if not own_targets:
+            return
+
+        registry = self._registered_skill_index(plugin_path.parent)
+        parents = {
+            name
+            for name, parent_content in registry.items()
+            if name != skill_name and skill_name in self._routing_targets(parent_content)
+        }
+        if not parents:
+            return  # A root hub: nothing routes to it, so it is the way in.
+
+        reachable_from_parents: set[str] = set()
+        for parent in parents:
+            reachable_from_parents |= self._routing_targets(registry[parent])
+
+        if own_targets - reachable_from_parents - {skill_name}:
+            return  # Adds reach of its own; registration is earned.
+
+        result.add_warning(
+            f"skills[{idx}]",
+            f"'{skill_name}' adds no routing reach: every skill it routes to is already "
+            f"reachable from {', '.join(sorted(parents))}, which route to it. Registering "
+            f"it costs an always-loaded description for a decision its parents already "
+            f"offer. Remove it from plugin.json — it stays reachable through those hubs.",
+            "Register a hub when it can route somewhere its own parents cannot.",
+        )
+
+    @classmethod
+    def _routing_targets(cls, content: str) -> set[str]:
+        """Skill names a hub routes to, from its Core Skills list and routing tree."""
+        sections = []
+        fence = cls._ROUTING_FENCE.search(content)
+        if fence:
+            sections.append(fence.group(1))
+        core = cls._CORE_SKILLS_SECTION.search(content)
+        if core:
+            sections.append(core.group(0))
+        targets: set[str] = set()
+        for section in sections:
+            for relative, qualified in cls._TARGET_NAME.findall(section):
+                targets.add(relative or qualified)
+        return targets
+
+    @classmethod
+    def _registered_skill_index(cls, plugins_root: Path) -> dict[str, str]:
+        """Map every registered skill name to its SKILL.md text, across all suites.
+
+        Cached per plugins-root: `make validate` runs one process per suite, but a
+        single process validating several suites should not re-read the tree each time.
+        """
+        cache_key = str(plugins_root.resolve())
+        cached = cls._REGISTRY_CACHE.get(cache_key)
+        if cached is not None:
+            return cached
+
+        index: dict[str, str] = {}
+        for manifest in sorted(plugins_root.glob("*/.claude-plugin/plugin.json")):
+            try:
+                skills = json.loads(manifest.read_text(encoding="utf-8")).get("skills", [])
+            except (OSError, json.JSONDecodeError):
+                continue  # Malformed manifests are reported by the schema checks.
+            suite_dir = manifest.parent.parent
+            for ref in skills:
+                if not isinstance(ref, str):
+                    continue
+                skill_md = suite_dir / ref.lstrip("./") / "SKILL.md"
+                if skill_md.exists():
+                    index[Path(ref).name] = skill_md.read_text(encoding="utf-8")
+
+        cls._REGISTRY_CACHE[cache_key] = index
+        return index
 
     # A routing tree earns its name by naming somewhere to go, so a bare heading
     # over an empty code fence should not satisfy the tier check. Hubs write their
@@ -668,6 +766,9 @@ class MetadataValidator:
     # one style would flag working hubs as sub-skills.
     _ROUTING_FENCE = re.compile(r"## Routing Decision Tree\s*\n+```(.*?)```", re.DOTALL)
     _ROUTING_TARGET = re.compile(r"-->|\u2192|\.\./[a-z0-9-]+/SKILL|[a-z-]+-suite:[a-z0-9-]+")
+    _CORE_SKILLS_SECTION = re.compile(r"## Core Skills.*?(?=\n## |\Z)", re.DOTALL)
+    _TARGET_NAME = re.compile(r"\.\./([a-z0-9-]+)/SKILL|[a-z-]+-suite:([a-z0-9-]+)")
+    _REGISTRY_CACHE: ClassVar[dict[str, dict[str, str]]] = {}
 
     @classmethod
     def _has_routing_targets(cls, content: str) -> bool:
