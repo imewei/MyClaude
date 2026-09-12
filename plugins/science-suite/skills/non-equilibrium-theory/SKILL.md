@@ -26,6 +26,22 @@ For non-equilibrium thermodynamics, fluctuation theorems, and active matter theo
 | FDT | χ(t) = β d/dt⟨A(t)B(0)⟩ | Response from fluctuations |
 | Onsager | L_ij = L_ji | Transport symmetry |
 
+**Estimating Jarzynski numerically.** `⟨exp(-βW)⟩` is dominated by the rare small-work
+trajectories, so the naive average underflows once `βW` is more than a few tens. Evaluate it in
+log space instead:
+
+```python
+def jarzynski_free_energy(work_samples, T):
+    """ΔF = -kT ln⟨exp(-βW)⟩, evaluated stably."""
+    beta = 1.0 / (kB * T)
+    log_avg = jax.scipy.special.logsumexp(-beta * work_samples) - jnp.log(len(work_samples))
+    return -log_avg / beta
+```
+
+The estimator stays biased when the work distribution is poorly sampled in its low-work tail —
+log-sum-exp fixes the arithmetic, not the sampling. Check convergence against Crooks or BAR,
+which use both directions and are better conditioned.
+
 ## Linear Response Theory
 
 **Response function**:
