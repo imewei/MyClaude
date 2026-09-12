@@ -25,7 +25,8 @@ $ARGUMENTS
 
 ## 1. Analysis
 
-Detect existing workflows (`.github/workflows/*.yml`, `.gitlab-ci.yml`), manual processes (scripts, README), automation opportunities
+Detect existing workflows (`.github/workflows/*.yml`, `.gitlab-ci.yml`), manual processes (scripts, README), automation
+opportunities
 
 ## 2. GitHub Actions
 
@@ -56,7 +57,8 @@ fmt → init → validate → plan → apply (main only). PR comments, S3 remote
 
 ## 6. Security
 
-Trivy (vulnerabilities), Snyk (dependencies), OWASP, SonarCloud, Semgrep (SAST), Gitleaks (secrets). Run: push, PR, weekly
+Trivy (vulnerabilities), Snyk (dependencies), OWASP, SonarCloud, Semgrep (SAST), Gitleaks (secrets). Run: push, PR,
+weekly
 
 ## 7. Monitoring
 
@@ -78,7 +80,8 @@ Parallel (independent tasks), Sequential (deploy→tests), Retry (transient fail
 /workflow-automate --mode=enterprise --compliance=soc2 --iac-tool=terraform
 ```
 
-**Options:** `--platform=github|gitlab|both`, `--environment=dev,staging,prod`, `--security-level=basic|standard|high`, `--compliance=none|soc2|hipaa|pci`
+**Options:** `--platform=github|gitlab|both`, `--environment=dev,staging,prod`, `--security-level=basic|standard|high`,
+`--compliance=none|soc2|hipaa|pci`
 
 ## Deliverables
 

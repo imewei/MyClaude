@@ -37,4 +37,5 @@ Routes to `simulation-expert` via `science-suite:simulation-and-hpc`.
 
 ## Token Strategy
 
-Engine-specific reference sections (GROMACS MDP templates, OpenMM force field tables) load only when `--engine` is specified. Default invocation loads the routing tree only.
+Engine-specific reference sections (GROMACS MDP templates, OpenMM force field tables) load only when `--engine` is
+specified. Default invocation loads the routing tree only.

@@ -7,7 +7,8 @@ allowed-tools: [Bash, Edit, Read, Write, Task]
 
 # Documentation Management
 
-Routes to `documentation-expert`; also engage `software-architect` when `--full` is passed or more than 50 files are in scope.
+Routes to `documentation-expert`; also engage `software-architect` when `--full` is passed or more than 50 files are in
+scope.
 
 $ARGUMENTS
 

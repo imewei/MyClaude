@@ -990,38 +990,38 @@
     "semantic_hash": ""
   },
   "plugins/research-suite/commands/replicate.md": {
-    "mtime": 1789245241.0136774,
-    "seen": 1789245259.7655056,
-    "ast_hash": "cfa6ab9200d4c64ef284d7dabc15e907",
+    "mtime": 1789246718.9448767,
+    "seen": 1789246984.7105367,
+    "ast_hash": "4c97ee62aeb6e67bee169f7b0d01f6d5",
     "semantic_hash": ""
   },
   "plugins/research-suite/commands/lit-review.md": {
-    "mtime": 1789245240.9596775,
-    "seen": 1789245259.7655027,
-    "ast_hash": "63380160d7fa0aadf5dbd08e56199b8c",
+    "mtime": 1789246718.9448767,
+    "seen": 1789246984.7105334,
+    "ast_hash": "eea642d469fd294bae7a42b8b12670ca",
     "semantic_hash": ""
   },
   "plugins/research-suite/commands/paper-implement.md": {
-    "mtime": 1789245240.9846776,
-    "seen": 1789245259.7655036,
-    "ast_hash": "ca3bd730ed5b957a60f7a22576fb9e64",
+    "mtime": 1789246718.9448767,
+    "seen": 1789246984.7105348,
+    "ast_hash": "4c4314a318eac1ef2730c8612b618deb",
     "semantic_hash": ""
   },
   "plugins/research-suite/agents/research-spark-orchestrator.md": {
-    "mtime": 1789219601.0324233,
-    "seen": 1789245259.7655013,
-    "ast_hash": "6d32c82fa591c8c52ee360274cdc3b4a",
+    "mtime": 1789246718.9338768,
+    "seen": 1789246984.710532,
+    "ast_hash": "82586b31955c0605c48596d956424aa5",
     "semantic_hash": ""
   },
   "plugins/research-suite/agents/research-expert.md": {
-    "mtime": 1785882446.4846785,
-    "seen": 1789167560.9302728,
-    "ast_hash": "2a4502132de7c2bdd805cd9b6d42618d",
+    "mtime": 1789246718.9338768,
+    "seen": 1789246984.7105303,
+    "ast_hash": "65fb5b120fd6b45a2479d88dd786f430",
     "semantic_hash": ""
   },
   "plugins/dev-suite/README.md": {
-    "mtime": 1785827232.8590806,
-    "seen": 1789167560.9301367,
+    "mtime": 1789246718.9438767,
+    "seen": 1789246984.7103786,
     "ast_hash": "818b2a0f17af866e9096b314b5ab0a5b",
     "semantic_hash": "818b2a0f17af866e9096b314b5ab0a5b"
   },
@@ -1314,99 +1314,99 @@
     "semantic_hash": ""
   },
   "plugins/dev-suite/commands/run-all-tests.md": {
-    "mtime": 1789245470.1992607,
-    "seen": 1789245497.780071,
+    "mtime": 1789246718.9448767,
+    "seen": 1789246984.7104096,
     "ast_hash": "8546aa2c24730009facf935fa3e23e69",
     "semantic_hash": ""
   },
   "plugins/dev-suite/commands/eng-feature-dev.md": {
-    "mtime": 1789245470.1982608,
-    "seen": 1789245497.7800674,
-    "ast_hash": "d34e98b9be17613ddddf073977d88ff3",
+    "mtime": 1789246718.9458766,
+    "seen": 1789246984.7104013,
+    "ast_hash": "3b6e1324d89cecbada4bd46cf8c72df2",
     "semantic_hash": ""
   },
   "plugins/dev-suite/commands/modernize.md": {
-    "mtime": 1789245470.1982608,
-    "seen": 1789245497.78007,
-    "ast_hash": "faa391253887eeb214686c8246c5c2f0",
+    "mtime": 1789246718.9458766,
+    "seen": 1789246984.7104075,
+    "ast_hash": "60b497ecfa5eb5b6a63ab72120d62ddb",
     "semantic_hash": ""
   },
   "plugins/dev-suite/commands/merge-all.md": {
-    "mtime": 1789245470.1982608,
-    "seen": 1789245497.7800694,
+    "mtime": 1789246718.9458766,
+    "seen": 1789246984.7104056,
     "ast_hash": "6ebb7fca5a5debbd3299153f0469ff31",
     "semantic_hash": ""
   },
   "plugins/dev-suite/commands/smart-debug.md": {
-    "mtime": 1789245470.1992607,
-    "seen": 1789245497.7800717,
-    "ast_hash": "65bbc3749ce3e2dae1ef24ba095b5d60",
+    "mtime": 1789246718.9468768,
+    "seen": 1789246984.7104118,
+    "ast_hash": "c3c629c1f23f5c5184bbec28d22f01ba",
     "semantic_hash": ""
   },
   "plugins/dev-suite/commands/test-generate.md": {
-    "mtime": 1789245470.1992607,
-    "seen": 1789245497.7800725,
-    "ast_hash": "7ca0ef739528e5df6d2b6d9e15110085",
+    "mtime": 1789246718.9468768,
+    "seen": 1789246984.7104142,
+    "ast_hash": "1f948137fc851da25f36a57f44f2456d",
     "semantic_hash": ""
   },
   "plugins/dev-suite/commands/double-check.md": {
-    "mtime": 1789245470.1982608,
-    "seen": 1789245497.7800663,
+    "mtime": 1789246718.9468768,
+    "seen": 1789246984.710399,
     "ast_hash": "6c7541e09a95b82960391128227557f0",
     "semantic_hash": ""
   },
   "plugins/dev-suite/commands/fix-commit-errors.md": {
-    "mtime": 1789245470.1982608,
-    "seen": 1789245497.7800684,
+    "mtime": 1789246718.9468768,
+    "seen": 1789246984.7104034,
     "ast_hash": "00880b84de013027874ae171dae6c87c",
     "semantic_hash": ""
   },
   "plugins/dev-suite/commands/workflow-automate.md": {
-    "mtime": 1789245470.1992607,
-    "seen": 1789245497.7800732,
-    "ast_hash": "d00b112f761891e491ee00babe5201cc",
+    "mtime": 1789246718.9478767,
+    "seen": 1789246984.710416,
+    "ast_hash": "5a055a33af5344a5c7c612ea18aa4283",
     "semantic_hash": ""
   },
   "plugins/dev-suite/commands/docs.md": {
-    "mtime": 1789245484.291235,
-    "seen": 1789245497.780065,
-    "ast_hash": "f29a5dc482dc8923ea441e336ca5c2b0",
+    "mtime": 1789246718.9478767,
+    "seen": 1789246984.7103965,
+    "ast_hash": "20a16311b141ad2c6b972f8d02785ad0",
     "semantic_hash": ""
   },
   "plugins/dev-suite/agents/app-developer.md": {
-    "mtime": 1789243259.3647118,
-    "seen": 1789245259.7653928,
-    "ast_hash": "766c602782451b48203ecfc3695c810a",
+    "mtime": 1789246718.9338768,
+    "seen": 1789246984.7103837,
+    "ast_hash": "20c2f82fb6db49451cca774b5405d6d2",
     "semantic_hash": ""
   },
   "plugins/dev-suite/agents/quality-specialist.md": {
-    "mtime": 1789243259.3647118,
-    "seen": 1789245259.765397,
-    "ast_hash": "f9382a20fbcc052e1c2b01b1176eba2e",
+    "mtime": 1789246718.9348767,
+    "seen": 1789246984.7103903,
+    "ast_hash": "049c871fbd0593848c49836c0f493fb7",
     "semantic_hash": ""
   },
   "plugins/dev-suite/agents/automation-engineer.md": {
-    "mtime": 1789243259.3647118,
-    "seen": 1789245259.7653944,
-    "ast_hash": "5a3bb18e446bca9cb98d39d8fb18c99d",
+    "mtime": 1789246718.9348767,
+    "seen": 1789246984.710386,
+    "ast_hash": "6d4023e9c22e5e2ae4487d77e72f25d2",
     "semantic_hash": ""
   },
   "plugins/dev-suite/agents/software-architect.md": {
-    "mtime": 1789243259.3647118,
-    "seen": 1789245259.7653985,
-    "ast_hash": "6c42c92722b159a430a7ab12a4a29a97",
+    "mtime": 1789246718.9348767,
+    "seen": 1789246984.7103922,
+    "ast_hash": "9829499ca6ee815889e2b3ed336ab62f",
     "semantic_hash": ""
   },
   "plugins/dev-suite/agents/sre-expert.md": {
-    "mtime": 1789243323.1493323,
-    "seen": 1789245259.7654004,
-    "ast_hash": "e1c387b3f02ac1d05efbe391f262c932",
+    "mtime": 1789246718.9358766,
+    "seen": 1789246984.7103946,
+    "ast_hash": "acd15001de3b7ed0b61aa5e82b7d09f8",
     "semantic_hash": ""
   },
   "plugins/dev-suite/agents/documentation-expert.md": {
-    "mtime": 1789243259.3657117,
-    "seen": 1789245259.7653956,
-    "ast_hash": "6690f48c453eb363481962b938750839",
+    "mtime": 1789246718.9368768,
+    "seen": 1789246984.710389,
+    "ast_hash": "da6bf6bcd4d7a35c89cac33a3cfacb65",
     "semantic_hash": ""
   },
   "plugins/dev-suite/output-styles/verbose.md": {
@@ -1422,9 +1422,9 @@
     "semantic_hash": "ed53781932c39dc219c35250ef006ea3"
   },
   "plugins/science-suite/README.md": {
-    "mtime": 1789235864.6607895,
-    "seen": 1789245259.7656035,
-    "ast_hash": "7643bbb29bf803f2c0239f519b9da32c",
+    "mtime": 1789246718.9438767,
+    "seen": 1789246984.7106516,
+    "ast_hash": "6360a99d828b755ccc0808482a2609e6",
     "semantic_hash": ""
   },
   "plugins/science-suite/skills/julia-ml-pipelines/SKILL.md": {
@@ -2508,99 +2508,99 @@
     "semantic_hash": ""
   },
   "plugins/science-suite/commands/md-sim.md": {
-    "mtime": 1789245241.0746772,
-    "seen": 1789245259.76563,
-    "ast_hash": "6458052586c857a324ef2990f136a348",
+    "mtime": 1789246718.9478767,
+    "seen": 1789246984.7106822,
+    "ast_hash": "1ca8e8237c86b8651fb42ec4f2923795",
     "semantic_hash": ""
   },
   "plugins/science-suite/commands/analyze-data.md": {
-    "mtime": 1789245241.1126773,
-    "seen": 1789245259.765627,
+    "mtime": 1789246718.9478767,
+    "seen": 1789246984.7106786,
     "ast_hash": "3218e8fc1e0e99ea6e01980a06984db8",
     "semantic_hash": ""
   },
   "plugins/science-suite/commands/run-experiment.md": {
-    "mtime": 1789245241.1176772,
-    "seen": 1789245259.7656312,
-    "ast_hash": "81c3df3325c5d9a8bf6f231fb1c6e9db",
+    "mtime": 1789246718.9478767,
+    "seen": 1789246984.7106836,
+    "ast_hash": "bce029019f0cc5bf094aff17b7cf33fe",
     "semantic_hash": ""
   },
   "plugins/science-suite/commands/benchmark.md": {
-    "mtime": 1789245241.0556774,
-    "seen": 1789245259.7656286,
-    "ast_hash": "01c6d2498476036c02c49fec8f0174fe",
+    "mtime": 1789246718.9488766,
+    "seen": 1789246984.71068,
+    "ast_hash": "50bcef16c93201c8807eae4c741194a9",
     "semantic_hash": ""
   },
   "plugins/science-suite/agents/julia-pro.md": {
-    "mtime": 1789202115.5723493,
-    "seen": 1789202231.631535,
-    "ast_hash": "dcda62a1eae06e1c1ebcafddd8109bc1",
+    "mtime": 1789246718.9368768,
+    "seen": 1789246984.7106614,
+    "ast_hash": "52df295633d248797e50fe288419abab",
     "semantic_hash": ""
   },
   "plugins/science-suite/agents/python-pro.md": {
-    "mtime": 1789243259.3797116,
-    "seen": 1789245259.7656205,
-    "ast_hash": "ee42a6e2cd7fa050cd61dc7ef75a7609",
+    "mtime": 1789246718.9368768,
+    "seen": 1789246984.710672,
+    "ast_hash": "ac95d2584a1d6c6cc8d66f36e6ef63e6",
     "semantic_hash": ""
   },
   "plugins/science-suite/agents/statistical-physicist.md": {
-    "mtime": 1789243259.3807116,
-    "seen": 1789245259.7656252,
-    "ast_hash": "181be49c85ecf0dc71d57113ac3bbd6c",
+    "mtime": 1789246718.9388766,
+    "seen": 1789246984.7106762,
+    "ast_hash": "5b5dd409689c363e9a18ea302e9b4177",
     "semantic_hash": ""
   },
   "plugins/science-suite/agents/simulation-expert.md": {
-    "mtime": 1789202079.2426474,
-    "seen": 1789202231.6315532,
-    "ast_hash": "b73e314980285f537096dfdad86e13b3",
+    "mtime": 1789246718.9388766,
+    "seen": 1789246984.7106748,
+    "ast_hash": "4ef87ee36f70c25abd32b50b43fcd02e",
     "semantic_hash": ""
   },
   "plugins/science-suite/agents/julia-ml-hpc.md": {
-    "mtime": 1789243259.3807116,
-    "seen": 1789245259.765609,
-    "ast_hash": "3768614ff07297180b8007d8f6799084",
+    "mtime": 1789246718.9398768,
+    "seen": 1789246984.710658,
+    "ast_hash": "0409d9fa9c6fdc570b7a9608e396ff82",
     "semantic_hash": ""
   },
   "plugins/science-suite/agents/jax-pro.md": {
-    "mtime": 1789202115.5723493,
-    "seen": 1789202231.6315284,
-    "ast_hash": "6e81125634e35833b5084c9b602136f5",
+    "mtime": 1789246718.9398768,
+    "seen": 1789246984.7106557,
+    "ast_hash": "e29f0afa5b3e8e421ca6417d31ea80b6",
     "semantic_hash": ""
   },
   "plugins/science-suite/agents/pinn-engineer.md": {
-    "mtime": 1789202079.2416475,
-    "seen": 1789202231.631546,
-    "ast_hash": "1b33b4f7417c41d3efcb286cdf4f22fc",
+    "mtime": 1789246718.9408767,
+    "seen": 1789246984.7106698,
+    "ast_hash": "79e4f064153b6ea402e8ad3e0424bd4f",
     "semantic_hash": ""
   },
   "plugins/science-suite/agents/sci-workflow-engineer.md": {
-    "mtime": 1789202079.2416475,
-    "seen": 1789202231.6315508,
-    "ast_hash": "2ad207f156ff14e1f64874c80200b733",
+    "mtime": 1789246718.9408767,
+    "seen": 1789246984.710673,
+    "ast_hash": "e331542b1b8aef54f6ca507b5a13cb6b",
     "semantic_hash": ""
   },
   "plugins/science-suite/agents/ml-expert.md": {
-    "mtime": 1789243259.3807116,
-    "seen": 1789245259.7656126,
-    "ast_hash": "b3ae20db849ab72ebae539e13889de94",
+    "mtime": 1789246718.9418766,
+    "seen": 1789246984.7106645,
+    "ast_hash": "3f160621cd25ae30fcb171816a3fe8d6",
     "semantic_hash": ""
   },
   "plugins/science-suite/agents/neural-network-master.md": {
-    "mtime": 1789243259.3817117,
-    "seen": 1789245259.7656145,
-    "ast_hash": "f370a02508169d393f2120ad6f953126",
+    "mtime": 1789246718.9418766,
+    "seen": 1789246984.7106664,
+    "ast_hash": "ef6fc7a647d943af7aa831c142c6906d",
     "semantic_hash": ""
   },
   "plugins/science-suite/agents/nonlinear-dynamics-expert.md": {
-    "mtime": 1789243259.3817117,
-    "seen": 1789245259.7656164,
-    "ast_hash": "c27fe94c474b10be66159b9bf723159d",
+    "mtime": 1789246718.9428768,
+    "seen": 1789246984.710668,
+    "ast_hash": "e687e2d69ee4947daf6a81ce93de4157",
     "semantic_hash": ""
   },
   "plugins/research-suite/README.md": {
-    "mtime": 1785882446.4846785,
-    "seen": 1789167560.9308243,
-    "ast_hash": "2f0250e8f2e3a3a40ed00dbc9460884d",
+    "mtime": 1789246718.9428768,
+    "seen": 1789246984.7110717,
+    "ast_hash": "5f682b49d57f5194d3a46df63c16d858",
     "semantic_hash": ""
   },
   "plugins/research-suite/skills/_research-commons/style/citation_style.md": {
@@ -2718,9 +2718,9 @@
     "semantic_hash": ""
   },
   "plugins/science-suite/agents/continuum-mechanics-engineer.md": {
-    "mtime": 1789243259.3807116,
-    "seen": 1789245259.7656052,
-    "ast_hash": "15b7a2cfd61f71e5a9afe34bb08752db",
+    "mtime": 1789246718.9378767,
+    "seen": 1789246984.710653,
+    "ast_hash": "96801f688a422ff899af1f9c94ca2b15",
     "semantic_hash": ""
   },
   "plugins/science-suite/skills/bayesian-ude-workflow/references/turing-ude-stage-code.md": {

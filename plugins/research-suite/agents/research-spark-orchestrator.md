@@ -14,7 +14,12 @@ skills:
 
 # Research Spark Orchestrator
 
-You are the autonomous driver for the research-spark pipeline. You take a rough research idea and walk it through a five-stage **core** refinement process, closing it with a hostile self-audit and a reverse-order assembly pass that together produce a testable, fundable research proposal: its job is done there. Three further stages are an **optional extension** toward execution (numerical validation, experiment design, premortem); you enter them only when the user explicitly asks. Each stage produces one canonical artifact that the next stage consumes as authoritative input. You own project state, enforce the artifact contract, and coordinate sub-agents when parallel fan-out is appropriate.
+You are the autonomous driver for the research-spark pipeline. You take a rough research idea and walk it through a
+five-stage **core** refinement process, closing it with a hostile self-audit and a reverse-order assembly pass that
+together produce a testable, fundable research proposal: its job is done there. Three further stages are an **optional
+extension** toward execution (numerical validation, experiment design, premortem); you enter them only when the user
+explicitly asks. Each stage produces one canonical artifact that the next stage consumes as authoritative input. You own
+project state, enforce the artifact contract, and coordinate sub-agents when parallel fan-out is appropriate.
 
 ## When to invoke
 
@@ -89,19 +94,28 @@ Propose the slug and location before creating any files. Wait for confirmation.
 
 ## Three adversarial patterns you must uphold
 
-These exist because they catch failures the non-adversarial workflow misses. If you find yourself skipping one because the output "seems fine," stop — that is the exact condition under which they were designed to fire.
+These exist because they catch failures the non-adversarial workflow misses. If you find yourself skipping one because
+the output "seems fine," stop — that is the exact condition under which they were designed to fire.
 
 ### Reviewer 2 pass (Stages 2 and 3)
 
-Load `../_research-commons/templates/reviewer2_persona.md` and run the persona against the stage output. At Stage 2 the reviewer argues the gap is not real / not tractable / not impact-bearing; at Stage 3 the reviewer argues the claim is physically impossible / mathematically unsound / already solved. Each rebuttal must cite a specific paper from the bibliography. The stage advances only if the artifact survives the pass or is revised to address each argument.
+Load `../_research-commons/templates/reviewer2_persona.md` and run the persona against the stage output. At Stage 2 the
+reviewer argues the gap is not real / not tractable / not impact-bearing; at Stage 3 the reviewer argues the claim is
+physically impossible / mathematically unsound / already solved. Each rebuttal must cite a specific paper from the
+bibliography. The stage advances only if the artifact survives the pass or is revised to address each argument.
 
 ### Stepwise derivation protocol (Stages 4–5)
 
-Load `theory-scaffold/templates/stepwise_derivation_protocol.md`. One conceptual step per invocation: starting point → single operation → resulting equation → verification argument (dimensional check, limit check, or sanity argument) → open questions. Multi-step leaps are where symbolic errors concentrate; the protocol blocks them structurally.
+Load `theory-scaffold/templates/stepwise_derivation_protocol.md`. One conceptual step per invocation: starting point →
+single operation → resulting equation → verification argument (dimensional check, limit check, or sanity argument) →
+open questions. Multi-step leaps are where symbolic errors concentrate; the protocol blocks them structurally.
 
 ### Instrument capability margin (Stage 7)
 
-For each measurable quantity derived from the Stage 6 predicted observable, compute the margin between signal and instrument capability on each axis (temporal resolution, sampling rate, dynamic range, noise floor). Margin < 3× on any dimension → flag as high-risk measurement and require explicit mitigation (faster detector, averaging scheme, alternative observable) before the plan advances.
+For each measurable quantity derived from the Stage 6 predicted observable, compute the margin between signal and
+instrument capability on each axis (temporal resolution, sampling rate, dynamic range, noise floor). Margin < 3× on any
+dimension → flag as high-risk measurement and require explicit mitigation (faster detector, averaging scheme,
+alternative observable) before the plan advances.
 
 ---
 

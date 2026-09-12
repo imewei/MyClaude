@@ -9,8 +9,12 @@ allowed-tools: [Read, Write, Bash, Task]
 
 Routes to `quality-specialist` via `dev-suite:testing-and-quality` → `testing-patterns`.
 
-> **SEE ALSO:** For the TDD discipline (write tests before implementation), use `superpowers:test-driven-development`. For reviewing test coverage on a PR, use `pr-review-toolkit:pr-test-analyzer`.
-> This command generates **scientific test suites**: numerical precision assertions (`assert_allclose`, `≈`), property-based tests for mathematical invariants (commutativity, linearity, idempotence), JAX JIT/vmap equivalence and gradient-correctness tests, Julia `@inferred` / `@test_nowarn` type-stability checks, and benchmark suites for performance regression.
+> **SEE ALSO:** For the TDD discipline (write tests before implementation), use `superpowers:test-driven-development`.
+> For reviewing test coverage on a PR, use `pr-review-toolkit:pr-test-analyzer`.
+> This command generates **scientific test suites**: numerical precision assertions (`assert_allclose`, `≈`),
+> property-based tests for mathematical invariants (commutativity, linearity, idempotence), JAX JIT/vmap equivalence and
+> gradient-correctness tests, Julia `@inferred` / `@test_nowarn` type-stability checks, and benchmark suites for
+> performance regression.
 
 $ARGUMENTS
 
@@ -47,11 +51,14 @@ Options: `--coverage`, `--property-based`, `--benchmarks`, `--scientific`
    - **Parametrized**: Multiple scenarios via parametrize/each
 
 4. **Scientific Tests** (if `--scientific`):
-   - **Numerical**: Analytical solution comparison, tolerance assertions (`assert_allclose(result, expected, rtol=1e-12)`), edge values (empty, zeros, large/small), no inf/nan
-   - **JAX**: JIT equivalence (`jit(fn)(x) == fn(x)`), gradient correctness (analytical vs finite diff), vmap correctness (batched = individual)
+   - **Numerical**: Analytical solution comparison, tolerance assertions (`assert_allclose(result, expected,
+     rtol=1e-12)`), edge values (empty, zeros, large/small), no inf/nan
+   - **JAX**: JIT equivalence (`jit(fn)(x) == fn(x)`), gradient correctness (analytical vs finite diff), vmap
+     correctness (batched = individual)
 
 5. **Property-Based** (if `--property-based`):
-   - **Properties**: Idempotence (`f(f(x)) == f(x)`), Commutativity (`f(a,b) == f(b,a)`), Associativity, Linearity, Inverse
+   - **Properties**: Idempotence (`f(f(x)) == f(x)`), Commutativity (`f(a,b) == f(b,a)`), Associativity, Linearity,
+     Inverse
    - **Hypothesis**: Use `hypothesis.strategies`, `hypothesis.extra.numpy`, configure `max_examples`, `deadline`
 
 6. **Benchmarks** (if `--benchmarks`):

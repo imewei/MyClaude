@@ -19,7 +19,8 @@ Design and execute a reproducible scientific experiment.
 2. **Controls**: Identify independent, dependent, and control variables. Define baseline.
 3. **Setup**: Configure environment with explicit random seeds, version-locked dependencies, and structured logging.
 4. **Execution**: Run trials with proper error handling and intermediate checkpointing.
-5. **Analysis**: Apply appropriate statistical tests (t-test, ANOVA, bootstrap). Compute effect sizes and confidence intervals.
+5. **Analysis**: Apply appropriate statistical tests (t-test, ANOVA, bootstrap). Compute effect sizes and confidence
+   intervals.
 6. **Report**: Generate figures, tables, and a summary with reproducibility metadata (seeds, versions, hardware).
 
 ## Checklist

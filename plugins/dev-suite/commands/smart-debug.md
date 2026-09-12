@@ -9,8 +9,11 @@ allowed-tools: [Read, Bash, Edit, Task, Monitor]
 
 Routes to `quality-specialist` via `dev-suite:dev-workflows` → `debugging-toolkit`.
 
-> **SEE ALSO:** For general software bugs (null pointer, timeout, auth failures, race conditions), use `superpowers:systematic-debugging` — it enforces structured pre-fix root-cause discipline.
-> Use this command for **scientific computing failures**: NaN/inf propagation, JAX JIT compilation errors (`TracerBoolConversionError`, `ConcretizationTypeError`), Julia dispatch ambiguities, numerical instability, shape/dtype mismatches, MCMC divergence, gradient explosion, GPU OOM errors, and domain-specific correctness failures.
+> **SEE ALSO:** For general software bugs (null pointer, timeout, auth failures, race conditions), use
+> `superpowers:systematic-debugging` — it enforces structured pre-fix root-cause discipline.
+> Use this command for **scientific computing failures**: NaN/inf propagation, JAX JIT compilation errors
+> (`TracerBoolConversionError`, `ConcretizationTypeError`), Julia dispatch ambiguities, numerical instability,
+> shape/dtype mismatches, MCMC divergence, gradient explosion, GPU OOM errors, and domain-specific correctness failures.
 
 $ARGUMENTS
 
@@ -39,8 +42,10 @@ $ARGUMENTS
 
 ### 1. Triage
 Parse error, reproduction, environment (dev/prod), pattern (flaky/consistent)
-Match: NullPointer, Timeout, MemLeak, Race, Deadlock, Auth, RateLimit, JSON, FileIO, InfiniteLoop, Injection, TypeCoercion, Config, Async, CORS
-Scientific: NaN/Inf, ShapeMismatch, TypeInstability, JITTraceError, DispatchAmbiguity, NumericalOverflow, MCMCDivergence, GradientExplosion, OOMError, SeedNonReproducibility
+Match: NullPointer, Timeout, MemLeak, Race, Deadlock, Auth, RateLimit, JSON, FileIO, InfiniteLoop, Injection,
+TypeCoercion, Config, Async, CORS
+Scientific: NaN/Inf, ShapeMismatch, TypeInstability, JITTraceError, DispatchAmbiguity, NumericalOverflow,
+MCMCDivergence, GradientExplosion, OOMError, SeedNonReproducibility
 Output: Severity (P0-P3), top 3 causes, strategy
 
 ### 2. Observability (Production)

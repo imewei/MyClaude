@@ -29,7 +29,8 @@ $ARGUMENTS
 ## Options
 
 - `--target <framework>`: react-hooks, python3, angular15, nextjs, vue3
-- `--strategy <pattern>`: strangler-fig (incremental), big-bang (full cutover), branch-by-abstraction (feature-by-feature)
+- `--strategy <pattern>`: strangler-fig (incremental), big-bang (full cutover), branch-by-abstraction
+  (feature-by-feature)
 - `--mode <depth>`: quick (assessment only), standard (single component), deep (enterprise)
 - `--parallel-systems`: Keep both systems running indefinitely
 - `--by-feature`: Migrate by feature vs technical components

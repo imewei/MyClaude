@@ -4,9 +4,12 @@
 
 Scientific research workflows for Claude Code. Three complementary tracks:
 
-1. **`scientific-review`** — produce a rigorous, journal-ready peer review as a `.docx` (for reviewing *other people's* manuscripts).
-2. **`research-spark` stack** — refine a rough research idea into a fundable plan through eight artifact-gated stages (for scoping *your own* project).
-3. **`research-practice` hub** — general research methodology: study design, paper reproduction, quality assessment, scientific writing (IMRaD), and evidence synthesis (PRISMA, meta-analysis, GRADE).
+1. **`scientific-review`** — produce a rigorous, journal-ready peer review as a `.docx` (for reviewing *other people's*
+   manuscripts).
+2. **`research-spark` stack** — refine a rough research idea into a fundable plan through eight artifact-gated stages
+   (for scoping *your own* project).
+3. **`research-practice` hub** — general research methodology: study design, paper reproduction, quality assessment,
+   scientific writing (IMRaD), and evidence synthesis (PRISMA, meta-analysis, GRADE).
 
 All three prioritize domain rigor, adversarial critique, and explicit handoffs over freeform chat.
 
@@ -41,7 +44,10 @@ direct invocation instead of relying on skill auto-trigger.
 | `research-expert` | opus | Research methodology, literature synthesis, scientific communication — one-off tasks |
 | `research-spark-orchestrator` | opus | Autonomous driver for the research-spark pipeline (5-stage core to a fundable proposal + optional extension); owns state, enforces artifact contract, fans out to sub-agents |
 
-Use `research-expert` for discrete methodology tasks (power analysis, systematic review, IMRaD structuring). Use `research-spark-orchestrator` when you have a rough research idea you want to walk through articulation → theory with artifact-gated handoffs; the pipeline is done at Stage 5 (a fundable proposal) unless you ask to continue into the optional extension (prototype → experiment design → premortem).
+Use `research-expert` for discrete methodology tasks (power analysis, systematic review, IMRaD structuring). Use
+`research-spark-orchestrator` when you have a rough research idea you want to walk through articulation → theory with
+artifact-gated handoffs; the pipeline is done at Stage 5 (a fundable proposal) unless you ask to continue into the
+optional extension (prototype → experiment design → premortem).
 
 ## Commands
 
@@ -90,7 +96,8 @@ research-practice) stays skill-driven — no command needed.
 | `scientific-communication` | IMRaD structure, technical reports, posters |
 | `evidence-synthesis` | PRISMA, meta-analysis, GRADE |
 
-> **Figures:** publication-quality scientific visualization is provided by `scientific-visualization` in `science-suite` — cross-suite because it's useful beyond research (ML training curves, physics sweeps). Load it when figures matter.
+> **Figures:** publication-quality scientific visualization is provided by `scientific-visualization` in `science-suite`
+> — cross-suite because it's useful beyond research (ML training curves, physics sweeps). Load it when figures matter.
 
 ### The research-spark artifact contract
 
@@ -128,7 +135,8 @@ State lives in `_state.yaml` at the project root; the orchestrator reads it befo
 
 ### research-spark stack
 - Python 3.12+, `uv` for dependency resolution.
-- Stage-specific: `sympy` (theory-scaffold), `scipy` + `pyyaml` (experiment-designer), `jax` + `jaxlib` (numerical-prototype), `pdflatex` (latex_compile_check.sh).
+- Stage-specific: `sympy` (theory-scaffold), `scipy` + `pyyaml` (experiment-designer), `jax` + `jaxlib`
+  (numerical-prototype), `pdflatex` (latex_compile_check.sh).
 - All scripts install locally via `uv add`, never globally.
 
 ## Project directory layout (research-spark)
@@ -189,7 +197,12 @@ State lives in `_state.yaml` at the project root; the orchestrator reads it befo
 
 ## Integration / Workflow
 
-The `research-spark-orchestrator` delegates across suite boundaries at natural fan-out points: Stage 6 JAX implementation → `jax-pro` (science-suite); SciML/DifferentialEquations.jl → `julia-pro` (science-suite); bifurcation/chaos theory at Stages 4–5 → `nonlinear-dynamics-expert` (science-suite); correlation functions / Langevin / critical phenomena → `statistical-physicist` (science-suite); MD or Monte Carlo prototypes at Stage 6 → `simulation-expert` (science-suite). Off-pipeline methodology questions route to `research-expert` (this suite). See `docs/integration-map.rst` for the full delegation graph.
+The `research-spark-orchestrator` delegates across suite boundaries at natural fan-out points: Stage 6 JAX
+implementation → `jax-pro` (science-suite); SciML/DifferentialEquations.jl → `julia-pro` (science-suite);
+bifurcation/chaos theory at Stages 4–5 → `nonlinear-dynamics-expert` (science-suite); correlation functions / Langevin /
+critical phenomena → `statistical-physicist` (science-suite); MD or Monte Carlo prototypes at Stage 6 →
+`simulation-expert` (science-suite). Off-pipeline methodology questions route to `research-expert` (this suite). See
+`docs/integration-map.rst` for the full delegation graph.
 
 ## License
 

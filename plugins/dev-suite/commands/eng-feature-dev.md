@@ -7,8 +7,12 @@ allowed-tools: [Bash, Read, Write, Edit, Task, Glob, Grep, ScheduleWakeup]
 
 # Scientific Feature Development
 
-> **SEE ALSO:** For general software feature development (web, mobile, microservices), use `feature-dev:feature-dev` combined with `superpowers:writing-plans` and `superpowers:executing-plans`.
-> This command orchestrates **scientific feature development**: coordinates `science-suite` agents (`jax-pro`, `julia-pro`, `ml-expert`, `simulation-expert`, `statistical-physicist`), integrates `research-suite` methodology (correctness gates, literature grounding), and handles reproducibility requirements, JAX/Julia deployment constraints, and numerical correctness SLOs.
+> **SEE ALSO:** For general software feature development (web, mobile, microservices), use `feature-dev:feature-dev`
+> combined with `superpowers:writing-plans` and `superpowers:executing-plans`.
+> This command orchestrates **scientific feature development**: coordinates `science-suite` agents (`jax-pro`,
+> `julia-pro`, `ml-expert`, `simulation-expert`, `statistical-physicist`), integrates `research-suite` methodology
+> (correctness gates, literature grounding), and handles reproducibility requirements, JAX/Julia deployment constraints,
+> and numerical correctness SLOs.
 
 $ARGUMENTS
 

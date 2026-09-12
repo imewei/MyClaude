@@ -7,8 +7,10 @@ allowed-tools: ["Read", "Write", "WebSearch", "WebFetch"]
 
 # /lit-review — Literature Review
 
-> **SEE ALSO:** For a general literature search without structured claim extraction or PRISMA/GRADE synthesis, use `ecc:scientific-thinking-literature-review` or `ecc:deep-research`.
-> Use this command for research-suite's structured topic-scan pipeline (claim extraction, evidence synthesis, gap identification) via the `research-practice` skill.
+> **SEE ALSO:** For a general literature search without structured claim extraction or PRISMA/GRADE synthesis, use
+> `ecc:scientific-thinking-literature-review` or `ecc:deep-research`.
+> Use this command for research-suite's structured topic-scan pipeline (claim extraction, evidence synthesis, gap
+> identification) via the `research-practice` skill.
 
 Routes to `research-expert` via `research-suite:research-hub` → `research-practice`.
 
@@ -39,4 +41,5 @@ Routes to `research-expert` via `research-suite:research-hub` → `research-prac
 
 ## Token Strategy
 
-PRISMA/GRADE checklist templates load only for `--scope broad` reviews. Narrow reviews use lightweight claim extraction only.
+PRISMA/GRADE checklist templates load only for `--scope broad` reviews. Narrow reviews use lightweight claim extraction
+only.

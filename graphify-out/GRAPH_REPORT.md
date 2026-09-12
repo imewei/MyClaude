@@ -1,7 +1,7 @@
 # Graph Report - MyClaude  (2026-09-12)
 
 ## Corpus Check
-- 470 files · ~376,525 words
+- 470 files · ~376,406 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
@@ -10,7 +10,7 @@
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `0c69c322`
+- Built from commit: `4b95eaa1`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -5331,11 +5331,11 @@ Nodes (6): IterationResult, Enum, Iterative CI/CD Error Resolution Engine Contin
 _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `main()` connect `main` to `dais_demo.py`, `mortality.py`, `03_custom_retry_settings.py`, `bayesian_workflow_template.py`, `generate_diagrams.py`, `GaussianShell`, `hsgp.py`, `capture_recapture.py`, `vqe_hydrogen.py`, `result_enhancements_demo.py`, `sparse_regression.py`, `doe_generator.py`, `multi_scale_model`, `stochastic_volatility.py`, `read_payload`, `step`, `model`, `function_library_demo.py`, `02_checkpoint_resume.py`, `annotation.py`, `hmm.py`, `formalism_code_reconcile.py`, `print_summary`, `lint_file`, `dedupe_refs.py`, `sensor_calibration.py`, `hierarchical_model_template.py`, `run_inference`, `dimensional_audit.py`, `gp.py`, `hmcecs.py`, `decay_model`, `latex_sanity.py`, `compute_rdf`, `pinn_heat_equation.py`, `ucbadmit.py`, `cfd_taylor_green.py`, `baseball.py`, `str`, `MCMC Diagnostics`?**
-  _High betweenness centrality (0.072) - this node is a cross-community bridge._
+  _High betweenness centrality (0.062) - this node is a cross-community bridge._
 - **Why does `MCMC Diagnostics` connect `MCMC Diagnostics` to `main`?**
-  _High betweenness centrality (0.049) - this node is a cross-community bridge._
-- **Why does `compare_solvers()` connect `solver-selection.py` to `str`, `demo`?**
-  _High betweenness centrality (0.012) - this node is a cross-community bridge._
+  _High betweenness centrality (0.040) - this node is a cross-community bridge._
+- **Why does `demo()` connect `demo` to `adjoint-methods.py`, `solver-selection.py`, `blackjax-custom-sampler.py`, `sde-brownian.py`?**
+  _High betweenness centrality (0.011) - this node is a cross-community bridge._
 - **Are the 3 inferred relationships involving `main()` (e.g. with `guide()` and `model()`) actually correct?**
   _`main()` has 3 INFERRED edges - model-reasoned connections that need verification._
 - **What connects `Config`, `PrototypeSkeleton`, `latex_compile_check.sh script` to the rest of the system?**

@@ -7,7 +7,11 @@ allowed-tools: ["Read", "Write", "Edit", "Bash", "WebFetch"]
 
 # /paper-implement — Paper Method Reproduction
 
-Routes to `research-expert` for methodology parsing, then cross-delegates to the specialist matching the paper's method: agent `jax-pro` (general JAX numerics), agent `julia-pro` (general Julia numerics), agent `continuum-mechanics-engineer` (FEM/FEA, constitutive modeling, rheology/DMA, transient networks, nanocomposites), agent `statistical-physicist` (phase transitions, correlations, glass/collective phenomena, physical learning), agent `pinn-engineer` (physics-informed neural networks, NeuralPDE), or agent `simulation-expert` (MD/HPC particle simulation).
+Routes to `research-expert` for methodology parsing, then cross-delegates to the specialist matching the paper's method:
+agent `jax-pro` (general JAX numerics), agent `julia-pro` (general Julia numerics), agent `continuum-mechanics-engineer`
+(FEM/FEA, constitutive modeling, rheology/DMA, transient networks, nanocomposites), agent `statistical-physicist` (phase
+transitions, correlations, glass/collective phenomena, physical learning), agent `pinn-engineer` (physics-informed
+neural networks, NeuralPDE), or agent `simulation-expert` (MD/HPC particle simulation).
 
 **Arguments:** $ARGUMENTS
 
@@ -36,4 +40,6 @@ Routes to `research-expert` for methodology parsing, then cross-delegates to the
 
 ## Framework Delegation
 
-`research-expert`'s methodology-parsing step determines the paper's domain and picks the specialist (see the routing list above); `--framework` (where applicable) only disambiguates JAX vs. Julia within a numerics-based specialist, not which specialist handles the paper.
+`research-expert`'s methodology-parsing step determines the paper's domain and picks the specialist (see the routing
+list above); `--framework` (where applicable) only disambiguates JAX vs. Julia within a numerics-based specialist, not
+which specialist handles the paper.

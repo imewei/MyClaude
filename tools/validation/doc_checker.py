@@ -567,13 +567,20 @@ class DocumentationChecker:
                 )
                 break
 
-        # Check for very long lines (> 120 chars, excluding code blocks)
+        # Check for very long lines (> 120 chars). Skip code blocks, YAML
+        # frontmatter (single-line `description:` fields), and table rows —
+        # none of those can be wrapped without changing their meaning.
         in_code_block = False
+        in_frontmatter = bool(lines) and lines[0].strip() == "---"
         long_lines = []
         for i, line in enumerate(lines, 1):
-            if line.strip().startswith("```"):
+            stripped = line.strip()
+            if in_frontmatter:
+                if i > 1 and stripped == "---":
+                    in_frontmatter = False
+            elif stripped.startswith("```"):
                 in_code_block = not in_code_block
-            elif not in_code_block and len(line) > 120:
+            elif not in_code_block and len(line) > 120 and not stripped.startswith("|"):
                 long_lines.append(i)
 
         if long_lines and len(long_lines) > 5:
