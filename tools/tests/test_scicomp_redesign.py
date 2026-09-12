@@ -6,6 +6,7 @@ All tests are written before implementation. Run with:
 """
 
 import json
+import tomllib
 from pathlib import Path
 
 import pytest
@@ -16,6 +17,8 @@ PLUGINS = REPO / "plugins"
 SCIENCE = PLUGINS / "science-suite"
 RESEARCH = PLUGINS / "research-suite"
 DEV_SUITE = PLUGINS / "dev-suite"
+# Single source of truth for the marketplace version; plugin.json files must match it.
+EXPECTED_VERSION = tomllib.loads((REPO / "pyproject.toml").read_text())["project"]["version"]
 
 
 # ---------------------------------------------------------------------------
@@ -201,8 +204,8 @@ class TestManifests:
     ], ids=["dev-suite", "research-suite", "science-suite"])
     def test_version_is_351(self, suite_dir):
         plugin = _plugin_json(suite_dir)
-        assert plugin["version"] == "4.0.0", \
-            f"{suite_dir.name} version must be 4.0.0, got {plugin['version']}"
+        assert plugin["version"] == EXPECTED_VERSION, \
+            f"{suite_dir.name} version must be {EXPECTED_VERSION}, got {plugin['version']}"
 
     def test_science_suite_has_md_sim_command(self):
         plugin = _plugin_json(SCIENCE)

@@ -17,17 +17,30 @@ uv sync            # installs dev + docs + science dependency groups
 | `uv run pytest tools/tests/test_x.py -v` | Run a single test file |
 | `uv run ruff check .` | Lint |
 | `uv run mypy tools/` | Type-check (excludes `plugins/*/hooks/`, `plugins/*/examples/`) |
-| `make format` | Format with black + `ruff --fix` |
-| `make validate` | Validate plugin metadata, command lint, doc cross-links, skill context budget + agent prompt size |
-| `make verify-fast` | Quick gate: lint + validate |
-| `make verify` | Full local CI: lint + validate + tests — run before every push |
-| `make audit` | pip-audit + bandit + vulture + gitleaks |
-| `make docs` | Build Sphinx docs to `docs/_build/html/` |
-| `make docs-live` | Sphinx docs with autobuild + browser reload |
-| `make plugin-list` | List all plugins with versions |
-| `make plugin-count` | Plugin statistics and category breakdown |
-| `make clean` | Remove Python cache, cache dirs, and reports |
-| `make help` | List all Makefile targets |
+<!-- AUTO-GENERATED from Makefile `## ` target comments — regenerate with /ecc:update-docs, do not hand-edit -->
+| `make clean` | Clean Python artifacts, cache, and reports |
+| `make clean-all` | Deep clean: everything including documentation builds |
+| `make docs` | Build Sphinx documentation |
+| `make docs-live` | Build and serve documentation with auto-reload |
+| `make docs-linkcheck` | Check documentation for broken links |
+| `make install` | Install the marketplace and dependencies |
+| `make dev-install` | Install development dependencies |
+| `make lint` | Run linters on Python code |
+| `make format` | Format Python code with black and ruff |
+| `make validate` | Validate plugin.json, command file structure, doc cross-links, skill context budget + agent prompt size |
+| `make test` | Run tests with pytest |
+| `make test-coverage` | Run tests with coverage report |
+| `make verify` | Full local CI (lint + validate + tests) — run before push |
+| `make verify-fast` | Quick verification (lint + validate only, no tests) |
+| `make audit` | Run full audit (deps + secrets + SAST + dead code) |
+| `make audit-deps` | pip-audit: known CVEs in Python dependencies |
+| `make audit-secrets` | gitleaks: secret-scan working tree (history skipped; working tree only) |
+| `make audit-sast` | bandit: static security analysis on production Python sources (tests/ excluded — test code legitimately uses /tmp) |
+| `make audit-deadcode` | vulture: dead-code detection (--min-confidence 80) |
+| `make plugin-count` | Count plugins and show breakdown |
+| `make plugin-list` | List all plugins with their versions |
+| `make help` | List all Makefile targets (including clean-*/audit-*/git-* subtargets not listed here) |
+<!-- END AUTO-GENERATED -->
 
 Run validation against one plugin directly:
 
@@ -50,7 +63,7 @@ PYTHONPATH=. python3 tools/validation/metadata_validator.py plugins/dev-suite/
 
 - Each suite under `plugins/<suite>/` follows the layout documented in the root `CLAUDE.md`.
 - `plugin.json` registers only top-level hub skills — adding a sub-skill does not require a manifest edit.
-- Plugin version must stay in sync across `plugin.json`, `pyproject.toml`, and READMEs. `make validate` only checks semver format within each `plugin.json`; `tools/tests/test_cross_suite_invariants.py` (run by `make verify`) checks the three `plugin.json` versions agree. pyproject.toml and README references are not checked — verify by hand.
+- Plugin version must stay in sync across `plugin.json`, `pyproject.toml`, and READMEs. `make validate` only checks semver format within each `plugin.json`; `make verify` checks the three `plugin.json` versions agree with each other and with `pyproject.toml`. `marketplace.json`, `Makefile`, `docs/conf.py`, and README/docs references are not checked — grep for the old version by hand.
 - Do not add `.. contents::` to RST docs — the Furo Sphinx theme auto-generates the sidebar TOC.
 
 ## PR Checklist

@@ -1,5 +1,25 @@
 # Changelog
 
+## v4.0.1 (2026-09-12)
+
+Maintenance release — no new agents, commands, or skills. Component counts: 20 agents, 17 registered commands, 42 hubs -> 156 sub-skills (198 `SKILL.md`), 16 hook events.
+
+### Routing & context budget
+- 8 second-level routers demoted from `plugin.json` to sub-skills (science-suite 30 -> 23 hubs, research-suite 11 -> 10); all remain reachable via parent hubs. ~7.4k chars of always-loaded skill descriptions removed.
+- Every command and agent now names its first routing hop; `command_file_linter.py` enforces it. `three-brain` trimmed to 62% of its skill budget.
+- All 20 agent system prompts brought under plugin-dev's 10,000-char maximum (27% smaller); `context_budget_checker.py` now gates agent prompt size in `make validate`.
+
+### Security (hooks)
+- Hooks no longer inject untrusted strings (file paths, tool output, subagent text) raw into model context; review-file reads confined to cwd; SubagentStop reads the real payload field names.
+
+### Tooling
+- `metadata_validator.py` enforces routing reach; tautological skill-triggering metrics removed from `skill_validator.py`.
+- `test_scicomp_redesign.py` reads the expected version from `pyproject.toml` — `plugin.json` versions are now checked against it by `make verify`.
+
+### Docs
+- Full resync against `plugin.json`, `hooks.json`, and SKILL.md routing links: `docs/suites/science-suite.rst` hub section regenerated (23 hubs); `analyze-data`/`run-experiment` documented as registered; hook-event counts corrected per suite (dev 7, research 4, science 5); stale 50/148, 30/107, 11/6 totals fixed across README, cheatsheet, guides, integration map.
+- `CONTRIBUTING.md` make-target table generated from Makefile help comments (AUTO-GENERATED markers); `CLAUDE.md`/`RUNBOOK.md` describe what `make validate` and `make verify` actually check.
+
 ## v4.0.0 (2026-07-31)
 
 ### Breaking: Marketplace Redesign

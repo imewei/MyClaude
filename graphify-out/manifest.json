@@ -2622,9 +2622,9 @@
     "semantic_hash": ""
   },
   "plugins/dev-suite/.claude-plugin/plugin.json": {
-    "mtime": 1789167513.5657058,
-    "seen": 1789167560.929852,
-    "ast_hash": "647faaf7921a0ce3fc1ae9a4eedc48df",
+    "mtime": 1789255288.962391,
+    "seen": 1789256214.486858,
+    "ast_hash": "ee7803af0c52920d5c0a2725d681fdf7",
     "semantic_hash": ""
   },
   "plugins/dev-suite/hooks/_hook_io.py": {
@@ -2646,9 +2646,9 @@
     "semantic_hash": "88b81ca65c9b72e0f861d89829fdb1c5"
   },
   "plugins/research-suite/.claude-plugin/plugin.json": {
-    "mtime": 1789201257.172042,
-    "seen": 1789201291.3945873,
-    "ast_hash": "166c77d0a74a8a2d504318358ec1d4d3",
+    "mtime": 1789255288.962391,
+    "seen": 1789256214.4869342,
+    "ast_hash": "ddde68a9c18b4e76c6d167c59f4c43c4",
     "semantic_hash": ""
   },
   "plugins/research-suite/hooks/_hook_io.py": {
@@ -2682,9 +2682,9 @@
     "semantic_hash": "2582e4ebdb3ee85279e1f9008cceef4b"
   },
   "plugins/science-suite/.claude-plugin/plugin.json": {
-    "mtime": 1789235864.6597896,
-    "seen": 1789245259.765244,
-    "ast_hash": "97fb537b3579303f0d356b93f7409c56",
+    "mtime": 1789255288.962391,
+    "seen": 1789256214.4870105,
+    "ast_hash": "dedd2e1bc2a22bf60786a67e2a902ab0",
     "semantic_hash": ""
   },
   "plugins/science-suite/hooks/_hook_io.py": {

@@ -1,5 +1,5 @@
 # Makefile for Claude Code Plugin Marketplace (MyClaude)
-# Version: 4.0.0
+# Version: 4.0.1
 
 .PHONY: help clean clean-all clean-python clean-docs clean-cache clean-build clean-reports \
         build docs docs-live test lint validate install dev-install plugin-enable-all \
@@ -133,7 +133,7 @@ format: ## Format Python code with black and ruff
 	fi
 	@echo "✓ Formatting complete"
 
-validate: ## Validate plugin metadata, configuration, and command file structure
+validate: ## Validate plugin.json, command file structure, doc cross-links, skill context budget + agent prompt size
 	@echo "Validating plugins..."
 	@if [ -f "tools/validation/metadata_validator.py" ]; then \
 		for dir in plugins/*/; do \
@@ -232,7 +232,7 @@ audit-deps: ## pip-audit: known CVEs in Python dependencies
 	fi
 	@echo "  ✓ no known vulnerabilities"
 
-audit-secrets: ## gitleaks: secret-scan working tree (history skipped — see notes/security.md)
+audit-secrets: ## gitleaks: secret-scan working tree (history skipped; working tree only)
 	@echo "[2/4] gitleaks (working-tree secret scan)..."
 	@if command -v gitleaks >/dev/null 2>&1; then \
 		gitleaks detect --no-banner --no-git --report-format=json --report-path=reports/gitleaks-tree.json && \
@@ -319,7 +319,7 @@ plugin-enable-all: ## Enable all plugins in Claude Code (requires restart)
 info: ## Show repository information
 	@echo "=== Repository Information ==="
 	@echo "Name: Claude Code Plugin Marketplace (MyClaude)"
-	@echo "Version: 4.0.0"
+	@echo "Version: 4.0.1"
 	@echo "Author: Wei Chen"
 	@echo "Documentation: https://myclaude.readthedocs.io/en/latest/"
 	@echo "Repository: https://github.com/imewei/MyClaude"

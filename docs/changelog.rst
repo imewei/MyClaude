@@ -1,8 +1,8 @@
 Changelog
 =========
 
-Unreleased
-----------
+v4.0.1 (2026-09-12)
+-------------------
 
 **Docs: full resync against plugin.json, hooks.json, and SKILL.md routing**
 
