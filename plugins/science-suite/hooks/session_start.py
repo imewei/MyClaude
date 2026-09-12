@@ -12,7 +12,7 @@ import sys
 from datetime import UTC, datetime, timedelta
 from pathlib import Path
 
-from _hook_io import get_field, read_payload, wrap_context
+from _hook_io import get_field, read_payload, untrusted_block, wrap_context
 
 PROGRESS_RELPATH = Path(".claude") / "progress" / "science-suite.md"
 PROGRESS_MAX_CHARS = 1500
@@ -114,7 +114,7 @@ def main() -> None:
         if progress:
             sections.append(
                 "Prior science-suite session summary (from "
-                f"{PROGRESS_RELPATH.as_posix()}, may be stale):\n{progress}"
+                f"{PROGRESS_RELPATH.as_posix()}, may be stale):\n" + untrusted_block(progress)
             )
 
         ctx = "\n\n".join(sections)

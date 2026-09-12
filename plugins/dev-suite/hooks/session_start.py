@@ -12,7 +12,7 @@ import sys
 from datetime import UTC, datetime, timedelta
 from pathlib import Path
 
-from _hook_io import get_field, read_payload, wrap_context
+from _hook_io import get_field, read_payload, untrusted_block, wrap_context
 
 
 def detect_stack(cwd: str) -> dict:
@@ -131,7 +131,7 @@ def main() -> None:
         # Read prior session progress
         progress = read_progress_file(cwd)
         if progress:
-            context += f"\n\nPrior session progress:\n{progress}"
+            context += "\n\nPrior session progress:\n" + untrusted_block(progress)
 
         ctx = f"Dev environment detected: {context}"
         result = {"status": "success", "additionalContext": ctx}

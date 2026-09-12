@@ -7,7 +7,7 @@ Collects results from parallel science agents (parameter sweeps, etc.).
 import json
 import sys
 
-from _hook_io import get_field, read_payload, wrap_context
+from _hook_io import get_field, read_payload, untrusted, wrap_context
 
 # Agents that produce numerical results worth validating. sci-workflow-engineer
 # (LLM/RAG tooling) and python-pro (packaging, typing, glue) are excluded.
@@ -34,7 +34,7 @@ def main() -> None:
         result: dict = {"status": "success"}
         if agent_name in NUMERICAL_AGENTS:
             ctx = (
-                f"Science agent '{agent_name}' completed. "
+                f"Science agent {untrusted(agent_name)} completed. "
                 "Check output for numerical validity before proceeding."
             )
             result["additionalContext"] = ctx

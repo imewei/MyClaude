@@ -62,15 +62,15 @@ def check_review_file(path: Path) -> str | None:
             text = read_docx_text(path)
         except ImportError:
             return (
-                f"scientific-review wrote {path.name}, but python-docx isn't "
+                f"scientific-review wrote {_hook_io.untrusted(path.name)}, but python-docx isn't "
                 "available to verify section completeness — check manually "
                 "that Summary and Recommendation sections are present."
             )
         except Exception as e:
             print(f"PostToolUse: failed to parse {path}: {e}", file=sys.stderr)
             return (
-                f"scientific-review wrote {path.name}, but it could not be "
-                f"parsed to verify section completeness ({e}) — check "
+                f"scientific-review wrote {_hook_io.untrusted(path.name)}, but it could not be "
+                f"parsed to verify section completeness ({_hook_io.untrusted(e)}) — check "
                 "manually that Summary and Recommendation sections are present."
             )
     else:
@@ -83,7 +83,7 @@ def check_review_file(path: Path) -> str | None:
     missing = missing_sections(text)
     if missing:
         return (
-            f"scientific-review wrote {path.name}, but it is missing required "
+            f"scientific-review wrote {_hook_io.untrusted(path.name)}, but it is missing required "
             f"section(s): {', '.join(missing)}. Do not present this review as "
             "complete until they are added."
         )

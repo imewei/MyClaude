@@ -11,7 +11,7 @@ import os
 import subprocess
 import sys
 
-from _hook_io import get_field, read_payload, wrap_context
+from _hook_io import get_field, read_payload, untrusted, wrap_context
 
 
 def has_uncommitted_changes(cwd: str) -> bool:
@@ -45,7 +45,7 @@ def main() -> None:
         )
         cwd = get_field(payload, "cwd", env_fallback="PWD", default=os.getcwd())
 
-        advice = [f"Task completed: {task_subject}."]
+        advice = [f"Task completed: {untrusted(task_subject)}."]
         advice.append("Consider running tests and linting before moving on.")
 
         if has_uncommitted_changes(cwd):

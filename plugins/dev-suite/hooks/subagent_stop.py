@@ -19,7 +19,7 @@ import re
 import sys
 from pathlib import Path
 
-from _hook_io import get_field, read_payload, wrap_context
+from _hook_io import get_field, read_payload, untrusted, wrap_context
 
 # The reviewer subagent's own transcript contains "Codex Code Review" or
 # "Codex Content Review" (agent-prompts.md:83,123,173,212 — what the reviewer
@@ -86,7 +86,7 @@ def main() -> None:
         )
         transcript_path = get_field(payload, "transcript_path", default="")
 
-        ctx = f"Dev-suite agent '{agent_name}' completed."
+        ctx = f"Dev-suite agent {untrusted(agent_name)} completed."
         flag = check_reviewer_transcript(transcript_path)
         if flag:
             ctx += f"\n\n{flag}"

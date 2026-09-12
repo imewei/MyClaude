@@ -60,12 +60,12 @@ def check_artifacts(cwd: str) -> str | None:
         project = state_path.parent.name or str(state_path.parent)
         if missing:
             lines.append(
-                f"{project}: _state.yaml lists stage {stage} as completed but "
-                f"{', '.join(missing)} not found in {artifacts_dir}/ — "
+                f"{_hook_io.untrusted(project)}: _state.yaml lists stage {stage} as completed but "
+                f"{', '.join(_hook_io.untrusted(m) for m in missing)} not found in {_hook_io.untrusted(str(artifacts_dir))}/ — "
                 "do not report this stage complete until the artifact exists on disk."
             )
         else:
-            lines.append(f"{project}: stage {stage} artifact(s) verified present on disk.")
+            lines.append(f"{_hook_io.untrusted(project)}: stage {stage} artifact(s) verified present on disk.")
     return "\n".join(lines) if lines else None
 
 

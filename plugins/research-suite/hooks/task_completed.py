@@ -33,7 +33,7 @@ def main() -> None:
         states = _hook_io.find_state_files(cwd)
         if not states:
             ctx = (
-                f"Task completed: '{task_subject}'. No research-spark "
+                f"Task completed: {_hook_io.untrusted(task_subject)}. No research-spark "
                 "workspace here, so nothing was logged."
             )
             result = {"status": "success", "additionalContext": ctx}
@@ -51,14 +51,14 @@ def main() -> None:
             with log_path.open("a", encoding="utf-8") as f:
                 f.write(json.dumps(entry) + "\n")
             advice = (
-                f"Research task logged: '{task_subject}'. "
+                f"Research task logged: {_hook_io.untrusted(task_subject)}. "
                 f"Audit trail at {log_path}. "
                 "If this concludes a research-spark stage, verify the stage artifact "
                 "is committed before advancing."
             )
         except OSError:
             advice = (
-                f"Research task completed: '{task_subject}'. "
+                f"Research task completed: {_hook_io.untrusted(task_subject)}. "
                 f"Could not write audit log at {log_path} (non-fatal)."
             )
 

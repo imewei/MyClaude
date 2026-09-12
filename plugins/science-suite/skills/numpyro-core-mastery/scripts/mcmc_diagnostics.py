@@ -142,6 +142,9 @@ def main():
     )
     args = parser.parse_args()
 
+    # pickle can execute code on load. This script is a local diagnostic the user
+    # points at their own posterior_samples.pkl; never run it on a pickle from an
+    # untrusted source. For portable, inert storage prefer numpy.savez / .npz.
     with open(args.samples, "rb") as f:
         data = pickle.load(f)
 

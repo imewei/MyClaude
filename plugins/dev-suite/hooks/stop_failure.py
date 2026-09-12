@@ -7,7 +7,7 @@ Captures context when /stop fails mid-operation.
 import json
 import sys
 
-from _hook_io import get_field, read_payload, wrap_context
+from _hook_io import get_field, read_payload, untrusted, wrap_context
 
 
 def main() -> None:
@@ -21,7 +21,7 @@ def main() -> None:
             env_fallback="ERROR_MESSAGE",
         )
         ctx = (
-            f"Stop command failed: {error_message}. "
+            f"Stop command failed: {untrusted(error_message)}. "
             "Check for long-running processes or locked resources."
         )
         result = {"status": "success", "additionalContext": ctx}

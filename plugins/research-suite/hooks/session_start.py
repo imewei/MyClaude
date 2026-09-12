@@ -27,7 +27,7 @@ def main() -> None:
         if len(states) > 1:
             ctx = (
                 f"Research-suite: {len(states)} _state.yaml files found "
-                f"({', '.join(str(p) for p in states)}). Read the relevant one "
+                f"({', '.join(_hook_io.untrusted(str(p)) for p in states)}). Read the relevant one "
                 "before assuming any stage."
             )
         else:
@@ -35,13 +35,13 @@ def main() -> None:
             stage = _hook_io.read_current_stage(state)
             if stage is None:
                 ctx = (
-                    f"Research-suite: found {state} but could not read "
+                    f"Research-suite: found {_hook_io.untrusted(str(state))} but could not read "
                     "`current_stage` from it. Surface this to the user rather "
                     "than overwriting the file."
                 )
             else:
                 ctx = (
-                    f"Research-suite resume: {state} reports current_stage: {stage}. "
+                    f"Research-suite resume: {_hook_io.untrusted(str(state))} reports current_stage: {stage}. "
                     "Read the file itself before acting; it is the single source of truth."
                 )
 
