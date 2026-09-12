@@ -37,6 +37,12 @@ CONTEXT_SIZES = {
 # Skill budget is 2% of context window
 SKILL_BUDGET_PERCENT = 0.02
 
+# plugin-dev's agent-development spec caps an agent's system prompt (the markdown body
+# after the frontmatter) at 10,000 characters. Unlike a skill, an agent has no
+# references/ mechanism, so the way back under the cap is to point at the skills that
+# own the detail rather than to restate it.
+AGENT_PROMPT_MAX_CHARS = 10_000
+
 
 @dataclass
 class SkillBudgetResult:
@@ -56,6 +62,17 @@ class SkillBudgetResult:
 
 
 @dataclass
+class AgentBudgetResult:
+    """Result of an agent system-prompt size check."""
+
+    agent_name: str
+    plugin_name: str
+    file_path: str
+    body_chars: int
+    fits: bool
+
+
+@dataclass
 class BudgetReport:
     """Aggregated budget check report."""
 
@@ -65,6 +82,8 @@ class BudgetReport:
     fits_1m_count: int = 0
     oversized_skills: list[SkillBudgetResult] = field(default_factory=list)
     headroom_warnings: list[SkillBudgetResult] = field(default_factory=list)
+    agents: list[AgentBudgetResult] = field(default_factory=list)
+    oversized_agents: list[AgentBudgetResult] = field(default_factory=list)
 
 
 def estimate_tokens(text: str) -> int:
@@ -134,6 +153,24 @@ def check_skill_budget(skill_path: Path, plugin_name: str) -> SkillBudgetResult 
     )
 
 
+def check_agent_budget(agent_md: Path, plugin_name: str) -> AgentBudgetResult:
+    """Measure an agent's system prompt — the body after the YAML frontmatter.
+
+    The description is loaded on every session and is checked elsewhere; what this
+    measures is the prompt the agent runs with once dispatched.
+    """
+    content = agent_md.read_text(encoding="utf-8")
+    parts = content.split("---", 2)
+    body = parts[-1] if len(parts) == 3 else content
+    return AgentBudgetResult(
+        agent_name=agent_md.stem,
+        plugin_name=plugin_name,
+        file_path=str(agent_md),
+        body_chars=len(body),
+        fits=len(body) <= AGENT_PROMPT_MAX_CHARS,
+    )
+
+
 def check_all_plugins(plugins_dir: Path) -> BudgetReport:
     """Check all plugin skills for context budget compliance."""
     report = BudgetReport()
@@ -143,6 +180,15 @@ def check_all_plugins(plugins_dir: Path) -> BudgetReport:
             continue
 
         plugin_name = plugin_dir.name
+
+        agents_dir = plugin_dir / "agents"
+        if agents_dir.exists():
+            for agent_md in sorted(agents_dir.glob("*.md")):
+                agent_result = check_agent_budget(agent_md, plugin_name)
+                report.agents.append(agent_result)
+                if not agent_result.fits:
+                    report.oversized_agents.append(agent_result)
+
         skills_dir = plugin_dir / "skills"
         if not skills_dir.exists():
             continue
@@ -179,6 +225,7 @@ def generate_report(report: BudgetReport) -> str:
         "",
         f"**Date:** {datetime.now(UTC).strftime('%Y-%m-%d %H:%M:%S')}",
         f"**Total Skills Checked:** {report.total_skills}",
+        f"**Total Agents Checked:** {len(report.agents)}",
         "",
         "## Context Budget Reference",
         "",
@@ -194,8 +241,31 @@ def generate_report(report: BudgetReport) -> str:
         f"| Fits 200K budget | {report.fits_200k_count}/{report.total_skills} | {report.fits_200k_count / max(report.total_skills, 1) * 100:.0f}% |",
         f"| Fits 1M budget | {report.fits_1m_count}/{report.total_skills} | {report.fits_1m_count / max(report.total_skills, 1) * 100:.0f}% |",
         f"| Oversized (200K) | {len(report.oversized_skills)}/{report.total_skills} | {len(report.oversized_skills) / max(report.total_skills, 1) * 100:.0f}% |",
+        f"| Agents within {AGENT_PROMPT_MAX_CHARS:,}-char prompt max | {len(report.agents) - len(report.oversized_agents)}/{len(report.agents)} | {(len(report.agents) - len(report.oversized_agents)) / max(len(report.agents), 1) * 100:.0f}% |",
         "",
     ]
+
+    if report.oversized_agents:
+        lines += [
+            f"## Agents Over the {AGENT_PROMPT_MAX_CHARS:,}-Character System-Prompt Maximum",
+            "",
+            "| Agent | Plugin | Body Chars | Over By |",
+            "|-------|--------|-----------|---------|",
+        ]
+        for agent in sorted(report.oversized_agents, key=lambda a: -a.body_chars):
+            lines.append(
+                f"| {agent.agent_name} | {agent.plugin_name} | {agent.body_chars:,} | "
+                f"+{agent.body_chars - AGENT_PROMPT_MAX_CHARS:,} |"
+            )
+        lines += [
+            "",
+            (
+                "An agent has no `references/` mechanism. Bring one back under the cap by "
+                "pointing at the skills that own the detail, or by removing a section that "
+                "restates another."
+            ),
+            "",
+        ]
 
     if report.oversized_skills:
         lines.extend(
@@ -296,7 +366,7 @@ def main() -> None:
         print(output)
 
     # Exit code based on compliance
-    if report.oversized_skills:
+    if report.oversized_skills or report.oversized_agents:
         sys.exit(1)
     sys.exit(0)
 

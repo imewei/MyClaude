@@ -46,6 +46,20 @@ Unreleased
   re-breaking that line. An arrow may point to an agent — ``/replicate`` ends
   ``→ `quality-specialist``` — so agents are accepted there too.
 
+**Tooling: agent system-prompt size is gated**
+
+* ``context_budget_checker.py`` now measures agents as well as skills: an agent's markdown body — the
+  system prompt it runs with once dispatched — is capped at plugin-dev's 10,000 characters, and
+  exceeding it fails ``make validate`` and CI, alongside the existing skill budget. Extended the
+  existing checker rather than adding a script, since it was already wired into both.
+* An agent has no ``references/`` mechanism, so the report says what the ways back under the cap are:
+  point at the skills that own the detail, or drop a section that restates another.
+* Verified to fire, not merely to pass: padding ``sre-expert`` past the cap produces the
+  "Agents Over the 10,000-Character System-Prompt Maximum" table and ``make validate`` exits 1.
+* Four tests added to ``test_context_budget_checker.py`` (13 total): the body is measured rather than
+  the frontmatter, an oversized agent is flagged, every agent in the tree is within the cap, and the
+  report names offenders.
+
 **Agents: the last four brought under plugin-dev's 10,000-char maximum**
 
 * 0 of 20 agents now exceed the system-prompt maximum, down from 4. Agent bodies total 153,197 chars

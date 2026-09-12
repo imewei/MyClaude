@@ -119,5 +119,57 @@ class TestCheckSkillBudget(unittest.TestCase):
         self.assertEqual(SKILL_BUDGET_PERCENT, 0.02)
 
 
+
+class TestAgentPromptBudget(unittest.TestCase):
+    """An agent's system prompt is capped at plugin-dev's 10,000 characters.
+
+    Agents have no references/ mechanism, so the ways back under the cap are pointing
+    at the skills that own the detail, or dropping a section that restates another.
+    Four agents sat over it before this check existed.
+    """
+
+    def _mod(self):
+        from tools.validation import context_budget_checker
+
+        return context_budget_checker
+
+    def test_body_is_measured_not_frontmatter(self):
+        """The description is loaded every session and checked elsewhere; this measures
+        the prompt the agent runs with once dispatched."""
+        mod = self._mod()
+        agent = project_root / "plugins" / "dev-suite" / "agents" / "sre-expert.md"
+        result = mod.check_agent_budget(agent, "dev-suite")
+        self.assertLess(result.body_chars, len(agent.read_text()))
+        self.assertTrue(result.fits)
+
+    def test_oversized_agent_is_flagged(self):
+        mod = self._mod()
+        with tempfile.TemporaryDirectory() as tmp:
+            agent = Path(tmp) / "huge.md"
+            agent.write_text("---\nname: huge\n---\n" + "x" * 11000)
+            result = mod.check_agent_budget(agent, "test-plugin")
+            self.assertFalse(result.fits)
+            self.assertGreater(result.body_chars, mod.AGENT_PROMPT_MAX_CHARS)
+
+    def test_every_agent_is_within_the_cap(self):
+        mod = self._mod()
+        report = mod.check_all_plugins(project_root / "plugins")
+        offenders = [
+            f"{a.plugin_name}/{a.agent_name} ({a.body_chars:,})"
+            for a in report.oversized_agents
+        ]
+        self.assertEqual(offenders, [])
+        self.assertEqual(len(report.agents), 20)
+
+    def test_report_names_oversized_agents(self):
+        mod = self._mod()
+        report = mod.BudgetReport()
+        report.agents.append(mod.AgentBudgetResult("huge", "test", "/x", 15000, False))
+        report.oversized_agents.append(report.agents[0])
+        text = mod.generate_report(report)
+        self.assertIn("Agents Over the", text)
+        self.assertIn("huge", text)
+
+
 if __name__ == "__main__":
     unittest.main()
