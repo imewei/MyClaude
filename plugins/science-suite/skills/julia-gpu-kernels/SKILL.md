@@ -11,7 +11,7 @@ description: Write high-performance GPU code in Julia with CUDA.jl and KernelAbs
 For GPU kernel development and optimization in Julia, delegate to:
 
 - **`julia-ml-hpc`**: Julia ML/HPC specialist for CUDA.jl, KernelAbstractions.jl, custom GPU kernels, and multi-GPU patterns.
-  - *Location*: `plugins/science-suite/agents/julia-ml-hpc.md`
+  - *Location*: `${CLAUDE_PLUGIN_ROOT}/agents/julia-ml-hpc.md`
 
 ## CUDA.jl Basics
 

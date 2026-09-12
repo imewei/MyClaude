@@ -6,9 +6,10 @@ description: Meta-orchestrator for backend development patterns. Routes to Node.
 
 > **Loading a routing target.** `dev-suite:*`, `research-suite:*`, and `science-suite:*` targets below
 > are slash-only (`disable-model-invocation: true`) — the Skill tool will not fire them. Load one by
-> reading its file with the Read tool: `plugins/<suite>/skills/<name>/SKILL.md` (e.g.
-> `dev-suite:backend-patterns` → `plugins/dev-suite/skills/backend-patterns/SKILL.md`). Targets from
-> other plugins (`superpowers:*`, `ecc:*`, …) are unaffected and invoke normally.
+> reading its file with the Read tool at `${CLAUDE_PLUGIN_ROOT}/skills/<name>/SKILL.md` — Claude Code
+> substitutes that variable with this plugin's install directory. A target in a sibling suite is at
+> the same relative path under that suite's own root. Targets from other plugins (`superpowers:*`,
+> `ecc:*`, …) are unaffected and invoke normally.
 
 # Backend Patterns
 
@@ -17,7 +18,7 @@ Orchestrator for backend development across Node.js and Python ecosystems. Route
 ## Expert Agent
 
 - **`software-architect`**: Specialist for system design, API contracts, and distributed backend architecture.
-  - *Location*: `plugins/dev-suite/agents/software-architect.md`
+  - *Location*: `${CLAUDE_PLUGIN_ROOT}/agents/software-architect.md`
   - *Capabilities*: Service decomposition, API versioning, protocol selection, and scalability design.
 
 ## Core Skills

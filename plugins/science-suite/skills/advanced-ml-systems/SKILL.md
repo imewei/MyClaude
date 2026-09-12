@@ -13,7 +13,7 @@ Deep learning frameworks, distributed training, and production-ready optimizatio
 For advanced deep learning architectures, distributed training, and model optimization, delegate to the expert agent:
 
 - **`ml-expert`**: Unified specialist for Scientific ML, Deep Learning, and MLOps.
-  - *Location*: `plugins/science-suite/agents/ml-expert.md`
+  - *Location*: `${CLAUDE_PLUGIN_ROOT}/agents/ml-expert.md`
   - *Capabilities*: Distributed training (DDP/FSDP), custom architectures (Transformers/GNNs), and model optimization.
 
 ## Framework Selection

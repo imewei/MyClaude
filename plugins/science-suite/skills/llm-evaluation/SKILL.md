@@ -11,7 +11,7 @@ description: Implement LLM evaluation with automated metrics (BLEU, ROUGE, BERTS
 For LLM evaluation, automated metrics, and quality assessment, delegate to:
 
 - **`sci-workflow-engineer`**: LLM integration, evaluation frameworks, and AI quality assurance.
-  - *Location*: `plugins/science-suite/agents/sci-workflow-engineer.md`
+  - *Location*: `${CLAUDE_PLUGIN_ROOT}/agents/sci-workflow-engineer.md`
 
 Comprehensive evaluation strategies from automated metrics to human assessment.
 

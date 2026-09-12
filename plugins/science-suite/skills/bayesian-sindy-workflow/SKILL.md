@@ -13,7 +13,7 @@ Classical SINDy (see `equation-discovery`) returns a single point estimate of th
 - **`statistical-physicist`** (primary) — Bayesian inference on sparse regression, horseshoe-prior construction, MCMC convergence for high-dimensional posteriors
 - **`julia-pro`** (secondary) — for the Turing UQ-SINDy sidebar and Julia-side workflows
 
-Location: `plugins/science-suite/agents/statistical-physicist.md` and `plugins/science-suite/agents/julia-pro.md`.
+Location: `${CLAUDE_PLUGIN_ROOT}/agents/statistical-physicist.md` and `${CLAUDE_PLUGIN_ROOT}/agents/julia-pro.md`.
 
 ## When to prefer Bayesian SINDy vs classical SINDy
 

@@ -13,7 +13,7 @@ Transform raw data into actionable insights through systematic cleaning, feature
 For complex data analysis, cleaning pipelines, and interactive dashboards, delegate to the expert agent:
 
 - **`ml-expert`**: Unified specialist for Data Science and Engineering.
-  - *Location*: `plugins/science-suite/agents/ml-expert.md`
+  - *Location*: `${CLAUDE_PLUGIN_ROOT}/agents/ml-expert.md`
   - *Capabilities*: Advanced pandas pipelines, feature engineering, and automated EDA.
 
 ## Data Cleaning Workflow

@@ -6,9 +6,10 @@ description: Meta-orchestrator for the research lifecycle. Routes to specialized
 
 > **Loading a routing target.** `dev-suite:*`, `research-suite:*`, and `science-suite:*` targets below
 > are slash-only (`disable-model-invocation: true`) — the Skill tool will not fire them. Load one by
-> reading its file with the Read tool: `plugins/<suite>/skills/<name>/SKILL.md` (e.g.
-> `dev-suite:backend-patterns` → `plugins/dev-suite/skills/backend-patterns/SKILL.md`). Targets from
-> other plugins (`superpowers:*`, `ecc:*`, …) are unaffected and invoke normally.
+> reading its file with the Read tool at `${CLAUDE_PLUGIN_ROOT}/skills/<name>/SKILL.md` — Claude Code
+> substitutes that variable with this plugin's install directory. A target in a sibling suite is at
+> the same relative path under that suite's own root. Targets from other plugins (`superpowers:*`,
+> `ecc:*`, …) are unaffected and invoke normally.
 
 # Research Practice
 
@@ -17,7 +18,7 @@ Orchestrator for the research lifecycle. Routes problems to the appropriate spec
 ## Expert Agent
 
 - **`research-expert`**: Specialist for research methodology, literature synthesis, and scientific communication.
-  - *Location*: `plugins/research-suite/agents/research-expert.md`
+  - *Location*: `${CLAUDE_PLUGIN_ROOT}/agents/research-expert.md`
   - *Capabilities*: Study design, paper implementation, quality assessment, scientific writing, evidence synthesis.
 
 ## Phase-aligned sub-skills

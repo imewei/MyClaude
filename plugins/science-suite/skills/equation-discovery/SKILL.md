@@ -6,9 +6,10 @@ description: Data-driven equation discovery with SINDy (Sparse Identification of
 
 > **Loading a routing target.** `dev-suite:*`, `research-suite:*`, and `science-suite:*` targets below
 > are slash-only (`disable-model-invocation: true`) — the Skill tool will not fire them. Load one by
-> reading its file with the Read tool: `plugins/<suite>/skills/<name>/SKILL.md` (e.g.
-> `dev-suite:backend-patterns` → `plugins/dev-suite/skills/backend-patterns/SKILL.md`). Targets from
-> other plugins (`superpowers:*`, `ecc:*`, …) are unaffected and invoke normally.
+> reading its file with the Read tool at `${CLAUDE_PLUGIN_ROOT}/skills/<name>/SKILL.md` — Claude Code
+> substitutes that variable with this plugin's install directory. A target in a sibling suite is at
+> the same relative path under that suite's own root. Targets from other plugins (`superpowers:*`,
+> `ecc:*`, …) are unaffected and invoke normally.
 
 # Equation Discovery
 
@@ -19,9 +20,9 @@ Discover governing equations directly from trajectory data using sparse regressi
 ## Expert Agents
 
 - **`nonlinear-dynamics-expert`**: Domain expertise for dynamical systems, sparsity-promoting regression, and model selection.
-  - *Location*: `plugins/science-suite/agents/nonlinear-dynamics-expert.md`
+  - *Location*: `${CLAUDE_PLUGIN_ROOT}/agents/nonlinear-dynamics-expert.md`
 - **`julia-pro`**: Implementation, debugging, and performance tuning for Julia-based SINDy workflows.
-  - *Location*: `plugins/science-suite/agents/julia-pro.md`
+  - *Location*: `${CLAUDE_PLUGIN_ROOT}/agents/julia-pro.md`
 
 ---
 

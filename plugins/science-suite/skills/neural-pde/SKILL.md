@@ -6,9 +6,10 @@ description: Solve PDEs with NeuralPDE.jl using physics-informed neural networks
 
 > **Loading a routing target.** `dev-suite:*`, `research-suite:*`, and `science-suite:*` targets below
 > are slash-only (`disable-model-invocation: true`) — the Skill tool will not fire them. Load one by
-> reading its file with the Read tool: `plugins/<suite>/skills/<name>/SKILL.md` (e.g.
-> `dev-suite:backend-patterns` → `plugins/dev-suite/skills/backend-patterns/SKILL.md`). Targets from
-> other plugins (`superpowers:*`, `ecc:*`, …) are unaffected and invoke normally.
+> reading its file with the Read tool at `${CLAUDE_PLUGIN_ROOT}/skills/<name>/SKILL.md` — Claude Code
+> substitutes that variable with this plugin's install directory. A target in a sibling suite is at
+> the same relative path under that suite's own root. Targets from other plugins (`superpowers:*`,
+> `ecc:*`, …) are unaffected and invoke normally.
 
 # NeuralPDE.jl — PINNs (deterministic)
 
@@ -17,7 +18,7 @@ description: Solve PDEs with NeuralPDE.jl using physics-informed neural networks
 For physics-informed neural networks and PDE solving with NeuralPDE.jl, delegate to:
 
 - **`julia-pro`**: Julia SciML ecosystem and neural PDE workflows.
-  - *Location*: `plugins/science-suite/agents/julia-pro.md`
+  - *Location*: `${CLAUDE_PLUGIN_ROOT}/agents/julia-pro.md`
 
 NeuralPDE.jl couples symbolic PDE specification (via ModelingToolkit) with neural-network ansätze, supporting forward solves, inverse problems, and Bayesian inference over network weights.
 

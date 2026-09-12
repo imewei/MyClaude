@@ -6,9 +6,10 @@ description: Meta-orchestrator for ML model deployment and operations. Routes to
 
 > **Loading a routing target.** `dev-suite:*`, `research-suite:*`, and `science-suite:*` targets below
 > are slash-only (`disable-model-invocation: true`) — the Skill tool will not fire them. Load one by
-> reading its file with the Read tool: `plugins/<suite>/skills/<name>/SKILL.md` (e.g.
-> `dev-suite:backend-patterns` → `plugins/dev-suite/skills/backend-patterns/SKILL.md`). Targets from
-> other plugins (`superpowers:*`, `ecc:*`, …) are unaffected and invoke normally.
+> reading its file with the Read tool at `${CLAUDE_PLUGIN_ROOT}/skills/<name>/SKILL.md` — Claude Code
+> substitutes that variable with this plugin's install directory. A target in a sibling suite is at
+> the same relative path under that suite's own root. Targets from other plugins (`superpowers:*`,
+> `ecc:*`, …) are unaffected and invoke normally.
 
 # ML Deployment
 
@@ -17,7 +18,7 @@ Orchestrator for ML model deployment and MLOps. Routes problems to the appropria
 ## Expert Agent
 
 - **`ml-expert`**: Specialist for ML deployment, serving infrastructure, and production ML operations.
-  - *Location*: `plugins/science-suite/agents/ml-expert.md`
+  - *Location*: `${CLAUDE_PLUGIN_ROOT}/agents/ml-expert.md`
   - *Capabilities*: Model serving, optimization for inference, CI/CD for ML, monitoring, and federated learning.
 
 ## Core Skills

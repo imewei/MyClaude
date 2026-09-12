@@ -13,7 +13,7 @@ Efficient, scalable algorithms for correlation function calculation.
 For high-performance correlation analysis, GPU acceleration, and efficient algorithms, delegate to the expert agent:
 
 - **`statistical-physicist`**: Unified specialist for Statistical Physics and Correlation Analysis.
-  - *Location*: `plugins/science-suite/agents/statistical-physicist.md`
+  - *Location*: `${CLAUDE_PLUGIN_ROOT}/agents/statistical-physicist.md`
   - *Capabilities*: FFT-based correlations, multi-tau algorithms, and JAX/GPU acceleration.
 
 ## Algorithm Selection

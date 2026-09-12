@@ -13,7 +13,7 @@ Build end-to-end computer vision pipelines for detection, segmentation, and clas
 For designing and training computer vision models, delegate to the expert agent:
 
 - **`neural-network-master`**: Deep learning specialist for CNN architectures, vision transformers, and training pipelines.
-  - *Location*: `plugins/science-suite/agents/neural-network-master.md`
+  - *Location*: `${CLAUDE_PLUGIN_ROOT}/agents/neural-network-master.md`
   - *Capabilities*: Architecture design, transfer learning, distributed training, model optimization.
 
 ## Image Preprocessing Pipeline

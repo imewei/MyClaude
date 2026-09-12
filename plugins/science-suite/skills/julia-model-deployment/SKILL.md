@@ -11,7 +11,7 @@ description: Deploy trained Julia models to production. Covers ONNX.jl model exp
 For deploying Julia models to production, delegate to:
 
 - **`julia-ml-hpc`**: Julia ML/HPC specialist for ONNX export, REST serving, PackageCompiler system images, and Python interop.
-  - *Location*: `plugins/science-suite/agents/julia-ml-hpc.md`
+  - *Location*: `${CLAUDE_PLUGIN_ROOT}/agents/julia-ml-hpc.md`
 
 ## Model Serialization with JLD2
 

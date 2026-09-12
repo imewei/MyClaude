@@ -13,7 +13,7 @@ Design, analyze, and implement feedback control systems.
 For physics-based simulation and dynamical systems modeling, delegate to the expert agent:
 
 - **`simulation-expert`**: Physics simulation specialist for dynamical systems, numerical methods, and multi-physics coupling.
-  - *Location*: `plugins/science-suite/agents/simulation-expert.md`
+  - *Location*: `${CLAUDE_PLUGIN_ROOT}/agents/simulation-expert.md`
   - *Capabilities*: ODE/PDE solvers, stability analysis, parameter estimation, multiscale modeling.
 
 ## Transfer Functions

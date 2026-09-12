@@ -15,9 +15,9 @@ Numerical continuation and bifurcation detection. **BifurcationKit.jl is blocked
 For complex bifurcation problems requiring deep domain expertise, delegate to:
 
 - **`nonlinear-dynamics-expert`**: Dynamical systems, bifurcation theory, normal forms, and codimension-2 unfoldings.
-  - *Location*: `plugins/science-suite/agents/nonlinear-dynamics-expert.md`
+  - *Location*: `${CLAUDE_PLUGIN_ROOT}/agents/nonlinear-dynamics-expert.md`
 - **`julia-pro`**: Julia performance, type stability, and SciML ecosystem integration.
-  - *Location*: `plugins/science-suite/agents/julia-pro.md`
+  - *Location*: `${CLAUDE_PLUGIN_ROOT}/agents/julia-pro.md`
 
 ---
 

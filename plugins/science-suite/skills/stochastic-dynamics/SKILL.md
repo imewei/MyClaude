@@ -14,9 +14,9 @@ For stochastic modeling, Langevin simulations, and rare event sampling, delegate
 
 - **`statistical-physicist`** or **`simulation-expert`**:
   - **`statistical-physicist`**: For theoretical framework, Fokker-Planck equations, and transport theory.
-    - *Location*: `plugins/science-suite/agents/statistical-physicist.md`
+    - *Location*: `${CLAUDE_PLUGIN_ROOT}/agents/statistical-physicist.md`
   - **`simulation-expert`**: For numerical implementation of Langevin dynamics and rare event sampling.
-    - *Location*: `plugins/science-suite/agents/simulation-expert.md`
+    - *Location*: `${CLAUDE_PLUGIN_ROOT}/agents/simulation-expert.md`
 
 ## Framework Selection
 

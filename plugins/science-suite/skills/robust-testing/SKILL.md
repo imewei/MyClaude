@@ -13,7 +13,7 @@ Move beyond simple unit tests to rigorous verification using property-based test
 For advanced testing architectures, property-based test design, or verifying complex numerical algorithms, delegate to:
 
 - **`python-pro`**: Expert in property-based testing with Hypothesis and rigorous verification.
-  - *Location*: `plugins/science-suite/agents/python-pro.md`
+  - *Location*: `${CLAUDE_PLUGIN_ROOT}/agents/python-pro.md`
 
 ## 1. Property-Based Testing (Hypothesis)
 

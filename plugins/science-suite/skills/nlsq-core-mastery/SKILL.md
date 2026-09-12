@@ -15,7 +15,7 @@ sources:
 For complex optimization problems, GPU acceleration setup, and large-scale curve fitting, delegate to the expert agent:
 
 - **`jax-pro`**: Unified specialist for Nonlinear Least Squares (NLSQ) and Core JAX optimization.
-  - *Location*: `plugins/science-suite/agents/jax-pro.md`
+  - *Location*: `${CLAUDE_PLUGIN_ROOT}/agents/jax-pro.md`
   - *Capabilities*: Large-scale fitting (100M+ points), hybrid streaming optimization, and custom loss functions.
 
 ## Workflow Selection

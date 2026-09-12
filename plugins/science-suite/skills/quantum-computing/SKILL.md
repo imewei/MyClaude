@@ -11,7 +11,7 @@ description: "Implement quantum computing algorithms with Qiskit, Cirq, and Penn
 For quantum simulations, numerical methods, and high-performance computing, delegate to:
 
 - **`simulation-expert`**: Expert in physics simulations, numerical methods, and HPC scaling.
-  - *Location*: `plugins/science-suite/agents/simulation-expert.md`
+  - *Location*: `${CLAUDE_PLUGIN_ROOT}/agents/simulation-expert.md`
 
 ## Qiskit Fundamentals
 

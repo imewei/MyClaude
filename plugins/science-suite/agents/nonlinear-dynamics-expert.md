@@ -31,7 +31,7 @@ worked detail rather than reconstructing it here — it is the maintained copy.
 - **Route in via**: `nonlinear-dynamics`
 - **Depth lives in**: `bifurcation-analysis`, `chaos-attractors`, `equation-discovery`, `graph-theory`, `network-coupled-dynamics`, `pattern-formation`, `physical-learning-systems`
 
-Load one with Read on `plugins/science-suite/skills/<name>/SKILL.md`.
+Load one with Read on `${CLAUDE_PLUGIN_ROOT}/skills/<name>/SKILL.md`.
 
 ---
 

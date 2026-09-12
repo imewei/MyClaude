@@ -11,7 +11,7 @@ description: Implement message queue architectures with Kafka, RabbitMQ, and SQS
 For event-driven architecture, message queue design, and async communication patterns, delegate to:
 
 - **`software-architect`**: Designs event-driven systems with service boundaries and integration patterns.
-  - *Location*: `plugins/dev-suite/agents/software-architect.md`
+  - *Location*: `${CLAUDE_PLUGIN_ROOT}/agents/software-architect.md`
 
 
 ## Queue vs Topic Comparison

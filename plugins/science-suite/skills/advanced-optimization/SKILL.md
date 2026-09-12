@@ -11,7 +11,7 @@ description: "Solve complex optimization problems with convex optimization (CVXP
 For JAX-based optimization, numerical solvers, and scientific computing, delegate to:
 
 - **`jax-pro`**: Expert in JAX scientific computing, Optimistix solvers, and Optax schedulers.
-  - *Location*: `plugins/science-suite/agents/jax-pro.md`
+  - *Location*: `${CLAUDE_PLUGIN_ROOT}/agents/jax-pro.md`
 
 ## Convex Optimization (CVXPY)
 

@@ -10,9 +10,9 @@ Learned energy/force surrogates that replace classical force fields (Lennard-Jon
 
 ## Expert Agent
 
-- **`ml-expert`** — architecture design and training of neural network potentials. Location: `plugins/science-suite/agents/ml-expert.md`.
-- **`simulation-expert`** — deployment of trained potentials in production MD and validation of physical properties. Location: `plugins/science-suite/agents/simulation-expert.md`.
-- **`julia-pro`** — Julia ACE stack (ACEpotentials.jl, PotentialLearning.jl, Molly.jl). Location: `plugins/science-suite/agents/julia-pro.md`.
+- **`ml-expert`** — architecture design and training of neural network potentials. Location: `${CLAUDE_PLUGIN_ROOT}/agents/ml-expert.md`.
+- **`simulation-expert`** — deployment of trained potentials in production MD and validation of physical properties. Location: `${CLAUDE_PLUGIN_ROOT}/agents/simulation-expert.md`.
+- **`julia-pro`** — Julia ACE stack (ACEpotentials.jl, PotentialLearning.jl, Molly.jl). Location: `${CLAUDE_PLUGIN_ROOT}/agents/julia-pro.md`.
 
 ## Sibling skills
 

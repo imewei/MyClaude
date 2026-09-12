@@ -11,7 +11,7 @@ description: Master Lux.jl and Flux.jl for deep learning in Julia. Covers explic
 For neural network training in Julia, delegate to:
 
 - **`julia-ml-hpc`**: Julia ML/HPC specialist for Lux.jl, Flux.jl, and GPU training.
-  - *Location*: `plugins/science-suite/agents/julia-ml-hpc.md`
+  - *Location*: `${CLAUDE_PLUGIN_ROOT}/agents/julia-ml-hpc.md`
   - *Capabilities*: Training loops, optimizer selection, data pipelines, model checkpointing.
 
 ## Lux.jl vs Flux.jl

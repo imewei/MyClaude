@@ -13,7 +13,7 @@ Systematic frameworks for hypothesis testing, experimental design, and causal in
 For advanced statistical analysis, experimental design, and causal inference, delegate to the expert agent:
 
 - **`research-expert`** (research-suite): Unified specialist for Research Methodology and Statistics.
-  - *Location*: `plugins/research-suite/agents/research-expert.md`
+  - *Plugin*: `research-suite` (dispatch as `research-suite:research-expert`)
   - *Capabilities*: Power analysis, hypothesis testing selection, and rigorous statistical reporting.
 
 ## Test Selection Guide

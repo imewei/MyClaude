@@ -11,7 +11,7 @@ description: Master GitHub Actions for Julia packages with test matrices, Compat
 For Julia CI/CD workflows, testing matrices, and documentation deployment, delegate to:
 
 - **`julia-pro`**: Julia package development, testing, and deployment workflows.
-  - *Location*: `plugins/science-suite/agents/julia-pro.md`
+  - *Location*: `${CLAUDE_PLUGIN_ROOT}/agents/julia-pro.md`
 
 GitHub Actions workflows for Julia packages.
 

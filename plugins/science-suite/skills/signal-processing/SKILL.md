@@ -13,7 +13,7 @@ Analyze, filter, and transform signals in time and frequency domains.
 For high-performance numerical computing with JAX backends, delegate to the expert agent:
 
 - **`jax-pro`**: JAX computing specialist for JIT compilation, vectorization, and GPU-accelerated numerics.
-  - *Location*: `plugins/science-suite/agents/jax-pro.md`
+  - *Location*: `${CLAUDE_PLUGIN_ROOT}/agents/jax-pro.md`
   - *Capabilities*: Functional transforms (jit, vmap, pmap), Flax neural networks, Optax optimization.
 
 ## FFT Analysis

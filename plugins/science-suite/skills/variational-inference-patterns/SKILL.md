@@ -13,13 +13,13 @@ Variational inference is a cross-PPL technique — applicable to Turing.jl
 custom JAX/PyTorch ELBO loops. Delegate to:
 
 - **`julia-pro`**: Turing.jl + Bijectors.jl ADVI workflows.
-  - *Location*: `plugins/science-suite/agents/julia-pro.md`
+  - *Location*: `${CLAUDE_PLUGIN_ROOT}/agents/julia-pro.md`
 - **`statistical-physicist`**: VI theory, ELBO geometry, normalizing flow
   design, and the VI-vs-MCMC trade-off across PPLs.
-  - *Location*: `plugins/science-suite/agents/statistical-physicist.md`
+  - *Location*: `${CLAUDE_PLUGIN_ROOT}/agents/statistical-physicist.md`
 - **`jax-pro`**: NumPyro SVI / AutoGuide / amortized inference and
   JAX-based normalizing flow implementations.
-  - *Location*: `plugins/science-suite/agents/jax-pro.md`
+  - *Location*: `${CLAUDE_PLUGIN_ROOT}/agents/jax-pro.md`
 
 VI is most useful as a warm-start for MCMC (see `bayesian-ude-workflow`,
 `consensus-mcmc-pigeons`) or as a fast posterior approximation when full

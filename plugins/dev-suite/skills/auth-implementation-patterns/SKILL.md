@@ -11,7 +11,7 @@ description: Master authentication patterns including JWT (access/refresh tokens
 For authentication system architecture, OAuth2/OIDC integration, and access control design, delegate to:
 
 - **`software-architect`**: Defines authentication/authorization boundaries and security architecture for distributed systems.
-  - *Location*: `plugins/dev-suite/agents/software-architect.md`
+  - *Location*: `${CLAUDE_PLUGIN_ROOT}/agents/software-architect.md`
 
 Secure, scalable authentication and authorization systems.
 

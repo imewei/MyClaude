@@ -11,9 +11,9 @@ Fit and interpret the tails of a distribution when the rare / extreme part of a 
 ## Expert Agents
 
 - **`statistical-physicist`** — asymptotic theory (Fisher-Tippett-Gnedenko, Pickands-Balkema-de Haan), tail-index interpretation, and the bridge to large-deviation theory.
-  - *Location*: `plugins/science-suite/agents/statistical-physicist.md`
+  - *Location*: `${CLAUDE_PLUGIN_ROOT}/agents/statistical-physicist.md`
 - **`ml-expert`** (secondary) — applied Python workflow, `pyextremes` / `POT` / `scipy.stats` tooling, and feature engineering for non-stationary covariates.
-  - *Location*: `plugins/science-suite/agents/ml-expert.md`
+  - *Location*: `${CLAUDE_PLUGIN_ROOT}/agents/ml-expert.md`
 
 ---
 

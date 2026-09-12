@@ -11,7 +11,7 @@ description: Master cross-language integration with PythonCall.jl, RCall.jl, and
 For cross-language integration with PythonCall.jl, RCall.jl, and CxxWrap.jl, delegate to:
 
 - **`julia-pro`**: Julia interoperability, FFI patterns, and data transfer optimization.
-  - *Location*: `plugins/science-suite/agents/julia-pro.md`
+  - *Location*: `${CLAUDE_PLUGIN_ROOT}/agents/julia-pro.md`
 
 Cross-language integration with Python, R, and C++.
 

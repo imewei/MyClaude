@@ -11,7 +11,7 @@ description: Reference patterns for multi-dimensional validation including OWASP
 For multi-dimensional validation, security scanning, and deployment readiness checks, delegate to:
 
 - **`quality-specialist`**: Enforces coding standards, security audits (OWASP Top 10), and comprehensive quality gates.
-  - *Location*: `plugins/dev-suite/agents/quality-specialist.md`
+  - *Location*: `${CLAUDE_PLUGIN_ROOT}/agents/quality-specialist.md`
 
 Systematic validation across 10 critical dimensions before production deployment.
 

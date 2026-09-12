@@ -13,7 +13,7 @@ Guide for *designing* experiments and studies with high statistical rigor and re
 For systematic reviews, rigorous experimental design, and publication-quality reporting, delegate to:
 
 - **`research-expert`**: Specialist for research methodology, literature synthesis, and scientific writing.
-  - *Location*: `plugins/research-suite/agents/research-expert.md`
+  - *Location*: `${CLAUDE_PLUGIN_ROOT}/agents/research-expert.md`
 
 ## Scope boundary
 

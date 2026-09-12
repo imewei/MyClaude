@@ -13,9 +13,9 @@ Consolidated entry point for the rare-event family — the set of methods that m
 For rare-event sampling, path-sampling ensembles, and large-deviation machinery, delegate to:
 
 - **`simulation-expert`**: Production-grade path sampling, WESTPA / OPS / pyretis workflows, HPC scaling.
-  - *Location*: `plugins/science-suite/agents/simulation-expert.md`
+  - *Location*: `${CLAUDE_PLUGIN_ROOT}/agents/simulation-expert.md`
 - **`statistical-physicist`** (secondary): Large-deviation theory, SCGF / rate functions, Jarzynski / Crooks theory, avalanche statistics.
-  - *Location*: `plugins/science-suite/agents/statistical-physicist.md`
+  - *Location*: `${CLAUDE_PLUGIN_ROOT}/agents/statistical-physicist.md`
 
 ---
 

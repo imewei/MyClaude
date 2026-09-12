@@ -11,7 +11,7 @@ description: Master monorepo management with Turborepo, Nx, and pnpm workspaces.
 For monorepo setup, workspace management, and multi-package build optimization, delegate to:
 
 - **`app-developer`**: Manages multi-platform application monorepos with Turborepo, Nx, and pnpm workspaces.
-  - *Location*: `plugins/dev-suite/agents/app-developer.md`
+  - *Location*: `${CLAUDE_PLUGIN_ROOT}/agents/app-developer.md`
 
 Scalable multi-package repositories with optimized builds and dependency management.
 

@@ -13,7 +13,7 @@ Train agents, design environments, and implement policy optimization.
 For deep learning architectures and training pipelines in RL, delegate to the expert agent:
 
 - **`neural-network-master`**: Deep learning specialist for architecture design, training optimization, and model deployment.
-  - *Location*: `plugins/science-suite/agents/neural-network-master.md`
+  - *Location*: `${CLAUDE_PLUGIN_ROOT}/agents/neural-network-master.md`
   - *Capabilities*: Network architecture, loss functions, distributed training, debugging training failures.
 
 ## Gymnasium Environment API

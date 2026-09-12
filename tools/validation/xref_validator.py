@@ -74,6 +74,15 @@ class CrossReferenceValidator:
             r"plugins/([a-z][a-z0-9-]+)/(agents|commands|skills)/"
             r"([a-z][a-z0-9-]+)(?:\.md|/SKILL\.md)?"
         ),
+        # Portable resource link via ${CLAUDE_PLUGIN_ROOT}/<kind>/<name>[.md].
+        # Claude Code substitutes the variable with the installing plugin's own
+        # root, so the target plugin is the source plugin. This is the form
+        # components should use; the plugins/<plugin>/... form above only
+        # resolves when the user's cwd is this repository.
+        "plugin_root_resource_link": (
+            r"\$\{CLAUDE_PLUGIN_ROOT\}/(agents|commands|skills)/"
+            r"([a-z][a-z0-9-]+)(?:\.md|/SKILL\.md)?"
+        ),
     }
 
     def __init__(self, plugins_dir: Path):
@@ -435,6 +444,25 @@ class CrossReferenceValidator:
                 context=context,
             )
             self.references.append(ref)
+
+        # ${CLAUDE_PLUGIN_ROOT}/<kind>/<name> resolves against the source plugin.
+        root_pattern = self.REFERENCE_PATTERNS["plugin_root_resource_link"]
+        for match in re.finditer(root_pattern, line):
+            kind = match.group(1)
+            target_name = match.group(2)
+            if target_name == "name":
+                continue  # the `<name>` placeholder in the routing header
+            self.references.append(
+                CrossReference(
+                    source_plugin=source_plugin,
+                    source_file=str(file_path.relative_to(self.plugins_dir)),
+                    source_line=line_num,
+                    target_plugin=source_plugin,
+                    target_type=kind_to_type.get(kind, kind),
+                    target_name=target_name,
+                    context=line.strip()[:100],
+                )
+            )
 
     def _find_agent_plugin(self, agent_name: str) -> str:
         """Find which plugin owns an agent"""

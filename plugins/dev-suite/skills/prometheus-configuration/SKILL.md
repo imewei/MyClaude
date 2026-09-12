@@ -11,7 +11,7 @@ description: Configure Prometheus for metric collection, alerting, and monitorin
 For Prometheus metric collection, alert rules, and monitoring infrastructure, delegate to:
 
 - **`sre-expert`**: Configures observability stacks with Prometheus, alerting rules, and service discovery.
-  - *Location*: `plugins/dev-suite/agents/sre-expert.md`
+  - *Location*: `${CLAUDE_PLUGIN_ROOT}/agents/sre-expert.md`
 
 Metric collection, alerting, and monitoring infrastructure setup.
 

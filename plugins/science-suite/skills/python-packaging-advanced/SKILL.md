@@ -13,7 +13,7 @@ Modern Python packaging centers on `uv` for speed, reliability, and workspace ma
 For advanced packaging, workspace configuration, or CI/CD integration, delegate to:
 
 - **`python-pro`**: Expert in modern Python systems engineering and `uv` toolchains.
-  - *Location*: `plugins/science-suite/agents/python-pro.md`
+  - *Location*: `${CLAUDE_PLUGIN_ROOT}/agents/python-pro.md`
 
 ## 1. uv Workspaces (Monorepos)
 

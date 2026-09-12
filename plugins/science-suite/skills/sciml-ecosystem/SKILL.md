@@ -15,7 +15,7 @@ Overview of Scientific Machine Learning packages in Julia.
 For complex SciML workflows, differential equation solving, and scientific machine learning integration, delegate to the expert agent:
 
 - **`julia-pro`**: Unified specialist for Julia optimization, including SciML, DifferentialEquations.jl, ModelingToolkit.jl, and Optimization.jl.
-  - *Location*: `plugins/science-suite/agents/julia-pro.md`
+  - *Location*: `${CLAUDE_PLUGIN_ROOT}/agents/julia-pro.md`
   - *Capabilities*: Stiff ODE solvers, sensitivity analysis, symbolic modeling, and physics-informed neural networks.
 
 ---

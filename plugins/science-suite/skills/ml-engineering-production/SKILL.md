@@ -13,7 +13,7 @@ Software and data engineering practices for scalable, maintainable ML systems.
 For production ML engineering, testing, and code quality, delegate to the expert agent:
 
 - **`ml-expert`**: Unified specialist for MLOps and Engineering.
-  - *Location*: `plugins/science-suite/agents/ml-expert.md`
+  - *Location*: `${CLAUDE_PLUGIN_ROOT}/agents/ml-expert.md`
   - *Capabilities*: Code structure, testing strategies, and production readiness checks.
 
 ## Project Structure

@@ -41,7 +41,7 @@ worked detail rather than reconstructing it here — it is the maintained copy.
 - **Route in via**: `architecture-and-infra`, `backend-patterns`, `data-and-security`, `dev-workflows`
 - **Depth lives in**: `api-design-principles`, `architecture-patterns`, `auth-implementation-patterns`, `caching-patterns`, `cloud-provider-patterns`, `containerization-patterns`, `database-patterns`, `error-handling-patterns`, `message-queue-patterns`, `microservices-patterns`, `modernization-migration`, `search-patterns`, `sql-optimization-patterns`
 
-Load one with Read on `plugins/dev-suite/skills/<name>/SKILL.md`.
+Load one with Read on `${CLAUDE_PLUGIN_ROOT}/skills/<name>/SKILL.md`.
 
 ---
 

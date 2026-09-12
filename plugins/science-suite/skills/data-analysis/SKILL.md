@@ -13,7 +13,7 @@ Statistical analysis of experimental data with Bayesian inference and model vali
 For statistical analysis, Bayesian inference, and model validation, delegate to the expert agent:
 
 - **`statistical-physicist`**: Unified specialist for Data Analysis and Statistical Mechanics.
-  - *Location*: `plugins/science-suite/agents/statistical-physicist.md`
+  - *Location*: `${CLAUDE_PLUGIN_ROOT}/agents/statistical-physicist.md`
   - *Capabilities*: Bayesian inference (NumPyro), MCMC model fitting, and Green-Kubo analysis.
 
 ## Correlation Functions

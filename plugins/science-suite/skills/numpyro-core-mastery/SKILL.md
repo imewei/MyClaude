@@ -13,9 +13,9 @@ Production Bayesian inference with JAX-accelerated probabilistic programming.
 For complex Bayesian modeling, hierarchical inference, and probabilistic programming tasks, delegate to:
 
 - **`jax-pro`** (primary): JAX-accelerated NumPyro implementation, NUTS/HMC tuning, SVI, AutoGuides, and differentiable physics integration.
-  - *Location*: `plugins/science-suite/agents/jax-pro.md`
+  - *Location*: `${CLAUDE_PLUGIN_ROOT}/agents/jax-pro.md`
 - **`statistical-physicist`** (secondary): Bayesian inference theory, prior elicitation, identifiability analysis, sampler geometry, PSIS-LOO model comparison.
-  - *Location*: `plugins/science-suite/agents/statistical-physicist.md`
+  - *Location*: `${CLAUDE_PLUGIN_ROOT}/agents/statistical-physicist.md`
 
 For the Julia counterpart (Turing.jl) see `turing-model-design`. For multimodal posteriors that defeat NUTS, see `consensus-mcmc-pigeons`. Convergence checks live in `mcmc-diagnostics`.
 

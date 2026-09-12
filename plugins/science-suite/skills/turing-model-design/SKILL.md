@@ -13,10 +13,10 @@ Probabilistic model specification for Bayesian inference.
 For complex Bayesian models, hierarchical inference, and probabilistic programming workflows, delegate to:
 
 - **`julia-pro`** (primary): Julia + Turing.jl specialist.
-  - *Location*: `plugins/science-suite/agents/julia-pro.md`
+  - *Location*: `${CLAUDE_PLUGIN_ROOT}/agents/julia-pro.md`
   - *Capabilities*: MCMC sampling (NUTS/HMC), variational inference, hierarchical modeling, convergence diagnostics.
 - **`statistical-physicist`** (secondary): Bayesian inference theory, identifiability, MCMC geometry.
-  - *Location*: `plugins/science-suite/agents/statistical-physicist.md`
+  - *Location*: `${CLAUDE_PLUGIN_ROOT}/agents/statistical-physicist.md`
 
 ---
 

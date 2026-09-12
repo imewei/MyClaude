@@ -13,7 +13,7 @@ Create packages following ecosystem standards.
 For package structure, CI/CD configuration, and documentation workflows, delegate to the expert agent:
 
 - **`julia-pro`**: Unified specialist for Julia package development and testing.
-  - *Location*: `plugins/science-suite/agents/julia-pro.md`
+  - *Location*: `${CLAUDE_PLUGIN_ROOT}/agents/julia-pro.md`
   - *Capabilities*: PkgTemplates.jl configuration, GitHub Actions setup, and comprehensive test suite generation.
 
 ---

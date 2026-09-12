@@ -11,7 +11,7 @@ description: Master Julia package management with Pkg.jl, Project.toml, and Mani
 For Julia package management, dependency resolution, and reproducible environments, delegate to:
 
 - **`julia-pro`**: Julia ecosystem, Pkg.jl, and environment management.
-  - *Location*: `plugins/science-suite/agents/julia-pro.md`
+  - *Location*: `${CLAUDE_PLUGIN_ROOT}/agents/julia-pro.md`
 
 Pkg.jl workflows for reproducible Julia environments.
 

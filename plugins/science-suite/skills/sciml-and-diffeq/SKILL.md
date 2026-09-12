@@ -6,9 +6,10 @@ description: Meta-orchestrator for Scientific Machine Learning and differential 
 
 > **Loading a routing target.** `dev-suite:*`, `research-suite:*`, and `science-suite:*` targets below
 > are slash-only (`disable-model-invocation: true`) — the Skill tool will not fire them. Load one by
-> reading its file with the Read tool: `plugins/<suite>/skills/<name>/SKILL.md` (e.g.
-> `dev-suite:backend-patterns` → `plugins/dev-suite/skills/backend-patterns/SKILL.md`). Targets from
-> other plugins (`superpowers:*`, `ecc:*`, …) are unaffected and invoke normally.
+> reading its file with the Read tool at `${CLAUDE_PLUGIN_ROOT}/skills/<name>/SKILL.md` — Claude Code
+> substitutes that variable with this plugin's install directory. A target in a sibling suite is at
+> the same relative path under that suite's own root. Targets from other plugins (`superpowers:*`,
+> `ecc:*`, …) are unaffected and invoke normally.
 
 # SciML and Differential Equations
 
@@ -17,7 +18,7 @@ Orchestrator for Scientific Machine Learning (SciML) and differential equations 
 ## Expert Agent
 
 - **`julia-pro`**: Specialist for SciML ecosystem, DifferentialEquations.jl, and ModelingToolkit.jl.
-  - *Location*: `plugins/science-suite/agents/julia-pro.md`
+  - *Location*: `${CLAUDE_PLUGIN_ROOT}/agents/julia-pro.md`
   - *Capabilities*: ODE/SDE/PDE solvers, symbolic-numeric workflows, neural ODEs, parameter estimation.
 
 ## Core Skills

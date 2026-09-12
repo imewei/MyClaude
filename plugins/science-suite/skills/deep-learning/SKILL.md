@@ -6,9 +6,10 @@ description: Core deep-learning implementation skill for standard neural network
 
 > **Loading a routing target.** `dev-suite:*`, `research-suite:*`, and `science-suite:*` targets below
 > are slash-only (`disable-model-invocation: true`) — the Skill tool will not fire them. Load one by
-> reading its file with the Read tool: `plugins/<suite>/skills/<name>/SKILL.md` (e.g.
-> `dev-suite:backend-patterns` → `plugins/dev-suite/skills/backend-patterns/SKILL.md`). Targets from
-> other plugins (`superpowers:*`, `ecc:*`, …) are unaffected and invoke normally.
+> reading its file with the Read tool at `${CLAUDE_PLUGIN_ROOT}/skills/<name>/SKILL.md` — Claude Code
+> substitutes that variable with this plugin's install directory. A target in a sibling suite is at
+> the same relative path under that suite's own root. Targets from other plugins (`superpowers:*`,
+> `ecc:*`, …) are unaffected and invoke normally.
 
 # Deep Learning Mastery
 
@@ -19,13 +20,13 @@ Comprehensive guide to deep learning theory, architecture, and practice.
 For deep learning tasks, delegate to the specialized experts:
 
 - **`neural-network-master`**: Theory, architecture design, and training diagnostics.
-  - *Location*: `plugins/science-suite/agents/neural-network-master.md`
+  - *Location*: `${CLAUDE_PLUGIN_ROOT}/agents/neural-network-master.md`
   - *Capabilities*: Architecture selection, loss landscape analysis, gradient debugging.
 - **`ml-expert`**: Distributed training implementation and hardware optimization.
-  - *Location*: `plugins/science-suite/agents/ml-expert.md`
+  - *Location*: `${CLAUDE_PLUGIN_ROOT}/agents/ml-expert.md`
   - *Capabilities*: DDP/FSDP setup, multi-node scaling.
 - **`julia-ml-hpc`**: Julia DL implementation with Lux.jl/Flux.jl.
-  - *Location*: `plugins/science-suite/agents/julia-ml-hpc.md`
+  - *Location*: `${CLAUDE_PLUGIN_ROOT}/agents/julia-ml-hpc.md`
   - *Capabilities*: Lux.jl training, GPU acceleration, Julia neural architectures.
   - *Julia skill*: See `julia-neural-networks` for Julia-specific deep learning.
 
@@ -44,7 +45,7 @@ Debugging vanishing gradients, loss instability, dead ReLUs, and convergence iss
 Quantization, pruning, knowledge distillation, and efficient inference.
 
 ### Research Paper Implementation *(moved to research-suite)*
-Translating academic papers into working code in JAX or PyTorch. See `research-paper-implementation` in the `research-suite` plugin (`plugins/research-suite/skills/research-paper-implementation/`).
+Translating academic papers into working code in JAX or PyTorch. See `research-paper-implementation` in the `research-suite` plugin (`research-suite:research-paper-implementation`).
 
 ### [Deep Learning Experimentation](../deep-learning-experimentation/SKILL.md)
 Systematic workflows for training, ablation, and hyperparameter tuning.

@@ -6,9 +6,10 @@ description: Meta-orchestrator for Julia ML and deep learning. Routes to neural 
 
 > **Loading a routing target.** `dev-suite:*`, `research-suite:*`, and `science-suite:*` targets below
 > are slash-only (`disable-model-invocation: true`) — the Skill tool will not fire them. Load one by
-> reading its file with the Read tool: `plugins/<suite>/skills/<name>/SKILL.md` (e.g.
-> `dev-suite:backend-patterns` → `plugins/dev-suite/skills/backend-patterns/SKILL.md`). Targets from
-> other plugins (`superpowers:*`, `ecc:*`, …) are unaffected and invoke normally.
+> reading its file with the Read tool at `${CLAUDE_PLUGIN_ROOT}/skills/<name>/SKILL.md` — Claude Code
+> substitutes that variable with this plugin's install directory. A target in a sibling suite is at
+> the same relative path under that suite's own root. Targets from other plugins (`superpowers:*`,
+> `ecc:*`, …) are unaffected and invoke normally.
 
 # Julia ML and Deep Learning
 
@@ -17,7 +18,7 @@ Orchestrator for Julia-based machine learning and deep learning. Routes problems
 ## Expert Agent
 
 - **`julia-ml-hpc`**: Specialist for Julia ML, Flux.jl, Lux.jl, and GPU-accelerated deep learning.
-  - *Location*: `plugins/science-suite/agents/julia-ml-hpc.md`
+  - *Location*: `${CLAUDE_PLUGIN_ROOT}/agents/julia-ml-hpc.md`
   - *Capabilities*: Neural network design, AD backends, GPU kernels, GNNs, RL, and model deployment.
 
 ## Core Skills

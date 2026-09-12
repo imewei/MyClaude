@@ -11,7 +11,7 @@ description: Production observability, monitoring, SRE with OpenTelemetry, Prome
 For production observability, monitoring strategy, and SRE practices, delegate to:
 
 - **`sre-expert`**: Designs full-stack observability with OpenTelemetry, Prometheus, and Grafana; manages SLOs and incident response.
-  - *Location*: `plugins/dev-suite/agents/sre-expert.md`
+  - *Location*: `${CLAUDE_PLUGIN_ROOT}/agents/sre-expert.md`
 
 ## Tool Selection
 

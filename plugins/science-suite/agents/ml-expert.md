@@ -31,7 +31,7 @@ worked detail rather than reconstructing it here — it is the maintained copy.
 - **Route in via**: `deep-learning`, `machine-learning`, `ml-and-data-science`, `ml-deployment`, `time-series-analysis`
 - **Depth lives in**: `advanced-ml-systems`, `data-wrangling-communication`, `devops-ml-infrastructure`, `experiment-tracking`, `extreme-value-statistics`, `federated-learning`, `ml-engineering-production`, `ml-force-fields`, `ml-pipeline-workflow`, `model-deployment-serving`, `nlp-fundamentals`, `point-processes`, `rlaif-training`
 
-Load one with Read on `plugins/science-suite/skills/<name>/SKILL.md`.
+Load one with Read on `${CLAUDE_PLUGIN_ROOT}/skills/<name>/SKILL.md`.
 
 ---
 

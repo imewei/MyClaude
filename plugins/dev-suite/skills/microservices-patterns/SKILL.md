@@ -11,7 +11,7 @@ description: Design microservices with proper service boundaries, event-driven c
 For microservice architecture, infrastructure design, and cloud platform strategy, delegate to:
 
 - **`software-architect`**: Defines service boundaries, API contracts, and distributed system architecture.
-  - *Location*: `plugins/dev-suite/agents/software-architect.md`
+  - *Location*: `${CLAUDE_PLUGIN_ROOT}/agents/software-architect.md`
 
 Service boundaries, communication, data management, and resilience patterns.
 

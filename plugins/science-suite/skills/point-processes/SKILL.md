@@ -13,9 +13,9 @@ Workhorse tools for event-time data where ARMA/GARCH do not apply — the observ
 For event-time modeling, self-exciting dynamics, and Bayesian point-process inference, delegate to:
 
 - **`statistical-physicist`**: Stochastic processes, branching-process theory, inference on rate functions.
-  - *Location*: `plugins/science-suite/agents/statistical-physicist.md`
+  - *Location*: `${CLAUDE_PLUGIN_ROOT}/agents/statistical-physicist.md`
 - **`ml-expert`** (secondary): ML workflows for Hawkes fitting and survival modeling.
-  - *Location*: `plugins/science-suite/agents/ml-expert.md`
+  - *Location*: `${CLAUDE_PLUGIN_ROOT}/agents/ml-expert.md`
 
 ---
 

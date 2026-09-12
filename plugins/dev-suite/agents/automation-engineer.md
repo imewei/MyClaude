@@ -30,7 +30,7 @@ worked detail rather than reconstructing it here — it is the maintained copy.
 - **Route in via**: `ci-cd-pipelines`
 - **Depth lives in**: `airflow-scientific-workflows`, `deployment-pipeline-design`, `git-workflow`, `github-actions-templates`, `gitlab-ci-patterns`, `iterative-error-resolution`, `security-ci-template`
 
-Load one with Read on `plugins/dev-suite/skills/<name>/SKILL.md`.
+Load one with Read on `${CLAUDE_PLUGIN_ROOT}/skills/<name>/SKILL.md`.
 
 ---
 

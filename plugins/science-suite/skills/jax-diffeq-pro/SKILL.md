@@ -13,7 +13,7 @@ A JAX-first differential equation expert builds **differentiable physics engines
 For complex differentiable physics, neural ODEs, and stiff systems simulation, delegate to the expert agent:
 
 - **`jax-pro`**: Unified specialist for Diffrax ODE/SDE solvers, adjoint methods, and physics integration.
-  - *Location*: `plugins/science-suite/agents/jax-pro.md`
+  - *Location*: `${CLAUDE_PLUGIN_ROOT}/agents/jax-pro.md`
   - *Capabilities*: Stiff solver selection (Kvaerno/KenCarp), adjoint optimization (RecursiveCheckpointAdjoint), and SDE simulation.
 
 ## The Differentiable Physicist Mindset

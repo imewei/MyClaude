@@ -11,7 +11,7 @@ description: Create system images and standalone executables with PackageCompile
 For Julia compilation, system images, and standalone executables, delegate to:
 
 - **`julia-pro`**: Julia performance optimization and deployment.
-  - *Location*: `plugins/science-suite/agents/julia-pro.md`
+  - *Location*: `${CLAUDE_PLUGIN_ROOT}/agents/julia-pro.md`
 
 System images and standalone executables for Julia deployment.
 

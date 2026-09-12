@@ -6,9 +6,10 @@ description: Comprehensive statistical physics suite covering equilibrium and no
 
 > **Loading a routing target.** `dev-suite:*`, `research-suite:*`, and `science-suite:*` targets below
 > are slash-only (`disable-model-invocation: true`) — the Skill tool will not fire them. Load one by
-> reading its file with the Read tool: `plugins/<suite>/skills/<name>/SKILL.md` (e.g.
-> `dev-suite:backend-patterns` → `plugins/dev-suite/skills/backend-patterns/SKILL.md`). Targets from
-> other plugins (`superpowers:*`, `ecc:*`, …) are unaffected and invoke normally.
+> reading its file with the Read tool at `${CLAUDE_PLUGIN_ROOT}/skills/<name>/SKILL.md` — Claude Code
+> substitutes that variable with this plugin's install directory. A target in a sibling suite is at
+> the same relative path under that suite's own root. Targets from other plugins (`superpowers:*`,
+> `ecc:*`, …) are unaffected and invoke normally.
 
 # Statistical Physics
 
@@ -19,7 +20,7 @@ Master the theoretical and computational tools of statistical mechanics.
 For complex statistical mechanics problems, active matter simulations, and theoretical derivations, delegate to the expert agent:
 
 - **`statistical-physicist`**: Unified specialist for Statistical Physics and Soft Matter.
-  - *Location*: `plugins/science-suite/agents/statistical-physicist.md`
+  - *Location*: `${CLAUDE_PLUGIN_ROOT}/agents/statistical-physicist.md`
   - *Capabilities*: Non-equilibrium thermodynamics, active matter simulations, correlation function analysis, and stochastic calculus.
 
 ## Core Skills

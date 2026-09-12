@@ -11,7 +11,7 @@ description: Master REST and GraphQL API design including resource-oriented arch
 For API contract design, REST/GraphQL strategy, and backend architecture, delegate to:
 
 - **`software-architect`**: Designs scalable backend systems, microservices, and high-performance APIs (REST/GraphQL/gRPC).
-  - *Location*: `plugins/dev-suite/agents/software-architect.md`
+  - *Location*: `${CLAUDE_PLUGIN_ROOT}/agents/software-architect.md`
 
 REST and GraphQL API design for intuitive, scalable, and maintainable APIs.
 

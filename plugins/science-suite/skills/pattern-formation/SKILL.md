@@ -13,11 +13,11 @@ Spatiotemporal pattern formation in reaction-diffusion and related PDE systems. 
 For complex pattern formation problems, delegate to the appropriate expert agent:
 
 - **`nonlinear-dynamics-expert`**: Turing instability analysis, bifurcation of spatial modes, amplitude equation derivation.
-  - *Location*: `plugins/science-suite/agents/nonlinear-dynamics-expert.md`
+  - *Location*: `${CLAUDE_PLUGIN_ROOT}/agents/nonlinear-dynamics-expert.md`
 - **`julia-pro`**: Symbolic PDE construction (ModelingToolkit.jl), method-of-lines discretization, stiff ODE solvers.
-  - *Location*: `plugins/science-suite/agents/julia-pro.md`
+  - *Location*: `${CLAUDE_PLUGIN_ROOT}/agents/julia-pro.md`
 - **`jax-pro`**: GPU pseudo-spectral time-stepping, vmap over parameter sweeps, JIT-compiled spatial simulations.
-  - *Location*: `plugins/science-suite/agents/jax-pro.md`
+  - *Location*: `${CLAUDE_PLUGIN_ROOT}/agents/jax-pro.md`
 
 ## Turing Instability Analysis
 

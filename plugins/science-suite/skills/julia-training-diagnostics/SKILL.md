@@ -11,7 +11,7 @@ description: Debug and diagnose neural network training in Julia. Covers gradien
 For diagnosing and fixing training failures in Julia, delegate to:
 
 - **`julia-ml-hpc`**: Julia ML/HPC specialist for training pipeline debugging.
-  - *Location*: `plugins/science-suite/agents/julia-ml-hpc.md`
+  - *Location*: `${CLAUDE_PLUGIN_ROOT}/agents/julia-ml-hpc.md`
   - *Capabilities*: Gradient analysis, convergence debugging, performance profiling.
 
 ## Quick Reference

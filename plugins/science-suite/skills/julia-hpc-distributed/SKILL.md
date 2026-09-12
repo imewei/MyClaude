@@ -11,7 +11,7 @@ description: Scale Julia computations across clusters with Distributed.jl, MPI.j
 For scaling Julia across nodes and HPC clusters, delegate to:
 
 - **`julia-ml-hpc`**: Julia ML/HPC specialist for Distributed.jl, MPI.jl, SLURM job management, and multi-node scaling.
-  - *Location*: `plugins/science-suite/agents/julia-ml-hpc.md`
+  - *Location*: `${CLAUDE_PLUGIN_ROOT}/agents/julia-ml-hpc.md`
 
 ## Distributed.jl Fundamentals
 

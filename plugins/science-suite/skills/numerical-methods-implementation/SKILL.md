@@ -13,11 +13,11 @@ Expert guide for implementing numerical solvers and physical simulations with hi
 For advanced numerical methods, solver selection, and stability analysis, delegate to:
 
 - **`simulation-expert`**: For physical simulations, HPC solvers, and Molecular Dynamics.
-  - *Location*: `plugins/science-suite/agents/simulation-expert.md`
+  - *Location*: `${CLAUDE_PLUGIN_ROOT}/agents/simulation-expert.md`
 - **`julia-pro`**: For DifferentialEquations.jl solvers, stiff systems, and performance tuning.
-  - *Location*: `plugins/science-suite/agents/julia-pro.md`
+  - *Location*: `${CLAUDE_PLUGIN_ROOT}/agents/julia-pro.md`
 - **`jax-pro`**: For Diffrax solvers, autodiff-compatible methods, and GPU-accelerated linear algebra.
-  - *Location*: `plugins/science-suite/agents/jax-pro.md`
+  - *Location*: `${CLAUDE_PLUGIN_ROOT}/agents/jax-pro.md`
 
 ## Solver Selection
 

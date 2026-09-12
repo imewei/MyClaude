@@ -17,7 +17,7 @@ description: Build graph neural networks in Julia with GraphNeuralNetworks.jl an
 For graph neural network architecture and training in Julia, delegate to:
 
 - **`julia-ml-hpc`**: Julia ML/HPC specialist for GraphNeuralNetworks.jl ecosystem (GNNGraphs / GNNlib / GNNLux), message passing, and GPU-portable graph training.
-  - *Location*: `plugins/science-suite/agents/julia-ml-hpc.md`
+  - *Location*: `${CLAUDE_PLUGIN_ROOT}/agents/julia-ml-hpc.md`
 
 ## Graph Construction
 

@@ -11,7 +11,7 @@ description: Design caching strategies with Redis, Memcached, and CDN layers inc
 For caching architecture, distributed cache design, and performance optimization, delegate to:
 
 - **`software-architect`**: Designs caching layers, invalidation strategies, and distributed cache topologies.
-  - *Location*: `plugins/dev-suite/agents/software-architect.md`
+  - *Location*: `${CLAUDE_PLUGIN_ROOT}/agents/software-architect.md`
 
 
 ## Caching Strategy Comparison

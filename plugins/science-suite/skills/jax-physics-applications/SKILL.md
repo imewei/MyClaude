@@ -13,7 +13,7 @@ Differentiable physics simulations with JAX-MD, JAX-CFD, and PINNs.
 For complex physics simulations, differentiable modeling, and multi-physics coupling, delegate to the expert agent:
 
 - **`jax-pro`**: Unified specialist for Computational Physics (JAX-MD/CFD), PINNs, and differentiable simulations.
-  - *Location*: `plugins/science-suite/agents/jax-pro.md`
+  - *Location*: `${CLAUDE_PLUGIN_ROOT}/agents/jax-pro.md`
   - *Capabilities*: Molecular dynamics, Navier-Stokes solvers, neural ODEs, and physics-informed learning.
 
 ---

@@ -13,9 +13,9 @@ The Python / JAX counterpart to `bayesian-ude-workflow` — same staged pipeline
 For JAX-based Bayesian UDE workflows, delegate to:
 
 - **`jax-pro`** (primary): JAX scientific computing, Diffrax, Equinox, NumPyro integration, Optax schedulers.
-  - *Location*: `plugins/science-suite/agents/jax-pro.md`
+  - *Location*: `${CLAUDE_PLUGIN_ROOT}/agents/jax-pro.md`
 - **`statistical-physicist`** (secondary): Bayesian inference theory, identifiability, sampler geometry, PSIS-LOO.
-  - *Location*: `plugins/science-suite/agents/statistical-physicist.md`
+  - *Location*: `${CLAUDE_PLUGIN_ROOT}/agents/statistical-physicist.md`
 
 ---
 

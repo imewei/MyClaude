@@ -12,12 +12,12 @@ MCMC diagnostics applies to any Bayesian workflow — Turing.jl, NumPyro, or
 Pigeons-tempered chains. Delegate to:
 
 - **`julia-pro`**: Julia/Turing.jl + MCMCChains workflows.
-  - *Location*: `plugins/science-suite/agents/julia-pro.md`
+  - *Location*: `${CLAUDE_PLUGIN_ROOT}/agents/julia-pro.md`
 - **`statistical-physicist`**: Bayesian inference theory, sampler geometry,
   PSIS-LOO model comparison, ArviZ post-processing across PPLs.
-  - *Location*: `plugins/science-suite/agents/statistical-physicist.md`
+  - *Location*: `${CLAUDE_PLUGIN_ROOT}/agents/statistical-physicist.md`
 - **`jax-pro`**: NumPyro-side diagnostics and JAX-accelerated post-processing.
-  - *Location*: `plugins/science-suite/agents/jax-pro.md`
+  - *Location*: `${CLAUDE_PLUGIN_ROOT}/agents/jax-pro.md`
 
 Used by `turing-model-design`, `consensus-mcmc-pigeons`, `bayesian-ude-workflow`,
 `numpyro-core-mastery`, and `neural-pde` (BPINN section) — convergence checks

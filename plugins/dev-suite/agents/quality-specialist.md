@@ -145,7 +145,7 @@ worked detail rather than reconstructing it here — it is the maintained copy.
 - **Route in via**: `testing-and-quality`
 - **Depth lives in**: `code-review`, `comprehensive-validation`, `e2e-testing-patterns`, `secrets-management`, `test-automation`, `testing-patterns`
 
-Load one with Read on `plugins/dev-suite/skills/<name>/SKILL.md`.
+Load one with Read on `${CLAUDE_PLUGIN_ROOT}/skills/<name>/SKILL.md`.
 
 ---
 

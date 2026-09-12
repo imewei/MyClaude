@@ -6,9 +6,10 @@ description: Hub for advanced simulation workflows that combine MD setup, ML for
 
 > **Loading a routing target.** `dev-suite:*`, `research-suite:*`, and `science-suite:*` targets below
 > are slash-only (`disable-model-invocation: true`) — the Skill tool will not fire them. Load one by
-> reading its file with the Read tool: `plugins/<suite>/skills/<name>/SKILL.md` (e.g.
-> `dev-suite:backend-patterns` → `plugins/dev-suite/skills/backend-patterns/SKILL.md`). Targets from
-> other plugins (`superpowers:*`, `ecc:*`, …) are unaffected and invoke normally.
+> reading its file with the Read tool at `${CLAUDE_PLUGIN_ROOT}/skills/<name>/SKILL.md` — Claude Code
+> substitutes that variable with this plugin's install directory. A target in a sibling suite is at
+> the same relative path under that suite's own root. Targets from other plugins (`superpowers:*`,
+> `ecc:*`, …) are unaffected and invoke normally.
 
 # Advanced Simulations
 
@@ -19,7 +20,7 @@ Comprehensive framework for high-performance computational physics workflows and
 For complex simulation workflows, multi-scale modeling, and HPC execution, delegate to the expert agent:
 
 - **`simulation-expert`**: Unified specialist for Molecular Dynamics, Computational Physics, and HPC.
-  - *Location*: `plugins/science-suite/agents/simulation-expert.md`
+  - *Location*: `${CLAUDE_PLUGIN_ROOT}/agents/simulation-expert.md`
   - *Capabilities*: Large-scale MD (LAMMPS/GROMACS), differentiable physics (JAX-MD), and HPC cluster optimization.
 
 ## Core Skills

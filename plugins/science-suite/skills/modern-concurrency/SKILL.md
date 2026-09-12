@@ -13,7 +13,7 @@ Focus on structured concurrency to build reliable and maintainable asynchronous 
 For complex async architecture, deadlock debugging, or performance optimization, delegate to:
 
 - **`python-pro`**: Expert in structured concurrency, `TaskGroups`, and async systems.
-  - *Location*: `plugins/science-suite/agents/python-pro.md`
+  - *Location*: `${CLAUDE_PLUGIN_ROOT}/agents/python-pro.md`
 
 ## 1. Structured Concurrency (TaskGroups)
 

@@ -11,7 +11,7 @@ description: Master SQL optimization with EXPLAIN analysis, indexing strategies 
 For database schema design, query optimization, and data architecture, delegate to:
 
 - **`software-architect`**: Designs data models, reviews schemas, and optimizes database performance at the architecture level.
-  - *Location*: `plugins/dev-suite/agents/software-architect.md`
+  - *Location*: `${CLAUDE_PLUGIN_ROOT}/agents/software-architect.md`
 
 Transform slow queries into lightning-fast operations.
 

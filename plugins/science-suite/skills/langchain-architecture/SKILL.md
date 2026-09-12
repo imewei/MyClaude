@@ -11,7 +11,7 @@ For LLM application development with LangChain, delegate to the `sci-workflow-en
 ## Expert Agent
 
 - **`sci-workflow-engineer`**: LLM applications, RAG systems, and agentic AI
-  - *Location*: `plugins/science-suite/agents/sci-workflow-engineer.md`
+  - *Location*: `${CLAUDE_PLUGIN_ROOT}/agents/sci-workflow-engineer.md`
 
 ## Quick Reference
 

@@ -6,9 +6,10 @@ description: Meta-orchestrator for nonlinear dynamics analysis. Routes to specia
 
 > **Loading a routing target.** `dev-suite:*`, `research-suite:*`, and `science-suite:*` targets below
 > are slash-only (`disable-model-invocation: true`) — the Skill tool will not fire them. Load one by
-> reading its file with the Read tool: `plugins/<suite>/skills/<name>/SKILL.md` (e.g.
-> `dev-suite:backend-patterns` → `plugins/dev-suite/skills/backend-patterns/SKILL.md`). Targets from
-> other plugins (`superpowers:*`, `ecc:*`, …) are unaffected and invoke normally.
+> reading its file with the Read tool at `${CLAUDE_PLUGIN_ROOT}/skills/<name>/SKILL.md` — Claude Code
+> substitutes that variable with this plugin's install directory. A target in a sibling suite is at
+> the same relative path under that suite's own root. Targets from other plugins (`superpowers:*`,
+> `ecc:*`, …) are unaffected and invoke normally.
 
 # Nonlinear Dynamics
 
@@ -19,7 +20,7 @@ Orchestrator for nonlinear dynamics analysis across JAX and Julia ecosystems. Ro
 For complex nonlinear dynamics problems requiring deep domain expertise, delegate to the expert agent:
 
 - **`nonlinear-dynamics-expert`**: Specialist for dynamical systems, bifurcation theory, chaos, and data-driven model discovery.
-  - *Location*: `plugins/science-suite/agents/nonlinear-dynamics-expert.md`
+  - *Location*: `${CLAUDE_PLUGIN_ROOT}/agents/nonlinear-dynamics-expert.md`
   - *Capabilities*: Bifurcation analysis, Lyapunov exponents, coupled oscillator networks, spatiotemporal pattern formation, and equation discovery from data.
 
 ## Core Skills

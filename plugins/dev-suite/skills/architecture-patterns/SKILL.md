@@ -11,7 +11,7 @@ description: Master Clean Architecture, Hexagonal Architecture, and DDD patterns
 For Clean Architecture, DDD, and scalable backend system design, delegate to:
 
 - **`software-architect`**: Designs end-to-end system architecture with service boundaries and API contracts.
-  - *Location*: `plugins/dev-suite/agents/software-architect.md`
+  - *Location*: `${CLAUDE_PLUGIN_ROOT}/agents/software-architect.md`
 
 Clean Architecture, Hexagonal Architecture, and Domain-Driven Design for maintainable systems.
 

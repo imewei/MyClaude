@@ -29,7 +29,7 @@ worked detail rather than reconstructing it here — it is the maintained copy.
 - **Route in via**: `observability-and-sre`
 - **Depth lives in**: `distributed-tracing`, `grafana-dashboards`, `observability-sre-practices`, `prometheus-configuration`, `slo-implementation`
 
-Load one with Read on `plugins/dev-suite/skills/<name>/SKILL.md`.
+Load one with Read on `${CLAUDE_PLUGIN_ROOT}/skills/<name>/SKILL.md`.
 
 ---
 

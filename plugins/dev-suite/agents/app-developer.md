@@ -80,7 +80,7 @@ worked detail rather than reconstructing it here — it is the maintained copy.
 
 - **Depth lives in**: `monorepo-management`
 
-Load one with Read on `plugins/dev-suite/skills/<name>/SKILL.md`.
+Load one with Read on `${CLAUDE_PLUGIN_ROOT}/skills/<name>/SKILL.md`.
 
 ---
 

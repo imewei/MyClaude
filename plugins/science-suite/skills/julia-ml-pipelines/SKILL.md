@@ -11,7 +11,7 @@ description: Build ML pipelines in Julia with MLJ.jl for model selection, tuning
 For end-to-end ML workflows and experiment management in Julia, delegate to:
 
 - **`julia-ml-hpc`**: Julia ML/HPC specialist for pipeline design and optimization.
-  - *Location*: `plugins/science-suite/agents/julia-ml-hpc.md`
+  - *Location*: `${CLAUDE_PLUGIN_ROOT}/agents/julia-ml-hpc.md`
   - *Capabilities*: MLJ pipelines, hyperparameter tuning, experiment tracking.
 
 ## MLJ Model Interface

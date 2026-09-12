@@ -6,9 +6,10 @@ description: Comprehensive Classical Machine Learning suite. Covers scikit-learn
 
 > **Loading a routing target.** `dev-suite:*`, `research-suite:*`, and `science-suite:*` targets below
 > are slash-only (`disable-model-invocation: true`) — the Skill tool will not fire them. Load one by
-> reading its file with the Read tool: `plugins/<suite>/skills/<name>/SKILL.md` (e.g.
-> `dev-suite:backend-patterns` → `plugins/dev-suite/skills/backend-patterns/SKILL.md`). Targets from
-> other plugins (`superpowers:*`, `ecc:*`, …) are unaffected and invoke normally.
+> reading its file with the Read tool at `${CLAUDE_PLUGIN_ROOT}/skills/<name>/SKILL.md` — Claude Code
+> substitutes that variable with this plugin's install directory. A target in a sibling suite is at
+> the same relative path under that suite's own root. Targets from other plugins (`superpowers:*`,
+> `ecc:*`, …) are unaffected and invoke normally.
 
 # Machine Learning & MLOps
 
@@ -19,10 +20,10 @@ Complete workflow for building, training, and deploying classical ML models.
 For classical ML workflows, MLOps, and deployment, delegate to the expert agent:
 
 - **`ml-expert`**: Unified specialist for MLOps, Infrastructure, and Classical ML.
-  - *Location*: `plugins/science-suite/agents/ml-expert.md`
+  - *Location*: `${CLAUDE_PLUGIN_ROOT}/agents/ml-expert.md`
   - *Capabilities*: Pipeline orchestration, Model Serving, A/B Testing, Data Engineering, model selection, hyperparameter tuning (Optuna), and interpretability (SHAP).
 - **`julia-ml-hpc`**: Julia ML pipelines with MLJ.jl and DrWatson.jl.
-  - *Location*: `plugins/science-suite/agents/julia-ml-hpc.md`
+  - *Location*: `${CLAUDE_PLUGIN_ROOT}/agents/julia-ml-hpc.md`
   - *Julia skill*: See `julia-ml-pipelines` for Julia-specific ML workflows.
 
 ## Core Skills

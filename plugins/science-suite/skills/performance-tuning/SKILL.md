@@ -11,7 +11,7 @@ description: Profile and optimize Julia code with @code_warntype, @profview, and
 For Julia performance profiling, type stability, and allocation optimization, delegate to:
 
 - **`julia-pro`**: Julia performance optimization, profiling, and benchmarking.
-  - *Location*: `plugins/science-suite/agents/julia-pro.md`
+  - *Location*: `${CLAUDE_PLUGIN_ROOT}/agents/julia-pro.md`
 
 Profiling and optimizing Julia code for maximum performance.
 

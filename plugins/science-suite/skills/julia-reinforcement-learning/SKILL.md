@@ -11,7 +11,7 @@ description: Implement reinforcement learning in Julia with ReinforcementLearnin
 For RL algorithm design and environment implementation in Julia, delegate to:
 
 - **`julia-ml-hpc`**: Julia ML/HPC specialist for ReinforcementLearning.jl, environments, policy networks, and training loops.
-  - *Location*: `plugins/science-suite/agents/julia-ml-hpc.md`
+  - *Location*: `${CLAUDE_PLUGIN_ROOT}/agents/julia-ml-hpc.md`
 
 ## Environment Interface
 

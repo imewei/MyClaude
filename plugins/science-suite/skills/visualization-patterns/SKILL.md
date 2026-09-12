@@ -11,7 +11,7 @@ description: Master Plots.jl and Makie.jl for data visualization in Julia. Use w
 For Julia data visualization with Plots.jl and Makie.jl, delegate to:
 
 - **`julia-pro`**: Julia visualization, plotting backends, and publication-quality figures.
-  - *Location*: `plugins/science-suite/agents/julia-pro.md`
+  - *Location*: `${CLAUDE_PLUGIN_ROOT}/agents/julia-pro.md`
 
 Plots.jl (unified interface) and Makie.jl (high-performance) visualization.
 

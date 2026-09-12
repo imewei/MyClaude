@@ -11,7 +11,7 @@ description: Diagnose and resolve neural network training failures through syste
 For diagnosing neural network training failures, gradient pathologies, and convergence issues, delegate to:
 
 - **`neural-network-master`**: Deep learning training dynamics, diagnostics, and troubleshooting.
-  - *Location*: `plugins/science-suite/agents/neural-network-master.md`
+  - *Location*: `${CLAUDE_PLUGIN_ROOT}/agents/neural-network-master.md`
 
 ## Julia Equivalent
 

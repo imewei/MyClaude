@@ -13,7 +13,7 @@ Model self-propelled particles, pattern formation, and collective behavior.
 For simulating active matter systems, analyzing collective motion, and modeling non-equilibrium phase transitions, delegate to the expert agent:
 
 - **`statistical-physicist`**: Unified specialist for Statistical Physics, Soft Matter, and Active Matter.
-  - *Location*: `plugins/science-suite/agents/statistical-physicist.md`
+  - *Location*: `${CLAUDE_PLUGIN_ROOT}/agents/statistical-physicist.md`
   - *Capabilities*: Active Brownian Particles (ABP) simulation, MIPS analysis, and topological defect tracking.
 
 ## Active Matter Models

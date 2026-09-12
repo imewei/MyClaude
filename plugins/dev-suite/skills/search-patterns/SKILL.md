@@ -11,7 +11,7 @@ description: Implement search infrastructure with Elasticsearch, OpenSearch, and
 For search architecture, index design, and relevance optimization, delegate to:
 
 - **`software-architect`**: Designs search infrastructure with index strategies and service integration.
-  - *Location*: `plugins/dev-suite/agents/software-architect.md`
+  - *Location*: `${CLAUDE_PLUGIN_ROOT}/agents/software-architect.md`
 
 
 ## Technology Selection

@@ -13,7 +13,7 @@ Bridge theoretical predictions with experimental observables across domains.
 For domain-specific correlation analysis in condensed matter, soft matter, and biophysics, delegate to the expert agent:
 
 - **`statistical-physicist`**: Unified specialist for Physical Systems Analysis.
-  - *Location*: `plugins/science-suite/agents/statistical-physicist.md`
+  - *Location*: `${CLAUDE_PLUGIN_ROOT}/agents/statistical-physicist.md`
   - *Capabilities*: Critical phenomena analysis, polymer dynamics, and glass transition characterization.
 
 ## Domain Selection

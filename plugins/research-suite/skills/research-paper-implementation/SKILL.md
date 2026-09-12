@@ -11,7 +11,7 @@ description: Translate published papers into working code by extracting architec
 For translating research papers into production implementations, delegate to:
 
 - **`research-expert`**: Research methodology, paper analysis, and systematic implementation.
-  - *Location*: `plugins/research-suite/agents/research-expert.md`
+  - *Location*: `${CLAUDE_PLUGIN_ROOT}/agents/research-expert.md`
 
 Systematic approach to translating papers into working code.
 

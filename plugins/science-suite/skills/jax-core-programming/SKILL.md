@@ -11,7 +11,7 @@ description: Master JAX functional transformations (jit, vmap, pmap, grad), Flax
 For complex JAX transformations, distributed training, and performance engineering, delegate to the expert agent:
 
 - **`jax-pro`**: Unified specialist for Core JAX optimization, hardware acceleration, and production deployments.
-  - *Location*: `plugins/science-suite/agents/jax-pro.md`
+  - *Location*: `${CLAUDE_PLUGIN_ROOT}/agents/jax-pro.md`
   - *Capabilities*: Multi-device parallelism (pmap/sharding), XLA optimization, custom VJPs, and memory efficiency.
 
 ## Transforms

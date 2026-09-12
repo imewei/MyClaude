@@ -13,9 +13,9 @@ NeuralPDE.jl ships its own Bayesian engine built directly on `AdvancedHMC` and `
 For Bayesian PINN workflows, delegate to:
 
 - **`julia-pro`**: Julia SciML ecosystem, NeuralPDE.jl, AdvancedHMC patterns.
-  - *Location*: `plugins/science-suite/agents/julia-pro.md`
+  - *Location*: `${CLAUDE_PLUGIN_ROOT}/agents/julia-pro.md`
 - **`statistical-physicist`** (secondary): Posterior geometry, prior elicitation for NN weights, MCMC diagnostics.
-  - *Location*: `plugins/science-suite/agents/statistical-physicist.md`
+  - *Location*: `${CLAUDE_PLUGIN_ROOT}/agents/statistical-physicist.md`
 
 ---
 

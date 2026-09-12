@@ -11,7 +11,7 @@ description: Create production Grafana dashboards with panels, variables, alerts
 For Grafana dashboard design, metric visualization, and SLO monitoring, delegate to:
 
 - **`sre-expert`**: Designs production dashboards using RED/USE methods with Prometheus data sources.
-  - *Location*: `plugins/dev-suite/agents/sre-expert.md`
+  - *Location*: `${CLAUDE_PLUGIN_ROOT}/agents/sre-expert.md`
 
 Production-ready metric visualization with Prometheus integration.
 

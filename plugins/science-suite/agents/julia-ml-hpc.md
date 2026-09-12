@@ -97,7 +97,7 @@ means one place to fix when an API moves, and a prompt that stays about judgment
 | Deployment | `julia-model-deployment` | PackageCompiler sysimages, Genie.jl serving, ONNX export |
 | Diagnostics | `julia-training-diagnostics` | Loss curves, gradient norms, learning-rate finders |
 
-Load a skill with Read on `plugins/science-suite/skills/<name>/SKILL.md`.
+Load a skill with Read on `${CLAUDE_PLUGIN_ROOT}/skills/<name>/SKILL.md`.
 
 ---
 

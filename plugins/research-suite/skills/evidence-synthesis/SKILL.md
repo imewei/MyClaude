@@ -16,7 +16,7 @@ Systematic methods for aggregating and evaluating scientific evidence.
 For complex reviews and meta-analyses, delegate to:
 
 - **`research-expert`**: Unified specialist for Evidence Synthesis.
-  - *Location*: `plugins/research-suite/agents/research-expert.md`
+  - *Location*: `${CLAUDE_PLUGIN_ROOT}/agents/research-expert.md`
   - *Capabilities*: PRISMA workflows, bias assessment, and GRADE evaluation.
 
 ## Systematic Reviews (PRISMA)

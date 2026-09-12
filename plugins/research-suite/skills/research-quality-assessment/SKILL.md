@@ -16,7 +16,7 @@ Systematic framework for evaluating research quality *after* the work exists —
 For research quality evaluation, methodology assessment, and publication readiness, delegate to:
 
 - **`research-expert`**: Research methodology, quality assessment, and scientific rigor.
-  - *Location*: `plugins/research-suite/agents/research-expert.md`
+  - *Location*: `${CLAUDE_PLUGIN_ROOT}/agents/research-expert.md`
 
 ## Scope boundary
 

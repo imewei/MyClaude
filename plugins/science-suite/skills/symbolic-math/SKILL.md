@@ -13,7 +13,7 @@ Derive analytical solutions, manipulate expressions, and generate numerical code
 For Python systems engineering and code generation workflows, delegate to the expert agent:
 
 - **`python-pro`**: Python systems specialist for type-driven design, packaging, and performance optimization.
-  - *Location*: `plugins/science-suite/agents/python-pro.md`
+  - *Location*: `${CLAUDE_PLUGIN_ROOT}/agents/python-pro.md`
   - *Capabilities*: Modern Python patterns, Rust extensions (PyO3), structured logging, testing.
 
 ## SymPy Basics

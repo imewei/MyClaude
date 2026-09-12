@@ -22,9 +22,9 @@ Non-Reversible Parallel Tempering (NRPT) for posteriors that defeat single-chain
 For multimodal Bayesian inference and parallel tempering workflows, delegate to:
 
 - **`statistical-physicist`**: Bayesian inference, MCMC theory, replica-exchange methods.
-  - *Location*: `plugins/science-suite/agents/statistical-physicist.md`
+  - *Location*: `${CLAUDE_PLUGIN_ROOT}/agents/statistical-physicist.md`
 - **`julia-pro`** (secondary): Julia integration patterns with Turing and SciML.
-  - *Location*: `plugins/science-suite/agents/julia-pro.md`
+  - *Location*: `${CLAUDE_PLUGIN_ROOT}/agents/julia-pro.md`
 
 ---
 

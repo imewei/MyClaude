@@ -85,7 +85,7 @@ for worked detail — it is the maintained copy.
 For PINN-specific Bayesian inference (BPINN/BNNODE) see `neural-pde` — NeuralPDE.jl ships its own
 AdvancedHMC integration that does not go through Turing.
 
-Load one with Read on `plugins/science-suite/skills/<name>/SKILL.md`.
+Load one with Read on `${CLAUDE_PLUGIN_ROOT}/skills/<name>/SKILL.md`.
 
 ---
 

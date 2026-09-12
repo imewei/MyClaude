@@ -13,7 +13,7 @@ Principles for clear, precise, and effective scientific writing and presentation
 For drafting and refining scientific content, delegate to:
 
 - **`research-expert`**: Unified specialist for Scientific Communication.
-  - *Location*: `plugins/research-suite/agents/research-expert.md`
+  - *Location*: `${CLAUDE_PLUGIN_ROOT}/agents/research-expert.md`
   - *Capabilities*: IMRaD structuring, clarity optimization, and technical reporting.
 
 ## IMRaD Structure

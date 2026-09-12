@@ -13,7 +13,7 @@ Treat type hints as a contract to build more robust and self-documenting systems
 For complex architecture design or strict type-safety enforcement, delegate to:
 
 - **`python-pro`**: Expert in structural typing, generics, and Python systems architecture.
-  - *Location*: `plugins/science-suite/agents/python-pro.md`
+  - *Location*: `${CLAUDE_PLUGIN_ROOT}/agents/python-pro.md`
 
 ## 1. Structural Typing (Protocols)
 

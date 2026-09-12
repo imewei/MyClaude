@@ -11,7 +11,7 @@ ML-specific infrastructure patterns for training, deployment, and experiment tra
 ## Expert Agent
 
 - **`ml-expert`**: Unified specialist for MLOps and Infrastructure.
-  - *Location*: `plugins/science-suite/agents/ml-expert.md`
+  - *Location*: `${CLAUDE_PLUGIN_ROOT}/agents/ml-expert.md`
 
 For general CI/CD, Terraform IaC, and Kubernetes patterns, see `dev-suite` skills.
 

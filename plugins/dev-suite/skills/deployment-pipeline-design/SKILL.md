@@ -11,7 +11,7 @@ description: Design multi-stage CI/CD pipelines with approval gates, security ch
 For multi-stage CI/CD pipeline architecture, progressive delivery, and deployment strategies, delegate to:
 
 - **`automation-engineer`**: Designs efficient CI/CD pipelines with approval gates, caching, and release automation.
-  - *Location*: `plugins/dev-suite/agents/automation-engineer.md`
+  - *Location*: `${CLAUDE_PLUGIN_ROOT}/agents/automation-engineer.md`
 
 Multi-stage CI/CD architecture with approval gates and deployment strategies.
 

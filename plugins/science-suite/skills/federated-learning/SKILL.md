@@ -11,7 +11,7 @@ description: "Build federated learning systems with Flower and PySyft including 
 For ML engineering, model training pipelines, and production ML systems, delegate to:
 
 - **`ml-expert`**: Expert in classical ML, MLOps pipelines, and data engineering.
-  - *Location*: `plugins/science-suite/agents/ml-expert.md`
+  - *Location*: `${CLAUDE_PLUGIN_ROOT}/agents/ml-expert.md`
 
 This skill covers Flower framework, FedAvg and variants, differential privacy, secure aggregation, and communication-efficient FL.
 

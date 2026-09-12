@@ -13,7 +13,7 @@ Leverage the safety and performance of Rust within your Python applications.
 For complex FFI, memory management between Rust/Python, or performance architecture, delegate to:
 
 - **`python-pro`**: Expert in systems engineering and Rust/Python integration via PyO3.
-  - *Location*: `plugins/science-suite/agents/python-pro.md`
+  - *Location*: `${CLAUDE_PLUGIN_ROOT}/agents/python-pro.md`
 
 ## 1. Tooling (Maturin)
 

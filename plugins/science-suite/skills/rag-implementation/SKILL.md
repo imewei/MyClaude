@@ -11,7 +11,7 @@ description: Build production RAG systems with vector databases (Pinecone, Weavi
 For RAG system design, vector databases, and retrieval pipelines, delegate to:
 
 - **`sci-workflow-engineer`**: LLM integration into scientific pipelines, RAG systems, and agentic AI.
-  - *Location*: `plugins/science-suite/agents/sci-workflow-engineer.md`
+  - *Location*: `${CLAUDE_PLUGIN_ROOT}/agents/sci-workflow-engineer.md`
 
 Retrieval-Augmented Generation for accurate, grounded LLM responses.
 

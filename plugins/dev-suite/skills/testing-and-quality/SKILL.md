@@ -6,9 +6,10 @@ description: Meta-orchestrator for testing and code quality. Routes to test auto
 
 > **Loading a routing target.** `dev-suite:*`, `research-suite:*`, and `science-suite:*` targets below
 > are slash-only (`disable-model-invocation: true`) — the Skill tool will not fire them. Load one by
-> reading its file with the Read tool: `plugins/<suite>/skills/<name>/SKILL.md` (e.g.
-> `dev-suite:backend-patterns` → `plugins/dev-suite/skills/backend-patterns/SKILL.md`). Targets from
-> other plugins (`superpowers:*`, `ecc:*`, …) are unaffected and invoke normally.
+> reading its file with the Read tool at `${CLAUDE_PLUGIN_ROOT}/skills/<name>/SKILL.md` — Claude Code
+> substitutes that variable with this plugin's install directory. A target in a sibling suite is at
+> the same relative path under that suite's own root. Targets from other plugins (`superpowers:*`,
+> `ecc:*`, …) are unaffected and invoke normally.
 
 # Testing and Quality
 
@@ -17,7 +18,7 @@ Orchestrator for testing strategy and code quality across the full development l
 ## Expert Agent
 
 - **`quality-specialist`**: Specialist for test architecture, quality gates, and systematic validation.
-  - *Location*: `plugins/dev-suite/agents/quality-specialist.md`
+  - *Location*: `${CLAUDE_PLUGIN_ROOT}/agents/quality-specialist.md`
   - *Capabilities*: Test pyramid design, coverage analysis, E2E strategy, code review standards, and plugin integrity validation.
 
 ## Core Skills

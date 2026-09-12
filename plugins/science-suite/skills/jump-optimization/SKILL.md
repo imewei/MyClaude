@@ -13,7 +13,7 @@ Mathematical programming with JuMP.jl for LP, QP, NLP, and MIP problems.
 For complex optimization modeling, large-scale solver configuration, and advanced JuMP patterns, delegate to the expert agent:
 
 - **`julia-pro`**: Unified specialist for Julia optimization, including JuMP (Mathematical Programming) and Optimization.jl (Scientific Optimization).
-  - *Location*: `plugins/science-suite/agents/julia-pro.md`
+  - *Location*: `${CLAUDE_PLUGIN_ROOT}/agents/julia-pro.md`
   - *Capabilities*: Large-scale MIP/LP modeling, solver tuning, and high-performance optimization workflows.
 
 ---

@@ -34,7 +34,7 @@ worked detail rather than reconstructing it here — it is the maintained copy.
 - **Route in via**: `continuum-mechanics-and-rheology`
 - **Depth lives in**: `constitutive-equations`, `dma-rheology`, `fem-fea`, `graph-theory`, `harmonic-response-superposition`, `nanocomposites-and-adaptive-materials`, `transient-networks-and-can`
 
-Load one with Read on `plugins/science-suite/skills/<name>/SKILL.md`.
+Load one with Read on `${CLAUDE_PLUGIN_ROOT}/skills/<name>/SKILL.md`.
 
 ---
 

@@ -11,7 +11,7 @@ The depth-skill companion to `self-improving-ai` for the **programmatic prompt o
 ## Expert Agents
 
 - **`sci-workflow-engineer`**: LLM pipelines, prompt programs, tool calling, and codegen.
-  - *Location*: `plugins/science-suite/agents/sci-workflow-engineer.md`
+  - *Location*: `${CLAUDE_PLUGIN_ROOT}/agents/sci-workflow-engineer.md`
 
 ---
 

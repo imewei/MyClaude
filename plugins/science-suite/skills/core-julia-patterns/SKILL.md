@@ -13,7 +13,7 @@ Expert-level patterns for leveraging Julia's type system and multiple dispatch f
 For complex type design, metaprogramming, and performance optimization, delegate to the expert agent:
 
 - **`julia-pro`**: Unified specialist for Julia optimization, including Core Julia, SciML, Turing.jl, and Package Development.
-  - *Location*: `plugins/science-suite/agents/julia-pro.md`
+  - *Location*: `${CLAUDE_PLUGIN_ROOT}/agents/julia-pro.md`
   - *Capabilities*: Performance tuning, type stability analysis, and advanced metaprogramming.
 
 ---

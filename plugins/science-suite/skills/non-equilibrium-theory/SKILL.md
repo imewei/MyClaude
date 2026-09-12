@@ -13,7 +13,7 @@ Theoretical frameworks for systems far from thermal equilibrium.
 For non-equilibrium thermodynamics, fluctuation theorems, and active matter theory, delegate to the expert agent:
 
 - **`statistical-physicist`**: Unified specialist for Non-Equilibrium Physics.
-  - *Location*: `plugins/science-suite/agents/statistical-physicist.md`
+  - *Location*: `${CLAUDE_PLUGIN_ROOT}/agents/statistical-physicist.md`
   - *Capabilities*: Jarzynski equality analysis, entropy production quantification, and linear response theory.
 
 ## Core Theorems

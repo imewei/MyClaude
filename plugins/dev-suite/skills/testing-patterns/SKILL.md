@@ -11,7 +11,7 @@ description: Cross-language testing strategy guide covering framework selection,
 For testing strategy and quality gates across Python and JS/TS ecosystems, delegate to:
 
 - **`quality-specialist`**: Designs comprehensive test strategies and enforces quality gates.
-  - *Location*: `plugins/dev-suite/agents/quality-specialist.md`
+  - *Location*: `${CLAUDE_PLUGIN_ROOT}/agents/quality-specialist.md`
 
 ## Framework Selection
 

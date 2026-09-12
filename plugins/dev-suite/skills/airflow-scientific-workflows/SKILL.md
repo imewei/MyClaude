@@ -11,7 +11,7 @@ description: Design Apache Airflow DAGs for scientific data pipelines, batch com
 For scientific pipeline orchestration, DAG design, and batch computation workflows, delegate to:
 
 - **`automation-engineer`**: Designs efficient pipeline architectures with scheduling, parallelization, and orchestration.
-  - *Location*: `plugins/dev-suite/agents/automation-engineer.md`
+  - *Location*: `${CLAUDE_PLUGIN_ROOT}/agents/automation-engineer.md`
 
 Apache Airflow patterns for scientific data pipelines and computation orchestration.
 

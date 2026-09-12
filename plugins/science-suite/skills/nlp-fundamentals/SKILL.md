@@ -13,7 +13,7 @@ Build text processing and natural language understanding pipelines.
 For designing ML pipelines with NLP components, delegate to the expert agent:
 
 - **`ml-expert`**: Classical and applied ML specialist for feature engineering, model selection, and evaluation.
-  - *Location*: `plugins/science-suite/agents/ml-expert.md`
+  - *Location*: `${CLAUDE_PLUGIN_ROOT}/agents/ml-expert.md`
   - *Capabilities*: Pipeline design, feature extraction, model evaluation, hyperparameter tuning.
 
 ## Text Preprocessing Pipeline

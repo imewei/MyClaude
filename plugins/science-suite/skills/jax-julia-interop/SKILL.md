@@ -12,8 +12,8 @@ Bridge JAX Python and Julia SciML ecosystems for hybrid scientific computing wor
 
 ## Expert Agents
 
-- **jax-pro** (`plugins/science-suite/agents/jax-pro.md`): JAX optimization, JIT compilation, vmap/pmap transformations
-- **julia-pro** (`plugins/science-suite/agents/julia-pro.md`): Julia SciML, DifferentialEquations.jl, AUTO-07p continuation (BifurcationKit blocked on Julia 1.12)
+- **jax-pro** (`${CLAUDE_PLUGIN_ROOT}/agents/jax-pro.md`): JAX optimization, JIT compilation, vmap/pmap transformations
+- **julia-pro** (`${CLAUDE_PLUGIN_ROOT}/agents/julia-pro.md`): Julia SciML, DifferentialEquations.jl, AUTO-07p continuation (BifurcationKit blocked on Julia 1.12)
 
 ---
 

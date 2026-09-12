@@ -11,7 +11,7 @@ description: Mathematical foundations of correlation functions including two-poi
 For theoretical derivations, Green's function analysis, and fluctuation-dissipation theorem applications, delegate to the expert agent:
 
 - **`statistical-physicist`**: Unified specialist for Statistical Physics theory.
-  - *Location*: `plugins/science-suite/agents/statistical-physicist.md`
+  - *Location*: `${CLAUDE_PLUGIN_ROOT}/agents/statistical-physicist.md`
   - *Capabilities*: Linear response theory, Wiener-Khinchin theorem, and critical phenomena scaling.
 
 ## Two-Point Correlation

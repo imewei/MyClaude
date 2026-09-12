@@ -33,7 +33,7 @@ worked detail rather than reconstructing it here — it is the maintained copy.
 - **Route in via**: `deep-learning`, `deep-learning-hub`
 - **Depth lives in**: `computer-vision`, `deep-learning-experimentation`, `graph-theory`, `jax-physics-applications`, `julia-neural-architectures`, `model-optimization-deployment`, `neural-architecture-patterns`, `neural-network-mathematics`, `reinforcement-learning`, `training-diagnostics`
 
-Load one with Read on `plugins/science-suite/skills/<name>/SKILL.md`.
+Load one with Read on `${CLAUDE_PLUGIN_ROOT}/skills/<name>/SKILL.md`.
 
 ---
 

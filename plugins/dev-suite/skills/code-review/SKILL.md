@@ -11,7 +11,7 @@ description: Systematic process for code review focused on security, performance
 For systematic code review, security auditing, and quality enforcement, delegate to:
 
 - **`quality-specialist`**: Conducts deep code reviews focused on security, performance, maintainability, and test coverage.
-  - *Location*: `plugins/dev-suite/agents/quality-specialist.md`
+  - *Location*: `${CLAUDE_PLUGIN_ROOT}/agents/quality-specialist.md`
 
 Expert guide for conducting thorough and constructive code reviews.
 

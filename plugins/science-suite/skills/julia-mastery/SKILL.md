@@ -6,9 +6,10 @@ description: Master the Julia language for scientific computing. Covers multiple
 
 > **Loading a routing target.** `dev-suite:*`, `research-suite:*`, and `science-suite:*` targets below
 > are slash-only (`disable-model-invocation: true`) — the Skill tool will not fire them. Load one by
-> reading its file with the Read tool: `plugins/<suite>/skills/<name>/SKILL.md` (e.g.
-> `dev-suite:backend-patterns` → `plugins/dev-suite/skills/backend-patterns/SKILL.md`). Targets from
-> other plugins (`superpowers:*`, `ecc:*`, …) are unaffected and invoke normally.
+> reading its file with the Read tool at `${CLAUDE_PLUGIN_ROOT}/skills/<name>/SKILL.md` — Claude Code
+> substitutes that variable with this plugin's install directory. A target in a sibling suite is at
+> the same relative path under that suite's own root. Targets from other plugins (`superpowers:*`,
+> `ecc:*`, …) are unaffected and invoke normally.
 
 # Julia Mastery
 
@@ -19,7 +20,7 @@ Expert guide for writing high-performance, idiomatic Julia code for scientific a
 For complex Julia programming, SciML workflows, and performance optimization, delegate to the expert agent:
 
 - **`julia-pro`**: Unified specialist for Julia optimization, including Core Julia, SciML (Lux.jl, UDEs), nonlinear dynamics (DynamicalSystems.jl, AUTO-07p -- BifurcationKit.jl blocked on Julia 1.12), Turing.jl, and Package Development.
-  - *Location*: `plugins/science-suite/agents/julia-pro.md`
+  - *Location*: `${CLAUDE_PLUGIN_ROOT}/agents/julia-pro.md`
   - *Capabilities*: Performance tuning, stiff ODE solvers, Bayesian inference, UDEs, bifurcation analysis, equation discovery, and CI/CD setup.
 
 ## Core Skills

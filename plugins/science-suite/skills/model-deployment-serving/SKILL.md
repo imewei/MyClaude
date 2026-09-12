@@ -13,7 +13,7 @@ Production ML model deployment from local serving to cloud-scale with monitoring
 For model serving, containerization strategies, and deployment architectures, delegate to the expert agent:
 
 - **`ml-expert`**: Unified specialist for Model Serving and MLOps.
-  - *Location*: `plugins/science-suite/agents/ml-expert.md`
+  - *Location*: `${CLAUDE_PLUGIN_ROOT}/agents/ml-expert.md`
   - *Capabilities*: FastAPI/TorchServe implementation, Docker/K8s deployment, and monitoring setup.
 - **`julia-ml-hpc`**: Julia model deployment with Genie.jl, PackageCompiler.jl, and ONNX.jl.
   - *Julia skill*: See `julia-model-deployment` for Julia-specific deployment patterns.

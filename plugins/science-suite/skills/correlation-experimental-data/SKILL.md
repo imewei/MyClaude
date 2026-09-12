@@ -13,7 +13,7 @@ Correlation measurements from scattering, microscopy, and spectroscopy experimen
 For interpreting experimental data and connecting it to theoretical models, delegate to the expert agent:
 
 - **`statistical-physicist`**: Unified specialist for experimental data analysis and soft matter physics.
-  - *Location*: `plugins/science-suite/agents/statistical-physicist.md`
+  - *Location*: `${CLAUDE_PLUGIN_ROOT}/agents/statistical-physicist.md`
   - *Capabilities*: DLS/SAXS analysis, rheology interpretation, and error propagation.
 
 ## Technique Overview

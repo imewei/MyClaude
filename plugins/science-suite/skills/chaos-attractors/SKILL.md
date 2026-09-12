@@ -13,11 +13,11 @@ Characterize chaotic dynamics using Lyapunov exponents, attractor reconstruction
 For chaos analysis, attractor reconstruction, and nonlinear dynamics, delegate to:
 
 - **`nonlinear-dynamics-expert`**: Specialist for dynamical systems, bifurcation analysis, and chaos quantification.
-  - *Location*: `plugins/science-suite/agents/nonlinear-dynamics-expert.md`
+  - *Location*: `${CLAUDE_PLUGIN_ROOT}/agents/nonlinear-dynamics-expert.md`
   - *Capabilities*: Lyapunov spectra, attractor reconstruction, recurrence analysis, fractal dimension estimation.
 
 - **`julia-pro`**: Julia language specialist for DynamicalSystems.jl ecosystem.
-  - *Location*: `plugins/science-suite/agents/julia-pro.md`
+  - *Location*: `${CLAUDE_PLUGIN_ROOT}/agents/julia-pro.md`
   - *Capabilities*: High-performance dynamical systems computation, type-stable implementations, SciML integration.
 
 ## System Construction (DynamicalSystems.jl)

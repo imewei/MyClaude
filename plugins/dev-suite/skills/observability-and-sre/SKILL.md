@@ -6,9 +6,10 @@ description: Meta-orchestrator for observability and SRE practices. Routes to Pr
 
 > **Loading a routing target.** `dev-suite:*`, `research-suite:*`, and `science-suite:*` targets below
 > are slash-only (`disable-model-invocation: true`) — the Skill tool will not fire them. Load one by
-> reading its file with the Read tool: `plugins/<suite>/skills/<name>/SKILL.md` (e.g.
-> `dev-suite:backend-patterns` → `plugins/dev-suite/skills/backend-patterns/SKILL.md`). Targets from
-> other plugins (`superpowers:*`, `ecc:*`, …) are unaffected and invoke normally.
+> reading its file with the Read tool at `${CLAUDE_PLUGIN_ROOT}/skills/<name>/SKILL.md` — Claude Code
+> substitutes that variable with this plugin's install directory. A target in a sibling suite is at
+> the same relative path under that suite's own root. Targets from other plugins (`superpowers:*`,
+> `ecc:*`, …) are unaffected and invoke normally.
 
 # Observability and SRE
 
@@ -17,7 +18,7 @@ Orchestrator for observability instrumentation and SRE practice implementation. 
 ## Expert Agent
 
 - **`sre-expert`**: Specialist for reliability engineering, SLO design, and observability stack architecture.
-  - *Location*: `plugins/dev-suite/agents/sre-expert.md`
+  - *Location*: `${CLAUDE_PLUGIN_ROOT}/agents/sre-expert.md`
   - *Capabilities*: SLI/SLO/SLA definition, alerting strategy, distributed tracing, metrics pipelines, and incident response.
 
 ## Core Skills

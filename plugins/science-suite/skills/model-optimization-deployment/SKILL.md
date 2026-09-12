@@ -11,7 +11,7 @@ description: Neural network optimization techniques including quantization (INT8
 For neural network optimization (quantization, pruning, distillation) and production serving, delegate to:
 
 - **`neural-network-master`**: Deep learning architectures, model compression, and deployment.
-  - *Location*: `plugins/science-suite/agents/neural-network-master.md`
+  - *Location*: `${CLAUDE_PLUGIN_ROOT}/agents/neural-network-master.md`
 
 Optimize neural networks and deploy to production environments.
 

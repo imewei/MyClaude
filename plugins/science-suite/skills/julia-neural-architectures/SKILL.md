@@ -11,10 +11,10 @@ description: Design neural network architectures in Julia using Lux.jl. Covers T
 For architecture design and implementation in Julia, delegate to:
 
 - **`julia-ml-hpc`**: Julia ML/HPC specialist for Lux.jl implementation.
-  - *Location*: `plugins/science-suite/agents/julia-ml-hpc.md`
+  - *Location*: `${CLAUDE_PLUGIN_ROOT}/agents/julia-ml-hpc.md`
   - *Capabilities*: Layer composition, custom layers, GPU optimization.
 - **`neural-network-master`**: For architecture theory and design decisions.
-  - *Location*: `plugins/science-suite/agents/neural-network-master.md`
+  - *Location*: `${CLAUDE_PLUGIN_ROOT}/agents/neural-network-master.md`
   - *Capabilities*: Architecture selection, capacity planning, design trade-offs.
 
 ## CNN Patterns

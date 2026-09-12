@@ -11,7 +11,7 @@ description: Build web applications with Genie.jl MVC framework and HTTP.jl. Use
 For Julia web development with Genie.jl and HTTP.jl, delegate to:
 
 - **`julia-pro`**: Julia web frameworks, REST APIs, and web services.
-  - *Location*: `plugins/science-suite/agents/julia-pro.md`
+  - *Location*: `${CLAUDE_PLUGIN_ROOT}/agents/julia-pro.md`
 
 REST APIs and web services with Genie.jl and HTTP.jl.
 

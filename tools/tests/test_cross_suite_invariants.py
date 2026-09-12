@@ -347,3 +347,39 @@ class TestDispatchEdgesAreDeclared:
                 if name not in skills and name not in agents:
                     broken.append(f"{agent.stem} -> {name}")
         assert not broken, f"{suite} agents pointing at non-existent skills: {broken}"
+
+
+class TestPortablePaths:
+    """Component markdown must not reference the repository layout.
+
+    When a suite is installed from a marketplace its files live under
+    ~/.claude/plugins/cache/<marketplace>/<suite>/<version>/, so a path like
+    `plugins/science-suite/skills/x/SKILL.md` only resolves when the user's cwd is
+    this repository. Claude Code substitutes `${CLAUDE_PLUGIN_ROOT}` in component
+    text at load time; that is the portable form. 197 files carried repo-relative
+    paths before this test existed, including the hub routing header every hub
+    told the model to Read from.
+    """
+
+    @pytest.mark.parametrize("suite", ALL_SUITES)
+    def test_no_repo_relative_plugin_paths(self, suite: str):
+        pattern = re.compile(r"\bplugins/(?:dev|research|science)-suite/")
+        offenders = []
+        root = PLUGINS_ROOT / suite
+        for md in [*root.glob("agents/*.md"), *root.glob("commands/*.md"), *(root / "skills").rglob("*.md")]:
+            for i, line in enumerate(md.read_text(encoding="utf-8").splitlines(), 1):
+                if pattern.search(line):
+                    offenders.append(f"{md.relative_to(PLUGINS_ROOT)}:{i}")
+        assert not offenders, (
+            f"{suite} components with repo-relative paths (use ${{CLAUDE_PLUGIN_ROOT}}/...): "
+            f"{offenders[:8]}"
+        )
+
+    @pytest.mark.parametrize("suite", ALL_SUITES)
+    def test_no_absolute_home_paths(self, suite: str):
+        offenders = []
+        root = PLUGINS_ROOT / suite
+        for md in [*root.glob("agents/*.md"), *root.glob("commands/*.md"), *(root / "skills").rglob("*.md")]:
+            if "/home/" in md.read_text(encoding="utf-8"):
+                offenders.append(str(md.relative_to(PLUGINS_ROOT)))
+        assert not offenders, f"{suite} components with absolute home paths: {offenders}"

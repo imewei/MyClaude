@@ -11,7 +11,7 @@ description: Master Test.jl, Aqua.jl quality checks, and JET.jl static analysis 
 For Julia testing with Test.jl, Aqua.jl, and JET.jl, delegate to:
 
 - **`julia-pro`**: Julia package quality, testing, and static analysis.
-  - *Location*: `plugins/science-suite/agents/julia-pro.md`
+  - *Location*: `${CLAUDE_PLUGIN_ROOT}/agents/julia-pro.md`
 
 Test.jl, Aqua.jl, and JET.jl for comprehensive testing.
 

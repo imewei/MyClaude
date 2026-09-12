@@ -11,9 +11,9 @@ The depth-skill companion to `self-improving-ai` for the **Constitutional AI / R
 ## Expert Agents
 
 - **`sci-workflow-engineer`** (primary): LLM pipelines, fine-tuning workflows, preference optimization.
-  - *Location*: `plugins/science-suite/agents/sci-workflow-engineer.md`
+  - *Location*: `${CLAUDE_PLUGIN_ROOT}/agents/sci-workflow-engineer.md`
 - **`ml-expert`** (secondary): Reward model training, optimizer selection, training-loop debugging.
-  - *Location*: `plugins/science-suite/agents/ml-expert.md`
+  - *Location*: `${CLAUDE_PLUGIN_ROOT}/agents/ml-expert.md`
 
 ---
 

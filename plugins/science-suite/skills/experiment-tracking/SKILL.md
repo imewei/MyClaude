@@ -13,7 +13,7 @@ Track, compare, and manage ML experiments with reproducibility.
 For ML pipeline design and experiment methodology, delegate to the expert agent:
 
 - **`ml-expert`**: Classical and applied ML specialist for pipeline design, model selection, and evaluation.
-  - *Location*: `plugins/science-suite/agents/ml-expert.md`
+  - *Location*: `${CLAUDE_PLUGIN_ROOT}/agents/ml-expert.md`
   - *Capabilities*: Experiment design, hyperparameter optimization, model comparison, evaluation strategies.
 
 ## MLflow Setup

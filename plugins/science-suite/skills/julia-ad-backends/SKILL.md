@@ -11,7 +11,7 @@ description: Select and debug automatic differentiation backends in Julia. Cover
 For AD backend selection, custom rules, and gradient debugging, delegate to:
 
 - **`julia-ml-hpc`**: Julia ML/HPC specialist for AD pipelines and performance.
-  - *Location*: `plugins/science-suite/agents/julia-ml-hpc.md`
+  - *Location*: `${CLAUDE_PLUGIN_ROOT}/agents/julia-ml-hpc.md`
   - *Capabilities*: Backend selection, custom adjoints, mixed-mode AD, gradient correctness.
 
 ## Backend Selection Decision Tree

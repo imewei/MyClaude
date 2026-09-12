@@ -13,7 +13,7 @@ Transform from a JAX user to a JAX-first optimization engineer. Unlike PyTorch o
 For advanced optimization, distributed training setup, and performance engineering, delegate to the expert agent:
 
 - **`jax-pro`**: Unified specialist for Core JAX optimization, hardware acceleration, and sharding.
-  - *Location*: `plugins/science-suite/agents/jax-pro.md`
+  - *Location*: `${CLAUDE_PLUGIN_ROOT}/agents/jax-pro.md`
   - *Capabilities*: Multi-device parallelism (pmap/sharding), XLA HLO analysis, and memory optimization (remat/checkpointing).
 
 ## The JAX-First Mindset

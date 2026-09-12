@@ -13,7 +13,7 @@ A JAX-first Bayesian expert combines probabilistic intuition with compiler-aware
 For complex Bayesian modeling, hierarchical inference, and probabilistic programming tasks, delegate to the expert agent:
 
 - **`jax-pro`**: Unified specialist for Bayesian inference (NumPyro), MCMC diagnostics, and differentiable physics integration.
-  - *Location*: `plugins/science-suite/agents/jax-pro.md`
+  - *Location*: `${CLAUDE_PLUGIN_ROOT}/agents/jax-pro.md`
   - *Capabilities*: Hierarchical models, NUTS/HMC tuning, SVI, and convergence diagnostics (R-hat, ESS).
 
 ## The Inference-as-Transformation Mindset

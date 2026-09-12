@@ -34,7 +34,7 @@ worked detail rather than reconstructing it here — it is the maintained copy.
 - **Route in via**: `python-development`
 - **Depth lives in**: `modern-concurrency`, `python-packaging-advanced`, `robust-testing`, `rust-extensions`, `symbolic-math`, `type-driven-design`
 
-Load one with Read on `plugins/science-suite/skills/<name>/SKILL.md`.
+Load one with Read on `${CLAUDE_PLUGIN_ROOT}/skills/<name>/SKILL.md`.
 
 ---
 

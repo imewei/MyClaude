@@ -11,7 +11,7 @@ description: Master database design patterns including ORM usage (SQLAlchemy, Pr
 For database design, schema modeling, and query optimization, delegate to:
 
 - **`software-architect`**: Designs data models, schema strategies, and ORM integration patterns.
-  - *Location*: `plugins/dev-suite/agents/software-architect.md`
+  - *Location*: `${CLAUDE_PLUGIN_ROOT}/agents/software-architect.md`
 
 
 ## Schema Design Principles

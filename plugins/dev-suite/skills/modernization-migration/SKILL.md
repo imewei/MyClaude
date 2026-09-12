@@ -11,7 +11,7 @@ description: Reference patterns for modernization strategies including Strangler
 For legacy modernization strategy, framework migration, and incremental system evolution, delegate to:
 
 - **`software-architect`**: Plans Strangler Fig migrations, architecture refactoring, and technology modernization.
-  - *Location*: `plugins/dev-suite/agents/software-architect.md`
+  - *Location*: `${CLAUDE_PLUGIN_ROOT}/agents/software-architect.md`
 
 Expert guide for safely evolving legacy systems and adopting modern technologies.
 

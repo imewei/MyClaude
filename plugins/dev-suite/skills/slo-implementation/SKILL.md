@@ -11,7 +11,7 @@ description: Reference patterns for SLI/SLO definitions, error budget policies, 
 For SLI/SLO definition, error budget policies, and reliability target management, delegate to:
 
 - **`sre-expert`**: Defines and tracks SLIs, SLOs, and error budgets; leads incident response and post-mortems.
-  - *Location*: `plugins/dev-suite/agents/sre-expert.md`
+  - *Location*: `${CLAUDE_PLUGIN_ROOT}/agents/sre-expert.md`
 
 Service Level Objectives with error budgets and burn rate alerting.
 

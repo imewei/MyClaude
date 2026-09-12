@@ -11,7 +11,7 @@ description: Master error handling patterns including exception hierarchies, Res
 For fault-tolerant system design, resilience patterns, and structured error responses, delegate to:
 
 - **`software-architect`**: Designs resilient distributed systems with circuit breakers, retries, and graceful degradation.
-  - *Location*: `plugins/dev-suite/agents/software-architect.md`
+  - *Location*: `${CLAUDE_PLUGIN_ROOT}/agents/software-architect.md`
 
 Build resilient applications with robust error handling strategies.
 
