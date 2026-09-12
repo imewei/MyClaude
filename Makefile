@@ -154,6 +154,10 @@ validate: ## Validate plugin metadata, configuration, and command file structure
 			fi \
 		done; \
 	fi
+	@if [ -f "tools/validation/context_budget_checker.py" ]; then \
+		echo "Checking skill context budget..."; \
+		PYTHONPATH=. python3 tools/validation/context_budget_checker.py >/dev/null || exit 1; \
+	fi
 	@echo "✓ Validation complete"
 
 ##@ Testing
