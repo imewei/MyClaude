@@ -16,6 +16,7 @@ window is invisible to this check.
 """
 
 import json
+import os
 import re
 import sys
 import time
@@ -120,10 +121,15 @@ def main() -> None:
         file_path = tool_input.get("file_path") or payload.get("file_path") or ""
 
         ctx = None
+        cwd = _hook_io.get_field(payload, "cwd", default=os.getcwd())
         if file_path:
-            ctx = check_review_file(Path(file_path))
+            # The path came from the tool call, not from us. Only inspect it if
+            # it resolves inside the workspace; a path that escapes cwd is not a
+            # review file this hook should be opening.
+            candidate = (Path(cwd) / file_path).resolve()
+            if candidate.is_relative_to(Path(cwd).resolve()):
+                ctx = check_review_file(candidate)
         if ctx is None:
-            cwd = _hook_io.get_field(payload, "cwd", default="")
             recent = find_recent_docx(cwd) if cwd else None
             if recent:
                 ctx = check_review_file(recent)

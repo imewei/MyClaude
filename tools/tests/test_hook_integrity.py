@@ -194,3 +194,41 @@ class TestUntrustedContext:
                 if raw.search(line) and "print(" not in line and "stderr" not in line:
                     offenders.append(f"{hook.name}:{i}")
         assert not offenders, f"{suite} hooks interpolating untrusted values raw: {offenders}"
+
+
+class TestSecondReviewFindings:
+    """Two sites a second reviewer (Antigravity) caught after the first pass."""
+
+    def test_research_post_tool_use_confines_file_path_to_cwd(self, tmp_path: Path):
+        """A tool-call path that resolves outside cwd must not be opened."""
+        import json
+        import subprocess
+
+        hook = PLUGINS_ROOT / "research-suite" / "hooks" / "post_tool_use.py"
+        outside = tmp_path / "outside"
+        outside.mkdir()
+        (outside / "reviews").mkdir()
+        (outside / "reviews" / "r.md").write_text("no sections")
+        cwd = tmp_path / "work"
+        cwd.mkdir()
+        payload: dict = {"cwd": str(cwd), "tool_input": {"file_path": "../outside/reviews/r.md"}}
+        out = subprocess.run(
+            ["python3", str(hook)], input=json.dumps(payload), capture_output=True, text=True, check=False
+        )
+        assert out.returncode == 0
+        assert "missing required section" not in out.stdout
+
+        inside = cwd / "reviews"
+        inside.mkdir()
+        (inside / "r.md").write_text("no sections")
+        payload["tool_input"]["file_path"] = "reviews/r.md"
+        out = subprocess.run(
+            ["python3", str(hook)], input=json.dumps(payload), capture_output=True, text=True, check=False
+        )
+        assert "missing required section" in out.stdout
+
+    def test_science_session_start_wraps_julia_version(self):
+        """`julia --version` stdout is subprocess output; it must be quoted."""
+        src = (PLUGINS_ROOT / "science-suite" / "hooks" / "session_start.py").read_text()
+        assert 'f"Julia {untrusted(version' in src
+        assert 'f"Julia {version}"' not in src

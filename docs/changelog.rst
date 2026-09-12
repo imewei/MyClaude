@@ -46,6 +46,20 @@ Unreleased
   re-breaking that line. An arrow may point to an agent — ``/replicate`` ends
   ``→ `quality-specialist``` — so agents are accepted there too.
 
+**Security: second-reviewer pass (Antigravity) on the hooks**
+
+* Re-ran the hook review with Antigravity after Codex, in 9 small batches (a whole-repo prompt hit the
+  5-minute print timeout; two files per turn is what it sustains). Two findings the first pass missed:
+* ``research-suite/hooks/post_tool_use.py`` opened whatever ``file_path`` the tool call named, gated
+  only by ``"reviews" in path.parts`` — so ``../../etc/reviews/x.md`` would have been read. Now resolved
+  against ``cwd`` and rejected unless it stays inside it; ``cwd`` defaults to the process directory when
+  the payload omits it. Six existing tests fed absolute ``tmp_path`` paths with no ``cwd`` and were
+  updated to carry one, which is what the real payload always does.
+* ``science-suite/hooks/session_start.py`` put ``julia --version`` stdout into context unwrapped;
+  subprocess output from a binary on PATH is workspace-influenced and now goes through ``untrusted()``.
+* Both verified by driving the hook with a traversal payload (no context emitted, same as an unrelated
+  file) and an in-cwd payload (still checked). Two regression tests added.
+
 **Security: hooks no longer inject untrusted strings raw into model context**
 
 * An external Codex review found the same defect in 10 places across the three suites' hooks (and one

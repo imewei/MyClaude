@@ -470,7 +470,7 @@ def test_post_tool_use_flags_incomplete_review(tmp_path):
     review = reviews / "paper.md"
     review.write_text("# Notes\nLooks fine.\n", encoding="utf-8")
 
-    out = run_hook("post_tool_use.py", {"tool_input": {"file_path": str(review)}})
+    out = run_hook("post_tool_use.py", {"cwd": str(tmp_path), "tool_input": {"file_path": str(review)}})
 
     assert "missing required section" in out["additionalContext"]
     assert "summary" in out["additionalContext"]
@@ -483,14 +483,14 @@ def test_post_tool_use_silent_for_complete_review(tmp_path):
     review = reviews / "paper.md"
     review.write_text("# Summary\nGood.\n# Recommendation\nAccept.\n", encoding="utf-8")
 
-    assert run_hook("post_tool_use.py", {"tool_input": {"file_path": str(review)}}) == {}
+    assert run_hook("post_tool_use.py", {"cwd": str(tmp_path), "tool_input": {"file_path": str(review)}}) == {}
 
 
 def test_post_tool_use_silent_for_non_review_writes(tmp_path):
     other = tmp_path / "notes.md"
     other.write_text("# Summary\n# Recommendation\n", encoding="utf-8")
 
-    assert run_hook("post_tool_use.py", {"tool_input": {"file_path": str(other)}}) == {}
+    assert run_hook("post_tool_use.py", {"cwd": str(tmp_path), "tool_input": {"file_path": str(other)}}) == {}
 
 
 def test_post_tool_use_heading_anchored_not_incidental_prose(tmp_path):
@@ -504,7 +504,7 @@ def test_post_tool_use_heading_anchored_not_incidental_prose(tmp_path):
         encoding="utf-8",
     )
 
-    out = run_hook("post_tool_use.py", {"tool_input": {"file_path": str(review)}})
+    out = run_hook("post_tool_use.py", {"cwd": str(tmp_path), "tool_input": {"file_path": str(review)}})
 
     assert "missing required section" in out["additionalContext"]
 
@@ -518,7 +518,7 @@ def test_post_tool_use_accepts_journal_adapted_recommendation_synonym(tmp_path):
     review = reviews / "paper.md"
     review.write_text("# Summary\nGood paper.\n# Decision\nAccept.\n", encoding="utf-8")
 
-    assert run_hook("post_tool_use.py", {"tool_input": {"file_path": str(review)}}) == {}
+    assert run_hook("post_tool_use.py", {"cwd": str(tmp_path), "tool_input": {"file_path": str(review)}}) == {}
 
 
 def test_post_tool_use_malformed_docx_reports_parse_failure(tmp_path):
@@ -531,7 +531,7 @@ def test_post_tool_use_malformed_docx_reports_parse_failure(tmp_path):
     bad = reviews / "paper.docx"
     bad.write_bytes(b"not a real docx file")
 
-    out = run_hook("post_tool_use.py", {"tool_input": {"file_path": str(bad)}})
+    out = run_hook("post_tool_use.py", {"cwd": str(tmp_path), "tool_input": {"file_path": str(bad)}})
 
     assert "could not be parsed" in out["additionalContext"]
 
