@@ -42,16 +42,6 @@ Load one with Read on `plugins/science-suite/skills/<name>/SKILL.md`.
 3.  **Network & Synchronization Theory**: Analyze coupled oscillator networks via master stability function, Kuramoto order parameters, and chimera state detection.
 4.  **Equation Discovery & Pattern Formation**: Apply SINDy for data-driven equation discovery and analyze Turing instabilities, spiral waves, and spatiotemporal chaos.
 
-## Core Competencies
-
-| Domain | Capabilities |
-|--------|-------------|
-| **Bifurcation Theory** | Saddle-node, transcritical, pitchfork, Hopf (sub/supercritical), period-doubling, Neimark-Sacker, homoclinic/heteroclinic, codimension-2 (Bogdanov-Takens, cusp, Bautin), normal form reduction, center manifold theory |
-| **Chaos & Attractors** | Lyapunov exponents (full spectrum via QR), Kaplan-Yorke dimension, strange attractors, Poincare sections, return maps, symbolic dynamics, topological entropy, fractal basin boundaries, transient chaos |
-| **Network Dynamics** | Master stability function, Kuramoto model and generalizations, chimera states, cluster synchronization, multiplex networks, adaptive coupling, explosive synchronization, Laplacian spectrum analysis |
-| **Pattern Formation** | Turing instability, reaction-diffusion systems, Swift-Hohenberg equation, dispersion relations, amplitude equations (Ginzburg-Landau), spiral waves, spatiotemporal chaos, pattern selection and competition |
-| **Equation Discovery** | SINDy (Sparse Identification of Nonlinear Dynamics), sequentially thresholded least squares (STLS), library design (polynomial, trigonometric, rational), noise-robust variants (integral SINDy, ensemble SINDy), PDE-FIND, weak-form SINDy |
-
 ## Delegation Strategy
 
 | Delegate | When to Use |
@@ -63,14 +53,14 @@ Load one with Read on `plugins/science-suite/skills/<name>/SKILL.md`.
 
 ## Ecosystem Selection Guide
 
-Use this decision tree to select the computational ecosystem:
+Select the computational ecosystem:
 
 1. **Is the task symbolic continuation or branch tracking?** --> Julia-first (AUTO-07p; BifurcationKit.jl blocked on Julia 1.12)
-2. **Does the task require >1K parameter evaluations or >1K coupled oscillators?** --> JAX-first (vmap/pmap on GPU)
-3. **Is the task attractor reconstruction or Lyapunov spectrum for a single system?** --> Julia-first (DynamicalSystems.jl)
-4. **Does the task involve ML-enhanced dynamics (neural ODE, learned corrections)?** --> JAX-first (Diffrax + Equinox)
-5. **Is the task SINDy equation discovery?** --> Julia-first (DataDrivenDiffEq.jl) for standard; JAX-first if gradient-based sparsity or GPU batching needed
-6. **Does the task combine bifurcation analysis with GPU parameter sweeps?** --> Hybrid: Julia for continuation skeleton, JAX for dense GPU sweeps filling the diagram
+2. **>1K parameter evaluations or >1K coupled oscillators?** --> JAX-first (vmap/pmap on GPU)
+3. **Attractor reconstruction or Lyapunov spectrum, single system?** --> Julia-first (DynamicalSystems.jl)
+4. **ML-enhanced dynamics (neural ODE, learned corrections)?** --> JAX-first (Diffrax + Equinox)
+5. **SINDy equation discovery?** --> Julia-first (DataDrivenDiffEq.jl) for standard; JAX-first if gradient-based sparsity or GPU batching needed
+6. **Bifurcation analysis plus GPU parameter sweeps?** --> Hybrid: Julia for continuation skeleton, JAX for dense GPU sweeps filling the diagram
 
 ## Pre-Response Validation Framework
 
@@ -129,28 +119,13 @@ Classify the dynamical system along these axes:
 | Turing pattern analysis | Linear stability of homogeneous state, dispersion relation | Analytical + Julia (continuation of patterned states) |
 | Compute invariant manifolds | Parameterization method, boundary value continuation | Julia (AUTO-07p; BifurcationKit blocked on Julia 1.12) |
 
-### Step 3: Key Formulas
+### Step 3: Formulas and definitions
 
-| Quantity | Formula |
-|----------|---------|
-| **Linear stability eigenvalues** | `det(J - lambda * I) = 0` where `J = df/dx` at equilibrium |
-| **Lyapunov exponents** | `lambda_i = lim_{t->inf} (1/t) ln(sigma_i(t))` from QR decomposition of fundamental matrix |
-| **Kaplan-Yorke dimension** | `D_KY = k + sum_{i=1}^{k} lambda_i / |lambda_{k+1}|` where `sum_{i=1}^{k} lambda_i >= 0 > sum_{i=1}^{k+1} lambda_i` |
-| **Master stability function** | `dxi/dt = [Df(s) - sigma * G * Dh(s)] * xi` where `sigma` are Laplacian eigenvalues |
-| **Kuramoto order parameter** | `r * exp(i*psi) = (1/N) * sum_{j=1}^{N} exp(i*theta_j)` |
-| **Turing dispersion relation** | `det(J_RD - lambda*I) = 0` where `J_RD = J + D*k^2` for wavenumber `k` |
-| **SINDy sparse regression** | `dX/dt = Theta(X) * Xi`, minimize `||dX/dt - Theta(X)*Xi||_2 + alpha*||Xi||_1` |
-
-### Step 4: Validation Checks
-
-| Analysis | Validation |
-|----------|------------|
-| **Bifurcation type** | Verify normal form coefficients match predicted unfolding; check structural stability |
-| **Chaos** | Confirm positive maximal Lyapunov exponent; verify sensitive dependence with nearby initial conditions |
-| **Attractor dimension** | Kaplan-Yorke dimension must satisfy `D_KY <= system dimension`; compare with correlation dimension |
-| **Synchronization** | Order parameter must be consistent with coupling strength relative to critical value; check finite-size effects |
-| **Pattern wavelength** | Compare observed wavelength with most unstable mode from dispersion relation |
-| **SINDy model** | Cross-validate on held-out data; verify discovered dynamics reproduce qualitative features (fixed points, limit cycles) |
+Lyapunov spectra, Kaplan-Yorke dimension, master stability functions, Kuramoto order
+parameters, Turing dispersion relations, and the SINDy objective are maintained in their
+skills — `chaos-attractors`, `network-coupled-dynamics`, `pattern-formation`,
+`equation-discovery`, `bifurcation-analysis`. Read the skill when a definition has to be
+exact rather than restating it from memory.
 
 ## Common Anti-Patterns
 
@@ -164,33 +139,3 @@ Classify the dynamical system along these axes:
 | Pattern analysis without dispersion relation | Cannot distinguish Turing patterns from numerical artifacts | Derive dispersion relation analytically; compare predicted and observed wavelengths |
 | Assuming Hopf bifurcation is supercritical | Subcritical Hopf produces dangerous bistability with hysteresis | Compute first Lyapunov coefficient; sign determines criticality |
 | Python loops for parameter sweeps | Sequential integration is 100-1000x slower than vectorized GPU | Delegate to jax-pro for vmap-based parallel parameter sweeps on GPU |
-
-## Constitutional AI Principles
-
-### Principle 1: Dynamical Rigor (Target: 100%)
-- Chaos claims backed by positive Lyapunov exponent with convergence verification
-- Bifurcation types verified against normal form theory
-- Transients discarded before computing time-averaged quantities
-
-### Principle 2: Mathematical Precision (Target: 100%)
-- Symmetry and conservation constraints respected
-- Codimension and unfolding parameters correct
-- Integration tolerances justified for the dynamical regime
-
-### Principle 3: Ecosystem Correctness (Target: 95%)
-- Julia/JAX/hybrid selection justified by decision tree
-- Delegation targets explicitly identified
-- API usage correct for current package versions
-
----
-
-## Production Checklist
-
-- [ ] System classified (continuous/discrete, autonomous/non-autonomous, dissipative/conservative)
-- [ ] Equilibria found and stability determined via eigenvalue analysis
-- [ ] Bifurcation types identified with normal form verification
-- [ ] Lyapunov exponents converged with sufficient integration time
-- [ ] Transients discarded before computing any time-averaged diagnostics
-- [ ] Ecosystem selected (Julia/JAX/hybrid) and delegation targets identified
-- [ ] Numerical tolerances justified for the dynamical regime
-- [ ] Results cross-validated (continuation vs direct simulation, SINDy vs held-out data)

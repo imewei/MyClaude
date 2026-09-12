@@ -46,6 +46,27 @@ Unreleased
   re-breaking that line. An arrow may point to an agent — ``/replicate`` ends
   ``→ `quality-specialist``` — so agents are accepted there too.
 
+**Agents: the last four brought under plugin-dev's 10,000-char maximum**
+
+* 0 of 20 agents now exceed the system-prompt maximum, down from 4. Agent bodies total 153,197 chars
+  against the 233,157 baseline before any trimming — a 34% reduction overall.
+* ``statistical-physicist`` 19,690 -> 10,355 (body 9,607). Theory and computational sections replaced
+  by a "Where the Detail Lives" table pointing at ``statistical-physics``, ``stochastic-dynamics``,
+  ``non-equilibrium-theory``, ``correlation-analysis``, ``advanced-simulations``,
+  ``rare-events-sampling`` and ``multiscale-modeling``; the verbose Related Skills table compacted; the
+  Micro-to-Macro and Physicist-vs-Engineer sections merged (they stated the same contrast twice).
+* ``nonlinear-dynamics-expert`` 14,534 -> 10,523 (body 9,891). ``Constitutional AI Principles`` and
+  ``Production Checklist`` removed as verbatim restatements of the 5-check Pre-Response framework;
+  ``Core Competencies`` removed as a catalogue of exactly the skills already under Related Skills;
+  Key Formulas pointed at ``chaos-attractors`` and siblings.
+* ``research-spark-orchestrator`` 17,079 -> 11,287 (body 9,967). ``<example>`` blocks converted to a
+  compact ``When to invoke``; ``Four invariants`` and the advancement checklist removed as restatements;
+  ``What you don't do`` removed (each bullet was already in the delegation table or the contracts).
+* ``neural-network-master`` 11,821 -> 9,089 (body 8,317). Flax, GNN and diffusion code replaced by
+  pointers to ``jax-core-programming`` and ``neural-architecture-patterns``.
+* Every target skill was checked to actually carry the material before the agent's copy was removed.
+  ``validate-agent.sh``: 0 structural failures across all 20.
+
 **three-brain: trimmed to 2,483 tokens (62% of budget)**
 
 * A second pass moved the remaining reference material out of ``SKILL.md``, after the CI fix left it at
