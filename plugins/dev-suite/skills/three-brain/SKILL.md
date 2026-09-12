@@ -52,15 +52,29 @@ Each entry is an `AgentInfo`. Four fields decide everything:
 | `pane_id` | Always present. The fallback target, and the only target for an unnamed agent |
 | `agent_status` | `idle` / `working` / `blocked` / `done` / `unknown` |
 
-Select by kind, then by working directory — one Herdr session often hosts agents for several repos, and `cwd` / `foreground_cwd` are what keep a review pointed at the right one:
+Select by kind, then by working directory — one Herdr session often hosts agents for several repos, and `cwd` / `foreground_cwd` are what keep a review pointed at the right one.
+
+Two filters are mandatory. **Compare directories for equality, not prefix** (`startswith` matches `/repo-old` when `$PWD` is `/repo`), and **exclude your own pane** — `herdr agent list` includes the Claude agent running this skill, and prompting yourself with `--wait` deadlocks the session.
 
 ```bash
-herdr agent list | jq -r --arg cwd "$PWD" '
-  .result.agents[]
-  | select(.agent == "codex")
-  | select((.cwd // .foreground_cwd // "") | startswith($cwd))
-  | .name // .pane_id'
+find_agent() {           # $1 = kind
+  herdr agent list | jq -r --arg kind "$1" --arg cwd "$PWD" --arg self "${HERDR_PANE_ID:-}" '
+    .result.agents[]
+    | select(.agent == $kind)
+    | select(.pane_id != $self)
+    | select((((.cwd // .foreground_cwd // "") | rtrimstr("/")) == ($cwd | rtrimstr("/"))))
+    | .name // .pane_id'
+}
+CODEX=$(find_agent codex); AGY=$(find_agent agy)
 ```
+
+Each call returns zero, one, or several lines. Handle all three — a multi-line value silently becomes an invalid target, or worse, points at someone else's agent:
+
+| Matches | Do |
+|---|---|
+| exactly 1 | Use it |
+| 0 | No agent of that kind here — start one (step 2) |
+| 2+ | **Ask the user which to use.** Do not pick one yourself; the extras are other people's or other tasks' agents |
 
 Use whatever that prints as the target for every later command — **agent commands accept a unique live name or the pane ID hosting the agent**, so an unnamed pane is fully usable as `w1:p3`. Do not rename someone else's agent to make it fit a naming scheme; only name agents you start.
 
@@ -77,11 +91,17 @@ Match `agent_status` before sending:
 
 If no agent of the needed kind is live in this working directory, create one — and record that you created it, because team-stop closes only those.
 
+**One split and one `agent start` per kind.** A pane hosts exactly one agent; reusing a pane ID for a second `agent start` replaces or fails against the first.
+
 ```bash
+# repeat this pair per missing kind — never reuse a pane id across two starts
 herdr pane split --current --direction right --cwd "$PWD" --no-focus
-# read the new id from .result.pane.pane_id
-herdr agent start cdx-<slug> --kind codex --pane <returned-pane-id>
-herdr agent start agy-<slug> --kind agy   --pane <returned-pane-id>
+#   -> read PANE from .result.pane.pane_id
+herdr agent start cdx-<slug> --kind codex --pane "$PANE"
+
+herdr pane split --current --direction down --cwd "$PWD" --no-focus
+#   -> read a NEW PANE id from .result.pane.pane_id
+herdr agent start agy-<slug> --kind agy --pane "$PANE"
 ```
 
 Split a wide pane `right` and a narrow or tall pane `down`; check with `herdr pane layout --pane "$HERDR_PANE_ID"`. Always `--no-focus` — the user's focus stays where it was.
@@ -130,11 +150,11 @@ Then Read that file directly. Do **not** ask for file output in the initial prom
 
 ### 5. Degradation
 
-**Codex effort ladder** — xhigh → high → medium → low. Retry by **re-prompting the same live pane** with a reasoning-effort hint appended, never by restarting the agent: effort is fixed at `agent start` via `-- <agent-args>`, so a restart throws away the context the pane has already built.
+**There is no effort ladder.** Reasoning effort is fixed when the agent process starts — for an adopted pane it was set by whoever launched it, and you cannot change it by re-prompting. Do not append "use xhigh reasoning" hints and do not label a retry with an effort level: the label would be fiction, and a reader comparing an `[effort: low]` retry against an `[effort: xhigh]` first pass would be comparing two identical configurations.
 
-**Agy** — simplify prompt → reduce analysis dimensions.
+Retry by **narrowing the request**, in the same pane, keeping its context: simplify the prompt → reduce the number of dimensions asked for → ask about one file instead of the whole diff.
 
-Only after a ladder is exhausted (Codex: four rungs, Agy: two) label the result `[Claude Fallback — <agent> retries all failed]`.
+After two narrowing attempts fail, stop and label the result `[Claude Fallback — <agent> retries failed]`. Restarting an agent to change its effort is not an option here: it destroys the pane's context, and for an adopted pane it destroys the user's session.
 
 ### 6. Hard rules
 
@@ -170,8 +190,10 @@ When uncertain about review of Claude's own output, route to Codex. When uncerta
 Use Codex for independent code review, adversarial reasoning, and rescue after repeated failures. The pane is already in the working directory, so point it at the change rather than shipping content:
 
 ```bash
-herdr agent prompt $CODEX "Review the uncommitted changes in this repository. Focus on bugs, regressions, security risks, missing tests, and unclear assumptions. Report findings first, with file:line references. Do not modify any files." --wait --timeout 600000
+herdr agent prompt $CODEX "Review the uncommitted changes in this repository, EXCLUDING these paths: .env*, secrets/**, **/*credential*, **/*.pem, **/*.key. Do not open, diff, grep, or quote any file under those paths, and do not report their contents. Focus on bugs, regressions, security risks, missing tests, and unclear assumptions. Report findings first, with file:line references. Do not modify any files." --wait --timeout 600000
 ```
+
+The exclusion list is **part of the prompt, not a shell filter**. An agent pane runs in your working directory and reads files itself, so `git diff -- ':(exclude)…'` on your side excludes nothing on its side. If the change under review is entirely inside a secret-bearing path, do not send this route at all — see Forced Risk Review.
 
 For a specific range, name it in the prompt (`Review commit <SHA>`, `Review this branch against main`). Ask for findings, evidence, and recommended fixes; do not ask for a rewrite unless that is the task.
 
@@ -234,11 +256,22 @@ If the same command, test, or bug fails twice on the same code path after Claude
 [three-brain] routing to Codex rescue - same failure repeated twice
 ```
 
-Give Codex the failing command, exact error, relevant diff, and what was already tried. This avoids wasting tokens on a third local guess.
+Give Codex the failing command, exact error, relevant diff, and what was already tried — after checking that none of it carries secret material. Stack traces and error strings routinely embed connection strings, tokens, and key paths; redact those before sending, or describe the failure in prose. This avoids wasting tokens on a third local guess.
 
 ### Parallel Consensus
 
-Use all three only when the user explicitly requests cross-model consensus or when the decision is high-stakes and the user agrees. Prompt both panes with the same question — they run concurrently, so send both before waiting on either — and require this structure:
+Use all three only when the user explicitly requests cross-model consensus or when the decision is high-stakes and the user agrees.
+
+`--wait` blocks until that agent settles, so two `prompt --wait` calls run **sequentially**. To actually parallelise, submit both without `--wait`, then wait on each separately:
+
+```bash
+herdr agent prompt $CODEX "<question>" --timeout 60000   # returns after submission
+herdr agent prompt $AGY   "<question>" --timeout 60000
+herdr agent wait $CODEX --timeout 600000
+herdr agent wait $AGY   --timeout 600000
+```
+
+Require this structure from each:
 
 ```text
 Recommendation: <one line>
@@ -312,7 +345,7 @@ Coordinate a persistent, semi-automatic team of three Herdr panes: one creator (
 
 1. **User assigns task** → Team Lead prompts the creator pane
 2. **Creator completes** → Team Lead reads the pane and shows the result to the user
-3. **User approves** → Team Lead prompts both reviewer panes (send both, then wait — they work concurrently)
+3. **User approves** → Team Lead submits to both reviewer panes **without** `--wait`, then `herdr agent wait` on each (a `prompt --wait` on the first blocks the second from ever starting — see Parallel Consensus)
 4. **Reviewers report** → Team Lead reads both panes and consolidates, naming the effort/degradation level each landed on so a `low`-effort retry never reads like an `xhigh` first pass:
    ```
    ## Codex Review [effort: {level} — {N} retries]
@@ -343,7 +376,17 @@ Not in Herdr → say so and stop. Otherwise resolve one handle per kind (`claude
 
 #### 3. Adopt what is live; start only what is missing
 
-For each of the three kinds, take the handle discovery returned. Start a pane **only** for a kind with no live agent in this working directory, and record which ones you created — team-stop closes only those.
+For each of the three kinds, take the handle discovery returned. Start a pane **only** for a kind with no live agent in this working directory.
+
+**Ownership must outlive this conversation.** team-stop may run in a later session that has no memory of what was started, and the difference between "a pane I created" and "the user's own agent" is the difference between cleanup and destroying someone's work. Record it on disk as you create each pane:
+
+```bash
+mkdir -p .three-brain
+# append one line per pane YOU created, never for an adopted agent
+echo '{"pane_id":"<id>","name":"<name>","kind":"<codex|agy|claude>","slug":"<slug>"}' >> .three-brain/owned-panes.jsonl
+```
+
+The `.jsonl` extension is already covered by this repo's `.gitignore`; in a project where it is not, add `.three-brain/` before writing — it is session state, not project content.
 
 ```bash
 herdr pane split --current --direction right --cwd "$PWD" --no-focus
@@ -355,6 +398,18 @@ Repeat per missing kind (`--kind codex`, `--kind agy`), alternating `right`/`dow
 In the common case all three are already running and this step does nothing.
 
 #### 4. Seed each pane with its role
+
+**Submit prompt text safely.** Role text contains double quotes and `$`; pasting it inside `"..."` truncates the prompt, splits it into extra argv entries, or lets the shell expand it. Build it as one literal argument via a quoted heredoc:
+
+```bash
+ROLE=$(cat <<'ROLE_EOF'
+<paste the role block verbatim — 'ROLE_EOF' quoted means no expansion>
+ROLE_EOF
+)
+herdr agent prompt "$TARGET" "$ROLE" --wait --timeout 300000
+```
+
+`"$TARGET"` is quoted too: a `pane_id` is safe, but quoting keeps a surprising handle from splitting.
 
 Read `references/agent-prompts.md` for the role-seeding text. Seed a pane you just started. For an **adopted** agent, `herdr agent read <target> --source recent-unwrapped --lines 40` first — it may be mid-conversation on unrelated work, in which case say so and ask the user before repurposing it. Send the seed with `herdr agent prompt <name> "<role text>" --wait --timeout 300000`. There are no reviewer subagents to spawn — the panes *are* the reviewers, and Herdr's own `idle`/`working`/`blocked`/`done` states replace the dispatcher bookkeeping a wrapper agent used to do.
 
@@ -370,9 +425,11 @@ Awaiting your first task.
 
 ### team-stop Flow
 
-1. For each agent **you started this session**, tell it to wrap up, then `herdr pane close <pane_id>` on the pane you split for it.
-2. Leave every adopted agent running and say so — it was the user's before this team existed. In the common all-adopted case, team-stop closes nothing.
-3. Report:
+1. Read `.three-brain/owned-panes.jsonl`. **If it is missing or empty, close nothing** and say so — with no ownership record you cannot prove any pane is yours, and guessing risks killing the user's own agent.
+2. For each recorded pane, confirm it still hosts the agent you started (`herdr agent get <pane_id>` — pane IDs are never reused, but the occupant may have been replaced). Tell it to wrap up, then `herdr pane close <pane_id>`.
+3. Delete `.three-brain/owned-panes.jsonl` after the closures succeed, so a re-run does not try again.
+4. Leave every adopted agent running and say so — it was the user's before this team existed. In the common all-adopted case, team-stop closes nothing.
+5. Report:
 
 ```text
 Team shut down. Closed: {panes you started}. Left running: {agents you adopted}.

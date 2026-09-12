@@ -1,10 +1,16 @@
 # Role-Seeding Prompts
 
-Team Lead reads this file in Team Mode step 4 and sends one block per pane with:
+Team Lead reads this file in Team Mode step 4 and sends one block per pane. **Do not interpolate a block into a double-quoted argument** — every block below contains double quotes and some contain `$`, which the shell will mangle or expand. Pass it as one literal argument through a quoted heredoc:
 
 ```bash
-herdr agent prompt <name> "<role text>" --wait --timeout 300000
+ROLE=$(cat <<'ROLE_EOF'
+<paste one role block verbatim here>
+ROLE_EOF
+)
+herdr agent prompt "$TARGET" "$ROLE" --wait --timeout 300000
 ```
+
+Substitute `{project}`, `{topic}`, and the other placeholders **inside the heredoc text before sending**, not via shell expansion — a project path containing a space or `$` would otherwise split the argument.
 
 Replace all `{...}` placeholders. `<name>` is the handle from discovery — a live agent name, or a `pane_id` when the user's agent is unnamed.
 
