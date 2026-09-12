@@ -52,31 +52,27 @@ Each entry is an `AgentInfo`. Four fields decide everything:
 | `pane_id` | Always present. The fallback target, and the only target for an unnamed agent |
 | `agent_status` | `idle` / `working` / `blocked` / `done` / `unknown` |
 
-Select by kind, then by working directory — one Herdr session often hosts agents for several repos, and `cwd` / `foreground_cwd` are what keep a review pointed at the right one.
-
-Two filters are mandatory. **Compare directories for equality, not prefix** (`startswith` matches `/repo-old` when `$PWD` is `/repo`), and **exclude your own pane** — `herdr agent list` includes the Claude agent running this skill, and prompting yourself with `--wait` deadlocks the session.
+Resolve one handle per kind with the bundled script — it encodes the three
+selection rules that are easy to get wrong from memory, and it is checked by
+`scripts/test-find-agents.sh` (runs without Herdr, off fixture JSON):
 
 ```bash
-find_agent() {           # $1 = kind
-  herdr agent list | jq -r --arg kind "$1" --arg cwd "$PWD" --arg self "${HERDR_PANE_ID:-}" '
-    .result.agents[]
-    | select(.agent == $kind)
-    | select(.pane_id != $self)
-    | select((((.cwd // .foreground_cwd // "") | rtrimstr("/")) == ($cwd | rtrimstr("/"))))
-    | .name // .pane_id'
-}
-CODEX=$(find_agent codex); AGY=$(find_agent agy)
+scripts/find-agents.sh              # -> one TSV line per kind: kind, count, handle
 ```
 
-Each call returns zero, one, or several lines. Handle all three — a multi-line value silently becomes an invalid target, or worse, points at someone else's agent:
-
-| Matches | Do |
+| Rule it enforces | Why it matters |
 |---|---|
-| exactly 1 | Use it |
-| 0 | No agent of that kind here — start one (step 2) |
-| 2+ | **Ask the user which to use.** Do not pick one yourself; the extras are other people's or other tasks' agents |
+| Match on `agent` (the kind), take `.name // .pane_id` | A user-started agent often has `name: null`; agent commands accept either |
+| Compare `cwd` by **equality**, not prefix | `startswith` adopts `/repo-old` when `$PWD` is `/repo` |
+| Exclude `$HERDR_PANE_ID` | The list includes the pane running this skill; prompting yourself with `--wait` deadlocks |
 
-Use whatever that prints as the target for every later command — **agent commands accept a unique live name or the pane ID hosting the agent**, so an unnamed pane is fully usable as `w1:p3`. Do not rename someone else's agent to make it fit a naming scheme; only name agents you start.
+Act on the count, never on the first line:
+
+| Count | Do |
+|---|---|
+| 1 | Use that handle |
+| 0 | No agent of that kind here — start one (step 2) |
+| 2+ | **Ask the user which.** The extras are other people's or other tasks' agents |
 
 Match `agent_status` before sending:
 
