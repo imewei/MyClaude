@@ -4,6 +4,24 @@ Changelog
 Unreleased
 ----------
 
+**science-suite: six second-level routers demoted to sub-skills (30 -> 24 hubs)**
+
+* ``bayesian-ude-workflow``, ``equation-discovery``, ``md-simulation-setup``, ``neural-pde``,
+  ``sciml-modern-stack``, and ``self-improving-ai`` were registered in ``plugin.json`` but add no routing
+  reach: every skill each one routes to is already reachable from a parent hub that routes to it. Applied
+  across all 41 registered routers, that test separates 8 redundant entries from 33 that do add reach
+  (``dev-hub``, ``research-hub``, and ``science-hub`` correctly show no parent), so it discriminates rather
+  than condemning hubs wholesale.
+* They remain fully reachable — each is routed to by two or three registered hubs — and this follows the
+  repository's own rule that ``plugin.json`` registers hubs while sub-skills are reached through hub routing.
+  Removes ~3,187 chars (~796 tokens) of always-loaded skill descriptions.
+* ``time-series-analysis`` was examined with them but **kept registered**: it is the only one of the seven
+  that adds unique reach (``extreme-value-statistics``, ``point-processes`` are not covered by its parent
+  ``simulation-and-hpc``).
+* ``correlation-analysis`` and ``research-practice`` also fail the redundancy test but were left alone as
+  out of scope for this pass.
+* science-suite README skill count updated 30 -> 24 hubs, 107 -> 113 sub-skills.
+
 **Tooling: removed the tautological skill-triggering metrics**
 
 * ``skill_validator.py`` rewritten as a skill *inventory* validator. The previous version reported
