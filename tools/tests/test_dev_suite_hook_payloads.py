@@ -420,3 +420,33 @@ def test_progress_file_without_head_line_degrades_gracefully(tmp_path):
     assert start["status"] == "success"
     assert "STALE" not in hook_context(start)
     assert "Reason: clear" in hook_context(start)
+
+
+def test_subagent_stop_reads_documented_field_names():
+    """Claude Code's SubagentStop payload names the agent in `agent_type` and puts the
+    subagent's own transcript in `agent_transcript_path`; `transcript_path` is the
+    parent session's. The hook read neither, so every completion reported as
+    'unknown' and the reviewer-integrity check scanned the wrong transcript."""
+    import json
+    import subprocess
+
+    hook = HOOKS_DIR / "subagent_stop.py"
+    payload = {
+        "agent_type": "quality-specialist",
+        "agent_id": "a1",
+        "transcript_path": "/nonexistent/parent.jsonl",
+        "agent_transcript_path": "/nonexistent/sub.jsonl",
+        "last_assistant_message": "done",
+    }
+    out = subprocess.run(
+        ["python3", str(hook)],
+        input=json.dumps(payload),
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+    ctx = json.loads(out.stdout)["hookSpecificOutput"]["additionalContext"]
+    assert "quality-specialist" in ctx
+    assert "unknown" not in ctx
+    # it looked for the subagent's transcript, not the parent's
+    assert "sub.jsonl" in out.stderr and "parent.jsonl" not in out.stderr

@@ -76,15 +76,24 @@ def main() -> None:
     """Log subagent completion for dev workflow tracking."""
     try:
         payload = read_payload()
+        # Claude Code's SubagentStop payload names the agent in `agent_type`; the
+        # other keys are kept for older payload shapes and manual invocation.
         agent_name = get_field(
             payload,
+            "agent_type",
             "agent_name",
             "subagent_type",
             "agent",
             "name",
             env_fallback="AGENT_NAME",
         )
-        transcript_path = get_field(payload, "transcript_path", default="")
+        # `transcript_path` is the *parent* session's transcript. The subagent's
+        # own transcript — the one whose claimed reviews we are checking — is
+        # `agent_transcript_path`. Scanning the parent would match claims and CLI
+        # calls from any earlier turn.
+        transcript_path = get_field(
+            payload, "agent_transcript_path", "transcript_path", default=""
+        )
 
         ctx = f"Dev-suite agent {untrusted(agent_name)} completed."
         flag = check_reviewer_transcript(transcript_path)
