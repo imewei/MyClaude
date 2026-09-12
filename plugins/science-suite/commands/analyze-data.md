@@ -1,13 +1,15 @@
 ---
 name: analyze-data
 description: Interactive workflow to analyze data files with statistical tests, visualization, and reproducible reporting
-argument-hint: "--data path/to/file [--test auto|ttest|anova|chi2|correlation] [--report path]"
+argument-hint: "<data-path-or-description> [--test auto|ttest|anova|chi2|correlation] [--report path]"
 allowed-tools: ["Read", "Write", "Bash", "Glob"]
 ---
 
 # Analyze Data
 
 Routes to `ml-expert` via `science-suite:ml-and-data-science` → `data-analysis`.
+
+**Arguments:** $ARGUMENTS
 
 Comprehensive data analysis workflow from raw data to publishable results.
 

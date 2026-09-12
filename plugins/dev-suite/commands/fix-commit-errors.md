@@ -1,11 +1,6 @@
 ---
 name: fix-commit-errors
 description: Automatically analyzes GitHub Actions failures, identifies root causes, applies intelligent solutions, validates, and reruns workflows with adaptive learning.
-category: "dev-suite"
-execution-modes:
-  quick-fix: "5-10m: Discovery + Fix"
-  standard: "15-30m: Full resolution + learning"
-  comprehensive: "30-60m: Deep analysis + correlation"
 allowed-tools: Bash(gh:*), Bash(git:*), Bash(npm:*), Bash(yarn:*), Bash(uv:*), Bash(cargo:*), Bash(go:*), Bash(python3:*), Read, Edit, ScheduleWakeup
 argument-hint: "[workflow-id|commit-sha|pr-number] [--auto-fix] [--learn] [--mode=quick-fix|standard|comprehensive]"
 ---

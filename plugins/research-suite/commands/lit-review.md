@@ -12,6 +12,8 @@ allowed-tools: ["Read", "Write", "WebSearch", "WebFetch"]
 
 Routes to `research-expert` via `research-suite:research-hub` → `research-practice`.
 
+**Arguments:** $ARGUMENTS
+
 ## Usage
 
 ```bash

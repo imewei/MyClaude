@@ -9,6 +9,8 @@ allowed-tools: ["Read", "Bash", "Glob"]
 
 Routes to `jax-pro` for JAX-on-GPU profiling, `julia-pro` / `julia-ml-hpc` for Julia or CUDA.jl profiling, and `python-pro` for raw CUDA/C/Fortran/HPC binaries driven through Python extensions, based on `--backend`.
 
+**Arguments:** $ARGUMENTS
+
 ## Usage
 
 ```bash

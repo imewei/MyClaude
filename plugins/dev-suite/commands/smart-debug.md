@@ -1,12 +1,6 @@
 ---
 name: smart-debug
-category: debugging
 description: Scientific computing debugger for NaN/inf propagation, JAX JIT trace failures, Julia dispatch ambiguities, shape mismatches, numerical instability. For general software bugs, use superpowers:systematic-debugging first.
-execution-modes:
-  quick-triage: "5-10min"
-  standard-debug: "15-30min"
-  deep-rca: "30-60min"
-tags: [debugging, rca, observability, production]
 argument-hint: <error-description> [--quick-triage|--standard-debug|--deep-rca] [--production]
 allowed-tools: [Read, Bash, Edit, Task, Monitor]
 ---

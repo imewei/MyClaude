@@ -2,13 +2,7 @@
 name: modernize
 description: Interactive workflow to migrate legacy code using Strangler Fig pattern with incremental assessment and component-by-component modernization
 argument-hint: <action> <path> [options]
-category: dev-suite
-execution-modes:
-  quick: "30-60m: Assessment + strategy"
-  standard: "1-2w: Component migration"
-  deep: "2-6mo: Enterprise transformation"
-allowed-tools: [Bash, Read, Write, Edit, Task, Glob, Grep, WebFetch, Bash(uv:*)]
-tags: [migration, modernization, strangler-fig, refactoring, technical-debt]
+allowed-tools: [Bash, Read, Write, Edit, Task, Glob, Grep, WebFetch]
 ---
 
 # Code Modernization

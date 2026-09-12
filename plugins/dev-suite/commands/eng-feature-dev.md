@@ -2,13 +2,7 @@
 name: eng-feature-dev
 description: Scientific feature development orchestrator. Coordinates science-suite and research-suite resources for numerical, ML, SciML, and simulation features. For general software features, use feature-dev:feature-dev with superpowers workflow skills.
 argument-hint: <action> <feature-name> [options]
-category: dev-suite
-execution-modes:
-  quick: "30m-2d: Architecture + hot fixes"
-  standard: "3-14d: Full production workflow"
-  deep: "2-4w: Enterprise with compliance"
-allowed-tools: [Bash, Read, Write, Edit, Task, Glob, Grep, Bash(uv:*), ScheduleWakeup]
-tags: [full-stack, orchestration, api-first, feature-development]
+allowed-tools: [Bash, Read, Write, Edit, Task, Glob, Grep, ScheduleWakeup]
 ---
 
 # Scientific Feature Development

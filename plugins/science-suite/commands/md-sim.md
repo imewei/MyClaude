@@ -9,6 +9,8 @@ allowed-tools: ["Read", "Write", "Bash", "Edit", "Glob"]
 
 Routes to `simulation-expert` via `science-suite:simulation-and-hpc`.
 
+**Arguments:** $ARGUMENTS
+
 ## Usage
 
 ```bash

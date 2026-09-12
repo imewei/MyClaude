@@ -2,25 +2,12 @@
 name: docs
 description: Interactive workflow to generate, update, and sync project documentation (API specs, READMEs, Sphinx)
 argument-hint: "<action> [--api] [--readme] [--sphinx] [--full] [--from-git]"
-category: dev-suite
-execution-modes:
-  generate-quick: "10-15min"
-  generate-standard: "20-30min"
-  generate-comprehensive: "40-60min"
-  update-quick: "15-20min"
-  update-standard: "30-45min"
-  sync-quick: "5-10min"
-  sync-standard: "10-15min"
-allowed-tools: [Bash, Edit, Read, Write, Task, Bash(git:*)]
-agents:
-  primary:
-    - documentation-expert
-  conditional:
-    - agent: software-architect
-      trigger: argument "--full" OR files > 50
+allowed-tools: [Bash, Edit, Read, Write, Task]
 ---
 
 # Documentation Management
+
+Routes to `documentation-expert`; also engage `software-architect` when `--full` is passed or more than 50 files are in scope.
 
 $ARGUMENTS
 

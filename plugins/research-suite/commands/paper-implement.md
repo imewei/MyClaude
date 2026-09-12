@@ -9,6 +9,8 @@ allowed-tools: ["Read", "Write", "Edit", "Bash", "WebFetch"]
 
 Routes to `research-expert` for methodology parsing, then cross-delegates to the specialist matching the paper's method: agent `jax-pro` (general JAX numerics), agent `julia-pro` (general Julia numerics), agent `continuum-mechanics-engineer` (FEM/FEA, constitutive modeling, rheology/DMA, transient networks, nanocomposites), agent `statistical-physicist` (phase transitions, correlations, glass/collective phenomena, physical learning), agent `pinn-engineer` (physics-informed neural networks, NeuralPDE), or agent `simulation-expert` (MD/HPC particle simulation).
 
+**Arguments:** $ARGUMENTS
+
 ## Usage
 
 ```bash

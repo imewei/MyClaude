@@ -1,13 +1,15 @@
 ---
 name: run-experiment
 description: Design and execute a reproducible scientific experiment with proper controls, logging, and analysis
-argument-hint: "--hypothesis \"description\" [--seed N] [--trials N]"
+argument-hint: "<hypothesis> [--seed N] [--trials N]"
 allowed-tools: ["Read", "Write", "Bash", "Glob"]
 ---
 
 # Run Experiment
 
 Routes to `ml-expert` via `science-suite:ml-and-data-science` → `experiment-tracking`.
+
+**Arguments:** $ARGUMENTS
 
 Design and execute a reproducible scientific experiment.
 

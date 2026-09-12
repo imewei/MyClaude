@@ -9,6 +9,8 @@ allowed-tools: ["Read", "Write", "Edit", "Bash", "WebFetch", "WebSearch"]
 
 Routes to `research-expert` (claim extraction and replication design) → the specialist matching the paper's method (agent `jax-pro`, agent `julia-pro`, agent `continuum-mechanics-engineer`, agent `statistical-physicist`, agent `pinn-engineer`, or agent `simulation-expert` — implementation) → `quality-specialist` (numerical validation gates).
 
+**Arguments:** $ARGUMENTS
+
 ## Usage
 
 ```bash

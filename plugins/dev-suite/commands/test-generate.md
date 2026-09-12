@@ -2,7 +2,6 @@
 name: test-generate
 description: Generate scientific test suites — numerical precision, property-based mathematical invariants, JAX vmap/jit correctness, Julia @inferred type-stability. For general TDD workflow, use superpowers:test-driven-development. Use --scientific flag for domain-specific tests.
 argument-hint: <source> [--coverage] [--property-based] [--benchmarks] [--scientific]
-execution-modes: {quick: "30min-1h", standard: "2-4h", enterprise: "1-2d"}
 allowed-tools: [Read, Write, Bash, Task]
 ---
 
