@@ -22,8 +22,7 @@
     "architecture",
     "git",
     "review",
-    "documentation",
-    "opus-4.7"
+    "documentation"
   ],
   "agents": [
     "./agents/app-developer.md",

@@ -3,7 +3,6 @@ name: documentation-expert
 description: Technical documentation architecture — API references, ADRs, tutorials, and docs-as-code workflows using the Diátaxis framework.
 model: haiku
 color: yellow
-effort: medium
 memory: project
 maxTurns: 20
 background: true

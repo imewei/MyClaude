@@ -8,7 +8,7 @@
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Docs](https://img.shields.io/badge/Docs-ReadTheDocs-brightgreen.svg)](https://myclaude.readthedocs.io/en/latest/)
 
-Claude Code plugin marketplace with **3 focused suites**, **20 expert agents**, **15 registered commands**, and **50 hub skills** routing to **148 sub-skills**. Built for Claude Opus 4.7 with tiered model assignments (Opus/Sonnet/Haiku), 12 lifecycle hook events across all suites, and hub-skill architecture for zero-ambiguity skill routing.
+Claude Code plugin marketplace with **3 focused suites**, **20 expert agents**, **15 registered commands**, and **50 hub skills** routing to **148 sub-skills**. Built for the Claude 5 model generation (Opus 5, Sonnet 5, Haiku 4.5) with tiered model assignments, 12 lifecycle hook events across all suites, and hub-skill architecture for zero-ambiguity skill routing.
 
 ## The 3-Suite Hub Architecture
 
@@ -23,6 +23,15 @@ MyClaude v4.0.0 uses a **hub-skill architecture**: skills are organized into hub
 ## Specialist Agents
 
 20 agents with tiered model assignments: **10 opus** (deep reasoning), **8 sonnet** (standard), **2 haiku** (fast).
+
+Tiers name Claude Code model aliases, not pinned versions, so each agent tracks the current generation: `opus` → Opus 5, `sonnet` → Sonnet 5, `haiku` → Haiku 4.5. The 18 `opus` and `sonnet` agents set `effort: high`; `xhigh` is deliberately unused, since it does not exist on Sonnet 4.6 or Opus 4.6. The two `haiku` agents set no `effort` at all — the field is not supported on Haiku 4.5.
+
+Two models sit outside the alias set and are reachable only by pinning them explicitly on a dispatch (`model:` on the Agent call, or in an agent's frontmatter):
+
+| Model | When to pin it |
+|-------|----------------|
+| `fable` (Fable 5.1) | Hardest long-horizon agentic runs. ~2× Opus 5 per token, and it rejects forced `tool_choice: any\|tool` with a 400 — verify the agent's harness does not force tool choice before making it a default. No agent is pinned to it. |
+| Opus 4.8 / Sonnet 4.6 | Previous generation, still served. Pin one to reproduce an older run, or as a refusal fallback for `fable`/`opus` work. Sonnet 4.6 costs *more* than Sonnet 5 ($3/$15 vs $2/$10 per MTok), so pin it for reproducibility, never to save money. |
 
 | Agent | Suite | Model | Specialization |
 |-------|-------|-------|----------------|

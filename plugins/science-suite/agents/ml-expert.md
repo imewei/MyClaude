@@ -3,7 +3,6 @@ name: ml-expert
 description: Classical ML/MLOps expert for scikit-learn, XGBoost/LightGBM, feature engineering, CV, Optuna, SHAP, MLflow/W&B, and serving. Delegates DL to neural-network-master.
 model: haiku
 color: yellow
-effort: low
 memory: project
 maxTurns: 30
 tools: Read, Write, Edit, Bash, Grep, Glob
