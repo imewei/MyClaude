@@ -1,6 +1,0 @@
-{
-  "name": "rust-cli",
-  "language": "rust",
-  "domain": "systems-cli",
-  "description": "Async Rust CLI with clap, anyhow error handling, and tokio runtime"
-}

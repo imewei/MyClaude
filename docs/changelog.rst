@@ -1,6 +1,39 @@
 Changelog
 =========
 
+Unreleased
+----------
+
+**Tooling: removed the tautological skill-triggering metrics**
+
+* ``skill_validator.py`` rewritten as a skill *inventory* validator. The previous version reported
+  Overall Accuracy / Precision / Recall / Over-Trigger / Under-Trigger against a test corpus, but
+  ``determine_expected_application()`` derived its ground truth from the same
+  ``calculate_skill_match_score()`` call used to make the prediction, and its ``plugin_context_match``
+  branch matched no MyClaude suite name (all fell through to ``True``). Ground truth therefore reduced
+  to the prediction expression and the table reported 100% for any description text, including
+  nonsense. Verified against ``test-corpus/``: TP 697 / TN 53 / FP 0 / FN 0.
+* The classifier modelled description-matching dispatch, which MyClaude does not use — all 198 skills
+  (50 hubs, 148 sub-skills) set ``disable-model-invocation: true`` and are reached by slash command or
+  by an explicit hub routing table naming the target file path. Removed rather than repaired.
+* The tool now loads registered skills and reports the per-plugin inventory plus frontmatter issues
+  (missing name/description, descriptions under 40 chars, loader errors); exits non-zero on issues.
+  ``--corpus-dir`` removed.
+* ``test_skill_validator.py`` regression tests replaced: a test now asserts the accuracy/precision
+  table cannot reappear in the report.
+* ``test-corpus/`` (15 fixture projects, 31 files) deleted — it had no working consumer.
+  ``skill_validator.py`` no longer reads it, and the two other tools that default to
+  ``--corpus-dir test-corpus`` both crash before reaching it: ``activation_tester.py`` raises
+  ``KeyError: 'category'`` (fixtures carry only name/language/domain/description, never the
+  ``category``/``expected_plugins``/``expected_trigger`` labels it reads) and
+  ``command_analyzer.py`` raises ``TypeError: string indices must be integers`` in
+  ``load_commands()`` against path-string ``plugin.json`` command entries. Both remain broken and
+  are now unexercised; ``test-corpus`` exclusions removed from ``pyproject.toml``, CLAUDE.md,
+  CONTRIBUTING.md, and RUNBOOK.md.
+* ``CLAUDE.md``: dev-suite hub count corrected 10 -> 9 (9 registered hubs -> 35 sub-skills; 44
+  ``SKILL.md`` on disk). research-suite (11 -> 6) and science-suite (30 -> 107) verified correct.
+* Test suite: 377/377 pass; ruff clean.
+
 v4.0.0 (2026-07-31)
 --------------------
 

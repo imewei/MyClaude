@@ -1,6 +1,0 @@
-{
-  "name": "typescript-react",
-  "language": "typescript",
-  "domain": "frontend-react",
-  "description": "Typed React component with hooks, async data fetching, and error boundaries"
-}

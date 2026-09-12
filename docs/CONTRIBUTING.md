@@ -15,8 +15,8 @@ uv sync            # installs dev + docs + science dependency groups
 | `uv sync` | Install all dependency groups (dev + docs + science) |
 | `uv run pytest` | Run test suite (tests live in `tools/tests/`) |
 | `uv run pytest tools/tests/test_x.py -v` | Run a single test file |
-| `uv run ruff check .` | Lint (excludes `test-corpus/`) |
-| `uv run mypy tools/` | Type-check (excludes `plugins/*/hooks/`, `plugins/*/examples/`, `test-corpus/`) |
+| `uv run ruff check .` | Lint |
+| `uv run mypy tools/` | Type-check (excludes `plugins/*/hooks/`, `plugins/*/examples/`) |
 | `make format` | Format with black + `ruff --fix` |
 | `make validate` | Validate plugin metadata, command lint, doc cross-links |
 | `make verify-fast` | Quick gate: lint + validate |
@@ -38,7 +38,6 @@ PYTHONPATH=. python3 tools/validation/metadata_validator.py plugins/dev-suite/
 ## Testing
 
 - Tests live in `tools/tests/`, not the repo root. Always use `uv run pytest` or `make test` — bare `pytest` misses `testpaths` unless run from a context that respects `pyproject.toml`.
-- `test-corpus/` is excluded from ruff, mypy, and pytest: it holds fixture files that intentionally import scientific libraries (jax, numpyro, ...) not installed in this project.
 
 ## Code Style
 

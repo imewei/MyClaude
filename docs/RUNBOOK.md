@@ -29,7 +29,6 @@ This repo ships a Claude Code plugin marketplace, not a deployed service — the
 - **Version drift across files** — no tooling catches this; `make validate` only checks semver *format* within each `plugin.json` independently. Grep all four locations listed under Release Procedure above before every release.
 - **`pytest` finds no tests / fails to collect** — tests live under `tools/tests/`, not the repo root; run `uv run pytest` (respects `testpaths` in `pyproject.toml`), not a bare `pytest` from an unexpected `cwd`.
 - **mypy errors inside `plugins/*/hooks/` or `plugins/*/examples/`** — these paths are intentionally excluded (`pyproject.toml` `[tool.mypy].exclude`); if mypy is still flagging them, check the invocation isn't overriding the config.
-- **ruff flags files under `test-corpus/`** — that directory is fixture content for the skill validator and is excluded in `[tool.ruff].exclude`; don't "fix" imports there.
 - **Sphinx build shows duplicate TOC entries** — remove any stray `.. contents::` directive; the Furo theme auto-generates the sidebar.
 
 ## Rollback
