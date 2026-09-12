@@ -3,7 +3,6 @@ name: workflow-automate
 description: Automated CI/CD workflow generation and management for GitHub Actions and GitLab CI.
 argument-hint: "[--mode=quick-start|standard|enterprise] [--platform=github|gitlab|both]"
 category: "dev-suite"
-command: "/workflow-automate"
 execution-modes:
   quick-start: "10-15m: Single workflow (GitHub/GitLab)"
   standard: "30-45m: Full pipeline + security + monitoring"

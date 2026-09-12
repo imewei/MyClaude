@@ -46,6 +46,30 @@ Unreleased
   re-breaking that line. An arrow may point to an agent — ``/replicate`` ends
   ``→ `quality-specialist``` — so agents are accepted there too.
 
+**Audit against plugin-dev's hook-development, plugin-structure, and command-development specs**
+
+* **Hooks.** Checked against the current Claude Code hooks reference, not the plugin-dev validator's
+  stale event list. ``dev-suite/hooks/subagent_stop.py`` never read the documented ``agent_type`` field,
+  so every subagent completion was announced as ``'unknown'``; and its reviewer-integrity check scanned
+  ``transcript_path`` — the *parent* session's transcript — instead of ``agent_transcript_path``. Both
+  fixed. Confirmed correct: ``StopFailure`` and ``TaskCompleted`` are real events; an omitted ``matcher``
+  means match-all; all 16 hook entries use ``${CLAUDE_PLUGIN_ROOT}`` and set a timeout; async hooks do
+  deliver ``additionalContext`` (next turn).
+* **Plugin structure.** 197 component files referenced ``plugins/<suite>/...`` — a path that resolves
+  only when cwd is this repository. Every hub's routing header told the model to Read sub-skills that
+  way, so hub routing did not work for a marketplace install. 217 same-suite references rewritten to
+  ``${CLAUDE_PLUGIN_ROOT}/...``, the shared header rewritten around the variable, and 5 cross-plugin
+  paths replaced with ``<suite>:<name>`` dispatch names. ``xref_validator`` learned the portable form
+  (507/507 valid, verified to fire on a broken one). Two invariant tests per suite forbid repo-relative
+  and absolute home paths in component markdown.
+* **Commands.** All 17 have valid ``allowed-tools`` and are phrased as directives to Claude. Removed
+  dead frontmatter keys from 6 dev-suite commands (``command:`` duplicated ``name``; ``purpose`` and
+  ``workflow-type`` were read by nothing). Left as advisory: 16 of 17 descriptions exceed the spec's
+  60-char guideline, but they carry routing disambiguation that a truncation would lose;
+  ``execution-modes`` is non-spec but holds timing estimates found nowhere else.
+* plugin-dev's own ``command-development`` skill has a broken ``!`bash`` preprocessor line referencing
+  a script that does not exist; read the file directly.
+
 **Security: second-reviewer pass (Antigravity) on the hooks**
 
 * Re-ran the hook review with Antigravity after Codex, in 9 small batches (a whole-repo prompt hit the

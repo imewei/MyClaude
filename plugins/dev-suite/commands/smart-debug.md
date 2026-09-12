@@ -1,7 +1,6 @@
 ---
 name: smart-debug
 category: debugging
-purpose: AI-assisted debugging with automated RCA, pattern recognition, production-safe techniques
 description: Scientific computing debugger for NaN/inf propagation, JAX JIT trace failures, Julia dispatch ambiguities, shape mismatches, numerical instability. For general software bugs, use superpowers:systematic-debugging first.
 execution-modes:
   quick-triage: "5-10min"

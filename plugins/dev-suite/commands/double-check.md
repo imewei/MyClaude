@@ -1,10 +1,8 @@
 ---
 name: double-check
-command: /double-check
 description: Interactive validation workflow that runs automated testing, security scanning, and code review on specified work
 argument-hint: "[work] [--deep] [--security] [--performance]"
 execution-modes: {quick: "5-15min", standard: "30-60min", enterprise: "2-4h"}
-workflow-type: sequential
 allowed-tools: [Bash, Read, Task, Grep]
 ---
 

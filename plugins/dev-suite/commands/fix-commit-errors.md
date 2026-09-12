@@ -2,7 +2,6 @@
 name: fix-commit-errors
 description: Automatically analyzes GitHub Actions failures, identifies root causes, applies intelligent solutions, validates, and reruns workflows with adaptive learning.
 category: "dev-suite"
-command: "/fix-commit-errors"
 execution-modes:
   quick-fix: "5-10m: Discovery + Fix"
   standard: "15-30m: Full resolution + learning"
