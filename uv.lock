@@ -1155,7 +1155,7 @@ wheels = [
 [[package]]
 name = "myclaude"
 version = "4.0.1"
-source = { virtual = "." }
+source = { editable = "." }
 dependencies = [
     { name = "pyyaml" },
 ]

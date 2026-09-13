@@ -1,15 +1,19 @@
-# Build artifacts
+# Build artifacts & ephemeral caches
 graphify-out/
 docs/_build/
 
-# Python bytecode
+# Python runtime & tool caches
 **/__pycache__/
 **/*.pyc
 **/*.pyo
-tools/tests/__pycache__/
+.venv/
+.mypy_cache/
+.mypy_cache.*/
+.pytest_cache/
+.ruff_cache/
 
-# Plugin metadata caches (not source)
-plugins/*/skills/**/*.json
+# Package lock (large, low context value)
+uv.lock
 
 # Data files too large for context
 **/*.csv

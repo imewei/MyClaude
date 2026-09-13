@@ -53,11 +53,6 @@ default-groups = ["dev", "docs", "science"]
 explicit_package_bases = true
 exclude = ["plugins/.*/hooks/", "plugins/.*/examples/"]
 
-[tool.ruff]
-# Skill-validator fixtures import scientific libraries that aren't installed
-# in this project (jax, numpyro, optax, ...). The files exist as text patterns
-# for the validator's matcher, not as runnable code.
-
 [tool.ruff.lint]
 # S602: subprocess call with shell=True (command injection risk)
 # S603: subprocess call without shell=True check (informational)
@@ -71,6 +66,10 @@ extend-select = ["S602"]
 [tool.pytest.ini_options]
 testpaths = ["tools/tests"]
 norecursedirs = ["plugins", ".*"]
+
+[build-system]
+requires = ["setuptools>=69.0.0"]
+build-backend = "setuptools.build_meta"
 
 [tool.setuptools]
 packages = ["tools"]

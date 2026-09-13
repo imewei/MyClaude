@@ -8,7 +8,7 @@ Automated tools for plugin validation and ecosystem maintenance. All tools use P
 # Validate all plugins
 make validate
 
-# Run all tests (258 tests)
+# Run all tests
 uv run pytest tools/tests/ -v
 
 # Check skill context budget
@@ -37,7 +37,7 @@ tools/
 ├── maintenance/           # Ecosystem maintenance
 │   ├── analyze_ecosystem.py       # Skill/agent ecosystem metrics
 │   └── enable_all_plugins.py      # Enable all plugins in settings
-├── tests/                 # Pytest suite (258 tests)
+├── tests/                 # Pytest suite
 │   ├── test_build_automation.py
 │   ├── test_command_file_linter.py
 │   ├── test_content_extraction.py

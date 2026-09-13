@@ -11,7 +11,6 @@ build:
       - pip install uv==0.10.2
     post_install:
       - uv export --group docs --group science --no-hashes | uv pip install -r -
-      - uv pip install --no-deps .
 
 sphinx:
   configuration: docs/conf.py

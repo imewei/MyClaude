@@ -1,9 +1,30 @@
-# .graphifyignore
+# .graphifyignore — Selectively index plugins/, tools/, and docs/
+
+# Ignore everything by default
+*
+
+# Index plugin definitions (skills, agents, commands, hooks, routing)
+!plugins
+!plugins/**
+
+# Index Python validation tooling (metadata_validator, skill_validator, etc.)
+!tools
+!tools/**
+
+# Index documentation (RST, Markdown)
+!docs
+!docs/**
+
+# Exclude ephemeral build artifacts from indexing
+docs/_build
+docs/.doctrees
+graphify-out/cache
+graphify-out/.graphify_*.json
+
+# Exclude language/build artifacts
+*.pyc
+__pycache__
+**/__pycache__
 node_modules/
 dist/
 *.generated.py
-
-# only index plugins/, ignore everything else
-*
-!plugins
-!plugins/**
