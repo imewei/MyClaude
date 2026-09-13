@@ -1,2189 +1,962 @@
 # Graph Report - MyClaude  (2026-09-12)
 
 ## Corpus Check
-- 470 files · ~376,406 words
+- 274 files · ~376,395 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 8151 nodes · 5534 edges · 3739 communities (389 shown, 3291 thin omitted)
-- Extraction: 98% EXTRACTED · 2% INFERRED · 0% AMBIGUOUS · INFERRED: 125 edges (avg confidence: 0.83)
-- Token cost: 0 input · 0 output
-
-## Graph Freshness
-- Built from commit: `4b95eaa1`
-- Run `git rev-parse HEAD` and compare to check if the graph is stale.
-- Run `graphify update .` after code changes (no API cost).
+- 7447 nodes · 5772 edges · 2951 communities (396 shown, 2510 thin omitted)
+- Extraction: 98% EXTRACTED · 2% INFERRED · 0% AMBIGUOUS · INFERRED: 131 edges (avg confidence: 0.83)
+- Token cost: 569,637 input · 36,930 output
 
 ## Community Hubs (Navigation)
-- dais_demo.py
-- Workflow
-- Pattern Formation
-- Bayesian SINDy Workflow
-- FixResult
-- main
-- Pre-Implementation Review
-- bayesian_workflow_template.py
-- profile_jax.py
-- PrototypeSkeleton
-- pmap_train_step
-- Citation Style Guide
-- 04_theory.md artifact (prose companion)
-- Environment Conventions
-- hsgp.py
-- .analyze_run
-- prodlda.py
-- Core Julia Patterns
+- Correct Claude Code Hook Outpu
+- Array
+- Bayesian_Workflow_Template
+- _Hook_Io
+- 1. Dependency Errors
+- Counter
+- Sci Workflow Engineer
+- Rest Best Practices
+- Graphql Schema Design
+- Power_Analysis
+- Distribution_Catalog
+- Agent Prompts
+- Partial
 - Neural Network Master
-- Research and Domains
-- Robust Testing in Python
-- App Developer
-- Pagination
-- Kafka Patterns
-- doe_generator.py
-- research-suite/hooks/session_start.py
-- Authentication & Authorization Patterns
-- Evidence Synthesis Skill
-- Rare-Events Sampling
-- propagate (custom message passing)
-- research-suite/hooks/task_completed.py
-- Quality Specialist
-- JAX Core Programming References
-- Grafana Dashboards
-- _cli
-- Stochastic Dynamics & Transport
-- Minimal pattern — DPO with trl
-- ClusterManagers.jl
-- Python Pro - Systems Engineer
+- Python Pro
+- Variational_Inference_Guide
+- Iterativefixengine
+- Ml Expert
+- Statistical Physicist
+- Compiler Patterns Skill
+- Research_Assessment_Template
 - Simulation Expert
-- Detailed Assessment
-- Cloud Deployment
-- Science Suite
-- machine-learning/SKILL.md
-- Automation Engineer
-- 📁 Contents
-- SRE Expert (Reliability Consultant)
-- AUTO-07p minimal usage sketch
-- count_params
-- ML Expert
-- Julia Graph Neural Networks
-- DeepEquilibriumNetworks.jl
-- read_payload
-- Documentation Expert
-- Automated Insights
-- Numerical Methods Implementation
-- pure-functional-patterns.py
+- Skill)
+- Gaussian_Shells
+- Basemodel
+- 1. Platform & Stack
+- 1. Speed & Feedback
+- Erroranalysis
+- Pure Functional Patterns
+- Compare_Training_Runs
+- Simulation Expert Agent
+- 1. Requirements
+- Eng Feature Dev
+- Api Design Checklist
+- Blackjax Custom Sampler
+- Cfd_Taylor_Green
+- Pinn_Heat_Equation
+- Skill
+- Debug_Jax
+- Adjoint Methods
+- Vqe_Hydrogen
+- Mcmc_Diagnostics
+- Gp
+- Best Practices
+- Solver Selection
+- Continuum Handshake)
+- Dynamax
+- 1. Quality Impact
+- Chain Of Thought Decision Fram
+- Action: Generate
+- Approval Gates
+- Best Practices
+- Continuum Mechanics Engineer
+- 1. Molecular Dynamics Workflow
+- 3D Diffusion Model
+- Sde Brownian
+- Result_Enhancements_Demo
+- Funnel
+- Compact
+- Chain Of Thought Decision Fram
+- Auth Middleware
+- Api Monitoring (Red)
+- Automated (Aws Lambda)
+- Bib_To_Steelman
+- 04_Theory Artifact (Prose Comp
+- Pure Log Prob Models
+- Profile_Jax
+- Checklist
+- Diagnose_Optimization
+- 04_Interpreting_Diagnostics
+- Stochastic_Volatility
+- Analyze_Activations
+- Lux.Jl
+- Best Practices
+- Knowledgebase
+- Alert Rules
 - Nonlinear Dynamics Expert
-- Experimental Data Interpretation
-- model
-- KnowledgeBase
-- annotation.py
-- Workflow
-- Equation Discovery
-- CI/CD Pipelines
-- Complete Training Pipeline Architecture
-- Software Architect
-- unfused_operations
-- Boundary Conditions
-- Data Analysis & Model Validation
-- Molecular Dynamics Validation
-- For Learning
-- Scientific Feature Development
-- Advanced Topics
-- Event Schema Evolution Rules
-- 3. pyproject.toml Integration
-- Systems & CLI Engineering
-- adjoint-methods.py
-- Batch Normalization
-- compare_training_runs.py
-- Search Patterns
-- Julia GPU Kernels
-- Solutions
-- Pattern 3: Production Deployment
-- latex_sanity.py
-- 1. Methodological Rigor
-- Cloud Provider Patterns
-- Database Patterns
-- 1. Algorithm Selection
-- nonlinear-dynamics/SKILL.md
-- SQL Optimization Patterns
-- Route Mode
-- julia-mastery/SKILL.md
-- Quantum Computing
-- Point Processes & Self-Exciting Dynamics
-- pure-log-prob-models.py
-- pinn_heat_equation.py
-- Batch Gradient Descent
-- Variational Inference Guide
-- rest-api-template.py
-- Documentation Management
-- 2. Statistical Validity
-- 3. Evidence Quality
-- REST API Best Practices
-- Secrets Management
-- 4. Visual Integrity
-- spmd-parallelism.py
-- cfd_taylor_green.py
-- baseball.py
-- 5. Reproducibility
-- str
-- Four invariants you enforce
-- Julia Web Development
-- Julia → Python interop via PythonCall.jl
-- julia-ml-and-dl/SKILL.md
-- Parallel Computing Suite
-- IterativeFixEngine
-- observable_extractor.py
-- Chain-of-Thought Decision Framework
-- Common Patterns & Anti-Patterns
-- Observability and SRE
-- Quick Start
-- read_payload
-- mortality.py
-- Blackjax
-- solver-selection.py
-- Physical Systems & Correlation Functions
-- Continuous Distributions
-- Embeddings and Similarity
-- GraphQL Schema Design Patterns
-- Error Handling Patterns
-- Message Queue Patterns
-- Constitutional AI Principles
-- Digital Filter Design
-- Computer Vision
-- blackjax-custom-sampler.py
-- sde-brownian.py
-- xla-optimization.py
-- vqe_hydrogen.py
-- result_enhancements_demo.py
-- sparse_regression.py
-- Core Skills
-- MCMC Convergence Diagnostics
-- Core Responsibilities
-- Core Skills
-- Delegation Strategy
-- API Design Principles
-- Caching Patterns
-- Documentation Standards
-- ml-and-data-science/SKILL.md
-- Optax Gradient Transformation Library
-- Julia Training Diagnostics
-- Multi-Head Attention
-- diagnose_optimization.py
-- statistical-physicist Agent
-- Workflow
-- Active Matter & Complex Systems
-- Block-maxima (GEV)
-- Block Averaging
-- JAX Core Programming
-- Julia Neural Networks
-- Herdr transport — operational detail
-- test-find-agents.sh
-- 10. `gallery/engineering/system_identification.py`
-- Evidence Grading (GRADE)
-- Nonlinear Dynamics
-- Examples
-- Matplotlib Publication Plot
+- Spmd Parallelism
+- Checklist
+- Enhanced_Error_Messages_Demo
+- Function_Library_Demo
+- Greeter
+- Api Design Principles
+- Skill
+- Backpressure Strategies
+- Bayesian Inference
+- Skill
+- Annotation
+- Capture_Recapture
+- Skill)
+- Ml Expert
+- Cd Pipelines Skill
+- Api Gateway
+- Doe_Generator
+- Review_Structure
+- Julia Pro Agent
+- Active Brownian Particles
+- Generate_Diagrams
+- Readme
+- Effect_Handlers_Guide
+- 3X Margin Rule
+- Direct Preference Optimization
+- Smart Debug
+- Aggregate Optimization
+- Checklist
+- Ruflo Goals:Deep Researcher (R
+- 10. Write, Lint, Hand Off
+- Skill
+- Observablebuilder
+- Skill
+- Skill
+- Cache Aside Pattern (Redis + P
+- Availability Targets
+- 1. Extract Concepts From `01_S
+- 1. Write The Failure Narrative
+- Skill
+- Publication_Readiness
+- Pinn Engineer
+- Skill
+- Skill
+- Bayesian Sindy Workflow
+- Active Matter Observables
+- Skill)
+- Sensor_Calibration
+- Hierarchical_Model_Template
+- Baseball
+- Skill)
+- Basic Ude Example: Lotka Volte
+- Readme
+- Continuum Mechanics Engineer
+- Ecc:Kubernetes Patterns (Exter
+- Architecture And Infrastructur
+- Containerization Patterns
+- Best Practices
+- Search Patterns Skill
+- Best Practices
+- Skill
+- Dataloader
+- Readme
 - Airflow Scientific Workflows
 - Architecture Patterns
-- Containerization Patterns
-- GitHub Actions Templates
-- Pre-Response Validation Framework (5 Checks)
-- Principle 1: Truthfulness (Target: 100%)
-- simulation-and-hpc/SKILL.md
+- Cd Integration
+- Skill)
+- Basic Pipeline
+- Best Practices
+- 1. Strategy & Patterns
+- Alerts
+- Research Expert
+- Skill
+- Observable_Extractor
+- Graybox_Boundary
+- Sci Workflow Engineer
+- Skill)
+- Checklist
+- Checklist
+- Skill
+- Changelog
+- 2. Project Layout And Build Ba
+- Julia Ml Hpc
+- Diffrax
+- Pattern
+- Modernize Command
+- Checklist
+- Skill)
+- Accessibility Testing
+- Checklist
+- Checklist
+- Aps_Rheo_Xpcs_Capabilities
+- Prototype_Skeleton.Jl
+- Arxiv Preprint Citation Format
+- Abstract
+- Spark_Template
+- Readme
+- Checklist
+- Julia Ml Hpc Agent
+- Jax Bayesian Pro
+- 1D Data Parallelism Pattern
+- Checkpointing Stage (Orbax)
+- 02_Production_Training
+- Skill)
+- Skill)
+- Testing And Quality Skill
+- Fix Commit Errors Command
+- Skill
+- Skill
+- Agy Routes
+- Post_Tool_Use
+- Artifact_Diff
+- Heilmeier
+- Dimensional_Analysis
+- Bayesian Pinn — Bnnode & Bayes
+- Checklist
+- Skill
 - Core Skills
-- Bioinformatics Workflow Checklist
-- Q1: What are you trying to do?
-- Control Design Checklist
-- DataPipeline (ETL)
-- Cosine Annealing
-- step
-- gaussian
-- function_library_demo.py
-- analyze_activations.py
-- continuum-mechanics-engineer Agent
-- Advanced Simulations
-- Bayesian Universal Differential Equation Workflow
-- 10. Best Practices
-- Architecture Selection
-- Pattern 3: Production Deployment
-- Principle 2: Objectivity (Target: 100%)
-- Principle 3: Accessibility (Target: 95%)
-- Execution
-- E2E Testing Patterns
-- Prometheus Configuration
-- Observability and SRE Orchestrator Skill
-- dedupe_refs.py
-- DataDrivenDiffEq.jl — Full Julia API Reference
-- Julia Visualization Patterns
-- Multi-Physics Coupling Patterns
-- Evaluation Types
-- Principle 4: Rigor (Target: 100%)
-- run_inference
-- Greeter
-- Advanced ML Systems
-- Mathematical Foundations of Correlation Functions
-- Deep Learning Experimentation
-- JAX Optimization Pro: The JAX-First Engineer
-- 1. Linear Algebra (`linear-algebra-reference.md`)
+- Enzyme_Kinetics
+- Reaction_Kinetics
+- Titration_Curves
+- Skill
+- Expert Agent
+- Amplitude Equations: Complex G
+- Greet_Multiple()
+- Test Basic Greeting Functional
+- 1. Relu Activations
+- Automation Engineer
+- Debugging Toolkit Skill
+- Double Check Command
+- Skill)
+- Skill
+- Engine
+- Test Automation Skill
+- Multimodal_Sequencing
+- Instrument_Capability_Map
+- Julia_First_Rules
+- Formalism_Code_Reconcile
+- Skill
+- Additional Resources
+- Skill
+- Skill
+- Growth_Curves
+- Materials_Characterization
+- Skill)
+- Checklist
+- Checklist
+- Skill)
+- 1. Gradient Clipping (Essentia
+- 1. Leaky Relu
+- Fixture
+- App Developer
+- 1. Assess Repository (Single C
+- Aws Secrets Manager
+- Skill
+- Three Brain Skill
+- Writing_Constraints
+- Proposal_Assembly
+- Integrity_Checks
+- Julia Datadriven Diffeq
+- Additional Resources
+- Skill
+- 04_Bayesian_Inference
+- Skill
+- Jax Optimization Pro
+- Additional Resources
+- Best Practices
+- Benchmark_Comparison
+- Damped_Oscillation
+- Radioactive_Decay
+- Readme
+- Skill
+- Bnn
+- Dais_Demo
+- Skill
+- Core
+- Skill
+- Hpc
+- Freud Analysis Library
+- Pennylane
+- Sre Expert Agent
+- Common Jit Errors
+- 1. History Management
+- 1. Project Detection
+- Format
+- Claim_Schema
+- Search_Strategy
+- Validation_Report
+- Premortem_Template
+- Hostile_Self_Audit
+- Skill
+- Experimental_Design_Checklist
+- Methodology_Evaluation
+- Statistical_Rigor_Guide
+- Dimensional_Audit
+- Cd Patterns Skill
+- Skill)
+- Best Practices
+- Neural Network Master Agent
+- Common Pitfalls
+- Dvc For Data Versioning
+- Common Failure Modes
+- Additional Resources
+- Basic Transformation Stack (Gr
+- Additional Resources
+- Namedtuple
+- Checklist
+- Skill
+- Core Skills
+- Delegation
+- 02_Checkpoint_Resume
+- 03_Custom_Retry_Settings
+- Horseshoe_Regression
+- Ode
+- Async Context Manager
+- Skill
+- Science Hub
+- Skill
+- 1. Audience Analysis
+- Chain Of Thought Decision Fram
+- Software Architect Agent
+- 1. Reliability Impact
+- Skill
+- Infrastructure As Code (Terraf
+- Accessibility Checker
+- Operations
+- Git Bisect
+- Find Agents.Sh
+- 1. The Core Is A Valid Endpoin
+- Subagent_Stop
+- Metrics_Prereg
+- Fermi_Screen
+- Checklist
+- Continuum Mechanics Engineer A
+- Benchmark
+- Md Sim
+- Constitutive Equations
+- Checklist
+- Best Practices
+- Skill
+- Create_Batch_Iterator()
+- Checklist
+- Skill
+- Skill
+- Skill
+- Best Practices
+- Skill
+- Dose_Response
+- System_Identification
+- Skill)
+- Api_Reference
+- Neutra
+- Holt_Winters
+- Test That Fixture Can Be Reuse
+- Skill
+- Ml Expert
+- Python Pro Agent
+- Quality Specialist Agent
+- Skill
+- Onepage
+- Format
+- Skill
+- Analyze Data
+- Run Experiment
+- Checklist
+- Checklist
+- Checklist
+- Pysindy And Symbolic Regressio
+- Skill
+- Pmap_Train_Step()
+- Md_Lennard_Jones
+- Anti Patterns
+- Lux Training And Message Passi
+- Skill
+- Skill
+- Best Practices
+- Calculus And Backpropagation  
+- Checklist
+- Hybrid_Streaming_Demo
+- 01_Basic_Fault_Tolerance
+- Nlsq_Example
+- Skill
+- Skill
+- Robust Testing
+- .Analyze_Run()
+- Cargo Dist)
+- Model Routes
+- Integrity_Checks Reference (Lo
+- Bifurcationkit.Jl — Continuati
+- Bayesian Universal Differentia
+- Turing Ude Stage Code
+- Applications
+- Chaos Characterization & Attra
+- Computer Vision Skill
+- Checklist
+- Funnel_Log_Prob_Centered()
+- Inspect_Jaxpr()
+- 01_Quick_Prototyping
+- 03_Multi_Device_Scaling
+- Dropout()
+- Experiment Tracking
+- Checklist
+- Readme
+- 1. `Nlsq_Quickstart.Ipynb`
+- Benchmark_Mcmc_Vi
+- Model_Comparison
+- Prior_Predictive_Check
+- Checklist
+- Session_Start
+- Task_Completed
+- Ddp Pattern
+- Bioinformatics Skill
+- Aws Sagemaker
+- Readme
+- Memory Optimization Table
+- 1. Jit Compilation (`Jax.Jit`)
+- 2. Vectorization (`Jax.Vmap`)
+- 3. Multi Device Parallelism (`
+- 4. Automatic Differentiation (
+- Readme
+- Boundary Conditions
+- Aws Sagemaker
+- Readme
+- 1. `Bayesian_Workflow_Template
+- Customization Checklist
+- Readme
+- Core Components
+- Modern Sciml Components
+- Bayesian Inference Hub
+- Nlsq Interactive Notebooks Ove
+- Terse
+- Verbose
+- Latex_Compile_Check.Sh
+- Domain 1: Core Jax Programming
+- Domain 2: Bayesian Inference (
+- Domain 3: Nonlinear Least Squa
+- Domain 5: Modern Neural Networ
+- Domain 1: General Julia Progra
+- Auto 07P Minimal Usage Sketch
+- 6. Modern Sharding Api (2025)
+- Count_Params()
+- Interpolate_Params()
+- Check_Fusion()
+- Multiple Operations That Shoul
+- Core Modules
+- Core Modules
+- Jax Physics Applications Api R
+- Boundary Conditions
+- Molecular Dynamics Validation
+- 10. Mlops & Production
+- Chain Rule
+- Expectation And Variance
+- Neural Network Applications
+- For Learning
+- Forward Pass
+- Api_Reference
+- For Learning
+- Pattern 3: Production Deployme
+- Cvae
+- Advanced Topics
+- Pattern 3: Production Deployme
+- 2. Gpu Acceleration (Cross Pla
+- __Init__
+- Algorithm Selection
+- Forward Pass
+- Loss Curve Interpretation
+- Differentialequations.Jl
+- Python Pro
+- Scientific Workflow Engineer
+- Analyze Data
+- Claim Canonical Form (Under Co
+- Cuda.Jl
+- Diffrax
+- Equinox
+- Flux.Jl
+- Gap Matrix (Phenomena X Method
+- Jax
+- Jax Md
+- Kernelabstractions.Jl
+- Kill Criterion (Falsifiability
+- Lux.Jl
+- Neuralpde.Jl
+- Nlsq
+- Numpyro
+- Pallas (Jax Kernel Language)
+- Predicted Observable (Stage 6 
+- Steelman Note (Strongest Claim
+- Adjacent)
+- Correlation Analysis Hub
+- Demo Examples
+- Gallery: Biology Examples
+- Gallery: Chemistry Examples
+- Gallery: Engineering Examples
+- Gallery: Physics Examples
+- Hybrid_Streaming_Demo (Paramet
+- Streaming Examples
+- Batch Normalization
+- Bayes' Theorem
+- Pattern Recognition And Machin
+- Weight Uncertainty In Neural N
+- Dropout
+- Bayesian Deep Learning (Yarin 
+- Deep Learning (Goodfellow, Ben
+- Information Theory, Inference,
+- Epistemic)
+- He)
+- Advanced)
+- Curvefitresult Return Object
+- Fit() Core Function
+- Legacy Api (Deprecated: Curve_
+-  Memory_Context
+- Hpc)
+- Slow)
+- Jit Compilation Overhead Troub
+- Memory Issues Troubleshooting
+- Real Time Monitoring (Stagnati
+- Slow Jacobian Computation Trou
+- Arctan Loss
+- Cauchy (Lorentzian) Loss
+- Huber Loss
+- Linear (Standard Least Squares
+- Impact On Convergence Comparis
+- Loss Function Decision Tree
+- Loss Function Theory (Cost For
+- Soft L1 Loss
+- Example Package
+- Payload Mutation Pattern
+- Relay Cursor Pagination
+- Cursor Based Pagination
+- Url Versioning Strategy
+- Clean Architecture
+- Cqrs
+- Domain Driven Design (Ddd)
+- Event Sourcing
+- Permission Based Authorization
+- Rbac (Role Based Access Contro
+- Cache Aside Pattern
+- 6 Step Review Process
+- Migration Strategies (Alembic)
+- N+1 Query Prevention (Eager Lo
+- Orm Patterns (Sqlalchemy)
+- Dora Metrics
+- Documentation Best Practices
+- Adr)
+- Accessibility Testing (Axe Cor
+- Page Object Model
+- Result Type Pattern
+- Cherry Pick
+- Git Push   Force With Lease
+- Git Lfs For Binary Assets
+- Interactive Rebase
+- Git & Workflow Management Skil
+- Docker Build & Push Workflow
+- Kubernetes Deployment Workflow
+- Github Actions Templates Skill
+- Matrix Strategy Builds
+- Reusable Workflow (Workflow_Ca
+- Security Scanning (Trivy + Cod
+- Gitlab Ci Patterns Skill
+- Parallel: Matrix Jobs
+- Deploy)
+- Container)
+- Apply)
+- Golden Signals Dashboard Desig
+- Grafana Dashboards Skill
+- Duration)
+-  Heatmap Panels
+- Templating Variables
+- Errors)
+- 1. Methodological Rigor
+- 2. Statistical Validity
+- 3. Evidence Quality
+- 4. Visual Integrity
+- 5. Reproducibility
+- Chain Of Thought Decision Fram
+- Common Patterns & Anti Pattern
+- Constitutional Ai Principles
+- Core Responsibilities
+- Delegation Strategy
+- Evidence Grading (Grade)
+- Examples
+- Matplotlib Publication Plot
+- Pre Response Validation Framew
+- Principle 1: Truthfulness (Tar
+- Principle 2: Objectivity (Targ
+- Principle 3: Accessibility (Ta
+- Principle 4: Rigor (Target: 10
 - Quick Reference
-- DSPy Basics
-- Intelligent GitHub Actions Failure Resolution
-- Workflow
-- Workflow Automation
-- Agent Prompt Templates
-- Core Skills
-- 🚀 Quick Start
-- GitLab CI Patterns
 - Research Checklist
 - Research Expert
-- Analysis Tools
-- Bayes' Theorem for Neural Networks
-- research-suite/hooks/_hook_io.py
-- demo
 - Step 1: Research Question
 - Step 2: Investigation Strategy
-- debug_jax.py
-- Exploding Gradients
-- JuMP Optimization
-- 1. Weight Matrix Analysis
-- Gradient Descent
-- Core Skills
 - Step 3: Analysis
-- Solutions
-- Julia ML Pipelines
-- Section-by-section guidance
 - Step 4: Visualization
-- Client Implementation
-- 📓 Available Notebooks
-- Execution Steps
-- Activation Function Derivatives
-- Chain Rule
-- Non-Equilibrium Theory
-- Core Handlers
-- NumPyro Examples Collection
-- Symbolic Mathematics
-- Advanced Topics
-- Iterative Error Resolution for CI/CD
-- Microservices Patterns
-- SLO Implementation
 - Step 5: Reporting
-- 📓 Interactive Notebooks (Assets)
-- active-matter skill
-- bayesian-pinn skill (BPINN/BNNODE)
-- diagnose_optimization diagnostics
-- generate_diagrams.py
-- Science Suite (science-hub)
-- Adjoint Methods (RecursiveCheckpoint/Backsolve/Direct)
-- GaussianShell
-- capture_recapture.py
-- Workflow
-- Default workspace
-- Decoupled Architecture
-- space - Spatial Functions
-- julia-language/SKILL.md
-- NumPyro Core Mastery
-- Checklist before advancing any stage
-- Named Entity Recognition
+- Checklist Before Advancing Any
 - Core Responsibilities
-- Cross-agent delegation (outside the pipeline)
-- Default workspace
-- Code Modernization
-- Julia CI/CD Patterns
-- Delegation strategy
+- Cross Agent Delegation (Outsid
+- Default Workspace
+- Delegation Strategy
 - Examples
-- Distributed Tracing
-- JAX-Julia Interop
-- Handling breakage
-- Modernization & Migration
-- Cross-Entropy
-- Reinforcement Learning
-- Chunking Strategies
-- Basic Model Specification (Linear Regression)
-- 1. Core Concepts
-- Orbax Checkpointing Library
-- Backpropagation Algorithm
-- loss-curve-interpretation.md
-- 1. Equilibrium Statistical Mechanics
-- Advanced Optimization
-- AD / adjoint choice
-- Experiment Tracking
-- Python/Julia Ecosystem Selection
-- Julia Model Deployment
-- Julia Reinforcement Learning
-- Bifurcation Analysis
-- ACEpotentials.jl — install and fit (Julia 1.12, v0.10.x)
-- Generative Models
-- AdaGrad
-- bayesian-inference/SKILL.md
-- Instrument capability margin (Stage 7)
-- Algorithm Selection
-- Type-Safe ML Code
-- Reviewer 2 pass (Stages 2 and 3)
-- Stepwise derivation protocol (Stages 4–5)
-- Mode
-- 02_checkpoint_resume.py
-- Advanced Patterns
-- Comprehensive Validation
-- CI Integration (GitHub Actions)
-- Sub-agent fan-out points (within the pipeline)
-- ML Pipeline Workflow
+- Handling Breakage
+- Instrument Capability Margin (
+- Reviewer 2 Pass (Stages 2 And 
+- Stepwise Derivation Protocol (
+- Sub Agent Fan Out Points (With
 - The Pipeline
-- Monorepo Management
-- Three adversarial patterns you must uphold
-- Security CI Template
-- Turn-by-turn decision framework
-- What you don't do
-- Sharding Strategies Comparison Table
-- PINN Validation
-- JAX Integration: Parameter Sweeps Around Critical Points
-- L-BFGS (Limited-memory BFGS)
-- sensor_calibration.py
-- hierarchical_model_template.py
-- 1. Uncertainty & Statistical Visualization
-- Publication Readiness Checklist
-- gp.py
-- hmcecs.py
-- Bayesian PINN — BNNODE & BayesianPINN
-- Forward Pass
-- Composition with arbitrary log-densities
-- Core Skills
-- Bayesian Inference Workflow
-- Model Deployment and Serving
-- Core Skills
-- Neural Architecture Patterns
-- Attention (Simplified)
-- Catalyst.jl Reaction Networks
-- /lit-review — Literature Review
+- Three Adversarial Patterns You
+- Turn By Turn Decision Framewor
+- What You Don'T Do
+- Lit Review — Literature Review
 - Output Types
 - Token Strategy
-- Advanced Retrieval
 - Usage
 - What This Does
 - Framework Delegation
-- /paper-implement — Paper Method Reproduction
-- Instrument capability map (central artifact)
+- Paper Implement — Paper Method
 - Section Routing
 - Usage
-- Application Patterns
-- Validation Checklist
 - What This Does
-- /replicate — End-to-End Paper Replication
-- Python Packaging with uv
-- Bernoulli Distribution
-- NLSQ Interactive Notebooks overview
-- 2. Domain-Specific Visualizations
-- ml-expert agent
-- LR Range Test (Leslie Smith)
-- GNNChain
-- Docker
-- Convolution Operation
-- Iterative Solvers
-- Variational Inference
-- Common Problems
-- Citation Management
-- Basic UDE: Known Physics + Neural Correction
-- JAX Physics Applications
-- Agent Architecture
-- advanced-simulations/SKILL.md
-- Matrix Norms
-- For Learning
-- Neural Network Mathematics
-- NLSQ Interactive Notebooks
-- Self-Improving AI
+- Replicate — End To End Paper R
 - Tolerance
-- Assessment Dimensions
 - Turn Strategy
-- diagnose_gradients.py
-- Comprehensive Validation
 - Usage
-- Iterative Test Execution & Auto-Fix
 - What This Does
-- Execution Steps
-- Handoff to Stage 8
-- Templates, scripts, references
-- Checks after generation
-- Modern Concurrency in Python
-- Automated Scripts
-- POT (optional)
-- Debugging Toolkit
-- Chaos Characterization & Attractor Analysis
-- Core Skills
-- Design-of-experiments matrix
-- Fractional factorial
-- Full factorial
-- Docker Build & Push Workflow
-- Research Quality Assessment Report template
-- Rust Extensions for Python
-- Async Patterns
-- science-hub/SKILL.md
-- JAX Computing Orchestrator
-- Compiler-Aware
-- CommonRLInterface.jl
-- Broadcasting
-- Gradient of Scalar Functions
-- Loss Becomes NaN
-- Workflow
-- Workflow
-- Research Methodology
-- PINN Engineer
-- Domain 1: Core JAX Programming
-- A. LLM-as-judge (cheapest)
-- Team mode — roles, loop, and shutdown
-- Core Skills
-- Latin hypercube
-- Binary Cross-Entropy
-- Basic Operations
-- Binary Cross-Entropy Stability
-- Response surface
-- 16. `demos/hybrid_streaming_demo.py`
-- NumPyro Assets - Templates and Starter Files
-- Selection guide
-- Python Systems Engineering
-- Type-Driven Design in Python
-- Template for the matrix
-- Handoff to Stage 4-5
+- Handoff To Stage 8
+- Templates, Scripts, References
+- Checks After Generation
+- Design Of Experiments Matrix
+- Fractional Factorial
+- Full Factorial
+- Latin Hypercube
+- Response Surface
+- Selection Guide
+- Template For The Matrix
+- Handoff To Stage 4 5
 - Templates
-- Audit format
-- Common repair moves
-- Falsifiability checklist
+- Audit Format
+- Common Repair Moves
+- Falsifiability Checklist
 - Property 1: Direct
 - Property 2: Achievable
-- Property 3: Pre-specified
-- print_summary
+- Property 3: Pre Specified
 - Property 4: Distinguishing
-- CPU Job
-- lint_file
-- Flakiness Management
-- The specification
-- sci-workflow-engineer agent
 - Format
-- example_production_training
-- AD Backend Selection Decision Tree
-- julia-neural-networks Skill (ref)
-- llm-and-ai/SKILL.md
-- Advanced ML Systems (referenced skill)
-- HOOMD-blue
-- ACEpotentials.jl
-- Information Bottleneck
-- enzyme_kinetics.py
-- reaction_kinetics.py
-- titration_curves.py
-- Complex Ginzburg-Landau Equation (CGLE)
-- greet_multiple
-- TestGreet
-- Classic Overfitting
-- research-spark/SKILL.md
-- Research Quality Assessment
-- Scientific Workflow Engineer
-- Core Skills
-- ucbadmit.py
-- funnel_log_prob_centered
-- Core Skills
-- Gap matrix
-- JAX DiffEq Pro: The Differentiable Physicist
-- Core Modules
-- 1. Multiple Dispatch & Type System
-- Modern SciML Components
-- Brownian Motion and Diffusion
-- Function Spaces
-- Gradient Descent on Manifolds
-- Information Bottleneck
-- Linear Transformations
-- Neural Network Applications
-- APS Rheo-XPCS capability baseline (8-ID-I)
-- check_fusion
-- Statistical Analysis Fundamentals
-- Training Diagnostics
-- How to use it
-- What not to do
-- Worked example (condensed)
-- Risk register
-- Correlation Analysis Hub
-- Scientific Test Generation
-- JAX Core Programming Assets
-- Common failure modes
-- Research Paper Implementation
+- Gap Matrix
+- How To Use It
+- What Not To Do
+- Worked Example (Condensed)
+- Common Failure Modes
 - Format
-- Steelman note template
-- Worked example
-- train_step
-- research-suite/hooks/post_tool_use.py
-- Project log
-- Integrity Checks
-- julia-pro agent
-- Memory Optimization Stack (Remat/BF16/Sharding)
-- 6. Profiling
-- bayesian-ude-workflow (referenced skill)
-- Change of Variables
-- advanced-topics-reference.md (document)
-- IEEE 754 Floating-Point
-- Automatic Mixed Precision (AMP)
-- growth_curves.py
-- materials_characterization.py
-- Early Plateau
-- Green-Kubo Transport Coefficients
-- Fan-out (Claude Code multi-agent)
-- Abstract template
-- Handoff to Stage 7
-- Convergence Tracking
-- Data Cleaning Workflow
-- Cloud ML Platforms
-- 1. Core Concepts
-- 3. Common Layers
-- 3. Learning Rate Schedules
-- 4. Gradient Transformations
-- 5. Advanced Patterns
-- 1. Basic Checkpointing
-- jax-computing/SKILL.md
-- Adding Workers
-- Model Optimization & Deployment
-- Multiscale Modeling
-- Curvature of Loss Landscape
-- Convolutional Neural Networks
-- Gradient
-- Calculus for Backpropagation
-- Training Diagnostics Scripts
-- 12. `streaming/01_basic_fault_tolerance.py`
-- 01_spark.md
-- Building and Publishing
-- Why this is a separate stage from Stage 4-5
-- Core Components
-- 1. Observable identity
-- 2. Predicted values
-- 3. Uncertainty bounds
-- 4. Temporal structure (for time-dependent observables)
-- 5. Spatial structure (if applicable)
-- Modern SciML Stack
-- 6. Noise model
-- 7. Expected signal-to-noise at typical measurement conditions
-- Code Review Excellence
-- Core Skills
-- Git & Workflow Management
-- Example Package
-- File format
-- alchemlyb library
-- Maximum Likelihood Estimation
-- Loss Selection table
-- Pre-registered success metrics
-- formalism_code_reconcile.py
-- numerical-prototype skill (referenced)
-- spark-articulator (Stage 1)
-- Heilmeier catechism
-- Blackjax Parallel Chains via pmap
-- 3. Memory Optimization
-- Predicted observable
-- Encoder-Decoder Pattern
-- Gated Recurrent Unit (GRU)
-- damped_oscillation.py
-- radioactive_decay.py
-- Just Right (Goldilocks)
-- High Bias (Both Losses High)
-- Dimensional analysis worksheet
-- dev-hub/SKILL.md
-- Core Skills
-- Domain 5: Modern Neural Networks (Equinox)
-- Multimodal sequencing
-- Instrument capability map
-- Julia-first code architecture rules
-- Loss Landscape Analysis
-- Bias-Variance Tradeoff
-- CUDA.jl
-- Harmonic Response & Time-Temperature Superposition
-- Algorithms
-- Julia Performance Tuning
-- Loss Curves
-- 1. JIT Compilation (`jax.jit`)
-- Required fields
-- What Stage 7 does with this
-- Applications-focused reviewer
-- Calibration notes
-- Experimentalist reviewer
-- Simulated reviewer prompts
-- Statistician reviewer
-- Backend Patterns
-- Theorist reviewer
-- Using the output
-- GitLab CI Patterns Skill
-- Golden Signals Dashboard Design
-- Dependency management
-- Environment conventions
-- GPU/accelerator handling
-- Memory Optimization
-- Core Skills
-- 4. Automatic Differentiation (`jax.grad`)
-- research-practice skill (meta-orchestrator)
-- experiment-designer (Stage 7)
-- evidence-synthesis skill (referenced)
-- framing_variants.md template reference
-- Continuum Mechanics Engineer - Materials & FEM Specialist
-- 04_bayesian_inference.py
-- Linting and formatting
-- Julia ML and Deep Learning Skill
-- Aqua.jl
-- 🔧 Common Tasks
-- Graph Neural Networks (GNNs)
-- 03_custom_retry_settings.py
-- Core Skills
-- science-suite:constitutive-equations Skill
-- julia-pro Agent
-- Solutions
-- pyproject.toml layout
-- Workflow
-- Writing constraints
-- Proposal assembly
-- Deep Learning Hub
-- Research Suite (research-hub)
-- Statistical Physicist
-- Python version
-- Glass & Collective Dynamics
-- Artifact Integrity Invariant
-- Domain 3: Nonlinear Least Squares (NLSQ)
-- Domain 2: Bayesian Inference (NumPyro)
-- Differential Equations (Diffrax)
-- Distributed.jl Patterns
-- Domain 6: Graph Neural Networks (GraphNeuralNetworks.jl)
-- CUDA.jl Basics
-- NeuralPDE.jl — PINNs (deterministic)
-- /benchmark — Scientific Code Benchmarking
-- /md-sim — Molecular Dynamics Simulation
-- GAT with Multi-Head Attention
-- Stage 2 — Bayesian posterior sampling with NumPyro
-- Attractor Reconstruction (Takens Embedding)
-- Comparison with alternatives
-- Chain Rule
-- stochastic_volatility.py
-- 4. Advanced Patterns
-- 7. JAX Transform Integration
-- 9. Debugging Optimizer Issues
-- 6. Advanced Patterns
-- 1. Compilation (JIT)
-- Why these rules
-- Activations
-- Common Patterns
-- Multi-Head Attention
-- Transient Networks & Covalent Adaptable Networks (CAN)
-- Core rules
-- JAX-first code architecture rules
-- Gradient Checking
-- Jensen-Shannon Divergence
-- Entropy-Based Pruning
-- 1. Gradient Flow Analysis
-- 1. Weight Initialization
-- Floating-Point Arithmetic
-- Sparse Computations
-- Adam
-- Forward Pass
-- Patterns to avoid
-- Patterns to prefer
-- Testing implication
-- Python Patterns
-- Core Skills
-- Why these rules
-- Condensed Matter
-- Dead ReLU (>50% zeros)
+- Steelman Note Template
+- Worked Example
+- Fan Out (Claude Code Multi Age
+- Handoff To Stage 7
+- Why This Is A Separate Stage F
+- 1. Observable Identity
+- 2. Predicted Values
+- 3. Uncertainty Bounds
+- 4. Temporal Structure (For Tim
+- 5. Spatial Structure (If Appli
+- 6. Noise Model
+- 7. Expected Signal To Noise At
+- File Format
+- Predicted Observable
+- Required Fields
+- What Stage 7 Does With This
+- Applications Focused Reviewer
+- Calibration Notes
+- Experimentalist Reviewer
+- Simulated Reviewer Prompts
+- Statistician Reviewer
+- Theorist Reviewer
+- Using The Output
+- Dependency Management
+- Environment Conventions
+- Accelerator Handling
+- Linting And Formatting
+- Pyproject.Toml Layout
+- Python Version
+- Why These Rules
+- Core Rules
+- Jax First Code Architecture Ru
+- Patterns To Avoid
+- Patterns To Prefer
+- Testing Implication
+- Why These Rules
+- Rheojax Code Pattern
 - Naming
-- README contents
-- Core Skills
-- 1. uv Workspaces (Monorepos)
-- Repository layout
-- Symlinks between skill artifacts and the repo
-- Claim schema
-- Validation report
-- Three-layer search strategy
-- Codex CLI
-- Human Evaluation
-- Approval Gates
-- Premortem failure narrative
-- 10. MLOps & Production
-- Hostile self-audit
-- dimensional_audit.py
-- research-and-domains/SKILL.md
-- create_train_state
-- Ipopt Solver
-- Mapper Algorithm
-- Log-Sum-Exp / Softmax Numerical Stability
-- Eigendecomposition
-- benchmark_comparison.py
-- dose_response.py
-- system_identification.py
-- horseshoe_regression.py
-- core.py
-- tests/__init__.py
-- test_core.py
-- TestGreeterFixture
-- Experimental Design Checklist
-- research-spark-orchestrator
-- Methodology Evaluation Framework
-- Statistical Rigor Guide
-- Codex and Agy route recipes
-- Backend Selection Table
-- DifferentialEquations.jl
-- Domain 1: Neural Networks (Lux.jl / Flux.jl)
-- Constitutive Equations
-- Bayesian ODE Parameter Estimation
-- Bootstrap Error
-- Differential Equations
-- What NOT to include
-- Analyze Data
-- Run Experiment
-- Correlation Analysis
-- Core Skills
-- 2. Built-in Optimizers
-- MCMC Diagnostics
-- JAX Physics Applications API Reference
-- Biological Systems
-- nlsq-core-mastery/references/api_reference.md
-- Reference Documentation for Numpyro Core Mastery
-- DMA & Rheology
-- Core Skills
-- Julia ML and Deep Learning
-- Basic Operations
-- Automated Metrics
-- Core Skills
-- Automatic Differentiation
-- Information Theory Fundamentals
-- How this integrates with Stage 6
-- FEM/FEA
-- 6. Modern Sharding API (2025)
-- Mandatory tests for physics code
-- Gradient Pathologies - Complete Reference
-- Template for a test module
-- Convergence Diagnostics
-- Test file layout
-- 2. Vectorization (`jax.vmap`)
-- Testing conventions
-- What not to test
+- Numerical Prototype Skill
+- Readme Contents
+- Repository Layout Convention
+- Repository Layout
+- Docs Symlinks To Stage Artifac
+- Symlinks Between Skill Artifac
+- What Not To Include
+- Convergence Test
+- How This Integrates With Stage
+- Limit Recovery Test
+- Mandatory Tests For Physics Co
+- Invariant Test (Hypothesis)
+- Shape And Dtype Regression Tes
+- Stage 6 Validation Pass Integr
+- Template For A Test Module
+- Test File Layout
+- Jax)
+- Testing Conventions
+- What Not To Test
 - Contents
-- Deployment Pipeline Design
-- SINDy Overview
-- 3. Multi-Device Parallelism (`jax.pmap`)
-- Test Automation
-- 7. Performance Best Practices
-- How other skills use this directory
-- Iterative Error Resolution Skill
-- Axes and annotations
-- Checklist before sharing a figure
-- Core Modules
-- Testing Patterns (Cross-Language Guide)
-- 2. GPU Acceleration (Cross-Platform)
+- How Other Skills Use This Dire
+- Axes And Annotations
+- Axes And Annotation Standards
+- Figure Caption Style
+- Pre Share Figure Checklist
+- Checklist Before Sharing A Fig
 - Colormaps
-- Figure caption style
-- Avalanche size/duration statistics (SOC)
-- Fluctuation-Dissipation Theorem (FDT)
-- Pattern Recognition and Machine Learning (Bishop)
-- Figure sizes
-- Mixed Precision Training with Loss Scaling
-- multi_scale_model
-- 01_basic_fault_tolerance.py
-- holt_winters.py
-- _research-commons/SKILL.md
-- Domain 6: Linear Solvers & Root-Finding (Lineax + Optimistix)
-- Domain 7: Interpolation & Schedules (interpax + Optax)
-- Nanocomposites & Adaptive Materials
-- Domain 8: Model Deployment
-- Domain 2: ML Pipelines (MLJ.jl)
-- Domain 6: Nonlinear Dynamics (DynamicalSystems.jl + AUTO-07p)
-- Domain 7: Data-Driven Modeling (DataDrivenDiffEq.jl)
-- ML Engineering Production Practices
-- Figure standards
-- Advanced configuration (`Inputs`)
-- Active Matter
-- JAX Bayesian Pro: Inference as Transformation
-- 5. State Management
-- 9. Common Patterns
-- 10. Best Practices
-- 2. Async Checkpointing
-- 3. Checkpoint Managers
-- 8. Performance Optimization
-- 9. Common Patterns
-- 2. Vectorization (vmap)
-- 5. Multi-Device Parallelism
-- 9. Hardware-Specific Tips
-- hmm.py
-- interpolate_params
+- Figure Caption Style
+- Figure Sizes
+- Figure Standards
 - Fonts
-- Cirq (Google)
-- Line widths and markers
-- Variational Autoencoder (VAE)
-- Condition Number
-- Resolution and format
-- Bayesian Approximations
-- Confidence Scoring
+- Line Widths And Markers
+- Line Width And Marker Standard
+- Resolution And Format
+- Resolution And Format Standard
 - Subfigures
-- Venue overrides
-- Calibration notes
-- Prompt template for Stage 2 (gap challenge)
-- Prompt template for Stage 3 (claim challenge)
-- Reviewer 2 persona: adversarial-reviewer prompt pattern
-- CLI UX Design (POSIX, GoReleaser/Cargo Dist)
-- AsyncCheckpointer (Non-blocking Saves)
-- PackageCompiler.jl Patterns
-- inspect_jaxpr
-- dropout
-- compute_rdf
-- julia-pro Agent
-- decay_model
-- Domain 1: General Julia Programming
-- Domain 4: Package Development
-- 2. Basic Module Definition
-- 8. Performance Patterns
-- Fermi feasibility screen
-- The persona
-- Framing variants
-- Using the output
-- 6-Step Translation Framework
-- Example: Transformer Implementation
-- iterative-error-resolution engine.py
-- Dev Suite
-- 01_quick_prototyping.py
-- 03_multi_device_scaling.py
-- Chain Patterns (LCEL)
-- llm-and-ai Hub (referenced)
-- ASE (Atomic Simulation Environment)
-- benchmark_mcmc_vi.py
-- model_comparison.py
-- prior_predictive_check.py
-- Physical Learning Systems
-- 4. Multi-Host Checkpointing
-- 1. Problem Classification
+- Venue Overrides
+- Acronym Definition Rule
+- Character With Space Limits Ru
+- Punctuation Rules (No Em Dashe
+- 03_Claim (Stage 3 Claim Artifa
+- Five Move Abstract Structure
+- Q1: What Are You Trying To Do?
+- Q2: Current Practice And Limit
+- Q3: What Is New And Why Succes
+- Q4: Who Cares
+- Q5: Risks
+- Q6: Cost And Timeline
+- Final Exams
+- Heilmeier Self Check
+- One Page Summary Template
+- One Pager Vs Full Proposal Sco
+- Research Spark Orchestrator
+- _State.Yaml (Decision Points)
+- Calibration Notes
+- Falsifiable Claim Skill (Stage
+- Landscape Scanner Skill (Stage
+- Reviewer Persona Definition
+- Prompt Template For Stage 2 (G
+- Prompt Template For Stage 3 (C
+- Reviewer 2 Persona Pattern
+- Reviewer 2 Persona: Adversaria
+- Stage 2 Gap Challenge Prompt T
+- Stage 3 Claim Challenge Prompt
+- The Persona
+-  Rebuttal Process
+- Using The Output
+- 6 Step Translation Framework
+- Example: Transformer Implement
 - Information Sources
+- Numerical Prototype Skill (Ref
 - Paper Types
-- automation-engineer
-- quality-specialist
-- ml-expert expert agent
-- /merge-all Command
-- Rationale: iteration loops always bounded to prevent laundering a bug into passing
-- latex_compile_check.sh
-- Ito vs Stratonovich Interpretation
+- Research Expert Agent
+- Research Quality Assessment Sk
+- Scientific Review Skill (Refer
+- Research Quality Assessment Re
+- Assessment Dimensions
+- Consort Reporting Guideline
+- Evidence Synthesis Skill (Refe
+- Harking Red Flag
+- Moose Reporting Guideline
+- P Hacking Red Flag
+- Premortem Critique Skill (Rese
+- Prisma Reporting Guideline
 - Red Flags
 - Reporting Guidelines
+- Research Expert Agent
+- Research Methodology Skill (Re
+- Scientific Review Skill (Refer
 - Scoring Rubric
 - Statistical Adherence Check
-- First-run example
-- Chain-of-Thought Decision Framework
-- julia-ml-hpc Agent
-- LLM Evaluation Skill
-- MLModel class
-- PaiNN
-- Magnitude Pruning
-- Stable Binary Cross-Entropy (with logits)
-- 1. Problem Classification
-- Batch Normalization
-- Tokenization Strategies (BPE/WordPiece/SentencePiece/Unigram)
-- JIT Compilation Overhead troubleshooting
-- Slow Jacobian Computation troubleshooting
-- Impact on Convergence comparison table
-- example-package
-- /smart-debug Command
-- /test-generate Command
-- Chain-of-Thought Decision Framework
-- 1. Problem Classification
-- Chain-of-Thought Decision Framework
-- Learning Rate Schedules
-- How routing works
-- Model Predictive Control (MPC)
-- ACE1.jl (legacy backend)
-- ANI-1x / ANI-2x dataset
-- LAMMPS.jl
-- MD17 / rMD17 dataset
-- OpenMM
-- QM7-X / QM9 dataset
-- SPICE / SPICE2 dataset
-- TensorNet / TensorNet2
-- Calculus Domain
-- NumPyro API Reference (placeholder)
-- cvae.py
-- JuMP.jl
-- research-expert
-- scientific-review
-- correlation-math-foundations sub-skill
-- correlation-physical-systems sub-skill
-- Stage 3 — Sampler selection and diagnostics
-- Stage 1 — Deterministic warm-start with Optax
-- Multi-agent note (Claude Code)
-- Principles the orchestrator upholds
-- Graph Theory
-- Expectation and Variance
-- State file
-- The pipeline at a glance
-- What breaks and how to recover
-- research-suite/hooks/subagent_stop.py
-- One-page summary
-- Constitutional AI Principles
-- Constitutional AI Principles
-- Constitutional AI Principles
-- Colloidal Systems
-- PySINDy and Symbolic Regression — Full Code Reference
-- 5. Composition Patterns
-- 6. Composing Optimizers
-- Lux Training Loop, Custom Message Passing, and Molecular GNN — Full Reference
-- LLM-as-Judge
-- Generative Adversarial Networks (GANs)
-- Common Derivatives
-- Hyperparameter Defaults
+- Strobe Reporting Guideline
+- Default Workspace
+- First Run Example
+- How Routing Works
+- Multi Agent Note (Claude Code)
+- Principles The Orchestrator Up
+- State File
+- The Pipeline At A Glance
+- What Breaks And How To Recover
+- Citation Management
 - Clarity & Precision
-- Regression Detection
-- IMRaD Structure
+- Evidence Synthesis Skill (Refe
+- Imrad Structure
 - Paragraph Structure
-- Shared templates
+- Research Expert Agent
+- Research Methodology Skill (Re
+- Research Quality Assessment Sk
+- Scientific Review Skill (Refer
+- Shared Templates
+- Spark Articulator Skill (Refer
 - Structure
 - Technical Reports
 - Writing Principles
-- Phase 0: Reviewer responsibilities
+- Review Report Structure Templa
+- Mode
+- Phase 0: Reviewer Responsibili
 - Phase 1: Ingest
-- Turing UDE Stage Code — Full Reference
-- Minimal pattern — Wiener-Khinchin in numpy + sympy
-- ODE Template
-- Phase 2: Journal adaptation
-- Pooling Operations
-- Differentiable MD (JAX-MD)
-- Phase 3: Six-lens analysis
-- Phase 4: Quantitative verification
-- Error Mitigation
-- Data assimilation / state estimation
-- Phase 5: Compose the report
+- Phase 2: Journal Adaptation
+- Phase 3: Six Lens Analysis
+- Phase 4: Quantitative Verifica
+- Phase 5: Compose The Report
 - Principles
-- Templates and scripts bundled here
-- What Stage 2 will read from the output
-- engine.py
-- Event Handling
-- 10. Benchmarking
-- Enzyme Activity Annotations
-- Healthy Training Curves
-- terse.md
-- verbose.md
-- What this stage does and why it comes first
-- 3x margin rule
-- BifurcationKit.jl
-- Claim canonical form (Under conditions C, system S exhibits behavior B with signature M)
-- CUDA.jl
-- DataDrivenDiffEq.jl (SINDy)
-- Diffrax
-- Design-of-experiments (DoE) matrix
-- DynamicalSystems.jl
-- Early signal (risk register / premortem hook)
-- Equinox
-- Flux.jl
-- Gap matrix (phenomena x methods)
-- Heilmeier catechism
-- JAX
-- JAX-first code architecture rules
-- JAX-MD
-- KernelAbstractions.jl
-- Kill criterion (falsifiability)
-- Lux.jl
-- Multimodal sequencing (cheapest-and-most-diagnostic-first)
-- NeuralPDE.jl
-- NLSQ
-- NumPyro
-- Pallas (JAX kernel language)
-- Pigeons.jl
-- Power analysis
-- Predicted observable (Stage 6 to Stage 7 handoff format)
-- Premortem failure narrative (past-tense)
-- research-expert agent
-- research-spark-orchestrator agent
-- research-spark eight-stage pipeline
-- Reviewer 2 adversarial persona
-- Risk register (P x I x mitigation x early-signal)
-- Simulated reviewer archetypes (theorist/experimentalist/applications/statistician)
-- Steelman note (strongest claim + break conditions)
-- Three-layer literature search (foundational/recent/adjacent)
-- Turing.jl
-- Three validation passes (limit recovery, synthetic benchmark, convergence study)
-- Correlation Computational Methods Sub-Skill
-- Correlation Experimental Data Sub-Skill
-- Correlation Math Foundations Sub-Skill
-- Correlation Physical Systems Sub-Skill
-- software-architect
-- sre-expert
-- ecc:kubernetes-patterns (External Plugin Skill)
-- Demo Examples
-- Gallery: Biology examples
-- Gallery: Chemistry examples
-- Gallery: Engineering examples
-- Gallery: Physics examples
-- hybrid_streaming_demo.py (parameter normalization)
-- Streaming Examples
-- advanced-simulations skill
-- Bennett Acceptance Ratio (BAR) estimator
-- bayesian-sindy-workflow skill
-- Cloning algorithm (population Monte Carlo)
-- Crooks Fluctuation Theorem
-- equation-discovery skill
-- extreme-value-statistics skill
-- Kubo formula (conductivity)
-- Large-deviation theory (LDT)
-- MBAR (multistate BAR)
-- Non-Equilibrium Theory skill
-- Onsager Reciprocity
-- powerlaw library (Alstott et al.)
-- pymbar library
-- rare-events-sampling skill
-- Scaled Cumulant Generating Function (SCGF)
-- statistical-physicist expert agent
-- statistical-physics skill
-- stochastic-dynamics skill
-- Stochastic entropy production along a trajectory
-- Tilted generator / Doob transform
-- Bayes' Theorem
-- Weight Uncertainty in Neural Networks (Blundell et al., 2015)
-- Dropout
-- Bayesian Deep Learning (Yarin Gal thesis)
-- Deep Learning (Goodfellow, Bengio, Courville)
-- Information Theory, Inference, and Learning Algorithms (MacKay)
-- Uncertainty Quantification (Aleatoric/Epistemic)
-- Weight Initialization (Xavier/He)
-- bayesian-ude-workflow skill
-- chaospy (polynomial chaos + Sobol sensitivity)
-- Collocation strategy (QuasiRandomTraining/SobolSample)
-- differential-equations skill
-- Forward vs Inverse PDE Problems
-- julia-pro expert agent
-- Lux neural ansatz (explicit-parameter style)
-- MethodOfLines.jl
-- modeling-toolkit skill
-- NeuralPDE.jl (PINN framework)
-- PDESystem (ModelingToolkit symbolic spec)
-- py-pde (numerical PDE baseline)
-- Python/JAX counterpart stack for PINNs
-- sciml-modern-stack skill
-- scipy.stats.qmc
-- sympy2jax (SymPy to JAX bridge)
-- Embeddings and Similarity (sentence-transformers)
-- NLP Fundamentals (spaCy/HF/NLTK pipelines)
-- Text Preprocessing Pipeline (spaCy)
-- Diffrax
-- Global Optimization (multi-start)
-- jax-pro expert agent
-- Lineax
-- NLSQ Core Mastery skill
-- Optimistix
-- Parallel Optimization strategies
-- Pitfalls table
-- Workflow Selection (auto/auto_global/hpc)
-- Suggested Learning Path (Beginner/Intermediate/Advanced)
-- CurveFitResult return object
-- fit() core function
-- Legacy API (Deprecated: curve_fit, curve_fit_large, preset)
-- MemoryConfig / memory_context
-- Workflows table (auto/auto_global/hpc)
-- Common Failure Modes (Divergence/Stagnation/Oscillation/Slow)
-- Memory Issues troubleshooting
-- Real-Time Monitoring (StagnationDetector, plot_convergence)
-- Arctan loss
-- Cauchy (Lorentzian) loss
-- Huber loss
-- Linear (Standard Least Squares) loss
-- Loss Function Decision Tree
-- Loss Function Theory (cost formula)
-- Soft L1 loss
-- mattpocock-skills:diagnosing-bugs (External Plugin Skill)
-- app-developer (Agent)
-- automation-engineer (Agent)
-- Blue/Green & Canary Progressive Delivery
-- documentation-expert (Agent)
-- Diátaxis Framework
-- quality-specialist (Agent)
-- Rationale: Bash tool grant can still write files despite review-only role convention
-- OWASP Top 10
-- software-architect (Agent)
-- Circuit Breaker Pattern
-- Strangler Fig Pattern
-- sre-expert (Agent)
-- Circuit Breaker Pattern
-- SRE Expert Agent
-- /docs Command
-- /double-check Command
-- /eng-feature-dev Command
-- /fix-commit-errors Command
-- Rationale: npm 404 always manual review, never auto-uninstalled
-- Rationale: untracked files never swept even under --force
-- /modernize Command
-- Strangler Fig Pattern
-- /run-all-tests Command
-- /workflow-automate Command
-- Input/Payload Mutation Pattern
-- Relay Cursor Pagination
-- Cursor-Based Pagination
-- URL Versioning Strategy
-- Clean Architecture
-- CQRS
-- Domain-Driven Design (DDD)
-- Event Sourcing
-- Permission-Based Authorization
-- RBAC (Role-Based Access Control)
-- Cache-Aside Pattern
-- IAM Least Privilege
-- 6-Step Review Process
-- Multi-Stage Docker Build
-- Migration Strategies (Alembic)
-- N+1 Query Prevention (Eager Loading)
-- ORM Patterns (SQLAlchemy)
-- DORA Metrics
-- Documentation Best Practices
-- Documentation Types (README/API/Runbook/ADR)
-- Accessibility Testing (axe-core)
-- Page Object Model
-- Result Type Pattern
-- Cherry-Pick
-- git push --force-with-lease
-- Git LFS for Binary Assets
-- Interactive Rebase
-- Git & Workflow Management Skill
-- Kubernetes Deployment Workflow
-- GitHub Actions Templates Skill
-- Matrix Strategy Builds
-- Reusable Workflow (workflow_call)
-- Security Scanning (Trivy + CodeQL)
-- parallel: matrix Jobs
-- Pipeline Stages (build/test/deploy)
-- Security Scanning Templates (SAST/Dependency/Container)
-- Terraform Pipeline (validate/plan/apply)
-- Grafana Dashboards Skill
-- RED Method (Rate/Errors/Duration)
-- Stat / Time Series / Heatmap Panels
-- Templating Variables
-- USE Method (Utilization/Saturation/Errors)
-- engine.py (Iterative Fix Engine implementation)
-- /fix-commit-errors Command
-- fix-knowledge-base.json
-- Iterative Error Resolution README
-- analyze_run Log Fetch/Parse
-- Fix Patterns (npm_eresolve, oom, timeout, etc.)
-- KnowledgeBase Class (running-average confidence)
-- Iterative Error Resolution Skill (reference patterns)
-- plan_fixes Gating (before mutation)
-- Kafka Producer/Consumer Group Patterns
-- Message Queue Patterns Skill
-- API Gateway Aggregation
-- CQRS / Database per Service
-- Event-Driven Communication (DomainEvent/EventBus)
-- Microservices Patterns Skill
-- Saga Pattern (compensating transactions)
-- Scatter-Gather Parallelization
-- Anti-Corruption Layer
-- Feature Flags Compatibility Layer
-- Modernization & Migration Skill
-- Parallel Run Migration Strategy
-- Rollback Patterns
-- Strangler Fig Pattern
-- Changesets Publishing
-- Monorepo Management Skill
-- Nx (affected:build)
-- Shared TypeScript/ESLint Configurations
-- Turborepo (turbo.json pipeline)
-- Observability Routing Decision Tree
-- GoldenSignals Class (latency/errors)
-- IncidentManager / Post-Mortem
-- Observability and SRE Practices Skill
-- Prometheus Client Metrics Decorator
-- Alert Rules (ServiceDown/HighErrorRate)
-- Federation / Sharding / Remote Write
-- Prometheus Configuration Skill
-- promtool Validation
-- Scrape Configs (static/K8s/file-based)
-- Faceted Navigation (aggs)
-- Full-Text Search Queries (multi_match/bool)
-- Index Lifecycle Management (Hot/Warm/Cold)
-- Index Mapping / Field Type Selection
-- Search Patterns Skill
-- HashiCorp Vault Integration
-- Secret Rotation (Automated/Manual)
-- Secret Scanning (TruffleHog Pre-commit/CI)
-- Dependency Scan (Safety/Snyk/npm audit)
-- Lock File Validation (poetry/Manifest.toml/package-lock)
-- Security CI Template Skill
-- SAST Scanning (Bandit/Semgrep/CodeQL)
-- Severity Thresholds (Critical/High/Medium/Low)
-- Error Budget (1 - SLO Target)
-- SLO Implementation Skill
-- Handoff to Stage 6
-- Cursor-Based Pagination
-- EXPLAIN ANALYZE Scan Types
-- Index Types (B-Tree/GIN/BRIN/Partial/Covering)
-- SQL Optimization Patterns Skill
-- Concurrency Primitives (Mutex/RWLock/Atomics/Lock-Free)
-- Systems & CLI Engineering Skill
-- Memory Management (Arena/Pool Allocators)
-- Test Automation Skill
-- The Testing Pyramid (Unit/Integration/E2E)
-- Testing and Quality Orchestrator Skill
-- Testing/Quality Routing Decision Tree
-- Framework Selection (pytest/Jest/Vitest/Playwright)
-- Testing Patterns (Cross-Language Guide) Skill
-- Parallel Execution (pytest-xdist/Vitest threads/Jest workers)
-- Test Pyramid (70/20/10)
-- research-expert agent (research-suite)
-- research-expert agent (research-suite)
-- Research Suite README
-- homodyne/heterodyne/RheoJax code pattern
-- numerical-prototype skill
-- Repository Layout Convention
-- Docs Symlinks to Stage Artifacts
-- Convergence Test
-- Limit-Recovery Test
-- Property/Invariant Test (hypothesis)
-- Shape-and-Dtype Regression Test
-- Stage 6 Validation Pass Integration
-- Test Module Template (pytest/hypothesis/jax)
-- Axes and Annotation Standards
-- Figure Caption Style
-- Pre-Share Figure Checklist
-- Line Width and Marker Standards
-- Resolution and Format Standards
-- Acronym Definition Rule
-- Character-with-Space Limits Rule
-- Punctuation Rules (No Em Dashes)
-- 03_claim.md (Stage 3 claim artifact)
-- Five-Move Abstract Structure
-- Q2: Current Practice and Limits
-- Q3: What is New and Why Successful
-- Q4: Who Cares
-- Q5: Risks
-- Q6: Cost and Timeline
-- Q7: Midterm/Final Exams
-- Heilmeier Self-Check
-- One-Page Summary Template
-- One-Pager vs Full Proposal Scope Rule
-- research-spark orchestrator
-- _state.yaml (decision points)
-- falsifiable-claim skill (Stage 3)
-- landscape-scanner skill (Stage 2)
-- Reviewer Persona Definition
-- Reviewer 2 Persona Pattern
-- Stage 2 Gap Challenge Prompt Template
-- Stage 3 Claim Challenge Prompt Template
-- Using Reviewer Output / Rebuttal Process
-- research-expert agent
-- research-quality-assessment skill (referenced)
-- scientific-review skill (referenced)
-- CONSORT reporting guideline
-- evidence-synthesis skill (referenced)
-- HARKing red flag
-- MOOSE reporting guideline
-- P-hacking red flag
-- premortem-critique skill (research-spark Stage 8, referenced)
-- PRISMA reporting guideline
-- research-expert agent
-- research-methodology skill (referenced)
-- scientific-review skill (referenced)
-- STROBE reporting guideline
-- falsifiable-claim (Stage 3)
-- landscape-scanner (Stage 2)
-- numerical-prototype (Stage 6)
-- premortem-critique (Stage 8)
-- _state.yaml (pipeline state file)
-- research-expert agent
-- research-methodology skill (referenced)
-- research-quality-assessment skill (referenced)
-- scientific-review skill (referenced)
-- spark-articulator skill (referenced)
-- Review Report Structure template
-- integrity_checks.md reference (loaded in comprehensive mode)
-- review_structure.md reference (loaded in standard/comprehensive mode)
-- Six-lens analysis framework
-- 01_spark.md artifact
-- readability_check.py script
-- spark_template.md reference
-- style_lint.py shared linter
-- 01_spark.md artifact structure template
-- 05_formalism.tex artifact (compilable formalism)
-- Dimensional analysis / Buckingham Pi (referenced)
-- Gray-box boundary spec (referenced, SciML only)
-- Stepwise derivation protocol (referenced)
-- Buckingham Pi-theorem worksheet
-- Generalized Stokes-Einstein worked example
-- Stepwise derivation protocol (one atomic operation per step, verified)
-- continuum-mechanics-engineer agent
-- jax-pro agent
-- julia-pro agent
-- neural-network-master agent
-- python-pro agent
-- simulation-expert agent
-- statistical-physicist agent
-- Error Mitigation (ZNE, noise models)
-- PennyLane
-- Qiskit
-- Variational Quantum Eigensolver (VQE)
-- Hybrid Search (BM25 + dense)
-- LangChain
-- Reranking (Cross-Encoder, MMR)
-- Vector Databases (Pinecone/Weaviate/Chroma/Qdrant/FAISS)
-- Adaptive Multilevel Splitting / Weighted Ensemble
-- Cloning / GKLT (large-deviation)
-- Forward Flux Sampling (FFS)
-- JAX cloning for SCGF
-- openpathsampling (OPS)
-- PLUMED
-- powerlaw (avalanche exponents)
-- pyretis
-- TPS / TIS / RETIS
-- westpa
-- Reward Shaping (potential-based)
-- Stable-Baselines3 (PPO/DQN/SAC)
-- Research and Domains (orchestrator)
-- Constitutional AI critique loop
-- DPO (Direct Preference Optimization)
-- LLM-as-judge preference generation
-- Reward Hacking failure modes
-- trl library (PPOTrainer/DPOTrainer/KTOTrainer/IPOTrainer/ORPOTrainer/CPOTrainer/RewardTrainer)
-- Hypothesis (property-based testing)
-- Mutation Testing (mutmut)
-- Maturin build backend
-- PyO3
-- Science Suite (science-hub) top-level router
-- Matplotlib / Plots.jl / Makie.jl
-- Publication Standards Checklist (DPI, colorblind-safe palettes)
-- SciML and Differential Equations (orchestrator)
-- DataDrivenDiffEq.jl (SINDy)
-- Lux.jl
-- Universal Differential Equations (UDE)
-- Lux.jl Fundamentals (explicit ps/st parameterization)
-- SciMLSensitivity.jl algorithm selection (InterpolatingAdjoint etc.)
-- UDE + SINDy Discovery Pipeline
-- Modern SciML Stack (frozen at 78% budget)
-- UDE Training Pattern (two-phase ADAM+BFGS)
-- UncertaintyQuantification.jl (PCE + Sobol)
-- DSPy + MIPROv2 optimizer
-- Evolutionary prompt-program search (AlphaEvolve, OpenEvolve)
-- Inference-time scaling (best-of-N, tree-of-thoughts, MCTS)
-- Common pitfalls (reward hacking, verifier drift, plateaus)
-- Self-Refine loop pattern
-- Self-Improving AI (taxonomy router)
-- Digital Filter Design (Butterworth/Chebyshev/FIR)
-- FFT Analysis / Welch PSD
-- Wavelet Transform (pywt)
-- Simulation and HPC (orchestrator)
-- Bayesian A/B Testing (PyMC3)
-- Causal Inference (DiD, PSM, IV, RDD)
-- Statistical Physics Hub (orchestrator)
-- Error analysis for correlated MC samples (log-binning, jackknife, bootstrap)
-- HOOMD-blue / LAMMPS / ESPResSo
-- Monte Carlo samplers (Metropolis/Wolff/Wang-Landau/replica exchange)
-- Fokker-Planck equation
-- Green-Kubo Relations (transport coefficients)
-- Langevin Dynamics (Euler-Maruyama, JAX-accelerated)
-- Master Equation / Gillespie Algorithm
-- Numerical Fokker-Planck tools (py-pde, DOLFINx, firedrake, MethodOfLines.jl)
-- SDE libraries (diffrax, StochasticDiffEq.jl, sdeint, torchsde)
-- Code Generation (lambdify, codegen, CSE)
-- SymPy (algebra, calculus, ODE solving)
-- arch (GARCH/EGARCH, unit-root/cointegration tests)
-- ARIMA / SARIMA (statsmodels)
-- Data assimilation / state estimation (filterpy, DAPPER, dynamax)
-- Neural Forecasting (N-BEATS, TFT)
-- Nonlinear/info-theoretic tools (pyEDM, IDTxl, nolds, antropy, EntropyHub, ewstools)
-- continuum-mechanics-engineer agent
-- Constitutive modeling (hyperelastic/viscoelastic laws)
-- continuum-mechanics-engineer agent
-- DMA & rheology characterization
-- FEM/FEA weak-form discretization
-- Green-Tobolsky model (bond-exchange kinetics)
-- Halpin-Tsai effective-medium model
-- jax-pro (delegation: JAX numerics)
-- Mori-Tanaka (Eshelby inclusion theory)
-- Nanocomposites & adaptive materials
-- pinn-engineer (delegation: neural-PDE solves)
-- Generalized Maxwell / Prony series
-- research-expert (delegation: publication figures)
-- simulation-expert (delegation: MD/Monte Carlo)
-- statistical-physicist (delegation: percolation/statistical-mechanics theory)
-- Transient & adaptive networks (physical gels, vitrimers)
-- WLF equation / time-temperature superposition
-- jax-pro agent
-- julia-pro agent
-- ml-expert agent
-- neural-network-master agent
-- nonlinear-dynamics-expert agent
-- simulation-expert agent
-- statistical-physicist agent
-- Diffrax
-- Equinox
-- ComponentArrays.jl
-- GaussAdjoint sensealg
-- AUTO-07p
-- BifurcationKit.jl
-- Catalyst.jl
-- tellurium (Python SBML)
-- DynamicalSystems.jl
-- PackageCompiler.jl
-- YOLO (Ultralytics)
-- Pigeons.jl (NRPT)
-- python-control
-- freud (Glotzer group)
-- MLflow
-- neural-network-master agent
-- TensorBoard
-- Weights & Biases (wandb)
-- neural-network-master agent
-- julia-ml-hpc agent
-- ml-expert agent
-- neural-network-master agent
-- ml-expert agent
-- MLflow
-- BifurcationKit.jl
-- julia-pro agent
-- SciMLSensitivity (forward/adjoint sensitivity)
-- continuum-mechanics-engineer agent
-- Storage modulus (E'/G')
-- tan delta (damping ratio)
-- dspy.ChainOfThought
-- MIPROv2 optimizer
-- dspy.ReAct
-- sci-workflow-engineer agent
-- dspy.Signature
-- PyCall.jl
-- PyJulia
-- ADMM solve() call
-- SR3 solve() call
-- STLSQ solve() call
-- gplearn
-- PyDMD
-- PySINDy
-- PySR
-- SymbolicRegression.jl
-- julia-pro agent
-- nonlinear-dynamics-expert agent
-- SINDy (Sparse Identification of Nonlinear Dynamics)
-- SR3 thresholding
-- STLSQ thresholding
-- DVC (data versioning)
-- ml-expert agent
-- MLflow
-- Weights & Biases (wandb)
-- Generalized Extreme Value (GEV) distribution
-- Generalized Pareto Distribution (GPD)
-- ml-expert agent (secondary)
-- pyextremes
-- statistical-physicist agent
-- FedAvg
-- FedProx
-- Flower framework
-- ml-expert agent
-- Opacus (differential privacy)
-- continuum-mechanics-engineer agent
-- FEniCS/FEniCSx
-- pinn-engineer agent
-- Weak-form PDE discretization
-- Glass transition (VFT law)
-- Jamming transition
-- Percolation threshold (pc)
-- statistical-physicist agent
-- jax-pro agent
-- julia-ml-hpc agent
-- julia-pro agent
-- science-suite:graph-theory (skill)
-- continuum-mechanics-engineer agent
-- Fiedler value / Fiedler vector
-- Adjacency/Laplacian matrix
-- neural-network-master agent
-- nonlinear-dynamics-expert agent
-- Spectral graph theory
-- continuum-mechanics-engineer agent
-- Master curve (TTS)
-- CxxWrap.jl
-- julia-pro agent
-- PythonCall.jl
-- RCall.jl
-- Diffrax
-- Leapfrog (Stormer-Verlet) integrator
-- Non-centered reparameterization
-- Simulation-Based Inference (neural surrogate)
-- Blackjax Available Kernels Table
-- NumPyro Effect Handlers
-- handlers.block
-- handlers.condition
-- handlers.scale
-- handlers.substitute
-- handlers.trace
-- NumPyro Hierarchical Model Pattern
-- Blackjax MCMC Diagnostics (ESS, R-hat, Divergences)
-- NumPyro
-- Blackjax NUTS Warmup (window_adaptation)
-- Blackjax
-- jax-pro agent
-- NUTS/HMC
-- bayesian-inference hub (referenced)
-- JAX Bayesian Pro (referenced skill)
-- JAX Core Programming (referenced skill)
-- JAX DiffEq Pro (referenced skill)
-- JAX Mastery (referenced skill)
-- JAX Optimization Pro (referenced skill)
-- JAX Physics Applications (referenced skill)
-- jax-pro Agent (referenced)
-- Device Mesh (2D Parallelism) Diagram
-- JAX Core Programming Assets Overview
-- Speedup by Transformation Table
-- Training Pipeline Flow Diagram
-- JAX Transformation Stack Diagram
-- Advanced NNX Patterns (Transformer/ResNet/Sequential)
-- Basic NNX Module Definition
-- NNX Checkpointing (Orbax)
-- Common NNX Layers (Linear/Conv/Norm/Dropout)
-- NNX Common Patterns (Config/Ensemble)
-- Flax NNX Comprehensive Guide
-- NNX + JAX Transform Integration (jit/vmap/sharding)
-- Migration from Linen to NNX
-- NNX State Management
-- Training with NNX (nnx.Optimizer, LR schedule)
-- Automatic Differentiation (jax.grad)
-- JAX Composition Patterns
-- JAX Transformations Comprehensive Reference
-- JIT Compilation (jax.jit)
-- Modern Sharding API (Mesh/NamedSharding)
-- Multi-Device Parallelism (jax.pmap)
-- Performance Best Practices
-- Vectorization (jax.vmap)
-- Bayesian Neural Networks (BNN)
-- BNN with Flax NNX
-- Integration with JAX Core (JIT Bayesian Workflow)
-- JAX Integration Patterns (Batched Inference, Custom Distributions)
-- MCMC Inference (NUTS)
-- NumPyro Bayesian Patterns Quick Reference
-- NumPyro + JAX Performance Tips
-- Posterior Predictive Distributions
-- numpyro-core-mastery skill (referenced)
-- Variational Inference (SVI + AutoNormal)
-- Per-Parameter Optimizers (multi_transform/masked)
-- CheckpointManager (Cleanup, Best-Metric Tracking)
-- Flax NNX Save/Restore Integration
-- Multi-Host Checkpointing
-- PyTreeCheckpointer (Basic Save/Load)
-- JIT Compilation
-- Mixed Precision Training (bf16)
-- Rematerialization / Gradient Checkpointing
-- Multi-Device Sharding API
-- Vectorization with vmap
-- JAX Core Programming References Overview
-- numpyro-core-mastery skill (referenced)
-- optax_optimizers.md (referenced, not in chunk)
-- orbax_checkpointing.md (referenced, not in chunk)
-- performance_optimization.md (referenced, not in chunk)
-- Equinox (PyTree-Native Neural Networks)
-- interpax JIT-Safe Interpolation
-- JAX Core Programming Skill
-- Lineax Linear Solvers
-- Optimistix Root-Finding & Optimization
-- Diffrax (referenced, uses Lineax for Newton steps)
-- jax-pro Agent (referenced)
-- Implicit Solvers + Lineax Newton Iteration
-- Optimistix Root Finding & Steady States
-- Overdamped Langevin Dynamics
-- Neural ODE / Universal Differential Equations
-- Oldroyd-B Viscoelastic Model
-- Thixotropic Yield-Stress Model
-- Diffrax ODE/SDE Solver Library
-- Hybrid Physics+Neural Vector Field (Equinox)
-- jax-pro Expert Agent
-- Lineax Linear Algebra Library
-- Optimistix Root-Finding Library
-- RecursiveCheckpointAdjoint
-- JAX DiffEq Pro Skill
-- Solver Selection Guide (Stiff vs Non-stiff)
-- BifurcationKit (blocked on Julia 1.12)
-- CondaPkg.jl Environment Management
-- jax-pro Agent
-- julia-pro Agent
-- juliacall (Python to Julia)
-- PythonCall.jl (Julia to Python)
-- JAX-Julia Interop Skill
-- Core JAX Transformations (jit/vmap/pmap/grad)
-- Equinox Neural Network Library
-- JAX-MD / JAX-CFD Differentiable Physics
-- jax-pro Agent
-- NLSQ (GPU Curve Fitting)
-- NumPyro (Probabilistic Programming)
-- JAX Mastery Skill
-- XLA/HLO Analysis
-- Pallas Custom Kernels
-- Advanced Control Flow (scan/cond/while_loop/fori_loop/switch)
-- JAX Optimization Ecosystem (Optax/Optimistix/Lineax/Diffrax)
-- jax-pro Agent
-- JAXopt (Deprecated)
-- JAX Optimization Pro Skill
-- Cirq API (Google quantum)
-- Diffrax API (ODE/SDE solvers)
-- Why merged, and why this stage exists
-- Optax API (optimizers/schedules)
-- PennyLane API (Xanadu quantum, JAX interface)
-- Adaptive Mesh Refinement (AMR) + Multigrid Solver
-- CFD Solver Validation Test Suite
-- Multiphase Flow (Volume of Fluid method)
-- Turbulence Modeling: LES (Smagorinsky / Dynamic Smagorinsky)
-- Coarse-Grained Models (DPD, MARTINI, AdResS)
-- Embedded Atom Method (EAM) Potential
-- Neighbor Lists (Verlet / Cell List)
-- Thermostats and Barostats (Nose-Hoover, Langevin, Parrinello-Rahman)
-- Physics Validation Checklists (Detailed)
-- MD Validation (Energy/Temperature/Pressure/Structural/Physical Consistency)
-- Multi-Physics Validation (Interface, Conservation)
-- Quantum Computing Validation (VQE Energy, Circuit, States)
-- Multi-Physics Coupling PINN (CoupledPhysicsPINN, NS+Heat)
-- Stiff PDEs / Causal Training
-- Uncertainty Quantification via MC Dropout
-- Error Mitigation (Zero-Noise Extrapolation)
-- Allowed operations per step
-- Heat Equation PINN
-- jax-pro Agent
-- neural-network-master Agent (delegate)
-- Quantum Computing (Cirq/PennyLane)
-- simulation-expert Agent (delegate, LAMMPS/GROMACS)
-- ChainRulesCore.jl (custom rrule/frule)
-- DifferentiationInterface.jl (backend-agnostic AD)
-- Handling long derivations
-- Enzyme.jl (LLVM-level forward/reverse AD)
-- ForwardDiff.jl (forward-mode dual numbers)
-- julia-ml-hpc Agent
-- Mixed-Mode AD for Hessians (ForwardDiff-over-Zygote)
-- Zygote.jl (source-to-source reverse-mode AD)
-- AMDGPU.jl
-- cuBLAS
-- cuSOLVER
-- julia-ml-hpc Agent
-- KernelAbstractions.jl
-- Lux.jl
-- Metal.jl
-- NCCL.jl
-- NVTX.jl
-- oneAPI.jl
-- Molecular Property Prediction Example
-- single_train_step!
-- Lux.Training.TrainState
-- bayesian-ude-workflow Skill
-- consensus-mcmc-pigeons Skill
-- e3nn (PyTorch)
-- e3nn-jax
-- EdgeConv
-- EquivariantTensors.jl
-- GATConv
-- GatedGraphConv
-- GCNConv
-- GINConv
-- GNNGraphs
-- GNNlib
-- GNNLux
-- GraphNeuralNetworks.jl
-- jraph
-- JraphX
-- julia-ad-backends Skill
-- julia-gpu-kernels Skill (ref)
-- julia-ml-hpc Agent
-- KernelAbstractions.jl
-- lux-training-and-message-passing.md reference
-- MLDatasets
-- MLUtils.batch
-- OneHotArrays
-- OrdinaryDiffEq
-- Pigeons
-- SAGEConv
-- SciMLSensitivity
-- torch_geometric
-- Turing.jl
-- Dagger.jl
-- Distributed.jl
-- Julia HPC & Distributed Computing Skill
-- julia-ml-hpc Agent
-- NCCL.jl
-- pmap
-- RemoteChannel
-- SLURM
-- julia-pro Agent
-- BenchmarkTools.jl
-- DataDrivenDiffEq.jl
-- julia-pro Agent
-- Lux.jl
-- NeuralPDE.jl
-- Optimization.jl
-- StaticArrays.jl
-- julia-ml-hpc Agent
-- DataFrames.jl
-- DrWatson.jl
-- julia-ml-hpc Agent
-- MLJ.jl
-- Genie.jl
-- JLD2
-- julia-ml-hpc Agent
-- juliacall
-- ONNXExporter
-- ONNXRunTime
-- Oxygen.jl
-- PackageCompiler.jl
-- PythonCall.jl
-- julia-neural-architectures (skill)
-- GNNChain (ref)
-- julia-ml-hpc Agent
-- Lux.jl
-- neural-network-master Agent
-- RecurrentLayers.jl
-- Transformer / Multi-Head Attention
-- WeightInitializers.jl
-- DataLoaders.jl
-- Flux.jl
-- JLD2
-- julia-ml-hpc Agent
-- Lux.jl
-- MLUtils.jl
-- Optimisers.jl
-- ParameterSchedulers.jl
-- DDPG (Deep Deterministic Policy Gradient)
-- Custom GridWorldEnv
-- julia-ml-hpc Agent
-- Julia Reinforcement Learning Skill
-- ReinforcementLearning.jl
-- RLBase Interface
-- JET.jl
-- julia-pro Agent
-- Julia Testing Patterns Skill
-- Test.jl
-- Lux.jl
-- Julia Training Diagnostics Skill
-- HiGHS Solver
-- JuMP.jl
-- JuMP Optimization Skill
-- Optimization.jl
-- LangChain
-- LangChain Architecture Skill
-- sci-workflow-engineer Agent
-- LangChain Architecture (referenced skill)
-- LLM Application Dev (referenced skill)
-- LLM Evaluation (referenced skill)
-- LLM and AI Hub Skill
-- NLP Fundamentals (referenced skill)
-- RAG Implementation (referenced skill)
-- sci-workflow-engineer Agent
-- LLM Application Dev Skill
-- sci-workflow-engineer Agent
-- sci-workflow-engineer Agent
-- Data Wrangling & Communication (referenced skill)
-- DevOps & ML Infrastructure (referenced skill)
-- julia-ml-hpc Agent
-- Machine Learning & MLOps Hub Skill
-- ML Engineering & Production (referenced skill)
-- ml-expert Agent
-- ML Pipeline Workflow (referenced skill)
-- Model Deployment & Serving (referenced skill)
-- SHAP
-- SMOTE
-- Statistical Analysis Fundamentals (referenced skill)
-- XGBoost
-- ArviZ
-- consensus-mcmc-pigeons (referenced skill)
-- Effective Sample Size (ESS)
-- jax-pro Agent
-- julia-pro Agent
-- MCMC Diagnostics Skill
-- MCMCChains.jl
-- neural-pde (referenced skill, BPINN section)
-- numpyro-core-mastery (referenced skill)
-- R-hat Diagnostic
-- statistical-physicist Agent
-- turing-model-design (referenced skill)
-- MD Simulation Setup Skill
-- ML Force Fields (referenced skill)
-- Molly.jl
-- Multiscale Modeling (referenced skill)
-- OpenMM
-- simulation-expert Agent
-- Trajectory Analysis (referenced skill)
-- ML and Data Science Hub
-- ML Deployment Hub
-- ExperimentTracker (wandb)
-- ModelConfig dataclass
-- SQLDataLoader
-- Weights & Biases (wandb)
-- Allegro
-- fairchem (UMA, eSEN, EquiformerV2)
-- ML Force Fields Hub
-- MACE
-- MACE-JAX
-- Molly.jl
-- MPtrj dataset
-- NequIP
-- OC20 / OC22 dataset
-- PotentialLearning.jl
-- SchNet / SchNetPack
-- Apache Airflow
-- Dagster
-- DVC
-- grain (JAX data loader)
-- Great Expectations
-- ML Pipeline Workflow Hub
-- Kubeflow Pipelines
-- MLflow
-- Prefect
-- ABTest / Variant classes
-- BentoML
-- DriftDetector class
-- FastAPI
-- Model Deployment and Serving Hub
-- KServe
-- TorchServe
-- Model Optimization & Deployment Hub
-- ONNX
-- TensorRT
-- TFLite
-- TorchScript
-- Triton Inference Server
-- ModelingToolkit.jl Skill
-- structural_simplify (symbolic simplification)
-- Modern Concurrency in Python Skill
-- Barrier / Queue / Semaphore primitives
-- asyncio.TaskGroup
-- asyncio.to_thread / ProcessPoolExecutor
-- Dissipative Particle Dynamics (DPD)
-- HOOMD-blue
-- Multiscale Modeling Skill
-- MARTINI (CG force field)
-- Nanoscale DEM
-- QM/MM
-- Halpin-Tsai model
-- Nanocomposites & Adaptive Materials Skill
-- Mori-Tanaka model
-- Basic Reproduction Number R_0
-- NetworkDynamics.jl
-- Synchronization Order Parameter R(t)
-- SIR Epidemic Model on Networks
-- BatchNorm
-- Diffusion Models
-- Graph Neural Networks
-- LayerNorm
-- Neural ODEs
-- ResNet
-- Skip/Residual Connections
-- Fisher Information Matrix
-- Graph Neural Networks / GCN
-- Natural Gradient Descent
-- Neural SDEs
-- Normalizing Flows (Change of Variables)
-- Radon-Nikodym Theorem
-- Riemannian Geometry
-- Spectral Clustering
-- Backpropagation Through Time (BPTT)
-- Generative Adversarial Network (GAN)
-- GRU
-- LSTM
-- Normalizing Flows (Affine Coupling Layer)
-- Receptive Field
-- architecture-specific-math-reference.md (document)
-- Variational Autoencoder (VAE)
-- calculus-backpropagation-reference.md (document)
-- KL Divergence
-- information-theory-reference.md (document)
-- VAE / ELBO
-- Gradient Flow Analysis (Eigenvalues)
-- Matrix Multiplication
-- Orthogonality / Orthogonal Initialization
-- Principal Component Analysis (PCA)
-- Power Iteration / Spectral Norm
-- Rank / Low-Rank Approximation
-- linear-algebra-reference.md (document)
-- Weight Initialization (Xavier/He)
-- ZCA Whitening
-- Cholesky Decomposition
-- Conjugate Gradient Method
-- QR Decomposition
-- numerical-methods-reference.md (document)
-- Numerically Stable Sigmoid
-- Numerically Stable Softmax
-- Adam
-- AdamW
-- Gradient Clipping
-- L-BFGS
-- Nesterov Accelerated Gradient
-- optimization-theory-reference.md (document)
-- Learning Rate Warmup
-- probability-statistics-reference.md (external)
-- Neural Network Mathematics Reference Index
-- Adam Optimizer
-- Information Theory Domain
-- KL Divergence
-- Linear Algebra Domain
-- Optimization Domain
-- Probability Domain
-- Xavier/He Initialization
-- JAX-MD (Differentiable Molecular Dynamics)
-- py-pde (finite-difference PDE toolkit)
-- Integration with SymPy
-- Stepwise derivation protocol
-- NumPyro Assets README (templates)
-- NumPyro Examples Collection README
-- BlackJAX
-- corner (posterior corner plots)
-- emcee
-- GPJax
-- Pigeons.jl (via juliacall)
-- pocoMC
-- tinygp
-- Optimization.jl Patterns (Skill)
-- CompatHelper (GitHub Action)
-- Julia Package Development Workflow (Skill)
-- TagBot (GitHub Action)
-- Julia Package Management (Skill)
-- Project.toml
-- Dask
-- MPI (Message Passing Interface)
-- OpenMP
-- Parallel Computing Suite (Skill)
-- SLURM
-- FitzHugh-Nagumo Model
-- Graph Laplacian (Reaction-Diffusion on Graphs)
-- Gray-Scott Model
-- Turing Instability
-- Julia Performance Tuning (Skill)
-- Contrastive Hebbian Learning / Hopfield Energy-Based Models
-- Hawkes Process
-- Point Processes & Self-Exciting Dynamics (Skill)
-- PointProcesses.jl
-- tick (Python Hawkes library)
-- Python Systems Engineering (Skill)
-- example-package README.md
-- hatchling (build backend)
-- Python Packaging with uv (Skill)
-- uv (Python packaging tool)
-- Gradient Pathologies Reference
-- Glorot & Bengio 2010
-- Gradient Clipping
-- Gradient Saturation
-- He et al. 2015 (Deep Residual Learning)
-- He Initialization
-- Ioffe & Szegedy 2015 (Batch Normalization)
-- Layer Normalization
-- Leaky ReLU / PReLU / ELU
-- Pascanu et al. 2013 (RNN Training Difficulty)
-- Residual Connections
-- Xavier/Glorot Initialization
-- Early Stopping
-- Nakkiran et al. 2019 (Deep Double Descent)
-- Smith 2017 (Cyclical Learning Rates)
-- Smith 2018 (Disciplined Approach to Hyperparameters)
-- The step template
-- Verification pass: how much is enough
-- When a step's verification fails
-- Dead ReLU (Quick Ref)
-- diagnose_gradients() function
-- Exploding Gradients (Quick Ref)
-- julia-training-diagnostics Skill (reference)
-- Loss Spike (Quick Ref)
-- LR Range Test
-- neural-network-master Agent
-- Overfitting (Quick Ref)
-- Plateau (Quick Ref)
-- Underfitting (Quick Ref)
-- Vanishing Gradients (Quick Ref)
-- GROMACS Tools
-- MDAnalysis
-- MDTraj
-- Mean Squared Displacement (MSD) / Diffusion
-- OVITO
-- Radial Distribution Function (RDF)
-- simulation-expert Agent
-- MD Trajectory Analysis Skill
-- continuum-mechanics-engineer Agent
-- Covalent Adaptable Networks (Vitrimers)
-- Green-Tobolsky Model
-- Physical Networks
-- Sticky Rouse Model
-- Transient Networks & CAN Skill
-- bayesian-ude-workflow Skill
-- consensus-mcmc-pigeons Skill
-- julia-pro Agent
-- Lux NN Embedding via ComponentArray
-- mcmc-diagnostics Skill
-- Non-Centered Parameterization
-- statistical-physicist Agent
-- Turing.jl Model Design Skill
-- variational-inference-patterns Skill
-- Annotated Pattern
-- Generics and TypeVar
-- Literal Pattern
-- NewType Pattern
-- typing.Protocol (Structural Typing)
-- Strict pyright/mypy Configuration
-- python-pro Agent
-- Type-Driven Design in Python Skill
-- TypeGuard Pattern
-- bayesian-ude-workflow Skill
-- consensus-mcmc-pigeons Skill
-- jax-pro Agent
-- julia-pro Agent
-- mcmc-diagnostics Skill
-- statistical-physicist Agent
-- Variational Inference Skill
-- CairoMakie
-- GLMakie
-- StatsPlots.jl
-- Julia Visualization Patterns Skill
-- Genie.jl
-- HTTP.jl
-- JSON3.jl / StructTypes
-- julia-pro Agent
-- Oxygen.jl
-- Julia Web Development Skill
-- heterodyne (external repo)
-- homodyne (external repo)
-- pyproject.toml Layout
-- Python 3.12+ Convention
-- ruff Linting/Formatting
-- uv Dependency Management
-- Explicit Dtype Policy
-- Functional Style (Pure Functions)
-- JAX-First Code Architecture Rules
-- jax.jit the Integration Step
-- No Python Loops in Physics Core
-- PRNGKey Discipline
-- RheoJax (external repo)
-- Static vs Dynamic Shapes
-- Agy CLI
-- Three-Brain Skill
-- Creator Agent - Author
-- Creator Agent - Developer
-- research-expert Delegation Strategy
-- GRADE Evidence Grading
-- ml-expert Agent
-- pinn-engineer Agent
-- python-pro Agent
-- research-expert Agent Definition
-- sci-workflow-engineer Agent
-- Canonical Paths Invariant
-- The 8-Stage Pipeline
-- Why this protocol exists
-- research-spark-orchestrator Agent Definition
-- Silent Downstream Invalidation Forbidden
-- _state.yaml
-- /lit-review Command
-- /paper-implement Command
-- quality-specialist Agent
-- /replicate Command
+- Templates And Scripts Bundled 
+- What Stage 2 Will Read From Th
+- What This Stage Does And Why I
+- Handoff To Stage 6
+- Why Merged, And Why This Stage
+- Generalized Stokes Einstein Wo
+- Allowed Operations Per Step
+- Handling Long Derivations
+- Integration With Sympy
+- Stepwise Derivation Protocol
+- The Step Template
+- Verification Pass: How Much Is
+- When A Step'S Verification Fai
+- Why This Protocol Exists
+- 1. Problem Classification
 - 2. Functional Purity
 - 3. Numerical Stability
-- citation_style.md
-- code_architecture/ Directory
 - 4. Code Completeness
 - 5. Factual Accuracy
 - Algorithm Selection
-- API Selection
-- Common Anti-Patterns
+- Api Selection
+- Chain Of Thought Decision Fram
+- Common Anti Patterns
 - Common Failure Modes
+- Constitutional Ai Principles
 - Convergence Targets
 - Core Competencies
-- project_log.md (template)
 - Core Responsibilities
-- research-commons Skill
-- Cross-Domain Decision Framework
-- scripts/ Directory
-- style/ Directory
-- Debugging JIT
-- templates/ Directory
+- Cross Domain Decision Framewor
+- Debugging Jit
 - Delegation Table
-- Domain 4: Computational Physics
-- superpowers:systematic-debugging (External Plugin Skill)
-- Equinox vs Flax
+- Differential Equations (Diffra
+- Domain 4: Computational Physic
+- Domain 6: Linear Solvers & Roo
+- Domain 7: Interpolation & Sche
+- Equinox Vs Flax
 - Examples
-- Fluid Dynamics (JAX-CFD)
+- Fluid Dynamics (Jax Cfd)
 - Gradient Strategy
 - Inference Strategy
-- interpax — JIT-Safe Interpolation
-- JAX Pro - Unified Scientific Computing Specialist
-- JAX Transformations Quick Reference
+- Interpax — Jit Safe Interpolat
+- Jax Pro   Unified Scientific C
+- Jax Transformations Quick Refe
 - Lineax — Linear Solvers
 - Loss Functions
-- Modern Sharding (shard_map)
-- Molecular Dynamics (JAX-MD)
-- Neural ODEs with Equinox + Diffrax
-- NLSQ Quick Reference
-- Non-Centered Parameterization (Divergence Fix)
+- Modern Sharding (Shard_Map)
+- Molecular Dynamics (Jax Md)
+- Neural Odes With Equinox + Dif
+- Nlsq Quick Reference
+- Non Centered Parameterization 
 - Nonlinear Dynamics Delegation
-- NumPyro Quick Reference
-- Optax — Learning Rate Schedules
-- Optimistix — Root-Finding & Fixed Points
+- Numpyro Quick Reference
+- Optax — Learning Rate Schedule
+- Optimistix — Root Finding & Fi
 - Performance
 - Physics Validation
-- Pre-Response Validation Framework (5 Checks)
-- Principle 1: Numerical Correctness (Target: 100%)
-- Principle 2: Reproducibility (Target: 100%)
-- Principle 3: Performance (Target: 95%)
-- Principle 4: Convergence Validation (Target: 100%)
+- Pre Response Validation Framew
+- Principle 1: Numerical Correct
+- Principle 2: Reproducibility (
+- Principle 3: Performance (Targ
+- Principle 4: Convergence Valid
 - Production Checklist
 - Quick Reference
-- Related Skills (Expert Agent For)
-- Sharding API
+- Related Skills (Expert Agent F
+- Sharding Api
 - Step 1: Problem Classification
-- Step 2: API & Framework Selection
+- Step 2: Api & Framework Select
 - Step 3: Implementation Design
 - Step 4: Numerical Validation
 - Step 5: Production Hardening
 - Transformation Composition
+- 1. Problem Classification
 - 2. Type Stability
 - 3. Performance & Memory
 - 4. Framework Correctness
 - 5. Production Readiness
-- CartPole DQN Agent
-- ChainRulesCore Custom Rule
+- Backend Selection Table
+- Cartpole Dqn Agent
+- Chain Of Thought Decision Fram
+- Chainrulescore Custom Rule
 - Common Failure Modes & Fixes
+- Constitutional Ai Principles
 - Core Competencies
-- Cross-Domain Decision Framework
-- CUDA.jl Custom Kernel
+- Cross Domain Decision Framewor
+- Cuda.Jl Basics
+- Cuda.Jl Custom Kernel
 - Delegation Table
-- Domain 3: GPU Computing (CUDA.jl / KernelAbstractions.jl)
-- Domain 4: Distributed Computing (Distributed.jl / MPI.jl)
-- Domain 5: AD Backends
-- Domain 7: Reinforcement Learning
-- DrWatson.jl Experiment Management
+- Distributed.Jl Patterns
+-  Flux.Jl)
+- Domain 2: Ml Pipelines (Mlj.Jl
+-  Kernelabstractions.Jl)
+-  Mpi.Jl)
+- Domain 5: Ad Backends
+- Domain 6: Graph Neural Network
+- Domain 7: Reinforcement Learni
+- Domain 8: Model Deployment
+- Drwatson.Jl Experiment Managem
 - Examples
-- Flux-to-Lux Migration
-- GCN Model with Lux.jl
-- Genie.jl REST API for Model Serving
-- GNNGraph Construction
-- GPU Anti-Patterns
-- Julia ML/HPC - Machine Learning & High-Performance Computing Specialist
-- KernelAbstractions.jl Portable Kernel
-- Lux.jl Training Loop Template
-- Lux.jl vs Flux.jl Decision Table
-- MLJ.jl Quick Reference
-- MPI.jl AllReduce for Gradient Aggregation
+- Flux To Lux Migration
+- Gcn Model With Lux.Jl
+- Genie.Jl Rest Api For Model Se
+- Gnngraph Construction
+- Gpu Anti Patterns
+- Hpc   Machine Learning & High 
+- Kernelabstractions.Jl Portable
+- Lux.Jl Training Loop Template
+- Lux.Jl Vs Flux.Jl Decision Tab
+- Mlj.Jl Quick Reference
+- Mpi.Jl Allreduce For Gradient 
 - Node Classification
-- PackageCompiler.jl Sysimage
-- Pre-Response Validation Framework (5 Checks)
-- Principle 1: Type Safety (Target: 100%)
-- Principle 2: Reproducibility (Target: 100%)
-- Principle 3: Performance (Target: 95%)
-- Principle 4: Correctness (Target: 100%)
+- Packagecompiler.Jl Sysimage
+- Pre Response Validation Framew
+- Principle 1: Type Safety (Targ
+- Principle 2: Reproducibility (
+- Principle 3: Performance (Targ
+- Principle 4: Correctness (Targ
 - Production Checklist
 - Quick Reference
-- Related Skills (Expert Agent For)
-- SLURM Batch Script
+- Related Skills (Expert Agent F
+- Slurm Batch Script
 - Step 1: Problem Classification
 - Step 2: Framework Selection
 - Step 3: Implementation Design
 - Step 4: Validation
 - Step 5: Production Deployment
+- 1. Problem Classification
 - 2. Type Stability
 - 3. Performance & Memory
 - 4. Mathematical Correctness
 - 5. Production Readiness
+- Basic Ude: Known Physics + Neu
+- Bayesian Ode Parameter Estimat
+- Chain Of Thought Decision Fram
 - Common Failure Modes & Fixes
+- Constitutional Ai Principles
 - Core Competencies
-- Cross-Domain Decision Framework
+- Cross Domain Decision Framewor
 - Delegation Table
 - Diagnostics Checklist
-- Domain 2: Scientific Machine Learning (SciML)
-- Domain 3: Bayesian Inference (Turing.jl)
-- Domain 5: Modern SciML Stack (Lux.jl + SciMLSensitivity)
+- Differential Equations
+- Domain 2: Scientific Machine L
+- Domain 3: Bayesian Inference (
+- Domain 4: Package Development
+- Domain 5: Modern Sciml Stack (
+- Domain 7: Data Driven Modeling
 - Examples
-- Lux.jl — Explicit Parameterization
+- Lux.Jl — Explicit Parameteriza
 - Model Definition & Inference
-- ModelingToolkit (Symbolic) — v9+ Syntax
+- Modelingtoolkit (Symbolic) — V
 - Performance Optimization
-- Pre-Response Validation Framework (5 Checks)
-- Principle 1: Mathematical Correctness (Target: 100%)
-- Principle 2: Type Safety (Target: 100%)
-- Principle 3: Reproducibility (Target: 100%)
-- Principle 4: Performance (Target: 95%)
+- Pre Response Validation Framew
+- Principle 1: Mathematical Corr
+- Principle 2: Type Safety (Targ
+- Principle 3: Reproducibility (
+- Principle 4: Performance (Targ
 - Quality Assurance Tools
-- Related Skills (Expert Agent For)
-- Sensitivity Algorithm Selection
-- SINDy — Sparse Identification of Nonlinear Dynamics
+- Related Skills (Expert Agent F
+- Sensitivity Algorithm Selectio
+- Sindy — Sparse Identification 
 - Solver Selection Guide
 - Standard Project Structure
 - Step 1: Problem Classification
@@ -2191,135 +964,160 @@
 - Step 3: Implementation Design
 - Step 4: Validation
 - Step 5: Production Readiness
-- SymbolicRegression.jl — Equation Discovery
+- Symbolicregression.Jl — Equati
 - Type System & Dispatch
-- UDE Design Patterns
-- UDE + SINDy Pipeline
-- UDE Training: Two-Phase (ADAM -> BFGS)
-- Universal Differential Equations (UDEs)
+- Ude Design Patterns
+- Ude + Sindy Pipeline
+- Ude Training: Two Phase (Adam 
+- Universal Differential Equatio
+- Ml Expert Agent
 - Commands
-- Composition with SINDy and neighboring skills
+-  Adjoint Choice
+- Composition With Sindy And Nei
 - Stack
-- Why a JAX-first path?
-- AD backend choice
-- Composition with SINDy
-- Python / JAX counterpart
-- Stage 1 — Deterministic warm-start
-- Stage 2 — Turing model with embedded ODE
-- Stage 3 — Sampler selection
-- Stage 4 — Diagnostics and posterior predictive
-- Why a multi-stage workflow?
-- BifurcationKit.jl Quick Start
-- Branch Switching at Hopf to Periodic Orbits
-- Codimension-1 Bifurcations
-- Codimension-2 Bifurcations
-- Deflation for Multiple Equilibria
+- Stage 1 — Deterministic Warm S
+- Stage 2 — Bayesian Posterior S
+- Stage 3 — Sampler Selection An
+- Why A Jax First Path?
+- Ad Backend Choice
+- Composition With Sindy
+-  Jax Counterpart
+- Stage 1 — Deterministic Warm S
+- Stage 2 — Turing Model With Em
+- Stage 3 — Sampler Selection
+- Stage 4 — Diagnostics And Post
+- Why A Multi Stage Workflow?
+- Bifurcationkit.Jl Quick Start
+- Branch Switching At Hopf To Pe
+- Codimension 1 Bifurcations
+- Codimension 2 Bifurcations
+- Deflation For Multiple Equilib
 - Detecting Bifurcation Points
+- Jax Integration: Parameter Swe
 - Normal Form Computation
 - Periodic Orbit Continuation
-- Two-Parameter Continuation
+- Two Parameter Continuation
+- Bioinformatics Workflow Checkl
 - Biopython Essentials
-- BLAST Searches
+- Blast Searches
 - Database Access
 - Genomics Pipeline
 - Phylogenetic Analysis
 - Protein Structure
 - Sequence Alignment
-- Jump processes beyond pure SSA
-- Python Counterpart (SBML ecosystem)
-- Python counterparts
+- Jump Processes Beyond Pure Ssa
+- Python Counterpart (Sbml Ecosy
+- Python Counterparts
 - Reaction Network Pattern
 - Simulation Types
+- Attractor Reconstruction (Take
 - Chaos Classification
 - Continuous Systems
-- Correlation Dimension (Grassberger-Procaccia)
+- Convergence Tracking
+- Correlation Dimension (Grassbe
 - Discrete Systems
 - Fractal Dimension
 - Full Lyapunov Spectrum
 - Generalized Dimensions
-- JAX Parallel Lyapunov Computation
-- Kaplan-Yorke Dimension
+- Jax Parallel Lyapunov Computat
+- Julia → Python Interop Via Pyt
+- Kaplan Yorke Dimension
 - Lyapunov Exponents
 - Maximum Lyapunov Exponent
 - Poincare Sections
 - Python Counterparts
 - Recurrence Analysis
 - Recurrence Matrix
-- Recurrence Quantification Analysis (RQA)
-- Step 1: Estimate Delay (tau)
-- Step 2: Estimate Embedding Dimension
+- Recurrence Quantification Anal
+- Step 1: Estimate Delay (Tau)
+- Step 2: Estimate Embedding Dim
 - Step 3: Embed
-- System Construction (DynamicalSystems.jl)
+- System Construction (Dynamical
 - Advanced System Image Options
-- App Bundling with Artifacts
+- App Bundling With Artifacts
 - Docker Deployment
 - Precompile Script
 - Standalone Executable
 - System Image (Faster Startup)
 - Use Cases
-- CNN Architecture Patterns
+- Cnn Architecture Patterns
 - Data Augmentation Strategy
-- DETR: End-to-End Object Detection
+- Detr: End To End Object Detect
 - Image Preprocessing Pipeline
-- Object Detection with YOLO
+- Object Detection With Yolo
 - Semantic Segmentation
 - Transfer Learning Checklist
 - Video Analysis Pattern
-- Basic pattern (Turing target)
+- Advanced Configuration (`Input
+- Basic Pattern (Turing Target)
+- Composition With Arbitrary Log
 - Scaling
-- Variational reference (`GaussianReference`)
-- When to use Pigeons (symptom-driven)
-- Why non-reversible PT?
+- Variational Reference (`Gaussi
+- When To Use Pigeons (Symptom D
+- Why Non Reversible Pt?
+- Control Design Checklist
 - Frequency Response Analysis
-- LQR Optimal Control
-- PID Tuning
+- Lqr Optimal Control
+- Model Predictive Control (Mpc)
+- Pid Tuning
 - Root Locus
-- State-Space Models
+- State Space Models
 - Transfer Functions
+- Block Averaging
+- Bootstrap Error
+- Comparison With Alternatives
 - Convergence Test
-- FFT-Based Correlation
-- `freud` — algorithmic notes
-- GPU acceleration
-- JAX GPU Acceleration
-- Multi-frame averaging
-- Multi-Tau Correlator
-- Neighbor-list construction
-- O(N log N) Autocorrelation
+- Fft Based Correlation
+- Freud (Glotzer Group)
+- `Freud` — Algorithmic Notes
+- Gpu Acceleration
+- Jax Gpu Acceleration
+- Multi Frame Averaging
+- Multi Tau Correlator
+- Neighbor List Construction
+- O(N Log N) Autocorrelation
 - Performance Benchmarks
 - Robust Statistics
-- Spatial Correlation (KD-Tree)
+- Spatial Correlation (Kd Tree)
 - Statistical Validation
-- Finite-Size
-- Fluctuation-Dissipation
-- Green's Functions
-- Higher-Order
+- Finite Size
+- Fluctuation Dissipation
+- Green'S Functions
+- Higher Order
 - Implementation
-- Ornstein-Zernike
-- Python / JAX ecosystem
+- Minimal Pattern — Wiener Khinc
+- Ornstein Zernike
+-  Jax Ecosystem
 - Sum Rules
-- Two-Point Correlation
-- Wiener-Khinchin
+- Two Point Correlation
+- Wiener Khinchin
+- Active Matter
+- Biological Systems
+- Colloidal Systems
+- Condensed Matter
 - Density Correlations
 - Experimental Mapping
 - Glass Transition
 - Information Transfer
 - Membrane Fluctuations
-- Non-Equilibrium Systems
+- Non Equilibrium Systems
 - Polymer Dynamics
 - Protein Folding
-- Python `freud` ecosystem
+- Python `Freud` Ecosystem
 - Soft Matter
 - Spin Correlations
 - Transport Coefficients
+- Automated Insights
 - Categorical Encoding
 - Dashboard Patterns
+- Data Cleaning Workflow
 - Data Quality Checklist
 - Distribution Analysis
-- EDA Visualizations
+- Eda Visualizations
 - Feature Engineering
 - Feature Scaling
 - Initial Inspection
-- Interactive with Plotly
+- Interactive With Plotly
 - Missing Value Strategy
 - Numerical Transformations
 - Outlier Treatment
@@ -2331,202 +1129,332 @@
 - Ablation Studies
 - Configuration Management
 - Hyperparameter Priority
+- Lr Range Test (Leslie Smith)
 - Mixed Precision Training
+- Mlflow
+- Neural Network Master Agent
 - Reproducibility
 - Search Strategies
+- Tensorboard
+- Weights & Biases (Wandb)
+- Neural Network Master Agent
 - Frameworks
+- Ml Expert Agent
 - Inference Optimization
-- ML Best Practices
-- ML Platform Selection
+- Ml Best Practices
+- Ml Expert Agent
+- Ml Platform Selection
+- Mlflow
 - Training Pipeline Pattern
+- Bifurcationkit.Jl
 - Callbacks
 - Continuation Methods
 - Ensemble Simulations
+- Event Handling
+- Julia Pro Agent
+- Ode Template
+- Adjoint Sensitivity)
 - Sensitivity Analysis
 - Stiff System Patterns
-- Compiling with MIPROv2
-- Core abstractions
-- Evaluation design is the hardest part
-- Minimal pattern — Signature + ChainOfThought
-- Optimizer selection
-- ReAct and tool use
+- Continuum Mechanics Engineer A
+- G')
+- Tan Delta (Damping Ratio)
+- Dspy.Chainofthought
+- Compiling With Miprov2
+- Core Abstractions
+- Evaluation Design Is The Harde
+- Minimal Pattern — Signature + 
+- Miprov2 Optimizer
+- Optimizer Selection
+- Dspy.React
+- React And Tool Use
+- Sci Workflow Engineer Agent
+- Dspy.Signature
 - Comparison
 - Hybrid Integration
-- Julia → Python (PyCall.jl)
+- Julia → Python (Pycall.Jl)
 - Migration Strategy
 - Parallelization Capabilities
-- Python → Julia (PyJulia)
-- When to Choose
-- Bayesian SINDy — posterior uncertainty on discovered coefficients
-- Connection to UDE
+- Pycall.Jl
+- Pyjulia
+- Python → Julia (Pyjulia)
+- When To Choose
+- Admm Solve() Call
+- Sr3 Solve() Call
+- Stlsq Solve() Call
+- Gplearn
+- Pydmd
+- Pysindy
+- Pysr
+- Symbolicregression.Jl
+- Bayesian Sindy — Posterior Unc
+- Connection To Ude
 - Handling Noisy Data
+- Sindy Overview
 - Thresholding Strategies
 - Validation Strategies
-- Connection to SOC, rare events, and time series
-- Estimators and when to use them
-- Non-stationary EVT
-- Peaks-over-threshold (GPD)
-- pyextremes (high-level)
-- Python workflow
-- Return levels
-- scipy.stats (low-level)
-- Threshold selection (POT)
-- Two paradigms
-- When to reach for EVT vs. SOC / rare-event sampling
+- Dvc (Data Versioning)
+- Ml Expert Agent
+- Mlflow
+- Weights & Biases (Wandb)
+- Block Maxima (Gev)
+- Connection To Soc, Rare Events
+- Estimators And When To Use The
+- Generalized Extreme Value (Gev
+- Generalized Pareto Distributio
+- Ml Expert Agent (Secondary)
+- Non Stationary Evt
+- Peaks Over Threshold (Gpd)
+- Pot (Optional)
+- Pyextremes
+- Pyextremes (High Level)
+- Python Workflow
+- Return Levels
+- Scipy.Stats (Low Level)
+- Statistical Physicist Agent
+- Threshold Selection (Pot)
+- Two Paradigms
+-  Rare Event Sampling
+- Client Implementation
 - Communication Efficiency
-- Differential Privacy with Opacus
-- FedAvg Variants
-- FedProx: Add Proximal Term to Client Loss
+- Differential Privacy With Opac
+- Fedavg
+- Fedavg Variants
+- Fedprox
+- Fedprox: Add Proximal Term To 
 - Flower Framework
-- Non-IID Data Partitioning
+- Flower Framework
+- Ml Expert Agent
+- Non Iid Data Partitioning
+- Opacus (Differential Privacy)
 - Server Setup
-- CuPy
+- Continuum Mechanics Engineer A
+- Fenicsx
+- Pinn Engineer Agent
+- Weak Form Pde Discretization
+- Glass Transition (Vft Law)
+- Jamming Transition
+- Percolation Threshold (Pc)
+- Statistical Physicist Agent
 - Custom Kernels
 - Kernel Optimization
-- Multi-GPU
+- Memory Optimization
+- Multi Gpu
 - Profiling
-- When to Use GPU
-- PythonCall.jl (Python)
-- RCall.jl (R)
+- When To Use Gpu
+- Continuum Mechanics Engineer A
+- Master Curve (Tts)
+- Pythoncall.Jl (Python)
+- Rcall.Jl (R)
 - Adaptation Schemes
 - Advanced Inference Skills
 - Blackjax Window Adaptation
-- Cholesky for Covariance Matrices
+- Cholesky For Covariance Matric
 - Detecting Divergences
 - Diagnosing Divergences
+- Diffrax
 - Diffrax Integration
-- Energy Conservation and Acceptance
+- Energy Conservation And Accept
 - Fixing Divergences
-- HMC & NUTS Internals
-- Log-Scale for Positive Parameters
+- Hmc & Nuts Internals
+- Leapfrog (Stormer Verlet) Inte
+- Log Scale For Positive Paramet
 - Mass Matrix Tuning
-- Neighbor Lists for Pairwise Interactions
+- Neighbor Lists For Pairwise In
 - Neural Surrogate Models
-- Non-Centered Parameterization
-- Parallel Walkers for Rare Events
+- Non Centered Parameterization
+- Non Centered Reparameterizatio
+- Parallel Walkers For Rare Even
 - Reparameterization Techniques
-- Simulation-Based Inference (SBI)
+- Simulation Based Inference (Ne
+- Simulation Based Inference (Sb
 - Soft Matter Applications
 - The Leapfrog Integrator
 - What Causes Divergences
 - Why It Matters
 - Available Kernels
-- Basic NUTS with Warmup
-- Blackjax: The Low-Level Surgeon
-- Building Custom Inference Loops
-- Choosing Between NumPyro and Blackjax
+- Basic Nuts With Warmup
+- Blackjax
+- Blackjax Available Kernels Tab
+- Blackjax: The Low Level Surgeo
+- Building Custom Inference Loop
+- Choosing Between Numpyro And B
 - Custom Kernel Composition
 - Diagnostics
+- Numpyro Effect Handlers
 - Effect Handlers Deep Dive
-- Extract Log-Prob from NumPyro Model
-- handlers.block: Hide Sites
-- handlers.condition: Fix Values
-- handlers.scale: Reweight Log-Prob
-- handlers.substitute: Replace Samples
-- handlers.trace: Inspect Execution
+- Extract Log Prob From Numpyro 
+- Handlers.Block
+- Handlers.Block: Hide Sites
+- Handlers.Condition
+- Handlers.Condition: Fix Values
+- Handlers.Scale
+- Handlers.Scale: Reweight Log P
+- Handlers.Substitute
+- Handlers.Substitute: Replace S
+- Handlers.Trace
+- Handlers.Trace: Inspect Execut
+- Numpyro Hierarchical Model Pat
 - Hierarchical Models
-- Non-Centered Parameterization
-- NumPyro ↔ Blackjax Interop
-- NumPyro Model Patterns
-- NumPyro: The High-Level Architect
-- NumPyro vs Blackjax: Mastering Both Ecosystems
-- Parallel Chains with pmap
-- Use Blackjax Samples in NumPyro
-- Blackjax: Low-Level Surgeon
+- Blackjax Mcmc Diagnostics (Ess
+- Non Centered Parameterization
+- Numpyro
+- Numpyro ↔ Blackjax Interop
+- Numpyro Model Patterns
+- Numpyro: The High Level Archit
+- Numpyro Vs Blackjax: Mastering
+- Blackjax Nuts Warmup (Window_A
+- Blackjax Parallel Chains Via P
+- Parallel Chains With Pmap
+- Use Blackjax Samples In Numpyr
+- Blackjax: Low Level Surgeon
+- Decoupled Architecture
 - Differentiable Physics
-- Ecosystem Duel: NumPyro vs Blackjax
+- Ecosystem Duel: Numpyro Vs Bla
 - Generative Transparency
-- Log-Prob Engineering
-- Masking for Ragged Data
-- NumPyro: High-Level Architect
-- The Inference-as-Transformation Mindset
-- Vectorization over Data
+- Log Prob Engineering
+- Masking For Ragged Data
+- Numpyro: High Level Architect
+- The Inference As Transformatio
+- Vectorization Over Data
 - Architecture Diagrams
+- Bayesian Inference Workflow
 - Device Mesh (2D Parallelism)
+- Device Mesh (2D Parallelism) D
 - Generating Visualizations
-- JAX Transformation Stack
+- Jax Transformation Stack
 - Memory Optimization
-- Multi-Device Workflow
+- Multi Device Workflow
+- Jax Core Programming Assets Ov
 - Performance Charts
 - Production Training Workflow
 - Quick Prototyping Workflow
 - References
-- Speedup by Transformation
+- Speedup By Transformation
+- Speedup By Transformation Tabl
 - Training Pipeline Flow
+- Training Pipeline Flow Diagram
+- Jax Transformation Stack Diagr
 - Workflow Diagrams
-- 10. Migration from Linen
-- 6. Training with NNX
+- 10. Migration From Linen
+- 1. Core Concepts
+- 2. Basic Module Definition
+- 3. Common Layers
+- 4. Advanced Patterns
+- 5. State Management
+- 6. Training With Nnx
+- 7. Jax Transform Integration
 - 8. Checkpointing
+- 9. Common Patterns
 - Accessing Parameters
-- Advanced Training with LR Schedule
+- Sequential)
+- Advanced Training With Lr Sche
+- Basic Nnx Module Definition
 - Basic Training Loop
+- Nnx Checkpointing (Orbax)
+- Dropout)
+- Ensemble)
 - Convolutional Layers
 - Dropout
 - Ensemble Models
-- Flax NNX - Comprehensive Guide
-- JIT Compilation
+- Flax Nnx   Comprehensive Guide
+- Flax Nnx Comprehensive Guide
+- Sharding)
+- Jit Compilation
 - Key Differences
 - Linear Layers
-- MLP with Activation
-- Model with Config
-- Multi-Device (pmap/sharding)
-- Mutable State (BatchNorm)
-- NNX vs Linen
+- Migration From Linen To Nnx
+- Mlp With Activation
+- Model With Config
+- Sharding)
+- Mutable State (Batchnorm)
+- Nnx Vs Linen
 - Normalization Layers
 - Overview
 - References
 - Residual Network
 - Sequential Models
 - Simple Linear Model
+- Nnx State Management
+- Training With Nnx (Nnx.Optimiz
 - Transformer Block
-- Vectorization (vmap)
-- Advanced `in_axes` and `out_axes`
+- Vectorization (Vmap)
+- 5. Composition Patterns
+- 7. Performance Best Practices
+- Advanced `In_Axes` And `Out_Ax
+- Automatic Differentiation (Jax
 - Avoid Recompilation
 - Collective Operations
 - Common Compositions
 - Common Pitfalls
-- Control Flow in JIT
+- Jax Composition Patterns
+- Control Flow In Jit
 - Custom Gradients
-- Debugging JIT Code
+- Debugging Jit Code
 - Full Training Step Composition
-- Gradients with PyTrees
-- Higher-Order Derivatives
-- JAX Transformations - Comprehensive Reference
+- Gradients With Pytrees
+- Higher Order Derivatives
+- Jax Transformations   Comprehe
+- Jax Transformations Comprehens
+- Jit Compilation (Jax.Jit)
 - Memory Efficiency
-- Nested vmap
-- Order of Transformations
+- Namedsharding)
+- Multi Device Parallelism (Jax.
+- Nested Vmap
+- Order Of Transformations
 - Overview
+- Performance Best Practices
 - References
 - Static Arguments
+- Vectorization (Jax.Vmap)
 - 1. Basic Model Specification
-- 2. MCMC Inference
+- 2. Mcmc Inference
 - 3. Variational Inference
-- 4. JAX Integration Patterns
+- 4. Jax Integration Patterns
 - 5. Bayesian Neural Networks
 - 6. Predictive Distributions
-- 7. Integration with JAX Core
+- 7. Integration With Jax Core
 - 8. Performance Tips
+- Basic Model Specification (Lin
 - Batched Inference
-- Custom Distributions with JAX
+- Bayesian Neural Networks (Bnn)
+- Bnn With Flax Nnx
+- Custom Distributions With Jax
 - Hierarchical Model
-- JIT-Compiled Bayesian Workflow
-- NumPyro Bayesian Patterns - Quick Reference
-- NUTS Sampling
+- Integration With Jax Core (Jit
+- Jax Integration Patterns (Batc
+- Jit Compiled Bayesian Workflow
+- Mcmc Inference (Nuts)
+- Numpyro Bayesian Patterns Quic
+- Numpyro Bayesian Patterns   Qu
+- Nuts Sampling
 - Overview
+- Numpyro + Jax Performance Tips
 - Posterior Predictive
+- Posterior Predictive Distribut
+- Numpyro Core Mastery Skill (Re
 - References
-- Simple BNN
+- Simple Bnn
 - Simple Linear Regression
-- SVI with AutoGuide
-- With Flax NNX
-- With JAX Optimizations
+- Svi With Autoguide
+- Variational Inference (Svi + A
+- With Flax Nnx
+- With Jax Optimizations
+- 10. Best Practices
+- 1. Core Concepts
+- 2. Built In Optimizers
+- 3. Learning Rate Schedules
+- 4. Gradient Transformations
+- 5. Advanced Patterns
+- 6. Composing Optimizers
 - 7. Common Training Patterns
 - 8. Optimizer Comparison
+- 9. Debugging Optimizer Issues
 - Adam Family
 - Advanced Optimizers
 - Basic Usage Pattern
 - Chain Multiple Transformations
-- Check for NaN/Inf
+- Inf
 - Check Gradient Statistics
 - Constant Schedule
 - Custom Schedules
@@ -2538,398 +1466,486 @@
 - Gradient Surgery
 - Gradient Transformations
 - Hyperparameter Ranges
+- Learning Rate Schedules
+- Mixed Precision Training With 
 - Mixed Precision Training
 - Monitor Learning Rate
-- Multi-Optimizer
-- Optax Optimizers - Complete Reference
-- Optimizer as Transformation Chain
+- Multi Optimizer
+- Masked)
+- Optax Gradient Transformation 
+- Optax Optimizers   Complete Re
+- Optimizer As Transformation Ch
 - Overview
-- Per-Parameter Learning Rates
+- Per Parameter Learning Rates
 - Performance Characteristics
 - Recommended Configurations
 - References
 - Selective Parameter Updates
-- SGD Family
+- Sgd Family
 - Standard Training Loop
 - Warmup Schedules
 - Weight Decay
 - With Learning Rate Schedule
-- 5. Flax NNX Integration
+- 10. Best Practices
+- 1. Basic Checkpointing
+- 2. Async Checkpointing
+- 3. Checkpoint Managers
+- 4. Multi Host Checkpointing
+- 5. Flax Nnx Integration
+- 6. Advanced Patterns
 - 7. Production Patterns
+- 8. Performance Optimization
+- 9. Common Patterns
+- Asynccheckpointer (Non Blockin
 - Automatic Cleanup
 - Best Checkpoint Tracking
 - Checklist
 - Checkpoint Conversion
+- Checkpointmanager (Cleanup, Be
 - Checkpoint Size Reduction
 - Complete Training Setup
 - Configuration Template
 - Custom Serialization
 - Disaster Recovery
-- Distributed Save/Load
-- Export to SavedModel
+- Load
+- Export To Savedmodel
 - Faster Saves
-- Non-Blocking Saves
-- Orbax Checkpointing - Complete Guide
+- Restore Integration
+- Multi Host Checkpointing
+- Non Blocking Saves
+- Orbax Checkpointing Library
+- Orbax Checkpointing   Complete
 - Overview
 - Partial Restoration
+- Load)
 - References
 - Resume Training
-- Save/Restore NNX Models
-- Simple Save/Load
+- Restore Nnx Models
+- Load
 - With Metadata
 - With Queue Management
+- 10. Benchmarking
+- 1. Compilation (Jit)
+- 2. Vectorization (Vmap)
+- 3. Memory Optimization
 - 4. Mixed Precision Training
+- 5. Multi Device Parallelism
+- 6. Profiling
 - 7. Optimization Checklist
+- 8. Performance Patterns
+- 9. Hardware Specific Tips
 - Avoiding Recompilation
-- BF16 for 2-3x Speedup
+- Bf16 For 2 3X Speedup
 - Buffer Donation
 - Compilation Cache
 - Efficient Batching
-- GPU Optimization
+- Gpu Optimization
 - Identifying Bottlenecks
 - Inference Optimization
-- JAX Performance Optimization Guide
-- JAX Profiler
+- Jax Performance Optimization G
+- Jax Profiler
+- Jit Compilation
 - Memory Profiling
-- Micro-benchmarks
-- Modern Sharding API
-- Optimal in_axes
+- Micro Benchmarks
+- Mixed Precision Training (Bf16
+- Modern Sharding Api
+- Optimal In_Axes
 - Overview
 - Pipeline Parallelism
 - References
-- Rematerialization (Gradient Checkpointing)
-- TPU Optimization
+-  Gradient Checkpointing
+- Rematerialization (Gradient Ch
+- Multi Device Sharding Api
+- Tpu Optimization
 - Training Loop Optimization
-- When to JIT
+- Vectorization With Vmap
+- When To Jit
+- Jax Core Programming Reference
+- Numpyro Core Mastery Skill (Re
+- Optax_Optimizers (Referenced, 
+- Orbax_Checkpointing (Reference
+- Performance_Optimization (Refe
 - Reference Files
-- Equinox: PyTree-Native Neural Networks
-- interpax: JIT-Safe Interpolation
+- Equinox: Pytree Native Neural 
+- Interpax: Jit Safe Interpolati
 - Lineax: Linear Solvers
-- NumPyro
-- Optimistix: Root-Finding & Optimization
+- Numpyro
+- Optimistix: Root Finding & Opt
+- Direct)
 - Adjoint Methods In Depth
-- BacksolveAdjoint
+- Backsolveadjoint
 - Basic Event Detection
 - Basic Root Finding
 - Batched Simulations
 - Choosing Adjoint Method
-- Choosing Based on Stiffness
+- Choosing Based On Stiffness
 - Configuring Newton Solver
 - Constant Step Size
 - Diffrax Deep Dive
-- DirectAdjoint
+- Directadjoint
 - Event Handling
-- Event with State Modification
+- Event With State Modification
 - How Implicit Solvers Work
-- Implicit Solvers and Lineax
+- Implicit Solvers And Lineax
+- Implicit Solvers + Lineax Newt
 - Jacobian Computation
-- JIT Compilation
-- Least Squares (Gauss-Newton)
-- Optimistix: Root Finding & Steady States
+- Jit Compilation
+- Least Squares (Gauss Newton)
+- Optimistix Root Finding & Stea
+- Optimistix: Root Finding & Ste
 - Parallelization
 - Performance Optimization
-- PID Controller
-- RecursiveCheckpointAdjoint
+- Pid Controller
+- Recursivecheckpointadjoint
 - Solver Categories
 - Solver Internals
-- Steady State of ODE System
+- Steady State Of Ode System
 - Step Size Control
-- Basic Neural ODE
-- Basic SDE in Diffrax
-- Bond Breaking/Formation
-- Brownian Dynamics of Colloidal Particles
-- Continuous-Discrete Hybrids
-- Example: Overdamped Langevin Dynamics
-- Implementing Stratonovich SDEs
-- Itō vs Stratonovich Interpretation
-- Multiple Independent Brownian Motions
-- Neural ODEs / Universal Differential Equations
-- Oldroyd-B Model
+- Basic Neural Ode
+- Basic Sde In Diffrax
+- Formation
+- Brownian Dynamics Of Colloidal
+- Continuous Discrete Hybrids
+- Example: Overdamped Langevin D
+- Implementing Stratonovich Sdes
+- Ito Vs Stratonovich Interpreta
+- Itō Vs Stratonovich Interpreta
+- Overdamped Langevin Dynamics
+- Multiple Independent Brownian 
+-  Universal Differential Equati
+-  Universal Differential Equati
+- Oldroyd B Viscoelastic Model
+- Oldroyd B Model
 - Reproducibility Checklist
-- Rheology-Specific Patterns
-- SDE Basics
-- SDEs and Soft Matter Applications
-- Stochastic Differential Equations
-- Thixotropic Model with Yield Stress
-- Universal Differential Equations (UDEs)
-- Using lax.cond for Sharp Transitions
-- Using VirtualBrownianTree
-- VirtualBrownianTree
-- When to Use Which
-- Why VirtualBrownianTree?
+- Rheology Specific Patterns
+- Sde Basics
+- Sdes And Soft Matter Applicati
+- Stochastic Differential Equati
+- Thixotropic Yield Stress Model
+- Thixotropic Model With Yield S
+- Universal Differential Equatio
+- Using Lax.Cond For Sharp Trans
+- Using Virtualbrowniantree
+- Virtualbrowniantree
+- When To Use Which
+- Why Virtualbrowniantree?
 - Basic Diffrax Pattern
 - Composability
-- Discretize-then-Optimize (Checkpointing)
-- Gradient-First Thinking
-- Gradient Propagation Strategies
-- Optimize-then-Discretize (Backsolve Adjoint)
-- Solver as Hyperparameter
+- Discretize Then Optimize (Chec
+- Gradient First Thinking
+- Gradient Propagation Strategie
+- Optimize Then Discretize (Back
+- Solver As Hyperparameter
 - Solver Selection Guide
-- The Differentiable Physicist Mindset
+- The Differentiable Physicist M
 - The Diffrax Stack
 - Array Exchange
 - Ecosystem Selection Guide
 - Environment Management
-- JAX Arrays Require Copy
-- Julia to Python (PythonCall.jl)
+- Jax Arrays Require Copy
+- Julia To Python (Pythoncall.Jl
 - Performance Gotchas
-- Python to Julia (juliacall)
+- Python To Julia (Juliacall)
 - Setup
 - Type Mapping
-- Zero-Copy Sharing
+- Zero Copy Sharing
 - 1. Core Transformations
-- 2. Neural Networks & Optimization
-- 3. Specialized Scientific Libraries
-- 4. JAX Performance Checklist
-- Efficient JIT usage
-- Advanced Optimization & Performance Engineering
-- Avoiding Host-Device Transfers
+- 2. Neural Networks & Optimizat
+- 3. Specialized Scientific Libr
+- 4. Jax Performance Checklist
+- Efficient Jit Usage
+- Advanced Optimization & Perfor
+- Avoiding Host Device Transfers
 - Basic Pallas Kernel
 - Choosing Parallelism Strategy
-- Common HLO Issues
+- Common Hlo Issues
 - Device Placement
-- jax.pmap: Replicated Data Parallelism
-- jax.sharding: Tensor Parallelism
-- Memory-Efficient Patterns
+- Hlo Analysis
+- Jax.Pmap: Replicated Data Para
+- Jax.Sharding: Tensor Paralleli
+- Memory Efficient Patterns
 - Memory Hierarchy Management
+- Pallas Custom Kernels
 - Pallas: Custom Kernels
-- Pallas for Matrix Multiplication
+- Pallas For Matrix Multiplicati
 - Performance Debugging Workflow
-- Profiling with JAX
-- shard_map: Explicit SPMD Control
-- SPMD Parallelism
-- Viewing HLO Output
-- When to Use Pallas
-- XLA & HLO Analysis
+- Profiling With Jax
+- Shard_Map: Explicit Spmd Contr
+- Spmd Parallelism
+- Viewing Hlo Output
+- When To Use Pallas
+- Xla & Hlo Analysis
 - Advanced Control Flow
 - Avoiding Unstable Gradients
 - Batched Linear Algebra
-- Custom JVP (Jacobian-Vector Product)
+- Switch)
+- Custom Jvp (Jacobian Vector Pr
 - Custom Primitives
-- Custom VJP (Vector-Jacobian Product)
+- Custom Vjp (Vector Jacobian Pr
 - Differentiable Physics
-- Floating-Point Precision
+- Floating Point Precision
 - Implicit Differentiation
-- jax.lax.cond: Compiled Conditionals
-- jax.lax.fori_loop: Fixed Iteration Count
-- jax.lax.scan: Compiled Sequential Loops
-- jax.lax.switch: Multi-way Branching
-- jax.lax.while_loop: Dynamic Iteration
-- NaN Debugging
+- Jax.Lax.Cond: Compiled Conditi
+- Jax.Lax.Fori_Loop: Fixed Itera
+- Jax.Lax.Scan: Compiled Sequent
+- Jax.Lax.Switch: Multi Way Bran
+- Jax.Lax.While_Loop: Dynamic It
+- Nan Debugging
 - Numerical Stability
 - Scientific Computing Patterns
-- Scientific & Mathematical Skills
+- Scientific & Mathematical Skil
 - Stop Gradient
-- Compiled Loops with lax.scan
-- Conditional without Python if
-- Core Proficiencies: The Trifecta
+- Compiled Loops With Lax.Scan
+- Compiler Aware
+- Conditional Without Python If
+- Core Proficiencies: The Trifec
 - Debugging Checklist
 - Ecosystem Fluency
 - Functional Purist
-- jax.grad & jax.value_and_grad
-- jax.jit: XLA Compilation
-- jax.vmap: Automatic Vectorization
-- PyTree Manipulation
+- Jax.Grad & Jax.Value_And_Grad
+- Jax.Jit: Xla Compilation
+- Jax.Vmap: Automatic Vectorizat
+- Pytree Manipulation
 - Quick Patterns
-- Shape-Obsessed
-- The JAX-First Mindset
+- Shape Obsessed
+- The Jax First Mindset
+- Activations
+- Cirq Api (Google Quantum)
+- Cirq (Google)
 - Common Layers
 - Common Optimizers
+- Common Patterns
 - Common Solvers
 - Device Sharding
-- Diffrax API (Differential Equations)
-- energy - Potential Energy Functions
-- equations - CFD Equations
-- Flax NNX API (for PINNs)
+- Sde Solvers)
+- Diffrax Api (Differential Equa
+- Energy   Potential Energy Func
+- Equations   Cfd Equations
+- Flax Nnx Api (For Pinns)
 - Further Documentation
 - Gradient Transformations
-- grids - Computational Grid
-- JAX Transformations for Physics
+- Grids   Computational Grid
+- Jax Transformations For Physic
 - Learning Rate Schedules
 - Module Definition
-- ODE Solvers
-- Optax API (Optimizers)
+- Ode Solvers
+- Schedules)
+- Optax Api (Optimizers)
 - Optimization
-- PennyLane (Xanadu)
-- quantity - Observable Calculations
-- Quantum Computing APIs
-- simulate - Time Integration
-- spectral - Spectral Methods
-- Adaptive Mesh Refinement (AMR)
-- Advanced JAX-CFD Patterns
+- Pennylane Api (Xanadu Quantum,
+- Pennylane (Xanadu)
+- Quantity   Observable Calculat
+- Quantum Computing Apis
+- Simulate   Time Integration
+- Space   Spatial Functions
+- Spectral   Spectral Methods
+- Adaptive Mesh Refinement (Amr)
+- Adaptive Mesh Refinement (Amr)
+- Advanced Jax Cfd Patterns
 - Boundary Conditions
+- Cfd Solver Validation Test Sui
 - Compressible Flow Solvers
-- GPU-Optimized Kernels
+- Gpu Optimized Kernels
 - Immersed Boundary Method
-- Large Eddy Simulation (LES)
+- Large Eddy Simulation (Les)
 - Multiphase Flow
+- Multiphase Flow (Volume Of Flu
 - Performance Optimization
 - Turbulence Modeling
+-  Dynamic Smagorinsky)
 - Validation Tests
-- Volume of Fluid (VOF) Method
-- Adaptive Resolution Scheme (AdResS)
-- Advanced JAX-MD Patterns
+- Volume Of Fluid (Vof) Method
+- Adaptive Resolution Scheme (Ad
+- Advanced Jax Md Patterns
 - Cell List Optimization
-- Coarse-Grained Models {#coarse-grained-models}
+- Coarse Grained Models (Dpd, Ma
+- Coarse Grained Models {#Coarse
 - Common Pitfalls
-- Custom Potentials {#custom-potentials}
-- Dissipative Particle Dynamics (DPD)
-- Embedded Atom Method (EAM)
-- Langevin Thermostat (Stochastic)
-- MARTINI Coarse-Grained Force Field
-- Neighbor Lists for Large Systems {#neighbor-lists}
-- Nosé-Hoover Thermostat (NVT Ensemble)
-- Parrinello-Rahman Barostat (NPT Ensemble)
+- Custom Potentials {#Custom Pot
+- Dissipative Particle Dynamics 
+- Embedded Atom Method (Eam) Pot
+- Embedded Atom Method (Eam)
+- Langevin Thermostat (Stochasti
+- Martini Coarse Grained Force F
+-  Cell List)
+- Neighbor Lists For Large Syste
+- Nosé Hoover Thermostat (Nvt En
+- Parrinello Rahman Barostat (Np
 - Performance Tips
-- Stillinger-Weber Potential
-- Table of Contents
-- Thermostats and Barostats {#thermostats-barostats}
+- Stillinger Weber Potential
+- Table Of Contents
+- Thermostats And Barostats {#Th
+- Thermostats And Barostats (Nos
 - Verlet Neighbor List
 - Benchmark Problems
 - Circuit Properties
 - Computational Efficiency
 - Conservation Across Domains
-- Energy Calculation (VQE)
-- Energy Conservation/Decay
-- Energy Conservation (NVE Ensemble)
+- Physics Validation Checklists 
+- Energy Calculation (Vqe)
+- Decay
+- Energy Conservation (Nve Ensem
 - Initial Conditions
 - Interface Conditions
 - Mass Conservation
+- Physical Consistency)
 - Momentum Conservation
-- Multi-Physics Validation
+- Multi Physics Validation
+- Multi Physics Validation (Inte
 - Numerical Accuracy
 - Numerical Precision
 - Numerical Stability
-- PDE Residual
+- Pde Residual
 - Performance Validation
 - Physics Validation Checklists
-- Pressure Control (NPT Ensemble)
+- Pressure Control (Npt Ensemble
 - Quantum Computing Validation
 - Quantum States
+- Quantum Computing Validation (
 - Structural Properties
-- Temperature Control (NVT Ensemble)
+- Temperature Control (Nvt Ensem
 - Training Diagnostics
 - Adaptive Loss Weighting
-- Advanced PINN Techniques
-- Multi-Physics Coupling
-- Stiff PDEs
+- Advanced Pinn Techniques
+- Multi Physics Coupling
+- Multi Physics Coupling Pinn (C
+- Stiff Pdes
+-  Causal Training
 - Transfer Learning
 - Uncertainty Quantification
+- Uncertainty Quantification Via
 - Error Mitigation
-- QAOA (Quantum Approximate Optimization Algorithm)
-- Quantum Computing with JAX
+- Error Mitigation (Zero Noise E
+- Qaoa (Quantum Approximate Opti
+- Quantum Computing With Jax
 - Quantum Machine Learning
-- Computational Fluids (JAX-CFD)
-- Molecular Dynamics (JAX-MD)
+- Computational Fluids (Jax Cfd)
+- Molecular Dynamics (Jax Md)
 - Parallel Physics Strategies
-- Physics-Informed Neural Networks
-- Variational Quantum Eigensolver
-- Backend Selection Decision Tree
-- Custom Rules with ChainRulesCore.jl
-- DifferentiationInterface.jl
-- Enzyme.jl (LLVM-Level Forward/Reverse)
-- ForwardDiff.jl (Forward-Mode Dual Numbers)
+- Physics Informed Neural Networ
+- Variational Quantum Eigensolve
+- Backend Selection Decision Tre
+- Custom Rules With Chainrulesco
+- Differentiationinterface.Jl
+- Enzyme Activity Annotations
+- Reverse)
+- Forwarddiff.Jl (Forward Mode D
 - Gradient Correctness Testing
-- Mixed-Mode AD for Hessians
+- Mixed Mode Ad For Hessians
 - Performance Comparison
-- Zygote.jl (Source-to-Source Reverse-Mode)
+- Zygote.Jl (Source To Source Re
 - Zygote Limitations
 - Backend Portability
-- CUDA.jl Basics
-- Custom CUDA Kernel
-- Grid-Stride Loop Pattern
-- KernelAbstractions.jl Portable Kernels
-- Multi-GPU with NCCL.jl
+- Cuda.Jl Basics
+- Custom Cuda Kernel
+- Grid Stride Loop Pattern
+- Kernelabstractions.Jl Portable
+- Multi Gpu With Nccl.Jl
 - Occupancy Optimization
-- Profiling with NVTX.jl
+- Profiling With Nvtx.Jl
 - Shared Memory Reduction Kernel
-- Benchmark datasets
-- Built-in GNN Layers
-- Extension sketches
-- GCN Example
-- GNNLux.jl Explicit-Parameter Integration
-- GPU backend portability
-- Graph Classification with GlobalPool
+- Gnnchain
+- Molecular Property Prediction 
+- Propagate (Custom Message Pass
+- Single_Train_Step!
+- Lux.Training.Trainstate
+- Benchmark Datasets
+- Built In Gnn Layers
+- Extension Sketches
+- Gat With Multi Head Attention
+- Gcn Example
+- Gnnlux.Jl Explicit Parameter I
+- Gpu Backend Portability
+- Graph Classification With Glob
 - Graph Construction
 - Link Prediction
-- Mini-Batching
+- Mini Batching
 - Node Classification
-- Package layering: GNNGraphs, GNNlib, GNNLux
+- Package Layering: Gnngraphs, G
 - Task Types
-- Dagger.jl Task DAGs
-- Decision Tree: Which Framework?
-- Distributed Gradient Aggregation
-- Distributed.jl Fundamentals
-- @distributed Reduction
-- @everywhere and pmap
-- GPU-Aware Job
-- MPI.jl
+- Adding Workers
+- Basic Operations
+- Clustermanagers.Jl
+- Cpu Job
+- Dagger.Jl Task Dags
+- Decision Tree: Which Framework
+- Distributed Gradient Aggregati
+- Distributed.Jl Fundamentals
+- @Distributed Reduction
+- @Everywhere And Pmap
+- Gpu Aware Job
+- Mpi.Jl
 - Performance Tips
-- remotecall / fetch / @spawnat
-- RemoteChannel Producer-Consumer
-- SharedArrays
-- SLURM Batch Scripts
+-  @Spawnat
+- Remotechannel Producer Consume
+- Sharedarrays
+- Slurm Batch Scripts
+- 1. Multiple Dispatch & Type Sy
 - 2. Performance Optimization
-- 3. The SciML Ecosystem
+- 3. The Sciml Ecosystem
 - 4. Julia Development Workflow
 - Composable Pipelines
-- DataFrames Integration
-- DrWatson Project Structure
+- Dataframes Integration
+- Drwatson Project Structure
 - Experiment Management
-- Learning Networks with `@from_network`
-- MLJ Model Interface
+- Learning Networks With `@From_
+- Mlj Model Interface
 - Model Comparison
-- Simple Pipeline with `|>`
-- Docker Multi-Stage Build
+- Simple Pipeline With `|>`
+- Docker Multi Stage Build
 - Latency Optimization
-- Model Serialization with JLD2
-- ONNX Export with ONNXRunTime
-- Oxygen.jl Lightweight Alternative
-- PackageCompiler.jl System Image
-- Python Interop via PythonCall.jl
+- Model Serialization With Jld2
+- Onnx Export With Onnxruntime
+- Oxygen.Jl Lightweight Alternat
+- Packagecompiler.Jl System Imag
+- Python Interop Via Pythoncall.
 - Standalone Application
-- Basic CNN
-- CNN Patterns
+- Architecture Selection
+- Basic Cnn
+- Cnn Patterns
 - Composition Patterns
 - Custom Layer
+- Multi Head Attention
 - Positional Encoding
 - Residual Block
-- RNN / LSTM / GRU via RecurrentLayers.jl
+-  Gru Via Recurrentlayers.Jl
 - Transformer
 - Transformer Block
-- VAE Autoencoder
-- Weight Initialization with WeightInitializers.jl
-- Checkpointing with JLD2
-- Data Loading with MLUtils.jl
-- Flux-to-Lux Migration
-- Inference with Test Mode
-- Learning Rate Schedules with ParameterSchedulers.jl
+- Vae Autoencoder
+- Weight Initialization With Wei
+- Checkpointing With Jld2
+- Data Loading With Mlutils.Jl
+- Flux To Lux Migration
+- Inference With Test Mode
+- Learning Rate Schedules With P
 - Loss Functions
-- Lux.jl Training Loop
+- Lux.Jl Training Loop
 - Optimizer Selection
 - A2C
-- Built-in Environments
-- CommonRLInterface.jl Wrapper
-- Custom GridWorld Environment
-- DDPG for Continuous Actions
-- Double DQN
-- DQN
-- Environment API
+- Built In Environments
+- Commonrlinterface.Jl Wrapper
+- Custom Gridworld Environment
+- Ddpg For Continuous Actions
+- Double Dqn
+- Dqn
+- Environment Api
 - Environment Interface
-- PPO
+- Ppo
 - Training Hooks
 - Advanced Test Patterns
-- Aqua.jl Quality Checks
-- JET.jl Static Analysis
+- Aqua.Jl Quality Checks
+- Ci Integration (Github Actions
+- Jet.Jl Static Analysis
 - Quality Checks
 - Enzyme Debugging
 - Gradient Clipping
 - Gradient Monitoring
 - Learning Rate Range Test
 - Mutation Fix Example
-- NaN/Inf Detection
+- Inf Detection
 - Type Instability Guidance
 - Zygote Debugging
+- Advanced Patterns
 - Fixing Variables
 - Linear Programming
 - Nonlinear Programming
@@ -2937,108 +1953,119 @@
 - Quadratic Programming
 - Solution Checking
 - Warm Starting
+- Agent Architecture
 - Chain Patterns
 - Memory Patterns
 - Production Patterns
-- RAG Pipeline
-- Error Handling and Retries
+- Rag Pipeline
+- Application Patterns
+- Error Handling And Retries
 - Prompt Management
+- Automated Metrics
 - Custom Metrics
-- Inter-Rater Agreement
+- Evaluation Types
+- Human Evaluation
+- Inter Rater Agreement
+- Llm As Judge
 - Pairwise Comparison
 - Pointwise Scoring
 - Rating Dimensions
-- Retrieval (RAG)
+- Regression Detection
+- Retrieval (Rag)
 - Text Generation
+- 1. Algorithm Selection
 - 2. Classification Workflow
 - 3. Regression Workflow
 - 4. Evaluation Metrics
 - 5. Handling Imbalanced Data
 - 6. Hyperparameter Tuning
-- 7. Feature Engineering & Selection
-- 8. Model Interpretability (SHAP)
-- 9. Cross-Validation
+- 7. Feature Engineering & Selec
+- 8. Model Interpretability (Sha
+- 9. Cross Validation
 - Bayesian Optimization (Optuna)
 - Classification
 - Model Deployment
 - Pipeline Orchestration
 - Regression
+- Common Problems
 - Convergence Criteria
 - Essential Diagnostics
-- Python / NumPyro Workflow
+-  Numpyro Workflow
 - Engine Selection
 - Equilibration
-- GROMACS
-- LAMMPS
-- ML Interatomic Potentials
+- Gromacs
+- Lammps
+- Ml Interatomic Potentials
 - Parallel
 - Parallelization Settings
 - Parameters
 - Best Practices Summary
 - Data Format Comparison
-- Data Pipeline (ETL)
+- Data Pipeline (Etl)
 - Git Workflow
-- .gitignore for ML
-- ML Engineering Checklist
-- Pre-commit Configuration
-- SQL Feature Extraction
+- .Gitignore For Ml
+- Ml Engineering Checklist
+- Pre Commit Configuration
+- Sql Feature Extraction
 - Testing Commands
-- Testing ML Code
-- Concrete examples (verified against upstream docs)
-- Cross-language handoff
-- Datasets and benchmarks
-- Decision table
-- Deployment matrix
-- fairchem UMA — zero-shot ASE calculator
-- Julia — ACE family
+- Testing Ml Code
+- Type Safe Ml Code
+- Acepotentials.Jl — Install And
+- Concrete Examples (Verified Ag
+- Cross Language Handoff
+- Datasets And Benchmarks
+- Decision Table
+- Deployment Matrix
+- Fairchem Uma — Zero Shot Ase C
+- Julia — Ace Family
 - Landscape (2025)
-- MACE — fine-tune a foundation model (Python)
-- Molly.jl — native Julia MD
-- NequIP — compile and deploy to LAMMPS ML-IAP
-- Python / PyTorch (+ JAX) — equivariant GNN family
-- Sibling skills
-- Training workflow
-- Uncertainty quantification
-- Universal tooling
-- DAG Pattern
-- `grain` for JAX pipelines
+- Mace — Fine Tune A Foundation 
+- Molly.Jl — Native Julia Md
+- Nequip — Compile And Deploy To
+-  Pytorch (+ Jax) — Equivariant
+- Sibling Skills
+- Training Workflow
+- Uncertainty Quantification
+- Universal Tooling
+- Dag Pattern
+- `Grain` For Jax Pipelines
 - Integration Points
 - Orchestration Tools
 - Docker Containerization
 - Drift Detection
-- FastAPI Model Serving
+- Fastapi Model Serving
 - Prometheus Metrics
 - Framework Conversion
 - Hardware Optimization
 - Optimization Techniques
 - Serving Frameworks
 - Basic Pattern
-- Component-Based Modeling
-- DAE Systems (Differential-Algebraic)
+- Component Based Modeling
+- Dae Systems (Differential Alge
 - Key Features
 - Structural Simplification
-- Variable and Parameter Declaration
-- 1. Structured Concurrency (TaskGroups)
+- Variable And Parameter Declara
+- 1. Structured Concurrency (Tas
 - 2. Modern Primitives
-- 3. GIL Management
-- Coarse-Graining
-- DPD (Dissipative Particle Dynamics)
+- 3. Gil Management
+- Coarse Graining
+- Dpd (Dissipative Particle Dyna
 - Methods Overview
 - Scale Coupling
-- Basic Reproduction Number on Networks
+- Basic Reproduction Number On N
 - Bimodal Distribution Detection
 - Chimera States
-- Detection and Visualization
-- Epidemic Models on Networks
+- Detection And Visualization
+- Epidemic Models On Networks
 - Graph Laplacian Construction
-- JAX (Large-Scale GPU)
-- JAX (Sparse BCOO)
-- Julia (Graphs.jl)
-- Julia (NetworkDynamics.jl)
+- Jax (Large Scale Gpu)
+- Jax (Sparse Bcoo)
+- Julia (Graphs.Jl)
+- Julia (Networkdynamics.Jl)
 - Kuramoto Model
 - Local Order Parameter
-- Master Stability Function (MSF)
-- SIR with NetworkDynamics.jl
+- Master Stability Function (Msf
+- Sir With Networkdynamics.Jl
 - Theory
 - Attention Mechanism
 - Core Patterns
@@ -3046,45 +2073,81 @@
 - Inductive Biases
 - Modern Innovations
 - Normalization
-- Skip Connections (ResNet)
-- Task-Specific Selection
-- Advanced Mathematical Topics for Neural Networks - Complete Reference
-- Advanced Mathematics → Neural Network Applications
+- Skip Connections (Resnet)
+- Task Specific Selection
+- Advanced Mathematical Topics F
+- Advanced Mathematics → Neural 
+- Brownian Motion And Diffusion
+- Change Of Variables
+- Curvature Of Loss Landscape
 - Differential Geometry
 - Diffusion Models
+- Fisher Information Matrix
+- Function Spaces
 - Functional Analysis
+- Gradient Descent On Manifolds
+-  Gcn
+- Graph Neural Networks (Gnns)
 - Graph Theory
 - Key Theorems
-- Manifolds and Loss Landscapes
+- Manifolds And Loss Landscapes
+- Mapper Algorithm
 - Measure Theory
-- Neural Tangent Kernel (NTK)
+- Natural Gradient Descent
+- Neural Sdes
+- Neural Tangent Kernel (Ntk)
+- Normalizing Flows (Change Of V
 - Persistent Homology
 - Probability Measures
 - Quick Reference
+- Radon Nikodym Theorem
 - References
+- Riemannian Geometry
+- Advanced Topics Reference (Doc
+- Spectral Clustering
 - Spectral Graph Theory
 - Stochastic Processes
-- Table of Contents
+- Table Of Contents
 - Topological Data Analysis
-- Universal Approximation Theorem
+- Universal Approximation Theore
 - Architecture Comparison
-- Architecture-Specific Mathematics - Complete Reference
+- Architecture Specific Mathemat
+- Backpropagation Through Time (
 - Complexity Analysis
+- Convolution Operation
+- Convolutional Neural Networks
 - Fourier Transform Perspective
-- Long Short-Term Memory (LSTM)
+- Generative Adversarial Network
+- Gated Recurrent Unit (Gru)
+- Generative Adversarial Network
+- Generative Models
+- Gru
+- Long Short Term Memory (Lstm)
+- Lstm
+- Multi Head Attention
 - Normalizing Flows
+- Normalizing Flows (Affine Coup
 - Output Dimension Calculation
+- Pooling Operations
 - Positional Encoding
 - Quick Reference
+- Receptive Field
 - Recurrent Neural Networks
 - References
-- Scaled Dot-Product Attention
-- Table of Contents
-- Transformers and Attention
-- Vanilla RNN
-- Variational Autoencoders (VAE)
+- Architecture Specific Math Ref
+- Scaled Dot Product Attention
+- Table Of Contents
+- Transformers And Attention
+- Variational Autoencoder (Vae)
+- Vanilla Rnn
+- Variational Autoencoders (Vae)
+- Activation Function Derivative
+- Attention (Simplified)
+- Automatic Differentiation
+- Backpropagation Algorithm
 - Backward Pass
 - Batch Normalization
+- Common Derivatives
 - Common Layer Gradients
 - Complete Implementation
 - Computational Graph
@@ -3094,137 +2157,202 @@
 - Derivatives
 - Differential Calculus Basics
 - Dropout
-- Forward Mode vs Reverse Mode
+- Forward Mode Vs Reverse Mode
 - Forward Pass
+- Gradient
+- Gradient Checking
 - Gradient Formulas
 - Hessian Matrix
 - Jacobian Matrix
-- Leaky ReLU
+- Leaky Relu
+-  Softmax Numerical Stability
 - Multivariable Calculus
 - Numerical Stability
 - Numerical Stability Tips
 - Partial Derivatives
-- PyTorch Autograd
+- Pytorch Autograd
 - References
-- ReLU
+- Relu
+- Calculus Backpropagation Refer
 - Sigmoid
 - Softmax
-- Table of Contents
+- Table Of Contents
 - Tanh
-- Cross-Entropy
-- Entropy and Cross-Entropy
-- Information Theory for Neural Networks - Complete Reference
-- Joint, Conditional, and Marginal Entropy
+- Binary Cross Entropy
+- Cross Entropy
+- Entropy And Cross Entropy
+- Entropy Based Pruning
+- Information Bottleneck
+- Information Theory For Neural 
+- Information Theory Fundamental
+- Jensen Shannon Divergence
+- Joint, Conditional, And Margin
 - Key Inequalities
-- KL Divergence and Mutual Information
+- Kl Divergence
+- Kl Divergence And Mutual Infor
 - Knowledge Distillation
-- Kullback-Leibler (KL) Divergence
+- Kullback Leibler (Kl) Divergen
 - Label Smoothing
-- Loss Functions and Information Theory
+- Loss Functions And Information
 - Model Compression
 - Mutual Information
 - Quick Reference
 - References
+- Information Theory Reference (
 - Shannon Entropy
-- Table of Contents
+- Table Of Contents
 - Theory
+-  Elbo
+- Variational Autoencoder (Vae)
 - Variational Inference
-- Variational Information Bottleneck
+- Variational Information Bottle
+- 1. Gradient Flow Analysis
+- 1. Weight Initialization
+- 1. Weight Matrix Analysis
 - 2. Gradient Checking
-- 2. Low-Rank Compression
-- 2. Power Iteration for Weight Spectral Norm
+- 2. Low Rank Compression
+- 2. Power Iteration For Weight 
 - 3. Learning Rate Selection
-- 3. Principal Component Analysis (PCA)
+- 3. Principal Component Analysi
 - 3. Whitening Transformation
+- Basic Operations
+- Broadcasting
 - Common Derivatives
 - Definitions
-- Eigenvalues and Eigenvectors
+- Eigendecomposition
+- Eigenvalues And Eigenvectors
 - Einstein Summation
+- Gradient Flow Analysis (Eigenv
+- Gradient Of Scalar Functions
 - Jacobian Matrix
-- Linear Algebra for Neural Networks - Complete Reference
+- Linear Algebra For Neural Netw
+- Linear Transformations
 - Matrix Calculus
 - Matrix Decompositions
 - Matrix Derivatives
 - Matrix Inverse
+- Matrix Multiplication
+- Matrix Norms
 - Matrix Operations
 - Matrix Properties
 - Neural Network Applications
 - Norms
-- Norms and Distances
+- Norms And Distances
 - Orthogonality
+-  Orthogonal Initialization
+- Principal Component Analysis (
+-  Spectral Norm
 - Practical Applications
 - Properties
-- QR Decomposition
+- Qr Decomposition
 - Quick Reference
 - Rank
+-  Low Rank Approximation
 - References
-- Singular Value Decomposition (SVD)
-- Table of Contents
+- Linear Algebra Reference (Docu
+- Singular Value Decomposition (
+- Table Of Contents
 - Tensor Basics
 - Tensor Operations
 - Tensor Reshaping
 - Transpose
 - Vector Norms
-- Vector Spaces and Transformations
+- Vector Spaces And Transformati
+- He)
+- Zca Whitening
+- Automatic Mixed Precision (Amp
+- Binary Cross Entropy Stability
+- Cholesky Decomposition
 - Common Numerical Issues
-- FP16 Training Benefits
-- IEEE 754 Standard
-- Log-Softmax
-- Log-Sum-Exp Trick
+- Condition Number
+- Conjugate Gradient Method
+- Floating Point Arithmetic
+- Fp16 Training Benefits
+- Ieee 754 Floating Point
+- Ieee 754 Standard
+- Iterative Solvers
+- Log Softmax
+- Log Sum Exp Trick
 - Loss Scaling
 - Machine Epsilon
+- Magnitude Pruning
 - Matrix Decompositions
 - Mixed Precision Training
 - Numerical Linear Algebra
-- Numerical Methods for Neural Networks - Complete Reference
+- Numerical Methods For Neural N
 - Numerical Stability Checklist
-- Numerical Stability Fundamentals
+- Numerical Stability Fundamenta
 - Precision Best Practices
 - Preconditioning
-- PyTorch Stability Functions
+- Pytorch Stability Functions
+- Qr Decomposition
 - Quick Reference
 - References
+- Numerical Methods Reference (D
 - Sigmoid Stability
 - Softmax Stability
-- Sources of Numerical Error
+- Sources Of Numerical Error
+- Sparse Computations
 - Sparse Matrix Formats
 - Sparse Neural Networks
+- Stable Binary Cross Entropy (W
 - Stable Implementations
-- Table of Contents
-- Adam (Adaptive Moment Estimation)
-- AdamW (Adam with Decoupled Weight Decay)
+- Numerically Stable Sigmoid
+- Numerically Stable Softmax
+- Table Of Contents
+- Adagrad
+- Adam
+- Adam (Adaptive Moment Estimati
+- Adamw
+- Adamw (Adam With Decoupled Wei
 - Adaptive Learning Rate Methods
+- Batch Gradient Descent
 - Common Learning Rate Schedules
 - Comparison Table
+- Cosine Annealing
+- Exploding Gradients
 - Exponential Decay
+- Gradient Clipping
+- Gradient Descent
 - Gradient Descent Variants
 - Gradient Problems
+- Hyperparameter Defaults
+- L Bfgs (Limited Memory Bfgs)
+- L Bfgs
 - Learning Rate Schedules
-- Mini-Batch Gradient Descent
+- Loss Landscape Analysis
+- Mini Batch Gradient Descent
 - Mode Connectivity
 - Momentum
 - Natural Gradient Descent
-- Newton's Method
+- Nesterov Accelerated Gradient
+- Newton'S Method
 - One Cycle Policy
 - Optimization Fundamentals
-- Optimization Theory for Neural Networks - Complete Reference
+- Optimization Theory For Neural
 - Optimizer Selection Guide
 - Quick Reference
 - References
-- RMSProp
-- Second-Order Methods
-- Sharp vs Flat Minima
+- Rmsprop
+- Optimization Theory Reference 
+- Second Order Methods
+- Sharp Vs Flat Minima
 - Step Decay
-- Stochastic Gradient Descent (SGD)
-- Table of Contents
+- Stochastic Gradient Descent (S
+- Table Of Contents
 - The Optimization Problem
 - Vanishing Gradients
 - Visualizing Loss Landscapes
+- Learning Rate Warmup
 - Warmup + Decay
+- Bayes' Theorem For Neural Netw
 - Bayesian Methods
 - Bayesian Neural Networks
+- Bernoulli Distribution
+- Bias Variance Tradeoff
 - Categorical Distribution
 - Common Distributions
+- Cross Entropy
 - Definitions
 - Distributions
 - Entropy
@@ -3233,98 +2361,108 @@
 - Information Measures
 - Information Theory Basics
 - Key Properties
-- KL Divergence
+- Kl Divergence
 - Loss Functions
-- Maximum A Posteriori (MAP) Estimation
+- Maximum A Posteriori (Map) Est
+- Maximum Likelihood Estimation
 - Mutual Information
-- Neural Network Training as MLE
+- Neural Network Training As Mle
 - Principle
-- Probability and Statistics for Neural Networks - Complete Reference
-- Probably Approximately Correct (PAC) Learning
+- Probability And Statistics For
+- Probably Approximately Correct
 - Quick Reference
 - Random Variables
 - References
 - Statistical Learning Theory
-- Table of Contents
+- Table Of Contents
 - Uncertainty Quantification
-- 2. Calculus and Backpropagation (`calculus-backpropagation-reference.md`)
-- 3. Probability and Statistics (`probability-statistics-reference.md`)
+- 1. Linear Algebra (`Linear Alg
+- 2. Calculus And Backpropagatio
+- 3. Probability And Statistics 
 - Additional Resources
 - Books
 - By Topic
 - Calculus ↔ Optimization
 - Code Examples Index
 - Core Foundations
-- Cross-References Between Topics
+- Cross References Between Topic
 - For Debugging
 - For Implementation
-- I want to...
+- I Want To...
 - Linear Algebra ↔ Everything
 - Mathematical Notation
-- Numerical Methods ↔ All Implementations
+- Numerical Methods ↔ All Implem
 - Online Resources
 - Papers (Key References)
-- Probability ↔ Information Theory
+- Probability ↔ Information Theo
+- Probability Statistics Referen
 - Quick Start Guide
 - Reference Material Statistics
+- Neural Network Mathematics Ref
 - Standard Notation
+- Adam
+- Bayesian Approximations
+- Calculus For Backpropagation
 - Chain Rule
 - Convergence Rates
 - Core Mathematical Domains
 - Einstein Notation
 - Gradient Flow Analysis
-- Hessian-Vector Product
+- Hessian Vector Product
+- Information Bottleneck
 - Information Theory
 - Initialization Strategies
 - Key Quantities
-- Loss as Negative Log-Likelihood
+- Loss As Negative Log Likelihoo
 - Loss Landscape
 - Matrix Calculus Reference
 - Momentum Methods
 - Numerical Gradient Check
 - Optimization Theory
-- Probability and Loss Functions
-- Regularization as Prior
-- VJP vs JVP
-- Bayesian PINN — see sibling skill
-- Discretization and training
-- Forward vs inverse problems
-- Lux neural ansatz
-- Method of Lines (MethodOfLines.jl) — when not to use a PINN
-- Minimal pattern: hand-rolled PINN residual in JAX
-- Python / JAX counterpart stack
-- Sobol sensitivity on PINN output via `chaospy`
-- Symbolic PDE specification
-- When PINNs vs MOL vs classical solvers
-- Hugging Face Text Classification
-- NLP Pipeline Checklist
-- POS Tagging and Dependency Parsing
+- Probability And Loss Functions
+- Regularization As Prior
+- Vjp Vs Jvp
+- Bayesian Pinn — See Sibling Sk
+- Discretization And Training
+- Forward Vs Inverse Problems
+- Lux Neural Ansatz
+- Method Of Lines (Methodoflines
+- Minimal Pattern: Hand Rolled P
+-  Jax Counterpart Stack
+- Sobol Sensitivity On Pinn Outp
+- Symbolic Pde Specification
+- When Pinns Vs Mol Vs Classical
+- Embeddings And Similarity
+- Hugging Face Text Classificati
+- Named Entity Recognition
+- Nlp Pipeline Checklist
+- Pos Tagging And Dependency Par
 - Sentiment Analysis
 - Text Preprocessing Pipeline
 - Tokenization Strategies
-- Advanced (Day 4-5)
-- advanced_features_demo.ipynb
+- Advanced (Day 4 5)
+- Advanced_Features_Demo.Ipynb
 - Beginner (Day 1)
 - 📊 Feature Coverage
 - Google Colab
 - 🎓 Interactive Exercises
-- Intermediate (Day 2-3)
+- Intermediate (Day 2 3)
 - Launch Jupyter
-- nlsq_interactive_tutorial.ipynb
-- nlsq_quickstart.ipynb
+- Nlsq_Interactive_Tutorial.Ipyn
+- Nlsq_Quickstart.Ipynb
 - 📚 Notebook Contents Overview
-- Or use JupyterLab
+- Or Use Jupyterlab
 - Prerequisites
 - 🚀 Quick Start Commands
 - 💻 Running Notebooks
 - 🎯 Suggested Learning Path
 - Template 1: Quick Fit Project
-- Template 2: Production Workflow
-- Template 3: Advanced Application
-- 🔧 Using as Templates
+- Template 2: Production Workflo
+- Template 3: Advanced Applicati
+- 🔧 Using As Templates
 - Configuration
-- Core Function: `fit()`
-- Legacy API (Deprecated)
+- Core Function: `Fit()`
+- Legacy Api (Deprecated)
 - Parameters
 - Returns
 - Workflows
@@ -3332,28 +2470,28 @@
 - 2. Gradient Norm
 - 3. Jacobian Condition Number
 - 4. Residual Analysis
-- 5. Parameters at Bounds
+- 5. Parameters At Bounds
 - Common Failure Modes
-- Default Tolerances (balanced)
+- Default Tolerances (Balanced)
 - Detect Stagnation
-- Divergence (Final Cost > Initial Cost)
-- JIT Compilation Overhead
+- Divergence (Final Cost > Initi
+- Jit Compilation Overhead
 - Log Convergence Progress
-- Loose Tolerances (faster)
+- Loose Tolerances (Faster)
 - Memory Issues
-- NLSQ Convergence Diagnostics Reference
-- Oscillation (Cost oscillates without converging)
+- Nlsq Convergence Diagnostics R
+- Oscillation (Cost Oscillates W
 - Performance Troubleshooting
 - Plot Convergence History
-- Problem-Specific Tuning
+- Problem Specific Tuning
 - Quick Convergence Checklist
-- Real-Time Monitoring
+- Real Time Monitoring
 - Slow Convergence
 - Slow Jacobian Computation
-- Stagnation (Cost stops decreasing)
-- Strict Tolerances (high accuracy)
+- Stagnation (Cost Stops Decreas
+- Strict Tolerances (High Accura
 - Tolerance Tuning Guide
-- 1. Linear (Standard Least Squares)
+- 1. Linear (Standard Least Squa
 - 2. Soft L1
 - 3. Huber
 - 4. Cauchy (Lorentzian)
@@ -3363,294 +2501,343 @@
 - Custom Loss Functions
 - Decision Tree
 - Example 1: Clean Data
-- Example 2: Data with Outliers
-- Impact on Convergence
+- Example 2: Data With Outliers
+- Impact On Convergence
 - Loss Function Theory
 - Loss Function Visualization
-- NLSQ Loss Functions Reference
-- Signs you have too much robustness:
-- Signs you need more robustness:
-- Switching strategy:
+- Nlsq Loss Functions Reference
+- Signs You Have Too Much Robust
+- Signs You Need More Robustness
+- Switching Strategy:
 - Weighting Comparison
-- When to Switch Loss Functions
-- 11. `gallery/engineering/materials_characterization.py`
-- 13. `streaming/02_checkpoint_resume.py`
-- 14. `streaming/03_custom_retry_settings.py`
-- 15. `streaming/04_interpreting_diagnostics.py`
-- 17. `demos/enhanced_error_messages_demo.py`
-- 18. `demos/function_library_demo.py`
-- 19. `demos/result_enhancements_demo.py`
-- 1. `gallery/physics/radioactive_decay.py`
-- 20. `demos/callbacks_demo.py`
-- 2. `gallery/physics/damped_oscillation.py`
-- 3. `gallery/physics/spectroscopy_peaks.py`
-- 4. `gallery/chemistry/titration_curves.py`
-- 5. `gallery/chemistry/reaction_kinetics.py`
-- 6. `gallery/biology/dose_response.py`
-- 7. `gallery/biology/growth_curves.py`
-- 8. `gallery/biology/enzyme_kinetics.py`
-- 9. `gallery/engineering/sensor_calibration.py`
-- Biology (3 examples)
-- Chemistry (2 examples)
+- When To Switch Loss Functions
+- System_Identification`
+- Materials_Characterization`
+- 01_Basic_Fault_Tolerance`
+- 02_Checkpoint_Resume`
+- 03_Custom_Retry_Settings`
+- 04_Interpreting_Diagnostics`
+- Hybrid_Streaming_Demo`
+- Enhanced_Error_Messages_Demo`
+- Function_Library_Demo`
+- Result_Enhancements_Demo`
+- Radioactive_Decay`
+- Callbacks_Demo`
+- Damped_Oscillation`
+- Spectroscopy_Peaks`
+- Titration_Curves`
+- Reaction_Kinetics`
+- Dose_Response`
+- Growth_Curves`
+- Enzyme_Kinetics`
+- Sensor_Calibration`
+- Biology (3 Examples)
+- Chemistry (2 Examples)
+- 🔧 Common Tasks
 - 🎪 Demo Examples
-- Engineering (3 examples)
+- Engineering (3 Examples)
 - 📊 Example Complexity
 - For Beginners
 - For Production
 - 📖 Further Resources
 - 📚 Gallery Examples
 - 🎓 Learning Path
-- Pattern 1: Learning NLSQ
-- Pattern 2: Finding Domain-Specific Example
-- Physics (3 examples)
+- Pattern 1: Learning Nlsq
+- Pattern 2: Finding Domain Spec
+- Physics (3 Examples)
 - 🌊 Streaming Examples
-- Task: Fit exponential decay
-- Task: Fit multiple peaks
-- Task: Fit sigmoid curve
-- Task: Large dataset (>1M points)
-- Task: Multi-scale parameters (>1000x difference)
-- Task: Production deployment
-- Task: Real-time monitoring
-- Task: Uncertainty analysis
-- Algorithm: TRF vs LM
+- Task: Fit Exponential Decay
+- Task: Fit Multiple Peaks
+- Task: Fit Sigmoid Curve
+- Task: Large Dataset (>1M Point
+- Task: Multi Scale Parameters (
+- Task: Production Deployment
+- Task: Real Time Monitoring
+- Task: Uncertainty Analysis
+- Algorithm: Trf Vs Lm
 - Global Optimization
 - Large Datasets (Streaming)
 - Loss Selection
 - Mixed Precision
 - Parallel Optimization
 - Pitfalls
-- Related JAX Optimization Tools
+- Related Jax Optimization Tools
 - Standard Fitting
 - Workflow Selection
-- BAR with pymbar
-- Computing Jarzynski free energies from non-eq work data
+- Bar With Pymbar
+- Computing Jarzynski Free Energ
 - Core Theorems
 - Entropy Production
-- Entropy production from trajectories
-- FDT Violations
+- Entropy Production From Trajec
+- Fdt Violations
 - Fluctuation Theorems
 - Jarzynski Equality
-- Large-deviation theory & avalanche statistics
+- Large Deviation Theory & Avala
 - Linear Response Theory
-- Worked example — BAR from Langevin work samples
-- Differentiable Physics (JAX)
+- Worked Example — Bar From Lang
+- Differentiable Md (Jax Md)
+- Differentiable Physics (Jax)
 - Linear Algebra
-- Molecular Dynamics (MD)
-- ODE Solving
+- Molecular Dynamics (Md)
+- Ode Solving
 - Traditional Engines
 - 📖 Common Workflows
-- Example 1: Change to Logistic Regression
+- Example 1: Change To Logistic 
 - Example 2: Add More Predictors
-- Example 3: Time Series (AR model)
+- Example 3: Time Series (Ar Mod
 - Model Customization
+- Numpyro Assets Readme (Templat
 - Performance Tuning
 - 📊 Template Comparison
-- ⚙️ Template Modification Examples
+- ⚙️ Template Modification Examp
 - 💡 Usage Tips
 - Workflow 1: Quick Analysis
 - Workflow 2: Hierarchical Study
-- Workflow 3: Production Pipeline
-- Working with Templates
+- Workflow 3: Production Pipelin
+- Working With Templates
+- Numpyro Api Reference (Placeho
 - 🔗 Accessing Examples
 - Advanced Models
-- Basic Models (Regression, GLM)
+- Basic Models (Regression, Glm)
 - 📊 Complexity Matrix
 - Diagnostics & Methods
 - Hierarchical Modeling
-- Hierarchical Models (Multilevel)
+- Hierarchical Models (Multileve
 - 🎓 Learning Paths
+- Numpyro Examples Collection Re
 - Pattern 1: Learn Basics
-- Pattern 2: Find Domain-Specific Example
-- 🐍 Python Examples (scripts/)
+- Pattern 2: Find Domain Specifi
+- )
 - Regression & Fundamentals
 - 📖 Related Resources
 - Time Series & Forecasting
 - Time Series Models
-- 💡 Tips for Using Examples
+- 💡 Tips For Using Examples
 - Week 1: Foundations
 - Week 2: Hierarchical Models
 - Week 3: Time Series
 - Week 4: Advanced Topics
 - Week 5: Production
-- ArviZ Integration
+- Arviz Integration
+- Convergence Diagnostics
 - Fixing Divergences
 - Inference Method Selection
-- MCMC Inference
+- Mcmc Inference
 - Model Building
 - Parallel Inference
 - Predictive Distributions
-- Related JAX Bayesian Tools
-- Optimization.jl vs JuMP.jl
+- Related Jax Bayesian Tools
+- Algorithms
+- Optimization.Jl Vs Jump.Jl
 - Parameter Estimation Pattern
-- CI with TagBot and CompatHelper
-- Documenter.jl Setup
+- Ci With Tagbot And Compathelpe
+- Documenter.Jl Setup
 - Module Pattern
 - Package Structure
-- PkgTemplates.jl
-- Project.toml Configuration
+- Pkgtemplates.Jl
+- Project.Toml Configuration
 - Registration Workflow
 - Compatibility Bounds
-- Core Pkg.jl Commands
+- Core Pkg.Jl Commands
 - Environment Workflow
-- Project.toml Structure
+- Project.Toml Structure
 - 1. Parallelism Types
-- 3. MPI (Distributed Memory)
-- 4. OpenMP (Shared Memory)
-- 5. Hybrid MPI+OpenMP
-- 6. Multi-Threading & Distributed Computing
-- 7. SLURM Job Scheduling
+- 3. Mpi (Distributed Memory)
+- 4. Openmp (Shared Memory)
+- 5. Hybrid Mpi+Openmp
+- 6. Multi Threading & Distribut
+- 7. Slurm Job Scheduling
 - 8. Load Balancing
 - 9. Dask (Python Distributed)
-- Distributed Memory (Multi-Machine)
+- Distributed Memory (Multi Mach
 - Implementation Examples
-- Julia (CUDA.jl)
+- Julia (Cuda.Jl)
 - Parallelization Best Practices
-- Python (CuPy & Numba)
+- Python (Cupy & Numba)
 - Scaling Laws
-- Shared Memory (Multi-Threading)
+- Shared Memory (Multi Threading
 - Dispersion Relation
-- FitzHugh-Nagumo (Julia + MethodOfLines.jl)
-- Gray-Scott Model (JAX)
-- JAX: Dispersion Relation Sweep
-- JAX: Pseudo-Spectral CGLE Step
-- JAX: Pseudo-Spectral Semi-Implicit Step
-- Julia: RD on Watts-Strogatz Graph
-- Julia: Symbolic Turing Analysis
-- Tip Tracking via Contour Intersection
+- Fitzhugh Nagumo (Julia + Metho
+- Gray Scott Model (Jax)
+- Jax: Dispersion Relation Sweep
+- Jax: Pseudo Spectral Cgle Step
+- Jax: Pseudo Spectral Semi Impl
+- Julia: Rd On Watts Strogatz Gr
+- Julia: Symbolic Turing Analysi
+- Tip Tracking Via Contour Inter
 - Common Fixes
 - Optimization Workflow
-- Bayesian Hawkes with HSGP background (JAX / NumPyro)
-- Diagnostics specific to point processes
-- Parametric Hawkes via `tick` (Python reference)
-- When to reach for a point process
+-  Numpyro)
+- Diagnostics Specific To Point 
+- Parametric Hawkes Via `Tick` (
+- When To Reach For A Point Proc
 - The Python Pro Mindset
-- API Documentation
+- Api Documentation
+- Building And Publishing
 - Changelog
 - Code Quality
 - Development
-- `greet(name: str) -> str`
+- Example Package Readme
+- `Greet(Name: Str)  > Str`
 - Project Structure
 - Running Tests
 - Setup
-- Member `packages/core/pyproject.toml`
-- Root `pyproject.toml`
+- 1. Uv Workspaces (Monorepos)
+- Pyproject.Toml`
+- Root `Pyproject.Toml`
 - Workspace Commands
+- Error Mitigation
 - Gate Reference
 - Noise Models (Qiskit Aer)
-- QAOA (MaxCut)
+- Qaoa (Maxcut)
 - Qiskit Fundamentals
-- Quantum ML (PennyLane)
-- VQE (Variational Quantum Eigensolver)
-- Zero-Noise Extrapolation
+- Quantum Ml (Pennylane)
+- Vqe (Variational Quantum Eigen
+- Zero Noise Extrapolation
+- Advanced Retrieval
+- Chunking Strategies
+- Confidence Scoring
 - Grounding Prompts
 - Hybrid Search
 - Metadata Filtering
-- MMR (Maximal Marginal Relevance)
-- Multi-Query
+- Mmr (Maximal Marginal Relevanc
+- Multi Query
 - Parent Document
+- Quick Start
 - Reranking
 - With Citations
-- Method selection
-- Minimal pattern — JAX cloning for SCGF
-- Minimal pattern — OPS two-state TPS
-- Python ecosystem
-- When to reach for rare-event sampling
+- Method Selection
+- Minimal Pattern — Jax Cloning 
+- Minimal Pattern — Ops Two Stat
+- Python Ecosystem
+- When To Reach For Rare Event S
 - Custom Environment
-- Gymnasium Environment API
-- RL Development Checklist
-- Stable-Baselines3
-- B. Constitutional AI (Anthropic pattern)
-- C. Self-rewarding (Meta pattern)
-- Generating preferences without humans
-- Reward hacking — the central failure mode
-- The pipeline
-- Tool catalog (`trl`)
-- 1. Property-Based Testing (Hypothesis)
+- Gymnasium Environment Api
+- Rl Development Checklist
+- Stable Baselines3
+- A. Llm As Judge (Cheapest)
+- B. Constitutional Ai (Anthropi
+- C. Self Rewarding (Meta Patter
+- Generating Preferences Without
+- Minimal Pattern — Dpo With Trl
+- Reward Hacking — The Central F
+- The Pipeline
+- Tool Catalog (`Trl`)
+- 1. Property Based Testing (Hyp
 - 2. Advanced Pytest Fixtures
 - 3. Testing Strategies
 - 1. Tooling (Maturin)
-- 2. PyO3 Basics
-- 3. Publication Standards Checklist
-- 4. High-Performance Rendering
+- 2. Pyo3 Basics
+- 3. Pyproject.Toml Integration
+- 1. Uncertainty & Statistical V
+- 2. Domain Specific Visualizati
+- 3. Publication Standards Check
+- 4. High Performance Rendering
 - Climate & Geospatial
-- Julia (Plots.jl/Makie.jl)
+- Makie.Jl)
 - Molecular Biology & Chemistry
-- Physics & Engineering (Vector Fields)
-- Python (Matplotlib/Seaborn)
+- Physics & Engineering (Vector 
+- Seaborn)
 - Core Packages
-- DataDrivenDiffEq.jl (Equation Discovery)
+- Datadrivendiffeq.Jl (Equation 
 - Integration
-- Lux.jl (Neural Networks)
-- SciMLSensitivity.jl (Gradient Through Solvers)
+- Lux.Jl (Neural Networks)
+- Scimlsensitivity.Jl (Gradient 
 - Selection Guide
+- Deepequilibriumnetworks.Jl
 - Model Definition
-- NeuralPDE.jl v5+
+- Neuralpde.Jl V5+
 - Training Loop
 - Usage
-- Depth companions
-- Minimal pattern — DSPy + MIPROv2 optimizer
-- Minimal pattern — Self-Refine loop
-- The four families of self-improvement
-- Tool catalog
-- When to reach for which family
-- FFT Analysis
+- Depth Companions
+- Minimal Pattern — Dspy + Mipro
+- Minimal Pattern — Self Refine 
+- The Four Families Of Self Impr
+- Tool Catalog
+- When To Reach For Which Family
+- Digital Filter Design
+- Fft Analysis
 - Filter Type Reference
-- Resampling and Interpolation
+- Resampling And Interpolation
 - Signal Processing Checklist
 - Spectral Estimation Methods
 - Wavelet Transform
 - Windowing Functions
-- Bayesian A/B Testing
+- B Testing
 - Causal Inference Methods
 - Hypothesis Testing Framework
 - Multiple Testing Correction
 - Sample Size Calculation
 - Test Selection Guide
-- 2. Non-Equilibrium & Active Matter
+- 1. Equilibrium Statistical Mec
+- 2. Non Equilibrium & Active Ma
 - 3. Correlation Analysis
 - 4. Experimental Connection
-- Error analysis for correlated samples
-- Monte Carlo samplers — ecosystem selection
-- Gillespie Algorithm (Master Equation)
-- Irregular domains with `DOLFINx` (FEniCSx)
-- JAX-accelerated Langevin pattern
+- Error Analysis For Correlated 
+- Monte Carlo Samplers — Ecosyst
+- Gillespie Algorithm (Master Eq
+- Irregular Domains With `Dolfin
+- Jax Accelerated Langevin Patte
 - Langevin Dynamics
-- Numerical Fokker-Planck
+- Numerical Fokker Planck
 - Rare Event Sampling
-- Research applications
-- Stationary distribution via the generator eigenproblem
-- Stochastic differential equations — library choices
-- Time-dependent FP with `py-pde`
-- Tool selection
-- When to use FP-PDE vs Langevin ensemble
+- Research Applications
+- Stationary Distribution Via Th
+- Stochastic Differential Equati
+- Time Dependent Fp With `Py Pde
+- Tool Selection
+- When To Use Fp Pde Vs Langevin
 - Assumptions System
 - Equation Solving
-- LaTeX Output
+- Latex Output
 - Matrix Algebra
 - Symbolic Calculus
 - Symbolic Math Checklist
-- SymPy Basics
+- Sympy Basics
 - Anomaly Detection
-- ARIMA / SARIMA
-- Feature Engineering for Time Series
-- Neural Forecasting (N-BEATS)
-- Nonlinear & Information-Theoretic Time Series
-- Point processes & self-exciting event data
+-  Sarima
+-  State Estimation
+- Feature Engineering For Time S
+- Neural Forecasting (N Beats)
+- Nonlinear & Information Theore
+- Point Processes & Self Excitin
 - Prophet Forecasting
 - Time Series Decomposition
+- Batch Normalization
+- Gradient Pathologies Reference
+- Glorot & Bengio 2010
+- Gradient Clipping
+- Gradient Pathologies   Complet
+- Gradient Saturation
+- He Et Al. 2015 (Deep Residual 
+- He Initialization
 - Initialization Checklist
+- Ioffe & Szegedy 2015 (Batch No
+- Layer Normalization
+-  Elu
 - Monitoring During Training
+- Pascanu Et Al. 2013 (Rnn Train
 - Prevention Strategies
 - Quick Reference Table
 - References
-- Table of Contents
+- Residual Connections
+- Table Of Contents
 - Training Checklist
+- Glorot Initialization
+- Classic Overfitting
 - Double Descent Phenomenon
+- Early Plateau
+- Early Stopping
+- Healthy Training Curves
+- High Bias (Both Losses High)
 - Ideal Pattern
+- Just Right (Goldilocks)
 - Learning Rate Issues
-- Loss Spikes and Instability
-- Mid-Training Plateau
+- Loss Becomes Nan
+- Loss Spikes And Instability
+- Mid Training Plateau
 - Modern Deep Learning Curve
+- Nakkiran Et Al. 2019 (Deep Dou
 - Occasional Spikes
 - Overfitting Patterns
 - Persistent Oscillation
@@ -3660,1687 +2847,1762 @@
 - References
 - Severe Overfitting
 - Slow Convergence
-- Table of Contents
+- Smith 2017 (Cyclical Learning 
+- Smith 2018 (Disciplined Approa
+- Table Of Contents
 - Too High
 - Too Low
 - Underfitting Patterns
 - Batch Size Effects
-- Exploding (>100, NaN loss)
+- Dead Relu (>50% Zeros)
+- Exploding (>100, Nan Loss)
 - Gradient Pathologies
-- LR Selection
-- Overfitting (train↓, val↑)
+- Loss Curves
+- Lr Selection
+- Overfitting (Train↓, Val↑)
 - Plateaus
-- Pre-Training Checks
+- Pre Training Checks
 - Spikes
-- Underfitting (both high)
-- Vanishing (<1e-7 in early layers)
+- Underfitting (Both High)
+- Vanishing (<1E 7 In Early Laye
+- Analysis Tools
 - Experimental Validation
-- GROMACS Analysis
+- Gromacs Analysis
 - Property Calculations
 - Property Types
-- Structural (RDF)
+- Structural (Rdf)
 - Transport (Diffusion)
 - Basic Model
-- Embedding a DiffEq solve
-- Embedding a Lux neural network
+- Embedding A Diffeq Solve
+- Embedding A Lux Neural Network
 - Hierarchical Model
-- 1. Structural Typing (Protocols)
-- 2. Generics and TypeVars
+- 1. Structural Typing (Protocol
+- 2. Generics And Typevars
 - 3. Strict Static Analysis
-- 4. Patterns and Best Practices
+- 4. Patterns And Best Practices
 - Backend Selection
-- Makie.jl
-- Plots.jl
-- Genie.jl MVC Pattern
-- HTTP.jl Server
-- JSON Handling
+- Makie.Jl
+- Plots.Jl
+- Genie.Jl Mvc Pattern
+- Http.Jl Server
+- Json Handling
 - Middleware
+- Environment Conventions
+- Heterodyne (External Repo)
+- Homodyne (External Repo)
+- Pyproject.Toml Layout
+- Python 3.12+ Convention
+- Formatting
+- Uv Dependency Management
+- Explicit Dtype Policy
+- Functional Style (Pure Functio
+- Jax First Code Architecture Ru
+- Jax.Jit The Integration Step
+- No Python Loops In Physics Cor
+- Prngkey Discipline
+- Rheojax (External Repo)
+- Static Vs Dynamic Shapes
+- Lit Review Command
+- Paper Implement Command
+- Quality Specialist Agent
+- Replicate Command
+- Jax Pro
+- Julia Pro
+- Nonlinear Dynamics Expert
+- Simulation Expert
+- Statistical Physicist
+- Deep Learning Hub
+- Dspy Basics
+- Fea
+- Correlation Math Foundations S
+- Correlation Physical Systems S
 
 ## God Nodes (most connected - your core abstractions)
 1. `main()` - 142 edges
 2. `IterativeFixEngine` - 31 edges
 3. `demo()` - 29 edges
 4. `Core Skills` - 24 edges
-5. `model()` - 17 edges
-6. `Greeter` - 17 edges
-7. `ObservableBuilder` - 16 edges
-8. `Iterative Error Resolution Skill` - 16 edges
-9. `Pre-Implementation Review` - 15 edges
-10. `SQL Optimization Patterns` - 15 edges
+5. `Science Hub` - 19 edges
+6. `Julia Language Orchestrator` - 18 edges
+7. `Iterative Error Resolution Skill` - 18 edges
+8. `Greeter` - 17 edges
+9. `model()` - 17 edges
+10. `ObservableBuilder` - 16 edges
 
 ## Surprising Connections (you probably didn't know these)
+- `Time Series Analysis` --references--> `ml-expert`  [EXTRACTED]
+  plugins/science-suite/skills/time-series-analysis/SKILL.md → agents/ml-expert.md
 - `Sharding Strategies Comparison Table` --conceptually_related_to--> `Parallelization Strategies`  [INFERRED]
   plugins/science-suite/skills/jax-core-programming/assets/device_sharding_patterns.txt → plugins/science-suite/skills/jax-core-programming/SKILL.md
-- `Capture stop failure context.` --rationale_for--> `main()`  [EXTRACTED]
-  plugins/dev-suite/hooks/stop_failure.py → plugins/science-suite/skills/numpyro-core-mastery/scripts/examples/advanced/vae.py
-- `Print summary and recommendations.` --rationale_for--> `print_summary()`  [EXTRACTED]
-  plugins/science-suite/skills/training-diagnostics/scripts/compare_training_runs.py → plugins/research-suite/skills/_research-commons/scripts/artifact_diff.py
-- `demo_with_blackjax()` --indirect_call--> `step()`  [INFERRED]
-  plugins/science-suite/skills/jax-bayesian-pro/examples/pure-log-prob-models.py → plugins/research-suite/skills/numerical-prototype/templates/prototype_skeleton.py
-- `train_neural_ode()` --calls--> `step()`  [INFERRED]
-  plugins/science-suite/skills/jax-diffeq-pro/examples/adjoint-methods.py → plugins/research-suite/skills/numerical-prototype/templates/prototype_skeleton.py
+- `Julia Neural Networks` --references--> `julia-ml-hpc`  [EXTRACTED]
+  plugins/science-suite/skills/julia-neural-networks/SKILL.md → agents/julia-ml-hpc.md
+- `Nonlinear Dynamics` --references--> `Chaos & Attractors`  [EXTRACTED]
+  plugins/science-suite/skills/nonlinear-dynamics/SKILL.md → skills/chaos-attractors/SKILL.md
+- `JAX-Julia Interop` --calls--> `JAX Pro`  [EXTRACTED]
+  plugins/science-suite/skills/jax-julia-interop/SKILL.md → agents/jax-pro.md
 
 ## Import Cycles
 - None detected.
 
 ## Hyperedges (group relationships)
-- **Cross-Suite Delegation Flow** — plugins_dev_suite_readme, plugins_research_suite_readme, plugins_science_suite_readme [EXTRACTED 0.90]
 - **Numerically Stable Implementation Pattern (Log-Sum-Exp Family)** — plugins_science_suite_skills_neural_network_mathematics_references_numerical_methods_reference_log_sum_exp_trick, plugins_science_suite_skills_neural_network_mathematics_references_numerical_methods_reference_stable_softmax, plugins_science_suite_skills_neural_network_mathematics_references_numerical_methods_reference_log_softmax, plugins_science_suite_skills_neural_network_mathematics_references_numerical_methods_reference_stable_sigmoid, plugins_science_suite_skills_neural_network_mathematics_references_numerical_methods_reference_stable_binary_cross_entropy [EXTRACTED 0.90]
 - **Gradient-Based Optimizer Family (Momentum/Adaptive)** — plugins_science_suite_skills_neural_network_mathematics_references_optimization_theory_reference_momentum, plugins_science_suite_skills_neural_network_mathematics_references_optimization_theory_reference_nesterov_accelerated_gradient, plugins_science_suite_skills_neural_network_mathematics_references_optimization_theory_reference_rmsprop, plugins_science_suite_skills_neural_network_mathematics_references_optimization_theory_reference_adam, plugins_science_suite_skills_neural_network_mathematics_references_optimization_theory_reference_adamw [EXTRACTED 0.90]
-- **Research Spark 8-Stage Pipeline** — research_suite_spark_orchestrator, science_suite_jax_pro, science_suite_julia_pro, science_suite_simulation_expert [EXTRACTED 0.95]
-- **Staged Bayesian UDE inference pipeline (warm-start -> MCMC -> diagnostics -> tempering escape hatch)** — plugins_science_suite_skills_bayesian_ude_workflow_skill, plugins_science_suite_skills_bayesian_ude_jax_skill, plugins_science_suite_skills_consensus_mcmc_pigeons_skill [EXTRACTED 1.00]
 - **Correlation-analysis hub routing to math/physical/computational/experimental sub-skills** — plugins_science_suite_skills_correlation_analysis_skill, plugins_science_suite_skills_correlation_math_foundations_skill, plugins_science_suite_skills_correlation_physical_systems_skill, plugins_science_suite_skills_correlation_computational_methods_skill, plugins_science_suite_skills_correlation_experimental_data_skill [EXTRACTED 1.00]
 - **Deep Learning Hub Routing Family** — plugins_science_suite_skills_deep_learning_hub_skill, plugins_science_suite_skills_deep_learning_skill, plugins_science_suite_skills_deep_learning_experimentation_skill [EXTRACTED 1.00]
-- **Dev-Hub Top-Level Routing Pattern** — plugins_dev_suite_skills_dev_hub_skill, plugins_dev_suite_skills_backend_patterns_skill, plugins_dev_suite_skills_architecture_and_infra_skill, plugins_dev_suite_skills_data_and_security_skill, plugins_dev_suite_skills_ci_cd_pipelines_skill, plugins_dev_suite_skills_dev_workflows_skill [EXTRACTED 1.00]
-- **Graph-Theoretic Foundations Shared Across Applications** — plugins_science_suite_skills_graph_theory_skill, plugins_science_suite_skills_glass_and_collective_dynamics_skill, plugins_science_suite_skills_fem_fea_skill [EXTRACTED 1.00]
-- **JAXopt Deprecation: Successor Libraries (Optax, Optimistix, Lineax)** — plugins_science_suite_skills_jax_optimization_pro_skill_jaxopt_deprecated, plugins_science_suite_skills_jax_diffeq_pro_skill_optimistix, plugins_science_suite_skills_jax_diffeq_pro_skill_lineax, plugins_science_suite_skills_jax_core_programming_references_optax_optimizers_optax [EXTRACTED 1.00]
-- **LLM and AI Hub Routing Pattern** — plugins_science_suite_skills_llm_and_ai_skill_main, plugins_science_suite_skills_llm_and_ai_skill_llm_application_dev_ref, plugins_science_suite_skills_llm_and_ai_skill_llm_evaluation_ref, plugins_science_suite_skills_llm_and_ai_skill_langchain_architecture_ref, plugins_science_suite_skills_llm_and_ai_skill_rag_implementation_ref, plugins_science_suite_skills_llm_and_ai_skill_nlp_fundamentals_ref [EXTRACTED 1.00]
-- **MCMC Convergence as Common Bayesian Workflow Acceptance Gate** — plugins_science_suite_skills_mcmc_diagnostics_skill_main, plugins_science_suite_skills_mcmc_diagnostics_skill_turing_model_design_ref, plugins_science_suite_skills_mcmc_diagnostics_skill_consensus_mcmc_pigeons_ref, plugins_science_suite_skills_mcmc_diagnostics_skill_bayesian_ude_workflow_ref, plugins_science_suite_skills_mcmc_diagnostics_skill_numpyro_core_mastery_ref, plugins_science_suite_skills_mcmc_diagnostics_skill_neural_pde_ref [EXTRACTED 1.00]
 - **Multi-Physics Coupling Patterns (shared doc taxonomy)** — plugins_science_suite_skills_jax_physics_applications_assets_multiphysics_coupling_fluid_structure_interaction, plugins_science_suite_skills_jax_physics_applications_assets_multiphysics_coupling_thermal_fluid_coupling, plugins_science_suite_skills_jax_physics_applications_assets_multiphysics_coupling_electromagnetics_thermal_coupling, plugins_science_suite_skills_jax_physics_applications_assets_multiphysics_coupling_reaction_diffusion_advection, plugins_science_suite_skills_jax_physics_applications_assets_multiphysics_coupling_particle_fluid_coupling_dem_cfd [EXTRACTED 1.00]
-- **Nonlinear Dynamics Analysis Delegation (theory / GPU / Julia continuation)** — plugins_science_suite_agents_nonlinear_dynamics_expert, plugins_science_suite_agents_jax_pro, plugins_science_suite_agents_julia_pro [EXTRACTED 1.00]
-- **Premortem loop-back into risk register early signals** — plugins_research_suite_skills_premortem_critique_skill, plugins_research_suite_skills_experiment_designer_templates_risk_register, concept_early_signal [EXTRACTED 1.00]
-- **Research-spark stage handoff chain (claim -> prototype -> experiment design)** — plugins_research_suite_skills_falsifiable_claim_skill, plugins_research_suite_skills_numerical_prototype_skill, plugins_research_suite_skills_experiment_designer_skill [EXTRACTED 1.00]
 - **CI/CD Delivery Pipeline Coordination** — plugins_dev_suite_skills_ci_cd_pipelines_skill, plugins_dev_suite_skills_deployment_pipeline_design_skill, plugins_dev_suite_skills_comprehensive_validation_skill [INFERRED 0.75]
-- **Julia Bayesian Inference Skill Cluster** — plugins_science_suite_skills_turing_model_design_skill_turing_model_design, plugins_science_suite_skills_variational_inference_patterns_skill_variational_inference_patterns, plugins_science_suite_skills_turing_model_design_skill_mcmc_diagnostics_skill [INFERRED 0.75]
-- **Profile-Before-Optimize Methodology (Julia + Python + parallel scaling)** — plugins_science_suite_skills_performance_tuning_skill_performance_tuning, plugins_science_suite_skills_python_development_skill_python_development, plugins_science_suite_skills_parallel_computing_skill_parallel_computing [INFERRED 0.75]
 - **Security & Validation Cross-Cutting Flow** — plugins_dev_suite_skills_auth_implementation_patterns_skill, plugins_dev_suite_skills_data_and_security_skill, plugins_dev_suite_skills_comprehensive_validation_skill [INFERRED 0.75]
-- **Differentiable Physics & Statistical Mechanics Simulation Stack** — plugins_science_suite_agents_simulation_expert, plugins_science_suite_agents_jax_pro, plugins_science_suite_agents_statistical_physicist [INFERRED 0.80]
 - **NumPyro / Blackjax Bayesian Sampling Ecosystem** — plugins_science_suite_skills_jax_bayesian_pro_references_numpyro_blackjax_numpyro, plugins_science_suite_skills_jax_bayesian_pro_references_numpyro_blackjax_blackjax, plugins_science_suite_skills_jax_core_programming_references_numpyro_bayesian_mcmc_inference_nuts, plugins_science_suite_skills_jax_core_programming_skill_numpyro [INFERRED 0.80]
-- **Adversarial reviewer pattern across pipeline stages** — concept_reviewer2_persona, plugins_research_suite_skills_falsifiable_claim_skill, plugins_research_suite_skills_landscape_scanner_skill, plugins_research_suite_skills_premortem_critique_skill [INFERRED 0.85]
-- **Bayesian Scientific Inference Workflow Family** — plugins_science_suite_skills_bayesian_inference_skill, plugins_science_suite_skills_bayesian_pinn_skill, plugins_science_suite_skills_bayesian_sindy_workflow_skill [INFERRED 0.85]
-- **CI/CD Pipeline Configuration Across Platforms** — plugins_dev_suite_skills_github_actions_templates_skill_main, plugins_dev_suite_skills_gitlab_ci_patterns_skill_main, plugins_dev_suite_skills_security_ci_template_skill_main [INFERRED 0.85]
+- **CI/CD Pipeline Configuration Across Platforms** — plugins_dev_suite_skills_github_actions_templates_skill_main, plugins_dev_suite_skills_gitlab_ci_patterns_skill_main [INFERRED 0.85]
 - **Rheology-to-Constitutive-Model Fitting Pipeline** — plugins_science_suite_skills_dma_rheology_skill, plugins_science_suite_skills_harmonic_response_superposition_skill, plugins_science_suite_skills_fem_fea_skill [INFERRED 0.85]
-- **Gradient Checkpointing Adjoint Strategies for Neural ODE Training** — plugins_science_suite_skills_jax_diffeq_pro_skill_recursive_checkpoint_adjoint, plugins_science_suite_skills_jax_diffeq_pro_references_diffrax_deep_dive_adjoint_methods, plugins_science_suite_skills_jax_diffeq_pro_references_sde_soft_matter_neural_ode [INFERRED 0.85]
+- **Gradient Checkpointing Adjoint Strategies for Neural ODE Training** — plugins_science_suite_skills_jax_diffeq_pro_references_diffrax_deep_dive_adjoint_methods, plugins_science_suite_skills_jax_diffeq_pro_references_sde_soft_matter_neural_ode [INFERRED 0.85]
 - **JAX Training Pipeline Stack (Flax NNX + Optax + Orbax)** — plugins_science_suite_skills_jax_core_programming_skill_flax_nnx, plugins_science_suite_skills_jax_core_programming_skill_optax, plugins_science_suite_skills_jax_core_programming_skill_orbax, plugins_science_suite_skills_jax_core_programming_assets_training_pipeline_architecture_complete_training_pipeline [INFERRED 0.85]
-- **Julia ACE Potential Training-to-Deployment Workflow** — plugins_science_suite_skills_ml_force_fields_skill_acepotentials_jl, plugins_science_suite_skills_ml_force_fields_skill_potentiallearning_jl, plugins_science_suite_skills_ml_force_fields_skill_molly_jl, plugins_science_suite_agents_julia_pro [INFERRED 0.85]
-- **Julia Model Serving Pipeline (JLD2 + PackageCompiler + Docker + Genie)** — plugins_science_suite_skills_julia_model_deployment_skill_jld2, plugins_science_suite_skills_julia_model_deployment_skill_packagecompilerjl, plugins_science_suite_skills_julia_model_deployment_skill_docker, plugins_science_suite_skills_julia_model_deployment_skill_geniejl [INFERRED 0.85]
-- **Recurring juliacall/PythonCall bridge pattern for blocked or missing cross-ecosystem equivalents** — plugins_science_suite_skills_chaos_attractors_skill, plugins_science_suite_skills_catalyst_reactions_skill, plugins_science_suite_skills_bifurcation_analysis_skill [INFERRED 0.85]
-- **Full-Stack Observability (Metrics, Dashboards, SLOs)** — plugins_dev_suite_skills_prometheus_configuration_skill_main, plugins_dev_suite_skills_grafana_dashboards_skill_main, plugins_dev_suite_skills_slo_implementation_skill_main, plugins_dev_suite_skills_observability_sre_practices_skill_main [INFERRED 0.85]
-- **Overfitting Diagnosis and Remediation Pattern** — plugins_science_suite_skills_training_diagnostics_skill_overfitting, plugins_science_suite_skills_training_diagnostics_references_loss_curve_interpretation_overfitting_patterns, plugins_science_suite_skills_training_diagnostics_references_loss_curve_interpretation_early_stopping [INFERRED 0.85]
-- **OWASP Top 10 as a shared security quality gate across dev-suite workflows** — plugins_dev_suite_agents_quality_specialist_quality_specialist, plugins_dev_suite_agents_quality_specialist_owasp_top_10, plugins_dev_suite_commands_double_check_double_check, plugins_dev_suite_commands_eng_feature_dev_eng_feature_dev, plugins_dev_suite_commands_modernize_modernize, plugins_dev_suite_commands_workflow_automate_workflow_automate [INFERRED 0.85]
-- **PINN Development and Validation Pipeline** — plugins_science_suite_skills_jax_physics_applications_skill_heat_equation_pinn, plugins_science_suite_skills_jax_physics_applications_assets_physics_workflow_diagrams_pinn_workflow, plugins_science_suite_skills_jax_physics_applications_assets_validation_checklists_pinn_validation_checklist, plugins_science_suite_skills_jax_physics_applications_references_physics_validation_pinn_validation [INFERRED 0.85]
+- **Overfitting Diagnosis and Remediation Pattern** — plugins_science_suite_skills_training_diagnostics_references_loss_curve_interpretation_overfitting_patterns, plugins_science_suite_skills_training_diagnostics_references_loss_curve_interpretation_early_stopping [INFERRED 0.85]
+- **PINN Development and Validation Pipeline** — plugins_science_suite_skills_jax_physics_applications_assets_physics_workflow_diagrams_pinn_workflow, plugins_science_suite_skills_jax_physics_applications_assets_validation_checklists_pinn_validation_checklist, plugins_science_suite_skills_jax_physics_applications_references_physics_validation_pinn_validation [INFERRED 0.85]
 - **Research-Spark Style Enforcement System** — plugins_research_suite_skills_research_commons_style_writing_constraints_style_lint_script, plugins_research_suite_skills_research_commons_style_writing_constraints_writing_constraints, plugins_research_suite_skills_research_commons_style_citation_style_venue_override, plugins_research_suite_skills_research_commons_style_figure_standards_venue_overrides [INFERRED 0.85]
-- **Gradient Pathology Diagnostic Workflow** — plugins_science_suite_skills_training_diagnostics_skill_diagnose_gradients_function, plugins_science_suite_skills_training_diagnostics_scripts_diagnose_gradients, plugins_science_suite_skills_training_diagnostics_references_gradient_pathologies_reference_vanishing_gradients [INFERRED 0.85]
-- **GNN Package Layering (GNNGraphs / GNNlib / GNNLux)** — plugins_science_suite_skills_julia_graph_neural_networks_skill_gnngraphs, plugins_science_suite_skills_julia_graph_neural_networks_skill_gnnlib, plugins_science_suite_skills_julia_graph_neural_networks_skill_gnnlux [INFERRED 0.90]
-- **Julia Package Lifecycle (create, manage deps, register)** — plugins_science_suite_skills_package_management_skill_package_management, plugins_science_suite_skills_package_development_workflow_skill_package_development_workflow, plugins_science_suite_skills_package_management_skill_project_toml [INFERRED 0.90]
-
-## Communities (3739 total, 3291 thin omitted)
-
-### Community 0 - "dais_demo.py"
-Cohesion: 0.46
-Nodes (7): get_data(), kernel(), main(), model(), Example: AutoDAIS ================= AutoDAIS constructs a guide that combines…, run_nuts(), run_svi()
-
-### Community 1 - "Workflow"
-Cohesion: 0.20
-Nodes (9): 1. Hear the rough version, 2. Targeted elicitation (only on gaps), 3. Produce three candidate framings, 4. Elevator test, 5. Self-check against the three components, 6. Write `01_spark.md` and hand off, Failure modes worth naming, spark-articulator (+1 more)
-
-### Community 2 - "Pattern Formation"
-Cohesion: 0.20
-Nodes (10): Amplitude Equations: Complex Ginzburg-Landau, Checklist, Common Pitfalls, Expert Agents, Pattern Formation, Reaction-Diffusion on Graphs, Reaction-Diffusion Systems, Spiral Waves (+2 more)
-
-### Community 3 - "Bayesian SINDy Workflow"
-Cohesion: 0.14
-Nodes (14): Bayesian SINDy Workflow, Checklist, Composition with neighboring skills, Expert Agent, Julia sidebar — Turing UQ-SINDy pattern, Prior-sensitivity analysis, Stage 1 — Generate ground-truth data, Stage 2 — Build the candidate library (+6 more)
-
-### Community 4 - "FixResult"
-Cohesion: 0.14
-Nodes (14): ErrorAnalysis, FixResult, Execute fix strategy., Fix dependency-related errors., Add --legacy-peer-deps so npm stops enforcing the peer-dep graph. This makes…, Report an npm 404 for manual review — never uninstall automatically. A 404 in a…, Fix Python import errors., Fix build-related errors. (+6 more)
-
-### Community 5 - "main"
-Cohesion: 0.18
-Nodes (19): analyze_aggregate_statistics(), analyze_checkpoint_info(), analyze_failure_patterns(), analyze_recent_batches(), analyze_success_metrics(), export_diagnostics_json(), main(), polynomial_model() (+11 more)
-
-### Community 9 - "Pre-Implementation Review"
-Cohesion: 0.09
-Nodes (22): API Design Checklist, Authentication & Authorization, Documentation, Documentation, Error Handling, Filtering & Sorting, GraphQL-Specific Checks, HTTP Methods (+14 more)
-
-### Community 10 - "bayesian_workflow_template.py"
-Cohesion: 0.18
-Nodes (17): check_diagnostics(), extract_results(), load_data(), main(), model(), plot_traces(), posterior_predictive_check(), prior_predictive_check() (+9 more)
-
-### Community 11 - "profile_jax.py"
-Cohesion: 0.12
-Nodes (16): check_recompilation(), compare_implementations(), dynamic_fn(), jit_matmul(), memory_profile(), profile_decorator(), profile_function(), profile_gradient() (+8 more)
-
-### Community 12 - "PrototypeSkeleton"
-Cohesion: 0.36
-Nodes (10): extract_observable(), integrate!(), Params, _self_test(), State, step!(), PrototypeSkeleton, PrototypeSkeleton (+2 more)
-
-### Community 13 - "pmap_train_step"
-Cohesion: 0.40
-Nodes (5): pmap_train_step(), Training step replicated across devices. Each device gets: - Full copy of…, Complete pmap training example., run_pmap_example(), pmap
-
-### Community 14 - "Citation Style Guide"
-Cohesion: 0.18
-Nodes (11): arXiv Preprint Citation Format, Bibliography Author Name Format (APS PRL), BibTeX Hygiene Rules, Citation Style Guide, dedupe_refs.py script, DOI Citation Convention, In-text Citation Format (author-year), Journal Name Abbreviations (ISO 4) (+3 more)
-
-### Community 20 - "hsgp.py"
-Cohesion: 0.09
-Nodes (34): approx_periodic_gp_ncp(), approx_se_ncp(), birthdays_model(), diag_spectral_density(), diag_spectral_density_periodic(), eigenfunctions(), eigenfunctions_periodic(), get_floating_days_indicators() (+26 more)
-
-### Community 23 - "prodlda.py"
-Cohesion: 0.16
-Nodes (12): compact, FlaxDecoder, FlaxEncoder, guide(), HaikuDecoder, HaikuEncoder, load_data(), main() (+4 more)
-
-### Community 25 - "Core Julia Patterns"
-Cohesion: 0.12
-Nodes (16): 1. Type System Design, 2. Multiple Dispatch Patterns, 3. Performance Tuning, 4. Metaprogramming, Abstract Type Hierarchy, Checklist, Core Julia Patterns, Expert Agent (+8 more)
-
-### Community 26 - "Neural Network Master"
-Cohesion: 0.07
-Nodes (29): 1. Mathematical & Theoretical Soundness, 2. Architecture Appropriateness, 3. Framework Idioms, 4. Training Stability, 5. Pedagogical Clarity, Architecture & Implementation Patterns, Chain-of-Thought Decision Framework, Common Patterns & Anti-Patterns (+21 more)
-
-### Community 27 - "Research and Domains"
-Cohesion: 0.50
-Nodes (4): Checklist, Core Skills, Research and Domains, Routing Decision Tree
-
-### Community 28 - "Robust Testing in Python"
-Cohesion: 0.50
-Nodes (4): 4. Best Practices, Checklist, Expert Agent, Robust Testing in Python
-
-### Community 29 - "App Developer"
-Cohesion: 0.07
-Nodes (26): 1. Platform & Stack, 2. Performance, 3. Accessibility, 4. Offline/Resilience, 5. Code Quality, App Developer, App Development Checklist, Chain-of-Thought Decision Framework (+18 more)
-
-### Community 30 - "Pagination"
-Cohesion: 0.67
-Nodes (3): Cursor-Based (GraphQL Relay), Offset-Based, Pagination
-
-### Community 31 - "Kafka Patterns"
-Cohesion: 0.67
-Nodes (3): Consumer Group, Kafka Patterns, Producer
-
-### Community 32 - "doe_generator.py"
-Cohesion: 0.20
-Nodes (15): central_composite(), fractional_factorial(), full_factorial(), latin_hypercube(), main(), Path, randomize(), Central composite design: factorial cube + axial stars + center. Only supports… (+7 more)
-
-### Community 35 - "Authentication & Authorization Patterns"
-Cohesion: 0.11
-Nodes (19): Auth Middleware, Authentication & Authorization Patterns, Authorization Patterns, Best Practices, Checklist, Common Pitfalls, Expert Agent, JWT Implementation (+11 more)
-
-### Community 36 - "Evidence Synthesis Skill"
-Cohesion: 0.13
-Nodes (15): ruflo-goals:deep-researcher (related tool), Effect Size Calculation (Cohen's d, Hedges' g, OR, RR), Evidence Synthesis Skill, Fixed vs Random Effects Models, GRADE Downgrading Factors, GRADE Evidence Grading, Heterogeneity (Q-statistic, I-squared), landscape-scanner (related skill) (+7 more)
-
-### Community 37 - "Rare-Events Sampling"
-Cohesion: 0.29
-Nodes (6): Checklist, Composition with neighboring skills, Diagnostics, Expert Agents, Julia ecosystem, Rare-Events Sampling
-
-### Community 40 - "Quality Specialist"
-Cohesion: 0.07
-Nodes (26): 1. Quality Impact, 2. Security Posture, 3. Test Coverage, 4. Performance, 5. Standards, Chain-of-Thought Decision Framework, Code Quality Checklist, Common Patterns & Anti-Patterns (+18 more)
-
-### Community 42 - "Grafana Dashboards"
-Cohesion: 0.11
-Nodes (19): API Monitoring (RED), Best Practices, Checklist, Common Dashboards, Common Pitfalls, Dashboard Alerts, Dashboard Design Methods, Expert Agent (+11 more)
-
-### Community 43 - "_cli"
-Cohesion: 0.09
-Nodes (29): _cli(), Required N for detecting an R^2 of a given effect size in linear regression.…, power_analysis.py Statistical power analysis for common experimental designs.…, Required N per group for a two-sample t-test. effect_size: Cohen's d…, Required N per group for a one-way ANOVA. effect_size: Cohen's f (SD of group…, required_n_anova(), required_n_regression(), required_n_two_sample() (+21 more)
-
-### Community 44 - "Stochastic Dynamics & Transport"
-Cohesion: 0.25
-Nodes (8): Applications, Best Practices, Checklist, Composition with neighboring skills, Expert Agent, Framework Selection, Green-Kubo Relations, Stochastic Dynamics & Transport
-
-### Community 47 - "Python Pro - Systems Engineer"
-Cohesion: 0.07
-Nodes (29): 1. Type Safety, 2. Modern Practices, 3. Concurrency Safety, 4. Robustness, 5. Performance, Chain-of-Thought Decision Framework, Common Patterns & Anti-Patterns, Constitutional AI Principles (+21 more)
-
-### Community 48 - "Simulation Expert"
-Cohesion: 0.07
-Nodes (27): 1. Physics Correctness, 2. Numerical Stability, 3. Performance, 4. Validation, 5. Reproducibility, Chain-of-Thought Decision Framework, Common Patterns & Anti-Patterns, Constitutional AI Principles (+19 more)
-
-### Community 49 - "Detailed Assessment"
-Cohesion: 0.07
-Nodes (27): 1. Methodology Soundness: __/10, 2. Experimental Design: __/10, 3. Data Quality: __/10, 4. Statistical Rigor: __/10, 5. Result Validity: __/10, 6. Publication Readiness: __/10, Ablation Studies: __/10, Conclusion (+19 more)
-
-### Community 50 - "Cloud Deployment"
-Cohesion: 0.67
-Nodes (3): AWS SageMaker, Cloud Deployment, GCP Vertex AI
-
-### Community 51 - "Science Suite"
-Cohesion: 0.18
-Nodes (10): Agents, Features, Hooks (6 events), Installation, Integration / Workflow, License, Overview, Quick Start / Usage Examples (+2 more)
-
-### Community 52 - "machine-learning/SKILL.md"
-Cohesion: 0.18
-Nodes (7): Checklist, DevOps and ML Infrastructure, Experiment Tracking, Expert Agent, Expert Agent, Federated Learning, Production Checklist
-
-### Community 53 - "Automation Engineer"
-Cohesion: 0.07
-Nodes (26): 1. Speed & Feedback, 2. Security, 3. Reliability, 4. Maintainability, 5. Compliance, Automation Checklist, Automation Engineer, Chain-of-Thought Decision Framework (+18 more)
-
-### Community 54 - "📁 Contents"
-Cohesion: 0.67
-Nodes (3): 1. `bayesian_workflow_template.py`, 2. `hierarchical_model_template.py`, 📁 Contents
-
-### Community 55 - "SRE Expert (Reliability Consultant)"
-Cohesion: 0.07
-Nodes (26): 1. Reliability Impact, 2. Observability Coverage, 3. Root Cause Analysis, 4. Performance Trade-offs, 5. Failure Modes, Chain-of-Thought Decision Framework, Common Patterns & Anti-Patterns, Constitutional AI Principles (+18 more)
-
-### Community 59 - "ML Expert"
-Cohesion: 0.07
-Nodes (28): 1. Data Rigor, 2. Model Appropriateness, 3. Training Stability, 4. Evaluation, 5. Reproducibility, Chain-of-Thought Decision Framework, Common Patterns & Anti-Patterns, Constitutional AI Principles (+20 more)
-
-### Community 60 - "Julia Graph Neural Networks"
-Cohesion: 0.22
-Nodes (8): Additional Resources, Checklist, Composition with neighboring skills, Expert Agent, Julia Graph Neural Networks, Mode Flag, Reference Files, Training and Custom Message Passing
-
-### Community 62 - "read_payload"
-Cohesion: 0.07
-Nodes (46): get_field(), Read the hook JSON payload from stdin. Never raises; returns {} on failure., Shared stdin-payload helpers for dev-suite hooks. Claude Code delivers hook…, First non-empty value among payload keys, then an env var, then default., Correct Claude Code hook-output shape for injecting context. A top-level…, Quote a payload- or workspace-supplied string for injection into model context.…, Fence a multi-line workspace-supplied block for injection into model context.…, read_payload() (+38 more)
-
-### Community 63 - "Documentation Expert"
-Cohesion: 0.08
-Nodes (25): 1. Audience Analysis, 2. Clarity & Structure, 3. Accuracy, 4. Completeness, 5. Accessibility, Chain-of-Thought Decision Framework, Common Patterns & Anti-Patterns, Constitutional AI Principles (+17 more)
-
-### Community 65 - "Numerical Methods Implementation"
-Cohesion: 0.20
-Nodes (10): Expert Agent, Numerical Methods Implementation, Numerical Stability, ODE, Optimization, Optimization, Parallelization Strategies, PDE (+2 more)
-
-### Community 66 - "pure-functional-patterns.py"
-Cohesion: 0.08
-Nodes (25): apply_weight_decay(), augment_batch(), clip_gradients(), flatten_params(), init_params(), masked_update(), parallel_random_init(), Pure Functional Patterns for JAX Demonstrates JAX-first patterns for state… (+17 more)
-
-### Community 67 - "Nonlinear Dynamics Expert"
-Cohesion: 0.11
-Nodes (17): Chain-of-Thought Decision Framework, Check 1: System Classification, Check 2: Symmetry & Structure, Check 3: Analysis Selection, Check 4: Numerical Validity, Check 5: Physical Consistency, Common Anti-Patterns, Core Responsibilities (+9 more)
-
-### Community 68 - "Experimental Data Interpretation"
-Cohesion: 0.10
-Nodes (20): 3D Diffusion Model, Best Practices, Checklist, Compressed Exponential, Core Equations, DLS Analysis, Experimental Data Interpretation, Expert Agent (+12 more)
-
-### Community 69 - "model"
-Cohesion: 0.12
-Nodes (22): Define your Bayesian model here. Args: x: Independent variable(s) y: Dependent…, get_data(), main(), model(), nonlin(), predict(), Example: Bayesian Neural Network ================================ We…, run_inference() (+14 more)
-
-### Community 70 - "KnowledgeBase"
-Cohesion: 0.13
-Nodes (10): KnowledgeBase, Path, Get base confidence for error type, ignoring under-sampled history., Get historical success rate, ignoring under-sampled history., A strategy is unproven until it has been tried MIN_SAMPLES times. Without this…, Record a fix attempt result, keyed by the error type it targeted. Keyed by the…, Load knowledge base from file., Save knowledge base to file. (+2 more)
-
-### Community 71 - "annotation.py"
-Cohesion: 0.18
-Nodes (16): dawid_skene(), get_data(), hierarchical_dawid_skene(), item_difficulty(), logistic_random_effects(), mace(), main(), multinomial() (+8 more)
-
-### Community 73 - "Workflow"
-Cohesion: 0.14
-Nodes (14): 1. Extract concepts from `01_spark.md`, 2. Build a three-layer search plan, 3. Steelman every paper, 4. Build the gap matrix, 5. Reviewer 2 pass against the proposed gap, 6. Synthesis, 7. Write, lint, hand off, Depth expectation (+6 more)
-
-### Community 74 - "Equation Discovery"
-Cohesion: 0.20
-Nodes (8): Additional Resources, Checklist, Common Pitfalls, Equation Discovery, Expert Agents, Mode Flag, Reference Files, Routing Decision Tree
-
-### Community 75 - "CI/CD Pipelines"
-Cohesion: 0.18
-Nodes (11): Checklist, CI/CD Pipelines, Core Skills, [Deployment Pipeline Design](../deployment-pipeline-design/SKILL.md), Expert Agent, [GitHub Actions Templates](../github-actions-templates/SKILL.md), [GitLab CI Patterns](../gitlab-ci-patterns/SKILL.md), [Iterative Error Resolution](../iterative-error-resolution/SKILL.md) (+3 more)
-
-### Community 76 - "Complete Training Pipeline Architecture"
-Cohesion: 0.27
-Nodes (11): Checkpointing Stage (Orbax), Complete Training Pipeline Architecture, Data Pipeline Stage, Gradient Computation Stage (JAX AD), Loss Computation Stage, Model Stage (Flax NNX), Optimizer Update Stage (Optax), Training Loop Flow (+3 more)
-
-### Community 77 - "Software Architect"
-Cohesion: 0.08
-Nodes (23): 1. Requirements, 2. Scalability, 3. Resilience, 4. Data Consistency, 5. Security, Architecture Checklist, Chain-of-Thought Decision Framework, Common Patterns & Anti-Patterns (+15 more)
-
-### Community 80 - "Data Analysis & Model Validation"
-Cohesion: 0.14
-Nodes (14): Active Matter Observables, Bayesian Inference, Best Practices, Checklist, Computational Tools, Correlation Functions, Data Analysis & Model Validation, Dynamic Light Scattering (DLS) (+6 more)
-
-### Community 83 - "Scientific Feature Development"
-Cohesion: 0.09
-Nodes (22): Actions, Options, Phase 1: Discovery & Design, Phase 2: Implementation, Phase 3: Testing & QA, Phase 4: Deployment & Operations, Rollback Procedures, Scientific Feature Development (+14 more)
-
-### Community 87 - "Systems & CLI Engineering"
-Cohesion: 0.25
-Nodes (7): 1. Systems Programming Patterns, 2. CLI Tool Design, 3. Engineering Checklist, Concurrency, Expert Agent, Memory Management, Systems & CLI Engineering
-
-### Community 88 - "adjoint-methods.py"
-Cohesion: 0.12
-Nodes (19): backsolve_adjoint_example(), checkpoint_adjoint_example(), checkpoint_memory_tradeoff(), demo(), direct_adjoint_example(), get_adjoint_method(), implicit_adjoint_example(), NeuralODE (+11 more)
-
-### Community 90 - "compare_training_runs.py"
-Cohesion: 0.11
-Nodes (23): compare_configs(), compare_metrics(), extract_config(), extract_metrics(), _find_convergence_epoch(), load_training_log(), print_comparison_report(), _print_config_comparison() (+15 more)
-
-### Community 91 - "Search Patterns"
-Cohesion: 0.15
-Nodes (12): Design Checklist, Expert Agent, Faceted Navigation, Field Type Selection, Full-Text Search Queries, Index Design, Index Lifecycle Management, Mapping Definition (Elasticsearch) (+4 more)
-
-### Community 92 - "Julia GPU Kernels"
-Cohesion: 0.33
-Nodes (5): Anti-Patterns, Checklist, Expert Agent, Julia GPU Kernels, Memory Management
-
-### Community 93 - "Solutions"
-Cohesion: 0.20
-Nodes (10): 1. ReLU Activations, 2. Residual Connections, 3. Proper Initialization, 4. Batch Normalization, 5. Layer Normalization (for RNNs), Root Causes, Solutions, Symptoms (+2 more)
-
-### Community 95 - "latex_sanity.py"
-Cohesion: 0.07
-Nodes (38): Counter, extract_candidates(), extract_prose(), main(), concept_extractor.py Extract candidate key concepts from a Stage 1 spark…, Remove YAML frontmatter, code blocks, and markdown headers., Return a Counter mapping candidate concepts to frequency., check_citations() (+30 more)
-
-### Community 97 - "Cloud Provider Patterns"
-Cohesion: 0.12
-Nodes (15): Architecture Checklist, AWS Lambda (Python), Cloud Provider Patterns, Cost Monitoring, Cost Optimization, Expert Agent, IAM Patterns, Infrastructure as Code (Terraform) (+7 more)
-
-### Community 98 - "Database Patterns"
-Cohesion: 0.12
-Nodes (16): Alembic (Python/SQLAlchemy), Configuration Guidelines, Connection Pooling, Database Patterns, Design Checklist, Expert Agent, EXPLAIN Analysis, Index Strategy (+8 more)
-
-### Community 100 - "nonlinear-dynamics/SKILL.md"
-Cohesion: 0.25
-Nodes (5): Checklist, Common Pitfalls, Ecosystem Selection, Expert Agents, Network-Coupled Dynamics
-
-### Community 101 - "SQL Optimization Patterns"
-Cohesion: 0.13
-Nodes (15): Aggregate Optimization, Best Practices, Checklist, Common Pitfalls, Correlated Subquery → JOIN, Expert Agent, EXPLAIN Analysis, Index Types (+7 more)
-
-### Community 102 - "Route Mode"
-Cohesion: 0.15
-Nodes (13): Agy Routes, CLI Invocation Protocol, Codex Routes, Failure Counter, Fast Decision Table, Forced Risk Review, Output Filing, Parallel Consensus (+5 more)
-
-### Community 103 - "julia-mastery/SKILL.md"
-Cohesion: 0.14
-Nodes (10): Checklist, Code Generation, Expert Agent, ModelingToolkit.jl, Checklist, Expert Agent, Optimization.jl Patterns, Checklist (+2 more)
-
-### Community 104 - "Quantum Computing"
-Cohesion: 0.40
-Nodes (4): Algorithm Selection, Expert Agent, Production Checklist, Quantum Computing
-
-### Community 105 - "Point Processes & Self-Exciting Dynamics"
-Cohesion: 0.17
-Nodes (10): Checklist, Composition with neighboring skills, Expert Agent, Julia ecosystem, Point Processes & Self-Exciting Dynamics, Checklist, Evaluation Metrics, Expert Agent (+2 more)
-
-### Community 107 - "pure-log-prob-models.py"
-Cohesion: 0.15
-Nodes (18): batched_log_prob(), demo_with_blackjax(), hierarchical_log_prob(), masked_log_prob(), mixture_log_prob(), ndarray, Pure Log-Prob Models for JAX Demonstrates how to write Bayesian models as pure…, Log-likelihood for a single observation. (+10 more)
-
-### Community 108 - "pinn_heat_equation.py"
-Cohesion: 0.12
-Nodes (20): analytical_solution(), compute_pde_residual(), count_parameters(), HeatPINN, main(), pinn_loss(), Rngs, Complete Physics-Informed Neural Network for Heat Equation This script… (+12 more)
-
-### Community 110 - "Variational Inference Guide"
-Cohesion: 0.07
-Nodes (29): 1. Compare to MCMC (Gold Standard), 2. Posterior Predictive Checks, 3. Check ELBO on Held-Out Data, Adam (Default), Advanced: Amortized Inference, AutoDelta (Point Estimate / MAP), AutoLowRankMultivariateNormal (Low-Rank + Diagonal), AutoMultivariateNormal (Correlated Gaussian) (+21 more)
-
-### Community 111 - "rest-api-template.py"
-Cohesion: 0.13
-Nodes (26): BaseModel, delete, exception_handler, get, patch, Config, create_user(), delete_user() (+18 more)
-
-### Community 112 - "Documentation Management"
-Cohesion: 0.10
-Nodes (20): Action: Generate, Action: Sync, Action: Update, Actions, Automation (Comprehensive Mode), Documentation Management, Flags, Flags (+12 more)
-
-### Community 115 - "REST API Best Practices"
+- **Research-spark stage handoff chain (claim -> prototype -> experiment design)** — plugins_research_suite_skills_falsifiable_claim_skill, plugins_research_suite_skills_numerical_prototype_skill, plugins_research_suite_skills_experiment_designer_skill [EXTRACTED 1.00]
+- **Premortem loop-back into risk register early signals** — plugins_research_suite_skills_premortem_critique_skill, plugins_research_suite_skills_experiment_designer_templates_risk_register, concept_early_signal [EXTRACTED 1.00]
+- **Adversarial reviewer pattern across pipeline stages** — plugins_research_suite_skills_falsifiable_claim_skill, plugins_research_suite_skills_landscape_scanner_skill, plugins_research_suite_skills_premortem_critique_skill [INFERRED 0.85]
+- **Theory-scaffold derivation and formalization toolkit** — plugins_research_suite_skills_theory_scaffold_skill_theory_scaffold, plugins_research_suite_skills_theory_scaffold_templates_stepwise_derivation_protocol_stepwise_protocol, plugins_research_suite_skills_theory_scaffold_templates_dimensional_analysis_buckingham_pi_worksheet [EXTRACTED 1.00]
+- **Dev Suite Core Agents** — plugins_dev_suite_agents_app_developer, plugins_dev_suite_agents_automation_engineer, plugins_dev_suite_agents_documentation_expert, plugins_dev_suite_agents_quality_specialist, plugins_dev_suite_agents_software_architect, plugins_dev_suite_agents_sre_expert [EXTRACTED 1.00]
+- **Comprehensive Validation Flow** — plugins_dev_suite_commands_double_check, plugins_dev_suite_agents_quality_specialist, plugins_dev_suite_agents_software_architect, plugins_dev_suite_agents_documentation_expert [INFERRED 0.80]
+- **Observability Stack** — plugins_dev_suite_skills_observability_and_sre_skill, plugins_dev_suite_skills_observability_sre_practices_skill, plugins_dev_suite_skills_prometheus_configuration_skill, plugins_dev_suite_skills_slo_implementation_skill [EXTRACTED 1.00]
+- **Research Workflow System** — plugins_research_suite_skills_research_hub_skill, plugins_research_suite_skills_research_spark_skill, plugins_research_suite_skills_research_practice_skill, plugins_research_suite_agents_research_expert_agent, plugins_research_suite_agents_research_spark_orchestrator_agent [EXTRACTED 1.00]
+- **Testing & Quality Framework** — plugins_dev_suite_skills_testing_and_quality_skill, plugins_dev_suite_skills_test_automation_skill, plugins_dev_suite_skills_testing_patterns_skill, plugins_dev_suite_agents_quality_specialist_agent [EXTRACTED 1.00]
+- **Bayesian SciML Workflow** — skills_bayesian_inference, skills_bayesian_ude_workflow, skills_bayesian_sindy_workflow, agents_julia_pro, agents_jax_pro [EXTRACTED 0.95]
+- **Nonlinear Dynamics Analysis Stack** — agents_nonlinear_dynamics_expert, plugins_science_suite_skills_bifurcation_analysis_skill_bifurcation_analysis, skills_chaos_attractors, agents_julia_pro, agents_jax_pro [EXTRACTED 0.90]
+- **Continuum-to-Particle Simulation Bridge** — agents_continuum_mechanics_engineer, agents_simulation_expert, agents_pinn_engineer, agents_statistical_physicist [INFERRED 0.85]
+- **Scientific Development Flow** — plugins_dev_suite_commands_eng_feature_dev_eng_feature_dev, plugins_dev_suite_commands_smart_debug_smart_debug, plugins_dev_suite_commands_test_generate_scientific_test_generation, dev_suite_debugging_toolkit [EXTRACTED 0.90]
+- **Quality Assurance Suite** — plugins_dev_suite_commands_run_all_tests_iterative_test_execution_auto_fix, plugins_dev_suite_commands_test_generate_scientific_test_generation, dev_suite_quality_specialist, dev_suite_testing_and_quality [INFERRED 0.85]
+- **Three-Brain Multi-Agent Team** — plugins_dev_suite_skills_three_brain_references_agent_prompts, plugins_dev_suite_skills_three_brain_references_herdr_transport, plugins_dev_suite_skills_three_brain_references_team_mode_execution, plugins_dev_suite_skills_three_brain_references_team_mode [EXTRACTED 1.00]
+- **Research-Spark Pipeline** — plugins_research_suite_skills_research_spark_skill, plugins_research_suite_skills_landscape_scanner_skill, plugins_research_suite_skills_falsifiable_claim_skill, plugins_research_suite_skills_numerical_prototype_skill, plugins_research_suite_skills_research_commons_skill [EXTRACTED 1.00]
+- **Julia Scientific Computing Core** — agents_julia_pro, agents_julia_ml_hpc, agents_continuum_mechanics_engineer [INFERRED 0.80]
+- **JAX Differentiable Physics Core** — agents_jax_pro, agents_pinn_engineer, agents_simulation_expert [INFERRED 0.85]
+- **MLOps and Experimentation Flow** — agents_ml_expert, agents_sci_workflow_engineer, cmd_run_experiment, cmd_analyze_data [EXTRACTED 0.90]
+- **Bayesian Scientific Machine Learning Workflow** — plugins_science_suite_skills_bayesian_inference_skill, plugins_science_suite_skills_bayesian_ude_workflow_skill, plugins_science_suite_skills_bayesian_ude_jax_skill, plugins_science_suite_skills_bayesian_pinn_skill, plugins_science_suite_skills_bayesian_sindy_workflow_skill, plugins_science_suite_skills_consensus_mcmc_pigeons_skill [EXTRACTED 0.90]
+- **Nonlinear Dynamics & Chaos Analysis** — plugins_science_suite_skills_bifurcation_analysis_skill, plugins_science_suite_skills_chaos_attractors_skill, plugins_science_suite_agents_nonlinear_dynamics_expert_agent [INFERRED 0.85]
+- **Continuum Mechanics & Rheology Framework** — plugins_science_suite_skills_continuum_mechanics_and_rheology_skill, plugins_science_suite_skills_constitutive_equations_skill, plugins_science_suite_agents_continuum_mechanics_engineer_agent [EXTRACTED 0.95]
+- **Correlation Analysis Framework** — skills_correlation_math_foundations_skill, skills_correlation_physical_systems_skill, skills_correlation_computational_methods_skill, skills_correlation_experimental_data_skill [EXTRACTED 1.00]
+- **Julia SciML Ecosystem** — skills_core_julia_patterns_skill, skills_differential_equations_skill, skills_equation_discovery_skill [INFERRED 0.90]
+- **JAX Scientific Computing Flow** — plugins_science_suite_skills_jax_computing_skill, plugins_science_suite_skills_jax_mastery_skill_jax_mastery, plugins_science_suite_skills_jax_core_programming_skill_jax_core_programming, plugins_science_suite_skills_jax_optimization_pro_skill, plugins_science_suite_skills_jax_bayesian_pro_skill, plugins_science_suite_skills_jax_diffeq_pro_skill, plugins_science_suite_skills_jax_physics_applications_skill_jax_physics_applications [EXTRACTED 1.00]
+- **Julia ML/HPC Ecosystem** — plugins_science_suite_skills_julia_ml_and_dl_skill_julia_ml_and_deep_learning, plugins_science_suite_skills_julia_ad_backends_skill_julia_ad_backends, plugins_science_suite_skills_julia_gpu_kernels_skill_julia_gpu_kernels, plugins_science_suite_skills_julia_graph_neural_networks_skill_julia_graph_neural_networks, plugins_science_suite_skills_julia_hpc_distributed_skill_julia_hpc_distributed_computing, plugins_science_suite_skills_julia_model_deployment_skill_julia_model_deployment [EXTRACTED 1.00]
+- **JAX-Julia Hybrid Computing** — plugins_science_suite_skills_jax_julia_interop_skill_jax_julia_interop, plugins_science_suite_skills_interop_patterns_skill_julia_interoperability_patterns, agents_jax_pro, agents_julia_pro [EXTRACTED 1.00]
+- **Julia ML Ecosystem** — plugins_science_suite_skills_julia_neural_networks_skill_julia_neural_networks, plugins_science_suite_skills_julia_reinforcement_learning_skill_julia_reinforcement_learning, plugins_science_suite_skills_julia_training_diagnostics_skill_julia_training_diagnostics, plugins_science_suite_skills_modeling_toolkit_skill_modelingtoolkit_jl [EXTRACTED 0.90]
+- **LLM Application Stack** — plugins_science_suite_skills_llm_and_ai_skill_llm_and_ai, plugins_science_suite_skills_llm_application_dev_skill_llm_application_development, plugins_science_suite_skills_llm_evaluation_skill_llm_evaluation, plugins_science_suite_skills_langchain_architecture_skill_langchain_architecture [EXTRACTED 1.00]
+- **MLOps Production Flow** — plugins_science_suite_skills_ml_deployment_skill_ml_deployment, plugins_science_suite_skills_ml_engineering_production_skill, plugins_science_suite_skills_ml_pipeline_workflow_skill_ml_pipeline_workflow, plugins_science_suite_skills_model_deployment_serving_skill_model_deployment_and_serving [EXTRACTED 1.00]
+- **Nonlinear Dynamics Orchestration** — plugins_science_suite_skills_nonlinear_dynamics_skill_nonlinear_dynamics, plugins_science_suite_skills_bifurcation_analysis_skill_bifurcation_analysis, skills_chaos_attractors, plugins_science_suite_skills_network_coupled_dynamics_skill_network_coupled_dynamics, plugins_science_suite_skills_pattern_formation_skill_pattern_formation, plugins_science_suite_skills_equation_discovery_skill_equation_discovery [EXTRACTED 1.00]
+- **Julia Ecosystem Standards** — plugins_science_suite_skills_package_development_workflow_skill_julia_package_development, plugins_science_suite_skills_package_management_skill_julia_package_management, plugins_science_suite_skills_performance_tuning_skill_julia_performance_tuning [INFERRED 0.90]
+- **Julia SciML Stack** — plugins_science_suite_skills_sciml_and_diffeq_skill, plugins_science_suite_skills_sciml_ecosystem_skill_sciml_ecosystem, plugins_science_suite_skills_sciml_modern_stack_skill [EXTRACTED 0.95]
+- **AI Research Methods** — plugins_science_suite_skills_self_improving_ai_skill_self_improving_ai, plugins_science_suite_skills_rlaif_training_skill, plugins_science_suite_skills_rag_implementation_skill_rag_implementation [INFERRED 0.85]
+- **Statistical Physics & Rare Events** — plugins_science_suite_skills_statistical_physics_hub_skill_statistical_physics_hub, plugins_science_suite_skills_statistical_physics_skill_statistical_physics, plugins_science_suite_skills_rare_events_sampling_skill_rare_events_sampling [EXTRACTED 0.90]
+- **Bayesian Inference Stack (Julia)** — plugins_science_suite_skills_turing_model_design_skill_turing_jl_model_design, plugins_science_suite_skills_variational_inference_patterns_skill_variational_inference, plugins_science_suite_agents_julia_pro_agent [EXTRACTED 0.95]
+- **Stochastic Simulation & Analysis** — plugins_science_suite_skills_stochastic_dynamics_skill_stochastic_dynamics_transport, plugins_science_suite_skills_trajectory_analysis_skill_md_trajectory_analysis, plugins_science_suite_agents_simulation_expert_agent [EXTRACTED 0.90]
+
+## Communities (2951 total, 2510 thin omitted)
+
+### Community 0 - "Correct Claude Code Hook Outpu"
 Cohesion: 0.05
-Nodes (38): API Keys, Authentication and Authorization, Batch Endpoints, Bearer Token, Bulk Operations, Cache Headers, Caching, Consistent Structure (+30 more)
+Nodes (55): Correct Claude Code hook-output shape for injecting context. A top-level…, Quote a payload- or workspace-supplied string for injection into model context.…, Fence a multi-line workspace-supplied block for injection into model context.…, find_state_files(), get_field(), _immediate_state_children(), Any, Path (+47 more)
 
-### Community 116 - "Secrets Management"
-Cohesion: 0.09
-Nodes (23): Automated (AWS Lambda), AWS Secrets Manager, Best Practices, Checklist, CI Pipeline, CLI Usage, Common Pitfalls, Expert Agent (+15 more)
-
-### Community 118 - "spmd-parallelism.py"
-Cohesion: 0.11
-Nodes (17): create_mesh_examples(), debug_sharding(), explicit_device_placement(), model_parallel_matmul(), SPMD Parallelism Patterns for JAX Demonstrates sharding, mesh configuration,…, Different mesh configurations., Demonstrate different sharding patterns., Distribute matrix multiplication across devices. (+9 more)
-
-### Community 119 - "cfd_taylor_green.py"
-Cohesion: 0.13
-Nodes (22): advect_scalar(), compute_divergence_max(), compute_enstrophy(), compute_kinetic_energy(), compute_vorticity(), laplacian(), main(), navier_stokes_step() (+14 more)
-
-### Community 120 - "baseball.py"
-Cohesion: 0.22
-Nodes (13): fully_pooled(), main(), not_pooled(), partially_pooled(), partially_pooled_with_logit(), predict(), print_results(), r""" Number of hits has a Binomial distribution with independent probability of… (+5 more)
-
-### Community 122 - "str"
-Cohesion: 0.22
-Nodes (8): example_1_max_iterations(), example_2_auto_recovery(), example_4_comparison(), Demonstration of Enhanced Error Messages in NLSQ This example shows how NLSQ…, Example 4: Compare old vs new error messages., Example 1: Max iterations reached., Example 2: Successful fit after applying recommendations., str
-
-### Community 123 - "Four invariants you enforce"
-Cohesion: 0.33
-Nodes (6): 1. The core is a valid endpoint, 2. Artifact integrity, 3. Canonical paths, 4. Silent downstream invalidation is forbidden, Four invariants you enforce, Research Spark Orchestrator
-
-### Community 124 - "Julia Web Development"
-Cohesion: 0.29
-Nodes (6): Checklist, Deployment, Expert Agent, Framework Selection, Genie.jl REST API, Julia Web Development
-
-### Community 126 - "julia-ml-and-dl/SKILL.md"
-Cohesion: 0.22
-Nodes (7): Checklist, Julia AD Backends Skill, Expert Agent, Julia AD Backends, Checklist, Expert Agents, Julia Neural Architectures
-
-### Community 127 - "Parallel Computing Suite"
-Cohesion: 0.22
-Nodes (9): Checklist, Core Skills, [Ecosystem Selection](../ecosystem-selection/SKILL.md), Expert Agent, [GPU Acceleration](../gpu-acceleration/SKILL.md), [Numerical Methods Implementation](../numerical-methods-implementation/SKILL.md), Parallel Computing Suite, Profiling Tools (+1 more)
-
-### Community 128 - "IterativeFixEngine"
-Cohesion: 0.10
-Nodes (15): IterativeFixEngine, Main iterative fix loop. Returns True if all errors resolved, False otherwise., Categorize errors and assign fix strategies., Map error type to category., Calculate confidence score for fix., Calculate priority score (higher = more important)., Sort fixes by priority (high confidence, blocking errors first)., Split errors into auto-applicable fixes and ones needing a human. Runs before… (+7 more)
-
-### Community 129 - "observable_extractor.py"
-Cohesion: 0.18
-Nodes (9): _demo(), load_predicted_observable(), Path, Best-effort conversion to a plain Python list for YAML/JSON serialization., observable_extractor.py Scaffold for extracting the predicted observable from a…, Write the observable record to YAML (preferred) or JSON based on extension., Load a predicted observable record from YAML or JSON., _to_list() (+1 more)
-
-### Community 132 - "Observability and SRE"
-Cohesion: 0.17
-Nodes (12): Alerts, Best Practices, Checklist, Expert Agent, Golden Signals, Incident Management, Monitoring Parallel Systems, Observability and SRE (+4 more)
-
-### Community 134 - "read_payload"
-Cohesion: 0.07
-Nodes (40): get_field(), Any, Parse the hook payload from stdin. Returns {} on empty/invalid input., Shared stdin payload helpers for science-suite hooks. Claude Code delivers hook…, First non-empty value among payload[key] for each key, then env, then default., Correct Claude Code hook-output shape for injecting context. A top-level…, Quote a payload- or workspace-supplied string for injection into model context.…, Fence a multi-line workspace-supplied block for injection into model context.… (+32 more)
-
-### Community 135 - "mortality.py"
-Cohesion: 0.33
-Nodes (8): create_lookup(), main(), model(), print_model_shape(), Example: Modelling mortality over space and time…, Create a map between s1 indices and unique s2 indices, run_inference(), reparam
-
-### Community 137 - "solver-selection.py"
-Cohesion: 0.12
-Nodes (20): compare_solvers(), demo(), detect_stiffness(), explicit_solver_example(), get_solver(), implicit_solver_example(), ndarray, Solver Selection Patterns for Diffrax Demonstrates choosing between explicit… (+12 more)
-
-### Community 138 - "Physical Systems & Correlation Functions"
-Cohesion: 0.29
-Nodes (6): Best Practices, Checklist, Composition with neighboring skills, Domain Selection, Expert Agent, Physical Systems & Correlation Functions
-
-### Community 140 - "Continuous Distributions"
-Cohesion: 0.06
-Nodes (33): Bernoulli, Beta, Binary Data, Binomial, Categorical, Cauchy, Common Use Cases, Continuous Distributions (+25 more)
-
-### Community 142 - "GraphQL Schema Design Patterns"
-Cohesion: 0.06
-Nodes (34): 1. Input/Payload Pattern, 1. Non-Null Types, 2. Interfaces for Polymorphism, 2. Optimistic Response Support, 3. Batch Mutations, 3. Unions for Heterogeneous Results, 4. Input Types, Arguments and Filtering (+26 more)
-
-### Community 143 - "Error Handling Patterns"
-Cohesion: 0.14
-Nodes (14): Best Practices, Checklist, Circuit Breaker, Common Pitfalls, Custom Error Classes, Error Aggregation, Error Categories, Error Handling Patterns (+6 more)
-
-### Community 144 - "Message Queue Patterns"
-Cohesion: 0.14
-Nodes (14): Backpressure Strategies, Dead Letter Queue (DLQ), Design Checklist, DLQ Handling Rules, Event Schema Design, Expert Agent, Idempotency, Idempotent Consumer Pattern (+6 more)
-
-### Community 147 - "Computer Vision"
-Cohesion: 0.50
-Nodes (3): Computer Vision, Evaluation Metrics, Expert Agent
-
-### Community 148 - "blackjax-custom-sampler.py"
-Cohesion: 0.11
-Nodes (22): create_mixed_sampler(), custom_nuts_sampler(), demo(), dual_averaging_step_size(), MixedSamplerState, parallel_tempering_step(), Any, NamedTuple (+14 more)
-
-### Community 149 - "sde-brownian.py"
-Cohesion: 0.11
-Nodes (19): basic_sde_example(), colloidal_dynamics(), ensemble_sde(), langevin_in_potential(), multi_particle_brownian(), production_sde_config(), Stochastic Differential Equations with Diffrax Demonstrates…, Show that same seed gives same result. (+11 more)
-
-### Community 150 - "xla-optimization.py"
-Cohesion: 0.07
-Nodes (30): partial, bad_dynamic_layers(), bad_variable_shapes(), configurable_network(), demonstrate_donation(), enable_xla_dump(), good_fixed_shapes(), good_static_layers() (+22 more)
-
-### Community 151 - "vqe_hydrogen.py"
-Cohesion: 0.14
-Nodes (21): apply_cnot(), apply_pauli_operator(), apply_pauli_x(), apply_pauli_y(), apply_pauli_z(), apply_ry(), apply_rz(), compute_energy() (+13 more)
-
-### Community 152 - "result_enhancements_demo.py"
-Cohesion: 0.14
-Nodes (19): example1_statistical_properties(), example2_backward_compatibility(), example3_confidence_intervals(), example4_prediction_intervals(), example5_visualization(), example6_summary_report(), example7_model_comparison(), example8_residuals_predictions() (+11 more)
-
-### Community 153 - "sparse_regression.py"
-Cohesion: 0.30
-Nodes (14): kernel(), analyze_dimension(), analyze_pair_of_dimensions(), compute_pairwise_mean_variance(), compute_singleton_mean_variance(), dot(), gaussian_mixture_stats(), get_data() (+6 more)
-
-### Community 154 - "Core Skills"
-Cohesion: 0.07
-Nodes (28): [Catalyst Reactions](../catalyst-reactions/SKILL.md), Checklist, [CI/CD Patterns](../ci-cd-patterns/SKILL.md), [Compiler Patterns](../compiler-patterns/SKILL.md), [Core Julia Patterns](../core-julia-patterns/SKILL.md), Core Skills, [Differential Equations](../differential-equations/SKILL.md), Expert Agent (+20 more)
-
-### Community 155 - "MCMC Convergence Diagnostics"
-Cohesion: 0.09
-Nodes (21): Advanced Diagnostics, Autocorrelation Plots, Common Failure Modes, Divergences, Effective Sample Size (ESS), "Initial particles out of bounds", "Maximum tree depth reached", MCMC Convergence Diagnostics (+13 more)
-
-### Community 157 - "Core Skills"
-Cohesion: 0.13
-Nodes (15): [Advanced Optimization](../advanced-optimization/SKILL.md), Checklist, [Control Theory](../control-theory/SKILL.md), Core Skills, Expert Agent, [GPU Acceleration](../gpu-acceleration/SKILL.md), [MD Simulation Setup](../md-simulation-setup/SKILL.md), [ML Force Fields](../ml-force-fields/SKILL.md) (+7 more)
-
-### Community 159 - "API Design Principles"
-Cohesion: 0.14
-Nodes (14): API Design Principles, API Versioning, Best Practices, Checklist, Common Pitfalls, Consistent Error Response, DataLoader (N+1 Prevention), Error Handling (+6 more)
-
-### Community 160 - "Caching Patterns"
-Cohesion: 0.14
-Nodes (14): Cache-Aside Pattern (Redis + Python), Cache Invalidation Patterns, Cache Stampede Prevention, Caching Patterns, Caching Strategy Comparison, Design Checklist, Distributed Cache Topology, Event-Driven Invalidation (+6 more)
-
-### Community 161 - "Documentation Standards"
-Cohesion: 0.33
-Nodes (5): 1. Documentation Types, 2. Best Practices, 3. Documentation Checklist, Documentation Standards, Expert Agent
-
-### Community 162 - "ml-and-data-science/SKILL.md"
-Cohesion: 0.13
-Nodes (9): Best Practices, Data Wrangling and Communication, Expert Agent, Checklist, Diagnostics, Expert Agent, NLSQ Core Mastery, Expert Agent (+1 more)
-
-### Community 165 - "Julia Training Diagnostics"
-Cohesion: 0.40
-Nodes (4): Diagnostic Checklist, Expert Agent, Julia Training Diagnostics, Quick Reference
-
-### Community 167 - "diagnose_optimization.py"
-Cohesion: 0.15
-Nodes (18): _analyze_convergence(), _analyze_cost_function(), _analyze_gradient(), _analyze_jacobian(), _analyze_parameters(), _analyze_residuals(), diagnose_result(), _print_summary() (+10 more)
-
-### Community 169 - "Workflow"
-Cohesion: 0.18
-Nodes (11): 10. Write, lint, hand off, 1. Load inputs, 2. Build the instrument capability map, 3. Pre-register success metrics, 4. Enumerate controls, 5. Power analysis, 6. Design-of-experiments matrix, 7. Multimodal sequencing (when applicable) (+3 more)
-
-### Community 170 - "Active Matter & Complex Systems"
-Cohesion: 0.12
-Nodes (16): Active Brownian Particles, Active Matter & Complex Systems, Active Matter Models, Best Practices, Boids Rules (Swarm Dynamics), Checklist, Chemotaxis (Keller-Segel), Collective Behavior (+8 more)
-
-### Community 173 - "JAX Core Programming"
-Cohesion: 0.18
-Nodes (11): Basic Transformation Stack (grad->vmap->jit->pmap), Common JAX Pitfalls, Transformation Composition Patterns, Performance Progression Chart, Transformation Order Matters (jit(vmap) vs vmap(jit)), Checklist, Expert Agent, JAX Core Programming (+3 more)
-
-### Community 175 - "Julia Neural Networks"
-Cohesion: 0.33
-Nodes (5): Anti-Patterns, Checklist, Expert Agent, Julia Neural Networks, Lux.jl vs Flux.jl
-
-### Community 176 - "Herdr transport — operational detail"
-Cohesion: 0.25
-Nodes (7): 1. Preflight and discovery, 2. Start an agent only when its kind is missing, 3. Prompt and wait, 4. Read the result — expect two rounds, 5. Degradation, 6. Hard rules, Herdr transport — operational detail
-
-### Community 177 - "test-find-agents.sh"
-Cohesion: 0.40
-Nodes (4): find-agents.sh script, check(), run(), test-find-agents.sh script
-
-### Community 180 - "Nonlinear Dynamics"
-Cohesion: 0.25
-Nodes (8): [Bayesian UDE Workflow](../bayesian-ude-workflow/SKILL.md), Checklist, Ecosystem Selection, Expert Agent, [JAX-Julia Interop](../jax-julia-interop/SKILL.md), Nonlinear Dynamics, Related Skills, Routing Decision Tree
-
-### Community 183 - "Airflow Scientific Workflows"
-Cohesion: 0.17
-Nodes (12): Airflow Scientific Workflows, Array Data Storage, Best Practices, Checklist, Common Pitfalls, Data Quality Validation, Distributed Simulations, Expert Agent (+4 more)
-
-### Community 184 - "Architecture Patterns"
-Cohesion: 0.17
-Nodes (12): Architecture Patterns, Best Practices, Checklist, Clean Architecture Example, Clean Architecture Layers, Common Pitfalls, DDD Tactical Patterns, Directory Structure (+4 more)
-
-### Community 185 - "Containerization Patterns"
-Cohesion: 0.13
-Nodes (14): Containerization Patterns, Deployment, Deployment Checklist, Dockerfile Best Practices, .dockerignore, Expert Agent, Health Check Patterns, Helm Chart Structure (+6 more)
-
-### Community 186 - "GitHub Actions Templates"
-Cohesion: 0.15
-Nodes (13): Best Practices, Checklist, Common Pitfalls, Docker Build & Push, Expert Agent, GitHub Actions Templates, Kubernetes Deployment, Parallelization (+5 more)
-
-### Community 189 - "simulation-and-hpc/SKILL.md"
-Cohesion: 0.15
-Nodes (9): Control Theory, Expert Agent, Checklist, Expert Agent, Framework Selection, GPU Acceleration, Parallelization Patterns, Expert Agent (+1 more)
-
-### Community 190 - "Core Skills"
-Cohesion: 0.06
-Nodes (34): Bayesian Inference, [Bayesian PINN](../bayesian-pinn/SKILL.md), [Bayesian SINDy Workflow](../bayesian-sindy-workflow/SKILL.md), [Bayesian UDE in JAX](../bayesian-ude-jax/SKILL.md), [Bayesian UDE Workflow](../bayesian-ude-workflow/SKILL.md), Checklist, [Consensus MCMC with Pigeons](../consensus-mcmc-pigeons/SKILL.md), Core Skills (+26 more)
-
-### Community 196 - "step"
+### Community 1 - "Array"
 Cohesion: 0.05
 Nodes (51): Array, CallbackBase, jit, extract_observable(), integrate(), Params, _self_test(), State (+43 more)
 
-### Community 197 - "gaussian"
-Cohesion: 0.24
-Nodes (9): example_3_diagnostic_analysis(), Example 3: Using diagnostic information programmatically., gaussian(), lorentzian(), multi_peak_model(), Spectroscopy Peak Fitting: Multi-Peak Deconvolution…, Gaussian peak profile. Parameters ---------- x : array_like Energy/wavelength…, Lorentzian peak profile (Cauchy distribution). Common in spectroscopy for… (+1 more)
-
-### Community 198 - "function_library_demo.py"
-Cohesion: 0.16
-Nodes (17): demo_comparison(), demo_exponential_decay(), demo_gaussian(), demo_linear(), demo_polynomial(), demo_power_law(), demo_sigmoid(), main() (+9 more)
-
-### Community 199 - "analyze_activations.py"
-Cohesion: 0.12
-Nodes (15): ActivationHook, analyze_activation_statistics(), diagnose_activation_pathologies(), print_activation_report(), Any, Module, Tensor, Diagnose activation pathologies. Args: activation_stats: Dictionary mapping… (+7 more)
-
-### Community 201 - "Advanced Simulations"
-Cohesion: 0.10
-Nodes (20): 1. Molecular Dynamics Workflows, 2. Multiscale Modeling & Coarse-Graining, 3. Trajectory Generation & Sampling, 4. Rare-Event Samplers (Python reference stack), Advanced Simulations, Agent-based modeling (ABM) with cloning / branching populations, Checklist, Core Skills (+12 more)
-
-### Community 202 - "Bayesian Universal Differential Equation Workflow"
-Cohesion: 0.22
-Nodes (9): Additional Resources, Bayesian Universal Differential Equation Workflow, Checklist, Common pitfalls, Composition with neighboring skills, Expert Agent, Mode Flag, Reference Files (+1 more)
-
-### Community 208 - "Execution"
-Cohesion: 0.17
-Nodes (11): 1. Assess Repository (single command), 2. Commit Changes (if dirty and no --skip-commit), 3. Show Plan, 4. Confirm (skip if --force), 5. Execute Merges, 6. Cleanup (skip if --no-delete), 7. Report, Execution (+3 more)
-
-### Community 209 - "E2E Testing Patterns"
-Cohesion: 0.18
-Nodes (11): Accessibility Testing, API Mocking, Best Practices, Checklist, CI/CD Integration (GitHub Actions), Debugging, E2E Testing Patterns, Expert Agent (+3 more)
-
-### Community 210 - "Prometheus Configuration"
-Cohesion: 0.11
-Nodes (18): Alert Rules, API Endpoints, Best Practices, Checklist, Common Pitfalls, Core Configuration, Docker Compose, Expert Agent (+10 more)
-
-### Community 212 - "dedupe_refs.py"
-Cohesion: 0.15
-Nodes (17): first_author_surname(), main(), parse_bibfile(), parse_entry(), bib_to_steelman.py Convert entries in a .bib file into steelman-note stubs, one…, Return a dict of BibTeX fields., render_stub(), first_author_surname() (+9 more)
-
-### Community 213 - "DataDrivenDiffEq.jl — Full Julia API Reference"
-Cohesion: 0.25
-Nodes (7): Basic Usage, Custom Library Functions, DataDrivenDiffEq.jl — Full Julia API Reference, DifferentialEquations.jl Integration, Implicit SINDy, Threshold Sweep for Validation, Thresholding Algorithms
-
-### Community 214 - "Julia Visualization Patterns"
-Cohesion: 0.40
-Nodes (4): Best Practices, Checklist, Expert Agent, Julia Visualization Patterns
-
-### Community 215 - "Multi-Physics Coupling Patterns"
-Cohesion: 0.09
-Nodes (27): Physics-Informed Neural Network (PINN), Atomistic-Continuum Multiscale Coupling (MD/Continuum handshake), Coupling Stability Criteria (Explicit vs Implicit), Data Assimilation Coupling (4D-Var), Multi-Physics Coupling Patterns, Electromagnetics-Thermal Coupling (Joule heating), Fluid-Structure Interaction (FSI), Particle-Fluid Coupling (DEM-CFD) (+19 more)
-
-### Community 218 - "run_inference"
-Cohesion: 0.24
-Nodes (10): Run MCMC inference. Args: x: Independent variable y: Dependent variable…, main(), model(), Example: Neal's Funnel ====================== This example, which is adapted…, run_inference(), ar2_for_loop(), ar2_scan(), main() (+2 more)
-
-### Community 219 - "Greeter"
-Cohesion: 0.16
-Nodes (11): Greeter, A class-based greeter with customizable prefix. Attributes: prefix: The…, Initialize the greeter. Args: prefix: The greeting prefix to use., Test that empty name raises ValueError., Tests for the Greeter class., Test greeter with default prefix., Test greeter with custom prefix., Test multiple greeters with different prefixes. (+3 more)
-
-### Community 220 - "Advanced ML Systems"
-Cohesion: 0.11
-Nodes (17): Advanced ML Systems, Best Practices, Checklist, Common Pitfalls, DDP Pattern, DeepSpeed Config, Distributed Training, Expert Agent (+9 more)
-
-### Community 221 - "Mathematical Foundations of Correlation Functions"
-Cohesion: 0.29
-Nodes (6): Checklist, Expert Agent, Fourier, Laplace & Wavelet, Mathematical Foundations of Correlation Functions, Transforms
-
-### Community 222 - "Deep Learning Experimentation"
-Cohesion: 0.29
-Nodes (7): Best Practices, Checklist, Common Pitfalls, Deep Learning Experimentation, Directory Structure, Experiment Tracking, Expert Agent
-
-### Community 223 - "JAX Optimization Pro: The JAX-First Engineer"
-Cohesion: 0.25
-Nodes (7): Additional Resources, Checklist, Example Files, Expert Agent, JAX Optimization Pro: The JAX-First Engineer, Reference Files, Skills Matrix: Junior vs Expert
-
-### Community 226 - "DSPy Basics"
-Cohesion: 0.40
-Nodes (5): Checklist, Common pitfalls, Composition with neighboring skills, DSPy Basics, Expert Agents
-
-### Community 227 - "Intelligent GitHub Actions Failure Resolution"
-Cohesion: 0.22
-Nodes (8): Examples, Intelligent GitHub Actions Failure Resolution, Phase 1: Detection, Phase 2: Pattern Analysis, Phase 3: Solution Selection, Phase 4: Apply, Commit, Push, Re-trigger, Phase 5: Knowledge Base, Safety
-
-### Community 228 - "Workflow"
-Cohesion: 0.13
-Nodes (14): 1. Triage, 2. Observability (Production), 3. Hypotheses, 4. Strategy, 5. Instrumentation, 6. RCA, 7. Fix, 8. Validation (+6 more)
-
-### Community 229 - "Workflow Automation"
-Cohesion: 0.13
-Nodes (14): 1. Analysis, 2. GitHub Actions, 3. Release Automation, 4. GitLab CI, 5. Terraform IaC (Enterprise), 6. Security, 7. Monitoring, 8. Dependency Updates (+6 more)
-
-### Community 230 - "Agent Prompt Templates"
-Cohesion: 0.18
-Nodes (10): Agent Prompt Templates, Agy Reviewer Agent, Codex Reviewer Agent, Content Team — Agy Reviewer, Content Team — Author, Content Team — Codex Reviewer, Creator Agent, Dev Team — Agy Reviewer (+2 more)
-
-### Community 231 - "Core Skills"
-Cohesion: 0.20
-Nodes (10): Core Skills, [Julia AD Backends](../julia-ad-backends/SKILL.md), [Julia GPU Kernels](../julia-gpu-kernels/SKILL.md), [Julia Graph Neural Networks](../julia-graph-neural-networks/SKILL.md), [Julia ML Pipelines](../julia-ml-pipelines/SKILL.md), [Julia Model Deployment](../julia-model-deployment/SKILL.md), [Julia Neural Architectures](../julia-neural-architectures/SKILL.md), [Julia Neural Networks](../julia-neural-networks/SKILL.md) (+2 more)
-
-### Community 232 - "🚀 Quick Start"
-Cohesion: 0.67
-Nodes (3): Customization Checklist, For a New Project, 🚀 Quick Start
-
-### Community 233 - "GitLab CI Patterns"
-Cohesion: 0.17
-Nodes (12): Basic Pipeline, Best Practices, Caching Strategies, Checklist, Docker Build, Dynamic Child Pipelines, Expert Agent, GitLab CI Patterns (+4 more)
-
-### Community 238 - "research-suite/hooks/_hook_io.py"
-Cohesion: 0.12
-Nodes (20): find_state_files(), get_field(), _immediate_state_children(), Any, Path, Read `current_stage` (the stage IN PROGRESS, not yet completed — see…, Read `stages_completed` (e.g. `[1, 2, 3]`) — the stages whose canonical…, Quote a payload- or workspace-supplied string for injection into model context.… (+12 more)
-
-### Community 239 - "demo"
-Cohesion: 0.19
-Nodes (5): ObservableBuilder, source: 'numerical', 'parametric', or 'statistical'. type_: 'relative' or…, Fluent builder that produces a predicted-observable record matching…, demo(), Demonstrate SDE patterns with Diffrax.
-
-### Community 242 - "debug_jax.py"
-Cohesion: 0.12
-Nodes (20): check_device_placement(), check_gradient_flow(), check_nan_inf(), debug_jit(), disable_nan_checking(), enable_nan_checking(), good_fn(), monitor_training_step() (+12 more)
-
-### Community 244 - "JuMP Optimization"
-Cohesion: 0.33
-Nodes (6): Best Practices, Checklist, Common Pitfalls, Expert Agent, JuMP Optimization, Mixed-Integer Programming
-
-### Community 247 - "Core Skills"
-Cohesion: 0.33
-Nodes (6): [Bifurcation Analysis](../bifurcation-analysis/SKILL.md), [Chaos & Attractors](../chaos-attractors/SKILL.md), Core Skills, [Equation Discovery](../equation-discovery/SKILL.md), [Network-Coupled Dynamics](../network-coupled-dynamics/SKILL.md), [Pattern Formation](../pattern-formation/SKILL.md)
-
-### Community 249 - "Solutions"
-Cohesion: 0.22
-Nodes (9): 1. Leaky ReLU, 2. Lower Learning Rate, 3. Proper Initialization, 4. Monitor During Training, Dead Neurons, Root Causes, Solutions, Symptoms (+1 more)
-
-### Community 251 - "Julia ML Pipelines"
-Cohesion: 0.33
-Nodes (5): Evaluation, Expert Agent, Hyperparameter Tuning, Julia ML Pipelines, Reproducibility Checklist
-
-### Community 252 - "Section-by-section guidance"
-Cohesion: 0.12
-Nodes (15): Confidential Comments to Editor (if needed), Document format, Major Issues, Minor Issues, Overall Assessment, Questions for the Authors, Recommendation, Review Report Structure (+7 more)
-
-### Community 255 - "📓 Available Notebooks"
-Cohesion: 0.50
-Nodes (4): 1. `nlsq_quickstart.ipynb`, 2. `nlsq_interactive_tutorial.ipynb`, 3. `advanced_features_demo.ipynb`, 📓 Available Notebooks
-
-### Community 256 - "Execution Steps"
-Cohesion: 0.25
-Nodes (7): 1. Project detection, 2. Preflight, 3. Adopt what is live; start only what is missing, 4. Seed each pane with its role, 5. Confirm to user, Execution Steps, Team mode — execution steps
-
-### Community 258 - "Chain Rule"
-Cohesion: 0.40
-Nodes (5): Calculus and Backpropagation - Complete Reference, Chain Rule, Multivariable Chain Rule, Single Variable, Vector Chain Rule
-
-### Community 259 - "Non-Equilibrium Theory"
-Cohesion: 0.33
-Nodes (6): Applications, Best Practices, Checklist, Composition with neighboring skills, Expert Agent, Non-Equilibrium Theory
-
-### Community 260 - "Core Handlers"
-Cohesion: 0.12
-Nodes (15): Advanced Patterns, condition (Observe Latent Variables), Core Handlers, Debugging Non-Convergence, Effect Handlers Guide, Handler Composition, LocScaleReparam (Non-Centered), Manual Reparameterization (+7 more)
-
-### Community 262 - "Symbolic Mathematics"
-Cohesion: 0.50
-Nodes (3): Code Generation, Expert Agent, Symbolic Mathematics
-
-### Community 264 - "Advanced Topics"
-Cohesion: 0.12
-Nodes (15): 1. Start with Fundamentals, 2. Connect Theory to Code, 3. Build Intuition, 4. Optimization Theory (`optimization-theory-reference.md`), 4. Reference While Coding, 5. Information Theory (`information-theory-reference.md`), 5. Understand Stability, 6. Numerical Methods (`numerical-methods-reference.md`) (+7 more)
-
-### Community 265 - "Iterative Error Resolution for CI/CD"
-Cohesion: 0.17
-Nodes (12): Best Practices, Error Categories, Error Resolution Checklist, Expert Agent, Fix Patterns, Integration with /fix-commit-errors, Iterative Error Resolution for CI/CD, Iterative Fix Engine (+4 more)
-
-### Community 266 - "Microservices Patterns"
-Cohesion: 0.12
-Nodes (16): API Gateway, Best Practices, Checklist, Circuit Breaker, Common Pitfalls, Communication Patterns, Data Management, Decomposition Strategies (+8 more)
-
-### Community 267 - "SLO Implementation"
-Cohesion: 0.14
-Nodes (14): Availability Targets, Best Practices, Checklist, Common Pitfalls, Common SLI Types, Error Budget, Expert Agent, Multi-Window Burn Rate Alerts (+6 more)
-
-### Community 269 - "📓 Interactive Notebooks (Assets)"
-Cohesion: 0.25
-Nodes (7): 1. `nlsq_quickstart.ipynb`, 2. `nlsq_interactive_tutorial.ipynb`, 3. `advanced_features_demo.ipynb`, 📁 Directory Structure, 📓 Interactive Notebooks (Assets), NLSQ Examples Collection, 💡 Tips
-
-### Community 273 - "generate_diagrams.py"
-Cohesion: 0.17
-Nodes (15): generate_batch_size_scaling(), generate_memory_optimization_chart(), generate_optimizer_comparison(), generate_speedup_chart(), generate_training_progress(), main(), Generate batch size scaling efficiency chart, Generate Visual Diagrams for JAX Core Programming This script generates visual… (+7 more)
-
-### Community 274 - "Science Suite (science-hub)"
-Cohesion: 0.33
-Nodes (6): Checklist, Expert Agents, Hub Skills, Routing Decision Tree, Routing Table, Science Suite (science-hub)
-
-### Community 276 - "GaussianShell"
-Cohesion: 0.17
-Nodes (9): GaussianShell, main(), model(), Example: Nested Sampling for Gaussian Shells…, run_inference(), dual_moon_model(), DualMoonDistribution, main() (+1 more)
-
-### Community 277 - "capture_recapture.py"
-Cohesion: 0.14
-Nodes (7): main(), Example: CJS Capture-Recapture Model for Ecological Data…, run_inference(), model_1(), model_2(), model_4(), Example: Enumerate Hidden Markov Model ======================================…
-
-### Community 278 - "Workflow"
-Cohesion: 0.17
-Nodes (11): 1. Load inputs and classify the question type, 2. Fermi feasibility screen, 3. Draft the claim in canonical form, 4. Complete the Heilmeier catechism, 5. Reviewer 2 challenge, 6. Falsifiability check, 7. Write, lint, hand off, Failure modes worth naming (+3 more)
-
-### Community 282 - "julia-language/SKILL.md"
-Cohesion: 0.08
-Nodes (19): Best Practices, Checklist, Expert Agent, Julia Interoperability Patterns, Checklist, Expert Agent, Julia HPC & Distributed Computing, Checklist (+11 more)
-
-### Community 283 - "NumPyro Core Mastery"
-Cohesion: 0.29
-Nodes (6): Best Practices, Checklist, Expert Agents, Guide Selection, NumPyro Core Mastery, Variational Inference
-
-### Community 290 - "Code Modernization"
-Cohesion: 0.18
-Nodes (10): Actions, Code Modernization, Options, Phase 1: Assessment, Phase 2: Test Coverage, Phase 3: Migration, Phase 4: Validation, Phase 5: Progressive Rollout (+2 more)
-
-### Community 291 - "Julia CI/CD Patterns"
-Cohesion: 0.29
-Nodes (6): Automation Tools, Basic CI Workflow, Checklist, Documentation Deployment, Expert Agent, Julia CI/CD Patterns
-
-### Community 294 - "Distributed Tracing"
-Cohesion: 0.10
-Nodes (20): Best Practices, Checklist, Context Propagation, Core Concepts, Distributed Tracing, Docker Compose, Expert Agent, Finding Errors (+12 more)
-
-### Community 295 - "JAX-Julia Interop"
-Cohesion: 0.25
-Nodes (7): Checklist, Expert Agents, JAX-Julia Interop, Pattern 1: Julia Bifurcation + JAX Dense Sweep, Pattern 2: JAX GPU Simulation + Julia Dynamical Analysis, Pattern 3: Julia Symbolic Model + JAX GPU Training, Workflow Patterns
-
-### Community 297 - "Modernization & Migration"
-Cohesion: 0.17
-Nodes (12): 1. Strategy & Patterns, 2. Migration Execution, 3. Strangler Fig Implementation, 4. Migration Strategies, 5. Compatibility Layers, 6. Rollback Patterns, 7. Testing Migration, 8. Migration Checklist (+4 more)
-
-### Community 300 - "Reinforcement Learning"
-Cohesion: 0.40
-Nodes (4): Expert Agent, Hyperparameter Tuning, Reinforcement Learning, Reward Shaping
-
-### Community 308 - "Advanced Optimization"
-Cohesion: 0.14
-Nodes (13): Advanced Optimization, Bayesian Optimization, BoTorch, Constraint Programming (OR-Tools), Convex Optimization (CVXPY), Expert Agent, Mixed-Integer Programming, Multi-Objective Optimization (+5 more)
-
-### Community 310 - "Experiment Tracking"
-Cohesion: 0.29
-Nodes (7): DVC for Data Versioning, Experiment Comparison, Experiment Tracking, Experiment Tracking Checklist, Expert Agent, MLflow Setup, Weights & Biases Integration
-
-### Community 311 - "Python/Julia Ecosystem Selection"
-Cohesion: 0.33
-Nodes (5): Checklist, Expert Agent, Performance, Python/Julia Ecosystem Selection, Toolchain
-
-### Community 312 - "Julia Model Deployment"
-Cohesion: 0.40
-Nodes (4): Expert Agent, Genie.jl REST API, Julia Model Deployment, Production Checklist
-
-### Community 313 - "Julia Reinforcement Learning"
-Cohesion: 0.40
-Nodes (4): Checklist, Expert Agent, Julia Reinforcement Learning, Reward Shaping
-
-### Community 314 - "Bifurcation Analysis"
-Cohesion: 0.40
-Nodes (4): Bifurcation Analysis, Checklist, Common Pitfalls, Expert Agents
-
-### Community 318 - "bayesian-inference/SKILL.md"
-Cohesion: 0.11
-Nodes (14): Bayesian Universal Differential Equations in JAX, Checklist, Common pitfalls, Expert Agents, Checklist, Composition with neighboring skills, Consensus MCMC with Pigeons.jl, Diagnostics (+6 more)
-
-### Community 326 - "02_checkpoint_resume.py"
-Cohesion: 0.38
-Nodes (6): gaussian_model(), main(), Example 2: Checkpoint Save and Resume This example demonstrates checkpoint…, Gaussian model: y = amp * exp(-0.5 * ((x - center) / width)^2), Callback to simulate interruption after 5 iterations. ``params`` and ``loss``…, simulate_interruption()
-
-### Community 328 - "Comprehensive Validation"
-Cohesion: 0.17
-Nodes (12): CI/CD Integration, Comprehensive Validation, Comprehensive Validation (1-2 hours), Expert Agent, Parallel Validation, Pre-commit Hook, Rapid Validation (15 min), Reference Documentation (+4 more)
-
-### Community 331 - "ML Pipeline Workflow"
-Cohesion: 0.25
-Nodes (8): Best Practices, Checklist, Common Pitfalls, Deployment Strategies, Expert Agent, ML Pipeline Workflow, Pipeline Stages, Troubleshooting
-
-### Community 333 - "Monorepo Management"
-Cohesion: 0.10
-Nodes (21): Best Practices, Checklist, CI/CD, Code Sharing Patterns, Common Commands, Common Pitfalls, Configuration, ESLint (+13 more)
-
-### Community 335 - "Security CI Template"
-Cohesion: 0.15
-Nodes (13): Best Practices, Checklist, Common Pitfalls, Dependency + SAST Scanning, Expert Agent, GitHub Actions Templates, GitLab CI Template, Lock File Validation (+5 more)
-
-### Community 339 - "Sharding Strategies Comparison Table"
-Cohesion: 0.22
-Nodes (11): 1D Data Parallelism Pattern, 2D Parallelism (Data+Model), Communication Patterns (All-Reduce/All-Gather/Reduce-Scatter), Debugging Sharding, Pipeline Parallelism, Practical Sharding Examples (ResNet-50/GPT-2/GPT-3), Sharding Best Practices, Sharding Strategies Comparison Table (+3 more)
-
-### Community 340 - "PINN Validation"
-Cohesion: 0.67
-Nodes (3): Boundary Conditions, Physical Consistency, PINN Validation
-
-### Community 343 - "sensor_calibration.py"
-Cohesion: 0.16
-Nodes (10): linear_model(), polynomial_calibration(), Sensor Calibration: Non-Linear Temperature Sensor…, Steinhart-Hart equation for thermistors. 1/T = A + B*ln(R) + C*(ln(R))³…, Polynomial calibration model. y = c0 + c1*x + c2*x² + c3*x³ + ... Parameters…, steinhart_hart(), linear_model(), main() (+2 more)
-
-### Community 344 - "hierarchical_model_template.py"
-Cohesion: 0.20
-Nodes (13): generate_hierarchical_data(), hierarchical_model(), main(), plot_group_fits(), Run MCMC inference for hierarchical model., Visualize hierarchical shrinkage effect. Shows how group estimates are "shrunk"…, Plot fits for each group., Hierarchical Model Template Template for hierarchical/multilevel Bayesian… (+5 more)
-
-### Community 348 - "Publication Readiness Checklist"
-Cohesion: 0.14
-Nodes (13): Content (10%), Figures & Tables (10%), Manuscript Completeness (25%), Novelty (15%), Overall Assessment, Overview, Publication Readiness Checklist, Reproducibility Package (10%) (+5 more)
-
-### Community 349 - "gp.py"
-Cohesion: 0.48
-Nodes (6): get_data(), main(), model(), predict(), Example: Gaussian Process ========================= In this example we show how…, run_inference()
-
-### Community 350 - "hmcecs.py"
-Cohesion: 0.52
-Nodes (6): main(), model(), Example: Hamiltonian Monte Carlo with Energy Conserving Subsampling…, run_hmc(), run_hmcecs(), summary_plot()
-
-### Community 351 - "Bayesian PINN — BNNODE & BayesianPINN"
-Cohesion: 0.20
-Nodes (10): Bayesian PINN — BNNODE & BayesianPINN, Checklist, Composition with neighboring skills, Diagnostics, Expert Agent, Multimodal escape hatch, ODEs — `BNNODE` solver, PDEs — `BayesianPINN` discretizer (+2 more)
-
-### Community 354 - "Core Skills"
-Cohesion: 0.17
-Nodes (12): Checklist, Core Skills, Expert Agent, [JAX Bayesian Pro](../jax-bayesian-pro/SKILL.md), JAX Computing, [JAX Core Programming](../jax-core-programming/SKILL.md), [JAX DiffEq Pro](../jax-diffeq-pro/SKILL.md), [JAX Mastery](../jax-mastery/SKILL.md) (+4 more)
-
-### Community 356 - "Model Deployment and Serving"
-Cohesion: 0.25
-Nodes (8): A/B Testing, Best Practices, Common Commands, Deployment Checklist, Expert Agent, Framework Selection, Kubernetes Deployment, Model Deployment and Serving
-
-### Community 357 - "Core Skills"
-Cohesion: 0.17
-Nodes (12): Checklist, Core Skills, [Data Analysis](../data-analysis/SKILL.md), [Data Wrangling Communication](../data-wrangling-communication/SKILL.md), [Experiment Tracking](../experiment-tracking/SKILL.md), Expert Agent, [Machine Learning](../machine-learning/SKILL.md), ML and Data Science (+4 more)
-
-### Community 358 - "Neural Architecture Patterns"
-Cohesion: 0.40
-Nodes (5): Best Practices, Checklist, Expert Agent, Julia Equivalent, Neural Architecture Patterns
-
-### Community 360 - "Catalyst.jl Reaction Networks"
-Cohesion: 0.50
-Nodes (4): Applications, Catalyst.jl Reaction Networks, Checklist, Expert Agent
-
-### Community 374 - "Validation Checklist"
-Cohesion: 0.33
-Nodes (6): Operations, Performance, Production Readiness, Security, Testing, Validation Checklist
-
-### Community 377 - "Python Packaging with uv"
-Cohesion: 0.17
-Nodes (12): 2. Project Layout and Build Backend, 3. Dependency and Environment Management, 4. Building and Publishing, 5. Best Practices, Checklist, CI and container integration, Dependency constraints, Expert Agent (+4 more)
-
-### Community 387 - "Variational Inference"
-Cohesion: 0.29
-Nodes (6): ADVI Pattern, Checklist, Expert Agents, Variational Inference, VI vs MCMC Trade-offs, When to Use VI
-
-### Community 393 - "JAX Physics Applications"
-Cohesion: 0.33
-Nodes (6): Checklist, Delegation, Domain Selection, Expert Agent, JAX Physics Applications, Validation Checklist
-
-### Community 396 - "advanced-simulations/SKILL.md"
-Cohesion: 0.13
-Nodes (12): Checklist, Expert Agent, MD Simulation Setup, Routing Decision Tree, Troubleshooting, Checklist, Expert Agent, ML Force Fields (+4 more)
-
-### Community 399 - "Neural Network Mathematics"
-Cohesion: 0.50
-Nodes (4): Checklist, Expert Agent, Neural Network Mathematics, Numerical Stability
-
-### Community 400 - "NLSQ Interactive Notebooks"
-Cohesion: 0.50
-Nodes (3): NLSQ Interactive Notebooks, 🔗 Related Resources, 💡 Tips
-
-### Community 401 - "Self-Improving AI"
-Cohesion: 0.15
-Nodes (10): Checklist, Composition with neighboring skills, Expert Agents, RLAIF and Preference Optimization, Checklist, Common pitfalls, Composition with neighboring skills, Expert Agents (+2 more)
-
-### Community 405 - "diagnose_gradients.py"
-Cohesion: 0.17
-Nodes (10): DataLoader, compute_gradient_stats(), diagnose_gradient_pathology(), print_gradient_report(), Module, Tensor, Print comprehensive gradient analysis report., Gradient Diagnostic Tool for Neural Network Training Analyzes gradient flow… (+2 more)
-
-### Community 406 - "Comprehensive Validation"
-Cohesion: 0.22
-Nodes (8): Advanced, Comprehensive Validation, Modes, Output, Process, Quick (5 Dimensions), Standard/Enterprise (+5), Success
-
-### Community 408 - "Iterative Test Execution & Auto-Fix"
-Cohesion: 0.22
-Nodes (8): Common Scenarios, Exit Criteria, Framework Auto-Detection, Iterative Test Execution & Auto-Fix, Modes, Output, Safety, Workflow
-
-### Community 410 - "Execution Steps"
-Cohesion: 0.18
-Nodes (11): 1. Project Detection, 2. Pre-flight CLI Check, 3. Create Team, 4. Create Initial Tasks, 5. Launch Agents, 6. Confirm to User, Execution Steps, Team Mode (+3 more)
-
-### Community 414 - "Modern Concurrency in Python"
-Cohesion: 0.50
-Nodes (4): 4. Best Practices, Checklist, Expert Agent, Modern Concurrency in Python
-
-### Community 415 - "Automated Scripts"
-Cohesion: 0.33
-Nodes (6): Accessibility Checker, Automated Scripts, Master Orchestrator, Performance Profiler, Security Scanner, Test Runner
-
-### Community 417 - "Debugging Toolkit"
-Cohesion: 0.14
-Nodes (13): Common JIT Errors, Debugging Toolkit, Expert Agents, Git Bisect, JAX Debugging, Julia Debugging, NaN / Inf Hunting, Numerical Reproducibility (+5 more)
-
-### Community 418 - "Chaos Characterization & Attractor Analysis"
-Cohesion: 0.40
-Nodes (4): Chaos Characterization & Attractor Analysis, Checklist, Common Pitfalls, Expert Agents
-
-### Community 419 - "Core Skills"
-Cohesion: 0.18
-Nodes (11): Checklist, Core Skills, [Distributed Tracing](../distributed-tracing/SKILL.md), Expert Agent, [Grafana Dashboards](../grafana-dashboards/SKILL.md), Observability and SRE, [Observability & SRE Practices](../observability-sre-practices/SKILL.md), [Prometheus Configuration](../prometheus-configuration/SKILL.md) (+3 more)
-
-### Community 426 - "Rust Extensions for Python"
-Cohesion: 0.50
-Nodes (4): 4. Best Practices, Checklist, Expert Agent, Rust Extensions for Python
-
-### Community 427 - "Async Patterns"
-Cohesion: 0.29
-Nodes (7): Async Context Manager, Async Ecosystem, Async Generator (streaming), Async Patterns, Common Pitfalls, Entry Point, Testing Async Code
-
-### Community 428 - "science-hub/SKILL.md"
-Cohesion: 0.14
-Nodes (9): Algorithm Selection, Best Practices, Checklist, Computational Methods & Algorithms, Expert Agent, Checklist, Composition with neighboring skills, Expert Agents (+1 more)
-
-### Community 435 - "Workflow"
-Cohesion: 0.14
-Nodes (14): 1. Write the failure narrative (past tense), 2. Cluster failure modes by root cause, 3. Identify the cheapest early signal per cluster, 4. Loop back to Stage 7, 5. Generate the one-page summary, 6. Simulated reviewer critique, 7. Write, lint, mark complete, Failure modes worth naming (+6 more)
-
-### Community 436 - "Workflow"
-Cohesion: 0.15
-Nodes (12): 1. Name the governing framework and the assumptions, 2. Load and follow the stepwise derivation protocol, 3. Derive the core equations, 4. Known-limit checks, 5. Dimensional analysis, 6. Gray-box boundary (SciML only), 7. Write `04_theory.md` (the prose companion), 8. Compile, lint, hand off (+4 more)
-
-### Community 437 - "Research Methodology"
-Cohesion: 0.14
-Nodes (13): 1. Experimental Design, 2. Statistical Test Planning, 3. Effect Size and Uncertainty, Assumption Checks, Checklist, Core Principles, Design Checklist, Expert Agent (+5 more)
-
-### Community 438 - "PINN Engineer"
-Cohesion: 0.14
-Nodes (13): 1. Physics Fidelity, 2. Training Stability, 3. Framework Choice, 4. Validation, Core Responsibilities, Delegation Strategy, Examples, Neural Operators (FNO / DeepONet) (+5 more)
-
-### Community 442 - "Team mode — roles, loop, and shutdown"
-Cohesion: 0.33
-Nodes (5): Execution Steps, Team mode — roles, loop, and shutdown, Team Roles, team-stop Flow, Workflow Loop (Semi-Automatic)
-
-### Community 443 - "Core Skills"
-Cohesion: 0.17
-Nodes (12): Checklist, Core Skills, [DevOps ML Infrastructure](../devops-ml-infrastructure/SKILL.md), Expert Agent, [Federated Learning](../federated-learning/SKILL.md), ML Deployment, [ML Engineering Production](../ml-engineering-production/SKILL.md), [ML Pipeline Workflow](../ml-pipeline-workflow/SKILL.md) (+4 more)
-
-### Community 452 - "Python Systems Engineering"
-Cohesion: 0.14
-Nodes (14): 1. [Type-Driven Design](../type-driven-design/SKILL.md), 2. [Rust Extensions](../rust-extensions/SKILL.md), 3. [Modern Concurrency](../modern-concurrency/SKILL.md), 4. [Robust Testing](../robust-testing/SKILL.md), 5. [Modern Packaging](../python-packaging-advanced/SKILL.md), Checklist, Core Skills, cProfile in-process (+6 more)
-
-### Community 453 - "Type-Driven Design in Python"
-Cohesion: 0.67
-Nodes (3): Checklist, Expert Agent, Type-Driven Design in Python
-
-### Community 463 - "print_summary"
-Cohesion: 0.29
-Nodes (9): main(), print_summary(), print_unified_diff(), artifact_diff.py Compare two versions of an artifact (e.g., 03_claim.md vs…, Return a list of (heading, body) tuples. Text before first heading gets…, Per-section summary: added / removed / modified heading lists., section_summary(), split_into_sections() (+1 more)
-
-### Community 466 - "lint_file"
-Cohesion: 0.25
-Nodes (10): Pattern, _banned_pattern(), collect_files(), lint_file(), lint_text(), main(), Path, style_lint.py Flags em dashes and banned vocabulary in markdown or LaTeX files,… (+2 more)
-
-### Community 468 - "The specification"
-Cohesion: 0.17
-Nodes (11): 1. Governing equations (from Stage 4-5), 2. Physics-prescribed terms, 3. Learned terms, 4. Per-component validation plan, 5. Coupling validation plan, 6. Training/inference separation, Gray-box boundary specification, Notes (+3 more)
-
-### Community 471 - "example_production_training"
-Cohesion: 0.22
-Nodes (8): create_dataset(), example_production_training(), MLP, Rngs, Multi-layer perceptron for classification, Workflow Pattern 2: Production Flax NNX Training Complete production-ready…, Create synthetic dataset, Complete production training example
-
-### Community 474 - "llm-and-ai/SKILL.md"
+### Community 2 - "Bayesian_Workflow_Template"
+Cohesion: 0.06
+Nodes (53): check_diagnostics(), extract_results(), load_data(), main(), model(), plot_traces(), posterior_predictive_check(), prior_predictive_check() (+45 more)
+
+### Community 3 - "_Hook_Io"
+Cohesion: 0.07
+Nodes (43): get_field(), Read the hook JSON payload from stdin. Never raises; returns {} on failure., Shared stdin-payload helpers for dev-suite hooks. Claude Code delivers hook…, First non-empty value among payload keys, then an env var, then default., read_payload(), untrusted(), untrusted_block(), wrap_context() (+35 more)
+
+### Community 4 - "1. Dependency Errors"
 Cohesion: 0.05
-Nodes (33): Checklist, Expert Agent, LangChain Architecture, Quick Reference, Checklist, Core Skills, Expert Agent, [LangChain Architecture](../langchain-architecture/SKILL.md) (+25 more)
+Nodes (44): 1. Dependency Errors, 1. Start with Analysis Mode, 2. Build Errors, 2. Use Lower Iterations for Production, 3. Monitor Knowledge Base Growth, 3. Test Errors, 4. Commit Knowledge Base, 4. Runtime Errors (+36 more)
 
-### Community 479 - "enzyme_kinetics.py"
-Cohesion: 0.22
-Nodes (8): competitive_inh_fit(), competitive_inhibition(), hill_equation(), michaelis_menten(), Enzyme Kinetics: Michaelis-Menten Analysis…, Michaelis-Menten enzyme kinetics model. v = V_max * [S] / (K_M + [S])…, Competitive inhibition model. v = V_max * [S] / (K_M(1 + [I]/K_i) + [S]) K_M…, Hill equation for cooperative binding. v = V_max * [S]^n / (K_50^n + [S]^n)…
+### Community 5 - "Counter"
+Cohesion: 0.07
+Nodes (38): Counter, extract_candidates(), extract_prose(), main(), concept_extractor.py Extract candidate key concepts from a Stage 1 spark…, Remove YAML frontmatter, code blocks, and markdown headers., Return a Counter mapping candidate concepts to frequency., check_citations() (+30 more)
 
-### Community 480 - "reaction_kinetics.py"
-Cohesion: 0.20
-Nodes (7): first_order_decay(), pseudo_first_order(), Chemical Reaction Kinetics: Rate Constant Determination…, First-order reaction kinetics. [A](t) = [A]₀ * exp(-kt) Integrated rate law for…, Second-order reaction kinetics (single reactant). [A](t) = [A]₀ / (1 +…, Pseudo-first-order kinetics. Same form as first-order, but k_obs = k[B]₀ where…, second_order_decay()
+### Community 6 - "Sci Workflow Engineer"
+Cohesion: 0.06
+Nodes (34): sci-workflow-engineer, Checklist, Expert Agent, LangChain Architecture, Quick Reference, Checklist, Core Skills, Expert Agent (+26 more)
 
-### Community 481 - "titration_curves.py"
-Cohesion: 0.20
-Nodes (9): buffer_capacity(), diprotic_titration(), monoprotic_titration(), Acid-Base Titration Curve Analysis =================================== This…, Diprotic acid titration model (e.g., H2CO3, H2SO3). Parameters ---------- V :…, Calculate buffer capacity as a function of pH. β = 2.303 * C_total * ([H⁺]K_a)…, Monoprotic weak acid titration model. Parameters ---------- V : array_like…, Simplified titration model for curve fitting. Parameters ---------- V :… (+1 more)
+### Community 7 - "Rest Best Practices"
+Cohesion: 0.05
+Nodes (38): API Keys, Authentication and Authorization, Batch Endpoints, Bearer Token, Bulk Operations, Cache Headers, Caching, Consistent Structure (+30 more)
 
-### Community 483 - "greet_multiple"
-Cohesion: 0.29
-Nodes (7): greet_multiple(), Generate greeting messages for multiple names. Args: names: List of names to…, Tests for the greet_multiple function., Test greeting multiple names., Test greeting an empty list., Test greeting a single name in a list., TestGreetMultiple
+### Community 8 - "Graphql Schema Design"
+Cohesion: 0.06
+Nodes (34): 1. Input/Payload Pattern, 1. Non-Null Types, 2. Interfaces for Polymorphism, 2. Optimistic Response Support, 3. Batch Mutations, 3. Unions for Heterogeneous Results, 4. Input Types, Arguments and Filtering (+26 more)
 
-### Community 484 - "TestGreet"
-Cohesion: 0.20
-Nodes (6): Test basic greeting functionality., Test greeting with different names., Test greeting with names containing spaces., Test that whitespace-only name raises ValueError., Tests for the greet function., TestGreet
+### Community 9 - "Power_Analysis"
+Cohesion: 0.09
+Nodes (29): _cli(), Required N for detecting an R^2 of a given effect size in linear regression.…, power_analysis.py Statistical power analysis for common experimental designs.…, Required N per group for a two-sample t-test. effect_size: Cohen's d…, Required N per group for a one-way ANOVA. effect_size: Cohen's f (SD of group…, required_n_anova(), required_n_regression(), required_n_two_sample() (+21 more)
 
-### Community 487 - "research-spark/SKILL.md"
-Cohesion: 0.18
-Nodes (7): experiment-designer, Failure modes worth naming, Prerequisites, Why this stage exists, research-spark pipeline (stand-alone), research-spark, Routing Decision Tree
+### Community 10 - "Distribution_Catalog"
+Cohesion: 0.06
+Nodes (33): Bernoulli, Beta, Binary Data, Binomial, Categorical, Cauchy, Common Use Cases, Continuous Distributions (+25 more)
 
-### Community 489 - "Research Quality Assessment"
-Cohesion: 0.22
-Nodes (8): Best Practices, Checklist, Common Pitfalls, Expert Agent, Related skills, Reproducibility Checklist, Research Quality Assessment, Scope boundary
+### Community 11 - "Agent Prompts"
+Cohesion: 0.06
+Nodes (31): Agent Prompt Templates, Agy Reviewer Agent, Codex Reviewer Agent, Content Team — Agy Reviewer, Content Team — Author, Content Team — Codex Reviewer, Creator Agent, Dev Team — Agy Reviewer (+23 more)
 
-### Community 490 - "Scientific Workflow Engineer"
-Cohesion: 0.17
-Nodes (11): 1. Scientific Correctness, 2. Token Efficiency, 3. Reproducibility, Core Responsibilities, Delegation Strategy, Output Format, Pre-Response Validation (3 Checks), Reference Artifact: Experiment Template (+3 more)
+### Community 12 - "Partial"
+Cohesion: 0.07
+Nodes (30): partial, bad_dynamic_layers(), bad_variable_shapes(), configurable_network(), demonstrate_donation(), enable_xla_dump(), good_fixed_shapes(), good_static_layers() (+22 more)
 
-### Community 491 - "Core Skills"
-Cohesion: 0.17
-Nodes (12): Checklist, [Constitutive Equations](../constitutive-equations/SKILL.md), Continuum Mechanics & Rheology Hub, Core Skills, [DMA & Rheology](../dma-rheology/SKILL.md), Expert Agent, [FEM/FEA](../fem-fea/SKILL.md), [Harmonic Response & Superposition](../harmonic-response-superposition/SKILL.md) (+4 more)
+### Community 13 - "Neural Network Master"
+Cohesion: 0.07
+Nodes (29): 1. Mathematical & Theoretical Soundness, 2. Architecture Appropriateness, 3. Framework Idioms, 4. Training Stability, 5. Pedagogical Clarity, Architecture & Implementation Patterns, Chain-of-Thought Decision Framework, Common Patterns & Anti-Patterns (+21 more)
 
-### Community 493 - "ucbadmit.py"
-Cohesion: 0.60
-Nodes (5): glmm(), main(), print_results(), Example: Generalized Linear Mixed Models…, run_inference()
+### Community 14 - "Python Pro"
+Cohesion: 0.07
+Nodes (29): 1. Type Safety, 2. Modern Practices, 3. Concurrency Safety, 4. Robustness, 5. Performance, Chain-of-Thought Decision Framework, Common Patterns & Anti-Patterns, Constitutional AI Principles (+21 more)
 
-### Community 494 - "funnel_log_prob_centered"
-Cohesion: 0.50
-Nodes (4): funnel_log_prob_centered(), funnel_log_prob_noncentered(), Centered parameterization - has funnel geometry., Non-centered parameterization - no funnel.
+### Community 15 - "Variational_Inference_Guide"
+Cohesion: 0.07
+Nodes (29): 1. Compare to MCMC (Gold Standard), 2. Posterior Predictive Checks, 3. Check ELBO on Held-Out Data, Adam (Default), Advanced: Amortized Inference, AutoDelta (Point Estimate / MAP), AutoLowRankMultivariateNormal (Low-Rank + Diagonal), AutoMultivariateNormal (Correlated Gaussian) (+21 more)
 
-### Community 495 - "Core Skills"
-Cohesion: 0.18
-Nodes (11): Checklist, Core Skills, [Deep Learning Experimentation](../deep-learning-experimentation/SKILL.md), Deep Learning Mastery, Expert Agents, [Model Optimization](../model-optimization-deployment/SKILL.md), [Neural Architecture Patterns](../neural-architecture-patterns/SKILL.md), [Neural Network Mathematics](../neural-network-mathematics/SKILL.md) (+3 more)
-
-### Community 497 - "JAX DiffEq Pro: The Differentiable Physicist"
-Cohesion: 0.25
-Nodes (7): Additional Resources, Checklist, Example Files, Expert Agent, JAX DiffEq Pro: The Differentiable Physicist, Reference Files, Skills Matrix: Junior vs Expert
-
-### Community 500 - "Modern SciML Components"
-Cohesion: 0.67
-Nodes (3): Modern SciML Components, UncertaintyQuantification.jl, Universal Differential Equations (UDEs)
-
-### Community 508 - "APS Rheo-XPCS capability baseline (8-ID-I)"
-Cohesion: 0.18
-Nodes (10): APS Rheo-XPCS capability baseline (8-ID-I), Current baseline (as of [date to be updated]), Flux and detection, How to use this file, Limitations and known issues, Recent beamtime records, Rheology integration, Spatial / coherence (+2 more)
-
-### Community 510 - "Statistical Analysis Fundamentals"
-Cohesion: 0.33
-Nodes (5): Best Practices, Checklist, Common Pitfalls, Expert Agent, Statistical Analysis Fundamentals
-
-### Community 511 - "Training Diagnostics"
-Cohesion: 0.33
-Nodes (6): Checklist, Diagnostics, Expert Agent, Julia Equivalent, Quick Reference, Training Diagnostics
-
-### Community 515 - "Risk register"
-Cohesion: 0.25
-Nodes (7): Format, Probability and impact scale, Risk register, Update discipline, What belongs here, What does not belong here, Why the early-signal column is critical
-
-### Community 517 - "Scientific Test Generation"
-Cohesion: 0.33
-Nodes (5): Best Practices, Modes, Process, Scientific Test Generation, Test Organization
-
-### Community 520 - "Research Paper Implementation"
-Cohesion: 0.25
-Nodes (7): Best Practices, Checklist, Common Pitfalls, Expert Agent, Related skills, Research Paper Implementation, research-paper-implementation skill (reproduce phase)
-
-### Community 524 - "train_step"
-Cohesion: 0.29
-Nodes (7): NamedTuple, Immutable training state - all state is explicit., Pure training step - no side effects, all state explicit., train_step(), TrainState, Full SPMD training loop with proper sharding., spmd_training_example()
-
-### Community 525 - "research-suite/hooks/post_tool_use.py"
-Cohesion: 0.36
-Nodes (9): check_review_file(), find_recent_docx(), main(), missing_sections(), Path, PostToolUse hook for research-suite Write and Bash operations. Real…, Returns the docx body text. Raises ImportError if python-docx isn't installed,…, Bash-triggered fallback: newest reviews/*.docx modified within the last… (+1 more)
-
-### Community 526 - "Project log"
-Cohesion: 0.40
-Nodes (5): Format, Project log, Retention, What not to log, What to log
-
-### Community 527 - "Integrity Checks"
-Cohesion: 0.25
-Nodes (7): Authorship concerns, Data and image integrity, Dual submission and duplicate publication, Ethics approvals and disclosures, Integrity Checks, Plagiarism and self-plagiarism, Selective reporting and p-hacking
-
-### Community 529 - "Memory Optimization Stack (Remat/BF16/Sharding)"
-Cohesion: 0.67
-Nodes (3): Memory Optimization Table, Memory Optimization Stack (Remat/BF16/Sharding), Performance Optimization Checklist
-
-### Community 536 - "growth_curves.py"
-Cohesion: 0.22
-Nodes (7): exponential_phase(), gompertz_model(), logistic_growth(), Bacterial Growth Curves: Logistic Growth Model…, Logistic growth model (Verhulst equation). N(t) = K / (1 + ((K - N0)/N0) *…, Modified Gompertz model for bacterial growth with lag phase. N(t) = A *…, Exponential growth (no lag, no saturation). N(t) = N0 * exp(μ*t) Parameters…
-
-### Community 537 - "materials_characterization.py"
-Cohesion: 0.22
-Nodes (7): linear_elastic(), power_law_hardening(), ramberg_osgood(), Materials Characterization: Stress-Strain Curve Analysis…, Linear elastic stress-strain relationship (Hooke's Law). σ = E * ε # noqa:…, Ramberg-Osgood model for elastoplastic behavior. ε = σ/E + (σ/K)^n Rearranged…, Power law strain hardening model (Hollomon equation). σ = K * ε^n # noqa:…
-
-### Community 541 - "Abstract template"
-Cohesion: 0.18
-Nodes (10): Abstract template, Claim-type variants, Length variants, Long (300-400 words), Self-check, Short (100-150 words), Standard (200-250 words), Structure (+2 more)
-
-### Community 549 - "Cloud ML Platforms"
-Cohesion: 0.67
-Nodes (3): AWS SageMaker, Cloud ML Platforms, GCP Vertex AI
-
-### Community 556 - "jax-computing/SKILL.md"
-Cohesion: 0.33
-Nodes (3): Expert Agent, JAX Mastery, JAX Physics Applications Skill
-
-### Community 558 - "Model Optimization & Deployment"
-Cohesion: 0.29
-Nodes (6): Best Practices, Common Pitfalls, Deployment Checklist, Expert Agent, Model Optimization & Deployment, Quantization
-
-### Community 559 - "Multiscale Modeling"
-Cohesion: 0.40
-Nodes (4): Checklist, Expert Agent, Multiscale Modeling, Parallelization Strategy
-
-### Community 565 - "Training Diagnostics Scripts"
-Cohesion: 0.14
-Nodes (13): 1. diagnose_gradients.py, 2. analyze_activations.py, 3. compare_training_runs.py, Available Scripts, Contributing, Expected Data Formats, For activation analysis:, For gradient analysis: (+5 more)
-
-### Community 567 - "01_spark.md"
-Cohesion: 0.18
-Nodes (10): 01_spark.md, Alternative 1: [framing name], Alternative 2: [framing name], Articulation, Components, Framing, Metadata, Open questions flagged for Stage 2 (+2 more)
-
-### Community 570 - "Core Components"
-Cohesion: 0.67
-Nodes (3): Core Components, Embedding Models, Vector Databases
-
-### Community 576 - "Modern SciML Stack"
-Cohesion: 0.14
-Nodes (14): Basic UDE Example: Lotka-Volterra with Unknown Interaction, Checklist, Expert Agent, Lux.jl vs Flux.jl, Modern SciML Stack, Polynomial Chaos Expansion, Routing Decision Tree, Sobol Sensitivity Indices (+6 more)
-
-### Community 579 - "Code Review Excellence"
-Cohesion: 0.22
-Nodes (8): 1. The 6-Step Review Process, 2. Review Checklists, 3. Communication Standards, 4. Code Review Checklist, Code Review Excellence, Expert Agent, Performance, Security
-
-### Community 580 - "Core Skills"
-Cohesion: 0.17
-Nodes (12): [Auth Implementation Patterns](../auth-implementation-patterns/SKILL.md), [Caching Patterns](../caching-patterns/SKILL.md), Checklist, Core Skills, Data and Security, [Database Patterns](../database-patterns/SKILL.md), Expert Agent, Routing Decision Tree (+4 more)
-
-### Community 581 - "Git & Workflow Management"
-Cohesion: 0.29
-Nodes (7): 1. History Management, 2. Advanced Discovery & Recovery, 3. Pull Request Best Practices, 4. Git Performance & Scale, Checklist, Expert Agent, Git & Workflow Management
-
-### Community 582 - "Example Package"
-Cohesion: 0.17
-Nodes (10): [0.1.0] - 2026-01-20, Added, Changelog, Contributing, Example Package, Features, Installation, License (+2 more)
-
-### Community 587 - "Pre-registered success metrics"
-Cohesion: 0.33
-Nodes (5): For each claim component, Pre-registered success metrics, What counts as a valid pre-registration, What pre-registration does not cover, Why the inconclusive region matters
-
-### Community 588 - "formalism_code_reconcile.py"
-Cohesion: 0.33
-Nodes (8): extract_latex_symbols(), extract_python_symbols(), main(), normalize_name(), Path, Strip LaTeX backslashes and braces for comparison., formalism_code_reconcile.py Compare symbols used in a LaTeX formalism (Stage…, reconcile()
-
-### Community 591 - "Heilmeier catechism"
-Cohesion: 0.20
-Nodes (9): 1. What are you trying to do?, 2. How is it done today, and what are the limits of current practice?, 3. What is new in your approach and why do you think it will be successful?, 4. Who cares? If you succeed, what difference will it make?, 5. What are the risks?, 6. How much will it cost? How long will it take?, 7. What are the midterm and final exams to check for success?, Heilmeier catechism (+1 more)
-
-### Community 597 - "damped_oscillation.py"
-Cohesion: 0.25
-Nodes (7): damped_oscillator(), damping_time(), quality_factor(), Damped Oscillation: Pendulum Damping Analysis…, Damped harmonic oscillator model. x(t) = A0 * exp(-γt) * cos(ωt + φ) Parameters…, Calculate quality factor Q. Q = ω / (2γ) Higher Q means less damping (more…, Calculate damping time constant (1/e decay time). τ = 1/γ Parameters ----------…
-
-### Community 598 - "radioactive_decay.py"
-Cohesion: 0.29
-Nodes (7): half_life_from_lambda(), propagate_uncertainty(), radioactive_decay(), Radioactive Decay: Half-Life Calculation…, Radioactive decay model: N(t) = N0 * exp(-lambda * t) Parameters ---------- t :…, Calculate half-life from decay constant. t_half = ln(2) / lambda Parameters…, Propagate uncertainty from decay constant to half-life. Using error…
-
-### Community 601 - "Dimensional analysis worksheet"
-Cohesion: 0.20
-Nodes (9): Dimensional analysis worksheet, Step 1: List all variables, Step 2: Count variables and dimensions, Step 3: Choose repeating variables, Step 4: Form the dimensionless groups, Step 5: Interpret and name each group, Step 6: Check against the derivation, When things go wrong (+1 more)
-
-### Community 602 - "dev-hub/SKILL.md"
-Cohesion: 0.20
-Nodes (6): Checklist, Dev Suite (dev-hub), Expert Agents, Hub Skills, Routing Decision Tree, Routing Table
-
-### Community 603 - "Core Skills"
-Cohesion: 0.18
-Nodes (11): [Airflow Scientific Workflows](../airflow-scientific-workflows/SKILL.md), Checklist, Core Skills, [Debugging Toolkit](../debugging-toolkit/SKILL.md), Dev Workflows, [Documentation Standards](../documentation-standards/SKILL.md), Expert Agent, [Git Workflow](../git-workflow/SKILL.md) (+3 more)
-
-### Community 605 - "Multimodal sequencing"
-Cohesion: 0.22
-Nodes (8): Decision points between modalities, For design-oriented plans, For simulation-heavy plans, Multimodal sequencing, Parallelism vs. sequencing, The ordering principle, Time budget, Writing the sequencing in the plan
-
-### Community 606 - "Instrument capability map"
-Cohesion: 0.22
-Nodes (8): 3× threshold: when to override, Example for Rheo-XPCS at APS 8-ID-I (illustrative), Format, Instrument capability map, Mitigation patterns, Required capability dimensions, Risk levels, What to do if most dimensions are MEDIUM or HIGH
-
-### Community 608 - "Julia-first code architecture rules"
-Cohesion: 0.22
-Nodes (8): Bridging to the Python validation harness, Core rules, Julia-first code architecture rules, Package layout, Reconciling code against the formalism, Testing, Which environment, Why these rules
-
-### Community 615 - "Harmonic Response & Time-Temperature Superposition"
-Cohesion: 0.22
-Nodes (8): Delegation, Expert Agent, Harmonic Response, Harmonic Response & Time-Temperature Superposition, Time-Temperature Superposition (TTS), Validity Check, WLF Equation, Workflow
-
-### Community 617 - "Julia Performance Tuning"
-Cohesion: 0.40
-Nodes (4): Checklist, Expert Agent, Julia Performance Tuning, Profiling Tools
-
-### Community 619 - "1. JIT Compilation (`jax.jit`)"
-Cohesion: 0.67
-Nodes (3): 1. JIT Compilation (`jax.jit`), Basic Usage, Purpose
-
-### Community 627 - "Backend Patterns"
-Cohesion: 0.22
-Nodes (9): [API Design Principles](../api-design-principles/SKILL.md), Backend Patterns, Checklist, Core Skills, [Error Handling Patterns](../error-handling-patterns/SKILL.md), Expert Agent, [Message Queue Patterns](../message-queue-patterns/SKILL.md), Routing Decision Tree (+1 more)
-
-### Community 636 - "Core Skills"
-Cohesion: 0.18
-Nodes (11): Checklist, [Code Review](../code-review/SKILL.md), [Comprehensive Validation](../comprehensive-validation/SKILL.md), Core Skills, [E2E Testing Patterns](../e2e-testing-patterns/SKILL.md), Expert Agent, Routing Decision Tree, Routing Table (+3 more)
-
-### Community 637 - "4. Automatic Differentiation (`jax.grad`)"
-Cohesion: 0.67
-Nodes (3): 4. Automatic Differentiation (`jax.grad`), Basic Usage, Purpose
-
-### Community 638 - "research-practice skill (meta-orchestrator)"
-Cohesion: 0.14
-Nodes (13): evidence-synthesis skill (synthesize phase), research-expert agent, research-methodology skill (design phase), research-practice skill (meta-orchestrator), research-quality-assessment skill (evaluate phase), scientific-communication skill (write-up phase), scientific-review skill (stand-alone), scientific-visualization skill (science-suite, cross-suite) (+5 more)
-
-### Community 642 - "Continuum Mechanics Engineer - Materials & FEM Specialist"
+### Community 16 - "Iterativefixengine"
 Cohesion: 0.10
-Nodes (19): Chain-of-Thought Decision Framework, Continuum Mechanics Engineer - Materials & FEM Specialist, Convergence Checklist, Core Competencies, Core Responsibilities, Delegation Table, Domain 1: Finite Element Modeling (FEM/FEA), Domain 2: Constitutive Equations (+11 more)
+Nodes (15): IterativeFixEngine, Main iterative fix loop. Returns True if all errors resolved, False otherwise., Categorize errors and assign fix strategies., Map error type to category., Calculate confidence score for fix., Calculate priority score (higher = more important)., Sort fixes by priority (high confidence, blocking errors first)., Split errors into auto-applicable fixes and ones needing a human. Runs before… (+7 more)
 
-### Community 643 - "04_bayesian_inference.py"
-Cohesion: 0.32
-Nodes (7): bayesian_linear_model(), example_bayesian_inference(), generate_synthetic_data(), Workflow Pattern 4: Bayesian Inference with NumPyro Demonstrates NumPyro…, Generate synthetic regression data, Bayesian linear regression model, Complete Bayesian inference workflow with NumPyro
+### Community 17 - "Ml Expert"
+Cohesion: 0.07
+Nodes (28): 1. Data Rigor, 2. Model Appropriateness, 3. Training Stability, 4. Evaluation, 5. Reproducibility, Chain-of-Thought Decision Framework, Common Patterns & Anti-Patterns, Constitutional AI Principles (+20 more)
 
-### Community 649 - "03_custom_retry_settings.py"
-Cohesion: 0.38
-Nodes (6): inject_noise_into_data(), main(), noisy_exponential(), Example 3: Custom Retry Settings for Noisy Data This example demonstrates how…, Exponential model with potential numerical issues, Inject NaN values into data to simulate noisy sensors
-
-### Community 650 - "Core Skills"
-Cohesion: 0.15
-Nodes (13): [Active Matter](../active-matter/SKILL.md), Checklist, Core Skills, [Correlation Analysis](../correlation-analysis/SKILL.md), [Correlation Computational Methods](../correlation-computational-methods/SKILL.md), [Correlation Experimental Data](../correlation-experimental-data/SKILL.md), [Correlation Math Foundations](../correlation-math-foundations/SKILL.md), [Correlation Physical Systems](../correlation-physical-systems/SKILL.md) (+5 more)
-
-### Community 656 - "Solutions"
-Cohesion: 0.22
-Nodes (9): 1. Gradient Clipping (Essential!), 2. Lower Learning Rate, 3. Weight Regularization, 4. Careful Initialization, Exploding Gradients, Root Causes, Solutions, Symptoms (+1 more)
-
-### Community 659 - "Workflow"
-Cohesion: 0.17
-Nodes (11): 1. Load inputs and choose the language, 2. Build the minimal implementation, 3. Run the three validation passes, 4. Emit the predicted observable, 5. Reconcile code against formalism, 6. Write `06_prototype.md`, lint, hand off, Failure modes worth naming, numerical-prototype (+3 more)
-
-### Community 660 - "Writing constraints"
-Cohesion: 0.25
-Nodes (7): Acronyms and defined terms, Banned vocabulary, Character-with-space limits, Punctuation, Quantified over qualitative, Voice, Writing constraints
-
-### Community 661 - "Proposal assembly"
-Cohesion: 0.25
-Nodes (7): Exit gate, Line-of-sight check, Optional: solo time-boxing, Proposal assembly, Specific Aims, Value-to-risk calibration, Write in reverse order
-
-### Community 662 - "Deep Learning Hub"
-Cohesion: 0.40
-Nodes (5): Checklist, Deep Learning Hub, Expert Agent, Routing Decision Tree, Skill Selection Table
-
-### Community 663 - "Research Suite (research-hub)"
-Cohesion: 0.22
-Nodes (7): Checklist, Expert Agents, Hub Skills, Research Suite (research-hub), Routing Decision Tree, Routing Table, Scientific Manuscript Review
-
-### Community 664 - "Statistical Physicist"
+### Community 18 - "Statistical Physicist"
 Cohesion: 0.07
 Nodes (28): 1. Computational Rigor, 2. Physical Validity, 3. Thermodynamic Consistency, 4. Statistical Robustness, 5. Mathematical Precision, 6. Theoretical Consistency, 7. Experimental Connection, AI-Enhanced Methods (+20 more)
 
-### Community 666 - "Glass & Collective Dynamics"
-Cohesion: 0.25
-Nodes (7): Cooperative & Collective Dynamics, Delegation, Expert Agent, Glass & Collective Dynamics, Glass & Jamming, Percolation Theory, Routing Within This Skill
+### Community 19 - "Compiler Patterns Skill"
+Cohesion: 0.07
+Nodes (24): Compiler Patterns Skill, Checklist, Expert Agent, PackageCompiler.jl Patterns, Troubleshooting, Best Practices, Checklist, Expert Agent (+16 more)
 
-### Community 675 - "NeuralPDE.jl — PINNs (deterministic)"
-Cohesion: 0.40
-Nodes (5): Checklist, Composition with neighboring skills, Expert Agent, NeuralPDE.jl — PINNs (deterministic), Routing Decision Tree
+### Community 20 - "Research_Assessment_Template"
+Cohesion: 0.07
+Nodes (27): 1. Methodology Soundness: __/10, 2. Experimental Design: __/10, 3. Data Quality: __/10, 4. Statistical Rigor: __/10, 5. Result Validity: __/10, 6. Publication Readiness: __/10, Ablation Studies: __/10, Conclusion (+19 more)
 
-### Community 676 - "/benchmark — Scientific Code Benchmarking"
-Cohesion: 0.33
-Nodes (5): Backend Routing, /benchmark — Scientific Code Benchmarking, Token Strategy, Usage, What This Does
+### Community 21 - "Simulation Expert"
+Cohesion: 0.07
+Nodes (27): 1. Physics Correctness, 2. Numerical Stability, 3. Performance, 4. Validation, 5. Reproducibility, Chain-of-Thought Decision Framework, Common Patterns & Anti-Patterns, Constitutional AI Principles (+19 more)
 
-### Community 677 - "/md-sim — Molecular Dynamics Simulation"
-Cohesion: 0.33
-Nodes (5): Engine Routing, /md-sim — Molecular Dynamics Simulation, Token Strategy, Usage, What This Does
+### Community 22 - "Skill)"
+Cohesion: 0.07
+Nodes (28): [Catalyst Reactions](../catalyst-reactions/SKILL.md), Checklist, [CI/CD Patterns](../ci-cd-patterns/SKILL.md), [Compiler Patterns](../compiler-patterns/SKILL.md), [Core Julia Patterns](../core-julia-patterns/SKILL.md), Core Skills, [Differential Equations](../differential-equations/SKILL.md), Expert Agent (+20 more)
 
-### Community 683 - "stochastic_volatility.py"
-Cohesion: 0.60
-Nodes (4): main(), model(), print_results(), Example: Stochastic Volatility ============================== Generative model:…
+### Community 23 - "Gaussian_Shells"
+Cohesion: 0.13
+Nodes (20): GaussianShell, main(), model(), Example: Nested Sampling for Gaussian Shells…, run_inference(), main(), model(), Example: Hamiltonian Monte Carlo with Energy Conserving Subsampling… (+12 more)
 
-### Community 697 - "Transient Networks & Covalent Adaptable Networks (CAN)"
-Cohesion: 0.25
-Nodes (7): Delegation, Diagnostic Checklist, Expert Agent, Green-Tobolsky Model (Bond-Exchange Kinetics), Sticky Rouse Model (Physical Networks), Transient Networks & Covalent Adaptable Networks (CAN), Two Classes of Transient Network
+### Community 24 - "Basemodel"
+Cohesion: 0.13
+Nodes (26): BaseModel, delete, exception_handler, get, patch, Config, create_user(), delete_user() (+18 more)
 
-### Community 712 - "Python Patterns"
-Cohesion: 0.50
-Nodes (4): Context Manager Cleanup, Custom Exception Hierarchy, Python Patterns, Retry with Backoff
+### Community 25 - "1. Platform & Stack"
+Cohesion: 0.08
+Nodes (26): 1. Platform & Stack, 2. Performance, 3. Accessibility, 4. Offline/Resilience, 5. Code Quality, App Developer, App Development Checklist, Chain-of-Thought Decision Framework (+18 more)
 
-### Community 713 - "Core Skills"
+### Community 26 - "1. Speed & Feedback"
+Cohesion: 0.08
+Nodes (26): 1. Speed & Feedback, 2. Security, 3. Reliability, 4. Maintainability, 5. Compliance, Automation Checklist, Automation Engineer, Chain-of-Thought Decision Framework (+18 more)
+
+### Community 27 - "Erroranalysis"
+Cohesion: 0.14
+Nodes (14): ErrorAnalysis, FixResult, Execute fix strategy., Fix dependency-related errors., Add --legacy-peer-deps so npm stops enforcing the peer-dep graph. This makes…, Report an npm 404 for manual review — never uninstall automatically. A 404 in a…, Fix Python import errors., Fix build-related errors. (+6 more)
+
+### Community 28 - "Pure Functional Patterns"
+Cohesion: 0.08
+Nodes (25): apply_weight_decay(), augment_batch(), clip_gradients(), flatten_params(), init_params(), masked_update(), parallel_random_init(), Pure Functional Patterns for JAX Demonstrates JAX-first patterns for state… (+17 more)
+
+### Community 29 - "Compare_Training_Runs"
+Cohesion: 0.10
+Nodes (24): compare_configs(), compare_metrics(), extract_config(), extract_metrics(), _find_convergence_epoch(), load_training_log(), print_comparison_report(), _print_config_comparison() (+16 more)
+
+### Community 30 - "Simulation Expert Agent"
+Cohesion: 0.10
+Nodes (21): Simulation Expert Agent, Advanced Simulations Skill, Control Theory Skill, Control Theory, Expert Agent, Checklist, Expert Agent, MD Simulation Setup (+13 more)
+
+### Community 31 - "1. Requirements"
+Cohesion: 0.09
+Nodes (23): 1. Requirements, 2. Scalability, 3. Resilience, 4. Data Consistency, 5. Security, Architecture Checklist, Chain-of-Thought Decision Framework, Common Patterns & Anti-Patterns (+15 more)
+
+### Community 32 - "Eng Feature Dev"
+Cohesion: 0.09
+Nodes (22): Actions, Options, Phase 1: Discovery & Design, Phase 2: Implementation, Phase 3: Testing & QA, Phase 4: Deployment & Operations, Rollback Procedures, Scientific Feature Development (+14 more)
+
+### Community 33 - "Api Design Checklist"
+Cohesion: 0.09
+Nodes (22): API Design Checklist, Authentication & Authorization, Documentation, Documentation, Error Handling, Filtering & Sorting, GraphQL-Specific Checks, HTTP Methods (+14 more)
+
+### Community 34 - "Blackjax Custom Sampler"
+Cohesion: 0.11
+Nodes (22): create_mixed_sampler(), custom_nuts_sampler(), demo(), dual_averaging_step_size(), MixedSamplerState, parallel_tempering_step(), Any, NamedTuple (+14 more)
+
+### Community 35 - "Cfd_Taylor_Green"
+Cohesion: 0.13
+Nodes (22): advect_scalar(), compute_divergence_max(), compute_enstrophy(), compute_kinetic_energy(), compute_vorticity(), laplacian(), main(), navier_stokes_step() (+14 more)
+
+### Community 36 - "Pinn_Heat_Equation"
 Cohesion: 0.12
-Nodes (16): [Active Matter](../active-matter/SKILL.md), [Advanced Simulations](../advanced-simulations/SKILL.md), Checklist, Core Skills, Expert Agent, [Extreme Value Statistics](../extreme-value-statistics/SKILL.md), [Glass & Collective Dynamics](../glass-and-collective-dynamics/SKILL.md), [Multiscale Modeling](../multiscale-modeling/SKILL.md) (+8 more)
+Nodes (20): analytical_solution(), compute_pde_residual(), count_parameters(), HeatPINN, main(), pinn_loss(), Rngs, Complete Physics-Informed Neural Network for Heat Equation This script… (+12 more)
 
-### Community 719 - "Core Skills"
+### Community 37 - "Skill"
+Cohesion: 0.10
+Nodes (20): 01_spark.md artifact, 1. Hear the rough version, 2. Targeted elicitation (only on gaps), 3. Produce three candidate framings, 4. Elevator test, 5. Self-check against the three components, 6. Write `01_spark.md` and hand off, Failure modes worth naming (+12 more)
+
+### Community 38 - "Debug_Jax"
+Cohesion: 0.12
+Nodes (20): check_device_placement(), check_gradient_flow(), check_nan_inf(), debug_jit(), disable_nan_checking(), enable_nan_checking(), good_fn(), monitor_training_step() (+12 more)
+
+### Community 39 - "Adjoint Methods"
+Cohesion: 0.12
+Nodes (19): backsolve_adjoint_example(), checkpoint_adjoint_example(), checkpoint_memory_tradeoff(), demo(), direct_adjoint_example(), get_adjoint_method(), implicit_adjoint_example(), NeuralODE (+11 more)
+
+### Community 40 - "Vqe_Hydrogen"
+Cohesion: 0.14
+Nodes (21): apply_cnot(), apply_pauli_operator(), apply_pauli_x(), apply_pauli_y(), apply_pauli_z(), apply_ry(), apply_rz(), compute_energy() (+13 more)
+
+### Community 41 - "Mcmc_Diagnostics"
+Cohesion: 0.09
+Nodes (21): Advanced Diagnostics, Autocorrelation Plots, Common Failure Modes, Divergences, Effective Sample Size (ESS), "Initial particles out of bounds", "Maximum tree depth reached", MCMC Convergence Diagnostics (+13 more)
+
+### Community 42 - "Gp"
+Cohesion: 0.19
+Nodes (20): get_data(), kernel(), main(), model(), predict(), Example: Gaussian Process ========================= In this example we show how…, run_inference(), analyze_dimension() (+12 more)
+
+### Community 43 - "Best Practices"
+Cohesion: 0.10
+Nodes (21): Best Practices, Checklist, CI/CD, Code Sharing Patterns, Common Commands, Common Pitfalls, Configuration, ESLint (+13 more)
+
+### Community 44 - "Solver Selection"
+Cohesion: 0.12
+Nodes (20): compare_solvers(), demo(), detect_stiffness(), explicit_solver_example(), get_solver(), implicit_solver_example(), ndarray, Solver Selection Patterns for Diffrax Demonstrates choosing between explicit… (+12 more)
+
+### Community 45 - "Continuum Handshake)"
+Cohesion: 0.10
+Nodes (21): Atomistic-Continuum Multiscale Coupling (MD/Continuum handshake), Coupling Stability Criteria (Explicit vs Implicit), Data Assimilation Coupling (4D-Var), Multi-Physics Coupling Patterns, Electromagnetics-Thermal Coupling (Joule heating), Fluid-Structure Interaction (FSI), Particle-Fluid Coupling (DEM-CFD), PINN-Based Multi-Physics (shared network) (+13 more)
+
+### Community 46 - "Dynamax"
+Cohesion: 0.10
+Nodes (18): Dynamax, Best Practices, Checklist, Expert Agents, Guide Selection, NumPyro Core Mastery, Variational Inference, Point Processes (+10 more)
+
+### Community 47 - "1. Quality Impact"
+Cohesion: 0.10
+Nodes (20): 1. Quality Impact, 2. Security Posture, 3. Test Coverage, 4. Performance, 5. Standards, Code Quality Checklist, Common Patterns & Anti-Patterns, Constitutional AI Principles (+12 more)
+
+### Community 48 - "Chain Of Thought Decision Fram"
+Cohesion: 0.10
+Nodes (20): Chain-of-Thought Decision Framework, Common Patterns & Anti-Patterns, Constitutional AI Principles, Core Responsibilities, Delegation Strategy, Examples, PostgreSQL Optimization, Principle 1: Reliability First (Target: 99.9%+) (+12 more)
+
+### Community 49 - "Action: Generate"
+Cohesion: 0.10
+Nodes (20): Action: Generate, Action: Sync, Action: Update, Actions, Automation (Comprehensive Mode), Documentation Management, Flags, Flags (+12 more)
+
+### Community 50 - "Approval Gates"
+Cohesion: 0.10
+Nodes (20): Approval Gates, Automated, Azure Multi-Approver, Best Practices, Blue-Green, Canary (Argo Rollouts), Checklist, Common Pitfalls (+12 more)
+
+### Community 51 - "Best Practices"
+Cohesion: 0.10
+Nodes (20): Best Practices, Checklist, Context Propagation, Core Concepts, Distributed Tracing, Docker Compose, Expert Agent, Finding Errors (+12 more)
+
+### Community 52 - "Continuum Mechanics Engineer"
+Cohesion: 0.10
+Nodes (19): Chain-of-Thought Decision Framework, Continuum Mechanics Engineer - Materials & FEM Specialist, Convergence Checklist, Core Competencies, Core Responsibilities, Delegation Table, Domain 1: Finite Element Modeling (FEM/FEA), Domain 2: Constitutive Equations (+11 more)
+
+### Community 53 - "1. Molecular Dynamics Workflow"
+Cohesion: 0.10
+Nodes (20): 1. Molecular Dynamics Workflows, 2. Multiscale Modeling & Coarse-Graining, 3. Trajectory Generation & Sampling, 4. Rare-Event Samplers (Python reference stack), Advanced Simulations, Agent-based modeling (ABM) with cloning / branching populations, Checklist, Core Skills (+12 more)
+
+### Community 54 - "3D Diffusion Model"
+Cohesion: 0.10
+Nodes (20): 3D Diffusion Model, Best Practices, Checklist, Compressed Exponential, Core Equations, DLS Analysis, Experimental Data Interpretation, Expert Agent (+12 more)
+
+### Community 55 - "Sde Brownian"
+Cohesion: 0.11
+Nodes (19): basic_sde_example(), colloidal_dynamics(), ensemble_sde(), langevin_in_potential(), multi_particle_brownian(), production_sde_config(), Stochastic Differential Equations with Diffrax Demonstrates…, Show that same seed gives same result. (+11 more)
+
+### Community 56 - "Result_Enhancements_Demo"
+Cohesion: 0.14
+Nodes (19): example1_statistical_properties(), example2_backward_compatibility(), example3_confidence_intervals(), example4_prediction_intervals(), example5_visualization(), example6_summary_report(), example7_model_comparison(), example8_residuals_predictions() (+11 more)
+
+### Community 57 - "Funnel"
 Cohesion: 0.15
-Nodes (13): Architecture and Infrastructure, [Architecture Patterns](../architecture-patterns/SKILL.md), Checklist, [Cloud Provider Patterns](../cloud-provider-patterns/SKILL.md), [Containerization Patterns](../containerization-patterns/SKILL.md), Core Skills, Expert Agent, [Microservices Patterns](../microservices-patterns/SKILL.md) (+5 more)
+Nodes (17): main(), model(), Example: Neal's Funnel ====================== This example, which is adapted…, run_inference(), create_lookup(), main(), model(), print_model_shape() (+9 more)
 
-### Community 723 - "Claim schema"
-Cohesion: 0.29
-Nodes (6): Claim schema, Design, Measurement, Mechanism, Prediction, What every claim must satisfy
+### Community 58 - "Compact"
+Cohesion: 0.16
+Nodes (12): compact, FlaxDecoder, FlaxEncoder, guide(), HaikuDecoder, HaikuEncoder, load_data(), main() (+4 more)
 
-### Community 724 - "Validation report"
-Cohesion: 0.29
-Nodes (6): Pass 1: Analytic-limit recovery, Pass 2: Synthetic benchmark, Pass 3: Convergence study, Summary, Timing and resources, Validation report
+### Community 59 - "Chain Of Thought Decision Fram"
+Cohesion: 0.11
+Nodes (19): Chain-of-Thought Decision Framework, Common Patterns & Anti-Patterns, Constitutional AI Principles, Core Responsibilities, Delegation Strategy, Documentation Checklist, Documentation Expert, Documentation Template (Markdown) (+11 more)
 
-### Community 725 - "Three-layer search strategy"
-Cohesion: 0.29
-Nodes (6): Layer 1: Foundational, Layer 2: Recent (trailing 3 years), Layer 3: Adjacent, Query hygiene, Three-layer search strategy, When the literature is genuinely thin
+### Community 60 - "Auth Middleware"
+Cohesion: 0.11
+Nodes (19): Auth Middleware, Authentication & Authorization Patterns, Authorization Patterns, Best Practices, Checklist, Common Pitfalls, Expert Agent, JWT Implementation (+11 more)
 
-### Community 728 - "Approval Gates"
-Cohesion: 0.50
-Nodes (4): Approval Gates, Azure Multi-Approver, GitHub Actions Environment, GitLab Delayed Start
+### Community 61 - "Api Monitoring (Red)"
+Cohesion: 0.11
+Nodes (19): API Monitoring (RED), Best Practices, Checklist, Common Dashboards, Common Pitfalls, Dashboard Alerts, Dashboard Design Methods, Expert Agent (+11 more)
 
-### Community 729 - "Premortem failure narrative"
-Cohesion: 0.29
-Nodes (6): Format, Premortem failure narrative, The discipline, What this narrative exposes (example), What this narrative suggests as early signals, Worked example (compressed)
+### Community 62 - "Automated (Aws Lambda)"
+Cohesion: 0.11
+Nodes (19): Automated (AWS Lambda), Best Practices, Checklist, CI Pipeline, CLI Usage, Common Pitfalls, Expert Agent, GitHub Actions Integration (+11 more)
 
-### Community 731 - "Hostile self-audit"
-Cohesion: 0.29
-Nodes (6): 1. The $100k Kill Switch, 2. The Artifact Check, 3. The Bottleneck Route, Exit gate, Hostile self-audit, Worked example (rheology/XPCS)
+### Community 63 - "Bib_To_Steelman"
+Cohesion: 0.15
+Nodes (17): first_author_surname(), main(), parse_bibfile(), parse_entry(), bib_to_steelman.py Convert entries in a .bib file into steelman-note stubs, one…, Return a dict of BibTeX fields., render_stub(), first_author_surname() (+9 more)
 
-### Community 732 - "dimensional_audit.py"
-Cohesion: 0.38
-Nodes (6): extract_equations(), format_annotation(), main(), Path, dimensional_audit.py Extracts labeled equations from a LaTeX file and reports…, Return a list of dicts with env, label, body, line_start.
+### Community 64 - "04_Theory Artifact (Prose Comp"
+Cohesion: 0.11
+Nodes (19): 04_theory.md artifact (prose companion), 05_formalism.tex artifact (compilable formalism), 1. Name the governing framework and the assumptions, 2. Load and follow the stepwise derivation protocol, 3. Derive the core equations, 4. Known-limit checks, 5. Dimensional analysis, 6. Gray-box boundary (SciML only) (+11 more)
 
-### Community 734 - "create_train_state"
-Cohesion: 0.33
-Nodes (6): create_batch_iterator(), create_train_state(), functional_training_loop(), Create shuffled batch iterator as pure function. Returns a function that takes…, Complete training loop with no side effects., Create initial training state.
+### Community 65 - "Pure Log Prob Models"
+Cohesion: 0.15
+Nodes (18): batched_log_prob(), demo_with_blackjax(), hierarchical_log_prob(), masked_log_prob(), mixture_log_prob(), ndarray, Pure Log-Prob Models for JAX Demonstrates how to write Bayesian models as pure…, Log-likelihood for a single observation. (+10 more)
 
-### Community 739 - "benchmark_comparison.py"
-Cohesion: 0.36
-Nodes (7): benchmark_comparison(), exponential_decay_jax(), exponential_decay_numpy(), Benchmark NLSQ vs SciPy curve_fit across different dataset sizes. Usage: python…, Exponential decay model (NumPy)., Exponential decay model (JAX)., Compare SciPy vs NLSQ across dataset sizes.
+### Community 66 - "Profile_Jax"
+Cohesion: 0.12
+Nodes (16): check_recompilation(), compare_implementations(), dynamic_fn(), jit_matmul(), memory_profile(), profile_decorator(), profile_function(), profile_gradient() (+8 more)
 
-### Community 740 - "dose_response.py"
-Cohesion: 0.33
-Nodes (5): four_parameter_logistic(), inhibition_model(), Dose-Response Curves: EC50 and IC50 Determination…, 4-parameter logistic (4PL) dose-response model. Response = Bottom + (Top -…, Inhibition dose-response model (3-parameter). Response = Top / (1 +…
+### Community 67 - "Checklist"
+Cohesion: 0.11
+Nodes (19): Checklist, Expert Agent, ML Deployment, Routing Decision Tree, Skill Selection Table, A/B Testing, Best Practices, Common Commands (+11 more)
 
-### Community 741 - "system_identification.py"
-Cohesion: 0.33
-Nodes (5): first_order_step_response(), System Identification: First-Order System Step Response…, First-order system step response with time delay. y(t) = K * (1 - exp(-(t -…, Second-order system step response (underdamped). For ζ < 1 (underdamped): y(t)…, second_order_step_response()
+### Community 68 - "Diagnose_Optimization"
+Cohesion: 0.15
+Nodes (18): _analyze_convergence(), _analyze_cost_function(), _analyze_gradient(), _analyze_jacobian(), _analyze_parameters(), _analyze_residuals(), diagnose_result(), _print_summary() (+10 more)
 
-### Community 742 - "horseshoe_regression.py"
-Cohesion: 0.48
-Nodes (6): get_data(), main(), model_bernoulli_likelihood(), model_normal_likelihood(), Example: Horseshoe Regression ============================= We demonstrate how…, run_inference()
+### Community 69 - "04_Interpreting_Diagnostics"
+Cohesion: 0.15
+Nodes (18): analyze_aggregate_statistics(), analyze_checkpoint_info(), analyze_failure_patterns(), analyze_recent_batches(), analyze_success_metrics(), export_diagnostics_json(), main(), polynomial_model() (+10 more)
 
-### Community 743 - "core.py"
-Cohesion: 0.29
-Nodes (5): greet(), Core functionality for the example package. This module provides basic greeting…, Generate a greeting message using the configured prefix. Args: name: The name…, Generate a greeting message. Args: name: The name to greet. Must be a non-empty…, Example Package - A modern Python package template. This package demonstrates…
+### Community 70 - "Stochastic_Volatility"
+Cohesion: 0.17
+Nodes (16): main(), model(), print_results(), Example: Stochastic Volatility ============================== Generative model:…, glmm(), main(), print_results(), Example: Generalized Linear Mixed Models… (+8 more)
 
-### Community 745 - "test_core.py"
-Cohesion: 0.25
-Nodes (7): fixture, parametrize, Tests for the core module., Test greet function with parametrized inputs., Fixture providing a sample greeter instance., sample_greeter(), test_greet_parametrized()
+### Community 71 - "Analyze_Activations"
+Cohesion: 0.12
+Nodes (15): ActivationHook, analyze_activation_statistics(), diagnose_activation_pathologies(), print_activation_report(), Any, Module, Tensor, Diagnose activation pathologies. Args: activation_stats: Dictionary mapping… (+7 more)
 
-### Community 746 - "TestGreeterFixture"
-Cohesion: 0.40
-Nodes (4): Test that fixture can be reused across tests., Tests demonstrating pytest fixture usage., Test using the greeter fixture., TestGreeterFixture
+### Community 72 - "Lux.Jl"
+Cohesion: 0.18
+Nodes (12): Lux.jl, Catalyst Reactions Skill, Neural PDE, Checklist, Expert Agent, Optimization.jl Patterns, SciML and DiffEq, Checklist (+4 more)
 
-### Community 747 - "Experimental Design Checklist"
-Cohesion: 0.29
-Nodes (6): Ablation Studies, Baseline Comparisons, Experimental Design Checklist, Parameter Space Coverage, Replication Strategy, Statistical Power Analysis
+### Community 73 - "Best Practices"
+Cohesion: 0.11
+Nodes (18): Best Practices, Checklist, Circuit Breaker, Common Pitfalls, Context Manager Cleanup, Custom Error Classes, Custom Exception Hierarchy, Error Aggregation (+10 more)
 
-### Community 748 - "research-spark-orchestrator"
-Cohesion: 0.33
-Nodes (6): research-spark-orchestrator, jax-pro, julia-pro, nonlinear-dynamics-expert, simulation-expert, statistical-physicist
+### Community 74 - "Knowledgebase"
+Cohesion: 0.13
+Nodes (10): KnowledgeBase, Path, Get base confidence for error type, ignoring under-sampled history., Get historical success rate, ignoring under-sampled history., A strategy is unproven until it has been tried MIN_SAMPLES times. Without this…, Record a fix attempt result, keyed by the error type it targeted. Keyed by the…, Load knowledge base from file., Save knowledge base to file. (+2 more)
 
-### Community 749 - "Methodology Evaluation Framework"
-Cohesion: 0.29
-Nodes (6): Control Adequacy (Score: __/10), Hypothesis Assessment (Score: __/10), Method Appropriateness (Score: __/10), Methodology Evaluation Framework, Reproducibility (Score: __/10), Statistical Validity (Score: __/10)
+### Community 75 - "Alert Rules"
+Cohesion: 0.11
+Nodes (18): Alert Rules, API Endpoints, Best Practices, Checklist, Common Pitfalls, Core Configuration, Docker Compose, Expert Agent (+10 more)
 
-### Community 750 - "Statistical Rigor Guide"
-Cohesion: 0.29
-Nodes (6): Effect Size Reporting, Multiple Testing Correction, Sensitivity & Robustness, Statistical Rigor Guide, Test Selection, Uncertainty Quantification
+### Community 76 - "Nonlinear Dynamics Expert"
+Cohesion: 0.11
+Nodes (17): Chain-of-Thought Decision Framework, Check 1: System Classification, Check 2: Symmetry & Structure, Check 3: Analysis Selection, Check 4: Numerical Validity, Check 5: Physical Consistency, Common Anti-Patterns, Core Responsibilities (+9 more)
 
-### Community 751 - "Codex and Agy route recipes"
-Cohesion: 0.50
-Nodes (3): Agy Routes, Codex and Agy route recipes, Codex Routes
+### Community 77 - "Spmd Parallelism"
+Cohesion: 0.11
+Nodes (17): create_mesh_examples(), debug_sharding(), explicit_device_placement(), model_parallel_matmul(), SPMD Parallelism Patterns for JAX Demonstrates sharding, mesh configuration,…, Different mesh configurations., Demonstrate different sharding patterns., Distribute matrix multiplication across devices. (+9 more)
 
-### Community 753 - "DifferentialEquations.jl"
-Cohesion: 0.50
-Nodes (4): Checklist, DifferentialEquations.jl, Expert Agent, Solver Selection
-
-### Community 755 - "Constitutive Equations"
-Cohesion: 0.29
-Nodes (6): Constitutive Equations, Delegation, Expert Agent, Fitting Workflow (Prony Series to DMA Data), Model Catalog, Selecting a Hyperelastic Model
-
-### Community 760 - "Analyze Data"
-Cohesion: 0.40
-Nodes (4): Analyze Data, Checklist, Examples, Workflow
-
-### Community 761 - "Run Experiment"
-Cohesion: 0.40
-Nodes (4): Checklist, Examples, Run Experiment, Workflow
-
-### Community 762 - "Correlation Analysis"
-Cohesion: 0.20
-Nodes (10): Checklist, Core Skills, Correlation Analysis, [Correlation Computational Methods](../correlation-computational-methods/SKILL.md), [Correlation Experimental Data](../correlation-experimental-data/SKILL.md), [Correlation Math Foundations](../correlation-math-foundations/SKILL.md), [Correlation Physical Systems](../correlation-physical-systems/SKILL.md), Expert Agent (+2 more)
-
-### Community 763 - "Core Skills"
-Cohesion: 0.29
-Nodes (7): [Advanced ML Systems](../advanced-ml-systems/SKILL.md), Core Skills, [Deep Learning](../deep-learning/SKILL.md), [Deep Learning Experimentation](../deep-learning-experimentation/SKILL.md), [Neural Architecture Patterns](../neural-architecture-patterns/SKILL.md), [Neural Network Mathematics](../neural-network-mathematics/SKILL.md), [Training Diagnostics](../training-diagnostics/SKILL.md)
-
-### Community 765 - "MCMC Diagnostics"
-Cohesion: 0.25
-Nodes (7): Checklist, Expert Agents, MCMC Diagnostics, diagnose_mcmc(), main(), Comprehensive MCMC diagnostics. Args: mcmc: MCMC object after run() verbose:…, Comprehensive MCMC diagnostics for NumPyro inference. Usage: python…
-
-### Community 769 - "Reference Documentation for Numpyro Core Mastery"
-Cohesion: 0.33
-Nodes (5): API Reference Example, Reference Documentation for Numpyro Core Mastery, Structure Suggestions, When Reference Docs Are Useful, Workflow Guide Example
-
-### Community 770 - "DMA & Rheology"
-Cohesion: 0.29
-Nodes (7): Common Pitfalls, Delegation, DMA & Rheology, Dynamic Mechanical Analysis (DMA), Expert Agent, Rheology, Workflow: From Raw Data to Constitutive Model
-
-### Community 771 - "Core Skills"
+### Community 78 - "Checklist"
 Cohesion: 0.11
 Nodes (18): Checklist, [CI/CD Patterns](../ci-cd-patterns/SKILL.md), [Compiler Patterns](../compiler-patterns/SKILL.md), [Core Julia Patterns](../core-julia-patterns/SKILL.md), Core Skills, [Ecosystem Selection](../ecosystem-selection/SKILL.md), Expert Agent, [Interop Patterns](../interop-patterns/SKILL.md) (+10 more)
 
-### Community 772 - "Julia ML and Deep Learning"
-Cohesion: 0.50
-Nodes (4): Checklist, Expert Agent, Julia ML and Deep Learning, Routing Decision Tree
-
-### Community 775 - "Core Skills"
-Cohesion: 0.14
-Nodes (14): [Advanced ML Systems](../advanced-ml-systems/SKILL.md), Best Practices, Checklist, Common Pitfalls, Core Skills, [Data Wrangling & Communication](../data-wrangling-communication/SKILL.md), [DevOps & ML Infrastructure](../devops-ml-infrastructure/SKILL.md), Expert Agent (+6 more)
-
-### Community 779 - "FEM/FEA"
-Cohesion: 0.29
-Nodes (7): Common Failure Modes, Convergence & Correctness Checklist, Delegation, Expert Agent, FEM/FEA, Toolchain, Weak-Form Workflow
-
-### Community 786 - "2. Vectorization (`jax.vmap`)"
-Cohesion: 0.67
-Nodes (3): 2. Vectorization (`jax.vmap`), Basic Usage, Purpose
-
-### Community 790 - "Deployment Pipeline Design"
+### Community 79 - "Enhanced_Error_Messages_Demo"
 Cohesion: 0.12
-Nodes (16): Automated, Best Practices, Blue-Green, Canary (Argo Rollouts), Checklist, Common Pitfalls, Complete Pipeline Example, Deployment Pipeline Design (+8 more)
+Nodes (16): example_1_max_iterations(), example_2_auto_recovery(), example_3_diagnostic_analysis(), example_4_comparison(), Demonstration of Enhanced Error Messages in NLSQ This example shows how NLSQ…, Example 4: Compare old vs new error messages., Example 1: Max iterations reached., Example 2: Successful fit after applying recommendations. (+8 more)
 
-### Community 792 - "3. Multi-Device Parallelism (`jax.pmap`)"
-Cohesion: 0.67
-Nodes (3): 3. Multi-Device Parallelism (`jax.pmap`), Basic Usage, Purpose
+### Community 80 - "Function_Library_Demo"
+Cohesion: 0.16
+Nodes (17): demo_comparison(), demo_exponential_decay(), demo_gaussian(), demo_linear(), demo_polynomial(), demo_power_law(), demo_sigmoid(), main() (+9 more)
 
-### Community 793 - "Test Automation"
-Cohesion: 0.22
-Nodes (8): 1. The Testing Pyramid, 2. E2E Testing Patterns, 3. Automation Best Practices, 4. Test Automation Checklist, API Mocking, Expert Agent, Page Object Model (POM), Test Automation
+### Community 81 - "Greeter"
+Cohesion: 0.16
+Nodes (11): Greeter, A class-based greeter with customizable prefix. Attributes: prefix: The…, Initialize the greeter. Args: prefix: The greeting prefix to use., Test that empty name raises ValueError., Tests for the Greeter class., Test greeter with default prefix., Test greeter with custom prefix., Test multiple greeters with different prefixes. (+3 more)
 
-### Community 796 - "Iterative Error Resolution Skill"
-Cohesion: 0.04
-Nodes (44): 1. Dependency Errors, 1. Start with Analysis Mode, 2. Build Errors, 2. Use Lower Iterations for Production, 3. Monitor Knowledge Base Growth, 3. Test Errors, 4. Commit Knowledge Base, 4. Runtime Errors (+36 more)
+### Community 82 - "Api Design Principles"
+Cohesion: 0.12
+Nodes (17): API Design Principles, API Versioning, Best Practices, Checklist, Common Pitfalls, Consistent Error Response, Cursor-Based (GraphQL Relay), DataLoader (N+1 Prevention) (+9 more)
 
-### Community 800 - "Testing Patterns (Cross-Language Guide)"
+### Community 83 - "Skill"
+Cohesion: 0.12
+Nodes (16): Alembic (Python/SQLAlchemy), Configuration Guidelines, Connection Pooling, Database Patterns, Design Checklist, Expert Agent, EXPLAIN Analysis, Index Strategy (+8 more)
+
+### Community 84 - "Backpressure Strategies"
+Cohesion: 0.12
+Nodes (17): Backpressure Strategies, Consumer Group, Dead Letter Queue (DLQ), Design Checklist, DLQ Handling Rules, Event Schema Design, Expert Agent, Idempotency (+9 more)
+
+### Community 85 - "Bayesian Inference"
+Cohesion: 0.12
+Nodes (17): Bayesian Inference, [Bayesian PINN](../bayesian-pinn/SKILL.md), [Bayesian SINDy Workflow](../bayesian-sindy-workflow/SKILL.md), [Bayesian UDE in JAX](../bayesian-ude-jax/SKILL.md), [Bayesian UDE Workflow](../bayesian-ude-workflow/SKILL.md), Checklist, [Consensus MCMC with Pigeons](../consensus-mcmc-pigeons/SKILL.md), Core Skills (+9 more)
+
+### Community 86 - "Skill"
+Cohesion: 0.12
+Nodes (16): 1. Type System Design, 2. Multiple Dispatch Patterns, 3. Performance Tuning, 4. Metaprogramming, Abstract Type Hierarchy, Checklist, Core Julia Patterns, Expert Agent (+8 more)
+
+### Community 87 - "Annotation"
+Cohesion: 0.18
+Nodes (16): dawid_skene(), get_data(), hierarchical_dawid_skene(), item_difficulty(), logistic_random_effects(), mace(), main(), multinomial() (+8 more)
+
+### Community 88 - "Capture_Recapture"
+Cohesion: 0.14
+Nodes (7): main(), Example: CJS Capture-Recapture Model for Ecological Data…, run_inference(), model_1(), model_2(), model_4(), Example: Enumerate Hidden Markov Model ======================================…
+
+### Community 89 - "Skill)"
+Cohesion: 0.12
+Nodes (17): [Bayesian PINN](../bayesian-pinn/SKILL.md), [Bayesian UDE Workflow](../bayesian-ude-workflow/SKILL.md), [Bifurcation Analysis](../bifurcation-analysis/SKILL.md), [Catalyst Reactions](../catalyst-reactions/SKILL.md), Checklist, Core Skills, [Differential Equations](../differential-equations/SKILL.md), [Equation Discovery (SINDy)](../equation-discovery/SKILL.md) (+9 more)
+
+### Community 90 - "Ml Expert"
+Cohesion: 0.16
+Nodes (10): ml-expert, Checklist, DevOps and ML Infrastructure, Experiment Tracking, Expert Agent, Expert Agent, Federated Learning, Production Checklist (+2 more)
+
+### Community 91 - "Cd Pipelines Skill"
+Cohesion: 0.12
+Nodes (15): CI/CD Pipelines Skill, 1. Analysis, 2. GitHub Actions, 3. Release Automation, 4. GitLab CI, 5. Terraform IaC (Enterprise), 6. Security, 7. Monitoring (+7 more)
+
+### Community 92 - "Api Gateway"
+Cohesion: 0.12
+Nodes (16): API Gateway, Best Practices, Checklist, Circuit Breaker, Common Pitfalls, Communication Patterns, Data Management, Decomposition Strategies (+8 more)
+
+### Community 93 - "Doe_Generator"
+Cohesion: 0.20
+Nodes (15): central_composite(), fractional_factorial(), full_factorial(), latin_hypercube(), main(), Path, randomize(), Central composite design: factorial cube + axial stars + center. Only supports… (+7 more)
+
+### Community 94 - "Review_Structure"
+Cohesion: 0.12
+Nodes (15): Confidential Comments to Editor (if needed), Document format, Major Issues, Minor Issues, Overall Assessment, Questions for the Authors, Recommendation, Review Report Structure (+7 more)
+
+### Community 95 - "Julia Pro Agent"
+Cohesion: 0.27
+Nodes (13): Julia Pro Agent, Nonlinear Dynamics Expert Agent, Statistical Physicist Agent, Bayesian Inference Skill, Bayesian PINN Skill, Bayesian SINDy Workflow Skill, Bayesian UDE in JAX Skill, Bayesian UDE Workflow Skill (+5 more)
+
+### Community 96 - "Active Brownian Particles"
+Cohesion: 0.12
+Nodes (16): Active Brownian Particles, Active Matter & Complex Systems, Active Matter Models, Best Practices, Boids Rules (Swarm Dynamics), Checklist, Chemotaxis (Keller-Segel), Collective Behavior (+8 more)
+
+### Community 97 - "Generate_Diagrams"
+Cohesion: 0.17
+Nodes (15): generate_batch_size_scaling(), generate_memory_optimization_chart(), generate_optimizer_comparison(), generate_speedup_chart(), generate_training_progress(), main(), Generate batch size scaling efficiency chart, Generate Visual Diagrams for JAX Core Programming This script generates visual… (+7 more)
+
+### Community 98 - "Readme"
+Cohesion: 0.12
+Nodes (15): 1. Start with Fundamentals, 2. Connect Theory to Code, 3. Build Intuition, 4. Optimization Theory (`optimization-theory-reference.md`), 4. Reference While Coding, 5. Information Theory (`information-theory-reference.md`), 5. Understand Stability, 6. Numerical Methods (`numerical-methods-reference.md`) (+7 more)
+
+### Community 99 - "Effect_Handlers_Guide"
+Cohesion: 0.12
+Nodes (15): Advanced Patterns, condition (Observe Latent Variables), Core Handlers, Debugging Non-Convergence, Effect Handlers Guide, Handler Composition, LocScaleReparam (Non-Centered), Manual Reparameterization (+7 more)
+
+### Community 100 - "3X Margin Rule"
+Cohesion: 0.15
+Nodes (9): 3x margin rule, Design-of-experiments (DoE) matrix, Early signal (risk register / premortem hook), Instrument capability map (central artifact), Multimodal sequencing (cheapest-and-most-diagnostic-first), Power analysis, Premortem failure narrative (past-tense), Risk register (P x I x mitigation x early-signal) (+1 more)
+
+### Community 101 - "Direct Preference Optimization"
+Cohesion: 0.18
+Nodes (12): Direct Preference Optimization (DPO), Checklist, Core Skills, Research and Domains, Routing Decision Tree, RLAIF Training, Checklist, Common pitfalls (+4 more)
+
+### Community 102 - "Smart Debug"
+Cohesion: 0.13
+Nodes (14): 1. Triage, 2. Observability (Production), 3. Hypotheses, 4. Strategy, 5. Instrumentation, 6. RCA, 7. Fix, 8. Validation (+6 more)
+
+### Community 103 - "Aggregate Optimization"
+Cohesion: 0.13
+Nodes (15): Aggregate Optimization, Best Practices, Checklist, Common Pitfalls, Correlated Subquery → JOIN, Expert Agent, EXPLAIN Analysis, Index Types (+7 more)
+
+### Community 104 - "Checklist"
 Cohesion: 0.13
 Nodes (15): Checklist, CI/CD Integration, Configuration Quick Reference, Cross-Language Best Practices, Expert Agent, Framework Selection, JavaScript/TypeScript, JavaScript/TypeScript (+7 more)
 
-### Community 809 - "multi_scale_model"
-Cohesion: 0.50
-Nodes (4): main(), multi_scale_model(), Example: Adaptive Hybrid Streaming Optimizer with Parameter Normalization This…, Model with parameters spanning 6 orders of magnitude. This model is challenging…
+### Community 105 - "Ruflo Goals:Deep Researcher (R"
+Cohesion: 0.13
+Nodes (15): ruflo-goals:deep-researcher (related tool), Effect Size Calculation (Cohen's d, Hedges' g, OR, RR), Evidence Synthesis Skill, Fixed vs Random Effects Models, GRADE Downgrading Factors, GRADE Evidence Grading, Heterogeneity (Q-statistic, I-squared), landscape-scanner (related skill) (+7 more)
 
-### Community 810 - "01_basic_fault_tolerance.py"
-Cohesion: 0.50
-Nodes (4): exponential_decay(), main(), Example 1: Basic Fault Tolerance with Streaming Optimizer This example…, Exponential decay model: y = a * exp(-b * x)
+### Community 106 - "10. Write, Lint, Hand Off"
+Cohesion: 0.13
+Nodes (15): 10. Write, lint, hand off, 1. Load inputs, 2. Build the instrument capability map, 3. Pre-register success metrics, 4. Enumerate controls, 5. Power analysis, 6. Design-of-experiments matrix, 7. Multimodal sequencing (when applicable) (+7 more)
 
-### Community 811 - "holt_winters.py"
-Cohesion: 0.53
-Nodes (5): holt_winters(), main(), predict(), r""" Example: Holt-Winters Exponential Smoothing…, run_inference()
+### Community 107 - "Skill"
+Cohesion: 0.13
+Nodes (13): 1. Load inputs and choose the language, 2. Build the minimal implementation, 3. Run the three validation passes, 4. Emit the predicted observable, 5. Reconcile code against formalism, 6. Write `06_prototype.md`, lint, hand off, Failure modes worth naming, numerical-prototype (+5 more)
 
-### Community 815 - "Nanocomposites & Adaptive Materials"
-Cohesion: 0.29
-Nodes (7): Delegation, Effective-Medium Theories, Expert Agent, Nanocomposites & Adaptive Materials, Percolation Threshold, Self-Healing & Responsive Composites, Workflow
+### Community 108 - "Observablebuilder"
+Cohesion: 0.19
+Nodes (5): ObservableBuilder, source: 'numerical', 'parametric', or 'statistical'. type_: 'relative' or…, Fluent builder that produces a predicted-observable record matching…, demo(), Demonstrate SDE patterns with Diffrax.
 
-### Community 819 - "Domain 6: Nonlinear Dynamics (DynamicalSystems.jl + AUTO-07p)"
-Cohesion: 0.50
-Nodes (4): BifurcationKit.jl — Continuation & Bifurcation Analysis, Domain 6: Nonlinear Dynamics (DynamicalSystems.jl + AUTO-07p), DynamicalSystems.jl — Chaos Analysis, Julia Pro - Unified Scientific Computing Specialist
+### Community 109 - "Skill"
+Cohesion: 0.13
+Nodes (14): Advanced ML Systems, Best Practices, Checklist, Common Pitfalls, Expert Agent, Framework Selection, Hyperparameter Optimization, Knowledge Distillation (+6 more)
 
-### Community 822 - "ML Engineering Production Practices"
-Cohesion: 0.50
-Nodes (4): Experiment Tracking, Expert Agent, ML Engineering Production Practices, Project Structure
+### Community 110 - "Skill"
+Cohesion: 0.13
+Nodes (9): Best Practices, Data Wrangling and Communication, Expert Agent, Checklist, Diagnostics, Expert Agent, NLSQ Core Mastery, Expert Agent (+1 more)
 
-### Community 827 - "JAX Bayesian Pro: Inference as Transformation"
-Cohesion: 0.25
-Nodes (7): Additional Resources, Checklist, Example Files, Expert Agent, JAX Bayesian Pro: Inference as Transformation, Reference Files, Skills Matrix: Junior vs Expert
+### Community 111 - "Cache Aside Pattern (Redis + P"
+Cohesion: 0.14
+Nodes (14): Cache-Aside Pattern (Redis + Python), Cache Invalidation Patterns, Cache Stampede Prevention, Caching Patterns, Caching Strategy Comparison, Design Checklist, Distributed Cache Topology, Event-Driven Invalidation (+6 more)
 
-### Community 838 - "hmm.py"
-Cohesion: 0.43
-Nodes (7): forward_log_prob(), forward_one_step(), main(), print_results(), Example: Hidden Markov Model ============================ In this example, we…, semi_supervised_hmm(), simulate_data()
+### Community 112 - "Availability Targets"
+Cohesion: 0.14
+Nodes (14): Availability Targets, Best Practices, Checklist, Common Pitfalls, Common SLI Types, Error Budget, Expert Agent, Multi-Window Burn Rate Alerts (+6 more)
 
-### Community 857 - "PackageCompiler.jl Patterns"
-Cohesion: 0.40
-Nodes (4): Checklist, Expert Agent, PackageCompiler.jl Patterns, Troubleshooting
+### Community 113 - "1. Extract Concepts From `01_S"
+Cohesion: 0.14
+Nodes (14): 1. Extract concepts from `01_spark.md`, 2. Build a three-layer search plan, 3. Steelman every paper, 4. Build the gap matrix, 5. Reviewer 2 pass against the proposed gap, 6. Synthesis, 7. Write, lint, hand off, Depth expectation (+6 more)
 
-### Community 858 - "inspect_jaxpr"
-Cohesion: 0.50
-Nodes (4): inspect_jaxpr(), Inspect the JAX intermediate representation (jaxpr) of a function. Args: fn:…, inspect_jaxpr(), Print the JAX intermediate representation.
+### Community 114 - "1. Write The Failure Narrative"
+Cohesion: 0.14
+Nodes (14): 1. Write the failure narrative (past tense), 2. Cluster failure modes by root cause, 3. Identify the cheapest early signal per cluster, 4. Loop back to Stage 7, 5. Generate the one-page summary, 6. Simulated reviewer critique, 7. Write, lint, mark complete, Failure modes worth naming (+6 more)
 
-### Community 859 - "dropout"
-Cohesion: 0.50
-Nodes (4): dropout(), forward_with_dropout(), Dropout with explicit RNG., Forward pass with multiple dropout layers, each with unique RNG.
+### Community 115 - "Skill"
+Cohesion: 0.14
+Nodes (13): 1. Experimental Design, 2. Statistical Test Planning, 3. Effect Size and Uncertainty, Assumption Checks, Checklist, Core Principles, Design Checklist, Expert Agent (+5 more)
 
-### Community 861 - "compute_rdf"
-Cohesion: 0.50
-Nodes (4): compute_rdf(), main(), Complete JAX-MD Lennard-Jones Liquid Simulation This script demonstrates a full…, Compute radial distribution function g(r)
+### Community 116 - "Publication_Readiness"
+Cohesion: 0.14
+Nodes (13): Content (10%), Figures & Tables (10%), Manuscript Completeness (25%), Novelty (15%), Overall Assessment, Overview, Publication Readiness Checklist, Reproducibility Package (10%) (+5 more)
 
-### Community 863 - "decay_model"
-Cohesion: 0.50
-Nodes (4): decay_model(), main(), Simple exponential decay model: A * exp(-lambda * x) + C, Example: NLSQ Non-linear Least Squares with JAX Demonstrates fitting a custom…
+### Community 117 - "Pinn Engineer"
+Cohesion: 0.14
+Nodes (13): 1. Physics Fidelity, 2. Training Stability, 3. Framework Choice, 4. Validation, Core Responsibilities, Delegation Strategy, Examples, Neural Operators (FNO / DeepONet) (+5 more)
 
-### Community 868 - "Fermi feasibility screen"
-Cohesion: 0.33
-Nodes (5): Common repair moves, Dimensionless ratio, Exit gate, Fermi feasibility screen, Fermi table
+### Community 118 - "Skill"
+Cohesion: 0.21
+Nodes (5): Algorithm Selection, Best Practices, Checklist, Computational Methods & Algorithms, Expert Agent
 
-### Community 870 - "Framing variants"
-Cohesion: 0.33
-Nodes (5): Design-oriented framing, Framing variants, Mechanistic framing, Predictive framing, Which framing to pick
+### Community 119 - "Skill"
+Cohesion: 0.14
+Nodes (13): Advanced Optimization, Bayesian Optimization, BoTorch, Constraint Programming (OR-Tools), Convex Optimization (CVXPY), Expert Agent, Mixed-Integer Programming, Multi-Objective Optimization (+5 more)
 
-### Community 875 - "Dev Suite"
+### Community 120 - "Bayesian Sindy Workflow"
+Cohesion: 0.14
+Nodes (14): Bayesian SINDy Workflow, Checklist, Composition with neighboring skills, Expert Agent, Julia sidebar — Turing UQ-SINDy pattern, Prior-sensitivity analysis, Stage 1 — Generate ground-truth data, Stage 2 — Build the candidate library (+6 more)
+
+### Community 121 - "Active Matter Observables"
+Cohesion: 0.14
+Nodes (14): Active Matter Observables, Bayesian Inference, Best Practices, Checklist, Computational Tools, Correlation Functions, Data Analysis & Model Validation, Dynamic Light Scattering (DLS) (+6 more)
+
+### Community 122 - "Skill)"
+Cohesion: 0.14
+Nodes (14): [Advanced ML Systems](../advanced-ml-systems/SKILL.md), Best Practices, Checklist, Common Pitfalls, Core Skills, [Data Wrangling & Communication](../data-wrangling-communication/SKILL.md), [DevOps & ML Infrastructure](../devops-ml-infrastructure/SKILL.md), Expert Agent (+6 more)
+
+### Community 123 - "Sensor_Calibration"
+Cohesion: 0.16
+Nodes (10): linear_model(), polynomial_calibration(), Sensor Calibration: Non-Linear Temperature Sensor…, Steinhart-Hart equation for thermistors. 1/T = A + B*ln(R) + C*(ln(R))³…, Polynomial calibration model. y = c0 + c1*x + c2*x² + c3*x³ + ... Parameters…, steinhart_hart(), linear_model(), main() (+2 more)
+
+### Community 124 - "Hierarchical_Model_Template"
+Cohesion: 0.20
+Nodes (13): generate_hierarchical_data(), hierarchical_model(), main(), plot_group_fits(), Run MCMC inference for hierarchical model., Visualize hierarchical shrinkage effect. Shows how group estimates are "shrunk"…, Plot fits for each group., Hierarchical Model Template Template for hierarchical/multilevel Bayesian… (+5 more)
+
+### Community 125 - "Baseball"
+Cohesion: 0.22
+Nodes (13): fully_pooled(), main(), not_pooled(), partially_pooled(), partially_pooled_with_logit(), predict(), print_results(), r""" Number of hits has a Binomial distribution with independent probability of… (+5 more)
+
+### Community 126 - "Skill)"
+Cohesion: 0.14
+Nodes (14): 1. [Type-Driven Design](../type-driven-design/SKILL.md), 2. [Rust Extensions](../rust-extensions/SKILL.md), 3. [Modern Concurrency](../modern-concurrency/SKILL.md), 4. [Robust Testing](../robust-testing/SKILL.md), 5. [Modern Packaging](../python-packaging-advanced/SKILL.md), Checklist, Core Skills, cProfile in-process (+6 more)
+
+### Community 127 - "Basic Ude Example: Lotka Volte"
+Cohesion: 0.14
+Nodes (14): Basic UDE Example: Lotka-Volterra with Unknown Interaction, Checklist, Expert Agent, Lux.jl vs Flux.jl, Modern SciML Stack, Polynomial Chaos Expansion, Routing Decision Tree, Sobol Sensitivity Indices (+6 more)
+
+### Community 128 - "Readme"
+Cohesion: 0.14
+Nodes (13): 1. diagnose_gradients.py, 2. analyze_activations.py, 3. compare_training_runs.py, Available Scripts, Contributing, Expected Data Formats, For activation analysis:, For gradient analysis: (+5 more)
+
+### Community 129 - "Continuum Mechanics Engineer"
+Cohesion: 0.18
+Nodes (13): Continuum Mechanics Engineer, JAX Pro, Neural Network Master, PINN Engineer, Simulation Expert, Statistical Physicist, /benchmark, /md-sim (+5 more)
+
+### Community 130 - "Ecc:Kubernetes Patterns (Exter"
+Cohesion: 0.17
+Nodes (13): ecc:kubernetes-patterns (External Plugin Skill), Architecture Checklist, AWS Lambda (Python), Cloud Provider Patterns, Cost Monitoring, Cost Optimization, Expert Agent, IAM Least Privilege (+5 more)
+
+### Community 131 - "Architecture And Infrastructur"
+Cohesion: 0.15
+Nodes (13): Architecture and Infrastructure, [Architecture Patterns](../architecture-patterns/SKILL.md), Checklist, [Cloud Provider Patterns](../cloud-provider-patterns/SKILL.md), [Containerization Patterns](../containerization-patterns/SKILL.md), Core Skills, Expert Agent, [Microservices Patterns](../microservices-patterns/SKILL.md) (+5 more)
+
+### Community 132 - "Containerization Patterns"
+Cohesion: 0.17
+Nodes (13): Containerization Patterns, Deployment Checklist, Dockerfile Best Practices, .dockerignore, Expert Agent, Health Check Patterns, Helm Chart Structure, Image Security (+5 more)
+
+### Community 133 - "Best Practices"
+Cohesion: 0.15
+Nodes (13): Best Practices, Checklist, Common Pitfalls, Docker Build & Push, Expert Agent, GitHub Actions Templates, Kubernetes Deployment, Parallelization (+5 more)
+
+### Community 134 - "Search Patterns Skill"
+Cohesion: 0.15
+Nodes (13): Search Patterns Skill, Design Checklist, Expert Agent, Faceted Navigation, Field Type Selection, Full-Text Search Queries, Index Design, Index Lifecycle Management (+5 more)
+
+### Community 135 - "Best Practices"
+Cohesion: 0.15
+Nodes (13): Best Practices, Checklist, Common Pitfalls, Dependency + SAST Scanning, Expert Agent, GitHub Actions Templates, GitLab CI Template, Lock File Validation (+5 more)
+
+### Community 136 - "Skill"
+Cohesion: 0.15
+Nodes (11): Best Practices, Checklist, Composition with neighboring skills, Expert Agents, Turing.jl Model Design, ADVI Pattern, Checklist, Expert Agents (+3 more)
+
+### Community 137 - "Dataloader"
+Cohesion: 0.17
+Nodes (10): DataLoader, compute_gradient_stats(), diagnose_gradient_pathology(), print_gradient_report(), Module, Tensor, Print comprehensive gradient analysis report., Gradient Diagnostic Tool for Neural Network Training Analyzes gradient flow… (+2 more)
+
+### Community 138 - "Readme"
 Cohesion: 0.17
 Nodes (11): Agents, Commands (10 registered), Dev Suite, Features, Hooks (7 events), Installation, Integration / Workflow, License (+3 more)
 
-### Community 876 - "01_quick_prototyping.py"
-Cohesion: 0.50
-Nodes (3): example_quick_prototyping(), Complete example of quick JAX prototyping workflow, Workflow Pattern 1: Quick JAX Prototyping Demonstrates incremental addition of…
+### Community 139 - "Airflow Scientific Workflows"
+Cohesion: 0.17
+Nodes (12): Airflow Scientific Workflows, Array Data Storage, Best Practices, Checklist, Common Pitfalls, Data Quality Validation, Distributed Simulations, Expert Agent (+4 more)
 
-### Community 877 - "03_multi_device_scaling.py"
-Cohesion: 0.50
-Nodes (3): example_multi_device_scaling(), Complete multi-device scaling example, Workflow Pattern 3: Multi-Device Scaling Demonstrates data and model…
+### Community 140 - "Architecture Patterns"
+Cohesion: 0.17
+Nodes (12): Architecture Patterns, Best Practices, Checklist, Clean Architecture Example, Clean Architecture Layers, Common Pitfalls, DDD Tactical Patterns, Directory Structure (+4 more)
 
-### Community 881 - "benchmark_mcmc_vi.py"
-Cohesion: 0.50
-Nodes (3): benchmark_mcmc_vi(), Compare MCMC vs VI performance across dataset sizes. Args: model: NumPyro model…, Benchmark MCMC vs VI inference.
+### Community 141 - "Cd Integration"
+Cohesion: 0.17
+Nodes (12): CI/CD Integration, Comprehensive Validation, Comprehensive Validation (1-2 hours), Expert Agent, Parallel Validation, Pre-commit Hook, Rapid Validation (15 min), Reference Documentation (+4 more)
 
-### Community 882 - "model_comparison.py"
-Cohesion: 0.50
-Nodes (3): compare_models(), Model comparison using WAIC and LOO., Compare multiple models using WAIC and LOO. Args: models_dict: {name:…
+### Community 142 - "Skill)"
+Cohesion: 0.17
+Nodes (12): [Auth Implementation Patterns](../auth-implementation-patterns/SKILL.md), [Caching Patterns](../caching-patterns/SKILL.md), Checklist, Core Skills, Data and Security, [Database Patterns](../database-patterns/SKILL.md), Expert Agent, Routing Decision Tree (+4 more)
 
-### Community 883 - "prior_predictive_check.py"
-Cohesion: 0.50
-Nodes (3): prior_predictive_check(), Prior predictive checks for model validation., Generate and visualize prior predictive samples. Args: model: NumPyro model…
+### Community 143 - "Basic Pipeline"
+Cohesion: 0.17
+Nodes (12): Basic Pipeline, Best Practices, Caching Strategies, Checklist, Docker Build, Dynamic Child Pipelines, Expert Agent, GitLab CI Patterns (+4 more)
 
-### Community 884 - "Physical Learning Systems"
+### Community 144 - "Best Practices"
+Cohesion: 0.17
+Nodes (12): Best Practices, Error Categories, Error Resolution Checklist, Expert Agent, Fix Patterns, Integration with /fix-commit-errors, Iterative Error Resolution for CI/CD, Iterative Fix Engine (+4 more)
+
+### Community 145 - "1. Strategy & Patterns"
+Cohesion: 0.17
+Nodes (12): 1. Strategy & Patterns, 2. Migration Execution, 3. Strangler Fig Implementation, 4. Migration Strategies, 5. Compatibility Layers, 6. Rollback Patterns, 7. Testing Migration, 8. Migration Checklist (+4 more)
+
+### Community 146 - "Alerts"
+Cohesion: 0.17
+Nodes (12): Alerts, Best Practices, Checklist, Expert Agent, Golden Signals, Incident Management, Monitoring Parallel Systems, Observability and SRE (+4 more)
+
+### Community 147 - "Research Expert"
+Cohesion: 0.23
+Nodes (9): Research Expert Agent, Research Spark Orchestrator Agent, Research Suite, Research Hub Skill, Research Practice Hub, Research Spark Skill, research-spark, Routing Decision Tree (+1 more)
+
+### Community 148 - "Skill"
+Cohesion: 0.17
+Nodes (11): 1. Load inputs and classify the question type, 2. Fermi feasibility screen, 3. Draft the claim in canonical form, 4. Complete the Heilmeier catechism, 5. Reviewer 2 challenge, 6. Falsifiability check, 7. Write, lint, hand off, Failure modes worth naming (+3 more)
+
+### Community 149 - "Observable_Extractor"
+Cohesion: 0.18
+Nodes (9): _demo(), load_predicted_observable(), Path, Best-effort conversion to a plain Python list for YAML/JSON serialization., observable_extractor.py Scaffold for extracting the predicted observable from a…, Write the observable record to YAML (preferred) or JSON based on extension., Load a predicted observable record from YAML or JSON., _to_list() (+1 more)
+
+### Community 150 - "Graybox_Boundary"
+Cohesion: 0.17
+Nodes (11): 1. Governing equations (from Stage 4-5), 2. Physics-prescribed terms, 3. Learned terms, 4. Per-component validation plan, 5. Coupling validation plan, 6. Training/inference separation, Gray-box boundary specification, Notes (+3 more)
+
+### Community 151 - "Sci Workflow Engineer"
+Cohesion: 0.17
+Nodes (11): 1. Scientific Correctness, 2. Token Efficiency, 3. Reproducibility, Core Responsibilities, Delegation Strategy, Output Format, Pre-Response Validation (3 Checks), Reference Artifact: Experiment Template (+3 more)
+
+### Community 152 - "Skill)"
+Cohesion: 0.17
+Nodes (12): [Advanced ML Systems](../advanced-ml-systems/SKILL.md), Checklist, Core Skills, [Deep Learning](../deep-learning/SKILL.md), [Deep Learning Experimentation](../deep-learning-experimentation/SKILL.md), Deep Learning Hub, Expert Agent, [Neural Architecture Patterns](../neural-architecture-patterns/SKILL.md) (+4 more)
+
+### Community 153 - "Checklist"
+Cohesion: 0.17
+Nodes (12): Checklist, Core Skills, Expert Agent, [JAX Bayesian Pro](../jax-bayesian-pro/SKILL.md), JAX Computing, [JAX Core Programming](../jax-core-programming/SKILL.md), [JAX DiffEq Pro](../jax-diffeq-pro/SKILL.md), [JAX Mastery](../jax-mastery/SKILL.md) (+4 more)
+
+### Community 154 - "Checklist"
+Cohesion: 0.17
+Nodes (12): Checklist, Core Skills, [Data Analysis](../data-analysis/SKILL.md), [Data Wrangling Communication](../data-wrangling-communication/SKILL.md), [Experiment Tracking](../experiment-tracking/SKILL.md), Expert Agent, [Machine Learning](../machine-learning/SKILL.md), ML and Data Science (+4 more)
+
+### Community 155 - "Skill"
+Cohesion: 0.18
+Nodes (10): Python Packaging Advanced, Rust Extensions, 4. Best Practices, Checklist, Expert Agent, Rust Extensions for Python, Checklist, Expert Agent (+2 more)
+
+### Community 156 - "Changelog"
+Cohesion: 0.17
+Nodes (10): [0.1.0] - 2026-01-20, Added, Changelog, Contributing, Example Package, Features, Installation, License (+2 more)
+
+### Community 157 - "2. Project Layout And Build Ba"
+Cohesion: 0.17
+Nodes (12): 2. Project Layout and Build Backend, 3. Dependency and Environment Management, 4. Building and Publishing, 5. Best Practices, Checklist, CI and container integration, Dependency constraints, Expert Agent (+4 more)
+
+### Community 158 - "Julia Ml Hpc"
+Cohesion: 0.18
+Nodes (9): julia-ml-hpc, Checklist, Expert Agent, Julia Reinforcement Learning, Reward Shaping, Diagnostic Checklist, Expert Agent, Julia Training Diagnostics (+1 more)
+
+### Community 159 - "Diffrax"
+Cohesion: 0.18
+Nodes (11): Diffrax, Applications, Best Practices, Checklist, Composition with neighboring skills, Expert Agent, Framework Selection, Green-Kubo Relations (+3 more)
+
+### Community 160 - "Pattern"
 Cohesion: 0.25
-Nodes (7): Contrastive Hebbian Learning & Energy-Based Models, Coupled Learning, Delegation, Expert Agent, Physical Learning Systems, Plasticity & Memory in Disordered Materials, Scope Boundary
+Nodes (10): Pattern, _banned_pattern(), collect_files(), lint_file(), lint_text(), main(), Path, style_lint.py Flags em dashes and banned vocabulary in markdown or LaTeX files,… (+2 more)
 
-### Community 945 - "Graph Theory"
+### Community 161 - "Modernize Command"
+Cohesion: 0.18
+Nodes (11): Modernize Command, Actions, Code Modernization, Options, Phase 1: Assessment, Phase 2: Test Coverage, Phase 3: Migration, Phase 4: Validation (+3 more)
+
+### Community 162 - "Checklist"
+Cohesion: 0.18
+Nodes (11): Checklist, CI/CD Pipelines, Core Skills, [Deployment Pipeline Design](../deployment-pipeline-design/SKILL.md), Expert Agent, [GitHub Actions Templates](../github-actions-templates/SKILL.md), [GitLab CI Patterns](../gitlab-ci-patterns/SKILL.md), [Iterative Error Resolution](../iterative-error-resolution/SKILL.md) (+3 more)
+
+### Community 163 - "Skill)"
+Cohesion: 0.18
+Nodes (11): [Airflow Scientific Workflows](../airflow-scientific-workflows/SKILL.md), Checklist, Core Skills, [Debugging Toolkit](../debugging-toolkit/SKILL.md), Dev Workflows, [Documentation Standards](../documentation-standards/SKILL.md), Expert Agent, [Git Workflow](../git-workflow/SKILL.md) (+3 more)
+
+### Community 164 - "Accessibility Testing"
+Cohesion: 0.18
+Nodes (11): Accessibility Testing, API Mocking, Best Practices, Checklist, CI/CD Integration (GitHub Actions), Debugging, E2E Testing Patterns, Expert Agent (+3 more)
+
+### Community 165 - "Checklist"
+Cohesion: 0.18
+Nodes (11): Checklist, Core Skills, [Distributed Tracing](../distributed-tracing/SKILL.md), Expert Agent, [Grafana Dashboards](../grafana-dashboards/SKILL.md), Observability and SRE, [Observability & SRE Practices](../observability-sre-practices/SKILL.md), [Prometheus Configuration](../prometheus-configuration/SKILL.md) (+3 more)
+
+### Community 166 - "Checklist"
+Cohesion: 0.18
+Nodes (11): Checklist, [Code Review](../code-review/SKILL.md), [Comprehensive Validation](../comprehensive-validation/SKILL.md), Core Skills, [E2E Testing Patterns](../e2e-testing-patterns/SKILL.md), Expert Agent, Routing Decision Tree, Routing Table (+3 more)
+
+### Community 167 - "Aps_Rheo_Xpcs_Capabilities"
+Cohesion: 0.18
+Nodes (10): APS Rheo-XPCS capability baseline (8-ID-I), Current baseline (as of [date to be updated]), Flux and detection, How to use this file, Limitations and known issues, Recent beamtime records, Rheology integration, Spatial / coherence (+2 more)
+
+### Community 168 - "Prototype_Skeleton.Jl"
 Cohesion: 0.33
-Nodes (5): Application-Specific Delegation, Core Concepts, Expert Agents, Graph Theory, Spectral Graph Theory Quick Reference
+Nodes (10): extract_observable(), integrate!(), Params, PrototypeSkeleton, _self_test(), State, step!(), PrototypeSkeleton (+2 more)
 
-### Community 950 - "research-suite/hooks/subagent_stop.py"
-Cohesion: 0.40
-Nodes (5): check_artifacts(), main(), SubagentStop hook for research-suite. Gates on the STOPPED subagent's identity.…, # NOTE: current_stage is the stage IN PROGRESS, not yet done — SKILL.md's own, Real filesystem check replacing self-attestation. Reads the actual…
+### Community 169 - "Arxiv Preprint Citation Format"
+Cohesion: 0.18
+Nodes (11): arXiv Preprint Citation Format, Bibliography Author Name Format (APS PRL), BibTeX Hygiene Rules, Citation Style Guide, dedupe_refs.py script, DOI Citation Convention, In-text Citation Format (author-year), Journal Name Abbreviations (ISO 4) (+3 more)
 
-### Community 951 - "One-page summary"
-Cohesion: 0.40
-Nodes (4): Formatting constraints, One-page summary, Structure, What belongs in a one-pager vs. a full proposal
+### Community 170 - "Abstract"
+Cohesion: 0.18
+Nodes (10): Abstract template, Claim-type variants, Length variants, Long (300-400 words), Self-check, Short (100-150 words), Standard (200-250 words), Structure (+2 more)
 
-### Community 956 - "PySINDy and Symbolic Regression — Full Code Reference"
-Cohesion: 0.40
-Nodes (4): PySINDy and Symbolic Regression — Full Code Reference, PySINDy (Python), Related Python Packages, Symbolic Regression (Julia)
+### Community 171 - "Spark_Template"
+Cohesion: 0.18
+Nodes (10): 01_spark.md, Alternative 1: [framing name], Alternative 2: [framing name], Articulation, Components, Framing, Metadata, Open questions flagged for Stage 2 (+2 more)
 
-### Community 959 - "Lux Training Loop, Custom Message Passing, and Molecular GNN — Full Reference"
-Cohesion: 0.40
-Nodes (4): Canonical Lux training loop, Custom Message Passing, Lux Training Loop, Custom Message Passing, and Molecular GNN — Full Reference, Molecular Property Prediction
+### Community 172 - "Readme"
+Cohesion: 0.18
+Nodes (10): Agents, Features, Hooks (6 events), Installation, Integration / Workflow, License, Overview, Quick Start / Usage Examples (+2 more)
 
-### Community 974 - "Turing UDE Stage Code — Full Reference"
-Cohesion: 0.50
-Nodes (3): Stage 1 — Deterministic warm-start, Stage 2 — Turing model with embedded ODE, Turing UDE Stage Code — Full Reference
+### Community 173 - "Checklist"
+Cohesion: 0.18
+Nodes (11): Checklist, Core Skills, [Deep Learning Experimentation](../deep-learning-experimentation/SKILL.md), Deep Learning Mastery, Expert Agents, [Model Optimization](../model-optimization-deployment/SKILL.md), [Neural Architecture Patterns](../neural-architecture-patterns/SKILL.md), [Neural Network Mathematics](../neural-network-mathematics/SKILL.md) (+3 more)
 
-### Community 988 - "engine.py"
+### Community 174 - "Julia Ml Hpc Agent"
+Cohesion: 0.18
+Nodes (11): julia-ml-hpc agent, julia-pro agent, GPU Acceleration (skill), Checklist, CUDA.jl, CuPy, Expert Agent, Framework Selection (+3 more)
+
+### Community 175 - "Jax Bayesian Pro"
+Cohesion: 0.25
+Nodes (9): JAX Bayesian Pro, JAX Computing Orchestrator, Checklist, Expert Agent, JAX Core Programming, Parallelization Strategies, JAX DiffEq Pro, Expert Agent (+1 more)
+
+### Community 176 - "1D Data Parallelism Pattern"
+Cohesion: 0.22
+Nodes (11): 1D Data Parallelism Pattern, 2D Parallelism (Data+Model), Communication Patterns (All-Reduce/All-Gather/Reduce-Scatter), Debugging Sharding, Pipeline Parallelism, Practical Sharding Examples (ResNet-50/GPT-2/GPT-3), Sharding Best Practices, Sharding Strategies Comparison Table (+3 more)
+
+### Community 177 - "Checkpointing Stage (Orbax)"
+Cohesion: 0.27
+Nodes (11): Checkpointing Stage (Orbax), Complete Training Pipeline Architecture, Data Pipeline Stage, Gradient Computation Stage (JAX AD), Loss Computation Stage, Model Stage (Flax NNX), Optimizer Update Stage (Optax), Training Loop Flow (+3 more)
+
+### Community 178 - "02_Production_Training"
+Cohesion: 0.22
+Nodes (8): create_dataset(), example_production_training(), MLP, Rngs, Multi-layer perceptron for classification, Workflow Pattern 2: Production Flax NNX Training Complete production-ready…, Create synthetic dataset, Complete production training example
+
+### Community 179 - "Skill)"
+Cohesion: 0.18
+Nodes (11): [Advanced Optimization](../advanced-optimization/SKILL.md), [Control Theory](../control-theory/SKILL.md), Core Skills, [GPU Acceleration](../gpu-acceleration/SKILL.md), [MD Simulation Setup](../md-simulation-setup/SKILL.md), [ML Force Fields](../ml-force-fields/SKILL.md), [Numerical Methods Implementation](../numerical-methods-implementation/SKILL.md), [Parallel Computing](../parallel-computing/SKILL.md) (+3 more)
+
+### Community 180 - "Skill)"
+Cohesion: 0.18
+Nodes (11): [Active Matter](../active-matter/SKILL.md), [Advanced Simulations](../advanced-simulations/SKILL.md), Core Skills, [Extreme Value Statistics](../extreme-value-statistics/SKILL.md), [Glass & Collective Dynamics](../glass-and-collective-dynamics/SKILL.md), [Multiscale Modeling](../multiscale-modeling/SKILL.md), [Non-Equilibrium Theory](../non-equilibrium-theory/SKILL.md), [Physical Learning Systems](../physical-learning-systems/SKILL.md) (+3 more)
+
+### Community 181 - "Testing And Quality Skill"
+Cohesion: 0.20
+Nodes (9): Testing and Quality Skill, Common Scenarios, Exit Criteria, Framework Auto-Detection, Iterative Test Execution & Auto-Fix, Modes, Output, Safety (+1 more)
+
+### Community 182 - "Fix Commit Errors Command"
+Cohesion: 0.20
+Nodes (10): Fix Commit Errors Command, Examples, Intelligent GitHub Actions Failure Resolution, Phase 1: Detection, Phase 2: Pattern Analysis, Phase 3: Solution Selection, Phase 4: Apply, Commit, Push, Re-trigger, Phase 5: Knowledge Base (+2 more)
+
+### Community 183 - "Skill"
+Cohesion: 0.20
+Nodes (5): 1. Documentation Types, 2. Best Practices, 3. Documentation Checklist, Documentation Standards, Expert Agent
+
+### Community 184 - "Skill"
+Cohesion: 0.20
+Nodes (6): Checklist, Dev Suite (dev-hub), Expert Agents, Hub Skills, Routing Decision Tree, Routing Table
+
+### Community 185 - "Agy Routes"
+Cohesion: 0.20
+Nodes (10): Agy Routes, Codex Routes, Failure Counter, Fast Decision Table, Forced Risk Review, Output Filing, Parallel Consensus, Route Mode (+2 more)
+
+### Community 186 - "Post_Tool_Use"
+Cohesion: 0.36
+Nodes (9): check_review_file(), find_recent_docx(), main(), missing_sections(), Path, PostToolUse hook for research-suite Write and Bash operations. Real…, Returns the docx body text. Raises ImportError if python-docx isn't installed,…, Bash-triggered fallback: newest reviews/*.docx modified within the last… (+1 more)
+
+### Community 187 - "Artifact_Diff"
+Cohesion: 0.29
+Nodes (9): main(), print_summary(), print_unified_diff(), artifact_diff.py Compare two versions of an artifact (e.g., 03_claim.md vs…, Return a list of (heading, body) tuples. Text before first heading gets…, Per-section summary: added / removed / modified heading lists., section_summary(), split_into_sections() (+1 more)
+
+### Community 188 - "Heilmeier"
+Cohesion: 0.20
+Nodes (9): 1. What are you trying to do?, 2. How is it done today, and what are the limits of current practice?, 3. What is new in your approach and why do you think it will be successful?, 4. Who cares? If you succeed, what difference will it make?, 5. What are the risks?, 6. How much will it cost? How long will it take?, 7. What are the midterm and final exams to check for success?, Heilmeier catechism (+1 more)
+
+### Community 189 - "Dimensional_Analysis"
+Cohesion: 0.20
+Nodes (9): Dimensional analysis worksheet, Step 1: List all variables, Step 2: Count variables and dimensions, Step 3: Choose repeating variables, Step 4: Form the dimensionless groups, Step 5: Interpret and name each group, Step 6: Check against the derivation, When things go wrong (+1 more)
+
+### Community 190 - "Bayesian Pinn — Bnnode & Bayes"
+Cohesion: 0.20
+Nodes (10): Bayesian PINN — BNNODE & BayesianPINN, Checklist, Composition with neighboring skills, Diagnostics, Expert Agent, Multimodal escape hatch, ODEs — `BNNODE` solver, PDEs — `BayesianPINN` discretizer (+2 more)
+
+### Community 191 - "Checklist"
+Cohesion: 0.20
+Nodes (10): Checklist, Core Skills, Correlation Analysis, [Correlation Computational Methods](../correlation-computational-methods/SKILL.md), [Correlation Experimental Data](../correlation-experimental-data/SKILL.md), [Correlation Math Foundations](../correlation-math-foundations/SKILL.md), [Correlation Physical Systems](../correlation-physical-systems/SKILL.md), Expert Agent (+2 more)
+
+### Community 192 - "Skill"
+Cohesion: 0.20
+Nodes (9): Application-Specific Delegation, Core Concepts, Expert Agents, Graph Theory, Spectral Graph Theory Quick Reference, Checklist, Expert Agent, Neural Network Mathematics (+1 more)
+
+### Community 193 - "Core Skills"
+Cohesion: 0.20
+Nodes (10): Core Skills, [Julia AD Backends](../julia-ad-backends/SKILL.md), [Julia GPU Kernels](../julia-gpu-kernels/SKILL.md), [Julia Graph Neural Networks](../julia-graph-neural-networks/SKILL.md), [Julia ML Pipelines](../julia-ml-pipelines/SKILL.md), [Julia Model Deployment](../julia-model-deployment/SKILL.md), [Julia Neural Architectures](../julia-neural-architectures/SKILL.md), [Julia Neural Networks](../julia-neural-networks/SKILL.md) (+2 more)
+
+### Community 194 - "Enzyme_Kinetics"
+Cohesion: 0.22
+Nodes (8): competitive_inh_fit(), competitive_inhibition(), hill_equation(), michaelis_menten(), Enzyme Kinetics: Michaelis-Menten Analysis…, Michaelis-Menten enzyme kinetics model. v = V_max * [S] / (K_M + [S])…, Competitive inhibition model. v = V_max * [S] / (K_M(1 + [I]/K_i) + [S]) K_M…, Hill equation for cooperative binding. v = V_max * [S]^n / (K_50^n + [S]^n)…
+
+### Community 195 - "Reaction_Kinetics"
+Cohesion: 0.20
+Nodes (7): first_order_decay(), pseudo_first_order(), Chemical Reaction Kinetics: Rate Constant Determination…, First-order reaction kinetics. [A](t) = [A]₀ * exp(-kt) Integrated rate law for…, Second-order reaction kinetics (single reactant). [A](t) = [A]₀ / (1 +…, Pseudo-first-order kinetics. Same form as first-order, but k_obs = k[B]₀ where…, second_order_decay()
+
+### Community 196 - "Titration_Curves"
+Cohesion: 0.20
+Nodes (9): buffer_capacity(), diprotic_titration(), monoprotic_titration(), Acid-Base Titration Curve Analysis =================================== This…, Diprotic acid titration model (e.g., H2CO3, H2SO3). Parameters ---------- V :…, Calculate buffer capacity as a function of pH. β = 2.303 * C_total * ([H⁺]K_a)…, Monoprotic weak acid titration model. Parameters ---------- V : array_like…, Simplified titration model for curve fitting. Parameters ---------- V :… (+1 more)
+
+### Community 197 - "Skill"
+Cohesion: 0.24
+Nodes (7): Parallel Computing, Expert Agent, Signal Processing, Checklist, Expert Agent, Routing Decision Tree, Simulation and HPC
+
+### Community 198 - "Expert Agent"
+Cohesion: 0.20
+Nodes (10): Expert Agent, Numerical Methods Implementation, Numerical Stability, ODE, Optimization, Optimization, Parallelization Strategies, PDE (+2 more)
+
+### Community 199 - "Amplitude Equations: Complex G"
+Cohesion: 0.20
+Nodes (10): Amplitude Equations: Complex Ginzburg-Landau, Checklist, Common Pitfalls, Expert Agents, Pattern Formation, Reaction-Diffusion on Graphs, Reaction-Diffusion Systems, Spiral Waves (+2 more)
+
+### Community 200 - "Greet_Multiple()"
+Cohesion: 0.29
+Nodes (7): greet_multiple(), Generate greeting messages for multiple names. Args: names: List of names to…, Tests for the greet_multiple function., Test greeting multiple names., Test greeting an empty list., Test greeting a single name in a list., TestGreetMultiple
+
+### Community 201 - "Test Basic Greeting Functional"
+Cohesion: 0.20
+Nodes (6): Test basic greeting functionality., Test greeting with different names., Test greeting with names containing spaces., Test that whitespace-only name raises ValueError., Tests for the greet function., TestGreet
+
+### Community 202 - "1. Relu Activations"
+Cohesion: 0.20
+Nodes (10): 1. ReLU Activations, 2. Residual Connections, 3. Proper Initialization, 4. Batch Normalization, 5. Layer Normalization (for RNNs), Root Causes, Solutions, Symptoms (+2 more)
+
+### Community 203 - "Automation Engineer"
+Cohesion: 0.22
+Nodes (8): automation-engineer, Dev Workflows Skill, software-architect, sre-expert, Scientific Feature Development Orchestrator, Flags, Merge All Branches, Rollback
+
+### Community 204 - "Debugging Toolkit Skill"
+Cohesion: 0.22
+Nodes (8): Debugging Toolkit Skill, quality-specialist, Scientific Computing Debugger, Best Practices, Modes, Process, Scientific Test Generation, Test Organization
+
+### Community 205 - "Double Check Command"
+Cohesion: 0.22
+Nodes (9): Double Check Command, Advanced, Comprehensive Validation, Modes, Output, Process, Quick (5 Dimensions), Standard/Enterprise (+5) (+1 more)
+
+### Community 206 - "Skill)"
+Cohesion: 0.22
+Nodes (9): [API Design Principles](../api-design-principles/SKILL.md), Backend Patterns, Checklist, Core Skills, [Error Handling Patterns](../error-handling-patterns/SKILL.md), Expert Agent, [Message Queue Patterns](../message-queue-patterns/SKILL.md), Routing Decision Tree (+1 more)
+
+### Community 207 - "Skill"
+Cohesion: 0.22
+Nodes (8): 1. The 6-Step Review Process, 2. Review Checklists, 3. Communication Standards, 4. Code Review Checklist, Code Review Excellence, Expert Agent, Performance, Security
+
+### Community 208 - "Engine"
 Cohesion: 0.22
 Nodes (6): IterationResult, Enum, Iterative CI/CD Error Resolution Engine Continuously fixes errors until zero…, Validate CLI arguments passed to gh subprocess calls., Record iteration results., _validate_gh_arg()
 
+### Community 209 - "Test Automation Skill"
+Cohesion: 0.22
+Nodes (9): Test Automation Skill, 1. The Testing Pyramid, 2. E2E Testing Patterns, 3. Automation Best Practices, 4. Test Automation Checklist, API Mocking, Expert Agent, Page Object Model (POM) (+1 more)
+
+### Community 210 - "Multimodal_Sequencing"
+Cohesion: 0.22
+Nodes (8): Decision points between modalities, For design-oriented plans, For simulation-heavy plans, Multimodal sequencing, Parallelism vs. sequencing, The ordering principle, Time budget, Writing the sequencing in the plan
+
+### Community 211 - "Instrument_Capability_Map"
+Cohesion: 0.22
+Nodes (8): 3× threshold: when to override, Example for Rheo-XPCS at APS 8-ID-I (illustrative), Format, Instrument capability map, Mitigation patterns, Required capability dimensions, Risk levels, What to do if most dimensions are MEDIUM or HIGH
+
+### Community 212 - "Julia_First_Rules"
+Cohesion: 0.22
+Nodes (8): Bridging to the Python validation harness, Core rules, Julia-first code architecture rules, Package layout, Reconciling code against the formalism, Testing, Which environment, Why these rules
+
+### Community 213 - "Formalism_Code_Reconcile"
+Cohesion: 0.33
+Nodes (8): extract_latex_symbols(), extract_python_symbols(), main(), normalize_name(), Path, Strip LaTeX backslashes and braces for comparison., formalism_code_reconcile.py Compare symbols used in a LaTeX formalism (Stage…, reconcile()
+
+### Community 214 - "Skill"
+Cohesion: 0.22
+Nodes (8): Best Practices, Checklist, Common Pitfalls, Expert Agent, Related skills, Reproducibility Checklist, Research Quality Assessment, Scope boundary
+
+### Community 215 - "Additional Resources"
+Cohesion: 0.22
+Nodes (9): Additional Resources, Bayesian Universal Differential Equation Workflow, Checklist, Common pitfalls, Composition with neighboring skills, Expert Agent, Mode Flag, Reference Files (+1 more)
+
+### Community 216 - "Skill"
+Cohesion: 0.22
+Nodes (8): Delegation, Expert Agent, Harmonic Response, Harmonic Response & Time-Temperature Superposition, Time-Temperature Superposition (TTS), Validity Check, WLF Equation, Workflow
+
+### Community 217 - "Skill"
+Cohesion: 0.25
+Nodes (7): Checklist, Expert Agents, MCMC Diagnostics, diagnose_mcmc(), main(), Comprehensive MCMC diagnostics. Args: mcmc: MCMC object after run() verbose:…, Comprehensive MCMC diagnostics for NumPyro inference. Usage: python…
+
+### Community 218 - "Growth_Curves"
+Cohesion: 0.22
+Nodes (7): exponential_phase(), gompertz_model(), logistic_growth(), Bacterial Growth Curves: Logistic Growth Model…, Logistic growth model (Verhulst equation). N(t) = K / (1 + ((K - N0)/N0) *…, Modified Gompertz model for bacterial growth with lag phase. N(t) = A *…, Exponential growth (no lag, no saturation). N(t) = N0 * exp(μ*t) Parameters…
+
+### Community 219 - "Materials_Characterization"
+Cohesion: 0.22
+Nodes (7): linear_elastic(), power_law_hardening(), ramberg_osgood(), Materials Characterization: Stress-Strain Curve Analysis…, Linear elastic stress-strain relationship (Hooke's Law). σ = E * ε # noqa:…, Ramberg-Osgood model for elastoplastic behavior. ε = σ/E + (σ/K)^n Rearranged…, Power law strain hardening model (Hollomon equation). σ = K * ε^n # noqa:…
+
+### Community 220 - "Skill)"
+Cohesion: 0.22
+Nodes (9): [Bayesian UDE Workflow](../bayesian-ude-workflow/SKILL.md), Checklist, Ecosystem Selection, Expert Agent, [JAX-Julia Interop](../jax-julia-interop/SKILL.md), Nonlinear Dynamics, Related Skills, Routing Decision Tree (+1 more)
+
+### Community 221 - "Checklist"
+Cohesion: 0.22
+Nodes (9): Checklist, Core Skills, [Ecosystem Selection](../ecosystem-selection/SKILL.md), Expert Agent, [GPU Acceleration](../gpu-acceleration/SKILL.md), [Numerical Methods Implementation](../numerical-methods-implementation/SKILL.md), Parallel Computing Suite, Profiling Tools (+1 more)
+
+### Community 222 - "Checklist"
+Cohesion: 0.22
+Nodes (9): Checklist, Expert Agent, Routing Decision Tree, Skill Selection Table, Statistical Physics Hub, Checklist, Expert Agent, Routing Decision Tree (+1 more)
+
+### Community 223 - "Skill)"
+Cohesion: 0.22
+Nodes (9): [Active Matter](../active-matter/SKILL.md), Core Skills, [Correlation Analysis](../correlation-analysis/SKILL.md), [Correlation Computational Methods](../correlation-computational-methods/SKILL.md), [Correlation Experimental Data](../correlation-experimental-data/SKILL.md), [Correlation Math Foundations](../correlation-math-foundations/SKILL.md), [Correlation Physical Systems](../correlation-physical-systems/SKILL.md), [Non-Equilibrium Theory](../non-equilibrium-theory/SKILL.md) (+1 more)
+
+### Community 224 - "1. Gradient Clipping (Essentia"
+Cohesion: 0.22
+Nodes (9): 1. Gradient Clipping (Essential!), 2. Lower Learning Rate, 3. Weight Regularization, 4. Careful Initialization, Exploding Gradients, Root Causes, Solutions, Symptoms (+1 more)
+
+### Community 225 - "1. Leaky Relu"
+Cohesion: 0.22
+Nodes (9): 1. Leaky ReLU, 2. Lower Learning Rate, 3. Proper Initialization, 4. Monitor During Training, Dead Neurons, Root Causes, Solutions, Symptoms (+1 more)
+
+### Community 226 - "Fixture"
+Cohesion: 0.25
+Nodes (7): fixture, parametrize, Tests for the core module., Test greet function with parametrized inputs., Fixture providing a sample greeter instance., sample_greeter(), test_greet_parametrized()
+
+### Community 227 - "App Developer"
+Cohesion: 0.61
+Nodes (8): App Developer, Automation Engineer, Documentation Expert, Quality Specialist, Software Architect, SRE Expert, Docs Command, Dev Hub
+
+### Community 228 - "1. Assess Repository (Single C"
+Cohesion: 0.25
+Nodes (8): 1. Assess Repository (single command), 2. Commit Changes (if dirty and no --skip-commit), 3. Show Plan, 4. Confirm (skip if --force), 5. Execute Merges, 6. Cleanup (skip if --no-delete), 7. Report, Execution
+
+### Community 229 - "Aws Secrets Manager"
+Cohesion: 0.25
+Nodes (8): AWS Secrets Manager, External Secrets Operator (K8s), GitHub Actions, HashiCorp Vault Integration, Secrets Management Skill, Secret Rotation (Automated/Manual), Secret Scanning (TruffleHog Pre-commit/CI), Terraform
+
+### Community 230 - "Skill"
+Cohesion: 0.25
+Nodes (7): 1. Systems Programming Patterns, 2. CLI Tool Design, 3. Engineering Checklist, Concurrency, Expert Agent, Memory Management, Systems & CLI Engineering
+
+### Community 231 - "Three Brain Skill"
+Cohesion: 0.25
+Nodes (8): Three-Brain Skill, CLI Invocation Protocol, Team Mode, Team Roles, team-stop Flow, Three-Brain, Two Modes, Workflow Loop (Semi-Automatic)
+
+### Community 232 - "Writing_Constraints"
+Cohesion: 0.25
+Nodes (7): Acronyms and defined terms, Banned vocabulary, Character-with-space limits, Punctuation, Quantified over qualitative, Voice, Writing constraints
+
+### Community 233 - "Proposal_Assembly"
+Cohesion: 0.25
+Nodes (7): Exit gate, Line-of-sight check, Optional: solo time-boxing, Proposal assembly, Specific Aims, Value-to-risk calibration, Write in reverse order
+
+### Community 234 - "Integrity_Checks"
+Cohesion: 0.25
+Nodes (7): Authorship concerns, Data and image integrity, Dual submission and duplicate publication, Ethics approvals and disclosures, Integrity Checks, Plagiarism and self-plagiarism, Selective reporting and p-hacking
+
+### Community 235 - "Julia Datadriven Diffeq"
+Cohesion: 0.25
+Nodes (7): Basic Usage, Custom Library Functions, DataDrivenDiffEq.jl — Full Julia API Reference, DifferentialEquations.jl Integration, Implicit SINDy, Threshold Sweep for Validation, Thresholding Algorithms
+
+### Community 236 - "Additional Resources"
+Cohesion: 0.25
+Nodes (8): Additional Resources, Checklist, Common Pitfalls, Equation Discovery, Expert Agents, Mode Flag, Reference Files, Routing Decision Tree
+
+### Community 237 - "Skill"
+Cohesion: 0.25
+Nodes (7): Cooperative & Collective Dynamics, Delegation, Expert Agent, Glass & Collective Dynamics, Glass & Jamming, Percolation Theory, Routing Within This Skill
+
+### Community 238 - "04_Bayesian_Inference"
+Cohesion: 0.32
+Nodes (7): bayesian_linear_model(), example_bayesian_inference(), generate_synthetic_data(), Workflow Pattern 4: Bayesian Inference with NumPyro Demonstrates NumPyro…, Generate synthetic regression data, Bayesian linear regression model, Complete Bayesian inference workflow with NumPyro
+
+### Community 239 - "Skill"
+Cohesion: 0.25
+Nodes (7): Checklist, Expert Agents, JAX-Julia Interop, Pattern 1: Julia Bifurcation + JAX Dense Sweep, Pattern 2: JAX GPU Simulation + Julia Dynamical Analysis, Pattern 3: Julia Symbolic Model + JAX GPU Training, Workflow Patterns
+
+### Community 240 - "Jax Optimization Pro"
+Cohesion: 0.25
+Nodes (8): JAX Optimization Pro, Additional Resources, Checklist, Example Files, Expert Agent, JAX Optimization Pro: The JAX-First Engineer, Reference Files, Skills Matrix: Junior vs Expert
+
+### Community 241 - "Additional Resources"
+Cohesion: 0.25
+Nodes (8): Additional Resources, Checklist, Composition with neighboring skills, Expert Agent, Julia Graph Neural Networks, Mode Flag, Reference Files, Training and Custom Message Passing
+
+### Community 242 - "Best Practices"
+Cohesion: 0.25
+Nodes (8): Best Practices, Checklist, Common Pitfalls, Deployment Strategies, Expert Agent, ML Pipeline Workflow, Pipeline Stages, Troubleshooting
+
+### Community 243 - "Benchmark_Comparison"
+Cohesion: 0.36
+Nodes (7): benchmark_comparison(), exponential_decay_jax(), exponential_decay_numpy(), Benchmark NLSQ vs SciPy curve_fit across different dataset sizes. Usage: python…, Exponential decay model (NumPy)., Exponential decay model (JAX)., Compare SciPy vs NLSQ across dataset sizes.
+
+### Community 244 - "Damped_Oscillation"
+Cohesion: 0.25
+Nodes (7): damped_oscillator(), damping_time(), quality_factor(), Damped Oscillation: Pendulum Damping Analysis…, Damped harmonic oscillator model. x(t) = A0 * exp(-γt) * cos(ωt + φ) Parameters…, Calculate quality factor Q. Q = ω / (2γ) Higher Q means less damping (more…, Calculate damping time constant (1/e decay time). τ = 1/γ Parameters ----------…
+
+### Community 245 - "Radioactive_Decay"
+Cohesion: 0.29
+Nodes (7): half_life_from_lambda(), propagate_uncertainty(), radioactive_decay(), Radioactive Decay: Half-Life Calculation…, Radioactive decay model: N(t) = N0 * exp(-lambda * t) Parameters ---------- t :…, Calculate half-life from decay constant. t_half = ln(2) / lambda Parameters…, Propagate uncertainty from decay constant to half-life. Using error…
+
+### Community 246 - "Readme"
+Cohesion: 0.25
+Nodes (7): 1. `nlsq_quickstart.ipynb`, 2. `nlsq_interactive_tutorial.ipynb`, 3. `advanced_features_demo.ipynb`, 📁 Directory Structure, 📓 Interactive Notebooks (Assets), NLSQ Examples Collection, 💡 Tips
+
+### Community 247 - "Skill"
+Cohesion: 0.25
+Nodes (7): Applications, Best Practices, Checklist, Composition with neighboring skills, Expert Agent, Non-Equilibrium Theory, Stochastic Dynamics
+
+### Community 248 - "Bnn"
+Cohesion: 0.43
+Nodes (7): get_data(), main(), model(), nonlin(), predict(), Example: Bayesian Neural Network ================================ We…, run_inference()
+
+### Community 249 - "Dais_Demo"
+Cohesion: 0.46
+Nodes (7): get_data(), kernel(), main(), model(), Example: AutoDAIS ================= AutoDAIS constructs a guide that combines…, run_nuts(), run_svi()
+
+### Community 250 - "Skill"
+Cohesion: 0.25
+Nodes (7): Contrastive Hebbian Learning & Energy-Based Models, Coupled Learning, Delegation, Expert Agent, Physical Learning Systems, Plasticity & Memory in Disordered Materials, Scope Boundary
+
+### Community 251 - "Core"
+Cohesion: 0.29
+Nodes (5): greet(), Core functionality for the example package. This module provides basic greeting…, Generate a greeting message using the configured prefix. Args: name: The name…, Generate a greeting message. Args: name: The name to greet. Must be a non-empty…, Example Package - A modern Python package template. This package demonstrates…
+
+### Community 252 - "Skill"
+Cohesion: 0.25
+Nodes (7): Delegation, Diagnostic Checklist, Expert Agent, Green-Tobolsky Model (Bond-Exchange Kinetics), Sticky Rouse Model (Physical Networks), Transient Networks & Covalent Adaptable Networks (CAN), Two Classes of Transient Network
+
+### Community 253 - "Hpc"
+Cohesion: 0.29
+Nodes (7): Julia ML/HPC, Julia Pro, Nonlinear Dynamics Expert, Bifurcation Analysis, Checklist, Common Pitfalls, Expert Agents
+
+### Community 254 - "Freud Analysis Library"
+Cohesion: 0.33
+Nodes (7): freud-analysis library, Correlation Analysis Orchestrator, Correlation Computational Methods, Correlation Experimental Data, Correlation Math Foundations, Correlation Physical Systems, DMA & Rheology
+
+### Community 255 - "Pennylane"
+Cohesion: 0.29
+Nodes (6): PennyLane, Algorithm Selection, Expert Agent, Production Checklist, Quantum Computing, Qiskit
+
+### Community 256 - "Sre Expert Agent"
+Cohesion: 0.29
+Nodes (5): SRE Expert Agent, Observability and SRE Skill, Observability and SRE Practices Skill, Prometheus Configuration Skill, SLO Implementation Skill
+
+### Community 257 - "Common Jit Errors"
+Cohesion: 0.29
+Nodes (7): Common JIT Errors, Debugging Toolkit, Expert Agents, JAX Debugging, Julia Debugging, NaN / Inf Hunting, Numerical Reproducibility
+
+### Community 258 - "1. History Management"
+Cohesion: 0.29
+Nodes (7): 1. History Management, 2. Advanced Discovery & Recovery, 3. Pull Request Best Practices, 4. Git Performance & Scale, Checklist, Expert Agent, Git & Workflow Management
+
+### Community 259 - "1. Project Detection"
+Cohesion: 0.29
+Nodes (7): 1. Project Detection, 2. Pre-flight CLI Check, 3. Create Team, 4. Create Initial Tasks, 5. Launch Agents, 6. Confirm to User, Execution Steps
+
+### Community 260 - "Format"
+Cohesion: 0.29
+Nodes (7): Format, Probability and impact scale, Risk register, Update discipline, What belongs here, What does not belong here, Why the early-signal column is critical
+
+### Community 261 - "Claim_Schema"
+Cohesion: 0.29
+Nodes (6): Claim schema, Design, Measurement, Mechanism, Prediction, What every claim must satisfy
+
+### Community 262 - "Search_Strategy"
+Cohesion: 0.29
+Nodes (6): Layer 1: Foundational, Layer 2: Recent (trailing 3 years), Layer 3: Adjacent, Query hygiene, Three-layer search strategy, When the literature is genuinely thin
+
+### Community 263 - "Validation_Report"
+Cohesion: 0.29
+Nodes (6): Pass 1: Analytic-limit recovery, Pass 2: Synthetic benchmark, Pass 3: Convergence study, Summary, Timing and resources, Validation report
+
+### Community 264 - "Premortem_Template"
+Cohesion: 0.29
+Nodes (6): Format, Premortem failure narrative, The discipline, What this narrative exposes (example), What this narrative suggests as early signals, Worked example (compressed)
+
+### Community 265 - "Hostile_Self_Audit"
+Cohesion: 0.29
+Nodes (6): 1. The $100k Kill Switch, 2. The Artifact Check, 3. The Bottleneck Route, Exit gate, Hostile self-audit, Worked example (rheology/XPCS)
+
+### Community 266 - "Skill"
+Cohesion: 0.29
+Nodes (6): Best Practices, Checklist, Common Pitfalls, Expert Agent, Related skills, Research Paper Implementation
+
+### Community 267 - "Experimental_Design_Checklist"
+Cohesion: 0.29
+Nodes (6): Ablation Studies, Baseline Comparisons, Experimental Design Checklist, Parameter Space Coverage, Replication Strategy, Statistical Power Analysis
+
+### Community 268 - "Methodology_Evaluation"
+Cohesion: 0.29
+Nodes (6): Control Adequacy (Score: __/10), Hypothesis Assessment (Score: __/10), Method Appropriateness (Score: __/10), Methodology Evaluation Framework, Reproducibility (Score: __/10), Statistical Validity (Score: __/10)
+
+### Community 269 - "Statistical_Rigor_Guide"
+Cohesion: 0.29
+Nodes (6): Effect Size Reporting, Multiple Testing Correction, Sensitivity & Robustness, Statistical Rigor Guide, Test Selection, Uncertainty Quantification
+
+### Community 270 - "Dimensional_Audit"
+Cohesion: 0.38
+Nodes (6): extract_equations(), format_annotation(), main(), Path, dimensional_audit.py Extracts labeled equations from a LaTeX file and reports…, Return a list of dicts with env, label, body, line_start.
+
+### Community 271 - "Cd Patterns Skill"
+Cohesion: 0.29
+Nodes (7): CI/CD Patterns Skill, Automation Tools, Basic CI Workflow, Checklist, Documentation Deployment, Expert Agent, Julia CI/CD Patterns
+
+### Community 272 - "Skill)"
+Cohesion: 0.29
+Nodes (7): [Constitutive Equations](../constitutive-equations/SKILL.md), Core Skills, [DMA & Rheology](../dma-rheology/SKILL.md), [FEM/FEA](../fem-fea/SKILL.md), [Harmonic Response & Superposition](../harmonic-response-superposition/SKILL.md), [Nanocomposites & Adaptive Materials](../nanocomposites-and-adaptive-materials/SKILL.md), [Transient Networks & CAN](../transient-networks-and-can/SKILL.md)
+
+### Community 273 - "Best Practices"
+Cohesion: 0.29
+Nodes (7): Best Practices, Checklist, Common Pitfalls, Deep Learning Experimentation, Directory Structure, Experiment Tracking, Expert Agent
+
+### Community 274 - "Neural Network Master Agent"
+Cohesion: 0.29
+Nodes (7): neural-network-master agent, Checklist, Diagnostics, Expert Agent, Julia Equivalent, Quick Reference, Training Diagnostics
+
+### Community 275 - "Common Pitfalls"
+Cohesion: 0.29
+Nodes (7): Common Pitfalls, Delegation, DMA & Rheology, Dynamic Mechanical Analysis (DMA), Expert Agent, Rheology, Workflow: From Raw Data to Constitutive Model
+
+### Community 276 - "Dvc For Data Versioning"
+Cohesion: 0.29
+Nodes (7): DVC for Data Versioning, Experiment Comparison, Experiment Tracking, Experiment Tracking Checklist, Expert Agent, MLflow Setup, Weights & Biases Integration
+
+### Community 277 - "Common Failure Modes"
+Cohesion: 0.29
+Nodes (7): Common Failure Modes, Convergence & Correctness Checklist, Delegation, Expert Agent, FEM/FEA, Toolchain, Weak-Form Workflow
+
+### Community 278 - "Additional Resources"
+Cohesion: 0.29
+Nodes (7): Additional Resources, Checklist, Example Files, Expert Agent, JAX Bayesian Pro: Inference as Transformation, Reference Files, Skills Matrix: Junior vs Expert
+
+### Community 279 - "Basic Transformation Stack (Gr"
+Cohesion: 0.29
+Nodes (7): Basic Transformation Stack (grad->vmap->jit->pmap), Common JAX Pitfalls, Transformation Composition Patterns, Performance Progression Chart, Transformation Order Matters (jit(vmap) vs vmap(jit)), Pitfalls & Fixes, Transforms
+
+### Community 280 - "Additional Resources"
+Cohesion: 0.29
+Nodes (7): Additional Resources, Checklist, Example Files, Expert Agent, JAX DiffEq Pro: The Differentiable Physicist, Reference Files, Skills Matrix: Junior vs Expert
+
+### Community 281 - "Namedtuple"
+Cohesion: 0.29
+Nodes (7): NamedTuple, Immutable training state - all state is explicit., Pure training step - no side effects, all state explicit., train_step(), TrainState, Full SPMD training loop with proper sharding., spmd_training_example()
+
+### Community 282 - "Checklist"
+Cohesion: 0.29
+Nodes (7): Checklist, Expert Agent, Julia AD Backends, Checklist, Expert Agent, Julia ML and Deep Learning, Routing Decision Tree
+
+### Community 283 - "Skill"
+Cohesion: 0.29
+Nodes (3): Checklist, Expert Agents, Julia Neural Architectures
+
+### Community 284 - "Core Skills"
+Cohesion: 0.29
+Nodes (7): Core Skills, [DevOps ML Infrastructure](../devops-ml-infrastructure/SKILL.md), [Federated Learning](../federated-learning/SKILL.md), [ML Engineering Production](../ml-engineering-production/SKILL.md), [ML Pipeline Workflow](../ml-pipeline-workflow/SKILL.md), [Model Deployment Serving](../model-deployment-serving/SKILL.md), [Model Optimization Deployment](../model-optimization-deployment/SKILL.md)
+
+### Community 285 - "Delegation"
+Cohesion: 0.29
+Nodes (7): Delegation, Effective-Medium Theories, Expert Agent, Nanocomposites & Adaptive Materials, Percolation Threshold, Self-Healing & Responsive Composites, Workflow
+
+### Community 286 - "02_Checkpoint_Resume"
+Cohesion: 0.38
+Nodes (6): gaussian_model(), main(), Example 2: Checkpoint Save and Resume This example demonstrates checkpoint…, Gaussian model: y = amp * exp(-0.5 * ((x - center) / width)^2), Callback to simulate interruption after 5 iterations. ``params`` and ``loss``…, simulate_interruption()
+
+### Community 287 - "03_Custom_Retry_Settings"
+Cohesion: 0.38
+Nodes (6): inject_noise_into_data(), main(), noisy_exponential(), Example 3: Custom Retry Settings for Noisy Data This example demonstrates how…, Exponential model with potential numerical issues, Inject NaN values into data to simulate noisy sensors
+
+### Community 288 - "Horseshoe_Regression"
+Cohesion: 0.48
+Nodes (6): get_data(), main(), model_bernoulli_likelihood(), model_normal_likelihood(), Example: Horseshoe Regression ============================= We demonstrate how…, run_inference()
+
+### Community 289 - "Ode"
+Cohesion: 0.38
+Nodes (6): dz_dt(), main(), model(), Example: Predator-Prey Model ============================ This example…, Lotka–Volterra equations. Real positive parameters `alpha`, `beta`, `gamma`,…, :param int N: number of measurement times :param numpy.ndarray y: measured…
+
+### Community 290 - "Async Context Manager"
+Cohesion: 0.29
+Nodes (7): Async Context Manager, Async Ecosystem, Async Generator (streaming), Async Patterns, Common Pitfalls, Entry Point, Testing Async Code
+
+### Community 291 - "Skill"
+Cohesion: 0.29
+Nodes (6): Checklist, Composition with neighboring skills, Diagnostics, Expert Agents, Julia ecosystem, Rare-Events Sampling
+
+### Community 292 - "Science Hub"
+Cohesion: 0.29
+Nodes (7): Science Hub, Checklist, Expert Agents, Hub Skills, Routing Decision Tree, Routing Table, Science Suite (science-hub)
+
+### Community 293 - "Skill"
+Cohesion: 0.29
+Nodes (6): Checklist, Deployment, Expert Agent, Framework Selection, Genie.jl REST API, Julia Web Development
+
+### Community 294 - "1. Audience Analysis"
+Cohesion: 0.33
+Nodes (6): 1. Audience Analysis, 2. Clarity & Structure, 3. Accuracy, 4. Completeness, 5. Accessibility, Pre-Response Validation Framework (5 Checks)
+
+### Community 295 - "Chain Of Thought Decision Fram"
+Cohesion: 0.33
+Nodes (6): Chain-of-Thought Decision Framework, Step 1: Context Analysis, Step 2: Security Review, Step 3: Code Quality Assessment, Step 4: Test Strategy, Step 5: Remediation & Feedback
+
+### Community 296 - "Software Architect Agent"
+Cohesion: 0.40
+Nodes (4): Software Architect Agent, Microservices Patterns Skill, Modernization & Migration Skill, Monorepo Management Skill
+
+### Community 297 - "1. Reliability Impact"
+Cohesion: 0.33
+Nodes (6): 1. Reliability Impact, 2. Observability Coverage, 3. Root Cause Analysis, 4. Performance Trade-offs, 5. Failure Modes, Pre-Response Validation Framework (5 Checks)
+
+### Community 299 - "Infrastructure As Code (Terraf"
+Cohesion: 0.33
+Nodes (6): Infrastructure as Code (Terraform), Module Structure, Terraform Best Practices, VPC + Lambda Example, Deployment, Kubernetes Manifests
+
+### Community 300 - "Accessibility Checker"
+Cohesion: 0.33
+Nodes (6): Accessibility Checker, Automated Scripts, Master Orchestrator, Performance Profiler, Security Scanner, Test Runner
+
+### Community 301 - "Operations"
+Cohesion: 0.33
+Nodes (6): Operations, Performance, Production Readiness, Security, Testing, Validation Checklist
+
+### Community 302 - "Git Bisect"
+Cohesion: 0.33
+Nodes (6): Git Bisect, Parallelism Checklist, Python Profiling, Quick Checklist, Systematic Process, Universal Strategies
+
+### Community 303 - "Find Agents.Sh"
+Cohesion: 0.40
+Nodes (4): find-agents.sh script, check(), run(), test-find-agents.sh script
+
+### Community 304 - "1. The Core Is A Valid Endpoin"
+Cohesion: 0.33
+Nodes (6): 1. The core is a valid endpoint, 2. Artifact integrity, 3. Canonical paths, 4. Silent downstream invalidation is forbidden, Four invariants you enforce, Research Spark Orchestrator
+
+### Community 305 - "Subagent_Stop"
+Cohesion: 0.40
+Nodes (5): check_artifacts(), main(), SubagentStop hook for research-suite. Gates on the STOPPED subagent's identity.…, # NOTE: current_stage is the stage IN PROGRESS, not yet done — SKILL.md's own, Real filesystem check replacing self-attestation. Reads the actual…
+
+### Community 306 - "Metrics_Prereg"
+Cohesion: 0.33
+Nodes (5): For each claim component, Pre-registered success metrics, What counts as a valid pre-registration, What pre-registration does not cover, Why the inconclusive region matters
+
+### Community 307 - "Fermi_Screen"
+Cohesion: 0.33
+Nodes (5): Common repair moves, Dimensionless ratio, Exit gate, Fermi feasibility screen, Fermi table
+
+### Community 308 - "Checklist"
+Cohesion: 0.33
+Nodes (6): Checklist, Expert Agents, Hub Skills, Research Suite (research-hub), Routing Decision Tree, Routing Table
+
+### Community 309 - "Continuum Mechanics Engineer A"
+Cohesion: 0.40
+Nodes (3): Continuum Mechanics Engineer Agent, Constitutive Equations Skill, Continuum Mechanics & Rheology Hub Skill
+
+### Community 310 - "Benchmark"
+Cohesion: 0.33
+Nodes (5): Backend Routing, /benchmark — Scientific Code Benchmarking, Token Strategy, Usage, What This Does
+
+### Community 311 - "Md Sim"
+Cohesion: 0.33
+Nodes (5): Engine Routing, /md-sim — Molecular Dynamics Simulation, Token Strategy, Usage, What This Does
+
+### Community 312 - "Constitutive Equations"
+Cohesion: 0.33
+Nodes (6): Constitutive Equations, Delegation, Expert Agent, Fitting Workflow (Prony Series to DMA Data), Model Catalog, Selecting a Hyperelastic Model
+
+### Community 313 - "Checklist"
+Cohesion: 0.33
+Nodes (6): Checklist, Expert Agent, Fourier, Laplace & Wavelet, Mathematical Foundations of Correlation Functions, Transforms
+
+### Community 314 - "Best Practices"
+Cohesion: 0.33
+Nodes (6): Best Practices, Checklist, Composition with neighboring skills, Domain Selection, Expert Agent, Physical Systems & Correlation Functions
+
+### Community 316 - "Skill"
+Cohesion: 0.33
+Nodes (5): Checklist, Expert Agent, Performance, Python/Julia Ecosystem Selection, Toolchain
+
+### Community 317 - "Create_Batch_Iterator()"
+Cohesion: 0.33
+Nodes (6): create_batch_iterator(), create_train_state(), functional_training_loop(), Create shuffled batch iterator as pure function. Returns a function that takes…, Complete training loop with no side effects., Create initial training state.
+
+### Community 318 - "Checklist"
+Cohesion: 0.33
+Nodes (6): Checklist, Delegation, Domain Selection, Expert Agent, JAX Physics Applications, Validation Checklist
+
+### Community 319 - "Skill"
+Cohesion: 0.33
+Nodes (5): Evaluation, Expert Agent, Hyperparameter Tuning, Julia ML Pipelines, Reproducibility Checklist
+
+### Community 320 - "Skill"
+Cohesion: 0.33
+Nodes (5): Anti-Patterns, Checklist, Expert Agent, Julia Neural Networks, Lux.jl vs Flux.jl
+
+### Community 321 - "Skill"
+Cohesion: 0.33
+Nodes (5): Checklist, Expert Agent, Julia Testing Patterns, Test Organization, Test Organization
+
+### Community 322 - "Best Practices"
+Cohesion: 0.33
+Nodes (6): Best Practices, Checklist, Common Pitfalls, Expert Agent, JuMP Optimization, Mixed-Integer Programming
+
+### Community 323 - "Skill"
+Cohesion: 0.33
+Nodes (5): Checklist, Common Pitfalls, Ecosystem Selection, Expert Agents, Network-Coupled Dynamics
+
+### Community 324 - "Dose_Response"
+Cohesion: 0.33
+Nodes (5): four_parameter_logistic(), inhibition_model(), Dose-Response Curves: EC50 and IC50 Determination…, 4-parameter logistic (4PL) dose-response model. Response = Bottom + (Top -…, Inhibition dose-response model (3-parameter). Response = Top / (1 +…
+
+### Community 325 - "System_Identification"
+Cohesion: 0.33
+Nodes (5): first_order_step_response(), System Identification: First-Order System Step Response…, First-order system step response with time delay. y(t) = K * (1 - exp(-(t -…, Second-order system step response (underdamped). For ζ < 1 (underdamped): y(t)…, second_order_step_response()
+
+### Community 326 - "Skill)"
+Cohesion: 0.33
+Nodes (6): [Bifurcation Analysis](../bifurcation-analysis/SKILL.md), [Chaos & Attractors](../chaos-attractors/SKILL.md), Core Skills, [Equation Discovery](../equation-discovery/SKILL.md), [Network-Coupled Dynamics](../network-coupled-dynamics/SKILL.md), [Pattern Formation](../pattern-formation/SKILL.md)
+
+### Community 327 - "Api_Reference"
+Cohesion: 0.33
+Nodes (5): API Reference Example, Reference Documentation for Numpyro Core Mastery, Structure Suggestions, When Reference Docs Are Useful, Workflow Guide Example
+
+### Community 328 - "Neutra"
+Cohesion: 0.53
+Nodes (4): dual_moon_model(), DualMoonDistribution, main(), Example: Neural Transport ========================= This example illustrates…
+
+### Community 329 - "Holt_Winters"
+Cohesion: 0.53
+Nodes (5): holt_winters(), main(), predict(), r""" Example: Holt-Winters Exponential Smoothing…, run_inference()
+
+### Community 330 - "Test That Fixture Can Be Reuse"
+Cohesion: 0.40
+Nodes (4): Test that fixture can be reused across tests., Tests demonstrating pytest fixture usage., Test using the greeter fixture., TestGreeterFixture
+
+### Community 331 - "Skill"
+Cohesion: 0.33
+Nodes (5): Best Practices, Checklist, Common Pitfalls, Expert Agent, Statistical Analysis Fundamentals
+
+### Community 332 - "Ml Expert"
+Cohesion: 0.40
+Nodes (5): ML Expert, /run-experiment, /analyze-data, /run-experiment, Advanced ML Systems Skill
+
+### Community 333 - "Python Pro Agent"
+Cohesion: 0.40
+Nodes (4): Python Pro Agent, Code Generation, Expert Agent, Symbolic Mathematics
+
+### Community 334 - "Quality Specialist Agent"
+Cohesion: 0.40
+Nodes (3): Quality Specialist Agent, Testing and Quality Skill, Testing Patterns Skill
+
+### Community 336 - "Onepage"
+Cohesion: 0.40
+Nodes (4): Formatting constraints, One-page summary, Structure, What belongs in a one-pager vs. a full proposal
+
+### Community 337 - "Format"
+Cohesion: 0.40
+Nodes (5): Format, Project log, Retention, What not to log, What to log
+
+### Community 338 - "Skill"
+Cohesion: 0.40
+Nodes (4): Checklist, Expert Agent, Related skills, Scientific Communication
+
+### Community 339 - "Analyze Data"
+Cohesion: 0.40
+Nodes (4): Analyze Data, Checklist, Examples, Workflow
+
+### Community 340 - "Run Experiment"
+Cohesion: 0.40
+Nodes (4): Checklist, Examples, Run Experiment, Workflow
+
+### Community 341 - "Checklist"
+Cohesion: 0.40
+Nodes (5): Checklist, Composition with neighboring skills, Consensus MCMC with Pigeons.jl, Diagnostics, Expert Agent
+
+### Community 342 - "Checklist"
+Cohesion: 0.40
+Nodes (5): Checklist, Continuum Mechanics & Rheology Hub, Expert Agent, Routing Decision Tree, Skill Selection Table
+
+### Community 343 - "Checklist"
+Cohesion: 0.40
+Nodes (5): Checklist, Common pitfalls, Composition with neighboring skills, DSPy Basics, Expert Agents
+
+### Community 344 - "Pysindy And Symbolic Regressio"
+Cohesion: 0.40
+Nodes (4): PySINDy and Symbolic Regression — Full Code Reference, PySINDy (Python), Related Python Packages, Symbolic Regression (Julia)
+
+### Community 345 - "Skill"
+Cohesion: 0.40
+Nodes (4): Checklist, Composition with neighboring skills, Expert Agents, Extreme Value Statistics
+
+### Community 346 - "Pmap_Train_Step()"
+Cohesion: 0.40
+Nodes (5): pmap_train_step(), Training step replicated across devices. Each device gets: - Full copy of…, Complete pmap training example., run_pmap_example(), pmap
+
+### Community 347 - "Md_Lennard_Jones"
+Cohesion: 0.50
+Nodes (4): compute_rdf(), main(), Complete JAX-MD Lennard-Jones Liquid Simulation This script demonstrates a full…, Compute radial distribution function g(r)
+
+### Community 348 - "Anti Patterns"
+Cohesion: 0.40
+Nodes (5): Anti-Patterns, Checklist, Expert Agent, Julia GPU Kernels, Memory Management
+
+### Community 349 - "Lux Training And Message Passi"
+Cohesion: 0.40
+Nodes (4): Canonical Lux training loop, Custom Message Passing, Lux Training Loop, Custom Message Passing, and Molecular GNN — Full Reference, Molecular Property Prediction
+
+### Community 350 - "Skill"
+Cohesion: 0.40
+Nodes (4): Expert Agent, Genie.jl REST API, Julia Model Deployment, Production Checklist
+
+### Community 351 - "Skill"
+Cohesion: 0.40
+Nodes (4): 4. Best Practices, Checklist, Expert Agent, Modern Concurrency in Python
+
+### Community 352 - "Best Practices"
+Cohesion: 0.40
+Nodes (5): Best Practices, Checklist, Expert Agent, Julia Equivalent, Neural Architecture Patterns
+
+### Community 353 - "Calculus And Backpropagation  "
+Cohesion: 0.40
+Nodes (5): Calculus and Backpropagation - Complete Reference, Chain Rule, Multivariable Chain Rule, Single Variable, Vector Chain Rule
+
+### Community 354 - "Checklist"
+Cohesion: 0.40
+Nodes (5): Checklist, Composition with neighboring skills, Expert Agent, NeuralPDE.jl — PINNs (deterministic), Routing Decision Tree
+
+### Community 355 - "Hybrid_Streaming_Demo"
+Cohesion: 0.50
+Nodes (4): main(), multi_scale_model(), Example: Adaptive Hybrid Streaming Optimizer with Parameter Normalization This…, Model with parameters spanning 6 orders of magnitude. This model is challenging…
+
+### Community 356 - "01_Basic_Fault_Tolerance"
+Cohesion: 0.50
+Nodes (4): exponential_decay(), main(), Example 1: Basic Fault Tolerance with Streaming Optimizer This example…, Exponential decay model: y = a * exp(-b * x)
+
+### Community 357 - "Nlsq_Example"
+Cohesion: 0.50
+Nodes (4): decay_model(), main(), Simple exponential decay model: A * exp(-lambda * x) + C, Example: NLSQ Non-linear Least Squares with JAX Demonstrates fitting a custom…
+
+### Community 358 - "Skill"
+Cohesion: 0.40
+Nodes (4): Best Practices, Checklist, Expert Agent, Julia Package Management
+
+### Community 359 - "Skill"
+Cohesion: 0.40
+Nodes (4): Expert Agent, Hyperparameter Tuning, Reinforcement Learning, Reward Shaping
+
+### Community 360 - "Robust Testing"
+Cohesion: 0.40
+Nodes (5): Robust Testing, 4. Best Practices, Checklist, Expert Agent, Robust Testing in Python
+
+### Community 362 - "Cargo Dist)"
+Cohesion: 0.50
+Nodes (4): CLI UX Design (POSIX, GoReleaser/Cargo Dist), Concurrency Primitives (Mutex/RWLock/Atomics/Lock-Free), Systems & CLI Engineering Skill, Memory Management (Arena/Pool Allocators)
+
+### Community 363 - "Model Routes"
+Cohesion: 0.50
+Nodes (3): Agy Routes, Codex and Agy route recipes, Codex Routes
+
+### Community 364 - "Integrity_Checks Reference (Lo"
+Cohesion: 0.50
+Nodes (4): integrity_checks.md reference (loaded in comprehensive mode), review_structure.md reference (loaded in standard/comprehensive mode), scientific-review skill, Six-lens analysis framework
+
+### Community 365 - "Bifurcationkit.Jl — Continuati"
+Cohesion: 0.50
+Nodes (4): BifurcationKit.jl — Continuation & Bifurcation Analysis, Domain 6: Nonlinear Dynamics (DynamicalSystems.jl + AUTO-07p), DynamicalSystems.jl — Chaos Analysis, Julia Pro - Unified Scientific Computing Specialist
+
+### Community 366 - "Bayesian Universal Differentia"
+Cohesion: 0.50
+Nodes (4): Bayesian Universal Differential Equations in JAX, Checklist, Common pitfalls, Expert Agents
+
+### Community 367 - "Turing Ude Stage Code"
+Cohesion: 0.50
+Nodes (3): Stage 1 — Deterministic warm-start, Stage 2 — Turing model with embedded ODE, Turing UDE Stage Code — Full Reference
+
+### Community 368 - "Applications"
+Cohesion: 0.50
+Nodes (4): Applications, Catalyst.jl Reaction Networks, Checklist, Expert Agent
+
+### Community 369 - "Chaos Characterization & Attra"
+Cohesion: 0.50
+Nodes (4): Chaos Characterization & Attractor Analysis, Checklist, Common Pitfalls, Expert Agents
+
+### Community 370 - "Computer Vision Skill"
+Cohesion: 0.50
+Nodes (4): Computer Vision Skill, Computer Vision, Evaluation Metrics, Expert Agent
+
+### Community 371 - "Checklist"
+Cohesion: 0.50
+Nodes (4): Checklist, DifferentialEquations.jl, Expert Agent, Solver Selection
+
+### Community 372 - "Funnel_Log_Prob_Centered()"
+Cohesion: 0.50
+Nodes (4): funnel_log_prob_centered(), funnel_log_prob_noncentered(), Centered parameterization - has funnel geometry., Non-centered parameterization - no funnel.
+
+### Community 373 - "Inspect_Jaxpr()"
+Cohesion: 0.50
+Nodes (4): inspect_jaxpr(), Inspect the JAX intermediate representation (jaxpr) of a function. Args: fn:…, inspect_jaxpr(), Print the JAX intermediate representation.
+
+### Community 374 - "01_Quick_Prototyping"
+Cohesion: 0.50
+Nodes (3): example_quick_prototyping(), Complete example of quick JAX prototyping workflow, Workflow Pattern 1: Quick JAX Prototyping Demonstrates incremental addition of…
+
+### Community 375 - "03_Multi_Device_Scaling"
+Cohesion: 0.50
+Nodes (3): example_multi_device_scaling(), Complete multi-device scaling example, Workflow Pattern 3: Multi-Device Scaling Demonstrates data and model…
+
+### Community 376 - "Dropout()"
+Cohesion: 0.50
+Nodes (4): dropout(), forward_with_dropout(), Dropout with explicit RNG., Forward pass with multiple dropout layers, each with unique RNG.
+
+### Community 377 - "Experiment Tracking"
+Cohesion: 0.50
+Nodes (4): Experiment Tracking, Expert Agent, ML Engineering Production Practices, Project Structure
+
+### Community 378 - "Checklist"
+Cohesion: 0.50
+Nodes (4): Checklist, Code Generation, Expert Agent, ModelingToolkit.jl
+
+### Community 379 - "Readme"
+Cohesion: 0.50
+Nodes (3): NLSQ Interactive Notebooks, 🔗 Related Resources, 💡 Tips
+
+### Community 380 - "1. `Nlsq_Quickstart.Ipynb`"
+Cohesion: 0.50
+Nodes (4): 1. `nlsq_quickstart.ipynb`, 2. `nlsq_interactive_tutorial.ipynb`, 3. `advanced_features_demo.ipynb`, 📓 Available Notebooks
+
+### Community 381 - "Benchmark_Mcmc_Vi"
+Cohesion: 0.50
+Nodes (3): benchmark_mcmc_vi(), Compare MCMC vs VI performance across dataset sizes. Args: model: NumPyro model…, Benchmark MCMC vs VI inference.
+
+### Community 382 - "Model_Comparison"
+Cohesion: 0.50
+Nodes (3): compare_models(), Model comparison using WAIC and LOO., Compare multiple models using WAIC and LOO. Args: models_dict: {name:…
+
+### Community 383 - "Prior_Predictive_Check"
+Cohesion: 0.50
+Nodes (3): prior_predictive_check(), Prior predictive checks for model validation., Generate and visualize prior predictive samples. Args: model: NumPyro model…
+
+### Community 384 - "Checklist"
+Cohesion: 0.50
+Nodes (4): Checklist, Composition with neighboring skills, Expert Agents, RLAIF and Preference Optimization
+
+### Community 387 - "Ddp Pattern"
+Cohesion: 0.67
+Nodes (3): DDP Pattern, DeepSpeed Config, Distributed Training
+
+### Community 388 - "Bioinformatics Skill"
+Cohesion: 0.67
+Nodes (3): Bioinformatics Skill, Bioinformatics, Expert Agent
+
+### Community 389 - "Aws Sagemaker"
+Cohesion: 0.67
+Nodes (3): AWS SageMaker, Cloud ML Platforms, GCP Vertex AI
+
+### Community 391 - "Memory Optimization Table"
+Cohesion: 0.67
+Nodes (3): Memory Optimization Table, Memory Optimization Stack (Remat/BF16/Sharding), Performance Optimization Checklist
+
+### Community 392 - "1. Jit Compilation (`Jax.Jit`)"
+Cohesion: 0.67
+Nodes (3): 1. JIT Compilation (`jax.jit`), Basic Usage, Purpose
+
+### Community 393 - "2. Vectorization (`Jax.Vmap`)"
+Cohesion: 0.67
+Nodes (3): 2. Vectorization (`jax.vmap`), Basic Usage, Purpose
+
+### Community 394 - "3. Multi Device Parallelism (`"
+Cohesion: 0.67
+Nodes (3): 3. Multi-Device Parallelism (`jax.pmap`), Basic Usage, Purpose
+
+### Community 395 - "4. Automatic Differentiation ("
+Cohesion: 0.67
+Nodes (3): 4. Automatic Differentiation (`jax.grad`), Basic Usage, Purpose
+
+### Community 397 - "Boundary Conditions"
+Cohesion: 0.67
+Nodes (3): Boundary Conditions, Physical Consistency, PINN Validation
+
+### Community 398 - "Aws Sagemaker"
+Cohesion: 0.67
+Nodes (3): AWS SageMaker, Cloud Deployment, GCP Vertex AI
+
+### Community 400 - "1. `Bayesian_Workflow_Template"
+Cohesion: 0.67
+Nodes (3): 1. `bayesian_workflow_template.py`, 2. `hierarchical_model_template.py`, 📁 Contents
+
+### Community 401 - "Customization Checklist"
+Cohesion: 0.67
+Nodes (3): Customization Checklist, For a New Project, 🚀 Quick Start
+
+### Community 403 - "Core Components"
+Cohesion: 0.67
+Nodes (3): Core Components, Embedding Models, Vector Databases
+
+### Community 404 - "Modern Sciml Components"
+Cohesion: 0.67
+Nodes (3): Modern SciML Components, UncertaintyQuantification.jl, Universal Differential Equations (UDEs)
+
+### Community 405 - "Bayesian Inference Hub"
+Cohesion: 0.67
+Nodes (3): Bayesian Inference Hub, Bayesian SINDy Workflow, Bayesian UDE Workflow
+
 ## Knowledge Gaps
-- **5662 isolated node(s):** `Config`, `PrototypeSkeleton`, `latex_compile_check.sh script`, `example-package`, `Terse Output Style` (+5657 more)
-  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 6440 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
-- **3291 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **4951 isolated node(s):** `Config`, `1. Hear the rough version`, `2. Targeted elicitation (only on gaps)`, `3. Produce three candidate framings`, `4. Elevator test` (+4946 more)
+  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 5686 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
+- **2510 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `main()` connect `main` to `dais_demo.py`, `mortality.py`, `03_custom_retry_settings.py`, `bayesian_workflow_template.py`, `generate_diagrams.py`, `GaussianShell`, `hsgp.py`, `capture_recapture.py`, `vqe_hydrogen.py`, `result_enhancements_demo.py`, `sparse_regression.py`, `doe_generator.py`, `multi_scale_model`, `stochastic_volatility.py`, `read_payload`, `step`, `model`, `function_library_demo.py`, `02_checkpoint_resume.py`, `annotation.py`, `hmm.py`, `formalism_code_reconcile.py`, `print_summary`, `lint_file`, `dedupe_refs.py`, `sensor_calibration.py`, `hierarchical_model_template.py`, `run_inference`, `dimensional_audit.py`, `gp.py`, `hmcecs.py`, `decay_model`, `latex_sanity.py`, `compute_rdf`, `pinn_heat_equation.py`, `ucbadmit.py`, `cfd_taylor_green.py`, `baseball.py`, `str`, `MCMC Diagnostics`?**
-  _High betweenness centrality (0.062) - this node is a cross-community bridge._
-- **Why does `MCMC Diagnostics` connect `MCMC Diagnostics` to `main`?**
-  _High betweenness centrality (0.040) - this node is a cross-community bridge._
-- **Why does `demo()` connect `demo` to `adjoint-methods.py`, `solver-selection.py`, `blackjax-custom-sampler.py`, `sde-brownian.py`?**
-  _High betweenness centrality (0.011) - this node is a cross-community bridge._
+- **Why does `main()` connect `Gaussian_Shells` to `Array`, `Bayesian_Workflow_Template`, `_Hook_Io`, `Counter`, `Dimensional_Audit`, `Compare_Training_Runs`, `02_Checkpoint_Resume`, `03_Custom_Retry_Settings`, `Pattern`, `Ode`, `Cfd_Taylor_Green`, `Pinn_Heat_Equation`, `Vqe_Hydrogen`, `Gp`, `Result_Enhancements_Demo`, `Funnel`, `Artifact_Diff`, `Bib_To_Steelman`, `04_Interpreting_Diagnostics`, `Stochastic_Volatility`, `Neutra`, `Function_Library_Demo`, `Formalism_Code_Reconcile`, `Annotation`, `Capture_Recapture`, `Skill`, `Md_Lennard_Jones`, `Doe_Generator`, `Generate_Diagrams`, `Hybrid_Streaming_Demo`, `Nlsq_Example`, `Bnn`, `Dais_Demo`, `Sensor_Calibration`, `Hierarchical_Model_Template`, `Baseball`?**
+  _High betweenness centrality (0.072) - this node is a cross-community bridge._
+- **Why does `MCMC Diagnostics` connect `Skill` to `Gaussian_Shells`?**
+  _High betweenness centrality (0.050) - this node is a cross-community bridge._
+- **Why does `Science Hub` connect `Science Hub` to `Direct Preference Optimization`, `Sci Workflow Engineer`, `Skill`, `Lux.Jl`, `Skill`, `Jax Bayesian Pro`, `Skill`, `Compiler Patterns Skill`, `Continuum Mechanics Engineer A`, `Skill`, `Ml Expert`, `Skill`, `Checklist`, `Julia Pro Agent`?**
+  _High betweenness centrality (0.043) - this node is a cross-community bridge._
 - **Are the 3 inferred relationships involving `main()` (e.g. with `guide()` and `model()`) actually correct?**
   _`main()` has 3 INFERRED edges - model-reasoned connections that need verification._
-- **What connects `Config`, `PrototypeSkeleton`, `latex_compile_check.sh script` to the rest of the system?**
-  _5662 weakly-connected nodes found - possible documentation gaps or missing edges._
-- **Should `Bayesian SINDy Workflow` be split into smaller, more focused modules?**
-  _Cohesion score 0.14285714285714285 - nodes in this community are weakly interconnected._
-- **Should `FixResult` be split into smaller, more focused modules?**
-  _Cohesion score 0.13538461538461538 - nodes in this community are weakly interconnected._
+- **What connects `Config`, `1. Hear the rough version`, `2. Targeted elicitation (only on gaps)` to the rest of the system?**
+  _4951 weakly-connected nodes found - possible documentation gaps or missing edges._
+- **Should `Correct Claude Code Hook Outpu` be split into smaller, more focused modules?**
+  _Cohesion score 0.05446853516657853 - nodes in this community are weakly interconnected._
+- **Should `Array` be split into smaller, more focused modules?**
+  _Cohesion score 0.05376972530683811 - nodes in this community are weakly interconnected._
