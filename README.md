@@ -8,7 +8,7 @@
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Docs](https://img.shields.io/badge/Docs-ReadTheDocs-brightgreen.svg)](https://myclaude.readthedocs.io/en/latest/)
 
-Claude Code plugin marketplace with **3 focused suites**, **20 expert agents**, **17 registered commands**, and **42 hub skills** routing to **156 sub-skills**. Built for the Claude 5 model generation (Opus 5, Sonnet 5, Haiku 4.5) with tiered model assignments, 12 lifecycle hook events across all suites, and hub-skill architecture for zero-ambiguity skill routing.
+Claude Code plugin marketplace with **3 focused suites**, **20 expert agents**, **17 registered commands**, and **42 hub skills** routing to **156 sub-skills**. Built for the Claude 5 model generation (Opus 5, Sonnet 5, Haiku 4.5) with tiered model assignments, 16 hook events across all suites, and hub-skill architecture for zero-ambiguity skill routing.
 
 ## The 3-Suite Hub Architecture
 

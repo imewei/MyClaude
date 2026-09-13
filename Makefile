@@ -1,5 +1,5 @@
 # Makefile for Claude Code Plugin Marketplace (MyClaude)
-# Version: 4.0.1
+# Version: see pyproject.toml (`make version`)
 
 .PHONY: help clean clean-all clean-python clean-docs clean-cache clean-build clean-reports \
         build docs docs-live test lint validate install dev-install plugin-enable-all \
@@ -319,7 +319,7 @@ plugin-enable-all: ## Enable all plugins in Claude Code (requires restart)
 info: ## Show repository information
 	@echo "=== Repository Information ==="
 	@echo "Name: Claude Code Plugin Marketplace (MyClaude)"
-	@echo "Version: 4.0.1"
+	@echo "Version: $$(grep '^version' pyproject.toml | head -1 | sed 's/.*"\(.*\)"/\1/')"
 	@echo "Author: Wei Chen"
 	@echo "Documentation: https://myclaude.readthedocs.io/en/latest/"
 	@echo "Repository: https://github.com/imewei/MyClaude"
