@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## v4.0.2 (2026-09-14)
 
 ### Model tiers: architect / contractor split
 - Rubric: **opus** for research, planning, review/audit, theory, and subsystem explanation (architect); **sonnet** for agents that write and debug code (contractor); **haiku** only for mechanical doc generation. Recorded in `CLAUDE.md`, `README.md`, `docs/reference/agents.md`, `docs/reference/cheatsheet.md`.

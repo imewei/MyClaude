@@ -3,7 +3,7 @@ Research Suite
 
 Scientific research workflows: peer review, idea-to-plan refinement, and methodology orchestration. Three complementary tracks — ``scientific-review`` (manuscripts from other authors → .docx referee report), ``research-spark`` (own rough idea → fundable proposal, 5-stage core + optional extension), and ``research-practice`` (general methodology hub).
 
-**Version:** 4.0.1 | **2 Agents** | **3 Registered Commands** | **10 Hubs → 7 Sub-skills** | **4 Hook Events**
+**Version:** 4.0.2 | **2 Agents** | **3 Registered Commands** | **10 Hubs → 7 Sub-skills** | **4 Hook Events**
 
 Created in v3.4.0 by extracting ``research-expert`` plus 5 methodology skills from ``science-suite`` and adding the research-spark pipeline (new orchestrator + 7 stage-specialist skills + ``_research-commons`` resource hub).
 
@@ -13,12 +13,12 @@ Agents
 .. agent:: research-expert
    :description: Unified specialist for research methodology, evidence synthesis (PRISMA/GRADE), statistical-rigor assessment, IMRaD structuring, paper-to-code reproduction, and publication-quality visualization. For one-off methodology tasks, not pipeline-driven work.
    :model: opus
-   :version: 4.0.1
+   :version: 4.0.2
 
 .. agent:: research-spark-orchestrator
    :description: Autonomous driver for the research-spark refinement pipeline (5-stage core to a fundable proposal + optional extension). Owns ``_state.yaml``, enforces the artifact contract, fans out to parallel sub-agents at Stage 2 (literature layers), Stage 6 (validation passes), and Stage 8 (reviewer archetypes).
    :model: opus
-   :version: 4.0.1
+   :version: 4.0.2
 
 Commands
 --------

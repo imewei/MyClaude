@@ -1,6 +1,6 @@
 # Agent Reference
 
-**20 Agents** across 3 suites | **Version:** 4.0.1
+**20 Agents** across 3 suites | **Version:** 4.0.2
 
 Agents are specialized AI personas with defined model tiers, tool access, and domain expertise. Each agent runs at a specific model tier. Opus is the architect, Sonnet is the contractor: **opus** for research, planning, review/audit, theory, and subsystem explanation; **sonnet** for code edits, bug fixes, and file-by-file implementation; **haiku** for mechanical doc generation.
 
@@ -88,4 +88,4 @@ See the [Integration Map](../integration-map.rst) for full delegation patterns a
 - [Integration Map](../integration-map.rst) — Suite dependencies and skill coverage
 - [Glossary](../glossary.rst) — Key terms (Hub Skill, Sub-Skill)
 
-*Generated from v4.0.1 validated marketplace data.*
+*Generated from v4.0.2 validated marketplace data.*

@@ -1,8 +1,8 @@
 Changelog
 =========
 
-Unreleased
-----------
+v4.0.2 (2026-09-14)
+-------------------
 
 **Model tiers: architect / contractor split**
 

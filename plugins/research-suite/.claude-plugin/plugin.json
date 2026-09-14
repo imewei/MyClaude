@@ -1,6 +1,6 @@
 {
   "name": "research-suite",
-  "version": "4.0.1",
+  "version": "4.0.2",
   "description": "Scientific research workflows \u2014 three tracks: scientific-review (peer review of other people's manuscripts \u2192 .docx), research-spark (artifact-gated refinement of your own rough idea into a fundable proposal: 5-stage core + optional extension), and research-practice (methodology hub: study design, paper reproduction, quality assessment, scientific writing, evidence synthesis)",
   "author": {
     "name": "Wei Chen",

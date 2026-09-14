@@ -3,7 +3,7 @@ Dev Suite
 
 Full-stack engineering, infrastructure, CI/CD, quality assurance, and debugging. Uses the :term:`Hub Skill` architecture with 9 hubs routing to 35 sub-skills. Merges engineering, infrastructure, and quality capabilities into a single development powerhouse.
 
-**Version:** 4.0.1 | **6 Agents** | **10 Registered Commands** | **9 Hubs → 35 Sub-skills** | **7 Hook Events**
+**Version:** 4.0.2 | **6 Agents** | **10 Registered Commands** | **9 Hubs → 35 Sub-skills** | **7 Hook Events**
 
 Agents
 ------
@@ -11,32 +11,32 @@ Agents
 .. agent:: software-architect
    :description: Expert in designing scalable backend systems, microservices, and high-performance APIs (REST/GraphQL/gRPC).
    :model: opus
-   :version: 4.0.1
+   :version: 4.0.2
 
 .. agent:: app-developer
    :description: Expert in building high-quality applications for Web, iOS, and Android. Masters React, Next.js, Flutter, and React Native.
    :model: sonnet
-   :version: 4.0.1
+   :version: 4.0.2
 
 .. agent:: automation-engineer
    :description: Expert in automating software delivery pipelines and optimizing Git collaboration workflows.
    :model: sonnet
-   :version: 4.0.1
+   :version: 4.0.2
 
 .. agent:: quality-specialist
    :description: Expert in ensuring software quality through rigorous code reviews, security audits, and test automation strategies.
    :model: sonnet
-   :version: 4.0.1
+   :version: 4.0.2
 
 .. agent:: sre-expert
    :description: Reliability Consultant expert in system reliability, observability, and incident response.
    :model: sonnet
-   :version: 4.0.1
+   :version: 4.0.2
 
 .. agent:: documentation-expert
    :description: Expert in creating clear, comprehensive, and accurate technical documentation and tutorials.
    :model: haiku
-   :version: 4.0.1
+   :version: 4.0.2
 
 Registered Commands
 -------------------
