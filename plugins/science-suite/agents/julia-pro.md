@@ -1,7 +1,7 @@
 ---
 name: julia-pro
 description: Use this agent for Julia language and SciML work. Typical triggers include dispatch design and type-stability tuning, DifferentialEquations.jl or ModelingToolkit modeling, sensitivity analysis and universal differential equations, and Bayesian or optimization work with Turing, Optimization.jl, or JuMP. ML/HPC scaling routes to julia-ml-hpc. See "When to invoke" in the agent body for worked scenarios.
-model: opus
+model: sonnet
 color: cyan
 effort: high
 memory: project

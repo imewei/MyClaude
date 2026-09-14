@@ -1,7 +1,7 @@
 ---
 name: pinn-engineer
 description: Use this agent for physics-informed machine learning. Typical triggers include building a PINN with NeuralPDE.jl or DeepXDE, enforcing boundary or conservation constraints in a loss, training neural operators such as FNO or DeepONet, and solving inverse PDE or parameter-identification problems. See "When to invoke" in the agent body for worked scenarios.
-model: opus
+model: sonnet
 color: cyan
 effort: high
 memory: project

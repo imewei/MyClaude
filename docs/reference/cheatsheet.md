@@ -23,7 +23,7 @@ plugin.json → hub skill → routing decision tree → sub-skill
 
 | Component | Count | Details |
 |-----------|-------|---------|
-| Agents | 6 | 1 opus, 4 sonnet, 1 haiku |
+| Agents | 6 | 2 opus, 3 sonnet, 1 haiku |
 | Commands | 10 registered | `/docs`, `/double-check`, `/eng-feature-dev`, `/fix-commit-errors`, `/merge-all`, `/modernize`, `/run-all-tests`, `/smart-debug`, `/test-generate`, `/workflow-automate` |
 | Skills | 9 hubs → 35 sub | dev-hub, three-brain, architecture-and-infra, backend-patterns, ci-cd-pipelines, data-and-security, dev-workflows, observability-and-sre, testing-and-quality |
 | Hooks | 7 events | SessionStart, UserPromptSubmit, PostToolUse, SubagentStop, TaskCompleted, SessionEnd, StopFailure |
@@ -45,7 +45,7 @@ plugin.json → hub skill → routing decision tree → sub-skill
 
 | Component | Count | Details |
 |-----------|-------|---------|
-| Agents | 12 | 7 opus, 4 sonnet, 1 haiku |
+| Agents | 12 | 4 opus, 7 sonnet, 1 haiku |
 | Commands | 4 registered | `/md-sim`, `/benchmark`, `/analyze-data`, `/run-experiment` |
 | Skills | 23 hubs → 114 sub | science-hub, advanced-simulations, bayesian-inference, continuum-mechanics-and-rheology, deep-learning, deep-learning-hub, jax-computing, julia-language, julia-mastery, julia-ml-and-dl, llm-and-ai, machine-learning, ml-and-data-science, ml-deployment, nonlinear-dynamics, parallel-computing, python-development, research-and-domains, sciml-and-diffeq, simulation-and-hpc, statistical-physics, statistical-physics-hub, time-series-analysis |
 | Hooks | 5 events | SessionStart, UserPromptSubmit, PostToolUse, SessionEnd, SubagentStop |
@@ -83,9 +83,9 @@ plugin.json → hub skill → routing decision tree → sub-skill
 
 | Tier | Count | Use Case | Agents |
 |------|-------|----------|--------|
-| **opus** | 10 | Deep reasoning, architecture, research | software-architect, research-expert, research-spark-orchestrator, continuum-mechanics-engineer, jax-pro, julia-pro, neural-network-master, nonlinear-dynamics-expert, pinn-engineer, statistical-physicist |
-| **sonnet** | 8 | Standard development and analysis | app-developer, automation-engineer, quality-specialist, sre-expert, julia-ml-hpc, python-pro, sci-workflow-engineer, simulation-expert |
-| **haiku** | 2 | Fast, simple tasks | documentation-expert, ml-expert |
+| **opus** | 8 | Architect: research, planning, review/audit, theory | software-architect, quality-specialist, research-expert, research-spark-orchestrator, continuum-mechanics-engineer, neural-network-master, nonlinear-dynamics-expert, statistical-physicist |
+| **sonnet** | 11 | Contractor: code edits, implementation, debugging | app-developer, automation-engineer, sre-expert, jax-pro, julia-pro, pinn-engineer, ml-expert, julia-ml-hpc, python-pro, sci-workflow-engineer, simulation-expert |
+| **haiku** | 1 | Mechanical doc generation | documentation-expert |
 
 ---
 

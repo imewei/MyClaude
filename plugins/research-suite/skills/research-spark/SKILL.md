@@ -1,11 +1,10 @@
 ---
-disable-model-invocation: true
 name: research-spark
 description: Orchestrator for a research-refinement pipeline. A five-stage core (spark, landscape, claim, theory) turns a rough idea into a testable, fundable research proposal; three further stages (numerical prototype, experiment design, premortem) are an optional extension toward execution, not required for the proposal itself. Triggers on phrases like "work on my idea about X", "refine this research spark", "let's scope this project", "continue the project on Y", "turn this into a fundable plan", "walk this idea through research-spark", or any description of a rough research idea the user wants to sharpen into a testable proposal. Also triggers when the user resumes work on a prior project (even implicitly, by saying "back to the X work") or asks to enter a specific stage by name. The orchestrator itself does not do the stage work; it figures out where the user is, loads the right specialist skill (spark-articulator, landscape-scanner, falsifiable-claim, theory-scaffold, numerical-prototype, experiment-designer, or premortem-critique), and at Stage 5 runs a hostile self-audit and assembles a proposal draft before asking whether to stop or continue into the optional extension.
 ---
 
 > **Loading a routing target.** `dev-suite:*`, `research-suite:*`, and `science-suite:*` targets below
-> are slash-only (`disable-model-invocation: true`) — the Skill tool will not fire them. Load one by
+> are mostly slash-only (`disable-model-invocation: true`) — the Skill tool will not fire those. Load one by
 > reading its file with the Read tool at `${CLAUDE_PLUGIN_ROOT}/skills/<name>/SKILL.md` — Claude Code
 > substitutes that variable with this plugin's install directory. A target in a sibling suite is at
 > the same relative path under that suite's own root. Targets from other plugins (`superpowers:*`,

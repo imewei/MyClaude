@@ -1,5 +1,4 @@
 ---
-disable-model-invocation: true
 name: three-brain
 description: |
   Route work between Claude, Codex, and Agy as live Herdr panes — either as a single one-shot second opinion, or as a persistent semi-automatic team that stays alive across a multi-round project. Use Route mode (default, one-shot) for second-opinion reviews of Claude's own work, high-risk code paths (auth/billing/migrations/secrets/infra), repeated failures on the same bug, video/audio/PDF/image inspection, long-context repository or document scans, and explicit requests like "ask Codex", "ask Agy", "second opinion", "sanity check", "review your work", or "use all three". Use Team mode (persistent) when the user asks to start a "dev team" or "content team", wants an ongoing multi-model review pipeline for a project, or asks to stop/shut down such a team — also trigger for "pair with codex and agy" or requests for Codex + Agy to collaboratively review ongoing work through multiple iterations. Prefer not to trigger for ordinary Q&A, simple edits, or reviewing user-authored non-code drafts unless the user explicitly asks for another model.
@@ -12,7 +11,7 @@ Use Claude as the driver. Call Codex or Agy only when their different strengths 
 
 Both modes reach the other models the same way: as **live, named Herdr agents in sibling panes**, prompted through `herdr agent prompt` and read through `herdr agent read`. A pane keeps its context across rounds, so the second review of a file costs far less than the first.
 
-> **This skill is slash-only** (`disable-model-invocation: true`). Nothing here self-fires — including Forced Risk Review and the Failure Counter below. Those describe what to do *once someone has typed* `/dev-suite:three-brain`; they are not ambient triggers.
+> **Loading.** Claude may load this skill directly via the Skill tool when the description matches, or the user may type `/dev-suite:three-brain`. Forced Risk Review and the Failure Counter below describe what to do *once the skill is loaded*; they are not ambient triggers outside it.
 
 ## Two Modes
 

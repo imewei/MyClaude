@@ -150,7 +150,7 @@ are reached through a hub's routing table and are intentionally not registered.
             report += "**Status:** ✅ All registered skill frontmatter is valid.\n"
 
         report += (
-            "\n_Skill triggering accuracy is not measured here. All MyClaude "
+            "\n_Skill triggering accuracy is not measured here. Most MyClaude "
             "skills set `disable-model-invocation: true`, so they are dispatched "
             "by slash command or by an explicit hub routing table, not by "
             "description matching._\n"

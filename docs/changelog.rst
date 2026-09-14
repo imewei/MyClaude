@@ -1,6 +1,18 @@
 Changelog
 =========
 
+Unreleased
+----------
+
+**Model tiers: architect / contractor split**
+
+* Rubric: ``opus`` for research, planning, review/audit, theory, and subsystem explanation (architect);
+  ``sonnet`` for agents that write and debug code (contractor); ``haiku`` only for mechanical doc generation.
+* Re-tiered: ``jax-pro``, ``julia-pro``, ``pinn-engineer`` opus -> sonnet; ``ml-expert`` haiku -> sonnet
+  (gains ``effort: high``); ``quality-specialist`` sonnet -> opus (read-only review agent).
+  Split now 8 opus / 11 sonnet / 1 haiku.
+* ``three-brain``, ``research-spark``, ``scientific-review`` drop ``disable-model-invocation: true``.
+
 v4.0.1 (2026-09-12)
 -------------------
 

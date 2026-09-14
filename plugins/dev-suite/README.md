@@ -7,7 +7,7 @@ suite for zero-friction cross-concern agent delegation.
 ## Overview
 
 Dev Suite covers the complete software development lifecycle with 6 specialized agents
-(1 opus, 4 sonnet, 1 haiku), 10 registered slash commands, and 9 hub skills routing to
+(2 opus, 3 sonnet, 1 haiku), 10 registered slash commands, and 9 hub skills routing to
 35 sub-skills. From architecture design through CI/CD to production debugging, every
 engineering workflow is covered. Agents delegate across specializations automatically —
 software-architect delegates to quality-specialist for security audits, sre-expert hands
@@ -49,7 +49,7 @@ off to automation-engineer for pipeline fixes.
 | `app-developer` | sonnet | Web/mobile apps, React, Next.js, Flutter |
 | `automation-engineer` | sonnet | CI/CD pipelines, GitHub Actions, Git workflows |
 | `sre-expert` | sonnet | Reliability, observability, SLO/SLI, incidents |
-| `quality-specialist` | sonnet | Code review, security audit, test automation |
+| `quality-specialist` | opus | Code review, security audit, test automation |
 | `documentation-expert` | haiku | Technical docs, manuals, tutorials |
 
 ## Commands (10 registered)

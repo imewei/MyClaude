@@ -1,7 +1,7 @@
 ---
 name: quality-specialist
 description: Use this agent when existing code needs review or audit rather than authoring. Typical triggers include a numerical-precision or JAX/JIT-safety audit, a Julia type-stability review, a reproducibility check on a scientific pipeline, and a security review or test-strategy design. Route new JAX or Julia authoring to jax-pro or julia-pro instead. See "When to invoke" in the agent body for worked scenarios.
-model: sonnet
+model: opus
 color: yellow
 effort: high
 memory: project

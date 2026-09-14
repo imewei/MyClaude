@@ -2,16 +2,16 @@
 
 Domain-specific scientific computing suite for high-performance computing, Julia ML/DL/HPC, specialized
 physics/chemistry simulations, and data science workflows. Agents primarily collaborate within the suite with only 2
-outward delegation edges. Multi-tier model routing: opus for deep-math specialists, sonnet for engineering-heavy work,
-haiku for mechanical MLOps.
+outward delegation edges. Multi-tier model routing: opus for theory and analysis specialists (architect), sonnet for
+agents that write and debug code (contractor).
 
 ## Overview
 
-Science Suite provides 12 specialized agents (7 opus, 4 sonnet, 1 haiku) covering JAX, Julia, physics, ML/DL, continuum
+Science Suite provides 12 specialized agents (4 opus, 7 sonnet, 1 haiku) covering JAX, Julia, physics, ML/DL, continuum
 mechanics, and nonlinear dynamics. Its 23 hub skills route to 114 sub-skills spanning nonlinear dynamics, Bayesian
-inference, statistical physics, simulation, and more. Opus agents handle deep reasoning (PINN/inverse-PDE theory,
-bifurcation theory, DL architecture) while sonnet agents handle implementation (JAX kernels, Julia code, Python systems,
-MD/HPC simulation). SessionStart hooks auto-detect JAX devices, GPU availability, and Julia environments. *(Research
+inference, statistical physics, simulation, and more. Opus agents handle deep reasoning (statistical physics,
+bifurcation theory, DL architecture, constitutive modeling) while sonnet agents handle implementation (JAX kernels, Julia
+code, PINN construction, classical ML, Python systems, MD/HPC simulation). SessionStart hooks auto-detect JAX devices, GPU availability, and Julia environments. *(Research
 methodology moved to `research-suite` in v3.4.0.)*
 
 ## Quick Start / Usage Examples
@@ -46,14 +46,14 @@ methodology moved to `research-suite` in v3.4.0.)*
 
 | Agent | Model | Specialization |
 |-------|-------|----------------|
-| `jax-pro` | opus | Core JAX, NumPyro, Diffrax, JAX-MD |
-| `julia-pro` | opus | Julia, SciML, DifferentialEquations.jl |
+| `jax-pro` | sonnet | Core JAX, NumPyro, Diffrax, JAX-MD |
+| `julia-pro` | sonnet | Julia, SciML, DifferentialEquations.jl |
 | `julia-ml-hpc` | sonnet | Julia ML, Deep Learning, HPC (Lux.jl, CUDA.jl, MPI.jl) |
-| `ml-expert` | haiku | Classical ML, MLOps, data engineering |
+| `ml-expert` | sonnet | Classical ML, MLOps, data engineering |
 | `simulation-expert` | sonnet | HPC, molecular dynamics, multiscale |
 | `statistical-physicist` | opus | Soft matter, non-equilibrium, correlations |
 | `python-pro` | sonnet | Python systems engineering, performance |
-| `pinn-engineer` | opus | Physics-informed neural networks, NeuralPDE.jl, DeepXDE |
+| `pinn-engineer` | sonnet | Physics-informed neural networks, NeuralPDE.jl, DeepXDE |
 | `sci-workflow-engineer` | sonnet | LLM integration into scientific pipelines, codegen, automation |
 | `neural-network-master` | opus | DL architecture, PINNs, theory, diagnostics |
 | `nonlinear-dynamics-expert` | opus | Bifurcation theory, chaos, network dynamics, pattern formation |

@@ -1,5 +1,13 @@
 # Changelog
 
+## Unreleased
+
+### Model tiers: architect / contractor split
+- Rubric: **opus** for research, planning, review/audit, theory, and subsystem explanation (architect); **sonnet** for agents that write and debug code (contractor); **haiku** only for mechanical doc generation. Recorded in `CLAUDE.md`, `README.md`, `docs/reference/agents.md`, `docs/reference/cheatsheet.md`.
+- Re-tiered: `jax-pro`, `julia-pro`, `pinn-engineer` opus -> sonnet (they write JAX/Julia/PINN code; theory stays with `neural-network-master`, `statistical-physicist`, `nonlinear-dynamics-expert`); `ml-expert` haiku -> sonnet (writes sklearn/Optuna/MLflow code; gains `effort: high`); `quality-specialist` sonnet -> opus (read-only review/audit agent, no Write/Edit tools).
+- Marketplace split now 8 opus / 11 sonnet / 1 haiku (dev-suite 2/3/1, research-suite 2/0/0, science-suite 4/7/1). `test_scicomp_redesign.py` tier assertions updated.
+- `three-brain`, `research-spark`, `scientific-review` skills drop `disable-model-invocation: true` so Claude can load them via the Skill tool.
+
 ## v4.0.1 (2026-09-12)
 
 Maintenance release — no new agents, commands, or skills. Component counts: 20 agents, 17 registered commands, 42 hubs -> 156 sub-skills (198 `SKILL.md`), 16 hook events.

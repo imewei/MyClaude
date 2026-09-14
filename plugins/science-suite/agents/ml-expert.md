@@ -1,7 +1,8 @@
 ---
 name: ml-expert
 description: Use this agent for classical machine learning and MLOps. Typical triggers include scikit-learn or gradient-boosting modeling, feature engineering and cross-validation design, hyperparameter search with Optuna and interpretability with SHAP, and experiment tracking or model serving with MLflow or W&B. Deep learning routes to neural-network-master. See "When to invoke" in the agent body for worked scenarios.
-model: haiku
+model: sonnet
+effort: high
 color: yellow
 memory: project
 maxTurns: 30

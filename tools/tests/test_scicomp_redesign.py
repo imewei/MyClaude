@@ -45,17 +45,17 @@ def _plugin_json(suite_dir: Path) -> dict:
 # ---------------------------------------------------------------------------
 
 class TestModelTiers:
-    def test_jax_pro_is_opus(self):
+    def test_jax_pro_is_sonnet(self):
         fm = _frontmatter(SCIENCE / "agents/jax-pro.md")
-        assert fm["model"] == "opus", "jax-pro must be upgraded to opus"
+        assert fm["model"] == "sonnet", "jax-pro writes JAX code (contractor tier) -> sonnet"
 
-    def test_julia_pro_is_opus(self):
+    def test_julia_pro_is_sonnet(self):
         fm = _frontmatter(SCIENCE / "agents/julia-pro.md")
-        assert fm["model"] == "opus", "julia-pro must be upgraded to opus"
+        assert fm["model"] == "sonnet", "julia-pro writes Julia code (contractor tier) -> sonnet"
 
-    def test_ml_expert_is_haiku(self):
+    def test_ml_expert_is_sonnet(self):
         fm = _frontmatter(SCIENCE / "agents/ml-expert.md")
-        assert fm["model"] == "haiku", "ml-expert must be demoted to haiku"
+        assert fm["model"] == "sonnet", "ml-expert writes sklearn/Optuna/MLflow code (contractor tier) -> sonnet"
 
 
 # ---------------------------------------------------------------------------
@@ -79,7 +79,7 @@ class TestAgentRepurposing:
 
     def test_pinn_engineer_model(self):
         fm = _frontmatter(SCIENCE / "agents/pinn-engineer.md")
-        assert fm.get("model") == "opus", "pinn-engineer must use opus (theory-heavy PINN/inverse-PDE work, swapped in the science-suite expand plan)"
+        assert fm.get("model") == "sonnet", "pinn-engineer builds and trains PINNs (contractor tier) -> sonnet; theory routes to neural-network-master"
 
     def test_sci_workflow_engineer_model(self):
         fm = _frontmatter(SCIENCE / "agents/sci-workflow-engineer.md")

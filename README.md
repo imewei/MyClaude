@@ -22,9 +22,9 @@ MyClaude v4.0.1 uses a **hub-skill architecture**: skills are organized into hub
 
 ## Specialist Agents
 
-20 agents with tiered model assignments: **10 opus** (deep reasoning), **8 sonnet** (standard), **2 haiku** (fast).
+20 agents with tiered model assignments: **8 opus** (architect: research, planning, review, theory), **11 sonnet** (contractor: code edits, implementation, debugging), **1 haiku** (mechanical docs).
 
-Tiers name Claude Code model aliases, not pinned versions, so each agent tracks the current generation: `opus` → Opus 5, `sonnet` → Sonnet 5, `haiku` → Haiku 4.5. The 18 `opus` and `sonnet` agents set `effort: high`; `xhigh` is deliberately unused, since it does not exist on Sonnet 4.6 or Opus 4.6. The two `haiku` agents set no `effort` at all — the field is not supported on Haiku 4.5.
+Tiers name Claude Code model aliases, not pinned versions, so each agent tracks the current generation: `opus` → Opus 5, `sonnet` → Sonnet 5, `haiku` → Haiku 4.5. The 19 `opus` and `sonnet` agents set `effort: high`; `xhigh` is deliberately unused, since it does not exist on Sonnet 4.6 or Opus 4.6. The one `haiku` agent sets no `effort` at all — the field is not supported on Haiku 4.5.
 
 Two models sit outside the alias set and are reachable only by pinning them explicitly on a dispatch (`model:` on the Agent call, or in an agent's frontmatter):
 
@@ -38,12 +38,12 @@ Two models sit outside the alias set and are reachable only by pinning them expl
 | `@software-architect` | Dev | opus | Backend systems, microservices, API design |
 | `@research-expert` | Research | opus | Literature reviews, experiment design, statistical rigor |
 | `@research-spark-orchestrator` | Research | opus | Artifact-gated refinement pipeline (5-stage core + optional extension) |
-| `@jax-pro` | Science | opus | JAX/JIT, vmap/pmap, Flax NNX, NumPyro, physics apps |
-| `@julia-pro` | Science | opus | Julia SciML, DifferentialEquations.jl, Turing.jl |
+| `@jax-pro` | Science | sonnet | JAX/JIT, vmap/pmap, Flax NNX, NumPyro, physics apps |
+| `@julia-pro` | Science | sonnet | Julia SciML, DifferentialEquations.jl, Turing.jl |
 | `@neural-network-master` | Science | opus | Deep learning theory and architecture |
 | `@statistical-physicist` | Science | opus | Correlation functions, non-equilibrium dynamics |
 | `@nonlinear-dynamics-expert` | Science | opus | Bifurcations, chaos, network dynamics, pattern formation |
-| `@pinn-engineer` | Science | opus | PINNs, BPINNs, NeuralPDE, MethodOfLines |
+| `@pinn-engineer` | Science | sonnet | PINNs, BPINNs, NeuralPDE, MethodOfLines |
 | `@continuum-mechanics-engineer` | Science | opus | FEM/FEA, constitutive modeling, DMA/rheology, nanocomposites |
 | `@simulation-expert` | Science | sonnet | Molecular dynamics, HPC, numerical methods |
 | `@sci-workflow-engineer` | Science | sonnet | Scientific workflow design and optimization |

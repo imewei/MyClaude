@@ -1,7 +1,7 @@
 ---
 name: jax-pro
 description: Use this agent for JAX-specific numerical work in Python, including Flax and Equinox. Typical triggers include jit, vmap, pmap, and sharding questions, custom VJP/JVP or autodiff debugging, XLA/HLO performance analysis, and building with Optax, Diffrax, Pallas, or NumPyro. Delegates molecular dynamics, bifurcation analysis, general Bayesian workflow, and productionization to peer agents. See "When to invoke" in the agent body for worked scenarios.
-model: opus
+model: sonnet
 color: green
 effort: high
 memory: project
