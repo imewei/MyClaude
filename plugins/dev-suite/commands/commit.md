@@ -15,6 +15,8 @@ $ARGUMENTS
 
 Routes to `quality-specialist` via `dev-suite:data-and-security` → `secrets-management` when staged files match `*.env`, `secrets`, `credentials`, or `keys` — a security pass before the commit is created, not after.
 
+This is a narrow filename-pattern gate at commit time, not a review. For a full content-level pass over the diff (security, quality, tests, types), use `/review-pr` (multi-agent fan-out, PR-scoped, report-only) or `/code-review` (single-pass, local diffs + PRs, can publish via `gh pr review`).
+
 ## Critical Requirements
 
 **NEVER include in commit messages:**
@@ -110,7 +112,7 @@ Focus on motivation, not what (code shows that).
 | No AI attribution | 5 |
 | No marketing language | 5 |
 | Reasonable size (≤300 lines) | 15 |
-| Reasonable file count (≤5) | 10 |
+| Reasonable file count (≤10) | 10 |
 | Has staged files | 5 |
 | **Total** | **100** |
 
