@@ -3,7 +3,7 @@ Dev Suite
 
 Full-stack engineering, infrastructure, CI/CD, quality assurance, and debugging. Uses the :term:`Hub Skill` architecture with 9 hubs routing to 36 sub-skills. Merges engineering, infrastructure, and quality capabilities into a single development powerhouse.
 
-**Version:** 4.0.3 | **12 Agents** | **14 Registered Commands** | **9 Hubs → 36 Sub-skills** | **7 Hook Events**
+**Version:** 4.0.4 | **12 Agents** | **14 Registered Commands** | **9 Hubs → 36 Sub-skills** | **7 Hook Events**
 
 Agents
 ------
@@ -11,62 +11,62 @@ Agents
 .. agent:: software-architect
    :description: Expert in designing scalable backend systems, microservices, and high-performance APIs (REST/GraphQL/gRPC).
    :model: opus
-   :version: 4.0.3
+   :version: 4.0.4
 
 .. agent:: app-developer
    :description: Expert in building high-quality applications for Web, iOS, and Android. Masters React, Next.js, Flutter, and React Native.
    :model: sonnet
-   :version: 4.0.3
+   :version: 4.0.4
 
 .. agent:: automation-engineer
    :description: Expert in automating software delivery pipelines and optimizing Git collaboration workflows.
    :model: sonnet
-   :version: 4.0.3
+   :version: 4.0.4
 
 .. agent:: quality-specialist
    :description: Expert in ensuring software quality through rigorous code reviews, security audits, and test automation strategies.
    :model: opus
-   :version: 4.0.3
+   :version: 4.0.4
 
 .. agent:: sre-expert
    :description: Reliability Consultant expert in system reliability, observability, and incident response.
    :model: sonnet
-   :version: 4.0.3
+   :version: 4.0.4
 
 .. agent:: documentation-expert
    :description: Expert in creating clear, comprehensive, and accurate technical documentation and tutorials.
    :model: haiku
-   :version: 4.0.3
+   :version: 4.0.4
 
 .. agent:: code-reviewer
    :description: /review-pr fan-out pass — full CRITICAL-to-LOW security/quality checklist over a diff. Not standalone; adopted from ecc.
    :model: sonnet
-   :version: 4.0.3
+   :version: 4.0.4
 
 .. agent:: comment-analyzer
    :description: /review-pr fan-out pass — comment accuracy and rot risk. Not standalone; adopted from ecc.
    :model: haiku
-   :version: 4.0.3
+   :version: 4.0.4
 
 .. agent:: pr-test-analyzer
    :description: /review-pr fan-out pass — PR test coverage quality and completeness. Not standalone; adopted from ecc.
    :model: sonnet
-   :version: 4.0.3
+   :version: 4.0.4
 
 .. agent:: silent-failure-hunter
    :description: /review-pr fan-out pass — swallowed errors, empty catches, dangerous fallbacks. Not standalone; adopted from ecc.
    :model: sonnet
-   :version: 4.0.3
+   :version: 4.0.4
 
 .. agent:: type-design-analyzer
    :description: /review-pr fan-out pass — whether types make illegal states harder to represent. Not standalone; adopted from ecc.
    :model: sonnet
-   :version: 4.0.3
+   :version: 4.0.4
 
 .. agent:: code-simplifier
    :description: /review-pr fan-out pass, or standalone via /refactor-clean — simplifies code without behavior change. Adopted from ecc.
    :model: sonnet
-   :version: 4.0.3
+   :version: 4.0.4
 
 Registered Commands
 -------------------

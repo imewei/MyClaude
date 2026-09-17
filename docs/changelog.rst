@@ -1,6 +1,15 @@
 Changelog
 =========
 
+v4.0.4 (2026-09-17)
+-------------------
+
+**All plugins: remove disable-model-invocation from all skills**
+
+* Dropped the ``disable-model-invocation: true`` frontmatter field from all 195 ``SKILL.md`` files
+  across dev-suite, research-suite, and science-suite. The flag forced every skill (hubs and
+  sub-skills alike) to be slash-invocable only, blocking automatic model-driven routing.
+
 v4.0.3 (2026-09-17)
 -------------------
 

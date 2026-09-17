@@ -1,6 +1,6 @@
 {
   "name": "science-suite",
-  "version": "4.0.3",
+  "version": "4.0.4",
   "description": "Scientific computing, HPC, physics/chemistry simulations, and data science workflows with extended context and adaptive multi-tier model reasoning",
   "author": {
     "name": "Wei Chen",
