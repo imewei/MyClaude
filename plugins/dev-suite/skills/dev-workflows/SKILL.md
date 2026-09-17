@@ -38,6 +38,9 @@ Systematic debugging methodology, profiler-guided diagnosis, and root cause anal
 ### [Three-Brain](../three-brain/SKILL.md)
 Multi-model routing between Claude, Codex, and Agy, in two modes. Route mode (default, one-shot): second-opinion code review, high-risk path scrutiny, repeated-failure rescue, multimodal analysis (video/audio/PDF/images), and long-context repository scans. Team mode (persistent): a Claude developer/author plus a Codex reviewer and Agy reviewer stay alive across an ongoing multi-round project, where creation + dual-perspective review repeats across tasks.
 
+### [Config GC](../config-gc/SKILL.md)
+Human-in-the-loop garbage collection for `~/.claude` itself — stale skills, memory, hooks, permissions, MCP servers, and caches. Periodic maintenance of the Claude Code setup, not the project.
+
 ## Routing Decision Tree
 
 ```
@@ -57,6 +60,9 @@ What is the workflow concern?
 |
 +-- Second opinion / Codex review / Agy scan (one-shot) / dev-team / content-team / multi-round team review?
 |   --> dev-suite:three-brain
+|
++-- Clean up / audit ~/.claude itself (skills, hooks, permissions, caches)?
+|   --> dev-suite:config-gc
 |
 +-- None of the above / concern is ambiguous or spans multiple areas?
     --> Delegate to software-architect for open-ended triage, or clarify the

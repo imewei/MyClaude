@@ -27,18 +27,26 @@
   "agents": [
     "./agents/app-developer.md",
     "./agents/automation-engineer.md",
+    "./agents/code-reviewer.md",
+    "./agents/code-simplifier.md",
+    "./agents/comment-analyzer.md",
     "./agents/documentation-expert.md",
+    "./agents/pr-test-analyzer.md",
     "./agents/quality-specialist.md",
+    "./agents/silent-failure-hunter.md",
     "./agents/software-architect.md",
-    "./agents/sre-expert.md"
+    "./agents/sre-expert.md",
+    "./agents/type-design-analyzer.md"
   ],
   "commands": [
+    "./commands/code-review.md",
     "./commands/docs.md",
     "./commands/double-check.md",
     "./commands/eng-feature-dev.md",
     "./commands/fix-commit-errors.md",
     "./commands/merge-all.md",
     "./commands/modernize.md",
+    "./commands/review-pr.md",
     "./commands/run-all-tests.md",
     "./commands/smart-debug.md",
     "./commands/test-generate.md",

@@ -43,6 +43,12 @@ SKILL_BUDGET_PERCENT = 0.02
 # own the detail rather than to restate it.
 AGENT_PROMPT_MAX_CHARS = 10_000
 
+# Agents exempt from AGENT_PROMPT_MAX_CHARS: byte-identical upstream imports kept at
+# 100% parity with their source (see plugin's adoption note), not eligible for trimming.
+AGENT_BUDGET_EXEMPT = {
+    "dev-suite/code-reviewer",  # ecc:code-reviewer, adopted verbatim
+}
+
 
 @dataclass
 class SkillBudgetResult:
@@ -162,12 +168,13 @@ def check_agent_budget(agent_md: Path, plugin_name: str) -> AgentBudgetResult:
     content = agent_md.read_text(encoding="utf-8")
     parts = content.split("---", 2)
     body = parts[-1] if len(parts) == 3 else content
+    exempt = f"{plugin_name}/{agent_md.stem}" in AGENT_BUDGET_EXEMPT
     return AgentBudgetResult(
         agent_name=agent_md.stem,
         plugin_name=plugin_name,
         file_path=str(agent_md),
         body_chars=len(body),
-        fits=len(body) <= AGENT_PROMPT_MAX_CHARS,
+        fits=exempt or len(body) <= AGENT_PROMPT_MAX_CHARS,
     )
 
 
