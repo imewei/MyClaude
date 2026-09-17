@@ -1,5 +1,4 @@
 ---
-disable-model-invocation: true
 name: stochastic-dynamics
 description: Model stochastic dynamics using master equations, Fokker-Planck, Langevin dynamics, Green-Kubo transport theory, and jump-diffusion SDEs (dx = f dt + g dW + J dN). Use when simulating noise-driven systems, calculating transport coefficients, modeling rare events, or simulating general physics jump-diffusion SDEs outside the reaction-network context (for biochemical reaction networks use catalyst-reactions instead).
 ---

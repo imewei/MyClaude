@@ -1,5 +1,4 @@
 ---
-disable-model-invocation: true
 name: modeling-toolkit
 description: Define symbolic differential equations with ModelingToolkit.jl for automatic simplification and code generation. Use when building complex mathematical models declaratively. Also use when composing multi-physics systems from reusable components, performing symbolic index reduction for DAEs, generating optimized ODE/SDE code from symbolic expressions, or connecting ModelingToolkit models to DifferentialEquations.jl solvers. Use proactively when the user mentions symbolic modeling, acausal modeling, or component-based differential equation systems in Julia.
 ---

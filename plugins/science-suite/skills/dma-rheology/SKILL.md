@@ -1,5 +1,4 @@
 ---
-disable-model-invocation: true
 name: dma-rheology
 description: Dynamic Mechanical Analysis (DMA) and rheology — storage/loss modulus interpretation, tan delta, oscillatory shear rheology, and shear/extensional flow curves. Use when interpreting DMA or rheometer output, identifying the linear viscoelastic regime, or distinguishing shear from extensional rheological behavior.
 ---

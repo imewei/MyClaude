@@ -1,5 +1,4 @@
 ---
-disable-model-invocation: true
 name: bayesian-inference
 description: Meta-orchestrator for Bayesian inference and probabilistic programming. Routes to NumPyro, Turing.jl, Pigeons consensus MCMC, Bayesian UDE workflows, Bayesian PINNs, point-process / Hawkes inference, variational inference, and MCMC diagnostics skills. Use when building probabilistic models with NumPyro or Turing.jl, sampling multimodal posteriors with parallel tempering, fitting Bayesian neural ODEs or PINNs, modeling self-exciting event data, running MCMC inference, implementing variational inference, or diagnosing sampler convergence.
 ---

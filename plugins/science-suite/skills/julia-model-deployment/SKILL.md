@@ -1,5 +1,4 @@
 ---
-disable-model-invocation: true
 name: julia-model-deployment
 description: Deploy trained Julia models to production. Covers ONNX.jl model export, Genie.jl/Oxygen.jl REST API serving, PackageCompiler.jl system images for startup elimination, Docker containerization, and interop with Python serving stacks via PythonCall.jl. Use when deploying Julia ML models or reducing startup latency.
 ---

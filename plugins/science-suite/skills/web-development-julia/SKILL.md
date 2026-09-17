@@ -1,5 +1,4 @@
 ---
-disable-model-invocation: true
 name: web-development-julia
 description: Build web applications with Genie.jl MVC framework and HTTP.jl. Use when creating REST APIs, handling HTTP requests, or building web services in Julia. Also use when adding JSON endpoints, setting up middleware or authentication, deploying Julia web servers with Docker or systemd, or choosing between Genie.jl, HTTP.jl, and Oxygen.jl. Use proactively when the user mentions serving a Julia model over HTTP or building a dashboard backend in Julia.
 ---

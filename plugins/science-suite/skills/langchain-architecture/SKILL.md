@@ -1,5 +1,4 @@
 ---
-disable-model-invocation: true
 name: langchain-architecture
 description: Design LLM applications with LangChain agents, chains, memory, and tools. Use when building autonomous agents, RAG systems, multi-step workflows, conversational AI with memory, or custom tool integrations.
 ---

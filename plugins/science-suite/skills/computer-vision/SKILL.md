@@ -1,5 +1,4 @@
 ---
-disable-model-invocation: true
 name: computer-vision
 description: "Implement computer vision pipelines with OpenCV, torchvision, and Hugging Face Vision Transformers including object detection (YOLO, DETR), image segmentation, feature extraction, and video analysis. Use when building CV models, processing images, or implementing detection/segmentation pipelines."
 ---

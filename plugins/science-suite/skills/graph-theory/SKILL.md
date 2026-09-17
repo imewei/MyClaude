@@ -1,5 +1,4 @@
 ---
-disable-model-invocation: true
 name: graph-theory
 description: Graph theory foundations — spectral graph theory, graph algorithms, and network topology metrics. Use when the task requires reasoning about a graph/network structure itself (spectral properties, centrality, connectivity, community structure) rather than a specific application domain (GNNs, coupled oscillators, FEM meshes) that happens to use a graph representation.
 ---

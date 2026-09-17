@@ -1,5 +1,4 @@
 ---
-disable-model-invocation: true
 name: testing-and-quality
 description: Meta-orchestrator for testing and code quality. Routes to test automation, testing patterns, E2E, validation, code review, and plugin validation skills. Use when writing tests, setting up test automation, implementing E2E testing, analyzing test coverage, designing test pyramids, validating code quality, conducting code reviews, or checking plugin structure.
 ---

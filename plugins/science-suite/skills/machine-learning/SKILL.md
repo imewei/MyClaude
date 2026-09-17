@@ -1,5 +1,4 @@
 ---
-disable-model-invocation: true
 name: machine-learning
 description: Comprehensive Classical Machine Learning suite. Covers scikit-learn, XGBoost, LightGBM, and MLOps pipelines. Focuses on tabular data, feature engineering, production deployment, algorithm selection, cross-validation, hyperparameter tuning (GridSearch, Optuna), handling imbalanced data (SMOTE), model evaluation, SHAP interpretability, and deployment. Use when training classical ML models, selecting algorithms for tabular data, tuning hyperparameters, or deploying ML pipelines to production.
 ---

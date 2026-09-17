@@ -1,5 +1,4 @@
 ---
-disable-model-invocation: true
 name: fem-fea
 description: Finite Element Modeling/Analysis — weak-form formulation, mesh strategy, element selection, and convergence verification. Use when setting up a FEM simulation, choosing element types, diagnosing mesh-convergence or locking issues, or picking between FEniCS, scikit-fem, Gridap.jl, or Ferrite.jl.
 ---

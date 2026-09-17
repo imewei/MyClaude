@@ -1,5 +1,4 @@
 ---
-disable-model-invocation: true
 name: julia-mastery
 description: Master the Julia language for scientific computing. Covers multiple dispatch, type stability, metaprogramming, and the SciML ecosystem. Use when writing Julia code, optimizing type stability, designing multiple dispatch hierarchies, or integrating SciML packages.
 ---

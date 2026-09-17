@@ -1,5 +1,4 @@
 ---
-disable-model-invocation: true
 name: experiment-designer
 description: Stage 7 of the research-spark pipeline. Translates the Stage 6 predicted observable into an experimental plan with an instrument capability map (3x margin rule on every dimension), pre-registered success metrics, controls, a formal power analysis, a design-of-experiments matrix, and a risk register. Triggers on phrases like "design the experiment", "plan the measurements", "build the DoE", "check instrument capability for this prediction", "compute statistical power for this comparison", "write the risk register", "pre-register the metrics", "what samples do we need", or after Stage 6 completes. The capability map is the central artifact; it is the thing that catches "the measurement cannot actually resolve what we predicted" before beamtime is spent finding that out experimentally.
 ---

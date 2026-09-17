@@ -1,5 +1,4 @@
 ---
-disable-model-invocation: true
 name: iterative-error-resolution
 description: Reference patterns for CI/CD error classification, fix strategies, and resolution loops. Provides domain knowledge for the /fix-commit-errors command. Use when analyzing GitHub Actions failures, dependency conflicts, or build/test error patterns.
 ---

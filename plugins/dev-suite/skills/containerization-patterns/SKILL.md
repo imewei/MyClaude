@@ -1,5 +1,4 @@
 ---
-disable-model-invocation: true
 name: containerization-patterns
 description: Build and optimize Docker containers and Kubernetes deployments including multi-stage builds, image security, pod design, Helm charts, and container orchestration. Use when writing Dockerfiles, creating K8s manifests, optimizing image size, or designing container architectures.
 ---

@@ -1,5 +1,4 @@
 ---
-disable-model-invocation: true
 name: transient-networks-and-can
 description: Transient network rheology — physical gels (reversible non-covalent crosslinks) and covalent adaptable networks (vitrimers) with bond-exchange kinetics. Use when modeling stress relaxation in self-healing gels, vitrimers, or any material with reversible/exchangeable crosslinks, including sticky Rouse and Green-Tobolsky models.
 ---

@@ -1,5 +1,4 @@
 ---
-disable-model-invocation: true
 name: nonlinear-dynamics
 description: Meta-orchestrator for nonlinear dynamics analysis. Routes to specialized skills for bifurcation analysis, chaos/attractors, network dynamics, pattern formation, and equation discovery. Use when analyzing dynamical systems, computing Lyapunov exponents, discovering governing equations from data (SINDy), reconstructing attractors, studying coupled oscillators, spatiotemporal chaos, or data-driven model discovery.
 ---

@@ -1,5 +1,4 @@
 ---
-disable-model-invocation: true
 name: glass-and-collective-dynamics
 description: Glass physics, jamming, and collective phenomena in disordered/soft-matter systems — random landscapes, aging, cooperative dynamics, and percolation theory. Use when analyzing glassy relaxation, jamming transitions, aging dynamics, cooperative/collective particle motion, or percolation thresholds in filler networks or disordered media.
 ---

@@ -1,5 +1,4 @@
 ---
-disable-model-invocation: true
 name: debugging-toolkit
 description: Scientific computing debugging patterns — JAX TracerBoolConversionError/ConcretizationTypeError, Julia @code_warntype type-stability, NaN/inf hunting, numerical reproducibility isolation, and memory profiling for JAX/Julia. For the structured pre-fix debugging workflow, use superpowers:systematic-debugging. Provides domain knowledge for /smart-debug.
 ---

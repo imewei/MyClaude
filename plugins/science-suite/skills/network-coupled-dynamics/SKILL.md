@@ -1,5 +1,4 @@
 ---
-disable-model-invocation: true
 name: network-coupled-dynamics
 description: Coupled dynamics on networks with NetworkDynamics.jl (Julia) and JAX sparse graph operations. Covers Kuramoto synchronization, master stability function, chimera states, epidemic models (SIR/SIS), graph Laplacian dynamics, and synchronization order parameters. Use Julia for small networks (<1K nodes), JAX for large-scale GPU simulation (>1K nodes). Use when modeling coupled oscillators on graphs, analyzing synchronization transitions, or simulating epidemic spreading on networks.
 ---

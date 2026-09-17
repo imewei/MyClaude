@@ -1,5 +1,4 @@
 ---
-disable-model-invocation: true
 name: sciml-and-diffeq
 description: Meta-orchestrator for Scientific Machine Learning and differential equations in Julia. Routes to SciML ecosystem, DiffEq solvers, ModelingToolkit, optimization, neural PDE, reaction networks, JuMP, SINDy equation discovery, bifurcation analysis, and Bayesian UDE skills. Use when solving ODEs/PDEs/SDEs in Julia, using ModelingToolkit, fitting models with Optimization.jl, building neural PDEs, modeling chemical reactions, discovering equations from data, computing bifurcation diagrams, or fitting Bayesian neural ODEs.
 ---

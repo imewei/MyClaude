@@ -1,5 +1,4 @@
 ---
-disable-model-invocation: true
 name: bayesian-sindy-workflow
 description: Build Bayesian SINDy workflows with horseshoe priors, ensemble SINDy, and UQ-SINDy. Use when you need credible intervals on SINDy coefficients, inclusion probabilities for library terms, noise-robust sparse regression, or Bayesian model comparison between candidate dynamical systems. Use proactively when the user mentions horseshoe prior, spike-and-slab, Bayesian SINDy, UQ-SINDy, inclusion probability, posterior SINDy, or sparse Bayesian regression on a dynamical-system library.
 ---

@@ -1,5 +1,4 @@
 ---
-disable-model-invocation: true
 name: nanocomposites-and-adaptive-materials
 description: Nanocomposite and adaptive-material modeling — effective-medium theory (Halpin-Tsai, Mori-Tanaka), percolation-aware property prediction, and self-healing/responsive composite behavior. Use when predicting effective modulus/conductivity from filler volume fraction and aspect ratio, or modeling self-healing composites.
 ---

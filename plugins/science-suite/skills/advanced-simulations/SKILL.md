@@ -1,5 +1,4 @@
 ---
-disable-model-invocation: true
 name: advanced-simulations
 description: Hub for advanced simulation workflows that combine MD setup, ML force fields, multiscale modeling, trajectory analysis, rare-event sampling, and non-equilibrium transport. Use when setting up molecular dynamics, choosing or training force fields, bridging atomistic-to-mesoscale models, analyzing trajectories, computing transport properties, or planning rare-event/weighted-ensemble simulations. For general HPC/GPU/numerical-method routing, use simulation-and-hpc.
 ---

@@ -1,5 +1,4 @@
 ---
-disable-model-invocation: true
 name: harmonic-response-superposition
 description: Harmonic response analysis and time-temperature superposition (TTS) — complex modulus under sinusoidal loading, WLF equation, and master curve construction. Use when building a master curve from multi-temperature frequency sweeps, applying the WLF equation, or analyzing steady-state harmonic loading response.
 ---

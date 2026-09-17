@@ -1,5 +1,4 @@
 ---
-disable-model-invocation: true
 name: federated-learning
 description: "Build federated learning systems with Flower and PySyft including privacy-preserving training, differential privacy, secure aggregation, cross-silo/cross-device FL, and communication efficiency. Use when training models across distributed data sources, implementing privacy-preserving ML, or designing federated architectures."
 ---

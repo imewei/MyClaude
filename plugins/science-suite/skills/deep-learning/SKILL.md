@@ -1,5 +1,4 @@
 ---
-disable-model-invocation: true
 name: deep-learning
 description: Core deep-learning implementation skill for standard neural networks, training loops, regularization, loss selection, and framework-neutral PyTorch/JAX/TensorFlow patterns. Use when building baseline models, implementing custom layers or losses, validating data/shape flow, or explaining feedforward/backprop training mechanics. For architecture selection, math derivations, diagnostics, experiments, or distributed training, enter through deep-learning-hub.
 ---

@@ -1,5 +1,4 @@
 ---
-disable-model-invocation: true
 name: backend-patterns
 description: Meta-orchestrator for backend development patterns. Routes to Node.js, async Python, API design, GraphQL, WebSocket, and message queue skills. Use when building REST APIs, Node.js services, async Python backends, GraphQL endpoints, WebSocket connections, or message queue integrations.
 ---

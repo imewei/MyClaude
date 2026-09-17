@@ -1,5 +1,4 @@
 ---
-disable-model-invocation: true
 name: dev-workflows
 description: Meta-orchestrator for development workflows and tooling. Routes to Git workflow, documentation standards, data pipeline orchestration (Airflow), and systematic debugging skills. Use when managing Git branches and commits, maintaining documentation workflow standards, orchestrating data pipelines with Airflow, or systematically debugging runtime issues. For writing scientific software docs or tutorials, use documentation-expert or /docs.
 ---

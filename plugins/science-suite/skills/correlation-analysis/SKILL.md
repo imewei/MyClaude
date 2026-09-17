@@ -1,5 +1,4 @@
 ---
-disable-model-invocation: true
 name: correlation-analysis
 description: Meta-orchestrator for correlation function analysis. Routes to mathematical foundations, physical systems, computational methods, and experimental data interpretation skills. Use when computing correlation functions, analyzing DLS/SAXS/XPCS data, implementing FFT-based correlators, or connecting microscopic correlations to macroscopic response.
 ---

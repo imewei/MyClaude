@@ -1,5 +1,4 @@
 ---
-disable-model-invocation: true
 name: sciml-modern-stack
 description: Modern Julia SciML stack with Lux.jl neural networks, SciMLSensitivity.jl adjoint/forward sensitivity, Universal Differential Equations (UDEs), UncertaintyQuantification.jl, and DeepEquilibriumNetworks.jl. Use when building neural ODEs, performing sensitivity analysis, quantifying uncertainty, or combining physics with ML in Julia SciML workflows.
 ---

@@ -1,5 +1,4 @@
 ---
-disable-model-invocation: true
 name: ml-pipeline-workflow
 description: Build end-to-end MLOps pipelines with Airflow, Dagster, Kubeflow, or Prefect for data preparation, training, validation, and deployment. Use when creating DAG definitions, workflow configs, or orchestrating ML lifecycle stages.
 ---

@@ -1,5 +1,4 @@
 ---
-disable-model-invocation: true
 name: julia-ml-pipelines
 description: Build ML pipelines in Julia with MLJ.jl for model selection, tuning, and evaluation, plus DrWatson.jl for experiment management and reproducibility. Covers learning networks, composable pipelines, hyperparameter tuning (Grid/Random/Latin), cross-validation, and scientific project organization. Use when building end-to-end ML workflows in Julia.
 ---

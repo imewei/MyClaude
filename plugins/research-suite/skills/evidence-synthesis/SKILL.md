@@ -1,5 +1,4 @@
 ---
-disable-model-invocation: true
 name: evidence-synthesis
 description: Conduct systematic literature reviews (PRISMA), meta-analyses, and evidence grading (GRADE). This skill should be used when the user asks to "systematic review", "meta-analysis", "PRISMA flow diagram", "grade this evidence", "pool effect sizes", "compute I-squared / Q-statistic", "GRADE summary table", "publication-bias funnel plot", or any request to aggregate findings across multiple studies or evaluate evidence quality at the field level. For a structured three-layer literature scan inside an active research-spark project, use `landscape-scanner`; for peer-reviewing a single manuscript, use `scientific-review`.
 ---

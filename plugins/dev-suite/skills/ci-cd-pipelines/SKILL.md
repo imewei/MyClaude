@@ -1,5 +1,4 @@
 ---
-disable-model-invocation: true
 name: ci-cd-pipelines
 description: Meta-orchestrator for CI/CD pipeline design. Routes to GitHub Actions, GitLab CI, pipeline design, security scanning, and error resolution skills. Use when setting up GitHub Actions, GitLab CI, designing deployment pipelines, adding security scanning, or resolving CI/CD errors.
 ---

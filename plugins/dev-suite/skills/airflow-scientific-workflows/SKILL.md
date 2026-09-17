@@ -1,5 +1,4 @@
 ---
-disable-model-invocation: true
 name: airflow-scientific-workflows
 description: Design Apache Airflow DAGs for scientific data pipelines, batch computations, distributed simulations, and time-series data ingestion with PostgreSQL/TimescaleDB integration. Use when orchestrating experimental workflows or coordinating scientific computations.
 ---

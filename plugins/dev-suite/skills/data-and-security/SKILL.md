@@ -1,5 +1,4 @@
 ---
-disable-model-invocation: true
 name: data-and-security
 description: Meta-orchestrator for data layer and security patterns. Routes to database, SQL, caching, search, authentication, and secrets management skills. Use when designing database schemas, optimizing SQL queries, implementing caching, building search, adding authentication, or managing secrets.
 ---

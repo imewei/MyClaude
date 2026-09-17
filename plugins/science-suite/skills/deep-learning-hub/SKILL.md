@@ -1,5 +1,4 @@
 ---
-disable-model-invocation: true
 name: deep-learning-hub
 description: Meta-orchestrator for deep learning. Routes to architecture design, mathematical foundations, training diagnostics, experimentation, and advanced systems skills. Use when designing neural architectures, deriving backpropagation, diagnosing training failures (loss divergence, gradient explosion/vanishing), running ablation studies, hyperparameter search, or building large-scale distributed DL systems.
 ---

@@ -1,5 +1,4 @@
 ---
-disable-model-invocation: true
 name: premortem-critique
 description: Stage 8 of the research-spark pipeline. Writes a failure narrative for the full plan, clusters failure modes by root cause, identifies the cheapest early signal for each cluster, and loops back to insert those signals as concrete milestones in the Stage 7 plan. Also generates a one-page summary for external critique and runs a simulated reviewer critique across multiple archetypes. Triggers on phrases like "do a premortem", "write the failure narrative", "stress-test the plan", "what could go wrong", "prepare a one-page summary for external review", "run a simulated reviewer on the full proposal", "what would kill this project", or after Stage 7 completes. The success criterion for this stage is not that it produces a good document; it is that the Stage 7 plan is different after running it. If nothing changed upstream, the premortem was not serious.
 ---

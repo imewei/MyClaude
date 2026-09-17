@@ -1,5 +1,4 @@
 ---
-disable-model-invocation: true
 name: robust-testing
 description: Implement robust testing strategies using property-based testing, advanced fixtures, and mutation testing. Use when writing tests with Hypothesis, implementing complex pytest fixtures, or ensuring high reliability in scientific computations.
 ---

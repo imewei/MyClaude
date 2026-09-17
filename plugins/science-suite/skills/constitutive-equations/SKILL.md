@@ -1,5 +1,4 @@
 ---
-disable-model-invocation: true
 name: constitutive-equations
 description: Constitutive modeling — linear elasticity, hyperelasticity (Neo-Hookean, Mooney-Rivlin, Ogden), and viscoelasticity (Maxwell, Kelvin-Voigt, generalized Maxwell/Prony series). Use when selecting or fitting a stress-strain relation, choosing between hyperelastic strain-energy functions, or fitting a Prony series to relaxation/DMA data.
 ---

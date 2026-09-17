@@ -1,5 +1,4 @@
 ---
-disable-model-invocation: true
 name: julia-language
 description: Meta-orchestrator for Julia language and ecosystem. Routes to core patterns, packages, compilation, performance, testing, CI/CD, visualization, and interop skills. Use when writing Julia code, managing packages, optimizing performance, writing tests, setting up CI/CD, or building cross-language workflows.
 ---

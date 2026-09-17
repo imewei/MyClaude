@@ -1,5 +1,4 @@
 ---
-disable-model-invocation: true
 name: consensus-mcmc-pigeons
 description: Sample multimodal posteriors with Pigeons.jl non-reversible parallel tempering. Use when NUTS chains fail to mix across modes, R-hat stays elevated, or the posterior is multimodal by construction (mixtures, weakly identified UDEs, label-switching). Also use when scaling MCMC across MPI ranks or threads. Use proactively when the user mentions consensus Monte Carlo, parallel tempering, NRPT, multimodal posterior, or Pigeons.
 ---

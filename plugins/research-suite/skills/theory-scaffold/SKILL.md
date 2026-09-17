@@ -1,5 +1,4 @@
 ---
-disable-model-invocation: true
 name: theory-scaffold
 description: Stages 4 and 5 of the research-spark pipeline (merged because derivation and formalization interleave in practice). Derives a theoretical framework from first principles, formalizes it in LaTeX, checks known limits, and identifies governing dimensionless groups. Triggers on phrases like "derive the equations", "write down the theory for this claim", "formalize the model", "check the limits", "identify the dimensionless groups", "build the Fokker-Planck / Langevin / GLE / variational structure for this", "work out the math for the claim", or after Stage 3 completes. Also triggers on SciML gray-box specifications where the user needs to draw the boundary between physics-prescribed and learned components. Enforces a stepwise derivation protocol that blocks multi-step mathematical leaps, because that is where symbolic errors concentrate. Produces 04_theory.md plus a compilable 05_formalism.tex.
 ---

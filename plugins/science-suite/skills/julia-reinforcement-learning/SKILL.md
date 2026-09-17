@@ -1,5 +1,4 @@
 ---
-disable-model-invocation: true
 name: julia-reinforcement-learning
 description: Implement reinforcement learning in Julia with ReinforcementLearning.jl. Covers policy gradient methods (PPO, A2C), value-based methods (DQN, DDPG), custom environments, multi-agent RL, and integration with Lux.jl for policy networks. Use when building RL agents or custom environments in Julia.
 ---

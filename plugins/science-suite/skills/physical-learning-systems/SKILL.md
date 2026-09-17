@@ -1,5 +1,4 @@
 ---
-disable-model-invocation: true
 name: physical-learning-systems
 description: Physical and energy-based learning in disordered and soft-matter systems — coupled learning, contrastive Hebbian learning in physical (mechanical/electrical) networks, plasticity and memory formation in disordered materials, and Hopfield-style energy-based learning applied to physical substrates. Distinct from classical ML algorithms — this is learning as a physical/statistical-mechanics phenomenon, not a learning algorithm implemented in software.
 ---

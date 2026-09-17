@@ -1,5 +1,4 @@
 ---
-disable-model-invocation: true
 name: catalyst-reactions
 description: Model chemical reaction networks with Catalyst.jl for deterministic and stochastic simulations. Use when modeling biochemical pathways, chemical kinetics, gene regulatory networks, enzyme kinetics, or metabolic networks. Also use when defining reaction stoichiometry with @reaction_network, converting between ODE/SDE/Jump systems, running Gillespie stochastic simulations, or building systems biology models in Julia, even if the user doesn't mention Catalyst.jl by name.
 ---

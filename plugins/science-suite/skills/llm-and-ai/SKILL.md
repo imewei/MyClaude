@@ -1,5 +1,4 @@
 ---
-disable-model-invocation: true
 name: llm-and-ai
 description: Meta-orchestrator for LLM integration into scientific workflows and AI engineering. Routes to scientific RAG pipelines, LLM-powered discovery, LLM evaluation, LangChain, and NLP for research. Use when building LLM tools for scientists, evaluating model outputs for scientific workflows, implementing RAG over scientific corpora, or integrating LLMs with experiments and numerical code.
 ---

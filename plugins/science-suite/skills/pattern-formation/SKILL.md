@@ -1,5 +1,4 @@
 ---
-disable-model-invocation: true
 name: pattern-formation
 description: Spatiotemporal pattern formation in reaction-diffusion systems. Covers Turing instability analysis, dispersion relations, reaction-diffusion on graphs, Swift-Hohenberg equation, spiral waves, and amplitude equations (Ginzburg-Landau). Julia (MethodOfLines.jl, ModelingToolkit.jl) for symbolic PDE and JAX for GPU pseudo-spectral methods. Use when analyzing Turing patterns, simulating reaction-diffusion PDEs, or deriving amplitude equations for spatial instabilities.
 ---

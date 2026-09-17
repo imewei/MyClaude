@@ -1,5 +1,4 @@
 ---
-disable-model-invocation: true
 name: ml-and-data-science
 description: Meta-orchestrator for machine learning and data science. Routes to classical ML, data analysis, wrangling, statistics, visualization, curve fitting, and experiment tracking skills. Use when training classical ML models, analyzing experimental data, wrangling datasets, running statistical tests, or creating scientific visualizations. For production ML deployment and serving, see the ml-deployment hub.
 ---

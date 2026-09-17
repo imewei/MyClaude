@@ -1,5 +1,4 @@
 ---
-disable-model-invocation: true
 name: interop-patterns
 description: Master cross-language integration with PythonCall.jl, RCall.jl, and CxxWrap.jl. Use when calling Python/R libraries from Julia or minimizing data transfer overhead. Also use when importing NumPy/pandas/scikit-learn into Julia, calling ggplot2 or R statistical functions, wrapping C++ code, or optimizing zero-copy data transfers across language boundaries. Use proactively when the user wants to combine Julia with Python or R workflows, even if they don't mention interop explicitly.
 ---

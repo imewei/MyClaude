@@ -1,5 +1,4 @@
 ---
-disable-model-invocation: true
 name: jax-optimization-pro
 description: This skill should be used when the user asks to "optimize JAX code for production", "write JAX-first code", "debug ConcretizationError", "analyze XLA/HLO output", "implement SPMD parallelism", "use jax.sharding for TPU pods", "write Pallas/Triton kernels", "fix tracer errors", "optimize GPU/TPU memory", "handle numerical stability", "implement custom VJPs", or needs expert-level guidance on functional programming patterns, PyTree manipulation, multi-device scaling, or XLA compiler optimization. Use when optimizing JAX code for production, debugging ConcretizationError, analyzing XLA/HLO output, or implementing SPMD parallelism.
 ---

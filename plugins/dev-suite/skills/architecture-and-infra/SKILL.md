@@ -1,5 +1,4 @@
 ---
-disable-model-invocation: true
 name: architecture-and-infra
 description: Meta-orchestrator for software architecture and infrastructure. Routes to clean architecture, microservices, monorepo, systems/CLI, containers, and cloud patterns. Use when designing system architecture, implementing microservices, managing monorepos, building CLI tools, containerizing services, or deploying to cloud.
 ---

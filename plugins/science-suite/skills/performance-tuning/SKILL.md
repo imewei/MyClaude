@@ -1,5 +1,4 @@
 ---
-disable-model-invocation: true
 name: performance-tuning
 description: Profile and optimize Julia code with @code_warntype, @profview, and BenchmarkTools.jl. Use when debugging slow code, reducing allocations, or improving execution speed. Also use when hunting type instabilities, preallocating arrays, applying @inbounds/@simd, switching to StaticArrays, or interpreting flame graphs. Use proactively when the user says Julia code is slow, mentions high memory usage, or asks "why is my function allocating so much," even without mentioning profiling tools.
 ---

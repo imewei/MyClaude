@@ -1,5 +1,4 @@
 ---
-disable-model-invocation: true
 name: continuum-mechanics-and-rheology
 description: Meta-orchestrator for continuum mechanics, FEM/FEA, constitutive modeling, rheology/DMA, transient networks, and nanocomposites. Use when formulating finite element models, fitting viscoelastic/hyperelastic constitutive laws, interpreting DMA or rheology data, modeling covalent adaptable networks (vitrimers) or physical gels, or predicting nanocomposite effective properties.
 ---

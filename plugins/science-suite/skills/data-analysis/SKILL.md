@@ -1,5 +1,4 @@
 ---
-disable-model-invocation: true
 name: data-analysis
 description: Reference patterns for analyzing experimental correlation data from DLS, SAXS/SANS, rheology, and microscopy using Green-Kubo relations, Bayesian inference (MCMC), and model validation. Provides domain knowledge for the /analyze-data command. Use when interpreting scattering data, validating non-equilibrium theories, or predicting transport coefficients.
 ---

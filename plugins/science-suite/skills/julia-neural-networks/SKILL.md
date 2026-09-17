@@ -1,5 +1,4 @@
 ---
-disable-model-invocation: true
 name: julia-neural-networks
 description: Master Lux.jl and Flux.jl for deep learning in Julia. Covers explicit-parameter training loops, optimizers (Optimisers.jl), loss functions, data loading (DataLoaders.jl/MLUtils.jl), Flux-to-Lux migration, and supervised/unsupervised patterns. Use when training neural networks in Julia.
 ---

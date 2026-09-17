@@ -1,5 +1,4 @@
 ---
-disable-model-invocation: true
 name: cloud-provider-patterns
 description: Design cloud-native architectures across AWS, GCP, and Azure including serverless (Lambda/Cloud Functions), managed services, IaC (Terraform/Pulumi), cost optimization, and multi-cloud strategies. Use when provisioning cloud resources, designing serverless functions, or writing Terraform/Pulumi configurations.
 ---

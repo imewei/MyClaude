@@ -1,5 +1,4 @@
 ---
-disable-model-invocation: true
 name: observability-and-sre
 description: Meta-orchestrator for observability and SRE practices. Routes to Prometheus, Grafana, distributed tracing, SLO implementation, and observability skills. Use when configuring Prometheus, building Grafana dashboards, implementing distributed tracing, defining SLOs, or setting up monitoring.
 ---

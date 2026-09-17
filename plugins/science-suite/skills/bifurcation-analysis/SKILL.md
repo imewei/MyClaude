@@ -1,5 +1,4 @@
 ---
-disable-model-invocation: true
 name: bifurcation-analysis
 description: Numerical continuation and bifurcation analysis. Covers codimension-1 (saddle-node, Hopf, pitchfork, period-doubling) and codimension-2 (Bogdanov-Takens, cusp, Bautin) bifurcations, normal forms, branch switching, and periodic orbit continuation. BifurcationKit.jl is blocked on Julia 1.12 (MiniQhull >=0.4 build failure) -- use AUTO-07p (Fortran) as the working continuation engine, with JAX vmap for parameter sweeps around critical points. Use when computing bifurcation diagrams, tracking steady-state branches, or identifying critical transitions in dynamical systems.
 ---

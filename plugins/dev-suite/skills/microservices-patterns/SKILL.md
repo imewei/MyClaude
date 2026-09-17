@@ -1,5 +1,4 @@
 ---
-disable-model-invocation: true
 name: microservices-patterns
 description: Design microservices with proper service boundaries, event-driven communication (Kafka/RabbitMQ), resilience patterns (circuit breakers, retries, bulkheads), Saga pattern for distributed transactions, API Gateway, service discovery, database-per-service, CQRS, and distributed tracing. Use when decomposing monoliths or building distributed systems.
 ---

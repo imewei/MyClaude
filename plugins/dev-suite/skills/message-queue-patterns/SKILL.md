@@ -1,5 +1,4 @@
 ---
-disable-model-invocation: true
 name: message-queue-patterns
 description: Implement message queue architectures with Kafka, RabbitMQ, and SQS including event-driven design, message ordering, dead letter queues, consumer groups, and exactly-once processing. Use when designing async communication, event sourcing, or pub/sub systems.
 ---

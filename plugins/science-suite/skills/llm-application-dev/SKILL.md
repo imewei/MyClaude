@@ -1,5 +1,4 @@
 ---
-disable-model-invocation: true
 name: llm-application-dev
 description: Production implementation of LLM applications using LangChain/LangGraph with code examples for RAG pipelines, agentic workflows, cost optimization, and deployment. Use when writing LLM application code, implementing retry logic, or deploying with monitoring.
 ---

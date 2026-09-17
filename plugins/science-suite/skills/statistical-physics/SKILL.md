@@ -1,5 +1,4 @@
 ---
-disable-model-invocation: true
 name: statistical-physics
 description: Comprehensive statistical physics suite covering equilibrium and non-equilibrium statistical mechanics, active matter, stochastic dynamics, and correlation analysis. Master the bridge between microscopic laws and macroscopic behavior. Use when computing partition functions, analyzing phase transitions, deriving fluctuation-dissipation relations, or modeling active matter systems.
 ---

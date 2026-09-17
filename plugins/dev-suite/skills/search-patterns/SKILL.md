@@ -1,5 +1,4 @@
 ---
-disable-model-invocation: true
 name: search-patterns
 description: Implement search infrastructure with Elasticsearch, OpenSearch, and Typesense including full-text search, faceted navigation, autocomplete, relevance tuning, and index management. Use when building search features, configuring analyzers, or optimizing search relevance.
 ---

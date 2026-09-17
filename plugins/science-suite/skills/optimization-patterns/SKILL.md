@@ -1,5 +1,4 @@
 ---
-disable-model-invocation: true
 name: optimization-patterns
 description: Use Optimization.jl for parameter estimation in differential equations. Use when fitting models to data or solving inverse problems. For LP/QP/MIP, use JuMP.jl instead. Also use when choosing between BFGS, Adam, NelderMead, or PSO algorithms, calibrating ODE/SDE model parameters against experimental data, or setting up gradient-based optimization for SciML workflows. Use proactively when the user mentions curve fitting, inverse modeling, or parameter calibration in Julia.
 ---

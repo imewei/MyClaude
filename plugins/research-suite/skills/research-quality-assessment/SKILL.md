@@ -1,5 +1,4 @@
 ---
-disable-model-invocation: true
 name: research-quality-assessment
 description: Evaluate scientific research quality against CONSORT/STROBE/PRISMA/MOOSE reporting guidelines, score methodology and statistical rigor, and detect red flags (p-hacking, HARKing, selective reporting, circular analysis). This skill should be used when the user asks to "assess this manuscript", "audit this preprint", "score the methodology", "check for p-hacking", "is this reproducible", "red-flag this grant proposal", "run a CONSORT / STROBE / PRISMA / MOOSE check", "evaluate statistical rigor", or wants a scored rubric on *existing* work without producing a journal-ready referee report. For a .docx peer-review deliverable, use `scientific-review`; for *designing* a new study before data collection, use `research-methodology`.
 ---

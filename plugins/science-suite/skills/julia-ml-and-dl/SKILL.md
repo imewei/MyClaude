@@ -1,5 +1,4 @@
 ---
-disable-model-invocation: true
 name: julia-ml-and-dl
 description: Meta-orchestrator for Julia ML and deep learning. Routes to neural networks, architectures, training diagnostics, AD backends, GPU kernels, GNNs, RL, pipelines, and deployment skills. Use when training neural networks in Julia with Lux.jl, designing architectures, debugging training, writing GPU kernels, or deploying Julia ML models.
 ---

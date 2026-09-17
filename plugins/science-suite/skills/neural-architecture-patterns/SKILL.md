@@ -1,5 +1,4 @@
 ---
-disable-model-invocation: true
 name: neural-architecture-patterns
 description: Design neural architectures with skip connections, attention, normalization, and encoder-decoders. Use when designing CNNs, transformers, U-Nets, or selecting architectures for vision, NLP, and multimodal tasks.
 ---

@@ -1,5 +1,4 @@
 ---
-disable-model-invocation: true
 name: systems-cli-engineering
 description: Design high-performance systems and production-grade CLI tools. Covers memory management, concurrency, and CLI UX design. Use when building CLI applications, optimizing system-level code, or implementing concurrent data pipelines in C, C++, Rust, or Go.
 ---

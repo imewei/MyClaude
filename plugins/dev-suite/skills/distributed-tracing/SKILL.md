@@ -1,5 +1,4 @@
 ---
-disable-model-invocation: true
 name: distributed-tracing
 description: Implement distributed tracing with OpenTelemetry, Jaeger, and Tempo including instrumentation, context propagation, sampling strategies, and trace analysis. Use when debugging latency issues, understanding service dependencies, or tracing error propagation across microservices.
 ---

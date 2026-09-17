@@ -1,5 +1,4 @@
 ---
-disable-model-invocation: true
 name: security-ci-template
 description: Security scanning and lock file validation templates for CI/CD pipelines. Use when implementing SAST/DAST scanning, dependency vulnerability checks, lock file validation, or automated security gates in GitHub Actions or GitLab CI.
 ---

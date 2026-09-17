@@ -1,5 +1,4 @@
 ---
-disable-model-invocation: true
 name: jax-computing
 description: Meta-orchestrator for JAX scientific computing. Routes to core JAX, optimization, Bayesian inference, differential equations, and physics application skills. Use when writing JAX code, optimizing JIT compilation, implementing Bayesian models with NumPyro, solving ODEs with Diffrax, or running physics simulations.
 ---

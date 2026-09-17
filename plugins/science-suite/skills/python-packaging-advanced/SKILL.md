@@ -1,5 +1,4 @@
 ---
-disable-model-invocation: true
 name: python-packaging-advanced
 description: Master modern Python packaging using uv, focusing on workspaces, monorepos, reproducible builds, and PyPI publishing. Use when configuring pyproject.toml for uv, setting up monorepo workspaces, choosing a build backend (hatchling, setuptools, flit), defining CLI entry points, managing uv.lock and virtual environments, wiring uv into CI or Docker, publishing to PyPI/TestPyPI, or migrating a project from pip or poetry to uv.
 ---

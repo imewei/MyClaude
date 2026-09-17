@@ -1,5 +1,4 @@
 ---
-disable-model-invocation: true
 name: devops-ml-infrastructure
 description: DevOps for ML with GitHub Actions pipelines, Terraform IaC, Docker/Kubernetes, and cloud ML platforms (SageMaker, Azure ML, Vertex AI). Use when automating training, deploying models, or provisioning ML infrastructure.
 ---

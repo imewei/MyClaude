@@ -1,5 +1,4 @@
 ---
-disable-model-invocation: true
 name: differential-equations
 description: Solve ODE/SDE/PDE with DifferentialEquations.jl. Use when defining differential equation systems, selecting solvers, implementing callbacks, or creating ensemble simulations. Also use when choosing between Tsit5/Vern7/Rodas5 for stiff vs non-stiff problems, adding event handling, running Monte Carlo parameter sweeps, or integrating with sensitivity analysis. Use proactively when the user mentions solving differential equations in Julia, time integration, or dynamical systems simulation, even without naming DifferentialEquations.jl.
 ---
