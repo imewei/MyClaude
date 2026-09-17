@@ -56,11 +56,15 @@ Streamline Git operations with ``@automation-engineer``.
    # Fix CI failures automatically
    /dev-suite:fix-commit-errors
 
-   # Merge all branches and clean up
-   /dev-suite:merge-all
+   # Finish the current branch: review, commit, push, merge (direct or via
+   # reviewed/rebased PR/MR), then sync main and clean up
+   /dev-suite:git-branch finish
+
+   # Sweep merged/stale branches (dry-run by default)
+   /dev-suite:git-branch clean
 
 Related
 -------
 
-- :doc:`/suites/dev-suite` — Full dev-suite reference (9 hubs → 35 sub-skills)
+- :doc:`/suites/dev-suite` — Full dev-suite reference (9 hubs → 36 sub-skills)
 - :doc:`/glossary` — Hub Skill, Sub-Skill, and Routing Decision Tree definitions

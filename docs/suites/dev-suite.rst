@@ -1,9 +1,9 @@
 Dev Suite
 =========
 
-Full-stack engineering, infrastructure, CI/CD, quality assurance, and debugging. Uses the :term:`Hub Skill` architecture with 9 hubs routing to 35 sub-skills. Merges engineering, infrastructure, and quality capabilities into a single development powerhouse.
+Full-stack engineering, infrastructure, CI/CD, quality assurance, and debugging. Uses the :term:`Hub Skill` architecture with 9 hubs routing to 36 sub-skills. Merges engineering, infrastructure, and quality capabilities into a single development powerhouse.
 
-**Version:** 4.0.2 | **6 Agents** | **10 Registered Commands** | **9 Hubs → 35 Sub-skills** | **7 Hook Events**
+**Version:** 4.0.2 | **12 Agents** | **14 Registered Commands** | **9 Hubs → 36 Sub-skills** | **7 Hook Events**
 
 Agents
 ------
@@ -25,7 +25,7 @@ Agents
 
 .. agent:: quality-specialist
    :description: Expert in ensuring software quality through rigorous code reviews, security audits, and test automation strategies.
-   :model: sonnet
+   :model: opus
    :version: 4.0.2
 
 .. agent:: sre-expert
@@ -38,8 +38,44 @@ Agents
    :model: haiku
    :version: 4.0.2
 
+.. agent:: code-reviewer
+   :description: /review-pr fan-out pass — full CRITICAL-to-LOW security/quality checklist over a diff. Not standalone; adopted from ecc.
+   :model: sonnet
+   :version: 4.0.2
+
+.. agent:: comment-analyzer
+   :description: /review-pr fan-out pass — comment accuracy and rot risk. Not standalone; adopted from ecc.
+   :model: haiku
+   :version: 4.0.2
+
+.. agent:: pr-test-analyzer
+   :description: /review-pr fan-out pass — PR test coverage quality and completeness. Not standalone; adopted from ecc.
+   :model: sonnet
+   :version: 4.0.2
+
+.. agent:: silent-failure-hunter
+   :description: /review-pr fan-out pass — swallowed errors, empty catches, dangerous fallbacks. Not standalone; adopted from ecc.
+   :model: sonnet
+   :version: 4.0.2
+
+.. agent:: type-design-analyzer
+   :description: /review-pr fan-out pass — whether types make illegal states harder to represent. Not standalone; adopted from ecc.
+   :model: sonnet
+   :version: 4.0.2
+
+.. agent:: code-simplifier
+   :description: /review-pr fan-out pass, or standalone via /refactor-clean — simplifies code without behavior change. Adopted from ecc.
+   :model: sonnet
+   :version: 4.0.2
+
 Registered Commands
 -------------------
+
+.. command:: /code-review
+   :description: Single-pass review of local diffs or a PR; can publish to GitHub via gh pr review.
+
+.. command:: /commit
+   :description: Intelligent git commit with automated analysis, quality validation, and atomic commit enforcement.
 
 .. command:: /docs
    :description: Unified documentation management — generate, update, and sync.
@@ -53,11 +89,17 @@ Registered Commands
 .. command:: /fix-commit-errors
    :description: Diagnose and fix CI/CD failures by analyzing logs, applying fixes, and rerunning workflows.
 
-.. command:: /merge-all
-   :description: Merge all local branches into main and clean up.
+.. command:: /git-branch
+   :description: Full branch lifecycle — finish (review, commit, push, merge direct or via PR/MR, sync, cleanup; default action), clean (merged/stale sweep), rollback (reset/revert), worktree (add/list/remove/prune/migrate).
 
 .. command:: /modernize
    :description: Legacy code migration using Strangler Fig pattern with incremental modernization.
+
+.. command:: /refactor-clean
+   :description: Analyze and refactor code to improve quality, maintainability, and SOLID principles.
+
+.. command:: /review-pr
+   :description: Comprehensive multi-agent PR review — 6-agent parallel fan-out, report-only.
 
 .. command:: /run-all-tests
    :description: Iteratively run and fix all tests until zero failures with AI-driven RCA.
@@ -74,7 +116,7 @@ Registered Commands
 Hub Skills
 ----------
 
-Skills use a hub architecture: 9 hub skills route to 35 specialized sub-skills.
+Skills use a hub architecture: 9 hub skills route to 36 specialized sub-skills.
 
 Hub: dev-hub (top-level router)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

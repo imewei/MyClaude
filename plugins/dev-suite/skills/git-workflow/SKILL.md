@@ -38,6 +38,14 @@ Expert guide for maintaining a clean, navigable code history and optimizing coll
 - **Parallel Operations**: Use `git fetch --jobs=n` and `git submodule update --jobs=n` for large repositories.
 - **LFS**: Use Git Large File Storage for binary assets to keep the repository size manageable.
 
+## Commands Backed by This Skill
+
+- **`/git-branch`**: full branch lifecycle, four actions:
+  - `finish` (default) — commit, push, and merge (direct to main with no PR/MR open, or reviewed + rebased + merged via `gh`/`glab` if one is), then sync main and clean up.
+  - `clean` — periodic sweep of merged/stale local and remote branches, dry-run by default.
+  - `rollback` — interactive reset/revert of a branch to a prior commit or tag, dry-run by default.
+  - `worktree` — structured worktree management (`add`/`list`/`remove`/`prune`/`migrate`) with IDE integration.
+
 ## Checklist
 
 - [ ] Verify branch naming follows the project's convention (e.g., `feature/`, `fix/`, `chore/`)

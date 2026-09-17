@@ -12,6 +12,18 @@
 - `commit.md` and `refactor-clean.md` retired to tombstone stubs (redirecting to external `commit-commands`/`code-simplifier` plugins) between v3.4.1 and v3.5.0, then deleted outright in a later cleanup. Restored the full v3.4.1 content, ported to the current command frontmatter schema (`allowed-tools` as a list, no `agents:`/`category`/`purpose`/`execution-modes` fields) and given a "Routes to" line for `test_every_command_names_an_agent_or_hub`: `/commit` -> `quality-specialist` via `dev-suite:data-and-security` -> `secrets-management` (secret-touching diffs only); `/refactor-clean` -> `code-simplifier` (standalone use, not the `/review-pr` fan-out pass).
 - Marketplace-wide: 19 -> 21 registered commands (dev-suite 12 -> 14). Agent and sub-skill counts unchanged.
 
+### dev-suite: consolidate merge-all + ccg-workflow's clean-branches/rollback/worktree into /git-branch
+- Replaced `/merge-all` with `/git-branch`, one command with four actions covering a branch's full lifecycle:
+  - `finish` (default) — reviews (via `/code-review` for the no-PR/MR path, `/review-pr` for the PR/MR path), commits, pushes, and merges: directly into main with no PR/MR open, or through rebase + a `gh`/`glab` platform merge if one is exists — then syncs main and cleans up the branch, its worktree, and its remote. `finish --all` reproduces `/merge-all`'s old sweep-every-local-branch behavior; the new default scope is the current branch only.
+  - `clean` — merged/stale branch sweep, dry-run default.
+  - `rollback` — interactive reset/revert with a reflog safety net, dry-run default.
+  - `worktree` — structured worktree management (`add`/`list`/`remove`/`prune`/`migrate`), IDE integration, env-file migration.
+  All four actions' content originates from the `ccg-workflow` npm package's `~/.claude/commands/ccg/{clean-branches,rollback,worktree}.md` (translated from Chinese, adapted to this repo's schema — no byte-parity constraint, unlike the `ecc` adoptions) plus a from-scratch `finish` action. `clean`/`rollback`/`worktree` first landed as separate commands, then were folded into `/git-branch` alongside `finish` once the combined lifecycle-command shape was clearer than four siblings.
+  Skipped ccg-workflow's `verify-*`/`gen-docs` commands (hard Node.js runtime dependency via `run_skill.js`, redundant with `quality-specialist`/`/double-check`/`/code-review`) and its `spec-*` pipeline (depends on the external OpenSpec framework and ccg's own multi-model MCP orchestration).
+- Fixed two stale "SEE ALSO" pointers to the now-superseded external `pr-review-toolkit` plugin (`quality-specialist.md`, `test-generate.md`), predating this suite's own `/review-pr`/`pr-test-analyzer`.
+- Fixed `.claude-plugin/marketplace.json`'s `dev-suite` `agents`/`commands` arrays, discovered stale during this change: missing all 6 `/review-pr` fan-out agents and 4 commands (`review-pr`, `code-review`, `commit`, `refactor-clean`) from prior adoptions — `plugin.json` had them, `marketplace.json` (the actual install source) didn't.
+- Marketplace-wide: 21 -> 21 registered commands (dev-suite 14 -> 14: -1 `merge-all` / +1 `git-branch`, net zero). Agent and sub-skill counts unchanged.
+
 ## v4.0.2 (2026-09-14)
 
 ### Model tiers: architect / contractor split

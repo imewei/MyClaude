@@ -24,7 +24,7 @@ plugin.json → hub skill → routing decision tree → sub-skill
 | Component | Count | Details |
 |-----------|-------|---------|
 | Agents | 12 | 2 opus, 8 sonnet, 2 haiku (6 original + 6 `/review-pr` fan-out agents adopted from `ecc`) |
-| Commands | 14 registered | `/docs`, `/double-check`, `/eng-feature-dev`, `/fix-commit-errors`, `/merge-all`, `/modernize`, `/run-all-tests`, `/smart-debug`, `/test-generate`, `/workflow-automate`, `/review-pr`, `/code-review`, `/commit`, `/refactor-clean` |
+| Commands | 14 registered | `/docs`, `/double-check`, `/eng-feature-dev`, `/fix-commit-errors`, `/modernize`, `/run-all-tests`, `/smart-debug`, `/test-generate`, `/workflow-automate`, `/review-pr`, `/code-review`, `/commit`, `/refactor-clean`, `/git-branch` (finish/clean/rollback/worktree) |
 | Skills | 9 hubs → 36 sub | dev-hub, three-brain, architecture-and-infra, backend-patterns, ci-cd-pipelines, data-and-security, dev-workflows (includes `config-gc`, adopted from `ecc`), observability-and-sre, testing-and-quality |
 | Hooks | 7 events | SessionStart, UserPromptSubmit, PostToolUse, SubagentStop, TaskCompleted, SessionEnd, StopFailure |
 

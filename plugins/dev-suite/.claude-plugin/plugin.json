@@ -45,7 +45,7 @@
     "./commands/double-check.md",
     "./commands/eng-feature-dev.md",
     "./commands/fix-commit-errors.md",
-    "./commands/merge-all.md",
+    "./commands/git-branch.md",
     "./commands/modernize.md",
     "./commands/refactor-clean.md",
     "./commands/review-pr.md",

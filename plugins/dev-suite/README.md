@@ -6,12 +6,14 @@ suite for zero-friction cross-concern agent delegation.
 
 ## Overview
 
-Dev Suite covers the complete software development lifecycle with 6 specialized agents
-(2 opus, 3 sonnet, 1 haiku), 10 registered slash commands, and 9 hub skills routing to
-35 sub-skills. From architecture design through CI/CD to production debugging, every
+Dev Suite covers the complete software development lifecycle with 12 specialized agents
+(2 opus, 8 sonnet, 2 haiku), 14 registered slash commands, and 9 hub skills routing to
+36 sub-skills. From architecture design through CI/CD to production debugging, every
 engineering workflow is covered. Agents delegate across specializations automatically —
 software-architect delegates to quality-specialist for security audits, sre-expert hands
-off to automation-engineer for pipeline fixes.
+off to automation-engineer for pipeline fixes. Six of the twelve agents (`code-reviewer`,
+`comment-analyzer`, `pr-test-analyzer`, `silent-failure-hunter`, `type-design-analyzer`,
+`code-simplifier`) run only as `/review-pr`'s parallel fan-out passes, not standalone.
 
 ## Quick Start / Usage Examples
 
@@ -51,23 +53,33 @@ off to automation-engineer for pipeline fixes.
 | `sre-expert` | sonnet | Reliability, observability, SLO/SLI, incidents |
 | `quality-specialist` | opus | Code review, security audit, test automation |
 | `documentation-expert` | haiku | Technical docs, manuals, tutorials |
+| `code-reviewer` | sonnet | `/review-pr` fan-out: full CRITICAL→LOW checklist pass |
+| `comment-analyzer` | haiku | `/review-pr` fan-out: comment accuracy and rot |
+| `pr-test-analyzer` | sonnet | `/review-pr` fan-out: PR test coverage quality |
+| `silent-failure-hunter` | sonnet | `/review-pr` fan-out: swallowed errors, bad fallbacks |
+| `type-design-analyzer` | sonnet | `/review-pr` fan-out: illegal-state-unrepresentable types |
+| `code-simplifier` | sonnet | `/review-pr` fan-out, or standalone via `/refactor-clean` |
 
-## Commands (10 registered)
+## Commands (14 registered)
 
 | Command | Description |
 |---------|-------------|
+| `/code-review` | Single-pass review of local diffs or a PR, can publish via `gh pr review` |
+| `/commit` | Analyzed, quality-scored, atomic git commits |
 | `/docs` | Documentation generation and sync |
 | `/double-check` | Multi-dimensional validation (security, perf, a11y) |
 | `/eng-feature-dev` | End-to-end guided feature development |
 | `/fix-commit-errors` | Auto-fix GitHub Actions failures |
-| `/merge-all` | Batch-merge and reconcile open branches |
+| `/git-branch` | Full branch lifecycle: `finish` (review, commit, push, merge, sync, cleanup — default), `clean` (merged/stale sweep), `rollback` (reset/revert), `worktree` (add/list/remove/prune/migrate) |
 | `/modernize` | Legacy modernization and migration planning |
+| `/refactor-clean` | Refactor code toward SOLID principles and reduced code smell |
+| `/review-pr` | Multi-agent PR review: 6-agent parallel fan-out, report-only |
 | `/run-all-tests` | Iterative test-and-fix until green |
 | `/smart-debug` | Intelligent debugging with multi-mode RCA |
 | `/test-generate` | Generate comprehensive test suites |
 | `/workflow-automate` | Automate repeatable engineering workflows |
 
-## Skills (9 hubs → 35 sub-skills)
+## Skills (9 hubs → 36 sub-skills)
 
 Covers the complete SDLC:
 

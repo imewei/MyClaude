@@ -18,7 +18,6 @@ Commands fall into two categories:
 | `/double-check` | Multi-dimensional validation with automated testing and security scanning |
 | `/eng-feature-dev` | End-to-end feature development with customizable methodologies |
 | `/fix-commit-errors` | Diagnose and fix CI/CD failures by analyzing logs and rerunning workflows |
-| `/merge-all` | Merge all local branches into main and clean up |
 | `/modernize` | Legacy code migration using Strangler Fig pattern |
 | `/run-all-tests` | Iteratively run and fix all tests until zero failures |
 | `/smart-debug` | Intelligent debugging with multi-mode execution and automated RCA |
@@ -28,6 +27,7 @@ Commands fall into two categories:
 | `/code-review` | Single-pass review of local diffs or a PR, can publish to GitHub via `gh pr review` (adopted from `ecc`, integrated with `quality-specialist`) |
 | `/commit` | Analyzed, quality-scored, atomic git commits with conventional commit format (restored from v3.4.1) |
 | `/refactor-clean` | Code refactoring toward SOLID principles and reduced code smell, standalone or path-scoped (restored from v3.4.1) |
+| `/git-branch` | Full branch lifecycle — `finish` (review, commit, push, merge direct or via PR/MR, sync, cleanup, default action), `clean` (merged/stale sweep), `rollback` (reset/revert), `worktree` (add/list/remove/prune/migrate). Supersedes `/merge-all` (`finish --all` reproduces its sweep) |
 
 ### Research Suite (`research-suite`) — 3 Commands
 
