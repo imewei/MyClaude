@@ -1,6 +1,6 @@
 # Quick Reference Cheatsheet
 
-**3 Suites** | **26 Agents** | **19 Registered Commands** | **42 Hub Skills** (routing to 157 sub-skills; 199 SKILL.md on disk)
+**3 Suites** | **26 Agents** | **21 Registered Commands** | **42 Hub Skills** (routing to 157 sub-skills; 199 SKILL.md on disk)
 **Version:** 4.0.2
 
 ---
@@ -24,7 +24,7 @@ plugin.json → hub skill → routing decision tree → sub-skill
 | Component | Count | Details |
 |-----------|-------|---------|
 | Agents | 12 | 2 opus, 8 sonnet, 2 haiku (6 original + 6 `/review-pr` fan-out agents adopted from `ecc`) |
-| Commands | 12 registered | `/docs`, `/double-check`, `/eng-feature-dev`, `/fix-commit-errors`, `/merge-all`, `/modernize`, `/run-all-tests`, `/smart-debug`, `/test-generate`, `/workflow-automate`, `/review-pr`, `/code-review` |
+| Commands | 14 registered | `/docs`, `/double-check`, `/eng-feature-dev`, `/fix-commit-errors`, `/merge-all`, `/modernize`, `/run-all-tests`, `/smart-debug`, `/test-generate`, `/workflow-automate`, `/review-pr`, `/code-review`, `/commit`, `/refactor-clean` |
 | Skills | 9 hubs → 36 sub | dev-hub, three-brain, architecture-and-infra, backend-patterns, ci-cd-pipelines, data-and-security, dev-workflows (includes `config-gc`, adopted from `ecc`), observability-and-sre, testing-and-quality |
 | Hooks | 7 events | SessionStart, UserPromptSubmit, PostToolUse, SubagentStop, TaskCompleted, SessionEnd, StopFailure |
 
@@ -106,7 +106,7 @@ plugin.json → hub skill → routing decision tree → sub-skill
 ## Resources
 
 - [Agent Reference](agents.md) — All 26 agents with model tiers and delegation patterns
-- [Commands Reference](commands.md) — 19 registered commands
+- [Commands Reference](commands.md) — 21 registered commands
 - [Integration Map](../integration-map.rst) — Suite dependencies, MCP server roles, skill coverage
 - [Glossary](../glossary.rst) — Hub Skill, Sub-Skill, Routing Decision Tree
 - [GitHub Repository](https://github.com/imewei/MyClaude)

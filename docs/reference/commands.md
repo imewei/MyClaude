@@ -1,6 +1,6 @@
 # Command Reference
 
-**19 Registered Commands** | **0 Skill-Invoked Commands** | **Version:** 4.0.2
+**21 Registered Commands** | **0 Skill-Invoked Commands** | **Version:** 4.0.2
 
 Commands fall into two categories:
 - **Registered commands** are declared in `plugin.json` and available as user-facing `/slash-commands`.
@@ -10,7 +10,7 @@ Commands fall into two categories:
 
 ## Registered Commands
 
-### Dev Suite (`dev-suite`) — 12 Commands
+### Dev Suite (`dev-suite`) — 14 Commands
 
 | Command | Description |
 |---------|-------------|
@@ -26,6 +26,8 @@ Commands fall into two categories:
 | `/workflow-automate` | Automated CI/CD workflow generation for GitHub Actions and GitLab CI |
 | `/review-pr` | Multi-agent PR review: 6-agent parallel fan-out, report-only, PR-scoped (adopted from `ecc`) |
 | `/code-review` | Single-pass review of local diffs or a PR, can publish to GitHub via `gh pr review` (adopted from `ecc`, integrated with `quality-specialist`) |
+| `/commit` | Analyzed, quality-scored, atomic git commits with conventional commit format (restored from v3.4.1) |
+| `/refactor-clean` | Code refactoring toward SOLID principles and reduced code smell, standalone or path-scoped (restored from v3.4.1) |
 
 ### Research Suite (`research-suite`) — 3 Commands
 
@@ -52,7 +54,7 @@ These commands exist on disk and are triggered by skills during workflows. They 
 
 ### Dev Suite — 0 Skill-Invoked
 
-No unregistered command files on disk. All 12 dev-suite commands are registered slash commands.
+No unregistered command files on disk. All 14 dev-suite commands are registered slash commands.
 
 ### Science Suite — 0 Skill-Invoked
 

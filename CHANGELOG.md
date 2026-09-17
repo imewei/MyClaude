@@ -8,6 +8,10 @@
 - `context_budget_checker.py` gained an `AGENT_BUDGET_EXEMPT` set (scoped to `dev-suite/code-reviewer`) so the byte-exact-copy agent body isn't trimmed to fit the 10,000-char cap.
 - Marketplace-wide counts: 20 -> 26 agents (dev-suite 6 -> 12), 17 -> 19 registered commands (dev-suite 10 -> 12), 156 -> 157 sub-skills (dev-suite 35 -> 36). Split now 8 opus / 16 sonnet / 2 haiku.
 
+### dev-suite: restore /commit and /refactor-clean
+- `commit.md` and `refactor-clean.md` retired to tombstone stubs (redirecting to external `commit-commands`/`code-simplifier` plugins) between v3.4.1 and v3.5.0, then deleted outright in a later cleanup. Restored the full v3.4.1 content, ported to the current command frontmatter schema (`allowed-tools` as a list, no `agents:`/`category`/`purpose`/`execution-modes` fields) and given a "Routes to" line for `test_every_command_names_an_agent_or_hub`: `/commit` -> `quality-specialist` via `dev-suite:data-and-security` -> `secrets-management` (secret-touching diffs only); `/refactor-clean` -> `code-simplifier` (standalone use, not the `/review-pr` fan-out pass).
+- Marketplace-wide: 19 -> 21 registered commands (dev-suite 12 -> 14). Agent and sub-skill counts unchanged.
+
 ## v4.0.2 (2026-09-14)
 
 ### Model tiers: architect / contractor split

@@ -2,13 +2,13 @@
 
 [![Plugins](https://img.shields.io/badge/Plugins-3-blue.svg)](https://myclaude.readthedocs.io/en/latest/plugins/)
 [![Agents](https://img.shields.io/badge/Agents-26-green.svg)](docs/reference/agents.md)
-[![Commands](https://img.shields.io/badge/Commands-19-orange.svg)](docs/reference/commands.md)
+[![Commands](https://img.shields.io/badge/Commands-21-orange.svg)](docs/reference/commands.md)
 [![Skills](https://img.shields.io/badge/Skills-42_hubs_→_157_sub-purple.svg)](docs/reference/cheatsheet.md)
 [![Version](https://img.shields.io/badge/Version-4.0.2-red.svg)](https://github.com/imewei/MyClaude)
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Docs](https://img.shields.io/badge/Docs-ReadTheDocs-brightgreen.svg)](https://myclaude.readthedocs.io/en/latest/)
 
-Claude Code plugin marketplace with **3 focused suites**, **26 expert agents**, **19 registered commands**, and **42 hub skills** routing to **157 sub-skills**. Built for the Claude 5 model generation (Opus 5, Sonnet 5, Haiku 4.5) with tiered model assignments, 16 hook events across all suites, and hub-skill architecture for zero-ambiguity skill routing.
+Claude Code plugin marketplace with **3 focused suites**, **26 expert agents**, **21 registered commands**, and **42 hub skills** routing to **157 sub-skills**. Built for the Claude 5 model generation (Opus 5, Sonnet 5, Haiku 4.5) with tiered model assignments, 16 hook events across all suites, and hub-skill architecture for zero-ambiguity skill routing.
 
 ## The 3-Suite Hub Architecture
 
@@ -16,7 +16,7 @@ MyClaude v4.0.2 uses a **hub-skill architecture**: skills are organized into hub
 
 | Suite | Agents | Commands | Hubs → Sub-skills | Hooks | Focus |
 |-------|--------|----------|-------------------|-------|-------|
-| [Dev Suite](plugins/dev-suite/) | 12 | 12 | 9 → 36 | 7 events | Full SDLC: architecture, CI/CD, testing, debugging |
+| [Dev Suite](plugins/dev-suite/) | 12 | 14 | 9 → 36 | 7 events | Full SDLC: architecture, CI/CD, testing, debugging |
 | [Research Suite](plugins/research-suite/) | 2 | 3 | 10 → 7 | 4 events | Peer review, research-spark pipeline (5-stage core + optional extension), methodology |
 | [Science Suite](plugins/science-suite/) | 12 | 4 | 23 → 114 | 5 events | JAX, Julia, physics, ML/DL/HPC, nonlinear dynamics |
 
