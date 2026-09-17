@@ -1,14 +1,14 @@
 # MyClaude
 
 [![Plugins](https://img.shields.io/badge/Plugins-3-blue.svg)](https://myclaude.readthedocs.io/en/latest/plugins/)
-[![Agents](https://img.shields.io/badge/Agents-20-green.svg)](docs/reference/agents.md)
-[![Commands](https://img.shields.io/badge/Commands-17-orange.svg)](docs/reference/commands.md)
-[![Skills](https://img.shields.io/badge/Skills-42_hubs_→_156_sub-purple.svg)](docs/reference/cheatsheet.md)
+[![Agents](https://img.shields.io/badge/Agents-26-green.svg)](docs/reference/agents.md)
+[![Commands](https://img.shields.io/badge/Commands-19-orange.svg)](docs/reference/commands.md)
+[![Skills](https://img.shields.io/badge/Skills-42_hubs_→_157_sub-purple.svg)](docs/reference/cheatsheet.md)
 [![Version](https://img.shields.io/badge/Version-4.0.2-red.svg)](https://github.com/imewei/MyClaude)
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Docs](https://img.shields.io/badge/Docs-ReadTheDocs-brightgreen.svg)](https://myclaude.readthedocs.io/en/latest/)
 
-Claude Code plugin marketplace with **3 focused suites**, **20 expert agents**, **17 registered commands**, and **42 hub skills** routing to **156 sub-skills**. Built for the Claude 5 model generation (Opus 5, Sonnet 5, Haiku 4.5) with tiered model assignments, 16 hook events across all suites, and hub-skill architecture for zero-ambiguity skill routing.
+Claude Code plugin marketplace with **3 focused suites**, **26 expert agents**, **19 registered commands**, and **42 hub skills** routing to **157 sub-skills**. Built for the Claude 5 model generation (Opus 5, Sonnet 5, Haiku 4.5) with tiered model assignments, 16 hook events across all suites, and hub-skill architecture for zero-ambiguity skill routing.
 
 ## The 3-Suite Hub Architecture
 
@@ -16,15 +16,15 @@ MyClaude v4.0.2 uses a **hub-skill architecture**: skills are organized into hub
 
 | Suite | Agents | Commands | Hubs → Sub-skills | Hooks | Focus |
 |-------|--------|----------|-------------------|-------|-------|
-| [Dev Suite](plugins/dev-suite/) | 6 | 10 | 9 → 35 | 7 events | Full SDLC: architecture, CI/CD, testing, debugging |
+| [Dev Suite](plugins/dev-suite/) | 12 | 12 | 9 → 36 | 7 events | Full SDLC: architecture, CI/CD, testing, debugging |
 | [Research Suite](plugins/research-suite/) | 2 | 3 | 10 → 7 | 4 events | Peer review, research-spark pipeline (5-stage core + optional extension), methodology |
 | [Science Suite](plugins/science-suite/) | 12 | 4 | 23 → 114 | 5 events | JAX, Julia, physics, ML/DL/HPC, nonlinear dynamics |
 
 ## Specialist Agents
 
-20 agents with tiered model assignments: **8 opus** (architect: research, planning, review, theory), **11 sonnet** (contractor: code edits, implementation, debugging), **1 haiku** (mechanical docs).
+26 agents with tiered model assignments: **8 opus** (architect: research, planning, review, theory), **16 sonnet** (contractor: code edits, implementation, debugging), **2 haiku** (mechanical docs, comment triage).
 
-Tiers name Claude Code model aliases, not pinned versions, so each agent tracks the current generation: `opus` → Opus 5, `sonnet` → Sonnet 5, `haiku` → Haiku 4.5. The 19 `opus` and `sonnet` agents set `effort: high`; `xhigh` is deliberately unused, since it does not exist on Sonnet 4.6 or Opus 4.6. The one `haiku` agent sets no `effort` at all — the field is not supported on Haiku 4.5.
+Tiers name Claude Code model aliases, not pinned versions, so each agent tracks the current generation: `opus` → Opus 5, `sonnet` → Sonnet 5, `haiku` → Haiku 4.5. The 19 original `opus` and `sonnet` agents set `effort: high`; `xhigh` is deliberately unused, since it does not exist on Sonnet 4.6 or Opus 4.6. The 5 `sonnet` agents adopted from `ecc` as `/review-pr`'s fan-out passes (`code-reviewer`, `pr-test-analyzer`, `silent-failure-hunter`, `type-design-analyzer`, `code-simplifier`) set `effort: medium` instead — deliberately lighter, parallel passes, distinct from `quality-specialist`'s `effort: high` deep audit. The 2 `haiku` agents set no `effort` at all — the field is not supported on Haiku 4.5.
 
 Two models sit outside the alias set and are reachable only by pinning them explicitly on a dispatch (`model:` on the Agent call, or in an agent's frontmatter):
 
@@ -50,7 +50,7 @@ Two models sit outside the alias set and are reachable only by pinning them expl
 | `@julia-ml-hpc` | Science | sonnet | Julia ML, Lux.jl, distributed/GPU computing |
 | `@python-pro` | Science | sonnet | Python systems engineering, performance |
 
-See [complete agent list](docs/reference/agents.md) for all 20 agents.
+See [complete agent list](docs/reference/agents.md) for all 26 agents.
 
 ## Installation
 

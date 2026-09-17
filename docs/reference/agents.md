@@ -1,12 +1,12 @@
 # Agent Reference
 
-**20 Agents** across 3 suites | **Version:** 4.0.2
+**26 Agents** across 3 suites | **Version:** 4.0.2
 
 Agents are specialized AI personas with defined model tiers, tool access, and domain expertise. Each agent runs at a specific model tier. Opus is the architect, Sonnet is the contractor: **opus** for research, planning, review/audit, theory, and subsystem explanation; **sonnet** for code edits, bug fixes, and file-by-file implementation; **haiku** for mechanical doc generation.
 
 ---
 
-## Dev Suite (`dev-suite`) — 6 Agents
+## Dev Suite (`dev-suite`) — 12 Agents
 
 Full-stack engineering, infrastructure, CI/CD, quality assurance, and debugging.
 
@@ -18,6 +18,17 @@ Full-stack engineering, infrastructure, CI/CD, quality assurance, and debugging.
 | `quality-specialist` | opus | Code reviews, security audits, and test automation strategies |
 | `sre-expert` | sonnet | System reliability, observability (monitoring, logging, tracing), and incident response |
 | `documentation-expert` | haiku | Technical documentation, manuals, and tutorials |
+
+**`/review-pr` fan-out agents** — adopted from `ecc` at byte parity; invoked only as one of `/review-pr`'s six parallel passes, never standalone. General-purpose review routes to `quality-specialist` instead.
+
+| Agent | Model | Description |
+|-------|-------|-------------|
+| `code-reviewer` | sonnet | Full CRITICAL→LOW security/quality/performance checklist pass over a diff |
+| `comment-analyzer` | haiku | Comment accuracy and rot risk — stale, inaccurate, or low-value comments |
+| `pr-test-analyzer` | sonnet | PR test coverage quality — missing tests, shallow assertions, coverage gaps |
+| `silent-failure-hunter` | sonnet | Swallowed errors, empty catches, dangerous fallbacks, lost error context |
+| `type-design-analyzer` | sonnet | Whether new or changed types make illegal states harder to represent |
+| `code-simplifier` | sonnet | Simplification of deeply nested or duplicated logic without behavior change |
 
 ---
 
@@ -58,8 +69,8 @@ Scientific computing, HPC, physics simulations, ML/DL, and nonlinear dynamics. `
 | Tier | Count | Agents |
 |------|-------|--------|
 | **opus** | 8 | software-architect, quality-specialist, research-expert, research-spark-orchestrator, neural-network-master, nonlinear-dynamics-expert, statistical-physicist, continuum-mechanics-engineer |
-| **sonnet** | 11 | app-developer, automation-engineer, sre-expert, jax-pro, julia-pro, pinn-engineer, ml-expert, julia-ml-hpc, simulation-expert, python-pro, sci-workflow-engineer |
-| **haiku** | 1 | documentation-expert |
+| **sonnet** | 16 | app-developer, automation-engineer, sre-expert, jax-pro, julia-pro, pinn-engineer, ml-expert, julia-ml-hpc, simulation-expert, python-pro, sci-workflow-engineer, code-reviewer, pr-test-analyzer, silent-failure-hunter, type-design-analyzer, code-simplifier |
+| **haiku** | 2 | documentation-expert, comment-analyzer |
 
 ---
 
@@ -76,6 +87,7 @@ Agents delegate across suite boundaries when tasks require multiple domains. Key
 | `neural-network-master` | `julia-ml-hpc` | DL theory <-> Julia implementation |
 | `nonlinear-dynamics-expert` | `jax-pro` / `julia-pro` | Theory <-> Implementation |
 | `statistical-physicist` | `jax-pro` | Theory <-> JAX implementation |
+| `code-reviewer` / `pr-test-analyzer` / `silent-failure-hunter` / `type-design-analyzer` / `code-simplifier` / `comment-analyzer` | `quality-specialist` | `/review-pr` narrow fan-out pass <-> general-purpose review/audit |
 
 See the [Integration Map](../integration-map.rst) for full delegation patterns and MCP server roles.
 

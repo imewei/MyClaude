@@ -1,6 +1,27 @@
 Changelog
 =========
 
+Unreleased
+----------
+
+**dev-suite: adopt ecc:review-pr, ecc:code-review, ecc:config-gc**
+
+* New commands ``/review-pr`` (multi-agent PR review, 6-agent fan-out, report-only) and ``/code-review``
+  (single-pass review, local diffs + PRs, can publish via ``gh pr review``) adopted at byte parity from
+  the ``ecc`` marketplace, each with an appended "dev-suite Integration" section wiring in
+  ``quality-specialist`` and the ``code-review`` skill. New sub-skill ``config-gc`` (garbage-collection
+  audit for ``~/.claude`` setups) routed through the ``dev-workflows`` hub.
+* 6 new agents adopted at byte parity as ``/review-pr``'s fan-out passes: ``code-reviewer``,
+  ``comment-analyzer``, ``pr-test-analyzer``, ``silent-failure-hunter``, ``type-design-analyzer``,
+  ``code-simplifier``. ``code-reviewer``'s auto-trigger description was narrowed (only file changed
+  beyond byte-exact copies) to remove a collision with ``quality-specialist``. All 6 later gained
+  ``color``, ``effort``/``memory``/``maxTurns``/``background``, "When to invoke", and "Related Skills"
+  sections to match local agent convention, per a ``plugin-dev:plugin-validator`` audit.
+* ``context_budget_checker.py`` gained an ``AGENT_BUDGET_EXEMPT`` set (scoped to
+  ``dev-suite/code-reviewer``) so the byte-exact-copy agent body isn't trimmed to fit the 10,000-char cap.
+* Marketplace-wide counts: 20 -> 26 agents (dev-suite 6 -> 12), 17 -> 19 registered commands
+  (dev-suite 10 -> 12), 156 -> 157 sub-skills (dev-suite 35 -> 36). Split now 8 opus / 16 sonnet / 2 haiku.
+
 v4.0.2 (2026-09-14)
 -------------------
 

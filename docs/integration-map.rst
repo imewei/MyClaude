@@ -1,7 +1,7 @@
 Integration Map
 ===============
 
-How the 3 MyClaude suites (20 agents, 42 registered hub skills routing to 156 sub-skills) connect to each other and to external tools.
+How the 3 MyClaude suites (26 agents, 42 registered hub skills routing to 157 sub-skills) connect to each other and to external tools.
 
 Suite Dependencies
 ------------------
@@ -13,7 +13,7 @@ Suite Dependencies
    * - Suite
      - Integrates With
    * - **dev-suite**
-     - Internal: all 6 agents cross-delegate freely. MCP: GitHub.
+     - Internal: the 6 original agents cross-delegate freely; the 6 ``ecc``-adopted ``/review-pr`` fan-out agents (``code-reviewer``, ``comment-analyzer``, ``pr-test-analyzer``, ``silent-failure-hunter``, ``type-design-analyzer``, ``code-simplifier``) run only as that command's parallel passes, not standalone, and defer to ``quality-specialist`` for general-purpose review. MCP: GitHub.
    * - **research-suite**
      - science-suite (Stage 6 JAX/Julia/MD delegation from research-spark-orchestrator, optional extension only). 10 registered skills (research-spark orchestrator + 7 stage specialists + ``research-hub`` + standalone ``scientific-review``) route to 7 sub-skills (``research-practice`` + 5 methodology specialists + the ``_research-commons`` resource hub). MCP: Context7 for journal guideline lookups.
    * - **science-suite**
@@ -36,12 +36,13 @@ MCP Server Roles
 Intra-Suite Delegation Patterns
 -------------------------------
 
-**dev-suite** (6 agents): Free internal delegation with key edges:
+**dev-suite** (12 agents): Free internal delegation among the 6 original agents, plus a separate fan-out cluster:
 
 - software-architect <-> sre-expert (architecture <-> reliability/infrastructure)
 - quality-specialist <-> software-architect (validation <-> design)
 - automation-engineer <-> sre-expert (CI/CD <-> deployment and monitoring)
 - documentation-expert <-> software-architect (docs <-> interface design)
+- ``/review-pr`` -> code-reviewer, comment-analyzer, pr-test-analyzer, silent-failure-hunter, type-design-analyzer, code-simplifier: one-way fan-out dispatch, no cross-delegation between the six; each points back to quality-specialist for anything outside its narrow pass
 
 **research-suite** (2 agents): Pipeline-gated with optional cross-suite fan-out.
 
@@ -62,7 +63,7 @@ Intra-Suite Delegation Patterns
 Skill Coverage
 ~~~~~~~~~~~~~~
 
-All 42 registered hub skills route to 156 sub-skills with 100% Expert Agent coverage:
+All 42 registered hub skills route to 157 sub-skills with 100% Expert Agent coverage:
 
 .. list-table::
    :header-rows: 1
@@ -74,10 +75,10 @@ All 42 registered hub skills route to 156 sub-skills with 100% Expert Agent cove
      - Sub-Skills
      - Coverage
    * - dev-suite
-     - 6
+     - 12
      - 9
-     - 35
-     - 100% — mapped across 6 domain agents
+     - 36
+     - 100% — mapped across 6 domain agents + 6 ``/review-pr`` fan-out agents
    * - research-suite
      - 2
      - 10
