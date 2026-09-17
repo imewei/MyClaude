@@ -1,8 +1,8 @@
 Changelog
 =========
 
-Unreleased
-----------
+v4.0.3 (2026-09-17)
+-------------------
 
 **dev-suite: adopt ecc:review-pr, ecc:code-review, ecc:config-gc**
 

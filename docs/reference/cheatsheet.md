@@ -1,13 +1,13 @@
 # Quick Reference Cheatsheet
 
 **3 Suites** | **26 Agents** | **21 Registered Commands** | **42 Hub Skills** (routing to 157 sub-skills; 199 SKILL.md on disk)
-**Version:** 4.0.2
+**Version:** 4.0.3
 
 ---
 
 ## The Hub Architecture
 
-MyClaude v4.0.2 uses a **hub-skill architecture**: skills are organized into hub skills (meta-orchestrators) that route to specialized sub-skills. Only hubs are declared in `plugin.json`; sub-skills are discovered through hub routing trees.
+MyClaude v4.0.3 uses a **hub-skill architecture**: skills are organized into hub skills (meta-orchestrators) that route to specialized sub-skills. Only hubs are declared in `plugin.json`; sub-skills are discovered through hub routing trees.
 
 ```
 plugin.json → hub skill → routing decision tree → sub-skill
@@ -111,4 +111,4 @@ plugin.json → hub skill → routing decision tree → sub-skill
 - [Glossary](../glossary.rst) — Hub Skill, Sub-Skill, Routing Decision Tree
 - [GitHub Repository](https://github.com/imewei/MyClaude)
 
-*Generated from v4.0.2 validated marketplace data.*
+*Generated from v4.0.3 validated marketplace data.*

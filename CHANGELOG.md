@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## v4.0.3 (2026-09-17)
 
 ### dev-suite: adopt ecc:review-pr, ecc:code-review, ecc:config-gc
 - New commands `/review-pr` (multi-agent PR review, 6-agent fan-out, report-only) and `/code-review` (single-pass review, local diffs + PRs, can publish via `gh pr review`) adopted at byte parity from the `ecc` marketplace, each with an appended "dev-suite Integration" section wiring in `quality-specialist` and the `code-review` skill. New sub-skill `config-gc` (garbage-collection audit for `~/.claude` setups) routed through the `dev-workflows` hub.

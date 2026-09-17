@@ -1,6 +1,6 @@
 # Command Reference
 
-**21 Registered Commands** | **0 Skill-Invoked Commands** | **Version:** 4.0.2
+**21 Registered Commands** | **0 Skill-Invoked Commands** | **Version:** 4.0.3
 
 Commands fall into two categories:
 - **Registered commands** are declared in `plugin.json` and available as user-facing `/slash-commands`.
@@ -91,4 +91,4 @@ Commands often invoke hub skills, which route to specialized sub-skills automati
 - [Integration Map](../integration-map.rst) — Suite dependencies and MCP server roles
 - [Glossary](../glossary.rst) — Key terms (Hub Skill, Sub-Skill, Routing Decision Tree)
 
-*Generated from v4.0.2 validated marketplace data.*
+*Generated from v4.0.3 validated marketplace data.*
