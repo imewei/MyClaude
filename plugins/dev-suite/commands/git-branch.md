@@ -1,7 +1,7 @@
 ---
 name: git-branch
 description: Full branch lifecycle — finish a branch end-to-end (review, commit, push, merge direct or via PR/MR, sync, cleanup), sweep merged/stale branches, roll back to a prior revision, or manage worktrees
-argument-hint: "<finish|clean|rollback|worktree> [action-specific options]"
+argument-hint: "[finish (default)|clean|rollback|worktree] [action-specific options]"
 allowed-tools: [Bash, Read, Task, AskUserQuestion]
 ---
 
@@ -9,7 +9,7 @@ allowed-tools: [Bash, Read, Task, AskUserQuestion]
 
 Routes to `automation-engineer` via `dev-suite:dev-workflows` → `git-workflow`; `finish` invokes `/code-review` (no-PR/MR path) or `/review-pr` (PR/MR path) as its review gate.
 
-One command for a branch's full lifecycle. The first argument selects the action; everything after it is that action's own flags.
+One command for a branch's full lifecycle. The first argument selects the action; everything after it is that action's own flags. If the first token starts with `-` or is absent, there is no action word — treat it as `finish` and pass every argument through as `finish`'s own flags (e.g. bare `/git-branch --dry-run` runs `finish --dry-run`).
 
 **Arguments:** $ARGUMENTS
 
@@ -35,10 +35,12 @@ Review the branch, commit what's outstanding, push, and merge it — directly in
 | `--all` | Process every local branch (except main/master), not just the current one |
 | `--skip-commit` | Fail if uncommitted changes exist, instead of committing them |
 | `--no-delete` | Keep the branch, its remote, and its worktree after merging |
-| `--force` | Skip confirmation prompts |
+| `--force` | Skip confirmation prompts — never silently overrides a Critical review finding (§3a, §5b.1) or the draft-PR/MR warning (§3) |
 | `--dry-run` | Show the plan only, make no changes |
 | `--no-review` | Skip the review gate (`/code-review` or `/review-pr`), still rebases and merges |
 | `--platform=github\|gitlab` | Force platform instead of auto-detecting from the `origin` remote |
+
+With `--all`, confirmations still happen per branch (the isDraft warning at step 3, the merge-plan confirmation at 5a.3, an ambiguous merge method at 5b.3) unless `--force` is also given — `--all` alone does not imply non-interactive. Combine `--all --force` for a fully unattended sweep.
 
 ### Execution
 
@@ -75,6 +77,8 @@ glab mr view <branch> --output json 2>/dev/null
 - No result, or `state` is not open → **direct path** (step 5a).
 - Open result → **PR/MR path** (step 5b).
 - `isDraft: true` → warn and ask before proceeding down the PR/MR path, even under `--force`; a draft signals the author doesn't consider it ready.
+- **`gh`/`glab` not installed**: the command above fails outright rather than returning "no result" — check for the binary first (`command -v gh` / `command -v glab`); if missing, treat platform detection as skipped (every branch takes the direct path) and say so, same as an undetected platform. Don't let a missing CLI masquerade as "no PR/MR open".
+- `glab`'s exact JSON flag varies by version (`--output json` vs `-F json` across releases) — if the command above errors on flag parsing rather than returning no data, retry with `-F json` before falling back to "platform detection skipped".
 
 #### 3a. Review Gate — Direct Path Only (skip if `--no-review`)
 
@@ -100,6 +104,8 @@ git push -u origin <branch>
 
 On rejection (non-fast-forward): `git pull --rebase`, retry once; if it still fails, report and skip this branch (don't force-push without going through step 5b's explicit rebase-and-merge flow).
 
+Push runs for the direct path too, not just PR/MR branches: it's a remote backup of the branch before the merge attempt in step 5a, which matters most under `--all` — if a later branch in the sweep hits an unresolvable conflict and the run is aborted, every branch already pushed is recoverable from its remote ref even if its local copy gets left mid-merge.
+
 #### 5a. Direct Path — No PR/MR Open
 
 1. Show the merge plan: branch, commit count ahead of main.
@@ -120,18 +126,17 @@ On rejection (non-fast-forward): `git pull --rebase`, retry once; if it still fa
    ```bash
    git fetch origin main && git rev-list --left-right --count HEAD...origin/main
    ```
-   If behind main: `git rebase origin/main`. On conflict, ask the user to resolve or abort — never auto-resolve. After a successful rebase, force-push with lease:
+   If behind main: `git rebase origin/main`. On conflict, ask the user to resolve or abort — never auto-resolve. If any conflict required a manual, non-mechanical resolution (not just a clean replay), re-run the review gate on the rebased result before merging — the review in step 1 covered the pre-rebase diff, and conflict resolution can change code the review never saw. A clean rebase (no conflicts) doesn't change the diff, so the original review still stands. After a successful rebase, force-push with lease:
    ```bash
    git push --force-with-lease origin <branch>
    ```
-3. **Merge via platform CLI:**
+3. **Merge via platform CLI.** `--squash` below is the default, not a fixed invariant — prefer the repo's configured default merge method when detectable (branch protection / `mergeStateStatus`); if the method is ambiguous and `--force` was not given, ask before proceeding instead of assuming squash:
    ```bash
    # GitHub
    gh pr merge <number> --squash --delete-branch
    # GitLab
    glab mr merge <number> --squash --remove-source-branch
    ```
-   Prefer the repo's configured default merge method when detectable (branch protection / `mergeStateStatus`); default to squash and ask before proceeding if the method is ambiguous and `--force` was not given.
 4. `--dry-run` for this path: stop after step 1 (review) and report what steps 2-3 would do, without rebasing or merging.
 
 #### 6. Sync Main
@@ -162,6 +167,23 @@ Skipped: <branch> (merge conflict — resolve manually and re-run)
 Next steps: none | manual conflict resolution needed on <branch>
 ```
 
+### Examples
+
+```bash
+# Finish the current branch (default action, no action word needed)
+/git-branch
+/git-branch --dry-run
+
+# Finish a branch with an open PR without a review gate
+/git-branch finish --no-review
+
+# Sweep every local branch, no prompts
+/git-branch finish --all --force
+
+# Finish, but never delete anything afterward
+/git-branch finish --no-delete
+```
+
 ### Rollback (Finish)
 
 - **Direct-path merge:** `git reset --hard HEAD~1` only undoes the single most recent merge and discards any uncommitted work — after a multi-branch `--all` run, find the commit `main` was at before this run via `git reflog show main` and `git reset --hard <that-hash>` instead.
@@ -185,7 +207,7 @@ Identify and remove branches that are already merged or have gone stale, without
 | `--remote` | Also clean matching remote-tracking branches |
 | `--dry-run` | Preview only, make no changes (**default**) |
 | `--yes` | Skip confirmation and delete |
-| `--force` | Force-delete branches with unmerged commits (`git branch -D`) |
+| `--force-unmerged` | Force-delete branches with unmerged commits (`git branch -D`) — deliberately not named `--force`: unlike `finish`'s `--force` (skip prompts only), this one can discard commits |
 
 ### Execution
 
@@ -210,7 +232,7 @@ Identify and remove branches that are already merged or have gone stale, without
    ```bash
    git branch -d <branch>                    # local
    git push origin --delete <branch>         # remote, if --remote
-   git branch -D <branch>                    # unmerged, if --force
+   git branch -D <branch>                    # unmerged, if --force-unmerged
    ```
    Track and report any deletion failures.
 
@@ -222,7 +244,7 @@ git config --add branch.cleanup.protected 'release/*'
 git config --get-all branch.cleanup.protected
 ```
 
-`--base`, `main`, and `master` are always implicitly protected.
+`--base`, `main`, `master`, and `production` are always implicitly protected (matching Rollback's hardcoded protection below — a branch named `production` deserves the same floor of protection whether it's being deleted or rolled back).
 
 ### Examples
 
@@ -277,7 +299,7 @@ Safely roll a branch back to a prior version, interactively when arguments are o
 ### Safety Guardrails
 
 1. **Automatic backup** — the pre-rollback HEAD lands in reflog automatically; note its hash in the report for `git reset --hard <hash>` recovery.
-2. **Protected branches** — `main`/`master`/`production` require explicit extra confirmation, even with `--yes`.
+2. **Protected branches** — `main`/`master`/`production` (same set Clean implicitly protects) require explicit extra confirmation, even with `--yes`.
 3. **`--dry-run` by default.**
 4. **No `--force`** — force-pushing after `reset` mode needs a manual, deliberate command.
 
