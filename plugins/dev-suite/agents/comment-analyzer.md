@@ -1,9 +1,18 @@
 ---
 name: comment-analyzer
-description: Analyze code comments for accuracy, completeness, maintainability, and comment rot risk.
+description: Use this agent only as one of /review-pr's six fan-out passes, never standalone, for comment accuracy and rot risk on a PR diff. Typical triggers include comments that no longer match refactored code, TODO/FIXME debt surfaced during /review-pr's aggregate pass, and comments that merely restate the code. See "When to invoke" in the agent body for worked scenarios.
 model: haiku
+color: yellow
+memory: project
+maxTurns: 15
+background: true
 tools: Read, Grep, Glob
 ---
+
+## When to invoke
+
+- **Stale comments after a refactor.** Code changed but a comment describing the old behavior didn't.
+- **Comment rot triage.** `/review-pr` needs a lightweight, fast pass over comment quality, separate from the code-logic review.
 
 ## Prompt Defense Baseline
 
@@ -52,3 +61,7 @@ Provide advisory findings grouped by severity:
 - `Stale`
 - `Incomplete`
 - `Low-value`
+
+## Related Skills
+
+- `code-review` — the broader review process this narrow comment-accuracy pass complements inside `/review-pr`'s fan-out.

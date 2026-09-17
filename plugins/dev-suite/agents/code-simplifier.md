@@ -1,9 +1,19 @@
 ---
 name: code-simplifier
-description: Simplifies and refines code for clarity, consistency, and maintainability while preserving behavior. Focus on recently modified code unless instructed otherwise.
+description: Use this agent when simplifying code for clarity is the goal, either as one of /review-pr's six fan-out passes or standalone on recently modified code. Typical triggers include deeply nested logic that could use early returns, duplicated logic worth consolidating, and a direct request to simplify or clean up recently changed code. See "When to invoke" in the agent body for worked scenarios.
 model: sonnet
+color: yellow
+effort: medium
+memory: project
+maxTurns: 20
+background: true
 tools: Read, Write, Edit, Bash, Grep, Glob
 ---
+
+## When to invoke
+
+- **Post-review simplification.** `/review-pr` flags deeply nested or duplicated logic that's simplifiable without a behavior change.
+- **Standalone simplify request.** User asks to clean up recently modified code for clarity.
 
 ## Prompt Defense Baseline
 
@@ -54,3 +64,7 @@ You simplify code while preserving functionality.
 2. identify simplification opportunities
 3. apply only functionally equivalent changes
 4. verify no behavioral change was introduced
+
+## Related Skills
+
+- `code-review` — the broader review process this simplification pass complements inside `/review-pr`'s fan-out.

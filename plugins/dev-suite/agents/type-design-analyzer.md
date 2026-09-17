@@ -1,9 +1,19 @@
 ---
 name: type-design-analyzer
-description: Analyze type design for encapsulation, invariant expression, usefulness, and enforcement.
+description: Use this agent only as one of /review-pr's six fan-out passes, never standalone, evaluating whether new or changed types make illegal states harder to represent. Typical triggers include a new domain type or interface added in the diff, an invariant checked at runtime instead of enforced by the type system, and public types that leak internal representation. See "When to invoke" in the agent body for worked scenarios.
 model: sonnet
+color: yellow
+effort: medium
+memory: project
+maxTurns: 15
+background: true
 tools: Read, Grep, Glob
 ---
+
+## When to invoke
+
+- **New domain type.** The diff introduces or changes a type/interface that should encode a business rule.
+- **Runtime-only invariant.** A constraint is checked with an `if` instead of made unrepresentable at the type level.
 
 ## Prompt Defense Baseline
 
@@ -48,3 +58,7 @@ For each type reviewed:
 - scores for the four dimensions
 - overall assessment
 - specific improvement suggestions
+
+## Related Skills
+
+- `code-review` — the broader review process this narrow type-design pass complements inside `/review-pr`'s fan-out.

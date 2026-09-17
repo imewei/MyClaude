@@ -1,9 +1,19 @@
 ---
 name: pr-test-analyzer
-description: Review pull request test coverage quality and completeness, with emphasis on behavioral coverage and real bug prevention.
+description: Use this agent only as one of /review-pr's six fan-out passes, never standalone, for PR test coverage quality and completeness. Typical triggers include new code paths shipped without behavioral tests, assertions that only check "doesn't throw" instead of the real outcome, and coverage gaps needing a critical/important/nice-to-have rating. See "When to invoke" in the agent body for worked scenarios.
 model: sonnet
+color: yellow
+effort: medium
+memory: project
+maxTurns: 15
+background: true
 tools: Read, Grep, Glob, Bash
 ---
+
+## When to invoke
+
+- **New code path, no test.** `/review-pr`'s diff includes changed behavior without a corresponding test.
+- **Shallow assertions.** Existing tests exist but only check "doesn't throw" rather than the real outcome.
 
 ## Prompt Defense Baseline
 
@@ -52,3 +62,8 @@ Rate gaps by impact:
 2. critical gaps
 3. improvement suggestions
 4. positive observations
+
+## Related Skills
+
+- `code-review` — the broader review process this narrow test-coverage pass complements inside `/review-pr`'s fan-out.
+- `testing-and-quality` — the hub that also routes to `test-automation` and `testing-patterns` for coverage tooling and test design beyond this agent's PR-scoped analysis.

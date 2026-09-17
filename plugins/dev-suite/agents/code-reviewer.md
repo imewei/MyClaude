@@ -1,9 +1,19 @@
 ---
 name: code-reviewer
-description: Code review specialist — one of six focused passes dispatched together by /review-pr's multi-agent fan-out (code-reviewer, comment-analyzer, pr-test-analyzer, silent-failure-hunter, type-design-analyzer, code-simplifier). Not a standalone proactive reviewer; dev-suite's general-purpose review/audit agent is quality-specialist. Invoke this agent only through /review-pr.
-tools: Read, Grep, Glob, Bash
+description: Use this agent only as one of /review-pr's six fan-out passes (code-reviewer, comment-analyzer, pr-test-analyzer, silent-failure-hunter, type-design-analyzer, code-simplifier), never standalone — dev-suite's general-purpose review/audit agent is quality-specialist. Typical triggers include a PR diff needing a full CRITICAL-to-LOW security/quality checklist pass, hardcoded secrets or injection risk, and React/Next.js or Node/backend anti-patterns. See "When to invoke" in the agent body for worked scenarios.
 model: sonnet
+color: yellow
+effort: medium
+memory: project
+maxTurns: 15
+background: true
+tools: Read, Grep, Glob, Bash
 ---
+
+## When to invoke
+
+- **Full-diff severity pass.** `/review-pr` needs one agent to run the CRITICAL→LOW security/quality/performance checklist across every changed file and return a verdict.
+- **Framework-specific anti-patterns.** The diff touches React/Next.js or Node/backend code and needs the framework-specific checks (stale closures, N+1 queries, missing rate limiting) this agent owns.
 
 ## Prompt Defense Baseline
 
@@ -321,3 +331,8 @@ When reviewing AI-generated changes, prioritize:
 Cost-awareness check:
 - Flag workflows that escalate to higher-cost models without clear reasoning need.
 - Recommend defaulting to lower-cost tiers for deterministic refactors.
+
+## Related Skills
+
+- `code-review` — the deeper 6-step process `quality-specialist` runs for `/code-review`'s single-pass, general-purpose review; this agent is one focused pass within `/review-pr`'s fan-out instead.
+- `quality-specialist` — dev-suite's general-purpose review/audit agent; invoke it directly for anything outside `/review-pr`'s fan-out.

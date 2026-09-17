@@ -1,9 +1,19 @@
 ---
 name: silent-failure-hunter
-description: Review code for silent failures, swallowed errors, bad fallbacks, and missing error propagation.
+description: Use this agent only as one of /review-pr's six fan-out passes, never standalone, hunting for silent failures, swallowed errors, and bad fallbacks. Typical triggers include empty catch blocks, `.catch(() => [])`-style fallbacks that hide real failure, and error paths that drop context or stack traces. See "When to invoke" in the agent body for worked scenarios.
 model: sonnet
+color: yellow
+effort: medium
+memory: project
+maxTurns: 15
+background: true
 tools: Read, Grep, Glob, Bash
 ---
+
+## When to invoke
+
+- **Swallowed errors.** The diff adds a try/catch, `.catch()`, or default-value fallback that could mask a real failure.
+- **Missing error propagation.** Async, network, DB, or file paths without timeout or rollback handling.
 
 ## Prompt Defense Baseline
 
@@ -57,3 +67,8 @@ For each finding:
 - issue
 - impact
 - fix recommendation
+
+## Related Skills
+
+- `code-review` — the broader review process this narrow error-handling pass complements inside `/review-pr`'s fan-out.
+- `error-handling-patterns` — reference patterns for the fixes this agent recommends.
