@@ -84,7 +84,7 @@ class TestUserPromptSubmit:
         plugin = _json.loads((HOOKS_DIR.parent / ".claude-plugin" / "plugin.json").read_text())
         registered = {s.rsplit("/", 1)[-1] for s in plugin["skills"]}
         source = (HOOKS_DIR / "user_prompt_submit.py").read_text()
-        hubs = set(re.findall(r'^    "([a-z0-9-]+)": r"', source, re.M))
+        hubs = set(re.findall(r'^    "([a-z0-9-]+)": r"', source, re.MULTILINE))
         assert hubs and hubs <= registered, f"unregistered hubs in hook: {hubs - registered}"
 class TestPostToolUse:
     """PostToolUse must read tool_response and only flag numeric NaN/Inf."""
