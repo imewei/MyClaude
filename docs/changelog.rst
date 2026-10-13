@@ -1,6 +1,15 @@
 Changelog
 =========
 
+v4.0.6 (2026-10-13)
+-------------------
+
+* ``make validate`` is warning-free: ``category`` now lives on the marketplace entries, five ignored
+  ``marketplace.json`` metadata fields are gone, ``review-pr`` has a usage example, and bare code fences
+  have a language. Fixed the CI lint failure on 2c543c0.
+* Docs sync: corrected model tiers and tier counts, the prompt-hook description, and agent and command rows
+  for the routing changes.
+
 v4.0.5 (2026-10-13)
 -------------------
 

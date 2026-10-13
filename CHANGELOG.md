@@ -1,5 +1,11 @@
 # Changelog
 
+## v4.0.6 (2026-10-13)
+
+- `make validate` is warning-free: `category` moved from `plugin.json` to the marketplace entries (the loader and `make plugin-count` read it there; `metadata_validator.py` treats it as optional), five ignored `marketplace.json` metadata fields removed, `review-pr` gained a usage example, and three bare code fences in `code-review` and `code-reviewer` got a language.
+- Fixed the CI lint failure on 2c543c0 (`re.M` alias in a hook test).
+- Docs sync: corrected model tiers in `docs/suites/science-suite.rst` (`jax-pro`, `julia-pro`, `pinn-engineer`, `ml-expert` are sonnet), the cheatsheet and science README tier counts, the prompt-hook description, and agent/command rows that name `julia-implementer`, Zarr/HDF5 conversion, `/code-review` and `/test-generate`.
+
 ## v4.0.5 (2026-10-13)
 
 ### All plugins: tuned for Opus 5.5, Sonnet 5.5, Haiku 5.5 (Fable 5.1 as advisor) and token economy

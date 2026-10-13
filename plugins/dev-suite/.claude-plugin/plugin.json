@@ -1,6 +1,6 @@
 {
   "name": "dev-suite",
-  "version": "4.0.5",
+  "version": "4.0.6",
   "description": "Unified software development lifecycle: architecture, implementation, CI/CD, testing, debugging, and deployment. Merges engineering, infrastructure, and quality into one suite for zero-friction cross-concern delegation.",
   "author": {
     "name": "Wei Chen",
@@ -9,7 +9,6 @@
   "homepage": "https://github.com/imewei/MyClaude",
   "repository": "https://github.com/imewei/MyClaude",
   "license": "MIT",
-  "category": "dev",
   "keywords": [
     "development",
     "engineering",
