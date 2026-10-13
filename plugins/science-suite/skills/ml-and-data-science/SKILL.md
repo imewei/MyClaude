@@ -1,13 +1,13 @@
 ---
 name: ml-and-data-science
-description: Meta-orchestrator for machine learning and data science. Routes to classical ML, data analysis, wrangling, statistics, visualization, curve fitting, and experiment tracking skills. Use when training classical ML models, analyzing experimental data, wrangling datasets, running statistical tests, or creating scientific visualizations. For production ML deployment and serving, see the ml-deployment hub.
+description: Meta-orchestrator for machine learning and data science. Routes to classical ML, data analysis, wrangling, statistics, visualization, curve fitting, and experiment tracking skills. Use when training classical ML models, analyzing experimental data, wrangling datasets, running statistical tests, creating scientific visualizations, or storing and converting large N-dimensional array data (Zarr, HDF5 or NetCDF to cloud-native Zarr, chunking and sharding). For tabular classical-model training use machine-learning; for production ML deployment and serving, see the ml-deployment hub.
 ---
 
 > **Loading a routing target.** `dev-suite:*`, `research-suite:*`, and `science-suite:*` targets below
 > are slash-only (`disable-model-invocation: true`) — the Skill tool will not fire them. Load one by
 > reading its file with the Read tool at `${CLAUDE_PLUGIN_ROOT}/skills/<name>/SKILL.md` — Claude Code
-> substitutes that variable with this plugin's install directory. A target in a sibling suite is at
-> the same relative path under that suite's own root. Targets from other plugins (`superpowers:*`,
+> substitutes that variable with this plugin's install directory. A target in a sibling suite cannot be
+> read by path (installs live in separate directories); reach it by invoking that suite's hub. Targets from other plugins (`superpowers:*`,
 > `ecc:*`, …) are unaffected and invoke normally.
 
 # ML and Data Science
@@ -16,6 +16,8 @@ Orchestrator for machine learning and data science workflows. Routes problems to
 
 ## Expert Agent
 
+- **`python-pro`**: Lead for Zarr and HDF5/NetCDF conversion jobs (`zarr-cloud-arrays`), including batches of large XPCS files.
+  - *Location*: `${CLAUDE_PLUGIN_ROOT}/agents/python-pro.md`
 - **`ml-expert`**: Specialist for classical ML, data pipelines, and production ML systems.
   - *Location*: `${CLAUDE_PLUGIN_ROOT}/agents/ml-expert.md`
   - *Capabilities*: Scikit-learn, feature engineering, statistical modeling, data wrangling, visualization, and experiment tracking.
@@ -43,6 +45,9 @@ Non-linear least squares: curve fitting, residual analysis, parameter uncertaint
 ### [Experiment Tracking](../experiment-tracking/SKILL.md)
 MLflow, Weights & Biases, DVC: logging metrics, artifacts, and reproducible experiment management.
 
+### [Zarr Cloud Arrays](../zarr-cloud-arrays/SKILL.md)
+Chunked, compressed N-D arrays on object storage: chunk design, safe parallel writes, NetCDF/HDF5 migration, Python and Julia.
+
 ## Routing Decision Tree
 
 ```
@@ -68,6 +73,9 @@ What is the ML / data science task?
 |
 +-- Fit curves / non-linear models to data?
 |   --> science-suite:nlsq-core-mastery
+|
++-- Large N-D arrays, data cubes, Zarr, or NetCDF/HDF5-to-cloud conversion?
+|   --> science-suite:zarr-cloud-arrays
 |
 +-- Track experiments and artifacts?
 |   --> science-suite:experiment-tracking
