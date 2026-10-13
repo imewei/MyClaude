@@ -1,6 +1,40 @@
 Changelog
 =========
 
+v4.0.5 (2026-10-13)
+-------------------
+
+**All plugins: tuned for Opus 5.5, Sonnet 5.5, Haiku 5.5 (Fable 5.1 as advisor) and token economy**
+
+* Only the 42 hub skills are model-invocable; the 169 other ``SKILL.md`` files carry
+  ``disable-model-invocation: true`` and are read by path from hubs. The session skill listing shrinks from
+  211 entries to 42. See :doc:`guides/skill-routing`.
+* Removed all 38 agent ``skills:`` preloads (20 agents); average tokens per dispatch fall from about 3.6k to 1.1k.
+* Per-role ``effort`` (Opus 5.5 design and theory agents ``high``, numerics-critical Sonnet agents ``high``,
+  other Sonnet agents ``medium``, ``documentation-expert`` ``low``); 19 agent bodies rewritten (about -37%).
+  Fable 5.1 is not pinned to any agent.
+* The ``UserPromptSubmit`` routing hint is conditional: it fires only when the prompt matches a hub's domain and
+  repeats a hub at most once per 12 prompts.
+* Look-alike hubs, agents and commands name each other in their descriptions; ``python-pro`` owns Zarr/HDF5
+  conversion jobs; ``zarr-cloud-arrays`` names its lead agents.
+* Hub hand-offs: science-suite hubs no longer route to hidden skills in a sibling suite; they route to that
+  suite's hub. ``routing_checker.py`` enforces this, the loading note, and that no two hubs route to each other;
+  rare events now go straight to ``rare-events-sampling``.
+* Tooling: ``marketplace_validator.py`` and ``routing_checker.py`` join ``make validate`` with
+  ``claude plugin validate``. The ``science-suite`` marketplace entry now lists ``julia-implementer``,
+  ``analyze-data`` and ``run-experiment``. Hook commands quote ``${CLAUDE_PLUGIN_ROOT}``.
+
+**science-suite: Julia package-engineering skills and julia-implementer agent**
+
+* Adapted 11 skills from AtelierArith/atelier-arith-julia-development-skills (MIT; see
+  ``plugins/science-suite/THIRD_PARTY_NOTICES.md``) under the ``julia-language`` hub. Options are
+  version-gated on ``[compat] julia``.
+* New sonnet agent ``julia-implementer`` leads those skills; ``julia-pro`` keeps SciML/modeling and
+  ``julia-ml-hpc`` keeps ML/GPU/HPC.
+* Refreshed GitHub Action pins in the Julia CI skills.
+* New ``zarr-cloud-arrays`` skill (routed from ``ml-and-data-science``) with Python and Julia references.
+* Counts: science-suite 12 -> 13 agents, 114 -> 126 sub-skills; marketplace 26 -> 27 agents, 157 -> 169 sub-skills.
+
 v4.0.4 (2026-09-17)
 -------------------
 

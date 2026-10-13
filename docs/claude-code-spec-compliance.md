@@ -6,7 +6,7 @@ orphan: true
 
 **Audited against:** Claude Code v2.1.126 (full settings schema)
 **Audit method:** Gemini changelog search (4 tool uses) + Codex file audit (1 tool use) + settings schema inspection
-**Plugin suite version:** 4.0.4
+**Plugin suite version:** 4.0.5
 **Date:** 2026-05-04 (version references re-verified 2026-07-31)
 
 ---
@@ -18,7 +18,7 @@ orphan: true
 | 1 | Hook events — deprecated events absent from hooks.json | ✅ Compliant | PreSubagentUse, ExecutionError, PermissionPrompt, ContextOverflow, CostThreshold only appear in README docs, never in hooks.json |
 | 2 | Hook events — all active events are valid | ✅ Compliant | All 13 events in use (SessionStart/End, UserPromptSubmit, PreToolUse, PostToolUse, PreCompact, PostCompact, SubagentStart/Stop, PermissionDenied, TaskCreated, TaskCompleted, StopFailure) are confirmed valid in schema |
 | 3 | plugin.json required fields present | ✅ Compliant | name, version, description, author, homepage, repository, license, category, keywords present in all 3 manifests |
-| 4 | Version consistency across all plugin.json | ✅ Compliant | All at 4.0.4 |
+| 4 | Version consistency across all plugin.json | ✅ Compliant | All at 4.0.5 |
 | 5 | Agent frontmatter — only valid fields used | ✅ Compliant | All fields confirmed valid by Codex audit; no unknown fields |
 | 6 | SKILL.md frontmatter — required fields only | ✅ Compliant | All skills use only name + description; no unknown fields |
 | 7 | Command frontmatter — core fields valid | ✅ Compliant | Standard fields valid; extra fields (category, purpose, tags, external-docs) are unrecognized but benign |
@@ -81,9 +81,9 @@ Currently used events marked ✅. Unused but available marked ○.
 | Hook `if` conditional filter | schema | Permission-rule syntax filter before subprocess spawns | Reduce hook overhead for non-matching commands |
 | Hook `once` option | schema | Hook auto-removes after first execution | One-shot setup hooks |
 | Hook `async` / `asyncRewake` | schema | Background hook execution; `asyncRewake` can re-wake model | Long-running post-processing without blocking |
-| `skillListingMaxDescChars` setting | schema | Caps description length in skill listing (default: 1536) | All 198 MyClaude skills are within limit ✅ |
-| `skillListingBudgetFraction` setting | schema | Context fraction for skill listing (default: 0.01) | Could raise slightly given 198 skills compete for 1% |
-| `skillOverrides` setting | schema | Per-skill: "name-only", "user-invocable-only", "off" | Could hide rarely-used sub-skills from model routing |
+| `skillListingMaxDescChars` setting | schema | Caps description length in skill listing (default: 1536) | All 211 MyClaude skills are within limit ✅ (checked by `routing_checker.py`) |
+| `skillListingBudgetFraction` setting | schema | Context fraction for skill listing (default: 0.01) | Only the 42 hubs are listed (sub-skills opt out), so the default 1% suffices |
+| `skillOverrides` setting | schema | Per-skill: "name-only", "user-invocable-only", "off" | Not needed: sub-skills use `disable-model-invocation: true` instead |
 
 ---
 

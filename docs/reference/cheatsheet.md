@@ -1,13 +1,13 @@
 # Quick Reference Cheatsheet
 
-**3 Suites** | **26 Agents** | **21 Registered Commands** | **42 Hub Skills** (routing to 157 sub-skills; 199 SKILL.md on disk)
-**Version:** 4.0.4
+**3 Suites** | **27 Agents** | **21 Registered Commands** | **42 Hub Skills** (routing to 169 sub-skills; 211 SKILL.md on disk)
+**Version:** 4.0.5
 
 ---
 
 ## The Hub Architecture
 
-MyClaude v4.0.4 uses a **hub-skill architecture**: skills are organized into hub skills (meta-orchestrators) that route to specialized sub-skills. Only hubs are declared in `plugin.json`; sub-skills are discovered through hub routing trees.
+MyClaude v4.0.5 uses a **hub-skill architecture**: skills are organized into hub skills (meta-orchestrators) that route to specialized sub-skills. Only hubs are declared in `plugin.json`; sub-skills are discovered through hub routing trees.
 
 ```
 plugin.json → hub skill → routing decision tree → sub-skill
@@ -47,7 +47,7 @@ plugin.json → hub skill → routing decision tree → sub-skill
 |-----------|-------|---------|
 | Agents | 12 | 4 opus, 7 sonnet, 1 haiku |
 | Commands | 4 registered | `/md-sim`, `/benchmark`, `/analyze-data`, `/run-experiment` |
-| Skills | 23 hubs → 114 sub | science-hub, advanced-simulations, bayesian-inference, continuum-mechanics-and-rheology, deep-learning, deep-learning-hub, jax-computing, julia-language, julia-mastery, julia-ml-and-dl, llm-and-ai, machine-learning, ml-and-data-science, ml-deployment, nonlinear-dynamics, parallel-computing, python-development, research-and-domains, sciml-and-diffeq, simulation-and-hpc, statistical-physics, statistical-physics-hub, time-series-analysis |
+| Skills | 23 hubs → 126 sub | science-hub, advanced-simulations, bayesian-inference, continuum-mechanics-and-rheology, deep-learning, deep-learning-hub, jax-computing, julia-language, julia-mastery, julia-ml-and-dl, llm-and-ai, machine-learning, ml-and-data-science, ml-deployment, nonlinear-dynamics, parallel-computing, python-development, research-and-domains, sciml-and-diffeq, simulation-and-hpc, statistical-physics, statistical-physics-hub, time-series-analysis |
 | Hooks | 5 events | SessionStart, UserPromptSubmit, PostToolUse, SessionEnd, SubagentStop |
 
 **Total hook events across all suites:** 16
@@ -96,9 +96,9 @@ plugin.json → hub skill → routing decision tree → sub-skill
 /plugin marketplace add imewei/MyClaude
 
 # Install suites
-/plugin install dev-suite@marketplace
-/plugin install research-suite@marketplace
-/plugin install science-suite@marketplace
+/plugin install dev-suite@scientific-computing-workflows
+/plugin install research-suite@scientific-computing-workflows
+/plugin install science-suite@scientific-computing-workflows
 ```
 
 ---
@@ -111,4 +111,4 @@ plugin.json → hub skill → routing decision tree → sub-skill
 - [Glossary](../glossary.rst) — Hub Skill, Sub-Skill, Routing Decision Tree
 - [GitHub Repository](https://github.com/imewei/MyClaude)
 
-*Generated from v4.0.4 validated marketplace data.*
+*Generated from v4.0.5 validated marketplace data.*

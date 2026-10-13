@@ -27,7 +27,7 @@ uv sync            # installs dev + docs + science dependency groups
 | `make dev-install` | Install development dependencies |
 | `make lint` | Run linters on Python code |
 | `make format` | Format Python code with black and ruff |
-| `make validate` | Validate plugin.json, command file structure, doc cross-links, skill context budget + agent prompt size |
+| `make validate` | Validate plugin.json, command file structure, doc cross-links, skill context budget + agent prompt size, marketplace.json, trigger routing, and `claude plugin validate` |
 | `make test` | Run tests with pytest |
 | `make test-coverage` | Run tests with coverage report |
 | `make verify` | Full local CI (lint + validate + tests) — run before push |
@@ -61,9 +61,9 @@ PYTHONPATH=. python3 tools/validation/metadata_validator.py plugins/dev-suite/
 
 ## Plugin Component Rules
 
-- Each suite under `plugins/<suite>/` follows the layout documented in the root `CLAUDE.md`.
-- `plugin.json` registers only top-level hub skills — adding a sub-skill does not require a manifest edit.
-- Plugin version must stay in sync across `plugin.json`, `pyproject.toml`, and READMEs. `make validate` only checks semver format within each `plugin.json`; `make verify` checks the three `plugin.json` versions agree with each other and with `pyproject.toml`. `marketplace.json`, `Makefile`, `docs/conf.py`, and README/docs references are not checked — grep for the old version by hand.
+- Each suite under `plugins/<suite>/` follows the layout in `docs/suites/<suite>.rst`.
+- `plugin.json` registers only top-level hub skills — adding a sub-skill does not require a manifest edit. A new sub-skill needs `disable-model-invocation: true` (otherwise it joins the session skill listing; `routing_checker.py` fails) and a route from its hub. See `docs/guides/skill-routing.rst`.
+- Plugin version must stay in sync across `plugin.json`, `pyproject.toml`, and READMEs. `make validate` checks semver format per `plugin.json` and that `marketplace.json` entries match; `make verify` checks the three `plugin.json` versions agree with each other and with `pyproject.toml`. `Makefile`, `docs/conf.py`, and README/docs references are not checked — grep for the old version by hand.
 - Do not add `.. contents::` to RST docs — the Furo Sphinx theme auto-generates the sidebar TOC.
 
 ## PR Checklist

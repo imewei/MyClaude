@@ -1,8 +1,8 @@
 # Agent Reference
 
-**26 Agents** across 3 suites | **Version:** 4.0.4
+**27 Agents** across 3 suites | **Version:** 4.0.5
 
-Agents are specialized AI personas with defined model tiers, tool access, and domain expertise. Each agent runs at a specific model tier. Opus is the architect, Sonnet is the contractor: **opus** for research, planning, review/audit, theory, and subsystem explanation; **sonnet** for code edits, bug fixes, and file-by-file implementation; **haiku** for mechanical doc generation.
+Agents are specialized AI personas with defined model tiers, tool access, and domain expertise. Each agent runs at a model tier (`opus` = Opus 5.5, `sonnet` = Sonnet 5.5, `haiku` = Haiku 5.5) with an `effort` matched to its role. Opus is the architect, Sonnet is the contractor: **opus** (effort `high`) for research, planning, review/audit, theory, and subsystem explanation; **sonnet** (`medium`, or `high` for numerics-critical agents) for code edits, bug fixes, and implementation; **haiku** (`low`) for mechanical doc generation. Fable 5.1 is reserved for the advisor role and is not pinned to any agent.
 
 ---
 
@@ -57,6 +57,7 @@ Scientific computing, HPC, physics simulations, ML/DL, and nonlinear dynamics. `
 | `statistical-physicist` | opus | Correlation functions, non-equilibrium dynamics, and ensemble theory |
 | `pinn-engineer` | sonnet | Physics-informed AI for PINNs, NeuralPDE.jl, DeepXDE, BPINN/BNNODE, and inverse PDEs |
 | `continuum-mechanics-engineer` | opus | FEM/FEA, constitutive modeling, DMA/rheology, transient networks (CAN/vitrimers), and nanocomposites |
+| `julia-implementer` | sonnet | Julia package lifecycle lead: scaffolding, idiomatic code, tests, Documenter docs, exports, precompilation, profiling, debugging, and read-only audits |
 | `julia-ml-hpc` | sonnet | Julia ML, Deep Learning, and HPC (Lux.jl, MLJ.jl, CUDA.jl, MPI.jl, GNNLux) |
 | `python-pro` | sonnet | Python systems engineering: type-driven development, Rust extensions, and performance |
 | `sci-workflow-engineer` | sonnet | Scientific LLM workflows: JAX/Julia codegen prompts, experiment templates, and AI-assisted pipelines |
@@ -69,7 +70,7 @@ Scientific computing, HPC, physics simulations, ML/DL, and nonlinear dynamics. `
 | Tier | Count | Agents |
 |------|-------|--------|
 | **opus** | 8 | software-architect, quality-specialist, research-expert, research-spark-orchestrator, neural-network-master, nonlinear-dynamics-expert, statistical-physicist, continuum-mechanics-engineer |
-| **sonnet** | 16 | app-developer, automation-engineer, sre-expert, jax-pro, julia-pro, pinn-engineer, ml-expert, julia-ml-hpc, simulation-expert, python-pro, sci-workflow-engineer, code-reviewer, pr-test-analyzer, silent-failure-hunter, type-design-analyzer, code-simplifier |
+| **sonnet** | 17 | app-developer, automation-engineer, sre-expert, jax-pro, julia-pro, julia-implementer, pinn-engineer, ml-expert, julia-ml-hpc, simulation-expert, python-pro, sci-workflow-engineer, code-reviewer, pr-test-analyzer, silent-failure-hunter, type-design-analyzer, code-simplifier |
 | **haiku** | 2 | documentation-expert, comment-analyzer |
 
 ---
@@ -82,6 +83,7 @@ Agents delegate across suite boundaries when tasks require multiple domains. Key
 |------|----|----------|
 | `software-architect` | `sre-expert` | Architecture <-> Reliability/Infrastructure |
 | `julia-pro` | `julia-ml-hpc` | SciML/ODE <-> ML training/GPU/HPC |
+| `julia-pro` / `julia-ml-hpc` | `julia-implementer` | Modeling/ML code <-> package lifecycle (tests, docs, release) |
 | `julia-pro` | `software-architect` (dev-suite) | Scientific computing <-> Productionization/API design |
 | `jax-pro` | `software-architect` (dev-suite) | JAX implementation <-> Productionization/API design |
 | `neural-network-master` | `julia-ml-hpc` | DL theory <-> Julia implementation |
@@ -100,4 +102,4 @@ See the [Integration Map](../integration-map.rst) for full delegation patterns a
 - [Integration Map](../integration-map.rst) — Suite dependencies and skill coverage
 - [Glossary](../glossary.rst) — Key terms (Hub Skill, Sub-Skill)
 
-*Generated from v4.0.4 validated marketplace data.*
+*Generated from v4.0.5 validated marketplace data.*

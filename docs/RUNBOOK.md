@@ -19,7 +19,7 @@ This repo ships a Claude Code plugin marketplace, not a deployed service — the
 
 | Command | What it checks |
 |---------|-----------------|
-| `make validate` | Per-plugin `plugin.json` schema, required fields, semver format (each file checked independently — no cross-file comparison), command file structure, doc cross-links, skill context budget (2%) + agent prompt size (10,000 chars) |
+| `make validate` | Per-plugin `plugin.json` schema, required fields, semver format, command file structure, doc cross-links, skill context budget (2%) + agent prompt size (10,000 chars), `marketplace.json` consistency (`marketplace_validator.py`), trigger routing (`routing_checker.py`), and `claude plugin validate` when the CLI is installed |
 | `make verify-fast` | Lint + validate only (quick gate) |
 | `make verify` | Lint + validate + full test suite (run before every push) |
 | `make audit` | `pip-audit` (dependency CVEs) + `bandit` (SAST) + `vulture` (dead code) + `gitleaks` (secret scan) |
@@ -27,7 +27,7 @@ This repo ships a Claude Code plugin marketplace, not a deployed service — the
 
 ## Common Issues and Fixes
 
-- **Version drift across files** — `make validate` only checks semver *format* within each `plugin.json`; `make verify` checks the three `plugin.json` agree with each other and with `pyproject.toml`, but `marketplace.json`, `Makefile`, `docs/conf.py`, and README/docs are unchecked. Grep all four locations listed under Release Procedure above before every release.
+- **Version drift across files** — `make validate` checks semver format per `plugin.json` and that each `marketplace.json` entry and `metadata.version` match its `plugin.json`; `make verify` checks the three `plugin.json` agree with each other and with `pyproject.toml`. `Makefile`, `docs/conf.py`, and README/docs are unchecked. Grep all four locations listed under Release Procedure above before every release.
 - **`pytest` finds no tests / fails to collect** — tests live under `tools/tests/`, not the repo root; run `uv run pytest` (respects `testpaths` in `pyproject.toml`), not a bare `pytest` from an unexpected `cwd`.
 - **mypy errors inside `plugins/*/hooks/` or `plugins/*/examples/`** — these paths are intentionally excluded (`pyproject.toml` `[tool.mypy].exclude`); if mypy is still flagging them, check the invocation isn't overriding the config.
 - **Sphinx build shows duplicate TOC entries** — remove any stray `.. contents::` directive; the Furo theme auto-generates the sidebar.

@@ -1,9 +1,9 @@
 Scientific Computing Suite
 ==========================
 
-High-performance computing, physics/chemistry simulations, ML/DL, Julia, JAX, and data science workflows. Uses the :term:`Hub Skill` architecture with 23 hubs routing to 114 sub-skills.
+High-performance computing, physics/chemistry simulations, ML/DL, Julia, JAX, and data science workflows. Uses the :term:`Hub Skill` architecture with 23 hubs routing to 126 sub-skills.
 
-**Version:** 4.0.4 | **12 Agents** | **4 Registered Commands** | **23 Hubs → 114 Sub-skills** | **5 Hook Events**
+**Version:** 4.0.5 | **13 Agents** | **4 Registered Commands** | **23 Hubs → 126 Sub-skills** | **5 Hook Events**
 
 .. note::
 
@@ -15,62 +15,67 @@ Agents
 .. agent:: neural-network-master
    :description: Deep learning authority specializing in architecture design, theory, and implementation (Transformers, CNNs, diagnostics).
    :model: opus
-   :version: 4.0.4
+   :version: 4.0.5
 
 .. agent:: nonlinear-dynamics-expert
    :description: Expert in bifurcation analysis, chaos, coupled networks, pattern formation, and equation discovery (SINDy/UDE).
    :model: opus
-   :version: 4.0.4
+   :version: 4.0.5
 
 .. agent:: simulation-expert
    :description: Expert in molecular dynamics, statistical mechanics, and numerical methods (HPC/GPU).
    :model: sonnet
-   :version: 4.0.4
+   :version: 4.0.5
 
 .. agent:: statistical-physicist
    :description: Expert in correlation functions, non-equilibrium dynamics, and ensemble theory.
    :model: opus
-   :version: 4.0.4
+   :version: 4.0.5
 
 .. agent:: jax-pro
    :description: JAX expert — jit/vmap/pmap, sharding, VJP/JVP, XLA/HLO, Optax, Diffrax, Pallas, NumPyro. Delegates MD, bifurcation, general Bayes, and productionization to peers.
    :model: opus
-   :version: 4.0.4
+   :version: 4.0.5
 
 .. agent:: julia-pro
    :description: Julia/SciML expert — dispatch, type stability, DiffEq.jl, ModelingToolkit, SciMLSensitivity, UDE, SINDy, Turing, Optimization.jl. Delegates ML/HPC and productionization to peers.
    :model: opus
-   :version: 4.0.4
+   :version: 4.0.5
+
+.. agent:: julia-implementer
+   :description: Julia package lifecycle lead: scaffolding, idiomatic code, tests, Documenter docs, exports, precompilation, profiling, debugging, audits, and releases.
+   :model: sonnet
+   :version: 4.0.5
 
 .. agent:: julia-ml-hpc
    :description: Julia ML/HPC expert for Lux.jl, MLJ.jl, CUDA.jl, MPI.jl, and GNNLux. Delegates SciML/ODE to julia-pro.
    :model: sonnet
-   :version: 4.0.4
+   :version: 4.0.5
 
 .. agent:: pinn-engineer
    :description: Physics-informed AI for PINNs, NeuralPDE.jl, DeepXDE, BPINN/BNNODE, physics-constrained losses, and inverse PDEs.
    :model: opus
-   :version: 4.0.4
+   :version: 4.0.5
 
 .. agent:: python-pro
    :description: Python systems engineer for production Python, type-driven design, PyO3/Rust extensions, async, and uv/ruff toolchain.
    :model: sonnet
-   :version: 4.0.4
+   :version: 4.0.5
 
 .. agent:: sci-workflow-engineer
    :description: Scientific LLM workflow engineer for JAX/Julia codegen prompts, experiment templates, scientific RAG, and AI-assisted pipelines.
    :model: sonnet
-   :version: 4.0.4
+   :version: 4.0.5
 
 .. agent:: ml-expert
    :description: Classical ML/MLOps with scikit-learn, XGBoost/LightGBM, Optuna, SHAP, and MLflow/W&B. Delegates DL to neural-network-master.
    :model: haiku
-   :version: 4.0.4
+   :version: 4.0.5
 
 .. agent:: continuum-mechanics-engineer
    :description: Expert in FEM/FEA, constitutive modeling, DMA/rheology, transient networks (CAN/vitrimers), and nanocomposites.
    :model: opus
-   :version: 4.0.4
+   :version: 4.0.5
 
 Registered Commands
 -------------------
@@ -94,7 +99,7 @@ The legacy ``paper-review`` command moved to ``research-suite`` and was then rem
 Hub Skills
 ----------
 
-Skills use a hub architecture: 23 hub skills registered in ``plugin.json`` route to 114 specialized sub-skills. Hubs
+Skills use a hub architecture: 23 hub skills registered in ``plugin.json`` route to 126 specialized sub-skills. Hubs
 overlap by design — a sub-skill reachable from several hubs is listed under each; counts below are per-hub routing
 fan-out, not disjoint partitions. ``science-hub`` is the top-level router.
 
@@ -119,7 +124,7 @@ Meta-orchestrator for JAX scientific computing.
 - ``jax-diffeq-pro`` — Diffrax solvers, neural ODEs, stiff systems, adjoint methods
 - ``jax-physics-applications`` — JAX-MD, JAX-CFD, PINNs, differentiable physics
 
-Hub: julia-language (12 sub-skills)
+Hub: julia-language (23 sub-skills)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Meta-orchestrator for Julia language and ecosystem.
@@ -138,6 +143,17 @@ Routes to hubs: ``julia-mastery``
 - ``julia-hpc-distributed`` — Distributed.jl, MPI.jl, SLURM, multi-node parallelism
 - ``interop-patterns`` — PythonCall.jl, RCall.jl, ccall, cross-language data exchange
 - ``ecosystem-selection`` — Choosing optimal Julia packages for a domain
+- ``generating-julia-package`` — Project environments, package layouts, UUIDs, and pre-registration checks.
+- ``developing-julia-package`` — Idiomatic package code: module layout, dispatch, types, formatting, docstrings.
+- ``auditing-julia-package-practices`` — Evidence-based package review with prioritized findings and go/no-go.
+- ``documenting-julia-package`` — Documenter.jl: makedocs, doctests, GitHub Pages deployment.
+- ``fixing-julia-exports`` — Trim a package's public API: explicit test imports, `public`, deprecation.
+- ``precompiling-julia-package`` — Measure and reduce load/first-call latency with PrecompileTools.jl.
+- ``profiling-julia-performance`` — Diagnose slow runtime, type instability, allocations with Profile, JET.jl, AllocCheck.jl.
+- ``debugging-julia`` — Non-interactive diagnosis of exceptions and wrong results: traces, `@code_typed`, JET.
+- ``creating-julia-app`` — CLI apps and MCP servers with `@main` and `[apps]`.
+- ``testing-julia-package`` — Test projects (workspace or extras), `Pkg.test()`, focused and parallel runs.
+- ``using-juliacheck`` — Rule-based static checks with JuliaCheck.jl.
 
 Hub: julia-mastery (21 sub-skills)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -346,7 +362,7 @@ Comprehensive Classical Machine Learning suite.
 - ``model-deployment-serving`` — FastAPI, TorchServe, Triton, BentoML, REST/gRPC
 - ``devops-ml-infrastructure`` — Docker, Kubernetes, GPU provisioning, cloud ML
 
-Hub: ml-and-data-science (6 sub-skills)
+Hub: ml-and-data-science (7 sub-skills)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Meta-orchestrator for machine learning and data science.
@@ -359,6 +375,7 @@ Routes to hubs: ``machine-learning``
 - ``scientific-visualization`` — Matplotlib, seaborn, plotly, domain-specific plots
 - ``nlsq-core-mastery`` — JAX-accelerated non-linear least squares curve fitting
 - ``experiment-tracking`` — MLflow, Weights & Biases, DVC
+- ``zarr-cloud-arrays`` — Zarr chunk design, parallel writes, NetCDF/HDF5 migration (Python and Julia)
 
 Hub: time-series-analysis (2 sub-skills)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

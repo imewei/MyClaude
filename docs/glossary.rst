@@ -6,10 +6,10 @@ This glossary provides definitions for the key technical terms used throughout t
 .. glossary::
 
    Hub Skill
-      A meta-orchestrator skill registered in ``plugin.json`` that contains a routing decision tree dispatching to specialized sub-skills. Hub skills are the only skills visible in the manifest; sub-skills are discovered through hub references. See also :term:`Sub-Skill`.
+      A meta-orchestrator skill registered in ``plugin.json`` that contains a routing decision tree dispatching to specialized sub-skills. Hub skills are the only skills listed to the model each session; sub-skills are reached through hub references. See also :term:`Sub-Skill`.
 
    Sub-Skill
-      A specialized skill directory containing a ``SKILL.md`` that is not directly registered in ``plugin.json``. Sub-skills are reached through a :term:`Hub Skill`'s routing decision tree via ``../`` relative links.
+      A specialized skill directory containing a ``SKILL.md`` that carries ``disable-model-invocation: true``, so it stays out of the session skill listing. Sub-skills are loaded by reading their file (``${CLAUDE_PLUGIN_ROOT}/skills/<name>/SKILL.md``) once through a :term:`Hub Skill`'s routing decision tree via ``../`` relative links.
 
    Routing Decision Tree
       A code block inside a hub skill's ``SKILL.md`` that maps user intent to the appropriate sub-skill. The tree uses conditional logic (domain keywords, task type) to select the best sub-skill for a given request.

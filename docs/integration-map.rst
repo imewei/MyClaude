@@ -1,7 +1,7 @@
 Integration Map
 ===============
 
-How the 3 MyClaude suites (26 agents, 42 registered hub skills routing to 157 sub-skills) connect to each other and to external tools.
+How the 3 MyClaude suites (27 agents, 42 registered hub skills routing to 169 sub-skills) connect to each other and to external tools.
 
 Suite Dependencies
 ------------------
@@ -51,8 +51,9 @@ Intra-Suite Delegation Patterns
 - research-spark-orchestrator → nonlinear-dynamics-expert / statistical-physicist (science-suite): Stages 4-5 theory work
 - research-expert: No intra-suite delegation (one-off methodology specialist)
 
-**science-suite** (12 agents): Hub-and-spoke with domain boundaries.
+**science-suite** (13 agents): Hub-and-spoke with domain boundaries.
 
+- julia-pro / julia-ml-hpc -> julia-implementer: modeling and ML code → package lifecycle (tests, docs, exports, release)
 - julia-pro <-> julia-ml-hpc: SciML/ODE boundary — julia-pro owns UDEs and Lux.jl-for-physics; julia-ml-hpc owns ML training, GPU, and HPC
 - neural-network-master → julia-ml-hpc: DL theory → Julia implementation
 - ml-expert → julia-ml-hpc: Python ML → Julia ML pipelines
@@ -63,7 +64,7 @@ Intra-Suite Delegation Patterns
 Skill Coverage
 ~~~~~~~~~~~~~~
 
-All 42 registered hub skills route to 157 sub-skills with 100% Expert Agent coverage:
+All 42 registered hub skills route to 169 sub-skills with 100% Expert Agent coverage:
 
 .. list-table::
    :header-rows: 1
@@ -85,9 +86,9 @@ All 42 registered hub skills route to 157 sub-skills with 100% Expert Agent cove
      - 7
      - 100% — scientific-review standalone + research-spark pipeline + research-practice (reached via research-hub)
    * - science-suite
-     - 12
+     - 13
      - 23
-     - 114
+     - 126
      - 100% — including Julia ML/HPC and nonlinear dynamics hubs
 
 Official Plugin Agents
