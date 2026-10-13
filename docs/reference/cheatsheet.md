@@ -1,13 +1,13 @@
 # Quick Reference Cheatsheet
 
 **3 Suites** | **27 Agents** | **21 Registered Commands** | **42 Hub Skills** (routing to 169 sub-skills; 211 SKILL.md on disk)
-**Version:** 4.0.5
+**Version:** 4.0.6
 
 ---
 
 ## The Hub Architecture
 
-MyClaude v4.0.5 uses a **hub-skill architecture**: skills are organized into hub skills (meta-orchestrators) that route to specialized sub-skills. Only hubs are declared in `plugin.json`; sub-skills are discovered through hub routing trees.
+MyClaude v4.0.6 uses a **hub-skill architecture**: skills are organized into hub skills (meta-orchestrators) that route to specialized sub-skills. Only hubs are declared in `plugin.json`; sub-skills are discovered through hub routing trees.
 
 ```
 plugin.json → hub skill → routing decision tree → sub-skill
@@ -84,8 +84,8 @@ plugin.json → hub skill → routing decision tree → sub-skill
 | Tier | Count | Use Case | Agents |
 |------|-------|----------|--------|
 | **opus** | 8 | Architect: research, planning, review/audit, theory | software-architect, quality-specialist, research-expert, research-spark-orchestrator, continuum-mechanics-engineer, neural-network-master, nonlinear-dynamics-expert, statistical-physicist |
-| **sonnet** | 11 | Contractor: code edits, implementation, debugging | app-developer, automation-engineer, sre-expert, jax-pro, julia-pro, pinn-engineer, ml-expert, julia-ml-hpc, python-pro, sci-workflow-engineer, simulation-expert |
-| **haiku** | 1 | Mechanical doc generation | documentation-expert |
+| **sonnet** | 17 | Contractor: code edits, implementation, debugging | app-developer, automation-engineer, sre-expert, jax-pro, julia-pro, julia-implementer, pinn-engineer, ml-expert, julia-ml-hpc, python-pro, sci-workflow-engineer, simulation-expert, code-reviewer, pr-test-analyzer, silent-failure-hunter, type-design-analyzer, code-simplifier |
+| **haiku** | 2 | Mechanical doc generation and comment checks | documentation-expert, comment-analyzer |
 
 ---
 
@@ -111,4 +111,4 @@ plugin.json → hub skill → routing decision tree → sub-skill
 - [Glossary](../glossary.rst) — Hub Skill, Sub-Skill, Routing Decision Tree
 - [GitHub Repository](https://github.com/imewei/MyClaude)
 
-*Generated from v4.0.5 validated marketplace data.*
+*Generated from v4.0.6 validated marketplace data.*

@@ -7,7 +7,7 @@ cross-cutting concerns.
 .. note::
 
    Since v3.1.0, skills use a two-tier :term:`Hub Skill` architecture (42 hubs
-   routing to 169 sub-skills as of v4.0.5). Cross-suite workflows invoke hub skills, which
+   routing to 169 sub-skills as of v4.0.6). Cross-suite workflows invoke hub skills, which
    load the right sub-skill by reading its file. See :doc:`skill-routing`.
 
 Cross-Suite Delegation

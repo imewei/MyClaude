@@ -1,6 +1,6 @@
 # Agent Reference
 
-**27 Agents** across 3 suites | **Version:** 4.0.5
+**27 Agents** across 3 suites | **Version:** 4.0.6
 
 Agents are specialized AI personas with defined model tiers, tool access, and domain expertise. Each agent runs at a model tier (`opus` = Opus 5.5, `sonnet` = Sonnet 5.5, `haiku` = Haiku 5.5) with an `effort` matched to its role. Opus is the architect, Sonnet is the contractor: **opus** (effort `high`) for research, planning, review/audit, theory, and subsystem explanation; **sonnet** (`medium`, or `high` for numerics-critical agents) for code edits, bug fixes, and implementation; **haiku** (`low`) for mechanical doc generation. Fable 5.1 is reserved for the advisor role and is not pinned to any agent.
 
@@ -50,7 +50,7 @@ Scientific computing, HPC, physics simulations, ML/DL, and nonlinear dynamics. `
 | Agent | Model | Description |
 |-------|-------|-------------|
 | `jax-pro` | sonnet | JAX expert — jit/vmap/pmap, sharding, VJP/JVP, XLA/HLO, Optax, Diffrax, Pallas, NumPyro. Delegates MD, bifurcation, general Bayes, and productionization to peers |
-| `julia-pro` | sonnet | Julia/SciML expert — dispatch, type stability, DiffEq.jl, ModelingToolkit, SciMLSensitivity, UDE, SINDy, Turing, Optimization.jl. Delegates ML/HPC and productionization to peers |
+| `julia-pro` | sonnet | Julia/SciML expert — dispatch, type stability, DiffEq.jl, ModelingToolkit, SciMLSensitivity, UDE, SINDy, Turing, Optimization.jl. Delegates ML/HPC to julia-ml-hpc and package scaffolding, tests, docs, and release audits to julia-implementer |
 | `neural-network-master` | opus | Deep learning authority: architecture design, theory, and implementation (Transformers, CNNs, diagnostics) |
 | `nonlinear-dynamics-expert` | opus | Bifurcation analysis, chaos, coupled networks, pattern formation, and equation discovery (SINDy/UDE) |
 | `simulation-expert` | sonnet | Molecular dynamics, statistical mechanics, and numerical methods (HPC/GPU) |
@@ -59,7 +59,7 @@ Scientific computing, HPC, physics simulations, ML/DL, and nonlinear dynamics. `
 | `continuum-mechanics-engineer` | opus | FEM/FEA, constitutive modeling, DMA/rheology, transient networks (CAN/vitrimers), and nanocomposites |
 | `julia-implementer` | sonnet | Julia package lifecycle lead: scaffolding, idiomatic code, tests, Documenter docs, exports, precompilation, profiling, debugging, and read-only audits |
 | `julia-ml-hpc` | sonnet | Julia ML, Deep Learning, and HPC (Lux.jl, MLJ.jl, CUDA.jl, MPI.jl, GNNLux) |
-| `python-pro` | sonnet | Python systems engineering: type-driven development, Rust extensions, and performance |
+| `python-pro` | sonnet | Python systems engineering: type-driven development, Rust extensions, performance, and Zarr/HDF5 conversion jobs (`zarr-cloud-arrays`) |
 | `sci-workflow-engineer` | sonnet | Scientific LLM workflows: JAX/Julia codegen prompts, experiment templates, and AI-assisted pipelines |
 | `ml-expert` | sonnet | Classical ML/MLOps with scikit-learn, XGBoost/LightGBM, Optuna, SHAP, and MLflow/W&B |
 
@@ -102,4 +102,4 @@ See the [Integration Map](../integration-map.rst) for full delegation patterns a
 - [Integration Map](../integration-map.rst) — Suite dependencies and skill coverage
 - [Glossary](../glossary.rst) — Key terms (Hub Skill, Sub-Skill)
 
-*Generated from v4.0.5 validated marketplace data.*
+*Generated from v4.0.6 validated marketplace data.*

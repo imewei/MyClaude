@@ -54,6 +54,7 @@ Intra-Suite Delegation Patterns
 **science-suite** (13 agents): Hub-and-spoke with domain boundaries.
 
 - julia-pro / julia-ml-hpc -> julia-implementer: modeling and ML code → package lifecycle (tests, docs, exports, release)
+- python-pro: Zarr/HDF5 conversion jobs (zarr-cloud-arrays via the ml-and-data-science hub); julia-pro covers Zarr.jl
 - julia-pro <-> julia-ml-hpc: SciML/ODE boundary — julia-pro owns UDEs and Lux.jl-for-physics; julia-ml-hpc owns ML training, GPU, and HPC
 - neural-network-master → julia-ml-hpc: DL theory → Julia implementation
 - ml-expert → julia-ml-hpc: Python ML → Julia ML pipelines

@@ -1,6 +1,6 @@
 # Command Reference
 
-**21 Registered Commands** | **0 Skill-Invoked Commands** | **Version:** 4.0.5
+**21 Registered Commands** | **0 Skill-Invoked Commands** | **Version:** 4.0.6
 
 Commands fall into two categories:
 - **Registered commands** are declared in `plugin.json` and available as user-facing `/slash-commands`.
@@ -19,11 +19,11 @@ Commands fall into two categories:
 | `/eng-feature-dev` | End-to-end feature development with customizable methodologies |
 | `/fix-commit-errors` | Diagnose and fix CI/CD failures by analyzing logs and rerunning workflows |
 | `/modernize` | Legacy code migration using Strangler Fig pattern |
-| `/run-all-tests` | Iteratively run and fix all tests until zero failures |
+| `/run-all-tests` | Iteratively run and fix all tests until zero failures; to write new tests use `/test-generate` |
 | `/smart-debug` | Intelligent debugging with multi-mode execution and automated RCA |
 | `/test-generate` | Generate comprehensive test suites with scientific computing support |
 | `/workflow-automate` | Automated CI/CD workflow generation for GitHub Actions and GitLab CI |
-| `/review-pr` | Multi-agent PR review: 6-agent parallel fan-out, report-only, PR-scoped (adopted from `ecc`) |
+| `/review-pr` | Multi-agent PR review: 6-agent parallel fan-out, report-only, PR-scoped (adopted from `ecc`); for a single pass use `/code-review` |
 | `/code-review` | Single-pass review of local diffs or a PR, can publish to GitHub via `gh pr review` (adopted from `ecc`, integrated with `quality-specialist`) |
 | `/commit` | Analyzed, quality-scored, atomic git commits with conventional commit format (restored from v3.4.1) |
 | `/refactor-clean` | Code refactoring toward SOLID principles and reduced code smell, standalone or path-scoped (restored from v3.4.1) |
@@ -91,4 +91,4 @@ Commands often invoke hub skills, which route to specialized sub-skills automati
 - [Integration Map](../integration-map.rst) — Suite dependencies and MCP server roles
 - [Glossary](../glossary.rst) — Key terms (Hub Skill, Sub-Skill, Routing Decision Tree)
 
-*Generated from v4.0.5 validated marketplace data.*
+*Generated from v4.0.6 validated marketplace data.*
