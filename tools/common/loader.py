@@ -118,6 +118,15 @@ class PluginLoader:
         self._cache: dict[str, PluginMetadata] = {}
         self._load_errors: dict[str, list[ValidationIssue]] = {}
 
+    def _marketplace_category(self, plugin_name: str) -> str:
+        """Category from the marketplace entry (where Claude Code reads it), else 'uncategorized'."""
+        path = self.plugins_dir.parent / ".claude-plugin" / "marketplace.json"
+        try:
+            entries = json.loads(path.read_text(encoding="utf-8")).get("plugins", [])
+        except (OSError, ValueError):
+            return "uncategorized"
+        return next((e.get("category", "uncategorized") for e in entries if e.get("name") == plugin_name), "uncategorized")
+
     def load_plugin(self, plugin_name: str) -> PluginMetadata | None:
         """Load a single plugin's metadata.
 
@@ -150,7 +159,7 @@ class PluginLoader:
                 name=data.get("name", plugin_name),
                 version=data.get("version", "unknown"),
                 description=data.get("description", ""),
-                category=data.get("category", "uncategorized"),
+                category=data.get("category") or self._marketplace_category(plugin_name),
                 path=plugin_path,
                 agents=_normalize_component_list(
                     data.get("agents", []), plugin_path, "agents"

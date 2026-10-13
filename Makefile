@@ -304,9 +304,7 @@ plugin-count: ## Count plugins and show breakdown
 	@echo "Plugins with README: $$(find plugins -maxdepth 2 -name 'README.md' | wc -l | tr -d ' ')"
 	@echo ""
 	@echo "=== Category Breakdown ==="
-	@for json in plugins/*/.claude-plugin/plugin.json; do \
-		grep -o '"category"[[:space:]]*:[[:space:]]*"[^"]*"' "$$json" 2>/dev/null; \
-	done | cut -d'"' -f4 | sort | uniq -c | sort -rn
+	@python3 -c "import json,collections; c=collections.Counter(p.get('category','uncategorized') for p in json.load(open('.claude-plugin/marketplace.json'))['plugins']); [print(f'{n:7d} {k}') for k,n in c.most_common()]"
 
 plugin-list: ## List all plugins with their versions
 	@echo "=== Plugin List ==="

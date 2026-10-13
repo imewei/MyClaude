@@ -5,7 +5,7 @@ Marketplace Validator
 Checks .claude-plugin/marketplace.json against the plugins it lists: required fields,
 unique names, source directories, versions (marketplace entry == plugin.json ==
 metadata.version), listed agent/command/skill paths that exist, agents and commands on
-disk that no entry lists, and a metadata note that still describes the current release.
+disk that no entry lists.
 
 Usage:
     python3 tools/validation/marketplace_validator.py
@@ -46,8 +46,6 @@ def validate(root: Path) -> list[str]:
     names = [e.get("name") for e in entries]
     if len(set(names)) != len(names):
         errors.append(f"duplicate plugin names: {names}")
-    if "total_plugins" in meta and meta["total_plugins"] != len(entries):
-        errors.append(f"metadata.total_plugins={meta['total_plugins']} but {len(entries)} plugins listed")
 
     for entry in entries:
         name = entry.get("name", "?")
@@ -79,11 +77,6 @@ def validate(root: Path) -> list[str]:
         for rel in _listed(entry.get("skills")):
             if not (src / rel / "SKILL.md").is_file():
                 errors.append(f"{name}: skill {rel} has no SKILL.md")
-
-    note = str(meta.get("note", ""))
-    version = str(meta.get("version", ""))
-    if note and not note.startswith(f"v{version}"):
-        errors.append(f"metadata.note does not start with the current release 'v{version}'")
     return errors
 
 

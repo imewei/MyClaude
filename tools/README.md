@@ -98,7 +98,7 @@ python3 tools/validation/skill_validator.py [--plugins-dir DIR] [--plugin NAME]
 
 ### marketplace_validator.py
 
-Checks `.claude-plugin/marketplace.json` against the plugins it lists: required fields, unique names, source directories, versions (entry = `plugin.json` = `metadata.version`), listed agent/command/skill paths that exist, agents and commands on disk that no entry lists, entry lists equal to `plugin.json`, and a release note that starts with the current version.
+Checks `.claude-plugin/marketplace.json` against the plugins it lists: required fields, unique names, source directories, versions (entry = `plugin.json` = `metadata.version`), listed agent/command/skill paths that exist, agents and commands on disk that no entry lists, entry lists equal to `plugin.json`.
 
 ```bash
 python3 tools/validation/marketplace_validator.py [--root DIR]

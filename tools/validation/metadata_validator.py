@@ -70,13 +70,13 @@ class MetadataValidator:
                 "min_items": 3,
                 "description": "List of searchable keywords",
             },
+        },
+        "optional": {
             "category": {
                 "type": "string",
                 "enum": ["core", "dev", "science", "research"],
-                "description": "Plugin category",
+                "description": "Plugin category (Claude Code reads it from the marketplace entry, not plugin.json)",
             },
-        },
-        "optional": {
             "homepage": {
                 "type": "string",
                 "pattern": r"^https?://.+",

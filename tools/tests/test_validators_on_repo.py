@@ -22,7 +22,6 @@ def _copy_marketplace(tmp_path: Path) -> Path:
         shutil.copytree(REPO_ROOT / rel, tmp_path / rel, dirs_exist_ok=True)
     market = json.loads((tmp_path / ".claude-plugin/marketplace.json").read_text())
     market["plugins"] = [p for p in market["plugins"] if p["name"] == "research-suite"]
-    market["metadata"]["total_plugins"] = 1
     (tmp_path / ".claude-plugin/marketplace.json").write_text(json.dumps(market))
     return tmp_path
 
