@@ -265,7 +265,7 @@ gh api "repos/{owner}/{repo}/pulls/<NUMBER>/reviews" \
 
 Report to user:
 
-```
+```text
 PR #<NUMBER>: <TITLE>
 Decision: <APPROVE|REQUEST_CHANGES|BLOCK>
 

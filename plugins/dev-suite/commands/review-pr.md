@@ -7,7 +7,13 @@ Run a comprehensive multi-perspective review of a pull request.
 
 ## Usage
 
-`/review-pr [PR-number-or-URL] [--focus=comments|tests|errors|types|code|simplify]`
+```bash
+/review-pr                       # current branch's PR, all six passes
+/review-pr 482 --focus=tests      # one PR, one pass
+/review-pr https://github.com/org/repo/pull/482
+```
+
+Syntax: `/review-pr [PR-number-or-URL] [--focus=comments|tests|errors|types|code|simplify]`
 
 If no PR is specified, review the current branch's PR. If no focus is specified, run the full review stack.
 

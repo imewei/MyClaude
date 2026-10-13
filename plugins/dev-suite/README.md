@@ -97,7 +97,7 @@ Covers the complete SDLC:
 | Event | Purpose |
 |-------|---------|
 | SessionStart | Auto-detect project stack (language, framework, test runner) |
-| UserPromptSubmit | Remind agent to route through the matching hub skill before implementing |
+| UserPromptSubmit | Hint the matching hub skill when the prompt matches its domain (not on unrelated prompts) |
 | PostToolUse | Auto-lint suggestions after Write/Edit (Python, JS/TS) |
 | SubagentStop | Collect results from quality-specialist |
 | TaskCompleted | Trigger validation checks and suggest git commit |

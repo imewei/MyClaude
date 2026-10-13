@@ -7,7 +7,7 @@ agents that write and debug code (contractor).
 
 ## Overview
 
-Science Suite provides 13 specialized agents (4 opus, 8 sonnet, 1 haiku) covering JAX, Julia, physics, ML/DL, continuum
+Science Suite provides 13 specialized agents (4 opus, 9 sonnet) covering JAX, Julia, physics, ML/DL, continuum
 mechanics, and nonlinear dynamics. Its 23 hub skills route to 126 sub-skills spanning nonlinear dynamics, Bayesian
 inference, statistical physics, simulation, and more. Opus agents handle deep reasoning (statistical physics,
 bifurcation theory, DL architecture, constitutive modeling) while sonnet agents handle implementation (JAX kernels, Julia
@@ -53,7 +53,7 @@ methodology moved to `research-suite` in v3.4.0.)*
 | `ml-expert` | sonnet | Classical ML, MLOps, data engineering |
 | `simulation-expert` | sonnet | HPC, molecular dynamics, multiscale |
 | `statistical-physicist` | opus | Soft matter, non-equilibrium, correlations |
-| `python-pro` | sonnet | Python systems engineering, performance |
+| `python-pro` | sonnet | Python systems engineering, performance, Zarr/HDF5 conversion |
 | `pinn-engineer` | sonnet | Physics-informed neural networks, NeuralPDE.jl, DeepXDE |
 | `sci-workflow-engineer` | sonnet | LLM integration into scientific pipelines, codegen, automation |
 | `neural-network-master` | opus | DL architecture, PINNs, theory, diagnostics |
@@ -100,7 +100,7 @@ Organized by domain:
 | Event | Purpose |
 |-------|---------|
 | SessionStart | Detect JAX devices, GPU availability, Julia env |
-| UserPromptSubmit | Remind agent to route through the matching hub skill before implementing |
+| UserPromptSubmit | Hint the matching hub skill when the prompt matches its domain (not on unrelated prompts) |
 | PostToolUse | NaN/Inf check on compute job output (numerical integrity) |
 | SessionEnd | Persist structured progress summary for next session |
 | SubagentStop | Collect results from parallel science agents |

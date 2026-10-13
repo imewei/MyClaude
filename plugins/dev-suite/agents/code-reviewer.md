@@ -270,7 +270,7 @@ const usersWithPosts = await db.query(`
 
 Organize findings by severity. For each issue:
 
-```
+```text
 [CRITICAL] Hardcoded API key in source
 File: src/api/client.ts:42
 Issue: API key "sk-abc..." exposed in source code. This will be committed to git history.
@@ -284,7 +284,7 @@ Fix: Move to environment variable and add to .gitignore/.env.example
 
 End every review with:
 
-```
+```text
 ## Review Summary
 
 | Severity | Count | Status |
