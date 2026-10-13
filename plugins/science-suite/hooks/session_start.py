@@ -15,7 +15,7 @@ from pathlib import Path
 from _hook_io import get_field, read_payload, untrusted, untrusted_block, wrap_context
 
 PROGRESS_RELPATH = Path(".claude") / "progress" / "science-suite.md"
-PROGRESS_MAX_CHARS = 1500
+PROGRESS_MAX_CHARS = 500
 PROGRESS_MAX_AGE = timedelta(hours=24)
 TIMESTAMP_PREFIX = "## Session ended: "
 TIMESTAMP_FORMAT = "%Y-%m-%d %H:%M UTC"

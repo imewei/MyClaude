@@ -1,5 +1,6 @@
 ---
 name: prometheus-configuration
+disable-model-invocation: true
 description: Configure Prometheus for metric collection, alerting, and monitoring with scrape configs, recording rules, alert rules, and service discovery. Use when setting up Prometheus servers, creating alert rules, or implementing Kubernetes monitoring.
 ---
 

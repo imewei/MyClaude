@@ -1,5 +1,6 @@
 ---
 name: code-review
+disable-model-invocation: true
 description: Systematic process for code review focused on security, performance, maintainability, and knowledge sharing. Use when reviewing pull requests, auditing code quality, or enforcing coding standards. Also use when checking for security vulnerabilities, evaluating test coverage, assessing error handling patterns, or providing constructive feedback on code architecture. Use proactively when the user shares code and asks "what do you think," mentions a PR review, or wants a second opinion on implementation quality.
 ---
 

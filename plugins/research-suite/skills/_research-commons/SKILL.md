@@ -1,5 +1,6 @@
 ---
 name: _research-commons
+disable-model-invocation: true
 description: Internal-only resource directory for the research-spark skill stack. Do not select this skill directly for user prompts. Load it only when another research-spark skill (spark-articulator, landscape-scanner, falsifiable-claim, theory-scaffold, numerical-prototype, experiment-designer, premortem-critique) explicitly references its files for writing style, code architecture rules, shared templates, or utility scripts.
 ---
 

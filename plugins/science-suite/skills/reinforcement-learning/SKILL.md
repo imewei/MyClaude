@@ -1,5 +1,6 @@
 ---
 name: reinforcement-learning
+disable-model-invocation: true
 description: "Build reinforcement learning agents with Gymnasium, Stable-Baselines3, and RLlib including DQN, PPO, SAC, multi-agent RL, reward shaping, and environment design. Use when training RL agents, designing reward functions, creating custom environments, or implementing policy optimization."
 ---
 

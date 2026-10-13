@@ -1,5 +1,6 @@
 ---
 name: package-development-workflow
+disable-model-invocation: true
 description: Create Julia packages following community standards with proper structure, exports, and PkgTemplates.jl. Use when creating new packages, organizing source code, setting up Project.toml with compat entries, configuring Documenter.jl, registering packages with JuliaRegistrator, or adding TagBot/CompatHelper CI workflows. Also use when scaffolding module exports, writing doc strings, or preparing a Julia package for the General registry, even if the user just says "make a Julia package."
 ---
 
@@ -131,15 +132,15 @@ jobs:
       matrix:
         julia-version: ['1.10', '1.11']
     steps:
-      - uses: actions/checkout@v4
-      - uses: julia-actions/setup-julia@v2
+      - uses: actions/checkout@v7
+      - uses: julia-actions/setup-julia@v3
         with:
           version: ${{ matrix.julia-version }}
-      - uses: julia-actions/cache@v2
+      - uses: julia-actions/cache@v3
       - uses: julia-actions/julia-buildpkg@v1
       - uses: julia-actions/julia-runtest@v1
       - uses: julia-actions/julia-processcoverage@v1
-      - uses: codecov/codecov-action@v4
+      - uses: codecov/codecov-action@v7
 ```
 
 ```yaml

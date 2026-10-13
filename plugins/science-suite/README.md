@@ -7,8 +7,8 @@ agents that write and debug code (contractor).
 
 ## Overview
 
-Science Suite provides 12 specialized agents (4 opus, 7 sonnet, 1 haiku) covering JAX, Julia, physics, ML/DL, continuum
-mechanics, and nonlinear dynamics. Its 23 hub skills route to 114 sub-skills spanning nonlinear dynamics, Bayesian
+Science Suite provides 13 specialized agents (4 opus, 8 sonnet, 1 haiku) covering JAX, Julia, physics, ML/DL, continuum
+mechanics, and nonlinear dynamics. Its 23 hub skills route to 126 sub-skills spanning nonlinear dynamics, Bayesian
 inference, statistical physics, simulation, and more. Opus agents handle deep reasoning (statistical physics,
 bifurcation theory, DL architecture, constitutive modeling) while sonnet agents handle implementation (JAX kernels, Julia
 code, PINN construction, classical ML, Python systems, MD/HPC simulation). SessionStart hooks auto-detect JAX devices, GPU availability, and Julia environments. *(Research
@@ -48,6 +48,7 @@ methodology moved to `research-suite` in v3.4.0.)*
 |-------|-------|----------------|
 | `jax-pro` | sonnet | Core JAX, NumPyro, Diffrax, JAX-MD |
 | `julia-pro` | sonnet | Julia, SciML, DifferentialEquations.jl |
+| `julia-implementer` | sonnet | Julia package lifecycle: tests, docs, exports, precompile, profile, debug, audit |
 | `julia-ml-hpc` | sonnet | Julia ML, Deep Learning, HPC (Lux.jl, CUDA.jl, MPI.jl) |
 | `ml-expert` | sonnet | Classical ML, MLOps, data engineering |
 | `simulation-expert` | sonnet | HPC, molecular dynamics, multiscale |
@@ -68,7 +69,7 @@ commands, each routing to `ml-expert` via `science-suite:ml-and-data-science`. `
 use `scientific-review` in `research-suite` instead. `/adopt-code` was removed along with 14 other unregistered
 dev-suite commands; use `/modernize` for codebase adoption/migration.
 
-## Skills (23 hubs → 114 sub-skills)
+## Skills (23 hubs → 126 sub-skills)
 
 Organized by domain:
 
@@ -117,7 +118,7 @@ delegates *out* to `research-suite` for methodology (power analysis, IMRaD writi
 
 ```bash
 /plugin marketplace add imewei/MyClaude
-/plugin install science-suite@marketplace
+/plugin install science-suite@scientific-computing-workflows
 ```
 
 After installation, restart Claude Code for changes to take effect.

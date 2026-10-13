@@ -1,13 +1,13 @@
 ---
 name: advanced-simulations
-description: Hub for advanced simulation workflows that combine MD setup, ML force fields, multiscale modeling, trajectory analysis, rare-event sampling, and non-equilibrium transport. Use when setting up molecular dynamics, choosing or training force fields, bridging atomistic-to-mesoscale models, analyzing trajectories, computing transport properties, or planning rare-event/weighted-ensemble simulations. For general HPC/GPU/numerical-method routing, use simulation-and-hpc.
+description: Hub for advanced simulation workflows that combine MD setup, ML force fields, multiscale modeling, trajectory analysis, and non-equilibrium transport. Use when setting up molecular dynamics, choosing or training force fields, bridging atomistic-to-mesoscale models, analyzing trajectories, or computing transport properties. For general HPC/GPU/numerical-method routing, use simulation-and-hpc.
 ---
 
 > **Loading a routing target.** `dev-suite:*`, `research-suite:*`, and `science-suite:*` targets below
 > are slash-only (`disable-model-invocation: true`) — the Skill tool will not fire them. Load one by
 > reading its file with the Read tool at `${CLAUDE_PLUGIN_ROOT}/skills/<name>/SKILL.md` — Claude Code
-> substitutes that variable with this plugin's install directory. A target in a sibling suite is at
-> the same relative path under that suite's own root. Targets from other plugins (`superpowers:*`,
+> substitutes that variable with this plugin's install directory. A target in a sibling suite cannot be
+> read by path (installs live in separate directories); reach it by invoking that suite's hub. Targets from other plugins (`superpowers:*`,
 > `ecc:*`, …) are unaffected and invoke normally.
 
 # Advanced Simulations
@@ -54,7 +54,7 @@ What is the simulation concern?
 |   --> science-suite:trajectory-analysis
 |
 +-- Rare-event sampling / weighted ensemble / path sampling?
-|   --> [cross-hub] science-suite:statistical-physics-hub → science-suite:rare-events-sampling
+|   --> science-suite:rare-events-sampling
 |       (FFS, TIS/RETIS, WE/WESTPA, OPS, AMS, milestoning; see Section 4 here for Python reference stack)
 |
 +-- None of the above / concern is ambiguous?
@@ -70,7 +70,7 @@ What is the simulation concern?
 | MLIP, MLFF, MACE, NequIP, ACE, active learning | `science-suite:ml-force-fields` |
 | coarse-graining, MARTINI, DPD, QM/MM, mesoscale | `science-suite:multiscale-modeling` |
 | trajectory post-processing, RDF, MSD, viscosity | `science-suite:trajectory-analysis` |
-| WESTPA, weighted ensemble, TPS/TIS, rare event | `science-suite:statistical-physics-hub → science-suite:rare-events-sampling` |
+| WESTPA, weighted ensemble, TPS/TIS, rare event | `science-suite:rare-events-sampling` |
 
 ## 1. Molecular Dynamics Workflows
 

@@ -1,6 +1,7 @@
 ---
 name: jax-julia-interop
-description: Bridge JAX (Python) and Julia SciML ecosystems using PythonCall.jl and juliacall. Use when combining Julia continuation/DiffEq solvers with JAX vmap, calling Julia solvers from Python, or exchanging arrays between ecosystems. Note: the BifurcationKit examples below are blocked on Julia 1.12 (MiniQhull build failure) -- see bifurcation-analysis skill for the AUTO-07p alternative.
+disable-model-invocation: true
+description: "Bridge JAX (Python) and Julia SciML ecosystems using PythonCall.jl and juliacall. Use when combining Julia continuation/DiffEq solvers with JAX vmap, calling Julia solvers from Python, or exchanging arrays between ecosystems. Note: the BifurcationKit examples below are blocked on Julia 1.12 (MiniQhull build failure) -- see bifurcation-analysis skill for the AUTO-07p alternative."
 ---
 
 # JAX-Julia Interop

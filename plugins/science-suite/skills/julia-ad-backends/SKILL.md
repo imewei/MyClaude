@@ -1,5 +1,6 @@
 ---
 name: julia-ad-backends
+disable-model-invocation: true
 description: Select and debug automatic differentiation backends in Julia. Covers Zygote.jl (source-to-source reverse-mode), Enzyme.jl (LLVM-level forward/reverse), ForwardDiff.jl (forward-mode dual numbers), and AbstractDifferentiation.jl for backend-agnostic code. Includes custom adjoint rules (ChainRulesCore.jl) and debugging strategies. Use when choosing AD backends or debugging gradient issues in Julia.
 ---
 

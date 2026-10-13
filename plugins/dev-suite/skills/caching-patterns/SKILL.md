@@ -1,5 +1,6 @@
 ---
 name: caching-patterns
+disable-model-invocation: true
 description: Design caching strategies with Redis, Memcached, and CDN layers including cache invalidation, write-through/write-behind, distributed caching, and cache stampede prevention. Use when implementing caching layers, Redis data structures, or optimizing response times.
 ---
 

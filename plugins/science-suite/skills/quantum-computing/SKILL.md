@@ -1,5 +1,6 @@
 ---
 name: quantum-computing
+disable-model-invocation: true
 description: "Implement quantum computing algorithms with Qiskit, Cirq, and PennyLane including quantum circuits, variational algorithms (VQE, QAOA), quantum simulation, and quantum machine learning. Use when building quantum circuits, implementing variational algorithms, or exploring quantum-classical hybrid methods."
 ---
 

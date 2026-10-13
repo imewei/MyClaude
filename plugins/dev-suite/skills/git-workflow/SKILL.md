@@ -1,5 +1,6 @@
 ---
 name: git-workflow
+disable-model-invocation: true
 description: Master advanced Git workflows for collaborative development. Covers interactive rebasing, cherry-picking, bisecting for bug discovery, and managing pull requests. Use when resolving merge conflicts, setting up branching strategies, or managing complex Git history.
 ---
 

@@ -1,13 +1,13 @@
 ---
 name: python-development
-description: Master modern Python systems engineering for scientific computing. Covers type-driven design, Rust extensions (PyO3), structured concurrency (TaskGroups), async patterns (async context managers, async generators, pytest-asyncio), profiling (cProfile, line_profiler, memory_profiler, py-spy, tracemalloc), robust testing (Hypothesis), and uv-based packaging. Use when architecting Python packages, writing Rust extensions with PyO3, implementing async concurrency, profiling slow Python code, or setting up property-based testing.
+description: Master modern Python systems engineering for scientific computing. Covers type-driven design, Rust extensions (PyO3), structured concurrency (TaskGroups), async patterns (async context managers, async generators, pytest-asyncio), profiling (cProfile, line_profiler, memory_profiler, py-spy, tracemalloc), robust testing (Hypothesis), and uv-based packaging. Use when architecting Python packages, writing Rust extensions with PyO3, implementing async concurrency, profiling slow Python code, or setting up property-based testing. For quantum, bioinformatics, or DSPy topics use research-and-domains.
 ---
 
 > **Loading a routing target.** `dev-suite:*`, `research-suite:*`, and `science-suite:*` targets below
 > are slash-only (`disable-model-invocation: true`) — the Skill tool will not fire them. Load one by
 > reading its file with the Read tool at `${CLAUDE_PLUGIN_ROOT}/skills/<name>/SKILL.md` — Claude Code
-> substitutes that variable with this plugin's install directory. A target in a sibling suite is at
-> the same relative path under that suite's own root. Targets from other plugins (`superpowers:*`,
+> substitutes that variable with this plugin's install directory. A target in a sibling suite cannot be
+> read by path (installs live in separate directories); reach it by invoking that suite's hub. Targets from other plugins (`superpowers:*`,
 > `ecc:*`, …) are unaffected and invoke normally.
 
 # Python Systems Engineering
@@ -62,10 +62,10 @@ What is the primary Python engineering concern?
 |   --> stay here: `## Async Patterns` / `## Python Profiling` below
 |
 +-- Exception hierarchy design, retries, or circuit breakers?
-|   --> dev-suite:error-handling-patterns
+|   --> dev-suite:backend-patterns (routes to error-handling-patterns)
 |
 +-- Python 2->3 migration, deprecated APIs, or legacy dependency upgrades?
-|   --> dev-suite:modernization-migration
+|   --> dev-suite:architecture-and-infra (routes to modernization-migration)
 |
 +-- None of the above / concern is ambiguous or spans multiple areas?
     --> Delegate to python-pro for open-ended triage, or clarify the

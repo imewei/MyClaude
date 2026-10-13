@@ -8,7 +8,7 @@ description: |
   scientific paper (PDF, DOCX, or pasted text) and asks for formal feedback, novelty assessment,
   experimental design check, statistical-claim verification, or a review for journal submission.
   If the user names a specific journal, performs a web search for that journal's reviewer guidelines.
-  For literature reviews or methodology assessment, use research-practice instead.
+  For literature reviews or methodology assessment, use research-hub instead.
   The final deliverable is a downloadable .docx review report (markdown fallback if python-docx is unavailable).
 ---
 

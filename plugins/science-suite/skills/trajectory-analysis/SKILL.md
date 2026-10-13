@@ -1,5 +1,6 @@
 ---
 name: trajectory-analysis
+disable-model-invocation: true
 description: Analyze MD trajectories to extract structural, thermodynamic, mechanical, and transport properties. Use when calculating RDF, MSD, viscosity, or validating simulations against experimental data. Also use when computing diffusion coefficients, density profiles, stress-strain curves, pair correlation functions, or Green-Kubo transport coefficients from simulation output. Use proactively when the user has MD trajectory files and needs post-processing analysis, property extraction, or comparison with experiments.
 ---
 

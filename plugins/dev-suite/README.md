@@ -121,7 +121,7 @@ See `docs/integration-map.rst` for the full delegation graph.
 /plugin marketplace add imewei/MyClaude
 
 # Install the suite
-/plugin install dev-suite@marketplace
+/plugin install dev-suite@scientific-computing-workflows
 ```
 
 After installation, restart Claude Code for changes to take effect.

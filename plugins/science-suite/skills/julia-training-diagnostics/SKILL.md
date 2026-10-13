@@ -1,5 +1,6 @@
 ---
 name: julia-training-diagnostics
+disable-model-invocation: true
 description: Debug and diagnose neural network training in Julia. Covers gradient analysis, loss landscape visualization, learning rate finding, convergence debugging, NaN/Inf detection, and Lux.jl-specific debugging patterns. Use when training is failing, diverging, or underperforming in Julia.
 ---
 

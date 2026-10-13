@@ -1,5 +1,6 @@
 ---
 name: jump-optimization
+disable-model-invocation: true
 description: Master JuMP.jl for LP, QP, NLP, and MIP with HiGHS, Ipopt, and commercial solvers. Use for production planning, portfolio optimization, scheduling, and constrained optimization. Note that JuMP.jl is separate from Optimization.jl (julia-pro). Use when solving LP, QP, NLP, or MIP problems with JuMP.jl, HiGHS, Ipopt, or commercial solvers.
 ---
 

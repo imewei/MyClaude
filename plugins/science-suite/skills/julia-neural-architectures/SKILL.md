@@ -1,5 +1,6 @@
 ---
 name: julia-neural-architectures
+disable-model-invocation: true
 description: Design neural network architectures in Julia using Lux.jl. Covers Transformers (multi-head attention, positional encoding), CNNs, RNNs/LSTMs/GRUs (RecurrentLayers.jl), autoencoders, and custom layer design with explicit parameterization. Use when designing or implementing neural architectures in Julia.
 ---
 

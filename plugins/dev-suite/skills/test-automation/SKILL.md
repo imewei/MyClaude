@@ -1,5 +1,6 @@
 ---
 name: test-automation
+disable-model-invocation: true
 description: Expert guide for implementing automated testing across the pyramid (Unit, Integration, E2E). Masters Jest, Pytest, Playwright, and Cypress. Use when designing test strategies, setting up CI quality gates, or building automated test suites.
 ---
 

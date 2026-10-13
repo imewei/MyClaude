@@ -1,6 +1,6 @@
 ---
 name: run-all-tests
-description: Iteratively run and fix all tests until zero failures with AI-driven RCA
+description: Iteratively run and fix all tests until zero failures with AI-driven RCA. To write new tests use /test-generate.
 argument-hint: "[test-path] [--fix] [--max-iterations=10] [--parallel] [--coverage]"
 allowed-tools: [Bash, Read, Edit, Task, ScheduleWakeup]
 ---

@@ -1,5 +1,6 @@
 ---
 name: symbolic-math
+disable-model-invocation: true
 description: "Perform symbolic mathematics with SymPy including algebraic manipulation, symbolic differentiation/integration, equation solving, matrix algebra, and code generation from symbolic expressions. Use when deriving analytical solutions, simplifying expressions, or generating numerical code from symbolic formulas."
 ---
 

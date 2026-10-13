@@ -6,8 +6,8 @@ description: Core deep-learning implementation skill for standard neural network
 > **Loading a routing target.** `dev-suite:*`, `research-suite:*`, and `science-suite:*` targets below
 > are slash-only (`disable-model-invocation: true`) — the Skill tool will not fire them. Load one by
 > reading its file with the Read tool at `${CLAUDE_PLUGIN_ROOT}/skills/<name>/SKILL.md` — Claude Code
-> substitutes that variable with this plugin's install directory. A target in a sibling suite is at
-> the same relative path under that suite's own root. Targets from other plugins (`superpowers:*`,
+> substitutes that variable with this plugin's install directory. A target in a sibling suite cannot be
+> read by path (installs live in separate directories); reach it by invoking that suite's hub. Targets from other plugins (`superpowers:*`,
 > `ecc:*`, …) are unaffected and invoke normally.
 
 # Deep Learning Mastery
@@ -44,7 +44,7 @@ Debugging vanishing gradients, loss instability, dead ReLUs, and convergence iss
 Quantization, pruning, knowledge distillation, and efficient inference.
 
 ### Research Paper Implementation *(moved to research-suite)*
-Translating academic papers into working code in JAX or PyTorch. See `research-paper-implementation` in the `research-suite` plugin (`research-suite:research-paper-implementation`).
+Translating academic papers into working code in JAX or PyTorch. Use `/paper-implement`, or invoke the `research-suite:research-hub` hub, which routes to `research-paper-implementation`.
 
 ### [Deep Learning Experimentation](../deep-learning-experimentation/SKILL.md)
 Systematic workflows for training, ablation, and hyperparameter tuning.

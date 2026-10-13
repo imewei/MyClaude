@@ -1,13 +1,14 @@
 ---
 name: self-improving-ai
+disable-model-invocation: true
 description: Research-framework overview of self-improving AI systems — a routing skill that surveys four improvement families (inference-time scaling, self-refinement loops, autonomous research agents, evolutionary program search) and routes to depth-skill companions for tool-specific details. Use when choosing between approaches, when the user is surveying the field, or when an LLM system must improve its own outputs but the right family is not yet decided. Use proactively when the user mentions self-improving AI, test-time compute, inference-time scaling, best-of-N, tree-of-thoughts, MCTS for reasoning, Self-Refine, STaR, Reflexion, AlphaEvolve, autonomous research agents, or multi-agent research loops (AutoGen, CrewAI, LangGraph, smolagents). For the DSPy programmatic-prompt-optimization path specifically, see `dspy-basics`. For Constitutional AI / RLAIF / DPO / KTO / PPO training specifically, see `rlaif-training`.
 ---
 
 > **Loading a routing target.** `dev-suite:*`, `research-suite:*`, and `science-suite:*` targets below
 > are slash-only (`disable-model-invocation: true`) — the Skill tool will not fire them. Load one by
 > reading its file with the Read tool at `${CLAUDE_PLUGIN_ROOT}/skills/<name>/SKILL.md` — Claude Code
-> substitutes that variable with this plugin's install directory. A target in a sibling suite is at
-> the same relative path under that suite's own root. Targets from other plugins (`superpowers:*`,
+> substitutes that variable with this plugin's install directory. A target in a sibling suite cannot be
+> read by path (installs live in separate directories); reach it by invoking that suite's hub. Targets from other plugins (`superpowers:*`,
 > `ecc:*`, …) are unaffected and invoke normally.
 
 # Self-Improving AI

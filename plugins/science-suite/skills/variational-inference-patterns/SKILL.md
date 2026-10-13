@@ -1,5 +1,6 @@
 ---
 name: variational-inference-patterns
+disable-model-invocation: true
 description: Master ADVI variational inference with Turing.jl and Bijectors.jl for scalable approximate Bayesian inference. Use when MCMC is too slow for large datasets. Also use when exploring VI vs MCMC trade-offs, warm-starting MCMC with VI, implementing online/streaming Bayesian learning, or needing fast approximate posteriors. Use proactively when the user mentions slow sampling, scalability concerns with Bayesian models, or wants quick posterior exploration before full MCMC.
 ---
 

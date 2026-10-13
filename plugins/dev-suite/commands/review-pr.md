@@ -1,5 +1,5 @@
 ---
-description: Comprehensive PR review using specialized agents
+description: Parallel PR review by six specialized agents (comments, tests, errors, types, code, simplify). For a single-pass review use /code-review.
 argument-hint: "[PR-number-or-URL] [--focus=comments|tests|errors|types|code|simplify]"
 ---
 

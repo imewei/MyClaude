@@ -7,7 +7,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "python3 ${CLAUDE_PLUGIN_ROOT}/hooks/subagent_stop.py",
+            "command": "python3 \"${CLAUDE_PLUGIN_ROOT}/hooks/subagent_stop.py\"",
             "async": false,
             "timeout": 10
           }
@@ -20,7 +20,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "python3 ${CLAUDE_PLUGIN_ROOT}/hooks/post_tool_use.py",
+            "command": "python3 \"${CLAUDE_PLUGIN_ROOT}/hooks/post_tool_use.py\"",
             "async": true,
             "timeout": 10
           }
@@ -33,7 +33,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "python3 ${CLAUDE_PLUGIN_ROOT}/hooks/task_completed.py",
+            "command": "python3 \"${CLAUDE_PLUGIN_ROOT}/hooks/task_completed.py\"",
             "async": true,
             "timeout": 10
           }
@@ -46,7 +46,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "python3 ${CLAUDE_PLUGIN_ROOT}/hooks/session_start.py",
+            "command": "python3 \"${CLAUDE_PLUGIN_ROOT}/hooks/session_start.py\"",
             "async": false,
             "timeout": 10
           }

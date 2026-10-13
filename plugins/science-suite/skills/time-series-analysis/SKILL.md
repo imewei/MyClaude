@@ -1,13 +1,13 @@
 ---
 name: time-series-analysis
-description: "Analyze and forecast time series data with statsmodels, Prophet, and neural methods including ARIMA/SARIMA, GARCH, STL decomposition, stationarity testing (ADF, KPSS, Phillips-Perron), change-point detection (PELT, BinSeg, dynamic programming via `ruptures`), anomaly detection, and deep learning forecasting (N-BEATS, TFT). Use when building forecasting models, testing stationarity, detecting change points or anomalies in regularly-sampled temporal data, or analyzing seasonal patterns. For irregular event timestamps (Hawkes, Cox, renewal), route to point-processes."
+description: "Analyze and forecast time series data with statsmodels, Prophet, and neural methods including ARIMA/SARIMA, GARCH, STL decomposition, stationarity testing (ADF, KPSS, Phillips-Perron), change-point detection (PELT, BinSeg, dynamic programming via `ruptures`), anomaly detection, and deep learning forecasting (N-BEATS, TFT). Use when building forecasting models, testing stationarity, detecting change points or anomalies in regularly-sampled temporal data, or analyzing seasonal patterns. For irregular event timestamps (Hawkes, Cox, renewal), route to bayesian-inference."
 ---
 
 > **Loading a routing target.** `dev-suite:*`, `research-suite:*`, and `science-suite:*` targets below
 > are slash-only (`disable-model-invocation: true`) — the Skill tool will not fire them. Load one by
 > reading its file with the Read tool at `${CLAUDE_PLUGIN_ROOT}/skills/<name>/SKILL.md` — Claude Code
-> substitutes that variable with this plugin's install directory. A target in a sibling suite is at
-> the same relative path under that suite's own root. Targets from other plugins (`superpowers:*`,
+> substitutes that variable with this plugin's install directory. A target in a sibling suite cannot be
+> read by path (installs live in separate directories); reach it by invoking that suite's hub. Targets from other plugins (`superpowers:*`,
 > `ecc:*`, …) are unaffected and invoke normally.
 
 # Time Series Analysis

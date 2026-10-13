@@ -1,5 +1,6 @@
 ---
 name: architecture-patterns
+disable-model-invocation: true
 description: Master Clean Architecture, Hexagonal Architecture, and DDD patterns including entities, value objects, aggregates, repositories, and domain events. Use when designing scalable backends, refactoring monoliths, or implementing domain-driven design.
 ---
 

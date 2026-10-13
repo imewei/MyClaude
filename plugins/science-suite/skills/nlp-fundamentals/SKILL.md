@@ -1,5 +1,6 @@
 ---
 name: nlp-fundamentals
+disable-model-invocation: true
 description: "Build NLP pipelines with spaCy, Hugging Face Transformers, and NLTK including tokenization, named entity recognition, sentiment analysis, text classification, and sequence labeling. Use when processing text, training NLP models, or implementing text analysis pipelines."
 ---
 

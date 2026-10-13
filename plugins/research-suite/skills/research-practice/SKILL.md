@@ -1,13 +1,14 @@
 ---
 name: research-practice
+disable-model-invocation: true
 description: Meta-orchestrator for the research lifecycle. Routes to specialized skills for *designing* experiments (power analysis, DoE, hypothesis planning), *evaluating* existing work (CONSORT/STROBE/PRISMA, red-flag detection), *reproducing* published papers, *writing* manuscripts (IMRaD, reports), and *synthesizing* literature (PRISMA, meta-analysis, GRADE). This skill should be used when the user asks any open-ended methodology question — "how should I design this study", "is this paper trustworthy", "reproduce this result", "help me write this up", "what does the literature say on X" — and the task is neither a structured artifact-gated pipeline (use `research-spark`) nor a formal journal peer review (use `scientific-review`).
 ---
 
 > **Loading a routing target.** `dev-suite:*`, `research-suite:*`, and `science-suite:*` targets below
 > are slash-only (`disable-model-invocation: true`) — the Skill tool will not fire them. Load one by
 > reading its file with the Read tool at `${CLAUDE_PLUGIN_ROOT}/skills/<name>/SKILL.md` — Claude Code
-> substitutes that variable with this plugin's install directory. A target in a sibling suite is at
-> the same relative path under that suite's own root. Targets from other plugins (`superpowers:*`,
+> substitutes that variable with this plugin's install directory. A target in a sibling suite cannot be
+> read by path (installs live in separate directories); reach it by invoking that suite's hub. Targets from other plugins (`superpowers:*`,
 > `ecc:*`, …) are unaffected and invoke normally.
 
 # Research Practice

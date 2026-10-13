@@ -1,5 +1,6 @@
 ---
 name: numpyro-core-mastery
+disable-model-invocation: true
 description: Master NumPyro for production Bayesian inference, MCMC sampling (NUTS/HMC), variational inference (SVI), hierarchical models, and uncertainty quantification. Use when building probabilistic models with numpyro.sample(), running MCMC with NUTS/HMC, implementing SVI with AutoGuides, diagnosing convergence (R-hat, ESS, divergences), or deploying production Bayesian pipelines.
 ---
 

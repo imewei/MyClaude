@@ -1,5 +1,6 @@
 ---
 name: grafana-dashboards
+disable-model-invocation: true
 description: Create production Grafana dashboards with panels, variables, alerts, and templates using RED/USE methods. Use when building API monitoring, infrastructure, database, or SLO dashboards with Prometheus data sources.
 ---
 

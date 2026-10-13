@@ -1,5 +1,6 @@
 ---
 name: experiment-tracking
+disable-model-invocation: true
 description: "Track ML experiments with MLflow, Weights & Biases, and DVC including metric logging, artifact management, model registry, hyperparameter sweeps, and experiment comparison. Use when setting up experiment tracking, comparing model runs, or managing ML artifacts and model versions."
 ---
 

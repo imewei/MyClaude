@@ -1,5 +1,6 @@
 ---
 name: ci-cd-patterns
+disable-model-invocation: true
 description: Master GitHub Actions for Julia packages with test matrices, CompatHelper, TagBot, and documentation deployment. Use when setting up CI workflows for Julia packages. Also use when configuring multi-platform test matrices, adding code coverage with Codecov, auto-deploying Documenter.jl docs, or automating release tagging. Use proactively when the user mentions Julia CI, GitHub Actions for Julia, or wants automated testing and dependency updates for a Julia project.
 ---
 
@@ -30,14 +31,14 @@ jobs:
         julia-version: ['1.6', '1', 'nightly']
         os: [ubuntu-latest, macos-latest, windows-latest]
     steps:
-      - uses: actions/checkout@v4
-      - uses: julia-actions/setup-julia@v2
+      - uses: actions/checkout@v7
+      - uses: julia-actions/setup-julia@v3
         with:
           version: ${{ matrix.julia-version }}
       - uses: julia-actions/julia-buildpkg@v1
       - uses: julia-actions/julia-runtest@v1
       - uses: julia-actions/julia-processcoverage@v1
-      - uses: codecov/codecov-action@v4
+      - uses: codecov/codecov-action@v7
 ```
 
 ---
@@ -53,8 +54,8 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: julia-actions/setup-julia@v2
+      - uses: actions/checkout@v7
+      - uses: julia-actions/setup-julia@v3
       - run: |
           julia --project=docs/ -e '
             using Pkg

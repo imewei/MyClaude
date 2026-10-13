@@ -1,13 +1,14 @@
 ---
 name: physical-learning-systems
+disable-model-invocation: true
 description: Physical and energy-based learning in disordered and soft-matter systems — coupled learning, contrastive Hebbian learning in physical (mechanical/electrical) networks, plasticity and memory formation in disordered materials, and Hopfield-style energy-based learning applied to physical substrates. Distinct from classical ML algorithms — this is learning as a physical/statistical-mechanics phenomenon, not a learning algorithm implemented in software.
 ---
 
 > **Loading a routing target.** `dev-suite:*`, `research-suite:*`, and `science-suite:*` targets below
 > are slash-only (`disable-model-invocation: true`) — the Skill tool will not fire them. Load one by
 > reading its file with the Read tool at `${CLAUDE_PLUGIN_ROOT}/skills/<name>/SKILL.md` — Claude Code
-> substitutes that variable with this plugin's install directory. A target in a sibling suite is at
-> the same relative path under that suite's own root. Targets from other plugins (`superpowers:*`,
+> substitutes that variable with this plugin's install directory. A target in a sibling suite cannot be
+> read by path (installs live in separate directories); reach it by invoking that suite's hub. Targets from other plugins (`superpowers:*`,
 > `ecc:*`, …) are unaffected and invoke normally.
 
 # Physical Learning Systems

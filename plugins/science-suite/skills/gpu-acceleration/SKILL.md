@@ -1,5 +1,6 @@
 ---
 name: gpu-acceleration
+disable-model-invocation: true
 description: Implement GPU acceleration using CUDA/CuPy (Python) and CUDA.jl (Julia) with kernel optimization and memory management. Use when offloading computations to GPU, writing custom kernels, or optimizing multi-GPU workflows.
 ---
 

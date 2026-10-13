@@ -1,13 +1,13 @@
 ---
 name: ci-cd-pipelines
-description: Meta-orchestrator for CI/CD pipeline design. Routes to GitHub Actions, GitLab CI, pipeline design, security scanning, and error resolution skills. Use when setting up GitHub Actions, GitLab CI, designing deployment pipelines, adding security scanning, or resolving CI/CD errors.
+description: Meta-orchestrator for CI/CD pipeline design. Routes to GitHub Actions, GitLab CI, pipeline design, security scanning, and error resolution skills. Use when setting up GitHub Actions, GitLab CI, designing deployment pipelines, adding security scanning, or resolving CI/CD errors. For Julia package CI use julia-implementer.
 ---
 
 > **Loading a routing target.** `dev-suite:*`, `research-suite:*`, and `science-suite:*` targets below
 > are slash-only (`disable-model-invocation: true`) — the Skill tool will not fire them. Load one by
 > reading its file with the Read tool at `${CLAUDE_PLUGIN_ROOT}/skills/<name>/SKILL.md` — Claude Code
-> substitutes that variable with this plugin's install directory. A target in a sibling suite is at
-> the same relative path under that suite's own root. Targets from other plugins (`superpowers:*`,
+> substitutes that variable with this plugin's install directory. A target in a sibling suite cannot be
+> read by path (installs live in separate directories); reach it by invoking that suite's hub. Targets from other plugins (`superpowers:*`,
 > `ecc:*`, …) are unaffected and invoke normally.
 
 # CI/CD Pipelines

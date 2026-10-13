@@ -1,5 +1,6 @@
 ---
 name: error-handling-patterns
+disable-model-invocation: true
 description: Master error handling patterns including exception hierarchies, Result types, retry with exponential backoff, circuit breakers, graceful degradation, error aggregation, and structured error responses. Use when implementing fault-tolerant systems, designing API error responses, or building resilient distributed applications.
 ---
 

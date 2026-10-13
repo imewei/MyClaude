@@ -1,13 +1,13 @@
 ---
 name: machine-learning
-description: Comprehensive Classical Machine Learning suite. Covers scikit-learn, XGBoost, LightGBM, and MLOps pipelines. Focuses on tabular data, feature engineering, production deployment, algorithm selection, cross-validation, hyperparameter tuning (GridSearch, Optuna), handling imbalanced data (SMOTE), model evaluation, SHAP interpretability, and deployment. Use when training classical ML models, selecting algorithms for tabular data, tuning hyperparameters, or deploying ML pipelines to production.
+description: Comprehensive Classical Machine Learning suite. Covers scikit-learn, XGBoost, LightGBM, and MLOps pipelines. Focuses on tabular data, feature engineering, production deployment, algorithm selection, cross-validation, hyperparameter tuning (GridSearch, Optuna), handling imbalanced data (SMOTE), model evaluation, SHAP interpretability, and deployment. Use when training classical ML models, selecting algorithms for tabular data, tuning hyperparameters, or deploying ML pipelines to production. For data wrangling, statistics, visualization, or Zarr/HDF5 use ml-and-data-science.
 ---
 
 > **Loading a routing target.** `dev-suite:*`, `research-suite:*`, and `science-suite:*` targets below
 > are slash-only (`disable-model-invocation: true`) — the Skill tool will not fire them. Load one by
 > reading its file with the Read tool at `${CLAUDE_PLUGIN_ROOT}/skills/<name>/SKILL.md` — Claude Code
-> substitutes that variable with this plugin's install directory. A target in a sibling suite is at
-> the same relative path under that suite's own root. Targets from other plugins (`superpowers:*`,
+> substitutes that variable with this plugin's install directory. A target in a sibling suite cannot be
+> read by path (installs live in separate directories); reach it by invoking that suite's hub. Targets from other plugins (`superpowers:*`,
 > `ecc:*`, …) are unaffected and invoke normally.
 
 # Machine Learning & MLOps

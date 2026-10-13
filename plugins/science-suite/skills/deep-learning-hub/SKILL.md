@@ -1,13 +1,13 @@
 ---
 name: deep-learning-hub
-description: Meta-orchestrator for deep learning. Routes to architecture design, mathematical foundations, training diagnostics, experimentation, and advanced systems skills. Use when designing neural architectures, deriving backpropagation, diagnosing training failures (loss divergence, gradient explosion/vanishing), running ablation studies, hyperparameter search, or building large-scale distributed DL systems.
+description: Meta-orchestrator for deep learning. Routes to architecture design, mathematical foundations, training diagnostics, experimentation, and advanced systems skills. Use when designing neural architectures, deriving backpropagation, diagnosing training failures (loss divergence, gradient explosion/vanishing), running ablation studies, hyperparameter search, or building large-scale distributed DL systems. For baseline models, custom layers, or losses use deep-learning.
 ---
 
 > **Loading a routing target.** `dev-suite:*`, `research-suite:*`, and `science-suite:*` targets below
 > are slash-only (`disable-model-invocation: true`) — the Skill tool will not fire them. Load one by
 > reading its file with the Read tool at `${CLAUDE_PLUGIN_ROOT}/skills/<name>/SKILL.md` — Claude Code
-> substitutes that variable with this plugin's install directory. A target in a sibling suite is at
-> the same relative path under that suite's own root. Targets from other plugins (`superpowers:*`,
+> substitutes that variable with this plugin's install directory. A target in a sibling suite cannot be
+> read by path (installs live in separate directories); reach it by invoking that suite's hub. Targets from other plugins (`superpowers:*`,
 > `ecc:*`, …) are unaffected and invoke normally.
 
 # Deep Learning Hub

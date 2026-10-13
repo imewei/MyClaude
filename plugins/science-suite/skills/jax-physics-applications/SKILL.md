@@ -1,5 +1,6 @@
 ---
 name: jax-physics-applications
+disable-model-invocation: true
 description: Physics simulations using JAX-based libraries (JAX-MD, JAX-CFD, PINNs). Use when implementing molecular dynamics, computational fluid dynamics, physics-informed neural networks with PDE constraints, quantum computing algorithms (VQE, QAOA), multi-physics coupling, or differentiable physics for gradient-based optimization.
 ---
 

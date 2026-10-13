@@ -1,5 +1,6 @@
 ---
 name: turing-model-design
+disable-model-invocation: true
 description: Design probabilistic models with Turing.jl including prior selection, hierarchical models, and non-centered parameterization. Use when building Bayesian models for inference. Also use when specifying priors, writing @model functions, implementing mixture models, setting up hierarchical/multilevel structures, or reparameterizing for better NUTS sampling. Use proactively when the user mentions Bayesian modeling in Julia, probabilistic programming, or posterior inference with Turing.jl, even if they only describe the statistical model.
 ---
 

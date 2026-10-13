@@ -1,5 +1,6 @@
 ---
 name: non-equilibrium-theory
+disable-model-invocation: true
 description: Apply non-equilibrium thermodynamics including fluctuation theorems, entropy production, and linear response theory. Use when modeling irreversible processes, analyzing driven systems, or deriving transport coefficients.
 ---
 

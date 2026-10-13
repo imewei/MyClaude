@@ -157,8 +157,11 @@ State lives in `_state.yaml` at the project root; the orchestrator reads it befo
 ## Installation
 
 ```bash
-/plugin enable research-suite
+/plugin marketplace add imewei/MyClaude
+/plugin install research-suite@scientific-computing-workflows
 ```
+
+After installation, restart Claude Code for changes to take effect.
 
 ## Design notes
 

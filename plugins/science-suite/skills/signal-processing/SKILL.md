@@ -1,5 +1,6 @@
 ---
 name: signal-processing
+disable-model-invocation: true
 description: "Implement signal processing with SciPy and NumPy including FFT analysis, digital filtering (FIR/IIR), wavelet transforms, spectral estimation, and signal conditioning. Use when processing sensor data, implementing frequency analysis, designing filters, or performing spectral analysis."
 ---
 

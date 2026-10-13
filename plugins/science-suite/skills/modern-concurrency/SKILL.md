@@ -1,5 +1,6 @@
 ---
 name: modern-concurrency
+disable-model-invocation: true
 description: Master structured concurrency in Python using asyncio TaskGroups and modern primitives. Use when implementing concurrent I/O, managing task lifecycles, or optimizing async applications for Python 3.11+.
 ---
 

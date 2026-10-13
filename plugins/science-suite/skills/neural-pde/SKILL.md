@@ -1,13 +1,14 @@
 ---
 name: neural-pde
+disable-model-invocation: true
 description: Solve PDEs with NeuralPDE.jl using physics-informed neural networks (PINNs) and method-of-lines discretization. Use when solving forward or inverse PDE problems with neural networks, enforcing boundary conditions, training neural surrogates for expensive simulations, or applying physics-informed loss functions. Use proactively when the user mentions PINNs, physics-informed learning, neural operators, or wants to solve high-dimensional or irregular-domain PDEs where mesh-based methods fail. For credible intervals on PINN solutions (BPINN / BNNODE), see the sibling `bayesian-pinn` skill.
 ---
 
 > **Loading a routing target.** `dev-suite:*`, `research-suite:*`, and `science-suite:*` targets below
 > are slash-only (`disable-model-invocation: true`) — the Skill tool will not fire them. Load one by
 > reading its file with the Read tool at `${CLAUDE_PLUGIN_ROOT}/skills/<name>/SKILL.md` — Claude Code
-> substitutes that variable with this plugin's install directory. A target in a sibling suite is at
-> the same relative path under that suite's own root. Targets from other plugins (`superpowers:*`,
+> substitutes that variable with this plugin's install directory. A target in a sibling suite cannot be
+> read by path (installs live in separate directories); reach it by invoking that suite's hub. Targets from other plugins (`superpowers:*`,
 > `ecc:*`, …) are unaffected and invoke normally.
 
 # NeuralPDE.jl — PINNs (deterministic)

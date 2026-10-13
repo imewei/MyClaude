@@ -1,13 +1,14 @@
 ---
 name: bayesian-ude-workflow
+disable-model-invocation: true
 description: Build end-to-end Bayesian Universal Differential Equation (UDE) workflows in Julia. Use when fitting neural ODEs with posterior uncertainty, embedding Lux neural networks inside Turing @model blocks with DiffEq solves, warm-starting MCMC from a deterministic optimum, or composing UDE training with SINDy for symbolic recovery. Use proactively when the user mentions Bayesian neural ODE, UDE with uncertainty, Turing + DifferentialEquations, or wants confidence intervals on a learned dynamical system.
 ---
 
 > **Loading a routing target.** `dev-suite:*`, `research-suite:*`, and `science-suite:*` targets below
 > are slash-only (`disable-model-invocation: true`) — the Skill tool will not fire them. Load one by
 > reading its file with the Read tool at `${CLAUDE_PLUGIN_ROOT}/skills/<name>/SKILL.md` — Claude Code
-> substitutes that variable with this plugin's install directory. A target in a sibling suite is at
-> the same relative path under that suite's own root. Targets from other plugins (`superpowers:*`,
+> substitutes that variable with this plugin's install directory. A target in a sibling suite cannot be
+> read by path (installs live in separate directories); reach it by invoking that suite's hub. Targets from other plugins (`superpowers:*`,
 > `ecc:*`, …) are unaffected and invoke normally.
 
 # Bayesian Universal Differential Equation Workflow

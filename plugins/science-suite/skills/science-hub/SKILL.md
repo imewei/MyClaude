@@ -1,14 +1,14 @@
 ---
 name: science-hub
 description: >-
-  Top-level router for all scientific computing topics. Use for: JAX/NumPyro/Diffrax/JIT/vmap/pmap/custom-VJP/optax; Julia language/packages/SciML/DiffEq.jl/Lux/ModelingToolkit; nonlinear dynamics/bifurcation/chaos/Lyapunov/SINDy/attractors/coupled oscillators/pattern formation; correlation functions/DLS/SAXS/XPCS/FFT correlators/MSD/VACF/g(r); statistical physics/non-equilibrium/stochastic dynamics/active matter/multiscale/rare-event sampling/extreme-value statistics; deep learning architecture/transformers/CNNs/GNNs/training diagnostics/gradient explosion; classical ML/scikit-learn/XGBoost/data analysis/wrangling/scientific visualization; LLM applications/RAG/LangChain/NLP/evaluation; ML deployment/FastAPI/TorchServe/MLOps/quantization/federated learning; MD simulation/HPC/GPU kernels/GROMACS/OpenMM/numerical methods/trajectory analysis/ML force fields; scientific Python packaging/Rust extensions/type-driven design/quantum computing/bioinformatics/RL/symbolic math; Bayesian inference/MCMC/NumPyro/Turing.jl/Pigeons/consensus MCMC/Bayesian UDE/PINNs/variational inference/MCMC diagnostics; continuum-mechanics/FEM/FEA/constitutive equations/DMA/rheology/transient networks/vitrimers/nanocomposites.
+  Top-level router for all scientific computing topics. Use for: JAX/NumPyro/Diffrax/JIT/vmap/pmap/custom-VJP/optax; Julia language/packages/SciML/DiffEq.jl/Lux/ModelingToolkit; nonlinear dynamics/bifurcation/chaos/Lyapunov/SINDy/attractors/coupled oscillators/pattern formation; correlation functions/DLS/SAXS/XPCS/FFT correlators/MSD/VACF/g(r); statistical physics/non-equilibrium/stochastic dynamics/active matter/multiscale/rare-event sampling/extreme-value statistics; deep learning architecture/transformers/CNNs/GNNs/training diagnostics/gradient explosion; classical ML/scikit-learn/XGBoost/data analysis/wrangling/scientific visualization/Zarr/HDF5 and NetCDF to cloud-native Zarr conversion; LLM applications/RAG/LangChain/NLP/evaluation; ML deployment/FastAPI/TorchServe/MLOps/quantization/federated learning; MD simulation/HPC/GPU kernels/GROMACS/OpenMM/numerical methods/trajectory analysis/ML force fields; scientific Python packaging/Rust extensions/type-driven design/quantum computing/bioinformatics/RL/symbolic math; Bayesian inference/MCMC/NumPyro/Turing.jl/Pigeons/consensus MCMC/Bayesian UDE/PINNs/variational inference/MCMC diagnostics; continuum-mechanics/FEM/FEA/constitutive equations/DMA/rheology/transient networks/vitrimers/nanocomposites.
 ---
 
 > **Loading a routing target.** `dev-suite:*`, `research-suite:*`, and `science-suite:*` targets below
 > are slash-only (`disable-model-invocation: true`) — the Skill tool will not fire them. Load one by
 > reading its file with the Read tool at `${CLAUDE_PLUGIN_ROOT}/skills/<name>/SKILL.md` — Claude Code
-> substitutes that variable with this plugin's install directory. A target in a sibling suite is at
-> the same relative path under that suite's own root. Targets from other plugins (`superpowers:*`,
+> substitutes that variable with this plugin's install directory. A target in a sibling suite cannot be
+> read by path (installs live in separate directories); reach it by invoking that suite's hub. Targets from other plugins (`superpowers:*`,
 > `ecc:*`, …) are unaffected and invoke normally.
 
 # Science Suite (science-hub)
@@ -22,6 +22,7 @@ Located in `${CLAUDE_PLUGIN_ROOT}/agents/`:
 - **`continuum-mechanics-engineer`** — FEM/FEA, constitutive modeling, DMA/rheology, transient networks, nanocomposites
 - **`jax-pro`** — JAX/XLA expert: JIT, vmap, pmap, custom VJPs, NumPyro
 - **`julia-pro`** — Core Julia: type stability, packaging, dispatch, interop
+- **`julia-implementer`** — Julia package lifecycle: scaffold, test, docs, exports, precompile, profile, debug, audit
 - **`julia-ml-hpc`** — Julia ML + HPC: Lux, GNNLux, CUDA.jl, distributed
 - **`ml-expert`** — Classical ML: scikit-learn, XGBoost, MLflow pipelines
 - **`neural-network-master`** — Deep learning: architectures, training diagnostics

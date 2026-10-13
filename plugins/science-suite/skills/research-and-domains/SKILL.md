@@ -1,20 +1,20 @@
 ---
 name: research-and-domains
-description: Meta-orchestrator for specialized scientific domains, scientific Python systems, and AI-research methods not covered by the main JAX, Julia, ML, simulation, or research methodology hubs. Routes to self-improving-AI research surveys, DSPy scientific prompt programs, RLAIF training, Python packaging/Rust/type/concurrency/testing patterns, and domain skills such as quantum computing, bioinformatics, computer vision, reinforcement learning, and symbolic math. Use when the user asks about AI-research techniques or scientific Python/domain work; for general study design, literature synthesis, or paper methodology, use research-suite research-practice.
+description: Meta-orchestrator for specialized scientific domains, scientific Python systems, and AI-research methods not covered by the main JAX, Julia, ML, simulation, or research methodology hubs. Routes to self-improving-AI research surveys, DSPy scientific prompt programs, RLAIF training, Python packaging/Rust/type/concurrency/testing patterns, and domain skills such as quantum computing, bioinformatics, computer vision, reinforcement learning, and symbolic math. Use when the user asks about AI-research techniques or scientific Python/domain work; for general study design, literature synthesis, or paper methodology, use research-suite research-hub. For Python packaging, typing, async, or profiling use python-development.
 ---
 
 > **Loading a routing target.** `dev-suite:*`, `research-suite:*`, and `science-suite:*` targets below
 > are slash-only (`disable-model-invocation: true`) — the Skill tool will not fire them. Load one by
 > reading its file with the Read tool at `${CLAUDE_PLUGIN_ROOT}/skills/<name>/SKILL.md` — Claude Code
-> substitutes that variable with this plugin's install directory. A target in a sibling suite is at
-> the same relative path under that suite's own root. Targets from other plugins (`superpowers:*`,
+> substitutes that variable with this plugin's install directory. A target in a sibling suite cannot be
+> read by path (installs live in separate directories); reach it by invoking that suite's hub. Targets from other plugins (`superpowers:*`,
 > `ecc:*`, …) are unaffected and invoke normally.
 
 # Research and Domains
 
 Orchestrator for scientific Python systems, AI-research methods, and specialized scientific domains. Routes problems to the appropriate specialized skill.
 
-> **General research methodology has moved.** Study design, paper implementation, quality assessment, scientific writing (IMRaD), and evidence synthesis (PRISMA, meta-analysis, GRADE) now live in the `research-practice` hub in `research-suite`. This hub retains AI-research methods (autonomous-agent research, scientific DSPy programs, RLAIF training) and Python/domain specializations that pair naturally with scientific computing.
+> **General research methodology has moved.** Study design, paper implementation, quality assessment, scientific writing (IMRaD), and evidence synthesis (PRISMA, meta-analysis, GRADE) now live behind the `research-hub` hub in `research-suite` (it loads `research-practice`). This hub retains AI-research methods (autonomous-agent research, scientific DSPy programs, RLAIF training) and Python/domain specializations that pair naturally with scientific computing.
 
 ## Core Skills
 
@@ -41,7 +41,7 @@ Orchestrator for scientific Python systems, AI-research methods, and specialized
 What is the task category?
 |
 +-- General research methodology (study design, paper write-up, lit review, meta-analysis)?
-|   --> (out of hub) research-suite:research-practice
+|   --> (out of hub) research-suite:research-hub
 |
 +-- Self-improving AI taxonomy / autonomous research loops / four-families overview?
 |   --> science-suite:self-improving-ai
@@ -77,7 +77,7 @@ What is the task category?
 ## Checklist
 
 - [ ] Use routing tree to identify task category before selecting a sub-skill
-- [ ] For general research methodology questions, delegate to `research-suite:research-practice`
+- [ ] For general research methodology questions, delegate to `research-suite:research-hub`
 - [ ] Validate Python packaging locally with `pip install -e .` before publishing
 - [ ] Test Rust extensions with `cargo test` before building Python wheels
 - [ ] Check quantum circuit depth and gate count against target hardware limits

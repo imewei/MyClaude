@@ -1,13 +1,13 @@
 ---
 name: statistical-physics-hub
-description: Meta-orchestrator for statistical physics and soft matter. Routes to equilibrium/non-equilibrium theory, stochastic dynamics, active matter, multiscale modeling, advanced simulation, rare-events sampling, and extreme-value-statistics skills. Use when modeling equilibrium/non-equilibrium systems, simulating stochastic dynamics, studying active matter, implementing multiscale methods, running advanced MD simulations, computing rare-event rates, or fitting extreme-value distributions to tail data (GEV/GPD/Hill/POT).
+description: Meta-orchestrator for statistical physics and soft matter. Routes to equilibrium/non-equilibrium theory, stochastic dynamics, active matter, multiscale modeling, advanced simulation, rare-events sampling, and extreme-value-statistics skills. Use when modeling equilibrium/non-equilibrium systems, simulating stochastic dynamics, studying active matter, implementing multiscale methods, running advanced MD simulations, computing rare-event rates, or fitting extreme-value distributions to tail data (GEV/GPD/Hill/POT). For partition functions, phase transitions, or fluctuation-dissipation derivations use statistical-physics.
 ---
 
 > **Loading a routing target.** `dev-suite:*`, `research-suite:*`, and `science-suite:*` targets below
 > are slash-only (`disable-model-invocation: true`) — the Skill tool will not fire them. Load one by
 > reading its file with the Read tool at `${CLAUDE_PLUGIN_ROOT}/skills/<name>/SKILL.md` — Claude Code
-> substitutes that variable with this plugin's install directory. A target in a sibling suite is at
-> the same relative path under that suite's own root. Targets from other plugins (`superpowers:*`,
+> substitutes that variable with this plugin's install directory. A target in a sibling suite cannot be
+> read by path (installs live in separate directories); reach it by invoking that suite's hub. Targets from other plugins (`superpowers:*`,
 > `ecc:*`, …) are unaffected and invoke normally.
 
 # Statistical Physics Hub
@@ -38,7 +38,7 @@ Self-propelled particles, collective motion, motility-induced phase separation, 
 Coarse-graining, effective field theories, renormalization, and bridging micro to macro scales.
 
 ### [Advanced Simulations](../advanced-simulations/SKILL.md)
-Monte Carlo methods, replica exchange, umbrella sampling, and free energy calculations.
+Monte Carlo methods, replica exchange, umbrella sampling, and free energy calculations. Not for rare-event rates (FFS, TIS, TPS, WE): those go to Rare Events Sampling below.
 
 ### [Rare Events Sampling](../rare-events-sampling/SKILL.md)
 FFS, TIS / RETIS, TPS, AMS, WE, OPS / WESTPA / pyretis, milestoning, and cloning algorithms for thermally-activated barriers, large-deviation statistics, avalanche exponents, self-organized criticality, sandpile models, and crackling noise.
@@ -73,11 +73,11 @@ What is the statistical physics task?
 +-- Coarse-graining / bridging scales?
 |   --> science-suite:multiscale-modeling
 |
-+-- Advanced MC / free energy / enhanced sampling?
-|   --> science-suite:advanced-simulations
-|
-+-- Rare events / barrier crossings / large-deviation / avalanche statistics / SOC / crackling noise?
++-- Rare events / barrier crossings / FFS / TIS / TPS / WE / large-deviation / avalanche statistics / SOC / crackling noise?
 |   --> science-suite:rare-events-sampling
+|
++-- Replica exchange / umbrella sampling / free energy (not rare-event rates)?
+|   --> science-suite:advanced-simulations
 |
 +-- Extreme-value distributions on magnitudes (GEV, GPD, tail index, return level)?
 |   --> science-suite:extreme-value-statistics
