@@ -53,6 +53,10 @@ class TestModelTiers:
         fm = _frontmatter(SCIENCE / "agents/julia-pro.md")
         assert fm["model"] == "sonnet", "julia-pro writes Julia code (contractor tier) -> sonnet"
 
+    def test_julia_implementer_is_sonnet(self):
+        fm = _frontmatter(SCIENCE / "agents/julia-implementer.md")
+        assert fm["model"] == "sonnet", "julia-implementer writes Julia package code (contractor tier) -> sonnet"
+
     def test_ml_expert_is_sonnet(self):
         fm = _frontmatter(SCIENCE / "agents/ml-expert.md")
         assert fm["model"] == "sonnet", "ml-expert writes sklearn/Optuna/MLflow code (contractor tier) -> sonnet"
@@ -91,7 +95,7 @@ class TestAgentRepurposing:
 # ---------------------------------------------------------------------------
 
 SCIENCE_AGENTS = [
-    "jax-pro", "julia-pro", "julia-ml-hpc", "ml-expert",
+    "jax-pro", "julia-pro", "julia-implementer", "julia-ml-hpc", "ml-expert",
     "neural-network-master", "nonlinear-dynamics-expert",
     "python-pro", "simulation-expert", "statistical-physicist",
     "pinn-engineer", "sci-workflow-engineer",

@@ -5,10 +5,11 @@ Skill Inventory Validator
 Loads every skill registered in each plugin's ``plugin.json`` and reports
 frontmatter problems (missing name/description, loader errors).
 
-This tool deliberately does NOT score skill "triggering". MyClaude skills all
-carry ``disable-model-invocation: true`` and are reached either by slash command
-or by a hub SKILL.md routing table that names the target file path, so there is
-no description-matching dispatch to measure. The previous keyword-scoring
+This tool deliberately does NOT score skill "triggering". MyClaude sub-skills
+carry ``disable-model-invocation: true`` (they stay out of the session skill listing)
+and are reached by slash command or by a hub SKILL.md routing table that names the
+target file path; only the hubs are model-invocable, and the budgeted listing decides
+which hub descriptions the model sees, so there is no dispatch to measure here. The previous keyword-scoring
 classifier derived its own ground truth from the score it was testing, making
 its accuracy/precision/over-trigger table a tautology that reported 100% for any
 description text. It was removed rather than repaired.
@@ -150,10 +151,10 @@ are reached through a hub's routing table and are intentionally not registered.
             report += "**Status:** ✅ All registered skill frontmatter is valid.\n"
 
         report += (
-            "\n_Skill triggering accuracy is not measured here. Most MyClaude "
-            "skills set `disable-model-invocation: true`, so they are dispatched "
-            "by slash command or by an explicit hub routing table, not by "
-            "description matching._\n"
+            "\n_Skill triggering accuracy is not measured here. MyClaude "
+            "sub-skills set `disable-model-invocation: true`, so they are dispatched "
+            "by slash command or by an explicit hub routing table; hubs are "
+            "model-invocable._\n"
         )
         return report
 

@@ -158,6 +158,14 @@ validate: ## Validate plugin.json, command file structure, doc cross-links, skil
 		echo "Checking skill context budget and agent prompt size..."; \
 		PYTHONPATH=. python3 tools/validation/context_budget_checker.py >/dev/null || exit 1; \
 	fi
+	@echo "Checking marketplace manifest..."
+	@PYTHONPATH=. python3 tools/validation/marketplace_validator.py || exit 1
+	@echo "Checking trigger routing..."
+	@PYTHONPATH=. python3 tools/validation/routing_checker.py || exit 1
+	@if command -v claude >/dev/null 2>&1; then \
+		echo "Running claude plugin validate..."; \
+		claude plugin validate . </dev/null || exit 1; \
+	fi
 	@echo "✓ Validation complete"
 
 ##@ Testing

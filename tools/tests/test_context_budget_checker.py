@@ -159,7 +159,7 @@ class TestAgentPromptBudget(unittest.TestCase):
             for a in report.oversized_agents
         ]
         self.assertEqual(offenders, [])
-        self.assertEqual(len(report.agents), 26)
+        self.assertEqual(len(report.agents), 27)
 
     def test_report_names_oversized_agents(self):
         mod = self._mod()

@@ -654,10 +654,12 @@ class MetadataValidator:
             result.add_warning(
                 f"skills[{idx}]",
                 f"'{skill_name}' appears to be a Tier-3 sub-skill (no routing decision "
-                f"tree). Registering sub-skills inflates the session context budget. "
-                f"Remove it from plugin.json — hubs will route to it via the Skill tool.",
-                "Only register hub skills (meta-orchestrators with routing trees) "
-                "and approved standalones in plugin.json.",
+                f"tree). Hubs reach sub-skills by file path, so it does not need to be in "
+                f"plugin.json. (Registration does not change what Claude Code loads: it "
+                f"discovers every skills/*/SKILL.md; `disable-model-invocation: true` is what "
+                f"keeps a skill out of the session listing.)",
+                "Register hub skills (meta-orchestrators with routing trees) and approved "
+                "standalones; give every other skill `disable-model-invocation: true`.",
             )
             return
 

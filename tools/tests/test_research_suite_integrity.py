@@ -342,7 +342,7 @@ def test_subagent_stop_is_registered():
     events = hooks["hooks"]
     assert "SubagentStop" in events
     cmd = events["SubagentStop"][0]["hooks"][0]["command"]
-    assert cmd.endswith("subagent_stop.py")
+    assert cmd.rstrip('"').endswith("subagent_stop.py")
 
 
 def test_subagent_stop_flags_missing_artifact_on_disk(tmp_path):
@@ -461,7 +461,7 @@ def test_post_tool_use_is_registered():
     events = hooks["hooks"]
     assert "PostToolUse" in events
     cmd = events["PostToolUse"][0]["hooks"][0]["command"]
-    assert cmd.endswith("post_tool_use.py")
+    assert cmd.rstrip('"').endswith("post_tool_use.py")
 
 
 def test_post_tool_use_flags_incomplete_review(tmp_path):

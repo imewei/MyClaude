@@ -76,7 +76,7 @@ class TestVersionSync:
 class TestAgentModelTier:
     """Agent model field must be a valid tier value."""
 
-    @pytest.mark.parametrize("suite", SUITES)
+    @pytest.mark.parametrize("suite", ["dev-suite", "research-suite", "science-suite"])
     def test_agent_model_field_is_valid_tier(self, suite: str):
         agents_dir = PLUGINS_ROOT / suite / "agents"
         if not agents_dir.exists():
@@ -383,3 +383,82 @@ class TestPortablePaths:
             if "/home/" in md.read_text(encoding="utf-8"):
                 offenders.append(str(md.relative_to(PLUGINS_ROOT)))
         assert not offenders, f"{suite} components with absolute home paths: {offenders}"
+
+
+class TestSessionContextHygiene:
+    """What loads every session. Claude Code discovers every skills/*/SKILL.md (plugin.json's
+    `skills` list only adds paths) and lists each name; the listing shares a budget of about 1%
+    of the context window, so every extra model-invocable skill costs tokens and crowds out hub
+    descriptions. Sub-skills are reached through hubs by path and must opt out of the listing."""
+
+    @staticmethod
+    def _frontmatter_text(path: Path) -> str:
+        return path.read_text(encoding="utf-8").split("\n---\n", 1)[0]
+
+    @pytest.mark.parametrize("suite", ALL_SUITES)
+    def test_all_frontmatter_parses_as_yaml(self, suite: str):
+        """A plain-scalar description containing ': ' is invalid YAML and can drop the item."""
+        broken = []
+        for path in [*(PLUGINS_ROOT / suite).glob("skills/*/SKILL.md"), *(PLUGINS_ROOT / suite).glob("agents/*.md"), *(PLUGINS_ROOT / suite).glob("commands/*.md")]:
+            try:
+                data = yaml.safe_load(self._frontmatter_text(path)[4:])
+            except yaml.YAMLError:
+                data = None
+            if not isinstance(data, dict):
+                broken.append(path.relative_to(PLUGINS_ROOT).as_posix())
+        assert not broken, f"unparseable frontmatter: {broken}"
+
+    @pytest.mark.parametrize("suite", ALL_SUITES)
+    def test_only_hubs_and_agent_preloads_are_model_invocable(self, suite: str):
+        registered = {Path(ref).name for ref in load_plugin_json(suite).get("skills", [])}
+        preloaded: set[str] = set()
+        for agent in (PLUGINS_ROOT / suite).glob("agents/*.md"):
+            preloaded |= set((load_frontmatter(agent) or {}).get("skills") or [])
+        visible = []
+        for path in (PLUGINS_ROOT / suite).glob("skills/*/SKILL.md"):
+            name = path.parent.name
+            data = yaml.safe_load(self._frontmatter_text(path)[4:]) or {}
+            if name not in registered and name not in preloaded and data.get("disable-model-invocation") is not True:
+                visible.append(name)
+        assert not visible, (
+            f"{suite} sub-skills missing `disable-model-invocation: true` (they would be listed "
+            f"in every session): {sorted(visible)}"
+        )
+
+    @pytest.mark.parametrize("suite", ALL_SUITES)
+    def test_agents_do_not_preload_skills(self, suite: str):
+        """`skills:` injects each skill's full text into every new subagent instance (1k-5k tokens
+        per hub). Agents name their skills and read them by path on demand instead."""
+        preloading = [
+            agent.name
+            for agent in (PLUGINS_ROOT / suite).glob("agents/*.md")
+            if (load_frontmatter(agent) or {}).get("skills")
+        ]
+        assert not preloading, f"{suite} agents preload skills via frontmatter: {sorted(preloading)}"
+
+
+class TestTriggerRouting:
+    """Skill, agent, and hub names must line up. The static routing rules live in
+    tools/validation/routing_checker.py (see test_validators_on_repo.py)."""
+
+    @pytest.mark.parametrize(
+        ("skill", "agent", "hub"),
+        [
+            ("zarr-cloud-arrays", "python-pro", "ml-and-data-science"),
+            ("zarr-cloud-arrays", "julia-pro", "ml-and-data-science"),
+            ("julia-implementer", "julia-pro", "julia-language"),
+        ],
+    )
+    def test_skill_agent_hub_links(self, skill: str, agent: str, hub: str):
+        """The agent names the skill, the skill names the agent, and the hub names both."""
+        def read(kind: str, name: str) -> str:
+            hits = list(PLUGINS_ROOT.glob(f"*/{kind}/{name}.md" if kind == "agents" else f"*/{kind}/{name}/SKILL.md"))
+            return hits[0].read_text(encoding="utf-8")
+
+        if skill == "julia-implementer":  # an agent, linked from the agent pair and the hub
+            assert "julia-implementer" in read("agents", agent)
+            assert "julia-implementer" in read("skills", hub)
+            return
+        assert skill in read("agents", agent), f"{agent} does not name {skill}"
+        assert agent in read("skills", skill), f"{skill} does not name {agent}"
+        assert skill in read("skills", hub), f"{hub} does not route to {skill}"

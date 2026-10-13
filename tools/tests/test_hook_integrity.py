@@ -118,9 +118,9 @@ class TestHandlerScripts:
                     if hook.get("type") == "command":
                         cmd = hook.get("command", "")
                         # Extract script path from command like
-                        # "python3 ${CLAUDE_PLUGIN_ROOT}/hooks/script.py"
+                        # 'python3 "${CLAUDE_PLUGIN_ROOT}/hooks/script.py"'
                         if "${CLAUDE_PLUGIN_ROOT}/hooks/" in cmd:
-                            script_name = cmd.split("/hooks/")[-1]
+                            script_name = cmd.split("/hooks/")[-1].rstrip('"')
                             script_path = hooks_dir / script_name
                             assert script_path.exists(), (
                                 f"{suite}/{event_name}: Script missing: {script_name}"

@@ -16,6 +16,7 @@ import os
 import subprocess
 import sys
 from pathlib import Path
+from typing import ClassVar
 
 import pytest
 
@@ -125,47 +126,56 @@ def test_hook_survives_malformed_stdin(script, tmp_path):
     assert output.get("status") == "success", output
 
 
-def test_user_prompt_submit_emits_routing_reminder():
-    """An external skill-comply plugin run (not checked into this repo) found
-    dev-suite hub skills fail to classify-then-route to a specialized skill
-    before acting, under neutral/competing prompts — this hook re-injects a
-    routing reminder every turn so it can't be silently skipped."""
-    output = run_hook("user_prompt_submit.py", {"hook_event_name": "UserPromptSubmit"})
+def test_user_prompt_submit_emits_routing_hint_for_matching_prompt(tmp_path, monkeypatch):
+    """A skill-comply run (an external plugin, not in this repo) found models skip hub routing.
+    The hook now hints only when the prompt matches a hub's domain (it used to inject a ~120-token
+    standing reminder on every prompt)."""
+    monkeypatch.setenv("MYCLAUDE_HINT_DIR", str(tmp_path))
+    output = run_hook(
+        "user_prompt_submit.py",
+        {"hook_event_name": "UserPromptSubmit", "session_id": "t1", "prompt": "set up github actions with prometheus alerts"},
+    )
     assert output["status"] == "success"
     assert output["hookSpecificOutput"]["hookEventName"] == "UserPromptSubmit", (
         f"wrong hookEventName, a typo here would silently disable delivery: {output}"
     )
     context = hook_context(output)
-    assert "hub skill" in context
+    assert "dev-suite:ci-cd-pipelines" in context
+    assert "dev-suite:observability-and-sre" in context
     assert "dev-hub" in context
 
 
-class TestUserPromptSubmitAlwaysFires:
-    """Unlike PostToolUse hooks that key off tool_input, this one must emit
-    the same reminder regardless of what the prompt says — it's a standing
-    nudge, not a conditional match."""
+class TestUserPromptSubmitIsConditional:
+    """The hint costs tokens, so it must stay silent on unrelated prompts and not repeat."""
 
-    def test_fires_on_arbitrary_prompt_text(self):
-        output = run_hook(
-            "user_prompt_submit.py",
-            {"hook_event_name": "UserPromptSubmit", "prompt": "fix this typo in the readme"},
-        )
-        assert output["status"] == "success"
-        assert "hub skill" in hook_context(output)
+    PAYLOAD: ClassVar[dict[str, str]] = {"hook_event_name": "UserPromptSubmit", "session_id": "t2"}
 
-    def test_output_is_identical_regardless_of_prompt_content(self):
-        """The reminder is a static, input-independent nudge — assert exact
-        equality across unrelated prompts, not just a shared substring, so
-        prompt text leaking into the context or partial truncation would fail."""
-        first = run_hook(
-            "user_prompt_submit.py",
-            {"hook_event_name": "UserPromptSubmit", "prompt": "add a caching layer to the API"},
+    @pytest.fixture(autouse=True)
+    def _isolated_state(self, tmp_path, monkeypatch):
+        monkeypatch.setenv("MYCLAUDE_HINT_DIR", str(tmp_path))
+
+    @pytest.mark.parametrize("prompt", ["what's 2+2", "thanks", "/commit", ""])
+    def test_silent_on_unrelated_or_command_prompts(self, prompt):
+        output = run_hook("user_prompt_submit.py", {**self.PAYLOAD, "prompt": prompt})
+        assert output == {"status": "success"}
+
+    def test_silent_without_a_prompt_field(self):
+        assert run_hook("user_prompt_submit.py", self.PAYLOAD) == {"status": "success"}
+
+    def test_same_hub_is_not_repeated_until_the_interval_passes(self):
+        prompt = "add a redis caching layer to the database"
+        first = run_hook("user_prompt_submit.py", {**self.PAYLOAD, "prompt": prompt})
+        assert "dev-suite:data-and-security" in hook_context(first)
+        assert hook_context(run_hook("user_prompt_submit.py", {**self.PAYLOAD, "prompt": prompt})) == ""
+        for _ in range(11):  # 12 prompts after the first hint, the hub is due again
+            run_hook("user_prompt_submit.py", {**self.PAYLOAD, "prompt": "thanks"})
+        assert "dev-suite:data-and-security" in hook_context(
+            run_hook("user_prompt_submit.py", {**self.PAYLOAD, "prompt": prompt})
         )
-        second = run_hook(
-            "user_prompt_submit.py",
-            {"hook_event_name": "UserPromptSubmit", "prompt": "what's 2+2"},
-        )
-        assert hook_context(first) == hook_context(second)
+
+    def test_hint_is_short(self):
+        out = run_hook("user_prompt_submit.py", {**self.PAYLOAD, "prompt": "write pytest tests for the api"})
+        assert 0 < len(hook_context(out)) < 300
 
 
 def test_session_end_resolves_real_reason_not_matcher_input_only(tmp_path):

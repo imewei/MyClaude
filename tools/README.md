@@ -32,6 +32,8 @@ tools/
 │   ├── context_budget_checker.py  # Skill context budget (2%) + agent prompt size (10k chars)
 │   ├── skill_validator.py         # Skill triggering pattern validation
 │   ├── xref_validator.py          # Cross-plugin reference validation
+│   ├── marketplace_validator.py   # marketplace.json vs plugin.json: versions, listed paths, unlisted agents/commands, release note
+│   ├── routing_checker.py         # Trigger routing: YAML parse, description cap, hidden-skill references, look-alike pairs, preloads
 │   ├── doc_checker.py             # Documentation completeness checker
 │   └── plugin_review_script.py    # Full automated plugin review
 ├── maintenance/           # Ecosystem maintenance
@@ -57,6 +59,7 @@ tools/
 │   ├── test_science_suite_functionality.py
 │   ├── test_science_suite_hook_payloads.py
 │   ├── test_science_suite_integrity.py
+│   ├── test_validators_on_repo.py
 │   ├── test_skill_validator.py
 │   ├── test_supplementary_docs.py
 │   └── test_xref_validator.py
@@ -87,13 +90,27 @@ Flags skills at >80% budget as at-risk, >90% as needing refactoring, >3000 bytes
 
 ### skill_validator.py
 
-Tests skill triggering pattern matching accuracy.
+Loads every registered skill and reports frontmatter problems (missing name/description, loader errors). It does not score triggering; see `routing_checker.py` and the routing eval in `docs/guides/skill-routing.rst`.
 
 ```bash
 python3 tools/validation/skill_validator.py [--plugins-dir DIR] [--plugin NAME]
 ```
 
-Measures over-trigger rate (<10% target) and under-trigger rate (<10% target).
+### marketplace_validator.py
+
+Checks `.claude-plugin/marketplace.json` against the plugins it lists: required fields, unique names, source directories, versions (entry = `plugin.json` = `metadata.version`), listed agent/command/skill paths that exist, agents and commands on disk that no entry lists, entry lists equal to `plugin.json`, and a release note that starts with the current version.
+
+```bash
+python3 tools/validation/marketplace_validator.py [--root DIR]
+```
+
+### routing_checker.py
+
+Static checks on what decides triggering: frontmatter parses as YAML, descriptions within the 1,536-char listing cap, only registered hubs are model-invocable, agents do not preload skills, descriptions never name a skill the model cannot invoke, and look-alike entries name each other. It cannot tell whether routing is good; measure that with a prompt eval.
+
+```bash
+python3 tools/validation/routing_checker.py [--root DIR]
+```
 
 ### xref_validator.py
 
