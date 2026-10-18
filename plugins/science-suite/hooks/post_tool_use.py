@@ -30,21 +30,13 @@ def _in_numeric_context(line: str, start: int, end: int) -> bool:
     left, right = line[:start], line[end:]
 
     left_stripped = left.rstrip(" \t")
-    if (
-        not left_stripped
-        or left_stripped[-1].isdigit()
-        or left_stripped[-1] in NUMERIC_BOUNDARY_CHARS
-    ):
+    if not left_stripped or left_stripped[-1].isdigit() or left_stripped[-1] in NUMERIC_BOUNDARY_CHARS:
         return True
     if len(left) - len(left_stripped) >= 2:
         return True
 
     right_stripped = right.lstrip(" \t")
-    if (
-        not right_stripped
-        or right_stripped[0].isdigit()
-        or right_stripped[0] in NUMERIC_BOUNDARY_CHARS
-    ):
+    if not right_stripped or right_stripped[0].isdigit() or right_stripped[0] in NUMERIC_BOUNDARY_CHARS:
         return True
     return len(right) - len(right_stripped) >= 2
 
@@ -67,15 +59,9 @@ def check_numerical_integrity(output: str) -> list:
         if SEARCH_CMD_RE.search(line):
             continue
         if not saw_nan:
-            saw_nan = any(
-                _in_numeric_context(line, m.start(), m.end())
-                for m in NAN_TOKEN.finditer(line)
-            )
+            saw_nan = any(_in_numeric_context(line, m.start(), m.end()) for m in NAN_TOKEN.finditer(line))
         if not saw_inf:
-            saw_inf = any(
-                _in_numeric_context(line, m.start(), m.end())
-                for m in INF_TOKEN.finditer(line)
-            )
+            saw_inf = any(_in_numeric_context(line, m.start(), m.end()) for m in INF_TOKEN.finditer(line))
 
     warnings = []
     if saw_nan:
@@ -91,23 +77,18 @@ def main() -> None:
         output = extract_output(read_payload())
         warnings = check_numerical_integrity(output)
 
-        result = {"status": "success"}
+        result = {}
         if warnings:
             # A regex scan can warn on a hit; it cannot certify absence, so no
             # "clean" claim is emitted on the no-warnings path.
-            ctx = (
-                "Numerical integrity check: "
-                + "; ".join(warnings)
-                + " — verify the computation did not diverge."
-            )
-            result["additionalContext"] = ctx
+            ctx = "Numerical integrity check: " + "; ".join(warnings) + " — verify the computation did not diverge."
             result.update(wrap_context("PostToolUse", ctx))
 
         json.dump(result, sys.stdout)
     except Exception as e:
         print(f"PostToolUse hook error: {e}", file=sys.stderr)
         json.dump(
-            {"status": "error", "message": f"PostToolUse hook error: {e}"},
+            {},
             sys.stdout,
         )
 

@@ -20,17 +20,13 @@ def main() -> None:
             "message",
             env_fallback="ERROR_MESSAGE",
         )
-        ctx = (
-            f"Stop command failed: {untrusted(error_message)}. "
-            "Check for long-running processes or locked resources."
-        )
-        result = {"status": "success", "additionalContext": ctx}
-        result.update(wrap_context("StopFailure", ctx))
+        ctx = f"Stop command failed: {untrusted(error_message)}. Check for long-running processes or locked resources."
+        result = wrap_context("StopFailure", ctx)
         json.dump(result, sys.stdout)
     except Exception as e:
         print(f"StopFailure hook error: {e}", file=sys.stderr)
         json.dump(
-            {"status": "error", "message": f"StopFailure hook error: {e}"},
+            {},
             sys.stdout,
         )
 

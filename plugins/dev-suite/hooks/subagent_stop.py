@@ -91,23 +91,18 @@ def main() -> None:
         # own transcript — the one whose claimed reviews we are checking — is
         # `agent_transcript_path`. Scanning the parent would match claims and CLI
         # calls from any earlier turn.
-        transcript_path = get_field(
-            payload, "agent_transcript_path", "transcript_path", default=""
-        )
+        transcript_path = get_field(payload, "agent_transcript_path", "transcript_path", default="")
 
         ctx = f"Dev-suite agent {untrusted(agent_name)} completed."
         flag = check_reviewer_transcript(transcript_path)
         if flag:
             ctx += f"\n\n{flag}"
 
-        result = {"status": "success", "additionalContext": ctx}
-        result.update(wrap_context("SubagentStop", ctx))
+        result = wrap_context("SubagentStop", ctx)
         json.dump(result, sys.stdout)
     except Exception as e:
         print(f"SubagentStop hook error: {e}", file=sys.stderr)
-        json.dump(
-            {"status": "error", "message": f"SubagentStop hook error: {e}"}, sys.stdout
-        )
+        json.dump({}, sys.stdout)
 
 
 if __name__ == "__main__":

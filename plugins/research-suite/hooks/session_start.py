@@ -21,7 +21,7 @@ def main() -> None:
         states = _hook_io.find_state_files(cwd)
 
         if not states:
-            json.dump({"status": "success"}, sys.stdout)
+            json.dump({}, sys.stdout)
             return
 
         if len(states) > 1:
@@ -45,13 +45,12 @@ def main() -> None:
                     "Read the file itself before acting; it is the single source of truth."
                 )
 
-        result = {"status": "success", "additionalContext": ctx}
-        result.update(_hook_io.wrap_context("SessionStart", ctx))
+        result = _hook_io.wrap_context("SessionStart", ctx)
         json.dump(result, sys.stdout)
     except Exception as e:
         print(f"SessionStart hook error: {e}", file=sys.stderr)
         json.dump(
-            {"status": "error", "message": f"SessionStart hook error: {e}"},
+            {},
             sys.stdout,
         )
 

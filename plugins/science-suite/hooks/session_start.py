@@ -21,10 +21,7 @@ TIMESTAMP_PREFIX = "## Session ended: "
 TIMESTAMP_FORMAT = "%Y-%m-%d %H:%M UTC"
 # Both probes must fit inside the hook's own 10s budget declared in hooks.json.
 PROBE_TIMEOUT = 3
-JAX_PROBE = (
-    "import importlib.util,sys; "
-    "sys.exit(0 if importlib.util.find_spec('jax') else 1)"
-)
+JAX_PROBE = "import importlib.util,sys; sys.exit(0 if importlib.util.find_spec('jax') else 1)"
 
 
 def detect_compute_env() -> dict:
@@ -77,9 +74,7 @@ def read_progress_file(cwd: str) -> str:
     if not first_line.startswith(TIMESTAMP_PREFIX):
         return ""
     try:
-        saved_at = datetime.strptime(
-            first_line[len(TIMESTAMP_PREFIX) :].strip(), TIMESTAMP_FORMAT
-        ).replace(tzinfo=UTC)
+        saved_at = datetime.strptime(first_line[len(TIMESTAMP_PREFIX) :].strip(), TIMESTAMP_FORMAT).replace(tzinfo=UTC)
     except ValueError:
         return ""
     if datetime.now(UTC) - saved_at > PROGRESS_MAX_AGE:
@@ -118,13 +113,12 @@ def main() -> None:
             )
 
         ctx = "\n\n".join(sections)
-        result = {"status": "success", "additionalContext": ctx}
-        result.update(wrap_context("SessionStart", ctx))
+        result = wrap_context("SessionStart", ctx)
         json.dump(result, sys.stdout)
     except Exception as e:
         print(f"SessionStart hook error: {e}", file=sys.stderr)
         json.dump(
-            {"status": "error", "message": f"SessionStart hook error: {e}"},
+            {},
             sys.stdout,
         )
 

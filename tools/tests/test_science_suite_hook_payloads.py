@@ -41,7 +41,7 @@ def hook_context(out: dict) -> str:
     only hookSpecificOutput.additionalContext reaches the model, so that is
     the shape tests must assert against, not the hook's own convention.
     """
-    return out.get("hookSpecificOutput", {}).get("additionalContext", "")
+    return out.get("hookSpecificOutput", {}).get("additionalContext") or out.get("systemMessage", "")
 
 
 class TestUserPromptSubmit:
@@ -60,7 +60,7 @@ class TestUserPromptSubmit:
             "user_prompt_submit.py",
             {**self.PAYLOAD, "prompt": "optimize this jit compiled vmap function with numpyro mcmc"},
         )
-        assert out["status"] == "success"
+        assert set(out) == {"hookSpecificOutput"}
         assert out["hookSpecificOutput"]["hookEventName"] == "UserPromptSubmit", (
             f"wrong hookEventName, a typo here would silently disable delivery: {out}"
         )
@@ -71,7 +71,7 @@ class TestUserPromptSubmit:
 
     @pytest.mark.parametrize("prompt", ["what time is it", "thanks", "/benchmark"])
     def test_silent_on_unrelated_or_command_prompts(self, prompt):
-        assert run_hook("user_prompt_submit.py", {**self.PAYLOAD, "prompt": prompt}) == {"status": "success"}
+        assert run_hook("user_prompt_submit.py", {**self.PAYLOAD, "prompt": prompt}) == {}
 
     def test_hint_is_not_repeated_in_the_same_session(self):
         payload = {**self.PAYLOAD, "prompt": "train a transformer with pytorch"}
@@ -193,7 +193,7 @@ class TestSubagentStop:
             {"hook_event_name": "SubagentStop", "agent_name": "sci-workflow-engineer"},
         )
         assert "additionalContext" not in out, f"nudge fired on advisory agent: {out}"
-        assert "hookSpecificOutput" not in out, f"nudge fired on advisory agent: {out}"
+        assert not hook_context(out), f"nudge fired on advisory agent: {out}"
 
     def test_resolves_continuum_mechanics_engineer(self):
         """continuum-mechanics-engineer (FEM/FEA, constitutive modeling) is
@@ -215,7 +215,7 @@ class TestSessionRoundTrip:
             "session_end.py",
             {"hook_event_name": "SessionEnd", "reason": "clear", "cwd": str(tmp_path)},
         )
-        assert "clear" in end.get("message", ""), f"reason not read: {end}"
+        assert "clear" in end.get("systemMessage", ""), f"reason not read: {end}"
 
         progress_file = tmp_path / PROGRESS_RELPATH
         assert progress_file.exists(), "SessionEnd did not write the namespaced path"

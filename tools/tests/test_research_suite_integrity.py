@@ -32,6 +32,11 @@ def run_script(script: Path, *args: str) -> subprocess.CompletedProcess:
     )
 
 
+def hook_context(out: dict) -> str:
+    """Model-visible text from a hook's output, whichever supported field carries it."""
+    return out.get("hookSpecificOutput", {}).get("additionalContext") or out.get("systemMessage", "")
+
+
 def run_hook(name: str, payload: dict) -> dict:
     """Run a hook with a JSON payload on stdin; return parsed stdout ({} if empty)."""
     result = subprocess.run(
@@ -271,8 +276,8 @@ def test_session_start_reads_state_file(tmp_path):
 
     out = run_hook("session_start.py", {"cwd": str(tmp_path)})
 
-    assert "current_stage: 7" in out["additionalContext"]
-    assert "no research-spark artifacts" not in out.get("additionalContext", "")
+    assert "current_stage: 7" in hook_context(out)
+    assert "no research-spark artifacts" not in hook_context(out)
 
 
 def test_session_start_finds_nested_workspace(tmp_path):
@@ -282,7 +287,7 @@ def test_session_start_finds_nested_workspace(tmp_path):
 
     out = run_hook("session_start.py", {"cwd": str(tmp_path)})
 
-    assert "current_stage: 7" in out["additionalContext"]
+    assert "current_stage: 7" in hook_context(out)
 
 
 def test_session_start_silent_on_unrelated_repo(tmp_path):
@@ -305,8 +310,8 @@ def test_session_start_declines_to_guess_with_multiple_states(tmp_path):
 
     out = run_hook("session_start.py", {"cwd": str(tmp_path)})
 
-    assert "current_stage: 7" not in out["additionalContext"]
-    assert "2 _state.yaml files found" in out["additionalContext"]
+    assert "current_stage: 7" not in hook_context(out)
+    assert "2 _state.yaml files found" in hook_context(out)
 
 
 def test_session_start_flags_unparseable_state(tmp_path):
@@ -314,7 +319,7 @@ def test_session_start_flags_unparseable_state(tmp_path):
 
     out = run_hook("session_start.py", {"cwd": str(tmp_path)})
 
-    assert "could not read" in out["additionalContext"]
+    assert "could not read" in hook_context(out)
 
 
 def test_task_completed_reads_task_from_stdin(tmp_path):
@@ -322,7 +327,7 @@ def test_task_completed_reads_task_from_stdin(tmp_path):
 
     out = run_hook("task_completed.py", {"cwd": str(tmp_path), "task": "Stage 7 plan"})
 
-    assert "Stage 7 plan" in out["additionalContext"]
+    assert "Stage 7 plan" in hook_context(out)
     logged = (tmp_path / ".research-log.jsonl").read_text(encoding="utf-8")
     assert json.loads(logged)["task"] == "Stage 7 plan"
 
@@ -331,7 +336,7 @@ def test_task_completed_does_not_pollute_non_research_repo(tmp_path):
     out = run_hook("task_completed.py", {"cwd": str(tmp_path), "task": "unrelated"})
 
     assert not (tmp_path / ".research-log.jsonl").exists()
-    assert "No research-spark workspace" in out["additionalContext"]
+    assert "No research-spark workspace" in hook_context(out)
 
 
 # --- #4 subagent_stop registration ---------------------------------------
@@ -364,8 +369,8 @@ def test_subagent_stop_flags_missing_artifact_on_disk(tmp_path):
         {"subagent_type": "research-spark-orchestrator", "cwd": str(tmp_path)},
     )
 
-    assert "03_claim.md" in out["additionalContext"]
-    assert "not found" in out["additionalContext"]
+    assert "03_claim.md" in hook_context(out)
+    assert "not found" in hook_context(out)
 
 
 def test_subagent_stop_confirms_artifact_present_on_disk(tmp_path):
@@ -381,7 +386,7 @@ def test_subagent_stop_confirms_artifact_present_on_disk(tmp_path):
         {"subagent_type": "research-spark-orchestrator", "cwd": str(tmp_path)},
     )
 
-    assert "verified present" in out["additionalContext"]
+    assert "verified present" in hook_context(out)
 
 
 def test_subagent_stop_does_not_flag_in_progress_stage(tmp_path):
@@ -401,8 +406,8 @@ def test_subagent_stop_does_not_flag_in_progress_stage(tmp_path):
         {"subagent_type": "research-spark-orchestrator", "cwd": str(tmp_path)},
     )
 
-    assert "04_theory.md" not in out.get("additionalContext", "")
-    assert "verified present" in out["additionalContext"]
+    assert "04_theory.md" not in hook_context(out)
+    assert "verified present" in hook_context(out)
 
 
 def test_subagent_stop_silent_with_no_stages_completed_yet(tmp_path):
@@ -438,8 +443,8 @@ def test_subagent_stop_finds_default_workspace_layout(tmp_path):
         {"subagent_type": "research-spark-orchestrator", "cwd": str(tmp_path)},
     )
 
-    assert "03_claim.md" in out["additionalContext"]
-    assert "not found" in out["additionalContext"]
+    assert "03_claim.md" in hook_context(out)
+    assert "not found" in hook_context(out)
 
 
 def test_subagent_stop_silent_for_other_agents():
@@ -472,9 +477,9 @@ def test_post_tool_use_flags_incomplete_review(tmp_path):
 
     out = run_hook("post_tool_use.py", {"cwd": str(tmp_path), "tool_input": {"file_path": str(review)}})
 
-    assert "missing required section" in out["additionalContext"]
-    assert "summary" in out["additionalContext"]
-    assert "recommendation" in out["additionalContext"]
+    assert "missing required section" in hook_context(out)
+    assert "summary" in hook_context(out)
+    assert "recommendation" in hook_context(out)
 
 
 def test_post_tool_use_silent_for_complete_review(tmp_path):
@@ -506,7 +511,7 @@ def test_post_tool_use_heading_anchored_not_incidental_prose(tmp_path):
 
     out = run_hook("post_tool_use.py", {"cwd": str(tmp_path), "tool_input": {"file_path": str(review)}})
 
-    assert "missing required section" in out["additionalContext"]
+    assert "missing required section" in hook_context(out)
 
 
 def test_post_tool_use_accepts_journal_adapted_recommendation_synonym(tmp_path):
@@ -533,7 +538,7 @@ def test_post_tool_use_malformed_docx_reports_parse_failure(tmp_path):
 
     out = run_hook("post_tool_use.py", {"cwd": str(tmp_path), "tool_input": {"file_path": str(bad)}})
 
-    assert "could not be parsed" in out["additionalContext"]
+    assert "could not be parsed" in hook_context(out)
 
 
 def test_post_tool_use_bash_fallback_finds_recent_docx(tmp_path):
@@ -548,7 +553,7 @@ def test_post_tool_use_bash_fallback_finds_recent_docx(tmp_path):
         {"tool_name": "Bash", "tool_input": {"command": "echo done"}, "cwd": str(tmp_path)},
     )
 
-    assert "additionalContext" in out
+    assert hook_context(out)
 
 
 def test_post_tool_use_bash_fallback_ignores_old_docx(tmp_path):

@@ -20,23 +20,19 @@ def main() -> None:
             tool_input = {}
 
         file_path = tool_input.get("file_path") or payload.get("file_path") or ""
-        result = {"status": "success"}
+        result = {}
 
         if file_path.endswith(".py"):
             ctx = f"Python file modified: {untrusted(file_path)}. Consider running ruff check on this file."
-            result["additionalContext"] = ctx
             result.update(wrap_context("PostToolUse", ctx))
         elif file_path.endswith((".ts", ".tsx", ".js", ".jsx")):
             ctx = f"JS/TS file modified: {untrusted(file_path)}. Consider running eslint on this file."
-            result["additionalContext"] = ctx
             result.update(wrap_context("PostToolUse", ctx))
 
         json.dump(result, sys.stdout)
     except Exception as e:
         print(f"PostToolUse hook error: {e}", file=sys.stderr)
-        json.dump(
-            {"status": "error", "message": f"PostToolUse hook error: {e}"}, sys.stdout
-        )
+        json.dump({}, sys.stdout)
 
 
 if __name__ == "__main__":

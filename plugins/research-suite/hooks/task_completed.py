@@ -36,8 +36,7 @@ def main() -> None:
                 f"Task completed: {_hook_io.untrusted(task_subject)}. No research-spark "
                 "workspace here, so nothing was logged."
             )
-            result = {"status": "success", "additionalContext": ctx}
-            result.update(_hook_io.wrap_context("TaskCompleted", ctx))
+            result = _hook_io.wrap_context("TaskCompleted", ctx)
             json.dump(result, sys.stdout)
             return
 
@@ -62,13 +61,12 @@ def main() -> None:
                 f"Could not write audit log at {log_path} (non-fatal)."
             )
 
-        result = {"status": "success", "additionalContext": advice}
-        result.update(_hook_io.wrap_context("TaskCompleted", advice))
+        result = _hook_io.wrap_context("TaskCompleted", advice)
         json.dump(result, sys.stdout)
     except Exception as e:
         print(f"TaskCompleted hook error: {e}", file=sys.stderr)
         json.dump(
-            {"status": "error", "message": f"TaskCompleted hook error: {e}"},
+            {},
             sys.stdout,
         )
 

@@ -77,7 +77,7 @@ def main() -> None:
     try:
         payload = read_payload()
         prompt = payload.get("prompt")
-        result: dict = {"status": "success"}
+        result: dict = {}
         if isinstance(prompt, str) and prompt.strip() and not prompt.lstrip().startswith("/"):
             hubs = due_hubs(classify(prompt), get_field(payload, "session_id", default="unknown"))
             if hubs:
@@ -85,12 +85,11 @@ def main() -> None:
                     f"Routing hint: this touches {', '.join(f'{SUITE}:{h}' for h in hubs)}. "
                     f"Load the matching hub skill before implementing ({SUITE}:{FALLBACK} if unsure)."
                 )
-                result["additionalContext"] = hint
                 result.update(wrap_context("UserPromptSubmit", hint))
         json.dump(result, sys.stdout)
     except Exception as e:
         print(f"UserPromptSubmit hook error: {e}", file=sys.stderr)
-        json.dump({"status": "error", "message": f"UserPromptSubmit hook error: {e}"}, sys.stdout)
+        json.dump({}, sys.stdout)
 
 
 if __name__ == "__main__":

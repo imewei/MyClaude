@@ -54,9 +54,7 @@ def check_artifacts(cwd: str) -> str | None:
         if stage not in STAGE_ARTIFACTS:
             continue
         artifacts_dir = state_path.parent / "artifacts"
-        missing = [
-            name for name in STAGE_ARTIFACTS[stage] if not (artifacts_dir / name).is_file()
-        ]
+        missing = [name for name in STAGE_ARTIFACTS[stage] if not (artifacts_dir / name).is_file()]
         project = state_path.parent.name or str(state_path.parent)
         if missing:
             lines.append(
@@ -87,15 +85,14 @@ def main() -> None:
         cwd = _hook_io.get_field(payload, "cwd", default="")
         ctx = check_artifacts(cwd) if cwd else None
         if ctx:
-            result = {"status": "success", "additionalContext": ctx}
-            result.update(_hook_io.wrap_context("SubagentStop", ctx))
+            result = _hook_io.wrap_context("SubagentStop", ctx)
             json.dump(result, sys.stdout)
         else:
             sys.exit(0)
     except Exception as e:
         print(f"SubagentStop hook error: {e}", file=sys.stderr)
         json.dump(
-            {"status": "error", "message": f"SubagentStop hook error: {e}"},
+            {},
             sys.stdout,
         )
 

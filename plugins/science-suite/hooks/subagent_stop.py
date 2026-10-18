@@ -32,20 +32,19 @@ def main() -> None:
         payload = read_payload()
         agent_name = get_field(payload, "agent_name", "subagent_type", "agent_type")
 
-        result: dict = {"status": "success"}
+        result: dict = {}
         if agent_name in NUMERICAL_AGENTS:
             ctx = (
                 f"Science agent {untrusted(agent_name)} completed. "
                 "Check output for numerical validity before proceeding."
             )
-            result["additionalContext"] = ctx
             result.update(wrap_context("SubagentStop", ctx))
 
         json.dump(result, sys.stdout)
     except Exception as e:
         print(f"SubagentStop hook error: {e}", file=sys.stderr)
         json.dump(
-            {"status": "error", "message": f"SubagentStop hook error: {e}"},
+            {},
             sys.stdout,
         )
 

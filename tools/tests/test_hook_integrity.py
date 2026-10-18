@@ -156,6 +156,24 @@ class TestUserPromptSubmitWiring:
         )
 
 
+class TestContextHooksAreSynchronous:
+    """An async hook's output is discarded, so any hook that emits context or a
+    system message must be synchronous. Only SessionEnd (nothing left to inform) may be async."""
+
+    @pytest.mark.parametrize("suite", SUITES_WITH_HOOKS)
+    def test_only_session_end_may_be_async(self, suite):
+        with open(PLUGINS_ROOT / suite / "hooks" / "hooks.json", "r", encoding="utf-8") as f:
+            data = json.load(f)
+        offenders = [
+            event
+            for event, entries in data["hooks"].items()
+            for entry in entries
+            for hook in entry["hooks"]
+            if hook.get("async") and event != "SessionEnd"
+        ]
+        assert not offenders, f"{suite}: async hooks drop their output: {offenders}"
+
+
 class TestUntrustedContext:
     """Hooks must not interpolate payload or workspace strings raw into model context.
 

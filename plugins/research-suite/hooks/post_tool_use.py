@@ -32,9 +32,7 @@ RECENT_SECONDS = 120
 # ("journal-specific criteria" may use "Decision"/"Verdict" instead of the
 # default template's "Recommendation").
 SUMMARY_RE = re.compile(r"^#{1,6}\s.*\bsummary\b", re.MULTILINE | re.IGNORECASE)
-RECOMMENDATION_RE = re.compile(
-    r"^#{1,6}\s.*\b(?:recommendation|decision|verdict)\b", re.MULTILINE | re.IGNORECASE
-)
+RECOMMENDATION_RE = re.compile(r"^#{1,6}\s.*\b(?:recommendation|decision|verdict)\b", re.MULTILINE | re.IGNORECASE)
 REQUIRED_SECTIONS = (("summary", SUMMARY_RE), ("recommendation", RECOMMENDATION_RE))
 
 
@@ -99,9 +97,7 @@ def find_recent_docx(cwd: str) -> Path | None:
     if not reviews or not reviews.is_dir():
         return None
     try:
-        candidates = sorted(
-            reviews.glob("*.docx"), key=lambda p: p.stat().st_mtime, reverse=True
-        )
+        candidates = sorted(reviews.glob("*.docx"), key=lambda p: p.stat().st_mtime, reverse=True)
     except OSError:
         return None
     if not candidates:
@@ -135,15 +131,14 @@ def main() -> None:
                 ctx = check_review_file(recent)
 
         if ctx:
-            result = {"status": "success", "additionalContext": ctx}
-            result.update(_hook_io.wrap_context("PostToolUse", ctx))
+            result = _hook_io.wrap_context("PostToolUse", ctx)
             json.dump(result, sys.stdout)
         else:
             sys.exit(0)
     except Exception as e:
         print(f"PostToolUse hook error: {e}", file=sys.stderr)
         json.dump(
-            {"status": "error", "message": f"PostToolUse hook error: {e}"},
+            {},
             sys.stdout,
         )
 

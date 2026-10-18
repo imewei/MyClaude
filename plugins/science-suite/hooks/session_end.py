@@ -86,23 +86,23 @@ def main() -> None:
             progress_path.write_text("\n".join(lines) + "\n", encoding="utf-8")
             saved = True
         except OSError as e:
-            print(f"SessionEnd hook: could not write {progress_path}: {e}", file=sys.stderr)
+            print(
+                f"SessionEnd hook: could not write {progress_path}: {e}",
+                file=sys.stderr,
+            )
 
         if saved:
             json.dump(
                 {
-                    "status": "success",
-                    "message": f"Session ended: {end_reason}. Progress saved.",
+                    "systemMessage": f"Session ended: {end_reason}. Progress saved.",
                 },
                 sys.stdout,
             )
         else:
             json.dump(
                 {
-                    "status": "warning",
-                    "message": (
-                        f"Session ended: {end_reason}. "
-                        f"Progress NOT saved (could not write {progress_path})."
+                    "systemMessage": (
+                        f"Session ended: {end_reason}. Progress NOT saved (could not write {progress_path})."
                     ),
                 },
                 sys.stdout,
@@ -110,7 +110,7 @@ def main() -> None:
     except Exception as e:
         print(f"SessionEnd hook error: {e}", file=sys.stderr)
         json.dump(
-            {"status": "error", "message": f"SessionEnd hook error: {e}"},
+            {},
             sys.stdout,
         )
 

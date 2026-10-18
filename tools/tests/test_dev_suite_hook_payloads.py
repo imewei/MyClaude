@@ -78,7 +78,7 @@ def run_hook(script, payload=None, cwd=None, stdin_devnull=False):
 
 def hook_context(out: dict) -> str:
     """Pull additionalContext from the shape Claude Code actually consumes."""
-    return out.get("hookSpecificOutput", {}).get("additionalContext", "")
+    return out.get("hookSpecificOutput", {}).get("additionalContext") or out.get("systemMessage", "")
 
 
 @pytest.mark.parametrize("script,payload,expected", PAYLOAD_CASES, ids=[c[0] for c in PAYLOAD_CASES])
@@ -86,7 +86,7 @@ def test_hook_resolves_payload_fields(script, payload, expected):
     """A hook given a real payload must reflect it, not fall back to a placeholder."""
     output = run_hook(script, payload)
     text = json.dumps(output)
-    assert output.get("status") == "success", output
+    assert "status" not in output, output
     assert expected in text, f"{script} did not resolve payload field: {text}"
     # A top-level "additionalContext" key is silently ignored by Claude Code —
     # only hookSpecificOutput.additionalContext actually reaches the model.
@@ -103,7 +103,10 @@ def test_hook_resolves_payload_fields(script, payload, expected):
 def test_hook_survives_absent_stdin(script, tmp_path):
     """No stdin must not hang or crash — the timeout in run_hook is the assertion."""
     output = run_hook(script, stdin_devnull=True, cwd=tmp_path)
-    assert output.get("status") == "success", output
+    if script == "user_prompt_submit.py":
+        assert output == {}
+    else:
+        assert "status" not in output, output
 
 
 @pytest.mark.parametrize("script", ALL_HOOKS)
@@ -123,7 +126,10 @@ def test_hook_survives_malformed_stdin(script, tmp_path):
     )
     assert result.returncode == 0, f"{script} crashed on malformed stdin: {result.stderr}"
     output = json.loads(result.stdout)
-    assert output.get("status") == "success", output
+    if script == "user_prompt_submit.py":
+        assert output == {}
+    else:
+        assert "status" not in output, output
 
 
 def test_user_prompt_submit_emits_routing_hint_for_matching_prompt(tmp_path, monkeypatch):
@@ -135,7 +141,7 @@ def test_user_prompt_submit_emits_routing_hint_for_matching_prompt(tmp_path, mon
         "user_prompt_submit.py",
         {"hook_event_name": "UserPromptSubmit", "session_id": "t1", "prompt": "set up github actions with prometheus alerts"},
     )
-    assert output["status"] == "success"
+    assert set(output) == {"hookSpecificOutput"}
     assert output["hookSpecificOutput"]["hookEventName"] == "UserPromptSubmit", (
         f"wrong hookEventName, a typo here would silently disable delivery: {output}"
     )
@@ -157,10 +163,10 @@ class TestUserPromptSubmitIsConditional:
     @pytest.mark.parametrize("prompt", ["what's 2+2", "thanks", "/commit", ""])
     def test_silent_on_unrelated_or_command_prompts(self, prompt):
         output = run_hook("user_prompt_submit.py", {**self.PAYLOAD, "prompt": prompt})
-        assert output == {"status": "success"}
+        assert output == {}
 
     def test_silent_without_a_prompt_field(self):
-        assert run_hook("user_prompt_submit.py", self.PAYLOAD) == {"status": "success"}
+        assert run_hook("user_prompt_submit.py", self.PAYLOAD) == {}
 
     def test_same_hub_is_not_repeated_until_the_interval_passes(self):
         prompt = "add a redis caching layer to the database"
@@ -183,8 +189,8 @@ def test_session_end_resolves_real_reason_not_matcher_input_only(tmp_path):
     the matcher_input fallback key, so every progress file recorded Reason:
     unknown regardless of what the SessionEnd payload actually said."""
     output = run_hook("session_end.py", {"reason": "clear"}, cwd=tmp_path)
-    assert output["status"] == "success"
-    assert "clear" in output.get("message", ""), f"reason not resolved: {output}"
+    assert "status" not in output
+    assert "clear" in output.get("systemMessage", ""), f"reason not resolved: {output}"
 
     progress = tmp_path / ".claude" / "progress" / "dev-suite.md"
     assert progress.exists(), "progress file not written"
@@ -198,7 +204,7 @@ def test_session_roundtrip_is_namespaced(tmp_path):
     subprocess.run(["git", "init", "-q", "."], cwd=tmp_path, check=True)
 
     end = run_hook("session_end.py", {"reason": "clear"}, cwd=tmp_path)
-    assert end["status"] == "success"
+    assert "status" not in end
 
     progress = tmp_path / ".claude" / "progress" / "dev-suite.md"
     assert progress.exists(), "progress file not written to the namespaced path"
@@ -372,7 +378,7 @@ def test_stale_head_marker_appears_after_new_commit(tmp_path):
     )
 
     end = run_hook("session_end.py", {"reason": "clear"}, cwd=tmp_path)
-    assert end["status"] == "success"
+    assert "status" not in end
 
     subprocess.run(
         ["git", "commit", "--allow-empty", "-q", "-m", "b"], cwd=tmp_path, check=True
@@ -389,7 +395,7 @@ def test_head_unchanged_no_stale_marker(tmp_path):
     )
 
     end = run_hook("session_end.py", {"reason": "clear"}, cwd=tmp_path)
-    assert end["status"] == "success"
+    assert "status" not in end
 
     start = run_hook("session_start.py", cwd=tmp_path)
     assert "STALE" not in hook_context(start)
@@ -427,7 +433,7 @@ def test_progress_file_without_head_line_degrades_gracefully(tmp_path):
     )
 
     start = run_hook("session_start.py", cwd=tmp_path)
-    assert start["status"] == "success"
+    assert "status" not in start
     assert "STALE" not in hook_context(start)
     assert "Reason: clear" in hook_context(start)
 
@@ -455,7 +461,7 @@ def test_subagent_stop_reads_documented_field_names():
         text=True,
         check=False,
     )
-    ctx = json.loads(out.stdout)["hookSpecificOutput"]["additionalContext"]
+    ctx = hook_context(json.loads(out.stdout))
     assert "quality-specialist" in ctx
     assert "unknown" not in ctx
     # it looked for the subagent's transcript, not the parent's

@@ -106,8 +106,7 @@ def read_progress_file(cwd: str) -> str:
         if current_head and current_head != head_match.group(1):
             text = (
                 f"[STALE — recorded at HEAD {head_match.group(1)}, "
-                f"now at {current_head}; branch has moved since this was written]\n"
-                + text
+                f"now at {current_head}; branch has moved since this was written]\n" + text
             )
     return text
 
@@ -134,13 +133,12 @@ def main() -> None:
             context += "\n\nPrior session progress:\n" + untrusted_block(progress)
 
         ctx = f"Dev environment detected: {context}"
-        result = {"status": "success", "additionalContext": ctx}
-        result.update(wrap_context("SessionStart", ctx))
+        result = wrap_context("SessionStart", ctx)
         json.dump(result, sys.stdout)
     except Exception as e:
         print(f"SessionStart hook error: {e}", file=sys.stderr)
         json.dump(
-            {"status": "error", "message": f"SessionStart hook error: {e}"},
+            {},
             sys.stdout,
         )
 
